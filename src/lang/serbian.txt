@@ -4365,6 +4365,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje nov{G og e og} {STRING.aku} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=srednji}železničko vučno vozilo
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.aku                      :železničkog vučnog vozila
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :lokomotiva elektrifikovane železnice

@@ -3802,6 +3802,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Omnia v
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nuntium a fabricatore vehiculorum
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nuper fabricamus nov{G um am um os as a} {STRING} - visne uti hoc vehiculo unum annum, ut videamus quomodo operatur antequam omnibus venum damus?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}hamaxam
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}hamaxam monoorbitalem
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}hamaxam maglev

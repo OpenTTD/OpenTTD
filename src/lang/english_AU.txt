@@ -4392,6 +4392,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}You are
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Message from vehicle manufacturer
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}We have just designed a new {STRING} - would you be interested in a year's exclusive use of this vehicle, so we can see how it performs before making it universally available?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :railway locomotive
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :electrified railway locomotive
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail locomotive

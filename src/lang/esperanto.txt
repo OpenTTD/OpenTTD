@@ -4493,6 +4493,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vi vend
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaĝo de veturil-produktanto
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nova {STRING} estas inventita - ĉu vi ŝatus jaron ekskluzive uzi la veturilon, por ke ni povu vidi ĝian funkciadon antaŭ ol ĝi estos plene havebla?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :fervoja lokomotivo
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrofervoja lokomotivo
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE.n                          :elektrofervojan lokomotivon

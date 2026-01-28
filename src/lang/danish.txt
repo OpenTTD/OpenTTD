@@ -2858,20 +2858,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reducer højden
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Forøg højden på forhåndsvisningsbilleder. Ctrl+klik for at øge til maksimum
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Standardsamling
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Vælg en samling
+STR_PICKER_COLLECTION_ADD                                       :Tilføje
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Opret en ny samling
+STR_PICKER_COLLECTION_RENAME                                    :Omdøb
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Omdøb en samling
+STR_PICKER_COLLECTION_DELETE                                    :Slet
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Slet en samling
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Omdøb denne samling
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Slet en samling
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Er du sikker på, at du vil slette denne samling?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Er du sikker på, at du vil slette denne samling? Den indeholder elementer fra deaktiverede NewGRF'er!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Vælg en stationsklasse, der skal vises
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Vælg en stationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Vælg en samling af stationer, der skal vises
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Vælg et rutepunkt-klasse, der skal vises
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Vælg et rutepunkt at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Vælg en samling af waypoints, der skal vises
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Vælg en busstationsklasse, der skal vises
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Vælg en busstationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Vælg en samling af bus stationer, der skal vises
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Vælg en lastbilstationsklasse, der skal vises
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a lorry station tyVælg en lastbilstationstype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementerpe to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Vælg en samling af lastbil stationer, der skal vises
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Vælg en objektklasse, der skal vises
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Vælg en objekttype, der skal bygges. Ctrl+klik for at tilføje eller fjerne i gemte elementer. Ctrl+klik+træk for at markere området diagonalt. Tryk også på Shift for kun at vise omkostningsestimat
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Vælg en samling af objekter, der skal vises
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vælg en byzone, der skal vises
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Vælg en hustype at bygge. Ctrl+klik for at tilføje eller fjerne i gemte elementer
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Vælg en samling af huse, der skal vises
 
 STR_HOUSE_PICKER_CAPTION                                        :Husvalg
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Navn: {GOLD}{STRING}
@@ -4373,6 +4391,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er v
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Besked fra køretøjsfabrikken
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har lige designet et nyt {STRING} - er du interesseret i et års ekslusiv testkørsel, så vi kan se hvordan det klarer sig inden vi gør det frit tilgængeligt?
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :jernbanelokomotiv
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrisk jernbanelokomotiv

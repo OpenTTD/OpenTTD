@@ -4376,6 +4376,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er n
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding fra kjøretøysprodusent
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nettopp designet e{G n i t} ny{G "" "" tt} {STRING} - er du interessert i ett års ekslusivt bruk av de{G 0 n n t}, slik at vi kan se hvordan de{G 0 n n t} virker før de{G 0 n n t} blir allment tilgjengelig?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=neuter}lokomotiv
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=neuter}elektrisk lokomotiv
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=neuter}monorail-lokomotiv

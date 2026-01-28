@@ -4392,6 +4392,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet my
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti kulkuneuvovalmistajalta
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} – oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme miten tuote suoriutuu ennen kuin julkistamme sen yleiseen käyttöön?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturi
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :sähköradan veturi
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen veturi

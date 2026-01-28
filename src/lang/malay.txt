@@ -3250,6 +3250,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda ak
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Pesanan daripada pengusaha kenderaan
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Kami baru sahaja mereka {STRING} yang baru - adakah anda berminat untuk menggunakan kenderaan ini secara eksklusif, supaya kami dapat menilai tahap kelancarannya sebelum kami menjualnya kepada pihak awam?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :keretapi
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :keretapi monorel
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :keretapi maglev

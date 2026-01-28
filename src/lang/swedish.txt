@@ -4374,6 +4374,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du är 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meddelande från fordonstillverkare
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har just designat ett nytt {STRING} - är du intresserad av ett års exklusiv användning av detta fordon, så vi kan se hur det presterar innan vi gör det allmänt tillgängligt?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :järnvägslok
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrifierat järnvägslok
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lok

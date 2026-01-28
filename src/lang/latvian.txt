@@ -4360,6 +4360,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Jūs gr
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ziņojums no transportlīdzekļu ražotāja
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mēs tikko esam izstrādājuši jaunu transportlīdzekli - {STRING}. Vai esat ieinteresēts iegūt izņēmuma tiesības izmantot šo transportlīdzekli uz vienu gadu, lai mēs redzētu tā iespējas pirms padaram pieejamu visiem?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :dzelzceļa lokomotīve
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrificēta dzelzceļa lokomotīve
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :viensliedes lokomotīve

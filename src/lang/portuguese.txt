@@ -4375,6 +4375,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING}. - Estaria interessado num ano de utilização exclusiva deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, para que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} lançar globalmente?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva ferroviária
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elétrica ferroviária
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotiva monocarril

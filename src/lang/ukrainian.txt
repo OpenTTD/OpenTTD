@@ -4507,6 +4507,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ви в
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Повідомлення від виробника транспорту
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Ми розробили новий {STRING} - чи бажаєте ексклюзивно користуватись ним протягом року, так ми побачимо, як він зарекомендує себе, перед тим як буде доступним для всіх?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :локомотив
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :електрифікований залізничний локомотив
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорейковий локомотив

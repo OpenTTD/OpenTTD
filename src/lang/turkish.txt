@@ -4368,6 +4368,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajda
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Araç üreticisinden mesaj
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Yeni bir {STRING} tasarladık - bizim için bunu bir yıl denemeyi kabul ediyor musunuz?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotif
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Elektrikli demiryolu lokomotifi
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoray lokomotifi

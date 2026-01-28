@@ -4336,6 +4336,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Si stan
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggio da un costruttore di veicoli
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" "" a} nuov{G o o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elettrica
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}motrice monorotaia

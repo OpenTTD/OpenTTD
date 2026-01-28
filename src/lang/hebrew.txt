@@ -3930,6 +3930,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}?אתה
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}הודעה מיצרן הרכב
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}?חדש/ה! האם אתה מעוניין לבחון כלי זה באופן בלעדי לפני הוצאתו לשוק {STRING} זה עתה סיימנו את תכנונו של
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :קטר רכבת
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :קטר רכבת חשמלי
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פס

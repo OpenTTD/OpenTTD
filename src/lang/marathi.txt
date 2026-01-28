@@ -1603,6 +1603,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 
+
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :विमान
 STR_ENGINE_PREVIEW_SHIP                                         :जहाज
 

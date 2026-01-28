@@ -4110,6 +4110,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda ak
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Pesan dari pabrik kendaraan
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Kami telah mendesain {STRING} baru - apakah anda tertarik mempergunakan kendaraan ini secara eksklusif , sehingga kami dapat melihat bagaimana kemampuannya sebelum dijual secara masal?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotif kereta
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :lokomotif rel kereta listrik
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :lokomotif monorel

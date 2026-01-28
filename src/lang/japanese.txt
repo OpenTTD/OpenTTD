@@ -4043,6 +4043,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}庫内�
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}製造会社からのメッセージ
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}弊社は新たに{STRING}を設計いたしました。{}実地試験を行うにあたって貴社にご協力いただきたく、一年間の独占的使用権を提供したいと考えておりますがいかがでしょうか?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :列車
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :電気機関車
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール列車

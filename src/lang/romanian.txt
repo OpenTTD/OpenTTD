@@ -4277,6 +4277,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ești p
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaj de la producătorul de vehicule
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Am creat un nou tip de {STRING}. Ați fi interesați de folosirea exclusivă pentru un an a acestui vehicul, astfel ca noi să-i putem observa performanțele înaintea lansării oficiale?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotivă
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotivă electrificată
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotivă monoșină

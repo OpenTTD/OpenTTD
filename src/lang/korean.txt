@@ -4375,6 +4375,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 개발자가 보낸 메시지
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 새로운 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}철도 기관차
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}전기선로 기관차
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}모노레일 기관차

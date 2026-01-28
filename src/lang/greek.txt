@@ -4487,6 +4487,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρό�
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μήνυμα από κατασκευαστή οχημάτων
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδίαση {G ενός μίας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}ατμομηχανή
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.geniki                   :ατμομηχανής
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Μηχανή ηλεκτροδοτουμένου σιδηροδρόμου

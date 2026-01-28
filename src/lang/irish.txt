@@ -3899,6 +3899,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tá tú
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Teachtaireacht ó dhéantóir feithiclí
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Táimid díreach tar éis {STRING} nua a dhearadh - an mbeadh suim agat úsáid eisiach a bhaint as ar feadh bliana, le go mbeimid in ann a fheiceáil mar a fheidhmíonn sé sula gcuirfimid ar fáil do chách é?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :inneall gluaiste iarnróid
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :inneall gluaiste iarnróid leictrithe
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :inneall gluaiste aonráille

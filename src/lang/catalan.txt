@@ -4375,6 +4375,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Missatge del fabricant de vehicles
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabem de dissenyar {G un una} {G nou nova} {STRING}. Esteu interessats en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llançament mundial?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=Femenin}locomotora de tren
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotora de ferrocarril electrificat
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=Femenin}locomotora de monorail

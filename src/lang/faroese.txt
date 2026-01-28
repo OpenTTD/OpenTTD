@@ -3179,6 +3179,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tú er 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Boð frá framleiðarinum av flutningstólinum
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vit hava júst sniðgivi eitt nýtt {STRING} - hevði tú havt áhuga í einkarrættindum at nýtt hetta flutningstóli í eitt ár, so vit kunnu síggja hvussu ta virkar áðrenn vit gera ta tøkt á marknaðinum?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :jarnbreyta lokomotiv
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einsporað lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotiv

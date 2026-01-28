@@ -1466,6 +1466,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 
+
 # Autoreplace window
 
 

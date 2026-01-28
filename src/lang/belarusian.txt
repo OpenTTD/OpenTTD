@@ -4525,6 +4525,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Уве�
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Паведамленьне ад вытворцы транспарту
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы стварылі новую мадэль {STRING.gen}. Цi зацікаўлены Вы ў яе гадавым эксклюзіўным выкарыстаньні для праверкі перад запускам у масавую вытворчасьць?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=m}чыгуначны лякаматыў
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :чыгуначнага лакаматыва
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :чыгуначны лякаматыў

@@ -3483,6 +3483,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er i
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding frå køyretøysprodusent
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Me har nyleg designa eit nytt {STRING} - er du interessert i å teste denne farkosten i eit år, slik at me kan sjå korleis det verkar før me gjer han tilgjengeleg på markedet?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotiv
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv

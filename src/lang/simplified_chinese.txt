@@ -4374,6 +4374,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}将出�
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}来自供货商的消息
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我们新近设计了一款{STRING}{}您愿意在产品正式上市前独家试用一年，以便我们在正式上市前观察它的表现吗？
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :铁路机车
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :电气化铁路机车
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车

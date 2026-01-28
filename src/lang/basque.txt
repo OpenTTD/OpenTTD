@@ -3441,6 +3441,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Gordail
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ibilgailu frabrikaren mezua
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}{STRING} berria diesinatu dugu - Nahiko zenuke ibilgailu honen urte baterako erabilera esklusiboa izatea? Bere funtzionamendua ikusi ahalko genuke publiko egin aurretik.
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Lokomotora
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail lokomotora
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Lokomotora magnetikoa

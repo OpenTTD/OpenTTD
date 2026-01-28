@@ -4772,6 +4772,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Czy na 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomość od producenta pojazdów
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy zechcesz przez rok użytkować ten pojazd na wyłączność, abyśmy mogli sprawdzić, jak się sprawuje, zanim zostanie powszechnie udostępniony?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :lokomotywę
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}lokomotywa elektryczna

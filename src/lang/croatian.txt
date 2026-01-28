@@ -3833,6 +3833,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo dizajnirali novi {STRING} - jeste li zainteresirani za jednogodišnje ekskluzivno pravo uporabe ovog vozila, kako bi vidjeli kako se vozilo ponaša prije nego što postane univerzalno dostupno?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :željeznička lokomotiva
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :lokomotiva za elektrificiranu željeznicu
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednotračna željeznička lokomotiva

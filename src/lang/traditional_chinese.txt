@@ -2858,20 +2858,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :縮小預覽圖
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大預覽圖。按住 <Ctrl> 鍵點選以最大化
 
+STR_PICKER_DEFAULT_COLLECTION                                   :預設群組
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :選擇群組
+STR_PICKER_COLLECTION_ADD                                       :增加
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :建立群組
+STR_PICKER_COLLECTION_RENAME                                    :重新命名
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :重新命名群組
+STR_PICKER_COLLECTION_DELETE                                    :刪除
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :刪除群組
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :重新命名此群組
+STR_PICKER_COLLECTION_DELETE_QUERY                              :刪除群組
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}你確定要刪除此群組嗎？
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}你確定要刪除此群組嗎？這裡有些已停用的 NewGRF 項目！
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :選擇建設的車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :選擇要顯示的車站群組
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的中途站種類
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :選擇建設的中途站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :選擇要顯示的中途站群組
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :選擇顯示的公車站種類
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :選擇建設的公車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :選擇要顯示的公車站群組
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :選擇顯示的貨車場種類
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :選擇建設的貨車場類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :選擇要顯示的貨運站群組
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :選擇顯示的物品種類
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :選擇建設的物件類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示預估成本
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :選擇要顯示的物件群組
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :選擇顯示的市鎮區域
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :選擇建設的房屋類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :選擇要顯示的房屋群組
 
 STR_HOUSE_PICKER_CAPTION                                        :房屋選擇
 STR_HOUSE_PICKER_NAME                                           :{BLACK}名稱：{GOLD}{STRING}
@@ -4373,6 +4391,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}車輛製造商的訊息
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我們剛設計了一款新的{STRING}{}您願意在產品正式上市前獨家使用它一年，讓我們在正式上市前觀察它的表現嗎？
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :鐵道機車
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :電氣化鐵道機車

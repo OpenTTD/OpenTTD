@@ -3372,6 +3372,7 @@ STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik om 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Berjocht fan fiertúgenfabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wy hawwe sakrekt in nije {STRING} ûntwurpen - bisto ynteressearre yn in jier lang eksklusyf gebrûk fan dit fiertúch, sadat wy kinne sjen oft it goed wurket foardat wy it wrâldwiid beskikber meitsjen?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyf
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail lokomotyf
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglevlokomotyf

@@ -4375,6 +4375,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vous ê
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Communiqué du fabriquant de véhicules
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nous venons juste d'inventer{NBSP}: {STRING} - Voulez-vous l'exclusivité de ce véhicule pendant un an, afin que nous puissions le tester avant sa mise sur le marché{NBSP}?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotive
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotive électrique
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotive monorail

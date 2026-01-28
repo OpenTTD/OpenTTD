@@ -4274,6 +4274,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystá
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Správa od výrobcu dopravných prostriedkov
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Práve sme navrhli nov{G "ý" "ú" "é"} {STRING} - máte záujem o právo exkluzívneho používania na 1 rok? Chceme otestovať vlastnosti tohto modelu pred jeho uvedením na trh.
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=z}železničná lokomotíva
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=z}elektrická lokomotíva
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=z}jednokoľajová lokomotíva

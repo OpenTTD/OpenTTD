@@ -4367,6 +4367,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Je staa
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Bericht van voertuigenfabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}We hebben zojuist een nieuwe {STRING} ontworpen - ben je geïnteresseerd in een jaar lang exclusief gebruik van dit voertuig, zodat we kunnen zien of het goed werkt voordat we het wereldwijd beschikbaar maken?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorlocomotief
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrische locomotief
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillocomotief

@@ -3482,6 +3482,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW} آیا
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}پیغام از سازنده ی وسیله نقلیه
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}ما به تازگی {STRING} را طراحی کرده ایم- آیا مایلید در یک سال اولان را به شگل انحصاری مورد تست قرار دهید تا نحوه عملکرد وسیله را قبل از عرضه ی جهانی مورد بررسی قرار دهیم؟
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :لوکوموتیو راه آهن
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :لوکوموتیو راه آهن برقی
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :لوکوموتیو مونوریل

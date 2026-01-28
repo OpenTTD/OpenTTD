@@ -4362,6 +4362,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas ven
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaxe dun fabricante de vehículos
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabamos de deseñar un novo {STRING} - Interésache probar este vehículo en exclusiva durante un ano, para ve-lo seu rendemento antes de facelo universalmente dispoñíbel?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotora de ferrocarril
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Locomotora eléctrica
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de monorraíl

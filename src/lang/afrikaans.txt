@@ -3654,6 +3654,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}U staan
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Boodskap van voertuig fabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Ons het sopas 'n nuwe {STRING} ontwerp, sal jy belangstel om hierdie voertuig eksklusief vir 'n jaar te gebruik. Hierdie word gedoen om te kyk hoe die voertuig doen voordat hy wereld wyd in produksie gesit word?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorweg lokomotief
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :geëlektrifiseerde spoorweglokomotief
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monospoor lokomotief

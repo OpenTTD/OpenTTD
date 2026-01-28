@@ -4467,6 +4467,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chceš 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Zpráva od výrobce dopravních prostředků
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ý ou é é é é á} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :lokomotivu
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrická lokomotiva

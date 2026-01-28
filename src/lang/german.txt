@@ -4368,6 +4368,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sollen 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nachricht vom Fahrzeughersteller
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt.{}Besteht Interesse, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=w}Lokomotive
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Elektrolokomotive
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=w}Einschienenbahn

@@ -2541,6 +2541,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 
+
 # Autoreplace window
 
 STR_REPLACE_VEHICLE_VEHICLES_IN_USE                             :{YELLOW}استعمالکردہ گاڑیاں

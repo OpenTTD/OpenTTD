@@ -4367,6 +4367,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Rydych 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Neges gan wneuthurwr cerbydau
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Rydyn ni newydd gynllunio {STRING} newydd - a fyddai gennych chi ddiddordeb mewn cael defnydd cyfyngol o'r cerbyd hwn am flwyddyn er mwyn i ni gael profi ei berfformiad cyn y bydd ar gael i bawb?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :trên
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotif rheilffordd drydan
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :trên monoreilffordd

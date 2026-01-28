@@ -3813,6 +3813,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tha thu
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Brath bho dhèanadair a' charbaid
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Tha sinn air {STRING} ùr a dhealbhadh - a bheil ùidh agaibh ann ’s nach cleachd ach sibh fhèin e fad bliadhna ach am faic sinn dè cho math ’s a dh’obraicheas e mus reic sinn don a h-uile duine e?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :einnsean-rèile
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einnsean aona-rèile
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :einnsean magnaiteach

@@ -4349,6 +4349,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ar tikr
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Žinutė nuo transporto priemonių gamintojo
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėte vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonę, kol dar nepradėta jos serijinė gamyba?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyvas
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kas                      :lokomotyvas
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.ko                       :lokomotyvo

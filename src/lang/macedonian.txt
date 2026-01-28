@@ -1788,6 +1788,7 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Цент
 
 
 
+
 # Autoreplace window
 
 

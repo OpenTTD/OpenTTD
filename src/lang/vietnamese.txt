@@ -4374,6 +4374,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Bạn �
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Thông cáo từ nhà sản xuất phương tiện vận tải
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Chúng tôi vừa thiết kế một {STRING} mới - bạn có muốn mua nó trước khi chúng tôi hoàn thiện 1 năm, để chúng tôi đánh giá nó trước khi bán rộng rãi?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :đầu máy tàu hoả
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :ngành vận tải đường sắt điện lực
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :đầu máy ray đơn
