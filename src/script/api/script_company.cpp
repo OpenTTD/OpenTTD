@@ -390,3 +390,17 @@
 	const Company *c = ::Company::Get(ScriptObject::GetCompany());
 	return (ScriptCompany::Colours)c->livery[scheme].colour2;
 }
+
+/* static */ bool ScriptCompany::SetBlockPreview(SQInteger quarters)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, quarters >= 0);
+	return ScriptObject::Command<CMD_SET_COMPANY_BLOCK_PREVIEW>::Do(quarters);
+}
+
+/* static */ SQInteger ScriptCompany::GetBlockPreview(ScriptCompany::CompanyID company)
+{
+	company = ResolveCompanyID(company);
+	if (company == ScriptCompany::COMPANY_INVALID) return GENDER_INVALID;
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->block_preview;
+}
