@@ -45,21 +45,20 @@ jobs:
 
         echo "::group::Build Source"
         cmake --build build --target docs_source
-        mv build/Warnings.source doxygen_warnings.PR
+        python3 .github/sort_doxygen_warnings.py build/Warnings.source doxygen_warnings.PR
         echo "::endgroup::"
 
         echo "::group::Build AI"
         cmake --build build --target docs_ai
-        mv build/Warnings.AI doxygen_AI_warnings.PR
+        python3 .github/sort_doxygen_warnings.py build/Warnings.AI doxygen_AI_warnings.PR
         echo "::endgroup::"
 
         echo "::group::Build GS"
         cmake --build build --target docs_game
-        mv build/Warnings.GS doxygen_GS_warnings.PR
+        python3 .github/sort_doxygen_warnings.py build/Warnings.GS doxygen_GS_warnings.PR
         echo "::endgroup::"
 
         rm -r build
-        git restore Doxyfile.in src/script/api/Doxyfile_AI.in src/script/api/Doxyfile_GS.in
 
     - name: Build docs for base branch
       run: |
@@ -72,17 +71,17 @@ jobs:
 
         echo "::group::Build Source"
         cmake --build build --target docs_source
-        mv build/Warnings.source doxygen_warnings.base
+        python3 .github/sort_doxygen_warnings.py build/Warnings.source doxygen_warnings.base
         echo "::endgroup::"
 
         echo "::group::Build AI"
         cmake --build build --target docs_ai
-        mv build/Warnings.AI doxygen_AI_warnings.base
+        python3 .github/sort_doxygen_warnings.py build/Warnings.AI doxygen_AI_warnings.base
         echo "::endgroup::"
 
         echo "::group::Build GS"
         cmake --build build --target docs_game
-        mv build/Warnings.GS doxygen_GS_warnings.base
+        python3 .github/sort_doxygen_warnings.py build/Warnings.GS doxygen_GS_warnings.base
         echo "::endgroup::"
 
         rm -r build
