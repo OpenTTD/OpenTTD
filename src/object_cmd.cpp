@@ -425,15 +425,33 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 			continue;
 		}
 
-		had_success = true;
 		if (flags.Test(DoCommandFlag::Execute)) {
-			money -= ret.GetCost();
+			cost.AddCost(ret.GetCost());
 
-			/* If we run out of money, stop building. */
-			if (ret.GetCost() > 0 && money < 0) break;
-			Command<CMD_BUILD_OBJECT>::Do(flags, t, type, view);
+			/* If we run out of money, don't build an object. */
+			if (ret.GetCost() <= money) {
+				had_success = true;
+
+				if (flags.Test(DoCommandFlag::Execute)) {
+					CommandCost ret = Command<CMD_BUILD_OBJECT>::Do(flags, t, type, view);
+					money -= ret.GetCost();
+
+				}
+			} else {
+				/* If no objects will be built, keep track of the total expenses that a player would incur for building all of the objects (to display in the error message). */
+				/* If at least some objects will be built, then an error message should not be displayed. */
+				if (!had_success) {
+					last_error = CommandCostWithParam(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, cost.GetCost());
+					continue;
+				}
+
+				/* Ensure that the player is not charged for the object if it will not be built. */
+				cost.AddCost(-ret.GetCost());
+				break;
+			}
+		} else {
+			had_success = true;
 		}
-		cost.AddCost(ret.GetCost());
 	}
 
 	return had_success ? cost : last_error;
