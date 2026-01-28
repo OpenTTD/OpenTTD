@@ -77,6 +77,9 @@ static constexpr int RATING_BRIBE_UP_STEP = 200;
 static constexpr int RATING_BRIBE_MAXIMUM = 800;
 static constexpr int RATING_BRIBE_DOWN_TO = -50; // XXX SHOULD BE SOMETHING LOWER?
 
+static constexpr int RATING_WATER_RIVER_DOWN_STEP = -200; ///< removing a river tile
+static constexpr int RATING_WATER_MINIMUM = RATING_MINIMUM; ///< minimum rating after removing water features near town
+
 /** Town Layouts. It needs to be 8bits, because we save and load it as such */
 enum TownLayout : uint8_t {
 	TL_BEGIN = 0,
