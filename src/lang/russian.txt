@@ -4564,7 +4564,8 @@ STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Пере
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Весь транспорт в депо будет продан. Вы уверены?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Сообщение от производителя транспорта
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Сообщение от производителя транспортных средств
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Сообщение от производителя транспортных средств ({COMMA} из {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новую модель {STRING.gen}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
 
 

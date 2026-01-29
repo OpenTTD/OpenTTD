@@ -1011,7 +1011,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} ne havas sufiĉajn ordonojn en la itinero
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} havas malplenan ordonon
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} havas nevalidan ordonon
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} havas duoblajn ordonojn
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Ordonoj de {VEHICLE} enhavas nevalidan stacion
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} havas en sia itinero flughavenon kies kurejo estas tro mallonga
@@ -4491,8 +4491,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vi vend
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaĝo de veturil-produktanto
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Mesaĝo de veturil-produktanto ({COMMA} de {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nova {STRING} estas inventita - ĉu vi ŝatus jaron ekskluzive uzi la veturilon, por ke ni povu vidi ĝian funkciadon antaŭ ol ĝi estos plene havebla?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Malsekva
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Klaku por iri al malsekva nova veturilo
+STR_ENGINE_PREVIEW_NEXT                                         :Sekva
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Klaku por iri al sekva nova veturilo
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Klaku por salti al nova veturilo
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :fervoja lokomotivo
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrofervoja lokomotivo

@@ -4390,8 +4390,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet my
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti kulkuneuvovalmistajalta
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Viesti kulkuneuvovalmistajalta ({COMMA}/{COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} – oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme miten tuote suoriutuu ennen kuin julkistamme sen yleiseen käyttöön?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Edellinen
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Napsauta siirtyäksesi edelliseen uuteen kulkuneuvoon
+STR_ENGINE_PREVIEW_NEXT                                         :Seuraava
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Napsauta siirtyäksesi seuraavaan uuteen kulkuneuvoon
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Napsauta hypätäksesi uuteen kulkuneuvoon
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturi
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :sähköradan veturi

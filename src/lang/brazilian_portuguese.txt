@@ -924,7 +924,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tem muito poucas ordens na programação
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem nula
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem invválida
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tem ordens duplicadas
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tem uma estação inválida em suas ordens
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} tem um aeroporto com a pista de pouso muito curta em suas ordens
@@ -4391,8 +4391,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Você e
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Mensagem de um fabricante de veículos ({COMMA} de {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos um novo modelo de {STRING} - você gostaria de ter um ano de uso exclusivo deste veículo, para que possamos avaliar o desempenho dele antes de ser globalmente disponibilizado?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Anterior
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Clique para voltar ao veículo novo anterior
+STR_ENGINE_PREVIEW_NEXT                                         :Seguinte
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Clique para avançar para o veículo novo seguinte
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Clique para saltar para um novo veículo
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva ferroviária
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elétrica

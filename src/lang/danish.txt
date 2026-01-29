@@ -4390,8 +4390,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er v
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Besked fra køretøjsfabrikken
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Besked fra bilproducenten ({COMMA} of {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har lige designet et nyt {STRING} - er du interesseret i et års ekslusiv testkørsel, så vi kan se hvordan det klarer sig inden vi gør det frit tilgængeligt?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Tidligere
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Klik for at gå tilbage til det forrige nye køretøj
+STR_ENGINE_PREVIEW_NEXT                                         :Næste
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Klik for at gå videre til det næste nye køretøj
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Klik for at hoppe til et nyt køretøj
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :jernbanelokomotiv
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrisk jernbanelokomotiv

@@ -1016,7 +1016,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Το {VE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Το {VEHICLE} έχει πολύ λίγες εντολές στο πρόγραμμα
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Το {VEHICLE} έχει μη έγκυρη εντολή
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Το {VEHICLE} έχει μια μη έγκυρη εντολή
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Το {VEHICLE} έχει διπλή εντολή
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Το {VEHICLE} έχει μη έγκυρο σταθμό στις εντολές του
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}Το όχημα {VEHICLE} έχει στους προορισμούς του ένα αεροδρόμιο με πολύ μικρό αεροδιάδρομο
@@ -4485,8 +4485,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρό�
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μήνυμα από κατασκευαστή οχημάτων
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Μήνυμα από τον κατασκευαστή του οχήματος ({COMMA} από {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδίαση {G ενός μίας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Προηγούμενο
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Κάντε κλικ για να μεταφερθείτε στο προηγούμενο νέο όχημα
+STR_ENGINE_PREVIEW_NEXT                                         :Επόμενο
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Κάντε κλικ για να μεταφερθείτε στο επόμενο νέο όχημα
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Κάντε κλικ για να μεταφερθείτε σε ένα νέο όχημα
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}ατμομηχανή
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.geniki                   :ατμομηχανής

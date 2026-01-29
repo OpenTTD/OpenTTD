@@ -924,7 +924,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tem poucas ordens no horário
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem nula
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem inválida
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tem ordens duplicadas
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tem uma ordem inválida no seu horário
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} tem um aeroporto nas ordens cuja pista de aterragem é demasiado curta
@@ -2859,20 +2859,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduzir a altur
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Aumentar a altura das imagens de pré-visualização. Ctrl+Clique para aumentar ao máximo
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Coleção predefinida
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Selecionar uma coleção
+STR_PICKER_COLLECTION_ADD                                       :Adicionar
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Criar uma nova coleção
+STR_PICKER_COLLECTION_RENAME                                    :Renomear
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Renomear uma coleção
+STR_PICKER_COLLECTION_DELETE                                    :Apagar
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Apagar uma coleção
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Renomear esta coleção
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Apagar coleção
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Tem a certeza que quer apagar esta coleção?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Tem a certeza que quer apagar esta coleção? Contém NewGRFs desativados!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecionar uma classe de estação para mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Escolher um tipo de estação para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Selecione uma coleção de estações para mostrar
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecionar uma classe de ponto de controlo para mostrar
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Escolher um tipo de ponto de controlo para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Selecione uma coleção de pontos de controlo para mostrar
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecionar uma classe de estação rodoviária para mostrar
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Escolher um tipo de estação rodoviária para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Selecione uma coleção de paragens de autocarro para mostrar
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma classe de terminal de carga para camiões para mostrar
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de terminal de carga para camiões para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Selecione uma coleção de terminais de carga para camiões para mostrar
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para mostrar
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Selecione um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens guardados. Ctrl+Clique+Arrastar para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Selecione uma coleção de objetos para mostrar
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecione uma zona de localidade para mostrar
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Escolher um tipo de casa para construir. Ctrl+Clique para adicionar ou remover nos itens guardados
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Selecione uma coleção de casas para mostrar
 
 STR_HOUSE_PICKER_CAPTION                                        :Seleção de Casas
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nome: {GOLD}{STRING}
@@ -4154,7 +4172,7 @@ STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar 
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para proteger este grupo da auto-substituição global. Ctrl+Clique para proteger também sub-grupos
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Apagar Grupo
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Tem a certeza de que quer apagar este grupo e quaisquer descendentes?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Tem a certeza que quer apagar este grupo e os seus descendentes?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adic. veíc. partilh.
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
@@ -4373,8 +4391,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Mensagem de um fabricante de veículos ({COMMA} de {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING}. - Estaria interessado num ano de utilização exclusiva deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, para que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} lançar globalmente?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Anterior
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Clique para recuar para o veículo novo anterior
+STR_ENGINE_PREVIEW_NEXT                                         :Seguinte
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Clique para avançar para o próximo veículo novo
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Clique para saltar para um novo veículo
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva ferroviária
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elétrica ferroviária

@@ -1303,7 +1303,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} ma za mało poleceń w rozkładzie
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ma nieważne polecenie
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ma nieprawidłowe polecenie
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} ma zdublowane polecenia
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} ma nieprawiodłową stację w poleceniach
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} ma w poleceniach lotnisko ze zbyt krótkim pasem startowym
@@ -4769,9 +4769,16 @@ STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Przecią
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Czy na pewno chcesz sprzedać wszystkie pojazdy znajdujące się w zajezdni?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomość od producenta pojazdów
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Komunikat od producenta pojazdów
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Komunikat od producenta pojazdów ({COMMA} z {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy zechcesz przez rok użytkować ten pojazd na wyłączność, abyśmy mogli sprawdzić, jak się sprawuje, zanim zostanie powszechnie udostępniony?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Poprzedni
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Przejdź do poprzedniego nowego pojazdu
+STR_ENGINE_PREVIEW_NEXT                                         :Następny
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Przejdź do kolejnego nowego pojazdu
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Rozwiń, aby przeskoczyć do nowego pojazdu
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :lokomotywę
