@@ -216,7 +216,6 @@ public:
 
 	/**
 	 * Prepare a command to be send over the network
-	 * @param cmd The command to execute (a CMD_* value)
 	 * @param err_message Message prefix to show on error
 	 * @param company The company that wants to send the command
 	 * @param args Parameters for the command
@@ -459,6 +458,7 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...), false> : CommandHe
 	 * commands that don't take a TileIndex by themselves.
 	 * @param err_message Message prefix to show on error
 	 * @param callback A callback function to call after the command is finished
+	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
 	 * @return \c true if the command succeeded, else \c false.
 	 */
