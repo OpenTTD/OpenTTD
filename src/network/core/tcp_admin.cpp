@@ -34,56 +34,50 @@ NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
  */
 NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet &p)
 {
-	PacketAdminType type = (PacketAdminType)p.Recv_uint8();
-
-	if (this->HasClientQuit()) {
-		Debug(net, 0, "[tcp/admin] Received invalid packet from '{}' ({})", this->admin_name, this->admin_version);
-		this->CloseConnection();
-		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	}
+	PacketAdminType type = static_cast<PacketAdminType>(p.Recv_uint8());
 
 	switch (type) {
-		case ADMIN_PACKET_ADMIN_JOIN:             return this->Receive_ADMIN_JOIN(p);
-		case ADMIN_PACKET_ADMIN_QUIT:             return this->Receive_ADMIN_QUIT(p);
-		case ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY: return this->Receive_ADMIN_UPDATE_FREQUENCY(p);
-		case ADMIN_PACKET_ADMIN_POLL:             return this->Receive_ADMIN_POLL(p);
-		case ADMIN_PACKET_ADMIN_CHAT:             return this->Receive_ADMIN_CHAT(p);
-		case ADMIN_PACKET_ADMIN_EXTERNAL_CHAT:    return this->Receive_ADMIN_EXTERNAL_CHAT(p);
-		case ADMIN_PACKET_ADMIN_RCON:             return this->Receive_ADMIN_RCON(p);
-		case ADMIN_PACKET_ADMIN_GAMESCRIPT:       return this->Receive_ADMIN_GAMESCRIPT(p);
-		case ADMIN_PACKET_ADMIN_PING:             return this->Receive_ADMIN_PING(p);
-		case ADMIN_PACKET_ADMIN_JOIN_SECURE:      return this->Receive_ADMIN_JOIN_SECURE(p);
-		case ADMIN_PACKET_ADMIN_AUTH_RESPONSE:    return this->Receive_ADMIN_AUTH_RESPONSE(p);
+		case PacketAdminType::AdminJoin: return this->ReceiveAdminJoin(p);
+		case PacketAdminType::AdminQuit: return this->ReceiveAdminQuit(p);
+		case PacketAdminType::AdminUpdateFrequency: return this->ReceiveAdminUpdateFrequency(p);
+		case PacketAdminType::AdminPoll: return this->ReceiveAdminPoll(p);
+		case PacketAdminType::AdminChat: return this->ReceiveAdminChat(p);
+		case PacketAdminType::AdminExternalChat: return this->ReceiveAdminExternalChat(p);
+		case PacketAdminType::AdminRemoteConsoleCommand: return this->ReceiveAdminRemoteConsoleCommand(p);
+		case PacketAdminType::AdminGameScript: return this->ReceiveAdminGameScript(p);
+		case PacketAdminType::AdminPing: return this->ReceiveAdminPing(p);
+		case PacketAdminType::AdminJoinSecure: return this->ReceiveAdminJoinSecure(p);
+		case PacketAdminType::AdminAuthenticationResponse: return this->ReceiveAdminAuthenticationResponse(p);
 
-		case ADMIN_PACKET_SERVER_FULL:            return this->Receive_SERVER_FULL(p);
-		case ADMIN_PACKET_SERVER_BANNED:          return this->Receive_SERVER_BANNED(p);
-		case ADMIN_PACKET_SERVER_ERROR:           return this->Receive_SERVER_ERROR(p);
-		case ADMIN_PACKET_SERVER_PROTOCOL:        return this->Receive_SERVER_PROTOCOL(p);
-		case ADMIN_PACKET_SERVER_WELCOME:         return this->Receive_SERVER_WELCOME(p);
-		case ADMIN_PACKET_SERVER_NEWGAME:         return this->Receive_SERVER_NEWGAME(p);
-		case ADMIN_PACKET_SERVER_SHUTDOWN:        return this->Receive_SERVER_SHUTDOWN(p);
+		case PacketAdminType::ServerFull: return this->ReceiveServerFull(p);
+		case PacketAdminType::ServerBanned: return this->ReceiveServerBanned(p);
+		case PacketAdminType::ServerError: return this->ReceiveServerError(p);
+		case PacketAdminType::ServerProtocol: return this->ReceiveServerProtocol(p);
+		case PacketAdminType::ServerWelcome: return this->ReceiveServerWelcome(p);
+		case PacketAdminType::ServerNewGame: return this->ReceiveServerNewGame(p);
+		case PacketAdminType::ServerShutdown: return this->ReceiveServerShutdown(p);
 
-		case ADMIN_PACKET_SERVER_DATE:            return this->Receive_SERVER_DATE(p);
-		case ADMIN_PACKET_SERVER_CLIENT_JOIN:     return this->Receive_SERVER_CLIENT_JOIN(p);
-		case ADMIN_PACKET_SERVER_CLIENT_INFO:     return this->Receive_SERVER_CLIENT_INFO(p);
-		case ADMIN_PACKET_SERVER_CLIENT_UPDATE:   return this->Receive_SERVER_CLIENT_UPDATE(p);
-		case ADMIN_PACKET_SERVER_CLIENT_QUIT:     return this->Receive_SERVER_CLIENT_QUIT(p);
-		case ADMIN_PACKET_SERVER_CLIENT_ERROR:    return this->Receive_SERVER_CLIENT_ERROR(p);
-		case ADMIN_PACKET_SERVER_COMPANY_NEW:     return this->Receive_SERVER_COMPANY_NEW(p);
-		case ADMIN_PACKET_SERVER_COMPANY_INFO:    return this->Receive_SERVER_COMPANY_INFO(p);
-		case ADMIN_PACKET_SERVER_COMPANY_UPDATE:  return this->Receive_SERVER_COMPANY_UPDATE(p);
-		case ADMIN_PACKET_SERVER_COMPANY_REMOVE:  return this->Receive_SERVER_COMPANY_REMOVE(p);
-		case ADMIN_PACKET_SERVER_COMPANY_ECONOMY: return this->Receive_SERVER_COMPANY_ECONOMY(p);
-		case ADMIN_PACKET_SERVER_COMPANY_STATS:   return this->Receive_SERVER_COMPANY_STATS(p);
-		case ADMIN_PACKET_SERVER_CHAT:            return this->Receive_SERVER_CHAT(p);
-		case ADMIN_PACKET_SERVER_RCON:            return this->Receive_SERVER_RCON(p);
-		case ADMIN_PACKET_SERVER_CONSOLE:         return this->Receive_SERVER_CONSOLE(p);
-		case ADMIN_PACKET_SERVER_CMD_NAMES:       return this->Receive_SERVER_CMD_NAMES(p);
-		case ADMIN_PACKET_SERVER_CMD_LOGGING:     return this->Receive_SERVER_CMD_LOGGING(p);
-		case ADMIN_PACKET_SERVER_RCON_END:        return this->Receive_SERVER_RCON_END(p);
-		case ADMIN_PACKET_SERVER_PONG:            return this->Receive_SERVER_PONG(p);
-		case ADMIN_PACKET_SERVER_AUTH_REQUEST:    return this->Receive_SERVER_AUTH_REQUEST(p);
-		case ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION: return this->Receive_SERVER_ENABLE_ENCRYPTION(p);
+		case PacketAdminType::ServerDate: return this->ReceiveServerDate(p);
+		case PacketAdminType::ServerClientJoin: return this->ReceiveServerClientJoin(p);
+		case PacketAdminType::ServerClientInfo: return this->ReceiveServerClientInfo(p);
+		case PacketAdminType::ServerClientUpdate: return this->ReceiveServerClientUpdate(p);
+		case PacketAdminType::ServerClientQuit: return this->ReceiveServerClientQuit(p);
+		case PacketAdminType::ServerClientError: return this->ReceiveServerClientError(p);
+		case PacketAdminType::ServerCompanyNew: return this->ReceiveServerCompanyNew(p);
+		case PacketAdminType::ServerCompanyInfo: return this->ReceiveServerCompanyInfo(p);
+		case PacketAdminType::ServerCompanyUpdate: return this->ReceiveServerCompanyUpdate(p);
+		case PacketAdminType::ServerCompanyRemove: return this->ReceiveServerCompanyRemove(p);
+		case PacketAdminType::ServerCompanyEconomy: return this->ReceiveServerCompanyEconomy(p);
+		case PacketAdminType::ServerCompanyStatistics: return this->ReceiveServerCompanyStatistics(p);
+		case PacketAdminType::ServerChat: return this->ReceiveServerChat(p);
+		case PacketAdminType::ServerRemoteConsoleCommand: return this->ReceiveServerRemoteConsoleCommand(p);
+		case PacketAdminType::ServerConsole: return this->ReceiveServerConsole(p);
+		case PacketAdminType::ServerCommandNames: return this->ReceiveServerCommandNames(p);
+		case PacketAdminType::ServerCommandLogging: return this->ReceiveServerCommandLogging(p);
+		case PacketAdminType::ServerRemoteConsoleCommandEnd: return this->ReceiveServerRemoteConsoleCommandEnd(p);
+		case PacketAdminType::ServerPong: return this->ReceiveServerPong(p);
+		case PacketAdminType::ServerAuthenticationRequest: return this->ReceiveServerAuthenticationRequest(p);
+		case PacketAdminType::ServerEnableEncryption: return this->ReceiveServerEnableEncryption(p);
 
 		default:
 			Debug(net, 0, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
@@ -121,44 +115,44 @@ NetworkRecvStatus NetworkAdminSocketHandler::ReceiveInvalidPacket(PacketAdminTyp
 	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 }
 
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_JOIN); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_QUIT); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_POLL); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_CHAT); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_EXTERNAL_CHAT); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_RCON); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_GAMESCRIPT); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_PING(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_PING); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_JOIN_SECURE(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_JOIN_SECURE); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_AUTH_RESPONSE(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_AUTH_RESPONSE); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminJoin(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminJoin); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminQuit(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminQuit); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminUpdateFrequency(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminUpdateFrequency); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminPoll(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminPoll); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminChat(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminChat); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminExternalChat(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminExternalChat); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminRemoteConsoleCommand(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminRemoteConsoleCommand); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminGameScript(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminGameScript); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminPing(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminPing); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminJoinSecure(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminJoinSecure); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminAuthenticationResponse(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminAuthenticationResponse); }
 
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_FULL(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_FULL); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_BANNED(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_BANNED); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_ERROR(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_ERROR); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_PROTOCOL(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_PROTOCOL); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_WELCOME(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_WELCOME); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_NEWGAME(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_NEWGAME); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_SHUTDOWN(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_SHUTDOWN); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerFull(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerFull); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerBanned(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerBanned); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerError(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerError); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerProtocol(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerProtocol); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerWelcome(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerWelcome); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerNewGame(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerNewGame); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerShutdown(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerShutdown); }
 
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_DATE(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_DATE); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CLIENT_JOIN(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CLIENT_JOIN); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CLIENT_INFO(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CLIENT_INFO); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CLIENT_UPDATE(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CLIENT_UPDATE); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CLIENT_QUIT(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CLIENT_QUIT); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CLIENT_ERROR(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CLIENT_ERROR); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_COMPANY_NEW(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_COMPANY_NEW); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_COMPANY_INFO(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_COMPANY_INFO); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_COMPANY_UPDATE); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_COMPANY_REMOVE(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_COMPANY_REMOVE); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_COMPANY_ECONOMY(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_COMPANY_ECONOMY); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_COMPANY_STATS(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_COMPANY_STATS); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CHAT(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CHAT); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_RCON(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_RCON); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CONSOLE(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CONSOLE); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_NAMES(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CMD_NAMES); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_LOGGING(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CMD_LOGGING); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_RCON_END(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_RCON_END); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_PONG(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_PONG); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_AUTH_REQUEST(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_AUTH_REQUEST); }
-NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_ENABLE_ENCRYPTION(Packet &) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerDate(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerDate); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerClientJoin(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerClientJoin); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerClientInfo(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerClientInfo); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerClientUpdate(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerClientUpdate); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerClientQuit(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerClientQuit); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerClientError(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerClientError); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCompanyNew(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCompanyNew); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCompanyInfo(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCompanyInfo); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCompanyUpdate(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCompanyUpdate); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCompanyRemove(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCompanyRemove); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCompanyEconomy(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCompanyEconomy); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCompanyStatistics(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCompanyStatistics); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerChat(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerChat); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerRemoteConsoleCommand(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerRemoteConsoleCommand); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerConsole(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerConsole); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCommandNames(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCommandNames); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerCommandLogging(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerCommandLogging); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerRemoteConsoleCommandEnd(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerRemoteConsoleCommandEnd); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerPong(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerPong); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerAuthenticationRequest(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerAuthenticationRequest); }
+NetworkRecvStatus NetworkAdminSocketHandler::ReceiveServerEnableEncryption(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::ServerEnableEncryption); }
