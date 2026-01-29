@@ -175,6 +175,7 @@ void UpdateCursorSize();
 bool ChangeResInGame(int w, int h);
 void SortResolutions();
 bool ToggleFullScreen(bool fs);
+int GetMaxSafeGuiScale();
 
 /* gfx.cpp */
 uint8_t GetCharacterWidth(FontSize size, char32_t key);
