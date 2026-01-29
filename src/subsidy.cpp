@@ -181,8 +181,9 @@ static uint GetScaledMaxSubsidyDistance(SourceType source, SourceType dest)
 		}
 	}
 
-	/* Maybe scale based on industry density. */
+	/* Scale based on industries. */
 	if (source == SourceType::Industry || dest == SourceType::Industry) {
+		/* Maybe scale based on industry density. */
 		switch (_settings_game.difficulty.industry_density) {
 			case IndustryDensity::Custom:
 				/* Calculate density based on the generated custom density. */
@@ -204,6 +205,11 @@ static uint GetScaledMaxSubsidyDistance(SourceType source, SourceType dest)
 
 			default: break; // Normal and High are not scaled.
 		}
+
+		/* A successful industry subsidy depends on two given industries having a valid cargo to transport between them.
+		 * If there are more cargos, this is less likely, so scale the max distance to try to generate the same number of subsidies. */
+		const uint MAX_BASE_CARGO_COUNT = 10; // Tropic and Toyland each have 10 industry cargo, not counting Passengers and Mail.
+		distance = std::max(distance, distance * static_cast<uint>(_sorted_cargo_specs.size() / MAX_BASE_CARGO_COUNT));
 	}
 
 	return distance;
