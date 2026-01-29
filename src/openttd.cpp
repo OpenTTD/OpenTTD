@@ -1258,10 +1258,10 @@ void StateGameLoop()
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
-		if (TimerManager<TimerGameCalendar>::Elapsed(1)) {
+		if (TimerManager<TimerGameCalendar>::Elapsed({})) {
 			RunVehicleCalendarDayProc();
 		}
-		TimerManager<TimerGameEconomy>::Elapsed(1);
+		TimerManager<TimerGameEconomy>::Elapsed({});
 		TimerManager<TimerGameTick>::Elapsed(1);
 		RunTileLoop();
 		CallVehicleTicks();
@@ -1286,7 +1286,7 @@ void StateGameLoop()
 }
 
 /** Interval for regular autosaves. Initialized at zero to disable till settings are loaded. */
-static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::milliseconds::zero(), TimerGameRealtime::AUTOSAVE}, [](auto)
+static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::milliseconds::zero(), TimerGameRealtime::Trigger::Autosave}, [](auto)
 {
 	/* We reset the command-during-pause mode here, so we don't continue
 	 * to make auto-saves when nothing more is changing. */
@@ -1313,7 +1313,7 @@ static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::millise
  */
 void ChangeAutosaveFrequency(bool reset)
 {
-	_autosave_interval.SetInterval({std::chrono::minutes(_settings_client.gui.autosave_interval), TimerGameRealtime::AUTOSAVE}, reset);
+	_autosave_interval.SetInterval({std::chrono::minutes(_settings_client.gui.autosave_interval), TimerGameRealtime::Trigger::Autosave}, reset);
 }
 
 /**

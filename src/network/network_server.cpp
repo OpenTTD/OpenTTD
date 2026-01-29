@@ -1831,7 +1831,7 @@ static void NetworkRestartMap()
 }
 
 /** Timer to restart a network server automatically based on real-time hours played. Initialized at zero to disable until settings are loaded. */
-static IntervalTimer<TimerGameRealtime> _network_restart_map_timer({std::chrono::hours::zero(), TimerGameRealtime::UNPAUSED}, [](auto)
+static IntervalTimer<TimerGameRealtime> _network_restart_map_timer({std::chrono::hours::zero(), TimerGameRealtime::Trigger::Unpaused}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1850,7 +1850,7 @@ void ChangeNetworkRestartTime(bool reset)
 {
 	if (!_network_server) return;
 
-	_network_restart_map_timer.SetInterval({ std::chrono::hours(_settings_client.network.restart_hours), TimerGameRealtime::UNPAUSED }, reset);
+	_network_restart_map_timer.SetInterval({ std::chrono::hours(_settings_client.network.restart_hours), TimerGameRealtime::Trigger::Unpaused }, reset);
 }
 
 /** Check if we want to restart the map based on the year. */
@@ -1866,14 +1866,14 @@ static void NetworkCheckRestartMapYear()
 }
 
 /** Calendar yearly "callback". Called whenever the calendar year changes. */
-static const IntervalTimer<TimerGameCalendar> _calendar_network_yearly({ TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE }, [](auto) {
+static const IntervalTimer<TimerGameCalendar> _calendar_network_yearly({ TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None }, [](auto) {
 	if (!_network_server) return;
 
 	NetworkCheckRestartMapYear();
 });
 
 /** Economy yearly "callback". Called whenever the economy year changes. */
-static const IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy::Trigger::Year, TimerGameEconomy::Priority::None}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1881,7 +1881,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameE
 });
 
 /** Quarterly "callback". Called whenever the economy quarter changes. */
-static const IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUARTER, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::Trigger::Quarter, TimerGameEconomy::Priority::None}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1890,7 +1890,7 @@ static const IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconom
 });
 
 /** Economy monthly "callback". Called whenever the economy month changes. */
-static const IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::None}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1899,7 +1899,7 @@ static const IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy:
 });
 
 /** Economy weekly "callback". Called whenever the economy week changes. */
-static const IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::Trigger::Week, TimerGameEconomy::Priority::None}, [](auto)
 {
 	if (!_network_server) return;
 
@@ -1907,7 +1907,7 @@ static const IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::
 });
 
 /** Daily "callback". Called whenever the economy date changes. */
-static const IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy::Trigger::Day, TimerGameEconomy::Priority::None}, [](auto)
 {
 	if (!_network_server) return;
 

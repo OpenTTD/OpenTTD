@@ -3019,7 +3019,7 @@ void Vehicle::RemoveFromShared()
 	this->previous_shared = nullptr;
 }
 
-static const IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::VEHICLE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconomy::Trigger::Year, TimerGameEconomy::Priority::Vehicle}, [](auto)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {

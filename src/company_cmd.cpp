@@ -657,7 +657,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 }
 
 /** Start a new competitor company if possible. */
-TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::COMPETITOR_TIMEOUT, 0 }, []() {
+TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::CompetitorTimeout, 0 }, []() {
 	if (_game_mode == GM_MENU || !AI::CanStartNew()) return;
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 	if (_settings_game.difficulty.competitors_interval == 0) return;
@@ -800,7 +800,7 @@ void OnTick_Companies()
 		/* Randomize a bit when the AI is actually going to start; ranges from 87.5% .. 112.5% of indicated value. */
 		timeout += ScriptObject::GetRandomizer(OWNER_NONE).Next(timeout / 4) - timeout / 8;
 
-		_new_competitor_timeout.Reset({ TimerGameTick::Priority::COMPETITOR_TIMEOUT, static_cast<uint>(std::max(1, timeout)) });
+		_new_competitor_timeout.Reset({ TimerGameTick::Priority::CompetitorTimeout, static_cast<uint>(std::max(1, timeout)) });
 	}
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
@@ -810,7 +810,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::Trigger::Year, TimerGameEconomy::Priority::Company}, [](auto)
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {

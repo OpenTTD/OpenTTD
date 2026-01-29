@@ -260,7 +260,7 @@ void ShowEndGameChart()
 	new EndGameWindow(_endgame_desc);
 }
 
-static const IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [](auto)
 {
 	/* 0 = never */
 	if (_settings_game.game_creation.ending_year == 0) return;

@@ -477,7 +477,7 @@ public:
 		CheckRedrawStationCoverage(this);
 	}
 
-	const IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [this](auto) {
 		this->InvalidateData();
 	}};
 };
