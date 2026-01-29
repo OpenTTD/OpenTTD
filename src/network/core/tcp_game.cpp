@@ -58,13 +58,7 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool)
  */
 NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet &p)
 {
-	PacketGameType type = (PacketGameType)p.Recv_uint8();
-
-	if (this->HasClientQuit()) {
-		Debug(net, 0, "[tcp/game] Received invalid packet from client {}", this->client_id);
-		this->CloseConnection();
-		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	}
+	PacketGameType type = static_cast<PacketGameType>(p.Recv_uint8());
 
 	this->last_packet = std::chrono::steady_clock::now();
 

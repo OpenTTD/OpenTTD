@@ -156,23 +156,17 @@ void NetworkUDPSocketHandler::ReceivePackets()
  */
 void NetworkUDPSocketHandler::HandleUDPPacket(Packet &p, NetworkAddress &client_addr)
 {
-	PacketUDPType type;
-
 	/* New packet == new client, which has not quit yet */
 	this->Reopen();
 
-	type = (PacketUDPType)p.Recv_uint8();
+	PacketUDPType type = static_cast<PacketUDPType>(p.Recv_uint8());
 
-	switch (this->HasClientQuit() ? PACKET_UDP_END : type) {
-		case PACKET_UDP_CLIENT_FIND_SERVER:   this->Receive_CLIENT_FIND_SERVER(p, client_addr);   break;
-		case PACKET_UDP_SERVER_RESPONSE:      this->Receive_SERVER_RESPONSE(p, client_addr);      break;
+	switch (type) {
+		case PacketUDPType::ClientFindServer: this->ReceiveClientFindServer(p, client_addr); break;
+		case PacketUDPType::ServerResponse: this->ReceiveServerResponse(p, client_addr); break;
 
 		default:
-			if (this->HasClientQuit()) {
-				Debug(net, 0, "[udp] Received invalid packet type {} from {}", type, client_addr.GetAddressAsString());
-			} else {
-				Debug(net, 0, "[udp] Received illegal packet from {}", client_addr.GetAddressAsString());
-			}
+			Debug(net, 0, "[udp] Received invalid packet type {} from {}", type, client_addr.GetAddressAsString());
 			break;
 	}
 }
@@ -187,5 +181,5 @@ void NetworkUDPSocketHandler::ReceiveInvalidPacket(PacketUDPType type, NetworkAd
 	Debug(net, 0, "[udp] Received packet type {} on wrong port from {}", type, client_addr.GetAddressAsString());
 }
 
-void NetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, NetworkAddress &client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_FIND_SERVER, client_addr); }
-void NetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet &, NetworkAddress &client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_SERVER_RESPONSE, client_addr); }
+void NetworkUDPSocketHandler::ReceiveClientFindServer(Packet &, NetworkAddress &client_addr) { this->ReceiveInvalidPacket(PacketUDPType::ClientFindServer, client_addr); }
+void NetworkUDPSocketHandler::ReceiveServerResponse(Packet &, NetworkAddress &client_addr) { this->ReceiveInvalidPacket(PacketUDPType::ServerResponse, client_addr); }
