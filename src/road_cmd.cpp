@@ -2006,8 +2006,8 @@ static void TileLoop_Road(TileIndex tile)
 {
 	switch (_settings_game.game_creation.landscape) {
 		case LandscapeType::Arctic: {
-			/* Roads on flat foundations use the snow level of the height they are elevated to. All others use the snow level of their minimum height. */
-			int tile_z = (std::get<Slope>(GetFoundationSlope(tile)) == SLOPE_FLAT) ? GetTileMaxZ(tile) : GetTileZ(tile);
+			/* Roads on flat or elevated foundations use the snow level of the height they are elevated to. All others use the snow level of their minimum height. */
+			int tile_z = (std::get<Slope>(GetFoundationSlope(tile)) == SLOPE_FLAT || std::get<Slope>(GetFoundationSlope(tile)) & SLOPE_ELEVATED) ? GetTileMaxZ(tile) : GetTileZ(tile);
 			if (IsOnSnowOrDesert(tile) != (tile_z > GetSnowLine())) {
 				ToggleSnowOrDesert(tile);
 				MarkTileDirtyByTile(tile);
