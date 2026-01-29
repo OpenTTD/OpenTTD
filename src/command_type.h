@@ -484,30 +484,24 @@ typedef std::vector<uint8_t> CommandDataBuffer;
 /**
  * Define a callback function for the client, after the command is finished.
  *
- * Functions of this type are called after the command is finished. The parameters
- * are from the #CommandProc callback type. The boolean parameter indicates if the
- * command succeeded or failed.
+ * Functions of this type are called after the command is finished.
  *
  * @param cmd The command that was executed
  * @param result The result of the executed command
  * @param tile The tile of the command action
- * @see CommandProc
  */
 typedef void CommandCallback(Commands cmd, const CommandCost &result, TileIndex tile);
 
 /**
  * Define a callback function for the client, after the command is finished.
  *
- * Functions of this type are called after the command is finished. The parameters
- * are from the #CommandProc callback type. The boolean parameter indicates if the
- * command succeeded or failed.
+ * Functions of this type are called after the command is finished.
  *
  * @param cmd The command that was executed
  * @param result The result of the executed command
  * @param tile The tile of the command action
  * @param data Additional data of the command
  * @param result_data Additional returned data from the command
- * @see CommandProc
  */
 typedef void CommandCallbackData(Commands cmd, const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data);
 
