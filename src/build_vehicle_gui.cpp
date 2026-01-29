@@ -1086,6 +1086,9 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		auto engine_name = PackEngineNameDParam(item.engine_id, show_count ? EngineNameContext::AutoreplaceVehicleInUse : EngineNameContext::PurchaseList, item.indent);
 		std::string name = GetString(str, engine_name);
 
+		DrawString(tr.left, tr.right, textr.top + normal_text_y_offset, name, tc);
+
+
 		/* Append the value of the currently selected sort property, if possible */
 		std::string sort_prop_detail;
 
@@ -1181,10 +1184,8 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		}
 
 		if (!sort_prop_detail.empty()) {
-			name += " (" + sort_prop_detail + ")";
+			DrawString(tr.left, tr.right, textr.top + normal_text_y_offset, sort_prop_detail, tc, SA_RIGHT, false, FS_SMALL);
 		}
-
-		DrawString(tr.left, tr.right, textr.top + normal_text_y_offset, name, tc);
 
 		ir = ir.Translate(0, step_size);
 	}
