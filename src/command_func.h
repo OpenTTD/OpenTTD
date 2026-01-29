@@ -125,7 +125,7 @@ private:
 
 public:
 	/**
-	 * This function executes a given command with the parameters from the #CommandProc parameter list.
+	 * This function executes a given command.
 	 * Depending on the flags parameter it executes or tests a command.
 	 *
 	 * @note This function is to be called from the StateGameLoop or from within the execution of a Command.
@@ -134,7 +134,6 @@ public:
 	 *
 	 * @param flags Flags for the command and how to execute the command
 	 * @param args Parameters for the command
-	 * @see CommandProc
 	 * @return the cost
 	 */
 	static Tret Do(DoCommandFlags flags, Targs... args)

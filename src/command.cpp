@@ -88,52 +88,45 @@ inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noe
 }
 
 /**
- * The master command table
+ * The master command table.
  *
- * This table contains all possible CommandProc functions with
- * the flags which belongs to it. The indices are the same
- * as the value from the CMD_* enums.
+ * This contains the #CommandInfo for all possible #Commands functions.
  */
-static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{});
+static constexpr auto _command_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{});
 
 
 /**
- * This function range-checks a cmd.
- *
- * @param cmd The integer value of a command
- * @return true if the command is valid (and got a CommandProc function)
+ * This function range-checks a Commands. This is primarily for Commands coming from the network.
+ * @param cmd The command.
+ * @return True if the command is valid.
  */
 bool IsValidCommand(Commands cmd)
 {
-	return to_underlying(cmd) < _command_proc_table.size();
+	return to_underlying(cmd) < _command_table.size();
 }
 
 /**
- * This function mask the parameter with CMD_ID_MASK and returns
- * the flags which belongs to the given command.
- *
- * @param cmd The integer value of the command
+ * Get the command flags associated with the given command.
+ * @param cmd The command.
  * @return The flags for this command
  */
 CommandFlags GetCommandFlags(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd].flags;
+	return _command_table[cmd].flags;
 }
 
 /**
- * This function mask the parameter with CMD_ID_MASK and returns
- * the name which belongs to the given command.
- *
- * @param cmd The integer value of the command
+ * Get the name of the given command.
+ * @param cmd The command.
  * @return The name for this command
  */
 std::string_view GetCommandName(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd].name;
+	return _command_table[cmd].name;
 }
 
 /**
@@ -158,7 +151,7 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 	static_assert(std::size(command_type_lookup) == to_underlying(CommandType::End));
 
 	assert(IsValidCommand(cmd));
-	return _game_mode == GM_EDITOR || command_type_lookup[to_underlying(_command_proc_table[cmd].type)] <= _settings_game.construction.command_pause_level;
+	return _game_mode == GM_EDITOR || command_type_lookup[to_underlying(_command_table[cmd].type)] <= _settings_game.construction.command_pause_level;
 }
 
 /**
@@ -384,7 +377,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 	SubtractMoneyFromCompany(_current_company, res_exec);
 
 	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
-	if (_pause_mode.Any() && _command_proc_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
+	if (_pause_mode.Any() && _command_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
