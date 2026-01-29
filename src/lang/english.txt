@@ -3082,6 +3082,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Place ro
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define desert area.{}Ctrl+Click to remove desert area
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Increase area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Decrease area of land to lower/raise
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Lower a corner or area of land. If the size set below is 1x1, Click+Drag to lower the first selected corner and level the selected area to the new corner height. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Raise a corner or area of land. If the size set below is 1x1, Click+Drag to raise the first selected corner and level the selected area to the new corner height. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generate random land
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Create new scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reset landscape
