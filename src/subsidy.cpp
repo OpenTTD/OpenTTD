@@ -151,6 +151,65 @@ static bool CheckSubsidyDuplicate(CargoType cargo, Source src, Source dst)
 }
 
 /**
+ * Get the scaled max distance of a subsidy, based on town or industry density relative to Normal density.
+ * @param source The source type.
+ * @param dest The destination type.
+ * @return The scaled distance allowed for a subsidy from the given source to given destination.
+ */
+static uint GetScaledMaxSubsidyDistance(SourceType source, SourceType dest)
+{
+	/* Start with an unscaled distance, then find the lowest density of the source and destination types.
+	 * The source and destination types may be the same or different. */
+	uint distance = SUBSIDY_BASE_DISTANCE;
+
+	/* Maybe scale based on town density. */
+	if (source == SourceType::Town || dest == SourceType::Town) {
+		switch (_settings_game.difficulty.number_towns) {
+			case TownDensity::Custom:
+				distance = std::max(distance, SUBSIDY_BASE_DISTANCE * (23 / static_cast<uint>(_settings_game.game_creation.custom_town_number)));
+				break;
+
+			case TownDensity::VeryLow:
+				distance = std::max(distance, SUBSIDY_BASE_DISTANCE * 5);
+				break;
+
+			case TownDensity::Low:
+				distance = std::max(distance, SUBSIDY_BASE_DISTANCE * 2);
+				break;
+
+			default: break; // Normal and High are not scaled.
+		}
+	}
+
+	/* Maybe scale based on industry density. */
+	if (source == SourceType::Industry || dest == SourceType::Industry) {
+		switch (_settings_game.difficulty.industry_density) {
+			case IndustryDensity::Custom:
+				/* Calculate density based on the generated custom density. */
+				distance = std::max(distance, SUBSIDY_BASE_DISTANCE * (55 / static_cast<uint>(_settings_game.game_creation.custom_industry_number)));
+				break;
+
+			case IndustryDensity::Minimal:
+				distance = std::max(distance, SUBSIDY_BASE_DISTANCE * 10);
+				break;
+
+			case IndustryDensity::VeryLow:
+				distance = std::max(distance, SUBSIDY_BASE_DISTANCE * 5);
+				break;
+
+			case IndustryDensity::Low:
+			case IndustryDensity::FundedOnly: // We can't know the density, so we assume it's about IndustryDensity::Low.
+				distance = std::max(distance, SUBSIDY_BASE_DISTANCE * 2);
+				break;
+
+			default: break; // Normal and High are not scaled.
+		}
+	}
+
+	return distance;
+}
+
+/**
  * Checks if the source and destination of a subsidy are inside the distance limit.
  * @param src Source of cargo.
  * @param dst Destination of cargo.
@@ -161,7 +220,7 @@ static bool CheckSubsidyDistance(Source src, Source dst)
 	TileIndex tile_src = (src.type == SourceType::Town) ? Town::Get(src.ToTownID())->xy : Industry::Get(src.ToIndustryID())->location.tile;
 	TileIndex tile_dst = (dst.type == SourceType::Town) ? Town::Get(dst.ToTownID())->xy : Industry::Get(dst.ToIndustryID())->location.tile;
 
-	return (DistanceManhattan(tile_src, tile_dst) <= SUBSIDY_MAX_DISTANCE);
+	return DistanceManhattan(tile_src, tile_dst) <= GetScaledMaxSubsidyDistance(src.type, dst.type);
 }
 
 /**
@@ -252,7 +311,7 @@ bool FindSubsidyPassengerRoute()
 		return false;
 	}
 
-	if (DistanceManhattan(src->xy, dst->xy) > SUBSIDY_MAX_DISTANCE) return false;
+	if (DistanceManhattan(src->xy, dst->xy) > GetScaledMaxSubsidyDistance(SourceType::Town, SourceType::Town)) return false;
 	if (CheckSubsidyDuplicate(cargo_type, {src->index, SourceType::Town}, {dst->index, SourceType::Town})) return false;
 
 	CreateSubsidy(cargo_type, {src->index, SourceType::Town}, {dst->index, SourceType::Town});
