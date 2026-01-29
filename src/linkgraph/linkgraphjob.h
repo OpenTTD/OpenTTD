@@ -80,6 +80,7 @@ public:
 		const LinkGraph::BaseNode &base; ///< Reference to the node that is annotated.
 
 		uint undelivered_supply = 0; ///< Amount of supply that hasn't been distributed yet.
+		uint received_demand = 0; ///< Received demand through this node.
 		PathList paths{}; ///< Paths through this node, sorted so that those with flow == 0 are in the back.
 		FlowStatMap flows{}; ///< Planned flows to other nodes.
 
@@ -149,6 +150,15 @@ public:
 			this->undelivered_supply -= amount;
 			this->demands[to].demand += amount;
 			this->demands[to].unsatisfied_demand += amount;
+		}
+
+		/**
+		 * Receive some demand, adding demand to the respective edge.
+		 * @param amount Amount of demand to be received.
+		 */
+		void ReceiveDemand(uint amount)
+		{
+			this->received_demand += amount;
 		}
 	};
 
