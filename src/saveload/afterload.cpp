@@ -1708,7 +1708,7 @@ bool AfterLoadGame()
 		}
 
 		/* Same goes for number of towns, although no test is needed, just an increment */
-		_settings_game.difficulty.number_towns++;
+		_settings_game.difficulty.number_towns = static_cast<TownDensity>(to_underlying(_settings_game.difficulty.number_towns) + 1);
 	}
 
 	if (IsSavegameVersionBefore(SLV_64)) {
