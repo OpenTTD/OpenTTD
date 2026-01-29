@@ -38,6 +38,8 @@ public:
 
 	/**
 	 * Creates a command return value with one, or optionally two, error message strings.
+	 * @param msg The error message.
+	 * @param extra_msg Optional secondary error message.
 	 */
 	explicit CommandCost(StringID msg, StringID extra_msg = INVALID_STRING_ID) : cost(0), message(msg), expense_type(INVALID_EXPENSES), success(false), extra_message(extra_msg) {}
 
@@ -57,6 +59,7 @@ public:
 	/**
 	 * Set the 'owner' (the originator) of this error message. This is used to show a company owner's face if you
 	 * attempt an action on something owned by other company.
+	 * @param owner The owner.
 	 */
 	inline void SetErrorOwner(Owner owner)
 	{
@@ -85,6 +88,7 @@ public:
 
 	/**
 	 * Get the originator owner for this error.
+	 * @return The owner.
 	 */
 	inline CompanyID GetErrorOwner() const
 	{
@@ -499,7 +503,6 @@ typedef void CommandCallback(Commands cmd, const CommandCost &result, TileIndex 
  *
  * @param cmd The command that was executed
  * @param result The result of the executed command
- * @param tile The tile of the command action
  * @param data Additional data of the command
  * @param result_data Additional returned data from the command
  */

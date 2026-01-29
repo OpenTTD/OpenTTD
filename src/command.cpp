@@ -250,7 +250,13 @@ void CommandHelperBase::InternalPostResult(CommandCost &res, TileIndex tile, boo
 	}
 }
 
-/** Helper to make a desync log for a command. */
+/**
+ * Helper to make a desync log for a command.
+ * @param cmd The executed command.
+ * @param err_message The error messages of the command.
+ * @param args The encoded arguments of the command.
+ * @param failed Whether the command failed.
+ */
 void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
 	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, _current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
@@ -326,7 +332,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param cmd Command that was executed.
  * @param cmd_flags Command flags.
  * @param res_test Command result of test run.
- * @param tes_exec Command result of real run.
+ * @param res_exec Command result of real run.
  * @param extra_cash Additional cash required for successful command execution.
  * @param tile Tile of command execution.
  * @param[in,out] cur_company Backup of current company at start of command execution.
