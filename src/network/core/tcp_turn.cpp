@@ -22,7 +22,7 @@
  */
 bool NetworkTurnSocketHandler::HandlePacket(Packet &p)
 {
-	PacketTurnType type = (PacketTurnType)p.Recv_uint8();
+	PacketTurnType type = static_cast<PacketTurnType>(p.Recv_uint8());
 
 	switch (type) {
 		case PACKET_TURN_TURN_ERROR:     return this->Receive_TURN_ERROR(p);
