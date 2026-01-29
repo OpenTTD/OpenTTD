@@ -1557,6 +1557,12 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Scale industry 
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Scale the cargo production of industries by this percentage
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Scale cargo payment aging rate: {STRING2}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Adjust how quickly cargo loaded on a vehicle decreases in value over transit time
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
+###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :No decay
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING2}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled
 
