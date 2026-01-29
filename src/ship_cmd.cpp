@@ -45,6 +45,12 @@
 /** Max distance in tiles (as the crow flies) to search for depots when user clicks "go to depot". */
 constexpr int MAX_SHIP_DEPOT_SEARCH_DISTANCE = 80;
 
+/** Returns the maximum distance to use when searching for a ship depot. */
+uint GetMaxShipDepotServiceSearchDistance()
+{
+	return _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH;
+}
+
 /**
  * Determine the effective #WaterClass for a ship travelling on a tile.
  * @param tile Tile of interest
@@ -147,42 +153,58 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 	result->Set(_ship_sprites[spritenum] + direction);
 }
 
-static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
+/**
+ * Finds the hashes of all water region patches that can be reached from a certain starting tile, limited by a max distance.
+ * @param start_tile The tile to start searching from.
+ * @param max_distance The maximum distance to search for.
+ * @return A set containing the hashes of all reachable water region patches.
+ */
+static std::unordered_set<int> &GetReachableWaterRegionPatchHashes(TileIndex start_tile, uint max_distance)
 {
-	const int max_region_distance = (max_distance / WATER_REGION_EDGE_LENGTH) + 1;
+	const uint max_region_distance = ((max_distance / WATER_REGION_EDGE_LENGTH) + 1) * 2;
+
+	struct SearchNode {
+		WaterRegionPatchDesc patch;
+		uint distance;
+	};
 
 	static std::unordered_set<int> visited_patch_hashes;
-	static std::deque<WaterRegionPatchDesc> patches_to_search;
+	static std::deque<SearchNode> patches_to_search;
 	visited_patch_hashes.clear();
 	patches_to_search.clear();
 
-	/* Step 1: find a set of reachable Water Region Patches using BFS. */
-	const WaterRegionPatchDesc start_patch = GetWaterRegionPatchInfo(v->tile);
-	patches_to_search.push_back(start_patch);
+	const WaterRegionPatchDesc start_patch = GetWaterRegionPatchInfo(start_tile);
+	patches_to_search.emplace_back(start_patch, 0);
 	visited_patch_hashes.insert(CalculateWaterRegionPatchHash(start_patch));
 
 	while (!patches_to_search.empty()) {
 		/* Remove first patch from the queue and make it the current patch. */
-		const WaterRegionPatchDesc current_node = patches_to_search.front();
+		const SearchNode current_node = patches_to_search.front();
 		patches_to_search.pop_front();
 
-		/* Add neighbours of the current patch to the search queue. */
+		/* Add neighbors of the current patch to the search queue. */
 		VisitWaterRegionPatchCallback visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
-			/* Note that we check the max distance per axis, not the total distance. */
-			if (std::abs(water_region_patch.x - start_patch.x) > max_region_distance ||
-					std::abs(water_region_patch.y - start_patch.y) > max_region_distance) return;
+			const uint distance = current_node.distance + std::abs(water_region_patch.x - current_node.patch.x) + std::abs(water_region_patch.y - current_node.patch.y);
+			if (distance > max_region_distance) return;
 
 			const int hash = CalculateWaterRegionPatchHash(water_region_patch);
-			if (visited_patch_hashes.count(hash) == 0) {
+			if (!visited_patch_hashes.contains(hash)) {
 				visited_patch_hashes.insert(hash);
-				patches_to_search.push_back(water_region_patch);
+				patches_to_search.emplace_back(water_region_patch, distance);
 			}
 		};
 
-		VisitWaterRegionPatchNeighbours(current_node, visit_func);
+		VisitWaterRegionPatchNeighbours(current_node.patch, visit_func);
 	}
 
-	/* Step 2: Find the closest depot within the reachable Water Region Patches. */
+	return visited_patch_hashes;
+}
+
+static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
+{
+	const std::unordered_set<int> &visited_patch_hashes = GetReachableWaterRegionPatchHashes(v->tile, max_distance);
+
+	/* Find the closest depot within the reachable Water Region Patches. */
 	const Depot *best_depot = nullptr;
 	uint best_dist_sq = std::numeric_limits<uint>::max();
 	for (const Depot *depot : Depot::Iterate()) {
@@ -190,7 +212,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 		if (IsShipDepotTile(tile) && IsTileOwner(tile, v->owner)) {
 			const uint dist_sq = DistanceSquare(tile, v->tile);
 			if (dist_sq < best_dist_sq && dist_sq <= max_distance * max_distance &&
-					visited_patch_hashes.count(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(tile))) > 0) {
+					visited_patch_hashes.contains(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(tile)))) {
 				best_dist_sq = dist_sq;
 				best_depot = depot;
 			}
@@ -208,10 +230,9 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	uint max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH;
+	if (v->current_order.IsType(OT_GOTO_DEPOT) && Depot::GetByTile(v->dest_tile)) return;
 
-	const Depot *depot = FindClosestShipDepot(v, max_distance);
-
+	const Depot *depot = FindClosestShipDepot(v, GetMaxShipDepotServiceSearchDistance());
 	if (depot == nullptr) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			v->current_order.MakeDummy();
@@ -460,9 +481,10 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
  * @param v Ship to navigate
  * @param tile Tile, the ship is about to enter
  * @param tracks Available track choices on \a tile
+ * @param called_recursively Whether or not this function was called recursively. For internal use only.
  * @return Track to choose, or INVALID_TRACK when to reverse.
  */
-static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks)
+static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks, bool called_recursively = false)
 {
 	bool path_found = true;
 	Track track;
@@ -486,6 +508,16 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks)
 
 			/* Cached path is invalid so continue with pathfinder. */
 			v->path.clear();
+		}
+
+		/* Abandon automatic service at depot if depot has become unreachable or is now too far away. */
+		if (!called_recursively && v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) {
+			const std::unordered_set<int> &visited_patch_hashes = GetReachableWaterRegionPatchHashes(v->tile, GetMaxShipDepotServiceSearchDistance());
+			if (!visited_patch_hashes.contains(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(v->dest_tile)))) {
+				v->current_order.MakeDummy();
+				ProcessOrders(v);
+				return ChooseShipTrack(v, tile, tracks, true);
+			}
 		}
 
 		track = YapfShipChooseTrack(v, tile, path_found, v->path);
