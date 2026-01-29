@@ -129,8 +129,8 @@ using WidgetLookup = std::map<WidgetID, class NWidgetBase *>;
 
 /**
  * Baseclass for nested widgets.
- * @invariant After initialization, \f$current\_x = smallest\_x + n * resize\_x, for n \geq 0\f$.
- * @invariant After initialization, \f$current\_y = smallest\_y + m * resize\_y, for m \geq 0\f$.
+ * @invariant After initialization: current_x = smallest_x + n * resize_x, for n >= 0.
+ * @invariant After initialization: current_y = smallest_y + m * resize_y, for m >= 0.
  * @ingroup NestedWidgets
  */
 class NWidgetBase {
