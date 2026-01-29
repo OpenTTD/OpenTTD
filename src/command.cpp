@@ -269,7 +269,7 @@ void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, 
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex, Backup<CompanyID> &cur_company)
+bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, Backup<CompanyID> &cur_company)
 {
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = cmd_flags.Any({CommandFlag::Spectator, CommandFlag::Server});
