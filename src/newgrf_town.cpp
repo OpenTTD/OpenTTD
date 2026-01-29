@@ -57,6 +57,9 @@ static uint32_t GetNearbyTileInformation(uint8_t parameter, TileIndex tile, bool
 		/* Additional town information: (for now just) road layout */
 		case 0x42: return to_underlying(this->t->layout);
 
+		/* Number of nearby stations */
+		case 0x43: return ClampTo<uint16_t>(this->t->stations_near.size());
+
 		/* Land info for nearby tiles. */
 		case 0x60: return GetNearbyTileInformation(parameter, this->t->xy, this->ro.grffile->grf_version >= 8);
 
