@@ -1949,6 +1949,7 @@ struct StationViewWindow : public Window {
 			}
 		}
 		this->SetWidgetDirty(WID_SV_WAITING);
+		this->SetWidgetDirty(WID_SV_SCROLLBAR);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
