@@ -1857,6 +1857,7 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 	static inline constexpr StringID RANGE_LABELS[] = {
 		STR_GRAPH_TOWN_RANGE_PRODUCED,
 		STR_GRAPH_TOWN_RANGE_TRANSPORTED,
+		STR_GRAPH_TOWN_RANGE_DELIVERED,
 	};
 
 	static inline CargoTypes excluded_cargo_types{};
@@ -1886,6 +1887,9 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 		const Town *t = Town::Get(window_number);
 		for (const auto &s : t->supplied) {
 			if (IsValidCargoType(s.cargo)) SetBit(cargo_types, s.cargo);
+		}
+		for (const auto &a : t->accepted) {
+			if (IsValidCargoType(a.cargo)) SetBit(cargo_types, a.cargo);
 		}
 		return cargo_types;
 	}
@@ -1924,7 +1928,8 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 
 		this->data.clear();
 		this->data.reserve(
-			2 * std::ranges::count_if(t->supplied, &IsValidCargoType, &Town::SuppliedCargo::cargo));
+			2 * std::ranges::count_if(t->supplied, &IsValidCargoType, &Town::SuppliedCargo::cargo) +
+			1 * std::ranges::count_if(t->accepted, &IsValidCargoType, &Town::AcceptedCargo::cargo));
 
 		for (const auto &s : t->supplied) {
 			if (!IsValidCargoType(s.cargo)) continue;
@@ -1944,6 +1949,20 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 			FillFromHistory<GRAPH_NUM_MONTHS>(s.history, t->valid_history, *this->scales[this->selected_scale].history_range,
 				Filler{{produced}, &Town::SuppliedHistory::production},
 				Filler{{transported}, &Town::SuppliedHistory::transported});
+		}
+
+		for (const auto &a : t->accepted) {
+			if (!IsValidCargoType(a.cargo)) continue;
+			const CargoSpec *cs = CargoSpec::Get(a.cargo);
+
+			DataSet &accepted = this->data.emplace_back();
+			accepted.colour = cs->legend_colour;
+			accepted.exclude_bit = cs->Index();
+			accepted.range_bit = 2;
+			accepted.dash = 1;
+
+			FillFromHistory<GRAPH_NUM_MONTHS>(a.history, t->valid_history, *this->scales[this->selected_scale].history_range,
+				Filler{{accepted}, &Town::AcceptedHistory::accepted});
 		}
 
 		this->SetDirty();
