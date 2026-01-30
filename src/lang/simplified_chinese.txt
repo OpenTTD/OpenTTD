@@ -2858,20 +2858,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :缩小预览图
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大预览图。按住 <Ctrl> 键点击以最大化
 
+STR_PICKER_DEFAULT_COLLECTION                                   :默认收藏夹
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :选择收藏夹
+STR_PICKER_COLLECTION_ADD                                       :增加
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :新建收藏夹
+STR_PICKER_COLLECTION_RENAME                                    :重命名
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :重命名收藏夹
+STR_PICKER_COLLECTION_DELETE                                    :删除
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :删除收藏夹
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :重命名收藏夹
+STR_PICKER_COLLECTION_DELETE_QUERY                              :删除收藏夹
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}确定删除此收藏夹吗？
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}确定删除此收藏夹吗？收藏夹内尚有来自未激活 NewGRF 的项目！
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :选择显示的车站类别
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :选择建造的车站类型。按住 <Ctrl> 键操作以保存或删除当前项目
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :选择展示的车站收藏夹
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :选择显示的路点类别
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :选择建造的路点类型。按住<Ctrl>键以添加或删除已保存的项目
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :选择展示的路点收藏夹
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :选择显示的公共汽车站类别
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :选择建造的公共汽车站类型。按住 <Ctrl> 键操作以保存或删除当前项目
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :选择展示的汽车站收藏夹
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择显示的汽车货场类别
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :选择建造的汽车货场类型。按住 <Ctrl> 键操作以保存或删除当前项目
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :选择展示的汽车货场收藏夹
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择显示的物件类别
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :选择建造的物件类型。按住 <Ctrl> 键选择物件以保存或删除当前项目。按住 <Ctrl> 键拖拽以沿对角线放置，按住 <Shift> 键以显示预计费用
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :选择展示的物件收藏夹
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :选择显示的城镇区域
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :选择建造的房屋类型。按住 <Ctrl> 键操作以保存或删除当前项目
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :选择展示的房屋收藏夹
 
 STR_HOUSE_PICKER_CAPTION                                        :房屋选择
 STR_HOUSE_PICKER_NAME                                           :{BLACK}名称：{GOLD}{STRING}
@@ -4371,9 +4389,16 @@ STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}将车�
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}将出售车库中的所有载具。是否确定？
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}来自供货商的消息
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}来自载具厂家的消息
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}来自载具厂家的消息（{COMMA}/{COMMA}）
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我们新近设计了一款{STRING}{}您愿意在产品正式上市前独家试用一年，以便我们在正式上市前观察它的表现吗？
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :上一个
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :点击以展示上一部新载具
+STR_ENGINE_PREVIEW_NEXT                                         :下一个
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :点击以展示下一部新载具
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}：{ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :点击以跳转至新载具
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :铁路机车
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :电气化铁路机车

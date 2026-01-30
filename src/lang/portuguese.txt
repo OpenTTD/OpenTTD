@@ -4395,7 +4395,7 @@ STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Mensagem
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Desenvolvemos u{G 0 m m ma ns mas} nov{G 0 "o modelo de" o a os as} {STRING}. - Estaria interessado num ano de utilização exclusiva deste{G 0 "" "" "" s s} veículo{G 0 "" "" "" s s}, para que possamos avaliar o {G 0 "seu " "seu " "seu " "" ""}desempenho antes de o{G 0 "" "" "" s s} lançar globalmente?
 
 STR_ENGINE_PREVIEW_PREVIOUS                                     :Anterior
-STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Clique para recuar para o veículo novo anterior
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Clique para voltar para o veículo novo anterior
 STR_ENGINE_PREVIEW_NEXT                                         :Seguinte
 STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Clique para avançar para o próximo veículo novo
 STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}

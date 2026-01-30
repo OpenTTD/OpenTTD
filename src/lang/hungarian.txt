@@ -4456,6 +4456,8 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosa
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Üzenet egy járműgyártótól
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Most készültek el egy új {STRING} tervei - érdekelne a jármű egy éves kizárólagos használata, hogy megnézhessük a képességeit, mielőtt mindenki számára elérhetővé tesszük?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Előző
+STR_ENGINE_PREVIEW_NEXT                                         :Következő
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :vasúti mozdony
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :villamos vasúti mozdony

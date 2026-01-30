@@ -4568,6 +4568,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Сооб
 STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Сообщение от производителя транспортных средств ({COMMA} из {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новую модель {STRING.gen}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Назад
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :К предыдущей модели транспортного средства
+STR_ENGINE_PREVIEW_NEXT                                         :Вперёд
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :К следующей модели транспортного средства
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Перейти к новой модели транспортного средства
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотив
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :ж/д локомотива
