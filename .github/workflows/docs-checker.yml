@@ -21,19 +21,8 @@ jobs:
     - name: Get pull-request commits
       uses: OpenTTD/actions/checkout-pull-request@v6
 
-    - name: Install dependencies
-      run: |
-        echo "::group::Update apt"
-        sudo apt-get update
-        echo "::endgroup::"
-
-        echo "::group::Install dependencies"
-        sudo apt-get install -y --no-install-recommends \
-          doxygen \
-          # EOF
-        echo "::endgroup::"
-      env:
-        DEBIAN_FRONTEND: noninteractive
+    - name: Install Doxygen
+      uses: ./.github/install-doxygen
 
     - name: Build docs for PR
       run: |
