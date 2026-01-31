@@ -83,6 +83,7 @@ void SetRandomSeed(uint32_t seed);
  * can be returned and \a limit - 1 can be returned, but \a limit can not be
  * returned.
  * @param limit Limit for the range to be picked from.
+ * @param location Source code location where this function is called from.
  * @return A random number in [0,\a limit).
  */
 inline uint32_t RandomRange(uint32_t limit, const std::source_location location = std::source_location::current())
@@ -129,6 +130,7 @@ inline bool Chance16I(const uint32_t a, const uint32_t b, const uint32_t r)
  * @see Chance16I()
  * @param a The nominator of the fraction
  * @param b The denominator of the fraction
+ * @param location Source code location where this function is called from.
  * @return True with (a/b) probability
  */
 inline bool Chance16(const uint32_t a, const uint32_t b, const std::source_location location = std::source_location::current())
@@ -149,6 +151,7 @@ inline bool Chance16(const uint32_t a, const uint32_t b, const std::source_locat
  * @param a The numerator of the fraction
  * @param b The denominator of the fraction
  * @param r The variable to save the randomize-number from Random()
+ * @param location Source code location where this function is called from.
  * @return True in (a/b) percent
  */
 inline bool Chance16R(const uint32_t a, const uint32_t b, uint32_t &r, const std::source_location location = std::source_location::current())

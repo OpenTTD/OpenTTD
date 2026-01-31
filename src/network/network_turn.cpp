@@ -23,6 +23,7 @@ private:
 public:
 	/**
 	 * Initiate the connecting.
+	 * @param handler Callback handler for denoting success or failure.
 	 * @param connection_string The address of the TURN server.
 	 */
 	NetworkTurnConnecter(ClientNetworkTurnSocketHandler *handler, std::string_view connection_string) : TCPConnecter(connection_string, NETWORK_TURN_SERVER_PORT), handler(handler) {}

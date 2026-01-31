@@ -247,7 +247,7 @@ public:
 			fop(fop), callback_proc(callback_proc), file_list(file_list)
 	{}
 
-	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
+	bool AddFile(const std::string &filename, size_t, const std::string &) override;
 };
 
 /**
@@ -539,6 +539,7 @@ void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_
  * Callback for FiosGetTownDataList.
  * @param fop Purpose of collecting the list.
  * @param file Name of the file to check.
+ * @param ext The file extension of the file to check.
  * @return a FIOS_TYPE_JSON type of the found file, FIOS_TYPE_INVALID if not a valid JSON file, and the title of the file (if any).
  */
 static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext)

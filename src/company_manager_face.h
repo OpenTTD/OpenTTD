@@ -86,7 +86,7 @@ struct FaceVar {
 
 	/**
 	 * Scales a company manager's face bits variable to the correct scope
-	 * @param vars The face variables of the face style.
+	 * @param val The value to scale.
 	 * @pre val < (1U << length), i.e. val has a value of 0..2^(bits used for this variable)-1
 	 * @return the scaled value
 	 */
@@ -155,6 +155,7 @@ inline uint64_t GetActiveFaceVars(const CompanyManagerFace &cmf, FaceVars vars)
  * Scales all company manager's face bits to the correct scope
  *
  * @param cmf the company manager's face to write the bits to
+ * @param vars The face variables to scale.
  */
 inline void ScaleAllCompanyManagerFaceBits(CompanyManagerFace &cmf, FaceVars vars)
 {

@@ -52,7 +52,7 @@ public:
 
 	/**
 	 * Initialize the BitmapTileArea with the specified Rect.
-	 * @param rect Rect to use.
+	 * @param r Rect to use.
 	 */
 	void Initialize(const Rect &r)
 	{

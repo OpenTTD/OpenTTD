@@ -2380,6 +2380,7 @@ static uint GetNumberOfIndustries()
  * Since there is no feedback why placement fails, there is no other option
  * than to try a few times before concluding it does not work.
  * @param type     Industry type of the desired industry.
+ * @param creation_type The circumstances the industry is created under.
  * @param try_hard Try very hard to find a place. (Used to place at least one industry per type.)
  * @return Pointer to created industry, or \c nullptr if creation failed.
  */
@@ -2396,6 +2397,7 @@ static Industry *PlaceIndustry(IndustryType type, IndustryAvailabilityCallType c
 /**
  * Try to build a industry on the map.
  * @param type IndustryType of the desired industry
+ * @param water Whether building a water or land based industry.
  * @param try_hard Try very hard to find a place. (Used to place at least one industry per type)
  */
 static void PlaceInitialIndustry(IndustryType type, bool water, bool try_hard)

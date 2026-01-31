@@ -646,6 +646,7 @@ static void ClearLastVariant(EngineID engine_id, VehicleType type)
 /**
  * Update #Engine::reliability and (if needed) update the engine GUIs.
  * @param e %Engine to update.
+ * @param new_month Whether this is called from a 'new month' context or not, i.e. whether engines should be aged.
  */
 void CalcEngineReliability(Engine *e, bool new_month)
 {
@@ -715,7 +716,7 @@ void SetYearEngineAgingStops()
 /**
  * Start/initialise one engine.
  * @param e The engine to initialise.
- * @param aging_date The date used for age calculations.
+ * @param aging_ymd The date used for age calculations.
  * @param seed Random seed.
  */
 void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ymd, uint32_t seed)

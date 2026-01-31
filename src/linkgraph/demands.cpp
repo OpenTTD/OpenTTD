@@ -95,7 +95,6 @@ class AsymmetricScaler : public Scaler {
 public:
 	/**
 	 * Nothing to do here.
-	 * @param unused.
 	 */
 	inline void AddNode(const Node &)
 	{
@@ -103,7 +102,6 @@ public:
 
 	/**
 	 * Nothing to do here.
-	 * @param unused.
 	 */
 	inline void SetDemandPerNode(uint)
 	{
@@ -112,7 +110,6 @@ public:
 	/**
 	 * Get the effective supply of one node towards another one.
 	 * @param from The supplying node.
-	 * @param unused.
 	 */
 	inline uint EffectiveSupply(const Node &from, const Node &)
 	{
@@ -166,7 +163,7 @@ inline void Scaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id, 
 /**
  * Do the actual demand calculation, called from constructor.
  * @param job Job to calculate the demands for.
- * @tparam Tscaler Scaler to be used for scaling demands.
+ * @param scaler Scaler to be used for scaling demands.
  */
 template <class Tscaler>
 void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)

@@ -23,6 +23,7 @@
  * @param connection_string The address to connect to.
  * @param default_port If not indicated in connection_string, what port to use.
  * @param bind_address The local bind address to use. Defaults to letting the OS find one.
+ * @param family The IP-family to connect with.
  */
 TCPConnecter::TCPConnecter(std::string_view connection_string, uint16_t default_port, const NetworkAddress &bind_address, int family) :
 	bind_address(bind_address),
