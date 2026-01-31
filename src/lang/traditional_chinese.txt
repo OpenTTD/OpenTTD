@@ -2213,7 +2213,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}修改�
 STR_CONFIG_ERROR                                                :{WHITE}讀取或更新設定檔時出錯
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 處理陣列 '{STRING}' 時出錯
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}……「 {STRING} 」不是「 {STRING} 」的有效值
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 在設定 '{STRING}' 的末尾有殘餘字句
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}……在設定「{STRING}」的末尾有殘餘字句
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……正忽略 NewGRF「{STRING}」：重複的 NewGRF ID「{STRING}」
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}……正忽略無效的 NewGRF「{STRING}」：{STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :找不到
@@ -2221,8 +2221,8 @@ STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :此套件被標
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系統 NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :與此版本的 OpenTTD 不相容
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :不明
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 無效的壓縮層級值 '{STRING}'
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... 本版本不支援存檔格式 '{STRING}'，現改用 '{STRING}' 格式
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}……無效的壓縮層級值「{STRING}」
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}……本版本不支援存檔格式「{STRING}」，現改用「{STRING}」格式
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……正忽略基礎圖形集「{STRING}」：找不到檔案
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……正忽略基礎音效集「{STRING}」：找不到檔案
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……正忽略基礎音樂集「{STRING}」：找不到檔案
@@ -2717,8 +2717,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}下載�
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}因與下列內容關聯而被選擇：{WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}相依性：{WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}標籤：{WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 編譯時未加入「zlib」支援...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 不支援內容下載功能！
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 編譯時未加入「zlib」支援……
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}……無法下載內容！
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基礎圖形
@@ -2733,16 +2733,16 @@ STR_CONTENT_TYPE_GAME_SCRIPT                                    :遊戲腳本
 STR_CONTENT_TYPE_GS_LIBRARY                                     :GS 函式庫
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下載內容中...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}請求檔案中...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}目前正在下載 {STRING} ({NUM} / {NUM})
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下載內容中……
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}請求檔案中……
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}正在下載 {STRING}（{NUM} / {NUM}）
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}下載完成
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} / {BYTES} 已下載 ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}無法連接到內容伺服器...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}下載失敗...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 檔案無法寫入
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}無法連接到內容下載伺服器……
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}下載失敗……
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}……檔案無法寫入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}無法解壓縮已下載的檔案
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}缺少圖形
@@ -2858,38 +2858,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :縮小預覽圖
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :放大預覽圖。按住 <Ctrl> 鍵點選以最大化
 
-STR_PICKER_DEFAULT_COLLECTION                                   :預設藏品庫
-STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :選擇藏品庫
+STR_PICKER_DEFAULT_COLLECTION                                   :預設收藏夾
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :選擇收藏夾
 STR_PICKER_COLLECTION_ADD                                       :增加
-STR_PICKER_COLLECTION_ADD_TOOLTIP                               :建立藏品庫
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :建立收藏夾
 STR_PICKER_COLLECTION_RENAME                                    :重新命名
-STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :重新命名藏品庫
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :重新命名收藏夾
 STR_PICKER_COLLECTION_DELETE                                    :刪除
-STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :刪除藏品庫
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :刪除收藏夾
 
-STR_PICKER_COLLECTION_RENAME_QUERY                              :重新命名此藏品庫
-STR_PICKER_COLLECTION_DELETE_QUERY                              :刪除藏品庫
-STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}你確定要刪除此藏品庫嗎？
-STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}你確定要刪除此藏品庫嗎？這裡有些已停用的 NewGRF 項目！
+STR_PICKER_COLLECTION_RENAME_QUERY                              :重新命名收藏夾
+STR_PICKER_COLLECTION_DELETE_QUERY                              :刪除收藏夾
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}你確定要刪除此收藏夾嗎？
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}你確定要刪除此收藏夾嗎？收藏夾內尚有些已停用 NewGRF 的項目！
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :選擇建設的車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
-STR_PICKER_STATION_COLLECTION_TOOLTIP                           :選擇要顯示的車站藏品庫
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :選擇要顯示的車站收藏夾
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的中途站種類
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :選擇建設的中途站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
-STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :選擇要顯示的中途站藏品庫
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :選擇要顯示的中途站收藏夾
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :選擇顯示的公車站種類
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :選擇建設的公車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
-STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :選擇要顯示的公車站藏品庫
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :選擇要顯示的公車站收藏夾
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :選擇顯示的貨車場種類
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :選擇建設的貨車場類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
-STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :選擇要顯示的貨運站藏品庫
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :選擇要顯示的貨運站收藏夾
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :選擇顯示的物品種類
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :選擇建設的物件類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示預估成本
-STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :選擇要顯示的物件藏品庫
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :選擇要顯示的物件收藏夾
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :選擇顯示的市鎮區域
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :選擇建設的房屋類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
-STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :選擇要顯示的房屋藏品庫
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :選擇要顯示的房屋收藏夾
 
 STR_HOUSE_PICKER_CAPTION                                        :房屋選擇
 STR_HOUSE_PICKER_NAME                                           :{BLACK}名稱：{GOLD}{STRING}
@@ -4389,14 +4389,14 @@ STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}將車�
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正準備出售車廠內的所有車輛。確定嗎？
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}車輛製造商的訊息
-STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}車輛製造商的訊息（{COMMA}/{COMMA}）
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}來自車輛製造商的訊息
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}來自車輛製造商的訊息（{COMMA}/{COMMA}）
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我們剛設計了一款新的{STRING}{}您願意在產品正式上市前獨家使用它一年，讓我們在正式上市前觀察它的表現嗎？
 
 STR_ENGINE_PREVIEW_PREVIOUS                                     :上一個
-STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :點選前往上一部新車輛
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :點選以顯示上一部新車輛
 STR_ENGINE_PREVIEW_NEXT                                         :下一個
-STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :點選前往下一部新車輛
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :點選以顯示下一部新車輛
 STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}：{ENGINE}
 STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :點選跳轉至新車輛
 
@@ -4498,7 +4498,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}購買�
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}強制列車前進，不等待號誌允許
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}倒轉列車方向
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}強制車輛掉頭
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}將任務目的地置於畫面正中央。按住 <Ctrl> 點選可於任務目標位置開啟新檢視視窗
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}將指令目的地置於畫面正中央。按住 <Ctrl> 點選以開啟新檢視視窗顯示目標位置
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改裝列車以運輸不同的貨物種類
@@ -5042,12 +5042,12 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}地圖�
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... 這個地圖沒有市鎮
 
 STR_ERROR_PNGMAP                                                :{WHITE}無法從 PNG 檔載入地形...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... 找不到檔案
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... 無法轉換影像格式，需要 8 或 24-bit PNG 影像
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}……找不到檔案
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}……無法轉換影像格式，需使用 8 位元或 24 位元 PNG 格式影像
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}……抱歉，出現一點狀況（或許是檔案損毀）
 
-STR_ERROR_BMPMAP                                                :{WHITE}無法從 BMP 檔載入地形...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 無法轉換影像格式
+STR_ERROR_BMPMAP                                                :{WHITE}無法從 BMP 檔載入地形……
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}……無法轉換影像格式
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... 影像過大
 
@@ -5150,9 +5150,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 只�
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... 只能在城市中心附近興建
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}……只能在平原地帶建設
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 只能位於地圖邊緣
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森林只能種在雪線以上
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 只能在雪線以上建造
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 只能在雪線以下建造
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}……森林只能種在雪線以上
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}……只能在雪線以上建造
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}……只能在雪線以下建造
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}由於運氣差，勘探失敗，請重試
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}無適當地點勘探此類工業。
@@ -5217,7 +5217,7 @@ STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}無法�
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}無法移除此道路的中途站……
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必須先移除鐵道中途站
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}必須先移除道路中途站
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 被浮標擋住
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}……被浮標擋住
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}……浮標正被其他公司使用！
 
 # Depot related errors
@@ -5228,10 +5228,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}無法�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}無法修改機廠名稱...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}…必須停在機廠內
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}…必須停在車廠內
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}…必須停在船塢內
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}…必須停在機棚內
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}……必須停在機廠內
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}……必須停在車廠內
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}……必須停在船塢內
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}……必須停在機棚內
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車過長
@@ -5248,10 +5248,10 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :錯誤的機廠
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}… 只能有一個自動調節班次指令
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}… 不能對擁有自動調節班次的車輛使用滿載指令
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}… 不能對擁有滿載指令的車輛使用自動調節班次
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}… 不能對擁有自動調節班次的車輛使用條件指令
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}… 不能對擁有條件指令的車輛使用自動調節班次
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}……不能對有自動調節班次指令的車輛使用滿載指令
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}……不能對有滿載指令的車輛使用自動調節班次
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}……不能對有自動調節班次指令的車輛使用條件指令
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}……不能對有條件指令的車輛使用自動調節班次
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} 將在替換後過長
@@ -5469,7 +5469,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}無法�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}無法停止共享指令清單...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}無法複製指令清單...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 與上個目的地相距太遠
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 飛機的飛行範圍不足
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}……飛機的飛行距離不足
 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :{WHITE}沒有火車站

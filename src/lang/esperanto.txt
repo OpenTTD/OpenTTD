@@ -5347,7 +5347,7 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Neinterŝanĝeb
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne povas movi veturilon
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La malantaŭa maŝino ĉiam sekvos la antaŭan
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne povas trovi straton al loka garaĝo
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne povas trovi vojon al loka tenejo
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ne povas trovi lokan garaĝon
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Malĝusta garaĝtipo
