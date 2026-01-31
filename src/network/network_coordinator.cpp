@@ -576,6 +576,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectFailure(std::string_view toke
  * to the game server is established.
  * @param token Token of the connecter that succeeded.
  * @param sock The socket that the connecter can now use.
+ * @param address Address of the client that connected.
  */
 void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(std::string_view token, SOCKET sock, NetworkAddress &address)
 {

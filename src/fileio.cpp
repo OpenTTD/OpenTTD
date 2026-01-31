@@ -236,7 +236,9 @@ static std::optional<FileHandle> FioFOpenFileTar(const TarFileListEntry &entry, 
 /**
  * Opens a OpenTTD file somewhere in a personal or global directory.
  * @param filename Name of the file to open.
+ * @param mode The fopen-mode to open the file.
  * @param subdir Subdirectory to open.
+ * @param[out] filesize Optional output for the size of the file.
  * @return File handle of the opened file, or \c nullptr if the file is not available.
  */
 std::optional<FileHandle> FioFOpenFile(std::string_view filename, std::string_view mode, Subdirectory subdir, size_t *filesize)

@@ -63,6 +63,7 @@ INSTANTIATE_POOL_METHODS(Company)
 
 /**
  * Constructor.
+ * @param index The unique pool identifier of this company.
  * @param name_1 Name of the company.
  * @param is_ai  A computer program is running for this company.
  */
@@ -833,6 +834,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGam
 
 /**
  * Fill the CompanyNewsInformation struct with the required data.
+ * @param title The title of the company news.
  * @param c the current company.
  * @param other the other company (use \c nullptr if not relevant).
  */
@@ -877,6 +879,7 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param flags operation to perform
  * @param cca action to perform
  * @param company_id company to perform the action on
+ * @param reason The reason why the company is being removed.
  * @param client_id ClientID
  * @return the cost of this operation or an error
  */
@@ -1418,7 +1421,7 @@ std::optional<uint> FindCompanyManagerFaceLabel(std::string_view label)
 
 /**
  * Get the face variables for a face style.
- * @param style_index Face style to get variables for.
+ * @param style Face style to get variables for.
  * @return Variables for the face style.
  */
 FaceVars GetCompanyManagerFaceVars(uint style)
@@ -1459,7 +1462,7 @@ void RandomiseCompanyManagerFace(CompanyManagerFace &cmf, Randomizer &randomizer
  * Mask company manager face bits to ensure they are all within range.
  * @note Does not update the CompanyManagerFace itself. Unused bits are cleared.
  * @param cmf The CompanyManagerFace.
- * @param style The face variables.
+ * @param vars The face variables.
  * @return The masked face bits.
  */
 uint32_t MaskCompanyManagerFaceBits(const CompanyManagerFace &cmf, FaceVars vars)

@@ -21,7 +21,7 @@ enum class LoanCommand : uint8_t {
 	Amount, ///< Loan/repay the given amount.
 };
 
-CommandCost CmdMoneyCheat(DoCommandFlags flags, Money amount);
+CommandCost CmdMoneyCheat(DoCommandFlags, Money amount);
 CommandCost CmdChangeBankBalance(DoCommandFlags flags, TileIndex tile, Money delta, CompanyID company, ExpensesType expenses_type);
 CommandCost CmdIncreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount);
 CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount);

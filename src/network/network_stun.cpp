@@ -27,6 +27,8 @@ public:
 	 * Initiate the connecting.
 	 * @param stun_handler The handler for this request.
 	 * @param connection_string The address of the server.
+	 * @param token The (server) token for the STUN action.
+	 * @param family The IP-family to connect with.
 	 */
 	NetworkStunConnecter(ClientNetworkStunSocketHandler *stun_handler, std::string_view connection_string, std::string_view token, uint8_t family) :
 		TCPConnecter(connection_string, NETWORK_STUN_SERVER_PORT, NetworkAddress(), family),

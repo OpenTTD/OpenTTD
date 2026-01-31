@@ -226,7 +226,7 @@ public:
  * Check whether there's a base set matching some information.
  * @param ci The content info to compare it to.
  * @param md5sum Should the MD5 checksum be tested as well?
- * @param s The list with sets.
+ * @param sets The span with sets.
  * @return The filename of the first file of the base set, or \c std::nullopt if there is no match.
  */
 template <class Tbase_set>

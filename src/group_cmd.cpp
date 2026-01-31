@@ -556,6 +556,7 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
  * @param group_id index of group
  * @param veh_id vehicle to add to a group
  * @param add_shared Add shared vehicles as well.
+ * @param vli The list of vehicles that should be added to the group (can be empty).
  * @return the cost of this operation or an error
  */
 std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli)
@@ -713,7 +714,9 @@ CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool prima
 /**
  * Set group flag for a group and its sub-groups.
  * @param g initial group.
- * @param set 1 to set or 0 to clear protection.
+ * @param flag The flag to set.
+ * @param set \c true to set or \c false to clear protection.
+ * @param children Whether to propagate the change to the children.
  */
 static void SetGroupFlag(Group *g, GroupFlag flag, bool set, bool children)
 {

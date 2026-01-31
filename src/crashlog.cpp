@@ -36,8 +36,8 @@
 constexpr uint8_t CRASHLOG_SURVEY_VERSION = 1;
 
 /**
- * Writes the gamelog data to the buffer.
- * @param output_iterator Iterator to write the output to.
+ * Writes the gamelog data to the given JSON object.
+ * @param json The object to write to.
  */
 static void SurveyGamelog(nlohmann::json &json)
 {
@@ -49,8 +49,8 @@ static void SurveyGamelog(nlohmann::json &json)
 }
 
 /**
- * Writes up to 32 recent news messages to the buffer, with the most recent first.
- * @param output_iterator Iterator to write the output to.
+ * Writes up to 32 recent news messages to the given JSON object, with the most recent first.
+ * @param json The object to write to.
  */
 static void SurveyRecentNews(nlohmann::json &json)
 {

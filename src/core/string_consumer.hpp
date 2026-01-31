@@ -850,6 +850,7 @@ public:
 	/**
 	 * Peek and parse an integer in number 'base'.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
+	 * @param base The base to interpret the string as.
 	 * @param clamp If the value is a valid number, but out of range for T, return the maximum representable value.
 	 *              Negative values for unsigned results are still treated as invalid.
 	 * @return Length of string match, and parsed value.
@@ -863,6 +864,7 @@ public:
 	/**
 	 * Try to read and parse an integer in number 'base', and then advance the reader.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
+	 * @param base The base to interpret the string as.
 	 * @param clamp If the value is a valid number, but out of range for T, return the maximum representable value.
 	 *              Negative values for unsigned results are still treated as invalid.
 	 * @return Parsed value, if valid.
@@ -879,6 +881,8 @@ public:
 	/**
 	 * Read and parse an integer in number 'base', and advance the reader.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
+	 * @param base The base to interpret the string as.
+	 * @param def The default when no valid integer could be parsed.
 	 * @param clamp If the value is a valid number, but out of range for T, return the maximum representable value.
 	 *              Negative values for unsigned results are still treated as invalid.
 	 * @return Parsed value, or 'def' if invalid.

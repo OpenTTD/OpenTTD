@@ -31,7 +31,7 @@ void IConsolePrint(TextColour colour_code, const std::string &string);
  * are also logged. All lines to print are added to a temporary buffer which can be
  * used as a history to print them onscreen
  * @param colour_code The colour of the command.
- * @param format_string The formatting string to tell what to do with the remaining arguments.
+ * @param format The formatting string to tell what to do with the remaining arguments.
  * @param first_arg The first argument to the format.
  * @param other_args The other arguments to the format.
  * @tparam A The type of the first argument.

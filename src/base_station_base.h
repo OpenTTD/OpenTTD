@@ -273,7 +273,7 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Creates a new T-object in the station pool.
-	 * @param args... The arguments to the constructor.
+	 * @param args The arguments to the constructor.
 	 * @return The created object.
 	 */
 	template <typename... Targs>
@@ -285,7 +285,7 @@ struct SpecializedStation : public BaseStation {
 	/**
 	 * Creates a new T-object in the station pool.
 	 * @param index The index allocate the object at.
-	 * @param args... The arguments to the constructor.
+	 * @param args The arguments to the constructor.
 	 * @return The created object.
 	 */
 	template <typename... Targs>

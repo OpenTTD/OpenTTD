@@ -1370,7 +1370,7 @@ protected:
 
 	/**
 	 * Set accepted cargo filter for the industry list.
-	 * @param index The cargo to be set
+	 * @param cargo_type The cargo to be set
 	 */
 	void SetAcceptedCargoFilter(CargoType cargo_type)
 	{

@@ -98,6 +98,7 @@ void ClientNetworkEmergencySave()
 /**
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
+ * @param connection_string The connection string that the connection was made with.
  */
 ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string)
 {
@@ -1286,7 +1287,7 @@ bool NetworkValidateOurClientName()
 
 /**
  * Send the server our name as callback from the setting.
- * @param newname The new client name.
+ * @param client_name The new client name.
  */
 void NetworkUpdateClientName(const std::string &client_name)
 {
