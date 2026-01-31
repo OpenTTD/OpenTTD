@@ -662,8 +662,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			case WID_ETT_LOWER_LAND: // Lower land button
 				if (_terraform_size == 1) {
 					VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
-				}
-				else {
+				} else {
 					CommonRaiseLowerBigLand(tile, false);
 				}
 				break;
@@ -671,8 +670,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			case WID_ETT_RAISE_LAND: // Raise land button
 				if (_terraform_size == 1) {
 					VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_RAISE_AND_LEVEL_AREA);
-				}
-				else {
+				} else {
 					CommonRaiseLowerBigLand(tile, true);
 				}
 				break;
