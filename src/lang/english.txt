@@ -3487,10 +3487,9 @@ STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Desert c
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario Type
-STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Flat land
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generate a flat land
-STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Random land
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}New Scenario
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Generate empty world
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generate an empty flat land new scenario
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Height of flat land:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Choose the height of the land above sea level
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Move the height of flat land one down
