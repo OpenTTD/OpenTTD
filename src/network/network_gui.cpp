@@ -1278,16 +1278,6 @@ static WindowDesc _client_list_desc(
 );
 
 /**
- * The possibly entries in a DropDown for an admin.
- * Client and companies are mixed; they just have to be unique.
- */
-enum DropDownAdmin : uint8_t {
-	DD_CLIENT_ADMIN_KICK,
-	DD_CLIENT_ADMIN_BAN,
-	DD_COMPANY_ADMIN_RESET,
-};
-
-/**
  * Callback function for admin command to kick client.
  * @param confirmed Iff the user pressed Yes.
  */
@@ -1539,6 +1529,16 @@ private:
  */
 struct NetworkClientListWindow : Window {
 private:
+	/**
+	 * The possible entries in a DropDown for an admin action.
+	 * Client and companies are mixed; they just have to be unique.
+	 */
+	enum class DropDownAction : uint8_t {
+		AdminKickClient, ///< Admin kick client.
+		AdminBanClient, ///< Admin ban client.
+		AdminResetCompany, ///< Admin reset company.
+	};
+
 	ClientListWidgets query_widget{}; ///< During a query this tracks what widget caused the query.
 
 	ClientID dd_client_id{}; ///< During admin dropdown, track which client this was for.
@@ -1596,8 +1596,8 @@ private:
 	static void OnClickClientAdmin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
 	{
 		DropDownList list;
-		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, DD_CLIENT_ADMIN_KICK));
-		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN, DD_CLIENT_ADMIN_BAN));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, to_underlying(DropDownAction::AdminKickClient)));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN, to_underlying(DropDownAction::AdminBanClient)));
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;
@@ -1618,7 +1618,7 @@ private:
 	static void OnClickCompanyAdmin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
 	{
 		DropDownList list;
-		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, DD_COMPANY_ADMIN_RESET, NetworkCompanyHasClients(company_id)));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, to_underlying(DropDownAction::AdminResetCompany), NetworkCompanyHasClients(company_id)));
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;
@@ -1876,20 +1876,20 @@ public:
 				QueryCallbackProc *callback = nullptr;
 
 				EncodedString text;
-				switch (index) {
-					case DD_CLIENT_ADMIN_KICK:
+				switch (static_cast<DropDownAction>(index)) {
+					case DropDownAction::AdminKickClient:
 						_admin_client_id = this->dd_client_id;
 						callback = AdminClientKickCallback;
 						text = GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
 						break;
 
-					case DD_CLIENT_ADMIN_BAN:
+					case DropDownAction::AdminBanClient:
 						_admin_client_id = this->dd_client_id;
 						callback = AdminClientBanCallback;
 						text = GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
 						break;
 
-					case DD_COMPANY_ADMIN_RESET:
+					case DropDownAction::AdminResetCompany:
 						_admin_company_id = this->dd_company_id;
 						callback = AdminCompanyResetCallback;
 						text = GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET, _admin_company_id);
