@@ -423,7 +423,7 @@ STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Move the
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Move the starting date forward 1 year
 STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Click to enter the starting year
 STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Open map, extra viewport, sign list, or town or industry directory
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Open landscaping menu or generate a new world
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Open landscaping menu, reset or generate a new world
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Build or generate towns
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Build or generate industries
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Build road infrastructure
@@ -433,9 +433,10 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Place si
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Place object. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 
 # Scenario editor file menu
-###length 7
+###length 8
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Save scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Load scenario
+STR_SCENEDIT_FILE_MENU_NEW_SCENARIO                             :New scenario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Save heightmap
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Load heightmap
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandon scenario editor
@@ -3083,7 +3084,7 @@ STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define d
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Increase area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Decrease area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generate random land
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Create new scenario
+STR_TERRAFORM_SE_GENERATE_RANDOM_LAND                           :{BLACK}Generate random landscape
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reset landscape
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remove all company-owned property from the map
 
