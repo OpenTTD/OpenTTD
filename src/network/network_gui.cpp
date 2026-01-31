@@ -1537,6 +1537,8 @@ private:
 		AdminKickClient, ///< Admin kick client.
 		AdminBanClient, ///< Admin ban client.
 		AdminResetCompany, ///< Admin reset company.
+		CompanyAllowAny, ///< Allow any client.
+		CompanyAllowListed, ///< Allow only listed clients.
 	};
 
 	ClientListWidgets query_widget{}; ///< During a query this tracks what widget caused the query.
@@ -1618,7 +1620,11 @@ private:
 	static void OnClickCompanyAdmin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
 	{
 		DropDownList list;
-		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, to_underlying(DropDownAction::AdminResetCompany), NetworkCompanyHasClients(company_id)));
+		if (_network_server) list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, to_underlying(DropDownAction::AdminResetCompany), NetworkCompanyHasClients(company_id)));
+		if (const Company *c = Company::GetIfValid(company_id); c != nullptr) {
+			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY, to_underlying(DropDownAction::CompanyAllowAny), c->allow_any));
+			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED, to_underlying(DropDownAction::CompanyAllowListed), !c->allow_any));
+		}
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;
@@ -1629,6 +1635,7 @@ private:
 		w->dd_company_id = company_id;
 		ShowDropDownListAt(w, std::move(list), -1, WID_CL_MATRIX, wi_rect, COLOUR_GREY, DropDownOption::InstantClose);
 	}
+
 	/**
 	 * Chat button on a Client is clicked.
 	 * @param w The instance of this window.
@@ -1655,7 +1662,9 @@ private:
 	void RebuildListCompany(CompanyID company_id, CompanyID client_playas, bool can_join_company)
 	{
 		ButtonLine &company_line = *this->buttons.emplace_back(std::make_unique<CompanyButtonLine>(company_id));
-		if (_network_server) company_line.AddButton<CompanyButton>(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin, company_id == COMPANY_SPECTATOR);
+		if (_network_server || company_id == _local_company) {
+			company_line.AddButton<CompanyButton>(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin, company_id == COMPANY_SPECTATOR);
+		}
 		ButtonCommon &chat_button = company_line.AddButton<CompanyButton>(SPR_CHAT, company_id == COMPANY_SPECTATOR ? STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP : STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyChat);
 		if (can_join_company) company_line.AddButton<CompanyButton>(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin, company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai);
 
@@ -1698,7 +1707,7 @@ private:
 		for (const Company *c : Company::Iterate()) {
 			if (c->index == client_playas) continue;
 
-			this->RebuildListCompany(c->index, client_playas, (own_ci != nullptr && c->allow_list.Contains(own_ci->public_key)) || _network_server);
+			this->RebuildListCompany(c->index, client_playas, _network_server || c->allow_any || (own_ci != nullptr && c->allow_list.Contains(own_ci->public_key)));
 		}
 
 		/* Spectators */
@@ -1894,6 +1903,18 @@ public:
 						callback = AdminCompanyResetCallback;
 						text = GetEncodedString(STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET, _admin_company_id);
 						break;
+
+					case DropDownAction::CompanyAllowAny: {
+						AutoRestoreBackup cur_company(_current_company, this->dd_company_id);
+						Command<Commands::CompanyAllowListControl>::Post(CALCA_ALLOW_ANY, {});
+						return;
+					}
+
+					case DropDownAction::CompanyAllowListed: {
+						AutoRestoreBackup cur_company(_current_company, this->dd_company_id);
+						Command<Commands::CompanyAllowListControl>::Post(CALCA_ALLOW_LISTED, {});
+						return;
+					}
 
 					default:
 						NOT_REACHED();
