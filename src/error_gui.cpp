@@ -78,6 +78,7 @@ static WindowDesc _errmsg_face_desc(
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param extra_msg    Extra error message showed in third line. Can be empty.
+ * @param company The associated company to the error message. Company::Invalid() when there is none.
  */
 ErrorMessageData::ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical, int x, int y, EncodedString &&extra_msg, CompanyID company) :
 	is_critical(is_critical),
@@ -310,6 +311,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param extra_msg    Extra error message shown in third line. Can be empty.
+ * @param company The associated company to the error message. Company::Invalid() when there is none.
  */
 void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x, int y, EncodedString &&extra_msg, CompanyID company)
 {

@@ -42,6 +42,7 @@ static constexpr size_t CHANGELOG_VERSIONS_LIMIT = 20;
  * Find the path to the game manual file.
  *
  * @param filename The filename to find.
+ * @param subdir The sub directory to search in.
  * @return std::string The path to the filename if found.
  */
 static std::optional<std::string> FindGameManualFilePath(std::string_view filename, Subdirectory subdir)

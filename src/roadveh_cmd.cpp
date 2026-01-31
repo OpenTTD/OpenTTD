@@ -145,6 +145,7 @@ void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, Vehi
  * @param y Vertical position of the engine.
  * @param engine Engine to draw
  * @param pal Palette to use.
+ * @param image_type Context where the image is being drawn.
  */
 void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
 {

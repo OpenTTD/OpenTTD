@@ -145,7 +145,7 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
  * Shape a single run.
  *
  * @param buff The buffer of which a partial (depending on start/length of the run) will be shaped.
- * @param length The length of the buffer.
+ * @param buff_length The length of the buffer.
  */
 void ICURun::Shape(UChar *buff, size_t buff_length)
 {

@@ -769,6 +769,7 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
  * @param y Top of the area to draw in.
  * @param engine_number Engine to display.
  * @param refittable If set, the aircraft can be refitted.
+ * @param te Extra information about refits and capacities.
  * @return Bottom of the used area.
  */
 static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable, TestedEngineDetails &te)
@@ -873,6 +874,7 @@ void TestedEngineDetails::FillDefaultCapacities(const Engine *e)
  * Draw the purchase info details of a vehicle at a given location.
  * @param left,right,y location where to draw the info
  * @param engine_number the engine of which to draw the info of
+ * @param te Extra information about refits and capacities.
  * @return y after drawing all the text
  */
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te)
@@ -962,6 +964,7 @@ static void DrawEngineBadgeColumn(const Rect &r, int column_group, const GUIBadg
  * @param selected_id what engine to highlight as selected, if any
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
+ * @param badge_classes The badges associated with the drawn engine.
  */
 void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes)
 {

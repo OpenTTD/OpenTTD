@@ -190,6 +190,7 @@ public:
 
 	/**
 	 * Real constructor.
+	 * @param index Unique identifier of this graph.
 	 * @param cargo Cargo the link graph is about.
 	 */
 	LinkGraph(LinkGraphID index, CargoType cargo = INVALID_CARGO) :

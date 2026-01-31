@@ -438,7 +438,7 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
  *
  * @param connection_string The string to parse.
  * @param default_port The default port to set port to if not in connection_string.
- * @param company Pointer to the company variable to set iff indicated.
+ * @param company_id Pointer to the company variable to set iff indicated.
  * @return A valid ServerAddress of the parsed information.
  */
 /* static */ ServerAddress ServerAddress::Parse(std::string_view connection_string, uint16_t default_port, CompanyID *company_id)

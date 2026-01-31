@@ -35,8 +35,8 @@ void IniItem::SetValue(std::string_view value)
 
 /**
  * Construct a new in-memory group of an Ini file.
- * @param parent the file we belong to
  * @param name   the name of the group
+ * @param type The type of group.
  */
 IniGroup::IniGroup(std::string_view name, IniGroupType type) : type(type), comment("\n")
 {

@@ -305,6 +305,7 @@ public:
 		/**
 		 * Marks Titem as free. Its memory is released
 		 * @param p memory to free
+		 * @param size The size that was allocated during allocation.
 		 * @note the item has to be allocated in the pool!
 		 */
 		inline void operator delete(void *p, size_t size)
@@ -324,7 +325,7 @@ public:
 
 		/**
 		 * Creates a new T-object in the associated pool.
-		 * @param args... The arguments to the constructor.
+		 * @param args The arguments to the constructor.
 		 * @return The created object.
 		 */
 		template <typename T = Titem, typename... Targs>
@@ -338,7 +339,7 @@ public:
 		/**
 		 * Creates a new T-object in the associated pool.
 		 * @param index The to allocate the object at.
-		 * @param args... The arguments to the constructor.
+		 * @param args The arguments to the constructor.
 		 * @return The created object.
 		 */
 		template <typename T = Titem, typename... Targs>

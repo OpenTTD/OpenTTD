@@ -199,6 +199,7 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::strin
  * Serializes the NetworkGameInfo struct to the packet.
  * @param p    the packet to write the data to.
  * @param info the NetworkGameInfo struct to serialize from.
+ * @param send_newgrf_names Whether to send the NewGRF names or not.
  */
 void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool send_newgrf_names)
 {
@@ -267,6 +268,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
  * Deserializes the NetworkGameInfo struct from the packet.
  * @param p    the packet to read the data from.
  * @param info the NetworkGameInfo to deserialize into.
+ * @param newgrf_lookup_table Lookup table for index-mapped NewGRFs.
  */
 void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {

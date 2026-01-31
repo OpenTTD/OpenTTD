@@ -120,6 +120,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 
 /**
  * Sets the max loan amount of your company. Does not respect the global loan setting.
+ * @param flags Flags whether to test or execute this command.
  * @param company the company ID.
  * @param amount the new max loan amount, will be rounded down to the multitude of LOAN_INTERVAL. If set to COMPANY_MAX_LOAN_DEFAULT reset the max loan to default(global) value.
  * @return zero cost or an error
