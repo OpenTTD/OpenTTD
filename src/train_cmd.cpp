@@ -489,6 +489,7 @@ static SpriteID GetDefaultTrainSprite(uint8_t spritenum, Direction direction)
  * Get the sprite to display the train.
  * @param direction Direction of view/travel.
  * @param image_type Visualisation context.
+ * @param result Sprite sequence to add the to be drawn sprites to.
  * @return Sprite to display.
  */
 void Train::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const

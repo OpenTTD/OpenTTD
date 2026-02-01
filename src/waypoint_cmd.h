@@ -32,6 +32,6 @@ DEF_CMD_TRAIT(Commands::BuildBuoy, CmdBuildBuoy, CommandFlag::Auto, CommandType:
 DEF_CMD_TRAIT(Commands::RenameWaypoint, CmdRenameWaypoint, {}, CommandType::OtherManagement)
 DEF_CMD_TRAIT(Commands::MoveWaypointNAme, CmdMoveWaypointName, {}, CommandType::OtherManagement)
 
-void CcMoveWaypointName(Commands cmd, const CommandCost &result, StationID waypoint_id);
+void CcMoveWaypointName(Commands, const CommandCost &result, StationID waypoint_id);
 
 #endif /* WAYPOINT_CMD_H */

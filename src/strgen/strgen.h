@@ -74,7 +74,8 @@ struct StringReader {
 
 	/**
 	 * Handle the pragma of the file.
-	 * @param str    The pragma string to parse.
+	 * @param str The pragma string to parse.
+	 * @param lang The header metadata to write the parsed pragma data to.
 	 */
 	virtual void HandlePragma(std::string_view str, LanguagePackHeader &lang);
 

@@ -121,6 +121,7 @@ void CcPlaySound_CONSTRUCTION_OTHER(Commands, const CommandCost &result, TileInd
 /**
  * Callback to start placing a bridge.
  * @param tile Start tile of the bridge.
+ * @param w The window to call back to when overbuilding a bridge.
  */
 static void PlaceRoad_Bridge(TileIndex tile, Window *w)
 {
@@ -878,6 +879,7 @@ struct BuildRoadToolbarWindow : Window {
 	 * Handler for global hotkeys of the BuildRoadToolbarWindow.
 	 * @param hotkey Hotkey
 	 * @param last_build Last build road type
+	 * @param rtt The road/tram type.
 	 * @return ES_HANDLED if hotkey was accepted.
 	 */
 	static EventState RoadTramToolbarGlobalHotkeys(int hotkey, RoadType last_build, RoadTramType rtt)

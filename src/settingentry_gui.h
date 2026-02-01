@@ -87,6 +87,14 @@ struct BaseSettingEntry {
 	static inline int line_height; ///< Height of a single setting.
 
 protected:
+	/**
+	 * Function to draw setting value (button + text + current value)
+	 * @param settings_ptr Pointer to current values of all settings.
+	 * @param left Left-most position in window/panel to start drawing.
+	 * @param right Right-most position in window/panel to draw.
+	 * @param y Upper-most position in window/panel to start drawing.
+	 * @param highlight Whether to highlight the entry.
+	 */
 	virtual void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const = 0;
 };
 

@@ -929,6 +929,7 @@ static inline size_t SlCalcStdStringLen(const void *ptr)
  * because the validation looks for SCC_ENCODED. If there is something invalid,
  * just bail out and do not continue trying to replace the tokens.
  * @param str the string to fix.
+ * @param fix_code Whether to interpret/replace codes 0xE028 and 0xE02A as/with SCC_ENCODED.
  */
 void FixSCCEncoded(std::string &str, bool fix_code)
 {
@@ -1812,7 +1813,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 
 /**
  * Set the length of this list.
- * @param The length of the list.
+ * @param length The length of the list.
  */
 void SlSetStructListLength(size_t length)
 {
@@ -3251,6 +3252,7 @@ SaveOrLoadResult LoadWithFilter(std::shared_ptr<LoadFilter> reader)
  * handled. It opens the savegame, selects format and checks versions
  * @param filename The name of the savegame being created/loaded
  * @param fop Save or load mode. Load can also be a TTD(Patch) game.
+ * @param dft The type of file to save or load.
  * @param sb The sub directory to save the savegame in
  * @param threaded True when threaded saving is allowed
  * @return Return the result of the action. #SL_OK, #SL_ERROR, or #SL_REINIT ("unload" the game)
@@ -3430,8 +3432,8 @@ void FileToSaveLoad::SetMode(const FiosType &ft, SaveLoadOperation fop)
 }
 
 /**
- * Set the title of the file.
- * @param title Title of the file.
+ * Set the mode, title and name of the file.
+ * @param item Container with mode, title and name.
  */
 void FileToSaveLoad::Set(const FiosItem &item)
 {

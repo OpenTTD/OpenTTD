@@ -352,6 +352,7 @@ VehicleOrderID OrderList::GetNextDecisionNode(VehicleOrderID next, uint hops) co
 
 /**
  * Recursively determine the next deterministic station to stop at.
+ * @param next_station The next stations that we have already seen, and might be adding to.
  * @param v The vehicle we're looking at.
  * @param first Order to start searching at or INVALID_VEH_ORDER_ID to start at cur_implicit_order_index + 1.
  * @param hops Number of orders we have already looked at.
@@ -410,7 +411,7 @@ void OrderList::GetNextStoppingStation(std::vector<StationID> &next_station, con
 
 /**
  * Insert a new order into the order chain.
- * @param new_order is the order to insert into the chain.
+ * @param order Rvalue reference of the order to insert into the chain.
  * @param index is the position where the order is supposed to be inserted.
  */
 void OrderList::InsertOrderAt(Order &&order, VehicleOrderID index)

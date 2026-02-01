@@ -1129,7 +1129,7 @@ struct SpecializedVehicle : public Vehicle {
 
 	/**
 	 * Creates a new T-object in the vehicle pool.
-	 * @param args... The arguments to the constructor.
+	 * @param args The arguments to the constructor.
 	 * @return The created object.
 	 */
 	template <typename... Targs>
@@ -1141,7 +1141,7 @@ struct SpecializedVehicle : public Vehicle {
 	/**
 	 * Creates a new T-object in the vehicle pool.
 	 * @param index The index allocate the object at.
-	 * @param args... The arguments to the constructor.
+	 * @param args The arguments to the constructor.
 	 * @return The created object.
 	 */
 	template <typename... Targs>

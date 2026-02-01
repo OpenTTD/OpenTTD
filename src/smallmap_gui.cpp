@@ -985,6 +985,7 @@ protected:
 	/**
 	 * Adds town names to the smallmap.
 	 * @param dpi the part of the smallmap to be drawn into
+	 * @param vertical_padding The amount to show the industry name above the industry tile.
 	 */
 	void DrawTowns(const DrawPixelInfo *dpi, const int vertical_padding) const
 	{
@@ -1008,6 +1009,7 @@ protected:
 	/**
 	 * Adds industry names to the smallmap.
 	 * @param dpi the part of the smallmap to be drawn into
+	 * @param vertical_padding The amount to show the industry name above the industry tile.
 	 */
 	void DrawIndustryNames(const DrawPixelInfo *dpi, const int vertical_padding) const
 	{
@@ -2095,6 +2097,7 @@ bool ScrollMainWindowTo(int x, int y, int z, bool instant)
 
 /**
  * Determine the middle of a station in the smallmap window.
+ * @param w The smallmap window to get the station middle for.
  * @param st The station we're looking for.
  * @return Middle point of the station in the smallmap window.
  */

@@ -834,6 +834,7 @@ public:
 	/**
 	 * Get the string to draw the town name.
 	 * @param t Town to draw.
+	 * @param population The population of the town.
 	 * @return The string to use.
 	 */
 	static std::string GetTownString(const Town *t, uint64_t population)

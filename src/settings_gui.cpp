@@ -119,6 +119,7 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 
 /**
  * Open the BaseSet version of the textfile window.
+ * @param parent The parent of this window,
  * @param file_type The type of textfile to display.
  * @param baseset The BaseSet to use.
  * @param content_type STR_CONTENT_TYPE_xxx for title.

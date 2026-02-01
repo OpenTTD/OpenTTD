@@ -22,6 +22,6 @@ DEF_CMD_TRAIT(Commands::PlaceSign, CmdPlaceSign, CommandFlag::Deity, CommandType
 DEF_CMD_TRAIT(Commands::RenameSign, CmdRenameSign, CommandFlag::Deity, CommandType::OtherManagement)
 DEF_CMD_TRAIT(Commands::MoveSign, CmdMoveSign, CommandFlag::Deity, CommandType::OtherManagement)
 
-void CcPlaceSign(Commands cmd, const CommandCost &result, SignID new_sign);
+void CcPlaceSign(Commands, const CommandCost &result, SignID new_sign);
 
 #endif /* SIGNS_CMD_H */

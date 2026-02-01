@@ -1498,6 +1498,7 @@ private:
 
 	/**
 	 * Draw dynamic a signal-sprite in a button in the signal GUI
+	 * @param r The rectangle to draw the sprite in.
 	 * @param image        the sprite to draw
 	 */
 	void DrawSignalSprite(const Rect &r, SpriteID image) const

@@ -41,8 +41,8 @@ DEF_CMD_TRAIT(Commands::MassStartStop, CmdMassStartStopVehicle, {}, CommandType:
 DEF_CMD_TRAIT(Commands::DepotMassSell, CmdDepotSellAllVehicles, {}, CommandType::VehicleConstruction)
 DEF_CMD_TRAIT(Commands::DepotMassAutoreplace, CmdDepotMassAutoReplace, {}, CommandType::VehicleConstruction)
 
-void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray);
-void CcStartStopVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id, bool);
+void CcBuildPrimaryVehicle(Commands, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray);
+void CcStartStopVehicle(Commands, const CommandCost &result, VehicleID veh_id, bool);
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const CargoArray &cargo_array)

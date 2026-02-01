@@ -1191,6 +1191,7 @@ Window *GetMainWindow()
  * @param cls Window class
  * @param number Number of the window within the window class
  * @param force force closing; if false don't close when stickied
+ * @param data Arbitrary data to pass to the Close function.
  */
 void CloseWindowById(WindowClass cls, WindowNumber number, bool force, int data)
 {
@@ -1203,6 +1204,7 @@ void CloseWindowById(WindowClass cls, WindowNumber number, bool force, int data)
 /**
  * Close all windows of a given class
  * @param cls Window class of windows to delete
+ * @param data Arbitrary data to pass to the Close function.
  */
 void CloseWindowByClass(WindowClass cls, int data)
 {
@@ -2093,6 +2095,7 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
  * @param delta_x Delta x-size of changed window (positive if larger, etc.)
  * @param delta_y Delta y-size of changed window
  * @param clamp_to_screen Whether to make sure the whole window stays visible
+ * @param schedule_resize Whether to schedule for resizing (when a Window isn't fully initialised yet), or resize immediately.
  */
 void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, bool schedule_resize)
 {
@@ -2716,6 +2719,10 @@ void HandleCtrlChanged()
  * Insert a text string at the cursor position into the edit box widget.
  * @param wid Edit box widget.
  * @param str Text string to insert.
+ * @param marked Replace the currently marked text with the new text.
+ * @param caret Move the caret to this point in the insertion string.
+ * @param insert_location Position at which to insert the string.
+ * @param replacement_end Replace all characters from insert_location up to this location with the new string.
  */
 /* virtual */ void Window::InsertTextString(WidgetID wid, std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)
 {
@@ -2731,8 +2738,10 @@ void HandleCtrlChanged()
 /**
  * Handle text input.
  * @param str Text string to input.
- * @param marked Is the input a marked composition string from an IME?
+ * @param marked Replace the currently marked text with the new text.
  * @param caret Move the caret to this point in the insertion string.
+ * @param insert_location Position at which to insert the string.
+ * @param replacement_end Replace all characters from insert_location up to this location with the new string.
  */
 void HandleTextInput(std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)
 {

@@ -876,7 +876,7 @@ static StringID GetBridgeTooLowMessageForStationType(StationType type)
 /**
  * Test if a bridge can be built above a station.
  * @param tile Tile to test.
- * @param spec Custom station spec to test.
+ * @param bridgeable_info Minimum height before bridge is okay for each of the layouts.
  * @param type Type of station.
  * @param layout Layout piece of road station to test.
  * @param bridge_height Height of bridge to test.
@@ -1250,6 +1250,7 @@ StationGfx RailStationTileLayout::Iterator::operator*() const
  * @param adjacent whether adjacent stations are allowed
  * @param ta the area of the newly build station
  * @param st 'return' pointer for the found station
+ * @param filter The filter to remove unwanted stations.
  * @return command cost with the error or 'okay'
  */
 template <class T, StringID error_message, class F>
@@ -2022,7 +2023,7 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  * @param unit_cost The cost to build one road stop of the current type.
  * @return The cost in case of success, or an error code if it failed.
  */
-CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, const RoadStopSpec *roadstopspec, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
+CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, const RoadStopSpec *roadstopspec, Axis axis, DiagDirection ddir, StationID *station, RoadType rt, Money unit_cost)
 {
 	DiagDirections invalid_dirs{};
 	if (is_drive_through) {
@@ -2036,7 +2037,7 @@ CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool
 	int allowed_z = -1;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	for (TileIndex cur_tile : tile_area) {
-		CommandCost ret = CheckFlatLandRoadStop(cur_tile, allowed_z, roadstopspec, flags, invalid_dirs, is_drive_through, station_type, axis, est, rt);
+		CommandCost ret = CheckFlatLandRoadStop(cur_tile, allowed_z, roadstopspec, flags, invalid_dirs, is_drive_through, station_type, axis, station, rt);
 		if (ret.Failed()) return ret;
 
 		bool is_preexisting_roadstop = IsTileType(cur_tile, TileType::Station) && IsAnyRoadStop(cur_tile);
@@ -2589,7 +2590,7 @@ Town *AirportGetNearestTown(const AirportSpec *as, Direction rotation, TileIndex
 /**
  * Finds the town nearest to given existing airport. Based on minimal manhattan distance to any airport's tile.
  * If two towns have the same distance, town with lower index is returned.
- * @param station existing station with airport
+ * @param st Existing station with airport.
  * @param[out] mindist Minimum distance to town
  * @return nearest town to airport
  */
@@ -4256,7 +4257,8 @@ void DeleteStaleLinks(Station *from)
  * @param next_station_id Station the consist will be travelling to next.
  * @param capacity Capacity to add to link stat.
  * @param usage Usage to add to link stat.
- * @param mode Update mode to be applied.
+ * @param time The travel time for the link.
+ * @param modes Update modes to be applied.
  */
 void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint capacity, uint usage, uint32_t time, EdgeUpdateModes modes)
 {
@@ -4309,6 +4311,7 @@ void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint
  * @param st Station to get the link stats from.
  * @param front First vehicle in the consist.
  * @param next_station_id Station the consist will be travelling to next.
+ * @param time The travel time for the links.
  */
 void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id, uint32_t time)
 {

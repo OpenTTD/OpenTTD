@@ -299,13 +299,10 @@ static bool LoadIntList(std::optional<std::string_view> str, void *array, int ne
 }
 
 /**
- * Convert an integer-array (intlist) to a string representation. Each value
+ * Convert a list to a string representation. Each value
  * is separated by a comma or a space character
- * @param buf output buffer where the string-representation will be stored
- * @param last last item to write to in the output buffer
- * @param array pointer to the integer-arrays that is read from
- * @param nelems the number of elements the array holds.
- * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
+ * @param object The object to read the list from.
+ * @return The string representation of the list.
  */
 std::string ListSettingDesc::FormatValue(const void *object) const
 {
@@ -693,7 +690,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 /**
  * Save the values of settings to the inifile.
  * @param ini pointer to IniFile structure
- * @param sd read-only SettingDesc structure which contains the unmodified,
+ * @param settings_table read-only structure which contains the unmodified,
  *        loaded values of the configuration file and various information about it
  * @param grpname holds the name of the group (eg. [network]) where these will be saved
  * @param object pointer to the object been saved
@@ -1810,8 +1807,7 @@ CommandCost CmdChangeCompanySetting(DoCommandFlags flags, const std::string &nam
 
 /**
  * Top function to save the new value of an element of the Settings struct
- * @param index offset in the SettingDesc array of the Settings struct which
- * identifies the setting member we want to change
+ * @param sd The SettingDesc we want to change.
  * @param value new value of the setting
  * @param force_newgame force the newgame settings
  */

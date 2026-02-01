@@ -833,6 +833,7 @@ static void DrawCanalWater(TileIndex tile)
  * @param base    Base sprite.
  * @param offset  Additional sprite offset.
  * @param palette Palette to use.
+ * @param feature The canal feature to get the sprite offset to apply from.
  */
 static void DrawWaterTileStruct(const TileInfo *ti, std::span<const DrawTileSeqStruct> seq, SpriteID base, uint offset, PaletteID palette, CanalFeature feature)
 {

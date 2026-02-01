@@ -111,7 +111,7 @@ enum StoryPageButtonCursor : uint8_t {
 /**
  * Checks if a StoryPageButtonCursor value is valid.
  *
- * @param wc The value to check
+ * @param cursor The value to check.
  * @return true if the given value is a valid StoryPageButtonCursor.
  */
 inline bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)

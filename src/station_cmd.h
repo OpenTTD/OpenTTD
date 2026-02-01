@@ -43,6 +43,6 @@ DEF_CMD_TRAIT(Commands::RenameStation, CmdRenameStation, {}, CommandType::OtherM
 DEF_CMD_TRAIT(Commands::MoveStationName, CmdMoveStationName, {}, CommandType::OtherManagement)
 DEF_CMD_TRAIT(Commands::OpenCloseAirport, CmdOpenCloseAirport, {}, CommandType::RouteManagement)
 
-void CcMoveStationName(Commands cmd, const CommandCost &result, StationID station_id);
+void CcMoveStationName(Commands, const CommandCost &result, StationID station_id);
 
 #endif /* STATION_CMD_H */

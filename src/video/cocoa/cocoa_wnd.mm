@@ -823,7 +823,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 
 /**
  * Internal handler of keyboard keys.
- * @param event Information about occurred event.
+ * @param keycode The raw keycode of the key press.
+ * @param unicode The unicode character of the key press.
+ * @param down Whether pressing or releasing the key.
+ * @param modifiers Flags to denote other (special) keys that might have been pressed.
  * @return Whether event should be interpreted.
  */
 - (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(char32_t)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers

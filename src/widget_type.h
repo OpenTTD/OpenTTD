@@ -1347,7 +1347,7 @@ constexpr NWidgetPart SetPadding(uint8_t horizontal, uint8_t vertical)
 
 /**
  * Widget part function for setting additional space around a widget.
- * @param r The padding around the widget.
+ * @param padding The padding around the widget.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPadding(const RectPadding &padding)
@@ -1379,9 +1379,9 @@ constexpr NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
 
 /**
  * Widget part function for setting a pre/inter/post ratio.
- * @param pre The ratio of space before the first widget.
- * @param inter The ratio of space between widgets.
- * @param post The ratio of space after the last widget.
+ * @param ratio_pre The ratio of space before the first widget.
+ * @param ratio_inter The ratio of space between widgets.
+ * @param ratio_post The ratio of space after the last widget.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_t ratio_post)
@@ -1430,6 +1430,7 @@ constexpr NWidgetPart NWidget(WidgetType tp, Colours col, WidgetID idx = INVALID
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
  * @param tp         Type of the new nested widget, #NWID_HORIZONTAL, #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, and #NWID_MATRIX.
  * @param cont_flags Flags for the containers (#NWID_HORIZONTAL and #NWID_VERTICAL).
+ * @param idx Optional identifier of the widget.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = {}, WidgetID idx = INVALID_WIDGET)

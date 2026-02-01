@@ -117,7 +117,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 /**
  * Finds out, whether given company has a given RoadType available for construction.
  * @param company ID of company
- * @param roadtypet RoadType to test
+ * @param roadtype RoadType to test
  * @return true if company has the requested RoadType available
  */
 bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
@@ -147,6 +147,7 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 /**
  * Test if any buildable RoadType is available for a company.
  * @param company the company in question
+ * @param rtt Whether to check for road or tram types.
  * @return true if company has any RoadTypes available
  */
 bool HasAnyRoadTypesAvail(CompanyID company, RoadTramType rtt)
