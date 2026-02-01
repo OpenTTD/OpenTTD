@@ -436,11 +436,10 @@ static inline uint32_t GetSmallMapContoursPixels(TileIndex tile, TileType t)
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Vehicles".
  *
- * @param tile The tile of which we would like to get the colour.
  * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "Vehicles"
  */
-static inline uint32_t GetSmallMapVehiclesPixels(TileIndex, TileType t)
+static inline uint32_t GetSmallMapVehiclesPixels(TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 	return ApplyMask(cs->default_colour, &_smallmap_vehicles_andor[t]);
@@ -1375,7 +1374,7 @@ protected:
 				return GetSmallMapContoursPixels(tile, et);
 
 			case SMT_VEHICLES:
-				return GetSmallMapVehiclesPixels(tile, et);
+				return GetSmallMapVehiclesPixels(et);
 
 			case SMT_INDUSTRY:
 				return GetSmallMapIndustriesPixels(tile, et);
