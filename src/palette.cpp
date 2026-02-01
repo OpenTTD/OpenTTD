@@ -121,7 +121,7 @@ static uint8_t FindNearestColourIndex(uint8_t r, uint8_t g, uint8_t b)
 
 /**
  * Find nearest company colour palette index for a brightness level.
- * @param pixel Pixel to find.
+ * @param b Pixel-colour to find.
  * @returns palette index of nearest colour.
  */
 static uint8_t FindNearestColourReshadeIndex(uint8_t b)

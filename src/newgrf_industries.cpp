@@ -571,6 +571,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
  * Check with callback #CBID_INDUSTRY_PROBABILITY whether the industry can be built.
  * @param type Industry type to check.
  * @param creation_type Reason to construct a new industry.
+ * @param default_prob The default probability if the NewGRF doesn't override it.
  * @return If the industry has no callback or allows building, \c true is returned. Otherwise, \c false is returned.
  */
 uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityCallType creation_type, uint32_t default_prob)

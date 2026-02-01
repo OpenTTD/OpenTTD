@@ -257,14 +257,6 @@ const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc
 	return settings_ptr;
 }
 
-/**
- * Function to draw setting value (button + text + current value)
- * @param settings_ptr Pointer to current values of all settings
- * @param left         Left-most position in window/panel to start drawing
- * @param right        Right-most position in window/panel to draw
- * @param y            Upper-most position in window/panel to start drawing
- * @param highlight    Highlight entry.
- */
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	const IntSettingDesc *sd = this->setting;
@@ -602,12 +594,6 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, 
 	return cur_row;
 }
 
-/**
- * Function to draw setting value (button + text + current value)
- * @param left         Left-most position in window/panel to start drawing
- * @param right        Right-most position in window/panel to draw
- * @param y            Upper-most position in window/panel to start drawing
- */
 void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool) const
 {
 	bool rtl = _current_text_dir == TD_RTL;

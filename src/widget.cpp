@@ -53,7 +53,7 @@ static inline RectPadding ScaleGUITrad(const RectPadding &r)
 
 /**
  * Scale a Dimension to GUI zoom level.
- * @param d Dimension at ZOOM_BASE (traditional "normal" interface size).
+ * @param dim Dimension at ZOOM_BASE (traditional "normal" interface size).
  * @return Dimension at current interface size.
  */
 static inline Dimension ScaleGUITrad(const Dimension &dim)
@@ -975,6 +975,7 @@ void NWidgetBase::AdjustPaddingForZoom()
 /**
  * Constructor for resizable nested widgets.
  * @param tp     Nested widget type.
+ * @param index Index of the widget within the window.
  * @param fill_x Horizontal fill step size, \c 0 means no filling is allowed.
  * @param fill_y Vertical fill step size, \c 0 means no filling is allowed.
  */
@@ -1080,7 +1081,7 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
  * Try to set optimum widget size for a multiline text widget.
  * The window will need to be reinited if the size is changed.
  * @param str Multiline string contents that will fill the widget.
- * @param max_line Maximum number of lines.
+ * @param max_lines Maximum number of lines.
  * @return true iff the widget minimum size has changed.
  */
 bool NWidgetResizeBase::UpdateMultilineWidgetSize(const std::string &str, int max_lines)
@@ -2440,7 +2441,7 @@ Scrollbar::size_type Scrollbar::GetScrolledRowFromWidget(int clickpos, const Win
  * With WKC_HOME the first position is selected and with WKC_END the last position is selected.
  * This function ensures that pos is in the range [0..count).
  * @param list_position The current position in the list.
- * @param key_code      The pressed key code.
+ * @param keycode The pressed key code.
  * @return ES_NOT_HANDLED when another key than the 6 specific keys was pressed, otherwise ES_HANDLED.
  */
 EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16_t keycode) const
@@ -3426,7 +3427,7 @@ std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(std::span<const NWidgetPart> 
  * Make a number of rows with button-like graphics, for enabling/disabling each company.
  * @param widget_first The first widget index to use.
  * @param widget_last The last widget index to use.
- * @param colour The colour in which to draw the button.
+ * @param button_colour The colour in which to draw the button.
  * @param max_length Maximal number of company buttons in one row.
  * @param button_tooltip The tooltip-string of every button.
  * @param resizable Whether the rows are resizable.

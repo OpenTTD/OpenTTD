@@ -45,7 +45,8 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir);
  * @param t the entrance of the tunnel
  * @param o the owner of the entrance
  * @param d the direction facing out of the tunnel
- * @param r the road type used in the tunnel
+ * @param road_rt The road type used in the tunnel.
+ * @param tram_rt The tram type used in the tunnel.
  */
 inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, RoadType tram_rt)
 {

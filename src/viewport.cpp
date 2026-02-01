@@ -650,14 +650,9 @@ static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, int z
  * @param pal the provided palette,
  * @param x position X (world) of the sprite,
  * @param y position Y (world) of the sprite,
- * @param w bounding box extent towards positive X (world),
- * @param h bounding box extent towards positive Y (world),
- * @param dz bounding box extent towards positive Z (world),
  * @param z position Z (world) of the sprite,
+ * @param bounds Bounding box extent towards positive X/Y/Z (world).
  * @param transparent if true, switch the palette between the provided palette and the transparent palette,
- * @param bb_offset_x bounding box extent towards negative X (world),
- * @param bb_offset_y bounding box extent towards negative Y (world),
- * @param bb_offset_z bounding box extent towards negative Z (world)
  * @param sub Only draw a part of the sprite.
  */
 void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z, const SpriteBounds &bounds, bool transparent, const SubSprite *sub)

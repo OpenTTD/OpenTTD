@@ -1097,7 +1097,7 @@ void CargoDataEntry::Clear()
 
 /**
  * Remove a subentry from this one and delete it.
- * @param child the entry to be removed. This may also be a synthetic entry
+ * @param entry The entry to be removed. This may also be a synthetic entry
  * which only contains the ID of the entry to be removed. In this case child is
  * not deleted.
  */
@@ -1489,7 +1489,7 @@ struct StationViewWindow : public Window {
 	/**
 	 * Rebuild the cache for estimated destinations which is used to quickly show the "destination" entries
 	 * even if we actually don't know the destination of a certain packet from just looking at it.
-	 * @param i Cargo to recalculate the cache for.
+	 * @param cargo Cargo to recalculate the cache for.
 	 */
 	void RecalcDestinations(CargoType cargo)
 	{
@@ -2453,9 +2453,9 @@ static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 
 /**
  * Show the station selection window when needed. If not, build the station.
- * @param cmd Command to build the station.
  * @param ta Area to build the station in
- * @tparam the class to find stations for
+ * @param proc Callback to check whether we can build.
+ * @tparam T the class to find stations for
  */
 template <class T>
 void ShowSelectBaseStationIfNeeded(TileArea ta, StationPickerCmdProc&& proc)

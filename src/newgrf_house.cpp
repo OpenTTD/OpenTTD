@@ -103,6 +103,7 @@ void ResetHouses()
  * @param not_yet_constructed House is still under construction.
  * @param initial_random_bits Random bits during construction checks.
  * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
+ * @param view The house's 'view'.
  */
 HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 		CallbackID callback, uint32_t param1, uint32_t param2,

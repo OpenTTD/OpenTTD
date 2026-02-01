@@ -118,6 +118,7 @@ struct ObjectScopeResolver : public ScopeResolver {
 	 * Constructor of an object scope resolver.
 	 * @param ro Surrounding resolver.
 	 * @param obj Object being resolved.
+	 * @param spec The specification of the object type.
 	 * @param tile %Tile of the object.
 	 * @param view View of the object.
 	 */

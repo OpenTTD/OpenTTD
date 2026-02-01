@@ -322,8 +322,8 @@ static void AppendFile(std::optional<std::string_view> fname, FILE *out_fp)
 
 /**
  * Compare two files for identity.
- * @param n1 First file.
- * @param n2 Second file.
+ * @param path1 First file.
+ * @param path2 Second file.
  * @return True if both files are identical.
  */
 static bool CompareFiles(std::filesystem::path path1, std::filesystem::path path2)

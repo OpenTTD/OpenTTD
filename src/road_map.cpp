@@ -47,7 +47,7 @@ bool MayHaveRoad(Tile t)
  * for bridge ramps and tunnel entrances is returned depending
  * on the orientation of the tunnel or bridge.
  * @param tile the tile to get the road bits for
- * @param rt   the road type to get the road bits form
+ * @param rtt the road type to get the road bits form
  * @param straight_tunnel_bridge_entrance whether to return straight road bits for tunnels/bridges.
  * @return the road bits of the given tile
  */

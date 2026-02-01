@@ -205,6 +205,7 @@ public:
 	 * If a CoreText font description is present, e.g. from the automatic font
 	 * fallback search, use it. Otherwise, try to resolve it by font name.
 	 * @param fs The font size to load.
+	 * @param fonttype The type of font that is being loaded.
 	 */
 	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{

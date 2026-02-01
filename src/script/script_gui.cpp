@@ -625,6 +625,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 /**
  * Open the Script version of the textfile window.
+ * @param parent The window we become a child of, and for which other textfile windows are closed.
  * @param file_type The type of textfile to display.
  * @param slot The slot the Script is using.
  */
@@ -745,6 +746,7 @@ struct ScriptDebugWindow : public Window {
 	 * Constructor for the window.
 	 * @param desc The description of the window.
 	 * @param number The window number (actually unused).
+	 * @param show_company The initial company to focus on.
 	 */
 	ScriptDebugWindow(WindowDesc &desc, WindowNumber number, Owner show_company) : Window(desc), break_editbox(MAX_BREAK_STR_STRING_LENGTH)
 	{
@@ -970,7 +972,7 @@ struct ScriptDebugWindow : public Window {
 
 	/**
 	 * Change all settings to select another Script.
-	 * @param show_ai The new AI to show.
+	 * @param show_script The new script to show.
 	 * @param new_window Open the script in a new window.
 	 */
 	void ChangeToScript(CompanyID show_script, bool new_window = false)

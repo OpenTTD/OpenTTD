@@ -1909,6 +1909,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
  * vehicle type. This to disable building stations etc. when
  * you are not allowed/able to have the vehicle type yet.
  * @param type the vehicle type to check this for
+ * @param subtype The vehicle's sub to to check this for.
  * @return true if there is any reason why you may build
  *         the infrastructure for the given vehicle type
  */
@@ -2318,6 +2319,7 @@ void Vehicle::BeginLoading()
 /**
  * Return all reserved cargo packets to the station and reset all packets
  * staged for transfer.
+ * @param next ID of the next station the cargo wants to go to.
  * @param st the station where the reserved packets should go.
  */
 void Vehicle::CancelReservation(StationID next, Station *st)
@@ -3266,7 +3268,7 @@ uint32_t Vehicle::GetDisplayMinPowerToWeight() const
 /**
  * Checks if two vehicle chains have the same list of engines.
  * @param v1 First vehicle chain.
- * @param v1 Second vehicle chain.
+ * @param v2 Second vehicle chain.
  * @return True if same, false if different.
  */
 bool VehiclesHaveSameEngineList(const Vehicle *v1, const Vehicle *v2)
@@ -3283,7 +3285,7 @@ bool VehiclesHaveSameEngineList(const Vehicle *v1, const Vehicle *v2)
 /**
  * Checks if two vehicles have the same list of orders.
  * @param v1 First vehicles.
- * @param v1 Second vehicles.
+ * @param v2 Second vehicles.
  * @return True if same, false if different.
  */
 bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2)

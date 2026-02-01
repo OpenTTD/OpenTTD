@@ -1933,7 +1933,7 @@ static const FenceOffset _fence_offsets[] = {
 /**
  * Draw a track fence.
  * @param ti Tile drawing information.
- * @param base_image First fence sprite.
+ * @param psid First fence sprite and palette.
  * @param num_sprites Number of fence sprites.
  * @param rfo Fence to draw.
  */
@@ -1990,6 +1990,7 @@ static void DrawTrackFence_SW(const TileInfo *ti, const PalSpriteID &psid, uint 
  * Draw track fences.
  * @param ti Tile drawing information.
  * @param rti Rail type information.
+ * @param pal The palette to apply while drawing.
  */
 static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, PaletteID pal)
 {

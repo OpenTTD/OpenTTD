@@ -22,6 +22,7 @@
  * @param v        the ship that needs to find a path
  * @param tile     the tile to find the path from (should be next tile the ship is about to enter)
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
+ * @param path_cache Cache of a previously chosen path.
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache);
@@ -41,6 +42,7 @@ bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir);
  * @param enterdir  diagonal direction which the RV will enter this new tile from
  * @param trackdirs available trackdirs on the new tile (to choose from)
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
+ * @param path_cache Cache of a previously chosen path.
  * @return          the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
 Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found, RoadVehPathCache &path_cache);

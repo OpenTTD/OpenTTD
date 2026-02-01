@@ -160,6 +160,7 @@ static void SurveySettingsTable(nlohmann::json &survey, const SettingTable &tabl
  * Convert settings to JSON.
  *
  * @param survey The JSON object.
+ * @param skip_if_default If true, skip any settings that are on their default value.
  */
 void SurveySettings(nlohmann::json &survey, bool skip_if_default)
 {

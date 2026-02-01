@@ -337,7 +337,7 @@ void InvalidateWaterRegion(TileIndex tile)
  * accessible from one particular side of the starting patch.
  * @param water_region_patch Water patch within the water region to start searching from
  * @param side Side of the water region to look for neighbouring patches of water
- * @param callback The function that will be called for each neighbour that is found
+ * @param func The function that will be called for each neighbour that is found
  */
 static inline void VisitAdjacentWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, DiagDirection side, VisitWaterRegionPatchCallback &func)
 {

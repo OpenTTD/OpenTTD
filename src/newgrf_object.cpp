@@ -377,6 +377,7 @@ unhandled:
 /**
  * Constructor of the object resolver.
  * @param obj Object being resolved.
+ * @param spec Specifiction of the object's type.
  * @param tile %Tile of the object.
  * @param view View of the object.
  * @param callback Callback ID.

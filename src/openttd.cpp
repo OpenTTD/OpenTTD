@@ -934,6 +934,7 @@ static void MakeNewEditorWorld()
  * a previous correct state. In the menu for example load the intro game again.
  * @param filename file to be loaded
  * @param fop mode of loading, always SLO_LOAD
+ * @param dft Type of file that is going to be loaded.
  * @param newgm switch to this mode of loading fails due to some unknown error
  * @param subdir default directory to look for filename, set to 0 if not needed
  * @param lf Load filter to use, if nullptr: use filename + subdir.

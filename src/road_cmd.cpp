@@ -244,7 +244,7 @@ static Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
  * @param tile      the tile to remove the road from
  * @param remove    the roadbits that are going to be removed
  * @param owner     the actual owner of the roadbits of the tile
- * @param rt        the road type to remove the bits from
+ * @param rtt The road type to remove the bits from.
  * @param flags     command flags
  * @param town_check Shall the town rating checked/affected
  * @return A succeeded command when it is allowed to remove the road bits, a failed command otherwise.
@@ -308,7 +308,7 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
  * @param tile tile where to remove road from
  * @param flags operation to perform
  * @param pieces roadbits to remove
- * @param rt roadtype to remove
+ * @param rtt Road type to remove.
  * @param town_check should we check if the town allows removal?
  */
 static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pieces, RoadTramType rtt, bool town_check)
@@ -1496,6 +1496,7 @@ static void DrawRoadDetail(SpriteID img, const TileInfo *ti, int8_t dx, int8_t d
 /**
  * Draw road underlay and overlay sprites.
  * @param ti TileInfo
+ * @param pal The palette to apply to the overlays.
  * @param road_rti Road road type information
  * @param tram_rti Tram road type information
  * @param road_offset Road sprite offset (based on road bits)
@@ -2455,6 +2456,7 @@ static void ConvertRoadTypeOwner(TileIndex tile, uint num_pieces, Owner owner, R
  * @param tile end tile of road conversion drag
  * @param area_start start tile of drag
  * @param to_type new roadtype to convert to.
+ * @param diagonal Whether a diagonal or orthogonal area is to be converted.
  * @return the cost of this operation or an error
  */
 CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_start, RoadType to_type, bool diagonal)

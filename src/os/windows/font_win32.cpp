@@ -270,11 +270,12 @@ public:
 	Win32FontCacheFactory() : FontCacheFactory("win32", "Win32 font loader") {}
 
 	/**
-	* Loads the GDI font.
-	* If a GDI font description is present, e.g. from the automatic font
-	* fallback search, use it. Otherwise, try to resolve it by font name.
-	* @param fs The font size to load.
-	*/
+	 * Loads the GDI font.
+	 * If a GDI font description is present, e.g. from the automatic font
+	 * fallback search, use it. Otherwise, try to resolve it by font name.
+	 * @param fs The font size to load.
+	 * @param fonttype The type of font that is being loaded.
+	 */
 	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;

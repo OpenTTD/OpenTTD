@@ -68,7 +68,7 @@ struct SpecializedSpriteGroup : public SpriteGroup {
 
 	/**
 	 * Creates a new T-object in the SpriteGroup pool.
-	 * @param args... The arguments to the constructor.
+	 * @param args The arguments to the constructor.
 	 * @return The created object.
 	 */
 	template <typename... Targs>
@@ -221,6 +221,7 @@ protected:
 struct CallbackResultSpriteGroup : SpecializedSpriteGroup<CallbackResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a callback result
+	 * @param index Unique (pool) identifier of the SpriteGroup.
 	 * @param value The value that was used to represent this callback result
 	 */
 	CallbackResultSpriteGroup(SpriteGroupID index, CallbackResult value) : SpecializedSpriteGroup<CallbackResultSpriteGroup>(index), result(value) {}
@@ -237,6 +238,7 @@ protected:
 struct ResultSpriteGroup : SpecializedSpriteGroup<ResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a sprite number result.
+	 * @param index Unique (pool) identifier of the SpriteGroup.
 	 * @param sprite The sprite number.
 	 * @param num_sprites The number of sprites per set.
 	 * @return A spritegroup representing the sprite number result.

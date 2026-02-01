@@ -343,7 +343,7 @@ bool StrContainsIgnoreCase(std::string_view str, std::string_view value)
 /**
  * Get the length of an UTF-8 encoded string in number of characters
  * and thus not the number of bytes that the encoded string contains.
- * @param s The string to get the length for.
+ * @param str The string to get the length for.
  * @return The length of the string in characters.
  */
 size_t Utf8StringLength(std::string_view str)

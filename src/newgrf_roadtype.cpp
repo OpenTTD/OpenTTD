@@ -142,7 +142,7 @@ RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileInde
  * @param rti The road type data (spec).
  * @param tile The tile to get the sprite for.
  * @param rtsg The type of sprite to draw.
- * @param content Where are we drawing the tile?
+ * @param context Where are we drawing the tile?
  * @param [out] num_results If not nullptr, return the number of sprites in the spriteset.
  * @return The sprite to draw.
  */
