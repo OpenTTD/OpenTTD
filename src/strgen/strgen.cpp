@@ -56,9 +56,10 @@ void StrgenErrorI(const std::string &msg)
 	throw std::exception();
 }
 
-[[noreturn]] void FatalErrorI(const std::string &msg)
+/* Doxygen in error_func.h */
+[[noreturn]] void FatalErrorI(const std::string &str)
 {
-	fmt::print(stderr, LINE_NUM_FMT("FATAL"), _strgen.file, _strgen.cur_line, msg);
+	fmt::print(stderr, LINE_NUM_FMT("FATAL"), _strgen.file, _strgen.cur_line, str);
 #ifdef _MSC_VER
 	fmt::print(stderr, LINE_NUM_FMT("warning"), _strgen.file, _strgen.cur_line, "language is not compiled");
 #endif

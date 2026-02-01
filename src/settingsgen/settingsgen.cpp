@@ -20,14 +20,10 @@
 
 #include "../safeguards.h"
 
-/**
- * Report a fatal error.
- * @param s Format string.
- * @note Function does not return.
- */
-[[noreturn]] void FatalErrorI(const std::string &msg)
+/* Doxygen in error_func.h */
+[[noreturn]] void FatalErrorI(const std::string &str)
 {
-	fmt::print(stderr, "settingsgen: FATAL: {}\n", msg);
+	fmt::print(stderr, "settingsgen: FATAL: {}\n", str);
 	exit(1);
 }
 
@@ -464,12 +460,6 @@ int CDECL main(int argc, char *argv[])
 	return 0;
 }
 
-/**
- * Simplified FileHandle::Open which ignores OTTD2FS. Required as settingsgen does not include all of the fileio system.
- * @param filename UTF-8 encoded filename to open.
- * @param mode Mode to open file.
- * @return FileHandle, or std::nullopt on failure.
- */
 std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::string_view mode)
 {
 	auto f = fopen(filename.c_str(), std::string{mode}.c_str());
