@@ -2424,12 +2424,9 @@ static WindowDesc _select_station_desc(
 
 /**
  * Check whether we need to show the station selection window.
- * @param cmd Command to build the station.
- * @param ta Tile area of the to-be-built station
- * @tparam T the station filter type
+ * @param proc Callback to check whether we can build.
  * @return whether we need to show the station selection window.
  */
-template <class T>
 static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 {
 	/* Only show selection if distant join is enabled in the settings */
@@ -2460,7 +2457,7 @@ static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 template <class T>
 void ShowSelectBaseStationIfNeeded(TileArea ta, StationPickerCmdProc&& proc)
 {
-	if (StationJoinerNeeded<T>(proc)) {
+	if (StationJoinerNeeded(proc)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 		FindStationsNearby<T>(ta, false);
 		new SelectStationWindow<T>(_select_station_desc, ta, std::move(proc));
