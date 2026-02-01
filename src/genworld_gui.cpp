@@ -1182,14 +1182,6 @@ struct CreateScenarioWindow : public Window
 				ShowDropDownList(this, BuildMapsizeDropDown(), _settings_newgame.game_creation.map_y, WID_CS_MAPSIZE_Y_PULLDOWN);
 				break;
 
-			case WID_CS_EMPTY_WORLD: // Empty world / flat world
-				StartGeneratingLandscape(GLWM_SCENARIO);
-				break;
-
-			case WID_CS_RANDOM_WORLD: // Generate
-				ShowGenerateLandscape();
-				break;
-
 			case WID_CS_START_DATE_DOWN:
 			case WID_CS_START_DATE_UP: // Year buttons
 				/* Don't allow too fast scrolling */
@@ -1222,6 +1214,22 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT: // Height level text
 				this->widget_id = WID_CS_FLAT_LAND_HEIGHT_TEXT;
 				ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.se_flat_world_height), STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT, 4, this, CS_NUMERAL, {});
+				break;
+
+			case WID_GL_AI_BUTTON: ///< AI Settings
+				ShowAIConfigWindow();
+				break;
+
+			case WID_GL_GS_BUTTON: ///< Game Script Settings
+				ShowGSConfigWindow();
+				break;
+
+			case WID_GL_NEWGRF_BUTTON: ///< NewGRF Settings
+				ShowNewGRFSettings(true, true, false, _grfconfig_newgame);
+				break;
+
+			case WID_CS_EMPTY_WORLD: // Empty world / flat world
+				StartGeneratingLandscape(GLWM_SCENARIO);
 				break;
 		}
 	}
@@ -1278,46 +1286,49 @@ static constexpr std::initializer_list<NWidgetPart> _nested_create_scenario_widg
 				NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, WID_CS_TOYLAND), SetSpriteTip(SPR_SELECT_TOYLAND, STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE),
 			EndContainer(),
 
-			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-				/* Green generation type buttons: 'Flat land' and 'Random land'. */
+			/* Labels + setting drop-downs */
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
+				/* Labels. */
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_CS_EMPTY_WORLD), SetStringTip(STR_SE_MAPGEN_FLAT_WORLD, STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP), SetFill(1, 1),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_CS_RANDOM_WORLD), SetStringTip(STR_SE_MAPGEN_RANDOM_LAND, STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND), SetFill(1, 1),
+					NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_MAPSIZE, STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(0, 1),
+					NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_DATE, STR_MAPGEN_DATE_TOOLTIP), SetFill(0, 1),
+					NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_SE_MAPGEN_FLAT_WORLD_HEIGHT, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP), SetFill(0, 1),
 				EndContainer(),
 
-				/* Labels + setting drop-downs */
-				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-					/* Labels. */
-					NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
-						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_MAPSIZE, STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(0, 1),
-						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_DATE, STR_MAPGEN_DATE_TOOLTIP), SetFill(0, 1),
-						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_SE_MAPGEN_FLAT_WORLD_HEIGHT, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP), SetFill(0, 1),
+				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
+					/* Map size. */
+					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_CS_MAPSIZE_X_PULLDOWN), SetToolTip(STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
+						NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_BY), SetFill(0, 1), SetAlignment(SA_CENTER),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_CS_MAPSIZE_Y_PULLDOWN), SetToolTip(STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
 					EndContainer(),
 
-					NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
-						/* Map size. */
-						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-							NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_CS_MAPSIZE_X_PULLDOWN), SetToolTip(STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
-							NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_MAPGEN_BY), SetFill(0, 1), SetAlignment(SA_CENTER),
-							NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_CS_MAPSIZE_Y_PULLDOWN), SetToolTip(STR_MAPGEN_MAPSIZE_TOOLTIP), SetFill(1, 1),
-						EndContainer(),
+					/* Date. */
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_START_DATE_DOWN), SetFill(0, 1), SetSpriteTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CS_START_DATE_TEXT),  SetFill(1, 1), SetToolTip(STR_MAPGEN_DATE_TOOLTIP),
+						NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_START_DATE_UP), SetFill(0, 1), SetSpriteTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
+					EndContainer(),
 
-						/* Date. */
-						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_START_DATE_DOWN), SetFill(0, 1), SetSpriteTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CS_START_DATE_TEXT),  SetFill(1, 1), SetToolTip(STR_MAPGEN_DATE_TOOLTIP),
-							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_START_DATE_UP), SetFill(0, 1), SetSpriteTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
-						EndContainer(),
-
-						/* Flat map height. */
-						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_FLAT_LAND_HEIGHT_DOWN), SetFill(0, 1), SetSpriteTip(SPR_ARROW_DOWN, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CS_FLAT_LAND_HEIGHT_TEXT),  SetFill(1, 1), SetToolTip(STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP),
-							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_FLAT_LAND_HEIGHT_UP), SetFill(0, 1), SetSpriteTip(SPR_ARROW_UP, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
-						EndContainer(),
+					/* Flat map height. */
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_FLAT_LAND_HEIGHT_DOWN), SetFill(0, 1), SetSpriteTip(SPR_ARROW_DOWN, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CS_FLAT_LAND_HEIGHT_TEXT),  SetFill(1, 1), SetToolTip(STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP),
+						NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_CS_FLAT_LAND_HEIGHT_UP), SetFill(0, 1), SetSpriteTip(SPR_ARROW_UP, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
+
+			/* AI, GS, and NewGRF settings */
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_AI_BUTTON), SetMinimalTextLines(2, 0), SetStringTip(STR_MAPGEN_AI_SETTINGS, STR_MAPGEN_AI_SETTINGS_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_GS_BUTTON), SetMinimalTextLines(2, 0), SetStringTip(STR_MAPGEN_GS_SETTINGS, STR_MAPGEN_GS_SETTINGS_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_NEWGRF_BUTTON), SetMinimalTextLines(2, 0), SetStringTip(STR_MAPGEN_NEWGRF_SETTINGS, STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP), SetFill(1, 0),
+			EndContainer(),
+
+			/* Green enter scenario editor button. */
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_CS_EMPTY_WORLD), SetMinimalTextLines(2, 0), SetStringTip(STR_SE_MAPGEN_FLAT_WORLD, STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP), SetFill(1, 1),
+
 		EndContainer(),
 	EndContainer(),
 };

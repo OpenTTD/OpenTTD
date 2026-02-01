@@ -482,8 +482,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_scen_edit_land_gen_w
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_ETT_NEW_SCENARIO), SetMinimalSize(160, 12),
-								SetFill(1, 0), SetStringTip(STR_TERRAFORM_SE_NEW_WORLD, STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND), SetPadding(0, 2, 0, 2),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_ETT_RANDOM_LANDSCAPE), SetMinimalSize(160, 12),
+								SetFill(1, 0), SetStringTip(STR_TERRAFORM_SE_GENERATE_RANDOM_LAND, STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND), SetPadding(0, 2, 0, 2),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_ETT_RESET_LANDSCAPE), SetMinimalSize(160, 12),
 								SetFill(1, 0), SetStringTip(STR_TERRAFORM_RESET_LANDSCAPE, STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP), SetPadding(1, 2, 2, 2),
 	EndContainer(),
@@ -620,9 +620,9 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 			}
 
-			case WID_ETT_NEW_SCENARIO: // gen random land
+			case WID_ETT_RANDOM_LANDSCAPE: // gen random land
 				this->HandleButtonClick(widget);
-				ShowCreateScenario();
+				ShowGenerateLandscape();
 				break;
 
 			case WID_ETT_RESET_LANDSCAPE: // Reset landscape
