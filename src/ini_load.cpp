@@ -16,7 +16,6 @@
 
 /**
  * Construct a new in-memory item of an Ini file.
- * @param parent the group we belong to
  * @param name   the name of the item
  */
 IniItem::IniItem(std::string_view name)

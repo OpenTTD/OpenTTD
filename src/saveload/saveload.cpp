@@ -3344,7 +3344,6 @@ SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, De
 /**
  * Create an autosave or netsave.
  * @param counter A reference to the counter variable to be used for rotating the file name.
- * @param netsave Indicates if this is a regular autosave or a netsave.
  */
 void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 {

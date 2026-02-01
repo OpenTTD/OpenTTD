@@ -908,7 +908,7 @@ static void ClearPixelBuffer(size_t len, T data)
  * @param w New width of the window.
  * @param h New height of the window.
  * @param force Recreate resources even if size didn't change.
- * @param False if nothing had to be done, true otherwise.
+ * @return \c false if nothing had to be done, \c true otherwise.
  */
 bool OpenGLBackend::Resize(int w, int h, bool force)
 {

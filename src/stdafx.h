@@ -265,7 +265,7 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
  * Unlike sizeof this function returns the number of elements
  * of the given type.
  *
- * @param x The pointer to the first element of the array
+ * @param array The pointer to the first element of the array
  * @return The number of elements
  */
 #define lengthof(array) (sizeof(ArraySizeHelper(array)))

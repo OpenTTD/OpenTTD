@@ -351,7 +351,6 @@ std::string FS2OTTD(std::wstring_view name)
  * Convert from OpenTTD's encoding to a wide string.
  * OpenTTD internal encoding is UTF8.
  * @param name valid string that will be converted (UTF8)
- * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return converted string; if failed string is of zero-length
  */
 std::wstring OTTD2FS(std::string_view name)

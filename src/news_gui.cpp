@@ -857,8 +857,9 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
 
 /**
  * Create a new newsitem to be shown.
- * @param string_id String to display.
+ * @param headline The headline of the news.
  * @param type      The type of news.
+ * @param style Manner of styling the news.
  * @param flags     Flags related to how to display the news.
  * @param ref1      Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param ref2      Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
@@ -887,8 +888,9 @@ std::string NewsItem::GetStatusText() const
 
 /**
  * Add a new newsitem to be shown.
- * @param string String to display
+ * @param headline The headline of the news.
  * @param type news category
+ * @param style Manner of styling the news.
  * @param flags display flags for the news
  * @param ref1     Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
@@ -935,10 +937,9 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
 /**
  * Create a new custom news item.
  * @param flags type of operation
- * @aram type NewsType of the message.
- * @param reftype1 NewsReferenceType of first reference.
+ * @param type NewsType of the message.
  * @param company Company this news message is for.
- * @param reference_id First reference of the news message.
+ * @param reference First reference of the news message.
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
