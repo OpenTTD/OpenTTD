@@ -581,6 +581,7 @@ public:
 	 * Get the description for how to load the chunk. Depending on the
 	 * savegame version this can either use the headers in the savegame or
 	 * fall back to backwards compatibility and uses hard-coded headers.
+	 * @return Save load description derived from savegame being loaded.
 	 */
 	SaveLoadTable GetLoadDescription() const;
 };
@@ -599,8 +600,10 @@ public:
 template <class TImpl, class TObject>
 class DefaultSaveLoadHandler : public SaveLoadHandler {
 public:
+	/** @copydoc SaveLoadHandler::GetDescription */
 	SaveLoadTable GetDescription() const override { return static_cast<const TImpl *>(this)->description; }
 
+	/** @copydoc SaveLoadHandler::GetCompatDescription */
 	SaveLoadCompatTable GetCompatDescription() const override { return static_cast<const TImpl *>(this)->compat_description; }
 
 	/**
@@ -608,6 +611,8 @@ public:
 	 * @param object The object to store.
 	 */
 	virtual void Save([[maybe_unused]] TObject *object) const {}
+
+	/** @copydoc SaveLoadHandler::Save */
 	void Save(void *object) const override { this->Save(static_cast<TObject *>(object)); }
 
 	/**
@@ -615,6 +620,8 @@ public:
 	 * @param object The object to load.
 	 */
 	virtual void Load([[maybe_unused]] TObject *object) const {}
+
+	/** @copydoc SaveLoadHandler::Load */
 	void Load(void *object) const override { this->Load(static_cast<TObject *>(object)); }
 
 	/**
@@ -622,6 +629,8 @@ public:
 	 * @param object The object to load.
 	 */
 	virtual void LoadCheck([[maybe_unused]] TObject *object) const {}
+
+	/** @copydoc SaveLoadHandler::LoadCheck */
 	void LoadCheck(void *object) const override { this->LoadCheck(static_cast<TObject *>(object)); }
 
 	/**
@@ -629,6 +638,8 @@ public:
 	 * @param object The object to fix.
 	 */
 	virtual void FixPointers([[maybe_unused]] TObject *object) const {}
+
+	/** @copydoc SaveLoadHandler::FixPointers */
 	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
 };
 
@@ -1416,6 +1427,7 @@ public:
 	 */
 	virtual size_t GetLength() const { return SlGetStructListLength(MAX_LENGTH); }
 
+	/** @copydoc DefaultSaveLoadHandler::Save */
 	void Save(TObject *object) const override
 	{
 		auto &vector = this->GetVector(object);
@@ -1426,6 +1438,7 @@ public:
 		}
 	}
 
+	/** @copydoc DefaultSaveLoadHandler::Load */
 	void Load(TObject *object) const override
 	{
 		auto &vector = this->GetVector(object);
