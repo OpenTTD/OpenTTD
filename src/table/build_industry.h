@@ -1089,7 +1089,6 @@ enum IndustryTypes : uint8_t {
 /**
  * Writes the properties of an industry into the IndustrySpec struct.
  * @param tbl  tile table
- * @param sndc number of sounds
  * @param snd  sounds table
  * @param d    cost multiplier
  * @param pc   prospecting chance

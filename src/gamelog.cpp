@@ -101,7 +101,6 @@ void Gamelog::Reset()
 /**
  * Adds the GRF ID, checksum and filename if found to the output iterator
  * @param output_iterator The iterator to add the GRF info to.
- * @param last The end of the buffer
  * @param grfid GRF ID
  * @param md5sum array of md5sum to print, if known
  * @param gc GrfConfig, if known

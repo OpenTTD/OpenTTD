@@ -83,7 +83,6 @@ public:
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &type()
@@ -95,7 +94,6 @@ public:
 	 * The height of the northern corner
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the height for.
 	 * @return reference to the byte holding the height.
 	 */
 	[[debug_inline]] inline uint8_t &height()
@@ -107,7 +105,6 @@ public:
 	 * Primarily used for ownership information
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m1()
@@ -119,7 +116,6 @@ public:
 	 * Primarily used for indices to towns, industries and stations
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the uint16_t holding the data.
 	 */
 	[[debug_inline]] inline uint16_t &m2()
@@ -131,7 +127,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m3()
@@ -143,7 +138,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m4()
@@ -155,7 +149,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m5()
@@ -167,7 +160,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m6()
@@ -179,7 +171,6 @@ public:
 	 * Primarily used for newgrf support
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m7()
@@ -191,7 +182,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the uint16_t holding the data.
 	 */
 	[[debug_inline]] inline uint16_t &m8()

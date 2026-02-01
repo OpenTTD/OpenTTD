@@ -86,7 +86,6 @@ void StringData::FreeTranslation()
 
 /**
  * Add a newly created LangString.
- * @param s  The name of the string.
  * @param ls The string to add.
  */
 void StringData::Add(std::shared_ptr<LangString> ls)

@@ -1793,7 +1793,6 @@ static Point LocalGetWindowPlacement(const WindowDesc &desc, int16_t sm_width, i
  * Perform the first part of the initialization of a nested widget tree.
  * Construct a nested widget tree in #nested_root, and optionally fill the #widget_lookup array to provide quick access to the uninitialized widgets.
  * This is mainly useful for setting very basic properties.
- * @param fill_nested Fill the #widget_lookup (enabling is expensive!).
  * @note Filling the nested array requires an additional traversal through the nested widget tree, and is best performed by #FinishInitNested rather than here.
  */
 void Window::CreateNestedTree()

@@ -168,7 +168,6 @@ bool ValParamRoadType(RoadType roadtype)
 
 /**
  * Add the road types that are to be introduced at the given date.
- * @param rt      Roadtype
  * @param current The currently available roadtypes.
  * @param date    The date for the introduction comparisons.
  * @return The road types that should be available when date

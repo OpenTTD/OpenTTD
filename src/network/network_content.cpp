@@ -212,7 +212,6 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 
 /**
  * Request the content list for a given number of content IDs.
- * @param count The number of IDs to request.
  * @param content_ids The unique identifiers of the content to request information about.
  */
 void ClientNetworkContentSocketHandler::RequestContentList(std::span<const ContentID> content_ids)

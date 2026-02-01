@@ -608,7 +608,6 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
  * @param load_index Global sprite index.
  * @param file GRF to load from.
  * @param file_sprite_id Sprite number in the GRF.
- * @param container_version Container version of the GRF.
  * @return True if a valid sprite was loaded, false on any error.
  */
 bool LoadNextSprite(SpriteID load_index, SpriteFile &file, uint file_sprite_id)

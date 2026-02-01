@@ -44,8 +44,7 @@ public:
 
 	/**
 	 * Add text to the output buffer.
-	 * @param text   Text to store.
-	 * @param length Length of the text in bytes.
+	 * @param text Text to store.
 	 * @return Number of bytes actually stored.
 	 */
 	size_t Add(std::string_view text)
