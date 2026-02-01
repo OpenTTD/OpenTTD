@@ -28,6 +28,7 @@ struct AirportTileScopeResolver : public ScopeResolver {
 
 	/**
 	 * Constructor of the scope resolver specific for airport tiles.
+	 * @param ro Surrounding resolver.
 	 * @param ats Specification of the airport tiles.
 	 * @param tile %Tile for the callback, only valid for airporttile callbacks.
 	 * @param st Station of the airport for which the callback is run, or \c nullptr for build gui.

@@ -281,6 +281,7 @@ bool Window::IsWidgetHighlighted(WidgetID widget_index) const
  * @param pt the point inside the window the mouse resides on after closure.
  * @param widget the widget (button) that the dropdown is associated with.
  * @param index the element in the dropdown that is selected.
+ * @param click_result The result of the OnClick call.
  * @param instant_close whether the dropdown was configured to close on mouse up.
  */
 void Window::OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close)

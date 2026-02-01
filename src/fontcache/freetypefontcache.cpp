@@ -225,6 +225,8 @@ public:
 	 * try to resolve the filename of the font using fontconfig, where the
 	 * format is 'font family name' or 'font family name, font style'.
 	 * @param fs The font size to load.
+	 * @param fonttype The type of font that is requested to be loaded.
+	 * @return The loaded font, or \c nullptr when none could be loaded.
 	 */
 	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{

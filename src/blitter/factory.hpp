@@ -140,9 +140,7 @@ public:
 
 	/**
 	 * Fill a buffer with information about the blitters.
-	 * @param p The buffer to fill.
-	 * @param last The last element of the buffer.
-	 * @return p The location till where we filled the buffer.
+	 * @param output_iterator The buffer to fill.
 	 */
 	static void GetBlittersInfo(std::back_insert_iterator<std::string> &output_iterator)
 	{

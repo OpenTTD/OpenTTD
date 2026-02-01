@@ -94,6 +94,7 @@ static int HighlightDragPosition(int px, int max_width, int y, VehicleID selecti
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
  * @param drag_dest The vehicle another one is dragged over, \c VehicleID::Invalid() if none.
+ * @param image_type Context where the image is being drawn.
  */
 void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest)
 {

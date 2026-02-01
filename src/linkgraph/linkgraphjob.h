@@ -119,18 +119,21 @@ public:
 
 		/**
 		 * Get the transport demand between end the points of the edge.
+		 * @param to Remote end of the edge.
 		 * @return Demand.
 		 */
 		uint DemandTo(NodeID to) const { return this->demands[to].demand; }
 
 		/**
 		 * Get the transport demand that hasn't been satisfied by flows, yet.
+		 * @param to Remote end of the edge.
 		 * @return Unsatisfied demand.
 		 */
 		uint UnsatisfiedDemandTo(NodeID to) const { return this->demands[to].unsatisfied_demand; }
 
 		/**
 		 * Satisfy some demand.
+		 * @param to Remote end of the edge.
 		 * @param demand Demand to be satisfied.
 		 */
 		void SatisfyDemandTo(NodeID to, uint demand)

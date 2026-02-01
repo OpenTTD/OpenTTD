@@ -43,7 +43,7 @@ DEF_CMD_TRAIT(Commands::RemoveAllVehiclesGroup, CmdRemoveAllVehiclesGroup, {}, C
 DEF_CMD_TRAIT(Commands::SetGroupFlag, CmdSetGroupFlag, {}, CommandType::RouteManagement)
 DEF_CMD_TRAIT(Commands::SetGroupLivery, CmdSetGroupLivery, {}, CommandType::RouteManagement)
 
-void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group);
-void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool, const VehicleListIdentifier &);
+void CcCreateGroup(Commands, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID);
+void CcAddVehicleNewGroup(Commands, const CommandCost &result, GroupID new_group, GroupID, VehicleID, bool, const VehicleListIdentifier &);
 
 #endif /* GROUP_CMD_H */

@@ -108,6 +108,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
  * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
+ * @param image_type Context where the image is being drawn.
  */
 void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip)
 {

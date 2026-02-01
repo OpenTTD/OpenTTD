@@ -158,7 +158,7 @@ constexpr uint ClampU(const uint a, const uint min, const uint max)
  * For example ClampTo<uint8_t> will return a value clamped to the range of 0
  * to 255. Anything smaller will become 0, anything larger will become 255.
  *
- * @param a The 64-bit value to clamp.
+ * @param value The 64-bit value to clamp.
  * @return The 64-bit value reduced to a value within the given allowed range
  * for the return type.
  * @see Clamp(int, int, int)

@@ -456,6 +456,7 @@ std::string GetEngineInfoString(EngineID engine)
  * @param y      Vertical position to use for drawing the engine.
  * @param engine Engine to draw.
  * @param pal    Palette to use for drawing.
+ * @param image_type Context where the image is being drawn.
  */
 void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
 {

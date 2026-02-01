@@ -397,6 +397,7 @@ Dimension GetDropDownListDimension(const DropDownList &list)
  * @param button   The widget which is passed to Window::OnDropdownSelect and OnDropdownClose.
  *                 Unless you override those functions, this should be then widget index of the dropdown button.
  * @param wi_rect  Coord of the parent drop down button, used to position the dropdown menu.
+ * @param wi_colour Colour of the parent widget.
  * @param options Drop Down options for this menu.
  */
 void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options)
