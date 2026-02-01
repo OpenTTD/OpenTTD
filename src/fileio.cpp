@@ -1161,13 +1161,6 @@ uint FileScanner::Scan(std::string_view extension, const std::string &directory,
 	return ScanPath(this, extension, OTTD2FS(path), path.size(), recursive);
 }
 
-/**
- * Open an RAII file handle if possible.
- * The canonical RAII-way is for FileHandle to open the file and throw an exception on failure, but we don't want that.
- * @param filename UTF-8 encoded filename to open.
- * @param mode Mode to open file.
- * @return FileHandle, or std::nullopt on failure.
- */
 std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::string_view mode)
 {
 #if defined(_WIN32)

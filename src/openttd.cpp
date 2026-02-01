@@ -111,11 +111,6 @@ bool _save_config = false;
 bool _request_newgrf_scan = false;
 NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
 
-/**
- * Error handling for fatal user errors.
- * @param str the string to print.
- * @note Does NEVER return.
- */
 void UserErrorI(const std::string &str)
 {
 	ShowOSErrorBox(str, false);
@@ -132,11 +127,6 @@ void UserErrorI(const std::string &str)
 	_exit(1);
 }
 
-/**
- * Error handling for fatal non-user errors.
- * @param str the string to print.
- * @note Does NEVER return.
- */
 void FatalErrorI(const std::string &str)
 {
 	if (VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) {
