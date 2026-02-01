@@ -1034,7 +1034,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {ST
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Malfermu la grupo-fenestron, fokuse en la grupo de la veturilo
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} plu ne akceptas: {CARGO_LIST}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} plu ne akceptas: {CARGO_LIST.n}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} nun akceptas: {CARGO_LIST.n}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subvencia oferto ne plu validas:{}{}Transportado de {STRING} de {STRING} al {STRING} ne estos subvenciata.

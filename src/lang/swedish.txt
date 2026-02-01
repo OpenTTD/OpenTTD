@@ -2858,20 +2858,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Minska höjden 
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Öka höjden på förhandsvisningen. Ctrl+Click för att öka till max
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Standardsamling
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Välj en samling
+STR_PICKER_COLLECTION_ADD                                       :Lägg till
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Skapa en ny samling
+STR_PICKER_COLLECTION_RENAME                                    :Byt namn
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Byt namn på samling
+STR_PICKER_COLLECTION_DELETE                                    :Ta bort
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Ta bort samling
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Byt namn på denna samling
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Ta bort denna samling
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Är du säker på att du vill ta bort denna samling?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Är du säker på att du vill ta bort denna samling? Det finns saker från NewGRFs i den!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Välj en samling med stationer att visa
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Välj vilken klass av riktmärken som ska visas
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Välj ett riktmärke att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Välj en samling riktningsvisare att visa
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Välj vilken klass av busstationer som ska visas
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Välj en busstationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Välj en samling av busstationer att visa
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Välj vilken klass av laststationer som ska visas
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Välj en laststationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Välj en samling av laststationer att visa
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Välj vilken klass av objekt som ska visas
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Välj en objektstyp att bygga. Ctrl+klicka för att lägga till eller ta bort i sparade objekt. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Välj en samling av objekt att visa
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Välj en samling av hus att visa
 
 STR_HOUSE_PICKER_CAPTION                                        :Husval
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {GOLD}{STRING}
@@ -4376,6 +4394,11 @@ STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Meddelan
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har just designat ett nytt {STRING} - är du intresserad av ett års exklusiv användning av detta fordon, så vi kan se hur det presterar innan vi gör det allmänt tillgängligt?
 
 STR_ENGINE_PREVIEW_PREVIOUS                                     :Föregående
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Klicka för att gå till föregående nya fordon
+STR_ENGINE_PREVIEW_NEXT                                         :Nästa
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Klicka för att gå till nästa nya fordon
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Klicka för att gå till ett nytt fordon
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :järnvägslok
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrifierat järnvägslok
