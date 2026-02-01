@@ -226,6 +226,7 @@ static void ParamSet(ByteReader &buf)
 		oper = GB(oper, 0, 7);
 	}
 
+	bool unsafe = false;
 	if (src2 == 0xFE) {
 		if (GB(data, 0, 8) == 0xFF) {
 			if (data == 0x0000FFFF) {
@@ -312,6 +313,9 @@ static void ParamSet(ByteReader &buf)
 				}
 			}
 		} else {
+			/* If the other GRF is a system GRF then this access is unsafe, even if the GRF is not loaded.*/
+			unsafe |= (GB(data, 0, 8) == 0xFF);
+			if (unsafe) GrfMsg(1, "ParamSet: access to parameter {:02X} of GRFID 0x{:08X} marked unsafe", src1, std::byteswap(data));
 			/* Read another GRF File's parameter */
 			const GRFFile *file = GetFileByGRFID(data);
 			GRFConfig *c = GetGRFConfig(data);
@@ -324,7 +328,11 @@ static void ParamSet(ByteReader &buf)
 			} else if (src1 == 0xFE) {
 				src1 = c->version;
 			} else {
-				src1 = file->GetParam(src1);
+				if (!unsafe) {
+					if (src1 < file->unsafe_param.size()) unsafe |= file->unsafe_param[src1];
+					if (unsafe) GrfMsg(1, "ParamSet: access to parameter {:02X} of GRFID 0x{:08X} marked unsafe", src1, std::byteswap(data));
+				}
+				src1 = file->GetParam(src1, true);
 			}
 		}
 	} else {
@@ -333,8 +341,8 @@ static void ParamSet(ByteReader &buf)
 		 * variables available in action 7, or they can be FF to use the value
 		 * of <data>.  If referring to parameters that are undefined, a value
 		 * of 0 is used instead.  */
-		src1 = (src1 == 0xFF) ? data : GetParamVal(src1, nullptr);
-		src2 = (src2 == 0xFF) ? data : GetParamVal(src2, nullptr);
+		src1 = (src1 == 0xFF) ? data : GetParamVal(src1, nullptr, &unsafe);
+		src2 = (src2 == 0xFF) ? data : GetParamVal(src2, nullptr, &unsafe);
 	}
 
 	uint32_t res;
@@ -424,6 +432,7 @@ static void ParamSet(ByteReader &buf)
 			break;
 
 		case 0x8F: { // Rail track type cost factors
+			if (unsafe) break;
 			extern RailTypeInfo _railtypes[RAILTYPE_END];
 			_railtypes[RAILTYPE_RAIL].cost_multiplier = GB(res, 0, 8);
 			if (_settings_game.vehicle.disable_elrails) {
@@ -476,6 +485,11 @@ static void ParamSet(ByteReader &buf)
 				/* Resize (and fill with zeroes) if needed. */
 				if (target >= std::size(_cur_gps.grffile->param)) _cur_gps.grffile->param.resize(target + 1);
 				_cur_gps.grffile->param[target] = res;
+
+				if (unsafe) {
+					if (target >= std::size(_cur_gps.grffile->unsafe_param)) _cur_gps.grffile->unsafe_param.resize(target + 1);
+					_cur_gps.grffile->unsafe_param[target] = true;
+				}
 			} else {
 				GrfMsg(7, "ParamSet: Skipping unknown target 0x{:02X}", target);
 			}
