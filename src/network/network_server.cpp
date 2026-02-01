@@ -896,7 +896,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 				return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 			}
 
-			if (!Company::Get(playas)->allow_list.Contains(this->peer_public_key)) {
+			const Company *c = Company::Get(playas);
+			if (!c->allow_any && !c->allow_list.Contains(this->peer_public_key)) {
 				/* When we're not authorized, just bump us to a spectator. */
 				playas = COMPANY_SPECTATOR;
 			}
@@ -1119,16 +1120,18 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 
 		/* Only allow clients to add/remove currently joined clients. The server owner does not go via this method, so is allowed to do more. */
 		std::string public_key = std::get<1>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyAllowListControl>::Args>(cp.data));
-		bool found = false;
-		for (const NetworkClientInfo *info : NetworkClientInfo::Iterate()) {
-			if (info->public_key == public_key) {
-				found = true;
-				break;
+		if (!public_key.empty()) {
+			bool found = false;
+			for (const NetworkClientInfo *info : NetworkClientInfo::Iterate()) {
+				if (info->public_key == public_key) {
+					found = true;
+					break;
+				}
 			}
-		}
 
-		/* Maybe the client just left? */
-		if (!found) return NETWORK_RECV_STATUS_OKAY;
+			/* Maybe the client just left? */
+			if (!found) return NETWORK_RECV_STATUS_OKAY;
+		}
 	}
 
 	if (GetCommandFlags(cp.cmd).Test(CommandFlag::ClientID)) NetworkReplaceCommandClientId(cp, this->client_id);
@@ -1475,11 +1478,14 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &p)
 	Debug(net, 9, "client[{}] Receive_CLIENT_MOVE(): company_id={}", this->client_id, company_id);
 
 	/* Check if the company is valid, we don't allow moving to AI companies */
-	if (company_id != COMPANY_SPECTATOR && !Company::IsValidHumanID(company_id)) return NETWORK_RECV_STATUS_OKAY;
+	if (company_id != COMPANY_SPECTATOR) {
+		if (!Company::IsValidHumanID(company_id)) return NETWORK_RECV_STATUS_OKAY;
 
-	if (company_id != COMPANY_SPECTATOR && !Company::Get(company_id)->allow_list.Contains(this->peer_public_key)) {
-		Debug(net, 2, "Wrong public key from client-id #{} for company #{}", this->client_id, company_id + 1);
-		return NETWORK_RECV_STATUS_OKAY;
+		const Company *c = Company::Get(company_id);
+		if (!c->allow_any && !c->allow_list.Contains(this->peer_public_key)) {
+			Debug(net, 2, "Wrong public key from client-id #{} for company #{}", this->client_id, company_id + 1);
+			return NETWORK_RECV_STATUS_OKAY;
+		}
 	}
 
 	/* if we get here we can move the client */

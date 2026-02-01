@@ -499,6 +499,7 @@ static const SaveLoad _company_desc[] = {
 
 	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SLV_COMPANY_ALLOW_LIST_V2),
 	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SLV_COMPANY_ALLOW_LIST_V2, SL_MAX_VERSION),
+	SLE_VAR(CompanyProperties, allow_any, SLE_BOOL),
 
 	SLE_VARNAME(CompanyProperties, face.bits, "face", SLE_UINT32),
 	SLE_CONDSSTRNAME(CompanyProperties, face.style_label, "face_style", SLE_STR, SLV_FACE_STYLES, SL_MAX_VERSION),

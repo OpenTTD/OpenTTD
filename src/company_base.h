@@ -78,6 +78,7 @@ struct CompanyProperties {
 	std::string president_name{}; ///< Name of the president if the user changed it.
 
 	NetworkAuthorizedKeys allow_list{}; ///< Public keys of clients that are allowed to join this company.
+	bool allow_any = false; ///< Set if anyone is allowed to join this company.
 
 	CompanyManagerFace face{}; ///< Face description of the president.
 

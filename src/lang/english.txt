@@ -2547,6 +2547,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rela
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kick
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Ban
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Delete
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :Allow any client
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :Allow only listed clients
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Admin action
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Are you sure you want to kick player '{RAW_STRING}'?
