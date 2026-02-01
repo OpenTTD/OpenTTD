@@ -323,7 +323,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 
 /**
  * Set the game password as requested.
- * @param password The game password.
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAuthResponse()
 {

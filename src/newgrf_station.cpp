@@ -796,8 +796,8 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
  * @param y Position y of image.
  * @param axis Axis.
  * @param railtype Rail type.
- * @param sclass, station Type of station.
- * @param station station ID
+ * @param sclass Class of station.
+ * @param station Station ID with the class.
  * @return True if the tile was drawn (allows for fallback to default graphic)
  */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)

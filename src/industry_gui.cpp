@@ -359,7 +359,6 @@ class BuildIndustryWindow : public Window {
 	 *
 	 * @param cargolist    Array of CargoType to display
 	 * @param cargo_suffix Array of suffixes to attach to each cargo
-	 * @param cargolistlen Length of arrays
 	 * @param prefixstr    String to use for the first item
 	 * @return A formatted raw string
 	 */

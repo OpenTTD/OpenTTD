@@ -566,7 +566,6 @@ CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
  * @param h Y extent of area
  * @param rad Search radius in addition to given area
  * @param always_accepted bitmask of cargo accepted by houses and headquarters; can be nullptr
- * @param ind Industry associated with neutral station (e.g. oil rig) or nullptr
  */
 CargoArray GetAcceptanceAroundTiles(TileIndex center_tile, int w, int h, int rad, CargoTypes *always_accepted)
 {

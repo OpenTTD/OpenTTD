@@ -66,8 +66,7 @@ protected:
 public:
 	/**
 	 * Create a new cs socket handler for a given cs.
-	 * @param s  the socket we are connected with.
-	 * @param address IP etc. of the client.
+	 * @param s The socket we are connected with.
 	 */
 	NetworkTurnSocketHandler(SOCKET s = INVALID_SOCKET) : NetworkTCPSocketHandler(s) {}
 

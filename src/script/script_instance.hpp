@@ -221,7 +221,6 @@ public:
 	/**
 	 * DoCommand callback function for all commands executed by scripts.
 	 * @param result The result of the command.
-	 * @param tile The tile on which the command was executed.
 	 * @param data Command data as given to DoCommandPInternal.
 	 * @param result_data Extra data return from the command.
 	 * @param cmd cmd as given to DoCommandPInternal.

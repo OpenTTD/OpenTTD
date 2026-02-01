@@ -674,7 +674,6 @@ static std::tuple<int32_t, uint32_t> GetMinutesPerYearRange(const IntSettingDesc
 
 /**
  * Pre-callback check when trying to change the timetable mode. This is locked to Seconds when using wallclock units.
- * @param Unused.
  * @return True if we allow changing the timetable mode.
  */
 static bool CanChangeTimetableMode(int32_t &)

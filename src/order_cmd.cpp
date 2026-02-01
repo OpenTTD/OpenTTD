@@ -247,7 +247,6 @@ void Order::AssignOrder(const Order &other)
 
 /**
  * Recomputes everything.
- * @param chain first order in the chain
  * @param v one of vehicle that is using this orderlist
  */
 void OrderList::Initialize(Vehicle *v)
@@ -1454,7 +1453,6 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
  * Check if an aircraft has enough range for an order list.
  * @param v_new Aircraft to check.
  * @param v_order Vehicle currently holding the order list.
- * @param first First order in the source order list.
  * @return True if the aircraft has enough range for the orders, false otherwise.
  */
 static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_order)

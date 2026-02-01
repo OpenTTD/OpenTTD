@@ -72,7 +72,6 @@ std::tuple<Slope, int> GetTileSlopeZ(TileIndex tile)
  *
  * @param x X coordinate of the tile to compute slope of, may be outside the map.
  * @param y Y coordinate of the tile to compute slope of, may be outside the map.
- * @param h If not \c nullptr, pointer to storage of z height.
  * @return Slope of the tile, except for the HALFTILE part, and the z height of the tile.
  */
 std::tuple<Slope, int> GetTilePixelSlopeOutsideMap(int x, int y)
