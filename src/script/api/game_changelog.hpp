@@ -37,6 +37,9 @@
  * \li GSEngine::GetAllRailTypes
  * \li GSTile::IsHouseTile
  *
+ * API removals:
+ * \li GSBaseStation::IsValidBaseStation, use GSStation::IsValidStation or GSWaypoint::IsValidWaypoint instead
+ *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
  * \li GSWaypoint::GetWaypointID now returns the StationID of any type of waypoint
