@@ -18,7 +18,7 @@ def main():
             continue
         # Doxygen warnings can span multiple lines, keep these lines together.
         warnings[-1] = f"{warnings[-1]}\n{line}"
-    warnings.sort()
+    warnings = sorted(set(warnings))
     with open(sys.argv[2], "w") as out:
         out.write("\n".join(warnings))
     print("Doxygen warnings sorted successfully.")
