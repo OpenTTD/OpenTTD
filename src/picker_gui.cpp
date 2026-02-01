@@ -259,8 +259,12 @@ void PickerWindow::ConstructWindow()
 		this->callbacks.FillUsedItems(this->callbacks.used);
 
 		SetWidgetDisabledState(WID_PW_MODE_ALL, !this->callbacks.HasClassChoice());
+		this->random_hidden = !this->callbacks.IsCollectionRandomisationSupported() || !HasBit(this->callbacks.mode, PFM_SAVED);
+		this->GetWidget<NWidgetStacked>(WID_PW_TYPE_RAND_SEL)->SetDisplayedPlane(this->random_hidden ? SZSP_HORIZONTAL : 0);
+		this->callbacks.place_collection = HasBit(this->callbacks.mode, PFM_SAVED) && IsWidgetLowered(WID_PW_TYPE_RANDOM);
 
 		this->GetWidget<NWidgetCore>(WID_PW_TYPE_ITEM)->SetToolTip(this->callbacks.GetTypeTooltip());
+		this->GetWidget<NWidgetCore>(WID_PW_TYPE_RANDOM)->SetToolTip(this->callbacks.GetRandomTooltip());
 
 		auto *matrix = this->GetWidget<NWidgetMatrix>(WID_PW_TYPE_MATRIX);
 		matrix->SetScrollbar(this->GetScrollbar(WID_PW_TYPE_SCROLL));
@@ -302,6 +306,8 @@ void PickerWindow::OnInit()
 
 	this->widget_lookup.clear();
 	this->nested_root->FillWidgetLookup(this->widget_lookup);
+
+	this->SetDisabledRandomItemButton();
 }
 
 void PickerWindow::Close(int data)
@@ -367,6 +373,40 @@ DropDownList PickerWindow::BuildCollectionDropDownList()
 		i++;
 	}
 	return list;
+}
+
+void PickerWindow::SetDisabledRandomItemButton()
+{
+	bool hidden = !this->callbacks.IsCollectionRandomisationSupported() || !HasBit(this->callbacks.mode, PFM_SAVED);
+
+	if (hidden != this->random_hidden && this->has_type_picker) {
+		this->GetWidget<NWidgetStacked>(WID_PW_TYPE_RAND_SEL)->SetDisplayedPlane(hidden ? SZSP_HORIZONTAL : 0);
+		this->random_hidden = hidden;
+		this->ReInit();
+	}
+	if (hidden) return;
+
+	NWidgetCore *random_widget = this->GetWidget<NWidgetCore>(WID_PW_TYPE_RANDOM);
+	if (random_widget == nullptr) return;
+
+	bool disabled = true;
+	std::set<PickerItem> *saved = nullptr;
+	if (HasBit(this->callbacks.mode, PFM_SAVED)) {
+		if (this->callbacks.saved.contains(this->callbacks.sel_collection)) saved = &this->callbacks.saved.at(this->callbacks.sel_collection);
+		disabled = (saved == nullptr) || !this->callbacks.IsCollectionValidForRandom(*saved, this);
+	}
+
+	if (random_widget->IsDisabled() != disabled) {
+		random_widget->SetDisabled(disabled);
+		if (disabled) if (random_widget->IsLowered()) random_widget->SetLowered(false);
+		random_widget->SetDirty(this);
+	}
+
+	if (disabled) {
+		this->callbacks.place_collection = false;
+	} else {
+		this->callbacks.SetSelectedCollection(*saved);
+	}
 }
 
 void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
@@ -450,6 +490,7 @@ void PickerWindow::DeletePickerCollectionCallback(Window *win, bool confirmed)
 		picker_window = w;
 		w->SetWidgetsDisabledState(true, WID_PW_COLEC_RENAME, WID_PW_COLEC_DELETE);
 		w->InvalidateData({PickerInvalidation::Collection, PickerInvalidation::Position});
+		w->SetDisabledRandomItemButton();
 	}
 }
 
@@ -480,6 +521,8 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				/* Enabling used or saved filters automatically enables all. */
 				SetBit(this->callbacks.mode, PFM_ALL);
 			}
+			this->SetDisabledRandomItemButton();
+			this->callbacks.place_collection = HasBit(this->callbacks.mode, PFM_SAVED) && IsWidgetLowered(WID_PW_TYPE_RANDOM);
 			this->InvalidateData({PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position});
 			SndClickBeep();
 			break;
@@ -506,6 +549,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				if (this->callbacks.saved.find(this->callbacks.sel_collection) == this->callbacks.saved.end()) {
 					this->callbacks.saved[""].emplace(item);
 					this->InvalidateData({PickerInvalidation::Collection, PickerInvalidation::Class});
+					this->SetDisabledRandomItemButton();
 					this->SetDirty();
 					break;
 				}
@@ -517,6 +561,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 					this->callbacks.saved.at(this->callbacks.sel_collection).erase(it);
 				}
 				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Class});
+				this->SetDisabledRandomItemButton();
 				break;
 			}
 
@@ -524,9 +569,24 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				this->callbacks.SetSelectedClass(item.class_index);
 				this->callbacks.SetSelectedType(item.index);
 				this->InvalidateData(PickerInvalidation::Position);
+				this->callbacks.place_collection = false;
+				this->RaiseWidgetWhenLowered(WID_PW_TYPE_RANDOM);
 			}
 			SndClickBeep();
 			CloseWindowById(WC_SELECT_STATION, 0);
+			break;
+		}
+
+		case WID_PW_TYPE_RANDOM: {
+			this->ToggleWidgetLoweredState(widget);
+			if (IsWidgetLowered(widget)) {
+				this->callbacks.SetSelectedCollection(this->callbacks.saved.at(this->callbacks.sel_collection));
+				this->callbacks.place_collection = true;
+			} else {
+				this->callbacks.place_collection = false;
+			}
+			SndClickBeep();
+			this->ReInit();
 			break;
 		}
 
@@ -606,6 +666,7 @@ void PickerWindow::OnQueryTextFinished(std::optional<std::string> str)
 		this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Class});
 	}
 	this->InvalidateData({PickerInvalidation::Collection, PickerInvalidation::Position});
+	this->SetDisabledRandomItemButton();
 }
 
 void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result)
@@ -617,6 +678,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 				this->callbacks.sel_collection = *it;
 				if (this->IsWidgetLowered(WID_PW_MODE_SAVED)) this->InvalidateData({PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Validate});
 				this->InvalidateData(PickerInvalidation::Position);
+				this->SetDisabledRandomItemButton();
 			}
 			SetWidgetsDisabledState(this->callbacks.sel_collection == "" ? true : false, WID_PW_COLEC_RENAME, WID_PW_COLEC_DELETE);
 
@@ -997,6 +1059,9 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 						EndContainer(),
 					EndContainer(),
 					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_TYPE_SCROLL),
+				EndContainer(),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_TYPE_RAND_SEL),
+					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_TYPE_RANDOM), SetResize(1, 0), SetStringTip(STR_PICKER_RANDOM),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
