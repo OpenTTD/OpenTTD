@@ -34,13 +34,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
  */
 NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet &p)
 {
-	PacketAdminType type = (PacketAdminType)p.Recv_uint8();
-
-	if (this->HasClientQuit()) {
-		Debug(net, 0, "[tcp/admin] Received invalid packet from '{}' ({})", this->admin_name, this->admin_version);
-		this->CloseConnection();
-		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	}
+	PacketAdminType type = static_cast<PacketAdminType>(p.Recv_uint8());
 
 	switch (type) {
 		case ADMIN_PACKET_ADMIN_JOIN:             return this->Receive_ADMIN_JOIN(p);
