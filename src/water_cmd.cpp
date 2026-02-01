@@ -1448,6 +1448,9 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
 
+	/* Rivers can't be terraformed */
+	if (IsRiver(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_RIVER_FIRST);
+
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
