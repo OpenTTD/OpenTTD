@@ -22,7 +22,7 @@
  */
 bool NetworkCoordinatorSocketHandler::HandlePacket(Packet &p)
 {
-	PacketCoordinatorType type = (PacketCoordinatorType)p.Recv_uint8();
+	PacketCoordinatorType type = static_cast<PacketCoordinatorType>(p.Recv_uint8());
 
 	switch (type) {
 		case PACKET_COORDINATOR_GC_ERROR:              return this->Receive_GC_ERROR(p);

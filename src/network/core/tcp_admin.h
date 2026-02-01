@@ -17,53 +17,55 @@
 /**
  * Enum with types of TCP packets specific to the admin network.
  * This protocol may only be extended to ensure stability.
+ * @important The order MUST not be changed.
  */
-enum PacketAdminType : uint8_t {
-	ADMIN_PACKET_ADMIN_JOIN,             ///< The admin announces and authenticates itself to the server using an unsecured passwords.
-	ADMIN_PACKET_ADMIN_QUIT,             ///< The admin tells the server that it is quitting.
-	ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY, ///< The admin tells the server the update frequency of a particular piece of information.
-	ADMIN_PACKET_ADMIN_POLL,             ///< The admin explicitly polls for a piece of information.
-	ADMIN_PACKET_ADMIN_CHAT,             ///< The admin sends a chat message to be distributed.
-	ADMIN_PACKET_ADMIN_RCON,             ///< The admin sends a remote console command.
-	ADMIN_PACKET_ADMIN_GAMESCRIPT,       ///< The admin sends a JSON string for the GameScript.
-	ADMIN_PACKET_ADMIN_PING,             ///< The admin sends a ping to the server, expecting a ping-reply (PONG) packet.
-	ADMIN_PACKET_ADMIN_EXTERNAL_CHAT,    ///< The admin sends a chat message from external source.
-	ADMIN_PACKET_ADMIN_JOIN_SECURE,      ///< The admin announces and starts a secure authentication handshake.
-	ADMIN_PACKET_ADMIN_AUTH_RESPONSE,    ///< The admin responds to the authentication request.
+enum class PacketAdminType : uint8_t {
+	AdminJoin, ///< The admin announces and authenticates itself to the server using an unsecured passwords.
+	AdminQuit, ///< The admin tells the server that it is quitting.
+	AdminUpdateFrequency, ///< The admin tells the server the update frequency of a particular piece of information.
+	AdminPoll, ///< The admin explicitly polls for a piece of information.
+	AdminChat, ///< The admin sends a chat message to be distributed.
+	AdminRemoteConsoleCommand, ///< The admin sends a remote console command.
+	AdminGameScript, ///< The admin sends a JSON string for the GameScript.
+	AdminPing, ///< The admin sends a ping to the server, expecting a ping-reply (PONG) packet.
+	AdminExternalChat, ///< The admin sends a chat message from external source.
+	AdminJoinSecure, ///< The admin announces and starts a secure authentication handshake.
+	AdminAuthenticationResponse, ///< The admin responds to the authentication request.
 
-	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
-	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
-	ADMIN_PACKET_SERVER_ERROR,           ///< The server tells the admin an error has occurred.
-	ADMIN_PACKET_SERVER_PROTOCOL,        ///< The server tells the admin its protocol version.
-	ADMIN_PACKET_SERVER_WELCOME,         ///< The server welcomes the admin to a game.
-	ADMIN_PACKET_SERVER_NEWGAME,         ///< The server tells the admin its going to start a new game.
-	ADMIN_PACKET_SERVER_SHUTDOWN,        ///< The server tells the admin its shutting down.
+	ServerFull = 100, ///< The server tells the admin it cannot accept the admin.
+	ServerBanned, ///< The server tells the admin it is banned.
+	ServerError, ///< The server tells the admin an error has occurred.
+	ServerProtocol, ///< The server tells the admin its protocol version.
+	ServerWelcome, ///< The server welcomes the admin to a game.
+	ServerNewGame, ///< The server tells the admin its going to start a new game.
+	ServerShutdown, ///< The server tells the admin its shutting down.
 
-	ADMIN_PACKET_SERVER_DATE,            ///< The server tells the admin what the current game date is.
-	ADMIN_PACKET_SERVER_CLIENT_JOIN,     ///< The server tells the admin that a client has joined.
-	ADMIN_PACKET_SERVER_CLIENT_INFO,     ///< The server gives the admin information about a client.
-	ADMIN_PACKET_SERVER_CLIENT_UPDATE,   ///< The server gives the admin an information update on a client.
-	ADMIN_PACKET_SERVER_CLIENT_QUIT,     ///< The server tells the admin that a client quit.
-	ADMIN_PACKET_SERVER_CLIENT_ERROR,    ///< The server tells the admin that a client caused an error.
-	ADMIN_PACKET_SERVER_COMPANY_NEW,     ///< The server tells the admin that a new company has started.
-	ADMIN_PACKET_SERVER_COMPANY_INFO,    ///< The server gives the admin information about a company.
-	ADMIN_PACKET_SERVER_COMPANY_UPDATE,  ///< The server gives the admin an information update on a company.
-	ADMIN_PACKET_SERVER_COMPANY_REMOVE,  ///< The server tells the admin that a company was removed.
-	ADMIN_PACKET_SERVER_COMPANY_ECONOMY, ///< The server gives the admin some economy related company information.
-	ADMIN_PACKET_SERVER_COMPANY_STATS,   ///< The server gives the admin some statistics about a company.
-	ADMIN_PACKET_SERVER_CHAT,            ///< The server received a chat message and relays it.
-	ADMIN_PACKET_SERVER_RCON,            ///< The server's reply to a remove console command.
-	ADMIN_PACKET_SERVER_CONSOLE,         ///< The server gives the admin the data that got printed to its console.
-	ADMIN_PACKET_SERVER_CMD_NAMES,       ///< The server sends out the names of the DoCommands to the admins.
-	ADMIN_PACKET_SERVER_CMD_LOGGING_OLD, ///< Used to be the type ID of \c ADMIN_PACKET_SERVER_CMD_LOGGING in \c NETWORK_GAME_ADMIN_VERSION 1.
-	ADMIN_PACKET_SERVER_GAMESCRIPT,      ///< The server gives the admin information from the GameScript in JSON.
-	ADMIN_PACKET_SERVER_RCON_END,        ///< The server indicates that the remote console command has completed.
-	ADMIN_PACKET_SERVER_PONG,            ///< The server replies to a ping request from the admin.
-	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
-	ADMIN_PACKET_SERVER_AUTH_REQUEST,    ///< The server gives the admin the used authentication method and required parameters.
-	ADMIN_PACKET_SERVER_ENABLE_ENCRYPTION, ///< The server tells that authentication has completed and requests to enable encryption with the keys of the last \c ADMIN_PACKET_ADMIN_AUTH_RESPONSE.
-
-	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
+	ServerDate, ///< The server tells the admin what the current game date is.
+	ServerClientJoin, ///< The server tells the admin that a client has joined.
+	ServerClientInfo, ///< The server gives the admin information about a client.
+	ServerClientUpdate, ///< The server gives the admin an information update on a client.
+	ServerClientQuit, ///< The server tells the admin that a client quit.
+	ServerClientError, ///< The server tells the admin that a client caused an error.
+	ServerCompanyNew, ///< The server tells the admin that a new company has started.
+	ServerCompanyInfo, ///< The server gives the admin information about a company.
+	ServerCompanyUpdate, ///< The server gives the admin an information update on a company.
+	ServerCompanyRemove, ///< The server tells the admin that a company was removed.
+	ServerCompanyEconomy, ///< The server gives the admin some economy related company information.
+	ServerCompanyStatistics, ///< The server gives the admin some statistics about a company.
+	ServerChat, ///< The server received a chat message and relays it.
+	ServerRemoteConsoleCommand, ///< The server's reply to a remote console command.
+	ServerConsole, ///< The server gives the admin the data that got printed to its console.
+	ServerCommandNames, ///< The server sends out the names of the DoCommands to the admins.
+	ServerCommandLoggingOld, ///< Used to be the type ID of \c PacketAdminType::ServerCommandLogging in \c NETWORK_GAME_ADMIN_VERSION 1.
+	ServerGameScript, ///< The server gives the admin information from the GameScript in JSON.
+	ServerRemoteConsoleCommandEnd, ///< The server indicates that the remote console command has completed.
+	ServerPong, ///< The server replies to a ping request from the admin.
+	ServerCommandLogging, ///< The server gives the admin copies of incoming command packets.
+	ServerAuthenticationRequest, ///< The server gives the admin the used authentication method and required parameters.
+	ServerEnableEncryption, ///< The server tells that authentication has completed and requests to enable encryption with the keys of the last \c PacketAdminType::AdminAuthenticationResponse.
+};
+template <> struct IsEnumPacketType<PacketAdminType> {
+	static constexpr bool value = true; ///< This is an enumeration of a PacketType.
 };
 
 /** Status of an admin. */
@@ -127,14 +129,14 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_JOIN(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminJoin(Packet &p);
 
 	/**
 	 * Notification to the server that this admin is quitting.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_QUIT(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminQuit(Packet &p);
 
 	/**
 	 * Register updates to be sent at certain frequencies (as announced in the PROTOCOL packet):
@@ -143,7 +145,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminUpdateFrequency(Packet &p);
 
 	/**
 	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
@@ -154,7 +156,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_POLL(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminPoll(Packet &p);
 
 	/**
 	 * Send chat as the server:
@@ -165,7 +167,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_CHAT(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminChat(Packet &p);
 
 	/**
 	 * Send chat from the external source:
@@ -176,7 +178,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_EXTERNAL_CHAT(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminExternalChat(Packet &p);
 
 	/**
 	 * Execute a command on the servers console:
@@ -184,7 +186,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_RCON(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminRemoteConsoleCommand(Packet &p);
 
 	/**
 	 * Send a JSON string to the current active GameScript.
@@ -192,7 +194,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminGameScript(Packet &p);
 
 	/**
 	 * Ping the server, requiring the server to reply with a pong packet.
@@ -200,7 +202,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_PING(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminPing(Packet &p);
 
 	/**
 	 * Join the admin network using a secure authentication method:
@@ -209,15 +211,15 @@ protected:
 	 * uint16_t Bitmask of supported authentication methods. See \c NetworkAuthenticationMethod for the supported methods.
 	 *
 	 * The server will determine which of the authentication methods supplied by the client will be used.
-	 * When there is no supported authentication method, an \c ADMIN_PACKET_SERVER_ERROR packet will be
+	 * When there is no supported authentication method, an \c PacketAdminType::ServerError packet will be
 	 * sent with \c NETWORK_ERROR_NO_AUTHENTICATION_METHOD_AVAILABLE as error.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_JOIN_SECURE(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminJoinSecure(Packet &p);
 
 	/**
-	 * Admin responds to \c ADMIN_PACKET_SERVER_AUTH_REQUEST with the appropriate
+	 * Admin responds to \c PacketAdminType::ServerAuthenticationRequest with the appropriate
 	 * data given the agreed upon \c NetworkAuthenticationMethod.
 	 * With \c NETWORK_AUTH_METHOD_X25519_PAKE and \c NETWORK_AUTH_METHOD_X25519_AUTHORIZED_KEY:
 	 *   32 * uint8_t Public key of the client.
@@ -226,21 +228,21 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_ADMIN_AUTH_RESPONSE(Packet &p);
+	virtual NetworkRecvStatus ReceiveAdminAuthenticationResponse(Packet &p);
 
 	/**
 	 * The server is full (connection gets closed).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_FULL(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerFull(Packet &p);
 
 	/**
 	 * The source IP address is banned (connection gets closed).
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_BANNED(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerBanned(Packet &p);
 
 	/**
 	 * An error was caused by this admin connection (connection gets closed).
@@ -248,7 +250,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_ERROR(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerError(Packet &p);
 
 	/**
 	 * Inform a just joined admin about the protocol specifics:
@@ -259,7 +261,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_PROTOCOL(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerProtocol(Packet &p);
 
 	/**
 	 * Welcome a connected admin to the game:
@@ -275,21 +277,21 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_WELCOME(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerWelcome(Packet &p);
 
 	/**
 	 * Notification about a newgame.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_NEWGAME(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerNewGame(Packet &p);
 
 	/**
 	 * Notification about the server shutting down.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_SHUTDOWN(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerShutdown(Packet &p);
 
 	/**
 	 * Send the current date of the game:
@@ -297,7 +299,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_DATE(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerDate(Packet &p);
 
 	/**
 	 * Notification of a new client:
@@ -305,7 +307,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CLIENT_JOIN(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerClientJoin(Packet &p);
 
 	/**
 	 * Client information of a specific client:
@@ -318,7 +320,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerClientInfo(Packet &p);
 
 	/**
 	 * Client update details on a specific client (e.g. after rename or move):
@@ -328,7 +330,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CLIENT_UPDATE(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerClientUpdate(Packet &p);
 
 	/**
 	 * Notification about a client leaving the game.
@@ -336,7 +338,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CLIENT_QUIT(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerClientQuit(Packet &p);
 
 	/**
 	 * Notification about a client error (and thus the clients disconnection).
@@ -345,7 +347,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CLIENT_ERROR(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerClientError(Packet &p);
 
 	/**
 	 * Notification of a new company:
@@ -353,7 +355,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_NEW(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCompanyNew(Packet &p);
 
 	/**
 	 * Company information on a specific company:
@@ -367,7 +369,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_INFO(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCompanyInfo(Packet &p);
 
 	/**
 	 * Company information of a specific company:
@@ -384,7 +386,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_UPDATE(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCompanyUpdate(Packet &p);
 
 	/**
 	 * Notification about a removed company (e.g. due to bankruptcy).
@@ -393,7 +395,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_REMOVE(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCompanyRemove(Packet &p);
 
 	/**
 	 * Economy update of a specific company:
@@ -411,7 +413,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_ECONOMY(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCompanyEconomy(Packet &p);
 
 	/**
 	 * Company statistics on stations and vehicles:
@@ -429,7 +431,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_COMPANY_STATS(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCompanyStatistics(Packet &p);
 
 	/**
 	 * Send chat from the game into the admin network:
@@ -441,7 +443,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CHAT(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerChat(Packet &p);
 
 	/**
 	 * Result of an rcon command:
@@ -450,7 +452,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_RCON(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerRemoteConsoleCommand(Packet &p);
 
 	/**
 	 * Send what would be printed on the server's console also into the admin network.
@@ -459,7 +461,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CONSOLE(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerConsole(Packet &p);
 
 	/**
 	 * Send DoCommand names to the bot upon request only.
@@ -478,7 +480,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CMD_NAMES(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCommandNames(Packet &p);
 
 	/**
 	 * Send incoming command packets to the admin network.
@@ -498,7 +500,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_CMD_LOGGING(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerCommandLogging(Packet &p);
 
 	/**
 	 * Server requests authentication challenge from the admin.
@@ -509,7 +511,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_AUTH_REQUEST(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerAuthenticationRequest(Packet &p);
 
 	/**
 	 * Indication to the client that authentication is complete and encryption has to be used from here on forward.
@@ -517,7 +519,7 @@ protected:
 	 * 24 * uint8_t Nonce for encrypted connection.
 	 * @param p The packet that was just received.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_ENABLE_ENCRYPTION(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerEnableEncryption(Packet &p);
 
 	/**
 	 * Send a ping-reply (pong) to the admin that sent us the ping packet.
@@ -525,7 +527,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_PONG(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerPong(Packet &p);
 
 	/**
 	 * Notify the admin connection that the rcon command has finished.
@@ -533,7 +535,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
-	virtual NetworkRecvStatus Receive_SERVER_RCON_END(Packet &p);
+	virtual NetworkRecvStatus ReceiveServerRemoteConsoleCommandEnd(Packet &p);
 
 	NetworkRecvStatus HandlePacket(Packet &p);
 public:
