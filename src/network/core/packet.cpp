@@ -285,7 +285,8 @@ bool Packet::PrepareToRead()
 
 	bool valid = cs->receive_encryption_handler->Decrypt(std::span(&this->buffer[pos], mac_size), std::span(&this->buffer[pos + mac_size], this->buffer.size() - pos - mac_size));
 	this->pos += static_cast<PacketSize>(mac_size);
-	return valid;
+	/* Is the decryption valid *and* is the remaining data big enough to contain the packet type? */
+	return valid && this->CanReadFromPacket(EncodedLengthOfPacketType());
 }
 
 /**
@@ -294,7 +295,6 @@ bool Packet::PrepareToRead()
  */
 PacketType Packet::GetPacketType() const
 {
-	assert(this->Size() >= EncodedLengthOfPacketSize() + EncodedLengthOfPacketType());
 	size_t offset = EncodedLengthOfPacketSize();
 	if (cs != nullptr && cs->send_encryption_handler != nullptr) offset += cs->send_encryption_handler->MACSize();
 	return static_cast<PacketType>(buffer[offset]);
