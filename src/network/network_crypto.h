@@ -88,7 +88,7 @@ protected:
 	std::string password; ///< The entered password.
 public:
 
-	virtual void Reply(const std::string &password) override;
+	void Reply(const std::string &password) override;
 
 	/**
 	 * Callback to trigger sending the response for the password request.

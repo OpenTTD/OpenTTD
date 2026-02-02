@@ -661,8 +661,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 }
 
 class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
-	virtual void SendResponse() override { MyClient::SendAuthResponse(); }
-	virtual void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
+	void SendResponse() override { MyClient::SendAuthResponse(); }
+	void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
 	{
 		if (!_network_join.server_password.empty()) {
 			request->Reply(_network_join.server_password);
