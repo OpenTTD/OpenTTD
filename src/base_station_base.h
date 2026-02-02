@@ -123,6 +123,10 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 		return this->cached_name;
 	}
 
+	/**
+	 * Move this station's main coordinate somewhere else.
+	 * @param new_xy New tile location of the sign.
+	 */
 	virtual void MoveSign(TileIndex new_xy)
 	{
 		this->xy = new_xy;

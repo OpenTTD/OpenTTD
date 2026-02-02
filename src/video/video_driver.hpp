@@ -166,6 +166,10 @@ public:
 		return {};
 	}
 
+	/**
+	 * Get some information about the selected driver/backend to be shown to the user.
+	 * @return The information.
+	 */
 	virtual std::string_view GetInfoString() const
 	{
 		return this->GetName();
