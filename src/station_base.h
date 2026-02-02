@@ -515,6 +515,7 @@ struct IndustryCompare {
 };
 
 typedef std::set<IndustryListEntry, IndustryCompare> IndustryList;
+struct RoadVehicle;
 
 /** Station data structure */
 struct Station final : SpecializedStation<Station, false> {
@@ -524,7 +525,7 @@ public:
 		return type == RoadStopType::Bus ? bus_stops : truck_stops;
 	}
 
-	RoadStop *GetPrimaryRoadStop(const struct RoadVehicle *v) const;
+	RoadStop *GetPrimaryRoadStop(const RoadVehicle *v) const;
 
 	RoadStop *bus_stops = nullptr; ///< All the road stops
 	TileArea bus_station{}; ///< Tile area the bus 'station' part covers

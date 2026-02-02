@@ -691,7 +691,7 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 
 /**
  * Draw a close box.
- * @param r      Rectangle of the box.`
+ * @param r      Rectangle of the box.
  * @param colour Colour of the close box.
  */
 static inline void DrawCloseBox(const Rect &r, Colours colour)
@@ -701,7 +701,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
 	Dimension d = GetSpriteSize(SPR_CLOSEBOX, &offset);
 	d.width  -= offset.x;
 	d.height -= offset.y;
-	int s = ScaleSpriteTrad(1); /* Offset to account for shadow of SPR_CLOSEBOX */
+	int s = ScaleSpriteTrad(1); // Offset to account for shadow of SPR_CLOSEBOX.
 	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CentreBounds(r.left, r.right, d.width - s) - offset.x, CentreBounds(r.top, r.bottom, d.height - s) - offset.y);
 }
 

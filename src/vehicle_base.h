@@ -169,9 +169,6 @@ extern VehiclePool _vehicle_pool;
 /* Some declarations of functions, so we can make them friendly */
 struct GroundVehicleCache;
 struct LoadgameState;
-extern bool LoadOldVehicle(LoadgameState &ls, int num);
-extern void FixOldVehicles(LoadgameState &ls);
-
 struct GRFFile;
 
 /**
