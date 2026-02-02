@@ -26,6 +26,14 @@ public:
 		ProviderManager<SoundLoader>::Unregister(*this);
 	}
 
+	/**
+	 * Load a sound from the file and offset in the given sound entry.
+	 * It is up to the implementations to update the sound's channels, bits_per_sample and rate.
+	 * @param sound The entry to load.
+	 * @param new_format Whether this is an old format soundset (with some buggy data), or the new format.
+	 * @param[out] data The vector to write the decoded sound data into.
+	 * @return \c true iff the entry was loaded correctly.
+	 */
 	virtual bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) const = 0;
 };
 

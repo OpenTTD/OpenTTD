@@ -38,7 +38,20 @@ public:
 private:
 	void InitSuggestions(std::string_view text);
 
+	/**
+	 * Get suggestions for auto completion with the given 'query' input text.
+	 * @param prefix The text before the token that is auto completed on.
+	 * @param query The token to perform the auto completion on.
+	 * @return All potential auto complete suggestions.
+	 */
 	virtual std::vector<std::string> GetSuggestions(std::string_view prefix, std::string_view query) = 0;
+
+	/**
+	 * Format the given suggestion after the given prefix, and write that to the buffer.
+	 * For example, in case of a name in chat format '{name}: ' when the prefix is empty, otherwise '{prefix}{name}'.
+	 * @param prefix The text before the token that was auto completed on.
+	 * @param suggestion The chosen suggestion.
+	 */
 	virtual void ApplySuggestion(std::string_view prefix, std::string_view suggestion) = 0;
 };
 

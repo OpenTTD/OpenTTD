@@ -36,6 +36,16 @@ public:
 		ProviderManager<ScreenshotProvider>::Unregister(*this);
 	}
 
+	/**
+	 * Create and write an image to a file.
+	 * @param name The file name to write to.
+	 * @param callb The callback that fills a buffer with pixel data.
+	 * @param w The width of the image.
+	 * @param h The height of the image.
+	 * @param pixelformat The number of bits per pixel for the image.
+	 * @param palette The palette that is currently being used.
+	 * @return Whether writing the image was successful of not.
+	 */
 	virtual bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) const = 0;
 };
 

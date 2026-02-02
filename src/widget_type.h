@@ -139,6 +139,10 @@ public:
 	virtual ~NWidgetBase() = default;
 
 	void ApplyAspectRatio();
+
+	/**
+	 * Adjust the padding based on the user interface zoom.
+	 */
 	virtual void AdjustPaddingForZoom();
 	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
@@ -177,8 +181,23 @@ public:
 	}
 
 	inline WidgetID GetIndex() const { return this->index; }
+
+	/**
+	 * Whether the widget is currently highlighted or not.
+	 * @return \c true if it is, otherwise false.
+	 */
 	virtual bool IsHighlighted() const { return false; }
+
+	/**
+	 * Get the colour of the highlighted text.
+	 * @return The highlight colour.
+	 */
 	virtual TextColour GetHighlightColour() const { return TC_INVALID; }
+
+	/**
+	 * Highlight the widget or not.
+	 * @param highlight_colour Widget must be highlighted (blink).
+	 */
 	virtual void SetHighlighted([[maybe_unused]] TextColour highlight_colour) {}
 
 	/**
@@ -411,23 +430,17 @@ protected:
 	friend void ApplyNWidgetPartAttribute(const struct NWidgetPart &nwid, NWidgetBase *dest);
 };
 
-/**
- * Highlight the widget or not.
- * @param highlight_colour Widget must be highlighted (blink).
- */
 inline void NWidgetCore::SetHighlighted(TextColour highlight_colour)
 {
 	highlight_colour != TC_INVALID ? this->disp_flags.Set(NWidgetDisplayFlag::Highlight) : this->disp_flags.Reset(NWidgetDisplayFlag::Highlight);
 	this->highlight_colour = highlight_colour;
 }
 
-/** Return whether the widget is highlighted. */
 inline bool NWidgetCore::IsHighlighted() const
 {
 	return this->disp_flags.Test(NWidgetDisplayFlag::Highlight);
 }
 
-/** Return the colour of the highlight. */
 inline TextColour NWidgetCore::GetHighlightColour() const
 {
 	return this->highlight_colour;
