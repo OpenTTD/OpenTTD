@@ -138,7 +138,7 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 
 			case TileType::Trees:
 				/* trees on shore */
-				has_water |= (GB(neighbour.m2(), 4, 2) == TREE_GROUND_SHORE);
+				has_water |= (static_cast<TreeGround>(GB(neighbour.m2(), 4, 2)) == TreeGround::Shore);
 				break;
 
 			default: break;
@@ -1805,7 +1805,7 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			if (GetTileType(t) == TileType::Trees) {
 				TreeGround ground_type = (TreeGround)GB(t.m2(), 4, 2);
-				if (ground_type != TREE_GROUND_SNOW_DESERT) SB(t.m2(), 6, 2, 3);
+				if (ground_type != TreeGround::SnowOrDesert) SB(t.m2(), 6, 2, 3);
 			}
 		}
 	}
@@ -3216,7 +3216,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
 		/* Update water class for trees. */
 		for (const auto t : Map::Iterate()) {
-			if (IsTileType(t, TileType::Trees)) SetWaterClass(t, GetTreeGround(t) == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
+			if (IsTileType(t, TileType::Trees)) SetWaterClass(t, GetTreeGround(t) == TreeGround::Shore ? WaterClass::Sea : WaterClass::Invalid);
 		}
 	}
 

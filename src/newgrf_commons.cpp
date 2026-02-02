@@ -361,7 +361,7 @@ uint32_t GetTerrainType(TileIndex tile, TileContext context)
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld;
 					TreeGround ground = GetTreeGround(tile);
-					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW) && GetTreeDensity(tile) >= 2;
+					has_snow = (ground == TreeGround::SnowOrDesert || ground == TreeGround::RoughSnow) && GetTreeDensity(tile) >= 2;
 					break;
 				}
 
@@ -433,7 +433,7 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 	TileType tile_type = GetTileType(tile);
 
 	/* Fake tile type for trees on shore */
-	if (IsTileType(tile, TileType::Trees) && GetTreeGround(tile) == TREE_GROUND_SHORE) tile_type = TileType::Water;
+	if (IsTileType(tile, TileType::Trees) && GetTreeGround(tile) == TreeGround::Shore) tile_type = TileType::Water;
 
 	/* Fake tile type for road waypoints */
 	if (IsRoadWaypointTile(tile)) tile_type = TileType::Road;

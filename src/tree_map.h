@@ -49,12 +49,12 @@ static const uint TREE_COUNT_TOYLAND      = 9;                                  
  *
  * This enumeration defines the ground types for tiles with trees on it.
  */
-enum TreeGround : uint8_t {
-	TREE_GROUND_GRASS       = 0, ///< normal grass
-	TREE_GROUND_ROUGH       = 1, ///< some rough tile
-	TREE_GROUND_SNOW_DESERT = 2, ///< a desert or snow tile, depend on landscape
-	TREE_GROUND_SHORE       = 3, ///< shore
-	TREE_GROUND_ROUGH_SNOW  = 4, ///< A snow tile that is rough underneath.
+enum class TreeGround : uint8_t {
+	Grass = 0, ///< Normal grass.
+	Rough = 1, ///< Rough land.
+	SnowOrDesert = 2, ///< Snow or desert, depending on landscape.
+	Shore = 3, ///< Shore.
+	RoughSnow = 4, ///< A snow tile that is rough underneath.
 };
 
 /**
@@ -145,8 +145,8 @@ inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 {
 	assert(IsTileType(t, TileType::Trees)); // XXX incomplete
 	SB(t.m2(), 4, 2, d);
-	SB(t.m2(), 6, 3, g);
-	SetWaterClass(t, g == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
+	SB(t.m2(), 6, 3, to_underlying(g));
+	SetWaterClass(t, g == TreeGround::Shore ? WaterClass::Sea : WaterClass::Invalid);
 }
 
 /**
@@ -245,8 +245,8 @@ inline void MakeTree(Tile t, TreeType type, uint count, TreeGrowthStage growth, 
 {
 	SetTileType(t, TileType::Trees);
 	SetTileOwner(t, OWNER_NONE);
-	SetWaterClass(t, ground == TREE_GROUND_SHORE ? WaterClass::Sea : WaterClass::Invalid);
-	t.m2() = ground << 6 | density << 4 | 0;
+	SetWaterClass(t, ground == TreeGround::Shore ? WaterClass::Sea : WaterClass::Invalid);
+	t.m2() = to_underlying(ground) << 6 | density << 4 | 0;
 	t.m3() = type;
 	t.m4() = 0 << 5 | 0 << 2;
 	t.m5() = count << 6 | to_underlying(growth);

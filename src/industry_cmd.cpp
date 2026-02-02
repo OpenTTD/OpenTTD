@@ -1009,7 +1009,7 @@ static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields, bool allow
 				case ClearGround::Fields: return allow_fields;
 				default: return true;
 			}
-		case TileType::Trees: return GetTreeGround(tile) != TREE_GROUND_SHORE && (allow_rough || GetTreeGround(tile) != TREE_GROUND_ROUGH);
+		case TileType::Trees: return GetTreeGround(tile) != TreeGround::Shore && (allow_rough || GetTreeGround(tile) != TreeGround::Rough);
 		default:       return false;
 	}
 }

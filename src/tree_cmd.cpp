@@ -71,6 +71,20 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 }
 
 /**
+ * Get equivalent TreeGround for a ClearGround.
+ * @param clearground The ClearGround.
+ * @return Equivalent TreeGround.
+ */
+static TreeGround TreeGroundFromClearGround(ClearGround clearground)
+{
+	switch (clearground) {
+		case ClearGround::Grass: return TreeGround::Grass;
+		case ClearGround::Rough: return TreeGround::Rough;
+		default: return TreeGround::SnowOrDesert;
+	}
+}
+
+/**
  * Creates a tree tile
  * Ground type and density is preserved.
  *
@@ -91,20 +105,16 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 
 	switch (GetTileType(tile)) {
 		case TileType::Water:
-			ground = TREE_GROUND_SHORE;
+			ground = TreeGround::Shore;
 			ClearNeighbourNonFloodingStates(tile);
 			break;
 
 		case TileType::Clear: {
 			ClearGround clearground = GetClearGround(tile);
 			if (IsSnowTile(tile)) {
-				ground = clearground == ClearGround::Rough ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
+				ground = clearground == ClearGround::Rough ? TreeGround::RoughSnow : TreeGround::SnowOrDesert;
 			} else {
-				switch (clearground) {
-					case ClearGround::Grass:  ground = TREE_GROUND_GRASS;       break;
-					case ClearGround::Rough:  ground = TREE_GROUND_ROUGH;       break;
-					default:           ground = TREE_GROUND_SNOW_DESERT; break;
-				}
+				ground = TreeGroundFromClearGround(clearground);
 			}
 			if (clearground != ClearGround::Rough) density = GetClearDensity(tile);
 			break;
@@ -171,7 +181,7 @@ void PlaceTree(TileIndex tile, uint32_t r, bool keep_density)
 
 		/* Rerandomize ground, if neither snow nor shore */
 		TreeGround ground = GetTreeGround(tile);
-		if (ground != TREE_GROUND_SNOW_DESERT && ground != TREE_GROUND_ROUGH_SNOW && ground != TREE_GROUND_SHORE) {
+		if (ground != TreeGround::SnowOrDesert && ground != TreeGround::RoughSnow && ground != TreeGround::Shore) {
 			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
 		}
 	}
@@ -634,9 +644,9 @@ struct TreeListEnt : PalSpriteID {
 static void DrawTile_Trees(TileInfo *ti)
 {
 	switch (GetTreeGround(ti->tile)) {
-		case TREE_GROUND_SHORE: DrawShoreTile(ti->tileh); break;
-		case TREE_GROUND_GRASS: DrawClearLandTile(ti, GetTreeDensity(ti->tile)); break;
-		case TREE_GROUND_ROUGH: DrawHillyLandTile(ti); break;
+		case TreeGround::Shore: DrawShoreTile(ti->tileh); break;
+		case TreeGround::Grass: DrawClearLandTile(ti, GetTreeDensity(ti->tile)); break;
+		case TreeGround::Rough: DrawHillyLandTile(ti); break;
 		default: DrawGroundSprite(_clear_land_sprites_snow_desert[GetTreeDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE); break;
 	}
 
@@ -647,7 +657,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
 
 	/* different tree styles above one of the grounds */
-	if ((GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT || GetTreeGround(ti->tile) == TREE_GROUND_ROUGH_SNOW) &&
+	if ((GetTreeGround(ti->tile) == TreeGround::SnowOrDesert || GetTreeGround(ti->tile) == TreeGround::RoughSnow) &&
 			GetTreeDensity(ti->tile) >= 2 &&
 			IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
 		index += 164 - (TREE_SUB_ARCTIC << 2);
@@ -749,8 +759,8 @@ static void TileLoopTreesDesert(TileIndex tile)
 {
 	switch (GetTropicZone(tile)) {
 		case TROPICZONE_DESERT:
-			if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) {
-				SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
+			if (GetTreeGround(tile) != TreeGround::SnowOrDesert) {
+				SetTreeGroundDensity(tile, TreeGround::SnowOrDesert, 3);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
@@ -778,15 +788,15 @@ static void TileLoopTreesAlps(TileIndex tile)
 
 	if (k < 0) {
 		switch (GetTreeGround(tile)) {
-			case TREE_GROUND_SNOW_DESERT: SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3); break;
-			case TREE_GROUND_ROUGH_SNOW:  SetTreeGroundDensity(tile, TREE_GROUND_ROUGH, 3); break;
+			case TreeGround::SnowOrDesert: SetTreeGroundDensity(tile, TreeGround::Grass, 3); break;
+			case TreeGround::RoughSnow:  SetTreeGroundDensity(tile, TreeGround::Rough, 3); break;
 			default: return;
 		}
 	} else {
 		uint density = std::min<uint>(k, 3);
 
-		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT && GetTreeGround(tile) != TREE_GROUND_ROUGH_SNOW) {
-			TreeGround tg = GetTreeGround(tile) == TREE_GROUND_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
+		if (GetTreeGround(tile) != TreeGround::SnowOrDesert && GetTreeGround(tile) != TreeGround::RoughSnow) {
+			TreeGround tg = GetTreeGround(tile) == TreeGround::Rough ? TreeGround::RoughSnow : TreeGround::SnowOrDesert;
 			SetTreeGroundDensity(tile, tg, density);
 		} else if (GetTreeDensity(tile) != density) {
 			SetTreeGroundDensity(tile, GetTreeGround(tile), density);
@@ -829,7 +839,7 @@ static bool TreesOnTileCanSpread(TileIndex tile)
 
 static void TileLoop_Trees(TileIndex tile)
 {
-	if (GetTreeGround(tile) == TREE_GROUND_SHORE) {
+	if (GetTreeGround(tile) == TreeGround::Shore) {
 		TileLoop_Water(tile);
 	} else {
 		switch (_settings_game.game_creation.landscape) {
@@ -848,10 +858,10 @@ static void TileLoop_Trees(TileIndex tile)
 	uint32_t cycle = 11 * TileX(tile) + 9 * TileY(tile) + (TimerGameTick::counter >> 8);
 
 	/* Handle growth of grass (under trees/on TileType::Trees tiles) at every 8th processings, like it's done for grass on TileType::Clear tiles. */
-	if ((cycle & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
+	if ((cycle & 7) == 7 && GetTreeGround(tile) == TreeGround::Grass) {
 		uint density = GetTreeDensity(tile);
 		if (density < 3) {
-			SetTreeGroundDensity(tile, TREE_GROUND_GRASS, density + 1);
+			SetTreeGroundDensity(tile, TreeGround::Grass, density + 1);
 			MarkTileDirtyByTile(tile);
 		}
 	}
@@ -915,10 +925,10 @@ static void TileLoop_Trees(TileIndex tile)
 			} else {
 				/* just one tree, change type into TileType::Clear */
 				switch (GetTreeGround(tile)) {
-					case TREE_GROUND_SHORE: MakeShore(tile); break;
-					case TREE_GROUND_GRASS: MakeClear(tile, ClearGround::Grass, GetTreeDensity(tile)); break;
-					case TREE_GROUND_ROUGH: MakeClear(tile, ClearGround::Rough, 3); break;
-					case TREE_GROUND_ROUGH_SNOW: {
+					case TreeGround::Shore: MakeShore(tile); break;
+					case TreeGround::Grass: MakeClear(tile, ClearGround::Grass, GetTreeDensity(tile)); break;
+					case TreeGround::Rough: MakeClear(tile, ClearGround::Rough, 3); break;
+					case TreeGround::RoughSnow: {
 						uint density = GetTreeDensity(tile);
 						MakeClear(tile, ClearGround::Rough, 3);
 						MakeSnow(tile, density);
