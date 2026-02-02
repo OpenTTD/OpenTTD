@@ -33,7 +33,7 @@ public:
 
 	bool AfterBlitterChange() override;
 
-	bool ClaimMousePointer() override;
+	void ClaimMousePointer() override;
 
 	void EditBoxGainedFocus() override;
 

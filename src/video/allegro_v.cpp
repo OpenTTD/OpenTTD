@@ -226,12 +226,11 @@ static bool CreateMainSurface(uint w, uint h)
 	return true;
 }
 
-bool VideoDriver_Allegro::ClaimMousePointer()
+void VideoDriver_Allegro::ClaimMousePointer()
 {
 	select_mouse_cursor(MOUSE_CURSOR_NONE);
 	show_mouse(nullptr);
 	disable_hardware_cursor();
-	return true;
 }
 
 std::vector<int> VideoDriver_Allegro::GetListOfMonitorRefreshRates()
