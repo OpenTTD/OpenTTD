@@ -25,13 +25,15 @@
 
 static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 {
-	static constexpr Price clear_price_table[] = {
-		Price::ClearGrass,
-		Price::ClearRough,
-		Price::ClearRocks,
-		Price::ClearFields,
-		Price::ClearRough,
-		Price::ClearRough,
+	static constexpr Price clear_price_table[to_underlying(ClearGround::MaxSize)] = {
+		Price::ClearGrass, // Base price for clearing grass.
+		Price::ClearRough, // Base price for clearing rough land.
+		Price::ClearRocks, // Base price for clearing rocks.
+		Price::ClearFields, // Base price for clearing fields.
+		Price::ClearRough, // Unused.
+		Price::ClearRough, // Base price for clearing desert.
+		Price::ClearRough, // Unused.
+		Price::ClearRough, // Unused.
 	};
 	CommandCost price(EXPENSES_CONSTRUCTION);
 
@@ -154,6 +156,9 @@ static void DrawTile_Clear(TileInfo *ti)
 		case ClearGround::Desert:
 			DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			break;
+
+		default:
+			NOT_REACHED();
 	}
 
 	DrawBridgeMiddle(ti, {});
@@ -370,13 +375,15 @@ static TrackStatus GetTileTrackStatus_Clear(TileIndex, TransportType, uint, Diag
 static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
 {
 	/* Each pair holds a normal and a snowy ClearGround description. */
-	static constexpr std::pair<StringID, StringID> clear_land_str[] = {
-		{STR_LAI_CLEAR_DESCRIPTION_GRASS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS},
-		{STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND},
-		{STR_LAI_CLEAR_DESCRIPTION_ROCKS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS},
-		{STR_LAI_CLEAR_DESCRIPTION_FIELDS,     STR_EMPTY},
+	static constexpr std::pair<StringID, StringID> clear_land_str[to_underlying(ClearGround::MaxSize)] = {
+		{STR_LAI_CLEAR_DESCRIPTION_GRASS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS}, // Description for grass.
+		{STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND}, // Description for rough land.
+		{STR_LAI_CLEAR_DESCRIPTION_ROCKS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS}, // Description for rocks.
+		{STR_LAI_CLEAR_DESCRIPTION_FIELDS,     STR_EMPTY}, // Description for fields.
 		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
-		{STR_LAI_CLEAR_DESCRIPTION_DESERT,     STR_EMPTY},
+		{STR_LAI_CLEAR_DESCRIPTION_DESERT,     STR_EMPTY}, // Description for desert.
+		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
+		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
 	};
 
 	if (!IsSnowTile(tile) && IsClearGround(tile, ClearGround::Grass) && GetClearDensity(tile) == 0) {
