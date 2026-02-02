@@ -145,9 +145,9 @@ protected:
 		ScriptList::FillList<T>(vm, list, [](const T *) { return true; });
 	}
 
-	virtual bool SaveObject(HSQUIRRELVM vm) const override;
-	virtual bool LoadObject(HSQUIRRELVM vm) override;
-	virtual ScriptObject *CloneObject() const override;
+	bool SaveObject(HSQUIRRELVM vm) const override;
+	bool LoadObject(HSQUIRRELVM vm) override;
+	ScriptObject *CloneObject() const override;
 
 	/**
 	 * Copy the content of a list.

@@ -115,7 +115,7 @@ public:
 #endif
 
 #if defined(_MSC_VER)
-	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
 	{
 		this->try_execute_active = true;
 		bool res;
@@ -131,7 +131,7 @@ public:
 		return res;
 	}
 #else
-	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
 	{
 		this->try_execute_active = true;
 
