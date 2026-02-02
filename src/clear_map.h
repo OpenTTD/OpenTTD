@@ -13,6 +13,8 @@
 #include "bridge_map.h"
 #include "industry_type.h"
 
+static constexpr size_t CLEAR_GROUND_BITS = 3; ///< How many bits in map array are dedicated for clear ground type.
+
 /**
  * Ground types. Valid densities in comments after the enum.
  */
@@ -22,8 +24,12 @@ enum class ClearGround : uint8_t {
 	Rocks = 2, ///< Rocks with snow transition (0-3)
 	Fields = 3, ///< Farm fields (3)
 	Desert = 5, ///< Desert with transition (1,3)
+
+	End, ///< End marker.
+	MaxSize = 1U << CLEAR_GROUND_BITS, ///< The maximum possible number of clear ground types to be stored in map.
 };
 
+static_assert(ClearGround::End <= ClearGround::MaxSize);
 
 /**
  * Test if a tile is covered with snow.
@@ -46,7 +52,7 @@ inline bool IsSnowTile(Tile t)
 inline ClearGround GetClearGround(Tile t)
 {
 	assert(IsTileType(t, TileType::Clear));
-	return static_cast<ClearGround>(GB(t.m5(), 2, 3));
+	return static_cast<ClearGround>(GB(t.m5(), 2, CLEAR_GROUND_BITS));
 }
 
 /**
