@@ -123,21 +123,21 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, TileType::Clear) && ::IsClearGround(tile, CLEAR_FIELDS));
+	return (::IsTileType(tile, TileType::Clear) && ::IsClearGround(tile, ClearGround::Fields));
 }
 
 /* static */ bool ScriptTile::IsRockTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, TileType::Clear) && ::GetClearGround(tile) == ::CLEAR_ROCKS);
+	return (::IsTileType(tile, TileType::Clear) && ::GetClearGround(tile) == ::ClearGround::Rocks);
 }
 
 /* static */ bool ScriptTile::IsRoughTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, TileType::Clear) && ::GetClearGround(tile) == ::CLEAR_ROUGH);
+	return (::IsTileType(tile, TileType::Clear) && ::GetClearGround(tile) == ::ClearGround::Rough);
 }
 
 /* static */ bool ScriptTile::IsSnowTile(TileIndex tile)
@@ -151,7 +151,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, TileType::Clear) && ::IsClearGround(tile, CLEAR_DESERT));
+	return (::IsTileType(tile, TileType::Clear) && ::IsClearGround(tile, ClearGround::Desert));
 }
 
 /* static */ bool ScriptTile::IsHouseTile(TileIndex tile)

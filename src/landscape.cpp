@@ -545,7 +545,7 @@ void DoClearSquare(TileIndex tile)
 	if (MayAnimateTile(tile)) DeleteAnimatedTile(tile, true);
 
 	bool remove = IsDockingTile(tile);
-	MakeClear(tile, CLEAR_GRASS, _generating_world ? 3 : 0);
+	MakeClear(tile, ClearGround::Grass, _generating_world ? 3 : 0);
 	MarkTileDirtyByTile(tile);
 	if (remove) RemoveDockingTile(tile);
 
@@ -845,7 +845,7 @@ void InitializeLandscape()
 {
 	for (uint y = _settings_game.construction.freeform_edges ? 1 : 0; y < Map::MaxY(); y++) {
 		for (uint x = _settings_game.construction.freeform_edges ? 1 : 0; x < Map::MaxX(); x++) {
-			MakeClear(TileXY(x, y), CLEAR_GRASS, 3);
+			MakeClear(TileXY(x, y), ClearGround::Grass, 3);
 			SetTileHeight(TileXY(x, y), 0);
 			SetTropicZone(TileXY(x, y), TROPICZONE_NORMAL);
 			ClearBridgeMiddle(TileXY(x, y));
@@ -1012,7 +1012,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 
 		auto allows_rainforest = [tile](auto &offset) {
 			TileIndex t = AddTileIndexDiffCWrap(tile, offset);
-			return t == INVALID_TILE || !IsTileType(t, TileType::Clear) || !IsClearGround(t, CLEAR_DESERT);
+			return t == INVALID_TILE || !IsTileType(t, TileType::Clear) || !IsClearGround(t, ClearGround::Desert);
 		};
 		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_rainforest)) {
 			SetTropicZone(tile, TROPICZONE_RAINFOREST);
@@ -1128,7 +1128,7 @@ static void MakeWetlands(TileIndex centre, uint height, uint river_length)
 			MakeRiverAndModifyDesertZoneAround(tile);
 		} else if (IsTileType(tile, TileType::Clear)) {
 			/* This tile is ground, which we always make rough. */
-			SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
+			SetClearGroundDensity(tile, ClearGround::Rough, 3);
 			/* Maybe place trees? */
 			if (has_trees && _settings_game.game_creation.tree_placer != TreePlacer::None) {
 				PlaceTree(tile, Random(), true);

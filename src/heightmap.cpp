@@ -390,7 +390,7 @@ static void GreyscaleToMapHeights(uint img_width, uint img_height, std::span<con
 			}
 			/* Only clear the tiles within the map area. */
 			if (IsInnerTile(tile)) {
-				MakeClear(tile, CLEAR_GRASS, 3);
+				MakeClear(tile, ClearGround::Grass, 3);
 			}
 		}
 	}
@@ -433,7 +433,7 @@ void FixSlopes()
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the
 				 * tile turning into rock. */
 				if (IsInnerTile(tile) && RandomRange(max_height) <= current_height) {
-					MakeClear(tile, CLEAR_ROCKS, 3);
+					MakeClear(tile, ClearGround::Rocks, 3);
 				}
 			}
 		}
@@ -462,7 +462,7 @@ void FixSlopes()
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the
 				 * tile turning into rock. */
 				if (IsInnerTile(tile) && RandomRange(max_height) <= current_height) {
-					MakeClear(tile, CLEAR_ROCKS, 3);
+					MakeClear(tile, ClearGround::Rocks, 3);
 				}
 			}
 		}

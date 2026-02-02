@@ -53,7 +53,7 @@ static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tr
  * This is true for clear ground without farms or rocks.
  *
  * @param tile the tile of interest
- * @param allow_desert Allow planting trees on CLEAR_DESERT?
+ * @param allow_desert Allow planting trees on ClearGround::Desert?
  * @return true if trees can be built.
  */
 static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
@@ -63,8 +63,8 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
 		case TileType::Clear:
-			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
-			       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
+			return !IsBridgeAbove(tile) && !IsClearGround(tile, ClearGround::Fields) && !IsClearGround(tile, ClearGround::Rocks) &&
+			       (allow_desert || !IsClearGround(tile, ClearGround::Desert));
 
 		default: return false;
 	}
@@ -98,15 +98,15 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 		case TileType::Clear: {
 			ClearGround clearground = GetClearGround(tile);
 			if (IsSnowTile(tile)) {
-				ground = clearground == CLEAR_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
+				ground = clearground == ClearGround::Rough ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
 			} else {
 				switch (clearground) {
-					case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       break;
-					case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;       break;
+					case ClearGround::Grass:  ground = TREE_GROUND_GRASS;       break;
+					case ClearGround::Rough:  ground = TREE_GROUND_ROUGH;       break;
 					default:           ground = TREE_GROUND_SNOW_DESERT; break;
 				}
 			}
-			if (clearground != CLEAR_ROUGH) density = GetClearDensity(tile);
+			if (clearground != ClearGround::Rough) density = GetClearDensity(tile);
 			break;
 		}
 
@@ -574,8 +574,8 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				if (IsTileType(current_tile, TileType::Clear)) {
 					/* Remove fields or rocks. Note that the ground will get barrened */
 					switch (GetClearGround(current_tile)) {
-						case CLEAR_FIELDS:
-						case CLEAR_ROCKS: {
+						case ClearGround::Fields:
+						case ClearGround::Rocks: {
 							CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
 							if (ret.Failed()) return ret;
 							cost.AddCost(ret.GetCost());
@@ -891,7 +891,7 @@ static void TileLoop_Trees(TileIndex tile)
 						if (!CanPlantTreesOnTile(tile, false)) return;
 
 						/* Don't plant trees, if ground was freshly cleared */
-						if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == CLEAR_GRASS && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
+						if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == ClearGround::Grass && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
 
 						PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
 
@@ -916,20 +916,20 @@ static void TileLoop_Trees(TileIndex tile)
 				/* just one tree, change type into TileType::Clear */
 				switch (GetTreeGround(tile)) {
 					case TREE_GROUND_SHORE: MakeShore(tile); break;
-					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
-					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
+					case TREE_GROUND_GRASS: MakeClear(tile, ClearGround::Grass, GetTreeDensity(tile)); break;
+					case TREE_GROUND_ROUGH: MakeClear(tile, ClearGround::Rough, 3); break;
 					case TREE_GROUND_ROUGH_SNOW: {
 						uint density = GetTreeDensity(tile);
-						MakeClear(tile, CLEAR_ROUGH, 3);
+						MakeClear(tile, ClearGround::Rough, 3);
 						MakeSnow(tile, density);
 						break;
 					}
 					default: // snow or desert
 						if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
-							MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
+							MakeClear(tile, ClearGround::Desert, GetTreeDensity(tile));
 						} else {
 							uint density = GetTreeDensity(tile);
-							MakeClear(tile, CLEAR_GRASS, 3);
+							MakeClear(tile, ClearGround::Grass, 3);
 							MakeSnow(tile, density);
 						}
 						break;

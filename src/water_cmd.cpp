@@ -1260,7 +1260,7 @@ static void DoDryUp(TileIndex tile)
 			assert(IsCoast(tile));
 
 			if (Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile).Succeeded()) {
-				MakeClear(tile, CLEAR_GRASS, 3);
+				MakeClear(tile, ClearGround::Grass, 3);
 				MarkTileDirtyByTile(tile);
 			}
 			break;

@@ -179,7 +179,7 @@ Industry::~Industry()
 
 		/* Remove the farmland and convert it to regular tiles over time. */
 		for (TileIndex tile_cur : ta) {
-			if (IsTileType(tile_cur, TileType::Clear) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
+			if (IsTileType(tile_cur, TileType::Clear) && IsClearGround(tile_cur, ClearGround::Fields) &&
 					GetIndustryIndexOfField(tile_cur) == this->index) {
 				SetIndustryIndexOfField(tile_cur, IndustryID::Invalid());
 			}
@@ -1004,9 +1004,9 @@ static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields, bool allow
 		case TileType::Clear:
 			if (IsSnowTile(tile)) return false;
 			switch (GetClearGround(tile)) {
-				case CLEAR_DESERT: return false;
-				case CLEAR_ROUGH: return allow_rough;
-				case CLEAR_FIELDS: return allow_fields;
+				case ClearGround::Desert: return false;
+				case ClearGround::Rough: return allow_rough;
+				case ClearGround::Fields: return allow_fields;
 				default: return true;
 			}
 		case TileType::Trees: return GetTreeGround(tile) != TREE_GROUND_SHORE && (allow_rough || GetTreeGround(tile) != TREE_GROUND_ROUGH);
@@ -1029,9 +1029,9 @@ static void SetupFarmFieldFence(TileIndex tile, int size, uint8_t type, DiagDire
 	do {
 		tile = Map::WrapToMap(tile);
 
-		if (IsTileType(tile, TileType::Clear) && IsClearGround(tile, CLEAR_FIELDS)) {
+		if (IsTileType(tile, TileType::Clear) && IsClearGround(tile, ClearGround::Fields)) {
 			TileIndex neighbour = tile + neighbour_diff;
-			if (!IsTileType(neighbour, TileType::Clear) || !IsClearGround(neighbour, CLEAR_FIELDS) || GetFence(neighbour, ReverseDiagDir(side)) == 0) {
+			if (!IsTileType(neighbour, TileType::Clear) || !IsClearGround(neighbour, ClearGround::Fields) || GetFence(neighbour, ReverseDiagDir(side)) == 0) {
 				/* Add fence as long as neighbouring tile does not already have a fence in the same position. */
 				uint8_t or_ = type;
 
