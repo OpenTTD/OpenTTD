@@ -925,7 +925,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har for få ordre på ordrelisten
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en tom ordre
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har doble ordre
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en ugyldig stasjon i ordrelisten
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har i sine ordrer en flyplass der rullebanen er for kort
@@ -1064,7 +1064,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Velg språk som
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% fullført)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Fullskjerm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kryss av denne knappen for å spille OpenTTD i fullskjermmodus
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Slå på for å spille OpenTTD i fullskjermmodus
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Skjermoppløsning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Velg skjermoppløsningen som skal brukes
@@ -1072,11 +1072,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Maskinvareakselerasjon
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Merk av i denne boksen for å la OpenTTD prøve å bruke maskinvareakselerasjon. En endret innstilling blir bare brukt ved omstart av spillet
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Slå på for å la OpenTTD prøve å bruke maskinvareakselerasjon. En endret innstilling blir bare brukt ved omstart av spillet
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Innstillingen vil ikke tre i kraft før spillet er restartet
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Merk av i denne boksen for å aktivere VSync for skjermen. Endring av innstilling krever omstart av spillet. Fungerer bare med maskinvareakselerasjon aktivert
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Slå på for å aktivere VSync for skjermen. Endring av innstilling krever omstart av spillet. Fungerer bare med maskinvareakselerasjon aktivert
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktiv driver: {STRING}
 
@@ -1085,15 +1085,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Grensesnitt
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Grensesnittstørrelse
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra for å endre grensesnittstørrelse. Ctrl+dra for kontinuerlig justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detekter størrelse automatisk
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kryss av denne knappen for å detektere grensesnittstørrelsen automatisk
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Slå på for å detektere grensesnittstørrelsen automatisk
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaler faser
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryss av denne knappen for å skalere faser med størrelsen på grensesnittet
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Slå på for å skalere faser med størrelsen på grensesnittet
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Bruk tradisjonell sprite-skrift
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryss av denne knappen hvis du foretrekker den tradisjonelle sprite-skriften med fast størrelse
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Slå på hvis du foretrekker den tradisjonelle sprite-skriften med fast størrelse
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Kantutjevning av skrift
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryss av denne knappen for å kantutjevne skalerbar skrift
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Slå på for å kantutjevne skalerbar skrift
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -2860,20 +2860,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduser høyden
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Øk høyden på forhåndsvisninger. Ctrl+klikk for så stor som mulig
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Standard samling
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Velg en samling
+STR_PICKER_COLLECTION_ADD                                       :Legg til
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Lag ny samling
+STR_PICKER_COLLECTION_RENAME                                    :Gi nytt navn
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Gi samling nytt navn
+STR_PICKER_COLLECTION_DELETE                                    :Slett
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Slett en samling
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Gi denne samlingen nytt navn
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Slett samling
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Er du sikker på at du vil slette denne samlingen?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Er du sikker på at du vil slette denne samlingen? Det er elementer fra deaktiverte NewGRF i den!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Velg stasjonsklassen du vil vise
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Velg type stasjon å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Velg en samling av stasjoner å vise
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Velg veipunktklassen du vil vise
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Velg type veipunkt å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Velg en samling av veipunkt å vise
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Velg type busterminal du vil vise
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Velg type bussterminal å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Velg en samling av bussterminaler å vise
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Velg en type godsterminal du vil vise
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Velg type godsterminal å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Velg en samling av godsterminaler å vise
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Velg objektklassen du vil vise
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Velg type objekt å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer. Ctrl+klikk+dra for å velge areal diagonalt. Trykk også Shift for å kun vise kostnadsestimat
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Velg en samling av objekter å vise
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Velg byområdet du vil vise
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Velg type hus å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Velg en samling av hus å vise
 
 STR_HOUSE_PICKER_CAPTION                                        :Husvalg
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Navn: {GOLD}{STRING}
@@ -4374,8 +4392,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er n
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding fra kjøretøysprodusent
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Melding fra kjøretøysprodusent ({COMMA} av {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nettopp designet e{G n i t} ny{G "" "" tt} {STRING} - er du interessert i ett års ekslusivt bruk av de{G 0 n n t}, slik at vi kan se hvordan de{G 0 n n t} virker før de{G 0 n n t} blir allment tilgjengelig?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Forrige
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Klikk for å gå til forrige nye kjøretøy
+STR_ENGINE_PREVIEW_NEXT                                         :Neste
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Klikk for å gå til neste nye kjøretøy
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Klikk for å hoppe til et nytt kjøretøy
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=neuter}lokomotiv
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=neuter}elektrisk lokomotiv

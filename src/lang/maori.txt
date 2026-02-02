@@ -923,7 +923,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Kei te t
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Ehara i te rawaka ngā mahi i te rārangi mō {VEHICLE}
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}He mahi hemahema tā {VEHICLE}
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}He mahi muhu tā {VEHICLE}
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}He mahi taurua tā {VEHICLE}
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}He teihana muhu kei roto i ngā mahi a {VEHICLE}
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}He poto rawa te aratau o tētahi taunga rererangi i roto i ngā mahi a {VEHICLE}
@@ -4390,8 +4390,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ka hoko
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Karere nā tētahi kaiwhakanao waka
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Karere nā tētahi kaiwhakanao waka ({COMMA} o te {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Kua hoahoa mātou i tētahi {STRING} hou - ka hiahia rānei koutou ki te whakamahi kaupare i tēnei waka, kia kite ai mātou ka pēwhea tana mahi i mua i te whakaputanga whānui?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Mua
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Pāwhiri kia haere ki te waka hou i mua
+STR_ENGINE_PREVIEW_NEXT                                         :Muri
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Pāwhiri kia haere ki te waka hou i muri
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Pāwhiri kia peke ki tētahi waka hou
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :pūkaha rerewhenua
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :pūkaha rerewhenua hiko
