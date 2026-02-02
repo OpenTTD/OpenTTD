@@ -465,7 +465,7 @@ static void FixOwnerOfRailTrack(Tile t)
 	}
 
 	/* if it's not a crossing, make it clean land */
-	MakeClear(t, CLEAR_GRASS, 0);
+	MakeClear(t, ClearGround::Grass, 0);
 }
 
 /**
@@ -1252,7 +1252,7 @@ bool AfterLoadGame()
 						}
 					} else {
 						if (GB(t.m5(), 3, 2) == 0) {
-							MakeClear(t, CLEAR_GRASS, 3);
+							MakeClear(t, ClearGround::Grass, 3);
 						} else {
 							if (!IsTileFlat(t)) {
 								MakeShore(t);
@@ -1477,9 +1477,9 @@ bool AfterLoadGame()
 	 *  plant new ones. */
 	if (IsSavegameVersionBefore(SLV_32)) {
 		for (const auto t : Map::Iterate()) {
-			if (IsTileType(t, TileType::Clear) && IsClearGround(t, CLEAR_FIELDS)) {
+			if (IsTileType(t, TileType::Clear) && IsClearGround(t, ClearGround::Fields)) {
 				/* remove fields */
-				MakeClear(t, CLEAR_GRASS, 3);
+				MakeClear(t, ClearGround::Grass, 3);
 			}
 		}
 
@@ -2434,8 +2434,8 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_135)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Clear)) {
-				if (GetClearGround(t) == ClearGround{4}) { // CLEAR_SNOW becomes CLEAR_GRASS with IsSnowTile() set.
-					SetClearGroundDensity(t, CLEAR_GRASS, GetClearDensity(t));
+				if (GetClearGround(t) == ClearGround{4}) { // CLEAR_SNOW becomes ClearGround::Grass with IsSnowTile() set.
+					SetClearGroundDensity(t, ClearGround::Grass, GetClearDensity(t));
 					SetBit(t.m3(), 4);
 				} else {
 					ClrBit(t.m3(), 4);
@@ -2915,13 +2915,13 @@ bool AfterLoadGame()
 		/* We store 4 fences in the field tiles instead of only SE and SW. */
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Clear) && !IsTileType(t, TileType::Trees)) continue;
-			if (IsTileType(t, TileType::Clear) && IsClearGround(t, CLEAR_FIELDS)) continue;
+			if (IsTileType(t, TileType::Clear) && IsClearGround(t, ClearGround::Fields)) continue;
 			uint fence = GB(t.m4(), 5, 3);
-			if (fence != 0 && IsTileType(TileAddXY(t, 1, 0), TileType::Clear) && IsClearGround(TileAddXY(t, 1, 0), CLEAR_FIELDS)) {
+			if (fence != 0 && IsTileType(TileAddXY(t, 1, 0), TileType::Clear) && IsClearGround(TileAddXY(t, 1, 0), ClearGround::Fields)) {
 				SetFence(TileAddXY(t, 1, 0), DIAGDIR_NE, fence);
 			}
 			fence = GB(t.m4(), 2, 3);
-			if (fence != 0 && IsTileType(TileAddXY(t, 0, 1), TileType::Clear) && IsClearGround(TileAddXY(t, 0, 1), CLEAR_FIELDS)) {
+			if (fence != 0 && IsTileType(TileAddXY(t, 0, 1), TileType::Clear) && IsClearGround(TileAddXY(t, 0, 1), ClearGround::Fields)) {
 				SetFence(TileAddXY(t, 0, 1), DIAGDIR_NW, fence);
 			}
 			SB(t.m4(), 2, 3, 0);

@@ -549,11 +549,11 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 	switch (t) {
 		case TileType::Clear:
 			if (IsSnowTile(tile)) return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
-			if (IsClearGround(tile, CLEAR_GRASS)) {
+			if (IsClearGround(tile, ClearGround::Grass)) {
 				if (GetClearDensity(tile) < 3) return MKCOLOUR_XXXX(PC_BARE_LAND);
 				if (GetTropicZone(tile) == TROPICZONE_RAINFOREST) return MKCOLOUR_XXXX(PC_RAINFOREST);
 			}
-			return _vegetation_clear_bits[GetClearGround(tile)];
+			return _vegetation_clear_bits[to_underlying(GetClearGround(tile))];
 
 		case TileType::Industry:
 			return IsTileForestIndustry(tile) ? MKCOLOUR_XXXX(PC_GREEN) : MKCOLOUR_XXXX(PC_DARK_RED);
