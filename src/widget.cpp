@@ -1871,14 +1871,16 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 	}
 
 	/* Third loop: Compute position and call the child. */
-	uint position = pre; // Place to put next child relative to origin of the container.
+	uint position = this->bottom_up ? this->current_y - pre : pre; // Place to put next child relative to origin of the container.
 	for (const auto &child_wid : this->children) {
-		uint child_x = x + (rtl ? child_wid->padding.right : child_wid->padding.left);
 		uint child_height = child_wid->current_y;
+		uint child_x = x + (rtl ? child_wid->padding.right : child_wid->padding.left);
+		uint child_y = y + (this->bottom_up ? position - child_height - child_wid->padding.top : position + child_wid->padding.top);
 
-		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding.top, child_wid->current_x, child_height, rtl);
+		child_wid->AssignSizePosition(sizing, child_x, child_y, child_wid->current_x, child_height, rtl);
 		if (child_wid->current_y != 0) {
-			position += child_height + child_wid->padding.Vertical() + inter;
+			uint padded_child_height = child_height + child_wid->padding.Vertical() + inter;
+			position = this->bottom_up ? position - padded_child_height : position + padded_child_height;
 		}
 	}
 }

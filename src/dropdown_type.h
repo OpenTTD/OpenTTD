@@ -11,6 +11,7 @@
 #define DROPDOWN_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "stringfilter_type.h"
 #include "window_type.h"
 #include "gfx_func.h"
 #include "gfx_type.h"
@@ -29,6 +30,11 @@ public:
 	explicit DropDownListItem(int result, bool masked = false, bool shaded = false) : result(result), masked(masked), shaded(shaded) {}
 	virtual ~DropDownListItem() = default;
 
+	/**
+	 * Add text from this dropdown item to a string filter.
+	 * @param string_filter String filter to add text to.
+	 */
+	virtual void FilterText([[maybe_unused]] StringFilter &string_filter) const {}
 	virtual bool Selectable() const { return true; }
 	virtual uint Height() const { return 0; }
 	virtual uint Width() const { return 0; }
@@ -59,12 +65,13 @@ typedef std::vector<std::unique_ptr<const DropDownListItem>> DropDownList;
 enum class DropDownOption : uint8_t {
 	InstantClose, ///< Set if releasing mouse button should close the list regardless of where the cursor is.
 	Persist, ///< Set if this dropdown should stay open after an option is selected.
+	Filterable, ///< Set if the dropdown is filterable.
 };
 using DropDownOptions = EnumBitSet<DropDownOption, uint8_t>;
 
-void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options = {});
+void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options = {}, std::string * const persistent_filter_text = nullptr);
 
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width = 0, DropDownOptions options = {});
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width = 0, DropDownOptions options = {}, std::string * const persistent_filter_text = nullptr);
 
 Dimension GetDropDownListDimension(const DropDownList &list);
 

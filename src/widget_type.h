@@ -601,6 +601,8 @@ public:
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+
+	bool bottom_up = false; ///< Set to flow the widget from bottom-to-top instead of top-to-bottom.
 };
 
 /**
