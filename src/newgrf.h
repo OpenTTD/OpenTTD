@@ -18,6 +18,8 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
 
+struct GRFConfig;
+
 /**
  * List of different canal 'features'.
  * Each feature gets an entry in the canal spritegroup table
@@ -159,7 +161,7 @@ struct GRFFile {
 	GrfSpecFeatures grf_features{}; ///< Bitset of GrfSpecFeature the grf uses
 	PriceMultipliers price_base_multipliers{}; ///< Price base multipliers as set by the grf.
 
-	GRFFile(const struct GRFConfig &config);
+	GRFFile(const GRFConfig &config);
 	GRFFile();
 	GRFFile(GRFFile &&other);
 	~GRFFile();
