@@ -60,10 +60,9 @@ DWORD _imm_props;
 
 static Palette _local_palette; ///< Current palette to use for drawing.
 
-bool VideoDriver_Win32Base::ClaimMousePointer()
+void VideoDriver_Win32Base::ClaimMousePointer()
 {
 	MyShowCursor(false, true);
-	return true;
 }
 
 struct Win32VkMapping {

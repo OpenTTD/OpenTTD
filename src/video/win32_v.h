@@ -30,7 +30,7 @@ public:
 
 	bool ToggleFullscreen(bool fullscreen) override;
 
-	bool ClaimMousePointer() override;
+	void ClaimMousePointer() override;
 
 	void EditBoxLostFocus() override;
 

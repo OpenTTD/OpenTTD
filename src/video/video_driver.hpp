@@ -83,10 +83,10 @@ public:
 		return true;
 	}
 
-	virtual bool ClaimMousePointer()
-	{
-		return true;
-	}
+	/**
+	 * Claim the exclusive rights for the mouse pointer.
+	 */
+	virtual void ClaimMousePointer() {}
 
 	/**
 	 * Get whether the mouse cursor is drawn by the video driver.

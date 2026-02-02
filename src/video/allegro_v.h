@@ -29,7 +29,7 @@ public:
 
 	bool AfterBlitterChange() override;
 
-	bool ClaimMousePointer() override;
+	void ClaimMousePointer() override;
 
 	std::vector<int> GetListOfMonitorRefreshRates() override;
 

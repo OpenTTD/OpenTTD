@@ -195,13 +195,12 @@ bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
 	return true;
 }
 
-bool VideoDriver_SDL_Base::ClaimMousePointer()
+void VideoDriver_SDL_Base::ClaimMousePointer()
 {
 	/* Emscripten never claims the pointer, so we do not need to change the cursor visibility. */
 #ifndef __EMSCRIPTEN__
 	SDL_ShowCursor(0);
 #endif
-	return true;
 }
 
 /**
