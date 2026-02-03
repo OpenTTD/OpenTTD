@@ -43,7 +43,7 @@ bool AirportClass::IsUIAvailable(uint) const
 }
 
 /* Instantiate AirportClass. */
-template class NewGRFClass<AirportSpec, AirportClassID, APC_MAX>;
+template class NewGRFClass<AirportSpec, AirportClassID>;
 
 
 AirportOverrideManager _airport_mngr(NEW_AIRPORT_OFFSET, NUM_AIRPORTS, AT_INVALID);

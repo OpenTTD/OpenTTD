@@ -115,7 +115,7 @@ uint ObjectSpec::Index() const
 /* static */ void ObjectSpec::BindToClasses()
 {
 	for (auto &spec : _object_specs) {
-		if (spec.IsEnabled() && spec.class_index != INVALID_OBJECT_CLASS) {
+		if (spec.IsEnabled() && spec.class_index != ObjectClassID::Invalid()) {
 			ObjectClass::Assign(&spec);
 		}
 	}
@@ -154,7 +154,7 @@ bool ObjectClass::IsUIAvailable(uint index) const
 }
 
 /* Instantiate ObjectClass. */
-template class NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
+template class NewGRFClass<ObjectSpec, ObjectClassID>;
 
 /* virtual */ uint32_t ObjectScopeResolver::GetRandomBits() const
 {

@@ -49,7 +49,7 @@ bool StationClass::IsUIAvailable(uint) const
 }
 
 /* Instantiate StationClass. */
-template class NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
+template class NewGRFClass<StationSpec, StationClassID>;
 
 static const uint NUM_STATIONSSPECS_PER_STATION = 255; ///< Maximum number of parts per station.
 

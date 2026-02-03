@@ -28,13 +28,11 @@ static const int NUM_ROADSTOPS_PER_GRF = UINT16_MAX - 1;
 static const uint32_t ROADSTOP_CLASS_LABEL_DEFAULT = 'DFLT';
 static const uint32_t ROADSTOP_CLASS_LABEL_WAYPOINT = 'WAYP';
 
-enum RoadStopClassID : uint16_t {
-	ROADSTOP_CLASS_BEGIN = 0, ///< The lowest valid value
-	ROADSTOP_CLASS_DFLT = 0, ///< Default road stop class.
-	ROADSTOP_CLASS_WAYP, ///< Waypoint class.
-	ROADSTOP_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
-};
-DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadStopClassID)
+/** Class IDs for stations. */
+using RoadStopClassID = PoolID<uint16_t, struct RoadStopClassIDTag, UINT16_MAX, UINT16_MAX>;
+
+static constexpr RoadStopClassID ROADSTOP_CLASS_DFLT{0}; ///< Default road stop class.
+static constexpr RoadStopClassID ROADSTOP_CLASS_WAYP{1}; ///< Waypoint class.
 
 /**
  * Various different options for availability, restricting
@@ -158,7 +156,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	static const RoadStopSpec *Get(uint16_t index);
 };
 
-using RoadStopClass = NewGRFClass<RoadStopSpec, RoadStopClassID, ROADSTOP_CLASS_MAX>;
+using RoadStopClass = NewGRFClass<RoadStopSpec, RoadStopClassID>;
 
 std::optional<SpriteLayoutProcessor> GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view, std::span<int32_t> regs100 = {});
 void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec, StationType type, int view);

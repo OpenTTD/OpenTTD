@@ -209,7 +209,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */
-	if (static_cast<uint>(spec_class) >= StationClass::GetClassCount()) return CMD_ERROR;
+	if (spec_class.base() >= StationClass::GetClassCount()) return CMD_ERROR;
 	const StationClass *cls = StationClass::Get(spec_class);
 	if (!IsWaypointClass(*cls)) return CMD_ERROR;
 	if (spec_index >= cls->GetSpecCount()) return CMD_ERROR;
@@ -343,7 +343,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */
-	if (static_cast<uint>(spec_class) >= RoadStopClass::GetClassCount()) return CMD_ERROR;
+	if (spec_class.base() >= RoadStopClass::GetClassCount()) return CMD_ERROR;
 	const RoadStopClass *cls = RoadStopClass::Get(spec_class);
 	if (!IsWaypointClass(*cls)) return CMD_ERROR;
 	if (spec_index >= cls->GetSpecCount()) return CMD_ERROR;

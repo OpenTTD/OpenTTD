@@ -391,7 +391,7 @@ extern const AirportSpec _origin_airport_specs[] = {
 
 static_assert(NEW_AIRPORT_OFFSET == lengthof(_origin_airport_specs));
 
-const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, {}, {}, 0, 0, 0, 0, CalendarTime::MIN_YEAR, CalendarTime::MIN_YEAR, 0, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, 0, false);
+const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, {}, {}, 0, 0, 0, 0, CalendarTime::MIN_YEAR, CalendarTime::MIN_YEAR, 0, ATP_TTDP_LARGE, {}, STR_NULL, 0, false);
 
 #undef AS
 #undef AS_ND

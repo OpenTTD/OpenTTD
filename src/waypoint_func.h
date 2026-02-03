@@ -13,8 +13,7 @@
 #include "rail_type.h"
 #include "command_type.h"
 #include "station_type.h"
-
-enum StationClassID : uint16_t;
+#include "newgrf_station.h"
 
 CommandCost RemoveBuoy(TileIndex tile, DoCommandFlags flags);
 

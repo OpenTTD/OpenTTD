@@ -70,18 +70,13 @@ public:
 	}
 };
 
-/** List of default airport classes. */
-enum AirportClassID : uint8_t {
-	APC_BEGIN     = 0,  ///< Lowest valid airport class id
-	APC_SMALL     = 0,  ///< id for small airports class
-	APC_LARGE,          ///< id for large airports class
-	APC_HUB,            ///< id for hub airports class
-	APC_HELIPORT,       ///< id for heliports
-	APC_MAX       = 16, ///< maximum number of airport classes
-};
+/** Class IDs for airports. */
+using AirportClassID = PoolID<uint8_t, struct AirportClassIDTag, 16, UINT8_MAX>;
 
-/** Allow incrementing of AirportClassID variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(AirportClassID)
+static constexpr AirportClassID APC_SMALL{0}; ///< id for small airports class.
+static constexpr AirportClassID APC_LARGE{1}; ///< id for large airports class.
+static constexpr AirportClassID APC_HUB{2}; ///< id for hub airports class.
+static constexpr AirportClassID APC_HELIPORT{3}; ///< id for heliports.
 
 /** TTDP airport types. Used to map our types to TTDPatch's */
 enum TTDPAirportType : uint8_t {
@@ -149,7 +144,7 @@ private:
 };
 
 /** Information related to airport classes. */
-using AirportClass = NewGRFClass<AirportSpec, AirportClassID, APC_MAX>;
+using AirportClass = NewGRFClass<AirportSpec, AirportClassID>;
 
 void BindAirportSpecs();
 
