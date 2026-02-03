@@ -1,0 +1,44 @@
+name: Upload (Windows Store)
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      trigger_type:
+        required: true
+        type: string
+
+jobs:
+  upload:
+    name: Upload (Windows Store)
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Download bundle (Windows Store)
+      uses: actions/download-artifact@v6
+      with:
+        name: openttd-windows-store
+        path: openttd-windows-store
+
+    - name: Configure Microsoft Store CLI
+      uses: microsoft/microsoft-store-apppublisher@v1.1
+
+    - name: Reconfigure store credentials
+      run: msstore reconfigure `
+            --tenantId ${{ secrets.AZURE_TENANT_ID }} `
+            --sellerId ${{ secrets.WINSTORE_SELLER_ID }} `
+            --clientId ${{ secrets.AZURE_WINSTORE_APPLICATION_CLIENT_ID }} `
+            --clientSecret ${{ secrets.AZURE_WINSTORE_APPLICATION_SECRET }}
+
+    - name: Publish msix package
+      shell: pwsh
+      run: |
+        $bundle = Get-ChildItem openttd-windows-store/internal/openttd-*.msixbundle | Select-Object -First 1
+        if (-not $bundle) {
+          throw "No msixbundle found"
+        }
+
+        msstore publish $bundle.FullName -id 9NCJG5RVRR1C -v
