@@ -63,6 +63,6 @@
       <Resource Language="cy-gb" />
    </Resources>
    <Dependencies>
-      <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17134.0" MaxVersionTested="10.0.18363.0" />
+      <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17701.0" MaxVersionTested="10.0.18363.0" />
    </Dependencies>
 </Package>

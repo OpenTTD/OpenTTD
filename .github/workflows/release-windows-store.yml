@@ -124,7 +124,7 @@ jobs:
       run: |
         cd builds
 
-        REM We need to provide a signed .appx to the Windows Store, so generate a certificate with password 'password'
+        REM We need to provide a signed .msix to the Windows Store, so generate a certificate with password 'password'
         call ..\os\windows\winstore\generate-key.bat "CN=78024DA8-4BE4-4C77-B12E-547BBF7359D2" password cert.pfx
 
     - name: Generate assets
@@ -176,13 +176,13 @@ jobs:
 
         REM Build and sign the package
         makeappx build /v /f PackagingLayout.xml /op output\ /bv %OTTD_VERSION% /pv %OTTD_VERSION% /ca
-        SignTool sign /fd sha256 /a /f cert.pfx /p password "output\OpenTTD.appxbundle"
+        SignTool sign /fd sha256 /a /f cert.pfx /p password "output\OpenTTD.msixbundle"
 
         REM Move resulting files to bundles folder
         mkdir bundles
         mkdir bundles\internal
         move cert.pfx bundles\internal\openttd-${{ inputs.version }}-windows-store.pfx
-        move output\OpenTTD.appxbundle bundles\internal\openttd-${{ inputs.version }}-windows-store.appxbundle
+        move output\OpenTTD.msixbundle bundles\internal\openttd-${{ inputs.version }}-windows-store.msixbundle
 
     - name: Store bundles
       uses: actions/upload-artifact@v6
