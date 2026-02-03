@@ -88,7 +88,7 @@
 	if (!::IsValidTile(tile)) return false;
 
 	return (::IsTileType(tile, TileType::Water) && ::IsCoast(tile)) ||
-		(::IsTileType(tile, TileType::Trees) && ::GetTreeGround(tile) == TREE_GROUND_SHORE);
+		(::IsTileType(tile, TileType::Trees) && ::GetTreeGround(tile) == TreeGround::Shore);
 }
 
 /* static */ bool ScriptTile::IsStationTile(TileIndex tile)

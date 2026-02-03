@@ -1149,7 +1149,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			return FLOOD_NONE;
 
 		case TileType::Trees:
-			return (GetTreeGround(tile) == TREE_GROUND_SHORE ? FLOOD_DRYUP : FLOOD_NONE);
+			return (GetTreeGround(tile) == TreeGround::Shore ? FLOOD_DRYUP : FLOOD_NONE);
 
 		case TileType::Void:
 			return FLOOD_ACTIVE;
@@ -1183,7 +1183,7 @@ static void DoFloodTile(TileIndex target)
 
 			case TileType::Trees:
 				if (!IsSlopeWithOneCornerRaised(tileh)) {
-					SetTreeGroundDensity(target, TREE_GROUND_SHORE, 3);
+					SetTreeGroundDensity(target, TreeGround::Shore, 3);
 					MarkTileDirtyByTile(target);
 					flooded = true;
 					break;
@@ -1252,7 +1252,7 @@ static void DoDryUp(TileIndex tile)
 			break;
 
 		case TileType::Trees:
-			SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3);
+			SetTreeGroundDensity(tile, TreeGround::Grass, 3);
 			MarkTileDirtyByTile(tile);
 			break;
 
@@ -1300,8 +1300,8 @@ void TileLoop_Water(TileIndex tile)
 				/* This neighbour tile might be floodable later if the tile is cleared, so allow flooding to continue. */
 				continue_flooding = true;
 
-				/* TREE_GROUND_SHORE is the sign of a previous flood. */
-				if (IsTileType(dest, TileType::Trees) && GetTreeGround(dest) == TREE_GROUND_SHORE) continue;
+				/* TreeGround::Shore is the sign of a previous flood. */
+				if (IsTileType(dest, TileType::Trees) && GetTreeGround(dest) == TreeGround::Shore) continue;
 
 				auto [slope_dest, z_dest] = GetFoundationSlope(dest);
 				if (z_dest > 0) continue;
