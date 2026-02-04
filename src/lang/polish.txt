@@ -5491,6 +5491,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... już
 STR_ERROR_TOO_HIGH                                              :{WHITE}... zbyt wysoko
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... już wyrównany
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Most nad nim byłby zbyt wysoki.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Należy najpierw usunąć rzekę
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nie można zmienić nazwy firmy...

@@ -5105,6 +5105,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Redan p�
 STR_ERROR_TOO_HIGH                                              :{WHITE}För hög
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... redan platt
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Efteråt skulle bron ovanför vara för hög.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Måste riva vattendrag först
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan inte ändra företagsnamn...

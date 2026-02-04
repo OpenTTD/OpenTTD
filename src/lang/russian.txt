@@ -5292,6 +5292,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Уже �
 STR_ERROR_TOO_HIGH                                              :{WHITE}Слишком высоко
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... уже ровно
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}После этого высота моста будет недопустимо большой.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Сначала нужно засыпать реку
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Невозможно изменить название компании...

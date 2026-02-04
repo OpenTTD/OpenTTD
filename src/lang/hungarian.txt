@@ -4454,10 +4454,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosa
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Üzenet egy járműgyártótól
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Üzenet egy járműgyártótól ({COMMA}/{COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Most készültek el egy új {STRING} tervei - érdekelne a jármű egy éves kizárólagos használata, hogy megnézhessük a képességeit, mielőtt mindenki számára elérhetővé tesszük?
 
 STR_ENGINE_PREVIEW_PREVIOUS                                     :Előző
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Kattints az előző járműhöz
 STR_ENGINE_PREVIEW_NEXT                                         :Következő
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Kattints a következő járműhöz
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Kattints egy új járműhöz ugráshoz
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :vasúti mozdony
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :villamos vasúti mozdony
@@ -5164,6 +5169,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Már ten
 STR_ERROR_TOO_HIGH                                              :{WHITE}Túl magas
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... már sík
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ezután a híd túl magas lenne.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Előbb le kell rombolnod a folyót
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nem változtathatod meg a vállalat nevét...

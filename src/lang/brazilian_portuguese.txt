@@ -5106,6 +5106,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... já 
 STR_ERROR_TOO_HIGH                                              :{WHITE}... muito alto
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já está plano
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Depois disso, a ponte sobre ela ficaria muito alta
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Precisa remover o rio primeiro
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Não é possível alterar o nome da empresa...

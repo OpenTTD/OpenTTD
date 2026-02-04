@@ -5105,6 +5105,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... kei 
 STR_ERROR_TOO_HIGH                                              :{WHITE}... teitei rawa
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... papatahi kē
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ka teitei rawa te arawhiti i runga.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Me mātua turaki te awa
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Tē taea te panoni te ingoa o te umanga...

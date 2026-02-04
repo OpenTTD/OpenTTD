@@ -5106,6 +5106,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... 이�
 STR_ERROR_TOO_HIGH                                              :{WHITE}... 너무 높습니다
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 이미 평평합니다
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}다리가 끝나는 부분의 높이가 너무 높습니다
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}강을 먼저 제거하세요
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}회사 이름을 바꿀 수 없습니다...

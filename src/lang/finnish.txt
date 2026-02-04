@@ -5076,7 +5076,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Käteine
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Tarvitaan tasaista maata.
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Maa viettää väärään suuntaan.
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ei onnistu...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus täytyy purkaa ensin.
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus täytyy purkaa ensin
 STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}… rakennus on suojattu
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Aluetta ei voi tyhjentää...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... maasto on sopimaton
@@ -5105,6 +5105,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Merenpin
 STR_ERROR_TOO_HIGH                                              :{WHITE}Liian korkea.
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... alue on jo litteä
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Yläpuolella olevasta sillasta tulisi liian korkea.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Joki täytyy tuhota ensin
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Yhtiön nimeä ei voi muuttaa...
@@ -5195,13 +5196,13 @@ STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ei voi p
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Pysäkki täytyy poistaa ensin
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... tässä ei ole asemaa
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Rautatieasema pitää tuhota ensin.
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Linja-autoasema pitää purkaa ensin.
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Lastauslaituri pitää purkaa ensin.
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Rautatieasema täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Linja-autoasema täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Lastauslaituri täytyy purkaa ensin
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Asema täytyy purkaa ensin
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Rahtiasema täytyy purkaa ensin
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Satama pitää tuhota ensin.
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Lentokenttä pitää tuhota ensin.
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Satama täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Lentokenttä täytyy purkaa ensin
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Vieressä on useampi kuin yksi olemassaoleva reittipiste.
@@ -5311,7 +5312,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Puuta ei
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Siltaa ei voi rakentaa...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Silta pitää tuhota ensin.
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Silta täytyy purkaa ensin
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ei voi aloittaa ja lopettaa samasta paikkasta.
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Sillan päät eivät ole samalla korkeudella
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Silta on liian matalalla maastoa varten

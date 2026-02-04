@@ -5206,6 +5206,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ήδ
 STR_ERROR_TOO_HIGH                                              :{WHITE}... πολύ ψηλά
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ήδη επίπεδο
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Μετά την αλλαγή, η γέφυρα από πάνω του θα είναι πολύ ψηλή
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Πρέπει να καταστραφεί το ποτάμι πρώτα
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Δεν μπορεί να αλλάξει το όνομα της εταιρείας...
@@ -5402,7 +5403,7 @@ STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... αδ
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... αδύνατο να κατασκευαστεί στην ανοικτή θάλασσα
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... αδύνατο να κατασκευαστεί σε κανάλι
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... αδύνατο να κατασκευαστεί σε ποτάμι
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Πρέπει να κατεδαφιστεί το κανάλι πρώτα
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Πρέπει να καταστραφεί το κανάλι πρώτα
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν μπορεί να κατασκευαστεί κανάλι εδώ...
 
 # Tree related errors
