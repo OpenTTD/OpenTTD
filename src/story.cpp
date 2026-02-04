@@ -126,33 +126,49 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t referen
 	}
 }
 
-/** Set the button background colour. */
+/**
+ * Set the button background colour.
+ * @param button_colour The new background colour.
+ */
 void StoryPageButtonData::SetColour(Colours button_colour)
 {
 	assert(button_colour < COLOUR_END);
 	SB(this->referenced_id, 0, 8, button_colour);
 }
 
+/**
+ * Set the button flags. See #StoryPageButtonFlags for more details.
+ * @param flags The new state of flags.
+ */
 void StoryPageButtonData::SetFlags(StoryPageButtonFlags flags)
 {
 	SB(this->referenced_id, 24, 8, flags);
 }
 
-/** Set the mouse cursor used while waiting for input for the button. */
+/**
+ * Set the mouse cursor used while waiting for input for the button.
+ * @param cursor The cursor to use.
+ */
 void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
 {
 	assert(cursor < SPBC_END);
 	SB(this->referenced_id, 8, 8, cursor);
 }
 
-/** Set the type of vehicles that are accepted by the button */
+/**
+ * Set the type of vehicles that are accepted by the button.
+ * @param vehtype The type of vehicle to accept.
+ */
 void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 {
 	assert(vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END);
 	SB(this->referenced_id, 16, 8, vehtype);
 }
 
-/** Get the button background colour. */
+/**
+ * Get the button background colour.
+ * @return The background colour.
+ */
 Colours StoryPageButtonData::GetColour() const
 {
 	Colours colour = static_cast<Colours>(GB(this->referenced_id, 0, 8));
@@ -160,12 +176,19 @@ Colours StoryPageButtonData::GetColour() const
 	return colour;
 }
 
+/**
+ * Get the button flags. See #StoryPageButtonFlags for more details.
+ * @return The flags set for this button.
+ */
 StoryPageButtonFlags StoryPageButtonData::GetFlags() const
 {
 	return (StoryPageButtonFlags)GB(this->referenced_id, 24, 8);
 }
 
-/** Get the mouse cursor used while waiting for input for the button. */
+/**
+ * Get the mouse cursor used while waiting for input for the button.
+ * @return The waiting for input cursor.
+ */
 StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 {
 	StoryPageButtonCursor cursor = (StoryPageButtonCursor)GB(this->referenced_id, 8, 8);
@@ -173,18 +196,29 @@ StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 	return cursor;
 }
 
-/** Get the type of vehicles that are accepted by the button */
+/**
+ * Get the type of vehicles that are accepted by the button.
+ * @return The accepted type of vehicle.
+ */
 VehicleType StoryPageButtonData::GetVehicleType() const
 {
 	return (VehicleType)GB(this->referenced_id, 16, 8);
 }
 
-/** Verify that the data stored a valid Colour value */
+/**
+ * Verify that the data stored a valid Colour value.
+ * @return \c true iff the stored colour is valid.
+ */
 bool StoryPageButtonData::ValidateColour() const
 {
 	return GB(this->referenced_id, 0, 8) < COLOUR_END;
 }
 
+/**
+ * Verify that valid flags were set.
+ * Some flags in #StoryPageButtonFlags can't be used together.
+ * @return \c true iff the flags are valid.
+ */
 bool StoryPageButtonData::ValidateFlags() const
 {
 	uint8_t flags = GB(this->referenced_id, 24, 8);
@@ -195,13 +229,19 @@ bool StoryPageButtonData::ValidateFlags() const
 	return true;
 }
 
-/** Verify that the data stores a valid StoryPageButtonCursor value */
+/**
+ * Verify that the data stores a valid #StoryPageButtonCursor value.
+ * @return \c true iff the stored cursor is valid.
+ */
 bool StoryPageButtonData::ValidateCursor() const
 {
 	return GB(this->referenced_id, 8, 8) < SPBC_END;
 }
 
-/** Verity that the data stored a valid VehicleType value */
+/**
+ * Verity that the data stored a valid #VehicleType value.
+ * @return \c true iff the stored VehicleType is valid.
+ */
 bool StoryPageButtonData::ValidateVehicleType() const
 {
 	uint8_t vehtype = GB(this->referenced_id, 16, 8);
