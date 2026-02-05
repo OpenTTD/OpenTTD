@@ -5211,6 +5211,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Jam marn
 STR_ERROR_TOO_HIGH                                              :{WHITE}Tro alte
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... jam plata
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Poste la ponto super ĝi estus tro alta.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Antaŭe devas la rivero esti detruita
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ne povas ŝanĝi kompaninomon...

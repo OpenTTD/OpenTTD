@@ -5105,6 +5105,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}……�
 STR_ERROR_TOO_HIGH                                              :{WHITE}... 太高
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}……經已平整
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}在此地形上的橋樑會過高。
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}必須先移除河流
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}無法修改公司名稱...

@@ -5106,6 +5106,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... já 
 STR_ERROR_TOO_HIGH                                              :{WHITE}... demasiado alto
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já está nivelado
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}A ponte acima ficaria demasiado alta.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Precisa de remover o rio primeiro
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Não é possível alterar o nome da empresa...
@@ -5200,8 +5201,8 @@ STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa 
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Precisa de demolir a paragem de autocarros primeiro
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Precisa de demolir o terminal de carga para camiões primeiro
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Precisa demolir paragem de elétricos de passageiros primeiro
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa demolir terminal de carga para elétricos primeiro
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Deverá demolir a doca primeiro
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa de demolir terminal de carga para elétricos primeiro
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Precisa de demolir a doca primeiro
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Precisa de demolir o aeroporto primeiro
 
 # Waypoint related errors
@@ -5312,7 +5313,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Não é 
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Não é possível construir uma ponte aqui...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Deverá demolir a ponte primeiro
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Precisa de demolir a ponte primeiro
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Não é possível iniciar e finalizar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremos da ponte não estão ao mesmo nível
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é demasiado baixa para o terreno.
