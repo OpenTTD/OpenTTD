@@ -32,6 +32,13 @@ using GrfIDMapping = std::map<uint32_t, GRFPresence>;
 struct LoggedChange {
 	LoggedChange(GamelogChangeType type = GLCT_NONE) : ct(type) {}
 	virtual ~LoggedChange() = default;
+
+	/**
+	 * Format the content of this change into the given output.
+	 * @param output_iterator Destination of the formatted content.
+	 * @param grf_names Cache/mapping of names of NewGRFs seen in the logs.
+	 * @param action_type The context in which this method was called.
+	 */
 	virtual void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) = 0;
 
 	GamelogChangeType ct{};

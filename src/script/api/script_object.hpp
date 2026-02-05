@@ -46,8 +46,11 @@ public:
 	SimpleCountedObject() : ref_count(0) {}
 	virtual ~SimpleCountedObject() = default;
 
+	/** Increase the reference count by one. */
 	inline void AddRef() { ++this->ref_count; }
+	/** Decrease the reference count by one. Once zero call FinaleRelease and then destruct the object. */
 	void Release();
+	/** Called during Release, so the object can throw exceptions (you cannot in destructors). */
 	virtual void FinalRelease() {};
 
 private:

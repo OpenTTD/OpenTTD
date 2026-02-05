@@ -110,8 +110,10 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 
 /**
  * Store a value into the persistent storage area (PSA). Default implementation does nothing (for newgrf classes without storage).
+ * @param pos The position into the storage area.
+ * @param value The new value to store.
  */
-/* virtual */ void ScopeResolver::StorePSA(uint, int32_t) {}
+/* virtual */ void ScopeResolver::StorePSA([[maybe_unused]] uint pos, [[maybe_unused]] int32_t value) {}
 
 /**
  * Get the real sprites of the grf.
@@ -128,9 +130,11 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 
 /**
  * Get a resolver for the \a scope.
+ * @param scope The scope to resolve.
+ * @param relative The relative in case of a #VSG_SCOPE_RELATIVE.
  * @return The resolver for the requested scope.
  */
-/* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope, uint8_t)
+/* virtual */ ScopeResolver *ResolverObject::GetScope([[maybe_unused]] VarSpriteGroupScope scope, [[maybe_unused]] uint8_t relative)
 {
 	return &this->default_scope;
 }
