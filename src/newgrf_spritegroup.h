@@ -47,7 +47,11 @@ extern SpriteGroupPool _spritegroup_pool;
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
 	SpriteGroup(SpriteGroupID index) : SpriteGroupPool::PoolItem<&_spritegroup_pool>(index) {}
-	/** Base sprite group resolver */
+	/**
+	 * Resolves a callback or rerandomisation callback to a NewGRF.
+	 * @param object Information needed to resolve the group.
+	 * @return The result of resolving this SpriteGroup.
+	 */
 	virtual ResolverResult Resolve(ResolverObject &object) const = 0;
 
 public:

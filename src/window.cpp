@@ -1101,6 +1101,7 @@ void Window::CloseChildWindowById(WindowClass wc, WindowNumber number) const
 
 /**
  * Hide the window and all its child windows, and mark them for a later deletion.
+ * @param data Window specific data to be passed through the window close functions.
  */
 void Window::Close([[maybe_unused]] int data)
 {
