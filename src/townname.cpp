@@ -701,10 +701,6 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 			std::string_view poststr = _name_czech_subst_postfix[postfix];
 			std::string_view endstr = _name_czech_subst_ending[ending].name;
 
-			size_t postlen = poststr.size();
-			size_t endlen = endstr.size();
-			assert(postlen > 0 && endlen > 0);
-
 			/* Kill the "avava" and "Jananna"-like cases */
 			if ((poststr[1] != 'v' || poststr[1] != endstr[1]) &&
 					poststr[1] != endstr[0]) {
