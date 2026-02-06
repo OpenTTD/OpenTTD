@@ -63,7 +63,7 @@ namespace SQConvert {
 			if (res.has_value()) {
 				sq_pushstring(vm, res.value());
 			} else {
-				sq_pushnull(vm);
+				sq_pushstring(vm, "");
 			}
 			return 1;
 		}
