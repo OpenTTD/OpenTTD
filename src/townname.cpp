@@ -717,7 +717,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 				default: break;
 			}
 		}
-		builder += _name_czech_subst_ending[ending].name;
+		builder += endstr;
 	} else {
 		builder += _name_czech_subst_full[stem].name;
 	}
