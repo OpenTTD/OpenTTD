@@ -5201,7 +5201,7 @@ STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa 
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Precisa de demolir a paragem de autocarros primeiro
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Precisa de demolir o terminal de carga para camiões primeiro
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Precisa demolir paragem de elétricos de passageiros primeiro
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa de demolir terminal de carga para elétricos primeiro
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa de demolir o terminal de carga para elétricos primeiro
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Precisa de demolir a doca primeiro
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Precisa de demolir o aeroporto primeiro
 
