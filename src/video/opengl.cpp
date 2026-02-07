@@ -1087,14 +1087,12 @@ void OpenGLBackend::DrawMouseCursor()
 	}
 }
 
-class OpenGLSpriteAllocator : public SpriteAllocator {
+class OpenGLSpriteAllocator : public UniquePtrSpriteAllocator {
 public:
 	OpenGLSpriteLRUCache &lru;
 	SpriteID sprite;
 
 	OpenGLSpriteAllocator(OpenGLSpriteLRUCache &lru, SpriteID sprite) : lru(lru), sprite(sprite) {}
-protected:
-	void *AllocatePtr(size_t) override { NOT_REACHED(); }
 };
 
 void OpenGLBackend::PopulateCursorCache()
