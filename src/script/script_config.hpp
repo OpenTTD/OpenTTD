@@ -82,6 +82,7 @@ public:
 
 	/**
 	 * Get the ScriptInfo linked to this ScriptConfig.
+	 * @return The info.
 	 */
 	class ScriptInfo *GetInfo() const;
 
@@ -187,8 +188,11 @@ protected:
 	void ClearConfigList();
 
 	/**
-	 * This function should call back to the Scanner in charge of this Config,
-	 *  to find the ScriptInfo belonging to a name+version.
+	 * Finds the appropriate ScriptInfo for a given script name and version.
+	 * @param name The script name to find.
+	 * @param version The version the script should have.
+	 * @param force_exact_match Whether an exact match is required.
+	 * @return The script if found, nullptr otherwise.
 	 */
 	virtual ScriptInfo *FindInfo(const std::string &name, int version, bool force_exact_match) = 0;
 };

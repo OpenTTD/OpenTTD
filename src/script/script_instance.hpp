@@ -100,46 +100,55 @@ public:
 
 	/**
 	 * Return a true/false reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturn(ScriptInstance &instance);
 
 	/**
 	 * Return a VehicleID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnVehicleID(ScriptInstance &instance);
 
 	/**
 	 * Return a SignID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnSignID(ScriptInstance &instance);
 
 	/**
 	 * Return a GroupID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnGroupID(ScriptInstance &instance);
 
 	/**
 	 * Return a GoalID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnGoalID(ScriptInstance &instance);
 
 	/**
 	 * Return a StoryPageID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnStoryPageID(ScriptInstance &instance);
 
 	/**
 	 * Return a StoryPageElementID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnStoryPageElementID(ScriptInstance &instance);
 
 	/**
 	 * Return a LeagueTableID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnLeagueTableID(ScriptInstance &instance);
 
 	/**
 	 * Return a LeagueTableElementID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
 	 */
 	static void DoCommandReturnLeagueTableElementID(ScriptInstance &instance);
 

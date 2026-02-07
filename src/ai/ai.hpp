@@ -37,6 +37,7 @@ public:
 
 	/**
 	 * Get the current AI tick.
+	 * @return The tick number.
 	 */
 	static uint GetTick();
 
@@ -97,30 +98,35 @@ public:
 
 	/**
 	 * Queue a new event for an AI.
+	 * @param company The company to receive the event.
+	 * @param event The event.
 	 */
 	static void NewEvent(CompanyID company, ScriptEvent *event);
 
 	/**
 	 * Broadcast a new event to all active AIs.
+	 * @param event The event to broadcast.
+	 * @param skip_company The optional company not to send the event to.
 	 */
 	static void BroadcastNewEvent(ScriptEvent *event, CompanyID skip_company = CompanyID::Invalid());
 
 	/**
 	 * Save data from an AI to a savegame.
+	 * @param company To company to save.
 	 */
 	static void Save(CompanyID company);
 
-	/** Wrapper function for AIScanner::GetAIConsoleList */
+	/** @copydoc ScriptScanner::GetConsoleList */
 	static void GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only);
-	/** Wrapper function for AIScanner::GetAIConsoleLibraryList */
-	static void GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator);
-	/** Wrapper function for AIScanner::GetAIInfoList */
+	/** @copydoc ScriptScanner::GetConsoleList */
+	static void GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only);
+	/** @copydoc ScriptScanner::GetInfoList */
 	static const ScriptInfoList *GetInfoList();
-	/** Wrapper function for AIScanner::GetUniqueAIInfoList */
+	/** @copydoc ScriptScanner::GetUniqueInfoList */
 	static const ScriptInfoList *GetUniqueInfoList();
-	/** Wrapper function for AIScanner::FindInfo */
+	/** @copydoc ScriptConfig::FindInfo */
 	static class AIInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
-	/** Wrapper function for AIScanner::FindLibrary */
+	/** @copydoc ScriptInstance::FindLibrary */
 	static class AILibrary *FindLibrary(const std::string &library, int version);
 
 	/**

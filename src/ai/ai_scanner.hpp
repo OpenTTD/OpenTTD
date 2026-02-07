@@ -12,6 +12,7 @@
 
 #include "../script/script_scanner.hpp"
 
+/** AI instantiation of a ScriptScanner. */
 class AIScannerInfo : public ScriptScanner {
 public:
 	AIScannerInfo();
@@ -36,6 +37,7 @@ public:
 
 	/**
 	 * Set the Dummy AI.
+	 * @param info The new dummy AI.
 	 */
 	void SetDummyAI(std::unique_ptr<class AIInfo> &&info);
 
@@ -50,6 +52,7 @@ private:
 	std::unique_ptr<AIInfo> info_dummy; ///< The dummy AI.
 };
 
+/** AI instantiation of a ScriptScanner for libraries. */
 class AIScannerLibrary : public ScriptScanner {
 public:
 	void Initialize() override;

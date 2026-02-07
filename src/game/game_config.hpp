@@ -12,10 +12,13 @@
 
 #include "../script/script_config.hpp"
 
+/** Game script instantion of script configuration. */
 class GameConfig : public ScriptConfig {
 public:
 	/**
-	 * Get the config of a company.
+	 * Get the script configuration.
+	 * @param source The context, i.e. current / new game mode.
+	 * @return The configuration.
 	 */
 	static GameConfig *GetConfig(ScriptSettingSource source = SSS_DEFAULT);
 
@@ -23,10 +26,15 @@ public:
 		ScriptConfig()
 	{}
 
+	/**
+	 * Copy constructor.
+	 * @param config The configuration to copy.
+	 */
 	GameConfig(const GameConfig &config) :
 		ScriptConfig(config)
 	{}
 
+	/** @copydoc ScriptConfig::GetInfo. */
 	class GameInfo *GetInfo() const;
 
 	/**
