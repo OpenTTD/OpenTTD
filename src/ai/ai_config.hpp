@@ -13,10 +13,14 @@
 #include "../script/script_config.hpp"
 #include "../company_type.h"
 
+/** AI instantion of script configuration. */
 class AIConfig : public ScriptConfig {
 public:
 	/**
-	 * Get the config of a company.
+	 * Get the AI configuration of specific company.
+	 * @param company The company to get the configuration for.
+	 * @param source The context, i.e. current / new game mode.
+	 * @return The configuration.
 	 */
 	static AIConfig *GetConfig(CompanyID company, ScriptSettingSource source = SSS_DEFAULT);
 
@@ -24,10 +28,15 @@ public:
 		ScriptConfig()
 	{}
 
+	/**
+	 * Copy constructor.
+	 * @param config The configuration to copy.
+	 */
 	AIConfig(const AIConfig &config) :
 		ScriptConfig(config)
 	{}
 
+	/** @copydoc ScriptConfig::GetInfo. */
 	class AIInfo *GetInfo() const;
 
 	/**
