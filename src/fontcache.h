@@ -229,7 +229,23 @@ public:
 		ProviderManager<FontCacheFactory>::Unregister(*this);
 	}
 
+	/**
+	 * Try loading a font with this factory.
+	 * @param fs Font size to load.
+	 * @param fonttype Font type requested.
+	 * @return FontCache of the font if loaded, or nullptr.
+	 */
 	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const = 0;
+
+	/**
+	 * We would like to have a fallback font as the current one
+	 * doesn't contain all characters we need.
+	 * This function must set all fonts of settings.
+	 * @param settings The settings to overwrite the fontname of.
+	 * @param language_isocode The language, e.g. en_GB.
+	 * @param callback The function to call to check for missing glyphs.
+	 * @return \c true if a font has been set, false otherwise.
+	 */
 	virtual bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) const = 0;
 };
 

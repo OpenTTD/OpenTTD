@@ -56,6 +56,11 @@ struct DrawTileSprites {
 	DrawTileSprites() = default;
 
 	virtual ~DrawTileSprites() = default;
+
+	/**
+	 * The child sprites to draw.
+	 * @return The span of child sprites.
+	 */
 	virtual std::span<const DrawTileSeqStruct> GetSequence() const = 0;
 };
 

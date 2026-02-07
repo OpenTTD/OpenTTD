@@ -626,10 +626,6 @@ NSView *VideoDriver_CocoaQuartz::AllocateDrawView()
 	return [ [ OTTD_QuartzView alloc ] initWithFrame:[ this->cocoaview bounds ] andDriver:this ];
 }
 
-/**
- * Resize the window.
- * @param force If true window resizing will be forced.
- */
 void VideoDriver_CocoaQuartz::AllocateBackingStore([[maybe_unused]] bool force)
 {
 	if (this->window == nil || this->cocoaview == nil || this->setup) return;

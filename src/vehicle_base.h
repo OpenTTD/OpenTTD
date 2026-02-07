@@ -761,6 +761,10 @@ public:
 	 */
 	virtual TileIndex GetOrderStationLocation([[maybe_unused]] StationID station) { return INVALID_TILE; }
 
+	/**
+	 * Tile to use for economic calculations when moving cargo into or out of this vehicle.
+	 * @return The cargo (un)load tile.
+	 */
 	virtual TileIndex GetCargoTile() const { return this->tile; }
 
 	/**
@@ -770,6 +774,10 @@ public:
 	 */
 	virtual ClosestDepot FindClosestDepot() { return {}; }
 
+	/**
+	 * Set the destination of this vehicle.
+	 * @param tile The tile to go to.
+	 */
 	virtual void SetDestTile(TileIndex tile) { this->dest_tile = tile; }
 
 	CommandCost SendToDepot(DoCommandFlags flags, DepotCommandFlags command);

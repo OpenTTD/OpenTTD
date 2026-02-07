@@ -57,6 +57,10 @@ public:
 
 	void MainLoopReal();
 
+	/**
+	 * Resize the window.
+	 * @param force If true window resizing will be forced.
+	 */
 	virtual void AllocateBackingStore(bool force = false) = 0;
 
 protected:
@@ -77,9 +81,16 @@ protected:
 
 	bool MakeWindow(int width, int height);
 
+	/**
+	 * Allocate the view to show the game on.
+	 * @return The allocated view.
+	 */
 	virtual NSView *AllocateDrawView() = 0;
 
-	/** Get a pointer to the video buffer. */
+	/**
+	 * Get a pointer to the video buffer.
+	 * @return The pointer.
+	 */
 	virtual void *GetVideoPointer() = 0;
 	/** Hand video buffer back to the drawing backend. */
 	virtual void ReleaseVideoPointer() {}
