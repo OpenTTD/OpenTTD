@@ -141,7 +141,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 		}
 
 		/* Variables which use the parameter */
-		/* Variables 0x60 to 0x65 and 0x69 are handled separately below */
+		/* Variables 0x60 to 0x65, 0x69, 0x70, 0x71 and 0x73 to 0x76 are handled separately below */
 
 		/* Animation frame of nearby tile */
 		case 0x66: {

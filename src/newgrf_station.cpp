@@ -23,6 +23,7 @@
 #include "company_func.h"
 #include "tunnelbridge_map.h"
 #include "newgrf_animation_base.h"
+#include "cargotype.h"
 #include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
@@ -342,7 +343,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 			return GetAnimationFrame(this->tile);
 
 		/* Variables which use the parameter */
-		/* Variables 0x60 to 0x65 and 0x69 are handled separately below */
+		/* Variables 0x60 to 0x65, 0x69, 0x70, 0x71 and 0x73 to 0x76 are handled separately below */
 		case 0x66: { // Animation frame of nearby tile
 			TileIndex tile = this->tile;
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile);
@@ -456,6 +457,39 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 		}
 	}
 
+	/* Handle cargo classes variables with parameter, 0x70 to 0x71 and 0x73 to 0x76 */
+	if (variable >= 0x70 && variable <= 0x76 && variable != 0x72) {
+		uint32_t value = variable == 0x74 ? 0xFF00 : 0;
+		uint16_t last_min = 0xFFFF; // Used for vars: 0x71, 0x72, 0x73 to find the last smallest value.
+
+		auto cargo_specs = CargoSpec::Iterate();
+
+		for (auto i = cargo_specs.begin(); i != cargo_specs.end(); ++i) {
+			CargoSpec *cs = *i;
+			if (!cs->IsValid()) continue;
+			if ((cs->classes.base() & parameter) != parameter) continue; // Check if specified cargo classes are present.
+
+			const GoodsEntry *ge = &this->goods[cs->bitnum];
+
+			switch (variable) {
+				case 0x70: value = std::min(value + ge->TotalCount(), 4095u); break;
+				case 0x71: if (ge->HasVehicleEverTriedLoading()) value = last_min = std::min(uint16_t(ge->time_since_pickup), last_min); break;
+				case 0x73: if (ge->HasData()) value = last_min = std::min(uint16_t(ge->GetData().cargo.PeriodsInTransit()), last_min); break;
+				case 0x74:
+					if (ge->HasVehicleEverTriedLoading()) {
+						last_min = std::min(uint16_t(ge->time_since_pickup), last_min);
+						value = ge->last_speed | (ge->last_age << 8);
+					}
+					break;
+
+				case 0x75: value |= ge->status.Test(GoodsEntry::State::Acceptance) ? (1U << 3) : 0; break;
+				case 0x76: value |= ge->ConvertState(); break;
+				default: NOT_REACHED();
+			}
+		}
+		return value;
+	}
+
 	/* Handle cargo variables (deprecated) */
 	if (variable >= 0x8C && variable <= 0xEC) {
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
@@ -489,8 +523,8 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 		case 0xF7: return 0; // airport flags cont.
 	}
 
-	/* Handle cargo variables with parameter, 0x60 to 0x65 */
-	if (variable >= 0x60 && variable <= 0x65) {
+	/* Handle cargo variables with parameter, 0x60 to 0x65, 0x69, 0x70, 0x71, 0x73 to 0x76 */
+	if ((variable >= 0x60 && variable <= 0x65) || (variable = 0x69) || (variable >= 0x70 && variable <= 0x76 && variable != 0x72)) {
 		return 0;
 	}
 
