@@ -5107,6 +5107,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... alle
 STR_ERROR_TOO_HIGH                                              :{WHITE}... for høyt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allerede flatt
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Etterpå vil broen over den være for høy.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Må fjerne elv først
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikke endre selskapets navn...
