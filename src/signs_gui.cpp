@@ -407,7 +407,7 @@ struct SignWindow : Window, SignList {
 	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
 	std::optional<Colours> new_colour; ///< New colour selected by the user. Will be assigned when the OK button is clicked.
 
-	SignWindow(WindowDesc &desc, const Sign *si) : Window(desc), name_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
+	SignWindow(WindowDesc &desc, const Sign *si) : Window(desc), name_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS), cur_sign(si->index)
 	{
 		this->querystrings[WID_QES_TEXT] = &this->name_editbox;
 		this->name_editbox.caption = STR_EDIT_SIGN_CAPTION;
