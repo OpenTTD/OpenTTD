@@ -535,14 +535,10 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 }
 
 /**
- * Simple sorter for GRFS
- * @param c1 the first GRFConfig *
- * @param c2 the second GRFConfig *
- * @return true if the name of first NewGRF is before the name of the second.
- */
-static bool GRFSorter(std::unique_ptr<GRFConfig> const &c1, std::unique_ptr<GRFConfig> const &c2)
+ * Simple sorter for GRFS. @copydoc GUIList::Sorter */
+static bool GRFSorter(std::unique_ptr<GRFConfig> const &a, std::unique_ptr<GRFConfig> const &b)
 {
-	return StrNaturalCompare(c1->GetName(), c2->GetName()) < 0;
+	return StrNaturalCompare(a->GetName(), b->GetName()) < 0;
 }
 
 /**

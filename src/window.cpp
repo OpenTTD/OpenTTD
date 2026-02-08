@@ -162,9 +162,7 @@ void WindowDesc::LoadFromConfig()
 	}
 }
 
-/**
- * Sort WindowDesc by ini_key.
- */
+/** Sort WindowDesc by ini_key. @copydoc GUIList::Sorter */
 static bool DescSorter(WindowDesc * const &a, WindowDesc * const &b)
 {
 	return a->ini_key < b->ini_key;

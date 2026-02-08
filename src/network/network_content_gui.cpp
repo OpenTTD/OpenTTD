@@ -423,7 +423,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		this->ScrollToSelected();
 	}
 
-	/** Sort content by name. */
+	/** Sort content by name. @copydoc GUIList::Sorter */
 	static bool NameSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
 		int r = StrNaturalCompare(a->name, b->name, true); // Sort by name (natural sorting).
@@ -431,7 +431,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		return r < 0;
 	}
 
-	/** Sort content by type. */
+	/** Sort content by type. @copydoc GUIList::Sorter */
 	static bool TypeSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
 		int r = 0;
@@ -442,7 +442,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		return r < 0;
 	}
 
-	/** Sort content by state. */
+	/** Sort content by state. @copydoc GUIList::Sorter */
 	static bool StateSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
 		int r = to_underlying(a->state) - to_underlying(b->state);

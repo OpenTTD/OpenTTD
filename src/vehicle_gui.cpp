@@ -72,7 +72,7 @@ static BaseVehicleListWindow::VehicleGroupSortFunction VehicleGroupTotalProfitLa
 static BaseVehicleListWindow::VehicleGroupSortFunction VehicleGroupAverageProfitThisYearSorter;
 static BaseVehicleListWindow::VehicleGroupSortFunction VehicleGroupAverageProfitLastYearSorter;
 
-/** Wrapper to convert a VehicleIndividualSortFunction to a VehicleGroupSortFunction */
+/** Wrapper to convert a VehicleIndividualSortFunction to a VehicleGroupSortFunction. @copydoc GUIList::Sorter */
 template <BaseVehicleListWindow::VehicleIndividualSortFunction func>
 static bool VehicleIndividualToGroupSorterWrapper(GUIVehicleGroup const &a, GUIVehicleGroup const &b)
 {
@@ -1401,43 +1401,43 @@ StringID GetCargoSubtypeText(const Vehicle *v)
 	return GetGRFStringID(v->GetGRFID(), GRFSTR_MISC_GRF_TEXT + cb);
 }
 
-/** Sort vehicle groups by the number of vehicles in the group */
+/** Sort vehicle groups by the number of vehicles in the group. @copydoc GUIList::Sorter */
 static bool VehicleGroupLengthSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
 	return a.NumVehicles() < b.NumVehicles();
 }
 
-/** Sort vehicle groups by the total profit this year */
+/** Sort vehicle groups by the total profit this year. @copydoc GUIList::Sorter */
 static bool VehicleGroupTotalProfitThisYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
 	return a.GetDisplayProfitThisYear() < b.GetDisplayProfitThisYear();
 }
 
-/** Sort vehicle groups by the total profit last year */
+/** Sort vehicle groups by the total profit last year. @copydoc GUIList::Sorter */
 static bool VehicleGroupTotalProfitLastYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
 	return a.GetDisplayProfitLastYear() < b.GetDisplayProfitLastYear();
 }
 
-/** Sort vehicle groups by the average profit this year */
+/** Sort vehicle groups by the average profit this year. @copydoc GUIList::Sorter */
 static bool VehicleGroupAverageProfitThisYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
 	return a.GetDisplayProfitThisYear() * static_cast<uint>(b.NumVehicles()) < b.GetDisplayProfitThisYear() * static_cast<uint>(a.NumVehicles());
 }
 
-/** Sort vehicle groups by the average profit last year */
+/** Sort vehicle groups by the average profit last year. @copydoc GUIList::Sorter */
 static bool VehicleGroupAverageProfitLastYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
 	return a.GetDisplayProfitLastYear() * static_cast<uint>(b.NumVehicles()) < b.GetDisplayProfitLastYear() * static_cast<uint>(a.NumVehicles());
 }
 
-/** Sort vehicles by their number */
+/** Sort vehicles by their number. @copydoc GUIList::Sorter */
 static bool VehicleNumberSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	return a->unitnumber < b->unitnumber;
 }
 
-/** Sort vehicles by their name */
+/** Sort vehicles by their name. @copydoc GUIList::Sorter */
 static bool VehicleNameSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	static std::string last_name[2] = { {}, {} };
@@ -1456,28 +1456,28 @@ static bool VehicleNameSorter(const Vehicle * const &a, const Vehicle * const &b
 	return (r != 0) ? r < 0: VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by their age */
+/** Sort vehicles by their age. @copydoc GUIList::Sorter */
 static bool VehicleAgeSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	auto r = a->age - b->age;
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by this year profit */
+/** Sort vehicles by this year profit. @copydoc GUIList::Sorter */
 static bool VehicleProfitThisYearSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = ClampTo<int32_t>(a->GetDisplayProfitThisYear() - b->GetDisplayProfitThisYear());
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by last year profit */
+/** Sort vehicles by last year profit. @copydoc GUIList::Sorter */
 static bool VehicleProfitLastYearSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = ClampTo<int32_t>(a->GetDisplayProfitLastYear() - b->GetDisplayProfitLastYear());
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by their cargo */
+/** Sort vehicles by their cargo. @copydoc GUIList::Sorter */
 static bool VehicleCargoSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	const Vehicle *v;
@@ -1496,28 +1496,28 @@ static bool VehicleCargoSorter(const Vehicle * const &a, const Vehicle * const &
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by their reliability */
+/** Sort vehicles by their reliability. @copydoc GUIList::Sorter */
 static bool VehicleReliabilitySorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = a->reliability - b->reliability;
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by their max speed */
+/** Sort vehicles by their max speed. @copydoc GUIList::Sorter */
 static bool VehicleMaxSpeedSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = a->vcache.cached_max_speed - b->vcache.cached_max_speed;
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by model */
+/** Sort vehicles by model. @copydoc GUIList::Sorter */
 static bool VehicleModelSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = a->engine_type.base() - b->engine_type.base();
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by their value */
+/** Sort vehicles by their value. @copydoc GUIList::Sorter */
 static bool VehicleValueSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	const Vehicle *u;
@@ -1530,21 +1530,21 @@ static bool VehicleValueSorter(const Vehicle * const &a, const Vehicle * const &
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by their length */
+/** Sort vehicles by their length. @copydoc GUIList::Sorter */
 static bool VehicleLengthSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = a->GetGroundVehicleCache()->cached_total_length - b->GetGroundVehicleCache()->cached_total_length;
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by the time they can still live */
+/** Sort vehicles by the time they can still live. @copydoc GUIList::Sorter */
 static bool VehicleTimeToLiveSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = ClampTo<int32_t>((a->max_age - a->age) - (b->max_age - b->age));
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehicles by the timetable delay */
+/** Sort vehicles by the timetable delay. @copydoc GUIList::Sorter */
 static bool VehicleTimetableDelaySorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	int r = a->lateness_counter - b->lateness_counter;

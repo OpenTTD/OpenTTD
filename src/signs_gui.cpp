@@ -75,7 +75,7 @@ struct SignList {
 		this->signs.RebuildDone();
 	}
 
-	/** Sort signs by their name */
+	/** Sort signs by their name. @copydoc GUIList::Sorter */
 	static bool SignNameSorter(const Sign * const &a, const Sign * const &b)
 	{
 		/* Signs are very very rarely using the default text, but there can also be

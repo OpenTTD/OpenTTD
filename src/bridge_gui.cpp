@@ -91,19 +91,19 @@ private:
 	int icon_width = 0; ///< Scaled width of the the bridge icon sprite.
 	Scrollbar *vscroll = nullptr;
 
-	/** Sort the bridges by their index */
+	/** Sort the bridges by their index. @copydoc GUIList::Sorter */
 	static bool BridgeIndexSorter(const BuildBridgeData &a, const BuildBridgeData &b)
 	{
 		return a.index < b.index;
 	}
 
-	/** Sort the bridges by their price */
+	/** Sort the bridges by their price. @copydoc GUIList::Sorter */
 	static bool BridgePriceSorter(const BuildBridgeData &a, const BuildBridgeData &b)
 	{
 		return a.cost < b.cost;
 	}
 
-	/** Sort the bridges by their maximum speed */
+	/** Sort the bridges by their maximum speed. @copydoc GUIList::Sorter */
 	static bool BridgeSpeedSorter(const BuildBridgeData &a, const BuildBridgeData &b)
 	{
 		return a.spec->speed < b.spec->speed;

@@ -759,32 +759,32 @@ private:
 		this->SetWidgetDirty(WID_TD_LIST); // Force repaint of the displayed towns.
 	}
 
-	/** Sort by town name */
-	static bool TownNameSorter(const Town * const &a, const Town * const &b, const bool &)
+	/** Sort by town name. @copydoc GUIList::SorterWithFilter */
+	static bool TownNameSorter(const Town * const &a, const Town * const &b, [[maybe_unused]] const bool &filter)
 	{
 		return StrNaturalCompare(a->GetCachedName(), b->GetCachedName()) < 0; // Sort by name (natural sorting).
 	}
 
-	/** Sort by population (default descending, as big towns are of the most interest). */
-	static bool TownPopulationSorter(const Town * const &a, const Town * const &b, const bool &order)
+	/** Sort by population (default descending, as big towns are of the most interest). @copydoc GUIList::SorterWithFilter */
+	static bool TownPopulationSorter(const Town * const &a, const Town * const &b, const bool &filter)
 	{
 		uint32_t a_population = a->cache.population;
 		uint32_t b_population = b->cache.population;
-		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b, order);
+		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b, filter);
 		return a_population < b_population;
 	}
 
-	/** Sort by town rating */
-	static bool TownRatingSorter(const Town * const &a, const Town * const &b, const bool &order)
+	/** Sort by town rating. @copydoc GUIList::SorterWithFilter */
+	static bool TownRatingSorter(const Town * const &a, const Town * const &b, const bool &filter)
 	{
-		bool before = !order; // Value to get 'a' before 'b'.
+		bool before = !filter; // Value to get 'a' before 'b'.
 
 		/* Towns without rating are always after towns with rating. */
 		if (a->have_ratings.Test(_local_company)) {
 			if (b->have_ratings.Test(_local_company)) {
 				int16_t a_rating = a->ratings[_local_company];
 				int16_t b_rating = b->ratings[_local_company];
-				if (a_rating == b_rating) return TownDirectoryWindow::TownNameSorter(a, b, order);
+				if (a_rating == b_rating) return TownDirectoryWindow::TownNameSorter(a, b, filter);
 				return a_rating < b_rating;
 			}
 			return before;
@@ -792,8 +792,8 @@ private:
 		if (b->have_ratings.Test(_local_company)) return !before;
 
 		/* Sort unrated towns always on ascending town name. */
-		if (before) return TownDirectoryWindow::TownNameSorter(a, b, order);
-		return TownDirectoryWindow::TownNameSorter(b, a, order);
+		if (before) return TownDirectoryWindow::TownNameSorter(a, b, filter);
+		return TownDirectoryWindow::TownNameSorter(b, a, filter);
 	}
 
 public:

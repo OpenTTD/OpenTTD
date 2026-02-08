@@ -245,7 +245,7 @@ protected:
 		this->UpdateListPos();
 	}
 
-	/** Sort servers by name. */
+	/** Sort servers by name. @copydoc GUIList::Sorter */
 	static bool NGameNameSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		int r = StrNaturalCompare(a->info.server_name, b->info.server_name, true); // Sort by name (natural sorting).
@@ -258,6 +258,7 @@ protected:
 	 * Sort servers by the amount of clients online on a
 	 * server. If the two servers have the same amount, the one with the
 	 * higher maximum is preferred.
+	 * @copydoc GUIList::Sorter
 	 */
 	static bool NGameClientSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
@@ -270,7 +271,7 @@ protected:
 		return r < 0;
 	}
 
-	/** Sort servers by map size */
+	/** Sort servers by map size. @copydoc GUIList::Sorter */
 	static bool NGameMapSizeSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		/* Sort by the area of the map. */
@@ -280,14 +281,14 @@ protected:
 		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
-	/** Sort servers by calendar date. */
+	/** Sort servers by calendar date. @copydoc GUIList::Sorter */
 	static bool NGameCalendarDateSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		auto r = a->info.calendar_date - b->info.calendar_date;
 		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
-	/** Sort servers by the number of ticks the game is running. */
+	/** Sort servers by the number of ticks the game is running. @copydoc GUIList::Sorter */
 	static bool NGameTicksPlayingSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		if (a->info.ticks_playing == b->info.ticks_playing) {
@@ -299,6 +300,7 @@ protected:
 	/**
 	 * Sort servers by joinability. If both servers are the
 	 * same, prefer the non-passworded server first.
+	 * @copydoc GUIList::Sorter
 	 */
 	static bool NGameAllowedSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{

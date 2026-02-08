@@ -305,10 +305,7 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 /**
  * Order vehicles based on their timetable. The vehicles will be sorted in order
  * they would reach the first station.
- *
- * @param a First Vehicle pointer.
- * @param b Second Vehicle pointer.
- * @return Comparison value.
+ * @copydoc GUIList::Sorter
  */
 static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 {

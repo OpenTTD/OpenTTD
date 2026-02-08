@@ -1387,7 +1387,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	}
 
 private:
-	/** Sort grfs by name. */
+	/** Sort grfs by name. @copydoc GUIList::Sorter */
 	static bool NameSorter(const GRFConfig * const &a, const GRFConfig * const &b)
 	{
 		std::string name_a = StrMakeValid(a->GetName(), {}); // Make a copy without control codes.

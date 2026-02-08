@@ -79,10 +79,10 @@ private:
 		this->companies.RebuildDone();
 	}
 
-	/** Sort the company league by performance history */
-	static bool PerformanceSorter(const Company * const &c1, const Company * const &c2)
+	/** Sort the company league by performance history. @copydoc GUIList::Sorter */
+	static bool PerformanceSorter(const Company * const &a, const Company * const &b)
 	{
-		return c2->old_economy[0].performance_history < c1->old_economy[0].performance_history;
+		return b->old_economy[0].performance_history < a->old_economy[0].performance_history;
 	}
 
 public:

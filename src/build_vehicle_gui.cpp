@@ -107,12 +107,7 @@ bool _engine_sort_last_order[]          = {false, false, false, false}; ///< Las
 bool _engine_sort_show_hidden_engines[] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
 static CargoType _engine_sort_last_cargo_criteria[] = {CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY}; ///< Last set filter criteria, for each vehicle type.
 
-/**
- * Determines order of engines by engineID
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by engineID. @copydoc GUIList::Sorter */
 static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int r = Engine::Get(a.engine_id)->list_position - Engine::Get(b.engine_id)->list_position;
@@ -120,12 +115,7 @@ static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListIt
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by introduction date
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by introduction date. @copydoc GUIList::Sorter */
 static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const auto va = Engine::Get(a.engine_id)->intro_date;
@@ -140,12 +130,7 @@ static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineLis
 /* cached values for EngineNameSorter to spare many GetString() calls */
 static EngineID _last_engine[2] = { EngineID::Invalid(), EngineID::Invalid() };
 
-/**
- * Determines order of engines by name
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by name. @copydoc GUIList::Sorter */
 static bool EngineNameSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	static std::string last_name[2] = { {}, {} };
@@ -167,12 +152,7 @@ static bool EngineNameSorter(const GUIEngineListItem &a, const GUIEngineListItem
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by reliability
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by reliability. @copydoc GUIList::Sorter */
 static bool EngineReliabilitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const int va = Engine::Get(a.engine_id)->reliability;
@@ -184,12 +164,7 @@ static bool EngineReliabilitySorter(const GUIEngineListItem &a, const GUIEngineL
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by purchase cost
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by purchase cost. @copydoc GUIList::Sorter */
 static bool EngineCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	Money va = Engine::Get(a.engine_id)->GetCost();
@@ -201,12 +176,7 @@ static bool EngineCostSorter(const GUIEngineListItem &a, const GUIEngineListItem
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by speed
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by speed. @copydoc GUIList::Sorter */
 static bool EngineSpeedSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = Engine::Get(a.engine_id)->GetDisplayMaxSpeed();
@@ -218,12 +188,7 @@ static bool EngineSpeedSorter(const GUIEngineListItem &a, const GUIEngineListIte
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by power
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by power. @copydoc GUIList::Sorter */
 static bool EnginePowerSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = Engine::Get(a.engine_id)->GetPower();
@@ -235,12 +200,7 @@ static bool EnginePowerSorter(const GUIEngineListItem &a, const GUIEngineListIte
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by tractive effort
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by tractive effort. @copydoc GUIList::Sorter */
 static bool EngineTractiveEffortSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = Engine::Get(a.engine_id)->GetDisplayMaxTractiveEffort();
@@ -252,12 +212,7 @@ static bool EngineTractiveEffortSorter(const GUIEngineListItem &a, const GUIEngi
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by running costs
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by running costs. @copydoc GUIList::Sorter */
 static bool EngineRunningCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	Money va = Engine::Get(a.engine_id)->GetRunningCost();
@@ -269,12 +224,7 @@ static bool EngineRunningCostSorter(const GUIEngineListItem &a, const GUIEngineL
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by running costs
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by running costs. @copydoc GUIList::Sorter */
 static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const Engine *e_a = Engine::Get(a.engine_id);
@@ -311,12 +261,7 @@ static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUI
 
 /* Train sorting functions */
 
-/**
- * Determines order of train engines by capacity
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of train engines by capacity. @copydoc GUIList::Sorter */
 static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const RailVehicleInfo *rvi_a = RailVehInfo(a.engine_id);
@@ -331,12 +276,7 @@ static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngin
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of train engines by engine / wagon
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of train engines by engine / wagon. @copydoc GUIList::Sorter */
 static bool TrainEnginesThenWagonsSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int val_a = (RailVehInfo(a.engine_id)->railveh_type == RAILVEH_WAGON ? 1 : 0);
@@ -350,12 +290,7 @@ static bool TrainEnginesThenWagonsSorter(const GUIEngineListItem &a, const GUIEn
 
 /* Road vehicle sorting functions */
 
-/**
- * Determines order of road vehicles by capacity
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of road vehicles by capacity. @copydoc GUIList::Sorter */
 static bool RoadVehEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = GetTotalCapacityOfArticulatedParts(a.engine_id);
@@ -369,12 +304,7 @@ static bool RoadVehEngineCapacitySorter(const GUIEngineListItem &a, const GUIEng
 
 /* Ship vehicle sorting functions */
 
-/**
- * Determines order of ships by capacity
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of ships by capacity. @copydoc GUIList::Sorter */
 static bool ShipEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const Engine *e_a = Engine::Get(a.engine_id);
@@ -391,12 +321,7 @@ static bool ShipEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngine
 
 /* Aircraft sorting functions */
 
-/**
- * Determines order of aircraft by cargo
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of aircraft by cargo. @copydoc GUIList::Sorter */
 static bool AircraftEngineCargoSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const Engine *e_a = Engine::Get(a.engine_id);
@@ -419,12 +344,7 @@ static bool AircraftEngineCargoSorter(const GUIEngineListItem &a, const GUIEngin
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of aircraft by range.
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of aircraft by range. @copydoc GUIList::Sorter */
 static bool AircraftRangeSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	uint16_t r_a = Engine::Get(a.engine_id)->GetRange();

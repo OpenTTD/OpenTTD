@@ -142,7 +142,7 @@ void PickerSaveConfig(IniFile &ini)
 	for (const auto *cb : GetPickerCallbacks()) PickerSaveConfig(ini, *cb);
 }
 
-/** Sort classes by id. */
+/** Sort classes by id. @copydoc GUIList::Sorter */
 static bool ClassIDSorter(int const &a, int const &b)
 {
 	return a < b;
@@ -156,7 +156,7 @@ static bool ClassTagNameFilter(int const *item, PickerFilterData &filter)
 	return filter.GetState();
 }
 
-/** Sort types by id. */
+/** Sort types by id. @copydoc GUIList::Sorter */
 static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
 {
 	int r = a.class_index - b.class_index;
@@ -179,12 +179,7 @@ static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
 /** Allow the collection sorter to test if the collection has inactive items */
 PickerWindow *picker_window;
 
-/**
- * Sort collections by id.
- * @param a First string for sorting.
- * @param b Second string for sorting.
- * @return Sort order.
- */
+/** Sort collections by id. @copydoc GUIList::Sorter */
 static bool CollectionIDSorter(std::string const &a, std::string const &b)
 {
 	if (a == GetString(STR_PICKER_DEFAULT_COLLECTION) || b == GetString(STR_PICKER_DEFAULT_COLLECTION)) return a == GetString(STR_PICKER_DEFAULT_COLLECTION);

@@ -341,51 +341,51 @@ protected:
 		this->vscroll->SetCount(this->stations.size()); // Update the scrollbar
 	}
 
-	/** Sort stations by their name */
-	static bool StationNameSorter(const Station * const &a, const Station * const &b, const CargoTypes &)
+	/** Sort stations by their name. @copydoc GUIList::SorterWithFilter */
+	static bool StationNameSorter(const Station * const &a, const Station * const &b, [[maybe_unused]] const CargoTypes &filter)
 	{
 		int r = StrNaturalCompare(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
 		if (r == 0) return a->index < b->index;
 		return r < 0;
 	}
 
-	/** Sort stations by their type */
-	static bool StationTypeSorter(const Station * const &a, const Station * const &b, const CargoTypes &)
+	/** Sort stations by their type. @copydoc GUIList::SorterWithFilter */
+	static bool StationTypeSorter(const Station * const &a, const Station * const &b, [[maybe_unused]] const CargoTypes &filter)
 	{
 		return a->facilities < b->facilities;
 	}
 
-	/** Sort stations by their waiting cargo */
-	static bool StationWaitingTotalSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their waiting cargo. @copydoc GUIList::SorterWithFilter */
+	static bool StationWaitingTotalSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		int diff = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : SetCargoBitIterator(filter)) {
 			diff += a->goods[cargo].TotalCount() - b->goods[cargo].TotalCount();
 		}
 
 		return diff < 0;
 	}
 
-	/** Sort stations by their available waiting cargo */
-	static bool StationWaitingAvailableSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their available waiting cargo. @copydoc GUIList::SorterWithFilter */
+	static bool StationWaitingAvailableSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		int diff = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : SetCargoBitIterator(filter)) {
 			diff += a->goods[cargo].AvailableCount() - b->goods[cargo].AvailableCount();
 		}
 
 		return diff < 0;
 	}
 
-	/** Sort stations by their rating */
-	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their rating. @copydoc GUIList::SorterWithFilter */
+	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		uint8_t maxr1 = 0;
 		uint8_t maxr2 = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : SetCargoBitIterator(filter)) {
 			if (a->goods[cargo].HasRating()) maxr1 = std::max(maxr1, a->goods[cargo].rating);
 			if (b->goods[cargo].HasRating()) maxr2 = std::max(maxr2, b->goods[cargo].rating);
 		}
@@ -393,13 +393,13 @@ protected:
 		return maxr1 < maxr2;
 	}
 
-	/** Sort stations by their rating */
-	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their rating. @copydoc GUIList::SorterWithFilter */
+	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		uint8_t minr1 = 255;
 		uint8_t minr2 = 255;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : SetCargoBitIterator(filter)) {
 			if (a->goods[cargo].HasRating()) minr1 = std::min(minr1, a->goods[cargo].rating);
 			if (b->goods[cargo].HasRating()) minr2 = std::min(minr2, b->goods[cargo].rating);
 		}

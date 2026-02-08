@@ -37,6 +37,7 @@
 
 #include "safeguards.h"
 
+/** Compare the (NewGRF) list position. @copydoc GUIList::Sorter. */
 static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	return Engine::Get(a.engine_id)->list_position < Engine::Get(b.engine_id)->list_position;

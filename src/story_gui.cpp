@@ -83,7 +83,7 @@ protected:
 		this->story_pages.Sort();
 	}
 
-	/** Sort story pages by order value. */
+	/** Sort story pages by order value. @copydoc GUIList::Sorter */
 	static bool PageOrderSorter(const StoryPage * const &a, const StoryPage * const &b)
 	{
 		return a->sort_value < b->sort_value;
@@ -111,7 +111,7 @@ protected:
 		this->InvalidateStoryPageElementLayout();
 	}
 
-	/** Sort story page elements by order value. */
+	/** Sort story page elements by order value. @copydoc GUIList::Sorter */
 	static bool PageElementOrderSorter(const StoryPageElement * const &a, const StoryPageElement * const &b)
 	{
 		return a->sort_value < b->sort_value;
