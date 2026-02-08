@@ -965,8 +965,9 @@ static void DrawEngineBadgeColumn(const Rect &r, int column_group, const GUIBadg
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  * @param badge_classes The badges associated with the drawn engine.
+ * @param sort_criteria The sort criteria to use for the engines.
  */
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes, uint8_t sort_criteria)
 {
 	static const std::array<int8_t, VehicleType::VEH_COMPANY_END> sprite_y_offsets = { 0, 0, -1, -1 };
 
@@ -1084,9 +1085,112 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
 		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : ((hidden | shaded) ? (TC_GREY | TC_FORCED | TC_NO_SHADE) : TC_BLACK);
 
+		/* Draw the value of the currently selected sort property to the right (or left in RTL), if applicable */
+		std::string sort_prop_detail;
+
+		switch (std::data(_engine_sort_listing[type])[sort_criteria]) {
+			case STR_SORT_BY_ENGINE_ID:
+				/* No extra interesting info to show in this case */
+				break;
+			case STR_SORT_BY_COST:
+				sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_COST, e->GetCost());
+				break;
+			case STR_SORT_BY_MAX_SPEED:
+				if (int max_speed = e->GetDisplayMaxSpeed(); max_speed != 0) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_SPEED, PackVelocity(max_speed, Engine::Get(item.engine_id)->type));
+				}
+				break;
+			case STR_SORT_BY_POWER:
+				if (int power = e->GetPower(); power != 0) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER, power);
+				}
+				break;
+			case STR_SORT_BY_TRACTIVE_EFFORT:
+				/* Allow trucks, and allow trains that are not wagons */
+				if (type == VEH_ROAD || (type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON)) {
+					auto max_te = e->GetDisplayMaxTractiveEffort();
+					if (max_te != 0) {
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_MAX_TE, max_te);
+					}
+				}
+				break;
+			case STR_SORT_BY_INTRO_DATE: {
+					TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_INTRO_DATE, ymd.year);
+				}
+				break;
+			case STR_SORT_BY_NAME:
+				/* No extra interesting info to show in this case */
+				break;
+			case STR_SORT_BY_RUNNING_COST:
+				if (int running_cost = e->GetRunningCost(); running_cost != 0) {
+					sort_prop_detail = GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD : STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR, running_cost);
+				}
+				break;
+			case STR_SORT_BY_POWER_VS_RUNNING_COST:
+				/* NOTE: No point showing the actual values of power/running cost, because they are affected by cost factors, which make the math off */
+				if (Money rc = e->GetRunningCost(); rc != 0) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST, 100 * e->GetPower() / rc, /* digits for DECIMAL */ 2);
+				}
+				break;
+			case STR_SORT_BY_RELIABILITY:
+				if (auto isWagon = e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON; !isWagon) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_RELIABILITY, ToPercent16(e->reliability));
+				}
+				break;
+			case STR_SORT_BY_CARGO_CAPACITY: {
+					uint total_capacity;
+					switch (type) {
+						case VEH_TRAIN:
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id) * (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+							break;
+						case VEH_ROAD:
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
+							break;
+						case VEH_SHIP:
+							total_capacity = e->GetDisplayDefaultCapacity();
+							break;
+						case VEH_AIRCRAFT: {
+								uint16_t mail_cap;
+								int aircraft_cap = e->GetDisplayDefaultCapacity(&mail_cap);
+								total_capacity = aircraft_cap + mail_cap;
+							}
+							break;
+						default:
+							NOT_REACHED();
+							break;
+					}
+					if (total_capacity != 0) {
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_CAPACITY, total_capacity);
+					}
+				}
+				break;
+			case STR_SORT_BY_RANGE:
+				if (e->type == VEH_AIRCRAFT) {
+					if (uint16_t range = e->GetRange(); range != 0) {
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE, range);
+					}
+				}
+				break;
+			default:
+				break;
+		}
+
+		int sort_detail_width = 0;
+		if (!sort_prop_detail.empty()) {
+			DrawString(tr.left, tr.right, textr.top + normal_text_y_offset, sort_prop_detail, tc, SA_RIGHT, false, FS_SMALL);
+
+			/* If we have sort detail to show, also measure its width so that we can adjust the
+			 * main name drawing rectangle to not overlap. */
+			sort_detail_width = GetStringBoundingBox(sort_prop_detail, FS_SMALL).width;
+		}
+
 		/* If the count is visible then this is part of in-use autoreplace list. */
 		auto engine_name = PackEngineNameDParam(item.engine_id, show_count ? EngineNameContext::AutoreplaceVehicleInUse : EngineNameContext::PurchaseList, item.indent);
-		DrawString(tr.left, tr.right, textr.top + normal_text_y_offset,GetString(str, engine_name), tc);
+		std::string name = GetString(str, engine_name);
+
+		/* The left/right bounds are adjusted to not overlap with the sort detail that is on the left/right depending on the RTL setting. */
+		DrawString(tr.left + (rtl ? sort_detail_width : 0), tr.right - (rtl ? 0 : sort_detail_width), textr.top + normal_text_y_offset, name, tc);
 
 		ir = ir.Translate(0, step_size);
 	}
@@ -1853,7 +1957,8 @@ struct BuildVehicleWindow : Window {
 					this->sel_engine,
 					false,
 					DEFAULT_GROUP,
-					this->badge_classes
+					this->badge_classes,
+					this->sort_criteria
 				);
 				break;
 

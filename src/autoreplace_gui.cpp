@@ -458,7 +458,7 @@ public:
 				int side = (widget == WID_RV_LEFT_MATRIX) ? 0 : 1;
 
 				/* Do the actual drawing */
-				DrawEngineList(this->window_number, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group, this->badge_classes);
+				DrawEngineList(this->window_number, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group, this->badge_classes, this->sort_criteria);
 				break;
 			}
 		}
