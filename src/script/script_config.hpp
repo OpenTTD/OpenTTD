@@ -130,6 +130,11 @@ public:
 	void ResetSettings();
 
 	/**
+	 * Reset a setting to its default value.
+	 */
+	void ResetSetting(std::string_view name);
+
+	/**
 	 * Reset only editable and visible settings to their default value.
 	 */
 	void ResetEditableSettings(bool yet_to_start);
