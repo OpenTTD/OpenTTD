@@ -14,11 +14,10 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "station_type.h"
+#include "newgrf_roadstop.h"
+#include "newgrf_station.h"
 
 struct Town;
-
-enum StationClassID : uint16_t;
-enum RoadStopClassID : uint16_t;
 
 extern Town *AirportGetNearestTown(const struct AirportSpec *as, Direction rotation, TileIndex tile, TileIterator &&it, uint &mindist);
 extern uint8_t GetAirportNoiseLevelForDistance(const struct AirportSpec *as, uint distance);

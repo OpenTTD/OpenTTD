@@ -49,7 +49,7 @@ bool RoadStopClass::IsUIAvailable(uint) const
 }
 
 /* Instantiate RoadStopClass. */
-template class NewGRFClass<RoadStopSpec, RoadStopClassID, ROADSTOP_CLASS_MAX>;
+template class NewGRFClass<RoadStopSpec, RoadStopClassID>;
 
 static const uint NUM_ROADSTOPSPECS_PER_STATION = 63; ///< Maximum number of parts per station.
 
