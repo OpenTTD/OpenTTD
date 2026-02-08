@@ -359,6 +359,15 @@ static const std::initializer_list<AirportTileLayout> _tile_table_helistation = 
 	{ _tile_table_helistation_0, DIR_N },
 };
 
+/** Tiles for oilrig */
+static const std::initializer_list<AirportTileTable> _tile_table_oilrig_0 = {
+	MK(0, 0, APT_EMPTY),
+};
+
+static const std::initializer_list<AirportTileLayout> _tile_table_oilrig = {
+	{ _tile_table_oilrig_0, DIR_N, }
+};
+
 #undef MK
 
 /** General AirportSpec definition. */
@@ -377,7 +386,7 @@ static const std::initializer_list<AirportTileLayout> _tile_table_helistation = 
 
 /* The helidepot and helistation have ATP_TTDP_SMALL because they are at ground level */
 extern const AirportSpec _origin_airport_specs[] = {
-	AS(country,          4, 3,     0,     1959,  4,  3,  7, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_SMALL,            SPR_AIRPORT_PREVIEW_SMALL),
+	AS(country,          4, 3,  CalendarTime::MIN_YEAR, 1959,  4,  3,  7, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_SMALL,            SPR_AIRPORT_PREVIEW_SMALL),
 	AS(city,             6, 6,  1955, CalendarTime::MAX_YEAR,  5,  5, 24, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_CITY,             SPR_AIRPORT_PREVIEW_LARGE),
 	AS_ND(heliport,      1, 1,  1963, CalendarTime::MAX_YEAR,  4,  1,  4, ATP_TTDP_HELIPORT, APC_HELIPORT, STR_AIRPORT_HELIPORT,         SPR_AIRPORT_PREVIEW_HELIPORT),
 	AS(metropolitan,     6, 6,  1980, CalendarTime::MAX_YEAR,  6,  8, 28, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_METRO,            SPR_AIRPORT_PREVIEW_METROPOLITAN),
@@ -386,7 +395,7 @@ extern const AirportSpec _origin_airport_specs[] = {
 	AS(helidepot,        2, 2,  1976, CalendarTime::MAX_YEAR,  4,  2,  7, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELIDEPOT,        SPR_AIRPORT_PREVIEW_HELIDEPOT),
 	AS(intercontinental, 9, 11, 2002, CalendarTime::MAX_YEAR, 10, 25, 72, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERCONTINENTAL, SPR_AIRPORT_PREVIEW_INTERCONTINENTAL),
 	AS(helistation,      4, 2,  1980, CalendarTime::MAX_YEAR,  4,  3, 14, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELISTATION,      SPR_AIRPORT_PREVIEW_HELISTATION),
-	AS_GENERIC(&_airportfta_oilrig, {}, {}, 1, 1, 0, 4, 0, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, 0, false),
+	AS_GENERIC(&_airportfta_oilrig, _tile_table_oilrig, {}, 1, 1, 0, 4, CalendarTime::MIN_YEAR, CalendarTime::MIN_YEAR, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, 0, false),
 };
 
 static_assert(NEW_AIRPORT_OFFSET == lengthof(_origin_airport_specs));
