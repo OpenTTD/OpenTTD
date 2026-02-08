@@ -41,53 +41,131 @@ public:
 	explicit PickerCallbacks(const std::string &ini_group);
 	virtual ~PickerCallbacks();
 
-	virtual void Close(int) { }
+	/** @copydoc Window::Close */
+	virtual void Close([[maybe_unused]] int data) { }
 
+	/**
+	 * NewGRF feature this picker is for.
+	 * @return The associated NewGRF feature.
+	 */
 	virtual GrfSpecFeature GetFeature() const = 0;
-	/** Should picker class/type selection be enabled? */
+	/**
+	 * Should picker class/type selection be enabled?
+	 * @return \c true when to show the class/type picker.
+	 */
 	virtual bool IsActive() const = 0;
-	/** Are there multiple classes to chose from? */
+	/**
+	 * Are there multiple classes to chose from?
+	 * @return \c true when there are multiple classes for this picker.
+	 */
 	virtual bool HasClassChoice() const = 0;
 
 	/* Class callbacks */
-	/** Get the tooltip string for the class list. */
+	/**
+	 * Get the tooltip string for the class list.
+	 * @return StringID without parameters for the tooltip.
+	 */
 	virtual StringID GetClassTooltip() const = 0;
-	/** Get the number of classes. @note Used only to estimate space requirements. */
+	/**
+	 * Get the number of classes.
+	 * @return Number of classes.
+	 * @note Used only to estimate space requirements.
+	 */
 	virtual int GetClassCount() const = 0;
-	/** Get the index of the selected class. */
+	/**
+	 * Get the index of the selected class.
+	 * @return The previously selected class.
+	 */
 	virtual int GetSelectedClass() const = 0;
-	/** Set the selected class. */
+	/**
+	 * Set the selected class.
+	 * @param id The new selected class.
+	 */
 	virtual void SetSelectedClass(int id) const = 0;
-	/** Get the name of a class. */
+	/**
+	 * Get the name of a class.
+	 * @param id The class to get the name for.
+	 * @return StringID without parameters.
+	 */
 	virtual StringID GetClassName(int id) const = 0;
 
 	/* Type callbacks */
-	/** Get the tooltip string for the type grid. */
+	/**
+	 * Get the tooltip string for the type grid.
+	 * @return StringID without parameters.
+	 */
 	virtual StringID GetTypeTooltip() const = 0;
-	/** Get the number of types in a class. @note Used only to estimate space requirements. */
+	/**
+	 * Get the number of types in a class.
+	 * @param cls_id The class' identifier.
+	 * @return The number of types.
+	 * @note Used only to estimate space requirements.
+	 */
 	virtual int GetTypeCount(int cls_id) const = 0;
-	/** Get the selected type. */
+	/**
+	 * Get the selected type.
+	 * @return Previously selected type.
+	 */
 	virtual int GetSelectedType() const = 0;
-	/** Set the selected type. */
+	/**
+	 * Set the selected type.
+	 * @param id The new type.
+	 */
 	virtual void SetSelectedType(int id) const = 0;
-	/** Get data about an item. */
+	/**
+	 * Get data about an item.
+	 * @param cls_id The chosen class.
+	 * @param id The chosen type within the class.
+	 * @return The metadata about the item.
+	 */
 	virtual PickerItem GetPickerItem(int cls_id, int id) const = 0;
-	/** Get the item of a type. */
+	/**
+	 * Get the item name of a type.
+	 * @param cls_id The chosen class.
+	 * @param id The chosen type within the class.
+	 * @return The name of the item.
+	 */
 	virtual StringID GetTypeName(int cls_id, int id) const = 0;
-	/** Get the item of a type. */
+	/**
+	 * Get the item's badges of a type.
+	 * @param cls_id The chosen class.
+	 * @param id The chosen type within the class.
+	 * @return The badge IDs.
+	 */
 	virtual std::span<const BadgeID> GetTypeBadges(int cls_id, int id) const = 0;
-	/** Test if an item is currently buildable. */
+	/**
+	 * Test if an item is currently buildable.
+	 * @param cls_id The chosen class.
+	 * @param id The chosen type within the class.
+	 * @return \c true if the combination is buildable.
+	 */
 	virtual bool IsTypeAvailable(int cls_id, int id) const = 0;
-	/** Draw preview image of an item. */
+	/**
+	 * Draw preview image of an item.
+	 * @param x The X-position for the sprite to draw.
+	 * @param y The Y-position for the sprite to draw.
+	 * @param cls_id The chosen class.
+	 * @param id The chosen type within the class.
+	 */
 	virtual void DrawType(int x, int y, int cls_id, int id) const = 0;
 
 	/* Collection Callbacks */
-	/** Get the tooltip string for the collection list. */
+	/**
+	 * Get the tooltip string for the collection list.
+	 * @return StringID without parameters.
+	 */
 	virtual StringID GetCollectionTooltip() const = 0;
 
-	/** Fill a set with all items that are used by the current player. */
+	/**
+	 * Fill a set with all items that are used by the current player.
+	 * @param items The set to fill.
+	 */
 	virtual void FillUsedItems(std::set<PickerItem> &items) = 0;
-	/** Update link between grfid/localidx and class_index/index in saved items. */
+	/**
+	 * Update link between grfid/localidx and class_index/index in saved items.
+	 * @param src Mapping of name to set of PickerItems with only grfid and localidx set.
+	 * @return Mapping of name to fully populated PickerItems for loaded NewGRFs and 'src' items when the NewGRF is not loaded.
+	 */
 	virtual std::map<std::string, std::set<PickerItem>> UpdateSavedItems(const std::map<std::string, std::set<PickerItem>> &src) = 0;
 	/**
 	 * Initialize the list of active collections for sorting purposes.
