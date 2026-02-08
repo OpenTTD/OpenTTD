@@ -199,6 +199,7 @@ public:
 
 	/**
 	 * Get the currently active instance of the video driver.
+	 * @return The instance.
 	 */
 	static VideoDriver *GetInstance()
 	{
@@ -231,6 +232,7 @@ protected:
 
 	/**
 	 * Get the resolution of the main screen.
+	 * @return The dimension of the screen in pixels.
 	 */
 	virtual Dimension GetScreenSize() const { return { DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT }; }
 

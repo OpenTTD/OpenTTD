@@ -42,6 +42,7 @@ public:
 
 	/**
 	 * Get the currently active instance of the music driver.
+	 * @return The instance.
 	 */
 	static MusicDriver *GetInstance()
 	{

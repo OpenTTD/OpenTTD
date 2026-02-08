@@ -49,6 +49,8 @@ public:
 
 	/**
 	 * Look up the colour in the current palette.
+	 * @param index The index into the palette.
+	 * @return The colour.
 	 */
 	inline Colour LookupColourInPalette(uint index)
 	{

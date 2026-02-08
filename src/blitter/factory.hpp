@@ -92,6 +92,7 @@ public:
 	 * Find the requested blitter and return its class.
 	 * @param name the blitter to select.
 	 * @post Sets the blitter so GetCurrentBlitter() returns it too.
+	 * @return The selected blitter or \c nullptr when no blitter could be found.
 	 */
 	static Blitter *SelectBlitter(std::string_view name)
 	{
@@ -132,6 +133,7 @@ public:
 
 	/**
 	 * Get the current active blitter (always set by calling SelectBlitter).
+	 * @return The active blitter.
 	 */
 	static Blitter *GetCurrentBlitter()
 	{
@@ -154,6 +156,7 @@ public:
 
 	/**
 	 * Get the long, human readable, name for the Blitter-class.
+	 * @return Name of this instance.
 	 */
 	std::string_view GetName() const
 	{
@@ -162,6 +165,7 @@ public:
 
 	/**
 	 * Get a nice description of the blitter-class.
+	 * @return Description of this instance.
 	 */
 	std::string_view GetDescription() const
 	{
@@ -170,6 +174,7 @@ public:
 
 	/**
 	 * Create an instance of this Blitter-class.
+	 * @return The created instance.
 	 */
 	virtual std::unique_ptr<Blitter> CreateInstance() = 0;
 };
