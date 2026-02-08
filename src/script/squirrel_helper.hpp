@@ -16,7 +16,12 @@
 #include "../core/convertible_through_base.hpp"
 #include "squirrel_helper_type.hpp"
 
-template <class CL, ScriptType ST> SQInteger PushClassName(HSQUIRRELVM);
+/**
+ * Helper to push the class name of a script type onto the Squirrel stack
+ * @param vm The virtual machine to push to.
+ * @return The number of stack places used.
+ */
+template <class CL, ScriptType ST> SQInteger PushClassName(HSQUIRRELVM vm);
 
 /**
  * The Squirrel convert routines

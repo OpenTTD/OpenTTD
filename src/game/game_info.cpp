@@ -19,6 +19,7 @@
 /**
  * Check if the API version provided by the Game is supported.
  * @param api_version The API version as provided by the Game.
+ * @return \c true if the given version is supported by this version of OpenTTD.
  */
 static bool CheckAPIVersion(const std::string &api_version)
 {

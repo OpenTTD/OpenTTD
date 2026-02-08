@@ -31,51 +31,61 @@ class ScriptInfo : public SimpleCountedObject {
 public:
 	/**
 	 * Get the Author of the script.
+	 * @return The author's name.
 	 */
 	const std::string &GetAuthor() const { return this->author; }
 
 	/**
 	 * Get the Name of the script.
+	 * @return The script's name.
 	 */
 	const std::string &GetName() const { return this->name; }
 
 	/**
 	 * Get the 4 character long short name of the script.
+	 * @return The short name.
 	 */
 	const std::string &GetShortName() const { return this->short_name; }
 
 	/**
 	 * Get the description of the script.
+	 * @return The description.
 	 */
 	const std::string &GetDescription() const { return this->description; }
 
 	/**
 	 * Get the version of the script.
+	 * @return The numeric versionof the script.
 	 */
 	int GetVersion() const { return this->version; }
 
 	/**
 	 * Get the last-modified date of the script.
+	 * @return The date.
 	 */
 	const std::string &GetDate() const { return this->date; }
 
 	/**
 	 * Get the name of the instance of the script to create.
+	 * @return Name of the instance.
 	 */
 	const std::string &GetInstanceName() const { return this->instance_name; }
 
 	/**
 	 * Get the website for this script.
+	 * @return Optional URL.
 	 */
 	const std::string &GetURL() const { return this->url; }
 
 	/**
 	 * Get the filename of the main.nut script.
+	 * @return The path to the main script.
 	 */
 	const std::string &GetMainScript() const { return this->main_script; }
 
 	/**
 	 * Get the filename of the tar the script is in.
+	 * @return The tar file the script is in, or an empty string.
 	 */
 	const std::string &GetTarFile() const { return this->tar_file; }
 

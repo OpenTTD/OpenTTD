@@ -290,9 +290,9 @@
 	AI::scanner_info->GetConsoleList(output_iterator, newest_only);
 }
 
-/* static */ void AI::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator)
+/* static */ void AI::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only)
 {
-	 AI::scanner_library->GetConsoleList(output_iterator, true);
+	 AI::scanner_library->GetConsoleList(output_iterator, newest_only);
 }
 
 /* static */ const ScriptInfoList *AI::GetInfoList()
@@ -329,26 +329,40 @@
 }
 
 /**
- * Check whether we have an AI (library) with the exact characteristics as ci.
+ * Check whether we have an AI with the exact characteristics as ci.
  * @param ci the characteristics to search on (shortname and md5sum)
  * @param md5sum whether to check the MD5 checksum
- * @return true iff we have an AI (library) matching.
+ * @return true iff we have an AI matching.
  */
 /* static */ bool AI::HasAI(const ContentInfo &ci, bool md5sum)
 {
 	return AI::scanner_info->HasScript(ci, md5sum);
 }
 
+/**
+ * Check whether we have an AI library with the exact characteristics as ci.
+ * @param ci the characteristics to search on (shortname and md5sum)
+ * @param md5sum whether to check the MD5 checksum
+ * @return true iff we have an AI library matching.
+ */
 /* static */ bool AI::HasAILibrary(const ContentInfo &ci, bool md5sum)
 {
 	return AI::scanner_library->HasScript(ci, md5sum);
 }
 
+/**
+ * Get the scanner info for AIs.
+ * @return The AI scanner info.
+ */
 /* static */ AIScannerInfo *AI::GetScannerInfo()
 {
 	return AI::scanner_info.get();
 }
 
+/**
+ * Get the scanner info for AI libraries.
+ * @return The AI library scanner info.
+ */
 /* static */ AIScannerLibrary *AI::GetScannerLibrary()
 {
 	return AI::scanner_library.get();

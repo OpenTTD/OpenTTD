@@ -1410,7 +1410,7 @@ static bool ConListAILibs(std::span<std::string_view> argv)
 		return true;
 	}
 
-	return PrintList(AI::GetConsoleLibraryList);
+	return PrintList(AI::GetConsoleLibraryList, true);
 }
 
 static bool ConListAI(std::span<std::string_view> argv)
@@ -1430,7 +1430,7 @@ static bool ConListGameLibs(std::span<std::string_view> argv)
 		return true;
 	}
 
-	return PrintList(Game::GetConsoleLibraryList);
+	return PrintList(Game::GetConsoleLibraryList, true);
 }
 
 static bool ConListGame(std::span<std::string_view> argv)

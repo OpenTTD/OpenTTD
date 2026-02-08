@@ -12,6 +12,7 @@
 
 #include "../script/script_scanner.hpp"
 
+/** Game instantiation of a ScriptScanner. */
 class GameScannerInfo : public ScriptScanner {
 public:
 	void Initialize() override;
@@ -34,6 +35,7 @@ protected:
 };
 
 
+/** Game instantiation of a ScriptScanner for libraries. */
 class GameScannerLibrary : public ScriptScanner {
 public:
 	void Initialize() override;
