@@ -369,6 +369,7 @@ public:
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
+		CloseWindowById(WC_TOWN_CARGO_GRAPH, this->window_number, false);
 		SetViewportCatchmentTown(Town::Get(this->window_number), false);
 		this->Window::Close();
 	}
