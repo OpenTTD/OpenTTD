@@ -128,7 +128,7 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	uint Crash(bool flooded = false) override;
 	Trackdir GetVehicleTrackdir() const override;
 	TileIndex GetOrderStationLocation(StationID station) override;
-	ClosestDepot FindClosestDepot() override;
+	ClosestDepot FindClosestDepot(bool may_reverse = false) override;
 
 	void ReserveTrackUnderConsist() const;
 
