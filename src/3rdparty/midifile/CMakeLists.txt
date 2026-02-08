@@ -1,0 +1,12 @@
+add_files(
+    Binasc.cpp
+    Binasc.h
+    MidiEvent.cpp
+    MidiEvent.h
+    MidiEventList.cpp
+    MidiEventList.h
+    MidiFile.cpp
+    MidiFile.h
+    MidiMessage.cpp
+    MidiMessage.h
+)
