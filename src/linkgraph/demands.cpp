@@ -125,6 +125,57 @@ public:
 };
 
 /**
+ * A scaler for asymmetric distribution (equal supply).
+ */
+class AsymmetricScalerEq : public Scaler {
+public:
+	/**
+	 * Count a node's supply into the sum of supplies.
+	 * @param node Node.
+	 */
+	inline void AddNode(const Node &node)
+	{
+		this->supply_sum += node.base.supply;
+	}
+
+	/**
+	 * Calculate the mean demand per node using the sum of supplies.
+	 * @param num_demands Number of accepting nodes.
+	 */
+	inline void SetDemandPerNode(uint num_demands)
+	{
+		this->demand_per_node = CeilDiv(this->supply_sum, num_demands);
+	}
+
+	/**
+	 * Get the effective supply of one node towards another one.
+	 * @param from The supplying node.
+	 * @param to The receiving node.
+	 * @return Effective supply.
+	 */
+	inline uint EffectiveSupply(const Node &from, const Node &to)
+	{
+		return std::max<int>(std::min<int>(from.base.supply, (static_cast<int>(this->demand_per_node) - static_cast<int>(to.received_demand))), 1);
+	}
+
+	/**
+	 * Check if there is any acceptance left for this node. In asymmetric (equal) distribution
+	 * nodes accept as long as their demand > 0 and received_demand < demand_per_node.
+	 * @param to The node to be checked.
+	 */
+	inline bool HasDemandLeft(const Node &to)
+	{
+		return to.base.demand > 0 && to.received_demand < this->demand_per_node;
+	}
+
+	void SetDemands(LinkGraphJob &job, NodeID from, NodeID to, uint demand_forw);
+
+private:
+	uint supply_sum;      ///< Sum of all supplies in the component.
+	uint demand_per_node; ///< Mean demand associated with each node.
+};
+
+/**
  * Set the demands between two nodes using the given base demand. In symmetric mode
  * this sets demands in both directions.
  * @param job The link graph job.
@@ -145,6 +196,19 @@ void SymmetricScaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id
 	}
 
 	this->Scaler::SetDemands(job, from_id, to_id, demand_forw);
+}
+
+/**
+ * Set the demands between two nodes using the given base demand.
+ * @param job The link graph job.
+ * @param from_id The supplying node.
+ * @param to_id The receiving node.
+ * @param demand_forw Demand calculated for the "forward" direction.
+ */
+void AsymmetricScalerEq::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id, uint demand_forw)
+{
+	this->Scaler::SetDemands(job, from_id, to_id, demand_forw);
+	job[to_id].ReceiveDemand(demand_forw);
 }
 
 /**
@@ -270,7 +334,6 @@ DemandCalculator::DemandCalculator(LinkGraphJob &job) :
 	CargoType cargo = job.Cargo();
 
 	this->accuracy = settings.accuracy;
-	this->mod_dist = settings.demand_distance;
 	if (this->mod_dist > 100) {
 		/* Increase effect of mod_dist > 100.
 		 * Quadratic:
@@ -285,11 +348,16 @@ DemandCalculator::DemandCalculator(LinkGraphJob &job) :
 
 	switch (settings.GetDistributionType(cargo)) {
 		case DT_SYMMETRIC:
+			this->mod_dist = settings.demand_distance;
 			this->CalcDemand<SymmetricScaler>(job, SymmetricScaler(settings.demand_size));
 			break;
 		case DT_ASYMMETRIC:
+			this->mod_dist = settings.demand_distance;
 			this->CalcDemand<AsymmetricScaler>(job, AsymmetricScaler());
 			break;
+		case DT_ASYMMETRIC_EQUAL:
+			this->mod_dist = 0; // Distance does not matter for equal distribution.
+			this->CalcDemand<AsymmetricScalerEq>(job, AsymmetricScalerEq());
 		default:
 			/* Nothing to do. */
 			break;
