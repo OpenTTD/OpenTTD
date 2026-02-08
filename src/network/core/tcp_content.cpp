@@ -103,9 +103,9 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
  */
 bool NetworkContentSocketHandler::HandlePacket(Packet &p)
 {
-	PacketContentType type = (PacketContentType)p.Recv_uint8();
+	PacketContentType type = static_cast<PacketContentType>(p.Recv_uint8());
 
-	switch (this->HasClientQuit() ? PACKET_CONTENT_END : type) {
+	switch (type) {
 		case PACKET_CONTENT_CLIENT_INFO_LIST:      return this->Receive_CLIENT_INFO_LIST(p);
 		case PACKET_CONTENT_CLIENT_INFO_ID:        return this->Receive_CLIENT_INFO_ID(p);
 		case PACKET_CONTENT_CLIENT_INFO_EXTID:     return this->Receive_CLIENT_INFO_EXTID(p);
@@ -115,11 +115,7 @@ bool NetworkContentSocketHandler::HandlePacket(Packet &p)
 		case PACKET_CONTENT_SERVER_CONTENT:        return this->Receive_SERVER_CONTENT(p);
 
 		default:
-			if (this->HasClientQuit()) {
-				Debug(net, 0, "[tcp/content] Received invalid packet type {}", type);
-			} else {
-				Debug(net, 0, "[tcp/content] Received illegal packet");
-			}
+			Debug(net, 0, "[tcp/content] Received invalid packet type {}", type);
 			return false;
 	}
 }

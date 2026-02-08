@@ -38,7 +38,7 @@ Last updated:    2024-03-26
   packets are dropped in favour of a new packet.
 
   This though will be reflected in the protocol version as announced in the
-  `ADMIN_PACKET_SERVER_PROTOCOL` in section 2.0).
+  `PacketAdminType::ServerProtocol` in section 2.0).
 
   A reference implementation in Java for a client connecting to the admin interface
   can be found at: [http://dev.openttdcoop.org/projects/joan](http://dev.openttdcoop.org/projects/joan)
@@ -49,18 +49,18 @@ Last updated:    2024-03-26
   Create a TCP connection to the server on port 3977. The application is
   expected to authenticate within 10 seconds.
 
-  To authenticate send either an `ADMIN_PACKET_ADMIN_JOIN` or an
-  `ADMIN_PACKET_ADMIN_JOIN_SECURE` packet.
+  To authenticate send either an `PacketAdminType::AdminJoin` or an
+  `PacketAdminType::AdminJoinSecure` packet.
 
-  The `ADMIN_PACKET_ADMIN_JOIN` packet sends the password without any
+  The `PacketAdminType::AdminJoin` packet sends the password without any
   encryption or safeguards over the connection, and as such has been disabled
   by default.
 
-  The `ADMIN_PACKET_ADMIN_JOIN_SECURE` packet initiates a key exchange
+  The `PacketAdminType::AdminJoinSecure` packet initiates a key exchange
   authentication schema which tells te server which methods the client
   supports and the server makes a choice. The server will then send an
-  `ADMIN_PACKET_SERVER_AUTH_REQUEST` packet to which the client has to respond
-  with an `ADMIN_PACKET_ADMIN_AUTH_RESPONSE` packet.
+  `PacketAdminType::ServerAuthenticationRequest` packet to which the client has to respond
+  with an `PacketAdminType::AdminAuthenticationResponse` packet.
 
   The current choices for secure authentication are authorized keys, where
   the client has a private key and the server a list of authorized public
@@ -69,41 +69,41 @@ Last updated:    2024-03-26
   The server falls back to password authentication when the client's key is
   not in the list of authorized keys.
 
-  When authentication has succeeded for either of the `JOIN` schemas, the
-  server will reply with `ADMIN_PACKET_SERVER_PROTOCOL` followed directly
-  by `ADMIN_PACKET_SERVER_WELCOME`.
+  When authentication has succeeded for either of the `AdminJoin` schemas, the
+  server will reply with `PacketAdminType::ServerProtocol` followed directly
+  by `PacketAdminType::ServerWelcome`.
 
-  `ADMIN_PACKET_SERVER_PROTOCOL` contains details about the protocol version.
+  `PacketAdminType::ServerProtocol` contains details about the protocol version.
   It is the job of your application to check this number and decide whether
   it will remain connected or not.
   Furthermore, this packet holds details on every `AdminUpdateType` and the
   supported `AdminFrequencyTypes` (bitwise representation).
 
-  `ADMIN_PACKET_SERVER_WELCOME` contains details on the server and the map,
+  `PacketAdminType::ServerWelcome` contains details on the server and the map,
   e.g. if the server is dedicated, its NetworkLanguage, size of the Map, etc.
 
-  Once you have received `ADMIN_PACKET_SERVER_WELCOME` you are connected and
+  Once you have received `PacketAdminType::ServerWelcome` you are connected and
   authorized to do your thing.
 
   The server will not provide any game related updates unless you ask for them.
   There are four packets the server will none the less send, if applicable:
 
-    - ADMIN_PACKET_SERVER_ERROR
-    - ADMIN_PACKET_SERVER_WELCOME
-    - ADMIN_PACKET_SERVER_NEWGAME
-    - ADMIN_PACKET_SERVER_SHUTDOWN
+    - PacketAdminType::ServerError
+    - PacketAdminType::ServerWelcome
+    - PacketAdminType::ServerNewGame
+    - PacketAdminType::ServerShutdown
 
-  However, `ADMIN_PACKET_SERVER_WELCOME` only after a `ADMIN_PACKET_SERVER_NEWGAME`
+  However, `PacketAdminType::ServerWelcome` only after a `PacketAdminType::ServerNewGame`
 
 
 ## 3.0) Asking for updates
 
-  Asking for updates is done with `ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY`.
+  Asking for updates is done with `PacketAdminType::AdminUpdateFrequency`.
   With this packet you define which update you wish to receive at which
   frequency.
 
   Note: not every update type supports every frequency. If in doubt, you can
-  verify against the data received in `ADMIN_PACKET_SERVER_PROTOCOL`.
+  verify against the data received in `PacketAdminType::ServerProtocol`.
 
   Please note the potential gotcha in the "Certain packet information" section below
   when using the `ADMIN_UPDATE_FREQUENCY` packet.
@@ -116,43 +116,43 @@ Last updated:    2024-03-26
 
   `ADMIN_UPDATE_DATE` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_DATE
+    - PacketAdminType::ServerDate
 
   `ADMIN_UPDATE_CLIENT_INFO` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_CLIENT_JOIN
-    - ADMIN_PACKET_SERVER_CLIENT_INFO
-    - ADMIN_PACKET_SERVER_CLIENT_UPDATE
-    - ADMIN_PACKET_SERVER_CLIENT_QUIT
-    - ADMIN_PACKET_SERVER_CLIENT_ERROR
+    - PacketAdminType::ServerClientJoin
+    - PacketAdminType::ServerClientInfo
+    - PacketAdminType::ServerClientUpdate
+    - PacketAdminType::ServerClientQuit
+    - PacketAdminType::ServerClientError
 
   `ADMIN_UPDATE_COMPANY_INFO` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_COMPANY_NEW
-    - ADMIN_PACKET_SERVER_COMPANY_INFO
-    - ADMIN_PACKET_SERVER_COMPANY_UPDATE
-    - ADMIN_PACKET_SERVER_COMPANY_REMOVE
+    - PacketAdminType::ServerCompanyNew
+    - PacketAdminType::ServerCompanyInfo
+    - PacketAdminType::ServerCompanyUpdate
+    - PacketAdminType::ServerCompanyRemove
 
   `ADMIN_UPDATE_COMPANY_ECONOMY` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_COMPANY_ECONOMY
+    - PacketAdminType::ServerCompanyEconomy
 
   `ADMIN_UPDATE_COMPANY_STATS` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_COMPANY_STATS
+    - PacketAdminType::ServerCompanyStatistics
 
   `ADMIN_UPDATE_CHAT` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_CHAT
+    - PacketAdminType::ServerChat
 
   `ADMIN_UPDATE_CONSOLE` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_CONSOLE
+    - PacketAdminType::ServerConsole
 
 
   `ADMIN_UPDATE_CMD_LOGGING` results in the server sending:
 
-    - ADMIN_PACKET_SERVER_CMD_LOGGING
+    - PacketAdminType::ServerCommandLogging
 
 ## 3.1) Polling manually
 
@@ -183,12 +183,12 @@ Last updated:    2024-03-26
 
   Rcon runs separate from the `ADMIN_UPDATE_CONSOLE` `AdminUpdateType`. Requesting
   the execution of a remote console command is done with the packet
-  `ADMIN_PACKET_ADMIN_RCON`.
+  `PacketAdminType::AdminRemoteConsoleCommand`.
 
   Note: No additional authentication is required for rcon commands.
 
-  The server will reply with one or more `ADMIN_PACKET_SERVER_RCON` packets.
-  Finally an `ADMIN_PACKET_ADMIN_RCON_END` packet will be sent. Applications
+  The server will reply with one or more `PacketAdminType::ServerRemoteConsoleCommand` packets.
+  Finally an `PacketAdminType::AdminRemoteConsoleCommandEnd` packet will be sent. Applications
   will not receive the answer twice if they have asked for the `AdminUpdateType`
   `ADMIN_UPDATE_CONSOLE`, as the result is not printed on the servers console
   (just like clients rcon commands).
@@ -199,7 +199,7 @@ Last updated:    2024-03-26
   was not sent from the admin network.
 
   Note that when content is queried or updated via rcon, the processing
-  happens asynchronously. But the `ADMIN_PACKET_ADMIN_RCON_END` packet is sent
+  happens asynchronously. But the `PacketAdminType::AdminRemoteConsoleCommandEnd` packet is sent
   already right after the content is requested as there's no immediate output.
   Thus other packages and the output of content rcon command may be sent at
   an arbitrary later time, mixing into the output of other console activity,
@@ -208,7 +208,7 @@ Last updated:    2024-03-26
 
 ## 5.0) Sending chat
 
-  Sending a `ADMIN_PACKET_ADMIN_CHAT` results in chat originating from the server.
+  Sending a `PacketAdminType::AdminChat` results in chat originating from the server.
 
   Currently four types of chat are supported:
 
@@ -233,12 +233,12 @@ Last updated:    2024-03-26
 ## 6.0) Disconnecting
 
   It is a kind thing to say good bye before leaving. Do this by sending the
-  `ADMIN_PACKET_ADMIN_QUIT` packet.
+  `PacketAdminType::AdminQuit` packet.
 
 
 ## 7.0) Certain packet information
 
-  `ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY` and `ADMIN_PACKET_ADMIN_POLL`
+  `PacketAdminType::AdminUpdateFrequency` and `PacketAdminType::AdminPoll`
 
     Potential gotcha: the AdminUpdateType integer type used is a
     uint16 for `UPDATE_FREQUENCY`, and a uint8 for `POLL`.
@@ -246,21 +246,21 @@ Last updated:    2024-03-26
     It is safe to cast between the two when sending
     (i.e cast from a uint8 to a uint16).
 
-  All `ADMIN_PACKET_SERVER_*` packets have an enum value greater 100.
+  All `PacketAdminType::Server*` packets have an enum value greater 100.
 
-  `ADMIN_PACKET_SERVER_WELCOME`
+  `PacketAdminType::ServerWelcome`
 
-    Either directly follows `ADMIN_PACKET_SERVER_PROTOCOL` or is sent
+    Either directly follows `PacketAdminType::ServerProtocol` or is sent
     after a new game has been started or a map loaded, i.e. also
-    after ADMIN_PACKET_SERVER_NEWGAME.
+    after PacketAdminType::ServerNewGame.
 
-  `ADMIN_PACKET_SERVER_CLIENT_JOIN` and `ADMIN_PACKET_SERVER_COMPANY_NEW`
+  `PacketAdminType::ServerClientJoin` and `PacketAdminType::ServerCompanyNew`
 
     These packets directly follow their respective INFO packets. If you receive
     a CLIENT_JOIN / COMPANY_NEW packet without having received the INFO packet
     it may be a good idea to POLL for the specific ID.
 
-  `ADMIN_PACKET_SERVER_CMD_NAMES` and `ADMIN_PACKET_SERVER_CMD_LOGGING`
+  `PacketAdminType::ServerCommandNames` and `PacketAdminType::ServerCommandLogging`
 
     Data provided with these packets is not stable and will not be
     treated as such. Do not rely on IDs or names to be constant
