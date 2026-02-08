@@ -945,6 +945,28 @@ static void ValidateSettings()
 	}
 }
 
+/**
+ * Try to read the name of a script that may include its name and version in a single string,
+ *  separate the name from the version and return both name as string and version as integer.
+ * @param item_name name of a script which may include version
+ * @return a pair containing the name of the script separated from its version, or the same
+ *  name with an invalid version if no version separator was found.
+ */
+static std::pair<std::string_view, int> TryReadScriptNameWithVersion(std::string_view item_name)
+{
+	StringConsumer consumer{item_name};
+	auto name = consumer.ReadUntilChar('.', StringConsumer::SKIP_ONE_SEPARATOR);
+
+	if (consumer.AnyBytesLeft()) {
+		auto version = consumer.TryReadIntegerBase<uint32_t>(10);
+		if (version.has_value()) {
+			return { name, *version };
+		}
+	}
+
+	return { name, -1 };
+}
+
 static void AILoadConfig(const IniFile &ini, std::string_view grpname)
 {
 	const IniGroup *group = ini.GetGroup(grpname);
@@ -963,9 +985,14 @@ static void AILoadConfig(const IniFile &ini, std::string_view grpname)
 
 		config->Change(item.name);
 		if (!config->HasScript()) {
-			if (item.name != "none") {
-				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
-				continue;
+			auto [name, version] = TryReadScriptNameWithVersion(item.name);
+			config->Change(name, version, version != -1);
+
+			if (!config->HasScript()) {
+				if (name != "none") {
+					Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", name);
+					continue;
+				}
 			}
 		}
 		if (item.value.has_value()) config->StringToSettings(*item.value);
@@ -990,9 +1017,14 @@ static void GameLoadConfig(const IniFile &ini, std::string_view grpname)
 
 	config->Change(item.name);
 	if (!config->HasScript()) {
-		if (item.name != "none") {
-			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);
-			return;
+		auto [name, version] = TryReadScriptNameWithVersion(item.name);
+		config->Change(name, version, version != -1);
+
+		if (!config->HasScript()) {
+			if (name != "none") {
+				Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", name);
+				return;
+			}
 		}
 	}
 	if (item.value.has_value()) config->StringToSettings(*item.value);
@@ -1181,13 +1213,12 @@ static void AISaveConfig(IniFile &ini, std::string_view grpname)
 
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
-		std::string name;
+		std::string name = "none";
 		std::string value = config->SettingsToString();
 
 		if (config->HasScript()) {
 			name = config->GetName();
-		} else {
-			name = "none";
+			if (config->IsVersionEnforced()) name = fmt::format("{}.{}", name, config->GetVersion());
 		}
 
 		group.CreateItem(name).SetValue(value);
@@ -1200,13 +1231,12 @@ static void GameSaveConfig(IniFile &ini, std::string_view grpname)
 	group.Clear();
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
-	std::string name;
+	std::string name = "none";
 	std::string value = config->SettingsToString();
 
 	if (config->HasScript()) {
 		name = config->GetName();
-	} else {
-		name = "none";
+		if (config->IsVersionEnforced()) name = fmt::format("{}.{}", name, config->GetVersion());
 	}
 
 	group.CreateItem(name).SetValue(value);

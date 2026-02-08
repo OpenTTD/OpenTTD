@@ -19,15 +19,16 @@
 
 #include "../safeguards.h"
 
-void ScriptConfig::Change(std::optional<std::string_view> name, int version, bool force_exact_match)
+void ScriptConfig::Change(std::optional<std::string_view> name, int version, bool enforce_version)
 {
 	if (name.has_value()) {
 		this->name = name.value();
-		this->info = this->FindInfo(this->name, version, force_exact_match);
+		this->info = this->FindInfo(this->name, version, enforce_version);
 	} else {
 		this->info = nullptr;
 	}
 	this->version = (info == nullptr) ? -1 : info->GetVersion();
+	this->enforced_version = (info == nullptr) ? false : enforce_version;
 	this->config_list.reset();
 	this->to_load_data.reset();
 
@@ -39,6 +40,7 @@ ScriptConfig::ScriptConfig(const ScriptConfig &config)
 	this->name = config.name;
 	this->info = config.info;
 	this->version = config.version;
+	this->enforced_version = config.enforced_version;
 	this->to_load_data.reset();
 
 	for (const auto &item : config.settings) {
@@ -137,6 +139,11 @@ const std::string &ScriptConfig::GetName() const
 int ScriptConfig::GetVersion() const
 {
 	return this->version;
+}
+
+bool ScriptConfig::IsVersionEnforced() const
+{
+	return this->enforced_version;
 }
 
 void ScriptConfig::StringToSettings(std::string_view value)
