@@ -445,10 +445,10 @@ struct GenerateLandscapeWindow : public Window {
 				if (_game_mode == GM_EDITOR) {
 					return GetString(STR_CONFIG_SETTING_OFF);
 				}
-				if (_settings_newgame.difficulty.number_towns == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+				if (_settings_newgame.difficulty.number_towns == TownDensity::Custom) {
 					return GetString(STR_NUM_CUSTOM_NUMBER, _settings_newgame.game_creation.custom_town_number);
 				}
-				return GetString(_num_towns[_settings_newgame.difficulty.number_towns]);
+				return GetString(_num_towns[to_underlying(_settings_newgame.difficulty.number_towns)]);
 
 			case WID_GL_TOWNNAME_DROPDOWN: {
 				uint gen = _settings_newgame.game_creation.town_name;
@@ -675,7 +675,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_TOWN_PULLDOWN: // Number of towns
-				ShowDropDownMenu(this, _num_towns, _settings_newgame.difficulty.number_towns, WID_GL_TOWN_PULLDOWN, 0, 0);
+				ShowDropDownMenu(this, _num_towns, to_underlying(_settings_newgame.difficulty.number_towns), WID_GL_TOWN_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_TOWNNAME_DROPDOWN: // Townname generator
@@ -886,11 +886,11 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: _settings_newgame.game_creation.heightmap_rotation = index; break;
 
 			case WID_GL_TOWN_PULLDOWN:
-				if ((uint)index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+				if (index == to_underlying(TownDensity::Custom)) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_town_number), STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, {});
 				}
-				_settings_newgame.difficulty.number_towns = index;
+				_settings_newgame.difficulty.number_towns = static_cast<TownDensity>(index);
 				break;
 
 			case WID_GL_TOWNNAME_DROPDOWN: // Town names

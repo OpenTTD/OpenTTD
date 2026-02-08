@@ -2437,10 +2437,10 @@ static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize si
 uint GetDefaultTownsForMapSize()
 {
 	static const uint8_t num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
-	if (_settings_game.difficulty.number_towns == static_cast<uint>(CUSTOM_TOWN_NUMBER_DIFFICULTY)) {
+	if (_settings_game.difficulty.number_towns == TownDensity::Custom) {
 		return _settings_newgame.game_creation.custom_town_number;
 	}
-	return Map::ScaleBySize(num_initial_towns[_settings_game.difficulty.number_towns]);
+	return Map::ScaleBySize(num_initial_towns[to_underlying(_settings_game.difficulty.number_towns)]);
 }
 
 /**
@@ -2456,7 +2456,7 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 	uint total;
 	if (number.has_value()) {
 		total = number.value();
-	} else if (_settings_game.difficulty.number_towns == static_cast<uint>(CUSTOM_TOWN_NUMBER_DIFFICULTY)) {
+	} else if (_settings_game.difficulty.number_towns == TownDensity::Custom) {
 		total = GetDefaultTownsForMapSize();
 	} else {
 		total = Map::ScaleByLandProportion(GetDefaultTownsForMapSize() + (Random() & 7));

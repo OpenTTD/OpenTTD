@@ -65,6 +65,16 @@ enum class IndustryDensity : uint8_t {
 	End, ///< Number of industry density settings.
 };
 
+/** Available town generation densities. */
+enum class TownDensity : uint8_t {
+	VeryLow, ///< Very low number of towns.
+	Low, ///< Low number of towns.
+	Normal, ///< Normal number of towns.
+	High, ///< High number of towns.
+
+	Custom, ///< Custom number of towns.
+};
+
 /** Possible options for the Maximum Height pulldown in the Genworld GUI. */
 enum class GenworldMaxHeight : uint8_t {
 	VeryFlat,
@@ -149,7 +159,7 @@ struct DifficultySettings {
 
 	uint8_t max_no_competitors;               ///< the number of competitors (AIs)
 	uint16_t competitors_interval;             ///< the interval (in minutes) between adding competitors
-	uint8_t number_towns;                     ///< the amount of towns
+	TownDensity number_towns; ///< the amount of towns. @see TownDensity
 	IndustryDensity industry_density; ///< The industry density. @see IndustryDensity
 	uint32_t max_loan;                         ///< the maximum initial loan
 	uint8_t initial_interest;                 ///< amount of interest (to pay over the loan)
