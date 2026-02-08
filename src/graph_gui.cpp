@@ -823,9 +823,18 @@ public:
 		this->UpdateStatistics(true);
 	}
 
+	/**
+	 * Update the statistics.
+	 * @param initialize Initialize the data structure.
+	 */
 	virtual void UpdateStatistics(bool initialize) = 0;
 
-	virtual std::optional<uint8_t> GetDatasetIndex(int) { return std::nullopt; }
+	/**
+	 * Get the dataset associated with a given Y-location within #WID_GRAPH_MATRIX.
+	 * @param y The location along the Y-axis.
+	 * @return The dataset index, or std::nullopt.
+	 */
+	virtual std::optional<uint8_t> GetDatasetIndex([[maybe_unused]] int y) { return std::nullopt; }
 };
 
 class BaseCompanyGraphWindow : public BaseGraphWindow {
@@ -845,10 +854,6 @@ public:
 		this->FinishInitNested(number);
 	}
 
-	/**
-	 * Update the statistics.
-	 * @param initialize Initialize the data structure.
-	 */
 	void UpdateStatistics(bool initialize) override
 	{
 		CompanyMask excluded_companies = _legend_excluded_companies;
@@ -903,7 +908,13 @@ public:
 		}
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Company *, int) = 0;
+	/**
+	 * Get the data to show in the graph for a given company at a location along the X-axis.
+	 * @param c The company.
+	 * @param j The location along the X-axis.
+	 * @return The value to show in the graph.
+	 */
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j) = 0;
 };
 
 
@@ -1199,7 +1210,17 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 		this->InvalidateData();
 	}
 
+	/**
+	 * Get the CargoTypes to show in this window.
+	 * @param number The unique identifier of the window.
+	 * @return The cargo types to show.
+	 */
 	virtual CargoTypes GetCargoTypes(WindowNumber number) const = 0;
+
+	/**
+	 * Get a reference to the cargo types that should not be shown.
+	 * @return Reference to the cargo type mask to excluded from drawing.
+	 */
 	virtual CargoTypes &GetExcludedCargoTypes() const = 0;
 
 	std::optional<uint8_t> GetDatasetIndex(int y) override

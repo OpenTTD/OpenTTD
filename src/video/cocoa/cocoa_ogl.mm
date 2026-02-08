@@ -268,7 +268,6 @@ NSView *VideoDriver_CocoaOpenGL::AllocateDrawView()
 	return [ [ OTTD_CGLLayerView alloc ] initWithFrame:this->cocoaview.bounds context:this->gl_context ];
 }
 
-/** Resize the window. */
 void VideoDriver_CocoaOpenGL::AllocateBackingStore(bool force)
 {
 	if (this->window == nil || this->setup) return;

@@ -21,6 +21,9 @@ public:
 	ScriptScanner();
 	~ScriptScanner() override;
 
+	/**
+	 * Initialize the scanner by scanning for scripts and creating dummies if needed.
+	 */
 	virtual void Initialize() = 0;
 
 	/**

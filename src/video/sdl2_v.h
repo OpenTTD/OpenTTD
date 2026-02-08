@@ -62,13 +62,31 @@ protected:
 	/** Indicate to the driver the client-side might have changed. */
 	void ClientSizeChanged(int w, int h, bool force);
 
-	/** (Re-)create the backing store. */
+	/**
+	 * (Re-)create the backing store.
+	 * @param w The width of the window.
+	 * @param h The height of the window.
+	 * @param force Whether to force full reallocation, instead of not reallocating when size did not change.
+	 * @return Whether the backing store was (re-)created.
+	 */
 	virtual bool AllocateBackingStore(int w, int h, bool force = false) = 0;
-	/** Get a pointer to the video buffer. */
+
+	/**
+	 * Get a pointer to the video buffer.
+	 * @return The pointer.
+	 */
 	virtual void *GetVideoPointer() = 0;
+
 	/** Hand video buffer back to the painting backend. */
 	virtual void ReleaseVideoPointer() = 0;
-	/** Create the main window. */
+
+	/**
+	 * Create the main window.
+	 * @param w The width of the window.
+	 * @param h The height of the window.
+	 * @param flags SDL specific flags for the window.
+	 * @return Whether the window was created or already existed.
+	 */
 	virtual bool CreateMainWindow(uint w, uint h, uint flags = 0);
 
 private:
