@@ -24,7 +24,7 @@ struct Cheat {
  * Only add new entries at the end of the struct!
  */
 struct Cheats {
-	Cheat magic_bulldozer{}; ///< dynamite industries, objects
+	Cheat magic_bulldozer{}; ///< REMOVED: dynamite industries, objects
 	Cheat switch_company{};  ///< change to another company
 	Cheat money{}; ///< get rich or poor
 	Cheat crossing_tunnels{}; ///< allow tunnels that cross each other
