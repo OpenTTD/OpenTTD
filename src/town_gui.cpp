@@ -1477,6 +1477,7 @@ public:
 	static inline int sel_class; ///< Currently selected 'class'.
 	static inline int sel_type; ///< Currently selected HouseID.
 	static inline int sel_view; ///< Currently selected 'view'. This is not controllable as its based on random data.
+	static inline std::vector<int> sel_collection; ///< Currently selected collection.
 
 	/* Houses do not have classes like NewGRFClass. We'll make up fake classes based on town zone
 	 * availability instead. */
@@ -1492,6 +1493,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_HOUSE_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_HOUSE_TYPE_TOOLTIP; }
+	StringID GetRandomTooltip() const override { return STR_PICKER_HOUSE_RANDOM_TOOLTIP; }
 	StringID GetCollectionTooltip() const override { return STR_PICKER_HOUSE_COLLECTION_TOOLTIP; }
 	bool IsActive() const override { return true; }
 
@@ -1568,6 +1570,30 @@ public:
 	void DrawType(int x, int y, int, int id) const override
 	{
 		DrawHouseInGUI(x, y, id, HousePickerCallbacks::sel_view);
+	}
+
+	void SetSelectedCollection(std::set<PickerItem> items) const override
+	{
+		sel_collection.clear();
+		sel_collection.reserve(items.size());
+		for (const PickerItem &item : items) {
+			if (item.class_index != -1 && item.index != -1) sel_collection.emplace_back(item.index);
+		}
+	}
+
+	bool IsCollectionRandomisationSupported() const override { return true; }
+
+	bool IsCollectionValidForRandom(const std::set<PickerItem> &items, [[maybe_unused]] Window *w) override
+	{
+		if (items.size() >= MAX_RANDOM_ITEMS) return false;
+
+		for (const PickerItem &item : items) {
+			if (item.index == -1) continue;
+			const HouseSpec *hs = HouseSpec::Get(item.index);
+			if (hs == nullptr) continue;
+			if (!hs->building_flags.Test(BuildingFlag::Size1x1)) return false;
+		}
+		return true;
 	}
 
 	void FillUsedItems(std::set<PickerItem> &items) override
@@ -1808,7 +1834,7 @@ struct BuildHouseWindow : public PickerWindow {
 	{
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
 
-		if (spec->building_flags.Test(BuildingFlag::Size1x1)) {
+		if (spec->building_flags.Test(BuildingFlag::Size1x1) || this->callbacks.place_collection) {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_PLACE_HOUSE);
 		} else {
 			Command<Commands::PlaceHouse>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace);
@@ -1826,9 +1852,18 @@ struct BuildHouseWindow : public PickerWindow {
 
 		assert(select_proc == DDSP_PLACE_HOUSE);
 
-		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
+		std::vector<HouseID> house_ids;
+		if (this->callbacks.place_collection) {
+			house_ids.reserve(HousePickerCallbacks::sel_collection.size());
+			for (const int &type : HousePickerCallbacks::sel_collection) {
+				house_ids.emplace_back(HouseSpec::Get(type)->Index());
+			}
+		} else {
+			house_ids.reserve(1);
+			house_ids.emplace_back(HouseSpec::Get(HousePickerCallbacks::sel_type)->Index());
+		}
 		Command<Commands::PlaceHouseArea>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER,
-			end_tile, start_tile, spec->Index(), BuildHouseWindow::house_protected, BuildHouseWindow::replace, _ctrl_pressed);
+			end_tile, start_tile, house_ids, BuildHouseWindow::house_protected, BuildHouseWindow::replace, _ctrl_pressed);
 	}
 
 	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {

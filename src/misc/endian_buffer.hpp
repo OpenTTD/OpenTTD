@@ -48,6 +48,16 @@ public:
 		return *this;
 	}
 
+	template <typename Tvalues>
+	EndianBufferWriter &operator <<(const std::vector<Tvalues> &vector)
+	{
+		*this << static_cast<uint32_t>(vector.size());
+		for (const auto &value : vector) {
+			*this << value;
+		}
+		return *this;
+	}
+
 	EndianBufferWriter &operator <<(const std::monostate &)
 	{
 		return *this;
@@ -171,6 +181,21 @@ public:
 		return *this;
 	}
 
+	template <typename Tvalues>
+	EndianBufferReader &operator >>(std::vector<Tvalues> &vector)
+	{
+		uint32_t size;
+		Tvalues value;
+		vector = std::vector<Tvalues>{};
+		*this >> size;
+		for (uint32_t i = 0; i != size; i++) {
+			if (this->read_pos >= this->buffer.size()) break;
+			*this >> value;
+			vector.push_back(std::move(value));
+		}
+		return *this;
+	}
+
 	EndianBufferReader &operator >>(const std::monostate &)
 	{
 		return *this;
@@ -245,7 +270,10 @@ private:
 		static_assert(!std::is_const_v<T>, "Can't read into const variables");
 		static_assert(sizeof(T) <= 8, "Value can't be larger than 8 bytes");
 
-		if (read_pos + sizeof(T) > this->buffer.size()) return {};
+		if (read_pos + sizeof(T) > this->buffer.size()) {
+			this->read_pos += sizeof(T);
+			return {};
+		}
 
 		T value = static_cast<T>(this->buffer[this->read_pos++]);
 		if constexpr (sizeof(T) > 1) {

@@ -2858,6 +2858,14 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reduce the heig
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Increase the height of preview images. Ctrl+Click to increase to maximum
 
+STR_PICKER_RANDOM                                               :Random
+STR_PICKER_STATION_RANDOM_TOOLTIP                               :Place random stations from the selected collection
+STR_PICKER_WAYPOINT_RANDOM_TOOLTIP                              :Place random waypoints from the selected collection
+STR_PICKER_ROADSTOP_BUS_RANDOM_TOOLTIP                          :Place random bus stations from the selected collection
+STR_PICKER_ROADSTOP_TRUCK_RANDOM_TOOLTIP                        :Place random lorry stations from the selected collection
+STR_PICKER_OBJECT_RANDOM_TOOLTIP                                :Place random 1x1 objects from the selected collection
+STR_PICKER_HOUSE_RANDOM_TOOLTIP                                 :Place random 1x1 houses from the selected collection
+
 STR_PICKER_DEFAULT_COLLECTION                                   :Default collection
 STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Select a collection
 STR_PICKER_COLLECTION_ADD                                       :Add

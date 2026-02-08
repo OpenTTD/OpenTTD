@@ -50,6 +50,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_OBJECT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_OBJECT_TYPE_TOOLTIP; }
+	StringID GetRandomTooltip() const override { return STR_PICKER_OBJECT_RANDOM_TOOLTIP; }
 	StringID GetCollectionTooltip() const override { return STR_PICKER_OBJECT_COLLECTION_TOOLTIP; }
 
 	bool IsActive() const override
@@ -105,6 +106,8 @@ public:
 			DrawNewObjectTileInGUI(x, y, spec, std::min<int>(_object_gui.sel_view, spec->views - 1));
 		}
 	}
+
+	void SetSelectedCollection([[maybe_unused]] const std::set<PickerItem>) const override { return; }
 
 	void FillUsedItems(std::set<PickerItem> &items) override
 	{

@@ -11,6 +11,7 @@
 #define TOWN_CMD_H
 
 #include "command_type.h"
+#include "command_func.h"
 #include "company_type.h"
 #include "town.h"
 #include "town_type.h"
@@ -28,7 +29,7 @@ CommandCost CmdTownSetText(DoCommandFlags flags, TownID town_id, const EncodedSt
 CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount, TownExpandModes modes);
 CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id);
 CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected, bool replace);
-CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, HouseID house, bool is_protected, bool replace, bool diagonal);
+CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, std::vector<HouseID> houses, bool is_protected, bool replace, bool diagonal);
 
 DEF_CMD_TRAIT(Commands::FoundTown, CmdFoundTown, CommandFlags({CommandFlag::Deity, CommandFlag::NoTest}), CommandType::LandscapeConstruction) // founding random town can fail only in exec run
 DEF_CMD_TRAIT(Commands::RenameTown, CmdRenameTown, CommandFlags({CommandFlag::Deity, CommandFlag::Server}), CommandType::OtherManagement)
