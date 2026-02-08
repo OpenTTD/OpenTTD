@@ -417,22 +417,29 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 		TileIndex t = *iter;
 		CommandCost ret = Command<Commands::BuildObject>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, type, view);
 
-		/* If we've reached the limit, stop building (or testing). */
-		if (c != nullptr && limit-- <= 0) break;
+		/* Test object limit. */
+		if (c != nullptr && limit-- <= 0) {
+			last_error = CommandCost(STR_ERROR_BUILD_OBJECT_LIMIT_REACHED);
+			break;
+		}
 
+		/* Ignore individual tile failures, unless out of money. */
 		if (ret.Failed()) {
-			last_error = std::move(ret);
+			if (cost.GetCost() + spec->GetBuildCost() > money) {
+				last_error = ret;
+				break;
+			}
+
+			last_error = ret;
 			continue;
 		}
 
+		/* Build the object */
 		had_success = true;
 		if (flags.Test(DoCommandFlag::Execute)) {
-			money -= ret.GetCost();
-
-			/* If we run out of money, stop building. */
-			if (ret.GetCost() > 0 && money < 0) break;
 			Command<Commands::BuildObject>::Do(flags, t, type, view);
 		}
+
 		cost.AddCost(ret.GetCost());
 	}
 
