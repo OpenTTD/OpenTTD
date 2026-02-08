@@ -33,9 +33,6 @@ struct ScriptAllocator {
 	friend class Squirrel;
 
 private:
-	std::allocator<uint8_t> allocator;
-	size_t allocated_size = 0; ///< Sum of allocated data size
-	size_t allocation_limit; ///< Maximum this allocator may use before allocations fail
 	/**
 	 * Whether the error has already been thrown, so to not throw secondary errors in
 	 * the handling of the allocation error. This as the handling of the error will
@@ -43,6 +40,10 @@ private:
 	 * allocated by this allocator and then you might end up in an infinite loop.
 	 */
 	bool error_thrown = false;
+	std::allocator<uint8_t> allocator;
+	size_t allocated_size = 0; ///< Sum of allocated data size
+	size_t allocated_peak = 0; ///< Peak allocated data size
+	size_t allocation_limit; ///< Maximum this allocator may use before allocations fail
 
 	static const size_t SAFE_LIMIT = 0x8000000; ///< 128 MiB, a safe choice for almost any situation
 
@@ -81,6 +82,7 @@ private:
 			void *p = this->allocator.allocate(requested_size);
 			assert(p != nullptr);
 			this->allocated_size += requested_size;
+			if (this->allocated_peak < this->allocated_size) this->allocated_peak = this->allocated_size;
 
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
 			assert(this->allocations.find(p) == this->allocations.end());
@@ -105,6 +107,7 @@ private:
 
 public:
 	size_t GetAllocatedSize() const { return this->allocated_size; }
+	size_t GetAllocatedPeak() const { return this->allocated_peak; }
 
 	void CheckLimit() const
 	{
@@ -178,6 +181,12 @@ size_t Squirrel::GetAllocatedMemory() const noexcept
 {
 	assert(this->allocator != nullptr);
 	return this->allocator->GetAllocatedSize();
+}
+
+size_t Squirrel::GetPeakAllocatedMemory() const noexcept
+{
+	assert(this->allocator != nullptr);
+	return this->allocator->GetAllocatedPeak();
 }
 
 
@@ -821,6 +830,7 @@ void Squirrel::IncreaseAllocatedSize(size_t bytes)
 {
 	_squirrel_allocator->CheckAllocationAllowed(bytes);
 	_squirrel_allocator->allocated_size += bytes;
+	if (_squirrel_allocator->allocated_peak < _squirrel_allocator->allocated_size) _squirrel_allocator->allocated_peak = _squirrel_allocator->allocated_size;
 }
 
 void Squirrel::DecreaseAllocatedSize(size_t bytes)

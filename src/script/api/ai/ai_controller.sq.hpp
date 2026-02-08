@@ -18,6 +18,8 @@ void SQAIController_Register(Squirrel &engine)
 
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetTick,           "GetTick",           ".");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetOpsTillSuspend, "GetOpsTillSuspend", ".");
+	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetPeakAllocatedMemory, "GetPeakAllocatedMemory", ".");
+	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetAllocatedMemory, "GetAllocatedMemory", ".");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::SetCommandDelay,   "SetCommandDelay",   ".i");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::Sleep,             "Sleep",             ".i");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::Break,             "Break",             ".s");

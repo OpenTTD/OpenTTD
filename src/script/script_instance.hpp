@@ -243,6 +243,8 @@ public:
 
 	size_t GetAllocatedMemory() const;
 
+	size_t GetPeakAllocatedMemory() const;
+
 	/**
 	 * Indicate whether this instance is currently being destroyed.
 	 */
