@@ -2883,7 +2883,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 			Dimension di = GetScaledSpriteSize(this->widget_data.sprite);
 			Dimension dt = GetStringBoundingBox(GetStringForWidget(w, this), this->text_size);
 			Dimension d2{
-				padding.width + di.width + WidgetDimensions::scaled.hsep_wide + dt.width,
+				padding.width + 2 * (di.width + WidgetDimensions::scaled.hsep_wide) + dt.width,
 				padding.height + std::max(di.height, dt.height)
 			};
 			size = maxdim(size, d2);
