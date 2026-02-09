@@ -871,6 +871,12 @@ static void RoadZPosAffectSpeed(RoadVehicle *v, int old_z)
 	}
 }
 
+static void RoadVehSlowDown(RoadVehicle *v, const RoadVehicle *u)
+{
+	uint32_t speed = std::min(v->cur_speed, u->cur_speed);
+	v->cur_speed = speed * (256 - std::min<uint16_t>(v->blocked_ctr, 256)) / 256;
+}
+
 static int PickRandomBit(uint bits)
 {
 	uint i;
@@ -1173,9 +1179,9 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
 		if (v->IsFrontEngine()) {
-			const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
+			const RoadVehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
 			if (u != nullptr) {
-				v->cur_speed = u->First()->cur_speed;
+				RoadVehSlowDown(v, u->First());
 				return false;
 			}
 		}
@@ -1291,9 +1297,9 @@ again:
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
 		if (v->IsFrontEngine()) {
-			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
+			const RoadVehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 			if (u != nullptr) {
-				v->cur_speed = u->First()->cur_speed;
+				RoadVehSlowDown(v, u->First());
 				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
 				v->path.emplace_back(dir, tile);
 				return false;
@@ -1406,9 +1412,9 @@ again:
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
 		if (v->IsFrontEngine()) {
-			const Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
+			const RoadVehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 			if (u != nullptr) {
-				v->cur_speed = u->First()->cur_speed;
+				RoadVehSlowDown(v, u->First());
 				/* We might be blocked, prevent pathfinding rerun as we already know where we are heading to. */
 				v->path.emplace_back(dir, v->tile);
 				return false;
@@ -1460,7 +1466,7 @@ again:
 			u = u->First();
 			/* There is a vehicle in front overtake it if possible */
 			if (v->overtaking == 0) RoadVehCheckOvertake(v, u);
-			if (v->overtaking == 0) v->cur_speed = u->cur_speed;
+			if (v->overtaking == 0) RoadVehSlowDown(v, u);
 
 			/* In case an RV is stopped in a road stop, why not try to load? */
 			if (v->cur_speed == 0 && IsInsideMM(v->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
