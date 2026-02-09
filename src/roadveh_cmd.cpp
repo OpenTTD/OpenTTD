@@ -636,6 +636,9 @@ static void FindClosestBlockingRoadVeh(Vehicle *v, RoadVehFindData *rvf)
 	/* Not a close Road vehicle when it's not a road vehicle, in the depot, or ourself. */
 	if (v->type != VEH_ROAD || v->IsInDepot() || rvf->veh->First() == v->First()) return;
 
+	/* Not close when driving through a blockage. */
+	if (RoadVehicle::From(v)->blocked_ctr > RV_BLOCKED_TIMEOUT) return;
+
 	/* Not close when at a different height or when going in a different direction. */
 	if (abs(v->z_pos - rvf->veh->z_pos) >= 6 || v->direction != rvf->dir) return;
 
