@@ -546,7 +546,15 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 		}
 	}
 
-	if (this->station_scope.statspec->flags.Test(StationSpecFlag::DivByStationSize)) cargo /= (st->train_station.w + st->train_station.h);
+	if (this->station_scope.statspec->flags.Test(StationSpecFlag::DivByStationArea)) {
+		uint area = 0;
+		for (const TileIndex &tile : st->train_station) {
+			if (st->TileBelongsToRailStation(tile)) ++area;
+		}
+		cargo /= area;
+	} else if (this->station_scope.statspec->flags.Test(StationSpecFlag::DivByStationSize)) {
+		cargo /= (st->train_station.w + st->train_station.h); // Old code that uses half of the perimeter as the station size, compatible with TTDPatch.
+	}
 	cargo = std::min(0xfffu, cargo);
 
 	if (cargo > this->station_scope.statspec->cargo_threshold) {
