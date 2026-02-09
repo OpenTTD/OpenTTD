@@ -78,6 +78,9 @@ static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 /** The number of ticks a vehicle has for overtaking. */
 static const uint8_t RV_OVERTAKE_TIMEOUT = 35;
 
+/** The number of ticks a vehicle may be blocked until it starts driving through. */
+static const uint16_t RV_BLOCKED_TIMEOUT = 20 * Ticks::DAY_TICKS;
+
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 

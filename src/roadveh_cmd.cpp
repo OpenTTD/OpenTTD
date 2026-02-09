@@ -681,15 +681,14 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 	}
 
 	/* This code protects a roadvehicle from being blocked for ever
-	 * If more than 1480 / 74 days a road vehicle is blocked, it will
-	 * drive just through it. The ultimate backup-code of TTD.
-	 * It can be disabled. */
+	 * If more than 20 days a road vehicle is blocked, it will
+	 * drive just through it. The ultimate backup-code of TTD. */
 	if (rvf.best_diff == UINT_MAX) {
 		front->blocked_ctr = 0;
 		return nullptr;
 	}
 
-	if (update_blocked_ctr && ++front->blocked_ctr > 1480) return nullptr;
+	if (update_blocked_ctr && ++front->blocked_ctr > RV_BLOCKED_TIMEOUT) return nullptr;
 
 	return RoadVehicle::From(rvf.best);
 }
