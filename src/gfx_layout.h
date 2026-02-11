@@ -121,7 +121,10 @@ public:
 
 		constexpr inline Position(int16_t left, int16_t right, int16_t top) : left(left), right(right), top(top) { }
 
-		/** Conversion from a single point to a Position. */
+		/**
+		 * Conversion from a single point to a Position.
+		 * @param pt The point to create the position for.
+		 */
 		constexpr inline Position(const Point &pt) : left(pt.x), right(pt.x), top(pt.y) { }
 	};
 
@@ -129,11 +132,41 @@ public:
 	class VisualRun {
 	public:
 		virtual ~VisualRun() = default;
+
+		/**
+		 * Get the font.
+		 * @return The font used for this run.
+		 */
 		virtual const Font *GetFont() const = 0;
+
+		/**
+		 * Get the number of glyphs.
+		 * @return The number of glyphs for this run.
+		 */
 		virtual int GetGlyphCount() const = 0;
+
+		/**
+		 * Get the glyphs to draw.
+		 * @return The glyphs.
+		 */
 		virtual std::span<const GlyphID> GetGlyphs() const = 0;
+
+		/**
+		 * Get the positions for each of the glyphs.
+		 * @return The glyph positions.
+		 */
 		virtual std::span<const Position> GetPositions() const = 0;
+
+		/**
+		 * Get the font leading, or distance between the baselines of consecutive lines.
+		 * @return The leading in pixels.
+		 */
 		virtual int GetLeading() const = 0;
+
+		/**
+		 * The offset for each of the glyphs to the character run that was passed to the #Layouter.
+		 * @return The offsets.
+		 */
 		virtual std::span<const int> GetGlyphToCharMap() const = 0;
 	};
 
@@ -141,14 +174,51 @@ public:
 	class Line {
 	public:
 		virtual ~Line() = default;
+
+		/**
+		 * Get the font leading, or distance between the baselines of consecutive lines.
+		 * @return The leading in pixels, which is generally the maximum of all runs..
+		 */
 		virtual int GetLeading() const = 0;
+
+		/**
+		 * Get the width of this line.
+		 * @return The width of the line.
+		 */
 		virtual int GetWidth() const = 0;
+
+		/**
+		 * Get the number of runs in this line.
+		 * @return The number of runs.
+		 */
 		virtual int CountRuns() const = 0;
+
+		/**
+		 * Get a reference to the given run.
+		 * @param run The index into the runs.
+		 * @return The reference to the run.
+		 */
 		virtual const VisualRun &GetVisualRun(int run) const = 0;
+
+		/**
+		 * Get the number of elements the given character occupies in the underlying text buffer of the Layouter.
+		 * Many use UTF-16 internally, meaning a character larger than MAX_UINT16 occupies two places in its buffer.
+		 * @param c The character to get the length for.
+		 * @return The length.
+		 */
 		virtual int GetInternalCharLength(char32_t c) const = 0;
 	};
 
+	/**
+	 * Reset the position to the start of the paragraph.
+	 */
 	virtual void Reflow() = 0;
+
+	/**
+	 * Construct a new line with a maximum width.
+	 * @param max_width The maximum width of the string.
+	 * @return A Line, or \c nullptr when at the end of the paragraph.
+	 */
 	virtual std::unique_ptr<const Line> NextLine(int max_width) = 0;
 };
 

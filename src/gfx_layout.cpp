@@ -217,6 +217,8 @@ Dimension Layouter::GetBounds()
 
 /**
  * Test whether a character is a non-printable formatting code
+ * @param ch The character to test.
+ * @return \c true iff it is a non-printable formatting code.
  */
 static bool IsConsumedFormattingCode(char32_t ch)
 {
@@ -340,6 +342,9 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 
 /**
  * Get a static font instance.
+ * @param size The size of font.
+ * @param colour The font's colour.
+ * @return The cached font.
  */
 Font *Layouter::GetFont(FontSize size, TextColour colour)
 {
