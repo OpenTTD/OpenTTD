@@ -75,7 +75,10 @@
 
 	distance = Clamp<SQInteger>(distance, 0, UINT32_MAX);
 
-	return ::GetTransportedGoodsIncome(1, distance, Clamp(days_in_transit * 2 / 5, 0, UINT16_MAX), cargo_type);
+	static const SQInteger max_days_in_transit = ::CeilDiv(UINT16_MAX * 5, 2);
+	days_in_transit = Clamp<SQInteger>(days_in_transit, 0, max_days_in_transit);
+
+	return ::GetTransportedGoodsIncome(1, distance, days_in_transit, cargo_type);
 }
 
 /* static */ ScriptCargo::DistributionType ScriptCargo::GetDistributionType(CargoType cargo_type)
