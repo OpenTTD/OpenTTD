@@ -143,7 +143,7 @@ public:
 		 * Get the number of glyphs.
 		 * @return The number of glyphs for this run.
 		 */
-		virtual int GetGlyphCount() const = 0;
+		virtual size_t GetGlyphCount() const = 0;
 
 		/**
 		 * Get the glyphs to draw.
@@ -191,14 +191,14 @@ public:
 		 * Get the number of runs in this line.
 		 * @return The number of runs.
 		 */
-		virtual int CountRuns() const = 0;
+		virtual size_t CountRuns() const = 0;
 
 		/**
 		 * Get a reference to the given run.
 		 * @param run The index into the runs.
 		 * @return The reference to the run.
 		 */
-		virtual const VisualRun &GetVisualRun(int run) const = 0;
+		virtual const VisualRun &GetVisualRun(size_t run) const = 0;
 
 		/**
 		 * Get the number of elements the given character occupies in the underlying text buffer of the Layouter.

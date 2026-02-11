@@ -80,7 +80,6 @@ public:
 
 		int start_pos;
 		int total_advance;
-		int num_glyphs;
 		Font *font;
 
 		mutable std::vector<int> glyph_to_char;
@@ -95,7 +94,7 @@ public:
 
 		const Font *GetFont() const override { return this->font;  }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
-		int GetGlyphCount() const override { return this->num_glyphs; }
+		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
 
@@ -104,8 +103,8 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override { return (uint)this->size();  }
-		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
+		size_t CountRuns() const override { return this->size();  }
+		const VisualRun &GetVisualRun(size_t run) const override { return this->at(run);  }
 
 		int GetInternalCharLength(char32_t c) const override
 		{
@@ -471,11 +470,10 @@ int UniscribeParagraphLayout::UniscribeLine::GetWidth() const
 
 UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const UniscribeRun &range, int x) : glyphs(range.ft_glyphs), char_to_glyph(range.char_to_glyph), start_pos(range.pos), total_advance(range.total_advance), font(range.font)
 {
-	this->num_glyphs = (int)glyphs.size();
-	this->positions.reserve(this->num_glyphs);
+	this->positions.reserve(this->GetGlyphCount());
 
 	int advance = x;
-	for (int i = 0; i < this->num_glyphs; i++) {
+	for (size_t i = 0; i < this->GetGlyphCount(); i++) {
 		int x_advance = range.advances[i];
 		this->positions.emplace_back(range.offsets[i].du + advance, range.offsets[i].du + advance + x_advance - 1, range.offsets[i].dv);
 
@@ -485,7 +483,7 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const Uniscribe
 
 UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisualRun&& other) noexcept
 								: glyphs(std::move(other.glyphs)), positions(std::move(other.positions)), char_to_glyph(std::move(other.char_to_glyph)),
-								  start_pos(other.start_pos), total_advance(other.total_advance), num_glyphs(other.num_glyphs), font(other.font),
+								  start_pos(other.start_pos), total_advance(other.total_advance), font(other.font),
 								  glyph_to_char(std::move(other.glyph_to_char))
 {
 }
@@ -504,7 +502,7 @@ std::span<const int> UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCha
 
 		/* We only marked the first glyph of each cluster in the loop above. Fill the gaps. */
 		int last_char = this->glyph_to_char[0];
-		for (int g = 0; g < this->GetGlyphCount(); g++) {
+		for (size_t g = 0; g < this->GetGlyphCount(); g++) {
 			if (this->glyph_to_char[g] != 0) last_char = this->glyph_to_char[g];
 			this->glyph_to_char[g] = last_char;
 		}

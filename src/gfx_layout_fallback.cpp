@@ -48,7 +48,7 @@ public:
 	public:
 		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
 		const Font *GetFont() const override { return this->font; }
-		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
+		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
 		std::span<const Position> GetPositions() const override { return this->positions; }
 		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
@@ -60,8 +60,8 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override;
-		const ParagraphLayouter::VisualRun &GetVisualRun(int run) const override;
+		size_t CountRuns() const override;
+		const ParagraphLayouter::VisualRun &GetVisualRun(size_t run) const override;
 
 		int GetInternalCharLength(char32_t) const override { return 1; }
 	};
@@ -159,12 +159,12 @@ int FallbackParagraphLayout::FallbackLine::GetWidth() const
 	return positions.back().right + 1;
 }
 
-int FallbackParagraphLayout::FallbackLine::CountRuns() const
+size_t FallbackParagraphLayout::FallbackLine::CountRuns() const
 {
-	return static_cast<int>(this->size());
+	return this->size();
 }
 
-const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVisualRun(int run) const
+const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVisualRun(size_t run) const
 {
 	return this->at(run);
 }
