@@ -24,7 +24,7 @@ enum class SettingEntryFlag : uint8_t {
 	LastField, ///< This entry is the last one in a (sub-)page
 	Filtered, ///< Entry is hidden by the string filter
 };
-using SettingEntryFlags = EnumBitSet<SettingEntryFlag, uint8_t>;
+using SettingEntryFlags = EnumBitSet<SettingEntryFlag, uint8_t>; ///< Bitset of the SettingEntryFlag elements.
 
 static constexpr SettingEntryFlags SEF_BUTTONS_MASK = {SettingEntryFlag::LeftDepressed, SettingEntryFlag::RightDepressed}; ///< Mask for button flags
 
@@ -57,8 +57,11 @@ struct BaseSettingEntry {
 	virtual ~BaseSettingEntry() = default;
 
 	virtual void Init(uint8_t level = 0);
+	/** Recursively close all folds of sub-pages */
 	virtual void FoldAll() {}
+	/** Recursively open all folds of sub-pages */
 	virtual void UnFoldAll() {}
+	/** Resets all settings to their default values */
 	virtual void ResetAll() = 0;
 
 	/**
@@ -67,10 +70,24 @@ struct BaseSettingEntry {
 	 */
 	void SetLastField(bool last_field) { this->flags.Set(SettingEntryFlag::LastField, last_field); }
 
+	/**
+	 * Get the number of rows needed to show this entry.
+	 * @return Number of rows.
+	 */
 	virtual uint Length() const = 0;
+	/**
+	 * Recursively accumulate the folding state of the tree.
+	 * @param[in,out] all_folded Set to false, if one entry is not folded.
+	 * @param[in,out] all_unfolded Set to false, if one entry is folded.
+	 */
 	virtual void GetFoldingState([[maybe_unused]] bool &all_folded, [[maybe_unused]] bool &all_unfolded) const {}
 	virtual bool IsVisible(const BaseSettingEntry *item) const;
 	virtual BaseSettingEntry *FindEntry(uint row, uint *cur_row);
+	/**
+	 * Get the biggest height of the help text(s), if the width is at least \a maxw. Help text gets wrapped if needed.
+	 * @param maxw Maximal width of a line help text.
+	 * @return Biggest height needed to display any help text of this node (and its descendants).
+	 */
 	virtual uint GetMaxHelpHeight([[maybe_unused]] int maxw) { return 0; }
 
 	/**
@@ -79,6 +96,12 @@ struct BaseSettingEntry {
 	 */
 	bool IsFiltered() const { return this->flags.Test(SettingEntryFlag::Filtered); }
 
+	/**
+	 * Update the filter state.
+	 * @param filter Filter
+	 * @param force_visible Whether to force all items visible, no matter what
+	 * @return true if item remains visible
+	 */
 	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible) = 0;
 
 	virtual uint Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
@@ -103,6 +126,10 @@ struct SettingEntry : BaseSettingEntry {
 	const std::string_view name; ///< Name of the setting
 	const IntSettingDesc *setting = nullptr; ///< Setting description of the setting
 
+	/**
+	 * Create the entry. The view is stored in the static #GetSettingsTree(), so must never be deallocated.
+	 * @param name The name of the setting.
+	 */
 	SettingEntry(std::string_view name) : name(name) {}
 
 	void Init(uint8_t level = 0) override;
@@ -122,9 +149,14 @@ private:
 
 /** Containers for BaseSettingEntry */
 struct SettingsContainer {
-	typedef std::vector<BaseSettingEntry*> EntryVector;
+	using EntryVector = std::vector<BaseSettingEntry*>; ///< Vector of pointers.
 	EntryVector entries; ///< Settings on this page
 
+	/**
+	 * Add an item to the container.
+	 * @param item The item to add.
+	 * @return The just added item (same pointer).
+	 */
 	template <typename T>
 	T *Add(T *item)
 	{
