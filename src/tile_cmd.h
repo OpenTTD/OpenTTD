@@ -60,7 +60,7 @@ struct TileDesc {
  * Tile callback function signature for drawing a tile and its contents to the screen
  * @param ti Information about the tile to draw
  */
-typedef void DrawTileProc(TileInfo *ti);
+using DrawTileProc = void(TileInfo *ti);
 
 /**
  * Tile callback function signature for obtaining the world \c Z coordinate of a given
@@ -73,23 +73,33 @@ typedef void DrawTileProc(TileInfo *ti);
  * @return World Z coordinate at tile ground (vehicle) level, including slopes and foundations.
  * @see GetSlopePixelZ
  */
-typedef int GetSlopeZProc(TileIndex tile, uint x, uint y, bool ground_vehicle);
-typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlags flags);
+using GetSlopePixelZProc = int(TileIndex tile, uint x, uint y, bool ground_vehicle);
+
+/**
+ * Tile callback function signature for clearing a tile.
+ * @param tile The tile to clear.
+ * @param flags The command flags.
+ * @return The cost or error.
+ * @see ClearTile
+ */
+using ClearTileProc = CommandCost(TileIndex tile, DoCommandFlags flags);
 
 /**
  * Tile callback function signature for obtaining cargo acceptance of a tile
  * @param tile            Tile queried for its accepted cargo
  * @param acceptance      Storage destination of the cargo acceptance in 1/8
  * @param always_accepted Bitmask of always accepted cargo types
+ * @see AddAcceptedCargo
  */
-typedef void AddAcceptedCargoProc(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted);
+using AddAcceptedCargoProc = void(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted);
 
 /**
  * Tile callback function signature for obtaining a tile description
  * @param tile Tile being queried
  * @param td   Storage pointer for returned tile description
+ * @see GetTileDesc
  */
-typedef void GetTileDescProc(TileIndex tile, TileDesc &td);
+using GetTileDescProc = void(TileIndex tile, TileDesc &td);
 
 /**
  * Tile callback function signature for getting the possible tracks
@@ -102,23 +112,69 @@ typedef void GetTileDescProc(TileIndex tile, TileDesc &td);
  * @param tile     the tile to get the track status from
  * @param mode     the mode of transportation
  * @param sub_mode used to differentiate between different kinds within the mode
+ * @param side The side where the tile is entered.
  * @return the track status information
+ * @see GetTileTrackStatus
  */
-typedef TrackStatus GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side);
+using GetTileTrackStatusProc = TrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side);
 
 /**
  * Tile callback function signature for obtaining the produced cargo of a tile.
  * @param tile      Tile being queried
  * @param produced  Destination array for produced cargo
+ * @see AddProducedCargo
  */
-typedef void AddProducedCargoProc(TileIndex tile, CargoArray &produced);
-typedef bool ClickTileProc(TileIndex tile);
-typedef void AnimateTileProc(TileIndex tile);
-typedef void TileLoopProc(TileIndex tile);
-typedef void ChangeTileOwnerProc(TileIndex tile, Owner old_owner, Owner new_owner);
+using AddProducedCargoProc = void(TileIndex tile, CargoArray &produced);
 
-typedef VehicleEnterTileStates VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
-typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
+/**
+ * Tile callback function signature for clicking a tile.
+ * @param tile The tile that was clicked.
+ * @return Whether any action was taken.
+ * @see ClickTile
+ */
+using ClickTileProc = bool(TileIndex tile);
+
+/**
+ * Tile callback function signature for animating a tile.
+ * @param tile The tile to animate.
+ * @see AnimateTile
+ */
+using AnimateTileProc = void(TileIndex tile);
+
+/**
+ * Tile callback function signature for running periodic tile updates.
+ * @param tile The tile to update.
+ * @see RunTileLoop
+ */
+using TileLoopProc = void(TileIndex tile);
+
+/**
+ * Tile callback function signature for changing the owner of a tile.
+ * @param tile The tile to process.
+ * @param old_owner The owner to replace.
+ * @param new_owner The owner to replace with.
+ * @see ChangeTileOwner
+ */
+using ChangeTileOwnerProc = void(TileIndex tile, Owner old_owner, Owner new_owner);
+
+/**
+ * Tile callback function for a vehicle entering a tile.
+ * @param v Vehicle entering the tile.
+ * @param tile Tile entered.
+ * @param x X position in world coordinates.
+ * @param y Y position in world coordinates.
+ * @return Some meta-data over the to be entered tile.
+ * @see VehicleEnterTile
+ */
+using VehicleEnterTileProc = VehicleEnterTileStates(Vehicle *v, TileIndex tile, int x, int y);
+
+/**
+ * Tile callback function signature for getting the foundation of a tile.
+ * @param tile The tile to check.
+ * @param tileh The current slope.
+ * @return The foundation that will be used.
+ */
+using GetFoundationProc = Foundation(TileIndex tile, Slope tileh);
 
 /**
  * Tile callback function signature of the terraforming callback.
@@ -134,8 +190,9 @@ typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
  * @param z_new     TileZ after terraforming.
  * @param tileh_new Slope after terraforming.
  * @return Error code or extra cost for terraforming (like clearing land, building foundations, etc., but not the terraforming itself.)
+ * @see TerraformTile
  */
-typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new);
+using TerraformTileProc = CommandCost(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new);
 
 /**
  * Tile callback function signature to test if a bridge can be built above a tile.
@@ -144,6 +201,7 @@ typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlags flags, int 
  * @param axis Axis of bridge being built.
  * @param height Absolute height of bridge platform.
  * @return Error code or extra cost for building bridge above the tile.
+ * @see CheckBuildAbove
  */
 using CheckBuildAboveProc = CommandCost(TileIndex tile, DoCommandFlags flags, Axis axis, int height);
 
@@ -152,21 +210,21 @@ using CheckBuildAboveProc = CommandCost(TileIndex tile, DoCommandFlags flags, Ax
  * @see TileType
  */
 struct TileTypeProcs {
-	DrawTileProc *draw_tile_proc;                  ///< Called to render the tile and its contents to the screen
-	GetSlopeZProc *get_slope_z_proc;
-	ClearTileProc *clear_tile_proc;
-	AddAcceptedCargoProc *add_accepted_cargo_proc; ///< Adds accepted cargo of the tile to cargo array supplied as parameter
-	GetTileDescProc *get_tile_desc_proc;           ///< Get a description of a tile (for the 'land area information' tool)
-	GetTileTrackStatusProc *get_tile_track_status_proc; ///< Get available tracks and status of a tile
-	ClickTileProc *click_tile_proc;                ///< Called when tile is clicked
-	AnimateTileProc *animate_tile_proc;
-	TileLoopProc *tile_loop_proc;
-	ChangeTileOwnerProc *change_tile_owner_proc;
-	AddProducedCargoProc *add_produced_cargo_proc; ///< Adds produced cargo of the tile to cargo array supplied as parameter
-	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile
-	GetFoundationProc *get_foundation_proc;
-	TerraformTileProc *terraform_tile_proc;        ///< Called when a terraforming operation is about to take place
-	CheckBuildAboveProc *check_build_above_proc;
+	DrawTileProc *draw_tile_proc; ///< Called to render the tile and its contents to the screen.
+	GetSlopePixelZProc *get_slope_z_proc; ///< Called to get the world Z coordinate for a given location within the tile.
+	ClearTileProc *clear_tile_proc; ////< Called to clear a tile.
+	AddAcceptedCargoProc *add_accepted_cargo_proc; ///< Adds accepted cargo of the tile to cargo array supplied as parameter.
+	GetTileDescProc *get_tile_desc_proc; ///< Get a description of a tile (for the 'land area information' tool).
+	GetTileTrackStatusProc *get_tile_track_status_proc; ///< Get available tracks and status of a tile.
+	ClickTileProc *click_tile_proc; ///< Called when tile is clicked
+	AnimateTileProc *animate_tile_proc; ///< Called to animate a tile.
+	TileLoopProc *tile_loop_proc; ///< Called to periodically update the tile.
+	ChangeTileOwnerProc *change_tile_owner_proc; ///< Called to change the ownership of elements on a tile.
+	AddProducedCargoProc *add_produced_cargo_proc; ///< Adds produced cargo of the tile to cargo array supplied as parameter.
+	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile.
+	GetFoundationProc *get_foundation_proc; ///< Called to get the foundation.
+	TerraformTileProc *terraform_tile_proc; ///< Called when a terraforming operation is about to take place.
+	CheckBuildAboveProc *check_build_above_proc; ///< Called to check whether a bridge can be build above.
 };
 
 extern const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs;
