@@ -1126,7 +1126,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Válaszd ki a f
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% lefordítva)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Teljes képernyő
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Jelöld be, hogy teljes képernyős módban játssz az OpenTTD-vel
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kapcsold be, hogy teljes képernyős módban játssz az OpenTTD-vel
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Képernyőfelbontás
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Használandó képernyőfelbontás kiválasztása
@@ -1134,11 +1134,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardveres gyorsítás
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Jelöld be, hogy az OpenTTD próbáljon meg hardveres gyorsítást használni. A beállítás csak a játék újraindítása után lép érvénybe.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Kapcsold be, hogy az OpenTTD próbáljon meg hardveres gyorsítást használni. A beállítás csak a játék újraindítása után lép érvénybe.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ez a beállítás csak a játék újraindítása után lép érvénybe
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Függőleges szinkronizáció (VSync)
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Jelöld be a függőleges szinkronizációhoz (VSync). A változtatás csak a játék újraindítása után lép érvénybe. Kizárólag hardveres gyorsítással működik!
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Kapcsold be a függőleges szinkronizációhoz (VSync). A változtatás csak a játék újraindítása után lép érvénybe. Kizárólag hardveres gyorsítással működik!
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Jelenlegi illesztőprogram: {STRING}
 
@@ -1147,15 +1147,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Felület
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Felület mérete
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Használd a csúszkát a felület méretének beállításához. Ctrl+húzás a finom állításhoz.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Méret automatikus felismerése
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Jelöld be a felület méretének automatikus felismeréséhez
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kapcsold be a felület méretének automatikus felismeréséhez
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Szegélyek méretezése
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Jelöld be a szegélyek a felület méretéhez való igazításához
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kapcsold be a szegélyek a felület méretéhez való igazításához
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Hagyományos sprite betűk használata
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Jelöld be, ha a hagyományos sprite betűket akarod használni.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kapcsold be, ha a hagyományos fix méretű sprite betűket akarod használni.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Betűk élsimítása
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Jelöld be a betűk élsimításához
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kapcsold be a betűk élsimításához
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 

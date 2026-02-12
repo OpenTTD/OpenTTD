@@ -4236,10 +4236,10 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}선택�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}선택한 항공기를 구입하고 개조합니다. SHIFT+클릭하면 예상 비용을 볼 수 있습니다
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}이름 지정
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}이름 지정
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}이름 지정
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}이름 지정
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}이름 변경
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}이름 변경
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}이름 변경
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}이름 변경
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}열차의 모델명을 변경합니다
@@ -4517,10 +4517,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}출발
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (상세정보)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}열차 이름 지정
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}차량 이름 지정
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}열차 이름 변경
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}차량 이름 변경
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 변경
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 변경
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})
@@ -4566,10 +4566,10 @@ STR_VEHICLE_DETAILS_MINUTES                                     :분
 STR_VEHICLE_DETAILS_PERCENT                                     :신뢰도
 
 ###length VEHICLE_TYPES
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 이름 지정
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}차량 이름 지정
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}선박 이름 지정
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공기 이름 지정
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 이름 변경
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}차량 이름 변경
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}선박 이름 변경
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공기 이름 변경
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}

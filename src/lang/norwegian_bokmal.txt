@@ -1064,7 +1064,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Velg språk som
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% fullført)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Fullskjerm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kryss av denne knappen for å spille OpenTTD i fullskjermmodus
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Slå på for å spille OpenTTD i fullskjermmodus
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Skjermoppløsning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Velg skjermoppløsningen som skal brukes
@@ -1072,11 +1072,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Maskinvareakselerasjon
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Merk av i denne boksen for å la OpenTTD prøve å bruke maskinvareakselerasjon. En endret innstilling blir bare brukt ved omstart av spillet
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Slå på for å la OpenTTD prøve å bruke maskinvareakselerasjon. En endret innstilling blir bare brukt ved omstart av spillet
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Innstillingen vil ikke tre i kraft før spillet er restartet
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Merk av i denne boksen for å aktivere VSync for skjermen. Endring av innstilling krever omstart av spillet. Fungerer bare med maskinvareakselerasjon aktivert
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Slå på for å aktivere VSync for skjermen. Endring av innstilling krever omstart av spillet. Fungerer bare med maskinvareakselerasjon aktivert
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktiv driver: {STRING}
 
@@ -1085,15 +1085,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Grensesnitt
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Grensesnittstørrelse
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra for å endre grensesnittstørrelse. Ctrl+dra for kontinuerlig justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detekter størrelse automatisk
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kryss av denne knappen for å detektere grensesnittstørrelsen automatisk
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Slå på for å detektere grensesnittstørrelsen automatisk
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaler faser
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryss av denne knappen for å skalere faser med størrelsen på grensesnittet
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Slå på for å skalere faser med størrelsen på grensesnittet
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Bruk tradisjonell sprite-skrift
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryss av denne knappen hvis du foretrekker den tradisjonelle sprite-skriften med fast størrelse
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Slå på hvis du foretrekker den tradisjonelle sprite-skriften med fast størrelse
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Kantutjevning av skrift
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryss av denne knappen for å kantutjevne skalerbar skrift
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Slå på for å kantutjevne skalerbar skrift
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
