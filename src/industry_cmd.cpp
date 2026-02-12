@@ -540,8 +540,6 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			uint am = MoveGoodsToStation(p.cargo, cw, {i->index, SourceType::Industry}, i->stations_near, i->exclusive_consumer);
 			p.history[THIS_MONTH].transported += am;
-			TileIndex t = i->location.tile;
-			ShowDebugTextAnimation(TileX(t) * TILE_SIZE, TileY(t) * TILE_SIZE, GetTileZ(t), STR_ERROR_BMPMAP, CargoSpec::Get(p.cargo)->name, am, cw);
 
 			moved_cargo |= (am != 0);
 		}
@@ -2940,25 +2938,21 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				if (!IsValidCargoType(p.cargo)) continue;
 				uint32_t r = Random();
 				int old_prod, new_prod, percent;
-				/* If over 60% is transported, mult is 1, else mult is -1. */
-				int mult = (p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_60) ? 1 : -1;
-
 				new_prod = old_prod = p.rate;
 
-				/* For industries with only_decrease flags (temperate terrain Oil Wells),
-				 * the multiplier will always be -1 so they will only decrease. */
-				if (only_decrease) {
-					mult = -1;
-				/* For normal industries, if over 60% is transported, 33% chance for decrease.
-				 * Bonus for very high station ratings (over 80%): 16% chance for decrease. */
-				} else if (Chance16I(1, ((p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_80) ? 6 : 3), r)) {
-					mult *= -1;
-				}
-
-				/* 4.5% chance for 3-23% (or 1 unit for very low productions) production change,
-				 * determined by mult value. If mult = 1 prod. increases, else (-1) it decreases. */
+				/* 1 in 22 chance to change production rate, randomly up/down depending on percent transported last month */
 				if (Chance16I(1, 22, r >> 16)) {
-					new_prod += mult * (std::max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
+					int prod_change_direction;
+					if (only_decrease) {
+						prod_change_direction = -1;
+					} else if (p.history[LAST_MONTH].PctTransported() <= PERCENT_TRANSPORTED_60) {
+						prod_change_direction = Chance16I(1, 3, r) ? 1 : -1;
+					} else if (p.history[LAST_MONTH].PctTransported() <= PERCENT_TRANSPORTED_80) {
+						prod_change_direction = Chance16I(2, 3, r) ? 1 : -1;
+					} else {
+						prod_change_direction = Chance16I(5, 6, r) ? 1 : -1;
+					}
+					new_prod += prod_change_direction * (std::max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
 				}
 
 				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
