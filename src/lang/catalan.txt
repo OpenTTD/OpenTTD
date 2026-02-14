@@ -924,7 +924,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} té poques ordres a l'agenda
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} té una ordre buida
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} té una ordre no vàlida
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} té ordres duplicades
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} té una estació invàlida en les seves ordres
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} té en les seves ordres un aeroport amb pista d'aterratge massa curta
@@ -2859,7 +2859,18 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Redueix l'alç�
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Augmenta l'alçària de les vistes prèvies. Amb Ctrl+clic, s'augmenta fins al màxim.
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Col·lecció per defecte
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Seleccioneu una col·lecció.
+STR_PICKER_COLLECTION_ADD                                       :Afegeix
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Crea una col·lecció nova
+STR_PICKER_COLLECTION_RENAME                                    :Reanomena
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Canvia el nom d'una col·lecció.
+STR_PICKER_COLLECTION_DELETE                                    :Esborra
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Esborra la col·lecció.
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Reanomena aquesta col·lecció
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Esborra la col·lecció
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Esteu segur que voleu esborrar aquesta col·lecció?
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Trieu quina classe d'estació voleu veure.
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Trieu quin tipus d'estació voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
@@ -4215,6 +4226,17 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipus d'
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Tipus de rail: {GOLD}{STRING}
 
 # Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/any
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/període
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :{COMMA}{NBSP}%
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} caselles
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tots els tipus de càrrega
@@ -4377,6 +4399,10 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Missatge del fabricant de vehicles
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabem de dissenyar {G un una} {G nou nova} {STRING}. Esteu interessats en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llançament mundial?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Anterior
+STR_ENGINE_PREVIEW_NEXT                                         :Següent
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Feu-hi clic per a saltar a un vehicle nou.
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=Femenin}locomotora de tren
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotora de ferrocarril electrificat
