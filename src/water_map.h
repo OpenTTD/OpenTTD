@@ -68,7 +68,7 @@ enum class LockPart : uint8_t {
 	Upper = 2, ///< Upper part of a lock.
 	End, ///< End marker.
 };
-DECLARE_INCREMENT_DECREMENT_OPERATORS(LockPart);
+DECLARE_INCREMENT_DECREMENT_OPERATORS(LockPart)
 
 bool IsPossibleDockingTile(Tile t);
 
@@ -346,6 +346,7 @@ inline uint8_t GetWaterTileRandomBits(Tile t)
 /**
  * Checks whether the tile has water at the ground.
  * That is, it is either some plain water tile, or a object/industry/station/... with water under it.
+ * @param t The tile to query.
  * @return true iff the tile has water at the ground.
  * @note Coast tiles are not considered waterish, even if there is water on a halftile.
  */
@@ -368,6 +369,7 @@ inline void SetDockingTile(Tile t, bool b)
 
 /**
  * Checks whether the tile is marked as a dockling tile.
+ * @param t The tile to query.
  * @return true iff the tile is marked as a docking tile.
  */
 inline bool IsDockingTile(Tile t)
@@ -534,6 +536,7 @@ inline void SetNonFloodingWaterTile(Tile t, bool b)
 }
 /**
  * Checks whether the tile is marked as a non-flooding water tile.
+ * @param t The tile to query.
  * @return true iff the tile is marked as a non-flooding water tile.
  */
 inline bool IsNonFloodingWaterTile(Tile t)

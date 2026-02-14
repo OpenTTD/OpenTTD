@@ -18,6 +18,7 @@
  * Finds the end of a bridge in the specified direction starting at a middle tile
  * @param tile the bridge tile to find the bridge ramp for
  * @param dir  the direction to search in
+ * @return The tile at the bridge end.
  */
 static TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
 {
@@ -35,6 +36,7 @@ static TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
 /**
  * Finds the northern end of a bridge starting at a middle tile
  * @param t the bridge tile to find the bridge ramp for
+ * @return The tile at the northern bridge end.
  */
 TileIndex GetNorthernBridgeEnd(TileIndex t)
 {
@@ -45,6 +47,7 @@ TileIndex GetNorthernBridgeEnd(TileIndex t)
 /**
  * Finds the southern end of a bridge starting at a middle tile
  * @param t the bridge tile to find the bridge ramp for
+ * @return The tile at the southern bridge end.
  */
 TileIndex GetSouthernBridgeEnd(TileIndex t)
 {
@@ -55,6 +58,7 @@ TileIndex GetSouthernBridgeEnd(TileIndex t)
 /**
  * Starting at one bridge end finds the other bridge end
  * @param tile the bridge ramp tile to find the other bridge ramp for
+ * @return The tile at the other bridge end.
  */
 TileIndex GetOtherBridgeEnd(TileIndex tile)
 {

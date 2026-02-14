@@ -122,6 +122,7 @@ inline TreeGround GetTreeGround(Tile t)
  *
  * @param t The tile to get the 'density'
  * @pre Tile must be of type TileType::Trees
+ * @return The current density.
  * @see GetTreeCount
  */
 inline uint GetTreeDensity(Tile t)

@@ -144,18 +144,34 @@ inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
 	}
 }
 
+/**
+ * Get the road type for RoadTramType being RTT_ROAD.
+ * @param t The tile to query.
+ * @return The road type.
+ */
 inline RoadType GetRoadTypeRoad(Tile t)
 {
 	assert(MayHaveRoad(t));
 	return (RoadType)GB(t.m4(), 0, 6);
 }
 
+/**
+ * Get the road type for RoadTramType being RTT_TRAM.
+ * @param t The tile to query.
+ * @return The road (tram) type.
+ */
 inline RoadType GetRoadTypeTram(Tile t)
 {
 	assert(MayHaveRoad(t));
 	return (RoadType)GB(t.m8(), 6, 6);
 }
 
+/**
+ * Get the road type for the given RoadTramType.
+ * @param t The tile to query.
+ * @param rtt The sub type to check for.
+ * @return The road type.
+ */
 inline RoadType GetRoadType(Tile t, RoadTramType rtt)
 {
 	return (rtt == RTT_TRAM) ? GetRoadTypeTram(t) : GetRoadTypeRoad(t);
@@ -176,11 +192,21 @@ inline RoadTypes GetPresentRoadTypes(Tile t)
 	return result;
 }
 
+/**
+ * Check if a tile has a road type when RoadTramType is RTT_ROAD.
+ * @param t  The tile to check.
+ * @return True if the tile has a road type.
+ */
 inline bool HasRoadTypeRoad(Tile t)
 {
 	return GetRoadTypeRoad(t) != INVALID_ROADTYPE;
 }
 
+/**
+ * Check if a tile has a road type when RoadTramType is RTT_TRAM.
+ * @param t  The tile to check.
+ * @return True if the tile has a (tram) road type.
+ */
 inline bool HasRoadTypeTram(Tile t)
 {
 	return GetRoadTypeTram(t) != INVALID_ROADTYPE;

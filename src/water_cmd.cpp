@@ -170,6 +170,12 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 	return cost;
 }
 
+/**
+ * Check whether it is feasible that the given tile could be a docking tile.
+ * @param t The tile to query.
+ * @return \c true iff there is a chance the tile could be a docking tile.
+ * @see CheckForDockingTile
+ */
 bool IsPossibleDockingTile(Tile t)
 {
 	assert(IsValidTile(t));

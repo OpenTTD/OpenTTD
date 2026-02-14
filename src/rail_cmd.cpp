@@ -2468,7 +2468,7 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 
 		/* Adjust ground tile for desert and snow. */
-		if (IsSnowRailGround(ti->tile)) {
+		if (IsSnowOrDesertRailGround(ti->tile)) {
 			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks
 			} else {

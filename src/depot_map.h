@@ -15,6 +15,9 @@
 
 /**
  * Check if a tile is a depot and it is a depot of the given type.
+ * @param tile The tile to check.
+ * @param type The type of transport.
+ * @return \c true iff the given tile is a depot for the given transport type.
  */
 inline bool IsDepotTypeTile(Tile tile, TransportType type)
 {

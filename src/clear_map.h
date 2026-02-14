@@ -60,6 +60,7 @@ inline ClearGround GetClearGround(Tile t)
  * @param t  the tile to set the clear ground type of
  * @param ct the ground type
  * @pre IsTileType(t, TileType::Clear)
+ * @return \c true when the ground is of the given ground type.
  */
 inline bool IsClearGround(Tile t, ClearGround ct)
 {
