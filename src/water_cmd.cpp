@@ -570,6 +570,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 }
 
 
+/** @copydoc ClearTileProc */
 static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 {
 	switch (GetWaterTileType(tile)) {
@@ -958,6 +959,7 @@ void DrawWaterClassGround(const TileInfo *ti)
 	}
 }
 
+/** @copydoc DrawTileProc */
 static void DrawTile_Water(TileInfo *ti)
 {
 	switch (GetWaterTileType(ti->tile)) {
@@ -996,18 +998,15 @@ void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 }
 
 
-static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, bool)
+/** @copydoc GetSlopePixelZProc */
+static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, [[maybe_unused]] bool ground_vehicle)
 {
 	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Foundation GetFoundation_Water(TileIndex, Slope)
-{
-	return FOUNDATION_NONE;
-}
-
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_Water(TileIndex tile, TileDesc &td)
 {
 	switch (GetWaterTileType(tile)) {
@@ -1272,10 +1271,10 @@ static void DoDryUp(TileIndex tile)
 }
 
 /**
+ * @copydoc TileLoopProc
+ *
  * Let a water tile floods its diagonal adjoining tiles
  * called from tunnelbridge_cmd, and by TileLoop_Industry() and TileLoop_Track()
- *
- * @param tile the water/shore tile that floods
  */
 void TileLoop_Water(TileIndex tile)
 {
@@ -1367,7 +1366,8 @@ void ConvertGroundTilesIntoWaterTiles()
 	}
 }
 
-static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint, DiagDirection)
+/** @copydoc GetTileTrackStatusProc */
+static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] uint sub_mode, [[maybe_unused]] DiagDirection side)
 {
 	static const TrackBits coast_tracks[] = {TRACK_BIT_NONE, TRACK_BIT_RIGHT, TRACK_BIT_UPPER, TRACK_BIT_NONE, TRACK_BIT_LEFT, TRACK_BIT_NONE, TRACK_BIT_NONE,
 		TRACK_BIT_NONE, TRACK_BIT_LOWER, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE};
@@ -1394,6 +1394,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 	return CombineTrackStatus(TrackBitsToTrackdirBits(ts), TRACKDIR_BIT_NONE);
 }
 
+/** @copydoc ClickTileProc */
 static bool ClickTile_Water(TileIndex tile)
 {
 	if (GetWaterTileType(tile) == WaterTileType::Depot) {
@@ -1403,6 +1404,7 @@ static bool ClickTile_Water(TileIndex tile)
 	return false;
 }
 
+/** @copydoc ChangeTileOwnerProc */
 static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	if (!IsTileOwner(tile, old_owner)) return;
@@ -1439,12 +1441,8 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 	}
 }
 
-static VehicleEnterTileStates VehicleEnter_Water(Vehicle *, TileIndex, int, int)
-{
-	return {};
-}
-
-static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int, Slope)
+/** @copydoc TerraformTileProc */
+static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, [[maybe_unused]] int z_new, [[maybe_unused]] Slope tileh_new)
 {
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
@@ -1455,7 +1453,8 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
-static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, Axis, int height)
+/** @copydoc CheckBuildAboveProc */
+static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, [[maybe_unused]] Axis axis, int height)
 {
 	if (IsWater(tile) || IsCoast(tile)) return CommandCost();
 	if (IsLock(tile)) {
@@ -1466,20 +1465,17 @@ static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, A
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
+/** TileTypeProcs definitions for TileType::Water tiles. */
 extern const TileTypeProcs _tile_type_water_procs = {
-	DrawTile_Water,           // draw_tile_proc
-	GetSlopePixelZ_Water,     // get_slope_z_proc
-	ClearTile_Water,          // clear_tile_proc
-	nullptr,                     // add_accepted_cargo_proc
-	GetTileDesc_Water,        // get_tile_desc_proc
-	GetTileTrackStatus_Water, // get_tile_track_status_proc
-	ClickTile_Water,          // click_tile_proc
-	nullptr,                     // animate_tile_proc
-	TileLoop_Water,           // tile_loop_proc
-	ChangeTileOwner_Water,    // change_tile_owner_proc
-	nullptr,                     // add_produced_cargo_proc
-	VehicleEnter_Water,       // vehicle_enter_tile_proc
-	GetFoundation_Water,      // get_foundation_proc
-	TerraformTile_Water,      // terraform_tile_proc
-	CheckBuildAbove_Water, // check_build_above_proc
+	.draw_tile_proc = DrawTile_Water,
+	.get_slope_pixel_z_proc = GetSlopePixelZ_Water,
+	.clear_tile_proc = ClearTile_Water,
+	.get_tile_desc_proc = GetTileDesc_Water,
+	.get_tile_track_status_proc = GetTileTrackStatus_Water,
+	.click_tile_proc = ClickTile_Water,
+	.tile_loop_proc = TileLoop_Water,
+	.change_tile_owner_proc = ChangeTileOwner_Water,
+	.vehicle_enter_tile_proc = [](Vehicle *, TileIndex, int, int) -> VehicleEnterTileStates { return {}; },
+	.terraform_tile_proc = TerraformTile_Water,
+	.check_build_above_proc = CheckBuildAbove_Water,
 };
