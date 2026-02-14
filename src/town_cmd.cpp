@@ -257,10 +257,7 @@ static inline DiagDirection RandomDiagDir()
 	return (DiagDirection)(RandomRange(DIAGDIR_END));
 }
 
-/**
- * Draw a house and its tile. This is a tile callback routine.
- * @param ti TileInfo of the tile to draw
- */
+/** @copydoc DrawTileProc */
 static void DrawTile_Town(TileInfo *ti)
 {
 	HouseID house_id = GetHouseType(ti->tile);
@@ -302,16 +299,7 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 }
 
-static int GetSlopePixelZ_Town(TileIndex tile, uint, uint, bool)
-{
-	return GetTileMaxPixelZ(tile);
-}
-
-/**
- * Get the foundation for a house. This is a tile callback routine.
- * @param tile The tile to find a foundation for.
- * @param tileh The slope of the tile.
- */
+/** @copydoc GetFoundationProc */
 static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 {
 	HouseID hid = GetHouseType(tile);
@@ -331,10 +319,10 @@ static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 }
 
 /**
- * Animate a tile for a town.
+ * @copydoc AnimateTileProc
+ *
  * Only certain houses can be animated.
  * The newhouses animation supersedes regular ones.
- * @param tile TileIndex of the house to animate.
  */
 static void AnimateTile_Town(TileIndex tile)
 {
@@ -593,12 +581,7 @@ static void TownGenerateCargoBinomial(Town *t, TownProductionEffect tpe, uint8_t
 	}
 }
 
-/**
- * Tile callback function.
- *
- * Tile callback function. Periodic tick handler for the tiles of a town.
- * @param tile been asked to do its stuff
- */
+/** @copydoc TileLoopProc */
 static void TileLoop_Town(TileIndex tile)
 {
 	HouseID house_id = GetHouseType(tile);
@@ -708,12 +691,7 @@ static void TileLoop_Town(TileIndex tile)
 	cur_company.Restore();
 }
 
-/**
- * Callback function to clear a house tile.
- * @param tile The tile to clear.
- * @param flags Type of operation.
- * @return The cost of this operation or an error.
- */
+/** @copydoc ClearTileProc */
 static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlags flags)
 {
 	if (flags.Test(DoCommandFlag::Auto)) return CommandCost(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
@@ -748,6 +726,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlags flags)
 	return cost;
 }
 
+/** @copydoc AddProducedCargoProc */
 static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 {
 	HouseID house_id = GetHouseType(tile);
@@ -844,6 +823,7 @@ void AddAcceptedCargoOfHouse(TileIndex tile, HouseID house, const HouseSpec *hs,
 	}
 }
 
+/** @copydoc AddAcceptedCargoProc */
 static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted)
 {
 	HouseID house = GetHouseType(tile);
@@ -863,6 +843,7 @@ CargoArray GetAcceptedCargoOfHouse(const HouseSpec *hs)
 	return acceptance;
 }
 
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_Town(TileIndex tile, TileDesc &td)
 {
 	const HouseID house = GetHouseType(tile);
@@ -899,17 +880,6 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc &td)
 	}
 
 	td.owner[0] = OWNER_TOWN;
-}
-
-static TrackStatus GetTileTrackStatus_Town(TileIndex, TransportType, uint, DiagDirection)
-{
-	/* not used */
-	return 0;
-}
-
-static void ChangeTileOwner_Town(TileIndex, Owner, Owner)
-{
-	/* not used */
 }
 
 static bool GrowTown(Town *t, TownExpandModes modes);
@@ -4215,6 +4185,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_towns_yearly({TimerGameEco
 	}
 });
 
+/** @copydoc TerraformTileProc */
 static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {
@@ -4243,23 +4214,18 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlags flags, int 
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
-/** Tile callback functions for a town */
+/** TileTypeProcs definitions for TileType::Town tiles. */
 extern const TileTypeProcs _tile_type_town_procs = {
-	DrawTile_Town,           // draw_tile_proc
-	GetSlopePixelZ_Town,     // get_slope_z_proc
-	ClearTile_Town,          // clear_tile_proc
-	AddAcceptedCargo_Town,   // add_accepted_cargo_proc
-	GetTileDesc_Town,        // get_tile_desc_proc
-	GetTileTrackStatus_Town, // get_tile_track_status_proc
-	nullptr,                    // click_tile_proc
-	AnimateTile_Town,        // animate_tile_proc
-	TileLoop_Town,           // tile_loop_proc
-	ChangeTileOwner_Town,    // change_tile_owner_proc
-	AddProducedCargo_Town,   // add_produced_cargo_proc
-	nullptr,                    // vehicle_enter_tile_proc
-	GetFoundation_Town,      // get_foundation_proc
-	TerraformTile_Town,      // terraform_tile_proc
-	nullptr, // check_build_above_proc
+	.draw_tile_proc = DrawTile_Town,
+	.get_slope_pixel_z_proc = [](TileIndex tile, uint, uint, bool) { return GetTileMaxPixelZ(tile); },
+	.clear_tile_proc = ClearTile_Town,
+	.add_accepted_cargo_proc = AddAcceptedCargo_Town,
+	.get_tile_desc_proc = GetTileDesc_Town,
+	.animate_tile_proc = AnimateTile_Town,
+	.tile_loop_proc = TileLoop_Town,
+	.add_produced_cargo_proc = AddProducedCargo_Town,
+	.get_foundation_proc = GetFoundation_Town,
+	.terraform_tile_proc = TerraformTile_Town,
 };
 
 std::span<const DrawBuildingsTileStruct> GetTownDrawTileData()
