@@ -213,18 +213,18 @@ struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc; ///< Called to render the tile and its contents to the screen.
 	GetSlopePixelZProc *get_slope_z_proc; ///< Called to get the world Z coordinate for a given location within the tile.
 	ClearTileProc *clear_tile_proc; ////< Called to clear a tile.
-	AddAcceptedCargoProc *add_accepted_cargo_proc; ///< Adds accepted cargo of the tile to cargo array supplied as parameter.
+	AddAcceptedCargoProc *add_accepted_cargo_proc = nullptr; ///< Adds accepted cargo of the tile to cargo array supplied as parameter.
 	GetTileDescProc *get_tile_desc_proc; ///< Get a description of a tile (for the 'land area information' tool).
-	GetTileTrackStatusProc *get_tile_track_status_proc; ///< Get available tracks and status of a tile.
-	ClickTileProc *click_tile_proc; ///< Called when tile is clicked
-	AnimateTileProc *animate_tile_proc; ///< Called to animate a tile.
+	GetTileTrackStatusProc *get_tile_track_status_proc = [](TileIndex, TransportType, uint, DiagDirection) -> TrackStatus { return {}; }; ///< Get available tracks and status of a tile.
+	ClickTileProc *click_tile_proc = nullptr; ///< Called when tile is clicked
+	AnimateTileProc *animate_tile_proc = nullptr; ///< Called to animate a tile.
 	TileLoopProc *tile_loop_proc; ///< Called to periodically update the tile.
-	ChangeTileOwnerProc *change_tile_owner_proc; ///< Called to change the ownership of elements on a tile.
-	AddProducedCargoProc *add_produced_cargo_proc; ///< Adds produced cargo of the tile to cargo array supplied as parameter.
-	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile.
-	GetFoundationProc *get_foundation_proc; ///< Called to get the foundation.
+	ChangeTileOwnerProc *change_tile_owner_proc = [](TileIndex, CompanyID, CompanyID) {}; ///< Called to change the ownership of elements on a tile.
+	AddProducedCargoProc *add_produced_cargo_proc = nullptr; ///< Adds produced cargo of the tile to cargo array supplied as parameter.
+	VehicleEnterTileProc *vehicle_enter_tile_proc = nullptr; ///< Called when a vehicle enters a tile.
+	GetFoundationProc *get_foundation_proc = [](TileIndex, Slope) { return FOUNDATION_NONE; }; ///< Called to get the foundation.
 	TerraformTileProc *terraform_tile_proc; ///< Called when a terraforming operation is about to take place.
-	CheckBuildAboveProc *check_build_above_proc; ///< Called to check whether a bridge can be build above.
+	CheckBuildAboveProc *check_build_above_proc = nullptr; ///< Called to check whether a bridge can be build above.
 };
 
 extern const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs;
