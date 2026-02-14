@@ -211,7 +211,7 @@ using CheckBuildAboveProc = CommandCost(TileIndex tile, DoCommandFlags flags, Ax
  */
 struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc; ///< Called to render the tile and its contents to the screen.
-	GetSlopePixelZProc *get_slope_z_proc; ///< Called to get the world Z coordinate for a given location within the tile.
+	GetSlopePixelZProc *get_slope_pixel_z_proc; ///< Called to get the world Z coordinate for a given location within the tile.
 	ClearTileProc *clear_tile_proc; ////< Called to clear a tile.
 	AddAcceptedCargoProc *add_accepted_cargo_proc = nullptr; ///< Adds accepted cargo of the tile to cargo array supplied as parameter.
 	GetTileDescProc *get_tile_desc_proc; ///< Get a description of a tile (for the 'land area information' tool).

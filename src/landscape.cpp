@@ -314,7 +314,7 @@ int GetSlopePixelZ(int x, int y, bool ground_vehicle)
 {
 	TileIndex tile = TileVirtXY(x, y);
 
-	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y, ground_vehicle);
+	return _tile_type_procs[GetTileType(tile)]->get_slope_pixel_z_proc(tile, x, y, ground_vehicle);
 }
 
 /**
@@ -330,7 +330,7 @@ int GetSlopePixelZOutsideMap(int x, int y)
 	if (IsInsideBS(x, 0, Map::SizeX() * TILE_SIZE) && IsInsideBS(y, 0, Map::SizeY() * TILE_SIZE)) {
 		return GetSlopePixelZ(x, y, false);
 	} else {
-		return _tile_type_procs[TileType::Void]->get_slope_z_proc(INVALID_TILE, x, y, false);
+		return _tile_type_procs[TileType::Void]->get_slope_pixel_z_proc(INVALID_TILE, x, y, false);
 	}
 }
 
