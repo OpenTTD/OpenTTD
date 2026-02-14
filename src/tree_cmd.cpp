@@ -641,6 +641,7 @@ struct TreeListEnt : PalSpriteID {
 	int8_t x, y;
 };
 
+/** @copydoc DrawTileProc */
 static void DrawTile_Trees(TileInfo *ti)
 {
 	switch (GetTreeGround(ti->tile)) {
@@ -713,28 +714,23 @@ static void DrawTile_Trees(TileInfo *ti)
 }
 
 
-static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, bool)
+/** @copydoc GetSlopePixelZProc */
+static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, [[maybe_unused]] bool ground_vehicle)
 {
 	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Foundation GetFoundation_Trees(TileIndex, Slope)
-{
-	return FOUNDATION_NONE;
-}
-
+/** @copydoc ClearTileProc */
 static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 {
-	uint num;
-
 	if (Company::IsValidID(_current_company)) {
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 		if (t != nullptr) ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM, flags);
 	}
 
-	num = GetTreeCount(tile);
+	uint num = GetTreeCount(tile);
 	if (IsInsideMM(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
@@ -742,6 +738,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[Price::ClearTrees]);
 }
 
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_Trees(TileIndex tile, TileDesc &td)
 {
 	TreeType tt = GetTreeType(tile);
@@ -837,6 +834,7 @@ static bool TreesOnTileCanSpread(TileIndex tile)
 	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
+/** @copydoc TileLoopProc */
 static void TileLoop_Trees(TileIndex tile)
 {
 	if (GetTreeGround(tile) == TreeGround::Shore) {
@@ -1014,41 +1012,18 @@ void OnTick_Trees()
 	PlantRandomTree(false);
 }
 
-static TrackStatus GetTileTrackStatus_Trees(TileIndex, TransportType, uint, DiagDirection)
-{
-	return 0;
-}
-
-static void ChangeTileOwner_Trees(TileIndex, Owner, Owner)
-{
-	/* not used */
-}
-
 void InitializeTrees()
 {
 	_trees_tick_ctr = 0;
 }
 
-static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlags flags, int, Slope)
-{
-	return Command<Commands::LandscapeClear>::Do(flags, tile);
-}
 
-
+/** TileTypeProcs definitions for TileType::Trees tiles. */
 extern const TileTypeProcs _tile_type_trees_procs = {
-	DrawTile_Trees,           // draw_tile_proc
-	GetSlopePixelZ_Trees,     // get_slope_z_proc
-	ClearTile_Trees,          // clear_tile_proc
-	nullptr,                     // add_accepted_cargo_proc
-	GetTileDesc_Trees,        // get_tile_desc_proc
-	GetTileTrackStatus_Trees, // get_tile_track_status_proc
-	nullptr,                     // click_tile_proc
-	nullptr,                     // animate_tile_proc
-	TileLoop_Trees,           // tile_loop_proc
-	ChangeTileOwner_Trees,    // change_tile_owner_proc
-	nullptr,                     // add_produced_cargo_proc
-	nullptr,                     // vehicle_enter_tile_proc
-	GetFoundation_Trees,      // get_foundation_proc
-	TerraformTile_Trees,      // terraform_tile_proc
-	nullptr, // check_build_above_proc
+	.draw_tile_proc = DrawTile_Trees,
+	.get_slope_pixel_z_proc = GetSlopePixelZ_Trees,
+	.clear_tile_proc = ClearTile_Trees,
+	.get_tile_desc_proc = GetTileDesc_Trees,
+	.tile_loop_proc = TileLoop_Trees,
+	.terraform_tile_proc = [](TileIndex tile, DoCommandFlags flags, int, Slope) { return Command<Commands::LandscapeClear>::Do(flags, tile); }
 };
