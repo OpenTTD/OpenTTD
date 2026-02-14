@@ -162,6 +162,7 @@ public:
 	/**
 	 * Get the name of this item.
 	 * @param index the index to get the name for.
+	 * @return The name of the inspected object.
 	 */
 	virtual std::string GetName(uint index) const = 0;
 
