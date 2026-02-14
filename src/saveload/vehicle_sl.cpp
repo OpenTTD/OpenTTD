@@ -252,7 +252,10 @@ static void CheckValidVehicles()
 
 extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
 
-/** Called after load for phase 1 of vehicle initialisation */
+/**
+ * Called after load for phase 1 of vehicle initialisation.
+ * @param part_of_load Whether we are being called during loading a savegame, or due to NewGRFs being changed.
+ */
 void AfterLoadVehiclesPhase1(bool part_of_load)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {

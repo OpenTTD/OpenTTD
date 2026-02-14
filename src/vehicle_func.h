@@ -101,6 +101,9 @@ private:
 /**
  * Loop over vehicles on a tile, and check whether a predicate is true for any of them.
  * The predicate must have the signature: bool Predicate(const Vehicle *);
+ * @param tile The tile to search on.
+ * @param predicate The filter to apply to find vehicles.
+ * @return \c true iff a suitable vehicle has been found within the given distance.
  */
 template <class UnaryPred>
 bool HasVehicleOnTile(TileIndex tile, UnaryPred &&predicate)
@@ -170,6 +173,11 @@ private:
 /**
  * Loop over vehicles near a given world coordinate, and check whether a predicate is true for any of them.
  * The predicate must have the signature: bool Predicate(const Vehicle *);
+ * @param x The world X-coordinate.
+ * @param y The world Y-coordinate.
+ * @param max_dist The maximum distance to consider.
+ * @param predicate The filter to apply to find vehicles.
+ * @return \c true iff a suitable vehicle has been found within the given distance.
  * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
  */
 template <class UnaryPred>

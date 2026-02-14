@@ -36,6 +36,7 @@ static bool IncrementSprite(EffectVehicle *v, SpriteID last)
 	}
 }
 
+/** Initialise the smoke of a chimney. @copydoc EffectProcs::InitProc */
 static void ChimneySmokeInit(EffectVehicle *v)
 {
 	uint32_t r = Random();
@@ -43,6 +44,7 @@ static void ChimneySmokeInit(EffectVehicle *v)
 	v->progress = GB(r, 16, 3);
 }
 
+/** Run a single tick of the smoke of a chimney. @copydoc EffectProcs::TickProc */
 static bool ChimneySmokeTick(EffectVehicle *v)
 {
 	if (v->progress > 0) {
@@ -64,12 +66,14 @@ static bool ChimneySmokeTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise the smoke of a steam engine. @copydoc EffectProcs::InitProc */
 static void SteamSmokeInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_STEAM_SMOKE_0);
 	v->progress = 12;
 }
 
+/** Run a single tick of the smoke of a steam engine. @copydoc EffectProcs::TickProc */
 static bool SteamSmokeTick(EffectVehicle *v)
 {
 	bool moved = false;
@@ -94,12 +98,14 @@ static bool SteamSmokeTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise the smoke of a diesel engine. @copydoc EffectProcs::InitProc */
 static void DieselSmokeInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_DIESEL_SMOKE_0);
 	v->progress = 0;
 }
 
+/** Run a single tick of the smoke of a diesel engine. @copydoc EffectProcs::TickProc */
 static bool DieselSmokeTick(EffectVehicle *v)
 {
 	v->progress++;
@@ -118,12 +124,14 @@ static bool DieselSmokeTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise the sparks of a train. @copydoc EffectProcs::InitProc */
 static void ElectricSparkInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_ELECTRIC_SPARK_0);
 	v->progress = 1;
 }
 
+/** Run a single tick of the sparks of a train. @copydoc EffectProcs::TickProc */
 static bool ElectricSparkTick(EffectVehicle *v)
 {
 	if (v->progress < 2) {
@@ -141,12 +149,14 @@ static bool ElectricSparkTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise some smoke. @copydoc EffectProcs::InitProc */
 static void SmokeInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_SMOKE_0);
 	v->progress = 12;
 }
 
+/** Run a single tick of some smoke. @copydoc EffectProcs::TickProc */
 static bool SmokeTick(EffectVehicle *v)
 {
 	bool moved = false;
@@ -171,12 +181,14 @@ static bool SmokeTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise a large explosion. @copydoc EffectProcs::InitProc */
 static void ExplosionLargeInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_EXPLOSION_LARGE_0);
 	v->progress = 0;
 }
 
+/** Run a single tick of a large explosion. @copydoc EffectProcs::TickProc */
 static bool ExplosionLargeTick(EffectVehicle *v)
 {
 	v->progress++;
@@ -191,12 +203,14 @@ static bool ExplosionLargeTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise the smoke of a broken down vehicle. @copydoc EffectProcs::InitProc */
 static void BreakdownSmokeInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_BREAKDOWN_SMOKE_0);
 	v->progress = 0;
 }
 
+/** Run a single tick of the smoke of a broken down vehicle. @copydoc EffectProcs::TickProc */
 static bool BreakdownSmokeTick(EffectVehicle *v)
 {
 	v->progress++;
@@ -216,12 +230,14 @@ static bool BreakdownSmokeTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise a small explosion. @copydoc EffectProcs::InitProc */
 static void ExplosionSmallInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_EXPLOSION_SMALL_0);
 	v->progress = 0;
 }
 
+/** Run a single tick of a small explosion. @copydoc EffectProcs::TickProc */
 static bool ExplosionSmallTick(EffectVehicle *v)
 {
 	v->progress++;
@@ -236,6 +252,7 @@ static bool ExplosionSmallTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise the bulldozer (road works). @copydoc EffectProcs::InitProc */
 static void BulldozerInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_BULLDOZER_NE);
@@ -283,6 +300,7 @@ static const struct {
 	{  0, -1 }
 };
 
+/** Run a single tick of a bulldozer (road works). @copydoc EffectProcs::TickProc */
 static bool BulldozerTick(EffectVehicle *v)
 {
 	v->progress++;
@@ -309,6 +327,7 @@ static bool BulldozerTick(EffectVehicle *v)
 	return true;
 }
 
+/** Initialise the bubbles of the bubble generator industry. @copydoc EffectProcs::InitProc */
 static void BubbleInit(EffectVehicle *v)
 {
 	v->sprite_cache.sprite_seq.Set(SPR_BUBBLE_GENERATE_0);
@@ -466,6 +485,7 @@ static const BubbleMovement * const _bubble_movement[] = {
 	_bubble_absorb,
 };
 
+/** Run a single tick of bubbles of the bubble generator industry. @copydoc EffectProcs::TickProc */
 static bool BubbleTick(EffectVehicle *v)
 {
 	uint anim_state;
@@ -527,9 +547,20 @@ static bool BubbleTick(EffectVehicle *v)
 	return true;
 }
 
+/** Container holding functions to call for a specific effect vehicle type. */
 struct EffectProcs {
-	using InitProc = void(EffectVehicle *);
-	using TickProc = bool(EffectVehicle *);
+	/**
+	 * Initialises effect vehicle for a specific type.
+	 * @param v The vehicle to initialise.
+	 */
+	using InitProc = void(EffectVehicle *v);
+
+	/**
+	 * Run the actions/perform the behaviour of an effect vehicle for a tick.
+	 * @param v The vehicle to work with.
+	 * @return \c true iff the vehicle is still valid, i.e. has not been removed yet.
+	 */
+	using TickProc = bool(EffectVehicle *v);
 
 	InitProc *init_proc; ///< Function to initialise an effect vehicle after construction.
 	TickProc *tick_proc; ///< Functions for controlling effect vehicles at each tick.
