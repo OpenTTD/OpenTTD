@@ -1008,18 +1008,18 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 static bool ExecuteAllowListCtrlAction(CompanyAllowListCtrlAction action, Company *c, const std::string &public_key)
 {
 	switch (action) {
-		case CALCA_ADD:
+		case CompanyAllowListCtrlAction::AddKey:
 			return c->allow_list.Add(public_key);
 
-		case CALCA_REMOVE:
+		case CompanyAllowListCtrlAction::RemoveKey:
 			return c->allow_list.Remove(public_key);
 
-		case CALCA_ALLOW_ANY:
+		case CompanyAllowListCtrlAction::AllowAny:
 			if (c->allow_any) return false;
 			c->allow_any = true;
 			return true;
 
-		case CALCA_ALLOW_LISTED:
+		case CompanyAllowListCtrlAction::AllowListed:
 			if (!c->allow_any) return false;
 			c->allow_any = false;
 			return true;
@@ -1042,14 +1042,14 @@ CommandCost CmdCompanyAllowListCtrl(DoCommandFlags flags, CompanyAllowListCtrlAc
 	if (c == nullptr) return CMD_ERROR;
 
 	switch (action) {
-		case CALCA_ADD:
-		case CALCA_REMOVE:
+		case CompanyAllowListCtrlAction::AddKey:
+		case CompanyAllowListCtrlAction::RemoveKey:
 			/* The public key length includes the '\0'. */
 			if (public_key.size() != NETWORK_PUBLIC_KEY_LENGTH - 1) return CMD_ERROR;
 			break;
 
-		case CALCA_ALLOW_ANY:
-		case CALCA_ALLOW_LISTED:
+		case CompanyAllowListCtrlAction::AllowAny:
+		case CompanyAllowListCtrlAction::AllowListed:
 			if (public_key.size() != 0) return CMD_ERROR;
 			break;
 

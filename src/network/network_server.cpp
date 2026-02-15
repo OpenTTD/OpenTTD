@@ -2212,7 +2212,7 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		 * different state/president/company name in the different clients, we need to
 		 * circumvent the normal ::Post logic and go directly to sending the command.
 		 */
-		Command<Commands::CompanyAllowListControl>::SendNet(STR_NULL, c->index, CALCA_ADD, ci->public_key);
+		Command<Commands::CompanyAllowListControl>::SendNet(STR_NULL, c->index, CompanyAllowListCtrlAction::AddKey, ci->public_key);
 		Command<Commands::RenamePresident>::SendNet(STR_NULL, c->index, ci->client_name);
 
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, c->index + 1);

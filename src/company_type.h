@@ -75,13 +75,11 @@ enum class CompanyCtrlAction : uint8_t {
 };
 
 /** The action to do with Commands::CompanyAllowListControl. */
-enum CompanyAllowListCtrlAction : uint8_t {
-	CALCA_ADD, ///< Create a public key.
-	CALCA_REMOVE, ///< Remove a public key.
-	CALCA_ALLOW_ANY, ///< Allow joining the company without a key.
-	CALCA_ALLOW_LISTED, ///< Allow only listed keys to join the company.
-
-	CALCA_END,    ///< Sentinel for end.
+enum class CompanyAllowListCtrlAction : uint8_t {
+	AddKey, ///< Create a public key.
+	RemoveKey, ///< Remove a public key.
+	AllowAny, ///< Allow joining the company without a key.
+	AllowListed, ///< Allow only listed keys to join the company.
 };
 
 #endif /* COMPANY_TYPE_H */

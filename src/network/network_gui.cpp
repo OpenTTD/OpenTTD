@@ -1652,7 +1652,7 @@ private:
 	static void OnClickClientAuthorize([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
 	{
 		AutoRestoreBackup<CompanyID> cur_company(_current_company, NetworkClientInfo::GetByClientID(_network_own_client_id)->client_playas);
-		Command<Commands::CompanyAllowListControl>::Post(CALCA_ADD, NetworkClientInfo::GetByClientID(client_id)->public_key);
+		Command<Commands::CompanyAllowListControl>::Post(CompanyAllowListCtrlAction::AddKey, NetworkClientInfo::GetByClientID(client_id)->public_key);
 	}
 
 	/**
@@ -1908,13 +1908,13 @@ public:
 
 					case DropDownAction::CompanyAllowAny: {
 						AutoRestoreBackup cur_company(_current_company, this->dd_company_id);
-						Command<Commands::CompanyAllowListControl>::Post(CALCA_ALLOW_ANY, {});
+						Command<Commands::CompanyAllowListControl>::Post(CompanyAllowListCtrlAction::AllowAny, {});
 						return;
 					}
 
 					case DropDownAction::CompanyAllowListed: {
 						AutoRestoreBackup cur_company(_current_company, this->dd_company_id);
-						Command<Commands::CompanyAllowListControl>::Post(CALCA_ALLOW_LISTED, {});
+						Command<Commands::CompanyAllowListControl>::Post(CompanyAllowListCtrlAction::AllowListed, {});
 						return;
 					}
 
