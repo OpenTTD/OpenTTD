@@ -24,7 +24,7 @@
 static FBlitter_40bppAnim iFBlitter_40bppAnim;
 
 /** Cached black value. */
-static const Colour _black_colour(0, 0, 0);
+static const Colour _black_colour{0, 0, 0};
 
 
 void Blitter_40bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)

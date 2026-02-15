@@ -39,7 +39,10 @@ struct CompanyInfrastructure {
 
 	auto operator<=>(const CompanyInfrastructure &) const = default;
 
-	/** Get total sum of all owned track bits. */
+	/**
+	 * Get total sum of all owned track bits.
+	 * @return The number of owned track bits.
+	 */
 	uint32_t GetRailTotal() const
 	{
 		return std::accumulate(std::begin(this->rail), std::end(this->rail), 0U);

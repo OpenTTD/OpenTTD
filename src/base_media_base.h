@@ -189,7 +189,10 @@ public:
 	 */
 	static bool DetermineBestSet();
 
-	/** Do the scan for files. */
+	/**
+	 * Do the scan for files.
+	 * @return The number of sets that have been found.
+	 */
 	static uint FindSets()
 	{
 		BaseMedia<Tbase_set> fs;

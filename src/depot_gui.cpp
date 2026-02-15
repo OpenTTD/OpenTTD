@@ -617,6 +617,7 @@ struct DepotWindow : Window {
 	 * Only use this function to if the widget is used for several vehicle types and each has
 	 * different text/sprites. If the widget is only used for a single vehicle type, or the same
 	 * text/sprites are used every time, use the nested widget array to initialize the widget.
+	 * @param type The vehicle type to set up for.
 	 */
 	void SetupWidgetData(VehicleType type)
 	{
@@ -942,6 +943,8 @@ struct DepotWindow : Window {
 
 	/**
 	 * Clones a vehicle from a vehicle list.  If this doesn't make sense (because not all vehicles in the list have the same orders), then it displays an error.
+	 * @param begin The start of the vehicle list to consider.
+	 * @param end The end of the vehicle list to consider.
 	 * @return This always returns true, which indicates that the contextual action handled the mouse click.
 	 *         Note that it's correct behaviour to always handle the click even though an error is displayed,
 	 *         because users aren't going to expect the default action to be performed just because they overlooked that cloning doesn't make sense.

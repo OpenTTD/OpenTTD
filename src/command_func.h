@@ -60,10 +60,13 @@ struct RecursiveCommandCounter {
 	RecursiveCommandCounter() noexcept { _counter++; }
 	~RecursiveCommandCounter() noexcept { _counter--; }
 
-	/** Are we in the top-level command execution? */
+	/**
+	 * Are we in the top-level command execution?
+	 * @return \c true iff at the top level.
+	 */
 	bool IsTopLevel() const { return _counter == 1; }
 private:
-	static int _counter;
+	static int _counter; ///< Number of instances of this class.
 };
 
 #if defined(__GNUC__) && !defined(__clang__)
@@ -105,7 +108,11 @@ protected:
 template <Commands Tcmd, typename Tret, typename... Targs>
 struct CommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...), true> : protected CommandHelperBase {
 private:
-	/** Extract the \c CommandCost from a command proc result. */
+	/**
+	 * Extract the \c CommandCost from a command proc result.
+	 * @param ret The return value of the command.
+	 * @return The command cost.
+	 */
 	static inline CommandCost &ExtractCommandCost(Tret &ret)
 	{
 		if constexpr (std::is_same_v<Tret, CommandCost>) {
@@ -115,7 +122,11 @@ private:
 		}
 	}
 
-	/** Make a command proc result from a \c CommandCost. */
+	/**
+	 * Make a command proc result from a \c CommandCost.
+	 * @param cost The cost of the command.
+	 * @return The command's result structure.
+	 */
 	static inline Tret MakeResult(const CommandCost &cost)
 	{
 		Tret ret{};
@@ -168,18 +179,23 @@ public:
 	 * Shortcut for the long Post when not using a callback.
 	 * @param err_message Message prefix to show on error
 	 * @param args Parameters for the command
+	 * @return \c true iff the command succeeded.
 	 */
 	static inline bool Post(StringID err_message, Targs... args) { return Post<CommandCallback>(err_message, nullptr, std::forward<Targs>(args)...); }
+
 	/**
 	 * Shortcut for the long Post when not using an error message.
 	 * @param callback A callback function to call after the command is finished
 	 * @param args Parameters for the command
+	 * @return \c true iff the command succeeded.
 	 */
 	template <typename Tcallback>
 	static inline bool Post(Tcallback *callback, Targs... args) { return Post((StringID)0, callback, std::forward<Targs>(args)...); }
+
 	/**
 	 * Shortcut for the long Post when not using a callback or an error message.
 	 * @param args Parameters for the command
+	 * @return \c true iff the command succeeded.
 	 */
 	static inline bool Post(Targs... args) { return Post<CommandCallback>((StringID)0, nullptr, std::forward<Targs>(args)...); }
 
@@ -320,7 +336,11 @@ protected:
 		return ExtractCommandCost(res).Succeeded();
 	}
 
-	/** Helper to process a single ClientID argument. */
+	/**
+	 * Helper to process a single ClientID argument.
+	 * @param data The value to check.
+	 * @return \c true iff the ClientID arguments are valid, or it isn't a ClientID argument.
+	 */
 	template <class T>
 	static inline bool ClientIdIsSet([[maybe_unused]] T &data)
 	{
@@ -331,7 +351,11 @@ protected:
 		}
 	}
 
-	/** Check if all ClientID arguments are set to valid values. */
+	/**
+	 * Check if all ClientID arguments are set to valid values.
+	 * @param values The values to check.
+	 * @return \c true iff all ClientID arguments are valid, or there are no ClientID arguments.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline bool AllClientIdsSet(Ttuple &values, std::index_sequence<Tindices...>)
 	{
@@ -433,23 +457,28 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...), false> : CommandHe
 
 	/**
 	 * Shortcut for Post when not using a callback.
-	 * @param err_message Message prefix to show on error
+	 * @param err_message Message prefix to show on error.
 	 * @param location Tile location for user feedback.
-	 * @param args Parameters for the command
+	 * @param args Parameters for the command.
+	 * @return \c true iff the command succeeded.
 	 */
 	static inline bool Post(StringID err_message, TileIndex location, Targs... args) { return Post<CommandCallback>(err_message, nullptr, location, std::forward<Targs>(args)...); }
+
 	/**
 	 * Shortcut for Post when not using an error message.
 	 * @param callback A callback function to call after the command is finished
 	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command
+	 * @return \c true iff the command succeeded.
 	 */
 	template <typename Tcallback>
 	static inline bool Post(Tcallback *callback, TileIndex location, Targs... args) { return Post((StringID)0, callback, location, std::forward<Targs>(args)...); }
+
 	/**
 	 * Shortcut for Post when not using a callback or an error message.
 	 * @param location Tile location for user feedback.
 	 * @param args Parameters for the command*
+	 * @return \c true iff the command succeeded.
 	 */
 	static inline bool Post(TileIndex location, Targs... args) { return Post<CommandCallback>((StringID)0, nullptr, location, std::forward<Targs>(args)...); }
 

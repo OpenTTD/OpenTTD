@@ -250,6 +250,7 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Gets station with given index
+	 * @param index The pool index to look for.
 	 * @return pointer to station with given index cast to T *
 	 */
 	static inline T *Get(auto index)
@@ -259,6 +260,7 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Returns station if the index is a valid index for this station type
+	 * @param index The pool index to look for.
 	 * @return pointer to station with given index if it's a station of this type
 	 */
 	static inline T *GetIfValid(auto index)

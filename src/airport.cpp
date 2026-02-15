@@ -134,6 +134,8 @@ AirportFTAClass::AirportFTAClass(
  * Get the number of elements of a source Airport state automata
  * Since it is actually just a big array of AirportFTA types, we only
  * know one element from the other by differing 'position' identifiers
+ * @param apFA The state machine builder.
+ * @return The number of elements.
  */
 static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA)
 {

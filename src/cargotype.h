@@ -130,9 +130,10 @@ struct CargoSpec {
 	}
 
 	/**
-	 * Retrieve cargo details for the given cargo type
-	 * @param index ID of cargo
-	 * @pre index is a valid cargo type
+	 * Retrieve cargo details for the given cargo type.
+	 * @param index ID of cargo.
+	 * @pre index is a valid cargo type.
+	 * @return The cargo specification.
 	 */
 	static inline CargoSpec *Get(size_t index)
 	{

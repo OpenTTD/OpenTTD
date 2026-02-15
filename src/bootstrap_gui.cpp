@@ -205,7 +205,7 @@ public:
 		_network_content_client.AddCallback(this);
 	}
 
-	/** Stop listening to the content client events. */
+	/** Stop listening to the content client events. @copydoc Window::Close */
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		_network_content_client.RemoveCallback(this);

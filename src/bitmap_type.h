@@ -94,7 +94,8 @@ public:
 
 	/**
 	 * Test if a tile is part of the tile area.
-	 * @param tile Tile to check
+	 * @param tile Tile to check.
+	 * @return \c true iff the tile is in this area.
 	 */
 	inline bool HasTile(TileIndex tile) const
 	{

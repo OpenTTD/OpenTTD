@@ -101,7 +101,10 @@ struct ExpensesList {
 		return static_cast<uint>(this->items.size()) * GetCharacterHeight(FS_NORMAL);
 	}
 
-	/** Compute width of the expenses categories in pixels. */
+	/**
+	 * Compute width of the expenses categories.
+	 * @return The width in pixels.
+	 */
 	uint GetListWidth() const
 	{
 		uint width = 0;
@@ -160,6 +163,9 @@ static uint GetMaxCategoriesWidth()
 
 /**
  * Draw a category of expenses (revenue, operating expenses, capital expenses).
+ * @param r The bounding box to draw in.
+ * @param start_y The top to start drawing from.
+ * @param list The list of expenses to draw.
  */
 static void DrawCategory(const Rect &r, int start_y, const ExpensesList &list)
 {
@@ -232,6 +238,10 @@ static void DrawPrice(Money amount, int left, int right, int top, TextColour col
 
 /**
  * Draw a category of expenses/revenues in the year column.
+ * @param r The bounding box to draw in.
+ * @param start_y The top to start drawing from.
+ * @param list The list of expenses to draw.
+ * @param tbl The actual expenses.
  * @return The income sum of the category.
  */
 static Money DrawYearCategory(const Rect &r, int start_y, const ExpensesList &list, const Expenses &tbl)

@@ -243,7 +243,10 @@ class BuildAirportWindow : public PickerWindowBase {
 	int line_height = 0;
 	Scrollbar *vscroll = nullptr;
 
-	/** Build a dropdown list of available airport classes */
+	/**
+	 * Build a dropdown list of available airport classes.
+	 * @return The constructed dropdown list.
+	 */
 	static DropDownList BuildAirportClassDropDown()
 	{
 		DropDownList list;

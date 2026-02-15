@@ -100,7 +100,11 @@ namespace CargoFilterCriteria {
 	static constexpr CargoType CF_EXPAND_LIST = NUM_CARGO + 6; ///< Expand list to show all items (station list)
 };
 
-/** Test whether cargo type is not INVALID_CARGO */
+/**
+ * Test whether cargo type is not INVALID_CARGO.
+ * @param cargo The cargo to check.
+ * @return \c false iff the cargo is INVALID_CARGO.
+ */
 inline bool IsValidCargoType(CargoType cargo) { return cargo != INVALID_CARGO; }
 
 typedef uint64_t CargoTypes;

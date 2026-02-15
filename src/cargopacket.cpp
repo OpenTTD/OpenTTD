@@ -436,7 +436,7 @@ void VehicleCargoList::AgeCargo()
  * @param cargo The cargo type of the cargo.
  * @param payment Payment object for registering transfers.
  * @param current_tile Current tile the cargo handling is happening on.
- * return If any cargo will be unloaded.
+ * @return \c true iff any cargo will be unloaded.
  */
 bool VehicleCargoList::Stage(bool accepted, StationID current_station, std::span<const StationID> next_station, OrderUnloadType unload_type, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile)
 {
@@ -665,6 +665,7 @@ uint VehicleCargoList::Truncate(uint max_move)
  * @param avoid Station to exclude from routing and current next hop of packets to reroute.
  * @param avoid2 Additional station to exclude from routing.
  * @param ge GoodsEntry to get the routing info from.
+ * @return The number of elements that got rerouted.
  */
 uint VehicleCargoList::Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
 {
@@ -856,6 +857,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, std::span<con
  * @param avoid Station to exclude from routing and current next hop of packets to reroute.
  * @param avoid2 Additional station to exclude from routing.
  * @param ge GoodsEntry to get the routing info from.
+ * @return The number of elements that got rerouted.
  */
 uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
 {

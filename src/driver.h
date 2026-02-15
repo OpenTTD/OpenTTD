@@ -69,6 +69,7 @@ private:
 
 	/**
 	 * Get the map with drivers.
+	 * @return A reference to the drivers.
 	 */
 	static Drivers &GetDrivers()
 	{

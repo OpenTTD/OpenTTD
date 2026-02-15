@@ -353,10 +353,11 @@ void UpdateLandscapingLimits()
 }
 
 /**
- * Set the right DParams for STR_ERROR_OWNED_BY.
- * @param owner the owner to get the name of.
- * @param tile  optional tile to get the right town.
+ * Get the right StringParameters for STR_ERROR_OWNED_BY.
+ * @param owner The owner to get the name of.
+ * @param tile Optional tile to get the right town.
  * @pre if tile == 0, then owner can't be OWNER_TOWN.
+ * @return The string parameters.
  */
 std::array<StringParameter, 2> GetParamsForOwnedBy(Owner owner, TileIndex tile)
 {
