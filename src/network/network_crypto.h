@@ -74,6 +74,7 @@ public:
 
 	/**
 	 * Reply to the request with the given password.
+	 * @param password The requested password from the user.
 	 */
 	virtual void Reply(const std::string &password) = 0;
 };
@@ -245,6 +246,7 @@ public:
 	/**
 	 * Read the request to enable encryption from the server.
 	 * @param p The request from the server.
+	 * @return \c true when enough bytes could be read for the nonce, otherwise \c false.
 	 */
 	virtual bool ReceiveEnableEncryption(struct Packet &p) = 0;
 

@@ -256,6 +256,7 @@ void TCPConnecter::Resolve()
 
 /**
  * Thunk to start Resolve() on the right instance.
+ * @param connecter The connector to resolve on.
  */
 /* static */ void TCPConnecter::ResolveThunk(TCPConnecter *connecter)
 {

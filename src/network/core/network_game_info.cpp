@@ -40,6 +40,7 @@ NetworkServerGameInfo _network_game_info; ///< Information about our game.
 /**
  * Get the network version string used by this build.
  * The returned string is guaranteed to be at most NETWORK_REVISION_LENGTH bytes including '\0' terminator.
+ * @return The revision string.
  */
 std::string_view GetNetworkRevisionString()
 {
@@ -98,6 +99,7 @@ static std::string_view ExtractNetworkRevisionHash(std::string_view revision_str
  * Checks whether the given version string is compatible with our version.
  * First tries to match the full string, if that fails, attempts to compare just git hashes.
  * @param other the version string to compare to
+ * @return \c true if the other version is deemed compatible.
  */
 bool IsNetworkCompatibleVersion(std::string_view other)
 {
@@ -120,6 +122,7 @@ bool IsNetworkCompatibleVersion(std::string_view other)
 
 /**
  * Check if an game entry is compatible with our client.
+ * @param ngi The game information to process and update the compatible field of.
  */
 void CheckGameCompatibility(NetworkGameInfo &ngi)
 {

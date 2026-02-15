@@ -1349,6 +1349,8 @@ public:
 
 	/**
 	 * OnClick handler for when the button is pressed.
+	 * @param w The window the click was in.
+	 * @param pt The location the click was at.
 	 */
 	virtual void OnClick(struct NetworkClientListWindow *w, Point pt) = 0;
 };

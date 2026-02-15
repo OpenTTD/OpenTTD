@@ -151,6 +151,7 @@ public:
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
+	 * @return The std::strong_ordering of the comparison.
 	 */
 	auto operator <=>(NetworkAddress &address)
 	{

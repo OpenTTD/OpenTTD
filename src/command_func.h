@@ -244,7 +244,10 @@ public:
 	}
 
 protected:
-	/** Helper to process a single ClientID argument. */
+	/**
+	 * Helper to process a single ClientID argument.
+	 * @param data The data to process.
+	 */
 	template <class T>
 	static inline void SetClientIdHelper([[maybe_unused]] T &data)
 	{
@@ -253,14 +256,21 @@ protected:
 		}
 	}
 
-	/** Set all invalid ClientID's to the proper value. */
+	/**
+	 * Set all invalid ClientIDs to the proper value.
+	 * @param values The values to go through.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SetClientIdHelper(std::get<Tindices>(values))), ...);
 	}
 
-	/** Remove the first element of a tuple. */
+	/**
+	 * Remove the first element of a tuple.
+	 * @param tuple The tuple to go through.
+	 * @return The tuple without the first element.
+	 */
 	template <template <typename...> typename Tt, typename T1, typename... Ts>
 	static inline Tt<Ts...> RemoveFirstTupleElement(const Tt<T1, Ts...> &tuple)
 	{

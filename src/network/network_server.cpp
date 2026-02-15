@@ -58,9 +58,9 @@ INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 /** Instantiate the listen sockets. */
 template SocketList TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED>::sockets;
 
-static NetworkAuthenticationDefaultPasswordProvider _password_provider(_settings_client.network.server_password); ///< Provides the password validation for the game's password.
-static NetworkAuthenticationDefaultAuthorizedKeyHandler _authorized_key_handler(_settings_client.network.server_authorized_keys); ///< Provides the authorized key handling for the game authentication.
-static NetworkAuthenticationDefaultAuthorizedKeyHandler _rcon_authorized_key_handler(_settings_client.network.rcon_authorized_keys); ///< Provides the authorized key validation for rcon.
+static NetworkAuthenticationDefaultPasswordProvider _password_provider{_settings_client.network.server_password}; ///< Provides the password validation for the game's password.
+static NetworkAuthenticationDefaultAuthorizedKeyHandler _authorized_key_handler{_settings_client.network.server_authorized_keys}; ///< Provides the authorized key handling for the game authentication.
+static NetworkAuthenticationDefaultAuthorizedKeyHandler _rcon_authorized_key_handler{_settings_client.network.rcon_authorized_keys}; ///< Provides the authorized key validation for rcon.
 
 
 /** Writing a savegame directly to a number of packets. */
@@ -1531,6 +1531,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &p)
 
 /**
  * Get the company stats.
+ * @return Array with the statistics.
  */
 NetworkCompanyStatsArray NetworkGetCompanyStats()
 {
@@ -2015,7 +2016,6 @@ void NetworkServerUpdateGameInfo()
  * Handle the tid-bits of moving a client from one company to another.
  * @param client_id id of the client we want to move.
  * @param company_id id of the company we want to move the client to.
- * @return void
  */
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 {
@@ -2081,6 +2081,7 @@ void NetworkServerKickClient(ClientID client_id, std::string_view reason)
  * @param client_id The client to check for.
  * @param ban Whether to ban or kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
+ * @return The number of clients that were kicked.
  */
 uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, std::string_view reason)
 {
@@ -2092,6 +2093,7 @@ uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, std::string_view rea
  * @param ip The IP address/range to ban/kick.
  * @param ban Whether to ban or just kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
+ * @return The number of clients that were kicked.
  */
 uint NetworkServerKickOrBanIP(std::string_view ip, bool ban, std::string_view reason)
 {
@@ -2142,6 +2144,7 @@ bool NetworkCompanyHasClients(CompanyID company)
 
 /**
  * Get the name of the client, if the user did not send it yet, Client ID is used.
+ * @return The name of a the client.
  */
 std::string ServerNetworkGameSocketHandler::GetClientName() const
 {

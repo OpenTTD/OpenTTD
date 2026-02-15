@@ -87,7 +87,10 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet &, NetworkAdd
 	NetworkAddServer(client_addr.GetAddressAsString(false), false, true);
 }
 
-/** Broadcast to all ips */
+/**
+ * Broadcast to all IPs.
+ * @param socket The socket to broadcast on.
+ */
 static void NetworkUDPBroadCast(NetworkUDPSocketHandler &socket)
 {
 	for (NetworkAddress &addr : _broadcast_list) {

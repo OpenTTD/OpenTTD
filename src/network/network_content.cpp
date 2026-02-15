@@ -46,7 +46,7 @@ extern bool HasScenario(const ContentInfo &ci, bool md5sum);
 /** The client we use to connect to the server. */
 ClientNetworkContentSocketHandler _network_content_client;
 
-/** Wrapper function for the HasProc */
+/** Check whether NewGRF content exists. @copydoc HasContentProc */
 static bool HasGRFConfig(const ContentInfo &ci, bool md5sum)
 {
 	return FindGRFConfig(std::byteswap(ci.unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci.md5sum : nullptr) != nullptr;
@@ -729,10 +729,8 @@ void ClientNetworkContentSocketHandler::Connect()
 	TCPConnecter::Create<NetworkContentConnecter>(NetworkContentServerConnectionString());
 }
 
-/**
- * Disconnect from the content server.
- */
-NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool)
+/** Disconnect from the content server. @copydoc NetworkTCPSocketHandler::CloseConnection */
+NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection([[maybe_unused]] bool error)
 {
 	NetworkContentSocketHandler::CloseConnection();
 
@@ -893,7 +891,10 @@ void ClientNetworkContentSocketHandler::UnselectAll()
 	}
 }
 
-/** Toggle the state of a content info and check its dependencies */
+/**
+ * Toggle the state of a content info and check its dependencies.
+ * @param ci The content info to change.
+ */
 void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo &ci)
 {
 	switch (ci.state) {

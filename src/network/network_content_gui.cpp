@@ -386,6 +386,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 	/**
 	 * Callback function for disclaimer about entering external websites.
+	 * @param w The window to open the external search on.
+	 * @param accepted Whether the disclaimer was accepted.
 	 */
 	static void ExternalSearchDisclaimerCallback(Window *w, bool accepted)
 	{
@@ -459,7 +461,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		if (idx >= 0) this->list_pos = idx;
 	}
 
-	/** Filter content by tags/name */
+	/** Filter content by tags/name. @copydoc GUIList::FilterFunction */
 	static bool TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
 		if ((*a)->state == ContentInfo::State::Selected || (*a)->state == ContentInfo::State::Autoselected) return true;
@@ -471,7 +473,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		return filter.string_filter.GetState();
 	}
 
-	/** Filter content by type, but still show content selected for download. */
+	/** Filter content by type, but still show content selected for download. @copydoc GUIList::FilterFunction */
 	static bool TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
 		if (filter.types.None()) return true;

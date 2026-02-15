@@ -355,7 +355,10 @@ private:
 };
 
 namespace ScriptObjectInternal {
-	/** Validate a single string argument coming from network. */
+	/**
+	 * Validate a single string argument coming from a script.
+	 * @param data The data to validate.
+	 */
 	template <class T>
 	static inline void SanitizeSingleStringHelper(T &data)
 	{
@@ -366,14 +369,20 @@ namespace ScriptObjectInternal {
 		}
 	}
 
-	/** Helper function to perform validation on command data strings. */
+	/**
+	 * Helper function to perform validation on command data strings.
+	 * @param values The data to validate.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline void SanitizeStringsHelper(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SanitizeSingleStringHelper(std::get<Tindices>(values))), ...);
 	}
 
-	/** Helper to process a single ClientID argument. */
+	/**
+	 * Helper to process a single ClientID argument.
+	 * @param data The data to process.
+	 */
 	template <class T>
 	static inline void SetClientIdHelper(T &data)
 	{
@@ -382,7 +391,10 @@ namespace ScriptObjectInternal {
 		}
 	}
 
-	/** Set all invalid ClientID's to the proper value. */
+	/**
+	 * Set all invalid ClientIDs to the proper value.
+	 * @param values The values to go through.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
 	{

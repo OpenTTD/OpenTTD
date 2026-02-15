@@ -37,11 +37,11 @@ AdminID _redirect_console_to_admin = AdminID::Invalid();
 NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
 INSTANTIATE_POOL_METHODS(NetworkAdminSocket)
 
-static NetworkAuthenticationDefaultPasswordProvider _admin_password_provider(_settings_client.network.admin_password); ///< Provides the password validation for the game's password.
-static NetworkAuthenticationDefaultAuthorizedKeyHandler _admin_authorized_key_handler(_settings_client.network.admin_authorized_keys); ///< Provides the authorized key handling for the game authentication.
+static NetworkAuthenticationDefaultPasswordProvider _admin_password_provider{_settings_client.network.admin_password}; ///< Provides the password validation for the game's password.
+static NetworkAuthenticationDefaultAuthorizedKeyHandler _admin_authorized_key_handler{_settings_client.network.admin_authorized_keys}; ///< Provides the authorized key handling for the game authentication.
 
 /** The timeout for authorisation of the client. */
-static const std::chrono::seconds ADMIN_AUTHORISATION_TIMEOUT(10);
+static const std::chrono::seconds ADMIN_AUTHORISATION_TIMEOUT{10};
 
 
 /** Frequencies, which may be registered for a certain update type. */
@@ -597,6 +597,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(std::string_vi
 
 /**
  * Send ping-reply (pong) to admin.
+ * @param d1 Request ID from the admin, to return back to them.
  * @return The new state the network.
  */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendPong(uint32_t d1)
@@ -1023,6 +1024,12 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 
 /**
  * Send chat to the admin network (if they did opt in for the respective update).
+ * @param action The action that's performed.
+ * @param desttype The type of destination.
+ * @param client_id The destination client.
+ * @param msg The actual message.
+ * @param data Arbitrary data.
+ * @param from_admin Whether the message is coming from the admin.
  */
 void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data, bool from_admin)
 {

@@ -36,6 +36,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::CloseConnection(NetworkRecvStat
 
 /**
  * Check the connection's state, i.e. is the connection still up?
+ * @return \c true if the connection remains valid, otherwise it will be closed.
  */
 bool QueryNetworkGameSocketHandler::CheckConnection()
 {
@@ -76,6 +77,7 @@ void QueryNetworkGameSocketHandler::Send()
 
 /**
  * Query the server for server information.
+ * @return The status the network should have.
  */
 NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 {

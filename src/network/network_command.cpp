@@ -407,7 +407,11 @@ void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket &cp)
 	p.Send_uint8 ((uint8_t)callback);
 }
 
-/** Helper to process a single ClientID argument. */
+/**
+ * Helper to process a single ClientID argument.
+ * @param data The data to process.
+ * @param client_id The client ID to set.
+ */
 template <class T>
 static inline void SetClientIdHelper(T &data, [[maybe_unused]] ClientID client_id)
 {
@@ -416,7 +420,11 @@ static inline void SetClientIdHelper(T &data, [[maybe_unused]] ClientID client_i
 	}
 }
 
-/** Set all invalid ClientID's to the proper value. */
+/**
+ * Set all invalid ClientIDs to the proper value.
+ * @param values The values to process.
+ * @param client_id The client ID to set.
+ */
 template <class Ttuple, size_t... Tindices>
 static inline void SetClientIds(Ttuple &values, ClientID client_id, std::index_sequence<Tindices...>)
 {
@@ -447,7 +455,11 @@ void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id)
 }
 
 
-/** Validate a single string argument coming from network. */
+/**
+ * Validate a single string argument coming from network.
+ * @param cmd_flags The flags for validation.
+ * @param data The data to validate.
+ */
 template <class T>
 static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_flags, T &data)
 {
@@ -460,7 +472,11 @@ static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_
 	}
 }
 
-/** Helper function to perform validation on command data strings. */
+/**
+ * Helper function to perform validation on command data strings.
+ * @param cmd_flags The flags for validation.
+ * @param values The data to validate.
+ */
 template <class Ttuple, size_t... Tindices>
 static inline void SanitizeStringsHelper(CommandFlags cmd_flags, Ttuple &values, std::index_sequence<Tindices...>)
 {

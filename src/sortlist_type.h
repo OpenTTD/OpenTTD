@@ -60,7 +60,14 @@ public:
 	using SorterWithFilter = bool(const T &a, const T &b, const P filter);
 
 	using SortFunction = std::conditional_t<std::is_same_v<P, std::nullptr_t>, bool (const T&, const T&), bool (const T&, const T&, const P)>; ///< Signature of sort function.
-	using FilterFunction = bool(const T*, F); ///< Signature of filter function.
+
+	/**
+	 * Check whether an element should be kept in the list.
+	 * @param a The element to check.
+	 * @param filter The filter parameter.
+	 * @return \c true iff the element should be in the list.
+	 */
+	using FilterFunction = bool(const T *a, F filter); ///< Signature of filter function.
 
 protected:
 	std::span<SortFunction * const> sort_func_list;     ///< the sort criteria functions

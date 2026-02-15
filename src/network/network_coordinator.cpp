@@ -618,6 +618,9 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(std::string_view toke
  *
  * This helps the Game Coordinator not to wait for a timeout on its end, but
  * rather react as soon as the client/server knows the result.
+ * @param token The token of the STUN connection attempt.
+ * @param family The used network family.
+ * @param result Whether the STUN was successful.
  */
 void ClientNetworkCoordinatorSocketHandler::StunResult(std::string_view token, uint8_t family, bool result)
 {
