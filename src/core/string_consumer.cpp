@@ -26,6 +26,10 @@
 /* static */ const std::string_view StringConsumer::WHITESPACE_NO_NEWLINE = "\t\v\f\r ";
 /* static */ const std::string_view StringConsumer::WHITESPACE_OR_NEWLINE = "\t\n\v\f\r ";
 
+/**
+ * Log an error in the processing (too small buffer, integer out of range, etc.).
+ * @param msg The message to log.
+ */
 /* static */ void StringConsumer::LogError(std::string &&msg)
 {
 #if defined(STRGEN) || defined(SETTINGSGEN)
