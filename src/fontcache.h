@@ -137,6 +137,7 @@ public:
 
 	/**
 	 * Check whether the font cache has a parent.
+	 * @return \c true iff this font has a parent, i.e. is not the root.
 	 */
 	inline bool HasParent()
 	{
@@ -145,18 +146,29 @@ public:
 
 	/**
 	 * Is this a built-in sprite font?
+	 * @return \c true iff the font is the sprite font.
 	 */
 	virtual bool IsBuiltInFont() = 0;
 };
 
-/** Get the Sprite for a glyph */
+/**
+ * Get the Sprite for a glyph
+ * @param size The font size to look in.
+ * @param key The key to look up.
+ * @return The sprite.
+ */
 inline const Sprite *GetGlyph(FontSize size, char32_t key)
 {
 	FontCache *fc = FontCache::Get(size);
 	return fc->GetGlyph(fc->MapCharToGlyph(key));
 }
 
-/** Get the width of a glyph */
+/**
+ * Get the width of a glyph.
+ * @param size The font size to look in.
+ * @param key The key to look up.
+ * @return The sprite's width.
+ */
 inline uint GetGlyphWidth(FontSize size, char32_t key)
 {
 	FontCache *fc = FontCache::Get(size);

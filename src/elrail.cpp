@@ -121,6 +121,9 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, DiagDirections *override
 
 /**
  * Masks out track bits when neighbouring tiles are unelectrified.
+ * @param t The tile to consider.
+ * @param tracks The track bits to consider.
+ * @return The track bits that should have catenary.
  */
 static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 {
@@ -173,6 +176,9 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 
 /**
  * Get the base wire sprite to use.
+ * @param tile The tile to get the wire sprite for.
+ * @param context The context to get the sprite for.
+ * @return The wire sprite.
  */
 static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
@@ -183,6 +189,9 @@ static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NOR
 
 /**
  * Get the base pylon sprite to use.
+ * @param tile The tile to get the pylon sprite for.
+ * @param context The context to get the sprite for.
+ * @return The pylon sprite.
  */
 static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
@@ -572,6 +581,7 @@ void DrawRailCatenary(const TileInfo *ti)
 	DrawRailCatenaryRailway(ti);
 }
 
+/** Callback for changes to the electrified rails setting. @copydoc IntSettingDesc::PostChangeCallback */
 void SettingsDisableElrail(int32_t new_value)
 {
 	bool disable = (new_value != 0);

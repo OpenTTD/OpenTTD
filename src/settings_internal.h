@@ -172,9 +172,9 @@ struct IntSettingDesc : SettingDesc {
 	using PreChangeCheck = bool(int32_t &value);
 	/**
 	 * A callback to denote that a setting has been changed.
-	 * @param The new value for the setting.
+	 * @param new_value The new value for the setting.
 	 */
-	using PostChangeCallback = void(int32_t value);
+	using PostChangeCallback = void(int32_t new_value);
 
 	template <ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tdef, ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tmin, ConvertibleThroughBaseOrUnderlyingOrTo<uint32_t> Tmax, ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tinterval>
 	IntSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,

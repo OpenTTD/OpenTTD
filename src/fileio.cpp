@@ -384,6 +384,11 @@ uint TarScanner::DoScan(Subdirectory sd)
 	return num;
 }
 
+/**
+ * Perform the scanning of content in the given modes.
+ * @param modes The modes to scan for.
+ * @return The number of found tar files.
+ */
 /* static */ uint TarScanner::DoScan(TarScanner::Modes modes)
 {
 	Debug(misc, 2, "Scanning for tars");
@@ -672,6 +677,7 @@ char *getcwd(char *buf, size_t size);
  * so when we crop the path to there, when can remove the name of the bundle
  * in the same way we remove the name from the executable name.
  * @param exe the path to the executable
+ * @return \c true iff the path to the executable was found.
  */
 static bool ChangeWorkingDirectoryToExecutable(std::string_view exe)
 {
@@ -1066,6 +1072,7 @@ static bool MatchesExtension(std::string_view extension, const std::string &file
  * @param path            full path we're currently at
  * @param basepath_length from where in the path are we 'based' on the search path
  * @param recursive       whether to recursively search the sub directories
+ * @return The number of files that have been found.
  */
 static uint ScanPath(FileScanner *fs, std::string_view extension, const std::filesystem::path &path, size_t basepath_length, bool recursive)
 {
@@ -1094,6 +1101,7 @@ static uint ScanPath(FileScanner *fs, std::string_view extension, const std::fil
  * @param fs        the file scanner to scan for
  * @param extension the extension of files to search for.
  * @param tar       the tar to search in.
+ * @return The number of files that have been found.
  */
 static uint ScanTar(FileScanner *fs, std::string_view extension, const TarFileList::value_type &tar)
 {

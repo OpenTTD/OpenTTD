@@ -152,6 +152,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 
 /**
  * Test if a font setting uses the default font.
+ * @param setting The setting to consider.
  * @return true iff the font is not configured and no fallback font data is present.
  */
 static bool IsDefaultFont(const FontCacheSubSetting &setting)

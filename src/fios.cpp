@@ -125,6 +125,7 @@ const FiosItem *FileList::FindItem(std::string_view file)
 
 /**
  * Get the current path/working directory.
+ * @return The current path.
  */
 std::string FiosGetCurrentPath()
 {
