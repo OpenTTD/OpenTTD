@@ -245,7 +245,6 @@ struct ResultSpriteGroup : SpecializedSpriteGroup<ResultSpriteGroup> {
 	 * @param index Unique (pool) identifier of the SpriteGroup.
 	 * @param sprite The sprite number.
 	 * @param num_sprites The number of sprites per set.
-	 * @return A spritegroup representing the sprite number result.
 	 */
 	ResultSpriteGroup(SpriteGroupID index, SpriteID sprite, uint8_t num_sprites) : SpecializedSpriteGroup<ResultSpriteGroup>(index), num_sprites(num_sprites), sprite(sprite) {}
 

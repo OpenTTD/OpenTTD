@@ -36,8 +36,7 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, G
 
 /**
  * Remove all engine replacement settings for the company.
- * @param  erl The renewlist for a given company.
- * @return The new renewlist for the company.
+ * @param erl The renewlist for a given company.
  */
 void RemoveAllEngineReplacement(EngineRenewList *erl)
 {

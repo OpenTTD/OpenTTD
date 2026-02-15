@@ -185,7 +185,6 @@ struct GoalListWindow : public Window {
 	 * @param column Which column to draw.
 	 * @param wid Pointer to the goal list widget.
 	 * @param progress_col_width Width of the progress column.
-	 * @return max width of drawn text
 	 */
 	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
 	{

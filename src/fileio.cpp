@@ -344,8 +344,7 @@ bool FioRemove(const std::string &filename)
 /**
  * Appends, if necessary, the path separator character to the end of the string.
  * It does not add the path separator to zero-sized strings.
- * @param buf  string to append the separator to
- * @return true iff the operation succeeded
+ * @param buf String to append the separator to.
  */
 void AppendPathSeparator(std::string &buf)
 {

@@ -1414,7 +1414,6 @@ static void BringWindowToFront(Window *w, bool dirty)
 /**
  * Initializes the data (except the position and initial size) of a new Window.
  * @param window_number Number being assigned to the new window
- * @return Window pointer of the newly created window
  * @pre If nested widgets are used (\a widget is \c nullptr), #nested_root and #nested_array_size must be initialized.
  *      In addition, #widget_lookup is either \c nullptr, or already initialized.
  */

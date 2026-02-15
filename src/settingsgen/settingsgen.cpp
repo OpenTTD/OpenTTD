@@ -366,7 +366,7 @@ static const OptionData _opts[] = {
  *
  * Last but not least, the [post-amble] group is copied verbatim.
  *
- * @param fname  Ini file to process. @return Exit status of the processing.
+ * @param fname Ini file to process.
  */
 static void ProcessIniFile(std::string_view fname)
 {

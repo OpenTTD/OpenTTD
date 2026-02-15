@@ -508,7 +508,6 @@ protected:
 	 * @param line_height Height of one line of text.
 	 * @param action_sprite The sprite to draw.
 	 * @param text The text to draw.
-	 * @return the number of lines.
 	 */
 	void DrawActionElement(int &y_offset, int width, int line_height, SpriteID action_sprite, const std::string &text) const
 	{

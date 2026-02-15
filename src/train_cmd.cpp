@@ -490,7 +490,6 @@ static SpriteID GetDefaultTrainSprite(uint8_t spritenum, Direction direction)
  * @param direction Direction of view/travel.
  * @param image_type Visualisation context.
  * @param result Sprite sequence to add the to be drawn sprites to.
- * @return Sprite to display.
  */
 void Train::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
 {
@@ -4138,7 +4137,7 @@ bool Train::Tick()
 
 /**
  * Check whether a train needs service, and if so, find a depot or service it.
- * @return v %Train to check.
+ * @param v %Train to check.
  */
 static void CheckIfTrainNeedsService(Train *v)
 {

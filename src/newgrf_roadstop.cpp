@@ -285,7 +285,6 @@ uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t para
  * @param spec the RoadStop's spec.
  * @param type The type of station.
  * @param view The road stop's view.
- * @return true of the tile was drawn (allows for fallback to default graphics)
  */
 void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec, StationType type, int view)
 {

@@ -77,7 +77,6 @@ static uint LoadGrfFile(const std::string &filename, SpriteID load_index, bool n
  * @param filename   The name of the file to open.
  * @param index_tbl  The offsets of each of the sprites.
  * @param needs_palette_remap Whether the colours in the GRF file need a palette remap.
- * @return The number of loaded sprites.
  */
 static void LoadGrfFileIndexed(const std::string &filename, std::span<const std::pair<SpriteID, SpriteID>> index_tbl, bool needs_palette_remap)
 {

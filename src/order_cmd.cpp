@@ -356,7 +356,6 @@ VehicleOrderID OrderList::GetNextDecisionNode(VehicleOrderID next, uint hops) co
  * @param v The vehicle we're looking at.
  * @param first Order to start searching at or INVALID_VEH_ORDER_ID to start at cur_implicit_order_index + 1.
  * @param hops Number of orders we have already looked at.
- * @return Next stopping station or StationID::Invalid().
  * @pre The vehicle is currently loading and v->last_station_visited is meaningful.
  * @note This function may draw a random number. Don't use it from the GUI.
  */

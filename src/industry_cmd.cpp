@@ -2760,12 +2760,12 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 
 /**
  * Can given cargo type be accepted or produced by the industry?
- * @param cargo: Cargo type
- * @param ind: Industry
- * @param *c_accepts: Pointer to boolean for acceptance of cargo
- * @param *c_produces: Pointer to boolean for production of cargo
- * @return: \c *c_accepts is set when industry accepts the cargo type,
- *          \c *c_produces is set when the industry produces the cargo type
+ * @param cargo Cargo type to consider.
+ * @param ind The industry to consider.
+ * @param *c_accepts Pointer to boolean for acceptance of cargo
+ * @param *c_produces Pointer to boolean for production of cargo
+ * @post \c *c_accepts is set when industry accepts the cargo type,
+ *       \c *c_produces is set when the industry produces the cargo type
  */
 static void CanCargoServiceIndustry(CargoType cargo, Industry *ind, bool *c_accepts, bool *c_produces)
 {
