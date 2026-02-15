@@ -119,6 +119,7 @@ private:
 	/**
 	 * Dummy private copy constructor to prevent compilers from
 	 * copying the structure, which fails due to GetPools().
+	 * @param other The pool not to copy from.
 	 */
 	PoolBase(const PoolBase &other);
 };

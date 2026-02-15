@@ -214,9 +214,7 @@ constexpr To ClampTo(From value)
 	return static_cast<To>(std::min<BiggerType>(value, std::numeric_limits<To>::max()));
 }
 
-/**
- * Specialization of ClampTo for #StrongType::Typedef.
- */
+/** Specialization of ClampTo for #ConvertibleThroughBase. @copydoc ClampTo(From) */
 template <typename To>
 constexpr To ClampTo(ConvertibleThroughBase auto value)
 {
@@ -246,7 +244,7 @@ constexpr T Delta(const T a, const T b)
  * @param x The value to check
  * @param base The base value of the interval
  * @param size The size of the interval
- * @return True if the value is in the interval, false else.
+ * @return \c true iff the value is in the interval.
  */
 template <typename T>
 constexpr bool IsInsideBS(const T x, const size_t base, const size_t size)
@@ -262,6 +260,7 @@ constexpr bool IsInsideBS(const T x, const size_t base, const size_t size)
  * @param x The value to check
  * @param min The minimum of the interval
  * @param max The maximum of the interval
+ * @return \c true iff the value is in the interval.
  * @see IsInsideBS()
  */
 constexpr bool IsInsideMM(const size_t x, const size_t min, const size_t max) noexcept
@@ -269,8 +268,10 @@ constexpr bool IsInsideMM(const size_t x, const size_t min, const size_t max) no
 	return static_cast<size_t>(x - min) < (max - min);
 }
 
+/** Specialization of IsInsideMM for #ConvertibleThroughBase. @copydoc IsInsideMM(const size_t, const size_t, const size_t) */
 constexpr bool IsInsideMM(const ConvertibleThroughBase auto x, const size_t min, const size_t max) noexcept { return IsInsideMM(x.base(), min, max); }
 
+/** Specialization of IsInsideMM for enums. @copydoc IsInsideMM(const size_t, const size_t, const size_t) */
 template <typename enum_type, std::enable_if_t<std::is_enum_v<enum_type>, bool> = true>
 constexpr bool IsInsideMM(enum_type x, enum_type min, enum_type max) noexcept
 {

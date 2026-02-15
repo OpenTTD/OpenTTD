@@ -12,7 +12,11 @@
 
 #include "base_bitset_type.hpp"
 
-/** Implementation of std::to_underlying (from C++23) */
+/**
+ * Implementation of std::to_underlying (from C++23)
+ * @param e The enum to get the value of.
+ * @return The underlying value of the enum.
+ */
 template <typename enum_type>
 constexpr std::underlying_type_t<enum_type> to_underlying(enum_type e) { return static_cast<std::underlying_type_t<enum_type>>(e); }
 
@@ -28,7 +32,11 @@ struct is_enum_incrementable {
 template <typename enum_type>
 constexpr bool is_enum_incrementable_v = is_enum_incrementable<enum_type>::value;
 
-/** Prefix increment. */
+/**
+ * Prefix increment.
+ * @param e The enum to increment.
+ * @return Reference to the incremented enum.
+ */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
 inline constexpr enum_type &operator ++(enum_type &e)
 {
@@ -36,7 +44,11 @@ inline constexpr enum_type &operator ++(enum_type &e)
 	return e;
 }
 
-/** Postfix increment, uses prefix increment. */
+/**
+ * Postfix increment, uses prefix increment.
+ * @param e The enum to increment.
+ * @return Copy of the original value.
+ */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
 inline constexpr enum_type operator ++(enum_type &e, int)
 {
@@ -45,7 +57,11 @@ inline constexpr enum_type operator ++(enum_type &e, int)
 	return e_org;
 }
 
-/** Prefix decrement. */
+/**
+ * Prefix decrement.
+ * @param e The enum to decrement.
+ * @return Reference to the decremented enum.
+ */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
 inline constexpr enum_type &operator --(enum_type &e)
 {
@@ -53,7 +69,11 @@ inline constexpr enum_type &operator --(enum_type &e)
 	return e;
 }
 
-/** Postfix decrement, uses prefix decrement. */
+/**
+ * Postfix decrement, uses prefix decrement.
+ * @param e The enum to decrement.
+ * @return Copy of the original value.
+ */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
 inline constexpr enum_type operator --(enum_type &e, int)
 {
@@ -77,7 +97,12 @@ struct is_enum_sequential {
 template <typename enum_type>
 constexpr bool is_enum_sequential_v = is_enum_sequential<enum_type>::value;
 
-/** Add integer. */
+/**
+ * Add integer.
+ * @param e The enum to add to.
+ * @param offset The amount to add to the enum.
+ * @return The new enum.
+ */
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
 inline constexpr enum_type operator+(enum_type e, int offset)
 {
@@ -91,7 +116,12 @@ inline constexpr enum_type &operator+=(enum_type &e, int offset)
 	return e;
 }
 
-/** Sub integer. */
+/**
+ * Subtract integer.
+ * @param e The enum to subtract from.
+ * @param offset The amount to subtract from the enum.
+ * @return The new enum.
+ */
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
 inline constexpr enum_type operator-(enum_type e, int offset)
 {
@@ -105,7 +135,12 @@ inline constexpr enum_type &operator-=(enum_type &e, int offset)
 	return e;
 }
 
-/** Distance */
+/**
+ * Distance of two enums.
+ * @param a The first enum.
+ * @param b The second enum.
+ * @return The value of the first enum minus the value of the second enum.
+ */
 template <typename enum_type, std::enable_if_t<is_enum_sequential_v<enum_type>, bool> = true>
 inline constexpr auto operator-(enum_type a, enum_type b)
 {
