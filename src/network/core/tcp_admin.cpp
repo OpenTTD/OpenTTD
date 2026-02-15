@@ -16,10 +16,10 @@
 #include "../../safeguards.h"
 
 /* Make sure that these enums match. */
-static_assert((int)CRR_MANUAL    == (int)ADMIN_CRR_MANUAL);
-static_assert((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);
-static_assert((int)CRR_BANKRUPT  == (int)ADMIN_CRR_BANKRUPT);
-static_assert((int)CRR_END       == (int)ADMIN_CRR_END);
+static_assert(to_underlying(CompanyRemoveReason::Manual)    == to_underlying(ADMIN_CRR_MANUAL));
+static_assert(to_underlying(CompanyRemoveReason::Autoclean) == to_underlying(ADMIN_CRR_AUTOCLEAN));
+static_assert(to_underlying(CompanyRemoveReason::Bankrupt)  == to_underlying(ADMIN_CRR_BANKRUPT));
+static_assert(to_underlying(CompanyRemoveReason::End)       == to_underlying(ADMIN_CRR_END));
 
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
 {

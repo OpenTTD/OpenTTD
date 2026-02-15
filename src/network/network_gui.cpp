@@ -1305,7 +1305,7 @@ static void AdminCompanyResetCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
 		if (NetworkCompanyHasClients(_admin_company_id)) return;
-		Command<Commands::CompanyControl>::Post(CCA_DELETE, _admin_company_id, CRR_MANUAL, INVALID_CLIENT_ID);
+		Command<Commands::CompanyControl>::Post(CCA_DELETE, _admin_company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
 	}
 }
 
@@ -1588,7 +1588,7 @@ private:
 	 */
 	static void OnClickCompanyNew([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID)
 	{
-		Command<Commands::CompanyControl>::Post(CCA_NEW, CompanyID::Invalid(), CRR_NONE, _network_own_client_id);
+		Command<Commands::CompanyControl>::Post(CCA_NEW, CompanyID::Invalid(), CompanyRemoveReason::None, _network_own_client_id);
 	}
 
 	/**

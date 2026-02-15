@@ -57,14 +57,14 @@ struct CompanyManagerFace {
 };
 
 /** The reason why the company was removed. */
-enum CompanyRemoveReason : uint8_t {
-	CRR_MANUAL,    ///< The company is manually removed.
-	CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
-	CRR_BANKRUPT,  ///< The company went belly-up.
+enum class CompanyRemoveReason : uint8_t {
+	Manual, ///< The company is manually removed.
+	Autoclean, ///< The company is removed due to autoclean.
+	Bankrupt, ///< The company went belly-up.
 
-	CRR_END,       ///< Sentinel for end.
+	End, ///< Sentinel for end.
 
-	CRR_NONE = CRR_MANUAL, ///< Dummy reason for actions that don't need one.
+	None = Manual, ///< Dummy reason for actions that don't need one.
 };
 
 /** The action to do with Commands::CompanyControl. */

@@ -674,7 +674,7 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::C
 
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
-	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CompanyRemoveReason::None, INVALID_CLIENT_ID);
 });
 
 /** Start of a new game. */
@@ -795,7 +795,7 @@ void OnTick_Companies()
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
 				if (_networking && num_companies++ >= _settings_client.network.max_companies) break;
 				if (num_ais++ >= _settings_game.difficulty.max_no_competitors) break;
-				Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), {}, INVALID_CLIENT_ID);
 			}
 			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
 		}
@@ -964,7 +964,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 		}
 
 		case CCA_DELETE: { // Delete a company
-			if (reason >= CRR_END) return CMD_ERROR;
+			if (reason >= CompanyRemoveReason::End) return CMD_ERROR;
 
 			/* We can't delete the last existing company in singleplayer mode. */
 			if (!_networking && Company::GetNumItems() == 1) return CMD_ERROR;

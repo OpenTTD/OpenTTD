@@ -1126,7 +1126,7 @@ static bool ConResetCompany(std::span<std::string_view> argv)
 	}
 
 	/* It is safe to remove this company */
-	Command<Commands::CompanyControl>::Post(CCA_DELETE, *index, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_DELETE, *index, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;
@@ -1563,7 +1563,7 @@ static bool ConStartAI(std::span<std::string_view> argv)
 	}
 
 	/* Start a new AI company */
-	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CompanyRemoveReason::None, INVALID_CLIENT_ID);
 
 	return true;
 }
@@ -1605,8 +1605,8 @@ static bool ConReloadAI(std::span<std::string_view> argv)
 	}
 
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
-	Command<Commands::CompanyControl>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
-	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, *company_id, CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_DELETE, *company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, *company_id, CompanyRemoveReason::None, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
 	return true;
@@ -1649,7 +1649,7 @@ static bool ConStopAI(std::span<std::string_view> argv)
 	}
 
 	/* Now kill the company of the AI. */
-	Command<Commands::CompanyControl>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CCA_DELETE, *company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI stopped, company deleted.");
 
 	return true;

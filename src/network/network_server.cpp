@@ -1634,13 +1634,13 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_protected-months? */
 			if (_settings_client.network.autoclean_protected != 0 && c->months_empty > _settings_client.network.autoclean_protected) {
 				/* Shut the company down */
-				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CompanyRemoveReason::Autoclean, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{}.", c->index + 1);
 			}
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
 			if (_settings_client.network.autoclean_novehicles != 0 && c->months_empty > _settings_client.network.autoclean_novehicles && !has_vehicles.Test(c->index)) {
 				/* Shut the company down */
-				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CRR_AUTOCLEAN, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CompanyRemoveReason::Autoclean, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no vehicles.", c->index + 1);
 			}
 		} else {
