@@ -219,7 +219,7 @@ void DisasterVehicle::UpdatePosition(int x, int y, int z)
  * 0: Zeppeliner initialization has found an airport, go there and crash
  * 1: Create crash and animate falling down for extra dramatic effect
  * 2: Create more smoke and leave debris on ground
- * 2: Clear the runway after some time and remove crashed zeppeliner
+ * 3: Clear the runway after some time and remove crashed zeppeliner
  * If not airport was found, only state 0 is reached until zeppeliner leaves map
  * @copydoc DisasterVehicleTickProc
  */
@@ -258,6 +258,10 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		}
 
 		return true;
+	}
+
+	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
+		Station::GetByTile(v->tile)->airport.blocks.Set({AirportBlock::Zeppeliner, AirportBlock::RunwayIn});
 	}
 
 	if (v->state > 2) {
@@ -299,10 +303,6 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 	} else if (v->age == 350) {
 		v->state = 3;
 		v->age = CalendarTime::MIN_DATE;
-	}
-
-	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
-		Station::GetByTile(v->tile)->airport.blocks.Reset({AirportBlock::Zeppeliner, AirportBlock::RunwayIn});
 	}
 
 	return true;
