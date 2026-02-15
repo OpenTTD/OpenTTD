@@ -321,6 +321,7 @@ PREDEFINED             = WITH_ZLIB \
                          DOXYGEN_API \
                          _UNICODE \
                          _GNU_SOURCE \
+                         CDECL= \
                          FINAL=
 EXPAND_AS_DEFINED      = DEFINE_POOL_METHOD
 SKIP_FUNCTION_MACROS   = YES
