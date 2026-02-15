@@ -885,7 +885,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 			Debug(net, 9, "Client::join_status = REGISTERING");
 			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 			ShowJoinStatusWindow();
-			Command<Commands::CompanyControl>::Post(CCA_NEW, CompanyID::Invalid(), CompanyRemoveReason::None, _network_own_client_id);
+			Command<Commands::CompanyControl>::Post(CompanyCtrlAction::New, CompanyID::Invalid(), CompanyRemoveReason::None, _network_own_client_id);
 		}
 	} else {
 		/* take control over an existing company */

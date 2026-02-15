@@ -68,12 +68,10 @@ enum class CompanyRemoveReason : uint8_t {
 };
 
 /** The action to do with Commands::CompanyControl. */
-enum CompanyCtrlAction : uint8_t {
-	CCA_NEW,    ///< Create a new company.
-	CCA_NEW_AI, ///< Create a new AI company.
-	CCA_DELETE, ///< Delete a company.
-
-	CCA_END,    ///< Sentinel for end.
+enum class CompanyCtrlAction : uint8_t {
+	New, ///< Create a new company.
+	NewAI, ///< Create a new AI company.
+	Delete, ///< Delete a company.
 };
 
 /** The action to do with Commands::CompanyAllowListControl. */

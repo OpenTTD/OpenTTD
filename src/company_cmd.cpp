@@ -674,7 +674,7 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::C
 
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
-	Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), CompanyRemoveReason::None, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, CompanyID::Invalid(), CompanyRemoveReason::None, INVALID_CLIENT_ID);
 });
 
 /** Start of a new game. */
@@ -795,7 +795,7 @@ void OnTick_Companies()
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
 				if (_networking && num_companies++ >= _settings_client.network.max_companies) break;
 				if (num_ais++ >= _settings_game.difficulty.max_no_competitors) break;
-				Command<Commands::CompanyControl>::Post(CCA_NEW_AI, CompanyID::Invalid(), {}, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, CompanyID::Invalid(), {}, INVALID_CLIENT_ID);
 			}
 			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
 		}
@@ -889,7 +889,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 
 	switch (cca) {
-		case CCA_NEW: { // Create a new company
+		case CompanyCtrlAction::New: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
@@ -944,7 +944,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 			break;
 		}
 
-		case CCA_NEW_AI: { // Make a new AI company
+		case CompanyCtrlAction::NewAI: { // Make a new AI company
 			if (company_id != CompanyID::Invalid() && company_id >= MAX_COMPANIES) return CMD_ERROR;
 
 			/* For network games, company deletion is delayed. */
@@ -963,7 +963,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 			break;
 		}
 
-		case CCA_DELETE: { // Delete a company
+		case CompanyCtrlAction::Delete: { // Delete a company
 			if (reason >= CompanyRemoveReason::End) return CMD_ERROR;
 
 			/* We can't delete the last existing company in singleplayer mode. */

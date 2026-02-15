@@ -1137,15 +1137,15 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	 * to match the company in the packet. If it doesn't, the client has done
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
-	CompanyCtrlAction cca = cp.cmd == Commands::CompanyControl ? std::get<0>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyControl>::Args>(cp.data)) : CCA_NEW;
-	if (!(cp.cmd == Commands::CompanyControl && cca == CCA_NEW && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
+	CompanyCtrlAction cca = cp.cmd == Commands::CompanyControl ? std::get<0>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyControl>::Args>(cp.data)) : CompanyCtrlAction::New;
+	if (!(cp.cmd == Commands::CompanyControl && cca == CompanyCtrlAction::New && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a command as another company {}.",
 		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
 		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
 	if (cp.cmd == Commands::CompanyControl) {
-		if (cca != CCA_NEW || cp.company != COMPANY_SPECTATOR) {
+		if (cca != CompanyCtrlAction::New || cp.company != COMPANY_SPECTATOR) {
 			return this->SendError(NETWORK_ERROR_CHEATER);
 		}
 
@@ -1634,13 +1634,13 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_protected-months? */
 			if (_settings_client.network.autoclean_protected != 0 && c->months_empty > _settings_client.network.autoclean_protected) {
 				/* Shut the company down */
-				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CompanyRemoveReason::Autoclean, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, c->index, CompanyRemoveReason::Autoclean, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{}.", c->index + 1);
 			}
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
 			if (_settings_client.network.autoclean_novehicles != 0 && c->months_empty > _settings_client.network.autoclean_novehicles && !has_vehicles.Test(c->index)) {
 				/* Shut the company down */
-				Command<Commands::CompanyControl>::Post(CCA_DELETE, c->index, CompanyRemoveReason::Autoclean, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, c->index, CompanyRemoveReason::Autoclean, INVALID_CLIENT_ID);
 				IConsolePrint(CC_INFO, "Auto-cleaned company #{} with no vehicles.", c->index + 1);
 			}
 		} else {
