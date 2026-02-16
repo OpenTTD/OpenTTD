@@ -55,6 +55,7 @@ enum GenerateLandscapeWindowMode : uint8_t {
 
 /**
  * Get the map height limit, or if set to "auto", the absolute limit.
+ * @return The maximum map height.
  */
 static uint GetMapHeightLimit()
 {

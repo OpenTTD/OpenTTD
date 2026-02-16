@@ -465,7 +465,9 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 /** Names corresponding to the GraphicsFileType */
 static const std::string_view _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
 
-/** Implementation */
+/* Implementation */
+
+/** @copydoc BaseSet::GetFilenames */
 template <>
 /* static */ std::span<const std::string_view> BaseSet<GraphicsSet>::GetFilenames()
 {

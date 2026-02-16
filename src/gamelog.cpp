@@ -43,6 +43,7 @@ Gamelog::~Gamelog()
 
 /**
  * Return the revision string for the current client version, for use in gamelog.
+ * @return The revision string.
  */
 static std::string GetGamelogRevisionString()
 {
@@ -359,6 +360,7 @@ void Gamelog::Emergency()
 
 /**
  * Finds out if current game is a loaded emergency savegame.
+ * @return \c true iff an action with GLCT_EMERGENCY change exists.
  */
 bool Gamelog::TestEmergency()
 {
@@ -584,8 +586,9 @@ void Gamelog::GRFAddList(const GRFConfigList &newg)
 }
 
 /**
- * Generates GRFList
- * @param grfc the GRFConfigList.
+ * Generates GRFList.
+ * @param grfc The GRFConfigList.
+ * @return The list with NewGRFs to log..
  */
 static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfigList &grfc)
 {

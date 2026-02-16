@@ -67,11 +67,15 @@ struct EndGameHighScoreBaseWindow : Window {
 		}
 	}
 
-	/** Return the coordinate of the screen such that a window of 640x480 is centered at the screen. */
-	Point GetTopLeft(int x, int y)
+	/**
+	 * Return the coordinate of the screen such that a window of a given size is centered at the screen.
+	 * @param width The width of the image.
+	 * @param height The height of the image.
+	 * @return The top left coordinate.
+	 */
+	Point GetTopLeft(int width, int height)
 	{
-		Point pt = {std::max(0, (_screen.width / 2) - (x / 2)), std::max(0, (_screen.height / 2) - (y / 2))};
-		return pt;
+		return {std::max(0, (_screen.width / 2) - (width / 2)), std::max(0, (_screen.height / 2) - (height / 2))};
 	}
 
 	void OnClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget, [[maybe_unused]] int click_count) override
@@ -239,6 +243,8 @@ static WindowDesc _endgame_desc(
  * Show the highscore table for a given difficulty. When called from
  * endgame ranking is set to the top5 element that was newly added
  * and is thus highlighted
+ * @param difficulty The difficulty level to show the high score for.
+ * @param ranking The ranking to show the local company at.
  */
 void ShowHighscoreTable(int difficulty, int8_t ranking)
 {
@@ -260,6 +266,7 @@ void ShowEndGameChart()
 	new EndGameWindow(_endgame_desc);
 }
 
+/** Yearly timer to check whether we want to show the end game chart. */
 static const IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [](auto)
 {
 	/* 0 = never */

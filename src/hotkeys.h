@@ -53,6 +53,7 @@ private:
 	/**
 	 * Dummy private copy constructor to prevent compilers from
 	 * copying the structure, which fails due to _hotkey_lists.
+	 * @param other The list not to copy from.
 	 */
 	HotkeyList(const HotkeyList &other);
 };

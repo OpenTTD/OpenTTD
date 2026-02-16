@@ -183,6 +183,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 
 /**
  * Add a vehicle's last year profit to the profit sum of its group.
+ * @param v The vehicle to update the statistics for.
  */
 /* static */ void GroupStatistics::AddProfitLastYear(const Vehicle *v)
 {
@@ -195,6 +196,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 
 /**
  * Add a vehicle to the profit sum of its group.
+ * @param v The vehicle to update the statistics for.
  */
 /* static */ void GroupStatistics::VehicleReachedMinAge(const Vehicle *v)
 {
@@ -684,6 +686,7 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
  * @param group_id Group ID.
  * @param primary Set primary instead of secondary colour
  * @param colour Colour.
+ * @return The (zero) cost or error.
  */
 CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour)
 {

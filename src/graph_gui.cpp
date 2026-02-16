@@ -343,6 +343,7 @@ protected:
 	 * Get width for Y labels.
 	 * @param current_interval Interval that contains all of the graph data.
 	 * @param num_hori_lines Number of horizontal lines to be drawn.
+	 * @return The width in pixels.
 	 */
 	uint GetYLabelWidth(ValuesInterval current_interval, int num_hori_lines) const
 	{
@@ -2050,7 +2051,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 	return vert;
 }
 
-/** Make a number of rows with buttons for each company for the performance rating detail window. */
+/** Make a number of rows with buttons for each company for the performance rating detail window. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsGraphGUI()
 {
 	return MakeCompanyButtonRows(WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, COLOUR_BROWN, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);

@@ -1616,6 +1616,10 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 /**
  * This function tries to flatten out the land below an industry, without
  *  damaging the surroundings too much.
+ * @param tile The tile to place the industry's starting point at.
+ * @param flags Flags describing how to execute this command.
+ * @param layout The layout to build.
+ * @return \c true iff the industry can be built at this location.
  */
 static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags, const IndustryTileLayout &layout)
 {

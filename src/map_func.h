@@ -71,11 +71,13 @@ public:
 
 	/**
 	 * Implicit conversion to the TileIndex.
+	 * @return The converted tile index.
 	 */
 	[[debug_inline]] inline constexpr operator TileIndex() const { return this->tile; }
 
 	/**
 	 * Implicit conversion to the uint for bounds checking.
+	 * @return The (unsigned) integer representation of the tile location.
 	 */
 	[[debug_inline]] inline constexpr operator uint() const { return this->tile.base(); }
 
@@ -314,7 +316,8 @@ public:
 	/**
 	 * 'Wraps' the given "tile" so it is within the map.
 	 * It does this by masking the 'high' bits of.
-	 * @param tile the tile to 'wrap'
+	 * @param tile the tile to 'wrap'.
+	 * @return The wrapped tile.
 	 */
 	static inline TileIndex WrapToMap(TileIndex tile)
 	{
