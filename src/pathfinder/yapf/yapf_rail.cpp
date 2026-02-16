@@ -28,8 +28,8 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	auto f2 = FileHandle::Open("yapf2.txt"sv, "wt");
 	assert(f1.has_value());
 	assert(f2.has_value());
-	fwrite(dmp1.m_out.data(), 1, dmp1.m_out.size(), *f1);
-	fwrite(dmp2.m_out.data(), 1, dmp2.m_out.size(), *f2);
+	fwrite(dmp1.output_buffer.data(), 1, dmp1.output_buffer.size(), *f1);
+	fwrite(dmp2.output_buffer.data(), 1, dmp2.output_buffer.size(), *f2);
 }
 
 template <class Types>
