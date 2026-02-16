@@ -11,19 +11,22 @@
 #define HASHTABLE_HPP
 
 template <class TItem>
-struct HashTableSlot
-{
+struct HashTableSlot {
 	typedef typename TItem::Key Key; // make Titem::Key a property of HashTable
 
 	TItem *first_item = nullptr;
 
-	/** hash table slot helper - clears the slot by simple forgetting its items */
+	/** Clears the slot by simple forgetting its items. */
 	inline void Clear()
 	{
 		this->first_item = nullptr;
 	}
 
-	/** hash table slot helper - linear search for item with given key through the given blob - const version */
+	/**
+	 * Linear search for item with given key through the given blob.
+	 * @param key The key to find.
+	 * @return The found item, or \c nullptr.
+	 */
 	inline const TItem *Find(const Key &key) const
 	{
 		for (const TItem *item = this->first_item; item != nullptr; item = item->GetHashNext()) {
@@ -35,7 +38,11 @@ struct HashTableSlot
 		return nullptr;
 	}
 
-	/** hash table slot helper - linear search for item with given key through the given blob - non-const version */
+	/**
+	 * Linear search for item with given key through the given blob.
+	 * @param key The key to find.
+	 * @return The found item, or \c nullptr.
+	 */
 	inline TItem *Find(const Key &key)
 	{
 		for (TItem *item = this->first_item; item != nullptr; item = item->GetHashNext()) {
@@ -47,7 +54,10 @@ struct HashTableSlot
 		return nullptr;
 	}
 
-	/** hash table slot helper - add new item to the slot */
+	/**
+	 * Add new item to the slot.
+	 * @param new_item The item to insert.
+	 */
 	inline void Attach(TItem &new_item)
 	{
 		assert(new_item.GetHashNext() == nullptr);
@@ -55,7 +65,11 @@ struct HashTableSlot
 		this->first_item = &new_item;
 	}
 
-	/** hash table slot helper - remove item from a slot */
+	/**
+	 * Remove item from a slot.
+	 * @param item_to_remove The item to remove.
+	 * @return \c true iff the item could be removed.
+	 */
 	inline bool Detach(TItem &item_to_remove)
 	{
 		if (this->first_item == &item_to_remove) {
@@ -77,7 +91,11 @@ struct HashTableSlot
 		return true;
 	}
 
-	/** hash table slot helper - remove and return item from a slot */
+	/**
+	 * Remove and return item from a slot.
+	 * @param key The key to search for.
+	 * @return The removed item, or \c nullptr when nothing was removed.
+	 */
 	inline TItem *Detach(const Key &key)
 	{
 		/* do we have any items? */
@@ -139,12 +157,16 @@ protected:
 	 * each slot contains pointer to the first item in the list,
 	 *  Titem contains pointer to the next item - GetHashNext(), SetHashNext()
 	 */
-	typedef HashTableSlot<Titem> Slot;
+	using Slot = HashTableSlot<Titem>;
 
-	Slot slots[CAPACITY]; // here we store our data (array of blobs)
-	int number_of_items = 0; // item counter
+	Slot slots[CAPACITY]; ///< Data storage (array of blobs).
+	int number_of_items = 0; ///< Item counter.
 
-	/** static helper - return hash for the given key modulo number of slots */
+	/**
+	 * Return hash for the given key modulo number of slots.
+	 * @param key The key to consider.
+	 * @return The hash of the key.
+	 */
 	static inline int CalcHash(const Tkey &key)
 	{
 		uint32_t hash = key.CalcHash();
@@ -154,27 +176,38 @@ protected:
 		return hash;
 	}
 
-	/** static helper - return hash for the given item modulo number of slots */
+	/**
+	 * Return hash for the given item modulo number of slots.
+	 * @param item The item to consider.
+	 * @return The hash of its key.
+	 */
 	static inline int CalcHash(const Titem &item)
 	{
 		return CalcHash(item.GetKey());
 	}
 
 public:
-	/** item count */
+	/**
+	 * Get the number of elements.
+	 * @return The item count.
+	 */
 	inline int Count() const
 	{
 		return this->number_of_items;
 	}
 
-	/** simple clear - forget all items - used by CSegmentCostCacheT.Flush() */
+	/** Clear all items. */
 	inline void Clear()
 	{
 		for (int i = 0; i < CAPACITY; i++) this->slots[i].Clear();
 		this->number_of_items = 0;
 	}
 
-	/** const item search */
+	/**
+	 * Try to find an item by key.
+	 * @param key The key to find.
+	 * @return The found item, or \c nullptr.
+	 */
 	const Titem *Find(const Tkey &key) const
 	{
 		int hash = CalcHash(key);
@@ -183,7 +216,11 @@ public:
 		return item;
 	}
 
-	/** non-const item search */
+	/**
+	 * Try to find an item by key.
+	 * @param key The key to find.
+	 * @return The found item, or \c nullptr.
+	 */
 	Titem *Find(const Tkey &key)
 	{
 		int hash = CalcHash(key);
@@ -192,7 +229,11 @@ public:
 		return item;
 	}
 
-	/** non-const item search & optional removal (if found) */
+	/**
+	 * Remove an item by key if found.
+	 * @param key The key to search for.
+	 * @return The popped element, or \c nullptr.
+	 */
 	Titem *TryPop(const Tkey &key)
 	{
 		int hash = CalcHash(key);
@@ -204,7 +245,11 @@ public:
 		return item;
 	}
 
-	/** non-const item search & removal */
+	/**
+	 * Remove an item by key that must exist.
+	 * @param key The key to search for.
+	 * @return The popped element; never \c nullptr.
+	 */
 	Titem &Pop(const Tkey &key)
 	{
 		Titem *item = TryPop(key);
@@ -212,7 +257,11 @@ public:
 		return *item;
 	}
 
-	/** non-const item search & optional removal (if found) */
+	/**
+	 * Remove an item if found.
+	 * @param item The item to remove.
+	 * @return \c true iff the item existed.
+	 */
 	bool TryPop(Titem &item)
 	{
 		const Tkey &key = item.GetKey();
@@ -225,14 +274,20 @@ public:
 		return ret;
 	}
 
-	/** non-const item search & removal */
+	/**
+	 * Remove an item that must exist.
+	 * @param item The item to remove.
+	 */
 	void Pop(Titem &item)
 	{
 		[[maybe_unused]] bool ret = TryPop(item);
 		assert(ret);
 	}
 
-	/** add one item - copy it from the given item */
+	/**
+	 * Add an item that may not exist.
+	 * @param new_item The item to add.
+	 */
 	void Push(Titem &new_item)
 	{
 		int hash = CalcHash(new_item);
