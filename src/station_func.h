@@ -27,7 +27,7 @@ void UpdateAllStationVirtCoords();
 void ClearAllStationCachedNames();
 
 CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad);
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted = nullptr);
+std::pair<CargoArray, CargoTypes> GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad);
 
 void UpdateStationAcceptance(Station *st, bool show_msg);
 CargoTypes GetAcceptanceMask(const Station *st);

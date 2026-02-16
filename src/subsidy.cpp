@@ -378,10 +378,11 @@ bool FindSubsidyCargoDestination(CargoType cargo_type, Source src)
 
 			/* Calculate cargo acceptance of houses around town center. */
 			CargoArray town_cargo_accepted{};
+			CargoTypes always_accepted{};
 			TileArea ta = TileArea(dst_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
 			for (TileIndex tile : ta) {
 				if (IsTileType(tile, TileType::House)) {
-					AddAcceptedCargo(tile, town_cargo_accepted, nullptr);
+					AddAcceptedCargo(tile, town_cargo_accepted, always_accepted);
 				}
 			}
 

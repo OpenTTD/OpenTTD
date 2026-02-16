@@ -176,14 +176,24 @@ VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void GetTileDesc(TileIndex tile, TileDesc &td);
 
-inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance, CargoTypes *always_accepted)
+/**
+ * Obtain cargo acceptance of a tile.
+ * @param tile Tile queried for its accepted cargo.
+ * @param acceptance Storage destination of the cargo acceptance in 1/8.
+ * @param always_accepted Bitmask of always accepted cargo types.
+ */
+inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted)
 {
 	AddAcceptedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_accepted_cargo_proc;
 	if (proc == nullptr) return;
-	CargoTypes dummy = 0; // use dummy bitmask so there don't need to be several 'always_accepted != nullptr' checks
-	proc(tile, acceptance, always_accepted == nullptr ? dummy : *always_accepted);
+	proc(tile, acceptance, always_accepted);
 }
 
+/**
+ * Obtain the produced cargo of a tile.
+ * @param tile Tile being queried.
+ * @param produced  Destination array for produced cargo.
+ */
 inline void AddProducedCargo(TileIndex tile, CargoArray &produced)
 {
 	AddProducedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_produced_cargo_proc;

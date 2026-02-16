@@ -83,7 +83,7 @@ int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad,
 		if (supplies) {
 			cargoes = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		} else {
-			cargoes = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
+			cargoes = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad).first;
 		}
 
 		/* Convert cargo counts to a set of cargo bits, and draw the result. */
