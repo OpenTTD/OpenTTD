@@ -34,6 +34,7 @@ LinkGraph::BaseNode::BaseNode(TileIndex xy, StationID st, uint demand)
 
 /**
  * Create an edge.
+ * @param dest_node The destination of this edge.
  */
 LinkGraph::BaseEdge::BaseEdge(NodeID dest_node)
 {

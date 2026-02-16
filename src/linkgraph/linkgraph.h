@@ -65,7 +65,11 @@ public:
 		void Restrict() { this->last_unrestricted_update = EconomyTime::INVALID_DATE; }
 		void Release() { this->last_restricted_update = EconomyTime::INVALID_DATE; }
 
-		/** Comparison operator based on \c dest_node. */
+		/**
+		 * Comparison operator based on \c dest_node.
+		 * @param rhs The right hand side of the comparison.
+		 * @return \c true iff our \c dest_node is smaller than the other's.
+		 */
 		bool operator <(const BaseEdge &rhs) const
 		{
 			return this->dest_node < rhs.dest_node;

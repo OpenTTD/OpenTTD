@@ -348,6 +348,7 @@ void MultiCommodityFlow::CleanupPaths(NodeID source_id, PathVector &paths)
  * @param accuracy Accuracy of the calculation.
  * @param max_saturation If < UINT_MAX only push flow up to the given
  *                       saturation, otherwise the path can be "overloaded".
+ * @return The new flow.
  */
 uint MultiCommodityFlow::PushFlow(Node &node, NodeID to, Path *path, uint accuracy,
 		uint max_saturation)
@@ -595,6 +596,7 @@ MCF2ndPass::MCF2ndPass(LinkGraphJob &job) : MultiCommodityFlow(job)
  * @param y_anno Second value.
  * @param x Node id associated with the first value.
  * @param y Node id associated with the second value.
+ * @return \c true iff x is considered greater than y.
  */
 template <typename T>
 bool Greater(T x_anno, T y_anno, NodeID x, NodeID y)

@@ -73,7 +73,7 @@ public:
 	 * nodes only accept anything if they also supply something. So if
 	 * undelivered_supply == 0 at the node there isn't any demand left either.
 	 * @param to Node to be checked.
-	 * @return If demand is left.
+	 * @return \c true iff demand is left.
 	 */
 	inline bool HasDemandLeft(const Node &to)
 	{
@@ -110,6 +110,7 @@ public:
 	/**
 	 * Get the effective supply of one node towards another one.
 	 * @param from The supplying node.
+	 * @return Effective supply.
 	 */
 	inline uint EffectiveSupply(const Node &from, const Node &)
 	{
@@ -120,6 +121,7 @@ public:
 	 * Check if there is any acceptance left for this node. In asymmetric distribution
 	 * nodes always accept as long as their demand > 0.
 	 * @param to The node to be checked.
+	 * @return \c true iff demand is left.
 	 */
 	inline bool HasDemandLeft(const Node &to) { return to.base.demand > 0; }
 };
