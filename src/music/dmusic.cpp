@@ -76,23 +76,72 @@ struct DLSFile {
 	std::vector<POOLCUE> pool_cues;
 	std::vector<DLSWave> waves;
 
-	/** Try loading a DLS file into memory. */
+	/**
+	 * Try loading a DLS file into memory.
+	 * @param file The file to load.
+	 * @return \c true iff the file was loaded without issues.
+	 */
 	bool LoadFile(std::string_view file);
 
 private:
-	/** Load an articulation structure from a DLS file. */
+	/**
+	 * Load an articulation structure from a DLS file.
+	 * @param f The file to read the data from.
+	 * @param list_length The length of the data chunk in the file.
+	 * @param out The container to read the DLS articulation into.
+	 * @return \c true iff the data was loaded without issues.
+	 */
 	bool ReadDLSArticulation(FileHandle &f, DWORD list_length, std::vector<CONNECTION> &out);
-	/** Load a list of regions from a DLS file. */
+
+	/**
+	 * Load a list of regions from a DLS file.
+	 * @param f The file to read the data from.
+	 * @param list_length The length of the data chunk in the file.
+	 * @param instrument The instrument to load the region list for.
+	 * @return \c true iff the data was loaded without issues.
+	 */
 	bool ReadDLSRegionList(FileHandle &f, DWORD list_length, DLSInstrument &instrument);
-	/** Load a single region from a DLS file. */
+
+	/**
+	 * Load a single region from a DLS file.
+	 * @param f The file to read the data from.
+	 * @param list_length The length of the data chunk in the file.
+	 * @param out The container to read the DLS region into.
+	 * @return \c true iff the data was loaded without issues.
+	 */
 	bool ReadDLSRegion(FileHandle &f, DWORD list_length, std::vector<DLSRegion> &out);
-	/** Load a list of instruments from a DLS file. */
+
+	/**
+	 * Load a list of instruments from a DLS file.
+	 * @param f The file to read the data from.
+	 * @param list_length The length of the data chunk in the file.
+	 * @return \c true iff the data was loaded without issues.
+	 */
 	bool ReadDLSInstrumentList(FileHandle &f, DWORD list_length);
-	/** Load a single instrument from a DLS file. */
+
+	/**
+	 * Load a single instrument from a DLS file.
+	 * @param f The file to read the data from.
+	 * @param list_length The length of the data chunk in the file.
+	 * @return \c true iff the data was loaded without issues.
+	 */
 	bool ReadDLSInstrument(FileHandle &f, DWORD list_length);
-	/** Load a list of waves from a DLS file. */
+
+	/**
+	 * Load a list of waves from a DLS file.
+	 * @param f The file to read the data from.
+	 * @param list_length The length of the data chunk in the file.
+	 * @return \c true iff the data was loaded without issues.
+	 */
 	bool ReadDLSWaveList(FileHandle &f, DWORD list_length);
-	/** Load a single wave from a DLS file. */
+
+	/**
+	 * Load a single wave from a DLS file.
+	 * @param f The file to read the data from.
+	 * @param list_length The length of the data chunk in the file.
+	 * @param offset The offset within the file.
+	 * @return \c true iff the data was loaded without issues.
+	 */
 	bool ReadDLSWave(FileHandle &f, DWORD list_length, long offset);
 };
 
@@ -551,7 +600,12 @@ static void TransmitStandardSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt,
 	TransmitSysex(buffer, rt, data, length);
 }
 
-/** Transmit 'Note off' messages to all MIDI channels. */
+/**
+ * Transmit 'Note off' messages to all MIDI channels.
+ * @param buffer The buffer used for MIDI music.
+ * @param block_time Timestamp of the last sent block.
+ * @param cur_time Current timestamp.
+ */
 static void TransmitNotesOff(IDirectMusicBuffer *buffer, REFERENCE_TIME block_time, REFERENCE_TIME cur_time)
 {
 	for (int ch = 0; ch < 16; ch++) {
