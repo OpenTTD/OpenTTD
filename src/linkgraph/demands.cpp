@@ -286,10 +286,10 @@ DemandCalculator::DemandCalculator(LinkGraphJob &job) :
 	}
 
 	switch (settings.GetDistributionType(cargo)) {
-		case DT_SYMMETRIC:
+		case DistributionType::Symmetric:
 			this->CalcDemand<SymmetricScaler>(job, SymmetricScaler(settings.demand_size));
 			break;
-		case DT_ASYMMETRIC:
+		case DistributionType::Asymmetric:
 			this->CalcDemand<AsymmetricScaler>(job, AsymmetricScaler());
 			break;
 		default:
