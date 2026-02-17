@@ -32,7 +32,7 @@ public:
 /** Factory for Windows' music player. */
 class FMusicDriver_Win32 : public DriverFactoryBase {
 public:
-	FMusicDriver_Win32() : DriverFactoryBase(Driver::DT_MUSIC, 5, "win32", "Win32 Music Driver") {}
+	FMusicDriver_Win32() : DriverFactoryBase(Driver::Type::Music, 5, "win32", "Win32 Music Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_Win32>(); }
 };
 

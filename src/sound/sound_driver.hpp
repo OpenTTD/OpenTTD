@@ -35,7 +35,7 @@ public:
 	 */
 	static SoundDriver *GetInstance()
 	{
-		return static_cast<SoundDriver *>(DriverFactoryBase::GetActiveDriver(Driver::DT_SOUND).get());
+		return static_cast<SoundDriver *>(DriverFactoryBase::GetActiveDriver(Driver::Type::Sound).get());
 	}
 };
 

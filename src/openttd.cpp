@@ -750,7 +750,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	}
 
 	if (videodriver.empty() && !_ini_videodriver.empty()) videodriver = _ini_videodriver;
-	DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
+	DriverFactoryBase::SelectDriver(videodriver, Driver::Type::Video);
 
 	InitializeSpriteSorter();
 
@@ -793,10 +793,10 @@ int openttd_main(std::span<std::string_view> arguments)
 	}
 
 	if (sounddriver.empty() && !_ini_sounddriver.empty()) sounddriver = _ini_sounddriver;
-	DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
+	DriverFactoryBase::SelectDriver(sounddriver, Driver::Type::Sound);
 
 	if (musicdriver.empty() && !_ini_musicdriver.empty()) musicdriver = _ini_musicdriver;
-	DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
+	DriverFactoryBase::SelectDriver(musicdriver, Driver::Type::Music);
 
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	LoadIntroGame(false);

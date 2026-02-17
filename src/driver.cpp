@@ -121,9 +121,9 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
 
-				if (type == Driver::DT_VIDEO && !_video_hw_accel && d->UsesHardwareAcceleration()) continue;
+				if (type == Driver::Type::Video && !_video_hw_accel && d->UsesHardwareAcceleration()) continue;
 
-				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
+				if (type == Driver::Type::Video && _video_hw_accel && d->UsesHardwareAcceleration()) {
 					/* Check if we have already tried this driver in last run.
 					 * If it is here, it most likely means we crashed. So skip
 					 * hardware acceleration. */
@@ -157,7 +157,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				GetActiveDriver(type) = std::move(oldd);
 				Debug(driver, 1, "Probing {} driver '{}' failed with error: {}", GetDriverTypeName(type), d->name, *err);
 
-				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
+				if (type == Driver::Type::Video && _video_hw_accel && d->UsesHardwareAcceleration()) {
 					_video_hw_accel = false;
 					ErrorMessageData msg(GetEncodedString(STR_VIDEO_DRIVER_ERROR), GetEncodedString(STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION), true);
 					ScheduleErrorMessage(std::move(msg));
@@ -220,7 +220,7 @@ void DriverFactoryBase::MarkVideoDriverOperational()
  */
 void DriverFactoryBase::GetDriversInfo(std::back_insert_iterator<std::string> &output_iterator)
 {
-	for (Driver::Type type = Driver::DT_BEGIN; type != Driver::DT_END; type++) {
+	for (Driver::Type type = Driver::Type::Begin; type != Driver::Type::End; type++) {
 		fmt::format_to(output_iterator, "List of {} drivers:\n", GetDriverTypeName(type));
 
 		for (int priority = 10; priority >= 0; priority--) {

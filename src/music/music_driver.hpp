@@ -46,7 +46,7 @@ public:
 	 */
 	static MusicDriver *GetInstance()
 	{
-		return static_cast<MusicDriver *>(DriverFactoryBase::GetActiveDriver(Driver::DT_MUSIC).get());
+		return static_cast<MusicDriver *>(DriverFactoryBase::GetActiveDriver(Driver::Type::Music).get());
 	}
 };
 

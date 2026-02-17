@@ -40,7 +40,7 @@ private:
 /** Factory for the BeOS midi player. */
 class FMusicDriver_BeMidi : public DriverFactoryBase {
 public:
-	FMusicDriver_BeMidi() : DriverFactoryBase(Driver::DT_MUSIC, 10, "bemidi", "BeOS MIDI Driver") {}
+	FMusicDriver_BeMidi() : DriverFactoryBase(Driver::Type::Music, 10, "bemidi", "BeOS MIDI Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_BeMidi>(); }
 };
 

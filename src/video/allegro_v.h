@@ -45,7 +45,7 @@ protected:
 /** Factory for the allegro video driver. */
 class FVideoDriver_Allegro : public DriverFactoryBase {
 public:
-	FVideoDriver_Allegro() : DriverFactoryBase(Driver::DT_VIDEO, 4, "allegro", "Allegro Video Driver") {}
+	FVideoDriver_Allegro() : DriverFactoryBase(Driver::Type::Video, 4, "allegro", "Allegro Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Allegro>(); }
 };
 
