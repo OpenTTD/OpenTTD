@@ -305,9 +305,6 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 	return 0;
 }
 
-/**
- * @note Used by the resolver to get values for feature 07 deterministic spritegroups.
- */
 /* virtual */ uint32_t HouseScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	if (this->tile == INVALID_TILE) {

@@ -293,6 +293,7 @@ struct NewGRFInspectWindow : Window {
 
 	/**
 	 * Check whether this feature has chain index, i.e. refers to ground vehicles.
+	 * @return \c true iff the feature can have a chain of elements.
 	 */
 	bool HasChainIndex() const
 	{

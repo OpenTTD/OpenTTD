@@ -129,6 +129,8 @@ enum TTDPAircraftMovementStates : uint8_t {
 /**
  * Map OTTD aircraft movement states to TTDPatch style movement states
  * (VarAction 2 Variable 0xE2)
+ * @param v The aircraft to consider.
+ * @return The TTDP movement state.
  */
 static uint8_t MapAircraftMovementState(const Aircraft *v)
 {
@@ -256,6 +258,8 @@ enum TTDPAircraftMovementActions : uint8_t {
  * Map OTTD aircraft movement states to TTDPatch style movement actions
  * (VarAction 2 Variable 0xE6)
  * This is not fully supported yet but it's enough for Planeset.
+ * @param v The aircraft to consider.
+ * @return The TTDP movement action.
  */
 static uint8_t MapAircraftMovementAction(const Aircraft *v)
 {

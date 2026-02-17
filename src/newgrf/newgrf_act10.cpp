@@ -14,7 +14,10 @@
 
 #include "../safeguards.h"
 
-/** Action 0x10 - Define goto label */
+/**
+ * Action 0x10 - Define goto label.
+ * @param buf Reader of the NewGRF.
+ */
 static void DefineGotoLabel(ByteReader &buf)
 {
 	/* <10> <label> [<comment>]

@@ -66,14 +66,26 @@ public:
 	void Insert(Tspec *spec);
 
 	Tindex Index() const { return this->index; }
-	/** Get the number of allocated specs within the class. */
+
+	/**
+	 * Get the number of allocated specs within the class.
+	 * @return Number of specs.
+	 */
 	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
-	/** Get the number of potentially user-available specs within the class. */
+
+	/**
+	 * Get the number of potentially user-available specs within the class.
+	 * @return Number of specs for which can be available for the end user.
+	 */
 	uint GetUISpecCount() const { return this->ui_count; }
 
 	const Tspec *GetSpec(uint index) const;
 
-	/** Check whether the spec will be available to the user at some point in time. */
+	/**
+	 * Check whether the spec will be available to the user at some point in time.
+	 * @param index The index into the spec table.
+	 * @return \c true iff it can be available for the end user.
+	 */
 	bool IsUIAvailable(uint index) const;
 
 	static void Reset();

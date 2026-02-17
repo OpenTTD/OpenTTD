@@ -245,6 +245,6 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig &c, bool editable);
 
 void UpdateNewGRFScanStatus(uint num, std::string &&name);
-void UpdateNewGRFConfigPalette(int32_t new_value = 0);
+void UpdateNewGRFConfigPalette();
 
 #endif /* NEWGRF_CONFIG_H */

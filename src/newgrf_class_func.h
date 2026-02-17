@@ -77,6 +77,7 @@ void NewGRFClass<Tspec, Tindex, Tmax>::Assign(Tspec *spec)
  * Get a particular class.
  * @param class_index The index of the class.
  * @pre class_index < Tmax
+ * @return Pointer to the class.
  */
 template <typename Tspec, typename Tindex, Tindex Tmax>
 NewGRFClass<Tspec, Tindex, Tmax> *NewGRFClass<Tspec, Tindex, Tmax>::Get(Tindex class_index)

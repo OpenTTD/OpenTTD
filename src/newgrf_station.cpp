@@ -115,6 +115,13 @@ TileArea GetRailTileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
  * - P = Position along platform from start, p = from end
  * .
  * if centered, C/P start from the centre and c/p are not available.
+ * @param axis The axis of the platform.
+ * @param tile The tile layout number.
+ * @param platforms Number of platforms.
+ * @param length Length of platforms.
+ * @param x The platform number.
+ * @param y Position along the platform.
+ * @param centred Whether to 'center' the platform location, or use the absolute location.
  * @return Platform information in bit-stuffed format.
  */
 uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred)
@@ -884,7 +891,16 @@ const StationSpec *GetStationSpec(TileIndex t)
 	return specindex < st->speclist.size() ? st->speclist[specindex].spec : nullptr;
 }
 
-/** Wrapper for animation control, see GetStationCallback. */
+/**
+ * Perform the station callback in the context of the AnimationBase callback.
+ * @param callback The identifier of the callback.
+ * @param param1 The first parameter of the NewGRF callback.
+ * @param param2 The second parameter of the NewGRF callback.
+ * @param statspec The specification to run the callback on.
+ * @param st The station for the calback.
+ * @param tile The tile the station is at.
+ * @return The NewGRF result of the callback.
+ */
 uint16_t GetAnimStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, int)
 {
 	return GetStationCallback(callback, param1, param2, statspec, st, tile);

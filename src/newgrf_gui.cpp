@@ -1401,7 +1401,7 @@ private:
 		return a->ident.md5sum < b->ident.md5sum;
 	}
 
-	/** Filter grfs by tags/name */
+	/** Filter grfs by tags/name. @copydoc GUIList::FilterFunction */
 	static bool TagNameFilter(const GRFConfig * const *a, StringFilter &filter)
 	{
 		filter.ResetState();
@@ -1877,7 +1877,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_infopanel_wid
 	EndContainer(),
 };
 
-/** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
+/** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> NewGRFDisplay()
 {
 	std::unique_ptr<NWidgetBase> avs = MakeNWidgets(_nested_newgrf_availables_widgets, nullptr);

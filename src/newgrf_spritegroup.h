@@ -427,6 +427,7 @@ public:
 
 	/**
 	 * Used by RandomizedSpriteGroup: Triggers for rerandomisation
+	 * @return The triggers waiting for randomisation.
 	 */
 	uint32_t GetWaitingRandomTriggers() const
 	{
@@ -435,6 +436,7 @@ public:
 
 	/**
 	 * Used by RandomizedSpriteGroup: Consume triggers.
+	 * @param triggers The triggers t0 set as having used random triggers.
 	 */
 	void AddUsedRandomTriggers(uint32_t triggers)
 	{
@@ -480,6 +482,7 @@ struct SpecializedResolverObject : public ResolverObject {
 	/**
 	 * Set waiting triggers for rerandomisation.
 	 * This is scope independent, even though this is broken-by-design in most cases.
+	 * @param triggers The triggers to set wating.
 	 */
 	void SetWaitingRandomTriggers(RandomTriggers triggers)
 	{
@@ -489,6 +492,7 @@ struct SpecializedResolverObject : public ResolverObject {
 	/**
 	 * Get the triggers, which were "consumed" by some rerandomisation.
 	 * This is scope independent, even though this is broken-by-design in most cases.
+	 * @return The triggers that have used random triggers.
 	 */
 	RandomTriggers GetUsedRandomTriggers() const
 	{

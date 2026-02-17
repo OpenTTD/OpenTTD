@@ -121,7 +121,10 @@ static GRFFile *GetFileByFilename(const std::string &filename)
 	return nullptr;
 }
 
-/** Reset all NewGRFData that was used only while processing data */
+/**
+ * Reset all NewGRFData that was used only while processing data.
+ * @param gf The file to reset the data for.
+ */
 static void ClearTemporaryNewGRFData(GRFFile *gf)
 {
 	gf->labels.clear();
@@ -312,6 +315,8 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16_t internal
 
 /**
  * Translate the refit mask. refit_mask is uint32_t as it has not been mapped to CargoTypes.
+ * @param refit_mask The bitmask to convert.
+ * @return The converted CargoTypes.
  */
 CargoTypes TranslateRefitMask(uint32_t refit_mask)
 {

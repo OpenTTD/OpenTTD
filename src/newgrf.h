@@ -166,7 +166,11 @@ struct GRFFile {
 	GRFFile(GRFFile &&other);
 	~GRFFile();
 
-	/** Get GRF Parameter with range checking */
+	/**
+	 * Get GRF Parameter with range checking.
+	 * @param number The parameter number/index.
+	 * @return The parameter, or \c 0 when the number is out of bounds.
+	 */
 	uint32_t GetParam(uint number) const
 	{
 		/* Note: We implicitly test for number < this->param.size() and return 0 for invalid parameters.

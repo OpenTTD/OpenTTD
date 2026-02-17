@@ -258,7 +258,6 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 	return Object::GetTypeCount(idx) << 16 | ClampTo<uint16_t>(GetClosestObject(tile, idx, current));
 }
 
-/** Used by the resolver to get values for feature 0F deterministic spritegroups. */
 /* virtual */ uint32_t ObjectScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	/* We get the town from the object, or we calculate the closest
@@ -573,6 +572,7 @@ static bool DoTriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimat
  * @param tile    The location of the triggered tile.
  * @param trigger The trigger that is triggered.
  * @param spec    The spec associated with the object.
+ * @return \c true iff the object has an animation trigger set.
  */
 bool TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {
@@ -584,6 +584,7 @@ bool TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigge
  * @param o       The object that got triggered.
  * @param trigger The trigger that is triggered.
  * @param spec    The spec associated with the object.
+ * @return \c true iff all tiles of the object had an animation trigger set.
  */
 bool TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {
