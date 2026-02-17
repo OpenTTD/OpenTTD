@@ -394,6 +394,8 @@ constexpr uint TILE_HASH_RES = 0;
 
 /**
  * Compute hash for 1D tile coordinate.
+ * @param p The value to 'hash'.
+ * @return The computed hash.
  */
 static inline uint GetTileHash1D(uint p)
 {
@@ -402,6 +404,8 @@ static inline uint GetTileHash1D(uint p)
 
 /**
  * Increment 1D hash to next bucket.
+ * @param h The value to increment the hash for.
+ * @return The incremented value.
  */
 static inline uint IncTileHash1D(uint h)
 {
@@ -410,6 +414,9 @@ static inline uint IncTileHash1D(uint h)
 
 /**
  * Compose two 1D hashes into 2D hash.
+ * @param hx The hash for the X-axis.
+ * @param hy The hash for the Y-axis.
+ * @return The composed hash.
  */
 static inline uint ComposeTileHash(uint hx, uint hy)
 {
@@ -418,6 +425,9 @@ static inline uint ComposeTileHash(uint hx, uint hy)
 
 /**
  * Compute hash for tile coordinate.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @return The hash of the tile coordinates.
  */
 static inline uint GetTileHash(uint x, uint y)
 {
@@ -429,6 +439,9 @@ static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
 /**
  * Iterator constructor.
  * Find first vehicle near (x, y).
+ * @param x The center X-coordinate.
+ * @param y The center Y-coordinate.
+ * @param max_dist The distance around the center to consider.
  */
 VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y, uint max_dist)
 {
@@ -496,6 +509,7 @@ void VehiclesNearTileXY::Iterator::SkipFalseMatches()
 /**
  * Iterator constructor.
  * Find first vehicle on tile.
+ * @param tile The tile to find the vehicles on.
  */
 VehiclesOnTile::Iterator::Iterator(TileIndex tile) : tile(tile)
 {
@@ -2482,7 +2496,8 @@ bool Vehicle::HasUnbunchingOrder() const
 
 /**
  * Check if the previous order is a depot unbunching order.
- * @return true Iff the previous order is a depot order with the unbunch flag.
+ * @param v The vehicle to consider.
+ * @return \c true iff the previous order is a depot order with the unbunch flag.
  */
 static bool PreviousOrderIsUnbunching(const Vehicle *v)
 {

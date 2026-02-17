@@ -815,7 +815,10 @@ static void DrawSeaWater(TileIndex)
 	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
 }
 
-/** draw a canal styled water tile with dikes around */
+/**
+ * Draw a canal styled water tile with dikes around.
+ * @param tile The tile to draw as canal.
+ */
 static void DrawCanalWater(TileIndex tile)
 {
 	SpriteID image = SPR_FLAT_WATER_TILE;
@@ -853,7 +856,10 @@ static void DrawWaterTileStruct(const TileInfo *ti, std::span<const DrawTileSeqS
 	}
 }
 
-/** Draw a lock tile. */
+/**
+ * Draw a lock tile.
+ * @param ti The tile information of the lock tile.
+ */
 static void DrawWaterLock(const TileInfo *ti)
 {
 	LockPart part = GetLockPart(ti->tile);
@@ -892,7 +898,10 @@ static void DrawWaterLock(const TileInfo *ti)
 	DrawWaterTileStruct(ti, dts.GetSequence(), base, zoffs, PAL_NONE, CF_LOCKS);
 }
 
-/** Draw a ship depot tile. */
+/**
+ * Draw a ship depot tile.
+ * @param ti The tile information of the ship depot tile.
+ */
 static void DrawWaterDepot(const TileInfo *ti)
 {
 	DrawWaterClassGround(ti);
@@ -1126,7 +1135,7 @@ static void FloodVehicles(TileIndex tile)
 
 /**
  * Returns the behaviour of a tile during flooding.
- *
+ * @param tile The tile to get the behaviour for.
  * @return Behaviour of the tile
  */
 FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
@@ -1167,6 +1176,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 
 /**
  * Floods a tile.
+ * @param target The tile to consider.
  */
 static void DoFloodTile(TileIndex target)
 {
@@ -1235,6 +1245,7 @@ static void DoFloodTile(TileIndex target)
 
 /**
  * Drys a tile up.
+ * @param tile The tile to consider.
  */
 static void DoDryUp(TileIndex tile)
 {

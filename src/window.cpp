@@ -104,7 +104,19 @@ std::vector<WindowDesc*> *_window_descs = nullptr;
 /** Config file to store WindowDesc */
 std::string _windows_file;
 
-/** Window description constructor. */
+/**
+ * Window description constructor.
+ * @param def_pos The default location to open the window.
+ * @param ini_key The key for storing settings of this window in the savegame.
+ * @param def_width_trad The default width without scaling.
+ * @param def_height_trad The default height without scaling.
+ * @param window_class The class of windows.
+ * @param parent_class The window class of our parents.
+ * @param flags Arbitrary flags to describe certain behaviour of the window.
+ * @param nwid_parts The widgets of the window.
+ * @param hotkeys The optional hotkeys.
+ * @param location The source code location where the window is instantiated.
+ */
 WindowDesc::WindowDesc(WindowPosition def_pos, std::string_view ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, WindowDefaultFlags flags,
 			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys,
@@ -2803,7 +2815,7 @@ static constexpr int MAX_OFFSET_HOVER = 5; ///< Maximum mouse movement before st
 
 extern EventState VpHandlePlaceSizingDrag();
 
-const std::chrono::milliseconds TIME_BETWEEN_DOUBLE_CLICK(500); ///< Time between 2 left clicks before it becoming a double click.
+const std::chrono::milliseconds TIME_BETWEEN_DOUBLE_CLICK{500}; ///< Time between 2 left clicks before it becoming a double click.
 
 static void ScrollMainViewport(int x, int y)
 {
@@ -3090,6 +3102,7 @@ bool CanContinueRealtimeTick()
 
 /**
  * Dispatch OnRealtimeTick event over all windows
+ * @param delta_ms The number of milliseconds since the last call.
  */
 void CallWindowRealtimeTickEvent(uint delta_ms)
 {
@@ -3609,6 +3622,7 @@ void RelocateAllWindows(int neww, int newh)
 /**
  * Hide the window and all its child windows, and mark them for a later deletion.
  * Always call ResetObjectToPlace() when closing a PickerWindow.
+ * @copydoc Window::Close
  */
 void PickerWindowBase::Close([[maybe_unused]] int data)
 {

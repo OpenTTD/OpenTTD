@@ -780,6 +780,7 @@ void EndSpriteCombine()
  * @param begin The begin of the interval.
  * @param end   The end of the interval.
  * @param check The value to check.
+ * @return \c true iff check is between begin and end, including both begin and end.
  */
 static bool IsInRangeInclusive(int begin, int end, int check)
 {
@@ -1587,13 +1588,10 @@ static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 	}
 }
 
-/** This fallback sprite checker always exists. */
-static bool ViewportSortParentSpritesChecker()
-{
-	return true;
-}
-
-/** Sort parent sprites pointer array replicating the way original sorter did it. */
+/**
+ * Sort parent sprites pointer array replicating the way original sorter did it.
+ * @param psdv The sprites to sort.
+ */
 static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 {
 	if (psdv->size() < 2) return;
@@ -2829,7 +2827,10 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 	_special_mouse_mode = WSM_SIZING;
 }
 
-/** Drag over the map while holding the left mouse down. */
+/**
+ * Drag over the map while holding the left mouse down.
+ * @param process The chosen selection process.
+ */
 void VpStartDragging(ViewportDragDropSelectionProcess process)
 {
 	_thd.select_method = VPM_X_AND_Y;
@@ -3594,7 +3595,7 @@ static const ViewportSSCSS _vp_sprite_sorters[] = {
 #ifdef WITH_SSE
 	{ &ViewportSortParentSpritesSSE41Checker, &ViewportSortParentSpritesSSE41 },
 #endif
-	{ &ViewportSortParentSpritesChecker, &ViewportSortParentSprites }
+	{ []() { return true; /* Always available */ }, &ViewportSortParentSprites }
 };
 
 /** Choose the "best" sprite sorter and set _vp_sprite_sorter. */

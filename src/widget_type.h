@@ -275,6 +275,7 @@ protected:
 /**
  * Get the horizontal sizing step.
  * @param sizing Type of resize being performed.
+ * @return Depending on the sizing type the resize or fill on the X-axis.
  */
 inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 {
@@ -284,6 +285,7 @@ inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 /**
  * Get the vertical sizing step.
  * @param sizing Type of resize being performed.
+ * @return Depending on the sizing type the resize or fill on the Y-axis.
  */
 inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
 {
@@ -455,7 +457,10 @@ inline void NWidgetCore::SetLowered(bool lowered)
 	lowered ? this->disp_flags.Set(NWidgetDisplayFlag::Lowered) : this->disp_flags.Reset(NWidgetDisplayFlag::Lowered);
 }
 
-/** Return whether the widget is lowered. */
+/**
+ * Return whether the widget is lowered.
+ * @return \c true iff the widget is lowered.
+ */
 inline bool NWidgetCore::IsLowered() const
 {
 	return this->disp_flags.Test(NWidgetDisplayFlag::Lowered);
@@ -470,7 +475,10 @@ inline void NWidgetCore::SetDisabled(bool disabled)
 	this->disp_flags = disabled ? this->disp_flags.Set(NWidgetDisplayFlag::Disabled) : this->disp_flags.Reset(NWidgetDisplayFlag::Disabled);
 }
 
-/** Return whether the widget is disabled. */
+/**
+ * Return whether the widget is disabled.
+ * @return \c true iff the widget is disabled.
+ */
 inline bool NWidgetCore::IsDisabled() const
 {
 	return this->disp_flags.Test(NWidgetDisplayFlag::Disabled);
@@ -492,7 +500,10 @@ public:
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 
-	/** Return whether the container is empty. */
+	/**
+	 * Return whether the container is empty.
+	 * @return \c true iff this container has no children.
+	 */
 	inline bool IsEmpty() { return this->children.empty(); }
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
@@ -1153,6 +1164,7 @@ struct NWidgetPart {
  * Widget part function for setting the resize step.
  * @param dx Horizontal resize step. 0 means no horizontal resizing.
  * @param dy Vertical resize step. 0 means no vertical resizing.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetResize(int16_t dx, int16_t dy)
@@ -1164,6 +1176,7 @@ constexpr NWidgetPart SetResize(int16_t dx, int16_t dy)
  * Widget part function for setting the minimal size.
  * @param x Horizontal minimal size.
  * @param y Vertical minimal size.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetMinimalSize(int16_t x, int16_t y)
@@ -1173,6 +1186,7 @@ constexpr NWidgetPart SetMinimalSize(int16_t x, int16_t y)
 
 /**
  * Widget part function to setting the minimal size for a toolbar spacer.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetToolbarSpacerMinimalSize()
@@ -1183,6 +1197,7 @@ constexpr NWidgetPart SetToolbarSpacerMinimalSize()
 /**
  * Widget part function to setting the minimal size for a toolbar button.
  * @param width Width of button, measured in multiples of the standard toolbar button size.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetToolbarMinimalSize(int width)
@@ -1195,6 +1210,7 @@ constexpr NWidgetPart SetToolbarMinimalSize(int width)
  * @param lines   Number of text lines.
  * @param spacing Extra spacing required.
  * @param size    Font size of text.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
@@ -1206,6 +1222,7 @@ constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSi
  * Widget part function for setting the text style.
  * @param colour Colour to draw string within widget.
  * @param size Font size to draw string within widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NORMAL)
@@ -1216,6 +1233,7 @@ constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NORMAL)
 /**
  * Widget part function for setting the alignment of text/images.
  * @param align  Alignment of text/image within widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetAlignment(StringAlignment align)
@@ -1227,6 +1245,7 @@ constexpr NWidgetPart SetAlignment(StringAlignment align)
  * Widget part function for setting filling.
  * @param fill_x Horizontal filling step from minimal size.
  * @param fill_y Vertical filling step from minimal size.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetFill(uint16_t fill_x, uint16_t fill_y)
@@ -1237,6 +1256,7 @@ constexpr NWidgetPart SetFill(uint16_t fill_x, uint16_t fill_y)
 /**
  * Widget part function for denoting the end of a container
  * (horizontal, vertical, WWT_FRAME, WWT_INSET, or WWT_PANEL).
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart EndContainer()
@@ -1248,6 +1268,7 @@ constexpr NWidgetPart EndContainer()
  * Widget part function for setting the string and tooltip.
  * @param string String of the widget.
  * @param tip  Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetStringTip(StringID string, StringID tip = {})
@@ -1259,6 +1280,7 @@ constexpr NWidgetPart SetStringTip(StringID string, StringID tip = {})
  * Widget part function for setting the sprite and tooltip.
  * @param sprite Sprite of the widget.
  * @param tip  Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip = {})
@@ -1271,6 +1293,7 @@ constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip = {})
  * @param sprite Sprite of the widget.
  * @param string String of the widget.
  * @param tip  Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetSpriteStringTip(SpriteID sprite, StringID string, StringID tip = {})
@@ -1282,6 +1305,7 @@ constexpr NWidgetPart SetSpriteStringTip(SpriteID sprite, StringID string, Strin
  * Widget part function for setting the arrow widget type and tooltip.
  * @param widget_type Type of the widget to draw.
  * @param tip  Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, StringID tip = {})
@@ -1293,6 +1317,7 @@ constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, Strin
  * Widget part function for setting the resize widget type and tooltip.
  * @param widget_type Type of the widget to draw.
  * @param tip  Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, StringID tip)
@@ -1304,6 +1329,7 @@ constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, Str
  * Widget part function for setting the alternate colour and tooltip.
  * @param colour Alternate colour of the widget.
  * @param tip Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetAlternateColourTip(Colours colour, StringID tip)
@@ -1316,6 +1342,7 @@ constexpr NWidgetPart SetAlternateColourTip(Colours colour, StringID tip)
  * @param cols Number of columns. \c 0 means to use draw columns with width according to the resize step size.
  * @param rows Number of rows. \c 0 means to use draw rows with height according to the resize step size.
  * @param tip  Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetMatrixDataTip(uint32_t cols, uint32_t rows, StringID tip = {})
@@ -1326,6 +1353,7 @@ constexpr NWidgetPart SetMatrixDataTip(uint32_t cols, uint32_t rows, StringID ti
 /**
  * Widget part function for setting tooltip and clearing the widget data.
  * @param tip  Tooltip of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetToolTip(StringID tip)
@@ -1340,6 +1368,7 @@ constexpr NWidgetPart SetToolTip(StringID tip)
  * @param right The padding right of the widget.
  * @param bottom The padding below the widget.
  * @param left The padding left of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uint8_t left)
@@ -1351,6 +1380,7 @@ constexpr NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uin
  * Widget part function for setting additional space around a widget.
  * @param horizontal The padding on either side of the widget.
  * @param vertical The padding above and below the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPadding(uint8_t horizontal, uint8_t vertical)
@@ -1361,6 +1391,7 @@ constexpr NWidgetPart SetPadding(uint8_t horizontal, uint8_t vertical)
 /**
  * Widget part function for setting additional space around a widget.
  * @param padding The padding around the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPadding(const RectPadding &padding)
@@ -1371,6 +1402,7 @@ constexpr NWidgetPart SetPadding(const RectPadding &padding)
 /**
  * Widget part function for setting a padding.
  * @param padding The padding to use for all directions.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPadding(uint8_t padding)
@@ -1383,6 +1415,7 @@ constexpr NWidgetPart SetPadding(uint8_t padding)
  * @param pre The amount of space before the first widget.
  * @param inter The amount of space between widgets.
  * @param post The amount of space after the last widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
@@ -1395,6 +1428,7 @@ constexpr NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
  * @param ratio_pre The ratio of space before the first widget.
  * @param ratio_inter The ratio of space between widgets.
  * @param ratio_post The ratio of space after the last widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_t ratio_post)
@@ -1407,6 +1441,7 @@ constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_
  * The scrollbar is controlled when using the mousewheel on the widget.
  * Multiple widgets can refer to the same scrollbar to make the mousewheel work in all of them.
  * @param index Widget index of the scrollbar.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetScrollbar(WidgetID index)
@@ -1418,6 +1453,7 @@ constexpr NWidgetPart SetScrollbar(WidgetID index)
  * Widget part function for setting the aspect ratio.
  * @param ratio Desired aspect ratio, or 0 for none.
  * @param flags Dimensions which should be resized.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetAspect(float ratio, AspectFlags flags = AspectFlag::ResizeX)
@@ -1430,6 +1466,7 @@ constexpr NWidgetPart SetAspect(float ratio, AspectFlags flags = AspectFlag::Res
  * @param tp  Type of the new nested widget.
  * @param col Colour of the new widget.
  * @param idx Index of the widget.
+ * @return The created widget part.
  * @note with #WWT_PANEL, #WWT_FRAME, #WWT_INSET, a new container is started.
  *       Child widgets must have a index bigger than the parent index.
  * @ingroup NestedWidgetParts
@@ -1444,6 +1481,7 @@ constexpr NWidgetPart NWidget(WidgetType tp, Colours col, WidgetID idx = INVALID
  * @param tp         Type of the new nested widget, #NWID_HORIZONTAL, #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, and #NWID_MATRIX.
  * @param cont_flags Flags for the containers (#NWID_HORIZONTAL and #NWID_VERTICAL).
  * @param idx Optional identifier of the widget.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = {}, WidgetID idx = INVALID_WIDGET)
@@ -1454,6 +1492,7 @@ constexpr NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = {},
 /**
  * Obtain a nested widget (sub)tree from an external source.
  * @param func_ptr Pointer to function that returns the tree.
+ * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
