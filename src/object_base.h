@@ -62,6 +62,7 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	 * Get the count of objects for this type.
 	 * @param type ObjectType to query
 	 * @pre type < NUM_OBJECTS
+	 * @return The number of objects of the given type.
 	 */
 	static inline uint16_t GetTypeCount(ObjectType type)
 	{

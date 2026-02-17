@@ -572,6 +572,7 @@ private:
 
 	/**
 	 * Handle the click on the goto button.
+	 * @param type The variant of goto button/dropdown options.
 	 */
 	void OrderClick_Goto(OrderPlaceObjectState type)
 	{
@@ -609,6 +610,7 @@ private:
 
 	/**
 	 * Handle the click on the service.
+	 * @param i The optional depot action to modify the order with.
 	 */
 	void OrderClick_Service(std::optional<OrderDepotAction> i)
 	{
@@ -1473,6 +1475,8 @@ public:
 
 	/**
 	 * Clones an order list from a vehicle list.  If this doesn't make sense (because not all vehicles in the list have the same orders), then it displays an error.
+	 * @param begin Begin iterator of the vehicle list.
+	 * @param end End iterator of the vehicle list.
 	 * @return This always returns true, which indicates that the contextual action handled the mouse click.
 	 *         Note that it's correct behaviour to always handle the click even though an error is displayed,
 	 *         because users aren't going to expect the default action to be performed just because they overlooked that cloning doesn't make sense.

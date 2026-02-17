@@ -241,7 +241,7 @@ static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_h
 	}
 }
 
-/** Construct the top row keys (cancel, ok, backspace). */
+/** Construct the top row keys (cancel, ok, backspace). @copydoc NWidgetFunctionType */
 static std::unique_ptr<NWidgetBase> MakeTopKeys()
 {
 	auto hor = std::make_unique<NWidgetHorizontal>();
@@ -253,7 +253,7 @@ static std::unique_ptr<NWidgetBase> MakeTopKeys()
 	return hor;
 }
 
-/** Construct the row containing the digit keys. */
+/** Construct the row containing the digit keys. @copydoc NWidgetFunctionType */
 static std::unique_ptr<NWidgetBase> MakeNumberKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
@@ -265,7 +265,7 @@ static std::unique_ptr<NWidgetBase> MakeNumberKeys()
 	return hor;
 }
 
-/** Construct the qwerty row keys. */
+/** Construct the qwerty row keys. @copydoc NWidgetFunctionType */
 static std::unique_ptr<NWidgetBase> MakeQwertyKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
@@ -279,7 +279,7 @@ static std::unique_ptr<NWidgetBase> MakeQwertyKeys()
 	return hor;
 }
 
-/** Construct the asdfg row keys. */
+/** Construct the asdfg row keys. @copydoc NWidgetFunctionType */
 static std::unique_ptr<NWidgetBase> MakeAsdfgKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
@@ -292,7 +292,7 @@ static std::unique_ptr<NWidgetBase> MakeAsdfgKeys()
 	return hor;
 }
 
-/** Construct the zxcvb row keys. */
+/** Construct the zxcvb row keys. @copydoc NWidgetFunctionType */
 static std::unique_ptr<NWidgetBase> MakeZxcvbKeys()
 {
 	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
@@ -306,7 +306,7 @@ static std::unique_ptr<NWidgetBase> MakeZxcvbKeys()
 	return hor;
 }
 
-/** Construct the spacebar row keys. */
+/** Construct the spacebar row keys. @copydoc NWidgetFunctionType */
 static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 {
 	auto hor = std::make_unique<NWidgetHorizontal>();

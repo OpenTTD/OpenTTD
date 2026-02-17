@@ -692,7 +692,10 @@ private:
 
 /* static */ int NewsWindow::duration = 0; // Instance creation.
 
-/** Open up an own newspaper window for the news item */
+/**
+ * Open up an own newspaper window for the news item.
+ * @param ni Iterator to the news message to show.
+ */
 static void ShowNewspaper(const NewsItem *ni)
 {
 	SoundFx sound = _news_type_data[to_underlying(ni->type)].sound;
@@ -701,7 +704,10 @@ static void ShowNewspaper(const NewsItem *ni)
 	new NewsWindow(GetNewsWindowLayout(ni->style), ni);
 }
 
-/** Show news item in the ticker */
+/**
+ * Show news item in the ticker.
+ * @param ni Iterator to the news message to show.
+ */
 static void ShowTicker(NewsIterator ni)
 {
 	if (_settings_client.sound.news_ticker) SndPlayFx(SND_16_NEWS_TICKER);
@@ -723,6 +729,7 @@ void InitNewsItemStructs()
 /**
  * Are we ready to show another ticker item?
  * Only if nothing is in the newsticker is displayed
+ * @return \c true iff there is no news item or the ticker of the current news item has been shown.
  */
 static bool ReadyForNextTickerItem()
 {
@@ -737,6 +744,7 @@ static bool ReadyForNextTickerItem()
 /**
  * Are we ready to show another news item?
  * Only if no newspaper is displayed
+ * @return \c true iff there is neither a ticker not a newspaper being shown.
  */
 static bool ReadyForNextNewsItem()
 {
@@ -818,7 +826,11 @@ static void MoveToNextNewsItem()
 	}
 }
 
-/** Delete a news item from the queue */
+/**
+ * Delete a news item from the queue
+ * @param ni Iterator pointing to the news item to remove.
+ * @return The updates iterator after removal.
+ */
 static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterator ni)
 {
 	bool update_current_news = (_forced_news == ni || _current_news == ni);
@@ -976,6 +988,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
  * Delete news items by predicate, and invalidate the message history if necessary.
  * @tparam Tmin Stop if the number of news items remaining reaches \a min items.
  * @tparam Tpredicate Condition for a news item to be deleted.
+ * @param predicate The predicate to apply when iterating the news.
  */
 template <size_t Tmin = 0, class Tpredicate>
 void DeleteNews(Tpredicate predicate)
@@ -1106,7 +1119,10 @@ void NewsLoop()
 	if (ReadyForNextNewsItem()) MoveToNextNewsItem();
 }
 
-/** Do a forced show of a specific message */
+/**
+ * Do a forced show of a specific message.
+ * @param ni Iterator to the news message to show.
+ */
 static void ShowNewsMessage(NewsIterator ni)
 {
 	assert(!std::empty(_news));

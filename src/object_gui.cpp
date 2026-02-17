@@ -416,7 +416,10 @@ static WindowDesc _build_object_desc(
 	&BuildObjectWindow::hotkeys
 );
 
-/** Show our object picker.  */
+/**
+ * Show our object picker.
+ * @return The allocated window or \c nullptr when no window was allocated.
+ */
 Window *ShowBuildObjectPicker()
 {
 	/* Don't show the place object button when there are no objects to place. */
