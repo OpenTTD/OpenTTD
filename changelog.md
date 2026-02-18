@@ -1,5 +1,19 @@
 ## 15.x
 
+### 15.2 (2026-02-18)
+
+- Fix: Crashed zeppelin not blocking runway (#15281)
+- Fix #15269: Crash when building drive-through stop on unowned one-way road (#15270)
+- Fix #15247: Crash when handling invalid sprite in OpenGL cursor sprite system (#15248)
+- Fix #15105: Czech townname generation causing crashes (#15231)
+- Fix: Incorrect ground type test when placing towns (#15217)
+- Fix: Town supplied cargo history incorrectly clamped to 16 bit values (#15183)
+- Fix #15085: Crash when GUI scale changes before video driver is fully initialised (#15175)
+- Fix: Articulated road vehicle following with immediately sequential u-turns (#15170)
+- Fix #15166: Foundations missing adjacent to NewGRF objects without foundation (#15168)
+- Fix #14035: [Fluidsynth] Read settings from config files if available (#15044)
+- Fix #15263: Badge filter toggles no longer worked (#14972)
+
 ### 15.1 (2026-01-24)
 
 - Fix #15088: When building a new train, the refit button state may be incorrect (#15162)
