@@ -581,6 +581,7 @@ public:
 	 * Get the description for how to load the chunk. Depending on the
 	 * savegame version this can either use the headers in the savegame or
 	 * fall back to backwards compatibility and uses hard-coded headers.
+	 * @return Save load description derived from savegame being loaded.
 	 */
 	SaveLoadTable GetLoadDescription() const;
 };
