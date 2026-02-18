@@ -408,7 +408,10 @@ wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf)
 	return dst_buf.data();
 }
 
-/** Determine the current user's locale. */
+/**
+ * Determine the current user's locale.
+ * @return String containing current charset, or std::nullopt if not-determinable.
+ */
 std::optional<std::string> GetCurrentLocale(const char *)
 {
 	const LANGID userUiLang = GetUserDefaultUILanguage();

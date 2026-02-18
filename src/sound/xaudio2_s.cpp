@@ -112,7 +112,11 @@ static IXAudio2MasteringVoice *_mastering_voice = nullptr;
 static ComPtr<IXAudio2> _xaudio2;
 static std::unique_ptr<StreamingVoiceContext> _voice_context;
 
-/** Create XAudio2 context with SEH exception checking. */
+/**
+ * Create XAudio2 context with SEH exception checking.
+ * @param xAudio2Create Function pointer to the xAudio2Create API call in the loaded DLL.
+ * @return \c S_OK iff successful, otherwise an error code.
+ */
 static HRESULT CreateXAudio(API_XAudio2Create xAudio2Create)
 {
 	HRESULT hr;

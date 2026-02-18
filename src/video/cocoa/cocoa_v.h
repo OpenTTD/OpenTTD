@@ -122,7 +122,6 @@ public:
 	std::optional<std::string_view> Start(const StringList &param) override;
 	void Stop() override;
 
-	/** Return driver name */
 	std::string_view GetName() const override { return "cocoa"; }
 
 	void AllocateBackingStore(bool force = false) override;

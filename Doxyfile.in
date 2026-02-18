@@ -323,6 +323,7 @@ PREDEFINED             = WITH_ZLIB \
                          _GNU_SOURCE \
                          CDECL= \
                          CALLBACK= \
+                         APIENTRY= \
                          FINAL=
 EXPAND_AS_DEFINED      = DEFINE_POOL_METHOD
 SKIP_FUNCTION_MACROS   = YES

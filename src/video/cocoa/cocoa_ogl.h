@@ -39,7 +39,6 @@ public:
 	bool HasAnimBuffer() override { return true; }
 	uint8_t *GetAnimBuffer() override { return this->anim_buffer; }
 
-	/** Return driver name */
 	std::string_view GetName() const override { return "cocoa-opengl"; }
 
 	std::string_view GetInfoString() const override { return this->driver_info; }

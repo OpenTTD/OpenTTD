@@ -120,6 +120,12 @@ static uint FindStartupDisplay(uint startup_display)
 	return 0;
 }
 
+/**
+ * Indicate to the driver the client-size might have changed.
+ * @param w The new width of the window.
+ * @param h The new height of the window.
+ * @param force Whether to force full reallocation, instead of not reallocating when size did not change.
+ */
 void VideoDriver_SDL_Base::ClientSizeChanged(int w, int h, bool force)
 {
 	/* Allocate backing store of the new size. */
@@ -353,8 +359,9 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 }
 
 /**
- * Like ConvertSdlKeyIntoMy(), but takes an SDL_Keycode as input
- * instead of an SDL_Keysym.
+ * Convert a SDL_Keycode into our own key codes.
+ * @param kc The SDL key code.
+ * @return OpenTTD's internal key code.
  */
 static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 {
