@@ -181,18 +181,30 @@ static std::string ConvertLfToCrLf(std::string_view msg)
 	return output;
 }
 
-/** Callback function to handle the window */
+/**
+ * Callback function to handle the window.
+ *
+ * Relates to the resource with id 101 in ottdres.rc.in.
+ * @param wnd Handle to the window.
+ * @param msg The dialog message to handle.
+ * @param wParam Message specific data; for \c WM_COMMAND the id of the button.
+ * @param lParam Message specific data; for \c WM_INITDIALOG a pointer to a std::wstring containing the dialog text.
+ * @return \c TRUE when the message is handled, otherwise \c FALSE.
+ */
 static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	static constexpr int TEXT_CONTROL = 11;
+	static constexpr int OK_BUTTON = 12;
+
 	switch (msg) {
 		case WM_INITDIALOG: {
 			std::wstring &msg = *reinterpret_cast<std::wstring *>(lParam);
-			SetDlgItemText(wnd, 11, msg.c_str());
-			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
+			SetDlgItemText(wnd, TEXT_CONTROL, msg.c_str());
+			SendDlgItemMessage(wnd, TEXT_CONTROL, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		} return TRUE;
 
 		case WM_COMMAND:
-			if (wParam == 12) ExitProcess(0);
+			if (wParam == OK_BUTTON) ExitProcess(0);
 			return TRUE;
 		case WM_CLOSE:
 			ExitProcess(0);
