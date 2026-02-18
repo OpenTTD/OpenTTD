@@ -300,6 +300,12 @@ TownScopeResolver *StationResolverObject::GetTown()
 				}
 				break;
 
+			case 0x79:
+				if (this->axis != INVALID_AXIS && this->tile != INVALID_TILE) {
+					return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile, true, this->axis), this->ro);
+				}
+				break;
+
 			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->statspec->badges, parameter);
 
 			case 0xFA: return ClampTo<uint16_t>(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Build date, clamped to a 16 bit value
@@ -403,6 +409,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 			return 0xFFFE;
 		}
 
+		case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), this->ro);
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->statspec->badges, parameter);
 
 		/* General station variables */
