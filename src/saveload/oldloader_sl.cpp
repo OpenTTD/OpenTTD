@@ -156,6 +156,7 @@ static void FixOldTowns()
  * Convert the old style vehicles into something that resembles
  * the old new style savegames. Then #AfterLoadGame can handle
  * the rest of the conversion.
+ * @param ls The state for loading the save game.
  */
 void FixOldVehicles(LoadgameState &ls)
 {
