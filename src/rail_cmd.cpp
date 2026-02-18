@@ -144,6 +144,8 @@ void InitRailTypes()
 
 /**
  * Allocate a new rail type label
+ * @param label The label of the rail type.
+ * @return The allocated type, or \c INVALID_RAILTYPE upon failures.
  */
 RailType AllocateRailType(RailTypeLabel label)
 {
@@ -924,7 +926,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
  * @param track track-orientation
  * @param auto_remove_signals false = build up to an obstacle, true = fail if an obstacle is found (used for AIs).
  * @param fail_on_obstacle false = error on signal in the way, true = auto remove signals when in the way
-
+ * @return The cost of this operation or an error.
  * @see CmdRailTrackHelper
  */
 CommandCost CmdBuildRailroadTrack(DoCommandFlags flags, TileIndex end_tile, TileIndex start_tile, RailType railtype, Track track, bool auto_remove_signals, bool fail_on_obstacle)
@@ -1850,8 +1852,12 @@ static CommandCost ClearTile_Rail(TileIndex tile, DoCommandFlags flags)
 /**
  * Get surface height in point (x,y)
  * On tiles with halftile foundations move (x,y) to a safe point wrt. track
+ * @param x The world X-coordinate.
+ * @param y The world Y-coordinate.
+ * @param track The track to get the height for.
+ * @return The world Z-coordinate.
  */
-static uint GetSaveSlopeZ(uint x, uint y, Track track)
+static uint GetSafeSlopeZ(uint x, uint y, Track track)
 {
 	switch (track) {
 		case TRACK_UPPER: x &= ~0xF; y &= ~0xF; break;
@@ -1900,7 +1906,7 @@ static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track trac
 		sprite += type * 16 + variant * 64 + image * 2 + condition + (type > SIGTYPE_LAST_NOPBS ? 64 : 0);
 	}
 
-	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, GetSaveSlopeZ(x, y, track), {{}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {}});
+	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, GetSafeSlopeZ(x, y, track), {{}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {}});
 }
 
 /** Offsets for drawing fences */
@@ -1949,6 +1955,9 @@ static void DrawTrackFence(const TileInfo *ti, const PalSpriteID &psid, uint num
 
 /**
  * Draw fence at NW border matching the tile slope.
+ * @param ti Tile drawing information.
+ * @param psid First fence sprite and palette.
+ * @param num_sprites Number of fence sprites.
  */
 static void DrawTrackFence_NW(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
@@ -1959,6 +1968,9 @@ static void DrawTrackFence_NW(const TileInfo *ti, const PalSpriteID &psid, uint 
 
 /**
  * Draw fence at SE border matching the tile slope.
+ * @param ti Tile drawing information.
+ * @param psid First fence sprite and palette.
+ * @param num_sprites Number of fence sprites.
  */
 static void DrawTrackFence_SE(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
@@ -1969,6 +1981,9 @@ static void DrawTrackFence_SE(const TileInfo *ti, const PalSpriteID &psid, uint 
 
 /**
  * Draw fence at NE border matching the tile slope.
+ * @param ti Tile drawing information.
+ * @param psid First fence sprite and palette.
+ * @param num_sprites Number of fence sprites.
  */
 static void DrawTrackFence_NE(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
@@ -1979,6 +1994,9 @@ static void DrawTrackFence_NE(const TileInfo *ti, const PalSpriteID &psid, uint 
 
 /**
  * Draw fence at SW border matching the tile slope.
+ * @param ti Tile drawing information.
+ * @param psid First fence sprite and palette.
+ * @param num_sprites Number of fence sprites.
  */
 static void DrawTrackFence_SW(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
@@ -3007,6 +3025,7 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
  * @param z_new New TileZ.
  * @param tileh_new New TileSlope.
  * @param rail_bits Trackbits.
+ * @return The cost of this operation or an error.
  */
 static CommandCost TestAutoslopeOnRailTile(TileIndex tile, DoCommandFlags flags, int z_old, Slope tileh_old, int z_new, Slope tileh_new, TrackBits rail_bits)
 {

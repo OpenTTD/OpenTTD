@@ -135,6 +135,7 @@ void ShowBaseSetTextfileWindow(Window *parent, TextfileType file_type, const TBa
  * Get string to use when listing this set in the settings window.
  * If there are no invalid files, then this is just the set name,
  * otherwise a string is formatted including the number of invalid files.
+ * @param baseset The selected baseset.
  * @return the string to display.
  */
 template <typename TBaseSet>
@@ -356,7 +357,7 @@ private:
 	std::vector<SocialIntegrationPlugin *> plugins{};
 };
 
-/** Construct nested container widget for managing the list of social plugins. */
+/** Construct nested container widget for managing the list of social plugins. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeNWidgetSocialPlugins()
 {
 	return std::make_unique<NWidgetSocialPlugins>();

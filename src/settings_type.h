@@ -697,6 +697,7 @@ extern VehicleDefaultSettings _old_vds;
 /**
  * Get the settings-object applicable for the current situation: the newgame settings
  * when we're in the main menu and otherwise the settings of the current game.
+ * @return A reference to the new game (in the menu) or current game settings.
  */
 inline GameSettings &GetGameSettings()
 {

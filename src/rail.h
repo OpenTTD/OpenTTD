@@ -282,6 +282,7 @@ public:
 	 *    is determined by normal rail. Check sprites 1005 and following for this order<p>
 	 * 2) The position where the railtype is loaded must always be the same, otherwise
 	 *    the offset will fail.
+	 * @return The offset.
 	 */
 	inline uint GetRailtypeSpriteOffset() const
 	{

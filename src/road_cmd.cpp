@@ -124,7 +124,10 @@ void InitRoadTypes()
 }
 
 /**
- * Allocate a new road type label
+ * Allocate a new road type label.
+ * @param label The label of the road type.
+ * @param rtt Whether it's a road or tram type.
+ * @return The allocated road type, or \c INVALID_ROADTYPE upon failures.
  */
 RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 {
@@ -310,6 +313,7 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
  * @param pieces roadbits to remove
  * @param rtt Road type to remove.
  * @param town_check should we check if the town allows removal?
+ * @return The cost or an error message.
  */
 static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pieces, RoadTramType rtt, bool town_check)
 {
@@ -1550,6 +1554,7 @@ void DrawRoadOverlays(const TileInfo *ti, PaletteID pal, const RoadTypeInfo *roa
  * @param offset Road sprite offset
  * @param snow_or_desert Whether to get snow/desert ground sprite
  * @param[out] pal Palette to draw.
+ * @return The sprite.
  */
 static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const RoadTypeInfo *rti, uint offset, bool snow_or_desert, PaletteID *pal)
 {

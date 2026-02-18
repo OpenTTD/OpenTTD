@@ -149,6 +149,7 @@ struct SettingDesc {
 
 	/**
 	 * Reset the setting to its default value.
+	 * @param object The object to set the value of.
 	 */
 	virtual void ResetToDefault(void *object) const = 0;
 };

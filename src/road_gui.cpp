@@ -98,6 +98,8 @@ static bool IsRoadStopEverAvailable(const RoadStopSpec *spec, StationType type)
 
 /**
  * Check whether a road stop type can be built.
+ * @param spec The specification, or \c nullptr.
+ * @param type The type of road stop that is being considered.
  * @return true if building is allowed.
  */
 static bool IsRoadStopAvailable(const RoadStopSpec *spec, StationType type)
@@ -1050,6 +1052,7 @@ static WindowDesc _build_tramway_desc(
  *
  * If the terraform toolbar is linked to the toolbar, that window is also opened.
  *
+ * @param roadtype The road type for the toolbar.
  * @return newly opened road toolbar, or nullptr if the toolbar could not be opened.
  */
 Window *ShowBuildRoadToolbar(RoadType roadtype)
@@ -1141,6 +1144,7 @@ static WindowDesc _build_tramway_scen_desc(
 
 /**
  * Show the road building toolbar in the scenario editor.
+ * @param roadtype The road type for the toolbar.
  * @return The just opened toolbar, or \c nullptr if the toolbar was already open.
  */
 Window *ShowBuildRoadScenToolbar(RoadType roadtype)
@@ -1476,6 +1480,8 @@ public:
 
 	/**
 	 * Simply to have a easier way to get the StationType for bus, truck and trams from the WindowClass.
+	 * @param window_class The window class to get the type for.
+	 * @return The associated station type.
 	 */
 	StationType GetRoadStationTypeByWindowClass(WindowClass window_class) const
 	{
