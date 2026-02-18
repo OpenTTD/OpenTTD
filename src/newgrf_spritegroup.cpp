@@ -64,9 +64,20 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 
 		case 0x7D: return object.GetRegister(parameter);
 
-		case 0x7F:
+		case 0x7F: {
 			if (object.grffile == nullptr) return 0;
-			return object.grffile->GetParam(parameter);
+
+			/* Access to unsafe parameters is allowed when resolving for drawing graphics. */
+			bool allow_unsafe =
+				object.callback == CBID_NO_CALLBACK ||
+				object.callback == CBID_STATION_DRAW_TILE_LAYOUT ||
+				object.callback == CBID_INDTILE_DRAW_FOUNDATIONS ||
+				object.callback == CBID_CANALS_SPRITE_OFFSET ||
+				object.callback == CBID_HOUSE_DRAW_FOUNDATIONS ||
+				object.callback == CBID_AIRPTILE_DRAW_FOUNDATIONS;
+
+			return object.grffile->GetParam(parameter, allow_unsafe);
+		}
 
 		default:
 			/* First handle variables common with Action7/9/D */
