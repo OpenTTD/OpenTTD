@@ -121,7 +121,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 {
 	uint best = 0;
 	StationID index = StationID::Invalid();
-	TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
+	TileIndex vtile = TileVirtXYClampedToMap(v->x_pos, v->y_pos);
 	const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 	uint max_range = v->acache.cached_max_range_sqr;
 
@@ -1354,7 +1354,7 @@ static void CrashAirplane(Aircraft *v)
 	v->cargo.Truncate();
 	v->Next()->cargo.Truncate();
 	const Station *st = GetTargetAirportIfValid(v);
-	TileIndex vt = TileVirtXY(v->x_pos, v->y_pos);
+	TileIndex vt = TileVirtXYClampedToMap(v->x_pos, v->y_pos);
 
 	EncodedString headline;
 	if (st == nullptr) {
