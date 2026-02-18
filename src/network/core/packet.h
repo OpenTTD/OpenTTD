@@ -19,7 +19,16 @@
 typedef uint16_t PacketSize; ///< Size of the whole packet.
 typedef uint8_t  PacketType; ///< Identifier for the packet
 
-/** Trait to mark an enumeration as a PacketType. */
+/**
+ * Trait to mark an enumeration as a PacketType.
+ *
+ * All packets in the context of OpenTTD's protocols have the same basic structure.
+ * A single byte identifier of the packet and then two bytes for the length. That
+ * identifier is unique for each stream of packets, which are separate enumerations.
+ * This trait allows us to only allow one of these PacketType enumerations when
+ * creating the packet, but not any other enumeration. It is up to the developer to
+ * enusre that the right enumeration is used for a socket handler.
+ */
 template <typename enum_type>
 struct IsEnumPacketType {
 	static constexpr bool value = false; ///< True iff a PacketType.
