@@ -703,6 +703,7 @@ protected:
 
 	/**
 	 * Return number of columns that can be displayed in \a width pixels.
+	 * @param width The available width.
 	 * @return Number of columns to display.
 	 */
 	inline uint GetNumberColumnsLegend(uint width) const

@@ -166,8 +166,9 @@ Station::~Station()
 /**
  * Invalidating of the JoinStation window has to be done
  * after removing item from the pool.
+ * @copydoc Pool::PoolItem::PostDestructor
  */
-void BaseStation::PostDestructor(size_t)
+void BaseStation::PostDestructor([[maybe_unused]] size_t index)
 {
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }
@@ -226,6 +227,8 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 /**
  * Called when new facility is built on the station. If it is the first facility
  * it initializes also 'xy' and 'random_bits' members
+ * @param new_facility_bit The new facility.
+ * @param facil_xy The location where this facility is built.
  */
 void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 {
@@ -241,7 +244,7 @@ void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 
 /**
  * Marks the tiles of the station as dirty.
- *
+ * @param cargo_change Whether only cargo amounts changed.
  * @ingroup dirty
  */
 void Station::MarkTilesDirty(bool cargo_change) const

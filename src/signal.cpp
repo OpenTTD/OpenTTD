@@ -65,7 +65,10 @@ private:
 	} data[items];
 
 public:
-	/** Constructor - just set default values and 'name' */
+	/**
+	 * Constructor - just set default values and 'name'
+	 * @param name The name of the set.
+	 */
 	SmallSet(std::string_view name) : name(name) { }
 
 	/** Reset variables to default values */
@@ -190,7 +193,11 @@ static SmallSet<DiagDirection, SIG_TBD_SIZE> _tbdset("_tbdset");    ///< set of 
 static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of places to be updated in following runs
 
 
-/** Check whether there is a train on rail, not in a depot */
+/**
+ * Check whether there is a train on rail, not in a depot.
+ * @param v The vehicle to check.
+ * @return \c true when the vehicle is a train that's not in a depot.
+ */
 static bool IsTrainAndNotInDepot(const Vehicle *v)
 {
 	return v->type == VEH_TRAIN && Train::From(v)->track != TRACK_BIT_DEPOT;

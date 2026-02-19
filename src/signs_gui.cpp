@@ -174,6 +174,7 @@ struct SignListWindow : Window, SignList {
 	 * the edit widget is not updated by this function. Depending on if the
 	 * new string is zero-length or not the clear button is made
 	 * disabled/enabled. The sign list is updated according to the new filter.
+	 * @param new_filter_string The new terms for filtering.
 	 */
 	void SetFilterString(std::string_view new_filter_string)
 	{

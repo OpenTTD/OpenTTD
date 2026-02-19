@@ -37,7 +37,10 @@ struct DrawTileSeqStruct : SpriteBounds {
 	constexpr DrawTileSeqStruct(int8_t origin_x, int8_t origin_y, int8_t origin_z, uint8_t extent_x, uint8_t extent_y, uint8_t extent_z, PalSpriteID image) :
 		SpriteBounds({origin_x, origin_y, origin_z}, {extent_x, extent_y, extent_z}, {}), image(image) {}
 
-	/** Check whether this is a parent sprite with a boundingbox. */
+	/**
+	 * Check whether this is a parent sprite with a boundingbox.
+	 * @return \c true iff this sprite is the parent sprite.
+	 */
 	inline bool IsParentSprite() const
 	{
 		return static_cast<uint8_t>(this->origin.z) != 0x80;

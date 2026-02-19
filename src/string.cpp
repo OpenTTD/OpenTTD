@@ -184,6 +184,7 @@ void StrMakeValidInPlace(std::string &str, StringValidationSettings settings)
  * question mark, as well as determining what characters are deemed invalid.
  * @param str The string to validate.
  * @param settings The settings for the string validation.
+ * @return A copy of the valid characters of the given string.
  */
 std::string StrMakeValid(std::string_view str, StringValidationSettings settings)
 {
@@ -201,6 +202,7 @@ std::string StrMakeValid(std::string_view str, StringValidationSettings settings
  * std::string_view's constructor will assume a C-string that ends with a NUL terminator, which is one of the things
  * we are checking.
  * @param str Span of chars to validate.
+ * @return \c true iff the string is valid.
  */
 bool StrValid(std::span<const char> str)
 {

@@ -230,6 +230,7 @@ bool DiagonalTileArea::Contains(TileIndex tile) const
 
 /**
  * Move ourselves to the next tile in the rectangle on the map.
+ * @return Reference to this iterator.
  */
 TileIterator &DiagonalTileIterator::operator++()
 {
@@ -296,9 +297,7 @@ TileIterator &DiagonalTileIterator::operator++()
 	return std::make_unique<OrthogonalTileIterator>(corner1, corner2);
 }
 
-/**
- * See SpiralTileSequence constructor for description.
- */
+/** Create the iterator. @copydoc SpiralTileSequence::SpiralTileSequence(TileIndex, uint) */
 SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) :
 	max_radius(diameter / 2),
 	cur_radius(0),
@@ -325,9 +324,7 @@ SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) :
 	this->SkipOutsideMap();
 }
 
-/**
- * See SpiralTileSequence constructor for description.
- */
+/** Create the iterator. @copydoc SpiralTileSequence::SpiralTileSequence(TileIndex, uint, uint, uint) */
 SpiralTileIterator::SpiralTileIterator(TileIndex start_north, uint radius, uint w, uint h) :
 	max_radius(radius),
 	extent{w, h, w, h},

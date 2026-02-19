@@ -155,6 +155,7 @@ protected:
 
 	/**
 	 * Check if the selected page is also the first available page.
+	 * @return \c true iff the selected page is the first one.
 	 */
 	bool IsFirstPageSelected()
 	{
@@ -166,6 +167,7 @@ protected:
 
 	/**
 	 * Check if the selected page is also the last available page.
+	 * @return \c true iff the selected page is the last one.
 	 */
 	bool IsLastPageSelected()
 	{
@@ -242,6 +244,7 @@ protected:
 
 	/**
 	 * Builds the page selector drop down list.
+	 * @return The created drop down list.
 	 */
 	DropDownList BuildDropDownList() const
 	{
@@ -263,6 +266,7 @@ protected:
 
 	/**
 	 * Get the width available for displaying content on the page panel.
+	 * @return The width in pixels.
 	 */
 	uint GetAvailablePageContentWidth() const
 	{
