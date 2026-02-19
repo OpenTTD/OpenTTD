@@ -335,14 +335,15 @@ protected:
 		}
 	}
 
-	static bool NGameSearchFilter(NetworkGame * const *item, StringFilter &sf)
+	/** Filter the servers by the server name. @copydoc GUIList::FilterFunction */
+	static bool NGameSearchFilter(NetworkGame * const *item, StringFilter &filter)
 	{
 		assert(item != nullptr);
 		assert((*item) != nullptr);
 
-		sf.ResetState();
-		sf.AddLine((*item)->info.server_name);
-		return sf.GetState();
+		filter.ResetState();
+		filter.AddLine((*item)->info.server_name);
+		return filter.GetState();
 	}
 
 	/**

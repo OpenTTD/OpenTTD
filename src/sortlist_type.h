@@ -63,11 +63,11 @@ public:
 
 	/**
 	 * Check whether an element should be kept in the list.
-	 * @param a The element to check.
+	 * @param item The element to check.
 	 * @param filter The filter parameter.
 	 * @return \c true iff the element should be in the list.
 	 */
-	using FilterFunction = bool(const T *a, F filter); ///< Signature of filter function.
+	using FilterFunction = bool(const T *item, F filter); ///< Signature of filter function.
 
 protected:
 	std::span<SortFunction * const> sort_func_list;     ///< the sort criteria functions
