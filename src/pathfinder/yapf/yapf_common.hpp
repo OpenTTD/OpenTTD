@@ -23,14 +23,18 @@ public:
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
 
 public:
-	/** Set origin tile / trackdir mask */
+	/**
+	 * Set origin tile / trackdir mask.
+	 * @param tile The start tile.
+	 * @param trackdirs The start track directions.
+	 */
 	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
 	{
 		bool is_choice = (KillFirstBit(trackdirs) != TRACKDIR_BIT_NONE);
@@ -52,14 +56,21 @@ public:
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
 
 public:
-	/** set origin (tiles, trackdirs, etc.) */
+	/**
+	 * Set origin (tiles, trackdirs, etc.).
+	 * @param forward_tile The start tile when going forward.
+	 * @param forward_td The track direction when going forward.
+	 * @param reverse_tile The start tile when going backward.
+	 * @param reverse_td The track direction when going backward.
+	 * @param reverse_penalty The penalty for reversing.
+	 */
 	void SetOrigin(TileIndex forward_tile, Trackdir forward_td, TileIndex reverse_tile = INVALID_TILE,
 			Trackdir reverse_td = INVALID_TRACKDIR, int reverse_penalty = 0)
 	{
