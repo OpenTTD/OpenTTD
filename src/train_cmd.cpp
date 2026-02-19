@@ -437,6 +437,10 @@ void Train::UpdateAcceleration()
 	this->acceleration = Clamp(power / weight * 4, 1, 255);
 }
 
+/**
+ * Get the offset for train image when it is used as cursor.
+ * @return The offset in horizontal direction.
+ */
 int Train::GetCursorImageOffset() const
 {
 	if (this->gcache.cached_veh_length != 8 && this->flags.Test(VehicleRailFlag::Flipped) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips)) {

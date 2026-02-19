@@ -64,7 +64,7 @@ enum GroundVehicleFlags : uint8_t {
  * These functions are not defined as pure virtual functions at this class to improve performance.
  *
  * virtual uint16_t      GetPower() const = 0;
- * virtual uint16_t      GetPoweredPartPower(const T *head) const = 0;
+ * virtual uint16_t GetPoweredPartPower() const = 0;
  * virtual uint16_t      GetWeight() const = 0;
  * virtual uint8_t        GetTractiveEffort() const = 0;
  * virtual uint8_t        GetAirDrag() const = 0;

@@ -32,6 +32,7 @@ enum class VehicleRailFlag : uint8_t {
 	Stuck = 8, ///< Train can't get a path reservation.
 	LeavingStation = 9, ///< Train is just leaving a station.
 };
+/** Bitset of the %VehicleRailFlag elements. */
 using VehicleRailFlags = EnumBitSet<VehicleRailFlag, uint16_t>;
 
 /** Modes for ignoring signals. */
@@ -46,7 +47,7 @@ enum class ConsistChangeFlag : uint8_t {
 	Length, ///< Allow vehicles to change length.
 	Capacity, ///< Allow vehicles to change capacity.
 };
-
+/** Bitset of the %ConsistChangeFlag elements. */
 using ConsistChangeFlags = EnumBitSet<ConsistChangeFlag, uint8_t>;
 
 static constexpr ConsistChangeFlags CCF_TRACK{}; ///< Valid changes while vehicle is driving, and possibly changing tracks.
@@ -72,7 +73,7 @@ void NormalizeTrainVehInDepot(const Train *u);
 
 /** Variables that are cached to improve performance and such */
 struct TrainCache {
-	/* Cached wagon override spritegroup */
+	/** Cached wagon override spritegroup. */
 	const struct SpriteGroup *cached_override = nullptr;
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
@@ -82,28 +83,34 @@ struct TrainCache {
 	int16_t cached_curve_speed_mod = 0; ///< curve speed modifier of the entire train
 	uint16_t cached_max_curve_speed = 0; ///< max consist speed limited by curves
 
-	auto operator<=>(const TrainCache &) const = default;
+	/**
+	 * Compare variables with another instance of this class.
+	 * @param other The other instance of TrainCache.
+	 * @return The std::strong_ordering of the comparison.
+	 */
+	auto operator<=>(const TrainCache &other) const = default;
 };
 
 /**
  * 'Train' is either a loco or a wagon.
  */
 struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
-	VehicleRailFlags flags{};
+	VehicleRailFlags flags{}; ///< Which flags has this train currently set. @see VehicleRailFlag for more details.
 	uint16_t crash_anim_pos = 0; ///< Crash animation counter.
 	uint16_t wait_counter = 0; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
 
-	TrainCache tcache{};
+	TrainCache tcache{}; ///< Set of cached variables, recalculated on load and each time a vehicle is added to/removed from the consist.
 
-	/* Link between the two ends of a multiheaded engine */
+	/** Link between the two ends of a multiheaded engine. */
 	Train *other_multiheaded_part = nullptr;
 
-	RailTypes compatible_railtypes{};
-	RailTypes railtypes{};
+	RailTypes compatible_railtypes{}; ///< With which rail types the train is compatible.
+	RailTypes railtypes{}; ///< On which rail types the train can run.
 
-	TrackBits track{};
-	TrainForceProceeding force_proceed{};
+	TrackBits track{}; ///< On which track the train currently is.
+	TrainForceProceeding force_proceed{}; ///< How the train should behave when it encounters next obstacle.
 
+	/** Create new Train object. @copydoc GroundVehicle::GroundVehicle */
 	Train(VehicleID index) : GroundVehicleBase(index) {}
 	/** We want to 'destruct' the right class. */
 	~Train() override { this->PreDestructor(); }
@@ -211,10 +218,10 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Power value from the articulated part in HP, or zero if it is not powered.
 	 */
-	inline uint16_t GetPoweredPartPower(const Train *head) const
+	inline uint16_t GetPoweredPartPower() const
 	{
 		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
-		if (this->flags.Test(VehicleRailFlag::PoweredWagon) && HasPowerOnRail(head->railtypes, GetRailType(this->tile))) {
+		if (this->flags.Test(VehicleRailFlag::PoweredWagon) && HasPowerOnRail(this->railtypes, GetRailType(this->tile))) {
 			return RailVehInfo(this->gcache.first_engine)->pow_wag_power;
 		}
 
