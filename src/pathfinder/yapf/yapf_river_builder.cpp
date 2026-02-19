@@ -64,17 +64,20 @@ public:
 		Yapf().AddStartupNode(node);
 	}
 
+	/** @copydoc CYapfBaseT::PfDetectDestinationFunc */
 	inline bool PfDetectDestination(Node &n) const
 	{
 		return n.GetTile() == this->end_tile;
 	}
 
-	inline bool PfCalcCost(Node &n, const RiverBuilderFollower *)
+	/** @copydoc CYapfBaseT::PfCalcCostFunc */
+	inline bool PfCalcCost(Node &n, [[maybe_unused]] const RiverBuilderFollower *follower)
 	{
 		n.cost = n.parent->cost + 1 + RandomRange(_settings_game.game_creation.river_route_random);
 		return true;
 	}
 
+	/** @copydoc CYapfBaseT::PfCalcEstimateFunc */
 	inline bool PfCalcEstimate(Node &n)
 	{
 		n.estimate = n.cost + DistanceManhattan(this->end_tile, n.GetTile());
@@ -82,6 +85,7 @@ public:
 		return true;
 	}
 
+	/** @copydoc CYapfBaseT::PfFollowNodeFunc */
 	inline void PfFollowNode(Node &old_node)
 	{
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; ++d) {
@@ -94,6 +98,7 @@ public:
 		}
 	}
 
+	/** @copydoc CYapfBaseT::TransportTypeCharFunc */
 	inline char TransportTypeChar() const
 	{
 		return '~';

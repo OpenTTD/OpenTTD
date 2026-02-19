@@ -95,7 +95,11 @@ struct CFollowTrackT {
 	static inline bool Allow90degTurns() { return T90deg_turns_allowed_; }
 	static inline bool DoTrackMasking() { return Tmask_reserved_tracks; }
 
-	/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
+	/**
+	 * Tests if a tile is a road tile with a single tramtrack (tram can reverse).
+	 * @param tile The tile to get this for.
+	 * @return The direction of the tram bit, or \c INVALID_DIAGDIR when there are no or multiple tram bits.
+	 */
 	inline DiagDirection GetSingleTramBit(TileIndex tile)
 	{
 		assert(this->IsTram()); // this function shouldn't be called in other cases
@@ -114,8 +118,11 @@ struct CFollowTrackT {
 	}
 
 	/**
-	 * main follower routine. Fills all members and return true on success.
-	 *  Otherwise returns false if track can't be followed.
+	 * Main follower routine. Tries to follow the given track direction
+	 * onto the next tile (\c new_tile), while updating the internal state.
+	 * @param old_tile The previous tile.
+	 * @param old_td The track direction on the previous tile.
+	 * @return \c true iff there are one or more tracks to follow on the next tile (\c new_tile).
 	 */
 	inline bool Follow(TileIndex old_tile, Trackdir old_td)
 	{
@@ -235,7 +242,10 @@ protected:
 		}
 	}
 
-	/** stores track status (available trackdirs) for the new tile into new_td_bits */
+	/**
+	 * Stores track status (available trackdirs) for the new tile into new_td_bits.
+	 * @return \c true when at least one trackdir bit exists on the new tile.
+	 */
 	inline bool QueryNewTileTrackStatus()
 	{
 		if (IsRailTT() && IsPlainRailTile(this->new_tile)) {
@@ -248,7 +258,10 @@ protected:
 		return (this->new_td_bits != TRACKDIR_BIT_NONE);
 	}
 
-	/** return true if we can leave old_tile in exitdir */
+	/**
+	 * Check whether we can leave the old tile.
+	 * @return \c true iff we can leave old_tile in exitdir.
+	 */
 	inline bool CanExitOldTile()
 	{
 		/* road stop can be left at one direction only unless it's a drive-through stop */
@@ -280,7 +293,10 @@ protected:
 		return true;
 	}
 
-	/** return true if we can enter new_tile from exitdir */
+	/**
+	 * Checks whether we can enter the next tile.
+	 * @return \c true iff we can enter new_tile from exitdir.
+	 */
 	inline bool CanEnterNewTile()
 	{
 		if (IsRoadTT() && IsBayRoadStopTile(this->new_tile)) {
@@ -388,7 +404,10 @@ protected:
 		return true;
 	}
 
-	/** return true if we must reverse (in depots and single tram bits) */
+	/**
+	 * Are we forced to reverse the vehicle?
+	 * @return \c true iff we must reverse (in depots and single tram bits).
+	 */
 	inline bool ForcedReverse()
 	{
 		/* rail and road depots cause reversing */
@@ -424,7 +443,10 @@ protected:
 		return false;
 	}
 
-	/** return true if we successfully reversed at end of road/track */
+	/**
+	 * Try whether we can reverse our road vehicle.
+	 * @return \c true iff we successfully reversed at end of road/track.
+	 */
 	inline bool TryReverse()
 	{
 		if (IsRoadTT() && !this->IsTram()) {
@@ -445,7 +467,11 @@ protected:
 	}
 
 public:
-	/** Helper for pathfinders - get min/max speed on the old_tile/old_td */
+	/**
+	 * Helper for pathfinders - get min/max speed on the old_tile/old_td.
+	 * @param[out] pmin_speed Optional pointer to location to store the minimum speed to.
+	 * @return The speed limit.
+	 */
 	int GetSpeedLimit(int *pmin_speed = nullptr) const
 	{
 		int min_speed = 0;
