@@ -88,6 +88,7 @@ public:
 
 	/**
 	 * Get the config list for this ScriptConfig.
+	 * @return The configuration list.
 	 */
 	const ScriptConfigItemList *GetConfigList();
 
@@ -115,6 +116,7 @@ public:
 	 * Get the value of a setting for this config. It might fallback to its
 	 *  'info' to find the default value (if not set or if not-custom difficulty
 	 *  level).
+	 * @param name The name of the setting.
 	 * @return The (default) value of the setting, or -1 if the setting was not
 	 *  found.
 	 */
@@ -122,6 +124,8 @@ public:
 
 	/**
 	 * Set the value of a setting for this config.
+	 * @param name The name of the setting.
+	 * @param value The new value for the setting.
 	 */
 	void SetSetting(std::string_view name, int value);
 
@@ -132,34 +136,40 @@ public:
 
 	/**
 	 * Reset only editable and visible settings to their default value.
+	 * @param yet_to_start Denotes whether the script is not yet running, e.g. the main menu.
 	 */
 	void ResetEditableSettings(bool yet_to_start);
 
 	/**
 	 * Is this config attached to an Script? In other words, is there a Script
 	 *  that is assigned to this slot.
+	 * @return \c true iff a script is assigned to this configuration.
 	 */
 	bool HasScript() const;
 
 	/**
 	 * Get the name of the Script.
+	 * @return The script's name.
 	 */
 	const std::string &GetName() const;
 
 	/**
 	 * Get the version of the Script.
+	 * @return The script's version.
 	 */
 	int GetVersion() const;
 
 	/**
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this Script.
+	 * @param value The string-encoded settings to decode into this configuration.
 	 */
 	void StringToSettings(std::string_view value);
 
 	/**
 	 * Convert the custom settings to a string that can be stored in the config
 	 *  file or savegames.
+	 * @return The string-encoded version of the settings in this configuration.
 	 */
 	std::string SettingsToString() const;
 

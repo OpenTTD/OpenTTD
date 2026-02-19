@@ -82,20 +82,20 @@ SettingTable _win32_settings{ _win32_settings_table };
 
 /* Begin - Callback Functions for the various settings. */
 
-/** Switch setting title depending on wallclock setting */
+/** Switch setting title depending on wallclock setting. @copydoc IntSettingDesc::GetTitleCallback */
 static StringID SettingTitleWallclock(const IntSettingDesc &sd)
 {
 	return TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? sd.str + 1 : sd.str;
 }
 
-/** Switch setting help depending on wallclock setting */
+/** Switch setting help depending on wallclock setting. @copydoc IntSettingDesc::GetHelpCallback */
 static StringID SettingHelpWallclock(const IntSettingDesc &sd)
 {
 	return TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? sd.str_help + 1 : sd.str_help;
 }
 
-/** Setting values for velocity unit localisation */
-static std::pair<StringParameter, StringParameter> SettingsValueVelocityUnit(const IntSettingDesc &, int32_t value)
+/** Setting values for velocity unit localisation. @copydoc IntSettingDesc::GetValueParamsCallback */
+static std::pair<StringParameter, StringParameter> SettingsValueVelocityUnit([[maybe_unused]] const IntSettingDesc &sd, int32_t value)
 {
 	StringID val;
 	switch (value) {
@@ -109,14 +109,14 @@ static std::pair<StringParameter, StringParameter> SettingsValueVelocityUnit(con
 	return {val, {}};
 }
 
-/** A negative value has another string (the one after "strval"). */
+/** A negative value has another string (the one after "strval"). @copydoc IntSettingDesc::GetValueParamsCallback */
 static std::pair<StringParameter, StringParameter> SettingsValueAbsolute(const IntSettingDesc &sd, int32_t value)
 {
 	return {sd.str_val + ((value >= 0) ? 1 : 0), abs(value)};
 }
 
-/** Service Interval Settings Default Value displays the correct units or as a percentage */
-static std::pair<StringParameter, StringParameter>  ServiceIntervalSettingsValueText(const IntSettingDesc &sd, int32_t value)
+/** Service Interval Settings Default Value displays the correct units or as a percentage. @copydoc IntSettingDesc::GetValueParamsCallback */
+static std::pair<StringParameter, StringParameter> ServiceIntervalSettingsValueText(const IntSettingDesc &sd, int32_t value)
 {
 	VehicleDefaultSettings *vds;
 	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
@@ -264,6 +264,9 @@ static void UpdateServiceInterval(VehicleType type, int32_t new_value)
 
 /**
  * Checks if the service intervals in the settings are specified as percentages and corrects the default value accordingly.
+ * @param sd The current setting.
+ * @param type The vehicle's type.
+ * @return The appropriate service interval.
  */
 static int32_t GetDefaultServiceInterval(const IntSettingDesc &sd, VehicleType type)
 {
@@ -520,8 +523,9 @@ static void UpdateFreeformEdges(int32_t new_value)
 /**
  * Changing the setting "allow multiple NewGRF sets" is not allowed
  * if there are vehicles.
+ * @copydoc IntSettingDesc::PreChangeCheck
  */
-static bool CheckDynamicEngines(int32_t &)
+static bool CheckDynamicEngines([[maybe_unused]] int32_t &value)
 {
 	if (_game_mode == GM_MENU) return true;
 

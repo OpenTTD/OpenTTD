@@ -156,10 +156,40 @@ struct SettingDesc {
 
 /** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
 struct IntSettingDesc : SettingDesc {
+	/**
+	 * Callback to get the title for the settings panel of this setting.
+	 * @param sd The setting to consider.
+	 * @return The StringID of the title.
+	 */
 	using GetTitleCallback = StringID(const IntSettingDesc &sd);
+
+	/**
+	 * Callback to get the help description for the settings panel of this setting.
+	 * @param sd The setting to consider.
+	 * @return The StringID of the help.
+	 */
 	using GetHelpCallback = StringID(const IntSettingDesc &sd);
+
+	/**
+	 * Callback to parameters for string formatting for this setting.
+	 * @param sd The setting to consider.
+	 * @param value The value of the setting.
+	 * @return The string parameters.
+	 */
 	using GetValueParamsCallback = std::pair<StringParameter, StringParameter>(const IntSettingDesc &sd, int32_t value);
+
+	/**
+	 * Callback to get default value for this setting.
+	 * @param sd The setting to consider.
+	 * @return The default value.
+	 */
 	using GetDefaultValueCallback = int32_t(const IntSettingDesc &sd);
+
+	/**
+	 * Callback to get range of valid values for this setting.
+	 * @param sd The setting to consider.
+	 * @return The range, start and end are included..
+	 */
 	using GetRangeCallback = std::tuple<int32_t, uint32_t>(const IntSettingDesc &sd);
 
 	/**

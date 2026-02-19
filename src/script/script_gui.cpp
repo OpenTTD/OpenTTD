@@ -1195,7 +1195,7 @@ struct ScriptDebugWindow : public Window {
 	}, ScriptDebugGlobalHotkeys};
 };
 
-/** Make a number of rows with buttons for each company for the Script debug window. */
+/** Make a number of rows with buttons for each company for the Script debug window. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsScriptDebug()
 {
 	return MakeCompanyButtonRows(WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END, COLOUR_GREY, 5, STR_AI_DEBUG_SELECT_AI_TOOLTIP, false);
@@ -1262,6 +1262,7 @@ static WindowDesc _script_debug_desc(
  * Open the Script debug window and select the given company.
  * @param show_company Display debug information about this AI company.
  * @param new_window Show in new window instead of existing window.
+ * @return The existing or allocated window, or \c nullptr when there is no debug window to show.
  */
 Window *ShowScriptDebugWindow(CompanyID show_company, bool new_window)
 {
