@@ -181,19 +181,31 @@ struct HeightMap
 /** Global height map instance */
 static HeightMap _height_map = { {}, 0, 0, 0 };
 
-/** Conversion: int to Height */
+/**
+ * Convert tile height to fixed point Height.
+ * @param i The tile height.
+ * @return The converted fixed point height.
+ */
 static Height I2H(int i)
 {
 	return i << HEIGHT_DECIMAL_BITS;
 }
 
-/** Conversion: Height to int */
+/**
+ * Convert fixed point Height to tile height.
+ * @param i The fixed point Height.
+ * @return The tile height.
+ */
 static int H2I(Height i)
 {
 	return i >> HEIGHT_DECIMAL_BITS;
 }
 
-/** Conversion: Amplitude to Height */
+/**
+ * Convert Amplitude to fixed point Height.
+ * @param i The amplitude.
+ * @return The converted fixed point height.
+ */
 static Height A2H(Amplitude i)
 {
 	return i >> (AMPLITUDE_DECIMAL_BITS - HEIGHT_DECIMAL_BITS);
@@ -254,6 +266,7 @@ static Height TGPGetMaxHeight()
 
 /**
  * Get an overestimation of the highest peak TGP wants to generate.
+ * @return The estimated map tile height.
  */
 uint GetEstimationTGPMapHeight()
 {
@@ -418,30 +431,13 @@ static void HeightMapGenerate()
 	}
 }
 
-/** Returns min, max and average height from height map */
-static void HeightMapGetMinMaxAvg(Height *min_ptr, Height *max_ptr, Height *avg_ptr)
-{
-	Height h_min, h_max, h_avg;
-	int64_t h_accu = 0;
-	h_min = h_max = _height_map.height(0, 0);
-
-	/* Get h_min, h_max and accumulate heights into h_accu */
-	for (const Height &h : _height_map.h) {
-		if (h < h_min) h_min = h;
-		if (h > h_max) h_max = h;
-		h_accu += h;
-	}
-
-	/* Get average height */
-	h_avg = (Height)(h_accu / (_height_map.size_x * _height_map.size_y));
-
-	/* Return required results */
-	if (min_ptr != nullptr) *min_ptr = h_min;
-	if (max_ptr != nullptr) *max_ptr = h_max;
-	if (avg_ptr != nullptr) *avg_ptr = h_avg;
-}
-
-/** Dill histogram and return pointer to its base point - to the count of zero heights */
+/**
+ * Create histogram and return pointer to its base point - to the count of zero heights.
+ * @param h_min The minimum height for the histogram.
+ * @param h_max The maximum height of the map.
+ * @param hist_buf The buffer of the histogram.
+ * @return Pointer to the base of the histogram.
+ */
 static int *HeightMapMakeHistogram(Height h_min, [[maybe_unused]] Height h_max, int *hist_buf)
 {
 	int *hist = hist_buf - h_min;
@@ -530,7 +526,11 @@ static double SineTransformPlateaus(double &fheight)
 	return height;
 }
 
-/** Applies sine wave redistribution onto height map */
+/**
+ * Applies sine wave redistribution onto height map.
+ * @param h_min The minimum height for the map.
+ * @param h_max The maximum height for the map.
+ */
 static void HeightMapSineTransform(Height h_min, Height h_max)
 {
 	for (Height &h : _height_map.h) {
@@ -699,14 +699,18 @@ static void HeightMapCurves(uint level)
 	}
 }
 
-/** Adjusts heights in height map to contain required amount of water tiles */
+/**
+ * Adjusts heights in height map to contain required amount of water tiles.
+ * @param water_percent Fixed point water percentage on the map.
+ * @param h_max_new The new maximum height.
+ */
 static void HeightMapAdjustWaterLevel(int64_t water_percent, Height h_max_new)
 {
-	Height h_min, h_max, h_avg, h_water_level;
+	Height h_water_level;
 	int64_t water_tiles, desired_water_tiles;
 	int *hist;
 
-	HeightMapGetMinMaxAvg(&h_min, &h_max, &h_avg);
+	auto [h_min, h_max] = std::ranges::minmax(_height_map.h);
 
 	/* Allocate histogram buffer and clear its cells */
 	std::vector<int> hist_buf(h_max - h_min + 1);
@@ -737,7 +741,7 @@ static void HeightMapAdjustWaterLevel(int64_t water_percent, Height h_max_new)
 	}
 }
 
-static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime);
+static double PerlinCoastNoise2D(const double x, const double y, const double p, const int prime);
 
 /**
  * This routine sculpts in from the edge a random amount, again from Perlin
@@ -752,6 +756,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  * The constants used are based on what looks right. If you're changing the
  * limits or the persistence values you'll want to experiment with various map
  * sizes.
+ * @param water_borders The sides with water borders.
  */
 static void HeightMapCoastLines(BorderFlags water_borders)
 {
@@ -773,9 +778,9 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 	 */
 	auto get_depth = [&](int x, int p1, int p2, int p3) {
 		return 2 // we ensure a margin of two water tiles at the edge of the map
-			+ smooth_distance * (1 + perlin_coast_noise_2D(x, x, 0.2, p1)) // +1 rather than abs reduces the number of V shaped inlets
-			+ jagged_distance * abs(perlin_coast_noise_2D(x, x, 0.5, p2))
-			+ 8 * abs(perlin_coast_noise_2D(x, x, 0.8, p3)); // Some unscaled jaggedness to breakup anything smoothed by scaling
+			+ smooth_distance * (1 + PerlinCoastNoise2D(x, x, 0.2, p1)) // +1 rather than abs reduces the number of V shaped inlets
+			+ jagged_distance * abs(PerlinCoastNoise2D(x, x, 0.5, p2))
+			+ 8 * abs(PerlinCoastNoise2D(x, x, 0.8, p3)); // Some unscaled jaggedness to breakup anything smoothed by scaling
 	};
 
 	int y, x;
@@ -815,7 +820,13 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 	}
 }
 
-/** Start at given point, move in given direction, find and Smooth coast in that direction */
+/**
+ * Start at given point, move in given direction, find and Smooth coast in that direction.
+ * @param org_x The X-coordinate to start at.
+ * @param org_y The Y-coordinate to start at.
+ * @param dir_x The direction along the X-axis.
+ * @param dir_y The direction along the Y-axis.
+ */
 static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int dir_y)
 {
 	const int max_coast_dist_from_edge = 100;
@@ -852,7 +863,10 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	}
 }
 
-/** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
+/**
+ * Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge.
+ * @param water_borders The sides where the borders are water.
+ */
 static void HeightMapSmoothCoasts(BorderFlags water_borders)
 {
 	int x, y;
@@ -874,6 +888,7 @@ static void HeightMapSmoothCoasts(BorderFlags water_borders)
  * one level between tiles. This routine smooths out those differences so that
  * the most it can change is one level. When OTTD can support cliffs, this
  * routine may not be necessary.
+ * @param dh_max The maximum height different between two adjacent tiles.
  */
 static void HeightMapSmoothSlopes(Height dh_max)
 {
@@ -928,8 +943,12 @@ static void HeightMapNormalize()
  * passed parameter; prime.
  * prime is used to allow the perlin noise generator to create useful random
  * numbers from slightly different series.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @param prime The prime for the generation.
+ * @return The Perlin noise.
  */
-static double int_noise(const long x, const long y, const int prime)
+static double IntNoise(const long x, const long y, const int prime)
 {
 	long n = x + y * prime + _settings_game.game_creation.generation_seed;
 
@@ -942,8 +961,12 @@ static double int_noise(const long x, const long y, const int prime)
 
 /**
  * This routine determines the interpolated value between a and b
+ * @param a The first value.
+ * @param b The second value.
+ * @param x The fraction between the two values to get the value for.
+ * @return The interpolated value.
  */
-static inline double linear_interpolate(const double a, const double b, const double x)
+static inline double LinearInterpolate(const double a, const double b, const double x)
 {
 	return a + x * (b - a);
 }
@@ -952,8 +975,12 @@ static inline double linear_interpolate(const double a, const double b, const do
 /**
  * This routine returns the smoothed interpolated noise for an x and y, using
  * the values from the surrounding positions.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @param prime The prime for the generation.
+ * @return The smoothed Perlin noise.
  */
-static double interpolated_noise(const double x, const double y, const int prime)
+static double InterpolatedNoise(const double x, const double y, const int prime)
 {
 	const int integer_x = (int)x;
 	const int integer_y = (int)y;
@@ -961,15 +988,15 @@ static double interpolated_noise(const double x, const double y, const int prime
 	const double fractional_x = x - (double)integer_x;
 	const double fractional_y = y - (double)integer_y;
 
-	const double v1 = int_noise(integer_x,     integer_y,     prime);
-	const double v2 = int_noise(integer_x + 1, integer_y,     prime);
-	const double v3 = int_noise(integer_x,     integer_y + 1, prime);
-	const double v4 = int_noise(integer_x + 1, integer_y + 1, prime);
+	const double v1 = IntNoise(integer_x,     integer_y,     prime);
+	const double v2 = IntNoise(integer_x + 1, integer_y,     prime);
+	const double v3 = IntNoise(integer_x,     integer_y + 1, prime);
+	const double v4 = IntNoise(integer_x + 1, integer_y + 1, prime);
 
-	const double i1 = linear_interpolate(v1, v2, fractional_x);
-	const double i2 = linear_interpolate(v3, v4, fractional_x);
+	const double i1 = LinearInterpolate(v1, v2, fractional_x);
+	const double i2 = LinearInterpolate(v3, v4, fractional_x);
 
-	return linear_interpolate(i1, i2, fractional_y);
+	return LinearInterpolate(i1, i2, fractional_y);
 }
 
 /**
@@ -977,8 +1004,13 @@ static double interpolated_noise(const double x, const double y, const int prime
  * the value p passed as a parameter rather than selected from the predefined
  * sequences. as you can guess by its title, i use this to create the indented
  * coastline, which is just another perlin sequence.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @param p Scaling factor for the noise.
+ * @param prime The prime for the generation.
+ * @return The smoothed Perlin noise.
  */
-static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime)
+static double PerlinCoastNoise2D(const double x, const double y, const double p, const int prime)
 {
 	constexpr int OCTAVES = 6;
 	constexpr double INITIAL_FREQUENCY = 1 << OCTAVES;
@@ -988,7 +1020,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
 	double frequency = 1.0 / INITIAL_FREQUENCY;
 	double amplitude = 1.0;
 	for (int i = 0; i < OCTAVES; i++) {
-		total += interpolated_noise(x * frequency, y * frequency, prime) * amplitude;
+		total += InterpolatedNoise(x * frequency, y * frequency, prime) * amplitude;
 		max_value += amplitude;
 
 		frequency *= 2.0;
@@ -1000,7 +1032,11 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
 }
 
 
-/** A small helper function to initialize the terrain */
+/**
+ * A small helper function to initialize the terrain.
+ * @param tile The tile to set the height for.
+ * @param height The new height of the tile.
+ */
 static void TgenSetTileHeight(TileIndex tile, int height)
 {
 	SetTileHeight(tile, height);
