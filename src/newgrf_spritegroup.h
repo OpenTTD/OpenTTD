@@ -43,7 +43,7 @@ using SpriteGroupID = PoolID<uint32_t, struct SpriteGroupIDTag, 1U << 30, 0xFFFF
 using SpriteGroupPool = Pool<SpriteGroup, SpriteGroupID, 1024, PoolType::Data>;
 extern SpriteGroupPool _spritegroup_pool;
 
-/* Common wrapper for all the different sprite group types */
+/** Common wrapper for all the different sprite group types. */
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
 	SpriteGroup(SpriteGroupID index) : SpriteGroupPool::PoolItem<&_spritegroup_pool>(index) {}
@@ -83,8 +83,7 @@ struct SpecializedSpriteGroup : public SpriteGroup {
 };
 
 
-/* 'Real' sprite groups contain a list of other result or callback sprite
- * groups. */
+/** 'Real' sprite groups contain a list of other result or callback sprite groups. */
 struct RealSpriteGroup : SpecializedSpriteGroup<RealSpriteGroup> {
 	RealSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<RealSpriteGroup>(index) {}
 
@@ -220,8 +219,7 @@ protected:
 };
 
 
-/* This contains a callback result. A failed callback has a value of
- * CALLBACK_FAILED */
+/** This contains a callback result. A failed callback has a value of %CALLBACK_FAILED. */
 struct CallbackResultSpriteGroup : SpecializedSpriteGroup<CallbackResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a callback result
@@ -237,8 +235,7 @@ protected:
 };
 
 
-/* A result sprite group returns the first SpriteID and the number of
- * sprites in the set */
+/** A result sprite group returns the first SpriteID and the number of sprites in the set. */
 struct ResultSpriteGroup : SpecializedSpriteGroup<ResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a sprite number result.

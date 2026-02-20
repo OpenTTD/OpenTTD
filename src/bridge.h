@@ -18,7 +18,7 @@
 static const uint MAX_BRIDGES = 13; ///< Maximal number of available bridge specs.
 constexpr uint SPRITES_PER_BRIDGE_PIECE = 32; ///< Number of sprites there are per bridge piece.
 
-/* Container for Bridge pillar flags for each axis of each bridge middle piece. */
+/** Container for Bridge pillar flags for each axis of each bridge middle piece. */
 using BridgeMiddlePillarFlags = std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_MIDDLE_PIECES>;
 
 /**

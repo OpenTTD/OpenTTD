@@ -269,7 +269,7 @@ void AfterLoadCompanyStats()
 	}
 }
 
-/* We do need to read this single value, as the bigger it gets, the more data is stored */
+/** We do need to read this single value, as the bigger it gets, the more data is stored. */
 struct CompanyOldAI {
 	uint8_t num_build_rec;
 };

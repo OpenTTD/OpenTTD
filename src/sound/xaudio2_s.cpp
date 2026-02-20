@@ -34,7 +34,7 @@ using Microsoft::WRL::ComPtr;
 #include "../os/windows/win32.h"
 #include "../safeguards.h"
 
-/* Definition of the "XAudio2Create" call used to initialise XAudio2 */
+/** Definition of the "XAudio2Create" call used to initialise XAudio2. */
 typedef HRESULT(__stdcall *API_XAudio2Create)(_Outptr_ IXAudio2 **ppXAudio2, UINT32 Flags, XAUDIO2_PROCESSOR XAudio2Processor);
 
 static FSoundDriver_XAudio2 iFSoundDriver_XAudio2;

@@ -215,9 +215,7 @@ private:
 		TileIndex index;
 	};
 
-	/*
-	 * Iterable ensemble of all Tiles
-	 */
+	/** Iterable ensemble of all %Tiles. */
 	struct IterateWrapper {
 		Iterator begin() { return Iterator(TileIndex{}); }
 		Iterator end() { return Iterator(TileIndex{Map::Size()}); }

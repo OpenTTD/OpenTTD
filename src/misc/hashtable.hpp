@@ -12,7 +12,7 @@
 
 template <class TItem>
 struct HashTableSlot {
-	typedef typename TItem::Key Key; // make Titem::Key a property of HashTable
+	typedef typename TItem::Key Key; ///< Make Titem::Key a property of HashTable.
 
 	TItem *first_item = nullptr;
 
@@ -148,7 +148,7 @@ struct HashTableSlot {
 template <class Titem, int Thash_bits_>
 class HashTable {
 public:
-	typedef typename Titem::Key Tkey; // make Titem::Key a property of HashTable
+	typedef typename Titem::Key Tkey; ///< Make Titem::Key a property of HashTable.
 	static constexpr int HASH_BITS = Thash_bits_; ///< Publish num of hash bits.
 	static constexpr int CAPACITY = 1 << HASH_BITS; ///< And num of slots 2^bits.
 

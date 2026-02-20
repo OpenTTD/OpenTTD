@@ -261,7 +261,7 @@ typedef GUIList<const Station*, const CargoTypes &> GUIStationList;
 class CompanyStationsWindow : public Window
 {
 protected:
-	/* Runtime saved values */
+	/** Runtime saved values. */
 	struct FilterState {
 		Listing last_sorting;
 		StationFacilities facilities; ///< types of stations of interest

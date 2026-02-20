@@ -26,7 +26,8 @@ extern OrderListPool _orderlist_pool;
 template <typename, typename>
 class EndianBufferWriter;
 
-/* If you change this, keep in mind that it is saved on 3 places:
+/**
+ * If you change this, keep in mind that it is also saved in 2 other places:
  * - Load_ORDR, all the global orders
  * - Vehicle -> current_order
  */

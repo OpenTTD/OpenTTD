@@ -114,8 +114,10 @@ static const SaveLoad _date_check_desc[] = {
 	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_INT32,                  SLV_31, SL_MAX_VERSION),
 };
 
-/* Save load date related variables as well as persistent tick counters
- * XXX: currently some unrelated stuff is just put here */
+/**
+ * Save load date related variables as well as persistent tick counters.
+ * @note currently some unrelated stuff is just put here.
+ */
 struct DATEChunkHandler : ChunkHandler {
 	DATEChunkHandler() : ChunkHandler('DATE', CH_TABLE) {}
 

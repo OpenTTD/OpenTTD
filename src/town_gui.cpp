@@ -343,7 +343,7 @@ static void ShowTownAuthorityWindow(uint town)
 }
 
 
-/* Town view window. */
+/** Town view window. */
 struct TownViewWindow : Window {
 private:
 	Town *town = nullptr; ///< Town displayed by the window.
