@@ -236,6 +236,8 @@ namespace SQConvert {
 	 * A general template for all non-static method callbacks from Squirrel.
 	 *  In here the function_proc is recovered, and the SQCall is called that
 	 *  can handle this exact amount of params.
+	 * @param vm The virtual machine to create the callback in.
+	 * @return \c 0 upon success, or any other number upon failure.
 	 */
 	template <typename Tcls, typename Tmethod, ScriptType Ttype>
 	inline SQInteger DefSQNonStaticCallback(HSQUIRRELVM vm)
@@ -279,6 +281,8 @@ namespace SQConvert {
 	 * A general template for all non-static advanced method callbacks from Squirrel.
 	 *  In here the function_proc is recovered, and the SQCall is called that
 	 *  can handle this exact amount of params.
+	 * @param vm The virtual machine to create the callback in.
+	 * @return \c 0 upon success, or any other number upon failure.
 	 */
 	template <typename Tcls, typename Tmethod, ScriptType Ttype>
 	inline SQInteger DefSQAdvancedNonStaticCallback(HSQUIRRELVM vm)
@@ -322,6 +326,8 @@ namespace SQConvert {
 	 * A general template for all function/static method callbacks from Squirrel.
 	 *  In here the function_proc is recovered, and the SQCall is called that
 	 *  can handle this exact amount of params.
+	 * @param vm The virtual machine to create the callback in.
+	 * @return \c 0 upon success, or any other number upon failure.
 	 */
 	template <typename Tcls, typename Tmethod>
 	inline SQInteger DefSQStaticCallback(HSQUIRRELVM vm)
@@ -348,6 +354,8 @@ namespace SQConvert {
 	 * A general template for all static advanced method callbacks from Squirrel.
 	 *  In here the function_proc is recovered, and the SQCall is called that
 	 *  can handle this exact amount of params.
+	 * @param vm The virtual machine to create the callback in.
+	 * @return \c 0 upon success, or any other number upon failure.
 	 */
 	template <typename Tcls, typename Tmethod>
 	inline SQInteger DefSQAdvancedStaticCallback(HSQUIRRELVM vm)
@@ -373,6 +381,8 @@ namespace SQConvert {
 	/**
 	 * A general template for the destructor of SQ instances. This is needed
 	 *  here as it has to be in the same scope as DefSQConstructorCallback.
+	 * @param p Pointer to the instance to release.
+	 * @return \c 0 upon success. Has a return type due to this being passed as a parameter to another function.
 	 */
 	template <typename Tcls>
 	static SQInteger DefSQDestructorCallback(SQUserPointer p, SQInteger)
@@ -386,6 +396,8 @@ namespace SQConvert {
 	 * A general template to handle creating of instance with any amount of
 	 *  params. It creates the instance in C++, and it sets all the needed
 	 *  settings in SQ to register the instance.
+	 * @param vm The virtual machine to create the callback in.
+	 * @return \c 0 upon success, or any other number upon failure.
 	 */
 	template <typename Tcls, typename Tmethod>
 	inline SQInteger DefSQConstructorCallback(HSQUIRRELVM vm)
@@ -408,6 +420,8 @@ namespace SQConvert {
 	/**
 	 * A general template to handle creating of an instance with a complex
 	 *  constructor.
+	 * @param vm The virtual machine to create the callback in.
+	 * @return \c 0 upon success, or any other number upon failure.
 	 */
 	template <typename Tcls>
 	inline SQInteger DefSQAdvancedConstructorCallback(HSQUIRRELVM vm)
