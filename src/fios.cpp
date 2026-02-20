@@ -25,7 +25,6 @@
 
 #include "safeguards.h"
 
-/* Variables to display file lists */
 static std::string *_fios_path = nullptr;
 SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 

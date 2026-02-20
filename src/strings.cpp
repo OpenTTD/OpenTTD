@@ -265,7 +265,7 @@ static void FormatString(StringBuilder &builder, std::string_view str, std::span
 }
 
 struct LanguagePack : public LanguagePackHeader {
-	char data[]; // list of strings
+	char data[]; ///< List of strings.
 };
 
 struct LanguagePackDeleter {

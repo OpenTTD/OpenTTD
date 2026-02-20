@@ -846,9 +846,11 @@ public:
 
 class SlVehicleRoadVeh : public DefaultSaveLoadHandler<SlVehicleRoadVeh, Vehicle> {
 public:
-	/* RoadVehicle path is stored in std::pair which cannot be directly saved. */
+	/** @{
+	 * RoadVehicle path is stored in std::pair which cannot be directly saved. */
 	static inline std::vector<Trackdir> rv_path_td;
 	static inline std::vector<TileIndex> rv_path_tile;
+	/** @} */
 
 	static inline const SaveLoad description[] = {
 		  SLEG_STRUCT("common", SlVehicleCommon),

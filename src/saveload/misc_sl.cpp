@@ -30,10 +30,12 @@ extern TileIndex _cur_tileloop_tile;
 extern uint16_t _disaster_delay;
 extern uint8_t _trees_tick_ctr;
 
-/* Keep track of current game position */
+/** @{
+ * Keep track of current game position. */
 int _saved_scrollpos_x;
 int _saved_scrollpos_y;
 ZoomLevel _saved_scrollpos_zoom;
+/** @} */
 
 void SaveViewportBeforeSaveGame()
 {

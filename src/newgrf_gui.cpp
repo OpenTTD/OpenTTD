@@ -1887,7 +1887,7 @@ std::unique_ptr<NWidgetBase> NewGRFDisplay()
 	return std::make_unique<NWidgetNewGRFDisplay>(std::move(avs), std::move(acs), std::move(inf));
 }
 
-/* Widget definition of the manage newgrfs window */
+/** Widget definition of the manage newgrfs window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -1904,7 +1904,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_widgets = {
 	EndContainer(),
 };
 
-/* Window definition of the manage newgrfs window */
+/** Window definition of the manage newgrfs window. */
 static WindowDesc _newgrf_desc(
 	WDP_CENTER, "settings_newgrf", 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,

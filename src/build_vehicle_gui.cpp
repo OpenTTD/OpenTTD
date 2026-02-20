@@ -127,7 +127,7 @@ static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineLis
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/* cached values for EngineNameSorter to spare many GetString() calls */
+/** Cached values for EngineNameSorter to spare many GetString() calls. */
 static EngineID _last_engine[2] = { EngineID::Invalid(), EngineID::Invalid() };
 
 /** Determines order of engines by name. @copydoc GUIList::Sorter */

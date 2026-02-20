@@ -19,9 +19,9 @@
 #include "../../safeguards.h"
 
 constexpr int NUMBER_OR_WATER_REGIONS_LOOKAHEAD = 4;
-constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATER_REGION_NUMBER_OF_TILES * 4; // 4 possible exit dirs per tile.
+constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATER_REGION_NUMBER_OF_TILES * 4; ///< 4 possible exit dirs per tile.
 
-constexpr int SHIP_LOST_PATH_LENGTH = 8; // The length of the (aimless) path assigned when a ship is lost.
+constexpr int SHIP_LOST_PATH_LENGTH = 8; ///< The length of the (aimless) path assigned when a ship is lost.
 
 template <class Types>
 class CYapfDestinationTileWaterT {

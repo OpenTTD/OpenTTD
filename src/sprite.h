@@ -89,7 +89,7 @@ struct DrawTileSpriteSpan : DrawTileSprites {
 struct DrawBuildingsTileStruct : SpriteBounds {
 	PalSpriteID ground;
 	PalSpriteID building;
-	uint8_t draw_proc;  // this allows to specify a special drawing procedure.
+	uint8_t draw_proc; ///< This allows to specify a special drawing procedure.
 };
 
 void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);

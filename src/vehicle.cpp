@@ -65,13 +65,17 @@
 
 #include "safeguards.h"
 
-/* Number of bits in the hash to use from each vehicle coord */
+/** @{
+ * Number of bits in the hash to use from each vehicle coord. */
 static const uint GEN_HASHX_BITS = 6;
 static const uint GEN_HASHY_BITS = 6;
+/** @} */
 
-/* Size of each hash bucket */
+/** @{
+ * Size of each hash bucket. */
 static const uint GEN_HASHX_BUCKET_BITS = 7;
 static const uint GEN_HASHY_BUCKET_BITS = 6;
+/** @} */
 
 /* Compute hash for vehicle coord */
 static inline uint GetViewportHashX(int x)
@@ -89,18 +93,23 @@ static inline uint GetViewportHash(int x, int y)
 	return GetViewportHashX(x) + GetViewportHashY(y);
 }
 
-/* Maximum size until hash repeats */
+/** @{
+ * Maximum size until hash repeats. */
 static const uint GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_BASE_SHIFT);
 static const uint GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_BASE_SHIFT);
+/** @} */
 
-/* Increments to reach next bucket in hash table */
+/** @{
+ * Increments to reach next bucket in hash table. */
 static const uint GEN_HASHX_INC = 1;
 static const uint GEN_HASHY_INC = 1 << GEN_HASHX_BITS;
+/** @} */
 
-/* Mask to wrap-around buckets */
+/** @{
+ * Mask to wrap-around buckets. */
 static const uint GEN_HASHX_MASK =  (1 << GEN_HASHX_BITS) - 1;
 static const uint GEN_HASHY_MASK = ((1 << GEN_HASHY_BITS) - 1) << GEN_HASHX_BITS;
-
+/** @} */
 
 /** The pool with all our precious vehicles. */
 VehiclePool _vehicle_pool("Vehicle");
@@ -381,15 +390,20 @@ Vehicle::Vehicle(VehicleID index, VehicleType type) : VehiclePool::PoolItem<&_ve
 	this->last_loading_station = StationID::Invalid();
 }
 
-/* Size of the hash, 6 = 64 x 64, 7 = 128 x 128. Larger sizes will (in theory) reduce hash
- * lookup times at the expense of memory usage. */
+/** @{
+ * Size of the hash, 6 = 64 x 64, 7 = 128 x 128.
+ * Larger sizes will (in theory) reduce hash lookup times at the expense of memory usage.
+ */
 constexpr uint TILE_HASH_BITS = 7;
 constexpr uint TILE_HASH_SIZE = 1 << TILE_HASH_BITS;
 constexpr uint TILE_HASH_MASK = TILE_HASH_SIZE - 1;
 constexpr uint TOTAL_TILE_HASH_SIZE = 1 << (TILE_HASH_BITS * 2);
+/** @} */
 
-/* Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
- * Profiling results show that 0 is fastest. */
+/**
+ * Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
+ * Profiling results show that 0 is fastest.
+ */
 constexpr uint TILE_HASH_RES = 0;
 
 /**

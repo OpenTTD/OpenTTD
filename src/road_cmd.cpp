@@ -2125,7 +2125,7 @@ static bool ClickTile_Road(TileIndex tile)
 	return true;
 }
 
-/* Converts RoadBits to TrackBits */
+/** Converts %RoadBits to %TrackBits. */
 static const TrackBits _road_trackbits[16] = {
 	TRACK_BIT_NONE,                                  // ROAD_NONE
 	TRACK_BIT_NONE,                                  // ROAD_NW

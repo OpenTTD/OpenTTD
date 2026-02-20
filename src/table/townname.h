@@ -1715,7 +1715,7 @@ enum CzechPattern : uint8_t {
 	CZP_PRIVL
 };
 
-/* [CzechGender][CzechPattern] - suffixes for adjectives */
+/** [CzechGender][CzechPattern] - suffixes for adjectives. */
 static const std::string_view _name_czech_patmod[][3] = {
 	/* CZG_SMASC */ { "\u00ed", "\u00fd", "uv" },
 	/* CZG_SFEM */  { "\u00ed", "\u00e1", "ova" },
@@ -1761,7 +1761,7 @@ struct CzechNameAdj {
 	std::string_view name;
 };
 
-/* Some of items which should be common are doubled. */
+/** Adjectives for Czech town names. @note Some of items which should be common are doubled. */
 static const CzechNameAdj _name_czech_adj[] = {
 	{ CZP_JARNI, CZC_ANY, "Horn" },
 	{ CZP_JARNI, CZC_ANY, "Horn" },
@@ -1813,7 +1813,7 @@ static const CzechNameAdj _name_czech_adj[] = {
 	{ CZP_PRIVL, CZC_ANY, "Sud" },
 };
 
-/* Considered a stem for choose/allow matching purposes. */
+/** Considered a stem for choose/allow matching purposes. */
 static const CzechNameSubst _name_czech_subst_full[] = {
 	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Sedlec" },
 	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Brod" },
@@ -1833,7 +1833,7 @@ static const CzechNameSubst _name_czech_subst_full[] = {
 	{ CZG_PNEUT, CZA_ALL, CzechChooseFlag::Colour, "Pole" },
 };
 
-/* TODO: More stems needed. --pasky */
+/** Beginnings for Czech town names. */
 static const CzechNameSubst _name_czech_subst_stem[] = {
 	{ CZG_SMASC, {                       CzechAllowFlag::Middle                      }, CzechChooseFlag::Colour, "Kostel" },
 	{ CZG_SMASC, {                       CzechAllowFlag::Middle                      }, CzechChooseFlag::Colour, "Kl\u00e1\u0161ter" },
@@ -1879,14 +1879,14 @@ static const CzechNameSubst _name_czech_subst_stem[] = {
 	{ CZG_FREE,  {                       CzechAllowFlag::Middle, CzechAllowFlag::Long}, {}, "Lip" },
 };
 
-/* Optional postfix inserted between stem and ending. */
+/** Optional postfix inserted between stem and ending. */
 static const std::string_view _name_czech_subst_postfix[] = {
 	"av", "an", "at",
 	"ov", "on", "ot",
 	"ev", "en", "et",
 };
 
-/* This array must have the both neutral genders at the end! */
+/** Endings for Czech town names. @important This array must have the both neutral genders at the end! */
 static const CzechNameSubst _name_czech_subst_ending[] = {
 	{ CZG_SMASC, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "ec" },
 	{ CZG_SMASC, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "\u00edn" },

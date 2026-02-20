@@ -35,7 +35,7 @@
  */
 static const uint MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS = 2 * MAX_MAP_SIZE;
 
-/*
+/**
  * Maximum size in pixels of the heightmap image.
  */
 static const uint MAX_HEIGHTMAP_SIZE_PIXELS = 256 << 20; // ~256 million

@@ -202,7 +202,7 @@ static const Directions _disallowed_ppp_of_track_at_pcp[TRACK_END][DIAGDIR_END] 
 	{{DIR_S, DIR_N},   {DIR_S, DIR_N},   {},               {},             }, // RIGHT
 };
 
-/* This array stores which track bits can meet at a tile edge */
+/** This array stores which track bits can meet at a tile edge. */
 static const Track _tracks_at_pcp[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TRACK_X, TRACK_X, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 	{TRACK_Y, TRACK_Y, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
@@ -210,8 +210,7 @@ static const Track _tracks_at_pcp[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TRACK_Y, TRACK_Y, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 };
 
-/* takes each of the 6 track bits from the array above and
- * assigns it to the home tile or neighbour tile */
+/** Takes each of the 6 track bits from the array above and assigns it to the home tile or neighbour tile. */
 static const TileSource _track_source_tile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TS_HOME, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     },
 	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_HOME     },
@@ -219,7 +218,7 @@ static const TileSource _track_source_tile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TS_HOME, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR},
 };
 
-/* Several PPPs maybe exist, here they are sorted in order of preference. */
+/** Several PPPs maybe exist, here they are sorted in order of preference. */
 static const Direction _ppp_order[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -  Y
 	{   // PCP 0
 		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_E, DIR_S, DIR_W}, // evn - evn
@@ -243,12 +242,16 @@ static const Direction _ppp_order[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -
 		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_N, DIR_W, DIR_S, DIR_E}, // odd - odd
 	}
 };
-/* Geometric placement of the PCP relative to the tile origin */
+/** @{
+ * Geometric placement of the PCP relative to the tile origin. */
 static const int8_t _x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
 static const int8_t _y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
-/* Geometric placement of the PPP relative to the PCP*/
+/** @} */
+/** @{
+ * Geometric placement of the PPP relative to the PCP.*/
 static const int8_t _x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
 static const int8_t _y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
+/** @} */
 
 /**
  * Offset for pylon sprites from the base pylon sprite.
@@ -264,7 +267,7 @@ enum PylonSpriteOffset : uint8_t {
 	PSO_NS_E,
 };
 
-/* The type of pylon to draw at each PPP */
+/** The type of pylon to draw at each PPP. */
 static const uint8_t _pylon_sprites[] = {
 	PSO_EW_N,
 	PSO_Y_NE,
@@ -468,12 +471,14 @@ enum RailCatenarySprite : uint8_t {
 	INVALID_CATENARY = 0xFF
 };
 
-/* Selects a Wire (with white and grey ends) depending on whether:
+/**
+ * Selects a Wire (with white and grey ends) depending on whether:
  * a) none (should never happen)
  * b) the first
  * c) the second
  * d) both
- * PCP exists.*/
+ * PCP exists.
+ */
 static const RailCatenarySprite _rail_wires[5][TRACK_END][4] = {
 	{ // Tileh == 0
 		{INVALID_CATENARY, WIRE_X_FLAT_NE,   WIRE_X_FLAT_SW,   WIRE_X_FLAT_BOTH},

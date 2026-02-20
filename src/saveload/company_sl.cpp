@@ -487,7 +487,7 @@ public:
 	void LoadCheck(CompanyProperties *cprops) const override { this->Load(cprops); }
 };
 
-/* Save/load of companies */
+/** Save/load of companies. */
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
 	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),

@@ -188,10 +188,10 @@ struct DeterministicSpriteGroup : SpecializedSpriteGroup<DeterministicSpriteGrou
 	std::vector<DeterministicSpriteGroupAdjust> adjusts{};
 	std::vector<DeterministicSpriteGroupRange> ranges{}; // Dynamically allocated
 
-	/* Dynamically allocated, this is the sole owner */
+	/** Dynamically allocated, this is the sole owner. */
 	DeterministicSpriteGroupResult default_result;
 
-	const SpriteGroup *error_group = nullptr; // was first range, before sorting ranges
+	const SpriteGroup *error_group = nullptr; ///< Was first range, before sorting ranges.
 
 protected:
 	ResolverResult Resolve(ResolverObject &object) const override;

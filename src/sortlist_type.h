@@ -80,7 +80,7 @@ protected:
 	/* If sort parameters are used then params must be a reference, however if not then params cannot be a reference as
 	 * it will not be able to reference anything. */
 	using SortParameterReference = std::conditional_t<std::is_same_v<P, std::nullptr_t>, P, P&>;
-	const SortParameterReference params;
+	const SortParameterReference params; ///< @copydoc SortParameterReference
 
 	/**
 	 * Check if the list is sortable

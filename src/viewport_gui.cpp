@@ -22,7 +22,7 @@
 
 #include "safeguards.h"
 
-/* Extra Viewport Window Stuff */
+/** Extra viewport window widgets. */
 static constexpr std::initializer_list<NWidgetPart> _nested_extra_viewport_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),

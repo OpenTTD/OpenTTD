@@ -77,9 +77,9 @@ WindowList _z_windows;
 /** If false, highlight is white, otherwise the by the widget defined colour. */
 bool _window_highlight_colour = false;
 
-/*
+/**
  * Window that currently has focus. - The main purpose is to generate
- * #FocusLost events, not to give next window in z-order focus when a
+ * #Window::OnFocusLost events, not to give next window in z-order focus when a
  * window is closed.
  */
 Window *_focused_window;

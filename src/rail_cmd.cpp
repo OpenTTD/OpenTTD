@@ -2063,7 +2063,7 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, Palett
 }
 
 /* SubSprite for drawing the track halftile of 'three-corners-raised'-sloped rail sprites. */
-static const int INF = 1000; // big number compared to tilesprite size
+static const int INF = 1000; ///< Big number compared to tilesprite size.
 static const SubSprite _halftile_sub_sprite[4] = {
 	{ -INF    , -INF  , 32 - 33, INF     }, // CORNER_W, clip 33 pixels from right
 	{ -INF    ,  0 + 7, INF    , INF     }, // CORNER_S, clip 7 pixels from top

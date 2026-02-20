@@ -175,11 +175,12 @@ public:
 
 class NetworkGameWindow : public Window {
 protected:
-	/* Runtime saved values */
+	/** Runtime saved values. */
 	static Listing last_sorting;
 
-	/* Constants for sorting servers */
+	/** Functions for sorting servers. */
 	static const std::initializer_list<GUIGameServerList::SortFunction * const> sorter_funcs;
+	/** Functions for filtering servers. */
 	static const std::initializer_list<GUIGameServerList::FilterFunction * const> filter_funcs;
 
 	NetworkGame *server = nullptr; ///< Selected server.
@@ -191,8 +192,8 @@ protected:
 	QueryString filter_editbox; ///< Editbox for filter on servers.
 	bool searched_internet = false; ///< Did we ever press "Search Internet" button?
 
-	Dimension lock{}; /// Dimension of lock icon.
-	Dimension blot{}; /// Dimension of compatibility icon.
+	Dimension lock{}; ///< Dimension of lock icon.
+	Dimension blot{}; ///< Dimension of compatibility icon.
 
 	/**
 	 * (Re)build the GUI network game list (a.k.a. this->servers) as some

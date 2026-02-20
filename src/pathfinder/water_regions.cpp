@@ -49,9 +49,9 @@ class WaterRegionData {
 	friend class WaterRegion;
 
 	std::array<WaterRegionTraversabilityBits, DIAGDIR_END> edge_traversability_bits{};
-	std::unique_ptr<WaterRegionPatchLabelArray> tile_patch_labels; // Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch)
+	std::unique_ptr<WaterRegionPatchLabelArray> tile_patch_labels; ///< Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch).
 	bool has_cross_region_aqueducts = false;
-	WaterRegionPatchLabel::BaseType number_of_patches{0}; // 0 = no water, 1 = one single patch of water, etc...
+	WaterRegionPatchLabel::BaseType number_of_patches{0}; ///< 0 = no water, 1 = one single patch of water, etc...
 };
 
 /**

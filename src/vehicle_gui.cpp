@@ -550,7 +550,7 @@ DropDownList BaseVehicleListWindow::BuildActionDropdownList(bool show_autoreplac
 	return list;
 }
 
-/* cached values for VehicleNameSorter to spare many GetString() calls */
+/** Cached values for VehicleNameSorter to spare many GetString() calls. */
 static const Vehicle *_last_vehicle[2] = { nullptr, nullptr };
 
 void BaseVehicleListWindow::SortVehicleList()
@@ -2889,10 +2889,12 @@ static const ZoomLevel _vehicle_view_zoom_levels[] = {
 	ZoomLevel::Aircraft,
 };
 
-/* Constants for geometry of vehicle view viewport */
+/** @{
+ * Constants for geometry of vehicle view viewport. */
 static const int VV_INITIAL_VIEWPORT_WIDTH = 226;
 static const int VV_INITIAL_VIEWPORT_HEIGHT = 84;
 static const int VV_INITIAL_VIEWPORT_HEIGHT_TRAIN = 102;
+/** @} */
 
 /** Command indices for the _vehicle_command_translation_table. */
 enum VehicleCommandTranslation : uint8_t {

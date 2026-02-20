@@ -73,7 +73,7 @@ public:
 	std::vector<BadgeID> badges{};
 
 private:
-	/* Vehicle-type specific information. */
+	/** Vehicle-type specific information. */
 	std::variant<std::monostate, RailVehicleInfo, RoadVehicleInfo, ShipVehicleInfo, AircraftVehicleInfo> vehicle_info{};
 
 public:

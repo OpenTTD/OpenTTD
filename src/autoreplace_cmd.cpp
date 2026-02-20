@@ -504,7 +504,7 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlags flags, 
 struct ReplaceChainItem {
 	Vehicle *old_veh; ///< Old vehicle to replace.
 	Vehicle *new_veh; ///< Replacement vehicle, or nullptr if no replacement.
-	Money cost; /// Cost of buying and refitting replacement.
+	Money cost; ///< Cost of buying and refitting replacement.
 
 	/**
 	 * Create a new item.

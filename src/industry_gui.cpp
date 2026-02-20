@@ -1322,14 +1322,14 @@ protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
 
-	/* Constants for sorting industries */
+	/** Strings describing how industries are sorted. */
 	static inline const StringID sorter_names[] = {
 		STR_SORT_BY_NAME,
 		STR_SORT_BY_TYPE,
 		STR_SORT_BY_PRODUCTION,
 		STR_SORT_BY_TRANSPORTED,
 	};
-	static const std::initializer_list<GUIIndustryList::SortFunction * const> sorter_funcs;
+	static const std::initializer_list<GUIIndustryList::SortFunction * const> sorter_funcs; ///< Functions to sort industries.
 
 	GUIIndustryList industries{IndustryDirectoryWindow::produced_cargo_filter};
 	Scrollbar *vscroll{};
@@ -2008,7 +2008,7 @@ struct CargoesField {
 			bool left_align; ///< Align all cargo texts to the left (else align to the right).
 		} cargo_label;   ///< Label data (for #CFT_CARGO_LABEL).
 		StringID header; ///< Header text (for #CFT_HEADER).
-	} u{}; // Data for each type.
+	} u{}; ///< Data for each type.
 
 	/**
 	 * Make one of the empty fields (#CFT_EMPTY or #CFT_SMALL_EMPTY).

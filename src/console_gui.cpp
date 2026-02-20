@@ -106,7 +106,7 @@ private:
 	}
 };
 
-/* ** main console cmd buffer ** */
+/** Main console cmd buffer. */
 static Textbuf _iconsole_cmdline(ICON_CMDLN_SIZE);
 static ConsoleAutoCompletion _iconsole_tab_completion(&_iconsole_cmdline);
 static std::deque<std::string> _iconsole_history;

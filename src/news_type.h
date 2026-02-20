@@ -140,7 +140,7 @@ struct NewsItem {
 	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
 	NewsType type;                ///< Type of the news
 	AdviceType advice_type; ///< The type of advice, to be able to remove specific advices later on.
-	NewsStyle style; /// Window style for the news.
+	NewsStyle style; ///< Window style for the news.
 	NewsFlags flags;               ///< NewsFlags bits @see NewsFlag
 
 	NewsReference ref1; ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.

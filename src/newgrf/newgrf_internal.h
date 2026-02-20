@@ -71,7 +71,7 @@ public:
 	/* Kind of return values when processing certain actions */
 	int skip_sprites;         ///< Number of pseudo sprites to skip before processing the next one. (-1 to skip to end of file)
 
-	/* Currently referenceable spritegroups */
+	/** Currently referenceable spritegroups. */
 	std::array<const SpriteGroup *, MAX_SPRITEGROUP + 1> spritegroups{};
 
 	/** Clear temporary data before processing the next file in the current loading stage */

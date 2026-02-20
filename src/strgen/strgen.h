@@ -144,7 +144,7 @@ struct CmdPair {
 
 struct ParsedCommandStruct {
 	std::vector<CmdPair> non_consuming_commands;
-	std::array<const CmdStruct*, 32> consuming_commands{ nullptr }; // ordered by param #
+	std::array<const CmdStruct*, 32> consuming_commands{ nullptr }; ///< Ordered by param #.
 };
 
 const CmdStruct *TranslateCmdForCompare(const CmdStruct *a);

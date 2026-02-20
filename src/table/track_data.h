@@ -7,8 +7,9 @@
 
 /** @file track_data.h Data related to rail tracks. */
 
-/* Maps a diagonal direction to the all trackdirs that are connected to any
- * track entering in this direction (including those making 90 degree turns)
+/**
+ * Maps a diagonal direction to the all trackdirs that are connected to any
+ * track entering in this direction (including those making 90 degree turns).
  */
 extern const TrackdirBits _exitdir_reaches_trackdirs[] = {
 	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,  // DIAGDIR_NE
@@ -22,7 +23,7 @@ extern const Trackdir _next_trackdir[TRACKDIR_END] = {
 	TRACKDIR_X_SW,  TRACKDIR_Y_NW,  TRACKDIR_LOWER_W, TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N
 };
 
-/* Maps a trackdir to all trackdirs that make 90 deg turns with it. */
+/** Maps a trackdir to all trackdirs that make 90 deg turns with it. */
 extern const TrackdirBits _track_crosses_trackdirs[TRACK_END] = {
 	TRACKDIR_BIT_Y_SE     | TRACKDIR_BIT_Y_NW,                                                   // TRACK_X
 	TRACKDIR_BIT_X_NE     | TRACKDIR_BIT_X_SW,                                                   // TRACK_Y
@@ -32,7 +33,7 @@ extern const TrackdirBits _track_crosses_trackdirs[TRACK_END] = {
 	TRACKDIR_BIT_UPPER_W  | TRACKDIR_BIT_UPPER_E  | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_LOWER_E  // TRACK_RIGHT
 };
 
-/* Maps a track to all tracks that make 90 deg turns with it. */
+/** Maps a track to all tracks that make 90 deg turns with it. */
 extern const TrackBits _track_crosses_tracks[] = {
 	TRACK_BIT_Y,    // TRACK_X
 	TRACK_BIT_X,    // TRACK_Y
@@ -42,8 +43,7 @@ extern const TrackBits _track_crosses_tracks[] = {
 	TRACK_BIT_HORZ  // TRACK_RIGHT
 };
 
-/* Maps a trackdir to the (4-way) direction the tile is exited when following
- * that trackdir */
+/** Maps a trackdir to the (4-way) direction the tile is exited when following that trackdir. */
 extern const DiagDirection _trackdir_to_exitdir[TRACKDIR_END] = {
 	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_NE,
 	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,

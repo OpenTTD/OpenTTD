@@ -74,15 +74,14 @@ private:
 	/* Runtime saved values */
 	static Listing last_sorting; ///< Last setting of the sort.
 
-	/* Constants for sorting the bridges */
+	/** Strings describing how bridges are sorted. */
 	static inline const StringID sorter_names[] = {
 		STR_SORT_BY_NUMBER,
 		STR_SORT_BY_COST,
 		STR_SORT_BY_MAX_SPEED,
 	};
-	static const std::initializer_list<GUIBridgeList::SortFunction * const> sorter_funcs;
+	static const std::initializer_list<GUIBridgeList::SortFunction * const> sorter_funcs; ///< Functions to sort bridges.
 
-	/* Internal variables */
 	TileIndex start_tile = INVALID_TILE;
 	TileIndex end_tile = INVALID_TILE;
 	TransportType transport_type = INVALID_TRANSPORT;
