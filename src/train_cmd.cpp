@@ -717,7 +717,10 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 	return CommandCost();
 }
 
-/** Move all free vehicles in the depot to the train */
+/**
+ * Move all free vehicles in the depot to the train.
+ * @param u The train to move the free vehicles to.
+ */
 void NormalizeTrainVehInDepot(const Train *u)
 {
 	assert(u->IsEngine());
@@ -2215,7 +2218,6 @@ ClosestDepot Train::FindClosestDepot()
 	return ClosestDepot(tfdd.tile, GetDepotIndex(tfdd.tile), tfdd.reverse);
 }
 
-/** Play a sound for a train leaving the station. */
 void Train::PlayLeaveStationSound(bool force) const
 {
 	static const SoundFx sfx[] = {
@@ -2512,7 +2514,10 @@ static Track DoTrainPathfind(const Train *v, TileIndex tile, DiagDirection enter
 /**
  * Extend a train path as far as possible. Stops on encountering a safe tile,
  * another reservation or a track choice.
- * @return INVALID_TILE indicates that the reservation failed.
+ * @param v The train to extend the reservation for.
+ * @param new_tracks Optional pointer to the track bits at the end of the reservation.
+ * @param enterdir Optional pointer to the enter dir at the end of the reservation.
+ * @return Information about the reservation, empty if no path could be found.
  */
 static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks, DiagDirection *enterdir)
 {
@@ -3247,6 +3252,7 @@ static uint CheckTrainCollision(Vehicle *v, Train *t)
  * Reports the incident in a flashy news item, modifies station ratings and
  * plays a sound.
  * @param v %Train to test.
+ * @return \c true iff there has been a collision.
  */
 static bool CheckTrainCollision(Train *v)
 {

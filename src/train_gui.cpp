@@ -185,7 +185,11 @@ struct CargoSummaryItem {
 	uint amount;      ///< Amount that is carried
 	StationID source; ///< One of the source stations
 
-	/** Used by std::find() and similar functions */
+	/**
+	 * Used by std::find() and similar functions.
+	 * @param other The other item.
+	 * @return \c true iff both items have the same cargo.
+	 */
 	inline bool operator == (const CargoSummaryItem &other) const
 	{
 		return !(this->cargo != other.cargo);

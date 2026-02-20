@@ -254,7 +254,7 @@ public:
  * Make widgets for the current available tree types.
  * This does not use a NWID_MATRIX or WWT_MATRIX control as those are more difficult to
  * get producing the correct result than dynamically building the widgets is.
- * @see NWidgetFunctionType
+ * @copydoc NWidgetFunctionType
  */
 static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 {

@@ -55,7 +55,11 @@ void CcTerraform(Commands, const CommandCost &result, Money, TileIndex tile)
 }
 
 
-/** Scenario editor command that generates desert areas */
+/**
+ * Scenario editor command that generates desert areas.
+ * @param end The end tile of the map drag.
+ * @param start The start tile of the map drag.
+ */
 static void GenerateDesertArea(TileIndex end, TileIndex start)
 {
 	if (_game_mode != GM_EDITOR) return;
@@ -72,7 +76,11 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
 }
 
-/** Scenario editor command that generates rocky areas */
+/**
+ * Scenario editor command that generates rocky areas.
+ * @param end The end tile of the map drag.
+ * @param start The start tile of the map drag.
+ */
 static void GenerateRockyArea(TileIndex end, TileIndex start)
 {
 	if (_game_mode != GM_EDITOR) return;

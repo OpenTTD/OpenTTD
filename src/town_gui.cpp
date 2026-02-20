@@ -529,6 +529,7 @@ public:
 
 	/**
 	 * Gets the desired height for the information panel.
+	 * @param width The width of the panel in pixels.
 	 * @return the desired height in pixels.
 	 */
 	uint GetDesiredInfoHeight(int width) const

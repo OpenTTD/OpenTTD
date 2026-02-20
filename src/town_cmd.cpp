@@ -170,8 +170,9 @@ Town::~Town()
 /**
  * Invalidating of the "nearest town cache" has to be done
  * after removing item from the pool.
+ * @copydoc Pool::PoolItem::PostDestructor
  */
-void Town::PostDestructor(size_t)
+void Town::PostDestructor([[maybe_unused]] size_t index)
 {
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_REBUILD);
 	UpdateNearestTownForRoadTiles(false);
@@ -931,6 +932,7 @@ static RoadBits GetTownRoadBits(TileIndex tile)
 /**
  * Get the road type that towns should build at this current moment.
  * They may have built a different type in the past.
+ * @return The best road type for towns at this time.
  */
 RoadType GetTownRoadType()
 {
@@ -1471,6 +1473,7 @@ static bool TownCanGrowRoad(TileIndex tile)
 
 /**
  * Check if the town is allowed to build roads.
+ * @param modes The configuration of the town growth.
  * @return true If the town is allowed to build roads.
  */
 static inline bool TownAllowedToBuildRoads(TownExpandModes modes)
@@ -2698,6 +2701,7 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile, TownExp
  * @param noslope Are foundations disallowed for this house?
  * @param second The diagdir from the first tile to the second tile.
  * @param modes The parts of the town that are being grown.
+ * @return \c true iff a 2x1 or 1x2 house can be built.
  */
 static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslope, DiagDirection second, TownExpandModes modes)
 {
@@ -2724,6 +2728,7 @@ static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslop
  * @param maxz The maximum Z level, since all tiles must have the same height.
  * @param noslope Are foundations disallowed for this house?
  * @param modes The parts of the town that are being grown.
+ * @return \c true iff a 2x2 house can be built.
  */
 static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool noslope, TownExpandModes modes)
 {

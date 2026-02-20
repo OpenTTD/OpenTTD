@@ -567,7 +567,14 @@ void DepotSortList(VehicleList *list)
 	std::sort(list->begin(), list->end(), &VehicleNumberSorter);
 }
 
-/** draw the vehicle profit button in the vehicle list window. */
+/**
+ * Draw the vehicle profit button in the vehicle list window.
+ * @param age The age of the vehicle.
+ * @param display_profit_last_year The profit last year.
+ * @param num_vehicles The number of vehicles in the group.
+ * @param x The X-coordinate to draw the button at.
+ * @param y The Y-coordinate to draw the button at.
+ */
 static void DrawVehicleProfitButton(TimerGameEconomy::Date age, Money display_profit_last_year, uint num_vehicles, int x, int y)
 {
 	SpriteID spr;
@@ -1354,7 +1361,14 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *pare
 	w->parent = parent;
 }
 
-/** Display list of cargo types of the engine, for the purchase information window */
+/**
+ * Display list of cargo types of the engine, for the purchase information window.
+ * @param left The left bound of the area to draw in.
+ * @param right The right bound of the area to draw in.
+ * @param y The top bound of the area to draw in.
+ * @param engine The engine to draw the options for.
+ * @return The bottom of the area that was drawn to.
+ */
 uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 {
 	/* List of cargo types of this engine */
@@ -1684,7 +1698,14 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uin
 	} while (oid != start);
 }
 
-/** Draw small order list in the vehicle GUI, but without the little black arrow.  This is used for shared order groups. */
+/**
+ * Draw small order list in the vehicle GUI, but without the little black arrow. This is used for shared order groups.
+ * @param orderlist The list of orders to draw.
+ * @param left The left bound of the area to draw in.
+ * @param right The right bound of the area to draw in.
+ * @param y The top bound of the area to draw in.
+ * @param order_arrow_width The width of the order arrow.
+ */
 static void DrawSmallOrderList(const OrderList *orderlist, int left, int right, int y, uint order_arrow_width)
 {
 	if (orderlist == nullptr) return;
@@ -2411,7 +2432,11 @@ struct VehicleDetailsWindow : Window {
 	TrainDetailsWindowTabs tab = TDW_TAB_CARGO; ///< For train vehicles: which tab is displayed.
 	Scrollbar *vscroll = nullptr;
 
-	/** Initialize a newly created vehicle details window */
+	/**
+	 * Initialize a newly created vehicle details window.
+	 * @param desc The configuration of the window.
+	 * @param window_number The unique number of the window within the class.
+	 */
 	VehicleDetailsWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		const Vehicle *v = Vehicle::Get(window_number);
@@ -2818,7 +2843,10 @@ static WindowDesc _nontrain_vehicle_details_desc(
 	_nested_nontrain_vehicle_details_widgets
 );
 
-/** Shows the vehicle details window of the given vehicle. */
+/**
+ * Shows the vehicle details window of the given vehicle.
+ * @param v The vehicle to show the window for.
+ */
 static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
 	CloseWindowById(WC_VEHICLE_ORDERS, v->index, false);
@@ -3450,7 +3478,10 @@ static WindowDesc _train_view_desc(
 	&VehicleViewWindow::hotkeys
 );
 
-/** Shows the vehicle view window of the given vehicle. */
+/**
+ * Shows the vehicle view window of the given vehicle.
+ * @param v The vehicle to show the view for.
+ */
 void ShowVehicleViewWindow(const Vehicle *v)
 {
 	AllocateWindowDescFront<VehicleViewWindow>((v->type == VEH_TRAIN) ? _train_view_desc : _vehicle_view_desc, v->index);

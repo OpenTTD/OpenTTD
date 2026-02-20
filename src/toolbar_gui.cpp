@@ -1189,6 +1189,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 
 /**
  * Called when clicking at the date panel of the scenario editor toolbar.
+ * @copydoc ToolbarButtonProc
  */
 static CallBackFunction ToolbarScenDatePanel(Window *w)
 {
@@ -1938,7 +1939,12 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 
 /* --- Toolbar handling for the 'normal' case */
 
-typedef CallBackFunction ToolbarButtonProc(Window *w);
+/**
+ * Callback for when a button is clicked in the given window.
+ * @param w The clicked window.
+ * @return The callback function.
+ */
+using ToolbarButtonProc = CallBackFunction(Window *w);
 
 static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarPauseClick,
