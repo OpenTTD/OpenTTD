@@ -726,7 +726,7 @@ enum WindowClass : uint16_t {
 	 */
 	WC_SCREENSHOT,
 
-	/*
+	/**
 	 * Help and manuals window; %Window numbers:
 	 *   - 0 = #HelpWindowWidgets
 	 */

@@ -34,7 +34,7 @@ struct LoadgameState {
 	std::vector<StringID> vehicle_names;
 };
 
-/* OldChunk-Type */
+/** OldChunk-Type. */
 enum OldChunkType : uint32_t {
 	OC_SIMPLE    = 0,
 	OC_NULL      = 1,

@@ -101,7 +101,7 @@ protected:
 	ResolverResult Resolve(ResolverObject &object) const override;
 };
 
-/* Shared by deterministic and random groups. */
+/** Shared by deterministic and random groups. */
 enum VarSpriteGroupScope : uint8_t {
 	VSG_BEGIN,
 

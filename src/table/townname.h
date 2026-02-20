@@ -1695,7 +1695,7 @@ static const std::string_view _name_czech_real[] = {
  * Feel free to ask me about anything unclear or if you need help
  * with cloning this for your own language. */
 
-/* Sing., pl. */
+/** Sing., pl. */
 enum CzechGender : uint8_t {
 	CZG_SMASC,
 	CZG_SFEM,
@@ -1703,9 +1703,9 @@ enum CzechGender : uint8_t {
 	CZG_PMASC,
 	CZG_PFEM,
 	CZG_PNEUT,
-	/* Special for substantive stems - the ending chooses the gender. */
+	/** Special for substantive stems - the ending chooses the gender. */
 	CZG_FREE,
-	/* Like CZG_FREE, but disallow CZG_SNEUT. */
+	/** Like CZG_FREE, but disallow CZG_SNEUT. */
 	CZG_NFREE
 };
 
@@ -1725,8 +1725,10 @@ static const std::string_view _name_czech_patmod[][3] = {
 	/* CZG_PNEUT */ { "\u00ed", "\u00e1", "ova" }
 };
 
-/* This way the substantive can choose only some adjectives/endings:
- * At least one of these flags must be satisfied: */
+/**
+ * This way the substantive can choose only some adjectives/endings:
+ * At least one of these flags must be satisfied:
+ */
 enum class CzechAllowFlag : uint8_t {
 	Short,
 	Middle,
@@ -1737,11 +1739,11 @@ using CzechAllowFlags = EnumBitSet<CzechAllowFlag, uint8_t>;
 
 static constexpr CzechAllowFlags CZA_ALL = {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long};
 
-/* All these flags must be satisfied (in the stem->others direction): */
+/** All these flags must be satisfied (in the stem->others direction): */
 enum class CzechChooseFlag : uint8_t {
 	Colour,
-	Postfix, // Matched if postfix was inserted.
-	NoPostfix, // Matched if no postfix was inserted.
+	Postfix, ///< Matched if postfix was inserted.
+	NoPostfix, ///< Matched if no postfix was inserted.
 };
 
 using CzechChooseFlags = EnumBitSet<CzechChooseFlag, uint8_t>;

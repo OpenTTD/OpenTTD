@@ -13,7 +13,7 @@
 #include "../../core/enum_type.hpp"
 #include "../../misc/dbg_helpers.h"
 
-/* Enum used in PfCalcCost() to see why was the segment closed. */
+/** Enum used in PfCalcCost() to see why was the segment closed. */
 enum class EndSegmentReason : uint8_t {
 	/* The following reasons can be saved into cached segment */
 	DeadEnd, ///< track ends here

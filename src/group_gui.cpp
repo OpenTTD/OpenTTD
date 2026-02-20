@@ -192,7 +192,7 @@ void BuildGuiGroupList(GUIGroupList &list, bool fold, Owner owner, VehicleType v
 	}
 }
 
-/* Columns in the group list */
+/** Columns in the group list. */
 enum VehicleGroupColumns : uint8_t {
 	VGC_FOLD,          ///< Fold / Unfold button.
 	VGC_NAME,          ///< Group name.
