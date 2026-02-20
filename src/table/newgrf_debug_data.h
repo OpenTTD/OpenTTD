@@ -12,13 +12,13 @@
 #include "../newgrf_roadtype.h"
 #include "../newgrf_roadstop.h"
 
-/* Helper for filling property tables */
+/** Helper for filling property tables. */
 #define NIP(prop, base_class, variable, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->variable; }, prop, type }
 
-/* Helper for filling callback tables */
+/** Helper for filling callback tables. */
 #define NIC(cb_id, base_class, variable, bit) { #cb_id, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->variable.base(); }, bit, cb_id }
 
-/* Helper for filling variable tables */
+/** Helper for filling variable tables. */
 #define NIV(var, name) { name, var }
 
 

@@ -109,22 +109,19 @@ inline uint32_t ReadUint32(LoadgameState &ls)
 	return x | ReadUint16(ls) << 16;
 }
 
-/* Help:
- *  - OCL_SVAR: load 'type' to offset 'offset' in a struct of type 'base', which must also
- *       be given via base in LoadChunk() as real pointer
- *  - OCL_VAR: load 'type' to a global var
- *  - OCL_END: every struct must end with this
- *  - OCL_NULL: read 'amount' of bytes and send them to /dev/null or something
- *  - OCL_CHUNK: load another proc to load a part of the savegame, 'amount' times
- *  - OCL_ASSERT: to check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;)
- */
+/** Load 'type' to offset 'offset' in a struct of type 'base', which must also be given via base in LoadChunk() as real pointer. */
 #define OCL_SVAR(type, base, offset)         { type,                 1, nullptr, [] (void *b) -> void * { return std::addressof(static_cast<base *>(b)->offset); }, nullptr }
+/** Load 'type' to a global var. */
 #define OCL_VAR(type, amount, pointer)       { type,            amount, pointer, nullptr, nullptr }
+/** Every struct must end with this. */
 #define OCL_END()                            { OC_END,               0, nullptr, nullptr, nullptr }
 #define OCL_CNULL(type, amount)              { OC_NULL | type,  amount, nullptr, nullptr, nullptr }
 #define OCL_CCHUNK(type, amount, proc)       { OC_CHUNK | type, amount, nullptr, nullptr, proc }
+/** To check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;) */
 #define OCL_ASSERT(type, size)               { OC_ASSERT | type,     1, (void *)(size_t)size, nullptr, nullptr }
+/** Read 'amount' of bytes and send them to /dev/null or something. */
 #define OCL_NULL(amount)        OCL_CNULL((OldChunkType)0, amount)
+/** Load another proc to load a part of the savegame, 'amount' times. */
 #define OCL_CHUNK(amount, proc) OCL_CCHUNK((OldChunkType)0, amount, proc)
 
 #endif /* OLDLOADER_H */

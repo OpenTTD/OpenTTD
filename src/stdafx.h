@@ -186,7 +186,7 @@ using namespace std::literals::string_view_literals;
 #endif
 #define PACK(type_dec) PACK_N(type_dec, 1)
 
-/*
+/** @def debug_inline
  * When making a (pure) debug build, the compiler will by default disable
  * inlining of functions. This has a detrimental effect on the performance of
  * debug builds, especially when more and more trivial (wrapper) functions get

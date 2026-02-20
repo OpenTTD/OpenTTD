@@ -74,7 +74,7 @@ typedef float CGFloat;
 #endif /* __LP64__ */
 #endif /* CGFLOAT_DEFINED */
 
-/* OS X has a non-const iconv. */
+/** OS X has a non-const iconv. */
 #define HAVE_NON_CONST_ICONV
 
 #endif /* MACOS_STDAFX_H */

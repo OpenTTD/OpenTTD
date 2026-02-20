@@ -15,7 +15,7 @@
  *   0      1      2      3     4     5
  */
 
-/* mark invalid tiles red */
+/** Mark invalid tiles red. */
 #define RED(c) -c
 
 /**

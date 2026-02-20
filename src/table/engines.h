@@ -87,14 +87,13 @@
  */
 #define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 20, e, INVALID_CARGO, CT_INVALID, 0, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
 
-/* Climates
- * T = Temperate
- * A = Sub-Arctic
- * S = Sub-Tropic
- * Y = Toyland */
+/** Climate temperate. */
 #define T LandscapeType::Temperate
+/** Climate sub-arctic. */
 #define A LandscapeType::Arctic
+/** Climate sub-tropic. */
 #define S LandscapeType::Tropic
+/** Climate toyland. */
 #define Y LandscapeType::Toyland
 static constexpr EngineInfo _orig_engine_info[] = {
 	/*      base_intro     base_life
@@ -394,7 +393,7 @@ static constexpr EngineInfo _orig_engine_info[] = {
 #define E EC_ELECTRIC
 #define N EC_MONORAIL
 #define V EC_MAGLEV
-/* Wagons always have engine type 0, i.e. steam. */
+/** Wagons always have engine type 0, i.e. steam. */
 #define A EC_STEAM
 
 #define R RAILTYPE_RAIL
