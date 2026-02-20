@@ -117,10 +117,10 @@ protected:
 		return a->sort_value < b->sort_value;
 	}
 
-	/*
+	/**
 	 * Checks if a given page should be visible in the story book.
 	 * @param page The page to check.
-	 * @return True if the page should be visible, otherwise false.
+	 * @return \c true iff the page should be visible.
 	 */
 	bool IsPageAvailable(const StoryPage *page) const
 	{

@@ -810,7 +810,7 @@ static void TileLoopTreesAlps(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-/*
+/**
  * Check if trees on this tile are allowed to spread.
  * If they are allowed to spread, they are also allowed to die.
  * @param tile The tile to check.

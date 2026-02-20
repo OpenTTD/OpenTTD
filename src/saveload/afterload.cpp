@@ -178,7 +178,7 @@ static void ConvertTownOwner()
 	}
 }
 
-/* since savegame version 4.1, exclusive transport rights are stored at towns */
+/** Since savegame version 4.1, exclusive transport rights are stored at towns. */
 static void UpdateExclusiveRights()
 {
 	for (Town *t : Town::Iterate()) {
@@ -194,7 +194,7 @@ static const uint8_t convert_currency[] = {
 	18,  2, 20,
 };
 
-/* since savegame version 4.2 the currencies are arranged differently */
+/** Since savegame version 4.2 the currencies are arranged differently. */
 static void UpdateCurrencies()
 {
 	_settings_game.locale.currency = convert_currency[_settings_game.locale.currency];

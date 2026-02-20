@@ -276,7 +276,7 @@ struct CompanyOldAI {
 
 class SlCompanyOldAIBuildRec : public DefaultSaveLoadHandler<SlCompanyOldAIBuildRec, CompanyOldAI> {
 public:
-	static inline const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+	static inline const SaveLoad description[] = {{}}; ///< Needed to keep DefaultSaveLoadHandler happy.
 	static inline const SaveLoadCompatTable compat_description = _company_old_ai_buildrec_compat;
 
 	SaveLoadTable GetDescription() const override { return {}; }

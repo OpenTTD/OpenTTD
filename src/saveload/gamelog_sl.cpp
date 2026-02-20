@@ -265,7 +265,7 @@ static bool _is_emergency_save = true;
 
 class SlGamelogEmergency : public DefaultSaveLoadHandler<SlGamelogEmergency, LoggedChange> {
 public:
-	/* We need to store something, so store a "true" value. */
+	/** We need to store something, so store a "true" value. */
 	static inline const SaveLoad description[] = {
 		SLEG_CONDVAR("is_emergency_save", _is_emergency_save, SLE_BOOL, SLV_RIFF_TO_ARRAY, SL_MAX_VERSION),
 	};

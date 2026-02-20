@@ -780,7 +780,7 @@ static void Disaster_Small_Ufo_Init()
 }
 
 
-/* Combat airplane which destroys an oil refinery */
+/** Combat airplane which destroys an oil refinery. */
 static void Disaster_Airplane_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
@@ -834,8 +834,7 @@ static void Disaster_Helicopter_Init()
 }
 
 
-/* Big Ufo which lands on a piece of rail and will consequently be shot
- * down by a combat airplane, destroying the surroundings */
+/** Big Ufo which lands on a piece of rail and will consequently be shot down by a combat airplane, destroying the surroundings. */
 static void Disaster_Big_Ufo_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
@@ -878,14 +877,14 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 	DisasterVehicle::Create(x, y, dir, subtype);
 }
 
-/* Curious submarine #1, just floats around */
+/** Curious submarine #1, just floats around. */
 static void Disaster_Small_Submarine_Init()
 {
 	Disaster_Submarine_Init(ST_SMALL_SUBMARINE);
 }
 
 
-/* Curious submarine #2, just floats around */
+/** Curious submarine #2, just floats around. */
 static void Disaster_Big_Submarine_Init()
 {
 	Disaster_Submarine_Init(ST_BIG_SUBMARINE);

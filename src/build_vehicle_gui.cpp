@@ -1486,7 +1486,7 @@ struct BuildVehicleWindow : Window {
 		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
 	}
 
-	/* Figure out what road vehicle EngineIDs to put in the list */
+	/** Figure out what road vehicle EngineIDs to put in the list. */
 	void GenerateBuildRoadVehList()
 	{
 		EngineID sel_id = EngineID::Invalid();
@@ -1513,7 +1513,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Figure out what ship EngineIDs to put in the list */
+	/** Figure out what ship EngineIDs to put in the list. */
 	void GenerateBuildShipList()
 	{
 		EngineID sel_id = EngineID::Invalid();
@@ -1538,7 +1538,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Figure out what aircraft EngineIDs to put in the list */
+	/** Figure out what aircraft EngineIDs to put in the list. */
 	void GenerateBuildAircraftList()
 	{
 		EngineID sel_id = EngineID::Invalid();
@@ -1573,7 +1573,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Generate the list of vehicles */
+	/** Generate the list of vehicles. */
 	void GenerateBuildList()
 	{
 		if (!this->eng_list.NeedRebuild()) return;
