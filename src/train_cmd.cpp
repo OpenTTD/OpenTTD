@@ -53,6 +53,7 @@ static void CheckNextTrainTile(Train *v);
 static const uint8_t _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
 static const uint8_t _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
 
+/** @copydoc IsValidImageIndex */
 template <>
 bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
 {

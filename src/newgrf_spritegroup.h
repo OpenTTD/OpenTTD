@@ -46,6 +46,10 @@ extern SpriteGroupPool _spritegroup_pool;
 /** Common wrapper for all the different sprite group types. */
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
+	/**
+	 * Create the SpriteGroup.
+	 * @param index Index of the sprite group within the pool.
+	 */
 	SpriteGroup(SpriteGroupID index) : SpriteGroupPool::PoolItem<&_spritegroup_pool>(index) {}
 	/**
 	 * Resolves a callback or rerandomisation callback to a NewGRF.
@@ -69,6 +73,10 @@ public:
  */
 template <class T>
 struct SpecializedSpriteGroup : public SpriteGroup {
+	/**
+	 * Create the SpecializedSpriteGroup.
+	 * @param index Index of the sprite group within the pool.
+	 */
 	inline SpecializedSpriteGroup(SpriteGroupID index) : SpriteGroup(index) {}
 
 	/**
@@ -86,6 +94,10 @@ struct SpecializedSpriteGroup : public SpriteGroup {
 
 /** 'Real' sprite groups contain a list of other result or callback sprite groups. */
 struct RealSpriteGroup : SpecializedSpriteGroup<RealSpriteGroup> {
+	/**
+	 * Create the RealSpriteGroup.
+	 * @param index Index of the sprite group within the pool.
+	 */
 	RealSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<RealSpriteGroup>(index) {}
 
 	/* Loaded = in motion, loading = not moving

@@ -393,6 +393,10 @@ GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
 	return *this->extra_cfg;
 }
 
+/**
+ * Checks whether this set has configuration options.
+ * @return \c true iff there are parameters for this graphics set.
+ */
 bool GraphicsSet::IsConfigurable() const
 {
 	const GRFConfig &cfg = this->GetOrCreateExtraConfig();
@@ -474,6 +478,7 @@ template <>
 	return _graphics_file_names;
 }
 
+/** @copydoc BaseMedia::DetermineBestSet */
 template <>
 /* static */ bool BaseMedia<GraphicsSet>::DetermineBestSet()
 {
@@ -507,6 +512,7 @@ template <>
 	return BaseMedia<GraphicsSet>::used_set != nullptr;
 }
 
+/** @copydoc BaseMedia::GetExtension */
 template <>
 /* static */ std::string_view BaseMedia<GraphicsSet>::GetExtension()
 {

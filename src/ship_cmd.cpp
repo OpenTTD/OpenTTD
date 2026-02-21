@@ -66,6 +66,7 @@ WaterClass GetEffectiveWaterClass(TileIndex tile)
 
 static const uint16_t _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
+/** @copydoc IsValidImageIndex */
 template <>
 bool IsValidImageIndex<VEH_SHIP>(uint8_t image_index)
 {
