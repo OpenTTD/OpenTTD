@@ -220,11 +220,6 @@ void Town::InitializeLayout(TownLayout layout)
 	return Town::Get(index);
 }
 
-void Town::FillCachedName() const
-{
-	this->cached_name = GetTownName(this);
-}
-
 /**
  * Get the cost for removing this house.
  * @return The cost adjusted for inflation, etc.
@@ -235,7 +230,7 @@ Money HouseSpec::GetRemovalCost() const
 }
 
 static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes);
-static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize size, bool city, TownLayout layout);
+static Town *CreateRandomTown(uint attempts, std::string town_name, TownSize size, bool city, TownLayout layout);
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
@@ -2002,13 +1997,13 @@ static void UpdateTownGrowth(Town *t);
  *
  * @param t The town.
  * @param tile Where to put it.
- * @param townnameparts The town name.
+ * @param name The town name.
  * @param size The preset size of the town.
  * @param city Should we create a city?
  * @param layout The road layout of the town.
  * @param manual Was the town placed manually?
  */
-static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSize size, bool city, TownLayout layout, bool manual)
+static void DoCreateTown(Town *t, TileIndex tile, std::string name, TownSize size, bool city, TownLayout layout, bool manual)
 {
 	AutoRestoreBackup backup(_generating_town, true);
 
@@ -2051,12 +2046,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 	t->exclusive_counter = 0;
 	t->statues = {};
 
-	{
-		TownNameParams tnp(_settings_game.game_creation.town_name);
-		t->townnamegrfid = tnp.grfid;
-		t->townnametype = tnp.type;
-	}
-	t->townnameparts = townnameparts;
+	t->name = name;
 
 	t->InitializeLayout(layout);
 
@@ -2165,11 +2155,10 @@ static bool IsUniqueTownName(const std::string &name)
  * @param city Should we build a city?
  * @param layout The town road layout (@see TownLayout).
  * @param random_location Should we use a random location? (randomize \c tile )
- * @param townnameparts Town name parts.
  * @param text Custom name for the town. If empty, the town name parts will be used.
  * @return The cost of this operation or an error.
  */
-std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text)
+std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, const std::string &text)
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
@@ -2189,13 +2178,16 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 		return { CMD_ERROR, 0, TownID::Invalid() };
 	}
 
+	std::string found_town_name;
+
 	if (text.empty()) {
 		/* If supplied name is empty, townnameparts has to generate unique automatic name */
-		if (!VerifyTownName(townnameparts, &par)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), 0, TownID::Invalid() };
+		if (!GenerateTownName(_random, &found_town_name)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), 0, TownID::Invalid() };
 	} else {
 		/* If name is not empty, it has to be unique custom name */
 		if (Utf8StringLength(text) >= MAX_LENGTH_TOWN_NAME_CHARS) return { CMD_ERROR, 0, TownID::Invalid() };
 		if (!IsUniqueTownName(text)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), 0, TownID::Invalid() };
+		found_town_name = text;
 	}
 
 	/* Allocate town struct */
@@ -2226,10 +2218,10 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 		UpdateNearestTownForRoadTiles(true);
 		Town *t;
 		if (random_location) {
-			t = CreateRandomTown(20, townnameparts, size, city, layout);
+			t = CreateRandomTown(20, found_town_name, size, city, layout);
 		} else {
 			t = Town::Create(tile);
-			DoCreateTown(t, tile, townnameparts, size, city, layout, true);
+			DoCreateTown(t, tile, found_town_name, size, city, layout, true);
 		}
 
 		UpdateNearestTownForRoadTiles(false);
@@ -2352,13 +2344,13 @@ HouseZones GetClimateMaskForLandscape()
 /**
  * Create a random town somewhere in the world.
  * @param attempts How many times should we try?
- * @param townnameparts The name of the town.
+ * @param town_name The name of the town.
  * @param size The size preset of the town.
  * @param city Should we build a city?
  * @param layout The road layout to build.
  * @return The town object, or nullptr if we failed to create a town anywhere.
  */
-static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize size, bool city, TownLayout layout)
+static Town *CreateRandomTown(uint attempts, std::string town_name, TownSize size, bool city, TownLayout layout)
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for Commands::DeleteTown
 
@@ -2378,7 +2370,7 @@ static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize si
 		/* Allocate a town struct */
 		Town *t = Town::Create(tile);
 
-		DoCreateTown(t, tile, townnameparts, size, city, layout, false);
+		DoCreateTown(t, tile, town_name, size, city, layout, false);
 
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
@@ -2433,8 +2425,8 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 	}
 
 	total = Clamp<uint>(total, 1, TownPool::MAX_SIZE);
-	uint32_t townnameparts;
-	TownNames town_names;
+	std::string town_name;
+	TownNames town_names; // todo: for generating 1,000s of towns, best to keep a list of known names?? is Town::Iterate fast enough
 
 	SetGeneratingWorldProgress(GWP_TOWN, total);
 
@@ -2454,9 +2446,9 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 		bool city = (_settings_game.economy.larger_towns != 0 && ((city_random_offset + current_number) % _settings_game.economy.larger_towns) == 0);
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* Get a unique name for the town. */
-		if (!GenerateTownName(_random, &townnameparts, &town_names)) continue;
+		if (!GenerateTownName(_random, &town_name)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != nullptr) current_number++; // If creation was successful, raise a flag.
+		if (CreateRandomTown(20, town_name, TSZ_RANDOM, city, layout) != nullptr) current_number++; // If creation was successful, raise a flag.
 	} while (--total);
 
 	town_names.clear();
@@ -2468,8 +2460,8 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 
 	/* If current_number is still zero at this point, it means that not a single town has been created.
 	 * So give it a last try, but now more aggressive */
-	if (GenerateTownName(_random, &townnameparts) &&
-			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != nullptr) {
+	if (GenerateTownName(_random, &town_name) &&
+			CreateRandomTown(10000, town_name, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != nullptr) {
 		return true;
 	}
 

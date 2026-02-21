@@ -21,7 +21,6 @@
 #include "../debug.h"
 #include "../depot_base.h"
 #include "../timer/timer_game_calendar.h"
-#include "../timer/timer_game_calendar.h"
 #include "../vehicle_func.h"
 #include "../effectvehicle_base.h"
 #include "../engine_func.h"
@@ -29,13 +28,12 @@
 #include "../disaster_vehicle.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
-#include "../timer/timer_game_calendar.h"
 #include "saveload_internal.h"
 #include "oldloader.h"
 
 #include "table/strings.h"
 #include "../table/engines.h"
-#include "../table/townname.h"
+#include "../table/townname_original.h"
 
 #include "../safeguards.h"
 

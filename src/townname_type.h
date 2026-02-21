@@ -13,6 +13,7 @@
 #include "newgrf_townname.h"
 #include "town_type.h"
 #include "string_type.h"
+#include "strings_internal.h"
 
 typedef std::set<std::string> TownNames;
 
@@ -22,7 +23,8 @@ typedef std::set<std::string> TownNames;
  */
 struct TownNameParams {
 	uint32_t grfid; ///< newgrf ID (0 if not used)
-	uint16_t type;  ///< town name style
+	uint16_t type; ///< town name style
+	bool use_original_generator; ///< flag to maintain gamesave load compatibility
 
 	/**
 	 * Initializes this struct from language ID
@@ -33,9 +35,18 @@ struct TownNameParams {
 		bool grf = town_name >= BUILTIN_TOWNNAME_GENERATOR_COUNT;
 		this->grfid = grf ? GetGRFTownNameId(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : 0;
 		this->type = grf ? GetGRFTownNameType(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : SPECSTR_TOWNNAME_START + town_name;
+		this->use_original_generator = false;
 	}
 
 	TownNameParams(const Town *t);
 };
+
+
+/**
+ * Type for all town name generator functions.
+ * @param builder The builder to write the name to.
+ * @param seed The seed of the town name.
+ */
+typedef void TownNameGenerator(StringBuilder &builder, uint32_t seed);
 
 #endif /* TOWNNAME_TYPE_H */

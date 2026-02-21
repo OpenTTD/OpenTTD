@@ -1183,12 +1183,13 @@ public:
 
 	void RandomTownName()
 	{
-		this->townnamevalid = GenerateTownName(_interactive_random, &this->townnameparts);
+		std::string random_name;
+		this->townnamevalid = GenerateTownName(_interactive_random, &random_name);
 
-		if (!this->townnamevalid) {
-			this->townname_editbox.text.DeleteAll();
+		if (this->townnamevalid) {
+			this->townname_editbox.text.Assign(random_name);
 		} else {
-			this->townname_editbox.text.Assign(GetTownName(&this->params, this->townnameparts));
+			this->townname_editbox.text.DeleteAll();
 		}
 		UpdateOSKOriginalText(this, WID_TF_TOWN_NAME_EDITBOX);
 
@@ -1222,17 +1223,9 @@ public:
 	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, Tcallback cc)
 	{
 		std::string name;
+		name = this->townname_editbox.text.GetText();
 
-		if (!this->townnamevalid) {
-			name = this->townname_editbox.text.GetText();
-		} else {
-			/* If user changed the name, send it */
-			std::string original_name = GetTownName(&this->params, this->townnameparts);
-			if (original_name != this->townname_editbox.text.GetText()) name = this->townname_editbox.text.GetText();
-		}
-
-		bool success = Command<Commands::FoundTown>::Post(errstr, cc,
-				tile, this->town_size, this->city, this->town_layout, random, townnameparts, name);
+		bool success = Command<Commands::FoundTown>::Post(errstr, cc, tile, this->town_size, this->city, this->town_layout, random, name);
 
 		/* Rerandomise name, if success and no cost-estimation. */
 		if (success && !_shift_pressed) this->RandomTownName();

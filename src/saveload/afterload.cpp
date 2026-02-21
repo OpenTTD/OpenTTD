@@ -44,6 +44,7 @@
 #include "../script/script_gui.h"
 #include "../game/game.hpp"
 #include "../town.h"
+#include "../townname_func.h"
 #include "../economy_base.h"
 #include "../animated_tile_map.h"
 #include "../animated_tile_func.h"
@@ -675,12 +676,25 @@ bool AfterLoadGame()
 			/* generating new name would be too much work for little effect, use the station name fallback */
 			if (!st->name.empty()) st->string_id = STR_SV_STNAME_FALLBACK;
 		}
+	}
 
+	/* Town names, translate old custom names and store actual value not generation routines so all names, generated and custom are available in Town.name */
+	if (IsSavegameVersionBefore(SLV_STORE_ALL_TOWN_NAMES)) {
 		for (Town *t : Town::Iterate()) {
-			t->name = CopyFromOldName(t->townnametype);
-			if (!t->name.empty()) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
+
+			if (IsSavegameVersionBefore(SLV_84)) {
+				t->name = CopyFromOldName(t->townnametype);
+				if (!t->name.empty()) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
+			}
+
+			if (IsSavegameVersionBefore(SLV_STORE_ALL_TOWN_NAMES) && t->name.empty()) {
+				TownNameParams param(t);
+				param.use_original_generator = true;
+				t->name = GetGeneratorTownName(&param,t->townnameparts);
+			}
 		}
 	}
+
 
 	/* From this point the old names array is cleared. */
 	ResetOldNames();

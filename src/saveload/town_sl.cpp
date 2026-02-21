@@ -255,10 +255,10 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
 	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 SLV_6, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, townnamegrfid,         SLE_UINT32, SLV_66, SL_MAX_VERSION),
-	    SLE_VAR(Town, townnametype,          SLE_UINT16),
-	    SLE_VAR(Town, townnameparts,         SLE_UINT32),
-	SLE_CONDSSTR(Town, name,                 SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
+	 SLE_CONDVAR(Town, townnamegrfid,        SLE_UINT32,                  SLV_66,         SLV_STORE_ALL_TOWN_NAMES),
+	 SLE_CONDVAR(Town, townnametype,         SLE_UINT16,                  SL_MIN_VERSION, SLV_STORE_ALL_TOWN_NAMES),
+	 SLE_CONDVAR(Town, townnameparts,        SLE_UINT32,                  SL_MIN_VERSION, SLV_STORE_ALL_TOWN_NAMES),
+	SLE_CONDSSTR(Town, name,                 SLE_STR | SLF_ALLOW_CONTROL, SLV_84,         SL_MAX_VERSION),
 
 	    SLE_VAR(Town, flags,                 SLE_UINT8),
 	SLE_CONDVAR(Town, statues,               SLE_FILE_U8  | SLE_VAR_U16, SL_MIN_VERSION, SLV_104),
@@ -365,8 +365,10 @@ struct CITYChunkHandler : ChunkHandler {
 				t->valid_history = 1U << LAST_MONTH;
 			}
 
-			if (t->townnamegrfid == 0 && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && GetStringTab(t->townnametype) != TEXT_TAB_OLD_CUSTOM) {
-				SlErrorCorrupt("Invalid town name generator");
+			if (IsSavegameVersionBefore(SLV_STORE_ALL_TOWN_NAMES)) {
+				if (t->townnamegrfid == 0 && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && GetStringTab(t->townnametype) != TEXT_TAB_OLD_CUSTOM) {
+					SlErrorCorrupt("Invalid town name generator");
+				}
 			}
 		}
 	}

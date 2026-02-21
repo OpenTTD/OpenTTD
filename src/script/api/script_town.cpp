@@ -303,18 +303,20 @@
 		layout = (RoadLayout) (uint8_t)_settings_game.economy.town_layout;
 	}
 
-	std::string text;
+	std::string found_town_name;
+
 	if (name != nullptr) {
-		text = name->GetDecodedText();
-		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
-	}
-	uint32_t townnameparts;
-	if (!GenerateTownName(ScriptObject::GetRandomizer(), &townnameparts)) {
-		ScriptObject::SetLastError(ScriptError::ERR_NAME_IS_NOT_UNIQUE);
-		return false;
+		found_town_name = name->GetDecodedText();
+		EnforcePreconditionCustomError(false, Utf8StringLength(found_town_name) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG); /* slight duplication of VerifyTownName logic but error messages more accurate this way */
+		EnforcePreconditionCustomError(false, VerifyTownName(found_town_name), ScriptError::ERR_NAME_IS_NOT_UNIQUE);
+	} else {
+		if (!GenerateTownName(ScriptObject::GetRandomizer(), &found_town_name)) {
+			ScriptObject::SetLastError(ScriptError::ERR_NAME_IS_NOT_UNIQUE);
+			return false;
+		}
 	}
 
-	return ScriptObject::Command<Commands::FoundTown>::Do(tile, (::TownSize)size, city, (::TownLayout)layout, false, townnameparts, text);
+	return ScriptObject::Command<Commands::FoundTown>::Do(tile, (::TownSize)size, city, (::TownLayout)layout, false, found_town_name);
 }
 
 /* static */ ScriptTown::TownRating ScriptTown::GetRating(TownID town_id, ScriptCompany::CompanyID company_id)

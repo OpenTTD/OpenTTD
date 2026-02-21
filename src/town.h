@@ -184,9 +184,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	inline const std::string &GetCachedName() const
 	{
-		if (!this->name.empty()) return this->name;
-		if (this->cached_name.empty()) this->FillCachedName();
-		return this->cached_name;
+		return this->name;
 	}
 
 	static inline Town *GetByTile(TileIndex tile)

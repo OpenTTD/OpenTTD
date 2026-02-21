@@ -530,6 +530,8 @@ add_files(
     town_map.h
     town_type.h
     townname.cpp
+    townname_original.cpp
+    townname_extended.cpp
     townname_func.h
     townname_type.h
     track_func.h

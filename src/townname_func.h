@@ -13,9 +13,9 @@
 #include "core/random_func.hpp"
 #include "townname_type.h"
 
-std::string GetTownName(const TownNameParams *par, uint32_t townnameparts);
-std::string GetTownName(const Town *t);
-bool VerifyTownName(uint32_t r, const TownNameParams *par, TownNames *town_names = nullptr);
-bool GenerateTownName(Randomizer &randomizer, uint32_t *townnameparts, TownNames *town_names = nullptr);
+std::string GetGeneratorTownName(const TownNameParams *par, uint32_t townnameparts);
+std::string GetGeneratorTownName(const Town *t);
+bool VerifyTownName(std::string proposed_name);
+bool GenerateTownName(Randomizer &randomizer, std::string *town_name);
 
 #endif /* TOWNNAME_FUNC_H */

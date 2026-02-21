@@ -347,7 +347,11 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 		case TEXT_TAB_TOWN:
 			if (IsInsideMM(string, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && !game_script) {
 				try {
-					GenerateTownNameString(builder, string - SPECSTR_TOWNNAME_START, args.GetNextParameter<uint32_t>());
+					bool use_original_generator;
+					use_original_generator = *std::get_if<uint64_t>(&args.GetParam((size_t)1));
+					uint32_t randseed;
+					randseed = *std::get_if<uint64_t>(&args.GetParam((size_t)0));
+					GenerateTownNameString(builder, string - SPECSTR_TOWNNAME_START, randseed, use_original_generator);
 				} catch (const std::runtime_error &e) {
 					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
 					builder += "(invalid string parameter)";
@@ -1784,11 +1788,11 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					if (use_cache) { // Use cached version if first call
 						AutoRestoreBackup cache_backup(use_cache, false);
 						builder += t->GetCachedName();
-					} else if (!t->name.empty()) {
+					} else if (!t->name.empty()) { // these aren't reached??
 						auto tmp_params = MakeParameters(t->name);
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
-						GetTownName(builder, t);
+						GetGeneratorTownName(builder, t);
 					}
 					break;
 				}
@@ -2008,7 +2012,7 @@ static bool GetSpecialNameString(StringBuilder &builder, StringID string, String
 
 	/* TownName Transport company names, with the appropriate town name. */
 	if (IsInsideMM(string, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_END)) {
-		GenerateTownNameString(builder, string - SPECSTR_COMPANY_NAME_START, args.GetNextParameter<uint32_t>());
+		GenerateTownNameString(builder, string - SPECSTR_COMPANY_NAME_START, args.GetNextParameter<uint32_t>(), true);
 		builder += " Transport";
 		return true;
 	}

@@ -461,7 +461,7 @@ void LoadTownData()
 		/* Try founding on the target tile, and if that doesn't work, find the nearest suitable tile up to 16 tiles away.
 		 * The target might be on water, blocked somehow, or on a steep slope that can't be terraformed by the founding command. */
 		for (auto tile : SpiralTileSequence(target_tile, 16, 0, 0)) {
-			std::tuple<CommandCost, Money, TownID> result = Command<Commands::FoundTown>::Do(DoCommandFlag::Execute, tile, TSZ_SMALL, is_city, _settings_game.economy.town_layout, false, 0, name);
+			std::tuple<CommandCost, Money, TownID> result = Command<Commands::FoundTown>::Do(DoCommandFlag::Execute, tile, TSZ_SMALL, is_city, _settings_game.economy.town_layout, false, name);
 
 			town_id = std::get<TownID>(result);
 

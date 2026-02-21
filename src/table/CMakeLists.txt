@@ -34,7 +34,8 @@ add_files(
     strgen_tables.h
     string_colours.h
     town_land.h
-    townname.h
+    townname_original.h
+    townname_extended.h
     track_data.h
     track_land.h
     train_sprites.h
