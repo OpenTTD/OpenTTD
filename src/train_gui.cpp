@@ -328,7 +328,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		}
 
 		num = max_cargo.GetCount();
-		num++; // needs one more because first line is description string
+		num += 2; // needs two more because the first line is the description string and the last is the feeder share
 	} else {
 		for (const Train *v = Train::Get(veh_id); v != nullptr; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);
