@@ -51,7 +51,8 @@ struct BaseSet {
 	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseSet() = default;
 
-	typedef std::unordered_map<std::string, std::string, StringHash, std::equal_to<>> TranslatedStrings;
+	/** Mapping of translations: language -> string. */
+	using TranslatedStrings = std::unordered_map<std::string, std::string, StringHash, std::equal_to<>>;
 
 	/** Number of files in this set */
 	static constexpr size_t NUM_FILES = BaseSetTraits<T>::num_files;
@@ -96,6 +97,11 @@ struct BaseSet {
 	const IniItem *GetMandatoryItem(std::string_view full_filename, const IniGroup &group, std::string_view name) const;
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
+
+	/**
+	 * Copy settings from the given set into this set when they are compatible.
+	 * @param src The location to copy settings from.
+	 */
 	void CopyCompatibleConfig([[maybe_unused]] const T &src) {}
 
 	/**

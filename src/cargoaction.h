@@ -24,6 +24,11 @@ protected:
 	uint Preprocess(CargoPacket *cp);
 	bool Postprocess(CargoPacket *cp, uint remove);
 public:
+	/**
+	 * Create the removal.
+	 * @param source The source of the cargo.
+	 * @param max_move The maximum amount of cargo to be removed.
+	 */
 	CargoRemoval(Tsource *source, uint max_move) : source(source), max_move(max_move) {}
 
 	/**
@@ -42,6 +47,14 @@ protected:
 	CargoPayment *payment; ///< Payment object where payments will be registered.
 	CargoType cargo; ///< The cargo type of the cargo.
 public:
+	/**
+	 * Create the delivery.
+	 * @param source The source of the cargo.
+	 * @param max_move The maximum amount of cargo to be moved.
+	 * @param cargo The type of cargo.
+	 * @param payment The payment for the delivery.
+	 * @param current_tile The tile the data is being delivered from.
+	 */
 	CargoDelivery(VehicleCargoList *source, uint max_move, CargoType cargo, CargoPayment *payment, TileIndex current_tile) :
 			CargoRemoval<VehicleCargoList>(source, max_move), current_tile(current_tile), payment(payment), cargo(cargo) {}
 	bool operator()(CargoPacket *cp);
@@ -60,6 +73,12 @@ protected:
 	uint max_move;      ///< Maximum amount of cargo to be moved with this action.
 	CargoPacket *Preprocess(CargoPacket *cp);
 public:
+	/**
+	 * Create the movement.
+	 * @param source The source of the cargo.
+	 * @param destination The destination of the cargo.
+	 * @param max_move The maximum amount of cargo to be moved.
+	 */
 	CargoMovement(Tsource *source, Tdest *destination, uint max_move) : source(source), destination(destination), max_move(max_move) {}
 
 	/**
@@ -120,10 +139,19 @@ public:
 template <class Tlist>
 class CargoReroute : public CargoMovement<Tlist, Tlist> {
 protected:
-	StationID avoid;
-	StationID avoid2;
-	const GoodsEntry *ge;
+	StationID avoid; ///< First station to avoid during rerouting.
+	StationID avoid2; ///< Second station to avoid during rerouting, could be StationID::Invalid().
+	const GoodsEntry *ge; ///< Goods that are to be rerouted.
 public:
+	/**
+	 * Create the movement.
+	 * @param source The source of the cargo.
+	 * @param dest The destination of the cargo.
+	 * @param max_move The maximum amount of cargo to be moved.
+	 * @param avoid First station to avoid.
+	 * @param avoid2 Optional second station to avoid (use StationID::Invalid()).
+	 * @param ge The goods to reroute.
+	 */
 	CargoReroute(Tlist *source, Tlist *dest, uint max_move, StationID avoid, StationID avoid2, const GoodsEntry *ge) :
 			CargoMovement<Tlist, Tlist>(source, dest, max_move), avoid(avoid), avoid2(avoid2), ge(ge) {}
 };

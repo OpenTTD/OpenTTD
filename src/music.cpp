@@ -84,12 +84,14 @@ template <>
 	return _music_file_names;
 }
 
+/** @copydoc BaseMedia::GetExtension */
 template <>
 /* static */ std::string_view BaseMedia<MusicSet>::GetExtension()
 {
 	return ".obm"; // OpenTTD Base Music
 }
 
+/** @copydoc BaseMedia::DetermineBestSet */
 template <>
 /* static */ bool BaseMedia<MusicSet>::DetermineBestSet()
 {

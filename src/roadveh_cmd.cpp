@@ -65,6 +65,7 @@ static const uint16_t _roadveh_full_adder[] = {
 };
 static_assert(lengthof(_roadveh_images) == lengthof(_roadveh_full_adder));
 
+/** @copydoc IsValidImageIndex */
 template <>
 bool IsValidImageIndex<VEH_ROAD>(uint8_t image_index)
 {

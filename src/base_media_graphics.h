@@ -31,10 +31,11 @@ enum BlitterType : uint8_t {
 
 struct GRFConfig;
 
+/** Instantiation of BaseSetTraits for a GraphicSet. */
 template <> struct BaseSetTraits<struct GraphicsSet> {
-	static constexpr size_t num_files = MAX_GFT;
-	static constexpr bool search_in_tars = true;
-	static constexpr std::string_view set_type = "graphics";
+	static constexpr size_t num_files = MAX_GFT; ///< Number of files in a graphics set.
+	static constexpr bool search_in_tars = true; ///< Graphics can be in a tar file.
+	static constexpr std::string_view set_type = "graphics"; ///< The type of set.
 };
 
 /** All data of a graphics set. */
