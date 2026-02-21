@@ -31,6 +31,8 @@ def check_descriptions(files):
             continue
         if path.find("3rdparty") != -1 or path.find("lang") != -1:
             continue
+        if not os.path.isfile(path):
+            continue
         name = path[path.rfind("/") + 1 :]
         while True:
             extension = name[name.rfind('.') + 1 :]
