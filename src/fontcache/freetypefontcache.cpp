@@ -213,6 +213,7 @@ class FreeTypeFontCacheFactory : public FontCacheFactory {
 public:
 	FreeTypeFontCacheFactory() : FontCacheFactory("freetype", "FreeType font provider") {}
 
+	/** Close the freetype library. */
 	~FreeTypeFontCacheFactory() override
 	{
 		FT_Done_FreeType(_ft_library);

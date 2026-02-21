@@ -237,6 +237,7 @@ public:
 		ProviderManager<FontCacheFactory>::Register(*this);
 	}
 
+	/** Unregister this factory. */
 	~FontCacheFactory() override
 	{
 		ProviderManager<FontCacheFactory>::Unregister(*this);

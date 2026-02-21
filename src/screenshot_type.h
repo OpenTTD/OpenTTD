@@ -31,6 +31,7 @@ public:
 		ProviderManager<ScreenshotProvider>::Register(*this);
 	}
 
+	/** Unregister ourselves from the screenshot providers. */
 	~ScreenshotProvider() override
 	{
 		ProviderManager<ScreenshotProvider>::Unregister(*this);

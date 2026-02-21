@@ -1130,6 +1130,7 @@ MidiFile::MidiFile()
 	RegisterConsoleMidiCommands();
 }
 
+/** Remove ourselves from the _midifile_instance if needed. */
 MidiFile::~MidiFile()
 {
 	if (_midifile_instance == this) {

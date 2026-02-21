@@ -143,6 +143,7 @@ const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx)
 	return &_industry_tile_specs[gfx];
 }
 
+/** Remove any reference to this industry from the game. */
 Industry::~Industry()
 {
 	if (CleaningPool()) return;

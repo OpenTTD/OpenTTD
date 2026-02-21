@@ -160,6 +160,7 @@ public:
 		if (this->allocation_limit == 0) this->allocation_limit = SAFE_LIMIT; // in case the setting is somehow zero
 	}
 
+	/** Ensure the allocations have already been released. */
 	~ScriptAllocator()
 	{
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
@@ -735,6 +736,7 @@ bool Squirrel::LoadScript(const std::string &script)
 	return LoadScript(this->vm, script);
 }
 
+/** Clean up the Squirrel virtual machine state. */
 Squirrel::~Squirrel()
 {
 	this->Uninitialize();

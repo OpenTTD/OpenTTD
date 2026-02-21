@@ -67,6 +67,7 @@ public:
 		_new_http_callbacks.push_back(&this->callback);
 	}
 
+	/** Remove ourselves from the callback list. */
 	~NetworkHTTPRequest()
 	{
 		std::lock_guard<std::mutex> lock(_http_callback_mutex);

@@ -449,6 +449,7 @@ public:
 		this->SortVehicleList();
 	}
 
+	/** Save the last sorting state. */
 	~VehicleGroupWindow()
 	{
 		*this->sorting = this->vehgroups.GetListing();

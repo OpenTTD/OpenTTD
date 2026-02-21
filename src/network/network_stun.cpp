@@ -118,6 +118,7 @@ NetworkRecvStatus ClientNetworkStunSocketHandler::CloseConnection(bool error)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Stop the attempt to connect. */
 ClientNetworkStunSocketHandler::~ClientNetworkStunSocketHandler()
 {
 	if (this->connecter != nullptr) {

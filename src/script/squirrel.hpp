@@ -434,6 +434,7 @@ public:
 		_squirrel_allocator = engine != nullptr ? engine->allocator.get() : nullptr;
 	}
 
+	/** Restore the previous allocator. */
 	~ScriptAllocatorScope()
 	{
 		_squirrel_allocator = this->old_allocator;

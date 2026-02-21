@@ -79,7 +79,7 @@ Company::Company(CompanyID index, StringID name_1, bool is_ai) : CompanyPool::Po
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, CompanyID::Invalid());
 }
 
-/** Destructor. */
+/** Close the associated company windows. */
 Company::~Company()
 {
 	if (CleaningPool()) return;

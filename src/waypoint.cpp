@@ -42,6 +42,7 @@ TileArea Waypoint::GetTileArea(StationType type) const
 	}
 }
 
+/** Remove all references to this waypoint. */
 Waypoint::~Waypoint()
 {
 	if (CleaningPool()) return;

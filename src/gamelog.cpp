@@ -37,6 +37,7 @@ Gamelog::Gamelog()
 	this->current_action = nullptr;
 }
 
+/** Needs to be manually defined due to incomplete definition of GamelogInternalData in the header. */
 Gamelog::~Gamelog()
 {
 }

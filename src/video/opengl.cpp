@@ -1476,6 +1476,7 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 	assert(_glGetError() == GL_NO_ERROR);
 }
 
+/** Delete the textures we allocated. */
 OpenGLSprite::~OpenGLSprite()
 {
 	_glDeleteTextures(NUM_TEX, this->tex.data());

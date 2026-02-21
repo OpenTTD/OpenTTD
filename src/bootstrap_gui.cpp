@@ -304,6 +304,7 @@ public:
 		_network_content_client.Connect();
 	}
 
+	/** Remove us from the content client's callbacks. */
 	~BootstrapEmscripten() override
 	{
 		_network_content_client.RemoveCallback(this);

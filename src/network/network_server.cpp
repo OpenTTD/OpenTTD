@@ -80,7 +80,7 @@ struct PacketWriter : SaveFilter {
 	{
 	}
 
-	/** Make sure everything is cleaned up. */
+	/** Make sure everything is cleaned up under lock. */
 	~PacketWriter() override
 	{
 		std::unique_lock<std::mutex> lock(this->mutex);

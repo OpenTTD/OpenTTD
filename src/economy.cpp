@@ -1172,6 +1172,7 @@ CargoPayment::CargoPayment(CargoPaymentID index, Vehicle *front) :
 {
 }
 
+/** Execute the actual payment to the coffers of the company. */
 CargoPayment::~CargoPayment()
 {
 	if (CleaningPool()) return;

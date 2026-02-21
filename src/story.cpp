@@ -37,6 +37,7 @@ StoryPagePool _story_page_pool("StoryPage");
 INSTANTIATE_POOL_METHODS(StoryPageElement)
 INSTANTIATE_POOL_METHODS(StoryPage)
 
+/** Delete all of our StoryPageElements. */
 StoryPage::~StoryPage()
 {
 	if (CleaningPool()) return;

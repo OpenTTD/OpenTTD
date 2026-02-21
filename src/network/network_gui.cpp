@@ -465,6 +465,7 @@ public:
 		this->servers.ForceRebuild();
 	}
 
+	/** Save the last sorting state. */
 	~NetworkGameWindow() override
 	{
 		this->last_sorting = this->servers.GetListing();

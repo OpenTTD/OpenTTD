@@ -14,6 +14,7 @@
 
 #include "../../safeguards.h"
 
+/** Close the socket. */
 NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 {
 	this->CloseSocket();

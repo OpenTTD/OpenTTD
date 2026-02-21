@@ -99,6 +99,7 @@ public:
 
 	HTTPThreadSafeCallback(HTTPCallback *callback) : callback(callback) {}
 
+	/** Ensure our queues are emptied while holding a lock. */
 	~HTTPThreadSafeCallback()
 	{
 		std::lock_guard<std::mutex> lock(this->mutex);

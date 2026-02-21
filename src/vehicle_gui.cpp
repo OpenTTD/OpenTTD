@@ -1965,6 +1965,7 @@ public:
 		this->SortVehicleList();
 	}
 
+	/** Save the last sorting state. */
 	~VehicleListWindow() override
 	{
 		*this->sorting = this->vehgroups.GetListing();

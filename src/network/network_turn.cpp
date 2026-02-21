@@ -125,6 +125,7 @@ NetworkRecvStatus ClientNetworkTurnSocketHandler::CloseConnection(bool error)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Stop the attempt to connect. */
 ClientNetworkTurnSocketHandler::~ClientNetworkTurnSocketHandler()
 {
 	if (this->connecter != nullptr) {

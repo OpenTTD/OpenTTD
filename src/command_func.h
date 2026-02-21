@@ -57,7 +57,9 @@ static constexpr inline DoCommandFlags CommandFlagsToDCFlags(CommandFlags cmd_fl
 
 /** Helper class to keep track of command nesting level. */
 struct RecursiveCommandCounter {
+	/** Increment the recursion counter. */
 	RecursiveCommandCounter() noexcept { _counter++; }
+	/** Decrement the recursion counter. */
 	~RecursiveCommandCounter() noexcept { _counter--; }
 
 	/**

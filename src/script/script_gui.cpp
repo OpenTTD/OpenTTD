@@ -783,6 +783,7 @@ struct ScriptDebugWindow : public Window {
 		this->InvalidateData(-1);
 	}
 
+	/** Save the last sorting state. */
 	~ScriptDebugWindow() override
 	{
 		ScriptDebugWindow::initial_state = this->filter;

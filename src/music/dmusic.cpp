@@ -1189,7 +1189,7 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 	return std::nullopt;
 }
 
-
+/** Stop the playing of the music. */
 MusicDriver_DMusic::~MusicDriver_DMusic()
 {
 	this->Stop();

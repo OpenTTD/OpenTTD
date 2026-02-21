@@ -136,6 +136,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, std::string_view ini_key, int16_t
 	_window_descs->push_back(this);
 }
 
+/** Remove ourselves from the global list of window descs. */
 WindowDesc::~WindowDesc()
 {
 	_window_descs->erase(std::ranges::find(*_window_descs, this));

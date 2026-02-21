@@ -95,6 +95,7 @@ Win32FontCache::Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels) 
 	this->SetFontSize(pixels);
 }
 
+/** Release all the operating system objects. */
 Win32FontCache::~Win32FontCache()
 {
 	this->ClearFontCache();

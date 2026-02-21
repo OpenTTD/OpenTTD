@@ -213,11 +213,13 @@ public:
 	 * will make sure the buffer is unlocked no matter how the scope is exited.
 	 */
 	struct VideoBufferLocker {
+		/** Lock the video buffer. */
 		VideoBufferLocker()
 		{
 			this->unlock = VideoDriver::GetInstance()->LockVideoBuffer();
 		}
 
+		/** Release the video buffer. */
 		~VideoBufferLocker()
 		{
 			if (this->unlock) VideoDriver::GetInstance()->UnlockVideoBuffer();

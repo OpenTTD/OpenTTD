@@ -443,6 +443,7 @@ public:
 		this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->SetString(CompanyStationsWindow::sorter_names[this->stations.SortType()]);
 	}
 
+	/** Save the last sorting state. */
 	~CompanyStationsWindow() override
 	{
 		/* Save filter state. */
@@ -1088,6 +1089,7 @@ CargoDataEntry::CargoDataEntry(CargoType cargo) :
 	children(nullptr)
 {}
 
+/** Remove ourselves from our parent. */
 CargoDataEntry::~CargoDataEntry()
 {
 	this->Clear();
