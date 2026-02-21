@@ -38,7 +38,7 @@ class FileScanner {
 protected:
 	Subdirectory subdir{}; ///< The current sub directory we are searching through
 public:
-	/** Destruct the proper one... */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~FileScanner() = default;
 
 	uint Scan(std::string_view extension, Subdirectory sd, bool tars = true, bool recursive = true);

@@ -279,6 +279,7 @@ public:
 	static Path *invalid_path;
 
 	Path(NodeID n, bool source = false);
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~Path() = default;
 
 	/**

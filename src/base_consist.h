@@ -49,6 +49,7 @@ struct BaseConsist {
 
 	VehicleFlags vehicle_flags{}; ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseConsist() = default;
 
 	void CopyConsistPropertiesFrom(const BaseConsist *src);

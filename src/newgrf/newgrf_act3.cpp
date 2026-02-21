@@ -155,6 +155,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 
 /** Handler interface for mapping sprite groups to their respective feature specific specifications. */
 struct MapSpriteGroupHandler {
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~MapSpriteGroupHandler() = default;
 
 	/**

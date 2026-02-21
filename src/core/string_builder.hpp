@@ -20,6 +20,7 @@ public:
 	/** The type of the size of our strings. */
 	using size_type = std::string_view::size_type;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseStringBuilder() = default;
 
 	/**

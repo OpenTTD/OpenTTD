@@ -40,6 +40,7 @@
  */
 class NetworkEncryptionHandler {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkEncryptionHandler() = default;
 
 	/**
@@ -70,6 +71,7 @@ public:
  */
 class NetworkAuthenticationPasswordRequest {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationPasswordRequest() = default;
 
 	/**
@@ -109,6 +111,7 @@ public:
  */
 class NetworkAuthenticationPasswordProvider {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationPasswordProvider() = default;
 
 	/**
@@ -140,6 +143,7 @@ public:
  */
 class NetworkAuthenticationAuthorizedKeyHandler {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationAuthorizedKeyHandler() = default;
 
 	/**
@@ -190,6 +194,7 @@ using NetworkAuthenticationMethodMask = EnumBitSet<NetworkAuthenticationMethod, 
  */
 class NetworkAuthenticationHandler {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationHandler() = default;
 
 	/**

@@ -63,6 +63,7 @@ struct StringReader {
 	bool translation; ///< Are we reading a translation, implies !master. However, the base translation will have this false.
 
 	StringReader(StringData &data, const std::string &file, bool master, bool translation);
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~StringReader() = default;
 	void HandleString(std::string_view str);
 
@@ -100,7 +101,7 @@ struct HeaderWriter {
 	 */
 	virtual void Finalise(const StringData &data) = 0;
 
-	/** Especially destroy the subclasses. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~HeaderWriter() = default;
 
 	void WriteHeader(const StringData &data);
@@ -126,7 +127,7 @@ struct LanguageWriter {
 	 */
 	virtual void Finalise() = 0;
 
-	/** Especially destroy the subclasses. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~LanguageWriter() = default;
 
 	virtual void WriteLength(size_t length);

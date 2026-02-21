@@ -129,6 +129,7 @@ struct NewsTypeData {
 
 /** Container for any custom data that must be deleted after the news item has reached end-of-life. */
 struct NewsAllocatedData {
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NewsAllocatedData() = default;
 };
 

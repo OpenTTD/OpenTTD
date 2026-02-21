@@ -31,6 +31,7 @@ using GrfIDMapping = std::map<uint32_t, GRFPresence>;
 
 struct LoggedChange {
 	LoggedChange(GamelogChangeType type = GLCT_NONE) : ct(type) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~LoggedChange() = default;
 
 	/**

@@ -1337,6 +1337,7 @@ public:
 		this->height = d.height + WidgetDimensions::scaled.framerect.Vertical();
 		this->width = d.width + WidgetDimensions::scaled.framerect.Horizontal();
 	}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ButtonCommon() = default;
 
 	/**
@@ -1384,6 +1385,7 @@ class ButtonLine {
 public:
 	std::vector<std::unique_ptr<ButtonCommon>> buttons{}; ///< Buttons for this line.
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ButtonLine() = default;
 
 	/**

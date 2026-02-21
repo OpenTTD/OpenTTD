@@ -51,7 +51,7 @@ public:
 	/** Create a new unbound socket */
 	NetworkSocketHandler() = default;
 
-	/** Close the socket when destructing the socket handler */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkSocketHandler() = default;
 
 	/**

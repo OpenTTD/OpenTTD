@@ -55,6 +55,7 @@ protected:
 	virtual ResolverResult Resolve(ResolverObject &object) const = 0;
 
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SpriteGroup() = default;
 
 	uint32_t nfo_line = 0;
@@ -292,6 +293,7 @@ struct ScopeResolver {
 	ResolverObject &ro; ///< Surrounding resolver object.
 
 	ScopeResolver(ResolverObject &ro) : ro(ro) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ScopeResolver() = default;
 
 	virtual uint32_t GetRandomBits() const;
@@ -324,6 +326,7 @@ public:
 	{
 	}
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ResolverObject() = default;
 
 	ResolverResult DoResolve()

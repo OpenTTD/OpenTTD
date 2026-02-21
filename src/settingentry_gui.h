@@ -54,6 +54,7 @@ struct BaseSettingEntry {
 	uint8_t level; ///< Nesting level of this setting entry
 
 	BaseSettingEntry() : flags(), level(0) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseSettingEntry() = default;
 
 	virtual void Init(uint8_t level = 0);

@@ -44,6 +44,7 @@ typedef bool (ScriptAsyncModeProc)();
 class SimpleCountedObject {
 public:
 	SimpleCountedObject() : ref_count(0) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SimpleCountedObject() = default;
 
 	/** Increase the reference count by one. */

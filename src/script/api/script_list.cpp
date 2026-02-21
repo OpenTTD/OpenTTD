@@ -40,9 +40,7 @@ protected:
 	virtual void RetargetIterator() = 0;
 
 public:
-	/**
-	 * Virtual dtor, needed to mute warnings.
-	 */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ScriptListSorter() = default;
 
 	/**

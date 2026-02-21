@@ -39,6 +39,7 @@ struct PickerItem {
 class PickerCallbacks {
 public:
 	explicit PickerCallbacks(const std::string &ini_group);
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~PickerCallbacks();
 
 	/** @copydoc Window::Close */

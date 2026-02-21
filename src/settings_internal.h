@@ -81,6 +81,7 @@ concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, T
 struct SettingDesc {
 	SettingDesc(const SaveLoad &save, SettingFlags flags, bool startup) :
 		flags(flags), startup(startup), save(save) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SettingDesc() = default;
 
 	SettingFlags flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).

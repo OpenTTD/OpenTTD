@@ -483,6 +483,7 @@ struct ChunkHandler {
 
 	ChunkHandler(uint32_t id, ChunkType type) : id(id), type(type) {}
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ChunkHandler() = default;
 
 	/**
@@ -539,6 +540,7 @@ class SaveLoadHandler {
 public:
 	std::optional<std::vector<SaveLoad>> load_description; ///< Description derived from savegame being loaded.
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SaveLoadHandler() = default;
 
 	/**

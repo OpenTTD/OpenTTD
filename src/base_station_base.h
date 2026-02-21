@@ -93,6 +93,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 */
 	BaseStation(StationID index, TileIndex tile) : StationPool::PoolItem<&_station_pool>(index), xy(tile) {}
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseStation();
 
 	/**

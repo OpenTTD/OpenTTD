@@ -110,6 +110,7 @@ using FontMap = std::vector<std::pair<int, Font *>>;
  */
 class ParagraphLayouter {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ParagraphLayouter() = default;
 
 	/** Position of a glyph within a VisualRun. */
@@ -131,6 +132,7 @@ public:
 	/** Visual run contains data about the bit of text with the same font. */
 	class VisualRun {
 	public:
+		/** Ensure the destructor of the sub classes are called as well. */
 		virtual ~VisualRun() = default;
 
 		/**
@@ -173,6 +175,7 @@ public:
 	/** A single line worth of VisualRuns. */
 	class Line {
 	public:
+		/** Ensure the destructor of the sub classes are called as well. */
 		virtual ~Line() = default;
 
 		/**

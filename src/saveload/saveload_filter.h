@@ -23,7 +23,7 @@ struct LoadFilter {
 	{
 	}
 
-	/** Make sure the writers are properly closed. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~LoadFilter() = default;
 
 	/**
@@ -67,7 +67,7 @@ struct SaveFilter {
 	{
 	}
 
-	/** Make sure the writers are properly closed. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SaveFilter() = default;
 
 	/**

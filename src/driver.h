@@ -32,6 +32,7 @@ public:
 	 */
 	virtual void Stop() = 0;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~Driver() = default;
 
 	/** The type of driver */
@@ -106,6 +107,7 @@ private:
 protected:
 	DriverFactoryBase(Driver::Type type, int priority, std::string_view name, std::string_view description);
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~DriverFactoryBase();
 
 	/**

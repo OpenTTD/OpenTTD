@@ -30,6 +30,7 @@ public:
 	 */
 	static std::unique_ptr<StringIterator> Create();
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~StringIterator() = default;
 
 	/**

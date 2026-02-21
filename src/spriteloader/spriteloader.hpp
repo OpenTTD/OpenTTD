@@ -97,12 +97,14 @@ public:
 	 */
 	virtual ZoomLevels LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, SpriteCacheCtrlFlags control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp) = 0;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SpriteLoader() = default;
 };
 
 /** Interface for something that can allocate memory for a sprite. */
 class SpriteAllocator {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SpriteAllocator() = default;
 
 	/**
@@ -130,6 +132,7 @@ protected:
 class SpriteEncoder {
 public:
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SpriteEncoder() = default;
 
 	/**

@@ -108,6 +108,7 @@ struct PoolBase {
 		PoolBase::GetPools()->push_back(this);
 	}
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~PoolBase();
 
 	/**

@@ -27,6 +27,7 @@ public:
 	bool shaded; ///< Shaded item, affects text colour.
 
 	explicit DropDownListItem(int result, bool masked = false, bool shaded = false) : result(result), masked(masked), shaded(shaded) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~DropDownListItem() = default;
 
 	/**

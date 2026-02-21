@@ -115,6 +115,7 @@ protected:
 	}
 
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~TileIterator() = default;
 
 	/**

@@ -37,7 +37,7 @@ public:
 	}
 
 	/**
-	 * Delete the timer.
+	 * Unregister this timer.
 	 */
 	virtual ~BaseTimer()
 	{

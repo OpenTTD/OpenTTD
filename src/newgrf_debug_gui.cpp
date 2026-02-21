@@ -128,7 +128,7 @@ struct NIVariable {
 /** Helper class to wrap some functionality/queries in. */
 class NIHelper {
 public:
-	/** Silence a warning. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NIHelper() = default;
 
 	/**

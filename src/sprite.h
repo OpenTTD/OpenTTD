@@ -58,6 +58,7 @@ struct DrawTileSprites {
 	DrawTileSprites(PalSpriteID ground) : ground(ground) {}
 	DrawTileSprites() = default;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~DrawTileSprites() = default;
 
 	/**

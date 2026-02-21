@@ -136,6 +136,7 @@ using WidgetLookup = std::map<WidgetID, class NWidgetBase *>;
 class NWidgetBase {
 public:
 	NWidgetBase(WidgetType tp, WidgetID index = INVALID_WIDGET) : type(tp), index(index) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NWidgetBase() = default;
 
 	void ApplyAspectRatio();

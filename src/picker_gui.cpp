@@ -52,6 +52,7 @@ PickerCallbacks::PickerCallbacks(const std::string &ini_group) : ini_group(ini_g
 	GetPickerCallbacks().push_back(this);
 }
 
+/** Remove references to us. */
 PickerCallbacks::~PickerCallbacks()
 {
 	auto &callbacks = GetPickerCallbacks();

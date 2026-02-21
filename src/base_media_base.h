@@ -48,6 +48,7 @@ template <class T> struct BaseSetTraits;
  */
 template <class T>
 struct BaseSet {
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseSet() = default;
 
 	typedef std::unordered_map<std::string, std::string, StringHash, std::equal_to<>> TranslatedStrings;

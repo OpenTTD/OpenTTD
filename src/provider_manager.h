@@ -54,6 +54,7 @@ template <typename T>
 class BaseProvider {
 public:
 	constexpr BaseProvider(std::string_view name, std::string_view description) : name(name), description(description) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseProvider() = default;
 
 	inline std::string_view GetName() const { return this->name; }
