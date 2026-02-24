@@ -80,7 +80,7 @@ struct WaterRegionFollower : public CFollowTrackWater {};
 
 class YapfShipRegions;
 
-/* Types struct required for YAPF internals. */
+/** Types struct required for YAPF internals. */
 struct WaterRegionTypes {
 	using Tpf = YapfShipRegions;
 	using TrackFollower = WaterRegionFollower;

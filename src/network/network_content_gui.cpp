@@ -462,23 +462,23 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by tags/name. @copydoc GUIList::FilterFunction */
-	static bool TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TagNameFilter(const ContentInfo * const *item, ContentListFilterData &filter)
 	{
-		if ((*a)->state == ContentInfo::State::Selected || (*a)->state == ContentInfo::State::Autoselected) return true;
+		if ((*item)->state == ContentInfo::State::Selected || (*item)->state == ContentInfo::State::Autoselected) return true;
 
 		filter.string_filter.ResetState();
-		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag);
+		for (auto &tag : (*item)->tags) filter.string_filter.AddLine(tag);
 
-		filter.string_filter.AddLine((*a)->name);
+		filter.string_filter.AddLine((*item)->name);
 		return filter.string_filter.GetState();
 	}
 
 	/** Filter content by type, but still show content selected for download. @copydoc GUIList::FilterFunction */
-	static bool TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TypeOrSelectedFilter(const ContentInfo * const *item, ContentListFilterData &filter)
 	{
 		if (filter.types.None()) return true;
-		if (filter.types.Test((*a)->type)) return true;
-		return ((*a)->state == ContentInfo::State::Selected || (*a)->state == ContentInfo::State::Autoselected);
+		if (filter.types.Test((*item)->type)) return true;
+		return ((*item)->state == ContentInfo::State::Selected || (*item)->state == ContentInfo::State::Autoselected);
 	}
 
 	/** Filter the content list */

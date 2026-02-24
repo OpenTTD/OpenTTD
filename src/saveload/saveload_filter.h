@@ -47,6 +47,7 @@ struct LoadFilter {
  * Instantiator for a load filter.
  * @param chain The next filter in this chain.
  * @tparam T    The type of load filter to create.
+ * @return The created load filter.
  */
 template <typename T> std::shared_ptr<LoadFilter> CreateLoadFilter(std::shared_ptr<LoadFilter> chain)
 {
@@ -90,6 +91,7 @@ struct SaveFilter {
  * @param chain             The next filter in this chain.
  * @param compression_level The requested level of compression.
  * @tparam T                The type of save filter to create.
+ * @return The created save filter.
  */
 template <typename T> std::shared_ptr<SaveFilter> CreateSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level)
 {

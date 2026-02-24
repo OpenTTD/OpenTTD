@@ -1229,8 +1229,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Malvalida 
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} mankanta{P "" j}/difektita{P "" j} dosiero{P "" j})
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Ne eblis akiri liston de subtenataj distingivoj
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Plenekrana moduso fiaskis
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Ne eblis akiri liston de subtenataj distingivoj
+STR_ERROR_FULLSCREEN_FAILED                                     :Plenekrana moduso fiaskis
 
 # Custom currency window
 
@@ -1455,7 +1455,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Agordu maksimum
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(aŭtomata)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ne eblas ŝanĝi la mapan alteclimon al tiu ĉi valoro. Almenaŭ unu monto sur la mapo estas pli alta
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :Ne eblas ŝanĝi la mapan alteclimon al tiu ĉi valoro. Almenaŭ unu monto sur la mapo estas pli alta
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permesu terecigon sub konstruaĵoj, trakoj, ktp.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permesu terenŝangadon sub konstruaĵoj kaj trakoj sen forigi ilin
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Kvanto de ebena
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permesu pliajn similajn industriejojn en la sama urbo: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normale, urbo ne volas pli ol unu industriejo de ĉiu tipo. Kun tiu ĉi agordo, ĝi permesos plurajn industriejojn de la sama tipo en la sama urbo
 
-STR_CONFIG_SETTING_SIGNALSIDE                                   :Montru signaloj: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Montri signalilojn: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Elektu je kiu flanko de la reloj meti semaforojn
 ###length 3
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Maldekstre
@@ -1593,7 +1593,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permesu trairaj
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permesu konstrui trairajn strathaltejojn sur stratoj posedataj de urboj
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permesu konstrui trairajn strathaltejojn sur stratoj posedataj de konkurantoj
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas ŝanĝi ĉi tiujn agordon dum veturiloj ĉeestas
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Ne eblas ŝanĝi ĉi tiujn agordon, dum veturiloj ĉeestas
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktura bontenado: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kiam tiu ĉi agordo estas aktiva, infrastrukturo kaŭzas bontenadajn kostojn. La kosto kreskas super-proporcie laŭ la grandeco de la transportreto, kaj tial pli efikas al grandaj kompanioj ol al malgrandaj
@@ -1754,8 +1754,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dekstrume
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kiom alta fariĝos scenara mapo: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Almenaŭ unu kahelo ĉe la norda rando ne estas malplena
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Almenaŭ unu kahelo ĉe unu de la eĝoj ne estas akvo
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :Almenaŭ unu kahelo ĉe la norda rando ne estas malplena
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :Almenaŭ unu kahelo ĉe unu de la eĝoj ne estas akvo
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimuma stacia etendo: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimuma area sur kiu povas etendiĝi unu stacio. Atentu ke altaj valoroj malrapidigos la ludon
@@ -2077,7 +2077,7 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Elcento de prof
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Elcento de enspezo, kiu estas pagita por peraj etapoj de liveroj (kiuj uzas ordonojn "Transigo" aŭ liveras pasaĝerojn/ŝarĝon al ne-fina loko), uzata por pli da kontrolo sur enspezo
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Dum mustrenado, metu semaforojn je ĉiu: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Elektu la distancon, per kiu signaloj estos konstruitaj sur trako ĝis la sekvonta baro (signalo, kuniĝo), se signaloj estas konstruitaj por ŝovado
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Elektu la distancon, per kiu signaliloj estos konstruitaj sur trako ĝis la sekvonta baro (signalilo, kuniĝo), se signaliloj estas konstruitaj por ŝovado
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}a kahelo
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Dum trenado, tenu fiksitan distancon inter semaforoj: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Elektu kiel funkcias dismeto de semaforoj dum Stir+trenado. Se tiu ĉi agordo estas malaktiva, semaforoj estos metitaj ĉirkaŭ tuneloj aŭ pontoj por eviti longajn sekciojn sen semaforoj. Se tiu ĉi agordo estas aktiva, semaforoj estos metitaj je ĉiu N-a kahelo, por faciligi laŭliniigon de semaforoj sur paralelaj trakoj
@@ -2086,7 +2086,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aŭtomate konst
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Elektu la jaron ekde kiam uziĝos elektraj semaforoj por fervojaj trakoj. Antaŭ tiuj ĉi jaro uziĝos ne-elektraj semaforoj (kiuj havas ekzakte la saman funkcion, sed alian aspekton)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Iteraciu tra signaltipoj: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Elektu, inter kiuj tipoj de signaloj baskuli per Stir+klikado sur konstruita signalo dum uzado de signal-konstruilo
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Elektu, inter kiuj tipoj de signaliloj baskuli per Stir+klikado sur konstruita signalilo dum uzado de signalil-konstruilo
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Nur elektita grupo
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :ĉiuj videblaj
@@ -2298,33 +2298,33 @@ STR_CONFIG_SETTING_AI                                           :Konkurantoj
 STR_CONFIG_SETTING_AI_NPC                                       :Komputil-ludantoj
 STR_CONFIG_SETTING_NETWORK                                      :Reto
 
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata dorsflankante ĉe signaloj: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata dorsflankante ĉe signaliloj: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permesu al vagonaro turniĝi ĉe semaforo, se ĝi jam atendis dum longa tempo
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ŝanĝu agord-valoron
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Eraro en la agorda dosiero...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... eraro en matrico '{STRING}'
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... malvalida valoro '{STRING}' por '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... superfluaj signoj ĉe la vosto de la agordo '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoras la NewGRF-on '{STRING}': ĝi havas NewGRF-ID-duoblaĵon kun '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoras malvalidan NewGRF-on '{STRING}': {STRING}
+STR_CONFIG_ERROR                                                :Eraro en la agorda dosiero...
+STR_CONFIG_ERROR_ARRAY                                          :eraro en matrico '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :malvalida valoro '{STRING}' por '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :superfluaj signoj ĉe la fino de la agordo '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :ignoras la NewGRF-on '{STRING}': ĝi havas NewGRF-ID-duoblaĵon kun '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :ignoras malvalidan NewGRF-on '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ne troveblas
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :malsekura por statika uzo
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :malkongrua kun tiu ĉi versio de OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nekonata
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... la kompaktignivelo '{STRING}' estas malvalida
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ludokonserva formato '{STRING}' ne estas havebla. Reiras al '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoras Bazan Grafikaron '{STRING}': ne trovebla
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoras Bazan Sonaron '{STRING}': ne trovebla
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoras Bazan Muzikaron '{STRING}': ne trovebla
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :la kompaktigo-nivelo '{STRING}' estas malvalida
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :ludokonserva formato '{STRING}' ne estas havebla. Reiras al '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignoras bazan grafikaron '{STRING}': ne trovita
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignoras bazan sonaron '{STRING}': ne trovebla
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignoras bazan muzikaron '{STRING}': ne trovebla
 
 # Video initalization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eraro pri videaj agordoj...
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ne troveblis kongrua grafika procesoro. Malŝaltis aparataran plirapidigon
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... pelilo de grafikkarto kraŝis la ludon. Aparata akcelado malŝaltita
+STR_VIDEO_DRIVER_ERROR                                          :Eraro pri videaj agordoj...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :ne troveblis kongrua grafika procesoro. Aparata plirapidigo malŝaltita
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :pelilo de grafikkarto kraŝis la ludon. Aparata plirapidigo malŝaltita
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
@@ -2461,15 +2461,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simpla
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simpla elekto de vizaĝo
 STR_FACE_LOAD                                                   :{BLACK}Ŝargi
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Ŝargi favoratan vizaĝon.
-STR_FACE_LOAD_DONE                                              :{WHITE}Via favorata vizaĝo estis ŝargita de la agord-dosiero de OpenTTD..
+STR_FACE_LOAD_DONE                                              :Via favorata vizaĝo estis ŝargita de la agord-dosiero de OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Ludanta vizaĝkodo
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Rigardi kaj/aŭ elekti vizaĝkodon de kompania prezidanto
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Rigardi kaj/aŭ elekti prezidantan vizaĝkodon
-STR_FACE_FACECODE_SET                                           :{WHITE}Nova vizaĝo de prezidanto agordita.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Ne povas aktivigi ludantan vizaĝkodon - devas esti taŭga etikedo kaj nombro
+STR_FACE_FACECODE_SET                                           :Nova vizaĝo de prezidanto agordita
+STR_FACE_FACECODE_ERR                                           :Ne povas aktivigi vizaĝkodon de prezidanto - devas esti taŭga etikedo kaj nombro
 STR_FACE_SAVE                                                   :{BLACK}Konservi
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Konservi favoratan vizaĝon
-STR_FACE_SAVE_DONE                                              :{WHITE}Tiu ĉi vizaĝo estos konservita kiel via favorata en la agord-dosiero de OpenTTD.
+STR_FACE_SAVE_DONE                                              :Tiu ĉi vizaĝo estos konservita kiel via favorata en la agord-dosiero de OpenTTD
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Jes
@@ -2683,33 +2683,33 @@ STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tajpu tekston por retbabilado
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La konektoprovo al la servilo superis la tempolimon aŭ estis rifuzita
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ne povis konekti pro miso pri NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Retluda sinkronigado fiaskis
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdis konekton al retludo
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ne povis ŝarĝi konservitan ludon
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ne povis eki la servilon
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Okazis protokoleraro kaj la konekto estis fermita
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Via ludantonomo ne estis agordita. La nomo povas esti agordita ĉe la supro de la fenestro "Pluraj ludantoj"
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nomo de via servilo ne estis agordita. La nomo povas esti agordita ĉe la supro de la fenestro "Pluraj ludantoj"
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revidaĵo de la kliento ne kongruas kun la servila revidaĵo
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Malĝusta pasvorto
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Vi ne estas en la listo de permesitaj klientoj
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}La servilo plenas
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Oni forbaris vin de la servilo
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Oni forbatis vin el la ludo
-STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Kialo: {STRING}
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Vi ne rajtas filudi en ĉi tiu servilo
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Vi estis sendanta tro da komandojn al la servilo
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vi bezonis tro longan tempon por enigi la pasvorton
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Via komputilo estas tro malrapida por samtempigi kun la servilo
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Via komputilo bezonis tro longan tempon por elŝuti la mapon
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Via komputilo bezonis tro longan tempon por aliĝi al la servilo
-STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Via ludantnomo estas malvalida
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :Neniuj retaparatoj trovitaj
+STR_NETWORK_ERROR_NOCONNECTION                                  :La konektoprovo al la servilo superis la tempolimon aŭ estis rifuzita
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :Ne povis konekti pro nekongrueco de NewGRF-dosieroj
+STR_NETWORK_ERROR_DESYNC                                        :Retluda sinkronigado fiaskis
+STR_NETWORK_ERROR_LOSTCONNECTION                                :Konekto al retludo perdita
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :Ne povis ŝarĝi konservitan ludon
+STR_NETWORK_ERROR_SERVER_START                                  :Ne povis eki la servilon
+STR_NETWORK_ERROR_SERVER_ERROR                                  :Okazis protokoleraro kaj la konekto estis fermita
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Via ludantonomo ne estis agordita. La nomo povas esti agordita ĉe la supro de la fenestro "Pluraj ludantoj"
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Nomo de via servilo ne estis agordita. La nomo povas esti agordita ĉe la supro de la fenestro "Pluraj ludantoj"
+STR_NETWORK_ERROR_WRONG_REVISION                                :La revidaĵo de la kliento ne kongruas kun la servila revidaĵo
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Malĝusta pasvorto
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :Vi ne estas en la listo de permesitaj klientoj
+STR_NETWORK_ERROR_SERVER_FULL                                   :La servilo plenas
+STR_NETWORK_ERROR_SERVER_BANNED                                 :Oni forbaris vin de la servilo
+STR_NETWORK_ERROR_KICKED                                        :Oni forbatis vin el la ludo
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :Kialo: {STRING}
+STR_NETWORK_ERROR_CHEATER                                       :Vi ne rajtas filudi en ĉi tiu servilo
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :Vi sendis tro da komandoj al la servilo
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Vi bezonis tro longan tempon por enigi la pasvorton
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :Via komputilo estas tro malrapida por samtempigi kun la servilo
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Via komputilo bezonis tro longan tempon por elŝuti la mapon
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :Via komputilo bezonis tro longan tempon por aliĝi al la servilo
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :Via ludantnomo estas malvalida
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Ebla konektoperdo
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Ne alvenis datumoj de la servilo dum la pasinta{P 0 "" j} {NUM} sekundo{P 0 "" j}
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Ebla konektoperdo
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :Ne alvenis datumoj de la servilo dum la pasinta{P 0 "" j} {NUM} sekundo{P 0 "" j}
 
 ###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :ĝenerala eraro
@@ -2762,14 +2762,14 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} fo
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} foriris el la ludo ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} donis {CURRENCY_LONG} al {STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}{}Bonvolu atendi...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :La servilo fermis la seancon
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :La servilo rekomenciĝas...{}{}Bonvolu atendi...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} estis forbatita. Kialo: ({STRING})
 
-STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Servila registrado malsukcesis
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Alia servilo kun la sama invitokodo registris sin. Ŝaltas al "loka" ludotipo.
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Via servilo ne permesas forajn konektojn
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Aliaj ludantoj ne povos konekti al via servilo
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :Servila registrado malsukcesis
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :Alia servilo kun la sama invitokodo registris sin. Ŝaltas al "loka" ludotipo.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Via servilo ne permesas forajn konektojn
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Aliaj ludantoj ne povos konekti al via servilo
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Enreta enhavo
@@ -2813,8 +2813,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Elŝuta
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Elektita ĉar: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependaĵoj: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etikedoj: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD estas farita sen subteno de "zlib"...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... enhavelŝutado neeblas!
+STR_CONTENT_NO_ZLIB                                             :OpenTTD estas kompilita sen subteno de biblioteko "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :elŝutado de enhavo neeblas!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Baza grafiko
@@ -2836,10 +2836,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Elŝuto 
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} el {BYTES} elŝutiĝis ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ne povis konekti al la enhavservilo...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Elŝuto fiaskis...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosiero ne skribebla
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ne povis malkompaktigi la elŝutitan dosieron
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Ne povis konekti al la enhavservilo...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Elŝuto fiaskis...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :dosiero ne skribebla
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :Ne povis malkompaktigi la elŝutitan dosieron
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Mankaj grafikoj
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD bezonas grafikojn por funkcii sed neniu estas trovata. Ĉu vi permesas OpenTDD-n al elŝulti kaj instali ĉi tiujn grafikojn?
@@ -2913,7 +2913,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Konstrui
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Konstrui vagonartenejon (por konstrui kaj prizorgi vagonarojn). La majuskliga klavo baskuligas konstrui/(kosto)taksi
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ŝanĝi relo al vojpunkto. Stir+Klaku por elekti alian vojpunkton por ligi. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Konstrui fervojostacion. Stir+Klaku por elekti alian stacion por ligi. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Konstrui signalojn. Stir+Klaku por konstrui alternativan stilon de signalo{}Klak+Treni plenumigas la elektitan sekcion de relo kun signaloj per elektita distanco. Ctrl+Klaki+Treni plenumigas ĝis la sekva vojkruco, stacio aŭ signalo. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Konstrui signalilojn. Stir+Klaku por konstrui alternativan stilon de signalilo{}Klak+Treni plenumigas la elektitan sekcion de relo kun signaliloj per elektita distanco. Ctrl+Klaki+Treni plenumigas ĝis la sekva vojkruco, stacio aŭ signalo. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Konstrui fervojan ponton. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Konstrui fervojtunelon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elekti inter konstruado/forigado de trako, signaliloj, vojpunktoj kaj stacidomoj. Stir+klaku por forigi relojn de vojpunktoj kaj stacioj
@@ -3017,20 +3017,20 @@ STR_STATION_CLASS_WAYP                                          :Vojpunktoj
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :Defaŭlta vojpunkto
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto de signalo
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksignalo (semafora){}Tio ĉi estas la plej baza tipo de signalo, kiu permesas al nur unu vagonaro esti en la sama bloko dum la sama tempo
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto de signalilo
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksignalilo (semafora){}Tio ĉi estas la plej baza tipo de signalilo, kiu permesas al nur unu vagonaro esti en la sama bloko dum la sama tempo
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Enirsemaforo{}Restas verda dum estas almenaŭ unu verda elirsemaforo de la sekva traksekcio. Alikaze ĝi estas ruĝa
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Elira semaforo{}Kondutas same kiel bloka semaforo, sed estas bezonata por kaŭzi la ĝustan koloron ĉe eniraj kaj kombinaj antaŭsemaforoj
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombina semaforo{}La kombina semaforo simple agas kaj kiel enira kaj kiel elira semaforo. Tio ebligas konstrui grandajn "arbojn" de antaŭsemaforoj
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Vojrezerva semaforo{}Vojrezerva semaforo ebligas ke pli ol unu vagonaro eniru signalan blokon samtempe, se la vagonaro povas rezervi vojon ĝis sekura haltopunkto. Normalan vojrezervan semaforon eblas trapasi de la malantaŭa flanko
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Unudirekta vojrezerva semaforo (semafora){}Vojrezerva semaforo ebligas ke pli ol unu vagonaro eniru signalan blokon samtempe, se la vagonaro povas rezervi vojon ĝis sekura haltopunkto. Unudirektan vojrezervan semaforon ne eblas trapasi de la malantaŭa flanko
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloksignalo (elektra){}Tio ĉi estas la plej baza tipo de signalo, kiu permesas al nur unu vagonaro esti en la sama bloko dum la sama tempo
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloksignalilo (elektra){}Tio ĉi estas la plej baza tipo de signalilo, kiu permesas al nur unu vagonaro esti en la sama bloko dum la sama tempo
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Enirsemaforo (elektra){}Restas verda dum estas almenaŭ unu verda elirsemaforo de la sekva traksekcio. Alikaze ĝi estas ruĝa
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Elira semaforo (elektra){}Kondutas same kiel bloka semaforo, sed estas bezonata por kaŭzi la ĝustan koloron ĉe eniraj kaj kombinaj antaŭsemaforoj
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombina semaforo (elektra){}La kombina semaforo simple agas kaj kiel enira kaj kiel elira semaforo. Tio ebligas konstrui grandajn "arbojn" de antaŭsemaforoj
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu vagonaro eniru signalan blokon samtempe, se la vagonaro povas rezervi vojon ĝis sekura haltopunkto. Normalan vojrezervan semaforon eblas trapasi de la malantaŭa flanko
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Unudirekta vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu vagonaro eniru signalan blokon samtempe, se la vagonaro povas rezervi vojon ĝis sekura haltopunkto. Unudirektan vojrezervan semaforon ne eblas trapasi de la malantaŭa flanko
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverti signalojn{}Klaku je ekzistanta signalo por konverti ĝin al elektita tipo kaj varianto de signalo. Stir+Klaku por baskuli la ekzistantan varianton. Maj+Klaku montras kostotakson de konvertado
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverti signalilojn{}Klaku je ekzistanta signalo por konverti ĝin al elektita tipo kaj varianto de signalilo. Stir+Klaku por baskuli la ekzistantan varianton. Maj+Klaku montras kostotakson de konvertado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distanco inter semaforoj dum trenado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Malpliigu semaforan distancon dum trenado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Pliigu semaforan distancon dum trenado
@@ -3616,12 +3616,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Trakurad
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Ruligado de skriptoj
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparado de ludo
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Ŝarĝado de urbodatumoj fiaskis
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Dosiero JSON estas erare formatita
-STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} - datumoj estas formatitaj erare
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} - koordinatoj estas formatita erare, ili devas esti ekde 0 ĝis 1, kiel proporcio de tuta dimensio de altecmapo
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :Ŝarĝado de urbodatumoj fiaskis
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :Dosiero JSON estas erare formatita
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING} - datumoj estas formatitaj erare
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{STRING} - koordinatoj estas formatita erare, ili devas esti ekde 0 ĝis 1, kiel proporcio de tuta dimensio de altecmapo
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Ne povas trovi taŭgan lokon por fondi {NUM} urbo{P "" j}n. Anstataŭe, ŝildo{P "" j} ĉe la proponitaj loko{P "" j} estis kreita
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :Ne povas trovi taŭgan lokon por fondi {NUM} urbo{P "" j}n. Anstataŭe, ŝildo{P "" j} ĉe la proponitaj loko{P "" j} estis kreita
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Agordoj
@@ -3739,8 +3739,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Averto: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eraro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalo: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}La NewGRF "{STRING}" respondis per neriparebla eraro:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}La NewGRF "{STRING}" respondis per eraro:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :La NewGRF "{STRING}" respondis per neriparebla eraro:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :La NewGRF "{STRING}" respondis per eraro:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} estas por la {2:STRING}-versio de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} estas intencita por uzo kun {2:STRING}
@@ -3767,12 +3767,12 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Nevalida entrep
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atentu!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vi ŝanĝos kurantan ludon. Tio povas paneigi OpenTTD aŭ rompi la ludstaton. Ne sendu cim-raportojn pri tiaj problemoj.{}Ĉu vi tute certas, ke vi volas fari tion?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosiero ne aldoneblas: duobla NewGRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :Dosiero ne aldoneblas: duobla NewGRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ne troviĝis apartena dosiero (taŭga NewGRF ŝarĝita)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Ne eblas aldoni dosieron: NewGRF-a dosierlimo atingita
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Ne eblas aldoni dosieron: limo de NewGRF-a dosieroj atingita
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Taŭga(j) NewGRF(oj) ŝarĝiĝis por mankaj dosieroj
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j) NewGRF-dosiero(j) malŝaltiĝis
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Taŭga(j) NewGRF(oj) ŝarĝiĝis por mankaj dosieroj
+STR_NEWGRF_DISABLED_WARNING                                     :Manka(j) NewGRF-dosiero(j) malŝaltiĝis
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manka(j) NewGRF-dosiero(j)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Malpaŭzigo povas paneigi OpenTTD. Ne sendu erarraporton se sekve okazos paneo.{}Ĉu vi vere volas malpaŭzigi?
 
@@ -3784,17 +3784,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Trovis 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Mankaj dosieroj
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}La konduto de la NewGRF '{0:STRING}' verŝajne kaŭzos malsinkroniĝojn kaj/aŭ paneojn
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ĝi ŝangiŝ lokomotivan staton de '{1:ENGINE}', kiam ĝi ne estis en vagonartenejo
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ĝi ŝanĝis la veturilan longecon de '{1:ENGINE}' dum ĝi ne estis en garaĝo
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ĝi ŝanĝis la veturilan kapaciton de '{1:ENGINE}' dum ĝi ne estis en garaĝo aŭ readaptiĝanta
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}La vagonaro '{VEHICLE}' apartenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo eventuale malsinkroniĝos aŭ paneos
+STR_NEWGRF_BROKEN                                               :La konduto de la NewGRF '{0:STRING}' verŝajne kaŭzos malsinkroniĝojn kaj/aŭ paneojn
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Ĝi ŝangiŝ lokomotivan staton de '{1:ENGINE}', kiam ĝi ne estis en vagonartenejo
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :Ĝi ŝanĝis la veturilan longecon de '{1:ENGINE}' dum ĝi ne estis en garaĝo
+STR_NEWGRF_BROKEN_CAPACITY                                      :Ĝi ŝanĝis la veturilan kapaciton de '{1:ENGINE}' dum ĝi ne estis en garaĝo aŭ readaptiĝanta
+STR_BROKEN_VEHICLE_LENGTH                                       :La vagonaro '{VEHICLE}' apartenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo povas malsinkroniĝi aŭ panei
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Ŝarĝa/transforma informo por '{1:ENGINE}' malsamas de aĉetolista informo post konstruado. Ĉi tiu povas difektigi transformadon de vagonoj dum aŭtomata renovigo aŭ anstataŭigo
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' kaŭzis senfinan iteracion en la revokfunkcio por produktado
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Revoko' {1:HEX} revenis nekonatan/malvalidan rezulton {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' liveris netaŭgan ŝarĝotipon en referencita funkcio de produktado ĉe {2:HEX}
+STR_NEWGRF_BUGGY                                                :NewGRF '{0:STRING}' donas malĝustan informon
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :Ŝarĝa/transforma informo por '{1:ENGINE}' malsamas de aĉetolista informo post konstruado. Ĉi tiu povas difektigi transformadon de vagonoj dum aŭtomata renovigo aŭ anstataŭigo
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :'{1:STRING}' kaŭzis senfinan iteracion en la referencita funkcio de produktado
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Referencita funkcio {1:HEX} liveris nekonatan/malvalidan rezulton {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :'{1:STRING}' liveris netaŭgan ŝarĝotipon en referencita funkcio de produktado ĉe {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<malvalida ŝarĝo>
@@ -4616,7 +4616,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Aĉeti k
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Aĉeti kopion de la ŝipo. Stir+Klaku por kunhavigi la itineron. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Aĉeti kopion de la aviadilo. Stir+Klak por kunhavigi la itineron. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Igu vagonaron iri malgraŭ signalo
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Igu vagonaron iri malgraŭ signalilo
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inversigu vagonaran direkton
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Igu veturilon ĉirkaŭturni
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrigu ĉefvidon ĉe la celpunkto de la ordono. Stir+Klaku por malfermi novan vidujon ĉe la celpunkto de la ordono
@@ -4625,7 +4625,7 @@ STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrigu
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Transformi vagonaron por porti alian ŝarĝtipon
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Transformi stratveturilon por porti alian ŝarĝtipon
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Transformi ŝipon por porti alian ŝarĝotipon
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Transformi aviadilon por porti alian ŝarĝotipon
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Readapti aviadilon por porti alian ŝarĝotipon
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Montri ordonojn de la vagonaro. Stir+Klak por montri la horaron.
@@ -4773,13 +4773,13 @@ STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elektu p
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Transformu vagonaron
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Transformi stratveturilon
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Transformu ŝipon
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Transformu aviadilon
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Readapti aviadilon
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Transformu vagonaron por porti la elektitan ŝarĝotipon
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Transformi stratveturilon por porti elektitan ŝarĝon
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Transformu ŝipon por porti elektitan ŝarĝotipon
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Transformu aviadilon por porti elektitan ŝarĝotipon
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Readapti aviadilon por porti elektitan ŝarĝotipon
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordonoj)
@@ -5046,7 +5046,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Ludoskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kontrolu la ludoskriptan protokolon. Ctrl+klak por malfermi en nova fenestro
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Neniu taŭga AI estas ŝarĝebla.{}Tiu ĉi AI estas lokokupa AI kiu nenion faros.{}Vi povas elŝuti pliajn AIojn per la 'Enreta Enhavo'-sistemo
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Unu el la rulantaj skriptoj paneis. Bonvolu raporti tion ĉi al la aŭtoro de la skripto kun ekrankapto de la fenestro 'AI/Ludoskripta Sencimigo'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Unu el la rulantaj skriptoj paneis. Bonvolu raporti tion ĉi al la aŭtoro de la skripto kun ekrankapto de la fenestro 'AI/Ludoskripta sencimigo'
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fenestro 'AI/Ludoskripta Sencimigo' estas nur disponebla por la servilo
 
 # AI configuration window
@@ -5142,12 +5142,12 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Atendata
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Atendata enspezo: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ankoraŭ konservas,{}bv atendi ĝis finiĝo!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Fiaskis aŭtomate konservi
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :Ankoraŭ konservas,{}bonvolu atendu ĝis finiĝo!
+STR_ERROR_AUTOSAVE_FAILED                                       :Aŭtomata konservado fiaskis
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ne eblas legi diskon
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Ludkonservado fiaskis...
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ne eblas forviŝi dosieron
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Ludŝarĝado fiaskis...
+STR_ERROR_GAME_SAVE_FAILED                                      :Ludkonservado fiaskis...
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Ne eblas forviŝi dosieron
+STR_ERROR_GAME_LOAD_FAILED                                      :Ludŝarĝado fiaskis...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna eraro: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Rompa konservludo - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tiu ĉi ludo estis konservita per pli nova versio
@@ -5159,18 +5159,18 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ne disponebla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La ludo estis konservita en versio kiu ne subtenas tramojn. Ĉiuj tramoj estas forigitaj.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Mapkreado haltita...{}{}... mankas taŭgaj urbejoj
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... mankas urboj en ĉi tiu scenaro
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Mapkreado haltita...{}{}... mankas taŭgaj urbejoj
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :mankas urboj en ĉi tiu scenaro
 
-STR_ERROR_PNGMAP                                                :{WHITE}Ne povas ŝarĝi landaspekton de PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... dosiero ne troviĝis.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ne povis transformi bildtipon. Necesas 8-bita aŭ 24-bita PNG-bildo.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... io simple fiaskis. Pardonu. (probable aĉa dosiero)
+STR_ERROR_PNGMAP                                                :Ne povas ŝarĝi landaspekton de PNG...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :dosiero ne troviĝis
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :ne povis transformi bildtipon. Necesas 8-bita aŭ 24-bita PNG-bildo
+STR_ERROR_PNGMAP_MISC                                           :io simple fiaskis (eble difektita dosiero)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Ne povas ŝarĝi landaspekton el BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ne povis transigi bildotipon.
+STR_ERROR_BMPMAP                                                :Ne povas ŝarĝi landaspekton el BMP-bildo...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :ne povis transigi bildotipon
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... bildo estas tro granda
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :bildo estas tro granda
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala averto
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
@@ -5182,444 +5182,443 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Sola bak
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Grandega ekranfoto
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La ekrankapto havos distingivon de {COMMA} x {COMMA} rastrumeroj. Fari la ekrankapton povas daŭri iom da tempo. Ĉu vi volas daŭrigi?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}La altecmapo estis sukcese konservita kiel '{STRING}'. La plej alta pinto estas {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekranfoto sukcese konserviĝis kiel '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekranfoto fiaskis!
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :La altecmapo estis sukcese konservita kiel '{STRING}'. La plej alta pinto estas {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Ekranfoto sukcese konserviĝis kiel '{STRING}'
+STR_ERROR_SCREENSHOT_FAILED                                     :Ekranfotado fiaskis!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mesaĝo
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mesaĝo de {COMPANY}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}For de la mapo
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proksime al la mapa rando
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sufiĉe da mono - vi bezonas {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Necesas ebena lando
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Lando ne ĝuste kliniĝas
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas fari...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Antaŭe devas la konstruaĵo esti detruita
-STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... konstruaĵo estas protektita
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas malplenigi la regionon...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... netaŭga loko
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... jam konstruita
-STR_ERROR_OWNED_BY                                              :{WHITE}... posedata de {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... regiono estas posedata de alia kompanio
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landaspektan limigon plenumis
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... kahelan forigantan limigon plenumis
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... arbo planti limo atingita
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nomo devas esti ununura
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} okupas la lokon
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ne permesa dum paŭzo
+STR_ERROR_OFF_EDGE_OF_MAP                                       :for de la mapo
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :tro proksime al la mapa rando
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :ne sufiĉe da mono - vi bezonas {CURRENCY_LONG}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :necesas ebena lando
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :lando ne ĝuste kliniĝas
+STR_ERROR_CAN_T_DO_THIS                                         :Ne povas fari...
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :antaŭe devas la konstruaĵo esti detruita
+STR_ERROR_BUILDING_IS_PROTECTED                                 :konstruaĵo estas protektita
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Ne povas malplenigi la regionon...
+STR_ERROR_SITE_UNSUITABLE                                       :netaŭga loko
+STR_ERROR_ALREADY_BUILT                                         :jam konstruita
+STR_ERROR_OWNED_BY                                              :posedata de {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :regiono estas posedata de alia kompanio
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :limo de landaspekta redaktado atingita
+STR_ERROR_CLEARING_LIMIT_REACHED                                :limo de kahela forigado atingita
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :limo de arboplantago atingita
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :nomo devas esti ununura
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{STRING} okupas la lokon
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :ne permesita dum paŭzo
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}La loka estraro de {TOWN} rifuzas permesi ĉi tion
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}La lokaj estroj de {TOWN} rifuzas permesi konstruadon de plia flughaveno ĉi-urbe
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokestro ne permesas aerohavenon kaŭze de brugravecoj
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Via provita subaĉeto estis malkovrita de regiona esploristo
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :La loka estraro de {TOWN} rifuzas permesi ĉi tion
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :La lokaj estroj de {TOWN} rifuzas permesi konstruadon de plia flughaveno ĉi-urbe
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :Lokaj estroj de {TOWN} ne permesas aerohavenon kaŭze de brugravecoj
+STR_ERROR_BRIBE_FAILED                                          :Via provo de subaĉeto estis malkovrita de regiona esploristo
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Ne povas altigi landon ĉi tie...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Ne povas malaltigi landon ĉi tie...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Ne povas ebenigi terenon ĉi tie...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Elkavigo damaĝus tunelon
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Jam marnivele
-STR_ERROR_TOO_HIGH                                              :{WHITE}Tro alte
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... jam plata
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Poste la ponto super ĝi estus tro alta.
-STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Antaŭe devas la rivero esti detruita
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :Ne povas altigi terenon ĉi tie...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Ne povas malaltigi terenon ĉi tie...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Ne povas ebenigi terenon ĉi tie...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :elkavigo damaĝus tunelon
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :jam marnivele
+STR_ERROR_TOO_HIGH                                              :tro alte
+STR_ERROR_ALREADY_LEVELLED                                      :jam plata
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :poste la ponto super ĝi estus tro alta.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :antaŭe devas la rivero esti detruita
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ne povas ŝanĝi kompaninomon...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ne povas ŝanĝi manaĝantnomon...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Ne povas ŝanĝi kompaninomon...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Ne povas ŝanĝi manaĝantnomon...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimuma permesata prunto estas {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ne povas prunti pli da mono...
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... neniu prunto por repagi
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} necesas
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ne povas repagi prunton...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ne povas donaci monon pruntitan de la banko...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Ne eblas doni monon al tiu ĉi kompanio...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ne povas aĉeti kompanion...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ne povas konstrui kompanian ĉefkonstruaĵon...
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :maksimuma permesata prunto estas {CURRENCY_LONG}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Ne povas prunti pli da mono...
+STR_ERROR_LOAN_ALREADY_REPAID                                   :neniu prunto por repagi
+STR_ERROR_CURRENCY_REQUIRED                                     :{CURRENCY_LONG} necesas
+STR_ERROR_CAN_T_REPAY_LOAN                                      :Ne povas repagi prunton...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Ne povas donaci monon pruntitan de la banko...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :Ne eblas doni monon al tiu ĉi kompanio...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :Ne povas aĉeti kompanion...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Ne povas konstrui kompanian ĉefoficejon...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne povas konstrui ajnajn urbojn...
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ne povas alinomi urbon...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ne povas fari urbon ĉi tie...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ne povas etendi urbon...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... tro proksime al la maprando
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... tro proksime al alia urbo
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tro da urboj
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... spaco mankas sur la mapo
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Aktivas vojprilaborado
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ne eblas forviŝi ĉi tiun urbon...{}{}Stacio aŭ garaĝo havas referencon al la urbo, aŭ ne eblas forviŝi kahelon posedatan de la urbo
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ne jen estas konvenan lokon por statuo en la centro de ĉi tiu urbo
-STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Ne povas konstrui domon...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :Ne povas konstrui ajnajn urbojn...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :Ne povas alinomi urbon...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Ne povas fondi urbon ĉi tie...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :Ne povas etendi urbon...
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :tro proksime al alia urbo
+STR_ERROR_TOO_MANY_TOWNS                                        :tro da urboj
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :spaco mankas sur la mapo
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :aktivas vojprilaborado
+STR_ERROR_TOWN_CAN_T_DELETE                                     :Ne eblas forviŝi ĉi tiun urbon...{}{}Stacio aŭ garaĝo havas referencon al la urbo, aŭ ne eblas forviŝi kahelon posedatan de la urbo
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :neniu konvena loko por statuo en la centro de ĉi tiu urbo
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :Ne povas konstrui domon...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... tro da industrioj
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ne povas generi industriojn...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ne povas konstrui {STRING.n} ĉi tie...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Industritipo ne konstrueblas ĉi tie...
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Ne eblas prospektori por entrepreno...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... tro proksime al alia industrio
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... antaŭe konstruu urbon
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... nur unu permesata en ĉiu urbo
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... nur konstruebla en praarbaraj regionoj
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... konstruebla nur en dezertaj regionoj
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... konstruebla nur en urboj (anstataŭante domoj)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... konstruebla nur proksime la centro de urboj
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... konstruebla nur en malaltaj regionoj
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... lokebla nur ĉe la randoj de la mapo
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... arbaro nur planteblas super neĝa limlinio
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... nur konstruebla super la neĝlinio
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... nur konstruebla sub la neĝlinio
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :tro da entreprenoj
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :Ne povas generi industriojn...
+STR_ERROR_CAN_T_BUILD_HERE                                      :Ne povas konstrui {STRING.n} ĉi tie...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Industritipo ne konstrueblas ĉi tie...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :Ne eblas prospektori por entrepreno...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :tro proksime al alia entrepreno
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :antaŭe konstruu urbon
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :nur unu permesata en ĉiu urbo
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :nur konstruebla en praarbaraj regionoj
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :konstruebla nur en dezertaj regionoj
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :konstruebla nur en urboj (anstataŭante domoj)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :konstruebla nur proksime al la centro de urboj
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :konstruebla nur en malaltaj regionoj
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :lokebla nur ĉe la randoj de la mapo
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :arbaro nur planteblas super neĝa limlinio
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :nur konstruebla super la neĝlinio
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :nur konstruebla sub la neĝlinio
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Malgraŭ la financado, prospektorado malsukcesis pro malbonŝanco; provu denove
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Ne estis taŭgaj lokoj prospektori por ĉi tiu entrepreno
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Ne estis taŭgaj lokoj por entreprenoj '{STRING}' tie
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Ŝanĝu la mapgenerajn parametrojn por ekhavi pli bonan mapon
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :financita prospektorado malsukcesis pro malbonŝanco; provu denove
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :ne estis taŭgaj lokoj prospektori por ĉi tiu entrepreno
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :ne estis taŭgaj lokoj por entreprenoj '{STRING}' tie
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :ŝanĝu la mapgenerajn parametrojn por ekhavi pli bonan mapon
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ne povas konstrui stacidomon ĉi tie...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Ne povas konstrui bushaltejon...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Ne povas konstrui ŝarĝstacion...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Ne povas konstrui pasaĝerotramstacion...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Ne povas konstrui frajttramstacion...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ne povas konstrui havenon ĉi tie...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ne povas konstrui flughavenon ĉi tie...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Ne povas konstrui stacidomon ĉi tie...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Ne povas konstrui bushaltejon...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Ne povas konstrui ŝarĝstacion...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Ne povas konstrui pasaĝerotramstacion...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Ne povas konstrui frajttramstacion...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Ne povas konstrui havenon ĉi tie...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Ne povas konstrui flughavenon ĉi tie...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Alligas pli ol unu ekzistantan stacion/ŝarĝejon
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacio tro vastas
-STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... nesubtenata nombro de trakoj
-STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... nesubtenata longeco
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Tro da stacioj/ŝarĝejoj
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tro da partoj de stacidomo
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tro da ŝarĝaŭtaj stacioj
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Tro proksime al alia haveno
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Tro proksime al alia flughaveno
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ne povas alinomi stacion...
-STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Ne povas movi ŝildon de stacio...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ĉi tiun straton posedas la urbo
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... malĝusta stratdirekto
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... traveturaj haltejoj ne povas havi angulojn
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... traveturaj haltejoj ne povas havi vojkrucojn
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :alligas pli ol unu ekzistantan stacion/ŝarĝejon
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :stacio tro vastas
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :nesubtenata nombro de trakoj
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :nesubtenata longeco
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :tro da stacioj/ŝarĝejoj
+STR_ERROR_TOO_MANY_STATION_SPECS                                :tro da partoj de stacidomo
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :tro da bushaltejoj
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :tro da ŝarĝaŭtaj stacioj
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :tro proksime al alia haveno
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :tro proksime al alia flughaveno
+STR_ERROR_CAN_T_RENAME_STATION                                  :Ne povas alinomi stacion...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :Ne povas movi ŝildon de stacio...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :ĉi tiun straton posedas la urbo
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :malĝusta stratdirekto
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :traveturaj haltejoj ne povas havi angulojn
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :traveturaj haltejoj ne povas havi vojkrucojn
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ne povas forigi stacidomeron...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Antaŭe devas la fervojostacio esti forigita
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Ne povas forigi bushaltejon...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ne povas forigi ŝarĝstacion...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ne povas forigi pasaĝerotramstacion...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ne povas forigi frajttramstacion...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Antaŭe forigu haltejon
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ne jen estas stacidomo ĉi tie
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :Ne povas forigi stacidomeron...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :antaŭe devas la fervojstacio esti forigita
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Ne povas forigi bushaltejon...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Ne povas forigi ŝarĝstacion...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :Ne povas forigi pasaĝerotramstacion...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Ne povas forigi frajttramstacion...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :antaŭe devas forigi haltejon
+STR_ERROR_THERE_IS_NO_STATION                                   :neniu stacidomo ĉi tie
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Antaŭe devas la fervojostacio esti detruita
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Antaŭe devas la bushaltejo esti detruita
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Antaŭe devas la kamionstacio esti detruita
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Antaŭe devas la pasaĝerotramstacio esti detruita
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Antaŭe devas la frajttramstacio esti detruita
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Antaŭe devas la doko esti detruita
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Antaŭe devas la flughaveno esti detruita
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :antaŭe devas la fervojostacio esti detruita
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :antaŭe devas la bushaltejo esti detruita
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :antaŭe devas la ŝarĝstacio esti detruita
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :antaŭe devas la pasaĝerotramstacio esti detruita
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :antaŭe devas la frajttramstacio esti detruita
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :antaŭe devas la doko esti detruita
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :antaŭe devas la flughaveno esti detruita
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Apudas pli ol unu ekzistanta vojpunkto.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Tro proksime al alia vojpunkto.
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :apudas pli ol unu ekzistanta vojpunkto
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :tro proksime al alia vojpunkto
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Ne povas konstrui vagonaran vojpunkton ĉi tie...
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Ne povas konstrui stratan vojpunkton ĉi tie...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Ne povas meti buon ĉi tie...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ne povas ŝanĝi vojpunktan nomon...
-STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Ne povas movi ŝildon de vojpunkto...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Ne povas konstrui vagonaran vojpunkton ĉi tie...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Ne povas konstrui stratan vojpunkton ĉi tie...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :Ne povas meti buon ĉi tie...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Ne povas ŝanĝi vojpunktan nomon...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Ne povas movi ŝildon de vojpunkto...
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Ne povas forigi vagonaran vojpunkton ĉi tie...
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Ne povas forigi stratan vojpunkton ĉi tie...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Antaŭe devas forigi fervojan vojpunkton
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Antaŭe devas forigi stratan vojpunkton
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buo okupas la lokon
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buo estas uzata je alia kompanio!
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :Ne povas forigi vagonaran vojpunkton ĉi tie...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Ne povas forigi stratan vojpunkton ĉi tie...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :antaŭe devas forigi fervojan vojpunkton
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :antaŭe devas forigi stratan vojpunkton
+STR_ERROR_BUOY_IN_THE_WAY                                       :buo okupas la lokon
+STR_ERROR_BUOY_IS_IN_USE                                        :buo estas uzata de alia kompanio!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ne povas konstrui vagonartenejon ĉi tie...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ne povas konstrui stratveturilan garaĝon ĉi tie...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ne povas konstrui tramgaraĝon ĉi tie...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ne povas konstrui ŝipgaraĝon ĉi tie...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Ne povas konstrui vagonartenejon ĉi tie...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Ne povas konstrui stratveturilan garaĝon ĉi tie...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :Ne povas konstrui tramgaraĝon ĉi tie...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Ne povas konstrui ŝipgaraĝon ĉi tie...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ne povas alinomi tenejon...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :Ne povas alinomi tenejon...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... devas esti haltigita en tenejo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... devas esti halta en stratveturila garaĝo
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... devas halti en garaĝo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... devas esti haltigata en la hangaro
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :devas esti haltigita en tenejo
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :devas esti haltigita en stratveturila garaĝo
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :devas esti haltigita en ŝipgaraĝo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :devas esti haltigata en la hangaro
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vagonaroj povas esti ŝanĝitaj nur dum halto en garaĝo
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vagonaro tro longas
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Ne povas inversigi direkton de veturilo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... konsistantaj el pluraj unuoj
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Neinterŝanĝeblaj reltipoj
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :vagonaroj povas esti ŝanĝitaj nur dum halto en garaĝo
+STR_ERROR_TRAIN_TOO_LONG                                        :vagonaro tro longas
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :Ne povas inversigi direkton de veturilo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :konsistas el pluraj unuoj
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :neinterŝanĝeblaj reltipoj
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne povas movi veturilon
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La malantaŭa maŝino ĉiam sekvos la antaŭan
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne povas trovi vojon al loka tenejo
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ne povas trovi lokan garaĝon
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Ne povas movi veturilon
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :la malantaŭa maŝino ĉiam sekvos la antaŭan
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :ne povas trovi vojon al loka tenejo
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :ne povas trovi lokan garaĝon
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Malĝusta garaĝtipo
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :malĝusta tenejotipo
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... povas havi nur unu distancigan ordonon
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... ne povas uzi ordonojn "Ŝarĝi ĝis plena", kiam veturilo havas ordonon distancigi
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... ne povas distancigi veturilojn, kiuj havas ordonon "Ŝargi ĝis plena"
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... ne povas uzi kondiĉajn ordonojn, kiam veturilo havas ordonon distancigi
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... ne povas distancigi veturilojn, kiuj havas kondiĉan ordonon
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :povas havi nur unu distancigan ordonon
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :ne povas uzi ordonojn "Ŝarĝi ĝis plena", kiam veturilo havas ordonon distancigi
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :ne povas distancigi veturilojn, kiuj havas ordonon "Ŝarĝi ĝis plena"
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :ne povas uzi kondiĉajn ordonojn, kiam veturilo havas ordonon distancigi
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :ne povas distancigi veturilojn, kiuj havas kondiĉan ordonon
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} tro longas post anstataŭado
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Neniuj reguloj pri aŭtomata anstataŭigo/renovigo aplikiĝas
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} tro longas post anstataŭado
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :Neniuj reguloj pri aŭtomata anstataŭigo/renovigo aplikiĝas
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(monlimo)
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}La nova veturilo ne povas porti {STRING.n}
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}La nova veturilo ne povas plenumi readapton en la {NUM}a ordono
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :La nova veturilo ne povas porti {STRING.n}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :La nova veturilo ne povas plenumi readapton en la {NUM}a ordono
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Neebla trakkombino
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Unue vi devas forviŝi la signalilojn.
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nekonvena fervojtrako
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Antaŭe devas la trako esti detruita
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Strato estas unudirekta aŭ blokita
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Traknivelaj pasejoj ne estas permesataj por tiu ĉi fervojtipo
-STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Traknivelaj pasejoj ne estas permesataj por tiu ĉi vojtipo
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ne povas konstrui signalojn ĉi tie...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ne povas konstrui trakon ĉi tie...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ne povas forigi trakon de ĉi tie...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Ne povas forigi signalojn de ĉi tie...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ne povas konverti signalojn de ĉi tie...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ne jen estas fervojtrako
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ne jen estas signaloj
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :neebla trakkombino
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :antaŭe devas forigi signalilojn
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :nekonvena fervojtrako
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :antaŭe devas la trako esti detruita
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :strato estas unudirekta aŭ blokita
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :traknivelaj pasejoj ne estas permesataj por tiu ĉi fervojtipo
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :traknivelaj pasejoj ne estas permesataj por tiu ĉi vojtipo
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Ne povas konstrui signalilojn ĉi tie...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Ne povas konstrui fervojtrakon ĉi tie...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Ne povas forigi trakon de ĉi tie...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Ne povas forigi signalilojn de ĉi tie...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Ne povas konverti signalilojn de ĉi tie...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :neniu fervojtrako ĉi tie
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :neniuj signaliloj
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ne povas transigi reltipon ĉi tie...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :Ne povas konverti reltipon ĉi tie...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Antaŭe forigu straton
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... unudirektaj stratoj ne povas havi kuniĝoj
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ne povas konstrui stratojn ĉi tie...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ne povas konstrui tramvojon ĉi tie...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ne povas forigi straton de ĉi tie...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Ne povas forigi tramvojon de ĉi tie...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ne jen estas strato
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ne jen estas tramvojo
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Ne eblas konverti vojtipon ĉi tie...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Ne eblas konverti tramtipon ĉi tie...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Mankas taŭga vojo
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Mankas taŭga tramvojo
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :antaŭe devas forigi straton
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :unudirektaj stratoj ne povas havi kuniĝojn
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Ne povas konstrui straton ĉi tie...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Ne povas konstrui tramvojon ĉi tie...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Ne povas forigi straton de ĉi tie...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :Ne povas forigi tramvojon de ĉi tie...
+STR_ERROR_THERE_IS_NO_ROAD                                      :neniu strato ĉi tie
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :neniu tramvojo ĉi tie
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :Ne eblas konverti vojtipon ĉi tie...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Ne eblas konverti tramtipon ĉi tie...
+STR_ERROR_NO_SUITABLE_ROAD                                      :nankas taŭga vojo
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :mankas taŭga tramvojo
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ne povas konstrui kanalojn ĉi tie...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ne povas konstrui kluzojn ĉi tie...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ne povas meti riverojn ĉi tien...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... devas esti konstruata sur akvo
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... ne povas konstrui sur akvo
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ne povas konstrui en malplena maro
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ne povas konstrui sur kanalo
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ne povas konstrui sur rivero
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Antaŭe devas la kanalo esti detruita
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ne povas konstrui akvedukton ĉi tie...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Ne povas konstrui kanalojn ĉi tie...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :Ne povas konstrui kluzojn ĉi tie...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :Ne povas meti riverojn ĉi tien...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :devas esti konstruita sur akvo
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :ne povas konstrui sur akvo
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :ne povas konstrui sur malplena maro
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :ne povas konstrui sur kanalo
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :ne povas konstrui sur rivero
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :antaŭe devas la kanalo esti detruita
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Ne povas konstrui akvodukton ĉi tie...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... jam estas arbo ĉi tie
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... malprava tereno por tipo de arbo
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ne povas planti arbon ĉi tie...
+STR_ERROR_TREE_ALREADY_HERE                                     :jam estas arbo ĉi tie
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :malĝusta tereno por tipo de arbo
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Ne povas planti arbon ĉi tie...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Ne povas konstrui ponton ĉi tie...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Antaŭe devas la ponto esti detruita
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ne povas komenci kaj fini en la sama loko
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Finoj de ponto ne estas je la sama nivelo
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponto estas tro malalta por la tereno
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}La ponto estas tro alta por tiu ĉi tereno.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Komenco kaj fino devas esti samliniaj
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambaŭ pontfinoj devas esti sur tero
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponto estas tro longa
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Ponto estus finata ekster de la mapo
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Ponto estas tro malalta (je {HEIGHT}) por stacio
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Ponto estas tro malalta (je {HEIGHT}) por strata haltejo
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Ponto estas tro malalta (je {HEIGHT}) por ŝipdoko
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Ponto estas pli malalta (je {HEIGHT}) por buo
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Ponto estas tro malalta (je {HEIGHT}) por relvojpunkto
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Ponto estas tro malalta (je {HEIGHT}) por strata vojpunkto
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Ponto estas tro malalta (je {HEIGHT}) por kluzo
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Ne povas konstrui ponton ĉi tie...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :antaŭe devas la ponto esti detruita
+STR_ERROR_CAN_T_START_AND_END_ON                                :ne povas komenci kaj fini en la sama loko
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :finoj de ponto ne estas je la sama nivelo
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :ponto estas tro malalta por la tereno
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :la ponto estas tro alta por tiu ĉi tereno.
+STR_ERROR_START_AND_END_MUST_BE_IN                              :komenco kaj fino devas esti samliniaj
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :ambaŭ pontfinoj devas esti sur tero
+STR_ERROR_BRIDGE_TOO_LONG                                       :ponto estas tro longa
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :Ponto estus finata ekster de la mapo
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :ponto estas tro malalta (je {HEIGHT}) por stacio
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :ponto estas tro malalta (je {HEIGHT}) por strata haltejo
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :ponto estas tro malalta (je {HEIGHT}) por ŝipdoko
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :ponto estas tro malalta (je {HEIGHT}) por buo
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :ponto estas tro malalta (je {HEIGHT}) por relvojpunkto
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :ponto estas tro malalta (je {HEIGHT}) por strata vojpunkto
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :ponto estas tro malalta (je {HEIGHT}) por kluzo
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Ne povas konstrui tunelon ĉi tie...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Nekonvena loko por tunelkomenco
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Antaŭe devas la tunelo esti detruita
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Alia tunelo okupas la lokon
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelo finiĝus ekster la mapo
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ne eblas liberigi la landon aliflanke de la tunelo
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunelo tro longa
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Ne povas konstrui tunelon ĉi tie...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :netaŭga loko por tunelkomenco
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :antaŭe devas la tunelo esti detruita
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :alia tunelo okupas la lokon
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :tunelo finiĝus ekster la mapo
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :ne eblas liberigi la landon aliflanke de la tunelo
+STR_ERROR_TUNNEL_TOO_LONG                                       :tunelo tro longa
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... tro da objektoj
-STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ne povas konstrui objekton...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekto okupas la lokon
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... kompania ĉefkonstruaĵo okupas la lokon
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Ne povas aĉeti ĉi tiun regionon...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... vi jam posedas ĝin!
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... konstruadolimo de objektoj atingita
+STR_ERROR_TOO_MANY_OBJECTS                                      :tro da objektoj
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :Ne povas konstrui objekton...
+STR_ERROR_OBJECT_IN_THE_WAY                                     :objekto okupas la lokon
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :kompania ĉefoficejo okupas la lokon
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Ne povas aĉeti ĉi tiun regionon...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :vi jam posedas ĝin!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :konstruadolimo de objektoj atingita
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ne eblas krei grupon...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Ne eblas viŝi grupon...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Ne povas alinomi grupon...
-STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Ne povas agordi parencan grupon...
-STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... bukloj en grupa hierarkio ne estas permesitaj
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ne povas depreni ĉiujn veturilojn de tiu ĉi grupo...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ne povas aldoni la veturilon al tiu ĉi grupo...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ne povas aldoni kunhavajn veturilojn al grupo...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :Ne eblas krei grupon...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :Ne eblas viŝi grupon...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :Ne povas alinomi grupon...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :Ne povas agordi parencan grupon...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :cikloj en grupa hierarkio ne estas permesitaj
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :Ne povas depreni ĉiujn veturilojn de tiu ĉi grupo...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :Ne povas aldoni la veturilon al tiu ĉi grupo...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Ne povas aldoni kunhavajn veturilojn al grupo...
 
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vagonaro okupas la lokon
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stratveturilo okupas la lokon
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Ŝipo okupas la lokon
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aviadilo okupas la lokon
+STR_ERROR_TRAIN_IN_THE_WAY                                      :vagonaro okupas la lokon
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :stratveturilo okupas la lokon
+STR_ERROR_SHIP_IN_THE_WAY                                       :ŝipo okupas la lokon
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :aviadilo okupas la lokon
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vagonaro ne haveblas
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Veturilo ne haveblas
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Ŝipo ne haveblas
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aviadilo ne haveblas
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :vagonaro ne haveblas
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :veturilo ne haveblas
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :ŝipo ne haveblas
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :aviadilo ne haveblas
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Ne povas transformi la vagonaron...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ne povas transformi stratveturilon...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Ne povas transformi ŝipon...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ne povas reformi aviadilon...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :Ne povas readapti vagonaron...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Ne povas readapti stratveturilon...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :Ne povas readapti ŝipon...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Ne povas readapti aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ne povas nomi vagonaron...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne povas nomi stratveturilon...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Ne povas nomi ŝipon...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Ne povas nomi aviadilon...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :Ne povas nomi vagonaron...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Ne povas nomi stratveturilon...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :Ne povas nomi ŝipon...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Ne povas nomi aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne povas haltigi/starti vagonaron...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne povas haltigi/starti stratveturilon...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Ne povas haltigi/starti ŝipon...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Ne povas haltigi/starti aviadilon...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Ne povas haltigi/starti vagonaron...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Ne povas haltigi/starti stratveturilon...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Ne povas haltigi/starti ŝipon...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Ne povas haltigi/starti aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Ne povas sendi vagonaron al garaĝo...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ne povas sendi veturilon al garaĝo...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Ne povas sendi ŝipon al garaĝo...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ne povas sendi aviadilon al hangaro...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Ne povas sendi vagonaron al garaĝo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Ne povas sendi veturilon al garaĝo...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Ne povas sendi ŝipon al garaĝo...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Ne povas sendi aviadilon al hangaro...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Ne povas aĉeti relveturilon...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Ne povas aĉeti stratveturilon...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Ne povas aĉeti ŝipon...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ne povas aĉeti aviadilon...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :Ne povas aĉeti relveturilon...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :Ne povas aĉeti stratveturilon...
+STR_ERROR_CAN_T_BUY_SHIP                                        :Ne povas aĉeti ŝipon...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Ne povas aĉeti aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Ne povas alinomi vagonaran tipon...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ne povas alinomi stratveturilan tipon...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ne povas alinomi ŝiptipon...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ne povas alinomi aviadiltipon...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Ne povas alinomi vagonaran tipon...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Ne povas alinomi stratveturilan tipon...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Ne povas alinomi ŝiptipon...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Ne povas alinomi aviadiltipon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ne povas vendi relan veturilon...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ne povas vendi stratveturilon...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ne povas vendi ŝipon...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ne povas vendi aviadilon...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Ne povas vendi relan veturilon...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Ne povas vendi stratveturilon...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Ne povas vendi ŝipon...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Ne povas vendi aviadilon...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Ne povas vendi ĉiujn relajn veturilojn...
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Ne povas vendi ĉiujn stratveturilojn...
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Ne povas vendi ĉiujn ŝipojn...
-STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Ne povas vendi ĉiujn aviadilojn...
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Ne povas vendi ĉiujn relajn veturilojn...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Ne povas vendi ĉiujn stratveturilojn...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Ne povas vendi ĉiujn ŝipojn...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Ne povas vendi ĉiujn aviadilojn...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Ne povas aŭtoanstataŭigi relajn veturilojn...
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Ne povas aŭtoanstataŭigi stratajn veturilojn...
-STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Ne povas aŭtoanstataŭigi ŝipojn...
-STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Ne povas aŭtoanstataŭigi aviadilojn...
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Ne povas aŭtoanstataŭigi relajn veturilojn...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Ne povas aŭtoanstataŭigi stratajn veturilojn...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Ne povas aŭtoanstataŭigi ŝipojn...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Ne povas aŭtoanstataŭigi aviadilojn...
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro da veturiloj en la ludo
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas ŝanĝi prizorgintervalon...
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :tro da veturiloj en la ludo
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :Ne povas ŝanĝi prizorgintervalon...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veturilo estas detruita
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :veturilo estas detruita
 
-STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... ne ĉiuj veturiloj estas identaj
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :ne ĉiuj veturiloj estas identaj
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Neniuj veturiloj estos haveblaj iam ajn
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Ŝanĝu viajn NewGRF-agordojn
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Neniuj veturiloj dume haveblas
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Komencu novan ludon post {DATE_SHORT} aŭ uzu NewGRF-on kiu havebligas frutempajn veturilojn
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Neniuj veturiloj estos haveblaj iam ajn
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :Ŝanĝu viajn NewGRF-agordojn
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Neniuj veturiloj dume haveblas
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Komencu novan ludon post {DATE_SHORT} aŭ uzu NewGRF-on kiu havebligas frutempajn veturilojn
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Neniuj tipoj de urbo-konstrueblaj stratoj estas disponeblaj
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Ŝanĝu viajn NewGRF-agordojn
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Neniuj urbo-konstrueblaj stratotipoj disponeblaj ankoraŭ
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Komencu novan ludon post {DATE_SHORT} aŭ uzu dosieron NewGRF, kiu aldonas pli fruan urbo-konstrueblan stratotipojn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Neniuj tipoj de urbo-konstrueblaj stratoj estas disponeblaj
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Ŝanĝu viajn NewGRF-agordojn
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Neniuj urbo-konstrueblaj stratotipoj disponeblaj ankoraŭ
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Komencu novan ludon post {DATE_SHORT} aŭ uzu dosieron NewGRF, kiu aldonas pli fruan urbo-konstrueblan stratotipojn
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas igi vagonaron transiri signalon je danĝero...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ne povas inversigi direkton de vagonaro...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Vagonara ne havas forton
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :Ne povas igi vagonaron transiri signalilon je danĝero...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :Ne povas inversigi direkton de vagonaro...
+STR_ERROR_TRAIN_START_NO_POWER                                  :vagonaro ne havas forton
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ne povas turnigi stratveturilon...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :Ne povas turnigi stratveturilon...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Aviadilo flugas
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :aviadilo nun flugas
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ordonspaco estas elĉerpita.
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Tro da ordonoj
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ne povas enigi novan ordonon...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ne povas forviŝi ĉi tiun ordonon...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ne povas ŝanĝi ĉi tiun ordonon...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ne povas movi ĉi tiun ordonon...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ne povas salti al la aktuala ordon...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Ne povas salti al la elektita ordon...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... veturilo ne povas iri al ĉiuj stacioj
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... veturilo ne povas iri al tiu stacio
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... veturilo kunhavanta ĉi tiun ordonon ne povas iri al tiu stacio
-STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... ne ĉiuj veturiloj havas la saman itineron
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... ne ĉiuj veturiloj kunhavas itineron
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :ordonspaco estas elĉerpita
+STR_ERROR_TOO_MANY_ORDERS                                       :tro da ordonoj
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Ne povas enigi novan ordonon...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Ne povas forviŝi ĉi tiun ordonon...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :Ne povas ŝanĝi ĉi tiun ordonon...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Ne povas movi ĉi tiun ordonon...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :Ne povas transsalti aktualan ordonon...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :Ne povas salti al elektita ordono...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :veturilo ne povas iri al ĉiuj stacioj
+STR_ERROR_CAN_T_ADD_ORDER                                       :veturilo ne povas iri al tiu stacio
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :veturilo, kunhavanta ĉi tiun ordonon, ne povas iri al tiu stacio
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :ne ĉiuj veturiloj havas la saman itineron
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :ne ĉiuj veturiloj kunhavas itineron
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Ne povas kunhavigi ordonliston...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Ne povas halti kunhavante ordonan registron...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ne povas kopii ordonliston...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... tro for de la antaŭa destino
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aviadilon ne havas sufiĉe da atingopovo
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Ne povas kunhavigi ordonliston...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Ne povas haltigi kunhavadon de ordonlisto...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Ne povas kopii ordonliston...
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :tro for de la antaŭa destino
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :aviadilo ne havas sufiĉan veturdistancon
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Mankas fervojstacio
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}Mankas busstacio
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Mankas ŝarĝaŭta stacio
-STR_ERROR_NO_DOCK                                               :{WHITE}Mankas haveno
-STR_ERROR_NO_AIRPORT                                            :{WHITE}Mankas flughaveno/helikopterhaveno
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Mankas haltejoj kun kongrua vojtipo
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Mankas haltejoj kun kongrua tipo de tramvojo
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Mankas haltejoj taŭgaj por artikaj stratveturiloj.{}Artikaj stratveturiloj bezonas trairan haltejon, ne kortan haltejon
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Tiu ĉi aviadilo ne povas surteriĝi ĉe tiu ĉi helikopterhaveno
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Tiu ĉi helikoptero ne povas surteriĝi ĉe tiu ĉi flughaveno
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Ne estas fervoja vojpunkto ĉi tie
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Ne estas strata vojpunkto ĉi tie
-STR_ERROR_NO_BUOY                                               :{WHITE}Mankas buo
+STR_ERROR_NO_RAIL_STATION                                       :Mankas fervojstacio
+STR_ERROR_NO_BUS_STATION                                        :Mankas busstacio
+STR_ERROR_NO_TRUCK_STATION                                      :Mankas ŝarĝaŭta stacio
+STR_ERROR_NO_DOCK                                               :Mankas haveno
+STR_ERROR_NO_AIRPORT                                            :mankas aviadilejo
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Mankas haltejoj kun kongrua vojtipo
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Mankas haltejoj kun kongrua tipo de tramvojo
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Mankas haltejoj taŭgaj por artikaj stratveturiloj.{}Artikaj stratveturiloj bezonas trairan haltejon, ne kortan haltejon
+STR_ERROR_AIRPORT_NO_PLANES                                     :Tiu ĉi aeroplano ne povas surteriĝi ĉe tiu ĉi helikopterhaveno
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Tiu ĉi helikoptero ne povas surteriĝi ĉe tiu ĉi flughaveno
+STR_ERROR_NO_RAIL_WAYPOINT                                      :Ne estas fervoja vojpunkto ĉi tie
+STR_ERROR_NO_ROAD_WAYPOINT                                      :Ne estas strata vojpunkto ĉi tie
+STR_ERROR_NO_BUOY                                               :Mankas buo
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ne povas fari katalogon por veturilo...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veturiloj povas atendi nur ĉe stacioj.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ĉi tiu veturilo ne haltos ĉe tiu ĉi stacio.
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... la horaro estas malkompleta
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... horaro ankoraŭ ne komenciĝis
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :Ne povas fari horaron por veturilo...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :veturiloj povas atendi nur ĉe stacioj
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :ĉi tiu veturilo ne haltos ĉe tiu ĉi stacio
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :la horaro estas malkompleta
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :horaro ankoraŭ ne komenciĝis
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... tro da afiŝoj
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ne povas meti ŝildon ĉi tie...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne povas ŝanĝi afiŝan nomon...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ne eblas forigi ŝildon...
+STR_ERROR_TOO_MANY_SIGNS                                        :tro da ŝildoj
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :Ne povas meti ŝildon ĉi tie...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :Ne povas ŝanĝi ŝildonomon...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :Ne eblas forigi ŝildon...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -6130,7 +6129,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Malfermu agordadon de insignoj

@@ -227,6 +227,7 @@ static WindowDesc _main_status_desc(
 
 /**
  * Checks whether the news ticker is currently being used.
+ * @return \c true iff the status bar exists and the ticker is in use.
  */
 bool IsNewsTickerShown()
 {

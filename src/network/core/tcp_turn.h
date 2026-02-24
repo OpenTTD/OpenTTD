@@ -15,12 +15,18 @@
 #include "packet.h"
 #include "network_game_info.h"
 
-/** Enum with all types of TCP TURN packets. The order MUST not be changed. **/
-enum PacketTurnType : uint8_t {
-	PACKET_TURN_TURN_ERROR,     ///< TURN server is unable to relay.
-	PACKET_TURN_SERCLI_CONNECT, ///< Client or server is connecting to the TURN server.
-	PACKET_TURN_TURN_CONNECTED, ///< TURN server indicates the socket is now being relayed.
-	PACKET_TURN_END,            ///< Must ALWAYS be on the end of this list!! (period)
+/**
+ * Enum with all types of TCP TURN packets.
+ * @important The order MUST not be changed.
+ */
+enum class PacketTurnType : uint8_t {
+	ServerError, ///< TURN server is unable to relay.
+	ClientConnect, ///< Client (or OpenTTD server) is connecting to the TURN server.
+	ServerConnected, ///< TURN server indicates the socket is now being relayed.
+};
+/** Mark PacketTurnType as PacketType. */
+template <> struct IsEnumPacketType<PacketTurnType> {
+	static constexpr bool value = true; ///< This is an enumeration of a PacketType.
 };
 
 /** Base socket handler for all TURN TCP sockets. */
@@ -36,10 +42,10 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_TURN_ERROR(Packet &p);
+	virtual bool ReceiveServerError(Packet &p);
 
 	/**
-	 * Client or servers wants to connect to the TURN server (on request by
+	 * Client (or OpenTTD server) wants to connect to the TURN server (on request by
 	 * the Game Coordinator).
 	 *
 	 *  uint8_t   Game Coordinator protocol version.
@@ -48,10 +54,10 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_SERCLI_CONNECT(Packet &p);
+	virtual bool ReceiveClientConnect(Packet &p);
 
 	/**
-	 * TURN server has connected client and server together and will now relay
+	 * TURN server has connected client and OpenTTD server together and will now relay
 	 * all packets to each other. No further TURN packets should be send over
 	 * this socket, and the socket should be handed over to the game protocol.
 	 *
@@ -60,7 +66,7 @@ protected:
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
-	virtual bool Receive_TURN_CONNECTED(Packet &p);
+	virtual bool ReceiveServerConnected(Packet &p);
 
 	bool HandlePacket(Packet &p);
 public:

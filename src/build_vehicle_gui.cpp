@@ -127,7 +127,7 @@ static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineLis
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/* cached values for EngineNameSorter to spare many GetString() calls */
+/** Cached values for EngineNameSorter to spare many GetString() calls. */
 static EngineID _last_engine[2] = { EngineID::Invalid(), EngineID::Invalid() };
 
 /** Determines order of engines by name. @copydoc GUIList::Sorter */
@@ -1486,7 +1486,7 @@ struct BuildVehicleWindow : Window {
 		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
 	}
 
-	/* Figure out what road vehicle EngineIDs to put in the list */
+	/** Figure out what road vehicle EngineIDs to put in the list. */
 	void GenerateBuildRoadVehList()
 	{
 		EngineID sel_id = EngineID::Invalid();
@@ -1513,7 +1513,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Figure out what ship EngineIDs to put in the list */
+	/** Figure out what ship EngineIDs to put in the list. */
 	void GenerateBuildShipList()
 	{
 		EngineID sel_id = EngineID::Invalid();
@@ -1538,7 +1538,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Figure out what aircraft EngineIDs to put in the list */
+	/** Figure out what aircraft EngineIDs to put in the list. */
 	void GenerateBuildAircraftList()
 	{
 		EngineID sel_id = EngineID::Invalid();
@@ -1573,7 +1573,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Generate the list of vehicles */
+	/** Generate the list of vehicles. */
 	void GenerateBuildList()
 	{
 		if (!this->eng_list.NeedRebuild()) return;

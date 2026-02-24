@@ -261,7 +261,7 @@ typedef GUIList<const Station*, const CargoTypes &> GUIStationList;
 class CompanyStationsWindow : public Window
 {
 protected:
-	/* Runtime saved values */
+	/** Runtime saved values. */
 	struct FilterState {
 		Listing last_sorting;
 		StationFacilities facilities; ///< types of stations of interest
@@ -276,7 +276,7 @@ protected:
 		ALL_CARGOTYPES,
 	};
 
-	/* Constants for sorting stations */
+	/** Strings describing how stations are sorted. */
 	static inline const StringID sorter_names[] = {
 		STR_SORT_BY_NAME,
 		STR_SORT_BY_FACILITY,
@@ -285,7 +285,7 @@ protected:
 		STR_SORT_BY_RATING_MAX,
 		STR_SORT_BY_RATING_MIN,
 	};
-	static const std::initializer_list<GUIStationList::SortFunction * const> sorter_funcs;
+	static const std::initializer_list<GUIStationList::SortFunction * const> sorter_funcs; ///< Functions to sort stations.
 
 	FilterState filter{};
 	GUIStationList stations{filter.cargoes};
@@ -967,46 +967,55 @@ public:
 
 	/**
 	 * Get the station ID for this entry.
+	 * @return The station this cargo is at.
 	 */
 	StationID GetStation() const { return this->station; }
 
 	/**
 	 * Get the cargo type for this entry.
+	 * @return The type of cargo.
 	 */
 	CargoType GetCargo() const { return this->cargo; }
 
 	/**
 	 * Get the cargo count for this entry.
+	 * @return The amount of cargo.
 	 */
 	uint GetCount() const { return this->count; }
 
 	/**
 	 * Get the parent entry for this entry.
+	 * @return The parent entry, can be \c nullptr.
 	 */
 	CargoDataEntry *GetParent() const { return this->parent; }
 
 	/**
 	 * Get the number of children for this entry.
+	 * @return The number of children.
 	 */
 	uint GetNumChildren() const { return this->num_children; }
 
 	/**
 	 * Get an iterator pointing to the begin of the set of children.
+	 * @return Iterator at the begin of our children.
 	 */
 	CargoDataSet::iterator Begin() const { return this->children->begin(); }
 
 	/**
 	 * Get an iterator pointing to the end of the set of children.
+	 * @return Iterator at the end of our children.
 	 */
 	CargoDataSet::iterator End() const { return this->children->end(); }
 
 	/**
 	 * Has this entry transfers.
+	 * @return \c true iff the transfers state has been set.
 	 */
 	bool HasTransfers() const { return this->transfers; }
 
 	/**
 	 * Set the transfers state.
+	 * @param value The new transfers state.
 	 */
 	void SetTransfers(bool value) { this->transfers = value; }
 

@@ -83,7 +83,7 @@ static HasContentProc *GetHasContentProcforContentType(ContentType type)
 	}
 }
 
-bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
+bool ClientNetworkContentSocketHandler::ReceiveServerInfo(Packet &p)
 {
 	auto ci = std::make_unique<ContentInfo>();
 	ci->type     = (ContentType)p.Recv_uint8();
@@ -190,7 +190,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 
 	this->Connect();
 
-	auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_LIST);
+	auto p = std::make_unique<Packet>(this, PacketContentType::ClientInfoList);
 	p->Send_uint8 ((uint8_t)type);
 	p->Send_uint32(0xffffffff);
 	p->Send_uint8 (1);
@@ -229,7 +229,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(std::span<const Conte
 	for (auto it = std::begin(content_ids); it != std::end(content_ids); /* nothing */) {
 		auto last = std::ranges::next(it, MAX_CONTENT_IDS_PER_PACKET, std::end(content_ids));
 
-		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
+		auto p = std::make_unique<Packet>(this, PacketContentType::ClientInfoID, TCP_MTU);
 		p->Send_uint16(std::distance(it, last));
 
 		for (; it != last; ++it) {
@@ -255,7 +255,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint8_t)) /
 			(sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
-	auto p = std::make_unique<Packet>(this, send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
+	auto p = std::make_unique<Packet>(this, send_md5sum ? PacketContentType::ClientInfoExternalIDMD5 : PacketContentType::ClientInfoExternalID, TCP_MTU);
 	p->Send_uint8((uint8_t)cv->size());
 
 	for (const auto &ci : *cv) {
@@ -347,7 +347,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 		 * The rest of the packet can be used for the IDs. */
 		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t));
 
-		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
+		auto p = std::make_unique<Packet>(this, PacketContentType::ClientContent, TCP_MTU);
 		p->Send_uint16(p_count);
 
 		for (uint i = 0; i < p_count; i++) {
@@ -446,7 +446,7 @@ static bool GunzipFile(const ContentInfo &ci)
 #endif /* defined(WITH_ZLIB) */
 }
 
-bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
+bool ClientNetworkContentSocketHandler::ReceiveServerContent(Packet &p)
 {
 	if (!this->cur_file.has_value()) {
 		/* When we haven't opened a file this must be our first packet with metadata. */

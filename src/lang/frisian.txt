@@ -3892,7 +3892,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kin gjin
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kin de namme net feroarje...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kin hjir gjin stêd boue...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kin stêd net grutter meitsje
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te ticht by de râne fan 'e map
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te ticht by in oare stêd
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te folle stêden
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der is gjin romte mear op'e kaart

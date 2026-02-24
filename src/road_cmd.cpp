@@ -124,7 +124,10 @@ void InitRoadTypes()
 }
 
 /**
- * Allocate a new road type label
+ * Allocate a new road type label.
+ * @param label The label of the road type.
+ * @param rtt Whether it's a road or tram type.
+ * @return The allocated road type, or \c INVALID_ROADTYPE upon failures.
  */
 RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 {
@@ -310,6 +313,7 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
  * @param pieces roadbits to remove
  * @param rtt Road type to remove.
  * @param town_check should we check if the town allows removal?
+ * @return The cost or an error message.
  */
 static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pieces, RoadTramType rtt, bool town_check)
 {
@@ -1130,9 +1134,6 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlags flags, TileIndex
  * @param rt road type
  * @param dir entrance direction
  * @return the cost of this operation or an error
- *
- * @todo When checking for the tile slope,
- * distinguish between "Flat land required" and "land sloped in wrong direction"
  */
 CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt, DiagDirection dir)
 {
@@ -1142,9 +1143,8 @@ CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt,
 
 	Slope tileh = GetTileSlope(tile);
 	if (tileh != SLOPE_FLAT) {
-		if (!_settings_game.construction.build_on_slopes || !CanBuildDepotByTileh(dir, tileh)) {
-			return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
-		}
+		if (!_settings_game.construction.build_on_slopes) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
+		if (!CanBuildDepotByTileh(dir, tileh)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(_price[Price::BuildFoundation]);
 	}
 
@@ -1218,6 +1218,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlags flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearDepotRoad]);
 }
 
+/** @copydoc ClearTileProc */
 static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlags flags)
 {
 	switch (GetRoadTileType(tile)) {
@@ -1549,6 +1550,7 @@ void DrawRoadOverlays(const TileInfo *ti, PaletteID pal, const RoadTypeInfo *roa
  * @param offset Road sprite offset
  * @param snow_or_desert Whether to get snow/desert ground sprite
  * @param[out] pal Palette to draw.
+ * @return The sprite.
  */
 static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const RoadTypeInfo *rti, uint offset, bool snow_or_desert, PaletteID *pal)
 {
@@ -1703,7 +1705,7 @@ static void DrawRoadBits(TileInfo *ti)
 	}
 }
 
-/** Tile callback function for rendering a road tile to the screen */
+/** @copydoc DrawTileProc */
 static void DrawTile_Road(TileInfo *ti)
 {
 	BridgePillarFlags blocked_pillars{};
@@ -1958,7 +1960,8 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 	}
 }
 
-static int GetSlopePixelZ_Road(TileIndex tile, uint x, uint y, bool)
+/** @copydoc GetSlopePixelZProc */
+static int GetSlopePixelZ_Road(TileIndex tile, uint x, uint y, [[maybe_unused]] bool ground_vehicle)
 {
 
 	if (IsNormalRoad(tile)) {
@@ -1973,6 +1976,7 @@ static int GetSlopePixelZ_Road(TileIndex tile, uint x, uint y, bool)
 	}
 }
 
+/** @copydoc GetFoundationProc */
 static Foundation GetFoundation_Road(TileIndex tile, Slope tileh)
 {
 	if (IsNormalRoad(tile)) {
@@ -2003,6 +2007,7 @@ static const Roadside _town_road_types_2[][2] = {
 static_assert(lengthof(_town_road_types_2) == NUM_HOUSE_ZONES);
 
 
+/** @copydoc TileLoopProc */
 static void TileLoop_Road(TileIndex tile)
 {
 	switch (_settings_game.game_creation.landscape) {
@@ -2107,6 +2112,7 @@ static void TileLoop_Road(TileIndex tile)
 	}
 }
 
+/** @copydoc ClickTileProc */
 static bool ClickTile_Road(TileIndex tile)
 {
 	if (!IsRoadDepot(tile)) return false;
@@ -2115,7 +2121,7 @@ static bool ClickTile_Road(TileIndex tile)
 	return true;
 }
 
-/* Converts RoadBits to TrackBits */
+/** Converts %RoadBits to %TrackBits. */
 static const TrackBits _road_trackbits[16] = {
 	TRACK_BIT_NONE,                                  // ROAD_NONE
 	TRACK_BIT_NONE,                                  // ROAD_NW
@@ -2135,6 +2141,7 @@ static const TrackBits _road_trackbits[16] = {
 	TRACK_BIT_ALL,                                   // ROAD_ALL
 };
 
+/** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	TrackdirBits trackdirbits = TRACKDIR_BIT_NONE;
@@ -2210,6 +2217,7 @@ static const StringID _road_tile_strings[] = {
 	STR_LAI_ROAD_DESCRIPTION_ROAD,
 };
 
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_Road(TileIndex tile, TileDesc &td)
 {
 	Owner rail_owner = INVALID_OWNER;
@@ -2284,7 +2292,8 @@ static const uint8_t _roadveh_enter_depot_dir[4] = {
 	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 
-static VehicleEnterTileStates VehicleEnter_Road(Vehicle *v, TileIndex tile, int, int)
+/** @copydoc VehicleEnterTileProc */
+static VehicleEnterTileStates VehicleEnterTile_Road(Vehicle *v, TileIndex tile, [[maybe_unused]] int x, [[maybe_unused]] int y)
 {
 	switch (GetRoadTileType(tile)) {
 		case RoadTileType::Depot: {
@@ -2311,6 +2320,7 @@ static VehicleEnterTileStates VehicleEnter_Road(Vehicle *v, TileIndex tile, int,
 }
 
 
+/** @copydoc ChangeTileOwnerProc */
 static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	if (IsRoadDepot(tile)) {
@@ -2365,6 +2375,7 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 	}
 }
 
+/** @copydoc TerraformTileProc */
 static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
@@ -2648,27 +2659,25 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	return found_convertible_road ? cost : error;
 }
 
-static CommandCost CheckBuildAbove_Road(TileIndex tile, DoCommandFlags flags, Axis, int)
+/** @copydoc CheckBuildAboveProc */
+static CommandCost CheckBuildAbove_Road(TileIndex tile, DoCommandFlags flags, [[maybe_unused]] Axis axis, [[maybe_unused]] int height)
 {
 	if (!IsRoadDepot(tile)) return CommandCost();
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
-/** Tile callback functions for road tiles */
+/** TileTypeProcs definitions for TileType::Road tiles. */
 extern const TileTypeProcs _tile_type_road_procs = {
-	DrawTile_Road,           // draw_tile_proc
-	GetSlopePixelZ_Road,     // get_slope_z_proc
-	ClearTile_Road,          // clear_tile_proc
-	nullptr,                    // add_accepted_cargo_proc
-	GetTileDesc_Road,        // get_tile_desc_proc
-	GetTileTrackStatus_Road, // get_tile_track_status_proc
-	ClickTile_Road,          // click_tile_proc
-	nullptr,                    // animate_tile_proc
-	TileLoop_Road,           // tile_loop_proc
-	ChangeTileOwner_Road,    // change_tile_owner_proc
-	nullptr,                    // add_produced_cargo_proc
-	VehicleEnter_Road,       // vehicle_enter_tile_proc
-	GetFoundation_Road,      // get_foundation_proc
-	TerraformTile_Road,      // terraform_tile_proc
-	CheckBuildAbove_Road, // check_build_above_proc
+	.draw_tile_proc = DrawTile_Road,
+	.get_slope_pixel_z_proc = GetSlopePixelZ_Road,
+	.clear_tile_proc = ClearTile_Road,
+	.get_tile_desc_proc = GetTileDesc_Road,
+	.get_tile_track_status_proc = GetTileTrackStatus_Road,
+	.click_tile_proc = ClickTile_Road,
+	.tile_loop_proc = TileLoop_Road,
+	.change_tile_owner_proc = ChangeTileOwner_Road,
+	.vehicle_enter_tile_proc = VehicleEnterTile_Road,
+	.get_foundation_proc = GetFoundation_Road,
+	.terraform_tile_proc = TerraformTile_Road,
+	.check_build_above_proc = CheckBuildAbove_Road,
 };

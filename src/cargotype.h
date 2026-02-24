@@ -174,9 +174,7 @@ struct CargoSpec {
 		void ValidateIndex() { while (this->index < CargoSpec::GetArraySize() && !(CargoSpec::Get(this->index)->IsValid())) this->index++; }
 	};
 
-	/*
-	 * Iterable ensemble of all valid CargoSpec
-	 */
+	/** Iterable ensemble of all valid CargoSpec. */
 	struct IterateWrapper {
 		size_t from;
 		IterateWrapper(size_t from = 0) : from(from) {}

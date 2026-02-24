@@ -74,6 +74,17 @@
 	Map::initial_land_count = std::min(Map::initial_land_count, Map::size);
 }
 
+/**
+ * Get a tile from the virtual XY-coordinate.
+ * Coordinates outside of the map are clamped to the map edge.
+ * @param x The virtual x coordinate of the tile.
+ * @param y The virtual y coordinate of the tile.
+ * @return The TileIndex calculated by the coordinate, clamped to the map bounds.
+ */
+TileIndex TileVirtXYClampedToMap(int x, int y)
+{
+	return TileIndex{(static_cast<uint>(Clamp<int>(y / static_cast<int>(TILE_SIZE), 0, Map::MaxY())) << Map::LogX()) + static_cast<uint>(Clamp<int>(x / static_cast<int>(TILE_SIZE), 0, Map::MaxX()))};
+}
 
 #ifdef _DEBUG
 TileIndex TileAdd(TileIndex tile, TileIndexDiff offset)

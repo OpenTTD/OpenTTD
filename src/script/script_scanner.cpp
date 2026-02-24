@@ -147,6 +147,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 	/**
 	 * Initialise the md5sum to be all zeroes,
 	 * so we can easily xor the data.
+	 * @param dir The directory to look in.
 	 */
 	ScriptFileChecksumCreator(Subdirectory dir) : dir(dir) {}
 

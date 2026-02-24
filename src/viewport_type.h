@@ -65,6 +65,10 @@ struct TrackedViewportSign : ViewportSign {
 	/**
 	 * Update the position of the viewport sign.
 	 * Note that this function hides the base class function.
+	 * @param center The (preferred) center of the viewport sign.
+	 * @param top The new top of the sign.
+	 * @param str The string to show in the sign.
+	 * @param str_small The string to show when zoomed out. If the string is empty then the \a str is used.
 	 */
 	void UpdatePosition(int center, int top, std::string_view str, std::string_view str_small = {})
 	{

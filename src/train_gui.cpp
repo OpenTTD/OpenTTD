@@ -185,7 +185,11 @@ struct CargoSummaryItem {
 	uint amount;      ///< Amount that is carried
 	StationID source; ///< One of the source stations
 
-	/** Used by std::find() and similar functions */
+	/**
+	 * Used by std::find() and similar functions.
+	 * @param other The other item.
+	 * @return \c true iff both items have the same cargo.
+	 */
 	inline bool operator == (const CargoSummaryItem &other) const
 	{
 		return !(this->cargo != other.cargo);
@@ -329,7 +333,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		}
 
 		num = max_cargo.GetCount();
-		num++; // needs one more because first line is description string
+		num += 2; // needs two more because the first line is the description string and the last is the feeder share
 	} else {
 		for (const Train *v = Train::Get(veh_id); v != nullptr; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);

@@ -143,12 +143,14 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 	/**
 	 * Get the cost for building a road stop of this type.
+	 * @param category The specific category to get the cost for.
 	 * @return The cost for building.
 	 */
 	Money GetBuildCost(Price category) const { return GetPrice(category, this->build_cost_multiplier, this->grf_prop.grffile, -4); }
 
 	/**
 	 * Get the cost for clearing a road stop of this type.
+	 * @param category The specific category to get the cost for.
 	 * @return The cost for clearing.
 	 */
 	Money GetClearCost(Price category) const { return GetPrice(category, this->clear_cost_multiplier, this->grf_prop.grffile, -4); }

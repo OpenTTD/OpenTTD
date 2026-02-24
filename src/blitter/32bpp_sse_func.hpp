@@ -5,16 +5,19 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file 32bpp_sse_func.hpp Functions related to SSE 32 bpp blitter. */
+/**
+ * @file 32bpp_sse_func.hpp Functions related to SSE 32 bpp blitter.
+ *
+ * @attention
+ * This file is compiled multiple times with different defines for SSE_VERSION and MARGIN_NORMAL_THRESHOLD.
+ * Be careful when declaring things with external linkage.
+ * Use INTERNAL_LINKAGE instead, i.e. "static".
+ */
 
 #ifndef BLITTER_32BPP_SSE_FUNC_HPP
 #define BLITTER_32BPP_SSE_FUNC_HPP
 
-/* ATTENTION
- * This file is compiled multiple times with different defines for SSE_VERSION and MARGIN_NORMAL_THRESHOLD.
- * Be careful when declaring things with external linkage.
- * Use internal linkage instead, i.e. "static".
- */
+/** Prefix all things in this file wiht this specifier to make them linked internally only. */
 #define INTERNAL_LINKAGE static
 
 #ifdef WITH_SSE

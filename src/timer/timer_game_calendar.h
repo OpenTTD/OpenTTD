@@ -45,7 +45,7 @@ class CalendarTime : public TimerGameConst<struct Calendar> {
 public:
 	static constexpr int DEF_MINUTES_PER_YEAR = 12;
 	static constexpr int FROZEN_MINUTES_PER_YEAR = 0;
-	static constexpr int MAX_MINUTES_PER_YEAR = 10080; // One week of real time. The actual max that doesn't overflow TimerGameCalendar::sub_date_fract is 10627, but this is neater.
+	static constexpr int MAX_MINUTES_PER_YEAR = 10080; ///< One week of real time. The actual max that doesn't overflow TimerGameCalendar::sub_date_fract is 10627, but this is neater.
 };
 
 #endif /* TIMER_GAME_CALENDAR_H */

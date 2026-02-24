@@ -21,6 +21,7 @@ def main():
     warnings = sorted(set(warnings))
     with open(sys.argv[2], "w") as out:
         out.write("\n".join(warnings))
+        out.write("\n")
     print("Doxygen warnings sorted successfully.")
 
 if __name__ == "__main__":

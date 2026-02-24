@@ -727,9 +727,10 @@ void GetBindAddresses(NetworkAddressList *addresses, uint16_t port)
 	}
 }
 
-/* Generates the list of manually added hosts from NetworkGame and
- * dumps them into the array _network_host_list. This array is needed
- * by the function that generates the config file. */
+/**
+ * Generates the list of manually added hosts from NetworkGame and dumps them into the array _network_host_list.
+ * This array is needed by the function that generates the config file.
+ */
 void NetworkRebuildHostList()
 {
 	_network_host_list.clear();
@@ -971,8 +972,10 @@ void NetworkOnGameStart()
 	}
 }
 
-/* The server is rebooting...
- * The only difference with NetworkDisconnect, is the packets that is sent */
+/**
+ * The server is rebooting...
+ * The only difference with NetworkDisconnect, is the packets that is sent.
+ */
 void NetworkReboot()
 {
 	if (_network_server) {
@@ -1060,7 +1063,7 @@ static bool NetworkReceive()
 	return result;
 }
 
-/* This sends all buffered commands (if possible) */
+/** This sends all buffered commands (if possible). */
 static void NetworkSend()
 {
 	if (_network_server) {
@@ -1089,8 +1092,10 @@ void NetworkBackgroundLoop()
 	NetworkBackgroundUDPLoop();
 }
 
-/* The main loop called from ttd.c
- *  Here we also have to do StateGameLoop if needed! */
+/**
+ * The main loop called from ttd.c.
+ * @note Here we also have to do StateGameLoop if needed!
+ */
 void NetworkGameLoop()
 {
 	if (!_networking) return;

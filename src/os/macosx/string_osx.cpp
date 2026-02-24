@@ -108,7 +108,11 @@ public:
 };
 
 
-/** Get the width of an encoded sprite font character.  */
+/**
+ * Get the width of an encoded sprite font character.
+ * @param ref_con Arbitrary data passed through CTRunDelegateCallbacks, in this case font size and character.
+ * @return The width of the specific given character.
+ */
 static CGFloat SpriteFontGetWidth(void *ref_con)
 {
 	FontSize fs = (FontSize)((size_t)ref_con >> 24);
@@ -265,13 +269,19 @@ int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 }
 
 
-/** Delete CoreText font reference for a specific font size. */
+/**
+ * Delete CoreText font reference for a specific font size.
+ * @param size The font size to delete.
+ */
 void MacOSResetScriptCache(FontSize size)
 {
 	_font_cache[size].reset();
 }
 
-/** Register an external font file with the CoreText system. */
+/**
+ * Register an external font file with the CoreText system.
+ * @param file_path UTF-8 encoded path of the font.
+ */
 void MacOSRegisterExternalFont(std::string_view file_path)
 {
 	CFAutoRelease<CFStringRef> path(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(file_path.data()), file_path.size(), kCFStringEncodingUTF8, false));
@@ -280,7 +290,10 @@ void MacOSRegisterExternalFont(std::string_view file_path)
 	CTFontManagerRegisterFontsForURL(url.get(), kCTFontManagerScopeProcess, nullptr);
 }
 
-/** Store current language locale as a CoreFoundation locale. */
+/**
+ * Store current language locale as a CoreFoundation locale.
+ * @param iso_code The ISO language code to set.
+ */
 void MacOSSetCurrentLocaleName(std::string_view iso_code)
 {
 	CFAutoRelease<CFStringRef> iso(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(iso_code.data()), iso_code.size(), kCFStringEncodingUTF8, false));

@@ -533,7 +533,11 @@ static void SlWriteSimpleGamma(size_t i)
 	SlWriteByte((uint8_t)i);
 }
 
-/** Return how many bytes used to encode a gamma value */
+/**
+ * Return how many bytes used to encode a gamma value.
+ * @param i The value to encode with gamma encoding.
+ * @return The length in bytes.
+ */
 static inline uint SlGetGammaLength(size_t i)
 {
 	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21)) + (i >= (1 << 28));
@@ -566,6 +570,8 @@ static inline uint SlGetArrayLength(size_t length)
 
 /**
  * Return the type as saved/loaded inside the savegame.
+ * @param sld The save-load configuration for a single variable.
+ * @return The type description part for the way the data is stored in the file.
  */
 static uint8_t GetSavegameFileType(const SaveLoad &sld)
 {
@@ -656,7 +662,10 @@ static inline uint8_t SlCalcConvFileLen(VarType conv)
 	}
 }
 
-/** Return the size in bytes of a reference (pointer) */
+/**
+ * Return the size in bytes of a reference (pointer).
+ * @return Return the size of this type in bytes.
+ */
 static inline size_t SlCalcRefLen()
 {
 	return IsSavegameVersionBefore(SLV_69) ? 2 : 4;
@@ -796,7 +805,10 @@ static void SlCopyBytes(void *ptr, size_t length)
 	}
 }
 
-/** Get the length of the current object */
+/**
+ * Get the length of the current object.
+ * @return The length of the object in bytes.
+ */
 size_t SlGetFieldLength()
 {
 	return _sl.obj_len;
@@ -1166,6 +1178,7 @@ void SlCopy(void *object, size_t length, VarType conv)
  * Return the size in bytes of a certain type of atomic array
  * @param length The length of the array counted in elements
  * @param conv VarType type of the variable that is used in calculating the size
+ * @return The size of this type in bytes.
  */
 static inline size_t SlCalcArrayLen(size_t length, VarType conv)
 {
@@ -1358,6 +1371,7 @@ public:
 	 * @param storage The storage to find the size of
 	 * @param conv VarType type of variable that is used for calculating the size
 	 * @param cmd The SaveLoadType ware are saving/loading.
+	 * @return The size of this type in bytes.
 	 */
 	static size_t SlCalcLen(const void *storage, VarType conv, SaveLoadType cmd = SL_VAR)
 	{
@@ -1444,6 +1458,7 @@ public:
  * Return the size in bytes of a list.
  * @param list The std::list to find the size of.
  * @param conv VarType type of variable that is used for calculating the size.
+ * @return The size of this type in bytes.
  */
 static inline size_t SlCalcRefListLen(const void *list, VarType conv)
 {
@@ -1471,6 +1486,7 @@ static void SlRefList(void *list, VarType conv)
  * Return the size in bytes of a vector.
  * @param vector The std::vector to find the size of.
  * @param conv VarType type of variable that is used for calculating the size.
+ * @return The size of this type in bytes.
  */
 static size_t SlCalcRefVectorLen(const void *vector, VarType conv)
 {
@@ -1498,6 +1514,7 @@ static void SlRefVector(void *vector, VarType conv)
  * Return the size in bytes of a std::deque.
  * @param deque The std::deque to find the size of
  * @param conv VarType type of variable that is used for calculating the size
+ * @return The size of this type in bytes.
  */
 static inline size_t SlCalcDequeLen(const void *deque, VarType conv)
 {
@@ -1556,6 +1573,7 @@ static void SlDeque(void *deque, VarType conv)
  * Return the size in bytes of a std::vector.
  * @param vector The std::vector to find the size of
  * @param conv VarType type of variable that is used for calculating the size
+ * @return The size of this type in bytes.
  */
 static inline size_t SlCalcVectorLen(const void *vector, VarType conv)
 {
@@ -1610,7 +1628,11 @@ static void SlVector(void *vector, VarType conv)
 	}
 }
 
-/** Are we going to save this object or not? */
+/**
+ * Are we going to save this object or not?
+ * @param sld The save-load configuration for a single variable.
+ * @return \c true iff the version of the current save game is within the range of the configuration.
+ */
 static inline bool SlIsObjectValidInSavegame(const SaveLoad &sld)
 {
 	return (_sl_version >= sld.version_from && _sl_version < sld.version_to);
@@ -2958,19 +2980,28 @@ static void SaveFileDone()
 #endif
 }
 
-/** Set the error message from outside of the actual loading/saving of the game (AfterLoadGame and friends) */
+/**
+ * Set the error message from outside of the actual loading/saving of the game (AfterLoadGame and friends).
+ * @param str The string describing the error.
+ */
 void SetSaveLoadError(StringID str)
 {
 	_sl.error_str = str;
 }
 
-/** Return the appropriate initial string for an error depending on whether we are saving or loading. */
+/**
+ * Return the appropriate initial string for an error depending on whether we are saving or loading.
+ * @return The encoded string with the error type.
+ */
 EncodedString GetSaveLoadErrorType()
 {
 	return GetEncodedString(_sl.action == SLA_SAVE ? STR_ERROR_GAME_SAVE_FAILED : STR_ERROR_GAME_LOAD_FAILED);
 }
 
-/** Return the description of the error. **/
+/**
+ * Return the description of the error.
+ * @return The encoded string with the error message.
+ */
 EncodedString GetSaveLoadErrorMessage()
 {
 	return GetEncodedString(_sl.error_str, _sl.extra_msg);
@@ -2986,6 +3017,8 @@ static void SaveFileError()
 /**
  * We have written the whole game into memory, _memory_savegame, now find
  * and appropriate compressor and start writing to file.
+ * @param threaded Whether to run the compression in the background or not.
+ * @return SL_OK when everything went okay, otherwise an error.
  */
 static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {
@@ -3372,6 +3405,7 @@ void DoExitSave()
 
 /**
  * Get the default name for a savegame *or* screenshot.
+ * @return The default name, i.e. company name and (play) time.
  */
 std::string GenerateDefaultSaveName()
 {

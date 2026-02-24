@@ -5090,7 +5090,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Non se p
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Non se pode renomear a cidade...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Non se pode construír a cidade aquí...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Non se pode expandi-la vila
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... demasiado preto do borde do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado preto doutra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... hai demasiadas cidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non queda máis espazo no mapa

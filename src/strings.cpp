@@ -265,7 +265,7 @@ static void FormatString(StringBuilder &builder, std::string_view str, std::span
 }
 
 struct LanguagePack : public LanguagePackHeader {
-	char data[]; // list of strings
+	char data[]; ///< List of strings.
 };
 
 struct LanguagePackDeleter {
@@ -2039,6 +2039,7 @@ bool LanguagePackHeader::IsValid() const
 
 /**
  * Check whether a translation is sufficiently finished to offer it to the public.
+ * @return \c true iff there are less than 25% missing strings.
  */
 bool LanguagePackHeader::IsReasonablyFinished() const
 {

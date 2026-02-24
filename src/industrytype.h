@@ -176,7 +176,6 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of ind
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles data
 void ResetIndustries();
 
-/* writable arrays of specs */
 extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 

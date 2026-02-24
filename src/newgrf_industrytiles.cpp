@@ -50,6 +50,7 @@ uint32_t GetNearbyIndustryTileInformation(uint8_t parameter, TileIndex tile, Ind
  * YY        same, but stored in a byte instead of a nibble
  * @param tile TileIndex of the tile to evaluate
  * @param ind_tile northernmost tile of the industry
+ * @return The relative position.
  */
 uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 {

@@ -52,7 +52,7 @@ static UDPSocket _udp_server("Server"); ///< udp server socket
 /** Helper class for handling all server side communication. */
 class ServerNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	void Receive_CLIENT_FIND_SERVER(Packet &p, NetworkAddress &client_addr) override;
+	void ReceiveClientFindServer(Packet &p, NetworkAddress &client_addr) override;
 public:
 	/**
 	 * Create the socket.
@@ -62,9 +62,9 @@ public:
 	~ServerNetworkUDPSocketHandler() override = default;
 };
 
-void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, NetworkAddress &client_addr)
+void ServerNetworkUDPSocketHandler::ReceiveClientFindServer(Packet &, NetworkAddress &client_addr)
 {
-	Packet packet(this, PACKET_UDP_SERVER_RESPONSE);
+	Packet packet(this, PacketUDPType::ServerResponse);
 	this->SendPacket(packet, client_addr);
 
 	Debug(net, 7, "Queried from {}", client_addr.GetHostname());
@@ -75,12 +75,12 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, Network
 /** Helper class for handling all client side communication. */
 class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	void Receive_SERVER_RESPONSE(Packet &p, NetworkAddress &client_addr) override;
+	void ReceiveServerResponse(Packet &p, NetworkAddress &client_addr) override;
 public:
 	~ClientNetworkUDPSocketHandler() override = default;
 };
 
-void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet &, NetworkAddress &client_addr)
+void ClientNetworkUDPSocketHandler::ReceiveServerResponse(Packet &, NetworkAddress &client_addr)
 {
 	Debug(net, 3, "Server response from {}", client_addr.GetAddressAsString());
 
@@ -96,7 +96,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler &socket)
 	for (NetworkAddress &addr : _broadcast_list) {
 		Debug(net, 5, "Broadcasting to {}", addr.GetHostname());
 
-		Packet p(&socket, PACKET_UDP_CLIENT_FIND_SERVER);
+		Packet p(&socket, PacketUDPType::ClientFindServer);
 		socket.SendPacket(p, addr, true, true);
 	}
 }

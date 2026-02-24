@@ -59,7 +59,6 @@ protected:
 	void CheckPaletteAnim() override;
 	bool PollEvent() override;
 
-	/** Indicate to the driver the client-side might have changed. */
 	void ClientSizeChanged(int w, int h, bool force);
 
 	/**

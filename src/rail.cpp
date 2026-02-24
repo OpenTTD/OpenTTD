@@ -33,6 +33,8 @@ RailType RailTypeInfo::Index() const
 
 /**
  * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
+ * @param tile An arbitrary tile.
+ * @return The rail type, or \c INVALID_RAILTYPE.
  */
 RailType GetTileRailType(Tile tile)
 {

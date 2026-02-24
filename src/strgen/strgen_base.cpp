@@ -155,6 +155,7 @@ uint32_t StringData::Version() const
 /**
  * Count the number of tab elements that are in use.
  * @param tab The tab to count the elements of.
+ * @return The number of elements in this tab.
  */
 size_t StringData::CountInUse(size_t tab) const
 {

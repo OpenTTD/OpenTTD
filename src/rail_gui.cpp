@@ -83,6 +83,7 @@ static void ShowSignalBuilder(Window *parent);
 
 /**
  * Check whether a station type can be build.
+ * @param statspec The specification of the station, or \c nullptr.
  * @return true if building is allowed.
  */
 static bool IsStationAvailable(const StationSpec *statspec)
@@ -303,7 +304,11 @@ static void PlaceRail_Bridge(TileIndex tile, Window *w)
 	}
 }
 
-/** Command callback for building a tunnel */
+/**
+ * Command callback for building a tunnel.
+ * @param result The result of the command.
+ * @param tile The tile where the command was executed on.
+ */
 void CcBuildRailTunnel(Commands, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded()) {
@@ -1485,7 +1490,11 @@ static WindowDesc _station_builder_desc(
 	&BuildRailStationWindow::hotkeys
 );
 
-/** Open station build window */
+/**
+ * Open station build window.
+ * @param parent The parent window.
+ * @return The created window.
+ */
 static Window *ShowStationBuilder(Window *parent)
 {
 	return new BuildRailStationWindow(_station_builder_desc, parent);
@@ -1740,6 +1749,7 @@ static WindowDesc _signal_builder_desc(
 
 /**
  * Open the signal selection window
+ * @param parent The parent window.
  */
 static void ShowSignalBuilder(Window *parent)
 {
@@ -2036,12 +2046,13 @@ void ResetSignalVariant(int32_t)
 	}
 }
 
-static const IntervalTimer<TimerGameCalendar> _check_reset_signal({TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [](auto)
+/** Yearly time to check whether to set the signal variant to electric signals. */
+static const IntervalTimer<TimerGameCalendar> _check_reset_signal{{TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [](auto)
 {
 	if (TimerGameCalendar::year != _settings_client.gui.semaphore_build_before) return;
 
 	ResetSignalVariant();
-});
+}};
 
 /**
  * Resets the rail GUI - sets default railtype to build

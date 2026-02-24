@@ -13,7 +13,7 @@
 #include "console_type.h"
 #include "core/format.hpp"
 
-/* console modes */
+/** Console modes. */
 extern IConsoleModes _iconsole_mode;
 
 /* console functions */

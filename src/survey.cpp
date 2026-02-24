@@ -115,6 +115,7 @@ static const std::string _vehicle_type_to_string[] = {
  * - _company_settings
  * - _win32_settings
  * As such, they are not part of this list.
+ * @return The table of generic settings.
  */
 static auto &GenericSettingTables()
 {

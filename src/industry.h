@@ -78,8 +78,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	};
 
 	struct AcceptedHistory {
-		uint16_t accepted = 0; /// Total accepted.
-		uint16_t waiting = 0; /// Average waiting.
+		uint16_t accepted = 0; ///< Total accepted.
+		uint16_t waiting = 0; ///< Average waiting.
 	};
 
 	struct AcceptedCargo {

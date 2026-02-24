@@ -752,7 +752,7 @@ static const DrawBuildingsTileStruct _industry_draw_tile_data[NEW_INDUSTRYTILEOF
 };
 #undef M
 
-/* this is ONLY used for Sugar Mine*/
+/** This is ONLY used for Sugar Mine.*/
 static const DrawIndustryAnimationStruct _draw_industry_spec1[96] = {
 	{  8,   4,   0,   0},
 	{  6,   0,   1,   0},
@@ -852,7 +852,7 @@ static const DrawIndustryAnimationStruct _draw_industry_spec1[96] = {
 	{ 10,   4,   0,   4},
 };
 
-/* this is ONLY used for Sugar Mine*/
+/** This is ONLY used for Sugar Mine.*/
 static const DrawIndustryCoordinates _drawtile_proc1[5] = {
 	{22, 73},
 	{17, 70},
@@ -923,7 +923,7 @@ static const DrawIndustryAnimationStruct _industry_anim_offs_toys[] = {
 };
 #undef MD
 
-/* this is ONLY used for Toffee Quarry*/
+/** This is ONLY used for Toffee Quarry.*/
 static const uint8_t _industry_anim_offs_toffee[] = {
 	255,   0,   0,   0,   2,   4,   6,   8,  10,   9,
 	  7,   5,   3,   1, 255,   0,   0,   0,   2,   4,
@@ -934,7 +934,7 @@ static const uint8_t _industry_anim_offs_toffee[] = {
 	  2,   4,   6,   8,  10,   9,   7,   5,   3,   1
 };
 
-/* this is ONLY used for the Bubble Generator*/
+/** This is ONLY used for the Bubble Generator.*/
 static const uint8_t _industry_anim_offs_bubbles[] = {
 	68, 69, 71, 74, 77, 80, 83, 85, 86, 86,
 	86, 86, 86, 86, 86, 86, 86, 86, 86, 86,

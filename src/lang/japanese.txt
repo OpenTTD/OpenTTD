@@ -4716,7 +4716,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}街を�
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}街名を変更できません
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}ここには街を建設できません
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}街を拡大できません
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}マップ端に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}他の街に近すぎます
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}街数の制限を超えています
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}マップに空きスペースがありません

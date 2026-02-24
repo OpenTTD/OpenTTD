@@ -82,7 +82,10 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
 	return &AirportSpec::specs[type];
 }
 
-/** Check whether this airport is available to build. */
+/**
+ * Check whether this airport is available to build.
+ * @return \c true iff the airport is available.
+ */
 bool AirportSpec::IsAvailable() const
 {
 	if (!this->enabled) return false;

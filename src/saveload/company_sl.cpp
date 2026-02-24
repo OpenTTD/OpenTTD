@@ -269,14 +269,14 @@ void AfterLoadCompanyStats()
 	}
 }
 
-/* We do need to read this single value, as the bigger it gets, the more data is stored */
+/** We do need to read this single value, as the bigger it gets, the more data is stored. */
 struct CompanyOldAI {
 	uint8_t num_build_rec;
 };
 
 class SlCompanyOldAIBuildRec : public DefaultSaveLoadHandler<SlCompanyOldAIBuildRec, CompanyOldAI> {
 public:
-	static inline const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+	static inline const SaveLoad description[] = {{}}; ///< Needed to keep DefaultSaveLoadHandler happy.
 	static inline const SaveLoadCompatTable compat_description = _company_old_ai_buildrec_compat;
 
 	SaveLoadTable GetDescription() const override { return {}; }
@@ -487,7 +487,7 @@ public:
 	void LoadCheck(CompanyProperties *cprops) const override { this->Load(cprops); }
 };
 
-/* Save/load of companies */
+/** Save/load of companies. */
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
 	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),

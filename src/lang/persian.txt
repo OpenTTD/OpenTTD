@@ -3912,7 +3912,6 @@ STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}ساخت
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}نمی توان اسم شهر را تغییر داد
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}اینجا نمی شود شهر ساخت
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}به حاشیه ی نقشه زیادی نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}به شهر دیگری بسیار نزدیک است
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}تعداد شهر ها بسیار زیاد شده
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}مکان مناسبی برای قرار دادن مجسمه در مرکز این شهر وجود ندارد

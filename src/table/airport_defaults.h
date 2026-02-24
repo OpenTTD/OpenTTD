@@ -375,7 +375,7 @@ static const std::initializer_list<AirportTileLayout> _tile_table_helistation = 
 	AS_GENERIC(&_airportfta_##ap_name, _tile_table_##ap_name, _airport_depots_##ap_name, \
 		size_x, size_y, noise, catchment, min_year, max_year, maint_cost, ttdpatch_type, class_id, name, preview, true)
 
-/* The helidepot and helistation have ATP_TTDP_SMALL because they are at ground level */
+/** The helidepot and helistation have ATP_TTDP_SMALL because they are at ground level. */
 extern const AirportSpec _origin_airport_specs[] = {
 	AS(country,          4, 3,     0,     1959,  4,  3,  7, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_SMALL,            SPR_AIRPORT_PREVIEW_SMALL),
 	AS(city,             6, 6,  1955, CalendarTime::MAX_YEAR,  5,  5, 24, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_CITY,             SPR_AIRPORT_PREVIEW_LARGE),

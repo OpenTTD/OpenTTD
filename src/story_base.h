@@ -25,9 +25,7 @@ extern StoryPagePool _story_page_pool;
 extern uint32_t _story_page_element_next_sort_value;
 extern uint32_t _story_page_next_sort_value;
 
-/*
- * Each story page element is one of these types.
- */
+/** Each story page element is one of these types. */
 enum StoryPageElementType : uint8_t {
 	SPET_TEXT = 0,       ///< A text element.
 	SPET_LOCATION,       ///< An element that references a tile along with a one-line text.

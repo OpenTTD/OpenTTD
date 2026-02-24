@@ -62,6 +62,8 @@ void GRFConfig::SetParams(std::span<const uint32_t> pars)
 
 /**
  * Return whether this NewGRF can replace an older version of the same NewGRF.
+ * @param old_version The older version of the NewGRF (savegame loading).
+ * @return Whether the NewGRF says that this version can be loaded for games with the old version.
  */
 bool GRFConfig::IsCompatible(uint32_t old_version) const
 {
@@ -212,7 +214,7 @@ void GRFParameterInfo::Finalize()
  * Update the palettes of the graphics from the config file.
  * Called when changing the default palette in advanced settings.
  */
-void UpdateNewGRFConfigPalette(int32_t)
+void UpdateNewGRFConfigPalette()
 {
 	for (const auto &c : _grfconfig_newgame) c->SetSuitablePalette();
 	for (const auto &c : _grfconfig_static ) c->SetSuitablePalette();
@@ -403,7 +405,10 @@ void AppendToGRFConfigList(GRFConfigList &dst, std::unique_ptr<GRFConfig> &&el)
 }
 
 
-/** Reset the current GRF Config to either blank or newgame settings. */
+/**
+ * Reset the current GRF Config to either blank or newgame settings.
+ * @param defaults Whether configure to fully load the copied NewGRFs.
+ */
 void ResetGRFConfig(bool defaults)
 {
 	CopyGRFConfigList(_grfconfig, _grfconfig_newgame, !defaults);
@@ -493,7 +498,10 @@ public:
 
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
 
-	/** Do the scan for GRFs. */
+	/**
+	 * Do the scan for GRFs.
+	 * @return The number of GRFs that have been found.
+	 */
 	static uint DoScan()
 	{
 		if (_skip_all_newgrf_scanning > 0) {
@@ -624,7 +632,11 @@ GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask)
 }
 
 
-/** Build a string containing space separated parameter values, and terminate */
+/**
+ * Build a string containing space separated parameter values.
+ * @param c The GRFConfig to create the parameter list for.
+ * @return The parameter list.
+ */
 std::string GRFBuildParamList(const GRFConfig &c)
 {
 	std::string result;

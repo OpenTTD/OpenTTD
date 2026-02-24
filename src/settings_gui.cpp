@@ -135,6 +135,7 @@ void ShowBaseSetTextfileWindow(Window *parent, TextfileType file_type, const TBa
  * Get string to use when listing this set in the settings window.
  * If there are no invalid files, then this is just the set name,
  * otherwise a string is formatted including the number of invalid files.
+ * @param baseset The selected baseset.
  * @return the string to display.
  */
 template <typename TBaseSet>
@@ -172,8 +173,8 @@ static void AddCustomRefreshRates()
 	std::copy(monitor_rates.begin(), monitor_rates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
 }
 
-static const int SCALE_NMARKS = (MAX_INTERFACE_SCALE - MIN_INTERFACE_SCALE) / 25 + 1; // Show marks at 25% increments
-static const int VOLUME_NMARKS = 9; // Show 5 values and 4 empty marks.
+static const int SCALE_NMARKS = (MAX_INTERFACE_SCALE - MIN_INTERFACE_SCALE) / 25 + 1; ///< Show marks at 25% increments.
+static const int VOLUME_NMARKS = 9; ///< Show 5 values and 4 empty marks.
 
 static std::optional<std::string> ScaleMarkFunc(int, int, int value)
 {
@@ -356,7 +357,7 @@ private:
 	std::vector<SocialIntegrationPlugin *> plugins{};
 };
 
-/** Construct nested container widget for managing the list of social plugins. */
+/** Construct nested container widget for managing the list of social plugins. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeNWidgetSocialPlugins()
 {
 	return std::make_unique<NWidgetSocialPlugins>();

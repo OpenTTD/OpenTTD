@@ -65,13 +65,17 @@
 
 #include "safeguards.h"
 
-/* Number of bits in the hash to use from each vehicle coord */
+/** @{
+ * Number of bits in the hash to use from each vehicle coord. */
 static const uint GEN_HASHX_BITS = 6;
 static const uint GEN_HASHY_BITS = 6;
+/** @} */
 
-/* Size of each hash bucket */
+/** @{
+ * Size of each hash bucket. */
 static const uint GEN_HASHX_BUCKET_BITS = 7;
 static const uint GEN_HASHY_BUCKET_BITS = 6;
+/** @} */
 
 /* Compute hash for vehicle coord */
 static inline uint GetViewportHashX(int x)
@@ -89,18 +93,23 @@ static inline uint GetViewportHash(int x, int y)
 	return GetViewportHashX(x) + GetViewportHashY(y);
 }
 
-/* Maximum size until hash repeats */
+/** @{
+ * Maximum size until hash repeats. */
 static const uint GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_BASE_SHIFT);
 static const uint GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_BASE_SHIFT);
+/** @} */
 
-/* Increments to reach next bucket in hash table */
+/** @{
+ * Increments to reach next bucket in hash table. */
 static const uint GEN_HASHX_INC = 1;
 static const uint GEN_HASHY_INC = 1 << GEN_HASHX_BITS;
+/** @} */
 
-/* Mask to wrap-around buckets */
+/** @{
+ * Mask to wrap-around buckets. */
 static const uint GEN_HASHX_MASK =  (1 << GEN_HASHX_BITS) - 1;
 static const uint GEN_HASHY_MASK = ((1 << GEN_HASHY_BITS) - 1) << GEN_HASHX_BITS;
-
+/** @} */
 
 /** The pool with all our precious vehicles. */
 VehiclePool _vehicle_pool("Vehicle");
@@ -381,19 +390,26 @@ Vehicle::Vehicle(VehicleID index, VehicleType type) : VehiclePool::PoolItem<&_ve
 	this->last_loading_station = StationID::Invalid();
 }
 
-/* Size of the hash, 6 = 64 x 64, 7 = 128 x 128. Larger sizes will (in theory) reduce hash
- * lookup times at the expense of memory usage. */
+/** @{
+ * Size of the hash, 6 = 64 x 64, 7 = 128 x 128.
+ * Larger sizes will (in theory) reduce hash lookup times at the expense of memory usage.
+ */
 constexpr uint TILE_HASH_BITS = 7;
 constexpr uint TILE_HASH_SIZE = 1 << TILE_HASH_BITS;
 constexpr uint TILE_HASH_MASK = TILE_HASH_SIZE - 1;
 constexpr uint TOTAL_TILE_HASH_SIZE = 1 << (TILE_HASH_BITS * 2);
+/** @} */
 
-/* Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
- * Profiling results show that 0 is fastest. */
+/**
+ * Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
+ * Profiling results show that 0 is fastest.
+ */
 constexpr uint TILE_HASH_RES = 0;
 
 /**
  * Compute hash for 1D tile coordinate.
+ * @param p The value to 'hash'.
+ * @return The computed hash.
  */
 static inline uint GetTileHash1D(uint p)
 {
@@ -402,6 +418,8 @@ static inline uint GetTileHash1D(uint p)
 
 /**
  * Increment 1D hash to next bucket.
+ * @param h The value to increment the hash for.
+ * @return The incremented value.
  */
 static inline uint IncTileHash1D(uint h)
 {
@@ -410,6 +428,9 @@ static inline uint IncTileHash1D(uint h)
 
 /**
  * Compose two 1D hashes into 2D hash.
+ * @param hx The hash for the X-axis.
+ * @param hy The hash for the Y-axis.
+ * @return The composed hash.
  */
 static inline uint ComposeTileHash(uint hx, uint hy)
 {
@@ -418,6 +439,9 @@ static inline uint ComposeTileHash(uint hx, uint hy)
 
 /**
  * Compute hash for tile coordinate.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @return The hash of the tile coordinates.
  */
 static inline uint GetTileHash(uint x, uint y)
 {
@@ -429,6 +453,9 @@ static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
 /**
  * Iterator constructor.
  * Find first vehicle near (x, y).
+ * @param x The center X-coordinate.
+ * @param y The center Y-coordinate.
+ * @param max_dist The distance around the center to consider.
  */
 VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y, uint max_dist)
 {
@@ -496,6 +523,7 @@ void VehiclesNearTileXY::Iterator::SkipFalseMatches()
 /**
  * Iterator constructor.
  * Find first vehicle on tile.
+ * @param tile The tile to find the vehicles on.
  */
 VehiclesOnTile::Iterator::Iterator(TileIndex tile) : tile(tile)
 {
@@ -2482,7 +2510,8 @@ bool Vehicle::HasUnbunchingOrder() const
 
 /**
  * Check if the previous order is a depot unbunching order.
- * @return true Iff the previous order is a depot order with the unbunch flag.
+ * @param v The vehicle to consider.
+ * @return \c true iff the previous order is a depot order with the unbunch flag.
  */
 static bool PreviousOrderIsUnbunching(const Vehicle *v)
 {

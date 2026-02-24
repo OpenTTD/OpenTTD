@@ -41,7 +41,7 @@ struct EndGameHighScoreBaseWindow : Window {
 		ResizeWindow(this, _screen.width - this->width, _screen.height - this->height);
 	}
 
-	/* Always draw a maximized window and within it the centered background */
+	/** Always draw a maximized window and within it the centered background. */
 	void SetupHighScoreEndWindow()
 	{
 		/* Resize window to "full-screen". */

@@ -584,7 +584,7 @@ void ShowCompanyFinances(CompanyID company)
 	new CompanyFinancesWindow(_company_finances_desc, company);
 }
 
-/* Association of liveries to livery classes */
+/** Association of liveries to livery classes. */
 static const LiveryClass _livery_class[LS_END] = {
 	LC_OTHER,
 	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,

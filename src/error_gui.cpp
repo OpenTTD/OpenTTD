@@ -190,7 +190,7 @@ public:
 
 			case WID_EM_MESSAGE:
 				if (this->detailed_msg.empty()) {
-					DrawStringMultiLineWithClipping(r, this->summary_msg.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
+					DrawStringMultiLineWithClipping(r, this->summary_msg.GetDecodedString(), TC_WHITE, SA_CENTER);
 				} else if (this->extra_msg.empty()) {
 					/* Extra space when message is shorter than company face window */
 					int extra = (r.Height() - this->height_summary - this->height_detailed - WidgetDimensions::scaled.vsep_wide) / 2;

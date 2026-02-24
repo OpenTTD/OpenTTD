@@ -30,10 +30,12 @@ extern TileIndex _cur_tileloop_tile;
 extern uint16_t _disaster_delay;
 extern uint8_t _trees_tick_ctr;
 
-/* Keep track of current game position */
+/** @{
+ * Keep track of current game position. */
 int _saved_scrollpos_x;
 int _saved_scrollpos_y;
 ZoomLevel _saved_scrollpos_zoom;
+/** @} */
 
 void SaveViewportBeforeSaveGame()
 {
@@ -112,8 +114,10 @@ static const SaveLoad _date_check_desc[] = {
 	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_INT32,                  SLV_31, SL_MAX_VERSION),
 };
 
-/* Save load date related variables as well as persistent tick counters
- * XXX: currently some unrelated stuff is just put here */
+/**
+ * Save load date related variables as well as persistent tick counters.
+ * @note currently some unrelated stuff is just put here.
+ */
 struct DATEChunkHandler : ChunkHandler {
 	DATEChunkHandler() : ChunkHandler('DATE', CH_TABLE) {}
 

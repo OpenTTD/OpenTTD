@@ -325,7 +325,7 @@ private:
 	static const uint EDITBOX_MAX_SIZE   =  50;
 
 	QueryString filename_editbox; ///< Filename editbox.
-	AbstractFileType abstract_filetype{}; /// Type of file to select.
+	AbstractFileType abstract_filetype{}; ///< Type of file to select.
 	SaveLoadOperation fop{}; ///< File operation to perform.
 	FileList fios_items{}; ///< Item list.
 	FiosItem o_dir{}; ///< Original dir (home dir for this browser)

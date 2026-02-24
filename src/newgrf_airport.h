@@ -58,7 +58,10 @@ public:
 		return *this;
 	}
 
-	/** Get the StationGfx for the current tile. */
+	/**
+	 * Get the StationGfx for the current tile.
+	 * @return The identifier of the graphics for this tile.
+	 */
 	StationGfx GetStationGfx() const
 	{
 		return this->iter->gfx;
@@ -128,7 +131,10 @@ struct AirportSpec : NewGRFSpecBase<AirportClassID> {
 
 	static void ResetAirports();
 
-	/** Get the index of this spec. */
+	/**
+	 * Get the index of this spec.
+	 * @return The offset in the specs table.
+	 */
 	uint8_t GetIndex() const
 	{
 		assert(this >= std::begin(specs) && this < std::end(specs));

@@ -148,6 +148,7 @@ extern CommandCost ClearTile_Station(TileIndex tile, DoCommandFlags flags);
  * @param tile the tile to check for suitability
  * @param axis the axis of the waypoint
  * @param waypoint Waypoint the waypoint to check for is already joined to. If we find another waypoint it can join to it will throw an error.
+ * @return The command cost, or rather error when something it wrong.
  */
 static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *waypoint)
 {

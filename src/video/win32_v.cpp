@@ -249,7 +249,12 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 	return true;
 }
 
-/** Forward key presses to the window system. */
+/**
+ * Forward key presses to the window system.
+ * @param keycode The pressed key code.
+ * @param charcode The pressed char code.
+ * @return Always \c \0 to denote it was handled.
+ */
 static LRESULT HandleCharMsg(uint keycode, char32_t charcode)
 {
 	static char32_t prev_char = 0;
@@ -276,13 +281,19 @@ static LRESULT HandleCharMsg(uint keycode, char32_t charcode)
 	return 0;
 }
 
-/** Should we draw the composition string ourself, i.e is this a normal IME? */
+/**
+ * Should we draw the composition string ourself, i.e is this a normal IME?
+ * @return \c true when the window is at the caret and does not a non-standard UI.
+ */
 static bool DrawIMECompositionString()
 {
 	return (_imm_props & IME_PROP_AT_CARET) && !(_imm_props & IME_PROP_SPECIAL_UI);
 }
 
-/** Set position of the composition window to the caret position. */
+/**
+ * Set position of the composition window to the caret position.
+ * @param hwnd Handle to the window.
+ */
 static void SetCompositionPos(HWND hwnd)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
@@ -304,7 +315,10 @@ static void SetCompositionPos(HWND hwnd)
 	ImmReleaseContext(hwnd, hIMC);
 }
 
-/** Set the position of the candidate window. */
+/**
+ * Set the position of the candidate window.
+ * @param hwnd Handle to the window.
+ */
 static void SetCandidatePos(HWND hwnd)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
@@ -338,7 +352,13 @@ static void SetCandidatePos(HWND hwnd)
 	ImmReleaseContext(hwnd, hIMC);
 }
 
-/** Handle WM_IME_COMPOSITION messages. */
+/**
+ * Handle WM_IME_COMPOSITION messages.
+ * @param hwnd The handle to the window.
+ * @param wParam The latest change in the composition.
+ * @param lParam How the composition was changed.
+ * @return Always \0 to denote it was handled.
+ */
 static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
@@ -400,7 +420,10 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 	return lParam != 0 ? DefWindowProc(hwnd, WM_IME_COMPOSITION, wParam, lParam) : 0;
 }
 
-/** Clear the current composition string. */
+/**
+ * Clear the current composition string.
+ * @param hwnd Handle to the window to cancel the composition for.
+ */
 static void CancelIMEComposition(HWND hwnd)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
@@ -1022,6 +1045,12 @@ void VideoDriver_Win32Base::MainLoop()
 	this->StopGameThread();
 }
 
+/**
+ * Indicate to the driver the client-size might have changed.
+ * @param w The new width of the window.
+ * @param h The new height of the window.
+ * @param force Whether to force full reallocation, instead of not reallocating when size did not change.
+ */
 void VideoDriver_Win32Base::ClientSizeChanged(int w, int h, bool force)
 {
 	/* Allocate backing store of the new size. */
@@ -1302,7 +1331,11 @@ static PFNWGLCREATECONTEXTATTRIBSARBPROC _wglCreateContextAttribsARB = nullptr;
 static PFNWGLSWAPINTERVALEXTPROC _wglSwapIntervalEXT = nullptr;
 static bool _hasWGLARBCreateContextProfile = false; ///< Is WGL_ARB_create_context_profile supported?
 
-/** Platform-specific callback to get an OpenGL function pointer. */
+/**
+ * Platform-specific callback to get an OpenGL function pointer.
+ * @param proc The name of the function.
+ * @return The function pointer, or \c nullptr when it could not be found.
+ */
 static OGLProc GetOGLProcAddressCallback(const char *proc)
 {
 	OGLProc ret = reinterpret_cast<OGLProc>(wglGetProcAddress(proc));

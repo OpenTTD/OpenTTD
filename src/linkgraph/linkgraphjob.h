@@ -378,12 +378,13 @@ public:
 
 protected:
 
-	/*
+	/** @{
 	 * Some boundaries to clamp against in order to avoid integer overflows.
 	 */
 	static constexpr int PATH_CAP_MULTIPLIER = 16;
 	static constexpr int PATH_CAP_MIN_FREE = (INT_MIN + 1) / PATH_CAP_MULTIPLIER;
 	static constexpr int PATH_CAP_MAX_FREE = (INT_MAX - 1) / PATH_CAP_MULTIPLIER;
+	/** @} */
 
 	uint distance = 0; ///< Sum(distance of all legs up to this one).
 	uint capacity = 0; ///< This capacity is min(capacity) fom all edges.

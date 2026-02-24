@@ -326,6 +326,7 @@ static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 	IndustryDrawCoalPlantSparks,
 };
 
+/** @copydoc DrawTileProc */
 static void DrawTile_Industry(TileInfo *ti)
 {
 	IndustryGfx gfx = GetIndustryGfx(ti->tile);
@@ -386,11 +387,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 }
 
-static int GetSlopePixelZ_Industry(TileIndex tile, uint, uint, bool)
-{
-	return GetTileMaxPixelZ(tile);
-}
-
+/** @copydoc GetFoundationProc */
 static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
@@ -409,6 +406,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	return FlatteningFoundation(tileh);
 }
 
+/** @copydoc AddAcceptedCargoProc */
 static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, CargoTypes &always_accepted)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
@@ -469,6 +467,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 	}
 }
 
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_Industry(TileIndex tile, TileDesc &td)
 {
 	const Industry *i = Industry::GetByTile(tile);
@@ -486,6 +485,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc &td)
 	}
 }
 
+/** @copydoc ClearTileProc */
 static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 {
 	Industry *i = Industry::GetByTile(tile);
@@ -688,6 +688,7 @@ static void AnimateMineTower(TileIndex tile)
 	}
 }
 
+/** @copydoc AnimateTileProc */
 static void AnimateTile_Industry(TileIndex tile)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
@@ -830,6 +831,7 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 	if (v != nullptr) v->animation_substate = dir;
 }
 
+/** @copydoc TileLoopProc */
 static void TileLoop_Industry(TileIndex tile)
 {
 	if (IsTileOnWater(tile)) TileLoop_Water(tile);
@@ -949,17 +951,14 @@ static void TileLoop_Industry(TileIndex tile)
 	}
 }
 
+/** @copydoc ClickTileProc */
 static bool ClickTile_Industry(TileIndex tile)
 {
 	ShowIndustryViewWindow(GetIndustryIndex(tile));
 	return true;
 }
 
-static TrackStatus GetTileTrackStatus_Industry(TileIndex, TransportType, uint, DiagDirection)
-{
-	return 0;
-}
-
+/** @copydoc ChangeTileOwnerProc */
 static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	/* If the founder merges, the industry was created by the merged company */
@@ -3239,6 +3238,7 @@ bool IndustrySpec::UsesOriginalEconomy() const
 			IndustryCallbackMask::ProdChangeBuild}); // production change callbacks
 }
 
+/** @copydoc TerraformTileProc */
 static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {
@@ -3268,22 +3268,19 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlags flags, 
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
+/** TileTypeProcs definitions for TileType::Industry tiles. */
 extern const TileTypeProcs _tile_type_industry_procs = {
-	DrawTile_Industry,           // draw_tile_proc
-	GetSlopePixelZ_Industry,     // get_slope_z_proc
-	ClearTile_Industry,          // clear_tile_proc
-	AddAcceptedCargo_Industry,   // add_accepted_cargo_proc
-	GetTileDesc_Industry,        // get_tile_desc_proc
-	GetTileTrackStatus_Industry, // get_tile_track_status_proc
-	ClickTile_Industry,          // click_tile_proc
-	AnimateTile_Industry,        // animate_tile_proc
-	TileLoop_Industry,           // tile_loop_proc
-	ChangeTileOwner_Industry,    // change_tile_owner_proc
-	nullptr,                        // add_produced_cargo_proc
-	nullptr,                        // vehicle_enter_tile_proc
-	GetFoundation_Industry,      // get_foundation_proc
-	TerraformTile_Industry,      // terraform_tile_proc
-	nullptr, // check_build_above_proc
+	.draw_tile_proc = DrawTile_Industry,
+	.get_slope_pixel_z_proc = [](TileIndex tile, uint, uint, bool) { return GetTileMaxPixelZ(tile); },
+	.clear_tile_proc = ClearTile_Industry,
+	.add_accepted_cargo_proc = AddAcceptedCargo_Industry,
+	.get_tile_desc_proc = GetTileDesc_Industry,
+	.click_tile_proc = ClickTile_Industry,
+	.animate_tile_proc = AnimateTile_Industry,
+	.tile_loop_proc = TileLoop_Industry,
+	.change_tile_owner_proc = ChangeTileOwner_Industry,
+	.get_foundation_proc = GetFoundation_Industry,
+	.terraform_tile_proc = TerraformTile_Industry,
 };
 
 bool IndustryCompare::operator() (const IndustryListEntry &lhs, const IndustryListEntry &rhs) const

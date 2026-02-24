@@ -419,7 +419,10 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 	CheckValidVehicles();
 }
 
-/** Called after load for phase 2 of vehicle initialisation */
+/**
+ * Called after load for phase 2 of vehicle initialisation.
+ * @param part_of_load Whether we are being called during loading a savegame, or due to NewGRFs being changed.
+ */
 void AfterLoadVehiclesPhase2(bool part_of_load)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
@@ -843,9 +846,11 @@ public:
 
 class SlVehicleRoadVeh : public DefaultSaveLoadHandler<SlVehicleRoadVeh, Vehicle> {
 public:
-	/* RoadVehicle path is stored in std::pair which cannot be directly saved. */
+	/** @{
+	 * RoadVehicle path is stored in std::pair which cannot be directly saved. */
 	static inline std::vector<Trackdir> rv_path_td;
 	static inline std::vector<TileIndex> rv_path_tile;
+	/** @} */
 
 	static inline const SaveLoad description[] = {
 		  SLEG_STRUCT("common", SlVehicleCommon),

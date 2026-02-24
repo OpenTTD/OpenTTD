@@ -95,30 +95,30 @@ struct SignList {
 		if (!this->signs.Sort(&SignNameSorter)) return;
 	}
 
-	/** Filter sign list by sign name */
-	static bool SignNameFilter(const Sign * const *a, StringFilter &filter)
+	/** Filter sign list by sign name. @copydoc GUIList::FilterFunction */
+	static bool SignNameFilter(const Sign * const *item, StringFilter &filter)
 	{
 		/* Same performance benefit as above for sorting. */
-		const std::string &a_name = (*a)->name.empty() ? SignList::default_name : (*a)->name;
+		const std::string_view name = (*item)->name.empty() ? SignList::default_name : (*item)->name;
 
 		filter.ResetState();
-		filter.AddLine(a_name);
+		filter.AddLine(name);
 		return filter.GetState();
 	}
 
-	/** Filter sign list excluding OWNER_DEITY */
-	static bool OwnerDeityFilter(const Sign * const *a, StringFilter &)
+	/** Filter sign list excluding OWNER_DEITY. @copydoc GUIList::FilterFunction */
+	static bool OwnerDeityFilter(const Sign * const *item, [[maybe_unused]] StringFilter &filter)
 	{
 		/* You should never be able to edit signs of owner DEITY */
-		return (*a)->owner != OWNER_DEITY;
+		return (*item)->owner != OWNER_DEITY;
 	}
 
-	/** Filter sign list by owner */
-	static bool OwnerVisibilityFilter(const Sign * const *a, StringFilter &)
+	/** Filter sign list by owner. @copydoc GUIList::FilterFunction */
+	static bool OwnerVisibilityFilter(const Sign * const *item, [[maybe_unused]] StringFilter &filter)
 	{
 		assert(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS));
 		/* Hide sign if non-own signs are hidden in the viewport */
-		return (*a)->owner == _local_company || (*a)->owner == OWNER_DEITY;
+		return (*item)->owner == _local_company || (*item)->owner == OWNER_DEITY;
 	}
 
 	/** Filter out signs from the sign list that does not match the name filter */
@@ -174,6 +174,7 @@ struct SignListWindow : Window, SignList {
 	 * the edit widget is not updated by this function. Depending on if the
 	 * new string is zero-length or not the clear button is made
 	 * disabled/enabled. The sign list is updated according to the new filter.
+	 * @param new_filter_string The new terms for filtering.
 	 */
 	void SetFilterString(std::string_view new_filter_string)
 	{

@@ -4984,7 +4984,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не м�
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Градът не може да бъде преименуван
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Не може да се основе град тук...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Градът не може да се разрасне
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... прекалено близо до края на картата
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... прекалено близо до друг град
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... прекалено много градове
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма повече място на картата

@@ -2547,6 +2547,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rel�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Smid ud
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Udeluk
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Slet
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :Tillad alle spillere
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :Tillad kun anførte spillere
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Admin handling
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Er du sikker på du ønsker at smide spilleren '{STRING}' ud?
@@ -5139,7 +5141,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikke omdøbe byen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikke bygge en by her...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan ikke udvide byen...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for tæt på kanten af kortet
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for tæt på en anden by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der er ikke mere plads på kortet

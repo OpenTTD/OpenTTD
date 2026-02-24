@@ -5205,7 +5205,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nem lehe
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nem nevezheted át a várost...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nem építhetsz ide várost...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}A város nem növelhető...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... túl közel van a térkép határához
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... túl közel van egy másik településhez
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... túl sok a település
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nincs több hely a térképen
@@ -6126,7 +6125,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Jelvény beállítások megnyitása

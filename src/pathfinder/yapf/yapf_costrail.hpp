@@ -28,7 +28,7 @@ public:
 
 protected:
 
-	/* Structure used inside PfCalcCost() to keep basic tile information. */
+	/** Structure used inside PfCalcCost() to keep basic tile information. */
 	struct TILE {
 		TileIndex   tile;
 		Trackdir    td;

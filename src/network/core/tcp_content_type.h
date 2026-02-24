@@ -33,18 +33,6 @@ enum ContentType : uint8_t {
 };
 using ContentTypes = EnumBitSet<ContentType, uint16_t, CONTENT_TYPE_END>;
 
-/** Enum with all types of TCP content packets. The order MUST not be changed **/
-enum PacketContentType : uint8_t {
-	PACKET_CONTENT_CLIENT_INFO_LIST,      ///< Queries the content server for a list of info of a given content type
-	PACKET_CONTENT_CLIENT_INFO_ID,        ///< Queries the content server for information about a list of internal IDs
-	PACKET_CONTENT_CLIENT_INFO_EXTID,     ///< Queries the content server for information about a list of external IDs
-	PACKET_CONTENT_CLIENT_INFO_EXTID_MD5, ///< Queries the content server for information about a list of external IDs and MD5
-	PACKET_CONTENT_SERVER_INFO,           ///< Reply of content server with information about content
-	PACKET_CONTENT_CLIENT_CONTENT,        ///< Request a content file given an internal ID
-	PACKET_CONTENT_SERVER_CONTENT,        ///< Reply with the content of the given ID
-	PACKET_CONTENT_END,                   ///< Must ALWAYS be on the end of this list!! (period)
-};
-
 /** Unique identifier for the content. */
 using ContentID = uint32_t;
 

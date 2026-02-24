@@ -59,6 +59,7 @@ inline StringID MakeStringID(StringTab tab, StringIndexInTab index)
 /**
  * Prepare the string parameters for the next formatting run, resetting the type information.
  * This is only necessary if parameters are reused for multiple format runs.
+ * @param args The parameters to prepare.
  */
 static inline void PrepareArgsForNextRun(std::span<StringParameter> args)
 {

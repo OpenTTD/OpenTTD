@@ -74,7 +74,7 @@ struct EMPTY_BASES PoolID : PoolIDBase {
 	constexpr bool operator==(const size_t &rhs) const { return this->value == rhs; }
 	constexpr auto operator<=>(const size_t &rhs) const { return this->value <=> rhs; }
 private:
-	/* Do not explicitly initialize. */
+	/** The bare storage. @warning Do not explicitly initialize. */
 	TBaseType value;
 };
 

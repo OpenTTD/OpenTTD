@@ -38,6 +38,7 @@ class SocialIntegration {
 public:
 	/**
 	 * Get the list of loaded social integration plugins.
+	 * @return The loaded plugins.
 	 */
 	static std::vector<SocialIntegrationPlugin *> GetPlugins();
 
@@ -63,16 +64,22 @@ public:
 
 	/**
 	 * Event: user entered the Scenario Editor.
+	 * @param map_width The width of the entered scenario.
+	 * @param map_height The width of the entered scenario.
 	 */
 	static void EventEnterScenarioEditor(uint map_width, uint map_height);
 
 	/**
 	 * Event: user entered a singleplayer game.
+	 * @param map_width The width of the entered map.
+	 * @param map_height The width of the entered map.
 	 */
 	static void EventEnterSingleplayer(uint map_width, uint map_height);
 
 	/**
 	 * Event: user entered a multiplayer game.
+	 * @param map_width The width of the entered map.
+	 * @param map_height The width of the entered map.
 	 */
 	static void EventEnterMultiplayer(uint map_width, uint map_height);
 

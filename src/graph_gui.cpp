@@ -37,12 +37,12 @@
 
 #include "safeguards.h"
 
-/* Bitmasks of company and cargo indices that shouldn't be drawn. */
+/** Bitmasks of company and cargo indices that shouldn't be drawn. */
 static CompanyMask _legend_excluded_companies;
 
 /* Apparently these don't play well with enums. */
-static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
-static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
+static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); ///< Value used for a datapoint that shouldn't be drawn.
+static const uint INVALID_DATAPOINT_POS = UINT_MAX; ///< Used to determine if the previous point was drawn.
 
 constexpr double INT64_MAX_IN_DOUBLE = static_cast<double>(INT64_MAX - 512); ///< The biggest double that when cast to int64_t still fits in a int64_t.
 static_assert(static_cast<int64_t>(INT64_MAX_IN_DOUBLE) < INT64_MAX);
@@ -213,17 +213,20 @@ protected:
 	uint8_t num_on_x_axis = 0;
 	uint8_t num_vert_lines = GRAPH_NUM_MONTHS;
 
-	/* The starting month and year that values are plotted against. */
-	TimerGameEconomy::Month month{};
-	TimerGameEconomy::Year year{};
+	TimerGameEconomy::Month month{}; ///< The starting month that values are plotted against.
+	TimerGameEconomy::Year year{}; ///< The starting year that values are plotted against.
 	uint8_t month_increment = 3; ///< month increment between vertical lines. must be divisor of 12.
 
 	bool draw_dates = true; ///< Should we draw months and years on the time axis?
 
-	/* These values are used if the graph is being plotted against values
-	 * rather than the dates specified by month and year. */
+	/**
+	 * These values are used if the graph is being plotted against values
+	 * rather than the dates specified by month and year.
+	 * @{
+	 */
 	bool x_values_reversed = true;
 	int16_t x_values_increment = ECONOMY_QUARTER_MINUTES;
+	/** @} */
 
 	StringID format_str_y_axis{};
 

@@ -65,12 +65,14 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	TownCache cache{}; ///< Container for all cacheable data.
 
-	/* Town name */
+	/** @name Town name.
+	 * @{ */
 	uint32_t townnamegrfid = 0;
 	uint16_t townnametype = 0;
 	uint32_t townnameparts = 0;
 	std::string name{}; ///< Custom town name. If empty, the town was not renamed and uses the generated name.
 	mutable std::string cached_name{}; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
+	/** @} */
 
 	TownFlags flags{}; ///< See #TownFlags.
 

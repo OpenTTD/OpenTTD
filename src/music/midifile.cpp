@@ -623,6 +623,9 @@ struct MpsMachine {
 
 	/**
 	 * Play one frame of data from one channel
+	 * @param[out] outblock The block to the music to.
+	 * @param channel The channel of the block to play.
+	 * @return The new delay for playing.
 	 */
 	uint16_t PlayChannelFrame(MidiFile::DataBlock &outblock, int channel)
 	{
@@ -748,6 +751,8 @@ struct MpsMachine {
 
 	/**
 	 * Play one frame of data into a block.
+	 * @param[out] block The block to write to.
+	 * @return \c true iff there is data to play.
 	 */
 	bool PlayFrame(MidiFile::DataBlock &block)
 	{
@@ -774,6 +779,7 @@ struct MpsMachine {
 
 	/**
 	 * Perform playback of whole song.
+	 * @return Always \c true.
 	 */
 	bool PlayInto()
 	{

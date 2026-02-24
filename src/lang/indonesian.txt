@@ -4800,7 +4800,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak da
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Tidak dapat mengubah nama kota...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak dapat membangun kota disini
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Tidak dapat memperluas kota...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terlalu dekat dengan batas tepi peta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu dekat dengan kota lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... terlalu banyak kota
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... tidak ada lagi ruang tersisa dalam peta

@@ -2957,10 +2957,7 @@ static bool ConDumpInfo(std::span<std::string_view> argv)
 	return false;
 }
 
-/*******************************
- * console command registration
- *******************************/
-
+/** Console command registration. */
 void IConsoleStdLibRegister()
 {
 	IConsole::CmdRegister("debug_level",             ConDebugLevel);

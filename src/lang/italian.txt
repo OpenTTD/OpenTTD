@@ -1639,6 +1639,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Morbido
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Accidentato
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molto accidentato
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Altitudine media: {STRING}
 ###length 4
 
 STR_CONFIG_SETTING_VARIETY                                      :Varietà del terreno: {STRING}
@@ -3386,6 +3387,7 @@ STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Aumenta 
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Diminuisci la copertura del deserto del dieci percento
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Altitudine media:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Livello di mare:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Selezionare il livello del mare
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Fiumi:
@@ -5058,7 +5060,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossib
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossibile rinominare la città...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossibile fondare una città qui...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Impossibile espandere la città...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... troppo vicino al bordo della mappa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... troppo vicino ad un'altra città
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... troppe città
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non c'è altro spazio sulla mappa
@@ -5342,7 +5343,9 @@ STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Impossib
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Impossibile vendere tutti gli aeromobili...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Impossibile rimpiazzare automaticamente i veicoli ferroviari...
 STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Non puoi rimpiazzare automaticamente gli autoveicoli...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Impossibile rimpiazzare automaticamente le navi...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Non puoi rimpiazzare automaticamente l'aeromobile...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Troppi veicoli nel gioco

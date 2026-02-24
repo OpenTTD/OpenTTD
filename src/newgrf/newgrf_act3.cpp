@@ -173,8 +173,13 @@ struct MapSpriteGroupHandler {
 	virtual void MapDefault(uint16_t local_id, const SpriteGroup *group) = 0;
 };
 
-/** Specializable function to retrieve a NewGRF spec of a particular type. */
-template <typename T> static auto *GetSpec(GRFFile *, uint16_t);
+/**
+ * Specializable function to retrieve a NewGRF spec of a particular type.
+ * @param grffile The NewGRF the spec belongs to.
+ * @param local_id The local id of the spec to retrieve.
+ * @return The retrieved spec.
+ */
+template <typename T> static auto *GetSpec(GRFFile *grffile, uint16_t local_id);
 
 /** Common handler for mapping sprite groups for features which only support "Purchase" and "Default" sprites. */
 template <typename T>

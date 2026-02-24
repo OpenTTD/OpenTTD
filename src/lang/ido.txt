@@ -1547,7 +1547,6 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja p
 
 # Town related errors
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ne povas expansar urbo...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... tro proxim la bordo del mapo
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... tro multa industrii

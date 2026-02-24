@@ -529,6 +529,7 @@ static void ShowRejectOrAcceptNews(const Station *st, CargoTypes cargoes, bool r
  * @param w X extent of the area
  * @param h Y extent of the area
  * @param rad Search radius in addition to the given area
+ * @return Array of production per cargo type.
  */
 CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
 {
@@ -2858,6 +2859,7 @@ CommandCost CmdOpenCloseAirport(DoCommandFlags flags, StationID station_id)
  * @param station station ID
  * @param include_company If true only check vehicles of \a company, if false only check vehicles of other companies
  * @param company company ID
+ * @return \c true when at least one vehicle is ordered to go to this station.
  */
 bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 {
@@ -3267,6 +3269,7 @@ static bool DrawCustomStationFoundations(const StationSpec *statspec, BaseStatio
 	return true;
 }
 
+/** @copydoc DrawTileProc */
 static void DrawTile_Station(TileInfo *ti)
 {
 	const NewGRFSpriteLayout *layout = nullptr;
@@ -3568,15 +3571,6 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	DrawRailTileSeqInGUI(x, y, t, (st == StationType::RailWaypoint || st == StationType::RoadWaypoint) ? 0 : total_offset, 0, pal);
 }
 
-static int GetSlopePixelZ_Station(TileIndex tile, uint, uint, bool)
-{
-	return GetTileMaxPixelZ(tile);
-}
-
-static Foundation GetFoundation_Station(TileIndex, Slope tileh)
-{
-	return FlatteningFoundation(tileh);
-}
 
 static void FillTileDescRoadStop(TileIndex tile, TileDesc &td)
 {
@@ -3653,6 +3647,7 @@ void FillTileDescAirport(TileIndex tile, TileDesc &td)
 	}
 }
 
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_Station(TileIndex tile, TileDesc &td)
 {
 	td.owner[0] = GetTileOwner(tile);
@@ -3688,6 +3683,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc &td)
 }
 
 
+/** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	TrackBits trackbits = TRACK_BIT_NONE;
@@ -3735,6 +3731,7 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 }
 
 
+/** @copydoc TileLoopProc */
 static void TileLoop_Station(TileIndex tile)
 {
 	auto *st = BaseStation::GetByTile(tile);
@@ -3805,6 +3802,7 @@ static void TileLoop_Station(TileIndex tile)
 }
 
 
+/** @copydoc AnimateTileProc */
 static void AnimateTile_Station(TileIndex tile)
 {
 	if (HasStationRail(tile)) {
@@ -3824,6 +3822,7 @@ static void AnimateTile_Station(TileIndex tile)
 }
 
 
+/** @copydoc ClickTileProc */
 static bool ClickTile_Station(TileIndex tile)
 {
 	const BaseStation *bst = BaseStation::GetByTile(tile);
@@ -3839,7 +3838,8 @@ static bool ClickTile_Station(TileIndex tile)
 	return true;
 }
 
-static VehicleEnterTileStates VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
+/** @copydoc VehicleEnterTileProc */
+static VehicleEnterTileStates VehicleEnterTile_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (v->type == VEH_TRAIN) {
 		StationID station_id = GetStationIndex(tile);
@@ -4777,9 +4777,9 @@ void DeleteOilRig(TileIndex tile)
 	delete st;
 }
 
+/** @copydoc ChangeTileOwnerProc */
 static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-
 	if (IsAnyRoadStopTile(tile)) {
 		for (RoadTramType rtt : _roadtramtypes) {
 			/* Update all roadtypes, no matter if they are present */
@@ -4900,12 +4900,7 @@ static CommandCost CanRemoveRoadWithStop(TileIndex tile, DoCommandFlags flags)
 	return CommandCost();
 }
 
-/**
- * Clear a single tile of a station.
- * @param tile The tile to clear.
- * @param flags The DoCommand flags related to the "command".
- * @return The cost, or error of clearing.
- */
+/** @copydoc ClearTileProc */
 CommandCost ClearTile_Station(TileIndex tile, DoCommandFlags flags)
 {
 	if (flags.Test(DoCommandFlag::Auto)) {
@@ -4948,6 +4943,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlags flags)
 	return CMD_ERROR;
 }
 
+/** @copydoc TerraformTileProc */
 static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
@@ -5368,7 +5364,8 @@ uint FlowStatMap::GetFlowFromVia(StationID from, StationID via) const
 	return i->second.GetShare(via);
 }
 
-static CommandCost CheckBuildAbove_Station(TileIndex tile, DoCommandFlags, Axis, int height)
+/** @copydoc CheckBuildAboveProc */
+static CommandCost CheckBuildAbove_Station(TileIndex tile, [[maybe_unused]] DoCommandFlags flags, [[maybe_unused]] Axis axis, int height)
 {
 	StationType type = GetStationType(tile);
 	auto bridgeable_info = GetStationBridgeableTileInfo(type);
@@ -5391,20 +5388,19 @@ static CommandCost CheckBuildAbove_Station(TileIndex tile, DoCommandFlags, Axis,
 	return IsStationBridgeAboveOk(tile, bridgeable_info, type, GetStationGfx(tile), height);
 }
 
+/** TileTypeProcs definitions for TileType::Station tiles. */
 extern const TileTypeProcs _tile_type_station_procs = {
-	DrawTile_Station,           // draw_tile_proc
-	GetSlopePixelZ_Station,     // get_slope_z_proc
-	ClearTile_Station,          // clear_tile_proc
-	nullptr,                       // add_accepted_cargo_proc
-	GetTileDesc_Station,        // get_tile_desc_proc
-	GetTileTrackStatus_Station, // get_tile_track_status_proc
-	ClickTile_Station,          // click_tile_proc
-	AnimateTile_Station,        // animate_tile_proc
-	TileLoop_Station,           // tile_loop_proc
-	ChangeTileOwner_Station,    // change_tile_owner_proc
-	nullptr,                       // add_produced_cargo_proc
-	VehicleEnter_Station,       // vehicle_enter_tile_proc
-	GetFoundation_Station,      // get_foundation_proc
-	TerraformTile_Station,      // terraform_tile_proc
-	CheckBuildAbove_Station, // check_build_above_proc
+	.draw_tile_proc = DrawTile_Station,
+	.get_slope_pixel_z_proc = [](TileIndex tile, uint, uint, bool) { return GetTileMaxPixelZ(tile); },
+	.clear_tile_proc = ClearTile_Station,
+	.get_tile_desc_proc = GetTileDesc_Station,
+	.get_tile_track_status_proc = GetTileTrackStatus_Station,
+	.click_tile_proc = ClickTile_Station,
+	.animate_tile_proc = AnimateTile_Station,
+	.tile_loop_proc = TileLoop_Station,
+	.change_tile_owner_proc = ChangeTileOwner_Station,
+	.vehicle_enter_tile_proc = VehicleEnterTile_Station,
+	.get_foundation_proc = [](TileIndex, Slope tileh) { return FlatteningFoundation(tileh); },
+	.terraform_tile_proc = TerraformTile_Station,
+	.check_build_above_proc = CheckBuildAbove_Station,
 };

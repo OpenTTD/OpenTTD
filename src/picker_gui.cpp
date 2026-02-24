@@ -148,7 +148,7 @@ static bool ClassIDSorter(int const &a, int const &b)
 	return a < b;
 }
 
-/** Filter classes by class name. */
+/** Filter classes by class name. @copydoc GUIList::FilterFunction */
 static bool ClassTagNameFilter(int const *item, PickerFilterData &filter)
 {
 	filter.ResetState();
@@ -164,7 +164,7 @@ static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
 	return r < 0;
 }
 
-/** Filter types by class name. */
+/** Filter types by class name. @copydoc GUIList::FilterFunction */
 static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
 {
 	auto badges = filter.callbacks->GetTypeBadges(item->class_index, item->index);
@@ -928,7 +928,7 @@ void PickerWindow::BuildPickerCollectionList()
 	if (!this->has_class_picker) return;
 }
 
-/** Create nested widgets for the class picker widgets. */
+/** Create nested widgets for the class picker widgets. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 {
 	static constexpr std::initializer_list<NWidgetPart> picker_class_widgets = {
@@ -963,7 +963,7 @@ std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 	return MakeNWidgets(picker_class_widgets, nullptr);
 }
 
-/** Create nested widgets for the type picker widgets. */
+/** Create nested widgets for the type picker widgets. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 {
 	static constexpr std::initializer_list<NWidgetPart> picker_type_widgets = {

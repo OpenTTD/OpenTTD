@@ -153,7 +153,7 @@ SaveLoadTable GetLinkGraphDesc()
  */
 class SlLinkgraphJobProxy : public DefaultSaveLoadHandler<SlLinkgraphJobProxy, LinkGraphJob> {
 public:
-	static inline const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+	static inline const SaveLoad description[] = {{}}; ///< Needed to keep DefaultSaveLoadHandler happy.
 	SaveLoadTable GetDescription() const override { return GetLinkGraphDesc(); }
 	static inline const SaveLoadCompatTable compat_description = _linkgraph_sl_compat;
 

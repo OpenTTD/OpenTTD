@@ -40,7 +40,7 @@ extern SaveLoadTable GetCargoPacketDesc();
  */
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
-	/* A mathematical vector from (0,0). */
+	/** A mathematical vector from (0,0). */
 	struct Vector {
 		int16_t x;
 		int16_t y;

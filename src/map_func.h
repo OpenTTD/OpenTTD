@@ -215,9 +215,7 @@ private:
 		TileIndex index;
 	};
 
-	/*
-	 * Iterable ensemble of all Tiles
-	 */
+	/** Iterable ensemble of all %Tiles. */
 	struct IterateWrapper {
 		Iterator begin() { return Iterator(TileIndex{}); }
 		Iterator end() { return Iterator(TileIndex{Map::Size()}); }
@@ -411,6 +409,7 @@ inline TileIndexDiff TileDiffXY(int x, int y)
 	return TileIndex{(y >> 4 << Map::LogX()) + (x >> 4)};
 }
 
+TileIndex TileVirtXYClampedToMap(int x, int y);
 
 /**
  * Get the X component of a tile

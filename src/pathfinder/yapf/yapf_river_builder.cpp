@@ -18,7 +18,7 @@
 /* River builder pathfinder node. */
 struct YapfRiverBuilderNode : CYapfNodeT<CYapfNodeKeyTrackDir, YapfRiverBuilderNode> {};
 
-/* River builder pathfinder node list. */
+/** River builder pathfinder node list. */
 using RiverBuilderNodeList = NodeList<YapfRiverBuilderNode, 8, 10>;
 
 /* We don't need a follower but YAPF requires one. */
@@ -29,7 +29,7 @@ struct DummyVehicle : Vehicle {};
 
 class YapfRiverBuilder;
 
-/* Types struct required for YAPF components. */
+/** Types struct required for YAPF components. */
 struct RiverBuilderTypes {
 	using Tpf = YapfRiverBuilder;
 	using TrackFollower = RiverBuilderFollower;
@@ -37,7 +37,7 @@ struct RiverBuilderTypes {
 	using VehicleType = DummyVehicle;
 };
 
-/* River builder pathfinder implementation. */
+/** River builder pathfinder implementation. */
 class YapfRiverBuilder
 	: public CYapfBaseT<RiverBuilderTypes>
 	, public CYapfSegmentCostCacheNoneT<RiverBuilderTypes>

@@ -101,7 +101,7 @@ static TileIndex GetReferenceTile(const NewsReference &reference)
 	return std::visit(visitor{}, reference);
 }
 
-/* Normal news items. */
+/** Normal news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -133,7 +133,7 @@ static WindowDesc _normal_news_desc(
 	_nested_normal_news_widgets
 );
 
-/* New vehicles news items. */
+/** New vehicles news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -181,7 +181,7 @@ static WindowDesc _vehicle_news_desc(
 	_nested_vehicle_news_widgets
 );
 
-/* Company news items. */
+/** Company news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -226,7 +226,7 @@ static WindowDesc _company_news_desc(
 	_nested_company_news_widgets
 );
 
-/* Thin news items. */
+/** Thin news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -260,7 +260,7 @@ static WindowDesc _thin_news_desc(
 	_nested_thin_news_widgets
 );
 
-/* Small news items. */
+/** Small news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets = {
 	/* Caption + close box. The caption is not WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
@@ -1212,10 +1212,10 @@ static void DrawNewsString(uint left, uint right, int y, TextColour colour, cons
 }
 
 struct MessageHistoryWindow : Window {
-	int line_height = 0; /// < Height of a single line in the news history window including spacing.
-	int date_width = 0; /// < Width needed for the date part.
+	int line_height = 0; ///< Height of a single line in the news history window including spacing.
+	int date_width = 0; ///< Width needed for the date part.
 
-	Scrollbar *vscroll = nullptr;
+	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
 
 	MessageHistoryWindow(WindowDesc &desc) : Window(desc)
 	{

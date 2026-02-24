@@ -18,7 +18,7 @@ enum TextfileType : uint8_t {
 	TFT_CHANGELOG,                  ///< Content changelog
 	TFT_LICENSE,                    ///< Content license
 
-	TFT_CONTENT_END, // This marker is used to generate the above three buttons in sequence by various of places in the code.
+	TFT_CONTENT_END, ///< This marker is used to generate the above three buttons in sequence by various of places in the code.
 
 	TFT_SURVEY_RESULT = TFT_CONTENT_END, ///< Survey result (preview)
 	TFT_GAME_MANUAL,                ///< Game manual/documentation file

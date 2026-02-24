@@ -4159,7 +4159,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}لا ي�
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}تعذر إعاده تسميه المدينه...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}لا يمكن انشاء مدينة هنا
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}لا يمكن توسيع المدينة ...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... قريبة جدا من حافة الخريطة
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... قريبة جدا من مدينة أخرى
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... المدن كثيرة جدا
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... لا يوجد فراغ في الخريطة

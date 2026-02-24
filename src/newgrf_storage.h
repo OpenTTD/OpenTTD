@@ -48,6 +48,7 @@ protected:
 	/**
 	 * Check whether currently changes to the storage shall be persistent or
 	 * temporary till the next call to ClearChanges().
+	 * @return \c true iff the changes should be persisted or not. For example, when testing commands we do not persist the changes.
 	 */
 	static bool AreChangesPersistent() { return (gameloop || command) && !testmode; }
 

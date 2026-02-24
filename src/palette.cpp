@@ -40,12 +40,17 @@ const uint PALETTE_SHIFT = 8 - PALETTE_BITS;
 const uint PALETTE_BITS_MASK = ((1U << PALETTE_BITS) - 1) << PALETTE_SHIFT;
 const uint PALETTE_BITS_OR = (1U << (PALETTE_SHIFT - 1));
 
-/* Palette and reshade lookup table. */
+/** @{
+ * Palette lookup table. */
 using PaletteLookup = std::array<uint8_t, 1U << (PALETTE_BITS * 3)>;
 static PaletteLookup _palette_lookup{};
+/** @} */
 
+/** @{
+ * Reshade lookup table. */
 using ReshadeLookup = std::array<uint8_t, 1U << PALETTE_BITS>;
 static ReshadeLookup _reshade_lookup{};
+/** @} */
 
 /**
  * Reduce bits per channel to PALETTE_BITS, and place value in the middle of the reduced range.

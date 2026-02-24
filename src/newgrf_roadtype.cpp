@@ -30,6 +30,9 @@
  * Special values for rr, tt, RR:
  * - 0xFF: Track not present on tile.
  * - 0xFE: Track present, but no matching entry in translation table.
+ * @param tile The tile to consider.
+ * @param grffile The NewGRF the types are for.
+ * @return The track types.
  */
 uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
 {

@@ -64,6 +64,8 @@ static inline Dimension ScaleGUITrad(const Dimension &dim)
 /**
  * Scale sprite size for GUI.
  * Offset is ignored.
+ * @param sprid The sprite to get the size from.
+ * @return The scaled dimension of the sprite.
  */
 Dimension GetScaledSpriteSize(SpriteID sprid)
 {

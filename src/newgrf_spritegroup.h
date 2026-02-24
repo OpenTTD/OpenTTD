@@ -43,7 +43,7 @@ using SpriteGroupID = PoolID<uint32_t, struct SpriteGroupIDTag, 1U << 30, 0xFFFF
 using SpriteGroupPool = Pool<SpriteGroup, SpriteGroupID, 1024, PoolType::Data>;
 extern SpriteGroupPool _spritegroup_pool;
 
-/* Common wrapper for all the different sprite group types */
+/** Common wrapper for all the different sprite group types. */
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
 	SpriteGroup(SpriteGroupID index) : SpriteGroupPool::PoolItem<&_spritegroup_pool>(index) {}
@@ -83,8 +83,7 @@ struct SpecializedSpriteGroup : public SpriteGroup {
 };
 
 
-/* 'Real' sprite groups contain a list of other result or callback sprite
- * groups. */
+/** 'Real' sprite groups contain a list of other result or callback sprite groups. */
 struct RealSpriteGroup : SpecializedSpriteGroup<RealSpriteGroup> {
 	RealSpriteGroup(SpriteGroupID index) : SpecializedSpriteGroup<RealSpriteGroup>(index) {}
 
@@ -102,7 +101,7 @@ protected:
 	ResolverResult Resolve(ResolverObject &object) const override;
 };
 
-/* Shared by deterministic and random groups. */
+/** Shared by deterministic and random groups. */
 enum VarSpriteGroupScope : uint8_t {
 	VSG_BEGIN,
 
@@ -188,10 +187,10 @@ struct DeterministicSpriteGroup : SpecializedSpriteGroup<DeterministicSpriteGrou
 	std::vector<DeterministicSpriteGroupAdjust> adjusts{};
 	std::vector<DeterministicSpriteGroupRange> ranges{}; // Dynamically allocated
 
-	/* Dynamically allocated, this is the sole owner */
+	/** Dynamically allocated, this is the sole owner. */
 	DeterministicSpriteGroupResult default_result;
 
-	const SpriteGroup *error_group = nullptr; // was first range, before sorting ranges
+	const SpriteGroup *error_group = nullptr; ///< Was first range, before sorting ranges.
 
 protected:
 	ResolverResult Resolve(ResolverObject &object) const override;
@@ -220,8 +219,7 @@ protected:
 };
 
 
-/* This contains a callback result. A failed callback has a value of
- * CALLBACK_FAILED */
+/** This contains a callback result. A failed callback has a value of %CALLBACK_FAILED. */
 struct CallbackResultSpriteGroup : SpecializedSpriteGroup<CallbackResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a callback result
@@ -237,8 +235,7 @@ protected:
 };
 
 
-/* A result sprite group returns the first SpriteID and the number of
- * sprites in the set */
+/** A result sprite group returns the first SpriteID and the number of sprites in the set. */
 struct ResultSpriteGroup : SpecializedSpriteGroup<ResultSpriteGroup> {
 	/**
 	 * Creates a spritegroup representing a sprite number result.
@@ -427,6 +424,7 @@ public:
 
 	/**
 	 * Used by RandomizedSpriteGroup: Triggers for rerandomisation
+	 * @return The triggers waiting for randomisation.
 	 */
 	uint32_t GetWaitingRandomTriggers() const
 	{
@@ -435,6 +433,7 @@ public:
 
 	/**
 	 * Used by RandomizedSpriteGroup: Consume triggers.
+	 * @param triggers The triggers t0 set as having used random triggers.
 	 */
 	void AddUsedRandomTriggers(uint32_t triggers)
 	{
@@ -480,6 +479,7 @@ struct SpecializedResolverObject : public ResolverObject {
 	/**
 	 * Set waiting triggers for rerandomisation.
 	 * This is scope independent, even though this is broken-by-design in most cases.
+	 * @param triggers The triggers to set wating.
 	 */
 	void SetWaitingRandomTriggers(RandomTriggers triggers)
 	{
@@ -489,6 +489,7 @@ struct SpecializedResolverObject : public ResolverObject {
 	/**
 	 * Get the triggers, which were "consumed" by some rerandomisation.
 	 * This is scope independent, even though this is broken-by-design in most cases.
+	 * @return The triggers that have used random triggers.
 	 */
 	RandomTriggers GetUsedRandomTriggers() const
 	{

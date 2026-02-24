@@ -71,7 +71,11 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	TileIndex xy = INVALID_TILE; ///< Position on the map
 	RoadStop *next = nullptr; ///< Next stop of the given type at this station
 
-	/** Initializes a RoadStop */
+	/**
+	 * Initializes a RoadStop.
+	 * @param index The pool identifier of the road stop.
+	 * @param tile The tile the road stop is at.
+	 */
 	inline RoadStop(RoadStopID index, TileIndex tile = INVALID_TILE) : RoadStopPool::PoolItem<&_roadstop_pool>(index), xy(tile) { }
 
 	~RoadStop();

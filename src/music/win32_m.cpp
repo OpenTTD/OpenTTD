@@ -105,6 +105,7 @@ static void TransmitStandardSysex(MidiSysexMessage msg)
 /**
  * Realtime MIDI playback service routine.
  * This is called by the multimedia timer.
+ * @param uTimerID The identifier of the timer.
  */
 void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR)
 {

@@ -209,11 +209,11 @@ struct OskWindow : public Window {
 	}
 };
 
-static const int HALF_KEY_WIDTH = 7;  // Width of 1/2 key in pixels.
-static const int INTER_KEY_SPACE = 2; // Number of pixels between two keys.
+static const int HALF_KEY_WIDTH = 7; ///< Width of 1/2 key in pixels.
+static const int INTER_KEY_SPACE = 2; ///< Number of pixels between two keys.
 
-static const int TOP_KEY_PADDING = 2; // Vertical padding for the top row of keys.
-static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows.
+static const int TOP_KEY_PADDING = 2; ///< Vertical padding for the top row of keys.
+static const int KEY_PADDING = 6; ///< Vertical padding for remaining key rows.
 
 /**
  * Add a key widget to a row of the keyboard.

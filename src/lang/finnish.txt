@@ -1141,8 +1141,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Allekirjoi
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} puuttuvaa tai vioittunutta tiedosto{P "" a})
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tuettujen näyttötarkkuuksien hakeminen epäonnistui
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täyskuvatila ei toimi
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Tuettujen näyttötarkkuuksien hakeminen epäonnistui
+STR_ERROR_FULLSCREEN_FAILED                                     :Täyskuvatila ei toimi
 
 # Custom currency window
 
@@ -1365,7 +1365,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Aseta kartan ma
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Tämä arvo ei kelpaa kartan korkeusrajaksi, sillä kartalla on ainakin yksi sitä korkeampi vuori
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :Tämä arvo ei kelpaa kartan korkeusrajaksi, sillä kartalla on ainakin yksi sitä korkeampi vuori
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sallii maaston muokkaamisen rakennusten ja ratojen alta tuhoamatta niitä
@@ -1503,7 +1503,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Salli läpiajet
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Sallii läpiajettavien pysäkkien rakentamisen kuntien omistamille teille
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Salli läpiajettavat pysäkit kilpailijoiden omistamilla teillä: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Salli pysäkkien rakentaminen toisten yhtiöiden omistamille teille
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tätä asetusta ei voi muuttaa, kun kulkuneuvoja on olemassa
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Tätä asetusta ei voi muuttaa, kun kulkuneuvoja on olemassa
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuurin huoltokustannukset: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Mikäli käytössä, infrastruktuurista aiheutuu huoltokuluja. Kulut kasvavat suhteettomasti verkon kokoon nähden, täten ne vaikuttavat suurempiin yhtiöihin enemmän kuin pieniin
@@ -1662,8 +1662,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivä�
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Litteälle maisemalle annettava korkeus: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Suurin sallittu aseman levittäytyneisyys: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Suurin sallittu alue jolle yhden aseman osat voivat sijoittua. Huomioi, että suuret arvot hidastavat peliä
@@ -2210,27 +2210,27 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Sallii junien k
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuta asetusarvo
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Virhe asetustiedostossa...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... virhe taulukossa ”{STRING}”
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... epäkelpo arvo ”{STRING}” asetuksella ”{STRING}”
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... ylimääräisiä merkkejä asetuksen ”{STRING}” perässä
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}… NewGRF ”{STRING}” jätetään huomiotta: sama NewGRF-tunnus kuin NewGRF:llä ”{STRING}”
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... jätetään huomiotta epäkelpo NewGRF ”{STRING}”: {STRING}
+STR_CONFIG_ERROR                                                :Virhe asetustiedostossa…
+STR_CONFIG_ERROR_ARRAY                                          :… virhe taulukossa ”{STRING}”
+STR_CONFIG_ERROR_INVALID_VALUE                                  :epäkelpo arvo ”{STRING}” asetuksella ”{STRING}”
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :ylimääräisiä merkkejä asetuksen ”{STRING}” lopussa
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :… NewGRF ”{STRING}” jätetään huomiotta: sama NewGRF-tunnus kuin NewGRF:llä ”{STRING}”
+STR_CONFIG_ERROR_INVALID_GRF                                    :jätetään huomiotta epäkelpo NewGRF ”{STRING}”: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei löydetty
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ei turvallinen staattiseen käyttöön
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :järjestelmä-NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :yhteensopimaton OpenTTD:n tämän version kanssa
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tuntematon
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkaustaso ”{STRING}” on kelvoton
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... pelitallennemuoto ”{STRING}” ei ole saatavilla. Palataan muotoon ”{STRING}”
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ohitetaan perusgrafiikkapaketti ”{STRING}”: ei löydetty
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ohitetaan äänipaketti ”{STRING}”: ei löydetty
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ohitetaan musiikkipaketti ”{STRING}”: ei löydetty
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :… pakkaustaso ”{STRING}” on kelvoton
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :pelitallennemuoto ”{STRING}” ei ole saatavilla. Palataan muotoon ”{STRING}”
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ohitetaan perusgrafiikkapaketti ”{STRING}”: ei löytynyt
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ohitetaan perusäänipaketti ”{STRING}”: ei löydy
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ohitetaan perusmusiikkipaketti ”{STRING}”: ei löydetty
 
 # Video initalization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Virhe näyttöasetuksissa…
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}… yhteensopivaa grafiikkasuoritinta ei löytynyt. Laitteistokiihdytystä ei käytetä.
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}… Näytönohjaimen ajuri kaatoi pelin. Laitteistokiihdytys on poistettu käytöstä
+STR_VIDEO_DRIVER_ERROR                                          :Virhe näyttöasetuksissa…
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :yhteensopivaa grafiikkasuoritinta ei löytynyt. Laitteistokiihdytys on poistettu käytöstä
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :Näytönohjaimen ajuri kaatoi pelin. Laitteistokiihdytys on poistettu käytöstä
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
@@ -2367,15 +2367,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Yksinker
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Yksinkertainen kasvojenvalitsin
 STR_FACE_LOAD                                                   :{BLACK}Lataa
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Lataa suosikkikasvot
-STR_FACE_LOAD_DONE                                              :{WHITE}Suosikkikasvosi on ladattu OpenTTD:n kokoonpanotiedostosta.
+STR_FACE_LOAD_DONE                                              :Suosikkikasvosi on ladattu OpenTTD:n asetustiedostosta
 STR_FACE_FACECODE                                               :{BLACK}Pelaajan kasvojen koodi
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tarkastele ja/tai aseta johtajan kasvojen koodi
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tarkastele ja/tai aseta johtajan kasvojen koodi
-STR_FACE_FACECODE_SET                                           :{WHITE}Uudet johtajan kasvot on asetettu
-STR_FACE_FACECODE_ERR                                           :{WHITE}Johtajan kasvojen koodia ei voitu asettaa – tarvitaan kelvollinen tunniste ja luku
+STR_FACE_FACECODE_SET                                           :Uudet johtajan kasvot on asetettu
+STR_FACE_FACECODE_ERR                                           :Johtajan kasvojen koodia ei voitu asettaa – tarvitaan kelvollinen tunniste ja luku
 STR_FACE_SAVE                                                   :{BLACK}Tallenna
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tallenna suosikkikasvot
-STR_FACE_SAVE_DONE                                              :{WHITE}Nämä kasvot tallennetaan suosikkikasvoiksesi OpenTTD:n kokoonpanotiedostoon.
+STR_FACE_SAVE_DONE                                              :Nämä kasvot tallennetaan suosikkikasvoiksesi OpenTTD:n asetustiedostoon
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} ({NUM})
 STR_FACE_YES                                                    :Kyllä
@@ -2589,33 +2589,33 @@ STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Syötä teksti verkkokeskustelua varten
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Verkkolaitteita ei löytynyt
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Yhteys palvelimeen aikakatkaistiin tai torjuttiin
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Yhteyden muodostaminen epäonnistui NewGRF-virheen vuoksi
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Verkkopelin tahdistus epäonnistui
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Verkkopeliyhteys katkesi
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Palvelimen pelitallennetta ei voi ladata
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Palvelinta ei voitu käynnistää
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokollavirhe tapahtui ja yhteys suljettiin
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Et ole asettanut pelaajanimeäsi. Nimen voi asettaa moninpeli-ikkunan ylälaidassa.
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Et ole asettanut palvelimesi nimeä. Nimen voi asettaa moninpeli-ikkunan ylälaidassa.
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Tämän asiakkaan versio ei vastaa palvelimen versiota
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Väärä salasana
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Et ole sallittujen asiakkaiden listalla
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Palvelin on täynnä
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinut on estetty palvelimelta
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sinut potkittiin pihalle palvelimelta
-STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Syy: {STRING}
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Huijaaminen ei ole sallittua tällä palvelimella
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Lähetit liian monta komentoa palvelimelle
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Käytit liian paljon aikaa salasanan syöttämiseen
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tietokoneesi on liian hidas pysyäkseen palvelimen tahdissa
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Kartan lataus kesti liian kauan
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Palvelimelle liittyminen kesti liian kauan
-STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Pelaajanimesi ei kelpaa
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :Verkkolaitteita ei löytynyt
+STR_NETWORK_ERROR_NOCONNECTION                                  :Yhteys palvelimeen aikakatkaistiin tai torjuttiin
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :Yhteyden muodostaminen epäonnistui NewGRF:ien yhteensopimattomuuden vuoksi
+STR_NETWORK_ERROR_DESYNC                                        :Verkkopelin tahdistus epäonnistui
+STR_NETWORK_ERROR_LOSTCONNECTION                                :Verkkopeliyhteys katkesi
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :Pelitallennetta ei voitu ladata
+STR_NETWORK_ERROR_SERVER_START                                  :Palvelinta ei voitu käynnistää
+STR_NETWORK_ERROR_SERVER_ERROR                                  :Protokollavirhe havaittiin, yhteys suljettiin
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Et ole asettanut pelaajanimeäsi. Nimen voi asettaa moninpeli-ikkunan ylälaidassa
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Et ole asettanut palvelimesi nimeä. Nimen voi asettaa moninpeli-ikkunan ylälaidassa
+STR_NETWORK_ERROR_WRONG_REVISION                                :Tämän asiakkaan versio ei vastaa palvelimen versiota
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Väärä salasana
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :Et ole sallittujen asiakkaiden luettelossa
+STR_NETWORK_ERROR_SERVER_FULL                                   :Palvelin on täynnä
+STR_NETWORK_ERROR_SERVER_BANNED                                 :Sinut on estetty tältä palvelimelta
+STR_NETWORK_ERROR_KICKED                                        :Sinut potkittiin pelistä pihalle
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :Syy: {STRING}
+STR_NETWORK_ERROR_CHEATER                                       :Huijaaminen ei ole sallittua tällä palvelimella
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :Lähetit liian monta komentoa palvelimelle
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Käytit liian paljon aikaa salasanan syöttämiseen
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :Tietokoneesi on liian hidas pysyäkseen palvelimen tahdissa
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Tietokoneellasi kesti liian kauan ladata kartta
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :Tietokoneellasi kesti liian kauan liittyä palvelimelle
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :Pelaajanimesi ei kelpaa
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mahdollinen yhteyden menetys
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Viimeisen {NUM} sekunnin{P "" ""} aikana palvelimelta ei ole vastaanotettu tietoja
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Mahdollinen yhteyden menetys
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :Viimeisen {NUM} sekunnin aikana palvelimelta ei ole vastaanotettu tietoja
 
 ###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :yleinen virhe
@@ -2668,14 +2668,14 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi {CURRENCY_LONG} yhtiölle {STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen…{}{}Odota, ole hyvä…
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :Palvelin sulki istunnon
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :Palvelin käynnistyy uudelleen…{}{}Odota, ole hyvä…
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})
 
-STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Palvelimen rekisteröinti epäonnistui
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Toinen palvelin rekisteröityi samalla kutsukoodilla. Pelin tyypiksi vaihdetaan ”paikallinen”.
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Palvelimesi ei salli etäyhteyksiä
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Muut pelaajat eivät voi saada yhteyttä palvelimeesi
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :Palvelimen rekisteröinti epäonnistui
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :Toinen palvelin rekisteröityi samalla kutsukoodilla. Pelin tyypiksi vaihdetaan ”paikallinen”.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Palvelimesi ei salli etäyhteyksiä
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Muut pelaajat eivät voi saada yhteyttä palvelimeesi
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Online-sisältö
@@ -2719,8 +2719,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Latauks
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valittu seuraavan takia: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Vaatimukset: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Avainsanat: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD on käännetty ilman ”zlib”-tukea…
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... sisällön lataus ei ole mahdollista!
+STR_CONTENT_NO_ZLIB                                             :OpenTTD on käännetty ilman ”zlib”-tukea…
+STR_CONTENT_NO_ZLIB_SUB                                         :sisällön lataaminen ei ole mahdollista!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Perusgrafiikat
@@ -2742,10 +2742,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Lataus v
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}/{BYTES} ladattu ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ei voitu yhdistää sisältöpalvelimeen...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Lataus epäonnistui...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... tiedostoa ei voitu kirjoittaa
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ei voitu purkaa ladattua tiedostoa
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Ei voitu yhdistää sisältöpalvelimeen…
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Lataus epäonnistui…
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :tiedostoa ei voida kirjoittaa
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :Ladattua tiedostoa ei voitu purkaa
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Puuttuvat grafiikat
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD vaatii toimiakseen grafiikat, mutta niitä ei löydetty. Sallitaanko grafiikoiden lataus ja asennus?
@@ -3521,12 +3521,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ajetaan 
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Suoritetaan skriptiä
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Valmistellaan peliä
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Kuntatietojen lataaminen epäonnistui
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Virheellisesti muotoiltu JSON-tiedosto
-STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Virhe tiedon {STRING} muotoilussa
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Virhe {STRING}-koordinaattien muotoilussa: arvon tulee olla väliltä 0–1 osuutena korkeuskartan kokonaismitasta
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :Kuntatietojen lataaminen epäonnistui
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :Virheellisesti muotoiltu JSON-tiedosto
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :Virhe tiedon {STRING} muotoilussa
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :Virhe {STRING}-koordinaattien muotoilussa: arvon tulee olla väliltä 0–1 osuutena korkeuskartan kokonaismitasta
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}{NUM} kunnan perustamiseksi ei löytynyt kelvollis{P ta ia} paikk{P a oj}a. Aiottu{P u ihi}n paikk{P aa oihi}n sijoitettiin sen sijaan kylt{P ti it}
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{NUM} kunnan perustamiseksi ei löytynyt kelvollis{P ta ia} paikk{P a oj}a. Aiottu{P u ihi}n paikk{P aa oihi}n sijoitettiin sen sijaan kylt{P ti it}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-asetukset
@@ -3644,8 +3644,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varoitus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Virhe: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Virhe: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF ”{STRING}” on kohdannut vakavan virheen:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF ”{STRING}” on kohdannut virheen:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :NewGRF ”{STRING}” palautti vakavan virheen:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :NewGRF ”{STRING}” palautti virheen:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ei toimi OpenTTD:n ilmoittaman TTDPatch-version kanssa
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} on TTD:n {2:STRING}-versiota varten
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} on suunniteltu toimimaan lisäosan {2:STRING} kanssa
@@ -3672,12 +3672,12 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Virheellinen te
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varoitus!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Olet tekemässä muutoksia käynnissä olevaan peliin. OpenTTD voi kaatua tai nykyinen pelitilanne rikkoutua. Älä tee virheraportteja tästä johtuvista ongelmista.{}Oletko aivan varma?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tiedostoa ei voi lisätä: NewGRF-tunnus on jo käytössä
+STR_NEWGRF_DUPLICATE_GRFID                                      :Tiedostoa ei voi lisätä: NewGRF-tunnus on jo käytössä
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa tiedostoa ei löytynyt (yhteensopiva NewGRF ladattu)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tiedostoa ei voida lisätä: NewGRF-tiedostojen raja saavutettu
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Tiedostoa ei voi lisätä: NewGRF-tiedostojen raja saavutettu
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivia NewGRF:iä ladattu puuttuvien tiedostojen korvaamiseksi
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuva(t) NewGRF-tiedosto(t) on poistettu käytöstä
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Yhteensopivia NewGRF:iä ladattu puuttuvien tiedostojen korvaamiseksi
+STR_NEWGRF_DISABLED_WARNING                                     :Puuttuva(t) NewGRF-tiedosto(t) on poistettu käytöstä
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuttuva(t) NewGRF-tiedosto(t)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Taukotilasta poistuminen saattaa kaataa OpenTTD:n. Älä lähetä virheraportteja tämänjälkeisistä kaatumisista.{}Haluatko todella poistua taukotilasta?
 
@@ -3689,17 +3689,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Löydet
 STR_NEWGRF_LIST_MISSING                                         :{RED}Puuttuvia tiedostoja
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n ”{0:STRING}” käytös aiheuttanee tahdistusvirheitä ja/tai kaatumisia
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Se muutti yksikön ”{1:ENGINE}” vetävän vaunun tilaa varikon ulkopuolella
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muutti kulkuneuvon ”{1:ENGINE}” pituutta varikon ulkopuolella
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Se muutti kulkuneuvon ”{1:ENGINE}” kapasiteettia, vaikka kulkuneuvo ei ollut varikolla eikä uudelleensovitettavana
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiölle ”{1:COMPANY}” kuuluvan junan ”{0:VEHICLE}” pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa nykiä tai kaatua
+STR_NEWGRF_BROKEN                                               :NewGRF:n ”{0:STRING}” käytös voi aiheuttaa tahdistusvirheitä ja/tai kaatumisia
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Se muutti yksikön ”{1:ENGINE}” vetävän vaunun tilaa varikon ulkopuolella
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :Se muutti kulkuneuvon ”{1:ENGINE}” pituutta varikon ulkopuolella
+STR_NEWGRF_BROKEN_CAPACITY                                      :Se muutti kulkuneuvon ”{1:ENGINE}” kapasiteettia, vaikka kulkuneuvo ei ollut varikolla eikä uudelleensovitettavana
+STR_BROKEN_VEHICLE_LENGTH                                       :Yhtiölle ”{1:COMPANY}” kuuluvan junan ”{0:VEHICLE}” pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa epätahdistua tai kaatua
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF ”{0:STRING}” antaa virheellistä tietoa
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Kulkuneuvon ”{1:ENGINE}” rahti- tai uudelleensovitustiedot poikkeavat rakentamisen jälkeen ostoluettelosta. Tämä voi johtaa uudelleensovituksen epäonnistumiseen, kun kulkuneuvo uudistetaan tai korvataan automaattisesti
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}”{1:STRING}” aiheutti ikuisen silmukan tuotannon takaisinkutsussa
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktio {1:HEX} palautti tuntemattoman/kelvottoman tuloksen {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}”{1:STRING}” palautti virheellisen rahtityypin tuotannon takaisinkutsun kohdassa {2:HEX}
+STR_NEWGRF_BUGGY                                                :NewGRF ”{0:STRING}” antaa virheellistä tietoa
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :Kulkuneuvon ”{1:ENGINE}” rahti- tai uudelleensovitustiedot poikkeavat rakentamisen jälkeen ostoluettelosta. Tämä voi johtaa uudelleensovituksen epäonnistumiseen, kun kulkuneuvo uudistetaan tai korvataan automaattisesti
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :”{1:STRING}” aiheutti ikuisen silmukan tuotannon takaisinkutsussa
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Takaisinkutsu {1:HEX} palautti tuntemattoman/kelvottoman tuloksen {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :”{1:STRING}” palautti virheellisen rahtityypin tuotannon takaisinkutsun kohdassa {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<virheellinen rahti>
@@ -4511,7 +4511,7 @@ STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Osta lai
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Osta ilma-aluksen kopio. Ctrl+napsautus jakaa käskyt. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Anna junalle lupa ohittaa punainen opastin
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Käännä junan suunta
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Vaihda junan suunta
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Pakota ajoneuvo kääntymään ympäri
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Keskitä päänäkymä käskyn kohteeseen. Ctrl+napsautus avaa uuden näkymäikkunan käskyn kohteen sijaintiin.
 
@@ -4940,7 +4940,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Peliskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tarkista peliskriptin loki. Ctrl+napsautus avaa uuteen ikkunaan
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata useita tekoälyjä ”online-sisältö” -järjestelmän kautta
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista skripteistä kaatui. Ilmoita tästä skriptin kehittäjälle liittäen mukaan kuvankaappaus Tekoälyn/peliskriptin virheenjäljitys -ikkunasta
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Yksi käynnissä olevista skripteistä kaatui. Ole hyvä ja ilmoita tästä skriptin kehittäjälle; liitä mukaan kuvakaappaus Tekoälyn/peliskriptin virheenjäljitys -ikkunasta
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn/peliskriptin virheenjäljitysikkuna on vain palvelimen käytettävissä
 
 # AI configuration window
@@ -5036,12 +5036,12 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Arvioitu
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Arvioitu tulo: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Tallentaminen käynnissä,{}odota, kunnes se päättyy!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automaattitallennus epäonnistui.
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :Tallentaminen on vielä käynnissä,{}odota, kunnes se päättyy!
+STR_ERROR_AUTOSAVE_FAILED                                       :Automaattitallennus epäonnistui
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Asemaa ei voi lukea.
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Pelin tallennus epäonnistui…
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Tiedostoa ei voi poistaa.
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Pelin lataus epäonnistui…
+STR_ERROR_GAME_SAVE_FAILED                                      :Pelin tallennus epäonnistui…
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Tiedostoa ei voi poistaa
+STR_ERROR_GAME_LOAD_FAILED                                      :Pelin lataus epäonnistui…
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Sisäinen virhe: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Viallinen tallennus – {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tallennus on tehty uudemmalla versiolla
@@ -5053,18 +5053,18 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ei saatavilla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan luominen peruutettu…{}{}… ei kelvollisia sijainteja kunnille
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... tässä skenaariossa ei ole yhtään kuntaa
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Kartan luominen keskeytetty…{}{}… ei kelvollisia sijainteja kunnille
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :tässä skenaariossa ei ole yhtään kuntaa
 
-STR_ERROR_PNGMAP                                                :{WHITE}Maastoa ei voida ladata PNG-tiedostosta...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... tiedostoa ei löydy
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kuvan tyyppiä ei voida muuttaa. Tarvitaan 8- tai 24-bittinen PNG-kuva
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... tapahtui tunnistamaton virhe (todennäköisesti viallinen tiedosto)
+STR_ERROR_PNGMAP                                                :Maastoa ei voida ladata PNG-tiedostosta…
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :… tiedostoa ei löydy
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :kuvan tyyppiä ei voi muuttaa. Tarvitaan 8- tai 24-bittinen PNG-kuva
+STR_ERROR_PNGMAP_MISC                                           :jotain meni vikaan (todennäköisesti viallinen tiedosto)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Maastoa ei voida ladata BMP-tiedostosta...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kuvan tyyppiä ei voitu muuntaa
+STR_ERROR_BMPMAP                                                :Maastoa ei voi ladata BMP-tiedostosta…
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :kuvan tyyppiä ei voitu muuntaa
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... kuva on liian suuri
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :kuva on liian suuri
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Mittakaavavaroitus
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
@@ -5076,444 +5076,443 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Vain til
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Suuri kuvankaappaus
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Kuvankaappauksen tarkkuus tulee olemaan {COMMA} x {COMMA} pikseliä. Kuvankaappauksen ottaminen voi kestää jonkin aikaa. Haluatko jatkaa?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Korkeuskartta tallennettu nimellä ”{STRING}”. Korkein huippu on {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Kuvakaappaus tallennettu nimellä ”{STRING}”.
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Kuvakaappaus epäonnistui!
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Korkeuskartta tallennettu nimellä ”{STRING}”. Korkein huippu on {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Kuvakaappaus tallennettu nimellä ”{STRING}”
+STR_ERROR_SCREENSHOT_FAILED                                     :Kuvakaappaus epäonnistui!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Viesti
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Viesti yhtiöltä {COMPANY}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Kartan reunan ulkopuolella.
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Liian lähellä kartan reunaa.
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Käteinen ei riitä – tarvitaan {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Tarvitaan tasaista maata.
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Maa viettää väärään suuntaan.
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ei onnistu...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus täytyy purkaa ensin
-STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}… rakennus on suojattu
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Aluetta ei voi tyhjentää...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... maasto on sopimaton
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... se on jo rakennettu
-STR_ERROR_OWNED_BY                                              :{WHITE}… omistaja on {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alueen omistaa toinen yhtiö
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maanmuokkausraja saavutettu
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruutujen tyhjennysraja saavutettu
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puiden istutusraja saavutettu
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nimen täytyy olla ainutkertainen
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} on tiellä
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ei sallittu pelin ollessa pysäytetty
+STR_ERROR_OFF_EDGE_OF_MAP                                       :kartan reunan ulkopuolella
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :liian lähellä kartan reunaa
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :käteinen ei riitä – tarvitaan {CURRENCY_LONG}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :tarvitaan tasaista maata
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :maa viettää väärään suuntaan
+STR_ERROR_CAN_T_DO_THIS                                         :Ei onnistu…
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :rakennus täytyy purkaa ensin
+STR_ERROR_BUILDING_IS_PROTECTED                                 :rakennus on suojeltu
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Tätä aluetta ei voi tyhjentää…
+STR_ERROR_SITE_UNSUITABLE                                       :sijainti on sopimaton
+STR_ERROR_ALREADY_BUILT                                         :se on jo rakennettu
+STR_ERROR_OWNED_BY                                              :omistaja on {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :alueen omistaa toinen yhtiö
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :maan muokkaamisen raja saavutettu
+STR_ERROR_CLEARING_LIMIT_REACHED                                :ruutujen tyhjentämisen raja saavutettu
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :puiden istuttamisraja saavutettu
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :nimen täytyy olla ainutkertainen
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{STRING} on tiellä
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :ei sallittu pelin ollessa pysäytetty
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}: paikallisviranomaiset kieltäytyvät.
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}: paikallisviranomaiset eivät salli toisen lentokentän rakentamista tähän kuntaan
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}: paikallisviranomaiset kieltävät lentokentän rakentamisen meluhuolien vuoksi
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Paikallisviranomaiset ovat huomanneet lahjontayrityksesi
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{TOWN}: paikallisviranomaiset kieltäytyvät
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{TOWN}: paikallisviranomaiset eivät salli toisen lentokentän rakentamista tähän kuntaan
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{TOWN}: paikallisviranomaiset kieltävät lentokentän rakentamisen meluhuolien vuoksi
+STR_ERROR_BRIBE_FAILED                                          :Aluetarkastaja paljasti lahjontayrityksesi
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Maata ei voi korottaa.
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Maata ei voi laskea.
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Maata ei voi tasoittaa tässä...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Kaivuualue vahingoittaisi tunnelia.
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Merenpinta on jo saavutettu.
-STR_ERROR_TOO_HIGH                                              :{WHITE}Liian korkea.
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... alue on jo litteä
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Yläpuolella olevasta sillasta tulisi liian korkea.
-STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Joki täytyy tuhota ensin
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :Tässä ei voi korottaa maata…
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Tässä ei voi laskea maata…
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Maata ei voi tasoittaa tässä…
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :kaivu vahingoittaisi tunnelia
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :merenpinta on jo saavutettu
+STR_ERROR_TOO_HIGH                                              :liian korkea
+STR_ERROR_ALREADY_LEVELLED                                      :alue on jo litteä
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :yläpuolella oleva silta olisi sen jälkeen liian korkea.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :joki täytyy tuhota ensin
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Yhtiön nimeä ei voi muuttaa...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Pääjohtajan nimeä ei voi muuttaa...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Yhtiön nimeä ei voi muuttaa…
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Pääjohtajan nimeä ei voi muuttaa…
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... suurin sallittu lainan suuruus on {CURRENCY_LONG}.
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Lisälainan otto ei onnistu...
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ei lainaa maksettavana.
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... tarvitaan {CURRENCY_LONG}.
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Lainaa ei voi lyhentää...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Pankista lainattua rahaa ei voi antaa pois...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Tälle yhtiölle ei voi antaa rahaa…
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Yhtiötä ei voi ostaa...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Yhtiön päärakennusta ei voi rakentaa...
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :suurin sallittu lainan suuruus on {CURRENCY_LONG}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Lisälainan otto ei onnistu…
+STR_ERROR_LOAN_ALREADY_REPAID                                   :ei lainaa takaisinmaksettavaksi
+STR_ERROR_CURRENCY_REQUIRED                                     :tarvitaan {CURRENCY_LONG}
+STR_ERROR_CAN_T_REPAY_LOAN                                      :Lainaa ei voi lyhentää…
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Pankista lainattua rahaa ei voi antaa pois…
+STR_ERROR_CAN_T_GIVE_MONEY                                      :Tälle yhtiölle ei voi antaa rahaa…
+STR_ERROR_CAN_T_BUY_COMPANY                                     :Yhtiötä ei voi ostaa…
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Yhtiön pääkonttoria ei voi rakentaa…
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kuntia ei voida luoda…
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kunnan nimeä ei voi vaihtaa...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kuntaa ei voi perustaa tähän...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kuntaa ei voi laajentaa...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liian lähellä kartan reunaa.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liian lähellä toista kuntaa
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kuntaa
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... kartalla ei ole enää tilaa
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tietyöt ovat käynnissä.
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kuntaa ei voida poistaa…{}{}Asema tai varikko viittaa kuntaan tai kunnan omistamaa ruutua ei voida poistaa
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tämän kunnan keskustassa ei ole sopivaa paikkaa patsaalle
-STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Taloa ei voida rakentaa…
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :Kuntia ei voi luoda…
+STR_ERROR_CAN_T_RENAME_TOWN                                     :Kunnan nimeä ei voi vaihtaa…
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Tähän ei voi perustaa kuntaa…
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :Kuntaa ei voi laajentaa…
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :liian lähellä toista kuntaa
+STR_ERROR_TOO_MANY_TOWNS                                        :liian monta kuntaa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :kartalla ei ole enää tilaa
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :tietyöt käynnissä
+STR_ERROR_TOWN_CAN_T_DELETE                                     :Tätä kuntaa ei voi poistaa…{}{}Asema tai varikko viittaa kuntaan, tai kunnan omistamaa ruutua ei voida poistaa
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :tämän kunnan keskustassa ei ole sopivaa paikkaa patsaalle
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :Taloa ei voida rakentaa…
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... liikaa teollisuuslaitoksia
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisuuslaitoksia ei voi luoda...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}: tähän ei voi rakentaa...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Ei voida koekaivaa…
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liian lähellä toista teollisuuslaitosta
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... kunta pitää perustaa ensin
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kuntaa kohden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kuntiin, joissa on vähintään 1200 asukasta
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... voidaan rakentaa vain sademetsäalueisiin
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... voidaan rakentaa vain aavikkoalueisiin
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... voidaan rakentaa vain taajamiin (korvaamaan taloja)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... voidaan rakentaa vain lähelle kunnan keskustaa
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... voidaan rakentaa vain matalille alueille
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... voidaan asettaa vain kartan reunoille
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsää voi istuttaa vain lumirajan yläpuolelle
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan yläpuolelle
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan alapuolelle
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :liian monta teollisuuslaitosta
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :Teollisuuslaitoksia ei voi luoda…
+STR_ERROR_CAN_T_BUILD_HERE                                      :{STRING}: tähän ei voi rakentaa…
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Tätä teollisuustyyppiä ei voi rakentaa tähän…
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :Ei voida koekaivaa…
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :liian lähellä toista teollisuuslaitosta
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :kunta pitää perustaa ensin
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :vain yksi on sallittu kuntaa kohden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :voidaan rakentaa vain kuntiin, joissa on vähintään 1200 asukasta
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :voidaan rakentaa vain sademetsäalueille
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :voidaan rakentaa vain aavikkoalueille
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :voidaan rakentaa vain taajamiin (korvaamaan taloja)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :… voidaan rakentaa vain kunnan keskustan lähelle
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :voidaan rakentaa vain matalille alueille
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :voidaan sijoittaa vain kartan reunojen läheisyyteen
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :metsää voi istuttaa vain lumirajan yläpuolelle
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :voidaan rakentaa vain lumirajan yläpuolelle
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :voidaan rakentaa vain lumirajan alapuolelle
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Rahoittamasi koekaivaus epäonnistui; yritä uudelleen
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Ei ollut sopivia paikkoja tämän teollisuuslaitoksen koekaivauksille
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Ei ollut sopivia paikkoja ”{STRING}”-teollisuuslaitoksille
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Muuta kartan parametreja saadaksesi paremman kartan
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :rahoittamasi koekaivaus epäonnistui; yritä uudelleen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :ei ollut sopivia paikkoja tämän teollisuuslaitoksen koekaivauksille
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :ei ollut sopivia paikkoja ”{STRING}”-teollisuuslaitoksille
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :muuta kartan parametreja saadaksesi paremman kartan
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Rautatieasemaa ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Linja-autoasemaa ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Lastauslaituria ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Ei voi rakentaa asemaa.
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Ei voi rakentaa rahtiasemaa.
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Satamaa ei voi rakentaa tähän...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lentokenttää ei voi rakentaa...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Tähän ei voi rakentaa rautatieasemaa…
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Linja-autoasemaa ei voi rakentaa…
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Tähän ei voi rakentaa lastauslaituria…
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Raitiotien matkustaja-asemaa ei voi rakentaa…
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Ei voi rakentaa raitiotien rahtiasemaa…
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Tähän ei voi rakentaa satamaa…
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Tähän ei voi rakentaa lentoasemaa…
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Vieressä on useampi kuin yksi olemassaoleva asema tai kuormausalue.
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... asema liian levittäytynyt
-STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}… raiteiden lukumäärää ei tueta
-STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}… pituutta ei tueta
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liian monta asemaa ja lastausaluetta.
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Rautatieasema on jakautunut liian moneen osaan
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liian monta linja-autopysäkkiä.
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liian monta lastauslaituria.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liian lähellä toista satamaa.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liian lähellä toista lentokenttää.
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Asemaa ei voi nimetä uudelleen.
-STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Aseman kylttiä ei voida siirtää…
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}… tien omistaa kunta
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tie on väärin päin
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... läpiajettavissa pysäkeissä ei voi olla mutkia
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... läpiajettavissa pysäkeissä ei voi olla risteyksiä
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :vieressä on useampi kuin yksi olemassaoleva asema tai kuormausalue
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :asema liian levittäytynyt
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :raiteiden lukumäärää ei tueta
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :pituutta ei tueta
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :liian monta asemaa ja lastausaluetta
+STR_ERROR_TOO_MANY_STATION_SPECS                                :liian monta rautatieaseman osaa
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :liian monta linja-autopysäkkiä
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :liian monta lastauslaituria
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :liian lähellä toista satamaa
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :liian lähellä toista lentokenttää
+STR_ERROR_CAN_T_RENAME_STATION                                  :Asemaa ei voi nimetä uudelleen…
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :Aseman kylttiä ei voi siirtää…
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :tien omistaa kunta
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :tie on väärin päin
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :läpiajettavissa pysäkeissä ei voi olla mutkia
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :läpiajettavissa pysäkeissä ei voi olla risteyksiä
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Aseman osaa ei voi poistaa...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Poista asema ensin
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Linja-autoasemaa ei voida poistaa...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Lastauslaituria ei voida poistaa...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ei voi poistaa asemaa.
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ei voi poistaa rahtiasemaa.
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Pysäkki täytyy poistaa ensin
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... tässä ei ole asemaa
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :Aseman osaa ei voi poistaa…
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :rautatieasema täytyy poistaa ensin
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Linja-autoasemaa ei voida poistaa…
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Tästä ei voi poistaa lastauslaituria…
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :Raitiotien matkustaja-asemaa ei voi poistaa…
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Raitiotien rahtiasemaa ei voi poistaa…
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :pysäkki täytyy poistaa ensin
+STR_ERROR_THERE_IS_NO_STATION                                   :tässä ei ole asemaa
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Rautatieasema täytyy purkaa ensin
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Linja-autoasema täytyy purkaa ensin
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Lastauslaituri täytyy purkaa ensin
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Asema täytyy purkaa ensin
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Rahtiasema täytyy purkaa ensin
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Satama täytyy purkaa ensin
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Lentokenttä täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :rautatieasema täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :linja-autoasema täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :lastauslaituri täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :raitiotien matkustaja-asema täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :raitiotien rahtiasema täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :satama täytyy purkaa ensin
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :lentokenttä täytyy purkaa ensin
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Vieressä on useampi kuin yksi olemassaoleva reittipiste.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Liian lähellä toista reittipistettä
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :vieressä on useampi kuin yksi olemassaoleva reittipiste
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :liian lähellä toista reittipistettä
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Rautatien reittipistettä ei voi rakentaa tähän…
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Tien reittipistettä ei voi rakentaa tähän…
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poijua ei voi sijoittaa tähän...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Reittipisteen nimeä ei voi muuttaa...
-STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Reittipisteen kylttiä ei voida siirtää…
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Tähän ei voi rakentaa rautatien reittipistettä…
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Tähän ei voi rakentaa tien reittipistettä…
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :Tähän ei voi sijoittaa poijua…
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Reittipisteen nimeä ei voi muuttaa…
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Reittipisteen kylttiä ei voi siirtää…
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Rautatien reittipistettä ei voi poistaa tästä…
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Tien reittipistettä ei voi poistaa tästä…
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Rautatien reittipiste täytyy poistaa ensin
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Tien reittipiste täytyy poistaa ensin
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... poiju on tiellä
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... poiju on toisen yhtiön käytössä!
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :Rautatien reittipistettä ei voi poistaa tästä…
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Tien reittipistettä ei voi poistaa tästä…
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :rautatien reittipiste täytyy poistaa ensin
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :tien reittipiste täytyy poistaa ensin
+STR_ERROR_BUOY_IN_THE_WAY                                       :poiju on tiellä
+STR_ERROR_BUOY_IS_IN_USE                                        :poiju on toisen yhtiön käytössä!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Veturitallia ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Autovarikkoa ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tähän ei voi rakentaa varikkoa.
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Telakkaa ei voi rakentaa.
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Tähän ei voi rakentaa junavarikkoa…
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Tähän ei voi rakentaa ajoneuvovarikkoa…
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :Tähän ei voi rakentaa raitiovaunuvarikkoa…
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Tähän ei voi rakentaa telakkaa…
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Varikon nimeä ei voi vaihtaa...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :Varikon nimeä ei voi vaihtaa…
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... täytyy olla pysähdyksissä veturitallin sisällä
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... täytyy olla pysäytettynä varikolla
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... täytyy olla pysähdyksissä telakalla
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... täytyy olla pysähdyksissä lentokonehallissa
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :täytyy olla pysäytettynä varikolla
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :täytyy olla pysäytettynä varikolla
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :täytyy olla pysäytettynä telakalla
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :täytyy olla pysäytettynä lentokonehallissa
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Junia voi muunnella vain, kun ne ovat pysähdyksissä veturitallilla.
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Juna on liian pitkä.
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kulkuneuvoa ei voida kääntää...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... koostuu useammista yksiköistä
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Raiteet eivät ole yhteensopivia
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :junia voi muunnella vain, kun ne ovat pysäytettyinä veturitallilla
+STR_ERROR_TRAIN_TOO_LONG                                        :juna on liian pitkä
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :Kulkuneuvon suuntaa ei voi vaihtaa…
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :koostuu useasta yksiköstä
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :yhteensopimattomat raidetyypit
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kulkuneuvoa ei voi siirtää...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Moottorivaunun takaosa seuraa aina etuosaansa
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Reittiä paikalliselle veturitallille ei löydy.
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Paikallista varikkoa ei löydy.
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Kulkuneuvoa ei voi siirtää…
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :moottorivaunun takaosa seuraa aina etuosaansa
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :reittiä paikalliselle varikolle ei löydy
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :paikallista varikkoa ei löydy
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Väärä varikkotyyppi
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :väärä varikkotyyppi
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}… vain yksi sumanpurkukäsky mahdollinen
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}… kulkuneuvon sumanpurkukäsky estää täyteenlastaamiskäskyjen käytön
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}… sumaa ei voida purkaa kulkuneuvolla, jolla on täyteenlastaamiskäsky
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}… kulkuneuvon sumanpurkukäsky estää ehdollisten käskyjen käytön
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}… sumaa ei voida purkaa kulkuneuvolla, jolla on ehdollinen käsky
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :vain yksi sumanpurkukäsky mahdollinen
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :kulkuneuvon sumanpurkukäsky estää täyteenlastaamiskäskyjen käytön
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :… sumaa ei voida purkaa kulkuneuvolla, jolla on täyteenlastaamiskäsky
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :kulkuneuvon sumanpurkukäsky estää ehdollisten käskyjen käytön
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :… sumaa ei voida purkaa kulkuneuvolla, jolla on ehdollinen käsky
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} on liian pitkä korvaamisen jälkeen
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} on korvaamisen jälkeen liian pitkä
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :Ei käytössä olevia automaattikorvaus- tai -uudistussääntöjä
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(rahoitusraja)
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Uusi kulkuneuvo ei voi kuljettaa {STRING}
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Uutta kulkuneuvoa ei voida uudelleensovittaa käskyssä {NUM}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Uusi kulkuneuvo ei voi kuljettaa {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Uutta kulkuneuvoa ei voida uudelleensovittaa käskyssä {NUM}
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Mahdoton ratayhdistelmä.
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Opastimet täytyy poistaa ensin
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ei kelvollista rautatietä.
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rautatie pitää poistaa ensin.
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Tie on yksisuuntainen tai suljettu
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Tasoristeykset eivät ole sallittu tälle raidetyypille
-STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Tasoristeykset eivät ole sallittuja tälle tietyypille
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Opastinta ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Rautatietä ei voi rakentaa.
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Rautatietä ei voi poistaa.
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Opastinta ei voi poistaa tästä.
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ei voi muuntaa opastimia tässä...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... tässä ei ole rautatietä
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... tässä ei ole opastimia
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :mahdoton raideyhdistelmä
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :opastimet täytyy poistaa ensin
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :ei sopivaa rautatietä
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :rautatie pitää poistaa ensin
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :tie on yksisuuntainen tai suljettu
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :tasoristeykset eivät ole sallittuja tälle raidetyypille
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :tasoristeykset eivät ole sallittuja tälle tietyypille
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Tähän ei voi rakentaa opastimia…
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Tähän ei voi rakentaa rautatietä…
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Tästä ei voi poistaa rautatietä…
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Tästä ei voi poistaa opastimia…
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Opastimia ei voi muuntaa tässä…
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :tässä ei ole rautatietä
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :tässä ei ole opastimia
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Raidetyyppiä ei voi muuntaa...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :Raidetyyppiä ei voi muuntaa tässä…
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Tie pitää siirtää ensin.
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... yksisuuntaisella kadulla ei voi olla risteystä
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tietä ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tähän ei voi rakentaa raitiotietä.
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tietä ei voi poistaa.
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tästä ei voi poistaa raitiotietä.
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... tässä ei ole tietä
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tässä ei ole raitiotietä
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tien tyyppiä ei voi muuntaa tässä...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Raitiotien tyyppiä ei voi muuntaa tässä...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ei sopivaa tietä
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ei sopivaa raitiotietä
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :tie täytyy poistaa ensin
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :yksisuuntaisilla teillä ei voi olla risteyksiä
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Tähän ei voi rakentaa tietä…
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Tähän ei voi rakentaa raitiotietä…
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Tästä ei voi poistaa tietä…
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :Tästä ei voi poistaa raitiotietä…
+STR_ERROR_THERE_IS_NO_ROAD                                      :tässä ei ole tietä
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :tässä ei ole raitiotietä
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :Tien tyyppiä ei voi muuntaa tässä…
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Raitiotien tyyppiä ei voi muuntaa tässä…
+STR_ERROR_NO_SUITABLE_ROAD                                      :ei sopivaa tietä
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :ei sopivaa raitiotietä
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanaalia ei voi rakentaa tähän...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Sulkua ei voi rakentaa tähän...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tähän ei voi asettaa jokea...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... se pitää rakentaa veteen.
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... veteen ei voi rakentaa.
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ei voida rakentaa merelle
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ei voida rakentaa kanaaliin
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ei voida rakentaa joelle
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanava täytyy purkaa ensin
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tähän ei voi rakentaa akveduktia...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Tähän ei voi rakentaa kanavia…
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :Tähän ei voi rakentaa sulkua…
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :Tähän ei voi sijoittaa jokea…
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :se pitää rakentaa veteen
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :veteen ei voi rakentaa
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :avomerelle ei voi rakentaa
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :kanavan päälle ei voi rakentaa
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :joelle ei voi rakentaa
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :kanava täytyy purkaa ensin
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Tähän ei voi rakentaa akveduktia…
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... tässä on jo puu.
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... väärä maasto puulle
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Puuta ei voi istuttaa.
+STR_ERROR_TREE_ALREADY_HERE                                     :tässä on jo puu
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :väärä maasto puulajille
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Tähän ei voi istuttaa puuta…
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Siltaa ei voi rakentaa...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Silta täytyy purkaa ensin
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ei voi aloittaa ja lopettaa samasta paikkasta.
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Sillan päät eivät ole samalla korkeudella
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Silta on liian matalalla maastoa varten
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Silta on liian korkea tähän maastoon.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Alku- ja päätepisteen pitää olla linjassa.
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... sillan molempien päiden pitää sijaita maalla.
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... silta liian pitkä
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Silta päättyisi kartan ulkopuolelle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Silta on {HEIGHT} liian matala aseman ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Silta on {HEIGHT} liian matala pysäkin ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Silta on {HEIGHT} liian matala sataman ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Silta on {HEIGHT} liian matala poijun ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Silta on {HEIGHT} liian matala rautatien reittipisteen ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Silta on {HEIGHT} liian matala tien reittipisteen ylle
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Silta on {HEIGHT} liian matala sulun ylle
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Tähän ei voi rakentaa siltaa…
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :silta täytyy purkaa ensin
+STR_ERROR_CAN_T_START_AND_END_ON                                :aloituspaikka ei voi olla sama kuin lopetuspaikka
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :sillan päät eivät ole samalla korkeudella
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :silta on liian matala maastoon
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :silta on liian korkea tähän maastoon.
+STR_ERROR_START_AND_END_MUST_BE_IN                              :alku- ja päätepisteen täytyy olla linjassa
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :sillan molempien päiden pitää sijaita maalla
+STR_ERROR_BRIDGE_TOO_LONG                                       :silta liian pitkä
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :silta päättyisi kartan ulkopuolelle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :silta on {HEIGHT} liian matala aseman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :silta on {HEIGHT} liian matala pysäkin ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :silta on {HEIGHT} liian matala sataman ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :silta on {HEIGHT} liian matala poijun ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :silta on {HEIGHT} liian matala rautatien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :silta on {HEIGHT} liian matala tien reittipisteen ylle
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :silta on {HEIGHT} liian matala sulun ylle
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnelia ei voi rakentaa...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Alue on sopimaton tunnelinsuulle.
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Tunneli pitää tuhota ensin.
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Toinen tunneli on tiellä.
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneli loppuisi kartan ulkopuolelle
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Maata ei voi kaivaa tunnelin toisessa päässä.
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunneli liian pitkä
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Tähän ei voi rakentaa tunnelia…
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :sijainti on sopimaton tunnelin suulle
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :tunneli täytyy tuhota ensin
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :toinen tunneli on tiellä
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :tunneli loppuisi kartan ulkopuolelle
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :maata ei voi kaivaa tunnelin toisessa päässä
+STR_ERROR_TUNNEL_TOO_LONG                                       :tunneli liian pitkä
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... liian monta kohdetta
-STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kohdetta ei voida rakentaa...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekti on tiellä.
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yhtiön päärakennus on tiellä.
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Maa-aluetta ei voi hankkia...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... omistat sen jo!
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}… objektien rakentamisen raja saavutettu
+STR_ERROR_TOO_MANY_OBJECTS                                      :liian monta objektia
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :Objektia ei voida rakentaa…
+STR_ERROR_OBJECT_IN_THE_WAY                                     :objekti on tiellä
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :yhtiön pääkonttori on tiellä
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Tätä maa-aluetta ei voi ostaa…
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :omistat sen jo!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :objektien rakentamisen raja saavutettu
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ei voi luoda ryhmää.
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Ryhmää ei voi poistaa.
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Ryhmää ei voi nimetä.
-STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Pääryhmää ei voi määrittää...
-STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... ryhmähierarkiassa ei saa olla silmukoita
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ryhmän kaikkia kulkuneuvoja ei voi poistaa.
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ei voi lisätä kulkuneuvoa ryhmään.
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ei voi lisätä jaettuja kulkuneuvoja ryhmään.
+STR_ERROR_GROUP_CAN_T_CREATE                                    :Ryhmää ei voi luoda…
+STR_ERROR_GROUP_CAN_T_DELETE                                    :Tätä ryhmää ei voi poistaa…
+STR_ERROR_GROUP_CAN_T_RENAME                                    :Ryhmän nimeä ei voi muuttaa…
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :Ylempää ryhmää ei voi määrittää…
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :… ryhmähierarkiassa ei saa olla silmukoita
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :Tästä ryhmästä ei voi poistaa kaikkia kulkuneuvoja…
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :Kulkuneuvoa ei voi lisätä tähän ryhmään…
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Ryhmään ei voi lisätä jaettuja kulkuneuvoja…
 
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Juna on tiellä.
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Ajoneuvo tiellä.
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Laiva on tiellä.
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Ilma-alus on tiellä
+STR_ERROR_TRAIN_IN_THE_WAY                                      :juna on tiellä
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :ajoneuvo on tiellä
+STR_ERROR_SHIP_IN_THE_WAY                                       :laiva on tiellä
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :ilma-alus on tiellä
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Juna tai vaunu ei ole saatavilla
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ajoneuvo ei ole saatavilla
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Laiva ei ole saatavilla
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Ilma-alus ei ole saatavilla
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :kulkuneuvo ei ole saatavilla
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :ajoneuvo ei ole saatavilla
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :laiva ei ole saatavilla
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :ilma-alus ei ole saatavilla
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Junaa ei voi sovittaa...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ajoneuvoa ei voi sovittaa…
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Laivaa ei voi sovittaa...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ilma-alusta ei voi sovittaa...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :Junaa ei voi sovittaa…
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Ajoneuvoa ei voi sovittaa…
+STR_ERROR_CAN_T_REFIT_SHIP                                      :Laivaa ei voi sovittaa…
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Ilma-alusta ei voi sovittaa…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Junaa ei voi nimetä...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ajoneuvoa ei voi nimetä...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Laivaa ei voi nimetä...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Ilma-aluta ei voi nimetä...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :Junaa ei voi nimetä…
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Ajoneuvoa ei voi nimetä…
+STR_ERROR_CAN_T_RENAME_SHIP                                     :Laivaa ei voi nimetä…
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Ilma-alusta ei voi nimetä…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Junaa ei voi pysäyttää/lähettää...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ajoneuvoa ei voi pysäyttää/laitta liikkeelle...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Laivaa ei voi pysäyttää/laittaa liikkeelle...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Ilma-alusta ei voi pysäyttää/laittaa liikkeelle...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Junaa ei voi pysäyttää/lähettää…
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Ajoneuvoa ei voi pysäyttää/laittaa liikkeelle…
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Laivaa ei voi pysäyttää/laittaa liikkeelle…
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Ilma-alusta ei voi pysäyttää/laittaa liikkeelle…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Junan lähettäminen veturitalliin ei onnistu...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ajoneuvon lähettäminen varikolle ei onnistu...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Laivaa ei voi lähettää telakalle...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ilma-alusta ei voi lähettää lentokonehalliin...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Junaa ei voi lähettää varikolle…
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Ajoneuvoa ei voi lähettää varikolle…
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Laivaa ei voi lähettää telakalle…
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Ilma-alusta ei voi lähettää lentokonehalliin…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Yksikköä ei voi ostaa...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi ostaa...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Laivaa ei voi ostaa...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ilma-alusta ei voi ostaa...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :Raideliikennevälinettä ei voi ostaa…
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :Ajoneuvoa ei voi ostaa…
+STR_ERROR_CAN_T_BUY_SHIP                                        :Laivaa ei voi ostaa…
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Ilma-alusta ei voi ostaa…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Juna(vaunu)n tyyppiä ei voi uudelleennimetä...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ajoneuvotyyppiä ei voi uudelleennimetä...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Laivatyyppin uudelleennimeäminen ei onnistu...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ilma-alustyyppiä ei voi uudelleennimetä...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Raideliikennevälineen tyyppiä ei voi nimetä uudelleen…
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Ajoneuvotyyppiä ei voi nimetä uudelleen…
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Laivatyyppin uudelleennimeäminen ei onnistu…
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Ilma-alustyyppiä ei voi nimetä uudelleen…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Yksikköä ei voi myydä...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ajoneuvoa ei voi myydä...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Laivaa ei voi myydä...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ilma-alusta ei voi myydä...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Raideliikennevälinettä ei voi myydä…
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Ajoneuvoa ei voi myydä…
+STR_ERROR_CAN_T_SELL_SHIP                                       :Laivaa ei voi myydä…
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Ilma-alusta ei voi myydä…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Kaikkia raideliikennevälineitä ei voida myydä…
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kaikkia ajoneuvoja ei voida myydä…
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kaikkia laivoja ei voida myydä…
-STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kaikkia ilma-aluksia ei voida myydä…
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Kaikkia raideliikennevälineitä ei voida myydä…
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Kaikkia ajoneuvoja ei voida myydä…
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Kaikkia laivoja ei voida myydä…
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Kaikkia ilma-aluksia ei voida myydä…
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Raideliikennevälineitä ei voida korvata automaattisesti…
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Ajoneuvoja ei voida korvata automaattisesti…
-STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Aluksia ei voida korvata automaattisesti…
-STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Ilma-aluksia ei voida korvata automaattisesti…
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Raideliikennevälineitä ei voida korvata automaattisesti…
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Ajoneuvoja ei voida korvata automaattisesti…
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Aluksia ei voida korvata automaattisesti…
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Ilma-aluksia ei voida korvata automaattisesti…
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Liian monta kulkuneuvoa pelissä.
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Huoltoväliä ei voi muuttaa.
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :liian monta kulkuneuvoa pelissä
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :Huoltoväliä ei voi muuttaa…
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kulkuneuvo on tuhoutunut
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :kulkuneuvo on tuhoutunut
 
-STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}… kaikki kulkuneuvot eivät ole identtisiä
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :kaikki kulkuneuvot eivät ole identtisiä
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Yhtään kulkuneuvoa ei ole käytettävissä
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muuta NewGRF-asetuksiasi
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Kulkuneuvoja ei ole vielä saatavilla
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Aloita uusi peli {DATE_SHORT} jälkeen tai käytä NewGRF:ää, joka tarjoaa varhaisia kulkuneuvoja
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Yhtään kulkuneuvoa ei tule olemaan saatavilla
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :Muuta NewGRF-asetuksiasi
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Kulkuneuvoja ei ole vielä saatavilla
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Aloita uusi peli {DATE_SHORT} jälkeen tai käytä NewGRF:ää, joka tarjoaa varhaisia kulkuneuvoja
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Yhtään kunnan rakennettavissa olevaa tietyyppiä ei ole käytettävissä
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Muuta NewGRF-asetuksia
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Kunnan rakennettavissa olevia tietyyppejä ei ole vielä saatavilla
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Aloita uusi peli {DATE_SHORT} jälkeen tai käytä NewGRF:ää, joka tarjoaa varhaisia kunnan rakennettavissa olevia tietyyppejä
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Yhtään kunnan rakennettavissa olevaa tietyyppiä ei ole käytettävissä
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Muuta NewGRF-asetuksiasi
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :kunnan rakennettavissa olevia tietyyppejä ei ole vielä saatavilla
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Aloita uusi peli {DATE_SHORT} jälkeen tai käytä NewGRF:ää, joka tarjoaa varhaisia kunnan rakennettavissa olevia tietyyppejä
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Junaa ei voi pakottaa jatkamaan punaisen opastimen ohi...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Junan suuntaa ei voi kääntää...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Junalla ei ole voimaa
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :Junaa ei voi pakottaa jatkamaan punaisen opastimen ohi…
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :Junan suuntaa ei voi vaihtaa…
+STR_ERROR_TRAIN_START_NO_POWER                                  :junalla ei ole käyttövoimaa
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ajoneuvoa ei voida kääntää...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :Ajoneuvoa ei voi kääntää…
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Ilma-alus on lennossa
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :ilma-alus on ilmassa
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ei enää tilaa pysähdyksille.
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Liian monta pysähdystä.
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Uutta pysähdystä ei voi lisätä...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Pysähdystä ei voi poistaa...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Pysähdystä ei voi muokata...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Tätä riviä ei voi siirtää.
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Tätä riviä ei voi ohittaa.
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Tähän riviin ei voi siirtyä.
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... kulkuneuvo ei pääse kaikille asemille
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kulkuneuvo ei pääse tälle asemalle
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kulkuneuvo, jonka kanssa käskyt on jaettu, ei pääse tälle asemalle
-STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}… kaikkien kulkuneuvojen käskyt eivät ole samat
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}… kaikki kulkuneuvot eivät jaa käskyjä
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :käskyille ei ole enää tilaa
+STR_ERROR_TOO_MANY_ORDERS                                       :liian monta käskyä
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Uutta käskyä ei voi lisätä…
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Tätä käskyä ei voi poistaa…
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :Tätä käskyä ei voi muokata…
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Tätä käskyä ei voi siirtää…
+STR_ERROR_CAN_T_SKIP_ORDER                                      :Nykyistä käskyä ei voi ohittaa…
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :Valittuun käskyyn ei voi siirtyä…
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :kulkuneuvo ei pääse kaikille asemille
+STR_ERROR_CAN_T_ADD_ORDER                                       :kulkuneuvo ei pääse tälle asemalle
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :kulkuneuvo, jonka kanssa käskyt on jaettu, ei pääse tälle asemalle
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :kaikkien kulkuneuvojen käskyt eivät ole samat
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :kaikki kulkuneuvot eivät jaa käskyjä
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Käskyjä ei voida jakaa...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Käskyjen jakamista ei voida lopettaa...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Käskyjä ei voida kopioida...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liian kaukana edellisestä määränpäästä
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... ilma-aluksen toimintasäde ei riitä
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Käskyluetteloa ei voi jakaa…
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Käskyjen jakamista ei voida lopettaa…
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Käskyluetteloa ei voi kopioida…
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :liian kaukana edellisestä määränpäästä
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :ilma-aluksen toimintasäde ei riitä
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Rautatieasemaa ei ole
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}Linja-autopysäkkiä ei ole
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Lastauslaituria ei ole
-STR_ERROR_NO_DOCK                                               :{WHITE}Satamaa ei ole
-STR_ERROR_NO_AIRPORT                                            :{WHITE}Lento-/helikopterikenttää ei ole
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Ei ole pysäkkejä sopivalla tien tyypillä
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Ei ole pysäkkejä sopivalla raitiotien tyypillä
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Ei ole nivelajoneuvoille sopivia pysäkkejä.{}Nivelletyt ajoneuvot vaativat pysäkin, joka ei ole kääntöpysäkki vaan läpiajettava
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Tämä lentokone ei voi laskeutua tälle helikopterikentälle
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Tämä helikopteri ei voi laskeutua tälle lentokentälle
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Rautatien reittipistettä ei ole
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Tien reittipistettä ei ole
-STR_ERROR_NO_BUOY                                               :{WHITE}Poijua ei ole
+STR_ERROR_NO_RAIL_STATION                                       :Tässä ei ole rautatieasemaa
+STR_ERROR_NO_BUS_STATION                                        :Tässä ei ole linja-autopysäkkiä
+STR_ERROR_NO_TRUCK_STATION                                      :Tässä ei ole lastauslaituria
+STR_ERROR_NO_DOCK                                               :Tässä ei ole satamaa
+STR_ERROR_NO_AIRPORT                                            :Tässä ei ole lento- tai helikopterikenttää
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Ei ole pysäkkejä sopivalla tien tyypillä
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Ei ole pysäkkejä sopivalla raitiotien tyypillä
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Ei ole nivelajoneuvoille sopivia pysäkkejä.{}Nivelletyt ajoneuvot vaativat pysäkin, joka ei ole kääntöpysäkki vaan läpiajettava
+STR_ERROR_AIRPORT_NO_PLANES                                     :Tämä lentokone ei voi laskeutua tälle helikopterikentälle
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Tämä helikopteri ei voi laskeutua tälle lentokentälle
+STR_ERROR_NO_RAIL_WAYPOINT                                      :Tässä ei ole rautatien reittipistettä
+STR_ERROR_NO_ROAD_WAYPOINT                                      :Tien reittipistettä ei ole
+STR_ERROR_NO_BUOY                                               :Tässä ei ole poijua
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi asettaa aikataulua.
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kulkuneuvo voi odottaa vain asemalla
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Tämä kulkuneuvo ei pysähdy tällä asemalla
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}… aikataulu on puutteellinen
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}… aikataulu ei ole vielä alkanut
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :Kulkuneuvoa ei voi aikatauluttaa…
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :kulkuneuvot voivat odottaa vain asemilla
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :tämä kulkuneuvo ei pysähdy tällä asemalla
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :aikataulu on puutteellinen
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :aikataulu ei ole vielä alkanut
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... liian monta kylttiä.
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kylttiä ei voi sijoittaa.
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kyltin nimeä ei voi muuttaa.
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kylttiä ei voi poistaa...
+STR_ERROR_TOO_MANY_SIGNS                                        :liian monta kylttiä
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :Tähän ei voi sijoittaa kylttiä…
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :Kyltin nimeä ei voi muuttaa…
+STR_ERROR_CAN_T_DELETE_SIGN                                     :Kylttiä ei voi poistaa…
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -6021,7 +6020,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Avaa tunnusasetukset
