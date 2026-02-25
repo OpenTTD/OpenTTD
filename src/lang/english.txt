@@ -5171,8 +5171,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :can only be bui
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :the funding failed to prospect due to bad luck; try again
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :there were no suitable places to prospect for this industry
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :there were no suitable places for '{STRING}' industries
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :change the map generation parameters to get a better map
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :There were no suitable places for '{STRING}' industries
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Change the map generation parameters to get a better map
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Can't build railway station here...
