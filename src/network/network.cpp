@@ -40,6 +40,7 @@
 #include "../core/string_builder.hpp"
 #ifdef DEBUG_DUMP_COMMANDS
 #	include "../fileio_func.h"
+#	include "../core/string_consumer.hpp"
 #endif
 #include <charconv>
 
