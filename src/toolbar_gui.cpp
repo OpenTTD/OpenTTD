@@ -89,13 +89,13 @@ enum class ToolbarMode : uint8_t {
 };
 
 /** Callback functions. */
-enum CallBackFunction : uint8_t {
-	CBF_NONE,
-	CBF_PLACE_SIGN,
-	CBF_PLACE_LANDINFO,
+enum class CallBackFunction : uint8_t {
+	None, ///< No action will happen when tile is selected afterwards.
+	PlaceSign, ///< A new sign will be placed when tile is selected afterwards.
+	PlaceLandInfo, ///< Land info window will appear when tile is selected afterwards.
 };
 
-static CallBackFunction _last_started_action = CBF_NONE; ///< Last started user action.
+static CallBackFunction _last_started_action = CallBackFunction::None; ///< Last started user action.
 
 /**
  * Company name list item, with company-colour icon, name, and lock components.
@@ -194,12 +194,12 @@ static ToolbarMode _toolbar_mode;
 
 static CallBackFunction SelectSignTool()
 {
-	if (_last_started_action == CBF_PLACE_SIGN) {
+	if (_last_started_action == CallBackFunction::PlaceSign) {
 		ResetObjectToPlace();
-		return CBF_NONE;
+		return CallBackFunction::None;
 	} else {
 		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
-		return CBF_PLACE_SIGN;
+		return CallBackFunction::PlaceSign;
 	}
 }
 
@@ -207,27 +207,27 @@ static CallBackFunction SelectSignTool()
 
 static CallBackFunction ToolbarPauseClick(Window *)
 {
-	if (_networking && !_network_server) return CBF_NONE; // only server can pause the game
+	if (_networking && !_network_server) return CallBackFunction::None; // only server can pause the game
 
 	if (Command<Commands::Pause>::Post(PauseMode::Normal, _pause_mode.None())) {
 		SndConfirmBeep();
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Toggle fast forward mode.
  *
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction ToolbarFastForwardClick(Window *)
 {
-	if (_networking) return CBF_NONE; // no fast forward in network game
+	if (_networking) return CallBackFunction::None; // no fast forward in network game
 
 	ChangeGameSpeed(_game_speed == 100);
 
 	SndClickBeep();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
@@ -261,7 +261,7 @@ enum OptionMenuEntries : uint8_t {
  * Handle click on Options button in toolbar.
  *
  * @param w parent window the shown Drop down list is attached to.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction ToolbarOptionsClick(Window *w)
 {
@@ -297,22 +297,22 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_SIGNS), STR_SETTINGS_MENU_TRANSPARENT_SIGNS, OME_SHOW_STATIONSIGNS));
 
 	ShowDropDownList(w, std::move(list), 0, WID_TN_SETTINGS, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on one of the entries in the Options button menu.
  *
  * @param index Index being clicked.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickSettings(int index)
 {
 	switch (index) {
-		case OME_GAMEOPTIONS:          ShowGameOptions();                               return CBF_NONE;
-		case OME_AI_SETTINGS:          ShowAIConfigWindow();                            return CBF_NONE;
-		case OME_GAMESCRIPT_SETTINGS:  ShowGSConfigWindow();                            return CBF_NONE;
-		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, _grfconfig); return CBF_NONE;
+		case OME_GAMEOPTIONS: ShowGameOptions(); return CallBackFunction::None;
+		case OME_AI_SETTINGS: ShowAIConfigWindow(); return CallBackFunction::None;
+		case OME_GAMESCRIPT_SETTINGS: ShowGSConfigWindow(); return CallBackFunction::None;
+		case OME_NEWGRFSETTINGS: ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, _grfconfig); return CallBackFunction::None;
 		case OME_SANDBOX:              ShowCheatWindow();                               break;
 		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                       break;
 
@@ -336,7 +336,7 @@ static CallBackFunction MenuClickSettings(int index)
 		case OME_SHOW_STATIONSIGNS:    ToggleTransparency(TO_SIGNS);                    break;
 	}
 	MarkWholeScreenDirty();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
@@ -365,34 +365,34 @@ enum SaveLoadNormalMenuEntries : uint8_t {
  * Handle click on Save button in toolbar in normal game mode.
  *
  * @param w parent window the shown save dialogue is attached to.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction ToolbarSaveClick(Window *w)
 {
 	PopupMainToolbarMenu(w, WID_TN_SAVE, {STR_FILE_MENU_SAVE_GAME, STR_FILE_MENU_LOAD_GAME, STR_FILE_MENU_QUIT_GAME,
 			STR_NULL, STR_FILE_MENU_EXIT});
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on SaveLoad button in toolbar in the scenario editor.
  *
  * @param w parent window the shown save dialogue is attached to.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 {
 	PopupMainToolbarMenu(w, WID_TE_SAVE, {STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO,
 			STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP,
 			STR_SCENEDIT_FILE_MENU_QUIT_EDITOR, STR_NULL, STR_SCENEDIT_FILE_MENU_QUIT});
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on one of the entries in the SaveLoad menu.
  *
  * @param index Index being clicked.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickSaveLoad(int index = 0)
 {
@@ -413,7 +413,7 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 			case SLNME_EXIT_GAME:      HandleExitGameRequest();           break;
 		}
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Map button menu --- */
@@ -435,7 +435,7 @@ static CallBackFunction ToolbarMapClick(Window *w)
 	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_LINGRAPH_LEGEND,         MME_SHOW_LINKGRAPH));
 	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS));
 	PopupMainToolbarMenu(w, WID_TN_SMALL_MAP, std::move(list), 0);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenMapTownDir(Window *w)
@@ -447,14 +447,14 @@ static CallBackFunction ToolbarScenMapTownDir(Window *w)
 	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY,         MME_SHOW_TOWNDIRECTORY));
 	list.push_back(MakeDropDownListStringItem(STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, MME_SHOW_INDUSTRYDIRECTORY));
 	PopupMainToolbarMenu(w, WID_TE_SMALL_MAP, std::move(list), 0);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on one of the entries in the Map menu.
  *
  * @param index Index being clicked.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickMap(int index)
 {
@@ -466,7 +466,7 @@ static CallBackFunction MenuClickMap(int index)
 		case MME_SHOW_TOWNDIRECTORY:     ShowTownDirectory();       break;
 		case MME_SHOW_INDUSTRYDIRECTORY: ShowIndustryDirectory();   break;
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Town button menu --- */
@@ -486,14 +486,14 @@ static CallBackFunction ToolbarTownClick(Window *w)
 
 	PopupMainToolbarMenu(w, WID_TN_TOWNS, std::move(list), 0);
 
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on one of the entries in the Town menu.
  *
  * @param index Index being clicked.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickTown(int index)
 {
@@ -506,7 +506,7 @@ static CallBackFunction MenuClickTown(int index)
 			if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) ShowBuildHousePicker(nullptr);
 			break;
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Subidies button menu --- */
@@ -514,18 +514,18 @@ static CallBackFunction MenuClickTown(int index)
 static CallBackFunction ToolbarSubsidiesClick(Window *w)
 {
 	PopupMainToolbarMenu(w, WID_TN_SUBSIDIES, {STR_SUBSIDIES_MENU_SUBSIDIES});
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Subsidies menu.
  *
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickSubsidies(int)
 {
 	ShowSubsidiesList();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Stations button menu --- */
@@ -533,19 +533,19 @@ static CallBackFunction MenuClickSubsidies(int)
 static CallBackFunction ToolbarStationsClick(Window *w)
 {
 	PopupMainCompanyToolbMenu(w, WID_TN_STATIONS);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Stations menu
  *
  * @param index CompanyID to show station list for
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickStations(int index)
 {
 	ShowCompanyStations((CompanyID)index);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Finances button menu --- */
@@ -553,19 +553,19 @@ static CallBackFunction MenuClickStations(int index)
 static CallBackFunction ToolbarFinancesClick(Window *w)
 {
 	PopupMainCompanyToolbMenu(w, WID_TN_FINANCES);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the finances overview menu.
  *
  * @param index CompanyID to show finances for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickFinances(int index)
 {
 	ShowCompanyFinances((CompanyID)index);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Company's button menu --- */
@@ -573,14 +573,14 @@ static CallBackFunction MenuClickFinances(int index)
 static CallBackFunction ToolbarCompaniesClick(Window *w)
 {
 	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Company menu.
  *
  * @param index Menu entry to handle.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickCompany(int index)
 {
@@ -588,7 +588,7 @@ static CallBackFunction MenuClickCompany(int index)
 		switch (index) {
 			case CTMN_CLIENT_LIST:
 				ShowClientList();
-				return CBF_NONE;
+				return CallBackFunction::None;
 
 			case CTMN_SPECTATE:
 				if (_network_server) {
@@ -597,11 +597,11 @@ static CallBackFunction MenuClickCompany(int index)
 				} else {
 					NetworkClientRequestMove(COMPANY_SPECTATOR);
 				}
-				return CBF_NONE;
+				return CallBackFunction::None;
 		}
 	}
 	ShowCompany((CompanyID)index);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Story button menu --- */
@@ -609,19 +609,19 @@ static CallBackFunction MenuClickCompany(int index)
 static CallBackFunction ToolbarStoryClick(Window *w)
 {
 	PopupMainCompanyToolbMenu(w, WID_TN_STORY);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Story menu
  *
  * @param index CompanyID to show story book for
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickStory(int index)
 {
 	ShowStoryBook(CompanyID(index));
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Goal button menu --- */
@@ -629,19 +629,19 @@ static CallBackFunction MenuClickStory(int index)
 static CallBackFunction ToolbarGoalClick(Window *w)
 {
 	PopupMainCompanyToolbMenu(w, WID_TN_GOAL);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Goal menu
  *
  * @param index CompanyID to show story book for
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickGoal(int index)
 {
 	ShowGoalsList(CompanyID(index));
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Graphs and League Table button menu --- */
@@ -689,7 +689,7 @@ static CallBackFunction ToolbarGraphsClick(Window *w)
 	if (_toolbar_mode != ToolbarMode::Normal) AddDropDownLeagueTableOptions(list);
 
 	ShowDropDownList(w, std::move(list), GRMN_OPERATING_PROFIT_GRAPH, WID_TN_GRAPHS, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarLeagueClick(Window *w)
@@ -700,14 +700,14 @@ static CallBackFunction ToolbarLeagueClick(Window *w)
 
 	int selected = list[0]->result;
 	ShowDropDownList(w, std::move(list), selected, WID_TN_LEAGUE, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Graphs or CompanyLeague.
  *
  * @param index Graph to show.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickGraphsOrLeague(int index)
 {
@@ -727,7 +727,7 @@ static CallBackFunction MenuClickGraphsOrLeague(int index)
 			}
 		}
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 
@@ -742,14 +742,14 @@ static CallBackFunction ToolbarIndustryClick(Window *w)
 	} else {
 		PopupMainToolbarMenu(w, WID_TN_INDUSTRIES, {STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, STR_INDUSTRY_MENU_INDUSTRY_CHAIN, STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY});
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Industry menu.
  *
  * @param index Menu entry number.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickIndustry(int index)
 {
@@ -758,7 +758,7 @@ static CallBackFunction MenuClickIndustry(int index)
 		case 1: ShowIndustryCargoesWindow(); break;
 		case 2: ShowBuildIndustryWindow();   break;
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Trains button menu + 1 helper function for all vehicles. --- */
@@ -777,19 +777,19 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 static CallBackFunction ToolbarTrainClick(Window *w)
 {
 	ToolbarVehicleClick(w, VEH_TRAIN);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Train menu.
  *
  * @param index CompanyID to show train list for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickShowTrains(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_TRAIN);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Road vehicle button menu --- */
@@ -797,19 +797,19 @@ static CallBackFunction MenuClickShowTrains(int index)
 static CallBackFunction ToolbarRoadClick(Window *w)
 {
 	ToolbarVehicleClick(w, VEH_ROAD);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Road Vehicles menu.
  *
  * @param index CompanyID to show road vehicles list for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickShowRoad(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_ROAD);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Ship button menu --- */
@@ -817,19 +817,19 @@ static CallBackFunction MenuClickShowRoad(int index)
 static CallBackFunction ToolbarShipClick(Window *w)
 {
 	ToolbarVehicleClick(w, VEH_SHIP);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Ships menu.
  *
  * @param index CompanyID to show ship list for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickShowShips(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_SHIP);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Aircraft button menu --- */
@@ -837,19 +837,19 @@ static CallBackFunction MenuClickShowShips(int index)
 static CallBackFunction ToolbarAirClick(Window *w)
 {
 	ToolbarVehicleClick(w, VEH_AIRCRAFT);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Aircraft menu.
  *
  * @param index CompanyID to show aircraft list for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickShowAir(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_AIRCRAFT);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Zoom in button --- */
@@ -859,7 +859,7 @@ static CallBackFunction ToolbarZoomInClick(Window *w)
 	if (DoZoomInOutWindow(ZOOM_IN, GetMainWindow())) {
 		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_IN : (WidgetID)WID_TN_ZOOM_IN);
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Zoom out button --- */
@@ -869,7 +869,7 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 	if (DoZoomInOutWindow(ZOOM_OUT, GetMainWindow())) {
 		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_OUT : (WidgetID)WID_TN_ZOOM_OUT);
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Rail button menu --- */
@@ -877,20 +877,20 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
 	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Build Rail menu.
  *
  * @param index RailType to show the build toolbar for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickBuildRail(int index)
 {
 	_last_built_railtype = (RailType)index;
 	ShowBuildRailToolbar(_last_built_railtype);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Road button menu --- */
@@ -898,20 +898,20 @@ static CallBackFunction MenuClickBuildRail(int index)
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
 	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Build Road menu.
  *
  * @param index RoadType to show the build toolbar for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickBuildRoad(int index)
 {
 	_last_built_roadtype = (RoadType)index;
 	ShowBuildRoadToolbar(_last_built_roadtype);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Tram button menu --- */
@@ -919,20 +919,20 @@ static CallBackFunction MenuClickBuildRoad(int index)
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
 	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Build Tram menu.
  *
  * @param index RoadType to show the build toolbar for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickBuildTram(int index)
 {
 	_last_built_tramtype = (RoadType)index;
 	ShowBuildRoadToolbar(_last_built_tramtype);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Water button menu --- */
@@ -942,18 +942,18 @@ static CallBackFunction ToolbarBuildWaterClick(Window *w)
 	DropDownList list;
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_BUILD_CANAL, PAL_NONE, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 0));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_WATER, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Build Waterways menu.
  *
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickBuildWater(int)
 {
 	ShowBuildDocksToolbar();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Airport button menu --- */
@@ -963,18 +963,18 @@ static CallBackFunction ToolbarBuildAirClick(Window *w)
 	DropDownList list;
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_AIRPORT, PAL_NONE, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 0));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_AIR, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Build Air menu.
  *
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickBuildAir(int)
 {
 	ShowBuildAirToolbar();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Forest button menu --- */
@@ -986,14 +986,14 @@ static CallBackFunction ToolbarForestClick(Window *w)
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_PLANTTREES, PAL_NONE, STR_LANDSCAPING_MENU_PLANT_TREES, 1));
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_SIGN, PAL_NONE, STR_LANDSCAPING_MENU_PLACE_SIGN, 2));
 	ShowDropDownList(w, std::move(list), 0, WID_TN_LANDSCAPE, 100, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the landscaping menu.
  *
  * @param index Menu entry clicked.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickForest(int index)
 {
@@ -1002,7 +1002,7 @@ static CallBackFunction MenuClickForest(int index)
 		case 1: ShowBuildTreesToolbar(); break;
 		case 2: return SelectSignTool();
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Music button menu --- */
@@ -1010,18 +1010,18 @@ static CallBackFunction MenuClickForest(int index)
 static CallBackFunction ToolbarMusicClick(Window *w)
 {
 	PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_MUSIC_SOUND : (WidgetID)WID_TN_MUSIC_SOUND, {STR_TOOLBAR_SOUND_MUSIC});
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Music menu.
  *
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickMusicWindow(int)
 {
 	ShowMusicWindow();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Newspaper button menu --- */
@@ -1029,14 +1029,14 @@ static CallBackFunction MenuClickMusicWindow(int)
 static CallBackFunction ToolbarNewspaperClick(Window *w)
 {
 	PopupMainToolbarMenu(w, WID_TN_MESSAGES, {STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, STR_NEWS_MENU_MESSAGE_HISTORY_MENU, STR_NEWS_MENU_DELETE_ALL_MESSAGES});
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Newspaper menu.
  *
  * @param index Menu entry clicked.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction MenuClickNewspaper(int index)
 {
@@ -1045,19 +1045,19 @@ static CallBackFunction MenuClickNewspaper(int index)
 		case 1: ShowMessageHistory();  break;
 		case 2: DeleteAllMessages();   break;
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Help button menu --- */
 
 static CallBackFunction PlaceLandBlockInfo()
 {
-	if (_last_started_action == CBF_PLACE_LANDINFO) {
+	if (_last_started_action == CallBackFunction::PlaceLandInfo) {
 		ResetObjectToPlace();
-		return CBF_NONE;
+		return CallBackFunction::None;
 	} else {
 		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
-		return CBF_PLACE_LANDINFO;
+		return CallBackFunction::PlaceLandInfo;
 	}
 }
 
@@ -1074,7 +1074,7 @@ static CallBackFunction ToolbarHelpClick(Window *w)
 				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD});
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
@@ -1149,7 +1149,7 @@ void SetStartingYear(TimerGameCalendar::Year year)
 /**
  * Choose the proper callback function for the main toolbar's help menu.
  * @param index The menu index which was selected.
- * @return CBF_NONE
+ * @return CallBackFunction::None
  */
 static CallBackFunction MenuClickHelp(int index)
 {
@@ -1166,7 +1166,7 @@ static CallBackFunction MenuClickHelp(int index)
 		case  9: ToggleDirtyBlocks();              break;
 		case 10: ToggleWidgetOutlines();           break;
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Switch toolbar button --- */
@@ -1182,7 +1182,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 	w->ReInit();
 	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == ToolbarMode::Lower);
 	SndClickBeep();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /* --- Scenario editor specific handlers. */
@@ -1194,7 +1194,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 static CallBackFunction ToolbarScenDatePanel(Window *w)
 {
 	ShowQueryString(GetString(STR_JUST_INT, _settings_game.game_creation.starting_year), STR_MAPGEN_START_DATE_QUERY_CAPT, 8, w, CS_NUMERAL, QueryStringFlag::EnableDefault);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenDateBackward(Window *w)
@@ -1207,7 +1207,7 @@ static CallBackFunction ToolbarScenDateBackward(Window *w)
 		SetStartingYear(_settings_game.game_creation.starting_year - 1);
 	}
 	_left_button_clicked = false;
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenDateForward(Window *w)
@@ -1220,7 +1220,7 @@ static CallBackFunction ToolbarScenDateForward(Window *w)
 		SetStartingYear(_settings_game.game_creation.starting_year + 1);
 	}
 	_left_button_clicked = false;
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenGenLand(Window *w)
@@ -1228,13 +1228,13 @@ static CallBackFunction ToolbarScenGenLand(Window *w)
 	w->HandleButtonClick(WID_TE_LAND_GENERATE);
 
 	ShowEditorTerraformToolbar();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenGenTownClick(Window *w)
 {
 	PopupMainToolbarMenu(w, WID_TE_TOWN_GENERATE, {STR_SCENEDIT_TOWN_MENU_BUILD_TOWN, STR_SCENEDIT_TOWN_MENU_PACE_HOUSE});
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenGenTown(int index)
@@ -1243,66 +1243,66 @@ static CallBackFunction ToolbarScenGenTown(int index)
 		case 0: ShowFoundTownWindow(); break;
 		case 1: ShowBuildHousePicker(nullptr); break;
 	}
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenGenIndustry(Window *w)
 {
 	w->HandleButtonClick(WID_TE_INDUSTRY);
 	ShowBuildIndustryWindow();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
 	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Build Road menu.
  *
  * @param index RoadType to show the build toolbar for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction ToolbarScenBuildRoad(int index)
 {
 	_last_built_roadtype = (RoadType)index;
 	ShowBuildRoadScenToolbar(_last_built_roadtype);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
 	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions());
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 /**
  * Handle click on the entry in the Build Tram menu.
  *
  * @param index RoadType to show the build toolbar for.
- * @return #CBF_NONE
+ * @return #CallBackFunction::None
  */
 static CallBackFunction ToolbarScenBuildTram(int index)
 {
 	_last_built_tramtype = (RoadType)index;
 	ShowBuildRoadScenToolbar(_last_built_tramtype);
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenBuildDocks(Window *w)
 {
 	w->HandleButtonClick(WID_TE_WATER);
 	ShowBuildDocksScenToolbar();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenPlantTrees(Window *w)
 {
 	w->HandleButtonClick(WID_TE_TREES);
 	ShowBuildTreesToolbar();
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 static CallBackFunction ToolbarScenPlaceSign(Window *w)
@@ -1313,7 +1313,7 @@ static CallBackFunction ToolbarScenPlaceSign(Window *w)
 
 static CallBackFunction ToolbarBtn_NULL(Window *)
 {
-	return CBF_NONE;
+	return CallBackFunction::None;
 }
 
 typedef CallBackFunction MenuClickedProc(int index);
@@ -1987,7 +1987,7 @@ struct MainToolbarWindow : Window {
 	{
 		this->InitNested(0);
 
-		_last_started_action = CBF_NONE;
+		_last_started_action = CallBackFunction::None;
 		this->flags.Reset(WindowFlag::WhiteBorder);
 		this->SetWidgetDisabledState(WID_TN_PAUSE, _networking && !_network_server); // if not server, disable pause button
 		this->SetWidgetDisabledState(WID_TN_FAST_FORWARD, _networking); // if networking, disable fast-forward button
@@ -2023,12 +2023,12 @@ struct MainToolbarWindow : Window {
 	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		CallBackFunction cbf = _menu_clicked_procs[widget](index);
-		if (cbf != CBF_NONE) _last_started_action = cbf;
+		if (cbf != CallBackFunction::None) _last_started_action = cbf;
 	}
 
 	EventState OnHotkey(int hotkey) override
 	{
-		CallBackFunction cbf = CBF_NONE;
+		CallBackFunction cbf = CallBackFunction::None;
 		switch (hotkey) {
 			case MTHK_PAUSE: ToolbarPauseClick(this); break;
 			case MTHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
@@ -2072,18 +2072,18 @@ struct MainToolbarWindow : Window {
 			case MTHK_LANDINFO: cbf = PlaceLandBlockInfo(); break;
 			default: return ES_NOT_HANDLED;
 		}
-		if (cbf != CBF_NONE) _last_started_action = cbf;
+		if (cbf != CallBackFunction::None) _last_started_action = cbf;
 		return ES_HANDLED;
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		switch (_last_started_action) {
-			case CBF_PLACE_SIGN:
+			case CallBackFunction::PlaceSign:
 				PlaceProc_Sign(tile);
 				break;
 
-			case CBF_PLACE_LANDINFO:
+			case CallBackFunction::PlaceLandInfo:
 				ShowLandInfo(tile);
 				break;
 
@@ -2093,7 +2093,7 @@ struct MainToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		_last_started_action = CBF_NONE;
+		_last_started_action = CallBackFunction::None;
 	}
 
 	/** Refresh the state of pause / game-speed on a regular interval.*/
@@ -2319,7 +2319,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		this->InitNested(0);
 
-		_last_started_action = CBF_NONE;
+		_last_started_action = CallBackFunction::None;
 		this->flags.Reset(WindowFlag::WhiteBorder);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
@@ -2384,19 +2384,19 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		if (_game_mode == GM_MENU) return;
 		CallBackFunction cbf = _scen_toolbar_button_procs[widget](this);
-		if (cbf != CBF_NONE) _last_started_action = cbf;
+		if (cbf != CallBackFunction::None) _last_started_action = cbf;
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		CallBackFunction cbf = _scen_toolbar_dropdown_procs[widget](index);
-		if (cbf != CBF_NONE) _last_started_action = cbf;
+		if (cbf != CallBackFunction::None) _last_started_action = cbf;
 		SndClickBeep();
 	}
 
 	EventState OnHotkey(int hotkey) override
 	{
-		CallBackFunction cbf = CBF_NONE;
+		CallBackFunction cbf = CallBackFunction::None;
 		switch (hotkey) {
 			case MTEHK_PAUSE:                  ToolbarPauseClick(this); break;
 			case MTEHK_FASTFORWARD:            ToolbarFastForwardClick(this); break;
@@ -2423,18 +2423,18 @@ struct ScenarioEditorToolbarWindow : Window {
 			case MTEHK_EXTRA_VIEWPORT:         ShowExtraViewportWindowForTileUnderCursor(); break;
 			default: return ES_NOT_HANDLED;
 		}
-		if (cbf != CBF_NONE) _last_started_action = cbf;
+		if (cbf != CallBackFunction::None) _last_started_action = cbf;
 		return ES_HANDLED;
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		switch (_last_started_action) {
-			case CBF_PLACE_SIGN:
+			case CallBackFunction::PlaceSign:
 				PlaceProc_Sign(tile);
 				break;
 
-			case CBF_PLACE_LANDINFO:
+			case CallBackFunction::PlaceLandInfo:
 				ShowLandInfo(tile);
 				break;
 
@@ -2444,7 +2444,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	void OnPlaceObjectAbort() override
 	{
-		_last_started_action = CBF_NONE;
+		_last_started_action = CallBackFunction::None;
 	}
 
 	void OnTimeout() override
