@@ -16,9 +16,9 @@
  * Timer that represents real time for game-related purposes.
  *
  * For pausing, there are several modes:
- * - Continue to tick during pause (PeriodFlags::ALWAYS).
- * - Stop ticking when paused (PeriodFlags::UNPAUSED).
- * - Only tick when unpaused or when there was a Command executed recently (recently: since last autosave) (PeriodFlags::AUTOSAVE).
+ * - Continue to tick during pause (Trigger::Always).
+ * - Stop ticking when paused (Trigger::Unpaused).
+ * - Only tick when unpaused or when there was a Command executed recently (recently: since last autosave) (Trigger::Autosave).
  *
  * @note The lowest possible interval is 1ms, although realistic the lowest
  * interval is 27ms. This timer is only updated when the game-thread makes
@@ -27,27 +27,28 @@
  */
 class TimerGameRealtime {
 public:
-	enum PeriodFlags : uint8_t {
-		ALWAYS, ///< Always run, even when paused.
-		UNPAUSED, ///< Only run when not paused.
-		AUTOSAVE, ///< Only run when not paused or there was a Command executed recently.
+	/** When is the timer supposed to be run. */
+	enum class Trigger : uint8_t {
+		Always, ///< Always run, even when paused.
+		Unpaused, ///< Only run when not paused.
+		Autosave, ///< Only run when not paused or there was a Command executed recently.
 	};
 
 	struct TPeriod {
 		std::chrono::milliseconds period;
-		PeriodFlags flag;
+		Trigger trigger;
 
-		TPeriod(std::chrono::milliseconds period, PeriodFlags flag) : period(period), flag(flag) {}
+		TPeriod(std::chrono::milliseconds period, Trigger trigger) : period(period), trigger(trigger) {}
 
 		bool operator < (const TPeriod &other) const
 		{
-			if (this->flag != other.flag) return this->flag < other.flag;
+			if (this->trigger != other.trigger) return this->trigger < other.trigger;
 			return this->period < other.period;
 		}
 
 		bool operator == (const TPeriod &other) const
 		{
-			return this->flag == other.flag && this->period == other.period;
+			return this->trigger == other.trigger && this->period == other.period;
 		}
 	};
 	using TElapsed = std::chrono::milliseconds;

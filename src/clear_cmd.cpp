@@ -23,26 +23,29 @@
 
 #include "safeguards.h"
 
+/** @copydoc ClearTileProc */
 static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 {
-	static constexpr Price clear_price_table[] = {
-		PR_CLEAR_GRASS,
-		PR_CLEAR_ROUGH,
-		PR_CLEAR_ROCKS,
-		PR_CLEAR_FIELDS,
-		PR_CLEAR_ROUGH,
-		PR_CLEAR_ROUGH,
+	static constexpr Price clear_price_table[to_underlying(ClearGround::MaxSize)] = {
+		Price::ClearGrass, // Base price for clearing grass.
+		Price::ClearRough, // Base price for clearing rough land.
+		Price::ClearRocks, // Base price for clearing rocks.
+		Price::ClearFields, // Base price for clearing fields.
+		Price::ClearRough, // Unused.
+		Price::ClearRough, // Base price for clearing desert.
+		Price::ClearRough, // Unused.
+		Price::ClearRough, // Unused.
 	};
 	CommandCost price(EXPENSES_CONSTRUCTION);
 
 	ClearGround ground = GetClearGround(tile);
 	uint8_t density = GetClearDensity(tile);
 	if (IsSnowTile(tile)) {
-		price.AddCost(_price[clear_price_table[ground]]);
+		price.AddCost(_price[clear_price_table[to_underlying(ground)]]);
 		/* Add a little more for removing snow. */
-		price.AddCost(std::abs(_price[PR_CLEAR_ROUGH] - _price[PR_CLEAR_GRASS]));
-	} else if (ground != CLEAR_GRASS || density != 0) {
-		price.AddCost(_price[clear_price_table[ground]]);
+		price.AddCost(std::abs(_price[Price::ClearRough] - _price[Price::ClearGrass]));
+	} else if (ground != ClearGround::Grass || density != 0) {
+		price.AddCost(_price[clear_price_table[to_underlying(ground)]]);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
@@ -113,69 +116,73 @@ static void DrawClearLandFence(const TileInfo *ti)
 	EndSpriteCombine();
 }
 
+/** @copydoc DrawTileProc */
 static void DrawTile_Clear(TileInfo *ti)
 {
-	ClearGround real_ground = GetClearGround(ti->tile);
-	ClearGround ground = IsSnowTile(ti->tile) ? CLEAR_SNOW : real_ground;
+	if (IsSnowTile(ti->tile)) {
+		uint8_t density = GetClearDensity(ti->tile);
+		DrawGroundSprite(_clear_land_sprites_snow_desert[density] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+		if (GetClearGround(ti->tile) == ClearGround::Rocks) {
+			/* There 4 levels of snowy overlay rocks, each with 19 sprites. */
+			++density;
+			DrawGroundSprite(SPR_OVERLAY_ROCKS_BASE + (density * 19) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+		}
 
-	switch (ground) {
-		case CLEAR_GRASS:
+		DrawBridgeMiddle(ti, {});
+		return;
+	}
+
+	switch (GetClearGround(ti->tile)) {
+		case ClearGround::Grass:
 			DrawClearLandTile(ti, GetClearDensity(ti->tile));
 			break;
 
-		case CLEAR_ROUGH:
+		case ClearGround::Rough:
 			DrawHillyLandTile(ti);
 			break;
 
-		case CLEAR_ROCKS:
-			DrawGroundSprite((HasGrfMiscBit(GrfMiscBit::SecondRockyTileSet) && (TileHash(ti->x, ti->y) & 1) ? SPR_FLAT_ROCKY_LAND_2 : SPR_FLAT_ROCKY_LAND_1) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+		case ClearGround::Rocks:
+			if (GetTropicZone(ti->tile) == TROPICZONE_DESERT) {
+				DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+				DrawGroundSprite(SPR_OVERLAY_ROCKS_BASE + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			} else {
+				DrawGroundSprite((HasGrfMiscBit(GrfMiscBit::SecondRockyTileSet) && (TileHash(ti->x, ti->y) & 1) ? SPR_FLAT_ROCKY_LAND_2 : SPR_FLAT_ROCKY_LAND_1) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			}
 			break;
 
-		case CLEAR_FIELDS:
+		case ClearGround::Fields:
 			DrawGroundSprite(_clear_land_sprites_farmland[GetFieldType(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			DrawClearLandFence(ti);
 			break;
 
-		case CLEAR_SNOW: {
-			uint8_t density = GetClearDensity(ti->tile);
-			DrawGroundSprite(_clear_land_sprites_snow_desert[density] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
-			if (real_ground == CLEAR_ROCKS) {
-				/* There 4 levels of snowy overlay rocks, each with 19 sprites. */
-				++density;
-				DrawGroundSprite(SPR_OVERLAY_ROCKS_BASE + (density * 19) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
-			}
-			break;
-		}
-
-		case CLEAR_DESERT:
+		case ClearGround::Desert:
 			DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			break;
+
+		default:
+			NOT_REACHED();
 	}
 
 	DrawBridgeMiddle(ti, {});
 }
 
-static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y, bool)
+/** @copydoc GetSlopePixelZProc */
+static int GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y, [[maybe_unused]] bool ground_vehicle)
 {
 	auto [tileh, z] = GetTilePixelSlope(tile);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Foundation GetFoundation_Clear(TileIndex, Slope)
-{
-	return FOUNDATION_NONE;
-}
-
 static void UpdateFences(TileIndex tile)
 {
-	assert(IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
+	assert(IsTileType(tile, TileType::Clear) && IsClearGround(tile, ClearGround::Fields));
 	bool dirty = false;
 
 	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
 		if (GetFence(tile, dir) != 0) continue;
 		TileIndex neighbour = tile + TileOffsByDiagDir(dir);
-		if (IsTileType(neighbour, MP_CLEAR) && IsClearGround(neighbour, CLEAR_FIELDS)) continue;
+		if (IsTileType(neighbour, TileType::Clear) && IsClearGround(neighbour, ClearGround::Fields)) continue;
 		SetFence(tile, dir, 3);
 		dirty = true;
 	}
@@ -184,7 +191,10 @@ static void UpdateFences(TileIndex tile)
 }
 
 
-/** Convert to or from snowy tiles. */
+/**
+ * Convert to or from snowy tiles.
+ * @param tile The tile to consider.
+ */
 static void TileLoopClearAlps(TileIndex tile)
 {
 	int k = GetTileZ(tile) - GetSnowLine() + 1;
@@ -233,9 +243,11 @@ static inline bool NeighbourIsNormal(TileIndex tile)
 
 static void TileLoopClearDesert(TileIndex tile)
 {
+	ClearGround ground = GetClearGround(tile);
+
 	/* Current desert level - 0 if it is not desert */
 	uint current = 0;
-	if (IsClearGround(tile, CLEAR_DESERT)) current = GetClearDensity(tile);
+	if (ground == ClearGround::Desert || ground == ClearGround::Rocks) current = GetClearDensity(tile);
 
 	/* Expected desert level - 0 if it shouldn't be desert */
 	uint expected = 0;
@@ -245,16 +257,19 @@ static void TileLoopClearDesert(TileIndex tile)
 
 	if (current == expected) return;
 
-	if (expected == 0) {
-		SetClearGroundDensity(tile, CLEAR_GRASS, 3);
+	if (ground == ClearGround::Rocks) {
+		SetClearGroundDensity(tile, ClearGround::Rocks, expected);
+	} else if (expected == 0) {
+		SetClearGroundDensity(tile, ClearGround::Grass, 3);
 	} else {
 		/* Transition from clear to desert is not smooth (after clearing desert tile) */
-		SetClearGroundDensity(tile, CLEAR_DESERT, expected);
+		SetClearGroundDensity(tile, ClearGround::Desert, expected);
 	}
 
 	MarkTileDirtyByTile(tile);
 }
 
+/** @copydoc TileLoopProc */
 static void TileLoop_Clear(TileIndex tile)
 {
 	AmbientSoundEffect(tile);
@@ -268,7 +283,7 @@ static void TileLoop_Clear(TileIndex tile)
 	if (IsSnowTile(tile)) return;
 
 	switch (GetClearGround(tile)) {
-		case CLEAR_GRASS:
+		case ClearGround::Grass:
 			if (GetClearDensity(tile) == 3) return;
 
 			if (_game_mode != GM_EDITOR) {
@@ -280,11 +295,11 @@ static void TileLoop_Clear(TileIndex tile)
 					AddClearDensity(tile, 1);
 				}
 			} else {
-				SetClearGroundDensity(tile, GB(Random(), 0, 8) > 21 ? CLEAR_GRASS : CLEAR_ROUGH, 3);
+				SetClearGroundDensity(tile, GB(Random(), 0, 8) > 21 ? ClearGround::Grass : ClearGround::Rough, 3);
 			}
 			break;
 
-		case CLEAR_FIELDS:
+		case ClearGround::Fields:
 			UpdateFences(tile);
 
 			if (_game_mode == GM_EDITOR) return;
@@ -298,7 +313,7 @@ static void TileLoop_Clear(TileIndex tile)
 
 			if (GetIndustryIndexOfField(tile) == IndustryID::Invalid() && GetFieldType(tile) >= 7) {
 				/* This farmfield is no longer farmfield, so make it grass again */
-				MakeClear(tile, CLEAR_GRASS, 2);
+				MakeClear(tile, ClearGround::Grass, 2);
 			} else {
 				uint field_type = GetFieldType(tile);
 				field_type = (field_type < 8) ? field_type + 1 : 0;
@@ -326,7 +341,7 @@ void GenerateClearTile()
 	do {
 		IncreaseGeneratingWorldProgress(GWP_ROUGH_ROCKY);
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR) && !IsClearGround(tile, CLEAR_DESERT)) SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
+		if (IsTileType(tile, TileType::Clear) && !IsClearGround(tile, ClearGround::Desert)) SetClearGroundDensity(tile, ClearGround::Rough, 3);
 	} while (--i);
 
 	/* add rocky tiles */
@@ -336,17 +351,17 @@ void GenerateClearTile()
 		tile = RandomTileSeed(r);
 
 		IncreaseGeneratingWorldProgress(GWP_ROUGH_ROCKY);
-		if (IsTileType(tile, MP_CLEAR) && !IsClearGround(tile, CLEAR_DESERT)) {
+		if (IsTileType(tile, TileType::Clear)) {
 			uint j = GB(r, 16, 4) + 5;
 			for (;;) {
 				TileIndex tile_new;
 
-				SetClearGroundDensity(tile, CLEAR_ROCKS, 3);
+				SetClearGroundDensity(tile, ClearGround::Rocks, 3);
 				MarkTileDirtyByTile(tile);
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDiagDir((DiagDirection)GB(Random(), 0, 2));
-				} while (!IsTileType(tile_new, MP_CLEAR) || IsClearGround(tile_new, CLEAR_DESERT));
+				} while (!IsTileType(tile_new, TileType::Clear));
 				tile = tile_new;
 			}
 get_out:;
@@ -354,62 +369,37 @@ get_out:;
 	} while (--i);
 }
 
-static TrackStatus GetTileTrackStatus_Clear(TileIndex, TransportType, uint, DiagDirection)
-{
-	return 0;
-}
-
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
 {
 	/* Each pair holds a normal and a snowy ClearGround description. */
-	static constexpr std::pair<StringID, StringID> clear_land_str[] = {
-		{STR_LAI_CLEAR_DESCRIPTION_GRASS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS},
-		{STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND},
-		{STR_LAI_CLEAR_DESCRIPTION_ROCKS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS},
-		{STR_LAI_CLEAR_DESCRIPTION_FIELDS,     STR_EMPTY},
-		{STR_EMPTY,                            STR_EMPTY}, // CLEAR_SNOW does not appear in the map.
-		{STR_LAI_CLEAR_DESCRIPTION_DESERT,     STR_EMPTY},
+	static constexpr std::pair<StringID, StringID> clear_land_str[to_underlying(ClearGround::MaxSize)] = {
+		{STR_LAI_CLEAR_DESCRIPTION_GRASS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS}, // Description for grass.
+		{STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND}, // Description for rough land.
+		{STR_LAI_CLEAR_DESCRIPTION_ROCKS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS}, // Description for rocks.
+		{STR_LAI_CLEAR_DESCRIPTION_FIELDS,     STR_EMPTY}, // Description for fields.
+		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
+		{STR_LAI_CLEAR_DESCRIPTION_DESERT,     STR_EMPTY}, // Description for desert.
+		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
+		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
 	};
 
-	if (!IsSnowTile(tile) && IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
+	if (!IsSnowTile(tile) && IsClearGround(tile, ClearGround::Grass) && GetClearDensity(tile) == 0) {
 		td.str = STR_LAI_CLEAR_DESCRIPTION_BARE_LAND;
 	} else {
-		const auto &[name, snowy_name] = clear_land_str[GetClearGround(tile)];
+		const auto &[name, snowy_name] = clear_land_str[to_underlying(GetClearGround(tile))];
 		td.str = IsSnowTile(tile) ? snowy_name : name;
 	}
 	td.owner[0] = GetTileOwner(tile);
 }
 
-static void ChangeTileOwner_Clear(TileIndex, Owner, Owner)
-{
-	return;
-}
-
-static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlags flags, int, Slope)
-{
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
-}
-
-static CommandCost CheckBuildAbove_Clear(TileIndex, DoCommandFlags, Axis, int)
-{
-	/* Can always build above clear tiles. */
-	return CommandCost();
-}
-
+/** TileTypeProcs definitions for TileType::Clear tiles. */
 extern const TileTypeProcs _tile_type_clear_procs = {
-	DrawTile_Clear,           ///< draw_tile_proc
-	GetSlopePixelZ_Clear,     ///< get_slope_z_proc
-	ClearTile_Clear,          ///< clear_tile_proc
-	nullptr,                     ///< add_accepted_cargo_proc
-	GetTileDesc_Clear,        ///< get_tile_desc_proc
-	GetTileTrackStatus_Clear, ///< get_tile_track_status_proc
-	nullptr,                     ///< click_tile_proc
-	nullptr,                     ///< animate_tile_proc
-	TileLoop_Clear,           ///< tile_loop_proc
-	ChangeTileOwner_Clear,    ///< change_tile_owner_proc
-	nullptr,                     ///< add_produced_cargo_proc
-	nullptr,                     ///< vehicle_enter_tile_proc
-	GetFoundation_Clear,      ///< get_foundation_proc
-	TerraformTile_Clear,      ///< terraform_tile_proc
-	CheckBuildAbove_Clear, // check_build_above_proc
+	.draw_tile_proc = DrawTile_Clear,
+	.get_slope_pixel_z_proc = GetSlopePixelZ_Clear,
+	.clear_tile_proc = ClearTile_Clear,
+	.get_tile_desc_proc = GetTileDesc_Clear,
+	.tile_loop_proc = TileLoop_Clear,
+	.terraform_tile_proc = [](TileIndex tile, DoCommandFlags flags, int, Slope) { return Command<Commands::LandscapeClear>::Do(flags, tile); },
+	.check_build_above_proc = [](TileIndex, DoCommandFlags, Axis, int) { return CommandCost(); }, // Can always build above clear tiles
 };

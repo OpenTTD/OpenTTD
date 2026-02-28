@@ -27,11 +27,8 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	EncodedString progress{}; ///< Progress text of the goal.
 	bool completed = false; ///< Is the goal completed or not?
 
-	/**
-	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
-	 */
-	Goal() { }
-	Goal(GoalType type, GoalTypeID dst, CompanyID company, const EncodedString &text) : company(company), type(type), dst(dst), text(text) {}
+	Goal(GoalID index, GoalType type = GT_NONE, GoalTypeID dst = 0, CompanyID company = CompanyID::Invalid(), const EncodedString &text = {}) :
+		GoalPool::PoolItem<&_goal_pool>(index), company(company), type(type), dst(dst), text(text) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter

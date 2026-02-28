@@ -119,6 +119,7 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 
 /**
  * Open the BaseSet version of the textfile window.
+ * @param parent The parent of this window,
  * @param file_type The type of textfile to display.
  * @param baseset The BaseSet to use.
  * @param content_type STR_CONTENT_TYPE_xxx for title.
@@ -134,6 +135,7 @@ void ShowBaseSetTextfileWindow(Window *parent, TextfileType file_type, const TBa
  * Get string to use when listing this set in the settings window.
  * If there are no invalid files, then this is just the set name,
  * otherwise a string is formatted including the number of invalid files.
+ * @param baseset The selected baseset.
  * @return the string to display.
  */
 template <typename TBaseSet>
@@ -171,8 +173,8 @@ static void AddCustomRefreshRates()
 	std::copy(monitor_rates.begin(), monitor_rates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
 }
 
-static const int SCALE_NMARKS = (MAX_INTERFACE_SCALE - MIN_INTERFACE_SCALE) / 25 + 1; // Show marks at 25% increments
-static const int VOLUME_NMARKS = 9; // Show 5 values and 4 empty marks.
+static const int SCALE_NMARKS = (MAX_INTERFACE_SCALE - MIN_INTERFACE_SCALE) / 25 + 1; ///< Show marks at 25% increments.
+static const int VOLUME_NMARKS = 9; ///< Show 5 values and 4 empty marks.
 
 static std::optional<std::string> ScaleMarkFunc(int, int, int value)
 {
@@ -355,7 +357,7 @@ private:
 	std::vector<SocialIntegrationPlugin *> plugins{};
 };
 
-/** Construct nested container widget for managing the list of social plugins. */
+/** Construct nested container widget for managing the list of social plugins. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeNWidgetSocialPlugins()
 {
 	return std::make_unique<NWidgetSocialPlugins>();
@@ -892,7 +894,7 @@ struct GameOptionsWindow : Window {
 
 	void OnPaint() override
 	{
-		if (this->GetWidget<NWidgetStacked>(WID_GO_TAB_SELECTION)->shown_plane != 4) {
+		if (GameOptionsWindow::active_tab != WID_GO_TAB_ADVANCED) {
 			this->DrawWidgets();
 			return;
 		}
@@ -960,17 +962,17 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_SURVEY_PARTICIPATE_BUTTON:
 				switch (_settings_client.network.participate_survey) {
-					case PS_ASK:
-					case PS_NO:
-						_settings_client.network.participate_survey = PS_YES;
+					case ParticipateSurvey::Ask:
+					case ParticipateSurvey::No:
+						_settings_client.network.participate_survey = ParticipateSurvey::Yes;
 						break;
 
-					case PS_YES:
-						_settings_client.network.participate_survey = PS_NO;
+					case ParticipateSurvey::Yes:
+						_settings_client.network.participate_survey = ParticipateSurvey::No;
 						break;
 				}
 
-				this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == PS_YES);
+				this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == ParticipateSurvey::Yes);
 				this->SetWidgetDirty(WID_GO_SURVEY_PARTICIPATE_BUTTON);
 				this->SetWidgetDirty(WID_GO_SURVEY_PARTICIPATE_TEXT);
 				break;
@@ -1528,7 +1530,7 @@ struct GameOptionsWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == PS_YES);
+		this->SetWidgetLoweredState(WID_GO_SURVEY_PARTICIPATE_BUTTON, _settings_client.network.participate_survey == ParticipateSurvey::Yes);
 		this->SetWidgetLoweredState(WID_GO_FULLSCREEN_BUTTON, _fullscreen);
 		this->SetWidgetLoweredState(WID_GO_VIDEO_ACCEL_BUTTON, _video_hw_accel);
 		this->SetWidgetDisabledState(WID_GO_REFRESH_RATE_DROPDOWN, _video_vsync);

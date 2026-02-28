@@ -156,7 +156,7 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 
 	/* Create a new storage. */
 	assert(PersistentStorage::CanAllocateItem());
-	PersistentStorage *psa = new PersistentStorage(grfid, GSF_FAKE_TOWNS, this->t->xy);
+	PersistentStorage *psa = PersistentStorage::Create(grfid, GSF_FAKE_TOWNS, this->t->xy);
 	psa->StoreValue(pos, value);
 	t->psa_list.push_back(psa);
 }

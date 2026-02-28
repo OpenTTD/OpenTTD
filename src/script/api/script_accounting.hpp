@@ -48,7 +48,7 @@ public:
 	 * @note when nesting ScriptAccounting instances all instances' GetCosts
 	 *   will always return the value of the 'top' instance.
 	 */
-	Money GetCosts();
+	Money GetCosts() const;
 
 	/**
 	 * Reset the costs to zero.

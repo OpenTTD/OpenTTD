@@ -18,6 +18,8 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
 
+struct GRFConfig;
+
 /**
  * List of different canal 'features'.
  * Each feature gets an entry in the canal spritegroup table
@@ -53,14 +55,15 @@ enum GrfLoadingStage : uint8_t {
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(GrfLoadingStage)
 
+/** Bits of NewGRF's GlobalVariable 1E/9E. */
 enum class GrfMiscBit : uint8_t {
-	DesertTreesFields = 0, // Unsupported.
-	DesertPavedRoads = 1,
-	FieldBoundingBox = 2, // Unsupported.
+	DesertTreesFields = 0, ///< Unsupported: allow trees and fields in desert climate.
+	DesertPavedRoads = 1, ///< Show pavement and lights in desert towns
+	FieldBoundingBox = 2, ///< Unsupported: fiels have a height.
 	TrainWidth32Pixels = 3, ///< Use 32 pixels per train vehicle in depot gui and vehicle details. Never set in the global variable; @see GRFFile::traininfo_vehicle_width
-	AmbientSoundCallback = 4,
-	CatenaryOn3rdTrack = 5, // Unsupported.
-	SecondRockyTileSet = 6,
+	AmbientSoundCallback = 4, ///< Enable ambient sound effect callback 144.
+	CatenaryOn3rdTrack = 5, ///< Unsupported: enable catenaries over third track type.
+	SecondRockyTileSet = 6, ///< Enable using the second rocky tile set.
 };
 
 using GrfMiscBits = EnumBitSet<GrfMiscBit, uint8_t>;
@@ -153,16 +156,21 @@ struct GRFFile {
 
 	int traininfo_vehicle_pitch = 0; ///< Vertical offset for drawing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width = 0; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
+	bool cargo_list_is_fallback = false; ///< Set if cargo types have been created but a cargo list has not been installed
 
 	GrfSpecFeatures grf_features{}; ///< Bitset of GrfSpecFeature the grf uses
 	PriceMultipliers price_base_multipliers{}; ///< Price base multipliers as set by the grf.
 
-	GRFFile(const struct GRFConfig &config);
+	GRFFile(const GRFConfig &config);
 	GRFFile();
 	GRFFile(GRFFile &&other);
 	~GRFFile();
 
-	/** Get GRF Parameter with range checking */
+	/**
+	 * Get GRF Parameter with range checking.
+	 * @param number The parameter number/index.
+	 * @return The parameter, or \c 0 when the number is out of bounds.
+	 */
 	uint32_t GetParam(uint number) const
 	{
 		/* Note: We implicitly test for number < this->param.size() and return 0 for invalid parameters.

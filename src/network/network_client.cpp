@@ -98,6 +98,7 @@ void ClientNetworkEmergencySave()
 /**
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
+ * @param connection_string The connection string that the connection was made with.
  */
 ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string)
 {
@@ -281,7 +282,10 @@ NetworkJoinInfo _network_join;
  * Sending functions
  ************/
 
-/** Tell the server we would like to join. */
+/**
+ * Tell the server we would like to join.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
 	Debug(net, 9, "Client::SendJoin()");
@@ -300,6 +304,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Identify ourselves to the server.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendIdentify()
 {
 	Debug(net, 9, "Client::SendIdentify()");
@@ -311,7 +319,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendIdentify()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Tell the server we got all the NewGRFs. */
+/**
+ * Tell the server we got all the NewGRFs.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 {
 	Debug(net, 9, "Client::SendNewGRFsOk()");
@@ -323,7 +334,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 
 /**
  * Set the game password as requested.
- * @param password The game password.
+ * @return The new state the network.
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAuthResponse()
 {
@@ -336,7 +347,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAuthResponse()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Request the map from the server. */
+/**
+ * Request the map from the server.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 {
 	Debug(net, 9, "Client::SendGetMap()");
@@ -349,7 +363,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Tell the server we received the complete map. */
+/**
+ * Tell the server we received the complete map.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 {
 	Debug(net, 9, "Client::SendMapOk()");
@@ -362,7 +379,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Send an acknowledgement from the server's ticks. */
+/**
+ * Send an acknowledgement from the server's ticks.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 {
 	Debug(net, 9, "Client::SendAck()");
@@ -378,6 +398,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 /**
  * Send a command to the server.
  * @param cp The command to send.
+ * @return The new state the network.
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket &cp)
 {
@@ -390,7 +411,15 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacke
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Send a chat-packet over the network */
+/**
+ * Send a chat-packet over the network.
+ * @param action The associated action.
+ * @param type The type of destination (all, team, client).
+ * @param dest The destination team/client.
+ * @param msg The actual message.
+ * @param data Optional arbitrary extra data.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, std::string_view msg, int64_t data)
 {
 	Debug(net, 9, "Client::SendChat(): action={}, type={}, dest={}", action, type, dest);
@@ -407,7 +436,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action,
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/** Send an error-packet over the network */
+/**
+ * Send an error-packet over the network.
+ * @param errorno The numeric error.
+ * @return The new state the network.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode errorno)
 {
 	Debug(net, 9, "Client::SendError(): errorno={}", errorno);
@@ -422,6 +455,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode err
 /**
  * Tell the server that we like to change the name of the client.
  * @param name The new name.
+ * @return The new state the network.
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string &name)
 {
@@ -436,6 +470,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string 
 
 /**
  * Tell the server we would like to quit.
+ * @return The new state the network.
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 {
@@ -451,6 +486,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
  * Send a console command.
  * @param pass The password for the remote command.
  * @param command The actual command.
+ * @return The new state the network.
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(std::string_view pass, std::string_view command)
 {
@@ -466,6 +502,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(std::string_view pass
 /**
  * Ask the server to move us.
  * @param company The company to move to.
+ * @return The new state the network.
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company)
 {
@@ -565,7 +602,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	if (!NetworkClientInfo::CanAllocateItem()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	/* We don't have this client_id yet, find an empty client_id, and put the data there */
-	ci = new NetworkClientInfo(client_id);
+	ci = NetworkClientInfo::Create(client_id);
 	ci->client_playas = playas;
 	if (client_id == _network_own_client_id) this->SetInfo(ci);
 
@@ -661,8 +698,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 }
 
 class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
-	virtual void SendResponse() override { MyClient::SendAuthResponse(); }
-	virtual void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
+	void SendResponse() override { MyClient::SendAuthResponse(); }
+	void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
 	{
 		if (!_network_join.server_password.empty()) {
 			request->Reply(_network_join.server_password);
@@ -848,7 +885,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 			Debug(net, 9, "Client::join_status = REGISTERING");
 			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 			ShowJoinStatusWindow();
-			Command<CMD_COMPANY_CTRL>::Post(CCA_NEW, CompanyID::Invalid(), CRR_NONE, _network_own_client_id);
+			Command<Commands::CompanyControl>::Post(CompanyCtrlAction::New, CompanyID::Invalid(), CompanyRemoveReason::None, _network_own_client_id);
 		}
 	} else {
 		/* take control over an existing company */
@@ -1287,7 +1324,7 @@ bool NetworkValidateOurClientName()
 
 /**
  * Send the server our name as callback from the setting.
- * @param newname The new client name.
+ * @param client_name The new client name.
  */
 void NetworkUpdateClientName(const std::string &client_name)
 {

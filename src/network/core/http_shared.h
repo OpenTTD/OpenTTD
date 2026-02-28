@@ -42,6 +42,7 @@ public:
 
 	/**
 	 * Similar to HTTPCallback::OnReceiveData, but thread-safe.
+	 * @copydoc HTTPCallback::OnReceiveData
 	 */
 	void OnReceiveData(std::unique_ptr<char[]> data, size_t length)
 	{
@@ -88,6 +89,7 @@ public:
 
 	/**
 	 * Check if the queue is empty.
+	 * @return \c true iff the queue is empty.
 	 */
 	bool IsQueueEmpty()
 	{
@@ -97,6 +99,7 @@ public:
 
 	HTTPThreadSafeCallback(HTTPCallback *callback) : callback(callback) {}
 
+	/** Ensure our queues are emptied while holding a lock. */
 	~HTTPThreadSafeCallback()
 	{
 		std::lock_guard<std::mutex> lock(this->mutex);

@@ -11,6 +11,7 @@
 #define DISASTER_VEHICLE_H
 
 #include "vehicle_base.h"
+#include "aircraft.h"
 
 /** Different sub types of disaster vehicles. */
 enum DisasterSubType : uint8_t {
@@ -37,12 +38,15 @@ enum DisasterSubType : uint8_t {
 struct DisasterVehicle final : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER> {
 	SpriteID image_override{}; ///< Override for the default disaster vehicle sprite.
 	VehicleID big_ufo_destroyer_target = VehicleID::Invalid(); ///< The big UFO that this destroyer is supposed to bomb.
-	uint8_t flags = 0; ///< Flags about the state of the vehicle, @see AirVehicleFlags
+	VehicleAirFlags flags{}; ///< Flags about the state of the vehicle, @see VehicleAirFlags
 	uint16_t state = 0; ///< Action stage of the disaster vehicle.
 
-	/** For use by saveload. */
-	DisasterVehicle() : SpecializedVehicleBase() {}
-	DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target = VehicleID::Invalid());
+	/**
+	 * For use by saveload.
+	 * @param index The index within the vehicle pool.
+	 */
+	DisasterVehicle(VehicleID index) : SpecializedVehicleBase(index) {}
+	DisasterVehicle(VehicleID index, int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target = VehicleID::Invalid());
 	/** We want to 'destruct' the right class. */
 	~DisasterVehicle() override = default;
 

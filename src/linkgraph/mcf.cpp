@@ -31,7 +31,7 @@ public:
 	 */
 	DistanceAnnotation(NodeID n, bool source = false) : Path(n, source) {}
 
-	bool IsBetter(const DistanceAnnotation *base, uint cap, int free_cap, uint dist) const;
+	bool IsBetter(const DistanceAnnotation *base, uint, int free_cap, uint dist) const;
 
 	/**
 	 * Return the actual value of the annotation, in this case the distance.
@@ -232,6 +232,7 @@ bool DistanceAnnotation::IsBetter(const DistanceAnnotation *base, uint,
  * Determines if an extension to the given Path with the given parameters is
  * better than this path.
  * @param base Other path.
+ * @param cap Capacity of the edge.
  * @param free_cap Capacity of the new edge to be added to base.
  * @param dist Distance of the new edge.
  * @return True if base + the new edge would be better than the path associated
@@ -347,6 +348,7 @@ void MultiCommodityFlow::CleanupPaths(NodeID source_id, PathVector &paths)
  * @param accuracy Accuracy of the calculation.
  * @param max_saturation If < UINT_MAX only push flow up to the given
  *                       saturation, otherwise the path can be "overloaded".
+ * @return The new flow.
  */
 uint MultiCommodityFlow::PushFlow(Node &node, NodeID to, Path *path, uint accuracy,
 		uint max_saturation)
@@ -594,6 +596,7 @@ MCF2ndPass::MCF2ndPass(LinkGraphJob &job) : MultiCommodityFlow(job)
  * @param y_anno Second value.
  * @param x Node id associated with the first value.
  * @param y Node id associated with the second value.
+ * @return \c true iff x is considered greater than y.
  */
 template <typename T>
 bool Greater(T x_anno, T y_anno, NodeID x, NodeID y)

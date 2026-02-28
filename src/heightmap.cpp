@@ -35,7 +35,7 @@
  */
 static const uint MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS = 2 * MAX_MAP_SIZE;
 
-/*
+/**
  * Maximum size in pixels of the heightmap image.
  */
 static const uint MAX_HEIGHTMAP_SIZE_PIXELS = 256 << 20; // ~256 million
@@ -65,6 +65,10 @@ static inline bool IsValidHeightmapDimension(size_t width, size_t height)
 /**
  * Convert RGB colours to Greyscale using 29.9% Red, 58.7% Green, 11.4% Blue
  *  (average luminosity formula, NTSC Colour Space)
+ * @param red The red component of a colour.
+ * @param green The green component of a colour.
+ * @param blue The blue component of a colour.
+ * @return The greyscale conversion of a colour.
  */
 static inline uint8_t RGBToGreyscale(uint8_t red, uint8_t green, uint8_t blue)
 {
@@ -78,6 +82,9 @@ static inline uint8_t RGBToGreyscale(uint8_t red, uint8_t green, uint8_t blue)
 
 /**
  * The PNG Heightmap loader.
+ * @param map The map to write data to.
+ * @param png_ptr The PNG file to load.
+ * @param info_ptr Metadata about the loaded PNG.
  */
 static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_ptr, png_infop info_ptr)
 {
@@ -137,6 +144,11 @@ static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_pt
  * Reads the heightmap and/or size of the heightmap from a PNG file.
  * If map == nullptr only the size of the PNG is read, otherwise a map
  * with greyscale pixels is allocated and assigned to *map.
+ * @param filename Name of the file to load.
+ * @param[out] x Length of the image.
+ * @param[out] y Height of the image.
+ * @param[in,out] map If not \c nullptr, destination to store the loaded block of image data.
+ * @return Whether loading was successful.
  */
 static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
@@ -203,6 +215,9 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 
 /**
  * The BMP Heightmap loader.
+ * @param map The image to load into.
+ * @param info Metadata about the image.
+ * @param data The actual BMP data.
  */
 static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &info, const BmpData &data)
 {
@@ -258,6 +273,11 @@ static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &inf
  * Reads the heightmap and/or size of the heightmap from a BMP file.
  * If map == nullptr only the size of the BMP is read, otherwise a map
  * with greyscale pixels is allocated and assigned to *map.
+ * @param filename Name of the file to load.
+ * @param[out] x Length of the image.
+ * @param[out] y Height of the image.
+ * @param[in,out] map If not \c nullptr, destination to store the loaded block of image data.
+ * @return Whether loading was successful.
  */
 static bool ReadHeightmapBMP(std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
@@ -390,7 +410,7 @@ static void GreyscaleToMapHeights(uint img_width, uint img_height, std::span<con
 			}
 			/* Only clear the tiles within the map area. */
 			if (IsInnerTile(tile)) {
-				MakeClear(tile, CLEAR_GRASS, 3);
+				MakeClear(tile, ClearGround::Grass, 3);
 			}
 		}
 	}
@@ -433,7 +453,7 @@ void FixSlopes()
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the
 				 * tile turning into rock. */
 				if (IsInnerTile(tile) && RandomRange(max_height) <= current_height) {
-					MakeClear(tile, CLEAR_ROCKS, 3);
+					MakeClear(tile, ClearGround::Rocks, 3);
 				}
 			}
 		}
@@ -462,7 +482,7 @@ void FixSlopes()
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the
 				 * tile turning into rock. */
 				if (IsInnerTile(tile) && RandomRange(max_height) <= current_height) {
-					MakeClear(tile, CLEAR_ROCKS, 3);
+					MakeClear(tile, ClearGround::Rocks, 3);
 				}
 			}
 		}
@@ -512,7 +532,8 @@ bool GetHeightmapDimensions(DetailedFileType dft, std::string_view filename, uin
  *  to a landscape representing the heightmap.
  * It converts pixels to height. The brighter, the higher.
  * @param dft Type of image file.
- * @param filename of the heightmap file to be imported
+ * @param filename of the heightmap file to be imported.
+ * @return \c true iff the heightmap could be loaded.
  */
 bool LoadHeightmap(DetailedFileType dft, std::string_view filename)
 {

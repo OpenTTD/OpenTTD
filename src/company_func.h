@@ -28,7 +28,7 @@ void UpdateCompanyLiveries(Company *c);
 Money GetAvailableMoney(CompanyID company);
 Money GetAvailableMoneyForCommand();
 bool CheckCompanyHasMoney(CommandCost &cost);
-void SubtractMoneyFromCompany(const CommandCost &cost);
+void SubtractMoneyFromCompany(CompanyID company, const CommandCost &cost);
 void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cost);
 CommandCost CheckOwnership(Owner owner, TileIndex tile = {});
 CommandCost CheckTileOwnership(TileIndex tile);

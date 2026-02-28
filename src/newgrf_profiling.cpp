@@ -28,7 +28,6 @@ std::vector<NewGRFProfiler> _newgrf_profilers;
 /**
  * Create profiler object and begin profiling session.
  * @param grffile   The GRF file to collect profiling data on
- * @param end_date  Game date to end profiling on
  */
 NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile) : grffile(grffile)
 {
@@ -59,6 +58,7 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 
 /**
  * Capture the completion of a sprite group resolution.
+ * @param result The result to process.
  */
 void NewGRFProfiler::EndResolve(const ResolverResult &result)
 {
@@ -177,17 +177,18 @@ std::string NewGRFProfiler::GetOutputFilename() const
 /**
  * Check whether profiling is active and should be finished.
  */
-static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({ TimerGameTick::Priority::NONE, 0 }, []()
+static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({ TimerGameTick::Priority::None, 0 }, []()
 {
 	NewGRFProfiler::FinishAll();
 });
 
 /**
  * Start the timeout timer that will finish all profiling sessions.
+ * @param ticks The timemout in game ticks.
  */
 /* static */ void NewGRFProfiler::StartTimer(uint64_t ticks)
 {
-	_profiling_finish_timeout.Reset({ TimerGameTick::Priority::NONE, static_cast<uint>(ticks) });
+	_profiling_finish_timeout.Reset({ TimerGameTick::Priority::None, static_cast<uint>(ticks) });
 }
 
 /**

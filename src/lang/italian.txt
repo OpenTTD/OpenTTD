@@ -1639,6 +1639,9 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Morbido
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Accidentato
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molto accidentato
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Altitudine media: {STRING}
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Varietà del terreno: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Scegliere se la mappa deve contenere sia montagne che aree pianeggianti. Più alta è la varietà, maggiori sono le differenze di altitudine tra aree montuose e pianeggianti
 
@@ -2862,6 +2865,8 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Riduce l'altezz
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Aumenta l'altezza delle anteprime. Ctrl+Click per aumentare al massimo
 
+
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Seleziona una classe di stazioni da visualizzare
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Seleziona un tipo di stazione da costruire. Ctrl+Click per aggiungere o rimuovere dagli oggetti salvati
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Seleziona una classe di fermate dell'autobus da visualizzare
@@ -2876,7 +2881,7 @@ STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Seleziona un ti
 STR_HOUSE_PICKER_CAPTION                                        :Selezione casa
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nome: {ORANGE}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Popolazione: {ORANGE}{NUM}
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carichi accettati: {ORANGE}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carichi accettati: {GOLD}{STRING}
 STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Carichi prodotti: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Bordo
@@ -3158,7 +3163,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Categori
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nome aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome blocco aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carichi accettati: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carichi accettati: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo di rotaie: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tipo di strada: {LTBLUE}{STRING}
@@ -3382,6 +3387,7 @@ STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Aumenta 
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Diminuisci la copertura del deserto del dieci percento
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Altitudine media:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Livello di mare:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Selezionare il livello del mare
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Fiumi:
@@ -4015,12 +4021,12 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENC
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nessuna -
-STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% trasportato){BLACK}
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% trasportato)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} e {NUM} ancora...
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} e {NUM} ancora...
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nomi delle industrie - fare clic su un nome per centrare la visuale sull'industria. Ctrl+Clic per aprire una nuova finestra sulla posizione dell'industria
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carichi accettati: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Carico prodotto: {SILVER}{STRING}
@@ -4036,9 +4042,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra l
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Livello di produzione: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}L'industria ha annunciato che a breve chiuderà!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Richiede: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Richiede: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Richiede:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
@@ -4170,6 +4176,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {C
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} casell{P a e}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipo di aeromobile: {GOLD}{STRING}
+
+# Vehicle sort details
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tutti i tipi di carico
@@ -4331,6 +4339,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Si stan
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggio da un costruttore di veicoli
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" "" a} nuov{G o o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=f}locomotiva elettrica
@@ -4562,7 +4571,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostra l
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Carico totale
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Mostra la capacità totale del treno, suddivisa per tipo di carico
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacità: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacità: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Riadatta)
@@ -5051,7 +5060,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossib
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossibile rinominare la città...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossibile fondare una città qui...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Impossibile espandere la città...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... troppo vicino al bordo della mappa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... troppo vicino ad un'altra città
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... troppe città
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non c'è altro spazio sulla mappa
@@ -5335,7 +5343,9 @@ STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Impossib
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Impossibile vendere tutti gli aeromobili...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Impossibile rimpiazzare automaticamente i veicoli ferroviari...
 STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Non puoi rimpiazzare automaticamente gli autoveicoli...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Impossibile rimpiazzare automaticamente le navi...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Non puoi rimpiazzare automaticamente l'aeromobile...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Troppi veicoli nel gioco
@@ -5920,4 +5930,3 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_FILTER_ANY_LABEL                                      :Qualunque {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} è {STRING}

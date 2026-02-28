@@ -190,7 +190,7 @@ std::array<uint8_t, NUM_CARGO> _sorted_cargo_types; ///< Sort order of cargoes b
 std::vector<const CargoSpec *> _sorted_cargo_specs;   ///< Cargo specifications sorted alphabetically by name.
 std::span<const CargoSpec *> _sorted_standard_cargo_specs; ///< Standard cargo specifications sorted alphabetically by name.
 
-/** Sort cargo specifications by their name. */
+/** Sort cargo specifications by their name. @copydoc GUIList::Sorter */
 static bool CargoSpecNameSorter(const CargoSpec * const &a, const CargoSpec * const &b)
 {
 	std::string a_name = GetString(a->name);
@@ -202,7 +202,7 @@ static bool CargoSpecNameSorter(const CargoSpec * const &a, const CargoSpec * co
 	return (res != 0) ? res < 0 : (a->bitnum < b->bitnum);
 }
 
-/** Sort cargo specifications by their cargo class. */
+/** Sort cargo specifications by their cargo class. @copydoc GUIList::Sorter */
 static bool CargoSpecClassSorter(const CargoSpec * const &a, const CargoSpec * const &b)
 {
 	int res = b->classes.Test(CargoClass::Passengers) - a->classes.Test(CargoClass::Passengers);
@@ -268,9 +268,7 @@ std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptan
 {
 	std::string_view list_separator = GetListSeparator();
 
-	/* Cargo acceptance is displayed in a extra multiline */
 	std::stringstream line;
-	line << GetString(label);
 
 	bool found = false;
 	for (const CargoSpec *cs : _sorted_cargo_specs) {
@@ -289,7 +287,7 @@ std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptan
 		}
 	}
 
-	if (found) return line.str();
+	if (found) return GetString(label, line.str());
 
 	return std::nullopt;
 }

@@ -37,12 +37,14 @@ Gamelog::Gamelog()
 	this->current_action = nullptr;
 }
 
+/** Needs to be manually defined due to incomplete definition of GamelogInternalData in the header. */
 Gamelog::~Gamelog()
 {
 }
 
 /**
  * Return the revision string for the current client version, for use in gamelog.
+ * @return The revision string.
  */
 static std::string GetGamelogRevisionString()
 {
@@ -101,7 +103,6 @@ void Gamelog::Reset()
 /**
  * Adds the GRF ID, checksum and filename if found to the output iterator
  * @param output_iterator The iterator to add the GRF info to.
- * @param last The end of the buffer
  * @param grfid GRF ID
  * @param md5sum array of md5sum to print, if known
  * @param gc GrfConfig, if known
@@ -360,6 +361,7 @@ void Gamelog::Emergency()
 
 /**
  * Finds out if current game is a loaded emergency savegame.
+ * @return \c true iff an action with GLCT_EMERGENCY change exists.
  */
 bool Gamelog::TestEmergency()
 {
@@ -585,8 +587,9 @@ void Gamelog::GRFAddList(const GRFConfigList &newg)
 }
 
 /**
- * Generates GRFList
- * @param grfc the GRFConfigList.
+ * Generates GRFList.
+ * @param grfc The GRFConfigList.
+ * @return The list with NewGRFs to log..
  */
 static std::vector<const GRFConfig *> GenerateGRFList(const GRFConfigList &grfc)
 {

@@ -162,15 +162,20 @@ struct StringNameWriter : HeaderWriter {
  */
 class LanguageScanner : protected FileScanner {
 private:
-	std::weak_ptr<GameStrings> gs;
-	std::string exclude;
+	std::weak_ptr<GameStrings> gs; ///< The (already) loaded game strings.
+	std::string exclude; ///< The file name to exclude during scanning.
 
 public:
-	/** Initialise */
+	/**
+	 * Initialise the scanner.
+	 * @param gs The (already) loaded game strings to add to.
+	 * @param exclude The file name to exclude during sanning.
+	 */
 	LanguageScanner(std::weak_ptr<GameStrings> gs, const std::string &exclude) : gs(gs), exclude(exclude) {}
 
 	/**
-	 * Scan.
+	 * Actually run the scan.
+	 * @param directory The directory to scan in.
 	 */
 	void Scan(const std::string &directory)
 	{

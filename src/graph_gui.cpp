@@ -37,12 +37,12 @@
 
 #include "safeguards.h"
 
-/* Bitmasks of company and cargo indices that shouldn't be drawn. */
+/** Bitmasks of company and cargo indices that shouldn't be drawn. */
 static CompanyMask _legend_excluded_companies;
 
 /* Apparently these don't play well with enums. */
-static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
-static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
+static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); ///< Value used for a datapoint that shouldn't be drawn.
+static const uint INVALID_DATAPOINT_POS = UINT_MAX; ///< Used to determine if the previous point was drawn.
 
 constexpr double INT64_MAX_IN_DOUBLE = static_cast<double>(INT64_MAX - 512); ///< The biggest double that when cast to int64_t still fits in a int64_t.
 static_assert(static_cast<int64_t>(INT64_MAX_IN_DOUBLE) < INT64_MAX);
@@ -213,17 +213,20 @@ protected:
 	uint8_t num_on_x_axis = 0;
 	uint8_t num_vert_lines = GRAPH_NUM_MONTHS;
 
-	/* The starting month and year that values are plotted against. */
-	TimerGameEconomy::Month month{};
-	TimerGameEconomy::Year year{};
+	TimerGameEconomy::Month month{}; ///< The starting month that values are plotted against.
+	TimerGameEconomy::Year year{}; ///< The starting year that values are plotted against.
 	uint8_t month_increment = 3; ///< month increment between vertical lines. must be divisor of 12.
 
 	bool draw_dates = true; ///< Should we draw months and years on the time axis?
 
-	/* These values are used if the graph is being plotted against values
-	 * rather than the dates specified by month and year. */
+	/**
+	 * These values are used if the graph is being plotted against values
+	 * rather than the dates specified by month and year.
+	 * @{
+	 */
 	bool x_values_reversed = true;
 	int16_t x_values_increment = ECONOMY_QUARTER_MINUTES;
+	/** @} */
 
 	StringID format_str_y_axis{};
 
@@ -343,6 +346,7 @@ protected:
 	 * Get width for Y labels.
 	 * @param current_interval Interval that contains all of the graph data.
 	 * @param num_hori_lines Number of horizontal lines to be drawn.
+	 * @return The width in pixels.
 	 */
 	uint GetYLabelWidth(ValuesInterval current_interval, int num_hori_lines) const
 	{
@@ -823,9 +827,18 @@ public:
 		this->UpdateStatistics(true);
 	}
 
+	/**
+	 * Update the statistics.
+	 * @param initialize Initialize the data structure.
+	 */
 	virtual void UpdateStatistics(bool initialize) = 0;
 
-	virtual std::optional<uint8_t> GetDatasetIndex(int) { return std::nullopt; }
+	/**
+	 * Get the dataset associated with a given Y-location within #WID_GRAPH_MATRIX.
+	 * @param y The location along the Y-axis.
+	 * @return The dataset index, or std::nullopt.
+	 */
+	virtual std::optional<uint8_t> GetDatasetIndex([[maybe_unused]] int y) { return std::nullopt; }
 };
 
 class BaseCompanyGraphWindow : public BaseGraphWindow {
@@ -845,10 +858,6 @@ public:
 		this->FinishInitNested(number);
 	}
 
-	/**
-	 * Update the statistics.
-	 * @param initialize Initialize the data structure.
-	 */
 	void UpdateStatistics(bool initialize) override
 	{
 		CompanyMask excluded_companies = _legend_excluded_companies;
@@ -903,7 +912,13 @@ public:
 		}
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Company *, int) = 0;
+	/**
+	 * Get the data to show in the graph for a given company at a location along the X-axis.
+	 * @param c The company.
+	 * @param j The location along the X-axis.
+	 * @return The value to show in the graph.
+	 */
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j) = 0;
 };
 
 
@@ -1199,7 +1214,17 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 		this->InvalidateData();
 	}
 
+	/**
+	 * Get the CargoTypes to show in this window.
+	 * @param number The unique identifier of the window.
+	 * @return The cargo types to show.
+	 */
 	virtual CargoTypes GetCargoTypes(WindowNumber number) const = 0;
+
+	/**
+	 * Get a reference to the cargo types that should not be shown.
+	 * @return Reference to the cargo type mask to excluded from drawing.
+	 */
 	virtual CargoTypes &GetExcludedCargoTypes() const = 0;
 
 	std::optional<uint8_t> GetDatasetIndex(int y) override
@@ -1493,8 +1518,8 @@ struct PerformanceRatingDetailWindow : Window {
 				size.height = this->bar_height + WidgetDimensions::scaled.matrix.Vertical();
 
 				uint score_info_width = 0;
-				for (uint i = SCORE_BEGIN; i < SCORE_END; i++) {
-					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + i).width);
+				for (ScoreID i = ScoreID::Begin; i < ScoreID::End; i++) {
+					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + to_underlying(i)).width);
 				}
 				score_info_width += GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxValue(1000))).width + WidgetDimensions::scaled.hsep_wide;
 
@@ -1565,16 +1590,16 @@ struct PerformanceRatingDetailWindow : Window {
 		int64_t needed = _score_info[score_type].needed;
 		int   score  = _score_info[score_type].score;
 
-		/* SCORE_TOTAL has its own rules ;) */
-		if (score_type == SCORE_TOTAL) {
-			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) score += _score_info[i].score;
+		/* ScoreID::Total has its own rules ;) */
+		if (score_type == ScoreID::Total) {
+			for (ScoreID i = ScoreID::Begin; i < ScoreID::End; i++) score += _score_info[i].score;
 			needed = SCORE_MAX;
 		}
 
 		uint bar_top  = CentreBounds(r.top, r.bottom, this->bar_height);
 		uint text_top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 
-		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
+		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + to_underlying(score_type));
 
 		/* Draw the score */
 		DrawString(this->score_info_left, this->score_info_right, text_top, GetString(STR_JUST_COMMA, score), TC_BLACK, SA_RIGHT);
@@ -1595,17 +1620,17 @@ struct PerformanceRatingDetailWindow : Window {
 		/* Draw it */
 		DrawString(this->bar_left, this->bar_right, text_top, GetString(STR_PERFORMANCE_DETAIL_PERCENT, Clamp<int64_t>(val, 0, needed) * 100 / needed), TC_FROMSTRING, SA_HOR_CENTER);
 
-		/* SCORE_LOAN is inverted */
-		if (score_type == SCORE_LOAN) val = needed - val;
+		/* ScoreID::Loan is inverted */
+		if (score_type == ScoreID::Loan) val = needed - val;
 
 		/* Draw the amount we have against what is needed
 		 * For some of them it is in currency format */
 		switch (score_type) {
-			case SCORE_MIN_PROFIT:
-			case SCORE_MIN_INCOME:
-			case SCORE_MAX_INCOME:
-			case SCORE_MONEY:
-			case SCORE_LOAN:
+			case ScoreID::MinProfit:
+			case ScoreID::MinIncome:
+			case ScoreID::MaxIncome:
+			case ScoreID::Money:
+			case ScoreID::Loan:
 				DrawString(this->score_detail_left, this->score_detail_right, text_top, GetString(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, val, needed));
 				break;
 			default:
@@ -1866,7 +1891,6 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
 		this->month_increment = 1;
-		this->x_values_reversed = true;
 		this->x_values_increment = ECONOMY_MONTH_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 		this->ranges = RANGE_LABELS;
@@ -1905,7 +1929,7 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 
 	void UpdateStatistics(bool initialize) override
 	{
-		int mo = TimerGameEconomy::month - this->num_vert_lines;
+		int mo = (TimerGameEconomy::month / this->month_increment - this->num_vert_lines) * this->month_increment;
 		auto yr = TimerGameEconomy::year;
 		while (mo < 0) {
 			yr--;
@@ -1924,11 +1948,12 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 		const Town *t = Town::Get(this->window_number);
 
 		this->data.clear();
+		this->data.reserve(
+			2 * std::ranges::count_if(t->supplied, &IsValidCargoType, &Town::SuppliedCargo::cargo));
+
 		for (const auto &s : t->supplied) {
 			if (!IsValidCargoType(s.cargo)) continue;
 			const CargoSpec *cs = CargoSpec::Get(s.cargo);
-
-			this->data.reserve(this->data.size() + 2);
 
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
@@ -2017,7 +2042,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 		STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP,
 	};
 
-	static_assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
+	static_assert(lengthof(performance_tips) == to_underlying(ScoreID::End));
 
 	auto vert = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	for (WidgetID widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {
@@ -2029,7 +2054,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 	return vert;
 }
 
-/** Make a number of rows with buttons for each company for the performance rating detail window. */
+/** Make a number of rows with buttons for each company for the performance rating detail window. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsGraphGUI()
 {
 	return MakeCompanyButtonRows(WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, COLOUR_BROWN, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);

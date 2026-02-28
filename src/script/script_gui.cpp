@@ -625,6 +625,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 /**
  * Open the Script version of the textfile window.
+ * @param parent The window we become a child of, and for which other textfile windows are closed.
  * @param file_type The type of textfile to display.
  * @param slot The slot the Script is using.
  */
@@ -745,6 +746,7 @@ struct ScriptDebugWindow : public Window {
 	 * Constructor for the window.
 	 * @param desc The description of the window.
 	 * @param number The window number (actually unused).
+	 * @param show_company The initial company to focus on.
 	 */
 	ScriptDebugWindow(WindowDesc &desc, WindowNumber number, Owner show_company) : Window(desc), break_editbox(MAX_BREAK_STR_STRING_LENGTH)
 	{
@@ -781,6 +783,7 @@ struct ScriptDebugWindow : public Window {
 		this->InvalidateData(-1);
 	}
 
+	/** Save the last sorting state. */
 	~ScriptDebugWindow() override
 	{
 		ScriptDebugWindow::initial_state = this->filter;
@@ -970,7 +973,7 @@ struct ScriptDebugWindow : public Window {
 
 	/**
 	 * Change all settings to select another Script.
-	 * @param show_ai The new AI to show.
+	 * @param show_script The new script to show.
 	 * @param new_window Open the script in a new window.
 	 */
 	void ChangeToScript(CompanyID show_script, bool new_window = false)
@@ -1014,8 +1017,8 @@ struct ScriptDebugWindow : public Window {
 			case WID_SCRD_RELOAD_TOGGLE:
 				if (this->filter.script_debug_company == OWNER_DEITY) break;
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, this->filter.script_debug_company, CRR_MANUAL, INVALID_CLIENT_ID);
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, this->filter.script_debug_company, CRR_NONE, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, this->filter.script_debug_company, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, this->filter.script_debug_company, CompanyRemoveReason::None, INVALID_CLIENT_ID);
 				break;
 
 			case WID_SCRD_SETTINGS:
@@ -1054,7 +1057,7 @@ struct ScriptDebugWindow : public Window {
 						}
 						if (all_unpaused) {
 							/* All scripts have been unpaused => unpause the game. */
-							Command<CMD_PAUSE>::Post(PauseMode::Normal, false);
+							Command<Commands::Pause>::Post(PauseMode::Normal, false);
 						}
 					}
 				}
@@ -1107,7 +1110,7 @@ struct ScriptDebugWindow : public Window {
 
 					/* Pause the game. */
 					if (!_pause_mode.Test(PauseMode::Normal)) {
-						Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+						Command<Commands::Pause>::Post(PauseMode::Normal, true);
 					}
 
 					/* Highlight row that matched */
@@ -1193,7 +1196,7 @@ struct ScriptDebugWindow : public Window {
 	}, ScriptDebugGlobalHotkeys};
 };
 
-/** Make a number of rows with buttons for each company for the Script debug window. */
+/** Make a number of rows with buttons for each company for the Script debug window. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsScriptDebug()
 {
 	return MakeCompanyButtonRows(WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END, COLOUR_GREY, 5, STR_AI_DEBUG_SELECT_AI_TOOLTIP, false);
@@ -1260,6 +1263,7 @@ static WindowDesc _script_debug_desc(
  * Open the Script debug window and select the given company.
  * @param show_company Display debug information about this AI company.
  * @param new_window Show in new window instead of existing window.
+ * @return The existing or allocated window, or \c nullptr when there is no debug window to show.
  */
 Window *ShowScriptDebugWindow(CompanyID show_company, bool new_window)
 {

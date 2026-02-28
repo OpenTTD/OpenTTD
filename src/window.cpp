@@ -77,9 +77,9 @@ WindowList _z_windows;
 /** If false, highlight is white, otherwise the by the widget defined colour. */
 bool _window_highlight_colour = false;
 
-/*
+/**
  * Window that currently has focus. - The main purpose is to generate
- * #FocusLost events, not to give next window in z-order focus when a
+ * #Window::OnFocusLost events, not to give next window in z-order focus when a
  * window is closed.
  */
 Window *_focused_window;
@@ -104,7 +104,19 @@ std::vector<WindowDesc*> *_window_descs = nullptr;
 /** Config file to store WindowDesc */
 std::string _windows_file;
 
-/** Window description constructor. */
+/**
+ * Window description constructor.
+ * @param def_pos The default location to open the window.
+ * @param ini_key The key for storing settings of this window in the savegame.
+ * @param def_width_trad The default width without scaling.
+ * @param def_height_trad The default height without scaling.
+ * @param window_class The class of windows.
+ * @param parent_class The window class of our parents.
+ * @param flags Arbitrary flags to describe certain behaviour of the window.
+ * @param nwid_parts The widgets of the window.
+ * @param hotkeys The optional hotkeys.
+ * @param location The source code location where the window is instantiated.
+ */
 WindowDesc::WindowDesc(WindowPosition def_pos, std::string_view ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, WindowDefaultFlags flags,
 			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys,
@@ -124,6 +136,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, std::string_view ini_key, int16_t
 	_window_descs->push_back(this);
 }
 
+/** Remove ourselves from the global list of window descs. */
 WindowDesc::~WindowDesc()
 {
 	_window_descs->erase(std::ranges::find(*_window_descs, this));
@@ -162,9 +175,7 @@ void WindowDesc::LoadFromConfig()
 	}
 }
 
-/**
- * Sort WindowDesc by ini_key.
- */
+/** Sort WindowDesc by ini_key. @copydoc GUIList::Sorter */
 static bool DescSorter(WindowDesc * const &a, WindowDesc * const &b)
 {
 	return a->ini_key < b->ini_key;
@@ -281,13 +292,16 @@ bool Window::IsWidgetHighlighted(WidgetID widget_index) const
  * @param pt the point inside the window the mouse resides on after closure.
  * @param widget the widget (button) that the dropdown is associated with.
  * @param index the element in the dropdown that is selected.
+ * @param click_result The result of the OnClick call.
  * @param instant_close whether the dropdown was configured to close on mouse up.
  */
 void Window::OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close)
 {
 	if (widget < 0) return;
 
-	if (instant_close) {
+	/* Many dropdown selections depend on the position of the main toolbar,
+	 * so if it doesn't exist (e.g. the end screen has appeared), just skip the instant close behaviour. */
+	if (instant_close && FindWindowById(WC_MAIN_TOOLBAR, 0) != nullptr) {
 		/* Send event for selected option if we're still
 		 * on the parent button of the dropdown (behaviour of the dropdowns in the main toolbar). */
 		if (GetWidgetFromPos(this, pt.x, pt.y) == widget) {
@@ -771,9 +785,9 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	}
 
 	/* Right-click close is enabled and there is a closebox. */
-	if (_settings_client.gui.right_click_wnd_close == RCC_YES && !w->window_desc.flags.Test(WindowDefaultFlag::NoClose)) {
+	if (_settings_client.gui.right_click_wnd_close == RightClickClose::Yes && !w->window_desc.flags.Test(WindowDefaultFlag::NoClose)) {
 		w->Close();
-	} else if (_settings_client.gui.right_click_wnd_close == RCC_YES_EXCEPT_STICKY && !w->flags.Test(WindowFlag::Sticky) && !w->window_desc.flags.Test(WindowDefaultFlag::NoClose)) {
+	} else if (_settings_client.gui.right_click_wnd_close == RightClickClose::YesExceptSticky && !w->flags.Test(WindowFlag::Sticky) && !w->window_desc.flags.Test(WindowDefaultFlag::NoClose)) {
 		/* Right-click close is enabled, but excluding sticky windows. */
 		w->Close();
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->GetIndex(), TCC_RIGHT_CLICK) && wid->GetToolTip() != STR_NULL) {
@@ -1098,6 +1112,7 @@ void Window::CloseChildWindowById(WindowClass wc, WindowNumber number) const
 
 /**
  * Hide the window and all its child windows, and mark them for a later deletion.
+ * @param data Window specific data to be passed through the window close functions.
  */
 void Window::Close([[maybe_unused]] int data)
 {
@@ -1189,6 +1204,7 @@ Window *GetMainWindow()
  * @param cls Window class
  * @param number Number of the window within the window class
  * @param force force closing; if false don't close when stickied
+ * @param data Arbitrary data to pass to the Close function.
  */
 void CloseWindowById(WindowClass cls, WindowNumber number, bool force, int data)
 {
@@ -1201,6 +1217,7 @@ void CloseWindowById(WindowClass cls, WindowNumber number, bool force, int data)
 /**
  * Close all windows of a given class
  * @param cls Window class of windows to delete
+ * @param data Arbitrary data to pass to the Close function.
  */
 void CloseWindowByClass(WindowClass cls, int data)
 {
@@ -1410,7 +1427,6 @@ static void BringWindowToFront(Window *w, bool dirty)
 /**
  * Initializes the data (except the position and initial size) of a new Window.
  * @param window_number Number being assigned to the new window
- * @return Window pointer of the newly created window
  * @pre If nested widgets are used (\a widget is \c nullptr), #nested_root and #nested_array_size must be initialized.
  *      In addition, #widget_lookup is either \c nullptr, or already initialized.
  */
@@ -1791,7 +1807,6 @@ static Point LocalGetWindowPlacement(const WindowDesc &desc, int16_t sm_width, i
  * Perform the first part of the initialization of a nested widget tree.
  * Construct a nested widget tree in #nested_root, and optionally fill the #widget_lookup array to provide quick access to the uninitialized widgets.
  * This is mainly useful for setting very basic properties.
- * @param fill_nested Fill the #widget_lookup (enabling is expensive!).
  * @note Filling the nested array requires an additional traversal through the nested widget tree, and is best performed by #FinishInitNested rather than here.
  */
 void Window::CreateNestedTree()
@@ -2092,6 +2107,7 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
  * @param delta_x Delta x-size of changed window (positive if larger, etc.)
  * @param delta_y Delta y-size of changed window
  * @param clamp_to_screen Whether to make sure the whole window stays visible
+ * @param schedule_resize Whether to schedule for resizing (when a Window isn't fully initialised yet), or resize immediately.
  */
 void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, bool schedule_resize)
 {
@@ -2436,7 +2452,7 @@ static EventState HandleActiveWidget()
  */
 static EventState HandleViewportScroll()
 {
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && _cursor.wheel_moved;
+	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
 
 	if (!_scrolling_viewport) return ES_NOT_HANDLED;
 
@@ -2445,7 +2461,7 @@ static EventState HandleViewportScroll()
 	 * outside of the window and should not left-mouse scroll anymore. */
 	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != VSM_MAP_LMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == VSM_MAP_LMB && _left_button_down))) {
+	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && _left_button_down))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		_last_scroll_window = nullptr;
@@ -2470,7 +2486,7 @@ static EventState HandleViewportScroll()
 		_cursor.v_wheel = std::modf(_cursor.v_wheel, &temp);
 		_cursor.h_wheel = std::modf(_cursor.h_wheel, &temp);
 	} else {
-		if (_settings_client.gui.scroll_mode != VSM_VIEWPORT_RMB_FIXED) {
+		if (_settings_client.gui.scroll_mode != ViewportScrollMode::ViewportRMBFixed) {
 			delta.x = -_cursor.delta.x;
 			delta.y = -_cursor.delta.y;
 		} else {
@@ -2715,6 +2731,10 @@ void HandleCtrlChanged()
  * Insert a text string at the cursor position into the edit box widget.
  * @param wid Edit box widget.
  * @param str Text string to insert.
+ * @param marked Replace the currently marked text with the new text.
+ * @param caret Move the caret to this point in the insertion string.
+ * @param insert_location Position at which to insert the string.
+ * @param replacement_end Replace all characters from insert_location up to this location with the new string.
  */
 /* virtual */ void Window::InsertTextString(WidgetID wid, std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)
 {
@@ -2730,8 +2750,10 @@ void HandleCtrlChanged()
 /**
  * Handle text input.
  * @param str Text string to input.
- * @param marked Is the input a marked composition string from an IME?
+ * @param marked Replace the currently marked text with the new text.
  * @param caret Move the caret to this point in the insertion string.
+ * @param insert_location Position at which to insert the string.
+ * @param replacement_end Replace all characters from insert_location up to this location with the new string.
  */
 void HandleTextInput(std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)
 {
@@ -2794,7 +2816,7 @@ static constexpr int MAX_OFFSET_HOVER = 5; ///< Maximum mouse movement before st
 
 extern EventState VpHandlePlaceSizingDrag();
 
-const std::chrono::milliseconds TIME_BETWEEN_DOUBLE_CLICK(500); ///< Time between 2 left clicks before it becoming a double click.
+const std::chrono::milliseconds TIME_BETWEEN_DOUBLE_CLICK{500}; ///< Time between 2 left clicks before it becoming a double click.
 
 static void ScrollMainViewport(int x, int y)
 {
@@ -2869,7 +2891,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 
 	HandleMouseOver();
 
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == SWS_SCROLL_MAP && _cursor.wheel_moved;
+	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	int x = _cursor.pos.x;
@@ -2907,7 +2929,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_LEFT:
 				if (HandleViewportClicked(*vp, x, y)) return;
 				if (!w->flags.Test(WindowFlag::DisableVpScroll) &&
-						_settings_client.gui.scroll_mode == VSM_MAP_LMB) {
+						_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB) {
 					_scrolling_viewport = true;
 					_cursor.fix_at = false;
 					return;
@@ -2916,10 +2938,10 @@ static void MouseLoop(MouseClick click, int mousewheel)
 
 			case MC_RIGHT:
 				if (!w->flags.Test(WindowFlag::DisableVpScroll) &&
-						_settings_client.gui.scroll_mode != VSM_MAP_LMB) {
+						_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB) {
 					_scrolling_viewport = true;
-					_cursor.fix_at = (_settings_client.gui.scroll_mode == VSM_VIEWPORT_RMB_FIXED ||
-							_settings_client.gui.scroll_mode == VSM_MAP_RMB_FIXED);
+					_cursor.fix_at = (_settings_client.gui.scroll_mode == ViewportScrollMode::ViewportRMBFixed ||
+							_settings_client.gui.scroll_mode == ViewportScrollMode::MapRMBFixed);
 					DispatchRightClickEvent(w, x - w->left, y - w->top);
 					return;
 				}
@@ -3081,6 +3103,7 @@ bool CanContinueRealtimeTick()
 
 /**
  * Dispatch OnRealtimeTick event over all windows
+ * @param delta_ms The number of milliseconds since the last call.
  */
 void CallWindowRealtimeTickEvent(uint delta_ms)
 {
@@ -3176,7 +3199,10 @@ void UpdateWindows()
 void SetWindowDirty(WindowClass cls, WindowNumber number)
 {
 	for (const Window *w : Window::Iterate()) {
-		if (w->window_class == cls && w->window_number == number) w->SetDirty();
+		if (w->window_class == cls && w->window_number == number) {
+			w->SetDirty();
+			return;
+		}
 	}
 }
 
@@ -3191,6 +3217,7 @@ void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, WidgetID widget_
 	for (const Window *w : Window::Iterate()) {
 		if (w->window_class == cls && w->window_number == number) {
 			w->SetWidgetDirty(widget_index);
+			return;
 		}
 	}
 }
@@ -3296,6 +3323,7 @@ void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool g
 	for (Window *w : Window::Iterate()) {
 		if (w->window_class == cls && w->window_number == number) {
 			w->InvalidateData(data, gui_scope);
+			return;
 		}
 	}
 }
@@ -3595,6 +3623,7 @@ void RelocateAllWindows(int neww, int newh)
 /**
  * Hide the window and all its child windows, and mark them for a later deletion.
  * Always call ResetObjectToPlace() when closing a PickerWindow.
+ * @copydoc Window::Close
  */
 void PickerWindowBase::Close([[maybe_unused]] int data)
 {

@@ -23,6 +23,7 @@ struct RailTypeScopeResolver : public ScopeResolver {
 	/**
 	 * Constructor of the railtype scope resolvers.
 	 * @param ro Surrounding resolver.
+	 * @param rti Specification of the rail type.
 	 * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
 	 * @param context Are we resolving sprites for the upper halftile, or on a bridge?
 	 */

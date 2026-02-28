@@ -143,7 +143,8 @@ public:
 		td.owner_type[0] = STR_LAND_AREA_INFORMATION_OWNER; // At least one owner is displayed, though it might be "N/A".
 
 		CargoArray acceptance{};
-		AddAcceptedCargo(tile, acceptance, nullptr);
+		CargoTypes always_accepted{};
+		AddAcceptedCargo(tile, acceptance, always_accepted);
 		GetTileDesc(tile, td);
 
 		this->landinfo_data.clear();
@@ -167,7 +168,7 @@ public:
 		Company *c = Company::GetIfValid(_local_company);
 		if (c != nullptr) {
 			assert(_current_company == _local_company);
-			CommandCost costclear = Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::QueryCost, tile);
+			CommandCost costclear = Command<Commands::LandscapeClear>::Do(DoCommandFlag::QueryCost, tile);
 			if (costclear.Succeeded()) {
 				Money cost = costclear.GetCost();
 				StringID str;
@@ -570,6 +571,7 @@ TextEffectID ShowFillingPercent(int x, int y, int z, uint8_t percent, StringID s
 /**
  * Update vehicle loading indicators.
  * @param te_id   TextEffectID to be updated.
+ * @param percent Percentage of (un)loading.
  * @param string  String which is printed.
  */
 void UpdateFillingPercent(TextEffectID te_id, uint8_t percent, StringID string)
@@ -984,10 +986,10 @@ struct QueryStringWindow : public Window
 			case WID_QS_MOVE: // Move name button
 				if (Station::IsExpected(Station::Get(this->parent->window_number))) {
 					/* this is a station */
-					Command<CMD_MOVE_STATION_NAME>::Post(STR_ERROR_CAN_T_MOVE_STATION_NAME, CcMoveStationName, this->parent->window_number, tile);
+					Command<Commands::MoveStationName>::Post(STR_ERROR_CAN_T_MOVE_STATION_NAME, CcMoveStationName, this->parent->window_number, tile);
 				} else {
 					/* this is a waypoint */
-					Command<CMD_MOVE_WAYPOINT_NAME>::Post(STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME, CcMoveWaypointName, this->parent->window_number, tile);
+					Command<Commands::MoveWaypointNAme>::Post(STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME, CcMoveWaypointName, this->parent->window_number, tile);
 				}
 				break;
 
@@ -1067,6 +1069,16 @@ void ShowQueryString(std::string_view str, StringID caption, uint maxsize, Windo
 
 	CloseWindowByClass(WC_QUERY_STRING);
 	new QueryStringWindow(str, caption, (flags.Test(QueryStringFlag::LengthIsInChars) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, _query_string_desc, parent, afilter, flags);
+}
+
+/**
+ * Updates default text value of query strign window.
+ * @param str String for the default text shown in the textbox.
+ */
+void UpdateQueryStringDefault(std::string_view str)
+{
+	QueryStringWindow *w = dynamic_cast<QueryStringWindow *>(FindWindowByClass(WC_QUERY_STRING));
+	if (w != nullptr) w->editbox.orig = str;
 }
 
 /**

@@ -220,7 +220,7 @@ extern uint _missing_extra_graphics;  ///< Number of sprites provided by the fal
 
 /** Callback for NewGRF scanning. */
 struct NewGRFScanCallback {
-	/** Make sure the right destructor gets called. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NewGRFScanCallback() = default;
 	/** Called whenever the NewGRF scan completed. */
 	virtual void OnNewGRFsScanned() = 0;
@@ -245,6 +245,6 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig &c, bool editable);
 
 void UpdateNewGRFScanStatus(uint num, std::string &&name);
-void UpdateNewGRFConfigPalette(int32_t new_value = 0);
+void UpdateNewGRFConfigPalette();
 
 #endif /* NEWGRF_CONFIG_H */

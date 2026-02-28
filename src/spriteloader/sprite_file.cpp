@@ -16,6 +16,7 @@ extern const std::array<uint8_t, 8> _grf_cont_v2_sig = {'G', 'R', 'F', 0x82, 0x0
 
 /**
  * Get the container version of the currently opened GRF file.
+ * @param file The file that is being opened.
  * @return Container version of the GRF file or 0 if the file is corrupt/no GRF file.
  */
 static uint8_t GetGRFContainerVersion(SpriteFile &file)

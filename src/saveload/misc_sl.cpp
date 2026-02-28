@@ -30,10 +30,12 @@ extern TileIndex _cur_tileloop_tile;
 extern uint16_t _disaster_delay;
 extern uint8_t _trees_tick_ctr;
 
-/* Keep track of current game position */
+/** @{
+ * Keep track of current game position. */
 int _saved_scrollpos_x;
 int _saved_scrollpos_y;
 ZoomLevel _saved_scrollpos_zoom;
+/** @} */
 
 void SaveViewportBeforeSaveGame()
 {
@@ -87,6 +89,7 @@ static const SaveLoad _date_desc[] = {
 	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_UINT64,                  SLV_U64_TICK_COUNTER, SL_MAX_VERSION),
 	SLEG_CONDVAR("economy_date",           TimerGameEconomy::date,           SLE_INT32,                   SLV_ECONOMY_DATE, SL_MAX_VERSION),
 	SLEG_CONDVAR("economy_date_fract",     TimerGameEconomy::date_fract,     SLE_UINT16,                  SLV_ECONOMY_DATE, SL_MAX_VERSION),
+	SLEG_CONDVAR("days_since_last_month",  TimerGameEconomy::days_since_last_month, SLE_UINT32,           SLV_INDUSTRY_ACCEPTED_HISTORY, SL_MAX_VERSION),
 	SLEG_CONDVAR("calendar_sub_date_fract", TimerGameCalendar::sub_date_fract, SLE_UINT16,                SLV_CALENDAR_SUB_DATE_FRACT, SL_MAX_VERSION),
 	SLEG_CONDVAR("age_cargo_skip_counter", _age_cargo_skip_counter, SLE_UINT8,                   SL_MIN_VERSION, SLV_162),
 	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
@@ -111,8 +114,10 @@ static const SaveLoad _date_check_desc[] = {
 	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_INT32,                  SLV_31, SL_MAX_VERSION),
 };
 
-/* Save load date related variables as well as persistent tick counters
- * XXX: currently some unrelated stuff is just put here */
+/**
+ * Save load date related variables as well as persistent tick counters.
+ * @note currently some unrelated stuff is just put here.
+ */
 struct DATEChunkHandler : ChunkHandler {
 	DATEChunkHandler() : ChunkHandler('DATE', CH_TABLE) {}
 

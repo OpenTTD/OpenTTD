@@ -413,6 +413,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LOCKS_UNDER_BRIDGES,                ///< 361  PR#14595 Allow locks under bridges.
 	SLV_ENGINE_MULTI_RAILTYPE,              ///< 362  PR#14357 v15.0 Train engines can have multiple railtypes.
 	SLV_SIGN_TEXT_COLOURS,                  ///< 363  PR#14743 Configurable sign text colors in scenario editor.
+	SLV_BUOYS_AT_0_0,                       ///< 364  PR#14983 Allow to build buoys at (0x0).
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -482,6 +483,7 @@ struct ChunkHandler {
 
 	ChunkHandler(uint32_t id, ChunkType type) : id(id), type(type) {}
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ChunkHandler() = default;
 
 	/**
@@ -536,8 +538,9 @@ using SaveLoadCompatTable = std::span<const struct SaveLoadCompat>;
 /** Handler for saving/loading an object to/from disk. */
 class SaveLoadHandler {
 public:
-	std::optional<std::vector<SaveLoad>> load_description;
+	std::optional<std::vector<SaveLoad>> load_description; ///< Description derived from savegame being loaded.
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SaveLoadHandler() = default;
 
 	/**
@@ -566,11 +569,13 @@ public:
 
 	/**
 	 * Get the description of the fields in the savegame.
+	 * @return Save load description.
 	 */
 	virtual SaveLoadTable GetDescription() const = 0;
 
 	/**
 	 * Get the pre-header description of the fields in the savegame.
+	 * @return Compatibility save load description.
 	 */
 	virtual SaveLoadCompatTable GetCompatDescription() const = 0;
 
@@ -578,6 +583,7 @@ public:
 	 * Get the description for how to load the chunk. Depending on the
 	 * savegame version this can either use the headers in the savegame or
 	 * fall back to backwards compatibility and uses hard-coded headers.
+	 * @return The description to load the complete chunk.
 	 */
 	SaveLoadTable GetLoadDescription() const;
 };
@@ -597,17 +603,34 @@ template <class TImpl, class TObject>
 class DefaultSaveLoadHandler : public SaveLoadHandler {
 public:
 	SaveLoadTable GetDescription() const override { return static_cast<const TImpl *>(this)->description; }
+
 	SaveLoadCompatTable GetCompatDescription() const override { return static_cast<const TImpl *>(this)->compat_description; }
 
+	/**
+	 * Save the object to disk.
+	 * @param object The object to store.
+	 */
 	virtual void Save([[maybe_unused]] TObject *object) const {}
 	void Save(void *object) const override { this->Save(static_cast<TObject *>(object)); }
 
+	/**
+	 * Load the object from disk.
+	 * @param object The object to load.
+	 */
 	virtual void Load([[maybe_unused]] TObject *object) const {}
 	void Load(void *object) const override { this->Load(static_cast<TObject *>(object)); }
 
+	/**
+	 * Similar to load, but used only to validate savegames.
+	 * @param object The object to load.
+	 */
 	virtual void LoadCheck([[maybe_unused]] TObject *object) const {}
 	void LoadCheck(void *object) const override { this->LoadCheck(static_cast<TObject *>(object)); }
 
+	/**
+	 * A post-load callback to fix #SL_REF integers into pointers.
+	 * @param object The object to fix.
+	 */
 	virtual void FixPointers([[maybe_unused]] TObject *object) const {}
 	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
 };
@@ -1313,6 +1336,9 @@ inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLoadVersi
  * Get the address of the variable. Null-variables don't have an address,
  * everything else has a callback function that returns the address based
  * on the saveload data and the current object for non-globals.
+ * @param object The object to get a relative address from, or \c nullptr for global objects.
+ * @param sld The save-load configuration for a single variable.
+ * @return The address where to store the given variable into.
  */
 inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 {

@@ -123,12 +123,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 {
 	/* Get glyph size. */
 	CGGlyph glyph = (CGGlyph)key;
-	CGRect bounds = CGRectNull;
-	if (MacOSVersionIsAtLeast(10, 8, 0)) {
-		bounds = CTFontGetOpticalBoundsForGlyphs(this->font.get(), &glyph, nullptr, 1, 0);
-	} else {
-		bounds = CTFontGetBoundingRectsForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1);
-	}
+	CGRect bounds = CTFontGetOpticalBoundsForGlyphs(this->font.get(), &glyph, nullptr, 1, 0);
 	if (CGRectIsNull(bounds)) UserError("Unable to render font glyph");
 
 	uint bb_width = (uint)std::ceil(bounds.size.width) + 1; // Sometimes the glyph bounds are too tight and cut of the last pixel after rounding.
@@ -210,30 +205,20 @@ public:
 	 * If a CoreText font description is present, e.g. from the automatic font
 	 * fallback search, use it. Otherwise, try to resolve it by font name.
 	 * @param fs The font size to load.
+	 * @param fonttype The type of font that is being loaded.
+	 * @return FontCache of the font if loaded, or \c nullptr.
 	 */
 	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
 
-		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
 		std::string font = GetFontCacheFontName(fs);
 		if (font.empty()) return nullptr;
 
-		CFAutoRelease<CTFontDescriptorRef> font_ref;
-
-		if (settings->os_handle != nullptr) {
-			font_ref.reset(static_cast<CTFontDescriptorRef>(const_cast<void *>(settings->os_handle)));
-			CFRetain(font_ref.get()); // Increase ref count to match a later release.
-		}
-
-		if (!font_ref && MacOSVersionIsAtLeast(10, 6, 0)) {
-			/* Might be a font file name, try load it. */
-			font_ref.reset(LoadFontFromFile(font));
-			if (!font_ref) ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", font, FontSizeToName(fs));
-		}
-
+		/* Might be a font file name, try load it. */
+		CFAutoRelease<CTFontDescriptorRef> font_ref(LoadFontFromFile(font));
 		if (!font_ref) {
+			ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", font, FontSizeToName(fs));
 			CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, font.c_str(), kCFStringEncodingUTF8));
 
 			/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
@@ -346,8 +331,6 @@ public:
 private:
 	static CTFontDescriptorRef LoadFontFromFile(const std::string &font_name)
 	{
-		if (!MacOSVersionIsAtLeast(10, 6, 0)) return nullptr;
-
 		/* Might be a font file name, try load it. Direct font loading is
 		 * only supported starting on OSX 10.6. */
 		CFAutoRelease<CFStringRef> path;

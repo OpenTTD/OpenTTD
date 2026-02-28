@@ -30,7 +30,7 @@ public:
 
 class FMusicDriver_Cocoa : public DriverFactoryBase {
 public:
-	FMusicDriver_Cocoa() : DriverFactoryBase(Driver::DT_MUSIC, 10, "cocoa", "Cocoa MIDI Driver") {}
+	FMusicDriver_Cocoa() : DriverFactoryBase(Driver::Type::Music, 10, "cocoa", "Cocoa MIDI Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_Cocoa>(); }
 };
 

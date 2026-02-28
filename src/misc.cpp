@@ -62,6 +62,8 @@ void InitializeOldNames();
  * It isn't as much of an unique ID but more a hashed digest of a random
  * string and a time. It is very likely to be unique, but it does not follow
  * any UUID standard.
+ * @param subject What to create the ID for.
+ * @return The generated ID.
  */
 std::string GenerateUid(std::string_view subject)
 {
@@ -100,6 +102,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_pause_mode = {};
 	_game_speed = 100;
 	TimerGameTick::counter = 0;
+	TimerGameEconomy::days_since_last_month = 0;
 	_cur_tileloop_tile = TileIndex{1};
 	_thd.redsq = INVALID_TILE;
 	if (reset_settings) MakeNewgameSettingsLive();

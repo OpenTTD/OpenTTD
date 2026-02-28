@@ -118,7 +118,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 {
 	uint best = 0;
 	StationID index = StationID::Invalid();
-	TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
+	TileIndex vtile = TileVirtXYClampedToMap(v->x_pos, v->y_pos);
 	const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 	uint max_range = v->acache.cached_max_range_sqr;
 
@@ -275,8 +275,8 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 	tile = st->airport.GetHangarTile(st->airport.GetHangarNum(tile));
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Aircraft *v = new Aircraft(); // aircraft
-		Aircraft *u = new Aircraft(); // shadow
+		Aircraft *v = Aircraft::Create(); // aircraft
+		Aircraft *u = Aircraft::Create(); // shadow
 		*ret = v;
 
 		v->direction = DIR_SE;
@@ -366,7 +366,7 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 
 		/* Aircraft with 3 vehicles (chopper)? */
 		if (v->subtype == AIR_HELICOPTER) {
-			Aircraft *w = new Aircraft();
+			Aircraft *w = Aircraft::Create();
 			w->engine_type = e->index;
 			w->direction = DIR_N;
 			w->owner = _current_company;
@@ -437,7 +437,7 @@ Money Aircraft::GetRunningCost() const
 {
 	const Engine *e = this->GetEngine();
 	uint cost_factor = GetVehicleProperty(this, PROP_AIRCRAFT_RUNNING_COST_FACTOR, e->VehInfo<AircraftVehicleInfo>().running_cost);
-	return GetPrice(PR_RUNNING_AIRCRAFT, cost_factor, e->GetGRF());
+	return GetPrice(Price::RunningAircraft, cost_factor, e->GetGRF());
 }
 
 /** Calendar day handler */
@@ -778,24 +778,24 @@ int GetAircraftFlightLevel(T *v, bool takeoff)
 
 	int z = v->z_pos;
 	if (z < aircraft_min_altitude ||
-			(HasBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION) && z < aircraft_middle_altitude)) {
+			(v->flags.Test(VehicleAirFlag::InMinimumHeightCorrection) && z < aircraft_middle_altitude)) {
 		/* Ascend. And don't fly into that mountain right ahead.
 		 * And avoid our aircraft become a stairclimber, so if we start
 		 * correcting altitude, then we stop correction not too early. */
-		SetBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION);
+		v->flags.Set(VehicleAirFlag::InMinimumHeightCorrection);
 		z += takeoff ? 2 : 1;
 	} else if (!takeoff && (z > aircraft_max_altitude ||
-			(HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z > aircraft_middle_altitude))) {
+			(v->flags.Test(VehicleAirFlag::InMaximumHeightCorrection) && z > aircraft_middle_altitude))) {
 		/* Descend lower. You are an aircraft, not an space ship.
 		 * And again, don't stop correcting altitude too early. */
-		SetBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION);
+		v->flags.Set(VehicleAirFlag::InMaximumHeightCorrection);
 		z--;
-	} else if (HasBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION) && z >= aircraft_middle_altitude) {
+	} else if (v->flags.Test(VehicleAirFlag::InMinimumHeightCorrection) && z >= aircraft_middle_altitude) {
 		/* Now, we have corrected altitude enough. */
-		ClrBit(v->flags, VAF_IN_MIN_HEIGHT_CORRECTION);
-	} else if (HasBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION) && z <= aircraft_middle_altitude) {
+		v->flags.Reset(VehicleAirFlag::InMinimumHeightCorrection);
+	} else if (v->flags.Test(VehicleAirFlag::InMaximumHeightCorrection) && z <= aircraft_middle_altitude) {
 		/* Now, we have corrected altitude enough. */
-		ClrBit(v->flags, VAF_IN_MAX_HEIGHT_CORRECTION);
+		v->flags.Reset(VehicleAirFlag::InMaximumHeightCorrection);
 	}
 
 	return z;
@@ -940,7 +940,7 @@ static bool AircraftController(Aircraft *v)
 
 	/* Helicopter landing. */
 	if (amd.flags.Test(AirportMovingDataFlag::HeliLower)) {
-		SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+		v->flags.Set(VehicleAirFlag::HelicopterDirectDescent);
 
 		if (st == nullptr) {
 			v->state = FLYING;
@@ -967,7 +967,7 @@ static bool AircraftController(Aircraft *v)
 
 			/*  Increase speed of rotors. When speed is 80, we've landed. */
 			if (u->cur_speed >= 80) {
-				ClrBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+				v->flags.Reset(VehicleAirFlag::HelicopterDirectDescent);
 				return true;
 			}
 			u->cur_speed += 4;
@@ -1181,6 +1181,7 @@ static bool AircraftController(Aircraft *v)
 /**
  * Handle crashed aircraft \a v.
  * @param v Crashed aircraft.
+ * @return \c false iff the aircraft has been deleted.
  */
 static bool HandleCrashedAircraft(Aircraft *v)
 {
@@ -1221,7 +1222,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 		/*  remove rubble of crashed airplane */
 
 		/* clear runway-in on all airports, set by crashing plane
-		 * small airports use AIRPORT_BUSY, city airports use AirportBlock::RunwayInOut, etc.
+		 * small airports use AirportBlock::AirportBusy, city airports use AirportBlock::RunwayInOut, etc.
 		 * but they all share the same number */
 		if (st != nullptr) {
 			st->airport.blocks.Reset(AirportBlock::RunwayIn);
@@ -1299,7 +1300,7 @@ void HandleMissingAircraftOrders(Aircraft *v)
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == nullptr) {
 		Backup<CompanyID> cur_company(_current_company, v->owner);
-		CommandCost ret = Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag{}, {});
+		CommandCost ret = Command<Commands::SendVehicleToDepot>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag{}, {});
 		cur_company.Restore();
 
 		if (ret.Failed()) CrashAirplane(v);
@@ -1351,7 +1352,7 @@ static void CrashAirplane(Aircraft *v)
 	v->cargo.Truncate();
 	v->Next()->cargo.Truncate();
 	const Station *st = GetTargetAirportIfValid(v);
-	TileIndex vt = TileVirtXY(v->x_pos, v->y_pos);
+	TileIndex vt = TileVirtXYClampedToMap(v->x_pos, v->y_pos);
 
 	EncodedString headline;
 	if (st == nullptr) {
@@ -1453,7 +1454,10 @@ static void AircraftLandAirplane(Aircraft *v)
 }
 
 
-/** set the right pos when heading to other airports after takeoff */
+/**
+ * Set the right pos when heading to other airports after takeoff
+ * @param v The aircraft to consider.
+ */
 void AircraftNextAirportPos_and_Order(Aircraft *v)
 {
 	if (v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_DEPOT)) {
@@ -1503,28 +1507,22 @@ void AircraftLeaveHangar(Aircraft *v, Direction exit_dir)
 ////////////////////////////////////////////////////////////////////////////////
 ///////////////////   AIRCRAFT MOVEMENT SCHEME  ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+/** Aircraft arrives at the terminal. @copydoc AircraftStateHandler */
 static void AircraftEventHandler_EnterTerminal(Aircraft *v, const AirportFTAClass *apc)
 {
 	AircraftEntersTerminal(v);
 	v->state = apc->layout[v->pos].heading;
 }
 
-/**
- * Aircraft arrived in an airport hangar.
- * @param v Aircraft in the hangar.
- * @param apc Airport description containing the hangar.
- */
+/** Aircraft arrived in an airport hangar. @copydoc AircraftStateHandler */
 static void AircraftEventHandler_EnterHangar(Aircraft *v, const AirportFTAClass *apc)
 {
 	VehicleEnterDepot(v);
 	v->state = apc->layout[v->pos].heading;
 }
 
-/**
- * Handle aircraft movement/decision making in an airport hangar.
- * @param v Aircraft in the hangar.
- * @param apc Airport description containing the hangar.
- */
+/** Handle aircraft movement/decision making in an airport hangar. @copydoc AircraftStateHandler */
 static void AircraftEventHandler_InHangar(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* if we just arrived, execute EnterHangar first */
@@ -1573,7 +1571,7 @@ static void AircraftEventHandler_InHangar(Aircraft *v, const AirportFTAClass *ap
 	AirportMove(v, apc);
 }
 
-/** At one of the Airport's Terminals */
+/** At one of the Airport's Terminals. @copydoc AircraftStateHandler */
 static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* if we just arrived, execute EnterTerminal first */
@@ -1628,31 +1626,30 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 	AirportMove(v, apc);
 }
 
-static void AircraftEventHandler_General(Aircraft *, const AirportFTAClass *)
-{
-	FatalError("OK, you shouldn't be here, check your Airport Scheme!");
-}
-
-static void AircraftEventHandler_TakeOff(Aircraft *v, const AirportFTAClass *)
+/** Aircraft is taking off (rolling). @copydoc AircraftStateHandler */
+static void AircraftEventHandler_TakeOff(Aircraft *v, [[maybe_unused]] const AirportFTAClass *apc)
 {
 	PlayAircraftSound(v); // play takeoffsound for airplanes
 	v->state = STARTTAKEOFF;
 }
 
-static void AircraftEventHandler_StartTakeOff(Aircraft *v, const AirportFTAClass *)
+/** Aircraft is taking off (rotation). @copydoc AircraftStateHandler */
+static void AircraftEventHandler_StartTakeOff(Aircraft *v, [[maybe_unused]] const AirportFTAClass *apc)
 {
 	v->state = ENDTAKEOFF;
 	v->UpdateDeltaXY();
 }
 
-static void AircraftEventHandler_EndTakeOff(Aircraft *v, const AirportFTAClass *)
+/** Aircraft has taken off. @copydoc AircraftStateHandler */
+static void AircraftEventHandler_EndTakeOff(Aircraft *v, [[maybe_unused]] const AirportFTAClass *apc)
 {
 	v->state = FLYING;
 	/* get the next position to go to, differs per airport */
 	AircraftNextAirportPos_and_Order(v);
 }
 
-static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass *)
+/** Helicopter takes off. @copydoc AircraftStateHandler */
+static void AircraftEventHandler_HeliTakeOff(Aircraft *v, [[maybe_unused]] const AirportFTAClass *apc)
 {
 	v->state = FLYING;
 	v->UpdateDeltaXY();
@@ -1663,11 +1660,12 @@ static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass 
 	/* Send the helicopter to a hangar if needed for replacement */
 	if (v->NeedsAutomaticServicing()) {
 		Backup<CompanyID> cur_company(_current_company, v->owner);
-		Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag::Service, {});
+		Command<Commands::SendVehicleToDepot>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag::Service, {});
 		cur_company.Restore();
 	}
 }
 
+/** Aircraft is flying around. @copydoc AircraftStateHandler */
 static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 {
 	Station *st = Station::Get(v->targetairport);
@@ -1688,7 +1686,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 				uint16_t tsubspeed = v->subspeed;
 				if (!AirportHasBlock(v, current, apc)) {
 					v->state = landingtype; // LANDING / HELILANDING
-					if (v->state == HELILANDING) SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
+					if (v->state == HELILANDING) v->flags.Set(VehicleAirFlag::HelicopterDirectDescent);
 					/* it's a bit dirty, but I need to set position to next position, otherwise
 					 * if there are multiple runways, plane won't know which one it took (because
 					 * they all have heading LANDING). And also occupy that block! */
@@ -1706,7 +1704,8 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 	v->pos = apc->layout[v->pos].next_position;
 }
 
-static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *)
+/** Aircraft is landing (touchdown). @copydoc AircraftStateHandler */
+static void AircraftEventHandler_Landing(Aircraft *v, [[maybe_unused]] const AirportFTAClass *apc)
 {
 	v->state = ENDLANDING;
 	AircraftLandAirplane(v);  // maybe crash airplane
@@ -1714,17 +1713,19 @@ static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *)
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
 	if (v->NeedsAutomaticServicing()) {
 		Backup<CompanyID> cur_company(_current_company, v->owner);
-		Command<CMD_SEND_VEHICLE_TO_DEPOT>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag::Service, {});
+		Command<Commands::SendVehicleToDepot>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag::Service, {});
 		cur_company.Restore();
 	}
 }
 
-static void AircraftEventHandler_HeliLanding(Aircraft *v, const AirportFTAClass *)
+/** Helicopter is starting to land. @copydoc AircraftStateHandler */
+static void AircraftEventHandler_HeliLanding(Aircraft *v, [[maybe_unused]] const AirportFTAClass *apc)
 {
 	v->state = HELIENDLANDING;
 	v->UpdateDeltaXY();
 }
 
+/** Aircraft is has landed. @copydoc AircraftStateHandler */
 static void AircraftEventHandler_EndLanding(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* next block busy, don't do a thing, just wait */
@@ -1738,9 +1739,9 @@ static void AircraftEventHandler_EndLanding(Aircraft *v, const AirportFTAClass *
 		if (AirportFindFreeTerminal(v, apc)) return;
 	}
 	v->state = HANGAR;
-
 }
 
+/** Helicopter has landed. @copydoc AircraftStateHandler */
 static void AircraftEventHandler_HeliEndLanding(Aircraft *v, const AirportFTAClass *apc)
 {
 	/*  next block busy, don't do a thing, just wait */
@@ -1764,10 +1765,11 @@ static void AircraftEventHandler_HeliEndLanding(Aircraft *v, const AirportFTACla
  * @param v Aircraft to handle.
  * @param apc Airport state machine.
  */
-typedef void AircraftStateHandler(Aircraft *v, const AirportFTAClass *apc);
+using AircraftStateHandler = void(Aircraft *v, const AirportFTAClass *apc);
+
 /** Array of handler functions for each target of the aircraft. */
 static AircraftStateHandler * const _aircraft_state_handlers[] = {
-	AircraftEventHandler_General,        // TO_ALL         =  0
+	[](Aircraft *, const AirportFTAClass *) { NOT_REACHED(); }, // TO_ALL = 0
 	AircraftEventHandler_InHangar,       // HANGAR         =  1
 	AircraftEventHandler_AtTerminal,     // TERM1          =  2
 	AircraftEventHandler_AtTerminal,     // TERM2          =  3
@@ -1865,7 +1867,13 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 	NOT_REACHED();
 }
 
-/** returns true if the road ahead is busy, eg. you must wait before proceeding. */
+/**
+ * Checks whether the next block the aircraft wants to travel on is busy.
+ * @param v The aircraft to consider.
+ * @param current_pos The current position in the state machine the aircraft is at.
+ * @param apc The airport's state machine.
+ * @return \c true iff the road ahead is busy, eg. you must wait before proceeding.
+ */
 static bool AirportHasBlock(Aircraft *v, const AirportFTA *current_pos, const AirportFTAClass *apc)
 {
 	const AirportFTA *reference = &apc->layout[v->pos];
@@ -2072,8 +2080,8 @@ static bool AirportFindFreeHelipad(Aircraft *v, const AirportFTAClass *apc)
 static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 {
 	if (too_far) {
-		if (!HasBit(v->flags, VAF_DEST_TOO_FAR)) {
-			SetBit(v->flags, VAF_DEST_TOO_FAR);
+		if (!v->flags.Test(VehicleAirFlag::DestinationTooFar)) {
+			v->flags.Set(VehicleAirFlag::DestinationTooFar);
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 			AI::NewEvent(v->owner, new ScriptEventAircraftDestTooFar(v->index));
 			if (v->owner == _local_company) {
@@ -2084,14 +2092,20 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 		return;
 	}
 
-	if (HasBit(v->flags, VAF_DEST_TOO_FAR)) {
+	if (v->flags.Test(VehicleAirFlag::DestinationTooFar)) {
 		/* Not too far anymore, clear flag and message. */
-		ClrBit(v->flags, VAF_DEST_TOO_FAR);
+		v->flags.Reset(VehicleAirFlag::DestinationTooFar);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 		DeleteVehicleNews(v->index, AdviceType::AircraftDestinationTooFar);
 	}
 }
 
+/**
+ * Event handler loop for a single aircraft.
+ * @param v Aircraft to process events for.
+ * @param loop How many times has this been called during this tick.
+ * @return \c true iff another loop can take place, i.e. the vehicle still exists.
+ */
 static bool AircraftEventHandler(Aircraft *v, int loop)
 {
 	if (v->vehstatus.Test(VehState::Crashed)) {
@@ -2123,7 +2137,7 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 		}
 	}
 
-	if (!HasBit(v->flags, VAF_DEST_TOO_FAR)) AirportGoToNextPosition(v);
+	if (!v->flags.Test(VehicleAirFlag::DestinationTooFar)) AirportGoToNextPosition(v);
 
 	return true;
 }

@@ -15,38 +15,47 @@
 /** All static information from an AI like name, version, etc. */
 class AIInfo : public ScriptInfo {
 public:
-	/* All valid AI API versions, in order. */
+	/** All valid AI API versions, in order. */
 	static constexpr std::string_view ApiVersions[]{ "0.7", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14", "15", "16" };
 
 	AIInfo();
 
 	/**
 	 * Register the functions of this class.
+	 * @param engine The engine to register to.
 	 */
 	static void RegisterAPI(Squirrel &engine);
 
 	/**
 	 * Create an AI, using this AIInfo as start-template.
+	 * @param vm The virtual machine to push the instance to.
+	 * @return The number of stack places occupied.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
 
 	/**
 	 * Create a dummy-AI.
+	 * @param vm The virtual machine to push the instance to.
+	 * @return The number of stack places occupied.
 	 */
 	static SQInteger DummyConstructor(HSQUIRRELVM vm);
 
 	/**
 	 * Check if we can start this AI.
+	 * @param version The version to check.
+	 * @return \c true if this script can load the data from that version.
 	 */
 	bool CanLoadFromVersion(int version) const;
 
 	/**
 	 * Use this AI as a random AI.
+	 * @return \c true when it can be used as random AI, \c false when the user must specifically request it.
 	 */
 	bool UseAsRandomAI() const { return this->use_as_random; }
 
 	/**
 	 * Get the API version this AI is written for.
+	 * @return The API version.
 	 */
 	const std::string &GetAPIVersion() const { return this->api_version; }
 
@@ -63,16 +72,20 @@ public:
 
 	/**
 	 * Register the functions of this class.
+	 * @param engine The engine to register to.
 	 */
 	static void RegisterAPI(Squirrel &engine);
 
 	/**
 	 * Create an AI, using this AIInfo as start-template.
+	 * @param vm The virtual machine to push the instance to.
+	 * @return The number of stack places occupied.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
 
 	/**
 	 * Get the category this library is in.
+	 * @return The category.
 	 */
 	const std::string &GetCategory() const { return this->category; }
 

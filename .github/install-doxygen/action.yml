@@ -1,0 +1,26 @@
+name: Install Doxygen
+
+runs:
+  using: composite
+  steps:
+  - name: Install Doxygen
+    run: |
+      echo "::group::Downloading"
+      # Download currently (at the time of creation this action) latest version of Doxygen
+      # because version in ubuntu repository (1.9.8) is outdated and buggy.
+      wget -O doxygen.tar.gz "https://github.com/doxygen/doxygen/releases/download/Release_1_16_1/doxygen-1.16.1.linux.bin.tar.gz"
+      echo "::endgroup::"
+
+      echo "::group::Unpacking"
+      tar -xzf doxygen.tar.gz
+      rm doxygen.tar.gz
+      echo "::endgroup::"
+
+      echo "::group::Installing"
+      cd doxygen*
+      sudo make install
+      echo "::endgroup::"
+
+      cd ..
+      rm -r doxygen*
+    shell: bash

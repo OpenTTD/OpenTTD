@@ -20,12 +20,12 @@
  * Tunnel: Get the direction facing into the tunnel
  * Bridge: Get the direction pointing onto the bridge
  * @param t The tile to analyze
- * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @pre IsTileType(t, TileType::TunnelBridge)
  * @return the above mentioned direction
  */
 inline DiagDirection GetTunnelBridgeDirection(Tile t)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	return (DiagDirection)GB(t.m5(), 0, 2);
 }
 
@@ -33,12 +33,12 @@ inline DiagDirection GetTunnelBridgeDirection(Tile t)
  * Tunnel: Get the transport type of the tunnel (road or rail)
  * Bridge: Get the transport type of the bridge's ramp
  * @param t The tile to analyze
- * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @pre IsTileType(t, TileType::TunnelBridge)
  * @return the transport type in the tunnel/bridge
  */
 inline TransportType GetTunnelBridgeTransportType(Tile t)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	return (TransportType)GB(t.m5(), 2, 2);
 }
 
@@ -46,12 +46,12 @@ inline TransportType GetTunnelBridgeTransportType(Tile t)
  * Tunnel: Is this tunnel entrance in a snowy or desert area?
  * Bridge: Does the bridge ramp lie in a snow or desert area?
  * @param t The tile to analyze
- * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @pre IsTileType(t, TileType::TunnelBridge)
  * @return true if and only if the tile is in a snowy/desert area
  */
 inline bool HasTunnelBridgeSnowOrDesert(Tile t)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	return HasBit(t.m7(), 5);
 }
 
@@ -61,56 +61,56 @@ inline bool HasTunnelBridgeSnowOrDesert(Tile t)
  * @param t the tunnel entrance / bridge ramp tile
  * @param snow_or_desert is the entrance/ramp in snow or desert (true), when
  *                       not in snow and not in desert false
- * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @pre IsTileType(t, TileType::TunnelBridge)
  */
 inline void SetTunnelBridgeSnowOrDesert(Tile t, bool snow_or_desert)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	SB(t.m7(), 5, 1, snow_or_desert);
 }
 
 /**
  * Determines type of the wormhole and returns its other end
  * @param t one end
- * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @pre IsTileType(t, TileType::TunnelBridge)
  * @return other end
  */
 inline TileIndex GetOtherTunnelBridgeEnd(Tile t)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	return IsTunnel(t) ? GetOtherTunnelEnd(t) : GetOtherBridgeEnd(t);
 }
 
 
 /**
  * Get the reservation state of the rail tunnel/bridge
- * @pre IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
+ * @pre IsTileType(t, TileType::TunnelBridge) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
  * @param t the tile
  * @return reservation state
  */
 inline bool HasTunnelBridgeReservation(Tile t)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
 	return HasBit(t.m5(), 4);
 }
 
 /**
  * Set the reservation state of the rail tunnel/bridge
- * @pre IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
+ * @pre IsTileType(t, TileType::TunnelBridge) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
  * @param t the tile
  * @param b the reservation state
  */
 inline void SetTunnelBridgeReservation(Tile t, bool b)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
 	AssignBit(t.m5(), 4, b);
 }
 
 /**
  * Get the reserved track bits for a rail tunnel/bridge
- * @pre IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
+ * @pre IsTileType(t, TileType::TunnelBridge) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
  * @param t the tile
  * @return reserved track bits
  */

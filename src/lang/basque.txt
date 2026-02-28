@@ -1330,6 +1330,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Oso Zakarra
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Barietateen distribuzioa: {STRING}
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Ibai kantitatea: {STRING}
@@ -2264,6 +2266,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Geltokia
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Geltoki lehenetsia
 STR_STATION_CLASS_WAYP                                          :Bidepuntuak
 
@@ -2500,7 +2504,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Aireport
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Aireportuaren izena: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Aireportuko fitxa izena: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Onartutako zama: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Onartutako zama: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Errail mota: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Trenbidearen abiadura muga: {LTBLUE}{VELOCITY}
@@ -3291,6 +3295,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Guztia {CARGO_L
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Gehienezko trakzio indarra: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Irismena: {GOLD}{COMMA} lauki
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3436,6 +3442,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Gordail
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ibilgailu frabrikaren mezua
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}{STRING} berria diesinatu dugu - Nahiko zenuke ibilgailu honen urte baterako erabilera esklusiboa izatea? Bere funtzionamendua ikusi ahalko genuke publiko egin aurretik.
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Lokomotora
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail lokomotora
@@ -3612,7 +3619,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Ibilgail
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Zama guztia
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Trenaren zama edukiera osoa ikusi, zama motaren arabera
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Edukiera: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Edukiera: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Birmoldatua)
@@ -4045,7 +4052,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ezin iza
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ezin izan da herriak berrizendatu...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ezin izan da herririk aurkitu...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ezin da hiria haunditu...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... maparen ertzetik hurbilegi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... beste herritik hurbilegi
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... herri gehiegi
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ez dago leku gehiagorik mapan

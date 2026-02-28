@@ -535,6 +535,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :लाल व�
 
 ###length 4
 
+###length 4
+
 
 
 ###length 3
@@ -886,6 +888,8 @@ STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}अक�
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :मानक स्टेशन
 STR_STATION_CLASS_WAYP                                          :पथ-संकेत
 
@@ -1168,8 +1172,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}कं�
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -1212,6 +1216,8 @@ STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :नई ट्�
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}मूल्य : {GOLD}{CURRENCY_LONG}{BLACK} भार : {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}रफ़्तार: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}भार : {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+
+# Vehicle sort details
 
 ###length 3
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :परिवहन
@@ -1274,6 +1280,7 @@ STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}डि�
 
 
 # Engine preview window
+
 
 
 
@@ -1491,7 +1498,6 @@ STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}बा�
 
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}नगर का नाम नहीं बदला जा सकता है...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... मानचित्र के किनारों के बहुत समीप
 
 # Industry related errors
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... केवल रेगिस्तानी इलाकों में ही बनाया जा सकता है

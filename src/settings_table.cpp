@@ -82,20 +82,20 @@ SettingTable _win32_settings{ _win32_settings_table };
 
 /* Begin - Callback Functions for the various settings. */
 
-/** Switch setting title depending on wallclock setting */
+/** Switch setting title depending on wallclock setting. @copydoc IntSettingDesc::GetTitleCallback */
 static StringID SettingTitleWallclock(const IntSettingDesc &sd)
 {
 	return TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? sd.str + 1 : sd.str;
 }
 
-/** Switch setting help depending on wallclock setting */
+/** Switch setting help depending on wallclock setting. @copydoc IntSettingDesc::GetHelpCallback */
 static StringID SettingHelpWallclock(const IntSettingDesc &sd)
 {
 	return TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? sd.str_help + 1 : sd.str_help;
 }
 
-/** Setting values for velocity unit localisation */
-static std::pair<StringParameter, StringParameter> SettingsValueVelocityUnit(const IntSettingDesc &, int32_t value)
+/** Setting values for velocity unit localisation. @copydoc IntSettingDesc::GetValueParamsCallback */
+static std::pair<StringParameter, StringParameter> SettingsValueVelocityUnit([[maybe_unused]] const IntSettingDesc &sd, int32_t value)
 {
 	StringID val;
 	switch (value) {
@@ -109,14 +109,14 @@ static std::pair<StringParameter, StringParameter> SettingsValueVelocityUnit(con
 	return {val, {}};
 }
 
-/** A negative value has another string (the one after "strval"). */
+/** A negative value has another string (the one after "strval"). @copydoc IntSettingDesc::GetValueParamsCallback */
 static std::pair<StringParameter, StringParameter> SettingsValueAbsolute(const IntSettingDesc &sd, int32_t value)
 {
 	return {sd.str_val + ((value >= 0) ? 1 : 0), abs(value)};
 }
 
-/** Service Interval Settings Default Value displays the correct units or as a percentage */
-static std::pair<StringParameter, StringParameter>  ServiceIntervalSettingsValueText(const IntSettingDesc &sd, int32_t value)
+/** Service Interval Settings Default Value displays the correct units or as a percentage. @copydoc IntSettingDesc::GetValueParamsCallback */
+static std::pair<StringParameter, StringParameter> ServiceIntervalSettingsValueText(const IntSettingDesc &sd, int32_t value)
 {
 	VehicleDefaultSettings *vds;
 	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
@@ -264,6 +264,9 @@ static void UpdateServiceInterval(VehicleType type, int32_t new_value)
 
 /**
  * Checks if the service intervals in the settings are specified as percentages and corrects the default value accordingly.
+ * @param sd The current setting.
+ * @param type The vehicle's type.
+ * @return The appropriate service interval.
  */
 static int32_t GetDefaultServiceInterval(const IntSettingDesc &sd, VehicleType type)
 {
@@ -475,7 +478,7 @@ static bool CheckFreeformEdges(int32_t &new_value)
 			}
 		}
 		for (uint i = 1; i < Map::MaxX(); i++) {
-			if (!IsTileType(TileXY(i, Map::MaxY() - 1), MP_WATER) || TileHeight(TileXY(1, Map::MaxY())) != 0) {
+			if (!IsTileType(TileXY(i, Map::MaxY() - 1), TileType::Water) || TileHeight(TileXY(1, Map::MaxY())) != 0) {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_SETTING_EDGES_NOT_WATER), {}, WL_ERROR);
 				return false;
 			}
@@ -487,7 +490,7 @@ static bool CheckFreeformEdges(int32_t &new_value)
 			}
 		}
 		for (uint i = 1; i < Map::MaxY(); i++) {
-			if (!IsTileType(TileXY(Map::MaxX() - 1, i), MP_WATER) || TileHeight(TileXY(Map::MaxX(), i)) != 0) {
+			if (!IsTileType(TileXY(Map::MaxX() - 1, i), TileType::Water) || TileHeight(TileXY(Map::MaxX(), i)) != 0) {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_SETTING_EDGES_NOT_WATER), {}, WL_ERROR);
 				return false;
 			}
@@ -507,11 +510,11 @@ static void UpdateFreeformEdges(int32_t new_value)
 		/* Make tiles at the border water again. */
 		for (uint i = 0; i < Map::MaxX(); i++) {
 			SetTileHeight(TileXY(i, 0), 0);
-			SetTileType(TileXY(i, 0), MP_WATER);
+			SetTileType(TileXY(i, 0), TileType::Water);
 		}
 		for (uint i = 0; i < Map::MaxY(); i++) {
 			SetTileHeight(TileXY(0, i), 0);
-			SetTileType(TileXY(0, i), MP_WATER);
+			SetTileType(TileXY(0, i), TileType::Water);
 		}
 	}
 	MarkWholeScreenDirty();
@@ -520,8 +523,9 @@ static void UpdateFreeformEdges(int32_t new_value)
 /**
  * Changing the setting "allow multiple NewGRF sets" is not allowed
  * if there are vehicles.
+ * @copydoc IntSettingDesc::PreChangeCheck
  */
-static bool CheckDynamicEngines(int32_t &)
+static bool CheckDynamicEngines([[maybe_unused]] int32_t &value)
 {
 	if (_game_mode == GM_MENU) return true;
 
@@ -588,9 +592,8 @@ static void UpdateClientConfigValues()
 
 /**
  * Callback for when the player changes the timekeeping units.
- * @param Unused.
  */
-static void ChangeTimekeepingUnits(int32_t)
+static void ChangeTimekeepingUnits()
 {
 	/* If service intervals are in time units (calendar days or real-world minutes), reset them to the correct defaults. */
 	if (!_settings_client.company.vehicle.servint_ispercent) {
@@ -657,9 +660,9 @@ static void ChangeMinutesPerYear(int32_t new_value)
 	 * This can only happen in the menu, since the pre_cb ensures this setting can only be changed there, or if we're already using wallclock units.
 	 */
 	if (_game_mode == GM_MENU && (_settings_newgame.economy.minutes_per_calendar_year != CalendarTime::DEF_MINUTES_PER_YEAR)) {
-		if (_settings_newgame.economy.timekeeping_units != TKU_WALLCLOCK) {
-			_settings_newgame.economy.timekeeping_units = TKU_WALLCLOCK;
-			ChangeTimekeepingUnits(TKU_WALLCLOCK);
+		if (_settings_newgame.economy.timekeeping_units != TimekeepingUnits::Wallclock) {
+			_settings_newgame.economy.timekeeping_units = TimekeepingUnits::Wallclock;
+			ChangeTimekeepingUnits();
 		}
 	}
 }
@@ -675,7 +678,6 @@ static std::tuple<int32_t, uint32_t> GetMinutesPerYearRange(const IntSettingDesc
 
 /**
  * Pre-callback check when trying to change the timetable mode. This is locked to Seconds when using wallclock units.
- * @param Unused.
  * @return True if we allow changing the timetable mode.
  */
 static bool CanChangeTimetableMode(int32_t &)

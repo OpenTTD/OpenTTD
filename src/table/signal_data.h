@@ -8,22 +8,19 @@
 /** @file signal_data.h Data related to rail signals. */
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
-/* Maps a trackdir to the bit that stores its status in the map arrays, in the
- * direction along with the trackdir */
+/** Maps a trackdir to the bit that stores its status in the map arrays, in the direction along with the trackdir. */
 extern const uint8_t _signal_along_trackdir[TRACKDIR_END] = {
 	0x8, 0x8, 0x8, 0x2, 0x4, 0x1, 0, 0,
 	0x4, 0x4, 0x4, 0x1, 0x8, 0x2
 };
 
-/* Maps a trackdir to the bit that stores its status in the map arrays, in the
- * direction against the trackdir */
+/** Maps a trackdir to the bit that stores its status in the map arrays, in the direction against the trackdir. */
 extern const uint8_t _signal_against_trackdir[TRACKDIR_END] = {
 	0x4, 0x4, 0x4, 0x1, 0x8, 0x2, 0, 0,
 	0x8, 0x8, 0x8, 0x2, 0x4, 0x1
 };
 
-/* Maps a Track to the bits that store the status of the two signals that can
- * be present on the given track */
+/** Maps a Track to the bits that store the status of the two signals that can be present on the given track. */
 extern const uint8_t _signal_on_track[] = {
 	0xC, 0xC, 0xC, 0x3, 0xC, 0x3
 };

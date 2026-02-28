@@ -153,15 +153,34 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 	}
 }
 
-/** Handler interface for mapping sprite groups. */
+/** Handler interface for mapping sprite groups to their respective feature specific specifications. */
 struct MapSpriteGroupHandler {
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~MapSpriteGroupHandler() = default;
+
+	/**
+	 * Map a SpriteGroup to specific 'cargo type' of a specification.
+	 * @param local_id The NewGRF-local id to map to.
+	 * @param cid The 'cargo type' to map for.
+	 * @param group The SpriteGroup to link to the specification.
+	 */
 	virtual void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) = 0;
+
+	/**
+	 * Map default/fallback SpriteGroup to a specification.
+	 * @param local_id The NewGRF-local id to map to.
+	 * @param group The SpriteGroup to link to the specification.
+	 */
 	virtual void MapDefault(uint16_t local_id, const SpriteGroup *group) = 0;
 };
 
-/** Specializable function to retrieve a NewGRF spec of a particular type. */
-template <typename T> static auto *GetSpec(GRFFile *, uint16_t);
+/**
+ * Specializable function to retrieve a NewGRF spec of a particular type.
+ * @param grffile The NewGRF the spec belongs to.
+ * @param local_id The local id of the spec to retrieve.
+ * @return The retrieved spec.
+ */
+template <typename T> static auto *GetSpec(GRFFile *grffile, uint16_t local_id);
 
 /** Common handler for mapping sprite groups for features which only support "Purchase" and "Default" sprites. */
 template <typename T>

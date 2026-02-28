@@ -236,7 +236,9 @@ static std::optional<FileHandle> FioFOpenFileTar(const TarFileListEntry &entry, 
 /**
  * Opens a OpenTTD file somewhere in a personal or global directory.
  * @param filename Name of the file to open.
+ * @param mode The fopen-mode to open the file.
  * @param subdir Subdirectory to open.
+ * @param[out] filesize Optional output for the size of the file.
  * @return File handle of the opened file, or \c nullptr if the file is not available.
  */
 std::optional<FileHandle> FioFOpenFile(std::string_view filename, std::string_view mode, Subdirectory subdir, size_t *filesize)
@@ -342,8 +344,7 @@ bool FioRemove(const std::string &filename)
 /**
  * Appends, if necessary, the path separator character to the end of the string.
  * It does not add the path separator to zero-sized strings.
- * @param buf  string to append the separator to
- * @return true iff the operation succeeded
+ * @param buf String to append the separator to.
  */
 void AppendPathSeparator(std::string &buf)
 {
@@ -383,6 +384,11 @@ uint TarScanner::DoScan(Subdirectory sd)
 	return num;
 }
 
+/**
+ * Perform the scanning of content in the given modes.
+ * @param modes The modes to scan for.
+ * @return The number of found tar files.
+ */
 /* static */ uint TarScanner::DoScan(TarScanner::Modes modes)
 {
 	Debug(misc, 2, "Scanning for tars");
@@ -671,6 +677,7 @@ char *getcwd(char *buf, size_t size);
  * so when we crop the path to there, when can remove the name of the bundle
  * in the same way we remove the name from the executable name.
  * @param exe the path to the executable
+ * @return \c true iff the path to the executable was found.
  */
 static bool ChangeWorkingDirectoryToExecutable(std::string_view exe)
 {
@@ -1065,6 +1072,7 @@ static bool MatchesExtension(std::string_view extension, const std::string &file
  * @param path            full path we're currently at
  * @param basepath_length from where in the path are we 'based' on the search path
  * @param recursive       whether to recursively search the sub directories
+ * @return The number of files that have been found.
  */
 static uint ScanPath(FileScanner *fs, std::string_view extension, const std::filesystem::path &path, size_t basepath_length, bool recursive)
 {
@@ -1093,6 +1101,7 @@ static uint ScanPath(FileScanner *fs, std::string_view extension, const std::fil
  * @param fs        the file scanner to scan for
  * @param extension the extension of files to search for.
  * @param tar       the tar to search in.
+ * @return The number of files that have been found.
  */
 static uint ScanTar(FileScanner *fs, std::string_view extension, const TarFileList::value_type &tar)
 {
@@ -1161,13 +1170,6 @@ uint FileScanner::Scan(std::string_view extension, const std::string &directory,
 	return ScanPath(this, extension, OTTD2FS(path), path.size(), recursive);
 }
 
-/**
- * Open an RAII file handle if possible.
- * The canonical RAII-way is for FileHandle to open the file and throw an exception on failure, but we don't want that.
- * @param filename UTF-8 encoded filename to open.
- * @param mode Mode to open file.
- * @return FileHandle, or std::nullopt on failure.
- */
 std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::string_view mode)
 {
 #if defined(_WIN32)

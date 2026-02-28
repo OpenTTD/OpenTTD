@@ -226,7 +226,7 @@ static CommandCost CheckBridgeSlope(BridgePieces bridge_piece, Axis axis, Slope 
 
 	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 }
 
 /**
@@ -258,6 +258,7 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
 /**
  * Calculate the base cost of clearing a tunnel/bridge per tile.
  * @param tile Start tile of the tunnel/bridge.
+ * @param base_price The base cost for clearing the tile.
  * @return How much clearing this tunnel/bridge costs per tile.
  */
 static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
@@ -280,7 +281,7 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 
 		case TRANSPORT_RAIL: base_cost += RailClearCost(GetRailType(tile)); break;
 		/* Aqueducts have their own clear price. */
-		case TRANSPORT_WATER: base_cost = _price[PR_CLEAR_AQUEDUCT]; break;
+		case TRANSPORT_WATER: base_cost = _price[Price::ClearAqueduct]; break;
 		default: break;
 	}
 
@@ -293,7 +294,7 @@ static CommandCost CheckBuildAbove(TileIndex tile, DoCommandFlags flags, Axis ax
 		return _tile_type_procs[GetTileType(tile)]->check_build_above_proc(tile, flags, axis, height);
 	}
 	/* A tile without a handler must be cleared. */
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
 /**
@@ -313,7 +314,12 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	RailType railtype = INVALID_RAILTYPE;
 	RoadType roadtype = INVALID_ROADTYPE;
 
-	if (!IsValidTile(tile_start)) return CommandCost(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
+	for (TileIndex t : {tile_start, tile_end}) {
+		if (!IsValidTile(t)) return CommandCost(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
+		/* User cannot modify height of tiles with one coordinate equal to zero, they are always at the sea level, and you can't build bridge in the sea.
+		 * Furthermore, they are void tiles unless map is infinite water. If we don't return for them here, we will still fail as their slope is invalid. */
+		if (TileX(t) == 0 || TileY(t) == 0) return CommandCost(transport_type == TRANSPORT_WATER ? STR_ERROR_BRIDGE_THROUGH_MAP_BORDER : STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
+	}
 
 	/* type of bridge */
 	switch (transport_type) {
@@ -446,7 +452,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		}
 
 		/* The cost of clearing the current bridge. */
-		cost.AddCost(bridge_len * TunnelBridgeClearCost(tile_start, PR_CLEAR_BRIDGE));
+		cost.AddCost(bridge_len * TunnelBridgeClearCost(tile_start, Price::ClearBridge));
 		owner = GetTileOwner(tile_start);
 
 		/* If bridge belonged to bankrupt company, it has a new owner now */
@@ -466,7 +472,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
 
 		/* Try and clear the start landscape */
-		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_start);
+		CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, tile_start);
 		if (ret.Failed()) return ret;
 		cost = ret;
 
@@ -474,7 +480,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		cost.AddCost(terraform_cost_north.GetCost());
 
 		/* Try and clear the end landscape */
-		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_end);
+		ret = Command<Commands::LandscapeClear>::Do(flags, tile_end);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret.GetCost());
 
@@ -618,10 +624,10 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		if (c != nullptr) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		if (transport_type != TRANSPORT_WATER) {
-			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
+			cost.AddCost((int64_t)bridge_len * _price[Price::BuildBridge] * GetBridgeSpec(bridge_type)->price >> 8);
 		} else {
 			/* Aqueducts use a separate base cost. */
-			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_AQUEDUCT]);
+			cost.AddCost((int64_t)bridge_len * _price[Price::BuildAqueduct]);
 		}
 
 	}
@@ -677,7 +683,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 
 	if (HasTileWaterGround(start_tile)) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
-	CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, start_tile);
+	CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, start_tile);
 	if (ret.Failed()) return ret;
 
 	/* XXX - do NOT change 'ret' in the loop, as it is used as the price
@@ -722,12 +728,12 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 			tiles_bump *= 2;
 		}
 
-		cost.AddCost(_price[PR_BUILD_TUNNEL]);
+		cost.AddCost(_price[Price::BuildTunnel]);
 		cost.AddCost(cost.GetCost() >> tiles_coef); // add a multiplier for longer tunnels
 	}
 
 	/* Add the cost of the entrance */
-	cost.AddCost(_price[PR_BUILD_TUNNEL]);
+	cost.AddCost(_price[Price::BuildTunnel]);
 	cost.AddCost(ret.GetCost());
 
 	/* if the command fails from here on we want the end tile to be highlighted */
@@ -738,7 +744,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 	if (HasTileWaterGround(end_tile)) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 	/* Clear the tile in any case */
-	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, end_tile);
+	ret = Command<Commands::LandscapeClear>::Do(flags, end_tile);
 	if (ret.Failed()) return CommandCost(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 	cost.AddCost(ret.GetCost());
 
@@ -755,12 +761,12 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		TileIndex old_first_tile = coa->first_tile;
 		coa->first_tile = INVALID_TILE;
 
-		/* CMD_TERRAFORM_LAND may append further items to _cleared_object_areas,
+		/* Commands::TerraformLand may append further items to _cleared_object_areas,
 		 * however it will never erase or re-order existing items.
 		 * _cleared_object_areas is a value-type self-resizing vector, therefore appending items
 		 * may result in a backing-store re-allocation, which would invalidate the coa pointer.
 		 * The index of the coa pointer into the _cleared_object_areas vector remains valid,
-		 * and can be used safely after the CMD_TERRAFORM_LAND operation.
+		 * and can be used safely after the Commands::TerraformLand operation.
 		 * Deliberately clear the coa pointer to avoid leaving dangling pointers which could
 		 * inadvertently be dereferenced.
 		 */
@@ -770,12 +776,12 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		assert(coa_index < UINT_MAX); // more than 2**32 cleared areas would be a bug in itself
 		coa = nullptr;
 
-		ret = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(flags, end_tile, end_tileh & start_tileh, false));
+		ret = std::get<0>(Command<Commands::TerraformLand>::Do(flags, end_tile, end_tileh & start_tileh, false));
 		_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
 		if (ret.Failed()) return CommandCost(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 		cost.AddCost(ret.GetCost());
 	}
-	cost.AddCost(_price[PR_BUILD_TUNNEL]);
+	cost.AddCost(_price[Price::BuildTunnel]);
 
 	/* Pay for the rail/road in the tunnel including entrances */
 	switch (transport_type) {
@@ -888,7 +894,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
-	Money base_cost = TunnelBridgeClearCost(tile, PR_CLEAR_TUNNEL);
+	Money base_cost = TunnelBridgeClearCost(tile, Price::ClearTunnel);
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -969,7 +975,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
-	Money base_cost = TunnelBridgeClearCost(tile, PR_CLEAR_BRIDGE);
+	Money base_cost = TunnelBridgeClearCost(tile, Price::ClearBridge);
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -1025,12 +1031,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, len * base_cost);
 }
 
-/**
- * Remove a tunnel or a bridge from the game.
- * @param tile Tile containing one of the endpoints.
- * @param flags Command flags.
- * @return Succeeded or failed command.
- */
+/** @copydoc ClearTileProc */
 static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlags flags)
 {
 	if (IsTunnel(tile)) {
@@ -1271,11 +1272,12 @@ static void DrawBridgeRoadBits(TileIndex head_tile, int x, int y, int z, int off
 }
 
 /**
+ * @copydoc DrawTileProc
+ *
  * Draws a tunnel of bridge tile.
  * For tunnels, this is rather simple, as you only need to draw the entrance.
  * Bridges are a bit more complex. base_offset is where the sprite selection comes into play
  * and it works a bit like a bitmask.<p> For bridge heads:
- * @param ti TileInfo of the structure to draw
  * <ul><li>Bit 0: direction</li>
  * <li>Bit 1: northern or southern heads</li>
  * <li>Bit 2: Set if the bridge head is sloped</li>
@@ -1497,12 +1499,14 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			EndSpriteCombine();
 		} else if (transport_type == TRANSPORT_RAIL) {
 			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-			SpriteID surface = rti->UsesOverlay() ? GetCustomRailSprite(rti, ti->tile, RTSG_BRIDGE) : rti->base_sprites.bridge_deck;
-			if (surface != 0) {
-				if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
-					AddSortableSpriteToDraw(surface + ((DiagDirToAxis(tunnelbridge_direction) == AXIS_X) ? RTBO_X : RTBO_Y), PAL_NONE, *ti, {{0, 0, TILE_HEIGHT}, {TILE_SIZE, TILE_SIZE, 0}, {}});
-				} else {
-					AddSortableSpriteToDraw(surface + RTBO_SLOPE + tunnelbridge_direction, PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
+			if (is_custom_layout || rti->UsesOverlay()) {
+				SpriteID surface = rti->UsesOverlay() ? GetCustomRailSprite(rti, ti->tile, RTSG_BRIDGE) : rti->base_sprites.bridge_deck;
+				if (surface != 0) {
+					if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
+						AddSortableSpriteToDraw(surface + ((DiagDirToAxis(tunnelbridge_direction) == AXIS_X) ? RTBO_X : RTBO_Y), PAL_NONE, *ti, {{0, 0, TILE_HEIGHT}, {TILE_SIZE, TILE_SIZE, 0}, {}});
+					} else {
+						AddSortableSpriteToDraw(surface + RTBO_SLOPE + tunnelbridge_direction, PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
+					}
 				}
 			}
 
@@ -1673,7 +1677,7 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 		DrawBridgeRoadBits(rampsouth, x, y, bridge_z, axis ^ 1, false, is_custom_layout);
 	} else if (transport_type == TRANSPORT_RAIL) {
 		const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(rampsouth));
-		if (!IsInvisibilitySet(TO_BRIDGES)) {
+		if ((is_custom_layout || rti->UsesOverlay()) && !IsInvisibilitySet(TO_BRIDGES)) {
 			SpriteID surface = rti->UsesOverlay() ? GetCustomRailSprite(rti, rampsouth, RTSG_BRIDGE, TCX_ON_BRIDGE) : rti->base_sprites.bridge_deck;
 			if (surface != 0) {
 				AddSortableSpriteToDraw(surface + axis, PAL_NONE, x, y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TO_BRIDGES));
@@ -1682,7 +1686,7 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && !IsInvisibilitySet(TO_BRIDGES) && HasTunnelBridgeReservation(rampnorth)) {
 			if (rti->UsesOverlay()) {
-				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
+				SpriteID overlay = GetCustomRailSprite(rti, rampnorth, RTSG_OVERLAY, TCX_ON_BRIDGE);
 				AddSortableSpriteToDraw(overlay + RTO_X + axis, PALETTE_CRASH, ti->x, ti->y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TO_BRIDGES));
 			} else {
 				AddSortableSpriteToDraw(axis == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH, ti->x, ti->y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TO_BRIDGES));
@@ -1718,6 +1722,7 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 }
 
 
+/** @copydoc GetSlopePixelZProc */
 static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
 	auto [tileh, z] = GetTilePixelSlope(tile);
@@ -1749,11 +1754,13 @@ static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y, bool grou
 	return z + GetPartialPixelZ(x, y, tileh);
 }
 
+/** @copydoc GetFoundationProc */
 static Foundation GetFoundation_TunnelBridge(TileIndex tile, Slope tileh)
 {
 	return IsTunnel(tile) ? FOUNDATION_NONE : GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(tile)));
 }
 
+/** @copydoc GetTileDescProc */
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc &td)
 {
 	TransportType tt = GetTunnelBridgeTransportType(tile);
@@ -1820,6 +1827,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc &td)
 }
 
 
+/** @copydoc TileLoopProc */
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	bool snow_or_desert = HasTunnelBridgeSnowOrDesert(tile);
@@ -1848,6 +1856,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 	}
 }
 
+/** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	TransportType transport_type = GetTunnelBridgeTransportType(tile);
@@ -1858,6 +1867,7 @@ static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType
 	return CombineTrackStatus(TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir)), TRACKDIR_BIT_NONE);
 }
 
+/** @copydoc ChangeTileOwnerProc */
 static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
@@ -1903,7 +1913,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 		if (tt == TRANSPORT_RAIL) {
 			/* Since all of our vehicles have been removed, it is safe to remove the rail
 			 * bridge / tunnel. */
-			[[maybe_unused]] CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile);
+			[[maybe_unused]] CommandCost ret = Command<Commands::LandscapeClear>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile);
 			assert(ret.Succeeded());
 		} else {
 			/* In any other case, we can safely reassign the ownership to OWNER_NONE. */
@@ -1952,7 +1962,8 @@ static const uint8_t TUNNEL_SOUND_FRAME = 1;
  */
 extern const uint8_t _tunnel_visibility_frame[DIAGDIR_END] = {12, 8, 8, 12};
 
-static VehicleEnterTileStates VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
+/** @copydoc VehicleEnterTileProc */
+static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
 	int z = GetSlopePixelZ(x, y, true) - v->z_pos;
 
@@ -2092,6 +2103,7 @@ static VehicleEnterTileStates VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	return {};
 }
 
+/** @copydoc TerraformTileProc */
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile) && GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) {
@@ -2110,12 +2122,13 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags fla
 		}
 
 		/* Surface slope is valid and remains unchanged? */
-		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 	}
 
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
+/** @copydoc CheckBuildAboveProc */
 static CommandCost CheckBuildAbove_TunnelBridge(TileIndex tile, DoCommandFlags flags, Axis axis, int height)
 {
 	if (IsTunnel(tile)) return CommandCost();
@@ -2124,23 +2137,20 @@ static CommandCost CheckBuildAbove_TunnelBridge(TileIndex tile, DoCommandFlags f
 		return CommandCost();
 	}
 
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
+	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
 
+/** TileTypeProcs definitions for TileType::TunnelBridge tiles. */
 extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
-	DrawTile_TunnelBridge,           // draw_tile_proc
-	GetSlopePixelZ_TunnelBridge,     // get_slope_z_proc
-	ClearTile_TunnelBridge,          // clear_tile_proc
-	nullptr,                            // add_accepted_cargo_proc
-	GetTileDesc_TunnelBridge,        // get_tile_desc_proc
-	GetTileTrackStatus_TunnelBridge, // get_tile_track_status_proc
-	nullptr,                            // click_tile_proc
-	nullptr,                            // animate_tile_proc
-	TileLoop_TunnelBridge,           // tile_loop_proc
-	ChangeTileOwner_TunnelBridge,    // change_tile_owner_proc
-	nullptr,                            // add_produced_cargo_proc
-	VehicleEnter_TunnelBridge,       // vehicle_enter_tile_proc
-	GetFoundation_TunnelBridge,      // get_foundation_proc
-	TerraformTile_TunnelBridge,      // terraform_tile_proc
-	CheckBuildAbove_TunnelBridge, // check_build_above_proc
+	.draw_tile_proc = DrawTile_TunnelBridge,
+	.get_slope_pixel_z_proc = GetSlopePixelZ_TunnelBridge,
+	.clear_tile_proc = ClearTile_TunnelBridge,
+	.get_tile_desc_proc = GetTileDesc_TunnelBridge,
+	.get_tile_track_status_proc = GetTileTrackStatus_TunnelBridge,
+	.tile_loop_proc = TileLoop_TunnelBridge,
+	.change_tile_owner_proc = ChangeTileOwner_TunnelBridge,
+	.vehicle_enter_tile_proc = VehicleEnterTile_TunnelBridge,
+	.get_foundation_proc = GetFoundation_TunnelBridge,
+	.terraform_tile_proc = TerraformTile_TunnelBridge,
+	.check_build_above_proc = CheckBuildAbove_TunnelBridge,
 };

@@ -40,6 +40,7 @@
 #include "../core/string_builder.hpp"
 #ifdef DEBUG_DUMP_COMMANDS
 #	include "../fileio_func.h"
+#	include "../core/string_consumer.hpp"
 #endif
 #include <charconv>
 
@@ -131,7 +132,7 @@ NetworkClientInfo::~NetworkClientInfo()
 bool NetworkClientInfo::CanJoinCompany(CompanyID company_id) const
 {
 	Company *c = Company::GetIfValid(company_id);
-	return c != nullptr && c->allow_list.Contains(this->public_key);
+	return c != nullptr && (c->allow_any || c->allow_list.Contains(this->public_key));
 }
 
 /**
@@ -407,7 +408,7 @@ static void CheckPauseHelper(bool pause, PauseMode pm)
 {
 	if (pause == _pause_mode.Test(pm)) return;
 
-	Command<CMD_PAUSE>::Post(pm, pause);
+	Command<Commands::Pause>::Post(pm, pause);
 }
 
 /**
@@ -568,7 +569,7 @@ NetworkAddress ParseConnectionString(std::string_view connection_string, uint16_
 	/* Register the login */
 	_network_clients_connected++;
 
-	ServerNetworkGameSocketHandler *cs = new ServerNetworkGameSocketHandler(s);
+	ServerNetworkGameSocketHandler *cs = ServerNetworkGameSocketHandler::Create(s);
 	cs->client_address = address; // Save the IP of the client
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
@@ -727,9 +728,10 @@ void GetBindAddresses(NetworkAddressList *addresses, uint16_t port)
 	}
 }
 
-/* Generates the list of manually added hosts from NetworkGame and
- * dumps them into the array _network_host_list. This array is needed
- * by the function that generates the config file. */
+/**
+ * Generates the list of manually added hosts from NetworkGame and dumps them into the array _network_host_list.
+ * This array is needed by the function that generates the config file.
+ */
 void NetworkRebuildHostList()
 {
 	_network_host_list.clear();
@@ -836,7 +838,7 @@ static void NetworkInitGameInfo()
 
 	/* There should be always space for the server. */
 	assert(NetworkClientInfo::CanAllocateItem());
-	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
+	NetworkClientInfo *ci = NetworkClientInfo::Create(CLIENT_ID_SERVER);
 	ci->client_playas = COMPANY_SPECTATOR;
 
 	ci->client_name = _settings_client.network.client_name;
@@ -971,8 +973,10 @@ void NetworkOnGameStart()
 	}
 }
 
-/* The server is rebooting...
- * The only difference with NetworkDisconnect, is the packets that is sent */
+/**
+ * The server is rebooting...
+ * The only difference with NetworkDisconnect, is the packets that is sent.
+ */
 void NetworkReboot()
 {
 	if (_network_server) {
@@ -1060,7 +1064,7 @@ static bool NetworkReceive()
 	return result;
 }
 
-/* This sends all buffered commands (if possible) */
+/** This sends all buffered commands (if possible). */
 static void NetworkSend()
 {
 	if (_network_server) {
@@ -1089,8 +1093,10 @@ void NetworkBackgroundLoop()
 	NetworkBackgroundUDPLoop();
 }
 
-/* The main loop called from ttd.c
- *  Here we also have to do StateGameLoop if needed! */
+/**
+ * The main loop called from ttd.c.
+ * @note Here we also have to do StateGameLoop if needed!
+ */
 void NetworkGameLoop()
 {
 	if (!_networking) return;
@@ -1198,8 +1204,8 @@ void NetworkGameLoop()
 				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
-				cp->cmd = CMD_PAUSE;
-				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PauseMode::Normal, true });
+				cp->cmd = Commands::Pause;
+				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<Commands::Pause>::Args{ PauseMode::Normal, true });
 				_ddc_fastforward = false;
 			} else if (consumer.ReadIf("sync: ")) {
 				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));

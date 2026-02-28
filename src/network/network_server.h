@@ -74,7 +74,7 @@ public:
 	std::shared_ptr<struct PacketWriter> savegame = nullptr; ///< Writer used to write the savegame.
 	NetworkAddress client_address{}; ///< IP-address of the client (so they can be banned)
 
-	ServerNetworkGameSocketHandler(SOCKET s);
+	ServerNetworkGameSocketHandler(ClientPoolID index, SOCKET s);
 	~ServerNetworkGameSocketHandler() override;
 
 	std::unique_ptr<Packet> ReceivePacket() override;

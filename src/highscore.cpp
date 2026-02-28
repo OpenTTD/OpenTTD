@@ -75,7 +75,7 @@ int8_t SaveHighScoreValue(const Company *c)
 	return std::distance(highscores.begin(), it);
 }
 
-/** Sort all companies given their performance */
+/** Sort all companies given their performance. @copydoc GUIList::Sorter */
 static bool HighScoreSorter(const Company * const &a, const Company * const &b)
 {
 	return b->old_economy[0].performance_history < a->old_economy[0].performance_history;

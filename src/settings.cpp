@@ -77,6 +77,7 @@ static ErrorList _settings_error_list; ///< Errors while loading minimal setting
  * - _company_settings
  * - _win32_settings
  * As such, they are not part of this list.
+ * @return The list of generic settings.
  */
 static auto &GenericSettingTables()
 {
@@ -99,6 +100,7 @@ static auto &GenericSettingTables()
 
 /**
  * List of all the private setting tables.
+ * @return The list of private settings.
  */
 static auto &PrivateSettingTables()
 {
@@ -110,6 +112,7 @@ static auto &PrivateSettingTables()
 
 /**
  * List of all the secrets setting tables.
+ * @return The list of secret settings.
  */
 static auto &SecretSettingTables()
 {
@@ -299,13 +302,10 @@ static bool LoadIntList(std::optional<std::string_view> str, void *array, int ne
 }
 
 /**
- * Convert an integer-array (intlist) to a string representation. Each value
+ * Convert a list to a string representation. Each value
  * is separated by a comma or a space character
- * @param buf output buffer where the string-representation will be stored
- * @param last last item to write to in the output buffer
- * @param array pointer to the integer-arrays that is read from
- * @param nelems the number of elements the array holds.
- * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
+ * @param object The object to read the list from.
+ * @return The string representation of the list.
  */
 std::string ListSettingDesc::FormatValue(const void *object) const
 {
@@ -441,6 +441,7 @@ StringID IntSettingDesc::GetHelp() const
 /**
  * Get parameters for drawing the value of the setting.
  * @param value Setting value to set params for.
+ * @return The string parameters for formatting the value of this setting.
  */
 std::pair<StringParameter, StringParameter> IntSettingDesc::GetValueParams(int32_t value) const
 {
@@ -693,7 +694,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 /**
  * Save the values of settings to the inifile.
  * @param ini pointer to IniFile structure
- * @param sd read-only SettingDesc structure which contains the unmodified,
+ * @param settings_table read-only structure which contains the unmodified,
  *        loaded values of the configuration file and various information about it
  * @param grpname holds the name of the group (eg. [network]) where these will be saved
  * @param object pointer to the object been saved
@@ -1003,6 +1004,7 @@ static void GameLoadConfig(const IniFile &ini, std::string_view grpname)
 
 /**
  * Load BaseGraphics set selection and configuration.
+ * @param ini The ini-file to read from.
  */
 static void GraphicsSetLoadConfig(IniFile &ini)
 {
@@ -1055,6 +1057,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
  * @param ini       The configuration to read from.
  * @param grpname   Group name containing the configuration of the GRF.
  * @param is_static GRF is static.
+ * @return The list of loaded NewGRF configurations.
  */
 static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname, bool is_static)
 {
@@ -1229,6 +1232,7 @@ static void SaveVersionInConfig(IniFile &ini)
 
 /**
  * Save BaseGraphics set selection and configuration.
+ * @param ini The ini-file to write to.
  */
 static void GraphicsSetSaveConfig(IniFile &ini)
 {
@@ -1408,11 +1412,11 @@ void LoadFromConfig(bool startup)
 				const IniItem *use_relay_service = network->GetItem("use_relay_service");
 				if (use_relay_service != nullptr) {
 					if (use_relay_service->value == "never") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_NEVER;
+						_settings_client.network.use_relay_service = UseRelayService::Never;
 					} else if (use_relay_service->value == "ask") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_ASK;
+						_settings_client.network.use_relay_service = UseRelayService::Ask;
 					} else if (use_relay_service->value == "allow") {
-						_settings_client.network.use_relay_service = UseRelayService::URS_ALLOW;
+						_settings_client.network.use_relay_service = UseRelayService::Allow;
 					}
 				}
 			}
@@ -1442,7 +1446,7 @@ void LoadFromConfig(bool startup)
 		/* Persist the right click close option from older versions. */
 		if (generic_version < IFV_RIGHT_CLICK_CLOSE && IsConversionNeeded(generic_ini, "gui", "right_mouse_wnd_close", "right_click_wnd_close", &old_item)) {
 			auto old_value = BoolSettingDesc::ParseSingleValue(*old_item->value);
-			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RCC_YES : RCC_NO;
+			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RightClickClose::Yes : RightClickClose::No;
 		}
 
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
@@ -1674,6 +1678,7 @@ void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &s
 /**
  * Create a single table with all settings that should be stored/loaded
  * in the savegame.
+ * @return The settings that are in save games.
  */
 SettingTable GetSaveLoadSettingTable()
 {
@@ -1810,17 +1815,17 @@ CommandCost CmdChangeCompanySetting(DoCommandFlags flags, const std::string &nam
 
 /**
  * Top function to save the new value of an element of the Settings struct
- * @param index offset in the SettingDesc array of the Settings struct which
- * identifies the setting member we want to change
+ * @param sd The SettingDesc we want to change.
  * @param value new value of the setting
  * @param force_newgame force the newgame settings
+ * @return \c true iff the setting was changed.
  */
 bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame)
 {
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if (setting->flags.Test(SettingFlag::PerCompany)) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return Command<CMD_CHANGE_COMPANY_SETTING>::Post(setting->GetName(), value);
+			return Command<Commands::ChangeCompanySetting>::Post(setting->GetName(), value);
 		}
 
 		setting->ChangeValue(&_settings_client.company, value);
@@ -1846,13 +1851,14 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return Command<CMD_CHANGE_SETTING>::Post(setting->GetName(), value);
+		return Command<Commands::ChangeSetting>::Post(setting->GetName(), value);
 	}
 	return false;
 }
 
 /**
  * Set the company settings for a new company to their default values.
+ * @param cid The company to reset the settings for.
  */
 void SetDefaultCompanySettings(CompanyID cid)
 {
@@ -1880,7 +1886,7 @@ void SyncCompanySettings()
 		 * that the rest of the clients do not know about, we need to circumvent the normal ::Post
 		 * local command validation and immediately send the command to the server.
 		 */
-		if (old_value != new_value) Command<CMD_CHANGE_COMPANY_SETTING>::SendNet(STR_NULL, _local_company, sd->GetName(), new_value);
+		if (old_value != new_value) Command<Commands::ChangeCompanySetting>::SendNet(STR_NULL, _local_company, sd->GetName(), new_value);
 	}
 }
 
@@ -1889,6 +1895,7 @@ void SyncCompanySettings()
  * @param sd the setting to change.
  * @param value the value to write
  * @param force_newgame force the newgame settings
+ * @return \c true iff the setting was changed.
  * @note Strings WILL NOT be synced over the network
  */
 bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool force_newgame)
@@ -2027,6 +2034,7 @@ ScriptConfigSettings::ScriptConfigSettings()
 	/* Instantiate here, because unique_ptr needs a complete type. */
 }
 
+/** Needs to be manually defined due to incomplete definition of types in the header. */
 ScriptConfigSettings::~ScriptConfigSettings()
 {
 	/* Instantiate here, because unique_ptr needs a complete type. */

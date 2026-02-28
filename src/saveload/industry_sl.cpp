@@ -68,10 +68,12 @@ public:
 
 	std::vector<Industry::AcceptedCargo> &GetVector(Industry *i) const override { return i->accepted; }
 
-	/* Old array structure used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
+	/** @{
+	 * Old array structures used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
 	static inline std::array<CargoType, INDUSTRY_NUM_INPUTS> old_cargo;
 	static inline std::array<uint16_t, INDUSTRY_NUM_INPUTS> old_waiting;
 	static inline std::array<TimerGameEconomy::Date, INDUSTRY_NUM_INPUTS> old_last_accepted;
+	/** @} */
 
 	static void ResetOldStructure()
 	{
@@ -127,7 +129,8 @@ public:
 
 	std::vector<Industry::ProducedCargo> &GetVector(Industry *i) const override { return i->produced; }
 
-	/* Old array structure used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
+	/** @{
+	 * Old array structures used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
 	static inline std::array<CargoType, INDUSTRY_NUM_OUTPUTS> old_cargo;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_waiting;
 	static inline std::array<uint8_t, INDUSTRY_NUM_OUTPUTS> old_rate;
@@ -135,6 +138,7 @@ public:
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_this_month_transported;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_production;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_transported;
+	/** @} */
 
 	static void ResetOldStructure()
 	{
@@ -253,14 +257,14 @@ struct INDYChunkHandler : ChunkHandler {
 		SlIndustryProduced::ResetOldStructure();
 
 		while ((index = SlIterateArray()) != -1) {
-			Industry *i = new (IndustryID(index)) Industry();
+			Industry *i = Industry::CreateAtIndex(IndustryID(index));
 			SlObject(i, slt);
 
 			/* Before savegame version 161, persistent storages were not stored in a pool. */
 			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_76)) {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
-				i->psa = new PersistentStorage(0, GSF_INVALID, TileIndex{});
+				i->psa = PersistentStorage::Create(0, GSF_INVALID, TileIndex{});
 				std::copy(std::begin(_old_ind_persistent_storage.storage), std::end(_old_ind_persistent_storage.storage), std::begin(i->psa->storage));
 			}
 			if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {

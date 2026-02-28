@@ -293,26 +293,38 @@ void MusicSystem::CheckStatus()
 	if (this->IsPlaying() && !MusicDriver::GetInstance()->IsSongPlaying()) this->Next();
 }
 
-/** Is the player getting music right now? */
+/**
+ * Is the player getting music right now?
+ * @return \c true iff a song is playing.
+ */
 bool MusicSystem::IsPlaying() const
 {
 	return _settings_client.music.playing && !this->active_playlist.empty();
 }
 
-/** Is shuffle mode enabled? */
+/**
+ * Is shuffle mode enabled?
+ * @return \c true iff shuffling is enabled.
+ */
 bool MusicSystem::IsShuffle() const
 {
 	return _settings_client.music.shuffle;
 }
 
-/** Return the current song, or a dummy if none */
+/**
+ * Return the current song, or a dummy if none.
+ * @return The currently playing song.
+ */
 MusicSystem::PlaylistEntry MusicSystem::GetCurrentSong() const
 {
 	if (!this->IsPlaying()) return PlaylistEntry(BaseMusic::GetUsedSet(), 0);
 	return this->active_playlist[this->playlist_position];
 }
 
-/** Is one of the custom playlists selected? */
+/**
+ * Is one of the custom playlists selected?
+ * @return \c true iff one of the custom playlists is selected.
+ */
 bool MusicSystem::IsCustomPlaylist() const
 {
 	return (this->selected_playlist == PLCH_CUSTOM1) || (this->selected_playlist == PLCH_CUSTOM2);

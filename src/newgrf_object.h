@@ -10,6 +10,7 @@
 #ifndef NEWGRF_OBJECT_H
 #define NEWGRF_OBJECT_H
 
+#include "core/pool_type.hpp"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
@@ -45,13 +46,7 @@ static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size p
 void ResetObjects();
 
 /** Class IDs for objects. */
-enum ObjectClassID : uint16_t {
-	OBJECT_CLASS_BEGIN = 0, ///< The lowest valid value
-	OBJECT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
-	INVALID_OBJECT_CLASS = UINT16_MAX, ///< Class for the less fortunate.
-};
-/** Allow incrementing of ObjectClassID variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(ObjectClassID)
+using ObjectClassID = PoolID<uint16_t, struct ObjectClassIDTag, UINT16_MAX, UINT16_MAX>;
 
 /** An object that isn't use for transport, industries or houses.
  * @note If you change this struct, adopt the initialization of
@@ -86,13 +81,13 @@ struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	 * Get the cost for building a structure of this type.
 	 * @return The cost for building.
 	 */
-	Money GetBuildCost() const { return GetPrice(PR_BUILD_OBJECT, this->build_cost_multiplier, this->grf_prop.grffile, 0); }
+	Money GetBuildCost() const { return GetPrice(Price::BuildObject, this->build_cost_multiplier, this->grf_prop.grffile, 0); }
 
 	/**
 	 * Get the cost for clearing a structure of this type.
 	 * @return The cost for clearing.
 	 */
-	Money GetClearCost() const { return GetPrice(PR_CLEAR_OBJECT, this->clear_cost_multiplier, this->grf_prop.grffile, 0); }
+	Money GetClearCost() const { return GetPrice(Price::ClearObject, this->clear_cost_multiplier, this->grf_prop.grffile, 0); }
 
 	bool IsEverAvailable() const;
 	bool WasEverAvailable() const;
@@ -118,6 +113,7 @@ struct ObjectScopeResolver : public ScopeResolver {
 	 * Constructor of an object scope resolver.
 	 * @param ro Surrounding resolver.
 	 * @param obj Object being resolved.
+	 * @param spec The specification of the object type.
 	 * @param tile %Tile of the object.
 	 * @param view View of the object.
 	 */
@@ -163,7 +159,7 @@ private:
 };
 
 /** Class containing information relating to object classes. */
-using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
+using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID>;
 
 uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, std::span<int32_t> regs100 = {}, uint8_t view = 0);
 

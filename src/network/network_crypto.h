@@ -40,6 +40,7 @@
  */
 class NetworkEncryptionHandler {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkEncryptionHandler() = default;
 
 	/**
@@ -70,10 +71,12 @@ public:
  */
 class NetworkAuthenticationPasswordRequest {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationPasswordRequest() = default;
 
 	/**
 	 * Reply to the request with the given password.
+	 * @param password The requested password from the user.
 	 */
 	virtual void Reply(const std::string &password) = 0;
 };
@@ -88,7 +91,7 @@ protected:
 	std::string password; ///< The entered password.
 public:
 
-	virtual void Reply(const std::string &password) override;
+	void Reply(const std::string &password) override;
 
 	/**
 	 * Callback to trigger sending the response for the password request.
@@ -108,6 +111,7 @@ public:
  */
 class NetworkAuthenticationPasswordProvider {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationPasswordProvider() = default;
 
 	/**
@@ -139,6 +143,7 @@ public:
  */
 class NetworkAuthenticationAuthorizedKeyHandler {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationAuthorizedKeyHandler() = default;
 
 	/**
@@ -189,6 +194,7 @@ using NetworkAuthenticationMethodMask = EnumBitSet<NetworkAuthenticationMethod, 
  */
 class NetworkAuthenticationHandler {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NetworkAuthenticationHandler() = default;
 
 	/**
@@ -245,6 +251,7 @@ public:
 	/**
 	 * Read the request to enable encryption from the server.
 	 * @param p The request from the server.
+	 * @return \c true when enough bytes could be read for the nonce, otherwise \c false.
 	 */
 	virtual bool ReceiveEnableEncryption(struct Packet &p) = 0;
 

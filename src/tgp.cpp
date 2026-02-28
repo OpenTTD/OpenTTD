@@ -159,12 +159,12 @@ static const int AMPLITUDE_DECIMAL_BITS = 10;
 /** Height map - allocated array of heights (Map::SizeX() + 1) * (Map::SizeY() + 1) */
 struct HeightMap
 {
-	std::vector<Height> h; //< array of heights
+	std::vector<Height> h; ///< array of heights
 	/* Even though the sizes are always positive, there are many cases where
 	 * X and Y need to be signed integers due to subtractions. */
-	int      dim_x;      //< height map size_x Map::SizeX() + 1
-	int      size_x;     //< Map::SizeX()
-	int      size_y;     //< Map::SizeY()
+	int      dim_x;      ///< height map size_x Map::SizeX() + 1
+	int      size_x;     ///< Map::SizeX()
+	int      size_y;     ///< Map::SizeY()
 
 	/**
 	 * Height map accessor
@@ -181,19 +181,31 @@ struct HeightMap
 /** Global height map instance */
 static HeightMap _height_map = { {}, 0, 0, 0 };
 
-/** Conversion: int to Height */
+/**
+ * Convert tile height to fixed point Height.
+ * @param i The tile height.
+ * @return The converted fixed point height.
+ */
 static Height I2H(int i)
 {
 	return i << HEIGHT_DECIMAL_BITS;
 }
 
-/** Conversion: Height to int */
+/**
+ * Convert fixed point Height to tile height.
+ * @param i The fixed point Height.
+ * @return The tile height.
+ */
 static int H2I(Height i)
 {
 	return i >> HEIGHT_DECIMAL_BITS;
 }
 
-/** Conversion: Amplitude to Height */
+/**
+ * Convert Amplitude to fixed point Height.
+ * @param i The amplitude.
+ * @return The converted fixed point height.
+ */
 static Height A2H(Amplitude i)
 {
 	return i >> (AMPLITUDE_DECIMAL_BITS - HEIGHT_DECIMAL_BITS);
@@ -215,7 +227,7 @@ static const int64_t _water_percent[4] = {70, 170, 270, 420};
  */
 static Height TGPGetMaxHeight()
 {
-	if (_settings_game.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+	if (_settings_game.difficulty.terrain_type == GenworldMaxHeight::Custom) {
 		/* TGP never reaches this height; this means that if a user inputs "2",
 		 * it would create a flat map without the "+ 1". But that would
 		 * overflow on "255". So we reduce it by 1 to get back in range. */
@@ -242,7 +254,7 @@ static Height TGPGetMaxHeight()
 	};
 
 	int map_size_bucket = std::min(Map::LogX(), Map::LogY()) - MIN_MAP_SIZE_BITS;
-	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][map_size_bucket];
+	int max_height_from_table = max_height[to_underlying(_settings_game.difficulty.terrain_type)][map_size_bucket];
 
 	/* If there is a manual map height limit, clamp to it. */
 	if (_settings_game.construction.map_height_limit != 0) {
@@ -254,6 +266,7 @@ static Height TGPGetMaxHeight()
 
 /**
  * Get an overestimation of the highest peak TGP wants to generate.
+ * @return The estimated map tile height.
  */
 uint GetEstimationTGPMapHeight()
 {
@@ -418,30 +431,13 @@ static void HeightMapGenerate()
 	}
 }
 
-/** Returns min, max and average height from height map */
-static void HeightMapGetMinMaxAvg(Height *min_ptr, Height *max_ptr, Height *avg_ptr)
-{
-	Height h_min, h_max, h_avg;
-	int64_t h_accu = 0;
-	h_min = h_max = _height_map.height(0, 0);
-
-	/* Get h_min, h_max and accumulate heights into h_accu */
-	for (const Height &h : _height_map.h) {
-		if (h < h_min) h_min = h;
-		if (h > h_max) h_max = h;
-		h_accu += h;
-	}
-
-	/* Get average height */
-	h_avg = (Height)(h_accu / (_height_map.size_x * _height_map.size_y));
-
-	/* Return required results */
-	if (min_ptr != nullptr) *min_ptr = h_min;
-	if (max_ptr != nullptr) *max_ptr = h_max;
-	if (avg_ptr != nullptr) *avg_ptr = h_avg;
-}
-
-/** Dill histogram and return pointer to its base point - to the count of zero heights */
+/**
+ * Create histogram and return pointer to its base point - to the count of zero heights.
+ * @param h_min The minimum height for the histogram.
+ * @param h_max The maximum height of the map.
+ * @param hist_buf The buffer of the histogram.
+ * @return Pointer to the base of the histogram.
+ */
 static int *HeightMapMakeHistogram(Height h_min, [[maybe_unused]] Height h_max, int *hist_buf)
 {
 	int *hist = hist_buf - h_min;
@@ -455,7 +451,86 @@ static int *HeightMapMakeHistogram(Height h_min, [[maybe_unused]] Height h_max, 
 	return hist;
 }
 
-/** Applies sine wave redistribution onto height map */
+/**
+ * Adjust the landscape to create lowlands on average (tropic landscape).
+ * @param fheight The height to adjust.
+ * @return The adjusted height.
+ */
+static double SineTransformLowlands(double fheight)
+{
+	double height = fheight;
+
+	/* Half of tiles should be at lowest (0..25%) heights */
+	double sine_lower_limit = 0.5;
+	double linear_compression = 2;
+	if (height <= sine_lower_limit) {
+		/* Under the limit we do linear compression down */
+		height = height / linear_compression;
+	} else {
+		double m = sine_lower_limit / linear_compression;
+		/* Get sine_lower_limit..1 into -1..1 */
+		height = 2.0 * ((height - sine_lower_limit) / (1.0 - sine_lower_limit)) - 1.0;
+		/* Sine wave transform */
+		height = sin(height * M_PI_2);
+		/* Get -1..1 back to (sine_lower_limit / linear_compression)..1.0 */
+		height = 0.5 * ((1.0 - m) * height + (1.0 + m));
+	}
+
+	return height;
+}
+
+/**
+ * Adjust the landscape to create normal average height (temperate and toyland landscapes).
+ * @param fheight The height to adjust.
+ * @return The adjusted height.
+ */
+static double SineTransformNormal(double &fheight)
+{
+	double height = fheight;
+
+	/* Move and scale 0..1 into -1..+1 */
+	height = 2 * height - 1;
+	/* Sine transform */
+	height = sin(height * M_PI_2);
+	/* Transform it back from -1..1 into 0..1 space */
+	height = 0.5 * (height + 1);
+
+	return height;
+}
+
+/**
+ * Adjust the landscape to create plateaus on average (arctic landscape).
+ * @param fheight The height to adjust.
+ * @return The adjusted height.
+ */
+static double SineTransformPlateaus(double &fheight)
+{
+	double height = fheight;
+
+	/* Redistribute heights to have more tiles at highest (75%..100%) range */
+	double sine_upper_limit = 0.75;
+	double linear_compression = 2;
+	if (height >= sine_upper_limit) {
+		/* Over the limit we do linear compression up */
+		height = 1.0 - (1.0 - height) / linear_compression;
+	} else {
+		double m = 1.0 - (1.0 - sine_upper_limit) / linear_compression;
+		/* Get 0..sine_upper_limit into -1..1 */
+		height = 2.0 * height / sine_upper_limit - 1.0;
+		/* Sine wave transform */
+		height = sin(height * M_PI_2);
+		/* Get -1..1 back to 0..(1 - (1 - sine_upper_limit) / linear_compression) == 0.0..m */
+		height = 0.5 * (height + 1.0) * m;
+	}
+
+	return height;
+}
+
+/**
+ * Applies sine wave redistribution onto height map.
+ * @param h_min The minimum height for the map.
+ * @param h_max The maximum height for the map.
+ */
 static void HeightMapSineTransform(Height h_min, Height h_max)
 {
 	for (Height &h : _height_map.h) {
@@ -465,66 +540,27 @@ static void HeightMapSineTransform(Height h_min, Height h_max)
 
 		/* Transform height into 0..1 space */
 		fheight = (double)(h - h_min) / (double)(h_max - h_min);
-		/* Apply sine transform depending on landscape type */
-		switch (_settings_game.game_creation.landscape) {
-			case LandscapeType::Toyland:
-			case LandscapeType::Temperate:
-				/* Move and scale 0..1 into -1..+1 */
-				fheight = 2 * fheight - 1;
-				/* Sine transform */
-				fheight = sin(fheight * M_PI_2);
-				/* Transform it back from -1..1 into 0..1 space */
-				fheight = 0.5 * (fheight + 1);
-				break;
 
-			case LandscapeType::Arctic:
-				{
-					/* Arctic terrain needs special height distribution.
-					 * Redistribute heights to have more tiles at highest (75%..100%) range */
-					double sine_upper_limit = 0.75;
-					double linear_compression = 2;
-					if (fheight >= sine_upper_limit) {
-						/* Over the limit we do linear compression up */
-						fheight = 1.0 - (1.0 - fheight) / linear_compression;
-					} else {
-						double m = 1.0 - (1.0 - sine_upper_limit) / linear_compression;
-						/* Get 0..sine_upper_limit into -1..1 */
-						fheight = 2.0 * fheight / sine_upper_limit - 1.0;
-						/* Sine wave transform */
-						fheight = sin(fheight * M_PI_2);
-						/* Get -1..1 back to 0..(1 - (1 - sine_upper_limit) / linear_compression) == 0.0..m */
-						fheight = 0.5 * (fheight + 1.0) * m;
-					}
+		switch (_settings_game.game_creation.average_height) {
+			case GenworldAverageHeight::Auto:
+				/* Apply sine transform depending on landscape type */
+				switch (_settings_game.game_creation.landscape) {
+					case LandscapeType::Temperate: fheight = SineTransformNormal(fheight); break;
+					case LandscapeType::Tropic: fheight = SineTransformLowlands(fheight); break;
+					case LandscapeType::Arctic: fheight = SineTransformPlateaus(fheight); break;
+					case LandscapeType::Toyland: fheight = SineTransformNormal(fheight); break;
+					default: NOT_REACHED();
 				}
 				break;
 
-			case LandscapeType::Tropic:
-				{
-					/* Desert terrain needs special height distribution.
-					 * Half of tiles should be at lowest (0..25%) heights */
-					double sine_lower_limit = 0.5;
-					double linear_compression = 2;
-					if (fheight <= sine_lower_limit) {
-						/* Under the limit we do linear compression down */
-						fheight = fheight / linear_compression;
-					} else {
-						double m = sine_lower_limit / linear_compression;
-						/* Get sine_lower_limit..1 into -1..1 */
-						fheight = 2.0 * ((fheight - sine_lower_limit) / (1.0 - sine_lower_limit)) - 1.0;
-						/* Sine wave transform */
-						fheight = sin(fheight * M_PI_2);
-						/* Get -1..1 back to (sine_lower_limit / linear_compression)..1.0 */
-						fheight = 0.5 * ((1.0 - m) * fheight + (1.0 + m));
-					}
-				}
-				break;
-
-			default:
-				NOT_REACHED();
-				break;
+			case GenworldAverageHeight::Lowlands: fheight = SineTransformLowlands(fheight); break;
+			case GenworldAverageHeight::Normal: fheight = SineTransformNormal(fheight); break;
+			case GenworldAverageHeight::Plateaus: fheight = SineTransformPlateaus(fheight); break;
+			default: NOT_REACHED();
 		}
+
 		/* Transform it back into h_min..h_max space */
-		h = (Height)(fheight * (h_max - h_min) + h_min);
+		h = static_cast<Height>(fheight * (h_max - h_min) + h_min);
 		if (h < 0) h = I2H(0);
 		if (h >= h_max) h = h_max - 1;
 	}
@@ -555,7 +591,7 @@ static void HeightMapCurves(uint level)
 		Height x; ///< The height to scale from.
 		Height y; ///< The height to scale to.
 	};
-	/* Scaled curve maps; value is in height_ts. */
+	/** Scaled curve maps; value is in height_ts. */
 #define F(fraction) ((Height)(fraction * mh))
 	const ControlPoint curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
 	const ControlPoint curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
@@ -663,14 +699,18 @@ static void HeightMapCurves(uint level)
 	}
 }
 
-/** Adjusts heights in height map to contain required amount of water tiles */
+/**
+ * Adjusts heights in height map to contain required amount of water tiles.
+ * @param water_percent Fixed point water percentage on the map.
+ * @param h_max_new The new maximum height.
+ */
 static void HeightMapAdjustWaterLevel(int64_t water_percent, Height h_max_new)
 {
-	Height h_min, h_max, h_avg, h_water_level;
+	Height h_water_level;
 	int64_t water_tiles, desired_water_tiles;
 	int *hist;
 
-	HeightMapGetMinMaxAvg(&h_min, &h_max, &h_avg);
+	auto [h_min, h_max] = std::ranges::minmax(_height_map.h);
 
 	/* Allocate histogram buffer and clear its cells */
 	std::vector<int> hist_buf(h_max - h_min + 1);
@@ -701,54 +741,62 @@ static void HeightMapAdjustWaterLevel(int64_t water_percent, Height h_max_new)
 	}
 }
 
-static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime);
+static double PerlinCoastNoise2D(const double x, const double y, const double p, const int prime);
 
 /**
- * This routine sculpts in from the edge a random amount, again a Perlin
- * sequence, to avoid the rigid flat-edge slopes that were present before. The
- * Perlin noise map doesn't know where we are going to slice across, and so we
- * often cut straight through high terrain. The smoothing routine makes it
- * legal, gradually increasing up from the edge to the original terrain height.
- * By cutting parts of this away, it gives a far more irregular edge to the
- * map-edge. Sometimes it works beautifully with the existing sea & lakes, and
- * creates a very realistic coastline. Other times the variation is less, and
- * the map-edge shows its cliff-like roots.
+ * This routine sculpts in from the edge a random amount, again from Perlin
+ * sequences, to avoid rigid flat-edge slopes and add an irregular edge to the
+ * land. The smoothing routines makes it legal, gradually increasing up from
+ * the edge to the original terrain.
  *
- * This routine may be extended to randomly sculpt the height of the terrain
- * near the edge. This will have the coast edge at low level (1-3), rising in
- * smoothed steps inland to about 15 tiles in. This should make it look as
- * though the map has been built for the map size, rather than a slice through
- * a larger map.
+ * More varied coastlines on large maps require coastal features that would
+ * turn small maps into tiny islands. To avoid this, multiple perlin sequences
+ * with different persistence values are scaled based on the map dimensions.
  *
- * Please note that all the small numbers; 53, 101, 167, etc. are small primes
- * to help give the perlin noise a bit more of a random feel.
+ * The constants used are based on what looks right. If you're changing the
+ * limits or the persistence values you'll want to experiment with various map
+ * sizes.
+ * @param water_borders The sides with water borders.
  */
 static void HeightMapCoastLines(BorderFlags water_borders)
 {
-	int smallest_size = std::min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
-	const int margin = 4;
+	/* Both map dimensions are powers of 2. Division by smaller powers of 2 will always result in an integer. */
+	const int smallest_size = std::min(_height_map.size_x, _height_map.size_y);
+	const int map_ratio = std::max(_height_map.size_x, _height_map.size_y) / smallest_size;
+
+	/* More jagged perlin noise is used to create inlets and craggier features. It scales with map size and ratio and quickly
+	 * reaches the limit of 64. It scales both by the shortest side and the map ratio to try and balance variation in the
+	 * coastline and the amount of water on the map.
+	 */
+	const int jagged_distance = std::min(12 + (smallest_size * smallest_size / 4096) + std::min(map_ratio, 16), 64);
+
+	/* Smoother perlin noise is used to add more depth to the coastline as the smallest edge increases in length */
+	const int smooth_distance = std::min(smallest_size / 32, 32);
+
+	/* Function to get the distance from the edge at x (the coastline is actually 1D noise).
+	 * p1, p2, p3 are small prime numbers so the sequences aren't identical.
+	 */
+	auto get_depth = [&](int x, int p1, int p2, int p3) {
+		return 2 // we ensure a margin of two water tiles at the edge of the map
+			+ smooth_distance * (1 + PerlinCoastNoise2D(x, x, 0.2, p1)) // +1 rather than abs reduces the number of V shaped inlets
+			+ jagged_distance * abs(PerlinCoastNoise2D(x, x, 0.5, p2))
+			+ 8 * abs(PerlinCoastNoise2D(x, x, 0.8, p3)); // Some unscaled jaggedness to breakup anything smoothed by scaling
+	};
+
 	int y, x;
-	double max_x;
-	double max_y;
 
 	/* Lower to sea level */
 	for (y = 0; y <= _height_map.size_y; y++) {
 		if (water_borders.Test(BorderFlag::NorthEast)) {
 			/* Top right */
-			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 5 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * 12);
-			max_x = std::max((smallest_size * smallest_size / 64) + max_x, (smallest_size * smallest_size / 64) + margin - max_x);
-			if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
-			for (x = 0; x < max_x; x++) {
+			for (x = 0; x < get_depth(y, 67, 179, 53); x++) {
 				_height_map.height(x, y) = 0;
 			}
 		}
 
 		if (water_borders.Test(BorderFlag::SouthWest)) {
 			/* Bottom left */
-			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45,  67) + 0.75) * 8);
-			max_x = std::max((smallest_size * smallest_size / 64) + max_x, (smallest_size * smallest_size / 64) + margin - max_x);
-			if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
-			for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
+			for (x = _height_map.size_x; x > (_height_map.size_x - 1 - get_depth(y, 199, 67, 101)); x--) {
 				_height_map.height(x, y) = 0;
 			}
 		}
@@ -758,30 +806,30 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 	for (x = 0; x <= _height_map.size_x; x++) {
 		if (water_borders.Test(BorderFlag::NorthWest)) {
 			/* Top left */
-			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 2, 0.9, 167) + 0.4) * 5 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.4, 211) + 0.7) * 9);
-			max_y = std::max((smallest_size * smallest_size / 64) + max_y, (smallest_size * smallest_size / 64) + margin - max_y);
-			if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
-			for (y = 0; y < max_y; y++) {
+			for (y = 0; y < get_depth(x, 179, 211, 167); y++) {
 				_height_map.height(x, y) = 0;
 			}
 		}
 
 		if (water_borders.Test(BorderFlag::SouthEast)) {
 			/* Bottom right */
-			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.85, 71) + 0.25) * 6 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.35, 193) + 0.75) * 12);
-			max_y = std::max((smallest_size * smallest_size / 64) + max_y, (smallest_size * smallest_size / 64) + margin - max_y);
-			if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
-			for (y = _height_map.size_y; y > (_height_map.size_y - 1 - max_y); y--) {
+			for (y = _height_map.size_y; y > (_height_map.size_y - 1 - get_depth(x, 101, 193, 71)); y--) {
 				_height_map.height(x, y) = 0;
 			}
 		}
 	}
 }
 
-/** Start at given point, move in given direction, find and Smooth coast in that direction */
+/**
+ * Start at given point, move in given direction, find and Smooth coast in that direction.
+ * @param org_x The X-coordinate to start at.
+ * @param org_y The Y-coordinate to start at.
+ * @param dir_x The direction along the X-axis.
+ * @param dir_y The direction along the Y-axis.
+ */
 static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int dir_y)
 {
-	const int max_coast_dist_from_edge = 35;
+	const int max_coast_dist_from_edge = 100;
 	const int max_coast_smooth_depth = 35;
 
 	int x, y;
@@ -815,7 +863,10 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	}
 }
 
-/** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
+/**
+ * Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge.
+ * @param water_borders The sides where the borders are water.
+ */
 static void HeightMapSmoothCoasts(BorderFlags water_borders)
 {
 	int x, y;
@@ -837,6 +888,7 @@ static void HeightMapSmoothCoasts(BorderFlags water_borders)
  * one level between tiles. This routine smooths out those differences so that
  * the most it can change is one level. When OTTD can support cliffs, this
  * routine may not be necessary.
+ * @param dh_max The maximum height different between two adjacent tiles.
  */
 static void HeightMapSmoothSlopes(Height dh_max)
 {
@@ -891,8 +943,12 @@ static void HeightMapNormalize()
  * passed parameter; prime.
  * prime is used to allow the perlin noise generator to create useful random
  * numbers from slightly different series.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @param prime The prime for the generation.
+ * @return The Perlin noise.
  */
-static double int_noise(const long x, const long y, const int prime)
+static double IntNoise(const long x, const long y, const int prime)
 {
 	long n = x + y * prime + _settings_game.game_creation.generation_seed;
 
@@ -905,8 +961,12 @@ static double int_noise(const long x, const long y, const int prime)
 
 /**
  * This routine determines the interpolated value between a and b
+ * @param a The first value.
+ * @param b The second value.
+ * @param x The fraction between the two values to get the value for.
+ * @return The interpolated value.
  */
-static inline double linear_interpolate(const double a, const double b, const double x)
+static inline double LinearInterpolate(const double a, const double b, const double x)
 {
 	return a + x * (b - a);
 }
@@ -915,8 +975,12 @@ static inline double linear_interpolate(const double a, const double b, const do
 /**
  * This routine returns the smoothed interpolated noise for an x and y, using
  * the values from the surrounding positions.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @param prime The prime for the generation.
+ * @return The smoothed Perlin noise.
  */
-static double interpolated_noise(const double x, const double y, const int prime)
+static double InterpolatedNoise(const double x, const double y, const int prime)
 {
 	const int integer_x = (int)x;
 	const int integer_y = (int)y;
@@ -924,47 +988,62 @@ static double interpolated_noise(const double x, const double y, const int prime
 	const double fractional_x = x - (double)integer_x;
 	const double fractional_y = y - (double)integer_y;
 
-	const double v1 = int_noise(integer_x,     integer_y,     prime);
-	const double v2 = int_noise(integer_x + 1, integer_y,     prime);
-	const double v3 = int_noise(integer_x,     integer_y + 1, prime);
-	const double v4 = int_noise(integer_x + 1, integer_y + 1, prime);
+	const double v1 = IntNoise(integer_x,     integer_y,     prime);
+	const double v2 = IntNoise(integer_x + 1, integer_y,     prime);
+	const double v3 = IntNoise(integer_x,     integer_y + 1, prime);
+	const double v4 = IntNoise(integer_x + 1, integer_y + 1, prime);
 
-	const double i1 = linear_interpolate(v1, v2, fractional_x);
-	const double i2 = linear_interpolate(v3, v4, fractional_x);
+	const double i1 = LinearInterpolate(v1, v2, fractional_x);
+	const double i2 = LinearInterpolate(v3, v4, fractional_x);
 
-	return linear_interpolate(i1, i2, fractional_y);
+	return LinearInterpolate(i1, i2, fractional_y);
 }
-
 
 /**
  * This is a similar function to the main perlin noise calculation, but uses
  * the value p passed as a parameter rather than selected from the predefined
  * sequences. as you can guess by its title, i use this to create the indented
  * coastline, which is just another perlin sequence.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @param p Scaling factor for the noise.
+ * @param prime The prime for the generation.
+ * @return The smoothed Perlin noise.
  */
-static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime)
+static double PerlinCoastNoise2D(const double x, const double y, const double p, const int prime)
 {
+	constexpr int OCTAVES = 6;
+	constexpr double INITIAL_FREQUENCY = 1 << OCTAVES;
+
 	double total = 0.0;
+	double max_value = 0.0;
+	double frequency = 1.0 / INITIAL_FREQUENCY;
+	double amplitude = 1.0;
+	for (int i = 0; i < OCTAVES; i++) {
+		total += InterpolatedNoise(x * frequency, y * frequency, prime) * amplitude;
+		max_value += amplitude;
 
-	for (int i = 0; i < 6; i++) {
-		const double frequency = (double)(1 << i);
-		const double amplitude = pow(p, (double)i);
-
-		total += interpolated_noise((x * frequency) / 64.0, (y * frequency) / 64.0, prime) * amplitude;
+		frequency *= 2.0;
+		amplitude *= p;
 	}
 
-	return total;
+	/* Bringing the output range into [-1, 1] makes it much easier to reason with */
+	return total / max_value;
 }
 
 
-/** A small helper function to initialize the terrain */
+/**
+ * A small helper function to initialize the terrain.
+ * @param tile The tile to set the height for.
+ * @param height The new height of the tile.
+ */
 static void TgenSetTileHeight(TileIndex tile, int height)
 {
 	SetTileHeight(tile, height);
 
 	/* Only clear the tiles within the map area. */
 	if (IsInnerTile(tile)) {
-		MakeClear(tile, CLEAR_GRASS, 3);
+		MakeClear(tile, ClearGround::Grass, 3);
 	}
 }
 

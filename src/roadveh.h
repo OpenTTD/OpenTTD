@@ -57,21 +57,28 @@ enum RoadVehicleStates : uint8_t {
 	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09,                      ///< Only bits 0 and 3 are used to encode the trackdir for road stops
 };
 
-/** State information about the Road Vehicle controller */
+/** @name State information about the Road Vehicle controller.
+ * @{ */
 static const uint RDE_NEXT_TILE = 0x80; ///< We should enter the next tile
 static const uint RDE_TURNED    = 0x40; ///< We just finished turning
+/** @} */
 
-/* Start frames for when a vehicle enters a tile/changes its state.
+/**
+ * @name Start frames for when a vehicle enters a tile/changes its state.
  * The start frame is different for vehicles that turned around or
  * are leaving the depot as the do not start at the edge of the tile.
  * For trams there are a few different start frames as there are two
- * places where trams can turn. */
+ * places where trams can turn.
+ * @{
+ */
 static const uint RVC_DEFAULT_START_FRAME                =  0;
 static const uint RVC_TURN_AROUND_START_FRAME            =  1;
 static const uint RVC_DEPOT_START_FRAME                  =  6;
 static const uint RVC_START_FRAME_AFTER_LONG_TRAM        = 21;
 static const uint RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16;
-/* Stop frame for a vehicle in a drive-through stop */
+/** @} */
+
+/** Stop frame for a vehicle in a drive-through stop. */
 static const uint RVC_DRIVE_THROUGH_STOP_FRAME           = 11;
 static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 
@@ -109,8 +116,7 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	VehicleID disaster_vehicle = VehicleID::Invalid(); ///< NOSAVE: Disaster vehicle targetting this vehicle.
 	RoadTypes compatible_roadtypes{}; ///< NOSAVE: Roadtypes this consist is powered on.
 
-	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	RoadVehicle() : GroundVehicleBase() {}
+	RoadVehicle(VehicleID index) : GroundVehicleBase(index) {}
 	/** We want to 'destruct' the right class. */
 	~RoadVehicle() override { this->PreDestructor(); }
 
@@ -160,7 +166,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Zero, because road vehicles don't have powered parts.
 	 */
-	inline uint16_t GetPoweredPartPower(const RoadVehicle *) const
+	inline uint16_t GetPoweredPartPower() const
 	{
 		return 0;
 	}

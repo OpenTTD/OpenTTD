@@ -27,11 +27,13 @@ public:
 	static constexpr uint16_t OPUS_SAMPLE_RATE = 48000; ///< OpusFile always decodes at 48kHz.
 	static constexpr uint8_t OPUS_SAMPLE_BITS = 16; ///< OpusFile op_read() uses 16 bits per sample.
 
-	/* For good results, you will need at least 57 bytes (for a pure Opus-only stream). */
+	/** For good results, you will need at least 57 bytes (for a pure Opus-only stream). */
 	static constexpr size_t MIN_OPUS_FILE_SIZE = 57U;
 
-	/* It is recommended that this be large enough for at least 120 ms of data at 48 kHz per channel (5760 values per channel).
-	 * Smaller buffers will simply return less data, possibly consuming more memory to buffer the data internally. */
+	/**
+	 * It is recommended that this be large enough for at least 120 ms of data at 48 kHz per channel (5760 values per channel).
+	 * Smaller buffers will simply return less data, possibly consuming more memory to buffer the data internally.
+	 */
 	static constexpr size_t DECODE_BUFFER_SAMPLES = 5760 * 2;
 	static constexpr size_t DECODE_BUFFER_BYTES = DECODE_BUFFER_SAMPLES * sizeof(opus_int16);
 

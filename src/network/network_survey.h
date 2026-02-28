@@ -24,11 +24,12 @@ protected:
 	bool IsCancelled() const override { return false; }
 
 public:
+	/** Reason why the survey data is being sent. */
 	enum class Reason : uint8_t {
-		PREVIEW, ///< User is previewing the survey result.
-		LEAVE, ///< User is leaving the game (but not exiting the application).
-		EXIT, ///< User is exiting the application.
-		CRASH, ///< Game crashed.
+		Preview, ///< User is previewing the survey result.
+		Leave, ///< User is leaving the game (but not exiting the application).
+		Exit, ///< User is exiting the application.
+		Crash, ///< Game crashed.
 	};
 
 	void Transmit(Reason reason, bool blocking = false);

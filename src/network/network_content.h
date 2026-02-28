@@ -53,7 +53,7 @@ struct ContentCallback {
 	 */
 	virtual void OnDownloadComplete([[maybe_unused]] ContentID cid) {}
 
-	/** Silentium */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ContentCallback() = default;
 };
 
@@ -79,8 +79,8 @@ protected:
 
 	friend class NetworkContentConnecter;
 
-	bool Receive_SERVER_INFO(Packet &p) override;
-	bool Receive_SERVER_CONTENT(Packet &p) override;
+	bool ReceiveServerInfo(Packet &p) override;
+	bool ReceiveServerContent(Packet &p) override;
 
 	ContentInfo *GetContent(ContentID cid) const;
 	void DownloadContentInfo(ContentID cid);
@@ -135,9 +135,16 @@ public:
 
 	void Clear();
 
-	/** Add a callback to this class */
+	/**
+	 * Add a callback to this class, if it doesn't already exist.
+	 * @param cb The callback to add.
+	 */
 	void AddCallback(ContentCallback *cb) { include(this->callbacks, cb); }
-	/** Remove a callback */
+
+	/**
+	 * Remove a callback.
+	 * @param cb The callback to remove.
+	 */
 	void RemoveCallback(ContentCallback *cb) { this->callbacks.erase(std::ranges::find(this->callbacks, cb)); }
 };
 

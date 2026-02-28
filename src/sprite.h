@@ -37,7 +37,10 @@ struct DrawTileSeqStruct : SpriteBounds {
 	constexpr DrawTileSeqStruct(int8_t origin_x, int8_t origin_y, int8_t origin_z, uint8_t extent_x, uint8_t extent_y, uint8_t extent_z, PalSpriteID image) :
 		SpriteBounds({origin_x, origin_y, origin_z}, {extent_x, extent_y, extent_z}, {}), image(image) {}
 
-	/** Check whether this is a parent sprite with a boundingbox. */
+	/**
+	 * Check whether this is a parent sprite with a boundingbox.
+	 * @return \c true iff this sprite is the parent sprite.
+	 */
 	inline bool IsParentSprite() const
 	{
 		return static_cast<uint8_t>(this->origin.z) != 0x80;
@@ -55,7 +58,13 @@ struct DrawTileSprites {
 	DrawTileSprites(PalSpriteID ground) : ground(ground) {}
 	DrawTileSprites() = default;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~DrawTileSprites() = default;
+
+	/**
+	 * The child sprites to draw.
+	 * @return The span of child sprites.
+	 */
 	virtual std::span<const DrawTileSeqStruct> GetSequence() const = 0;
 };
 
@@ -81,7 +90,7 @@ struct DrawTileSpriteSpan : DrawTileSprites {
 struct DrawBuildingsTileStruct : SpriteBounds {
 	PalSpriteID ground;
 	PalSpriteID building;
-	uint8_t draw_proc;  // this allows to specify a special drawing procedure.
+	uint8_t draw_proc; ///< This allows to specify a special drawing procedure.
 };
 
 void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
@@ -89,8 +98,12 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t or
 
 /**
  * Draw tile sprite sequence on tile with railroad specifics.
+ * @param ti Tile to draw to.
+ * @param dts Sprite and subsprites to draw.
+ * @param to Transparency settings for the sprite.
  * @param total_offset Spriteoffset from normal rail to current railtype.
  * @param newgrf_offset Startsprite of the Action1 to use.
+ * @param default_palette The default recolour sprite to use (typically company colour).
  */
 inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t total_offset, uint32_t newgrf_offset, PaletteID default_palette)
 {
@@ -99,8 +112,12 @@ inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSprites *dt
 
 /**
  * Draw tile sprite sequence in GUI with railroad specifics.
+ * @param x X position to draw to.
+ * @param y Y position to draw to.
+ * @param dts Sprite and subsprites to draw.
  * @param total_offset Spriteoffset from normal rail to current railtype.
  * @param newgrf_offset Startsprite of the Action1 to use.
+ * @param default_palette The default recolour sprite to use (typically company colour).
  */
 inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t total_offset, uint32_t newgrf_offset, PaletteID default_palette)
 {
@@ -109,6 +126,10 @@ inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32
 
 /**
  * Draw TTD sprite sequence on tile.
+ * @param ti Tile to draw to.
+ * @param dts Sprite and subsprites to draw.
+ * @param to Transparency settings for the sprite.
+ * @param default_palette The default recolour sprite to use (typically company colour).
  */
 inline void DrawOrigTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, PaletteID default_palette)
 {
@@ -117,6 +138,10 @@ inline void DrawOrigTileSeq(const struct TileInfo *ti, const DrawTileSprites *dt
 
 /**
  * Draw TTD sprite sequence in GUI.
+ * @param x X position to draw to.
+ * @param y Y position to draw to.
+ * @param dts Sprite and subsprites to draw.
+ * @param default_palette The default recolour sprite to use (typically company colour).
  */
 inline void DrawOrigTileSeqInGUI(int x, int y, const DrawTileSprites *dts, PaletteID default_palette)
 {
@@ -125,7 +150,11 @@ inline void DrawOrigTileSeqInGUI(int x, int y, const DrawTileSprites *dts, Palet
 
 /**
  * Draw NewGRF industrytile or house sprite layout
+ * @param ti Tile to draw to.
+ * @param dts Sprite and subsprites to draw.
+ * @param to Transparency settings for the sprite.
  * @param stage Sprite inside the Action1 spritesets to use, i.e. construction stage.
+ * @param default_palette The default recolour sprite to use (typically company colour).
  */
 inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, uint32_t stage, PaletteID default_palette)
 {
@@ -134,7 +163,11 @@ inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSprites *
 
 /**
  * Draw NewGRF object in GUI
+ * @param x X position to draw to.
+ * @param y Y position to draw to.
+ * @param dts Sprite and subsprites to draw.
  * @param stage Sprite inside the Action1 spritesets to use, i.e. construction stage.
+ * @param default_palette The default recolour sprite to use (typically company colour)
  */
 inline void DrawNewGRFTileSeqInGUI(int x, int y, const DrawTileSprites *dts, uint32_t stage, PaletteID default_palette)
 {

@@ -40,7 +40,7 @@ public:
 #else
 	static const int PRIORITY = 0;
 #endif
-	FVideoDriver_Dedicated() : DriverFactoryBase(Driver::DT_VIDEO, PRIORITY, "dedicated", "Dedicated Video Driver") {}
+	FVideoDriver_Dedicated() : DriverFactoryBase(Driver::Type::Video, PRIORITY, "dedicated", "Dedicated Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Dedicated>(); }
 };
 

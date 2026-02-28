@@ -18,7 +18,7 @@
  */
 inline void MakeVoid(Tile t)
 {
-	SetTileType(t, MP_VOID);
+	SetTileType(t, TileType::Void);
 	SetTileHeight(t, 0);
 	t.m1() = 0;
 	t.m2() = 0;

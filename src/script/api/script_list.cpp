@@ -8,7 +8,6 @@
 /** @file script_list.cpp Implementation of ScriptList. */
 
 #include "../../stdafx.h"
-#include "script_controller.hpp"
 #include "script_list.hpp"
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"
@@ -20,14 +19,28 @@
  */
 class ScriptListSorter {
 protected:
-	ScriptList *list;       ///< The list that's being sorted.
-	bool has_no_more_items; ///< Whether we have more items to iterate over.
-	std::optional<SQInteger> item_next{}; ///< The next item we will show, or std::nullopt if there are no more items to iterate over.
+	const ScriptList *list; ///< The list that's being sorted.
+	bool has_no_more_items = true; ///< Whether we have more items to iterate over.
+	std::optional<SQInteger> item_next = std::nullopt; ///< The next item we will show, or std::nullopt if there are no more items to iterate over.
+
+	/**
+	 * Create a new sorter.
+	 * @param list The list to sort.
+	 */
+	ScriptListSorter(const ScriptList *list) : list(list) {}
+
+	/**
+	 * Actually try to find the next item.
+	 */
+	virtual void FindNext() = 0;
+
+	/**
+	 * Retarget sorter internal iterator after retargeting the list.
+	 */
+	virtual void RetargetIterator() = 0;
 
 public:
-	/**
-	 * Virtual dtor, needed to mute warnings.
-	 */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ScriptListSorter() = default;
 
 	/**
@@ -38,17 +51,29 @@ public:
 	/**
 	 * Stop iterating a sorter.
 	 */
-	virtual void End() = 0;
+	void End()
+	{
+		this->item_next = std::nullopt;
+		this->has_no_more_items = true;
+	}
 
 	/**
 	 * Get the next item of the sorter.
+	 * @return Optional containing the next item, or std::nullopt when there is none.
 	 */
-	virtual std::optional<SQInteger> Next() = 0;
+	std::optional<SQInteger> Next()
+	{
+		if (this->IsEnd()) return std::nullopt;
+
+		std::optional<SQInteger> item_current = this->item_next;
+		this->FindNext();
+		return item_current;
+	}
 
 	/**
 	 * See if the sorter has reached the end.
 	 */
-	bool IsEnd()
+	bool IsEnd() const
 	{
 		return this->list->items.empty() || this->has_no_more_items;
 	}
@@ -56,17 +81,24 @@ public:
 	/**
 	 * Callback from the list if an item gets removed.
 	 */
-	virtual void Remove(SQInteger item) = 0;
+	void Remove(SQInteger item)
+	{
+		if (this->IsEnd()) return;
+
+		/* If we remove the 'next' item, skip to the next */
+		if (item == this->item_next) this->FindNext();
+	}
 
 	/**
-	 * Attach the sorter to a new list. This assumes the content of the old list has been moved to
-	 * the new list, too, so that we don't have to invalidate any iterators. Note that std::swap
-	 * doesn't invalidate iterators on lists and maps, so that should be safe.
-	 * @param target New list to attach to.
+	 * Attach the sorter to a new list and update internal iterator so it remains valid
+	 * in the context of the new list. This assumes the content of the old list has been
+	 * moved to the new list.
+	 * @param new_list New list to attach to and update internal iterator.
 	 */
-	virtual void Retarget(ScriptList *new_list)
+	void Retarget(const ScriptList *new_list)
 	{
 		this->list = new_list;
+		this->RetargetIterator();
 	}
 };
 
@@ -75,18 +107,14 @@ public:
  */
 class ScriptListSorterValueAscending : public ScriptListSorter {
 private:
-	ScriptList::ScriptListSet::iterator value_iter; ///< The iterator over the value/item pairs in the set.
+	ScriptList::ScriptListSet::const_iterator value_iter; ///< The iterator over the value/item pairs in the set.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterValueAscending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterValueAscending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
@@ -104,16 +132,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->value_iter == this->list->values.end()) {
@@ -124,23 +143,13 @@ public:
 		if (this->value_iter != this->list->values.end()) this->item_next = this->value_iter->second;
 	}
 
-	std::optional<SQInteger> Next() override
+	void RetargetIterator() override
 	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
+		if (this->item_next.has_value()) {
+			auto item_iter = this->list->items.find(this->item_next.value());
+			this->value_iter = this->list->values.find({item_iter->second, this->item_next.value()});
+		} else {
+			this->value_iter = this->list->values.end();
 		}
 	}
 };
@@ -153,18 +162,14 @@ private:
 	/* Note: We cannot use reverse_iterator.
 	 *       The iterators must only be invalidated when the element they are pointing to is removed.
 	 *       This only holds for forward iterators. */
-	ScriptList::ScriptListSet::iterator value_iter; ///< The iterator over the value/item pairs in the set.
+	ScriptList::ScriptListSet::const_iterator value_iter; ///< The iterator over the value/item pairs in the set.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterValueDescending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterValueDescending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
@@ -183,16 +188,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->value_iter == this->list->values.end()) {
@@ -208,23 +204,13 @@ public:
 		if (this->value_iter != this->list->values.end()) this->item_next = this->value_iter->second;
 	}
 
-	std::optional<SQInteger> Next() override
+	void RetargetIterator() override
 	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
+		if (this->item_next.has_value()) {
+			auto item_iter = this->list->items.find(this->item_next.value());
+			this->value_iter = this->list->values.find({item_iter->second, this->item_next.value()});
+		} else {
+			this->value_iter = this->list->values.end();
 		}
 	}
 };
@@ -234,18 +220,14 @@ public:
  */
 class ScriptListSorterItemAscending : public ScriptListSorter {
 private:
-	ScriptList::ScriptListMap::iterator item_iter; ///< The iterator over the items in the map.
+	ScriptList::ScriptListMap::const_iterator item_iter; ///< The iterator over the items in the map.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterItemAscending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterItemAscending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
@@ -263,16 +245,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->item_iter == this->list->items.end()) {
@@ -283,23 +256,12 @@ public:
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
-	std::optional<SQInteger> Next() override
+	void RetargetIterator() override
 	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
+		if (this->item_next.has_value()) {
+			this->item_iter = this->list->items.find(this->item_next.value());
+		} else {
+			this->item_iter = this->list->items.end();
 		}
 	}
 };
@@ -312,18 +274,14 @@ private:
 	/* Note: We cannot use reverse_iterator.
 	 *       The iterators must only be invalidated when the element they are pointing to is removed.
 	 *       This only holds for forward iterators. */
-	ScriptList::ScriptListMap::iterator item_iter; ///< The iterator over the items in the map.
+	ScriptList::ScriptListMap::const_iterator item_iter; ///< The iterator over the items in the map.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	ScriptListSorterItemDescending(ScriptList *list)
-	{
-		this->list = list;
-		this->End();
-	}
+	ScriptListSorterItemDescending(const ScriptList *list) : ScriptListSorter(list) {}
 
 	std::optional<SQInteger> Begin() override
 	{
@@ -342,16 +300,7 @@ public:
 		return item_current;
 	}
 
-	void End() override
-	{
-		this->item_next = std::nullopt;
-		this->has_no_more_items = true;
-	}
-
-	/**
-	 * Find the next item, and store that information.
-	 */
-	void FindNext()
+	void FindNext() override
 	{
 		this->item_next = std::nullopt;
 		if (this->item_iter == this->list->items.end()) {
@@ -367,30 +316,19 @@ public:
 		if (this->item_iter != this->list->items.end()) this->item_next = this->item_iter->first;
 	}
 
-	std::optional<SQInteger> Next() override
+	void RetargetIterator() override
 	{
-		if (this->IsEnd()) return std::nullopt;
-
-		std::optional<SQInteger> item_current = this->item_next;
-		this->FindNext();
-		return item_current;
-	}
-
-	void Remove(SQInteger item) override
-	{
-		if (this->IsEnd()) return;
-
-		/* If we remove the 'next' item, skip to the next */
-		if (item == this->item_next) {
-			this->FindNext();
-			return;
+		if (this->item_next.has_value()) {
+			this->item_iter = this->list->items.find(this->item_next.value());
+		} else {
+			this->item_iter = this->list->items.end();
 		}
 	}
 };
 
 
 
-bool ScriptList::SaveObject(HSQUIRRELVM vm)
+bool ScriptList::SaveObject(HSQUIRRELVM vm) const
 {
 	sq_pushstring(vm, "List");
 	sq_newarray(vm, 0);
@@ -440,7 +378,7 @@ bool ScriptList::LoadObject(HSQUIRRELVM vm)
 	return true;
 }
 
-ScriptObject *ScriptList::CloneObject()
+ScriptObject *ScriptList::CloneObject() const
 {
 	ScriptList *clone = new ScriptList();
 	clone->CopyList(this);
@@ -468,7 +406,7 @@ ScriptList::~ScriptList()
 {
 }
 
-bool ScriptList::HasItem(SQInteger item)
+bool ScriptList::HasItem(SQInteger item) const
 {
 	return this->items.count(item) == 1;
 }
@@ -523,12 +461,12 @@ SQInteger ScriptList::Next()
 	return this->sorter->Next().value_or(0);
 }
 
-bool ScriptList::IsEmpty()
+bool ScriptList::IsEmpty() const
 {
 	return this->items.empty();
 }
 
-bool ScriptList::IsEnd()
+bool ScriptList::IsEnd() const
 {
 	if (!this->initialized) {
 		Debug(script, 0, "IsEnd() is invalid as Begin() is never called");
@@ -537,12 +475,12 @@ bool ScriptList::IsEnd()
 	return this->sorter->IsEnd();
 }
 
-SQInteger ScriptList::Count()
+SQInteger ScriptList::Count() const
 {
 	return this->items.size();
 }
 
-SQInteger ScriptList::GetValue(SQInteger item)
+SQInteger ScriptList::GetValue(SQInteger item) const
 {
 	auto item_iter = this->items.find(item);
 	return item_iter == this->items.end() ? 0 : item_iter->second;
@@ -561,9 +499,10 @@ bool ScriptList::SetValue(SQInteger item, SQInteger value)
 	this->sorter->Remove(item);
 	auto value_iter = this->values.find({value_old, item});
 	assert(value_iter != this->values.end());
-	this->values.erase(value_iter);
 	item_iter->second = value;
-	this->values.emplace(value, item);
+	auto node_handle = this->values.extract(value_iter);
+	node_handle.value().first = value;
+	this->values.insert(std::move(node_handle));
 
 	return true;
 }
@@ -599,9 +538,9 @@ void ScriptList::Sort(SorterType sorter, bool ascending)
 	this->initialized    = false;
 }
 
-void ScriptList::AddList(ScriptList *list)
+bool ScriptList::AddList(ScriptList *list)
 {
-	if (list == this) return;
+	if (list == this) return false;
 
 	if (this->IsEmpty()) {
 		/* If this is empty, we can just take the items of the other list as is. */
@@ -609,11 +548,27 @@ void ScriptList::AddList(ScriptList *list)
 		this->values = list->values;
 		this->modifications++;
 	} else {
-		for (const auto &item : list->items) {
+		ScriptObject::DisableDoCommandScope disabler{};
+
+		auto begin = list->items.begin();
+		if (disabler.GetOriginalValue() && this->resume_item.has_value()) {
+			begin = list->items.lower_bound(this->resume_item.value());
+		}
+
+		for (const auto &item : std::ranges::subrange(begin, list->items.end())) {
+			if (disabler.GetOriginalValue() && item.first != this->resume_item && ScriptController::GetOpsTillSuspend() < 0) {
+				this->resume_item = item.first;
+				return true;
+			}
 			this->AddItem(item.first);
 			this->SetValue(item.first, item.second);
+			ScriptController::DecreaseOps(5);
 		}
+
+		this->resume_item.reset();
 	}
+
+	return false;
 }
 
 void ScriptList::SwapList(ScriptList *list)
@@ -631,134 +586,103 @@ void ScriptList::SwapList(ScriptList *list)
 	list->sorter->Retarget(list);
 }
 
-void ScriptList::RemoveAboveValue(SQInteger value)
+bool ScriptList::RemoveAboveValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > value; });
 }
 
-void ScriptList::RemoveBelowValue(SQInteger value)
+bool ScriptList::RemoveBelowValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v < value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v < value; });
 }
 
-void ScriptList::RemoveBetweenValue(SQInteger start, SQInteger end)
+bool ScriptList::RemoveBetweenValue(SQInteger start, SQInteger end)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > start && v < end; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v > start && v < end; });
 }
 
-void ScriptList::RemoveValue(SQInteger value)
+bool ScriptList::RemoveValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v == value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v == value; });
 }
 
-void ScriptList::RemoveTop(SQInteger count)
-{
-	this->modifications++;
-
-	if (!this->sort_ascending) {
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		this->RemoveBottom(count);
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		return;
-	}
-
-	switch (this->sorter_type) {
-		default: NOT_REACHED();
-		case SORT_BY_VALUE:
-			for (auto iter = this->values.begin(); iter != this->values.end(); iter = this->values.begin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->second);
-			}
-			break;
-
-		case SORT_BY_ITEM:
-			for (auto iter = this->items.begin(); iter != this->items.end(); iter = this->items.begin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->first);
-			}
-			break;
-	}
-}
-
-void ScriptList::RemoveBottom(SQInteger count)
+bool ScriptList::RemoveTop(SQInteger count)
 {
 	this->modifications++;
 
-	if (!this->sort_ascending) {
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		this->RemoveTop(count);
-		this->Sort(this->sorter_type, !this->sort_ascending);
-		return;
+	ScriptObject::DisableDoCommandScope disabler{};
+
+	if (disabler.GetOriginalValue() && this->resume_item.has_value()) {
+		count = this->resume_item.value();
+		this->resume_item.reset();
 	}
 
-	switch (this->sorter_type) {
-		default: NOT_REACHED();
-		case SORT_BY_VALUE:
-			for (auto iter = this->values.rbegin(); iter != this->values.rend(); iter = this->values.rbegin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->second);
-			}
-			break;
-
-		case SORT_BY_ITEM:
-			for (auto iter = this->items.rbegin(); iter != this->items.rend(); iter = this->items.rbegin()) {
-				if (--count < 0) return;
-				this->RemoveItem(iter->first);
-			}
-			break;
+	while (--count >= 0 && !this->items.empty()) {
+		this->RemoveItem(this->sorter->Begin().value());
+		ScriptController::DecreaseOps(5);
+		if (disabler.GetOriginalValue() && count != 0 && ScriptController::GetOpsTillSuspend() < 0) {
+			this->resume_item = count;
+			return true;
+		}
 	}
+
+	return false;
 }
 
-void ScriptList::RemoveList(ScriptList *list)
+bool ScriptList::RemoveBottom(SQInteger count)
+{
+	this->Sort(this->sorter_type, !this->sort_ascending);
+	bool ret = this->RemoveTop(count);
+	this->Sort(this->sorter_type, !this->sort_ascending);
+	return ret;
+}
+
+bool ScriptList::RemoveList(ScriptList *list)
 {
 	if (list == this) {
 		this->Clear();
-		return;
+		return false;
 	}
-	this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return list->HasItem(k); });
+	return this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return list->HasItem(k); });
 }
 
-void ScriptList::KeepAboveValue(SQInteger value)
+bool ScriptList::KeepAboveValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= value; });
 }
 
-void ScriptList::KeepBelowValue(SQInteger value)
+bool ScriptList::KeepBelowValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v >= value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v >= value; });
 }
 
-void ScriptList::KeepBetweenValue(SQInteger start, SQInteger end)
+bool ScriptList::KeepBetweenValue(SQInteger start, SQInteger end)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= start && v >= end; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v <= start || v >= end; });
 }
 
-void ScriptList::KeepValue(SQInteger value)
+bool ScriptList::KeepValue(SQInteger value)
 {
-	this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v != value; });
+	return this->RemoveItems([&](const SQInteger &, const SQInteger &v) { return v != value; });
 }
 
-void ScriptList::KeepTop(SQInteger count)
+bool ScriptList::KeepTop(SQInteger count)
 {
-	this->modifications++;
-
-	this->RemoveBottom(this->Count() - count);
+	return this->RemoveBottom(this->Count() - count);
 }
 
-void ScriptList::KeepBottom(SQInteger count)
+bool ScriptList::KeepBottom(SQInteger count)
 {
-	this->modifications++;
-
-	this->RemoveTop(this->Count() - count);
+	return this->RemoveTop(this->Count() - count);
 }
 
-void ScriptList::KeepList(ScriptList *list)
+bool ScriptList::KeepList(ScriptList *list)
 {
-	if (list == this) return;
-	this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return !list->HasItem(k); });
+	if (list == this) return false;
+	return this->RemoveItems([&](const SQInteger &k, const SQInteger &) { return !list->HasItem(k); });
 }
 
-SQInteger ScriptList::_get(HSQUIRRELVM vm)
+SQInteger ScriptList::_get(HSQUIRRELVM vm) const
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 

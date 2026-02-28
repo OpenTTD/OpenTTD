@@ -13,6 +13,7 @@
 #include "heightmap.h"
 #include "clear_map.h"
 #include "spritecache.h"
+#include "station_map.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "landscape.h"
@@ -65,18 +66,24 @@ extern const TileTypeProcs
  * @ingroup TileCallbackGroup
  * @see TileType
  */
-const TileTypeProcs * const _tile_type_procs[16] = {
-	&_tile_type_clear_procs,        ///< Callback functions for MP_CLEAR tiles
-	&_tile_type_rail_procs,         ///< Callback functions for MP_RAILWAY tiles
-	&_tile_type_road_procs,         ///< Callback functions for MP_ROAD tiles
-	&_tile_type_town_procs,         ///< Callback functions for MP_HOUSE tiles
-	&_tile_type_trees_procs,        ///< Callback functions for MP_TREES tiles
-	&_tile_type_station_procs,      ///< Callback functions for MP_STATION tiles
-	&_tile_type_water_procs,        ///< Callback functions for MP_WATER tiles
-	&_tile_type_void_procs,         ///< Callback functions for MP_VOID tiles
-	&_tile_type_industry_procs,     ///< Callback functions for MP_INDUSTRY tiles
-	&_tile_type_tunnelbridge_procs, ///< Callback functions for MP_TUNNELBRIDGE tiles
-	&_tile_type_object_procs,       ///< Callback functions for MP_OBJECT tiles
+const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs = {
+	&_tile_type_clear_procs, // Callback functions for TileType::Clear tiles
+	&_tile_type_rail_procs, // Callback functions for TileType::Railway tiles
+	&_tile_type_road_procs, // Callback functions for TileType::Road tiles
+	&_tile_type_town_procs, // Callback functions for TileType::House tiles
+	&_tile_type_trees_procs, // Callback functions for TileType::Trees tiles
+	&_tile_type_station_procs, // Callback functions for TileType::Station tiles
+	&_tile_type_water_procs, // Callback functions for TileType::Water tiles
+	&_tile_type_void_procs, // Callback functions for TileType::Void tiles
+	&_tile_type_industry_procs, // Callback functions for TileType::Industry tiles
+	&_tile_type_tunnelbridge_procs, // Callback functions for TileType::TunnelBridge tiles
+	&_tile_type_object_procs, // Callback functions for TileType::Object tiles
+	/* Explicitly initialize invalid elements to make sure that they are nullptr. */
+	nullptr,
+	nullptr,
+	nullptr,
+	nullptr,
+	nullptr,
 };
 
 /** landscape slope => sprite */
@@ -307,7 +314,7 @@ int GetSlopePixelZ(int x, int y, bool ground_vehicle)
 {
 	TileIndex tile = TileVirtXY(x, y);
 
-	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y, ground_vehicle);
+	return _tile_type_procs[GetTileType(tile)]->get_slope_pixel_z_proc(tile, x, y, ground_vehicle);
 }
 
 /**
@@ -323,7 +330,7 @@ int GetSlopePixelZOutsideMap(int x, int y)
 	if (IsInsideBS(x, 0, Map::SizeX() * TILE_SIZE) && IsInsideBS(y, 0, Map::SizeY() * TILE_SIZE)) {
 		return GetSlopePixelZ(x, y, false);
 	} else {
-		return _tile_type_procs[MP_VOID]->get_slope_z_proc(INVALID_TILE, x, y, false);
+		return _tile_type_procs[TileType::Void]->get_slope_pixel_z_proc(INVALID_TILE, x, y, false);
 	}
 }
 
@@ -538,7 +545,7 @@ void DoClearSquare(TileIndex tile)
 	if (MayAnimateTile(tile)) DeleteAnimatedTile(tile, true);
 
 	bool remove = IsDockingTile(tile);
-	MakeClear(tile, CLEAR_GRASS, _generating_world ? 3 : 0);
+	MakeClear(tile, ClearGround::Grass, _generating_world ? 3 : 0);
 	MarkTileDirtyByTile(tile);
 	if (remove) RemoveDockingTile(tile);
 
@@ -682,8 +689,11 @@ CommandCost CmdLandscapeClear(DoCommandFlags flags, TileIndex tile)
 	/* Test for stuff which results in water when cleared. Then add the cost to also clear the water. */
 	if (flags.Test(DoCommandFlag::ForceClearTile) && HasTileWaterClass(tile) && IsTileOnWater(tile) && !IsWaterTile(tile) && !IsCoastTile(tile)) {
 		if (flags.Test(DoCommandFlag::Auto) && GetWaterClass(tile) == WaterClass::Canal) return CommandCost(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
-		do_clear = true;
-		cost.AddCost(GetWaterClass(tile) == WaterClass::Canal ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
+		/* Buoy tiles are special as they can be cleared by anyone, but the underlying tile shouldn't be cleared if it has a different owner. */
+		if (!IsBuoyTile(tile) || GetTileOwner(tile) == _current_company) {
+			do_clear = true;
+			cost.AddCost(GetWaterClass(tile) == WaterClass::Canal ? _price[Price::ClearCanal] : _price[Price::ClearWater]);
+		}
 	}
 
 	Company *c = flags.Any({DoCommandFlag::Auto, DoCommandFlag::Bankrupt}) ? nullptr : Company::GetIfValid(_current_company);
@@ -750,7 +760,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex t = *iter;
-		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t);
+		CommandCost ret = Command<Commands::LandscapeClear>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t);
 		if (ret.Failed()) {
 			last_error = std::move(ret);
 
@@ -765,7 +775,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 			if (ret.GetCost() > 0 && money < 0) {
 				return { cost, ret.GetCost() };
 			}
-			Command<CMD_LANDSCAPE_CLEAR>::Do(flags, t);
+			Command<Commands::LandscapeClear>::Do(flags, t);
 
 			/* draw explosion animation...
 			 * Disable explosions when game is paused. Looks silly and blocks the view. */
@@ -835,7 +845,7 @@ void InitializeLandscape()
 {
 	for (uint y = _settings_game.construction.freeform_edges ? 1 : 0; y < Map::MaxY(); y++) {
 		for (uint x = _settings_game.construction.freeform_edges ? 1 : 0; x < Map::MaxX(); x++) {
-			MakeClear(TileXY(x, y), CLEAR_GRASS, 3);
+			MakeClear(TileXY(x, y), ClearGround::Grass, 3);
 			SetTileHeight(TileXY(x, y), 0);
 			SetTropicZone(TileXY(x, y), TROPICZONE_NORMAL);
 			ClearBridgeMiddle(TileXY(x, y));
@@ -982,7 +992,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 
 		auto allows_desert = [tile, desert_tropic_line](auto &offset) {
 			TileIndex t = AddTileIndexDiffCWrap(tile, offset);
-			return t == INVALID_TILE || (TileHeight(t) < desert_tropic_line && !IsTileType(t, MP_WATER));
+			return t == INVALID_TILE || (TileHeight(t) < desert_tropic_line && !IsTileType(t, TileType::Water));
 		};
 		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_desert)) {
 			SetTropicZone(tile, TROPICZONE_DESERT);
@@ -1002,7 +1012,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 
 		auto allows_rainforest = [tile](auto &offset) {
 			TileIndex t = AddTileIndexDiffCWrap(tile, offset);
-			return t == INVALID_TILE || !IsTileType(t, MP_CLEAR) || !IsClearGround(t, CLEAR_DESERT);
+			return t == INVALID_TILE || !IsTileType(t, TileType::Clear) || !IsClearGround(t, ClearGround::Desert);
 		};
 		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_rainforest)) {
 			SetTropicZone(tile, TROPICZONE_RAINFOREST);
@@ -1017,32 +1027,38 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
  */
 static bool FindSpring(TileIndex tile)
 {
+	if (!IsValidTile(tile)) return false;
+
 	int reference_height;
 	if (!IsTileFlat(tile, &reference_height) || IsWaterTile(tile)) return false;
 
 	/* In the tropics rivers start in the rainforest. */
 	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) != TROPICZONE_RAINFOREST) return false;
 
-	/* Are there enough higher tiles to warrant a 'spring'? */
-	uint num = 0;
-	for (int dx = -1; dx <= 1; dx++) {
-		for (int dy = -1; dy <= 1; dy++) {
-			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > reference_height) num++;
+	/* Rivers begin where water flows off hillsides and collects at the bottom. */
+	uint max_hill_distance = 1;
+	uint required_num_hills = 3;
+
+	/* If we don't have many hills, loosen the standards so we still get rivers. */
+	if (_settings_game.difficulty.terrain_type < GenworldMaxHeight::Hilly) {
+		max_hill_distance = 3;
+		required_num_hills = 1;
+	};
+
+	uint num_hills = 0;
+	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+		TileIndex check_tile = tile;
+		for (uint i = 0; i < max_hill_distance; i++) {
+			check_tile = TileAddByDiagDir(check_tile, d);
+			if (!IsValidTile(check_tile)) break;
+			if (GetTileMaxZ(check_tile) > reference_height) {
+				num_hills++;
+				break;
+			}
 		}
 	}
 
-	if (num < 4) return false;
-
-	/* Are we near the top of a hill? */
-	for (int dx = -16; dx <= 16; dx++) {
-		for (int dy = -16; dy <= 16; dy++) {
-			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > reference_height + 2) return false;
-		}
-	}
-
-	return true;
+	return num_hills >= required_num_hills;
 }
 
 /**
@@ -1110,11 +1126,11 @@ static void MakeWetlands(TileIndex centre, uint height, uint river_length)
 		if (Chance16(1, 3)) {
 			/* This tile is water. */
 			MakeRiverAndModifyDesertZoneAround(tile);
-		} else if (IsTileType(tile, MP_CLEAR)) {
+		} else if (IsTileType(tile, TileType::Clear)) {
 			/* This tile is ground, which we always make rough. */
-			SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
+			SetClearGroundDensity(tile, ClearGround::Rough, 3);
 			/* Maybe place trees? */
-			if (has_trees && _settings_game.game_creation.tree_placer != TP_NONE) {
+			if (has_trees && _settings_game.game_creation.tree_placer != TreePlacer::None) {
 				PlaceTree(tile, Random(), true);
 			}
 		}
@@ -1228,7 +1244,7 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 				TileIndex other_tile = TileAddByDiagDir(tile, d);
 				if (IsInclinedSlope(GetTileSlope(other_tile)) && IsWaterTile(other_tile)) return;
 			}
-			Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, ComplementSlope(cur_slope), true);
+			Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, ComplementSlope(cur_slope), true);
 
 		/* If the river is descending and the adjacent tile has either one or three corners raised, we want to make it match the slope. */
 		} else if (IsInclinedSlope(desired_slope)) {
@@ -1249,14 +1265,14 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 			/* Lower unwanted corners first. If only one corner is raised, no corners need lowering. */
 			if (!IsSlopeWithOneCornerRaised(cur_slope)) {
 				to_change = to_change & ComplementSlope(desired_slope);
-				Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, false);
+				Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, false);
 			}
 
 			/* Now check the match and raise any corners needed. */
 			cur_slope = GetTileSlope(tile);
 			if (cur_slope != desired_slope && IsSlopeWithOneCornerRaised(cur_slope)) {
 				to_change = cur_slope ^ desired_slope;
-				Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, true);
+				Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, true);
 			}
 		}
 		/* Update cur_slope after possibly terraforming. */
@@ -1404,9 +1420,9 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 				} else {
 					/* Sea is too small, flatten it so the river keeps looking or forms a lake / wetland. */
 					for (TileIndex sea_tile : sea) {
-						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, SLOPE_ELEVATED, false);
+						Command<Commands::TerraformLand>::Do(DoCommandFlag::Execute, sea_tile, SLOPE_ELEVATED, false);
 						Slope slope = ComplementSlope(GetTileSlope(sea_tile));
-						Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlag::Execute, sea_tile, slope, true);
+						Command<Commands::TerraformLand>::Do(DoCommandFlag::Execute, sea_tile, slope, true);
 					}
 				}
 			} else {
@@ -1666,7 +1682,7 @@ bool GenerateLandscape(uint8_t mode)
 				uint i = Map::ScaleBySize(GB(r, 0, 7) + (3 - _settings_game.difficulty.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
 					/* Make sure we do not overflow. */
-					GenerateTerrain(Clamp(_settings_game.difficulty.terrain_type, 0, 3), 0);
+					GenerateTerrain(static_cast<int>(Clamp(_settings_game.difficulty.terrain_type, GenworldMaxHeight::VeryFlat, GenworldMaxHeight::Mountainous)), 0);
 				}
 				break;
 			}

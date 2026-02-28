@@ -77,7 +77,7 @@ public:
 
 		const Font *GetFont() const override { return this->font; }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
-		int GetGlyphCount() const override { return this->glyphs.size(); }
+		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
 
@@ -86,8 +86,8 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override { return (uint)this->size();  }
-		const VisualRun &GetVisualRun(int run) const override { return this->at(run); }
+		size_t CountRuns() const override { return this->size();  }
+		const VisualRun &GetVisualRun(size_t run) const override { return this->at(run); }
 
 		int GetInternalCharLength(char32_t c) const override
 		{
@@ -145,7 +145,7 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
  * Shape a single run.
  *
  * @param buff The buffer of which a partial (depending on start/length of the run) will be shaped.
- * @param length The length of the buffer.
+ * @param buff_length The length of the buffer.
  */
 void ICURun::Shape(UChar *buff, size_t buff_length)
 {

@@ -106,7 +106,7 @@ private:
 	}
 };
 
-/* ** main console cmd buffer ** */
+/** Main console cmd buffer. */
 static Textbuf _iconsole_cmdline(ICON_CMDLN_SIZE);
 static ConsoleAutoCompletion _iconsole_tab_completion(&_iconsole_cmdline);
 static std::deque<std::string> _iconsole_history;
@@ -404,7 +404,10 @@ void IConsoleGUIFree()
 	IConsoleClearBuffer();
 }
 
-/** Change the size of the in-game console window after the screen size changed, or the window state changed. */
+/**
+ * Change the size of the in-game console window after the screen size changed, or the window state changed.
+ * @param w The window to update.
+ */
 void IConsoleResize(Window *w)
 {
 	switch (_iconsole_mode) {

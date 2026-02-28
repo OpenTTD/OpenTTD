@@ -153,3 +153,18 @@ jobs:
 
     with:
       version: ${{ needs.source.outputs.version }}
+
+  upload-windows-store:
+    name: Upload (Windows Store)
+    needs:
+    - upload
+
+    # Only upload final release builds to Windows Store; "-beta" or "-RC" tags should be ignored
+    if: needs.source.outputs.is_tag == 'true' && !contains(needs.source.outputs.version, '-')
+
+    uses: ./.github/workflows/upload-windows-store.yml
+    secrets: inherit
+
+    with:
+      version: ${{ needs.source.outputs.version }}
+      trigger_type: ${{ needs.source.outputs.trigger_type }}

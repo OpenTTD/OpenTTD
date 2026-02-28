@@ -519,6 +519,7 @@ bool _sort_compare(HSQUIRRELVM v,SQObjectPtr &a,SQObjectPtr &b,SQInteger func,SQ
 
 bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bottom, SQInteger func)
 {
+	SQInteger initial_size = arr->Size();
 	SQInteger maxChild;
 	SQInteger done = 0;
 	SQInteger ret;
@@ -531,6 +532,10 @@ bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bott
 		else {
 			if(!_sort_compare(v,arr->_values[root2],arr->_values[root2 + 1],func,ret))
 				return false;
+			if (initial_size != arr->Size()) {
+				v->Raise_Error("compare function modified array");
+				return false;
+			}
 			if (ret > 0) {
 				maxChild = root2;
 			}
@@ -542,6 +547,10 @@ bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bott
 
 		if(!_sort_compare(v,arr->_values[root],arr->_values[maxChild],func,ret))
 			return false;
+		if (initial_size != arr->Size()) {
+			v->Raise_Error("compare function modified array");
+			return false;
+		}
 		if (ret < 0) {
 			if (root == maxChild) {
 				v->Raise_Error("inconsistent compare function");
@@ -596,7 +605,7 @@ static SQInteger array_slice(HSQUIRRELVM v)
 	if(sidx < 0)sidx = alen + sidx;
 	if(eidx < 0)eidx = alen + eidx;
 	if(eidx < sidx)return sq_throwerror(v,"wrong indexes");
-	if(eidx > alen)return sq_throwerror(v,"slice out of range");
+	if(sidx < 0 || eidx > alen) return sq_throwerror(v,"slice out of range");
 	SQArray *arr=SQArray::Create(_ss(v),eidx-sidx);
 	SQObjectPtr t;
 	SQInteger count=0;
@@ -637,7 +646,7 @@ static SQInteger string_slice(HSQUIRRELVM v)
 	if(sidx < 0)sidx = slen + sidx;
 	if(eidx < 0)eidx = slen + eidx;
 	if(eidx < sidx)	return sq_throwerror(v,"wrong indexes");
-	if(eidx > slen)	return sq_throwerror(v,"slice out of range");
+	if(sidx < 0 || eidx > slen) return sq_throwerror(v,"slice out of range");
 	v->Push(SQString::Create(_ss(v),_stringval(o).substr(sidx,eidx-sidx)));
 	return 1;
 }

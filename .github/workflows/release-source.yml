@@ -202,14 +202,14 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: openttd-source
         path: build/bundles/*
         retention-days: 5
 
     - name: Store source (for other jobs)
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: internal-source
         path: source.tar.gz

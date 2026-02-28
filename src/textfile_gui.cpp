@@ -847,6 +847,8 @@ static std::vector<char> Xunzip(std::span<char> input)
 
 /**
  * Loads the textfile text from file and setup #lines.
+ * @param textfile The filename of the file to load.
+ * @param dir The sub directory to find the file in.
  */
 /* virtual */ void TextfileWindow::LoadTextfile(const std::string &textfile, Subdirectory dir)
 {

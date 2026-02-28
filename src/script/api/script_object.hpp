@@ -44,10 +44,14 @@ typedef bool (ScriptAsyncModeProc)();
 class SimpleCountedObject {
 public:
 	SimpleCountedObject() : ref_count(0) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SimpleCountedObject() = default;
 
+	/** Increase the reference count by one. */
 	inline void AddRef() { ++this->ref_count; }
+	/** Decrease the reference count by one. Once zero call FinaleRelease and then destruct the object. */
 	void Release();
+	/** Called during Release, so the object can throw exceptions (you cannot in destructors). */
 	virtual void FinalRelease() {};
 
 private:
@@ -96,7 +100,7 @@ protected:
 	 *  - the data for the object (any supported types)
 	 * @return True iff saving this type is supported.
 	 */
-	virtual bool SaveObject(HSQUIRRELVM) { return false; }
+	virtual bool SaveObject(HSQUIRRELVM) const { return false; }
 
 	/**
 	 * Load this object.
@@ -109,7 +113,7 @@ protected:
 	 * Clone an object.
 	 * @return The clone if cloning this type is supported, nullptr otherwise.
 	 */
-	virtual ScriptObject *CloneObject() { return nullptr; }
+	virtual ScriptObject *CloneObject() const { return nullptr; }
 
 public:
 	/**
@@ -352,7 +356,10 @@ private:
 };
 
 namespace ScriptObjectInternal {
-	/** Validate a single string argument coming from network. */
+	/**
+	 * Validate a single string argument coming from a script.
+	 * @param data The data to validate.
+	 */
 	template <class T>
 	static inline void SanitizeSingleStringHelper(T &data)
 	{
@@ -363,14 +370,20 @@ namespace ScriptObjectInternal {
 		}
 	}
 
-	/** Helper function to perform validation on command data strings. */
+	/**
+	 * Helper function to perform validation on command data strings.
+	 * @param values The data to validate.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline void SanitizeStringsHelper(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SanitizeSingleStringHelper(std::get<Tindices>(values))), ...);
 	}
 
-	/** Helper to process a single ClientID argument. */
+	/**
+	 * Helper to process a single ClientID argument.
+	 * @param data The data to process.
+	 */
 	template <class T>
 	static inline void SetClientIdHelper(T &data)
 	{
@@ -379,7 +392,10 @@ namespace ScriptObjectInternal {
 		}
 	}
 
-	/** Set all invalid ClientID's to the proper value. */
+	/**
+	 * Set all invalid ClientIDs to the proper value.
+	 * @param values The values to go through.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
 	{
@@ -509,5 +525,38 @@ public:
 		return this->data;
 	}
 };
+
+/**
+ * Allocator that uses script memory allocation accounting.
+ * @tparam T Type of allocator.
+ */
+template <typename T>
+struct ScriptStdAllocator
+{
+	using value_type = T;
+
+	ScriptStdAllocator() = default;
+
+	template <typename U>
+	constexpr ScriptStdAllocator(const ScriptStdAllocator<U> &) noexcept {}
+
+	T *allocate(std::size_t n)
+	{
+		Squirrel::IncreaseAllocatedSize(n * sizeof(T));
+		return std::allocator<T>{}.allocate(n);
+	}
+
+	void deallocate(T *mem, std::size_t n)
+	{
+		Squirrel::DecreaseAllocatedSize(n * sizeof(T));
+		std::allocator<T>{}.deallocate(mem, n);
+	}
+};
+
+template <typename T, typename U>
+bool operator==(const ScriptStdAllocator<T> &, const ScriptStdAllocator<U> &) { return true; }
+
+template <typename T, typename U>
+bool operator!=(const ScriptStdAllocator<T> &, const ScriptStdAllocator<U> &) { return false; }
 
 #endif /* SCRIPT_OBJECT_HPP */

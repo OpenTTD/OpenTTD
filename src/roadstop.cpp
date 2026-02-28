@@ -291,7 +291,7 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
  */
 /* static */ bool RoadStop::IsDriveThroughRoadStopContinuation(TileIndex rs, TileIndex next)
 {
-	return IsTileType(next, MP_STATION) &&
+	return IsTileType(next, TileType::Station) &&
 			GetStationIndex(next) == GetStationIndex(rs) &&
 			GetStationType(next) == GetStationType(rs) &&
 			IsDriveThroughStopTile(next) &&

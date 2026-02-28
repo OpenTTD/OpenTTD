@@ -10,9 +10,10 @@
 #ifndef SQUIRREL_HELPER_TYPE_HPP
 #define SQUIRREL_HELPER_TYPE_HPP
 
+#include "script_object.hpp"
 
 /** Definition of a simple array. */
 template <typename Titem = int32_t>
-using Array = std::vector<Titem>;
+using Array = std::vector<Titem, ScriptStdAllocator<Titem>>;
 
 #endif /* SQUIRREL_HELPER_TYPE_HPP */

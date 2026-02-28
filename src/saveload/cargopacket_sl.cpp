@@ -162,7 +162,7 @@ struct CAPAChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			CargoPacket *cp = new (CargoPacketID(index)) CargoPacket();
+			CargoPacket *cp = CargoPacket::CreateAtIndex(CargoPacketID(index));
 			SlObject(cp, slt);
 		}
 	}

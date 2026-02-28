@@ -23,10 +23,6 @@
 
 #include "../safeguards.h"
 
-#if !defined(HAVE_OSX_1011_SDK)
-#define kMusicSequenceFile_AnyType 0
-#endif
-
 static FMusicDriver_Cocoa iFMusicDriver_Cocoa;
 
 

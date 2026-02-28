@@ -65,12 +65,14 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	TownCache cache{}; ///< Container for all cacheable data.
 
-	/* Town name */
+	/** @name Town name.
+	 * @{ */
 	uint32_t townnamegrfid = 0;
 	uint16_t townnametype = 0;
 	uint32_t townnameparts = 0;
 	std::string name{}; ///< Custom town name. If empty, the town was not renamed and uses the generated name.
 	mutable std::string cached_name{}; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
+	/** @} */
 
 	TownFlags flags{}; ///< See #TownFlags.
 
@@ -156,9 +158,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	/**
 	 * Creates a new town.
+	 * @param index the index within the town pool
 	 * @param tile center tile of the town
 	 */
-	Town(TileIndex tile = INVALID_TILE) : xy(tile) { }
+	Town(TownID index, TileIndex tile = INVALID_TILE) : TownPool::PoolItem<&_town_pool>(index), xy(tile) { }
 
 	/** Destroy the town. */
 	~Town();
@@ -224,7 +227,7 @@ enum TownCouncilAttitudes {
 enum class TownRatingCheckType : uint8_t {
 	RoadRemove, ///< Removal of a road owned by the town.
 	TunnelBridgeRemove, ///< Removal of a tunnel or bridge owned by the town.
-	End,
+	End, ///< End marker.
 };
 
 /** Special values for town list window for the data parameter of #InvalidateWindowData. */
@@ -253,7 +256,7 @@ enum class TownAction : uint8_t {
 	FundBuildings, ///< Fund new buildings.
 	BuyRights, ///< Buy exclusive transport rights.
 	Bribe, ///< Try to bribe the council.
-	End,
+	End, ///< End marker.
 };
 using TownActions = EnumBitSet<TownAction, uint8_t>;
 

@@ -20,9 +20,11 @@
  * @ingroup ScriptList
  */
 class ScriptTileList : public ScriptList {
+private:
+	std::optional<OrthogonalTileIterator> resume_iter;
 protected:
-	virtual bool SaveObject(HSQUIRRELVM) override;
-	virtual ScriptObject *CloneObject() override;
+	bool SaveObject(HSQUIRRELVM) const override;
+	ScriptObject *CloneObject() const override;
 public:
 	/**
 	 * Adds the rectangle between tile_from and tile_to to the to-be-evaluated tiles.
@@ -30,8 +32,13 @@ public:
 	 * @param tile_to The other corner of the tiles to add.
 	 * @pre ScriptMap::IsValidTile(tile_from).
 	 * @pre ScriptMap::IsValidTile(tile_to).
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void AddRectangle(TileIndex tile_from, TileIndex tile_to);
+#else
+	bool AddRectangle(TileIndex tile_from, TileIndex tile_to);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Add a tile to the to-be-evaluated tiles.
@@ -46,8 +53,13 @@ public:
 	 * @param tile_to The other corner of the files to remove.
 	 * @pre ScriptMap::IsValidTile(tile_from).
 	 * @pre ScriptMap::IsValidTile(tile_to).
+	 * @suspendable
 	 */
+#ifdef DOXYGEN_API
 	void RemoveRectangle(TileIndex tile_from, TileIndex tile_to);
+#else
+	bool RemoveRectangle(TileIndex tile_from, TileIndex tile_to);
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Remove a tile from the list.

@@ -146,10 +146,11 @@ static void PopupMainToolbarMenu(Window *w, WidgetID widget, const std::initiali
 	PopupMainToolbarMenu(w, widget, std::move(list), 0);
 }
 
-/** Enum for the Company Toolbar's network related buttons */
-static const int CTMN_CLIENT_LIST = -1; ///< Show the client list
-static const int CTMN_SPECTATE    = -2; ///< Become spectator
-static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
+/* Special values used in the dropdowns related to companies.
+ * They cannot interfere with valid IDs for companies. */
+static const int CTMN_CLIENT_LIST = MAX_COMPANIES; ///< Indicates the "all connected players" entry.
+static const int CTMN_SPECTATE = COMPANY_SPECTATOR.base(); ///< Indicates the "become spectator" entry.
+static const int CTMN_SPECTATOR = CompanyID::Invalid().base(); ///< Indicates that a window is being opened for the spectator.
 
 /**
  * Pop up a generic company list menu.
@@ -208,7 +209,7 @@ static CallBackFunction ToolbarPauseClick(Window *)
 {
 	if (_networking && !_network_server) return CBF_NONE; // only server can pause the game
 
-	if (Command<CMD_PAUSE>::Post(PauseMode::Normal, _pause_mode.None())) {
+	if (Command<Commands::Pause>::Post(PauseMode::Normal, _pause_mode.None())) {
 		SndConfirmBeep();
 	}
 	return CBF_NONE;
@@ -481,7 +482,7 @@ static CallBackFunction ToolbarTownClick(Window *w)
 	DropDownList list;
 	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY, TME_SHOW_DIRECTORY));
 	if (_settings_game.economy.found_town != TF_FORBIDDEN) list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_FOUND_TOWN, TME_SHOW_FOUND_TOWN));
-	if (_settings_game.economy.place_houses != PH_FORBIDDEN) list.push_back(MakeDropDownListStringItem(STR_SCENEDIT_TOWN_MENU_PACE_HOUSE, TME_SHOW_PLACE_HOUSES));
+	if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) list.push_back(MakeDropDownListStringItem(STR_SCENEDIT_TOWN_MENU_PACE_HOUSE, TME_SHOW_PLACE_HOUSES));
 
 	PopupMainToolbarMenu(w, WID_TN_TOWNS, std::move(list), 0);
 
@@ -502,7 +503,7 @@ static CallBackFunction MenuClickTown(int index)
 			if (_settings_game.economy.found_town != TF_FORBIDDEN) ShowFoundTownWindow();
 			break;
 		case TME_SHOW_PLACE_HOUSES: // Setting could be changed when the dropdown was open
-			if (_settings_game.economy.place_houses != PH_FORBIDDEN) ShowBuildHousePicker(nullptr);
+			if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) ShowBuildHousePicker(nullptr);
 			break;
 	}
 	return CBF_NONE;
@@ -619,7 +620,7 @@ static CallBackFunction ToolbarStoryClick(Window *w)
  */
 static CallBackFunction MenuClickStory(int index)
 {
-	ShowStoryBook(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
+	ShowStoryBook(CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -639,7 +640,7 @@ static CallBackFunction ToolbarGoalClick(Window *w)
  */
 static CallBackFunction MenuClickGoal(int index)
 {
-	ShowGoalsList(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
+	ShowGoalsList(CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -1188,6 +1189,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 
 /**
  * Called when clicking at the date panel of the scenario editor toolbar.
+ * @copydoc ToolbarButtonProc
  */
 static CallBackFunction ToolbarScenDatePanel(Window *w)
 {
@@ -1937,7 +1939,12 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 
 /* --- Toolbar handling for the 'normal' case */
 
-typedef CallBackFunction ToolbarButtonProc(Window *w);
+/**
+ * Callback for when a button is clicked in the given window.
+ * @param w The clicked window.
+ * @return The callback function.
+ */
+using ToolbarButtonProc = CallBackFunction(Window *w);
 
 static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarPauseClick,

@@ -1184,7 +1184,7 @@ STR_SMALLMAP_LEGENDA_FOREST                                     :{G=m}{TINY_FONT
 STR_SMALLMAP_LEGENDA_FOREST.d                                   :{TINY_FONT}{BLACK}Lasu
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Stacja kolejowa
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Stacja ciężarówek
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Przystanek
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Przystanek autobusowy
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Lotnisko
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Port
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Wyboisty teren
@@ -1303,7 +1303,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} ma za mało poleceń w rozkładzie
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ma nieważne polecenie
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ma nieprawidłowe polecenie
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} ma zdublowane polecenia
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} ma nieprawiodłową stację w poleceniach
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} ma w poleceniach lotnisko ze zbyt krótkim pasem startowym
@@ -1442,7 +1442,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Wybierz język 
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (ukończono {NUM}%)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Pełny ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Zaznacz to pole, jeśli chcesz grać w OpenTTD w trybie pełnoekranowym
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Włącz, aby grać w OpenTTD w trybie pełnoekranowym
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Rozdzielczość ekranu
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Wybierz rozdzielczość ekranu
@@ -1450,11 +1450,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Przyspieszenie sprzętowe
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Zaznacz to pole, aby zezwolić OpenTTD na użycie przyspieszenia sprzętowego. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Włącz, aby zezwolić OpenTTD na użycie przyspieszenia sprzętowego. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ustawienie zostanie zastosowane dopiero po ponownym uruchomieniu gry
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Synchronizacja pionowa
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Zaznacz to pole, aby włączyć synchronizację pionową. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry. Działa tylko z włączonym przyspieszeniem sprzętowym
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Włącz, aby używać synchronizacji pionowej. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry. Działa tylko z włączonym przyspieszeniem sprzętowym
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Bieżący sterownik: {STRING}
 
@@ -1463,15 +1463,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Interfejs
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Rozmiar interfejsu
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Wykryj rozmiar automatycznie
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Zaznacz to pole, aby rozmiar interfejsu był wykrywany automatycznie
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Włącz, aby rozmiar interfejsu był wykrywany automatycznie
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaluj fazy krawędzi
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaznacz to pole, aby skalować fazy krawędzi zgodnie z rozmiarem interfejsu
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Włącz, aby skalować fazy krawędzi zgodnie z rozmiarem interfejsu
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Użyj tradycyjnego fonta typu sprite
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaznacz to pole, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Włącz, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Wygładzanie fontów
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaznacz to pole, aby wygładzać fonty o zmiennym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Włącz, aby wygładzać fonty o zmiennym rozmiarze
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1495,7 +1495,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Wybierz podstaw
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Dodatkowe informacje o podstawowym zestawie grafik
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Podstawowy zestaw dźwięków
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Wybierz podstawowy zestaw dźwięków (nie można tego zmienić w trakcie gry, jedynie w menu głównym)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Wybierz podstawowy zestaw dźwięków
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Dodatkowe informacje o podstawowym zestawie dźwięków
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Podstawowy zestaw muzyki
@@ -1521,8 +1521,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Nieprawid�
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} brakując{P y e ych}/uszkodzon{P y e ych} plik{P "" i ów})
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nie udało się pobrać listy obsługiwanych rozdzielczości
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomienie trybu pełnoekranowego nie powiodło się
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Nie udało się pobrać listy wspieranych rozdzielczości
+STR_ERROR_FULLSCREEN_FAILED                                     :Uruchomienie trybu pełnoekranowego nie powiodło się
 
 # Custom currency window
 
@@ -1606,12 +1606,12 @@ STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Krajobraz tropi
 STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Krajobraz zabawkowy
 
 ###length 7
-STR_TERRAIN_TYPE_VERY_FLAT                                      :Bardzo płaski
-STR_TERRAIN_TYPE_FLAT                                           :Płaski
-STR_TERRAIN_TYPE_HILLY                                          :Pagórkowaty
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górzysty
-STR_TERRAIN_TYPE_ALPINIST                                       :Alpejski
-STR_TERRAIN_TYPE_CUSTOM                                         :Niestandardowa wysokość
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Bardzo płasko
+STR_TERRAIN_TYPE_FLAT                                           :Płasko
+STR_TERRAIN_TYPE_HILLY                                          :Pagórkowato
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górzyście
+STR_TERRAIN_TYPE_ALPINIST                                       :Alpejsko
+STR_TERRAIN_TYPE_CUSTOM                                         :Własna
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Niestandardowa wysokość ({NUM})
 
 ###length 4
@@ -1628,7 +1628,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Rozwiń wszystk
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Zwiń wszystkie
 STR_CONFIG_SETTING_RESET_ALL                                    :Przywróć wszystkie ustawienia
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(wyjaśnienie niedostępne)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Domyślna wartość: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ ustawienia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Ustawienie klienta (nie przechowywane w plikach zapisu; ma wpływ na wszystkie rozgrywki)
@@ -1978,7 +1978,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Oryginalny gene
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Typ terenu: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maksymalna wysokość: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Wybierz wysokość wzgórz i gór w krajobrazie
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Liczba przedsiębiorstw: {STRING}
@@ -2005,6 +2005,14 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Łagodny
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Pofałdowany
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo pofałdowany
+
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Średnia wysokość: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Wybierz średnią wysokość terenu. Opcja „Automatyczna” użyje domyślnej wartości dla wybranego klimatu: „Niziny” dla tropikalnego, „Normalna” dla umiarkowanego i zabawkowego oraz „Płaskowyże” dla arktycznego
+###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatyczna
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Niziny
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normalna
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Płaskowyże
 
 STR_CONFIG_SETTING_VARIETY                                      :Różnorodność terenu: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wybierz, czy mapa ma zawierać zarówno obszary górskie, jak i płaskie. Im większa różnorodność, tym większe różnice wysokości między obszarami górskimi i płaskimi
@@ -2034,8 +2042,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Zgodnie ze wsk.
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Wysokość jaką dostaje płaska mapa: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedno lub więcej pól na północnej krawędzi nie jest puste
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedno lub więcej pól na krawędzi nie jest wodą
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :Co najmniej jedno pole przy północnej krawędzi nie jest puste
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :Co najmniej jedno pole przy krawędzi nie jest wodą
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maksymalna rozpiętość stacji: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksymalny obszar na jakim mogą znajdować się poszczególne elementy stacji. Pamiętaj, że wysoka wartość spowalnia grę
@@ -2582,27 +2590,27 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Pozwól pociąg
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmiana wartości
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Błąd w pliku konfiguracyjnym
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... błąd w tablicy „{STRING}”
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nieprawidłowa wartość „{STRING}” dla „{STRING}”
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... zbędne znaki na końcu ustawienia „{STRING}”
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRF-a „{STRING}”: zduplikowany GRF ID z „{STRING}”
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... pominięcie nieprawidłowych NewGRF-ów „{STRING}”: {STRING}
+STR_CONFIG_ERROR                                                :Błąd w pliku konfiguracyjnym...
+STR_CONFIG_ERROR_ARRAY                                          :błąd w tablicy „{STRING}”
+STR_CONFIG_ERROR_INVALID_VALUE                                  :nieprawidłowa wartość „{STRING}” dla „{STRING}”
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :zbędne znaki na końcu ustawienia „{STRING}”
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :ignorowanie NewGRF-a „{STRING}”: identyfikator NewGRF zduplikowany z „{STRING}”
+STR_CONFIG_ERROR_INVALID_GRF                                    :pominięcie nieprawidłowych NewGRF-ów „{STRING}”: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie znaleziono
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :{G=n}niebezpieczne w stałym użyciu
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :systemowe NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :niezgodne z tą wersją OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nieznany
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... poziom kompresji „{STRING}” jest niepoprawny
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format zapisu gry „{STRING}” jest niedostępny. Powracanie do „{STRING}”
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoruję zestaw Base Graphics „{STRING}”: nie odnaleziono
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoruję zestaw Base Sounds „{STRING}”: nie odnaleziono
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoruję zestaw Base Music „{STRING}”: nie odnaleziono
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :poziom kompresji „{STRING}” jest niepoprawny
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :format zapisu gry „{STRING}” jest niedostępny. Powracanie do „{STRING}”
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignorowanie podstawowego zestawu grafik „{STRING}”: nie odnaleziono
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignorowanie podstawowego zestawu dźwięków „{STRING}”: nie odnaleziono
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignorowanie podstawowego zestawu muzyki „{STRING}”: nie odnaleziono
 
 # Video initalization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Błąd ustawień obrazu...
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nie znaleziono kompatybilnego procesora graficznego. Przyspieszenie sprzętowe wyłączone.
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Sterownik GPU spowodował awarię gry. Wyłączono przyspieszenie sprzętowe
+STR_VIDEO_DRIVER_ERROR                                          :Błąd w ustawieniach obrazu...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :nie znaleziono kompatybilnego procesora graficznego. Przyspieszenie sprzętowe wyłączone.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :sterownik GPU spowodował awarię gry. Wyłączono przyspieszenie sprzętowe
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
@@ -2739,15 +2747,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Podstawo
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Podstawowy widok wyboru twarzy
 STR_FACE_LOAD                                                   :{BLACK}Wczytaj
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Wczytaj ulubioną twarz
-STR_FACE_LOAD_DONE                                              :{WHITE}Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD
+STR_FACE_LOAD_DONE                                              :Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Kod twarzy gracza
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Wyświetl i/lub ustaw kod twarzy prezesa firmy
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Wyświetl i/lub ustaw kod twarzy prezesa
-STR_FACE_FACECODE_SET                                           :{WHITE}Nowa twarz prezesa została ustalona
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nie można ustawić kodu twarzy prezesa - musi to być odpowiednia etykieta i numer
+STR_FACE_FACECODE_SET                                           :Nowa twarz prezesa została ustalona
+STR_FACE_FACECODE_ERR                                           :Nie można ustawić kodu twarzy prezesa - musi to być odpowiednia etykieta i numer
 STR_FACE_SAVE                                                   :{BLACK}Zapisz
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Zapisz ulubioną twarz
-STR_FACE_SAVE_DONE                                              :{WHITE}Ta twarz będzie zapisana w pliku konfiguracyjnym OpenTTD jako twoja ulubiona
+STR_FACE_SAVE_DONE                                              :Ta twarz będzie zapisana w pliku konfiguracyjnym OpenTTD jako twoja ulubiona
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Tak
@@ -2919,6 +2927,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Przez pr
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Wyrzuć
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Zbanuj
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Usuń
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :Zezwól wszystkim na dołączenie
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :Zezwól tylko wybranym na dołączenie
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Działanie administratora
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Czy na pewno chcesz wyrzucić gracza „{STRING}”?
@@ -2965,27 +2975,27 @@ STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nie moż
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Błąd synchronizacji gry sieciowej.
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Utracono połączenie z grą sieciową.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nie można wczytać zapisanej gry z serwera.
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nie można uruchomić serwera
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Błąd protokołu, połączenie zostało przerwane
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Twoja nazwa gracza nie została ustawiona. Nazwę można ustawić w górnej części okna Gra wieloosobowa
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Nazwa twojego serwera nie została ustawiona. Nazwę można ustawić w górnej części okna Gra wieloosobowa
+STR_NETWORK_ERROR_SERVER_START                                  :Nie można uruchomić serwera
+STR_NETWORK_ERROR_SERVER_ERROR                                  :Wykryto błąd protokołu i połączenie zostało zakończone
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Twoja nazwa gracza nie została ustawiona. Nazwę można ustawić w górnej części okna Gra Wieloosobowa
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Nazwa twojego serwera nie została ustawiona. Nazwę można ustawić w górnej części okna Gra Wieloosobowa
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Wersja gry nie zgadza się z wersją gry na serwerze
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Złe hasło
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nie ma cię na liście dopuszczonych klientów
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serwer jest pełny
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Masz zabroniony dostęp do tego serwera
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Wyrzucono cię z rozgrywki
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Złe hasło
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :Nie ma cię na liście dopuszczonych klientów
+STR_NETWORK_ERROR_SERVER_FULL                                   :Serwer jest pełny
+STR_NETWORK_ERROR_SERVER_BANNED                                 :Masz zakaz dostępu do tego serwera
+STR_NETWORK_ERROR_KICKED                                        :Wyrzucono cię z rozgrywki
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Powód: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ułatwienia są niedozwolone na tym serwerze
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Wysyłano zbyt dużo komend na serwer
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Wpisywanie hasła trwało zbyt długo
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Twój komputer jest zbyt wolny, by nadążyć za serwerem
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Twój komputer zbyt długo pobierał mapę
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Twój komputer zbyt długo łączył się z serwerem
-STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Twoja nazwa gracza jest nieprawidłowa
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Wpisywanie hasła trwało zbyt długo
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :Twój komputer jest zbyt wolny, by nadążyć za serwerem
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Twój komputer zbyt długo pobierał mapę
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :Twój komputer zbyt długo łączył się z serwerem
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :Twoja nazwa gracza jest nieprawidłowa
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Możliwa utrata połączenia
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Przez ostatni{P 0 ą e e} {NUM} sekund{P ę y ""} nie otrzymano żadnych danych z serwera
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Możliwa utrata połączenia
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :Przez ostatni{P 0 ą e e} {NUM} sekund{P ę y ""} nie otrzymano żadnych danych z serwera
 
 ###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :błąd ogólny
@@ -3038,14 +3048,14 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} za
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opuścił grę ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmienił swoją nazwę na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Firma {0:STRING} przekazała firmie {2:STRING} {1:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serwer zamknął sesję
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}{}Proszę czekać...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :Serwer zamknął sesję
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :Restart serwera...{}{}Proszę czekać...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} został wyrzucony. Powód: ({STRING})
 
-STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Rejestracja serwera nie powiodła się
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Zarejestrował się inny serwer z tym samym kodem zaproszenia. Przełączanie na „lokalny” typ gry.
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Twój serwer nie pozwala na połączenia zdalne
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Inni gracze nie będą mogli połączyć się z twoim serwerem
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :Rejestracja serwera nie powiodła się
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :Zarejestrował się inny serwer z tym samym kodem zaproszenia. Przełączanie na „lokalny” typ gry.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Twój serwer nie pozwala na połączenia zdalne
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Inni gracze nie będą mogli połączyć się z twoim serwerem
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Przeglądarka Dodatków
@@ -3089,8 +3099,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Rozmiar
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Zaznaczono z powodu: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Zależności: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagi: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD jest zbudowany bez wsparcia dla „zlib”...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... pobieranie zawartości nie jest możliwe!
+STR_CONTENT_NO_ZLIB                                             :OpenTTD jest zbudowany bez wsparcia dla „zlib”...
+STR_CONTENT_NO_ZLIB_SUB                                         :pobieranie zawartości nie jest możliwe!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Podstawowa grafika
@@ -3112,10 +3122,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Pobieran
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}Pobrano {BYTES} z {BYTES} ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nie można połączyć się z serwerem dodatków...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Pobieranie nie powiodło się...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... plik tylko do odczytu
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nie udało się dekompresować pobranego pliku
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Nie można połączyć się z serwerem dodatków...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Pobieranie nie powiodło się...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :plik tylko do odczytu
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :Nie udało się rozpakować pobranego pliku
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Brak grafiki
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD potrzebuje grafiki do poprawnego działania, ale żadne nie zostały znalezione. Czy zgadzasz się, żeby OpenTTD pobrał i zainstalował grafikę?
@@ -3230,18 +3240,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Zmniejsz wysoko
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Zwiększ wysokość podglądów. Użyj Ctrl, aby powiększyć maksymalnie
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Domyślna kolekcja
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Wybierz kolekcję
+STR_PICKER_COLLECTION_ADD                                       :Utwórz
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Utwórz nową kolekcję
+STR_PICKER_COLLECTION_RENAME                                    :Zmień nazwę
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Zmień nazwę kolekcji
+STR_PICKER_COLLECTION_DELETE                                    :Usuń
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Usuń kolekcję
+
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Zmień nazwę tej kolekcji
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Usuń kolekcję
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Czy na pewno chcesz usunąć tę kolekcję?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Czy na pewno chcesz usunąć tę kolekcję? Zawiera ona elementy z wyłączonych plików NewGRF!
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wybierz klasę stacji do wyświetlenia
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wybierz typ stacji do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Wybierz kolekcję stacji do wyświetlenia
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Wybierz klasę posterunku do wyświetlenia
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Wybierz typ posterunku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Wybierz kolekcję posterunków do wyświetlenia
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Wybierz klasę przystanku do wyświetlenia
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Wybierz typ przystanku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Wybierz kolekcję przystanków autobusowych do wyświetlenia
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Wybierz klasę stacji ciężarówek do wyświetlenia
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Wybierz typ stacji ciężarówek do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Wybierz kolekcję stacji ciężarówek do wyświetlenia
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wybierz klasę obiektu do wyświetlenia
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wybierz typ obiektu do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Wybierz kolekcję obiektów do wyświetlenia
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wybierz strefę miasta do wyświetlenia
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wybierz typ budynku do zbudowania. Użyj Ctrl, aby dodać lub usunąć z zapisanych elementów
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Wybierz kolekcję budynków do wyświetlenia
 
 STR_HOUSE_PICKER_CAPTION                                        :Wybór Budynków
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nazwa: {GOLD}{STRING}
@@ -3251,7 +3281,7 @@ STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Lata: {G
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Lata: {GOLD}Od {NUM}
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Lata: {GOLD}Do {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM}x{NUM} p{P ole ola ól}
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akceptowany ładunek: {GOLD}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akceptowany ładunek: {GOLD}{STRING}
 STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produkowany ładunek: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Obrzeża
@@ -3346,7 +3376,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Ukierunkowanie przystanku
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie przystanku
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ukierunkowanie stacji załadunku ciężarówek
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ukierunkowanie stacji ciężarówek
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Wybierz ukierunkowanie stacji ciężarówek
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Ukierunkowanie przystanku tramwajowego
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Wybierz ukierunkowanie przystanku tramwajowego
@@ -3539,7 +3569,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Rodzaj l
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nazwa lotniska: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nazwa pola lotniska: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akceptowany ładunek: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akceptowany ładunek: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Typ torów: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Rodzaj drogi: {LTBLUE}{STRING}
@@ -3603,7 +3633,7 @@ STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stacja kolejowa
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lotnisko
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stacja ciężarówek
-STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Przystanek
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Przystanek autobusowy
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boja
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Posterunek
@@ -3766,7 +3796,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Pokrycie
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Zwiększ pokrycie pustynią o 10%
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Zmniejsz pokrycie pustynią o 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maksymalna wysokość:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Średnia wysokość:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Poziom morza:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Określ wysokość poziomu morza
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Liczba rzek:
@@ -3871,11 +3902,11 @@ STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Uruchami
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Przygotowywanie gry
 
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Wczytanie danych o miastach nie powiodło się
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Nieprawidłowo sformatowany plik JSON
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :nieprawidłowo sformatowany plik JSON
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Nieprawidłowo sformatowane dane miasta {STRING}
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Nieprawidłowo sformatowane współrzędne miasta {STRING}, muszą wynosić od 0 do 1 jako ułamek całkowitego wymiaru mapy wysokości
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Nie znaleziono prawidłowej lokalizacji dla {NUM} miast{P a "" ""}. Zamiast tego w dany{P m ch ch} miejsc{P u ach ach} utworzono napis{P "" y y}
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :Nie znaleziono prawidłowej lokalizacji dla {NUM} miast{P a "" ""}. Zamiast tego w dany{P m ch ch} miejsc{P u ach ach} utworzono napis{P "" y y}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawienia NewGRF
@@ -3993,8 +4024,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Ostrzeżenie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Błąd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Błąd krytyczny: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF „{STRING}” zwrócił błąd krytyczny:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF „{STRING}” zwrócił błąd:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :NewGRF „{STRING}” zwrócił błąd krytyczny:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :NewGRF „{STRING}” zwrócił błąd:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nie zadziała z wersją TTDPatcha zgłoszoną przez OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} jest przeznaczony dla TTD w wersji {2:STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} jest zaprojektowany do użycia z {2:STRING}
@@ -4002,7 +4033,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Niewłaściwy p
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musi być wczytany przed {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musi być wczytany po {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} wymaga OpenTTD w wersji {2:STRING} lub nowszej
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku NewGRF, który miał zostać przetłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano zbyt wiele NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ładowanie {1:STRING} jako statyczne NewGRF z {2:STRING} może spowodować desynchronizacje
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nieoczekiwany sprite (sprite {3:NUM})
@@ -4011,7 +4042,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Próba użycia 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza obszar pseudo-sprite'u (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Potrzebne źródło GRF nie jest dostępne (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Żądane zasoby NewGRF są niedostępne (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} został wyłączony przez {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nieprawidłowy/nieznany format układu sprite'a (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zbyt wiele elementów na liście wartości właściwości (sprite {3:NUM}, właściwość {4:HEX})
@@ -4021,13 +4052,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Nieprawidłowe 
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierzasz wprowadzić zmiany do uruchomionej gry; to może zawiesić OpenTTD lub uszkodzić stan gry. W takim przypadku nie wysyłaj raportów o błędach.{}Czy jesteś całkowicie pewien?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie można dodać pliku: taki sam GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny GRF)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie można dodać pliku: zduplikowany identyfikator NewGRF
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny NewGRF)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nie można dodać pliku: osiągnięto limit plików NewGRF
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Wczytano kompatybilne GRF dla brakujących plików
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki GRF zostały wyłączone
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki GRF
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Wczytano kompatybilne NewGRF-y dla brakujących plików
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki NewGRF zostały wyłączone
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki NewGRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłączenie pauzy może zawiesić OpenTTD. Nie zgłaszaj błędów o powtarzających się zawieszeniach.{}Czy na pewno chcesz wyłączyć pauzę?
 
 # NewGRF status
@@ -4038,17 +4069,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Znalezi
 STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące pliki
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF „{PUSH_COLOUR}{0:STRING}{POP_COLOUR}” może powodować desynchronizacje i/lub błędy
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniono stan wagonu silnikowego „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”, gdy nie znajdował się w hali warsztatów
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmieniono długość pojazdu „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”, gdy nie znajdował się w hali warsztatów
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”, gdy nie znajdował się w hali warsztatów lub w trakcie przebudowy
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg „{VEHICLE}” należący do „{COMPANY}” ma nieprawidłową długość. Prawdopodobnie jest to spowodowane problemami z NewGRF-ami. Gra może się desychronizować lub zawiesić
+STR_NEWGRF_BROKEN                                               :Zachowanie NewGRF-a „{0:STRING}” może powodować desynchronizacje i/lub błędy
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Zmieniono stan wagonu silnikowego „{1:ENGINE}”, gdy nie znajdował się w hali warsztatów
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :Zmieniono długość pojazdu „{1:ENGINE}”, gdy nie znajdował się w hali warsztatów
+STR_NEWGRF_BROKEN_CAPACITY                                      :Zmieniono ładowność pojazdu „{1:ENGINE}”, gdy nie znajdował się w hali warsztatów lub w trakcie przebudowy
+STR_BROKEN_VEHICLE_LENGTH                                       :Pociąg „{VEHICLE}” należący do „{COMPANY}” ma nieprawidłową długość. Prawdopodobnie jest to spowodowane problemami z NewGRF-ami. Gra może się desychronizować lub zawiesić
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF „{PUSH_COLOUR}{0:STRING}{POP_COLOUR}” dostarcza niepoprawne dane
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/przebudowie „{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}” różnią się od listy zakupów po zbudowaniu. Może to spowodować, że automatyczne odnowienie/zamiana nie wykona się poprawnie
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}„{PUSH_COLOUR}{1:STRING}{POP_COLOUR}” spowodował nieskończoną pętlę w wywołaniu zwrotnym produkcji
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Wywołanie zwrotne {1:HEX} zwróciło nieznany/błędny wynik {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}„{PUSH_COLOUR}{1:STRING}{POP_COLOUR}” zwrócił niewłaściwy typ ładunku w wywołaniu zwrotnym produkcji w {2:HEX}
+STR_NEWGRF_BUGGY                                                :NewGRF „{0:STRING}” dostarcza niepoprawne dane
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/przebudowie „{1:ENGINE}” różnią się od listy zakupów po zbudowaniu. Może to spowodować, że automatyczne odnowienie/zamiana nie wykona się poprawnie
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :„{1:STRING}” spowodował nieskończoną pętlę w wywołaniu zwrotnym produkcji
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Wywołanie zwrotne {1:HEX} zwróciło nieznany/błędny wynik {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :„{1:STRING}” zwrócił niewłaściwy typ ładunku w wywołaniu zwrotnym produkcji w {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
@@ -4423,12 +4454,12 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Przedsiębiorstwa ({COMMA} z {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Żaden -
-STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% przetransportowano){BLACK}
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% przetransportowano)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} więcej...
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} i {NUM} więcej...
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nazwy przedsiębiorstw - kliknij na nazwę przedsiębiorstwa, aby wyśrodkować na nim widok główny. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Akceptowany ładunek: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produkowany ładunek: {SILVER}{STRING}
@@ -4446,9 +4477,9 @@ STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Wyświet
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Przedsiębiorstwo ogłosiło likwidację!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Potrzebuje: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Wytwarza: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Potrzebuje: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Wytwarza: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Potrzebuje:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
@@ -4581,6 +4612,19 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. si
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Typ samolotu: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Rodzaje torów: {GOLD}{STRING}
+
+# Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/rok
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/okres
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :{COMMA}%
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} p{P ole ola ól}
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Wszystkie typy ładunków
@@ -4740,8 +4784,16 @@ STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Przecią
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Czy na pewno chcesz sprzedać wszystkie pojazdy znajdujące się w zajezdni?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomość od producenta pojazdów
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Komunikat od producenta pojazdów
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Komunikat od producenta pojazdów ({COMMA} z {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy zechcesz przez rok użytkować ten pojazd na wyłączność, abyśmy mogli sprawdzić, jak się sprawuje, zanim zostanie powszechnie udostępniony?
+
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Poprzedni
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Przejdź do poprzedniego nowego pojazdu
+STR_ENGINE_PREVIEW_NEXT                                         :Następny
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Przejdź do kolejnego nowego pojazdu
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Rozwiń, aby przeskoczyć do nowego pojazdu
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :lokomotywę
@@ -4980,7 +5032,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Pokaż �
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Całkowita ładowność
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Pokaż całkowitą ładowność pociągu, według typu ładunku
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ładowność: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ładowność: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Przebudowa)
@@ -5274,7 +5326,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Game Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log tego Game Script. Użyj Ctrl, aby otworzyć w nowym oknie
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz pobrać kilka SI z przeglądarki „Dodatków Online”
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut obrazu okna debugowania SI / GameScript
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut obrazu okna debugowania SI / GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko dla serwera
 
 # AI configuration window
@@ -5371,11 +5423,11 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Szacowan
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Zapisywanie trwa,{}proszę zaczekać do zakończenia!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Błąd automatycznego zapisu gry
+STR_ERROR_AUTOSAVE_FAILED                                       :Błąd automatycznego zapisu gry
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nie można odczytać napędu
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Nie można zapisać gry...
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nie można usunąć pliku
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nie można wczytać gry...
+STR_ERROR_GAME_SAVE_FAILED                                      :Nie można zapisać gry...
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Nie można usunąć pliku
+STR_ERROR_GAME_LOAD_FAILED                                      :Nie można wczytać gry...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Błąd wewnętrzny: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Zepsuta zapisana gra - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Zapis został stworzony w nowszej wersji gry
@@ -5387,16 +5439,16 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generowanie mapy anulowane...{}{}... brak odpowiednich miejsc dla miast
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Generowanie mapy anulowane...{}{}... brak odpowiednich miejsc dla miast
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... nie ma żadnego miasta w scenariuszu
 
-STR_ERROR_PNGMAP                                                :{WHITE}Nie można wczytać krajobrazu z PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... nie znaleziono pliku
+STR_ERROR_PNGMAP                                                :Nie można wczytać krajobrazu z PNG...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :nie znaleziono pliku
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nie można konwertować typu obrazu. Wymagany 8- lub 24-bitowy PNG
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... coś poszło nie tak (prawdopodobnie zepsuty plik)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Nie można wczytać krajobrazu z BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nie można skonwertować tego typu obrazu
+STR_ERROR_BMPMAP                                                :Nie można wczytać krajobrazu z BMP...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :nie można przekonwertować obrazu
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... obraz jest za duży
 
@@ -5420,334 +5472,334 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Wiadomo
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Poza krawędzią mapy
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Zbyt blisko krawędzi mapy
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Za mało pieniędzy - wymagane {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Wymagany płaski teren
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Teren pochylony w złym kierunku
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :zbyt blisko krawędzi mapy
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :za mało pieniędzy - wymagane {CURRENCY_LONG}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :wymagany płaski teren
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :teren pochylony w złym kierunku
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nie można tego zrobić...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Należy najpierw zburzyć budynek
-STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... budynek jest chroniony
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nie można wyczyścić terenu...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nieodpowiednie miejsce
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... już zbudowano
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :najpierw należy zburzyć budynek
+STR_ERROR_BUILDING_IS_PROTECTED                                 :budynek jest chroniony
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Nie można wyczyścić terenu...
+STR_ERROR_SITE_UNSUITABLE                                       :nieodpowiednie miejsce
+STR_ERROR_ALREADY_BUILT                                         :już zbudowano
 STR_ERROR_OWNED_BY                                              :{WHITE}... własność {STRING.d}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... teren jest własnością innej firmy
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... osiągnięto limit kształtowania terenu
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :teren jest własnością innej firmy
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :osiągnięto limit kształtowania terenu
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... osiągnięto limit czyszczenia pól
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... wykorzystano limit sadzenia drzew
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nazwa nie może się powtarzać
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} na drodze
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwolone w trakcie pauzy
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :nazwa nie może się powtarzać
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{STRING} na drodze
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :niedozwolone w trakcie pauzy
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na to
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na budowę kolejnego lotniska w tym mieście
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Lokalne władze miasta {TOWN} odmawiają zgody na lotnisko ze względu na poziom hałasu
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba przekupstwa została wykryta przez miejscowych śledczych
+STR_ERROR_BRIBE_FAILED                                          :Twoja próba przekupstwa została wykryta przez miejscowych śledczych
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść terenu...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nie można tutaj obniżyć terenu...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nie można tutaj wyrównać terenu...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Wykop zniszczyłby tunel
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... już na poziomie morza
-STR_ERROR_TOO_HIGH                                              :{WHITE}... zbyt wysoko
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... już wyrównany
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Most nad nim byłby zbyt wysoki.
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Nie można tutaj wyrównać terenu...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :wykop zniszczyłby tunel
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :już na poziomie morza
+STR_ERROR_TOO_HIGH                                              :zbyt wysoko
+STR_ERROR_ALREADY_LEVELLED                                      :już wyrównany
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :most nad nim byłby zbyt wysoko.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :najpierw należy usunąć rzekę
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nie można zmienić nazwy firmy...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nie można zmienić nazwiska prezesa...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Nie można zmienić nazwy firmy...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Nie można zmienić nazwiska prezesa...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksymalna dozwolona pożyczka wynosi {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nie można pożyczyć więcej pieniędzy...
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... pożyczka już jest spłacona
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :maksymalna dozwolona pożyczka wynosi {CURRENCY_LONG}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Nie można pożyczyć więcej pieniędzy...
+STR_ERROR_LOAN_ALREADY_REPAID                                   :pożyczka już jest spłacona
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} wymagane
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nie można zwrócić pożyczki...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nie możesz wydać pieniędzy, które są pożyczone z banku...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nie możesz przekazać pieniędzy tej firmie...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nie można kupić firmy...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nie można zbudować siedziby firmy...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Nie można przekazać pieniędzy pożyczonych z banku...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :Nie można przekazać pieniędzy tej firmie...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :Nie można kupić firmy...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Nie można zbudować siedziby firmy...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nie można zbudować żadnego miasta...
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nie można zmienić nazwy miasta...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nie można tutaj zbudować miasta...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :Nie można zbudować żadnego miasta...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :Nie można zmienić nazwy miasta...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Nie można tutaj zbudować miasta...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Nie można rozszerzyć miasta...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zbyt blisko krawędzi mapy
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zbyt blisko innego miasta
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zbyt wiele miast
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie ma więcej miejsca na mapie
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trwają roboty drogowe
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :zbyt blisko innego miasta
+STR_ERROR_TOO_MANY_TOWNS                                        :zbyt wiele miast
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :nie ma więcej miejsca na mapie
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :trwają roboty drogowe
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}{}Stacja lub zajezdnia przynależy do tego miasta lub obszar miasta nie może być usunięty
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... w centrum tego miasta nie ma odpowiedniego miejsca na pomnik
-STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nie można postawić budynku...
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :w centrum tego miasta nie ma odpowiedniego miejsca na pomnik
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :Nie można postawić budynku...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zbyt wiele przedsiębiorstw
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nie można wygenerować przedsiębiorstw...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nie można tutaj zbudować: {STRING}...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nie można tutaj zbudować przedsiębiorstwa tego typu...
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :zbyt wiele przedsiębiorstw
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :Nie można wygenerować przedsiębiorstw...
+STR_ERROR_CAN_T_BUILD_HERE                                      :Nie można tutaj zbudować: {STRING}...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Nie można tutaj zbudować przedsiębiorstwa tego typu...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Nie można znaleźć przedsiębiorstwa...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... zbyt blisko innego przedsiębiorstwa
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... należy najpierw wybudować miasto
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... dozwolone jedno na miasto
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... można zbudować jedynie w miastach o populacji przynajmniej 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... można zbudować tylko na obszarach lasów deszczowych
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... można zbudować tylko na obszarach pustynnych
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... można zbudować tylko w mieście (zastępując domy)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... można zbudować tylko w pobliżu centrum miasta
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :zbyt blisko innego przedsiębiorstwa
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :najpierw należy wybudować miasto
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :dozwolone jedno na miasto
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :można zbudować jedynie w miastach o populacji przynajmniej 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :można zbudować tylko na obszarach lasów deszczowych
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :można zbudować tylko na obszarach pustynnych
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :można zbudować tylko w mieście (zastępując domy)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :można zbudować tylko w pobliżu centrum miasta
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... może być budowane tylko na niskich terenach
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... może być usytuowane tylko blisko krawędzi mapy
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... las może być posadzony tylko powyżej linii śniegu
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... można zbudować tylko powyżej linii śniegu
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... można zbudować tylko poniżej linii śniegu
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :las może być posadzony tylko powyżej linii śniegu
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :można zbudować tylko powyżej linii śniegu
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :można zbudować tylko poniżej linii śniegu
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Ufundowanie pechowo nie powiodło się; spróbuj ponownie
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Nie ma odpowiednich miejsc do poszukiwań takiego przedsiębiorstwa
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nie ma odpowiednich miejsc dla przedsiębiorstw „{STRING}”
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Zmień parametry tworzenia map, żeby uzyskać lepsze mapy
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :ufundowanie pechowo nie powiodło się; spróbuj ponownie
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :nie ma odpowiednich miejsc do poszukiwań takiego przedsiębiorstwa
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :nie ma odpowiednich miejsc dla przedsiębiorstw „{STRING}”
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :zmień parametry tworzenia map, żeby uzyskać lepszą mapę
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nie można tutaj zbudować stacji...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nie można zbudować przystanku...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nie można zbudować stacji ciężarówek...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nie można zbudować przystanku tramwajowego...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nie można zbudować tramwajowej stacji załadunkowej...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nie można tutaj zbudować portu...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nie można tutaj zbudować lotniska...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Nie można tutaj zbudować stacji...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Nie można zbudować przystanku autobusowego...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Nie można zbudować stacji załadunku ciężarówek...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Nie można zbudować przystanku tramwajowego...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Nie można zbudować tramwajowej stacji załadunkowej...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Nie można tutaj zbudować portu...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Nie można tutaj zbudować lotniska...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Przylega do więcej niż jednej stacji
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacja zbyt rozległa
-STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... nieobsługiwana liczba torów
-STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... nieobsługiwana długość
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Za dużo stacji
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :przylega do więcej niż jednej stacji
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :stacja zbyt rozległa
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :nieobsługiwana liczba torów
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :nieobsługiwana długość
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :za dużo stacji
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Za dużo części stacji kolejowej
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zbyt wiele przystanków autobusowych
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zbyt wiele stacji załadunku ciężarówek
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zbyt blisko innego portu
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zbyt blisko innego lotniska
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nie można zmienić nazwy stacji...
-STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Nie można przenieść nazwy stacji...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... droga należąca do miasta
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... droga jest zorientowana w złym kierunku
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... przystanki przelotowe nie mogą mieć zakrętów
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... przystanki przelotowe nie mogą mieć skrzyżowań
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :zbyt wiele przystanków autobusowych
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :zbyt wiele stacji ciężarówek
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :zbyt blisko innego portu
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :zbyt blisko innego lotniska
+STR_ERROR_CAN_T_RENAME_STATION                                  :Nie można zmienić nazwy stacji...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :Nie można przenieść nazwy stacji...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :droga należąca do miasta
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :droga jest zorientowana w złym kierunku
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :przystanki przelotowe nie mogą mieć zakrętów
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :przystanki przelotowe nie mogą mieć skrzyżowań
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nie można usunąć części stacji...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Należy najpierw usunąć stację kolejową
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nie można usunąć przystanku...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nie można usunąć stacji ciężarówek...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nie można usunąć przystanku tramwajowego...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nie można usunąć tramwajowej stacji załadunkowej...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Należy najpierw usunąć przystanek
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...brak stacji
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :Nie można usunąć części stacji...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :najpierw należy zburzyć stację kolejową
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Nie można usunąć przystanku autobusowego...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Nie można usunąć stacji ciężarówek...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :Nie można usunąć przystanku tramwajowego...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Nie można usunąć tramwajowej stacji załadunkowej...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :najpierw należy zburzyć przystanek
+STR_ERROR_THERE_IS_NO_STATION                                   :brak stacji
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Należy najpierw usunąć stację kolejową
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Należy najpierw usunąć przystanek autobusowy
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Należy najpierw usunąć stację załadunku ciężarówek
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Najpierw musisz zburzyć przystanek tramwajowy
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Najpierw musisz zburzyć tramwajową stację załadunkową
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Należy najpierw usunąć port
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Należy najpierw usunąć lotnisko
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :najpierw należy zburzyć stację kolejową
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :najpierw należy zburzyć przystanek autobusowy
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :najpierw należy zburzyć stację ciężarówek
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :najpierw należy zburzyć przystanek tramwajowy
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :najpierw należy zburzyć tramwajową stację załadunkową
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :najpierw należy zburzyć port
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :najpierw należy zburzyć lotnisko
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Przylega do więcej niż jednego istniejącego posterunku
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zbyt blisko innego posterunku
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :przylega do więcej niż jednego istniejącego posterunku
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :zbyt blisko innego posterunku
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Nie można tutaj zbudować posterunku...
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Nie można tutaj zbudować posterunku drogowego...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Nie można tutaj zbudować posterunku...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Nie można tutaj zbudować posterunku drogowego...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy posterunku...
-STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Nie można przenieść nazwy posterunku...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Nie można zmienić nazwy posterunku...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Nie można przenieść nazwy posterunku...
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Nie można stąd usunąć posterunku kolejowego...
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Nie można stąd usunąć posterunku drogowego...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Należy najpierw usunąć posterunek kolejowy
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Należy najpierw usunąć posterunek drogowy
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na drodze
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja w użyciu przez inna firmę!
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :Nie można stąd usunąć posterunku kolejowego...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Nie można stąd usunąć posterunku drogowego...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :najpierw należy zburzyć posterunek kolejowy
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :najpierw należy zburzyć posterunek drogowy
+STR_ERROR_BUOY_IN_THE_WAY                                       :boja na drodze
+STR_ERROR_BUOY_IS_IN_USE                                        :boja w użyciu przez inna firmę!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nie można tutaj zbudować warsztatów kolejowych...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni tramwajowej...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nie można tutaj zbudować stoczni...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Nie można tutaj zbudować warsztatów kolejowych...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Nie można tutaj zbudować zajezdni...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :Nie można tutaj zbudować zajezdni tramwajowej...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Nie można tutaj zbudować stoczni...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nie można zmienić nazwy warsztatów...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... musi być zatrzymany w hali warsztatów
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi być zatrzymany w zajezdni samochodowej
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... musi być zatrzymany w stoczni
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... musi być zatrzymany w hangarze
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :musi być zatrzymany w hali warsztatów
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :musi być zatrzymany w zajezdni samochodowej
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :musi być zatrzymany w stoczni
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :musi być zatrzymany w hangarze
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg może być modyfikowany tylko, gdy jest zatrzymany w hali warsztatów
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Pociąg jest zbyt długi
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nie można zawrócić pociągu...
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :pociąg może być modyfikowany tylko, gdy jest zatrzymany w hali warsztatów
+STR_ERROR_TRAIN_TOO_LONG                                        :pociąg jest zbyt długi
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :Nie można zawrócić pociągu...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... składa się z wielu jednostek
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Niezgodne typy torów
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :niezgodne typy torów
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nie można przenieść pojazdu...
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Nie można przenieść pojazdu...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Tylna lokomotywa zawsze porusza się razem z przednią
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nie można znaleźć drogi do najbliższych warsztatów
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nie można znaleźć zajezdni
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :nie można znaleźć drogi do najbliższych warsztatów
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :nie można znaleźć zajezdni
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Zły typ zajezdni
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :zły typ zajezdni
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... można ustawić tylko jedno polecenie separacji
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... nie można używać poleceń pełnego załadunku, gdy pojazd ma polecenie separacji
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... nie można separować pojazdów z poleceniem pełnego załadunku
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... nie można używać poleceń warunkowych, gdy pojazd ma polecenie separacji
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... nie można separować pojazdów z poleceniem warunkowym
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :można ustawić tylko jedno polecenie separacji
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :nie można używać poleceń pełnego załadunku, gdy pojazd ma polecenie separacji
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :nie można separować pojazdów z poleceniem pełnego załadunku
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :nie można używać poleceń warunkowych, gdy pojazd ma polecenie separacji
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :nie można separować pojazdów z poleceniem warunkowym
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jest za długi po wymianie
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Brak reguł autozastępowania/odnawiania
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} jest za długi po wymianie
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :Brak reguł autozastępowania/odnawiania
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limit funduszy)
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}{STRING} to ładunek nieobsługiwany przez ten pojazd.
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nowy pojazd nie może być tak przebudowywany (polecenie {NUM})
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Nowy pojazd nie może przewozić {STRING.d}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Nowy pojazd nie może być tak przebudowywany (polecenie {NUM}.)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Niemożliwa kombinacja torów
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Należy najpierw usunąć sygnalizację
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Brak odpowiednich torów kolejowych
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Należy najpierw usunąć tory
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Droga jest jednokierunkowa lub zablokowana
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Przejazd kolejowy nie dozwolony dla tego typu torów
-STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Przejazdy kolejowe nie są dozwolone dla tego typu drogi
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nie można tutaj postawić sygnałów...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nie można tutaj zbudować torów...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nie można stąd usunąć torów...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nie można stąd usunąć sygnałów...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie można tutaj zmienić sygnałów...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... brak torów kolejowych
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :najpierw należy usunąć sygnalizację
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :brak odpowiednich torów kolejowych
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :najpierw należy zburzyć tory
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :droga jest jednokierunkowa lub zablokowana
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :przejazdy kolejowe nie są dozwolone dla tego typu torów
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :przejazdy kolejowe nie są dozwolone dla tego typu drogi
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Nie można tutaj postawić sygnałów...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Nie można tutaj zbudować torów...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Nie można stąd usunąć torów...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Nie można stąd usunąć sygnałów...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Nie można tutaj zmienić sygnałów...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :brak torów kolejowych
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... brak sygnałów
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nie można zmienić typu torów w tym miejscu...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :Nie można zmienić typu torów w tym miejscu...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Należy najpierw usunąć drogę
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... drogi jednokierunkowe nie mogą mieć skrzyżowań
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nie można tutaj zbudować drogi...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Nie można tutaj zbudować torowiska...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nie można usunąć drogi z tego miejsca...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie można usunąć torowiska z tego miejsca...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...brak drogi
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...brak torowiska tramwajowego
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nie można zmienić typu drogi w tym miejscu...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nie można zmienić typu torów tramwajowych w tym miejscu...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Brak właściwej drogi
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Brak właściwej linii tramwajowej
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :najpierw należy zburzyć drogę
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :drogi jednokierunkowe nie mogą mieć skrzyżowań
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Nie można tutaj zbudować drogi...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Nie można tutaj zbudować torowiska...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Nie można stąd usunąć drogi...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :Nie można stąd usunąć torowiska...
+STR_ERROR_THERE_IS_NO_ROAD                                      :brak drogi
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :brak torowiska tramwajowego
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :Nie można zmienić typu drogi w tym miejscu...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Nie można zmienić typu torów tramwajowych w tym miejscu...
+STR_ERROR_NO_SUITABLE_ROAD                                      :brak odpowiedniej drogi
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :brak odpowiedniej linii tramwajowej
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nie można tutaj zbudować kanału...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nie można tutaj zbudować śluzy...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Nie można tutaj umieścić rzeki...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... można zbudować tylko na wodzie
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nie można zbudować na wodzie
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nie można zbudować na otwartym morzu
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nie można zbudować na kanale
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nie można budować na rzece
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Należy najpierw usunąć kanał
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nie można tutaj zbudować akweduktu...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Nie można tutaj zbudować kanału...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :Nie można tutaj zbudować śluzy...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :Nie można tutaj umieścić rzeki...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :można zbudować tylko na wodzie
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :nie można zbudować na wodzie
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :nie można zbudować na otwartym morzu
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :nie można zbudować na kanale
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :nie można budować na rzece
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :najpierw należy usunąć kanał
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Nie można tutaj zbudować akweduktu...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drzewo już tu jest
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... niewłaściwy teren pod drzewo
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Nie można posadzić drzewa...
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Nie można posadzić tutaj drzewa...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Nie można tutaj zbudować mostu...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Należy najpierw usunąć most
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Nie można tutaj zbudować mostu...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :najpierw należy zburzyć most
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nie można zaczynać i kończyć w tym samym miejscu
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Początki mostu nie są na tej samej wysokości
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most jest za nisko dla tego terenu
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Most jest zbyt wysoki dla tego terenu.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Początek i koniec muszą być w jednej linii
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :końce mostu byłyby na innej wysokości
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :most byłby zbyt nisko dla tego terenu
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :most byłby zbyt wysoko dla tego terenu.
+STR_ERROR_START_AND_END_MUST_BE_IN                              :początek i koniec muszą być w jednej linii
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... końce mostu muszą znajdować się na lądzie
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... za długi most
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Koniec mostu poza mapą
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Most jest o {HEIGHT} za niski dla stacji
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Most jest o {HEIGHT} za niski dla przystanku
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Most jest o {HEIGHT} za niski dla portu
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Most jest o {HEIGHT} za niski dla boi
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Most jest o {HEIGHT} za niski dla posterunku kolejowego
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Most jest o {HEIGHT} za niski dla posterunku drogowego
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Most jest o {HEIGHT} za niski dla śluzy
+STR_ERROR_BRIDGE_TOO_LONG                                       :zbyt długi most
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :most kończyłby się poza mapą
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :most jest o {HEIGHT} za niski dla stacji
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :most jest o {HEIGHT} za niski dla przystanku
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :most jest o {HEIGHT} za niski dla portu
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :most jest o {HEIGHT} za niski dla boi
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :most jest o {HEIGHT} za niski dla posterunku kolejowego
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :most jest o {HEIGHT} za niski dla posterunku drogowego
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :most jest o {HEIGHT} za niski dla śluzy
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj zbudować tunelu...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Nieodpowiednie miejsce na wejście tunelu
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Należy najpierw usunąć tunel
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Inny tunel na drodze
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Koniec tunelu poza mapą
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nie można wydrążyć drugiego końca tunelu
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Nie można tutaj zbudować tunelu...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :nieodpowiednie miejsce na wyjście tunelu
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :najpierw należy zburzyć tunel
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :inny tunel na drodze
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :tunel kończyłby się poza mapą
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :nie można wydrążyć drugiego końca tunelu
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel jest za długi
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... zbyt wiele obiektów
-STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nie można zbudować obiektu...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiekt na drodze
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siedziba firmy na drodze
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nie można nabyć tego terenu...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... to już jest twoje!
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... osiągnięto limit budowy obiektów
+STR_ERROR_TOO_MANY_OBJECTS                                      :zbyt wiele obiektów
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :Nie można zbudować obiektu...
+STR_ERROR_OBJECT_IN_THE_WAY                                     :obiekt na drodze
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :siedziba firmy na drodze
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Nie można nabyć tego terenu...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :już to posiadasz!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :osiągnięto limit budowy obiektów
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie można utworzyć grupy...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nie można usunąć tej grupy...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nie można zmienić nazwy grupy...
-STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nie można ustawić grupy nadrzędnej...
-STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... pętle w hierarchii grupy są niedozwolone
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nie można usunąć wszystkich pojazdów z tej grupy...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nie można dodać pojazdu do tej grupy...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nie można dodać pojazdów współdzielących polecenia do grupy...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :Nie można utworzyć grupy...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :Nie można usunąć tej grupy...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :Nie można zmienić nazwy grupy...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :Nie można ustawić grupy nadrzędnej...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :pętle w hierarchii grupy są niedozwolone
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :Nie można usunąć wszystkich pojazdów z tej grupy...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :Nie można dodać pojazdu do tej grupy...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Nie można dodać pojazdów współdzielących polecenia do grupy...
 
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Pociąg na drodze
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Pojazd na drodze
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Statek na drodze
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Samolot na drodze
+STR_ERROR_TRAIN_IN_THE_WAY                                      :pociąg na drodze
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :pojazd na drodze
+STR_ERROR_SHIP_IN_THE_WAY                                       :statek na drodze
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :samolot na drodze
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Pojazd jest niedostępny
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Pojazd jest niedostępny
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :pojazd jest niedostępny
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :pojazd jest niedostępny
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Statek jest niedostępny
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Samolot jest niedostępny
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :samolot jest niedostępny
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nie można przebudować pociągu...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nie można przebudować pojazdu...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nie można przebudować statku...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nie można przebudować samolotu...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :Nie można przebudować pociągu...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Nie można przebudować pojazdu...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :Nie można przebudować statku...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Nie można przebudować samolotu...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nie można zmienić nazwy pociągu...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nie można zmienić nazwy pojazdu...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nie można zmienić nazwy statku...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nie można zmienić nazwy samolotu...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :Nie można zmienić nazwy pociągu...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Nie można zmienić nazwy pojazdu...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :Nie można zmienić nazwy statku...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Nie można zmienić nazwy samolotu...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nie można zatrzymać/ruszyć pociagu...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nie można zatrzymać/ruszyć pojazdu...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nie można zatrzymać/ruszyć statku...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nie można zatrzymać/ruszyć samolotu...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Nie można zatrzymać/ruszyć pociagu...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Nie można zatrzymać/ruszyć pojazdu...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Nie można zatrzymać/ruszyć statku...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Nie można zatrzymać/ruszyć samolotu...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nie można wysłać pociągu do warsztatów...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nie można wysłać pojazdu do zajezdni...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Nie można wysłać pojazdu do zajezdni...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nie można wysłać statku do stoczni...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nie można wysłać samolotu do hangaru...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Nie można wysłać samolotu do hangaru...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nie można kupić pociągu...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nie można kupić pojazdu drogowego...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nie można kupić statku...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nie można kupić samolotu...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :Nie można kupić pociągu...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :Nie można kupić pojazdu drogowego...
+STR_ERROR_CAN_T_BUY_SHIP                                        :Nie można kupić statku...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Nie można kupić samolotu...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nie można zmienić nazwy typu pociągu...
@@ -5757,96 +5809,96 @@ STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nie moż
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Nie można sprzedać lokomotywy...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nie można sprzedać pojazdu...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nie można sprzedać statku...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nie można sprzedać samolotu...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Nie można sprzedać pojazdu...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Nie można sprzedać statku...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Nie można sprzedać samolotu...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Nie można sprzedać wszystkich pociągów...
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Nie można sprzedać wszystkich pojazdów...
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Nie można sprzedać wszystkich statków...
-STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Nie można sprzedać wszystkich samolotów...
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Nie można sprzedać wszystkich pociągów...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Nie można sprzedać wszystkich pojazdów...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Nie można sprzedać wszystkich statków...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Nie można sprzedać wszystkich samolotów...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Nie można automatycznie zastąpić pociągów...
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Nie można automatycznie zastąpić pojazdów...
-STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Nie można automatycznie zastąpić statków...
-STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Nie można automatycznie zastąpić samolotu...
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Nie można automatycznie zastąpić pociągów...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Nie można automatycznie zastąpić pojazdów...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Nie można automatycznie zastąpić statków...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Nie można automatycznie zastąpić samolotu...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Za dużo pojazdów w grze
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie można zmienić okresu między serwisowaniami...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :Nie można zmienić okresu między serwisowaniami...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... pojazd jest zniszczony
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :pojazd jest zniszczony
 
-STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nie wszystkie pojazdy są takie same
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :nie wszystkie pojazdy są takie same
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Żadne pojazdy nie będą dostępne
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zmień konfigurację swoich NewGRF-ów
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Obecnie żaden pojazd nie jest dostępny
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Zacznij grę po {DATE_SHORT} albo użyj zestawu NewGRF, który zawiera wczesne pojazdy
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Żadne pojazdy nie będą dostępne
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :Zmień konfigurację swoich NewGRF-ów
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Obecnie żaden pojazd nie jest dostępny
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Zacznij grę po {DATE_SHORT} albo użyj zestawu NewGRF, który zawiera wczesne pojazdy
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Brak dostępnych typów dróg miejskich
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Zmień konfigurację NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Brak dostępnych typów dróg miejskich
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Zmień konfigurację NewGRF
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Brak jeszcze dostępnych typów dróg miejskich
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Rozpocznij nową grę po {DATE_SHORT} roku lub użyj NewGRF, który umożliwia wczesne budowanie dróg miejskich
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepuścić pociągu za sygnał, niebezpieczeństwo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Pociąg nie ma mocy
+STR_ERROR_TRAIN_START_NO_POWER                                  :pociąg nie ma mocy
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nie można zawrócić pojazdu...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :Nie można zawrócić pojazdu...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Samolot jest w locie
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :samolot jest w powietrzu
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Brak miejsca na polecenia
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Zbyt wiele poleceń
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nie można dodać nowego polecenia...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nie można usunąć tego polecenia...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nie można zmodyfikować tego polecenia...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nie można przenieść tego polecenia...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nie można pominąć obecnego polecenia...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nie można przejść do wybranego polecenia...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... pojazd nie może jechać do wszystkich stacji
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... pojazd nie może jechać do tej stacji
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... pojazd współdzielący to polecenie nie może jechać do tej stacji
-STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nie wszystkie pojazdy mają takie same polecenia
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :brak miejsca na nowe polecenia
+STR_ERROR_TOO_MANY_ORDERS                                       :zbyt wiele poleceń
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Nie można dodać nowego polecenia...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Nie można usunąć tego polecenia...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :Nie można zmodyfikować tego polecenia...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Nie można przenieść tego polecenia...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :Nie można pominąć obecnego polecenia...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :Nie można przejść do wybranego polecenia...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :pojazd nie może jechać do wszystkich stacji
+STR_ERROR_CAN_T_ADD_ORDER                                       :pojazd nie może jechać do tej stacji
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :pojazd współdzielący to polecenie nie może jechać do tej stacji
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :nie wszystkie pojazdy mają takie same polecenia
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nie wszystkie pojazdy współdzielą polecenia
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nie można współdzielić listy poleceń...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nie można zaprzestać współdzielenia listy poleceń...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nie można skopiować listy poleceń...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zbyt daleko od poprzedniego celu
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... samolot nie ma wystarczającego zasięgu
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Nie można zaprzestać współdzielenia listy poleceń...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Nie można skopiować listy poleceń...
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :zbyt daleko od poprzedniego celu
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :samolot ma niewystarczający zasięg
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Brak stacji kolejowej
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}Brak przystanku autobusowego
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Brak stacji dla ciężarówek
-STR_ERROR_NO_DOCK                                               :{WHITE}Brak stoczni
-STR_ERROR_NO_AIRPORT                                            :{WHITE}Brak lotniska/lądowiska
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Brak przystanków na odpowiednim typie drogi
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Brak odpowiednich przystanków dla tego typu tramwajów
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Brak przystanków przeznaczonych dla pojazdów przegubowych.{}Pojazdy przegubowe wymagają przystanku przelotowego, a nie zatokowego
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Ten samolot nie może wylądować na tym lądowisku
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Ten helikopter nie może wylądować na tym lotnisku
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Brak posterunków kolejowych
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Brak posterunków drogowych
-STR_ERROR_NO_BUOY                                               :{WHITE}Brak boi
+STR_ERROR_NO_RAIL_STATION                                       :Brak stacji kolejowej
+STR_ERROR_NO_BUS_STATION                                        :Brak przystanku autobusowego
+STR_ERROR_NO_TRUCK_STATION                                      :Brak stacji ciężarówek
+STR_ERROR_NO_DOCK                                               :Brak portu
+STR_ERROR_NO_AIRPORT                                            :Brak lotniska/lądowiska
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Brak przystanków na odpowiednim typie drogi
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Brak odpowiednich przystanków dla tego typu tramwajów
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Brak przystanków przeznaczonych dla pojazdów przegubowych.{}Pojazdy przegubowe wymagają przystanku przelotowego, a nie zatokowego
+STR_ERROR_AIRPORT_NO_PLANES                                     :Ten samolot nie może wylądować na tym lądowisku
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Ten helikopter nie może wylądować na tym lotnisku
+STR_ERROR_NO_RAIL_WAYPOINT                                      :Brak posterunku kolejowego
+STR_ERROR_NO_ROAD_WAYPOINT                                      :Brak posterunku drogowego
+STR_ERROR_NO_BUOY                                               :Brak boi
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Pojazdy mogą czekać tylko na stacjach
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :ten pojazd nie zatrzymuje się na tej stacji.
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... rozkład jazdy jest niekompletny
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... rozkład jazdy jeszcze się nie rozpoczął
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :rozkład jazdy jeszcze się nie rozpoczął
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zbyt wiele napisów
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nie można umieścić tutaj napisu...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nie można zmienić nazwy napisu...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nie można usunąć napisu...
+STR_ERROR_TOO_MANY_SIGNS                                        :zbyt wiele napisów
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :Nie można tutaj umieścić napisu...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :Nie można zmienić napisu...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :Nie można usunąć napisu...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -6409,7 +6461,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Otwórz ustawienia znaczników
@@ -6419,4 +6472,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtry Z
 STR_BADGE_CONFIG_PREVIEW                                        :Podgląd Obrazka
 STR_BADGE_CONFIG_NAME                                           :Nazwa
 STR_BADGE_FILTER_ANY_LABEL                                      :Wszystkie {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} to {STRING}

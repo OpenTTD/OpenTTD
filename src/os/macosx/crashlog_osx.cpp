@@ -85,7 +85,7 @@ class CrashLogOSX : public CrashLog {
 	}
 #endif
 
-	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
 	{
 		this->try_execute_active = true;
 

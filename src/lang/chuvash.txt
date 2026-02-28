@@ -678,6 +678,8 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 ###length 4
 
+###length 4
+
 
 
 ###length 3
@@ -1068,6 +1070,8 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 
 
+
+
 # Signal window
 
 # Bridge selection window
@@ -1399,6 +1403,8 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 ###length VEHICLE_TYPES
 
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -1457,6 +1463,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 # Engine preview window
+
 
 
 

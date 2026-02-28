@@ -124,17 +124,12 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 
 /* == SettingEntry methods == */
 
-/**
- * Initialization of a setting entry
- * @param level      Page nesting level of this entry
- */
 void SettingEntry::Init(uint8_t level)
 {
 	BaseSettingEntry::Init(level);
 	this->setting = GetSettingFromName(this->name)->AsIntSetting();
 }
 
-/* Sets the given setting entry to its default value */
 void SettingEntry::ResetAll()
 {
 	SetSettingValue(this->setting, this->setting->GetDefaultValue());
@@ -152,17 +147,11 @@ void SettingEntry::SetButtons(SettingEntryFlags new_val)
 	this->flags.Set(SettingEntryFlag::RightDepressed, new_val.Test(SettingEntryFlag::RightDepressed));
 }
 
-/** Return number of rows needed to display the (filtered) entry */
 uint SettingEntry::Length() const
 {
 	return this->IsFiltered() ? 0 : 1;
 }
 
-/**
- * Get the biggest height of the help text(s), if the width is at least \a maxw. Help text gets wrapped if needed.
- * @param maxw Maximal width of a line help text.
- * @return Biggest height needed to display any help text of this node (and its descendants).
- */
 uint SettingEntry::GetMaxHelpHeight(int maxw)
 {
 	return GetStringHeight(this->setting->GetHelp(), maxw);
@@ -246,6 +235,14 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	return visible;
 }
 
+/**
+ * Resolve the underlying object where to dynamically load/save a setting to.
+ * This is primarily to load the settings object of the right company, if the setting is saved per company.
+ * When not in the menu and the local company is valid, returns the local company's settings. Otherwise the global client settings.
+ * @param settings_ptr The settings to fall back to when this setting is not for a company.
+ * @param sd The setting to check.
+ * @return The resolved object.
+ */
 const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd)
 {
 	if (sd->flags.Test(SettingFlag::PerCompany)) {
@@ -257,14 +254,6 @@ const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc
 	return settings_ptr;
 }
 
-/**
- * Function to draw setting value (button + text + current value)
- * @param settings_ptr Pointer to current values of all settings
- * @param left         Left-most position in window/panel to start drawing
- * @param right        Right-most position in window/panel to draw
- * @param y            Upper-most position in window/panel to start drawing
- * @param highlight    Highlight entry.
- */
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	const IntSettingDesc *sd = this->setting;
@@ -378,7 +367,10 @@ bool SettingsContainer::IsVisible(const BaseSettingEntry *item) const
 	return false;
 }
 
-/** Return number of rows needed to display the whole page */
+/**
+ * Return number of rows needed to display the whole page.
+ * @return Number of rows.
+ */
 uint SettingsContainer::Length() const
 {
 	uint length = 0;
@@ -456,17 +448,12 @@ SettingsPage::SettingsPage(StringID title)
 	this->folded = true;
 }
 
-/**
- * Initialization of an entire setting page
- * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
- */
 void SettingsPage::Init(uint8_t level)
 {
 	BaseSettingEntry::Init(level);
 	SettingsContainer::Init(level + 1);
 }
 
-/** Resets all settings to their default values */
 void SettingsPage::ResetAll()
 {
 	for (auto settings_entry : this->entries) {
@@ -474,7 +461,6 @@ void SettingsPage::ResetAll()
 	}
 }
 
-/** Recursively close all (filtered) folds of sub-pages */
 void SettingsPage::FoldAll()
 {
 	if (this->IsFiltered()) return;
@@ -483,7 +469,6 @@ void SettingsPage::FoldAll()
 	SettingsContainer::FoldAll();
 }
 
-/** Recursively open all (filtered) folds of sub-pages */
 void SettingsPage::UnFoldAll()
 {
 	if (this->IsFiltered()) return;
@@ -492,11 +477,6 @@ void SettingsPage::UnFoldAll()
 	SettingsContainer::UnFoldAll();
 }
 
-/**
- * Recursively accumulate the folding state of the (filtered) tree.
- * @param[in,out] all_folded Set to false, if one entry is not folded.
- * @param[in,out] all_unfolded Set to false, if one entry is folded.
- */
 void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 {
 	if (this->IsFiltered()) return;
@@ -510,12 +490,6 @@ void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 	SettingsContainer::GetFoldingState(all_folded, all_unfolded);
 }
 
-/**
- * Update the filter state.
- * @param filter Filter
- * @param force_visible Whether to force all items visible, no matter what (due to filter text; not affected by restriction drop down box).
- * @return true if item remains visible
- */
 bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
 	if (!force_visible && !filter.string.IsEmpty()) {
@@ -529,12 +503,6 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	return visible;
 }
 
-/**
- * Check whether an entry is visible and not folded or filtered away.
- * Note: This does not consider the scrolling range; it might still require scrolling to make the setting really visible.
- * @param item Entry to search for.
- * @return true if entry is visible.
- */
 bool SettingsPage::IsVisible(const BaseSettingEntry *item) const
 {
 	if (this->IsFiltered()) return false;
@@ -544,7 +512,6 @@ bool SettingsPage::IsVisible(const BaseSettingEntry *item) const
 	return SettingsContainer::IsVisible(item);
 }
 
-/** Return number of rows needed to display the (filtered) entry */
 uint SettingsPage::Length() const
 {
 	if (this->IsFiltered()) return 0;
@@ -569,20 +536,6 @@ BaseSettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row)
 	return SettingsContainer::FindEntry(row_num, cur_row);
 }
 
-/**
- * Draw a row in the settings panel.
- *
- * @param settings_ptr Pointer to current values of all settings
- * @param left         Left-most position in window/panel to start drawing \a first_row
- * @param right        Right-most x position to draw strings at.
- * @param y            Upper-most position in window/panel to start drawing \a first_row
- * @param first_row    First row number to draw
- * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
- * @param selected     Selected entry by the user.
- * @param cur_row      Current row number (internal variable)
- * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
- * @return Row number of the next row to draw
- */
 uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row, uint parent_last) const
 {
 	if (this->IsFiltered()) return cur_row;
@@ -602,12 +555,6 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, 
 	return cur_row;
 }
 
-/**
- * Function to draw setting value (button + text + current value)
- * @param left         Left-most position in window/panel to start drawing
- * @param right        Right-most position in window/panel to draw
- * @param y            Upper-most position in window/panel to start drawing
- */
 void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool) const
 {
 	bool rtl = _current_text_dir == TD_RTL;
@@ -615,13 +562,15 @@ void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool)
 	DrawString(rtl ? left : left + BaseSettingEntry::circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - BaseSettingEntry::circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
 }
 
-/** Construct settings tree */
+/**
+ * Construct settings tree.
+ * @return Reference to the static SettingsContainer.
+ */
 SettingsContainer &GetSettingsTree()
 {
 	static SettingsContainer *main = nullptr;
 
-	if (main == nullptr)
-	{
+	if (main == nullptr) {
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		main = new SettingsContainer();
 
@@ -841,6 +790,7 @@ SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("game_creation.landscape"));
 			genworld->Add(new SettingEntry("game_creation.land_generator"));
 			genworld->Add(new SettingEntry("difficulty.terrain_type"));
+			genworld->Add(new SettingEntry("game_creation.average_height"));
 			genworld->Add(new SettingEntry("game_creation.tgen_smoothness"));
 			genworld->Add(new SettingEntry("game_creation.variety"));
 			genworld->Add(new SettingEntry("game_creation.snow_coverage"));

@@ -46,8 +46,17 @@ void GroupStatistics::Clear()
  */
 void UpdateGroupChildren()
 {
-	for (const Group *g : Group::Iterate()) {
-		if (g->parent != GroupID::Invalid()) Group::Get(g->parent)->children.insert(g->index);
+	for (Group *g : Group::Iterate()) {
+		if (g->parent == GroupID::Invalid()) continue;
+		Group *pg = Group::GetIfValid(g->parent);
+		if (pg == nullptr || pg->owner != g->owner || pg->vehicle_type != g->vehicle_type) {
+			/* Due to a bug, groups which should have been deleted could be left with an invalid parent.
+			 * Keep the group but clear the invalid parent so that the game is recoverable. */
+			Debug(misc, 2, "Group {} has invalid parent {}", g->index, g->parent);
+			g->parent = GroupID::Invalid();
+		} else {
+			pg->children.insert(g->index);
+		}
 	}
 }
 
@@ -174,6 +183,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 
 /**
  * Add a vehicle's last year profit to the profit sum of its group.
+ * @param v The vehicle to update the statistics for.
  */
 /* static */ void GroupStatistics::AddProfitLastYear(const Vehicle *v)
 {
@@ -186,6 +196,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 
 /**
  * Add a vehicle to the profit sum of its group.
+ * @param v The vehicle to update the statistics for.
  */
 /* static */ void GroupStatistics::VehicleReachedMinAge(const Vehicle *v)
 {
@@ -349,7 +360,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Group *g = new Group(_current_company, vt);
+		Group *g = Group::Create(_current_company, vt);
 
 		Company *c = Company::Get(g->owner);
 		g->number = c->freegroups.UseID(c->freegroups.NextID());
@@ -387,11 +398,12 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
 	/* Remove all vehicles from the group */
-	Command<CMD_REMOVE_ALL_VEHICLES_GROUP>::Do(flags, group_id);
+	Command<Commands::RemoveAllVehiclesGroup>::Do(flags, group_id);
 
-	/* Delete sub-groups */
-	for (const GroupID &childgroup : g->children) {
-		Command<CMD_DELETE_GROUP>::Do(flags, childgroup);
+	/* Delete sub-groups, using a copy to avoid invalid iteration. */
+	FlatSet<GroupID> children = g->children;
+	for (const GroupID &childgroup : children) {
+		Command<Commands::DeleteGroup>::Do(flags, childgroup);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -546,6 +558,7 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
  * @param group_id index of group
  * @param veh_id vehicle to add to a group
  * @param add_shared Add shared vehicles as well.
+ * @param vli The list of vehicles that should be added to the group (can be empty).
  * @return the cost of this operation or an error
  */
 std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli)
@@ -626,7 +639,7 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlags flags, GroupID id_g, Vehicle
 
 				/* For each shared vehicles add it to the group */
 				for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
-					if (v2->group_id != id_g) Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, id_g, v2->index, false, VehicleListIdentifier{});
+					if (v2->group_id != id_g) Command<Commands::AddVehicleToGroup>::Do(flags, id_g, v2->index, false, VehicleListIdentifier{});
 				}
 			}
 		}
@@ -657,7 +670,7 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 				if (v->group_id != group_id) continue;
 
 				/* Add The Vehicle to the default group */
-				Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, DEFAULT_GROUP, v->index, false, VehicleListIdentifier{});
+				Command<Commands::AddVehicleToGroup>::Do(flags, DEFAULT_GROUP, v->index, false, VehicleListIdentifier{});
 			}
 		}
 
@@ -673,6 +686,7 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
  * @param group_id Group ID.
  * @param primary Set primary instead of secondary colour
  * @param colour Colour.
+ * @return The (zero) cost or error.
  */
 CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour)
 {
@@ -703,7 +717,9 @@ CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool prima
 /**
  * Set group flag for a group and its sub-groups.
  * @param g initial group.
- * @param set 1 to set or 0 to clear protection.
+ * @param flag The flag to set.
+ * @param set \c true to set or \c false to clear protection.
+ * @param children Whether to propagate the change to the children.
  */
 static void SetGroupFlag(Group *g, GroupFlag flag, bool set, bool children)
 {

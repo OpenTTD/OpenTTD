@@ -17,10 +17,11 @@
 
 static const TimerGameEconomy::Year MAX_TIMETABLE_START_YEARS{15}; ///< The maximum start date offset, in economy years.
 
+/** Way the timetable is visualised. */
 enum class TimetableMode : uint8_t {
-	Days,
-	Seconds,
-	Ticks,
+	Days, ///< In in-game days.
+	Seconds, ///< In wall clock seconds.
+	Ticks, ///< In game ticks.
 };
 
 TimerGameTick::TickCounter GetStartTickFromDate(TimerGameEconomy::Date start_date);

@@ -14,10 +14,10 @@
 
 /** Landscape types */
 enum class LandscapeType : uint8_t {
-	Temperate = 0,
-	Arctic    = 1,
-	Tropic    = 2,
-	Toyland   = 3,
+	Temperate = 0, ///< Base landscape.
+	Arctic = 1, ///< Landscape with snow levels.
+	Tropic = 2, ///< Landscape with distinct rainforests and deserts,
+	Toyland = 3, ///< Landscape with funky industries and vehicles.
 };
 using LandscapeTypes = EnumBitSet<LandscapeType, uint8_t>;
 

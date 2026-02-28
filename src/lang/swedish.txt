@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Välj vilket sp
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% färdigt)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Helskärm
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Kryssa i den här rutan för att spela OpenTTD i helskärmsläge
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Aktivera för att spela OpenTTD i helskärmsläge
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Skärmupplösning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Välj vilken skärmupplösning som ska användas
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hårdvaruacceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Markera denna rutan för att tillåta OpenTTD att försöka använda hårdvaruacceleration. Ändrad inställning kommer bara att gälla efter omstart.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Aktivera för att tillåta OpenTTD att försöka använda hårdvaruacceleration. Ändrad inställning kommer bara att gälla efter omstart.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Inställningen kommer bara att gälla efter omstart av spelet
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Markera den här rutan för att v-synka skärmen. Ändringar i den här inställningen kommer bara att tillämpas vid omstart av spelet. Fungerar bara med hårdvaruacceleration aktiverad.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Aktivera för att v-synka skärmen. Ändringar i den här inställningen kommer bara att tillämpas vid omstart av spelet. Fungerar bara med hårdvaruacceleration aktiverad.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nuvarande drivrutin: {STRING}
 
@@ -1083,15 +1083,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Gränssnitt
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Gränssnittets storlek
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra i reglaget för att ställa in gränssnittets storlek. Ctrl+Drag för steglös justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Känn av storleken automatiskt
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kryssa i den här rutan för automatisk inställning av gränssnittets storlek
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Aktivera för automatisk inställning av gränssnittets storlek
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skala bården
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Kryssa i den här rutan för att skala bården efter gränssnittets storlek
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Aktivera för att skala bården efter gränssnittets storlek
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Använd traditionellt sprite-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Kryssa i den här rutan om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Aktivera om du föredrar att använda det traditionella sprite-typsnittet med fast storlek
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias-typsnitt
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Kryssa i den här rutan för anti-aliasing av typsnitt med justerbar storlek
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Akrivera anti-aliasing av typsnitt med justerbar storlek
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1115,7 +1115,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Välj vilket gr
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Ytterligare information om grafikpaketet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Grundljudpaket
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Välj vilket ljudpaket som ska användas (kan inte ändras under spel, utan endast från huvudmenyn)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Välj vilket ljudpaket som ska användas
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Ytterligare information om ljudpaketet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Grundmusikpaket
@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Utöka alla
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Stäng alla
 STR_CONFIG_SETTING_RESET_ALL                                    :Återställ alla värden
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardvärde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ av inställning: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klientinställning (sparas ej i spel-filer och påverkar alla spel)
@@ -1598,7 +1598,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Den ursprunglig
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrängtyp: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maxhöjd förval: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Välj höjden på kullar och berg i landskapet
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritäthet: {STRING}
@@ -1625,6 +1625,14 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lätt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Svår
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väldigt svår
+
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Medelhöjd: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Välj medelhöjd på landnivå. "Automatisk" använder standardhöjd för klimatet: "Lågland" i subtropiskt, "Normalt" i tempererat/leksaksland och "Platåer" i subarktiskt.
+###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatiskt
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Lågland
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normalt
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Platåer
 
 STR_CONFIG_SETTING_VARIETY                                      :Varierad distribution: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Välj om kartan ska innehålla både berg och flacka områden. Ju större variation desto större höjdskillnad mellan bergiga och flacka områden
@@ -2068,7 +2076,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Högsta upplösning som sprites ska använda: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika GRF filer med högre och lägre upplösning
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika NewGRF filer med högre och lägre upplösning
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2206,7 +2214,7 @@ STR_CONFIG_ERROR                                                :{WHITE}Problem 
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fel i listan '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ogiltigt värde '{STRING}' för '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... extra tecken vid slutet av inställning '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerar NewGRF '{STRING}': GRF ID-dublett med '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerar NewGRF '{STRING}': NewGRF ID-dublett med '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorerar ogiltig NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :hittades ej
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :osäker för statisk användning
@@ -2539,6 +2547,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via rel�
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kasta ut
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannlys
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Ta bort
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :Tillåt alla klienter
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :Tillåt bara listade klienter
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratörshandling
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Är du säker på att du vill kasta ut spelaren '{STRING}'?
@@ -2850,18 +2860,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Minska höjden 
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Öka höjden på förhandsvisningen. Ctrl+Click för att öka till max
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Standardsamling
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Välj en samling
+STR_PICKER_COLLECTION_ADD                                       :Lägg till
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Skapa en ny samling
+STR_PICKER_COLLECTION_RENAME                                    :Byt namn
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Byt namn på samling
+STR_PICKER_COLLECTION_DELETE                                    :Ta bort
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Ta bort samling
+
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Byt namn på denna samling
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Ta bort denna samling
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Är du säker på att du vill ta bort denna samling?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Är du säker på att du vill ta bort denna samling? Det finns saker från NewGRFs i den!
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Välj en samling med stationer att visa
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Välj vilken klass av riktmärken som ska visas
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Välj ett riktmärke att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Välj en samling riktningsvisare att visa
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Välj vilken klass av busstationer som ska visas
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Välj en busstationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Välj en samling av busstationer att visa
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Välj vilken klass av laststationer som ska visas
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Välj en laststationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Välj en samling av laststationer att visa
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Välj vilken klass av objekt som ska visas
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Välj en objektstyp att bygga. Ctrl+klicka för att lägga till eller ta bort i sparade objekt. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Välj en samling av objekt att visa
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Välj en samling av hus att visa
 
 STR_HOUSE_PICKER_CAPTION                                        :Husval
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Namn: {GOLD}{STRING}
@@ -2871,7 +2901,7 @@ STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}År: {GO
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {GOLD}Från {NUM}
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {GOLD}Till {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM}x{NUM} rutor
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Accepterat gods: {GOLD}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Accepterat gods: {GOLD}{STRING}
 STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Fraktgods producerat: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Gräns
@@ -3159,7 +3189,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Flygplat
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Flygplatsnamn: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Flygplatsrutans namn: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepterat gods: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepterat gods: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Spårtyp: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Vägtyp: {LTBLUE}{STRING}
@@ -3386,7 +3416,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ökentä
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Öka ökentäckning med tio procent
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Minska ökentäckning med tio procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maxhöjd:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Medelhöjd:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havsnivå
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Välj havsnivån
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flod:
@@ -3622,7 +3653,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Felaktig parame
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} måste laddas in innan {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} måste laddas in efter {2:STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kräver OpenTTD version {2:STRING} eller bättre
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Att ladda {1:STRING} som statisk NewGRF med {2:STRING} kan orsaka desynkronisering
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oväntat spriteobjekt (spriteobjekt {3:NUM})
@@ -3631,7 +3662,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att an
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller ett skadat spriteobjekt. Alla korrupta spriteobjekt kommer att visas som röda frågetecken (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutet av pseudo-spriteobjekt (spriteobjekt {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade NewGRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} har inaktiverats av {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktigt/okänt layout-format av spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :För många poster i listan med egenskapsvärden (spriteobjekt {3:NUM}, egenskap {4:HEX})
@@ -3641,13 +3672,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ogiltig industr
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du håller på att göra ändringar i ett pågående spel; detta kan krascha OpenTTD eller orsaka andra fel i spelet. Skicka inte buggrapporter om sådana fel.{}Är du helt säker på detta?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel GRF laddad)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan inte lägga till fil: Gränsen för NewGRF-filer uppnådd
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande NewGRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel NewGRF laddad)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Kan inte lägga till fil: Gränsen för NewGRF-filer uppnådd
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF laddad för saknade filer
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF-fil har stängts av
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Kompatibel NewGRF laddad för saknade filer
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad NewGRF-fil har stängts av
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) NewGRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej bugg-rapporter för eventuella resulterande krascher.{}Är du säker på att du vill avpausa?
 
 # NewGRF status
@@ -3658,17 +3689,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Hittade
 STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Beteendet hos NewGRF:en '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' kommer troligen orsaka desynkronisering och/eller krascher
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Kraftförsörjning-vagn-tillstånd för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ändrades utanför en depå
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ändrades utanför en depå
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Kapaciteten ändrades för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' utan att vara i depå eller anpassning
+STR_NEWGRF_BROKEN                                               :{WHITE}Beteendet hos NewGRF:en '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Kraftförsörjning-vagn-tillstånd för '{1:ENGINE}' ändrades utanför en depå
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depån
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Kapaciteten ändrades för '{1:ENGINE}' utan att vara i depå eller anpassning
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' ger felaktig information
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' skapade en oändlig loop i produktions-callback-funktionen
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING} ger felaktig information
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en oändlig loop i produktions-callback-funktionen
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktion {1:HEX} returnerade ett okänt/ogiltligt resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' returnerade ogiltig lasttyp i produktions-callback vid {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returnerade ogiltig lasttyp i produktions-callback vid {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
@@ -4043,12 +4074,12 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier ({COMMA} av {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Inga -
-STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporterat){BLACK}
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporterat)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} och {NUM} till...
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} och {NUM} till...
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Industrinamn - klicka på namnet för att centrera huvudvyn över industrin. Ctrl+Klick för att öppna en ny fönstervy över industrins läge
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Accepterat gods: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Producerat fraktgods: {SILVER}{STRING}
@@ -4066,9 +4097,9 @@ STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Visar gr
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsnivå: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industrin har annonserat att den snart kommer att stänga!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Kräver: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Producerar: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Kräver: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Producerar: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Kräver:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
@@ -4201,6 +4232,19 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximal 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Räckvidd: {GOLD}{COMMA} rutor
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Flygplanstyp: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Järnvägstyper: {GOLD}{STRING}
+
+# Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/år
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/period
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :{COMMA}%
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} rutor
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Alla godstyper
@@ -4361,7 +4405,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du är 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meddelande från fordonstillverkare
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Meddelande från fordonstillverkare ({COMMA} av {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har just designat ett nytt {STRING} - är du intresserad av ett års exklusiv användning av detta fordon, så vi kan se hur det presterar innan vi gör det allmänt tillgängligt?
+
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Föregående
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Klicka för att gå till föregående nya fordon
+STR_ENGINE_PREVIEW_NEXT                                         :Nästa
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Klicka för att gå till nästa nya fordon
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Klicka för att gå till ett nytt fordon
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :järnvägslok
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrifierat järnvägslok
@@ -4594,7 +4646,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Visa kap
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Gods totalt
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Visa tågets totala kapacitet, separera för typ av gods
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacitet: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Anpassa)
@@ -5051,7 +5103,7 @@ STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutr
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... trädplanteringsbegränsning uppnådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet måste vara unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} i vägen
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Inte tillåtet när spelet är pausat
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :inte tillåtet när spelet är pausat
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte detta
@@ -5068,13 +5120,14 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Redan p�
 STR_ERROR_TOO_HIGH                                              :{WHITE}För hög
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... redan platt
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Efteråt skulle bron ovanför vara för hög.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Måste riva vattendrag först
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan inte ändra företagsnamn...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Kan inte ändra företagsnamn...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan inte ändra namnet på VD:n...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximal storlek på lånet är {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan inte låna mer pengar...
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Kan inte låna mer pengar...
 STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... lånet är redan återbetalt
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} krävs
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan inte återbetala lånet...
@@ -5088,9 +5141,8 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan inte
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan inte byta namn på stad...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan inte grunda stad här...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan inte expandera stad...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... för nära kartans kant
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... för nära en annan stad
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... för många städer
+STR_ERROR_TOO_MANY_TOWNS                                        :för många städer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det finns ingen plats kvar på kartan
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
@@ -5098,7 +5150,7 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det 
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan inte bygga hus...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... för många industrier
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :för många industrier
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan inte generera industrier...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan inte bygga {STRING} här...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan inte bygga denna typ av industri här...
@@ -5124,20 +5176,20 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Ändra p
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan inte bygga järnvägsstation här...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan inte bygga busshållplats...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Kan inte bygga busshållplats...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan inte bygga lastbrygga...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan inte bygga passagerarspårvagnsstation...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan inte bygga fraktspårvagnsstation...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Kan inte bygga fraktspårvagnsstation...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan inte bygga hamn här...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan inte bygga flygplats här...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Kan inte bygga flygplats här...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Angränsar till mer än en station/hållplats
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :angränsar till mer än en station/hållplats
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen för utspridd
 STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... antalet spår stöds ej
 STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... längden stöds ej
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}För många stationer/hållplatser
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}För många delar på järnvägsstationen
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}För många busshållplatser
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :för många stationer/hållplatser
+STR_ERROR_TOO_MANY_STATION_SPECS                                :för många delar på järnvägsstationen
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :för många busshållplatser
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För många lastbryggor
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}För nära en annan hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}För nära en annan flygplats
@@ -5150,7 +5202,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... geno
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ej ta bort del av station...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Måste ta bort tågstationen först
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :måste ta bort tågstationen först
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan inte ta bort busstation...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan inte ta bort lastbrygga...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan inte ta bort passagerarspårvagnsstation...
@@ -5178,8 +5230,8 @@ STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Kain int
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Kan inte ta bort järnvägsriktmärke här...
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan inte ta bort vägriktmärke här...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Måste ta bort järnvägsriktmärke först
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Måste ta bort vägriktmärke först
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :måste ta bort järnvägsriktmärke först
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :måste ta bort vägriktmärke först
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boj i vägen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bojen används av ett annat företag!
 
@@ -5189,10 +5241,10 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan inte bygga spårvagnsdepå här...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan inte bygga skeppsdepå här...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan inte byta namn på terminal
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :Kan inte byta namn på terminal
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... måste stoppas i en depå
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... måste stoppas i en depå
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :måste stoppas i en depå
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... måste stoppas i en depå
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... måste stoppas i en hangar
 
@@ -5227,7 +5279,7 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nytt for
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Omöjlig kombination av spår
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Måste ta bort signaler först
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Inget passande järnvägsspår
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Måste ta bort järnväg först
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :måste ta bort järnväg först
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vägen är enkelriktad eller blockerad
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Plankorsningar är inte tillåtna för denna typ av spår
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Plankorsningar är inte tillåtna för denna vägtyp
@@ -5256,7 +5308,7 @@ STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen l�
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen passande spårväg
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan inte bygga kanaler här...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Kan inte bygga kanaler här...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan inte bygga slussar här...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan inte placera flod här...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... måste byggas på vatten
@@ -5265,7 +5317,7 @@ STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kan 
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kan inte bygga på kanal
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... kan inte bygga på flod
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Måste först ta bort kanalen
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan inte bygga akvedukt här...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Kan inte bygga akvedukt här...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... träd redan här
@@ -5273,7 +5325,7 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... fel 
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan inte plantera träd här...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kan inte bygga bro här...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Kan inte bygga bro här...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Måste riva bro först
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan inte börja och sluta på samma plats
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broändar ej på samma höjd
@@ -5301,7 +5353,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan inte
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel för lång
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... för många objekt
+STR_ERROR_TOO_MANY_OBJECTS                                      :för många objekt
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan inte bygga objekt...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt i vägen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... huvudkontor i vägen
@@ -5341,19 +5393,19 @@ STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan inte
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan inte byta namn på tåg...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan inte byta namn på vägfordon...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Kan inte namnge vägfordon...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan inte byta namn på skepp...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan inte byta namn på flygplan...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Kan inte namnge flygplan...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan inte stoppa/starta tåg...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan inte stoppa/starta vägfordon...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan inte stoppa/starta skepp...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan inte stoppa/starta flygplan...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Kan inte stoppa/starta tåg...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Kan inte stoppa/starta vägfordon...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Kan inte stoppa/starta skepp...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Kan inte stoppa/starta flygplan...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan inte skicka tåg till depå...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan inte skicka fordon till depå...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Kan inte skicka fordon till depå...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan inte skicka skepp till depå...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan inte skicka flygplan till hangar...
 
@@ -5365,9 +5417,9 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan inte
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan inte byta namn på tågets fordonstyp...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan inte byta namn på vägfordon typ...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Kan inte byta namn på vägfordonstyp...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan inte byta namn på skeppstyp...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan inte byta namn på flygplanstyp...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Kan inte byta namn på flygplanstyp...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan inte sälja järnvägsfordon...
@@ -5382,10 +5434,10 @@ STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan inte
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kan inte sälja alla flygplan...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Kan inte bytta ut järnvägsfordon...
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Kan inte bytta ut vägfordon...
-STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Kan inte bytta ut skepp...
-STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Kan inte byta ut flygplan...
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Kan inte byta ut järnvägsfordon...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Kan inte byta ut vägfordon...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Kan inte byta ut skepp...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Kan inte byta ut flygplan...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}För många fordon i spelet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan inte ändra service-intervall...
@@ -5415,23 +5467,23 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Flygplan
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ingen mer plats för order
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}För många order
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Kan inte sätta in ny order...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Kan inte ta bort denna order...
+STR_ERROR_TOO_MANY_ORDERS                                       :för många order
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Kan inte sätta in ny order...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Kan inte ta bort denna order...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Kan inte ändra denna order...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kan inte flytta denna order...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kan inte hoppa över nuvarande order...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan inte hoppa över till vald order...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... fordonet kan inte nå alla stationer
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... fordonet kan inte komma fram till denna station
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ett fordon som delar denna order kan inte komma till denna station
+STR_ERROR_CAN_T_ADD_ORDER                                       :fordonet kan inte komma fram till denna station
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :ett fordon som delar denna order kan inte komma till denna station
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... alla fordon har inte samma order
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... alla fordon delar inte order
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan inte dela orderlistan...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan inte sluta dela orderlistan...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Kan inte sluta dela orderlistan...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan inte kopiera orderlistan...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... för långt från föregående destination
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :för långt från föregående destination
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... flygplanet har inte tillräcklig räckvidd
 
 # Extra messages which go on the third line of errors, explaining why orders failed
@@ -5457,10 +5509,10 @@ STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... tidt
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... tidtabellen har inte startat än
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... för många skyltar
+STR_ERROR_TOO_MANY_SIGNS                                        :för många skyltar
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan inte placera skylt här...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan inte ändra skyltnamn...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan inte ta bort skylt...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :Kan inte ta bort skylt...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -5968,7 +6020,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Öppna märkeskonfiguration
@@ -5978,4 +6031,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Märkesf
 STR_BADGE_CONFIG_PREVIEW                                        :Förhandsvisning
 STR_BADGE_CONFIG_NAME                                           :Namn
 STR_BADGE_FILTER_ANY_LABEL                                      :Någon {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} är {STRING}

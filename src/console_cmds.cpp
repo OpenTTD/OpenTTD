@@ -61,7 +61,7 @@ static uint _script_current_depth; ///< Depth of scripts running (used to abort 
 static std::string _scheduled_monthly_script; ///< Script scheduled to execute by the 'schedule' console command (empty if no script is scheduled).
 
 /** Timer that runs every month of game time for the 'schedule' console command. */
-static const IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto) {
+static const IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCalendar::Trigger::Month, TimerGameCalendar::Priority::None}, [](auto) {
 	if (_scheduled_monthly_script.empty()) {
 		return;
 	}
@@ -130,7 +130,8 @@ static ConsoleFileList _console_file_list_heightmap{FT_HEIGHTMAP, false}; ///< F
 
 /**
  * Check network availability and inform in console about failure of detection.
- * @return Network availability.
+ * @param echo Whether to print an error message or not.
+ * @return \c true iff the network is available.
  */
 static inline bool NetworkAvailable(bool echo)
 {
@@ -143,7 +144,7 @@ static inline bool NetworkAvailable(bool echo)
 
 /**
  * Check whether we are a server.
- * @return Are we a server? True when yes, false otherwise.
+ * @copydoc IConsoleHook
  */
 static ConsoleHookResult ConHookServerOnly(bool echo)
 {
@@ -158,7 +159,7 @@ static ConsoleHookResult ConHookServerOnly(bool echo)
 
 /**
  * Check whether we are a client in a network game.
- * @return Are we a client in a network game? True when yes, false otherwise.
+ * @copydoc IConsoleHook
  */
 static ConsoleHookResult ConHookClientOnly(bool echo)
 {
@@ -173,7 +174,7 @@ static ConsoleHookResult ConHookClientOnly(bool echo)
 
 /**
  * Check whether we are in a multiplayer game.
- * @return True when we are client or server in a network game.
+ * @copydoc IConsoleHook
  */
 static ConsoleHookResult ConHookNeedNetwork(bool echo)
 {
@@ -188,7 +189,7 @@ static ConsoleHookResult ConHookNeedNetwork(bool echo)
 
 /**
  * Check whether we are in a multiplayer game and are playing, i.e. we are not the dedicated server.
- * @return Are we a client or non-dedicated server in a network game? True when yes, false otherwise.
+ * @copydoc IConsoleHook
  */
 static ConsoleHookResult ConHookNeedNonDedicatedNetwork(bool echo)
 {
@@ -203,7 +204,7 @@ static ConsoleHookResult ConHookNeedNonDedicatedNetwork(bool echo)
 
 /**
  * Check whether we are in singleplayer mode.
- * @return True when no network is active.
+ * @copydoc IConsoleHook
  */
 static ConsoleHookResult ConHookNoNetwork(bool echo)
 {
@@ -216,7 +217,7 @@ static ConsoleHookResult ConHookNoNetwork(bool echo)
 
 /**
  * Check if are either in singleplayer or a server.
- * @return True iff we are either in singleplayer or a server.
+ * @copydoc IConsoleHook
  */
 static ConsoleHookResult ConHookServerOrNoNetwork(bool echo)
 {
@@ -227,6 +228,10 @@ static ConsoleHookResult ConHookServerOrNoNetwork(bool echo)
 	return CHR_ALLOW;
 }
 
+/**
+ * Check whether NewGRF developer tools are enabled.
+ * @copydoc IConsoleHook
+ */
 static ConsoleHookResult ConHookNewGRFDeveloperTool(bool echo)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
@@ -241,7 +246,7 @@ static ConsoleHookResult ConHookNewGRFDeveloperTool(bool echo)
 
 /**
  * Reset status of all engines.
- * @return Will always succeed.
+ * @copydoc IConsoleCmdProc
  */
 static bool ConResetEngines(std::span<std::string_view> argv)
 {
@@ -256,8 +261,8 @@ static bool ConResetEngines(std::span<std::string_view> argv)
 
 /**
  * Reset status of the engine pool.
- * @return Will always return true.
  * @note Resetting the pool only succeeds when there are no vehicles ingame.
+ * @copydoc IConsoleCmdProc
  */
 static bool ConResetEnginePool(std::span<std::string_view> argv)
 {
@@ -282,8 +287,7 @@ static bool ConResetEnginePool(std::span<std::string_view> argv)
 #ifdef _DEBUG
 /**
  * Reset a tile to bare land in debug mode.
- * param tile number.
- * @return True when the tile is reset or the help on usage was printed (0 or two parameters).
+ * @copydoc IConsoleCmdProc
  */
 static bool ConResetTile(std::span<std::string_view> argv)
 {
@@ -307,8 +311,7 @@ static bool ConResetTile(std::span<std::string_view> argv)
 
 /**
  * Zoom map to given level.
- * param level As defined by ZoomLevel and as limited by zoom_min/zoom_max from GUISettings.
- * @return True when either console help was shown or a proper amount of parameters given.
+ * @copydoc IConsoleCmdProc
  */
 static bool ConZoomToLevel(std::span<std::string_view> argv)
 {
@@ -355,12 +358,7 @@ static bool ConZoomToLevel(std::span<std::string_view> argv)
 
 /**
  * Scroll to a tile on the map.
- * param x tile number or tile x coordinate.
- * param y optional y coordinate.
- * @note When only one argument is given it is interpreted as the tile number.
- *       When two arguments are given, they are interpreted as the tile's x
- *       and y coordinates.
- * @return True when either console help was shown or a proper amount of parameters given.
+ * @copydoc IConsoleCmdProc
  */
 static bool ConScrollToTile(std::span<std::string_view> argv)
 {
@@ -414,8 +412,7 @@ static bool ConScrollToTile(std::span<std::string_view> argv)
 
 /**
  * Save the map to a file.
- * param filename the filename to save the map to.
- * @return True when help was displayed or the file attempted to be saved.
+ * @copydoc IConsoleCmdProc
  */
 static bool ConSave(std::span<std::string_view> argv)
 {
@@ -441,7 +438,7 @@ static bool ConSave(std::span<std::string_view> argv)
 
 /**
  * Explicitly save the configuration.
- * @return True.
+ * @copydoc IConsoleCmdProc
  */
 static bool ConSaveConfig(std::span<std::string_view> argv)
 {
@@ -456,6 +453,7 @@ static bool ConSaveConfig(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Load a savegame. @copydoc IConsoleCmdProc */
 static bool ConLoad(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -482,6 +480,7 @@ static bool ConLoad(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Load a scenario. @copydoc IConsoleCmdProc */
 static bool ConLoadScenario(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -508,6 +507,7 @@ static bool ConLoadScenario(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Load a heightmap. @copydoc IConsoleCmdProc */
 static bool ConLoadHeightmap(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -534,6 +534,7 @@ static bool ConLoadHeightmap(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Remove a savegame file from disk. @copydoc IConsoleCmdProc */
 static bool ConRemove(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -563,7 +564,7 @@ static bool ConRemove(std::span<std::string_view> argv)
 }
 
 
-/* List all the files in the current dir via console */
+/** List all the files in the current dir via console. @copydoc IConsoleCmdProc */
 static bool ConListFiles(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -579,7 +580,7 @@ static bool ConListFiles(std::span<std::string_view> argv)
 	return true;
 }
 
-/* List all the scenarios */
+/** List all the scenarios. @copydoc IConsoleCmdProc */
 static bool ConListScenarios(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -595,7 +596,7 @@ static bool ConListScenarios(std::span<std::string_view> argv)
 	return true;
 }
 
-/* List all the heightmaps */
+/** List all the heightmaps. @copydoc IConsoleCmdProc */
 static bool ConListHeightmaps(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -611,7 +612,7 @@ static bool ConListHeightmaps(std::span<std::string_view> argv)
 	return true;
 }
 
-/* Change the dir via console */
+/** Change the dir via console. @copydoc IConsoleCmdProc */
 static bool ConChangeDirectory(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -641,6 +642,7 @@ static bool ConChangeDirectory(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Print the current working directory. @copydoc IConsoleCmdProc */
 static bool ConPrintWorkingDirectory(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -656,6 +658,7 @@ static bool ConPrintWorkingDirectory(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Clear the console's buffer. @copydoc IConsoleCmdProc */
 static bool ConClearBuffer(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -673,6 +676,13 @@ static bool ConClearBuffer(std::span<std::string_view> argv)
  * Network Core Console Commands
  **********************************/
 
+/**
+ * Helper to kick or ban a user.
+ * @param arg The client id or IP address.
+ * @param ban Whether to ban, when \c false only a kick is performed.
+ * @param reason The reason for this action.
+ * @return \c true iff the command is handled correctly, i.e. \c false to show a help message.
+ */
 static bool ConKickOrBan(std::string_view arg, bool ban, std::string_view reason)
 {
 	uint n;
@@ -720,6 +730,7 @@ static bool ConKickOrBan(std::string_view arg, bool ban, std::string_view reason
 	return true;
 }
 
+/** Kick a user from a network game. @copydoc IConsoleCmdProc */
 static bool ConKick(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -743,6 +754,7 @@ static bool ConKick(std::span<std::string_view> argv)
 	}
 }
 
+/** Ban a user from a network game. @copydoc IConsoleCmdProc */
 static bool ConBan(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -767,6 +779,7 @@ static bool ConBan(std::span<std::string_view> argv)
 	}
 }
 
+/** Unban a user from a network game. @copydoc IConsoleCmdProc */
 static bool ConUnBan(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -799,6 +812,7 @@ static bool ConUnBan(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Show the list of banned clients. @copydoc IConsoleCmdProc */
 static bool ConBanList(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -817,6 +831,7 @@ static bool ConBanList(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Manually pause the game. @copydoc IConsoleCmdProc */
 static bool ConPauseGame(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -830,7 +845,7 @@ static bool ConPauseGame(std::span<std::string_view> argv)
 	}
 
 	if (!_pause_mode.Test(PauseMode::Normal)) {
-		Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+		Command<Commands::Pause>::Post(PauseMode::Normal, true);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game paused.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already paused.");
@@ -839,6 +854,7 @@ static bool ConPauseGame(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Manually unpause the game. @copydoc IConsoleCmdProc */
 static bool ConUnpauseGame(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -852,7 +868,7 @@ static bool ConUnpauseGame(std::span<std::string_view> argv)
 	}
 
 	if (_pause_mode.Test(PauseMode::Normal)) {
-		Command<CMD_PAUSE>::Post(PauseMode::Normal, false);
+		Command<Commands::Pause>::Post(PauseMode::Normal, false);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game unpaused.");
 	} else if (_pause_mode.Test(PauseMode::Error)) {
 		IConsolePrint(CC_DEFAULT, "Game is in error state and cannot be unpaused via console.");
@@ -865,6 +881,7 @@ static bool ConUnpauseGame(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Run a console command on the server. @copydoc IConsoleCmdProc */
 static bool ConRcon(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -884,6 +901,7 @@ static bool ConRcon(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Get the status of connected clients. @copydoc IConsoleCmdProc */
 static bool ConStatus(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -895,6 +913,7 @@ static bool ConStatus(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Get information like client/company count/limits for the server. @copydoc IConsoleCmdProc */
 static bool ConServerInfo(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -911,6 +930,7 @@ static bool ConServerInfo(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Change the name of a client. @copydoc IConsoleCmdProc */
 static bool ConClientNickChange(std::span<std::string_view> argv)
 {
 	if (argv.size() != 3) {
@@ -948,6 +968,11 @@ static bool ConClientNickChange(std::span<std::string_view> argv)
 	return true;
 }
 
+/**
+ * Helper to parse a company ID. Note that 'Company #1' has ID 0.
+ * @param arg The string to get the company ID from.
+ * @return The company's ID, or std::nullopt when no valid ID was found.
+ */
 static std::optional<CompanyID> ParseCompanyID(std::string_view arg)
 {
 	auto company_id = ParseType<CompanyID>(arg);
@@ -955,6 +980,7 @@ static std::optional<CompanyID> ParseCompanyID(std::string_view arg)
 	return company_id;
 }
 
+/** As client, join a company. @copydoc IConsoleCmdProc */
 static bool ConJoinCompany(std::span<std::string_view> argv)
 {
 	if (argv.size() < 2) {
@@ -1006,6 +1032,7 @@ static bool ConJoinCompany(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Move a client to a specific company. @copydoc IConsoleCmdProc */
 static bool ConMoveClient(std::span<std::string_view> argv)
 {
 	if (argv.size() < 3) {
@@ -1059,6 +1086,7 @@ static bool ConMoveClient(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Remove a company from the game. @copydoc IConsoleCmdProc */
 static bool ConResetCompany(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1098,12 +1126,13 @@ static bool ConResetCompany(std::span<std::string_view> argv)
 	}
 
 	/* It is safe to remove this company */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, *index, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *index, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;
 }
 
+/** List the clients. @copydoc IConsoleCmdProc */
 static bool ConNetworkClients(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1116,6 +1145,7 @@ static bool ConNetworkClients(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Connect to the last client you were connected to. @copydoc IConsoleCmdProc */
 static bool ConNetworkReconnect(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1147,6 +1177,7 @@ static bool ConNetworkReconnect(std::span<std::string_view> argv)
 	return NetworkClientConnectGame(_settings_client.network.last_joined, playas);
 }
 
+/** Connect to a specific server. @copydoc IConsoleCmdProc */
 static bool ConNetworkConnect(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1165,6 +1196,7 @@ static bool ConNetworkConnect(std::span<std::string_view> argv)
  *  script file console commands
  *********************************/
 
+/** Run a local script file. @copydoc IConsoleCmdProc */
 static bool ConExec(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1213,6 +1245,7 @@ static bool ConExec(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Schedule the execution of a script. @copydoc IConsoleCmdProc */
 static bool ConSchedule(std::span<std::string_view> argv)
 {
 	if (argv.size() < 3 || std::string_view(argv[1]) != "on-next-calendar-month") {
@@ -1242,6 +1275,7 @@ static bool ConSchedule(std::span<std::string_view> argv)
 	return true;
 }
 
+/** End the execution of the current script. @copydoc IConsoleCmdProc */
 static bool ConReturn(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1261,6 +1295,7 @@ extern std::span<const GRFFile> GetAllGRFFiles();
 extern void ConPrintFramerate(); // framerate_gui.cpp
 extern void ShowFramerateWindow();
 
+/** Enable or disable logging of console output. @copydoc IConsoleCmdProc */
 static bool ConScript(std::span<std::string_view> argv)
 {
 	extern std::optional<FileHandle> _iconsole_output_file;
@@ -1285,6 +1320,7 @@ static bool ConScript(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Simply print the arguments. @copydoc IConsoleCmdProc */
 static bool ConEcho(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1297,6 +1333,7 @@ static bool ConEcho(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Print the arguments in a particular colour. @copydoc IConsoleCmdProc */
 static bool ConEchoC(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1316,6 +1353,7 @@ static bool ConEchoC(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Start/create a new game. @copydoc IConsoleCmdProc */
 static bool ConNewGame(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1338,6 +1376,7 @@ static bool ConNewGame(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Restart the game. @copydoc IConsoleCmdProc */
 static bool ConRestart(std::span<std::string_view> argv)
 {
 	if (argv.empty() || argv.size() > 2) {
@@ -1359,6 +1398,7 @@ static bool ConRestart(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Reload a game from the loaded savegame/scenario/heightmap. @copydoc IConsoleCmdProc */
 static bool ConReload(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1392,6 +1432,12 @@ static void PrintLineByLine(const std::string &full_string)
 	}
 }
 
+/**
+ * Helper to print a list to the console.
+ * @param list_function The function that gets the list.
+ * @param args The arguments for the list function.
+ * @return \c true, to ease the use in @see IConsoleCmdProc.
+ */
 template <typename F, typename ... Args>
 bool PrintList(F list_function, Args... args)
 {
@@ -1403,6 +1449,7 @@ bool PrintList(F list_function, Args... args)
 	return true;
 }
 
+/** List all AI libraries. @copydoc IConsoleCmdProc */
 static bool ConListAILibs(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1410,9 +1457,10 @@ static bool ConListAILibs(std::span<std::string_view> argv)
 		return true;
 	}
 
-	return PrintList(AI::GetConsoleLibraryList);
+	return PrintList(AI::GetConsoleLibraryList, true);
 }
 
+/** List all AI scripts. @copydoc IConsoleCmdProc */
 static bool ConListAI(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1423,6 +1471,7 @@ static bool ConListAI(std::span<std::string_view> argv)
 	return PrintList(AI::GetConsoleList, false);
 }
 
+/** List all game script libraries. @copydoc IConsoleCmdProc */
 static bool ConListGameLibs(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1430,9 +1479,10 @@ static bool ConListGameLibs(std::span<std::string_view> argv)
 		return true;
 	}
 
-	return PrintList(Game::GetConsoleLibraryList);
+	return PrintList(Game::GetConsoleLibraryList, true);
 }
 
+/** List all game scripts. @copydoc IConsoleCmdProc */
 static bool ConListGame(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1443,6 +1493,7 @@ static bool ConListGame(std::span<std::string_view> argv)
 	return PrintList(Game::GetConsoleList, false);
 }
 
+/** Start a new AI. @copydoc IConsoleCmdProc */
 static bool ConStartAI(std::span<std::string_view> argv)
 {
 	if (argv.empty() || argv.size() > 3) {
@@ -1512,11 +1563,12 @@ static bool ConStartAI(std::span<std::string_view> argv)
 	}
 
 	/* Start a new AI company */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, CompanyID::Invalid(), CompanyRemoveReason::None, INVALID_CLIENT_ID);
 
 	return true;
 }
 
+/** Reload/restart an AI. @copydoc IConsoleCmdProc */
 static bool ConReloadAI(std::span<std::string_view> argv)
 {
 	if (argv.size() != 2) {
@@ -1553,13 +1605,14 @@ static bool ConReloadAI(std::span<std::string_view> argv)
 	}
 
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, *company_id, CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, *company_id, CompanyRemoveReason::None, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
 	return true;
 }
 
+/** Stop a currently running AI. @copydoc IConsoleCmdProc */
 static bool ConStopAI(std::span<std::string_view> argv)
 {
 	if (argv.size() != 2) {
@@ -1596,12 +1649,13 @@ static bool ConStopAI(std::span<std::string_view> argv)
 	}
 
 	/* Now kill the company of the AI. */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, *company_id, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI stopped, company deleted.");
 
 	return true;
 }
 
+/** Rescan the folder structure for new/changed AIs and libraries. @copydoc IConsoleCmdProc */
 static bool ConRescanAI(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1619,6 +1673,7 @@ static bool ConRescanAI(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Rescan the folder structure for new/changed game scripts and libraries. @copydoc IConsoleCmdProc */
 static bool ConRescanGame(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1636,6 +1691,7 @@ static bool ConRescanGame(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Rescan the folder structure for new/changed NewGRFs. @copydoc IConsoleCmdProc */
 static bool ConRescanNewGRF(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1650,6 +1706,7 @@ static bool ConRescanNewGRF(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Get the seed that was used to create this game. @copydoc IConsoleCmdProc */
 static bool ConGetSeed(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1662,6 +1719,7 @@ static bool ConGetSeed(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Get the current game date. @copydoc IConsoleCmdProc */
 static bool ConGetDate(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1674,6 +1732,7 @@ static bool ConGetDate(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Get the current system date. @copydoc IConsoleCmdProc */
 static bool ConGetSysDate(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1685,6 +1744,7 @@ static bool ConGetSysDate(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Create an alias for a command. @copydoc IConsoleCmdProc */
 static bool ConAlias(std::span<std::string_view> argv)
 {
 	IConsoleAlias *alias;
@@ -1705,6 +1765,7 @@ static bool ConAlias(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Make a screenshot. @copydoc IConsoleCmdProc */
 static bool ConScreenShot(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1797,6 +1858,7 @@ static bool ConScreenShot(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Get debug information about a command. @copydoc IConsoleCmdProc */
 static bool ConInfoCmd(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1819,6 +1881,7 @@ static bool ConInfoCmd(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Change the debug levels of the game. @copydoc IConsoleCmdProc */
 static bool ConDebugLevel(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1838,6 +1901,7 @@ static bool ConDebugLevel(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Exit the game, i.e. exit the complete application. @copydoc IConsoleCmdProc */
 static bool ConExit(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1851,6 +1915,7 @@ static bool ConExit(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Part the game, i.e. go back to the main menu. @copydoc IConsoleCmdProc */
 static bool ConPart(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1869,6 +1934,7 @@ static bool ConPart(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Show generic help and specific help for commands. @copydoc IConsoleCmdProc */
 static bool ConHelp(std::span<std::string_view> argv)
 {
 	if (argv.size() == 2) {
@@ -1908,6 +1974,7 @@ static bool ConHelp(std::span<std::string_view> argv)
 	return true;
 }
 
+/** List all registered commands that are not hidden. @copydoc IConsoleCmdProc */
 static bool ConListCommands(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1925,6 +1992,7 @@ static bool ConListCommands(std::span<std::string_view> argv)
 	return true;
 }
 
+/** List all registered aliases. @copydoc IConsoleCmdProc */
 static bool ConListAliases(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1942,6 +2010,7 @@ static bool ConListAliases(std::span<std::string_view> argv)
 	return true;
 }
 
+/** List all companies. @copydoc IConsoleCmdProc */
 static bool ConCompanies(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1967,6 +2036,7 @@ static bool ConCompanies(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Say something to all clients in a network game. @copydoc IConsoleCmdProc */
 static bool ConSay(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -1986,6 +2056,7 @@ static bool ConSay(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Say something to all clients in your company in a network game. @copydoc IConsoleCmdProc */
 static bool ConSayCompany(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2017,6 +2088,7 @@ static bool ConSayCompany(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Say something to a specific client in a network game. @copydoc IConsoleCmdProc */
 static bool ConSayClient(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2074,7 +2146,7 @@ static void PerformNetworkAuthorizedKeyAction(std::string_view name, NetworkAuth
 				authorized_keys->Add(authorized_key);
 			} else {
 				AutoRestoreBackup backup(_current_company, company);
-				Command<CMD_COMPANY_ALLOW_LIST_CTRL>::Post(CALCA_ADD, authorized_key);
+				Command<Commands::CompanyAllowListControl>::Post(CompanyAllowListCtrlAction::AddKey, authorized_key);
 			}
 			IConsolePrint(CC_INFO, "Added {} to {}.", authorized_key, name);
 			return;
@@ -2089,13 +2161,14 @@ static void PerformNetworkAuthorizedKeyAction(std::string_view name, NetworkAuth
 				authorized_keys->Remove(authorized_key);
 			} else {
 				AutoRestoreBackup backup(_current_company, company);
-				Command<CMD_COMPANY_ALLOW_LIST_CTRL>::Post(CALCA_REMOVE, authorized_key);
+				Command<Commands::CompanyAllowListControl>::Post(CompanyAllowListCtrlAction::RemoveKey, authorized_key);
 			}
 			IConsolePrint(CC_INFO, "Removed {} from {}.", authorized_key, name);
 			return;
 	}
 }
 
+/** Management of authorized keys. @copydoc IConsoleCmdProc */
 static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 {
 	if (argv.size() <= 2) {
@@ -2181,7 +2254,11 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 /* Content downloading only is available with ZLIB */
 #if defined(WITH_ZLIB)
 
-/** Resolve a string to a content type. */
+/**
+ * Resolve a string to a content type.
+ * @param str The string to resolve.
+ * @return The content type, or #CONTENT_TYPE_END when the string is not a content type.
+ */
 static ContentType StringToContentType(std::string_view str)
 {
 	static const std::initializer_list<std::pair<std::string_view, ContentType>> content_types = {
@@ -2230,6 +2307,7 @@ static void OutputContentState(const ContentInfo &ci)
 	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
+/** Downloading of content from the server. @copydoc IConsoleCmdProc */
 static bool ConContent(std::span<std::string_view> argv)
 {
 	[[maybe_unused]] static ContentCallback *const cb = []() {
@@ -2319,6 +2397,7 @@ static bool ConContent(std::span<std::string_view> argv)
 }
 #endif /* defined(WITH_ZLIB) */
 
+/** Managing the font configuration. @copydoc IConsoleCmdProc */
 static bool ConFont(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2383,6 +2462,7 @@ static bool ConFont(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Change settings of the current game. @copydoc IConsoleCmdProc */
 static bool ConSetting(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2402,6 +2482,7 @@ static bool ConSetting(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Change settings of for a new game. @copydoc IConsoleCmdProc */
 static bool ConSettingNewgame(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2421,6 +2502,7 @@ static bool ConSettingNewgame(std::span<std::string_view> argv)
 	return true;
 }
 
+/** List all settings. @copydoc IConsoleCmdProc */
 static bool ConListSettings(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2434,6 +2516,7 @@ static bool ConListSettings(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Print the gamelog. @copydoc IConsoleCmdProc */
 static bool ConGamelogPrint(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2445,6 +2528,7 @@ static bool ConGamelogPrint(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Reload all active NewGRFs. @copydoc IConsoleCmdProc */
 static bool ConNewGRFReload(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2456,28 +2540,29 @@ static bool ConNewGRFReload(std::span<std::string_view> argv)
 	return true;
 }
 
+/** List the locations of all of the game's different sub directories. @copydoc IConsoleCmdProc */
 static bool ConListDirs(std::span<std::string_view> argv)
 {
 	struct SubdirNameMap {
-		Subdirectory subdir; ///< Index of subdirectory type
 		std::string_view name; ///< UI name for the directory
-		bool default_only;   ///< Whether only the default (first existing) directory for this is interesting
+		Subdirectory subdir; ///< Index of subdirectory type
+		bool default_only; ///< Whether only the default (first existing) directory for this is interesting
 	};
 	static const SubdirNameMap subdir_name_map[] = {
 		/* Game data directories */
-		{ BASESET_DIR,      "baseset",    false },
-		{ NEWGRF_DIR,       "newgrf",     false },
-		{ AI_DIR,           "ai",         false },
-		{ AI_LIBRARY_DIR,   "ailib",      false },
-		{ GAME_DIR,         "gs",         false },
-		{ GAME_LIBRARY_DIR, "gslib",      false },
-		{ SCENARIO_DIR,     "scenario",   false },
-		{ HEIGHTMAP_DIR,    "heightmap",  false },
+		{ "baseset", BASESET_DIR, false },
+		{ "newgrf", NEWGRF_DIR, false },
+		{ "ai", AI_DIR, false },
+		{ "ailib", AI_LIBRARY_DIR, false },
+		{ "gs", GAME_DIR, false },
+		{ "gslib", GAME_LIBRARY_DIR, false },
+		{ "scenario", SCENARIO_DIR, false },
+		{ "heightmap", HEIGHTMAP_DIR, false },
 		/* Default save locations for user data */
-		{ SAVE_DIR,         "save",       true  },
-		{ AUTOSAVE_DIR,     "autosave",   true  },
-		{ SCREENSHOT_DIR,   "screenshot", true  },
-		{ SOCIAL_INTEGRATION_DIR, "social_integration", true },
+		{ "save", SAVE_DIR, true },
+		{ "autosave", AUTOSAVE_DIR, true },
+		{ "screenshot", SCREENSHOT_DIR, true },
+		{ "social_integration", SOCIAL_INTEGRATION_DIR, true },
 	};
 
 	if (argv.size() != 2) {
@@ -2525,6 +2610,7 @@ static bool ConListDirs(std::span<std::string_view> argv)
 	return false;
 }
 
+/** Management of NewGRF profiling. @copydoc IConsoleCmdProc */
 static bool ConNewGRFProfile(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2662,6 +2748,7 @@ static void IConsoleDebugLibRegister()
 }
 #endif
 
+/** Show the current framerate statistics. @copydoc IConsoleCmdProc */
 static bool ConFramerate(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2673,6 +2760,7 @@ static bool ConFramerate(std::span<std::string_view> argv)
 	return true;
 }
 
+/** Show the framerate statistics window. @copydoc IConsoleCmdProc */
 static bool ConFramerateWindow(std::span<std::string_view> argv)
 {
 	if (argv.empty()) {
@@ -2705,6 +2793,7 @@ static std::string FormatLabel(uint32_t label)
 	return fmt::format("{:08X}", label);
 }
 
+/** List all road types and their configuration. */
 static void ConDumpRoadTypes()
 {
 	IConsolePrint(CC_DEFAULT, "  Flags:");
@@ -2742,6 +2831,7 @@ static void ConDumpRoadTypes()
 	}
 }
 
+/** List all rail types and their configuration. */
 static void ConDumpRailTypes()
 {
 	IConsolePrint(CC_DEFAULT, "  Flags:");
@@ -2780,6 +2870,7 @@ static void ConDumpRailTypes()
 	}
 }
 
+/** List all cargo types and their configuration. */
 static void ConDumpCargoTypes()
 {
 	IConsolePrint(CC_DEFAULT, "  Cargo classes:");
@@ -2838,6 +2929,7 @@ static void ConDumpCargoTypes()
 	}
 }
 
+/** Dump information about some NewGRF types. @copydoc IConsoleCmdProc */
 static bool ConDumpInfo(std::span<std::string_view> argv)
 {
 	if (argv.size() != 2) {
@@ -2865,10 +2957,7 @@ static bool ConDumpInfo(std::span<std::string_view> argv)
 	return false;
 }
 
-/*******************************
- * console command registration
- *******************************/
-
+/** Console command registration. */
 void IConsoleStdLibRegister()
 {
 	IConsole::CmdRegister("debug_level",             ConDebugLevel);

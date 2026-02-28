@@ -101,7 +101,7 @@ static TileIndex GetReferenceTile(const NewsReference &reference)
 	return std::visit(visitor{}, reference);
 }
 
-/* Normal news items. */
+/** Normal news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -133,7 +133,7 @@ static WindowDesc _normal_news_desc(
 	_nested_normal_news_widgets
 );
 
-/* New vehicles news items. */
+/** New vehicles news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -181,7 +181,7 @@ static WindowDesc _vehicle_news_desc(
 	_nested_vehicle_news_widgets
 );
 
-/* Company news items. */
+/** Company news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -226,7 +226,7 @@ static WindowDesc _company_news_desc(
 	_nested_company_news_widgets
 );
 
-/* Thin news items. */
+/** Thin news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -260,7 +260,7 @@ static WindowDesc _thin_news_desc(
 	_nested_thin_news_widgets
 );
 
-/* Small news items. */
+/** Small news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets = {
 	/* Caption + close box. The caption is not WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
@@ -692,7 +692,10 @@ private:
 
 /* static */ int NewsWindow::duration = 0; // Instance creation.
 
-/** Open up an own newspaper window for the news item */
+/**
+ * Open up an own newspaper window for the news item.
+ * @param ni Iterator to the news message to show.
+ */
 static void ShowNewspaper(const NewsItem *ni)
 {
 	SoundFx sound = _news_type_data[to_underlying(ni->type)].sound;
@@ -701,7 +704,10 @@ static void ShowNewspaper(const NewsItem *ni)
 	new NewsWindow(GetNewsWindowLayout(ni->style), ni);
 }
 
-/** Show news item in the ticker */
+/**
+ * Show news item in the ticker.
+ * @param ni Iterator to the news message to show.
+ */
 static void ShowTicker(NewsIterator ni)
 {
 	if (_settings_client.sound.news_ticker) SndPlayFx(SND_16_NEWS_TICKER);
@@ -723,6 +729,7 @@ void InitNewsItemStructs()
 /**
  * Are we ready to show another ticker item?
  * Only if nothing is in the newsticker is displayed
+ * @return \c true iff there is no news item or the ticker of the current news item has been shown.
  */
 static bool ReadyForNextTickerItem()
 {
@@ -737,6 +744,7 @@ static bool ReadyForNextTickerItem()
 /**
  * Are we ready to show another news item?
  * Only if no newspaper is displayed
+ * @return \c true iff there is neither a ticker not a newspaper being shown.
  */
 static bool ReadyForNextNewsItem()
 {
@@ -818,7 +826,11 @@ static void MoveToNextNewsItem()
 	}
 }
 
-/** Delete a news item from the queue */
+/**
+ * Delete a news item from the queue
+ * @param ni Iterator pointing to the news item to remove.
+ * @return The updates iterator after removal.
+ */
 static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterator ni)
 {
 	bool update_current_news = (_forced_news == ni || _current_news == ni);
@@ -857,8 +869,9 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
 
 /**
  * Create a new newsitem to be shown.
- * @param string_id String to display.
+ * @param headline The headline of the news.
  * @param type      The type of news.
+ * @param style Manner of styling the news.
  * @param flags     Flags related to how to display the news.
  * @param ref1      Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param ref2      Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
@@ -887,8 +900,9 @@ std::string NewsItem::GetStatusText() const
 
 /**
  * Add a new newsitem to be shown.
- * @param string String to display
+ * @param headline The headline of the news.
  * @param type news category
+ * @param style Manner of styling the news.
  * @param flags display flags for the news
  * @param ref1     Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
  * @param ref2     Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
@@ -935,10 +949,9 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
 /**
  * Create a new custom news item.
  * @param flags type of operation
- * @aram type NewsType of the message.
- * @param reftype1 NewsReferenceType of first reference.
+ * @param type NewsType of the message.
  * @param company Company this news message is for.
- * @param reference_id First reference of the news message.
+ * @param reference First reference of the news message.
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
@@ -975,6 +988,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
  * Delete news items by predicate, and invalidate the message history if necessary.
  * @tparam Tmin Stop if the number of news items remaining reaches \a min items.
  * @tparam Tpredicate Condition for a news item to be deleted.
+ * @param predicate The predicate to apply when iterating the news.
  */
 template <size_t Tmin = 0, class Tpredicate>
 void DeleteNews(Tpredicate predicate)
@@ -1105,7 +1119,10 @@ void NewsLoop()
 	if (ReadyForNextNewsItem()) MoveToNextNewsItem();
 }
 
-/** Do a forced show of a specific message */
+/**
+ * Do a forced show of a specific message.
+ * @param ni Iterator to the news message to show.
+ */
 static void ShowNewsMessage(NewsIterator ni)
 {
 	assert(!std::empty(_news));
@@ -1195,10 +1212,10 @@ static void DrawNewsString(uint left, uint right, int y, TextColour colour, cons
 }
 
 struct MessageHistoryWindow : Window {
-	int line_height = 0; /// < Height of a single line in the news history window including spacing.
-	int date_width = 0; /// < Width needed for the date part.
+	int line_height = 0; ///< Height of a single line in the news history window including spacing.
+	int date_width = 0; ///< Width needed for the date part.
 
-	Scrollbar *vscroll = nullptr;
+	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
 
 	MessageHistoryWindow(WindowDesc &desc) : Window(desc)
 	{

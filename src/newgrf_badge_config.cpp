@@ -61,6 +61,7 @@ static BadgeClassConfig _badge_config;
 
 /**
  * Get the badge user configuration for a feature.
+ * @param feature The feature to load the configuration for.
  * @returns badge configuration for the given feature.
  */
 std::span<BadgeClassConfigItem> GetBadgeClassConfiguration(GrfSpecFeature feature)

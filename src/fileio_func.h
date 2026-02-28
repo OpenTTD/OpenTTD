@@ -36,9 +36,9 @@ extern std::vector<Searchpath> _valid_searchpaths;
 /** Helper for scanning for files with a given name */
 class FileScanner {
 protected:
-	Subdirectory subdir; ///< The current sub directory we are searching through
+	Subdirectory subdir{}; ///< The current sub directory we are searching through
 public:
-	/** Destruct the proper one... */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~FileScanner() = default;
 
 	uint Scan(std::string_view extension, Subdirectory sd, bool tars = true, bool recursive = true);

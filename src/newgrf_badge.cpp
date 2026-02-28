@@ -232,6 +232,8 @@ uint32_t GetBadgeVariableResult(const GRFFile &grffile, std::span<const BadgeID>
 
 /**
  * Mark a badge a seen (used) by a feature.
+ * @param index The badge's identifier.
+ * @param feature The feature the badge is used for.
  */
 void MarkBadgeSeen(BadgeID index, GrfSpecFeature feature)
 {

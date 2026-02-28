@@ -178,7 +178,10 @@ static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, 
 	return UINT_MAX;
 }
 
-/** Action 0x0D: Set parameter */
+/**
+ * Action 0x0D - Set parameter.
+ * @param buf Reader of the NewGRF.
+ */
 static void ParamSet(ByteReader &buf)
 {
 	/* <0D> <target> <operation> <source1> <source2> [<data>]

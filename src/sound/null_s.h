@@ -25,7 +25,7 @@ public:
 /** Factory for the null sound driver. */
 class FSoundDriver_Null : public DriverFactoryBase {
 public:
-	FSoundDriver_Null() : DriverFactoryBase(Driver::DT_SOUND, 1, "null", "Null Sound Driver") {}
+	FSoundDriver_Null() : DriverFactoryBase(Driver::Type::Sound, 1, "null", "Null Sound Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_Null>(); }
 };
 

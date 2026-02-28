@@ -257,6 +257,7 @@ HotkeyList::HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &
 	_hotkey_lists->push_back(this);
 }
 
+/** Remove outselves from the global hotkey list. */
 HotkeyList::~HotkeyList()
 {
 	_hotkey_lists->erase(std::ranges::find(*_hotkey_lists, this));

@@ -19,14 +19,15 @@
 
 #include "../safeguards.h"
 
-NetworkSurveyHandler _survey = {};
-
+/** Mapping to a string representation of the Reason enumeration. */
 NLOHMANN_JSON_SERIALIZE_ENUM(NetworkSurveyHandler::Reason, {
-	{NetworkSurveyHandler::Reason::PREVIEW, "preview"},
-	{NetworkSurveyHandler::Reason::LEAVE, "leave"},
-	{NetworkSurveyHandler::Reason::EXIT, "exit"},
-	{NetworkSurveyHandler::Reason::CRASH, "crash"},
+	{NetworkSurveyHandler::Reason::Preview, "preview"},
+	{NetworkSurveyHandler::Reason::Leave, "leave"},
+	{NetworkSurveyHandler::Reason::Exit, "exit"},
+	{NetworkSurveyHandler::Reason::Crash, "crash"},
 })
+
+NetworkSurveyHandler _survey = {};
 
 /**
  * Create the payload for the survey.
@@ -90,7 +91,7 @@ void NetworkSurveyHandler::Transmit(Reason reason, bool blocking)
 		return;
 	}
 
-	if (_settings_client.network.participate_survey != PS_YES) {
+	if (_settings_client.network.participate_survey != ParticipateSurvey::Yes) {
 		Debug(net, 5, "Survey: user is not participating in survey; skipping survey");
 		return;
 	}

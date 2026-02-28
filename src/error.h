@@ -40,7 +40,10 @@ protected:
 public:
 	ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical = false, int x = 0, int y = 0, EncodedString &&extra_msg = {}, CompanyID company = CompanyID::Invalid());
 
-	/** Check whether error window shall display a company manager face */
+	/**
+	 * Check whether error window shall display a company manager face.
+	 * @return \c true if the company of this error message is valid.
+	 */
 	bool HasFace() const { return company != CompanyID::Invalid(); }
 };
 

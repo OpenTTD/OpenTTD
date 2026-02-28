@@ -25,8 +25,8 @@
 #include "saveload/saveload.h"
 #include "timer/timer_game_calendar.h"
 
-const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
-const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
+const uint TILE_AXIAL_DISTANCE = 192; ///< Logical length of the tile in any DiagDirection used in vehicle movement.
+const uint TILE_CORNER_DISTANCE = 128; ///< Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
 
 /** Vehicle state bits in #Vehicle::vehstatus. */
 enum class VehState : uint8_t {
@@ -110,6 +110,7 @@ struct VehicleSpriteSeq {
 
 	/**
 	 * Check whether the sequence contains any sprites.
+	 * @return \c true iff this has any sprites.
 	 */
 	bool IsValid() const
 	{
@@ -126,6 +127,7 @@ struct VehicleSpriteSeq {
 
 	/**
 	 * Assign a single sprite to the sequence.
+	 * @param sprite The new first sprite.
 	 */
 	void Set(SpriteID sprite)
 	{
@@ -136,6 +138,7 @@ struct VehicleSpriteSeq {
 
 	/**
 	 * Copy data from another sprite sequence, while dropping all recolouring information.
+	 * @param src The source to copy the sprites from.
 	 */
 	void CopyWithoutPalette(const VehicleSpriteSeq &src)
 	{
@@ -169,9 +172,6 @@ extern VehiclePool _vehicle_pool;
 /* Some declarations of functions, so we can make them friendly */
 struct GroundVehicleCache;
 struct LoadgameState;
-extern bool LoadOldVehicle(LoadgameState &ls, int num);
-extern void FixOldVehicles(LoadgameState &ls);
-
 struct GRFFile;
 
 /**
@@ -331,7 +331,7 @@ public:
 		return 0;
 	}
 
-	Vehicle(VehicleType type = VEH_INVALID);
+	Vehicle(VehicleID index, VehicleType type = VEH_INVALID);
 
 	void PreDestructor();
 	/** We want to 'destruct' the right class. */
@@ -417,6 +417,7 @@ public:
 	/**
 	 * Sets the expense type associated to this vehicle type
 	 * @param income whether this is income or (running) expenses of the vehicle
+	 * @return The expense type.
 	 */
 	virtual ExpensesType GetExpenseType([[maybe_unused]] bool income) const { return EXPENSES_OTHER; }
 
@@ -428,6 +429,7 @@ public:
 
 	/**
 	 * Whether this is the primary vehicle in the chain.
+	 * @return \c true iff this considered the primary vehicle.
 	 */
 	virtual bool IsPrimaryVehicle() const { return false; }
 
@@ -436,6 +438,7 @@ public:
 	/**
 	 * Gets the sprite to show for the given direction
 	 * @param direction the direction the vehicle is facing
+	 * @param image_type Context where the image is being drawn.
 	 * @param[out] result Vehicle sprite sequence.
 	 */
 	virtual void GetImage([[maybe_unused]] Direction direction, [[maybe_unused]] EngineImageType image_type, [[maybe_unused]] VehicleSpriteSeq *result) const { result->Clear(); }
@@ -712,7 +715,7 @@ public:
 
 	/**
 	 * Get the next station the vehicle will stop at.
-	 * @return ID of the next station the vehicle will stop at or StationID::Invalid().
+	 * @param next_station The next stations that we have already seen, and might be adding to.
 	 */
 	inline void GetNextStoppingStation(std::vector<StationID> &next_station) const
 	{
@@ -763,6 +766,10 @@ public:
 	 */
 	virtual TileIndex GetOrderStationLocation([[maybe_unused]] StationID station) { return INVALID_TILE; }
 
+	/**
+	 * Tile to use for economic calculations when moving cargo into or out of this vehicle.
+	 * @return The cargo (un)load tile.
+	 */
 	virtual TileIndex GetCargoTile() const { return this->tile; }
 
 	/**
@@ -772,6 +779,10 @@ public:
 	 */
 	virtual ClosestDepot FindClosestDepot() { return {}; }
 
+	/**
+	 * Set the destination of this vehicle.
+	 * @param tile The tile to go to.
+	 */
 	virtual void SetDestTile(TileIndex tile) { this->dest_tile = tile; }
 
 	CommandCost SendToDepot(DoCommandFlags flags, DepotCommandFlags command);
@@ -1018,8 +1029,9 @@ struct SpecializedVehicle : public Vehicle {
 
 	/**
 	 * Set vehicle type correctly
+	 * @param index The index into the vehicle pool.
 	 */
-	inline SpecializedVehicle() : Vehicle(Type)
+	inline SpecializedVehicle(VehicleID index) : Vehicle(index, Type)
 	{
 		this->sprite_cache.sprite_seq.count = 1;
 	}
@@ -1110,6 +1122,7 @@ struct SpecializedVehicle : public Vehicle {
 
 	/**
 	 * Gets vehicle with given index
+	 * @param index The pool index to look for.
 	 * @return pointer to vehicle with given index cast to T *
 	 */
 	static inline T *Get(auto index)
@@ -1119,11 +1132,35 @@ struct SpecializedVehicle : public Vehicle {
 
 	/**
 	 * Returns vehicle if the index is a valid index for this vehicle type
+	 * @param index The pool index to look for.
 	 * @return pointer to vehicle with given index if it's a vehicle of this type
 	 */
 	static inline T *GetIfValid(auto index)
 	{
 		return IsValidID(index) ? Get(index) : nullptr;
+	}
+
+	/**
+	 * Creates a new T-object in the vehicle pool.
+	 * @param args The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *Create(Targs &&... args)
+	{
+		return Vehicle::Create<T>(std::forward<Targs&&>(args)...);
+	}
+
+	/**
+	 * Creates a new T-object in the vehicle pool.
+	 * @param index The index allocate the object at.
+	 * @param args The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *CreateAtIndex(VehicleID index, Targs &&... args)
+	{
+		return Vehicle::CreateAtIndex<T>(index, std::forward<Targs&&>(args)...);
 	}
 
 	/**

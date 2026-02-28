@@ -26,7 +26,7 @@ extern LinkGraphJobPool _link_graph_job_pool;
 /**
  * Class for calculation jobs to be run on link graphs.
  */
-class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool>{
+class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool> {
 public:
 	/**
 	 * Demand between two nodes.
@@ -119,18 +119,21 @@ public:
 
 		/**
 		 * Get the transport demand between end the points of the edge.
+		 * @param to Remote end of the edge.
 		 * @return Demand.
 		 */
 		uint DemandTo(NodeID to) const { return this->demands[to].demand; }
 
 		/**
 		 * Get the transport demand that hasn't been satisfied by flows, yet.
+		 * @param to Remote end of the edge.
 		 * @return Unsatisfied demand.
 		 */
 		uint UnsatisfiedDemandTo(NodeID to) const { return this->demands[to].unsatisfied_demand; }
 
 		/**
 		 * Satisfy some demand.
+		 * @param to Remote end of the edge.
 		 * @param demand Demand to be satisfied.
 		 */
 		void SatisfyDemandTo(NodeID to, uint demand)
@@ -175,10 +178,11 @@ public:
 	/**
 	 * Bare constructor, only for save/load. link_graph, join_date and actually
 	 * settings have to be brutally const-casted in order to populate them.
+	 * @param index Index into the LinkGraphJob pool.
 	 */
-	LinkGraphJob() : settings(_settings_game.linkgraph) {}
+	LinkGraphJob(LinkGraphJobID index) : LinkGraphJobPool::PoolItem<&_link_graph_job_pool>(index), link_graph(LinkGraphID::Invalid()), settings(_settings_game.linkgraph) {}
 
-	LinkGraphJob(const LinkGraph &orig);
+	LinkGraphJob(LinkGraphJobID index, const LinkGraph &orig);
 	~LinkGraphJob();
 
 	void Init();
@@ -275,21 +279,37 @@ public:
 	static Path *invalid_path;
 
 	Path(NodeID n, bool source = false);
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~Path() = default;
 
-	/** Get the node this leg passes. */
+	/**
+	 * Get the node this leg passes.
+	 * @return The node.
+	 */
 	inline NodeID GetNode() const { return this->node; }
 
-	/** Get the overall origin of the path. */
+	/**
+	 * Get the overall origin of the path.
+	 * @return The origin node.
+	 */
 	inline NodeID GetOrigin() const { return this->origin; }
 
-	/** Get the parent leg of this one. */
+	/**
+	 * Get the parent leg of this one.
+	 * @return The parent of this leg.
+	 */
 	inline Path *GetParent() { return this->parent; }
 
-	/** Get the overall capacity of the path. */
+	/**
+	 * Get the overall capacity of the path.
+	 * @return The path's capacity.
+	 */
 	inline uint GetCapacity() const { return this->capacity; }
 
-	/** Get the free capacity of the path. */
+	/**
+	 * Get the free capacity of the path.
+	 * @return The path's capacity that isn't used.
+	 */
 	inline int GetFreeCapacity() const { return this->free_capacity; }
 
 	/**
@@ -313,19 +333,34 @@ public:
 		return Path::GetCapacityRatio(this->free_capacity, this->capacity);
 	}
 
-	/** Get the overall distance of the path. */
+	/**
+	 * Get the overall distance of the path.
+	 * @return The path's length.
+	 */
 	inline uint GetDistance() const { return this->distance; }
 
-	/** Reduce the flow on this leg only by the specified amount. */
+	/**
+	 * Reduce the flow on this leg only by the specified amount.
+	 * @param f The amount of flow to decrease by.
+	 */
 	inline void ReduceFlow(uint f) { this->flow -= f; }
 
-	/** Increase the flow on this leg only by the specified amount. */
+	/**
+	 * Increase the flow on this leg only by the specified amount.
+	 * @param f The amount of flow to increase by.
+	 */
 	inline void AddFlow(uint f) { this->flow += f; }
 
-	/** Get the flow on this leg. */
+	/**
+	 * Get the flow on this leg.
+	 * @return The accumulated flow.
+	 */
 	inline uint GetFlow() const { return this->flow; }
 
-	/** Get the number of "forked off" child legs of this one. */
+	/**
+	 * Get the number of "forked off" child legs of this one.
+	 * @return The number of children.
+	 */
 	inline uint GetNumChildren() const { return this->num_children; }
 
 	/**
@@ -344,12 +379,13 @@ public:
 
 protected:
 
-	/*
+	/** @{
 	 * Some boundaries to clamp against in order to avoid integer overflows.
 	 */
 	static constexpr int PATH_CAP_MULTIPLIER = 16;
 	static constexpr int PATH_CAP_MIN_FREE = (INT_MIN + 1) / PATH_CAP_MULTIPLIER;
 	static constexpr int PATH_CAP_MAX_FREE = (INT_MAX - 1) / PATH_CAP_MULTIPLIER;
+	/** @} */
 
 	uint distance = 0; ///< Sum(distance of all legs up to this one).
 	uint capacity = 0; ///< This capacity is min(capacity) fom all edges.

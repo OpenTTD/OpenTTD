@@ -45,7 +45,7 @@ enum GraphWidgets : WidgetID {
 /** Widget of the #PerformanceRatingDetailWindow class. */
 enum PerformanceRatingDetailsWidgets : WidgetID {
 	WID_PRD_SCORE_FIRST, ///< First entry in the score list.
-	WID_PRD_SCORE_LAST = WID_PRD_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1, ///< Last entry in the score list.
+	WID_PRD_SCORE_LAST = WID_PRD_SCORE_FIRST + to_underlying(ScoreID::End) - 1, ///< Last entry in the score list.
 
 	WID_PRD_COMPANY_FIRST, ///< First company.
 	WID_PRD_COMPANY_LAST  = WID_PRD_COMPANY_FIRST + MAX_COMPANIES - 1, ///< Last company.

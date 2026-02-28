@@ -71,11 +71,13 @@ public:
 
 	/**
 	 * Implicit conversion to the TileIndex.
+	 * @return The converted tile index.
 	 */
 	[[debug_inline]] inline constexpr operator TileIndex() const { return this->tile; }
 
 	/**
 	 * Implicit conversion to the uint for bounds checking.
+	 * @return The (unsigned) integer representation of the tile location.
 	 */
 	[[debug_inline]] inline constexpr operator uint() const { return this->tile.base(); }
 
@@ -83,7 +85,6 @@ public:
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &type()
@@ -95,7 +96,6 @@ public:
 	 * The height of the northern corner
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the height for.
 	 * @return reference to the byte holding the height.
 	 */
 	[[debug_inline]] inline uint8_t &height()
@@ -107,7 +107,6 @@ public:
 	 * Primarily used for ownership information
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m1()
@@ -119,7 +118,6 @@ public:
 	 * Primarily used for indices to towns, industries and stations
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the uint16_t holding the data.
 	 */
 	[[debug_inline]] inline uint16_t &m2()
@@ -131,7 +129,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m3()
@@ -143,7 +140,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m4()
@@ -155,7 +151,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m5()
@@ -167,7 +162,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m6()
@@ -179,7 +173,6 @@ public:
 	 * Primarily used for newgrf support
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the byte holding the data.
 	 */
 	[[debug_inline]] inline uint8_t &m7()
@@ -191,7 +184,6 @@ public:
 	 * General purpose
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
-	 * @param tile The tile to get the data for.
 	 * @return reference to the uint16_t holding the data.
 	 */
 	[[debug_inline]] inline uint16_t &m8()
@@ -223,9 +215,7 @@ private:
 		TileIndex index;
 	};
 
-	/*
-	 * Iterable ensemble of all Tiles
-	 */
+	/** Iterable ensemble of all %Tiles. */
 	struct IterateWrapper {
 		Iterator begin() { return Iterator(TileIndex{}); }
 		Iterator end() { return Iterator(TileIndex{Map::Size()}); }
@@ -293,7 +283,7 @@ public:
 	}
 
 	/**
-	 * Gets the maximum X coordinate within the map, including MP_VOID
+	 * Gets the maximum X coordinate within the map, including TileType::Void
 	 * @return the maximum X coordinate
 	 */
 	[[debug_inline]] inline static uint MaxX()
@@ -302,7 +292,7 @@ public:
 	}
 
 	/**
-	 * Gets the maximum Y coordinate within the map, including MP_VOID
+	 * Gets the maximum Y coordinate within the map, including TileType::Void
 	 * @return the maximum Y coordinate
 	 */
 	static inline uint MaxY()
@@ -324,7 +314,8 @@ public:
 	/**
 	 * 'Wraps' the given "tile" so it is within the map.
 	 * It does this by masking the 'high' bits of.
-	 * @param tile the tile to 'wrap'
+	 * @param tile the tile to 'wrap'.
+	 * @return The wrapped tile.
 	 */
 	static inline TileIndex WrapToMap(TileIndex tile)
 	{
@@ -418,6 +409,7 @@ inline TileIndexDiff TileDiffXY(int x, int y)
 	return TileIndex{(y >> 4 << Map::LogX()) + (x >> 4)};
 }
 
+TileIndex TileVirtXYClampedToMap(int x, int y);
 
 /**
  * Get the X component of a tile

@@ -54,9 +54,9 @@ static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
 template <typename Tdir, uint items>
 struct SmallSet {
 private:
-	uint n = 0; // actual number of units
-	bool overflowed = false; // did we try to overflow the set?
-	const std::string_view name; // name, used for debugging purposes...
+	uint n = 0; ///< Actual number of units.
+	bool overflowed = false; ///< Did we try to overflow the set?
+	const std::string_view name; ///< Name, used for debugging purposes...
 
 	/** Element of set */
 	struct SSdata {
@@ -65,7 +65,10 @@ private:
 	} data[items];
 
 public:
-	/** Constructor - just set default values and 'name' */
+	/**
+	 * Constructor - just set default values and 'name'
+	 * @param name The name of the set.
+	 */
 	SmallSet(std::string_view name) : name(name) { }
 
 	/** Reset variables to default values */
@@ -190,7 +193,11 @@ static SmallSet<DiagDirection, SIG_TBD_SIZE> _tbdset("_tbdset");    ///< set of 
 static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of places to be updated in following runs
 
 
-/** Check whether there is a train on rail, not in a depot */
+/**
+ * Check whether there is a train on rail, not in a depot.
+ * @param v The vehicle to check.
+ * @return \c true when the vehicle is a train that's not in a depot.
+ */
 static bool IsTrainAndNotInDepot(const Vehicle *v)
 {
 	return v->type == VEH_TRAIN && Train::From(v)->track != TRACK_BIT_DEPOT;
@@ -275,7 +282,7 @@ static SigFlags ExploreSegment(Owner owner)
 		DiagDirection exitdir = enterdir == INVALID_DIAGDIR ? INVALID_DIAGDIR : ReverseDiagDir(enterdir); // expected new exit direction (for straight line)
 
 		switch (GetTileType(tile)) {
-			case MP_RAILWAY: {
+			case TileType::Railway: {
 				if (GetTileOwner(tile) != owner) continue; // do not propagate signals on others' tiles (remove for tracksharing)
 
 				if (IsRailDepot(tile)) {
@@ -352,7 +359,7 @@ static SigFlags ExploreSegment(Owner owner)
 				continue; // continue the while() loop
 				}
 
-			case MP_STATION:
+			case TileType::Station:
 				if (!HasStationRail(tile)) continue;
 				if (GetTileOwner(tile) != owner) continue;
 				if (DiagDirToAxis(enterdir) != GetRailStationAxis(tile)) continue; // different axis
@@ -362,7 +369,7 @@ static SigFlags ExploreSegment(Owner owner)
 				tile += TileOffsByDiagDir(exitdir);
 				break;
 
-			case MP_ROAD:
+			case TileType::Road:
 				if (!IsLevelCrossing(tile)) continue;
 				if (GetTileOwner(tile) != owner) continue;
 				if (DiagDirToAxis(enterdir) == GetCrossingRoadAxis(tile)) continue; // different axis
@@ -371,7 +378,7 @@ static SigFlags ExploreSegment(Owner owner)
 				tile += TileOffsByDiagDir(exitdir);
 				break;
 
-			case MP_TUNNELBRIDGE: {
+			case TileType::TunnelBridge: {
 				if (GetTileOwner(tile) != owner) continue;
 				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) continue;
 				DiagDirection dir = GetTunnelBridgeDirection(tile);
@@ -490,13 +497,13 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 		assert(_tbuset.IsEmpty());
 		assert(_tbdset.IsEmpty());
 
-		/* After updating signal, data stored are always MP_RAILWAY with signals.
+		/* After updating signal, data stored are always TileType::Railway with signals.
 		 * Other situations happen when data are from outside functions -
 		 * modification of railbits (including both rail building and removal),
 		 * train entering/leaving block, train leaving depot...
 		 */
 		switch (GetTileType(tile)) {
-			case MP_TUNNELBRIDGE:
+			case TileType::TunnelBridge:
 				/* 'optimization assert' - do not try to update signals when it is not needed */
 				assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL);
 				assert(dir == INVALID_DIAGDIR || dir == ReverseDiagDir(GetTunnelBridgeDirection(tile)));
@@ -504,7 +511,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 				_tbdset.Add(GetOtherTunnelBridgeEnd(tile), INVALID_DIAGDIR);
 				break;
 
-			case MP_RAILWAY:
+			case TileType::Railway:
 				if (IsRailDepot(tile)) {
 					/* 'optimization assert' do not try to update signals in other cases */
 					assert(dir == INVALID_DIAGDIR || dir == GetRailDepotDirection(tile));
@@ -513,8 +520,8 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 				}
 				[[fallthrough]];
 
-			case MP_STATION:
-			case MP_ROAD:
+			case TileType::Station:
+			case TileType::Road:
 				if ((TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
 					/* only add to set when there is some 'interesting' track */
 					_tbdset.Add(tile, dir);

@@ -138,7 +138,7 @@ void AfterLoadCompanyStats()
 	Company *c;
 	for (const auto tile : Map::Iterate()) {
 		switch (GetTileType(tile)) {
-			case MP_RAILWAY:
+			case TileType::Railway:
 				c = Company::GetIfValid(GetTileOwner(tile));
 				if (c != nullptr) {
 					uint pieces = 1;
@@ -153,7 +153,7 @@ void AfterLoadCompanyStats()
 				}
 				break;
 
-			case MP_ROAD: {
+			case TileType::Road: {
 				if (IsLevelCrossing(tile)) {
 					c = Company::GetIfValid(GetTileOwner(tile));
 					if (c != nullptr) c->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR;
@@ -170,7 +170,7 @@ void AfterLoadCompanyStats()
 				break;
 			}
 
-			case MP_STATION:
+			case TileType::Station:
 				c = Company::GetIfValid(GetTileOwner(tile));
 				if (c != nullptr && GetStationType(tile) != StationType::Airport && !IsBuoy(tile)) c->infrastructure.station++;
 
@@ -205,7 +205,7 @@ void AfterLoadCompanyStats()
 				}
 				break;
 
-			case MP_WATER:
+			case TileType::Water:
 				if (IsShipDepot(tile) || IsLock(tile)) {
 					c = Company::GetIfValid(GetTileOwner(tile));
 					if (c != nullptr) {
@@ -219,14 +219,14 @@ void AfterLoadCompanyStats()
 				}
 				[[fallthrough]];
 
-			case MP_OBJECT:
+			case TileType::Object:
 				if (GetWaterClass(tile) == WaterClass::Canal) {
 					c = Company::GetIfValid(GetTileOwner(tile));
 					if (c != nullptr) c->infrastructure.water++;
 				}
 				break;
 
-			case MP_TUNNELBRIDGE: {
+			case TileType::TunnelBridge: {
 				/* Only count the tunnel/bridge if we're on the northern end tile. */
 				TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 				if (tile < other_end) {
@@ -269,14 +269,14 @@ void AfterLoadCompanyStats()
 	}
 }
 
-/* We do need to read this single value, as the bigger it gets, the more data is stored */
+/** We do need to read this single value, as the bigger it gets, the more data is stored. */
 struct CompanyOldAI {
 	uint8_t num_build_rec;
 };
 
 class SlCompanyOldAIBuildRec : public DefaultSaveLoadHandler<SlCompanyOldAIBuildRec, CompanyOldAI> {
 public:
-	static inline const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+	static inline const SaveLoad description[] = {{}}; ///< Needed to keep DefaultSaveLoadHandler happy.
 	static inline const SaveLoadCompatTable compat_description = _company_old_ai_buildrec_compat;
 
 	SaveLoadTable GetDescription() const override { return {}; }
@@ -456,7 +456,7 @@ public:
 
 		if (IsSavegameVersionBefore(SLV_85)) {
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
-			std::move_backward(&c->livery[LS_FREIGHT_WAGON - 2], &c->livery[LS_END - 2], &c->livery[LS_END]);
+			std::move_backward(std::begin(c->livery) + LS_FREIGHT_WAGON - 2, std::end(c->livery) - 2, std::end(c->livery));
 			c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
 			c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
 		}
@@ -487,7 +487,7 @@ public:
 	void LoadCheck(CompanyProperties *cprops) const override { this->Load(cprops); }
 };
 
-/* Save/load of companies */
+/** Save/load of companies. */
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
 	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),
@@ -499,6 +499,7 @@ static const SaveLoad _company_desc[] = {
 
 	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SLV_COMPANY_ALLOW_LIST_V2),
 	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SLV_COMPANY_ALLOW_LIST_V2, SL_MAX_VERSION),
+	SLE_VAR(CompanyProperties, allow_any, SLE_BOOL),
 
 	SLE_VARNAME(CompanyProperties, face.bits, "face", SLE_UINT32),
 	SLE_CONDSSTRNAME(CompanyProperties, face.style_label, "face_style", SLE_STR, SLV_FACE_STYLES, SL_MAX_VERSION),
@@ -567,7 +568,7 @@ struct PLYRChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Company *c = new (CompanyID(index)) Company();
+			Company *c = Company::CreateAtIndex(CompanyID(index));
 			SlObject(c, slt);
 			_company_colours[index] = c->colour;
 		}

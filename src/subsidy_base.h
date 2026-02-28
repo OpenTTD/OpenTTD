@@ -27,11 +27,8 @@ struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
 	Source src{}; ///< Source of subsidised path
 	Source dst{}; ///< Destination of subsidised path
 
-	/**
-	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
-	 */
-	Subsidy() { }
-	Subsidy(CargoType cargo_type, Source src, Source dst, uint16_t remaining) : cargo_type(cargo_type), remaining(remaining), src(src), dst(dst) {}
+	Subsidy(SubsidyID index, CargoType cargo_type = INVALID_CARGO, Source src = {}, Source dst = {}, uint16_t remaining = 0) :
+		SubsidyPool::PoolItem<&_subsidy_pool>(index), cargo_type(cargo_type), remaining(remaining), src(src), dst(dst) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter

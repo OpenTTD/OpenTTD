@@ -124,7 +124,7 @@
 /* Define all types here, so they are added to the API docs. */
 using BridgeType = uint32_t; ///< The ID of a bridge type.
 using CargoType = uint8_t; ///< The ID of a cargo type.
-using ClientID = uint32_t; //< The ID of a (network) client.
+using ClientID = uint32_t; ///< The ID of a (network) client.
 using CompanyID = uint8_t; ///< The ID of a company.
 using EngineID = uint16_t; ///< The ID of an engine.
 using GoalID = uint16_t; ///< The ID of a goal.

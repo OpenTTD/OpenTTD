@@ -37,13 +37,13 @@
 # define MW(a) {a, PALETTE_TO_STRUCT_WHITE}
 # define MC(a) {a, PALETTE_TO_STRUCT_CONCRETE}
 
-/* Sprite table for middle part of aqueduct. */
+/** Sprite table for middle part of aqueduct. */
 static const PalSpriteID _aqueduct_sprite_table_middle[] = {
 	{SPR_AQUEDUCT_MIDDLE_X, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_X, PAL_NONE}, {0x0, PAL_NONE}, // AXIS_X
 	{SPR_AQUEDUCT_MIDDLE_Y, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_Y, PAL_NONE}, {0x0, PAL_NONE}, // AIXS_Y
 };
 
-/* Sprite table for head part of aqueduct. */
+/** Sprite table for head part of aqueduct. */
 static const PalSpriteID _aqueduct_sprite_table_heads[] = {
 	{SPR_AQUEDUCT_RAMP_SW, PAL_NONE}, {SPR_AQUEDUCT_RAMP_SE, PAL_NONE}, {SPR_AQUEDUCT_RAMP_NE, PAL_NONE}, {SPR_AQUEDUCT_RAMP_NW, PAL_NONE},
 };

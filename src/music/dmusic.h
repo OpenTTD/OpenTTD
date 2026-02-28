@@ -34,7 +34,7 @@ public:
 /** Factory for the DirectX music player. */
 class FMusicDriver_DMusic : public DriverFactoryBase {
 public:
-	FMusicDriver_DMusic() : DriverFactoryBase(Driver::DT_MUSIC, 10, "dmusic", "DirectMusic MIDI Driver") {}
+	FMusicDriver_DMusic() : DriverFactoryBase(Driver::Type::Music, 10, "dmusic", "DirectMusic MIDI Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_DMusic>(); }
 };
 

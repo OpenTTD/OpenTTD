@@ -69,9 +69,9 @@ public:
 	 * Type of cargo distribution.
 	 */
 	enum DistributionType {
-		DT_MANUAL = ::DT_MANUAL,         ///< Manual distribution.
-		DT_ASYMMETRIC = ::DT_ASYMMETRIC, ///< Asymmetric distribution. Usually cargo will only travel in one direction.
-		DT_SYMMETRIC = ::DT_SYMMETRIC,   ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
+		DT_MANUAL = to_underlying(::DistributionType::Manual), ///< Manual distribution.
+		DT_ASYMMETRIC = to_underlying(::DistributionType::Asymmetric), ///< Asymmetric distribution. Usually cargo will only travel in one direction.
+		DT_SYMMETRIC = to_underlying(::DistributionType::Symmetric), ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
 		INVALID_DISTRIBUTION_TYPE = 0xFFFF, ///< Invalid distribution type.
 	};
 

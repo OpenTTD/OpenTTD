@@ -29,7 +29,7 @@ void GroundVehicle<T, Type>::PowerChanged()
 	uint16_t max_track_speed = this->vcache.cached_max_speed; // Max track speed in internal units.
 
 	for (const T *u = v; u != nullptr; u = u->Next()) {
-		uint32_t current_power = u->GetPower() + u->GetPoweredPartPower(u);
+		uint32_t current_power = u->GetPower() + u->GetPoweredPartPower();
 		total_power += current_power;
 
 		/* Only powered parts add tractive effort. */

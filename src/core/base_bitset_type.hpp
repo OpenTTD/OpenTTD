@@ -25,7 +25,13 @@ public:
 	using BaseType = Tstorage; ///< Storage type of this BaseBitSet, be ConvertibleThroughBase
 	static constexpr Tstorage MASK = Tmask; ///< Mask of valid values.
 
+	/** Create an empty bitset. */
 	constexpr BaseBitSet() : data(0) {}
+
+	/**
+	 * Create a bitset with a given bits that are within the mask of valid values.
+	 * @param data The initial set bits.
+	 */
 	explicit constexpr BaseBitSet(Tstorage data) : data(data & Tmask) {}
 
 	constexpr auto operator <=>(const BaseBitSet &) const noexcept = default;
@@ -251,7 +257,16 @@ public:
 		return std::nullopt;
 	}
 
+	/**
+	 * Returns an iterator to begin of the set bits.
+	 * @return The iterator.
+	 */
 	auto begin() const { return SetBitIterator<Tvalue_type, Tstorage>(this->data).begin(); }
+
+	/**
+	 * Returns an iterator to the end of the set bits.
+	 * @return The iterator past the last set bit.
+	 */
 	auto end() const { return SetBitIterator<Tvalue_type, Tstorage>(this->data).end(); }
 
 private:

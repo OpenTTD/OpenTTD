@@ -88,7 +88,7 @@ void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextC
  * @param min_value Minimum value of slider
  * @param max_value Maximum value of slider
  * @param nmarks Number of marks displayed. Value will be rounded to nearest mark.
- * @param value[in,out] Value to modify
+ * @param[in,out] value Value to modify
  * @return       True if the value setting was modified
  */
 bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int nmarks, int &value)

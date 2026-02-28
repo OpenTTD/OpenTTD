@@ -283,7 +283,7 @@ struct DropdownWindow : Window {
 			if (y > -item_height) {
 				Rect full = ir.Translate(0, y).WithHeight(item_height);
 
-				bool selected = (this->selected_result == item->result) && item->Selectable();
+				bool selected = (this->selected_result == item->result) && item->Selectable() && this->selected_click_result < 0;
 				if (selected) GfxFillRect(full, PC_BLACK);
 
 				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, selected ? this->selected_click_result : -1, colour);
@@ -397,6 +397,7 @@ Dimension GetDropDownListDimension(const DropDownList &list)
  * @param button   The widget which is passed to Window::OnDropdownSelect and OnDropdownClose.
  *                 Unless you override those functions, this should be then widget index of the dropdown button.
  * @param wi_rect  Coord of the parent drop down button, used to position the dropdown menu.
+ * @param wi_colour Colour of the parent widget.
  * @param options Drop Down options for this menu.
  */
 void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, DropDownOptions options)

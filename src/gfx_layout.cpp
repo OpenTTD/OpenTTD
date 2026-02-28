@@ -217,6 +217,8 @@ Dimension Layouter::GetBounds()
 
 /**
  * Test whether a character is a non-printable formatting code
+ * @param ch The character to test.
+ * @return \c true iff it is a non-printable formatting code.
  */
 static bool IsConsumedFormattingCode(char32_t ch)
 {
@@ -268,7 +270,7 @@ ParagraphLayouter::Position Layouter::GetCharPosition(std::string_view::const_it
 
 	/* Scan all runs until we've found our code point index. */
 	size_t best_index = SIZE_MAX;
-	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
+	for (size_t run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
 		const auto &positions = run.GetPositions();
 		const auto &charmap = run.GetGlyphToCharMap();
@@ -306,13 +308,13 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 
 	const auto &line = this->at(line_index);
 
-	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
+	for (size_t run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
 		const auto &glyphs = run.GetGlyphs();
 		const auto &positions = run.GetPositions();
 		const auto &charmap = run.GetGlyphToCharMap();
 
-		for (int i = 0; i < run.GetGlyphCount(); i++) {
+		for (size_t i = 0; i < run.GetGlyphCount(); i++) {
 			/* Not a valid glyph (empty). */
 			if (glyphs[i] == 0xFFFF) continue;
 
@@ -340,6 +342,9 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 
 /**
  * Get a static font instance.
+ * @param size The size of font.
+ * @param colour The font's colour.
+ * @return The cached font.
  */
 Font *Layouter::GetFont(FontSize size, TextColour colour)
 {

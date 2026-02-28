@@ -17,7 +17,7 @@
 #include <fcntl.h>
 #include <mmsystem.h>
 #include <regstr.h>
-#define NO_SHOBJIDL_SORTDIRECTION // Avoid multiple definition of SORT_ASCENDING
+#define NO_SHOBJIDL_SORTDIRECTION /**< Avoid multiple definition of SORT_ASCENDING. */
 #include <shlobj.h> /* SHGetFolderPath */
 #include <shellapi.h>
 #include <winnls.h>
@@ -181,18 +181,30 @@ static std::string ConvertLfToCrLf(std::string_view msg)
 	return output;
 }
 
-/** Callback function to handle the window */
+/**
+ * Callback function to handle the window.
+ *
+ * Relates to the resource with id 101 in ottdres.rc.in.
+ * @param wnd Handle to the window.
+ * @param msg The dialog message to handle.
+ * @param wParam Message specific data; for \c WM_COMMAND the id of the button.
+ * @param lParam Message specific data; for \c WM_INITDIALOG a pointer to a std::wstring containing the dialog text.
+ * @return \c TRUE when the message is handled, otherwise \c FALSE.
+ */
 static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	static constexpr int TEXT_CONTROL = 11;
+	static constexpr int OK_BUTTON = 12;
+
 	switch (msg) {
 		case WM_INITDIALOG: {
 			std::wstring &msg = *reinterpret_cast<std::wstring *>(lParam);
-			SetDlgItemText(wnd, 11, msg.c_str());
-			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
+			SetDlgItemText(wnd, TEXT_CONTROL, msg.c_str());
+			SendDlgItemMessage(wnd, TEXT_CONTROL, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		} return TRUE;
 
 		case WM_COMMAND:
-			if (wParam == 12) ExitProcess(0);
+			if (wParam == OK_BUTTON) ExitProcess(0);
 			return TRUE;
 		case WM_CLOSE:
 			ExitProcess(0);
@@ -351,7 +363,6 @@ std::string FS2OTTD(std::wstring_view name)
  * Convert from OpenTTD's encoding to a wide string.
  * OpenTTD internal encoding is UTF8.
  * @param name valid string that will be converted (UTF8)
- * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return converted string; if failed string is of zero-length
  */
 std::wstring OTTD2FS(std::string_view name)
@@ -397,7 +408,10 @@ wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf)
 	return dst_buf.data();
 }
 
-/** Determine the current user's locale. */
+/**
+ * Determine the current user's locale.
+ * @return String containing current charset, or std::nullopt if not-determinable.
+ */
 std::optional<std::string> GetCurrentLocale(const char *)
 {
 	const LANGID userUiLang = GetUserDefaultUILanguage();
@@ -445,10 +459,10 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 	static const PFNCOMPARESTRINGEX _CompareStringEx = GetKernel32Function("CompareStringEx");
 
 #ifndef SORT_DIGITSASNUMBERS
-#	define SORT_DIGITSASNUMBERS 0x00000008  // use digits as numbers sort method
+#	define SORT_DIGITSASNUMBERS 0x00000008  /**< Use digits as numbers sort method. */
 #endif
 #ifndef LINGUISTIC_IGNORECASE
-#	define LINGUISTIC_IGNORECASE 0x00000010 // linguistically appropriate 'ignore case'
+#	define LINGUISTIC_IGNORECASE 0x00000010 /**< Linguistically appropriate 'ignore case'. */
 #endif
 
 	int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), nullptr, 0);

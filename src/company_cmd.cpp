@@ -63,10 +63,11 @@ INSTANTIATE_POOL_METHODS(Company)
 
 /**
  * Constructor.
+ * @param index The unique pool identifier of this company.
  * @param name_1 Name of the company.
  * @param is_ai  A computer program is running for this company.
  */
-Company::Company(StringID name_1, bool is_ai)
+Company::Company(CompanyID index, StringID name_1, bool is_ai) : CompanyPool::PoolItem<&_company_pool>(index)
 {
 	this->name_1 = name_1;
 	this->is_ai = is_ai;
@@ -78,7 +79,7 @@ Company::Company(StringID name_1, bool is_ai)
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, CompanyID::Invalid());
 }
 
-/** Destructor. */
+/** Close the associated company windows. */
 Company::~Company()
 {
 	if (CleaningPool()) return;
@@ -133,6 +134,7 @@ void SetLocalCompany(CompanyID new_company)
 
 	if (switching_company) {
 		InvalidateWindowClassesData(WC_COMPANY);
+		InvalidateWindowClassesData(WC_VEHICLE_VIEW);
 		/* Delete any construction windows... */
 		CloseConstructionWindows();
 	}
@@ -281,7 +283,7 @@ bool CheckCompanyHasMoney(CommandCost &cost)
  * @param c Company to pay the bill.
  * @param cost Money to pay.
  */
-static void SubtractMoneyFromAnyCompany(Company *c, const CommandCost &cost)
+static void SubtractMoneyFromCompany(Company *c, const CommandCost &cost)
 {
 	if (cost.GetCost() == 0) return;
 	assert(cost.GetExpensesType() != INVALID_EXPENSES);
@@ -307,13 +309,14 @@ static void SubtractMoneyFromAnyCompany(Company *c, const CommandCost &cost)
 }
 
 /**
- * Subtract money from the #_current_company, if the company is valid.
+ * Subtract money from a company, if the company is valid.
+ * @param company CompanyID of company.
  * @param cost Money to pay.
  */
-void SubtractMoneyFromCompany(const CommandCost &cost)
+void SubtractMoneyFromCompany(CompanyID company, const CommandCost &cost)
 {
-	Company *c = Company::GetIfValid(_current_company);
-	if (c != nullptr) SubtractMoneyFromAnyCompany(c, cost);
+	Company *c = Company::GetIfValid(company);
+	if (c != nullptr) SubtractMoneyFromCompany(c, cost);
 }
 
 /**
@@ -330,7 +333,7 @@ void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost &cst)
 	c->money_fraction = m - (uint8_t)cost;
 	cost >>= 8;
 	if (c->money_fraction > m) cost++;
-	if (cost != 0) SubtractMoneyFromAnyCompany(c, CommandCost(cst.GetExpensesType(), cost));
+	if (cost != 0) SubtractMoneyFromCompany(c, CommandCost(cst.GetExpensesType(), cost));
 }
 
 static constexpr void UpdateLandscapingLimit(uint32_t &limit, uint64_t per_64k_frames, uint64_t burst)
@@ -350,10 +353,11 @@ void UpdateLandscapingLimits()
 }
 
 /**
- * Set the right DParams for STR_ERROR_OWNED_BY.
- * @param owner the owner to get the name of.
- * @param tile  optional tile to get the right town.
+ * Get the right StringParameters for STR_ERROR_OWNED_BY.
+ * @param owner The owner to get the name of.
+ * @param tile Optional tile to get the right town.
  * @pre if tile == 0, then owner can't be OWNER_TOWN.
+ * @return The string parameters.
  */
 std::array<StringParameter, 2> GetParamsForOwnedBy(Owner owner, TileIndex tile)
 {
@@ -604,10 +608,10 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 
 	Company *c;
 	if (company == CompanyID::Invalid()) {
-		c = new Company(STR_SV_UNNAMED, is_ai);
+		c = Company::Create(STR_SV_UNNAMED, is_ai);
 	} else {
 		if (Company::IsValidID(company)) return nullptr;
-		c = new (company) Company(STR_SV_UNNAMED, is_ai);
+		c = Company::CreateAtIndex(company, STR_SV_UNNAMED, is_ai);
 	}
 
 	c->colour = colour;
@@ -655,7 +659,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 }
 
 /** Start a new competitor company if possible. */
-TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::COMPETITOR_TIMEOUT, 0 }, []() {
+TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::CompetitorTimeout, 0 }, []() {
 	if (_game_mode == GM_MENU || !AI::CanStartNew()) return;
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 	if (_settings_game.difficulty.competitors_interval == 0) return;
@@ -670,7 +674,7 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::C
 
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, CompanyID::Invalid(), CompanyRemoveReason::None, INVALID_CLIENT_ID);
 });
 
 /** Start of a new game. */
@@ -791,14 +795,14 @@ void OnTick_Companies()
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
 				if (_networking && num_companies++ >= _settings_client.network.max_companies) break;
 				if (num_ais++ >= _settings_game.difficulty.max_no_competitors) break;
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
+				Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, CompanyID::Invalid(), {}, INVALID_CLIENT_ID);
 			}
 			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
 		}
 		/* Randomize a bit when the AI is actually going to start; ranges from 87.5% .. 112.5% of indicated value. */
 		timeout += ScriptObject::GetRandomizer(OWNER_NONE).Next(timeout / 4) - timeout / 8;
 
-		_new_competitor_timeout.Reset({ TimerGameTick::Priority::COMPETITOR_TIMEOUT, static_cast<uint>(std::max(1, timeout)) });
+		_new_competitor_timeout.Reset({ TimerGameTick::Priority::CompetitorTimeout, static_cast<uint>(std::max(1, timeout)) });
 	}
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
@@ -808,7 +812,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::Trigger::Year, TimerGameEconomy::Priority::Company}, [](auto)
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {
@@ -831,6 +835,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGam
 
 /**
  * Fill the CompanyNewsInformation struct with the required data.
+ * @param title The title of the company news.
  * @param c the current company.
  * @param other the other company (use \c nullptr if not relevant).
  */
@@ -875,6 +880,7 @@ void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
  * @param flags operation to perform
  * @param cca action to perform
  * @param company_id company to perform the action on
+ * @param reason The reason why the company is being removed.
  * @param client_id ClientID
  * @return the cost of this operation or an error
  */
@@ -883,7 +889,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 
 	switch (cca) {
-		case CCA_NEW: { // Create a new company
+		case CompanyCtrlAction::New: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
@@ -925,7 +931,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 				if (!_company_manager_face.empty()) {
 					auto cmf = ParseCompanyManagerFaceCode(_company_manager_face);
 					if (cmf.has_value()) {
-						Command<CMD_SET_COMPANY_MANAGER_FACE>::SendNet(STR_NULL, c->index, cmf->style, cmf->bits);
+						Command<Commands::SetCompanyManagerFace>::SendNet(STR_NULL, c->index, cmf->style, cmf->bits);
 					}
 				}
 
@@ -938,7 +944,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 			break;
 		}
 
-		case CCA_NEW_AI: { // Make a new AI company
+		case CompanyCtrlAction::NewAI: { // Make a new AI company
 			if (company_id != CompanyID::Invalid() && company_id >= MAX_COMPANIES) return CMD_ERROR;
 
 			/* For network games, company deletion is delayed. */
@@ -957,8 +963,8 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 			break;
 		}
 
-		case CCA_DELETE: { // Delete a company
-			if (reason >= CRR_END) return CMD_ERROR;
+		case CompanyCtrlAction::Delete: { // Delete a company
+			if (reason >= CompanyRemoveReason::End) return CMD_ERROR;
 
 			/* We can't delete the last existing company in singleplayer mode. */
 			if (!_networking && Company::GetNumItems() == 1) return CMD_ERROR;
@@ -1002,11 +1008,21 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 static bool ExecuteAllowListCtrlAction(CompanyAllowListCtrlAction action, Company *c, const std::string &public_key)
 {
 	switch (action) {
-		case CALCA_ADD:
+		case CompanyAllowListCtrlAction::AddKey:
 			return c->allow_list.Add(public_key);
 
-		case CALCA_REMOVE:
+		case CompanyAllowListCtrlAction::RemoveKey:
 			return c->allow_list.Remove(public_key);
+
+		case CompanyAllowListCtrlAction::AllowAny:
+			if (c->allow_any) return false;
+			c->allow_any = true;
+			return true;
+
+		case CompanyAllowListCtrlAction::AllowListed:
+			if (!c->allow_any) return false;
+			c->allow_any = false;
+			return true;
 
 		default:
 			NOT_REACHED();
@@ -1025,12 +1041,16 @@ CommandCost CmdCompanyAllowListCtrl(DoCommandFlags flags, CompanyAllowListCtrlAc
 	Company *c = Company::GetIfValid(_current_company);
 	if (c == nullptr) return CMD_ERROR;
 
-	/* The public key length includes the '\0'. */
-	if (public_key.size() != NETWORK_PUBLIC_KEY_LENGTH - 1) return CMD_ERROR;
-
 	switch (action) {
-		case CALCA_ADD:
-		case CALCA_REMOVE:
+		case CompanyAllowListCtrlAction::AddKey:
+		case CompanyAllowListCtrlAction::RemoveKey:
+			/* The public key length includes the '\0'. */
+			if (public_key.size() != NETWORK_PUBLIC_KEY_LENGTH - 1) return CMD_ERROR;
+			break;
+
+		case CompanyAllowListCtrlAction::AllowAny:
+		case CompanyAllowListCtrlAction::AllowListed:
+			if (public_key.size() != 0) return CMD_ERROR;
 			break;
 
 		default:
@@ -1206,6 +1226,8 @@ CommandCost CmdRenameCompany(DoCommandFlags flags, const std::string &text)
 		} else {
 			c->name = text;
 		}
+
+		InvalidateWindowClassesData(WC_COMPANY, WID_C_COMPANY_NAME);
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
 
@@ -1255,11 +1277,11 @@ CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text)
 			c->president_name = text;
 
 			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) {
-				Command<CMD_RENAME_COMPANY>::Do(DoCommandFlag::Execute, text + " Transport");
+				Command<Commands::RenameCompany>::Do(DoCommandFlag::Execute, text + " Transport");
 			}
 		}
 
-		InvalidateWindowClassesData(WC_COMPANY, 1);
+		InvalidateWindowClassesData(WC_COMPANY, WID_C_PRESIDENT_NAME);
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
 
@@ -1326,9 +1348,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Add money to company */
-		Backup<CompanyID> cur_company(_current_company, dest_company);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
-		cur_company.Restore();
+		SubtractMoneyFromCompany(dest_company, CommandCost(EXPENSES_OTHER, -amount.GetCost()));
 
 		if (_networking) {
 			std::string dest_company_name = GetString(STR_COMPANY_NAME, dest_company);
@@ -1416,7 +1436,7 @@ std::optional<uint> FindCompanyManagerFaceLabel(std::string_view label)
 
 /**
  * Get the face variables for a face style.
- * @param style_index Face style to get variables for.
+ * @param style Face style to get variables for.
  * @return Variables for the face style.
  */
 FaceVars GetCompanyManagerFaceVars(uint style)
@@ -1457,7 +1477,7 @@ void RandomiseCompanyManagerFace(CompanyManagerFace &cmf, Randomizer &randomizer
  * Mask company manager face bits to ensure they are all within range.
  * @note Does not update the CompanyManagerFace itself. Unused bits are cleared.
  * @param cmf The CompanyManagerFace.
- * @param style The face variables.
+ * @param vars The face variables.
  * @return The masked face bits.
  */
 uint32_t MaskCompanyManagerFaceBits(const CompanyManagerFace &cmf, FaceVars vars)

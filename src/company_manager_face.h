@@ -18,21 +18,22 @@
 
 #include "table/strings.h"
 
+/** Ways a FaceVar should be interpreted. */
 enum class FaceVarType : uint8_t {
-	Sprite,
-	Palette,
-	Toggle,
+	Sprite, ///< FaceVar describes an offset to the given SpriteID.
+	Palette, ///< FaceVar describes a palette to apply to the given parts bitmask.
+	Toggle, ///< FaceVar describes which other FaceVars should be turned off.
 };
 
 /** Information about the valid values of CompanyManagerFace bitgroups as well as the sprites to draw */
 struct FaceVar {
-	FaceVarType type;
+	FaceVarType type; ///< Type of variable.
 	uint8_t position; ///< Position in UI.
 	uint8_t offset; ///< Offset in bits into the CompanyManagerFace
 	uint8_t length; ///< Number of bits used in the CompanyManagerFace
 	uint8_t valid_values; ///< The number of valid values
 	std::variant<SpriteID, uint64_t, std::pair<uint64_t, uint64_t>> data; ///< The first sprite
-	StringID name = STR_NULL;
+	StringID name = STR_NULL; ///< Name of the configurable component of the face.
 
 	/**
 	 * Gets the company manager's face bits.
@@ -85,7 +86,7 @@ struct FaceVar {
 
 	/**
 	 * Scales a company manager's face bits variable to the correct scope
-	 * @param vars The face variables of the face style.
+	 * @param val The value to scale.
 	 * @pre val < (1U << length), i.e. val has a value of 0..2^(bits used for this variable)-1
 	 * @return the scaled value
 	 */
@@ -154,6 +155,7 @@ inline uint64_t GetActiveFaceVars(const CompanyManagerFace &cmf, FaceVars vars)
  * Scales all company manager's face bits to the correct scope
  *
  * @param cmf the company manager's face to write the bits to
+ * @param vars The face variables to scale.
  */
 inline void ScaleAllCompanyManagerFaceBits(CompanyManagerFace &cmf, FaceVars vars)
 {

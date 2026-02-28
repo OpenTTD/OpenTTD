@@ -30,6 +30,8 @@
  */
 
 struct ScriptAllocator {
+	friend class Squirrel;
+
 private:
 	std::allocator<uint8_t> allocator;
 	size_t allocated_size = 0; ///< Sum of allocated data size
@@ -158,6 +160,7 @@ public:
 		if (this->allocation_limit == 0) this->allocation_limit = SAFE_LIMIT; // in case the setting is somehow zero
 	}
 
+	/** Ensure the allocations have already been released. */
 	~ScriptAllocator()
 	{
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
@@ -733,6 +736,7 @@ bool Squirrel::LoadScript(const std::string &script)
 	return LoadScript(this->vm, script);
 }
 
+/** Clean up the Squirrel virtual machine state. */
 Squirrel::~Squirrel()
 {
 	this->Uninitialize();
@@ -813,4 +817,15 @@ bool Squirrel::CanSuspend()
 SQInteger Squirrel::GetOpsTillSuspend()
 {
 	return this->vm->_ops_till_suspend;
+}
+
+void Squirrel::IncreaseAllocatedSize(size_t bytes)
+{
+	_squirrel_allocator->CheckAllocationAllowed(bytes);
+	_squirrel_allocator->allocated_size += bytes;
+}
+
+void Squirrel::DecreaseAllocatedSize(size_t bytes)
+{
+	_squirrel_allocator->allocated_size -= bytes;
 }

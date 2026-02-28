@@ -13,48 +13,54 @@
 #include "bridge_map.h"
 #include "industry_type.h"
 
+static constexpr size_t CLEAR_GROUND_BITS = 3; ///< How many bits in map array are dedicated for clear ground type.
+
 /**
  * Ground types. Valid densities in comments after the enum.
  */
-enum ClearGround : uint8_t {
-	CLEAR_GRASS  = 0, ///< 0-3
-	CLEAR_ROUGH  = 1, ///< 3
-	CLEAR_ROCKS  = 2, ///< 3
-	CLEAR_FIELDS = 3, ///< 3
-	CLEAR_SNOW   = 4, ///< 0-3 (Not stored in map.)
-	CLEAR_DESERT = 5, ///< 1,3
+enum class ClearGround : uint8_t {
+	Grass = 0, ///< Plain grass with dirt transition (0-3)
+	Rough = 1, ///< Rough mounds (3)
+	Rocks = 2, ///< Rocks with snow transition (0-3)
+	Fields = 3, ///< Farm fields (3)
+	Desert = 5, ///< Desert with transition (1,3)
+
+	End, ///< End marker.
+	MaxSize = 1U << CLEAR_GROUND_BITS, ///< The maximum possible number of clear ground types to be stored in map.
 };
 
+static_assert(ClearGround::End <= ClearGround::MaxSize);
 
 /**
  * Test if a tile is covered with snow.
  * @param t the tile to check
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  * @return whether the tile is covered with snow.
  */
 inline bool IsSnowTile(Tile t)
 {
-	assert(IsTileType(t, MP_CLEAR));
+	assert(IsTileType(t, TileType::Clear));
 	return HasBit(t.m3(), 4);
 }
 
 /**
  * Get the type of clear tile.
  * @param t the tile to get the clear ground type of
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  * @return the ground type
  */
 inline ClearGround GetClearGround(Tile t)
 {
-	assert(IsTileType(t, MP_CLEAR));
-	return static_cast<ClearGround>(GB(t.m5(), 2, 3));
+	assert(IsTileType(t, TileType::Clear));
+	return static_cast<ClearGround>(GB(t.m5(), 2, CLEAR_GROUND_BITS));
 }
 
 /**
  * Set the type of clear tile.
  * @param t  the tile to set the clear ground type of
  * @param ct the ground type
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
+ * @return \c true when the ground is of the given ground type.
  */
 inline bool IsClearGround(Tile t, ClearGround ct)
 {
@@ -65,12 +71,12 @@ inline bool IsClearGround(Tile t, ClearGround ct)
 /**
  * Get the density of a non-field clear tile.
  * @param t the tile to get the density of
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  * @return the density
  */
 inline uint GetClearDensity(Tile t)
 {
-	assert(IsTileType(t, MP_CLEAR));
+	assert(IsTileType(t, TileType::Clear));
 	return GB(t.m5(), 0, 2);
 }
 
@@ -78,11 +84,11 @@ inline uint GetClearDensity(Tile t)
  * Increment the density of a non-field clear tile.
  * @param t the tile to increment the density of
  * @param d the amount to increment the density with
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  */
 inline void AddClearDensity(Tile t, int d)
 {
-	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
+	assert(IsTileType(t, TileType::Clear)); // XXX incomplete
 	t.m5() += d;
 }
 
@@ -90,11 +96,11 @@ inline void AddClearDensity(Tile t, int d)
  * Set the density of a non-field clear tile.
  * @param t the tile to set the density of
  * @param d the new density
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  */
 inline void SetClearDensity(Tile t, uint d)
 {
-	assert(IsTileType(t, MP_CLEAR));
+	assert(IsTileType(t, TileType::Clear));
 	SB(t.m5(), 0, 2, d);
 }
 
@@ -102,12 +108,12 @@ inline void SetClearDensity(Tile t, uint d)
 /**
  * Get the counter used to advance to the next clear density/field type.
  * @param t the tile to get the counter of
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  * @return the value of the counter
  */
 inline uint GetClearCounter(Tile t)
 {
-	assert(IsTileType(t, MP_CLEAR));
+	assert(IsTileType(t, TileType::Clear));
 	return GB(t.m5(), 5, 3);
 }
 
@@ -115,11 +121,11 @@ inline uint GetClearCounter(Tile t)
  * Increments the counter used to advance to the next clear density/field type.
  * @param t the tile to increment the counter of
  * @param c the amount to increment the counter with
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  */
 inline void AddClearCounter(Tile t, int c)
 {
-	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
+	assert(IsTileType(t, TileType::Clear)); // XXX incomplete
 	t.m5() += c << 5;
 }
 
@@ -127,11 +133,11 @@ inline void AddClearCounter(Tile t, int c)
  * Sets the counter used to advance to the next clear density/field type.
  * @param t the tile to set the counter of
  * @param c the amount to set the counter to
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  */
 inline void SetClearCounter(Tile t, uint c)
 {
-	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
+	assert(IsTileType(t, TileType::Clear)); // XXX incomplete
 	SB(t.m5(), 5, 3, c);
 }
 
@@ -141,24 +147,24 @@ inline void SetClearCounter(Tile t, uint c)
  * @param t       the tile to set the ground type and density for
  * @param type    the new ground type of the tile
  * @param density the density of the ground tile
- * @pre IsTileType(t, MP_CLEAR)
+ * @pre IsTileType(t, TileType::Clear)
  */
 inline void SetClearGroundDensity(Tile t, ClearGround type, uint density)
 {
-	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
-	t.m5() = 0 << 5 | type << 2 | density;
+	assert(IsTileType(t, TileType::Clear)); // XXX incomplete
+	t.m5() = 0 << 5 | to_underlying(type) << 2 | density;
 }
 
 
 /**
  * Get the field type (production stage) of the field
  * @param t the field to get the type of
- * @pre GetClearGround(t) == CLEAR_FIELDS
+ * @pre GetClearGround(t) == ClearGround::Fields
  * @return the field type
  */
 inline uint GetFieldType(Tile t)
 {
-	assert(GetClearGround(t) == CLEAR_FIELDS);
+	assert(GetClearGround(t) == ClearGround::Fields);
 	return GB(t.m3(), 0, 4);
 }
 
@@ -166,23 +172,23 @@ inline uint GetFieldType(Tile t)
  * Set the field type (production stage) of the field
  * @param t the field to get the type of
  * @param f the field type
- * @pre GetClearGround(t) == CLEAR_FIELDS
+ * @pre GetClearGround(t) == ClearGround::Fields
  */
 inline void SetFieldType(Tile t, uint f)
 {
-	assert(GetClearGround(t) == CLEAR_FIELDS); // XXX incomplete
+	assert(GetClearGround(t) == ClearGround::Fields); // XXX incomplete
 	SB(t.m3(), 0, 4, f);
 }
 
 /**
  * Get the industry (farm) that made the field
  * @param t the field to get creating industry of
- * @pre GetClearGround(t) == CLEAR_FIELDS
+ * @pre GetClearGround(t) == ClearGround::Fields
  * @return the industry that made the field
  */
 inline IndustryID GetIndustryIndexOfField(Tile t)
 {
-	assert(GetClearGround(t) == CLEAR_FIELDS);
+	assert(GetClearGround(t) == ClearGround::Fields);
 	return(IndustryID) t.m2();
 }
 
@@ -190,11 +196,11 @@ inline IndustryID GetIndustryIndexOfField(Tile t)
  * Set the industry (farm) that made the field
  * @param t the field to get creating industry of
  * @param i the industry that made the field
- * @pre GetClearGround(t) == CLEAR_FIELDS
+ * @pre GetClearGround(t) == ClearGround::Fields
  */
 inline void SetIndustryIndexOfField(Tile t, IndustryID i)
 {
-	assert(GetClearGround(t) == CLEAR_FIELDS);
+	assert(GetClearGround(t) == ClearGround::Fields);
 	t.m2() = i.base();
 }
 
@@ -203,12 +209,12 @@ inline void SetIndustryIndexOfField(Tile t, IndustryID i)
  * Is there a fence at the given border?
  * @param t the tile to check for fences
  * @param side the border to check
- * @pre IsClearGround(t, CLEAR_FIELDS)
+ * @pre IsClearGround(t, ClearGround::Fields)
  * @return 0 if there is no fence, otherwise the fence type
  */
 inline uint GetFence(Tile t, DiagDirection side)
 {
-	assert(IsClearGround(t, CLEAR_FIELDS));
+	assert(IsClearGround(t, ClearGround::Fields));
 	switch (side) {
 		default: NOT_REACHED();
 		case DIAGDIR_SE: return GB(t.m4(), 2, 3);
@@ -223,11 +229,11 @@ inline uint GetFence(Tile t, DiagDirection side)
  * @param t the tile to check for fences
  * @param side the border to check
  * @param h 0 if there is no fence, otherwise the fence type
- * @pre IsClearGround(t, CLEAR_FIELDS)
+ * @pre IsClearGround(t, ClearGround::Fields)
  */
 inline void SetFence(Tile t, DiagDirection side, uint h)
 {
-	assert(IsClearGround(t, CLEAR_FIELDS));
+	assert(IsClearGround(t, ClearGround::Fields));
 	switch (side) {
 		default: NOT_REACHED();
 		case DIAGDIR_SE: SB(t.m4(), 2, 3, h); break;
@@ -246,7 +252,7 @@ inline void SetFence(Tile t, DiagDirection side, uint h)
  */
 inline void MakeClear(Tile t, ClearGround g, uint density)
 {
-	SetTileType(t, MP_CLEAR);
+	SetTileType(t, TileType::Clear);
 	t.m1() = 0;
 	SetTileOwner(t, OWNER_NONE);
 	t.m2() = 0;
@@ -267,13 +273,13 @@ inline void MakeClear(Tile t, ClearGround g, uint density)
  */
 inline void MakeField(Tile t, uint field_type, IndustryID industry)
 {
-	SetTileType(t, MP_CLEAR);
+	SetTileType(t, TileType::Clear);
 	t.m1() = 0;
 	SetTileOwner(t, OWNER_NONE);
 	t.m2() = industry.base();
 	t.m3() = field_type;
 	t.m4() = 0 << 5 | 0 << 2;
-	SetClearGroundDensity(t, CLEAR_FIELDS, 3);
+	SetClearGroundDensity(t, ClearGround::Fields, 3);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -289,8 +295,8 @@ inline void MakeSnow(Tile t, uint density = 0)
 {
 	assert(!IsSnowTile(t));
 	SetBit(t.m3(), 4);
-	if (GetClearGround(t) == CLEAR_FIELDS) {
-		SetClearGroundDensity(t, CLEAR_GRASS, density);
+	if (GetClearGround(t) == ClearGround::Fields) {
+		SetClearGroundDensity(t, ClearGround::Grass, density);
 	} else {
 		SetClearDensity(t, density);
 	}

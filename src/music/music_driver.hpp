@@ -42,10 +42,11 @@ public:
 
 	/**
 	 * Get the currently active instance of the music driver.
+	 * @return The instance.
 	 */
 	static MusicDriver *GetInstance()
 	{
-		return static_cast<MusicDriver *>(DriverFactoryBase::GetActiveDriver(Driver::DT_MUSIC).get());
+		return static_cast<MusicDriver *>(DriverFactoryBase::GetActiveDriver(Driver::Type::Music).get());
 	}
 };
 

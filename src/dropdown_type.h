@@ -27,22 +27,56 @@ public:
 	bool shaded; ///< Shaded item, affects text colour.
 
 	explicit DropDownListItem(int result, bool masked = false, bool shaded = false) : result(result), masked(masked), shaded(shaded) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~DropDownListItem() = default;
 
+	/**
+	 * Can this dropdown item be selected?
+	 * @return Whether this item can be selected.
+	 */
 	virtual bool Selectable() const { return true; }
+
+	/**
+	 * The height of this item.
+	 * @return The height.
+	 */
 	virtual uint Height() const { return 0; }
+
+	/**
+	 * The width of this item.
+	 * @return The width.
+	 */
 	virtual uint Width() const { return 0; }
 
-	virtual int OnClick(const Rect &, const Point &) const
+	/**
+	 * Callback when this item is clicked.
+	 * @param r The bounds of this item.
+	 * @param pt The location within the bounds where the item is clicked.
+	 * @return The 'click_result' for the OnDropdownClose callback on the dropdown's parent.
+	 */
+	virtual int OnClick([[maybe_unused]] const Rect &r, [[maybe_unused]] const Point &pt) const
 	{
 		return -1;
 	}
 
-	virtual void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const
+	/**
+	 * Callback for drawing this item.
+	 * @param full The full bounds of the item including padding.
+	 * @param r The bounds to draw the item in.
+	 * @param sel Whether the item is elected or not.
+	 * @param click_result When selected, the previously set 'click_result' otherwise -1.
+	 * @param bg_colour The background color for the item.
+	 */
+	virtual void Draw(const Rect &full, [[maybe_unused]] const Rect &r, [[maybe_unused]] bool sel, [[maybe_unused]] int click_result, Colours bg_colour) const
 	{
 		if (this->masked) GfxFillRect(full, GetColourGradient(bg_colour, SHADE_LIGHT), FILLRECT_CHECKER);
 	}
 
+	/**
+	 * Get the colour of the text.
+	 * @param sel Whether the item is selected or not.
+	 * @return The text colour.
+	 */
 	TextColour GetColour(bool sel) const
 	{
 		if (this->shaded) return (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
@@ -55,6 +89,7 @@ public:
  */
 typedef std::vector<std::unique_ptr<const DropDownListItem>> DropDownList;
 
+/** Configuration options for the created DropDownLists. */
 enum class DropDownOption : uint8_t {
 	InstantClose, ///< Set if releasing mouse button should close the list regardless of where the cursor is.
 	Persist, ///< Set if this dropdown should stay open after an option is selected.

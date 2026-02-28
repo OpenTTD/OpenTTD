@@ -114,7 +114,7 @@ NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
 /**
  * Error handling for fatal user errors.
  * @param str the string to print.
- * @note Does NEVER return.
+ * @attention Function does not return.
  */
 void UserErrorI(const std::string &str)
 {
@@ -132,11 +132,7 @@ void UserErrorI(const std::string &str)
 	_exit(1);
 }
 
-/**
- * Error handling for fatal non-user errors.
- * @param str the string to print.
- * @note Does NEVER return.
- */
+/* Doxygen in error_func.h */
 void FatalErrorI(const std::string &str)
 {
 	if (VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) {
@@ -754,7 +750,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	}
 
 	if (videodriver.empty() && !_ini_videodriver.empty()) videodriver = _ini_videodriver;
-	DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
+	DriverFactoryBase::SelectDriver(videodriver, Driver::Type::Video);
 
 	InitializeSpriteSorter();
 
@@ -797,10 +793,10 @@ int openttd_main(std::span<std::string_view> arguments)
 	}
 
 	if (sounddriver.empty() && !_ini_sounddriver.empty()) sounddriver = _ini_sounddriver;
-	DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
+	DriverFactoryBase::SelectDriver(sounddriver, Driver::Type::Sound);
 
 	if (musicdriver.empty() && !_ini_musicdriver.empty()) musicdriver = _ini_musicdriver;
-	DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
+	DriverFactoryBase::SelectDriver(musicdriver, Driver::Type::Music);
 
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	LoadIntroGame(false);
@@ -820,7 +816,7 @@ void HandleExitGameRequest()
 		_exit_game = true;
 	} else if (_settings_client.gui.autosave_on_exit) {
 		DoExitSave();
-		_survey.Transmit(NetworkSurveyHandler::Reason::EXIT, true);
+		_survey.Transmit(NetworkSurveyHandler::Reason::Exit, true);
 		_exit_game = true;
 	} else {
 		AskExitGame();
@@ -864,7 +860,7 @@ static void MakeNewGameDone()
 	/* In a dedicated server, the server does not play */
 	if (!VideoDriver::GetInstance()->HasGUI()) {
 		OnStartGame(true);
-		if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+		if (_settings_client.gui.pause_on_newgame) Command<Commands::Pause>::Post(PauseMode::Normal, true);
 		return;
 	}
 
@@ -878,11 +874,11 @@ static void MakeNewGameDone()
 	 * COLOUR_END corresponds to Random colour */
 
 	if (_settings_client.gui.starting_colour != COLOUR_END) {
-		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
+		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
 	}
 
 	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
-		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
+		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
 	}
 
 	OnStartGame(false);
@@ -890,7 +886,7 @@ static void MakeNewGameDone()
 	InitializeRailGUI();
 	InitializeRoadGUI();
 
-	if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+	if (_settings_client.gui.pause_on_newgame) Command<Commands::Pause>::Post(PauseMode::Normal, true);
 
 	CheckEngines();
 	CheckIndustries();
@@ -934,9 +930,11 @@ static void MakeNewEditorWorld()
  * a previous correct state. In the menu for example load the intro game again.
  * @param filename file to be loaded
  * @param fop mode of loading, always SLO_LOAD
+ * @param dft Type of file that is going to be loaded.
  * @param newgm switch to this mode of loading fails due to some unknown error
  * @param subdir default directory to look for filename, set to 0 if not needed
  * @param lf Load filter to use, if nullptr: use filename + subdir.
+ * @return \c true iff the save was loaded without problems.
  */
 bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, std::shared_ptr<LoadFilter> lf = nullptr)
 {
@@ -1053,7 +1051,7 @@ void SwitchToMode(SwitchMode new_mode)
 	if (new_mode != SM_SAVE_GAME) ChangeAutosaveFrequency(true);
 
 	/* Transmit the survey if we were in normal-mode and not saving. It always means we leaving the current game. */
-	if (_game_mode == GM_NORMAL && new_mode != SM_SAVE_GAME) _survey.Transmit(NetworkSurveyHandler::Reason::LEAVE);
+	if (_game_mode == GM_NORMAL && new_mode != SM_SAVE_GAME) _survey.Transmit(NetworkSurveyHandler::Reason::Leave);
 
 	/* Keep track when we last switch mode. Used for survey, to know how long someone was in a game. */
 	if (new_mode != SM_SAVE_GAME) {
@@ -1108,7 +1106,7 @@ void SwitchToMode(SwitchMode new_mode)
 				}
 				OnStartGame(_network_dedicated);
 				/* Decrease pause counter (was increased from opening load dialog) */
-				Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
+				Command<Commands::Pause>::Post(PauseMode::SaveLoad, false);
 			}
 
 			UpdateSocialIntegration(GM_NORMAL);
@@ -1141,7 +1139,7 @@ void SwitchToMode(SwitchMode new_mode)
 				GenerateSavegameId();
 				_settings_newgame.game_creation.starting_year = TimerGameCalendar::year;
 				/* Cancel the saveload pausing */
-				Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
+				Command<Commands::Pause>::Post(PauseMode::SaveLoad, false);
 			} else {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			}
@@ -1163,7 +1161,7 @@ void SwitchToMode(SwitchMode new_mode)
 				ShowErrorMessage(GetEncodedString(STR_WARNING_FALLBACK_SOUNDSET), {}, WL_CRITICAL);
 				BaseSounds::ini_set = BaseSounds::GetUsedSet()->name;
 			}
-			if (_settings_client.network.participate_survey == PS_ASK) {
+			if (_settings_client.network.participate_survey == ParticipateSurvey::Ask) {
 				/* No matter how often you go back to the main menu, only ask the first time. */
 				static bool asked_once = false;
 				if (!asked_once) {
@@ -1258,10 +1256,10 @@ void StateGameLoop()
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
-		if (TimerManager<TimerGameCalendar>::Elapsed(1)) {
+		if (TimerManager<TimerGameCalendar>::Elapsed({})) {
 			RunVehicleCalendarDayProc();
 		}
-		TimerManager<TimerGameEconomy>::Elapsed(1);
+		TimerManager<TimerGameEconomy>::Elapsed({});
 		TimerManager<TimerGameTick>::Elapsed(1);
 		RunTileLoop();
 		CallVehicleTicks();
@@ -1286,7 +1284,7 @@ void StateGameLoop()
 }
 
 /** Interval for regular autosaves. Initialized at zero to disable till settings are loaded. */
-static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::milliseconds::zero(), TimerGameRealtime::AUTOSAVE}, [](auto)
+static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::milliseconds::zero(), TimerGameRealtime::Trigger::Autosave}, [](auto)
 {
 	/* We reset the command-during-pause mode here, so we don't continue
 	 * to make auto-saves when nothing more is changing. */
@@ -1313,7 +1311,7 @@ static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::millise
  */
 void ChangeAutosaveFrequency(bool reset)
 {
-	_autosave_interval.SetInterval({std::chrono::minutes(_settings_client.gui.autosave_interval), TimerGameRealtime::AUTOSAVE}, reset);
+	_autosave_interval.SetInterval({std::chrono::minutes(_settings_client.gui.autosave_interval), TimerGameRealtime::Trigger::Autosave}, reset);
 }
 
 /**

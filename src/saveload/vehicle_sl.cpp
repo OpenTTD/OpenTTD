@@ -252,7 +252,10 @@ static void CheckValidVehicles()
 
 extern uint8_t _age_cargo_skip_counter; // From misc_sl.cpp
 
-/** Called after load for phase 1 of vehicle initialisation */
+/**
+ * Called after load for phase 1 of vehicle initialisation.
+ * @param part_of_load Whether we are being called during loading a savegame, or due to NewGRFs being changed.
+ */
 void AfterLoadVehiclesPhase1(bool part_of_load)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
@@ -290,7 +293,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 						for (const OldOrderSaveLoadItem *old_order = GetOldOrder(v->old_orders); old_order != nullptr; old_order = GetOldOrder(old_order->next)) {
 							orders.push_back(std::move(old_order->order));
 						}
-						v->orders = mapping[v->old_orders] = new OrderList(std::move(orders), v);
+						v->orders = mapping[v->old_orders] = OrderList::Create(std::move(orders), v);
 					} else {
 						v->orders = mapping[v->old_orders];
 						/* For old games (case a) we must create the shared vehicle chain */
@@ -324,7 +327,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 
 				/* As above, allocating OrderList here is safe. */
 				assert(OrderList::CanAllocateItem());
-				v->orders = new OrderList();
+				v->orders = OrderList::Create();
 				v->orders->first_shared = v;
 				for (Vehicle *u = v; u != nullptr; u = u->next_shared) {
 					u->orders = v->orders;
@@ -416,7 +419,10 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 	CheckValidVehicles();
 }
 
-/** Called after load for phase 2 of vehicle initialisation */
+/**
+ * Called after load for phase 2 of vehicle initialisation.
+ * @param part_of_load Whether we are being called during loading a savegame, or due to NewGRFs being changed.
+ */
 void AfterLoadVehiclesPhase2(bool part_of_load)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
@@ -840,9 +846,11 @@ public:
 
 class SlVehicleRoadVeh : public DefaultSaveLoadHandler<SlVehicleRoadVeh, Vehicle> {
 public:
-	/* RoadVehicle path is stored in std::pair which cannot be directly saved. */
+	/** @{
+	 * RoadVehicle path is stored in std::pair which cannot be directly saved. */
 	static inline std::vector<Trackdir> rv_path_td;
 	static inline std::vector<TileIndex> rv_path_tile;
+	/** @} */
 
 	static inline const SaveLoad description[] = {
 		  SLEG_STRUCT("common", SlVehicleCommon),
@@ -1129,12 +1137,12 @@ struct VEHSChunkHandler : ChunkHandler {
 			VehicleType vtype = (VehicleType)SlReadByte();
 
 			switch (vtype) {
-				case VEH_TRAIN:    v = new (VehicleID(index)) Train();           break;
-				case VEH_ROAD:     v = new (VehicleID(index)) RoadVehicle();     break;
-				case VEH_SHIP:     v = new (VehicleID(index)) Ship();            break;
-				case VEH_AIRCRAFT: v = new (VehicleID(index)) Aircraft();        break;
-				case VEH_EFFECT:   v = new (VehicleID(index)) EffectVehicle();   break;
-				case VEH_DISASTER: v = new (VehicleID(index)) DisasterVehicle(); break;
+				case VEH_TRAIN: v = Train::CreateAtIndex(VehicleID(index)); break;
+				case VEH_ROAD: v = RoadVehicle::CreateAtIndex(VehicleID(index)); break;
+				case VEH_SHIP: v = Ship::CreateAtIndex(VehicleID(index)); break;
+				case VEH_AIRCRAFT: v = Aircraft::CreateAtIndex(VehicleID(index)); break;
+				case VEH_EFFECT: v = EffectVehicle::CreateAtIndex(VehicleID(index)); break;
+				case VEH_DISASTER: v = DisasterVehicle::CreateAtIndex(VehicleID(index)); break;
 				case VEH_INVALID: // Savegame shouldn't contain invalid vehicles
 				default: SlErrorCorrupt("Invalid vehicle type");
 			}
@@ -1143,7 +1151,7 @@ struct VEHSChunkHandler : ChunkHandler {
 
 			if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
 				/* Don't construct the packet with station here, because that'll fail with old savegames */
-				CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_periods, _cargo_source, _cargo_source_xy, _cargo_feeder_share);
+				CargoPacket *cp = CargoPacket::Create(_cargo_count, _cargo_periods, _cargo_source, _cargo_source_xy, _cargo_feeder_share);
 				v->cargo.Append(cp);
 			}
 

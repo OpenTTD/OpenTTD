@@ -109,7 +109,12 @@ struct ShipVehicleInfo {
 	uint8_t ocean_speed_frac = 0; ///< Fraction of maximum speed for ocean tiles.
 	uint8_t canal_speed_frac = 0; ///< Fraction of maximum speed for canal/river tiles.
 
-	/** Apply ocean/canal speed fraction to a velocity */
+	/**
+	 * Apply ocean/canal speed fraction to a velocity.
+	 * @param raw_speed The original speed.
+	 * @param is_ocean Whether to apply the ocean or canal/river speed fraction.
+	 * @return The actual maximum speed of the ship.
+	 */
 	uint ApplyWaterClassSpeedFrac(uint raw_speed, bool is_ocean) const
 	{
 		/* speed_frac == 0 means no reduction while 0xFF means reduction to 1/256. */
@@ -235,7 +240,13 @@ enum class EngineNameContext : uint8_t {
 	AutoreplaceVehicleInUse = 0x22, ///< Name is show in the autoreplace window 'Vehicles in use' panel.
 };
 
-/** Combine an engine ID and a name context to an engine name dparam. */
+/**
+ * Combine an engine ID and a name context to an engine name StringParameter.
+ * @param engine_id The engine's ID.
+ * @param context The context for the name.
+ * @param extra_data Arbitrary extra data.
+ * @return The packed StringParameter.
+ */
 inline uint64_t PackEngineNameDParam(EngineID engine_id, EngineNameContext context, uint32_t extra_data = 0)
 {
 	return engine_id.base() | (static_cast<uint64_t>(context) << 32) | (static_cast<uint64_t>(extra_data) << 40);

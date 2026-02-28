@@ -924,7 +924,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} té poques ordres a l'agenda
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} té una ordre buida
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} té una ordre no vàlida
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} té ordres duplicades
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} té una estació invàlida en les seves ordres
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} té en les seves ordres un aeroport amb pista d'aterratge massa curta
@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Selecciona l'id
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% completat)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Pantalla completa
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Marqueu la casella per mostrar l'OpenTTD a pantalla completa.
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Si s'activa, mostra l'OpenTTD a pantalla completa.
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Resolució de pantalla
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Selecciona la resolució de pantalla
@@ -1071,11 +1071,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Acceleració per maquinari
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Seleccioneu aquesta opció per permetre que l'OpenTTD provi d'usar acceleració per maquinari. Si es canvia l'opció, s'aplicarà quan es reiniciï el programa.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Activa aquesta opció per a permetre que l'OpenTTD intenti fer servir l'acceleració per maquinari. Si es canvia l'opció, s'aplicarà quan es reiniciï el programa.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}La configuració tindrà efecte quan es reiniciï el programa.
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Selecciona aquesta casella per activar la sincronització vertical de la pantalla. Els canvis s'aplicaran quan es reiniciï el programa. Només funciona si s'activa l'acceleració per maquinari.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Activa la sincronització vertical de la pantalla. Els canvis s'aplicaran quan es reiniciï el programa. Només funciona si s'activa l'acceleració per maquinari.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador actual: {STRING}
 
@@ -1084,15 +1084,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Interfície
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Mida de la interfície
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arrossegueu el botó lliscant per a triar la mida de la interfície. Amb Ctrl+arrossega, s'aplica un ajust continu.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detecta la mida automàticament
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marqueu aquesta opció si voleu que s'ajusti la mida de la interfície automàticament.
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Aquesta opció permet que s'ajusti la mida de la interfície automàticament.
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escala els bisells
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marqueu aquesta opció si voleu que s'escalin els bisells segons la mida de la interfície.
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Si s'activa, es modificarà la mida dels bisells segons la mida de la interfície.
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Fes servir la font tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marqueu aquesta casella si preferiu fer servir la font tradicional de mida fixa i pixelada.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Si s'activa, fa servir la font tradicional de mida fixa i pixelada.
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Aplica anti-àlies a les fonts
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marqueu aquesta casella per a fer servir tècniques d'anti-àlies a les fonts redimensionables.
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Si s'activa, fa servir tècniques d'anti-àlies a les fonts redimensionables.
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1116,7 +1116,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selecciona el c
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informació addicional sobre el conjunt de gràfics base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Conjunt de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecciona un conjunt de sons base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecciona un conjunt de sons base a reproduir.
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informació addicional sobre el joc de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :Conjunt de peces de música base
@@ -1249,7 +1249,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Desplega-ho tot
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Plega-ho tot
 STR_CONFIG_SETTING_RESET_ALL                                    :Restableix tots els valors
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(cap explicació disponible)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipus de paràmetre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paràmetre del client (no s'emmagatzema a les partides; afecta a totes les partides)
@@ -1315,7 +1315,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sense préstecs
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa d'interès: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interès dels préstecs; també controla la inflació, si està activada
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interès dels préstecs; també controla la inflació, si està activada.
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos d'utilització: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixa el nivell de manteniment i els costos d'utilització dels vehicles i infraestructures
@@ -1599,7 +1599,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :L'algorisme gen
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipus de terreny: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Perfil d'altitud màxima: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolliu l'altura dels turons i muntanyes del paisatge.
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitat d'indústries: {STRING}
@@ -1626,6 +1626,14 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escarpat
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molt escarpat
+
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Altitud mitjana: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Escolliu l'altitud mitjana del terreny. «Automàtica» fa servir el valor per defecte segons el clima escollit, «Terres baixes» per a clima subtropical, «Normal» per a clima temperat i paisatge de joguines, i «Planes» per al clima subàrtic.
+###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automàtica
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Terres baixes
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Planes
 
 STR_CONFIG_SETTING_VARIETY                                      :Varietat: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Trieu si el mapa ha de contenir muntanyes o àrees planes. Com més varietat, més diferències hi haurà entre l'elevació de les àrees muntanyoses i planes.
@@ -1749,7 +1757,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sí
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sí, excepte les finestres enganxades
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data {STRING} per a guardar partides
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la data en els noms dels arxius de les partides que es guardin
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la data en els noms dels fitxers de les partides que es guardin
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31 Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
@@ -2069,7 +2077,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolució de sprites màxima que es pot usar: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita la resolució màxima dels sprites que s'empraran. Aquest límit pot evitar que s'usin els sprites amb resolució elevada quan estiguin disponibles. Això pot ajudar a millorar l'aparença general quan s'empren diferents fitxers GRF amb gràfics de diferents resolucions màximes.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita la resolució màxima dels sprites que s'empraran. Aquest límit pot evitar que s'usin els sprites amb resolució elevada quan estiguin disponibles. Això pot ajudar a millorar l'aparença general quan s'empren diferents fitxers NewGRF amb gràfics de diferents resolucions màximes.
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :x4
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :x2
@@ -2203,15 +2211,15 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permetre als tr
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}S'ha produït un error en l'arxiu de configuració...
+STR_CONFIG_ERROR                                                :{WHITE}S'ha produït un error en el fitxer de configuració...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}...error en la matriu «{STRING}».
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}...valor «{STRING}» invàlid per a «{STRING}».
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}...caràcters finals (espai, nova línia...) al final de la configuració de l'opció «{STRING}».
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}...s'ignorarà l'arxiu NewGRF «{STRING}» perquè l'identificador del GRF és el mateix que el de «{STRING}».
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}...s'ignorarà l'arxiu NewGRF invàlid «{STRING}»: {STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}...s'ignorarà el fitxer NewGRF «{STRING}» perquè l'identificador del NewGRF és el mateix que el de «{STRING}».
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}...s'ignorarà el fitxer NewGRF invàlid «{STRING}»: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :no s'ha trobat.
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :insegur per a ús estàtic.
-STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :arxiu NewGRF compatible només amb el TTDPatch.
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF del sistema
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :no és compatible amb aquesta versió de l'OpenTTD.
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconegut.
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}...el nivell de compressió «{STRING}» no és vàlid.
@@ -2360,7 +2368,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simple
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecció de cara simple
 STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carrega la cara preferida
-STR_FACE_LOAD_DONE                                              :{WHITE}S'ha carregat la cara personalitzada des de l'arxiu de configuració de l'OpenTTD.
+STR_FACE_LOAD_DONE                                              :{WHITE}S'ha carregat la cara personalitzada des del fitxer de configuració de l'OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Codi de la cara
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna el codi de la cara del president
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna el codi de la cara del president
@@ -2368,7 +2376,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}S'ha ass
 STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el codi de cara del president - ha de ser una etiqueta i nombre vàlids.
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Desa la cara preferida
-STR_FACE_SAVE_DONE                                              :{WHITE}Es desarà aquesta cara personalitzada a l'arxiu de configuració de l'OpenTTD.
+STR_FACE_SAVE_DONE                                              :{WHITE}Es desarà aquesta cara personalitzada al fitxer de configuració de l'OpenTTD.
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Sí
@@ -2727,7 +2735,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Llibreria GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarregant contingut...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Demanant arxius...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Es demanen els fitxers...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Actualment descarregant {STRING} ({NUM}{NBSP}de{NBSP}{NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descàrrega completa
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}{NBSP}de{NBSP}{BYTES}{NBSP}descarregats ({NUM}{NBSP}%)
@@ -2736,7 +2744,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}{
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No s'ha pogut connectar amb el servidor de continguts...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}La descàrrega ha fallat...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no es pot escriure al fitxer
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els arxius descarregats
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els fitxers descarregats
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gràfics que falten
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}L'OpenTTD necessita gràfics per funcionar, però no se n'han trobat. Voleu permetre a l'OpenTTD descarregar i instal·lar aquests gràfics?
@@ -2851,18 +2859,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Redueix l'alç�
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Augmenta l'alçària de les vistes prèvies. Amb Ctrl+clic, s'augmenta fins al màxim.
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Col·lecció per defecte
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Seleccioneu una col·lecció.
+STR_PICKER_COLLECTION_ADD                                       :Afegeix
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Crea una col·lecció nova
+STR_PICKER_COLLECTION_RENAME                                    :Reanomena
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Canvia el nom d'una col·lecció.
+STR_PICKER_COLLECTION_DELETE                                    :Esborra
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Esborra la col·lecció.
+
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Reanomena aquesta col·lecció
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Esborra la col·lecció
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Esteu segur que voleu esborrar aquesta col·lecció?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Esteu segur que voleu esborrar aquesta col·lecció? Hi ha elements de fitxers NewGRF desactivats.
+
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Trieu quina classe d'estació voleu veure.
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Trieu quin tipus d'estació voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Seleccioneu quina col·lecció d'estacions voleu veure.
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Trieu quina classe de punts de control voleu veure.
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Trieu quin tipus de punt de control voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Seleccioneu quina col·lecció de punts de pas voleu veure.
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Trieu quina classe d'estacions d'autobús voleu veure.
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Trieu quin tipus d'estació d'autobús voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Seleccioneu quina col·lecció d'estacions d'autobús voleu veure.
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Trieu quina classe d'estació de camions voleu veure.
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Trieu un tipus d'estació de camió a construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Seleccioneu quina col·lecció d'estacions de camions voleu veure.
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Trieu quina classe d'objectes voleu veure.
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Trieu quin tipus d'objecte voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats. Amb Ctrl+clic+arrossega es selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Seleccioneu quina col·lecció d'objectes voleu veure.
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Trieu quina zona de població voleu veure.
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Trieu quin tipus de casa construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Seleccioneu quina col·lecció de cases voleu veure.
 
 STR_HOUSE_PICKER_CAPTION                                        :Selecció de cases
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Nom: {GOLD}{STRING}
@@ -2872,7 +2900,7 @@ STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Anys: {G
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Anys: {GOLD}De {NUM}
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Anys: {GOLD}Fins al {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Mida: {GOLD}{NUM}x{NUM} caselles
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Càrrega acceptada: {GOLD}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Càrrega acceptada: {GOLD}{STRING}
 STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Càrrega produïda: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Vora
@@ -3160,7 +3188,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Classe d
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nom de l'aeroport: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nom de la cel·la d'Aeroport: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Càrrega acceptada: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Càrrega acceptada: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipus de via: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tipus de carretera: {LTBLUE}{STRING}
@@ -3338,7 +3366,7 @@ STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Desa el 
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Carrega les dades de les poblacions
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Clica aquí per anar a la carpeta predeterminada de desa/carrega actual
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} lliures
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Llista de dispositius de disc, carpetes i arxius de partides desades
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Llista de dispositius de disc, carpetes i fitxers de partides desades
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nom amb què es guardarà la partida actual
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Esborra
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Esborra la partida seleccionada
@@ -3387,7 +3415,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Proporci
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Augmenta un 10 % la proporció de terreny desèrtic
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Redueix un 10 % la proporció de terreny desèrtic
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}{NBSP}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Altitud màxima:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Altitud mitjana:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivell de mar:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Seleccioneu el nivell de la mar
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Quantitat de rius:
@@ -3501,8 +3530,8 @@ STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}No s'ha 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paràmetres NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informació NewGRF detallada
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arxius NewGRF actius
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arxius NewGRF inactius
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Fitxers NewGRF actius
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Fitxers NewGRF inactius
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selecciona configuració:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtre:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
@@ -3511,15 +3540,15 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Desa la 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Esborra configuració
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Esborra la predefinició selecciona actualment
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Afegeix
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Afegeix l'arxiu NewGRF seleccionat a la teva configuració
-STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Reescaneja arxius
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualitza la llista d'arxius NewGRF disponibles
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Afegeix el fitxer NewGRF seleccionat a la configuració
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Reescaneja fitxers
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualitza la llista de fitxers NewGRF disponibles
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Treu
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Treu l'arxiu NewGRF seleccionat de la llista
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Trau el fitxer NewGRF seleccionat de la llista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mou amunt
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mou amunt l'arxiu NewGRF seleccionat de la llista
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mou amunt el fitxer NewGRF seleccionat de la llista.
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mou avall
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mou avall l'arxiu NewGRF seleccionat de la llista
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mou avall el fitxer NewGRF seleccionat de la llista.
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}Actualitza
 STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}Utiliza les versions més noves dels NewGRF que disposin de diverses versions instal·lades
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una llista de fitxers NewGRF que estan instal·lats
@@ -3533,7 +3562,7 @@ STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplica e
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Cerca contingut que falta en línia
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comprova si el contingut que falta pot ser trobat en línia
 
-STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nom d'arxiu: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nom del fitxer: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID de GRF: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versió: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versió compatible: {SILVER}{NUM}
@@ -3547,7 +3576,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paràmet
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Cap
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No hi ha informació disponible
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}No s'ha trobat cap arxiu coincident
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}No s'ha trobat cap fitxer coincident
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivat
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Versió incompatible amb aquesta versió de l'OpenTTD.
 
@@ -3623,8 +3652,8 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paràmetre no v
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} s'ha de carregar abans de {2:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} s'ha de carregar després de {2:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necessita la versió {2:STRING} de l'OpenTTD o posterior
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dissenyat està pendent de traduir
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa arxius NewGRF carregats
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fitxer NewGRF que havia de traduir
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa fitxers NewGRF carregats
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Si es carrega {1:STRING} com a NewGRF estàtic amb {2:STRING}, pot provocar desincronitzacions
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperat (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propietat d'acció 0 desconeguda {4:HEX} (sprite {3:NUM})
@@ -3632,7 +3661,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Intent d'utilit
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conté un sprite corrupte. Tots els sprites corruptes seran mostrats amb un interrogant vermell (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conté múltiples entrades d'acció 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :S'ha llegit després del final d'un pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Els recursos GRF demanats no estan disponibles (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Els recursos NewGRF demanats no estan disponibles (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ha estat desactivat per {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de disposició de sprite no vàlid o desconegut (sprite {3:NUM}).
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Hi ha massa elements a la llista de valors de propietats (sprite {3:NUM}, propietat {4:HEX})
@@ -3642,34 +3671,34 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :«Callback» de
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esteu a punt de fer canvis en una partida activa que poden fer que l'OpenTTD falli. No envieu cap informe d'error produït després d'efectuar aquests canvis crítics.{}Esteu completament segur que voleu fer-los?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir l'arxiu: ID GRF duplicada
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha trobat un arxiu coincident (els GRF compatibles s'han carregat)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No es pot afegir l'arxiu: Límit d'arxius NewGRF assolit
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir el fitxer: ID de NewGRF duplicat
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}El fitxer coincident no s'ha trobat (els NewGRF compatibles s'han carregat)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No es pot afegir el fitxer: Límit de fitxers NewGRF assolit
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els GRF compatibles pels arxius faltants
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els fitxers GRF faltants han estat desactivats
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten fitxers GRF
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els NewGRF compatibles per als fitxers que fan falta
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els fitxers NewGRF que fan falta han estat desactivats
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten fitxers NewGRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reprendre la partida pot provocar errors de l'OpenTTD. No informeu errors de fallades posteriors d'aquesta partida.{}Esteu segur de reprendre la partida?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Cap
 ###length 3
-STR_NEWGRF_LIST_ALL_FOUND                                       :Tots els arxius presents
-STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Arxius compatibles trobats
-STR_NEWGRF_LIST_MISSING                                         :{RED}Arxius que falten
+STR_NEWGRF_LIST_ALL_FOUND                                       :Tots els fitxers presents
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fitxers compatibles trobats
+STR_NEWGRF_LIST_MISSING                                         :{RED}Fitxers que falten
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' pot fer que la partida es pengi o es dessincronitzi
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ha canviat la seva llargada mentre estava fora del dipòsit
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ha canviat la seva capacitat mentre estava fora del dipòsit o no ha canviat el tipus de càrrega a transportar
+STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF «{0:STRING}» pot fer que la partida es pengi o es dessincronitzi.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle «{1:ENGINE}» ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle «{1:ENGINE}» ha canviat la seva llargada mentre estava fora del dipòsit.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle «{1:ENGINE}» ha canviat la seva capacitat mentre estava fora del dipòsit o no ha canviat el tipus de càrrega a transportar.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada invàlida, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' dóna informació incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' ha provocat un bucle infinit en la crida de producció
+STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF «{0:STRING}» dóna informació incorrecta.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació de «{1:ENGINE}» no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de la funció autorenova/substitueix.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» ha provocat un bucle infinit en la crida de producció.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Callback' {1:HEX} ha retornat un resultat desconegut/invàlid {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}«{PUSH_COLOUR}{1:STRING}{POP_COLOUR}» ha retornat un tipus de càrrega no vàlid a {2:HEX}.
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' ha retornat un tipus de càrrega no vàlid a {2:HEX}.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<càrrega invàlida>
@@ -4044,12 +4073,12 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Indústries ({COMMA} de {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Cap -
-STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} (transportat: {COMMA}{NBSP}%){BLACK}
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} (transportat: {COMMA}{NBSP}%)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING} i {STRING}.
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} més...
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING} i {STRING}.
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} i {NUM} més...
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Noms de les indústries - feu clic al nom d'una indústria per a centrar-hi la vista principal. Amb Ctrl+clic, s'obre una vista nova al lloc on hi ha la indústria.
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Càrrega acceptada: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Càrrega produïda: {SILVER}{STRING}
@@ -4067,9 +4096,9 @@ STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Mostra e
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}{NBSP}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indústria ha anunciat la seva clausura imminent!
 
-STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requereix: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produeix: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requereix: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produeix: {YELLOW}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necessita:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
@@ -4202,6 +4231,19 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforç 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Abast: {GOLD}{COMMA} cel·les
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tipus d'aeronau: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Tipus de rail: {GOLD}{STRING}
+
+# Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/any
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/període
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :{COMMA}{NBSP}%
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} caselles
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tots els tipus de càrrega
@@ -4362,7 +4404,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Missatge del fabricant de vehicles
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Missatge del fabricant de vehicles ({COMMA} de {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabem de dissenyar {G un una} {G nou nova} {STRING}. Esteu interessats en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llançament mundial?
+
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Anterior
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Feu-hi clic per a passar al vehicle nou anterior.
+STR_ENGINE_PREVIEW_NEXT                                         :Següent
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Feu-hi clic per a passar al vehicle nou següent.
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Feu-hi clic per a saltar a un vehicle nou.
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=Femenin}locomotora de tren
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotora de ferrocarril electrificat
@@ -4595,7 +4645,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostra l
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Càrrega Total
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Mostra la capacitat total del tren, separada per tipus de càrrega
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacitat: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacitat: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Remodela)
@@ -4989,13 +5039,13 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Es desa 
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ha fallat el desat automàtic
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible llegir la unitat de disc
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}La partida no s'ha pogut desar...
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossible esborrar l'arxiu
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossible esborrar el fitxer
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}La partida no s'ha pogut carregar...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error Intern: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :L'arxiu de la partida està corromput - {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :El fitxer de la partida està corromput - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida està desada amb una versió més moderna
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No es pot llegir l'arxiu
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No es pot escriure a l'arxiu
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :El fitxer no es pot llegir
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No es pot escriure al fitxer
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :El test d'integritat de dades ha fallat
 STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :La desada es va fer amb una versió modificada.
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
@@ -5069,6 +5119,7 @@ STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ja sou a
 STR_ERROR_TOO_HIGH                                              :{WHITE}Massa alt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja és pla
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Després del canvi, el pont que el travessa seria massa alt.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Primer cal traure el riu
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}No es pot canviar el nom de la companyia...
@@ -5089,7 +5140,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossib
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es pot canviar el nom de la població...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No es pot expandir la població...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... massa prop del límit del mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... massa poblacions
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...no queda espai al mapa.
@@ -5979,4 +6029,3 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filtres 
 STR_BADGE_CONFIG_PREVIEW                                        :Imatge de previsualització
 STR_BADGE_CONFIG_NAME                                           :Nom
 STR_BADGE_FILTER_ANY_LABEL                                      :Qualsevol {STRING}
-STR_BADGE_FILTER_IS_LABEL                                       :{STRING} és {STRING}

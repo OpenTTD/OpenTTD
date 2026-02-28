@@ -12,7 +12,7 @@
 
 #include "strings_type.h"
 
-/* Base for each type of NewGRF spec to be used with NewGRFClass. */
+/** Base for each type of NewGRF spec to be used with NewGRFClass. */
 template <typename Tindex>
 struct NewGRFSpecBase {
 	Tindex class_index; ///< Class index of this spec, invalid until class is allocated.
@@ -22,21 +22,21 @@ struct NewGRFSpecBase {
 /**
  * Struct containing information relating to NewGRF classes for stations and airports.
  */
-template <typename Tspec, typename Tindex, Tindex Tmax>
+template <typename Tspec, typename Tindex>
 class NewGRFClass {
 private:
 	/* Tspec must be of NewGRFSpecBase<Tindex>. */
 	static_assert(std::is_base_of_v<NewGRFSpecBase<Tindex>, Tspec>);
 
 	uint ui_count = 0; ///< Number of specs in this class potentially available to the user.
-	Tindex index = static_cast<Tindex>(0); ///< Index of class within the list of classes.
+	Tindex index{}; ///< Index of class within the list of classes.
 	std::vector<Tspec *> spec; ///< List of specifications.
 
 	/**
 	 * The actual classes.
 	 * @note This may be reallocated during initialization so pointers may be invalidated.
 	 */
-	static inline std::vector<NewGRFClass<Tspec, Tindex, Tmax>> classes;
+	static inline std::vector<NewGRFClass<Tspec, Tindex>> classes;
 
 	/** Initialise the defaults. */
 	static void InsertDefaults();
@@ -61,19 +61,31 @@ public:
 	 * Get read-only span of all classes of this type.
 	 * @return Read-only span of classes.
 	 */
-	static std::span<NewGRFClass<Tspec, Tindex, Tmax> const> Classes() { return NewGRFClass::classes; }
+	static std::span<NewGRFClass<Tspec, Tindex> const> Classes() { return NewGRFClass::classes; }
 
 	void Insert(Tspec *spec);
 
 	Tindex Index() const { return this->index; }
-	/** Get the number of allocated specs within the class. */
+
+	/**
+	 * Get the number of allocated specs within the class.
+	 * @return Number of specs.
+	 */
 	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
-	/** Get the number of potentially user-available specs within the class. */
+
+	/**
+	 * Get the number of potentially user-available specs within the class.
+	 * @return Number of specs for which can be available for the end user.
+	 */
 	uint GetUISpecCount() const { return this->ui_count; }
 
 	const Tspec *GetSpec(uint index) const;
 
-	/** Check whether the spec will be available to the user at some point in time. */
+	/**
+	 * Check whether the spec will be available to the user at some point in time.
+	 * @param index The index into the spec table.
+	 * @return \c true iff it can be available for the end user.
+	 */
 	bool IsUIAvailable(uint index) const;
 
 	static void Reset();

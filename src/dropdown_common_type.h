@@ -299,7 +299,6 @@ public:
 	bool Selectable() const override { return false; }
 };
 
-/* Commonly used drop down list items. */
 using DropDownListDividerItem = DropDownDivider<DropDownListItem>;
 using DropDownListStringItem = DropDownString<DropDownListItem>;
 using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;

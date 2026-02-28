@@ -56,6 +56,7 @@ public:
 	/**
 	 * Get the screen depth this blitter works for.
 	 *  This is either: 8, 16, 24 or 32.
+	 * @return Screen depth in bits per pixel.
 	 */
 	virtual uint8_t GetScreenDepth() = 0;
 
@@ -66,6 +67,9 @@ public:
 
 	/**
 	 * Draw an image to the screen, given an amount of params defined above.
+	 * @param bp Parameters for the blitting of the image.
+	 * @param mode The blitting mode to perform.
+	 * @param zoom The zoom level to draw at.
 	 */
 	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) = 0;
 
@@ -188,6 +192,7 @@ public:
 
 	/**
 	 * Does this blitter require a separate animation buffer from the video backend?
+	 * @return \c true when the backend usees a separate buffer for animation.
 	 */
 	virtual bool NeedsAnimationBuffer()
 	{
@@ -196,6 +201,7 @@ public:
 
 	/**
 	 * Get the name of the blitter, the same as the Factory-instance returns.
+	 * @return The name.
 	 */
 	virtual std::string_view GetName() = 0;
 

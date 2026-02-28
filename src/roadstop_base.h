@@ -19,6 +19,7 @@ extern RoadStopPool _roadstop_pool;
 
 /** A Stop for a Road Vehicle */
 struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
+	/** Flags describing the status of a single road stop. */
 	enum class RoadStopStatusFlag : uint8_t {
 		Bay0Free  = 0, ///< Non-zero when bay 0 is free
 		Bay1Free  = 1, ///< Non-zero when bay 1 is free
@@ -70,8 +71,12 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	TileIndex xy = INVALID_TILE; ///< Position on the map
 	RoadStop *next = nullptr; ///< Next stop of the given type at this station
 
-	/** Initializes a RoadStop */
-	inline RoadStop(TileIndex tile = INVALID_TILE) : xy(tile) { }
+	/**
+	 * Initializes a RoadStop.
+	 * @param index The pool identifier of the road stop.
+	 * @param tile The tile the road stop is at.
+	 */
+	inline RoadStop(RoadStopID index, TileIndex tile = INVALID_TILE) : RoadStopPool::PoolItem<&_roadstop_pool>(index), xy(tile) { }
 
 	~RoadStop();
 

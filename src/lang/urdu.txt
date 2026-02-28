@@ -1204,6 +1204,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ہموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :رف
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :بہت رف
 
+###length 4
+
 
 
 STR_CONFIG_SETTING_TREE_PLACER                                  :درخت لگانے کا طریقہ: {STRING}
@@ -1985,6 +1987,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}کھین
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :طے شدہ اسٹیشن
 STR_STATION_CLASS_WAYP                                          :گزرگاہیں
 
@@ -2457,6 +2461,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} ک
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ: {GOLD}{COMMA} ٹائلیں
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}ہوائی جہاز کی قسم: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -2532,6 +2538,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 # Engine preview window
+
 
 
 

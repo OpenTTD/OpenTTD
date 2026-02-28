@@ -100,16 +100,13 @@ struct StationResolverObject : public SpecializedResolverObject<StationRandomTri
 static const uint32_t STATION_CLASS_LABEL_DEFAULT = 'DFLT';
 static const uint32_t STATION_CLASS_LABEL_WAYPOINT = 'WAYP';
 
-enum StationClassID : uint16_t {
-	STAT_CLASS_BEGIN = 0, ///< the lowest valid value
-	STAT_CLASS_DFLT = 0, ///< Default station class.
-	STAT_CLASS_WAYP, ///< Waypoint class.
-	STAT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
-};
+/** Class IDs for stations. */
+using StationClassID = PoolID<uint16_t, struct StationClassIDTag, UINT16_MAX, UINT16_MAX>;
 
-/** Allow incrementing of StationClassID variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(StationClassID)
+static constexpr StationClassID STAT_CLASS_DFLT{0}; ///< Default station class.
+static constexpr StationClassID STAT_CLASS_WAYP{1}; ///< Waypoint class.
 
+/** Flags describing behaviour of NewGRF stations. */
 enum class StationSpecFlag : uint8_t {
 	SeparateGround = 0, ///< Use different sprite set for ground sprites.
 	DivByStationSize = 1, ///< Divide cargo amount by station size.
@@ -163,6 +160,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 
 	StationSpecFlags flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
 
+	/** Flags describing the behaviour for individual tiles of a station. */
 	enum class TileFlag : uint8_t {
 		Pylons = 0, ///< Tile should contain catenary pylons.
 		NoWires = 1, ///< Tile should NOT contain catenary wires.
@@ -181,7 +179,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 };
 
 /** Class containing information relating to station classes. */
-using StationClass = NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
+using StationClass = NewGRFClass<StationSpec, StationClassID>;
 
 const StationSpec *GetStationSpec(TileIndex t);
 

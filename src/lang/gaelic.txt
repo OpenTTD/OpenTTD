@@ -1563,6 +1563,8 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garbh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Glè gharbh
 
+###length 4
+
 STR_CONFIG_SETTING_VARIETY                                      :Sgaoileadh caochlaidh: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis a-mhàin) Stiùirich am bi an dà chuid beanntan ’s tìr rèidh air a’ mhapa gus nach bi. O nach adhbharaich an roghainn seo ach tìr nas rèidhe, cuir na roghainnean eile air beanntan
 
@@ -2566,6 +2568,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tog stè
 
 
 
+
+
 STR_STATION_CLASS_DFLT                                          :Stèisean bunaiteach
 STR_STATION_CLASS_WAYP                                          :Puingean-turais
 
@@ -2811,7 +2815,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Seòrsa 
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Ainm a' phuirt-adhair: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Ainm leac a' phuirt-adhair: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carago air a ghabhail ris: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carago air a ghabhail ris: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Seòrsa an rèile: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Crìoch-luaiths rèile: {LTBLUE}{VELOCITY}
@@ -3659,6 +3663,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Spàirn 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Astar: {GOLD}{COMMA} {P leac leac leacan leac}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Seòrsa a' charbaid-adhair: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3808,6 +3814,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tha thu
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Brath bho dhèanadair a' charbaid
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Tha sinn air {STRING} ùr a dhealbhadh - a bheil ùidh agaibh ann ’s nach cleachd ach sibh fhèin e fad bliadhna ach am faic sinn dè cho math ’s a dh’obraicheas e mus reic sinn don a h-uile duine e?
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :einnsean-rèile
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einnsean aona-rèile
@@ -3989,7 +3996,7 @@ STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Seall an
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Carago iomlan
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Seall an carago iomlan aig an trèan, air a roinneadh le seòrsa a' charago
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Tomhas-lìonaidh: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Tomhas-lìonaidh: {LTBLUE}{STRING}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Mùthadh)
@@ -4429,7 +4436,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Cha ghab
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Cha ghabh ainm a' bhaile atharrachadh...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Cha ghabh baile stèidheachadh an-seo...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Cha ghabh am baile leudachadh...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ro fhaisg air oir a' mhapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ro fhaisg air baile eile
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tha cus bhailtean ann
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... chan eil rum air fhàgail air a' mhapa

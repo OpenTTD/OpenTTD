@@ -74,6 +74,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TimerGameCalendar::Date build_date{}; ///< Date of construction
 
 	uint16_t random_bits = 0; ///< Random bits assigned to this station
+	std::unordered_map<TileIndex, StationRandomTriggers> tile_waiting_random_triggers;
 	StationRandomTriggers waiting_random_triggers; ///< Waiting triggers (NewGRF), shared by all station parts/tiles, road stops, ... essentially useless and broken by design.
 	StationAnimationTriggers cached_anim_triggers; ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
 	StationAnimationTriggers cached_roadstop_anim_triggers; ///< NOSAVE: Combined animation trigger bitmask for road stops, used to determine if trigger processing should happen.
@@ -87,10 +88,12 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 
 	/**
 	 * Initialize the base station.
+	 * @param index The index of the station within the pool.
 	 * @param tile The location of the station sign
 	 */
-	BaseStation(TileIndex tile) : xy(tile) {}
+	BaseStation(StationID index, TileIndex tile) : StationPool::PoolItem<&_station_pool>(index), xy(tile) {}
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseStation();
 
 	/**
@@ -122,6 +125,10 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 		return this->cached_name;
 	}
 
+	/**
+	 * Move this station's main coordinate somewhere else.
+	 * @param new_xy New tile location of the sign.
+	 */
 	virtual void MoveSign(TileIndex new_xy)
 	{
 		this->xy = new_xy;
@@ -213,10 +220,11 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Set station type correctly
+	 * @param index The index within the station pool.
 	 * @param tile The base tile of the station.
 	 */
-	inline SpecializedStation(TileIndex tile) :
-			BaseStation(tile)
+	inline SpecializedStation(StationID index, TileIndex tile) :
+			BaseStation(index, tile)
 	{
 		this->facilities = EXPECTED_FACIL;
 	}
@@ -243,6 +251,7 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Gets station with given index
+	 * @param index The pool index to look for.
 	 * @return pointer to station with given index cast to T *
 	 */
 	static inline T *Get(auto index)
@@ -252,6 +261,7 @@ struct SpecializedStation : public BaseStation {
 
 	/**
 	 * Returns station if the index is a valid index for this station type
+	 * @param index The pool index to look for.
 	 * @return pointer to station with given index if it's a station of this type
 	 */
 	static inline T *GetIfValid(auto index)
@@ -267,6 +277,29 @@ struct SpecializedStation : public BaseStation {
 	static inline T *GetByTile(TileIndex tile)
 	{
 		return GetIfValid(GetStationIndex(tile));
+	}
+
+	/**
+	 * Creates a new T-object in the station pool.
+	 * @param args The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *Create(Targs &&... args)
+	{
+		return BaseStation::Create<T>(std::forward<Targs&&>(args)...);
+	}
+
+	/**
+	 * Creates a new T-object in the station pool.
+	 * @param index The index allocate the object at.
+	 * @param args The arguments to the constructor.
+	 * @return The created object.
+	 */
+	template <typename... Targs>
+	static inline T *CreateAtIndex(StationID index, Targs &&... args)
+	{
+		return BaseStation::CreateAtIndex<T>(index, std::forward<Targs&&>(args)...);
 	}
 
 	/**

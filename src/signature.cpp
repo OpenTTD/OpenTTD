@@ -189,6 +189,7 @@ static bool ValidateSchema(const nlohmann::json &signatures, const std::string &
  * Validate that the signatures mentioned in the signature file are matching
  * the files in question.
  *
+ * @param filename The path to the file to validate.
  * @return True iff the files in the signature file passed validation.
  */
 static bool _ValidateSignatureFile(const std::string &filename)
@@ -262,6 +263,7 @@ static bool _ValidateSignatureFile(const std::string &filename)
  * @note if ALLOW_INVALID_SIGNATURE is defined, this function will always
  * return true (but will still report any errors in the console).
  *
+ * @param filename The path to the file to validate.
  * @return True iff the files in the signature file passed validation.
  */
 bool ValidateSignatureFile(const std::string &filename)
