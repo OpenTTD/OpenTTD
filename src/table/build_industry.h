@@ -1146,7 +1146,7 @@ enum IndustryTypes : uint8_t {
 	   industry behaviours
 	   industry name                           building text
 	   messages : Closure                      production up                      production down   */
-static const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
+extern const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
 	MI(_tile_table_coal_mine,                  {},
 	   210,  0xB3333333,                       2, 3, 0, 0,    8, 8, 0, 0,          1,
 	   IT_POWER_STATION,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
