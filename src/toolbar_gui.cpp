@@ -82,10 +82,10 @@ RoadType _last_built_roadtype;
 RoadType _last_built_tramtype;
 
 /** Toolbar modes */
-enum ToolbarMode : uint8_t {
-	TB_NORMAL,
-	TB_UPPER,
-	TB_LOWER
+enum class ToolbarMode : uint8_t {
+	Normal, ///< Toolbar is in normal mode, in wich all 30 buttons are accessible.
+	Upper, ///< Toolbar is in split mode and the first part is selected.
+	Lower, ///< Toolbar is in split mode and the second part is selected.
 };
 
 /** Callback functions. */
@@ -686,7 +686,7 @@ static CallBackFunction ToolbarGraphsClick(Window *w)
 	list.push_back(MakeDropDownListStringItem(STR_GRAPH_MENU_COMPANY_VALUE_GRAPH, GRMN_COMPANY_VALUE_GRAPH));
 	list.push_back(MakeDropDownListStringItem(STR_GRAPH_MENU_CARGO_PAYMENT_RATES, GRMN_CARGO_PAYMENT_RATES));
 
-	if (_toolbar_mode != TB_NORMAL) AddDropDownLeagueTableOptions(list);
+	if (_toolbar_mode != ToolbarMode::Normal) AddDropDownLeagueTableOptions(list);
 
 	ShowDropDownList(w, std::move(list), GRMN_OPERATING_PROFIT_GRAPH, WID_TN_GRAPHS, 140, GetToolbarDropDownOptions());
 	return CBF_NONE;
@@ -1173,14 +1173,14 @@ static CallBackFunction MenuClickHelp(int index)
 
 static CallBackFunction ToolbarSwitchClick(Window *w)
 {
-	if (_toolbar_mode != TB_LOWER) {
-		_toolbar_mode = TB_LOWER;
+	if (_toolbar_mode != ToolbarMode::Lower) {
+		_toolbar_mode = ToolbarMode::Lower;
 	} else {
-		_toolbar_mode = TB_UPPER;
+		_toolbar_mode = ToolbarMode::Upper;
 	}
 
 	w->ReInit();
-	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
+	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == ToolbarMode::Lower);
 	SndClickBeep();
 	return CBF_NONE;
 }
@@ -1805,6 +1805,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		/* If at least BIGGEST_ARRANGEMENT fit, just spread all the buttons nicely */
 		uint full_buttons = std::max(CeilDiv(width, this->smallest_x), SMALLEST_ARRANGEMENT);
 		if (full_buttons > BIGGEST_ARRANGEMENT) {
+			_toolbar_mode = ToolbarMode::Normal;
 			button_count = arrangeable_count = lengthof(arrange_all);
 			spacer_count = this->spacers;
 			return arrange_all;
@@ -1815,7 +1816,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 
 		button_count = arrangeable_count = full_buttons;
 		spacer_count = this->spacers;
-		return arrangements[full_buttons - SMALLEST_ARRANGEMENT] + ((_toolbar_mode == TB_LOWER) ? full_buttons : 0);
+		return arrangements[full_buttons - SMALLEST_ARRANGEMENT] + ((_toolbar_mode == ToolbarMode::Lower) ? full_buttons : 0);
 	}
 };
 
@@ -1933,7 +1934,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		arrangeable_count = lengthof(arrange_switch) / 2;
 		button_count = arrangeable_count - 1;
 		spacer_count = 0;
-		return arrange_switch + ((_toolbar_mode == TB_LOWER) ? arrangeable_count : 0);
+		return arrange_switch + ((_toolbar_mode == ToolbarMode::Lower) ? arrangeable_count : 0);
 	}
 };
 
