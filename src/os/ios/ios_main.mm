@@ -117,9 +117,7 @@ std::optional<std::string> GetCurrentLocale(const char *)
  */
 void SurveyOS(nlohmann::json &json)
 {
-	int ver_maj, ver_min, ver_bug;
-	GetMacOSVersion(&ver_maj, &ver_min, &ver_bug);
-	
+	auto [ver_maj, ver_min, ver_bug] = GetMacOSVersion();
 	struct utsname uts;
 	uname(&uts);
 	
@@ -131,12 +129,10 @@ void SurveyOS(nlohmann::json &json)
 	json["hardware_concurrency"] = std::thread::hardware_concurrency();
 }
 
-void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
+std::tuple<int, int, int> GetMacOSVersion()
 {
 	NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-	if (return_major) *return_major = (int)version.majorVersion;
-	if (return_minor) *return_minor = (int)version.minorVersion;
-	if (return_bugfix) *return_bugfix = (int)version.patchVersion;
+	return std::make_tuple((int)version.majorVersion, (int)version.minorVersion, (int)version.patchVersion);
 }
 
 void MacOSSetThreadName(const std::string &name)
@@ -238,7 +234,7 @@ void CocoaReleaseAutoreleasePool()
 - (void)sceneWillResignActive:(UIScene *)scene {
 	// Called when scene moves from active to inactive state
 	if (_game_mode == GM_NORMAL) {
-		Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
+		Command<Commands::Pause>::Post(PauseMode::Normal, true);
 	}
 }
 

@@ -167,7 +167,7 @@ protected:
 
 class FVideoDriver_iOSMetal : public DriverFactoryBase {
 public:
-	FVideoDriver_iOSMetal() : DriverFactoryBase(Driver::DT_VIDEO, 10, "ios", "iOS Video Driver") {}
+	FVideoDriver_iOSMetal() : DriverFactoryBase(Driver::Type::Video, 10, "ios", "iOS Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_iOSMetal>(); }
 };
 
