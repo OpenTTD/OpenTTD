@@ -537,6 +537,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delete all mess
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Land area information
 STR_ABOUT_MENU_HELP                                             :Help & manuals
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Toggle Screensaver Mode
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle console
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Game script debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
