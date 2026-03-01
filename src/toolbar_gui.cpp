@@ -233,28 +233,28 @@ static CallBackFunction ToolbarFastForwardClick(Window *)
 /**
  * Game Option button menu entries.
  */
-enum OptionMenuEntries : uint8_t {
-	OME_GAMEOPTIONS,
-	OME_AI_SETTINGS,
-	OME_GAMESCRIPT_SETTINGS,
-	OME_NEWGRFSETTINGS,
-	OME_SANDBOX,
-	OME_TRANSPARENCIES,
-	OME_SHOW_TOWNNAMES,
-	OME_SHOW_STATIONNAMES,
-	OME_SHOW_STATIONNAMES_TRAIN,
-	OME_SHOW_STATIONNAMES_LORRY,
-	OME_SHOW_STATIONNAMES_BUS,
-	OME_SHOW_STATIONNAMES_SHIP,
-	OME_SHOW_STATIONNAMES_PLANE,
-	OME_SHOW_STATIONNAMES_GHOST,
-	OME_SHOW_WAYPOINTNAMES,
-	OME_SHOW_SIGNS,
-	OME_SHOW_COMPETITOR_SIGNS,
-	OME_FULL_ANIMATION,
-	OME_FULL_DETAILS,
-	OME_TRANSPARENTBUILDINGS,
-	OME_SHOW_STATIONSIGNS,
+enum class OptionMenuEntries : uint8_t {
+	GameOptions, ///< Open game options window.
+	AISettings, ///< Open AI settings window.
+	GameScriptSettings, ///< Open GS settings window.
+	NewGRFSettings, ///< Open NewGRF settings window.
+	SandboxOptions, ///< Open sandbox options window.
+	Transparencies, ///< Open transparency options window.
+	ShowTownNames, ///< Toggle visibility of town names.
+	ShowStationNames, ///< Toggle visibility of station names.
+	ShowTrainStationNames, ///< Toggle visibility of train station names.
+	ShowLorryStationNames, ///< Toggle visibility of lorry station names.
+	ShowBusStationNames, ///< Toggle visibility of bus station names.
+	ShowDockNames, ///< Toggle visibility of dock names.
+	ShowAirportNames, ///< Toggle visibility of airport names.
+	ShowGhostStationNames, ///< Toggle visibility of ghost station names.
+	ShowWaypointNames, ///< Toggle visibility of waypoint names.
+	ShowSigns, ///< Toggle visibility of signs.
+	ShowCompetitorSigns, ///< Toggle visibility of competitor signs and names.
+	FullAnimation, ///< Toggle full animations.
+	FullDetails, ///< Toggle full details.
+	TransparentBuildings, ///< Toggle buildings transparency.
+	TransparentStationSigns, ///< Toggle transparency of signs and names.
 };
 
 /**
@@ -266,35 +266,35 @@ enum OptionMenuEntries : uint8_t {
 static CallBackFunction ToolbarOptionsClick(Window *w)
 {
 	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS,             OME_GAMEOPTIONS));
+	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS, OptionMenuEntries::GameOptions));
 	/* Changes to the per-AI settings don't get send from the server to the clients. Clients get
 	 * the settings once they join but never update it. As such don't show the window at all
 	 * to network clients. */
 	if (!_networking || _network_server) {
-		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_AI_SETTINGS,          OME_AI_SETTINGS));
-		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS,  OME_GAMESCRIPT_SETTINGS));
+		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_AI_SETTINGS, OptionMenuEntries::AISettings));
+		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS, OptionMenuEntries::GameScriptSettings));
 	}
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS));
+	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_NEWGRF_SETTINGS, OptionMenuEntries::NewGRFSettings));
 	if (_game_mode != GM_EDITOR && !_networking) {
-		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_SANDBOX_OPTIONS,      OME_SANDBOX));
+		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_SANDBOX_OPTIONS, OptionMenuEntries::SandboxOptions));
 	}
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES));
+	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS, OptionMenuEntries::Transparencies));
 	list.push_back(MakeDropDownListDividerItem());
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_TOWN_NAMES), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OME_SHOW_TOWNNAMES));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_STATION_NAMES), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES));
-	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Train), STR_SETTINGS_MENU_STATION_NAMES_TRAIN, OME_SHOW_STATIONNAMES_TRAIN, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::TruckStop), STR_SETTINGS_MENU_STATION_NAMES_LORRY, OME_SHOW_STATIONNAMES_LORRY, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::BusStop), STR_SETTINGS_MENU_STATION_NAMES_BUS, OME_SHOW_STATIONNAMES_BUS, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Dock), STR_SETTINGS_MENU_STATION_NAMES_SHIP, OME_SHOW_STATIONNAMES_SHIP, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Airport), STR_SETTINGS_MENU_STATION_NAMES_PLANE, OME_SHOW_STATIONNAMES_PLANE, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(STATION_FACILITY_GHOST), STR_SETTINGS_MENU_STATION_NAMES_GHOST, OME_SHOW_STATIONNAMES_GHOST, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OME_SHOW_WAYPOINTNAMES));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_SIGNS), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OME_SHOW_SIGNS));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OME_SHOW_COMPETITOR_SIGNS));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_ANIMATION), STR_SETTINGS_MENU_FULL_ANIMATION, OME_FULL_ANIMATION));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_DETAIL), STR_SETTINGS_MENU_FULL_DETAIL, OME_FULL_DETAILS));
-	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_HOUSES), STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS, OME_TRANSPARENTBUILDINGS));
-	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_SIGNS), STR_SETTINGS_MENU_TRANSPARENT_SIGNS, OME_SHOW_STATIONSIGNS));
+	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_TOWN_NAMES), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OptionMenuEntries::ShowTownNames));
+	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_STATION_NAMES), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OptionMenuEntries::ShowStationNames));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Train), STR_SETTINGS_MENU_STATION_NAMES_TRAIN, OptionMenuEntries::ShowTrainStationNames, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::TruckStop), STR_SETTINGS_MENU_STATION_NAMES_LORRY, OptionMenuEntries::ShowLorryStationNames, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::BusStop), STR_SETTINGS_MENU_STATION_NAMES_BUS, OptionMenuEntries::ShowBusStationNames, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Dock), STR_SETTINGS_MENU_STATION_NAMES_SHIP, OptionMenuEntries::ShowDockNames, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Airport), STR_SETTINGS_MENU_STATION_NAMES_PLANE, OptionMenuEntries::ShowAirportNames, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(STATION_FACILITY_GHOST), STR_SETTINGS_MENU_STATION_NAMES_GHOST, OptionMenuEntries::ShowGhostStationNames, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OptionMenuEntries::ShowWaypointNames));
+	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_SIGNS), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OptionMenuEntries::ShowSigns));
+	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OptionMenuEntries::ShowCompetitorSigns));
+	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_ANIMATION), STR_SETTINGS_MENU_FULL_ANIMATION, OptionMenuEntries::FullAnimation));
+	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_DETAIL), STR_SETTINGS_MENU_FULL_DETAIL, OptionMenuEntries::FullDetails));
+	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_HOUSES), STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS, OptionMenuEntries::TransparentBuildings));
+	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_SIGNS), STR_SETTINGS_MENU_TRANSPARENT_SIGNS, OptionMenuEntries::TransparentStationSigns));
 
 	ShowDropDownList(w, std::move(list), 0, WID_TN_SETTINGS, 140, GetToolbarDropDownOptions());
 	return CallBackFunction::None;
@@ -308,32 +308,32 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
  */
 static CallBackFunction MenuClickSettings(int index)
 {
-	switch (index) {
-		case OME_GAMEOPTIONS: ShowGameOptions(); return CallBackFunction::None;
-		case OME_AI_SETTINGS: ShowAIConfigWindow(); return CallBackFunction::None;
-		case OME_GAMESCRIPT_SETTINGS: ShowGSConfigWindow(); return CallBackFunction::None;
-		case OME_NEWGRFSETTINGS: ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, _grfconfig); return CallBackFunction::None;
-		case OME_SANDBOX:              ShowCheatWindow();                               break;
-		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                       break;
+	switch (OptionMenuEntries(index)) {
+		case OptionMenuEntries::GameOptions: ShowGameOptions(); return CallBackFunction::None;
+		case OptionMenuEntries::AISettings: ShowAIConfigWindow(); return CallBackFunction::None;
+		case OptionMenuEntries::GameScriptSettings: ShowGSConfigWindow(); return CallBackFunction::None;
+		case OptionMenuEntries::NewGRFSettings: ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, _grfconfig); return CallBackFunction::None;
+		case OptionMenuEntries::SandboxOptions: ShowCheatWindow(); break;
+		case OptionMenuEntries::Transparencies: ShowTransparencyToolbar(); break;
 
-		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);     break;
-		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES);  break;
-		case OME_SHOW_STATIONNAMES_TRAIN: _facility_display_opt.Flip(StationFacility::Train); break;
-		case OME_SHOW_STATIONNAMES_LORRY: _facility_display_opt.Flip(StationFacility::TruckStop); break;
-		case OME_SHOW_STATIONNAMES_BUS: _facility_display_opt.Flip(StationFacility::BusStop); break;
-		case OME_SHOW_STATIONNAMES_SHIP: _facility_display_opt.Flip(StationFacility::Dock); break;
-		case OME_SHOW_STATIONNAMES_PLANE: _facility_display_opt.Flip(StationFacility::Airport); break;
-		case OME_SHOW_STATIONNAMES_GHOST: _facility_display_opt.Flip(STATION_FACILITY_GHOST); break;
-		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
-		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);          break;
-		case OME_SHOW_COMPETITOR_SIGNS:
+		case OptionMenuEntries::ShowTownNames: ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES); break;
+		case OptionMenuEntries::ShowStationNames: ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
+		case OptionMenuEntries::ShowTrainStationNames: _facility_display_opt.Flip(StationFacility::Train); break;
+		case OptionMenuEntries::ShowLorryStationNames: _facility_display_opt.Flip(StationFacility::TruckStop); break;
+		case OptionMenuEntries::ShowBusStationNames: _facility_display_opt.Flip(StationFacility::BusStop); break;
+		case OptionMenuEntries::ShowDockNames: _facility_display_opt.Flip(StationFacility::Dock); break;
+		case OptionMenuEntries::ShowAirportNames: _facility_display_opt.Flip(StationFacility::Airport); break;
+		case OptionMenuEntries::ShowGhostStationNames: _facility_display_opt.Flip(STATION_FACILITY_GHOST); break;
+		case OptionMenuEntries::ShowWaypointNames: ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
+		case OptionMenuEntries::ShowSigns: ToggleBit(_display_opt, DO_SHOW_SIGNS); break;
+		case OptionMenuEntries::ShowCompetitorSigns:
 			ToggleBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
 			InvalidateWindowClassesData(WC_SIGN_LIST, -1);
 			break;
-		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION); CheckBlitter(); break;
-		case OME_FULL_DETAILS:         ToggleBit(_display_opt, DO_FULL_DETAIL);         break;
-		case OME_TRANSPARENTBUILDINGS: ToggleTransparency(TO_HOUSES);                   break;
-		case OME_SHOW_STATIONSIGNS:    ToggleTransparency(TO_SIGNS);                    break;
+		case OptionMenuEntries::FullAnimation: ToggleBit(_display_opt, DO_FULL_ANIMATION); CheckBlitter(); break;
+		case OptionMenuEntries::FullDetails: ToggleBit(_display_opt, DO_FULL_DETAIL); break;
+		case OptionMenuEntries::TransparentBuildings: ToggleTransparency(TO_HOUSES); break;
+		case OptionMenuEntries::TransparentStationSigns: ToggleTransparency(TO_SIGNS); break;
 	}
 	MarkWholeScreenDirty();
 	return CallBackFunction::None;
