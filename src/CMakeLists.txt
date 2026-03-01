@@ -397,6 +397,8 @@ add_files(
     roadveh_cmd.h
     roadveh_gui.cpp
     safeguards.h
+	screensaver.cpp
+	screensaver.h
     screenshot_bmp.cpp
     screenshot_gui.cpp
     screenshot_gui.h
