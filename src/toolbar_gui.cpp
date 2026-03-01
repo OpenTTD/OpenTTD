@@ -342,23 +342,23 @@ static CallBackFunction MenuClickSettings(int index)
 /**
  * SaveLoad entries in scenario editor mode.
  */
-enum SaveLoadEditorMenuEntries : uint8_t {
-	SLEME_SAVE_SCENARIO = 0,
-	SLEME_LOAD_SCENARIO,
-	SLEME_SAVE_HEIGHTMAP,
-	SLEME_LOAD_HEIGHTMAP,
-	SLEME_EXIT_TOINTRO,
-	SLEME_EXIT_GAME,
+enum class SaveLoadEditorMenuEntries : uint8_t {
+	SaveScenario = 0, ///< Save the scenario.
+	LoadScenario, ///< Load a scenario.
+	SaveHeightmap, ///< Save the heightmap.
+	LoadHeightmap, ///< Load a heightmap.
+	ExitToMainMenu, ///< Exit to main menu.
+	ExitGame, ///< Exit to desktop.
 };
 
 /**
  * SaveLoad entries in normal game mode.
  */
-enum SaveLoadNormalMenuEntries : uint8_t {
-	SLNME_SAVE_GAME = 0,
-	SLNME_LOAD_GAME,
-	SLNME_EXIT_TOINTRO,
-	SLNME_EXIT_GAME,
+enum class SaveLoadNormalMenuEntries : uint8_t {
+	SaveGame = 0, ///< Save the game.
+	LoadGame, ///< Load a save.
+	ExitToMainMenu, ///< Exit to main menu.
+	ExitGame, ///< Exit to desktop.
 };
 
 /**
@@ -397,20 +397,20 @@ static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 static CallBackFunction MenuClickSaveLoad(int index = 0)
 {
 	if (_game_mode == GM_EDITOR) {
-		switch (index) {
-			case SLEME_SAVE_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, SLO_SAVE);  break;
-			case SLEME_LOAD_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD);  break;
-			case SLEME_SAVE_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_SAVE); break;
-			case SLEME_LOAD_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD); break;
-			case SLEME_EXIT_TOINTRO:   AskExitToGameMenu();                    break;
-			case SLEME_EXIT_GAME:      HandleExitGameRequest();                break;
+		switch (SaveLoadEditorMenuEntries(index)) {
+			case SaveLoadEditorMenuEntries::SaveScenario: ShowSaveLoadDialog(FT_SCENARIO, SLO_SAVE); break;
+			case SaveLoadEditorMenuEntries::LoadScenario: ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD); break;
+			case SaveLoadEditorMenuEntries::SaveHeightmap: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_SAVE); break;
+			case SaveLoadEditorMenuEntries::LoadHeightmap: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD); break;
+			case SaveLoadEditorMenuEntries::ExitToMainMenu: AskExitToGameMenu(); break;
+			case SaveLoadEditorMenuEntries::ExitGame: HandleExitGameRequest(); break;
 		}
 	} else {
-		switch (index) {
-			case SLNME_SAVE_GAME:      ShowSaveLoadDialog(FT_SAVEGAME, SLO_SAVE); break;
-			case SLNME_LOAD_GAME:      ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
-			case SLNME_EXIT_TOINTRO:   AskExitToGameMenu();               break;
-			case SLNME_EXIT_GAME:      HandleExitGameRequest();           break;
+		switch (SaveLoadNormalMenuEntries(index)) {
+			case SaveLoadNormalMenuEntries::SaveGame: ShowSaveLoadDialog(FT_SAVEGAME, SLO_SAVE); break;
+			case SaveLoadNormalMenuEntries::LoadGame: ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
+			case SaveLoadNormalMenuEntries::ExitToMainMenu: AskExitToGameMenu(); break;
+			case SaveLoadNormalMenuEntries::ExitGame: HandleExitGameRequest(); break;
 		}
 	}
 	return CallBackFunction::None;
