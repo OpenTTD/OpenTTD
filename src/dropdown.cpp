@@ -27,31 +27,68 @@
 
 #include "safeguards.h"
 
+/**
+ * Creates new #DropDownListDividerItem.
+ * @return Unique pointer to newly created drop down item.
+ */
 std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem()
 {
 	return std::make_unique<DropDownListDividerItem>(-1);
 }
 
+/**
+ * Creates new #DropDownListStringItem.
+ * @param str The string to show on this item in the drop down menu.
+ * @param value The value to use when the item becomes selected.
+ * @param masked Whether the item should be masked out.
+ * @param shaded Whether the item should be shaded.
+ * @return Unique pointer to newly created drop down item.
+ */
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int value, bool masked, bool shaded)
 {
 	return MakeDropDownListStringItem(GetString(str), value, masked, shaded);
 }
 
+/** @copydoc MakeDropDownListStringItem */
 std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, int value, bool masked, bool shaded)
 {
 	return std::make_unique<DropDownListStringItem>(std::move(str), value, masked, shaded);
 }
 
+/**
+ * Creates new #DropDownListIconItem.
+ * @param sprite The sprite id to use as an icon on the side of the string.
+ * @param palette The palette to use when drawing icon.
+ * @param str The string to show on this item in the drop down menu.
+ * @param value The value to use when the item becomes selected.
+ * @param masked Whether the item should be masked out.
+ * @param shaded Whether the item should be shaded.
+ * @return Unique pointer to newly created drop down item.
+ */
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
 {
 	return std::make_unique<DropDownListIconItem>(sprite, palette, GetString(str), value, masked, shaded);
 }
 
+/**
+ * @copydoc MakeDropDownListIconItem
+ * @param dim The rect specifying what part from the sprite should be used as an icon.
+ */
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
 {
 	return std::make_unique<DropDownListIconItem>(dim, sprite, palette, GetString(str), value, masked, shaded);
 }
 
+/**
+ * Creates new #DropDownListCheckedItem.
+ * @param checked Whether the tick before the string should be visible or not.
+ * @param str The string to show on this item in the drop down menu.
+ * @param value The value to use when the item becomes selected.
+ * @param masked Whether the item should be masked out.
+ * @param shaded Whether the item should be shaded.
+ * @param indent By what factor the tick and string should be indent.
+ * @return Unique pointer to newly created drop down item.
+ */
 std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, int value, bool masked, bool shaded, uint indent)
 {
 	return std::make_unique<DropDownListCheckedItem>(indent, checked, GetString(str), value, masked, shaded);
