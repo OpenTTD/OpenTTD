@@ -157,8 +157,8 @@ public:
 	 * @param width The width of the rectangle.
 	 * @param height The height of the rectangle.
 	 * @pre ScriptMap::IsValidTile(tile).
-	 * @pre width >= 0.
-	 * @pre height >= 0.
+	 * @pre width > 0.
+	 * @pre height > 0.
 	 * @return True if it is buildable, false if not.
 	 */
 	static bool IsBuildableRectangle(TileIndex tile, SQInteger width, SQInteger height);
