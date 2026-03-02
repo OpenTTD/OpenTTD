@@ -472,18 +472,19 @@ static CallBackFunction MenuClickMap(int index)
 
 /* --- Town button menu --- */
 
-enum TownMenuEntries {
-	TME_SHOW_DIRECTORY = 0,
-	TME_SHOW_FOUND_TOWN,
-	TME_SHOW_PLACE_HOUSES,
+/** Town button menu entries. */
+enum class TownMenuEntries {
+	ShowDirectory = 0, ///< Open window with list of towns.
+	ShowFoundTown, ///< Open town generation window.
+	ShowPlaceHouses, ///< Open house selection window.
 };
 
 static CallBackFunction ToolbarTownClick(Window *w)
 {
 	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY, TME_SHOW_DIRECTORY));
-	if (_settings_game.economy.found_town != TF_FORBIDDEN) list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_FOUND_TOWN, TME_SHOW_FOUND_TOWN));
-	if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) list.push_back(MakeDropDownListStringItem(STR_SCENEDIT_TOWN_MENU_PACE_HOUSE, TME_SHOW_PLACE_HOUSES));
+	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY, TownMenuEntries::ShowDirectory));
+	if (_settings_game.economy.found_town != TF_FORBIDDEN) list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_FOUND_TOWN, TownMenuEntries::ShowFoundTown));
+	if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) list.push_back(MakeDropDownListStringItem(STR_SCENEDIT_TOWN_MENU_PACE_HOUSE, TownMenuEntries::ShowPlaceHouses));
 
 	PopupMainToolbarMenu(w, WID_TN_TOWNS, std::move(list), 0);
 
@@ -498,12 +499,12 @@ static CallBackFunction ToolbarTownClick(Window *w)
  */
 static CallBackFunction MenuClickTown(int index)
 {
-	switch (index) {
-		case TME_SHOW_DIRECTORY: ShowTownDirectory(); break;
-		case TME_SHOW_FOUND_TOWN: // Setting could be changed when the dropdown was open
+	switch (TownMenuEntries(index)) {
+		case TownMenuEntries::ShowDirectory: ShowTownDirectory(); break;
+		case TownMenuEntries::ShowFoundTown: // Setting could be changed when the dropdown was open
 			if (_settings_game.economy.found_town != TF_FORBIDDEN) ShowFoundTownWindow();
 			break;
-		case TME_SHOW_PLACE_HOUSES: // Setting could be changed when the dropdown was open
+		case TownMenuEntries::ShowPlaceHouses: // Setting could be changed when the dropdown was open
 			if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) ShowBuildHousePicker(nullptr);
 			break;
 	}
