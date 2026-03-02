@@ -418,22 +418,23 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 
 /* --- Map button menu --- */
 
-enum MapMenuEntries : uint8_t {
-	MME_SHOW_SMALLMAP        = 0,
-	MME_SHOW_EXTRAVIEWPORTS,
-	MME_SHOW_LINKGRAPH,
-	MME_SHOW_SIGNLISTS,
-	MME_SHOW_TOWNDIRECTORY,
-	MME_SHOW_INDUSTRYDIRECTORY,
+/** Map button menu entries. */
+enum class MapMenuEntries : uint8_t {
+	ShowSmallMap = 0, ///< Open small map window.
+	ShowExtraViewport, ///< Open new extra viewport window.
+	ShowLinkGraph, ///< Open cargo flow legend window.
+	ShowSignList, ///< Open sign list window.
+	ShowTownDirectory, ///< Open window with list of towns.
+	ShowIndustryDirectory, ///< Open window with list of industries.
 };
 
 static CallBackFunction ToolbarMapClick(Window *w)
 {
 	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT,          MME_SHOW_EXTRAVIEWPORTS));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_LINGRAPH_LEGEND,         MME_SHOW_LINKGRAPH));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD, MapMenuEntries::ShowSmallMap));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT, MapMenuEntries::ShowExtraViewport));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_LINGRAPH_LEGEND, MapMenuEntries::ShowLinkGraph));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST, MapMenuEntries::ShowSignList));
 	PopupMainToolbarMenu(w, WID_TN_SMALL_MAP, std::move(list), 0);
 	return CallBackFunction::None;
 }
@@ -441,11 +442,11 @@ static CallBackFunction ToolbarMapClick(Window *w)
 static CallBackFunction ToolbarScenMapTownDir(Window *w)
 {
 	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT,          MME_SHOW_EXTRAVIEWPORTS));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS));
-	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY,         MME_SHOW_TOWNDIRECTORY));
-	list.push_back(MakeDropDownListStringItem(STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, MME_SHOW_INDUSTRYDIRECTORY));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD, MapMenuEntries::ShowSmallMap));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT, MapMenuEntries::ShowExtraViewport));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST, MapMenuEntries::ShowSignList));
+	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY, MapMenuEntries::ShowTownDirectory));
+	list.push_back(MakeDropDownListStringItem(STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, MapMenuEntries::ShowIndustryDirectory));
 	PopupMainToolbarMenu(w, WID_TE_SMALL_MAP, std::move(list), 0);
 	return CallBackFunction::None;
 }
@@ -458,13 +459,13 @@ static CallBackFunction ToolbarScenMapTownDir(Window *w)
  */
 static CallBackFunction MenuClickMap(int index)
 {
-	switch (index) {
-		case MME_SHOW_SMALLMAP:          ShowSmallMap();            break;
-		case MME_SHOW_EXTRAVIEWPORTS:    ShowExtraViewportWindow(); break;
-		case MME_SHOW_LINKGRAPH:         ShowLinkGraphLegend();     break;
-		case MME_SHOW_SIGNLISTS:         ShowSignList();            break;
-		case MME_SHOW_TOWNDIRECTORY:     ShowTownDirectory();       break;
-		case MME_SHOW_INDUSTRYDIRECTORY: ShowIndustryDirectory();   break;
+	switch (MapMenuEntries(index)) {
+		case MapMenuEntries::ShowSmallMap: ShowSmallMap(); break;
+		case MapMenuEntries::ShowExtraViewport: ShowExtraViewportWindow(); break;
+		case MapMenuEntries::ShowLinkGraph: ShowLinkGraphLegend(); break;
+		case MapMenuEntries::ShowSignList: ShowSignList(); break;
+		case MapMenuEntries::ShowTownDirectory: ShowTownDirectory(); break;
+		case MapMenuEntries::ShowIndustryDirectory: ShowIndustryDirectory(); break;
 	}
 	return CallBackFunction::None;
 }
