@@ -19,14 +19,14 @@ static const uint MAX_CLIENTS = 255;
 /**
  * Vehicletypes in the order they are send in info packets.
  */
-enum NetworkVehicleType : uint8_t {
-	NETWORK_VEH_TRAIN = 0,
-	NETWORK_VEH_LORRY,
-	NETWORK_VEH_BUS,
-	NETWORK_VEH_PLANE,
-	NETWORK_VEH_SHIP,
+enum class NetworkVehicleType : uint8_t {
+	Train = 0, ///< A train.
+	Truck, ///< A road vehicle that stops at truck stops
+	Bus, ///< A road vehicle that stops at bus stops.
+	Aircraft, ///< An airplane or helicopter.
+	Ship, ///< A ship.
 
-	NETWORK_VEH_END
+	End ///< End marker for array sizes.
 };
 
 /**
@@ -54,9 +54,10 @@ using AdminID = PoolID<uint8_t, struct AdminIDTag, 16, 0xFF>;
 
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
-	uint16_t num_vehicle[NETWORK_VEH_END];            ///< How many vehicles are there of this type?
-	uint16_t num_station[NETWORK_VEH_END];            ///< How many stations are there of this type?
-	bool ai;                                        ///< Is this company an AI
+	/** Array indexed by NetworkVehicleType. */
+	using NetworkVehicleTypeArray = EnumClassIndexContainer<std::array<uint16_t, to_underlying(NetworkVehicleType::End)>, NetworkVehicleType>;
+	NetworkVehicleTypeArray num_vehicle; ///< How many vehicles are there of this type?
+	NetworkVehicleTypeArray num_station; ///< How many stations are there of this type?
 };
 
 struct NetworkClientInfo;

@@ -450,14 +450,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
 
 		/* Send the information. */
 		p->Send_uint8(company->index);
-
-		for (uint i = 0; i < NETWORK_VEH_END; i++) {
-			p->Send_uint16(company_stats[company->index].num_vehicle[i]);
-		}
-
-		for (uint i = 0; i < NETWORK_VEH_END; i++) {
-			p->Send_uint16(company_stats[company->index].num_station[i]);
-		}
+		for (uint16_t value : company_stats[company->index].num_vehicle) p->Send_uint16(value);
+		for (uint16_t value : company_stats[company->index].num_station) p->Send_uint16(value);
 
 		this->SendPacket(std::move(p));
 	}
