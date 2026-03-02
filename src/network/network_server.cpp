@@ -1546,12 +1546,12 @@ NetworkCompanyStatsArray NetworkGetCompanyStats()
 	/* Go through all vehicles and count the type of vehicles */
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
-		uint8_t type = 0;
+		NetworkVehicleType type;
 		switch (v->type) {
-			case VEH_TRAIN: type = NETWORK_VEH_TRAIN; break;
-			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? NETWORK_VEH_BUS : NETWORK_VEH_LORRY; break;
-			case VEH_AIRCRAFT: type = NETWORK_VEH_PLANE; break;
-			case VEH_SHIP: type = NETWORK_VEH_SHIP; break;
+			case VEH_TRAIN: type = NetworkVehicleType::Train; break;
+			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? NetworkVehicleType::Bus : NetworkVehicleType::Truck; break;
+			case VEH_AIRCRAFT: type = NetworkVehicleType::Aircraft; break;
+			case VEH_SHIP: type = NetworkVehicleType::Ship; break;
 			default: continue;
 		}
 		stats[v->owner].num_vehicle[type]++;
@@ -1562,11 +1562,11 @@ NetworkCompanyStatsArray NetworkGetCompanyStats()
 		if (Company::IsValidID(s->owner)) {
 			NetworkCompanyStats *npi = &stats[s->owner];
 
-			if (s->facilities.Test(StationFacility::Train))     npi->num_station[NETWORK_VEH_TRAIN]++;
-			if (s->facilities.Test(StationFacility::TruckStop)) npi->num_station[NETWORK_VEH_LORRY]++;
-			if (s->facilities.Test(StationFacility::BusStop))   npi->num_station[NETWORK_VEH_BUS]++;
-			if (s->facilities.Test(StationFacility::Airport))   npi->num_station[NETWORK_VEH_PLANE]++;
-			if (s->facilities.Test(StationFacility::Dock))      npi->num_station[NETWORK_VEH_SHIP]++;
+			if (s->facilities.Test(StationFacility::Train)) npi->num_station[NetworkVehicleType::Train]++;
+			if (s->facilities.Test(StationFacility::TruckStop)) npi->num_station[NetworkVehicleType::Truck]++;
+			if (s->facilities.Test(StationFacility::BusStop)) npi->num_station[NetworkVehicleType::Bus]++;
+			if (s->facilities.Test(StationFacility::Airport)) npi->num_station[NetworkVehicleType::Aircraft]++;
+			if (s->facilities.Test(StationFacility::Dock)) npi->num_station[NetworkVehicleType::Ship]++;
 		}
 	}
 
