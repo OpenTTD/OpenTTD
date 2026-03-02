@@ -2369,12 +2369,12 @@ STR_FACE_SIMPLE                                                 :{BLACK}Enkelt
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enkelt ansiktsvalg
 STR_FACE_LOAD                                                   :{BLACK}Last inn
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Last inn favorittansikt
-STR_FACE_LOAD_DONE                                              :{WHITE}Ditt favorittansikt har blitt lastet inn fra OpenTTDs konfigurasjonsfil
+STR_FACE_LOAD_DONE                                              :Ditt favorittansikt har blitt lastet inn fra OpenTTDs konfigurasjonsfil
 STR_FACE_FACECODE                                               :{BLACK}Ansiktskode
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller endre ansiktskoden til selskapets president
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller endre lederens ansiktskode
-STR_FACE_FACECODE_SET                                           :{WHITE}Nytt presidentansikt har blitt satt
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke endre lederens ansiktskode - må være et gyldig merke og nummer
+STR_FACE_FACECODE_SET                                           :Nytt presidentansikt har blitt satt
+STR_FACE_FACECODE_ERR                                           :Kunne ikke endre lederens ansiktskode - må være et gyldig merke og nummer
 STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favorittansikt
 STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansiktet vil bli lagret som din favoritt i OpenTTDs konfigurasjonsfil
@@ -2719,8 +2719,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Nedlast
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valgt pga.: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Avhengig av: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Merker: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD er bygget uten støtte for «zlib»...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}...{NBSP}det er ikke mulig å laste ned innhold!
+STR_CONTENT_NO_ZLIB                                             :OpenTTD er bygget uten støtte for «zlib»...
+STR_CONTENT_NO_ZLIB_SUB                                         :det er ikke mulig å laste ned innhold!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafikk
@@ -2742,9 +2742,9 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Nedlastn
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} lastet ned ({NUM}{NBSP}%)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunne ikke koble til innholdstjener...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Nedlastning mislyktes...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}...{NBSP}kunne ikke skrive til fil
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Kunne ikke koble til innholdstjener...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Nedlastning mislyktes...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :kunne ikke skrive til fil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunne ikke pakke ut den nedlastede filen
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Manglende grafikk
@@ -3698,7 +3698,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare-/ombyggingsinformasjon for '{1:ENGINE}' er forskjellig fra kjøpelisten etter bygging. Dette kan resultere i at automatisk fornyelse ikke fungerer på riktig måte
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaket en uendelig løkke i produksjons-callback
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Tilbakekall {1:HEX} rapporterte ukjent/ugyldig resultat {2:HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Tilbakekall {1:HEX} rapporterte ukjent/ugyldig resultat {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returnerte ugyldig varetype i produksjons-callback i {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -5158,12 +5158,12 @@ STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Kan ikke
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... for nærme en annen industri
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... må grunnlegge en by først
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...{NBSP}kun én tillates per by
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...{NBSP}kan kun bygges i byer med minst 1{NBSP}200 innbyggere
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...{NBSP}kan kun bygges i regnskogområder
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan kun bygges i ørkenområder
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...{NBSP}kan kun bygges i byer (erstatter hus)
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :kan kun bygges i byer med minst 1200 innbyggere
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :kan kun bygges i regnskogområder
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :kan kun bygges i ørkenområder
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :kan kun bygges i byer (erstatter hus)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan bare bli bygd nær midten av byer
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan kun bygges i lavtliggende områder
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :kan kun bygges i lavtliggende områder
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan kun plasseres i nærheten av kartkanten
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bare plantes over snøgrensen
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan kun bygges over snøgrensen
@@ -5176,12 +5176,12 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Endre pa
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikke bygge jernbanestasjon her...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan ikke bygge busstasjon...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Kan ikke bygge busstasjon...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan ikke bygge godsterminal...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan ikke bygge trikkestopp for passasjerer...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan ikke bygge trikkestopp for varer...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Kan ikke bygge trikkestopp for varer...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikke bygge havn her...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke bygge lufthavn her...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Kan ikke bygge lufthavn her...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenser til mer enn én eksisterende stasjon/godsterminal
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...{NBSP}stasjonen er spredd for mye
@@ -5276,7 +5276,7 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nytt kj�
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nytt transportmiddel kan ikke bygges om i ordre {NUM}
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Umulig sporkombinasjon
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :Umulig sporkombinasjon
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Må fjerne signaler først
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ingen passende jernbanespor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Må fjerne jernbanespor først
@@ -5308,7 +5308,7 @@ STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen pa
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen passende trikkespor
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikke bygge kanaler her...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Kan ikke bygge kanaler her...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan ikke bygge sluser her...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan ikke plassere elver her...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... må bygges i sjøen
@@ -5317,7 +5317,7 @@ STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kan 
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kan ikke bygge på en kanal
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... kan ikke bygge på en elv
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Må fjerne kanal først
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikke bygge akvedukt her...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Kan ikke bygge akvedukt her...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... det er allerede et tre her
@@ -5325,7 +5325,7 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... feil
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan ikke plante trær her...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kan ikke bygge bro her...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Kan ikke bygge bro her...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Må rive bro først
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikke starte og slutte på samme felt
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broender er ikke på samme nivå
@@ -5359,7 +5359,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt e
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... selskapets hovedkontor er i veien
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke kjøpe dette landområdet...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du eier det allerede!
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... nådd grense for byggetiltak
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :nådd grense for byggetiltak
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan ikke opprette gruppe...
@@ -5422,16 +5422,16 @@ STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan ikke gi luftfartøytypen nytt navn...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan ikke selge jernbanemateriell...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikke selge kjøretøy...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikke selge skip...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikke selge luftfartøy...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Kan ikke selge jernbanemateriell...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Kan ikke selge kjøretøy...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Kan ikke selge skip...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Kan ikke selge luftfartøy...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Kan ikke selge alt jernbanemateriell...
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kan ikke selge alle kjøretøy...
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan ikke selge alle skip...
-STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kan ikke selge alle luftfartøy...
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Kan ikke selge alt jernbanemateriell...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Kan ikke selge alle kjøretøy...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Kan ikke selge alle skip...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Kan ikke selge alle luftfartøy...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Kan ikke bytte ut jernbanemateriell automatisk...
@@ -5475,8 +5475,8 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kan ikke hoppe over nåværende ordre...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan ikke hoppe til den valgte ordren...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... kjøretøyet kan ikke nå alle stasjoner
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kjøretøyet kan ikke gå til den stasjonen
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... et kjøretøy som deler denne ordren kan ikke gå til den stasjonen
+STR_ERROR_CAN_T_ADD_ORDER                                       :kjøretøyet kan ikke gå til den stasjonen
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :et kjøretøy som deler denne ordren kan ikke gå til den stasjonen
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... ikke alle kjøretøyene har like ordre
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... Alle transportmidler deler ikke ordre
 
