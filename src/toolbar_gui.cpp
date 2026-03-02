@@ -2290,30 +2290,35 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarSwitchClick,
 };
 
-enum MainToolbarEditorHotkeys : int32_t {
-	MTEHK_PAUSE,
-	MTEHK_FASTFORWARD,
-	MTEHK_SETTINGS,
-	MTEHK_SAVEGAME,
-	MTEHK_GENLAND,
-	MTEHK_GENTOWN,
-	MTEHK_GENINDUSTRY,
-	MTEHK_BUILD_ROAD,
-	MTEHK_BUILD_TRAM,
-	MTEHK_BUILD_DOCKS,
-	MTEHK_BUILD_TREES,
-	MTEHK_SIGN,
-	MTEHK_MUSIC,
-	MTEHK_LANDINFO,
-	MTEHK_SMALL_SCREENSHOT,
-	MTEHK_ZOOMEDIN_SCREENSHOT,
-	MTEHK_DEFAULTZOOM_SCREENSHOT,
-	MTEHK_GIANT_SCREENSHOT,
-	MTEHK_ZOOM_IN,
-	MTEHK_ZOOM_OUT,
-	MTEHK_TERRAFORM,
-	MTEHK_SMALLMAP,
-	MTEHK_EXTRA_VIEWPORT,
+/**
+ * List of hotkeys available in scenario editor.
+ * @note Hotkeys that behave like toolbar buttons must have the same value as corresponding widget.
+ *       Other hotkeys have to have SPECIAL_HOTKEY_BIT set.
+ */
+enum class MainToolbarEditorHotkeys : int32_t {
+	Pause = WID_TE_PAUSE, ///< (Un)pause the game.
+	FastForward = WID_TE_FAST_FORWARD, ///< Toggle the fast-forward mode.
+	ZoomIn = WID_TE_ZOOM_IN, ///< Zoom in.
+	ZoomOut = WID_TE_ZOOM_OUT, ///< Zoom out.
+	GenerateLand = WID_TE_LAND_GENERATE, ///< Open land generation window.
+	GenerateIndustry = WID_TE_INDUSTRY, ///< Open industry funding window.
+	BuildWater = WID_TE_WATER, ///< Open window for building locks, canals, rivers and aqueducts.
+	BuildTrees = WID_TE_TREES, ///< Open tree selection window.
+	Sign = WID_TE_SIGNS, ///< Toggle sign creation tool.
+	Settings = 1 << SPECIAL_HOTKEY_BIT, ///< Open game options window.
+	SaveGame, ///< Open save scenario window.
+	Music, ///< Open sound end music window.
+	LandInfo, ///< Toggle land info tool.
+	SmallScreenshot, ///< Take small screenshot.
+	ZoomedInScreenshot, ///< Take zoomed in screenshot.
+	DefaultZoomScreenshot, ///< Take screenshot with default zoom.
+	GiantScreenshot, ///< Take detailed screenshot of whole map.
+	Terraform, ///< Open land generation window.
+	SmallMap, ///< Open small map window.
+	ExtraViewport, ///< Open new extra viewport window.
+	GenerateTown, ///< Open town generation window.
+	BuildRoad, ///< Open toolbar window with tools for building roads.
+	BuildTram, ///< Open toolbar window with tools for building tramways.
 };
 
 struct ScenarioEditorToolbarWindow : Window {
@@ -2398,34 +2403,29 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	EventState OnHotkey(int hotkey) override
 	{
-		CallBackFunction cbf = CallBackFunction::None;
-		switch (hotkey) {
-			case MTEHK_PAUSE:                  ToolbarPauseClick(this); break;
-			case MTEHK_FASTFORWARD:            ToolbarFastForwardClick(this); break;
-			case MTEHK_SETTINGS:               ShowGameOptions(); break;
-			case MTEHK_SAVEGAME:               MenuClickSaveLoad(); break;
-			case MTEHK_GENLAND:                ToolbarScenGenLand(this); break;
-			case MTEHK_GENTOWN:                ToolbarScenGenTownClick(this); break;
-			case MTEHK_GENINDUSTRY:            ToolbarScenGenIndustry(this); break;
-			case MTEHK_BUILD_ROAD:             ToolbarScenBuildRoadClick(this); break;
-			case MTEHK_BUILD_TRAM:             ToolbarScenBuildTramClick(this); break;
-			case MTEHK_BUILD_DOCKS:            ToolbarScenBuildDocks(this); break;
-			case MTEHK_BUILD_TREES:            ToolbarScenPlantTrees(this); break;
-			case MTEHK_SIGN:                   cbf = ToolbarScenPlaceSign(this); break;
-			case MTEHK_MUSIC:                  ShowMusicWindow(); break;
-			case MTEHK_LANDINFO:               cbf = PlaceLandBlockInfo(); break;
-			case MTEHK_SMALL_SCREENSHOT:       MakeScreenshotWithConfirm(SC_VIEWPORT); break;
-			case MTEHK_ZOOMEDIN_SCREENSHOT:    MakeScreenshotWithConfirm(SC_ZOOMEDIN); break;
-			case MTEHK_DEFAULTZOOM_SCREENSHOT: MakeScreenshotWithConfirm(SC_DEFAULTZOOM); break;
-			case MTEHK_GIANT_SCREENSHOT:       MakeScreenshotWithConfirm(SC_WORLD); break;
-			case MTEHK_ZOOM_IN:                ToolbarZoomInClick(this); break;
-			case MTEHK_ZOOM_OUT:               ToolbarZoomOutClick(this); break;
-			case MTEHK_TERRAFORM:              ShowEditorTerraformToolbar(); break;
-			case MTEHK_SMALLMAP:               ShowSmallMap(); break;
-			case MTEHK_EXTRA_VIEWPORT:         ShowExtraViewportWindowForTileUnderCursor(); break;
-			default: return ES_NOT_HANDLED;
+		if (IsSpecialHotkey(hotkey)) {
+			CallBackFunction cbf = CallBackFunction::None;
+			switch (MainToolbarEditorHotkeys(hotkey)) {
+				case MainToolbarEditorHotkeys::Settings: ShowGameOptions(); break;
+				case MainToolbarEditorHotkeys::SaveGame: MenuClickSaveLoad(); break;
+				case MainToolbarEditorHotkeys::Music: ShowMusicWindow(); break;
+				case MainToolbarEditorHotkeys::LandInfo: cbf = PlaceLandBlockInfo(); break;
+				case MainToolbarEditorHotkeys::SmallScreenshot: MakeScreenshotWithConfirm(SC_VIEWPORT); break;
+				case MainToolbarEditorHotkeys::ZoomedInScreenshot: MakeScreenshotWithConfirm(SC_ZOOMEDIN); break;
+				case MainToolbarEditorHotkeys::DefaultZoomScreenshot: MakeScreenshotWithConfirm(SC_DEFAULTZOOM); break;
+				case MainToolbarEditorHotkeys::GiantScreenshot: MakeScreenshotWithConfirm(SC_WORLD); break;
+				case MainToolbarEditorHotkeys::Terraform: ShowEditorTerraformToolbar(); break;
+				case MainToolbarEditorHotkeys::SmallMap: ShowSmallMap(); break;
+				case MainToolbarEditorHotkeys::ExtraViewport: ShowExtraViewportWindowForTileUnderCursor(); break;
+				case MainToolbarEditorHotkeys::GenerateTown: ShowFoundTownWindow(); break;
+				case MainToolbarEditorHotkeys::BuildRoad: ShowBuildRoadScenToolbar(_last_built_roadtype); break;
+				case MainToolbarEditorHotkeys::BuildTram: ShowBuildRoadScenToolbar(_last_built_tramtype); break;
+				default: return ES_NOT_HANDLED;
+			}
+			if (cbf != CallBackFunction::None) _last_started_action = cbf;
+		} else {
+			this->OnClick({}, hotkey, 0);
 		}
-		if (cbf != CallBackFunction::None) _last_started_action = cbf;
 		return ES_HANDLED;
 	}
 
@@ -2500,29 +2500,29 @@ struct ScenarioEditorToolbarWindow : Window {
 	}
 
 	static inline HotkeyList hotkeys{"scenedit_maintoolbar", {
-		Hotkey({WKC_F1, WKC_PAUSE}, "pause", MTEHK_PAUSE),
-		Hotkey(0, "fastforward", MTEHK_FASTFORWARD),
-		Hotkey(WKC_F2, "settings", MTEHK_SETTINGS),
-		Hotkey(WKC_F3, "saveload", MTEHK_SAVEGAME),
-		Hotkey(WKC_F4, "gen_land", MTEHK_GENLAND),
-		Hotkey(WKC_F5, "gen_town", MTEHK_GENTOWN),
-		Hotkey(WKC_F6, "gen_industry", MTEHK_GENINDUSTRY),
-		Hotkey(WKC_F7, "build_road", MTEHK_BUILD_ROAD),
-		Hotkey(0, "build_tram", MTEHK_BUILD_TRAM),
-		Hotkey(WKC_F8, "build_docks", MTEHK_BUILD_DOCKS),
-		Hotkey(WKC_F9, "build_trees", MTEHK_BUILD_TREES),
-		Hotkey(WKC_F10, "build_sign", MTEHK_SIGN),
-		Hotkey(WKC_F11, "music", MTEHK_MUSIC),
-		Hotkey(WKC_F12, "land_info", MTEHK_LANDINFO),
-		Hotkey(WKC_CTRL  | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
-		Hotkey(WKC_CTRL  | 'P', "zoomedin_screenshot", MTEHK_ZOOMEDIN_SCREENSHOT),
-		Hotkey(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTEHK_DEFAULTZOOM_SCREENSHOT),
-		Hotkey(0, "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
-		Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MTEHK_ZOOM_IN),
-		Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MTEHK_ZOOM_OUT),
-		Hotkey('L', "terraform", MTEHK_TERRAFORM),
-		Hotkey('M', "smallmap", MTEHK_SMALLMAP),
-		Hotkey('V', "extra_viewport", MTEHK_EXTRA_VIEWPORT),
+		Hotkey({WKC_F1, WKC_PAUSE}, "pause", MainToolbarEditorHotkeys::Pause),
+		Hotkey(0, "fastforward", MainToolbarEditorHotkeys::FastForward),
+		Hotkey(WKC_F2, "settings", MainToolbarEditorHotkeys::Settings),
+		Hotkey(WKC_F3, "saveload", MainToolbarEditorHotkeys::SaveGame),
+		Hotkey(WKC_F4, "gen_land", MainToolbarEditorHotkeys::GenerateLand),
+		Hotkey(WKC_F5, "gen_town", MainToolbarEditorHotkeys::GenerateTown),
+		Hotkey(WKC_F6, "gen_industry", MainToolbarEditorHotkeys::GenerateIndustry),
+		Hotkey(WKC_F7, "build_road", MainToolbarEditorHotkeys::BuildRoad),
+		Hotkey(0, "build_tram", MainToolbarEditorHotkeys::BuildTram),
+		Hotkey(WKC_F8, "build_docks", MainToolbarEditorHotkeys::BuildWater),
+		Hotkey(WKC_F9, "build_trees", MainToolbarEditorHotkeys::BuildTrees),
+		Hotkey(WKC_F10, "build_sign", MainToolbarEditorHotkeys::Sign),
+		Hotkey(WKC_F11, "music", MainToolbarEditorHotkeys::Music),
+		Hotkey(WKC_F12, "land_info", MainToolbarEditorHotkeys::LandInfo),
+		Hotkey(WKC_CTRL | 'S', "small_screenshot", MainToolbarEditorHotkeys::SmallScreenshot),
+		Hotkey(WKC_CTRL | 'P', "zoomedin_screenshot", MainToolbarEditorHotkeys::ZoomedInScreenshot),
+		Hotkey(WKC_CTRL | 'D', "defaultzoom_screenshot", MainToolbarEditorHotkeys::DefaultZoomScreenshot),
+		Hotkey(0, "giant_screenshot", MainToolbarEditorHotkeys::GiantScreenshot),
+		Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MainToolbarEditorHotkeys::ZoomIn),
+		Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MainToolbarEditorHotkeys::ZoomOut),
+		Hotkey('L', "terraform", MainToolbarEditorHotkeys::Terraform),
+		Hotkey('M', "smallmap", MainToolbarEditorHotkeys::SmallMap),
+		Hotkey('V', "extra_viewport", MainToolbarEditorHotkeys::ExtraViewport),
 	}};
 };
 
