@@ -391,12 +391,12 @@ struct MainWindow : Window
 					const NetworkClientInfo *cio = NetworkClientInfo::GetByClientID(_network_own_client_id);
 					if (cio == nullptr) break;
 
-					ShowNetworkChatQueryWindow(NetworkClientPreferTeamChat(cio) ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas.base());
+					ShowNetworkChatQueryWindow(NetworkClientPreferTeamChat(cio) ? NetworkChatDestinationType::Team : NetworkChatDestinationType::Broadcast, cio->client_playas.base());
 				}
 				break;
 
 			case GHK_CHAT_ALL: // send text message to all clients
-				if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+				if (_networking) ShowNetworkChatQueryWindow(NetworkChatDestinationType::Broadcast, 0);
 				break;
 
 			case GHK_CHAT_COMPANY: // send text to all team mates
@@ -404,13 +404,13 @@ struct MainWindow : Window
 					const NetworkClientInfo *cio = NetworkClientInfo::GetByClientID(_network_own_client_id);
 					if (cio == nullptr) break;
 
-					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas.base());
+					ShowNetworkChatQueryWindow(NetworkChatDestinationType::Team, cio->client_playas.base());
 				}
 				break;
 
 			case GHK_CHAT_SERVER: // send text to the server
 				if (_networking && !_network_server) {
-					ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, CLIENT_ID_SERVER);
+					ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, CLIENT_ID_SERVER);
 				}
 				break;
 

@@ -372,7 +372,7 @@ protected:
 	/**
 	 * Sends a chat-packet to the server:
 	 * uint8_t   ID of the action (see NetworkAction).
-	 * uint8_t   ID of the destination type (see DestType).
+	 * uint8_t   ID of the destination type (see #NetworkChatDestinationType).
 	 * uint32_t  ID of the client or company (destination of the chat).
 	 * string  Message (max NETWORK_CHAT_LENGTH).
 	 * uint64_t  data (used e.g. for 'give money' actions).
