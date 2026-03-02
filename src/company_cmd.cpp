@@ -126,7 +126,7 @@ void SetLocalCompany(CompanyID new_company)
 	bool switching_company = _local_company != new_company;
 
 	/* Delete the chat window, if you were team chatting. */
-	if (switching_company) InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
+	if (switching_company) InvalidateWindowData(WC_SEND_NETWORK_MSG, NetworkChatDestinationType::Team, _local_company);
 
 	assert(IsLocalCompany());
 

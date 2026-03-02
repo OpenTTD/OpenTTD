@@ -510,7 +510,7 @@ enum WindowClass : uint16_t {
 
 	/**
 	 * Chatbox; %Window numbers:
-	 *   - #DestType = #NetWorkChatWidgets
+	 *   - #NetworkChatDestinationType = #NetWorkChatWidgets
 	 */
 	WC_SEND_NETWORK_MSG,
 
