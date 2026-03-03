@@ -13,6 +13,8 @@
 #include "command_type.h"
 #include "company_type.h"
 #include "livery.h"
+#include "rail_type.h"
+#include "road_type.h"
 
 enum ClientID : uint32_t;
 enum Colours : uint8_t;
@@ -24,6 +26,8 @@ CommandCost CmdRenameCompany(DoCommandFlags flags, const std::string &text);
 CommandCost CmdRenamePresident(DoCommandFlags flags, const std::string &text);
 CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t bits);
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour);
+CommandCost CmdSetRailRoadTypeCompanyHidden(DoCommandFlags flags, RailType rail_type, RoadType road_type, bool is_hidden);
+CommandCost CmdSetRailRoadTypeCompanyFavourite(DoCommandFlags flags, RailType rail_type, RoadType road_type, bool is_favourite);
 
 DEF_CMD_TRAIT(Commands::CompanyControl, CmdCompanyCtrl, CommandFlags({CommandFlag::Spectator, CommandFlag::ClientID, CommandFlag::NoEst}), CommandType::ServerSetting)
 DEF_CMD_TRAIT(Commands::CompanyAllowListControl, CmdCompanyAllowListCtrl, CommandFlag::NoEst, CommandType::ServerSetting)
@@ -32,5 +36,7 @@ DEF_CMD_TRAIT(Commands::RenameCompany, CmdRenameCompany, {}, CommandType::Compan
 DEF_CMD_TRAIT(Commands::RenamePresident, CmdRenamePresident, {}, CommandType::CompanySetting)
 DEF_CMD_TRAIT(Commands::SetCompanyManagerFace, CmdSetCompanyManagerFace, {}, CommandType::CompanySetting)
 DEF_CMD_TRAIT(Commands::SetCompanyColour, CmdSetCompanyColour, {}, CommandType::CompanySetting)
+DEF_CMD_TRAIT(Commands::SetRailRoadTypeHidden, CmdSetRailRoadTypeCompanyHidden, {}, CommandType::CompanySetting)
+DEF_CMD_TRAIT(Commands::SetRailRoadTypeFavourite, CmdSetRailRoadTypeCompanyFavourite, CommandFlag::NoEst, CommandType::CompanySetting)
 
 #endif /* COMPANY_CMD_H */

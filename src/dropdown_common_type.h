@@ -299,9 +299,132 @@ public:
 	bool Selectable() const override { return false; }
 };
 
-using DropDownListDividerItem = DropDownDivider<DropDownListItem>;
+/**
+ * Drop down component that changes the background colour when item is hovered.
+ * @tparam TBase Base component.
+ */
+template <class TBase>
+class DropDownCustomSelectedBGColour : public TBase {
+public:
+	/**
+	 * Colours is converted to PixelColour
+	 * true evalueates to current window colour
+	 * false falls back to TBase::GetSelectedBGColour
+	 */
+	using ColourType = std::variant<PixelColour, Colours, bool>;
+private:
+	ColourType colour; ///< Colour that is used when item is hovered and both shift and ctrl buttons aren't pressed.
+	ColourType shift_colour; ///< Colour that is used when item is hovered and shift button is pressed.
+	ColourType ctrl_colour; ///< Colour that is used when item is hovered and ctrl button is pressed.
+public:
+	/**
+	 * Creates new instance of %DropDownCustomSelectedBGColour.
+	 * @param colour @copydoc DropDownCustomSelectedBGColour::colour
+	 * @param shift_colour @copydoc DropDownCustomSelectedBGColour::shift_colour
+	 * @param ctrl_colour @copydoc DropDownCustomSelectedBGColour::ctrl_colour
+	 * @param args Arguments for TBase constructor.
+	 */
+	template <typename... Args>
+	explicit DropDownCustomSelectedBGColour(const ColourType &colour, const ColourType &shift_colour, const ColourType &ctrl_colour, Args&&... args)
+		: TBase(std::forward<Args>(args)...), colour(colour), shift_colour(shift_colour), ctrl_colour(ctrl_colour)
+	{
+	}
+
+	/** @copydoc DropDownListItem::GetSelectedBGColour */
+	PixelColour GetSelectedBGColour(Colours window_colour) const override
+	{
+		auto colour = this->colour;
+		if (_shift_pressed) colour = this->shift_colour;
+		if (_ctrl_pressed) colour = this->ctrl_colour;
+
+		switch (colour.index()) {
+			default: NOT_REACHED();
+			case 0 /* PixelColour */: return std::get<PixelColour>(colour);
+			case 1 /* Colours */: return GetColourGradient(std::get<Colours>(colour), SHADE_LIGHT);
+			case 2 /* bool */:
+				if (std::get<bool>(colour)) return GetColourGradient(window_colour, SHADE_LIGHT);
+				return this->TBase::GetSelectedBGColour(window_colour);
+		}
+	}
+};
+
+/**
+ * Drop down component that hides its content.
+ * @tparam TBase Base component.
+ */
+template <class TBase>
+class DropDownHiddable : public TBase {
+public:
+	/** Diffrent states of the application in wich the drop down item can be hidden. */
+	enum class State {
+		Default, ///< Drop down item will be hidden when both shift and ctrl buttons are up.
+		CtrlPressed, ///< Drop down item will be hidden when ctrl button is down.
+		ShiftPressed, ///< Drop down item will be hidden when shift button is down.
+	};
+	using States = EnumBitSet<DropDownHiddable<TBase>::State, uint8_t>; ///< Bit set allowing to hide drop down item when in one from multiple states.
+private:
+	DropDownHiddable<TBase>::States hidden_states; ///< In which states the drop down item will be hidden.
+public:
+	/**
+	 * Creates new instance of %DropDownHiddable.
+	 * @param hidden_states @copydoc DropDownHiddable::hidden_states
+	 * @param args Arguments for TBase constructor.
+	 */
+	template <typename... Args>
+	explicit DropDownHiddable(const DropDownHiddable<TBase>::States &hidden_states, Args&&... args)
+		: TBase(std::forward<Args>(args)...), hidden_states(hidden_states)
+	{
+	}
+
+	/**
+	 * Checks if the item should be drawn.
+	 * @return true iff the item is visible.
+	 */
+	bool IsVisible() const
+	{
+		if (this->hidden_states.Test(DropDownHiddable<TBase>::State::CtrlPressed) && _ctrl_pressed) return false;
+		if (this->hidden_states.Test(DropDownHiddable<TBase>::State::ShiftPressed) && _shift_pressed) return false;
+		if (this->hidden_states.Test(DropDownHiddable<TBase>::State::Default) && !_ctrl_pressed && !_shift_pressed) return false;
+		return true;
+	}
+
+	/** @copydoc DropDownListItem::Height */
+	uint Height() const override
+	{
+		if (this->IsVisible()) return this->TBase::Height();
+		return 0;
+	}
+
+	/** @copydoc DropDownListItem::Width */
+	uint Width() const override
+	{
+		if (this->IsVisible()) return this->TBase::Width();
+		return 0;
+	}
+
+	/** @copydoc DropDownListItem::OnClick */
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		if (this->IsVisible()) return this->TBase::OnClick(r, pt);
+		return -1;
+	}
+
+	/** @copydoc DropDownListItem::Draw */
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
+	{
+		if (this->IsVisible()) this->TBase::Draw(full, r, sel, click_result, bg_colour);
+	}
+};
+
 using DropDownListStringItem = DropDownString<DropDownListItem>;
 using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;
 using DropDownListCheckedItem = DropDownIndent<DropDownCheck<DropDownString<DropDownListItem>>>;
+
+/**
+ * Drop down list divider item.
+ * @tparam TFs Font size -- used to determine height.
+ */
+template<FontSize TFs = FS_NORMAL>
+using DropDownListDividerItem = DropDownHiddable<DropDownDivider<DropDownListItem, TFs>>;
 
 #endif /* DROPDOWN_COMMON_TYPE_H */
