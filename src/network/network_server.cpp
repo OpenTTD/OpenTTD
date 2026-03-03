@@ -255,7 +255,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		/* Inform other clients of this... strange leaving ;) */
 		for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
 			if (new_cs->status >= STATUS_AUTHORIZED && this != new_cs) {
-				new_cs->SendErrorQuit(this->client_id, NETWORK_ERROR_CONNECTION_LOST);
+				new_cs->SendErrorQuit(this->client_id, NetworkErrorCode::ConnectionLost);
 			}
 		}
 	}
@@ -270,7 +270,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		this->CheckNextClientToSendMap(this);
 	}
 
-	NetworkAdminClientError(this->client_id, NETWORK_ERROR_CONNECTION_LOST);
+	NetworkAdminClientError(this->client_id, NetworkErrorCode::ConnectionLost);
 	Debug(net, 3, "[{}] Client #{} closed connection", ServerNetworkGameSocketHandler::GetName(), this->client_id);
 
 	/* We just lost one client :( */
@@ -369,7 +369,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_ERROR);
 
-	p->Send_uint8(error);
+	p->Send_uint8(to_underlying(error));
 	if (!reason.empty()) p->Send_string(reason);
 	this->SendPacket(std::move(p));
 
@@ -381,7 +381,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 		Debug(net, 1, "'{}' made an error and has been disconnected: {}", client_name, GetString(strid));
 
-		if (error == NETWORK_ERROR_KICKED && !reason.empty()) {
+		if (error == NetworkErrorCode::Kicked && !reason.empty()) {
 			NetworkTextMessage(NETWORK_ACTION_KICKED, CC_DEFAULT, false, client_name, reason, strid);
 		} else {
 			NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "", strid);
@@ -391,8 +391,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 			if (new_cs->status >= STATUS_AUTHORIZED && new_cs != this) {
 				/* Some errors we filter to a more general error. Clients don't have to know the real
 				 *  reason a joining failed. */
-				if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED || error == NETWORK_ERROR_WRONG_REVISION) {
-					error = NETWORK_ERROR_ILLEGAL_PACKET;
+				if (error == NetworkErrorCode::NotAuthorized || error == NetworkErrorCode::NotExpected || error == NetworkErrorCode::WrongRevision) {
+					error = NetworkErrorCode::IllegalPacket;
 				}
 				new_cs->SendErrorQuit(this->client_id, error);
 			}
@@ -576,7 +576,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
 	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
-		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
+		return this->SendError(NetworkErrorCode::IllegalPacket);
 	}
 
 	if (this->status == STATUS_AUTHORIZED) {
@@ -767,7 +767,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendErrorQuit(ClientID client_
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_ERROR_QUIT);
 
 	p->Send_uint32(client_id);
-	p->Send_uint8 (errorno);
+	p->Send_uint8(to_underlying(errorno));
 
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
@@ -883,7 +883,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 {
 	if (this->status != STATUS_NEWGRFS_CHECK) {
 		/* Illegal call, return error and ignore the packet */
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+		return this->SendError(NetworkErrorCode::NotExpected);
 	}
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_NEWGRFS_CHECKED()", this->client_id);
@@ -895,12 +895,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
 {
 	if (this->status != STATUS_INACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+		return this->SendError(NetworkErrorCode::NotExpected);
 	}
 
 	if (_network_game_info.clients_on >= _settings_client.network.max_clients) {
 		/* Turns out we are full. Inform the user about this. */
-		return this->SendError(NETWORK_ERROR_FULL);
+		return this->SendError(NetworkErrorCode::ServerFull);
 	}
 
 	std::string client_revision = p.Recv_string(NETWORK_REVISION_LENGTH);
@@ -911,7 +911,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
 	/* Check if the client has revision control enabled */
 	if (!IsNetworkCompatibleVersion(client_revision) || _openttd_newgrf_version != newgrf_version) {
 		/* Different revisions!! */
-		return this->SendError(NETWORK_ERROR_WRONG_REVISION);
+		return this->SendError(NetworkErrorCode::WrongRevision);
 	}
 
 	return this->SendAuthRequest();
@@ -919,7 +919,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet &p)
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet &p)
 {
-	if (this->status != STATUS_IDENTIFY) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != STATUS_IDENTIFY) return this->SendError(NetworkErrorCode::NotExpected);
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_IDENTIFY()", this->client_id);
 
@@ -932,14 +932,14 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 	switch (playas.base()) {
 		case COMPANY_NEW_COMPANY.base(): // New company
 			if (Company::GetNumItems() >= _settings_client.network.max_companies) {
-				return this->SendError(NETWORK_ERROR_FULL);
+				return this->SendError(NetworkErrorCode::ServerFull);
 			}
 			break;
 		case COMPANY_SPECTATOR.base(): // Spectator
 			break;
 		default: // Join another company (companies 1..MAX_COMPANIES (index 0..(MAX_COMPANIES-1)))
 			if (!Company::IsValidHumanID(playas)) {
-				return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
+				return this->SendError(NetworkErrorCode::CompanyMismatch);
 			}
 
 			const Company *c = Company::Get(playas);
@@ -954,12 +954,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 		/* An invalid client name was given. However, the client ensures the name
 		 * is valid before it is sent over the network, so something went horribly
 		 * wrong. This is probably someone trying to troll us. */
-		return this->SendError(NETWORK_ERROR_INVALID_CLIENT_NAME);
+		return this->SendError(NetworkErrorCode::InvalidClientName);
 	}
 
 	if (!NetworkMakeClientNameUnique(client_name)) { // Change name if duplicate
 		/* We could not create a name for this client */
-		return this->SendError(NETWORK_ERROR_NAME_IN_USE);
+		return this->SendError(NetworkErrorCode::NameInUse);
 	}
 
 	assert(NetworkClientInfo::CanAllocateItem());
@@ -982,9 +982,9 @@ static NetworkErrorCode GetErrorForAuthenticationMethod(NetworkAuthenticationMet
 {
 	switch (method) {
 		case NetworkAuthenticationMethod::X25519_PAKE:
-			return NETWORK_ERROR_WRONG_PASSWORD;
+			return NetworkErrorCode::WrongPassword;
 		case NetworkAuthenticationMethod::X25519_AuthorizedKey:
-			return NETWORK_ERROR_NOT_ON_ALLOW_LIST;
+			return NetworkErrorCode::NotOnAllowList;
 
 		default:
 			NOT_REACHED();
@@ -994,7 +994,7 @@ static NetworkErrorCode GetErrorForAuthenticationMethod(NetworkAuthenticationMet
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_AUTH_RESPONSE(Packet &p)
 {
 	if (this->status != STATUS_AUTH_GAME) {
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+		return this->SendError(NetworkErrorCode::NotExpected);
 	}
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_AUTH_RESPONSE()", this->client_id);
@@ -1034,7 +1034,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet &
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close the connection */
 	if (this->status < STATUS_AUTHORIZED || this->HasClientQuit()) {
-		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
+		return this->SendError(NetworkErrorCode::NotAuthorized);
 	}
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_GETMAP()", this->client_id);
@@ -1093,7 +1093,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet &
 	}
 
 	/* Wrong status for this packet, give a warning to client, and close connection */
-	return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	return this->SendError(NetworkErrorCode::NotExpected);
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet &p)
@@ -1101,11 +1101,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close the connection */
 	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+		return this->SendError(NetworkErrorCode::NotExpected);
 	}
 
 	if (this->incoming_queue.size() >= _settings_client.network.max_commands_in_queue) {
-		return this->SendError(NETWORK_ERROR_TOO_MANY_COMMANDS);
+		return this->SendError(NetworkErrorCode::TooManyCommands);
 	}
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_COMMAND()", this->client_id);
@@ -1119,17 +1119,17 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 
 	if (err.has_value()) {
 		IConsolePrint(CC_WARNING, "Dropping client #{} (IP: {}) due to {}.", ci->client_id, this->GetClientIP(), *err);
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+		return this->SendError(NetworkErrorCode::NotExpected);
 	}
 
 	if (GetCommandFlags(cp.cmd).Test(CommandFlag::Server) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a server only command {}.", ci->client_id, this->GetClientIP(), cp.cmd);
-		return this->SendError(NETWORK_ERROR_KICKED);
+		return this->SendError(NetworkErrorCode::Kicked);
 	}
 
 	if (!GetCommandFlags(cp.cmd).Test(CommandFlag::Spectator) && !Company::IsValidID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a non-spectator command {}.", ci->client_id, this->GetClientIP(), cp.cmd);
-		return this->SendError(NETWORK_ERROR_KICKED);
+		return this->SendError(NetworkErrorCode::Kicked);
 	}
 
 	/**
@@ -1141,12 +1141,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	if (!(cp.cmd == Commands::CompanyControl && cca == CompanyCtrlAction::New && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a command as another company {}.",
 		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
-		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
+		return this->SendError(NetworkErrorCode::CompanyMismatch);
 	}
 
 	if (cp.cmd == Commands::CompanyControl) {
 		if (cca != CompanyCtrlAction::New || cp.company != COMPANY_SPECTATOR) {
-			return this->SendError(NETWORK_ERROR_CHEATER);
+			return this->SendError(NetworkErrorCode::Cheater);
 		}
 
 		/* Check if we are full - else it's possible for spectators to send a Commands::CompanyControl and the company is created regardless of max_companies! */
@@ -1186,7 +1186,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet &p
 {
 	/* This packets means a client noticed an error and is reporting this
 	 *  to us. Display the error and report it to the other clients */
-	NetworkErrorCode errorno = (NetworkErrorCode)p.Recv_uint8();
+	NetworkErrorCode errorno = static_cast<NetworkErrorCode>(p.Recv_uint8());
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_ERROR(): errorno={}", this->client_id, errorno);
 
@@ -1241,7 +1241,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
-		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
+		return this->SendError(NetworkErrorCode::NotAuthorized);
 	}
 
 	uint32_t frame = p.Recv_uint32();
@@ -1425,7 +1425,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
 {
 	if (this->status < STATUS_PRE_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
+		return this->SendError(NetworkErrorCode::NotAuthorized);
 	}
 
 	NetworkAction action = (NetworkAction)p.Recv_uint8();
@@ -1446,7 +1446,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
 			break;
 		default:
 			IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to unknown chact action.", ci->client_id, this->GetClientIP());
-			return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+			return this->SendError(NetworkErrorCode::NotExpected);
 	}
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1455,7 +1455,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 {
 	if (this->status != STATUS_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+		return this->SendError(NetworkErrorCode::NotExpected);
 	}
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_SET_NAME()", this->client_id);
@@ -1472,7 +1472,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 			/* An invalid client name was given. However, the client ensures the name
 			 * is valid before it is sent over the network, so something went horribly
 			 * wrong. This is probably someone trying to troll us. */
-			return this->SendError(NETWORK_ERROR_INVALID_CLIENT_NAME);
+			return this->SendError(NetworkErrorCode::InvalidClientName);
 		}
 
 		/* Display change */
@@ -1487,7 +1487,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet &p)
 {
-	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != STATUS_ACTIVE) return this->SendError(NetworkErrorCode::NotExpected);
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_RCON()", this->client_id);
 
@@ -1513,7 +1513,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet &p)
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &p)
 {
-	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != STATUS_ACTIVE) return this->SendError(NetworkErrorCode::NotExpected);
 
 	CompanyID company_id = (Owner)p.Recv_uint8();
 
@@ -1762,7 +1762,7 @@ void NetworkServer_Tick(bool send_frame)
 						/* No packet was received in the last three game days; sounds like a lost connection. */
 						IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because the client did not respond for more than {} ticks.", cs->client_id, cs->GetClientIP(), lag);
 					}
-					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
+					cs->SendError(NetworkErrorCode::TimeoutComputer);
 					continue;
 				}
 
@@ -1779,7 +1779,7 @@ void NetworkServer_Tick(bool send_frame)
 				if (cs->last_frame_server - cs->last_token_frame >= _settings_client.network.max_lag_time) {
 					/* This is a bad client! It didn't send the right token back within time. */
 					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it fails to send valid acks.", cs->client_id, cs->GetClientIP());
-					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
+					cs->SendError(NetworkErrorCode::TimeoutComputer);
 					continue;
 				}
 				break;
@@ -1792,7 +1792,7 @@ void NetworkServer_Tick(bool send_frame)
 				 * So give them some lee-way, likewise for the query with inactive. */
 				if (lag > _settings_client.network.max_init_time) {
 					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to start the joining process.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_init_time);
-					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
+					cs->SendError(NetworkErrorCode::TimeoutComputer);
 					continue;
 				}
 				break;
@@ -1816,7 +1816,7 @@ void NetworkServer_Tick(bool send_frame)
 				/* Downloading the map... this is the amount of time since starting the saving. */
 				if (lag > _settings_client.network.max_download_time) {
 					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to download the map.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_download_time);
-					cs->SendError(NETWORK_ERROR_TIMEOUT_MAP);
+					cs->SendError(NetworkErrorCode::TimeoutMap);
 					continue;
 				}
 				break;
@@ -1826,7 +1826,7 @@ void NetworkServer_Tick(bool send_frame)
 				/* The map has been sent, so this is for loading the map and syncing up. */
 				if (lag > _settings_client.network.max_join_time) {
 					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to join.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_join_time);
-					cs->SendError(NETWORK_ERROR_TIMEOUT_JOIN);
+					cs->SendError(NetworkErrorCode::TimeoutJoin);
 					continue;
 				}
 				break;
@@ -1835,7 +1835,7 @@ void NetworkServer_Tick(bool send_frame)
 				/* These don't block? */
 				if (lag > _settings_client.network.max_password_time) {
 					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to enter the password.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_password_time);
-					cs->SendError(NETWORK_ERROR_TIMEOUT_PASSWORD);
+					cs->SendError(NetworkErrorCode::TimeoutPassword);
 					continue;
 				}
 				break;
@@ -2079,7 +2079,7 @@ void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, std::stri
 void NetworkServerKickClient(ClientID client_id, std::string_view reason)
 {
 	if (client_id == CLIENT_ID_SERVER) return;
-	NetworkClientSocket::GetByClientID(client_id)->SendError(NETWORK_ERROR_KICKED, reason);
+	NetworkClientSocket::GetByClientID(client_id)->SendError(NetworkErrorCode::Kicked, reason);
 }
 
 /**

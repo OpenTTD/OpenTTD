@@ -304,44 +304,39 @@ void ShowNetworkError(StringID error_string)
 }
 
 /**
- * Retrieve the string id of an internal error number
- * @param err NetworkErrorCode
- * @return the StringID
+ * Retrieve a short translateable string of the error code.
+ * An unknown error code will get \c STR_NETWORK_ERROR_CLIENT_GENERAL.
+ * @param err The error code.
+ * @return The \c StringID.
  */
 StringID GetNetworkErrorMsg(NetworkErrorCode err)
 {
-	/* List of possible network errors, used by
-	 * PACKET_SERVER_ERROR and PACKET_CLIENT_ERROR */
-	static const StringID network_error_strings[] = {
-		STR_NETWORK_ERROR_CLIENT_GENERAL,
-		STR_NETWORK_ERROR_CLIENT_DESYNC,
-		STR_NETWORK_ERROR_CLIENT_SAVEGAME,
-		STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST,
-		STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR,
-		STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH,
-		STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED,
-		STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED,
-		STR_NETWORK_ERROR_CLIENT_WRONG_REVISION,
-		STR_NETWORK_ERROR_CLIENT_NAME_IN_USE,
-		STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD,
-		STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH,
-		STR_NETWORK_ERROR_CLIENT_KICKED,
-		STR_NETWORK_ERROR_CLIENT_CHEATER,
-		STR_NETWORK_ERROR_CLIENT_SERVER_FULL,
-		STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS,
-		STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD,
-		STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER,
-		STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP,
-		STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN,
-		STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME,
-		STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST,
-		STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE,
+	switch (err) {
+		default:
+		case NetworkErrorCode::General: return STR_NETWORK_ERROR_CLIENT_GENERAL;
+		case NetworkErrorCode::Desync: return STR_NETWORK_ERROR_CLIENT_DESYNC;
+		case NetworkErrorCode::SavegameFailed: return STR_NETWORK_ERROR_CLIENT_SAVEGAME;
+		case NetworkErrorCode::ConnectionLost: return STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST;
+		case NetworkErrorCode::IllegalPacket: return STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR;
+		case NetworkErrorCode::NewGRFMismatch: return STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH;
+		case NetworkErrorCode::NotAuthorized: return STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED;
+		case NetworkErrorCode::NotExpected: return STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED;
+		case NetworkErrorCode::WrongRevision: return STR_NETWORK_ERROR_CLIENT_WRONG_REVISION;
+		case NetworkErrorCode::NameInUse: return STR_NETWORK_ERROR_CLIENT_NAME_IN_USE;
+		case NetworkErrorCode::WrongPassword: return STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD;
+		case NetworkErrorCode::CompanyMismatch: return STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH;
+		case NetworkErrorCode::Kicked: return STR_NETWORK_ERROR_CLIENT_KICKED;
+		case NetworkErrorCode::Cheater: return STR_NETWORK_ERROR_CLIENT_CHEATER;
+		case NetworkErrorCode::ServerFull: return STR_NETWORK_ERROR_CLIENT_SERVER_FULL;
+		case NetworkErrorCode::TooManyCommands: return STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS;
+		case NetworkErrorCode::TimeoutPassword: return STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD;
+		case NetworkErrorCode::TimeoutComputer: return STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER;
+		case NetworkErrorCode::TimeoutMap: return STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP;
+		case NetworkErrorCode::TimeoutJoin: return STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN;
+		case NetworkErrorCode::InvalidClientName: return STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME;
+		case NetworkErrorCode::NotOnAllowList: return STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST;
+		case NetworkErrorCode::NoAuthenticationMethodAvailable: return STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE;
 	};
-	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
-
-	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
-
-	return network_error_strings[err];
 }
 
 /**
