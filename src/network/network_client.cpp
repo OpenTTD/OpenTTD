@@ -292,8 +292,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 
 	Debug(net, 9, "Client::status = JOIN");
 	my_client->status = STATUS_JOIN;
-	Debug(net, 9, "Client::join_status = AUTHORIZING");
-	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
+	Debug(net, 9, "Client::join_status = Authorizing");
+	_network_join_status = NetworkJoinStatus::Authorizing;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_JOIN);
@@ -774,8 +774,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WAIT(Packet &p)
 	Debug(net, 9, "Client::Receive_SERVER_WAIT()");
 
 	/* But... only now we set the join status to waiting, instead of requesting. */
-	Debug(net, 9, "Client::join_status = WAITING");
-	_network_join_status = NETWORK_JOIN_STATUS_WAITING;
+	Debug(net, 9, "Client::join_status = Waiting");
+	_network_join_status = NetworkJoinStatus::Waiting;
 	_network_join_waiting = p.Recv_uint8();
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
@@ -799,8 +799,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_BEGIN(Packe
 	_network_join_bytes = 0;
 	_network_join_bytes_total = 0;
 
-	Debug(net, 9, "Client::join_status = DOWNLOADING");
-	_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
+	Debug(net, 9, "Client::join_status = Downloading");
+	_network_join_status = NetworkJoinStatus::Downloading;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -840,8 +840,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 
 	Debug(net, 9, "Client::Receive_SERVER_MAP_DONE()");
 
-	Debug(net, 9, "Client::join_status = PROCESSING");
-	_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
+	Debug(net, 9, "Client::join_status = Processing");
+	_network_join_status = NetworkJoinStatus::Processing;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	this->savegame->Reset();
@@ -882,8 +882,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 		if (_network_join.company != COMPANY_SPECTATOR) {
 			/* We have arrived and ready to start playing; send a command to make a new company;
 			 * the server will give us a client-id and let us in */
-			Debug(net, 9, "Client::join_status = REGISTERING");
-			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
+			Debug(net, 9, "Client::join_status = Registering");
+			_network_join_status = NetworkJoinStatus::Registering;
 			ShowJoinStatusWindow();
 			Command<Commands::CompanyControl>::Post(CompanyCtrlAction::New, CompanyID::Invalid(), CompanyRemoveReason::None, _network_own_client_id);
 		}
