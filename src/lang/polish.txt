@@ -4054,7 +4054,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierz
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie można dodać pliku: zduplikowany identyfikator NewGRF
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny NewGRF)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nie można dodać pliku: osiągnięto limit plików NewGRF
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Nie można dodać pliku: osiągnięto limit plików NewGRF
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Wczytano kompatybilne NewGRF-y dla brakujących plików
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki NewGRF zostały wyłączone
@@ -4076,7 +4076,7 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :Zmieniono łado
 STR_BROKEN_VEHICLE_LENGTH                                       :Pociąg „{VEHICLE}” należący do „{COMPANY}” ma nieprawidłową długość. Prawdopodobnie jest to spowodowane problemami z NewGRF-ami. Gra może się desychronizować lub zawiesić
 
 STR_NEWGRF_BUGGY                                                :NewGRF „{0:STRING}” dostarcza niepoprawne dane
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/przebudowie „{1:ENGINE}” różnią się od listy zakupów po zbudowaniu. Może to spowodować, że automatyczne odnowienie/zamiana nie wykona się poprawnie
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :Informacje o ładunku/przebudowie „{1:ENGINE}” różnią się od listy zakupów po zbudowaniu. Może to spowodować, że automatyczne odnowienie/zamiana nie wykona się poprawnie
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :„{1:STRING}” spowodował nieskończoną pętlę w wywołaniu zwrotnym produkcji
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Wywołanie zwrotne {1:HEX} zwróciło nieznany/błędny wynik {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :„{1:STRING}” zwrócił niewłaściwy typ ładunku w wywołaniu zwrotnym produkcji w {2:HEX}
@@ -5422,7 +5422,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Szacowan
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Szacowany zysk: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Zapisywanie trwa,{}proszę zaczekać do zakończenia!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :Zapisywanie wciąż trwa,{}proszę zaczekać do zakończenia!
 STR_ERROR_AUTOSAVE_FAILED                                       :Błąd automatycznego zapisu gry
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nie można odczytać napędu
 STR_ERROR_GAME_SAVE_FAILED                                      :Nie można zapisać gry...
@@ -5462,8 +5462,8 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znalezio
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut obrazu
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Zrzut obrazu będzie miał rozdzielczość {COMMA} x {COMMA} pikseli. Wykonanie go może potrwać dłuższą chwilę. Czy chcesz kontynuować?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa wysokości pomyślnie zapisana jako „{STRING}”. Najwyższy szczyt wynosi {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut obrazu został pomyślnie zapisany jako „{STRING}”
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Mapa wysokości pomyślnie zapisana jako „{STRING}”. Najwyższy szczyt wynosi {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Zrzut obrazu został pomyślnie zapisany jako „{STRING}”
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Błąd zrzutu obrazu!
 
 # Error message titles
@@ -5476,7 +5476,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :zbyt blisko kra
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :za mało pieniędzy - wymagane {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :wymagany płaski teren
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :teren pochylony w złym kierunku
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nie można tego zrobić...
+STR_ERROR_CAN_T_DO_THIS                                         :Nie można tego zrobić...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :najpierw należy zburzyć budynek
 STR_ERROR_BUILDING_IS_PROTECTED                                 :budynek jest chroniony
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Nie można wyczyścić terenu...
@@ -5498,8 +5498,8 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Lokalne 
 STR_ERROR_BRIBE_FAILED                                          :Twoja próba przekupstwa została wykryta przez miejscowych śledczych
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść terenu...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nie można tutaj obniżyć terenu...
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :Nie można tutaj podnieść terenu...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Nie można tutaj obniżyć terenu...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Nie można tutaj wyrównać terenu...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :wykop zniszczyłby tunel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :już na poziomie morza
@@ -5557,8 +5557,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :można zbudowa�
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :ufundowanie pechowo nie powiodło się; spróbuj ponownie
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :nie ma odpowiednich miejsc do poszukiwań takiego przedsiębiorstwa
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :nie ma odpowiednich miejsc dla przedsiębiorstw „{STRING}”
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :zmień parametry tworzenia map, żeby uzyskać lepszą mapę
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Nie ma odpowiednich miejsc dla przedsiębiorstw „{STRING}”
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Zmień parametry tworzenia map, żeby uzyskać lepszą mapę
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Nie można tutaj zbudować stacji...
@@ -5736,7 +5736,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :najpierw należ
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :inny tunel na drodze
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :tunel kończyłby się poza mapą
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :nie można wydrążyć drugiego końca tunelu
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel jest za długi
+STR_ERROR_TUNNEL_TOO_LONG                                       :tunel jest za długi
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :zbyt wiele obiektów
@@ -5768,7 +5768,7 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :samolot na drod
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :pojazd jest niedostępny
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :pojazd jest niedostępny
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Statek jest niedostępny
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :statek jest niedostępny
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :samolot jest niedostępny
 
 ###length VEHICLE_TYPES
@@ -5825,7 +5825,7 @@ STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Nie można auto
 STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Nie można automatycznie zastąpić statków...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Nie można automatycznie zastąpić samolotu...
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Za dużo pojazdów w grze
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :za dużo pojazdów w grze
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :Nie można zmienić okresu między serwisowaniami...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :pojazd jest zniszczony
@@ -5840,7 +5840,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Zacznij grę po
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Brak dostępnych typów dróg miejskich
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Zmień konfigurację NewGRF
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Brak jeszcze dostępnych typów dróg miejskich
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Rozpocznij nową grę po {DATE_SHORT} roku lub użyj NewGRF, który umożliwia wczesne budowanie dróg miejskich
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Rozpocznij nową grę po {DATE_SHORT} roku lub użyj NewGRF-a, który umożliwia wczesne budowanie dróg miejskich
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepuścić pociągu za sygnał, niebezpieczeństwo...
@@ -5864,9 +5864,9 @@ STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :pojazd nie moż
 STR_ERROR_CAN_T_ADD_ORDER                                       :pojazd nie może jechać do tej stacji
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :pojazd współdzielący to polecenie nie może jechać do tej stacji
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :nie wszystkie pojazdy mają takie same polecenia
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nie wszystkie pojazdy współdzielą polecenia
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :nie wszystkie pojazdy współdzielą polecenia
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nie można współdzielić listy poleceń...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Nie można współdzielić listy poleceń...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Nie można zaprzestać współdzielenia listy poleceń...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Nie można skopiować listy poleceń...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :zbyt daleko od poprzedniego celu

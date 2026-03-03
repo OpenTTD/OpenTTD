@@ -1244,7 +1244,7 @@ STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Apartig
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Elekti apartigilon de via valuto
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikso: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ekekti simbolon de via valuto
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Elekti simbolon de via valuto
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufikso: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Difini sufiksĉenon por via valuto
 
@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {S
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ŝaltu akcidentojn kiuj de temp' al tempo povas bloki veturilojn aŭ infrastrukturon
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sinteno de lokaj estraroj: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Elektu kiugrade bruo kaj poluado de kompanioj influas la urban takson kaj pluajn konstruajn agojn en la urbo
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Elekti, per kiom bruo kaj poluado de kompanioj influas la urban takson kaj pluajn konstruajn agojn en la urbo
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limo de mapalteco: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Agordu maksimumam altecon de maptereno. Kun "(aŭtomata)", bona valoro estos elektita post terengenerado
@@ -4367,7 +4367,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Aĉeti A
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Aĉetu kaj readaptu veturilon
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Aĉetu kaj readaptu veturilon
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Aĉetu kaj readaptu ŝipon
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Aĉeti kaj readapti ŝipon
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Aĉetu kaj readaptu la aviadilon
 
 ###length VEHICLE_TYPES
@@ -4379,7 +4379,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Aĉetu l
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Aĉetu kaj readaptu la emfazitan relveturilon. Ankaŭ premu Shift por nur montri kostotakson
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Aĉetu kaj readaptu la emfazitan stratveturilon. Ankaŭ premu Shift por nur montri kostotakson
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Aĉetu kaj readaptu la emfazitan ŝipon. Ankaŭ premu Shift por nur montri kostotakson
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Aĉeti kaj readapti la emfazitan ŝipon. Ankaŭ premu Shift por nur montri kostotakson
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Aĉetu kaj readaptu la emfazitan aviadilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 
 ###length VEHICLE_TYPES
@@ -4767,18 +4767,18 @@ STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elektu v
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elektu ŝarĝospecon portotan de la vagonaro
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elektu portotan ŝarĝon de la stratveturilo
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Elektu portotan ŝarĝotipon
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elektu portotan ŝarĝon de aviadilo
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elekti portotan ŝarĝotipon de aviadilo
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Transformu vagonaron
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Transformi stratveturilon
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Transformu ŝipon
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Readapti ŝipon
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Readapti aviadilon
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Transformu vagonaron por porti la elektitan ŝarĝotipon
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Transformi stratveturilon por porti elektitan ŝarĝon
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Transformu ŝipon por porti elektitan ŝarĝotipon
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Readapti ŝipon por porti elektitan ŝarĝotipon
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Readapti aviadilon por porti elektitan ŝarĝotipon
 
 # Order view
