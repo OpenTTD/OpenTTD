@@ -60,6 +60,7 @@
 #include "timer/timer_game_calendar.h"
 #include "help_gui.h"
 #include "core/string_consumer.hpp"
+#include "genworld.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -343,12 +344,13 @@ static CallBackFunction MenuClickSettings(int index)
  * SaveLoad entries in scenario editor mode.
  */
 enum SaveLoadEditorMenuEntries : uint8_t {
-	SLEME_SAVE_SCENARIO = 0,
-	SLEME_LOAD_SCENARIO,
-	SLEME_SAVE_HEIGHTMAP,
-	SLEME_LOAD_HEIGHTMAP,
-	SLEME_EXIT_TOINTRO,
-	SLEME_EXIT_GAME,
+	SLEME_SAVE_SCENARIO = 0, ///< Save scenario to file.
+	SLEME_LOAD_SCENARIO,     ///< Load scenario from file.
+	SLEME_NEW_SCENARIO,      ///< Create new scenario configuring climate, size, etc.
+	SLEME_SAVE_HEIGHTMAP,    ///< Save heightmap to file.
+	SLEME_LOAD_HEIGHTMAP,    ///< Load heightmap from file.
+	SLEME_EXIT_TOINTRO,      ///< Exit to main menu.
+	SLEME_EXIT_GAME,         ///< Exit to operating system.
 };
 
 /**
@@ -383,8 +385,9 @@ static CallBackFunction ToolbarSaveClick(Window *w)
 static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 {
 	PopupMainToolbarMenu(w, WID_TE_SAVE, {STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO,
-			STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP,
-			STR_SCENEDIT_FILE_MENU_QUIT_EDITOR, STR_NULL, STR_SCENEDIT_FILE_MENU_QUIT});
+			STR_SCENEDIT_FILE_MENU_NEW_SCENARIO, STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP,
+			STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_QUIT_EDITOR, STR_NULL,
+			STR_SCENEDIT_FILE_MENU_QUIT});
 	return CBF_NONE;
 }
 
@@ -400,6 +403,7 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 		switch (index) {
 			case SLEME_SAVE_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, SLO_SAVE);  break;
 			case SLEME_LOAD_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD);  break;
+			case SLEME_NEW_SCENARIO:   ShowCreateScenario();                   break;
 			case SLEME_SAVE_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_SAVE); break;
 			case SLEME_LOAD_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD); break;
 			case SLEME_EXIT_TOINTRO:   AskExitToGameMenu();                    break;

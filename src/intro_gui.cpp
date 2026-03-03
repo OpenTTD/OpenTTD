@@ -316,7 +316,7 @@ struct SelectGameWindow : public Window {
 				break;
 			case WID_SGI_EDIT_SCENARIO:
 				_is_network_server = false;
-				StartScenarioEditor();
+				ShowCreateScenario();
 				break;
 
 			case WID_SGI_PLAY_NETWORK:
