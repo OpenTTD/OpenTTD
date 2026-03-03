@@ -139,7 +139,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet &p)
 			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED), {}, WL_ERROR);
 
 			/* To prevent that we constantly try to reconnect, switch to local game. */
-			_settings_client.network.server_game_type = SERVER_GAME_TYPE_LOCAL;
+			_settings_client.network.server_game_type = ServerGameType::Local;
 
 			this->CloseConnection();
 			return false;
@@ -163,7 +163,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet &p)
 			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE), {}, WL_ERROR);
 
 			/* To prevent that we constantly battle for the same invite-code, switch to local game. */
-			_settings_client.network.server_game_type = SERVER_GAME_TYPE_LOCAL;
+			_settings_client.network.server_game_type = ServerGameType::Local;
 
 			this->CloseConnection();
 			return false;
@@ -215,10 +215,10 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet &p)
 
 		std::string game_type;
 		switch (_settings_client.network.server_game_type) {
-			case SERVER_GAME_TYPE_INVITE_ONLY: game_type = "Invite only"; break;
-			case SERVER_GAME_TYPE_PUBLIC: game_type = "Public"; break;
+			case ServerGameType::InviteOnly: game_type = "Invite only"; break;
+			case ServerGameType::Public: game_type = "Public"; break;
 
-			case SERVER_GAME_TYPE_LOCAL: // Impossible to register local servers.
+			case ServerGameType::Local: // Impossible to register local servers.
 			default: game_type = "Unknown"; break; // Should never happen, but don't fail if it does.
 		}
 
@@ -468,7 +468,7 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 
 	auto p = std::make_unique<Packet>(this, PACKET_COORDINATOR_SERVER_REGISTER);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
-	p->Send_uint8(_settings_client.network.server_game_type);
+	p->Send_uint8(to_underlying(_settings_client.network.server_game_type));
 	p->Send_uint16(_settings_client.network.server_port);
 	if (_settings_client.network.server_invite_code.empty() || _settings_client.network.server_invite_code_secret.empty()) {
 		p->Send_string("");
@@ -736,7 +736,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseAllConnections()
 void ClientNetworkCoordinatorSocketHandler::SendReceive()
 {
 	/* Private games are not listed via the Game Coordinator. */
-	if (_network_server && _settings_client.network.server_game_type == SERVER_GAME_TYPE_LOCAL) {
+	if (_network_server && _settings_client.network.server_game_type == ServerGameType::Local) {
 		if (this->sock != INVALID_SOCKET) {
 			this->CloseConnection();
 		}

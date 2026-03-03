@@ -33,10 +33,10 @@ enum class NetworkVehicleType : uint8_t {
  * Game type the server can be using.
  * Used on the network protocol to communicate with Game Coordinator.
  */
-enum ServerGameType : uint8_t {
-	SERVER_GAME_TYPE_LOCAL = 0,
-	SERVER_GAME_TYPE_PUBLIC,
-	SERVER_GAME_TYPE_INVITE_ONLY,
+enum class ServerGameType : uint8_t {
+	Local = 0, ///< Do not communicate with the game coordinator.
+	Public, ///< The game is publicly accessible.
+	InviteOnly, ///< The game can be accessed if you know the invite code.
 };
 
 /** 'Unique' identifier to be given to clients */

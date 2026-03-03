@@ -928,7 +928,7 @@ bool NetworkServerStart()
 
 	NetworkInitGameInfo();
 
-	if (_settings_client.network.server_game_type != SERVER_GAME_TYPE_LOCAL) {
+	if (_settings_client.network.server_game_type != ServerGameType::Local) {
 		_network_coordinator_client.Register();
 	}
 
@@ -1033,12 +1033,12 @@ void NetworkUpdateServerGameType()
 	if (!_networking) return;
 
 	switch (_settings_client.network.server_game_type) {
-		case SERVER_GAME_TYPE_LOCAL:
+		case ServerGameType::Local:
 			_network_coordinator_client.CloseConnection();
 			break;
 
-		case SERVER_GAME_TYPE_INVITE_ONLY:
-		case SERVER_GAME_TYPE_PUBLIC:
+		case ServerGameType::InviteOnly:
+		case ServerGameType::Public:
 			_network_coordinator_client.Register();
 			break;
 
