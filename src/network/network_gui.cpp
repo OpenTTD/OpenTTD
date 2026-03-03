@@ -2037,15 +2037,14 @@ struct NetworkJoinStatusWindow : Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				uint8_t progress; // used for progress bar
 				switch (_network_join_status) {
-					case NETWORK_JOIN_STATUS_CONNECTING:
-					case NETWORK_JOIN_STATUS_AUTHORIZING:
-					case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
+					case NetworkJoinStatus::Connecting:
+					case NetworkJoinStatus::Authorizing:
 						progress = 10; // first two stages 10%
 						break;
-					case NETWORK_JOIN_STATUS_WAITING:
+					case NetworkJoinStatus::Waiting:
 						progress = 15; // third stage is 15%
 						break;
-					case NETWORK_JOIN_STATUS_DOWNLOADING:
+					case NetworkJoinStatus::Downloading:
 						if (_network_join_bytes_total == 0) {
 							progress = 15; // We don't have the final size yet; the server is still compressing!
 							break;
@@ -2057,17 +2056,17 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + to_underlying(_network_join_status), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
 			case WID_NJS_PROGRESS_TEXT:
 				switch (_network_join_status) {
-					case NETWORK_JOIN_STATUS_WAITING:
+					case NetworkJoinStatus::Waiting:
 						DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_WAITING, _network_join_waiting), TC_FROMSTRING, SA_CENTER);
 						break;
 
-					case NETWORK_JOIN_STATUS_DOWNLOADING:
+					case NetworkJoinStatus::Downloading:
 						if (_network_join_bytes_total == 0) {
 							DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_DOWNLOADING_1, _network_join_bytes), TC_FROMSTRING, SA_CENTER);
 						} else {
@@ -2087,7 +2086,7 @@ struct NetworkJoinStatusWindow : Window {
 		switch (widget) {
 			case WID_NJS_PROGRESS_BAR:
 				/* Account for the statuses */
-				for (uint i = 0; i < NETWORK_JOIN_STATUS_END; i++) {
+				for (uint i = 0; i < to_underlying(NetworkJoinStatus::End); i++) {
 					size = maxdim(size, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i));
 				}
 				/* For the number of waiting (other) players */

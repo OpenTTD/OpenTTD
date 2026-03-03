@@ -823,8 +823,8 @@ void NetworkClientJoinGame()
 	NetworkInitialize();
 
 	_settings_client.network.last_joined = _network_join.connection_string;
-	Debug(net, 9, "status = CONNECTING");
-	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
+	Debug(net, 9, "status = Connecting");
+	_network_join_status = NetworkJoinStatus::Connecting;
 	ShowJoinStatusWindow();
 
 	TCPConnecter::Create<TCPClientConnecter>(_network_join.connection_string);
