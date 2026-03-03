@@ -9,7 +9,11 @@ import sys
 END_OF_SENTENCE = [".", "!", "?"]
 SOURCE_FILE_EXTENSION = ["cpp", "c", "hpp", "h", "mm", "m", "cc"]
 TEMPLATE_FILE_EXTENSION = ["preamble", "in"]
-EXCLUDED_FILES = ["./src/script/api/squirrel_export.sq.hpp.in", "./src/script/api/script_includes.hpp.in"]
+REPO_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+EXCLUDED_FILES = [
+    os.path.join(REPO_DIR, "src", "script", "api", "squirrel_export.sq.hpp.in"),
+    os.path.join(REPO_DIR, "src", "script", "api", "script_includes.hpp.in"),
+]
 
 
 def read_files_list_from_file(file_path):
@@ -27,7 +31,7 @@ def list_files_walk(start_path="."):
 def check_descriptions(files):
     errors = []
     for path in files:
-        if path in EXCLUDED_FILES:
+        if os.path.abspath(path) in EXCLUDED_FILES:
             continue
         if path.find("3rdparty") != -1 or path.find("lang") != -1:
             continue
@@ -62,7 +66,7 @@ def check_descriptions(files):
 
 def main():
     if len(sys.argv) == 1:
-        files = list_files_walk("./src")
+        files = list_files_walk(os.path.join(REPO_DIR, "src"))
     else:
         files = read_files_list_from_file(sys.argv[1])
 
