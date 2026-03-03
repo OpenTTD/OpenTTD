@@ -210,7 +210,7 @@ protected:
 	 *
 	 * The server will determine which of the authentication methods supplied by the client will be used.
 	 * When there is no supported authentication method, an \c ADMIN_PACKET_SERVER_ERROR packet will be
-	 * sent with \c NETWORK_ERROR_NO_AUTHENTICATION_METHOD_AVAILABLE as error.
+	 * sent with \c NetworkErrorCode::NoAuthenticationMethodAvailable as error.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
