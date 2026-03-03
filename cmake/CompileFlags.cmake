@@ -100,19 +100,12 @@ macro(compile_flags)
         endif()
 
         if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-            include(CheckCXXCompilerFlag)
-            check_cxx_compiler_flag("-flifetime-dse=1" LIFETIME_DSE_FOUND)
-
             add_compile_options(
                 # GCC 4.2+ automatically assumes that signed overflows do
                 # not occur in signed arithmetics, whereas we are not
                 # sure that they will not happen. It furthermore complains
                 # about its own optimized code in some places.
                 "-fno-strict-overflow"
-
-                # -flifetime-dse=2 (default since GCC 6) doesn't play
-                # well with our custom pool item allocator
-                "$<$<BOOL:${LIFETIME_DSE_FOUND}>:-flifetime-dse=1>"
 
                 # We have a fight between clang wanting std::move() and gcc not wanting it
                 # and of course they both warn when the other compiler is happy
