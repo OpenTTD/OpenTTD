@@ -1352,7 +1352,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 
 		/* Can we actually build the bridge? */
 		RoadType rt = GetTownRoadType();
-		if (Command<Commands::BuildBridge>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildBridge>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt).Succeeded()) {
+		if (Command<Commands::BuildBridge>::Query(tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt).Succeeded()) {
 			Command<Commands::BuildBridge>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildBridge>()).Set(DoCommandFlag::Execute), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt);
 			return true;
 		}
@@ -1422,7 +1422,7 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 
 	/* Attempt to build the tunnel. Return false if it fails to let the town build a road instead. */
 	RoadType rt = GetTownRoadType();
-	if (Command<Commands::BuildTunnel>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildTunnel>()), tile, TRANSPORT_ROAD, rt).Succeeded()) {
+	if (Command<Commands::BuildTunnel>::Query(tile, TRANSPORT_ROAD, rt).Succeeded()) {
 		Command<Commands::BuildTunnel>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildTunnel>()).Set(DoCommandFlag::Execute), tile, TRANSPORT_ROAD, rt);
 		return true;
 	}

@@ -11,6 +11,7 @@
 #define TILEHIGHLIGHT_TYPE_H
 
 #include "core/geometry_type.hpp"
+#include "texteff.hpp"
 #include "window_type.h"
 #include "tile_type.h"
 #include "viewport_type.h"
@@ -69,10 +70,13 @@ struct TileHighlightData {
 	WindowNumber window_number;    ///< The \c WindowNumber of the window that is responsible for the selection mode.
 
 	bool make_square_red;          ///< Whether to give a tile a red selection.
+	bool make_square_pulsate_red; ///< Whether to give a tile a pulsating red selection.
 	TileIndex redsq;               ///< The tile that has to get a red selection.
 
 	ViewportPlaceMethod select_method;            ///< The method which governs how tiles are selected.
 	ViewportDragDropSelectionProcess select_proc; ///< The procedure that has to be called when the selection is done.
+
+	TextEffectID error = INVALID_TE_ID; ///< TextEffectID of command error.
 
 	void Reset();
 

@@ -627,6 +627,39 @@ public:
 		MarkWholeScreenDirty();
 	}
 
+	/**
+	 * Get the bounds of an industry tile layout.
+	 * @param layout The industry tile layout.
+	 * @return The bounds.
+	 */
+	static Dimension GetIndustryLayoutSize(const IndustryTileLayout &layout)
+	{
+		int max_x = 0;
+		int max_y = 0;
+
+		/* Finds dimensions of largest variant of this industry */
+		for (const IndustryTileLayoutTile &it : layout) {
+			if (it.gfx == GFX_WATERTILE_SPECIALCHECK) continue; // watercheck tiles don't count for footprint size
+			if (it.ti.x > max_x) max_x = it.ti.x;
+			if (it.ti.y > max_y) max_y = it.ti.y;
+		}
+
+		return Dimension(max_x + 1, max_y + 1);
+	}
+
+	/**
+	 * Get the maximal bounds of the selected industry spec.
+	 * @return The maximal bounds.
+	 */
+	Dimension GetMaxIndustryLayoutSize() const
+	{
+		Dimension d{};
+		for (const auto &layout : GetIndustrySpec(this->selected_type)->layouts) {
+			d = maxdim(d, GetIndustryLayoutSize(layout));
+		}
+		return d;
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
@@ -669,6 +702,11 @@ public:
 
 					this->SetButtons();
 					if (this->enabled && click_count > 1) this->OnClick(pt, WID_DPI_FUND_WIDGET, 1);
+
+					if (_thd.GetCallbackWnd() == this) {
+						auto [x, y] = this->GetMaxIndustryLayoutSize();
+						SetTileSelectSize(x, y);
+					}
 				}
 				break;
 			}
@@ -684,6 +722,8 @@ public:
 						this->HandleButtonClick(WID_DPI_FUND_WIDGET);
 					} else {
 						HandlePlacePushButton(this, WID_DPI_FUND_WIDGET, SPR_CURSOR_INDUSTRY, HT_RECT);
+						auto [x, y] = this->GetMaxIndustryLayoutSize();
+						SetTileSelectSize(x, y);
 					}
 				}
 				break;
@@ -697,7 +737,7 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_DPI_MATRIX_WIDGET);
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, bool query) override
 	{
 		bool success = true;
 		/* We do not need to protect ourselves against "Random Many Industries" in this mode */
@@ -707,7 +747,7 @@ public:
 
 		if (_game_mode == GM_EDITOR) {
 			/* Show error if no town exists at all */
-			if (Town::GetNumItems() == 0) {
+			if (!query && Town::GetNumItems() == 0) {
 				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUILD_HERE, indsp->name),
 					GetEncodedString(STR_ERROR_MUST_FOUND_TOWN_FIRST), WL_INFO, pt.x, pt.y);
 				return;
@@ -717,9 +757,9 @@ public:
 			AutoRestoreBackup backup_generating_world(_generating_world, true);
 			AutoRestoreBackup backup_ignore_industry_restritions(_ignore_industry_restrictions, true);
 
-			Command<Commands::BuildIndustry>::Post(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, tile, this->selected_type, layout_index, false, seed);
+			Command<Commands::BuildIndustry>::PostOrQuery(query, STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, tile, this->selected_type, layout_index, false, seed);
 		} else {
-			success = Command<Commands::BuildIndustry>::Post(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, tile, this->selected_type, layout_index, false, seed);
+			success = Command<Commands::BuildIndustry>::PostOrQuery(query, STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY, tile, this->selected_type, layout_index, false, seed);
 		}
 
 		/* If an industry has been built, just reset the cursor and the system */
