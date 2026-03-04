@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file object_sl.cpp Code handling saving and loading of objects */
+/** @file object_sl.cpp Code handling saving and loading of objects. */
 
 #include "../stdafx.h"
 
@@ -49,7 +49,7 @@ struct OBJSChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Object *o = new (ObjectID(index)) Object();
+			Object *o = Object::CreateAtIndex(ObjectID(index));
 			SlObject(o, slt);
 		}
 	}
@@ -58,7 +58,7 @@ struct OBJSChunkHandler : ChunkHandler {
 	{
 		for (Object *o : Object::Iterate()) {
 			SlObject(o, _object_desc);
-			if (IsSavegameVersionBefore(SLV_148) && !IsTileType(o->location.tile, MP_OBJECT)) {
+			if (IsSavegameVersionBefore(SLV_148) && !IsTileType(o->location.tile, TileType::Object)) {
 				/* Due to a small bug stale objects could remain. */
 				delete o;
 			}

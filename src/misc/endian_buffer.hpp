@@ -80,7 +80,10 @@ public:
 	}
 
 private:
-	/** Helper function to write a tuple to the buffer. */
+	/**
+	 * Helper function to write a tuple to the buffer.
+	 * @param values The values to write.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	void WriteTuple(const Ttuple &values, std::index_sequence<Tindices...>)
 	{
@@ -102,7 +105,10 @@ private:
 		}
 	}
 
-	/** Write overload for string values. */
+	/**
+	 * Write overload for string values.
+	 * @param value The value to write.
+	 */
 	void Write(std::string_view value)
 	{
 		for (auto c : value) {
@@ -111,7 +117,10 @@ private:
 		this->buffer++ = '\0';
 	}
 
-	/** Fundamental write function. */
+	/**
+	 * Fundamental write function.
+	 * @param value The value to write.
+	 */
 	template <class T>
 	void Write(T value)
 	{
@@ -204,7 +213,10 @@ public:
 	}
 
 private:
-	/** Helper function to read a tuple from the buffer. */
+	/**
+	 * Helper function to read a tuple from the buffer.
+	 * @param values The value to read into.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	void ReadTuple(Ttuple &values, std::index_sequence<Tindices...>)
 	{
@@ -226,7 +238,10 @@ private:
 		}
 	}
 
-	/** Read overload for string data. */
+	/**
+	 * Read overload for string data.
+	 * @return The read string.
+	 */
 	std::string ReadStr()
 	{
 		std::string str;
@@ -238,7 +253,10 @@ private:
 		return str;
 	}
 
-	/** Fundamental read function. */
+	/**
+	 * Fundamental read function.
+	 * @return The read integer.
+	 */
 	template <class T>
 	T Read()
 	{

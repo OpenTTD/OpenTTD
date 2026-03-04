@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file http_curl.cpp CURL-based implementation for HTTP requests.
- */
+/** @file http_curl.cpp CURL-based implementation for HTTP requests. */
 
 #include "../../stdafx.h"
 #include "../../debug.h"
@@ -69,6 +67,7 @@ public:
 		_new_http_callbacks.push_back(&this->callback);
 	}
 
+	/** Remove ourselves from the callback list. */
 	~NetworkHTTPRequest()
 	{
 		std::lock_guard<std::mutex> lock(_http_callback_mutex);

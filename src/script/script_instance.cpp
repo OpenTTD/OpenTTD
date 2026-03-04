@@ -152,6 +152,7 @@ bool ScriptInstance::LoadCompatibilityScripts(Subdirectory dir, std::span<const 
 	return true;
 }
 
+/** Release our hold on the engine and reset it in the right scope. */
 ScriptInstance::~ScriptInstance()
 {
 	ScriptObject::ActiveInstance active(*this);
@@ -829,7 +830,7 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, const CommandD
 		ScriptObject::SetLastCost(result.GetCost());
 	}
 
-	ScriptObject::SetLastCommand({}, CMD_END);
+	ScriptObject::SetLastCommand({}, Commands::End);
 
 	return true;
 }

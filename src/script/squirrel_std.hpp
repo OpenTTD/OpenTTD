@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file squirrel_std.hpp defines the Squirrel Standard Function class */
+/** @file squirrel_std.hpp Defines the Squirrel Standard Function class. */
 
 #ifndef SQUIRREL_STD_HPP
 #define SQUIRREL_STD_HPP
@@ -28,11 +28,15 @@ public:
 
 	/**
 	 * Get the lowest of two integers.
+	 * @param vm The virtual machine to get the integers from, and write the result to.
+	 * @return The number of stack spaces to pop.
 	 */
 	static SQInteger min(HSQUIRRELVM vm);
 
 	/**
 	 * Get the highest of two integers.
+	 * @param vm The virtual machine to get the integers from, and write the result to.
+	 * @return The number of stack spaces to pop.
 	 */
 	static SQInteger max(HSQUIRRELVM vm);
 
@@ -40,23 +44,29 @@ public:
 	 * Load another file on runtime.
 	 * @note This is always loaded on the root-level, no matter where you call this.
 	 * @note The filename is always relative from the script it is called from. Absolute calls are NOT allowed!
+	 * @param vm The virtual machine to load the file into.
+	 * @return \c 0 upon success, or any other integer upon failure.
 	 */
 	static SQInteger require(HSQUIRRELVM vm);
 
 	/**
 	 * Enable/disable stack trace showing for handled exceptions.
+	 * @param vm The virtual machine to change the notifications for.
+	 * @return \c 0 upon success, or any other integer upon failure.
 	 */
 	static SQInteger notifyallexceptions(HSQUIRRELVM vm);
 };
 
 /**
  * Register all standard functions we want to give to a script.
+ * @param engine The engine to register the standard function to.
  */
 void squirrel_register_std(Squirrel &engine);
 
 /**
  * Register all standard functions that are available on first startup.
  * @note this set is very limited, and is only meant to load other scripts and things like that.
+ * @param engine The engine to register the functions to.
  */
 void squirrel_register_global_std(Squirrel &engine);
 

@@ -325,7 +325,7 @@ private:
 	static const uint EDITBOX_MAX_SIZE   =  50;
 
 	QueryString filename_editbox; ///< Filename editbox.
-	AbstractFileType abstract_filetype{}; /// Type of file to select.
+	AbstractFileType abstract_filetype{}; ///< Type of file to select.
 	SaveLoadOperation fop{}; ///< File operation to perform.
 	FileList fios_items{}; ///< Item list.
 	FiosItem o_dir{}; ///< Original dir (home dir for this browser)
@@ -438,7 +438,7 @@ public:
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */
 		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
-			Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, true);
+			Command<Commands::Pause>::Post(PauseMode::SaveLoad, true);
 		}
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
@@ -481,7 +481,7 @@ public:
 	{
 		/* pause is only used in single-player, non-editor mode, non menu mode */
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
-			Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
+			Command<Commands::Pause>::Post(PauseMode::SaveLoad, false);
 		}
 		this->Window::Close();
 	}
@@ -618,6 +618,7 @@ public:
 				for (auto &pair : _load_check_data.companies) {
 					const CompanyProperties &c = *pair.second;
 					if (c.name.empty()) {
+						AutoRestoreBackup landscape_backup(_settings_game.game_creation.landscape, _load_check_data.landscape);
 						DrawString(tr, GetString(STR_SAVELOAD_DETAIL_COMPANY_INDEX, pair.first + 1, c.name_1, c.name_2));
 					} else {
 						DrawString(tr, GetString(STR_SAVELOAD_DETAIL_COMPANY_INDEX, pair.first + 1, STR_JUST_RAW_STRING, c.name));

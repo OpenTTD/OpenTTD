@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file tcp_admin.cpp Basic functions to receive and send TCP packets to and from the admin network.
- */
+/** @file tcp_admin.cpp Basic functions to receive and send TCP packets to and from the admin network. */
 
 #include "../../stdafx.h"
 
@@ -18,10 +16,10 @@
 #include "../../safeguards.h"
 
 /* Make sure that these enums match. */
-static_assert((int)CRR_MANUAL    == (int)ADMIN_CRR_MANUAL);
-static_assert((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);
-static_assert((int)CRR_BANKRUPT  == (int)ADMIN_CRR_BANKRUPT);
-static_assert((int)CRR_END       == (int)ADMIN_CRR_END);
+static_assert(to_underlying(CompanyRemoveReason::Manual)    == to_underlying(ADMIN_CRR_MANUAL));
+static_assert(to_underlying(CompanyRemoveReason::Autoclean) == to_underlying(ADMIN_CRR_AUTOCLEAN));
+static_assert(to_underlying(CompanyRemoveReason::Bankrupt)  == to_underlying(ADMIN_CRR_BANKRUPT));
+static_assert(to_underlying(CompanyRemoveReason::End)       == to_underlying(ADMIN_CRR_END));
 
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
 {
@@ -36,13 +34,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
  */
 NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet &p)
 {
-	PacketAdminType type = (PacketAdminType)p.Recv_uint8();
-
-	if (this->HasClientQuit()) {
-		Debug(net, 0, "[tcp/admin] Received invalid packet from '{}' ({})", this->admin_name, this->admin_version);
-		this->CloseConnection();
-		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	}
+	PacketAdminType type = static_cast<PacketAdminType>(p.Recv_uint8());
 
 	switch (type) {
 		case ADMIN_PACKET_ADMIN_JOIN:             return this->Receive_ADMIN_JOIN(p);

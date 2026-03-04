@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file water.h Functions related to water (management) */
+/** @file water.h Functions related to water management. */
 
 #ifndef WATER_H
 #define WATER_H
@@ -52,7 +52,7 @@ bool IsWateredTile(TileIndex tile, Direction from);
  */
 inline Money CanalMaintenanceCost(uint32_t num)
 {
-	return (_price[PR_INFRASTRUCTURE_WATER] * num * (1 + IntSqrt(num))) >> 6; // 6 bits scaling.
+	return (_price[Price::InfrastructureWater] * num * (1 + IntSqrt(num))) >> 6; // 6 bits scaling.
 }
 
 #endif /* WATER_H */

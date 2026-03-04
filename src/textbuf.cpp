@@ -151,7 +151,7 @@ bool Textbuf::InsertChar(char32_t key)
  * @param marked Replace the currently marked text with the new text.
  * @param caret Move the caret to this point in the insertion string.
  * @param insert_location Position at which to insert the string.
- * @param replacement_end Replace all characters from #insert_location up to this location with the new string.
+ * @param replacement_end Replace all characters from insert_location up to this location with the new string.
  * @return True on successful change of Textbuf, or false otherwise.
  */
 bool Textbuf::InsertString(std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)

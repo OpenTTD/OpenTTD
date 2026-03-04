@@ -27,7 +27,7 @@ void UpdateAllStationVirtCoords();
 void ClearAllStationCachedNames();
 
 CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad);
-CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad, CargoTypes *always_accepted = nullptr);
+std::pair<CargoArray, CargoTypes> GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad);
 
 void UpdateStationAcceptance(Station *st, bool show_msg);
 CargoTypes GetAcceptanceMask(const Station *st);
@@ -59,7 +59,7 @@ void RerouteCargo(Station *st, CargoType cargo, StationID avoid, StationID avoid
  */
 inline Money StationMaintenanceCost(uint32_t num)
 {
-	return (_price[PR_INFRASTRUCTURE_STATION] * num * (1 + IntSqrt(num))) >> 7; // 7 bits scaling.
+	return (_price[Price::InfrastructureStation] * num * (1 + IntSqrt(num))) >> 7; // 7 bits scaling.
 }
 
 Money AirportMaintenanceCost(Owner owner);

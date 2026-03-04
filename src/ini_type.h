@@ -56,6 +56,7 @@ struct IniLoadFile {
 	const IniGroupNameList seq_group_names;  ///< list of group names that are sequences.
 
 	IniLoadFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {});
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~IniLoadFile() = default;
 
 	const IniGroup *GetGroup(std::string_view name) const;

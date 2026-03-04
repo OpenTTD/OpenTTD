@@ -30,6 +30,8 @@
 #include "signs_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "dropdown_common_type.h"
+#include "dropdown_func.h"
 
 #include "widgets/sign_widget.h"
 
@@ -73,7 +75,7 @@ struct SignList {
 		this->signs.RebuildDone();
 	}
 
-	/** Sort signs by their name */
+	/** Sort signs by their name. @copydoc GUIList::Sorter */
 	static bool SignNameSorter(const Sign * const &a, const Sign * const &b)
 	{
 		/* Signs are very very rarely using the default text, but there can also be
@@ -93,30 +95,30 @@ struct SignList {
 		if (!this->signs.Sort(&SignNameSorter)) return;
 	}
 
-	/** Filter sign list by sign name */
-	static bool SignNameFilter(const Sign * const *a, StringFilter &filter)
+	/** Filter sign list by sign name. @copydoc GUIList::FilterFunction */
+	static bool SignNameFilter(const Sign * const *item, StringFilter &filter)
 	{
 		/* Same performance benefit as above for sorting. */
-		const std::string &a_name = (*a)->name.empty() ? SignList::default_name : (*a)->name;
+		const std::string_view name = (*item)->name.empty() ? SignList::default_name : (*item)->name;
 
 		filter.ResetState();
-		filter.AddLine(a_name);
+		filter.AddLine(name);
 		return filter.GetState();
 	}
 
-	/** Filter sign list excluding OWNER_DEITY */
-	static bool OwnerDeityFilter(const Sign * const *a, StringFilter &)
+	/** Filter sign list excluding OWNER_DEITY. @copydoc GUIList::FilterFunction */
+	static bool OwnerDeityFilter(const Sign * const *item, [[maybe_unused]] StringFilter &filter)
 	{
 		/* You should never be able to edit signs of owner DEITY */
-		return (*a)->owner != OWNER_DEITY;
+		return (*item)->owner != OWNER_DEITY;
 	}
 
-	/** Filter sign list by owner */
-	static bool OwnerVisibilityFilter(const Sign * const *a, StringFilter &)
+	/** Filter sign list by owner. @copydoc GUIList::FilterFunction */
+	static bool OwnerVisibilityFilter(const Sign * const *item, [[maybe_unused]] StringFilter &filter)
 	{
 		assert(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS));
 		/* Hide sign if non-own signs are hidden in the viewport */
-		return (*a)->owner == _local_company || (*a)->owner == OWNER_DEITY;
+		return (*item)->owner == _local_company || (*item)->owner == OWNER_DEITY;
 	}
 
 	/** Filter out signs from the sign list that does not match the name filter */
@@ -172,6 +174,7 @@ struct SignListWindow : Window, SignList {
 	 * the edit widget is not updated by this function. Depending on if the
 	 * new string is zero-length or not the clear button is made
 	 * disabled/enabled. The sign list is updated according to the new filter.
+	 * @param new_filter_string The new terms for filtering.
 	 */
 	void SetFilterString(std::string_view new_filter_string)
 	{
@@ -379,12 +382,13 @@ Window *ShowSignList()
  * Actually rename the sign.
  * @param index the sign to rename.
  * @param text  the new name.
+ * @param text_colour Colour of the text if the sign is owned by OWNER_DEITY.
  * @return true if the window will already be removed after returning.
  */
-static bool RenameSign(SignID index, std::string_view text)
+static bool RenameSign(SignID index, std::string_view text, Colours text_colour)
 {
 	bool remove = text.empty();
-	Command<CMD_RENAME_SIGN>::Post(remove ? STR_ERROR_CAN_T_DELETE_SIGN : STR_ERROR_CAN_T_CHANGE_SIGN_NAME, index, std::string{text});
+	Command<Commands::RenameSign>::Post(remove ? STR_ERROR_CAN_T_DELETE_SIGN : STR_ERROR_CAN_T_CHANGE_SIGN_NAME, index, std::string{text}, text_colour);
 	return remove;
 }
 
@@ -395,15 +399,16 @@ static bool RenameSign(SignID index, std::string_view text)
  */
 void MoveSign(SignID index, TileIndex tile)
 {
-	Command<CMD_MOVE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, index, tile);
+	Command<Commands::MoveSign>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, index, tile);
 }
 
 struct SignWindow : Window, SignList {
 	QueryString name_editbox;
 	SignID cur_sign{};
 	WidgetID last_user_action = INVALID_WIDGET; ///< Last started user action.
+	std::optional<Colours> new_colour; ///< New colour selected by the user. Will be assigned when the OK button is clicked.
 
-	SignWindow(WindowDesc &desc, const Sign *si) : Window(desc), name_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
+	SignWindow(WindowDesc &desc, const Sign *si) : Window(desc), name_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS), cur_sign(si->index)
 	{
 		this->querystrings[WID_QES_TEXT] = &this->name_editbox;
 		this->name_editbox.caption = STR_EDIT_SIGN_CAPTION;
@@ -411,6 +416,11 @@ struct SignWindow : Window, SignList {
 		this->name_editbox.ok_button = WID_QES_OK;
 
 		this->InitNested(WN_QUERY_STRING_SIGN);
+
+		if (_game_mode != GameMode::GM_EDITOR) {
+			this->GetWidget<NWidgetStacked>(WID_QES_COLOUR_PANE)->SetDisplayedPlane(SZSP_VERTICAL);
+			this->ReInit();
+		}
 
 		UpdateSignEditWindow(si);
 		this->SetFocusedWidget(WID_QES_TEXT);
@@ -426,8 +436,10 @@ struct SignWindow : Window, SignList {
 		}
 
 		this->cur_sign = si->index;
+		this->new_colour.reset();
 
 		this->SetWidgetDirty(WID_QES_TEXT);
+		this->SetWidgetDirty(WID_QES_COLOUR);
 		this->SetFocusedWidget(WID_QES_TEXT);
 	}
 
@@ -464,14 +476,47 @@ struct SignWindow : Window, SignList {
 			case WID_QES_CAPTION:
 				return GetString(this->name_editbox.caption);
 
+			case WID_QES_COLOUR:
+				return GetString(STR_COLOUR_DARK_BLUE + this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour));
+
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override
+	{
+		if (widget == WID_QES_COLOUR) {
+			const Dimension square_size = GetSpriteSize(SPR_SQUARE);
+			const uint string_padding = square_size.width + WidgetDimensions::scaled.hsep_normal + padding.width;
+			for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; ++colour) {
+				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + colour).width + string_padding);
+			}
+			size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DEFAULT).width + string_padding);
+			return;
+		}
+
+		Window::UpdateWidgetSize(widget, size, padding, fill, resize);
+	}
+
+	void ShowColourDropDownMenu()
+	{
+		DropDownList list;
+		for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; ++colour) {
+			list.emplace_back(MakeDropDownListIconItem(SPR_SQUARE, GetColourPalette(colour), STR_COLOUR_DARK_BLUE + colour, colour));
+		}
+		const int selected = this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour);
+		ShowDropDownList(this, std::move(list), selected, WID_QES_COLOUR);
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
+			case WID_QES_COLOUR: {
+				ShowColourDropDownMenu();
+				break;
+			}
+
 			case WID_QES_LOCATION: {
 				const Sign *si = Sign::Get(this->cur_sign);
 				TileIndex tile = TileVirtXY(si->x, si->y);
@@ -500,7 +545,7 @@ struct SignWindow : Window, SignList {
 			}
 
 			case WID_QES_OK:
-				if (RenameSign(this->cur_sign, this->name_editbox.text.GetText())) break;
+				if (RenameSign(this->cur_sign, this->name_editbox.text.GetText(), this->new_colour.value_or(INVALID_COLOUR))) break;
 				[[fallthrough]];
 
 			case WID_QES_CANCEL:
@@ -509,7 +554,7 @@ struct SignWindow : Window, SignList {
 
 			case WID_QES_DELETE:
 				/* Only need to set the buffer to null, the rest is handled as the OK button */
-				RenameSign(this->cur_sign, "");
+				RenameSign(this->cur_sign, "", INVALID_COLOUR);
 				/* don't delete this, we are deleted in Sign::~Sign() -> DeleteRenameSignWindow() */
 				break;
 
@@ -524,7 +569,7 @@ struct SignWindow : Window, SignList {
 	{
 		switch (this->last_user_action) {
 			case WID_QES_MOVE: // Place sign button
-				RenameSign(this->cur_sign, this->name_editbox.text.GetText());
+				RenameSign(this->cur_sign, this->name_editbox.text.GetText(), this->new_colour.value_or(INVALID_COLOUR));
 				MoveSign(this->cur_sign, tile);
 				this->Close();
 				break;
@@ -536,6 +581,11 @@ struct SignWindow : Window, SignList {
 	void OnPlaceObjectAbort() override
 	{
 		this->RaiseButtons();
+	}
+
+	void OnDropdownSelect(WidgetID widget, int index, int) override
+	{
+		if (widget == WID_QES_COLOUR) this->new_colour = static_cast<Colours>(index);
 	}
 };
 
@@ -553,6 +603,10 @@ static constexpr std::initializer_list<NWidgetPart> _nested_query_sign_edit_widg
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_CANCEL), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_CANCEL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_DELETE), SetMinimalSize(60, 12), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QES_MOVE), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_MOVE),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_QES_COLOUR_PANE),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_QES_COLOUR), SetMinimalSize(60, 12), SetToolTip(STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP),
+		EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
 		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_PREVIOUS), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(AWV_DECREASE, STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP),
 		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_NEXT), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(AWV_INCREASE, STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP),
 	EndContainer(),
@@ -575,7 +629,7 @@ void HandleClickOnSign(const Sign *si)
 	if (!CompanyCanEditSign(si)) return;
 
 	if (_ctrl_pressed && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GM_EDITOR))) {
-		RenameSign(si->index, "");
+		RenameSign(si->index, "", INVALID_COLOUR);
 		return;
 	}
 

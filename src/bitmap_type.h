@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file bitmap_type.hpp Bitmap functions. */
+/** @file bitmap_type.h Bitmap functions. */
 
 #ifndef BITMAP_TYPE_HPP
 #define BITMAP_TYPE_HPP
@@ -52,7 +52,7 @@ public:
 
 	/**
 	 * Initialize the BitmapTileArea with the specified Rect.
-	 * @param rect Rect to use.
+	 * @param r Rect to use.
 	 */
 	void Initialize(const Rect &r)
 	{
@@ -94,7 +94,8 @@ public:
 
 	/**
 	 * Test if a tile is part of the tile area.
-	 * @param tile Tile to check
+	 * @param tile Tile to check.
+	 * @return \c true iff the tile is in this area.
 	 */
 	inline bool HasTile(TileIndex tile) const
 	{

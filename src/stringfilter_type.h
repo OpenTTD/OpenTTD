@@ -45,6 +45,7 @@ public:
 	/**
 	 * Constructor for filter.
 	 * @param case_sensitive Pointer to a (usually static) variable controlling the case-sensitivity. nullptr means always case-insensitive.
+	 * @param locale_aware Whether to match using the locale.
 	 */
 	StringFilter(const bool *case_sensitive = nullptr, bool locale_aware = true) : case_sensitive(case_sensitive), locale_aware(locale_aware) {}
 

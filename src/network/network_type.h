@@ -19,24 +19,24 @@ static const uint MAX_CLIENTS = 255;
 /**
  * Vehicletypes in the order they are send in info packets.
  */
-enum NetworkVehicleType : uint8_t {
-	NETWORK_VEH_TRAIN = 0,
-	NETWORK_VEH_LORRY,
-	NETWORK_VEH_BUS,
-	NETWORK_VEH_PLANE,
-	NETWORK_VEH_SHIP,
+enum class NetworkVehicleType : uint8_t {
+	Train = 0, ///< A train.
+	Truck, ///< A road vehicle that stops at truck stops
+	Bus, ///< A road vehicle that stops at bus stops.
+	Aircraft, ///< An airplane or helicopter.
+	Ship, ///< A ship.
 
-	NETWORK_VEH_END
+	End ///< End marker for array sizes.
 };
 
 /**
  * Game type the server can be using.
  * Used on the network protocol to communicate with Game Coordinator.
  */
-enum ServerGameType : uint8_t {
-	SERVER_GAME_TYPE_LOCAL = 0,
-	SERVER_GAME_TYPE_PUBLIC,
-	SERVER_GAME_TYPE_INVITE_ONLY,
+enum class ServerGameType : uint8_t {
+	Local = 0, ///< Do not communicate with the game coordinator.
+	Public, ///< The game is publicly accessible.
+	InviteOnly, ///< The game can be accessed if you know the invite code.
 };
 
 /** 'Unique' identifier to be given to clients */
@@ -54,9 +54,10 @@ using AdminID = PoolID<uint8_t, struct AdminIDTag, 16, 0xFF>;
 
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
-	uint16_t num_vehicle[NETWORK_VEH_END];            ///< How many vehicles are there of this type?
-	uint16_t num_station[NETWORK_VEH_END];            ///< How many stations are there of this type?
-	bool ai;                                        ///< Is this company an AI
+	/** Array indexed by NetworkVehicleType. */
+	using NetworkVehicleTypeArray = EnumClassIndexContainer<std::array<uint16_t, to_underlying(NetworkVehicleType::End)>, NetworkVehicleType>;
+	NetworkVehicleTypeArray num_vehicle; ///< How many vehicles are there of this type?
+	NetworkVehicleTypeArray num_station; ///< How many stations are there of this type?
 };
 
 struct NetworkClientInfo;

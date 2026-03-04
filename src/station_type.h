@@ -27,16 +27,16 @@ struct Waypoint;
 
 /** Station types */
 enum class StationType : uint8_t {
-	Rail,
-	Airport,
-	Truck,
-	Bus,
-	Oilrig,
-	Dock,
-	Buoy,
-	RailWaypoint,
-	RoadWaypoint,
-	End,
+	Rail, ///< Railways/train station.
+	Airport, ///< Airports and heliports, excluding the ones on oil rigs.
+	Truck, ///< Road stop for trucks.
+	Bus, ///< Road stop for busses.
+	Oilrig, ///< Heliport on an oil rig.
+	Dock, ///< Ship port.
+	Buoy, ///< Waypoint for ships.
+	RailWaypoint, ///< Waypoint for trains.
+	RoadWaypoint, ///< Waypoint for trucks and busses.
+	End, ///< End marker.
 };
 
 /** Types of RoadStops */
@@ -95,7 +95,7 @@ enum class StationAnimationTrigger : uint8_t {
 	AcceptanceTick, ///< Trigger station every 250 ticks.
 	TileLoop, ///< Trigger in the periodic tile loop.
 	PathReservation, ///< Trigger platform when train reserves path.
-	End
+	End, ///< End marker.
 };
 using StationAnimationTriggers = EnumBitSet<StationAnimationTrigger, uint16_t>;
 

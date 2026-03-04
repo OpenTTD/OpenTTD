@@ -25,12 +25,14 @@ struct OrderBackup;
 using OrderBackupPool = Pool<OrderBackup, OrderBackupID, 1>;
 /** The pool with order backups. */
 extern OrderBackupPool _order_backup_pool;
+/** An item in the OrderBackupPool. */
+using OrderBackupPoolItem = OrderBackupPool::PoolItem<&_order_backup_pool>;
 
 /**
  * Data for backing up an order of a vehicle so it can be
  * restored after a vehicle is rebuilt in the same depot.
  */
-struct OrderBackup : OrderBackupPool::PoolItem<&_order_backup_pool>, BaseConsist {
+struct OrderBackup : OrderBackupPoolItem, BaseConsist {
 private:
 	friend SaveLoadTable GetOrderBackupDescription(); ///< Saving and loading of order backups.
 	friend struct BKORChunkHandler; ///< Creating empty orders upon savegame loading.
@@ -45,11 +47,11 @@ private:
 	std::vector<Order> orders; ///< The actual orders if the vehicle was not a clone.
 	uint32_t old_order_index = 0;
 
-	/** Creation for savegame restoration. */
-	OrderBackup() = default;
-	OrderBackup(const Vehicle *v, uint32_t user);
-
 	void DoRestore(Vehicle *v);
+
+	friend OrderBackupPoolItem; ///< Loading of order backups.
+	OrderBackup(OrderBackupID index);
+	OrderBackup(OrderBackupID index, const Vehicle *v, uint32_t user);
 
 public:
 	~OrderBackup();

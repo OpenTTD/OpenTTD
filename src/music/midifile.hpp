@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/* @file midifile.hpp Parser for standard MIDI files */
+/** @file midifile.hpp Parser for standard MIDI files. */
 
 #ifndef MUSIC_MIDIFILE_HPP
 #define MUSIC_MIDIFILE_HPP

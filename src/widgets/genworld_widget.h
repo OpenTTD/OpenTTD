@@ -48,11 +48,12 @@ enum GenerateLandscapeWidgets : WidgetID {
 	WID_GL_HEIGHTMAP_SIZE_TEXT,         ///< Size of heightmap.
 	WID_GL_HEIGHTMAP_ROTATION_PULLDOWN, ///< Dropdown 'Heightmap rotation'.
 
-	WID_GL_TERRAIN_PULLDOWN,            ///< Dropdown 'Terrain type'.
+	WID_GL_MAX_HEIGHT_PULLDOWN,         ///< Dropdown 'Maximum height'.
 	WID_GL_WATER_PULLDOWN,              ///< Dropdown 'Sea level'.
 	WID_GL_RIVER_PULLDOWN,              ///< Dropdown 'Rivers'.
 	WID_GL_SMOOTHNESS_PULLDOWN,         ///< Dropdown 'Smoothness'.
 	WID_GL_VARIETY_PULLDOWN,            ///< Dropdown 'Variety distribution'.
+	WID_GL_AVERAGE_HEIGHT_PULLDOWN,     ///< Dropdown 'Average height'.
 
 	WID_GL_BORDERS_PULLDOWN,            ///< Dropdown 'Map edges'.
 	WID_GL_WATER_NW,                    ///< NW 'Water'/'Freeform'.

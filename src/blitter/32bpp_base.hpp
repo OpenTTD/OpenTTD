@@ -32,6 +32,8 @@ public:
 
 	/**
 	 * Look up the colour in the current palette.
+	 * @param index The index into the palette.
+	 * @return The colour.
 	 */
 	static inline Colour LookupColourInPalette(uint index)
 	{
@@ -40,6 +42,12 @@ public:
 
 	/**
 	 * Compose a colour based on RGBA values and the current pixel value.
+	 * @param r The red component of the colour to blend between 0 and 255 (inclusive).
+	 * @param g The green component of the colour to blend between 0 and 255 (inclusive).
+	 * @param b The blue component of the colour to blend between 0 and 255 (inclusive).
+	 * @param a The 'percentage' between 0 and 255 (inclusive) to blend into the current colour.
+	 * @param current The current/base colour.
+	 * @return The blended colour.
 	 */
 	static inline Colour ComposeColourRGBANoCheck(uint r, uint g, uint b, uint a, Colour current)
 	{
@@ -57,6 +65,12 @@ public:
 	/**
 	 * Compose a colour based on RGBA values and the current pixel value.
 	 * Handles fully transparent and solid pixels in a special (faster) way.
+	 * @param r The red component of the colour to blend between 0 and 255 (inclusive).
+	 * @param g The green component of the colour to blend between 0 and 255 (inclusive).
+	 * @param b The blue component of the colour to blend between 0 and 255 (inclusive).
+	 * @param a The 'percentage' between 0 and 255 (inclusive) to blend into the current colour.
+	 * @param current The current/base colour.
+	 * @return The blended colour.
 	 */
 	static inline Colour ComposeColourRGBA(uint r, uint g, uint b, uint a, Colour current)
 	{
@@ -68,6 +82,10 @@ public:
 
 	/**
 	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
+	 * @param colour The colour to blend.
+	 * @param a The 'percentage' between 0 and 255 (inclusive) to blend into the current colour.
+	 * @param current The current/base colour.
+	 * @return The blended colour.
 	 */
 	static inline Colour ComposeColourPANoCheck(Colour colour, uint a, Colour current)
 	{
@@ -81,6 +99,10 @@ public:
 	/**
 	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
 	 * Handles fully transparent and solid pixels in a special (faster) way.
+	 * @param colour The colour to blend.
+	 * @param a The 'percentage' between 0 and 255 (inclusive) to blend into the current colour.
+	 * @param current The current/base colour.
+	 * @return The blended colour.
 	 */
 	static inline Colour ComposeColourPA(Colour colour, uint a, Colour current)
 	{

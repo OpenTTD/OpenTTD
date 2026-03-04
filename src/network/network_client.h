@@ -75,7 +75,7 @@ protected:
 	void CheckConnection();
 public:
 	ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string);
-	~ClientNetworkGameSocketHandler();
+	~ClientNetworkGameSocketHandler() override;
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
 	void ClientError(NetworkRecvStatus res);

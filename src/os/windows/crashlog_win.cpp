@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file crashlog_win.cpp Implementation of a crashlogger for Windows */
+/** @file crashlog_win.cpp Implementation of a crashlogger for Windows. */
 
 #include "../../stdafx.h"
 #include "../../crashlog.h"
@@ -115,7 +115,7 @@ public:
 #endif
 
 #if defined(_MSC_VER)
-	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
 	{
 		this->try_execute_active = true;
 		bool res;
@@ -131,7 +131,7 @@ public:
 		return res;
 	}
 #else
-	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
 	{
 		this->try_execute_active = true;
 

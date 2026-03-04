@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file rev.h declaration of OTTD revision dependent variables */
+/** @file rev.h Declaration of OTTD revision dependent variables. */
 
 #ifndef REV_H
 #define REV_H

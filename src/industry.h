@@ -52,7 +52,7 @@ enum class IndustryControlFlag : uint8_t {
 	NoClosure = 2,
 	/** Indicates that the production level of the industry is externally controlled. */
 	ExternalProdLevel = 3,
-	End,
+	End, ///< End marker.
 };
 using IndustryControlFlags = EnumBitSet<IndustryControlFlag, uint8_t, IndustryControlFlag::End>;
 
@@ -78,8 +78,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	};
 
 	struct AcceptedHistory {
-		uint16_t accepted = 0; /// Total accepted.
-		uint16_t waiting = 0; /// Average waiting.
+		uint16_t accepted = 0; ///< Total accepted.
+		uint16_t waiting = 0; ///< Average waiting.
 	};
 
 	struct AcceptedCargo {
@@ -135,7 +135,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	PersistentStorage *psa = nullptr; ///< Persistent storage for NewGRF industries.
 
-	Industry(TileIndex tile = INVALID_TILE) : location(tile, 0, 0) {}
+	Industry(IndustryID index, TileIndex tile = INVALID_TILE) : IndustryPool::PoolItem<&_industry_pool>(index), location(tile, 0, 0) {}
 	~Industry();
 
 	void RecomputeProductionMultipliers();
@@ -147,7 +147,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 */
 	inline bool TileBelongsToIndustry(TileIndex tile) const
 	{
-		return IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->index;
+		return IsTileType(tile, TileType::Industry) && GetIndustryIndex(tile) == this->index;
 	}
 
 	/**
@@ -245,7 +245,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	/**
 	 * Get the industry of the given tile
 	 * @param tile the tile to get the industry from
-	 * @pre IsTileType(t, MP_INDUSTRY)
+	 * @pre IsTileType(t, TileType::Industry)
 	 * @return the industry
 	 */
 	static inline Industry *GetByTile(TileIndex tile)
@@ -260,6 +260,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 * Get the count of industries for this type.
 	 * @param type IndustryType to query
 	 * @pre type < NUM_INDUSTRYTYPES
+	 * @return The number of industries of the given type.
 	 */
 	static inline uint16_t GetIndustryTypeCount(IndustryType type)
 	{

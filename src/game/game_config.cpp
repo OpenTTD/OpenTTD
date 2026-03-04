@@ -17,7 +17,7 @@
 
 /* static */ GameConfig *GameConfig::GetConfig(ScriptSettingSource source)
 {
-	if (_game_mode == GM_MENU) source = SSS_FORCE_NEWGAME;
+	if (source == SSS_DEFAULT && _game_mode == GM_MENU) source = SSS_FORCE_NEWGAME;
 
 	auto &config = (source == SSS_FORCE_NEWGAME) ? _settings_newgame.script_config.game : _settings_game.script_config.game;
 	if (config == nullptr) config = std::make_unique<GameConfig>();

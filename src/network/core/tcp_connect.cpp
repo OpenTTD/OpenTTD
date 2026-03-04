@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file tcp_connect.cpp Basic functions to create connections without blocking.
- */
+/** @file tcp_connect.cpp Basic functions to create connections without blocking. */
 
 #include "../../stdafx.h"
 #include "../../thread.h"
@@ -25,6 +23,7 @@
  * @param connection_string The address to connect to.
  * @param default_port If not indicated in connection_string, what port to use.
  * @param bind_address The local bind address to use. Defaults to letting the OS find one.
+ * @param family The IP-family to connect with.
  */
 TCPConnecter::TCPConnecter(std::string_view connection_string, uint16_t default_port, const NetworkAddress &bind_address, int family) :
 	bind_address(bind_address),
@@ -56,6 +55,7 @@ TCPServerConnecter::TCPServerConnecter(std::string_view connection_string, uint1
 	}
 }
 
+/** Wait until the resolving is done, then release the sockets. */
 TCPConnecter::~TCPConnecter()
 {
 	if (this->resolve_thread.joinable()) {
@@ -257,6 +257,7 @@ void TCPConnecter::Resolve()
 
 /**
  * Thunk to start Resolve() on the right instance.
+ * @param connecter The connector to resolve on.
  */
 /* static */ void TCPConnecter::ResolveThunk(TCPConnecter *connecter)
 {

@@ -45,8 +45,7 @@ struct Backup {
 	~Backup()
 	{
 		/* Check whether restoration was done */
-		if (this->valid)
-		{
+		if (this->valid) {
 			/* We cannot assert here, as missing restoration is 'normal' when exceptions are thrown.
 			 * Exceptions are especially used to abort world generation. */
 			Debug(misc, 0, "{}:{}: Backed-up value was not restored!", this->location.file_name(), this->location.line());
@@ -70,7 +69,7 @@ struct Backup {
 	const T &GetOriginalValue() const
 	{
 		assert(this->valid);
-		return original_value;
+		return this->original_value;
 	}
 
 	/**
@@ -83,7 +82,7 @@ struct Backup {
 	{
 		/* Note: We use a separate typename U, so type conversions are handled by assignment operator. */
 		assert(this->valid);
-		original = new_value;
+		this->original = new_value;
 	}
 
 	/**
@@ -134,11 +133,11 @@ struct Backup {
 	}
 
 private:
-	T &original;
-	bool valid;
-	T original_value;
+	T &original; ///< Reference to the value we are backing up.
+	bool valid; ///< Whether the original value has been restored.
+	T original_value; ///< The value at the moment of making a backup.
 
-	const std::source_location location;
+	const std::source_location location; ///< Call location where the backup was created.
 };
 
 /**
@@ -172,9 +171,18 @@ struct AutoRestoreBackup {
 		this->original = this->original_value;
 	}
 
+	/**
+	 * Returns the backupped value.
+	 * @return value from the backup.
+	 */
+	const T &GetOriginalValue() const
+	{
+		return this->original_value;
+	}
+
 private:
-	T &original;
-	T original_value;
+	T &original; ///< Reference to the value we are backing up.
+	T original_value; ///< The value at the moment of making a backup.
 
 	/* Prevent copy, assignment and allocation on stack. */
 	AutoRestoreBackup(const AutoRestoreBackup&) = delete;

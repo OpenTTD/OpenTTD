@@ -69,7 +69,7 @@ private:
 	std::vector<CursorSprite> cursor_sprites{}; ///< Sprites comprising cursor
 
 	OpenGLBackend();
-	~OpenGLBackend();
+	~OpenGLBackend() override;
 
 	std::optional<std::string_view> Init(const Dimension &screen_res);
 	bool InitShaders();
@@ -79,11 +79,15 @@ private:
 	void RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom);
 
 public:
-	/** Get singleton instance of this class. */
+	/**
+	 * Get singleton instance of this class.
+	 * @return Our instance.
+	 */
 	static inline OpenGLBackend *Get()
 	{
 		return OpenGLBackend::instance;
 	}
+
 	static std::optional<std::string_view> Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res);
 	static void Destroy();
 

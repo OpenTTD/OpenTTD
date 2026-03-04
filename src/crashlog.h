@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file crashlog.h Functions to be called to log a crash */
+/** @file crashlog.h Functions to be called to log a crash. */
 
 #ifndef CRASHLOG_H
 #define CRASHLOG_H
@@ -49,7 +49,7 @@ protected:
 	std::string CreateFileName(std::string_view ext, bool with_dir = true) const;
 
 public:
-	/** Stub destructor to silence some compilers. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~CrashLog() = default;
 
 	nlohmann::json survey;

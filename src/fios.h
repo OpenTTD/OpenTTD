@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file fios.h Declarations for savegames operations */
+/** @file fios.h Declarations for savegames operations. */
 
 #ifndef FIOS_H
 #define FIOS_H
@@ -98,7 +98,6 @@ enum SortingBits : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
-/* Variables to display file lists */
 extern SortingBits _savegame_sort_order;
 
 void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fop);

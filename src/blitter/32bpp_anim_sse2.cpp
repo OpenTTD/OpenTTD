@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file 32bpp_anim.cpp Implementation of a partially SSSE2 32bpp blitter with animation support. */
+/** @file 32bpp_anim_sse2.cpp Implementation of a partially SSE2 32bpp blitter with animation support. */
 
 #ifdef WITH_SSE
 

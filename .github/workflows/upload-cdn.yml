@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Download all bundles
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v7
 
     - name: Calculate checksums
       run: |
@@ -70,14 +70,14 @@ jobs:
         done
 
     - name: Store bundles
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: cdn-bundles
         path: bundles/*
         retention-days: 5
 
     - name: Store breakpad symbols
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: cdn-symbols
         path: symbols/*
@@ -88,7 +88,7 @@ jobs:
     - prepare
 
     name: Publish bundles
-    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v5
+    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v6
     secrets:
       CDN_SIGNING_KEY: ${{ secrets.CDN_SIGNING_KEY }}
       DEPLOYMENT_APP_ID: ${{ secrets.DEPLOYMENT_APP_ID }}
@@ -103,7 +103,7 @@ jobs:
     - prepare
 
     name: Publish symbols
-    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v5
+    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v6
     secrets:
       SYMBOLS_SIGNING_KEY: ${{ secrets.SYMBOLS_SIGNING_KEY }}
     with:

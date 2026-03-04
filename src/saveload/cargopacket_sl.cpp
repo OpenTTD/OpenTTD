@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file cargopacket_sl.cpp Code handling saving and loading of cargo packets */
+/** @file cargopacket_sl.cpp Code handling saving and loading of cargo packets. */
 
 #include "../stdafx.h"
 
@@ -162,7 +162,7 @@ struct CAPAChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			CargoPacket *cp = new (CargoPacketID(index)) CargoPacket();
+			CargoPacket *cp = CargoPacket::CreateAtIndex(CargoPacketID(index));
 			SlObject(cp, slt);
 		}
 	}

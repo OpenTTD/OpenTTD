@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file fileio_type.h Types for Standard In/Out file operations */
+/** @file fileio_type.h Types for standard in/out file operations. */
 
 #ifndef FILEIO_TYPE_H
 #define FILEIO_TYPE_H
@@ -131,7 +131,22 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(Searchpath)
 
 class FileHandle {
 public:
+	/**
+	 * Open an RAII file handle if possible.
+	 * The canonical RAII-way is for FileHandle to open the file and throw an exception on failure, but we don't want that.
+	 * @param filename UTF-8 encoded filename to open.
+	 * @param mode Mode to open file.
+	 * @return FileHandle, or std::nullopt on failure.
+	 */
 	static std::optional<FileHandle> Open(const std::string &filename, std::string_view mode);
+
+	/**
+	 * Open an RAII file handle if possible.
+	 * The canonical RAII-way is for FileHandle to open the file and throw an exception on failure, but we don't want that.
+	 * @param filename UTF-8 encoded filename to open.
+	 * @param mode Mode to open file.
+	 * @return FileHandle, or std::nullopt on failure.
+	 */
 	static std::optional<FileHandle> Open(std::string_view filename, std::string_view mode) { return FileHandle::Open(std::string{filename}, mode); }
 
 	inline void Close() { this->f.reset(); }

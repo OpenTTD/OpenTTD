@@ -38,7 +38,11 @@
 
 static FVideoDriver_SDL_OpenGL iFVideoDriver_SDL_OpenGL;
 
-/** Platform-specific callback to get an OpenGL function pointer. */
+/**
+ * Platform-specific callback to get an OpenGL function pointer.
+ * @param proc The name of the function.
+ * @return The function pointer, or \c nullptr when it could not be found.
+ */
 static OGLProc GetOGLProcAddressCallback(const char *proc)
 {
 	return reinterpret_cast<OGLProc>(SDL_GL_GetProcAddress(proc));

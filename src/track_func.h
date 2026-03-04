@@ -325,6 +325,7 @@ inline TrackdirBits TrackBitsToTrackdirBits(TrackBits bits)
  * Checks whether a TrackBits has a given Track.
  * @param tracks The track bits.
  * @param track The track to check.
+ * @return \c true iff \c track is in \c tracks.
  */
 inline bool HasTrack(TrackBits tracks, Track track)
 {
@@ -336,6 +337,7 @@ inline bool HasTrack(TrackBits tracks, Track track)
  * Checks whether a TrackdirBits has a given Trackdir.
  * @param trackdirs The trackdir bits.
  * @param trackdir The trackdir to check.
+ * @return \c true iff \c trackdir is in \c trackdirs.
  */
 inline bool HasTrackdir(TrackdirBits trackdirs, Trackdir trackdir)
 {
@@ -494,6 +496,9 @@ inline Trackdir TrackEnterdirToTrackdir(Track track, DiagDirection diagdir)
 /**
  * Maps a track and a full (8-way) direction to the trackdir that represents
  * the track running in the given direction.
+ * @param track The track to get the trackdir for.
+ * @param dir The direction along the track.
+ * @return The resulting trackdir.
  */
 inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir)
 {

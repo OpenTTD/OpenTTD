@@ -65,13 +65,17 @@
 
 #include "safeguards.h"
 
-/* Number of bits in the hash to use from each vehicle coord */
+/** @{
+ * Number of bits in the hash to use from each vehicle coord. */
 static const uint GEN_HASHX_BITS = 6;
 static const uint GEN_HASHY_BITS = 6;
+/** @} */
 
-/* Size of each hash bucket */
+/** @{
+ * Size of each hash bucket. */
 static const uint GEN_HASHX_BUCKET_BITS = 7;
 static const uint GEN_HASHY_BUCKET_BITS = 6;
+/** @} */
 
 /* Compute hash for vehicle coord */
 static inline uint GetViewportHashX(int x)
@@ -89,18 +93,23 @@ static inline uint GetViewportHash(int x, int y)
 	return GetViewportHashX(x) + GetViewportHashY(y);
 }
 
-/* Maximum size until hash repeats */
+/** @{
+ * Maximum size until hash repeats. */
 static const uint GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_BASE_SHIFT);
 static const uint GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_BASE_SHIFT);
+/** @} */
 
-/* Increments to reach next bucket in hash table */
+/** @{
+ * Increments to reach next bucket in hash table. */
 static const uint GEN_HASHX_INC = 1;
 static const uint GEN_HASHY_INC = 1 << GEN_HASHX_BITS;
+/** @} */
 
-/* Mask to wrap-around buckets */
+/** @{
+ * Mask to wrap-around buckets. */
 static const uint GEN_HASHX_MASK =  (1 << GEN_HASHX_BITS) - 1;
 static const uint GEN_HASHY_MASK = ((1 << GEN_HASHY_BITS) - 1) << GEN_HASHX_BITS;
-
+/** @} */
 
 /** The pool with all our precious vehicles. */
 VehiclePool _vehicle_pool("Vehicle");
@@ -187,7 +196,7 @@ void VehicleServiceInDepot(Vehicle *v)
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
 		v->breakdown_chance /= 4;
-		if (_settings_game.difficulty.vehicle_breakdowns == 1) v->breakdown_chance = 0; // on reduced breakdown
+		if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced) v->breakdown_chance = 0; // on reduced breakdown
 		v = v->Next();
 	} while (v != nullptr && v->HasEngineType());
 }
@@ -222,7 +231,7 @@ bool Vehicle::NeedsServicing() const
 	/* If we're servicing anyway, because we have not disabled servicing when
 	 * there are no breakdowns or we are playing with breakdowns, bail out. */
 	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
-			_settings_game.difficulty.vehicle_breakdowns != 0) {
+			_settings_game.difficulty.vehicle_breakdowns != VehicleBreakdowns::None) {
 		return true;
 	}
 
@@ -337,7 +346,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 		grfconfig->grf_bugs.Set(bug_type);
 		ShowErrorMessage(GetEncodedString(part1, grfconfig->GetName()),
 			GetEncodedString(part2, std::monostate{}, engine), WL_CRITICAL);
-		if (!_networking) Command<CMD_PAUSE>::Do(DoCommandFlag::Execute, critical ? PauseMode::Error : PauseMode::Normal, true);
+		if (!_networking) Command<Commands::Pause>::Do(DoCommandFlag::Execute, critical ? PauseMode::Error : PauseMode::Normal, true);
 	}
 
 	/* debug output */
@@ -364,9 +373,10 @@ void VehicleLengthChanged(const Vehicle *u)
 
 /**
  * Vehicle constructor.
+ * @param index The index within the vehicle pool.
  * @param type Type of the new vehicle.
  */
-Vehicle::Vehicle(VehicleType type)
+Vehicle::Vehicle(VehicleID index, VehicleType type) : VehiclePool::PoolItem<&_vehicle_pool>(index)
 {
 	this->type               = type;
 	this->coord.left         = INVALID_COORD;
@@ -380,19 +390,26 @@ Vehicle::Vehicle(VehicleType type)
 	this->last_loading_station = StationID::Invalid();
 }
 
-/* Size of the hash, 6 = 64 x 64, 7 = 128 x 128. Larger sizes will (in theory) reduce hash
- * lookup times at the expense of memory usage. */
+/** @{
+ * Size of the hash, 6 = 64 x 64, 7 = 128 x 128.
+ * Larger sizes will (in theory) reduce hash lookup times at the expense of memory usage.
+ */
 constexpr uint TILE_HASH_BITS = 7;
 constexpr uint TILE_HASH_SIZE = 1 << TILE_HASH_BITS;
 constexpr uint TILE_HASH_MASK = TILE_HASH_SIZE - 1;
 constexpr uint TOTAL_TILE_HASH_SIZE = 1 << (TILE_HASH_BITS * 2);
+/** @} */
 
-/* Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
- * Profiling results show that 0 is fastest. */
+/**
+ * Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
+ * Profiling results show that 0 is fastest.
+ */
 constexpr uint TILE_HASH_RES = 0;
 
 /**
  * Compute hash for 1D tile coordinate.
+ * @param p The value to 'hash'.
+ * @return The computed hash.
  */
 static inline uint GetTileHash1D(uint p)
 {
@@ -401,6 +418,8 @@ static inline uint GetTileHash1D(uint p)
 
 /**
  * Increment 1D hash to next bucket.
+ * @param h The value to increment the hash for.
+ * @return The incremented value.
  */
 static inline uint IncTileHash1D(uint h)
 {
@@ -409,6 +428,9 @@ static inline uint IncTileHash1D(uint h)
 
 /**
  * Compose two 1D hashes into 2D hash.
+ * @param hx The hash for the X-axis.
+ * @param hy The hash for the Y-axis.
+ * @return The composed hash.
  */
 static inline uint ComposeTileHash(uint hx, uint hy)
 {
@@ -417,6 +439,9 @@ static inline uint ComposeTileHash(uint hx, uint hy)
 
 /**
  * Compute hash for tile coordinate.
+ * @param x The X-coordinate.
+ * @param y The Y-coordinate.
+ * @return The hash of the tile coordinates.
  */
 static inline uint GetTileHash(uint x, uint y)
 {
@@ -428,6 +453,9 @@ static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
 /**
  * Iterator constructor.
  * Find first vehicle near (x, y).
+ * @param x The center X-coordinate.
+ * @param y The center Y-coordinate.
+ * @param max_dist The distance around the center to consider.
  */
 VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y, uint max_dist)
 {
@@ -495,6 +523,7 @@ void VehiclesNearTileXY::Iterator::SkipFalseMatches()
 /**
  * Iterator constructor.
  * Find first vehicle on tile.
+ * @param tile The tile to find the vehicles on.
  */
 VehiclesOnTile::Iterator::Iterator(TileIndex tile) : tile(tile)
 {
@@ -1056,9 +1085,9 @@ void CallVehicleTicks()
 		int z = v->z_pos;
 
 		const Company *c = Company::Get(_current_company);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
-		CommandCost res = Command<CMD_AUTOREPLACE_VEHICLE>::Do(DoCommandFlag::Execute, v->index);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
+		SubtractMoneyFromCompany(_current_company, CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
+		CommandCost res = Command<Commands::AutoreplaceVehicle>::Do(DoCommandFlag::Execute, v->index);
+		SubtractMoneyFromCompany(_current_company, CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
 
 		if (!IsLocalCompany()) continue;
 
@@ -1284,38 +1313,53 @@ static const uint8_t _breakdown_chance[64] = {
 	150, 170, 190, 210, 230, 250, 250, 250,
 };
 
+/**
+ * Periodic check for a vehicle to maybe break down.
+ * @param v The vehicle to consider breaking.
+ */
 void CheckVehicleBreakdown(Vehicle *v)
 {
+	/* Vehicles in the menu don't break down. */
+	if (_game_mode == GM_MENU) return;
+
+	/* If both breakdowns and automatic servicing are disabled, we don't decrease reliability or break down. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None && _settings_game.order.no_servicing_if_no_breakdowns) return;
+
+	/* With Reduced breakdowns, vehicles (un)loading at stations don't lose reliability. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced && v->current_order.IsType(OT_LOADING)) return;
+
+	/* Decrease reliability. */
 	int rel, rel_old;
+	v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
+	if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
-	/* decrease reliability */
-	if (!_settings_game.order.no_servicing_if_no_breakdowns ||
-			_settings_game.difficulty.vehicle_breakdowns != 0) {
-		v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
-		if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-	}
+	/* Some vehicles lose reliability but won't break down. */
+	/* Breakdowns are disabled. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None) return;
+	/* The vehicle is already broken down. */
+	if (v->breakdown_ctr != 0) return;
+	/* The vehicle is stopped or going very slow. */
+	if (v->cur_speed < 5) return;
+	/* The vehicle has been manually stopped. */
+	if (v->vehstatus.Test(VehState::Stopped)) return;
 
-	if (v->breakdown_ctr != 0 || v->vehstatus.Test(VehState::Stopped) ||
-			_settings_game.difficulty.vehicle_breakdowns < 1 ||
-			v->cur_speed < 5 || _game_mode == GM_MENU) {
-		return;
-	}
+	/* Time to consider breaking down. */
 
 	uint32_t r = Random();
 
-	/* increase chance of failure */
+	/* Increase chance of failure. */
 	int chance = v->breakdown_chance + 1;
 	if (Chance16I(1, 25, r)) chance += 25;
 	v->breakdown_chance = ClampTo<uint8_t>(chance);
 
-	/* calculate reliability value to use in comparison */
+	/* Calculate reliability value to use in comparison. */
 	rel = v->reliability;
 	if (v->type == VEH_SHIP) rel += 0x6666;
 
-	/* reduced breakdowns? */
-	if (_settings_game.difficulty.vehicle_breakdowns == 1) rel += 0x6666;
+	/* Reduce the chance if the player has chosen the Reduced setting. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced) rel += 0x6666;
 
-	/* check if to break down */
+	/* Check the random chance and inform the vehicle of the result. */
 	if (_breakdown_chance[ClampTo<uint16_t>(rel) >> 10] <= v->breakdown_chance) {
 		v->breakdown_ctr    = GB(r, 16, 6) + 0x3F;
 		v->breakdown_delay  = GB(r, 24, 7) + 0x80;
@@ -1558,8 +1602,6 @@ void VehicleEnterDepot(Vehicle *v)
 			break;
 		default: NOT_REACHED();
 	}
-	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-
 	if (v->type != VEH_TRAIN) {
 		/* Trains update the vehicle list when the first unit enters the depot and calls VehicleEnterDepot() when the last unit enters.
 		 * We only increase the number of vehicles when the first one enters, so we will not need to search for more vehicles in the depot */
@@ -1582,8 +1624,6 @@ void VehicleEnterDepot(Vehicle *v)
 	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-
 		const Order *real_order = v->GetOrder(v->cur_real_order_index);
 
 		/* Test whether we are heading for this depot. If not, do nothing.
@@ -1597,7 +1637,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (v->current_order.IsRefit()) {
 			Backup<CompanyID> cur_company(_current_company, v->owner);
-			CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DoCommandFlag::Execute, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
+			CommandCost cost = std::get<0>(Command<Commands::RefitVehicle>::Do(DoCommandFlag::Execute, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
 			cur_company.Restore();
 
 			if (cost.Failed()) {
@@ -1897,6 +1937,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
  * vehicle type. This to disable building stations etc. when
  * you are not allowed/able to have the vehicle type yet.
  * @param type the vehicle type to check this for
+ * @param subtype The vehicle's sub to to check this for.
  * @return true if there is any reason why you may build
  *         the infrastructure for the given vehicle type
  */
@@ -2178,11 +2219,11 @@ void Vehicle::DeleteUnreachedImplicitOrders()
 
 /**
  * Prepare everything to begin the loading when arriving at a station.
- * @pre IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP.
+ * @pre IsTileType(this->tile, TileType::Station) || this->type == VEH_SHIP.
  */
 void Vehicle::BeginLoading()
 {
-	assert(IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP);
+	assert(IsTileType(this->tile, TileType::Station) || this->type == VEH_SHIP);
 
 	TimerGameTick::Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
@@ -2248,22 +2289,22 @@ void Vehicle::BeginLoading()
 						InvalidateVehicleOrder(this, 0);
 					} else {
 						/* Delete all implicit orders up to the station we just reached */
-						VehicleOrderID cur = this->cur_implicit_order_index;
-						auto orders = this->Orders();
-						while (!orders[cur].IsType(OT_IMPLICIT) || orders[cur].GetDestination() != this->last_station_visited) {
-							if (orders[cur].IsType(OT_IMPLICIT)) {
+						const Order *order = this->GetOrder(this->cur_implicit_order_index);
+						while (!order->IsType(OT_IMPLICIT) || order->GetDestination() != this->last_station_visited) {
+							if (order->IsType(OT_IMPLICIT)) {
 								DeleteOrder(this, this->cur_implicit_order_index);
-								/* DeleteOrder does various magic with order_indices, so resync 'order' with 'cur_implicit_order_index' */
 							} else {
 								/* Skip non-implicit orders, e.g. service-orders */
-								if (cur < this->orders->GetNext(cur)) {
-									this->cur_implicit_order_index++;
-								} else {
-									/* Wrapped around. */
-									this->cur_implicit_order_index = 0;
-								}
-								cur = this->orders->GetNext(cur);
+								++this->cur_implicit_order_index;
 							}
+							order = this->GetOrder(this->cur_implicit_order_index);
+
+							/* Wrapped around. */
+							if (order == nullptr) {
+								this->cur_implicit_order_index = 0;
+								order = this->GetOrder(this->cur_implicit_order_index);
+							}
+							assert(order != nullptr);
 						}
 					}
 				} else if (!suppress_implicit_orders &&
@@ -2306,6 +2347,7 @@ void Vehicle::BeginLoading()
 /**
  * Return all reserved cargo packets to the station and reset all packets
  * staged for transfer.
+ * @param next ID of the next station the cargo wants to go to.
  * @param st the station where the reserved packets should go.
  */
 void Vehicle::CancelReservation(StationID next, Station *st)
@@ -2363,7 +2405,7 @@ void Vehicle::LeaveStation()
 
 	if (this->type == VEH_TRAIN && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger station animation (trains only) */
-		if (IsTileType(this->tile, MP_STATION)) {
+		if (IsTileType(this->tile, TileType::Station)) {
 			TriggerStationRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
 			TriggerStationAnimation(st, this->tile, StationAnimationTrigger::VehicleDeparts);
 		}
@@ -2468,7 +2510,8 @@ bool Vehicle::HasUnbunchingOrder() const
 
 /**
  * Check if the previous order is a depot unbunching order.
- * @return true Iff the previous order is a depot order with the unbunch flag.
+ * @param v The vehicle to consider.
+ * @return \c true iff the previous order is a depot order with the unbunch flag.
  */
 static bool PreviousOrderIsUnbunching(const Vehicle *v)
 {
@@ -2522,7 +2565,7 @@ void Vehicle::LeaveUnbunchingDepot()
 		if (u->vehstatus.Any({VehState::Stopped, VehState::Crashed})) continue;
 
 		u->depot_unbunching_next_departure = next_departure;
-		SetWindowDirty(WC_VEHICLE_VIEW, u->index);
+		InvalidateWindowData(WC_VEHICLE_VIEW, u->index);
 	}
 }
 
@@ -2613,7 +2656,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
 		if (this->type == VEH_TRAIN && (closest_depot.reverse ^ Train::From(this)->flags.Test(VehicleRailFlag::Reversing))) {
-			Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, this->index, false);
+			Command<Commands::ReverseTrainDirection>::Do(DoCommandFlag::Execute, this->index, false);
 		}
 
 		if (this->type == VEH_AIRCRAFT) {
@@ -2960,7 +3003,7 @@ void Vehicle::AddToShared(Vehicle *shared_chain)
 	if (shared_chain->orders == nullptr) {
 		assert(shared_chain->previous_shared == nullptr);
 		assert(shared_chain->next_shared == nullptr);
-		this->orders = shared_chain->orders = new OrderList(shared_chain);
+		this->orders = shared_chain->orders = OrderList::Create(shared_chain);
 	}
 
 	this->next_shared     = shared_chain->next_shared;
@@ -3007,7 +3050,7 @@ void Vehicle::RemoveFromShared()
 	this->previous_shared = nullptr;
 }
 
-static const IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::VEHICLE}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconomy::Trigger::Year, TimerGameEconomy::Priority::Vehicle}, [](auto)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {
@@ -3254,7 +3297,7 @@ uint32_t Vehicle::GetDisplayMinPowerToWeight() const
 /**
  * Checks if two vehicle chains have the same list of engines.
  * @param v1 First vehicle chain.
- * @param v1 Second vehicle chain.
+ * @param v2 Second vehicle chain.
  * @return True if same, false if different.
  */
 bool VehiclesHaveSameEngineList(const Vehicle *v1, const Vehicle *v2)
@@ -3271,7 +3314,7 @@ bool VehiclesHaveSameEngineList(const Vehicle *v1, const Vehicle *v2)
 /**
  * Checks if two vehicles have the same list of orders.
  * @param v1 First vehicles.
- * @param v1 Second vehicles.
+ * @param v2 Second vehicles.
  * @return True if same, false if different.
  */
 bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2)

@@ -47,7 +47,7 @@ public:
 	 * Destroying this instance reset the company to that what it was
 	 *   in when the instance was created.
 	 */
-	~ScriptCompanyMode();
+	~ScriptCompanyMode() override;
 
 	/**
 	 * Check whether a company mode is valid. In other words, are commands

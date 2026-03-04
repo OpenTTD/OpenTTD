@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file game_info.cpp Functions to convert NetworkGameInfo to Packet and back.
- */
+/** @file network_game_info.cpp Functions to convert NetworkGameInfo to Packet and back. */
 
 #include "../../stdafx.h"
 #include "network_game_info.h"
@@ -42,6 +40,7 @@ NetworkServerGameInfo _network_game_info; ///< Information about our game.
 /**
  * Get the network version string used by this build.
  * The returned string is guaranteed to be at most NETWORK_REVISION_LENGTH bytes including '\0' terminator.
+ * @return The revision string.
  */
 std::string_view GetNetworkRevisionString()
 {
@@ -100,6 +99,7 @@ static std::string_view ExtractNetworkRevisionHash(std::string_view revision_str
  * Checks whether the given version string is compatible with our version.
  * First tries to match the full string, if that fails, attempts to compare just git hashes.
  * @param other the version string to compare to
+ * @return \c true if the other version is deemed compatible.
  */
 bool IsNetworkCompatibleVersion(std::string_view other)
 {
@@ -122,6 +122,7 @@ bool IsNetworkCompatibleVersion(std::string_view other)
 
 /**
  * Check if an game entry is compatible with our client.
+ * @param ngi The game information to process and update the compatible field of.
  */
 void CheckGameCompatibility(NetworkGameInfo &ngi)
 {
@@ -201,6 +202,7 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::strin
  * Serializes the NetworkGameInfo struct to the packet.
  * @param p    the packet to write the data to.
  * @param info the NetworkGameInfo struct to serialize from.
+ * @param send_newgrf_names Whether to send the NewGRF names or not.
  */
 void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool send_newgrf_names)
 {
@@ -269,6 +271,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
  * Deserializes the NetworkGameInfo struct from the packet.
  * @param p    the packet to read the data from.
  * @param info the NetworkGameInfo to deserialize into.
+ * @param newgrf_lookup_table Lookup table for index-mapped NewGRFs.
  */
 void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {

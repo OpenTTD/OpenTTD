@@ -39,9 +39,9 @@ private:
 
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
-	~FreeTypeFontCache();
+	~FreeTypeFontCache() override;
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key) override;
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return &face; }
@@ -194,11 +194,17 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 }
 
 
-GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key)
+GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 {
 	assert(IsPrintable(key));
 
-	return FT_Get_Char_Index(this->face, key);
+	FT_UInt glyph = FT_Get_Char_Index(this->face, key);
+
+	if (glyph == 0 && allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+		return this->parent->MapCharToGlyph(key);
+	}
+
+	return glyph;
 }
 
 FT_Library _ft_library = nullptr;
@@ -207,7 +213,8 @@ class FreeTypeFontCacheFactory : public FontCacheFactory {
 public:
 	FreeTypeFontCacheFactory() : FontCacheFactory("freetype", "FreeType font provider") {}
 
-	virtual ~FreeTypeFontCacheFactory()
+	/** Close the freetype library. */
+	~FreeTypeFontCacheFactory() override
 	{
 		FT_Done_FreeType(_ft_library);
 		_ft_library = nullptr;
@@ -219,10 +226,17 @@ public:
 	 * try to resolve the filename of the font using fontconfig, where the
 	 * format is 'font family name' or 'font family name, font style'.
 	 * @param fs The font size to load.
+	 * @param fonttype The type of font that is requested to be loaded.
+	 * @return The loaded font, or \c nullptr when none could be loaded.
 	 */
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font, std::span<const std::byte> os_handle) const override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
+
+		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
+
+		std::string font = GetFontCacheFontName(fs);
+		if (font.empty()) return nullptr;
 
 		if (_ft_library == nullptr) {
 			if (FT_Init_FreeType(&_ft_library) != FT_Err_Ok) {
@@ -237,9 +251,7 @@ public:
 
 		/* If font is an absolute path to a ttf, try loading that first. */
 		int32_t index = 0;
-		if (os_handle.size() == sizeof(index)) {
-			index = *reinterpret_cast<const int32_t *>(os_handle.data());
-		}
+		if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
 		FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
 
 		if (error != FT_Err_Ok) {
@@ -251,8 +263,8 @@ public:
 		}
 
 #ifdef WITH_FONTCONFIG
-		/* If allowed to search, try loading based on font face name (OS-wide fonts). */
-		if (error != FT_Err_Ok && search) error = GetFontByFaceName(font, &face);
+		/* Try loading based on font face name (OS-wide fonts). */
+		if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
 #endif /* WITH_FONTCONFIG */
 
 		if (error != FT_Err_Ok) {
@@ -263,10 +275,10 @@ public:
 		return LoadFont(fs, face, font, GetFontCacheFontSize(fs));
 	}
 
-	bool FindFallbackFont(const std::string &language_isocode, FontSizes fontsizes, MissingGlyphSearcher *callback) const override
+	bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) const override
 	{
 #ifdef WITH_FONTCONFIG
-		if (FontConfigFindFallbackFont(language_isocode, fontsizes, callback)) return true;
+		if (FontConfigFindFallbackFont(settings, language_isocode, callback)) return true;
 #endif /* WITH_FONTCONFIG */
 
 		return false;
@@ -300,7 +312,7 @@ private:
 		if (error != FT_Err_Ok) {
 			FT_Done_Face(face);
 
-			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}", font_name, FontSizeToName(fs), error);
+			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
 			return nullptr;
 		}
 

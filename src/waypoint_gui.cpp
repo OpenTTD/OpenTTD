@@ -189,7 +189,7 @@ public:
 	{
 		if (!str.has_value()) return;
 
-		Command<CMD_RENAME_WAYPOINT>::Post(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, this->window_number, *str);
+		Command<Commands::RenameWaypoint>::Post(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, this->window_number, *str);
 	}
 
 };

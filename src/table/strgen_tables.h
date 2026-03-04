@@ -5,10 +5,11 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file table/strgen_tables.h Tables of commands for strgen */
+/** @file strgen_tables.h Tables of commands for strgen. */
 
 #include "../core/enum_type.hpp"
 
+/** Flags describing how to process a string command. */
 enum class CmdFlag : uint8_t {
 	DontCount, ///< These commands aren't counted for comparison
 	Case, ///< These commands support cases

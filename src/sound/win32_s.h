@@ -24,7 +24,7 @@ public:
 /** Factory for the sound driver for Windows. */
 class FSoundDriver_Win32 : public DriverFactoryBase {
 public:
-	FSoundDriver_Win32() : DriverFactoryBase(Driver::DT_SOUND, 9, "win32", "Win32 WaveOut Sound Driver (param hz,samples)") {}
+	FSoundDriver_Win32() : DriverFactoryBase(Driver::Type::Sound, 9, "win32", "Win32 WaveOut Sound Driver (param hz,samples)") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_Win32>(); }
 };
 

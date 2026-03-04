@@ -81,7 +81,9 @@ static constexpr auto _callback_tuple = std::make_tuple(
 	&CcRoadStop,
 	&CcStartStopVehicle,
 	&CcGame,
-	&CcAddVehicleNewGroup
+	&CcAddVehicleNewGroup,
+	&CcMoveStationName,
+	&CcMoveWaypointName
 );
 
 #ifdef SILENCE_GCC_FUNCTION_POINTER_CAST
@@ -110,6 +112,16 @@ inline auto MakeCallbackTable(std::index_sequence<i...>) noexcept
 
 /** Type-erased table of callbacks. */
 static const auto _callback_table = MakeCallbackTable(std::make_index_sequence<_callback_tuple_size>{});
+
+/**
+ * Helper function to ensure that callbacks used when Posting commands are actually registered for the network calls.
+ * @param callback The callback to check.
+ * @return \c true when the callback is in the callback table, otherwise \c false.
+ */
+bool IsNetworkRegisteredCallback(CommandCallback *callback)
+{
+	return std::ranges::find(_callback_table, callback) != _callback_table.end();
+}
 
 template <typename T> struct CallbackArgsHelper;
 template <typename... Targs>
@@ -155,10 +167,10 @@ constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) no
 template <typename T, T... i, size_t... j>
 inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::index_sequence<j...>) noexcept
 {
-	return std::array<CommandDispatch, sizeof...(i)>{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }};
+	return EnumClassIndexContainer<std::array<CommandDispatch, sizeof...(i)>, Commands>{{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }}};
 }
 /** Command dispatch table. */
-static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{}, std::make_index_sequence<_callback_tuple_size>{});
+static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{}, std::make_index_sequence<_callback_tuple_size>{});
 
 #ifdef SILENCE_GCC_FUNCTION_POINTER_CAST
 #	pragma GCC diagnostic pop
@@ -383,7 +395,7 @@ std::optional<std::string_view> NetworkGameSocketHandler::ReceiveCommand(Packet 
 void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket &cp)
 {
 	p.Send_uint8(cp.company);
-	p.Send_uint16(cp.cmd);
+	p.Send_uint16(to_underlying(cp.cmd));
 	p.Send_uint16(cp.err_msg);
 	p.Send_buffer(cp.data);
 
@@ -395,7 +407,11 @@ void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket &cp)
 	p.Send_uint8 ((uint8_t)callback);
 }
 
-/** Helper to process a single ClientID argument. */
+/**
+ * Helper to process a single ClientID argument.
+ * @param data The data to process.
+ * @param client_id The client ID to set.
+ */
 template <class T>
 static inline void SetClientIdHelper(T &data, [[maybe_unused]] ClientID client_id)
 {
@@ -404,7 +420,11 @@ static inline void SetClientIdHelper(T &data, [[maybe_unused]] ClientID client_i
 	}
 }
 
-/** Set all invalid ClientID's to the proper value. */
+/**
+ * Set all invalid ClientIDs to the proper value.
+ * @param values The values to process.
+ * @param client_id The client ID to set.
+ */
 template <class Ttuple, size_t... Tindices>
 static inline void SetClientIds(Ttuple &values, ClientID client_id, std::index_sequence<Tindices...>)
 {
@@ -435,7 +455,11 @@ void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id)
 }
 
 
-/** Validate a single string argument coming from network. */
+/**
+ * Validate a single string argument coming from network.
+ * @param cmd_flags The flags for validation.
+ * @param data The data to validate.
+ */
 template <class T>
 static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_flags, T &data)
 {
@@ -448,7 +472,11 @@ static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_
 	}
 }
 
-/** Helper function to perform validation on command data strings. */
+/**
+ * Helper function to perform validation on command data strings.
+ * @param cmd_flags The flags for validation.
+ * @param values The data to validate.
+ */
 template <class Ttuple, size_t... Tindices>
 static inline void SanitizeStringsHelper(CommandFlags cmd_flags, Ttuple &values, std::index_sequence<Tindices...>)
 {

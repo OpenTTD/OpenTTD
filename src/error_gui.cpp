@@ -78,6 +78,7 @@ static WindowDesc _errmsg_face_desc(
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param extra_msg    Extra error message showed in third line. Can be empty.
+ * @param company The associated company to the error message. Company::Invalid() when there is none.
  */
 ErrorMessageData::ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical, int x, int y, EncodedString &&extra_msg, CompanyID company) :
 	is_critical(is_critical),
@@ -101,22 +102,17 @@ private:
 	uint height_summary = 0; ///< Height of the #summary_msg string in pixels in the #WID_EM_MESSAGE widget.
 	uint height_detailed = 0; ///< Height of the #detailed_msg string in pixels in the #WID_EM_MESSAGE widget.
 	uint height_extra = 0; ///< Height of the #extra_msg string in pixels in the #WID_EM_MESSAGE widget.
-	TimeoutTimer<TimerWindow> display_timeout;
+
+	TimeoutTimer<TimerWindow> display_timeout = {std::chrono::seconds(_settings_client.gui.errmsg_duration), [this]() {
+		this->Close();
+	}};
 
 public:
 	ErrmsgWindow(const ErrorMessageData &data) :
 		Window(data.HasFace() ? _errmsg_face_desc : _errmsg_desc),
-		ErrorMessageData(data),
-		display_timeout(std::chrono::seconds(_settings_client.gui.errmsg_duration), [this]() {
-			this->Close();
-		})
+		ErrorMessageData(data)
 	{
 		this->InitNested();
-
-		/* Only start the timeout if the message is not critical. */
-		if (!this->is_critical) {
-			this->display_timeout.Reset();
-		}
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -194,7 +190,7 @@ public:
 
 			case WID_EM_MESSAGE:
 				if (this->detailed_msg.empty()) {
-					DrawStringMultiLineWithClipping(r, this->summary_msg.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
+					DrawStringMultiLineWithClipping(r, this->summary_msg.GetDecodedString(), TC_WHITE, SA_CENTER);
 				} else if (this->extra_msg.empty()) {
 					/* Extra space when message is shorter than company face window */
 					int extra = (r.Height() - this->height_summary - this->height_detailed - WidgetDimensions::scaled.vsep_wide) / 2;
@@ -220,6 +216,17 @@ public:
 			default:
 				break;
 		}
+	}
+
+	void OnPaint() override
+	{
+		/* Start the timeout if not already started and the message is not critical. This is handled during OnPaint so that any delay between
+		 * creating the window and displaying it does not affect how long the message is visible. */
+		if (!this->is_critical && this->display_timeout.HasFired()) {
+			this->display_timeout.Reset();
+		}
+
+		this->Window::OnPaint();
 	}
 
 	void OnMouseLoop() override
@@ -304,6 +311,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param extra_msg    Extra error message shown in third line. Can be empty.
+ * @param company The associated company to the error message. Company::Invalid() when there is none.
  */
 void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x, int y, EncodedString &&extra_msg, CompanyID company)
 {

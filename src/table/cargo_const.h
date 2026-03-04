@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file cargo_const.h Table of all default cargo types */
+/** @file cargo_const.h Table of all default cargo types. */
 
 #include "../table/sprites.h"
 #ifndef CHECK_UNUSED_STRINGS

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file crashlog_unix.cpp Unix crash log handler */
+/** @file crashlog_unix.cpp Unix crash log handler. */
 
 #include "../../stdafx.h"
 #include "../../crashlog.h"
@@ -85,7 +85,7 @@ class CrashLogUnix : public CrashLog {
 	}
 #endif
 
-	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
 	{
 		this->try_execute_active = true;
 

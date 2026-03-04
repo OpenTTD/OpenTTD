@@ -82,7 +82,7 @@ CargoType GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit
 	/* We can't use GetCargoTranslationTable here as the usebit flag changes behaviour. */
 	/* Pre-version 7 uses the bitnum lookup from (standard in v8) instead of climate dependent in some places.. */
 	std::span<const CargoLabel> cargo_list;
-	if (grffile->grf_version < 7 && !usebit) {
+	if (grffile->grf_version < 7 && !usebit && !grffile->cargo_list_is_fallback) {
 		cargo_list = GetClimateDependentCargoTranslationTable();
 	} else if (!grffile->cargo_list.empty()) {
 		cargo_list = grffile->cargo_list;

@@ -5,17 +5,18 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file ai_scanner.hpp declarations of the class for AI scanner */
+/** @file ai_scanner.hpp Declarations of the class for AI scanner. */
 
 #ifndef AI_SCANNER_HPP
 #define AI_SCANNER_HPP
 
 #include "../script/script_scanner.hpp"
 
+/** AI instantiation of a ScriptScanner. */
 class AIScannerInfo : public ScriptScanner {
 public:
 	AIScannerInfo();
-	~AIScannerInfo();
+	~AIScannerInfo() override;
 
 	void Initialize() override;
 
@@ -36,6 +37,7 @@ public:
 
 	/**
 	 * Set the Dummy AI.
+	 * @param info The new dummy AI.
 	 */
 	void SetDummyAI(std::unique_ptr<class AIInfo> &&info);
 
@@ -50,6 +52,7 @@ private:
 	std::unique_ptr<AIInfo> info_dummy; ///< The dummy AI.
 };
 
+/** AI instantiation of a ScriptScanner for libraries. */
 class AIScannerLibrary : public ScriptScanner {
 public:
 	void Initialize() override;

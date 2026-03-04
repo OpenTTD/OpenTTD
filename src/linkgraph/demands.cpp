@@ -1,3 +1,10 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
 /** @file demands.cpp Definition of demand calculating link graph handler. */
 
 #include "../stdafx.h"
@@ -66,7 +73,7 @@ public:
 	 * nodes only accept anything if they also supply something. So if
 	 * undelivered_supply == 0 at the node there isn't any demand left either.
 	 * @param to Node to be checked.
-	 * @return If demand is left.
+	 * @return \c true iff demand is left.
 	 */
 	inline bool HasDemandLeft(const Node &to)
 	{
@@ -88,7 +95,6 @@ class AsymmetricScaler : public Scaler {
 public:
 	/**
 	 * Nothing to do here.
-	 * @param unused.
 	 */
 	inline void AddNode(const Node &)
 	{
@@ -96,7 +102,6 @@ public:
 
 	/**
 	 * Nothing to do here.
-	 * @param unused.
 	 */
 	inline void SetDemandPerNode(uint)
 	{
@@ -105,7 +110,7 @@ public:
 	/**
 	 * Get the effective supply of one node towards another one.
 	 * @param from The supplying node.
-	 * @param unused.
+	 * @return Effective supply.
 	 */
 	inline uint EffectiveSupply(const Node &from, const Node &)
 	{
@@ -116,6 +121,7 @@ public:
 	 * Check if there is any acceptance left for this node. In asymmetric distribution
 	 * nodes always accept as long as their demand > 0.
 	 * @param to The node to be checked.
+	 * @return \c true iff demand is left.
 	 */
 	inline bool HasDemandLeft(const Node &to) { return to.base.demand > 0; }
 };
@@ -159,7 +165,7 @@ inline void Scaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id, 
 /**
  * Do the actual demand calculation, called from constructor.
  * @param job Job to calculate the demands for.
- * @tparam Tscaler Scaler to be used for scaling demands.
+ * @param scaler Scaler to be used for scaling demands.
  */
 template <class Tscaler>
 void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
@@ -280,10 +286,10 @@ DemandCalculator::DemandCalculator(LinkGraphJob &job) :
 	}
 
 	switch (settings.GetDistributionType(cargo)) {
-		case DT_SYMMETRIC:
+		case DistributionType::Symmetric:
 			this->CalcDemand<SymmetricScaler>(job, SymmetricScaler(settings.demand_size));
 			break;
-		case DT_ASYMMETRIC:
+		case DistributionType::Asymmetric:
 			this->CalcDemand<AsymmetricScaler>(job, AsymmetricScaler());
 			break;
 		default:

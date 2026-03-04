@@ -46,7 +46,7 @@ public:
 	BlitterType blitter{}; ///< Blitter of this graphics set
 
 	GraphicsSet();
-	~GraphicsSet();
+	~GraphicsSet() override;
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
 	GRFConfig *GetExtraConfig() const { return this->extra_cfg.get(); }

@@ -36,10 +36,9 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 	int16_t rotation_x_pos = 0; ///< NOSAVE: X Position before rotation.
 	int16_t rotation_y_pos = 0; ///< NOSAVE: Y Position before rotation.
 
-	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	Ship() : SpecializedVehicleBase() {}
+	Ship(VehicleID index) : SpecializedVehicleBase(index) {}
 	/** We want to 'destruct' the right class. */
-	virtual ~Ship() { this->PreDestructor(); }
+	~Ship() override { this->PreDestructor(); }
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;

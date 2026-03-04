@@ -89,6 +89,9 @@ DECLARE_ENUM_AS_ADDABLE(DiagDirection)
 
 using DiagDirections = EnumBitSet<DiagDirection, uint8_t>;
 
+/** All possible diagonal directions. */
+static constexpr DiagDirections DIAGDIRECTIONS_ALL{DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW};
+
 /**
  * Enumeration for the difference between to DiagDirection.
  *

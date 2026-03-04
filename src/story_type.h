@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file story_type.h basic types related to story pages */
+/** @file story_type.h Basic types related to story pages. */
 
 #ifndef STORY_TYPE_H
 #define STORY_TYPE_H

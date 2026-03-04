@@ -74,6 +74,17 @@
 	Map::initial_land_count = std::min(Map::initial_land_count, Map::size);
 }
 
+/**
+ * Get a tile from the virtual XY-coordinate.
+ * Coordinates outside of the map are clamped to the map edge.
+ * @param x The virtual x coordinate of the tile.
+ * @param y The virtual y coordinate of the tile.
+ * @return The TileIndex calculated by the coordinate, clamped to the map bounds.
+ */
+TileIndex TileVirtXYClampedToMap(int x, int y)
+{
+	return TileIndex{(static_cast<uint>(Clamp<int>(y / static_cast<int>(TILE_SIZE), 0, Map::MaxY())) << Map::LogX()) + static_cast<uint>(Clamp<int>(x / static_cast<int>(TILE_SIZE), 0, Map::MaxX()))};
+}
 
 #ifdef _DEBUG
 TileIndex TileAdd(TileIndex tile, TileIndexDiff offset)
@@ -277,7 +288,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 			/* each side of this square has length 'dist' */
 			for (uint a = 0; a < dist; a++) {
-				/* MP_VOID tiles are not checked (interval is [min; max) for IsInsideMM())*/
+				/* TileType::Void tiles are not checked (interval is [min; max) for IsInsideMM())*/
 				if (IsInsideMM(x, min_xy, max_x) && IsInsideMM(y, min_xy, max_y)) {
 					TileIndex t = TileXY(x, y);
 					if (HasTileWaterGround(t) == water) return dist;
@@ -291,7 +302,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 	if (!water) {
 		/* no land found - is this a water-only map? */
 		for (const auto t : Map::Iterate()) {
-			if (!IsTileType(t, MP_VOID) && !IsTileType(t, MP_WATER)) return 0x1FF;
+			if (!IsTileType(t, TileType::Void) && !IsTileType(t, TileType::Water)) return 0x1FF;
 		}
 	}
 

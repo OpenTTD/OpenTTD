@@ -265,7 +265,7 @@ static void FormatString(StringBuilder &builder, std::string_view str, std::span
 }
 
 struct LanguagePack : public LanguagePackHeader {
-	char data[]; // list of strings
+	char data[]; ///< List of strings.
 };
 
 struct LanguagePackDeleter {
@@ -406,7 +406,7 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
  * Get a parsed string with most special stringcodes replaced by the string parameters.
  * @param builder The builder of the string.
  * @param string The ID of the string to parse.
- * @param args Span of arguments for the string.
+ * @param params Span of arguments for the string.
  * @param case_index The "case index". This will only be set when FormatString wants to print the string in a different case.
  * @param game_script The string is coming directly from a game script.
  */
@@ -962,7 +962,8 @@ static const Units GetVelocityUnits(VehicleType type)
 
 /**
  * Convert the given (internal) speed to the display speed.
- * @param speed the speed to convert
+ * @param speed The speed to convert.
+ * @param type The associated vehicle type.
  * @return the converted speed.
  */
 uint ConvertSpeedToDisplaySpeed(uint speed, VehicleType type)
@@ -975,7 +976,8 @@ uint ConvertSpeedToDisplaySpeed(uint speed, VehicleType type)
 
 /**
  * Convert the given display speed to the (internal) speed.
- * @param speed the speed to convert
+ * @param speed The speed to convert.
+ * @param type The associated vehicle type.
  * @return the converted speed.
  */
 uint ConvertDisplaySpeedToSpeed(uint speed, VehicleType type)
@@ -985,7 +987,8 @@ uint ConvertDisplaySpeedToSpeed(uint speed, VehicleType type)
 
 /**
  * Convert the given km/h-ish speed to the display speed.
- * @param speed the speed to convert
+ * @param speed The speed to convert.
+ * @param type The associated vehicle type.
  * @return the converted speed.
  */
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type)
@@ -995,7 +998,8 @@ uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type)
 
 /**
  * Convert the given display speed to the km/h-ish speed.
- * @param speed the speed to convert
+ * @param speed The speed to convert.
+ * @param type The associated vehicle type.
  * @return the converted speed.
  */
 uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
@@ -1074,15 +1078,39 @@ static void DecodeEncodedString(StringConsumer &consumer, bool game_script, Stri
 }
 
 /**
+ * Test if a string contains colour codes, and is not wrapped by push/pop codes.
+ * @param buffer String to test.
+ * @return True iff the string is colour safe.
+ */
+static bool IsColourSafe(std::string_view buffer)
+{
+	int safety = 0;
+	for (char32_t ch : Utf8View(buffer)) {
+		if (ch == SCC_PUSH_COLOUR) {
+			++safety;
+		} else if (ch == SCC_POP_COLOUR) {
+			--safety;
+			if (safety < 0) return false;
+		} else if ((ch >= SCC_BLUE && ch <= SCC_BLACK) || ch == SCC_COLOUR) {
+			if (safety == 0) return false;
+		}
+	}
+	return true;
+}
+
+/**
  * Parse most format codes within a string and write the result to a buffer.
  * @param builder The string builder to write the final string to.
  * @param str_arg The original string with format codes.
  * @param args    Pointer to extra arguments used by various string codes.
+ * @param orig_case_index The selected case when entering the function.
+ * @param game_script Whether this string originates from a game-script.
  * @param dry_run True when the args' type data is not yet initialized.
  */
 static void FormatString(StringBuilder &builder, std::string_view str_arg, StringParameters &args, uint orig_case_index, bool game_script, bool dry_run)
 {
 	size_t orig_first_param_offset = args.GetOffset();
+	bool emit_automatic_push_pop = false;
 
 	if (!dry_run) {
 		/*
@@ -1096,6 +1124,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 		std::string buffer;
 		StringBuilder dry_run_builder(buffer);
 		FormatString(dry_run_builder, str_arg, args, orig_case_index, game_script, true);
+		emit_automatic_push_pop = !IsColourSafe(buffer);
 		/* We have to restore the original offset here to to read the correct values. */
 		args.SetOffset(orig_first_param_offset);
 	}
@@ -1111,6 +1140,8 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 	};
 	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
 	str_stack.emplace(str_arg, orig_first_param_offset, orig_case_index);
+
+	if (emit_automatic_push_pop) builder.PutUtf8(SCC_PUSH_COLOUR);
 
 	for (;;) {
 		try {
@@ -1839,6 +1870,8 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			builder += "(invalid parameter)";
 		}
 	}
+
+	if (emit_automatic_push_pop) builder.PutUtf8(SCC_POP_COLOUR);
 }
 
 
@@ -2006,6 +2039,7 @@ bool LanguagePackHeader::IsValid() const
 
 /**
  * Check whether a translation is sufficiently finished to offer it to the public.
+ * @return \c true iff there are less than 25% missing strings.
  */
 bool LanguagePackHeader::IsReasonablyFinished() const
 {
@@ -2274,56 +2308,32 @@ std::string_view GetCurrentLanguageIsoCode()
 
 /**
  * Check whether there are glyphs missing in the current language.
- * @return Bit mask of font sizes have any missing glyphs.
+ * @return If glyphs are missing, return \c true, else return \c false.
  */
-FontSizes MissingGlyphSearcher::FindMissingGlyphs()
+bool MissingGlyphSearcher::FindMissingGlyphs()
 {
-	FontCache::LoadFontCaches(this->fontsizes);
-
-	FontSizes bad_fontsizes{};
-
-	for (FontSize size : this->fontsizes) {
-		auto set = this->GetRequiredGlyphs(size);
-		if (set.empty()) continue;
-
-		Debug(fontcache, 1, "Missing {} glyphs in {} font size", set.size(), FontSizeToName(size));
-		bad_fontsizes.Set(size);
-	}
-
-	return bad_fontsizes;
-}
-
-std::set<char32_t> BaseStringMissingGlyphSearcher::GetRequiredGlyphs(FontSizes fontsizes)
-{
-	std::set<char32_t> glyphs{};
+	FontCache::LoadFontCaches(this->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
 		FontSize size = this->DefaultSize();
+		FontCache *fc = FontCache::Get(size);
 		for (char32_t c : Utf8View(*text)) {
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 				size = (FontSize)(c - SCC_FIRST_FONT);
-				continue;
+				fc = FontCache::Get(size);
+			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && fc->MapCharToGlyph(c, false) == 0) {
+				/* The character is printable, but not in the normal font. This is the case we were testing for. */
+				Debug(fontcache, 0, "Font is missing glyphs to display char 0x{:X} in {} font size", static_cast<uint32_t>(c), FontSizeToName(size));
+				return true;
 			}
-
-			if (IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END)) continue;
-			if (!IsPrintable(c) || IsTextDirectionChar(c)) continue;
-			if (fontsizes.Test(size)) continue;
-			if (FontCache::GetFontIndexForCharacter(size, c) != INVALID_FONT_INDEX) continue;
-
-			glyphs.insert(c);
 		}
 	}
-
-	return glyphs;
+	return false;
 }
 
 /** Helper for searching through the language pack. */
-class LanguagePackGlyphSearcher : public BaseStringMissingGlyphSearcher {
-public:
-	LanguagePackGlyphSearcher() : BaseStringMissingGlyphSearcher({FS_NORMAL, FS_SMALL, FS_LARGE}) {}
-
-private:
+class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 	uint i; ///< Iterator for the primary language tables.
 	uint j; ///< Iterator for the secondary language tables.
 
@@ -2352,8 +2362,25 @@ private:
 
 		return ret;
 	}
-};
 
+	bool Monospace() override
+	{
+		return false;
+	}
+
+	void SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] std::string_view font_name, [[maybe_unused]] const void *os_data) override
+	{
+#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
+		settings->small.font = font_name;
+		settings->medium.font = font_name;
+		settings->large.font = font_name;
+
+		settings->small.os_handle = os_data;
+		settings->medium.os_handle = os_data;
+		settings->large.os_handle = os_data;
+#endif
+	}
+};
 
 /**
  * Check whether the currently loaded language pack
@@ -2371,21 +2398,20 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 {
 	static LanguagePackGlyphSearcher pack_searcher;
 	if (searcher == nullptr) searcher = &pack_searcher;
-
-	for (FontSize size : searcher->fontsizes) {
-		GetFontCacheSubSetting(size)->fallback_fonts.clear();
-	}
-
-	FontSizes fontsizes = searcher->FindMissingGlyphs();
-	bool bad_font = fontsizes.Any();
-
+	bool bad_font = searcher->FindMissingGlyphs();
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
 		 * a fallback font that can print the characters in the current language. */
 		bool any_font_configured = !_fcsettings.medium.font.empty();
+		FontCacheSettings backup = _fcsettings;
 
-		bad_font = !FontProviderManager::FindFallbackFont(_langpack.langpack->isocode, fontsizes, searcher);
+		_fcsettings.mono.os_handle = nullptr;
+		_fcsettings.medium.os_handle = nullptr;
+
+		bad_font = !FontProviderManager::FindFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
+
+		_fcsettings = std::move(backup);
 
 		if (!bad_font && any_font_configured) {
 			/* If the user configured a bad font, and we found a better one,
@@ -2402,7 +2428,7 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
-			FontCache::LoadFontCaches(fontsizes);
+			FontCache::LoadFontCaches(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 		}
 	}
 #endif
@@ -2419,12 +2445,12 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 
 		/* Reset the font width */
-		LoadStringWidthTable(fontsizes);
+		LoadStringWidthTable(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 		return;
 	}
 
 	/* Update the font with cache */
-	LoadStringWidthTable(searcher->fontsizes);
+	LoadStringWidthTable(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 
 #if !(defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) && !defined(WITH_UNISCRIBE) && !defined(WITH_COCOA)
 	/*

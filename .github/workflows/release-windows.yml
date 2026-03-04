@@ -30,7 +30,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v7
       with:
         name: internal-source
 
@@ -46,15 +46,14 @@ jobs:
       uses: Swatinem/rust-cache@v2
 
     - name: Setup vcpkg
-      uses: ./.github/actions/setup-vcpkg
-      with:
-        vcpkg-location: ${{ runner.temp }}/vcpkg
+      id: vcpkg
+      uses: OpenTTD/actions/setup-vcpkg@v6
 
     - name: Install dependencies
       shell: bash
       run: |
         echo "::group::Install choco dependencies"
-        choco install pandoc
+        choco install pandoc nsis
         echo "::endgroup::"
 
         echo "::group::Install breakpad dependencies"
@@ -103,7 +102,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
-          -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DCMAKE_TOOLCHAIN_FILE="${{ steps.vcpkg.outputs.vcpkg-cmake }}" \
           -DOPTION_USE_NSIS=ON \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -133,7 +132,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
-          -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DCMAKE_TOOLCHAIN_FILE="${{ steps.vcpkg.outputs.vcpkg-cmake }}" \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
@@ -194,14 +193,14 @@ jobs:
         AZURE_CODESIGN_PROFILE_NAME: ${{ secrets.AZURE_CODESIGN_PROFILE_NAME }}
 
     - name: Store bundles
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: openttd-windows-${{ matrix.arch }}
         path: build/bundles
         retention-days: 5
 
     - name: Store symbols
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: symbols-windows-${{ matrix.arch }}
         path: build/symbols

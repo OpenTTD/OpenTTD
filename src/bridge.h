@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file bridge.h Header file for bridges */
+/** @file bridge.h Header file for bridges. */
 
 #ifndef BRIDGE_H
 #define BRIDGE_H
@@ -18,7 +18,7 @@
 static const uint MAX_BRIDGES = 13; ///< Maximal number of available bridge specs.
 constexpr uint SPRITES_PER_BRIDGE_PIECE = 32; ///< Number of sprites there are per bridge piece.
 
-/* Container for Bridge pillar flags for each axis of each bridge middle piece. */
+/** Container for Bridge pillar flags for each axis of each bridge middle piece. */
 using BridgeMiddlePillarFlags = std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_MIDDLE_PIECES>;
 
 /**

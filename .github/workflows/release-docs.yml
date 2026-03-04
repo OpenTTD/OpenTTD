@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v7
       with:
         name: internal-source
 
@@ -23,19 +23,8 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
-    - name: Install dependencies
-      run: |
-        echo "::group::Update apt"
-        sudo apt-get update
-        echo "::endgroup::"
-
-        echo "::group::Install dependencies"
-        sudo apt-get install -y --no-install-recommends \
-          doxygen \
-          # EOF
-        echo "::endgroup::"
-      env:
-        DEBIAN_FRONTEND: noninteractive
+    - name: Install Doxygen
+      uses: ./.github/install-doxygen
 
     - name: Build
       run: |
@@ -78,7 +67,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: openttd-docs
         path: build/bundles/*.tar.xz

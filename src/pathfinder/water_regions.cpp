@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
- /** @file water_regions.cpp Handles dividing the water in the map into square regions to assist pathfinding. */
+/** @file water_regions.cpp Handles dividing the water in the map into square regions to assist pathfinding. */
 
 #include "../stdafx.h"
 #include "../map_func.h"
@@ -49,9 +49,9 @@ class WaterRegionData {
 	friend class WaterRegion;
 
 	std::array<WaterRegionTraversabilityBits, DIAGDIR_END> edge_traversability_bits{};
-	std::unique_ptr<WaterRegionPatchLabelArray> tile_patch_labels; // Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch)
+	std::unique_ptr<WaterRegionPatchLabelArray> tile_patch_labels; ///< Tile patch labels, this may be nullptr in the following trivial cases: region is invalid, region is only land (0 patches), region is only water (1 patch).
 	bool has_cross_region_aqueducts = false;
-	WaterRegionPatchLabel::BaseType number_of_patches{0}; // 0 = no water, 1 = one single patch of water, etc...
+	WaterRegionPatchLabel::BaseType number_of_patches{0}; ///< 0 = no water, 1 = one single patch of water, etc...
 };
 
 /**
@@ -325,7 +325,7 @@ void InvalidateWaterRegion(TileIndex tile)
 	/* When updating the water region we look into the first tile of adjacent water regions to determine edge
 	 * traversability. This means that if we invalidate any region edge tiles we might also change the traversability
 	 * of the adjacent region. This code ensures the adjacent regions also get invalidated in such a case. */
-	for (DiagDirection side = DIAGDIR_BEGIN; side < DIAGDIR_END; side++) {
+	for (DiagDirection side : DIAGDIRECTIONS_ALL) {
 		const TileIndex adjacent_tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(side));
 		if (adjacent_tile == INVALID_TILE) continue;
 		if (GetWaterRegionIndex(adjacent_tile) != GetWaterRegionIndex(tile)) invalidate_region(adjacent_tile);
@@ -337,7 +337,7 @@ void InvalidateWaterRegion(TileIndex tile)
  * accessible from one particular side of the starting patch.
  * @param water_region_patch Water patch within the water region to start searching from
  * @param side Side of the water region to look for neighbouring patches of water
- * @param callback The function that will be called for each neighbour that is found
+ * @param func The function that will be called for each neighbour that is found
  */
 static inline void VisitAdjacentWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, DiagDirection side, VisitWaterRegionPatchCallback &func)
 {
@@ -395,7 +395,7 @@ void VisitWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_pa
 	const WaterRegion current_region = GetUpdatedWaterRegion(water_region_patch.x, water_region_patch.y);
 
 	/* Visit adjacent water region patches in each cardinal direction */
-	for (DiagDirection side = DIAGDIR_BEGIN; side < DIAGDIR_END; side++) VisitAdjacentWaterRegionPatchNeighbours(water_region_patch, side, callback);
+	for (DiagDirection side : DIAGDIRECTIONS_ALL) VisitAdjacentWaterRegionPatchNeighbours(water_region_patch, side, callback);
 
 	/* Visit neighbouring water patches accessible via cross-region aqueducts */
 	if (current_region.HasCrossRegionAqueducts()) {

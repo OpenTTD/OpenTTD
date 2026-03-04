@@ -12,7 +12,9 @@
 
 #include <variant>
 #include "saveload/saveload.h"
+#include "core/enum_type.hpp"
 
+/** Flags describing the behaviour of a setting. */
 enum class SettingFlag : uint8_t {
 	GuiZeroIsSpecial, ///< A value of zero is possible and has a custom string (the one after "strval").
 	GuiDropdown, ///< The value represents a limited number of string-options (internally integer) presented as dropdown.
@@ -67,10 +69,19 @@ enum SettingType : uint8_t {
 
 struct IniItem;
 
+/**
+ * Type is convertible to TTo, either directly, through ConvertibleThroughBase or through to_underlying.
+ * @tparam T The type under consideration.
+ * @tparam TTo The type to convert to.
+ */
+template <typename T, typename TTo>
+concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, TTo> || (is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, TTo>);
+
 /** Properties of config file settings. */
 struct SettingDesc {
 	SettingDesc(const SaveLoad &save, SettingFlags flags, bool startup) :
 		flags(flags), startup(startup), save(save) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SettingDesc() = default;
 
 	SettingFlags flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
@@ -106,9 +117,8 @@ struct SettingDesc {
 
 	/**
 	 * Format the value of the setting associated with this object.
-	 * @param buf The before of the buffer to format into.
-	 * @param last The end of the buffer to format into.
 	 * @param object The object the setting is in.
+	 * @return The string representing the given value in human readable format.
 	 */
 	virtual std::string FormatValue(const void *object) const = 0;
 
@@ -140,16 +150,47 @@ struct SettingDesc {
 
 	/**
 	 * Reset the setting to its default value.
+	 * @param object The object to set the value of.
 	 */
 	virtual void ResetToDefault(void *object) const = 0;
 };
 
 /** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
 struct IntSettingDesc : SettingDesc {
+	/**
+	 * Callback to get the title for the settings panel of this setting.
+	 * @param sd The setting to consider.
+	 * @return The StringID of the title.
+	 */
 	using GetTitleCallback = StringID(const IntSettingDesc &sd);
+
+	/**
+	 * Callback to get the help description for the settings panel of this setting.
+	 * @param sd The setting to consider.
+	 * @return The StringID of the help.
+	 */
 	using GetHelpCallback = StringID(const IntSettingDesc &sd);
+
+	/**
+	 * Callback to parameters for string formatting for this setting.
+	 * @param sd The setting to consider.
+	 * @param value The value of the setting.
+	 * @return The string parameters.
+	 */
 	using GetValueParamsCallback = std::pair<StringParameter, StringParameter>(const IntSettingDesc &sd, int32_t value);
+
+	/**
+	 * Callback to get default value for this setting.
+	 * @param sd The setting to consider.
+	 * @return The default value.
+	 */
 	using GetDefaultValueCallback = int32_t(const IntSettingDesc &sd);
+
+	/**
+	 * Callback to get range of valid values for this setting.
+	 * @param sd The setting to consider.
+	 * @return The range, start and end are included..
+	 */
 	using GetRangeCallback = std::tuple<int32_t, uint32_t>(const IntSettingDesc &sd);
 
 	/**
@@ -163,11 +204,11 @@ struct IntSettingDesc : SettingDesc {
 	using PreChangeCheck = bool(int32_t &value);
 	/**
 	 * A callback to denote that a setting has been changed.
-	 * @param The new value for the setting.
+	 * @param new_value The new value for the setting.
 	 */
-	using PostChangeCallback = void(int32_t value);
+	using PostChangeCallback = void(int32_t new_value);
 
-	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<int32_t> Tmin, ConvertibleThroughBaseOrTo<uint32_t> Tmax, ConvertibleThroughBaseOrTo<int32_t> Tinterval>
+	template <ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tdef, ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tmin, ConvertibleThroughBaseOrUnderlyingOrTo<uint32_t> Tmax, ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tinterval>
 	IntSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
 			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback,
@@ -177,27 +218,36 @@ struct IntSettingDesc : SettingDesc {
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
 			post_callback(post_callback),
 			get_title_cb(get_title_cb), get_help_cb(get_help_cb), get_value_params_cb(get_value_params_cb),
-			get_def_cb(get_def_cb), get_range_cb(get_range_cb) {
+			get_def_cb(get_def_cb), get_range_cb(get_range_cb)
+	{
 		if constexpr (ConvertibleThroughBase<Tdef>) {
 			this->def = def.base();
+		} else if constexpr (is_scoped_enum_v<Tdef>) {
+			this->def = to_underlying(def);
 		} else {
 			this->def = def;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tmin>) {
 			this->min = min.base();
+		} else if constexpr (is_scoped_enum_v<Tmin>) {
+			this->min = to_underlying(min);
 		} else {
 			this->min = min;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tmax>) {
 			this->max = max.base();
+		} else if constexpr (is_scoped_enum_v<Tmax>) {
+			this->max = to_underlying(max);
 		} else {
 			this->max = max;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tinterval>) {
 			this->interval = interval.base();
+		} else if constexpr (is_scoped_enum_v<Tinterval>) {
+			this->interval = to_underlying(interval);
 		} else {
 			this->interval = interval;
 		}
@@ -269,7 +319,7 @@ struct BoolSettingDesc : IntSettingDesc {
 struct OneOfManySettingDesc : IntSettingDesc {
 	typedef std::optional<uint32_t> OnConvert(std::string_view value); ///< callback prototype for conversion error
 
-	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<uint32_t> Tmax>
+	template <ConvertibleThroughBaseOrUnderlyingOrTo<int32_t> Tdef, ConvertibleThroughBaseOrUnderlyingOrTo<uint32_t> Tmax>
 	OneOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
 			Tmax max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,

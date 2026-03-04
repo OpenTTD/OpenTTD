@@ -44,7 +44,7 @@ RoadType RoadTypeInfo::Index() const
  */
 static bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {
-	return (IsTileType(tile, MP_RAILWAY) &&
+	return (IsTileType(tile, TileType::Railway) &&
 		GetRailTileType(tile) == RailTileType::Normal &&
 		GetTrackBits(tile) == (ax == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) &&
 		std::get<0>(GetFoundationSlope(tile)) == SLOPE_FLAT);
@@ -73,14 +73,14 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 			if (IsValidTile(neighbour_tile)) {
 				switch (GetTileType(neighbour_tile)) {
 					/* Always connective ones */
-					case MP_CLEAR: case MP_TREES:
+					case TileType::Clear: case TileType::Trees:
 						connective = true;
 						break;
 
 					/* The conditionally connective ones */
-					case MP_TUNNELBRIDGE:
-					case MP_STATION:
-					case MP_ROAD:
+					case TileType::TunnelBridge:
+					case TileType::Station:
+					case TileType::Road:
 						if (IsNormalRoadTile(neighbour_tile)) {
 							/* Always connective */
 							connective = true;
@@ -92,11 +92,11 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 						}
 						break;
 
-					case MP_RAILWAY:
+					case TileType::Railway:
 						connective = IsPossibleCrossing(neighbour_tile, DiagDirToAxis(dir));
 						break;
 
-					case MP_WATER:
+					case TileType::Water:
 						/* Check for real water tile */
 						connective = !IsWater(neighbour_tile);
 						break;
@@ -117,7 +117,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 /**
  * Finds out, whether given company has a given RoadType available for construction.
  * @param company ID of company
- * @param roadtypet RoadType to test
+ * @param roadtype RoadType to test
  * @return true if company has the requested RoadType available
  */
 bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
@@ -147,6 +147,7 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 /**
  * Test if any buildable RoadType is available for a company.
  * @param company the company in question
+ * @param rtt Whether to check for road or tram types.
  * @return true if company has any RoadTypes available
  */
 bool HasAnyRoadTypesAvail(CompanyID company, RoadTramType rtt)
@@ -168,7 +169,6 @@ bool ValParamRoadType(RoadType roadtype)
 
 /**
  * Add the road types that are to be introduced at the given date.
- * @param rt      Roadtype
  * @param current The currently available roadtypes.
  * @param date    The date for the introduction comparisons.
  * @return The road types that should be available when date

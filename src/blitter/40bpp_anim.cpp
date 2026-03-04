@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file 40bpp_optimized.cpp Implementation of the optimized 40 bpp blitter. */
+/** @file 40bpp_anim.cpp Implementation of the animated 40 bpp blitter. */
 
 #include "../stdafx.h"
 #include "../zoom_func.h"
@@ -24,7 +24,7 @@
 static FBlitter_40bppAnim iFBlitter_40bppAnim;
 
 /** Cached black value. */
-static const Colour _black_colour(0, 0, 0);
+static const Colour _black_colour{0, 0, 0};
 
 
 void Blitter_40bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)

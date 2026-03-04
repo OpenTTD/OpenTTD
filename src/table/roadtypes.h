@@ -5,10 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file roadtypes.h
- * All the roadtype-specific information is stored here.
- */
+/** @file roadtypes.h All the roadtype-specific information is stored here. */
 
 #ifndef ROADTYPES_H
 #define ROADTYPES_H

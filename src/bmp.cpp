@@ -15,8 +15,8 @@
 #include "safeguards.h"
 
 /**
- * Reads a 1 bpp uncompressed bitmap
- * The bitmap is converted to a 8 bpp bitmap
+ * Reads a 1 bpp uncompressed bitmap. The bitmap is converted to a 8 bpp bitmap.
+ * @copydoc BmpReadBitmap
  */
 static inline bool BmpRead1(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {
@@ -39,8 +39,8 @@ static inline bool BmpRead1(RandomAccessFile &file, BmpInfo &info, BmpData &data
 }
 
 /**
- * Reads a 4 bpp uncompressed bitmap
- * The bitmap is converted to a 8 bpp bitmap
+ * Reads a 4 bpp uncompressed bitmap. The bitmap is converted to a 8 bpp bitmap.
+ * @copydoc BmpReadBitmap
  */
 static inline bool BmpRead4(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {
@@ -65,8 +65,8 @@ static inline bool BmpRead4(RandomAccessFile &file, BmpInfo &info, BmpData &data
 }
 
 /**
- * Reads a 4-bit RLE compressed bitmap
- * The bitmap is converted to a 8 bpp bitmap
+ * Reads a 4-bit RLE compressed bitmap. The bitmap is converted to a 8 bpp bitmap.
+ * @copydoc BmpReadBitmap
  */
 static inline bool BmpRead4Rle(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {
@@ -139,9 +139,7 @@ static inline bool BmpRead4Rle(RandomAccessFile &file, BmpInfo &info, BmpData &d
 	return true;
 }
 
-/**
- * Reads a 8 bpp bitmap
- */
+/** Reads a 8 bpp bitmap. @copydoc BmpReadBitmap */
 static inline bool BmpRead8(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {
 	uint8_t pad = GB(4 - info.width, 0, 2);
@@ -155,9 +153,7 @@ static inline bool BmpRead8(RandomAccessFile &file, BmpInfo &info, BmpData &data
 	return true;
 }
 
-/**
- * Reads a 8-bit RLE compressed bpp bitmap
- */
+/** Reads a 8-bit RLE compressed bpp bitmap. @copydoc BmpReadBitmap */
 static inline bool BmpRead8Rle(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {
 	uint x = 0;
@@ -217,9 +213,7 @@ static inline bool BmpRead8Rle(RandomAccessFile &file, BmpInfo &info, BmpData &d
 	return true;
 }
 
-/**
- * Reads a 24 bpp uncompressed bitmap
- */
+/** Reads a 24 bpp uncompressed bitmap. @copydoc BmpReadBitmap */
 static inline bool BmpRead24(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {
 	uint8_t pad = GB(4 - info.width * 3, 0, 2);
@@ -238,9 +232,7 @@ static inline bool BmpRead24(RandomAccessFile &file, BmpInfo &info, BmpData &dat
 	return true;
 }
 
-/*
- * Reads bitmap headers, and palette (if any)
- */
+/** Reads bitmap headers, and palette (if any). @copydoc BmpReadBitmap */
 bool BmpReadHeader(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {
 	info = {};
@@ -310,9 +302,13 @@ bool BmpReadHeader(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 	return file.GetPos() <= info.offset;
 }
 
-/*
+/**
  * Reads the bitmap
  * 1 bpp and 4 bpp bitmaps are converted to 8 bpp bitmaps
+ * @param file The file to read.
+ * @param info The already read medata.
+ * @param data The buffer to read the image into.
+ * @return \c true iff the file could be read without problems.
  */
 bool BmpReadBitmap(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 {

@@ -23,7 +23,7 @@ enum class SpriteComponent : uint8_t {
 	RGB     = 0, ///< Sprite has RGB.
 	Alpha   = 1, ///< Sprite has alpha.
 	Palette = 2, ///< Sprite has palette data.
-	End,
+	End, ///< End marker.
 };
 using SpriteComponents = EnumBitSet<SpriteComponent, uint8_t, SpriteComponent::End>;
 
@@ -97,12 +97,14 @@ public:
 	 */
 	virtual ZoomLevels LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, SpriteCacheCtrlFlags control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp) = 0;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SpriteLoader() = default;
 };
 
 /** Interface for something that can allocate memory for a sprite. */
 class SpriteAllocator {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SpriteAllocator() = default;
 
 	/**
@@ -130,15 +132,21 @@ protected:
 class SpriteEncoder {
 public:
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SpriteEncoder() = default;
 
 	/**
 	 * Can the sprite encoder make use of RGBA sprites?
+	 * @return \c true iff RGBA sprites are supported.
 	 */
 	virtual bool Is32BppSupported() = 0;
 
 	/**
 	 * Convert a sprite from the loader to our own format.
+	 * @param sprite_type The type of sprite to load.
+	 * @param sprite The sprites to load.
+	 * @param allocator The allocator for the sprite's memory.
+	 * @return The encoded sprite.
 	 */
 	virtual Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) = 0;
 

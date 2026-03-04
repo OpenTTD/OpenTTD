@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file subsidy_sl.cpp Code handling saving and loading of subsidies */
+/** @file subsidy_sl.cpp Code handling saving and loading of subsidies. */
 
 #include "../stdafx.h"
 
@@ -48,7 +48,7 @@ struct SUBSChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Subsidy *s = new (SubsidyID(index)) Subsidy();
+			Subsidy *s = Subsidy::CreateAtIndex(SubsidyID(index));
 			SlObject(s, slt);
 		}
 	}

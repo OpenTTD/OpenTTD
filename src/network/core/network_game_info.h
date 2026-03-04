@@ -6,22 +6,8 @@
  */
 
 /**
- * @file game_info.h Convert NetworkGameInfo to Packet and back.
- */
-
-#ifndef NETWORK_CORE_GAME_INFO_H
-#define NETWORK_CORE_GAME_INFO_H
-
-#include "config.h"
-#include "core.h"
-#include "../../newgrf_config.h"
-#include "../../timer/timer_game_calendar.h"
-#include "../../timer/timer_game_tick.h"
-#include "../../landscape_type.h"
-
-#include <unordered_map>
-
-/*
+ * @file network_game_info.h Convert NetworkGameInfo to Packet and back.
+ *
  * NetworkGameInfo has several revisions which we still need to support on the
  * wire. The table below shows the version and size for each field of the
  * serialized NetworkGameInfo.
@@ -82,6 +68,18 @@
  *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
  *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
  */
+
+#ifndef NETWORK_CORE_GAME_INFO_H
+#define NETWORK_CORE_GAME_INFO_H
+
+#include "config.h"
+#include "core.h"
+#include "../../newgrf_config.h"
+#include "../../timer/timer_game_calendar.h"
+#include "../../timer/timer_game_tick.h"
+#include "../../landscape_type.h"
+
+#include <unordered_map>
 
 /** The different types/ways a NewGRF can be serialized in the GameInfo since version 6. */
 enum NewGRFSerializationType {

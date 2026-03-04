@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file station_kdtree.h Declarations for accessing the k-d tree of stations */
+/** @file station_kdtree.h Declarations for accessing the k-d tree of stations. */
 
 #ifndef STATION_KDTREE_H
 #define STATION_KDTREE_H

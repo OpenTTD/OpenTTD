@@ -30,9 +30,11 @@ INSTANTIATE_POOL_METHODS(LinkGraphJob)
  * Create a link graph job from a link graph. The link graph will be copied so
  * that the calculations don't interfere with the normal operations on the
  * original. The job is immediately started.
+ * @param index Index into the LinkGraphJob pool.
  * @param orig Original LinkGraph to be copied.
  */
-LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
+LinkGraphJob::LinkGraphJob(LinkGraphJobID index, const LinkGraph &orig) :
+		LinkGraphJobPool::PoolItem<&_link_graph_job_pool>(index),
 		/* Copying the link graph here also copies its index member.
 		 * This is on purpose. */
 		link_graph(orig),
@@ -150,7 +152,7 @@ LinkGraphJob::~LinkGraphJob()
 		for (FlowStatMap::iterator it(geflows.begin()); it != geflows.end();) {
 			FlowStatMap::iterator new_it = flows.find(it->first);
 			if (new_it == flows.end()) {
-				if (_settings_game.linkgraph.GetDistributionType(this->Cargo()) != DT_MANUAL) {
+				if (_settings_game.linkgraph.GetDistributionType(this->Cargo()) != DistributionType::Manual) {
 					it->second.Invalidate();
 					++it;
 				} else {

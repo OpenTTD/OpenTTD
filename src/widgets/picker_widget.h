@@ -19,6 +19,11 @@ enum PickerClassWindowWidgets : WidgetID {
 	WID_PW_CLASS_LIST, ///< List of classes.
 	WID_PW_CLASS_SCROLL, ///< Scrollbar for list of classes.
 
+	WID_PW_COLEC_LIST,   ///< List of collections.
+	WID_PW_COLEC_ADD,    ///< Button to create a new collections.
+	WID_PW_COLEC_RENAME, ///< Button to rename a collections.
+	WID_PW_COLEC_DELETE, ///< Button to delete a collection.
+
 	WID_PW_TYPE_SEL, ///< Stack to hide the type picker.
 	WID_PW_TYPE_FILTER, ///< Text filter.
 	WID_PW_MODE_ALL, ///< Toggle "Show all" filter mode.
@@ -32,7 +37,7 @@ enum PickerClassWindowWidgets : WidgetID {
 	WID_PW_TYPE_NAME, ///< Name of selected item.
 	WID_PW_TYPE_RESIZE, ///< Type resize handle.
 	WID_PW_CONFIGURE_BADGES, ///< Button to configure badges.
-	WID_PW_BADGE_FILTER, ///< Container for dropdown badge filters.
+	WID_PW_BADGE_FILTER, ///< Container for dropdown badge filters. Must be last in this list.
 };
 
 #endif /* WIDGETS_PICKER_WIDGET_H */

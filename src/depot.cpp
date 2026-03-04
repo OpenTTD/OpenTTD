@@ -23,7 +23,7 @@ DepotPool _depot_pool("Depot");
 INSTANTIATE_POOL_METHODS(Depot)
 
 /**
- * Clean up a depot
+ * Remove any references to this depot.
  */
 Depot::~Depot()
 {

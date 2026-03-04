@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file league_type.h basic types related to league tables */
+/** @file league_type.h Basic types related to league tables. */
 
 #ifndef LEAGUE_TYPE_H
 #define LEAGUE_TYPE_H

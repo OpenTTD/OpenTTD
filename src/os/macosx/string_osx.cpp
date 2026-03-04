@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 #include "string_osx.h"
-#include "../../gfx_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../core/utf8.hpp"
@@ -22,38 +21,10 @@
 #include "../../safeguards.h"
 
 
-/* CTRunDelegateCreate is supported since MacOS X 10.5, but was only included in the SDKs starting with the 10.9 SDK. */
-#ifndef HAVE_OSX_109_SDK
-extern "C" {
-	typedef const struct __CTRunDelegate * CTRunDelegateRef;
-
-	typedef void (*CTRunDelegateDeallocateCallback) (void *refCon);
-	typedef CGFloat (*CTRunDelegateGetAscentCallback) (void *refCon);
-	typedef CGFloat (*CTRunDelegateGetDescentCallback) (void *refCon);
-	typedef CGFloat (*CTRunDelegateGetWidthCallback) (void *refCon);
-	typedef struct {
-		CFIndex                         version;
-		CTRunDelegateDeallocateCallback dealloc;
-		CTRunDelegateGetAscentCallback  getAscent;
-		CTRunDelegateGetDescentCallback getDescent;
-		CTRunDelegateGetWidthCallback   getWidth;
-	} CTRunDelegateCallbacks;
-
-	enum : int32_t {
-		kCTRunDelegateVersion1 = 1,
-		kCTRunDelegateCurrentVersion = kCTRunDelegateVersion1
-	};
-
-	extern const CFStringRef kCTRunDelegateAttributeName AVAILABLE_MAC_OS_X_VERSION_10_5_AND_LATER;
-
-	CTRunDelegateRef CTRunDelegateCreate(const CTRunDelegateCallbacks *callbacks, void *refCon) AVAILABLE_MAC_OS_X_VERSION_10_5_AND_LATER;
-}
-#endif /* HAVE_OSX_109_SDK */
-
 /** Cached current locale. */
 static CFAutoRelease<CFLocaleRef> _osx_locale;
 /** CoreText cache for font information, cleared when OTTD changes fonts. */
-static std::unordered_map<FontIndex, CFAutoRelease<CTFontRef>> _font_cache;
+static CFAutoRelease<CTFontRef> _font_cache[FS_END];
 
 
 /**
@@ -61,6 +32,7 @@ static std::unordered_map<FontIndex, CFAutoRelease<CTFontRef>> _font_cache;
  */
 class CoreTextParagraphLayout : public ParagraphLayouter {
 private:
+	const CoreTextParagraphLayoutFactory::CharType *text_buffer;
 	ptrdiff_t length;
 	const FontMap &font_map;
 
@@ -77,26 +49,26 @@ public:
 		std::vector<int> glyph_to_char;
 
 		int total_advance = 0;
-		Font font;
+		Font *font;
 
 	public:
-		CoreTextVisualRun(CTRunRef run, const Font &font);
+		CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff);
 		CoreTextVisualRun(CoreTextVisualRun &&other) = default;
 
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
 		std::span<const Position> GetPositions() const override { return this->positions; }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 
-		const Font &GetFont() const override { return this->font;  }
-		int GetLeading() const override { return GetCharacterHeight(this->font.GetFontCache().GetSize()); }
-		int GetGlyphCount() const override { return (int)this->glyphs.size(); }
+		const Font *GetFont() const override { return this->font;  }
+		int GetLeading() const override { return this->font->fc->GetHeight(); }
+		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
 
 	/** A single line worth of VisualRuns. */
 	class CoreTextLine : public std::vector<CoreTextVisualRun>, public ParagraphLayouter::Line {
 	public:
-		CoreTextLine(CFAutoRelease<CTLineRef> line, const FontMap &font_mapping)
+		CoreTextLine(CFAutoRelease<CTLineRef> line, const FontMap &font_mapping, const CoreTextParagraphLayoutFactory::CharType *buff)
 		{
 			CFArrayRef runs = CTLineGetGlyphRuns(line.get());
 			for (CFIndex i = 0; i < CFArrayGetCount(runs); i++) {
@@ -104,16 +76,16 @@ public:
 
 				/* Extract font information for this run. */
 				CFRange chars = CTRunGetStringRange(run);
-				const auto &map = std::ranges::upper_bound(font_mapping, chars.location, std::less{}, &std::pair<int, Font>::first);
+				auto map = std::ranges::upper_bound(font_mapping, chars.location, std::less{}, &std::pair<int, Font *>::first);
 
-				this->emplace_back(run, map->second);
+				this->emplace_back(run, map->second, buff);
 			}
 		}
 
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override { return this->size(); }
-		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
+		size_t CountRuns() const override { return this->size(); }
+		const VisualRun &GetVisualRun(size_t run) const override { return this->at(run);  }
 
 		int GetInternalCharLength(char32_t c) const override
 		{
@@ -122,7 +94,7 @@ public:
 		}
 	};
 
-	CoreTextParagraphLayout(CFAutoRelease<CTTypesetterRef> typesetter, ptrdiff_t len, const FontMap &font_mapping) : length(len), font_map(font_mapping), typesetter(std::move(typesetter))
+	CoreTextParagraphLayout(CFAutoRelease<CTTypesetterRef> typesetter, const CoreTextParagraphLayoutFactory::CharType *buffer, ptrdiff_t len, const FontMap &font_mapping) : text_buffer(buffer), length(len), font_map(font_mapping), typesetter(std::move(typesetter))
 	{
 		this->Reflow();
 	}
@@ -136,27 +108,34 @@ public:
 };
 
 
-/** Get the width of an encoded sprite font character.  */
-static CGFloat CustomFontGetWidth(void *ref_con)
+/**
+ * Get the width of an encoded sprite font character.
+ * @param ref_con Arbitrary data passed through CTRunDelegateCallbacks, in this case font size and character.
+ * @return The width of the specific given character.
+ */
+static CGFloat SpriteFontGetWidth(void *ref_con)
 {
-	FontIndex fi = static_cast<FontIndex>(reinterpret_cast<uintptr_t>(ref_con) >> 24);
-	char32_t c = static_cast<char32_t>(reinterpret_cast<uintptr_t>(ref_con) & 0xFFFFFF);
+	FontSize fs = (FontSize)((size_t)ref_con >> 24);
+	char32_t c = (char32_t)((size_t)ref_con & 0xFFFFFF);
 
-	return FontCache::Get(fi)->GetGlyphWidth(c);
+	return GetGlyphWidth(fs, c);
 }
 
 static const CTRunDelegateCallbacks _sprite_font_callback = {
 	kCTRunDelegateCurrentVersion, nullptr, nullptr, nullptr,
-	&CustomFontGetWidth
+	&SpriteFontGetWidth
 };
 
 /* static */ std::unique_ptr<ParagraphLayouter> CoreTextParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &font_mapping)
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return nullptr;
-
 	/* Can't layout an empty string. */
 	ptrdiff_t length = buff_end - buff;
 	if (length == 0) return nullptr;
+
+	/* Can't layout our in-built sprite fonts. */
+	for (const auto &[position, font] : font_mapping) {
+		if (font->fc->IsBuiltInFont()) return nullptr;
+	}
 
 	/* Make attributed string with embedded font information. */
 	CFAutoRelease<CFMutableAttributedStringRef> str(CFAttributedStringCreateMutable(kCFAllocatorDefault, 0));
@@ -174,26 +153,25 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	for (const auto &[position, font] : font_mapping) {
 		if (position - last == 0) continue;
 
-		FontCache &fc = font.GetFontCache();
-		CTFontRef font_handle = static_cast<CTFontRef>(fc.GetOSHandle());
+		CTFontRef font_handle = static_cast<CTFontRef>(font->fc->GetOSHandle());
 		if (font_handle == nullptr) {
-			if (!_font_cache[fc.GetIndex()]) {
+			if (!_font_cache[font->fc->GetSize()]) {
 				/* Cache font information. */
-				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, fc.GetFontName().c_str(), kCFStringEncodingUTF8));
-				_font_cache[fc.GetIndex()].reset(CTFontCreateWithName(font_name.get(), fc.GetFontSize(), nullptr));
+				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, font->fc->GetFontName().c_str(), kCFStringEncodingUTF8));
+				_font_cache[font->fc->GetSize()].reset(CTFontCreateWithName(font_name.get(), font->fc->GetFontSize(), nullptr));
 			}
-			font_handle = _font_cache[fc.GetIndex()].get();
+			font_handle = _font_cache[font->fc->GetSize()].get();
 		}
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTFontAttributeName, font_handle);
 
-		CGColorRef colour = CGColorCreateGenericGray((uint8_t)font.colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
+		CGColorRef colour = CGColorCreateGenericGray((uint8_t)font->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTForegroundColorAttributeName, colour);
 		CGColorRelease(colour);
 
-		/* Install a size callback for our custom fonts. */
-		if (fc.IsBuiltInFont()) {
-			for (ssize_t c = last; c < position; c++) {
-				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, reinterpret_cast<void *>(static_cast<size_t>(buff[c] | (fc.GetIndex() << 24)))));
+		/* Install a size callback for our special private-use sprite glyphs in case the font does not provide them. */
+		for (ssize_t c = last; c < position; c++) {
+			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && font->fc->MapCharToGlyph(buff[c], false) == 0) {
+				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (font->fc->GetSize() << 24))));
 				/* According to the official documentation, if a run delegate is used, the char should always be 0xFFFC. */
 				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacement_str.get());
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());
@@ -207,7 +185,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	/* Create and return typesetter for the string. */
 	CFAutoRelease<CTTypesetterRef> typesetter(CTTypesetterCreateWithAttributedString(str.get()));
 
-	return typesetter ? std::make_unique<CoreTextParagraphLayout>(std::move(typesetter), length, font_mapping) : nullptr;
+	return typesetter ? std::make_unique<CoreTextParagraphLayout>(std::move(typesetter), buff, length, font_mapping) : nullptr;
 }
 
 /* virtual */ std::unique_ptr<const ParagraphLayouter::Line> CoreTextParagraphLayout::NextLine(int max_width)
@@ -223,10 +201,10 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 	this->cur_offset += len;
 
 	if (!line) return nullptr;
-	return std::make_unique<CoreTextLine>(std::move(line), this->font_map);
+	return std::make_unique<CoreTextLine>(std::move(line), this->font_map, this->text_buffer);
 }
 
-CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, const Font &font) : font(font)
+CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font *font, const CoreTextParagraphLayoutFactory::CharType *buff) : font(font)
 {
 	this->glyphs.resize(CTRunGetGlyphCount(run));
 
@@ -243,15 +221,19 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, cons
 	CTRunGetAdvances(run, CFRangeMake(0, 0), advs.get());
 	this->positions.reserve(this->glyphs.size());
 
-	int y_offset = this->font.GetFontCache().GetGlyphYOffset();
-
 	/* Convert glyph array to our data type. At the same time, substitute
 	 * the proper glyphs for our private sprite glyphs. */
 	auto gl = std::make_unique<CGGlyph[]>(this->glyphs.size());
 	CTRunGetGlyphs(run, CFRangeMake(0, 0), gl.get());
 	for (size_t i = 0; i < this->glyphs.size(); i++) {
-		this->glyphs[i] = gl[i];
-		this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, pts[i].y + y_offset);
+		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && (gl[i] == 0 || gl[i] == 3)) {
+			/* A glyph of 0 indicates not found, while apparently 3 is what char 0xFFFC maps to. */
+			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
+			this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
+		} else {
+			this->glyphs[i] = gl[i];
+			this->positions.emplace_back(pts[i].x, pts[i].x + advs[i].width - 1, pts[i].y);
+		}
 	}
 	this->total_advance = (int)std::ceil(CTRunGetTypographicBounds(run, CFRangeMake(0, 0), nullptr, nullptr, nullptr));
 }
@@ -287,28 +269,33 @@ int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 }
 
 
-/** Delete CoreText font reference for a specific font size. */
+/**
+ * Delete CoreText font reference for a specific font size.
+ * @param size The font size to delete.
+ */
 void MacOSResetScriptCache(FontSize size)
 {
 	_font_cache[size].reset();
 }
 
-/** Register an external font file with the CoreText system. */
+/**
+ * Register an external font file with the CoreText system.
+ * @param file_path UTF-8 encoded path of the font.
+ */
 void MacOSRegisterExternalFont(std::string_view file_path)
 {
-	if (!MacOSVersionIsAtLeast(10, 6, 0)) return;
-
 	CFAutoRelease<CFStringRef> path(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(file_path.data()), file_path.size(), kCFStringEncodingUTF8, false));
 	CFAutoRelease<CFURLRef> url(CFURLCreateWithFileSystemPath(kCFAllocatorDefault, path.get(), kCFURLPOSIXPathStyle, false));
 
 	CTFontManagerRegisterFontsForURL(url.get(), kCTFontManagerScopeProcess, nullptr);
 }
 
-/** Store current language locale as a CoreFoundation locale. */
+/**
+ * Store current language locale as a CoreFoundation locale.
+ * @param iso_code The ISO language code to set.
+ */
 void MacOSSetCurrentLocaleName(std::string_view iso_code)
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return;
-
 	CFAutoRelease<CFStringRef> iso(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(iso_code.data()), iso_code.size(), kCFStringEncodingUTF8, false));
 	_osx_locale.reset(CFLocaleCreate(kCFAllocatorDefault, iso.get()));
 }
@@ -322,9 +309,6 @@ void MacOSSetCurrentLocaleName(std::string_view iso_code)
  */
 int MacOSStringCompare(std::string_view s1, std::string_view s2)
 {
-	static const bool supported = MacOSVersionIsAtLeast(10, 5, 0);
-	if (!supported) return 0;
-
 	CFStringCompareFlags flags = kCFCompareCaseInsensitive | kCFCompareNumerically | kCFCompareLocalized | kCFCompareWidthInsensitive | kCFCompareForcedOrdering;
 
 	CFAutoRelease<CFStringRef> cf1(CFStringCreateWithBytes(kCFAllocatorDefault, (const UInt8 *)s1.data(), s1.size(), kCFStringEncodingUTF8, false));
@@ -346,9 +330,6 @@ int MacOSStringCompare(std::string_view s1, std::string_view s2)
  */
 int MacOSStringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
-	static const bool supported = MacOSVersionIsAtLeast(10, 5, 0);
-	if (!supported) return -1;
-
 	CFStringCompareFlags flags = kCFCompareLocalized | kCFCompareWidthInsensitive;
 	if (case_insensitive) flags |= kCFCompareCaseInsensitive;
 
@@ -467,7 +448,5 @@ int MacOSStringContains(std::string_view str, std::string_view value, bool case_
 
 /* static */ std::unique_ptr<StringIterator> OSXStringIterator::Create()
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return nullptr;
-
 	return std::make_unique<OSXStringIterator>();
 }

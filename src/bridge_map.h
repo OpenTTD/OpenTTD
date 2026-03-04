@@ -18,12 +18,12 @@
 /**
  * Checks if this is a bridge, instead of a tunnel
  * @param t The tile to analyze
- * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @pre IsTileType(t, TileType::TunnelBridge)
  * @return true if the structure is a bridge one
  */
 inline bool IsBridge(Tile t)
 {
-	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(IsTileType(t, TileType::TunnelBridge));
 	return HasBit(t.m5(), 7);
 }
 
@@ -34,7 +34,7 @@ inline bool IsBridge(Tile t)
  */
 inline bool IsBridgeTile(Tile t)
 {
-	return IsTileType(t, MP_TUNNELBRIDGE) && IsBridge(t);
+	return IsTileType(t, TileType::TunnelBridge) && IsBridge(t);
 }
 
 /**
@@ -127,7 +127,7 @@ inline void SetBridgeMiddle(Tile t, Axis a)
  */
 inline void MakeBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection d, TransportType tt)
 {
-	SetTileType(t, MP_TUNNELBRIDGE);
+	SetTileType(t, TileType::TunnelBridge);
 	SetTileOwner(t, o);
 	SetDockingTile(t, false);
 	t.m2() = 0;

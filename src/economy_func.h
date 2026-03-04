@@ -22,10 +22,10 @@
 void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(Price price, int factor);
 
-extern const ScoreInfo _score_info[];
-extern TypedIndexContainer<std::array<std::array<int64_t, SCORE_END>, MAX_COMPANIES>, CompanyID> _score_part;
+extern const EnumClassIndexContainer<std::array<ScoreInfo, to_underlying(ScoreID::End)>, ScoreID> _score_info;
+extern TypedIndexContainer<std::array<EnumClassIndexContainer<std::array<int64_t, to_underlying(ScoreID::End)>, ScoreID>, MAX_COMPANIES>, CompanyID> _score_part;
 extern Economy _economy;
-/* Prices and also the fractional part. */
+/** Prices and also the fractional part. */
 extern Prices _price;
 
 int UpdateCompanyRatingAndValue(Company *c, bool update);

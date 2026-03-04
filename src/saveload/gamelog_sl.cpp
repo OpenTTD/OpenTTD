@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file gamelog_sl.cpp Code handling saving and loading of gamelog data */
+/** @file gamelog_sl.cpp Code handling saving and loading of gamelog data. */
 
 #include "../stdafx.h"
 
@@ -265,7 +265,7 @@ static bool _is_emergency_save = true;
 
 class SlGamelogEmergency : public DefaultSaveLoadHandler<SlGamelogEmergency, LoggedChange> {
 public:
-	/* We need to store something, so store a "true" value. */
+	/** We need to store something, so store a "true" value. */
 	static inline const SaveLoad description[] = {
 		SLEG_CONDVAR("is_emergency_save", _is_emergency_save, SLE_BOOL, SLV_RIFF_TO_ARRAY, SL_MAX_VERSION),
 	};

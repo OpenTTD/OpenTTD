@@ -5,8 +5,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file framerate_type.h
- * Types for recording game performance data.
+/**
+ * @file framerate_type.h Types for recording game performance data.
  *
  * @par Adding new measurements
  * Adding a new measurement requires multiple steps, which are outlined here.

@@ -104,7 +104,8 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
 
 /**
  * Internal function for outputting the debug line.
- * @param level Debug category.
+ * @param category The category/classification of the debug message.
+ * @param level The severity of the debug level; lower is more likely to be shown.
  * @param message The message to output.
  */
 void DebugPrint(std::string_view category, int level, std::string &&message)
@@ -214,7 +215,8 @@ std::string GetDebugString()
  * If show_date_in_logs or \p force is enabled it returns
  * the date, otherwise it returns an empty string.
  *
- * @return the prefix for logs.
+ * @param force Whether to force the prefix on.
+ * @return The prefix for logs.
  */
 std::string GetLogPrefix(bool force)
 {

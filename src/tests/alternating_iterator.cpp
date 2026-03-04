@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file bitmath_func.cpp Test functionality from core/bitmath_func. */
+/** @file alternating_iterator.cpp Test functionality of alternating_iterator from misc. */
 
 #include "../stdafx.h"
 

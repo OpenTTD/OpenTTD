@@ -184,6 +184,7 @@ void StrMakeValidInPlace(std::string &str, StringValidationSettings settings)
  * question mark, as well as determining what characters are deemed invalid.
  * @param str The string to validate.
  * @param settings The settings for the string validation.
+ * @return A copy of the valid characters of the given string.
  */
 std::string StrMakeValid(std::string_view str, StringValidationSettings settings)
 {
@@ -201,6 +202,7 @@ std::string StrMakeValid(std::string_view str, StringValidationSettings settings
  * std::string_view's constructor will assume a C-string that ends with a NUL terminator, which is one of the things
  * we are checking.
  * @param str Span of chars to validate.
+ * @return \c true iff the string is valid.
  */
 bool StrValid(std::span<const char> str)
 {
@@ -343,7 +345,7 @@ bool StrContainsIgnoreCase(std::string_view str, std::string_view value)
 /**
  * Get the length of an UTF-8 encoded string in number of characters
  * and thus not the number of bytes that the encoded string contains.
- * @param s The string to get the length for.
+ * @param str The string to get the length for.
  * @return The length of the string in characters.
  */
 size_t Utf8StringLength(std::string_view str)
@@ -753,7 +755,7 @@ public:
 class DefaultStringIterator : public StringIterator
 {
 	Utf8View string; ///< Current string.
-	Utf8View::iterator cur_pos; //< Current iteration position.
+	Utf8View::iterator cur_pos; ///< Current iteration position.
 
 public:
 	void SetString(std::string_view s) override

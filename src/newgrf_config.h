@@ -17,15 +17,15 @@
 #include "3rdparty/md5/md5.h"
 
 /** GRF config bit flags */
-enum GRFConfigFlag : uint8_t {
-	System,     ///< GRF file is an openttd-internal system grf
-	Unsafe,     ///< GRF file is unsafe for static usage
-	Static,     ///< GRF file is used statically (can be used in any MP game)
+enum class GRFConfigFlag : uint8_t {
+	System, ///< GRF file is an openttd-internal system grf
+	Unsafe, ///< GRF file is unsafe for static usage
+	Static, ///< GRF file is used statically (can be used in any MP game)
 	Compatible, ///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
-	Copy,       ///< The data is copied from a grf in _all_grfs
-	InitOnly,   ///< GRF file is processed up to GLS_INIT
-	Reserved,   ///< GRF file passed GLS_RESERVE stage
-	Invalid,    ///< GRF is unusable with this version of OpenTTD
+	Copy, ///< The data is copied from a grf in _all_grfs
+	InitOnly, ///< GRF file is processed up to GLS_INIT
+	Reserved, ///< GRF file passed GLS_RESERVE stage
+	Invalid, ///< GRF is unusable with this version of OpenTTD
 };
 using GRFConfigFlags = EnumBitSet<GRFConfigFlag, uint8_t>;
 
@@ -220,7 +220,7 @@ extern uint _missing_extra_graphics;  ///< Number of sprites provided by the fal
 
 /** Callback for NewGRF scanning. */
 struct NewGRFScanCallback {
-	/** Make sure the right destructor gets called. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NewGRFScanCallback() = default;
 	/** Called whenever the NewGRF scan completed. */
 	virtual void OnNewGRFsScanned() = 0;
@@ -245,6 +245,6 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig &c, bool editable);
 
 void UpdateNewGRFScanStatus(uint num, std::string &&name);
-void UpdateNewGRFConfigPalette(int32_t new_value = 0);
+void UpdateNewGRFConfigPalette();
 
 #endif /* NEWGRF_CONFIG_H */

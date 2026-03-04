@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file http_shared.h Shared functions for implementations of HTTP requests.
- */
+/** @file http_shared.h Shared functions for implementations of HTTP requests. */
 
 #ifndef NETWORK_CORE_HTTP_SHARED_H
 #define NETWORK_CORE_HTTP_SHARED_H
@@ -44,6 +42,7 @@ public:
 
 	/**
 	 * Similar to HTTPCallback::OnReceiveData, but thread-safe.
+	 * @copydoc HTTPCallback::OnReceiveData
 	 */
 	void OnReceiveData(std::unique_ptr<char[]> data, size_t length)
 	{
@@ -90,6 +89,7 @@ public:
 
 	/**
 	 * Check if the queue is empty.
+	 * @return \c true iff the queue is empty.
 	 */
 	bool IsQueueEmpty()
 	{
@@ -99,6 +99,7 @@ public:
 
 	HTTPThreadSafeCallback(HTTPCallback *callback) : callback(callback) {}
 
+	/** Ensure our queues are emptied while holding a lock. */
 	~HTTPThreadSafeCallback()
 	{
 		std::lock_guard<std::mutex> lock(this->mutex);

@@ -92,7 +92,7 @@ static int MapOldSubType(const Vehicle *v)
 }
 
 
-/* TTDP style aircraft movement states for GRF Action 2 Var 0xE2 */
+/** TTDP style aircraft movement states for GRF Action 2 Var 0xE2. */
 enum TTDPAircraftMovementStates : uint8_t {
 	AMS_TTDP_HANGAR,
 	AMS_TTDP_TO_HANGAR,
@@ -129,6 +129,8 @@ enum TTDPAircraftMovementStates : uint8_t {
 /**
  * Map OTTD aircraft movement states to TTDPatch style movement states
  * (VarAction 2 Variable 0xE2)
+ * @param v The aircraft to consider.
+ * @return The TTDP movement state.
  */
 static uint8_t MapAircraftMovementState(const Aircraft *v)
 {
@@ -228,7 +230,7 @@ static uint8_t MapAircraftMovementState(const Aircraft *v)
 }
 
 
-/* TTDP style aircraft movement action for GRF Action 2 Var 0xE6 */
+/** TTDP style aircraft movement action for GRF Action 2 Var 0xE6. */
 enum TTDPAircraftMovementActions : uint8_t {
 	AMA_TTDP_IN_HANGAR,
 	AMA_TTDP_ON_PAD1,
@@ -256,6 +258,8 @@ enum TTDPAircraftMovementActions : uint8_t {
  * Map OTTD aircraft movement states to TTDPatch style movement actions
  * (VarAction 2 Variable 0xE6)
  * This is not fully supported yet but it's enough for Planeset.
+ * @param v The aircraft to consider.
+ * @return The TTDP movement action.
  */
 static uint8_t MapAircraftMovementAction(const Aircraft *v)
 {
@@ -1248,9 +1252,9 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
  * @param type Build probability type to test for.
  * @returns True or false depending on the probability result, or std::nullopt if the callback failed.
  */
-std::optional<bool> TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type)
+std::optional<bool> TestVehicleBuildProbability(Vehicle *v, BuildProbabilityType type)
 {
-	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, to_underlying(type), 0, engine, v);
+	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, to_underlying(type), 0, v->engine_type, v);
 	if (p == CALLBACK_FAILED) return std::nullopt;
 
 	const uint16_t PROBABILITY_RANGE = 100;

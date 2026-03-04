@@ -20,9 +20,7 @@ class LinkGraphJob;
  */
 class ComponentHandler {
 public:
-	/**
-	 * Destroy the handler. Must be given due to virtual Run.
-	 */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~ComponentHandler() = default;
 
 	/**

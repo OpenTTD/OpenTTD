@@ -36,7 +36,7 @@ public:
 /** Factory the null video driver. */
 class FVideoDriver_Null : public DriverFactoryBase {
 public:
-	FVideoDriver_Null() : DriverFactoryBase(Driver::DT_VIDEO, 0, "null", "Null Video Driver") {}
+	FVideoDriver_Null() : DriverFactoryBase(Driver::Type::Video, 0, "null", "Null Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Null>(); }
 };
 

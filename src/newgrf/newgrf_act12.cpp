@@ -16,7 +16,10 @@
 
 #include "../safeguards.h"
 
-/** Action 0x12 */
+/**
+ * Action 0x12 - Define fonts.
+ * @param buf Reader of the NewGRF.
+ */
 static void LoadFontGlyph(ByteReader &buf)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>
@@ -47,7 +50,10 @@ static void LoadFontGlyph(ByteReader &buf)
 	}
 }
 
-/** Action 0x12 (SKIP) */
+/**
+ * Action 0x12 (SKIP).
+ * @param buf Reader of the NewGRF.
+ */
 static void SkipAct12(ByteReader &buf)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>

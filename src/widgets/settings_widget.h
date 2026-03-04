@@ -32,8 +32,6 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_GUI_SCALE_BEVEL_TEXT,   ///< Text for chunky bevels.
 	WID_GO_GUI_FONT_SPRITE,        ///< Toggle whether to prefer the sprite font over TTF fonts.
 	WID_GO_GUI_FONT_SPRITE_TEXT,   ///< Text for sprite font toggle.
-	WID_GO_GUI_FONT_DEFAULT,       ///< Toggle whether to prefer the default font over fallback fonts.
-	WID_GO_GUI_FONT_DEFAULT_TEXT,  ///< Text for default font toggle.
 	WID_GO_GUI_FONT_AA,            ///< Toggle whether to anti-alias fonts.
 	WID_GO_GUI_FONT_AA_TEXT,       ///< Text for anti-alias toggle.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.

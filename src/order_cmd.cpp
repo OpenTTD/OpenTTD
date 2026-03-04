@@ -206,13 +206,13 @@ uint16_t Order::MapOldOrder() const
 }
 
 /**
- *
  * Updates the widgets of a vehicle which contains the order-data
- *
+ * @param v The vehicle to update the widgets for.
+ * @param data The arbitrary data to send to the widgets.
  */
 void InvalidateVehicleOrder(const Vehicle *v, int data)
 {
-	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
 
 	if (data != 0) {
 		/* Calls SetDirty() too */
@@ -247,7 +247,6 @@ void Order::AssignOrder(const Order &other)
 
 /**
  * Recomputes everything.
- * @param chain first order in the chain
  * @param v one of vehicle that is using this orderlist
  */
 void OrderList::Initialize(Vehicle *v)
@@ -353,10 +352,10 @@ VehicleOrderID OrderList::GetNextDecisionNode(VehicleOrderID next, uint hops) co
 
 /**
  * Recursively determine the next deterministic station to stop at.
+ * @param next_station The next stations that we have already seen, and might be adding to.
  * @param v The vehicle we're looking at.
  * @param first Order to start searching at or INVALID_VEH_ORDER_ID to start at cur_implicit_order_index + 1.
  * @param hops Number of orders we have already looked at.
- * @return Next stopping station or StationID::Invalid().
  * @pre The vehicle is currently loading and v->last_station_visited is meaningful.
  * @note This function may draw a random number. Don't use it from the GUI.
  */
@@ -411,7 +410,7 @@ void OrderList::GetNextStoppingStation(std::vector<StationID> &next_station, con
 
 /**
  * Insert a new order into the order chain.
- * @param new_order is the order to insert into the chain.
+ * @param order Rvalue reference of the order to insert into the chain.
  * @param index is the position where the order is supposed to be inserted.
  */
 void OrderList::InsertOrderAt(Order &&order, VehicleOrderID index)
@@ -547,6 +546,7 @@ static inline bool OrderGoesToStation(const Vehicle *v, const Order &o)
  * This could kill still valid warnings (for example about void order when just
  * another order gets added), but assume the company will notice the problems,
  * when they're changing the orders.
+ * @param v The vehicle to remove the order news for.
  */
 static void DeleteOrderWarnings(const Vehicle *v)
 {
@@ -746,9 +746,9 @@ CommandCost CmdInsertOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 
 			/* Check if we're allowed to have a new unbunching order. */
 			if (new_order.GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) {
-				if (v->HasFullLoadOrder()) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD);
-				if (v->HasUnbunchingOrder()) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED);
-				if (v->HasConditionalOrder()) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL);
+				if (v->HasFullLoadOrder()) return CommandCost(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD);
+				if (v->HasUnbunchingOrder()) return CommandCost(STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED);
+				if (v->HasConditionalOrder()) return CommandCost(STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL);
 			}
 			break;
 		}
@@ -847,7 +847,7 @@ void InsertOrder(Vehicle *v, Order &&new_o, VehicleOrderID sel_ord)
 {
 	/* Create new order and link in list */
 	if (v->orders == nullptr) {
-		v->orders = new OrderList(std::move(new_o), v);
+		v->orders = OrderList::Create(std::move(new_o), v);
 	} else {
 		v->orders->InsertOrderAt(std::move(new_o), sel_ord);
 	}
@@ -912,6 +912,7 @@ void InsertOrder(Vehicle *v, Order &&new_o, VehicleOrderID sel_ord)
  * Declone an order-list
  * @param *dst delete the orders of this vehicle
  * @param flags execution flags
+ * @return The command's costs.
  */
 static CommandCost DecloneOrder(Vehicle *dst, DoCommandFlags flags)
 {
@@ -1454,7 +1455,6 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
  * Check if an aircraft has enough range for an order list.
  * @param v_new Aircraft to check.
  * @param v_order Vehicle currently holding the order list.
- * @param first First order in the source order list.
  * @return True if the aircraft has enough range for the orders, false otherwise.
  */
 static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_order)
@@ -1604,7 +1604,7 @@ CommandCost CmdCloneOrder(DoCommandFlags flags, CloneOptions action, VehicleID v
 				}
 
 				assert(OrderList::CanAllocateItem());
-				dst->orders = new OrderList(std::move(dst_orders), dst);
+				dst->orders = OrderList::Create(std::move(dst_orders), dst);
 
 				InvalidateVehicleOrder(dst, VIWD_REMOVE_ALL_ORDERS);
 
@@ -1671,9 +1671,8 @@ CommandCost CmdOrderRefit(DoCommandFlags flags, VehicleID veh, VehicleOrderID or
 
 
 /**
- *
  * Check the orders of a vehicle, to see if there are invalid orders and stuff
- *
+ * @param v The vehicle to check.
  */
 void CheckOrders(const Vehicle *v)
 {
@@ -1761,7 +1760,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool 
 		if ((v->type == VEH_AIRCRAFT && v->current_order.IsType(OT_GOTO_DEPOT) && !hangar ? OT_GOTO_STATION : v->current_order.GetType()) == type &&
 				(!hangar || v->type == VEH_AIRCRAFT) && v->current_order.GetDestination() == destination) {
 			v->current_order.MakeDummy();
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+			InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
 		}
 
 		if (v->orders == nullptr) continue;
@@ -1873,19 +1872,26 @@ uint16_t GetServiceIntervalClamped(int interval, bool ispercent)
 
 /**
  *
- * Check if a vehicle has any valid orders
- *
- * @return false if there are no valid orders
+ * Check if a vehicle has any valid orders.
+ * @param v The vehicle to check.
+ * @return \c false iff there are no valid orders.
  * @note Conditional orders are not considered valid destination orders
- *
  */
 static bool CheckForValidOrders(const Vehicle *v)
 {
-	return std::ranges::any_of(v->Orders(), [](const Order &order) { return order.IsGotoOrder(); });
+	/* Check if vehicle has any valid orders.
+	 * Function is only called for aircraft, no type check needed. */
+	return std::ranges::any_of(v->Orders(), [](const Order &order) {
+		return order.IsGotoOrder() && (!order.IsType(OT_GOTO_DEPOT) || !order.GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot));
+	});
 }
 
 /**
  * Compare the variable and value based on the given comparator.
+ * @param occ The comparator to use.
+ * @param variable The first parameter of the comparison.
+ * @param value The second parameter.
+ * @return The result of the comparator on the variable and value.
  */
 static bool OrderConditionCompare(OrderConditionComparator occ, int variable, int value)
 {
@@ -1942,12 +1948,13 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
  * @param v the vehicle to update
  * @param conditional_depth the depth (amount of steps) to go with conditional orders. This to prevent infinite loops.
  * @param pbs_look_ahead Whether we are forecasting orders for pbs reservations in advance. If true, the order indices must not be modified.
+ * @return \c true iff the order is suitable for reversing.
  */
 bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool pbs_look_ahead)
 {
 	if (conditional_depth > v->GetNumOrders()) {
 		v->current_order.Free();
-		v->SetDestTile(TileIndex{});
+		v->SetDestTile(INVALID_TILE);
 		return false;
 	}
 
@@ -1967,7 +1974,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 			if (v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) {
 				/* If the vehicle can't find its destination, delay its next search.
 				 * In case many vehicles are in this state, use the vehicle index to spread out pathfinder calls. */
-				if (v->dest_tile == 0 && TimerGameEconomy::date_fract != (v->index % Ticks::DAY_TICKS)) break;
+				if (v->dest_tile == INVALID_TILE && TimerGameEconomy::date_fract != (v->index % Ticks::DAY_TICKS)) break;
 
 				/* We need to search for the nearest depot (hangar). */
 				ClosestDepot closest_depot = v->FindClosestDepot();
@@ -1980,7 +1987,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 					v->current_order.SetDestination(closest_depot.destination);
 
 					/* If there is no depot in front, reverse automatically (trains only) */
-					if (v->type == VEH_TRAIN && closest_depot.reverse) Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, v->index, false);
+					if (v->type == VEH_TRAIN && closest_depot.reverse) Command<Commands::ReverseTrainDirection>::Do(DoCommandFlag::Execute, v->index, false);
 
 					if (v->type == VEH_AIRCRAFT) {
 						Aircraft *a = Aircraft::From(v);
@@ -2041,7 +2048,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 		}
 
 		default:
-			v->SetDestTile(TileIndex{});
+			v->SetDestTile(INVALID_TILE);
 			return false;
 	}
 
@@ -2057,7 +2064,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 
 	if (order == nullptr) {
 		v->current_order.Free();
-		v->SetDestTile(TileIndex{});
+		v->SetDestTile(INVALID_TILE);
 		return false;
 	}
 
@@ -2101,7 +2108,7 @@ bool ProcessOrders(Vehicle *v)
 
 	/* Check if we've reached a 'via' destination. */
 	if (((v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetNonStopType().Test(OrderNonStopFlag::NoDestination)) || v->current_order.IsType(OT_GOTO_WAYPOINT)) &&
-			IsTileType(v->tile, MP_STATION) &&
+			IsTileType(v->tile, TileType::Station) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 		v->DeleteUnreachedImplicitOrders();
 		/* We set the last visited station here because we do not want
@@ -2132,12 +2139,12 @@ bool ProcessOrders(Vehicle *v)
 		}
 
 		v->current_order.Free();
-		v->SetDestTile(TileIndex{});
+		v->SetDestTile(INVALID_TILE);
 		return false;
 	}
 
 	/* If it is unchanged, keep it. */
-	if (order->Equals(v->current_order) && (v->type == VEH_AIRCRAFT || v->dest_tile != 0) &&
+	if (order->Equals(v->current_order) && (v->type == VEH_AIRCRAFT || v->dest_tile != INVALID_TILE) &&
 			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || Station::Get(order->GetDestination().ToStationID())->ship_station.tile != INVALID_TILE)) {
 		return false;
 	}
@@ -2193,6 +2200,8 @@ bool Order::CanLoadOrUnload() const
  * 1. it can load cargo here OR
  * 2a. it could leave the last station with cargo AND
  * 2b. it doesn't have to unload all cargo here.
+ * @param has_cargo Whether the vehicle has cargo.
+ * @return \c true iff the vehicle can leave.
  */
 bool Order::CanLeaveWithCargo(bool has_cargo) const
 {

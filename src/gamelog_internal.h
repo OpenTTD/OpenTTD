@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file gamelog_internal.h Declaration shared among gamelog.cpp and saveload/gamelog_sl.cpp */
+/** @file gamelog_internal.h Declaration shared among gamelog.cpp and saveload/gamelog_sl.cpp. */
 
 #ifndef GAMELOG_INTERNAL_H
 #define GAMELOG_INTERNAL_H
@@ -31,7 +31,15 @@ using GrfIDMapping = std::map<uint32_t, GRFPresence>;
 
 struct LoggedChange {
 	LoggedChange(GamelogChangeType type = GLCT_NONE) : ct(type) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~LoggedChange() = default;
+
+	/**
+	 * Format the content of this change into the given output.
+	 * @param output_iterator Destination of the formatted content.
+	 * @param grf_names Cache/mapping of names of NewGRFs seen in the logs.
+	 * @param action_type The context in which this method was called.
+	 */
 	virtual void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) = 0;
 
 	GamelogChangeType ct{};
@@ -56,7 +64,7 @@ struct LoggedChangeRevision : LoggedChange {
 	std::string text{}; ///< revision string, _openttd_revision
 	uint32_t newgrf = 0; ///< _openttd_newgrf_version
 	uint16_t slver = 0; ///< _sl_version
-	uint8_t modified = 0; //< _openttd_revision_modified
+	uint8_t modified = 0; ///< _openttd_revision_modified
 };
 
 struct LoggedChangeOldVersion : LoggedChange {

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
- /** @file newgrf_profiling.h Profiling of NewGRF action 2 handling. */
+/** @file newgrf_profiling.h Profiling of NewGRF action 2 handling. */
 
 #ifndef NEWGRF_PROFILING_H
 #define NEWGRF_PROFILING_H

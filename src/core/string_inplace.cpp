@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file string_inplace.cpp Inplace-replacement of textual and binary data.
- */
+/** @file string_inplace.cpp Inplace-replacement of textual and binary data. */
 
 #include "../stdafx.h"
 #include "string_inplace.hpp"
@@ -15,6 +13,7 @@
 
 /**
  * Check whether any unused bytes are left between the Builder and Consumer position.
+ * @return \c true iff the number of bytes read from the consumer is bigger than the number of bytes written to this builder.
  */
 [[nodiscard]] bool InPlaceBuilder::AnyBytesUnused() const noexcept
 {
@@ -23,6 +22,7 @@
 
 /**
  * Get number of unused bytes left between the Builder and Consumer position.
+ * @return The difference between the number of bytes read from the consumer and bytes written to this builder.
  */
 [[nodiscard]] InPlaceBuilder::size_type InPlaceBuilder::GetBytesUnused() const noexcept
 {
@@ -31,6 +31,7 @@
 
 /**
  * Append buffer.
+ * @param str The string to add to the buffer.
  */
 void InPlaceBuilder::PutBuffer(std::span<const char> str)
 {
@@ -50,6 +51,11 @@ InPlaceReplacement::InPlaceReplacement(std::span<char> buffer)
 {
 }
 
+/**
+ * Copy constructor.
+ * @param src The in place replacement to copy.
+ * @note The lifetime of the buffer must exceed the lifetime of both the Consumer and the Builder.
+ */
 InPlaceReplacement::InPlaceReplacement(const InPlaceReplacement &src)
 	: consumer(src.consumer), builder(src.builder, consumer)
 {

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file slider_type.h Types related to the horizontal slider widget. */
+/** @file slider_func.h Functions related to the horizontal slider widget. */
 
 #ifndef SLIDER_TYPE_H
 #define SLIDER_TYPE_H

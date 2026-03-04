@@ -6,19 +6,19 @@
  */
 
 /**
- * @file sprites.h
- * This file contains all sprite-related enums and defines. These consist mainly of
- * the sprite numbers and a bunch of masks and macros to handle sprites and to get
- * rid of all the magic numbers in the code.
+ * @file sprites.h This file contains all sprite-related enums and defines.
+ *
+ * These consist mainly of the sprite numbers and a bunch of masks and macros
+ * to handle sprites and to get rid of all the magic numbers in the code.
  *
  * @note
- * ALL SPRITE NUMBERS BELOW 5126 are in the main files
+ * ALL SPRITE NUMBERS BELOW 5126 are in the main files.
  *
  * All elements which consist of two elements should
- * have the same name and then suffixes
+ * have the same name and then suffixes:
  *   _GROUND and _BUILD for building-type sprites
  *   _REAR and _FRONT for transport-type sprites (tiles where vehicles are on)
- * These sprites are split because of the Z order of the elements
+ * These sprites are split because of the Z order of the elements.
  *  (like some parts of a bridge are behind the vehicle, while others are before)
  *
  *
@@ -32,7 +32,7 @@
  * get a proper editor. If your Operating Systems don't have any decent editors,
  * get a proper Operating System.
  *
- * @todo Split the "Sprites" enum into smaller chunks and document them
+ * @todo Split the "Sprites" enum into smaller chunks and document them.
  */
 
 #ifndef SPRITES_H

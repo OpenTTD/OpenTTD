@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file game_info.cpp Implementation of GameInfo */
+/** @file game_info.cpp Implementation of GameInfo. */
 
 #include "../stdafx.h"
 
@@ -19,6 +19,7 @@
 /**
  * Check if the API version provided by the Game is supported.
  * @param api_version The API version as provided by the Game.
+ * @return \c true if the given version is supported by this version of OpenTTD.
  */
 static bool CheckAPIVersion(const std::string &api_version)
 {
@@ -71,7 +72,7 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	if (!info->CheckMethod("GetAPIVersion")) return SQ_ERROR;
 	if (!info->engine->CallStringMethod(info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 	if (!CheckAPIVersion(info->api_version)) {
-		Debug(script, 1, "Loading info.nut from ({}.{}): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
+		sq_throwerror(vm, fmt::format("Loading info.nut from ({}.{}): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion()));
 		return SQ_ERROR;
 	}
 

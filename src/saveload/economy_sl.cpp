@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file economy_sl.cpp Code handling saving and loading of economy data */
+/** @file economy_sl.cpp Code handling saving and loading of economy data. */
 
 #include "../stdafx.h"
 
@@ -108,7 +108,7 @@ struct CAPYChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			CargoPayment *cp = new (CargoPaymentID(index)) CargoPayment();
+			CargoPayment *cp = CargoPayment::CreateAtIndex(CargoPaymentID(index));
 			SlObject(cp, slt);
 		}
 	}

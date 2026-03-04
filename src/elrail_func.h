@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file elrail_func.h header file for electrified rail specific functions */
+/** @file elrail_func.h Header file for electrified rail specific functions. */
 
 #ifndef ELRAIL_FUNC_H
 #define ELRAIL_FUNC_H
@@ -15,8 +15,9 @@
 #include "transparency.h"
 
 /**
- * Test if a rail type has catenary
- * @param rt Rail type to test
+ * Test if a rail type has catenary.
+ * @param rt Rail type to test.
+ * @return \c true iff the rail type has catenary.
  */
 inline bool HasRailCatenary(RailType rt)
 {
@@ -24,8 +25,9 @@ inline bool HasRailCatenary(RailType rt)
 }
 
 /**
- * Test if we should draw rail catenary
- * @param rt Rail type to test
+ * Test if we should draw rail catenary.
+ * @param rt Rail type to test.
+ * @return \c true iff catenary should be drawn for this rail type.
  */
 inline bool HasRailCatenaryDrawn(RailType rt)
 {
@@ -36,7 +38,7 @@ void DrawRailCatenary(const TileInfo *ti);
 void DrawRailCatenaryOnTunnel(const TileInfo *ti);
 void DrawRailCatenaryOnBridge(const TileInfo *ti);
 
-void SettingsDisableElrail(int32_t new_value); ///< _settings_game.disable_elrail callback
+void SettingsDisableElrail(int32_t new_value);
 void UpdateDisableElrailSettingState(bool disable, bool update_vehicles);
 
 #endif /* ELRAIL_FUNC_H */

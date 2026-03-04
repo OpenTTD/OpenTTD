@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file game_gui.hpp %Window for configuring the Games  */
+/** @file game_gui.hpp %Window for configuring GS. */
 
 #ifndef GAME_GUI_HPP
 #define GAME_GUI_HPP

@@ -17,7 +17,10 @@
 
 #include "../safeguards.h"
 
-/** Action 0x0F - Define Town names */
+/**
+ * Action 0x0F - Define Town names.
+ * @param buf Reader of the NewGRF.
+ */
 static void FeatureTownName(ByteReader &buf)
 {
 	/* <0F> <id> <style-name> <num-parts> <parts>

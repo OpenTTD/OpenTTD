@@ -10,6 +10,7 @@
 #ifndef NEWGRF_ANIMATION_TYPE_H
 #define NEWGRF_ANIMATION_TYPE_H
 
+/** Statuses of animation within NewGRFs. */
 enum class AnimationStatus : uint8_t {
 	NonLooping = 0x00, ///< Animation is not looping.
 	Looping = 0x01, ///< Animation is looping.

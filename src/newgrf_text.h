@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file newgrf_text.h Header of Action 04 "universal holder" structure and functions */
+/** @file newgrf_text.h Header of Action 04 "universal holder" structure and functions. */
 
 #ifndef NEWGRF_TEXT_H
 #define NEWGRF_TEXT_H

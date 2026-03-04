@@ -5,10 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file network_gamelist.cpp This file handles the GameList
- * Also, it handles the request to a server for data about the server
- */
+/** @file network_gamelist.cpp This file handles the GameList and the request to a server for data about the server. */
 
 #include "../stdafx.h"
 

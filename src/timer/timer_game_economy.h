@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file timer_game_economy.h Definition of the game-economy-timer */
+/** @file timer_game_economy.h Definition of the game-economy-timer. */
 
 #ifndef TIMER_GAME_ECONOMY_H
 #define TIMER_GAME_ECONOMY_H

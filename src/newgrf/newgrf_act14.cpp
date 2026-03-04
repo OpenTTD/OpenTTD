@@ -15,28 +15,28 @@
 
 #include "../safeguards.h"
 
-/** Callback function for 'INFO'->'NAME' to add a translation to the newgrf name. */
+/** Callback function for 'INFO'->'NAME' to add a translation to the newgrf name. @copydoc TextHandler */
 static bool ChangeGRFName(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur_gps.grfconfig->name, langid, _cur_gps.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
-/** Callback function for 'INFO'->'DESC' to add a translation to the newgrf description. */
+/** Callback function for 'INFO'->'DESC' to add a translation to the newgrf description. @copydoc TextHandler */
 static bool ChangeGRFDescription(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur_gps.grfconfig->info, langid, _cur_gps.grfconfig->ident.grfid, true, str);
 	return true;
 }
 
-/** Callback function for 'INFO'->'URL_' to set the newgrf url. */
+/** Callback function for 'INFO'->'URL_' to set the newgrf url. @copydoc TextHandler */
 static bool ChangeGRFURL(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur_gps.grfconfig->url, langid, _cur_gps.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
-/** Callback function for 'INFO'->'NPAR' to set the number of valid parameters. */
+/** Callback function for 'INFO'->'NPAR' to set the number of valid parameters. @copydoc DataHandler */
 static bool ChangeGRFNumUsedParams(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
@@ -48,7 +48,7 @@ static bool ChangeGRFNumUsedParams(size_t len, ByteReader &buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'PALS' to set the number of valid parameters. */
+/** Callback function for 'INFO'->'PALS' to set the number of valid parameters. @copydoc DataHandler */
 static bool ChangeGRFPalette(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
@@ -74,7 +74,7 @@ static bool ChangeGRFPalette(size_t len, ByteReader &buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'BLTR' to set the blitter info. */
+/** Callback function for 'INFO'->'BLTR' to set the blitter info. @copydoc DataHandler */
 static bool ChangeGRFBlitter(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
@@ -96,7 +96,7 @@ static bool ChangeGRFBlitter(size_t len, ByteReader &buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'VRSN' to the version of the NewGRF. */
+/** Callback function for 'INFO'->'VRSN' to the version of the NewGRF. @copydoc DataHandler */
 static bool ChangeGRFVersion(size_t len, ByteReader &buf)
 {
 	if (len != 4) {
@@ -109,7 +109,7 @@ static bool ChangeGRFVersion(size_t len, ByteReader &buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'MINV' to the minimum compatible version of the NewGRF. */
+/** Callback function for 'INFO'->'MINV' to the minimum compatible version of the NewGRF. @copydoc DataHandler */
 static bool ChangeGRFMinVersion(size_t len, ByteReader &buf)
 {
 	if (len != 4) {
@@ -131,21 +131,21 @@ static bool ChangeGRFMinVersion(size_t len, ByteReader &buf)
 
 static GRFParameterInfo *_cur_parameter; ///< The parameter which info is currently changed by the newgrf.
 
-/** Callback function for 'INFO'->'PARAM'->param_num->'NAME' to set the name of a parameter. */
+/** Callback function for 'INFO'->'PARAM'->param_num->'NAME' to set the name of a parameter. @copydoc TextHandler */
 static bool ChangeGRFParamName(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur_parameter->name, langid, _cur_gps.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
-/** Callback function for 'INFO'->'PARAM'->param_num->'DESC' to set the description of a parameter. */
+/** Callback function for 'INFO'->'PARAM'->param_num->'DESC' to set the description of a parameter. @copydoc TextHandler */
 static bool ChangeGRFParamDescription(uint8_t langid, std::string_view str)
 {
 	AddGRFTextToList(_cur_parameter->desc, langid, _cur_gps.grfconfig->ident.grfid, true, str);
 	return true;
 }
 
-/** Callback function for 'INFO'->'PARAM'->param_num->'TYPE' to set the typeof a parameter. */
+/** Callback function for 'INFO'->'PARAM'->param_num->'TYPE' to set the typeof a parameter. @copydoc DataHandler */
 static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
@@ -162,7 +162,7 @@ static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'PARAM'->param_num->'LIMI' to set the min/max value of a parameter. */
+/** Callback function for 'INFO'->'PARAM'->param_num->'LIMI' to set the min/max value of a parameter. @copydoc DataHandler */
 static bool ChangeGRFParamLimits(size_t len, ByteReader &buf)
 {
 	if (_cur_parameter->type != PTYPE_UINT_ENUM) {
@@ -184,7 +184,7 @@ static bool ChangeGRFParamLimits(size_t len, ByteReader &buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'PARAM'->param_num->'MASK' to set the parameter and bits to use. */
+/** Callback function for 'INFO'->'PARAM'->param_num->'MASK' to set the parameter and bits to use. @copydoc DataHandler */
 static bool ChangeGRFParamMask(size_t len, ByteReader &buf)
 {
 	if (len < 1 || len > 3) {
@@ -205,7 +205,7 @@ static bool ChangeGRFParamMask(size_t len, ByteReader &buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'PARAM'->param_num->'DFLT' to set the default value. */
+/** Callback function for 'INFO'->'PARAM'->param_num->'DFLT' to set the default value. @copydoc DataHandler */
 static bool ChangeGRFParamDefault(size_t len, ByteReader &buf)
 {
 	if (len != 4) {
@@ -218,9 +218,28 @@ static bool ChangeGRFParamDefault(size_t len, ByteReader &buf)
 	return true;
 }
 
-typedef bool (*DataHandler)(size_t, ByteReader &);  ///< Type of callback function for binary nodes
-typedef bool (*TextHandler)(uint8_t, std::string_view str); ///< Type of callback function for text nodes
-typedef bool (*BranchHandler)(ByteReader &);        ///< Type of callback function for branch nodes
+/**
+ * Callback to read binary data.
+ * @param len The number of bytes to read.
+ * @param buf The buffer to read from.
+ * @return \c true iff the data could be processed.
+ */
+using DataHandler = bool(*)(size_t len, ByteReader &buf);
+
+/**
+ * Callback to read text data.
+ * @param langid The language the text is for.
+ * @param str The actual text.
+ * @return \c true iff the data could be processed.
+ */
+using TextHandler = bool(*)(uint8_t langid, std::string_view str);
+
+/**
+ * Callback for parsing branch nodes.
+ * @param buf The buffer to read from.
+ * @return \c true iff the data could be processed.
+ */
+using BranchHandler = bool(*)(ByteReader &buf);
 
 /**
  * Data structure to store the allowed id/type combinations for action 14. The
@@ -245,6 +264,7 @@ static bool HandleNodes(ByteReader &buf, std::span<const AllowedSubtags> tags);
  * of some parameter values (type uint/enum) or the names of some bits
  * (type bitmask). In both cases the format is the same:
  * Each subnode should be a text node with the value/bit number as id.
+ * @copydoc BranchHandler
  */
 static bool ChangeGRFParamValueNames(ByteReader &buf)
 {
@@ -288,6 +308,7 @@ static constexpr AllowedSubtags _tags_parameters[] = {
  * parameters. Each subnode of 'INFO'->'PARA' should be a branch node with
  * the parameter number as id. The first parameter has id 0. The maximum
  * parameter that can be changed is set by 'INFO'->'NPAR' which defaults to 80.
+ * @copydoc BranchHandler
  */
 static bool HandleParameterInfo(ByteReader &buf)
 {

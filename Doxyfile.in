@@ -45,7 +45,7 @@ PYTHON_DOCSTRING       = YES
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 2
-ALIASES                =
+ALIASES                = important="@attention" # @important is available in newer versions of doxygen.
 OPTIMIZE_OUTPUT_FOR_C  = YES
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
@@ -59,7 +59,7 @@ BUILTIN_STL_SUPPORT    = NO
 CPP_CLI_SUPPORT        = NO
 SIP_SUPPORT            = NO
 IDL_PROPERTY_SUPPORT   = YES
-DISTRIBUTE_GROUP_DOC   = NO
+DISTRIBUTE_GROUP_DOC   = YES
 GROUP_NESTED_COMPOUNDS = NO
 SUBGROUPING            = YES
 INLINE_GROUPED_CLASSES = NO
@@ -118,11 +118,12 @@ WARNINGS               = YES
 WARN_IF_UNDOCUMENTED   = YES
 WARN_IF_DOC_ERROR      = YES
 WARN_IF_INCOMPLETE_DOC = YES
-WARN_NO_PARAMDOC       = NO
+WARN_NO_PARAMDOC       = YES
+WARN_IF_UNDOC_ENUM_VAL = YES
 WARN_AS_ERROR          = NO
-WARN_FORMAT            = "$file:$line: $text"
-WARN_LINE_FORMAT       = "at line $line of file $file"
-WARN_LOGFILE           =
+WARN_FORMAT            = "$file:$${DOXYGEN_WARN_FORMAT_LINE}: $text"
+WARN_LINE_FORMAT       = "at line $${DOXYGEN_WARN_FORMAT_LINE} of file $file"
+WARN_LOGFILE           = ${DOXYGEN_WARN_FILE}
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
@@ -134,12 +135,15 @@ FILE_PATTERNS          = *.c \
                          *.cpp \
                          *.c++ \
                          *.h \
-                         *.hpp
+                         *.hpp \
+                         *.mm \
+	                     *.m
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = */3rdparty \
-                         */script/api
+                         */script/api \
+                         */tests
 EXCLUDE_SYMBOLS        =
 EXAMPLE_PATH           =
 EXAMPLE_PATTERNS       = *
@@ -185,7 +189,6 @@ HTML_EXTRA_FILES       =
 HTML_COLORSTYLE_HUE    = 220
 HTML_COLORSTYLE_SAT    = 100
 HTML_COLORSTYLE_GAMMA  = 80
-HTML_TIMESTAMP         = NO
 HTML_DYNAMIC_MENUS     = YES
 HTML_DYNAMIC_SECTIONS  = NO
 HTML_INDEX_NUM_ENTRIES = 100
@@ -221,7 +224,6 @@ EXT_LINKS_IN_WINDOW    = NO
 OBFUSCATE_EMAILS       = YES
 HTML_FORMULA_FORMAT    = png
 FORMULA_FONTSIZE       = 10
-FORMULA_TRANSPARENT    = YES
 FORMULA_MACROFILE      =
 USE_MATHJAX            = NO
 MATHJAX_VERSION        = MathJax_2
@@ -256,7 +258,6 @@ USE_PDFLATEX           = NO
 LATEX_BATCHMODE        = NO
 LATEX_HIDE_INDICES     = NO
 LATEX_BIB_STYLE        = plain
-LATEX_TIMESTAMP        = NO
 LATEX_EMOJI_DIRECTORY  =
 #---------------------------------------------------------------------------
 # Configuration options related to the RTF output
@@ -317,10 +318,14 @@ PREDEFINED             = WITH_ZLIB \
                          WITH_HARFBUZZ \
                          WITH_ICU_I18N \
                          UNICODE \
+                         DOXYGEN_API \
                          _UNICODE \
                          _GNU_SOURCE \
+                         CDECL= \
+                         CALLBACK= \
+                         APIENTRY= \
                          FINAL=
-EXPAND_AS_DEFINED      =
+EXPAND_AS_DEFINED      = DEFINE_POOL_METHOD
 SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
 # Configuration options related to external references
@@ -337,8 +342,6 @@ DIA_PATH               =
 HIDE_UNDOC_RELATIONS   = YES
 HAVE_DOT               = NO
 DOT_NUM_THREADS        = 0
-DOT_FONTNAME           = Helvetica
-DOT_FONTSIZE           = 10
 DOT_FONTPATH           =
 CLASS_GRAPH            = YES
 COLLABORATION_GRAPH    = YES
@@ -366,7 +369,6 @@ PLANTUML_CFG_FILE      =
 PLANTUML_INCLUDE_PATH  =
 DOT_GRAPH_MAX_NODES    = 50
 MAX_DOT_GRAPH_DEPTH    = 1000
-DOT_TRANSPARENT        = NO
 DOT_MULTI_TARGETS      = NO
 GENERATE_LEGEND        = YES
 DOT_CLEANUP            = YES

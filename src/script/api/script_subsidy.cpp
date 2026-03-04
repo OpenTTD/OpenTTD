@@ -43,7 +43,7 @@
 	Source from{static_cast<SourceID>(from_id), static_cast<SourceType>(from_type)};
 	Source to{static_cast<SourceID>(to_id), static_cast<SourceType>(to_type)};
 
-	return ScriptObject::Command<CMD_CREATE_SUBSIDY>::Do(cargo_type, from, to);
+	return ScriptObject::Command<Commands::CreateSubsidy>::Do(cargo_type, from, to);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptSubsidy::GetAwardedTo(SubsidyID subsidy_id)

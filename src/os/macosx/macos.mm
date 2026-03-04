@@ -5,7 +5,12 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file macos.mm Code related to MacOSX. */
+/**
+ * @file macos.mm Code related to MacOSX.
+ *
+ * This file contains objective C.
+ * Apple uses objective C instead of plain C to interact with OS specific/native functions.
+ */
 
 #include "../../stdafx.h"
 #include "../../core/bitmath_func.hpp"
@@ -14,124 +19,45 @@
 #include "../../string_func.h"
 #include "../../fileio_func.h"
 #include <pthread.h>
-
-#define Rect  OTTDRect
-#define Point OTTDPoint
-#include <AppKit/AppKit.h>
-#undef Rect
-#undef Point
-
-#ifndef __clang__
-#define __bridge
-#endif
-
-/*
- * This file contains objective C
- * Apple uses objective C instead of plain C to interact with OS specific/native functions
- */
-
-
-#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_10)
-typedef struct {
-	NSInteger majorVersion;
-	NSInteger minorVersion;
-	NSInteger patchVersion;
-} OTTDOperatingSystemVersion;
-
-#define NSOperatingSystemVersion OTTDOperatingSystemVersion
-#endif
+#include "macos_objective_c.h"
 
 #ifdef WITH_COCOA
 static NSAutoreleasePool *_ottd_autorelease_pool;
 #endif
 
 /**
- * Get the version of the MacOS we are running under. Code adopted
- * from http://www.cocoadev.com/index.pl?DeterminingOSVersion
- * @param return_major major version of the os. This would be 10 in the case of 10.4.11
- * @param return_minor minor version of the os. This would be 4 in the case of 10.4.11
- * @param return_bugfix bugfix version of the os. This would be 11 in the case of 10.4.11
- * A return value of -1 indicates that something went wrong and we don't know.
+ * Get the version of the MacOS we are running under.
+ * @return Tuple with major, minor and patch of the MacOS version.
  */
-void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
+std::tuple<int, int, int> GetMacOSVersion()
 {
-	*return_major = -1;
-	*return_minor = -1;
-	*return_bugfix = -1;
-
-	if ([[ NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion) ]) {
-		IMP sel = [ [ NSProcessInfo processInfo] methodForSelector:@selector(operatingSystemVersion) ];
-		NSOperatingSystemVersion ver = ((NSOperatingSystemVersion (*)(id, SEL))sel)([ NSProcessInfo processInfo], @selector(operatingSystemVersion));
-
-		*return_major = (int)ver.majorVersion;
-		*return_minor = (int)ver.minorVersion;
-		*return_bugfix = (int)ver.patchVersion;
-
-		return;
-	}
-
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_10)
-#ifdef __clang__
-#	pragma clang diagnostic push
-#	pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#endif
-	SInt32 systemVersion, version_major, version_minor, version_bugfix;
-	if (Gestalt(gestaltSystemVersion, &systemVersion) == noErr) {
-		if (systemVersion >= 0x1040) {
-			if (Gestalt(gestaltSystemVersionMajor,  &version_major) == noErr) *return_major = (int)version_major;
-			if (Gestalt(gestaltSystemVersionMinor,  &version_minor) == noErr) *return_minor = (int)version_minor;
-			if (Gestalt(gestaltSystemVersionBugFix, &version_bugfix) == noErr) *return_bugfix = (int)version_bugfix;
-		} else {
-			*return_major = (int)(GB(systemVersion, 12, 4) * 10 + GB(systemVersion, 8, 4));
-			*return_minor = (int)GB(systemVersion, 4, 4);
-			*return_bugfix = (int)GB(systemVersion, 0, 4);
-		}
-	}
-#ifdef __clang__
-#	pragma clang diagnostic pop
-#endif
-#endif
+	NSOperatingSystemVersion ver = [ [ NSProcessInfo processInfo ] operatingSystemVersion ];
+	return { static_cast<int>(ver.majorVersion), static_cast<int>(ver.minorVersion), static_cast<int>(ver.patchVersion) };
 }
 
 #ifdef WITH_COCOA
-
 extern void CocoaDialog(std::string_view title, std::string_view message, std::string_view buttonLabel);
-
-/**
- * Show the system dialogue message (Cocoa on MacOSX).
- *
- * @param title Window title.
- * @param message Message text.
- * @param buttonLabel Button text.
- */
-void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
-{
-	CocoaDialog(title, message, buttonLabel);
-}
-
-
-#else
-
-/**
- * Show the system dialogue message (console on MacOSX).
- *
- * @param title Window title.
- * @param message Message text.
- * @param buttonLabel Button text.
- */
-void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
-{
-	fmt::print(stderr, "{}: {}\n", title, message);
-}
-
 #endif
 
+/**
+ * Show the system dialogue message, uses Cocoa if available and console otherwise.
+ * @param title Window title.
+ * @param message Message text.
+ * @param buttonLabel Button text.
+ */
+void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
+{
+#ifdef WITH_COCOA
+	CocoaDialog(title, message, buttonLabel);
+#else
+	fmt::print(stderr, "{}: {}\n", title, message);
+#endif
+}
 
 /**
  * Show an error message.
- *
- * @param buf error message text.
- * @param system message text originates from OS.
+ * @param buf Text with error message.
+ * @param system Whether message text originates from OS.
  */
 void ShowOSErrorBox(std::string_view buf, bool system)
 {
@@ -143,13 +69,18 @@ void ShowOSErrorBox(std::string_view buf, bool system)
 	}
 }
 
+/**
+ * Opens browser on MacOS.
+ * @param url Web page address to open.
+ */
 void OSOpenBrowser(const std::string &url)
 {
 	[ [ NSWorkspace sharedWorkspace ] openURL:[ NSURL URLWithString:[ NSString stringWithUTF8String:url.c_str() ] ] ];
 }
 
 /**
- * Determine and return the current user's locale.
+ * Determine and return the current user's charset.
+ * @return String containing current charset, or std::nullopt if not-determinable.
  */
 std::optional<std::string> GetCurrentLocale(const char *)
 {
@@ -246,9 +177,7 @@ bool IsMonospaceFont(CFStringRef name)
  */
 void MacOSSetThreadName(const std::string &name)
 {
-	if (MacOSVersionIsAtLeast(10, 6, 0)) {
-		pthread_setname_np(name.c_str());
-	}
+	pthread_setname_np(name.c_str());
 
 	NSThread *cur = [ NSThread currentThread ];
 	if (cur != nil && [ cur respondsToSelector:@selector(setName:) ]) {
@@ -256,6 +185,10 @@ void MacOSSetThreadName(const std::string &name)
 	}
 }
 
+/**
+ * Ask OS how much RAM it has physically attached.
+ * @return Number of available bytes.
+ */
 uint64_t MacOSGetPhysicalMemory()
 {
 	return [ [ NSProcessInfo processInfo ] physicalMemory ];

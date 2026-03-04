@@ -34,7 +34,7 @@ using Microsoft::WRL::ComPtr;
 #include "../os/windows/win32.h"
 #include "../safeguards.h"
 
-/* Definition of the "XAudio2Create" call used to initialise XAudio2 */
+/** Definition of the "XAudio2Create" call used to initialise XAudio2. */
 typedef HRESULT(__stdcall *API_XAudio2Create)(_Outptr_ IXAudio2 **ppXAudio2, UINT32 Flags, XAUDIO2_PROCESSOR XAudio2Processor);
 
 static FSoundDriver_XAudio2 iFSoundDriver_XAudio2;
@@ -56,6 +56,8 @@ public:
 		this->buffer.resize(buffer_length);
 	}
 
+	/* This needs to be virtual because the XAudio2 API declares the interface without
+	 * a virtual destructor, even though it has functions that need to be overridden. */
 	virtual ~StreamingVoiceContext() = default;
 
 	HRESULT SubmitBuffer()
@@ -110,7 +112,11 @@ static IXAudio2MasteringVoice *_mastering_voice = nullptr;
 static ComPtr<IXAudio2> _xaudio2;
 static std::unique_ptr<StreamingVoiceContext> _voice_context;
 
-/** Create XAudio2 context with SEH exception checking. */
+/**
+ * Create XAudio2 context with SEH exception checking.
+ * @param xAudio2Create Function pointer to the xAudio2Create API call in the loaded DLL.
+ * @return \c S_OK iff successful, otherwise an error code.
+ */
 static HRESULT CreateXAudio(API_XAudio2Create xAudio2Create)
 {
 	HRESULT hr;

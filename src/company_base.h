@@ -39,7 +39,10 @@ struct CompanyInfrastructure {
 
 	auto operator<=>(const CompanyInfrastructure &) const = default;
 
-	/** Get total sum of all owned track bits. */
+	/**
+	 * Get total sum of all owned track bits.
+	 * @return The number of owned track bits.
+	 */
 	uint32_t GetRailTotal() const
 	{
 		return std::accumulate(std::begin(this->rail), std::end(this->rail), 0U);
@@ -78,6 +81,7 @@ struct CompanyProperties {
 	std::string president_name{}; ///< Name of the president if the user changed it.
 
 	NetworkAuthorizedKeys allow_list{}; ///< Public keys of clients that are allowed to join this company.
+	bool allow_any = false; ///< Set if anyone is allowed to join this company.
 
 	CompanyManagerFace face{}; ///< Face description of the president.
 
@@ -105,7 +109,7 @@ struct CompanyProperties {
 	uint32_t terraform_limit = 0; ///< Amount of tileheights we can (still) terraform (times 65536).
 	uint32_t clear_limit = 0; ///< Amount of tiles we can (still) clear (times 65536).
 	uint32_t tree_limit = 0; ///< Amount of trees we can (still) plant (times 65536).
-	uint32_t build_object_limit = 0; ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land.
+	uint32_t build_object_limit = 0; ///< Amount of tiles we can (still) build objects on (times 65536). Also applies to buying land and placing houses.
 
 	/**
 	 * If \c true, the company is (also) controlled by the computer (a NoAI program).
@@ -125,7 +129,7 @@ struct CompanyProperties {
 };
 
 struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
-	Company(StringID name_1 = {}, bool is_ai = false);
+	Company(CompanyID index, StringID name_1 = {}, bool is_ai = false);
 	~Company();
 
 	RailTypes avail_railtypes{}; ///< Rail types available to this company.

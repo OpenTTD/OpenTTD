@@ -93,25 +93,25 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 	VehicleType type;
 
 	switch (GetTileType(tile)) {
-		case MP_STATION: // Aircraft
+		case TileType::Station: // Aircraft
 			if (!IsAirport(tile)) return;
 			type = VEH_AIRCRAFT;
 			dest = GetStationIndex(tile);
 			break;
 
-		case MP_RAILWAY:
+		case TileType::Railway:
 			if (!IsRailDepot(tile)) return;
 			type = VEH_TRAIN;
 			dest = GetDepotIndex(tile);
 			break;
 
-		case MP_ROAD:
+		case TileType::Road:
 			if (!IsRoadDepot(tile)) return;
 			type = VEH_ROAD;
 			dest = GetDepotIndex(tile);
 			break;
 
-		case MP_WATER:
+		case TileType::Water:
 			if (!IsShipDepot(tile)) return;
 			type = VEH_SHIP;
 			dest = GetDepotIndex(tile);

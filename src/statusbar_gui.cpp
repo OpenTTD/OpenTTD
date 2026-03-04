@@ -205,7 +205,7 @@ struct StatusBarWindow : Window {
 		this->SetWidgetDirty(WID_S_MIDDLE);
 	}};
 
-	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::Trigger::Day, TimerGameCalendar::Priority::None}, [this](auto) {
 		this->SetWidgetDirty(WID_S_LEFT);
 	}};
 };
@@ -227,6 +227,7 @@ static WindowDesc _main_status_desc(
 
 /**
  * Checks whether the news ticker is currently being used.
+ * @return \c true iff the status bar exists and the ticker is in use.
  */
 bool IsNewsTickerShown()
 {

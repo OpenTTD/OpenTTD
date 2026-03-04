@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file tcp_turn.cpp Basic functions to receive and send TURN packets.
- */
+/** @file tcp_turn.cpp Basic functions to receive and send TURN packets. */
 
 #include "../../stdafx.h"
 #include "../../timer/timer_game_calendar.h"
@@ -24,12 +22,12 @@
  */
 bool NetworkTurnSocketHandler::HandlePacket(Packet &p)
 {
-	PacketTurnType type = (PacketTurnType)p.Recv_uint8();
+	PacketTurnType type = static_cast<PacketTurnType>(p.Recv_uint8());
 
 	switch (type) {
-		case PACKET_TURN_TURN_ERROR:     return this->Receive_TURN_ERROR(p);
-		case PACKET_TURN_SERCLI_CONNECT: return this->Receive_SERCLI_CONNECT(p);
-		case PACKET_TURN_TURN_CONNECTED: return this->Receive_TURN_CONNECTED(p);
+		case PacketTurnType::ServerError: return this->ReceiveServerError(p);
+		case PacketTurnType::ClientConnect: return this->ReceiveClientConnect(p);
+		case PacketTurnType::ServerConnected: return this->ReceiveServerConnected(p);
 
 		default:
 			Debug(net, 0, "[tcp/turn] Received invalid packet type {}", type);
@@ -65,6 +63,6 @@ bool NetworkTurnSocketHandler::ReceiveInvalidPacket(PacketTurnType type)
 	return false;
 }
 
-bool NetworkTurnSocketHandler::Receive_TURN_ERROR(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_ERROR); }
-bool NetworkTurnSocketHandler::Receive_SERCLI_CONNECT(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_SERCLI_CONNECT); }
-bool NetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_CONNECTED); }
+bool NetworkTurnSocketHandler::ReceiveServerError(Packet &) { return this->ReceiveInvalidPacket(PacketTurnType::ServerError); }
+bool NetworkTurnSocketHandler::ReceiveClientConnect(Packet &) { return this->ReceiveInvalidPacket(PacketTurnType::ClientConnect); }
+bool NetworkTurnSocketHandler::ReceiveServerConnected(Packet &) { return this->ReceiveInvalidPacket(PacketTurnType::ServerConnected); }

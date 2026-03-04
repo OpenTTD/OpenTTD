@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file depot_sl.cpp Code handling saving and loading of depots */
+/** @file depot_sl.cpp Code handling saving and loading of depots. */
 
 #include "../stdafx.h"
 
@@ -49,7 +49,7 @@ struct DEPTChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			Depot *depot = new (DepotID(index)) Depot();
+			Depot *depot = Depot::CreateAtIndex(DepotID(index));
 			SlObject(depot, slt);
 
 			/* Set the town 'pointer' so we can restore it later. */

@@ -40,7 +40,7 @@ public:
 	 *   So basically restore the value of GetCosts to what it was before we
 	 *   created this instance.
 	 */
-	~ScriptAccounting();
+	~ScriptAccounting() override;
 
 	/**
 	 * Get the current value of the costs.
@@ -48,7 +48,7 @@ public:
 	 * @note when nesting ScriptAccounting instances all instances' GetCosts
 	 *   will always return the value of the 'top' instance.
 	 */
-	Money GetCosts();
+	Money GetCosts() const;
 
 	/**
 	 * Reset the costs to zero.

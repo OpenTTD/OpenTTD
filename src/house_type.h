@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file house_type.h declaration of basic house types and enums */
+/** @file house_type.h Declaration of basic house types and enums. */
 
 #ifndef HOUSE_TYPE_H
 #define HOUSE_TYPE_H
@@ -19,9 +19,9 @@ struct HouseSpec;
 
 /** Randomisation triggers for houses */
 enum class HouseRandomTrigger : uint8_t {
-	/* The tile of the house has been triggered during the tileloop. */
+	/** The tile of the house has been triggered during the tileloop. */
 	TileLoop,
-	/*
+	/**
 	 * The top tile of a (multitile) building has been triggered during and all
 	 * the tileloop other tiles of the same building get the same random value.
 	 */

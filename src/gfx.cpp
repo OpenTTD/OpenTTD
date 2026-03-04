@@ -25,6 +25,7 @@
 #include "core/geometry_func.hpp"
 #include "viewport_func.h"
 
+#include "table/animcursors.h"
 #include "table/string_colours.h"
 #include "table/sprites.h"
 #include "table/control_codes.h"
@@ -341,6 +342,9 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 		margin  *= 2; // account for rounding errors
 	}
 
+	/* Prevent division by zero. */
+	if (grade_x == 0) grade_x = 1;
+
 	/* Imagine that the line is infinitely long and it intersects with
 	 * infinitely long left and right edges of the clipping rectangle.
 	 * If both intersection points are outside the clipping rectangle
@@ -536,7 +540,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont().GetFontCache().GetSize());
+		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont()->fc->GetSize());
 		truncation_width = truncation_layout->GetBounds().width;
 
 		/* Is there enough space even for an ellipsis? */
@@ -588,22 +592,22 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		int dpi_right = dpi->left + dpi->width - 1;
 		TextColour last_colour = initial_colour;
 
-		for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
+		for (size_t run_index = 0; run_index < line.CountRuns(); run_index++) {
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
 			const auto &glyphs = run.GetGlyphs();
 			const auto &positions = run.GetPositions();
-			const Font &f = run.GetFont();
+			const Font *f = run.GetFont();
 
-			FontCache &fc = f.GetFontCache();
-			TextColour colour = f.colour;
+			FontCache *fc = f->fc;
+			TextColour colour = f->colour;
 			if (colour == TC_INVALID || HasFlag(initial_colour, TC_FORCED)) colour = initial_colour;
 			bool colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
 			/* Update the last colour for the truncation ellipsis. */
 			last_colour = colour;
-			if (do_shadow && (!fc.GetDrawGlyphShadow() || !colour_has_shadow)) continue;
+			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 			SetColourRemap(do_shadow ? TC_BLACK : colour);
 
-			for (int i = 0; i < run.GetGlyphCount(); i++) {
+			for (size_t i = 0; i < run.GetGlyphCount(); i++) {
 				GlyphID glyph = glyphs[i];
 
 				/* Not a valid glyph (empty) */
@@ -615,10 +619,13 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 				/* Truncated away. */
 				if (truncation && (begin_x < min_x || end_x > max_x)) continue;
-				/* Outside the clipping area. */
-				if (begin_x > dpi_right || end_x < dpi_left) continue;
 
-				const Sprite *sprite = fc.GetGlyph(glyph);
+				const Sprite *sprite = fc->GetGlyph(glyph);
+				/* Check clipping (the "+ 1" is for the shadow). */
+				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
+
+				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
+
 				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BlitterMode::ColourRemap);
 			}
 		}
@@ -704,6 +711,7 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
  * Calculates height of string (in pixels). The string is changed to a multiline string if needed.
  * @param str string to check
  * @param maxw maximum string width
+ * @param fontsize The size of the initial characters.
  * @return height of pixels of string when it is drawn
  */
 int GetStringHeight(std::string_view str, int maxw, FontSize fontsize)
@@ -752,6 +760,7 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  * Calculate string bounding box for multi-line strings.
  * @param str        String to check.
  * @param suggestion Suggested bounding box.
+ * @param fontsize The size of the initial characters.
  * @return Bounding box for the multi-line string, may be bigger than \a suggestion.
  */
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion, FontSize fontsize)
@@ -898,6 +907,7 @@ Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize)
  * Get bounding box of a string.
  * Has the same restrictions as #GetStringBoundingBox(std::string_view str, FontSize start_fontsize).
  * @param strid String to examine.
+ * @param start_fontsize Fontsize to start the text with.
  * @return Width and height of the bounding box for the string in pixels.
  */
 Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize)
@@ -1051,6 +1061,7 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
  * @param y The Y location to draw.
  * @param mode The settings for the blitter to pass.
  * @param sub Whether to only draw a sub set of the sprite.
+ * @param sprite_id The unique identifier of the sprite for NewGRF debug purposes.
  * @param zoom The zoom level at which to draw the sprites.
  * @param dst Optional parameter for a different blitting destination.
  * @tparam ZOOM_BASE The factor required to get the sub sprite information into the right size.
@@ -1720,6 +1731,20 @@ void SetAnimatedMouseCursor(std::span<const AnimCursor> table)
 }
 
 /**
+ * Assign an animation or a non-animated sprite to the cursor.
+ * @param icon New shape of the mouse cursor.
+ * @param pal Palette to use.
+ */
+void SetCursor(CursorID icon, PaletteID pal)
+{
+	if ((icon & ANIMCURSOR_FLAG) != 0) {
+		SetAnimatedMouseCursor(_animcursors[icon & ~ANIMCURSOR_FLAG]);
+	} else {
+		SetMouseCursor(icon, pal);
+	}
+}
+
+/**
  * Update cursor position based on a relative change.
  *
  * @param delta_x How much change in the X position.
@@ -1811,6 +1836,8 @@ void UpdateGUIZoom()
  */
 bool AdjustGUIZoom(bool automatic)
 {
+	if (VideoDriver::GetInstance() == nullptr) return false;
+
 	ZoomLevel old_gui_zoom = _gui_zoom;
 	ZoomLevel old_font_zoom = _font_zoom;
 	int old_scale = _gui_scale;

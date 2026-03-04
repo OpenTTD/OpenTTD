@@ -84,56 +84,49 @@ inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::
 
 template <typename T, T... i>
 inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
-	return std::array<CommandInfo, sizeof...(i)>{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }};
+	return EnumClassIndexContainer<std::array<CommandInfo, sizeof...(i)>, Commands>{{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }}};
 }
 
 /**
- * The master command table
+ * The master command table.
  *
- * This table contains all possible CommandProc functions with
- * the flags which belongs to it. The indices are the same
- * as the value from the CMD_* enums.
+ * This contains the #CommandInfo for all possible #Commands functions.
  */
-static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
+static constexpr auto _command_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{});
 
 
 /**
- * This function range-checks a cmd.
- *
- * @param cmd The integer value of a command
- * @return true if the command is valid (and got a CommandProc function)
+ * This function range-checks a Commands. This is primarily for Commands coming from the network.
+ * @param cmd The command.
+ * @return True if the command is valid.
  */
 bool IsValidCommand(Commands cmd)
 {
-	return cmd < _command_proc_table.size();
+	return to_underlying(cmd) < _command_table.size();
 }
 
 /**
- * This function mask the parameter with CMD_ID_MASK and returns
- * the flags which belongs to the given command.
- *
- * @param cmd The integer value of the command
+ * Get the command flags associated with the given command.
+ * @param cmd The command.
  * @return The flags for this command
  */
 CommandFlags GetCommandFlags(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd].flags;
+	return _command_table[cmd].flags;
 }
 
 /**
- * This function mask the parameter with CMD_ID_MASK and returns
- * the name which belongs to the given command.
- *
- * @param cmd The integer value of the command
+ * Get the name of the given command.
+ * @param cmd The command.
  * @return The name for this command
  */
 std::string_view GetCommandName(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd].name;
+	return _command_table[cmd].name;
 }
 
 /**
@@ -158,7 +151,7 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 	static_assert(std::size(command_type_lookup) == to_underlying(CommandType::End));
 
 	assert(IsValidCommand(cmd));
-	return _game_mode == GM_EDITOR || command_type_lookup[to_underlying(_command_proc_table[cmd].type)] <= _settings_game.construction.command_pause_level;
+	return _game_mode == GM_EDITOR || command_type_lookup[to_underlying(_command_table[cmd].type)] <= _settings_game.construction.command_pause_level;
 }
 
 /**
@@ -190,7 +183,7 @@ void CommandHelperBase::InternalDoAfter(CommandCost &res, DoCommandFlags flags, 
 	} else {
 		/* If top-level, subtract the money. */
 		if (res.Succeeded() && top_level && !flags.Test(DoCommandFlag::Bankrupt)) {
-			SubtractMoneyFromCompany(res);
+			SubtractMoneyFromCompany(_current_company, res);
 		}
 	}
 }
@@ -257,7 +250,13 @@ void CommandHelperBase::InternalPostResult(CommandCost &res, TileIndex tile, boo
 	}
 }
 
-/** Helper to make a desync log for a command. */
+/**
+ * Helper to make a desync log for a command.
+ * @param cmd The executed command.
+ * @param err_message The error messages of the command.
+ * @param args The encoded arguments of the command.
+ * @param failed Whether the command failed.
+ */
 void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
 	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, _current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
@@ -269,7 +268,7 @@ void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, 
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex, Backup<CompanyID> &cur_company)
+bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, Backup<CompanyID> &cur_company)
 {
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = cmd_flags.Any({CommandFlag::Spectator, CommandFlag::Server});
@@ -333,7 +332,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param cmd Command that was executed.
  * @param cmd_flags Command flags.
  * @param res_test Command result of test run.
- * @param tes_exec Command result of real run.
+ * @param res_exec Command result of real run.
  * @param extra_cash Additional cash required for successful command execution.
  * @param tile Tile of command execution.
  * @param[in,out] cur_company Backup of current company at start of command execution.
@@ -343,7 +342,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
-	if (cmd == CMD_COMPANY_CTRL) {
+	if (cmd == Commands::CompanyControl) {
 		cur_company.Trash();
 		/* We are a new company                  -> Switch to new local company.
 		 * We were closed down                   -> Switch to spectator
@@ -381,10 +380,10 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 		if (c != nullptr) c->last_build_coordinate = tile;
 	}
 
-	SubtractMoneyFromCompany(res_exec);
+	SubtractMoneyFromCompany(_current_company, res_exec);
 
 	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
-	if (_pause_mode.Any() && _command_proc_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
+	if (_pause_mode.Any() && _command_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();

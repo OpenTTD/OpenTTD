@@ -168,6 +168,7 @@ void SocialIntegration::Initialize()
  *
  * @param plugin Plugin to call the function pointer on.
  * @param func   Function pointer to call.
+ * @param args The arguments to pass to the given function pointer.
  */
 template <typename T, typename... Ts>
 static void PluginCall(std::unique_ptr<InternalSocialIntegrationPlugin> &plugin, T func, Ts... args)

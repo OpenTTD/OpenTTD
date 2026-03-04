@@ -5,10 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file cocoa_m.cpp
- * @brief MIDI music player for MacOS X using CoreAudio.
- */
+/** @file cocoa_m.cpp MIDI music player for MacOS X using CoreAudio. */
 
 
 #ifdef WITH_COCOA
@@ -25,10 +22,6 @@
 #include <AudioToolbox/AudioToolbox.h>
 
 #include "../safeguards.h"
-
-#if !defined(HAVE_OSX_1011_SDK)
-#define kMusicSequenceFile_AnyType 0
-#endif
 
 static FMusicDriver_Cocoa iFMusicDriver_Cocoa;
 

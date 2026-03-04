@@ -50,6 +50,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_OBJECT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_OBJECT_TYPE_TOOLTIP; }
+	StringID GetCollectionTooltip() const override { return STR_PICKER_OBJECT_COLLECTION_TOOLTIP; }
 
 	bool IsActive() const override
 	{
@@ -61,7 +62,7 @@ public:
 		return false;
 	}
 
-	int GetSelectedClass() const override { return _object_gui.sel_class; }
+	int GetSelectedClass() const override { return _object_gui.sel_class.base(); }
 	void SetSelectedClass(int id) const override { _object_gui.sel_class = this->GetClassIndex(id); }
 
 	StringID GetClassName(int id) const override
@@ -110,7 +111,7 @@ public:
 		for (const Object *o : Object::Iterate()) {
 			if (GetTileOwner(o->location.tile) != _current_company) continue;
 			const ObjectSpec *spec = ObjectSpec::Get(o->type);
-			if (spec == nullptr || spec->class_index == INVALID_OBJECT_CLASS || !spec->IsEverAvailable()) continue;
+			if (spec == nullptr || spec->class_index == ObjectClassID::Invalid() || !spec->IsEverAvailable()) continue;
 			items.insert(GetPickerItem(spec));
 		}
 	}
@@ -336,7 +337,7 @@ public:
 		if (spec->size == OBJECT_SIZE_1X1) {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_BUILD_OBJECT);
 		} else {
-			Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), _object_gui.sel_view);
+			Command<Commands::BuildObject>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), _object_gui.sel_view);
 		}
 	}
 
@@ -351,15 +352,9 @@ public:
 
 		assert(select_proc == DDSP_BUILD_OBJECT);
 
-		if (!_settings_game.construction.freeform_edges) {
-			/* When end_tile is MP_VOID, the error tile will not be visible to the
-			 * user. This happens when terraforming at the southern border. */
-			if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
-			if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
-		}
 		const ObjectSpec *spec = ObjectClass::Get(_object_gui.sel_class)->GetSpec(_object_gui.sel_type);
-		Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
-			end_tile, start_tile, spec->Index(), _object_gui.sel_view, (_ctrl_pressed ? true : false));
+		Command<Commands::BuildObjectArea>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
+			end_tile, start_tile, spec->Index(), _object_gui.sel_view, _ctrl_pressed);
 	}
 
 	void OnPlaceObjectAbort() override
@@ -421,7 +416,10 @@ static WindowDesc _build_object_desc(
 	&BuildObjectWindow::hotkeys
 );
 
-/** Show our object picker.  */
+/**
+ * Show our object picker.
+ * @return The allocated window or \c nullptr when no window was allocated.
+ */
 Window *ShowBuildObjectPicker()
 {
 	/* Don't show the place object button when there are no objects to place. */
@@ -434,5 +432,5 @@ Window *ShowBuildObjectPicker()
 /** Reset all data of the object GUI. */
 void InitializeObjectGui()
 {
-	_object_gui.sel_class = ObjectClassID::OBJECT_CLASS_BEGIN;
+	_object_gui.sel_class = ObjectClassID::Begin();
 }

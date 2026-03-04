@@ -5,11 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file os_abstraction.h Network stuff has many things that needs to be
- *                        included and/or implemented by default.
- *                        All those things are in this file.
- */
+/** @file os_abstraction.h Includes and/or implementations for the network stuff. */
 
 #ifndef NETWORK_CORE_OS_ABSTRACTION_H
 #define NETWORK_CORE_OS_ABSTRACTION_H

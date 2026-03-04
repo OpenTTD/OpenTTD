@@ -68,9 +68,13 @@ const uint8_t _engine_offsets[4] = {
 
 static_assert(lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info) + lengthof(_orig_aircraft_vehicle_info) == lengthof(_orig_engine_info));
 
-Engine::Engine(VehicleType type, uint16_t local_id)
+Engine::Engine(EngineID index, VehicleType type, uint16_t local_id) : EnginePool::PoolItem<&_engine_pool>(index)
 {
 	this->type = type;
+
+	/* Called in the context of loading a savegame. The rest comes from the loader. */
+	if (type == VEH_INVALID) return;
+
 	this->grf_prop.local_id = local_id;
 	this->list_position = local_id;
 	this->preview_company = CompanyID::Invalid();
@@ -284,23 +288,23 @@ Money Engine::GetRunningCost() const
 	switch (this->type) {
 		case VEH_ROAD:
 			base_price = this->VehInfo<RoadVehicleInfo>().running_cost_class;
-			if (base_price == INVALID_PRICE) return 0;
+			if (base_price == Price::Invalid) return 0;
 			cost_factor = GetEngineProperty(this->index, PROP_ROADVEH_RUNNING_COST_FACTOR, this->VehInfo<RoadVehicleInfo>().running_cost);
 			break;
 
 		case VEH_TRAIN:
 			base_price = this->VehInfo<RailVehicleInfo>().running_cost_class;
-			if (base_price == INVALID_PRICE) return 0;
+			if (base_price == Price::Invalid) return 0;
 			cost_factor = GetEngineProperty(this->index, PROP_TRAIN_RUNNING_COST_FACTOR, this->VehInfo<RailVehicleInfo>().running_cost);
 			break;
 
 		case VEH_SHIP:
-			base_price = PR_RUNNING_SHIP;
+			base_price = Price::RunningShip;
 			cost_factor = GetEngineProperty(this->index, PROP_SHIP_RUNNING_COST_FACTOR, this->VehInfo<ShipVehicleInfo>().running_cost);
 			break;
 
 		case VEH_AIRCRAFT:
-			base_price = PR_RUNNING_AIRCRAFT;
+			base_price = Price::RunningAircraft;
 			cost_factor = GetEngineProperty(this->index, PROP_AIRCRAFT_RUNNING_COST_FACTOR, this->VehInfo<AircraftVehicleInfo>().running_cost);
 			break;
 
@@ -320,27 +324,27 @@ Money Engine::GetCost() const
 	uint cost_factor;
 	switch (this->type) {
 		case VEH_ROAD:
-			base_price = PR_BUILD_VEHICLE_ROAD;
+			base_price = Price::BuildVehicleRoad;
 			cost_factor = GetEngineProperty(this->index, PROP_ROADVEH_COST_FACTOR, this->VehInfo<RoadVehicleInfo>().cost_factor);
 			break;
 
 		case VEH_TRAIN:
 			if (this->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) {
-				base_price = PR_BUILD_VEHICLE_WAGON;
+				base_price = Price::BuildVehicleWagon;
 				cost_factor = GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->VehInfo<RailVehicleInfo>().cost_factor);
 			} else {
-				base_price = PR_BUILD_VEHICLE_TRAIN;
+				base_price = Price::BuildVehicleTrain;
 				cost_factor = GetEngineProperty(this->index, PROP_TRAIN_COST_FACTOR, this->VehInfo<RailVehicleInfo>().cost_factor);
 			}
 			break;
 
 		case VEH_SHIP:
-			base_price = PR_BUILD_VEHICLE_SHIP;
+			base_price = Price::BuildVehicleShip;
 			cost_factor = GetEngineProperty(this->index, PROP_SHIP_COST_FACTOR, this->VehInfo<ShipVehicleInfo>().cost_factor);
 			break;
 
 		case VEH_AIRCRAFT:
-			base_price = PR_BUILD_VEHICLE_AIRCRAFT;
+			base_price = Price::BuildVehicleAircraft;
 			cost_factor = GetEngineProperty(this->index, PROP_AIRCRAFT_COST_FACTOR, this->VehInfo<AircraftVehicleInfo>().cost_factor);
 			break;
 
@@ -609,7 +613,7 @@ void SetupEngines()
 		assert(std::size(mapping) >= _engine_counts[type]);
 
 		for (const EngineIDMapping &eid : mapping) {
-			new (eid.engine) Engine(type, eid.internal_id);
+			Engine::CreateAtIndex(eid.engine, type, eid.internal_id);
 		}
 	}
 }
@@ -642,6 +646,7 @@ static void ClearLastVariant(EngineID engine_id, VehicleType type)
 /**
  * Update #Engine::reliability and (if needed) update the engine GUIs.
  * @param e %Engine to update.
+ * @param new_month Whether this is called from a 'new month' context or not, i.e. whether engines should be aged.
  */
 void CalcEngineReliability(Engine *e, bool new_month)
 {
@@ -711,7 +716,7 @@ void SetYearEngineAgingStops()
 /**
  * Start/initialise one engine.
  * @param e The engine to initialise.
- * @param aging_date The date used for age calculations.
+ * @param aging_ymd The date used for age calculations.
  * @param seed Random seed.
  */
 void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ymd, uint32_t seed)
@@ -958,7 +963,7 @@ static bool IsVehicleTypeDisabled(VehicleType type, bool ai)
 }
 
 /** Daily check to offer an exclusive engine preview to the companies. */
-static const IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::ENGINE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalendar::Trigger::Day, TimerGameCalendar::Priority::Engine}, [](auto)
 {
 	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, TimerGameCalendar::date);
@@ -1183,7 +1188,7 @@ void CalendarEnginesMonthlyLoop()
 	}
 }
 
-static const IntervalTimer<TimerGameCalendar> _calendar_engines_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::ENGINE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _calendar_engines_monthly({TimerGameCalendar::Trigger::Month, TimerGameCalendar::Priority::Engine}, [](auto)
 {
 	CalendarEnginesMonthlyLoop();
 });

@@ -18,7 +18,10 @@
 
 #include "../safeguards.h"
 
-/** Action 0x13 */
+/**
+ * Action 0x13 - Load translation.
+ * @param buf Reader of the NewGRF.
+ */
 static void TranslateGRFStrings(ByteReader &buf)
 {
 	/* <13> <grfid> <num-ent> <offset> <text...>

@@ -49,7 +49,7 @@ bool StationClass::IsUIAvailable(uint) const
 }
 
 /* Instantiate StationClass. */
-template class NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
+template class NewGRFClass<StationSpec, StationClassID>;
 
 static const uint NUM_STATIONSSPECS_PER_STATION = 255; ///< Maximum number of parts per station.
 
@@ -115,6 +115,13 @@ TileArea GetRailTileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
  * - P = Position along platform from start, p = from end
  * .
  * if centered, C/P start from the centre and c/p are not available.
+ * @param axis The axis of the platform.
+ * @param tile The tile layout number.
+ * @param platforms Number of platforms.
+ * @param length Length of platforms.
+ * @param x The platform number.
+ * @param y Position along the platform.
+ * @param centred Whether to 'center' the platform location, or use the absolute location.
  * @return Platform information in bit-stuffed format.
  */
 uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred)
@@ -167,7 +174,7 @@ static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool ch
 	for (;;) {
 		TileIndex new_tile = TileAdd(tile, delta);
 
-		if (!IsTileType(new_tile, MP_STATION) || GetStationIndex(new_tile) != sid) break;
+		if (!IsTileType(new_tile, TileType::Station) || GetStationIndex(new_tile) != sid) break;
 		if (!HasStationRail(new_tile)) break;
 		if (check_type && GetCustomStationSpecIndex(new_tile) != orig_type) break;
 		if (check_axis && GetRailStationAxis(new_tile) != orig_axis) break;
@@ -222,7 +229,7 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 
 			/* With tunnels and bridges the tile has tracks, but they are not necessarily connected
 			 * with the next tile because the ramp is not going in the right direction. */
-			if (IsTileType(neighbour_tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(neighbour_tile) != *diagdir) {
+			if (IsTileType(neighbour_tile, TileType::TunnelBridge) && GetTunnelBridgeDirection(neighbour_tile) != *diagdir) {
 				continue;
 			}
 
@@ -244,7 +251,14 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 
 /* virtual */ uint32_t StationScopeResolver::GetRandomTriggers() const
 {
-	return this->st == nullptr ? 0 : this->st->waiting_random_triggers.base();
+	if (this->st == nullptr) return 0;
+
+	StationRandomTriggers triggers = st->waiting_random_triggers;
+
+	auto it = this->st->tile_waiting_random_triggers.find(this->tile);
+	if (it != std::end(this->st->tile_waiting_random_triggers)) triggers.Set(it->second);
+
+	return triggers.base();
 }
 
 
@@ -439,7 +453,7 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 		const GoodsEntry *ge = &this->goods[cargo];
 
 		switch (variable) {
-			case 0x60: return ge->HasData() ? std::min(ge->GetData().cargo.TotalCount(), 4095u) : 0;
+			case 0x60: return std::min(ge->TotalCount(), 4095u);
 			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->time_since_pickup : 0;
 			case 0x62: return ge->HasRating() ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->HasData() ? ge->GetData().cargo.PeriodsInTransit() : 0;
@@ -453,8 +467,8 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 	if (variable >= 0x8C && variable <= 0xEC) {
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
-			case 0: return g->HasData() ? g->GetData().cargo.TotalCount() : 0;
-			case 1: return GB(g->HasData() ? std::min(g->GetData().cargo.TotalCount(), 4095u) : 0, 0, 4) | (g->status.Test(GoodsEntry::State::Acceptance) ? (1U << 7) : 0);
+			case 0: return g->TotalCount();
+			case 1: return GB(std::min(g->TotalCount(), 4095u), 0, 4) | (g->status.Test(GoodsEntry::State::Acceptance) ? (1U << 7) : 0);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
 			case 4: return (g->HasData() ? g->GetData().cargo.GetFirstStation() : StationID::Invalid()).base();
@@ -521,14 +535,13 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 		case CargoGRFFileProps::SG_DEFAULT:
 			for (const GoodsEntry &ge : st->goods) {
-				if (!ge.HasData()) continue;
-				cargo += ge.GetData().cargo.TotalCount();
+				cargo += ge.TotalCount();
 			}
 			break;
 
 		default: {
 			const GoodsEntry &ge = st->goods[this->station_scope.cargo_type];
-			cargo = ge.HasData() ? ge.GetData().cargo.TotalCount() : 0;
+			cargo = ge.TotalCount();
 			break;
 		}
 	}
@@ -585,7 +598,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 		const Station *st = Station::From(this->station_scope.st);
 		/* Pick the first cargo that we have waiting */
 		for (const auto &[cargo, spritegroup] : statspec->grf_prop.spritegroups) {
-			if (cargo < NUM_CARGO && st->goods[cargo].HasData() && st->goods[cargo].GetData().cargo.TotalCount() > 0) {
+			if (cargo < NUM_CARGO && st->goods[cargo].TotalCount() > 0) {
 				ctype = cargo;
 				break;
 			}
@@ -797,8 +810,8 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
  * @param y Position y of image.
  * @param axis Axis.
  * @param railtype Rail type.
- * @param sclass, station Type of station.
- * @param station station ID
+ * @param sclass Class of station.
+ * @param station Station ID with the class.
  * @return True if the tile was drawn (allows for fallback to default graphic)
  */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)
@@ -878,7 +891,16 @@ const StationSpec *GetStationSpec(TileIndex t)
 	return specindex < st->speclist.size() ? st->speclist[specindex].spec : nullptr;
 }
 
-/** Wrapper for animation control, see GetStationCallback. */
+/**
+ * Perform the station callback in the context of the AnimationBase callback.
+ * @param callback The identifier of the callback.
+ * @param param1 The first parameter of the NewGRF callback.
+ * @param param2 The second parameter of the NewGRF callback.
+ * @param statspec The specification to run the callback on.
+ * @param st The station for the calback.
+ * @param tile The tile the station is at.
+ * @return The NewGRF result of the callback.
+ */
 uint16_t GetAnimStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, int)
 {
 	return GetStationCallback(callback, param1, param2, statspec, st, tile);
@@ -950,7 +972,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, StationRandomTrigger trigger, CargoType cargo_type)
 {
 	/* List of coverage areas for each animation trigger */
-	static const TriggerArea tas[] = {
+	static constexpr TriggerArea tas[] = {
 		TA_WHOLE, TA_WHOLE, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM
 	};
 
@@ -971,12 +993,16 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	}
 
 	/* Store triggers now for var 5F */
-	st->waiting_random_triggers.Set(trigger);
+	TriggerArea ta = tas[to_underlying(trigger)];
+	if (ta == TA_WHOLE) st->waiting_random_triggers.Set(trigger);
 	StationRandomTriggers used_random_triggers;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : GetRailTileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)])) {
+	for (TileIndex tile : GetRailTileArea(st, trigger_tile, ta)) {
 		if (st->TileBelongsToRailStation(tile)) {
+			/* Store triggers now for var 5F */
+			st->tile_waiting_random_triggers[tile].Set(trigger);
+
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss == nullptr) continue;
 
@@ -988,10 +1014,11 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 
 			if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
-				object.SetWaitingRandomTriggers(st->waiting_random_triggers);
+				object.SetWaitingRandomTriggers(st->waiting_random_triggers | st->tile_waiting_random_triggers[tile]);
 
 				object.ResolveRerandomisation();
 
+				st->tile_waiting_random_triggers[tile].Reset(object.GetUsedRandomTriggers());
 				used_random_triggers.Set(object.GetUsedRandomTriggers());
 
 				uint32_t reseed = object.GetReseedSum();

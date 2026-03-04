@@ -240,7 +240,7 @@ inline bool HasPowerOnRoad(RoadType enginetype, RoadType tiletype)
 inline Money RoadBuildCost(RoadType roadtype)
 {
 	assert(roadtype < ROADTYPE_END);
-	return (_price[PR_BUILD_ROAD] * GetRoadTypeInfo(roadtype)->cost_multiplier) >> 3;
+	return (_price[Price::BuildRoad] * GetRoadTypeInfo(roadtype)->cost_multiplier) >> 3;
 }
 
 /**
@@ -253,11 +253,11 @@ inline Money RoadClearCost(RoadType roadtype)
 	assert(roadtype < ROADTYPE_END);
 
 	/* Flat fee for removing road. */
-	if (RoadTypeIsRoad(roadtype)) return _price[PR_CLEAR_ROAD];
+	if (RoadTypeIsRoad(roadtype)) return _price[Price::ClearRoad];
 
 	/* Clearing tram earns a little money, but also incurs the standard clear road cost,
 	 * so no profit can be made. */
-	return _price[PR_CLEAR_ROAD] - RoadBuildCost(roadtype) * 3 / 4;
+	return _price[Price::ClearRoad] - RoadBuildCost(roadtype) * 3 / 4;
 }
 
 /**

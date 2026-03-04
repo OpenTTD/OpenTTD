@@ -79,7 +79,7 @@ void MoveBuoysToWaypoints()
 		/* Stations and waypoints are in the same pool, so if a station
 		 * is deleted there must be place for a Waypoint. */
 		assert(Waypoint::CanAllocateItem());
-		Waypoint *wp   = new (index) Waypoint(xy);
+		Waypoint *wp   = Waypoint::CreateAtIndex(index, xy);
 		wp->town       = town;
 		wp->string_id  = train ? STR_SV_STNAME_WAYPOINT : STR_SV_STNAME_BUOY;
 		wp->name       = std::move(name);
@@ -93,7 +93,7 @@ void MoveBuoysToWaypoints()
 			/* When we make a rail waypoint of the station, convert the map as well. */
 			for (TileIndex t : train_st) {
 				Tile tile(t);
-				if (!IsTileType(tile, MP_STATION) || GetStationIndex(tile) != index) continue;
+				if (!IsTileType(tile, TileType::Station) || GetStationIndex(tile) != index) continue;
 
 				SB(tile.m6(), 3, 3, to_underlying(StationType::RailWaypoint));
 				wp->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
@@ -228,6 +228,37 @@ public:
 /* Instantiate SlStationSpecList classes. */
 template class SlStationSpecList<StationSpec>;
 template class SlStationSpecList<RoadStopSpec>;
+
+class SlStationWaitingTriggers : public DefaultSaveLoadHandler<SlStationWaitingTriggers, BaseStation> {
+public:
+	using StationWaitingTriggersPair = std::pair<const TileIndex, StationRandomTriggers>;
+
+	static inline const SaveLoad description[] = {
+		SLE_VAR(StationWaitingTriggersPair, first, SLE_UINT32),
+		SLE_VAR(StationWaitingTriggersPair, second, SLE_UINT8),
+	};
+	static inline const SaveLoadCompatTable compat_description = _station_cargo_sl_compat;
+
+	void Save(BaseStation *st) const override
+	{
+		SlSetStructListLength(st->tile_waiting_random_triggers.size());
+		for (const auto &pair : st->tile_waiting_random_triggers) {
+			SlObject(const_cast<StationWaitingTriggersPair *>(&pair), this->GetDescription());
+		}
+	}
+
+	void Load(BaseStation *st) const override
+	{
+		size_t num = SlGetStructListLength(UINT32_MAX);
+		if (num == 0) return;
+
+		StationWaitingTriggersPair pair;
+		for (uint j = 0; j < num; ++j) {
+			SlObject(&pair, this->GetLoadDescription());
+			st->tile_waiting_random_triggers.emplace(pair.first, pair.second);
+		}
+	}
+};
 
 class SlStationCargo : public DefaultSaveLoadHandler<SlStationCargo, GoodsEntry> {
 public:
@@ -399,7 +430,7 @@ public:
 		if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_145) && st->facilities.Test(StationFacility::Airport)) {
 			/* Store the old persistent storage. The GRFID will be added later. */
 			assert(PersistentStorage::CanAllocateItem());
-			st->airport.psa = new PersistentStorage(0, GSF_INVALID, TileIndex{});
+			st->airport.psa = PersistentStorage::Create(0, GSF_INVALID, TileIndex{});
 			std::copy(std::begin(_old_st_persistent_storage.storage), std::end(_old_st_persistent_storage.storage), std::begin(st->airport.psa->storage));
 		}
 
@@ -426,7 +457,7 @@ public:
 					assert(CargoPacket::CanAllocateItem());
 
 					/* Don't construct the packet with station here, because that'll fail with old savegames */
-					CargoPacket *cp = new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, source, TileIndex{_cargo_source_xy}, _cargo_feeder_share);
+					CargoPacket *cp = CargoPacket::Create(GB(_waiting_acceptance, 0, 12), _cargo_periods, source, TileIndex{_cargo_source_xy}, _cargo_feeder_share);
 					ge.GetOrCreateData().cargo.Append(cp, StationID::Invalid());
 					ge.status.Set(GoodsEntry::State::Rating);
 				}
@@ -512,7 +543,7 @@ struct STNSChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Station *st = new (StationID(index)) Station();
+			Station *st = Station::CreateAtIndex(StationID(index));
 
 			_waiting_acceptance = 0;
 			SlObject(st, slt);
@@ -563,6 +594,7 @@ public:
 		/* Used by newstations for graphic variations */
 		    SLE_VAR(BaseStation, random_bits,            SLE_UINT16),
 		    SLE_VARNAME(BaseStation, waiting_random_triggers, "waiting_triggers", SLE_UINT8),
+	   SLEG_STRUCTLIST("tile_waiting_triggers", SlStationWaitingTriggers),
 	   SLEG_CONDVAR("num_specs", SlStationSpecList<StationSpec>::last_num_specs, SLE_UINT8, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_base_sl_compat;
@@ -714,7 +746,7 @@ struct STNNChunkHandler : ChunkHandler {
 		while ((index = SlIterateArray()) != -1) {
 			bool waypoint = static_cast<StationFacilities>(SlReadByte()).Test(StationFacility::Waypoint);
 
-			BaseStation *bst = waypoint ? (BaseStation *)new (StationID(index)) Waypoint() : new (StationID(index)) Station();
+			BaseStation *bst = waypoint ? (BaseStation *)Waypoint::CreateAtIndex(StationID(index)) : Station::CreateAtIndex(StationID(index));
 			SlObject(bst, slt);
 		}
 	}
@@ -752,7 +784,7 @@ struct ROADChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			RoadStop *rs = new (RoadStopID(index)) RoadStop(INVALID_TILE);
+			RoadStop *rs = RoadStop::CreateAtIndex(RoadStopID(index), INVALID_TILE);
 
 			SlObject(rs, slt);
 		}

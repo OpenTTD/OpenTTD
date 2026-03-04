@@ -55,9 +55,9 @@ enum StationListWidgets : WidgetID {
 
 /** Widgets of the #SelectStationWindow class. */
 enum JoinStationWidgets : WidgetID {
-	WID_JS_CAPTION,   // Caption of the window.
-	WID_JS_PANEL,     // Main panel.
-	WID_JS_SCROLLBAR, // Scrollbar of the panel.
+	WID_JS_CAPTION, ///< Caption of the window.
+	WID_JS_PANEL, ///< Main panel.
+	WID_JS_SCROLLBAR, ///< Scrollbar of the panel.
 };
 
 #endif /* WIDGETS_STATION_WIDGET_H */

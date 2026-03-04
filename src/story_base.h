@@ -25,9 +25,7 @@ extern StoryPagePool _story_page_pool;
 extern uint32_t _story_page_element_next_sort_value;
 extern uint32_t _story_page_next_sort_value;
 
-/*
- * Each story page element is one of these types.
- */
+/** Each story page element is one of these types. */
 enum StoryPageElementType : uint8_t {
 	SPET_TEXT = 0,       ///< A text element.
 	SPET_LOCATION,       ///< An element that references a tile along with a one-line text.
@@ -111,7 +109,7 @@ enum StoryPageButtonCursor : uint8_t {
 /**
  * Checks if a StoryPageButtonCursor value is valid.
  *
- * @param wc The value to check
+ * @param cursor The value to check.
  * @return true if the given value is a valid StoryPageButtonCursor.
  */
 inline bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)
@@ -150,12 +148,9 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	uint32_t referenced_id = 0; ///< Id of referenced object (location, goal etc.)
 	EncodedString text{}; ///< Static content text of page element
 
-	/**
-	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
-	 */
-	StoryPageElement() { }
-	StoryPageElement(uint32_t sort_value, StoryPageElementType type, StoryPageID page) :
-		sort_value(sort_value), page(page), type(type) { }
+	StoryPageElement(StoryPageElementID index) : StoryPageElementPool::PoolItem<&_story_page_element_pool>(index) {}
+	StoryPageElement(StoryPageElementID index, uint32_t sort_value, StoryPageElementType type, StoryPageID page) :
+		StoryPageElementPool::PoolItem<&_story_page_element_pool>(index), sort_value(sort_value), page(page), type(type) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
@@ -171,12 +166,9 @@ struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
 
 	EncodedString title; ///< Title of story page
 
-	/**
-	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
-	 */
-	StoryPage() { }
-	StoryPage(uint32_t sort_value, TimerGameCalendar::Date date, CompanyID company, const EncodedString &title) :
-		sort_value(sort_value), date(date), company(company), title(title) {}
+	StoryPage(StoryPageID index) : StoryPagePool::PoolItem<&_story_page_pool>(index) {}
+	StoryPage(StoryPageID index, uint32_t sort_value, TimerGameCalendar::Date date, CompanyID company, const EncodedString &title) :
+		StoryPagePool::PoolItem<&_story_page_pool>(index), sort_value(sort_value), date(date), company(company), title(title) {}
 
 	~StoryPage();
 };

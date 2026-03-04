@@ -5,9 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/**
- * @file string_builder.hpp Compose strings from textual and binary data.
- */
+/** @file string_builder.hpp Compose strings from textual and binary data. */
 
 #ifndef STRING_BUILDER_HPP
 #define STRING_BUILDER_HPP
@@ -19,17 +17,21 @@
  */
 class BaseStringBuilder {
 public:
+	/** The type of the size of our strings. */
 	using size_type = std::string_view::size_type;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseStringBuilder() = default;
 
 	/**
 	 * Append buffer.
+	 * @param str Characters to append.
 	 */
 	virtual void PutBuffer(std::span<const char> str) = 0;
 
 	/**
 	 * Append string.
+	 * @param str The string to append.
 	 */
 	void Put(std::string_view str) { this->PutBuffer(str); }
 
@@ -47,6 +49,8 @@ public:
 
 	/**
 	 * Append integer 'value' in given number 'base'.
+	 * @param value The value.
+	 * @param base The base to format the value in.
 	 */
 	template <class T>
 	void PutIntegerBase(T value, int base)
@@ -63,28 +67,33 @@ public:
  * Compose data into a growing std::string.
  */
 class StringBuilder final : public BaseStringBuilder {
-	std::string *dest;
+	std::string *dest; ///< The string to write to.
 public:
 	/**
 	 * Construct StringBuilder into destination string.
-	 * @note The lifetime of the string must exceed the lifetime of the StringBuilder.
+	 * @param dest The string to write into.
+	 * @attention The lifetime of the string must exceed the lifetime of the StringBuilder.
 	 */
 	StringBuilder(std::string &dest) : dest(&dest) {}
 
 	/**
 	 * Check whether any bytes have been written.
+	 * @return \c true iff the buffer isn't empty.
 	 */
 	[[nodiscard]] bool AnyBytesWritten() const noexcept { return !this->dest->empty(); }
 	/**
 	 * Get number of already written bytes.
+	 * @return Size of buffer.
 	 */
 	[[nodiscard]] size_type GetBytesWritten() const noexcept { return this->dest->size(); }
 	/**
 	 * Get already written data.
+	 * @return Reference to the current buffer.
 	 */
 	[[nodiscard]] const std::string &GetWrittenData() const noexcept { return *dest; }
 	/**
 	 * Get mutable already written data.
+	 * @return Reference to the current buffer.
 	 */
 	[[nodiscard]] std::string &GetString() noexcept { return *dest; }
 
@@ -92,6 +101,8 @@ public:
 
 	/**
 	 * Append string.
+	 * @param str The string to append.
+	 * @return Reference to this builder.
 	 */
 	StringBuilder& operator+=(std::string_view str)
 	{
@@ -99,9 +110,11 @@ public:
 		return *this;
 	}
 
+	/** Iterator for inserting at the back of our buffer. */
 	using back_insert_iterator = std::back_insert_iterator<std::string>;
 	/**
 	 * Create a back-insert-iterator.
+	 * @return The iterator.
 	 */
 	back_insert_iterator back_inserter()
 	{

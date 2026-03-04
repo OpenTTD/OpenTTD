@@ -83,10 +83,10 @@ public:
 		return true;
 	}
 
-	virtual bool ClaimMousePointer()
-	{
-		return true;
-	}
+	/**
+	 * Claim the exclusive rights for the mouse pointer.
+	 */
+	virtual void ClaimMousePointer() {}
 
 	/**
 	 * Get whether the mouse cursor is drawn by the video driver.
@@ -166,6 +166,10 @@ public:
 		return {};
 	}
 
+	/**
+	 * Get some information about the selected driver/backend to be shown to the user.
+	 * @return The information.
+	 */
 	virtual std::string_view GetInfoString() const
 	{
 		return this->GetName();
@@ -187,11 +191,19 @@ public:
 	void GameLoopPause();
 
 	/**
+	 * Prevents the system from going to sleep.
+	 *
+	 * @param inhibited If true, sleep will be disabled. If false, sleep will be enabled.
+	 */
+	virtual void SetScreensaverInhibited([[maybe_unused]] bool inhibited) {}
+
+	/**
 	 * Get the currently active instance of the video driver.
+	 * @return The instance.
 	 */
 	static VideoDriver *GetInstance()
 	{
-		return static_cast<VideoDriver *>(DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO).get());
+		return static_cast<VideoDriver *>(DriverFactoryBase::GetActiveDriver(Driver::Type::Video).get());
 	}
 
 	static std::string GetCaption();
@@ -201,11 +213,13 @@ public:
 	 * will make sure the buffer is unlocked no matter how the scope is exited.
 	 */
 	struct VideoBufferLocker {
+		/** Lock the video buffer. */
 		VideoBufferLocker()
 		{
 			this->unlock = VideoDriver::GetInstance()->LockVideoBuffer();
 		}
 
+		/** Release the video buffer. */
 		~VideoBufferLocker()
 		{
 			if (this->unlock) VideoDriver::GetInstance()->UnlockVideoBuffer();
@@ -220,6 +234,7 @@ protected:
 
 	/**
 	 * Get the resolution of the main screen.
+	 * @return The dimension of the screen in pixels.
 	 */
 	virtual Dimension GetScreenSize() const { return { DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT }; }
 

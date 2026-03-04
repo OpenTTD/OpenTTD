@@ -25,35 +25,35 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WaterTileType::Depot;
+	return ::IsTileType(tile, TileType::Water) && ::GetWaterTileType(tile) == WaterTileType::Depot;
 }
 
 /* static */ bool ScriptMarine::IsDockTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_STATION) && ::IsDock(tile);
+	return ::IsTileType(tile, TileType::Station) && ::IsDock(tile);
 }
 
 /* static */ bool ScriptMarine::IsBuoyTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_STATION) && ::IsBuoy(tile);
+	return ::IsTileType(tile, TileType::Station) && ::IsBuoy(tile);
 }
 
 /* static */ bool ScriptMarine::IsLockTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WaterTileType::Lock;
+	return ::IsTileType(tile, TileType::Water) && ::GetWaterTileType(tile) == WaterTileType::Lock;
 }
 
 /* static */ bool ScriptMarine::IsCanalTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsTileType(tile, MP_WATER) && ::IsCanal(tile);
+	return ::IsTileType(tile, TileType::Water) && ::IsCanal(tile);
 }
 
 /* static */ bool ScriptMarine::AreWaterTilesConnected(TileIndex t1, TileIndex t2)
@@ -83,7 +83,7 @@
 	EnforcePrecondition(false, ::IsValidTile(front));
 	EnforcePrecondition(false, (::TileX(front) == ::TileX(tile)) != (::TileY(front) == ::TileY(tile)));
 
-	return ScriptObject::Command<CMD_BUILD_SHIP_DEPOT>::Do(tile, ::TileX(front) == ::TileX(tile) ? AXIS_Y : AXIS_X);
+	return ScriptObject::Command<Commands::BuildShipDepot>::Do(tile, ::TileX(front) == ::TileX(tile) ? AXIS_Y : AXIS_X);
 }
 
 /* static */ bool ScriptMarine::BuildDock(TileIndex tile, StationID station_id)
@@ -92,7 +92,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id));
 
-	return ScriptObject::Command<CMD_BUILD_DOCK>::Do(tile, ScriptStation::IsValidStation(station_id) ? station_id : StationID::Invalid(), station_id != ScriptStation::STATION_JOIN_ADJACENT);
+	return ScriptObject::Command<Commands::BuildDock>::Do(tile, ScriptStation::IsValidStation(station_id) ? station_id : StationID::Invalid(), station_id != ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptMarine::BuildBuoy(TileIndex tile)
@@ -100,7 +100,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_BUOY>::Do(tile);
+	return ScriptObject::Command<Commands::BuildBuoy>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::BuildLock(TileIndex tile)
@@ -108,7 +108,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_LOCK>::Do(tile);
+	return ScriptObject::Command<Commands::BuildLock>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::BuildCanal(TileIndex tile)
@@ -116,7 +116,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return ScriptObject::Command<CMD_BUILD_CANAL>::Do(tile, tile, WaterClass::Canal, false);
+	return ScriptObject::Command<Commands::BuildCanal>::Do(tile, tile, WaterClass::Canal, false);
 }
 
 /* static */ bool ScriptMarine::RemoveWaterDepot(TileIndex tile)
@@ -125,7 +125,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsWaterDepotTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
+	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveDock(TileIndex tile)
@@ -134,7 +134,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsDockTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
+	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveBuoy(TileIndex tile)
@@ -143,7 +143,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsBuoyTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
+	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveLock(TileIndex tile)
@@ -152,7 +152,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsLockTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
+	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
 }
 
 /* static */ bool ScriptMarine::RemoveCanal(TileIndex tile)
@@ -161,17 +161,17 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsCanalTile(tile));
 
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
+	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
 }
 
 /* static */ Money ScriptMarine::GetBuildCost(BuildType build_type)
 {
 	switch (build_type) {
-		case BT_DOCK:  return ::GetPrice(PR_BUILD_STATION_DOCK, 1, nullptr);
-		case BT_DEPOT: return ::GetPrice(PR_BUILD_DEPOT_SHIP, 1, nullptr);
-		case BT_BUOY:  return ::GetPrice(PR_BUILD_WAYPOINT_BUOY, 1, nullptr);
-		case BT_LOCK:  return ::GetPrice(PR_BUILD_LOCK, 1, nullptr);
-		case BT_CANAL: return ::GetPrice(PR_BUILD_CANAL, 1, nullptr);
+		case BT_DOCK:  return ::GetPrice(Price::BuildStationDock, 1, nullptr);
+		case BT_DEPOT: return ::GetPrice(Price::BuildDepotShip, 1, nullptr);
+		case BT_BUOY:  return ::GetPrice(Price::BuildWaypointBuoy, 1, nullptr);
+		case BT_LOCK:  return ::GetPrice(Price::BuildLock, 1, nullptr);
+		case BT_CANAL: return ::GetPrice(Price::BuildCanal, 1, nullptr);
 		default: return -1;
 	}
 }

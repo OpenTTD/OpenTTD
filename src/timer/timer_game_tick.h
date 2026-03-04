@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file timer_game_tick.h Definition of the tick-based game-timer */
+/** @file timer_game_tick.h Definition of the tick-based game-timer. */
 
 #ifndef TIMER_GAME_TICK_H
 #define TIMER_GAME_TICK_H
@@ -24,12 +24,14 @@ public:
 	using Ticks = int32_t; ///< The type to store ticks in
 	using TickCounter = uint64_t; ///< The type that the tick counter is stored in
 
-	enum Priority : uint8_t {
-		NONE, ///< These timers can be executed in any order; the order is not relevant.
+	/** Different levels of priority to run the timers in. */
+	enum class Priority : uint8_t {
+		None, ///< These timers can be executed in any order; the order is not relevant.
 
 		/* For all other priorities, the order is important.
 		 * For safety, you can only setup a single timer on a single priority. */
-		COMPETITOR_TIMEOUT,
+
+		CompetitorTimeout, ///< Considering starting a new competitor/AI.
 	};
 
 	struct TPeriod {

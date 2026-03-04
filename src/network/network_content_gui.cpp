@@ -386,6 +386,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 	/**
 	 * Callback function for disclaimer about entering external websites.
+	 * @param w The window to open the external search on.
+	 * @param accepted Whether the disclaimer was accepted.
 	 */
 	static void ExternalSearchDisclaimerCallback(Window *w, bool accepted)
 	{
@@ -423,7 +425,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		this->ScrollToSelected();
 	}
 
-	/** Sort content by name. */
+	/** Sort content by name. @copydoc GUIList::Sorter */
 	static bool NameSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
 		int r = StrNaturalCompare(a->name, b->name, true); // Sort by name (natural sorting).
@@ -431,7 +433,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		return r < 0;
 	}
 
-	/** Sort content by type. */
+	/** Sort content by type. @copydoc GUIList::Sorter */
 	static bool TypeSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
 		int r = 0;
@@ -442,7 +444,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		return r < 0;
 	}
 
-	/** Sort content by state. */
+	/** Sort content by state. @copydoc GUIList::Sorter */
 	static bool StateSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
 		int r = to_underlying(a->state) - to_underlying(b->state);
@@ -459,24 +461,24 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		if (idx >= 0) this->list_pos = idx;
 	}
 
-	/** Filter content by tags/name */
-	static bool TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	/** Filter content by tags/name. @copydoc GUIList::FilterFunction */
+	static bool TagNameFilter(const ContentInfo * const *item, ContentListFilterData &filter)
 	{
-		if ((*a)->state == ContentInfo::State::Selected || (*a)->state == ContentInfo::State::Autoselected) return true;
+		if ((*item)->state == ContentInfo::State::Selected || (*item)->state == ContentInfo::State::Autoselected) return true;
 
 		filter.string_filter.ResetState();
-		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag);
+		for (auto &tag : (*item)->tags) filter.string_filter.AddLine(tag);
 
-		filter.string_filter.AddLine((*a)->name);
+		filter.string_filter.AddLine((*item)->name);
 		return filter.string_filter.GetState();
 	}
 
-	/** Filter content by type, but still show content selected for download. */
-	static bool TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	/** Filter content by type, but still show content selected for download. @copydoc GUIList::FilterFunction */
+	static bool TypeOrSelectedFilter(const ContentInfo * const *item, ContentListFilterData &filter)
 	{
 		if (filter.types.None()) return true;
-		if (filter.types.Test((*a)->type)) return true;
-		return ((*a)->state == ContentInfo::State::Selected || (*a)->state == ContentInfo::State::Autoselected);
+		if (filter.types.Test((*item)->type)) return true;
+		return ((*item)->state == ContentInfo::State::Selected || (*item)->state == ContentInfo::State::Autoselected);
 	}
 
 	/** Filter the content list */
@@ -603,7 +605,7 @@ public:
 				break;
 
 			case WID_NCL_MATRIX:
-				fill.height = resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				fill.height = resize.height = std::max<uint>(std::max<uint>(this->checkbox_size.height, GetCharacterHeight(FS_NORMAL)), GetCharacterHeight(FS_SMALL)) + padding.height;
 				size.height = 10 * resize.height;
 				break;
 		}

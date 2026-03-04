@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file goal_type.h basic types related to goals */
+/** @file goal_type.h Basic types related to goals. */
 
 #ifndef GOAL_TYPE_H
 #define GOAL_TYPE_H

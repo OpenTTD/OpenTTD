@@ -101,6 +101,7 @@ static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool 
  * @param settings SettingDesc struct containing all information
  * @param object can be either nullptr in which case we load global variables or
  * a pointer to a struct which is getting saved
+ * @param slct Savegame compatibility mapping table.
  */
 static void LoadSettings(const SettingTable &settings, void *object, const SaveLoadCompatTable &slct)
 {

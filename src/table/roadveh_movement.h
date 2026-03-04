@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file table/roadveh_movement.h Data about how a road vehicle must drive on a tile */
+/** @file roadveh_movement.h Data about how a road vehicle must drive on a tile. */
 
 static const RoadDriveEntry _roadveh_drive_data_0[] = {
 	{15, 5},

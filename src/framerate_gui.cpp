@@ -81,7 +81,11 @@ namespace {
 		 */
 		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate) { }
 
-		/** Collect a complete measurement, given start and ending times for a processing block */
+		/**
+		 * Collect a complete measurement, given start and ending times for a processing block.
+		 * @param start_time The start of the measurement.
+		 * @param end_time The end of the measurement.
+		 */
 		void Add(TimingMeasurement start_time, TimingMeasurement end_time)
 		{
 			this->durations[this->next_index] = end_time - start_time;
@@ -92,7 +96,10 @@ namespace {
 			this->num_valid = std::min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
 		}
 
-		/** Begin an accumulation of multiple measurements into a single value, from a given start time */
+		/**
+		 * Begin an accumulation of multiple measurements into a single value, from a given start time.
+		 * @param start_time The start of the measurement.
+		 */
 		void BeginAccumulate(TimingMeasurement start_time)
 		{
 			this->timestamps[this->next_index] = this->acc_timestamp;
@@ -106,13 +113,19 @@ namespace {
 			this->acc_timestamp = start_time;
 		}
 
-		/** Accumulate a period onto the current measurement */
+		/**
+		 * Accumulate a period onto the current measurement.
+		 * @param duration The duration to add.
+		 */
 		void AddAccumulate(TimingMeasurement duration)
 		{
 			this->acc_duration += duration;
 		}
 
-		/** Indicate a pause/expected discontinuity in processing the element */
+		/**
+		 * Indicate a pause/expected discontinuity in processing the element.
+		 * @param start_time The start of the pause..
+		 */
 		void AddPause(TimingMeasurement start_time)
 		{
 			if (this->durations[this->prev_index] != INVALID_DURATION) {
@@ -125,7 +138,11 @@ namespace {
 			}
 		}
 
-		/** Get average cycle processing time over a number of data points */
+		/**
+		 * Get average cycle processing time over a number of data points.
+		 * @param count The number of cycles to process.
+		 * @return The average in milliseconds.
+		 */
 		double GetAverageDurationMilliseconds(int count)
 		{
 			count = std::min(count, this->num_valid);
@@ -149,7 +166,10 @@ namespace {
 			return sumtime * 1000 / count / TIMESTAMP_PRECISION;
 		}
 
-		/** Get current rate of a performance element, based on approximately the past one second of data */
+		/**
+		 * Get current rate of a performance element, based on approximately the past one second of data.
+		 * @return The recent rate of the performance element.
+		 */
 		double GetRate()
 		{
 			/* Start at last recorded point, end at latest when reaching the earliest recorded point */
@@ -232,6 +252,7 @@ namespace {
  * Return a timestamp with \c TIMESTAMP_PRECISION ticks per second precision.
  * The basis of the timestamp is implementation defined, but the value should be steady,
  * so differences can be taken to reliably measure intervals.
+ * @return The current 'time' for performance measurements.
  */
 static TimingMeasurement GetPerformanceTimer()
 {
@@ -281,13 +302,19 @@ PerformanceMeasurer::~PerformanceMeasurer()
 	_pf_data[this->elem].Add(this->start_time, GetPerformanceTimer());
 }
 
-/** Set the rate of expected cycles per second of a performance element. */
+/**
+ * Set the rate of expected cycles per second of a performance element.
+ * @param rate The new rate.
+ */
 void PerformanceMeasurer::SetExpectedRate(double rate)
 {
 	_pf_data[this->elem].expected_rate = rate;
 }
 
-/** Mark a performance element as not currently in use. */
+/**
+ * Mark a performance element as not currently in use.
+ * @param elem The element to set as unused.
+ */
 /* static */ void PerformanceMeasurer::SetInactive(PerformanceElement elem)
 {
 	_pf_data[elem].num_valid = 0;
@@ -559,7 +586,12 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	/** Render a column of formatted average durations */
+	/**
+	 * Render a column of formatted average durations.
+	 * @param r The bounding box to draw in.
+	 * @param heading_str The header of the column.
+	 * @param values The values to draw.
+	 */
 	void DrawElementTimesColumn(const Rect &r, StringID heading_str, std::span<const CachedDecimal> values) const
 	{
 		const Scrollbar *sb = this->GetScrollbar(WID_FRW_SCROLLBAR);
@@ -847,7 +879,15 @@ struct FrametimeGraphWindow : Window {
 		this->SetDirty();
 	}
 
-	/** Scale and interpolate a value from a source range into a destination range */
+	/**
+	 * Scale and interpolate a value from a source range into a destination range.
+	 * @param dst_min The minimum value in the destination range.
+	 * @param dst_max The maximum value in the destination range.
+	 * @param src_min The minimum value in the source range.
+	 * @param src_max The maximum value in the source range.
+	 * @param value The value to process.
+	 * @return The rescaled value.
+	 */
 	template <typename T>
 	static inline T Scinterlate(T dst_min, T dst_max, T src_min, T src_max, T value)
 	{
@@ -988,7 +1028,10 @@ void ShowFramerateWindow()
 	AllocateWindowDescFront<FramerateWindow>(_framerate_display_desc, 0);
 }
 
-/** Open a graph window for a performance element */
+/**
+ * Open a graph window for a performance element.
+ * @param elem The element to show the graph for.
+ */
 void ShowFrametimeGraphWindow(PerformanceElement elem)
 {
 	if (elem < PFE_FIRST || elem >= PFE_MAX) return; // maybe warn?

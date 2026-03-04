@@ -36,27 +36,32 @@ static constexpr uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum 
 static constexpr uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
 static constexpr uint DEF_DESERT_COVERAGE = 50;                    ///< Default desert coverage.
 
+static constexpr size_t TILE_TYPE_BITS = 4; ///< How many bits in map array are dedicated for type of each tile.
 
 /**
  * The different types of tiles.
  *
  * Each tile belongs to one type, according whatever is build on it.
  *
- * @note A railway with a crossing street is marked as MP_ROAD.
+ * @note A railway with a crossing street is marked as TileType::Road.
  */
-enum TileType : uint8_t {
-	MP_CLEAR,               ///< A tile without any structures, i.e. grass, rocks, farm fields etc.
-	MP_RAILWAY,             ///< A railway
-	MP_ROAD,                ///< A tile with road (or tram tracks)
-	MP_HOUSE,               ///< A house by a town
-	MP_TREES,               ///< Tile got trees
-	MP_STATION,             ///< A tile of a station
-	MP_WATER,               ///< Water tile
-	MP_VOID,                ///< Invisible tiles at the SW and SE border
-	MP_INDUSTRY,            ///< Part of an industry
-	MP_TUNNELBRIDGE,        ///< Tunnel entry/exit and bridge heads
-	MP_OBJECT,              ///< Contains objects such as transmitters and owned land
+enum class TileType : uint8_t {
+	Clear, ///< A tile without any structures, i.e. grass, rocks, farm fields etc.
+	Railway, ///< A tile with railway.
+	Road, ///< A tile with road and/or tram tracks.
+	House, ///< A house by a town.
+	Trees, ///< Tile with one or more trees.
+	Station, ///< A tile of a station or airport.
+	Water, ///< Water tile.
+	Void, ///< Invisible tiles at the SW and SE border.
+	Industry, ///< Part of an industry.
+	TunnelBridge, ///< Tunnel entry/exit and bridge heads.
+	Object, ///< Contains objects such as transmitters and owned land.
+	End, ///< End marker.
+	MaxSize = 1U << TILE_TYPE_BITS, ///< The maximum possible number of tile types to be stored in map.
 };
+
+static_assert(TileType::End <= TileType::MaxSize);
 
 /**
  * Additional infos of a tile on a tropic game.

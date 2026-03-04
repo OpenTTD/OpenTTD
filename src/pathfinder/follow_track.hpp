@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file follow_track.hpp Template function for track followers */
+/** @file follow_track.hpp Template function for track followers. */
 
 #ifndef  FOLLOW_TRACK_HPP
 #define  FOLLOW_TRACK_HPP
@@ -207,7 +207,7 @@ protected:
 		this->tiles_skipped = 0;
 
 		/* extra handling for tunnels and bridges in our direction */
-		if (IsTileType(this->old_tile, MP_TUNNELBRIDGE)) {
+		if (IsTileType(this->old_tile, TileType::TunnelBridge)) {
 			DiagDirection enterdir = GetTunnelBridgeDirection(this->old_tile);
 			if (enterdir == this->exitdir) {
 				/* we are entering the tunnel / bridge */
@@ -351,7 +351,7 @@ protected:
 		}
 
 		/* tunnel holes and bridge ramps can be entered only from proper direction */
-		if (IsTileType(this->new_tile, MP_TUNNELBRIDGE)) {
+		if (IsTileType(this->new_tile, TileType::TunnelBridge)) {
 			if (IsTunnel(this->new_tile)) {
 				if (!this->is_tunnel) {
 					DiagDirection tunnel_enterdir = GetTunnelBridgeDirection(this->new_tile);

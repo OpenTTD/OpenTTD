@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file refresh.h Definition of link refreshing utility. */
+/** @file refresh.cpp Definition of link refreshing utility. */
 
 #include "../stdafx.h"
 #include "../core/bitmath_func.hpp"

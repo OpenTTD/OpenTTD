@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
- /** @file help_gui.cpp GUI to access manuals and related. */
+/** @file help_gui.cpp GUI to access manuals and related. */
 
 #include "stdafx.h"
 #include "gui.h"
@@ -42,6 +42,7 @@ static constexpr size_t CHANGELOG_VERSIONS_LIMIT = 20;
  * Find the path to the game manual file.
  *
  * @param filename The filename to find.
+ * @param subdir The sub directory to search in.
  * @return std::string The path to the filename if found.
  */
 static std::optional<std::string> FindGameManualFilePath(std::string_view filename, Subdirectory subdir)

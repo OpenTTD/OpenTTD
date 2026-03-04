@@ -53,11 +53,11 @@ constexpr int MAX_SHIP_DEPOT_SEARCH_DISTANCE = 80;
 WaterClass GetEffectiveWaterClass(TileIndex tile)
 {
 	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+	if (IsTileType(tile, TileType::TunnelBridge)) {
 		assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER);
 		return WaterClass::Canal;
 	}
-	if (IsTileType(tile, MP_RAILWAY)) {
+	if (IsTileType(tile, TileType::Railway)) {
 		assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
 		return WaterClass::Sea;
 	}
@@ -247,7 +247,7 @@ Money Ship::GetRunningCost() const
 {
 	const Engine *e = this->GetEngine();
 	uint cost_factor = GetVehicleProperty(this, PROP_SHIP_RUNNING_COST_FACTOR, e->VehInfo<ShipVehicleInfo>().running_cost);
-	return GetPrice(PR_RUNNING_SHIP, cost_factor, e->GetGRF());
+	return GetPrice(Price::RunningShip, cost_factor, e->GetGRF());
 }
 
 /** Calendar day handler. */
@@ -378,7 +378,7 @@ static bool CheckShipStayInDepot(Ship *v)
 	}
 
 	/* Don't leave depot if no destination set */
-	if (v->dest_tile == 0) return true;
+	if (v->dest_tile == INVALID_TILE) return true;
 
 	/* Don't leave depot if another vehicle is already entering/leaving */
 	/* This helps avoid CPU load if many ships are set to start at the same time */
@@ -467,7 +467,7 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks)
 	bool path_found = true;
 	Track track;
 
-	if (v->dest_tile == 0) {
+	if (v->dest_tile == INVALID_TILE) {
 		/* No destination, don't invoke pathfinder. */
 		track = TrackBitsToTrack(v->state);
 		if (!IsDiagonalTrack(track)) track = TrackToOppositeTrack(track);
@@ -566,7 +566,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 static int ShipTestUpDownOnLock(const Ship *v)
 {
 	/* Suitable tile? */
-	if (!IsTileType(v->tile, MP_WATER) || !IsLock(v->tile) || GetLockPart(v->tile) != LockPart::Middle) return 0;
+	if (!IsTileType(v->tile, TileType::Water) || !IsLock(v->tile) || GetLockPart(v->tile) != LockPart::Middle) return 0;
 
 	/* Must be at the centre of the lock */
 	if ((v->x_pos & 0xF) != 8 || (v->y_pos & 0xF) != 8) return 0;
@@ -622,11 +622,11 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (!IsValidTile(t)) continue;
 		if (IsDockTile(t) && GetStationIndex(t) == station && IsDockWaterPart(t)) return true;
-		if (IsTileType(t, MP_INDUSTRY)) {
+		if (IsTileType(t, TileType::Industry)) {
 			const Industry *i = Industry::GetByTile(t);
 			if (i->neutral_station != nullptr && i->neutral_station->index == station) return true;
 		}
-		if (IsTileType(t, MP_STATION) && IsOilRig(t) && GetStationIndex(t) == station) return true;
+		if (IsTileType(t, TileType::Station) && IsOilRig(t) && GetStationIndex(t) == station) return true;
 	}
 	return false;
 }
@@ -725,7 +725,7 @@ static void ShipController(Ship *v)
 						const DiagDirection exitdir = VehicleExitDir(v->direction, v->state);
 						const TileIndex tile = TileAddByDiagDir(v->tile, exitdir);
 						if (TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, exitdir)) == TRACK_BIT_NONE) return ReverseShip(v);
-					} else if (v->dest_tile != 0) {
+					} else if (v->dest_tile != INVALID_TILE) {
 						/* We have a target, let's see if we reached it... */
 						if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
 								DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
@@ -814,7 +814,7 @@ static void ShipController(Ship *v)
 			}
 		} else {
 			/* On a bridge */
-			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
+			if (!IsTileType(gp.new_tile, TileType::TunnelBridge) || !VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				v->UpdatePosition();
@@ -871,7 +871,7 @@ CommandCost CmdBuildShip(DoCommandFlags flags, TileIndex tile, const Engine *e, 
 
 		const ShipVehicleInfo *svi = &e->VehInfo<ShipVehicleInfo>();
 
-		Ship *v = new Ship();
+		Ship *v = Ship::Create();
 		*ret = v;
 
 		v->owner = _current_company;

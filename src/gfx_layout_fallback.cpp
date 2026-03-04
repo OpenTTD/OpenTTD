@@ -10,7 +10,6 @@
 #include "stdafx.h"
 
 #include "gfx_layout_fallback.h"
-#include "gfx_func.h"
 #include "string_func.h"
 #include "zoom_func.h"
 
@@ -44,15 +43,15 @@ public:
 		std::vector<Position> positions; ///< The positions of the glyphs.
 		std::vector<int> glyph_to_char; ///< The char index of the glyphs.
 
-		Font font;       ///< The font used to layout these.
+		Font *font;       ///< The font used to layout these.
 
 	public:
-		FallbackVisualRun(const Font &font, const char32_t *chars, int glyph_count, int char_offset, int x);
-		const Font &GetFont() const override { return this->font; }
-		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
+		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
+		const Font *GetFont() const override { return this->font; }
+		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
 		std::span<const Position> GetPositions() const override { return this->positions; }
-		int GetLeading() const override { return GetCharacterHeight(this->GetFont().GetFontCache().GetSize()); }
+		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 	};
 
@@ -61,8 +60,8 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override;
-		const ParagraphLayouter::VisualRun &GetVisualRun(int run) const override;
+		size_t CountRuns() const override;
+		const ParagraphLayouter::VisualRun &GetVisualRun(size_t run) const override;
 
 		int GetInternalCharLength(char32_t) const override { return 1; }
 	};
@@ -110,29 +109,31 @@ public:
  * @param char_offset This run's offset from the start of the layout input string.
  * @param x           The initial x position for this run.
  */
-FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(const Font &font, const char32_t *chars, int char_count, int char_offset, int x) :
+FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const char32_t *chars, int char_count, int char_offset, int x) :
 		font(font)
 {
+	const bool isbuiltin = font->fc->IsBuiltInFont();
+
 	this->glyphs.reserve(char_count);
 	this->glyph_to_char.reserve(char_count);
 	this->positions.reserve(char_count);
 
-	FontCache &fc = this->font.GetFontCache();
-	int y_offset = fc.GetGlyphYOffset();;
 	int advance = x;
 	for (int i = 0; i < char_count; i++) {
-		const GlyphID &glyph_id = this->glyphs.emplace_back(fc.MapCharToGlyph(chars[i]));
-		int x_advance = fc.GetGlyphWidth(glyph_id);
-		this->positions.emplace_back(advance, advance + x_advance - 1, y_offset); // No ascender adjustment.
+		const GlyphID &glyph_id = this->glyphs.emplace_back(font->fc->MapCharToGlyph(chars[i]));
+		int x_advance = font->fc->GetGlyphWidth(glyph_id);
+		if (isbuiltin) {
+			this->positions.emplace_back(advance, advance + x_advance - 1, font->fc->GetAscender()); // Apply sprite font's ascender.
+		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
+			this->positions.emplace_back(advance, advance + x_advance - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
+		} else {
+			this->positions.emplace_back(advance, advance + x_advance - 1, 0); // No ascender adjustment.
+		}
 		advance += x_advance;
 		this->glyph_to_char.push_back(char_offset + i);
 	}
 }
 
-/**
- * Get the height of the line.
- * @return The maximum height of the line.
- */
 int FallbackParagraphLayout::FallbackLine::GetLeading() const
 {
 	int leading = 0;
@@ -143,10 +144,6 @@ int FallbackParagraphLayout::FallbackLine::GetLeading() const
 	return leading;
 }
 
-/**
- * Get the width of this line.
- * @return The width of the line.
- */
 int FallbackParagraphLayout::FallbackLine::GetWidth() const
 {
 	if (this->empty()) return 0;
@@ -162,20 +159,12 @@ int FallbackParagraphLayout::FallbackLine::GetWidth() const
 	return positions.back().right + 1;
 }
 
-/**
- * Get the number of runs in this line.
- * @return The number of runs.
- */
-int FallbackParagraphLayout::FallbackLine::CountRuns() const
+size_t FallbackParagraphLayout::FallbackLine::CountRuns() const
 {
-	return (uint)this->size();
+	return this->size();
 }
 
-/**
- * Get a specific visual run.
- * @return The visual run.
- */
-const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVisualRun(int run) const
+const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVisualRun(size_t run) const
 {
 	return this->at(run);
 }
@@ -191,19 +180,11 @@ FallbackParagraphLayout::FallbackParagraphLayout(char32_t *buffer, [[maybe_unuse
 	assert(runs.rbegin()->first == length);
 }
 
-/**
- * Reset the position to the start of the paragraph.
- */
 void FallbackParagraphLayout::Reflow()
 {
 	this->buffer = this->buffer_begin;
 }
 
-/**
- * Construct a new line with a maximum width.
- * @param max_width The maximum width of the string.
- * @return A Line, or nullptr when at the end of the paragraph.
- */
 std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine(int max_width)
 {
 	/* Simple idea:
@@ -228,8 +209,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		assert(iter != this->runs.end());
 	}
 
-	const FontCache *fc = &iter->second.GetFontCache();
-	assert(fc != nullptr);
+	const FontCache *fc = iter->second->fc;
 	const char32_t *next_run = this->buffer_begin + iter->first;
 
 	const char32_t *begin = this->buffer;
@@ -247,7 +227,6 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 		if (this->buffer == next_run) {
 			int w = l->GetWidth();
-			assert(iter->second.font_index != INVALID_FONT_INDEX);
 			l->emplace_back(iter->second, begin, this->buffer - begin, begin - this->buffer_begin, w);
 			++iter;
 			assert(iter != this->runs.end());

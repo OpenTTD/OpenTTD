@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/* @file midi.h Declarations for MIDI data */
+/** @file midi.h Declarations for MIDI data. */
 
 #ifndef MUSIC_MIDI_H
 #define MUSIC_MIDI_H

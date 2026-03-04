@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file highscore.cpp Definition of functions used for highscore handling */
+/** @file highscore.cpp Definition of functions used for highscore handling. */
 
 #include "stdafx.h"
 #include "highscore.h"
@@ -75,7 +75,7 @@ int8_t SaveHighScoreValue(const Company *c)
 	return std::distance(highscores.begin(), it);
 }
 
-/** Sort all companies given their performance */
+/** Sort all companies given their performance. @copydoc GUIList::Sorter */
 static bool HighScoreSorter(const Company * const &a, const Company * const &b)
 {
 	return b->old_economy[0].performance_history < a->old_economy[0].performance_history;

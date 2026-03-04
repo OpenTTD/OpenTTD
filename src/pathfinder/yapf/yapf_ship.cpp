@@ -19,9 +19,9 @@
 #include "../../safeguards.h"
 
 constexpr int NUMBER_OR_WATER_REGIONS_LOOKAHEAD = 4;
-constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATER_REGION_NUMBER_OF_TILES * 4; // 4 possible exit dirs per tile.
+constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATER_REGION_NUMBER_OF_TILES * 4; ///< 4 possible exit dirs per tile.
 
-constexpr int SHIP_LOST_PATH_LENGTH = 8; // The length of the (aimless) path assigned when a ship is lost.
+constexpr int SHIP_LOST_PATH_LENGTH = 8; ///< The length of the (aimless) path assigned when a ship is lost.
 
 template <class Types>
 class CYapfDestinationTileWaterT {
@@ -49,8 +49,8 @@ public:
 			this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 		} else {
 			this->dest_station = StationID::Invalid();
-			this->dest_tile = v->dest_tile;
-			this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
+			this->dest_tile = v->dest_tile == INVALID_TILE ? TileIndex{} : v->dest_tile;
+			this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(this->dest_tile, TRANSPORT_WATER, 0));
 		}
 	}
 
@@ -389,7 +389,7 @@ public:
 		if (speed_frac > 0) c += YAPF_TILE_LENGTH * (1 + follower->tiles_skipped) * speed_frac / (256 - speed_frac);
 
 		/* Lock penalty. */
-		if (IsTileType(n.GetTile(), MP_WATER) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LockPart::Middle) {
+		if (IsTileType(n.GetTile(), TileType::Water) && IsLock(n.GetTile()) && GetLockPart(n.GetTile()) == LockPart::Middle) {
 			const uint canal_speed = svi->ApplyWaterClassSpeedFrac(svi->max_speed, false);
 			/* Cost is proportional to the vehicle's speed as the vehicle stops in the lock. */
 			c += (TILE_HEIGHT * YAPF_TILE_LENGTH * canal_speed) / 128;
