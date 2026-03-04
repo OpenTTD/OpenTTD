@@ -44,19 +44,21 @@ def check_descriptions(files):
         with open(path, "r") as f:
             content = f.read()
             ann = content.find(f"@file {name} ")
+            reason = f'Should be of the form "/** @file {name} Brief description of the file here. */"'
             if ann == -1:
                 if content.find("@file") == -1:
-                    errors.append(f'File "{path}" does not provide description.')
-                else:
-                    errors.append(f'Description of file "{path}" does not match coding style.')
-                continue
-            end = content.find("\n", ann)
-            start = content.rfind("\n", 0, ann) + 1
-            if content[start : ann] == "/** " and content[end - 3 : end] == " */" and content[end - 4] in END_OF_SENTENCE:
-                continue
-            elif content[start : ann] == " * " and content[start - 4 : start - 1] == "/**" and content[end - 1] in END_OF_SENTENCE and content[end + 1 : end + 4] != " */":
-                continue
-            errors.append(f'Description of file "{path}" does not match coding style.')
+                    errors.append(f'File "{path}" does not provide description. {reason}')
+                    continue
+            else:
+                end = content.find("\n", ann)
+                start = content.rfind("\n", 0, ann) + 1
+                if content[start : ann] == "/** " and content[end - 3 : end] == " */" and content[end - 4] in END_OF_SENTENCE:
+                        continue
+                elif content[start : ann] == " * ":
+                    if content[start - 4 : start - 1] == "/**" and content[end - 1] in END_OF_SENTENCE and content[end + 1 : end + 4] != " */":
+                        continue
+                    reason = f"Should be of the form:\n/**\n * @file {name} Brief description of the file here.\n * Detailed description of the file here.\n */"
+            errors.append(f'Description of file "{path}" does not match coding style. {reason}')
     return errors
 
 
