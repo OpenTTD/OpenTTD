@@ -2224,7 +2224,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :no és compatib
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconegut.
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}...el nivell de compressió «{STRING}» no és vàlid.
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...el format de partida «{STRING}» no està disponible. Es revertirà a «{STRING}».
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}...s'ignorarà el conjunt de gràfics base «{STRING}» perquè no s'ha trobat.
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :s'ignorarà el conjunt de gràfics base «{STRING}» perquè no s'ha trobat.
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}...s'ignorarà el conjunt de sons base «{STRING}» perquè no s'ha trobat.
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}...s'ignorarà el conjunt de peces de música «{STRING}» perquè no s'ha trobat.
 
@@ -2548,6 +2548,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via serv
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Treu
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Expulsa
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Esborra
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :Permet qualsevol client
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :Permet només els clients de la llista
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acció de l'administrador
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Esteu segur que voleu treure el jugador «{STRING}»?
@@ -2718,7 +2720,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Mida de
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionat a causa de: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependències: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetes: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}L'OpenTTD s'ha compilat sense compatibilitat «zlib»...
+STR_CONTENT_NO_ZLIB                                             :L'OpenTTD s'ha compilat sense compatibilitat «zlib»...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... no és possible descarregar continguts!
 
 # Order of these is important!
@@ -3692,7 +3694,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}El compo
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Un vehicle «{1:ENGINE}» ha canviat el seu estat de vagó amb potència mentre estava fora de la cotxera.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehicle «{1:ENGINE}» ha canviat la seva llargada mentre estava fora del dipòsit.
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle «{1:ENGINE}» ha canviat la seva capacitat mentre estava fora del dipòsit o no ha canviat el tipus de càrrega a transportar.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada invàlida, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
+STR_BROKEN_VEHICLE_LENGTH                                       :El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada incorrecta, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF «{0:STRING}» dóna informació incorrecta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació de «{1:ENGINE}» no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de la funció autorenova/substitueix.
@@ -5149,7 +5151,7 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no h
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}La casa no es pot construir...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... massa indústries
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :massa indústries
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es poden generar indústries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Aquí no es pot construir {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
@@ -5180,15 +5182,15 @@ STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}No es po
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}No puc construir l'estació de tramvies de passatgers
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}No puc construir l'estació de tramvies de càrrega
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Aquí no es pot construir un port...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Aquí no es pot construir un aeroport...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Aquí no es pot construir un aeroport...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estació massa extensa
 STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... nombre de vies no vàlid
 STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... llargada no vàlida
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Massa estacions/àrees de càrrega
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Hi ha massa parts d'estacions de tren
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Massa parades d'autobús
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :massa estacions/àrees de càrrega
+STR_ERROR_TOO_MANY_STATION_SPECS                                :hi ha massa parts d'estacions de tren.
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :massa parades d'autobús
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses estacions de càrrega
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
@@ -5202,10 +5204,10 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No es pot treure part de la estació...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}...abans s'ha de treure l'estació de rail.
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}No es pot treure l'estació d'autobusos...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :L'estació d'autobusos no es pot traure...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No es pot treure l'estació de camions...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No puc treure l'estació de tramvies de passatgers
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No puc treure l'estació de tramvies de mercaderies
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :L'estació de tramvies de passatgers no es pot traure...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :L'estació de tramvies de mercaderies no es pot traure...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}...abans s'ha de treure la parada.
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... aquí no hi ha estació
 
@@ -5284,7 +5286,7 @@ STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Els pass
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}No s'admeten passos a nivell en aquest tipus de carretera.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Aquí no es poden construir senyals...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Aquí no es pot construir la via de tren...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Aquí no es pot treure la via de tren...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :La via de tren no es pot traure...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Aquí no es poden treure els senyals...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Aquí no es poden convertir els senyals...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... no hi ha via de tren
@@ -5316,7 +5318,7 @@ STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... no e
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... no es pot construir sobre el canal
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... no es pot construir sobre el riu
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}...abans s'ha d'enderrocar el canal.
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Aquí no es pot construir un aqüeducte...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Aquí no es pot construir un aqüeducte...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... aquí ja hi ha arbres
@@ -5326,7 +5328,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Aquí no
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Aquí no es pot construir el pont...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}...abans s'ha d'enderrocar el pont.
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}No es pot començar i acabar a la mateixa posició
+STR_ERROR_CAN_T_START_AND_END_ON                                :no es pot començar i acabar a la mateixa posició.
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Les capçaleres del pont no són al mateix nivell
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El pont és massa baix pel terreny
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}El pont és massa alt per a aquest terreny.
@@ -5352,7 +5354,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossib
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel massa llarg
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... massa objectes
+STR_ERROR_TOO_MANY_OBJECTS                                      :massa objectes
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No es pot construir l'objecte...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objecte en el camí
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... seu de la companyia en el camí
@@ -5441,7 +5443,7 @@ STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Hi ha ae
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Massa vehicles en joc
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No es pot canviar l'interval de les revisions...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehicle està destruït
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :vehicle destruït
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... no tots els vehicles són idèntics.
 
@@ -5466,16 +5468,16 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}L'avió 
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}...no hi ha més espai disponible per ordres.
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Massa ordres
+STR_ERROR_TOO_MANY_ORDERS                                       :massa ordres
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}No es pot afegir una nova ordre...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}No es pot esborrar aquesta ordre...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Aquesta ordre no es pot esborrar...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}No es pot modificar aquesta ordre...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Impossible moure aquesta ordre...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Impossible saltar l'ordre actual...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossible saltar l'ordre seleccionada...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... el vehicle no pot anar a totes les estacions
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... el vehicle no pot anar a aquesta estació
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehicle que comparteix aquesta ordre no pot anar a aquesta estació
+STR_ERROR_CAN_T_ADD_ORDER                                       :el vehicle no pot anar a aquesta estació.
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :un vehicle que comparteix aquesta ordre no pot anar a aquesta estació.
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... no tots els vehicles tenen les mateixes ordres.
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... no tots els vehicles comparteixen ordres.
 
@@ -5508,10 +5510,10 @@ STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'ho
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... l'horari encara no ha començat.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... massa senyals
+STR_ERROR_TOO_MANY_SIGNS                                        :massa senyals
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Aquí no es pot situar un senyal...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No es pot canviar el nom del senyal...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}El senyal no es pot esborrar...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :El senyal no es pot esborrar...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -6019,7 +6021,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Obre la configuració d'insígnies

@@ -727,8 +727,8 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Taitara
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Riwhiriwhi
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Hōtaka
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Peke ki te waiata kua hipa i tēnei tīpako
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Peke ki te waiata e whai ake nei i tēnei tīpako
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Peke ki te waiata kua hipa i tēnei tīpakonga
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Peke ki te waiata e whai ake nei i tēnei tīpakonga
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Kāti te puoro
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Pureitia te puoro
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Tōia ngā tāneke kia tautuhi te kaha mō te puoro me ngā orotaunaki
@@ -3679,7 +3679,7 @@ STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Tē taea te tā
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Kua utaina he newGRF hototahi mō ētahi kōnae ngaro
 STR_NEWGRF_DISABLED_WARNING                                     :Kua āraia he kōnae newGRF ngaro
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Kōnae newGRF ngaro
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Ka taea te hinga e OpenTTD i te purei. Kaua e tuku pūrongo iro mō ngā hinga e whai ake nei.{}Kei te tino hiahia rānei koe kia purei?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Ka taea te hinga e OpenTTD i te purei. Kaua e tuku pūrongo iro mō ngā hinga ā muri atu.{}Kei te tino hiahia rānei koe kia purei?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Kore
@@ -4946,8 +4946,8 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Mō te 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Tautuhinga Kaitākaro Hangahanga
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Tautuhinga Hōtuhi Kēmu
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Te hōtuhi kēmu ka utaina i te kēmu e whai ake nei
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Ngā kaitākaro hangahanga ka utaina i te kēmu e whai ake nei
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Te hōtuhi kēmu ka utaina i te kēmu ā muri atu
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Ngā kaitākaro hangahanga ka utaina i te kēmu ā muri atu
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Kaitākaro tangata
 STR_AI_CONFIG_RANDOM_AI                                         :Kaitākaro hangahanga matapōkere
 STR_AI_CONFIG_NONE                                              :(kore)

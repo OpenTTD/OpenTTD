@@ -471,36 +471,36 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Malfermi
 
 # Tooltips for the main toolbar
 ###length 31
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu la ludon
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rapide pluirigu la ludon
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigi la ludon
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Plirapidigi la ludon
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Agordoj
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Konservi, ŝarĝi aŭ forigi ludon, eliri programon
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Malfermi mapon, ekstran vidujon, fluon de ŝarĝoj aŭ liston de ŝildoj
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Malfermi urboliston, aŭ fondi urbon
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Malfermu liston de subvencioj
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Malfermi liston de subvencioj
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Malfermi stacioliston de la kompanio
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Malfermu kompaniajn financajn informojn
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Malfermu ĝeneralajn kompaniajn informojn
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Malfermi kompaniajn financajn informojn
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Malfermi ĝeneralajn kompaniajn informojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Malfermi rakontolibron
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Malfermu liston de celoj
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Malfermu kompaniajn diagramojn kaj kargajn tarifojn
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Malfermu kompanian rangotabelon
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Malfermu la dosierujon de entreprenoj, industrian ĉenon, aŭ financi konstruadon de nova entrepreno
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Malfermi liston de celoj
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Malfermi kompaniajn diagramojn kaj ŝarĝajn tarifojn
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Malfermi kompanian rangotabelon
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Malfermi la dosierujon de entreprenoj, industrian ĉenon, aŭ financi konstruadon de nova entrepreno
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Montri vagonarliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Malfermi stratveturiloliston de la kompanio. Stir+Klako montras aŭ kaŝas veturilgrupojn male de elektita agordo
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Montri ŝipoliston de la kompanio. Stir+Klako montras aŭ kaŝas veturilgrupojn male de elektita agordo
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Montri aviadiloliston de la kompanio. Stir+Klako montras aŭ kaŝas veturilgrupojn male de elektita agordo
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zomu
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Malzomu
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zomi
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Malzomi
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Konstrui fervojan infrastrukturon
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Konstrui stratan infrastrukturon
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Konstrui traman infrastrukturon
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Konstrui akvotransportan infrastrukturon
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Konstrui flughavenojn
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Malfermu la landaspektan menuon, arban menuon, aŭ metu ŝildon
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Malfermu fenestron de sono/muziko
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Malfermi la landaspektan menuon, arban menuon, aŭ meti ŝildon
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Malfermi fenestron de sono/muziko
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Malfermi lastan mesaĝon/novaĵon, historion de mesaĝoj aŭ forigi ĉiujn mesaĝojn
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Malfermu regionan Informon, ekrankopian menuon, aŭtorliston de OpenTTD aŭ ilaron por disvolvantoj
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Malfermi regionan informon, ekrankopian menuon, aŭtorliston de OpenTTD aŭ ilaron por disvolvantoj
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Ŝalti ilobretojn
 
 # Extra tooltips for the scenario editor toolbar
@@ -510,13 +510,13 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenark
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Movu la komencdaton 1 jaron posten
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Movu la komencdaton 1 jaron antaŭen
 STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Klaku por enigi komencjaron
-STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Malfermu mapon, ekstran vidujon, liston de ŝildoj, aŭ katalogon de urboj aŭ industriejoj
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Malfermi mapon, ekstran vidujon, liston de ŝildoj, aŭ katalogon de urboj aŭ industriejoj
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Landaspekta generado
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Urba generado
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Industria generado
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Konstrui stratan infrastrukturon
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Konstruado de tramvojo
-STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plantu arbojn. «Shift» aktivigita konstruado/montrante kosto takso
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Planti arbojn. Stir+Klaku+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Metu ŝildon
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Metu objekton. Stir+Klaku+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 
@@ -539,7 +539,7 @@ STR_SETTINGS_MENU_AI_SETTINGS                                   :AI agordoj
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ludoskriptaj agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
 STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sablujaj agordoj
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Ebloj por travidebleco
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Agordoj de travidebleco
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stacionomoj montriĝas
 STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Vagonaraj stacioj
@@ -611,8 +611,8 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flughavena kons
 
 # Landscaping menu
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landaspektigi
-STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantu arbojn
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Metu ŝildon
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Planti arbojn
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Meti ŝildon
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Sono/muziko
@@ -1032,7 +1032,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {STRING} nun haveblas!  -  {ENGINE}
 
-STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Malfermu la grupo-fenestron, fokuse en la grupo de la veturilo
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Malfermi la grupo-fenestron, fokuse en la grupo de la veturilo
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} plu ne akceptas: {CARGO_LIST.n}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} nun akceptas: {CARGO_LIST.n}
@@ -1324,7 +1324,7 @@ STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Specifa alteco 
 
 ###length 4
 STR_CITY_APPROVAL_LENIENT                                       :Indulgema
-STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
+STR_CITY_APPROVAL_TOLERANT                                      :Tolerema
 STR_CITY_APPROVAL_HOSTILE                                       :Malamikema
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permesema (ne efikas al la agoj de la kompanio)
 
@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {S
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ŝaltu akcidentojn kiuj de temp' al tempo povas bloki veturilojn aŭ infrastrukturon
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sinteno de lokaj estraroj: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Elekti, per kiom bruo kaj poluado de kompanioj influas la urban takson kaj pluajn konstruajn agojn en la urbo
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Elektu, per kiom bruo kaj poluado de kompanioj influas la urban takson kaj pluajn konstruajn agojn en la urbo
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limo de mapalteco: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Agordu maksimumam altecon de maptereno. Kun "(aŭtomata)", bona valoro estos elektita post terengenerado
@@ -1566,7 +1566,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :Se kompanio aĉ
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permesi financi konstruaĵojn: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permesi al kompanioj doni monon al urboj por financi novajn domojn
 
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permesi fondusante lokan stratan rekonstruo: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permesi financadon de loka stratrekonstruado: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permesi al kompanioj doni monon al urboj por financi stratrekonstruadon, celante malhelpi stratveturilajn servojn en la urbo
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permesi sendi monon al aliaj kompanioj: {STRING}
@@ -1727,7 +1727,7 @@ STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Norma
 STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Altebenaĵoj
 
 STR_CONFIG_SETTING_VARIETY                                      :Diverseca distribuo: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Elekti, ĉu la mapo enhavas ambaŭ montarojn kaj ebenaĵojn. Ju pli alta de variaĵo, des pli la altecdiferenco inter montaroj kaj ebenaĵoj
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Elektu, ĉu la mapo enhavas ambaŭ montarojn kaj ebenaĵojn. Ju pli alta de variaĵo, des pli la altecdiferenco inter montaroj kaj ebenaĵoj
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Nombro de riveroj: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Elektu kiom da riveroj estu generitaj
@@ -2082,7 +2082,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}a kahelo
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Dum trenado, tenu fiksitan distancon inter semaforoj: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Elektu kiel funkcias dismeto de semaforoj dum Stir+trenado. Se tiu ĉi agordo estas malaktiva, semaforoj estos metitaj ĉirkaŭ tuneloj aŭ pontoj por eviti longajn sekciojn sen semaforoj. Se tiu ĉi agordo estas aktiva, semaforoj estos metitaj je ĉiu N-a kahelo, por faciligi laŭliniigon de semaforoj sur paralelaj trakoj
 
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aŭtomate konstruu semaforojn antaŭ: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aŭtomate konstruu malnovajn semaforojn antaŭ: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Elektu la jaron ekde kiam uziĝos elektraj semaforoj por fervojaj trakoj. Antaŭ tiuj ĉi jaro uziĝos ne-elektraj semaforoj (kiuj havas ekzakte la saman funkcion, sed alian aspekton)
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Iteraciu tra signaltipoj: {STRING}
@@ -2298,7 +2298,7 @@ STR_CONFIG_SETTING_AI                                           :Konkurantoj
 STR_CONFIG_SETTING_AI_NPC                                       :Komputil-ludantoj
 STR_CONFIG_SETTING_NETWORK                                      :Reto
 
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata dorsflankante ĉe signaliloj: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aŭtomata renversiĝado ĉe signaliloj: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permesi al vagonaro turniĝi ĉe semaforo, se ĝi jam atendis dum longa tempo
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ŝanĝu agord-valoron
@@ -2356,7 +2356,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elektu '
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elektu 'ludlandan' landstilon
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montri ludajn agordojn
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Malfermu altpoentaran tabelon
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Malfermi altpoentaran tabelon
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Atingu dokumentadon kaj ĉeretajn rimedojn
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'OpenTTD'
@@ -2537,18 +2537,18 @@ STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}LA SERV
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIOJ NE KONGRUAS
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}MISO PRI NEWGRF
 
-STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Aliĝu al la ludo
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Refreŝigu servilon
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Refreŝigu servilajn informojn
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Aliĝi al la ludo
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Refreŝigi servilon
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Refreŝigi servilajn informojn
 
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Serĉu en la Interreto
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Serĉu publikajn servilojn en la Interreto
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Serĉu en la loka reto
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Serĉu servilojn en la loka reto
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Aldonu servilon
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Serĉi en la Interreto
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Serĉi publikajn servilojn en la Interreto
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Serĉi en la loka reto
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Serĉi servilojn en la loka reto
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Aldoni servilon
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Aldonas servilon al la listo. Ĝi povas esti adreso aŭ invitkodo
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Startu servilon
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Startu propran servilon
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Starti servilon
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Starti vian propran servilon
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Tajpu vian nomon
 STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Entajpu adreson de servilo aŭ invitokodon
@@ -2558,8 +2558,8 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Komencu 
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ludnomo:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}La ludnomo estos montrata al aliaj ludantoj en la ludelektejo por plurludantaj ludoj.
-STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Agordu pasvorton
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protektu vian ludon per pasvorto por ne publike atingebligi ĝin
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Agordi pasvorton
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Vi povas protekti vian ludon per pasvorto por malatingebligi ĝin publike
 
 STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Videbleco:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Ĉu aliuloj povas vidi vian servilon en la publika listo
@@ -2568,7 +2568,7 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Klienta 
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanio{P "" j}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Kompania maksimumo:
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limu la servilon al certa kvanto da kompanioj
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limigi la servilon al certa kvanto da kompanioj
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tajpu nomon por la retludo
 
@@ -2830,8 +2830,8 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Ludoskripta kod
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Enhavo elŝutiĝas...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Petante dosierojn...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Nuntempe elŝutante {STRING} ({NUM} el {NUM})
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Petado de dosieroj...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Nuntempa elŝutado: {STRING} ({NUM} el {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Elŝuto finita
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} el {BYTES} elŝutiĝis ({NUM} %)
 
@@ -2851,7 +2851,7 @@ STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Malsukce
 STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Fermu OpenTTD
 
 # Transparency settings window
-STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ebloj por travidebleco
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Agordoj de travidebleco
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Baskuligi travideblecon de ŝildoj. Stir+Klaku por ŝlosi
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Baskuligi travideblecon de arboj. Stir+Klaku por ŝlosi
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Baskuligi travideblecon de domoj. Stir+Klaku por ŝlosi
@@ -3032,8 +3032,8 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Vojrezer
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Unudirekta vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu vagonaro eniru signalan blokon samtempe, se la vagonaro povas rezervi vojon ĝis sekura haltopunkto. Unudirektan vojrezervan semaforon ne eblas trapasi de la malantaŭa flanko
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverti signalilojn{}Klaku je ekzistanta signalo por konverti ĝin al elektita tipo kaj varianto de signalilo. Stir+Klaku por baskuligi la ekzistantan varianton. Maj+Klaku montras kostotakson de konvertado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distanco inter semaforoj dum trenado
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Malpliigu semaforan distancon dum trenado
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Pliigu semaforan distancon dum trenado
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Malpliigi semaforan distancon dum trenado
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Pliigi semaforan distancon dum trenado
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elekto de rela ponto
@@ -3050,7 +3050,7 @@ STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Betona pendanta
 STR_BRIDGE_NAME_WOODEN                                          :Ligna
 STR_BRIDGE_NAME_CONCRETE                                        :Betona
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Ŝtala tuba
-STR_BRIDGE_TUBULAR_SILICON                                      :Tuba, Silicia
+STR_BRIDGE_TUBULAR_SILICON                                      :Silicia tuba
 
 
 # Road construction toolbar
@@ -3058,22 +3058,22 @@ STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vojkonst
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Konstruado de tramvojoj
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Konstrui vojeron. Stir+Klaku por forigi vojeron. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Konstrui tramvojan sekcion. Stir+Klaku por forigi sekcion de tramvojo. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Konstrui vojan sekcion kun aŭtomata elekto de direkto. Stir+Klaku por forigi vojsekcion. Ankaŭ premu Shift por nur montri kostotakson
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Konstrui tramvojan sekcion kun aŭtomata elekto de direkto. Stir+Klaku por forigi tramvojsekcion. Ankaŭ premu Shift por nur montri kostotakson
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Konstrui vojan sekcion kun aŭtomata elekto de direkto. Stir+Klaku por forigi vojsekcion. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Konstrui tramvojan sekcion kun aŭtomata elekto de direkto. Stir+Klaku por forigi tramvojsekcion. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Konstrui stratveturilan garaĝon (por konstrui kaj prizorgi veturilojn). Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Konstrui tramveturilan garaĝon (por konstrui kaj prizorgi veturilojn). Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Konstrui vojpunkton sur vojo. Stir+klaku por elekti alian vojpunkton por ligi. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Konstrui vojpunkton sur tramvojo. Stir-klaku por elekti alian vojpunkton por ligi. Ankaŭ premu majuskligan klavon por nur montri kostotakson
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Konstrui bushaltejon. Stir+Klaku por elekti alian stacion por ligi. Ankaŭ premu Shift por nur montri kostotakson
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Konstrui bushaltejon. Stir+Klaku por elekti alian stacion por ligi. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Konstrui pasaĝerotraman stacion. Stir+Klaku por elekti alian stacion por ligi. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Konstrui ŝarĝstacion. Stir+Klaku por elekti alian stacion por ligi. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Konstrui ŝarĝotraman stacion. Stir+Klaku por elekti alian stacion por ligi. Ankaŭ premu Shift por nur montri kostotakson
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Konstrui ŝarĝotraman stacion. Stir+Klaku por elekti alian stacion por ligi. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktivigi/Malaktivigi unudirektajn stratojn
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Konstrui vojponton. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Konstrui tramponton. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Konstrui vojtunelon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Konstrui tramtunelon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Ĉu konstrui ĉu forigi por vojkonstruado
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Baskuligi konstruadon/forigadon por stratkonstruadon
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Ŝaltu konstruadon/forigadon por konstruado de tramvojoj
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konvertu/Plibonigu la tipon de vojo. Ankaŭ premu majuskligan klavon por nur montri kostotakson
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konvertu/Plibonigu la tipon de tramo. Ankaŭ premu majuskligan klavon por nur montri kostotakson
@@ -3148,7 +3148,7 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landaspe
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Malaltigu landangulon. Stir+Trenu por unue malaltigi la unuan elektitan angulon, kaj poste ebenigi la elektitan areon. Stir+Maj+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Altigu landangulon. Stir+Trenu por unue altigi la unuan elektitan angulon, kaj poste ebenigi la elektitan areon. Stir+Maj+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ebenigu landon ĝis la nivelo de unua elektita angulo. Stir+Maj+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉetu landon por onta uzo. Stir+Klaku+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉeti landon por onta uzo. Stir+Klaku+Trenu por elekti areon diagonale. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Elekto de objekto
@@ -3184,14 +3184,14 @@ STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Kreu nov
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reigu landaspekton
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Forviŝu ĉiujn posedaĵojn de la kompanio disde la mapo
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reigu Landaspekton
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reigi landaspekton
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ĉu vi certas ke vi volas forviŝi ĉiujn posedaĵojn de la kompanio?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Urba generado
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Urbo
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fondu novan urbon. Ankaŭ premu Shift por nur montri kostotakson
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Hazarda Urbo
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova urbo
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fondi novan urbon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Hazarda urbo
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fondi urbon en hazarda loko
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Multaj hazardaj urboj
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Kovru la mapon per hazarde metitajn urbojn
@@ -3468,7 +3468,7 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Forviŝu
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Forviŝu la nun elektitan luddosieron
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Konservi
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Konservi la nunan ludon per la elektita nomo
-STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ŝarĝu
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ŝarĝi
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ŝarĝi la elektitan ludon
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ŝarĝi la elektitan altecmapon
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Ŝarĝi la datumon de elektita urbo
@@ -3521,9 +3521,9 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Diversec
 STR_MAPGEN_GENERATE                                             :{WHITE}Generu
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Kreu la mondon kaj ludu OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Agordoj de NewGRF
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Malfermu NewGRF-agordojn
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Malfermi NewGRF-agordojn
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI-agordoj
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Malfermu AI-agordojn
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Malfermi AI-agordojn
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Ludoskriptaj agordoj
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Malfermi ludoskriptajn agordojn
 
@@ -3875,7 +3875,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Takso de
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Haveblaj agoj:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Fareblaĵoj en ĉi tiu urbo - alklaku por pliaj detaloj
-STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Faru
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Fari
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Plenumu la elektitan agon el la ĉi-supera listo
 
 ###length 8
@@ -3885,8 +3885,8 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Granda reklama 
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financi lokan vojrekonstruadon
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Konstrui statuon de la kompaniestro
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fondu novajn konstruaĵojn
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉetu ekskluzivan transportrajton
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉetu la lokajn estrojn
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉeti ekskluzivan transportrajton
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉeti la lokajn estrojn
 ###next-name-looks-similar
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Komencu malgrandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en malgranda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
@@ -3898,7 +3898,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Pagu la konstruadon de novaj komercaj konstruaĵoj en la urbo.{}Portempe rapidigas la kreskadon de tiu ĉi urbo.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Aĉeti ekskluzivan transportrajtojn en la urbo por 12 monatoj.{}La urba registaro ne permesos al pasaĝeroj aŭ ŝarĝo uzi staciojn de viaj konkurantoj. Sukcesa subaĉeto, farita de konkuranto, nuligos ĉi tiun kontrakton.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Aĉeti ekskluzivan transportrajtojn en la urbo por 12 minutoj.{}La urba registaro ne permesos al pasaĝeroj aŭ ŝarĝo uzi staciojn de viaj konkurantoj. Sukcesa subaĉeto, farita de konkuranto, nuligos ĉi tiun kontrakton.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subaĉetu la lokajn estrojn por pliigi vian rendimenton kaj nuligi ekskluzivajn transportrajtojn de konkuranto, riskante grandan punon je kaptiĝo.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subaĉeti la lokajn estrojn por pliigi vian rendimenton kaj nuligi ekskluzivajn transportrajtojn de konkuranto, riskante grandan punon je kaptiĝo.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Celoj de {COMPANY}
@@ -3987,7 +3987,7 @@ STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Montri pli...
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervita por ŝarĝu)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervita por ŝarĝado)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montri liston de akceptataj ŝarĝoj.
@@ -4005,7 +4005,7 @@ STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupigu laŭ
 STR_STATION_VIEW_WAITING_STATION                                :Stacio: Atendanta
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Kvanto: Atendanta
-STR_STATION_VIEW_PLANNED_STATION                                :Stacio: Planata
+STR_STATION_VIEW_PLANNED_STATION                                :Stacio: Planita
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :Kvanto: Planita
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} de {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} tra {STATION}
@@ -4207,8 +4207,8 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRI
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING.n}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING.n}{BLACK}: {1:CARGO_SHORT} atendita
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon (multoble de 8, ĝis 2040)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ŝanĝu produktan nivelon (procento, limigo je 800%)
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝi produktadon (multoble de 8, ĝis 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ŝanĝi produktan nivelon (procento, limigo je 800%)
 
 # Vehicle lists
 ###length VEHICLE_TYPES
@@ -4224,18 +4224,18 @@ STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ŝipoj -
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aviadiloj - alklaku aviadilon por informoj. Premu Stir+Maj por surmontri ŝarĝotipojn
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Haveblaj Vagonaroj
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Haveblaj Veturiloj
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Haveblaj Ŝipoj
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Haveblaj Aviadiloj
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Haveblaj vagonaroj
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Haveblaj veturiloj
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Haveblaj ŝipoj
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Haveblaj aviadiloj
 
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manaĝu liston
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manaĝi liston
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Sendu instrukciojn al ĉiuj veturiloj en la listo
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Anstataŭu veturilojn
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Sendu por prizorgo
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Krei grupon
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Gajno ĉi-jare: {CURRENCY_LONG} (pasintjare: {CURRENCY_LONG})
-STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Profito ĉi-periode: {CURRENCY_LONG} (pasintperiode: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Gajno ĉi-periode: {CURRENCY_LONG} (pasintperiode: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4246,7 +4246,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Sendu al hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Alklaku por haltigi ĉiujn veturilojn en la listo
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Alklaku por starti ĉiujn veturilojn en la listo
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vidu liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vidi liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Kunhavaj ordonoj de {COMMA} veturilo{P "" j}
 
@@ -4359,28 +4359,28 @@ STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Ŝipa el
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Aviadilelekta listo. Alklaku aviadilon por informoj. Stir+Klaku por montri/kaŝi tiun ĉi aviadiltipon
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Aĉeti Veturilon
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Aĉeti Veturilon
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Aĉeti Ŝipon
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Aĉeti veturilon
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Aĉeti veturilon
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Aĉeti ŝipon
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Aĉeti Aviadilon
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Aĉetu kaj readaptu veturilon
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Aĉetu kaj readaptu veturilon
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Aĉeti kaj readapti veturilon
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Aĉeti kaj readapti veturilon
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Aĉeti kaj readapti ŝipon
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Aĉetu kaj readaptu la aviadilon
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Aĉeti kaj readapti aviadilon
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Aĉetu la emfazitan vagonaron. Ankaŭ premu Shift por nur montri kostotakson
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Aĉetu la emfazitan stratveturilon. Ankaŭ premu Shift por nur montri kostotakson
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Aĉetu la emfazitan ŝipon. Ankaŭ premu Shift por nur montri kostotakson
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Aĉetu la emfazitan aviadilon. Ankaŭ premu Shift por nur montri la taksitan koston
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Aĉeti la emfazitan relveturilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Aĉeti la emfazitan stratveturilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Aĉeti la emfazitan ŝipon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Aĉeti la emfazitan aviadilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Aĉetu kaj readaptu la emfazitan relveturilon. Ankaŭ premu Shift por nur montri kostotakson
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Aĉetu kaj readaptu la emfazitan stratveturilon. Ankaŭ premu Shift por nur montri kostotakson
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Aĉeti kaj readapti la emfazitan ŝipon. Ankaŭ premu Shift por nur montri kostotakson
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Aĉetu kaj readaptu la emfazitan aviadilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Aĉeti kaj readapti la emfazitan relveturilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Aĉeti kaj readapti la emfazitan stratveturilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Aĉeti kaj readapti la emfazitan ŝipon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Aĉeti kaj readapti la emfazitan aviadilon. Ankaŭ premu la majuskligan klavon por nur montri kostotakson
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Alinomi
@@ -4396,7 +4396,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Alinomi 
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Kaŝu
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Kaŝu
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}Kaŝi
 STR_BUY_VEHICLE_SHIP_HIDE_TOGGLE_BUTTON                         :{BLACK}Kaŝu
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}Kaŝu
 
@@ -4408,7 +4408,7 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Montri
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Ŝaltu kaŝadon/montradon de vagonara tipo
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Ŝaltu kaŝadon/montradon de stratveturila tipo
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Baskuligi kaŝadon/montradon de stratveturila tipo
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Ŝaltu kaŝadon/montradon de ŝipa tipo
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Ŝaltu kaŝadon/montradon de aviadila tipo
 
@@ -4439,7 +4439,7 @@ STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aviadilo
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tiru lokomotivon aŭ vagonaron ĉi tien por vendi
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Tiru stratveturilon ĉi tien por vendi
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Tiru ŝipon ĉi tien por vendi
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}DTiru aviadilon ĉi tien por vendi
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Tiru aviadilon ĉi tien por vendi
 
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vendi ĉiujn vagonarojn en la garaĝo
@@ -4677,10 +4677,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komenca
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaloj)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomu vagonaron
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomi vagonaron
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi stratveturilon
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomu ŝipon
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomu aviadilon
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomi ŝipon
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomi aviadilon
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} jaro{P "" j} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} jaro{P "" j} ({COMMA})
@@ -4693,10 +4693,10 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Maks. ra
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_SHORT} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_SHORT} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profito ĉijare: {LTBLUE}{CURRENCY_LONG} (lastjare: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profito ĉi-jare: {LTBLUE}{CURRENCY_LONG} (pasintjare: {CURRENCY_LONG}) {BLACK}Min. rendimento: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Profito ĉi-periode: {LTBLUE}{CURRENCY_LONG} (pasintperiode: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Profito ĉi-periode: {LTBLUE}{CURRENCY_LONG} (pasintperiode: {CURRENCY_LONG}) {BLACK}Min. rendimento: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Gajno ĉi-jare: {LTBLUE}{CURRENCY_LONG} (lastjare: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Gajno ĉi-jare: {LTBLUE}{CURRENCY_LONG} (lastjare: {CURRENCY_LONG}) {BLACK}Min. rendimento: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Gajno ĉi-periode: {LTBLUE}{CURRENCY_LONG} (lastperiode: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Gajno ĉi-periode: {LTBLUE}{CURRENCY_LONG} (lastperiode: {CURRENCY_LONG}) {BLACK}Min. rendimento: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fidindo: {LTBLUE}{COMMA}%  {BLACK}Paneoj ekde lasta servo: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Konstruita: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}
@@ -4705,7 +4705,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacito
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacito: {LTBLUE}{CARGO_LONG}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj kreditoj: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Prizorga intertempo: {LTBLUE}{COMMA}{NBSP}tagoj{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Prizorga intertempo: {LTBLUE}{COMMA}{NBSP}minuto{P "" j}{BLACK} {STRING}
@@ -4749,7 +4749,7 @@ STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informoj
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Montri detalojn de vagonaroj
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapabloj
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Montri kapablojn de ĉiu veturilo
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tuta Ŝarĝo
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tuta ŝarĝo
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Montri tutan kapablon de vagonaro, dividite laŭ ŝarĝtipo
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacito: {LTBLUE}{STRING}
@@ -4983,7 +4983,7 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Tiu ĉi 
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Tiu ĉi horaro komenciĝos post {COMMA} sekundoj
 
 STR_TIMETABLE_START                                             :{BLACK}Komenci horaron
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Elekti, kiam ĉi tiu horaro komencos. Stir-klaku por egale distribui la komencojn de ĉiuj veturiloj, kiuj kunhavas tiun ordonon, laŭ ties relativa ordo, se la ordono estas tute aranĝita per horaro
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Elektu, kiam ĉi tiu horaro komencos. Stir-klaku por egale distribui la komencojn de ĉiuj veturiloj, kiuj kunhavas tiun ordonon, laŭ ties relativa ordo, se la ordono estas tute aranĝita per horaro
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundoj ĝis kiam komenciĝos la horaro
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝi tempon
@@ -5037,9 +5037,9 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ŝaltu/m
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Rompu sur:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Rompu sur
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kiam iu AI protokolas mesaĝon kongruan kun tiu ĉi tekstoĉeno, la ludo estos paŭzigita
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Parigu kazon
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Distingi usklecon
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Baskuligi usklecodistingon dum komparado de protokoleroj de AI kaj la halta tekstoĉeno
-STR_AI_DEBUG_CONTINUE                                           :{BLACK}Daŭrigu
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Daŭrigi
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Malpaŭzu kaj daŭrigi la AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidi sencimigan eligon de ĉi tiu AI. Stir+Klaku por malfermi en nova fenestro
 STR_AI_GAME_SCRIPT                                              :{BLACK}Ludoskripto
@@ -5080,7 +5080,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi p
 STR_AI_LIST_CAPTION                                             :{WHITE}Haveblaj {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIoj
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Ludoskriptoj
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaki por elekti skripto
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaku por elekti skripto
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Aŭtoro: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Versio: {ORANGE}{NUM}
@@ -5089,7 +5089,7 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 STR_AI_LIST_ACCEPT                                              :{BLACK}Akcepti
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elekti emfazita skripto
 
-STR_SCREENSHOT_CAPTION                                          :{WHITE}Faru ekrankapton
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Fari ekrankapton
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normala ekrankapto
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Plene zomita ekrankapto
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Ekrankapto kun defaŭlta zomo
@@ -5846,7 +5846,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Amuztrinkaĵvag
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastikvagono
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Levjatano' (Elektro)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Ciklopo' (Eletro)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasuso' (Elektro)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegazo' (Elektro)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Ĥimero' (Elektro)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Pasaĝervagono
@@ -6133,7 +6133,7 @@ STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLO
 STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
-STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Malfermu agordadon de insignoj
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Malfermi agordadon de insignoj
 STR_BADGE_CONFIG_RESET                                          :Restarigi
 STR_BADGE_CONFIG_ICONS                                          :{WHITE}Insignaj bildetoj
 STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Insignaj filtriloj
