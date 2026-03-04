@@ -26,7 +26,6 @@
 #include "safeguards.h"
 
 static std::string *_fios_path = nullptr;
-SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix .c) */
 extern bool FiosIsRoot(const std::string &path);
@@ -36,22 +35,17 @@ extern void FiosGetDrives(FileList &file_list);
 /* get the name of an oldstyle savegame */
 extern std::string GetOldSaveGameName(std::string_view file);
 
-/**
- * Compare two FiosItem's. Used with sort when sorting the file list.
- * @param other The FiosItem to compare to.
- * @return for ascending order: returns true if da < db. Vice versa for descending order.
- */
-bool FiosItem::operator< (const FiosItem &other) const
+/** Sort files by their name. @copydoc GUIList::Sorter */
+bool FiosItemNameSorter(const FiosItem &a, const FiosItem &b)
 {
-	int r = false;
+	return StrNaturalCompare(a.title.GetDecodedString(), b.title.GetDecodedString()) < 0;
+}
 
-	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
-		r = ClampTo<int32_t>(this->mtime - other.mtime);
-	} else {
-		r = StrNaturalCompare(this->title.GetDecodedString(), other.title.GetDecodedString());
-	}
-	if (r == 0) return false;
-	return (_savegame_sort_order & SORT_DESCENDING) ? r > 0 : r < 0;
+/** Sort files by their modification date, and name when they are equal. @copydoc GUIList::Sorter */
+bool FiosItemModificationDateSorter(const FiosItem &a, const FiosItem &b)
+{
+	if (a.mtime == b.mtime) return FiosItemNameSorter(a, b);
+	return a.mtime < b.mtime;
 }
 
 /**
@@ -333,11 +327,8 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.title = GetEncodedString(STR_SAVELOAD_DIRECTORY, fios.name + PATHSEP);
 		}
 
-		/* Sort the subdirs always by name, ascending, remember user-sorting order */
-		SortingBits order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		std::sort(file_list.begin() + sort_start, file_list.end());
-		_savegame_sort_order = order;
+		/* Sort the subdirs always ascending by name. */
+		std::sort(file_list.begin() + sort_start, file_list.end(), FiosItemNameSorter);
 	}
 
 	/* This is where to start sorting for the filenames */
@@ -351,7 +342,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 		scanner.Scan({}, subdir, true, true);
 	}
 
-	std::sort(file_list.begin() + sort_start, file_list.end());
+	std::sort(file_list.begin() + sort_start, file_list.end(), FiosItemSorter);
 
 	/* Show drives */
 	FiosGetDrives(file_list);
@@ -718,13 +709,9 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 	scanner.Scan(".sav", *_autosave_path, false);
 
 	/* Find the number for the most recent save, if any. */
-	if (list.begin() != list.end()) {
-		SortingBits order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
-		std::sort(list.begin(), list.end());
-		_savegame_sort_order = order;
-
-		std::string name = list.begin()->title.GetDecodedString();
+	if (!list.empty()) {
+		auto elem = std::ranges::max_element(list, FiosItemModificationDateSorter);
+		std::string name = elem->title.GetDecodedString();
 		std::from_chars(name.data() + this->prefix.size(), name.data() + name.size(), this->number);
 	}
 }
