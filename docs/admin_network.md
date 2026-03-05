@@ -43,6 +43,10 @@ Last updated:    2024-03-26
   A reference implementation in Java for a client connecting to the admin interface
   can be found at: [http://dev.openttdcoop.org/projects/joan](http://dev.openttdcoop.org/projects/joan)
 
+  A Python implementation that connects an AI advisor (Claude) to the admin
+  interface, with support for GameScript actions (signs, goals, story pages),
+  can be found at: [https://github.com/rachittshah/ottd-claude](https://github.com/rachittshah/ottd-claude)
+
 
 ## 2.0) Joining the network
 
