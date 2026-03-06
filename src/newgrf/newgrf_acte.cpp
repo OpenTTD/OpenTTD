@@ -16,7 +16,7 @@
 
 #include "../safeguards.h"
 
-/* Action 0x0E (GLS_SAFETYSCAN) */
+/* Action 0x0E (GrfLoadingStage::SafetyScan) */
 static void SafeGRFInhibit(ByteReader &buf)
 {
 	/* <0E> <num> <grfids...>

@@ -23,8 +23,8 @@ enum class GRFConfigFlag : uint8_t {
 	Static, ///< GRF file is used statically (can be used in any MP game)
 	Compatible, ///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
 	Copy, ///< The data is copied from a grf in _all_grfs
-	InitOnly, ///< GRF file is processed up to GLS_INIT
-	Reserved, ///< GRF file passed GLS_RESERVE stage
+	InitOnly, ///< GRF file is processed up to GrfLoadingStage::Init
+	Reserved, ///< GRF file passed GrfLoadingStage::Reserve stage
 	Invalid, ///< GRF is unusable with this version of OpenTTD
 };
 using GRFConfigFlags = EnumBitSet<GRFConfigFlag, uint8_t>;
