@@ -43,14 +43,14 @@ struct CanalProperties {
 	uint8_t flags;          ///< Flags controlling display.
 };
 
+/** Stages of loading all NewGRFs. */
 enum GrfLoadingStage : uint8_t {
-	GLS_FILESCAN,
-	GLS_SAFETYSCAN,
-	GLS_LABELSCAN,
-	GLS_INIT,
-	GLS_RESERVE,
-	GLS_ACTIVATION,
-	GLS_END,
+	FileScan, ///< Load the Action 8 metadata (GRF ID, name).
+	SafetyScan, ///< Checks whether the NewGRF can be used in a static context.
+	LabelScan, ///< First step of NewGRF loading; find the 'goto' labels in the NewGRF.
+	Init, ///< Second step of NewGRF loading; load all actions into memory.
+	Reserve, ///< Third step of NewGRF loading; reserve features and GRMs.
+	Activation, ///< Forth step of NewGRF loading; activate the features.
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(GrfLoadingStage)

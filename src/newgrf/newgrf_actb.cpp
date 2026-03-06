@@ -60,7 +60,7 @@ static void GRFLoadError(ByteReader &buf)
 
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
-	if (!HasBit(severity, 7) && _cur_gps.stage == GLS_INIT) {
+	if (!HasBit(severity, 7) && _cur_gps.stage == GrfLoadingStage::Init) {
 		GrfMsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage {}", _cur_gps.stage);
 		return;
 	}

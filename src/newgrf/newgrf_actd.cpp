@@ -40,7 +40,7 @@ void ResetGRM()
 	_grm_cargoes.fill(0);
 }
 
-/* Action 0x0D (GLS_SAFETYSCAN) */
+/* Action 0x0D (GrfLoadingStage::SafetyScan) */
 static void SafeParamSet(ByteReader &buf)
 {
 	uint8_t target = buf.ReadByte();
@@ -240,7 +240,7 @@ static void ParamSet(ByteReader &buf)
 				GrfSpecFeature feature{static_cast<uint8_t>(GB(data, 8, 8))};
 				uint16_t count   = GB(data, 16, 16);
 
-				if (_cur_gps.stage == GLS_RESERVE) {
+				if (_cur_gps.stage == GrfLoadingStage::Reserve) {
 					if (feature == GSF_GLOBALVAR) {
 						/* General sprites */
 						if (op == 0) {
@@ -259,7 +259,7 @@ static void ParamSet(ByteReader &buf)
 					}
 					/* Ignore GRM result during reservation */
 					src1 = 0;
-				} else if (_cur_gps.stage == GLS_ACTIVATION) {
+				} else if (_cur_gps.stage == GrfLoadingStage::Activation) {
 					switch (feature) {
 						case GSF_TRAINS:
 						case GSF_ROADVEHICLES:
