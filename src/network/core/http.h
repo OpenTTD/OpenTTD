@@ -12,7 +12,7 @@
 
 #include "tcp.h"
 
-constexpr int HTTP_429_TOO_MANY_REQUESTS = 429;
+constexpr int HTTP_429_TOO_MANY_REQUESTS = 429; ///< HTTP error code for when the client is doing too many requests.
 
 /** Callback for when the HTTP handler has something to tell us. */
 struct HTTPCallback {

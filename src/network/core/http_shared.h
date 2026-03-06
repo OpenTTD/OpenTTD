@@ -22,12 +22,18 @@ private:
 	/** Entries on the queue for later handling. */
 	class Callback {
 	public:
+		/**
+		 * Create the callback.
+		 * @param data The data of the callback.
+		 * @param length The length of the data.
+		 */
 		Callback(std::unique_ptr<char[]> data, size_t length) : data(std::move(data)), length(length), failure(false) {}
-		Callback() : data(nullptr), length(0), failure(true) {}
+		/** Default constructor for a failed callback. */
+		Callback() = default;
 
-		std::unique_ptr<char[]> data;
-		size_t length;
-		bool failure;
+		std::unique_ptr<char[]> data{}; ///< The data of the callback.
+		size_t length = 0; ///< The length of the data.
+		bool failure = true; ///< Whether the callback denotes a failure.
 	};
 
 public:
@@ -97,6 +103,10 @@ public:
 		return this->queue.empty();
 	}
 
+	/**
+	 * Create the thread safe callback.
+	 * @param callback The underlying callback to call.
+	 */
 	HTTPThreadSafeCallback(HTTPCallback *callback) : callback(callback) {}
 
 	/** Ensure our queues are emptied while holding a lock. */
@@ -109,7 +119,7 @@ public:
 		queue_cv.notify_all();
 	}
 
-	std::atomic<bool> cancelled = false;
+	std::atomic<bool> cancelled = false; ///< Whether this callback has been cancelled, or not.
 
 private:
 	HTTPCallback *callback; ///< The callback to send data back on.
