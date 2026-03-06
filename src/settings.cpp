@@ -955,7 +955,7 @@ static void AILoadConfig(const IniFile &ini, std::string_view grpname)
 
 	/* Clean any configured AI */
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
-		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
+		AIConfig::GetConfig(c, AIConfig::ScriptSettingSource::ForceNewGame)->Change(std::nullopt);
 	}
 
 	/* If no group exists, return */
@@ -963,7 +963,7 @@ static void AILoadConfig(const IniFile &ini, std::string_view grpname)
 
 	CompanyID c = CompanyID::Begin();
 	for (const IniItem &item : group->items) {
-		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
+		AIConfig *config = AIConfig::GetConfig(c, AIConfig::ScriptSettingSource::ForceNewGame);
 
 		config->Change(item.name);
 		if (!config->HasScript()) {
@@ -983,14 +983,14 @@ static void GameLoadConfig(const IniFile &ini, std::string_view grpname)
 	const IniGroup *group = ini.GetGroup(grpname);
 
 	/* Clean any configured GameScript */
-	GameConfig::GetConfig(GameConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
+	GameConfig::GetConfig(GameConfig::ScriptSettingSource::ForceNewGame)->Change(std::nullopt);
 
 	/* If no group exists, return */
 	if (group == nullptr || group->items.empty()) return;
 
 	const IniItem &item = group->items.front();
 
-	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
+	GameConfig *config = GameConfig::GetConfig(AIConfig::ScriptSettingSource::ForceNewGame);
 
 	config->Change(item.name);
 	if (!config->HasScript()) {
@@ -1186,7 +1186,7 @@ static void AISaveConfig(IniFile &ini, std::string_view grpname)
 	group.Clear();
 
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
-		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
+		AIConfig *config = AIConfig::GetConfig(c, AIConfig::ScriptSettingSource::ForceNewGame);
 		std::string name;
 		std::string value = config->SettingsToString();
 
@@ -1205,7 +1205,7 @@ static void GameSaveConfig(IniFile &ini, std::string_view grpname)
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
 
-	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
+	GameConfig *config = GameConfig::GetConfig(AIConfig::ScriptSettingSource::ForceNewGame);
 	std::string name;
 	std::string value = config->SettingsToString();
 

@@ -22,7 +22,7 @@ public:
 	 * @param source The context, i.e. current / new game mode.
 	 * @return The configuration.
 	 */
-	static AIConfig *GetConfig(CompanyID company, ScriptSettingSource source = SSS_DEFAULT);
+	static AIConfig *GetConfig(CompanyID company, ScriptSettingSource source = ScriptSettingSource::Default);
 
 	AIConfig() :
 		ScriptConfig()

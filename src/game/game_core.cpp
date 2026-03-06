@@ -79,7 +79,7 @@
 	/* Clients shouldn't start GameScripts */
 	if (_networking && !_network_server) return;
 
-	GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
+	GameConfig *config = GameConfig::GetConfig(GameConfig::ScriptSettingSource::ForceCurrentGame);
 	GameInfo *info = config->GetInfo();
 	if (info == nullptr) return;
 

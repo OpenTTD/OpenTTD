@@ -96,10 +96,10 @@ public:
 	 * Where to get the config from, either default (depends on current game
 	 * mode) or force either newgame or normal
 	 */
-	enum ScriptSettingSource : uint8_t {
-		SSS_DEFAULT,       ///< Get the Script config from the current game mode
-		SSS_FORCE_NEWGAME, ///< Get the newgame Script config
-		SSS_FORCE_GAME,    ///< Get the Script config from the current game
+	enum class ScriptSettingSource : uint8_t {
+		Default, ///< Get the Script config from the current game mode
+		ForceNewGame, ///< Get the newgame Script config
+		ForceCurrentGame, ///< Get the Script config from the current game
 	};
 
 	/**
