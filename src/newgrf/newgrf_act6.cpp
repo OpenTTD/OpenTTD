@@ -111,9 +111,15 @@ static void CfgApply(ByteReader &buf)
 	}
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x06>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x06>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x06>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x06>::Init(ByteReader &buf) { CfgApply(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x06>::Reserve(ByteReader &buf) { CfgApply(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x06>::Activation(ByteReader &buf) { CfgApply(buf); }

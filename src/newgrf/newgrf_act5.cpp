@@ -191,9 +191,15 @@ static void SkipAct5(ByteReader &buf)
 	GrfMsg(3, "SkipAct5: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
+/** @copydoc GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x05>::FileScan(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x05>::SafetyScan(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x05>::LabelScan(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x05>::Init(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x05>::Reserve(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x05>::Activation(ByteReader &buf) { GraphicsNew(buf); }
