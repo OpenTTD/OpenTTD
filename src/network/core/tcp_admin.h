@@ -99,7 +99,7 @@ enum class AdminUpdateFrequency : uint8_t {
 	Annually, ///< The admin gets information about this on a yearly basis.
 	Automatic, ///< The admin gets information about this when it changes.
 };
-using AdminUpdateFrequencies = EnumBitSet<AdminUpdateFrequency, uint8_t>;
+using AdminUpdateFrequencies = EnumBitSet<AdminUpdateFrequency, uint8_t>; ///< Bitset of chosen update frequencies.
 
 /** Reasons for removing a company - communicated to admins. */
 enum AdminCompanyRemoveReason : uint8_t {

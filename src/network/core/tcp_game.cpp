@@ -19,7 +19,7 @@
 
 #include "../../safeguards.h"
 
-static std::vector<std::unique_ptr<NetworkGameSocketHandler>> _deferred_deletions;
+static std::vector<std::unique_ptr<NetworkGameSocketHandler>> _deferred_deletions; ///< NetworkGameSocketHandler that still need to be deleted.
 
 /**
  * Create a new socket for the game connection.
@@ -185,12 +185,14 @@ NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MOVE(Packet &) { retu
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &) { return this->ReceiveInvalidPacket(PACKET_CLIENT_MOVE); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet &) { return this->ReceiveInvalidPacket(PACKET_SERVER_CONFIG_UPDATE); }
 
+/** Mark this socket handler for deletion, once iterating the socket handlers is done. */
 void NetworkGameSocketHandler::DeferDeletion()
 {
 	_deferred_deletions.emplace_back(this);
 	this->is_pending_deletion = true;
 }
 
+/** Actually delete the socket handlers that were marked for deletion. */
 /* static */ void NetworkGameSocketHandler::ProcessDeferredDeletions()
 {
 	/* Calls deleter on all items */

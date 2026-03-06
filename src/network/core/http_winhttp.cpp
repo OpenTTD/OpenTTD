@@ -20,7 +20,7 @@
 
 #include "../../safeguards.h"
 
-static HINTERNET _winhttp_session = nullptr;
+static HINTERNET _winhttp_session = nullptr; ///< Currently running download session.
 
 /** Single HTTP request. */
 class NetworkHTTPRequest {
@@ -44,14 +44,14 @@ public:
 	void WinHttpCallback(DWORD code, void *info, DWORD length);
 };
 
-static std::vector<NetworkHTTPRequest *> _http_requests;
-static std::vector<NetworkHTTPRequest *> _new_http_requests;
-static std::mutex _new_http_requests_mutex;
+static std::vector<NetworkHTTPRequest *> _http_requests; ///< HTTP requests that are currently running.
+static std::vector<NetworkHTTPRequest *> _new_http_requests; ///< HTTP requests that should be started.
+static std::mutex _new_http_requests_mutex; ///< Mutex to prevent concurrent access #_new_http_requests.
 
-static std::vector<HTTPThreadSafeCallback *> _http_callbacks;
-static std::vector<HTTPThreadSafeCallback *> _new_http_callbacks;
-static std::mutex _http_callback_mutex;
-static std::mutex _new_http_callback_mutex;
+static std::vector<HTTPThreadSafeCallback *> _http_callbacks; ///< Callback for the current requests.
+static std::vector<HTTPThreadSafeCallback *> _new_http_callbacks; ///< Callbacks for the request that should be started.
+static std::mutex _http_callback_mutex; ///< Mutex to prevent concurrent access to #_http_callbacks.
+static std::mutex _new_http_callback_mutex; ///< Mutex to prevent concurrent access to #_new_http_callbacks.
 
 /**
  * Create a new HTTP request.
@@ -69,6 +69,10 @@ NetworkHTTPRequest::NetworkHTTPRequest(std::wstring &&uri, HTTPCallback *callbac
 	_new_http_callbacks.push_back(&this->callback);
 }
 
+/**
+ * Gets the last error from Windows as a string.
+ * @return The human readable form of the last error.
+ */
 static std::string GetLastErrorAsString()
 {
 	wchar_t buffer[512];
@@ -193,6 +197,13 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 	}
 }
 
+/**
+ * Implementation of Microsoft's WINHTTP_STATUS_CALLBACK.
+ * @param context Pointer to our context, i.e. our request.
+ * @param code The code of the event.
+ * @param info The information about the event.
+ * @param length The length of the information.
+ */
 static void CALLBACK StaticWinHttpCallback(HINTERNET, DWORD_PTR context, DWORD code, void *info, DWORD length)
 {
 	if (context == 0) return;

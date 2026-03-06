@@ -80,6 +80,7 @@ public:
 	bool   CanWriteToPacket(size_t bytes_to_write);
 	void   Send_bool  (bool   data);
 	void   Send_uint8 (uint8_t  data);
+	/** @copydoc Packet::Send_uint8(uint8_t) */
 	void   Send_uint8 (const ConvertibleThroughBase auto &data) { this->Send_uint8(data.base()); }
 	void   Send_uint16(uint16_t data);
 	void   Send_uint32(uint32_t data);

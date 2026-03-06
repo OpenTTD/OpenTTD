@@ -30,6 +30,12 @@ class TCPListenHandler {
 	static SocketList sockets;
 
 public:
+	/**
+	 * Check whether this client is allowed to connect, by both the banlist and maximum client count.
+	 * @param s The socket/network connection to the client.
+	 * @param address The address of the client.
+	 * @return \c true iff the client is allowed in.
+	 */
 	static bool ValidateClient(SOCKET s, NetworkAddress &address)
 	{
 		/* Check if the client is banned. */
@@ -170,6 +176,7 @@ public:
 	}
 };
 
+/** Instantiate the sockets. */
 template <class Tsocket, PacketType Tfull_packet, PacketType Tban_packet> SocketList TCPListenHandler<Tsocket, Tfull_packet, Tban_packet>::sockets;
 
 #endif /* NETWORK_CORE_TCP_LISTEN_H */
