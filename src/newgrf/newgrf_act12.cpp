@@ -79,9 +79,15 @@ static void SkipAct12(ByteReader &buf)
 	GrfMsg(3, "SkipAct12: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
+/** @copydoc GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x12>::FileScan(ByteReader &buf) { SkipAct12(buf); }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x12>::SafetyScan(ByteReader &buf) { SkipAct12(buf); }
+/** @copydoc GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x12>::LabelScan(ByteReader &buf) { SkipAct12(buf); }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x12>::Init(ByteReader &buf) { SkipAct12(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x12>::Reserve(ByteReader &buf) { SkipAct12(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x12>::Activation(ByteReader &buf) { LoadFontGlyph(buf); }

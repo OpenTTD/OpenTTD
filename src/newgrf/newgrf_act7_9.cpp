@@ -338,16 +338,28 @@ static void SkipIf(ByteReader &buf)
 	}
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x07>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x07>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x07>::LabelScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::Init */
 template <> void GrfActionHandler<0x07>::Init(ByteReader &) { }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x07>::Reserve(ByteReader &buf) { SkipIf(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x07>::Activation(ByteReader &buf) { SkipIf(buf); }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x09>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x09>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x09>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x09>::Init(ByteReader &buf) { SkipIf(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x09>::Reserve(ByteReader &buf) { SkipIf(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x09>::Activation(ByteReader &buf) { SkipIf(buf); }
