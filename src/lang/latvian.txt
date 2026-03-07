@@ -2489,15 +2489,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Līdz šim lejupielādēti {BYTES}
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lejuplādēti līdz šim
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Savienojas...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizējas...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Gaida...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Lejupielādē karti...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Apstrādā datus...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Reģistrējas...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Pieņem spēles informāciju...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Pieņem uzņēmuma informāciju...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atvienoties
 
@@ -2601,10 +2599,10 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tīkla s
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nevar ielādēt saglabāto spēli
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nevar uzsākt servera darbību
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tika pielaista protokola kļūda un savienojums tika slēgts
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE} Jūsu spēlētāja vārds nav iestatīts. Nosaukumu var iestatīt šī loga augšdaļā
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE} Jūsu servera nosaukums nav iestatīts. Nosaukumu var iestatīt vairākspēlētāju loga augšdaļā
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klienta pārskats neatbilst servera pārskatam
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nepareiza parole
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Jūsu spēlētāja vārds nav iestatīts. Nosaukumu var iestatīt šī loga augšdaļā
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Jūsu servera nosaukums nav iestatīts. Nosaukumu var iestatīt vairākspēlētāju loga augšdaļā
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klienta versija neatbilst servera versijai
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Nepareiza parole
 STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Jūs neesat atļauto klientu sarakstā
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris ir pilns
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Šajā serverī jums ir aizliegums

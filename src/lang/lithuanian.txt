@@ -2582,15 +2582,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} va
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} parsisiųsta iki šiol
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} parsiųsta
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Jungiamasi..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizuoja..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Laukia..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Siunčiamas žemėlapis..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Duomenų apdorojimas...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registruojamasi..
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Gaunama žaidimo informacija..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Gaunama kompanijos informacija..
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atsijungti
 

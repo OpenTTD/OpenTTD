@@ -990,7 +990,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 # Network connecting window
 
 
-###length 8
+###length 6
 
 
 

@@ -2435,15 +2435,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} и
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} свалени досега
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} изтеглени
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Свързване..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Оторизиране..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Изчакване..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Сваляне на карта..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Обработка на данни..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Регистриране..
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Сваляне на инфо за играта..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Сваляне на инфо за компаниите..
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Изключване
 

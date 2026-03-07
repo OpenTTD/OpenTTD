@@ -2006,15 +2006,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} nedlasta til no
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lasta ned så langt
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Koplar til...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Gjev løyve..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Ventar..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Lastar ned kart..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Handsamar data..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrerer...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hentar spelinformasjon..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hentar firmainformasjon...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble frå
 

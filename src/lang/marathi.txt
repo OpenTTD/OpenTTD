@@ -1120,7 +1120,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}ति�
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}आत्तापर्यंत {BYTES} डाऊनलोड झाल्या आहेत.
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} डाऊनलोड झालं आहे
 
-###length 8
+###length 6
 
 
 

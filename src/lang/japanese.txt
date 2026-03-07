@@ -2305,15 +2305,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}あな�
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES}ダウンロード済
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{1:BYTES}中、{0:BYTES}ダウンロード済
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 接続中
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 認証中
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 待機中
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 地図をダウンロード中
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) データ処理中
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 登録中
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}ゲーム情報を読み込み中
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社情報を読み込み中
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}接続を解除
 
