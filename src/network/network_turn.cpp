@@ -18,7 +18,7 @@
 /** Connect to the TURN server. */
 class NetworkTurnConnecter : public TCPConnecter {
 private:
-	ClientNetworkTurnSocketHandler *handler;
+	ClientNetworkTurnSocketHandler *handler; ///< The callback for this attempt.
 
 public:
 	/**
@@ -107,6 +107,7 @@ void ClientNetworkTurnSocketHandler::Connect()
 	return turn_handler;
 }
 
+/** Callback when we were unable to connect. */
 void ClientNetworkTurnSocketHandler::ConnectFailure()
 {
 	_network_coordinator_client.ConnectFailure(this->token, this->tracking_number);

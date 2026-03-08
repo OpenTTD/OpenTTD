@@ -416,6 +416,10 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet &p)
 	return true;
 }
 
+/**
+ * Perform the TURN connection with the given token.
+ * @param token The token for the connection.
+ */
 void ClientNetworkCoordinatorSocketHandler::StartTurnConnection(std::string_view token)
 {
 	auto turn_it = this->turn_handlers.find(token);
@@ -424,6 +428,7 @@ void ClientNetworkCoordinatorSocketHandler::StartTurnConnection(std::string_view
 	turn_it->second->Connect();
 }
 
+/** Connect to the coordinator. */
 void ClientNetworkCoordinatorSocketHandler::Connect()
 {
 	/* We are either already connected or are trying to connect. */
