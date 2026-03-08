@@ -4758,6 +4758,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltar
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Saltar a ordem atual, e iniciar a próxima. Ctrl+Clique para saltar até à ordem selecionada
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Eliminar
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Eliminar Todas
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Eliminar a ordem selecionada
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Eliminar todas as ordens
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Parar de partilhar
