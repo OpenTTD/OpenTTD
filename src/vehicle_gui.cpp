@@ -2138,7 +2138,7 @@ public:
 				return;
 
 			case WID_VL_FILTER_BY_CARGO: // Cargo filter dropdown
-				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget, 0, DropDownOption::Filterable);
 				break;
 
 			case WID_VL_LIST: { // Matrix to show vehicles
