@@ -17,8 +17,9 @@
 extern AdminID _redirect_console_to_admin;
 
 class ServerNetworkAdminSocketHandler;
-/** Pool with all admin connections. */
+/** Pool type for admin connections. */
 using NetworkAdminSocketPool = Pool<ServerNetworkAdminSocketHandler, AdminID, 2, PoolType::NetworkAdmin>;
+/** Pool with all admin connections. */
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */
@@ -90,7 +91,13 @@ public:
 		return "admin";
 	}
 
+	/** Filter for the #IterateActive iterator. */
 	struct ServerNetworkAdminSocketHandlerFilter {
+		/**
+		 * Check whether the given admin is active.
+		 * @param index The index of the admin.
+		 * @return \c true iff the admin's status is #ADMIN_STATUS_ACTIVE.
+		 */
 		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; }
 	};
 

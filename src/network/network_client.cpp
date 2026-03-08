@@ -526,7 +526,8 @@ bool ClientNetworkGameSocketHandler::IsConnected()
  * Receiving functions
  ************/
 
-extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, std::shared_ptr<struct LoadFilter> lf);
+struct LoadFilter;
+extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, std::shared_ptr<LoadFilter> lf);
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet &)
 {
@@ -706,6 +707,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	return ret;
 }
 
+/** Handles requests by immediately returning the server password, or show the user to password window. */
 class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
 	void SendResponse() override { MyClient::SendAuthResponse(); }
 	void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
