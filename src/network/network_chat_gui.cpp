@@ -269,6 +269,7 @@ static void SendChat(std::string_view buf, NetworkChatDestinationType type, int 
 	}
 }
 
+/** Implementation of AutoCompletion for nicknames and town names in the chat. */
 class NetworkChatAutoCompletion final : public AutoCompletion {
 public:
 	using AutoCompletion::AutoCompletion;

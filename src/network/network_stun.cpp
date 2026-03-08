@@ -18,9 +18,9 @@
 /** Connect to the STUN server. */
 class NetworkStunConnecter : public TCPConnecter {
 private:
-	ClientNetworkStunSocketHandler *stun_handler;
-	std::string token;
-	uint8_t family;
+	ClientNetworkStunSocketHandler *stun_handler; ///< The STUN handler for callbacks.
+	std::string token; ///< The (server) token for this action.
+	uint8_t family; ///< The IP-family to connect with.
 
 public:
 	/**

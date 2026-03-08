@@ -857,6 +857,10 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN_SECURE(Pac
 	return this->SendAuthRequest();
 }
 
+/**
+ * Send the client a request to authenticate.
+ * @return The state the network should have.
+ */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendAuthRequest()
 {
 	this->status = ADMIN_STATUS_AUTHENTICATE;
@@ -871,6 +875,10 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendAuthRequest()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Send the client the message to enable encryption.
+ * @return The state the network should have.
+ */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendEnableEncryption()
 {
 	if (this->status != ADMIN_STATUS_AUTHENTICATE) return this->SendError(NetworkErrorCode::NotExpected);
