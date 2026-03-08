@@ -45,7 +45,7 @@
 
 	AIConfig *config = c->ai_config.get();
 	if (config == nullptr) {
-		c->ai_config = std::make_unique<AIConfig>(*AIConfig::GetConfig(company, AIConfig::SSS_FORCE_GAME));
+		c->ai_config = std::make_unique<AIConfig>(*AIConfig::GetConfig(company, AIConfig::ScriptSettingSource::ForceCurrentGame));
 		config = c->ai_config.get();
 	}
 

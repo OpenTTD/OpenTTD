@@ -20,7 +20,7 @@ public:
 	 * @param source The context, i.e. current / new game mode.
 	 * @return The configuration.
 	 */
-	static GameConfig *GetConfig(ScriptSettingSource source = SSS_DEFAULT);
+	static GameConfig *GetConfig(ScriptSettingSource source = ScriptSettingSource::Default);
 
 	GameConfig() :
 		ScriptConfig()

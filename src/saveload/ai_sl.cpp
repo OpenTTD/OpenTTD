@@ -44,7 +44,7 @@ static const SaveLoad _ai_running_desc[] = {
 static void SaveReal_AIPL(int arg)
 {
 	CompanyID index = static_cast<CompanyID>(arg);
-	AIConfig *config = AIConfig::GetConfig(index, AIConfig::SSS_FORCE_GAME);
+	AIConfig *config = AIConfig::GetConfig(index, AIConfig::ScriptSettingSource::ForceCurrentGame);
 
 	if (config->HasScript()) {
 		_ai_saveload_name = config->GetName();
@@ -81,7 +81,7 @@ struct AIPLChunkHandler : ChunkHandler {
 
 		/* Free all current data */
 		for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
-			AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(std::nullopt);
+			AIConfig::GetConfig(c, AIConfig::ScriptSettingSource::ForceCurrentGame)->Change(std::nullopt);
 		}
 
 		CompanyID index;
@@ -100,7 +100,7 @@ struct AIPLChunkHandler : ChunkHandler {
 				continue;
 			}
 
-			AIConfig *config = AIConfig::GetConfig(index, AIConfig::SSS_FORCE_GAME);
+			AIConfig *config = AIConfig::GetConfig(index, AIConfig::ScriptSettingSource::ForceCurrentGame);
 			if (_ai_saveload_name.empty() || _ai_saveload_is_random) {
 				/* A random AI. */
 				config->Change(std::nullopt, -1, false);
