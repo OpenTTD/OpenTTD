@@ -160,6 +160,12 @@ public:
 	int GetVersion() const;
 
 	/**
+	 * Get whether the config is enforcing a matching version of the Script.
+	 * @return the version enforcement state of this config.
+	 */
+	bool IsVersionEnforced() const;
+
+	/**
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this Script.
 	 * @param value The string-encoded settings to decode into this configuration.
@@ -187,6 +193,7 @@ public:
 protected:
 	std::string name;                                         ///< Name of the Script
 	int version;                                              ///< Version of the Script
+	bool enforced_version;                                    ///< Whether to enforce a Script version match when starting
 	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
 	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
 	std::unique_ptr<ScriptConfigItemList> config_list;        ///< List with all settings defined by this Script
@@ -204,7 +211,7 @@ protected:
 	 * @param force_exact_match Whether an exact match is required.
 	 * @return The script if found, nullptr otherwise.
 	 */
-	virtual ScriptInfo *FindInfo(const std::string &name, int version, bool force_exact_match) = 0;
+	virtual ScriptInfo *FindInfo(const std::string &name, int version, bool enforce_version) = 0;
 };
 
 #endif /* SCRIPT_CONFIG_HPP */

@@ -203,21 +203,21 @@
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (_settings_game.script_config.ai[c] != nullptr && _settings_game.script_config.ai[c]->HasScript()) {
 			if (!_settings_game.script_config.ai[c]->ResetInfo(true)) {
-				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.ai[c]->GetName());
+				Debug(script, 0, "After a reload, the AI by the name '{}' with version {} was no longer found, and removed from the list.", _settings_game.script_config.ai[c]->GetName(), _settings_game.script_config.ai[c]->GetVersion());
 				_settings_game.script_config.ai[c]->Change(std::nullopt);
 			}
 		}
 
 		if (_settings_newgame.script_config.ai[c] != nullptr && _settings_newgame.script_config.ai[c]->HasScript()) {
-			if (!_settings_newgame.script_config.ai[c]->ResetInfo(false)) {
-				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.script_config.ai[c]->GetName());
+			if (!_settings_newgame.script_config.ai[c]->ResetInfo(_settings_newgame.script_config.ai[c]->IsVersionEnforced())) {
+				Debug(script, 0, "After a reload, the AI by the name '{}' with version {} was no longer found, and removed from the list.", _settings_newgame.script_config.ai[c]->GetName(), _settings_game.script_config.ai[c]->GetVersion());
 				_settings_newgame.script_config.ai[c]->Change(std::nullopt);
 			}
 		}
 
 		if (Company::IsValidAiID(c) && Company::Get(c)->ai_config != nullptr) {
 			AIConfig *config = Company::Get(c)->ai_config.get();
-			if (!config->ResetInfo(true)) {
+			if (!config->ResetInfo(_settings_newgame.script_config.ai[c]->IsVersionEnforced())) {
 				/* The code belonging to an already running AI was deleted. We can only do
 				 * one thing here to keep everything sane and that is kill the AI. After
 				 * killing the offending AI we start a random other one in it's place, just
