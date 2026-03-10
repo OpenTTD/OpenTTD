@@ -3696,7 +3696,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :El tren «{VEHI
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF «{0:STRING}» dóna informació incorrecta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació de «{1:ENGINE}» no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de la funció autorenova/substitueix.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» ha provocat un bucle infinit en la crida de producció.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :«{1:STRING}» ha provocat un bucle infinit en la crida de producció.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Callback' {1:HEX} ha retornat un resultat desconegut/invàlid {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' ha retornat un tipus de càrrega no vàlid a {2:HEX}.
 
@@ -5114,7 +5114,7 @@ STR_ERROR_BRIBE_FAILED                                          :{WHITE}El teu i
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Aquí no es pot elevar el terreny...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Aquí no es pot rebaixar el terreny...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Aquí no es pot anivellar...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}L'excavació pot malmetre el túnel
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :L'excavació pot malmetre el túnel.
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ja sou a nivell de mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}Massa alt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja és pla
@@ -5450,10 +5450,10 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Canvia l
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Encara no hi ha vehicles disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Inicieu una partida nova després de {DATE_SHORT} o useu un NewGRF que proporcioni vehicles primerencs.
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Les poblacions no disposen de tipus de carretera que puguin construir.
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Canvieu la configuració dels NewGRF
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Encara no hi ha tipus de carretera disponibles per a les poblacions.
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Comenceu una partida nova després del {DATE_SHORT} o feu servir un NewGRF que proporcioni tipus de carretera que puguin construir les poblacions.
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Les poblacions no disposen de tipus de carretera que puguin construir.
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Canvieu la configuració dels NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Encara no hi ha tipus de carretera disponibles per a les poblacions.
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Comenceu una partida nova després del {DATE_SHORT} o feu servir un NewGRF que proporcioni tipus de carretera que puguin construir les poblacions.
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
@@ -5495,7 +5495,7 @@ STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}No hi ha
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}No hi ha parades amb un tipus de tramvia compatible
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}No hi ha parades que siguin adequades per a vehicles de carretera articulats.{}Aquest tipus de vehicles necessiten una estació de pas, no pas una estació final
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}L'avió no pot aterrar en aquest aeroport
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}L'helicòpter no pot aterrar en aquest aeroport
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :L'helicòpter no pot aterrar en aquest aeroport.
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}No hi ha cap punt de pas.
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}No hi ha cap punt de control de carretera.
 STR_ERROR_NO_BUOY                                               :{WHITE}No hi ha cap boia
