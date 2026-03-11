@@ -1989,7 +1989,7 @@ static bool IsWholeTrainInsideDepot(const Train *v)
  * Turn a train around.
  * @param v %Train to turn around.
  */
-void ReverseTrainDirection(Train *v)
+static void ReverseTrainDirection(Train *v)
 {
 	if (IsRailDepotTile(v->tile)) {
 		if (IsWholeTrainInsideDepot(v)) return;
