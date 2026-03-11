@@ -1354,18 +1354,6 @@ static void FreeTrainReservation(Train *v)
 }
 
 /**
- * Restore platform reservation during station building/removing.
- * @param v vehicle which held reservation
- */
-static void RestoreTrainReservation(Train *v)
-{
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
-	TryPathReserve(v, true, true);
-	v = v->Last();
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
-}
-
-/**
  * Calculates cost of new rail stations within the area.
  * @param tile_area Area to check.
  * @param flags Operation to perform.
