@@ -1468,30 +1468,31 @@ void AgeVehicle(Vehicle *v)
 
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
-	/* Don't warn if warnings are disabled */
-	if (!_settings_client.gui.old_vehicle_warn) return;
-
-	/* Don't warn about vehicles which are non-primary (e.g., part of an articulated vehicle), don't belong to us, are crashed, or are stopped */
-	if (v->Previous() != nullptr || v->owner != _local_company || v->vehstatus.Any({VehState::Crashed, VehState::Stopped})) return;
+	/* Do we want to be warned about our vehicles? */
+	bool warn = _settings_client.gui.old_vehicle_warn && v->owner == _local_company;
 
 	const Company *c = Company::Get(v->owner);
+	/* We may not be warned, but AIs need to */
+	if (!c->is_ai && !warn) return;
+
+	/* Don't warn about vehicles which are non-primary (e.g., part of an articulated vehicle), are crashed, or are stopped */
+	if (v->Previous() != nullptr || v->vehstatus.Any({VehState::Crashed, VehState::Stopped})) return;
+
 	/* Don't warn if a renew is active */
 	if (c->settings.engine_renew && v->GetEngine()->company_avail.Any()) return;
 	/* Don't warn if a replacement is active */
 	if (EngineHasReplacementForCompany(c, v->engine_type, v->group_id)) return;
 
-	StringID str;
 	if (age == TimerGameCalendar::DateAtStartOfYear(TimerGameCalendar::Year{-1})) {
-		str = STR_NEWS_VEHICLE_IS_GETTING_OLD;
+		if (warn) AddVehicleAdviceNewsItem(AdviceType::VehicleOld, GetEncodedString(STR_NEWS_VEHICLE_IS_GETTING_OLD, v->index), v->index);
+		AI::NewEvent(v->owner, new ScriptEventVehicleOld(v->index, ScriptEventVehicleOld::AgeingSeverity::AS_OLD));
 	} else if (age == TimerGameCalendar::DateAtStartOfYear(TimerGameCalendar::Year{0})) {
-		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD;
+		if (warn) AddVehicleAdviceNewsItem(AdviceType::VehicleOld, GetEncodedString(STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD, v->index), v->index);
+		AI::NewEvent(v->owner, new ScriptEventVehicleOld(v->index, ScriptEventVehicleOld::AgeingSeverity::AS_VERY_OLD));
 	} else if (age > TimerGameCalendar::DateAtStartOfYear(TimerGameCalendar::Year{0}) && (age.base() % CalendarTime::DAYS_IN_LEAP_YEAR) == 0) {
-		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND;
-	} else {
-		return;
+		if (warn) AddVehicleAdviceNewsItem(AdviceType::VehicleOld, GetEncodedString(STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND, v->index), v->index);
+		AI::NewEvent(v->owner, new ScriptEventVehicleOld(v->index, ScriptEventVehicleOld::AgeingSeverity::AS_VERY_OLD_URGENT));
 	}
-
-	AddVehicleAdviceNewsItem(AdviceType::VehicleOld, GetEncodedString(str, v->index), v->index);
 }
 
 /**
