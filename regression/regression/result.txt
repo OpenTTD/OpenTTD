@@ -10539,6 +10539,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetEngineType():     153
     GetUnitNumber():     1
     GetAge():            0
+    GetEconomyAge():     0
     GetMaxAge():         5490
     GetAgeLeft():        5490
     GetCurrentSpeed():   7
@@ -10554,6 +10555,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetNumWagons():      1
     GetWagonEngineType(): 153
     GetWagonAge():       0
+    GetWagonEconomyAge(): 0
     GetLength():         8
   GetOwner():           1
   BuildVehicle():       14
@@ -10579,12 +10581,16 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetLength():          24
   GetWagonEngineType(): 9
   GetWagonAge():        0
+  GetWagonEconomyAge(): 0
   GetWagonEngineType(): 27
   GetWagonAge():        0
+  GetWagonEconomyAge(): 0
   GetWagonEngineType(): 27
   GetWagonAge():        0
+  GetWagonEconomyAge(): 0
   GetWagonEngineType(): 65535
   GetWagonAge():        -1
+  GetWagonEconomyAge(): -1
   --Refit--
     GetBuildWithRefitCapacity(): -1
     GetBuildWithRefitCapacity(): 0
@@ -10628,6 +10634,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    17 => 0
+    16 => 0
+    14 => 0
+    13 => 0
+    12 => 0
+  EconomyAge ListDump:
     17 => 0
     16 => 0
     14 => 0
@@ -10880,7 +10892,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2412]
+*FUNCTION [Start()] regression/main.nut line [2423]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE
