@@ -174,7 +174,7 @@ public:
 
 	inline char TransportTypeChar() const { return '^'; }
 
-	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
+	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length, const std::span<TileIndex> dest_tiles)
 	{
 		const WaterRegionPatchDesc start_water_region_patch = GetWaterRegionPatchInfo(start_tile);
 
@@ -184,16 +184,7 @@ public:
 		YapfShipRegions pf(node_limit);
 		pf.SetDestination(start_water_region_patch);
 
-		if (v->current_order.IsType(OT_GOTO_STATION)) {
-			StationID station_id = v->current_order.GetDestination().ToStationID();
-			const BaseStation *station = BaseStation::Get(station_id);
-			for (const auto &tile : station->GetTileArea(StationType::Dock)) {
-				if (IsDockingTile(tile) && IsShipDestinationTile(tile, station_id)) {
-					pf.AddOrigin(GetWaterRegionPatchInfo(tile));
-				}
-			}
-		} else {
-			TileIndex tile = v->dest_tile == INVALID_TILE ? TileIndex{} : v->dest_tile;
+		for (const TileIndex &tile : dest_tiles) {
 			pf.AddOrigin(GetWaterRegionPatchInfo(tile));
 		}
 
@@ -223,9 +214,10 @@ public:
  * @param v The ship to find a path for.
  * @param start_tile The tile to start searching from.
  * @param max_returned_path_length The maximum length of the path that will be returned.
+ * @param dest_tiles List of destination tiles.
  * @returns A path of water region patches, or an empty vector if no path was found.
  */
-std::vector<WaterRegionPatchDesc> YapfShipFindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
+std::vector<WaterRegionPatchDesc> YapfShipFindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length, const std::span<TileIndex> dest_tiles)
 {
-	return YapfShipRegions::FindWaterRegionPath(v, start_tile, max_returned_path_length);
+	return YapfShipRegions::FindWaterRegionPath(v, start_tile, max_returned_path_length, dest_tiles);
 }
