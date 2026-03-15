@@ -19,6 +19,11 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIEventVehicleOld
+ * \li AIEventVehicleVeryOld
+ * \li AIEventVehicleVeryOldUrgent
+ *
  * \b 15.0
  *
  * API additions:

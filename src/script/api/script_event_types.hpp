@@ -1432,4 +1432,103 @@ private:
 	std::string new_name; ///< The new name of the president.
 };
 
+/**
+ * Event VehicleOld, indicating a vehicle getting old.
+ * @api ai
+ */
+class ScriptEventVehicleOld : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param vehicle_id The vehicle that is old.
+	 */
+	ScriptEventVehicleOld(VehicleID vehicle_id) :
+		ScriptEvent(ET_VEHICLE_OLD),
+		vehicle_id(vehicle_id)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert a ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventVehicleOld *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleOld *>(instance); }
+
+	/**
+	 * Get the VehicleID of the vehicle that is old.
+	 * @return The VehicleID of the vehicle that is old.
+	 */
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
+
+private:
+	VehicleID vehicle_id; ///< The vehicle that is old.
+};
+
+/**
+ * Event VehicleVeryOld, indicating a vehicle getting very old.
+ * @api ai
+ */
+class ScriptEventVehicleVeryOld : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param vehicle_id The vehicle that is very old.
+	 */
+	ScriptEventVehicleVeryOld(VehicleID vehicle_id) :
+		ScriptEvent(ET_VEHICLE_VERY_OLD),
+		vehicle_id(vehicle_id)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert a ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventVehicleVeryOld *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleVeryOld *>(instance); }
+
+	/**
+	 * Get the VehicleID of the vehicle that is very old.
+	 * @return The VehicleID of the vehicle that is very old.
+	 */
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
+
+private:
+	VehicleID vehicle_id; ///< The vehicle that is very old.
+};
+
+/**
+ * Event VehicleVeryOldUrgent, indicating a vehicle getting very old, urgently needing replacement.
+ * @api ai
+ */
+class ScriptEventVehicleVeryOldUrgent : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * @param vehicle_id The vehicle that is very old, urgently needing replacement.
+	 */
+	ScriptEventVehicleVeryOldUrgent(VehicleID vehicle_id) :
+		ScriptEvent(ET_VEHICLE_VERY_OLD_URGENT),
+		vehicle_id(vehicle_id)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert a ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventVehicleVeryOldUrgent *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleVeryOldUrgent *>(instance); }
+
+	/**
+	 * Get the VehicleID of the vehicle that is very old, urgently needing replacement.
+	 * @return The VehicleID of the vehicle that is very old, urgently needing replacement.
+	 */
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
+
+private:
+	VehicleID vehicle_id; ///< The vehicle that is very old, urgently needing replacement.
+};
+
 #endif /* SCRIPT_EVENT_TYPES_HPP */
