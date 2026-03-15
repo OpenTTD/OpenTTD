@@ -17,6 +17,12 @@
  *
  * \b 16.0
  *
+ * \li GSEconomyDate
+ * \li GSCalendarDate
+ *
+ * API removals:
+ * \li GSDate
+ *
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * \b 15.0
