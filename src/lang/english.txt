@@ -5257,6 +5257,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Can't move vehi
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :the rear engine will always follow its front counterpart
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :unable to find route to local depot
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :unable to find local depot
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :unable to find local hangar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :wrong depot type
 
