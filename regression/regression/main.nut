@@ -1226,6 +1226,9 @@ function Regression::Order()
 	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.OF_TRANSFER | AIOrder.OF_FULL_LOAD));
 	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.OF_SERVICE_IF_NEEDED));
 	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.OF_STOP_IN_DEPOT));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.OF_UNBUNCH_IN_DEPOT));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.OF_UNBUNCH_IN_DEPOT | AIOrder.OF_SERVICE_IF_NEEDED));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(0, AIOrder.OF_UNBUNCH_IN_DEPOT | AIOrder.OF_GOTO_NEAREST_DEPOT));
 	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(0, AIOrder.OF_SERVICE_IF_NEEDED | AIOrder.OF_GOTO_NEAREST_DEPOT));
 	print("  IsValidConditionalOrder(): " + AIOrder.IsValidConditionalOrder(AIOrder.OC_LOAD_PERCENTAGE, AIOrder.CF_EQUALS));
 	print("  IsValidConditionalOrder(): " + AIOrder.IsValidConditionalOrder(AIOrder.OC_RELIABILITY, AIOrder.CF_IS_TRUE));
@@ -1269,6 +1272,36 @@ function Regression::Order()
 	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
 	print("  SetStopLocation():     " + AIOrder.SetStopLocation(20, 0, AIOrder.STOPLOCATION_MIDDLE));
 	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
+
+	print("  BuildVehicle():        " + AIVehicle.BuildVehicle(28479, 204));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  ShareOrders():         " + AIOrder.ShareOrders(21, 16));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  AppendOrder():         " + AIOrder.AppendOrder(21, 29253, AIOrder.OF_FULL_LOAD_ANY));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  InsertOrder():         " + AIOrder.InsertOrder(21, 0, 28479, AIOrder.OF_UNBUNCH_IN_DEPOT));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  SetOrderFlags():       " + AIOrder.SetOrderFlags(21, 0, AIOrder.OF_NONE));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  AppendConditionalOrder(): " + AIOrder.AppendConditionalOrder(21, 0));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  AppendOrder():         " + AIOrder.AppendOrder(21, 28479, AIOrder.OF_UNBUNCH_IN_DEPOT));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  RemoveOrder():         " + AIOrder.RemoveOrder(21, 1));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  InsertOrder():         " + AIOrder.InsertOrder(21, 1, 28479, AIOrder.OF_UNBUNCH_IN_DEPOT));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  InsertOrder():         " + AIOrder.InsertOrder(21, 2, 28479, AIOrder.OF_UNBUNCH_IN_DEPOT));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  InsertOrder():         " + AIOrder.InsertOrder(21, 2, 29253, AIOrder.OF_FULL_LOAD));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  SetOrderFlags():       " + AIOrder.SetOrderFlags(21, 0, AIOrder.OF_FULL_LOAD));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  InsertConditionalOrder(): " + AIOrder.InsertConditionalOrder(21, 2, 1));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  SetOrderFlags():       " + AIOrder.SetOrderFlags(21, 1, AIOrder.OF_SERVICE_IF_NEEDED));
+	print("  GetLastErrorString():  " + AIError.GetLastErrorString());
+	print("  GetOrderCount():       " + AIOrder.GetOrderCount(21));
 
 	local list = AIVehicleList_Station(3);
 
