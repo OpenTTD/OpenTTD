@@ -1569,7 +1569,7 @@ private:
 	 */
 	static void OnClickCompanyChat([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
 	{
-		ShowNetworkChatQueryWindow(DESTTYPE_TEAM, company_id.base());
+		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Team, company_id.base());
 	}
 
 	/**
@@ -1653,7 +1653,7 @@ private:
 	 */
 	static void OnClickClientChat([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
 	{
-		ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, client_id);
+		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, client_id);
 	}
 
 	static void OnClickClientAuthorize([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)

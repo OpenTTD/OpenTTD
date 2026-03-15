@@ -107,7 +107,7 @@ bool HasClients()
 NetworkClientInfo::~NetworkClientInfo()
 {
 	/* Delete the chat window, if you were chatting with this client. */
-	InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_CLIENT, this->client_id);
+	InvalidateWindowData(WC_SEND_NETWORK_MSG, NetworkChatDestinationType::Client, this->client_id);
 }
 
 /**
