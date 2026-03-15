@@ -126,7 +126,7 @@ bool IsNetworkRegisteredCallback(CommandCallback *callback)
 template <typename T> struct CallbackArgsHelper;
 template <typename... Targs>
 struct CallbackArgsHelper<void(*const)(Commands, const CommandCost &, Targs...)> {
-	using Args = std::tuple<std::decay_t<Targs>...>;
+	using Args = std::tuple<std::decay_t<Targs>...>; ///< \c std::tuple with argument types for the callback.
 };
 
 

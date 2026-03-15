@@ -339,7 +339,9 @@ struct SpecializedStation : public BaseStation {
  * @return Speclist of custom spec type.
  */
 template <class T> std::vector<SpecMapping<T>> &GetStationSpecList(BaseStation *bst);
+/** @copydoc GetStationSpecList */
 template <> inline std::vector<SpecMapping<StationSpec>> &GetStationSpecList<StationSpec>(BaseStation *bst) { return bst->speclist; }
+/** @copydoc GetStationSpecList */
 template <> inline std::vector<SpecMapping<RoadStopSpec>> &GetStationSpecList<RoadStopSpec>(BaseStation *bst) { return bst->roadstop_speclist; }
 
 #endif /* BASE_STATION_BASE_H */

@@ -218,10 +218,32 @@ public:
 template <typename T>
 class PickerCallbacksNewGRFClass : public PickerCallbacks {
 public:
+	/**
+	 * Create the callback instance.
+	 * @param ini_group The group in the configuration file to save/load state to/from.
+	 */
 	explicit PickerCallbacksNewGRFClass(const std::string &ini_group) : PickerCallbacks(ini_group) {}
 
+	/**
+	 * Casts the given index to the right type.
+	 * @param cls_id The index to cast.
+	 * @return The index with the right type.
+	 */
 	inline typename T::index_type GetClassIndex(int cls_id) const { return static_cast<typename T::index_type>(cls_id); }
+
+	/**
+	 * Get the class with the given index.
+	 * @param cls_id The index of the class to get.
+	 * @return The class instance.
+	 */
 	inline const T *GetClass(int cls_id) const { return T::Get(this->GetClassIndex(cls_id)); }
+
+	/**
+	 * Get the spec of an object within a class.
+	 * @param cls_id The index of the class.
+	 * @param id The index of the spec within the class.
+	 * @return The spec.
+	 */
 	inline const typename T::spec_type *GetSpec(int cls_id, int id) const { return this->GetClass(cls_id)->GetSpec(id); }
 
 	bool HasClassChoice() const override { return T::GetUIClassCount() > 1; }
@@ -229,12 +251,25 @@ public:
 	int GetClassCount() const override { return T::GetClassCount(); }
 	int GetTypeCount(int cls_id) const override { return this->GetClass(cls_id)->GetSpecCount(); }
 
+	/**
+	 * Get the PickerItem for the given spec.
+	 * @param spec The spec to get the picker item to.
+	 * @param cls_id Optional index of the class, in case \c spec is \c nullptr.
+	 * @param id Optional index of the spec within the class, in case \c spec is \c nullptr.
+	 * @return The PickerItem with metadata.
+	 */
 	PickerItem GetPickerItem(const typename T::spec_type *spec, int cls_id = -1, int id = -1) const
 	{
 		if (spec == nullptr) return {0, 0, cls_id, id};
 		return {spec->grf_prop.grfid, spec->grf_prop.local_id, spec->class_index.base(), spec->index};
 	}
 
+	/**
+	 * Get the PickerItem for the given index with the class.
+	 * @param cls_id The index of the class.
+	 * @param id The index of the spec within the class.
+	 * @return The PickerItem with metadata.
+	 */
 	PickerItem GetPickerItem(int cls_id, int id) const override
 	{
 		return GetPickerItem(GetClass(cls_id)->GetSpec(id), cls_id, id);

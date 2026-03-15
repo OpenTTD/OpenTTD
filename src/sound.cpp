@@ -273,12 +273,14 @@ template <>
 	return _sound_file_names;
 }
 
+/** @copydoc BaseMedia::GetExtension */
 template <>
 /* static */ std::string_view BaseMedia<SoundsSet>::GetExtension()
 {
 	return ".obs"; // OpenTTD Base Sounds
 }
 
+/** @copydoc BaseMedia::DetermineBestSet */
 template <>
 /* static */ bool BaseMedia<SoundsSet>::DetermineBestSet()
 {
