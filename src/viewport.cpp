@@ -2631,7 +2631,12 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy)
 	_thd.new_outersize.y = sy * TILE_SIZE;
 }
 
-/** returns the best autorail highlight type from map coordinates */
+/**
+ * Determine the best autorail highlight type from map coordinates.
+ * @param x The map X-coordinate.
+ * @param y The map Y-coordinate.
+ * @return The best highlight style.
+ */
 static HighLightStyle GetAutorailHT(int x, int y)
 {
 	return HT_RAIL | _autorail_piece[x & TILE_UNIT_MASK][y & TILE_UNIT_MASK];
@@ -2793,7 +2798,12 @@ static void HideMeasurementTooltips()
 	CloseWindowById(WC_TOOLTIPS, 0);
 }
 
-/** highlighting tiles while only going over them with the mouse */
+/**
+ * Prepare state for highlighting tiles while dragging with the mouse.
+ * @param tile The start tile.
+ * @param method The method/limits for what area can be selected.
+ * @param process Unique identifier of the thing to do after the dragging is done.
+ */
 void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDragDropSelectionProcess process)
 {
 	_thd.select_method = method;
@@ -3071,7 +3081,12 @@ static void CheckOverflow(int &test, int &other, int max, int mult)
 	test = max;
 }
 
-/** while dragging */
+/**
+ * Determine and set the draw style, as well as the end point of the drag.
+ * @param x The current X-coordinate of the mouse in map coordinates.
+ * @param y The current Y-coordinate of the mouse in map coordinates.
+ * @param method The user chosen method for dragging rails (specific orientation, autorail).
+ */
 static void CalcRaildirsDrawstyle(int x, int y, int method)
 {
 	HighLightStyle b;
