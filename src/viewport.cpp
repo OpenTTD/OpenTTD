@@ -238,7 +238,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 		const Vehicle *veh;
 
 		vp->follow_vehicle = std::get<VehicleID>(focus);
-		veh = Vehicle::Get(vp->follow_vehicle);
+		veh = Vehicle::Get(vp->follow_vehicle)->GetMovingFront();
 		pt = MapXYZToViewport(*vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
 		TileIndex tile = std::get<TileIndex>(focus);
@@ -1989,7 +1989,7 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 	ViewportData &vp = *w->viewport;
 
 	if (vp.follow_vehicle != VehicleID::Invalid()) {
-		const Vehicle *veh = Vehicle::Get(vp.follow_vehicle);
+		const Vehicle *veh = Vehicle::Get(vp.follow_vehicle)->GetMovingFront();
 		Point pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 
 		vp.scrollpos_x = pt.x;

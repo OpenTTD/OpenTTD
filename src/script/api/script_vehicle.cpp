@@ -271,7 +271,7 @@
 		return ::TileXY(x, y);
 	}
 
-	return v->tile;
+	return v->GetMovingFront()->tile;
 }
 
 /* static */ EngineID ScriptVehicle::GetEngineType(VehicleID vehicle_id)

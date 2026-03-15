@@ -1354,18 +1354,6 @@ static void FreeTrainReservation(Train *v)
 }
 
 /**
- * Restore platform reservation during station building/removing.
- * @param v vehicle which held reservation
- */
-static void RestoreTrainReservation(Train *v)
-{
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
-	TryPathReserve(v, true, true);
-	v = v->Last();
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
-}
-
-/**
  * Calculates cost of new rail stations within the area.
  * @param tile_area Area to check.
  * @param flags Operation to perform.
@@ -1575,6 +1563,11 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 					if (v != nullptr) {
 						affected_vehicles.push_back(v);
 						FreeTrainReservation(v);
+
+						Train *moving_front = v->GetMovingFront();
+						Train *moving_back = v->GetMovingBack();
+						if (IsRailStationTile(moving_front->tile)) SetRailStationPlatformReservation(moving_front->tile, TrackdirToExitdir(moving_front->GetVehicleTrackdir()), false);
+						if (IsRailStationTile(moving_back->tile)) SetRailStationPlatformReservation(moving_back->tile, TrackdirToExitdir(ReverseTrackdir(moving_back->GetVehicleTrackdir())), false);
 					}
 				}
 
@@ -1626,7 +1619,12 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 		for (uint i = 0; i < affected_vehicles.size(); ++i) {
 			/* Restore reservations of trains. */
-			RestoreTrainReservation(affected_vehicles[i]);
+			Train *v = affected_vehicles[i];
+			Train *moving_front = v->GetMovingFront();
+			Train *moving_back = v->GetMovingBack();
+			if (IsRailStationTile(moving_front->tile)) SetRailStationPlatformReservation(moving_front->tile, TrackdirToExitdir(moving_front->GetVehicleTrackdir()), true);
+			TryPathReserve(v, true, true);
+			if (IsRailStationTile(moving_back->tile)) SetRailStationPlatformReservation(moving_back->tile, TrackdirToExitdir(ReverseTrackdir(moving_back->GetVehicleTrackdir())), true);
 		}
 
 		/* Check whether we need to expand the reservation of trains already on the station. */
@@ -1813,7 +1811,14 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 
 			if (HasStationReservation(tile)) {
 				v = GetTrainForReservation(tile, track);
-				if (v != nullptr) FreeTrainReservation(v);
+				if (v != nullptr) {
+					/* Free train reservation. */
+					FreeTrainTrackReservation(v);
+					Train *moving_front = v->GetMovingFront();
+					Train *moving_back = v->GetMovingBack();
+					if (IsRailStationTile(moving_front->tile)) SetRailStationPlatformReservation(moving_front->tile, TrackdirToExitdir(moving_front->GetVehicleTrackdir()), false);
+					if (IsRailStationTile(moving_back->tile)) SetRailStationPlatformReservation(moving_back->tile, TrackdirToExitdir(ReverseTrackdir(moving_back->GetVehicleTrackdir())), false);
+				}
 			}
 
 			bool build_rail = keep_rail && !IsStationTileBlocked(tile);
@@ -1834,7 +1839,14 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 
 			include(affected_stations, st);
 
-			if (v != nullptr) RestoreTrainReservation(v);
+			if (v != nullptr) {
+				/* Restore station reservation. */
+				Train *moving_front = v->GetMovingFront();
+				Train *moving_back = v->GetMovingBack();
+				if (IsRailStationTile(moving_front->tile)) SetRailStationPlatformReservation(moving_front->tile, TrackdirToExitdir(moving_front->GetVehicleTrackdir()), true);
+				TryPathReserve(v, true, true);
+				if (IsRailStationTile(moving_back->tile)) SetRailStationPlatformReservation(moving_back->tile, TrackdirToExitdir(ReverseTrackdir(moving_back->GetVehicleTrackdir())), true);
+			}
 		}
 	}
 
@@ -3861,8 +3873,9 @@ static VehicleEnterTileStates VehicleEnterTile_Station(Vehicle *v, TileIndex til
 {
 	if (v->type == VEH_TRAIN) {
 		StationID station_id = GetStationIndex(tile);
-		if (!v->current_order.ShouldStopAtStation(v, station_id)) return {};
-		if (!IsRailStation(tile) || !v->IsFrontEngine()) return {};
+		if (!IsRailStation(tile) || !v->IsMovingFront()) return {};
+		Vehicle *consist = v->First();
+		if (!consist->current_order.ShouldStopAtStation(consist, station_id)) return {};
 
 		int station_ahead;
 		int station_length;
@@ -3874,7 +3887,7 @@ static VehicleEnterTileStates VehicleEnterTile_Station(Vehicle *v, TileIndex til
 		 * vehicle is on, so we need to subtract that. */
 		if (stop + station_ahead - (int)TILE_SIZE >= station_length) return {};
 
-		DiagDirection dir = DirToDiagDir(v->direction);
+		DiagDirection dir = DirToDiagDir(v->GetMovingDirection());
 
 		x &= 0xF;
 		y &= 0xF;

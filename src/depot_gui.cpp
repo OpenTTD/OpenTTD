@@ -1202,6 +1202,7 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v)
 	 */
 	if (_special_mouse_mode != WSM_DRAGDROP) return;
 
+	/* If a vehicle is selected in the depot, at least some part of the consist is in the depot */
 	w = dynamic_cast<DepotWindow*>(FindWindowById(WC_VEHICLE_DEPOT, v->tile));
 	if (w != nullptr) {
 		if (w->sel == v->index) ResetObjectToPlace();

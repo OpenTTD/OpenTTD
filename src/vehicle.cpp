@@ -317,7 +317,7 @@ uint Vehicle::Crash(bool)
 	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
-	SetWindowDirty(WC_VEHICLE_DEPOT, this->tile);
+	SetWindowDirty(WC_VEHICLE_DEPOT, this->GetMovingFront()->tile);
 
 	delete this->cargo_payment;
 	assert(this->cargo_payment == nullptr); // cleared by ~CargoPayment
@@ -1809,8 +1809,8 @@ GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v)
 		-1, 0, 1, 1, 1, 0,-1,-1, /* y */
 	};
 
-	int x = v->x_pos + _delta_coord[v->direction];
-	int y = v->y_pos + _delta_coord[v->direction + 8];
+	int x = v->x_pos + _delta_coord[v->GetMovingDirection()];
+	int y = v->y_pos + _delta_coord[v->GetMovingDirection() + 8];
 
 	GetNewVehiclePosResult gp;
 	gp.x = x;
@@ -1840,7 +1840,7 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y)
 		i++;
 	}
 
-	Direction dir = v->direction;
+	Direction dir = v->GetMovingDirection();
 
 	DirDiff dirdiff = DirDifference(_new_direction_table[i], dir);
 	if (dirdiff == DIRDIFF_SAME) return dir;
@@ -2223,7 +2223,7 @@ void Vehicle::DeleteUnreachedImplicitOrders()
  */
 void Vehicle::BeginLoading()
 {
-	assert(IsTileType(this->tile, TileType::Station) || this->type == VEH_SHIP);
+	assert(IsTileType(this->GetMovingFront()->tile, TileType::Station) || this->type == VEH_SHIP);
 
 	TimerGameTick::Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
@@ -2405,9 +2405,10 @@ void Vehicle::LeaveStation()
 
 	if (this->type == VEH_TRAIN && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger station animation (trains only) */
-		if (IsTileType(this->tile, TileType::Station)) {
-			TriggerStationRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
-			TriggerStationAnimation(st, this->tile, StationAnimationTrigger::VehicleDeparts);
+		TileIndex tile = this->GetMovingFront()->tile;
+		if (IsTileType(tile, TileType::Station)) {
+			TriggerStationRandomisation(st, tile, StationRandomTrigger::VehicleDeparts);
+			TriggerStationAnimation(st, tile, StationAnimationTrigger::VehicleDeparts);
 		}
 
 		Train::From(this)->flags.Set(VehicleRailFlag::LeavingStation);
@@ -2838,12 +2839,13 @@ void Vehicle::ShowVisualEffect() const
 
 	if (this->type == VEH_TRAIN) {
 		const Train *t = Train::From(this);
+		const Train *moving_front = t->GetMovingFront();
 		/* For trains, do not show any smoke when:
 		 * - the train is reversing
 		 * - is entering a station with an order to stop there and its speed is equal to maximum station entering speed
 		 */
 		if (t->flags.Test(VehicleRailFlag::Reversing) ||
-				(IsRailStationTile(t->tile) && t->IsFrontEngine() && t->current_order.ShouldStopAtStation(t, GetStationIndex(t->tile)) &&
+				(IsRailStationTile(moving_front->tile) && t->IsFrontEngine() && t->current_order.ShouldStopAtStation(t, GetStationIndex(moving_front->tile)) &&
 				t->cur_speed >= max_speed)) {
 			return;
 		}
