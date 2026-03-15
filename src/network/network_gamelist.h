@@ -25,6 +25,10 @@ enum NetworkGameStatus : uint8_t {
 
 /** Structure with information shown in the game list (GUI) */
 struct NetworkGame {
+	/**
+	 * Create the game.
+	 * @param connection_string The address of the server.
+	 */
 	NetworkGame(std::string_view connection_string) : connection_string(connection_string) {}
 
 	NetworkGameInfo info{};                  ///< The game information of this server.
