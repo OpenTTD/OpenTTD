@@ -55,6 +55,9 @@ inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, Stati
  * are in fact on a straight tram track tile. CFollowTrackT will make sure
  * the pathfinders cannot exit on the wrong side and allows reversing on such
  * tiles.
+ * @param tile The tile to check.
+ * @param rtt Whether to check the road or tram type.
+ * @return The trackdir bits on the tile.
  */
 inline TrackdirBits GetTrackdirBitsForRoad(TileIndex tile, RoadTramType rtt)
 {

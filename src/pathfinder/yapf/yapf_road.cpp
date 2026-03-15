@@ -28,7 +28,7 @@ protected:
 
 	CYapfCostRoadT() : max_cost(0) {};
 
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
@@ -53,7 +53,12 @@ protected:
 		return 0;
 	}
 
-	/** return one tile cost */
+	/**
+	 * Return one tile cost.
+	 * @param tile The tile to consider.
+	 * @param trackdir The direction of travel.
+	 * @return The cost.
+	 */
 	inline int OneTileCost(TileIndex tile, Trackdir trackdir)
 	{
 		int cost = 0;
@@ -105,12 +110,8 @@ public:
 		this->max_cost = max_cost;
 	}
 
-	/**
-	 * Called by YAPF to calculate the cost from the origin to the given node.
-	 *  Calculates only the cost of given node, adds it to the parent node cost
-	 *  and stores the result into Node::cost member
-	 */
-	inline bool PfCalcCost(Node &n, const TrackFollower *)
+	/** @copydoc CYapfBaseT::PfCalcCostFunc */
+	inline bool PfCalcCost(Node &n, [[maybe_unused]] const TrackFollower *follower)
 	{
 		int segment_cost = 0;
 		uint tiles = 0;
@@ -190,27 +191,25 @@ public:
 	typedef typename Types::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
 
-	/** Called by YAPF to detect if node ends in the desired destination */
+	/** @copydoc CYapfBaseT::PfDetectDestinationFunc */
 	inline bool PfDetectDestination(Node &n)
 	{
 		return IsRoadDepotTile(n.segment_last_tile);
 	}
 
-	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir)
+	/** @copydoc CYapfBaseT::PfDetectDestinationTileFunc */
+	inline bool PfDetectDestinationTile(TileIndex tile, [[maybe_unused]] Trackdir td)
 	{
 		return IsRoadDepotTile(tile);
 	}
 
-	/**
-	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	 *  adds it to the actual cost from origin and stores the sum to the Node::estimate
-	 */
+	/** @copydoc CYapfBaseT::PfCalcEstimateFunc */
 	inline bool PfCalcEstimate(Node &n)
 	{
 		n.estimate = n.cost;
@@ -262,20 +261,21 @@ public:
 	}
 
 protected:
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
 
 public:
-	/** Called by YAPF to detect if node ends in the desired destination */
+	/** @copydoc CYapfBaseT::PfDetectDestinationFunc */
 	inline bool PfDetectDestination(Node &n)
 	{
 		return this->PfDetectDestinationTile(n.segment_last_tile, n.segment_last_td);
 	}
 
-	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
+	/** @copydoc CYapfBaseT::PfDetectDestinationTileFunc */
+	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir td)
 	{
 		if (this->dest_station != StationID::Invalid()) {
 			return IsTileType(tile, TileType::Station) &&
@@ -284,13 +284,10 @@ public:
 				(this->non_artic || IsDriveThroughStopTile(tile));
 		}
 
-		return tile == this->dest_tile && HasTrackdir(this->dest_trackdirs, trackdir);
+		return tile == this->dest_tile && HasTrackdir(this->dest_trackdirs, td);
 	}
 
-	/**
-	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	 *  adds it to the actual cost from origin and stores the sum to the Node::estimate
-	 */
+	/** @copydoc CYapfBaseT::PfCalcEstimateFunc */
 	inline bool PfCalcEstimate(Node &n)
 	{
 		if (this->PfDetectDestination(n)) {
@@ -315,7 +312,7 @@ public:
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
@@ -323,11 +320,7 @@ protected:
 
 public:
 
-	/**
-	 * Called by YAPF to move from the given node to the next tile. For each
-	 *  reachable trackdir on the new tile creates new node, initializes it
-	 *  and adds it to the open list by calling Yapf().AddNewNode(n)
-	 */
+	/** @copydoc CYapfBaseT::PfFollowNodeFunc */
 	inline void PfFollowNode(Node &old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
@@ -336,7 +329,7 @@ public:
 		}
 	}
 
-	/** return debug report character to identify the transportation type */
+	/** @copydoc CYapfBaseT::TransportTypeCharFunc */
 	inline char TransportTypeChar() const
 	{
 		return 'r';
@@ -442,7 +435,11 @@ public:
 		return dist;
 	}
 
-	/** Return true if the valid origin (tile/trackdir) was set from the current vehicle position. */
+	/**
+	 * Return true if the valid origin (tile/trackdir) was set from the current vehicle position.
+	 * @param v The vehicle to get the position from.
+	 * @return \c true iff the origin was set.
+	 */
 	inline bool SetOriginFromVehiclePos(const RoadVehicle *v)
 	{
 		/* set origin (tile, trackdir) */
@@ -469,6 +466,7 @@ public:
 	 * @param tile Tile of the vehicle.
 	 * @param td Trackdir of the vehicle.
 	 * @param max_distance max length (penalty) for paths.
+	 * @return Information about the result of the search.
 	 */
 	inline FindDepotData FindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td, int max_distance)
 	{
