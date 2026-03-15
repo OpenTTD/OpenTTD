@@ -787,9 +787,13 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	/* Right-click close is enabled and there is a closebox. */
 	if (_settings_client.gui.right_click_wnd_close == RightClickClose::Yes && !w->window_desc.flags.Test(WindowDefaultFlag::NoClose)) {
 		w->Close();
+		_right_button_down = false;
+		_cursor.fix_at = false;
 	} else if (_settings_client.gui.right_click_wnd_close == RightClickClose::YesExceptSticky && !w->flags.Test(WindowFlag::Sticky) && !w->window_desc.flags.Test(WindowDefaultFlag::NoClose)) {
 		/* Right-click close is enabled, but excluding sticky windows. */
 		w->Close();
+		_right_button_down = false;
+		_cursor.fix_at = false;
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->GetIndex(), TCC_RIGHT_CLICK) && wid->GetToolTip() != STR_NULL) {
 		GuiShowTooltips(w, GetEncodedString(wid->GetToolTip()), TCC_RIGHT_CLICK);
 	}
