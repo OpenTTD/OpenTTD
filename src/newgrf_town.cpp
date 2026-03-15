@@ -41,6 +41,9 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 		/* Town index */
 		case 0x41: return this->t->index.base();
 
+		/* Additional town information: (for now just) road layout */
+		case 0x42: return to_underlying(this->t->layout);
+
 		/* Get a variable from the persistent storage */
 		case 0x7C: {
 			/* Check the persistent storage for the GrfID stored in register 100h. */
