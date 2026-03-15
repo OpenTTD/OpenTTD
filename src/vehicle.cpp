@@ -1314,14 +1314,33 @@ static const uint8_t _breakdown_chance[64] = {
 };
 
 /**
+ * Basic set of conditions for a vehicle to break down.
+ * @param v The vehicle to check for breaking down.
+ * @return true iff the vehicle can break down.
+ */
+bool CanVehicleBreakdown(const Vehicle *v)
+{
+	assert(v == v->First());
+
+	/* Vehicles in the menu don't break down. */
+	if (_game_mode == GM_MENU) return false;
+
+	/* Breakdowns are disabled. */
+	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None) return false;
+	/* The vehicle is already broken down. */
+	if (v->breakdown_ctr != 0) return false;
+	/* The vehicle is stopped or going very slow. */
+	if (v->cur_speed < 5) return false;
+	/* The vehicle has been manually stopped. */
+	return !v->vehstatus.Test(VehState::Stopped);
+}
+
+/**
  * Periodic check for a vehicle to maybe break down.
  * @param v The vehicle to consider breaking.
  */
 void CheckVehicleBreakdown(Vehicle *v)
 {
-	/* Vehicles in the menu don't break down. */
-	if (_game_mode == GM_MENU) return;
-
 	/* If both breakdowns and automatic servicing are disabled, we don't decrease reliability or break down. */
 	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None && _settings_game.order.no_servicing_if_no_breakdowns) return;
 
@@ -1334,26 +1353,31 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 
 	/* Some vehicles lose reliability but won't break down. */
-	/* Breakdowns are disabled. */
-	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None) return;
-	/* The vehicle is already broken down. */
-	if (v->breakdown_ctr != 0) return;
-	/* The vehicle is stopped or going very slow. */
-	if (v->cur_speed < 5) return;
-	/* The vehicle has been manually stopped. */
-	if (v->vehstatus.Test(VehState::Stopped)) return;
+	if (!CanVehicleBreakdown(v)) return;
 
 	/* Time to consider breaking down. */
+	VehicleBreakdown(v);
+}
+
+/**
+ * Consider breaking down a vehicle given the chance.
+ * @param v The vehicle to consider breaking down.
+ * @param chance The minimum added chance of failure.
+ */
+void VehicleBreakdown(Vehicle *v, int chance)
+{
+	assert(v == v->First());
+	assert(CanVehicleBreakdown(v));
 
 	uint32_t r = Random();
 
 	/* Increase chance of failure. */
-	int chance = v->breakdown_chance + 1;
+	chance = v->breakdown_chance + std::max(1, chance);
 	if (Chance16I(1, 25, r)) chance += 25;
 	v->breakdown_chance = ClampTo<uint8_t>(chance);
 
 	/* Calculate reliability value to use in comparison. */
-	rel = v->reliability;
+	int rel = v->reliability;
 	if (v->type == VEH_SHIP) rel += 0x6666;
 
 	/* Reduce the chance if the player has chosen the Reduced setting. */
