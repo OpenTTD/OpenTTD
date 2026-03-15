@@ -1514,6 +1514,11 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 	assert(tile < Map::Size());
 
+	/* If another town lies within its local authority radius, use a distance-based
+	 * probability check to stop this town from expanding into that area. */
+	const Town *t2 = CalcClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
+	if (t2 != nullptr && t2 != t1 && !Chance16(DistanceManhattan(tile, t2->xy), _settings_game.economy.dist_local_authority)) return TownGrowthResult::SearchStopped;
+
 	if (cur_rb == ROAD_NONE) {
 		/* Tile has no road.
 		 * We will return TownGrowthResult::SearchStopped to say that this is the last iteration. */
