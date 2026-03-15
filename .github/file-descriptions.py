@@ -49,18 +49,41 @@ def check_descriptions(files):
             content = f.read()
             ann = content.find(f"@file {name} ")
             if ann == -1:
-                if content.find("@file") == -1:
+                ann = content.find("@file")
+                if ann == -1:
                     errors.append(f'File "{path}" does not provide description.')
                 else:
-                    errors.append(f'Description of file "{path}" does not match coding style.')
+                    errors.append(f'Expected "@file" to be followed by a file name. However in file "{path}" it is followed by "{content[ann + 5 : content.find(" ", ann + 6)]}".')
                 continue
             end = content.find("\n", ann)
             start = content.rfind("\n", 0, ann) + 1
-            if content[start : ann] == "/** " and content[end - 3 : end] == " */" and content[end - 4] in END_OF_SENTENCE:
-                continue
-            elif content[start : ann] == " * " and content[start - 4 : start - 1] == "/**" and content[end - 1] in END_OF_SENTENCE and content[end + 1 : end + 4] != " */":
-                continue
-            errors.append(f'Description of file "{path}" does not match coding style.')
+            comment_end = content.find("*/", ann)
+            if comment_end == -1:
+                errors.append(f'Description comment of file "{path}" is not terminated.')
+            if content[start : ann] == "/** ":
+                if content[end - 2 : end] != "*/":
+                    errors.append(f'Description of file "{path}" begins with "/** @file". Therefore expected it to be a single line ending with "*/", not "{content[end - 2 : end]}".')
+                elif content[comment_end - 1] != " ":
+                    errors.append(f'In description of file "{path}" "*/" should be preceded by a space.')
+                elif content[comment_end - 2] not in END_OF_SENTENCE:
+                    errors.append(f'Brief description of file "{path}" ends with "{content[end - 4]}". Expected period, question mark or exclamation mark.')
+            elif content[start : ann] == " * ":
+                if content.count("\n", ann, comment_end) < 2:
+                    errors.append(f'Description of file "{path}" is multi-line while could be single line.')
+                    continue
+                previous_line = content.rfind("\n", 0, start - 1) + 1
+                if content[previous_line : start - 1] != "/**":
+                    errors.append(f'In description of file "{path}" the "@file" is preceded by " * ". Expected previous line to be "/**". Found "{content[previous_line : start - 1]}" instead.')
+                elif content[end - 1] not in END_OF_SENTENCE:
+                    errors.append(f'Brief description of file "{path}" ends with "{content[end - 1]}". Expected period, question mark or exclamation mark.')
+                elif content[comment_end - 1] != " " or content[comment_end - 2] != "\n":
+                    before_comment_end = content[content.rfind("\n", 0, comment_end) + 1 : comment_end]
+                    if len(before_comment_end) == before_comment_end.count(" "):
+                        errors.append(f'In description of file "{path}" "*/" should be preceded by one space. Found {len(before_comment_end)} instead.')
+                    else:
+                        errors.append(f'In description of file "{path}" "*/" should be preceded by one space. Found "{before_comment_end}" instead.')
+            else:
+                errors.append(f'In description of file "{path}" the "@file" is preceded by "{content[start : ann]}". Expected "/** " or " * ".')
     return errors
 
 
