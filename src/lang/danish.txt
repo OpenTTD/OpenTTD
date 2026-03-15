@@ -3687,10 +3687,10 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Har fun
 STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRFs opførsel '{0:STRING}' vil sandsynligvis forårsage desynkroniseringer og/eller nedbrud
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Den ændrer status for ''{1:ENGINE}' når den ikke er i depot
+STR_NEWGRF_BROKEN                                               :NewGRF´s opførsel '{0:STRING}' vil sandsynligvis forårsage desynkronisering og/eller nedbrud
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Den ændrer status for ''{1:ENGINE}' når den ikke er i depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det ændrede køretøj kapacitet til {1:ENGINE}' når det ikke er inde i et depot eller genmontering
+STR_NEWGRF_BROKEN_CAPACITY                                      :Det ændrede køretøj kapacitet til {1:ENGINE}' når det ikke er inde i et depot eller genmontering
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra selskabet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Risiko for at spillet mister synkronisering eller går ned.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}'  indeholder forkert information
@@ -5090,7 +5090,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ikke nok
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Landskabet skal være fladt
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landet hælder i den forkerte retning
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Det kan du ikke...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Det er nødvendigt at nedrive bygningen først
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :Det er nødvendigt at nedrive bygningen først
 STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... bygningen er beskyttet
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan ikke rydde området...
 STR_ERROR_SITE_UNSUITABLE                                       :upassende placering
@@ -5115,7 +5115,7 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan ikke sænke landet her...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke udflade landet her...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Udgravning ville skade en tunnel
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... allerede ved havoverfladen
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :... allerede ved havoverfladen
 STR_ERROR_TOO_HIGH                                              :{WHITE}... for højt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allerede fladt
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Bagefter vil broen over dette ville være for høj.
@@ -5328,19 +5328,19 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kan ikke
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Det er nødvendigt at rive broen ned først
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikke starte og slutte på samme position
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brohoveder er ikke i samme niveau
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er for lav til terrænet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :broen er for lav til terrænet
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Broen er for høj for dette terræn.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- og slutposition skal være på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... begge ender af en bro skal være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Broen ville slutte udenfor kortet
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Broen er {HEIGHT} for lav til en station
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :broen er {HEIGHT} for lav til en station
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :Broen er {HEIGHT} for lav til et vej stoppested
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Broen er {HEIGHT} for lav til havnen
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE} Broen er {HEIGHT}  for lav til en bøje
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Broen er  {HEIGHT} for lav til et rutepunkt
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Broen er {HEIGHT} for lav til et rutepunkt
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bro er {HEIGHT} for lav til slusen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :broen er {HEIGHT} for lav til havnen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :broen er {HEIGHT}  for lav til en bøje
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :broen er  {HEIGHT} for lav til et rutepunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :broen er {HEIGHT} for lav til et rutepunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :broen er {HEIGHT} for lav til slusen
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge en tunnel her...
