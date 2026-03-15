@@ -569,7 +569,8 @@ struct EconomySettings {
 	bool   inflation;                        ///< disable inflation
 	bool   bribe;                            ///< enable bribing the local authority
 	EconomyType type;                        ///< economy type (original/smooth/frozen)
-	uint8_t  feeder_payment_share;             ///< percentage of leg payment to virtually pay in feeder systems
+	uint8_t  feeder_payment_share;           ///< percentage of leg payment to pay in feeder systems
+	bool     feeder_payment_immediate;       ///< enable immediate leg payment, not virtual payment
 	uint8_t dist_local_authority;             ///< distance for town local authority, default 20
 	bool   exclusive_rights;                 ///< allow buying exclusive rights
 	bool   fund_buildings;                   ///< allow funding new buildings

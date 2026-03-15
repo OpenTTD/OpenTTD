@@ -1981,6 +1981,8 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Frozen
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage of leg profit to pay in feeder systems: {STRING2}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentage of income given to the intermediate legs in feeder systems, giving more control over the income
+STR_CONFIG_SETTING_FEEDER_PAYMENT_UPDATES_MONEY                 :Enable feeder leg transfer profit to increase company money immediately: {STRING2}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_UPDATES_MONEY_HELPTEXT        :Paying leg profit immediately allows you to spend that money straight away and not wait until final delivery has been made. Profit from transfers (manual transfer orders, unload not at dest, or cargodist transfers) will update your company's money at each transfer station, a poor final delivery could result in negative payment i.e. you will owe money and it will be taken from your company. Reducing the percentage of leg profit will reduce the risk of a final negative payment. Default (and original) behavior is to disable this option and only pay profit to your company once final delivery has been made
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :When dragging, place signals every: {STRING2}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Set the distance at which signals will be built on a track up to the next obstacle (signal, junction), if signals are dragged

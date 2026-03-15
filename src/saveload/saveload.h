@@ -414,6 +414,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ENGINE_MULTI_RAILTYPE,              ///< 362  PR#14357 v15.0 Train engines can have multiple railtypes.
 	SLV_SIGN_TEXT_COLOURS,                  ///< 363  PR#14743 Configurable sign text colors in scenario editor.
 	SLV_BUOYS_AT_0_0,                       ///< 364  PR#14983 Allow to build buoys at (0x0).
+	SLV_REAL_FEEDER_PAYMENTS_AVAILABLE,     ///< 365  PR#15337 Expert game option to enable transfer profits as immediate payments to company.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

@@ -1181,9 +1181,17 @@ CargoPayment::~CargoPayment()
 
 	if (this->visual_profit == 0 && this->visual_transfer == 0) return;
 
+	Money income_payment = 0;
+
+	if (_settings_game.economy.feeder_payment_immediate) {
+		income_payment = this->visual_profit + this->visual_transfer;
+	} else {
+		income_payment = this->route_profit;
+	}
+
 	Backup<CompanyID> cur_company(_current_company, this->front->owner);
 
-	SubtractMoneyFromCompany(_current_company, CommandCost(this->front->GetExpenseType(true), -this->route_profit));
+	SubtractMoneyFromCompany(_current_company, CommandCost(this->front->GetExpenseType(true), -income_payment));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
 
 	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
