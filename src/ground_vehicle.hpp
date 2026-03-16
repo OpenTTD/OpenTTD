@@ -342,6 +342,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 */
 	inline bool CanLeadTrain() const
 	{
+		/* NewGRFs can allow unpowered wagons to lead trains. */
+		if (this->GetEngine()->info.extra_flags.Test(ExtraEngineFlag::HasCab)) return true;
+
 		/* This might be an articulated engine. */
 		if (this->IsArticulatedPart()) {
 			return this->GetFirstEnginePart()->IsEngine();
