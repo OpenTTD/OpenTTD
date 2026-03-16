@@ -22,6 +22,7 @@
 #include "../window_gui.h"
 #include "../window_func.h"
 #include "../framerate_type.h"
+#include "../settings_type.h"
 #include "../library_loader.h"
 #include "../core/utf8.hpp"
 #include "win32_v.h"
@@ -693,6 +694,11 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 
 		case WM_KEYDOWN: {
+			/* Suppress WASD keys when WASD scrolling is active, but allow Shift+WASD through. */
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(GetAsyncKeyState(VK_SHIFT) < 0)) {
+				if (wParam == 'W' || wParam == 'A' || wParam == 'S' || wParam == 'D') return 0;
+			}
+
 			/* No matter the keyboard layout, we will map the '~' to the console. */
 			uint scancode = GB(lParam, 16, 8);
 			keycode = scancode == 41 ? (uint)WKC_BACKQUOTE : MapWindowsKey(wParam);
@@ -1011,6 +1017,13 @@ void VideoDriver_Win32Base::InputLoop()
 			(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
 			(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
 			(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
+		if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
+			_dirkeys |=
+				(GetAsyncKeyState('A') < 0 ? 1 : 0) |
+				(GetAsyncKeyState('W') < 0 ? 2 : 0) |
+				(GetAsyncKeyState('D') < 0 ? 4 : 0) |
+				(GetAsyncKeyState('S') < 0 ? 8 : 0);
+		}
 	} else {
 		_dirkeys = 0;
 	}

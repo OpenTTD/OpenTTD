@@ -18,6 +18,7 @@
 #include "../core/utf8.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
+#include "../settings_type.h"
 #include "../window_func.h"
 #include "sdl2_v.h"
 #include <SDL.h>
@@ -472,6 +473,14 @@ bool VideoDriver_SDL_Base::PollEvent()
 					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				if (ev.key.repeat == 0) ToggleFullScreen(!_fullscreen);
 			} else {
+				/* Suppress WASD keys when WASD scrolling is active, but allow Shift+WASD through. */
+				if (_settings_client.gui.wasd_scrolling && !this->edit_box_focused &&
+						!(ev.key.keysym.mod & KMOD_SHIFT)) {
+					SDL_Scancode sc = ev.key.keysym.scancode;
+					if (sc == SDL_SCANCODE_W || sc == SDL_SCANCODE_A ||
+						sc == SDL_SCANCODE_S || sc == SDL_SCANCODE_D) break;
+				}
+
 				char32_t character;
 
 				uint keycode = ConvertSdlKeyIntoMy(&ev.key.keysym, &character);
@@ -632,6 +641,13 @@ void VideoDriver_SDL_Base::InputLoop()
 		(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
 		(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
 		(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
+	if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
+		_dirkeys |=
+			(keys[SDL_SCANCODE_A] ? 1 : 0) |
+			(keys[SDL_SCANCODE_W] ? 2 : 0) |
+			(keys[SDL_SCANCODE_D] ? 4 : 0) |
+			(keys[SDL_SCANCODE_S] ? 8 : 0);
+	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }

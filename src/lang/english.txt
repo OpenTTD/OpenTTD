@@ -1700,6 +1700,9 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Move map with L
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport scrolling: {STRING2}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap or when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 
+STR_CONFIG_SETTING_WASD_SCROLLING                               :Use WASD keys for map scrolling: {STRING2}
+STR_CONFIG_SETTING_WASD_SCROLLING_HELPTEXT                      :When enabled, the W, A, S and D keys scroll the map instead of activating toolbar functions. Hold Shift and press W, A, S or D to access the original toolbar functions
+
 STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Traditional toolbar menu selection behaviour: {STRING2}
 STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Choose selection behaviour of toolbar menus. If off, toolbar menus will stay open until a selection is made. If on, toolbar menus will activate when the mouse button is released.
 
