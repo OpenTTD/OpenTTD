@@ -1179,9 +1179,10 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 		AddTrackToSignalBuffer(tile, track, _current_company);
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != nullptr && v->track != TRACK_BIT_DEPOT) {
+			Train *moving_front = v->GetMovingFront();
 			/* Extend the train's path if it's not stopped or loading, or not at a safe position. */
 			if (!((v->vehstatus.Test(VehState::Stopped) && v->cur_speed == 0) || v->current_order.IsType(OT_LOADING)) ||
-					!IsSafeWaitingPosition(v, v->tile, v->GetVehicleTrackdir(), true, _settings_game.pf.forbid_90_deg)) {
+					!IsSafeWaitingPosition(v, moving_front->tile, moving_front->GetVehicleTrackdir(), true, _settings_game.pf.forbid_90_deg)) {
 				TryPathReserve(v, true);
 			}
 		}
@@ -2977,7 +2978,7 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
 	if (_fractcoords_behind[dir] == fract_coord) return VehicleEnterTileState::CannotEnter;
 
 	/* Leaving depot? */
-	if (v->direction == DiagDirToDir(dir)) {
+	if (v->GetMovingDirection() == DiagDirToDir(dir)) {
 		/* Calculate the point where the following wagon should be activated. */
 		int length = Train::From(v)->CalcNextVehicleOffset();
 
@@ -2989,18 +2990,30 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
 
 		if (fract_coord_leave == fract_coord) {
 			/* Leave the depot. */
-			if ((v = v->Next()) != nullptr) {
+			if ((v = v->GetMovingNext()) != nullptr) {
 				v->vehstatus.Reset(VehState::Hidden);
 				Train::From(v)->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 			}
 		}
 	} else if (_fractcoords_enter[dir] == fract_coord) {
 		/* Entering depot. */
-		assert(DiagDirToDir(ReverseDiagDir(dir)) == v->direction);
-		Train::From(v)->track = TRACK_BIT_DEPOT,
+		assert(DiagDirToDir(ReverseDiagDir(dir)) == v->GetMovingDirection());
+		Train::From(v)->track = TRACK_BIT_DEPOT;
 		v->vehstatus.Set(VehState::Hidden);
-		v->direction = ReverseDir(v->direction);
-		if (v->Next() == nullptr) VehicleEnterDepot(v->First());
+		if (v->GetMovingNext() == nullptr) {
+			Train *consist = Train::From(v)->First();
+			if (consist->vehicle_flags.Test(VehicleFlag::DrivingBackwards)) {
+				/* Trains always drive forwards out of a depot.
+				 * This allows a player to easily reset a confused train,
+				 * and matches the behaviour of the \c VehicleRailFlag::Reversed variable. */
+				consist->vehicle_flags.Reset(VehicleFlag::DrivingBackwards);
+			} else {
+				for (Train *u = consist; u != nullptr; u = u->Next()) {
+					u->direction = ReverseDir(u->direction);
+				}
+			}
+			VehicleEnterDepot(consist);
+		}
 		v->tile = tile;
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);

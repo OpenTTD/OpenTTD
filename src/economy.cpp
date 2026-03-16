@@ -1190,16 +1190,17 @@ CargoPayment::~CargoPayment()
 	SubtractMoneyFromCompany(_current_company, CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
 
+	const Vehicle *moving_front = this->front->GetMovingFront();
 	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
 		SndPlayVehicleFx(SND_14_CASHTILL, this->front);
 	}
 
 	if (this->visual_transfer != 0) {
-		ShowFeederIncomeAnimation(this->front->x_pos, this->front->y_pos,
-				this->front->z_pos, this->visual_transfer, -this->visual_profit);
+		ShowFeederIncomeAnimation(moving_front->x_pos, moving_front->y_pos,
+				moving_front->z_pos, this->visual_transfer, -this->visual_profit);
 	} else {
-		ShowCostOrIncomeAnimation(this->front->x_pos, this->front->y_pos,
-				this->front->z_pos, -this->visual_profit);
+		ShowCostOrIncomeAnimation(moving_front->x_pos, moving_front->y_pos,
+				moving_front->z_pos, -this->visual_profit);
 	}
 
 	cur_company.Restore();
@@ -1280,7 +1281,7 @@ void PrepareUnload(Vehicle *front_v)
 						front_v->last_station_visited, next_station,
 						front_v->current_order.GetUnloadType(), ge,
 						v->cargo_type, front_v->cargo_payment,
-						v->GetCargoTile());
+						v->GetMovingFront()->GetCargoTile());
 				if (v->cargo.UnloadCount() > 0) v->vehicle_flags.Set(VehicleFlag::CargoUnloading);
 			}
 		}
@@ -1631,7 +1632,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 	/* We have not waited enough time till the next round of loading/unloading */
 	if (front->load_unload_ticks != 0) return;
 
-	if (front->type == VEH_TRAIN && (!IsTileType(front->tile, TileType::Station) || GetStationIndex(front->tile) != st->index)) {
+	const Vehicle *moving_front = front->GetMovingFront();
+	if (front->type == VEH_TRAIN && (!IsTileType(moving_front->tile, TileType::Station) || GetStationIndex(moving_front->tile) != st->index)) {
 		/* The train reversed in the station. Take the "easy" way
 		 * out and let the train just leave as it always did. */
 		front->vehicle_flags.Set(VehicleFlag::LoadingFinished);
@@ -1828,8 +1830,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 	if (anything_loaded || anything_unloaded) {
 		if (front->type == VEH_TRAIN) {
-			TriggerStationRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
-			TriggerStationAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
+			TriggerStationRandomisation(st, moving_front->tile, StationRandomTrigger::VehicleLoads);
+			TriggerStationAnimation(st, moving_front->tile, StationAnimationTrigger::VehicleLoads);
 		} else if (front->type == VEH_ROAD) {
 			TriggerRoadStopRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
 			TriggerRoadStopAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
@@ -1894,7 +1896,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		StringID percent_up_down = STR_NULL;
 		int percent = CalcPercentVehicleFilled(front, &percent_up_down);
 		if (front->fill_percent_te_id == INVALID_TE_ID) {
-			front->fill_percent_te_id = ShowFillingPercent(front->x_pos, front->y_pos, front->z_pos + 20, percent, percent_up_down);
+			front->fill_percent_te_id = ShowFillingPercent(moving_front->x_pos, moving_front->y_pos, moving_front->z_pos + 20, percent, percent_up_down);
 		} else {
 			UpdateFillingPercent(front->fill_percent_te_id, percent, percent_up_down);
 		}
