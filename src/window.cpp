@@ -2471,7 +2471,7 @@ static EventState HandleViewportScroll()
 
 	if (_last_scroll_window == GetMainWindow() && _last_scroll_window->viewport->follow_vehicle != VehicleID::Invalid()) {
 		/* If the main window is following a vehicle, then first let go of it! */
-		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle);
+		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle)->GetMovingFront();
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
 		return ES_NOT_HANDLED;
 	}

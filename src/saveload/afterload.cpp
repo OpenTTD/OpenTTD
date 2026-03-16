@@ -2928,6 +2928,23 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_DRIVE_BACKWARDS)) {
+		/* Vehicles used to be reversed immediately when entering depot.
+		 * Now they are reversed when the whole consist has entered.
+		 * Find trains in the process of entering a depot and un-reverse them. */
+		for (Train *t : Train::Iterate()) {
+			if (!t->IsPrimaryVehicle()) continue;
+
+			/* Front not in depot -> consist not entering depot */
+			if (t->track != TRACK_BIT_DEPOT) continue;
+			/* Back in depot -> consist completely in depot */
+			if (t->Last()->track == TRACK_BIT_DEPOT) continue;
+			for (Train *u = t; u->track == TRACK_BIT_DEPOT; u = u->Next()) {
+				u->direction = ReverseDir(u->direction);
+			}
+		}
+	}
+
 	if (IsSavegameVersionBefore(SLV_165)) {
 		for (Town *t : Town::Iterate()) {
 			/* Set the default cargo requirement for town growth */

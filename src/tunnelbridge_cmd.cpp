@@ -1964,7 +1964,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 	/* Direction into the wormhole */
 	const DiagDirection dir = GetTunnelBridgeDirection(tile);
 	/* Direction of the vehicle */
-	const DiagDirection vdir = DirToDiagDir(v->direction);
+	const DiagDirection vdir = DirToDiagDir(v->GetMovingDirection());
 	/* New position of the vehicle on the tile */
 	uint8_t pos = (DiagDirToAxis(vdir) == AXIS_X ? x : y) & TILE_UNIT_MASK;
 	/* Number of units moved by the vehicle since entering the tile */
@@ -1975,7 +1975,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 			Train *t = Train::From(v);
 
 			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
-				if (t->IsFrontEngine() && frame == TUNNEL_SOUND_FRAME) {
+				if (t->IsMovingFront() && frame == TUNNEL_SOUND_FRAME) {
 					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == 0) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					}
