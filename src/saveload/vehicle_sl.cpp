@@ -265,6 +265,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = nullptr;
+		v->last = nullptr;
 		if (v->IsGroundVehicle()) v->GetGroundVehicleCache()->first_engine = EngineID::Invalid();
 	}
 
@@ -311,10 +312,17 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 	}
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-		/* Fill the first pointers */
+		/* Fill the first pointers. */
 		if (v->Previous() == nullptr) {
 			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
 				u->first = v;
+			}
+		}
+
+		/* Fill the last pointers. */
+		if (v->Next() == nullptr) {
+			for (Vehicle *u = v; u != nullptr; u = u->Previous()) {
+				u->last = v;
 			}
 		}
 	}
