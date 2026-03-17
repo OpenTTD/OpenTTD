@@ -218,9 +218,9 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 	if (!IsValidCargoType(item->cargo)) {
 		str = GetString(STR_QUANTITY_N_A);
 	} else if (item->amount == 0) {
-		str = GetString(STR_VEHICLE_DETAILS_CARGO_EMPTY);
+		str = GetString(STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY, item->cargo, item->capacity, item->subtype);
 	} else {
-		str = GetString(STR_VEHICLE_DETAILS_CARGO_FROM, item->cargo, item->amount, item->source);
+		str = GetString(STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM, item->cargo, item->amount, item->cargo, item->capacity, item->source, item->subtype);
 	}
 	DrawString(left, right, y, str, TC_LIGHT_BLUE);
 }
