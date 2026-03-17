@@ -55,9 +55,8 @@ enum VehicleDetailsWidgets : WidgetID {
 	WID_VD_MIDDLE_DETAILS,              ///< Details for non-trains.
 	WID_VD_MATRIX,                      ///< List of details for trains.
 	WID_VD_SCROLLBAR,                   ///< Scrollbar for train details.
-	WID_VD_DETAILS_CARGO_CARRIED,       ///< Show carried cargo per part of the train.
+	WID_VD_DETAILS_CARGO_CARRIED,       ///< Show carried cargo and capacity per part of the train.
 	WID_VD_DETAILS_TRAIN_VEHICLES,      ///< Show all parts of the train with their description.
-	WID_VD_DETAILS_CAPACITY_OF_EACH,    ///< Show the capacity of all train parts.
 	WID_VD_DETAILS_TOTAL_CARGO,         ///< Show the capacity and carried cargo amounts aggregated per cargo of the train.
 };
 

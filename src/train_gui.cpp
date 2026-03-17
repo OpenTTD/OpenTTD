@@ -245,26 +245,6 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 }
 
 /**
- * Draw the details capacity tab for the given vehicle at the given position
- *
- * @param item  Data to draw
- * @param left  The left most coordinate to draw
- * @param right The right most coordinate to draw
- * @param y     The y coordinate
- */
-static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int right, int y)
-{
-	std::string str;
-	if (!IsValidCargoType(item->cargo)) {
-		/* Draw subtype only */
-		str = GetString(STR_VEHICLE_INFO_NO_CAPACITY, item->subtype);
-	} else {
-		str = GetString(STR_VEHICLE_INFO_CAPACITY, item->cargo, item->capacity, item->subtype);
-	}
-	DrawString(left, right, y, str);
-}
-
-/**
  * Collects the cargo transported
  * @param v Vehicle to process
  * @param summary Space for the result
@@ -415,14 +395,6 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 
 						case TDW_TAB_INFO:
 							if (i == 0) TrainDetailsInfoTab(v, dr.left, dr.right, py);
-							break;
-
-						case TDW_TAB_CAPACITY:
-							if (i < _cargo_summary.size()) {
-								TrainDetailsCapacityTab(&_cargo_summary[i], dr.left, dr.right, py);
-							} else {
-								DrawString(dr.left, dr.right, py, GetString(STR_VEHICLE_INFO_NO_CAPACITY, STR_EMPTY));
-							}
 							break;
 
 						default: NOT_REACHED();
