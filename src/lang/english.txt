@@ -4647,8 +4647,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Cargo
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Show details of cargo carried
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Information
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Show details of train vehicles
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Total Cargo
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Show total capacity of train, split by cargo type
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}Totals
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}Show total cargo and capacity of train
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacity: {LTBLUE}{RAW_STRING}
 
