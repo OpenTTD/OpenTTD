@@ -219,8 +219,6 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 		str = GetString(STR_QUANTITY_N_A);
 	} else if (item->amount == 0) {
 		str = GetString(STR_VEHICLE_DETAILS_CARGO_EMPTY);
-	} else if (FreightWagonMult(item->cargo) > 1) {
-		str = GetString(STR_VEHICLE_DETAILS_CARGO_FROM_MULT, item->cargo, item->amount, item->source, _settings_game.vehicle.freight_trains);
 	} else {
 		str = GetString(STR_VEHICLE_DETAILS_CARGO_FROM, item->cargo, item->amount, item->source);
 	}
@@ -260,8 +258,6 @@ static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int 
 	if (!IsValidCargoType(item->cargo)) {
 		/* Draw subtype only */
 		str = GetString(STR_VEHICLE_INFO_NO_CAPACITY, item->subtype);
-	} else if (FreightWagonMult(item->cargo) > 1) {
-		str = GetString(STR_VEHICLE_INFO_CAPACITY_MULT, item->cargo, item->capacity, item->subtype, _settings_game.vehicle.freight_trains);
 	} else {
 		str = GetString(STR_VEHICLE_INFO_CAPACITY, item->cargo, item->capacity, item->subtype);
 	}
@@ -457,11 +453,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			CargoType cargo_type = cs->Index();
 			if (max_cargo[cargo_type] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				std::string str;
-				if (FreightWagonMult(cargo_type) > 1) {
-					str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type], _settings_game.vehicle.freight_trains);
-				} else {
-					str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type]);
-				}
+				str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type]);
 				DrawString(ir.left, ir.right, y + text_y_offset, str);
 				y += line_height;
 			}
