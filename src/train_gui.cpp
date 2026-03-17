@@ -404,6 +404,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			}
 		}
 	} else {
+		/* Draw Totals tab. */
 		int y = r.top;
 		CargoArray act_cargo{};
 		CargoArray max_cargo{};
@@ -415,7 +416,13 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			feeder_share             += u->cargo.GetFeederShare();
 		}
 
-		/* draw total cargo tab */
+		/* Draw the total vehicle length. */
+		uint train_length = CeilDiv(v->gcache.cached_total_length * 10, TILE_SIZE);
+		std::string str = GetString(STR_VEHICLE_DETAILS_TRAIN_LENGTH, train_length, /* digits for DECIMAL */ 1);
+		DrawString(r.left, r.right, y + text_y_offset, str);
+		y += line_height;
+
+		/* Draw the header for the total capacity. */
 		DrawString(r.left, r.right, y + text_y_offset, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
 		y += line_height;
 
