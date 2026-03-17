@@ -473,9 +473,9 @@ bool VideoDriver_SDL_Base::PollEvent()
 					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				if (ev.key.repeat == 0) ToggleFullScreen(!_fullscreen);
 			} else {
-				/* Suppress WASD keys when WASD scrolling is active, but allow Shift+WASD through. */
+				/* Suppress WASD keys when WASD scrolling is active, but allow Alt+WASD through. */
 				if (_settings_client.gui.wasd_scrolling && !this->edit_box_focused &&
-						!(ev.key.keysym.mod & KMOD_SHIFT)) {
+						!(ev.key.keysym.mod & KMOD_ALT)) {
 					SDL_Scancode sc = ev.key.keysym.scancode;
 					if (sc == SDL_SCANCODE_W || sc == SDL_SCANCODE_A ||
 						sc == SDL_SCANCODE_S || sc == SDL_SCANCODE_D) break;

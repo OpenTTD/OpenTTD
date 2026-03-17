@@ -697,9 +697,9 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			/* No matter the keyboard layout, we will map the '~' to the console. */
 			uint scancode = GB(lParam, 16, 8);
 
-			/* Suppress WASD keys when WASD scrolling is active, but allow Shift+WASD through.
+			/* Suppress WASD keys when WASD scrolling is active, but allow Alt+WASD through.
 			 * Use scan codes so the physical key positions work on any keyboard layout. */
-			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(GetAsyncKeyState(VK_SHIFT) < 0)) {
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(GetAsyncKeyState(VK_MENU) < 0)) {
 				if (scancode == 0x11 || scancode == 0x1E || scancode == 0x1F || scancode == 0x20) return 0;
 			}
 			keycode = scancode == 41 ? (uint)WKC_BACKQUOTE : MapWindowsKey(wParam);

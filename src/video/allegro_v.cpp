@@ -407,10 +407,10 @@ bool VideoDriver_Allegro::PollEvent()
 	} else if (keypressed()) {
 		char32_t character;
 		uint keycode = ConvertAllegroKeyIntoMy(&character);
-		/* Suppress WASD keys when WASD scrolling is active, but allow Shift+WASD through. */
+		/* Suppress WASD keys when WASD scrolling is active, but allow Alt+WASD through. */
 		uint key_only = keycode & ~WKC_SPECIAL_KEYS;
 		bool is_wasd = key_only == 'W' || key_only == 'A' || key_only == 'S' || key_only == 'D';
-		if (!(is_wasd && _settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(key_shifts & KB_SHIFT_FLAG))) {
+		if (!(is_wasd && _settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(key_shifts & KB_ALT_FLAG))) {
 			HandleKeypress(keycode, character);
 		}
 	}
