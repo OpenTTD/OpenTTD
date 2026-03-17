@@ -694,13 +694,14 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 
 		case WM_KEYDOWN: {
-			/* Suppress WASD keys when WASD scrolling is active, but allow Shift+WASD through. */
-			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(GetAsyncKeyState(VK_SHIFT) < 0)) {
-				if (wParam == 'W' || wParam == 'A' || wParam == 'S' || wParam == 'D') return 0;
-			}
-
 			/* No matter the keyboard layout, we will map the '~' to the console. */
 			uint scancode = GB(lParam, 16, 8);
+
+			/* Suppress WASD keys when WASD scrolling is active, but allow Shift+WASD through.
+			 * Use scan codes so the physical key positions work on any keyboard layout. */
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(GetAsyncKeyState(VK_SHIFT) < 0)) {
+				if (scancode == 0x11 || scancode == 0x1E || scancode == 0x1F || scancode == 0x20) return 0;
+			}
 			keycode = scancode == 41 ? (uint)WKC_BACKQUOTE : MapWindowsKey(wParam);
 
 			uint charcode = MapVirtualKey(wParam, MAPVK_VK_TO_CHAR);
@@ -1018,11 +1019,13 @@ void VideoDriver_Win32Base::InputLoop()
 			(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
 			(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
 		if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
+			/* Use scan codes so the physical key positions work on any keyboard layout.
+			 * W=0x11, A=0x1E, S=0x1F, D=0x20. */
 			_dirkeys |=
-				(GetAsyncKeyState('A') < 0 ? 1 : 0) |
-				(GetAsyncKeyState('W') < 0 ? 2 : 0) |
-				(GetAsyncKeyState('D') < 0 ? 4 : 0) |
-				(GetAsyncKeyState('S') < 0 ? 8 : 0);
+				(GetAsyncKeyState(MapVirtualKey(0x1E, MAPVK_VSC_TO_VK)) < 0 ? 1 : 0) |
+				(GetAsyncKeyState(MapVirtualKey(0x11, MAPVK_VSC_TO_VK)) < 0 ? 2 : 0) |
+				(GetAsyncKeyState(MapVirtualKey(0x20, MAPVK_VSC_TO_VK)) < 0 ? 4 : 0) |
+				(GetAsyncKeyState(MapVirtualKey(0x1F, MAPVK_VSC_TO_VK)) < 0 ? 8 : 0);
 		}
 	} else {
 		_dirkeys = 0;
