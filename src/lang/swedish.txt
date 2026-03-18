@@ -2210,11 +2210,11 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillåt att tå
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Problem med konfigurationsfilen...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fel i listan '{STRING}'
+STR_CONFIG_ERROR                                                :Problem med konfigurationsfilen...
+STR_CONFIG_ERROR_ARRAY                                          :fel i listan '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ogiltigt värde '{STRING}' för '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... extra tecken vid slutet av inställning '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerar NewGRF '{STRING}': NewGRF ID-dublett med '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :ignorerar NewGRF '{STRING}': NewGRF ID-dublett med '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorerar ogiltig NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :hittades ej
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :osäker för statisk användning
@@ -2223,7 +2223,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel me
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :okänd
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressionsnivån '{STRING}' är inte giltig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... filformatet '{STRING}' är inte tillgängligt. Återgår till '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorerar grundgrafikpaketet '{STRING}': hittades ej
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignorerar grundgrafikpaketet '{STRING}': hittades ej
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorerar grundljudpaketet '{STRING}': hittades ej
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorerar grundmusikpaket '{STRING}': hittades ej
 
@@ -2740,8 +2740,8 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Nedladdn
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} nedladdat ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunde inte ansluta till innehållsservern...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Nedladdning misslyckades...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Kunde inte ansluta till innehållsservern...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Nedladdning misslyckades...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kunde inte skriva till fil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunde inte packa upp den nedladdade filen
 
@@ -5171,7 +5171,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Finansieringen misslyckades att prospektera på grund av otur; försök igen
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Det fanns inga lämpliga platser för att prospektera för denna industri
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Det fanns inga lämpliga platser för '{STRING}'-industrier
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Ändra parametrarna för kartgenereringen för att skapa en bättre karta
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Ändra parametrarna för kartgenereringen för att skapa en bättre karta
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan inte bygga järnvägsstation här...
