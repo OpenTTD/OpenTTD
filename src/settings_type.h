@@ -144,10 +144,18 @@ enum class VehicleBreakdowns : uint8_t {
 	Normal,
 };
 
+/** Possible values for "train_flip_reverse_allowed" setting. */
+enum class TrainFlipReversingAllowed : uint8_t {
+	All = 0, ///< Trains can flip anywhere.
+	EndOfLineOnly, ///< Trains can only flip when the track ends.
+	None, ///< Trains cannot flip anywhere and must back up if the track ends.
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	uint8_t competitor_start_time; ///< Unused value, used to load old savegames.
 	uint8_t competitor_intelligence; ///< Unused value, used to load old savegames.
+	uint8_t line_reverse_mode; ///< Unused value, used to load old savegames.
 
 	uint8_t max_no_competitors; ///< the number of competitors (AIs)
 	uint16_t competitors_interval; ///< the interval (in minutes) between adding competitors
@@ -164,7 +172,7 @@ struct DifficultySettings {
 	GenworldMaxHeight terrain_type; ///< the mountainousness of the landscape
 	uint8_t quantity_sea_lakes; ///< the amount of seas/lakes
 	bool economy; ///< how volatile is the economy
-	bool line_reverse_mode; ///< reversing at stations or not
+	TrainFlipReversingAllowed train_flip_reverse_allowed; ///< which stations can the train reverse at?
 	bool disasters; ///< are disasters enabled
 	uint8_t town_council_tolerance; ///< minimum required town ratings to be allowed to demolish stuff
 	bool infinite_money; ///< whether spending money despite negative balance is allowed

@@ -416,7 +416,8 @@ int Train::GetCurrentMaxSpeed() const
 
 	for (const Train *u = this; u != nullptr; u = u->Next()) {
 		if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC && u->track == TRACK_BIT_DEPOT) {
-			max_speed = std::min(max_speed, 61);
+			constexpr int DEPOT_SPEED_LIMIT = 61;
+			max_speed = std::min(max_speed, DEPOT_SPEED_LIMIT);
 			break;
 		}
 
@@ -427,6 +428,13 @@ int Train::GetCurrentMaxSpeed() const
 	}
 
 	max_speed = std::min<int>(max_speed, this->current_order.GetMaxSpeed());
+
+	/* If the train is going backwards, without a leading cab, restrict its speed. */
+	if (!moving_front->CanLeadTrain()) {
+		constexpr int BACKWARDS_NO_CAB_SPEED_LIMIT = 32;
+		max_speed = std::min<int>(max_speed, BACKWARDS_NO_CAB_SPEED_LIMIT);
+	}
+
 	return std::min<int>(max_speed, this->gcache.cached_max_track_speed);
 }
 
@@ -2018,7 +2026,7 @@ static void ReverseTrainDirection(Train *consist)
 	TileIndex crossing = TrainApproachingCrossingTile(moving_front);
 
 	/* Check if we should back up or flip the train. */
-	if (consist->Last()->CanLeadTrain()) {
+	if (consist->Last()->CanLeadTrain() || _settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::None) {
 		/* The train will back up. */
 		consist->vehicle_flags.Flip(VehicleFlag::DrivingBackwards);
 
@@ -3017,7 +3025,7 @@ bool TryPathReserve(Train *consist, bool mark_as_stuck, bool first_tile_okay)
 static bool CheckReverseTrain(const Train *consist)
 {
 	const Train *moving_front = consist->GetMovingFront();
-	if (_settings_game.difficulty.line_reverse_mode != 0 ||
+	if (_settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::EndOfLineOnly ||
 			moving_front->track == TRACK_BIT_DEPOT || moving_front->track == TRACK_BIT_WORMHOLE ||
 			!(moving_front->GetMovingDirection() & 1)) {
 		return false;
