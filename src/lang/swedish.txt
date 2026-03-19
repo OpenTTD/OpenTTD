@@ -5494,8 +5494,8 @@ STR_ERROR_NO_AIRPORT                                            :{WHITE}Det finn
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Det finns inga hållplatser med en kompatibel vägtyp
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Det finns inga hållplatser med en kompatibel spårvagnstyp
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Det finns inga hållplatser som passar för ledade vägfordon.{}Ledade vägfordon kräver genomfartshållplatser, inte lastbryggor
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Det här flygplanet kan inte landa på den här helikopterflygplatsen
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Den här helikoptern kan inte landa på den här flygplatsen
+STR_ERROR_AIRPORT_NO_PLANES                                     :Det här flygplanet kan inte landa på den här helikopterflygplatsen
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Den här helikoptern kan inte landa på den här flygplatsen
 STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Det finns inget järnvägsriktmärke
 STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Det finns inget vägriktmärke
 STR_ERROR_NO_BUOY                                               :{WHITE}Det finns ingen boj
