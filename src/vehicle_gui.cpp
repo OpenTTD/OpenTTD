@@ -2880,7 +2880,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_view_widgets
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_VV_SELECT_DEPOT_CLONE),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_GOTO_DEPOT), SetMinimalSize(18, 18), SetSpriteTip(SPR_EMPTY /* filled later */),
+				NWidget(WWT_IMGBTN, COLOUR_GREY, WID_VV_GOTO_DEPOT), SetMinimalSize(18, 18), SetSpriteTip(SPR_EMPTY /* filled later */),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_VV_CLONE), SetMinimalSize(18, 18), SetSpriteTip(SPR_EMPTY /* filled later */),
 			EndContainer(),
 			/* For trains only, 'ignore signal' button. */
@@ -3140,6 +3140,10 @@ public:
 		this->SetWidgetDisabledState(WID_VV_GOTO_DEPOT, !is_localcompany);
 		this->SetWidgetDisabledState(WID_VV_REFIT, !refittable_and_stopped_in_depot || !is_localcompany);
 		this->SetWidgetDisabledState(WID_VV_CLONE, !is_localcompany);
+
+		/* Lower the Send To Depot button when clicking it would cause the
+		 * vehicle to NOT go to the depot. */
+		this->SetWidgetLoweredState(WID_VV_GOTO_DEPOT, v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType().Test(OrderDepotActionFlag::Halt));
 
 		if (v->type == VEH_TRAIN) {
 			this->SetWidgetLoweredState(WID_VV_FORCE_PROCEED, Train::From(v)->force_proceed == TFP_SIGNAL);
