@@ -195,6 +195,8 @@ struct DropdownWindow : Window {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
+		this->UnfocusFocusedWidget();
+
 		/* Finish closing the dropdown, so it doesn't affect new window placement.
 		 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
 		this->Window::Close();
