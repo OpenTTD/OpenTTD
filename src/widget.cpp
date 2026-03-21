@@ -386,7 +386,7 @@ static inline void DrawImageTextButtons(const Rect &r, Colours colour, bool clic
 	DrawFrameRect(r, colour, clicked ? FrameFlag::Lowered : FrameFlags{});
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int image_width = img != 0 ? GetScaledSpriteSize(img).width : 0;
+	int image_width = img != 0 ? std::max<int>(GetSquareScaledSpriteSize(img).width, r.Shrink(WidgetDimensions::scaled.framerect).Height()) : 0;
 	Rect r_img = r.Shrink(WidgetDimensions::scaled.framerect).WithWidth(image_width, rtl);
 	Rect r_text = r.Shrink(WidgetDimensions::scaled.framerect).Indent(image_width + WidgetDimensions::scaled.hsep_wide, rtl);
 
@@ -2912,7 +2912,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 		case WWT_IMGTEXTBTN:
 		case WWT_PUSHIMGTEXTBTN: {
 			padding = {WidgetDimensions::scaled.framerect.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
-			Dimension di = GetScaledSpriteSize(this->widget_data.sprite);
+			Dimension di = GetSquareScaledSpriteSize(this->widget_data.sprite);
 			Dimension dt = GetStringBoundingBox(GetStringForWidget(w, this), this->text_size);
 			Dimension d2{
 				padding.width + 2 * (di.width + WidgetDimensions::scaled.hsep_wide) + dt.width,
