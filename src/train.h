@@ -98,6 +98,7 @@ struct Train final : public GroundVehicle<Train, VehicleType::Train> {
 	VehicleRailFlags flags{}; ///< Which flags has this train currently set. @see VehicleRailFlag for more details.
 	uint16_t crash_anim_pos = 0; ///< Crash animation counter.
 	uint16_t wait_counter = 0; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
+	uint16_t reverse_distance; ///< Distance past a waypoint that a train must travel before reversing.
 
 	TrainCache tcache{}; ///< Set of cached variables, recalculated on load and each time a vehicle is added to/removed from the consist.
 

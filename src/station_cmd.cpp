@@ -3826,14 +3826,26 @@ static bool ClickTile_Station(TileIndex tile)
 static VehicleEnterTileStates VehicleEnterTile_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (v->type == VehicleType::Train) {
+		if (!v->IsMovingFront()) return {};
+
 		StationID station_id = GetStationIndex(tile);
-		if (!IsRailStation(tile) || !v->IsMovingFront()) return {};
-		Vehicle *consist = v->First();
+		Train *t = Train::From(v);
+		Train *consist = t->First();
+
+		/* We might want to reverse at this waypoint. */
+		if (t->IsMovingFront() && consist->current_order.GetDestination() == station_id && consist->current_order.IsWaypointReverseOrder()) {
+			/* Only set the distance if we don't already have one. */
+			if (consist->reverse_distance == 0) consist->reverse_distance = consist->gcache.cached_total_length;
+		}
+
+		/* We only care about stations beyond this point, not waypoints. */
+		if (!IsRailStation(tile)) return {};
+
 		if (!consist->current_order.ShouldStopAtStation(consist, station_id)) return {};
 
 		int station_ahead;
 		int station_length;
-		int stop = GetTrainStopLocation(station_id, tile, Train::From(v), &station_ahead, &station_length);
+		int stop = GetTrainStopLocation(station_id, tile, t, &station_ahead, &station_length);
 
 		/* Stop whenever that amount of station ahead + the distance from the
 		 * begin of the platform to the stop location is longer than the length
