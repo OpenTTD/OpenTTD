@@ -1704,7 +1704,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	DepotID depot = GetDepotIndex(rfdd.tile);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			v->current_order.GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) &&
+			v->current_order.GetNonStopType().Test(OrderNonStopFlag::NonStop) &&
 			!Chance16(1, 20)) {
 		return;
 	}

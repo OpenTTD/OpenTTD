@@ -492,7 +492,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::NearestDepot);
 
 			OrderNonStopFlags onsf{};
-			if ((order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NoIntermediate);
+			if ((order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NonStop);
 			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) {
 				order.MakeGoToDepot(DepotID::Invalid(), odtf, onsf, odaf);
 			} else {

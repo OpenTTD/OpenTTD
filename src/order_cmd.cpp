@@ -184,7 +184,7 @@ uint16_t Order::MapOldOrder() const
 		case OT_GOTO_STATION:
 			if (this->GetUnloadType() == OrderUnloadType::Unload) SetBit(order, 5);
 			if (this->IsFullLoadOrder()) SetBit(order, 6);
-			if (this->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate)) SetBit(order, 7);
+			if (this->GetNonStopType().Test(OrderNonStopFlag::NonStop)) SetBit(order, 7);
 			order |= GB(this->GetDestination().value, 0, 8) << 8;
 			break;
 		case OT_GOTO_DEPOT:
@@ -1215,7 +1215,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			if (nonstop_flags == order->GetNonStopType()) return CMD_ERROR;
 
 			/* Test for invalid flags. */
-			nonstop_flags.Reset({OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination});
+			nonstop_flags.Reset({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
 			if (nonstop_flags.Any()) return CMD_ERROR;
 			break;
 		}
@@ -1226,7 +1226,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			break;
 
 		case MOF_UNLOAD: {
-			if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CMD_ERROR;
+			if (order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) return CMD_ERROR;
 
 			OrderUnloadType unload_type = static_cast<OrderUnloadType>(data);
 			if (unload_type == order->GetUnloadType()) return CMD_ERROR;
@@ -1245,7 +1245,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 		}
 
 		case MOF_LOAD: {
-			if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CMD_ERROR;
+			if (order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) return CMD_ERROR;
 
 			OrderLoadType load_type = static_cast<OrderLoadType>(data);
 			if (load_type == order->GetLoadType()) return CMD_ERROR;
@@ -1330,7 +1330,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 		switch (mof) {
 			case MOF_NON_STOP:
 				order->SetNonStopType(static_cast<OrderNonStopFlags>(data));
-				if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
+				if (order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
 					order->SetRefit(CARGO_NO_REFIT);
 					order->SetLoadType(OrderLoadType::LoadIfPossible);
 					order->SetUnloadType(OrderUnloadType::UnloadIfPossible);
@@ -2107,7 +2107,7 @@ bool ProcessOrders(Vehicle *v)
 	bool may_reverse = v->current_order.IsType(OT_NOTHING);
 
 	/* Check if we've reached a 'via' destination. */
-	if (((v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetNonStopType().Test(OrderNonStopFlag::NoDestination)) || v->current_order.IsType(OT_GOTO_WAYPOINT)) &&
+	if (((v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetNonStopType().Test(OrderNonStopFlag::GoVia)) || v->current_order.IsType(OT_GOTO_WAYPOINT)) &&
 			IsTileType(v->tile, TileType::Station) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 		v->DeleteUnreachedImplicitOrders();
@@ -2184,13 +2184,13 @@ bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 	return (!this->IsType(OT_GOTO_DEPOT) || this->GetDepotOrderType().Test(OrderDepotTypeFlag::PartOfOrders)) &&
 			v->last_station_visited != station && // Do stop only when we've not just been there
 			/* Finally do stop when there is no non-stop flag set for this type of station. */
-			!this->GetNonStopType().Test(is_dest_station ? OrderNonStopFlag::NoDestination : OrderNonStopFlag::NoIntermediate);
+			!this->GetNonStopType().Test(is_dest_station ? OrderNonStopFlag::GoVia : OrderNonStopFlag::NonStop);
 }
 
 bool Order::CanLoadOrUnload() const
 {
 	return (this->IsType(OT_GOTO_STATION) || this->IsType(OT_IMPLICIT)) &&
-			!this->GetNonStopType().Test(OrderNonStopFlag::NoDestination) &&
+			!this->GetNonStopType().Test(OrderNonStopFlag::GoVia) &&
 			(this->GetLoadType() != OrderLoadType::NoLoad ||
 			this->GetUnloadType() != OrderUnloadType::NoUnload);
 }

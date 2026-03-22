@@ -4073,7 +4073,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 			OrderType order_type = v->current_order.GetType();
 			/* Do not skip waypoints (incl. 'via' stations) when passing through at full speed. */
 			if ((order_type == OT_GOTO_WAYPOINT || order_type == OT_GOTO_STATION) &&
-						v->current_order.GetNonStopType().Test(OrderNonStopFlag::NoDestination) &&
+						v->current_order.GetNonStopType().Test(OrderNonStopFlag::GoVia) &&
 						IsTileType(v->tile, TileType::Station) &&
 						v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 				ProcessOrders(v);
@@ -4183,7 +4183,7 @@ static void CheckIfTrainNeedsService(Train *v)
 	}
 
 	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
-	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service, OrderNonStopFlag::NoIntermediate, OrderDepotActionFlag::NearestDepot);
+	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service, OrderNonStopFlag::NonStop, OrderDepotActionFlag::NearestDepot);
 	v->dest_tile = tfdd.tile;
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }

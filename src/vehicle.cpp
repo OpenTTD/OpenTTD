@@ -2239,7 +2239,7 @@ void Vehicle::BeginLoading()
 		 * necessary to be known for HandleTrainLoading to determine
 		 * whether the train is lost or not; not marking a train lost
 		 * that arrives at random stations is bad. */
-		this->current_order.SetNonStopType({OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination});
+		this->current_order.SetNonStopType({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
 
 	} else {
 		/* We weren't scheduled to stop here. Insert an implicit order

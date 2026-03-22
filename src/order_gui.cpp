@@ -202,9 +202,9 @@ static const StringID _order_refit_action_dropdown[] = {
 static StringID GetOrderGoToString(const Order &order)
 {
 	if (order.GetDepotOrderType().Test(OrderDepotTypeFlag::Service)) {
-		return order.GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT;
+		return order.GetNonStopType().Test(OrderNonStopFlag::NonStop) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT;
 	} else {
-		return order.GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO;
+		return order.GetNonStopType().Test(OrderNonStopFlag::NonStop) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO;
 	}
 }
 
@@ -270,7 +270,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 				}
 			} else {
 				/* Show non-stop, refit and stop location only in the order window. */
-				if (!order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
+				if (!order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
 					StringID str = _station_load_types[order->IsRefit()][to_underlying(unload)][to_underlying(load)];
 					if (str != INVALID_STRING_ID) {
 						if (order->IsRefit()) {
@@ -281,7 +281,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 					}
 				}
 
-				if (v->type == VEH_TRAIN && !order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
+				if (v->type == VEH_TRAIN && !order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
 					/* Only show the stopping location if other than the default chosen by the player. */
 					if (order->GetStopLocation() != _settings_client.gui.stop_location) {
 						line += GetString(STR_ORDER_STOP_LOCATION_NEAR_END + to_underlying(order->GetStopLocation()));
@@ -320,7 +320,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			line = GetString(order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT, order->GetDestination());
+			line = GetString(order->GetNonStopType().Test(OrderNonStopFlag::NonStop) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT, order->GetDestination());
 			break;
 
 		case OT_CONDITIONAL:
@@ -372,7 +372,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	if (IsDepotTypeTile(tile, (TransportType)(uint)v->type) && IsTileOwner(tile, _local_company)) {
 		order.MakeGoToDepot(GetDepotDestinationIndex(tile),
 				OrderDepotTypeFlag::PartOfOrders,
-				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
+				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? OrderNonStopFlag::NonStop : OrderNonStopFlags{});
 
 		if (_ctrl_pressed) {
 			/* Now we are allowed to set the action type. */
@@ -387,7 +387,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
-		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination});
+		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
 		return order;
 	}
 
@@ -396,7 +396,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VEH_ROAD &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
-		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination});
+		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
 		return order;
 	}
 
@@ -428,7 +428,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (st->facilities.Any(facil)) {
 				order.MakeGoToStation(st->index);
 				if (_ctrl_pressed) order.SetLoadType(OrderLoadType::FullLoadAny);
-				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(OrderNonStopFlag::NoIntermediate);
+				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(OrderNonStopFlag::NonStop);
 				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OrderStopLocation::FarEnd);
 				return order;
 			}
@@ -631,7 +631,7 @@ private:
 	{
 		Order order{};
 		order.MakeGoToDepot(DepotID::Invalid(), OrderDepotTypeFlag::PartOfOrders,
-				_settings_client.gui.new_nonstop && this->vehicle->IsGroundVehicle() ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
+				_settings_client.gui.new_nonstop && this->vehicle->IsGroundVehicle() ? OrderNonStopFlag::NonStop : OrderNonStopFlags{});
 		order.SetDepotActionType(OrderDepotActionFlag::NearestDepot);
 
 		Command<Commands::InsertOrder>::Post(STR_ERROR_CAN_T_INSERT_NEW_ORDER, this->vehicle->tile, this->vehicle->index, this->OrderGetSel(), order);
@@ -678,7 +678,7 @@ private:
 
 		/* Keypress if no value, so 'toggle' to the next */
 		if (!non_stop.has_value()) {
-			non_stop = order->GetNonStopType().Flip(OrderNonStopFlag::NoIntermediate);
+			non_stop = order->GetNonStopType().Flip(OrderNonStopFlag::NonStop);
 		}
 
 		this->SetWidgetDirty(WID_O_NON_STOP);
@@ -968,8 +968,8 @@ public:
 			this->DisableWidget(WID_O_UNLOAD);
 			this->DisableWidget(WID_O_REFIT_DROPDOWN);
 		} else {
-			this->SetWidgetDisabledState(WID_O_FULL_LOAD, order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)); // full load
-			this->SetWidgetDisabledState(WID_O_UNLOAD,    order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)); // unload
+			this->SetWidgetDisabledState(WID_O_FULL_LOAD, order->GetNonStopType().Test(OrderNonStopFlag::GoVia)); // full load
+			this->SetWidgetDisabledState(WID_O_UNLOAD,    order->GetNonStopType().Test(OrderNonStopFlag::GoVia)); // unload
 
 			switch (order->GetType()) {
 				case OT_GOTO_STATION:
@@ -981,7 +981,7 @@ public:
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_UNLOAD);
 						right_sel->SetDisplayedPlane(DP_RIGHT_REFIT);
 						this->EnableWidget(WID_O_NON_STOP);
-						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate));
+						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NonStop));
 					}
 					this->SetWidgetLoweredState(WID_O_FULL_LOAD, order->GetLoadType() == OrderLoadType::FullLoadAny);
 					this->SetWidgetLoweredState(WID_O_UNLOAD, order->GetUnloadType() == OrderUnloadType::Unload);
@@ -989,7 +989,7 @@ public:
 					/* Can only do refitting when stopping at the destination and loading cargo.
 					 * Also enable the button if a refit is already set to allow clearing it. */
 					this->SetWidgetDisabledState(WID_O_REFIT_DROPDOWN,
-							order->GetLoadType() == OrderLoadType::NoLoad || order->GetNonStopType().Test(OrderNonStopFlag::NoDestination) ||
+							order->GetLoadType() == OrderLoadType::NoLoad || order->GetNonStopType().Test(OrderNonStopFlag::GoVia) ||
 							((!this->can_do_refit || !this->can_do_autorefit) && !order->IsRefit()));
 
 					break;
@@ -1003,7 +1003,7 @@ public:
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_UNLOAD);
 						right_sel->SetDisplayedPlane(DP_RIGHT_EMPTY);
 						this->EnableWidget(WID_O_NON_STOP);
-						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate));
+						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NonStop));
 					}
 					this->DisableWidget(WID_O_FULL_LOAD);
 					this->DisableWidget(WID_O_UNLOAD);
@@ -1019,7 +1019,7 @@ public:
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_SERVICE);
 						right_sel->SetDisplayedPlane(DP_RIGHT_EMPTY);
 						this->EnableWidget(WID_O_NON_STOP);
-						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NoIntermediate));
+						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NonStop));
 					}
 					/* Disable refit button if the order is no 'always go' order.
 					 * However, keep the service button enabled for refit-orders to allow clearing refits (without knowing about ctrl). */
