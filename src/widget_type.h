@@ -16,11 +16,11 @@
 #include "window_type.h"
 
 /** Values for an arrow widget */
-enum ArrowWidgetValues : uint8_t {
-	AWV_DECREASE, ///< Arrow to the left or in case of RTL to the right
-	AWV_INCREASE, ///< Arrow to the right or in case of RTL to the left
-	AWV_LEFT,     ///< Force the arrow to the left
-	AWV_RIGHT,    ///< Force the arrow to the right
+enum class ArrowWidgetType : uint8_t {
+	Decrease, ///< Arrow to the left or in case of RTL to the right
+	Increase, ///< Arrow to the right or in case of RTL to the left
+	Left, ///< Force the arrow to the left
+	Right, ///< Force the arrow to the right
 };
 
 /** WidgetData values for a resize box widget. */
@@ -380,7 +380,7 @@ using NWidgetDisplayFlags = EnumBitSet<NWidgetDisplayFlag, uint16_t>;
 struct WidgetData {
 	StringID string{};
 	SpriteID sprite{};
-	ArrowWidgetValues arrow_widget_type{};
+	ArrowWidgetType arrow_widget_type{};
 	ResizeWidgetValues resize_widget_type{};
 	Colours alternate_colour = INVALID_COLOUR;
 	Dimension matrix{};
@@ -1314,7 +1314,7 @@ constexpr NWidgetPart SetSpriteStringTip(SpriteID sprite, StringID string, Strin
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, StringID tip = {})
+constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetType widget_type, StringID tip = {})
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.arrow_widget_type = widget_type}, tip}};
 }
