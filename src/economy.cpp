@@ -1105,6 +1105,10 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 	/* Increase town's counter for town effects */
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);
 	st->town->received[cs->town_acceptance_effect].new_act += accepted_total;
+	if (accepted_total - accepted_ind > 0) {
+		/* Cargo not delivered to an industry must go to the town. */
+		st->town->GetOrCreateCargoAccepted(cargo_type).history[THIS_MONTH].accepted += accepted_total - accepted_ind;
+	}
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted_total, distance, periods_in_transit, cargo_type);
