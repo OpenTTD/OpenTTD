@@ -1001,7 +1001,7 @@ void Window::ReInit(int rx, int ry, bool reposition)
 	this->OnInit();
 	/* Re-initialize window smallest size. */
 	this->nested_root->SetupSmallestSize(this);
-	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
+	this->nested_root->AssignSizePosition(SizingType::Smallest, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
 	this->width  = this->nested_root->smallest_x;
 	this->height = this->nested_root->smallest_y;
 	this->resize.step_width  = this->nested_root->resize_x;
@@ -1444,7 +1444,7 @@ void Window::InitializeData(WindowNumber window_number)
 	/* Initialize smallest size. */
 	this->nested_root->SetupSmallestSize(this);
 	/* Initialize to smallest size. */
-	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
+	this->nested_root->AssignSizePosition(SizingType::Smallest, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
 
 	/* Further set up window properties,
 	 * this->left, this->top, this->width, this->height, this->resize.width, and this->resize.height are initialized later. */
@@ -2129,7 +2129,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, boo
 		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
 		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
-		w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _current_text_dir == TD_RTL);
+		w->nested_root->AssignSizePosition(SizingType::Resize, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _current_text_dir == TD_RTL);
 		w->width  = w->nested_root->current_x;
 		w->height = w->nested_root->current_y;
 	}

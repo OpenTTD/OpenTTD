@@ -110,14 +110,15 @@ enum WidgetType : uint8_t {
 };
 
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */
-enum SizingType : uint8_t {
-	ST_SMALLEST, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
-	ST_RESIZE,   ///< Resize the nested widget tree.
+enum class SizingType : uint8_t {
+	Smallest, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
+	Resize, ///< Resize the nested widget tree.
 };
 
+/** Flags to control how a widgeet is resized to reach its aspect ratio. */
 enum class AspectFlag : uint8_t {
-	ResizeX,
-	ResizeY,
+	ResizeX, ///< Resize horizontally to reach desired aspect ratio.
+	ResizeY, ///< Resize vertically to reach desired aspect ratio.
 };
 using AspectFlags = EnumBitSet<AspectFlag, uint8_t>;
 
@@ -281,7 +282,7 @@ protected:
  */
 inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 {
-	return (sizing == ST_RESIZE) ? this->resize_x : this->fill_x;
+	return (sizing == SizingType::Resize) ? this->resize_x : this->fill_x;
 }
 
 /**
@@ -291,7 +292,7 @@ inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
  */
 inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
 {
-	return (sizing == ST_RESIZE) ? this->resize_y : this->fill_y;
+	return (sizing == SizingType::Resize) ? this->resize_y : this->fill_y;
 }
 
 /**
@@ -306,7 +307,7 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, uint
 {
 	this->pos_x = x;
 	this->pos_y = y;
-	if (sizing == ST_SMALLEST) {
+	if (sizing == SizingType::Smallest) {
 		this->smallest_x = given_width;
 		this->smallest_y = given_height;
 	}
