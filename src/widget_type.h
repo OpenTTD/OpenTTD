@@ -750,10 +750,10 @@ private:
 
 public:
 	/** Stepping sizes when scrolling */
-	enum ScrollbarStepping : uint8_t {
-		SS_RAW,             ///< Step in single units.
-		SS_SMALL,           ///< Step in #stepsize units.
-		SS_BIG,             ///< Step in #cap units.
+	enum class Stepping : uint8_t {
+		Single, ///< Step in single units.
+		Small, ///< Step in #stepsize units.
+		Big, ///< Step in #cap units.
 	};
 
 	Scrollbar(bool is_vertical) : is_vertical(is_vertical) {}
@@ -864,12 +864,12 @@ public:
 	 * @param unit The stepping unit of \a difference
 	 * @return true iff the position has changed
 	 */
-	bool UpdatePosition(int difference, ScrollbarStepping unit = SS_SMALL)
+	bool UpdatePosition(int difference, Scrollbar::Stepping unit = Stepping::Small)
 	{
 		if (difference == 0) return false;
 		switch (unit) {
-			case SS_SMALL: difference *= this->stepsize; break;
-			case SS_BIG:   difference *= this->cap; break;
+			case Stepping::Small: difference *= this->stepsize; break;
+			case Stepping::Big: difference *= this->cap; break;
 			default: break;
 		}
 		return this->SetPosition(this->pos + difference);

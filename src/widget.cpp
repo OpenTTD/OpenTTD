@@ -238,9 +238,9 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 		auto [start, end] = HandleScrollbarHittest(sb, mi, ma, sb->type == NWID_HSCROLLBAR);
 
 		if (pos < start) {
-			changed = sb->UpdatePosition(rtl ? 1 : -1, Scrollbar::SS_BIG);
+			changed = sb->UpdatePosition(rtl ? 1 : -1, Scrollbar::Stepping::Big);
 		} else if (pos > end) {
-			changed = sb->UpdatePosition(rtl ? -1 : 1, Scrollbar::SS_BIG);
+			changed = sb->UpdatePosition(rtl ? -1 : 1, Scrollbar::Stepping::Big);
 		} else {
 			_scrollbar_start_pos = start - mi - button_size;
 			_scrollbar_size = ma - mi - button_size * 2 - (end - start);
