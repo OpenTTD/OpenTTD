@@ -24,9 +24,9 @@ enum class ArrowWidgetType : uint8_t {
 };
 
 /** WidgetData values for a resize box widget. */
-enum ResizeWidgetValues : uint8_t {
-	RWV_SHOW_BEVEL, ///< Bevel of resize box is shown.
-	RWV_HIDE_BEVEL, ///< Bevel of resize box is hidden.
+enum class ResizeWidgetType : uint8_t {
+	ShowBevel, ///< Bevel of resize box is shown.
+	HideBevel, ///< Bevel of resize box is hidden.
 };
 
 /**
@@ -378,7 +378,7 @@ struct WidgetData {
 	StringID string{};
 	SpriteID sprite{};
 	ArrowWidgetType arrow_widget_type{};
-	ResizeWidgetValues resize_widget_type{};
+	ResizeWidgetType resize_widget_type{};
 	Colours alternate_colour = INVALID_COLOUR;
 	Dimension matrix{};
 };
@@ -396,7 +396,7 @@ public:
 	void SetSprite(SpriteID sprite);
 	void SetSpriteTip(SpriteID sprite, StringID tool_tip);
 	void SetMatrixDimension(uint32_t columns, uint32_t rows);
-	void SetResizeWidgetType(ResizeWidgetValues type);
+	void SetResizeWidgetType(ResizeWidgetType type);
 	void SetToolTip(StringID tool_tip);
 	StringID GetToolTip() const;
 	void SetTextStyle(TextColour colour, FontSize size);
@@ -1323,7 +1323,7 @@ constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetType widget_type, StringI
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, StringID tip)
+constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetType widget_type, StringID tip)
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.resize_widget_type = widget_type}, tip}};
 }

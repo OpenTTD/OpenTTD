@@ -1204,7 +1204,7 @@ void NWidgetCore::SetMatrixDimension(uint32_t columns, uint32_t rows)
  * Set the resize widget type of the nested widget.
  * @param type The new resize widget.
  */
-void NWidgetCore::SetResizeWidgetType(ResizeWidgetValues type)
+void NWidgetCore::SetResizeWidgetType(ResizeWidgetType type)
 {
 	this->widget_data.resize_widget_type = type;
 }
@@ -2758,7 +2758,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, const Wi
 		case WWT_RESIZEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WidgetDimensions::WD_RESIZEBOX_WIDTH, 12);
-			this->SetResizeWidgetType(RWV_SHOW_BEVEL);
+			this->SetResizeWidgetType(ResizeWidgetType::ShowBevel);
 			this->SetToolTip(STR_TOOLTIP_RESIZE);
 			break;
 
@@ -3075,7 +3075,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_RESIZEBOX:
-			DrawResizeBox(r, this->colour, this->pos_x < (w->width / 2), w->flags.Test(WindowFlag::SizingLeft) || w->flags.Test(WindowFlag::SizingRight), this->widget_data.resize_widget_type == RWV_SHOW_BEVEL);
+			DrawResizeBox(r, this->colour, this->pos_x < (w->width / 2), w->flags.Test(WindowFlag::SizingLeft) || w->flags.Test(WindowFlag::SizingRight), this->widget_data.resize_widget_type == ResizeWidgetType::ShowBevel);
 			break;
 
 		case WWT_CLOSEBOX:
