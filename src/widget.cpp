@@ -3026,10 +3026,10 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_PUSHARROWBTN: {
 			SpriteID sprite;
 			switch (this->widget_data.arrow_widget_type) {
-				case AWV_DECREASE: sprite = _current_text_dir != TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
-				case AWV_INCREASE: sprite = _current_text_dir == TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
-				case AWV_LEFT:     sprite = SPR_ARROW_LEFT;  break;
-				case AWV_RIGHT:    sprite = SPR_ARROW_RIGHT; break;
+				case ArrowWidgetType::Decrease: sprite = _current_text_dir != TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
+				case ArrowWidgetType::Increase: sprite = _current_text_dir == TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
+				case ArrowWidgetType::Left:     sprite = SPR_ARROW_LEFT;  break;
+				case ArrowWidgetType::Right:    sprite = SPR_ARROW_RIGHT; break;
 				default: NOT_REACHED();
 			}
 			DrawImageButtons(r, WWT_PUSHIMGBTN, this->colour, clicked, sprite, this->align);
