@@ -354,7 +354,7 @@ public:
 };
 
 /** Nested widget flags that affect display and interaction with 'real' widgets. */
-enum NWidgetDisplayFlag : uint8_t {
+enum class NWidgetDisplayFlag : uint8_t {
 	/* Generic. */
 	Lowered, ///< Widget is lowered (pressed down) bit.
 	Disabled, ///< Widget is disabled (greyed out) bit.
@@ -566,7 +566,7 @@ private:
 };
 
 /** Nested widget container flags, */
-enum NWidContainerFlag : uint8_t {
+enum class NWidContainerFlag : uint8_t {
 	EqualSize, ///< Containers should keep all their (resizing) children equally large.
 	BigFirst, ///< Allocate space to biggest resize first.
 };
