@@ -4758,6 +4758,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Salta
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Salta l'ordre actual, i comença la següent. Amb Ctrl+clic, es salta a l'ordre seleccionada.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Esborra
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Esborra-les totes
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Esborra l'ordre seleccionada
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Esborra totes les ordres
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Deixa de compartir
@@ -5263,9 +5264,9 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipus de cotxer
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... cada llista d'ordres només pot tenir una ordre d'espaiar.
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... no es poden fer servir ordres de càrrega completa quan el vehicle té una ordre d'espaiat.
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... no es poden espaiar vehicles que tenen una ordre de càrrega completa.
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :no es poden espaiar vehicles que tenen una ordre de càrrega completa.
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... no pot fer servir ordres condicionals quan un vehicle té una ordre d'espaiat.
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... els vehicles no es poden espaiar si tenen ordres condicionals.
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :els vehicles no es poden espaiar si tenen ordres condicionals.
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} és massa llarg després de la substitució
@@ -5388,7 +5389,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}L'avió 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No es pot remodelar el tren...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No es pot remodelar l'automòbil...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}No es pot remodelar el vaixell...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}No es pot remodelar l'avió...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :No es pot remodelar l'avió...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}No es pot anomenar el tren...
