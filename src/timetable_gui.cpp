@@ -110,7 +110,7 @@ static bool CanDetermineTimeTaken(const Order &order, bool travelling)
 	if (travelling && !order.IsTravelTimetabled()) return false;
 	/* No wait time but we are loading at this timetabled station */
 	if (!travelling && !order.IsWaitTimetabled() && order.IsType(OT_GOTO_STATION) &&
-			!order.GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
+			!order.GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
 		return false;
 	}
 
@@ -348,7 +348,7 @@ struct TimetableWindow : Window {
 				if (selected % 2 != 0) {
 					disable = order != nullptr && (order->IsType(OT_CONDITIONAL) || order->IsType(OT_IMPLICIT));
 				} else {
-					disable = order == nullptr || ((!order->IsType(OT_GOTO_STATION) || order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) && !order->IsType(OT_CONDITIONAL));
+					disable = order == nullptr || ((!order->IsType(OT_GOTO_STATION) || order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) && !order->IsType(OT_CONDITIONAL));
 				}
 			}
 			bool disable_speed = disable || selected % 2 == 0 || v->type == VEH_AIRCRAFT;
