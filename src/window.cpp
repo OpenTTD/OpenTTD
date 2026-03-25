@@ -1821,6 +1821,7 @@ void Window::CreateNestedTree()
  */
 void Window::FinishInitNested(WindowNumber window_number)
 {
+	this->nested_root->AdjustPaddingForZoom();
 	this->InitializeData(window_number);
 	this->ApplyDefaults();
 	Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
