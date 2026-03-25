@@ -1024,8 +1024,6 @@ void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
 {
 	this->uz_min_x = std::max(this->uz_min_x, min_x);
 	this->uz_min_y = std::max(this->uz_min_y, min_y);
-	this->min_x = ScaleGUITrad(this->uz_min_x);
-	this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
 }
 
 /**
@@ -1051,7 +1049,6 @@ void NWidgetResizeBase::SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, 
 	this->uz_text_lines = min_lines;
 	this->uz_text_spacing = spacing;
 	this->uz_text_size = size;
-	this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
 }
 
 /**
