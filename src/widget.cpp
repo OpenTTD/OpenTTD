@@ -77,6 +77,22 @@ Dimension GetScaledSpriteSize(SpriteID sprid)
 }
 
 /**
+ * Scale sprite size for GUI, as a square.
+ * Offset is ignored.
+ * @param sprid The sprite to get the size from.
+ * @return The square scaled dimension of the sprite.
+ */
+Dimension GetSquareScaledSpriteSize(SpriteID sprid)
+{
+	Dimension d = GetScaledSpriteSize(sprid);
+	uint x = std::max(d.width, d.height);
+	return {x, x};
+}
+
+static Dimension _toolbar_image_size{}; ///< Cached dimension of maximal toolbar sprite size.
+extern Dimension GetToolbarMaximalImageSize();
+
+/**
  * Set up pre-scaled versions of Widget Dimensions.
  */
 void SetupWidgetDimensions()
@@ -110,6 +126,8 @@ void SetupWidgetDimensions()
 	WidgetDimensions::scaled.hsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.hsep_normal);
 	WidgetDimensions::scaled.hsep_wide    = ScaleGUITrad(WidgetDimensions::unscaled.hsep_wide);
 	WidgetDimensions::scaled.hsep_indent  = ScaleGUITrad(WidgetDimensions::unscaled.hsep_indent);
+
+	_toolbar_image_size = GetToolbarMaximalImageSize();
 }
 
 /**
@@ -1014,6 +1032,10 @@ void NWidgetResizeBase::AdjustPaddingForZoom()
 	if (!this->absolute) {
 		this->min_x = ScaleGUITrad(this->uz_min_x);
 		this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
+		if (this->toolbar_size > 0) {
+			this->min_x = std::max(this->min_x, this->toolbar_size * _toolbar_image_size.width + WidgetDimensions::scaled.imgbtn.Horizontal());
+			this->min_y = std::max(this->min_y, _toolbar_image_size.height + WidgetDimensions::scaled.imgbtn.Vertical());
+		}
 	}
 	NWidgetBase::AdjustPaddingForZoom();
 }
@@ -1027,6 +1049,15 @@ void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
 {
 	this->uz_min_x = std::max(this->uz_min_x, min_x);
 	this->uz_min_y = std::max(this->uz_min_y, min_y);
+}
+
+/**
+ * Set minimal size of the widget in toolbar-icon-relative width.
+ * @param toolbar_size Toolbar button size of the widget.
+ */
+void NWidgetResizeBase::SetToolbarMinimalSize(uint8_t toolbar_size)
+{
+	this->toolbar_size = toolbar_size;
 }
 
 /**
@@ -3161,6 +3192,14 @@ void ApplyNWidgetPartAttribute(const NWidgetPart &nwid, NWidgetBase *dest)
 			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
 			assert(nwid.u.text_lines.size >= FS_BEGIN && nwid.u.text_lines.size < FS_END);
 			nwrb->SetMinimalTextLines(nwid.u.text_lines.lines, nwid.u.text_lines.spacing, nwid.u.text_lines.size);
+			break;
+		}
+
+		case WPT_TOOLBARSIZE: {
+			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
+			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_TOOLBARSIZE requires NWidgetResizeBase");
+			assert(nwid.u.xy.x >= 0);
+			nwrb->SetToolbarMinimalSize(nwid.u.xy.x);
 			break;
 		}
 

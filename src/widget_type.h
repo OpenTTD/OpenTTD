@@ -90,6 +90,7 @@ enum WidgetType : uint8_t {
 	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
 	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
 	WPT_ASPECT,       ///< Widget part for specifying aspect ratio.
+	WPT_TOOLBARSIZE,  ///< Widget part for specifying minimal size in terms of toolbar images.
 	WPT_ATTRIBUTE_END, ///< End marker for attribute NWidgetPart types.
 
 	WPT_FUNCTION, ///< Widget part for calling a user function.
@@ -326,6 +327,7 @@ public:
 	void SetMinimalSize(uint min_x, uint min_y);
 	void SetMinimalSizeAbsolute(uint min_x, uint min_y);
 	void SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size);
+	void SetToolbarMinimalSize(uint8_t toolbar_size);
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 	void SetAspect(float ratio, AspectFlags flags = AspectFlag::ResizeX);
@@ -347,6 +349,7 @@ public:
 	uint8_t uz_text_lines = 0; ///< 'Unscaled' text lines, stored for resize calculation.
 	uint8_t uz_text_spacing = 0; ///< 'Unscaled' text padding, stored for resize calculation.
 	FontSize uz_text_size{}; ///< 'Unscaled' font size, stored for resize calculation.
+	uint8_t toolbar_size = 0; ///< Minimal size in terms of toolbar images.
 };
 
 /** Nested widget flags that affect display and interaction with 'real' widgets. */
@@ -1205,7 +1208,7 @@ constexpr NWidgetPart SetToolbarSpacerMinimalSize()
  */
 constexpr NWidgetPart SetToolbarMinimalSize(int width)
 {
-	return NWidgetPart{WPT_MINSIZE, Point{20 * width + 2, 22}};
+	return NWidgetPart{WPT_TOOLBARSIZE, Point{width, 1}};
 }
 
 /**
