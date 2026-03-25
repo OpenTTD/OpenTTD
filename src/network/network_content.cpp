@@ -110,6 +110,8 @@ bool ClientNetworkContentSocketHandler::ReceiveServerInfo(Packet &p)
 	ci->tags.reserve(tag_count);
 	for (uint i = 0; i < tag_count; i++) ci->tags.push_back(p.Recv_string(NETWORK_CONTENT_TAG_LENGTH));
 
+	ci->availability = ContentInfo::Availability(p.Recv_uint8());
+
 	if (!ci->IsValid()) {
 		this->CloseConnection();
 		return false;
@@ -121,7 +123,7 @@ bool ClientNetworkContentSocketHandler::ReceiveServerInfo(Packet &p)
 			ci->state = ContentInfo::State::AlreadyHere;
 		} else {
 			ci->state = ContentInfo::State::Unselected;
-			if (proc(*ci, false)) ci->upgrade = true;
+			if ((ci->availability == ContentInfo::Availability::NewGames) && proc(*ci, false)) ci->upgrade = true;
 		}
 	} else {
 		ci->state = ContentInfo::State::Unselected;
