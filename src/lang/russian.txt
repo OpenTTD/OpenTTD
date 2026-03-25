@@ -789,8 +789,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Доставл�
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :В ожидании
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Пассажиры и грузы
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Запрос
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Произведено
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Перевезено
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Доставлено
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 

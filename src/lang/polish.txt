@@ -1032,6 +1032,7 @@ STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Oczekujący
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historia Ładunków
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Dostępny
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Przetransportowany
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Dostarczony
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
 

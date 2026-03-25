@@ -651,8 +651,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :已接受
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :庫存
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 貨物記錄
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :供應
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :已產出
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :已運送
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :已接受
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}顯示詳細營運評比
 

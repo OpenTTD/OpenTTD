@@ -652,8 +652,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregue
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Em Espera
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}Histórico da Carga - {TOWN}
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Abastecimento
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produzido
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregue
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir classificações detalhadas de desempenho
 

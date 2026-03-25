@@ -651,8 +651,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Toimitettu
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Odottava
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} – rahtihistoria
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Tarjonta
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Tuotettu
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Kuljetettu
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Toimitettu
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
