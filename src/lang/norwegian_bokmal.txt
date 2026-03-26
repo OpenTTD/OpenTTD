@@ -653,8 +653,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Levert
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Venter
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Varehistorikk
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Leveranse
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produsert
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportert
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Levert
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte prestasjonsmålinger
 
