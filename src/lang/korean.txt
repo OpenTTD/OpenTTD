@@ -652,8 +652,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :수송됨
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :대기 중
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 화물 이력
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :공급
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :생산
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :수송됨
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :수송됨
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
