@@ -4589,7 +4589,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Vinst de
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY_LONG} (förra året: {CURRENCY_LONG}) {BLACK}Min. prestationsvärdering: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Vinst denna period: {LTBLUE}{CURRENCY_LONG} (föregående period: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Vinst denna period: {LTBLUE}{CURRENCY_LONG} (föregående period: {CURRENCY_LONG}) {BLACK}Min. specifika effekt: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste servicen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacitet: {LTBLUE}Ingen{STRING}

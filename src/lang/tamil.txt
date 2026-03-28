@@ -4008,7 +4008,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}எட�
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}இந்த வருட இலாபம்: {LTBLUE}{CURRENCY_LONG} (சென்ற வருடம்: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}இந்த வருட இலாபம்: {LTBLUE}{CURRENCY_LONG} (சென்ற வருடம்: {CURRENCY_LONG}) {BLACK}கு. திறன்: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}நம்பகத்தன்மை: {LTBLUE}{COMMA}%  {BLACK}கடைசிப் பராமரிப்பிற்குப் பின் ஏற்ப்பட்ட பழுதுகள்: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}கட்டப்பட்டது: {LTBLUE}{NUM}{BLACK} மதிப்பு: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}கொள்ளளவு: {LTBLUE}ஒன்றுமில்லை{STRING}

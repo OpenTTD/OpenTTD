@@ -3481,7 +3481,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. sn
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krêft: {LTBLUE}{POWER}{BLACK} Maks. snelheid: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krêft: {LTBLUE}{POWER}{BLACK} Maks. snelheid: {LTBLUE}{VELOCITY} {BLACK}Maks. lûkkrêft: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}betrouberens: {LTBLUE}{COMMA}%  {BLACK}Stikken west sûnt lêste ûnderhâld: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Gjin{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasiteit: {LTBLUE}{CARGO_LONG}{STRING}

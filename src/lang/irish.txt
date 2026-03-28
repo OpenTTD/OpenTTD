@@ -4059,7 +4059,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Meáchan
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Meáchan: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhacht: {LTBLUE}{POWER}{BLACK} Uas-luas: {LTBLUE}{VELOCITY} {BLACK}T.E. Uasta: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Brabús i mbliana: {LTBLUE}{CURRENCY_LONG} (anuraidh: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Iontaofacht: {LTBLUE}{COMMA}%  {BLACK}Líon na gcliseadh ón seirbhísiú deiridh: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Tógtha: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Lastas: {LTBLUE}Gan lastas{STRING}

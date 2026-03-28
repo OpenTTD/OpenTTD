@@ -4591,7 +4591,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 �
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG}) {BLACK}최소 성능: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}지난 기간 이익: {LTBLUE}{CURRENCY_LONG} (지난 기간: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}이번 기간 이익: {LTBLUE}{CURRENCY_LONG} (지난 기간: {CURRENCY_LONG}) {BLACK}최소 성능: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후 고장 횟수: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}수송량: {LTBLUE}없음{STRING}

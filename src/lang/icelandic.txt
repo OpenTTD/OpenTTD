@@ -3467,7 +3467,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Þyngd: {LTBLUE}{WEIGHT_SHORT} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Hámarks dráttarafl.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Hagnaður í ár: {LTBLUE}{CURRENCY_LONG} (síðasta ár: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Framleiðsluár: {LTBLUE}{NUM}{BLACK} Verðgildi: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Burðargeta: {LTBLUE}Engin{STRING}

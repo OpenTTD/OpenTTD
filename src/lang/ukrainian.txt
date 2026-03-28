@@ -4706,7 +4706,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохі
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (минулого року: {CURRENCY_LONG}) {BLACK}Найгірше: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибуток цього періоду: {LTBLUE}{CURRENCY_LONG} (минулого періоду: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Прибуток цього періоду: {LTBLUE}{CURRENCY_LONG} (минулого періоду: {CURRENCY_LONG}) {BLACK}Питома потужність: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Аварії після останнього техогляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Місткість: {LTBLUE}нема{STRING}

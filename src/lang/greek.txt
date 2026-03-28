@@ -4691,7 +4691,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Φετι
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Φετινό κέρδος: {LTBLUE}{CURRENCY_LONG} (Περσινό: {CURRENCY_LONG}) {BLACK}Ελάχ. απόδοση: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Κέρδος αυτή την περίοδο: {LTBLUE}{CURRENCY_LONG} (τελευταίας περιόδου: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Κέρδος αυτή την περίοδο: {LTBLUE}{CURRENCY_LONG} (τελευταίας περιόδου: {CURRENCY_LONG}) {BLACK}Ελάχ. απόδοση: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Βλάβες μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Κατασκευή: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Χωρητικότητα: {LTBLUE}Τίποτα{STRING}

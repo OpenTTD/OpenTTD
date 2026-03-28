@@ -4281,7 +4281,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntung
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY_LONG} (tahun kemarin: {CURRENCY_LONG}) {BLACK}Performa minimum: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Laba saat ini: {LTBLUE}{CURRENCY_LONG} (kurun waktu sebelumnya: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Laba sat ini: {LTBLUE}{CURRENCY_LONG} (kurun waktu sebelumnya: {CURRENCY_LONG}) {BLACK}Performa minimum: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Mogok sejak perbaikan terakhir : {LTBLUE}{COMMA} kali
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitas: {LTBLUE}Tidak ada{STRING}

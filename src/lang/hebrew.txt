@@ -4083,7 +4083,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}משקל
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}T.E. מקסימלי: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}רווח בשנה הנוכחת: {LTBLUE}{CURRENCY_LONG} (שנה שעברה: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}מהימנות: {LTBLUE}{COMMA}%  {BLACK}קלקול מאז טיפול אחרון: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}נבנה: {LTBLUE}{NUM}{BLACK} ערך: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}קיבולת: {LTBLUE}אין{STRING}

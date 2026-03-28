@@ -4723,7 +4723,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Прыб
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Прыбытак сёлета: {LTBLUE}{CURRENCY_LONG} (летась: {CURRENCY_LONG}) {BLACK}Мін. удзельная магутн.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прыбытак у бягучым цыкле: {LTBLUE}{CURRENCY_LONG} (у мінулым: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Прыбытак у бягучым цыкле: {LTBLUE}{CURRENCY_LONG} (у мінулым: {CURRENCY_LONG}) {BLACK}Мін. удзельная магут.: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надзейнасьць: {LTBLUE}{COMMA}%  {BLACK}Паломак з апошняга агляду: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Пабудаваны ў: {LTBLUE}{NUM} г.{BLACK} Кошт: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ёмiстасьць: {LTBLUE}адсутнiчае{STRING}

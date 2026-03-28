@@ -4552,7 +4552,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ovogodi�
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Ovogodišnja zarada: {LTBLUE}{CURRENCY_LONG} (prošlogodišnja: {CURRENCY_LONG}) {BLACK}Najlošiji učinak: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Profit trenutnog perioda: {LTBLUE}{CURRENCY_LONG} (protekli period: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Profit trenutnog perioda: {LTBLUE}{CURRENCY_LONG} (protekli period: {CURRENCY_LONG}) {BLACK}Min. performanse: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarova od poslednjeg servisa: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Nosivost: {LTBLUE}Nula{STRING}

@@ -4448,7 +4448,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Kasum se
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Kasum sellel aastal: {LTBLUE}{CURRENCY_LONG} (eelmisel aastal: {CURRENCY_LONG}) {BLACK}Min. jõudlus: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Kasum sellel perioodil: {LTBLUE}{CURRENCY_LONG} (eelmisel perioodil: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Kasum sellel perioodil: {LTBLUE}{CURRENCY_LONG} (eelmisel perioodil: {CURRENCY_LONG}) {BLACK}Min. jõudlus: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Valmistatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Mahutavus: {LTBLUE}Pole{STRING}

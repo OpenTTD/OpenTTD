@@ -3941,7 +3941,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pondus: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pondus: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potestas: {LTBLUE}{POWER}{BLACK} Velocitas maxima: {LTBLUE}{VELOCITY} {BLACK}V.T. Max.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucrum huius anni: {LTBLUE}{CURRENCY_LONG} (anni prioris: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Constantia: {LTBLUE}{COMMA}%  {BLACK}Defecta post ministrationem priorem: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Factum: {LTBLUE}{NUM}{BLACK} Aestimatio: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacitas: {LTBLUE}Nulla{STRING}
