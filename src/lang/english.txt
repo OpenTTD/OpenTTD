@@ -4575,8 +4575,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Name roa
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Name ship
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name aircraft
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P "" s} (lifetime: {COMMA} year{P "" s})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} (lifetime: {COMMA} year{P "" s})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/year
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/period
 
