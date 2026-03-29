@@ -4976,6 +4976,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w t
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (poprzedni rok: {CURRENCY_LONG}) {BLACK}Min. wydajność: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Zysk w tym okresie: {LTBLUE}{CURRENCY_LONG} (w poprzednim okresie: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Zysk w tym okresie: {LTBLUE}{CURRENCY_LONG} (w poprzednim okresie: {CURRENCY_LONG}) {BLACK}Min. wydajność: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}% (maks.: {COMMA}%) {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ładowność: {LTBLUE}żadna{STRING}

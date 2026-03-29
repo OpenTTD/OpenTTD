@@ -652,8 +652,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregades
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En espera
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historial de càrregues
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Subministrament
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produït
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportades
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregat
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra ratis de rendiment detallats
 
@@ -4590,6 +4591,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Benefici
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Benefici aquest any: {LTBLUE}{CURRENCY_LONG} (l'any passat: {CURRENCY_LONG}) {BLACK}Rendiment mínim: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Benefici durant aquest període: {LTBLUE}{CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Benefici durant aquest període: {LTBLUE}{CURRENCY_LONG} (durant l'últim període: {CURRENCY_LONG}) {BLACK}Rendiment mínim: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilitat: {LTBLUE}{COMMA}{NBSP}% (màx: {COMMA}{NBSP}%) {BLACK}Avaries des de la darrera revisió: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Fabricat: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacitat: {LTBLUE}Cap{STRING}
@@ -5115,7 +5117,7 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Aquí no
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Aquí no es pot rebaixar el terreny...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Aquí no es pot anivellar...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :L'excavació pot malmetre el túnel.
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ja sou a nivell de mar
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :Ja és a nivell de mar.
 STR_ERROR_TOO_HIGH                                              :{WHITE}Massa alt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja és pla
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Després del canvi, el pont que el travessa seria massa alt.
@@ -5169,9 +5171,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... nom�
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... només es pot construir en estatges sense neu
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}La fundació ha fallat la prospecció per mala sort. Proveu-ho de nou.
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}No hi havia llocs apropiats per a fer la prospecció per a aquesta indústria.
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}No hi havia llocs adequats per a indústries '{STRING}'
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Canvia els paràmetres de generació de mapa per a obtenir-ne un de millor
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :No hi havia llocs apropiats per a fer la prospecció d'aquesta indústria.
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :No hi havia llocs adequats per a indústries «{STRING}».
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Canvieu els paràmetres de generació de mapa per a obtenir-ne un de millor.
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Aquí no es pot construir una estació de tren...

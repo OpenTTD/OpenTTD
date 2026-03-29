@@ -4590,6 +4590,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Tuotto t
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG}) {BLACK}Vähimmäissuorituskyky: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Tuotto tällä jaksolla: {LTBLUE}{CURRENCY_LONG} (viime jaksolla: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Tuotto tällä jaksolla: {LTBLUE}{CURRENCY_LONG} (viime jaksolla: {CURRENCY_LONG}) {BLACK}Vähimmäissuorituskyky: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}{NBSP}% (enimmillään {COMMA}{NBSP}%)  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteetti: {LTBLUE}-{STRING}
