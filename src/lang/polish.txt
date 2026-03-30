@@ -4961,8 +4961,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Zmień n
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Zmień nazwę statku
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Zmień nazwę samolotu
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok lata lat} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok lata lat} (żywotność: {COMMA} {P rok lata lat})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} (żywotność: {COMMA} {P rok lata lat})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK} Koszt utrzymania: {LTBLUE}{CURRENCY_LONG}/rok
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK} Koszt utrzymania: {LTBLUE}{CURRENCY_LONG}/okres
 

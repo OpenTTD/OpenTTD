@@ -4676,8 +4676,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ονομ
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Ονομασία πλοίου
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Ονομασία αεροσκάφους
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} χρόν{P ος ια} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χρόν{P ος ια} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} χρόν{P ος ια} (ζωής: {COMMA} έτ{P "ος" η})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χρόν{P ος ια} (ζωής: {COMMA} έτ{P "ος" η})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Λειτουργικό Κόστος: {LTBLUE}{CURRENCY_LONG}/έτος
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Λειτουργικό Κόστος: {LTBLUE}{CURRENCY_LONG}/περίοδο
 

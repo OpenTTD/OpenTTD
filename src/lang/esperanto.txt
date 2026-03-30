@@ -86,8 +86,8 @@ STR_CARGO_PLURAL_BATTERIES                                      :Baterioj
 STR_CARGO_PLURAL_BATTERIES.n                                    :Bateriojn
 STR_CARGO_PLURAL_PLASTIC                                        :Plasto
 STR_CARGO_PLURAL_PLASTIC.n                                      :Plaston
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Amuzaj trinkaĵoj
-STR_CARGO_PLURAL_FIZZY_DRINKS.n                                 :Amuzajn trinkaĵojn
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Refreŝigaĵoj
+STR_CARGO_PLURAL_FIZZY_DRINKS.n                                 :Refreŝigaĵojn
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -151,7 +151,7 @@ STR_CARGO_SINGULAR_BATTERY                                      :Baterio
 STR_CARGO_SINGULAR_BATTERY.n                                    :Baterion
 STR_CARGO_SINGULAR_PLASTIC                                      :Plasto
 STR_CARGO_SINGULAR_PLASTIC.n                                    :Plaston
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Amuza trinkaĵo
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Refreŝigaĵo
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -196,7 +196,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} d
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterio{P "" j}
 STR_QUANTITY_BATTERIES.n                                        :{COMMA} baterio{P "" j}n
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} da plasto
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} amuza{P "" j} trinkaĵo{P "" j}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refreŝigaĵo{P "" j}
 STR_QUANTITY_N_A                                                :Neniu ŝarĝujo
 
 # Two letter abbreviation of cargo name
@@ -231,7 +231,7 @@ STR_ABBREV_BUBBLES                                              :VZ
 STR_ABBREV_TOFFEE                                               :TF
 STR_ABBREV_BATTERIES                                            :BA
 STR_ABBREV_PLASTIC                                              :PL
-STR_ABBREV_FIZZY_DRINKS                                         :AT
+STR_ABBREV_FIZZY_DRINKS                                         :RE
 STR_ABBREV_ALL                                                  :ĈIU
 
 # 'Mode' of transport for cargoes
@@ -540,17 +540,17 @@ STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ludoskriptaj ag
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
 STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sablujaj agordoj
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Agordoj de travidebleco
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stacionomoj montriĝas
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Montri urbonomojn
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Montri stacionomojn
 STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Vagonaraj stacioj
 STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Ŝarĝstacioj
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Bushaltejoj
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Ŝipdokoj
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Flughavenoj
 STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Fantomaj stacioj
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Montri nomojn de vojpunktoj
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Ŝildoj montriĝas
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Konkurantaj ŝildoj kaj nomoj estas montrataj
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Montri vojpunktonomojn
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Montri ŝildojn
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Montri konkurantajn ŝildojn kaj nomojn
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Plena animado
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plenaj detaloj
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Travideblaj konstruaĵoj
@@ -918,8 +918,8 @@ STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COM
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Neniuj
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ĉiuj
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Montri altecon
-STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Montri nomojn de entreprenoj
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Reliefo
+STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Nomoj de entreprenoj
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ne montri industriojn sur la mapo.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Montri ĉiujn industriojn sur la mapo.
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Ŝalti montradon de altecmapo
@@ -1055,10 +1055,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vidujo {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiu al vidujo
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Kopiu la lokon de la ĉefvido al ĉi tiu vidujo
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de vidujo
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Gluu la lokon de ĉi tiu vidujo al la ĉefvido
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopii el ĉefvido
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Kopii la lokon de la ĉefvido al ĉi tiu vidujo
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kopii al ĉefvido
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Kopii la lokon de ĉi tiu vidujo al la ĉefvido
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludaj agordoj
@@ -1629,7 +1629,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veturiloj nenia
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Se tiu ĉi agordo estas aktiva, ĉiuj modeloj de veturiloj restos aĉeteblaj por ĉiam post ekhaveblo
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tempomezuro: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Elektu tempomezurajn unuoj por la ludo. Ne eblas ŝanĝi tion ĉi poste.{}{}Kalendar-bazita estas la klasika OpenTTD-sperto, kun jaro konsistanta el 12 monatoj, kaj ĉiu monato havas 28-31 tagojn.{}{}En Murhorloĝ-bazita tempo, kargoproduktado kaj financoj anstataŭe baziĝas je unu-minutaj eroj, kiuj proksimume same longe daŭras kiel 30-taga monato en Kalendar-bazita reĝimo. Tiuj ĉi eroj grupiĝas en 12-minutajn periodojn, ekvivalentajn al jaro en Kalendar-bazita reĝimo.{}{}En ambaŭ reĝimoj ĉiam ekzistas klasika kalendaro, uzata por datoj de havebliĝo de veturiloj, domoj, kaj alia infrastrukturo
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Elektu tempomezurajn unuoj por la ludo. Ne eblas ŝanĝi tion ĉi poste.{}{}Kalendar-bazita estas la klasika OpenTTD-sperto, kun jaro konsistanta el 12 monatoj, kaj ĉiu monato havas 28-31 tagojn.{}{}En Murhorloĝ-bazita tempo, ŝarĝoproduktado kaj financoj anstataŭe baziĝas je unu-minutaj eroj, kiuj proksimume same longe daŭras kiel 30-taga monato en Kalendar-bazita reĝimo. Tiuj ĉi eroj grupiĝas en 12-minutajn periodojn, ekvivalentajn al jaro en Kalendar-bazita reĝimo.{}{}En ambaŭ reĝimoj ĉiam ekzistas klasika kalendaro, uzata por datoj de havebliĝo de veturiloj, domoj, kaj alia infrastrukturo
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalendara
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Murhorloĝa
@@ -2196,7 +2196,7 @@ STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Malpleja distan
 STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Elektu malplejan distancon inter urboj, en kaheloj, por generado kaj hazarda fondado de urboj
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Ĝisdatigi la distribuan grafeon ĉiujn {STRING.n}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo inter sinsekvaj rekalkuloj de la liga grafeo. Ĉiu rekalkulo kalkulas planoj por unu komponento de la grafeo. Tio signifas ke meti valoron X por tiu ĉi agordo ne signifas ke la tuta grafeo estos ĝisdatigita ĉiujn X sekundojn. Nur iu komponento estos. Ju pli mallongan tempon vi elektas, des pli da procesora tempo bezonatas por la kalkulado. Ju pli longan tempon vi elektas, des pli longe daŭros ĝis kiam komenciĝos distribuado de kargoj en novaj itineroj
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo inter sinsekvaj rekalkuloj de la liga grafeo. Ĉiu rekalkulo kalkulas planoj por unu komponento de la grafeo. Tio signifas ke meti valoron X por tiu ĉi agordo ne signifas ke la tuta grafeo estos ĝisdatigita ĉiujn X sekundojn. Nur iu komponento estos. Ju pli mallongan tempon vi elektas, des pli da procesora tempo bezonatas por la kalkulado. Ju pli longan tempon vi elektas, des pli longe daŭros ĝis kiam komenciĝos distribuado de ŝarĝoj en novaj itineroj
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Uzu {STRING.n} por rekalkulado de la distribua grafeo
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo inter sinsekvaj rekalkuloj de la liga grafeo. Kiam rekalkulo komencas, fadeno estas kreita, kiu povas funkcii nur por ĉi tiu nombro de sekundoj. Ju malpli da ĉi tiu valoro, des pli da ŝanco, ke la fadeno ne finiĝis la laboron dum la fina tempo. En tiu okazo, la ludo haltas ĝis la fino de kalkulo. Ju pli da valoro, des pli da tempo, en kiu distribuo ĝisdatigas, kiam vojplanoj ŝanĝas
 
@@ -2716,7 +2716,7 @@ STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ne povis ŝarĝ
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :konekto perdiĝis
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokola eraro
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Miso pri NewGRF
-STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ne rajtigite
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ne rajtigita
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ricevis strangan aŭ neatenditan pakaĵon
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :malĝusta revidaĵo
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nomo jam uziĝas
@@ -2724,7 +2724,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :malĝusta pasvo
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :ne en permeso-listo
 STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :neniuj de petitaj metodoj de aŭtentigo haveblas
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :malĝusta kompani-ID en DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :forbatite de servilo
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :forbatita de servilo
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :provis uzi filudaĵon
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servilo plenas
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estis sendanta tro da komandojn
@@ -3837,7 +3837,7 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Enloĝantoj: {ORANGE}{COMMA}{BLACK}  Domoj: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} pasintmonate: {ORANGE}{COMMA}{BLACK}  maksimume: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} pasintminute: {ORANGE}{COMMA}{BLACK}  maksimume: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo bezonata por kreskigi urbon:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Ŝarĝo bezonata por kreskigi urbon:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} bezonatas
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} bezonatas en vintro
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} liverita
@@ -3887,9 +3887,9 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉeti ekskluzi
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉeti la lokajn estrojn
 ###next-name-looks-similar
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Komencu malgrandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en malgranda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Komencu mezgrandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en mezgranda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Komencu grandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en granda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Komencu malgrandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj ŝarĝojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en malgranda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Komencu mezgrandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj ŝarĝojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en mezgranda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Komencu grandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj ŝarĝojn al viaj transportservoj.{}Portempe altigas staciajn pritaksojn en granda areo ĉirkaŭ la urbocentro.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Financi rekonstruadon de urba stratreto.{}Kaŭzas nemalmultan interrompaĵojn por stratveturila trafiko por ĝis 6 monatoj.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Financi rekonstruadon de urba stratreto.{}Kaŭzas nemalmultan interrompaĵojn por stratveturila trafiko por ĝis 6 minutoj.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Konstrui statuon honore al via kompanio.{}Porĉiame altigas staciajn pritaksojn en tiu ĉi urbo.{}{POP_COLOUR}Kosto: {CURRENCY_LONG}
@@ -4360,7 +4360,7 @@ STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Aviadile
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Aĉeti veturilon
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Aĉeti veturilon
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Aĉeti ŝipon
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Aĉeti Aviadilon
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Aĉeti aviadilon
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Aĉeti kaj readapti veturilon
@@ -4455,7 +4455,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Aŭtomat
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novaj Veturiloj
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Novaj Veturiloj
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novaj Ŝipoj
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Novaj Aviadiloj
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Novaj aviadiloj
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Aĉeti novan lokomotivon aŭ vagonon
@@ -4464,9 +4464,9 @@ STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Aĉeti n
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Aĉeti novan aviadilon
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonu Vagonaron
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonu Veturilon
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonu Ŝipon
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonu vagonaron
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonu veturilon
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonu ŝipon
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonu aviadilon
 
 ###length VEHICLE_TYPES
@@ -4680,8 +4680,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi str
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomi ŝipon
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomi aviadilon
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} jaro{P "" j} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} jaro{P "" j} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} jaro{P "" j} (vivtempo: {COMMA} jaro{P "" j})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} jaro{P "" j} (vivtempo: {COMMA} jaro{P "" j})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}{CURRENCY_LONG}/jaro
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}{CURRENCY_LONG}/periodo
 
@@ -4798,10 +4798,10 @@ STR_ORDER_GO_VIA                                                :Iru laŭ
 STR_ORDER_GO_NON_STOP_VIA                                       :Iru senhalte laŭ
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ŝanĝi la haltagon de la emfazita ordono
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Ŝarĝu ĝis plena ajnan kargon
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Ŝarĝu plene ajnan
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Ŝarĝu se havebla
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Ŝarĝu ĝis plena ĉiujn kargojn
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Ŝarĝu ĝis plena ajnan kargon
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Ŝarĝu plene ĉiujn ŝarĝojn
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Ŝarĝu plene ajnan ŝarĝon
 STR_ORDER_DROP_NO_LOADING                                       :Ne ŝarĝu
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ŝanĝi la ŝarĝagon de la emfazita ordono
 
@@ -4819,9 +4819,9 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elektu a
 STR_ORDER_DROP_REFIT_AUTO                                       :Malŝanĝa ŝarĝo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Haveblaj ŝarĝoj
 
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ĉiam iru.
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ĉiam iru
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Prizorgu se necesas.
-STR_ORDER_DROP_HALT_DEPOT                                       :Haltu.
+STR_ORDER_DROP_HALT_DEPOT                                       :Haltu
 STR_ORDER_DROP_UNBUNCH                                          :Distancigi
 
 # Depot action tooltips, one per vehicle type
@@ -4874,7 +4874,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Iru al la plej 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Iru al la plej proksima hangaro
 STR_ORDER_CONDITIONAL                                           :Kondiĉe transsalti ordonon
 STR_ORDER_SHARE                                                 :Kunhavu ordonojn
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo. Stir+Klaku sur la stacion por ordono 'plenŝargu ia kargo', sur la vojpunkto por maligi la agordon 'ne haltu defaŭlte', aŭ sur veturiltenejo por ordono 'distancigi'. Klaku sur alia veturilo por kopii ties ordonojn, aŭ Stir+Klaku por kunhavigi ordonojn. Veturilteneja ordono malebligas aŭtomatan prizorgadon de la veturilo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo. Stir+Klaku sur la stacion por ordono 'ŝarĝu plene ajnan ŝarĝon', sur la vojpunkto por maligi la agordon 'ne haltu defaŭlte', aŭ sur veturiltenejo por ordono 'distancigi'. Klaku sur alia veturilo por kopii ties ordonojn, aŭ Stir+Klaku por kunhavigi ordonojn. Veturilteneja ordono malebligas aŭtomatan prizorgadon de la veturilo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Montri ĉiujn veturilojn, kiuj dividas ĉi tiun planon
 
@@ -4906,25 +4906,25 @@ STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{R
 
 STR_ORDER_IMPLICIT                                              :{SPACE}(Aŭtomata)
 
-STR_ORDER_FULL_LOAD                                             :{SPACE}(Plena ŝarĝo)
-STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Ŝarĝu ĝis plena ajnan kargon)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Ŝarĝu plene)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Ŝarĝu plene ajnan ŝarĝon)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Ne ŝarĝu)
-STR_ORDER_UNLOAD                                                :{SPACE}(Malŝarĝu kaj prenu kargon)
+STR_ORDER_UNLOAD                                                :{SPACE}(Malŝarĝu kaj prenu ŝarĝon)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Malŝarĝu kaj atendu plenan ŝarĝon)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Malŝarĝu kaj atendu ajnan plenan ŝarĝon)
 STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Malŝarĝu kaj foriru malplena)
-STR_ORDER_TRANSFER                                              :{SPACE}(Transigu kaj prenu kargon)
+STR_ORDER_TRANSFER                                              :{SPACE}(Transigu kaj prenu ŝarĝon)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transigu kaj atendu plenan ŝarĝon)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transigu kaj atendu ajnan plenan ŝarĝon)
 STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transigu kaj foriru malplena)
-STR_ORDER_NO_UNLOAD                                             :{SPACE}(Ne malŝarĝu kaj prenu kargon)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Ne malŝarĝu kaj prenu ŝarĝon)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Ne malŝarĝu kaj atendu plenan ŝarĝon)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Ne malŝarĝu kaj atendu ajnan plenan ŝarĝon)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Ne malŝarĝu kaj ne ŝarĝu)
 
 STR_ORDER_AUTO_REFIT                                            :(Readaptu por {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Plene ŝarĝi, kun readapto por {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Plene ŝarĝi ian tipon, kun readapto por {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Ŝarĝu plene, kun readapto por {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Ŝarĝu plene ajnan ŝarĝon, kun readapto por {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Malŝarĝu kaj prenu ŝarĝojn, kun readapto por {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Malŝarĝu kaj atendu por la plena ŝarĝo, kun readapto por {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Malŝarĝu kaj atendu por ian plenan ŝarĝon kun readapto por {STRING})
@@ -5368,7 +5368,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :malĝusta tenej
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :povas havi nur unu distancigan ordonon
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :ne povas uzi ordonojn "Ŝarĝi ĝis plena", kiam veturilo havas ordonon distancigi
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :ne povas uzi ordonojn "Ŝarĝu plene", kiam veturilo havas ordonon distancigi
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :ne povas distancigi veturilojn, kiuj havas ordonon "Ŝarĝi ĝis plena"
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :ne povas uzi kondiĉajn ordonojn, kiam veturilo havas ordonon distancigi
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :ne povas distancigi veturilojn, kiuj havas kondiĉan ordonon
@@ -5708,7 +5708,7 @@ STR_INDUSTRY_NAME_COLA_WELLS                                    :Kolafonto
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Ludilvendejo
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Ludilfarejo
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastikfontanaro
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Farejo de Amuzaj Trinkaĵoj
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Refreŝigaĵejo
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Vezikgenerilo
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Tofeminejo
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sukerminejo
@@ -5811,7 +5811,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Kolavagono
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Dolĉaĵvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Ludilvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Baterivagono
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Amuztrinkaĵvagono
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Refreŝigaĵvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastikvagono
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektro)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektro)
@@ -5841,7 +5841,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Kolavagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Dolĉaĵvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Ludilvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Baterivagono
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Amuztrinkaĵvagono
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Refreŝigaĵvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastikvagono
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Levjatano' (Elektro)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Ciklopo' (Eletro)
@@ -5873,7 +5873,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Kolavagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Dolĉaĵvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Ludilvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Baterivagono
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Amuztrinkaĵvagono
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Refreŝigaĵvagono
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastikvagono
 
 ###length 88
@@ -5956,9 +5956,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Dolĉaĵŝarĝa
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Bateriŝarĝaŭto "MightyMover"
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Bateriŝarĝaŭto "Powernaught"
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Bateriŝarĝaŭto "Wizzowow"
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Amuztrinkaĵŝarĝaŭto "MightyMover"
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Amuztrinkaĵŝarĝaŭto "Powernaught"
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Amuztrinkaĵŝarĝaŭto "Wizzowow"
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Refreŝigaĵŝarĝaŭto "MightyMover"
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Refreŝigaĵŝarĝaŭto "Powernaught"
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Refreŝigaĵŝarĝaŭto "Wizzowow"
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Plastikŝarĝaŭto "MightyMover"
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Plastikŝarĝaŭto "Powernaught"
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Plastikŝarĝaŭto "Wizzowow"
@@ -6040,19 +6040,19 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Buo
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Buo #{COMMA}
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :Vojpunkto {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Vojpunkto {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Vojpunkto de {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Vojpunkto #{1:COMMA} de {0:TOWN}
 
 ###length 6
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Vagonara Tenejo
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Vagonara Tenejo #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Stratveturila Tenejo
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Stratveturila Tenejo #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ŝipa Tenejo
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ŝipa Tenejo #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Vagonartenejo de {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Vagonartenejo #{1:COMMA} de {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Garaĝo de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Garaĝo #{1:COMMA} de {0:TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Ŝipgaraĝo de {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Ŝipgaraĝo #{1:COMMA} de {0:TOWN}
 ###next-name-looks-similar
 
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangaro
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangaro de {STATION}
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :nekonata stacio

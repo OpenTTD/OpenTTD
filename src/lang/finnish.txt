@@ -4575,8 +4575,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nimeä a
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nimeä laiva
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nimeä ilma-alus
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P si tta} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P si tta} (elinikä {COMMA} vuo{P si tta})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} (elinikä {COMMA} vuo{P si tta})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK} Käyttökustannukset: {LTBLUE}{CURRENCY_LONG}/vuosi
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY_LONG}/jakso
 
