@@ -4312,8 +4312,8 @@ STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Irkosto:
 STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Irkosto: {GOLD}{CURRENCY_LONG}/periodo
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapablo: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(transformebla)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Pripensite: {GOLD}{NUM}{BLACK} Vivlongo: {GOLD}{COMMA} jaro{P "" j}
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Pleja Fidebleco: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Disvolvigita je: {GOLD}{NUM}{BLACK} Vivlongo: {GOLD}{COMMA} jaro{P "" j}
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Pleja fidebleco: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}{BLACK} (Kosto de readapto: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pezo: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})

@@ -714,8 +714,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Leszállítva
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Várakozik
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Rakománytörténet
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Ellátás
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Előállított
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Elszállítva
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Leszállítva
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részletes teljesítményértékelés mutatása
 
@@ -4638,8 +4639,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Közúti
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Hajó átnevezése
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Repülőgép átnevezése
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} év ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} év (élettartam: {COMMA} év)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év (élettartam: {COMMA} év)
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Kor: {LTBLUE}{STRING}{BLACK} Üzemeltetés: {LTBLUE}{CURRENCY_LONG}/év
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Kor: {LTBLUE}{STRING}{BLACK} Üzemeltetés: {LTBLUE}{CURRENCY_LONG}/időszak
 
@@ -4653,6 +4654,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Idei has
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Idei haszon: {LTBLUE}{CURRENCY_LONG} (tavalyi: {CURRENCY_LONG}) {BLACK}Minimum teljesítmény: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Nyereség ebben az időszakban: {LTBLUE}{CURRENCY_LONG} (elmúlt időszakban: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Nyereség ebben az időszakban: {LTBLUE}{CURRENCY_LONG} (emúlt időszakban: {CURRENCY_LONG}) {BLACK}Min. teljesítmény: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}% (max: {COMMA}%) {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacitás: {LTBLUE}Nincs{STRING}
