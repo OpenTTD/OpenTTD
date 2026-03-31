@@ -14,6 +14,7 @@
 #include "gui.h"
 #include "industry.h"
 #include "league_base.h"
+#include "misc/history_func.hpp"
 #include "sortlist_type.h"
 #include "story_base.h"
 #include "strings_func.h"
@@ -82,7 +83,7 @@ private:
 	/** Sort the company league by performance history. @copydoc GUIList::Sorter */
 	static bool PerformanceSorter(const Company * const &a, const Company * const &b)
 	{
-		return b->old_economy[0].performance_history < a->old_economy[0].performance_history;
+		return GetHistory(b->economy, HISTORY_QUARTER, 0).performance_history < GetHistory(a->economy, HISTORY_QUARTER, 0).performance_history;
 	}
 
 public:
@@ -120,7 +121,7 @@ public:
 
 			DrawCompanyIcon(c->index, icon_rect.left, ir.top + icon_y_offset);
 
-			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(c->old_economy[0].performance_history)));
+			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(GetHistory(c->economy, HISTORY_QUARTER, 0).performance_history)));
 			ir.top += this->line_height;
 		}
 	}

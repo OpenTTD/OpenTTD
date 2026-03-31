@@ -8,6 +8,7 @@
 /** @file company_cmd.cpp Handling of companies. */
 
 #include "stdafx.h"
+#include "misc/history_func.hpp"
 #include "company_base.h"
 #include "company_func.h"
 #include "company_gui.h"
@@ -295,14 +296,14 @@ static void SubtractMoneyFromCompany(Company *c, const CommandCost &cost)
 	           1 << EXPENSES_ROADVEH_REVENUE  |
 	           1 << EXPENSES_AIRCRAFT_REVENUE |
 	           1 << EXPENSES_SHIP_REVENUE, cost.GetExpensesType())) {
-		c->cur_economy.income -= cost.GetCost();
+		c->economy[THIS_MONTH].income -= cost.GetCost();
 	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
 	                  1 << EXPENSES_PROPERTY     |
 	                  1 << EXPENSES_LOAN_INTEREST, cost.GetExpensesType())) {
-		c->cur_economy.expenses -= cost.GetCost();
+		c->economy[THIS_MONTH].expenses -= cost.GetCost();
 	}
 
 	InvalidateCompanyWindows(c);
@@ -747,9 +748,9 @@ static void HandleBankruptcyTakeover(Company *c)
 	for (Company *c2 : Company::Iterate()) {
 		if (c2->bankrupt_asked.None() && // Don't ask companies going bankrupt themselves
 				!c->bankrupt_asked.Test(c2->index) &&
-				best_performance < c2->old_economy[1].performance_history &&
+				best_performance < GetHistory(c2->economy, HISTORY_QUARTER, 0).performance_history &&
 				CheckTakeoverVehicleLimit(c2->index, c->index)) {
-			best_performance = c2->old_economy[1].performance_history;
+			best_performance = GetHistory(c2->economy, HISTORY_QUARTER, 0).performance_history;
 			best = c2;
 		}
 	}
@@ -825,7 +826,10 @@ static const IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGam
 	if (_settings_client.gui.show_finances && _local_company != COMPANY_SPECTATOR) {
 		ShowCompanyFinances(_local_company);
 		Company *c = Company::Get(_local_company);
-		if (c->num_valid_stat_ent > 5 && c->old_economy[0].performance_history < c->old_economy[4].performance_history) {
+
+		CompanyEconomyEntry history1;
+		CompanyEconomyEntry history2;
+		if (GetHistory(c->economy, c->valid_history, HISTORY_YEAR, 1, history2) && GetHistory(c->economy, c->valid_history, HISTORY_YEAR, 0, history1) && history1.performance_history < history2.performance_history) {
 			if (_settings_client.sound.new_year) SndPlayFx(SND_01_BAD_YEAR);
 		} else {
 			if (_settings_client.sound.new_year) SndPlayFx(SND_00_GOOD_YEAR);

@@ -8,6 +8,7 @@
 /** @file afterload.cpp Code updating data after game load. */
 
 #include "../stdafx.h"
+#include "../misc/history_func.hpp"
 #include "../void_map.h"
 #include "../signs_base.h"
 #include "../depot_base.h"
@@ -1448,6 +1449,32 @@ bool AfterLoadGame()
 	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = GetCompanyRailTypes(c->index);
 		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
+	}
+
+	if (IsSavegameVersionBefore(SLV_EXTEND_COMPANY_ECONOMY)) {
+		int remainder = TimerGameEconomy::month % 3;
+		for (Company *c : Company::Iterate()) {
+			/* Backup quarterly history and clear, to convert it to monthly history. */
+			HistoryData<CompanyEconomyEntry> old_history = c->economy;
+			c->economy.fill({});
+
+			int start = c->num_valid_stat_ent; /* */
+			for (int month = 0; month != c->num_valid_stat_ent * 3 + remainder; ++month) {
+				int divisor = 3;
+
+				int old_slot = start - (month / 3);
+				assert(IsInsideMM(old_slot, 0, 25));
+
+				/* Rotate first, as we want to leave the current slot with data in it. */
+				UpdateValidHistory(c->valid_history, HISTORY_YEAR, TimerGameEconomy::month + month);
+				RotateHistory(c->economy, c->valid_history, HISTORY_YEAR, TimerGameEconomy::month + month);
+
+				c->economy[0] = old_history[old_slot];
+				c->economy[0].income /= divisor;
+				c->economy[0].expenses /= divisor;
+				for (auto &delivered_cargo : c->economy[0].delivered_cargo) delivered_cargo /= divisor;
+			}
+		}
 	}
 
 	AfterLoadStations();

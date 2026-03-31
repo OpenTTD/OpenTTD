@@ -11,6 +11,7 @@
 #include "script_company.hpp"
 #include "script_error.hpp"
 #include "script_companymode.hpp"
+#include "../../misc/history_func.hpp"
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../company_manager_face.h"
@@ -141,9 +142,9 @@
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.income;
+		return ::GetCurrentHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER).income;
 	}
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].income;
+	return ::GetHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER, quarter - 1).income;
 }
 
 /* static */ Money ScriptCompany::GetQuarterlyExpenses(ScriptCompany::CompanyID company, SQInteger quarter)
@@ -154,9 +155,9 @@
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.expenses;
+		return ::GetCurrentHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER).expenses;
 	}
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].expenses;
+	return ::GetHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER, quarter - 1).expenses;
 }
 
 /* static */ SQInteger ScriptCompany::GetQuarterlyCargoDelivered(ScriptCompany::CompanyID company, SQInteger quarter)
@@ -167,9 +168,9 @@
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>();
+		return ::GetCurrentHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER).delivered_cargo.GetSum<OverflowSafeInt32>();
 	}
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>();
+	return ::GetHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER, quarter - 1).delivered_cargo.GetSum<OverflowSafeInt32>();
 }
 
 /* static */ SQInteger ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, SQInteger quarter)
@@ -179,7 +180,7 @@
 	if (quarter > EARLIEST_QUARTER) return -1;
 	if (quarter <= CURRENT_QUARTER) return -1;
 
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].performance_history;
+	return ::GetHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER, quarter - 1).performance_history;
 }
 
 /* static */ Money ScriptCompany::GetQuarterlyCompanyValue(ScriptCompany::CompanyID company, SQInteger quarter)
@@ -192,7 +193,7 @@
 	if (quarter == CURRENT_QUARTER) {
 		return ::CalculateCompanyValue(::Company::Get(ScriptCompany::FromScriptCompanyID(company)));
 	}
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].company_value;
+	return ::GetHistory(::Company::Get(ScriptCompany::FromScriptCompanyID(company))->economy, HISTORY_QUARTER, quarter - 1).company_value;
 }
 
 

@@ -347,8 +347,47 @@ public:
 	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
+/** Saveload handler for company economy entries. */
 class SlCompanyEconomy : public DefaultSaveLoadHandler<SlCompanyEconomy, CompanyProperties> {
 public:
+	/** Saveload description for handler. */
+	static inline const SaveLoad description[] = {
+		SLE_VAR(CompanyEconomyEntry, income,              SLE_INT64),
+		SLE_VAR(CompanyEconomyEntry, expenses,            SLE_INT64),
+		SLE_VAR(CompanyEconomyEntry, company_value,       SLE_INT64),
+
+		SLE_ARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, NUM_CARGO),
+		SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
+	};
+	/** Compatibility saveload description for handler. */
+	static inline const SaveLoadCompatTable compat_description = {};
+
+	void Save(CompanyProperties *c) const override
+	{
+		SlSetStructListLength(std::size(c->economy));
+		for (auto &cee : c->economy) {
+			SlObject(&cee, this->GetDescription());
+		}
+	}
+
+	void Load(CompanyProperties *c) const override
+	{
+		size_t len = std::min(SlGetStructListLength(UINT32_MAX), std::size(c->economy));
+		for (auto &cee : std::span{std::begin(c->economy), len}) {
+			SlObject(&cee, this->GetLoadDescription());
+		}
+	}
+
+	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
+};
+
+/**
+ * Old Saveload handler for current company economy entry.
+ * @note Obsolete since SLV_EXTEND_COMPANY_ECONOMY.
+ */
+class SlCompanyCurEconomy : public DefaultSaveLoadHandler<SlCompanyCurEconomy, CompanyProperties> {
+public:
+	/** Saveload description for handler. */
 	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
 		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_INT64,                  SLV_2, SL_MAX_VERSION),
@@ -362,45 +401,37 @@ public:
 		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, NUM_CARGO,    SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 		    SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
 	};
+	/** Compatibility saveload description for handler. */
 	static inline const SaveLoadCompatTable compat_description = _company_economy_compat;
-
-	void Save(CompanyProperties *c) const override
-	{
-		SlObject(&c->cur_economy, this->GetDescription());
-	}
 
 	void Load(CompanyProperties *c) const override
 	{
-		SlObject(&c->cur_economy, this->GetLoadDescription());
+		SlObject(&c->economy[0], this->GetLoadDescription());
 	}
 
 	void FixPointers(CompanyProperties *c) const override
 	{
-		SlObject(&c->cur_economy, this->GetDescription());
+		SlObject(&c->economy[0], this->GetDescription());
 	}
 
 	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
-class SlCompanyOldEconomy : public SlCompanyEconomy {
+/**
+ * Old Saveload handler for old company economy entries.
+ * @note Obsolete since SLV_EXTEND_COMPANY_ECONOMY.
+ */
+class SlCompanyOldEconomy : public SlCompanyCurEconomy {
 public:
-	void Save(CompanyProperties *c) const override
-	{
-		SlSetStructListLength(c->num_valid_stat_ent);
-		for (int i = 0; i < c->num_valid_stat_ent; i++) {
-			SlObject(&c->old_economy[i], this->GetDescription());
-		}
-	}
-
 	void Load(CompanyProperties *c) const override
 	{
 		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
 			c->num_valid_stat_ent = (uint8_t)SlGetStructListLength(UINT8_MAX);
 		}
-		if (c->num_valid_stat_ent > std::size(c->old_economy)) SlErrorCorrupt("Too many old economy entries");
+		if (c->num_valid_stat_ent > std::size(c->economy)) SlErrorCorrupt("Too many old economy entries");
 
 		for (int i = 0; i < c->num_valid_stat_ent; i++) {
-			SlObject(&c->old_economy[i], this->GetLoadDescription());
+			SlObject(&c->economy[i + 1], this->GetLoadDescription());
 		}
 	}
 
@@ -544,8 +575,9 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, tree_limit,            SLE_UINT32,                SLV_175, SL_MAX_VERSION),
 	SLEG_STRUCT("settings", SlCompanySettings),
 	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SL_MIN_VERSION, SLV_107),
-	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
-	SLEG_STRUCTLIST("old_economy", SlCompanyOldEconomy),
+	SLEG_CONDSTRUCT("cur_economy", SlCompanyCurEconomy, SL_MIN_VERSION, SLV_EXTEND_COMPANY_ECONOMY),
+	SLEG_CONDSTRUCTLIST("old_economy", SlCompanyOldEconomy, SL_MIN_VERSION, SLV_EXTEND_COMPANY_ECONOMY),
+	SLEG_CONDSTRUCTLIST("economy", SlCompanyEconomy, SLV_EXTEND_COMPANY_ECONOMY, SL_MAX_VERSION),
 	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_34, SL_MAX_VERSION),
 };
 

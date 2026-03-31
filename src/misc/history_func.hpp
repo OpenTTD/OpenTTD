@@ -108,6 +108,33 @@ bool GetHistory(const HistoryData<T> &history, ValidHistoryMask valid_history, c
 }
 
 /**
+ * Helper to get history records and return the value, instead returning its validity.
+ * @param history History data to extract from.
+ * @param hr History range to get.
+ * @param age Age of data to get.
+ * @return Historical value for the period and age.
+ */
+template <typename T>
+T GetHistory(const HistoryData<T> &history, const HistoryRange &hr, uint age)
+{
+	T result;
+	GetHistory(history, 0, hr, age, result);
+	return result;
+}
+
+/**
+ * Get history for the current in-progress period.
+ * @param history History data to extract from.
+ * @param hr History range to get.
+ * @return Historical value for the period.
+ */
+template <typename T>
+T GetCurrentHistory(const HistoryData<T> &history, const HistoryRange &hr)
+{
+	return SumHistory<T>(std::span(std::begin(history), (TimerGameEconomy::month % hr.total_division) + 1));
+}
+
+/**
  * Fill some data with historical data.
  * @param history Historical data to fill from.
  * @param valid_history Mask of valid history records.

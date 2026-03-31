@@ -12,6 +12,7 @@
 #include "company_func.h"
 #include "command_func.h"
 #include "industry.h"
+#include "misc/history_func.hpp"
 #include "town.h"
 #include "news_func.h"
 #include "network/network.h"
@@ -185,7 +186,8 @@ Money CalculateHostileTakeoverValue(const Company *c)
 	}
 
 	for (int quarter = 0; quarter < 4; quarter++) {
-		value += std::max<Money>(c->old_economy[quarter].income + c->old_economy[quarter].expenses, 0) * 2;
+		auto history = GetHistory(c->economy, HISTORY_QUARTER, quarter);
+		value += std::max<Money>(history.income + history.expenses, 0) * 2;
 	}
 
 	return std::max<Money>(value, 1);
@@ -194,12 +196,12 @@ Money CalculateHostileTakeoverValue(const Company *c)
 /**
  * if update is set to true, the economy is updated with this score
  *  (also the house is updated, should only be true in the on-tick event)
- * @param update the economy with calculated score
- * @param c company been evaluated
+ * @param c Company being evaluated.
+ * @param update_history Whether to update the economy history.
+ * @param update_hq Whether to update the company HQ building.
  * @return actual score of this company
- *
  */
-int UpdateCompanyRatingAndValue(Company *c, bool update)
+int UpdateCompanyRatingAndValue(Company *c, bool update_history, bool update_hq)
 {
 	Owner owner = c->index;
 	int score = 0;
@@ -245,23 +247,35 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		_score_part[owner][ScoreID::Stations] = num;
 	}
 
-	/* Generate statistics depending on recent income statistics */
+	/* Generate statistics depending on recent income statistics (last 12 quarters). */
 	{
 		int numec = std::min<uint>(c->num_valid_stat_ent, 12u);
 		if (numec != 0) {
-			auto [min_income, max_income] = std::ranges::minmax(c->old_economy | std::views::take(numec) | std::views::transform([](const auto &ce) { return ce.income + ce.expenses; }));
+			Money min_income = INT64_MAX;
+			Money max_income = INT64_MIN;
+
+			for (int i = 0; i < numec; ++i) {
+				auto history = GetHistory(c->economy, HISTORY_QUARTER, i);
+				Money income = history.income + history.expenses;
+				min_income = std::min(min_income, income);
+				max_income = std::max(max_income, income);
+			}
 
 			if (min_income > 0) _score_part[owner][ScoreID::MinIncome] = min_income;
 			_score_part[owner][ScoreID::MaxIncome] = max_income;
 		}
 	}
 
-	/* Generate score depending on amount of transported cargo */
+	/* Generate score depending on amount of transported cargo (last 4 quarters) */
 	{
 		int numec = std::min<uint>(c->num_valid_stat_ent, 4u);
 		if (numec != 0) {
 			OverflowSafeInt64 total_delivered = 0;
-			for (auto &ce : c->old_economy | std::views::take(numec)) total_delivered += ce.delivered_cargo.GetSum<OverflowSafeInt64>();
+
+			for (int i = 0; i < numec; ++i) {
+				auto history = GetHistory(c->economy, HISTORY_QUARTER, i);
+				total_delivered += history.delivered_cargo.GetSum<OverflowSafeInt64>();
+			}
 
 			_score_part[owner][ScoreID::Delivered] = total_delivered;
 		}
@@ -269,7 +283,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	/* Generate score for variety of cargo */
 	{
-		_score_part[owner][ScoreID::Cargo] = c->old_economy[0].delivered_cargo.GetCount();
+		_score_part[owner][ScoreID::Cargo] = GetHistory(c->economy, HISTORY_QUARTER, 0).delivered_cargo.GetCount();
 	}
 
 	/* Generate score for company's money */
@@ -304,10 +318,11 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		if (total_score != SCORE_MAX) score = score * SCORE_MAX / total_score;
 	}
 
-	if (update) {
-		c->old_economy[0].performance_history = score;
-		UpdateCompanyHQ(c->location_of_HQ, score);
-		c->old_economy[0].company_value = CalculateCompanyValue(c);
+	if (update_history) {
+		/* History has already been rotated, so we need to fill in last month instead of this month. */
+		c->economy[LAST_MONTH].performance_history = score;
+		if (update_hq) UpdateCompanyHQ(c->location_of_HQ, score);
+		c->economy[LAST_MONTH].company_value = CalculateCompanyValue(c);
 	}
 
 	SetWindowDirty(WC_PERFORMANCE_DETAIL, 0);
@@ -635,6 +650,28 @@ static void CompanyCheckBankrupt(Company *c)
 }
 
 /**
+ * Sum history for company economy.
+ * @param history History to be summed.
+ * @return Summary data.
+ */
+template <>
+CompanyEconomyEntry SumHistory(std::span<const CompanyEconomyEntry> history)
+{
+	auto count = static_cast<int>(std::size(history));
+	CompanyEconomyEntry entry{};
+	entry.income = std::accumulate(std::begin(history), std::end(history), 0, [](Money r, const auto &cee) { return r + cee.income; });
+	entry.expenses = std::accumulate(std::begin(history), std::end(history), 0, [](Money r, const auto &cee) { return r + cee.expenses; });
+	entry.performance_history = std::accumulate(std::begin(history), std::end(history), 0, [](int32_t r, const auto &cee) { return r + cee.performance_history; }) / count;
+	entry.company_value = std::accumulate(std::begin(history), std::end(history), 0, [](Money r, const auto &cee) { return r + cee.company_value; }) / count;
+
+	for (CargoType c{}; c != NUM_CARGO; ++c) {
+		entry.delivered_cargo[c] = std::accumulate(std::begin(history), std::end(history), 0, [c](uint r, const auto &cee) { return r + cee.delivered_cargo[c]; });
+	}
+
+	return entry;
+}
+
+/**
  * Update the finances of all companies.
  * Pay for the stations, update the history graph, update ratings and company values, and deal with bankruptcy.
  */
@@ -668,19 +705,20 @@ static void CompaniesGenStatistics()
 		}
 	}
 
-	/* Only run the economic statistics and update company stats every 3rd economy month (1st of quarter). */
-	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, TimerGameEconomy::month)) return;
-
 	for (Company *c : Company::Iterate()) {
-		/* Drop the oldest history off the end */
-		std::copy_backward(c->old_economy.data(), c->old_economy.data() + MAX_HISTORY_QUARTERS - 1, c->old_economy.data() + MAX_HISTORY_QUARTERS);
-		c->old_economy[0] = c->cur_economy;
-		c->cur_economy = {};
+		UpdateValidHistory(c->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
+		RotateHistory(c->economy, c->valid_history, HISTORY_YEAR, TimerGameEconomy::month);
 
-		if (c->num_valid_stat_ent != MAX_HISTORY_QUARTERS) c->num_valid_stat_ent++;
+		/* Only run the economic statistics and update company stats every 3rd economy month (1st of quarter). */
+		bool update_quarter = HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, TimerGameEconomy::month);
 
-		UpdateCompanyRatingAndValue(c, true);
-		if (c->block_preview != 0) c->block_preview--;
+		if (update_quarter && c->num_valid_stat_ent != c->economy.size()) c->num_valid_stat_ent++;
+
+		UpdateCompanyRatingAndValue(c, true, update_quarter);
+
+		if (update_quarter) {
+			if (c->block_preview != 0) c->block_preview--;
+		}
 	}
 
 	SetWindowDirty(WC_INCOME_GRAPH, 0);
@@ -1100,7 +1138,7 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 	}
 
 	/* Update company statistics */
-	company->cur_economy.delivered_cargo[cargo_type] += accepted_total;
+	company->economy[THIS_MONTH].delivered_cargo[cargo_type] += accepted_total;
 
 	/* Increase town's counter for town effects */
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);

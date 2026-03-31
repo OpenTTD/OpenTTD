@@ -847,6 +847,10 @@ public:
 
 	void InitializeWindow(WindowNumber number)
 	{
+		this->scales = TimerGameEconomy::UsingWallclockUnits() ? MONTHLY_SCALE_WALLCLOCK : MONTHLY_SCALE_CALENDAR;
+		this->month_increment = this->scales[this->selected_scale].month_increment;
+		this->x_values_increment = this->scales[this->selected_scale].x_values_increment;
+
 		/* Initialise the dataset */
 		this->UpdateStatistics(true);
 
@@ -867,26 +871,21 @@ public:
 			if (!Company::IsValidID(c)) excluded_companies.Set(c);
 		}
 
-		uint8_t nums = 0;
-		for (const Company *c : Company::Iterate()) {
-			nums = std::min(this->num_vert_lines, std::max(nums, c->num_valid_stat_ent));
-		}
-
-		int mo = (TimerGameEconomy::month / this->month_increment - nums) * this->month_increment;
+		int mo = (TimerGameEconomy::month / this->month_increment - this->num_vert_lines) * this->month_increment;
 		auto yr = TimerGameEconomy::year;
 		while (mo < 0) {
 			yr--;
 			mo += 12;
 		}
 
-		if (!initialize && this->excluded_data == excluded_companies.base() && this->num_on_x_axis == nums &&
+		if (!initialize && this->excluded_data == excluded_companies.base() && this->num_on_x_axis == this->num_vert_lines &&
 				this->year == yr && this->month == mo) {
 			/* There's no reason to get new stats */
 			return;
 		}
 
 		this->excluded_data = excluded_companies.base();
-		this->num_on_x_axis = nums;
+		this->num_on_x_axis = this->num_vert_lines;
 		this->year = yr;
 		this->month = mo;
 
@@ -899,26 +898,16 @@ public:
 			dataset.colour = GetColourGradient(c->colour, SHADE_LIGHTER);
 			dataset.exclude_bit = k.base();
 
-			for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
-				if (j >= c->num_valid_stat_ent) {
-					dataset.values[i] = INVALID_DATAPOINT;
-				} else {
-					/* Ensure we never assign INVALID_DATAPOINT, as that has another meaning.
-					 * Instead, use the value just under it. Hopefully nobody will notice. */
-					dataset.values[i] = std::min(GetGraphData(c, j), INVALID_DATAPOINT - 1);
-				}
-				i++;
-			}
+			this->GetGraphData(c, dataset);
 		}
 	}
 
 	/**
-	 * Get the data to show in the graph for a given company at a location along the X-axis.
+	 * Update the data to show in the graph for a given company at a location along the X-axis.
 	 * @param c The company.
-	 * @param j The location along the X-axis.
-	 * @return The value to show in the graph.
+	 * @param[out] ds The dataset to write to.
 	 */
-	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j) = 0;
+	virtual void GetGraphData(const Company *c, DataSet &ds) = 0;
 };
 
 
@@ -937,9 +926,9 @@ struct OperatingProfitGraphWindow : BaseCompanyGraphWindow {
 		this->InitializeWindow(window_number);
 	}
 
-	OverflowSafeInt64 GetGraphData(const Company *c, int j) override
+	void GetGraphData(const Company *c, DataSet &ds) override
 	{
-		return c->old_economy[j].income + c->old_economy[j].expenses;
+		FillFromHistory<GRAPH_NUM_MONTHS>(c->economy, c->valid_history, *this->scales[this->selected_scale].history_range, Filler{{ds}, [](const auto &cee) { return cee.income + cee.expenses; }});
 	}
 };
 
@@ -953,7 +942,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_operating_profit_wid
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GRAPH_BACKGROUND),
-		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 160), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_TOGGLE_RANGE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_SELECT_SCALE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
@@ -990,9 +989,10 @@ struct IncomeGraphWindow : BaseCompanyGraphWindow {
 		this->InitializeWindow(window_number);
 	}
 
-	OverflowSafeInt64 GetGraphData(const Company *c, int j) override
+	void GetGraphData(const Company *c, DataSet &ds) override
 	{
-		return c->old_economy[j].income;
+		FillFromHistory<GRAPH_NUM_MONTHS>(c->economy, c->valid_history, *this->scales[this->selected_scale].history_range,
+			Filler{{ds}, &CompanyEconomyEntry::income});
 	}
 };
 
@@ -1006,7 +1006,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_income_graph_widgets
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GRAPH_BACKGROUND),
-		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_TOGGLE_RANGE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_SELECT_SCALE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
@@ -1041,9 +1051,10 @@ struct DeliveredCargoGraphWindow : BaseCompanyGraphWindow {
 		this->InitializeWindow(window_number);
 	}
 
-	OverflowSafeInt64 GetGraphData(const Company *c, int j) override
+	void GetGraphData(const Company *c, DataSet &ds) override
 	{
-		return c->old_economy[j].delivered_cargo.GetSum<OverflowSafeInt64>();
+		FillFromHistory<GRAPH_NUM_MONTHS>(c->economy, c->valid_history, *this->scales[this->selected_scale].history_range,
+			Filler{{ds}, [](const auto &cee) { return cee.delivered_cargo.template GetSum<OverflowSafeInt64>(); }});
 	}
 };
 
@@ -1057,7 +1068,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_delivered_cargo_grap
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GRAPH_BACKGROUND),
-		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_TOGGLE_RANGE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_SELECT_SCALE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
@@ -1092,9 +1113,10 @@ struct PerformanceHistoryGraphWindow : BaseCompanyGraphWindow {
 		this->InitializeWindow(window_number);
 	}
 
-	OverflowSafeInt64 GetGraphData(const Company *c, int j) override
+	void GetGraphData(const Company *c, DataSet &ds) override
 	{
-		return c->old_economy[j].performance_history;
+		FillFromHistory<GRAPH_NUM_MONTHS>(c->economy, c->valid_history, *this->scales[this->selected_scale].history_range,
+			Filler{{ds}, &CompanyEconomyEntry::performance_history});
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -1115,7 +1137,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_performance_history_
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GRAPH_BACKGROUND),
-		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_TOGGLE_RANGE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_SELECT_SCALE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
@@ -1150,9 +1182,10 @@ struct CompanyValueGraphWindow : BaseCompanyGraphWindow {
 		this->InitializeWindow(window_number);
 	}
 
-	OverflowSafeInt64 GetGraphData(const Company *c, int j) override
+	void GetGraphData(const Company *c, DataSet &ds) override
 	{
-		return c->old_economy[j].company_value;
+		FillFromHistory<GRAPH_NUM_MONTHS>(c->economy, c->valid_history, *this->scales[this->selected_scale].history_range,
+			Filler{{ds}, &CompanyEconomyEntry::company_value});
 	}
 };
 
@@ -1166,7 +1199,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_value_graph_
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GRAPH_BACKGROUND),
-		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_TOGGLE_RANGE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_SELECT_SCALE),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
@@ -1504,7 +1547,7 @@ struct PerformanceRatingDetailWindow : Window {
 		/* Update all company stats with the current data
 		 * (this is because _score_info is not saved to a savegame) */
 		for (Company *c : Company::Iterate()) {
-			UpdateCompanyRatingAndValue(c, false);
+			UpdateCompanyRatingAndValue(c, false, false);
 		}
 
 		this->timeout = Ticks::DAY_TICKS * 5;
@@ -1758,7 +1801,7 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 	{
 		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_INDUSTRY_CAPTION, this->window_number);
 
-		return this->Window::GetWidgetString(widget, stringid);
+		return this->BaseCargoGraphWindow::GetWidgetString(widget, stringid);
 	}
 
 	void UpdateStatistics(bool initialize) override

@@ -11,6 +11,7 @@
 #include "../strings_func.h"
 #include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_calendar.h"
+#include "../misc/history_func.hpp"
 #include "core/network_game_info.h"
 #include "network_admin.h"
 #include "network_base.h"
@@ -419,13 +420,14 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 		p->Send_uint64(company->money);
 		p->Send_uint64(company->current_loan);
 		p->Send_uint64(income);
-		p->Send_uint16(static_cast<uint16_t>(std::min<uint64_t>(UINT16_MAX, company->cur_economy.delivered_cargo.GetSum<OverflowSafeInt64>())));
+		p->Send_uint16(static_cast<uint16_t>(std::min<uint64_t>(UINT16_MAX, GetCurrentHistory(company->economy, HISTORY_QUARTER).delivered_cargo.GetSum<OverflowSafeInt64>())));
 
 		/* Send stats for the last 2 quarters. */
 		for (uint i = 0; i < 2; i++) {
-			p->Send_uint64(company->old_economy[i].company_value);
-			p->Send_uint16(company->old_economy[i].performance_history);
-			p->Send_uint16(static_cast<uint16_t>(std::min<uint64_t>(UINT16_MAX, company->old_economy[i].delivered_cargo.GetSum<OverflowSafeInt64>())));
+			auto history = GetHistory(company->economy, HISTORY_QUARTER, i);
+			p->Send_uint64(history.company_value);
+			p->Send_uint16(history.performance_history);
+			p->Send_uint16(static_cast<uint16_t>(std::min<uint64_t>(UINT16_MAX, history.delivered_cargo.GetSum<OverflowSafeInt64>())));
 		}
 
 		this->SendPacket(std::move(p));

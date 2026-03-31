@@ -28,7 +28,7 @@ extern Economy _economy;
 /** Prices and also the fractional part. */
 extern Prices _price;
 
-int UpdateCompanyRatingAndValue(Company *c, bool update);
+int UpdateCompanyRatingAndValue(Company *c, bool update_history, bool update_hq);
 void StartupIndustryDailyChanges(bool init_counter);
 
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, uint16_t transit_periods, CargoType cargo_type);

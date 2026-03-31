@@ -450,7 +450,7 @@ static bool FixTTOEngines()
 static void FixTTOCompanies()
 {
 	for (Company *c : Company::Iterate()) {
-		c->cur_economy.company_value = CalculateCompanyValue(c); // company value history is zeroed
+		c->economy[THIS_MONTH].company_value = CalculateCompanyValue(c); // company value history is zeroed
 	}
 }
 
@@ -931,17 +931,12 @@ static bool LoadOldCompanyEconomy(LoadgameState &ls, int)
 {
 	Company *c = Company::Get(_current_company_id);
 
-	if (!LoadChunk(ls, &c->cur_economy, _company_economy_chunk)) return false;
+	for (uint i = 0; i < 25; i++) {
+		if (!LoadChunk(ls, &c->economy[i], _company_economy_chunk)) return false;
 
-	/* Don't ask, but the number in TTD(Patch) are inverted to OpenTTD */
-	c->cur_economy.income   = -c->cur_economy.income;
-	c->cur_economy.expenses = -c->cur_economy.expenses;
-
-	for (uint i = 0; i < 24; i++) {
-		if (!LoadChunk(ls, &c->old_economy[i], _company_economy_chunk)) return false;
-
-		c->old_economy[i].income   = -c->old_economy[i].income;
-		c->old_economy[i].expenses = -c->old_economy[i].expenses;
+		/* Don't ask, but the number in TTD(Patch) are inverted to OpenTTD */
+		c->economy[i].income   = -c->economy[i].income;
+		c->economy[i].expenses = -c->economy[i].expenses;
 	}
 
 	return true;
