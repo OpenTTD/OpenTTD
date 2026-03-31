@@ -1343,6 +1343,7 @@ public:
 				break;
 
 			case OrderConditionVariable::Reliability:
+			case OrderConditionVariable::MaxReliability:
 			case OrderConditionVariable::LoadPercentage:
 				value = Clamp(*value, 0, 100);
 				break;
