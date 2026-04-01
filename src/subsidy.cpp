@@ -305,10 +305,7 @@ bool FindSubsidyTownCargoRoute()
 	}
 
 	/* Avoid using invalid NewGRF cargoes. */
-	if (!CargoSpec::Get(cargo_type)->IsValid() ||
-			_settings_game.linkgraph.GetDistributionType(cargo_type) != DistributionType::Manual) {
-		return false;
-	}
+	if (!CargoSpec::Get(cargo_type)->IsValid()) return false;
 
 	/* Quit if the percentage transported is large enough. */
 	if (src_town->GetPercentTransported(cargo_type) > SUBSIDY_MAX_PCT_TRANSPORTED) return false;
@@ -349,13 +346,8 @@ bool FindSubsidyIndustryCargoRoute()
 	total = it->history[LAST_MONTH].production;
 
 	/* Quit if no production in this industry
-	 * or if the pct transported is already large enough
-	 * or if the cargo is automatically distributed */
-	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED ||
-			!IsValidCargoType(cargo_type) ||
-			_settings_game.linkgraph.GetDistributionType(cargo_type) != DistributionType::Manual) {
-		return false;
-	}
+	 * or if the pct transported is already large enough. */
+	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED || !IsValidCargoType(cargo_type)) return false;
 
 	return FindSubsidyCargoDestination(cargo_type, {src_ind->index, SourceType::Industry});
 }
@@ -454,13 +446,6 @@ static const IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGa
 	} else if (_settings_game.difficulty.subsidy_duration == 0) {
 		/* If subsidy duration is set to 0, subsidies are disabled, so bail out. */
 		return;
-	} else if (_settings_game.linkgraph.distribution_pax != DistributionType::Manual &&
-			   _settings_game.linkgraph.distribution_mail != DistributionType::Manual &&
-			   _settings_game.linkgraph.distribution_armoured != DistributionType::Manual &&
-			   _settings_game.linkgraph.distribution_default != DistributionType::Manual) {
-		/* Return early if there are no manually distributed cargoes and if we
-		 * don't need to invalidate the subsidies window. */
-		return;
 	}
 
 	bool passenger_subsidy = false;
@@ -469,7 +454,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGa
 
 	int random_chance = RandomRange(16);
 
-	if (random_chance < 2 && _settings_game.linkgraph.distribution_pax == DistributionType::Manual) {
+	if (random_chance < 2) {
 		/* There is a 1/8 chance each month of generating a passenger subsidy. */
 		int n = 1000;
 
