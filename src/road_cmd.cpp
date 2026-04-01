@@ -1859,7 +1859,7 @@ static void DrawTile_Road(TileInfo *ti)
 			bool default_gfx = relocation == 0;
 			if (default_gfx) {
 				if (rti->flags.Test(RoadTypeFlag::Catenary)) {
-					if (_loaded_newgrf_features.tram == TRAMWAY_REPLACE_DEPOT_WITH_TRACK && road_rt == INVALID_ROADTYPE && !rti->UsesOverlay()) {
+					if (_loaded_newgrf_features.tram == TramDepotReplacement::WithTrack && road_rt == INVALID_ROADTYPE && !rti->UsesOverlay()) {
 						/* Sprites with track only work for default tram */
 						relocation = SPR_TRAMWAY_DEPOT_WITH_TRACK - SPR_ROAD_DEPOT;
 						default_gfx = false;
@@ -1910,7 +1910,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 	bool default_gfx = relocation == 0;
 	if (default_gfx) {
 		if (rti->flags.Test(RoadTypeFlag::Catenary)) {
-			if (_loaded_newgrf_features.tram == TRAMWAY_REPLACE_DEPOT_WITH_TRACK && RoadTypeIsTram(rt) && !rti->UsesOverlay()) {
+			if (_loaded_newgrf_features.tram == TramDepotReplacement::WithTrack && RoadTypeIsTram(rt) && !rti->UsesOverlay()) {
 				/* Sprites with track only work for default tram */
 				relocation = SPR_TRAMWAY_DEPOT_WITH_TRACK - SPR_ROAD_DEPOT;
 				default_gfx = false;

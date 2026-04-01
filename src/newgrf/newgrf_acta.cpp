@@ -73,7 +73,7 @@ static void SpriteReplace(ByteReader &buf)
 			/* Shore sprites now located at different addresses.
 			 * So detect when the old ones get replaced. */
 			if (IsInsideMM(load_index, SPR_ORIGINALSHORE_START, SPR_ORIGINALSHORE_END + 1)) {
-				if (_loaded_newgrf_features.shore != SHORE_REPLACE_ACTION_5) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_A;
+				if (_loaded_newgrf_features.shore != ShoreReplacement::Action5) _loaded_newgrf_features.shore = ShoreReplacement::ActionA;
 			}
 		}
 	}
