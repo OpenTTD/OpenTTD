@@ -439,14 +439,29 @@ struct MainWindow : Window
 	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
 		if (widget != WID_M_VIEWPORT) return;
-		if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
-			bool in = wheel < 0;
 
-			/* When following, only change zoom - otherwise zoom to the cursor. */
-			if (this->viewport->follow_vehicle != VehicleID::Invalid()) {
-				DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, this);
+		if (_settings_client.gui.touchpad_panning) {
+			/* Touchpad-Modus: Zoomen nur mit gedrückter rechter Maustaste */
+			if (_right_button_down) {
+				ZoomInOrOutToCursorWindow(wheel < 0, this);
 			} else {
-				ZoomInOrOutToCursorWindow(in, this);
+				/* Panning: Wir nutzen die h_wheel/v_wheel Werte für die Bewegung */
+				Point delta = { (int)_cursor.h_wheel, (int)_cursor.v_wheel };
+				this->OnScroll(delta);
+				
+				/* Werte verbrauchen */
+				_cursor.v_wheel = 0;
+				_cursor.h_wheel = 0;
+			}
+		} else {
+			/* Standard OpenTTD Verhalten */
+			if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
+				bool in = wheel < 0;
+				if (this->viewport->follow_vehicle != VehicleID::Invalid()) {
+					DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, this);
+				} else {
+					ZoomInOrOutToCursorWindow(in, this);
+				}
 			}
 		}
 	}

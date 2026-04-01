@@ -128,8 +128,26 @@ public:
 	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
 		if (widget != WID_EV_VIEWPORT) return;
-		if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
-			ZoomInOrOutToCursorWindow(wheel < 0, this);
+
+		if (_settings_client.gui.touchpad_panning) {
+			/* Wenn die rechte Maustaste (oder 2-Finger-Tap) aktiv ist -> Zoom */
+			if (_right_button_down) {
+				ZoomInOrOutToCursorWindow(wheel < 0, this);
+			} else {
+				/* Touchpad Panning: Wir verschieben die Karte */
+				/* Wir nutzen die präzisen h_wheel/v_wheel Werte vom Treiber */
+				Point delta = { (int)_cursor.h_wheel, (int)_cursor.v_wheel };
+				this->OnScroll(delta);
+				
+				/* Wichtig: Die Werte verbrauchen, damit sie nicht mehrfach zählen */
+				_cursor.v_wheel = 0;
+				_cursor.h_wheel = 0;
+			}
+		} else {
+			/* Klassisches OpenTTD Verhalten */
+			if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
+				ZoomInOrOutToCursorWindow(wheel < 0, this);
+			}
 		}
 	}
 
