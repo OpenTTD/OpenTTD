@@ -413,7 +413,6 @@ bool VideoDriver_SDL_Base::PollEvent()
 			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
 			float vx, vy;
 
-			/* 1. Deltas aus dem Event extrahieren (Original-Logik für Kompatibilität) */
 #if SDL_VERSION_ATLEAST(2, 18, 0)
 			vx = ev.wheel.preciseX;
 			vy = ev.wheel.preciseY;
@@ -423,33 +422,25 @@ bool VideoDriver_SDL_Base::PollEvent()
 #endif
 
 			bool panning_active = _settings_client.gui.touchpad_panning;
-			/* Wir zoomen, wenn Panning AUS ist ODER wenn Panning AN ist und die rechte Taste gehalten wird */
 			bool should_zoom = !panning_active || _right_button_down;
 
-			/* 2. Zoom-Rad (Legacy-Variable für den klassischen Zoom) */
 			if (should_zoom) {
-				if (ev.wheel.y > 0) {
-					_cursor.wheel--;
-				} else if (ev.wheel.y < 0) {
-					_cursor.wheel++;
-				}
+				if (ev.wheel.y > 0) _cursor.wheel--;
+				else if (ev.wheel.y < 0) _cursor.wheel++;
 			}
 
-			/* 3. 2D-Scroll/Pan Werte für h_wheel und v_wheel berechnen */
 			float multiplier = SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
 
 			if (panning_active && should_zoom) {
-				/* Spezialfall: Wenn wir gerade zoomen, setzen wir die Verschiebungs-Werte auf 0,
-				 * damit die Karte unter dem Cursor beim Zoomen nicht wegspringt. */
 				_cursor.v_wheel = 0;
 				_cursor.h_wheel = 0;
 			} else {
-				/* Normalfall oder Panning-Bewegung: Werte addieren */
 				_cursor.v_wheel -= vy * multiplier;
 				_cursor.h_wheel += vx * multiplier;
 			}
 
-			_cursor.wheel_moved = true;
+			_cursor.wheel_moved = true; 
+			/* HandleMouseEvents() HIER ENTFERNT -> Fixes Keyboard Lag */
 			break;
 		}
 

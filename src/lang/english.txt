@@ -1702,6 +1702,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap or when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 
 STR_CONFIG_SETTING_TOUCHPAD_PANNING                             :Touchpad Panning (Two-Finger-Scroll to move map)
+STR_CONFIG_SETTING_TOUCHPAD_PANNING_HELPTEXT                    :When enabled, two-finger scrolling on a touchpad will pan the map instead of zooming. Hold the right mouse button while scrolling to zoom.
 
 STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Traditional toolbar menu selection behaviour: {STRING2}
 STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Choose selection behaviour of toolbar menus. If off, toolbar menus will stay open until a selection is made. If on, toolbar menus will activate when the mouse button is released.
