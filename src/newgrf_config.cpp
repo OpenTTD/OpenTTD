@@ -294,7 +294,7 @@ static bool CalcGRFMD5Sum(GRFConfig &config, Subdirectory subdir)
 bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir)
 {
 	if (!FioCheckFileExists(config.filename, subdir)) {
-		config.status = GCS_NOT_FOUND;
+		config.status = GRFStatus::NotFound;
 		return false;
 	}
 
@@ -421,15 +421,15 @@ void ResetGRFConfig(bool defaults)
  * @param grfconfig GrfConfig to check
  * @return will return any of the following 3 values:<br>
  * <ul>
- * <li> GLC_ALL_GOOD: No problems occurred, all GRF files were found and loaded
- * <li> GLC_COMPATIBLE: For one or more GRF's no exact match was found, but a
+ * <li> GRFListCompatibility::AllGood: No problems occurred, all GRF files were found and loaded
+ * <li> GRFListCompatibility::Compatible: For one or more GRF's no exact match was found, but a
  *     compatible GRF with the same grfid was found and used instead
- * <li> GLC_NOT_FOUND: For one or more GRF's no match was found at all
+ * <li> GRFListCompatibility::NotFound: For one or more GRF's no match was found at all
  * </ul>
  */
 GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 {
-	GRFListCompatibility res = GLC_ALL_GOOD;
+	GRFListCompatibility res = GRFListCompatibility::AllGood;
 
 	for (auto &c : grfconfig) {
 		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
@@ -446,15 +446,15 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 				}
 
 				/* Non-found has precedence over compatibility load */
-				if (res != GLC_NOT_FOUND) res = GLC_COMPATIBLE;
+				if (res != GRFListCompatibility::NotFound) res = GRFListCompatibility::Compatible;
 				goto compatible_grf;
 			}
 
 			/* No compatible grf was found, mark it as disabled */
 			Debug(grf, 0, "NewGRF {:08X} ({}) not found; checksum {}", std::byteswap(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 
-			c->status = GCS_NOT_FOUND;
-			res = GLC_NOT_FOUND;
+			c->status = GRFStatus::NotFound;
+			res = GRFListCompatibility::NotFound;
 		} else {
 compatible_grf:
 			Debug(grf, 1, "Loading GRF {:08X} from {}", std::byteswap(f->ident.grfid), f->filename);

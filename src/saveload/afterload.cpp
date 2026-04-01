@@ -366,7 +366,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 	message.reserve(1024);
 	message += "Loading your savegame caused OpenTTD to crash.\n";
 
-	_saveload_crash_with_missing_newgrfs = std::ranges::any_of(_grfconfig, [](const auto &c) { return c->flags.Test(GRFConfigFlag::Compatible) || c->status == GCS_NOT_FOUND; });
+	_saveload_crash_with_missing_newgrfs = std::ranges::any_of(_grfconfig, [](const auto &c) { return c->flags.Test(GRFConfigFlag::Compatible) || c->status == GRFStatus::NotFound; });
 
 	if (_saveload_crash_with_missing_newgrfs) {
 		message +=
@@ -388,7 +388,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 				format_append(message, "NewGRF {:08X} (checksum {}) not found.\n  Loaded NewGRF \"{}\" (checksum {}) with same GRF ID instead.\n",
 						std::byteswap(c->ident.grfid), FormatArrayAsHex(c->original_md5sum), c->filename, FormatArrayAsHex(replaced.md5sum));
 			}
-			if (c->status == GCS_NOT_FOUND) {
+			if (c->status == GRFStatus::NotFound) {
 				format_append(message, "NewGRF {:08X} ({}) not found; checksum {}.\n",
 						std::byteswap(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 			}
@@ -706,14 +706,14 @@ bool AfterLoadGame()
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList(_grfconfig);
 	for (const auto &c : _grfconfig) {
-		if (c->status == GCS_NOT_FOUND) {
+		if (c->status == GRFStatus::NotFound) {
 			_gamelog.GRFRemove(c->ident.grfid);
 		} else if (c->flags.Test(GRFConfigFlag::Compatible)) {
 			_gamelog.GRFCompatible(c->ident);
 		}
 	}
 
-	if (_networking && gcf_res != GLC_ALL_GOOD) {
+	if (_networking && gcf_res != GRFListCompatibility::AllGood) {
 		SetSaveLoadError(STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH);
 		/* Restore the signals */
 		ResetSignalHandlers();
@@ -721,8 +721,8 @@ bool AfterLoadGame()
 	}
 
 	switch (gcf_res) {
-		case GLC_COMPATIBLE: ShowErrorMessage(GetEncodedString(STR_NEWGRF_COMPATIBLE_LOAD_WARNING), {}, WL_CRITICAL); break;
-		case GLC_NOT_FOUND:  ShowErrorMessage(GetEncodedString(STR_NEWGRF_DISABLED_WARNING), {}, WL_CRITICAL); _pause_mode = PauseMode::Error; break;
+		case GRFListCompatibility::Compatible: ShowErrorMessage(GetEncodedString(STR_NEWGRF_COMPATIBLE_LOAD_WARNING), {}, WL_CRITICAL); break;
+		case GRFListCompatibility::NotFound:  ShowErrorMessage(GetEncodedString(STR_NEWGRF_DISABLED_WARNING), {}, WL_CRITICAL); _pause_mode = PauseMode::Error; break;
 		default: break;
 	}
 
@@ -2957,7 +2957,7 @@ bool AfterLoadGame()
 	/* When any NewGRF has been changed the availability of some vehicles might
 	 * have been changed too. e->company_avail must be set to 0 in that case
 	 * which is done by StartupEngines(). */
-	if (gcf_res != GLC_ALL_GOOD) StartupEngines();
+	if (gcf_res != GRFListCompatibility::AllGood) StartupEngines();
 
 	/* The road owner of standard road stops was not properly accounted for. */
 	if (IsSavegameVersionBefore(SLV_172)) {

@@ -626,7 +626,7 @@ public:
 				if (tr.top > tr.bottom) return;
 
 				/* NewGrf compatibility */
-				DrawString(tr, GetString(STR_SAVELOAD_DETAIL_GRFSTATUS, _load_check_data.grfconfig.empty() ? STR_NEWGRF_LIST_NONE : STR_NEWGRF_LIST_ALL_FOUND + _load_check_data.grf_compatibility));
+				DrawString(tr, GetString(STR_SAVELOAD_DETAIL_GRFSTATUS, _load_check_data.grfconfig.empty() ? STR_NEWGRF_LIST_NONE : STR_NEWGRF_LIST_ALL_FOUND + to_underlying(_load_check_data.grf_compatibility)));
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 			if (tr.top > tr.bottom) return;
@@ -719,7 +719,7 @@ public:
 				} else if (this->abstract_filetype == FT_TOWN_DATA) {
 					this->Close();
 					LoadTownData();
-				} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
+				} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GRFListCompatibility::NotFound || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
 					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 					ClearErrorMessages();
 					this->Close();
@@ -948,12 +948,12 @@ public:
 					case FT_SCENARIO: {
 						bool disabled = this->selected == nullptr || _load_check_data.HasErrors();
 						if (!_settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
-							disabled |= _load_check_data.HasNewGrfs() && _load_check_data.grf_compatibility == GLC_NOT_FOUND;
+							disabled |= _load_check_data.HasNewGrfs() && _load_check_data.grf_compatibility == GRFListCompatibility::NotFound;
 						}
 						this->SetWidgetDisabledState(WID_SL_LOAD_BUTTON, disabled);
 						this->SetWidgetDisabledState(WID_SL_NEWGRF_INFO, !_load_check_data.HasNewGrfs());
 						this->SetWidgetDisabledState(WID_SL_MISSING_NEWGRFS,
-								!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility == GLC_ALL_GOOD);
+								!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility == GRFListCompatibility::AllGood);
 						break;
 					}
 

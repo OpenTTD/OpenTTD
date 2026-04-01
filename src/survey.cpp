@@ -82,11 +82,11 @@
 #ifndef DOXYGEN_API
 
 NLOHMANN_JSON_SERIALIZE_ENUM(GRFStatus, {
-	{GRFStatus::GCS_UNKNOWN, "unknown"},
-	{GRFStatus::GCS_DISABLED, "disabled"},
-	{GRFStatus::GCS_NOT_FOUND, "not found"},
-	{GRFStatus::GCS_INITIALISED, "initialised"},
-	{GRFStatus::GCS_ACTIVATED, "activated"},
+	{GRFStatus::Unknown, "unknown"},
+	{GRFStatus::Disabled, "disabled"},
+	{GRFStatus::NotFound, "not found"},
+	{GRFStatus::Initialised, "initialised"},
+	{GRFStatus::Activated, "activated"},
 })
 
 NLOHMANN_JSON_SERIALIZE_ENUM(SocialIntegrationPlugin::State, {

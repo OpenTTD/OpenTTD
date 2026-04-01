@@ -1121,7 +1121,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 		/* Check if item is valid */
 		if (!FillGRFDetails(*c, is_static) || c->flags.Test(GRFConfigFlag::Invalid)) {
 			StringID reason;
-			if (c->status == GCS_NOT_FOUND) {
+			if (c->status == GRFStatus::NotFound) {
 				reason = STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND;
 			} else if (c->flags.Test(GRFConfigFlag::Unsafe)) {
 				reason = STR_CONFIG_ERROR_INVALID_GRF_UNSAFE;

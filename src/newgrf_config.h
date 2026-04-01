@@ -30,12 +30,12 @@ enum class GRFConfigFlag : uint8_t {
 using GRFConfigFlags = EnumBitSet<GRFConfigFlag, uint8_t>;
 
 /** Status of GRF */
-enum GRFStatus : uint8_t {
-	GCS_UNKNOWN,      ///< The status of this grf file is unknown
-	GCS_DISABLED,     ///< GRF file is disabled
-	GCS_NOT_FOUND,    ///< GRF file was not found in the local cache
-	GCS_INITIALISED,  ///< GRF file has been initialised
-	GCS_ACTIVATED,    ///< GRF file has been activated
+enum class GRFStatus : uint8_t {
+	Unknown, ///< The status of this grf file is unknown
+	Disabled, ///< GRF file is disabled
+	NotFound, ///< GRF file was not found in the local cache
+	Initialised, ///< GRF file has been initialised
+	Activated, ///< GRF file has been activated
 };
 
 /** Encountered GRF bugs */
@@ -49,10 +49,10 @@ enum class GRFBug : uint8_t {
 using GRFBugs = EnumBitSet<GRFBug, uint8_t>;
 
 /** Status of post-gameload GRF compatibility check */
-enum GRFListCompatibility : uint8_t {
-	GLC_ALL_GOOD,   ///< All GRF needed by game are present
-	GLC_COMPATIBLE, ///< Compatible (eg. the same ID, but different checksum) GRF found in at least one case
-	GLC_NOT_FOUND,  ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
+enum class GRFListCompatibility : uint8_t {
+	AllGood, ///< All GRF needed by game are present
+	Compatible, ///< Compatible (eg. the same ID, but different checksum) GRF found in at least one case
+	NotFound, ///< At least one GRF couldn't be found (higher priority than GRFListCompatibility::Compatible)
 };
 
 /** Information that can/has to be stored about a GRF's palette. */
@@ -119,10 +119,9 @@ struct GRFError {
 };
 
 /** The possible types of a newgrf parameter. */
-enum GRFParameterType : uint8_t {
-	PTYPE_UINT_ENUM, ///< The parameter allows a range of numbers, each of which can have a special name
-	PTYPE_BOOL,      ///< The parameter is either 0 or 1
-	PTYPE_END,       ///< Invalid parameter type
+enum class GRFParameterType : uint8_t {
+	UintEnum, ///< The parameter allows a range of numbers, each of which can have a special name
+	Bool, ///< The parameter is either 0 or 1
 };
 
 /** Information about one grf parameter. */
@@ -140,7 +139,7 @@ struct GRFParameterInfo {
 	uint32_t max_value = UINT32_MAX; ///< The maximal value of this parameter
 	uint32_t def_value = 0; ///< Default value of this parameter
 
-	GRFParameterType type = PTYPE_UINT_ENUM; ///< The type of this parameter
+	GRFParameterType type = GRFParameterType::UintEnum; ///< The type of this parameter
 
 	uint8_t param_nr; ///< GRF parameter to store content in
 	uint8_t first_bit = 0; ///< First bit to use in the GRF parameter
@@ -176,7 +175,7 @@ struct GRFConfig {
 	uint32_t version = 0; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
 	uint32_t min_loadable_version = 0; ///< NOSAVE: Minimum compatible version a NewGRF can define
 	GRFConfigFlags flags = {}; ///< NOSAVE: GCF_Flags, bitset
-	GRFStatus status = GCS_UNKNOWN; ///< NOSAVE: GRFStatus, enum
+	GRFStatus status = GRFStatus::Unknown; ///< NOSAVE: GRFStatus, enum
 	GRFBugs grf_bugs = {}; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
 	uint8_t num_valid_params = MAX_NUM_PARAMS; ///< NOSAVE: Number of valid parameters (action 0x14)
 	uint8_t palette = 0; ///< GRFPalette, bitset

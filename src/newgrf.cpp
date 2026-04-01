@@ -146,7 +146,7 @@ GRFError *DisableGrf(StringID message, GRFConfig *config)
 		file = _cur_gps.grffile;
 	}
 
-	config->status = GCS_DISABLED;
+	config->status = GRFStatus::Disabled;
 	if (file != nullptr) ClearTemporaryNewGRFData(file);
 	if (config == _cur_gps.grfconfig) _cur_gps.skip_sprites = -1;
 
@@ -1410,7 +1410,7 @@ void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdi
 	if (stage != GrfLoadingStage::FileScan && stage != GrfLoadingStage::SafetyScan && stage != GrfLoadingStage::LabelScan) {
 		_cur_gps.grffile = GetFileByFilename(filename);
 		if (_cur_gps.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
-		if (stage == GrfLoadingStage::Reserve && config.status != GCS_INITIALISED) return;
+		if (stage == GrfLoadingStage::Reserve && config.status != GRFStatus::Initialised) return;
 		if (stage == GrfLoadingStage::Activation && !config.flags.Test(GRFConfigFlag::Reserved)) return;
 	}
 
@@ -1802,7 +1802,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	 * have been enabled.
 	 */
 	for (const auto &c : _grfconfig) {
-		if (c->status != GCS_NOT_FOUND) c->status = GCS_UNKNOWN;
+		if (c->status != GRFStatus::NotFound) c->status = GRFStatus::Unknown;
 	}
 
 	_cur_gps.spriteid = load_index;
@@ -1814,7 +1814,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		/* Set activated grfs back to will-be-activated between reservation- and activation-stage.
 		 * This ensures that action7/9 conditions 0x06 - 0x0A work correctly. */
 		for (const auto &c : _grfconfig) {
-			if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
+			if (c->status == GRFStatus::Activated) c->status = GRFStatus::Initialised;
 		}
 
 		if (stage == GrfLoadingStage::Reserve) {
@@ -1833,13 +1833,13 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 		_cur_gps.stage = stage;
 		for (const auto &c : _grfconfig) {
-			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
+			if (c->status == GRFStatus::Disabled || c->status == GRFStatus::NotFound) continue;
 			if (stage > GrfLoadingStage::Init && c->flags.Test(GRFConfigFlag::InitOnly)) continue;
 
 			Subdirectory subdir = num_grfs < num_baseset ? BASESET_DIR : NEWGRF_DIR;
 			if (!FioCheckFileExists(c->filename, subdir)) {
 				Debug(grf, 0, "NewGRF file is missing '{}'; disabling", c->filename);
-				c->status = GCS_NOT_FOUND;
+				c->status = GRFStatus::NotFound;
 				continue;
 			}
 
@@ -1848,7 +1848,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 			if (!c->flags.Test(GRFConfigFlag::Static) && !c->flags.Test(GRFConfigFlag::System)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
 					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
-					c->status = GCS_DISABLED;
+					c->status = GRFStatus::Disabled;
 					c->errors.emplace_back(STR_NEWGRF_ERROR_MSG_FATAL, 0, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 					continue;
 				}

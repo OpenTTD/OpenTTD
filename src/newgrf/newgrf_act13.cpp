@@ -33,12 +33,12 @@ static void TranslateGRFStrings(ByteReader &buf)
 
 	uint32_t grfid = buf.ReadDWord();
 	const GRFConfig *c = GetGRFConfig(grfid);
-	if (c == nullptr || (c->status != GCS_INITIALISED && c->status != GCS_ACTIVATED)) {
+	if (c == nullptr || (c->status != GRFStatus::Initialised && c->status != GRFStatus::Activated)) {
 		GrfMsg(7, "TranslateGRFStrings: GRFID 0x{:08X} unknown, skipping action 13", std::byteswap(grfid));
 		return;
 	}
 
-	if (c->status == GCS_INITIALISED) {
+	if (c->status == GRFStatus::Initialised) {
 		/* If the file is not active but will be activated later, give an error
 		 * and disable this file. */
 		GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LOAD_AFTER);
