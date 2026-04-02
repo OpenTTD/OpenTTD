@@ -242,7 +242,9 @@ public:
 
 		/* If font is an absolute path to a ttf, try loading that first. */
 		int32_t index = 0;
-		if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
+		if (auto ptr = std::any_cast<int32_t>(&settings->os_handle)) {
+			index = *ptr;
+		}
 		FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
 
 		if (error != FT_Err_Ok) {
@@ -266,10 +268,10 @@ public:
 		return LoadFont(fs, face, font, GetFontCacheFontSize(fs));
 	}
 
-	bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) const override
+	bool FindFallbackFont(const std::string &language_isocode, class MissingGlyphSearcher *callback) const override
 	{
 #ifdef WITH_FONTCONFIG
-		if (FontConfigFindFallbackFont(settings, language_isocode, callback)) return true;
+		if (FontConfigFindFallbackFont(language_isocode, callback)) return true;
 #endif /* WITH_FONTCONFIG */
 
 		return false;

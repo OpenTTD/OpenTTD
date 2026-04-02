@@ -31,7 +31,6 @@
 #include "../../safeguards.h"
 
 struct EFCParam {
-	FontCacheSettings *settings;
 	LOCALESIGNATURE  locale;
 	MissingGlyphSearcher *callback;
 	std::vector<std::wstring> fonts;
@@ -58,7 +57,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	/* Don't use SYMBOL fonts */
 	if (logfont->elfLogFont.lfCharSet == SYMBOL_CHARSET) return 1;
 	/* Use monospaced fonts when asked for it. */
-	if (info->callback->Monospace() && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
+	if (info->callback->missing_fontsizes.Test(FS_MONO) && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
 	/* The font has to have at least one of the supported locales to be usable. */
 	auto check_bitfields = [&]() {
@@ -77,7 +76,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	char font_name[MAX_PATH];
 	convert_from_fs(logfont->elfFullName, font_name);
 
-	info->callback->SetFontNames(info->settings, font_name, &logfont->elfLogFont);
+	FontCache::AddFallback(info->callback->missing_fontsizes, font_name, logfont->elfLogFont);
 	if (info->callback->FindMissingGlyphs()) return 1;
 	Debug(fontcache, 1, "Fallback font: {}", font_name);
 	return 0; // stop enumerating
@@ -287,8 +286,8 @@ public:
 
 		/* If a GDI font description is present, e.g. from the automatic font
 		 * fallback search, use it. Otherwise, try to resolve it by font name. */
-		if (settings->os_handle != nullptr) {
-			logfont = *(const LOGFONT *)settings->os_handle;
+		if (auto ptr = std::any_cast<LOGFONT>(&settings->os_handle)) {
+			logfont = *ptr;
 		} else if (font.find('.') != std::string::npos) {
 			/* Might be a font file name, try load it. */
 			if (!TryLoadFontFromFile(font, logfont)) {
@@ -304,7 +303,7 @@ public:
 		return LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font);
 	}
 
-	bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) const override
+	bool FindFallbackFont(const std::string &language_isocode, MissingGlyphSearcher *callback) const override
 	{
 		Debug(fontcache, 1, "Trying fallback fonts");
 		EFCParam langInfo;
@@ -314,7 +313,6 @@ public:
 			Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={})", language_isocode);
 			return false;
 		}
-		langInfo.settings = settings;
 		langInfo.callback = callback;
 
 		LOGFONT font;

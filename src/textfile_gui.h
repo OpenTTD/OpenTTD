@@ -38,8 +38,6 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	void Reset() override;
 	FontSize DefaultSize() override;
 	std::optional<std::string_view> NextString() override;
-	bool Monospace() override;
-	void SetFontNames(FontCacheSettings *settings, std::string_view font_name, const void *os_data) override;
 	void ScrollToLine(size_t line);
 	bool IsTextWrapped() const;
 
