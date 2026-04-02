@@ -236,7 +236,7 @@ public:
 		return std::make_unique<CoreTextFontCache>(fs, std::move(font_ref), GetFontCacheFontSize(fs));
 	}
 
-	bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback) const override
+	bool FindFallbackFont(const std::string &language_isocode, MissingGlyphSearcher *callback) const override
 	{
 		/* Determine fallback font using CoreText. This uses the language isocode
 		 * to find a suitable font. CoreText is available from 10.5 onwards. */
@@ -282,7 +282,7 @@ public:
 				/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
 				if (symbolic_traits & kCTFontBoldTrait) continue;
 				/* Select monospaced fonts if asked for. */
-				if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) continue;
+				if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->missing_fontsizes.Test(FS_MONO)) continue;
 
 				/* Get font name. */
 				char buffer[128];
@@ -300,7 +300,7 @@ public:
 				if (name.starts_with(".") || name.starts_with("LastResort")) continue;
 
 				/* Save result. */
-				callback->SetFontNames(settings, name);
+				FontCache::AddFallback(callback->missing_fontsizes, name);
 				if (!callback->FindMissingGlyphs()) {
 					Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
 					result = true;
@@ -312,7 +312,7 @@ public:
 		if (!result) {
 			/* For some OS versions, the font 'Arial Unicode MS' does not report all languages it
 			 * supports. If we didn't find any other font, just try it, maybe we get lucky. */
-			callback->SetFontNames(settings, "Arial Unicode MS");
+			FontCache::AddFallback(callback->missing_fontsizes, "Arial Unicode MS");
 			result = !callback->FindMissingGlyphs();
 		}
 

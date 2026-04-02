@@ -46,16 +46,14 @@ FontCacheSettings _fcsettings;
 /**
  * We would like to have a fallback font as the current one
  * doesn't contain all characters we need.
- * This function must set all fonts of settings.
- * @param settings the settings to overwrite the fontname of.
  * @param language_isocode the language, e.g. en_GB.
  * @param callback The function to call to check for missing glyphs.
  * @return true if a font has been set, false otherwise.
  */
-/* static */ bool FontProviderManager::FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback)
+/* static */ bool FontProviderManager::FindFallbackFont(const std::string &language_isocode, MissingGlyphSearcher *callback)
 {
 	return std::ranges::any_of(FontProviderManager::GetProviders(),
-		[&](auto *provider) { return provider->FindFallbackFont(settings, language_isocode, callback); });
+		[&](auto *provider) { return provider->FindFallbackFont(language_isocode, callback); });
 }
 
 int FontCache::GetDefaultFontHeight(FontSize fs)
@@ -157,7 +155,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
  */
 static bool IsDefaultFont(const FontCacheSubSetting &setting)
 {
-	return setting.font.empty() && setting.os_handle == nullptr;
+	return setting.font.empty() && !setting.os_handle.has_value();
 }
 
 /**
@@ -229,6 +227,20 @@ std::string GetFontCacheFontName(FontSize fs)
 
 	fc->parent = std::move(FontCache::caches[fs]);
 	FontCache::caches[fs] = std::move(fc);
+}
+
+/**
+ * Add a fallback font, with optional OS-specific handle.
+ * @param fontsizes Fontsizes to add fallback to.
+ * @param name Name of font to add.
+ * @param os_handle OS-specific handle or data of font.
+ */
+/* static */ void FontCache::AddFallback(FontSizes fontsizes, std::string_view name, const std::any &os_handle)
+{
+	for (FontSize fs : fontsizes) {
+		GetFontCacheSubSetting(fs)->font = name;
+		GetFontCacheSubSetting(fs)->os_handle = os_handle;
+	}
 }
 
 /**
