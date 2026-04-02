@@ -393,6 +393,8 @@ bool VideoDriver_SDL_Base::PollEvent()
 			int32_t x = ev.motion.x;
 			int32_t y = ev.motion.y;
 
+			/* Original-Logik: Wenn fix_at aktiv ist (z.B. beim Panning),
+			 * wird der Zeiger am Monitor-Punkt festgenagelt. */
 			if (_cursor.fix_at) {
 				/* Get all queued mouse events now in case we have to warp the cursor. In the
 				 * end, we only care about the current mouse position and not bygone events. */
@@ -402,7 +404,12 @@ bool VideoDriver_SDL_Base::PollEvent()
 				}
 			}
 
+			/* Wir nutzen UpdateCursorPosition. Wenn diese Funktion 'true' zurückgibt,
+			 * heißt das: "Die Maus wurde bewegt, aber wir wollen sie an der alten 
+			 * Stelle behalten (Warping)". */
 			if (_cursor.UpdateCursorPosition(x, y)) {
+				/* DAS IST DAS FESTNAGELN:
+				 * Wir schicken den Zeiger des Betriebssystems sofort wieder zurück. */
 				SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
 			}
 			HandleMouseEvents();
@@ -410,6 +417,10 @@ bool VideoDriver_SDL_Base::PollEvent()
 		}
 
 		case SDL_MOUSEWHEEL: {
+			/* Der 'Zündfunke', den wir als funktionierend getestet haben */
+			if (ev.wheel.y > 0) _cursor.wheel--;
+			else if (ev.wheel.y < 0) _cursor.wheel++;
+
 			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
 			float vx, vy;
 
@@ -420,27 +431,12 @@ bool VideoDriver_SDL_Base::PollEvent()
 			vx = static_cast<float>(ev.wheel.x);
 			vy = static_cast<float>(ev.wheel.y);
 #endif
-
-			bool panning_active = _settings_client.gui.touchpad_panning;
-			bool should_zoom = !panning_active || _right_button_down;
-
-			if (should_zoom) {
-				if (ev.wheel.y > 0) _cursor.wheel--;
-				else if (ev.wheel.y < 0) _cursor.wheel++;
-			}
-
+			/* Wir füllen die echten Achsen mit dem Multiplikator aus den Settings */
 			float multiplier = SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+			_cursor.v_wheel -= vy * multiplier;
+			_cursor.h_wheel += vx * multiplier;
 
-			if (panning_active && should_zoom) {
-				_cursor.v_wheel = 0;
-				_cursor.h_wheel = 0;
-			} else {
-				_cursor.v_wheel -= vy * multiplier;
-				_cursor.h_wheel += vx * multiplier;
-			}
-
-			_cursor.wheel_moved = true; 
-			/* HandleMouseEvents() HIER ENTFERNT -> Fixes Keyboard Lag */
+			_cursor.wheel_moved = true;
 			break;
 		}
 

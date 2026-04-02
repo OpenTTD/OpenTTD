@@ -427,42 +427,55 @@ struct MainWindow : Window
 		return ES_HANDLED;
 	}
 
-	void OnScroll(Point delta) override
-	{
-		this->viewport->scrollpos_x += ScaleByZoom(delta.x, this->viewport->zoom);
-		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
-		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
-		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-		this->refresh_timeout.Reset();
-	}
-
 	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
 		if (widget != WID_M_VIEWPORT) return;
 
 		if (_settings_client.gui.touchpad_panning) {
-			if (_right_button_down) {
-				ZoomInOrOutToCursorWindow(wheel < 0, this);
-			} else {
-				/* Nur scrollen, wenn wir mindestens 1 vollen Pixel Bewegung haben */
-				int dx = (int)_cursor.h_wheel;
-				int dy = (int)_cursor.v_wheel;
+			/* EXAKT DEINE FUNKTIONIERENDE BASIS AUS DEM TEST */
+			int dx = (int)_cursor.h_wheel;
+			int dy = (int)_cursor.v_wheel;
 
-				if (dx != 0 || dy != 0) {
-					this->OnScroll({dx, dy});
-					_cursor.h_wheel -= (float)dx;
-					_cursor.v_wheel -= (float)dy;
-				}
+			if (dx != 0 || dy != 0) {
+				this->viewport->scrollpos_x += ScaleByZoom(dx, this->viewport->zoom);
+				this->viewport->scrollpos_y += ScaleByZoom(dy, this->viewport->zoom);
+				this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
+				this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+
+				_cursor.h_wheel -= (float)dx;
+				_cursor.v_wheel -= (float)dy;
+				this->SetDirty();
 			}
 		} else {
+			/* Originaler Zoom-Modus */
 			if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
-				bool in_zoom = wheel < 0;
-				if (this->viewport->follow_vehicle != VehicleID::Invalid()) {
-					DoZoomInOutWindow(in_zoom ? ZOOM_IN : ZOOM_OUT, this);
-				} else {
-					ZoomInOrOutToCursorWindow(in_zoom, this);
-				}
+				ZoomInOrOutToCursorWindow(wheel < 0, this);
 			}
+		}
+	}
+
+	void OnScroll(Point delta) override
+	{
+		if (_settings_client.gui.touchpad_panning) {
+			/* ZOOM-MODUS (RMB + Move) */
+			/* Hier nageln wir den Zeiger am Bildschirmpunkt fest */
+			_cursor.pos.x -= delta.x;
+			_cursor.pos.y -= delta.y;
+
+			static int zoom_acc = 0;
+			zoom_acc += delta.y;
+			if (abs(zoom_acc) > 20) {
+				DoZoomInOutWindow(zoom_acc < 0 ? ZOOM_IN : ZOOM_OUT, this);
+				zoom_acc = 0;
+			}
+		} else {
+			/* ORIGINAL-PANNING (RMB + Move) */
+			/* Hier greift die originale Fixierung automatisch durch die Engine */
+			this->viewport->scrollpos_x += ScaleByZoom(delta.x, this->viewport->zoom);
+			this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
+			this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
+			this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+			this->SetDirty();
 		}
 	}
 
