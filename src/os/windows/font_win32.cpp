@@ -270,14 +270,6 @@ class Win32FontCacheFactory : FontCacheFactory {
 public:
 	Win32FontCacheFactory() : FontCacheFactory("win32", "Win32 font loader") {}
 
-	/**
-	 * Loads the GDI font.
-	 * If a GDI font description is present, e.g. from the automatic font
-	 * fallback search, use it. Otherwise, try to resolve it by font name.
-	 * @param fs The font size to load.
-	 * @param fonttype The type of font that is being loaded.
-	 * @return FontCache of the font if loaded, or \c nullptr.
-	 */
 	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
@@ -293,6 +285,8 @@ public:
 		logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
 		logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;
 
+		/* If a GDI font description is present, e.g. from the automatic font
+		 * fallback search, use it. Otherwise, try to resolve it by font name. */
 		if (settings->os_handle != nullptr) {
 			logfont = *(const LOGFONT *)settings->os_handle;
 		} else if (font.find('.') != std::string::npos) {
@@ -348,6 +342,12 @@ private:
 		return std::make_unique<Win32FontCache>(fs, logfont, size);
 	}
 
+	/**
+	 * Try to load a font by filename.
+	 * @param font_name Filename to load.
+	 * @param[out] logfont OS handle to update if font is found.
+	 * @return true iff the font filename was found.
+	 */
 	static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 	{
 		wchar_t fontPath[MAX_PATH] = {};
