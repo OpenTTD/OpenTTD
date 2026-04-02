@@ -159,7 +159,7 @@ class SpriteFontCacheFactory : public FontCacheFactory {
 public:
 	SpriteFontCacheFactory() : FontCacheFactory("sprite", "Sprite font provider") {}
 
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool, const std::string &, const std::any &) const override
 	{
 		if (fonttype != FontType::Sprite) return nullptr;
 

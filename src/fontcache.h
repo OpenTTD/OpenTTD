@@ -221,7 +221,6 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 }
 
 uint GetFontCacheFontSize(FontSize fs);
-std::string GetFontCacheFontName(FontSize fs);
 
 bool GetFontAAState();
 void SetFont(FontSize fontsize, const std::string &font, uint size);
@@ -250,9 +249,12 @@ public:
 	 * Try loading a font with this factory.
 	 * @param fs Font size to load.
 	 * @param fonttype Font type requested.
+	 * @param search Set if searching for the font.
+	 * @param font_name Font name to load.
+	 * @param os_handle Font handle to load.
 	 * @return FontCache of the font if loaded, or nullptr.
 	 */
-	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const = 0;
+	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, const std::any &os_handle) const = 0;
 
 	/**
 	 * We would like to have a fallback font as the current one
@@ -266,7 +268,7 @@ public:
 
 class FontProviderManager : ProviderManager<FontCacheFactory> {
 public:
-	static std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype);
+	static std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, const std::any &os_handle = {});
 	static bool FindFallbackFont(const std::string &language_isocode, MissingGlyphSearcher *callback);
 };
 
