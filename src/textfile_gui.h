@@ -19,7 +19,7 @@
 std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, std::string_view filename);
 
 /** Window for displaying a textfile */
-struct TextfileWindow : public Window, MissingGlyphSearcher {
+struct TextfileWindow : public Window, BaseStringMissingGlyphSearcher {
 	TextfileType file_type{}; ///< Type of textfile to view.
 	Scrollbar *vscroll = nullptr; ///< Vertical scrollbar.
 	Scrollbar *hscroll = nullptr; ///< Horizontal scrollbar.

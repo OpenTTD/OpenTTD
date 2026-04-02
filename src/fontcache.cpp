@@ -247,6 +247,33 @@ static std::string GetFontCacheFontName(FontSize fs)
 }
 
 /**
+ * Test a fallback font, with optional OS-specific handle, for specific glyphs.
+ * @param fontsizes The fontsizes the font will be used for.
+ * @param glyphs Glyphs to search for.
+ * @param name Name of font to test.
+ * @param os_handle OS-specific handle or data of font.
+ * @return true iff the font can be used.
+ */
+/* static */ bool FontCache::TryFallback(FontSizes, const std::set<char32_t> &glyphs, const std::string &name, const std::any &os_handle)
+{
+	/* Load the font without registering it. The font size does not matter. */
+	auto fc = FontProviderManager::LoadFont(FS_NORMAL, FontType::TrueType, false, name, os_handle);
+	if (fc == nullptr) return false;
+
+	size_t matching_chars = 0;
+	for (const char32_t &c : glyphs) {
+		if (fc->MapCharToGlyph(c, false) != 0) ++matching_chars;
+	}
+
+	if (matching_chars < glyphs.size()) {
+		Debug(fontcache, 1, "Font \"{}\" misses {} glyphs", name, glyphs.size() - matching_chars);
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
  * @param fontsizes Font sizes to be initialised.
  */

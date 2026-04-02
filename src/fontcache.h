@@ -50,6 +50,8 @@ public:
 
 	static void AddFallback(FontSizes fontsizes, std::string_view name, const std::any &os_handle = {});
 
+	static bool TryFallback(FontSizes fontsizes, const std::set<char32_t> &glyphs, const std::string &name, const std::any &os_handle = {});
+
 	/**
 	 * Get the FontSize of the font.
 	 * @return The FontSize.
