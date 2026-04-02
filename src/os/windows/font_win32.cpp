@@ -269,14 +269,9 @@ class Win32FontCacheFactory : FontCacheFactory {
 public:
 	Win32FontCacheFactory() : FontCacheFactory("win32", "Win32 font loader") {}
 
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, const std::any &os_handle) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
-
-		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
-		std::string font = GetFontCacheFontName(fs);
-		if (font.empty()) return nullptr;
 
 		LOGFONT logfont{};
 		logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
@@ -286,21 +281,22 @@ public:
 
 		/* If a GDI font description is present, e.g. from the automatic font
 		 * fallback search, use it. Otherwise, try to resolve it by font name. */
-		if (auto ptr = std::any_cast<LOGFONT>(&settings->os_handle)) {
+		if (auto ptr = std::any_cast<LOGFONT>(&os_handle)) {
 			logfont = *ptr;
-		} else if (font.find('.') != std::string::npos) {
+		} else if (font_name.find('.') != std::string::npos) {
 			/* Might be a font file name, try load it. */
-			if (!TryLoadFontFromFile(font, logfont)) {
-				ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font, FontSizeToName(fs));
+			if (!TryLoadFontFromFile(font_name, logfont)) {
+				ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font_name, FontSizeToName(fs));
+				if (!search) return nullptr;
 			}
 		}
 
 		if (logfont.lfFaceName[0] == 0) {
-			logfont.lfWeight = StrContainsIgnoreCase(font, " bold") ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-			convert_to_fs(font, logfont.lfFaceName);
+			logfont.lfWeight = StrContainsIgnoreCase(font_name, " bold") ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+			convert_to_fs(font_name, logfont.lfFaceName);
 		}
 
-		return LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font);
+		return LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font_name);
 	}
 
 	bool FindFallbackFont(const std::string &language_isocode, MissingGlyphSearcher *callback) const override
