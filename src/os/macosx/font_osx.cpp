@@ -215,7 +215,7 @@ public:
 			* something, no matter the name. As such, we can't use it to check for existence.
 			* We instead query the list of all font descriptors that match the given name which
 			* does not do this stupid name fallback. */
-			CFAutoRelease<CTFontDescriptorRef> name_desc(CTFontDescriptorCreateWithNameAndSize(font_name.get(), 0.0));
+			CFAutoRelease<CTFontDescriptorRef> name_desc(CTFontDescriptorCreateWithNameAndSize(name.get(), 0.0));
 			CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void * const *>(&kCTFontNameAttribute)), 1, &kCFTypeSetCallBacks));
 			CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(name_desc.get(), mandatory_attribs.get()));
 
@@ -298,10 +298,10 @@ public:
 				if (name.starts_with(".") || name.starts_with("LastResort")) continue;
 
 				/* Save result. */
-				FontCache::AddFallback(callback->missing_fontsizes, name);
-				if (!callback->FindMissingGlyphs()) {
+				result = FontCache::TryFallback(callback->missing_fontsizes, callback->missing_glyphs, std::string{name});
+				if (result) {
+					FontCache::AddFallback(callback->missing_fontsizes, name);
 					Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
-					result = true;
 					break;
 				}
 			}
@@ -310,11 +310,12 @@ public:
 		if (!result) {
 			/* For some OS versions, the font 'Arial Unicode MS' does not report all languages it
 			 * supports. If we didn't find any other font, just try it, maybe we get lucky. */
-			FontCache::AddFallback(callback->missing_fontsizes, "Arial Unicode MS");
-			result = !callback->FindMissingGlyphs();
+			result = FontCache::TryFallback(callback->missing_fontsizes, callback->missing_glyphs, "Arial Unicode MS");
+			if (result) {
+				FontCache::AddFallback(callback->missing_fontsizes, "Arial Unicode MS");
+			}
 		}
 
-		callback->FindMissingGlyphs();
 		return result;
 	}
 
