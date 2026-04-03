@@ -1400,7 +1400,7 @@ void LoadFromConfig(bool startup)
 
 	/* Load basic settings only during bootstrap, load other settings not during bootstrap */
 	if (!startup) {
-		if (generic_version < IFV_LINKGRAPH_SECONDS) {
+		if (generic_version < IFV_LINKGRAPH_SECONDS && generic_ini.GetGroup("linkgraph") != nullptr) {
 			_settings_newgame.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
 			_settings_newgame.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 		}
