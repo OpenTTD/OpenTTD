@@ -2,21 +2,10 @@ name: Preview build
 
 on:
   workflow_call:
-    secrets:
-      PREVIEW_CLOUDFLARE_API_TOKEN:
-        description: API token to upload a preview to Cloudflare Pages
-        required: true
-      PREVIEW_CLOUDFLARE_ACCOUNT_ID:
-        description: Account ID to upload a preview to Cloudflare Pages
-        required: true
 
 jobs:
   preview:
     name: Build preview
-
-    environment:
-      name: preview
-      url: https://preview.openttd.org/pr${{ github.event.pull_request.number }}/
 
     runs-on: ubuntu-latest
     container:
@@ -97,16 +86,14 @@ jobs:
         cp build/openttd.js public/
         cp build/openttd.wasm public/
 
-        # Ensure we use the latest version of npm; the one we get with current
-        # emscripten doesn't allow running "npx wrangler" as root.
-        # Current emscripten can't install npm>=10.0.0 because node is too old.
-        npm install -g npm@9
+        mkdir pr
+        echo ${{ github.event.pull_request.number }} > ./pr/number
 
-    - name: Publish preview
-      uses: cloudflare/pages-action@v1
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v6
       with:
-        apiToken: ${{ secrets.PREVIEW_CLOUDFLARE_API_TOKEN }}
-        accountId: ${{ secrets.PREVIEW_CLOUDFLARE_ACCOUNT_ID }}
-        projectName: ${{ vars.PREVIEW_CLOUDFLARE_PROJECT_NAME }}
-        directory: public
-        branch: pr${{ github.event.pull_request.number }}
+        name: pr${{ github.event.pull_request.number }}
+        path: |
+          public
+          pr
+        retention-days: 1
