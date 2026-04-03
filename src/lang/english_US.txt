@@ -1722,10 +1722,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Control the sen
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Function of scrollwheel: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Enable scrolling with two-dimensional mouse-wheels
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Off
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :On screen keyboard: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Select the method to open the on screen keyboard for entering text into editboxes only using the pointing device. This is meant for small devices without actual keyboard

@@ -711,8 +711,9 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
 
 
 
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Сӳнтер
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Паннорамалани
 
 ###length 4
 

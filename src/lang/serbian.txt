@@ -1834,10 +1834,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroliše ose
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Uloga točkića na mišu: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Omogući skrolovanje sa dvodimenzionalnim točkićima na mišu
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Promena uvećanja terena
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Pomeranje terena
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nikakva
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Панoрaмисaње
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastatura na ekranu: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Odaberi način upotrebe tastature na ekranu za unos teksta u polja korištenjem samo pokazivača. Ovo je namenjeno malim uređajima bez fizičke tastature

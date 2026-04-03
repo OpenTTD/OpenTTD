@@ -1709,10 +1709,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlar la se
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Función de la rueda del ratón: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activar el desplazamiento del mapa con ratones de rueda bidimensional
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Enfocar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Desplazarse sobre el mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nada
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Desplazamiento
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado en pantalla: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Elegir el método para abrir el teclado en pantalla y escribir texto empleando solamente el puntero. Esta opción está pensada para dispositivos pequeños sin teclado físico

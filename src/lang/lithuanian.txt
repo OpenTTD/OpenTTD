@@ -1832,10 +1832,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Valdyti pelės 
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Pelės rutuliuko funkcija: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Įjungti judėjimą su dviejų krypčių pelės ratuku
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Artinti žemėlapį
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Žemėlapio slinktis
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :išjungta
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Slinkimas
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Ekraninė klaviatūra: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Pasirinkti ekraninės klaviatūros atvėrimo metodą. Ekraninė klaviatūra yra naudinga mažuose, neturinčiuose fizinės klaviatūros, įrenginiuose su lietimui jautriu ekranu.

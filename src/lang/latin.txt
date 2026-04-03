@@ -1636,10 +1636,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Eligere velocit
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Actio rotulae vagationis: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Sinere vagari rotulis muris volvendis
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Amplificare/retrahere tabulam
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Vagari tabulam
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nulla
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Claviatura in scrinio: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Eligere modum claviaturam aperiendi in scrinio ut verba scribantur modo a mure (vel instrumento simile). Magnopere utilis est machinis parvis sine claviaturis veris

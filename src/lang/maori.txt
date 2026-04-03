@@ -1721,10 +1721,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Tautuhitia te r
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Mahi a te wīra panuku: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Tukuna kia panuku ki ngā wīra kiore ahurua
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Topa i te mahere
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Panuku i te mahere
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Poko
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Papapātuhi ā mata: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tīpakona me pēwhea te huaki i te papa pātuhi ā mata mō te pātuhi e whakamahi ana i te mata anake. Mō ngā pūrere tēnei kāore he papapātuhi tūturu

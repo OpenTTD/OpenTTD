@@ -453,6 +453,12 @@ bool VideoDriver_SDL_Base::PollEvent()
 				case SDL_BUTTON_RIGHT:
 					_right_button_down = true;
 					_right_button_clicked = true;
+					/* Wir aktivieren das Festnageln nur im neuen Modus 3 */
+					if (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad) {
+						_cursor.fix_at = true;
+						/* MAUS-KÄFIG AKTIVIEREN: Verhindert das Verlassen des Fensters beim Zoomen */
+						SDL_SetWindowGrab(this->sdl_window, SDL_TRUE);
+					}
 					break;
 
 				default: break;
@@ -470,6 +476,14 @@ bool VideoDriver_SDL_Base::PollEvent()
 				_left_button_clicked = false;
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
 				_right_button_down = false;
+				/* Wir deaktivieren das Festnageln nur im neuen Modus 3 */
+				if (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad) {
+					/* 1. BEAMEN: Maus auf die letzte OpenTTD-Position zwingen */
+					SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
+					
+					SDL_SetWindowGrab(this->sdl_window, SDL_FALSE);
+					_cursor.fix_at = false;
+				}
 			}
 			HandleMouseEvents();
 			break;

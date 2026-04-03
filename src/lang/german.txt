@@ -1716,10 +1716,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Lege die Empfin
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funktion des Mausrads: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Erlaube Scrollen mit zweidimensionalem Mausrad
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Spielfeld vergrößern
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Hauptansicht verschieben
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Bildschirmtastatur: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wählen der Methode, um die Bildschirmtastatur für die Texteingabe in Eingabefeldern bei der Verwendung von Zeigegeräten zu aktivieren. Dieses ist für kleine Geräte ohne tatsächliche Tastatur gedacht

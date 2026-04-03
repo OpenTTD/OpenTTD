@@ -1815,10 +1815,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Έλεγχος 
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Λειτουργία ροδέλας κύλισης: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ενεργοποίηση κύλισης με δισδιάστατους τροχούς ποντικιών
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ζουμ στον χάρτη
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Μετακίνηση στον χάρτη
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Απενεργοποιημένη
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Μετατόπιση
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Πληκτρολόγιο στην οθόνη: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Επιλογή της μεθόδου για το άνοιγμα του πληκτρολογίου οθόνης για την εισαγωγή κειμένου σε κουτιά με τη χρήση μόνο της δεικτικής συσκευής. Αυτή η ρύθμιση προορίζεται για μικρότερες συσκευές χωρίς πραγματικό πληκτρολόγιο

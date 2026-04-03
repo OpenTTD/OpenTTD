@@ -2453,7 +2453,10 @@ static EventState HandleActiveWidget()
  */
 static EventState HandleViewportScroll()
 {
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
+	bool scrollwheel_panning = _cursor.wheel_moved && (
+		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap ||
+		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad
+	);
 
 	if (!_scrolling_viewport) return ES_NOT_HANDLED;
 
@@ -2462,7 +2465,7 @@ static EventState HandleViewportScroll()
 	 * outside of the window and should not left-mouse scroll anymore. */
 	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && _left_button_down))) {
+	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && _right_button_down) || scrollwheel_panning || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && _left_button_down))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		_last_scroll_window = nullptr;
@@ -2476,16 +2479,32 @@ static EventState HandleViewportScroll()
 		return ES_NOT_HANDLED;
 	}
 
+	/* ORIGINALER FALLBACK (für Smallmap und Panning ohne Touchpad-Modus) */
 	Point delta;
-	if (scrollwheel_scrolling) {
-		/* We are using scrollwheels for scrolling */
-		/* Use the integer part for movement */
-		delta.x = static_cast<int>(_cursor.h_wheel);
-		delta.y = static_cast<int>(_cursor.v_wheel);
-		/* Keep the fractional part so that subtle movement is accumulated */
-		float temp;
-		_cursor.v_wheel = std::modf(_cursor.v_wheel, &temp);
-		_cursor.h_wheel = std::modf(_cursor.h_wheel, &temp);
+	if (scrollwheel_panning) {
+		/* Wir berechnen das Delta aus den Rad-Daten */
+		Point delta = {static_cast<int>(_cursor.h_wheel), static_cast<int>(_cursor.v_wheel)};
+
+		/* Falls wir einen Viewport haben, verschieben wir die Karte */
+		if (_last_scroll_window->viewport != nullptr) {
+			/* Viewport-Fenster (Main, Vehicle, etc.) direkt schieben */
+			ViewportData &vp = *_last_scroll_window->viewport;
+			vp.scrollpos_x += ScaleByZoom(delta.x, vp.zoom);
+			vp.scrollpos_y += ScaleByZoom(delta.y, vp.zoom);
+			vp.dest_scrollpos_x = vp.scrollpos_x;
+			vp.dest_scrollpos_y = vp.scrollpos_y;
+			_last_scroll_window->SetDirty();
+		} else {
+			/* WICHTIG: Erlaubt Panning auf der Weltkarte (Smallmap) */
+			_last_scroll_window->OnScroll(delta);
+		}
+
+		/* WICHTIG: IMMER die Werte verbrauchen, um Freeze zu verhindern */
+		_cursor.v_wheel = 0;
+		_cursor.h_wheel = 0;
+		_cursor.wheel_moved = false;
+		return ES_HANDLED;
+
 	} else {
 		if (_settings_client.gui.scroll_mode != ViewportScrollMode::ViewportRMBFixed) {
 			delta.x = -_cursor.delta.x;
@@ -2891,8 +2910,16 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (HandleViewportScroll()     == ES_HANDLED) return;
 
 	HandleMouseOver();
+	
+	/* Panning ist aktiv bei State 1 (Original) oder State 3 (Touchpad) */
+	bool scrollwheel_scrolling = _cursor.wheel_moved && (
+		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap ||
+		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad
+	);
 
-	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
+	/* Fenster verschieben (LMB) hat Priorität vor Karten-Panning */
+	if (_dragging_window) scrollwheel_scrolling = false;
+
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	int x = _cursor.pos.x;
@@ -3034,6 +3061,37 @@ void HandleMouseEvents()
 		}
 	}
 
+	/* GLOBAL ZOOM INTERCEPTOR --- */
+	if (_right_button_down && _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad) {
+		static int zoom_acc = 0;
+		/* Wenn der Button gerade erst gedrückt wurde, Akkumulator leeren */
+		if (_right_button_clicked) {
+			zoom_acc = 0;
+			_right_button_clicked = false; // Event verbraucht
+		}
+
+		zoom_acc += _cursor.delta.y;
+
+		if (abs(zoom_acc) > 25) {
+			Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+			if (w != nullptr) {
+				/* Wir suchen das passende Widget für den Zoom-Befehl */
+				NWidgetBase *wid = w->nested_root->GetWidgetOfType(NWID_VIEWPORT);
+				if (wid == nullptr && w->window_class == WC_SMALLMAP) wid = w->nested_root->GetWidgetOfType(WWT_INSET);
+
+				if (wid != nullptr) w->OnMouseWheel(zoom_acc < 0 ? -1 : 1, wid->GetIndex());
+			}
+			zoom_acc = 0;
+		}
+
+		/* Bewegung verbrauchen, damit die Karte nicht zusätzlich wandert */
+		_cursor.delta.x = 0;
+		_cursor.delta.y = 0;
+		click = MC_NONE; 
+		/* Wir kehren NICHT zurück, sondern lassen die MouseLoop für andere Logik offen, 
+		 * aber löschen oben die Klicks für diesen Frame. */
+	}
+
 	if (click == MC_LEFT && _newgrf_debug_sprite_picker.mode == SPM_WAIT_CLICK) {
 		/* Mark whole screen dirty, and wait for the next realtime tick, when drawing is finished. */
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
@@ -3042,13 +3100,15 @@ void HandleMouseEvents()
 		_newgrf_debug_sprite_picker.mode = SPM_REDRAW;
 		MarkWholeScreenDirty();
 	} else {
+		/* Dies MUSS immer gerufen werden, damit LMB-Objekte und Fenster-Dragging funktionieren */
 		MouseLoop(click, mousewheel);
 	}
 
-	/* We have moved the mouse the required distance,
-	 * no need to move it at any later time. */
-	_cursor.delta.x = 0;
-	_cursor.delta.y = 0;
+	/* Delta-Cleanup NUR, wenn kein Lasso aktiv ist */
+	if (!_cursor.fix_at && !_scrolling_viewport) {
+		_cursor.delta.x = 0;
+		_cursor.delta.y = 0;
+	}
 }
 
 /**

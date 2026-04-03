@@ -128,25 +128,8 @@ public:
 	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
 		if (widget != WID_EV_VIEWPORT) return;
-
-		if (_settings_client.gui.touchpad_panning) {
-			if (_right_button_down) {
-				ZoomInOrOutToCursorWindow(wheel < 0, this);
-			} else {
-				/* Panning mit Erhalt der Nachkommastellen */
-				int dx = (int)_cursor.h_wheel;
-				int dy = (int)_cursor.v_wheel;
-
-				if (dx != 0 || dy != 0) {
-					this->OnScroll({dx, dy});
-					_cursor.h_wheel -= (float)dx;
-					_cursor.v_wheel -= (float)dy;
-				}
-			}
-		} else {
-			if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
-				ZoomInOrOutToCursorWindow(wheel < 0, this);
-			}
+		if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
+			ZoomInOrOutToCursorWindow(wheel < 0, this);
 		}
 	}
 

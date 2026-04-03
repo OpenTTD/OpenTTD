@@ -1723,10 +1723,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlo de sen
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Função da roda do rato: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ativar descolamento com rodas de rato bidimensionais
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Percorrer mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Deslocamento
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado no ecrã: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecione o método de abertura de teclado virtual para escrita de texto em caixas, usando apenas o cursor. Esta opção destina-se principalmente para equipamentos pequenos sem teclado físico.

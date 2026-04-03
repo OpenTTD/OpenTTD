@@ -1724,10 +1724,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroller føl
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Rullehjulets funksjon: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Tillat panorering med todimensjonale musehjul
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kartet
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Panorer kartet
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Av
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorering
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skjermtastatur: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Velg metode for å åpne skjermtastaturet for inntasting av tekst i tekstbokser ved hjelp av pekeenheten. Dette er ment for små enheter uten fysisk tastatur

@@ -1813,10 +1813,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Agordu la sente
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcio de skrol-rado: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ebligi rulumadon per du-dimensiaj musradoj
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zomi mapon
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skroli mapon
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Malaktiva
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Movado
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Enekrana klavaro: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Elektu metodon por malfermi la surekranan klavaron por enigi tekston en tekstujojn uzante nur indikilon. Tio ĉi estas intencita por malgrandaj aparatoj sen vera klavaro

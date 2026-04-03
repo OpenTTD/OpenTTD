@@ -1723,10 +1723,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Vadīt peles ri
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Peles ritenīša funkcija: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ieslēgt ritināšanu ar divdimensiju peles ritenīti
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :pietuvināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :ritināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :izslēgts
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Bīdīšana
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Ekrāntastatūra: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Izvēlieties metodi, kas atvērs ekrnāna tastatūru, lai teksta lauciņos varētu ievadīt tekstu, izmantojot rādītājierīces. Tas ir domāts ierīcēm, kurām nav tastatūras.

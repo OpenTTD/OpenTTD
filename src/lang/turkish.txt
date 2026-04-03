@@ -1722,10 +1722,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Fare-tekeri ile
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Fare tekerleğinin fonksiyonu: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :İki-boyutlu fare tekerleri ile ekran kaydırma özelliğini etkinleştir.
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Haritayı yakınlaştır
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Haritayı kaydır
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Kapalı
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Kaydırma
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Görsel klavye: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Sadece işaretleme aygıtı kullanırken düzenleme kutularına yazı yazabilmek için ekranda görüntülenen klavyenin hangi yöntemle açılacağını belirleyin.

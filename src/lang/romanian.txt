@@ -1683,10 +1683,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlează se
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funcția roții mouse-ului: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activează deplasarea imaginii folosind mouse cu roată de scroll bi-dimensională
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom hartă
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Derulează harta
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Inactivă
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastatură virtuală: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Alege metoda de deschidere a tastaturii virtuale, pentru a introduce text in câmpul de text folosind doar un mouse sau echipament hardware similar. Această opțiune este menită pentru aparate mici, care nu dețin o tastatură adevarată.

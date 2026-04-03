@@ -1624,10 +1624,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Mengatur sensit
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Fungsi tombol scroll mouse: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Membolehkan menggeser dengan ban mouse 2 dimensi
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Perbesar Peta
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Geser Peta
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Non-aktifkan
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Keyboard di layar: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Pilih metoda membuka keyboard di layar untuk memasukkan teks ke dalam editbox menggunakan perangkat berujung. Berguna untuk perangkat-perangkat kecil tak ber-keyboard.

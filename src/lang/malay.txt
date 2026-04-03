@@ -1346,10 +1346,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Kelajuan roda s
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kawal kesensitifan skrol roda tetikus
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Kegunaan roda skrol: {STRING}
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Membesarkan peta
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skrol peta
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Matikan
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Papan kekunci di skrin: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Pilih kaedah untuk membuka papan kekunci pada skrin untuk memasukkan teks ke dalam kotak edit hanya menggunakan petunjuk peranti. Ini bertujuan untuk peranti kecil yang tiada papan kekunci sebenar

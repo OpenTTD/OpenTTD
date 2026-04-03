@@ -431,24 +431,12 @@ struct MainWindow : Window
 	{
 		if (widget != WID_M_VIEWPORT) return;
 
-		if (_settings_client.gui.touchpad_panning) {
-			/* EXAKT DEINE FUNKTIONIERENDE BASIS AUS DEM TEST */
-			int dx = (int)_cursor.h_wheel;
-			int dy = (int)_cursor.v_wheel;
+		bool allow_action = (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off);
 
-			if (dx != 0 || dy != 0) {
-				this->viewport->scrollpos_x += ScaleByZoom(dx, this->viewport->zoom);
-				this->viewport->scrollpos_y += ScaleByZoom(dy, this->viewport->zoom);
-				this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
-				this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-
-				_cursor.h_wheel -= (float)dx;
-				_cursor.v_wheel -= (float)dy;
-				this->SetDirty();
-			}
-		} else {
-			/* Originaler Zoom-Modus */
-			if (_settings_client.gui.scrollwheel_scrolling != ScrollWheelScrolling::Off) {
+		if (allow_action) {
+			if (this->viewport->follow_vehicle != VehicleID::Invalid()) {
+				DoZoomInOutWindow(wheel < 0 ? ZOOM_IN : ZOOM_OUT, this);
+			} else {
 				ZoomInOrOutToCursorWindow(wheel < 0, this);
 			}
 		}
@@ -456,27 +444,13 @@ struct MainWindow : Window
 
 	void OnScroll(Point delta) override
 	{
-		if (_settings_client.gui.touchpad_panning) {
-			/* ZOOM-MODUS (RMB + Move) */
-			/* Hier nageln wir den Zeiger am Bildschirmpunkt fest */
-			_cursor.pos.x -= delta.x;
-			_cursor.pos.y -= delta.y;
-
-			static int zoom_acc = 0;
-			zoom_acc += delta.y;
-			if (abs(zoom_acc) > 20) {
-				DoZoomInOutWindow(zoom_acc < 0 ? ZOOM_IN : ZOOM_OUT, this);
-				zoom_acc = 0;
-			}
-		} else {
-			/* ORIGINAL-PANNING (RMB + Move) */
-			/* Hier greift die originale Fixierung automatisch durch die Engine */
-			this->viewport->scrollpos_x += ScaleByZoom(delta.x, this->viewport->zoom);
-			this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
-			this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
-			this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-			this->SetDirty();
-		}
+		/* HPEP-2026: OnScroll macht auf der Big Map jetzt IMMER Panning.
+		 * Der Zoom wird separat über OnMouseWheel (via gfx.cpp) gesteuert. */
+		this->viewport->scrollpos_x += ScaleByZoom(delta.x, this->viewport->zoom);
+		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
+		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
+		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+		this->SetDirty();
 	}
 
 	void OnResize() override

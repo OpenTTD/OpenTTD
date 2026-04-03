@@ -1567,10 +1567,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroliraj osj
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcija kotačića za klizanje: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Uključi pomicanje sa dvodimenzionalnim kotačićima miša
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zumiraj kartu
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kliži kartom
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Isključeno
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tipkovnica na zaslonu: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Odaberi način uporabe tipkovnice na zaslonu za unos teksta u polja korištenjem samo pokazivača. Ovo je namijenjeno malim uređajima bez fizičke tipkovnice.

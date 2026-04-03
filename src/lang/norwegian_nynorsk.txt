@@ -1406,10 +1406,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Endre sensitivi
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funksjonen til rullehjulet: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Tillat rulling med to-dimensjonale musehjul
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kart
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rull kart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Av
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorering
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skjerm-tastatur: {STRING}
 ###length 4

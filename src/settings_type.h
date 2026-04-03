@@ -184,6 +184,7 @@ enum class ScrollWheelScrolling : uint8_t {
 	ZoomMap = 0, ///< Scroll wheel zooms the map.
 	ScrollMap = 1, ///< Scroll wheel scrolls the map.
 	Off = 2, ///< Scroll wheel has no effect.
+	Touchpad = 3,   ///< Panning, RMB + Move = Zoom.
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
@@ -205,7 +206,6 @@ struct GUISettings {
 	uint8_t  linkgraph_colours;                ///< linkgraph overlay colours
 	ViewportScrollMode scroll_mode; ///< viewport scroll mode
 	bool   smooth_scroll;                    ///< smooth scroll viewports
-	bool touchpad_panning;
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
 	uint8_t liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
 	bool   prefer_teamchat;                  ///< choose the chat message target with \<ENTER\>, true=all clients, false=your team

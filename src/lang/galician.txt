@@ -1716,10 +1716,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla a sens
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Función da roda do rato: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Habilitar desprazamento con rodas de rado bidimensionais
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom no mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Desprazar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desconectado
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Desprazamento
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado en pantalla: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecciona o método para abrir o teclado en pantalla para introducir texto nos cadros editables usando o dispositivo sinalador exclusivamente. Para pequenos dispositivos sen teclado real

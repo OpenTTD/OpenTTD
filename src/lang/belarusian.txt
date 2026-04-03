@@ -1978,10 +1978,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Кантрол�
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Выкарыстоўваць кола пракруткі: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Уключыць скролінг для кола мышы.
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :для зьмены маштабу (zoom)
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :для перамяшчэньня агляду
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не выкарыстоўваць
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Панaрамаванне
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Экранная клавіятура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Выберыце спосаб адкрыцьця экраннай клавіятуры для ўводу тэксту ў палі толькі з дапамогай паказвальнай прылады. (Прызначана для невялікіх прылад без фактычнай клавіятуры)

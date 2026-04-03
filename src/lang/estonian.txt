@@ -1724,10 +1724,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Muudab hiirerul
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Hiirerulli otstarve: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Võimaldab vaadet liigutada kahesuunalise hiirerulliga
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Suurendab kaarti
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Liigutab kaarti
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Puudub
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Kerimine
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Virtuaalne klaviatuur: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vali viis, kuidas avada virtuaalne klaviatuur hiireosuti abil teksti sisestamiseks. See on mõeldud klaviatuurita väikeseadmetele

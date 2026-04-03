@@ -1686,10 +1686,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Задава ч
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Колелото на мишката: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Разрешава придвижването с колелцата на мишката за двете направления
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Променя увеличението на картата
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Превърта картата
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Не прави нищо
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Плъзгане
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Виртуална клавиатура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Изберете как да се отваря софтуерната клавиатура. Предназначено е за малки устройства, които нямат хардуерна клавиатура

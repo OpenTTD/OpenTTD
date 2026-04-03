@@ -1437,10 +1437,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :ควบคุ
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :รูปแบบการใช้ลูกกลิ้งเมาส์ในแผนที่ย่อ: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :ปรับเปลี่ยนลักษณะการใช้งานลูกกลิ้งเมาส์บนแผนที่ย่อ
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :ขยายแผนที่
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :เลื่อนแผนที่
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :ปิด
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :การแพน
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :เปิดใช้งาน On-Screen Keyboard: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :เลือกวิธีการที่จะเปิดแป้นพิมพ์หน้าจอสำหรับการป้อนเมื่อข้อความใน editboxes เพียงแค่ใช้อุปกรณ์ชี้ตำแหน่ง นี่หมายความว่าสำหรับอุปกรณ์ขนาดเล็กโดยไม่ต้องใช้แป้นพิมพ์ที่เกิดขึ้นจริง

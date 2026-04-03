@@ -1721,10 +1721,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Điều chỉnh
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Chức năng nút cuộn trên chuột: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Cho phép cuộc bằng chuột có bánh xe cuộn hai chiều
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Phóng to bản đồ
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Cuộn bản đồ
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Tắt
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Lướt
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Bàn phím ảo: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Chọn phương thức mở bàn phím ảo để nhập chữ với con trỏ. Có ích đối với các thiết bị không có bàn phím

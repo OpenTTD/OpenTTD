@@ -1443,10 +1443,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Stel de gefoeli
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funksje fan it scrolltsjil: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Meitsje scrollen mei twa-dimensjonale mûstsjiltsjes mooglik
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Ut
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skermkaaiboerd: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Stel de metoade yn foar it iepenjen fan it skermkaaiboerd. Dizze kin brûkt wurde op oanreitsapparaten sûnder in wier kaaiboerd

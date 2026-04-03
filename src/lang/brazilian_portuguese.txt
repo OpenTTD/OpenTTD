@@ -1723,10 +1723,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlar a sen
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Função da roda do mouse: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Permitir o deslocamento com rodas de mouse bidimensionais
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar o mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mover o mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desativado
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorâmica
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado virtual: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Escolher o método para mostrar o teclado virtual para inserir texto em caixas de diálogo usando apenas o cursor. Isto é útil para dispositivos pequenos que não possuem teclados

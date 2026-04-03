@@ -1722,10 +1722,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Contrôle la se
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Fonction de la molette{NBSP}: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Active le défilement avec les molettes de souris bidimensionnelles
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom de la carte
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Défilement de la carte
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Désactivé
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panoramique
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Clavier virtuel{NBSP}: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Choisir la méthode pour ouvrir le clavier visuel pour entrer du texte dans les zones d'édition en utilisant uniquement un périphérique de pointage. Cela est fait pour les petit périphériques sans clavier physique

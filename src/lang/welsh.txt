@@ -1715,10 +1715,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Rheoli manylder
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Gweithred yr olwyn sgrolio: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Galluogi sgrolio gydag olwynion llygoden â dwy echel
-###length 3
+###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Mwyhau map
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Sgrolio map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :I ffwrdd
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Allweddfwrdd ar y sgrin: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Dewis y dull i agor yr allweddfwrdd ar-sgrin ar gyfer mewnbynnu testun gan ddefnyddio'r cyrchydd yn unig
