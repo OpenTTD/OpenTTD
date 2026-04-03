@@ -218,6 +218,6 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, MissingGlyp
 	if (best_font == nullptr) return false;
 
 	FontCache::AddFallback(callback->missing_fontsizes, best_font, best_index);
-	FontCache::LoadFontCaches(callback->missing_fontsizes);
+
 	return true;
 }
