@@ -421,18 +421,21 @@ bool VideoDriver_SDL_Base::PollEvent()
 			if (ev.wheel.y > 0) _cursor.wheel--;
 			else if (ev.wheel.y < 0) _cursor.wheel++;
 
-			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
+			float builtin_scrollwheel_multiplier = 1.0f;
+            if ((int)_settings_client.gui.scrollwheel_scrolling <= 2) {
+				builtin_scrollwheel_multiplier = 14.0f; // Nur für klassische Maus-Modi
+			}
 			float vx, vy;
 
 #if SDL_VERSION_ATLEAST(2, 18, 0)
-			vx = ev.wheel.preciseX;
-			vy = ev.wheel.preciseY;
+            vx = static_cast<float>(ev.wheel.x);
+			vy = static_cast<float>(ev.wheel.y);
 #else
 			vx = static_cast<float>(ev.wheel.x);
 			vy = static_cast<float>(ev.wheel.y);
 #endif
 			/* Wir füllen die echten Achsen mit dem Multiplikator aus den Settings */
-			float multiplier = SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+			float multiplier = builtin_scrollwheel_multiplier * (float)_settings_client.gui.scrollwheel_multiplier;
 			_cursor.v_wheel -= vy * multiplier;
 			_cursor.h_wheel += vx * multiplier;
 
@@ -454,8 +457,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 					_right_button_down = true;
 					_right_button_clicked = true;
 					/* Wir aktivieren das Festnageln nur im neuen Modus 3 */
-					if (    (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad)
-                         || (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad)) {
+					if ((int)_settings_client.gui.scrollwheel_scrolling > 2) {
 						_cursor.fix_at = true;
 						/* MAUS-KÄFIG AKTIVIEREN: Verhindert das Verlassen des Fensters beim Zoomen */
 						SDL_SetWindowGrab(this->sdl_window, SDL_TRUE);
@@ -478,8 +480,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
 				_right_button_down = false;
 				/* Wir deaktivieren das Festnageln nur im neuen Modus 3 */
-				if (    (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad)
-                     || (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad)) {
+				if ((int)_settings_client.gui.scrollwheel_scrolling > 2) {
 					/* 1. BEAMEN: Maus auf die letzte OpenTTD-Position zwingen */
 					SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
 

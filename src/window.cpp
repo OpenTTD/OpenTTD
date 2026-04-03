@@ -2454,9 +2454,7 @@ static EventState HandleActiveWidget()
 static EventState HandleViewportScroll()
 {
 	/* Modus 3 (Touchpad) und 4 (Chromepad) nutzen die neue Liquid-Logik */
-	bool liquid_mode = (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad ||
-	                    _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad);
-    liquid_mode = (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
+    bool liquid_mode = (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
 
 	bool scrollwheel_panning = _cursor.wheel_moved && (
 		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap || liquid_mode
@@ -2486,39 +2484,42 @@ static EventState HandleViewportScroll()
 
 	/* --- HPEP-2026: LIQUID PANNING (Mode 3 & 4) --- */
 	/* WICHTIG: Panning darf NUR passieren, wenn RMB NICHT gedrückt ist (sonst ist es Zoom) */
-	if (scrollwheel_panning && liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
-		/* Wir nutzen die rohen Floating-Point Werte von h_wheel und v_wheel direkt.
-		 * Dies umgeht die Ganzzahl-Rundung, die das Ruckeln verursacht. */
-		ViewportData &vp = *_last_scroll_window->viewport;
+/* --- HPEP-2026: LIQUID PANNING (Mode 3 & 4) --- */
+	if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
+		if (scrollwheel_panning) {
+			ViewportData &vp = *_last_scroll_window->viewport;
+			static float accum_x = 0.0f;
+			static float accum_y = 0.0f;
 
-		/* Statische Speicher für Sub-Pixel-Bewegungen */
-		static float accum_x = 0.0f;
-		static float accum_y = 0.0f;
+			/* Wir wenden den User-Multiplikator NUR hier auf das Panning an */
+			float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
 
-		/* Wir addieren die aktuelle Bewegung auf den Speicher.
-		 * Multiplikator 1.0f für echte 1:1 Bewegung. */
-		accum_x += _cursor.h_wheel;
-		accum_y += _cursor.v_wheel;
+			auto apply_accel = [](float input) {
+				float abs_in = abs(input);
+				if (abs_in < 1.0f) return input; // Präzision bei langsamen Wischen
+				return input * (1.0f + (abs_in * 0.15f)); // 15% Zuwachs je nach Geschwindigkeit
+			};
 
-		/* Nur wenn wir ganze Pixel erreichen, bewegen wir den Viewport */
-		int move_x = (int)accum_x;
-		int move_y = (int)accum_y;
+			accum_x += apply_accel(_cursor.h_wheel * user_speed);
+			accum_y += apply_accel(_cursor.v_wheel * user_speed);
 
-		if (move_x != 0 || move_y != 0) {
-			vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
-			vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
-			vp.dest_scrollpos_x = vp.scrollpos_x;
-			vp.dest_scrollpos_y = vp.scrollpos_y;
+			int move_x = (int)accum_x;
+			int move_y = (int)accum_y;
 
-			/* Den verbrauchten Teil vom Speicher abziehen */
-			accum_x -= move_x;
-			accum_y -= move_y;
-			_last_scroll_window->SetDirty();
+			if (move_x != 0 || move_y != 0) {
+				vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
+				vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
+				vp.dest_scrollpos_x = vp.scrollpos_x;
+				vp.dest_scrollpos_y = vp.scrollpos_y;
+				accum_x -= move_x;
+				accum_y -= move_y;
+				_last_scroll_window->SetDirty();
+			}
 		}
 
 		_cursor.v_wheel = 0.0f;
 		_cursor.h_wheel = 0.0f;
-		_cursor.wheel = 0; // <--- NEU: Verhindert den Geister-Zoom am Desktop
+		_cursor.wheel = 0;
 		_cursor.wheel_moved = false;
 		return ES_HANDLED;
 	}
@@ -2956,11 +2957,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	HandleMouseOver();
 
 	/* Panning ist aktiv bei State 1 (Original) oder State 3 (Touchpad) */
-	bool scrollwheel_scrolling = _cursor.wheel_moved && (
-		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap ||
-		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad
-	);
-	scrollwheel_scrolling = _cursor.wheel_moved && (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
+	bool scrollwheel_scrolling = _cursor.wheel_moved && (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
 
 	/* Fenster verschieben (LMB) hat Priorität vor Karten-Panning */
 	if (_dragging_window) scrollwheel_scrolling = false;
@@ -3106,24 +3103,32 @@ void HandleMouseEvents()
 		}
 	}
 
-	/* GLOBAL ZOOM INTERCEPTOR --- */
-	/* --- HPEP-2026: GESTURE ZOOM INTERCEPTOR (Mode 3 & 4) --- */
-	bool is_touch_mode = (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad ||
-	                      _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad);
+	/* --- HPEP-2026: UNIFIED GESTURE ZOOM (Mode 3 & 4) --- */
+	int scroll_mode = (int)_settings_client.gui.scrollwheel_scrolling;
 
-	if (_right_button_down && is_touch_mode) {
+	if (_right_button_down && scroll_mode > 2) {
 		static float zoom_acc = 0.0f;
 		/* Wenn der Button gerade erst gedrückt wurde, Akkumulator leeren */
 		if (_right_button_clicked) {
 			zoom_acc = 0.0f;
-			_right_button_clicked = false; // Initialer Klick verbraucht
+			_right_button_clicked = false;
 		}
 
-		/* Kombiniere beide Input-Quellen für den Zoom */
-		zoom_acc += (float)_cursor.delta.y + _cursor.v_wheel;
+		/* Wir normalisieren den Input:
+		 * Wir dividieren v_wheel durch den Multiplikator aus dem Treiber,
+		 * um wieder "saubere" Einheiten für den Zoom zu erhalten. */
+		float clean_v_wheel = _cursor.v_wheel / (float)_settings_client.gui.scrollwheel_multiplier;
 
-		/* Auslösung bei 15 Einheiten (Feinfühlig für Chromebook) */
-		if (abs(zoom_acc) > 15.0f) {
+		if (scroll_mode == 4) {
+			/* Modus 4: Drag (Pixel) + Rad (Einheiten).
+			 * Wir brauchen hier einen höheren Schwellenwert für klare Stufen. */
+			zoom_acc += (float)_cursor.delta.y + (clean_v_wheel * 20.0f);
+		} else {
+			zoom_acc += clean_v_wheel * 20.0f;
+		}
+
+		/* Schwellenwert auf 20 erhöht für "Einrast-Gefühl" (kein versehentlicher Zoom) */
+		if (abs(zoom_acc) > 20.0f) {
 			Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 			if (w != nullptr) {
 				/* Wir suchen das passende Widget für den Zoom-Befehl */
@@ -3135,18 +3140,14 @@ void HandleMouseEvents()
 			zoom_acc = 0.0f;
 		}
 
-		/* Wir nullen ALLES. Damit sieht die MouseLoop danach:
-		 * - Keine Button-Clicks
-		 * - Keine Maus-Bewegung
-		 * - Keine Wheel-Bewegung
-		 * Ergebnis: Die Karte bleibt fixiert, aber Hover-Logik für Widgets bleibt aktiv. */
+		/* INPUT-CLEANUP: Verhindert Geister-Bewegungen in der MouseLoop */
 		_cursor.delta.x = 0;
 		_cursor.delta.y = 0;
 		_cursor.v_wheel = 0.0f;
 		_cursor.h_wheel = 0.0f;
 		_cursor.wheel_moved = false;
 
-		mousewheel = 0; // <--- NEU: Verhindert, dass MouseLoop(click, mousewheel) zoomt
+		mousewheel = 0; // Killt den Integer-Ghost
 		click = MC_NONE;
 		/* KEIN return; hier - wir lassen die MouseLoop für UI-Housekeeping laufen */
 	}
