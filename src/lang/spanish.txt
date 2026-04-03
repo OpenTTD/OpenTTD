@@ -2803,8 +2803,8 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcción F
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcción de Monorraíl
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción de Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construye tramos de ferrocarril. Ctrl+clic retira tramos de ferrocarril. Con Mayús sólo muestra una estimación del coste
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construye tramos de ferrocarril usando el modo Autorraíl. Ctrl+clic retira tramos de ferrocarril. Con Mayús sólo muestra una estimación del coste
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construye vías de ferrocarril. Ctrl+clic retira vías de ferrocarril. Con Mayús sólo muestra una estimación del coste
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construye vías de ferrocarril usando el modo Autorraíl. Ctrl+clic retira vías de ferrocarril. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construye un depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús permite mostrar una estimación del precio
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construye puntos de ruta sobre la vía del ferrocarril. Ctrl+clic para seleccionar otro punto de ruta al que unirlo. Con Mayús sólo muestra una estimación del coste
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construye estaciones de ferrocarril. Ctrl+clic para seleccionar otra estación a la que unirla. Con Mayús sólo muestra una estimación del coste

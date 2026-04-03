@@ -1025,13 +1025,13 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historia Ładunków
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Wyprodukowany
-STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Przetransportowany
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Zabrany
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Dostarczony
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Oczekujący
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historia Ładunków
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Dostępny
-STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Przetransportowany
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Zabrany
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
 
@@ -1184,7 +1184,7 @@ STR_SMALLMAP_LEGENDA_FOREST                                     :{G=m}{TINY_FONT
 STR_SMALLMAP_LEGENDA_FOREST.d                                   :{TINY_FONT}{BLACK}Lasu
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Stacja kolejowa
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Stacja ciężarówek
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Przystanek
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Przystanek autobusowy
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Lotnisko
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Port
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Wyboisty teren
@@ -3200,7 +3200,7 @@ STR_RAIL_NAME_MAGLEV                                            :Kolej magnetycz
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ukierunkowanie hali warsztatów
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie warsztatów
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie hali warsztatów
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Posterunek
@@ -3271,7 +3271,7 @@ STR_STATION_CLASS_WAYP                                          :Posterunki
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standardowy posterunek
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór Sygnalizatorów
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym wypadku czerwony.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
@@ -3344,7 +3344,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Ukierunkowanie przystanku
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie przystanku
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ukierunkowanie stacji załadunku ciężarówek
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ukierunkowanie stacji ciężarówek
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Wybierz ukierunkowanie stacji ciężarówek
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Ukierunkowanie przystanku tramwajowego
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Wybierz ukierunkowanie przystanku tramwajowego
@@ -3601,7 +3601,7 @@ STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stacja kolejowa
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lotnisko
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stacja ciężarówek
-STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Przystanek
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Przystanek autobusowy
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boja
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Posterunek
@@ -4113,8 +4113,8 @@ STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Dodaj bu
 STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Zwiększ liczbę budynków w mieście
 STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Dodaj drogi
 STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Rozbuduj drogi w mieście
-STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Skasuj
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Skasuj to miasto
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Usuń
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Usuń całkowicie to miasto
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Zmień nazwę miasta
 
@@ -4668,16 +4668,16 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki -
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy klik na samolocie pozwala uzyskać informacje
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pociąg, aby go sprzedać
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pojazd kolejowy, aby go sprzedać
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Przeciągnij tutaj pojazd, aby go sprzedać
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Przeciągnij tutaj statek, aby go sprzedać
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Przeciągnij tutaj samolot, aby go sprzedać
 
 ###length VEHICLE_TYPES
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Sprzedaj wszystkie pociągi z hali warsztatów
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Sprzedaj wszystkie pociągi z tej hali warsztatów
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Sprzedaj wszystkie pojazdy z tej zajezdni
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Sprzedaj wszystkie statki ze stoczni
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Sprzedaj wszystkie samoloty z hangaru
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Sprzedaj wszystkie statki z tej stoczni
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Sprzedaj wszystkie samoloty z tego hangaru
 
 ###length VEHICLE_TYPES
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Automatyczne odnowienie wszystkich pociągów stojących w hali warsztatów
@@ -4841,7 +4841,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Kup kopi
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Kup kopię statku. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Kup kopię samolotu. Użyj Ctrl, aby współdzielić polecenia. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Wymuszony start pociągu bez czekania na sygnał
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Pozwól pociągowi na przejazd bez czekania na sygnał zezwalający
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Odwróć kierunek jazdy pociągu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Zmuś pojazd do zawrócenia
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Wyśrodkuj widok główny na miejscu docelowym polecenia. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację

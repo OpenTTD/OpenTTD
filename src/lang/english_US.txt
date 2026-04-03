@@ -454,7 +454,7 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandbox options
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Town names displayed
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Station names displayed
-STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Train stations
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Railroad stations
 STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Truck stops
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Bus stops
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Docks
@@ -697,7 +697,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Number of vehicles that turned a profit last year. This includes road vehicles, trains, ships and aircraft
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Number of vehicles that turned a profit last period. This includes road vehicles, trains, ships and aircraft
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-serviced stations. Train stations, bus stops, airports and so on are counted separately even if they belong to the same station
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-serviced stations. Railroad stations, bus stops, airports and so on are counted separately even if they belong to the same station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two years are considered)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two periods are considered)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the lowest profit of the last 12 quarters
