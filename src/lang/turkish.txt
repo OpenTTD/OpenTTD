@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Görünen dili 
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (%{NUM} tamamlandı)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Tam ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD'yi tam ekran oynamak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD'yi tam ekran oynamak için bunu açın
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Ekran Çözünürlüğü
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kullanılacak ekran çözünürlüğünü seçin
@@ -1071,11 +1071,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Donanım hızlandırma
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bunu açın. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ayar sadece oyun yeniden başlatıldığında uygulanır
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Dikey senkronizasyon'u aktif etmek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Dikey senkronizasyon'u aktif etmek için bunu açın. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Geçerli sürücü: {STRING}
 
@@ -1084,15 +1084,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Arayüz
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Arayüz büyüklüğü
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arayüz büyüklüğünü ayarlamak için kaydırın. Sürekli ayarlama için Ctrl tuşunu basılı tutun
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Büyüklüğü otomatik algıla
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Arayüz boyutunu otomatik ayarlamak için bunu açın
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Eğimi ayarla
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Eğimi arayüz boyutuna göre ayarlamak için bunu açın
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                : Geleneksel yazı tipini kullan
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Yazı tipini geleneksel sabit boyutlu haline döndürmek için açın
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Yazı tipi kenarlarını yumuşatma
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için açın
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -2069,7 +2069,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Kullanılacak en yüksek çözünürlüklü sprite'lar: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Sprite'lar için kullanılacak maksimum çözünürlüğü sınırlar. Sprite çözünürlüğünü sınırlamak, mevcut olunca bile yüksek çözünürlüklü grafikleri kullanmaktan kaçınacaktır. Bu, yüksek çözünürlüklü grafikleri içeren ve içermeyen GRF dosyalarının bir karşımı kullanılırken oyun görünümünü bir arada tutmaya yardımcı olabilir
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Sprite'lar için kullanılacak maksimum çözünürlüğü sınırlar. Sprite çözünürlüğünü sınırlamak, mevcut olunca bile yüksek çözünürlüklü grafikleri kullanmaktan kaçınacaktır. Bu, yüksek çözünürlüklü grafikleri içeren ve içermeyen NewGRF dosyalarının bir karşımı kullanılırken oyun görünümünü bir arada tutmaya yardımcı olabilir
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -3621,7 +3621,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} içi
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} önce, {2:STRING} ondan sonra yüklenmeli
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :Önce {1:STRING}, sonra {2:STRING} yüklenmeli.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} OpenTTD {2:STRING} veya daha yüksek bir sürüm gerektirir
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} adlı NewGRF'yi {2:STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmedik nesne (nesne {3:NUM})
@@ -3630,7 +3630,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID ku
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir nesne içeriyor. Tüm bozuk nesneler kırmızı bir soru işareti (?) olarak görünecektir
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (nesne {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-nesne bitiminden sonrasını okudu (nesne {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (nesne {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen NewGRF kaynakları mevcut değil (nesne {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz/bilinmeyen nesne yerleşim biçimi (nesne {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Özellik değeri listesinde çok fazla öğe (sprite {3:NUM}, özellik {4:HEX})
@@ -3641,12 +3641,12 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz. Bu OpenTTD'yi çökertebilir veya oyunun durumunu bozabilir. Bu konular hakkında sorun bildirmeyiniz.{}Bundan kesinlikle emin misiniz?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya eklenemiyor: GRF ID çakışması
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu GRF yüklendi)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Dosya eklenemiyor: NewGRF dosya limitine ulaşıldı
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu NewGRF yüklendi)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik dosyalar için uyumlu GRF(ler) yüklendi
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik NewGRF dosyası
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Devam ettırme OpenTTD'yi çökertebilir. Takip eden çökmeler için hata rapor etmeyiniz.{}Gerçekten devam ettirmek istiyor musunuz?
 
 # NewGRF status
