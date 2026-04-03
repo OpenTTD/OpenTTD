@@ -223,4 +223,21 @@ void CheckCaches()
 		}
 		i++;
 	}
+
+	/* Check the last vehicle cache. */
+	for (Vehicle *v : Vehicle::Iterate()) {
+		if (v != v->First() || v->vehstatus.Test(VehState::Crashed) || !v->IsPrimaryVehicle()) continue;
+
+		/* Check that the last vehicle is actually last. */
+		if (v->Last()->Next() != nullptr) {
+			Debug(desync, 2, "warning: vehicle cache mismatch, last vehicle must not have a next vehicle: type {}, vehicle {}, company {}, unit number {}, invalid 'Last()'", v->type, v->index, v->owner, v->unitnumber);
+		}
+
+		/* Ensure that all vehicles in the chain have the same last vehicle. */
+		for (Vehicle *u = v; u != nullptr; u = u->Next()) {
+			if (u->Last() != v->Last()) {
+				Debug(desync, 2, "warning: vehicle cache mismatch, all vehicles in chain must have same last vehicle: type {}, vehicle {}, company {}, unit number {}, invalid 'Last()'", v->type, v->index, v->owner, v->unitnumber);
+			}
+		}
+	}
 }

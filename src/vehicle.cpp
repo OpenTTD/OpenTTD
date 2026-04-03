@@ -384,6 +384,7 @@ Vehicle::Vehicle(VehicleID index, VehicleType type) : VehiclePool::PoolItem<&_ve
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
+	this->last               = this;
 	this->colourmap          = PAL_NONE;
 	this->cargo_age_counter  = 1;
 	this->last_station_visited = StationID::Invalid();
@@ -2988,6 +2989,13 @@ void Vehicle::SetNext(Vehicle *next)
 		for (Vehicle *v = this->next; v != nullptr; v = v->Next()) {
 			v->first = this->first;
 		}
+	}
+
+	/* Update last vehicle of the entire chain. */
+	Vehicle *new_last = this;
+	while (new_last->Next() != nullptr) new_last = new_last->Next();
+	for (Vehicle *v = this->first; v!= nullptr; v = v->Next()) {
+		v->last = new_last;
 	}
 }
 
