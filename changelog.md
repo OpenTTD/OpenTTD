@@ -1,5 +1,14 @@
 ## 15.x
 
+### 15.3 (2026-04-04)
+
+- Fix: Conditional orders could require a maximum reliability over 100% (#15409)
+- Fix: Improve appearance of toolbars and main menu images/text with some non-default base sets (#15402)
+- Fix: [Script] IsBuildableRectangle for a 0x0 tile should return false (#15357)
+- Fix: Desync caused by train crashes (#15338)
+- Fix: Incorrect scroll bar capacity for train details window total cargo tab (#15329)
+- Fix #15310: Crash caused by a helicopter running out of fuel near map edge (#15311)
+
 ### 15.2 (2026-02-18)
 
 - Fix: Crashed zeppelin not blocking runway (#15281)
