@@ -185,6 +185,7 @@ enum class ScrollWheelScrolling : uint8_t {
 	ScrollMap = 1, ///< Scroll wheel scrolls the map.
 	Off = 2, ///< Scroll wheel has no effect.
 	Touchpad = 3,   ///< Panning, RMB + Move = Zoom.
+	Chromepad = 4,
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */

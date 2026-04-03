@@ -2453,9 +2453,13 @@ static EventState HandleActiveWidget()
  */
 static EventState HandleViewportScroll()
 {
+	/* Modus 3 (Touchpad) und 4 (Chromepad) nutzen die neue Liquid-Logik */
+	bool liquid_mode = (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad ||
+	                    _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad);
+    liquid_mode = (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
+
 	bool scrollwheel_panning = _cursor.wheel_moved && (
-		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap ||
-		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad
+		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap || liquid_mode
 	);
 
 	if (!_scrolling_viewport) return ES_NOT_HANDLED;
@@ -2465,6 +2469,7 @@ static EventState HandleViewportScroll()
 	 * outside of the window and should not left-mouse scroll anymore. */
 	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
+	/* Abbruch wenn RMB nicht gedrückt ist (außer bei Scrollrad-Panning) */
 	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && _right_button_down) || scrollwheel_panning || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && _left_button_down))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
@@ -2477,6 +2482,45 @@ static EventState HandleViewportScroll()
 		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle);
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
 		return ES_NOT_HANDLED;
+	}
+
+	/* --- HPEP-2026: LIQUID PANNING (Mode 3 & 4) --- */
+	/* WICHTIG: Panning darf NUR passieren, wenn RMB NICHT gedrückt ist (sonst ist es Zoom) */
+	if (scrollwheel_panning && liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
+		/* Wir nutzen die rohen Floating-Point Werte von h_wheel und v_wheel direkt.
+		 * Dies umgeht die Ganzzahl-Rundung, die das Ruckeln verursacht. */
+		ViewportData &vp = *_last_scroll_window->viewport;
+
+		/* Statische Speicher für Sub-Pixel-Bewegungen */
+		static float accum_x = 0.0f;
+		static float accum_y = 0.0f;
+
+		/* Wir addieren die aktuelle Bewegung auf den Speicher.
+		 * Multiplikator 1.0f für echte 1:1 Bewegung. */
+		accum_x += _cursor.h_wheel;
+		accum_y += _cursor.v_wheel;
+
+		/* Nur wenn wir ganze Pixel erreichen, bewegen wir den Viewport */
+		int move_x = (int)accum_x;
+		int move_y = (int)accum_y;
+
+		if (move_x != 0 || move_y != 0) {
+			vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
+			vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
+			vp.dest_scrollpos_x = vp.scrollpos_x;
+			vp.dest_scrollpos_y = vp.scrollpos_y;
+
+			/* Den verbrauchten Teil vom Speicher abziehen */
+			accum_x -= move_x;
+			accum_y -= move_y;
+			_last_scroll_window->SetDirty();
+		}
+
+		_cursor.v_wheel = 0.0f;
+		_cursor.h_wheel = 0.0f;
+		_cursor.wheel = 0; // <--- NEU: Verhindert den Geister-Zoom am Desktop
+		_cursor.wheel_moved = false;
+		return ES_HANDLED;
 	}
 
 	/* ORIGINALER FALLBACK (für Smallmap und Panning ohne Touchpad-Modus) */
@@ -2910,12 +2954,13 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (HandleViewportScroll()     == ES_HANDLED) return;
 
 	HandleMouseOver();
-	
+
 	/* Panning ist aktiv bei State 1 (Original) oder State 3 (Touchpad) */
 	bool scrollwheel_scrolling = _cursor.wheel_moved && (
 		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap ||
 		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad
 	);
+	scrollwheel_scrolling = _cursor.wheel_moved && (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
 
 	/* Fenster verschieben (LMB) hat Priorität vor Karten-Panning */
 	if (_dragging_window) scrollwheel_scrolling = false;
@@ -3062,17 +3107,23 @@ void HandleMouseEvents()
 	}
 
 	/* GLOBAL ZOOM INTERCEPTOR --- */
-	if (_right_button_down && _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad) {
-		static int zoom_acc = 0;
+	/* --- HPEP-2026: GESTURE ZOOM INTERCEPTOR (Mode 3 & 4) --- */
+	bool is_touch_mode = (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad ||
+	                      _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad);
+
+	if (_right_button_down && is_touch_mode) {
+		static float zoom_acc = 0.0f;
 		/* Wenn der Button gerade erst gedrückt wurde, Akkumulator leeren */
 		if (_right_button_clicked) {
-			zoom_acc = 0;
-			_right_button_clicked = false; // Event verbraucht
+			zoom_acc = 0.0f;
+			_right_button_clicked = false; // Initialer Klick verbraucht
 		}
 
-		zoom_acc += _cursor.delta.y;
+		/* Kombiniere beide Input-Quellen für den Zoom */
+		zoom_acc += (float)_cursor.delta.y + _cursor.v_wheel;
 
-		if (abs(zoom_acc) > 25) {
+		/* Auslösung bei 15 Einheiten (Feinfühlig für Chromebook) */
+		if (abs(zoom_acc) > 15.0f) {
 			Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 			if (w != nullptr) {
 				/* Wir suchen das passende Widget für den Zoom-Befehl */
@@ -3081,15 +3132,23 @@ void HandleMouseEvents()
 
 				if (wid != nullptr) w->OnMouseWheel(zoom_acc < 0 ? -1 : 1, wid->GetIndex());
 			}
-			zoom_acc = 0;
+			zoom_acc = 0.0f;
 		}
 
-		/* Bewegung verbrauchen, damit die Karte nicht zusätzlich wandert */
+		/* Wir nullen ALLES. Damit sieht die MouseLoop danach:
+		 * - Keine Button-Clicks
+		 * - Keine Maus-Bewegung
+		 * - Keine Wheel-Bewegung
+		 * Ergebnis: Die Karte bleibt fixiert, aber Hover-Logik für Widgets bleibt aktiv. */
 		_cursor.delta.x = 0;
 		_cursor.delta.y = 0;
-		click = MC_NONE; 
-		/* Wir kehren NICHT zurück, sondern lassen die MouseLoop für andere Logik offen, 
-		 * aber löschen oben die Klicks für diesen Frame. */
+		_cursor.v_wheel = 0.0f;
+		_cursor.h_wheel = 0.0f;
+		_cursor.wheel_moved = false;
+
+		mousewheel = 0; // <--- NEU: Verhindert, dass MouseLoop(click, mousewheel) zoomt
+		click = MC_NONE;
+		/* KEIN return; hier - wir lassen die MouseLoop für UI-Housekeeping laufen */
 	}
 
 	if (click == MC_LEFT && _newgrf_debug_sprite_picker.mode == SPM_WAIT_CLICK) {

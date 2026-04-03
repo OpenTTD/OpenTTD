@@ -405,7 +405,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			}
 
 			/* Wir nutzen UpdateCursorPosition. Wenn diese Funktion 'true' zurückgibt,
-			 * heißt das: "Die Maus wurde bewegt, aber wir wollen sie an der alten 
+			 * heißt das: "Die Maus wurde bewegt, aber wir wollen sie an der alten
 			 * Stelle behalten (Warping)". */
 			if (_cursor.UpdateCursorPosition(x, y)) {
 				/* DAS IST DAS FESTNAGELN:
@@ -454,7 +454,8 @@ bool VideoDriver_SDL_Base::PollEvent()
 					_right_button_down = true;
 					_right_button_clicked = true;
 					/* Wir aktivieren das Festnageln nur im neuen Modus 3 */
-					if (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad) {
+					if (    (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad)
+                         || (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad)) {
 						_cursor.fix_at = true;
 						/* MAUS-KÄFIG AKTIVIEREN: Verhindert das Verlassen des Fensters beim Zoomen */
 						SDL_SetWindowGrab(this->sdl_window, SDL_TRUE);
@@ -477,10 +478,11 @@ bool VideoDriver_SDL_Base::PollEvent()
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
 				_right_button_down = false;
 				/* Wir deaktivieren das Festnageln nur im neuen Modus 3 */
-				if (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad) {
+				if (    (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Touchpad)
+                     || (_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::Chromepad)) {
 					/* 1. BEAMEN: Maus auf die letzte OpenTTD-Position zwingen */
 					SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
-					
+
 					SDL_SetWindowGrab(this->sdl_window, SDL_FALSE);
 					_cursor.fix_at = false;
 				}
