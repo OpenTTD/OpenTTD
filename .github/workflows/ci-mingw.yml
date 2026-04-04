@@ -31,15 +31,16 @@ jobs:
         install: >-
           git
           make
-          mingw-w64-${{ inputs.arch }}-cmake
-          mingw-w64-${{ inputs.arch }}-gcc
-          mingw-w64-${{ inputs.arch }}-lzo2
-          mingw-w64-${{ inputs.arch }}-libpng
-          mingw-w64-${{ inputs.arch }}-lld
-          mingw-w64-${{ inputs.arch }}-ninja
-          mingw-w64-${{ inputs.arch }}-libogg
-          mingw-w64-${{ inputs.arch }}-opus
-          mingw-w64-${{ inputs.arch }}-opusfile
+        pacboy: >-
+          cmake:p
+          gcc:p
+          lzo2:p
+          libpng:p
+          lld:p
+          ninja:p
+          libogg:p
+          opus:p
+          opusfile:p
 
     - name: Install OpenGFX
       shell: bash
