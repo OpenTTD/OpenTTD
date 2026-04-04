@@ -158,7 +158,7 @@ protected:
 
 	/**
 	 * Send chat as the server:
-	 * uint8_t   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
+	 * uint8_t   Action such as NetworkAction::ChatClient (see #NetworkAction).
 	 * uint8_t   Destination type such as NetworkChatDestinationType::Broadcast (see #NetworkChatDestinationType).
 	 * uint32_t  ID of the destination such as company or client id.
 	 * string  Message.
@@ -433,7 +433,7 @@ protected:
 
 	/**
 	 * Send chat from the game into the admin network:
-	 * uint8_t   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
+	 * uint8_t   Action such as NetworkAction::ChatClient (see #NetworkAction).
 	 * uint8_t   Destination type such as NetworkChatDestinationType::Broadcast (see #NetworkChatDestinationType).
 	 * uint32_t  ID of the client who sent this message.
 	 * string  Message.
