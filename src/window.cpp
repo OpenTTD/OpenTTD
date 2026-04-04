@@ -2482,7 +2482,7 @@ static EventState HandleViewportScroll()
 		return ES_NOT_HANDLED;
 	}
 
-/* --- HPEP-2026: REFINED MOMENTUM PANNING (UI-Friendly) --- */
+	/* --- PRECISION VECTOR PANNING (Mode 3 & 4) --- */
 	if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
 		ViewportData &vp = *_last_scroll_window->viewport;
 
@@ -2491,31 +2491,67 @@ static EventState HandleViewportScroll()
 		static float subpixel_x = 0.0f;
 		static float subpixel_y = 0.0f;
 
-		/* 1. REIBUNG: Ausgleiten */
-		vel_x *= 0.55f;
-		vel_y *= 0.55f;
+		static int idle_frames = 0;
+		static int axis_idle_x = 0;
+		static int axis_idle_y = 0;
 
 		if (scrollwheel_panning) {
-			float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
-			float raw_dx = _cursor.h_wheel * user_speed;
-			float raw_dy = _cursor.v_wheel * user_speed;
+			idle_frames = 0;
+			const float INTERNAL_BOOST = 40.0f;
+			const int PHYSICS_SUBSTEPS = 40.0; // Unser "Smoothness"-Faktor
 
-			/* Snap-Reversal */
-			if ((raw_dx > 0.1f && vel_x < -0.1f) || (raw_dx < -0.1f && vel_x > 0.1f)) vel_x = 0.0f;
-			if ((raw_dy > 0.1f && vel_y < -0.1f) || (raw_dy < -0.1f && vel_y > 0.1f)) vel_y = 0.0f;
+			/* Wir holen den Roh-Input einmalig ab */
+			float input_x = _cursor.h_wheel * INTERNAL_BOOST;
+			float input_y = _cursor.v_wheel * INTERNAL_BOOST;
 
-			float input_velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
-			float accel_factor = 1.0f + (input_velocity * 0.02f);
-			if (accel_factor > 2.0f) accel_factor = 2.0f;
+			/* RICHTUNGS-RESET (Anti-Ei): Sofortiger Stopp bei Umkehr */
+			if ((input_x < -0.05f && vel_x > 0.1f) || (input_x > 0.05f && vel_x < -0.1f)) vel_x = 0.0f;
+			if ((input_y < -0.05f && vel_y > 0.1f) || (input_y > 0.05f && vel_y < -0.1f)) vel_y = 0.0f;
 
-			vel_x += raw_dx * accel_factor;
-			vel_y += raw_dy * accel_factor;
+			/* OVERSAMPLING LOOP: Wir zerlegen den Frame in feine Teilschritte */
+			for (int i = 0; i < PHYSICS_SUBSTEPS; i++) {
+				float sub_input_x = input_x / (float)PHYSICS_SUBSTEPS;
+				float sub_input_y = input_y / (float)PHYSICS_SUBSTEPS;
+
+				float input_speed = sqrt(sub_input_x * sub_input_x + sub_input_y * sub_input_y);
+				float accel = 1.0f + (std::max(0.0f, input_speed - 1.0f) * 0.025f);
+				if (accel > 2.5f) accel = 2.5f;
+
+				/* Wir nutzen eine extrem weiche Mischung pro Substep */
+				if (abs(sub_input_x) > 0.0001f) {
+					vel_x = (vel_x * 0.9f) + (sub_input_x * accel * 0.15f);
+					axis_idle_x = 0;
+				} else {
+					if (++axis_idle_x < (6 * PHYSICS_SUBSTEPS)) vel_x *= 0.995f; 
+					else vel_x *= 0.90f;
+				}
+
+				if (abs(sub_input_y) > 0.0001f) {
+					vel_y = (vel_y * 0.9f) + (sub_input_y * accel*1.2 * 0.15f);
+					axis_idle_y = 0;
+				} else {
+					if (++axis_idle_y < (6 * PHYSICS_SUBSTEPS)) vel_y *= 0.995f; 
+					else vel_y *= 0.90f;
+				}
+
+				/* Integration der Subpixel innerhalb des Loops */
+				subpixel_x += (vel_x / (float)PHYSICS_SUBSTEPS);
+				subpixel_y += (vel_y / (float)PHYSICS_SUBSTEPS);
+			}
+
+		} else {
+			/* GLOBALER STOPP (Gleiten lassen) */
+			axis_idle_x = 0; axis_idle_y = 0;
+			if (++idle_frames < 10) {
+				vel_x *= 0.95f; vel_y *= 0.95f;
+			} else {
+				vel_x *= 0.75f; vel_y *= 0.75f;
+			}
+			subpixel_x += vel_x;
+			subpixel_y += vel_y;
 		}
 
-		/* 2. BEWEGUNG AUSFÜHREN */
-		subpixel_x += vel_x;
-		subpixel_y += vel_y;
-
+		/* VIEWPORT AKTUALISIERUNG (Nur einmal am Ende des Frames) */
 		int move_x = (int)subpixel_x;
 		int move_y = (int)subpixel_y;
 
@@ -2524,78 +2560,22 @@ static EventState HandleViewportScroll()
 			vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
 			vp.dest_scrollpos_x = vp.scrollpos_x;
 			vp.dest_scrollpos_y = vp.scrollpos_y;
-
 			subpixel_x -= (float)move_x;
 			subpixel_y -= (float)move_y;
 			_last_scroll_window->SetDirty();
 		}
 
-		/* Stillstand-Check */
-		if (abs(vel_x) < 0.01f) vel_x = 0.0f;
-		if (abs(vel_y) < 0.01f) vel_y = 0.0f;
-
-		/* --- DER UI-BYPASS (NEU) --- */
-		/* Wenn wir nicht aktiv pannen (kein Rad/Wisch-Event)
-		 * UND die Karte sich fast nicht mehr bewegt, geben wir das Event frei! */
-		if (!scrollwheel_panning && abs(vel_x) < 0.5f && abs(vel_y) < 0.5f) {
-			return ES_NOT_HANDLED; // Lässt Tooltips und UI-Klicks wieder zu
-		}
-
-		/* Nur wenn wir aktiv pannen, "fressen" wir das Rad-Event */
-		_cursor.v_wheel = 0.0f;
-		_cursor.h_wheel = 0.0f;
-		_cursor.wheel = 0;
+		_cursor.v_wheel = 0.0f; _cursor.h_wheel = 0.0f;
 		_cursor.wheel_moved = false;
 
-		return ES_HANDLED;
+		if (scrollwheel_panning) return ES_HANDLED;
+		if (abs(vel_x) < 0.1f && abs(vel_y) < 0.1f) { vel_x = 0.0f; vel_y = 0.0f; }
+		return ES_NOT_HANDLED;
+
 	}
 
-	/* --- HPEP-2026: LIQUID PANNING (Mode 3 & 4) --- */
-	/* WICHTIG: Panning darf NUR passieren, wenn RMB NICHT gedrückt ist (sonst ist es Zoom) */
-//	if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
-//		if (scrollwheel_panning) {
-//			ViewportData &vp = *_last_scroll_window->viewport;
-//			static float accum_x = 0.0f;
-//			static float accum_y = 0.0f;
-//
-//			/* Wir wenden den User-Multiplikator NUR hier auf das Panning an */
-//			float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
-//			float raw_dx = _cursor.h_wheel * user_speed;
-//			float raw_dy = _cursor.v_wheel * user_speed;
-//
-//			/* Vektor-Betrag berechnen: $v = \sqrt{x^2 + y^2}$ */
-//			float velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
-//
-//			if (velocity > 0.0f) {
-//				/* Beschleunigungsfaktor basierend auf Gesamtgeschwindigkeit (statt pro Achse) */
-//				float accel_factor = (velocity < 1.0f) ? 1.0f : (1.0f + (velocity * 0.03f));
-//
-//				accum_x += raw_dx * accel_factor;
-//				accum_y += raw_dy * accel_factor;
-//
-//				int move_x = (int)accum_x;
-//				int move_y = (int)accum_y;
-//
-//				if (move_x != 0 || move_y != 0) {
-//					vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
-//					vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
-//					vp.dest_scrollpos_x = vp.scrollpos_x;
-//					vp.dest_scrollpos_y = vp.scrollpos_y;
-//					accum_x -= move_x;
-//					accum_y -= move_y;
-//					_last_scroll_window->SetDirty();
-//				}
-//			}
-//		}
-//
-//		_cursor.v_wheel = 0.0f;
-//		_cursor.h_wheel = 0.0f;
-//		_cursor.wheel = 0;
-//		_cursor.wheel_moved = false;
-//		return ES_HANDLED;
-//	}
 
-	/* ORIGINALER FALLBACK (für Smallmap und Panning ohne Touchpad-Modus) */
+    /* ORIGINALER FALLBACK (für Smallmap und Panning ohne Touchpad-Modus) */
 	Point delta;
 	if (scrollwheel_panning) {
 		/* Wir berechnen das Delta aus den Rad-Daten */
@@ -3175,37 +3155,29 @@ void HandleMouseEvents()
 		}
 	}
 
-	/* --- HPEP-2026: MOTION-TRIGGERED GESTURE ZOOM (Mode 4) --- */
+    /* --- HPEP-2026: UNIFIED GESTURE ZOOM (Mode 3 & 4) --- */
 	int scroll_mode = (int)_settings_client.gui.scrollwheel_scrolling;
 
+    /* --- HPEP-2026: VOLATILE GESTURE ZOOM (Mode 4) --- */
 	if (_right_button_down && scroll_mode == 4) {
 		static float zoom_acc = 0.0f;
 		if (_right_button_clicked) {
 			zoom_acc = 0.0f;
 			_right_button_clicked = false;
-			/* Wir starten JEDEN Klick im "freien Modus" (fix_at = false) */
-			_cursor.fix_at = false;
 		}
 
-		/* ENTSCHEIDUNGSLOGIK: 
-		 * Nur wenn die vertikale Bewegung deutlich dominiert, 
-		 * frieren wir den Zeiger für den Zoom ein. */
-		if (!_cursor.fix_at) {
-			if (abs(_cursor.delta.y) > 10 && abs(_cursor.delta.y) > abs(_cursor.delta.x)) {
-				_cursor.fix_at = true;
-				/* SDL-Käfig aktivieren, damit die Maus während des Warps im Fenster bleibt */
-				VideoDriver::GetInstance()->ClaimMousePointer(); 
-			}
+		/* Wir triggern den Lock nur, wenn echte Bewegung da ist */
+		if (!_cursor.fix_at && (abs(_cursor.delta.y) > 2 || abs(_cursor.v_wheel) > 0.1f)) {
+			_cursor.fix_at = true;
 		}
 
-		/* Wenn wir im Zoom-Lock sind, verarbeiten wir den Zoom */
 		if (_cursor.fix_at) {
-			float driver_mult = 2.0f * (float)_settings_client.gui.scrollwheel_multiplier;
-			float clean_v_wheel = _cursor.v_wheel / driver_mult;
+			float driver_mult = (float)_settings_client.gui.scrollwheel_multiplier;
+			if (driver_mult < 1.0f) driver_mult = 1.0f;
 
-			zoom_acc += (float)_cursor.delta.y + (clean_v_wheel * 20.0f);
+			zoom_acc += (float)_cursor.delta.y + (_cursor.v_wheel / driver_mult);
 
-			if (abs(zoom_acc) > 25.0f) {
+			if (abs(zoom_acc) > 20.0f) {
 				Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 				if (w != nullptr) {
 					NWidgetBase *wid = w->nested_root->GetWidgetOfType(NWID_VIEWPORT);
@@ -3215,65 +3187,13 @@ void HandleMouseEvents()
 				zoom_acc = 0.0f;
 			}
 
-			/* ALLES löschen: Wir sind im Zoom-Modus, keine Panning-Energie erlauben */
-			_cursor.delta.x = 0;
-			_cursor.delta.y = 0;
-			_cursor.v_wheel = 0.0f;
-			_cursor.h_wheel = 0.0f;
-			_cursor.wheel = 0;
+			/* Deltas neutralisieren solange wir zoomen */
+			_cursor.delta.x = 0; _cursor.delta.y = 0;
+			_cursor.v_wheel = 0.0f; _cursor.h_wheel = 0.0f;
 			_cursor.wheel_moved = false;
-			mousewheel = 0;
-			click = MC_NONE;
-		} else {
-			/* Wenn fix_at noch false ist (z.B. bei horizontalem Wischen trotz RMB), 
-			 * lassen wir die MouseLoop normal weiterlaufen. 
-			 * Das erlaubt Panning oder Cursor-Bewegung TROTZ gedrücktem Pad! */
+			mousewheel = 0; click = MC_NONE;
 		}
 	}
-
-	/* --- HPEP-2026: UNIFIED GESTURE ZOOM (Mode 3 & 4) --- */
-//	int scroll_mode = (int)_settings_client.gui.scrollwheel_scrolling;
-
-	/* --- HPEP-2026: HYPER-SENSITIVE GESTURE ZOOM (Mode 4) --- */
-//	if (_right_button_down && scroll_mode > 2) {
-//		static float zoom_acc = 0.0f;
-//		if (_right_button_clicked) {
-//			zoom_acc = 0.0f;
-//			_right_button_clicked = false;
-//        }
-//
-//        float driver_mult = (float)_settings_client.gui.scrollwheel_multiplier;
-//        float clean_v_wheel = _cursor.v_wheel / driver_mult;
-//
-//        if (scroll_mode == 4) {
-//            /* Wir wichten delta.y (den Zug) etwas stärker als das Rad-Fragment */
-//            zoom_acc += ((float)_cursor.delta.y * 1.5f) + (clean_v_wheel * 10.0f);
-//        } else {
-//            zoom_acc += clean_v_wheel * 10.0f;
-//        }
-//
-//        /* Schwellenwert auf 15.0f gesenkt, damit der Zoom bei der 1-Finger-Plus-2-Finger Geste früher zündet */
-//        if (abs(zoom_acc) > 15.0f) {
-//            Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
-//            if (w != nullptr) {
-//                NWidgetBase *wid = w->nested_root->GetWidgetOfType(NWID_VIEWPORT);
-//                if (wid == nullptr && w->window_class == WC_SMALLMAP) wid = w->nested_root->GetWidgetOfType(WWT_INSET);
-//                if (wid != nullptr) w->OnMouseWheel(zoom_acc < 0 ? -1 : 1, wid->GetIndex());
-//            }
-//            zoom_acc = 0.0f;
-//        }
-//
-//		/* INPUT-CLEANUP: Verhindert Geister-Bewegungen in der MouseLoop */
-//		_cursor.delta.x = 0;
-//		_cursor.delta.y = 0;
-//		_cursor.v_wheel = 0.0f;
-//		_cursor.h_wheel = 0.0f;
-//		_cursor.wheel_moved = false;
-//
-//		mousewheel = 0; // Killt den Integer-Ghost
-//		click = MC_NONE;
-//		/* KEIN return; hier - wir lassen die MouseLoop für UI-Housekeeping laufen */
-//	}
 
 	if (click == MC_LEFT && _newgrf_debug_sprite_picker.mode == SPM_WAIT_CLICK) {
 		/* Mark whole screen dirty, and wait for the next realtime tick, when drawing is finished. */

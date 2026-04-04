@@ -384,11 +384,26 @@ static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 
 bool VideoDriver_SDL_Base::PollEvent()
 {
-	SDL_Event ev;
+    SDL_Event ev;
 
 	if (!SDL_PollEvent(&ev)) return false;
 
 	switch (ev.type) {
+	    /* --- HPEP-2026: HIGH-RESOLUTION FINGER BYPASS --- */
+        case SDL_FINGERMOTION: {
+            /* Wir wandeln die normalisierte Bewegung (0.0 bis 1.0) in Pixel um */
+            float touch_dx = ev.tfinger.dx * (float)_screen.width;
+            float touch_dy = ev.tfinger.dy * (float)_screen.height;
+
+            /* Wir füttern unseren Akkumulator direkt mit den Hi-Res Floats.
+             * Wichtig: Nur wenn wir im Panning-Modus sind (Modus 4). */
+            if ((int)_settings_client.gui.scrollwheel_scrolling == 4) {
+                _cursor.h_wheel += touch_dx;
+                _cursor.v_wheel += touch_dy;
+                _cursor.wheel_moved = true;
+            }
+            break;
+        }
 		case SDL_MOUSEMOTION: {
 			int32_t x = ev.motion.x;
 			int32_t y = ev.motion.y;
@@ -422,23 +437,18 @@ bool VideoDriver_SDL_Base::PollEvent()
 			else if (ev.wheel.y < 0) _cursor.wheel++;
 
 			float builtin_scrollwheel_multiplier = 1.0f;
-            if ((int)_settings_client.gui.scrollwheel_scrolling <= 2) {
+			if ((int)_settings_client.gui.scrollwheel_scrolling <= 2) {
 				builtin_scrollwheel_multiplier = 14.0f; // Nur für klassische Maus-Modi
 			}
 			float vx, vy;
-
+            float multiplier = builtin_scrollwheel_multiplier * (float)_settings_client.gui.scrollwheel_multiplier;
 #if SDL_VERSION_ATLEAST(2, 18, 0)
-            vx = static_cast<float>(ev.wheel.x);
-			vy = static_cast<float>(ev.wheel.y);
+			_cursor.h_wheel = static_cast<float>(ev.wheel.x)* multiplier;
+			_cursor.v_wheel = static_cast<float>(ev.wheel.y)* multiplier;
 #else
-			vx = static_cast<float>(ev.wheel.x);
-			vy = static_cast<float>(ev.wheel.y);
+			_cursor.h_wheel = static_cast<float>(ev.wheel.x)* multiplier;
+			_cursor.v_wheel = static_cast<float>(ev.wheel.y)* multiplier;
 #endif
-			/* Wir füllen die echten Achsen mit dem Multiplikator aus den Settings */
-			float multiplier = builtin_scrollwheel_multiplier * (float)_settings_client.gui.scrollwheel_multiplier;
-			_cursor.v_wheel -= vy * multiplier;
-			_cursor.h_wheel += vx * multiplier;
-
 			_cursor.wheel_moved = true;
 			break;
 		}
@@ -479,13 +489,14 @@ bool VideoDriver_SDL_Base::PollEvent()
 				_left_button_clicked = false;
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
 				_right_button_down = false;
-				/* Wir deaktivieren das Festnageln nur im neuen Modus 3 */
+				/* Wir deaktivieren das Festnageln nur im neuen Modus 3/4 */
 				if ((int)_settings_client.gui.scrollwheel_scrolling > 2) {
-					/* 1. BEAMEN: Maus auf die letzte OpenTTD-Position zwingen */
-					SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
-
+                    _cursor.fix_at = false;
 					SDL_SetWindowGrab(this->sdl_window, SDL_FALSE);
-					_cursor.fix_at = false;
+					/* Wir löschen auch die Deltas für diesen einen Frame,
+					 * damit der "Release-Ruckler" nicht als Zoom oder Panning zählt. */
+					_cursor.delta.x = 0;
+					_cursor.delta.y = 0;
 				}
 			}
 			HandleMouseEvents();
@@ -566,6 +577,9 @@ static std::optional<std::string_view> InitializeSDL()
 {
 	/* Check if the video-driver is already initialized. */
 	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return std::nullopt;
+
+	SDL_SetHintWithPriority("SDL_TOUCH_MOUSE_EVENTS", "0", SDL_HINT_DEFAULT);
+
 
 #ifdef SDL_HINT_APP_NAME
 	SDL_SetHint(SDL_HINT_APP_NAME, "OpenTTD");
