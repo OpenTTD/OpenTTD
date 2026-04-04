@@ -458,7 +458,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 					_right_button_clicked = true;
 					/* Wir aktivieren das Festnageln nur im neuen Modus 3 */
 					if ((int)_settings_client.gui.scrollwheel_scrolling > 2) {
-						_cursor.fix_at = true;
+//						_cursor.fix_at = true;
 						/* MAUS-KÄFIG AKTIVIEREN: Verhindert das Verlassen des Fensters beim Zoomen */
 						SDL_SetWindowGrab(this->sdl_window, SDL_TRUE);
 					}

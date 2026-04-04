@@ -3129,6 +3129,7 @@ void HandleMouseEvents()
 	 * But there is no company related window open anyway, so _current_company is not used. */
 	assert(HasModalProgress() || IsLocalCompany());
 
+
 	static std::chrono::steady_clock::time_point double_click_time = {};
 	static Point double_click_pos = {0, 0};
 
@@ -3174,49 +3175,105 @@ void HandleMouseEvents()
 		}
 	}
 
-	/* --- HPEP-2026: UNIFIED GESTURE ZOOM (Mode 3 & 4) --- */
+	/* --- HPEP-2026: MOTION-TRIGGERED GESTURE ZOOM (Mode 4) --- */
 	int scroll_mode = (int)_settings_client.gui.scrollwheel_scrolling;
 
-	/* --- HPEP-2026: HYPER-SENSITIVE GESTURE ZOOM (Mode 4) --- */
-	if (_right_button_down && scroll_mode > 2) {
+	if (_right_button_down && scroll_mode == 4) {
 		static float zoom_acc = 0.0f;
 		if (_right_button_clicked) {
 			zoom_acc = 0.0f;
 			_right_button_clicked = false;
-	}
-
-    float driver_mult = (float)_settings_client.gui.scrollwheel_multiplier;
-    float clean_v_wheel = _cursor.v_wheel / driver_mult;
-
-	if (scroll_mode == 4) {
-		/* Wir wichten delta.y (den Zug) etwas stärker als das Rad-Fragment */
-		zoom_acc += ((float)_cursor.delta.y * 1.5f) + (clean_v_wheel * 10.0f);
-	} else {
-		zoom_acc += clean_v_wheel * 10.0f;
-	}
-
-	/* Schwellenwert auf 15.0f gesenkt, damit der Zoom bei der 1-Finger-Plus-2-Finger Geste früher zündet */
-	if (abs(zoom_acc) > 15.0f) {
-		Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
-		if (w != nullptr) {
-			NWidgetBase *wid = w->nested_root->GetWidgetOfType(NWID_VIEWPORT);
-			if (wid == nullptr && w->window_class == WC_SMALLMAP) wid = w->nested_root->GetWidgetOfType(WWT_INSET);
-			if (wid != nullptr) w->OnMouseWheel(zoom_acc < 0 ? -1 : 1, wid->GetIndex());
+			/* Wir starten JEDEN Klick im "freien Modus" (fix_at = false) */
+			_cursor.fix_at = false;
 		}
-		zoom_acc = 0.0f;
+
+		/* ENTSCHEIDUNGSLOGIK: 
+		 * Nur wenn die vertikale Bewegung deutlich dominiert, 
+		 * frieren wir den Zeiger für den Zoom ein. */
+		if (!_cursor.fix_at) {
+			if (abs(_cursor.delta.y) > 10 && abs(_cursor.delta.y) > abs(_cursor.delta.x)) {
+				_cursor.fix_at = true;
+				/* SDL-Käfig aktivieren, damit die Maus während des Warps im Fenster bleibt */
+				VideoDriver::GetInstance()->ClaimMousePointer(); 
+			}
+		}
+
+		/* Wenn wir im Zoom-Lock sind, verarbeiten wir den Zoom */
+		if (_cursor.fix_at) {
+			float driver_mult = 2.0f * (float)_settings_client.gui.scrollwheel_multiplier;
+			float clean_v_wheel = _cursor.v_wheel / driver_mult;
+
+			zoom_acc += (float)_cursor.delta.y + (clean_v_wheel * 20.0f);
+
+			if (abs(zoom_acc) > 25.0f) {
+				Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+				if (w != nullptr) {
+					NWidgetBase *wid = w->nested_root->GetWidgetOfType(NWID_VIEWPORT);
+					if (wid == nullptr && w->window_class == WC_SMALLMAP) wid = w->nested_root->GetWidgetOfType(WWT_INSET);
+					if (wid != nullptr) w->OnMouseWheel(zoom_acc < 0 ? -1 : 1, wid->GetIndex());
+				}
+				zoom_acc = 0.0f;
+			}
+
+			/* ALLES löschen: Wir sind im Zoom-Modus, keine Panning-Energie erlauben */
+			_cursor.delta.x = 0;
+			_cursor.delta.y = 0;
+			_cursor.v_wheel = 0.0f;
+			_cursor.h_wheel = 0.0f;
+			_cursor.wheel = 0;
+			_cursor.wheel_moved = false;
+			mousewheel = 0;
+			click = MC_NONE;
+		} else {
+			/* Wenn fix_at noch false ist (z.B. bei horizontalem Wischen trotz RMB), 
+			 * lassen wir die MouseLoop normal weiterlaufen. 
+			 * Das erlaubt Panning oder Cursor-Bewegung TROTZ gedrücktem Pad! */
+		}
 	}
 
-		/* INPUT-CLEANUP: Verhindert Geister-Bewegungen in der MouseLoop */
-		_cursor.delta.x = 0;
-		_cursor.delta.y = 0;
-		_cursor.v_wheel = 0.0f;
-		_cursor.h_wheel = 0.0f;
-		_cursor.wheel_moved = false;
+	/* --- HPEP-2026: UNIFIED GESTURE ZOOM (Mode 3 & 4) --- */
+//	int scroll_mode = (int)_settings_client.gui.scrollwheel_scrolling;
 
-		mousewheel = 0; // Killt den Integer-Ghost
-		click = MC_NONE;
-		/* KEIN return; hier - wir lassen die MouseLoop für UI-Housekeeping laufen */
-	}
+	/* --- HPEP-2026: HYPER-SENSITIVE GESTURE ZOOM (Mode 4) --- */
+//	if (_right_button_down && scroll_mode > 2) {
+//		static float zoom_acc = 0.0f;
+//		if (_right_button_clicked) {
+//			zoom_acc = 0.0f;
+//			_right_button_clicked = false;
+//        }
+//
+//        float driver_mult = (float)_settings_client.gui.scrollwheel_multiplier;
+//        float clean_v_wheel = _cursor.v_wheel / driver_mult;
+//
+//        if (scroll_mode == 4) {
+//            /* Wir wichten delta.y (den Zug) etwas stärker als das Rad-Fragment */
+//            zoom_acc += ((float)_cursor.delta.y * 1.5f) + (clean_v_wheel * 10.0f);
+//        } else {
+//            zoom_acc += clean_v_wheel * 10.0f;
+//        }
+//
+//        /* Schwellenwert auf 15.0f gesenkt, damit der Zoom bei der 1-Finger-Plus-2-Finger Geste früher zündet */
+//        if (abs(zoom_acc) > 15.0f) {
+//            Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+//            if (w != nullptr) {
+//                NWidgetBase *wid = w->nested_root->GetWidgetOfType(NWID_VIEWPORT);
+//                if (wid == nullptr && w->window_class == WC_SMALLMAP) wid = w->nested_root->GetWidgetOfType(WWT_INSET);
+//                if (wid != nullptr) w->OnMouseWheel(zoom_acc < 0 ? -1 : 1, wid->GetIndex());
+//            }
+//            zoom_acc = 0.0f;
+//        }
+//
+//		/* INPUT-CLEANUP: Verhindert Geister-Bewegungen in der MouseLoop */
+//		_cursor.delta.x = 0;
+//		_cursor.delta.y = 0;
+//		_cursor.v_wheel = 0.0f;
+//		_cursor.h_wheel = 0.0f;
+//		_cursor.wheel_moved = false;
+//
+//		mousewheel = 0; // Killt den Integer-Ghost
+//		click = MC_NONE;
+//		/* KEIN return; hier - wir lassen die MouseLoop für UI-Housekeeping laufen */
+//	}
 
 	if (click == MC_LEFT && _newgrf_debug_sprite_picker.mode == SPM_WAIT_CLICK) {
 		/* Mark whole screen dirty, and wait for the next realtime tick, when drawing is finished. */
