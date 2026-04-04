@@ -2421,6 +2421,9 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 	}
 #endif
 
+	/* Update the font width cache */
+	LoadStringWidthTable(searcher->fontsizes);
+
 	if (bad_font) {
 		/* All attempts have failed. Display an error. As we do not want the string to be translated by
 		 * the translators, we 'force' it into the binary and 'load' it via a BindCString. To do this
@@ -2431,14 +2434,8 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 		builder.PutUtf8(SCC_YELLOW);
 		builder.Put("The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
 		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
-
-		/* Reset the font width */
-		LoadStringWidthTable(searcher->missing_fontsizes);
 		return;
 	}
-
-	/* Update the font with cache */
-	LoadStringWidthTable(searcher->missing_fontsizes);
 
 #if !(defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) && !defined(WITH_UNISCRIBE) && !defined(WITH_COCOA)
 	/*
