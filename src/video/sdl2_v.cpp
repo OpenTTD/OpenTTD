@@ -440,7 +440,6 @@ bool VideoDriver_SDL_Base::PollEvent()
 			if ((int)_settings_client.gui.scrollwheel_scrolling <= 2) {
 				builtin_scrollwheel_multiplier = 14.0f; // Nur für klassische Maus-Modi
 			}
-			float vx, vy;
             float multiplier = builtin_scrollwheel_multiplier * (float)_settings_client.gui.scrollwheel_multiplier;
 #if SDL_VERSION_ATLEAST(2, 18, 0)
 			_cursor.h_wheel = static_cast<float>(ev.wheel.x)* multiplier;
@@ -449,6 +448,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			_cursor.h_wheel = static_cast<float>(ev.wheel.x)* multiplier;
 			_cursor.v_wheel = static_cast<float>(ev.wheel.y)* multiplier;
 #endif
+
 			_cursor.wheel_moved = true;
 			break;
 		}

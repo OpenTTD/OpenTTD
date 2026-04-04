@@ -2522,7 +2522,7 @@ static EventState HandleViewportScroll()
 					vel_x = (vel_x * 0.9f) + (sub_input_x * accel * 0.15f);
 					axis_idle_x = 0;
 				} else {
-					if (++axis_idle_x < (6 * PHYSICS_SUBSTEPS)) vel_x *= 0.995f; 
+					if (++axis_idle_x < (6 * PHYSICS_SUBSTEPS)) vel_x *= 0.995f;
 					else vel_x *= 0.90f;
 				}
 
@@ -2530,7 +2530,7 @@ static EventState HandleViewportScroll()
 					vel_y = (vel_y * 0.9f) + (sub_input_y * accel*1.2 * 0.15f);
 					axis_idle_y = 0;
 				} else {
-					if (++axis_idle_y < (6 * PHYSICS_SUBSTEPS)) vel_y *= 0.995f; 
+					if (++axis_idle_y < (6 * PHYSICS_SUBSTEPS)) vel_y *= 0.995f;
 					else vel_y *= 0.90f;
 				}
 
@@ -2610,6 +2610,7 @@ static EventState HandleViewportScroll()
 			delta.y = _cursor.delta.y;
 		}
 	}
+
 
 	/* Create a scroll-event and send it to the window */
 	if (delta.x != 0 || delta.y != 0) _last_scroll_window->OnScroll(delta);
