@@ -2482,66 +2482,71 @@ static EventState HandleViewportScroll()
 		return ES_NOT_HANDLED;
 	}
 
-    /* --- HPEP-2026: KINETIC MOMENTUM PANNING with SNAP-REVERSAL --- */
-    if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
-        ViewportData &vp = *_last_scroll_window->viewport;
+ /* --- HPEP-2026: REFINED KINETIC MOMENTUM PANNING --- */
+	if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
+		ViewportData &vp = *_last_scroll_window->viewport;
 
-        static float vel_x = 0.0f;
-        static float vel_y = 0.0f;
-        static float subpixel_x = 0.0f;
-        static float subpixel_y = 0.0f;
+		static float vel_x = 0.0f;
+		static float vel_y = 0.0f;
+		static float subpixel_x = 0.0f;
+		static float subpixel_y = 0.0f;
 
-        /* 1. REIBUNG: Sanftes Ausgleiten */
-        vel_x *= 0.85f;
-        vel_y *= 0.85f;
+		/* 1. REIBUNG: Wert zwischen 0.55 (schwer/griffig) und 0.85 (leicht/gleitend)
+		 * Bleiben wir bei deinem Wert von 0.55f für mehr Kontrolle. */
+		vel_x *= 0.55f;
+		vel_y *= 0.55f;
 
-        if (scrollwheel_panning) {
-            float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
-            float raw_dx = _cursor.h_wheel * user_speed;
-            float raw_dy = _cursor.v_wheel * user_speed;
+		if (scrollwheel_panning) {
+			float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
+			float raw_dx = _cursor.h_wheel * user_speed;
+			float raw_dy = _cursor.v_wheel * user_speed;
 
-            /* --- SNAP-REVERSAL (Der Knotenlöser) ---
-             * Wenn der neue Input der aktuellen Bewegungsrichtung entgegensteht,
-             * löschen wir die Trägheit dieser Achse sofort. */
-            if ((raw_dx > 0.1f && vel_x < -0.1f) || (raw_dx < -0.1f && vel_x > 0.1f)) vel_x = 0.0f;
-            if ((raw_dy > 0.1f && vel_y < -0.1f) || (raw_dy < -0.1f && vel_y > 0.1f)) vel_y = 0.0f;
+			/* Snap-Reversal: Gegenbewegung löscht altes Momentum sofort */
+			if ((raw_dx > 0.1f && vel_x < -0.1f) || (raw_dx < -0.1f && vel_x > 0.1f)) vel_x = 0.0f;
+			if ((raw_dy > 0.1f && vel_y < -0.1f) || (raw_dy < -0.1f && vel_y > 0.1f)) vel_y = 0.0f;
 
-            /* Vektor-Beschleunigung für flüssige Kurven */
-            float input_velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
-            float accel_factor = (input_velocity < 1.0f) ? 1.2f : (1.2f + (input_velocity * 0.04f));
+			/* Vektor-Geschwindigkeit für die Kurve berechnen */
+			float input_velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
 
-            vel_x += raw_dx * accel_factor;
-            vel_y += raw_dy * accel_factor;
-        }
+			/* LIMITIERTE BESCHLEUNIGUNG:
+			 * - Startet bei 1.0 (kein künstlicher Sprung bei Langsamkeit)
+			 * - Steigt sanft an (+0.02 pro Pixel/Frame)
+			 * - Wird bei 2.0 (Doppelte Geschwindigkeit) gedeckelt */
+			float accel_factor = 1.0f + (input_velocity * 0.02f);
+			if (accel_factor > 2.0f) accel_factor = 2.0f;
 
-        /* 2. BEWEGUNG AUSFÜHREN */
-        subpixel_x += vel_x;
-        subpixel_y += vel_y;
+			vel_x += raw_dx * accel_factor;
+			vel_y += raw_dy * accel_factor;
+		}
 
-        int move_x = (int)subpixel_x;
-        int move_y = (int)subpixel_y;
+		/* 2. BEWEGUNG AUSFÜHREN */
+		subpixel_x += vel_x;
+		subpixel_y += vel_y;
 
-        if (move_x != 0 || move_y != 0) {
-            vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
-            vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
-            vp.dest_scrollpos_x = vp.scrollpos_x;
-            vp.dest_scrollpos_y = vp.scrollpos_y;
+		int move_x = (int)subpixel_x;
+		int move_y = (int)subpixel_y;
 
-            subpixel_x -= (float)move_x;
-            subpixel_y -= (float)move_y;
-            _last_scroll_window->SetDirty();
-        }
+		if (move_x != 0 || move_y != 0) {
+			vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
+			vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
+			vp.dest_scrollpos_x = vp.scrollpos_x;
+			vp.dest_scrollpos_y = vp.scrollpos_y;
 
-        /* Energiesparmodus bei Stillstand */
-        if (abs(vel_x) < 0.01f) vel_x = 0.0f;
-        if (abs(vel_y) < 0.01f) vel_y = 0.0f;
+			subpixel_x -= (float)move_x;
+			subpixel_y -= (float)move_y;
+			_last_scroll_window->SetDirty();
+		}
 
-        _cursor.v_wheel = 0.0f;
-        _cursor.h_wheel = 0.0f;
-        _cursor.wheel = 0;
-        _cursor.wheel_moved = false;
-        return ES_HANDLED;
-    }
+		/* Energiesparmodus */
+		if (abs(vel_x) < 0.01f) vel_x = 0.0f;
+		if (abs(vel_y) < 0.01f) vel_y = 0.0f;
+
+		_cursor.v_wheel = 0.0f;
+		_cursor.h_wheel = 0.0f;
+		_cursor.wheel = 0;
+		_cursor.wheel_moved = false;
+		return ES_HANDLED;
+	}
 
 	/* --- HPEP-2026: LIQUID PANNING (Mode 3 & 4) --- */
 	/* WICHTIG: Panning darf NUR passieren, wenn RMB NICHT gedrückt ist (sonst ist es Zoom) */
