@@ -44,7 +44,7 @@ struct CanalProperties {
 };
 
 /** Stages of loading all NewGRFs. */
-enum GrfLoadingStage : uint8_t {
+enum class GrfLoadingStage : uint8_t {
 	FileScan, ///< Load the Action 8 metadata (GRF ID, name).
 	SafetyScan, ///< Checks whether the NewGRF can be used in a static context.
 	LabelScan, ///< First step of NewGRF loading; find the 'goto' labels in the NewGRF.
