@@ -2482,50 +2482,111 @@ static EventState HandleViewportScroll()
 		return ES_NOT_HANDLED;
 	}
 
+    /* --- HPEP-2026: KINETIC MOMENTUM PANNING with SNAP-REVERSAL --- */
+    if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
+        ViewportData &vp = *_last_scroll_window->viewport;
+
+        static float vel_x = 0.0f;
+        static float vel_y = 0.0f;
+        static float subpixel_x = 0.0f;
+        static float subpixel_y = 0.0f;
+
+        /* 1. REIBUNG: Sanftes Ausgleiten */
+        vel_x *= 0.85f;
+        vel_y *= 0.85f;
+
+        if (scrollwheel_panning) {
+            float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
+            float raw_dx = _cursor.h_wheel * user_speed;
+            float raw_dy = _cursor.v_wheel * user_speed;
+
+            /* --- SNAP-REVERSAL (Der Knotenlöser) ---
+             * Wenn der neue Input der aktuellen Bewegungsrichtung entgegensteht,
+             * löschen wir die Trägheit dieser Achse sofort. */
+            if ((raw_dx > 0.1f && vel_x < -0.1f) || (raw_dx < -0.1f && vel_x > 0.1f)) vel_x = 0.0f;
+            if ((raw_dy > 0.1f && vel_y < -0.1f) || (raw_dy < -0.1f && vel_y > 0.1f)) vel_y = 0.0f;
+
+            /* Vektor-Beschleunigung für flüssige Kurven */
+            float input_velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
+            float accel_factor = (input_velocity < 1.0f) ? 1.2f : (1.2f + (input_velocity * 0.04f));
+
+            vel_x += raw_dx * accel_factor;
+            vel_y += raw_dy * accel_factor;
+        }
+
+        /* 2. BEWEGUNG AUSFÜHREN */
+        subpixel_x += vel_x;
+        subpixel_y += vel_y;
+
+        int move_x = (int)subpixel_x;
+        int move_y = (int)subpixel_y;
+
+        if (move_x != 0 || move_y != 0) {
+            vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
+            vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
+            vp.dest_scrollpos_x = vp.scrollpos_x;
+            vp.dest_scrollpos_y = vp.scrollpos_y;
+
+            subpixel_x -= (float)move_x;
+            subpixel_y -= (float)move_y;
+            _last_scroll_window->SetDirty();
+        }
+
+        /* Energiesparmodus bei Stillstand */
+        if (abs(vel_x) < 0.01f) vel_x = 0.0f;
+        if (abs(vel_y) < 0.01f) vel_y = 0.0f;
+
+        _cursor.v_wheel = 0.0f;
+        _cursor.h_wheel = 0.0f;
+        _cursor.wheel = 0;
+        _cursor.wheel_moved = false;
+        return ES_HANDLED;
+    }
+
 	/* --- HPEP-2026: LIQUID PANNING (Mode 3 & 4) --- */
 	/* WICHTIG: Panning darf NUR passieren, wenn RMB NICHT gedrückt ist (sonst ist es Zoom) */
-	if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
-		if (scrollwheel_panning) {
-			ViewportData &vp = *_last_scroll_window->viewport;
-			static float accum_x = 0.0f;
-			static float accum_y = 0.0f;
-
-			/* Wir wenden den User-Multiplikator NUR hier auf das Panning an */
-			float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
-			float raw_dx = _cursor.h_wheel * user_speed;
-			float raw_dy = _cursor.v_wheel * user_speed;
-
-			/* Vektor-Betrag berechnen: $v = \sqrt{x^2 + y^2}$ */
-			float velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
-
-			if (velocity > 0.0f) {
-				/* Beschleunigungsfaktor basierend auf Gesamtgeschwindigkeit (statt pro Achse) */
-				float accel_factor = (velocity < 1.0f) ? 1.0f : (1.0f + (velocity * 0.03f)); 
-
-				accum_x += raw_dx * accel_factor;
-				accum_y += raw_dy * accel_factor;
-
-				int move_x = (int)accum_x;
-				int move_y = (int)accum_y;
-
-				if (move_x != 0 || move_y != 0) {
-					vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
-					vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
-					vp.dest_scrollpos_x = vp.scrollpos_x;
-					vp.dest_scrollpos_y = vp.scrollpos_y;
-					accum_x -= move_x;
-					accum_y -= move_y;
-					_last_scroll_window->SetDirty();
-				}
-			}
-		}
-
-		_cursor.v_wheel = 0.0f;
-		_cursor.h_wheel = 0.0f;
-		_cursor.wheel = 0;
-		_cursor.wheel_moved = false;
-		return ES_HANDLED;
-	}
+//	if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
+//		if (scrollwheel_panning) {
+//			ViewportData &vp = *_last_scroll_window->viewport;
+//			static float accum_x = 0.0f;
+//			static float accum_y = 0.0f;
+//
+//			/* Wir wenden den User-Multiplikator NUR hier auf das Panning an */
+//			float user_speed = (float)_settings_client.gui.scrollwheel_multiplier;
+//			float raw_dx = _cursor.h_wheel * user_speed;
+//			float raw_dy = _cursor.v_wheel * user_speed;
+//
+//			/* Vektor-Betrag berechnen: $v = \sqrt{x^2 + y^2}$ */
+//			float velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
+//
+//			if (velocity > 0.0f) {
+//				/* Beschleunigungsfaktor basierend auf Gesamtgeschwindigkeit (statt pro Achse) */
+//				float accel_factor = (velocity < 1.0f) ? 1.0f : (1.0f + (velocity * 0.03f));
+//
+//				accum_x += raw_dx * accel_factor;
+//				accum_y += raw_dy * accel_factor;
+//
+//				int move_x = (int)accum_x;
+//				int move_y = (int)accum_y;
+//
+//				if (move_x != 0 || move_y != 0) {
+//					vp.scrollpos_x += ScaleByZoom(move_x, vp.zoom);
+//					vp.scrollpos_y += ScaleByZoom(move_y, vp.zoom);
+//					vp.dest_scrollpos_x = vp.scrollpos_x;
+//					vp.dest_scrollpos_y = vp.scrollpos_y;
+//					accum_x -= move_x;
+//					accum_y -= move_y;
+//					_last_scroll_window->SetDirty();
+//				}
+//			}
+//		}
+//
+//		_cursor.v_wheel = 0.0f;
+//		_cursor.h_wheel = 0.0f;
+//		_cursor.wheel = 0;
+//		_cursor.wheel_moved = false;
+//		return ES_HANDLED;
+//	}
 
 	/* ORIGINALER FALLBACK (für Smallmap und Panning ohne Touchpad-Modus) */
 	Point delta;
