@@ -432,26 +432,49 @@ bool VideoDriver_SDL_Base::PollEvent()
 		}
 
 		case SDL_MOUSEWHEEL: {
-			/* Der 'Zündfunke', den wir als funktionierend getestet haben */
-			if (ev.wheel.y > 0) _cursor.wheel--;
-			else if (ev.wheel.y < 0) _cursor.wheel++;
-
-			float builtin_scrollwheel_multiplier = 1.0f;
-			if ((int)_settings_client.gui.scrollwheel_scrolling <= 2) {
-				builtin_scrollwheel_multiplier = 14.0f; // Nur für klassische Maus-Modi
+			if (ev.wheel.y > 0) {
+				_cursor.wheel--;
+			} else if (ev.wheel.y < 0) {
+				_cursor.wheel++;
 			}
-            float multiplier = builtin_scrollwheel_multiplier * (float)_settings_client.gui.scrollwheel_multiplier;
-#if SDL_VERSION_ATLEAST(2, 18, 0)
-			_cursor.h_wheel = static_cast<float>(ev.wheel.x)* multiplier;
-			_cursor.v_wheel = static_cast<float>(ev.wheel.y)* multiplier;
-#else
-			_cursor.h_wheel = static_cast<float>(ev.wheel.x)* multiplier;
-			_cursor.v_wheel = static_cast<float>(ev.wheel.y)* multiplier;
-#endif
 
+			/* Handle 2D scrolling. */
+			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
+#if SDL_VERSION_ATLEAST(2, 18, 0)
+			_cursor.v_wheel -= ev.wheel.preciseY * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+			_cursor.h_wheel += ev.wheel.preciseX * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+#else
+			_cursor.v_wheel -= static_cast<float>(ev.wheel.y * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier);
+			_cursor.h_wheel += static_cast<float>(ev.wheel.x * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier);
+#endif
 			_cursor.wheel_moved = true;
 			break;
 		}
+
+//case SDL_MOUSEWHEEL: {
+//			/* Klassischer Zündfunke für UI-Scrolling */
+//			if (ev.wheel.y > 0) _cursor.wheel--;
+//			else if (ev.wheel.y < 0) _cursor.wheel++;
+//
+//			/* Faktor-Weiche: 14.0 für Standard (0-2), 1.0 für Liquid (3-4) */
+//			float builtin_multiplier = ((int)_settings_client.gui.scrollwheel_scrolling <= 2) ? 14.0f : 1.0f;
+//			float multiplier = builtin_multiplier * (float)_settings_client.gui.scrollwheel_multiplier;
+//
+//			/* Wir sammeln die Werte (Addition!), statt sie zu überschreiben.
+//			 * Das ist wichtig für die verlustfreie Übergabe an die Physik. */
+//#if SDL_VERSION_ATLEAST(2, 18, 0)
+//			/* Nutze echtes Hi-Res vom Touchpad */
+//			_cursor.h_wheel += static_cast<float>(ev.wheel.preciseX) * multiplier;
+//			_cursor.v_wheel -= static_cast<float>(ev.wheel.preciseY) * multiplier;
+//#else
+//			/* Fallback für alte SDL-Versionen */
+//			_cursor.h_wheel += static_cast<float>(ev.wheel.x) * multiplier;
+//			_cursor.v_wheel -= static_cast<float>(ev.wheel.y) * multiplier;
+//#endif
+//
+//			_cursor.wheel_moved = true;
+//			break;
+//		}
 
 		case SDL_MOUSEBUTTONDOWN:
 			if (_rightclick_emulate && SDL_GetModState() & KMOD_CTRL) {

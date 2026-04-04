@@ -2498,11 +2498,12 @@ static EventState HandleViewportScroll()
 		if (scrollwheel_panning) {
 			idle_frames = 0;
 			const float INTERNAL_BOOST = 40.0f;
-			const int PHYSICS_SUBSTEPS = 40.0; // Unser "Smoothness"-Faktor
+			const int PHYSICS_SUBSTEPS = 40;
+			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
 
-			/* Wir holen den Roh-Input einmalig ab */
-			float input_x = _cursor.h_wheel * INTERNAL_BOOST;
-			float input_y = _cursor.v_wheel * INTERNAL_BOOST;
+			// Vertikal invertiert für Panning-Standard
+			float input_x = _cursor.v_wheel / SCROLL_BUILTIN_MULTIPLIER * INTERNAL_BOOST;
+			float input_y = _cursor.h_wheel / SCROLL_BUILTIN_MULTIPLIER * INTERNAL_BOOST;
 
 			/* RICHTUNGS-RESET (Anti-Ei): Sofortiger Stopp bei Umkehr */
 			if ((input_x < -0.05f && vel_x > 0.1f) || (input_x > 0.05f && vel_x < -0.1f)) vel_x = 0.0f;
@@ -2517,7 +2518,7 @@ static EventState HandleViewportScroll()
 				float accel = 1.0f + (std::max(0.0f, input_speed - 1.0f) * 0.025f);
 				if (accel > 2.5f) accel = 2.5f;
 
-				/* Wir nutzen eine extrem weiche Mischung pro Substep */
+				/* X-Achse (Mix 0.9 / 0.15) */
 				if (abs(sub_input_x) > 0.0001f) {
 					vel_x = (vel_x * 0.9f) + (sub_input_x * accel * 0.15f);
 					axis_idle_x = 0;
@@ -2526,8 +2527,9 @@ static EventState HandleViewportScroll()
 					else vel_x *= 0.90f;
 				}
 
+				/* Y-Achse (Mix mit deinem 1.2 Kraft-Bonus) */
 				if (abs(sub_input_y) > 0.0001f) {
-					vel_y = (vel_y * 0.9f) + (sub_input_y * accel*1.2 * 0.15f);
+					vel_y = (vel_y * 0.9f) + (sub_input_y * accel * 1.2f * 0.15f);
 					axis_idle_y = 0;
 				} else {
 					if (++axis_idle_y < (6 * PHYSICS_SUBSTEPS)) vel_y *= 0.995f;
@@ -2538,7 +2540,6 @@ static EventState HandleViewportScroll()
 				subpixel_x += (vel_x / (float)PHYSICS_SUBSTEPS);
 				subpixel_y += (vel_y / (float)PHYSICS_SUBSTEPS);
 			}
-
 		} else {
 			/* GLOBALER STOPP (Gleiten lassen) */
 			axis_idle_x = 0; axis_idle_y = 0;
@@ -2610,7 +2611,6 @@ static EventState HandleViewportScroll()
 			delta.y = _cursor.delta.y;
 		}
 	}
-
 
 	/* Create a scroll-event and send it to the window */
 	if (delta.x != 0 || delta.y != 0) _last_scroll_window->OnScroll(delta);
