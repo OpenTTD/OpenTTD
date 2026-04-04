@@ -1354,7 +1354,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
 			std::string dest_company_name = GetString(STR_COMPANY_NAME, dest_company);
 			std::string from_company_name = GetString(STR_COMPANY_NAME, _current_company);
 
-			NetworkTextMessage(NETWORK_ACTION_GIVE_MONEY, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
+			NetworkTextMessage(NetworkAction::GiveMoney, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
 		}
 	}
 

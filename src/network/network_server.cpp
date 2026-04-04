@@ -250,7 +250,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		/* We did not receive a leave message from this client... */
 		std::string client_name = this->GetClientName();
 
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "", STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST);
+		NetworkTextMessage(NetworkAction::ClientLeave, CC_DEFAULT, false, client_name, "", STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST);
 
 		/* Inform other clients of this... strange leaving ;) */
 		for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
@@ -382,9 +382,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 		Debug(net, 1, "'{}' made an error and has been disconnected: {}", client_name, GetString(strid));
 
 		if (error == NetworkErrorCode::Kicked && !reason.empty()) {
-			NetworkTextMessage(NETWORK_ACTION_KICKED, CC_DEFAULT, false, client_name, reason, strid);
+			NetworkTextMessage(NetworkAction::ClientKicked, CC_DEFAULT, false, client_name, reason, strid);
 		} else {
-			NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "", strid);
+			NetworkTextMessage(NetworkAction::ClientLeave, CC_DEFAULT, false, client_name, "", strid);
 		}
 
 		for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
@@ -723,7 +723,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_CHAT);
 
-	p->Send_uint8 (action);
+	p->Send_uint8(to_underlying(action));
 	p->Send_uint32(client_id);
 	p->Send_bool  (self_send);
 	p->Send_string(msg);
@@ -1070,7 +1070,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet &
 
 		std::string client_name = this->GetClientName();
 
-		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name, "", this->client_id);
+		NetworkTextMessage(NetworkAction::ClientJoin, CC_DEFAULT, false, client_name, "", this->client_id);
 		InvalidateWindowData(WC_CLIENT_LIST, 0);
 
 		Debug(net, 3, "[{}] Client #{} ({}) joined as {}", ServerNetworkGameSocketHandler::GetName(), this->client_id, this->GetClientIP(), client_name);
@@ -1160,7 +1160,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 
 		/* Check if we are full - else it's possible for spectators to send a Commands::CompanyControl and the company is created regardless of max_companies! */
 		if (Company::GetNumItems() >= _settings_client.network.max_companies) {
-			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, NetworkChatDestinationType::Client, ci->client_id, "cannot create new company, server full", CLIENT_ID_SERVER);
+			NetworkServerSendChat(NetworkAction::ServerMessage, NetworkChatDestinationType::Client, ci->client_id, "cannot create new company, server full", CLIENT_ID_SERVER);
 			return NETWORK_RECV_STATUS_OKAY;
 		}
 	}
@@ -1209,7 +1209,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet &p
 
 	Debug(net, 1, "'{}' reported an error and is closing its connection: {}", client_name, GetString(strid));
 
-	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "", strid);
+	NetworkTextMessage(NetworkAction::ClientLeave, CC_DEFAULT, false, client_name, "", strid);
 
 	for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
 		if (new_cs->status >= STATUS_AUTHORIZED) {
@@ -1233,7 +1233,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet &)
 
 	/* The client wants to leave. Display this and report it to the other clients. */
 	std::string client_name = this->GetClientName();
-	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "", STR_NETWORK_MESSAGE_CLIENT_LEAVING);
+	NetworkTextMessage(NetworkAction::ClientLeave, CC_DEFAULT, false, client_name, "", STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 
 	for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
 		if (new_cs->status >= STATUS_AUTHORIZED && new_cs != this) {
@@ -1427,7 +1427,7 @@ void NetworkServerSendExternalChat(std::string_view source, TextColour colour, s
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) cs->SendExternalChat(source, colour, user, msg);
 	}
-	NetworkTextMessage(NETWORK_ACTION_EXTERNAL_CHAT, colour, false, user, msg, source);
+	NetworkTextMessage(NetworkAction::ChatExternal, colour, false, user, msg, source);
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
@@ -1437,7 +1437,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
 		return this->SendError(NetworkErrorCode::NotAuthorized);
 	}
 
-	NetworkAction action = (NetworkAction)p.Recv_uint8();
+	NetworkAction action = static_cast<NetworkAction>(p.Recv_uint8());
 	NetworkChatDestinationType desttype = static_cast<NetworkChatDestinationType>(p.Recv_uint8());
 	int dest = p.Recv_uint32();
 
@@ -1448,9 +1448,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
 
 	NetworkClientInfo *ci = this->GetInfo();
 	switch (action) {
-		case NETWORK_ACTION_CHAT:
-		case NETWORK_ACTION_CHAT_CLIENT:
-		case NETWORK_ACTION_CHAT_COMPANY:
+		case NetworkAction::ChatBroadcast:
+		case NetworkAction::ChatClient:
+		case NetworkAction::ChatTeam:
 			NetworkServerSendChat(action, desttype, dest, msg, this->client_id, data);
 			break;
 		default:
@@ -1486,7 +1486,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 
 		/* Display change */
 		if (NetworkMakeClientNameUnique(client_name)) {
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, client_name);
+			NetworkTextMessage(NetworkAction::ClientNameChange, CC_DEFAULT, false, ci->client_name, client_name);
 			ci->client_name = std::move(client_name);
 			NetworkUpdateClientInfo(ci->client_id);
 		}
@@ -1714,7 +1714,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci == nullptr) return false;
 
-	NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, true, ci->client_name, new_name);
+	NetworkTextMessage(NetworkAction::ClientNameChange, CC_DEFAULT, true, ci->client_name, new_name);
 
 	ci->client_name = new_name;
 
@@ -2059,11 +2059,11 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 
 	if (company_id == COMPANY_SPECTATOR) {
 		/* The client has joined spectators. */
-		NetworkServerSendChat(NETWORK_ACTION_COMPANY_SPECTATOR, NetworkChatDestinationType::Broadcast, 0, "", client_id);
+		NetworkServerSendChat(NetworkAction::CompanySpectator, NetworkChatDestinationType::Broadcast, 0, "", client_id);
 	} else {
 		/* The client has joined another company. */
 		std::string company_name = GetString(STR_COMPANY_NAME, company_id);
-		NetworkServerSendChat(NETWORK_ACTION_COMPANY_JOIN, NetworkChatDestinationType::Broadcast, 0, company_name, client_id);
+		NetworkServerSendChat(NetworkAction::CompanyJoin, NetworkChatDestinationType::Broadcast, 0, company_name, client_id);
 	}
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
@@ -2227,6 +2227,6 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		Command<Commands::CompanyAllowListControl>::SendNet(STR_NULL, c->index, CompanyAllowListCtrlAction::AddKey, ci->public_key);
 		Command<Commands::RenamePresident>::SendNet(STR_NULL, c->index, ci->client_name);
 
-		NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, NetworkChatDestinationType::Broadcast, 0, "", ci->client_id, c->index + 1);
+		NetworkServerSendChat(NetworkAction::CompanyNew, NetworkChatDestinationType::Broadcast, 0, "", ci->client_id, c->index + 1);
 	}
 }
