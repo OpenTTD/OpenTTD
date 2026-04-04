@@ -494,8 +494,8 @@ void ResetNewGRFData()
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;
-	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
-	_loaded_newgrf_features.tram              = TRAMWAY_REPLACE_DEPOT_NONE;
+	_loaded_newgrf_features.shore             = ShoreReplacement::None;
+	_loaded_newgrf_features.tram              = TramDepotReplacement::None;
 
 	/* Clear all GRF overrides */
 	_grf_id_overrides.clear();
@@ -1426,17 +1426,17 @@ void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdi
 /**
  * Relocates the old shore sprites at new positions.
  *
- * 1. If shore sprites are neither loaded by Action5 nor ActionA, the extra sprites from openttd(w/d).grf are used. (SHORE_REPLACE_ONLY_NEW)
- * 2. If a newgrf replaces some shore sprites by ActionA. The (maybe also replaced) grass tiles are used for corner shores. (SHORE_REPLACE_ACTION_A)
- * 3. If a newgrf replaces shore sprites by Action5 any shore replacement by ActionA has no effect. (SHORE_REPLACE_ACTION_5)
+ * 1. If shore sprites are neither loaded by Action5 nor ActionA, the extra sprites from openttd(w/d).grf are used. (ShoreReplacement::OnlyNew)
+ * 2. If a newgrf replaces some shore sprites by ActionA. The (maybe also replaced) grass tiles are used for corner shores. (ShoreReplacement::ActionA)
+ * 3. If a newgrf replaces shore sprites by Action5 any shore replacement by ActionA has no effect. (ShoreReplacement::Action5)
  */
 static void ActivateOldShore()
 {
 	/* Use default graphics, if no shore sprites were loaded.
 	 * Should not happen, as the base set's extra grf should include some. */
-	if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_A;
+	if (_loaded_newgrf_features.shore == ShoreReplacement::None) _loaded_newgrf_features.shore = ShoreReplacement::ActionA;
 
-	if (_loaded_newgrf_features.shore != SHORE_REPLACE_ACTION_5) {
+	if (_loaded_newgrf_features.shore != ShoreReplacement::Action5) {
 		DupSprite(SPR_ORIGINALSHORE_START +  1, SPR_SHORE_BASE +  1); // SLOPE_W
 		DupSprite(SPR_ORIGINALSHORE_START +  2, SPR_SHORE_BASE +  2); // SLOPE_S
 		DupSprite(SPR_ORIGINALSHORE_START +  6, SPR_SHORE_BASE +  3); // SLOPE_SW
@@ -1447,7 +1447,7 @@ static void ActivateOldShore()
 		DupSprite(SPR_ORIGINALSHORE_START +  5, SPR_SHORE_BASE + 12); // SLOPE_NE
 	}
 
-	if (_loaded_newgrf_features.shore == SHORE_REPLACE_ACTION_A) {
+	if (_loaded_newgrf_features.shore == ShoreReplacement::ActionA) {
 		DupSprite(SPR_FLAT_GRASS_TILE + 16, SPR_SHORE_BASE +  0); // SLOPE_STEEP_S
 		DupSprite(SPR_FLAT_GRASS_TILE + 17, SPR_SHORE_BASE +  5); // SLOPE_STEEP_W
 		DupSprite(SPR_FLAT_GRASS_TILE +  7, SPR_SHORE_BASE +  7); // SLOPE_WSE
@@ -1469,7 +1469,7 @@ static void ActivateOldShore()
  */
 static void ActivateOldTramDepot()
 {
-	if (_loaded_newgrf_features.tram == TRAMWAY_REPLACE_DEPOT_WITH_TRACK) {
+	if (_loaded_newgrf_features.tram == TramDepotReplacement::WithTrack) {
 		DupSprite(SPR_ROAD_DEPOT               + 0, SPR_TRAMWAY_DEPOT_NO_TRACK + 0); // use road depot graphics for "no tracks"
 		DupSprite(SPR_TRAMWAY_DEPOT_WITH_TRACK + 1, SPR_TRAMWAY_DEPOT_NO_TRACK + 1);
 		DupSprite(SPR_ROAD_DEPOT               + 2, SPR_TRAMWAY_DEPOT_NO_TRACK + 2); // use road depot graphics for "no tracks"
