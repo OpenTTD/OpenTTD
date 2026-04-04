@@ -2502,8 +2502,8 @@ static EventState HandleViewportScroll()
 			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
 
 			// Vertikal invertiert für Panning-Standard
-			float input_x = _cursor.v_wheel / SCROLL_BUILTIN_MULTIPLIER * INTERNAL_BOOST;
-			float input_y = _cursor.h_wheel / SCROLL_BUILTIN_MULTIPLIER * INTERNAL_BOOST;
+			float input_x = _cursor.h_wheel / SCROLL_BUILTIN_MULTIPLIER * INTERNAL_BOOST;
+			float input_y = _cursor.v_wheel / SCROLL_BUILTIN_MULTIPLIER * INTERNAL_BOOST;
 
 			/* RICHTUNGS-RESET (Anti-Ei): Sofortiger Stopp bei Umkehr */
 			if ((input_x < -0.05f && vel_x > 0.1f) || (input_x > 0.05f && vel_x < -0.1f)) vel_x = 0.0f;
