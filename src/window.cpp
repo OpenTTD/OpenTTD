@@ -2482,7 +2482,7 @@ static EventState HandleViewportScroll()
 		return ES_NOT_HANDLED;
 	}
 
- /* --- HPEP-2026: REFINED KINETIC MOMENTUM PANNING --- */
+/* --- HPEP-2026: REFINED MOMENTUM PANNING (UI-Friendly) --- */
 	if (liquid_mode && !_right_button_down && _last_scroll_window->viewport != nullptr) {
 		ViewportData &vp = *_last_scroll_window->viewport;
 
@@ -2491,8 +2491,7 @@ static EventState HandleViewportScroll()
 		static float subpixel_x = 0.0f;
 		static float subpixel_y = 0.0f;
 
-		/* 1. REIBUNG: Wert zwischen 0.55 (schwer/griffig) und 0.85 (leicht/gleitend)
-		 * Bleiben wir bei deinem Wert von 0.55f für mehr Kontrolle. */
+		/* 1. REIBUNG: Ausgleiten */
 		vel_x *= 0.55f;
 		vel_y *= 0.55f;
 
@@ -2501,17 +2500,11 @@ static EventState HandleViewportScroll()
 			float raw_dx = _cursor.h_wheel * user_speed;
 			float raw_dy = _cursor.v_wheel * user_speed;
 
-			/* Snap-Reversal: Gegenbewegung löscht altes Momentum sofort */
+			/* Snap-Reversal */
 			if ((raw_dx > 0.1f && vel_x < -0.1f) || (raw_dx < -0.1f && vel_x > 0.1f)) vel_x = 0.0f;
 			if ((raw_dy > 0.1f && vel_y < -0.1f) || (raw_dy < -0.1f && vel_y > 0.1f)) vel_y = 0.0f;
 
-			/* Vektor-Geschwindigkeit für die Kurve berechnen */
 			float input_velocity = sqrt(raw_dx * raw_dx + raw_dy * raw_dy);
-
-			/* LIMITIERTE BESCHLEUNIGUNG:
-			 * - Startet bei 1.0 (kein künstlicher Sprung bei Langsamkeit)
-			 * - Steigt sanft an (+0.02 pro Pixel/Frame)
-			 * - Wird bei 2.0 (Doppelte Geschwindigkeit) gedeckelt */
 			float accel_factor = 1.0f + (input_velocity * 0.02f);
 			if (accel_factor > 2.0f) accel_factor = 2.0f;
 
@@ -2537,14 +2530,23 @@ static EventState HandleViewportScroll()
 			_last_scroll_window->SetDirty();
 		}
 
-		/* Energiesparmodus */
+		/* Stillstand-Check */
 		if (abs(vel_x) < 0.01f) vel_x = 0.0f;
 		if (abs(vel_y) < 0.01f) vel_y = 0.0f;
 
+		/* --- DER UI-BYPASS (NEU) --- */
+		/* Wenn wir nicht aktiv pannen (kein Rad/Wisch-Event)
+		 * UND die Karte sich fast nicht mehr bewegt, geben wir das Event frei! */
+		if (!scrollwheel_panning && abs(vel_x) < 0.5f && abs(vel_y) < 0.5f) {
+			return ES_NOT_HANDLED; // Lässt Tooltips und UI-Klicks wieder zu
+		}
+
+		/* Nur wenn wir aktiv pannen, "fressen" wir das Rad-Event */
 		_cursor.v_wheel = 0.0f;
 		_cursor.h_wheel = 0.0f;
 		_cursor.wheel = 0;
 		_cursor.wheel_moved = false;
+
 		return ES_HANDLED;
 	}
 
