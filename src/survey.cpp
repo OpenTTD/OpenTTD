@@ -79,6 +79,8 @@
 
 #include "safeguards.h"
 
+#ifndef DOXYGEN_API
+
 NLOHMANN_JSON_SERIALIZE_ENUM(GRFStatus, {
 	{GRFStatus::GCS_UNKNOWN, "unknown"},
 	{GRFStatus::GCS_DISABLED, "disabled"},
@@ -97,6 +99,7 @@ NLOHMANN_JSON_SERIALIZE_ENUM(SocialIntegrationPlugin::State, {
 	{SocialIntegrationPlugin::State::INVALID_SIGNATURE, "invalid_signature"},
 })
 
+#endif /* DOXYGEN_API */
 
 /** Lookup table to convert a VehicleType to a string. */
 static const std::string _vehicle_type_to_string[] = {
