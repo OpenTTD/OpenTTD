@@ -647,11 +647,11 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 	std::optional<FileHandle> file = std::nullopt;
 	size_t size;
 	if (this->GetAPIName().starts_with("AI")) {
-		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
-		if (!file.has_value()) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
+		file = FioFOpenFile(filename, "rb", Subdirectory::Ai, &size);
+		if (!file.has_value()) file = FioFOpenFile(filename, "rb", Subdirectory::AiLibrary, &size);
 	} else if (this->GetAPIName().starts_with("GS")) {
-		file = FioFOpenFile(filename, "rb", GAME_DIR, &size);
-		if (!file.has_value()) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
+		file = FioFOpenFile(filename, "rb", Subdirectory::Gs, &size);
+		if (!file.has_value()) file = FioFOpenFile(filename, "rb", Subdirectory::GsLibrary, &size);
 	} else {
 		NOT_REACHED();
 	}

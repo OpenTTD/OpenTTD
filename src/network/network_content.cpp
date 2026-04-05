@@ -370,7 +370,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 static std::string GetFullFilename(const ContentInfo &ci, bool compressed)
 {
 	Subdirectory dir = GetContentInfoSubDir(ci.type);
-	if (dir == NO_DIRECTORY) return {};
+	if (dir == Subdirectory::None) return {};
 
 	std::string buf = FioGetDirectory(SP_AUTODOWNLOAD_DIR, dir);
 	buf += ci.filename;
@@ -527,7 +527,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 		FioRemove(GetFullFilename(*this->cur_info, true));
 
 		Subdirectory sd = GetContentInfoSubDir(this->cur_info->type);
-		if (sd == NO_DIRECTORY) NOT_REACHED();
+		if (sd == Subdirectory::None) NOT_REACHED();
 
 		TarScanner ts;
 		std::string fname = GetFullFilename(*this->cur_info, false);
@@ -535,7 +535,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 		if (this->cur_info->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
-			ExtractTar(fname, BASESET_DIR);
+			ExtractTar(fname, Subdirectory::Baseset);
 			FioRemove(fname);
 		}
 

@@ -157,7 +157,7 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 			file->missing_warning = item->value.value();
 		}
 
-		file->check_result = T::CheckMD5(file, BASESET_DIR);
+		file->check_result = T::CheckMD5(file, Subdirectory::Baseset);
 		switch (file->check_result) {
 			case MD5File::CR_UNKNOWN:
 				break;
@@ -191,7 +191,7 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 	auto set = std::make_unique<Tbase_set>();
 	IniFile ini{};
 	std::string path{ filename, basepath_length };
-	ini.LoadFromDisk(path, BASESET_DIR);
+	ini.LoadFromDisk(path, Subdirectory::Baseset);
 
 	auto psep = path.rfind(PATHSEPCHAR);
 	if (psep != std::string::npos) {

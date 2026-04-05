@@ -366,7 +366,7 @@ void TextfileWindow::NavigateHistory(int delta)
 	if (this->history[this->history_pos].filepath != this->filepath) {
 		this->filepath = this->history[this->history_pos].filepath;
 		this->filename = this->filepath.substr(this->filepath.find_last_of(PATHSEP) + 1);
-		this->LoadTextfile(this->filepath, NO_DIRECTORY);
+		this->LoadTextfile(this->filepath, Subdirectory::None);
 	}
 
 	this->SetWidgetDisabledState(WID_TF_NAVFORWARD, this->history_pos + 1 >= this->history.size());
@@ -445,7 +445,7 @@ void TextfileWindow::NavigateToFile(std::string newfile, size_t line)
 
 	/* Paste the two together and check file exists. */
 	newpath = newpath + newfile;
-	if (!FioCheckFileExists(newpath, NO_DIRECTORY)) return;
+	if (!FioCheckFileExists(newpath, Subdirectory::None)) return;
 
 	/* Update history. */
 	this->AppendHistory(newpath);
@@ -454,7 +454,7 @@ void TextfileWindow::NavigateToFile(std::string newfile, size_t line)
 	this->filepath = newpath;
 	this->filename = newpath.substr(newpath.find_last_of(PATHSEP) + 1);
 
-	this->LoadTextfile(this->filepath, NO_DIRECTORY);
+	this->LoadTextfile(this->filepath, Subdirectory::None);
 
 	this->GetScrollbar(WID_TF_HSCROLLBAR)->SetPosition(0);
 	this->GetScrollbar(WID_TF_VSCROLLBAR)->SetPosition(0);

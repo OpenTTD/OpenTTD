@@ -167,7 +167,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 		return false;
 	}
 
-	std::string icon_path = FioFindFullPath(BASESET_DIR, "openttd.32.bmp");
+	std::string icon_path = FioFindFullPath(Subdirectory::Baseset, "openttd.32.bmp");
 	if (!icon_path.empty()) {
 		/* Give the application an icon */
 		SDL_Surface *icon = SDL_LoadBMP(icon_path.c_str());

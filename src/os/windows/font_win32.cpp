@@ -352,7 +352,7 @@ private:
 			convert_to_fs(font_name, fontPath);
 		} else {
 			/* Scan the search-paths to see if it can be found. */
-			std::string full_font = FioFindFullPath(BASE_DIR, font_name);
+			std::string full_font = FioFindFullPath(Subdirectory::Base, font_name);
 			if (!full_font.empty()) {
 				convert_to_fs(font_name, fontPath);
 			}

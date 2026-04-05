@@ -184,19 +184,19 @@ bool NetworkContentSocketHandler::ReceiveServerContent(Packet &) { return this->
 Subdirectory GetContentInfoSubDir(ContentType type)
 {
 	switch (type) {
-		default: return NO_DIRECTORY;
-		case CONTENT_TYPE_AI:           return AI_DIR;
-		case CONTENT_TYPE_AI_LIBRARY:   return AI_LIBRARY_DIR;
-		case CONTENT_TYPE_GAME:         return GAME_DIR;
-		case CONTENT_TYPE_GAME_LIBRARY: return GAME_LIBRARY_DIR;
-		case CONTENT_TYPE_NEWGRF:       return NEWGRF_DIR;
+		default: return Subdirectory::None;
+		case CONTENT_TYPE_AI: return Subdirectory::Ai;
+		case CONTENT_TYPE_AI_LIBRARY: return Subdirectory::AiLibrary;
+		case CONTENT_TYPE_GAME: return Subdirectory::Gs;
+		case CONTENT_TYPE_GAME_LIBRARY: return Subdirectory::GsLibrary;
+		case CONTENT_TYPE_NEWGRF: return Subdirectory::NewGrf;
 
 		case CONTENT_TYPE_BASE_GRAPHICS:
 		case CONTENT_TYPE_BASE_SOUNDS:
 		case CONTENT_TYPE_BASE_MUSIC:
-			return BASESET_DIR;
+			return Subdirectory::Baseset;
 
-		case CONTENT_TYPE_SCENARIO:     return SCENARIO_DIR;
-		case CONTENT_TYPE_HEIGHTMAP:    return HEIGHTMAP_DIR;
+		case CONTENT_TYPE_SCENARIO: return Subdirectory::Scenario;
+		case CONTENT_TYPE_HEIGHTMAP: return Subdirectory::Heightmap;
 	}
 }

@@ -55,7 +55,7 @@ void AIInstance::RegisterAPI()
 	/* Register all classes */
 	SQAI_RegisterAll(*this->engine);
 
-	if (!this->LoadCompatibilityScripts(AI_DIR, AIInfo::ApiVersions)) this->Died();
+	if (!this->LoadCompatibilityScripts(Subdirectory::Ai, AIInfo::ApiVersions)) this->Died();
 }
 
 void AIInstance::Died()

@@ -143,7 +143,7 @@ struct BaseSet {
 	std::optional<std::string> GetTextfile(TextfileType type) const
 	{
 		for (const auto &file : this->files) {
-			auto textfile = ::GetTextfile(type, BASESET_DIR, file.filename);
+			auto textfile = ::GetTextfile(type, Subdirectory::Baseset, file.filename);
 			if (textfile.has_value()) {
 				return textfile;
 			}
@@ -198,8 +198,8 @@ public:
 	{
 		BaseMedia<Tbase_set> fs;
 		/* Searching in tars is only done in the old "data" directories basesets. */
-		uint num = fs.Scan(GetExtension(), Tbase_set::SEARCH_IN_TARS ? OLD_DATA_DIR : OLD_GM_DIR, Tbase_set::SEARCH_IN_TARS);
-		return num + fs.Scan(GetExtension(), BASESET_DIR, Tbase_set::SEARCH_IN_TARS);
+		uint num = fs.Scan(GetExtension(), Tbase_set::SEARCH_IN_TARS ? Subdirectory::OldData : Subdirectory::OldGm, Tbase_set::SEARCH_IN_TARS);
+		return num + fs.Scan(GetExtension(), Subdirectory::Baseset, Tbase_set::SEARCH_IN_TARS);
 	}
 
 	/**

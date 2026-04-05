@@ -369,7 +369,7 @@ static void ProcessIniFile(std::string_view fname)
 	static const IniLoadFile::IniGroupNameList seq_groups = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME};
 
 	SettingsIniFile ini{{}, seq_groups};
-	ini.LoadFromDisk(fname, NO_DIRECTORY);
+	ini.LoadFromDisk(fname, Subdirectory::None);
 
 	DumpGroup(ini, PREAMBLE_GROUP_NAME);
 	DumpSections(ini);

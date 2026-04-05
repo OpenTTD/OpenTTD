@@ -315,7 +315,7 @@ int HotkeyList::CheckMatch(uint16_t keycode, bool global_only) const
 static void SaveLoadHotkeys(bool save)
 {
 	IniFile ini{};
-	ini.LoadFromDisk(_hotkeys_file, NO_DIRECTORY);
+	ini.LoadFromDisk(_hotkeys_file, Subdirectory::None);
 
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (save) {

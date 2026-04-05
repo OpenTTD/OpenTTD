@@ -244,7 +244,7 @@ public:
 
 		if (error != FT_Err_Ok) {
 			/* Check if font is a relative filename in one of our search-paths. */
-			std::string full_font = FioFindFullPath(BASE_DIR, font_name);
+			std::string full_font = FioFindFullPath(Subdirectory::Base, font_name);
 			if (!full_font.empty()) {
 				error = FT_New_Face(_ft_library, full_font.c_str(), 0, &face);
 			}

@@ -331,7 +331,7 @@ private:
 			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, font_name.c_str(), kCFStringEncodingUTF8));
 		} else {
 			/* Scan the search-paths to see if it can be found. */
-			std::string full_font = FioFindFullPath(BASE_DIR, font_name);
+			std::string full_font = FioFindFullPath(Subdirectory::Base, font_name);
 			if (!full_font.empty()) {
 				path.reset(CFStringCreateWithCString(kCFAllocatorDefault, full_font.c_str(), kCFStringEncodingUTF8));
 			}

@@ -155,7 +155,7 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 	png_structp png_ptr = nullptr;
 	png_infop info_ptr  = nullptr;
 
-	auto fp = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
+	auto fp = FioFOpenFile(filename, "rb", Subdirectory::Heightmap);
 	if (!fp.has_value()) {
 		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WL_ERROR);
 		return false;
@@ -281,13 +281,13 @@ static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &inf
  */
 static bool ReadHeightmapBMP(std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
-	auto f = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
+	auto f = FioFOpenFile(filename, "rb", Subdirectory::Heightmap);
 	if (!f.has_value()) {
 		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WL_ERROR);
 		return false;
 	}
 
-	RandomAccessFile file(filename, HEIGHTMAP_DIR);
+	RandomAccessFile file(filename, Subdirectory::Heightmap);
 	BmpInfo info{};
 	BmpData data{};
 
