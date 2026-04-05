@@ -14,14 +14,14 @@
 #include "misc/autorelease.hpp"
 
 /** The different abstract types of files that the system knows about. */
-enum AbstractFileType : uint8_t {
-	FT_NONE,      ///< nothing to do
-	FT_SAVEGAME,  ///< old or new savegame
-	FT_SCENARIO,  ///< old or new scenario
-	FT_HEIGHTMAP, ///< heightmap file
-	FT_TOWN_DATA, ///< town data file
+enum class AbstractFileType : uint8_t {
+	None, ///< nothing to do
+	Savegame, ///< old or new savegame
+	Scenario, ///< old or new scenario
+	Heightmap, ///< heightmap file
+	TownData, ///< town data file
 
-	FT_INVALID = 7, ///< Invalid or unknown file type.
+	Invalid = 7, ///< Invalid or unknown file type.
 };
 
 /** Kinds of files in each #AbstractFileType. */
@@ -67,20 +67,20 @@ struct FiosType {
 	constexpr bool operator==(const FiosType &) const noexcept = default;
 };
 
-constexpr FiosType FIOS_TYPE_DRIVE{FT_NONE, DFT_FIOS_DRIVE};
-constexpr FiosType FIOS_TYPE_PARENT{FT_NONE, DFT_FIOS_PARENT};
-constexpr FiosType FIOS_TYPE_DIR{FT_NONE, DFT_FIOS_DIR};
-constexpr FiosType FIOS_TYPE_DIRECT{FT_NONE, DFT_FIOS_DIRECT};
+constexpr FiosType FIOS_TYPE_DRIVE{AbstractFileType::None, DFT_FIOS_DRIVE};
+constexpr FiosType FIOS_TYPE_PARENT{AbstractFileType::None, DFT_FIOS_PARENT};
+constexpr FiosType FIOS_TYPE_DIR{AbstractFileType::None, DFT_FIOS_DIR};
+constexpr FiosType FIOS_TYPE_DIRECT{AbstractFileType::None, DFT_FIOS_DIRECT};
 
-constexpr FiosType FIOS_TYPE_FILE{FT_SAVEGAME, DFT_GAME_FILE};
-constexpr FiosType FIOS_TYPE_OLDFILE{FT_SAVEGAME, DFT_OLD_GAME_FILE};
-constexpr FiosType FIOS_TYPE_SCENARIO{FT_SCENARIO, DFT_GAME_FILE};
-constexpr FiosType FIOS_TYPE_OLD_SCENARIO{FT_SCENARIO, DFT_OLD_GAME_FILE};
-constexpr FiosType FIOS_TYPE_PNG{FT_HEIGHTMAP, DFT_HEIGHTMAP_PNG};
-constexpr FiosType FIOS_TYPE_BMP{FT_HEIGHTMAP, DFT_HEIGHTMAP_BMP};
-constexpr FiosType FIOS_TYPE_JSON{FT_TOWN_DATA, DFT_TOWN_DATA_JSON};
+constexpr FiosType FIOS_TYPE_FILE{AbstractFileType::Savegame, DFT_GAME_FILE};
+constexpr FiosType FIOS_TYPE_OLDFILE{AbstractFileType::Savegame, DFT_OLD_GAME_FILE};
+constexpr FiosType FIOS_TYPE_SCENARIO{AbstractFileType::Scenario, DFT_GAME_FILE};
+constexpr FiosType FIOS_TYPE_OLD_SCENARIO{AbstractFileType::Scenario, DFT_OLD_GAME_FILE};
+constexpr FiosType FIOS_TYPE_PNG{AbstractFileType::Heightmap, DFT_HEIGHTMAP_PNG};
+constexpr FiosType FIOS_TYPE_BMP{AbstractFileType::Heightmap, DFT_HEIGHTMAP_BMP};
+constexpr FiosType FIOS_TYPE_JSON{AbstractFileType::TownData, DFT_TOWN_DATA_JSON};
 
-constexpr FiosType FIOS_TYPE_INVALID{FT_INVALID, DFT_INVALID};
+constexpr FiosType FIOS_TYPE_INVALID{AbstractFileType::Invalid, DFT_INVALID};
 
 /**
  * The different kinds of subdirectories OpenTTD uses

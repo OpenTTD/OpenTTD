@@ -3455,7 +3455,7 @@ std::string GenerateDefaultSaveName()
  */
 void FileToSaveLoad::SetMode(const FiosType &ft, SaveLoadOperation fop)
 {
-	if (ft.abstract == FT_INVALID || ft.abstract == FT_NONE) {
+	if (ft.abstract == AbstractFileType::Invalid || ft.abstract == AbstractFileType::None) {
 		this->file_op = SLO_INVALID;
 		this->ftype = FIOS_TYPE_INVALID;
 		return;

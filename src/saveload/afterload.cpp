@@ -258,7 +258,7 @@ static void InitializeWindowsAndCaches()
 		/* For each company, verify (while loading a scenario) that the inauguration date is the current year and set it
 		 * accordingly if it is not the case.  No need to set it on companies that are not been used already,
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
-		if (_file_to_saveload.ftype.abstract == FT_SCENARIO && c->inaugurated_year != EconomyTime::MIN_YEAR) {
+		if (_file_to_saveload.ftype.abstract == AbstractFileType::Scenario && c->inaugurated_year != EconomyTime::MIN_YEAR) {
 			c->inaugurated_year = TimerGameEconomy::year;
 		}
 	}

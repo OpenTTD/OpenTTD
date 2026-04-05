@@ -1261,7 +1261,7 @@ public:
 				break;
 			}
 			case WID_TF_LOAD_FROM_FILE:
-				ShowSaveLoadDialog(FT_TOWN_DATA, SLO_LOAD);
+				ShowSaveLoadDialog(AbstractFileType::TownData, SLO_LOAD);
 				break;
 
 			case WID_TF_EXPAND_ALL_TOWNS:

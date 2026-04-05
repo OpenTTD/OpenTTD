@@ -405,17 +405,17 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 {
 	if (_game_mode == GM_EDITOR) {
 		switch (SaveLoadEditorMenuEntries(index)) {
-			case SaveLoadEditorMenuEntries::SaveScenario: ShowSaveLoadDialog(FT_SCENARIO, SLO_SAVE); break;
-			case SaveLoadEditorMenuEntries::LoadScenario: ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD); break;
-			case SaveLoadEditorMenuEntries::SaveHeightmap: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_SAVE); break;
-			case SaveLoadEditorMenuEntries::LoadHeightmap: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD); break;
+			case SaveLoadEditorMenuEntries::SaveScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SLO_SAVE); break;
+			case SaveLoadEditorMenuEntries::LoadScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SLO_LOAD); break;
+			case SaveLoadEditorMenuEntries::SaveHeightmap: ShowSaveLoadDialog(AbstractFileType::Heightmap, SLO_SAVE); break;
+			case SaveLoadEditorMenuEntries::LoadHeightmap: ShowSaveLoadDialog(AbstractFileType::Heightmap, SLO_LOAD); break;
 			case SaveLoadEditorMenuEntries::ExitToMainMenu: AskExitToGameMenu(); break;
 			case SaveLoadEditorMenuEntries::ExitGame: HandleExitGameRequest(); break;
 		}
 	} else {
 		switch (SaveLoadNormalMenuEntries(index)) {
-			case SaveLoadNormalMenuEntries::SaveGame: ShowSaveLoadDialog(FT_SAVEGAME, SLO_SAVE); break;
-			case SaveLoadNormalMenuEntries::LoadGame: ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
+			case SaveLoadNormalMenuEntries::SaveGame: ShowSaveLoadDialog(AbstractFileType::Savegame, SLO_SAVE); break;
+			case SaveLoadNormalMenuEntries::LoadGame: ShowSaveLoadDialog(AbstractFileType::Savegame, SLO_LOAD); break;
 			case SaveLoadNormalMenuEntries::ExitToMainMenu: AskExitToGameMenu(); break;
 			case SaveLoadNormalMenuEntries::ExitGame: HandleExitGameRequest(); break;
 		}
@@ -2047,7 +2047,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
 			case MTHK_SETTINGS: ShowGameOptions(); break;
 			case MTHK_SAVEGAME: MenuClickSaveLoad(); break;
-			case MTHK_LOADGAME: ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
+			case MTHK_LOADGAME: ShowSaveLoadDialog(AbstractFileType::Savegame, SLO_LOAD); break;
 			case MTHK_SMALLMAP: ShowSmallMap(); break;
 			case MTHK_TOWNDIRECTORY: ShowTownDirectory(); break;
 			case MTHK_SUBSIDIES: ShowSubsidiesList(); break;
