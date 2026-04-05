@@ -432,7 +432,7 @@ struct FileToSaveLoad {
 	std::string name;                ///< Name of the file.
 	EncodedString title;             ///< Internal name of the game.
 
-	void SetMode(const FiosType &ft, SaveLoadOperation fop = SLO_LOAD);
+	void SetMode(const FiosType &ft, SaveLoadOperation fop = SaveLoadOperation::Load);
 	void Set(const FiosItem &item);
 };
 

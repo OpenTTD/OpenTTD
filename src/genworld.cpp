@@ -217,7 +217,7 @@ static void _GenerateWorld()
 
 		if (_debug_desync_level > 0) {
 			std::string name = fmt::format("dmp_cmds_{:08x}_{:08x}.sav", _settings_game.game_creation.generation_seed, TimerGameEconomy::date);
-			SaveOrLoad(name, SLO_SAVE, DetailedFileType::GameFile, AUTOSAVE_DIR, false);
+			SaveOrLoad(name, SaveLoadOperation::Save, DetailedFileType::GameFile, AUTOSAVE_DIR, false);
 		}
 	} catch (AbortGenerateWorldSignal&) {
 		CleanupGeneration();

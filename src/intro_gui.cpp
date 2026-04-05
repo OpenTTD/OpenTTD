@@ -304,15 +304,15 @@ struct SelectGameWindow : public Window {
 				break;
 			case WID_SGI_LOAD_GAME:
 				_is_network_server = false;
-				ShowSaveLoadDialog(AbstractFileType::Savegame, SLO_LOAD);
+				ShowSaveLoadDialog(AbstractFileType::Savegame, SaveLoadOperation::Load);
 				break;
 			case WID_SGI_PLAY_SCENARIO:
 				_is_network_server = false;
-				ShowSaveLoadDialog(AbstractFileType::Scenario, SLO_LOAD);
+				ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Load);
 				break;
 			case WID_SGI_PLAY_HEIGHTMAP:
 				_is_network_server = false;
-				ShowSaveLoadDialog(AbstractFileType::Heightmap,SLO_LOAD);
+				ShowSaveLoadDialog(AbstractFileType::Heightmap,SaveLoadOperation::Load);
 				break;
 			case WID_SGI_EDIT_SCENARIO:
 				_is_network_server = false;
