@@ -11,16 +11,24 @@ jobs:
   preview:
     name: Publish preview
 
-    environment:
-      name: preview
-      url: https://preview.openttd.org/pr${{ steps.pr.outputs.number }}/
-
     runs-on: ubuntu-latest
     if: >
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
 
     steps:
+    - name: Create deployment
+      id: deployment
+      run: |
+        curl -L \
+        -X POST \
+        -H "Accept: application/vnd.github+json" \
+        -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+        -H "X-GitHub-Api-Version: 2026-03-10" \
+        https://api.github.com/repos/${{ github.repository }}/deployments \
+        -d '{"ref":"${{ github.event.workflow_run.head_branch }}","environment":"preview","required_contexts":[]}' \
+        | jq --raw-output0 '"url=\(.statuses_url)"' >> $GITHUB_OUTPUT
+
     - name: Download artifacts
       uses: actions/download-artifact@v8
       with:
@@ -39,7 +47,7 @@ jobs:
         accountId: ${{ secrets.PREVIEW_CLOUDFLARE_ACCOUNT_ID }}
         command: pages deploy public --project-name=${{ vars.PREVIEW_CLOUDFLARE_PROJECT_NAME }} --branch pr${{ steps.pr.outputs.number }}
 
-    - name: Report status
+    - name: Update deployment
       if: always()
       run: |
         curl -L \
@@ -47,5 +55,5 @@ jobs:
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
         -H "X-GitHub-Api-Version: 2026-03-10" \
-        https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.event.workflow_run.head_sha }} \
-        -d '{"state":"${{ job.status }}","target_url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","context":"Publish preview"}'
+        ${{ steps.deployment.outputs.url }} \
+        -d '{"state":"${{ job.status }}","log_url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","environment_url":"https://preview.openttd.org/pr${{ steps.pr.outputs.number }}/"}'
