@@ -120,9 +120,9 @@ public:
 	bool file_list_valid = false; ///< If set, the file list is valid.
 };
 
-static ConsoleFileList _console_file_list_savegame{FT_SAVEGAME, true}; ///< File storage cache for savegames.
-static ConsoleFileList _console_file_list_scenario{FT_SCENARIO, false}; ///< File storage cache for scenarios.
-static ConsoleFileList _console_file_list_heightmap{FT_HEIGHTMAP, false}; ///< File storage cache for heightmaps.
+static ConsoleFileList _console_file_list_savegame{AbstractFileType::Savegame, true}; ///< File storage cache for savegames.
+static ConsoleFileList _console_file_list_scenario{AbstractFileType::Scenario, false}; ///< File storage cache for scenarios.
+static ConsoleFileList _console_file_list_heightmap{AbstractFileType::Heightmap, false}; ///< File storage cache for heightmaps.
 
 /****************
  * command hooks
@@ -467,7 +467,7 @@ static bool ConLoad(std::span<std::string_view> argv)
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_SAVEGAME) {
+		if (item->type.abstract == AbstractFileType::Savegame) {
 			_switch_mode = SM_LOAD_GAME;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -494,7 +494,7 @@ static bool ConLoadScenario(std::span<std::string_view> argv)
 	_console_file_list_scenario.ValidateFileList();
 	const FiosItem *item = _console_file_list_scenario.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_SCENARIO) {
+		if (item->type.abstract == AbstractFileType::Scenario) {
 			_switch_mode = SM_LOAD_GAME;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -521,7 +521,7 @@ static bool ConLoadHeightmap(std::span<std::string_view> argv)
 	_console_file_list_heightmap.ValidateFileList();
 	const FiosItem *item = _console_file_list_heightmap.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_HEIGHTMAP) {
+		if (item->type.abstract == AbstractFileType::Heightmap) {
 			_switch_mode = SM_START_HEIGHTMAP;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -548,7 +548,7 @@ static bool ConRemove(std::span<std::string_view> argv)
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_SAVEGAME) {
+		if (item->type.abstract == AbstractFileType::Savegame) {
 			if (!FioRemove(item->name)) {
 				IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
 			}
@@ -1407,7 +1407,7 @@ static bool ConReload(std::span<std::string_view> argv)
 		return true;
 	}
 
-	if (_file_to_saveload.ftype.abstract == FT_NONE || _file_to_saveload.ftype.abstract == FT_INVALID) {
+	if (_file_to_saveload.ftype.abstract == AbstractFileType::None || _file_to_saveload.ftype.abstract == AbstractFileType::Invalid) {
 		IConsolePrint(CC_ERROR, "No game loaded to reload.");
 		return true;
 	}

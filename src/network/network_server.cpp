@@ -1874,12 +1874,12 @@ static void NetworkRestartMap()
 {
 	_settings_newgame.game_creation.generation_seed = GENERATE_NEW_SEED;
 	switch (_file_to_saveload.ftype.abstract) {
-		case FT_SAVEGAME:
-		case FT_SCENARIO:
+		case AbstractFileType::Savegame:
+		case AbstractFileType::Scenario:
 			_switch_mode = SM_LOAD_GAME;
 			break;
 
-		case FT_HEIGHTMAP:
+		case AbstractFileType::Heightmap:
 			_switch_mode = SM_START_HEIGHTMAP;
 			break;
 

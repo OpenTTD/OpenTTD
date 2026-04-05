@@ -60,22 +60,22 @@ void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperati
 
 	assert(fop == SLO_LOAD || fop == SLO_SAVE);
 	switch (abstract_filetype) {
-		case FT_NONE:
+		case AbstractFileType::None:
 			break;
 
-		case FT_SAVEGAME:
+		case AbstractFileType::Savegame:
 			FiosGetSavegameList(fop, show_dirs, *this);
 			break;
 
-		case FT_SCENARIO:
+		case AbstractFileType::Scenario:
 			FiosGetScenarioList(fop, show_dirs, *this);
 			break;
 
-		case FT_HEIGHTMAP:
+		case AbstractFileType::Heightmap:
 			FiosGetHeightmapList(fop, show_dirs, *this);
 			break;
 
-		case FT_TOWN_DATA:
+		case AbstractFileType::TownData:
 			FiosGetTownDataList(fop, show_dirs, *this);
 			break;
 

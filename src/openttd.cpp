@@ -586,9 +586,9 @@ int openttd_main(std::span<std::string_view> arguments)
 
 				/* Allow for '-e' before or after '-g'. */
 				switch (ft.abstract) {
-					case FT_SAVEGAME: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
-					case FT_SCENARIO: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
-					case FT_HEIGHTMAP: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP); break;
+					case AbstractFileType::Savegame: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
+					case AbstractFileType::Scenario: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
+					case AbstractFileType::Heightmap: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP); break;
 					default: break;
 				}
 
@@ -1068,12 +1068,12 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_RELOADGAME: // Reload with what-ever started the game
-			if (_file_to_saveload.ftype.abstract == FT_SAVEGAME || _file_to_saveload.ftype.abstract == FT_SCENARIO) {
+			if (_file_to_saveload.ftype.abstract == AbstractFileType::Savegame || _file_to_saveload.ftype.abstract == AbstractFileType::Scenario) {
 				/* Reload current savegame/scenario */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 				SwitchToMode(_switch_mode);
 				break;
-			} else if (_file_to_saveload.ftype.abstract == FT_HEIGHTMAP) {
+			} else if (_file_to_saveload.ftype.abstract == AbstractFileType::Heightmap) {
 				/* Restart current heightmap */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_RESTART_HEIGHTMAP;
 				SwitchToMode(_switch_mode);
@@ -1101,7 +1101,7 @@ void SwitchToMode(SwitchMode new_mode)
 			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.ftype.detailed, GM_NORMAL, NO_DIRECTORY)) {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			} else {
-				if (_file_to_saveload.ftype.abstract == FT_SCENARIO) {
+				if (_file_to_saveload.ftype.abstract == AbstractFileType::Scenario) {
 					OnStartScenario();
 				}
 				OnStartGame(_network_dedicated);
