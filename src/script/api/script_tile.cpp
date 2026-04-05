@@ -48,15 +48,10 @@
 /* static */ bool ScriptTile::IsBuildableRectangle(TileIndex tile, SQInteger width, SQInteger height)
 {
 	/* Check whether we can extract valid X and Y */
-	if (!::IsValidTile(tile) || width < 0 || height < 0) return false;
+	if (!::IsValidTile(tile) || width < 1 || height < 1) return false;
 
-	uint tx = ScriptMap::GetTileX(tile);
-	uint ty = ScriptMap::GetTileY(tile);
-
-	for (uint x = tx; x < width + tx; x++) {
-		for (uint y = ty; y < height + ty; y++) {
-			if (!IsBuildable(ScriptMap::GetTileIndex(x, y))) return false;
-		}
+	for (auto cur_tile : TileArea(tile, width, height)) {
+		if (!IsBuildable(cur_tile)) return false;
 	}
 
 	return true;

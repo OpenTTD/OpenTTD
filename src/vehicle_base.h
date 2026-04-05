@@ -209,6 +209,7 @@ private:
 	Vehicle *next = nullptr; ///< pointer to the next vehicle in the chain
 	Vehicle *previous = nullptr; ///< NOSAVE: pointer to the previous vehicle in the chain
 	Vehicle *first = nullptr; ///< NOSAVE: pointer to the first vehicle in the chain
+	Vehicle *last = nullptr; ///< NOSAVE: pointer for the last vehicle in the chain
 
 	Vehicle *next_shared = nullptr; ///< pointer to the next vehicle that shares the order
 	Vehicle *previous_shared = nullptr; ///< NOSAVE: pointer to the previous vehicle in the shared order chain
@@ -606,23 +607,13 @@ public:
 	 * Get the last vehicle of this vehicle chain.
 	 * @return the last vehicle of the chain.
 	 */
-	inline Vehicle *Last()
-	{
-		Vehicle *v = this;
-		while (v->Next() != nullptr) v = v->Next();
-		return v;
-	}
+	inline Vehicle *Last() { return this->last; }
 
 	/**
 	 * Get the last vehicle of this vehicle chain.
 	 * @return the last vehicle of the chain.
 	 */
-	inline const Vehicle *Last() const
-	{
-		const Vehicle *v = this;
-		while (v->Next() != nullptr) v = v->Next();
-		return v;
-	}
+	inline const Vehicle *Last() const { return this->last; }
 
 	/**
 	 * Get the vehicle at offset \a n of this vehicle chain.

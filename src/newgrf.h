@@ -44,7 +44,7 @@ struct CanalProperties {
 };
 
 /** Stages of loading all NewGRFs. */
-enum GrfLoadingStage : uint8_t {
+enum class GrfLoadingStage : uint8_t {
 	FileScan, ///< Load the Action 8 metadata (GRF ID, name).
 	SafetyScan, ///< Checks whether the NewGRF can be used in a static context.
 	LabelScan, ///< First step of NewGRF loading; find the 'goto' labels in the NewGRF.
@@ -179,24 +179,27 @@ struct GRFFile {
 	}
 };
 
-enum ShoreReplacement : uint8_t {
-	SHORE_REPLACE_NONE,       ///< No shore sprites were replaced.
-	SHORE_REPLACE_ACTION_5,   ///< Shore sprites were replaced by Action5.
-	SHORE_REPLACE_ACTION_A,   ///< Shore sprites were replaced by ActionA (using grass tiles for the corner-shores).
-	SHORE_REPLACE_ONLY_NEW,   ///< Only corner-shores were loaded by Action5 (openttd(w/d).grf only).
+/** Type of shore replacement loaded by NewGRFs. */
+enum class ShoreReplacement : uint8_t {
+	None, ///< No shore sprites were replaced.
+	Action5, ///< Shore sprites were replaced by Action5.
+	ActionA, ///< Shore sprites were replaced by ActionA (using grass tiles for the corner-shores).
+	OnlyNew, ///< Only corner-shores were loaded by Action5 (openttd(w/d).grf only).
 };
 
-enum TramReplacement : uint8_t {
-	TRAMWAY_REPLACE_DEPOT_NONE,       ///< No tram depot graphics were loaded.
-	TRAMWAY_REPLACE_DEPOT_WITH_TRACK, ///< Electrified depot graphics with tram track were loaded.
-	TRAMWAY_REPLACE_DEPOT_NO_TRACK,   ///< Electrified depot graphics without tram track were loaded.
+/** Type of tram depot replacement loaded by NewGRFs. */
+enum class TramDepotReplacement : uint8_t {
+	None, ///< No tram depot graphics were loaded.
+	WithTrack, ///< Electrified depot graphics with tram track were loaded.
+	WithoutTrack, ///< Electrified depot graphics without tram track were loaded.
 };
 
+/** State of features loaded by NewGRFs. */
 struct GRFLoadedFeatures {
-	bool has_2CC;             ///< Set if any vehicle is loaded which uses 2cc (two company colours).
-	uint64_t used_liveries;     ///< Bitmask of #LiveryScheme used by the defined engines.
-	ShoreReplacement shore;   ///< In which way shore sprites were replaced.
-	TramReplacement tram;     ///< In which way tram depots were replaced.
+	bool has_2CC; ///< Set if any vehicle is loaded which uses 2cc (two company colours).
+	uint64_t used_liveries; ///< Bitmask of #LiveryScheme used by the defined engines.
+	ShoreReplacement shore; ///< In which way shore sprites were replaced.
+	TramDepotReplacement tram; ///< In which way tram depots were replaced.
 };
 
 /**

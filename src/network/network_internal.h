@@ -38,7 +38,7 @@
 #define NETWORK_SEND_DOUBLE_SEED
 #endif /* RANDOM_DEBUG */
 
-typedef class ServerNetworkGameSocketHandler NetworkClientSocket;
+using NetworkClientSocket = class ServerNetworkGameSocketHandler; ///< @copydoc ServerNetworkGameSocketHandler
 
 /** Status of the clients during joining. */
 enum class NetworkJoinStatus : uint8_t {

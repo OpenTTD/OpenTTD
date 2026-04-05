@@ -17,8 +17,9 @@
 extern AdminID _redirect_console_to_admin;
 
 class ServerNetworkAdminSocketHandler;
-/** Pool with all admin connections. */
+/** Pool type for admin connections. */
 using NetworkAdminSocketPool = Pool<ServerNetworkAdminSocketHandler, AdminID, 2, PoolType::NetworkAdmin>;
+/** Pool with all admin connections. */
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */
@@ -68,7 +69,7 @@ public:
 	NetworkRecvStatus SendCompanyEconomy();
 	NetworkRecvStatus SendCompanyStats();
 
-	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data);
+	NetworkRecvStatus SendChat(NetworkAction action, NetworkChatDestinationType desttype, ClientID client_id, std::string_view msg, int64_t data);
 	NetworkRecvStatus SendRcon(uint16_t colour, std::string_view command);
 	NetworkRecvStatus SendConsole(std::string_view origin, std::string_view command);
 	NetworkRecvStatus SendGameScript(std::string_view json);
@@ -90,7 +91,13 @@ public:
 		return "admin";
 	}
 
+	/** Filter for the #IterateActive iterator. */
 	struct ServerNetworkAdminSocketHandlerFilter {
+		/**
+		 * Check whether the given admin is active.
+		 * @param index The index of the admin.
+		 * @return \c true iff the admin's status is #ADMIN_STATUS_ACTIVE.
+		 */
 		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; }
 	};
 
@@ -113,7 +120,7 @@ void NetworkAdminCompanyNew(const Company *company);
 void NetworkAdminCompanyUpdate(const Company *company);
 void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 
-void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data = 0, bool from_admin = false);
+void NetworkAdminChat(NetworkAction action, NetworkChatDestinationType desttype, ClientID client_id, std::string_view msg, int64_t data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, std::string_view string);
 void NetworkAdminConsole(std::string_view origin, std::string_view string);

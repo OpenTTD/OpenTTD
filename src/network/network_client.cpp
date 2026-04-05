@@ -418,14 +418,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacke
  * @param data Optional arbitrary extra data.
  * @return The new state the network.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, std::string_view msg, int64_t data)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, NetworkChatDestinationType type, int dest, std::string_view msg, int64_t data)
 {
 	Debug(net, 9, "Client::SendChat(): action={}, type={}, dest={}", action, type, dest);
 
 	auto p = std::make_unique<Packet>(my_client, PACKET_CLIENT_CHAT);
 
-	p->Send_uint8 (action);
-	p->Send_uint8 (type);
+	p->Send_uint8(to_underlying(action));
+	p->Send_uint8(to_underlying(type));
 	p->Send_uint32(dest);
 	p->Send_string(msg);
 	p->Send_uint64(data);
@@ -526,7 +526,8 @@ bool ClientNetworkGameSocketHandler::IsConnected()
  * Receiving functions
  ************/
 
-extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, std::shared_ptr<struct LoadFilter> lf);
+struct LoadFilter;
+extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, std::shared_ptr<LoadFilter> lf);
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet &)
 {
@@ -573,7 +574,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	if (ci != nullptr) {
 		if (playas == ci->client_playas && name != ci->client_name) {
 			/* Client name changed, display the change */
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, name);
+			NetworkTextMessage(NetworkAction::ClientNameChange, CC_DEFAULT, false, ci->client_name, name);
 		} else if (playas != ci->client_playas) {
 			/* The client changed from client-player..
 			 * Do not display that for now */
@@ -706,6 +707,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	return ret;
 }
 
+/** Handles requests by immediately returning the server password, or show the user to password window. */
 class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
 	void SendResponse() override { MyClient::SendAuthResponse(); }
 	void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
@@ -984,8 +986,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet &p)
 	std::string name;
 	const NetworkClientInfo *ci = nullptr, *ci_to;
 
-	NetworkAction action = (NetworkAction)p.Recv_uint8();
-	ClientID client_id = (ClientID)p.Recv_uint32();
+	NetworkAction action = static_cast<NetworkAction>(p.Recv_uint8());
+	ClientID client_id = static_cast<ClientID>(p.Recv_uint32());
 	bool self_send = p.Recv_bool();
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 	int64_t data = p.Recv_uint64();
@@ -998,14 +1000,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet &p)
 	/* Did we initiate the action locally? */
 	if (self_send) {
 		switch (action) {
-			case NETWORK_ACTION_CHAT_CLIENT:
+			case NetworkAction::ChatClient:
 				/* For speaking to client we need the client-name */
 				name = ci_to->client_name;
 				ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				break;
 
 			/* For speaking to company, we need the company-name */
-			case NETWORK_ACTION_CHAT_COMPANY: {
+			case NetworkAction::ChatTeam: {
 				StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 
 				name = GetString(str, ci_to->client_playas);
@@ -1040,7 +1042,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_EXTERNAL_CHAT(P
 
 	if (!IsValidConsoleColour(colour)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	NetworkTextMessage(NETWORK_ACTION_EXTERNAL_CHAT, colour, false, user, msg, source);
+	NetworkTextMessage(NetworkAction::ChatExternal, colour, false, user, msg, source);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1055,7 +1057,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Pack
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "", GetNetworkErrorMsg(static_cast<NetworkErrorCode>(p.Recv_uint8())));
+		NetworkTextMessage(NetworkAction::ClientLeave, CC_DEFAULT, false, ci->client_name, "", GetNetworkErrorMsg(static_cast<NetworkErrorCode>(p.Recv_uint8())));
 		delete ci;
 	}
 
@@ -1074,7 +1076,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_QUIT(Packet &p)
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "", STR_NETWORK_MESSAGE_CLIENT_LEAVING);
+		NetworkTextMessage(NetworkAction::ClientLeave, CC_DEFAULT, false, ci->client_name, "", STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 		delete ci;
 	} else {
 		Debug(net, 1, "Unknown client ({}) is leaving the game", client_id);
@@ -1096,7 +1098,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_JOIN(Packet &p)
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
-		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name);
+		NetworkTextMessage(NetworkAction::ClientJoin, CC_DEFAULT, false, ci->client_name);
 	}
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
@@ -1274,7 +1276,7 @@ void NetworkClientsToSpectators(CompanyID cid)
 
 	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (ci->client_playas != cid) continue;
-		NetworkTextMessage(NETWORK_ACTION_COMPANY_SPECTATOR, CC_DEFAULT, false, ci->client_name);
+		NetworkTextMessage(NetworkAction::CompanySpectator, CC_DEFAULT, false, ci->client_name);
 		ci->client_playas = COMPANY_SPECTATOR;
 	}
 
@@ -1349,7 +1351,7 @@ void NetworkUpdateClientName(const std::string &client_name)
 		/* Copy to a temporary buffer so no #n gets added after our name in the settings when there are duplicate names. */
 		std::string temporary_name = client_name;
 		if (NetworkMakeClientNameUnique(temporary_name)) {
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, temporary_name);
+			NetworkTextMessage(NetworkAction::ClientNameChange, CC_DEFAULT, false, ci->client_name, temporary_name);
 			ci->client_name = std::move(temporary_name);
 			NetworkUpdateClientInfo(CLIENT_ID_SERVER);
 		}
@@ -1364,7 +1366,7 @@ void NetworkUpdateClientName(const std::string &client_name)
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, std::string_view msg, int64_t data)
+void NetworkClientSendChat(NetworkAction action, NetworkChatDestinationType type, int dest, std::string_view msg, int64_t data)
 {
 	MyClient::SendChat(action, type, dest, msg, data);
 }

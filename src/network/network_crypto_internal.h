@@ -184,7 +184,7 @@ public:
  */
 class X25519PAKEClientHandler : protected X25519AuthenticationHandler, public NetworkAuthenticationClientHandler {
 private:
-	std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> handler;
+	std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> handler; ///< Callback to get the password from if needed.
 
 public:
 	/**

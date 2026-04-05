@@ -913,7 +913,16 @@ static void RestoreTrainBackup(TrainList &list)
  */
 static void RemoveFromConsist(Train *part, bool chain = false)
 {
-	Train *tail = chain ? part->Last() : part->GetLastEnginePart();
+	Train *tail;
+
+	if (chain) {
+		/* We're moving several vehicles, find the last one in the chain. */
+		tail = part;
+		while (tail->Next() != nullptr) tail = tail->Next();
+	} else {
+		/* We're just moving one vehicle, but make sure we get all the articulated parts. */
+		tail = part->GetLastEnginePart();
+	}
 
 	/* Unlink at the front, but make it point to the next
 	 * vehicle after the to be remove part. */
