@@ -509,7 +509,7 @@ bool Gamelog::GRFBugReverse(uint32_t grfid, uint16_t internal_id)
  */
 static inline bool IsLoggableGrfConfig(const GRFConfig &g)
 {
-	return !g.flags.Test(GRFConfigFlag::Static) && g.status != GCS_NOT_FOUND;
+	return !g.flags.Test(GRFConfigFlag::Static) && g.status != GRFStatus::NotFound;
 }
 
 /**

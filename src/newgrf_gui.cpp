@@ -126,8 +126,8 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 	}
 
 	/* Show flags */
-	if (c.status == GCS_NOT_FOUND)       tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NOT_FOUND);
-	if (c.status == GCS_DISABLED)        tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_DISABLED);
+	if (c.status == GRFStatus::NotFound)       tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NOT_FOUND);
+	if (c.status == GRFStatus::Disabled)        tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_DISABLED);
 	if (c.flags.Test(GRFConfigFlag::Invalid))    tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
 	if (c.flags.Test(GRFConfigFlag::Compatible)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
 
@@ -260,7 +260,7 @@ struct NewGRFParametersWindow : public Window {
 
 	std::pair<StringParameter, StringParameter> GetValueParams(const GRFParameterInfo &par_info, uint32_t value) const
 	{
-		if (par_info.type == PTYPE_BOOL) return {value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF, {}};
+		if (par_info.type == GRFParameterType::Bool) return {value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF, {}};
 
 		auto it = std::ranges::lower_bound(par_info.value_names, value, std::less{}, &GRFParameterInfo::ValueName::first);
 		if (it != std::end(par_info.value_names) && it->first == value) {
@@ -304,9 +304,9 @@ struct NewGRFParametersWindow : public Window {
 			uint32_t current_value = this->grf_config.GetValue(par_info);
 			bool selected = (i == this->clicked_row);
 
-			if (par_info.type == PTYPE_BOOL) {
+			if (par_info.type == GRFParameterType::Bool) {
 				DrawBoolButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, COLOUR_MAUVE, current_value != 0, this->editable);
-			} else if (par_info.type == PTYPE_UINT_ENUM) {
+			} else if (par_info.type == GRFParameterType::UintEnum) {
 				if (par_info.complete_labels) {
 					DrawDropDownButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
 				} else {
@@ -367,7 +367,7 @@ struct NewGRFParametersWindow : public Window {
 
 				/* One of the arrows is clicked */
 				uint32_t old_val = this->grf_config.GetValue(par_info);
-				if (par_info.type != PTYPE_BOOL && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info.complete_labels) {
+				if (par_info.type != GRFParameterType::Bool && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
 						this->CloseChildWindows(WC_DROPDOWN_MENU);
@@ -399,7 +399,7 @@ struct NewGRFParametersWindow : public Window {
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
 					uint32_t val = old_val;
-					if (par_info.type == PTYPE_BOOL) {
+					if (par_info.type == GRFParameterType::Bool) {
 						val = !val;
 					} else {
 						if (x >= SETTING_BUTTON_WIDTH / 2) {
@@ -418,7 +418,7 @@ struct NewGRFParametersWindow : public Window {
 						this->clicked_button = num;
 						this->unclick_timeout.Reset();
 					}
-				} else if (par_info.type == PTYPE_UINT_ENUM && !par_info.complete_labels && click_count >= 2) {
+				} else if (par_info.type == GRFParameterType::UintEnum && !par_info.complete_labels && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
 					ShowQueryString(GetString(STR_JUST_INT, old_val), STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, {});
 				}
@@ -808,11 +808,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		/* Pick a colour */
 		switch (c.status) {
-			case GCS_NOT_FOUND:
-			case GCS_DISABLED:
+			case GRFStatus::NotFound:
+			case GRFStatus::Disabled:
 				pal = PALETTE_TO_RED;
 				break;
-			case GCS_ACTIVATED:
+			case GRFStatus::Activated:
 				pal = PALETTE_TO_GREEN;
 				break;
 			default:
@@ -1205,7 +1205,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				/* Search the list for items that are now found and mark them as such. */
 				for (auto &c : this->actives) {
 					bool compatible = c->flags.Test(GRFConfigFlag::Compatible);
-					if (c->status != GCS_NOT_FOUND && !compatible) continue;
+					if (c->status != GRFStatus::NotFound && !compatible) continue;
 
 					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? &c->original_md5sum : &c->ident.md5sum);
 					if (f == nullptr || f->flags.Test(GRFConfigFlag::Invalid)) continue;
@@ -1273,7 +1273,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		bool has_missing = false;
 		bool has_compatible = false;
 		for (const auto &c : this->actives) {
-			has_missing    |= c->status == GCS_NOT_FOUND;
+			has_missing    |= c->status == GRFStatus::NotFound;
 			has_compatible |= c->flags.Test(GRFConfigFlag::Compatible);
 		}
 		StringID text;
@@ -1507,7 +1507,7 @@ void ShowMissingContentWindow(const GRFConfigList &list)
 	/* Only show the things in the current list, or everything when nothing's selected */
 	ContentVector cv;
 	for (const auto &c : list) {
-		if (c->status != GCS_NOT_FOUND && !c->flags.Test(GRFConfigFlag::Compatible)) continue;
+		if (c->status != GRFStatus::NotFound && !c->flags.Test(GRFConfigFlag::Compatible)) continue;
 
 		auto ci = std::make_unique<ContentInfo>();
 		ci->type = CONTENT_TYPE_NEWGRF;

@@ -45,7 +45,7 @@ struct LoadCheckData {
 	CompanyPropertiesMap companies{}; ///< Company information.
 
 	GRFConfigList grfconfig{}; ///< NewGrf configuration from save.
-	GRFListCompatibility grf_compatibility = GLC_NOT_FOUND; ///< Summary state of NewGrfs, whether missing files or only compatible found.
+	GRFListCompatibility grf_compatibility = GRFListCompatibility::NotFound; ///< Summary state of NewGrfs, whether missing files or only compatible found.
 
 	Gamelog gamelog{}; ///< Gamelog actions
 

@@ -152,11 +152,16 @@ static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 		GrfMsg(2, "StaticGRFInfo: expected 1 byte for 'INFO'->'PARA'->'TYPE' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
-		GRFParameterType type = (GRFParameterType)buf.ReadByte();
-		if (type < PTYPE_END) {
-			_cur_parameter->type = type;
-		} else {
-			GrfMsg(3, "StaticGRFInfo: unknown parameter type {}, ignoring this field", type);
+		GRFParameterType type = static_cast<GRFParameterType>(buf.ReadByte());
+		switch (type) {
+			case GRFParameterType::UintEnum:
+			case GRFParameterType::Bool:
+				_cur_parameter->type = type;
+				break;
+
+			default:
+				GrfMsg(3, "StaticGRFInfo: unknown parameter type {}, ignoring this field", type);
+				break;
 		}
 	}
 	return true;
@@ -165,7 +170,7 @@ static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 /** Callback function for 'INFO'->'PARAM'->param_num->'LIMI' to set the min/max value of a parameter. @copydoc DataHandler */
 static bool ChangeGRFParamLimits(size_t len, ByteReader &buf)
 {
-	if (_cur_parameter->type != PTYPE_UINT_ENUM) {
+	if (_cur_parameter->type != GRFParameterType::UintEnum) {
 		GrfMsg(2, "StaticGRFInfo: 'INFO'->'PARA'->'LIMI' is only valid for parameters with type uint/enum, ignoring this field");
 		buf.Skip(len);
 	} else if (len != 8) {

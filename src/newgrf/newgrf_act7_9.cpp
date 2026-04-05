@@ -250,24 +250,24 @@ static void SkipIf(ByteReader &buf)
 		switch (condtype) {
 			/* Tests 0x06 to 0x0A are only for param 0x88, GRFID checks */
 			case 0x06: // Is GRFID active?
-				result = c->status == GCS_ACTIVATED;
+				result = c->status == GRFStatus::Activated;
 				break;
 
 			case 0x07: // Is GRFID non-active?
-				result = c->status != GCS_ACTIVATED;
+				result = c->status != GRFStatus::Activated;
 				break;
 
 			case 0x08: // GRFID is not but will be active?
-				result = c->status == GCS_INITIALISED;
+				result = c->status == GRFStatus::Initialised;
 				break;
 
 			case 0x09: // GRFID is or will be active?
-				result = c->status == GCS_ACTIVATED || c->status == GCS_INITIALISED;
+				result = c->status == GRFStatus::Activated || c->status == GRFStatus::Initialised;
 				break;
 
 			case 0x0A: // GRFID is not nor will be active
 				/* This is the only condtype that doesn't get ignored if the GRFID is not found */
-				result = c == nullptr || c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND;
+				result = c == nullptr || c->status == GRFStatus::Disabled || c->status == GRFStatus::NotFound;
 				break;
 
 			default: GrfMsg(1, "SkipIf: Unsupported GRF condition type {:02X}. Ignoring", condtype); return;
@@ -332,7 +332,7 @@ static void SkipIf(ByteReader &buf)
 		_cur_gps.skip_sprites = -1;
 
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
-		if (_cur_gps.grfconfig->status != (_cur_gps.stage < GrfLoadingStage::Reserve ? GCS_INITIALISED : GCS_ACTIVATED)) {
+		if (_cur_gps.grfconfig->status != (_cur_gps.stage < GrfLoadingStage::Reserve ? GRFStatus::Initialised : GRFStatus::Activated)) {
 			DisableGrf();
 		}
 	}
