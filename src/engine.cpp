@@ -455,6 +455,7 @@ TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
  */
 uint16_t Engine::GetRange() const
 {
+	if (!_settings_game.vehicle.aircraft_range) return 0;
 	switch (this->type) {
 		case VEH_AIRCRAFT:
 			return GetEngineProperty(this->index, PROP_AIRCRAFT_RANGE, this->VehInfo<AircraftVehicleInfo>().max_range);

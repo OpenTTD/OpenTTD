@@ -1905,6 +1905,9 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :When enabled, t
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable wagon speed limits: {STRING2}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Enable aircraft maximum range: {STRING2}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :When enabled, NewGRFs will be able to limit maximum range of aircraft
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING2}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Enabling this setting disables the requirement to electrify tracks to make electric engines run on them
 
