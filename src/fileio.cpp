@@ -62,7 +62,7 @@ static const EnumClassIndexContainer<std::array<std::string_view, to_underlying(
  * An empty string tells that there is no such path for the
  * current operating system.
  */
-std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+EnumClassIndexContainer<std::array<std::string, to_underlying(Searchpath::End)>, Searchpath> _searchpaths;
 std::vector<Searchpath> _valid_searchpaths;
 /** List of tar files found in each subdirectory. */
 EnumClassIndexContainer<std::array<TarList, to_underlying(Subdirectory::End)>, Subdirectory> _tar_list;
@@ -76,7 +76,7 @@ EnumClassIndexContainer<std::array<TarFileList, to_underlying(Subdirectory::End)
  */
 static bool IsValidSearchPath(Searchpath sp)
 {
-	return sp < _searchpaths.size() && !_searchpaths[sp].empty();
+	return to_underlying(sp) < _searchpaths.size() && !_searchpaths[sp].empty();
 }
 
 static void FillValidSearchPaths(bool only_local_path)
@@ -84,14 +84,14 @@ static void FillValidSearchPaths(bool only_local_path)
 	_valid_searchpaths.clear();
 
 	std::set<std::string> seen{};
-	for (Searchpath sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) {
-		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
+	for (Searchpath sp = Searchpath::Begin; sp < Searchpath::End; sp++) {
+		if (sp == Searchpath::WorkingDir && !_do_scan_working_directory) continue;
 
 		if (only_local_path) {
 			switch (sp) {
-				case SP_WORKING_DIR:      // Can be influence by "-c" option.
-				case SP_BINARY_DIR:       // Most likely contains all the language files.
-				case SP_AUTODOWNLOAD_DIR: // Otherwise we cannot download in-game content.
+				case Searchpath::WorkingDir: // Can be influence by "-c" option.
+				case Searchpath::BinaryDir: // Most likely contains all the language files.
+				case Searchpath::AutodownloadDir: // Otherwise we cannot download in-game content.
 					break;
 
 				default:
@@ -109,8 +109,8 @@ static void FillValidSearchPaths(bool only_local_path)
 	/* The working-directory is special, as it is controlled by _do_scan_working_directory.
 	 * Only add the search path if it isn't already in the set. To preserve the same order
 	 * as the enum, insert it in the front. */
-	if (IsValidSearchPath(SP_WORKING_DIR) && seen.count(_searchpaths[SP_WORKING_DIR]) == 0) {
-		_valid_searchpaths.insert(_valid_searchpaths.begin(), SP_WORKING_DIR);
+	if (IsValidSearchPath(Searchpath::WorkingDir) && seen.count(_searchpaths[Searchpath::WorkingDir]) == 0) {
+		_valid_searchpaths.insert(_valid_searchpaths.begin(), Searchpath::WorkingDir);
 	}
 }
 
@@ -165,7 +165,7 @@ std::string FioFindFullPath(Subdirectory subdir, std::string_view filename)
 std::string FioGetDirectory(Searchpath sp, Subdirectory subdir)
 {
 	assert(subdir < Subdirectory::End);
-	assert(sp < NUM_SEARCHPATHS);
+	assert(sp < Searchpath::End);
 
 	return fmt::format("{}{}", _searchpaths[sp], _subdirs[subdir]);
 }
@@ -720,18 +720,18 @@ static bool ChangeWorkingDirectoryToExecutable(std::string_view exe)
 bool DoScanWorkingDirectory()
 {
 	/* No working directory, so nothing to do. */
-	if (_searchpaths[SP_WORKING_DIR].empty()) return false;
+	if (_searchpaths[Searchpath::WorkingDir].empty()) return false;
 
 	/* Working directory is root, so do nothing. */
-	if (_searchpaths[SP_WORKING_DIR] == PATHSEP) return false;
+	if (_searchpaths[Searchpath::WorkingDir] == PATHSEP) return false;
 
 	/* No personal/home directory, so the working directory won't be that. */
-	if (_searchpaths[SP_PERSONAL_DIR].empty()) return true;
+	if (_searchpaths[Searchpath::PersonalDir].empty()) return true;
 
-	std::string tmp = _searchpaths[SP_WORKING_DIR] + PERSONAL_DIR;
+	std::string tmp = _searchpaths[Searchpath::WorkingDir] + PERSONAL_DIR;
 	AppendPathSeparator(tmp);
 
-	return _searchpaths[SP_PERSONAL_DIR] != tmp;
+	return _searchpaths[Searchpath::PersonalDir] != tmp;
 }
 
 /**
@@ -769,52 +769,52 @@ void DetermineBasePaths(std::string_view exe)
 		tmp += PATHSEP;
 		tmp += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_PERSONAL_DIR_XDG] = tmp;
+		_searchpaths[Searchpath::PersonalDirXdg] = tmp;
 
 		tmp += "content_download";
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR_XDG] = tmp;
+		_searchpaths[Searchpath::AutodownloadPersonalDirXdg] = tmp;
 	} else if (!homedir.empty()) {
 		tmp = homedir;
 		tmp += PATHSEP ".local" PATHSEP "share" PATHSEP;
 		tmp += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_PERSONAL_DIR_XDG] = tmp;
+		_searchpaths[Searchpath::PersonalDirXdg] = tmp;
 
 		tmp += "content_download";
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR_XDG] = tmp;
+		_searchpaths[Searchpath::AutodownloadPersonalDirXdg] = tmp;
 	} else {
-		_searchpaths[SP_PERSONAL_DIR_XDG].clear();
-		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR_XDG].clear();
+		_searchpaths[Searchpath::PersonalDirXdg].clear();
+		_searchpaths[Searchpath::AutodownloadPersonalDirXdg].clear();
 	}
 #endif
 
 #if !defined(WITH_PERSONAL_DIR)
-	_searchpaths[SP_PERSONAL_DIR].clear();
+	_searchpaths[Searchpath::PersonalDir].clear();
 #else
 	if (!homedir.empty()) {
 		tmp = std::move(homedir);
 		tmp += PATHSEP;
 		tmp += PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_PERSONAL_DIR] = tmp;
+		_searchpaths[Searchpath::PersonalDir] = tmp;
 
 		tmp += "content_download";
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR] = tmp;
+		_searchpaths[Searchpath::AutodownloadPersonalDir] = tmp;
 	} else {
-		_searchpaths[SP_PERSONAL_DIR].clear();
-		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR].clear();
+		_searchpaths[Searchpath::PersonalDir].clear();
+		_searchpaths[Searchpath::AutodownloadPersonalDir].clear();
 	}
 #endif
 
 #if defined(WITH_SHARED_DIR)
 	tmp = SHARED_DIR;
 	AppendPathSeparator(tmp);
-	_searchpaths[SP_SHARED_DIR] = tmp;
+	_searchpaths[Searchpath::SharedDir] = tmp;
 #else
-	_searchpaths[SP_SHARED_DIR].clear();
+	_searchpaths[Searchpath::SharedDir].clear();
 #endif
 
 	char cwd[MAX_PATH];
@@ -824,7 +824,7 @@ void DetermineBasePaths(std::string_view exe)
 		/* Get the path to working directory of OpenTTD. */
 		tmp = cwd;
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_WORKING_DIR] = tmp;
+		_searchpaths[Searchpath::WorkingDir] = tmp;
 
 		_do_scan_working_directory = DoScanWorkingDirectory();
 	} else {
@@ -837,7 +837,7 @@ void DetermineBasePaths(std::string_view exe)
 			tmp = FS2OTTD(std::filesystem::weakly_canonical(std::filesystem::path(OTTD2FS(_config_file))).parent_path().native());
 		}
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_WORKING_DIR] = tmp;
+		_searchpaths[Searchpath::WorkingDir] = tmp;
 	}
 
 	/* Change the working directory to that one of the executable */
@@ -849,9 +849,9 @@ void DetermineBasePaths(std::string_view exe)
 			tmp = buf;
 		}
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_BINARY_DIR] = tmp;
+		_searchpaths[Searchpath::BinaryDir] = tmp;
 	} else {
-		_searchpaths[SP_BINARY_DIR].clear();
+		_searchpaths[Searchpath::BinaryDir].clear();
 	}
 
 	if (cwd[0] != '\0') {
@@ -862,17 +862,17 @@ void DetermineBasePaths(std::string_view exe)
 	}
 
 #if !defined(GLOBAL_DATA_DIR)
-	_searchpaths[SP_INSTALLATION_DIR].clear();
+	_searchpaths[Searchpath::InstallationDir].clear();
 #else
 	tmp = GLOBAL_DATA_DIR;
 	AppendPathSeparator(tmp);
-	_searchpaths[SP_INSTALLATION_DIR] = std::move(tmp);
+	_searchpaths[Searchpath::InstallationDir] = std::move(tmp);
 #endif
 #ifdef WITH_COCOA
 extern void CocoaSetApplicationBundleDir();
 	CocoaSetApplicationBundleDir();
 #else
-	_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
+	_searchpaths[Searchpath::ApplicationBundleDir].clear();
 #endif
 }
 #endif /* defined(_WIN32) */
@@ -908,13 +908,13 @@ void DeterminePaths(std::string_view exe, bool only_local_path)
 #endif
 
 	for (Searchpath sp : _valid_searchpaths) {
-		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
+		if (sp == Searchpath::WorkingDir && !_do_scan_working_directory) continue;
 		Debug(misc, 3, "{} added as search path", _searchpaths[sp]);
 	}
 
 	std::string config_dir;
 	if (!_config_file.empty()) {
-		config_dir = _searchpaths[SP_WORKING_DIR];
+		config_dir = _searchpaths[Searchpath::WorkingDir];
 	} else {
 		std::string personal_dir = FioFindFullPath(Subdirectory::Base, "openttd.cfg");
 		if (!personal_dir.empty()) {
@@ -927,7 +927,7 @@ void DeterminePaths(std::string_view exe, bool only_local_path)
 			config_dir = config_home;
 #else
 			static const Searchpath new_openttd_cfg_order[] = {
-					SP_PERSONAL_DIR, SP_BINARY_DIR, SP_WORKING_DIR, SP_SHARED_DIR, SP_INSTALLATION_DIR
+					Searchpath::PersonalDir, Searchpath::BinaryDir, Searchpath::WorkingDir, Searchpath::SharedDir, Searchpath::InstallationDir
 				};
 
 			config_dir.clear();
@@ -960,13 +960,13 @@ void DeterminePaths(std::string_view exe, bool only_local_path)
 	if (config_dir == config_home) {
 		/* We are using the XDG configuration home for the config file,
 		 * then store the rest in the XDG data home folder. */
-		_personal_dir = _searchpaths[SP_PERSONAL_DIR_XDG];
+		_personal_dir = _searchpaths[Searchpath::PersonalDirXdg];
 		if (only_local_path) {
 			/* In case of XDG and we only want local paths and we detected that
 			 * the user either manually indicated the XDG path or didn't use
 			 * "-c" option, we change the working-dir to the XDG personal-dir,
 			 * as this is most likely what the user is expecting. */
-			_searchpaths[SP_WORKING_DIR] = _searchpaths[SP_PERSONAL_DIR_XDG];
+			_searchpaths[Searchpath::WorkingDir] = _searchpaths[Searchpath::PersonalDirXdg];
 		}
 	} else
 #endif
@@ -991,15 +991,15 @@ void DeterminePaths(std::string_view exe, bool only_local_path)
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
-	_searchpaths[SP_AUTODOWNLOAD_DIR] = _personal_dir + "content_download" PATHSEP;
-	Debug(misc, 3, "{} added as search path", _searchpaths[SP_AUTODOWNLOAD_DIR]);
-	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
+	_searchpaths[Searchpath::AutodownloadDir] = _personal_dir + "content_download" PATHSEP;
+	Debug(misc, 3, "{} added as search path", _searchpaths[Searchpath::AutodownloadDir]);
+	FioCreateDirectory(_searchpaths[Searchpath::AutodownloadDir]);
 	FillValidSearchPaths(only_local_path);
 
 	/* Create the directory for each of the types of content */
 	const Subdirectory subdirs[] = { Subdirectory::Scenario, Subdirectory::Heightmap, Subdirectory::Baseset, Subdirectory::NewGrf, Subdirectory::Ai, Subdirectory::AiLibrary, Subdirectory::Gs, Subdirectory::GsLibrary, Subdirectory::SocialIntegration };
 	for (const auto &subdir : subdirs) {
-		FioCreateDirectory(FioGetDirectory(SP_AUTODOWNLOAD_DIR, subdir));
+		FioCreateDirectory(FioGetDirectory(Searchpath::AutodownloadDir, subdir));
 	}
 
 	extern std::string _log_file;
@@ -1131,7 +1131,7 @@ uint FileScanner::Scan(std::string_view extension, Subdirectory sd, bool tars, b
 
 	for (Searchpath sp : _valid_searchpaths) {
 		/* Don't search in the working directory */
-		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
+		if (sp == Searchpath::WorkingDir && !_do_scan_working_directory) continue;
 
 		std::string path = FioGetDirectory(sp, sd);
 		num += ScanPath(this, extension, OTTD2FS(path), path.size(), recursive);

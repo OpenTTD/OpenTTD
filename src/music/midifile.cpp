@@ -1049,7 +1049,7 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 
 	if (song.filetype != MTT_MPSMIDI) return std::string();
 
-	std::string tempdirname = FioGetDirectory(Searchpath::SP_AUTODOWNLOAD_DIR, Subdirectory::Baseset);
+	std::string tempdirname = FioGetDirectory(Searchpath::AutodownloadDir, Subdirectory::Baseset);
 	{
 		std::string_view basename{song.filename};
 		auto fnstart = basename.rfind(PATHSEPCHAR);

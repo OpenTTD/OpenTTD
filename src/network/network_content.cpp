@@ -372,7 +372,7 @@ static std::string GetFullFilename(const ContentInfo &ci, bool compressed)
 	Subdirectory dir = GetContentInfoSubDir(ci.type);
 	if (dir == Subdirectory::None) return {};
 
-	std::string buf = FioGetDirectory(SP_AUTODOWNLOAD_DIR, dir);
+	std::string buf = FioGetDirectory(Searchpath::AutodownloadDir, dir);
 	buf += ci.filename;
 	buf += compressed ? ".tar.gz" : ".tar";
 

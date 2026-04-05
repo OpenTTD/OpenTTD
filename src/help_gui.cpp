@@ -48,7 +48,7 @@ static constexpr size_t CHANGELOG_VERSIONS_LIMIT = 20;
 static std::optional<std::string> FindGameManualFilePath(std::string_view filename, Subdirectory subdir)
 {
 	static const Searchpath searchpaths[] = {
-		SP_APPLICATION_BUNDLE_DIR, SP_INSTALLATION_DIR, SP_SHARED_DIR, SP_BINARY_DIR, SP_WORKING_DIR
+		Searchpath::ApplicationBundleDir, Searchpath::InstallationDir, Searchpath::SharedDir, Searchpath::BinaryDir, Searchpath::WorkingDir
 	};
 
 	for (Searchpath sp : searchpaths) {
