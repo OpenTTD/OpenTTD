@@ -126,7 +126,7 @@ void SetLocalCompany(CompanyID new_company)
 	bool switching_company = _local_company != new_company;
 
 	/* Delete the chat window, if you were team chatting. */
-	if (switching_company) InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
+	if (switching_company) InvalidateWindowData(WC_SEND_NETWORK_MSG, NetworkChatDestinationType::Team, _local_company);
 
 	assert(IsLocalCompany());
 
@@ -1354,7 +1354,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
 			std::string dest_company_name = GetString(STR_COMPANY_NAME, dest_company);
 			std::string from_company_name = GetString(STR_COMPANY_NAME, _current_company);
 
-			NetworkTextMessage(NETWORK_ACTION_GIVE_MONEY, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
+			NetworkTextMessage(NetworkAction::GiveMoney, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
 		}
 	}
 

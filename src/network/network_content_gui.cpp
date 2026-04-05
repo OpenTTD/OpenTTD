@@ -42,6 +42,12 @@ static bool _accepted_external_search = false;
 struct ContentTextfileWindow : public TextfileWindow {
 	const ContentInfo *ci = nullptr; ///< View the textfile of this ContentInfo.
 
+	/**
+	 * Create the window with one of the text files associated with content.
+	 * @param parent Our parent window, i.e. if that window closes we close.
+	 * @param file_type The type of file to load.
+	 * @param ci The content info to load the file for.
+	 */
 	ContentTextfileWindow(Window *parent, TextfileType file_type, const ContentInfo *ci) : TextfileWindow(parent, file_type), ci(ci)
 	{
 		this->ConstructWindow();
@@ -50,6 +56,10 @@ struct ContentTextfileWindow : public TextfileWindow {
 		this->LoadTextfile(textfile.value(), GetContentInfoSubDir(this->ci->type));
 	}
 
+	/**
+	 * Get the #StringID of the content type associated with this window.
+	 * @return The string.
+	 */
 	StringID GetTypeString() const
 	{
 		switch (this->ci->type) {
@@ -77,6 +87,12 @@ struct ContentTextfileWindow : public TextfileWindow {
 	}
 };
 
+/**
+ * Open the window with one of the text files associated with content.
+ * @param parent Our parent window, i.e. if that window closes we close.
+ * @param file_type The type of file to load.
+ * @param ci The content info to load the file for.
+ */
 static void ShowContentTextfileWindow(Window *parent, TextfileType file_type, const ContentInfo *ci)
 {
 	parent->CloseChildWindowById(WC_TEXTFILE, file_type);
@@ -1096,7 +1112,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_content_list
 		/* Resize button. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };

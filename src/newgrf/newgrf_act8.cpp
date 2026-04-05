@@ -17,7 +17,7 @@
 
 #include "../safeguards.h"
 
-/* Action 0x08 (GLS_FILESCAN) */
+/* Action 0x08 (GrfLoadingStage::FileScan) */
 static void ScanInfo(ByteReader &buf)
 {
 	uint8_t grf_version = buf.ReadByte();
@@ -41,7 +41,7 @@ static void ScanInfo(ByteReader &buf)
 		AddGRFTextToList(_cur_gps.grfconfig->info, 0x7F, grfid, true, info);
 	}
 
-	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
+	/* GrfLoadingStage::FileScan only looks for the action 8, so we can skip the rest of the file */
 	_cur_gps.skip_sprites = -1;
 }
 
@@ -59,7 +59,7 @@ static void GRFInfo(ByteReader &buf)
 	uint32_t grfid     = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
-	if (_cur_gps.stage < GLS_RESERVE && _cur_gps.grfconfig->status != GCS_UNKNOWN) {
+	if (_cur_gps.stage < GrfLoadingStage::Reserve && _cur_gps.grfconfig->status != GCS_UNKNOWN) {
 		DisableGrf(STR_NEWGRF_ERROR_MULTIPLE_ACTION_8);
 		return;
 	}
@@ -70,15 +70,21 @@ static void GRFInfo(ByteReader &buf)
 	}
 
 	_cur_gps.grffile->grf_version = version;
-	_cur_gps.grfconfig->status = _cur_gps.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
+	_cur_gps.grfconfig->status = _cur_gps.stage < GrfLoadingStage::Reserve ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, std::byteswap(grfid), StrMakeValid(name), (_cur_gps.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_gps.grfconfig->version);
 }
 
+/** @copydoc GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x08>::FileScan(ByteReader &buf) { ScanInfo(buf); }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x08>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x08>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x08>::Init(ByteReader &buf) { GRFInfo(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x08>::Reserve(ByteReader &buf) { GRFInfo(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x08>::Activation(ByteReader &buf) { GRFInfo(buf); }

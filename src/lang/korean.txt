@@ -652,8 +652,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :수송됨
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :대기 중
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 화물 이력
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :공급
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :생산
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :수송됨
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :수송됨
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
@@ -2486,15 +2487,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}지금까지 {BYTES}를 다운로드하였습니다
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 다운로드 완료
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 접속 중...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 권한 부여중...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 기다리는 중...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 지도 다운로드 중...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) 데이터 처리 중...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 등록 중...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}게임 정보 가져오는 중...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}회사 정보 가져오는 중...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}접속 끊기
 
@@ -4577,8 +4576,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}차량 �
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 변경
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 변경
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA}년 (수명: {COMMA}년)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 (수명: {COMMA}년)
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}연령: {LTBLUE}{STRING}{BLACK}   유지비: {LTBLUE}{CURRENCY_LONG}/년
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}연령: {LTBLUE}{STRING}{BLACK}   유지비: {LTBLUE}{CURRENCY_LONG}/기간
 
@@ -4592,7 +4591,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 �
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}올해 이익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG}) {BLACK}최소 성능: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}지난 기간 이익: {LTBLUE}{CURRENCY_LONG} (지난 기간: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}이번 기간 이익: {LTBLUE}{CURRENCY_LONG} (지난 기간: {CURRENCY_LONG}) {BLACK}최소 성능: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후 고장 횟수: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}% (최대: {COMMA}%) {BLACK}최근 점검 이후 고장 횟수: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}수송량: {LTBLUE}없음{STRING}
@@ -4760,6 +4759,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}건너�
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}현재 경로를 건너뛰고, 다음 경로를 시작합니다. CTRL+클릭하면 현재 선택된 경로로 건너뜁니다
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}삭제
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}전부 삭제
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}선택된 경로를 삭제합니다
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}모든 경로 삭제
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}경로 공유 해제

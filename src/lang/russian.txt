@@ -789,8 +789,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Доставл�
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :В ожидании
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Пассажиры и грузы
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Запрос
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Произведено
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Перевезено
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Доставлено
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 
@@ -2636,15 +2637,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}Гото
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} загружено
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}Загружено {BYTES} / {BYTES}
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Соединение...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Авторизация...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Ожидание...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Загрузка карты...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Обработка...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Регистрация...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Получение информации об игре...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Получение информации о компаниях...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Отключиться
 
@@ -4778,7 +4777,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Приб
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Прибыль в текущем году: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибыль в текущем цикле: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Прибыль в текущем цикле: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}% {BLACK}Поломок после ТО: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ёмкость: {LTBLUE}отсутствует{STRING}
@@ -4946,6 +4944,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Проп
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Перейти к следующему заданию. Ctrl+щелчок - перейти к выделенному заданию.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Удалить
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Удалить все
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Удалить выделенное задание
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Удалить все задания
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Индивидуальный список

@@ -1154,18 +1154,28 @@ struct GameOptionsWindow : Window {
 				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_MUSIC);
 				break;
 
-			case WID_GO_CURRENCY_DROPDOWN:
 			case WID_GO_AUTOSAVE_DROPDOWN:
-			case WID_GO_LANG_DROPDOWN:
 			case WID_GO_RESOLUTION_DROPDOWN:
-			case WID_GO_REFRESH_RATE_DROPDOWN:
+			case WID_GO_REFRESH_RATE_DROPDOWN: {
+				int selected;
+				DropDownList list = this->BuildDropDownList(widget, &selected);
+				if (!list.empty()) {
+					ShowDropDownList(this, std::move(list), selected, widget);
+				} else {
+					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(GetEncodedString(STR_ERROR_RESOLUTION_LIST_FAILED), {}, WL_ERROR);
+				}
+				break;
+			}
+
+			case WID_GO_CURRENCY_DROPDOWN:
+			case WID_GO_LANG_DROPDOWN:
 			case WID_GO_BASE_GRF_DROPDOWN:
 			case WID_GO_BASE_SFX_DROPDOWN:
 			case WID_GO_BASE_MUSIC_DROPDOWN: {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
 				if (!list.empty()) {
-					ShowDropDownList(this, std::move(list), selected, widget);
+					ShowDropDownList(this, std::move(list), selected, widget, 0, DropDownOption::Filterable);
 				} else {
 					if (widget == WID_GO_RESOLUTION_DROPDOWN) ShowErrorMessage(GetEncodedString(STR_ERROR_RESOLUTION_LIST_FAILED), {}, WL_ERROR);
 				}
@@ -1837,7 +1847,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_game_options_widgets
 
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, GAME_OPTIONS_BACKGROUND), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, GAME_OPTIONS_BACKGROUND), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -2154,8 +2164,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_cust_currency_widget
 			NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_RATE_DOWN), SetArrowWidgetTypeTip(AWV_DECREASE, STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_RATE_UP), SetArrowWidgetTypeTip(AWV_INCREASE, STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP),
+						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_RATE_DOWN), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease, STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP),
+						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_RATE_UP), SetArrowWidgetTypeTip(ArrowWidgetType::Increase, STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_RATE), SetToolTip(STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
@@ -2173,8 +2183,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_cust_currency_widget
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_YEAR_DOWN), SetArrowWidgetTypeTip(AWV_DECREASE, STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_YEAR_UP), SetArrowWidgetTypeTip(AWV_INCREASE, STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
+						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_YEAR_DOWN), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease, STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
+						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_YEAR_UP), SetArrowWidgetTypeTip(ArrowWidgetType::Increase, STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_YEAR), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP), SetFill(1, 0),
 				EndContainer(),

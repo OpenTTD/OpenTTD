@@ -924,7 +924,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} aracının programında çok az talimat var
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} aracının boş bir emri var
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} aracının hatalı bir talimatı var
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} talimatları arasında tekrarlanmış olanlar var
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} aracının geçersiz talimatları var
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE}, pisti çok kısa olan bir havaalanında göreve sahip
@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Görünen dili 
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (%{NUM} tamamlandı)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Tam ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD'yi tam ekran oynamak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :OpenTTD'yi tam ekran oynamak için bunu açın
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Ekran Çözünürlüğü
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kullanılacak ekran çözünürlüğünü seçin
@@ -1071,11 +1071,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Donanım hızlandırma
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :OpenTTD'nin donanım ivmesini kullanmayı denemesine izin vermek için bunu açın. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ayar sadece oyun yeniden başlatıldığında uygulanır
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Dikey senkronizasyon'u aktif etmek için bu kutuyu işaretleyin. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Dikey senkronizasyon'u aktif etmek için bunu açın. Değiştirilmiş bir ayar sadece oyun yeniden başlatıldığında uygulanır. Yalnızca donanım ivmesi aktifken çalışır
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Geçerli sürücü: {STRING}
 
@@ -1084,15 +1084,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :Arayüz
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Arayüz büyüklüğü
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arayüz büyüklüğünü ayarlamak için kaydırın. Sürekli ayarlama için Ctrl tuşunu basılı tutun
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Büyüklüğü otomatik algıla
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Arayüz boyutunu otomatik ayarlamak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Arayüz boyutunu otomatik ayarlamak için bunu açın
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Eğimi ayarla
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Eğimi arayüz boyutuna göre ayarlamak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Eğimi arayüz boyutuna göre ayarlamak için bunu açın
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                : Geleneksel yazı tipini kullan
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Yazı tipini geleneksel sabit boyutlu haline döndürmek için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Yazı tipini geleneksel sabit boyutlu haline döndürmek için açın
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Yazı tipi kenarlarını yumuşatma
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için bu kutucuğu işaretleyin
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Yeniden boyutlandırılabilir yazı tiplerinin kenarlarını yumuşatmak için açın
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1142,8 +1142,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Geçersiz 
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} eksik/bozuk dosya{P "lar" })
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Desteklenen çözünürlük listesi alınamadı
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Tam ekran kipi başarısız
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Desteklenen çözünürlük listesi alınamadı
+STR_ERROR_FULLSCREEN_FAILED                                     :Tam ekran kipi başarısız
 
 # Custom currency window
 
@@ -1366,7 +1366,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Harita arazisin
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(otomatik)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Azami harita yüksekliğini bu değere ayarlayamazsınız. Haritadaki en az bir dağ bu değerden yüksek
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :Azami harita yüksekliğini bu değere ayarlayamazsınız. Haritadaki en az bir dağ bu değerden yüksek
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yolların vb. altındaki araziyi değiştirmeye izin ver: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Binaları ve yolları kaldırmaksızın altlarında yeryüzü şekillendirmesi yapılmasına izin ver
@@ -1504,7 +1504,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Kasabaların sa
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Kasabaların sahip olduğu yollarda arabalı yol duraklarının inşasına izin ver
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Rakiplerin yolu üzerinde durak yapmaya izin ver: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Başka şirketlerin sahip olduğu yollarda yol üstü durakların inşasına izin verir
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Araçlar varken bu ayarı değiştirmezsiniz
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Altyapı bakımları: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Etkinleştirildiğinde; altyapı, bakım giderine neden olur. Maliyet ağ büyüklüğüne göre daha hızlı yükselir, dolayısıyla büyük şirketleri küçüklere göre daha çok etkiler
@@ -1599,7 +1599,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Özgün oluştu
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Özgün
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Zemin türü: {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Azami yükseklik ayarı: {STRING}
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Oyun haritasındaki tepelerin ve dağların yüksekliğini seçin
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Endüstri yoğunluğu: {STRING}
@@ -1627,7 +1627,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Düzgün
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Çok Engebeli
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Ortalama yükseklik: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Arazinin ortalama yüksekliğini seçin. 'Otomatik', seçilen iklime göre öntanımlı olanı seçer: Tropik için 'Ovalar', Ilıman ve Oyuncak için 'Normal', Soğuk için 'Platolar'.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Otomatik
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Ovalar
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Platolar
 
 STR_CONFIG_SETTING_VARIETY                                      :Çeşitlilik dağılımı: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Haritanın hem dağları hem de düzlükleri içerip içermediğini seçin. Çeşitlilik arttıkça dağlık ve düzlükler arasındaki yükseklik farkı da artar
@@ -1657,8 +1663,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Düzlük bir senaryonun yükseklik seviyesi: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Kuzey kenarda bir veya daha fazla kare boş değil
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Kenarlardan birinde bir veya daha fazla kare su değil
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :Kuzey kenarda bir veya daha fazla kare boş değil
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :Kenarlardan birinde bir veya daha fazla kare su değil
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Azami durak yayılma alanı: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Tek bir durağın parçalarının yayılabileceği azami alan. Yüksek değerler oyunu yavaşlatır
@@ -2071,7 +2077,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Kullanılacak en yüksek çözünürlüklü sprite'lar: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Sprite'lar için kullanılacak maksimum çözünürlüğü sınırlar. Sprite çözünürlüğünü sınırlamak, mevcut olunca bile yüksek çözünürlüklü grafikleri kullanmaktan kaçınacaktır. Bu, yüksek çözünürlüklü grafikleri içeren ve içermeyen GRF dosyalarının bir karşımı kullanılırken oyun görünümünü bir arada tutmaya yardımcı olabilir
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Sprite'lar için kullanılacak maksimum çözünürlüğü sınırlar. Sprite çözünürlüğünü sınırlamak, mevcut olunca bile yüksek çözünürlüklü grafikleri kullanmaktan kaçınacaktır. Bu, yüksek çözünürlüklü grafikleri içeren ve içermeyen NewGRF dosyalarının bir karşımı kullanılırken oyun görünümünü bir arada tutmaya yardımcı olabilir
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2205,27 +2211,27 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tren sinyalde u
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ayar değerini değiştir
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Konfigürasyon dosyasında hata
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... '{STRING}' dizisinde hata
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}' için '{0:STRING}' geçersiz bir değer
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... '{STRING}' ayarının sonunda devam eden karakterler
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... '{STRING}' adlı NewGRF gözardı edildi: '{STRING}' birden fazla yerde GRF ID
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... geçersiz NewGRF gözardı edildi '{STRING}': {STRING}
+STR_CONFIG_ERROR                                                :Ayar dosyasında hata...
+STR_CONFIG_ERROR_ARRAY                                          :'{STRING}' dizisinde hata
+STR_CONFIG_ERROR_INVALID_VALUE                                  :'{1:STRING}' için '{0:STRING}' geçersiz bir değer
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :'{STRING}' ayarının sonunda devam eden karakterler
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :'{STRING}' adlı NewGRF gözardı edildi: mükerrer NewGRF ID '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :geçersiz NewGRF '{STRING}' gözardı edildi: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :bulunamadı
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :statik kullanım için güvenli değil
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistem NewGRF'si
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :OpenTTD'nin bu sürümüyle uyumsuz
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :bilinmiyor
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... sıkıştırma seviyesi '{STRING}' geçerli değil
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... kaydedilmiş oyun formatı olarak '{STRING}' mevcut değil. '{STRING}' formatına çevriliyor
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... Temel Grafik kümesi görmezden geliniyor '{STRING}': bulunamadı
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... Temel Ses kümesi görmezden geliniyor '{STRING}': bulunamadı
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... Temel Müzik kümesi görmezden geliniyor '{STRING}': bulunamadı
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :... sıkıştırma seviyesi '{STRING}' geçerli değil
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :kaydedilmiş oyun biçimi olarak '{STRING}' mevcut değil. '{STRING}' biçimine dönülüyor
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :Temel Grafik kümesi '{STRING}' görmezden geliniyor: bulunamadı
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :Temel Ses kümesi '{STRING}' görmezden geliniyor: bulunamadı
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :Temel Müzik kümesi '{STRING}' görmezden geliniyor: bulunamadı
 
 # Video initalization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Video ayarlarında hata...
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... uyumlu GPU bulunamadı. Donanım hızlandırma devre dışı bırakıldı
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU sürücüsü oyunu çökertti. Donanım hızlandırma devre dışı bırakıldı
+STR_VIDEO_DRIVER_ERROR                                          :video ayarlarında hata...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :uyumlu GPU bulunamadı. Donanım hızlandırma devre dışı bırakıldı
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :GPU sürücüsü oyunu çökertti. Donanım hızlandırma devre dışı bırakıldı
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
@@ -2362,15 +2368,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Basit
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Basit yüz seçimi
 STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Tercih edilen yüzü yükle
-STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi
+STR_FACE_LOAD_DONE                                              :Tercih edilen surat OpenTTD ayar dosyasından yüklendi
 STR_FACE_FACECODE                                               :{BLACK}Oyuncu surat kodu
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Şirket başkanının surat kodunu göster ve/veya düzenle
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Şirket başkanının surat kodunu göster ve/veya düzenle
-STR_FACE_FACECODE_SET                                           :{WHITE}Yeni surat kodu ayarlandı
-STR_FACE_FACECODE_ERR                                           :{WHITE}Şirket başkanının surat kodu ayarlanamadı - geçerli bir etiket ve numara olmalıdır
+STR_FACE_FACECODE_SET                                           :Yeni surat kodu ayarlandı
+STR_FACE_FACECODE_ERR                                           :Şirket başkanının surat kodu ayarlanamadı - geçerli bir etiket ve numara olmalıdır
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
-STR_FACE_SAVE_DONE                                              :{WHITE}Bu yüz OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
+STR_FACE_SAVE_DONE                                              :Bu surat OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Evet
@@ -2480,15 +2486,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} ->
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Şu ana kadar {BYTES} indirildi
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} indirildi
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Bağlanıyor...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Onaylanıyor...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Bekliyor...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Harita indiriliyor...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Veriler işleniyor...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Kaydolunuyor...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Oyun bilgisi aliniyor...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Şirket bilgisi aliniyor...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Bağlantıyı kes
 
@@ -2542,6 +2546,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Aktarıc
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :At
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Yasakla
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Sil
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :Her istemciye izin ver
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :Sadece listedeki istemcilere izin ver
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Yönetici eylemi
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRING}' adlı oyuncuyu atmak istediğine emin misin?
@@ -2582,33 +2588,33 @@ STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohbeti için yazı girin
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ağ aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Sunucu isteğe cevap vermedi{WHITE}Sunucu bağlantısı zaman aşımına uğradı veya reddedildi
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF uyuşmazlığı yüzünden bağlanılamadı
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Oyunu senkronizasyonu başarısız
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Oyunu bağlatısı düştü
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kayıtlı oyun yüklenemedi
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Sunucu başlatılamadı
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokol hatası yapıldı ve bağlantı koparıldı
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Kullanıcı adınız ayarlanmamış. Kullanıcı adınız Çok Oyunculu penceresinin üstünden ayarlanabilir
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Sunucu adınız ayarlanmamış. Ad Çok Oyunculu penceresinin üstünden ayarlanabilir
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Bu istemcinin revizyonu sunucununki ile aynı değil
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Yanlış parola
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}İzin verilen istemciler arasında değilsiniz
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Sunucu dolu
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sunucuya girmeniz yasaklandı
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Oyundan atıldınız
-STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Sebep: {STRING}
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Bu sunucuda hileler kapalı
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Sunucuya çok fazla komut gönderiyordunuz
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Şifre girmeniz çok uzun sürdü
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Bilgisayarınız sunucuyla haberleşmeyi sürdürmek için çok yavaş.
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Bilgisayarınızın haritayı indirmesi çok uzun sürdü
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Bilgisayarınızın sunucuya katılması çok uzun sürdü
-STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}İsminiz geçerli değil
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :Hiç ağ aygıtı bulunamadı
+STR_NETWORK_ERROR_NOCONNECTION                                  :Sunucu bağlantısı zaman aşımına uğradı veya reddedildi
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :NewGRF uyuşmazlığı yüzünden bağlanılamadı
+STR_NETWORK_ERROR_DESYNC                                        :Ağ-Oyun senkronizasyonu başarısız
+STR_NETWORK_ERROR_LOSTCONNECTION                                :Ağ-Oyun bağlantısı düştü
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :Kayıtlı oyun yüklenemedi
+STR_NETWORK_ERROR_SERVER_START                                  :Sunucu başlatılamadı
+STR_NETWORK_ERROR_SERVER_ERROR                                  :Protokol hatası tespit edildi ve bağlantı koparıldı
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Kullanıcı adınız ayarlanmamış. Kullanıcı adınız Çok Oyunculu penceresinin üstünden ayarlanabilir
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Sunucu adınız ayarlanmamış. Ad Çok Oyunculu penceresinin üstünden ayarlanabilir
+STR_NETWORK_ERROR_WRONG_REVISION                                :Bu istemcinin sürümü sunucununki ile aynı değil
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Yanlış parola
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :İzin verilen istemciler listesinde yoksunuz
+STR_NETWORK_ERROR_SERVER_FULL                                   :Sunucu dolu
+STR_NETWORK_ERROR_SERVER_BANNED                                 :Sunucuya girmeniz yasaklandı
+STR_NETWORK_ERROR_KICKED                                        :Oyundan atıldınız
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :Sebep: {STRING}
+STR_NETWORK_ERROR_CHEATER                                       :Bu sunucuda hileler kapalı
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :Sunucuya çok fazla komut gönderiyordunuz
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Şifre girmeniz çok uzun sürdü
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :Bilgisayarınız sunucuyla haberleşmeyi sürdürmek için çok yavaş
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Bilgisayarınızın haritayı indirmesi çok uzun sürdü
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :Bilgisayarınızın sunucuya katılması çok uzun sürdü
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :İsminiz geçerli değil
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Olası bağlantı kaybı
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Son {NUM} saniyedir sunucudan hiç veri gelmedi
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Olası bağlantı kaybı
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :Son {NUM} saniyedir sunucudan hiç veri gelmedi
 
 ###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :genel hata
@@ -2661,14 +2667,14 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ye
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} oyunu terketti ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} adını {STRING} olarak değiştirdi
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} {2:STRING} adlı şirkete {1:CURRENCY_LONG} verdi
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Sunucu kapandı
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Sunucu baştan başlatılıyor...{}{}Lütfen bekleyin...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :Sunucu oturumu kapattı
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :Sunucu baştan başlatılıyor...{}{}Lütfen bekleyin...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} atıldı. Sebep: ({STRING})
 
-STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Sunucu kaydı başarısız oldu
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Başka bir sunucu aynı davet koduyla kendini kaydetmiş. "Yerel" oyun türüne geçiliyor.
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Sunucunuz uzak bağlantılara izin vermiyor
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Diğer kullanıcılar sunucunuza bağlanamayacaklar
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :Sunucu kaydı başarısız oldu
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :Başka bir sunucu aynı davet koduyla kendini kaydetmiş. "Yerel" oyun türüne geçiliyor.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Sunucunuz uzak bağlantılara izin vermiyor
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Diğer kullanıcılar sunucunuza bağlanamayacaklar
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Çevrimiçi İçerik
@@ -2712,8 +2718,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}İndirm
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seçildi çünkü: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Bağımlılıklar: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiketler: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD "zlib" desteği olmadan derlenmiş...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... içerik indirmek mümkün değil!
+STR_CONTENT_NO_ZLIB                                             :OpenTTD "zlib" desteği olmadan derlenmiş...
+STR_CONTENT_NO_ZLIB_SUB                                         :içerik indirmek mümkün değil!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Temel grafikler
@@ -2735,10 +2741,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}İndirme
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{1:BYTES}'ın {0:BYTES}'ı indirildi (%{2:NUM})
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}İçerik sunucusuna bağlanılamadı...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}İndirme başarısız...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosya yazılabilir değil
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}İndirilen sıkıştırılmış dosya açılamadı
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :İçerik sunucusuna bağlanılamadı...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :İndirme başarısız...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :dosya yazılabilir değil
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :İndirilen sıkıştırılmış dosya açılamadı
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Eksik grafik
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD çalışmak için grafiklere ihtiyaç duyuyor ancak grafik bulunamadı. OpenTTD'nin internetten bu grafikleri indirip yüklemesine izin veriyor musunuz?
@@ -2853,20 +2859,38 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Önizleme resim
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Önizleme resimlerinin yüksekliğini arttır. En yükseğe çekmek için Ctrl + Sol Tık yapın
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Öntanımlı koleksiyon
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Koleksiyon seç
+STR_PICKER_COLLECTION_ADD                                       :Ekle
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Koleksiyon oluştur
+STR_PICKER_COLLECTION_RENAME                                    :Yeniden adlandır
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Koleksiyonu yeniden adlandır
+STR_PICKER_COLLECTION_DELETE                                    :Sil
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Koleksiyonu siler
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Bu koleksiyonu yeniden adlandır
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Koleksiyonu sil
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Bu koleksiyonu silmek istediğinizden emin misiniz?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Bu koleksiyonu silmek istediğinizden emin misiniz? İçinde etkinleştirilmemiş NewGRF'lerden öğeler var!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Görüntülenecek istasyon sınıfını seçin
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :İnşa edilecek istasyon türünü seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Görüntülenecek istasyon koleksiyonunu seçin
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Görüntülenecek bir yol noktası türünü seçin
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :İnşa edilecek yerimini seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Görüntülenecek yerimi koleksiyonunu seçin
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Görüntülenecek otobüs istasyonunu seçin
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :İnşa edilecek otobüs istasyonunu seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Görüntülenecek otobüs durağı koleksiyonunu seçin
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Görüntülenecek bir kamyon istasyonu türünü seçin
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :İnşa edilecek bir tür kamyon istasyonu seçin. Kaydedilen öğelerde eklemek veya kaldırmak istiyorsanız Ctrl+Tık ile yapabilirsiniz.
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Görüntülenecek kamyon istasyonu koleksiyonu seçin
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Görüntülenecek öğe sınıfını seçin
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :İnşa edilecek nesne türünü seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+tıklayabilirsiniz. Ctrl+Tıkla+Sürükle yaparak köşeden köşeye seçim yapabilirsiniz. Shift'e basarak sadece fiyat önizlemesi yapabilirsiniz
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Görüntülenecek nesne koleksiyonunu seçin
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Görüntülemek için bir şehir bölgesi seçin
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Bir konut türü seçin. Kaydedilmiş öğelere eklemek veya kaldırmak için Ctrl+Tıklayın
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Görüntülenecek ev koleksiyonunu seçin
 
 STR_HOUSE_PICKER_CAPTION                                        :Ev Seçimi
 STR_HOUSE_PICKER_NAME                                           :{BLACK}İsim: {GOLD}{STRING}
@@ -3391,7 +3415,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Çöl ö
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Çöl örtüsünü yüzde on arttır
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Çöl örtüsünü yüzde on azalt
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}%{NUM}
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Azami yükseklik:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Ortalama yükseklik:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Deniz seviyesi:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Deniz seviyesini seç
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nehirler:
@@ -3495,12 +3520,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}tile-loo
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Betik çalıştırılıyor
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Oyun hazırlanıyor
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Şehir verisi yükleme başarısız oldu
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON dosyası hatalı şekilde biçimlendirilmiş
-STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} veri hatalı şekilde biçimlendirilmiş
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinatlar hatalı şekilde biçimlendirilmiş, toplam yükseklik haritası boyutunun 0'a 1 oranında olmalıdır.
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :Şehir verisi yükleme başarısız oldu
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :JSON dosyası hatalı biçimlendirilmiş
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING} veri hatalı şekilde biçimlendirilmiş
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{STRING} koordinatlar hatalı şekilde biçimlendirilmiş, toplam yükseklik haritası boyutunun 0'a 1 oranında olmalıdır.
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}{NUM} şehri kurmak için uygun yer bulunamadı. Kurulmak istenen yere tabela konuldu
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{NUM} şehri kurmak için uygun yer bulunamadı. Kurulmak istenen yere tabela konuldu
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Ayarları
@@ -3618,8 +3643,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Uyarı: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hata: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Ölümcül hata: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF "{STRING}" bir ölümcül hata bildirdi:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF "{STRING}" bir ölümcül hata bildirdi:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :NewGRF "{STRING}" ölümcül bir hata bildirdi:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :NewGRF "{STRING}" ölümcül bir hata bildirdi:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}, TTD'nin {2:STRING} sürümü içindir
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}, {2:STRING} ile kullanılmak için tasarlanmıştır
@@ -3627,7 +3652,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} içi
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} önce, {2:STRING} ondan sonra yüklenmeli
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :Önce {1:STRING}, sonra {2:STRING} yüklenmeli.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} OpenTTD {2:STRING} veya daha yüksek bir sürüm gerektirir
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :NewGRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} adlı NewGRF'yi {2:STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmedik nesne (nesne {3:NUM})
@@ -3636,7 +3661,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID ku
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir nesne içeriyor. Tüm bozuk nesneler kırmızı bir soru işareti (?) olarak görünecektir
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (nesne {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-nesne bitiminden sonrasını okudu (nesne {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (nesne {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen NewGRF kaynakları mevcut değil (nesne {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz/bilinmeyen nesne yerleşim biçimi (nesne {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Özellik değeri listesinde çok fazla öğe (sprite {3:NUM}, özellik {4:HEX})
@@ -3646,13 +3671,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Geçersiz endü
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz. Bu OpenTTD'yi çökertebilir veya oyunun durumunu bozabilir. Bu konular hakkında sorun bildirmeyiniz.{}Bundan kesinlikle emin misiniz?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya eklenemiyor: GRF ID çakışması
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu GRF yüklendi)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Dosya eklenemiyor: NewGRF dosya limitine ulaşıldı
+STR_NEWGRF_DUPLICATE_GRFID                                      :Dosya eklenemiyor: mükerrer GRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu NewGRF yüklendi)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Dosya eklenemiyor: NewGRF dosya limitine ulaşıldı
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik dosyalar için uyumlu GRF(ler) yüklendi
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Eksik dosyalar için uyumlu NewGRF(ler) yüklendi
+STR_NEWGRF_DISABLED_WARNING                                     :Eksik NewGRF dosyaları etkisizleştirildi
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik NewGRF dosyası
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Devam ettırme OpenTTD'yi çökertebilir. Takip eden çökmeler için hata rapor etmeyiniz.{}Gerçekten devam ettirmek istiyor musunuz?
 
 # NewGRF status
@@ -3663,17 +3688,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Uyumlu 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Eksik dosyalar
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı senkron kaybına ve/veya çökmelere sebep olabilir
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' için enerjilendirilmiş wagon durumunu garaj içinde değilken değiştirdi
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' için araç uzunluğunu garaj içinde değilken değiştirdi
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}'{1:ENGINE}' için araç kapasitesini bir garajda veya tamirde değilken değiştirdi
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir
+STR_NEWGRF_BROKEN                                               :NewGRF '{0:STRING}' davranışı senkron kaybına ve/veya çökmelere sebep olabilir
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :'{1:ENGINE}' için elektrikli vagon durumunu garaj içinde değilken değiştirdi
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :'{1:ENGINE}' için araç uzunluğunu garaj içinde değilken değiştirdi
+STR_NEWGRF_BROKEN_CAPACITY                                      :'{1:ENGINE}' için araç kapasitesini bir garajda veya tamirde değilken değiştirdi
+STR_BROKEN_VEHICLE_LENGTH                                       :'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir
 
-STR_NEWGRF_BUGGY                                                :{WHITE}'{0:STRING}' NewGRF'si geçersiz bilgi vermektedir
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü düzgün değiştirememesine sebep olabilir
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' üretim yordamında sonsuz döngüye sebep oldu
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}{1:HEX} adlı callback hata ya da geçersiz sonuç döndü {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' üretim geri çağırımında, geçerli olmayan kargo türü geri döndürdü {2:HEX}
+STR_NEWGRF_BUGGY                                                :'{0:STRING}' NewGRF'si geçersiz bilgi vermektedir
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü düzgün değiştirememesine sebep olabilir
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :'{1:STRING}' üretim yordamında sonsuz döngüye sebep oldu
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{1:HEX} adlı çağrı hatalı/geçersiz sonuç döndü {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :'{1:STRING}' üretim geri çağırımında, geçerli olmayan kargo türü geri döndürdü {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<geçersiz kargo>
@@ -4208,6 +4233,17 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Uçak t�
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Ray türleri: {GOLD}{STRING}
 
 # Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/yıl
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/periyot
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :%{COMMA}
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} kare
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Tüm kargo tipleri
@@ -4368,8 +4404,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajda
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Araç üreticisinden mesaj
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Araç üreticisinden mesaj ({COMMA} / {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Yeni bir {STRING} tasarladık - bizim için bunu bir yıl denemeyi kabul ediyor musunuz?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Önceki
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Önceki yeni araca atlamak için tıklayın
+STR_ENGINE_PREVIEW_NEXT                                         :Sonraki
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Sonraki yeni araca atlamak için tıklayın
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Yeni araca atlamak için tıklayın
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotif
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Elektrikli demiryolu lokomotifi
@@ -4547,7 +4590,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Bu yılk
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Bu yıl kâr: {LTBLUE}{CURRENCY_LONG} (geçen sene: {CURRENCY_LONG}) {BLACK}Min. performans: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Bu periyottaki kâr: {LTBLUE}{CURRENCY_LONG} (Geçen periyot: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Bu periyottaki kâr: {LTBLUE}{CURRENCY_LONG} (Geçen periyot: {CURRENCY_LONG}) {BLACK}Min. performans: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Güvenilirlik: {LTBLUE}{COMMA}%  {BLACK}Son bakımdan beri bozulma sayısı: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Üretim: {LTBLUE}{NUM}{BLACK} Değer: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasite: {LTBLUE}Yok{STRING}
@@ -4715,6 +4757,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Atla
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Şimdiki talimatı atla ve sonrakine geç. Ctrl + Sol Tık ile seçili talimata atlayın.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sil
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Tümünü Sil
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Seçili talimatı sil
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Tüm talimatları sil
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Paylaşmaktan vazgeç
@@ -4896,7 +4939,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Oyun Bet
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Oyun Betiği kaydını kontrol edin. Ctrl + Sol Tık yeni pencerede açar
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan betiklerden biri çöktü. Lütfen bu durumu YZ Hata Ayıklama Penceresi görüntüsüyle birlikte dosyanın yazarına bildirin
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Çalışan betiklerden biri çöktü. Lütfen bu durumu YZ Hata Ayıklama Penceresi görüntüsüyle birlikte dosyanın yazarına bildirin
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
@@ -4992,12 +5035,12 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Tahmini 
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Tahmini Gelir: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Kayıt işlemi sürüyor,{}lütfen bitene kadar bekleyin!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Otomatik kayıt başarısız
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :Kayıt işlemi sürüyor,{}lütfen bitene kadar bekleyin!
+STR_ERROR_AUTOSAVE_FAILED                                       :Otomatik kayıt başarısız
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Sürücü okunamıyor
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Oyun kaydedilemedi...
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Dosya silinemedi
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Oyun yüklenemedi...
+STR_ERROR_GAME_SAVE_FAILED                                      :Oyun kaydedilemedi...
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Dosya silinemedi
+STR_ERROR_GAME_LOAD_FAILED                                      :Oyun yüklenemedi...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :İç hata: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bozuk kayıtlı oyun - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Oyun yeni bir sürümle kaydedilmiş.
@@ -5009,18 +5052,18 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<uygun değil>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Harita oluşturulması iptal edildi...{}{}... uygun yerleşim bölgesi yok
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... Bu senaryoda hiç şehir yok
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Harita oluşturulması iptal edildi...{}{}... uygun yerleşim bölgesi yok
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :bu senaryoda hiç şehir yok
 
-STR_ERROR_PNGMAP                                                :{WHITE}PNG'den yükseklik haritası yüklenemedi...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... dosya bulunamadı
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... resim türü işlenemiyor. 8 veya 24-bit PNG resmi gerekli
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... yanlış bir şeyler oldu (muhtemelen dosya bozuk)
+STR_ERROR_PNGMAP                                                :PNG'den yükseklik haritası yüklenemedi...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :dosya bulunamadı
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :resim türü işlenemiyor. 8 veya 24-bit PNG resmi gerekli
+STR_ERROR_PNGMAP_MISC                                           :yanlış bir şeyler oldu (muhtemelen dosya bozuk)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Arazi BMP'den yüklenemedi...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... resim türü çevrilemedi
+STR_ERROR_BMPMAP                                                :Arazi BMP'den yüklenemedi...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :resim türü dönüştürülemedi
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... resim çok büyük
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :resim çok büyük
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
@@ -5032,442 +5075,443 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Yalnız 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Dev ekran görüntüsü
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Ekran görüntüsünün çözünürlüğü {COMMA} x {COMMA} piksel. Görüntüyü kaydetmek biraz zaman alabilir. Devam etmek istiyor musunuz?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Yükseklik haritası başarıyla '{STRING}' olarak kaydedildi. En yüksek tepe: {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekran görüntüsü '{STRING}' olarak kaydedildi
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekran görüntüsü alınamadı!
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Yükseklik haritası başarıyla '{STRING}' olarak kaydedildi. En yüksek tepe: {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Ekran görüntüsü '{STRING}' olarak kaydedildi
+STR_ERROR_SCREENSHOT_FAILED                                     :Ekran görüntüsü alınamadı!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mesaj
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{COMPANY} şirketinden mesaj
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Harita kenarında
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Sınıra çok yakın
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Para yetersiz - gerekli miktar: {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Zeminin düzleştirilmesi gerekli
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Arazi yanlış yöne doğru meyilli
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Bu yapılamaz...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Önce bina yıkılmalı
-STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... bina korunuyor
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Bu alan temizlenemez...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... yer uygun değil
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... zaten yapıldı
-STR_ERROR_OWNED_BY                                              :{WHITE}... sahibi {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alan başka bir şirkete ait
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... yeryüzü şekillendirme sınırına ulaştınız
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... kare temizleme sınırına ulaştınız
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... ağaç dikme sınırına ulaştınız
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}İsim daha önce kullanılmamış olmalı
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}yolda {STRING} var
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Oyun duraklatılmışken izin verilmiyor
+STR_ERROR_OFF_EDGE_OF_MAP                                       :harita kenarında
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :harita sınırına çok yakın
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :para yetersiz - gerekli miktar: {CURRENCY_LONG}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :düz zemin gerekli
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :arazi yanlış yöne doğru meyilli
+STR_ERROR_CAN_T_DO_THIS                                         :Bu yapılamaz...
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :önce bina yıkılmalı
+STR_ERROR_BUILDING_IS_PROTECTED                                 :bina korunuyor
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Bu alan temizlenemez...
+STR_ERROR_SITE_UNSUITABLE                                       :yer uygun değil
+STR_ERROR_ALREADY_BUILT                                         :zaten yapıldı
+STR_ERROR_OWNED_BY                                              :sahibi {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :alan başka bir şirkete ait
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :yeryüzü şekillendirme sınırına ulaşıldı
+STR_ERROR_CLEARING_LIMIT_REACHED                                :kare temizleme sınırına ulaştınız
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :ağaç dikme sınırına ulaştınız
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :İsim daha önce kullanılmamış olmalı
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :yolda {STRING} var
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :oyun duraklatılmışken izin verilmiyor
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} belediyesi buna izin vermiyor
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} belediyesi bu şehir için başka havalimanına izin vermiyor
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} belediyesi gürültü endişesiyle havalimanına izin vermiyor
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Rüşvet teşebbüsünüz müfettişler tarafından tespit edildi
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{TOWN} belediyesi buna izin vermiyor
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{TOWN} belediyesi bu şehir için başka havalimanına izin vermiyor
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{TOWN} belediyesi gürültü endişesiyle havalimanına izin vermiyor
+STR_ERROR_BRIBE_FAILED                                          :Rüşvet teşebbüsünüz müfettişler tarafından tespit edildi
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Burada arazi yükseltilemez...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Burada arazi alçaltılamaz...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Burada toprağı düzleyemezsiniz...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Kazı tünele hasar verebilir
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... zaten deniz seviyesinde
-STR_ERROR_TOO_HIGH                                              :{WHITE}... çok yüksek
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... zaten düz
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ardından üzerindeki köprü çok yüksek olacaktı.
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :burada arazi yükseltilemez...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Burada arazi alçaltılamaz...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Burada toprağı düzleyemezsiniz...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :kazı tünele hasar verecekti
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :zaten deniz seviyesinde
+STR_ERROR_TOO_HIGH                                              :çok yüksek
+STR_ERROR_ALREADY_LEVELLED                                      :zaten düz
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :ardından üzerindeki köprü çok yüksek olacaktı.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :önce nehir kaldırılmalı
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Şirket ismi değiştirilemez...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Yönetici ismi degitirilemez...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Şirket ismi değiştirilemez...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Yönetici ismi değiştirilemez...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... izin verilen azami borç {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Daha fazla kredi alınamaz...
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... ödenecek borç yok
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} gerekli
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kredi ödenemiyor...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankadan borç alınan para verilemez...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Bu şirkete para veremezsin...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Şirket satın alınamaz...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Şirket binasi yapılamaz...
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :izin verilen azami borç {CURRENCY_LONG}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Daha fazla borç para alınamaz...
+STR_ERROR_LOAN_ALREADY_REPAID                                   :ödenecek borç yok
+STR_ERROR_CURRENCY_REQUIRED                                     :{CURRENCY_LONG} gerekli
+STR_ERROR_CAN_T_REPAY_LOAN                                      :Kredi ödenemez...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Bankadan borç alınan para verilemez...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :Bu şirkete para aktarılamaz...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :Şirket satın alınamaz...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Şirket binası yapılamaz...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Şehir kurulamadı...
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}İsim değiştirilemiyor...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Buraya şehir yapılamıyor...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Şehir genişletilemiyor...
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... başka bir şehire çok yakın
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... çok fazla şehir var
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... haritada boş yer yok
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu şehir silinemiyor...{}{}Bir istasyon veya garaj şehre atıfta bulunuyor ya da bir şehir karesi kaldırılamıyor
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... bu şehrin merkezinde heykel için uygun bir yer yok
-STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Bina inşa edilemez...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :Hiç şehir kurulamaz...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :Şehir yeniden adlandırılamaz...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Buraya şehir kurulamaz...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :Şehir genişletilemez...
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :başka bir şehire çok yakın
+STR_ERROR_TOO_MANY_TOWNS                                        :çok fazla şehir var
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :haritada boş yer yok
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :yol çalışmaları devam ediyor
+STR_ERROR_TOWN_CAN_T_DELETE                                     :Bu şehir silinemiyor...{}{}Bir istasyon veya garaj şehre atıfta bulunuyor ya da bir şehir karesi kaldırılamıyor
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :bu şehrin merkezinde heykel için uygun bir yer yok
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :Ev inşa edilemez...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... çok fazla fabrika var
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Fabrika yapılamıyor...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Buraya {STRING} yapılamaz...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Buraya bu fabrikadan yapılamaz...
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Endüstri araştırılamaz...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... başka bir fabrikaya çok yakın
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... önce şehir yapılmalı
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... her şehirde yalnızca bir tane olabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... yalnızca nüfusu en az 1200 olan şehirlere yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... yalnızca yağmur ormanlarında yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... yalnızca çöllerde yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... yalnızca şehirlerde yapılabilir (evlerin yerine)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... yalnızca şehir merkezlerinin yakınına yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... yalnız alçak bölgelere yapılabilir
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sadece haritanın kenarlarına yerleştirilebilir
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... orman sadece kar sınırı üzerinde olabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin üzerinde yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin altında yapılabilir
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :çok fazla fabrika var
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :Fabrika yapılamıyor...
+STR_ERROR_CAN_T_BUILD_HERE                                      :Buraya {STRING} yapılamaz...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Buraya bu fabrikadan yapılamaz...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :Endüstri araştırılamaz...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :başka bir fabrikaya çok yakın
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :önce şehir kurulmalı
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :her şehirde yalnızca bir tane olabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :sadece nüfusu en az 1200 olan şehirlere yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :sadece yağmur ormanlarında yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :sadece çölde yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :sadece şehirlerde yapılabilir (evlerin yerine)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :yalnızca şehir merkezlerinin yakınına yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :sadece alçak bölgelere yapılabilir
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :sadece haritanın kenarlarına yerleştirilebilir
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :orman sadece kar sınırı üzerinde olabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :sadece kar çizgisinin üzerinde yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :sadece kar çizgisinin altında yapılabilir
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Maalesef finansman sağlanamadı, tekrar deneyin.
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Bu endüstri için uygun bir konum bulunamadı
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}'{STRING}' fabrikaları için uygun bir alan yoktu
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Daha iyi bir harita için harita oluşturma parametrelerini değiştirin
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :finansman sağlanamadı, şansınız yokmuş; tekrar deneyin
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :bu endüstri için uygun bir konum bulunamadı
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :'{STRING}' fabrikaları için uygun bir alan yoktu
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Daha iyi bir harita için harita oluşturma parametrelerini değiştirin
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Buraya tren istasyonu yapılamıyor...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Otobüs durağı yapılamıyor...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kamyon durağı yapılamıyor...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Yolcu tramvayı istasyonu yapılamaz...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Yük tramvayı istasyonu yapılamaz...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Buraya iskele yapılamaz...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Buraya havalimanı yapılamaz...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Buraya tren istasyonu yapılamıyor...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Otobüs durağı yapılamıyor...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Kamyon durağı yapılamaz...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Yolcu tramvayı istasyonu yapılamaz...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Yük tramvayı istasyonu yapılamaz...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Buraya iskele yapılamaz...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Buraya havalimanı yapılamaz...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Birden fazla istasyona bitişik
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... istasyon çok yayılmış
-STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... desteklenmeyen sayıda şerit
-STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... desteklenmeyen uzunluk
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Haritada çok fazla istasyon var
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Çok fazla demiryolu istasyon parçası var
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Çok fazla durak var
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Çok fazla kamyon yükleme yeri var
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Başka bir limana çok yakın
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Başka bir havalimanına çok yakın
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}İsim değiştirilemiyor...
-STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}İstasyon tabelası taşınamıyor...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... yol kasabaya ait
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... yol yanlış yönde
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... yol üstü duraklar köşe üzerine inşa edilemez
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... yol üstü duraklar kavşak üzerine inşa edilemez
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :birden fazla mevcut istasyonunu/yükleme alanını birleştirir
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :istasyon çok yayılmış
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :desteklenmeyen sayıda şerit
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :desteklenmeyen uzunluk
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :çok fazla istasyon/yükleme alanı var
+STR_ERROR_TOO_MANY_STATION_SPECS                                :çok fazla demiryolu istasyonu parçası var
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :çok fazla otobüs durağı var
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :çok fazla kamyon yükleme yeri var
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :başka bir limana çok yakın
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :başka bir havalimanına çok yakın
+STR_ERROR_CAN_T_RENAME_STATION                                  :İstasyon yeniden adlandırılamaz...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :İstasyon tabelası taşınamıyor...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :yol kasabaya ait
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :yol ters yönde
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :yol üstü duraklar köşe üzerine inşa edilemez
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :yol üstü duraklar kavşak üzerine inşa edilemez
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}İstasyonun parçasi kaldırılamaz...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Önce tren istasyonu kaldırılmalı
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Otobüs durağı kaldırılamaz...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kamyon durağı kaldırılamaz...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Yolcu tramvayı istasyonu kaldırılamıyor...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Yük tramvayı istasyonu kaldırılamıyor...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Önce durağı kaldırmalısınız
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... burada istasyon yok
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :İstasyonun parçası kaldırılamaz...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :önce tren istasyonu kaldırılmalı
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Otobüs durağı kaldırılamaz...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Kamyon durağı kaldırılamaz...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :Yolcu tramvayı istasyonu kaldırılamıyor...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Yük tramvayı istasyonu kaldırılamıyor...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :önce durak kaldırılmalı
+STR_ERROR_THERE_IS_NO_STATION                                   :... burada istasyon yok
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Önce tren istasyonu yıkılmalı
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Önce otobüs durağı yıkılmalı
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Önce kamyon durağı yıkılmalı
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Önce yolcu tramvayı istasyonu yıkılmalı
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Önce yük tramvayı istasyonu kaldırılmalı
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Önce liman yıkılmalı
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Önce havalimanı yıkılmalı
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :önce tren istasyonu yıkılmalı
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :önce otobüs durağı yıkılmalı
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :önce kamyon durağı yıkılmalı
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :önce yolcu tramvayı istasyonu yıkılmalı
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :önce yük tramvayı istasyonu yıkılmalı
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :önce liman yıkılmalı
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :önce havalimanı yıkılmalı
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Birden fazla mevcut yerimini birleştirir
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Diğer yerimine çok yakın
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :birden fazla mevcut yerimini birleştirir
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :başka bir yerimine çok yakın
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Buraya tren yerimi yapılamaz...
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Yol yerimi buraya yapılamaz...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Buraya şamandıra yerleştirilemez...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Yerimi adı değiştirilemedi...
-STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Yerimi tabelası taşınamıyor...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Buraya tren yerimi yapılamaz...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Yol yerimi buraya yapılamaz...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :Buraya şamandıra konulamaz...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Yerimi adı değiştirilemez...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Yerimi tabelası taşınamaz...
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Tren yerimi kaldırılamaz...
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}yol yerimi kaldırılamaz....
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Önce demiryolu yerimi kaldırılmalı
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Önce yol yerimi kaldırılmalı
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... yolda şamandıra var
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... şamandıra başka bir şirket tarafından kullanılıyor!
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :Tren yerimi buradan kaldırılamaz...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Yol yerimi kaldırılamaz....
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :önce demiryolu yerimi kaldırılmalı
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :önce yol yerimi kaldırılmalı
+STR_ERROR_BUOY_IN_THE_WAY                                       :yolda şamandıra var
+STR_ERROR_BUOY_IS_IN_USE                                        :şamandıra başka bir şirket tarafından kullanılıyor!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Buraya tren garajı yapılamıyor...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Buraya garaj yapılamaz...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Buraya tramvay garı yapılamaz...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Buraya tersane yapılamaz...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Buraya tren garajı yapılamaz...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Buraya garaj yapılamaz...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :Buraya tramvay garı yapılamaz...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Buraya tersane yapılamaz...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Depo yeniden adlandırılamıyor
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :Depo yeniden adlandırılamıyor...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... depoda durdurulmalı
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... garajda durdurulmalı
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... tersane içerisinde durdurulmalı
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hangar içerisinde durdurulmalı
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :depoda durdurulmalı
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :garajda durdurulmalı
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :tersane içinde durdurulmalı
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :hangar içerisinde durdurulmalı
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Sadece garda durdurulmuş trenler üzerinde işlem yapılabilir
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren çok uzun
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Aracın yönü çevrilemiyor...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... birden fazla birimden oluşuyor
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Uyumsuz ray türleri
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :sadece garda durdurulmuş trenler üzerinde işlem yapılabilir
+STR_ERROR_TRAIN_TOO_LONG                                        :tren çok uzun
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :Aracın yönü çevrilemiyor...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :birden fazla birimden oluşuyor
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :uyumsuz ray türleri
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Araç hareket edemiyor...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Arkadaki lokomotif daima önündekini takip edecek
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Yakındaki bir gara gidecek yol yok
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Yerel garaj bulunamadı
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Bu araç hareket edemez...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :arkadaki lokomotif daima önündekini takip edecek
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :yakındaki bir gara gidecek yol yok
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :yerel garaj bulunamadı
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Yanlış gar türü
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :yanlış gar türü
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... sadece bir tane gruptan ayırma emrine sahip olabilir
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... araçta gruptan ayırma emri bulunduğunda tam yükleme emri kullanılamaz
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... araçta tam yükleme emri bulunduğunda gruptan ayırma emri verilemez
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}...  aracın bir gruptan ayırma emri olduğunda koşullu emirleri kullanamaz
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... koşullu emir bulunan bir araçta gruptan ayırma emri verilemez
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :sadece bir tane gruptan ayırma emrine sahip olabilir
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :araçta gruptan ayırma emri bulunduğunda tam yükleme emri kullanılamaz
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :araçta tam yükleme emri bulunduğunda gruptan ayırma emri verilemez
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :aracın bir gruptan ayırma emri olduğunda koşullu emirleri kullanamaz
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :koşullu emir bulunan bir araçta gruptan ayırma emri verilemez
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} değiştirmeden sonra çok uzun oldu
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} değiştirmeden sonra çok uzun oldu
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(para yetmedi)
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Yeni araçlar bunu taşıyamıyor {STRING}
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}{NUM} numaralı talimattaki yeni araç yenilenemez.
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Yeni araç {STRING} taşıyamaz
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{NUM} numaralı talimattaki yeni araç yenilenemez
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}İmkansiz ray birleşimi
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Önce işaretleri kaldırmalısınız
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Uygun ray yok
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Önce ray kaldırılmalı
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Yol tek yönlü veya kapalı
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Bu ray türü için hemzemin geçit yapılamaz
-STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Hemzemin geçite bu yol tipinde izin verilmemektedir.
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Buraya sinyal yapılamıyor...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Buraya ray yapılamıyor...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Buradan ray kaldırılamıyor...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Buradan sinyaller kaldırılamıyor...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Buradaki sinyaller dönüştürülemez...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ray yok
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... sinyal yok
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :imkansız ray birleşimi
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :önce işaretleri kaldırmalısınız
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :uygun ray yok
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :önce ray kaldırılmalı
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :yol tek yönlü veya kapalı
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :bu ray türü için hemzemin geçit yapılamaz
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :hemzemin geçite bu yol tipinde izin verilmemektedir.
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Buraya sinyal yapılamaz...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Buraya ray yapılamıyor...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Ray buradan kaldırılamaz...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Sinyaller buradan kaldırılamaz...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Buradaki sinyaller dönüştürülemez...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :... ray yok
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :sinyal yok
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ray türü burada değiştirilemiyor...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :Ray türü burada değiştirilemiyor...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Önce yol silinmeli
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... tek yönlü yollar kesişemez
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Yol buraya yapılamıyor...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Buraya tramvay yapılamaz...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Yol buradan kaldırılamıyor...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tramvay kaldırılamaz...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... karayolu yok
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tramvay yolu yok
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Buradaki yol tipi değiştirilemiyor...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Tramvay türünü burada değiştiremezsiniz
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE} Uygun yol yok
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Uygun olmayan tramvay
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :önce yol silinmeli
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :tek yönlü yollar kesişemez
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Yol buraya yapılamaz...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Buraya tramvay yapılamaz...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Yol buradan kaldırılamıyor...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :Tramvay buradan kaldırılamaz...
+STR_ERROR_THERE_IS_NO_ROAD                                      :... karayolu yok
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :... tramvay yolu yok
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :Buradaki yol tipi değiştirilemiyor...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Tramvay türü burada değiştirilemez...
+STR_ERROR_NO_SUITABLE_ROAD                                      :uygun yol yok
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :uygun tramvay yok
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Buraya kanal yapılamaz...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Buraya yükseltme havuzu yapılamaz...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Burada nehirler yapamazsınız...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... suya yapılmali
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... suya yapılamaz
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... açık denizde yapılamaz
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kanal üzerinde yapılamaz
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nehir üzerinde yapılamaz
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Önce kanal kaldırılmalı
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Buraya su kemeri yapılamaz...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Buraya kanal yapılamaz...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :Buraya yükseltme havuzu yapılamaz...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :Buradan nehir geçemez...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :suya yapılmalı
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :suya yapılamaz
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :açık denizde yapılamaz
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :kanal üzerinde yapılamaz
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :nehir üzerinde yapılamaz
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :önce kanal yıkılmalı
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Buraya su kemeri yapılamaz...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... burada zaten ağaç var
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... bu ağaç türü için yanlış arazi
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Buraya ağaç dikilemez...
+STR_ERROR_TREE_ALREADY_HERE                                     :burada zaten ağaç var
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :bu ağaç türü için yanlış arazi
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Buraya ağaç dikilemez...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Buraya köprü yapılamaz...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Önce köprü yıkılmalı
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Aynı noktada başlayıp bitemez
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Köprü uçları aynı seviyede değil
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Köprü bu arazi için çok alçakta
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Köprü bu arazi için çok yüksek.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... köprünün her iki ucu da karada olmalı
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... köprü çok uzun
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Köprü haritanın dışında sonlanacaktı
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Körü istasyon için {HEIGHT} fazla alçak
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Köprü karayolu durağı için {HEIGHT} fazla alçak
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Köprü rıhtım için {HEIGHT} fazla alçak
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Köprü şamandıra için {HEIGHT} fazla alçak
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Köprü ray durağı için {HEIGHT} fazla alçak
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Köprü karayolu işareti için {HEIGHT} fazla alçak
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Körpü kilit için {HEIGHT} fazla alçak
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Buraya köprü yapılamaz...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :önce köprü yıkılmalı
+STR_ERROR_CAN_T_START_AND_END_ON                                :aynı noktada başlayıp bitemez
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :köprü uçları aynı seviyede değil
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :köprü bu arazi için çok alçakta
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :köprü bu arazi için çok yüksek.
+STR_ERROR_START_AND_END_MUST_BE_IN                              :başlangıç ve bitiş aynı çizgi üzerinde olmalı
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :köprünün her iki ucu da karada olmalı
+STR_ERROR_BRIDGE_TOO_LONG                                       :köprü çok uzun
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :köprü haritanın dışında sonlanacaktı
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :köprü istasyon için {HEIGHT} fazla alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :köprü karayolu durağı için {HEIGHT} fazla alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :köprü rıhtım için {HEIGHT} fazla alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :köprü şamandıra için {HEIGHT} fazla alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :Köprü ray imi için {HEIGHT} fazla alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :köprü karayolu imi için {HEIGHT} fazla alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :köprü kilit için {HEIGHT} fazla alçak
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Buraya tünel yapılamaz...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Yer tünel girişi için uygun değil
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Önce tünel yıkılmalı
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Yolda başka bir tünel var
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tünel haritanın dışında bitiyor
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tünelin diğer ucunda düzeltme yapılmasi gerekiyor
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tünel çok uzun
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Buraya tünel yapılamaz...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :yer tünel girişi için uygun değil
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :önce tünel yıkılmalı
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :yolda başka bir tünel var
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :tünel haritanın dışında bitiyor
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :tünelin diğer ucunda kazı yapılamıyor
+STR_ERROR_TUNNEL_TOO_LONG                                       :tünel çok uzun
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... çok fazla nesne var
-STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nesne inşa edilemiyor...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Yolda nesne var
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yolda şirket binası var
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Burası satın alınamaz...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... zaten senin!
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... Nesne oluşturma sınırına ulaştınız
+STR_ERROR_TOO_MANY_OBJECTS                                      :çok fazla nesne var
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :Nesne inşa edilemez...
+STR_ERROR_OBJECT_IN_THE_WAY                                     :yolda nesne var
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :yolda şirket binası var
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Burası satın alınamaz...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :zaten senin!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :nesne oluşturma sınırına ulaşıldı
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Grup oluşturulamıyor...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Bu grup silinemiyor...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Grubun ismi değiştirilemiyor...
-STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Üst grup ayarlanamıyor...
-STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}Grup hiyerarşisinde döngülere izin verilmez
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Bu gruptaki bütün araçlar çıkartılamıyor...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Araç bu gruba eklenemiyor...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Paylaşılan araçlar bu gruba eklenemiyor...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :Grup oluşturulamıyor...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :Bu grup silinemiyor...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :Grubun ismi değiştirilemiyor...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :Üst grup ayarlanamıyor...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :grup hiyerarşisinde döngülere izin verilmez
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :Bu gruptaki bütün araçlar çıkartılamıyor...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :Araç bu gruba eklenemez...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Paylaşılan araçlar gruba eklenemez..
 
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Yolda tren var
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Yolda araç var
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Yolda gemi var
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Yolda uçak var
+STR_ERROR_TRAIN_IN_THE_WAY                                      :yolda tren var
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :yolda araç var
+STR_ERROR_SHIP_IN_THE_WAY                                       :yolda gemi var
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :yolda uçak var
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Tren kullanılamaz
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Araç kullanılamaz
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Gemi kullanılamaz
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Uçak kullanılamaz
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :araç kullanılamaz
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :araç kullanılamaz
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :gemi kullanılamaz
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :uçak kullanılamaz
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Modifiye edilemiyor...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Araç modifiye edilemiyor...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Modifiye edilemez...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Modifiye edilemez...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :Tren modifiye edilemez...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Araç modifiye edilemez...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :Gemi modifiye edilemez...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Uçak modifiye edilemez...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Tren adlandırılamıyor...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Araç adlandırılamıyor...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Gemi adlandırılamaz...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Uçak adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :Tren adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Araç adlandırılamıyor...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :Gemi adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Uçak adlandırılamaz...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Tren durdurulamaz/başlatılamaz...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Araç başlatılamıyor/durdurulamıyor...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Gemi durdurulamaz/başlatılamaz...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Uçak durdurulamaz/başlatılamaz...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Tren durdurulamaz/başlatılamaz...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Araç başlatılamaz/durdurulamaz...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Gemi durdurulamaz/başlatılamaz...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Uçak durdurulamaz/başlatılamaz...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Tren garaja gönderilemiyor...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Araç garaja gidemiyor...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Gemi tersaneye gönderilemez...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Hava taşıtı hangara gönderilemiyor...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Tren garaja gönderilemiyor...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Araç garaja gidemiyor...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Gemi tersaneye gönderilemez...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Hava taşıtı hangara gönderilemiyor...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Tren alınamıyor...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kara taşıtı alınamıyor...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Gemi alınamıyor...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Uçak alınamıyor...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :Tren alınamaz...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :Kara taşıtı alınamaz...
+STR_ERROR_CAN_T_BUY_SHIP                                        :Gemi alınamaz...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Uçak alınamaz...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tren yeniden adlandırılamaz...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Araç türü yeniden adlandırılamıyor...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Gemi türü adlandırılamaz...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Uçak türü adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Tren aracı türü yeniden adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Araç türü yeniden adlandırılamıyor...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Gemi türü adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Uçak türü adlandırılamaz...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tren satılamaz...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Karayolu taşıtı satılamıyor...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Gemi satılamaz...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Uçak satılamıyor...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Tren satılamaz...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Karayolu taşıtı satılamaz...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Gemi satılamaz...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Uçak satılamaz...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Tüm demiryolu araçları satılamaz...
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Tüm karayolu taşıtları satılamıyor...
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Tüm gemiler satılamaz...
-STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Tüm uçaklar satılamıyor...
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Tüm demiryolu araçları satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Tüm karayolu taşıtları satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Tüm gemiler satılamaz...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Tüm uçaklar satılamaz...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Demiryolu araçları otomatik olarak değiştirilemiyor...
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Karayolu taşıtları otomatik değiştirilemiyor...
-STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Gemiler otomatik olarak değiştirilemiyor...
-STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Uçaklar otomatik değiştirılemiyor...
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Demiryolu araçları otomatik değiştirilemez...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Karayolu taşıtları otomatik değiştirilemez...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Gemiler otomatik olarak değiştirilemez...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Uçaklar otomatik değiştirilemez...
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Oyunda çok fazla araç var
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servis aralığı değiştirilemiyor...
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :oyunda çok fazla araç var
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :Servis aralığı değiştirilemez...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... araç imha edilmiş
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :araç imha edilmiş
 
-STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... tüm araçlar birebir aynı değil
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :tüm araçlar birebir aynı değil
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Hiçbir araç kullanılabilir olmayacak
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Yeni NewGRF yapılandırmanızı değiştirin
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Henüz hiçbir araç kullanılabilir değil
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT} sonra yeni bir oyun başlat veya erken araç sağlayan NewGRF kullan
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Hiçbir araç kullanılabilir olmayacak
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :NewGRF ayarlarınızı değiştirin
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Henüz hiçbir araç kullanılabilir değil
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{DATE_SHORT} tarihinden sonra yeni bir oyun başlatın veya erken araç sağlayan NewGRF kullanın
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Kasabada inşa edilebilir yol türleri mevcut değil
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}NewGRF Yapılandırma Ayarlarını Değiştir
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Henüz inşa edilebilir şehir yol türü mevcut değil
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Yeni oyuna başladıktan sonra {DATE_SHORT} veya önceden şehir inşa edilebilir yol türleri sağlayan bir NewGRF kullanın
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Kasabada inşa edilebilir yol türleri mevcut değil
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :NewGRF ayarlarınızı değiştirin
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Henüz inşa edilebilir şehir yol türü mevcut değil
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Yeni oyuna başladıktan sonra {DATE_SHORT} veya önceden şehir inşa edilebilir yol türleri sağlayan bir NewGRF kullanın
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tren çevrilemez...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Trenin gücü yok
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :Tehlikedeki tren sinyali geçemez...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :Tren çevrilemez...
+STR_ERROR_TRAIN_START_NO_POWER                                  :tren elektrikli değil
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kara taşıtı U dönüşü yapamıyor...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :Kara taşıtı U dönüşü yapamıyor...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Şu an uçuşta
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :araç uçuşta
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Çok fazla talimat var
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Çok fazla talimat
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Yeni talimat verilemiyor...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Bu talimat silinemez...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Bu talimat değiştirilemez...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Talimat taşınamıyor...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Talimat atlanamıyor...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Seçili talimata atlanamıyor...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... araç istasyonların tümüne gidemiyor
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... araç bu istasyona gidemiyor
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... bu emri paylaşan bir araç bu istasyona gidemiyor
-STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... tüm araçlar aynı talimatlara sahip değil
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... tüm araçlar aynı talimatları paylaşmıyor
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :talimat için hiç yer kalmadı
+STR_ERROR_TOO_MANY_ORDERS                                       :çok fazla talimat
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Yeni talimat eklenemiyor...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Bu talimat silinemez...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :Bu talimat değiştirilemez...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Bu talimat taşınamaz...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :Talimat atlanamıyor...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :Seçili talimata atlanamıyor...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :araç istasyonların tümüne gidemiyor
+STR_ERROR_CAN_T_ADD_ORDER                                       :araç bu istasyona gidemiyor
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :bu emri paylaşan bir araç bu istasyona gidemiyor
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :tüm araçlar aynı talimatlara sahip değil
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :tüm araçlar talimatları paylaşmıyor
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Talimat listesi paylasilamiyor...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Paylaşılan talimat listesini durduramazsınız...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Talimat listesi kopyalanamiyor...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... önceki hedeften çok uzak
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... uçağın menzili yeterli değil
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Talimat listesi paylaşılamıyor...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Paylaşılan talimat listesini durduramazsınız...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Talimat listesi kopyalanamaz...
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :önceki hedeften çok uzak
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :uçağın menzili yeterli değil
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE} Tren istasyonu yok
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}Otobüs istasyonu yok
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE} Kamyon istasyonu yok
-STR_ERROR_NO_DOCK                                               :{WHITE}Liman yok
-STR_ERROR_NO_AIRPORT                                            :{WHITE}Havalimanı/Helikopter pisti yok
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Uyumlu bir yol tipine sahip durak yok
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Uyumlu bir tramvay tipine sahip durak yok
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE} Körüklü karayolu taşıtları için uygun durak yoktur.{}Körüklü karayolu taşıtları üzerinden geçme durağı gerektirir, körfez durağı değil
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Bu uçak bu helikopter pistine inemez
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Helikopter bu havalimanı'na inemez
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE} Hiç ray ara noktası yok
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE} Hiç karayolu ara noktası yok
-STR_ERROR_NO_BUOY                                               :{WHITE}Şamandıra yok
+STR_ERROR_NO_RAIL_STATION                                       :Tren istasyonu yok
+STR_ERROR_NO_BUS_STATION                                        :Otobüs istasyonu yok
+STR_ERROR_NO_TRUCK_STATION                                      :Kamyon istasyonu yok
+STR_ERROR_NO_DOCK                                               :Liman yok
+STR_ERROR_NO_AIRPORT                                            :Havalimanı/Helikopter pisti yok
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Uyumlu bir yol tipine sahip durak yok
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Uyumlu bir tramvay tipine sahip durak yok
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Körüklü karayolu taşıtları için uygun durak yoktur.{}Körüklü karayolu taşıtları üzerinden geçme durağı gerektirir, körfez durağı değil
+STR_ERROR_AIRPORT_NO_PLANES                                     :Bu uçak bu havalimanına inemez
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Helikopter bu havalimanına inemez
+STR_ERROR_NO_RAIL_WAYPOINT                                      :Hiç ray imi yok
+STR_ERROR_NO_ROAD_WAYPOINT                                      :Hiç karayolu yerimi yok
+STR_ERROR_NO_BUOY                                               :Şamandıra yok
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Araçlar sadece istasyonlarda bekleyebilir
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Araç bu istasyonda durmuyor
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... zaman çizelgesi eksik
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... zaman çizelgesi henüz başlamadı
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :Aracın zaman çizelgesi oluşturulamıyor...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :araçlar sadece istasyonlarda bekleyebilir
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :bu araç bu istasyonda durmuyor
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :zaman çizelgesi eksik
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :zaman çizelgesi henüz başlamadı
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... çok fazla tabela var
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Buraya tabela konulamıyor...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Tabela adı değiştirilemiyor...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Tabelayı silemezsiniz...
+STR_ERROR_TOO_MANY_SIGNS                                        :çok fazla tabela var
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :Buraya tabela konulamaz...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :Tabela adı değiştirilemez...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :Tabelayı silemezsiniz...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -5985,7 +6029,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Rozet ayarlarını aç

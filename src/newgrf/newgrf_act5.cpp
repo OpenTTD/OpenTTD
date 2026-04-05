@@ -118,7 +118,7 @@ static void GraphicsNew(ByteReader &buf)
 		LoadNextSprite(SPR_SHORE_BASE + 15, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_STEEP_E
 		LoadNextSprite(SPR_SHORE_BASE + 16, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_EW
 		LoadNextSprite(SPR_SHORE_BASE + 17, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_NS
-		if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ONLY_NEW;
+		if (_loaded_newgrf_features.shore == ShoreReplacement::None) _loaded_newgrf_features.shore = ShoreReplacement::OnlyNew;
 		return;
 	}
 
@@ -154,13 +154,13 @@ static void GraphicsNew(ByteReader &buf)
 	/* Load <num> sprites starting from <replace>, then skip <skip_num> sprites. */
 	GrfMsg(2, "GraphicsNew: Replacing sprites {} to {} of {} (type 0x{:02X}) at SpriteID 0x{:04X}", offset, offset + num - 1, action5_type->name, type, replace);
 
-	if (type == 0x0D) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_5;
+	if (type == 0x0D) _loaded_newgrf_features.shore = ShoreReplacement::Action5;
 
 	if (type == 0x0B) {
 		static const SpriteID depot_with_track_offset = SPR_TRAMWAY_DEPOT_WITH_TRACK - SPR_TRAMWAY_BASE;
 		static const SpriteID depot_no_track_offset = SPR_TRAMWAY_DEPOT_NO_TRACK - SPR_TRAMWAY_BASE;
-		if (offset <= depot_with_track_offset && offset + num > depot_with_track_offset) _loaded_newgrf_features.tram = TRAMWAY_REPLACE_DEPOT_WITH_TRACK;
-		if (offset <= depot_no_track_offset && offset + num > depot_no_track_offset) _loaded_newgrf_features.tram = TRAMWAY_REPLACE_DEPOT_NO_TRACK;
+		if (offset <= depot_with_track_offset && offset + num > depot_with_track_offset) _loaded_newgrf_features.tram = TramDepotReplacement::WithTrack;
+		if (offset <= depot_no_track_offset && offset + num > depot_no_track_offset) _loaded_newgrf_features.tram = TramDepotReplacement::WithoutTrack;
 	}
 
 	/* If the baseset or grf only provides sprites for flat tiles (pre #10282), duplicate those for use on slopes. */
@@ -191,9 +191,15 @@ static void SkipAct5(ByteReader &buf)
 	GrfMsg(3, "SkipAct5: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
+/** @copydoc GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x05>::FileScan(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x05>::SafetyScan(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x05>::LabelScan(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x05>::Init(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x05>::Reserve(ByteReader &buf) { SkipAct5(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x05>::Activation(ByteReader &buf) { GraphicsNew(buf); }

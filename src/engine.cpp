@@ -893,12 +893,12 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 
 	EnableEngineForCompany(eid, company);
 
-	/* Notify preview window, that it might want to close.
+	/* Notify preview window to remove this engine.
 	 * Note: We cannot directly close the window.
 	 *       In singleplayer this function is called from the preview window, so
 	 *       we have to use the GUI-scope scheduling of InvalidateWindowData.
 	 */
-	InvalidateWindowData(WC_ENGINE_PREVIEW, eid);
+	InvalidateWindowClassesData(WC_ENGINE_PREVIEW);
 
 	/* Don't search for variants to include if we are 10 levels deep already. */
 	if (recursion_depth >= 10) return;
@@ -977,7 +977,7 @@ static const IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGame
 		if (e->flags.Test(EngineFlag::ExclusivePreview)) {
 			if (e->preview_company != CompanyID::Invalid()) {
 				if (!--e->preview_wait) {
-					CloseWindowById(WC_ENGINE_PREVIEW, i);
+					InvalidateWindowClassesData(WC_ENGINE_PREVIEW);
 					e->preview_company = CompanyID::Invalid();
 				}
 			} else if (e->preview_asked.Count() < MAX_COMPANIES) {
@@ -1136,8 +1136,8 @@ static void NewVehicleAvailable(Engine *e)
 	if (e->type == VEH_SHIP) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
 	if (e->type == VEH_AIRCRAFT) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_AIR);
 
-	/* Close pending preview windows */
-	CloseWindowById(WC_ENGINE_PREVIEW, index);
+	/* Remove from preview windows */
+	InvalidateWindowClassesData(WC_ENGINE_PREVIEW);
 }
 
 /** Monthly update of the availability, reliability, and preview offers of the engines. */

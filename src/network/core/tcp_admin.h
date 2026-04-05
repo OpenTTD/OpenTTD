@@ -99,7 +99,7 @@ enum class AdminUpdateFrequency : uint8_t {
 	Annually, ///< The admin gets information about this on a yearly basis.
 	Automatic, ///< The admin gets information about this when it changes.
 };
-using AdminUpdateFrequencies = EnumBitSet<AdminUpdateFrequency, uint8_t>;
+using AdminUpdateFrequencies = EnumBitSet<AdminUpdateFrequency, uint8_t>; ///< Bitset of chosen update frequencies.
 
 /** Reasons for removing a company - communicated to admins. */
 enum AdminCompanyRemoveReason : uint8_t {
@@ -158,8 +158,8 @@ protected:
 
 	/**
 	 * Send chat as the server:
-	 * uint8_t   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
-	 * uint8_t   Destination type such as DESTTYPE_BROADCAST (see #DestType).
+	 * uint8_t   Action such as NetworkAction::ChatClient (see #NetworkAction).
+	 * uint8_t   Destination type such as NetworkChatDestinationType::Broadcast (see #NetworkChatDestinationType).
 	 * uint32_t  ID of the destination such as company or client id.
 	 * string  Message.
 	 * @param p The packet that was just received.
@@ -210,7 +210,7 @@ protected:
 	 *
 	 * The server will determine which of the authentication methods supplied by the client will be used.
 	 * When there is no supported authentication method, an \c ADMIN_PACKET_SERVER_ERROR packet will be
-	 * sent with \c NETWORK_ERROR_NO_AUTHENTICATION_METHOD_AVAILABLE as error.
+	 * sent with \c NetworkErrorCode::NoAuthenticationMethodAvailable as error.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -433,8 +433,8 @@ protected:
 
 	/**
 	 * Send chat from the game into the admin network:
-	 * uint8_t   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
-	 * uint8_t   Destination type such as DESTTYPE_BROADCAST (see #DestType).
+	 * uint8_t   Action such as NetworkAction::ChatClient (see #NetworkAction).
+	 * uint8_t   Destination type such as NetworkChatDestinationType::Broadcast (see #NetworkChatDestinationType).
 	 * uint32_t  ID of the client who sent this message.
 	 * string  Message.
 	 * uint64_t  Money (only when it is a 'give money' action).

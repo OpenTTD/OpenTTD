@@ -1953,18 +1953,18 @@ public:
 		NWidgetBase *display = this->children.front().get();
 		NWidgetBase *bar = this->children.back().get();
 
-		if (sizing == ST_SMALLEST) {
+		if (sizing == SizingType::Smallest) {
 			this->smallest_x = given_width;
 			this->smallest_y = given_height;
 			/* Make display and bar exactly equal to their minimal size. */
-			display->AssignSizePosition(ST_SMALLEST, x, y, display->smallest_x, display->smallest_y, rtl);
-			bar->AssignSizePosition(ST_SMALLEST, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
+			display->AssignSizePosition(SizingType::Smallest, x, y, display->smallest_x, display->smallest_y, rtl);
+			bar->AssignSizePosition(SizingType::Smallest, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
 		}
 
 		uint bar_height = std::max(bar->smallest_y, this->smallmap_window->GetLegendHeight(this->smallmap_window->GetNumberColumnsLegend(given_width - bar->smallest_x)));
 		uint display_height = given_height - bar_height;
-		display->AssignSizePosition(ST_RESIZE, x, y, given_width, display_height, rtl);
-		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);
+		display->AssignSizePosition(SizingType::Resize, x, y, given_width, display_height, rtl);
+		bar->AssignSizePosition(SizingType::Resize, x, y + display_height, given_width, bar_height, rtl);
 	}
 };
 

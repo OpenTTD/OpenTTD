@@ -16,6 +16,7 @@
 #include "palette_func.h"
 #include "settings_gui.h"
 #include "string_func.h"
+#include "stringfilter_type.h"
 #include "strings_func.h"
 #include "window_gui.h"
 
@@ -61,6 +62,13 @@ public:
 	explicit DropDownString(std::string &&string, Args&&... args) : TBase(std::forward<Args>(args)...)
 	{
 		this->SetString(std::move(string));
+	}
+
+	/** @copydoc DropDownListItem::FilterText */
+	void FilterText(StringFilter &string_filter) const override
+	{
+		string_filter.AddLine(this->string);
+		this->TBase::FilterText(string_filter);
 	}
 
 	void SetString(std::string &&string)

@@ -110,7 +110,7 @@ static void GRFSound(ByteReader &buf)
 				file.SkipBytes(len);
 			} else {
 				uint32_t id = file.ReadDword();
-				if (_cur_gps.stage == GLS_INIT) LoadGRFSound(GetGRFSpriteOffset(id), sound + i);
+				if (_cur_gps.stage == GrfLoadingStage::Init) LoadGRFSound(GetGRFSpriteOffset(id), sound + i);
 			}
 			continue;
 		}
@@ -131,7 +131,7 @@ static void GRFSound(ByteReader &buf)
 		switch (action) {
 			case 0xFF:
 				/* Allocate sound only in init stage. */
-				if (_cur_gps.stage == GLS_INIT) {
+				if (_cur_gps.stage == GrfLoadingStage::Init) {
 					if (grf_container_version >= 2) {
 						GrfMsg(1, "GRFSound: Inline sounds are not supported for container version >= 2");
 					} else {
@@ -142,7 +142,7 @@ static void GRFSound(ByteReader &buf)
 				break;
 
 			case 0xFE:
-				if (_cur_gps.stage == GLS_ACTIVATION) {
+				if (_cur_gps.stage == GrfLoadingStage::Activation) {
 					/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
 					 * importing sounds, so this is probably all wrong... */
 					if (file.ReadByte() != 0) GrfMsg(1, "GRFSound: Import type mismatch");
@@ -172,9 +172,15 @@ static void SkipAct11(ByteReader &buf)
 	GrfMsg(3, "SkipAct11: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
+/** @copydoc GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x11>::FileScan(ByteReader &buf) { SkipAct11(buf); }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x11>::SafetyScan(ByteReader &buf) { GRFUnsafe(buf); }
+/** @copydoc GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x11>::LabelScan(ByteReader &buf) { SkipAct11(buf); }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x11>::Init(ByteReader &buf) { GRFSound(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x11>::Reserve(ByteReader &buf) { SkipAct11(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x11>::Activation(ByteReader &buf) { GRFSound(buf); }

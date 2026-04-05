@@ -43,10 +43,10 @@ static constexpr std::initializer_list<std::string_view> _certificate_directorie
 };
 #endif /* UNIX */
 
-static std::vector<HTTPThreadSafeCallback *> _http_callbacks;
-static std::vector<HTTPThreadSafeCallback *> _new_http_callbacks;
-static std::mutex _http_callback_mutex;
-static std::mutex _new_http_callback_mutex;
+static std::vector<HTTPThreadSafeCallback *> _http_callbacks; ///< Callback for the current requests.
+static std::vector<HTTPThreadSafeCallback *> _new_http_callbacks; ///< Callbacks for the request that should be started.
+static std::mutex _http_callback_mutex; ///< Mutex to prevent concurrent access to #_http_callbacks.
+static std::mutex _new_http_callback_mutex; ///< Mutex to prevent concurrent access to #_new_http_callbacks.
 
 /** Single HTTP request. */
 class NetworkHTTPRequest {
@@ -79,15 +79,16 @@ public:
 	const std::string data; ///< Data to send, if any.
 };
 
-static std::thread _http_thread;
-static std::atomic<bool> _http_thread_exit = false;
-static std::queue<std::unique_ptr<NetworkHTTPRequest>> _http_requests;
-static std::mutex _http_mutex;
-static std::condition_variable _http_cv;
+static std::thread _http_thread; ///< The thread running the HTTP requests.
+static std::atomic<bool> _http_thread_exit = false; ///< Whether to ask the HTTP request thread to stop.
+static std::queue<std::unique_ptr<NetworkHTTPRequest>> _http_requests; ///< HTTP requests that are currently running
+static std::mutex _http_mutex; ///< Mutex to prevent concurrent access #_http_requests.
+static std::condition_variable _http_cv; ///< Conditional variable to wake up the HTTP request thread.
 #if defined(UNIX)
-static std::string _http_ca_file = "";
-static std::string _http_ca_path = "";
+static std::string _http_ca_file = ""; ///< File with certificate authority data.
+static std::string _http_ca_path = ""; ///< Folder with certificate authority data.
 #endif /* UNIX */
+
 
 /* static */ void NetworkHTTPSocketHandler::Connect(std::string_view uri, HTTPCallback *callback, std::string &&data)
 {
@@ -121,6 +122,12 @@ static std::string _http_ca_path = "";
 	}
 }
 
+/**
+ * Set some specific option and emit debug information upon failure.
+ * @param curl The curl instance we're using.
+ * @param option The option to set.
+ * @param value The value for the option.
+ */
 void CurlSetOption(CURL *curl, auto option, auto value)
 {
 	CURLcode res = curl_easy_setopt(curl, option, value);
@@ -129,6 +136,7 @@ void CurlSetOption(CURL *curl, auto option, auto value)
 	}
 }
 
+/** Thread entry point for the HTTP request thread. */
 void HttpThread()
 {
 	CURL *curl = curl_easy_init();

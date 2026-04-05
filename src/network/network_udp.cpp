@@ -30,14 +30,20 @@ struct UDPSocket {
 	const std::string name;                     ///< The name of the socket.
 	std::unique_ptr<NetworkUDPSocketHandler> socket = nullptr; ///< The actual socket, which may be nullptr when not initialized yet.
 
+	/**
+	 * Create this socket.
+	 * @param name The name of the socket for logging purposes.
+	 */
 	UDPSocket(const std::string &name) : name(name) {}
 
+	/** @copydoc NetworkUDPSocketHandler::CloseSocket */
 	void CloseSocket()
 	{
 		this->socket->CloseSocket();
 		this->socket = nullptr;
 	}
 
+	/** @copydoc NetworkUDPSocketHandler::ReceivePackets */
 	void ReceivePackets()
 	{
 		this->socket->ReceivePackets();

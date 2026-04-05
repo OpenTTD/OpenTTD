@@ -85,8 +85,8 @@ enum class OrderLoadType : uint8_t {
  * Non-stop order flags.
  */
 enum class OrderNonStopFlag : uint8_t {
-	NoIntermediate = 0, ///< The vehicle will not stop at any stations it passes except the destination, aka non-stop.
-	NoDestination = 1, ///< The vehicle will stop at any station it passes except the destination, aka via.
+	NonStop = 0, ///< The vehicle will not stop at any stations it passes except the destination, aka non-stop.
+	GoVia = 1, ///< The vehicle will stop at any station it passes except the destination, aka via.
 };
 
 using OrderNonStopFlags = EnumBitSet<OrderNonStopFlag, uint8_t>;

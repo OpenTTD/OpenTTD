@@ -11,6 +11,7 @@
 #define WINDOW_TYPE_H
 
 #include "core/convertible_through_base.hpp"
+#include "core/enum_type.hpp"
 
 /**
  * Widget ID.
@@ -509,7 +510,7 @@ enum WindowClass : uint16_t {
 
 	/**
 	 * Chatbox; %Window numbers:
-	 *   - #DestType = #NetWorkChatWidgets
+	 *   - #NetworkChatDestinationType = #NetWorkChatWidgets
 	 */
 	WC_SEND_NETWORK_MSG,
 
@@ -606,7 +607,7 @@ enum WindowClass : uint16_t {
 
 	/**
 	 * Engine preview window; %Window numbers:
-	 *   - #EngineID = #EnginePreviewWidgets
+	 *   - 0 = #EnginePreviewWidgets
 	 */
 	WC_ENGINE_PREVIEW,
 
@@ -759,21 +760,46 @@ struct Window;
  */
 struct WindowNumber {
 private:
-	int32_t value = 0;
+	int32_t value = 0; ///< The identifier of the window.
 public:
+	/** Create a WindowNumber 0. */
 	WindowNumber() = default;
-	WindowNumber(int32_t value) : value(value) {}
-	WindowNumber(ConvertibleThroughBase auto value) : value(value.base()) {}
 
-	/* Automatically convert to int32_t. */
+	/**
+	 * Create a WindowNumber with the given value.
+	 * @param value The new window number.
+	 */
+	WindowNumber(int32_t value) : value(value) {}
+	/** @copydoc WindowNumber(int32_t) */
+	WindowNumber(ConvertibleThroughBase auto value) : value(value.base()) {}
+	/** @copydoc WindowNumber(int32_t) */
+	template <typename T> requires is_scoped_enum_v<T>
+	WindowNumber(T value) : value(to_underlying(value)) {}
+
+	/**
+	 * Automatically convert to int32_t.
+	 * @return The window number.
+	 */
 	operator int32_t() const { return value; }
 
-	/* Automatically convert to any other type that might be requested. */
+	/**
+	 * Automatically convert to any other type that might be requested.
+	 * @return The window number in the requested type.
+	 */
 	template <typename T> requires (std::is_enum_v<T> || std::is_class_v<T>)
 	operator T() const { return static_cast<T>(value); };
 
+	/**
+	 * Compare the right hand side against our window number.
+	 * @param rhs The other value to compare to.
+	 * @return \c true iff the underlying window number matches the underlying value.
+	 */
 	constexpr bool operator==(const std::integral auto &rhs) const { return this->value == static_cast<int32_t>(rhs); }
+	/** @copydoc operator== */
 	constexpr bool operator==(const ConvertibleThroughBase auto &rhs) const { return this->value == static_cast<int32_t>(rhs.base()); }
+	/** @copydoc operator== */
+	template <typename T> requires is_scoped_enum_v<T>
+	constexpr bool operator==(const T &rhs) const { return this->value == static_cast<int32_t>(to_underlying(rhs)); }
 };
 
 /** State of handling an event. */

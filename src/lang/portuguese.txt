@@ -652,8 +652,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregue
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Em Espera
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}Histórico da Carga - {TOWN}
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Abastecimento
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produzido
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregue
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir classificações detalhadas de desempenho
 
@@ -2486,15 +2487,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} obtidos até agora
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} obtidos até agora
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) A ligar...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Em espera...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) A obter mapa...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processando dados...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) A registar..
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}A obter a informação de jogo...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A obter a informação da empresa..
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desligar
 
@@ -4577,8 +4576,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Renomear navio
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear aeronave
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} (tempo de vida útil: {COMMA} ano{P "" s})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} (tempo de vida útil: {COMMA} ano{P "" s})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/ano
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de Circulação: {LTBLUE}{CURRENCY_LONG}/período
 
@@ -4592,7 +4591,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro ne
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lucro deste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG}) {BLACK}Performance min.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Lucro neste período: {LTBLUE}{CURRENCY_LONG} (útimo período: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Lucro neste período: {LTBLUE}{CURRENCY_LONG} (último período: {CURRENCY_LONG}) {BLACK}Performance mín.: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde a última manutenção: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}% (máx.: {COMMA}%) {BLACK}Avarias desde a última manutenção: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Fabricado em: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacidade: {LTBLUE}Nenhuma{STRING}
@@ -4760,6 +4759,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltar
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Saltar a ordem atual, e iniciar a próxima. Ctrl+Clique para saltar até à ordem selecionada
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Eliminar
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Eliminar Todas
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Eliminar a ordem selecionada
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Eliminar todas as ordens
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Parar de partilhar

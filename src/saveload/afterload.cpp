@@ -1827,7 +1827,7 @@ bool AfterLoadGame()
 
 			v->current_order.ConvertFromOldSavegame();
 			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->FirstShared() == v) {
-				for (Order &order : v->Orders()) order.SetNonStopType(OrderNonStopFlag::NoIntermediate);
+				for (Order &order : v->Orders()) order.SetNonStopType(OrderNonStopFlag::NonStop);
 			}
 		}
 	} else if (IsSavegameVersionBefore(SLV_94)) {

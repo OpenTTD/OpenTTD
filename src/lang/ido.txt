@@ -884,7 +884,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 # Network connecting window
 
 
-###length 8
+###length 6
 
 
 

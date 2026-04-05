@@ -778,6 +778,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 /** Timeout after queueing content for it to try to be requested. */
 static constexpr auto CONTENT_QUEUE_TIMEOUT = std::chrono::milliseconds(100);
 
+/** Timer delay requesting content, so it can be batched more efficiently in asynchronous contexts. */
 static TimeoutTimer<TimerWindow> _request_queue_timeout = {CONTENT_QUEUE_TIMEOUT, []() {
 	_network_content_client.RequestQueuedContentInfo();
 }};

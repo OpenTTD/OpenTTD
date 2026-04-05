@@ -8,7 +8,9 @@
 /** @file toolbar_gui.cpp Code related to the (main) toolbar. */
 
 #include "stdafx.h"
+#include "core/geometry_func.hpp"
 #include "gui.h"
+#include "spritecache.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "viewport_func.h"
@@ -107,10 +109,15 @@ public:
 	}
 };
 
-static DropDownOptions GetToolbarDropDownOptions()
+/**
+ * Get options for toolbar dropdown menus,
+ * @param options Additional options to include.
+ * @return DropDownOptions to use for toolbar dropdown menus.
+ */
+static DropDownOptions GetToolbarDropDownOptions(DropDownOptions options = {})
 {
-	if (_settings_client.gui.toolbar_dropdown_autoselect) return DropDownOption::InstantClose;
-	return {};
+	if (_settings_client.gui.toolbar_dropdown_autoselect) options.Set(DropDownOption::InstantClose).Reset(DropDownOption::Filterable);
+	return options;
 }
 
 /**
@@ -876,9 +883,13 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 /* --- Rail button menu --- */
 
+static std::string _railtype_filter; ///< Persistent filter text for railtype dropdown menu.
+static std::string _roadtype_filter; ///< Persistent filter text for roadtype dropdown menu.
+static std::string _tramtype_filter; ///< Persistent filter text for tramtype dropdown menu.
+
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions());
+	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_railtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -899,7 +910,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions());
+	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -920,7 +931,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions());
+	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1257,7 +1268,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions());
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1276,7 +1287,7 @@ static CallBackFunction ToolbarScenBuildRoad(int index)
 
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions());
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -2166,45 +2177,63 @@ struct MainToolbarWindow : Window {
 	}};
 };
 
+/** Sprites to use for the different toolbar buttons */
+static constexpr std::tuple<WidgetID, WidgetType, SpriteID> _toolbar_button_sprites[] = {
+	{WID_TN_PAUSE,        WWT_IMGBTN,     SPR_IMG_PAUSE},
+	{WID_TN_FAST_FORWARD, WWT_IMGBTN,     SPR_IMG_FASTFORWARD},
+	{WID_TN_SETTINGS,     WWT_IMGBTN,     SPR_IMG_SETTINGS},
+	{WID_TN_SAVE,         WWT_IMGBTN_2,   SPR_IMG_SAVE},
+	{WID_TN_SMALL_MAP,    WWT_IMGBTN,     SPR_IMG_SMALLMAP},
+	{WID_TN_TOWNS,        WWT_IMGBTN,     SPR_IMG_TOWN},
+	{WID_TN_SUBSIDIES,    WWT_IMGBTN,     SPR_IMG_SUBSIDIES},
+	{WID_TN_STATIONS,     WWT_IMGBTN,     SPR_IMG_COMPANY_LIST},
+	{WID_TN_FINANCES,     WWT_IMGBTN,     SPR_IMG_COMPANY_FINANCE},
+	{WID_TN_COMPANIES,    WWT_IMGBTN,     SPR_IMG_COMPANY_GENERAL},
+	{WID_TN_STORY,        WWT_IMGBTN,     SPR_IMG_STORY_BOOK},
+	{WID_TN_GOAL,         WWT_IMGBTN,     SPR_IMG_GOAL},
+	{WID_TN_GRAPHS,       WWT_IMGBTN,     SPR_IMG_GRAPHS},
+	{WID_TN_LEAGUE,       WWT_IMGBTN,     SPR_IMG_COMPANY_LEAGUE},
+	{WID_TN_INDUSTRIES,   WWT_IMGBTN,     SPR_IMG_INDUSTRY},
+	{WID_TN_TRAINS,       WWT_IMGBTN,     SPR_IMG_TRAINLIST},
+	{WID_TN_ROADVEHS,     WWT_IMGBTN,     SPR_IMG_TRUCKLIST},
+	{WID_TN_SHIPS,        WWT_IMGBTN,     SPR_IMG_SHIPLIST},
+	{WID_TN_AIRCRAFT,     WWT_IMGBTN,     SPR_IMG_AIRPLANESLIST},
+	{WID_TN_ZOOM_IN,      WWT_PUSHIMGBTN, SPR_IMG_ZOOMIN},
+	{WID_TN_ZOOM_OUT,     WWT_PUSHIMGBTN, SPR_IMG_ZOOMOUT},
+	{WID_TN_RAILS,        WWT_IMGBTN,     SPR_IMG_BUILDRAIL},
+	{WID_TN_ROADS,        WWT_IMGBTN,     SPR_IMG_BUILDROAD},
+	{WID_TN_TRAMS,        WWT_IMGBTN,     SPR_IMG_BUILDTRAMS},
+	{WID_TN_WATER,        WWT_IMGBTN,     SPR_IMG_BUILDWATER},
+	{WID_TN_AIR,          WWT_IMGBTN,     SPR_IMG_BUILDAIR},
+	{WID_TN_LANDSCAPE,    WWT_IMGBTN,     SPR_IMG_LANDSCAPING},
+	{WID_TN_MUSIC_SOUND,  WWT_IMGBTN,     SPR_IMG_MUSIC},
+	{WID_TN_MESSAGES,     WWT_IMGBTN,     SPR_IMG_MESSAGES},
+	{WID_TN_HELP,         WWT_IMGBTN,     SPR_IMG_QUERY},
+	{WID_TN_SWITCH_BAR,   WWT_IMGBTN,     SPR_IMG_SWITCH_TOOLBAR},
+};
+
+/**
+ * Get maximal square size of a toolbar image.
+ * @return maximal toolbar image size.
+ */
+Dimension GetToolbarMaximalImageSize()
+{
+	Dimension d{};
+	for (const auto &[widget, tp, sprite] : _toolbar_button_sprites) {
+		if (!SpriteExists(sprite)) continue;
+		d = maxdim(d, GetSquareScaledSpriteSize(sprite));
+	}
+	return d;
+}
+
+/**
+ * Make widgets for the main toolbar.
+ * @return widgets for the main toolbar.
+ */
 static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 {
-	/** Sprites to use for the different toolbar buttons */
-	static const std::tuple<WidgetID, WidgetType, SpriteID> toolbar_button_sprites[] = {
-		{WID_TN_PAUSE,        WWT_IMGBTN,     SPR_IMG_PAUSE},
-		{WID_TN_FAST_FORWARD, WWT_IMGBTN,     SPR_IMG_FASTFORWARD},
-		{WID_TN_SETTINGS,     WWT_IMGBTN,     SPR_IMG_SETTINGS},
-		{WID_TN_SAVE,         WWT_IMGBTN_2,   SPR_IMG_SAVE},
-		{WID_TN_SMALL_MAP,    WWT_IMGBTN,     SPR_IMG_SMALLMAP},
-		{WID_TN_TOWNS,        WWT_IMGBTN,     SPR_IMG_TOWN},
-		{WID_TN_SUBSIDIES,    WWT_IMGBTN,     SPR_IMG_SUBSIDIES},
-		{WID_TN_STATIONS,     WWT_IMGBTN,     SPR_IMG_COMPANY_LIST},
-		{WID_TN_FINANCES,     WWT_IMGBTN,     SPR_IMG_COMPANY_FINANCE},
-		{WID_TN_COMPANIES,    WWT_IMGBTN,     SPR_IMG_COMPANY_GENERAL},
-		{WID_TN_STORY,        WWT_IMGBTN,     SPR_IMG_STORY_BOOK},
-		{WID_TN_GOAL,         WWT_IMGBTN,     SPR_IMG_GOAL},
-		{WID_TN_GRAPHS,       WWT_IMGBTN,     SPR_IMG_GRAPHS},
-		{WID_TN_LEAGUE,       WWT_IMGBTN,     SPR_IMG_COMPANY_LEAGUE},
-		{WID_TN_INDUSTRIES,   WWT_IMGBTN,     SPR_IMG_INDUSTRY},
-		{WID_TN_TRAINS,       WWT_IMGBTN,     SPR_IMG_TRAINLIST},
-		{WID_TN_ROADVEHS,     WWT_IMGBTN,     SPR_IMG_TRUCKLIST},
-		{WID_TN_SHIPS,        WWT_IMGBTN,     SPR_IMG_SHIPLIST},
-		{WID_TN_AIRCRAFT,     WWT_IMGBTN,     SPR_IMG_AIRPLANESLIST},
-		{WID_TN_ZOOM_IN,      WWT_PUSHIMGBTN, SPR_IMG_ZOOMIN},
-		{WID_TN_ZOOM_OUT,     WWT_PUSHIMGBTN, SPR_IMG_ZOOMOUT},
-		{WID_TN_RAILS,        WWT_IMGBTN,     SPR_IMG_BUILDRAIL},
-		{WID_TN_ROADS,        WWT_IMGBTN,     SPR_IMG_BUILDROAD},
-		{WID_TN_TRAMS,        WWT_IMGBTN,     SPR_IMG_BUILDTRAMS},
-		{WID_TN_WATER,        WWT_IMGBTN,     SPR_IMG_BUILDWATER},
-		{WID_TN_AIR,          WWT_IMGBTN,     SPR_IMG_BUILDAIR},
-		{WID_TN_LANDSCAPE,    WWT_IMGBTN,     SPR_IMG_LANDSCAPING},
-		{WID_TN_MUSIC_SOUND,  WWT_IMGBTN,     SPR_IMG_MUSIC},
-		{WID_TN_MESSAGES,     WWT_IMGBTN,     SPR_IMG_MESSAGES},
-		{WID_TN_HELP,         WWT_IMGBTN,     SPR_IMG_QUERY},
-		{WID_TN_SWITCH_BAR,   WWT_IMGBTN,     SPR_IMG_SWITCH_TOOLBAR},
-	};
-
 	auto hor = std::make_unique<NWidgetMainToolbarContainer>();
-	for (const auto &[widget, tp, sprite] : toolbar_button_sprites) {
+	for (const auto &[widget, tp, sprite] : _toolbar_button_sprites) {
 		switch (widget) {
 			case WID_TN_SMALL_MAP:
 			case WID_TN_FINANCES:
@@ -2216,7 +2245,7 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 				break;
 		}
 		auto leaf = std::make_unique<NWidgetLeaf>(tp, COLOUR_GREY, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
-		leaf->SetMinimalSize(20, 20);
+		leaf->SetToolbarMinimalSize(1);
 		hor->Add(std::move(leaf));
 	}
 

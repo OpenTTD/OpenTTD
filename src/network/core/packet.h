@@ -45,8 +45,8 @@ struct IsEnumPacketType {
  *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
  */
 struct Packet {
-	static constexpr size_t EncodedLengthOfPacketSize() { return sizeof(PacketSize); }
-	static constexpr size_t EncodedLengthOfPacketType() { return sizeof(PacketType); }
+	static constexpr size_t ENCODED_LENGTH_OF_PACKET_SIZE = sizeof(PacketSize); ///< The length of the packet size in the byte stream once it's encoded.
+	static constexpr size_t ENCODED_LENGTH_OF_PACKET_TYPE = sizeof(PacketType); ///< The length of the packet type in the byte stream once it's encoded.
 private:
 	/** The current read/write position in the packet */
 	PacketSize pos;
@@ -59,7 +59,7 @@ private:
 	NetworkSocketHandler *cs;
 
 public:
-	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = EncodedLengthOfPacketSize());
+	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = Packet::ENCODED_LENGTH_OF_PACKET_SIZE);
 	Packet(NetworkSocketHandler *cs, PacketType type, size_t limit = COMPAT_MTU);
 
 	/**
@@ -80,6 +80,7 @@ public:
 	bool   CanWriteToPacket(size_t bytes_to_write);
 	void   Send_bool  (bool   data);
 	void   Send_uint8 (uint8_t  data);
+	/** @copydoc Packet::Send_uint8(uint8_t) */
 	void   Send_uint8 (const ConvertibleThroughBase auto &data) { this->Send_uint8(data.base()); }
 	void   Send_uint16(uint16_t data);
 	void   Send_uint32(uint32_t data);

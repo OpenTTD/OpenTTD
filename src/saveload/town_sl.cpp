@@ -194,6 +194,50 @@ public:
 	std::vector<Town::SuppliedCargo> &GetVector(Town *t) const override { return t->supplied; }
 };
 
+/** Saveload handler for town accepted cargo history entries. */
+class SlTownAcceptedHistory : public DefaultSaveLoadHandler<SlTownAcceptedHistory, Town::AcceptedCargo> {
+public:
+	/** Saveload description for handler. */
+	static inline const SaveLoad description[] = {
+		 SLE_VAR(Town::AcceptedHistory, accepted, SLE_UINT32),
+	};
+	/** Compatibility saveload description for handler. */
+	static inline const SaveLoadCompatTable compat_description = {};
+
+	void Save(Town::AcceptedCargo *p) const override
+	{
+		SlSetStructListLength(p->history.size());
+
+		for (auto &h : p->history) {
+			SlObject(&h, this->GetDescription());
+		}
+	}
+
+	void Load(Town::AcceptedCargo *p) const override
+	{
+		size_t len = SlGetStructListLength(p->history.size());
+
+		for (auto &h : p->history) {
+			if (--len > p->history.size()) break; // unsigned so wraps after hitting zero.
+			SlObject(&h, this->GetLoadDescription());
+		}
+	}
+};
+
+/** Saveload handler for town accepted cargo history. */
+class SlTownAccepted : public VectorSaveLoadHandler<SlTownAccepted, Town, Town::AcceptedCargo> {
+public:
+	/** Saveload description for handler. */
+	inline static const SaveLoad description[] = {
+		SLE_VAR(Town::AcceptedCargo, cargo, SLE_UINT8),
+		SLEG_STRUCTLIST("history", SlTownAcceptedHistory),
+	};
+	/** Compatibility saveload description for handler. */
+	inline const static SaveLoadCompatTable compat_description = {};
+
+	std::vector<Town::AcceptedCargo> &GetVector(Town *t) const override { return t->accepted; }
+};
+
 class SlTownReceived : public DefaultSaveLoadHandler<SlTownReceived, Town> {
 public:
 	static inline const SaveLoad description[] = {
@@ -320,6 +364,7 @@ static const SaveLoad _town_desc[] = {
 
 	SLEG_CONDSTRUCTLIST("supplied", SlTownOldSupplied,                 SLV_165, SLV_TOWN_SUPPLY_HISTORY),
 	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied,                    SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
+	SLEG_STRUCTLIST("accepted", SlTownAccepted),
 	SLEG_CONDSTRUCTLIST("received", SlTownReceived,                    SLV_165, SL_MAX_VERSION),
 	SLEG_CONDSTRUCTLIST("acceptance_matrix", SlTownAcceptanceMatrix,   SLV_166, SLV_REMOVE_TOWN_CARGO_CACHE),
 };

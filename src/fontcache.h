@@ -10,6 +10,7 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
+#include <any>
 #include "gfx_type.h"
 #include "provider_manager.h"
 #include "spritecache_type.h"
@@ -46,6 +47,10 @@ public:
 	static const int DEFAULT_FONT_ASCENDER[FS_END];
 
 	static int GetDefaultFontHeight(FontSize fs);
+
+	static void AddFallback(FontSizes fontsizes, std::string_view name, const std::any &os_handle = {});
+
+	static bool TryFallback(FontSizes fontsizes, const std::set<char32_t> &glyphs, const std::string &name, const std::any &os_handle = {});
 
 	/**
 	 * Get the FontSize of the font.
@@ -186,7 +191,7 @@ struct FontCacheSubSetting {
 	std::string font; ///< The name of the font, or path to the font.
 	uint size;        ///< The (requested) size of the font.
 
-	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
+	std::any os_handle; ///< Optional native OS font info.
 };
 
 /** Settings for the four different fonts. */
@@ -218,7 +223,6 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 }
 
 uint GetFontCacheFontSize(FontSize fs);
-std::string GetFontCacheFontName(FontSize fs);
 
 bool GetFontAAState();
 void SetFont(FontSize fontsize, const std::string &font, uint size);
@@ -247,26 +251,27 @@ public:
 	 * Try loading a font with this factory.
 	 * @param fs Font size to load.
 	 * @param fonttype Font type requested.
+	 * @param search Set if searching for the font.
+	 * @param font_name Font name to load.
+	 * @param os_handle Font handle to load.
 	 * @return FontCache of the font if loaded, or nullptr.
 	 */
-	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const = 0;
+	virtual std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, const std::any &os_handle) const = 0;
 
 	/**
 	 * We would like to have a fallback font as the current one
 	 * doesn't contain all characters we need.
-	 * This function must set all fonts of settings.
-	 * @param settings The settings to overwrite the fontname of.
 	 * @param language_isocode The language, e.g. en_GB.
 	 * @param callback The function to call to check for missing glyphs.
-	 * @return \c true if a font has been set, false otherwise.
+	 * @return \c true if a font has been set, \c false otherwise.
 	 */
-	virtual bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) const = 0;
+	virtual bool FindFallbackFont(const std::string &language_isocode, class MissingGlyphSearcher *callback) const = 0;
 };
 
 class FontProviderManager : ProviderManager<FontCacheFactory> {
 public:
-	static std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype);
-	static bool FindFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, MissingGlyphSearcher *callback);
+	static std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, const std::any &os_handle = {});
+	static bool FindFallbackFont(const std::string &language_isocode, MissingGlyphSearcher *callback);
 };
 
 /* Implemented in spritefontcache.cpp */

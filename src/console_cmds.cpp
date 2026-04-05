@@ -2047,10 +2047,10 @@ static bool ConSay(std::span<std::string_view> argv)
 	if (argv.size() != 2) return false;
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
+		NetworkClientSendChat(NetworkAction::ChatBroadcast, NetworkChatDestinationType::Broadcast, 0 /* param does not matter */, argv[1]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatBroadcast, NetworkChatDestinationType::Broadcast, 0, argv[1], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;
@@ -2079,10 +2079,10 @@ static bool ConSayCompany(std::span<std::string_view> argv)
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id->base(), argv[2]);
+		NetworkClientSendChat(NetworkAction::ChatTeam, NetworkChatDestinationType::Team, company_id->base(), argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id->base(), argv[2], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatTeam, NetworkChatDestinationType::Team, company_id->base(), argv[2], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;
@@ -2106,10 +2106,10 @@ static bool ConSayClient(std::span<std::string_view> argv)
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, *client_id, argv[2]);
+		NetworkClientSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, *client_id, argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, *client_id, argv[2], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, *client_id, argv[2], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;

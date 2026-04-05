@@ -346,7 +346,7 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidade máx
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Comprimento
-STR_SORT_BY_LIFE_TIME                                           :Tempo de vida restante
+STR_SORT_BY_LIFE_TIME                                           :Tempo de vida útil restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso de horário
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING_TOTAL                                       :Carga total aguardando
@@ -652,8 +652,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregue
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Aguardando
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Histórico de Carga
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Abastecimento
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produzido
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregue
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
 
@@ -1328,7 +1329,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de c
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar a quantidade ações de construção para IAs
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Quebra de veículos: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlar com que frequência veículos sem manutenção adequada podem quebrar
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla com que frequência veículos sem manutenção adequada podem quebrar
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador de subsídios: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Definir quanto é pago para conexões subsidiadas
@@ -1896,7 +1897,7 @@ STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 
-STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando as quebras estão desativadas: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando avarias estão desativadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não recebem manutenção se não podem quebrar
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Penalizar velocidade de carregamento para trens mais longos que a estação: {STRING}
@@ -2486,15 +2487,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} obtidos até agora
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} obtidos até agora
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectando...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Aguardando...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Obtendo mapa...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processando dados...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrando...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtendo informações do jogo...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo informações das empresas...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
 
@@ -4577,8 +4576,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Renomear embarcação
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear aeronave
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} (tempo de vida útil: {COMMA} ano{P "" s})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} (tempo de vida útil: {COMMA} ano{P "" s})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo Operacional: {LTBLUE}{CURRENCY_LONG}/ano
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo Operacional: {LTBLUE}{CURRENCY_LONG}/período
 
@@ -4592,7 +4591,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro ne
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG}) {BLACK}Desempenho mín.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Lucro neste período: {LTBLUE}{CURRENCY_LONG} (último período: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Lucro neste período: {LTBLUE}{CURRENCY_LONG} (último período: {CURRENCY_LONG}) {BLACK}Desempenho mín.: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Confiabilidade: {LTBLUE}{COMMA}% (max: {COMMA}%)  {BLACK}Avarias desde a última manutenção: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacidade: {LTBLUE}Nenhuma{STRING}
@@ -4739,7 +4738,7 @@ STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máx
 STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Precisa de manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
-STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida útil restante (anos)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Confiabilidade máxima
 ###next-name-looks-similar
 
@@ -4760,6 +4759,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltar
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Saltar a ordem atual e iniciar a próxima. Ctrl+Clique para saltar até a ordem selecionada
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Remover
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Excluir tudo
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Remover a ordem selecionada
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Remover todas as ordens
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Parar de compartilhar

@@ -299,7 +299,7 @@ bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir)
 	}
 
 	/* Find and load the Action 8 information */
-	LoadNewGRFFile(config, GLS_FILESCAN, subdir, true);
+	LoadNewGRFFile(config, GrfLoadingStage::FileScan, subdir, true);
 	config.SetSuitablePalette();
 	config.FinalizeParameterInfo();
 
@@ -308,9 +308,9 @@ bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir)
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
-		LoadNewGRFFile(config, GLS_SAFETYSCAN, subdir, true);
+		LoadNewGRFFile(config, GrfLoadingStage::SafetyScan, subdir, true);
 
-		/* GRFConfigFlag::Unsafe is set if GLS_SAFETYSCAN finds unsafe actions */
+		/* GRFConfigFlag::Unsafe is set if GrfLoadingStage::SafetyScan finds unsafe actions */
 		if (config.flags.Test(GRFConfigFlag::Unsafe)) return false;
 	}
 
@@ -332,7 +332,7 @@ void ClearGRFConfigList(GRFConfigList &config)
  * Append a GRF Config list onto another list.
  * @param dst The destination list
  * @param src The source list
- * @param init_only the copied GRF will be processed up to GLS_INIT
+ * @param init_only the copied GRF will be processed up to GrfLoadingStage::Init
  */
 static void AppendGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bool init_only)
 {
@@ -350,7 +350,7 @@ static void AppendGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bo
  * Copy a GRF Config list.
  * @param dst The destination list
  * @param src The source list
- * @param init_only the copied GRF will be processed up to GLS_INIT
+ * @param init_only the copied GRF will be processed up to GrfLoadingStage::Init
  */
 void CopyGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bool init_only)
 {

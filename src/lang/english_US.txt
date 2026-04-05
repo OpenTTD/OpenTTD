@@ -651,8 +651,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Delivered
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Waiting
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Cargo History
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Supply
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produced
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transported
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Delivered
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
@@ -2485,15 +2486,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} downloaded so far
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} downloaded so far
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connecting...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Authorizing...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Waiting...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Downloading map...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processing data...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registering...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Fetching game info...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fetching company info...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disconnect
 
@@ -4576,8 +4575,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Name roa
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Name ship
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name aircraft
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P "" s} (lifetime: {COMMA} year{P "" s})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} (lifetime: {COMMA} year{P "" s})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/year
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/period
 
@@ -4591,7 +4590,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit t
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG}) {BLACK}Min. performance: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Profit this period: {LTBLUE}{CURRENCY_LONG} (last period: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Profit this period: {LTBLUE}{CURRENCY_LONG} (last period: {CURRENCY_LONG}) {BLACK}Min. performance: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last maintenance: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliability: {LTBLUE}{COMMA}% (max: {COMMA}%)  {BLACK}Breakdowns since last maintenance: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacity: {LTBLUE}None{STRING}
@@ -4759,6 +4758,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skip
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Skip the current order, and start the next. Ctrl+Click to skip to the selected order
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Delete
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Delete All
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Delete the highlighted order
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Delete all orders
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop sharing

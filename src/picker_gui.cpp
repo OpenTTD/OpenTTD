@@ -527,7 +527,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 		}
 
 		case WID_PW_COLEC_LIST: {
-			ShowDropDownList(this, this->BuildCollectionDropDownList(), -1, widget, 0);
+			ShowDropDownList(this, this->BuildCollectionDropDownList(), -1, widget, 0, DropDownOption::Filterable);
 			CloseWindowById(WC_SELECT_STATION, 0);
 			break;
 		}
@@ -566,7 +566,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
 				/* Houses have recolours but not related to the company colour and other items depend on gamemode. */
 				PaletteID palette = _game_mode != GM_NORMAL || this->callbacks.GetFeature() == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
-				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0);
+				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0, DropDownOption::Filterable);
 			}
 			break;
 	}

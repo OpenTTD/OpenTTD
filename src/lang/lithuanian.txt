@@ -2582,15 +2582,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} va
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} parsisiųsta iki šiol
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} parsiųsta
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Jungiamasi..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizuoja..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Laukia..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Siunčiamas žemėlapis..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Duomenų apdorojimas...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registruojamasi..
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Gaunama žaidimo informacija..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Gaunama kompanijos informacija..
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atsijungti
 
@@ -4561,7 +4559,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svoris: 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Šių metų pelnas: {LTBLUE}{CURRENCY_LONG} (praėjusiųjų: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Šių metų pelnas: {LTBLUE}{CURRENCY_LONG} (praeitais metais: {CURRENCY_LONG}) {BLACK}Min. įvykdymas: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Pelnas šį periodą: {LTBLUE}{CURRENCY_LONG} (praeito periodo: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimų nuo paskutinės apžiūros: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Pagamintas: {LTBLUE}{NUM}{BLACK} Vertė: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Talpa: {LTBLUE}Nieko{STRING}

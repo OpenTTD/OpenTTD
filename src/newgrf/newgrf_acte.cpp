@@ -16,7 +16,7 @@
 
 #include "../safeguards.h"
 
-/* Action 0x0E (GLS_SAFETYSCAN) */
+/* Action 0x0E (GrfLoadingStage::SafetyScan) */
 static void SafeGRFInhibit(ByteReader &buf)
 {
 	/* <0E> <num> <grfids...>
@@ -60,9 +60,15 @@ static void GRFInhibit(ByteReader &buf)
 	}
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x0E>::FileScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x0E>::SafetyScan(ByteReader &buf) { SafeGRFInhibit(buf); }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x0E>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x0E>::Init(ByteReader &buf) { GRFInhibit(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x0E>::Reserve(ByteReader &buf) { GRFInhibit(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x0E>::Activation(ByteReader &buf) { GRFInhibit(buf); }

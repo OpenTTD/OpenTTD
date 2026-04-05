@@ -31,9 +31,9 @@ void Order::ConvertFromOldSavegame()
 	/* First handle non-stop - use value from savegame if possible, else use value from config file */
 	if (_settings_client.gui.sg_new_nonstop || (IsSavegameVersionBefore(SLV_22) && _savegame_type != SGT_TTO && _savegame_type != SGT_TTD && _settings_client.gui.new_nonstop)) {
 		/* OFB_NON_STOP */
-		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlags{OrderNonStopFlag::NoIntermediate, OrderNonStopFlag::NoDestination} : OrderNonStopFlag::NoIntermediate);
+		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlags{OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia} : OrderNonStopFlag::NonStop);
 	} else {
-		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlag::NoIntermediate : OrderNonStopFlags{});
+		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlag::NonStop : OrderNonStopFlags{});
 	}
 
 	switch (this->GetType()) {

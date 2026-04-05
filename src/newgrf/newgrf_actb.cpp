@@ -60,7 +60,7 @@ static void GRFLoadError(ByteReader &buf)
 
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
-	if (!HasBit(severity, 7) && _cur_gps.stage == GLS_INIT) {
+	if (!HasBit(severity, 7) && _cur_gps.stage == GrfLoadingStage::Init) {
 		GrfMsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage {}", _cur_gps.stage);
 		return;
 	}
@@ -123,9 +123,15 @@ static void GRFLoadError(ByteReader &buf)
 	}
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x0B>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x0B>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x0B>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x0B>::Init(ByteReader &buf) { GRFLoadError(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x0B>::Reserve(ByteReader &buf) { GRFLoadError(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x0B>::Activation(ByteReader &buf) { GRFLoadError(buf); }

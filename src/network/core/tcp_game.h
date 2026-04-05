@@ -372,7 +372,7 @@ protected:
 	/**
 	 * Sends a chat-packet to the server:
 	 * uint8_t   ID of the action (see NetworkAction).
-	 * uint8_t   ID of the destination type (see DestType).
+	 * uint8_t   ID of the destination type (see #NetworkChatDestinationType).
 	 * uint32_t  ID of the client or company (destination of the chat).
 	 * string  Message (max NETWORK_CHAT_LENGTH).
 	 * uint64_t  data (used e.g. for 'give money' actions).
@@ -562,6 +562,10 @@ public:
 	std::optional<std::string_view> ReceiveCommand(Packet &p, CommandPacket &cp);
 	void SendCommand(Packet &p, const CommandPacket &cp);
 
+	/**
+	 * Is this pending for deletion and as such should not be accessed anymore.
+	 * @return \c true iff this is being deleted.
+	 */
 	bool IsPendingDeletion() const { return this->is_pending_deletion; }
 
 	void DeferDeletion();

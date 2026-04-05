@@ -913,7 +913,16 @@ static void RestoreTrainBackup(TrainList &list)
  */
 static void RemoveFromConsist(Train *part, bool chain = false)
 {
-	Train *tail = chain ? part->Last() : part->GetLastEnginePart();
+	Train *tail;
+
+	if (chain) {
+		/* We're moving several vehicles, find the last one in the chain. */
+		tail = part;
+		while (tail->Next() != nullptr) tail = tail->Next();
+	} else {
+		/* We're just moving one vehicle, but make sure we get all the articulated parts. */
+		tail = part->GetLastEnginePart();
+	}
 
 	/* Unlink at the front, but make it point to the next
 	 * vehicle after the to be remove part. */
@@ -1989,7 +1998,7 @@ static bool IsWholeTrainInsideDepot(const Train *v)
  * Turn a train around.
  * @param v %Train to turn around.
  */
-void ReverseTrainDirection(Train *v)
+static void ReverseTrainDirection(Train *v)
 {
 	if (IsRailDepotTile(v->tile)) {
 		if (IsWholeTrainInsideDepot(v)) return;
@@ -4073,7 +4082,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 			OrderType order_type = v->current_order.GetType();
 			/* Do not skip waypoints (incl. 'via' stations) when passing through at full speed. */
 			if ((order_type == OT_GOTO_WAYPOINT || order_type == OT_GOTO_STATION) &&
-						v->current_order.GetNonStopType().Test(OrderNonStopFlag::NoDestination) &&
+						v->current_order.GetNonStopType().Test(OrderNonStopFlag::GoVia) &&
 						IsTileType(v->tile, TileType::Station) &&
 						v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 				ProcessOrders(v);
@@ -4183,7 +4192,7 @@ static void CheckIfTrainNeedsService(Train *v)
 	}
 
 	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
-	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service, OrderNonStopFlag::NoIntermediate, OrderDepotActionFlag::NearestDepot);
+	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service, OrderNonStopFlag::NonStop, OrderDepotActionFlag::NearestDepot);
 	v->dest_tile = tfdd.tile;
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }

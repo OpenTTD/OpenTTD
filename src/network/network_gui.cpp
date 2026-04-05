@@ -68,6 +68,10 @@ void UpdateNetworkGameWindow()
 	InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME, 0);
 }
 
+/**
+ * Create the dropdown with visibility options for the server.
+ * @return The created dropdown list.
+ */
 static DropDownList BuildVisibilityDropDownList()
 {
 	DropDownList list;
@@ -79,14 +83,15 @@ static DropDownList BuildVisibilityDropDownList()
 	return list;
 }
 
-typedef GUIList<NetworkGame*, std::nullptr_t, StringFilter&> GUIGameServerList;
-typedef int ServerListPosition;
-static const ServerListPosition SLP_INVALID = -1;
+using GUIGameServerList = GUIList<NetworkGame*, std::nullptr_t, StringFilter&>; ///< The list of servers with sorting/filtering.
+using ServerListPosition = int; ///< A location within the server list
+static const ServerListPosition SLP_INVALID = -1; ///< Sentinel for an invalid location in the server list.
 
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetServerListHeader : public NWidgetContainer {
 	static const uint MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER = 150; ///< Minimum width before adding a new header
 public:
+	/** Create the header. */
 	NWidgetServerListHeader() : NWidgetContainer(NWID_HORIZONTAL)
 	{
 		auto leaf = std::make_unique<NWidgetLeaf>(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NAME, WidgetData{.string = STR_NETWORK_SERVER_LIST_GAME_NAME}, STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP);
@@ -173,6 +178,7 @@ public:
 	}
 };
 
+/** Window with the list of game servers. */
 class NetworkGameWindow : public Window {
 protected:
 	/** Runtime saved values. */
@@ -435,6 +441,10 @@ protected:
 	}
 
 public:
+	/**
+	 * Create the window.
+	 * @param desc The description of the window.
+	 */
 	NetworkGameWindow(WindowDesc &desc) : Window(desc), name_editbox(NETWORK_CLIENT_NAME_LENGTH), filter_editbox(120)
 	{
 		this->CreateNestedTree();
@@ -600,6 +610,10 @@ public:
 		this->DrawWidgets();
 	}
 
+	/**
+	 * Get the string for the header of the 'selected server' subpanel.
+	 * @return The StringID to show.
+	 */
 	StringID GetHeaderString() const
 	{
 		if (this->server == nullptr) return STR_NETWORK_SERVER_LIST_GAME_INFO;
@@ -613,6 +627,10 @@ public:
 		}
 	}
 
+	/**
+	 * Draw the details about the selected server.
+	 * @param r The bounding box to draw within.
+	 */
 	void DrawDetails(const Rect &r) const
 	{
 		NetworkGame *sel = this->server;
@@ -854,11 +872,7 @@ const std::initializer_list<GUIGameServerList::FilterFunction * const> NetworkGa
 	&NGameSearchFilter
 };
 
-static std::unique_ptr<NWidgetBase> MakeResizableHeader()
-{
-	return std::make_unique<NWidgetServerListHeader>();
-}
-
+/** Widgets and the structure of the NetworkGameWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_network_game_widgets = {
 	/* TOP */
 	NWidget(NWID_HORIZONTAL),
@@ -878,7 +892,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_game_widgets
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(NWID_VERTICAL),
-							NWidgetFunction(MakeResizableHeader),
+							NWidgetFunction([]() -> std::unique_ptr<NWidgetBase> { return std::make_unique<NWidgetServerListHeader>(); }),
 							NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, WID_NG_MATRIX), SetResize(1, 1), SetFill(1, 0),
 												SetMatrixDataTip(1, 0, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT), SetScrollbar(WID_NG_SCROLLBAR),
 						EndContainer(),
@@ -931,11 +945,12 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_game_widgets
 		/* Resize button. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_LIGHT_BLUE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Description of the NetworkGameWindow. */
 static WindowDesc _network_game_window_desc(
 	WDP_CENTER, "list_servers", 1000, 730,
 	WC_NETWORK_WINDOW, WC_NONE,
@@ -943,6 +958,7 @@ static WindowDesc _network_game_window_desc(
 	_nested_network_game_widgets
 );
 
+/** Show the server list window. */
 void ShowNetworkGameWindow()
 {
 	static bool first = true;
@@ -960,10 +976,15 @@ void ShowNetworkGameWindow()
 	new NetworkGameWindow(_network_game_window_desc);
 }
 
+/** Window to configure and start your server with. */
 struct NetworkStartServerWindow : public Window {
 	WidgetID widget_id{}; ///< The widget that has the pop-up input menu
 	QueryString name_editbox; ///< Server name editbox.
 
+	/**
+	 * Create the window.
+	 * @param desc The description of the window.
+	 */
 	NetworkStartServerWindow(WindowDesc &desc) : Window(desc), name_editbox(NETWORK_NAME_LENGTH)
 	{
 		this->InitNested(WN_NETWORK_WINDOW_START);
@@ -1099,6 +1120,10 @@ struct NetworkStartServerWindow : public Window {
 		this->SetDirty();
 	}
 
+	/**
+	 * Check whether the currently entered server name is valid, and if so update the server_name setting.
+	 * @return \c true iff the server name is valid.
+	 */
 	bool CheckServerName()
 	{
 		std::string str{this->name_editbox.text.GetText()};
@@ -1134,6 +1159,7 @@ struct NetworkStartServerWindow : public Window {
 	}
 };
 
+/** Widgets and the structure of the NetworkStartServerWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_network_start_server_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
@@ -1201,6 +1227,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_start_server
 	EndContainer(),
 };
 
+/** Description of the NetworkStartServerWindow. */
 static WindowDesc _network_start_server_window_desc(
 	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_WINDOW, WC_NONE,
@@ -1208,6 +1235,7 @@ static WindowDesc _network_start_server_window_desc(
 	_nested_network_start_server_window_widgets
 );
 
+/** Show the window to configure and start your server with. */
 static void ShowNetworkStartServerWindow()
 {
 	if (!NetworkValidateOurClientName()) return;
@@ -1222,6 +1250,7 @@ static void ShowNetworkStartServerWindow()
 
 extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 
+/** Widgets and the structure of the NetworkClientListWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_client_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1275,6 +1304,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_client_list_widgets 
 	EndContainer(),
 };
 
+/** Description of the NetworkClientListWindow. */
 static WindowDesc _client_list_desc(
 	WDP_AUTO, "list_clients", 220, 300,
 	WC_CLIENT_LIST, WC_NONE,
@@ -1328,6 +1358,13 @@ public:
 	uint height;       ///< Calculated height of the button.
 	uint width;        ///< Calculated width of the button.
 
+	/**
+	 * Create the button.
+	 * @param sprite The sprite to draw on the button.
+	 * @param tooltip The tooltip of the button.
+	 * @param colour The colour of the button.
+	 * @param disabled Whether the button is disabled or not.
+	 */
 	ButtonCommon(SpriteID sprite, StringID tooltip, Colours colour, bool disabled = false) :
 		sprite(sprite),
 		tooltip(tooltip),
@@ -1360,6 +1397,15 @@ private:
 	ButtonCallback proc;  ///< Callback proc to call when button is pressed.
 
 public:
+	/**
+	 * Create the button.
+	 * @param sprite The sprite to draw on the button.
+	 * @param tooltip The tooltip of the button.
+	 * @param colour The colour of the button.
+	 * @param id The identifier of the object this button belongs to.
+	 * @param proc The callback to call upon clicking.
+	 * @param disabled Whether the button is disabled or not.
+	 */
 	Button(SpriteID sprite, StringID tooltip, Colours colour, T id, ButtonCallback proc, bool disabled = false) :
 		ButtonCommon(sprite, tooltip, colour, disabled),
 		id(id),
@@ -1376,8 +1422,8 @@ public:
 	}
 };
 
-using CompanyButton = Button<CompanyID>;
-using ClientButton = Button<ClientID>;
+using CompanyButton = Button<CompanyID>; ///< Button linked to a company.
+using ClientButton = Button<ClientID>; ///< Button linked to a client.
 
 /**
  * Base interface for a network client list line.
@@ -1395,6 +1441,11 @@ public:
 	 */
 	virtual void Draw(Rect r) const = 0;
 
+	/**
+	 * Construct a button and add it.
+	 * @param ...args The arguments to construct the button.
+	 * @return Reference to the created button.
+	 */
 	template <typename T, typename...TArgs>
 	T &AddButton(TArgs &&... args)
 	{
@@ -1453,8 +1504,13 @@ protected:
 	}
 };
 
+/** A line in the NetworkClientList with a company on it. */
 class CompanyButtonLine : public ButtonLine {
 public:
+	/**
+	 * Create the line.
+	 * @param company_id The company to show on the line.
+	 */
 	CompanyButtonLine(CompanyID company_id) : company_id(company_id) {}
 
 	void Draw(Rect r) const override
@@ -1477,11 +1533,16 @@ public:
 	};
 
 private:
-	CompanyID company_id;
+	CompanyID company_id; ///< The company to show on the line.
 };
 
+/** A line in the NetworkClientList with a client on it. */
 class ClientButtonLine : public ButtonLine {
 public:
+	/**
+	 * Create the line.
+	 * @param client_pool_id The index into the client pool of client to show on this line.
+	 */
 	ClientButtonLine(ClientPoolID client_pool_id) : client_pool_id(client_pool_id) {}
 
 	void Draw(Rect r) const override
@@ -1530,7 +1591,7 @@ public:
 	}
 
 private:
-	ClientPoolID client_pool_id;
+	ClientPoolID client_pool_id; ///< The client to show on this line.
 };
 
 /**
@@ -1563,22 +1624,18 @@ private:
 
 	/**
 	 * Chat button on a Company is clicked.
-	 * @param w The instance of this window.
-	 * @param pt The point where this button was clicked.
 	 * @param company_id The company this button was assigned to.
 	 */
-	static void OnClickCompanyChat([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
+	static void OnClickCompanyChat(NetworkClientListWindow *, Point, CompanyID company_id)
 	{
-		ShowNetworkChatQueryWindow(DESTTYPE_TEAM, company_id.base());
+		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Team, company_id.base());
 	}
 
 	/**
 	 * Join button on a Company is clicked.
-	 * @param w The instance of this window.
-	 * @param pt The point where this button was clicked.
 	 * @param company_id The company this button was assigned to.
 	 */
-	static void OnClickCompanyJoin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
+	static void OnClickCompanyJoin(NetworkClientListWindow *, Point, CompanyID company_id)
 	{
 		if (_network_server) {
 			NetworkServerDoMove(CLIENT_ID_SERVER, company_id);
@@ -1590,10 +1647,8 @@ private:
 
 	/**
 	 * Create new company button is clicked.
-	 * @param w The instance of this window.
-	 * @param pt The point where this button was clicked.
 	 */
-	static void OnClickCompanyNew([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID)
+	static void OnClickCompanyNew(NetworkClientListWindow *, Point, CompanyID)
 	{
 		Command<Commands::CompanyControl>::Post(CompanyCtrlAction::New, CompanyID::Invalid(), CompanyRemoveReason::None, _network_own_client_id);
 	}
@@ -1604,7 +1659,7 @@ private:
 	 * @param pt The point where this button was clicked.
 	 * @param client_id The client this button was assigned to.
 	 */
-	static void OnClickClientAdmin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
+	static void OnClickClientAdmin(NetworkClientListWindow *w, Point pt, ClientID client_id)
 	{
 		DropDownList list;
 		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, to_underlying(DropDownAction::AdminKickClient)));
@@ -1626,7 +1681,7 @@ private:
 	 * @param pt The point where this button was clicked.
 	 * @param company_id The company this button was assigned to.
 	 */
-	static void OnClickCompanyAdmin([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID company_id)
+	static void OnClickCompanyAdmin(NetworkClientListWindow *w, Point pt, CompanyID company_id)
 	{
 		DropDownList list;
 		if (_network_server) list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, to_underlying(DropDownAction::AdminResetCompany), NetworkCompanyHasClients(company_id)));
@@ -1647,16 +1702,18 @@ private:
 
 	/**
 	 * Chat button on a Client is clicked.
-	 * @param w The instance of this window.
-	 * @param pt The point where this button was clicked.
 	 * @param client_id The client this button was assigned to.
 	 */
-	static void OnClickClientChat([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
+	static void OnClickClientChat(NetworkClientListWindow *, Point, ClientID client_id)
 	{
-		ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, client_id);
+		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, client_id);
 	}
 
-	static void OnClickClientAuthorize([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, ClientID client_id)
+	/**
+	 * Authorize button on a Client is clicked.
+	 * @param client_id The client this button was assigned to.
+	 */
+	static void OnClickClientAuthorize(NetworkClientListWindow *, Point, ClientID client_id)
 	{
 		AutoRestoreBackup<CompanyID> cur_company(_current_company, NetworkClientInfo::GetByClientID(_network_own_client_id)->client_playas);
 		Command<Commands::CompanyAllowListControl>::Post(CompanyAllowListCtrlAction::AddKey, NetworkClientInfo::GetByClientID(client_id)->public_key);
@@ -1726,6 +1783,11 @@ private:
 	}
 
 public:
+	/**
+	 * Create the window.
+	 * @param desc The description of the window.
+	 * @param window_number The window number for this window.
+	 */
 	NetworkClientListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
@@ -2009,6 +2071,7 @@ public:
 	}
 };
 
+/** Open the client list window. */
 void ShowClientList()
 {
 	AllocateWindowDescFront<NetworkClientListWindow>(_client_list_desc, 0);
@@ -2019,9 +2082,14 @@ uint8_t _network_join_waiting;            ///< The number of clients waiting in 
 uint32_t _network_join_bytes;             ///< The number of bytes we already downloaded.
 uint32_t _network_join_bytes_total;       ///< The total number of bytes to download.
 
+/** Window showing the progress during joining. */
 struct NetworkJoinStatusWindow : Window {
-	std::shared_ptr<NetworkAuthenticationPasswordRequest> request{};
+	std::shared_ptr<NetworkAuthenticationPasswordRequest> request{}; ///< Callback to send the password request result to.
 
+	/**
+	 * Create the window.
+	 * @param desc The description of the window.
+	 */
 	NetworkJoinStatusWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
@@ -2037,15 +2105,14 @@ struct NetworkJoinStatusWindow : Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				uint8_t progress; // used for progress bar
 				switch (_network_join_status) {
-					case NETWORK_JOIN_STATUS_CONNECTING:
-					case NETWORK_JOIN_STATUS_AUTHORIZING:
-					case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
+					case NetworkJoinStatus::Connecting:
+					case NetworkJoinStatus::Authorizing:
 						progress = 10; // first two stages 10%
 						break;
-					case NETWORK_JOIN_STATUS_WAITING:
+					case NetworkJoinStatus::Waiting:
 						progress = 15; // third stage is 15%
 						break;
-					case NETWORK_JOIN_STATUS_DOWNLOADING:
+					case NetworkJoinStatus::Downloading:
 						if (_network_join_bytes_total == 0) {
 							progress = 15; // We don't have the final size yet; the server is still compressing!
 							break;
@@ -2057,17 +2124,17 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + to_underlying(_network_join_status), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
 			case WID_NJS_PROGRESS_TEXT:
 				switch (_network_join_status) {
-					case NETWORK_JOIN_STATUS_WAITING:
+					case NetworkJoinStatus::Waiting:
 						DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_WAITING, _network_join_waiting), TC_FROMSTRING, SA_CENTER);
 						break;
 
-					case NETWORK_JOIN_STATUS_DOWNLOADING:
+					case NetworkJoinStatus::Downloading:
 						if (_network_join_bytes_total == 0) {
 							DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_DOWNLOADING_1, _network_join_bytes), TC_FROMSTRING, SA_CENTER);
 						} else {
@@ -2087,7 +2154,7 @@ struct NetworkJoinStatusWindow : Window {
 		switch (widget) {
 			case WID_NJS_PROGRESS_BAR:
 				/* Account for the statuses */
-				for (uint i = 0; i < NETWORK_JOIN_STATUS_END; i++) {
+				for (uint i = 0; i < to_underlying(NetworkJoinStatus::End); i++) {
 					size = maxdim(size, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i));
 				}
 				/* For the number of waiting (other) players */
@@ -2127,6 +2194,7 @@ struct NetworkJoinStatusWindow : Window {
 	}
 };
 
+/** Widgets and the structure of the NetworkJoinStatusWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_network_join_status_window_widgets = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -2138,6 +2206,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_join_status_
 	EndContainer(),
 };
 
+/** Description of the NetworkJoinStatusWindow. */
 static WindowDesc _network_join_status_window_desc(
 	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
@@ -2145,12 +2214,17 @@ static WindowDesc _network_join_status_window_desc(
 	_nested_network_join_status_window_widgets
 );
 
+/** Open the window showing the status of joining the server. */
 void ShowJoinStatusWindow()
 {
 	CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 	new NetworkJoinStatusWindow(_network_join_status_window_desc);
 }
 
+/**
+ * Update the NetworkJoinStatusWindow to start requesting the server password.
+ * @param request The callback for the reply to the request.
+ */
 void ShowNetworkNeedPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request)
 {
 	NetworkJoinStatusWindow *w = dynamic_cast<NetworkJoinStatusWindow *>(FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN));
@@ -2168,6 +2242,14 @@ struct NetworkAskRelayWindow : public Window {
 	std::string relay_connection_string{}; ///< The relay server we want to connect to.
 	std::string token{}; ///< The token for this connection.
 
+	/**
+	 * Create the window.
+	 * @param desc The description of the window.
+	 * @param parent The parent of this window.
+	 * @param server_connection_string The game server we want to connect to.
+	 * @param relay_connection_string The relay server we want to connect to.
+	 * @param token The token for this relay attempt.
+	 */
 	NetworkAskRelayWindow(WindowDesc &desc, Window *parent, std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token) :
 		Window(desc),
 		server_connection_string(server_connection_string),
@@ -2228,6 +2310,7 @@ struct NetworkAskRelayWindow : public Window {
 	}
 };
 
+/** Widgets and the structure of the NetworkAskRelayWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_relay_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
@@ -2245,6 +2328,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_relay_wi
 	EndContainer(),
 };
 
+/** Description of the NetworkAskRelayWindow. */
 static WindowDesc _network_ask_relay_desc(
 	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_ASK_RELAY, WC_NONE,
@@ -2270,6 +2354,11 @@ void ShowNetworkAskRelay(std::string_view server_connection_string, std::string 
  * Window used for asking if the user wants to participate in the automated survey.
  */
 struct NetworkAskSurveyWindow : public Window {
+	/**
+	 * Create the window.
+	 * @param desc The description of the window.
+	 * @param parent The parent of this window.
+	 */
 	NetworkAskSurveyWindow(WindowDesc &desc, Window *parent) :
 		Window(desc)
 	{
@@ -2323,6 +2412,7 @@ struct NetworkAskSurveyWindow : public Window {
 	}
 };
 
+/** Widgets and the structure of the NetworkAskSurveyWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_survey_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -2343,6 +2433,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_survey_w
 	EndContainer(),
 };
 
+/** Description of the NetworkAskSurveyWindow. */
 static WindowDesc _network_ask_survey_desc(
 	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_ASK_SURVEY, WC_NONE,
@@ -2368,6 +2459,11 @@ void ShowNetworkAskSurvey()
 struct SurveyResultTextfileWindow : public TextfileWindow {
 	const GRFConfig *grf_config; ///< View the textfile of this GRFConfig.
 
+	/**
+	 * Create the window.
+	 * @param parent The parent for this window.
+	 * @param file_type The type of file to show.
+	 */
 	SurveyResultTextfileWindow(Window *parent, TextfileType file_type) : TextfileWindow(parent, file_type)
 	{
 		this->ConstructWindow();
@@ -2378,6 +2474,10 @@ struct SurveyResultTextfileWindow : public TextfileWindow {
 	}
 };
 
+/**
+ * Show the surver results as a text file.
+ * @param parent The parent of the text file window.
+ */
 void ShowSurveyResultTextfileWindow(Window *parent)
 {
 	parent->CloseChildWindowById(WC_TEXTFILE, TFT_SURVEY_RESULT);

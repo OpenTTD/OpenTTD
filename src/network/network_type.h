@@ -66,67 +66,64 @@ struct NetworkClientInfo;
  * Destination of our chat messages.
  * @warning The values of the enum items are part of the admin network API. Only append at the end.
  */
-enum DestType : uint8_t {
-	DESTTYPE_BROADCAST, ///< Send message/notice to all clients (All)
-	DESTTYPE_TEAM,      ///< Send message/notice to everyone playing the same company (Team)
-	DESTTYPE_CLIENT,    ///< Send message/notice to only a certain client (Private)
+enum class NetworkChatDestinationType : uint8_t {
+	Broadcast, ///< Send message/notice to all clients (All)
+	Team, ///< Send message/notice to everyone playing the same company (Team)
+	Client, ///< Send message/notice to only a certain client (Private)
 };
-DECLARE_ENUM_AS_ADDABLE(DestType)
 
 /**
  * Actions that can be used for NetworkTextMessage.
  * @warning The values of the enum items are part of the admin network API. Only append at the end.
  */
-enum NetworkAction : uint8_t {
-	NETWORK_ACTION_JOIN,
-	NETWORK_ACTION_LEAVE,
-	NETWORK_ACTION_SERVER_MESSAGE,
-	NETWORK_ACTION_CHAT,
-	NETWORK_ACTION_CHAT_COMPANY,
-	NETWORK_ACTION_CHAT_CLIENT,
-	NETWORK_ACTION_GIVE_MONEY,
-	NETWORK_ACTION_NAME_CHANGE,
-	NETWORK_ACTION_COMPANY_SPECTATOR,
-	NETWORK_ACTION_COMPANY_JOIN,
-	NETWORK_ACTION_COMPANY_NEW,
-	NETWORK_ACTION_KICKED,
-	NETWORK_ACTION_EXTERNAL_CHAT,
+enum class NetworkAction : uint8_t {
+	ClientJoin, ///< A client joined the server.
+	ClientLeave, ///< A client left the server.
+	ServerMessage, ///< The server sent a message.
+	ChatBroadcast, ///< A chat broadcast to all clients.
+	ChatTeam, ///< A chat sent to all clients of a team/company.
+	ChatClient, ///< A chat sent to a specific client.
+	GiveMoney, ///< A company was given money.
+	ClientNameChange, ///< A client changed their name.
+	CompanySpectator, ///< A client joined the spectators.
+	CompanyJoin, ///< A client joined an existing company.
+	CompanyNew, ///< A client created an joined a new company.
+	ClientKicked, ///< A client got kicked.
+	ChatExternal, ///< An external application sent a message over the admin port.
 };
 
 /**
  * The error codes we send around in the protocols.
  * @warning The values of the enum items are part of the admin network API. Only append at the end.
  */
-enum NetworkErrorCode : uint8_t {
-	NETWORK_ERROR_GENERAL, // Try to use this one like never
+enum class NetworkErrorCode : uint8_t {
+	General, ///< Fallback error code in case nothing matches.
 
-	/* Signals from clients */
-	NETWORK_ERROR_DESYNC,
-	NETWORK_ERROR_SAVEGAME_FAILED,
-	NETWORK_ERROR_CONNECTION_LOST,
-	NETWORK_ERROR_ILLEGAL_PACKET,
-	NETWORK_ERROR_NEWGRF_MISMATCH,
+	Desync, ///< Client tells that they desynced.
+	SavegameFailed, ///< Client tells they could not load the savegame.
+	ConnectionLost, ///< Connection to the client was lost.
+	IllegalPacket, ///< A packet was received that has invalid content.
+	NewGRFMismatch, ///< Client does not have the right NewGRFs.
 
-	/* Signals from servers */
-	NETWORK_ERROR_NOT_AUTHORIZED,
-	NETWORK_ERROR_NOT_EXPECTED,
-	NETWORK_ERROR_WRONG_REVISION,
-	NETWORK_ERROR_NAME_IN_USE,
-	NETWORK_ERROR_WRONG_PASSWORD,
-	NETWORK_ERROR_COMPANY_MISMATCH, // Happens in CLIENT_COMMAND
-	NETWORK_ERROR_KICKED,
-	NETWORK_ERROR_CHEATER,
-	NETWORK_ERROR_FULL,
-	NETWORK_ERROR_TOO_MANY_COMMANDS,
-	NETWORK_ERROR_TIMEOUT_PASSWORD,
-	NETWORK_ERROR_TIMEOUT_COMPUTER,
-	NETWORK_ERROR_TIMEOUT_MAP,
-	NETWORK_ERROR_TIMEOUT_JOIN,
-	NETWORK_ERROR_INVALID_CLIENT_NAME,
-	NETWORK_ERROR_NOT_ON_ALLOW_LIST,
-	NETWORK_ERROR_NO_AUTHENTICATION_METHOD_AVAILABLE,
+	NotAuthorized, ///< The client tried to do something there are not authorized to.
+	NotExpected, ///< The request/packet was not expected in the current state.
+	WrongRevision, ///< The client is using the wrong revision.
+	NameInUse, ///< The client has a duplicate name (and we couldn't make it unique).
+	WrongPassword, ///< The client entered a wrong password.
+	CompanyMismatch, ///< The client was impersonating another company.
+	Kicked, ///< The client got kicked.
+	Cheater, ///< The client is trying control companies in a way they are not supposed to.
+	ServerFull, ///< The server is full.
+	TooManyCommands, ///< The client has sent too many commands in a short time.
+	TimeoutPassword, ///< The client has timed out providing a password.
+	TimeoutComputer, ///< The client has timed out because the computer could not keep up with the server.
+	TimeoutMap, ///< The client has timed out because it took too long to download the map.
+	TimeoutJoin, ///< The client has timed out because getting up to speed with the server failed.
+	InvalidClientName, ///< The client tried to set an invalid name.
+	NotOnAllowList, ///< The client is not on the allow list.
+	NoAuthenticationMethodAvailable, ///< The client and server could not find a common authentication method.
 
-	NETWORK_ERROR_END,
+	/* When adding elements to this enumeration, update the mapping in GetLongNetworkErrorString and GetNetworkErrorMsg. */
 };
 
 /**

@@ -956,7 +956,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_operating_profit_wid
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 160), SetFill(1, 1), SetResize(1, 1),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1009,7 +1009,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_income_graph_widgets
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1060,7 +1060,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_delivered_cargo_grap
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1118,7 +1118,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_performance_history_
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1169,7 +1169,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_value_graph_
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1457,7 +1457,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_cargo_payment_rates_
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1861,7 +1861,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_industry_production_
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1882,6 +1882,7 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 	static inline constexpr StringID RANGE_LABELS[] = {
 		STR_GRAPH_TOWN_RANGE_PRODUCED,
 		STR_GRAPH_TOWN_RANGE_TRANSPORTED,
+		STR_GRAPH_TOWN_RANGE_DELIVERED,
 	};
 
 	static inline CargoTypes excluded_cargo_types{};
@@ -1911,6 +1912,9 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 		const Town *t = Town::Get(window_number);
 		for (const auto &s : t->supplied) {
 			if (IsValidCargoType(s.cargo)) SetBit(cargo_types, s.cargo);
+		}
+		for (const auto &a : t->accepted) {
+			if (IsValidCargoType(a.cargo)) SetBit(cargo_types, a.cargo);
 		}
 		return cargo_types;
 	}
@@ -1949,7 +1953,8 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 
 		this->data.clear();
 		this->data.reserve(
-			2 * std::ranges::count_if(t->supplied, &IsValidCargoType, &Town::SuppliedCargo::cargo));
+			2 * std::ranges::count_if(t->supplied, &IsValidCargoType, &Town::SuppliedCargo::cargo) +
+			1 * std::ranges::count_if(t->accepted, &IsValidCargoType, &Town::AcceptedCargo::cargo));
 
 		for (const auto &s : t->supplied) {
 			if (!IsValidCargoType(s.cargo)) continue;
@@ -1969,6 +1974,20 @@ struct TownCargoGraphWindow : BaseCargoGraphWindow {
 			FillFromHistory<GRAPH_NUM_MONTHS>(s.history, t->valid_history, *this->scales[this->selected_scale].history_range,
 				Filler{{produced}, &Town::SuppliedHistory::production},
 				Filler{{transported}, &Town::SuppliedHistory::transported});
+		}
+
+		for (const auto &a : t->accepted) {
+			if (!IsValidCargoType(a.cargo)) continue;
+			const CargoSpec *cs = CargoSpec::Get(a.cargo);
+
+			DataSet &accepted = this->data.emplace_back();
+			accepted.colour = cs->legend_colour;
+			accepted.exclude_bit = cs->Index();
+			accepted.range_bit = 2;
+			accepted.dash = 1;
+
+			FillFromHistory<GRAPH_NUM_MONTHS>(a.history, t->valid_history, *this->scales[this->selected_scale].history_range,
+				Filler{{accepted}, &Town::AcceptedHistory::accepted});
 		}
 
 		this->SetDirty();
@@ -2005,7 +2024,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_town_cargo_graph_wid
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };

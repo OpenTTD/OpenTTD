@@ -714,8 +714,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Leszállítva
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Várakozik
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Rakománytörténet
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Ellátás
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Előállított
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Elszállítva
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Leszállítva
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részletes teljesítményértékelés mutatása
 
@@ -1205,8 +1206,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Érvényte
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} hiányzó/sérült fájl)
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nem sikerült a támogatott felbontások lekérdezése
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljes képernyős módra váltás sikertelen
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Nem sikerült a támogatott felbontások lekérdezése
+STR_ERROR_FULLSCREEN_FAILED                                     :Teljes képernyős módra váltás sikertelen
 
 # Custom currency window
 
@@ -1429,7 +1430,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Beállíthatod 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatikus)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nem állíthatod erre az értékre a maximális térképmagasságot. Legalább egy hegy magasabb ennél
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :Nem állíthatod erre az értékre a maximális térképmagasságot. Legalább egy hegy magasabb ennél
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok stb. alatti tereprendezés engedélyezése: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
@@ -1567,7 +1568,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Áthaladó meg�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Áthaladó megállóhelyek építésének engedélyezése települési tulajdonú utakon
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Áthaladó megállóhelyek engedélyezése ellenfél tulajdonában lévő utakon: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Áthaladó megállóhelyek építésének engedélyezése olyan utakon, melyek más vállalatok birtokában vannak
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Ezt a beállítást nem lehet megváltoztatni, ha van használatban jármű
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Az infrastruktúra fenntartási költségének engedélyezése: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Bekapcsolva az infrastruktúrának fenntartási költsége van. A költség hatványozottan nő a hálózatnagysággal, nagyobb hatással a nagyobb vállalatokra mint a kisebbekre
@@ -1726,8 +1727,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Órairányban
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :A sík térképhez hozzáadandó magasság: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :Az északi határnál egy vagy több mező nem üres
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :Az egyik határnál egy vagy több mező nem víz
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Max állomás kiterjedés: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :A legnagyobb terület mérete, melyen egy adott állomás terjeszkedhet. Nagyobb érték lelassítja a játékot
@@ -2274,27 +2275,27 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :A vonatok autom
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Válassz beállítási értéket
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Hiba a konfigurációs fájlban...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... hiba a(z) '{STRING}' tömbben
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... a(z) '{1:STRING}' beállítás értéke érvénytelen: '{0:STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... felesleges karakterek a(z) '{STRING}' beállítás végén
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... érvénytelen NewGRF nem került betöltésre - '{STRING}': ütköző NewGRF ID egy másik NewGRF-fel: '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... érvénytelen NewGRF nem került betöltésre - '{STRING}': {STRING}
+STR_CONFIG_ERROR                                                :Hiba a konfigurációs fájlban...
+STR_CONFIG_ERROR_ARRAY                                          :hiba a(z) '{STRING}' tömbben
+STR_CONFIG_ERROR_INVALID_VALUE                                  :a(z) '{1:STRING}' beállítás értéke érvénytelen: '{0:STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :felesleges karakterek a(z) '{STRING}' beállítás végén
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :érvénytelen NewGRF nem került betöltésre - '{STRING}': ütköző NewGRF ID egy másik NewGRF-fel: '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :érvénytelen NewGRF nem került betöltésre - '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nem található
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nem biztonságos állandó használatra
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :rendszer NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nem kompatibilis az OpenTTD ezen verziójával
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ismeretlen
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... a(z) '{STRING}' tömörítési szint érvénytelen
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... a(z) '{STRING}' játékmentési formátum nem elérhető. Mentés '{STRING}' formátumban
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... érvénytelen grafikus alapcsomag nem került betöltésre - '{STRING}': nem található
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... érvénytelen hang alapcsomag nem került betöltésre - '{STRING}': nem található
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... érvénytelen zenei alapcsomag nem került betöltésre - '{STRING}': nem található
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :a(z) '{STRING}' tömörítési szint érvénytelen
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :a(z) '{STRING}' játékmentési formátum nem elérhető. Mentés '{STRING}' formátumban
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :érvénytelen grafikus alapcsomag nem került betöltésre - '{STRING}': nem található
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :érvénytelen hang alapcsomag nem került betöltésre - '{STRING}': nem található
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :zenei alapcsomag kihagyása - '{STRING}': nem található
 
 # Video initalization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Hiba a videobeállításokban...
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nem található kompatibilis GPU. Hardveres gyorsítás kikapcsolva.
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... A videókártya illesztőprogram hibát okozott. Hardveres gyorsítás kikapcsolva
+STR_VIDEO_DRIVER_ERROR                                          :Hiba a videobeállításokban...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :nem található kompatibilis GPU. Hardveres gyorsítás kikapcsolva.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :A videókártya illesztőprogram hibát okozott. Hardveres gyorsítás kikapcsolva
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
@@ -2549,15 +2550,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} lett eddig letöltve
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lett eddig letöltve
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Kapcsolódás...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Engedélyezés...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Várakozás...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Térkép letöltése...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Adatfeldolgozás...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Regisztrálás...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Játékinfó lekérése...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Vállalat infó lekérése...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Megszakít
 
@@ -2653,30 +2652,30 @@ STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Add meg a hálózati beszélgetéshez a neved
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nem található a hálózati csatoló
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}A kapcsolat időtúllépés miatt megszakadt, vagy vissza lett utasítva
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF eltérés miatt nem sikerült kapcsolódni
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Hálózat - Játék szinkronizáció sikertelen
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Hálózat - Játék kapcsolat elveszett
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nem sikerült a szerver játékmentés betöltése
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :Nem található hálózati eszköz
+STR_NETWORK_ERROR_NOCONNECTION                                  :A kapcsolat időtúllépés miatt megszakadt, vagy vissza lett utasítva
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :NewGRF eltérés miatt nem sikerült kapcsolódni
+STR_NETWORK_ERROR_DESYNC                                        :Hálózat - Játék szinkronizáció sikertelen
+STR_NETWORK_ERROR_LOSTCONNECTION                                :Hálózat - Játék kapcsolat elveszett
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :Nem sikerült a szerver játékmentés betöltése
 STR_NETWORK_ERROR_SERVER_START                                  :Nem tudtam elindítani a szervert
 STR_NETWORK_ERROR_SERVER_ERROR                                  :Protokoll-hiba keletkezett és megszakadt a kapcsolat
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :A játékos neved nem lett megadva. A nevet a hálózati játék ablak tetején tudod beállítani.
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :A szerver neve nem lett megadva. A szerver nevét az ablak tetején tudod beállítani.
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Rossz jelszó
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nem szerepelsz az engedélyezett felhasználók listáján!
+STR_NETWORK_ERROR_WRONG_REVISION                                :A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Rossz jelszó
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :Nem szerepelsz az engedélyezett felhasználók listáján
 STR_NETWORK_ERROR_SERVER_FULL                                   :A szerver tele van
 STR_NETWORK_ERROR_SERVER_BANNED                                 :Ki vagy tiltva erről a szerverről
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ki lettél rúgva a szerverről
-STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Oka: {STRING}
+STR_NETWORK_ERROR_KICKED                                        :Ki lettél rúgva a szerverről
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :Oka: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :Ez a szerver nem engedi a csalást
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Túl sok parancsot küldtél a szervernek
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :Túl sok parancsot küldtél a szervernek
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Túl sokáig tartott a jelszó beírása
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :A számítógéped túl lassú, hogy tartsa a szerver sebességét
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Túl sokáig tartott a térkép letöltése a számítógépednek
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :Túl sokáig tartott a szerverhez csatlakozás a számítógépednek
-STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}A játékos neved nem megfelelő
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :A játékos neved nem megfelelő
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Lehetséges, hogy elveszett a kapcsolat
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :Az elmúlt {NUM} másodpercben nem érkezett adat a szervertől
@@ -2732,8 +2731,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ú
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} kilépett a játékból ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nevet változtatott. Új neve: {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} a következő összeget utalta {2:STRING} részére: {1:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}A szerver leállította a játékot
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}A szerver újraindul...{}{}Kérjük várj...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :A szerver leállította a játékot
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :A szerver újraindul...{}{}Kérjük várj...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ki lett rúgva. Oka: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :A szerver regisztrációja sikertelen
@@ -2783,8 +2782,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Letölt
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Kijelölés oka: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Függőségek: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Címkék: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}Az OpenTTD "zlib" támogatás nélkül lett fordítva...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... nem lehet letölteni a tartalmat!
+STR_CONTENT_NO_ZLIB                                             :Az OpenTTD "zlib" támogatás nélkül lett fordítva...
+STR_CONTENT_NO_ZLIB_SUB                                         :nem lehet letölteni a tartalmat!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafikus alapcsomag
@@ -2806,10 +2805,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Letölt�
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} / {BYTES} letöltve ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}A tartalomszolgáltató szerver nem elérhető...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}A letöltés meghiúsult...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... a fájl nem írható
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sikerült kicsomagolni a letöltött fájlt
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :A tartalomszolgáltató szerver nem elérhető...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :A letöltés meghiúsult...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :a fájl nem írható
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :Nem sikerült kicsomagolni a letöltött fájlt
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Hiányzó grafikus alapcsomag
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Az OpenTTD-nek egy grafikus alapcsomagra van szüksége a működéshez, de nem található grafikus alapcsomag. Engedélyezed az OpenTTD-nek, hogy letöltse és telepítse a grafikus alapcsomagot?
@@ -3585,12 +3584,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Mezők v
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Futó szkript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Játék előkészítése
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Város adat betöltése sikertelen
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}A JSON fájl nem megfelelő formátumú
-STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} adat nem megfelelő formátumú
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordináták helytelenül formázva, 0 és 1 között kell lennie a teljes magasságtérkép dimenziójának arányában
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :Város adat betöltése sikertelen
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :A JSON fájl nem megfelelő formátumú
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING} adat nem megfelelő formátumú
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{STRING} koordináták helytelenül formázva, 0 és 1 között kell lennie a teljes magasságtérkép dimenziójának arányában
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Nem található érvényes hely {NUM} város számára. Táblá{P "" ka}t helyeztünk el a kívánt hely{P "" ek}en
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :Nem található érvényes hely {NUM} város számára. Táblá{P "" ka}t helyeztünk el a kívánt hely{P "" ek}en
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-beállítások
@@ -3708,8 +3707,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmeztetés: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}A "{STRING}" nevű NewGRF végzetes hibába torkollott:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}A "{STRING}" nevű NewGRF hibába torkollott:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :A(z) "{STRING}" nevű NewGRF végzetes hibába torkollott:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :A(z) "{STRING}" nevű NewGRF hibába torkollott:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {2:STRING} verziójához van
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy együtt lesz használva ezzel: {2:STRING}
@@ -3736,12 +3735,12 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Érvénytelen t
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen egy jelenleg futó játékon akarsz változtatni; ettől elszállhat az OpenTTD. Ezekről ne tegyél hibajelentést.{}Teljesen biztos vagy ebben?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehetséges a fájl hozzáadása: duplikált NewGRF azonosító
+STR_NEWGRF_DUPLICATE_GRFID                                      :Nem lehetséges a fájl hozzáadása: duplikált NewGRF azonosító
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE} Egyező fájlt nem található (kompatibilis NewGRF-fel helyettesítve)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nem adhatod hozzá: Elérted a NewGRF fájlok maximális számát
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Nem adhatod hozzá: Elérted a NewGRF fájlok maximális számát
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis NewGRF(-ek) betöltve a hiányzó fájlok helyett
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó NewGRF fájlok kikapcsolva
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Kompatibilis NewGRF(-ek) betöltve a hiányzó fájlok helyett
+STR_NEWGRF_DISABLED_WARNING                                     :Hiányzó NewGRF fájlok kikapcsolva
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányzó NewGRF fájl(ok)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játék folytatásától az OpenTTD lefagyhat.{}Ne jelentsd be az ismétlődő lefagyásokat egyesével.{}Biztosan folytatni akarod?
 
@@ -3753,17 +3752,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Talált
 STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó fájlok
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}A NewGRF '{0:STRING}' viselkedése valószínűleg deszinkronizációt és/vagy összeomlást okoz
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztattad '{1:ENGINE}' motorkocsi állapotát mikor nem volt bent a járműtelepen
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztattad '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megváltoztattad '{1:ENGINE}' jármű kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
+STR_NEWGRF_BROKEN                                               :A NewGRF '{0:STRING}' viselkedése deszinkronizációt és/vagy összeomlást okozhat
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Megváltoztattad '{1:ENGINE}' motorkocsi állapotát mikor nem volt bent a járműtelepen
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :Megváltoztattad '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
+STR_NEWGRF_BROKEN_CAPACITY                                      :Megváltoztattad '{1:ENGINE}' jármű kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
 STR_BROKEN_VEHICLE_LENGTH                                       :A(z) „{1:COMPANY}” vállalat „{0:VEHICLE}” jelű vonatának hossza érvénytelen. Ezt valószínűleg NewGRF-ek okozhatják. A játék elszállhat vagy összeomolhat
 
-STR_NEWGRF_BUGGY                                                :{WHITE}A NewGRF {0:STRING}' helytelen információt biztosít
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' végtelen ciklust okozott a termelés folyamatnál
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}{1:HEX} visszatérő érték ismeretlen/érvénytelen {2:HEX} értékkel tért vissza
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}' {1:STRING} ' érvénytelen rakománytípussal tért vissza a termelési callback-ben: {2:HEX}
+STR_NEWGRF_BUGGY                                                :A NewGRF {0:STRING}' helytelen információt biztosít
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :A(z) '{1:ENGINE}}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{1:HEX} visszatérő érték ismeretlen/érvénytelen {2:HEX} értékkel tért vissza
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :'{1:STRING} ' érvénytelen rakománytípussal tért vissza a termelési callback-ben: {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
@@ -4640,8 +4639,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Közúti
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Hajó átnevezése
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Repülőgép átnevezése
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} év ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} év (élettartam: {COMMA} év)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év (élettartam: {COMMA} év)
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Kor: {LTBLUE}{STRING}{BLACK} Üzemeltetés: {LTBLUE}{CURRENCY_LONG}/év
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Kor: {LTBLUE}{STRING}{BLACK} Üzemeltetés: {LTBLUE}{CURRENCY_LONG}/időszak
 
@@ -4655,7 +4654,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Idei has
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Idei haszon: {LTBLUE}{CURRENCY_LONG} (tavalyi: {CURRENCY_LONG}) {BLACK}Minimum teljesítmény: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Nyereség ebben az időszakban: {LTBLUE}{CURRENCY_LONG} (elmúlt időszakban: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Nyereség ebben az időszakban: {LTBLUE}{CURRENCY_LONG} (emúlt időszakban: {CURRENCY_LONG}) {BLACK}Min. teljesítmény: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%  {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}% (max: {COMMA}%) {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacitás: {LTBLUE}Nincs{STRING}
@@ -4823,6 +4822,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Kihagy
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jelenlegi utasítás átugrása, és a következő aktiválása. Ctrl+kattintásra a kiválasztott utasításra ugrik
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Töröl
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Összes törlése
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}A kijelölt utasítás törlése
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Összes utasítás törlése
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Megosztás vége
@@ -5004,7 +5004,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Játéks
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Játékszkriptnapló ellenőrzése. Ctrl+kattintás az új ablakban való megnyitáshoz.
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI csak dísz és nem fog semmit csinálni.{}MI-k letöltéséhez használd a tartalomletöltő rendszert
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó szkript futása közben hiba történt. Kérjük jelezd ezt a szkript készítőjének az MI / Játékzkript nyomkövetés ablakról készített képernyőmentéssel
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Az egyik futó szkript összeomlott. Kérjük jelezd ezt a szkript készítőjének az MI/játékszkript nyomkövetés ablakról készített képernyőmentéssel
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI / Játékszkript nyomkövetés ablak csak a szerver számára elérhető
 
 # AI configuration window
@@ -5100,12 +5100,12 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Becsült
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Becsült bevétel: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}A mentés még tart,{}kérlek várd meg a végét!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatikus mentés sikertelen
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :A mentés még tart,{}kérlek várd meg a végét!
+STR_ERROR_AUTOSAVE_FAILED                                       :Automatikus mentés sikertelen
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nem olvasható a meghajtó
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}A mentés sikertelen
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nem sikerült törölni a fájlt
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}A betöltés sikertelen
+STR_ERROR_GAME_SAVE_FAILED                                      :A mentés sikertelen...
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Nem sikerült törölni a fájlt
+STR_ERROR_GAME_LOAD_FAILED                                      :A betöltés sikertelen...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Belső hiba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Hibás játékállás-mentés - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A játékállást újabb verzió mentette el
@@ -5117,16 +5117,16 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nem elérhető
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat. Az összes villamos el lett távolítva
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}A térkép generálása meghiúsult...{}{}... nincs városépítésre alkalmas hely
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... nincs település ezen a pályán
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :A térkép generálása meghiúsult...{}{}... nincs városépítésre alkalmas hely
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :nincs település ezen a pályán
 
-STR_ERROR_PNGMAP                                                :{WHITE}Nem tudom a térképet betölteni a PNG-ből...
+STR_ERROR_PNGMAP                                                :Nem tudom a térképet betölteni a PNG-ből...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :fájl nem található
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... a képtípus nem konvertálható. 8 vagy 24-bites PNG kép szükséges
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... valami félresikeredett (talán sérült a fájl)
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :a képtípus nem konvertálható. 8 vagy 24-bites PNG kép szükséges
+STR_ERROR_PNGMAP_MISC                                           :valami félresikeredett (talán sérült a fájl)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Nem sikerült a térkép betöltése a BMP-ből...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nem sikerült a képtípust konvertálni
+STR_ERROR_BMPMAP                                                :Nem sikerült a térkép betöltése a BMP-ből...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :nem sikerült a képtípust konvertálni
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :túl nagy a kép
 
@@ -5140,338 +5140,338 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Csak egy
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Hatalmas képernyőkép
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A képernyőkép felbontása {COMMA} x {COMMA} pixel lesz. A méret miatt ez eltarthat egy ideig. Szeretnéd folytatni?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Magasságtérkép sikeresen elmentve '{STRING}' néven. A térkép legmagasabb pontja: {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}A képernyő elmentve '{STRING}' néven
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A képmentés nem sikerült!
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Magasságtérkép sikeresen elmentve '{STRING}' néven. A térkép legmagasabb pontja: {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :A képernyőkép elmentve '{STRING}' néven
+STR_ERROR_SCREENSHOT_FAILED                                     :A képernyőmentés nem sikerült!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Üzenet
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{COMPANY} üzenete
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Kilóg a térképről
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Túl közel van a térkép határához
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nincs elég pénzed - {CURRENCY_LONG} kellene
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Sima talaj szükséges
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Rossz irányba lejt a föld
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nem teheted ezt...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Előbb le kell rombolnod az épületet
-STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... a(z) épület védett
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nem tisztíthatod meg ezt a területet...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nem alkalmas rá a hely
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... már van itt
-STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING} tulajdona
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a terület más vállalaté
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... tájrendezési limit elérve
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... mezőtörlési limit elérve
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... a faültetési korlátozás elérve
+STR_ERROR_OFF_EDGE_OF_MAP                                       :kilóg a térképről
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :túl közel van a térkép határához
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :nincs elég pénzed - {CURRENCY_LONG} kellene
+STR_ERROR_FLAT_LAND_REQUIRED                                    :sima talaj szükséges
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :rossz irányba lejt a föld
+STR_ERROR_CAN_T_DO_THIS                                         :Nem teheted ezt...
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :előbb le kell rombolnod az épületet
+STR_ERROR_BUILDING_IS_PROTECTED                                 :a(z) épület védett
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Nem tisztíthatod meg ezt a területet...
+STR_ERROR_SITE_UNSUITABLE                                       :nem alkalmas rá a hely
+STR_ERROR_ALREADY_BUILT                                         :már van itt
+STR_ERROR_OWNED_BY                                              :{STRING} tulajdona
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :a terület más vállalaté
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :tájrendezési limit elérve
+STR_ERROR_CLEARING_LIMIT_REACHED                                :mezőtörlési limit elérve
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :a faültetési korlátozás elérve
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :a névnek egyedinek kell lennie
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} van az útban
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{STRING} van az útban
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :szünet közben nem megengedett
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} önkormányzata nem engedélyezi
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} önkormányzata nem engedélyez új repülőteret a városban
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} önkormányzata a zajszintnormák miatt megtagadta a repülőtér építését
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}A megvesztegetési kísérletedet leleplezte egy helyi felügyelő
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{TOWN} önkormányzata nem engedélyezi
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{TOWN} önkormányzata nem engedélyez új repülőteret a városban
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{TOWN} önkormányzata a zajszintnormák miatt megtagadta a repülőtér építését
+STR_ERROR_BRIBE_FAILED                                          :A megvesztegetési kísérletedet leleplezte egy helyi nyomozó
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nem emelheted fel itt a földet...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nem süllyesztheted le itt a földet...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Itt nem tudsz terepmagasságot változtatni...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Az ásás megsértené az alagutat
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Már tengerszinten van
-STR_ERROR_TOO_HIGH                                              :{WHITE}Túl magas
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... már sík
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Ezután a híd túl magas lenne.
-STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Előbb le kell rombolnod a folyót
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :Nem emelheted fel itt a földet...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Nem süllyesztheted le itt a földet...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Itt nem tudsz terepmagasságot változtatni...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :az ásás megsértené az alagutat
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :már tengerszinten van
+STR_ERROR_TOO_HIGH                                              :túl magas
+STR_ERROR_ALREADY_LEVELLED                                      :már sík
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :ezután a híd túl magas lenne.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :előbb le kell rombolnod a folyót
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nem változtathatod meg a vállalat nevét...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nem változtathatod meg az elnök nevét...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Nem változtathatod meg a vállalat nevét...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Nem változtathatod meg az elnök nevét...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...{CURRENCY_LONG} a megengedett legnagyobb kölcsön.
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{CURRENCY_LONG} a megengedett legnagyobb kölcsön.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Nem kölcsönözhetsz több pénzt...
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... nincs visszafizetendő kölcsönöd
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} kellene hozzá
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nem törleszthetsz a kölcsönből...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nem tudod a banktól kölcsönkapott pénzt továbbadni...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nem tudsz pénzt adományozni a vállalatnak...
+STR_ERROR_LOAN_ALREADY_REPAID                                   :nincs visszafizetendő kölcsönöd
+STR_ERROR_CURRENCY_REQUIRED                                     :{CURRENCY_LONG} szükséges hozzá
+STR_ERROR_CAN_T_REPAY_LOAN                                      :Nem törleszthetsz a kölcsönből...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Nem tudod a banktól kölcsönkapott pénzt továbbadni...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :Nem tudsz pénzt adományozni ennek a vállalatnak...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :Nem veheted meg a vállalatot...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Nem építheted ide a székházadat...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :Nem lehet több települést építeni...
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nem nevezheted át a várost...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nem építhetsz ide várost...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}A város nem növelhető...
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... túl közel van egy másik településhez
+STR_ERROR_CAN_T_RENAME_TOWN                                     :Nem nevezheted át a várost...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Nem építhetsz ide várost...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :A város nem növelhető...
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :túl közel van egy másik településhez
 STR_ERROR_TOO_MANY_TOWNS                                        :túl sok a település
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nincs több hely a térképen
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}A város nem törölhető...{}{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem távolítható el
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nincs megfelelő hely egy szobornak a város központjában
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :nincs több hely a térképen
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :útkarbantartás folyamatban
+STR_ERROR_TOWN_CAN_T_DELETE                                     :Ez a város nem törölhető...{}{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem távolítható el
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :nincs megfelelő hely egy szobornak a város központjában
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :A házépítés nem lehetséges...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :túl sok a gazdasági épület
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :Nem tudok gazdasági épületet generálni...
 STR_ERROR_CAN_T_BUILD_HERE                                      :Nem építhető ide {STRING}...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nem építheted ide ezt a gazdasági épületet...
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Nem lehet az iparágat kutatni...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... túl közel egy másik gazdasági épülethez
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... előbb települést kell építened
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... városonként csak egy lehet
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Nem építheted ide ezt a gazdasági épületet...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :Nem lehet az iparágat kutatni...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :túl közel van egy másik gazdasági épülethez
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :előbb települést kell építened
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :városonként csak egy lehet
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :csak 1200-nál nagyobb lakosságszámú településeken építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... csak esőerdőben építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... csak sivatagban építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... csak településen, meglévő házak helyére építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... csak települések központjában építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... csak alacsony terepen építhető
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... csak a térkép határaihoz közel építhető
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... erdő csak a hóhatár fölé ültethető
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... csak a hóhatár fölé építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... csak a hóhatár alá építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :csak esőerdőben építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :csak sivatagban építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :csak településeken, meglévő házak helyére építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :csak települések központjában építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :csak alacsony terepen építhető
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :csak a térkép határaihoz közel építhető
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :erdő csak a hóhatár fölé ültethető
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :csak a hóhatár fölé építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :csak a hóhatár alá építhető
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Az adományozás sikertelen a rossz szerencsének köszönhetően; próbáld újra
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Nem volt megfelelő hely ennek az iparág kutatására
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Nem volt megfelelő hely '{STRING}' elhelyezésére
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Változtasd meg a térképgenerálás paramétereit, hogy jobb térképet kapj
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :az adományozás sikertelen a rossz szerencsének köszönhetően; próbáld újra
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :nem volt megfelelő hely ennek az iparág kutatására
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Nem volt megfelelő hely '{STRING}' elhelyezésére
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Változtasd meg a térképgenerálás paramétereit, hogy jobb térképet kapj
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Nem építhetsz ide vasútállomást...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Nem építhetsz ide buszmegállót...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nem építhetsz ide teherautó-állomást...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Nem építhetsz ide teherautó-állomást...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Nem építhetsz ide villamosmegállót...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Nem építhetsz ide tehervillamos-állomást...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Nem építhetsz ide kikötőt...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Nem építhetsz ide repülőteret...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :több állomással/rakodóhellyel érintkezik
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... az állomás túl kiterjedt
-STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... nem támogatott vágánymennyiség
-STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... nem támogatott hossz
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :az állomás túl kiterjedt
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :nem támogatott vágánymennyiség
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :nem támogatott hossz
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :túl sok az állomás/rakodóhely
 STR_ERROR_TOO_MANY_STATION_SPECS                                :túl sok vasútállomás-rész
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :túl sok buszmegálló
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :túl sok a teherautó-állomás
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :túl közel van egy másik kikötőhöz
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :túl közel van egy másik repülőtérhez
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nem nevezheted át az állomást...
-STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Az állomás tábla nem mozgatható
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... városi tulajdonban lévő út
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... az út a másik irányba vezet
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... áthaladó megállóhelyeken nem lehet kanyar
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... áthaladó megállóhelyeken nem lehet elágazás
+STR_ERROR_CAN_T_RENAME_STATION                                  :Nem nevezheted át az állomást...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :Az állomás tábla nem mozgatható
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :városi tulajdonban lévő út
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :az út a másik irányba vezet
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :áthaladó megállóhelyeken nem lehet kanyar
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :áthaladó megállóhelyeken nem lehet elágazás
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nem lehet eltávolítani az állomás részét...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Előbb le kell rombolnod a vasútállomást
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :Nem lehet eltávolítani az állomás részét...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :előbb le kell rombolnod a vasútállomást
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Nem távolíthatod el ezt a buszmegállót...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nem távolíthatod el ezt a teherautó-állomást...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nem lehet a villamosmegállót eltávolítani...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Nem távolíthatod el ezt a teherautó-állomást...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :Nem lehet a villamosmegállót eltávolítani...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Nem lehet a tehervillamos-állomást eltávolítani
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Előbb el kell távolítanod a megállóhelyet
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... nincs itt állomás
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :előbb el kell távolítanod a megállóhelyet
+STR_ERROR_THERE_IS_NO_STATION                                   :nincs itt állomás
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Előbb le kell rombolnod a vasútállomást
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Előbb le kell rombolnod a buszmegállót
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Előbb le kell rombolnod a teherautó-állomást
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Előbb le kell rombolni a villamosmegállót
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Előbb le kell rombolni a tehervillamos-állomást
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Előbb le kell rombolnod a kikötőt
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Előbb le kell rombolnod a repülőteret
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :előbb le kell rombolnod a vasútállomást
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :előbb le kell rombolnod a buszmegállót
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :előbb le kell rombolnod a teherautó-állomást
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :előbb le kell rombolni a villamosmegállót
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :előbb le kell rombolni a tehervillamos-állomást
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :előbb le kell rombolnod a kikötőt
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :előbb le kell rombolnod a repülőteret
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Több létező ellenőrző ponttal szomszédos
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Túl közel van egy másik ellenőrző ponthoz
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :több létező ellenőrző ponttal szomszédos
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :túl közel van egy másik ellenőrző ponthoz
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Ide nem lehet vonat ellenőrző pontot építeni...
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Ide nem lehet útpontot építeni...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nem rakhatsz ide bóját...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nem lehet megváltoztatni az ellenőrző pont nevét...
-STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Az ellenőrzőpont tábla nem mozgatható...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Ide nem lehet vonat ellenőrző pontot építeni...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Ide nem lehet útpontot építeni...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :Nem rakhatsz ide bóját...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Nem lehet megváltoztatni az ellenőrző pont nevét...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Az ellenőrzőpont tábla nem mozgatható...
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Nem lehet eltávolítani az ellenőrző pontot...
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Nem lehet innen útpontot eltávolítani...
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :Nem lehet eltávolítani az ellenőrző pontot...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Nem lehet innen útpontot eltávolítani...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :előbb le kell rombolnod az ellenőrző pontot
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Előbb le kell rombolnod az útpontot
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bója van az útban
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... a bóját más vállalat használja!
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :előbb le kell rombolnod az útpontot
+STR_ERROR_BUOY_IN_THE_WAY                                       :bója van az útban
+STR_ERROR_BUOY_IS_IN_USE                                        :a bóját más vállalat használja!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nem építhetsz ide járműtelepet...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nem építhetsz ide garázst...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ide nem lehet remízt építeni...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nem építhetsz ide dokkot...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Nem építhetsz ide járműtelepet...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Nem építhetsz ide garázst...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :Ide nem lehet remízt építeni...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Nem építhetsz ide dokkot...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :Nem nevezheted át a járműtelepet...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... járműtelepen kellene állnia ehhez
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... garázsban kellene állnia ehhez
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... dokkban kellene állnia ehhez
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hangárban kellene állnia ehhez
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :járműtelepen kellene állnia ehhez
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :garázsban kellene állnia ehhez
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :dokkban kellene állnia ehhez
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :hangárban kellene állnia ehhez
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a járműtelepen álló vonatokat lehet megváltoztatni
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... több részből álló járművet tartalmaz
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nem kompatibilis pályatípusok
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :csak a járműtelepen álló vonatokat lehet megváltoztatni
+STR_ERROR_TRAIN_TOO_LONG                                        :túl hosszú a vonat
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :A járművet nem lehet megfordítani...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :több járművet tartalmaz
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :nem kompatibilis pályatípusok
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nem mozgathatod a járművet...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A mozdony első felének mindig elől kell lennie
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nem találok utat a helyi járműtelepre
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nem találom a helyi garázst
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Nem mozgathatod a járművet...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :a mozdony első felének mindig elől kell lennie
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :nem találok utat a helyi járműtelepre
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :nem találom a helyi garázst
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Rossz járműteleptípus
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :rossz járműteleptípus
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... csak egy csoportbontási utasítás lehetséges
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :csak egy csoportbontási utasítás lehetséges
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               : a telerakodás utasítás nem használható a csoportbontás utasításnál
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :a csoportbontás nem lehetséges egy telerakodás utasítással rendelkező járműnél
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :a feltételes utasítások nem használhatóak a csoportbontás utasításnál
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :a csoportbontás nem lehetséges egy feltételes utasítással rendelkező járműnél
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} túl hosszú a csere után
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nincsenek automatikus járműfelújítási szabályok alkalmazva
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} túl hosszú a csere után
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :Nincsenek automatikus járműfelújítási szabályok alkalmazva
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pénzlimit)
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Az új jármű nem tud {STRING.t} szállítani
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Az új jármű nem alakítható át a(z) {NUM}. utasítás során
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Az új jármű nem tud {STRING}-t szállítani
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Az új jármű nem alakítható át a(z) {NUM}. utasítás során
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nem lehetséges vágányösszetétel
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Először el kell távolítani a jelzőket
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nincs megfelelő vasúti pálya
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Előbb le kell rombolnod a vasúti pályát
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :nem lehetséges vágánykombináció
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :először el kell távolítani a jelzőket
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :nincs megfelelő vasúti pálya
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :előbb le kell rombolnod a vasúti pályát
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :az út egyirányú vagy blokkolt
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :ehhez a sín típushoz nem megengedett vasúti átjárók építése
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :ehhez az út típushoz nem megengedett vasúti átjárók építése
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nem helyezhetsz ide jelzőt...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Nem helyezhetsz ide jelzőt...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Nem építhetsz ide vasúti pályát...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nem szedheted fel innen a vasúti pályát...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Innen nem távolíthatod el a jelzőt...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Itt nem lehet konvertálni a jelzőket...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... nincs itt vasúti pálya
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nincs itt jelző
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Nem szedheted fel innen a vasúti pályát...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Innen nem távolíthatod el a jelzőt...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Itt nem lehet konvertálni a jelzőket...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :nincs itt vasúti pálya
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :nincs itt jelző
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nem lehet itt vasúti pálya típust átalakítani...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :Nem lehet itt vasúti pálya típust átalakítani...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Előbb le kell rombolnod az utat
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... egyirányú utaknak nem lehetnek kereszteződéseik...
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ide nem lehet utat építeni...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ide nem lehet villamospályát építeni...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nem rombolhatod le innen az utat...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Innen nem lehet villamospályát eltávolítani...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nincs itt út
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nincs itt villamospálya
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nem lehet itt az út típusát átalakítani...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nem lehet itt a villamospálya típusát átalakítani...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nincs megfelelő út
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nincs megfelelő villamospálya
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :előbb le kell rombolnod az utat
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :egyirányú utaknak nem lehetnek kereszteződéseik...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Ide nem lehet utat építeni...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Ide nem lehet villamospályát építeni...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Nem rombolhatod le innen az utat...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :Innen nem lehet villamospályát eltávolítani...
+STR_ERROR_THERE_IS_NO_ROAD                                      :nincs itt út
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :nincs itt villamospálya
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :Nem lehet itt az út típusát átalakítani...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Nem lehet itt a villamospálya típusát átalakítani...
+STR_ERROR_NO_SUITABLE_ROAD                                      :nincs megfelelő út
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :nincs megfelelő villamospálya
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :Ide nem lehet csatornát építeni...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :Ide nem lehet zsilipet építeni...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ide nem lehet folyót elhelyezni...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... csak vízen építhető
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :Ide nem lehet folyót elhelyezni...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :csak vízen építhető
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :nem építhető vízen
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :nem építhető nyílt tengerre
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :nem építhető csatornára
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :nem építhető folyóra
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}A csatornát előbb le kell rombolni
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :a csatornát előbb le kell rombolni
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Ide nem lehet csatornahidat építeni...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... már van itt fa
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... rossz tereptípus a fafajtának
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ide nem lehet fát ültetni...
+STR_ERROR_TREE_ALREADY_HERE                                     :már van itt fa
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :rossz tereptípus a fafajtának
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Ide nem lehet fát ültetni...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Ide nem lehet hidat építeni...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Előbb le kell rombolnod a hidat
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nem kezdődhet és végződhet ugyanott
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Hídfők nem egy szinten vannak
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A híd túl alacsony a terepre
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}A híd túl magas erre a terepre.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdetének és a végének egy vonalban kell lennie
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a híd túl hosszú
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A híd a térképen túl végződne
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}A híd {HEIGHT} magas, túl alacsony az állomáshoz
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}A híd {HEIGHT} magas, túl alacsony a megállóhoz
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}A híd {HEIGHT} magas, túl alacsony a kikötőhöz
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}A híd {HEIGHT} magas, túl alacsony a bójához
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}A híd {HEIGHT} magas, túl alacsony a vasúti ellenőrzőponthoz
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}A híd {HEIGHT} magas, túl alacsony az útponthoz
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}A híd {HEIGHT} magas, túl alacsony a zároláshoz
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :előbb le kell rombolnod a hidat
+STR_ERROR_CAN_T_START_AND_END_ON                                :nem kezdődhet és végződhet ugyanott
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :a hídfők nem egy szinten vannak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :a híd túl alacsony a terepre
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :a híd túl magas erre a terepre.
+STR_ERROR_START_AND_END_MUST_BE_IN                              :a kezdetének és a végének egy vonalban kell lennie
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :a híd mindkét végének szárazföldön kell lennie
+STR_ERROR_BRIDGE_TOO_LONG                                       :a híd túl hosszú
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :a híd a térképen kívül végződne
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :a híd {HEIGHT} magas, túl alacsony az állomáshoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :a híd {HEIGHT} magas, túl alacsony a megállóhoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :a híd {HEIGHT} magas, túl alacsony a kikötőhöz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :a híd {HEIGHT} magas, túl alacsony a bójához
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :a híd {HEIGHT} magas, túl alacsony a vasúti ellenőrzőponthoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :a híd {HEIGHT} magas, túl alacsony az útponthoz
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :a híd {HEIGHT} magas, túl alacsony a zároláshoz
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Nem alkalmas a hely alagút bejáratának
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Előbb le kell rombolnod az alagutat
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Másik alagút van az útban
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Az alagút vége a pályán kívülre esik
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nem lehet kiásni a földet az alagút túloldalán
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... alagút túl hosszú
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Nem áshatsz ide alagutat...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :Nem alkalmas a hely alagút bejáratának
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :előbb le kell rombolnod az alagutat
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :útban van egy másik alagút
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :az alagút vége a térképen kívülre esik
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :nem lehet kiásni a földet az alagút túloldalán
+STR_ERROR_TUNNEL_TOO_LONG                                       :alagút túl hosszú
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :túl sok az objektum
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :Nem építhető objektum...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objektum van az útban
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... vállalat székháza van az útban
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nem veheted meg ezt a földterületet...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... már a tiéd!
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... objektum építési limit elérve
+STR_ERROR_OBJECT_IN_THE_WAY                                     :objektum van az útban
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :vállalat székháza van az útban
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Nem veheted meg ezt a földterületet...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :már a tiéd!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :objektum építési limit elérve
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Csoport létrehozás sikertelen...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Csoport törlése sikertelen...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Csoport átnevezése sikertelen...
-STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nem teheted ezt a csoportot a másik alcsoportjává...
-STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... kört okozna a csoporthierarchiában
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Csoport járműveinek törlése sikertelen...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :Csoport létrehozása sikertelen...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :Csoport törlése sikertelen...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :Csoport átnevezése sikertelen...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :Nem teheted ezt a csoportot a másik alcsoportjává...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :kört okozna a csoporthierarchiában
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :Csoport járműveinek törlése sikertelen...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :Jármű hozzáadása a csoporthoz sikertelen...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Megosztott jármű csoporthoz való hozzáadása sikertelen...
 
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vonat van az útban
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Közúti jármű van az útban
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Hajó van az útban
+STR_ERROR_TRAIN_IN_THE_WAY                                      :vonat van az útban
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :közúti jármű van az útban
+STR_ERROR_SHIP_IN_THE_WAY                                       :hajó van az útban
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :repülőgép van az útban
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}A jármű nem elérhető
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}A jármű nem elérhető
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}A hajó nem elérhető
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}A repülő nem elérhető
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :a jármű nem elérhető
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :a jármű nem elérhető
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :a hajó nem elérhető
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :repülő nem elérhető
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nem alakíthatod át a vonatot...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nem lehet átalakítani a teherautót...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nem alakíthatod át a hajót...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nem alakíthatod át a repülőgépet...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :Nem alakíthatod át a vonatot...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Nem lehet átalakítani a teherautót...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :Nem alakíthatod át a hajót...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Nem alakíthatod át a repülőgépet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nem nevezheted át a vonatot...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :Nem nevezheted át a vonatot...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Nem nevezheted át a közúti járművet...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :Nem nevezheted át a hajót...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Nem nevezheted át a repülőgépet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nem indíthatod el vagy állíthatod meg a vonatot...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nem indíthatod el vagy állíthatod meg a közúti járművet...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nem indíthatod el vagy állíthatod meg a hajót...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nem indíthatod el vagy állíthatod meg a repülőgépet...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Nem indíthatod el vagy állíthatod meg a vonatot...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Nem indíthatod el vagy állíthatod meg a közúti járművet...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Nem indíthatod el vagy állíthatod meg a hajót...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Nem indíthatod el vagy állíthatod meg a repülőgépet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nem küldheted a vonatot a járműtelepre...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nem küldheted a járművet a garázsba...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nem küldheted a hajót a dokkba...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nem küldheted a repülőgépet a hangárba...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Nem küldheted a vonatot a járműtelepre...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Nem küldheted a járművet a garázsba...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Nem küldheted a hajót a dokkba...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Nem küldheted a repülőgépet a hangárba...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :Nem veheted meg a vasúti járművet...
@@ -5480,22 +5480,22 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :Nem veheted meg
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Nem veheted meg a repülőgépet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nem változtathatod meg a márkanevet...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Nem változtathatod meg a márkanevet...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Nem változtathatod meg a márkanevet...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nem változtathatod meg a márkanevet...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Nem változtathatod meg a márkanevet...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Nem változtathatod meg a márkanevet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Nem adhatod el a vasúti járművet...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nem adhatod el a közúti járművet...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nem adhatod el a hajót...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nem adhatod el a repülőgépet...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Nem adhatod el a vasúti járművet...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Nem adhatod el a közúti járművet...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Nem adhatod el a hajót...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Nem adhatod el a repülőgépet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Nem adható el minden vasúti jármű...
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Nem adható el minden gépjármű...
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Nem adható el minden hajó...
-STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Nem adható el minden repülő...
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Nem adható el minden vasúti jármű...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Nem adható el minden gépjármű...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Nem adható el minden hajó...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Nem adható el minden repülő...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Nem lehet automatikusan cserélni vasúti járműveket...
@@ -5504,79 +5504,79 @@ STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Nem lehet autom
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Nem lehet automatikusan cserélni repülőt...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :túl sok jármű van a játékban
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nem változtathatod meg a javítási időközt...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :Nem változtathatod meg a javítási időközt...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... jármű megsemmisült
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :jármű megsemmisült
 
-STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... nem minden jármű egyforma
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :nem minden jármű egyforma
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Egyáltalán nincsenek elérhető járművek
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Változtasd meg a NewGRF konfigurációdat!
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Még nincsenek elérhető járművek
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Indíts új játékot {DATE_SHORT} után, vagy használj olyan NewGRF-et, ami tartalmaz megfelelően korai járműveket!
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Egyáltalán nincsenek elérhető járművek
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :Változtasd meg a NewGRF konfigurációdat
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Még nincsenek elérhető járművek
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Indíts új játékot {DATE_SHORT} után, vagy használj olyan NewGRF-et, ami tartalmaz megfelelően korai járműveket!
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nincs városban építhető út-típus
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Saját NewGRF konfiguráció módosítása
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Még nem érhető el városban építhető úttípus
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Indítson új játékot {DATE_SHORT} után, vagy használjon olyan NewGRF-et, amely korai városépítési úttípusokat biztosít
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Nincs városban építhető út-típus
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Saját NewGRF konfiguráció módosítása
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Még nem érhető el városban építhető úttípus
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Indítson új játékot {DATE_SHORT} után, vagy használjon olyan NewGRF-et, amely korai városépítési úttípusokat biztosít
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nem haladhatja meg a vonat a megállj jelzést...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nem fordíthatod meg a vonatot...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Nincs vontatási energia
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :Nem haladhatja meg a vonat a megállj jelzést...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :Nem fordíthatod meg a vonatot...
+STR_ERROR_TRAIN_START_NO_POWER                                  :nincs vontatási energia
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}A közúti jármű nem tud megfordulni...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :A közúti jármű nem tud megfordulni...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}... a levegőben van
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :a levegőben van
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Nincs több hely új utasításnak
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :nincs több hely új utasításnak
 STR_ERROR_TOO_MANY_ORDERS                                       :túl sok az utasítás
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nem adhatsz meg új célpontot...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nem törölheted ezt a célpontot...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nem módosíthatod ezt a célpontot...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Utasítás mozgatása nem lehetséges...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nem lehet átugrani a jelenlegi utasítást...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nem lehet a kiválasztott utasításra ugrani...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... a jármű nem tud az összes állomásra eljutni
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Nem adhatsz meg új célpontot...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Nem törölheted ezt a célpontot...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :Nem módosíthatod ez utasítást...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Utasítás mozgatása nem lehetséges...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :Nem lehet átugrani a jelenlegi utasítást...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :Nem lehet a kiválasztott utasításra ugrani...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :a jármű nem tud az összes állomásra eljutni
 STR_ERROR_CAN_T_ADD_ORDER                                       :a jármű nem tud a megadott állomásra eljutni
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra eljutni
-STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... nem minden járműnek ugyanaz az utasításlistája
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... nem minden jármű osztja meg az utasításlistáját
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :nem minden járműnek ugyanaz az utasításlistája
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :nem minden jármű osztja meg az utasításlistáját
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nem lehet megosztani a menetrendet...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Nem lehet megosztani a menetrendet...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Nem lehet befejezni a menetrend megosztását...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Nem lehet másolni a menetrendet...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... túl távol van az előző céltól
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... a repülőgépnek kicsi a hatótávolsága
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :túl messze van az előző céltól
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :repülőgépnek kicsi a hatótávolsága
 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :Nem található vasútállomás
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}Nem található buszmegálló
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Nem található teherautó-állomás
-STR_ERROR_NO_DOCK                                               :{WHITE}Kikötő nem található
-STR_ERROR_NO_AIRPORT                                            :{WHITE}Nem található repülőtér/Helikopter-leszálló
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Nem található megálló kompatibilis úttípussal
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Nem található megálló kompatibilis villamos-típussal
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Nincsenek csuklós járművek számára kialakított megállóhelyek.{}Csuklós járművek számára áthaladó megállók szükségesek
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Ez a gép nem tud leszállni ezen a helikopter-leszállón
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Ez a helikopter nem tud leszállni ezen a repülőtéren
+STR_ERROR_NO_BUS_STATION                                        :Nem található buszmegálló
+STR_ERROR_NO_TRUCK_STATION                                      :Nem található teherautó-állomás
+STR_ERROR_NO_DOCK                                               :Kikötő nem található
+STR_ERROR_NO_AIRPORT                                            :Nem található repülőtér/Helikopter-leszálló
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Nem található megálló kompatibilis úttípussal
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Nem található megálló kompatibilis villamos-típussal
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Nincsenek csuklós járművek számára kialakított megállóhelyek.{}Csuklós járművek számára áthaladó megállók szükségesek, nem öböl megállók
+STR_ERROR_AIRPORT_NO_PLANES                                     :Ez a gép nem tud leszállni ezen a helikopter-leszállón
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Ez a helikopter nem tud leszállni ezen a repülőtéren
 STR_ERROR_NO_RAIL_WAYPOINT                                      :Nem található vasúti ellenőrző pont
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Nem található útpont
-STR_ERROR_NO_BUOY                                               :{WHITE}Nem található bója
+STR_ERROR_NO_ROAD_WAYPOINT                                      :Nem található útpont
+STR_ERROR_NO_BUOY                                               :Nem található bója
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}A jármű nem időzíthető
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}A járművek csak az állomáson várakozhatnak
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ez a jármű nem áll meg ezen az állomáson
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... menetrend befejezetlen
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... a menetrend még nincs megkezdve
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :A jármű nem időzíthető...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :A járművek csak az állomásokon várakozhatnak
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :ez a jármű nem áll meg ezen az állomáson
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :menetrend befejezetlen
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :a menetrend még nincs elkezdve
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :túl sok a felirat
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nem rakhatsz ide feliratot...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nem változtathatod meg a feliratot...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}A felirat nem törölhető...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :Nem rakhatsz ide feliratot...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :Nem változtathatod meg a feliratot...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :A felirat nem törölhető...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1

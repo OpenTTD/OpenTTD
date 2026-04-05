@@ -27,6 +27,12 @@ public:
 	std::shared_ptr<TCPConnecter> connecter{}; ///< Connecter instance.
 	bool connect_started = false;      ///< Whether we started the connection.
 
+	/**
+	 * Create this handler.
+	 * @param token The unique token of the connection.
+	 * @param tracking_number Tracking number for the connection, from the TURN server.
+	 * @param connection_string The address to connect to.
+	 */
 	ClientNetworkTurnSocketHandler(std::string_view token, uint8_t tracking_number, std::string_view connection_string) : token(token), tracking_number(tracking_number), connection_string(connection_string) {}
 
 	NetworkRecvStatus CloseConnection(bool error = true) override;

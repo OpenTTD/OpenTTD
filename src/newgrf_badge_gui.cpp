@@ -203,6 +203,17 @@ public:
 		if (dim.width > 0) dim.width -= WidgetDimensions::scaled.hsep_normal;
 	}
 
+	/** @copydoc DropDownListItem::FilterText */
+	void FilterText(StringFilter &string_filter) const override
+	{
+		for (const BadgeID &badge_index : this->badges) {
+			const Badge *badge = GetBadge(badge_index);
+			if (badge->name == STR_NULL) continue;
+			string_filter.AddLine(GetString(badge->name));
+		}
+		this->TBase::FilterText(string_filter);
+	}
+
 	uint Height() const override
 	{
 		return std::max<uint>(this->dim.height, this->TBase::Height());

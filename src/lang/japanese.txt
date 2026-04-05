@@ -2305,15 +2305,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}あな�
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES}ダウンロード済
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{1:BYTES}中、{0:BYTES}ダウンロード済
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 接続中
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 認証中
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 待機中
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 地図をダウンロード中
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) データ処理中
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 登録中
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}ゲーム情報を読み込み中
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社情報を読み込み中
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}接続を解除
 
@@ -4206,7 +4204,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量: 
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG}) {BLACK}最低パフォーマンス: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度: {LTBLUE}{COMMA}%　{BLACK}点検後の故障数: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}収容能力: {LTBLUE}なし{STRING}

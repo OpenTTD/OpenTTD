@@ -146,11 +146,12 @@ public:
 	 *   given distance within the specified time.
 	 * @param cargo_type The cargo to transport.
 	 * @pre ScriptCargo::IsValidCargo(cargo_type).
-	 * @param distance The distance the cargo travels from begin to end.
+	 * @param distance The manhattan distance in tiles the cargo travels.
 	 *                 The value will be clamped to 0 .. MAX(uint32_t).
-	 * @param days_in_transit Amount of (game) days the cargo is in transit.
-	 *                        The max value of this variable is 637. Any value higher returns the same as 637 would.
+	 * @param days_in_transit Amount of economy-days the cargo is in transit.
+	 *                        The max value of this variable is 163838. Any value higher returns the same as 163838 would.
 	 * @return The amount of money that would be earned by this trip.
+	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetCargoIncome(CargoType cargo_type, SQInteger distance, SQInteger days_in_transit);
 

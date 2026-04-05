@@ -795,7 +795,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}सर�
 # Network connecting window
 
 
-###length 8
+###length 6
 
 
 
