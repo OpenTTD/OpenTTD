@@ -126,15 +126,15 @@ std::optional<std::string> GetClipboardContents()
  */
 void CocoaSetApplicationBundleDir()
 {
-	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+	extern EnumClassIndexContainer<std::array<std::string, to_underlying(Searchpath::End)>, Searchpath> _searchpaths;
 
 	char tmp[MAXPATHLEN];
 	CFAutoRelease<CFURLRef> url(CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle()));
 	if (CFURLGetFileSystemRepresentation(url.get(), true, (unsigned char *)tmp, MAXPATHLEN)) {
-		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = tmp;
-		AppendPathSeparator(_searchpaths[SP_APPLICATION_BUNDLE_DIR]);
+		_searchpaths[Searchpath::ApplicationBundleDir] = tmp;
+		AppendPathSeparator(_searchpaths[Searchpath::ApplicationBundleDir]);
 	} else {
-		_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
+		_searchpaths[Searchpath::ApplicationBundleDir].clear();
 	}
 }
 
