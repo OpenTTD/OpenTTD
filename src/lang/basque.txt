@@ -1402,11 +1402,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrolatu sagu
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Saguaren gurpilaren eginkizuna: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Gaitu mapan zehar mugitzea bi dimentsiotako sagu gurpilekin
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Mapari zoom egin
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mapa mugitu
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Itzalita
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Mugitzea
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teklatu pantaila aktibatu: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Aukeratu nola irekiko den teklatu pantaila textuak sartzeko. Aukera hau teklatua ez duten aparatuentzat da

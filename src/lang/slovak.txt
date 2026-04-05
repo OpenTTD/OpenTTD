@@ -1736,11 +1736,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Nastavte citliv
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcia rolovacieho kolieska myši: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Povolí posúvanie pomocou dvoj-dimenzionálnych kolečiek myši
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Priblížovať mapu
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Posúvať pohľad
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Vypnuté
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Posúvanie
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klávesnica na obrazovke: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vyberte spôsob, ktorým chcete otvárať klávesnicu na obrazovke, ktorou môžete vpisovať hodnoty do textových polí ukazovacím zariadením. Mienené pre malé zariadenia bez klávesnice

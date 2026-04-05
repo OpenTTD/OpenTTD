@@ -1722,11 +1722,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Määritä hiir
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Hiiren rullan toiminta: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Salli näkymän siirtäminen kaksiulotteisilla hiiren rullilla
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :kartan lähentäminen/loitontaminen
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :kartan vieritys
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :ei käytössä
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Vieritys
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Vieritys (Kosketuslevy)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Vieritys ja DragZoom
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Virtuaalinäppäimistö: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Valitse tapa, jolla virtuaalinäppäimistö avataan syötettäessä tekstiä kun käytössä on ainoastaan osoitinlaite. Tämä on tarkoitettu pienille laitteille, joissa ei ole fyysistä näppäimistöä

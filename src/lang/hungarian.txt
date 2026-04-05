@@ -1786,11 +1786,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Egérgörgős m
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Egérgörgő funkció: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Két dimenziós egérgörgővel történő mozgatás engedélyezése
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Térkép nagyítás
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Térkép mozgatás
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Ki
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Görgetés
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Görgetés (Érintőpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Görgetés és DragZoom
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Képernyőbillentyűzet: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Válaszd ki a képernyűbillentyűzet ablak megnyitásának módját, hogy csak mutatóeszközzel is be tudj íni szöveget vagy számot. Ez a billentyűzet nélküli játéknál hasznos.

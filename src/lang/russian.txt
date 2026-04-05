@@ -1873,11 +1873,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Настрой�
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Использовать колесо прокрутки: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Можно настроить смещение обзора с помощью качающегося колеса прокрутки
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :для масштабирования
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :для смещения обзора
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не использовать
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Прокрутка
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Прокрутка (Тачпад)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Прокрутка и жест масштабирования
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Экранная клавиатура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Выберите способ открытия экранной клавиатуры для ввода текста с помощью указателя. Эта настройка предназначена для мобильных устройств, не имеющих клавиатуры.

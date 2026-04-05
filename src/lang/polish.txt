@@ -2102,11 +2102,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrola czuło
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcja kółka myszy: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Określ funkcję przewijania za pomocą dwuwymiarowych kółek myszy
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Powiększ widok
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Przesuń widok
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Wył.
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Przesuwanie
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Przesuwanie (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Przesuwanie i DragZoom
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klawiatura ekranowa: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wybierz metodę włączania klawiatury ekranowej do wprowadzania tekstu do pól tekstowych używając tylko urządzenia wskazującego. Jest to dedykowane dla małych urządzeń bez klawiatury

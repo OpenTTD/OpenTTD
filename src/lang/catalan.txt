@@ -1723,11 +1723,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla la sen
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funció de la rodeta del ratolí: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activa el desplaçament en les rodetes del ratolí de dues dimensions
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mou el mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Inactiu
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Desplaçament (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Desplaçament i Zoom tàctil
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclat en pantalla: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecciona el mètode per obrir el teclat en pantalla per introduir text als quadres de text de manera que només cal utilitzar el dispositiu senyalador. Això està pensat pels petits dispositius sense teclat físic

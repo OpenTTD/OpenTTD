@@ -1729,11 +1729,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlla la se
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funzione della rotellina: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Abilita lo scorrimento con le rotelline del mouse a due assi
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom mappa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scorrimento mappa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nessuna
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning e Zoom tattile
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastiera su schermo: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Seleziona il metodo di apertura della tastiera su schermo per l'inserimento di testo col solo uso del dispositivo di puntamento. Adatto per i dispositivi portatili, privi di tastiera fisica

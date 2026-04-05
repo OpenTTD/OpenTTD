@@ -1457,11 +1457,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroleer die 
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funksie van rolwiel: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Aktiveer "scrolling" met twee-dimensieële muis-wiele
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoem kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rol kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Af
 STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panoramiese beweging
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panoramies & Sleep-zoem
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skerm-sleutelbord: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Kies hoe om die skerm-sleutelbord te vertoon. Hierdie opsie is vir toestelle wat nie 'n fisiese sleutelbord het nie soos tabletrekenaars.

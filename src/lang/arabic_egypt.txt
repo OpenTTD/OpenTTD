@@ -1418,11 +1418,12 @@ STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :تفضيل ال
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعة تحريك الخريطة: {STRING}
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :وظيفة عجلة التحريك: {STRING}
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :تصغير تكبير الخريطة
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :تحريك الخريطة
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :عدم استخدام
 STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :تحريك الخريطة
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :تحريك وزوم الخريطة
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :كيبورد على الشاشة: {STRING}
 ###length 4

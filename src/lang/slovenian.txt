@@ -1588,11 +1588,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrola občut
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcija kolesca miške: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Omogoči pomik z dvodimenzionalnimi kolesci miške
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Približaj zemljevid
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Premikaj zemljevid
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Izklopljeno
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Pomikanje
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tipkovnica na zaslonu: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Izberi način odpiranja tipkovnice na zaslonu za vpis teksta z miško

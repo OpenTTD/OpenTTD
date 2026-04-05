@@ -1721,11 +1721,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrollera kä
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Mushjulsfunktion: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Möjliggör skrollning med tvådimensionella mushjul
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zooma kartan
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scrolla kartan
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Avstängd
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorering
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorering (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panorering och DragZoom
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skärmtangentbord: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Ange metod för hur skärmtangentbordet öppnas för inmatning av text i textrutor. Skärmtangentbordet används med hjälp mus, touch, eller andra pek-indata-enheter och är till för små enheter utan fysiskt tangentbord

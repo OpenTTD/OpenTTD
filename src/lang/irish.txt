@@ -1528,11 +1528,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Rialaigh íogai
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Feidhm an rotha scrollaithe: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Cumasaigh scrollú le rothaí luchóige déthoiseacha
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zúmáil an léarscáil
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scrollaigh an léarscáil
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :As
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Méarchlár scáileáin: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Roghnaigh an modh a úsáidfear chun an méarchlár scáileáin a oscailt chun téacs a chlóscríobh i mboscaí téacs gan ach an gléas pointeála a úsáid. Tá an socrú seo le húsáid i gcás gléasanna beaga nach bhfuil méarchlár dá gcuid féin acu

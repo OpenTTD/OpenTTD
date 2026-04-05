@@ -1545,11 +1545,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :வரைபட
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :சுட்டி-சக்கர ஸ்க்ரோலிங் உணர்திறனைக் கட்டுப்படுத்தவும்
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :சுருள் சக்கரத்தின் செயல்பாடு: {STRING}
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :படத்தினை உள்நோக்கு
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :வரைபடத்தினை உருட்டு
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :அணை
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :பேனிங்
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :திரை தட்டச்சுப்பலகை: {STRING}
 ###length 4

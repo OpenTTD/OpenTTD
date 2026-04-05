@@ -1376,11 +1376,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Stýr viðkvæm
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funka av skrullhjóli: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Gilda skrulling við tvey-dimensionalum músa hjólum
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Suma kort
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skrulla kort
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Sløkt
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorering
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Knappaborð á skermi: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vel háttin at lata knappaborði á skerminum upp fyri at skriva tekst inn í ritkassar einans við peiki tóli. Hetta er ætlað til smærri tól uttan nakað ítøkuligt knappaborð

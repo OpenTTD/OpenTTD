@@ -1588,11 +1588,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :マウスホイ
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :マウスホイールの動作：{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :マウスホイールを使ったときのゲーム動作を決めます
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :ズームイン・ズームアウト
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :スクロール
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :切
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :スクロール
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :スクロール (タッチパッド)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :スクロール & ドラッグズーム
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :オンスクリーンキーボード: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :テキストボックス入力時にスクリーンキーボードを開く方法を決めます。この機能は実際のキーボードのない小型デバイスを意図して設けられたものです

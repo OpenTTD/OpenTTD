@@ -713,7 +713,8 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
 
 ###length 4
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Сӳнтер
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Паннорамалани
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 ###length 4
 

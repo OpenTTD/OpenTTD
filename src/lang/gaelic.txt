@@ -1638,11 +1638,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Tagh dè cho lu
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Giùlan a' chuibhle-sgrolaidh: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Cuir sgroladh an comas le cuibhle-sgrolaidh luchaige aig a bheil dà dhimeinsean
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Sùm am mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Sgrolaich am mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Na dèan dad
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Meur-chlàr air an sgrìn: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tagh an dòigh sa thèid meur-chlàr fhosgladh air an sgrìn gus teacsa a chur a-steach leis an tomhaire a-mhàin. Tha seo airson uidheaman beaga gun mheur-chlàr aca fhèin

@@ -1375,11 +1375,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Stjórnaðu næ
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Virkni skrunhjóls: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Til að nýta skrunhjól á músum sem virka bæði upp/niður og til hliðanna
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Víkka/þrengja sjónarhorn
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skruna á korti
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Engin
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Hliðrun
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Lyklaborð á skjá: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Veldu hvernig á að fá fram lyklaborð á skjáinn þar sem hægt er að skrifa texta með að ýta á takana. Þetta er hugsað fyrir lítil tæki sem eru án lyklaborðs

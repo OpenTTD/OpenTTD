@@ -1808,11 +1808,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Určuje citlivo
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Chování skrolovacího tlačítka: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Povoluje posouvání s dvoudimenzionálním kolečkem na myši
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :zoomování mapy
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :pohyb po mapě
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :nic
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Posouvání
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Posouvání (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Posouvání a Gesta Zoomu
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klávesnice na obrazovce: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vyber způsob pro zobrazení klávesnice na obrazovce pro zadání textu do textových polí pouze za pomoci ukazovacího zařízení. To znamená pro malá zařízení bez HW klávesnice

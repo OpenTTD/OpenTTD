@@ -1715,11 +1715,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrolléier d
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Fonktioun vum Scrollrad: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Schalt d'Scrollen mat zwee-dimensionalen Mausrieder un
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaart Zoomen
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaart Scrollen
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Onscreen-Tastatur: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wiel d'Method fir d'Onscreentastatur unzeman fir Text an eng Textbox ze schreiwen andems just eng Maus benotzt gëtt. Dëst as geduet fir kleng Geräter ouni richteg Tastatur

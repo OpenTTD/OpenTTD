@@ -1715,11 +1715,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Gevoeligheid va
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Functie van muiswiel: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Verplaatsen inschakelen met tweedimensionale muiswieltjes
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaart vergroten-verkleinen
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaart verplaatsen
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Uit
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Toetsenbord op scherm: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecteer de methode om het toetsenbord op het scherm te openen voor tekst invoeren in bewerkingsvensters met alleen het aanwijsapparaat. Dit is bedoeld voor kleine apparaten zonder toetsenbord.

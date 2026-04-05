@@ -1721,11 +1721,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :本选项控制
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :鼠标滚轮的作用：{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :可用二维鼠标滚轮进行屏幕滚动
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :缩放地图
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :滚动地图
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :关闭
 STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :平移 (触摸板)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :平移 & 缩放 (触摸板)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :开启屏幕键盘：{STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :当输入文本或编辑框里是否使用屏幕键盘。适用于没有物理键盘的设备

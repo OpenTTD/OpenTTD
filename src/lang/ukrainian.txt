@@ -1852,11 +1852,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Налашту�
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Функція колеса миші: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Налаштування функції, що виконує колесо миші.
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :масштабування
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :прокрутка карти
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :немає
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Панорамування
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Панорамування (Тачпад)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Панорамування та жест масштабування
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Екранна клавіатура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Виберіть спосіб відкриття екранної клавіатури для введення тексту у поля тільки за допомогою вказівного пристрою. Це призначено для невеликих пристроїв без фактичної клавіатури

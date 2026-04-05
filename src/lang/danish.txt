@@ -1721,11 +1721,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Styr følsomhed
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Rulleknappens funktion: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Aktiver rulning med to-dimensionelle muse-hjul
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kort
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rul kort
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Slået fra
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorering
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panorering (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panorering og DragZoom
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tillad skærmtastatur: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vælg hvordan skærmtastature åbnes ved indtasting i redigeringfelter kun med markør. Dette er beregnet til små enheder uden egentlig tastatur

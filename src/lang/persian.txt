@@ -1455,11 +1455,12 @@ STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :ارتباط د
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعت حرکت نقشه با چرخاندن غلطک ماوس: {STRING}
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :عمل غلطک ماوس: {STRING}
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :بزرگنمایی نقشه
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :جابجا کردن نقشه
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :خاموش
-STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :جابجایی
+STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :Panning (Touchpad)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :Panning & DragZoom (Touchpad)
 
 ###length 4
 

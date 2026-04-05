@@ -1722,11 +1722,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :控制系統偵
 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :滑鼠滾輪作用：{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :啟用以二維滑鼠滾輪捲動的支援功能。
-###length 4
+###length 5
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :放大地圖
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :捲動地圖
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :關閉
 STR_CONFIG_SETTING_SCROLLWHEEL_TOUCHPAD                         :平移 (觸控板)
+STR_CONFIG_SETTING_SCROLLWHEEL_CHROMEPAD                        :平移 & 縮放 (觸控板)
 
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :螢幕鍵盤開啟方式：{STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :選擇開啟螢幕鍵盤的方式。螢幕鍵盤方便使用定位裝置輸入文字。此設定專為沒有實體鍵盤的裝置而設。
