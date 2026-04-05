@@ -397,10 +397,10 @@ public:
 	SaveLoadWindow(WindowDesc &desc, AbstractFileType abstract_filetype, SaveLoadOperation fop)
 			: Window(desc), filename_editbox(64), abstract_filetype(abstract_filetype), fop(fop), filter_editbox(EDITBOX_MAX_SIZE)
 	{
-		assert(this->fop == SLO_SAVE || this->fop == SLO_LOAD);
+		assert(this->fop == SaveLoadOperation::Save || this->fop == SaveLoadOperation::Load);
 
 		/* For saving, construct an initial file name. */
-		if (this->fop == SLO_SAVE) {
+		if (this->fop == SaveLoadOperation::Save) {
 			switch (this->abstract_filetype) {
 				case AbstractFileType::Savegame:
 					this->GenerateFileName();
@@ -420,7 +420,7 @@ public:
 		this->filename_editbox.ok_button = WID_SL_SAVE_GAME;
 
 		this->CreateNestedTree();
-		if (this->fop == SLO_LOAD && this->abstract_filetype == AbstractFileType::Savegame) {
+		if (this->fop == SaveLoadOperation::Load && this->abstract_filetype == AbstractFileType::Savegame) {
 			this->GetWidget<NWidgetStacked>(WID_SL_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		}
 
@@ -428,15 +428,15 @@ public:
 		StringID caption_string;
 		switch (this->abstract_filetype) {
 			case AbstractFileType::Savegame:
-				caption_string = (this->fop == SLO_SAVE) ? STR_SAVELOAD_SAVE_CAPTION : STR_SAVELOAD_LOAD_CAPTION;
+				caption_string = (this->fop == SaveLoadOperation::Save) ? STR_SAVELOAD_SAVE_CAPTION : STR_SAVELOAD_LOAD_CAPTION;
 				break;
 
 			case AbstractFileType::Scenario:
-				caption_string = (this->fop == SLO_SAVE) ? STR_SAVELOAD_SAVE_SCENARIO : STR_SAVELOAD_LOAD_SCENARIO;
+				caption_string = (this->fop == SaveLoadOperation::Save) ? STR_SAVELOAD_SAVE_SCENARIO : STR_SAVELOAD_LOAD_SCENARIO;
 				break;
 
 			case AbstractFileType::Heightmap:
-				caption_string = (this->fop == SLO_SAVE) ? STR_SAVELOAD_SAVE_HEIGHTMAP : STR_SAVELOAD_LOAD_HEIGHTMAP;
+				caption_string = (this->fop == SaveLoadOperation::Save) ? STR_SAVELOAD_SAVE_HEIGHTMAP : STR_SAVELOAD_LOAD_HEIGHTMAP;
 				break;
 
 			case AbstractFileType::TownData:
@@ -487,7 +487,7 @@ public:
 		}
 
 		switch (this->fop) {
-			case SLO_SAVE:
+			case SaveLoadOperation::Save:
 				/* Focus the edit box by default in the save window */
 				this->SetFocusedWidget(WID_SL_SAVE_OSK_TITLE);
 				break;
@@ -619,7 +619,7 @@ public:
 			}
 
 			/* Hide the NewGRF stuff when saving. We also hide the button. */
-			if (this->fop == SLO_LOAD && (this->abstract_filetype == AbstractFileType::Savegame || this->abstract_filetype == AbstractFileType::Scenario)) {
+			if (this->fop == SaveLoadOperation::Load && (this->abstract_filetype == AbstractFileType::Savegame || this->abstract_filetype == AbstractFileType::Scenario)) {
 				tr.top += WidgetDimensions::scaled.vsep_normal;
 				if (tr.top > tr.bottom) return;
 
@@ -759,19 +759,19 @@ public:
 
 						if (file->type.detailed == DetailedFileType::GameFile) {
 							/* Other detailed file types cannot be checked before. */
-							SaveOrLoad(file->name, SLO_CHECK, DetailedFileType::GameFile, NO_DIRECTORY, false);
+							SaveOrLoad(file->name, SaveLoadOperation::Check, DetailedFileType::GameFile, NO_DIRECTORY, false);
 						}
 
 						this->InvalidateData(SLIWD_SELECTION_CHANGES);
 					}
-					if (this->fop == SLO_SAVE) {
+					if (this->fop == SaveLoadOperation::Save) {
 						/* Copy clicked name to editbox */
 						this->filename_editbox.text.Assign(file->title.GetDecodedString());
 						this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
 					}
 				} else if (!_load_check_data.HasErrors()) {
 					this->selected = file;
-					if (this->fop == SLO_LOAD) {
+					if (this->fop == SaveLoadOperation::Load) {
 						if (this->abstract_filetype == AbstractFileType::Savegame || this->abstract_filetype == AbstractFileType::Scenario || this->abstract_filetype == AbstractFileType::TownData) {
 							this->OnClick(pt, WID_SL_LOAD_BUTTON, 1);
 						} else {
@@ -790,7 +790,7 @@ public:
 				if (!_network_available) {
 					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WL_ERROR);
 				} else {
-					assert(this->fop == SLO_LOAD);
+					assert(this->fop == SaveLoadOperation::Load);
 					switch (this->abstract_filetype) {
 						default: NOT_REACHED();
 						case AbstractFileType::Scenario: ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_SCENARIO); break;
@@ -841,7 +841,7 @@ public:
 	void OnTimeout() override
 	{
 		/* Widgets WID_SL_DELETE_SELECTION and WID_SL_SAVE_GAME only exist when saving to a file. */
-		if (this->fop != SLO_SAVE) return;
+		if (this->fop != SaveLoadOperation::Save) return;
 
 		if (this->IsWidgetLowered(WID_SL_DELETE_SELECTION)) { // Delete button clicked
 			ShowQuery(GetEncodedString(STR_SAVELOAD_DELETE_TITLE), GetEncodedString(STR_SAVELOAD_DELETE_WARNING),
@@ -932,9 +932,9 @@ public:
 				/* Selection changes */
 				if (!gui_scope) break;
 
-				if (this->fop == SLO_SAVE) this->SetWidgetDisabledState(WID_SL_DELETE_SELECTION, this->selected == nullptr);
+				if (this->fop == SaveLoadOperation::Save) this->SetWidgetDisabledState(WID_SL_DELETE_SELECTION, this->selected == nullptr);
 
-				if (this->fop != SLO_LOAD) break;
+				if (this->fop != SaveLoadOperation::Load) break;
 
 				switch (this->abstract_filetype) {
 					case AbstractFileType::Heightmap:
@@ -1021,7 +1021,7 @@ void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fo
 {
 	CloseWindowById(WC_SAVELOAD, 0);
 
-	if (fop == SLO_SAVE) {
+	if (fop == SaveLoadOperation::Save) {
 		new SaveLoadWindow(_save_dialog_desc, abstract_filetype, fop);
 	} else {
 		/* Dialogue for loading a file. */

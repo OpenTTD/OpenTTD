@@ -51,14 +51,14 @@ bool FiosItemModificationDateSorter(const FiosItem &a, const FiosItem &b)
 /**
  * Construct a file list with the given kind of files, for the stated purpose.
  * @param abstract_filetype Kind of files to collect.
- * @param fop Purpose of the collection, either #SLO_LOAD or #SLO_SAVE.
+ * @param fop Purpose of the collection, either #SaveLoadOperation::Load or #SaveLoadOperation::Save.
  * @param show_dirs Whether to show directories.
  */
 void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop, bool show_dirs)
 {
 	this->clear();
 
-	assert(fop == SLO_LOAD || fop == SLO_SAVE);
+	assert(fop == SaveLoadOperation::Load || fop == SaveLoadOperation::Save);
 	switch (abstract_filetype) {
 		case AbstractFileType::None:
 			break;
@@ -389,7 +389,7 @@ std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation 
 		return { FIOS_TYPE_FILE, GetFileTitle(file, SAVE_DIR) };
 	}
 
-	if (fop == SLO_LOAD) {
+	if (fop == SaveLoadOperation::Load) {
 		if (StrEqualsIgnoreCase(ext, ".ss1") || StrEqualsIgnoreCase(ext, ".sv1") ||
 				StrEqualsIgnoreCase(ext, ".sv2")) {
 			return { FIOS_TYPE_OLDFILE, GetOldSaveGameName(file) };
@@ -437,7 +437,7 @@ std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation 
 
 	}
 
-	if (fop == SLO_LOAD) {
+	if (fop == SaveLoadOperation::Load) {
 		if (StrEqualsIgnoreCase(ext, ".sv0") || StrEqualsIgnoreCase(ext, ".ss0")) {
 			return { FIOS_TYPE_OLD_SCENARIO, GetOldSaveGameName(file) };
 		}
@@ -463,7 +463,7 @@ void FiosGetScenarioList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
 	_fios_path = &(*fios_scn_path);
 
 	std::string base_path = FioFindDirectory(SCENARIO_DIR);
-	Subdirectory subdir = (fop == SLO_LOAD && base_path == *_fios_path) ? SCENARIO_DIR : NO_DIRECTORY;
+	Subdirectory subdir = (fop == SaveLoadOperation::Load && base_path == *_fios_path) ? SCENARIO_DIR : NO_DIRECTORY;
 	FiosGetFileList(fop, show_dirs, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
@@ -535,7 +535,7 @@ void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_
  */
 static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext)
 {
-	if (fop == SLO_LOAD) {
+	if (fop == SaveLoadOperation::Load) {
 		if (StrEqualsIgnoreCase(ext, ".json")) {
 			return { FIOS_TYPE_JSON, GetFileTitle(file, SAVE_DIR) };
 		}
@@ -705,7 +705,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 
 	/* Get the save list. */
 	FileList list;
-	FiosFileScanner scanner(SLO_SAVE, proc, list);
+	FiosFileScanner scanner(SaveLoadOperation::Save, proc, list);
 	scanner.Scan(".sav", *_autosave_path, false);
 
 	/* Find the number for the most recent save, if any. */

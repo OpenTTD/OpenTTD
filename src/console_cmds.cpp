@@ -110,7 +110,7 @@ public:
 	void ValidateFileList(bool force_reload = false)
 	{
 		if (force_reload || !this->file_list_valid) {
-			this->BuildFileList(this->abstract_filetype, SLO_LOAD, this->show_dirs);
+			this->BuildFileList(this->abstract_filetype, SaveLoadOperation::Load, this->show_dirs);
 			this->file_list_valid = true;
 		}
 	}
@@ -425,7 +425,7 @@ static bool ConSave(std::span<std::string_view> argv)
 		std::string filename = fmt::format("{}.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, SLO_SAVE, DetailedFileType::GameFile, SAVE_DIR) != SL_OK) {
+		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, SAVE_DIR) != SL_OK) {
 			IConsolePrint(CC_ERROR, "Saving map failed.");
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);

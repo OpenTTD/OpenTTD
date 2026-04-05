@@ -49,12 +49,12 @@ enum class DetailedFileType : uint8_t {
 };
 
 /** Operation performed on the file. */
-enum SaveLoadOperation : uint8_t {
-	SLO_CHECK,   ///< Load file for checking and/or preview.
-	SLO_LOAD,    ///< File is being loaded.
-	SLO_SAVE,    ///< File is being saved.
+enum class SaveLoadOperation : uint8_t {
+	Check, ///< Load file for checking and/or preview.
+	Load, ///< File is being loaded.
+	Save, ///< File is being saved.
 
-	SLO_INVALID, ///< Unknown file operation.
+	Invalid, ///< Unknown file operation.
 };
 
 /**
