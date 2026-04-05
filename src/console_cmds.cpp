@@ -425,7 +425,7 @@ static bool ConSave(std::span<std::string_view> argv)
 		std::string filename = fmt::format("{}.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
+		if (SaveOrLoad(filename, SLO_SAVE, DetailedFileType::GameFile, SAVE_DIR) != SL_OK) {
 			IConsolePrint(CC_ERROR, "Saving map failed.");
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
@@ -627,9 +627,9 @@ static bool ConChangeDirectory(std::span<std::string_view> argv)
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
 		switch (item->type.detailed) {
-			case DFT_FIOS_DIR:
-			case DFT_FIOS_DRIVE:
-			case DFT_FIOS_PARENT:
+			case DetailedFileType::FiosDirectory:
+			case DetailedFileType::FiosDrive:
+			case DetailedFileType::FiosParent:
 				FiosBrowseTo(item);
 				break;
 			default: IConsolePrint(CC_ERROR, "{}: Not a directory.", file);

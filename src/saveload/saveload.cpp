@@ -3293,7 +3293,7 @@ SaveOrLoadResult LoadWithFilter(std::shared_ptr<LoadFilter> reader)
 SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded)
 {
 	/* An instance of saving is already active, so don't go saving again */
-	if (_sl.saveinprogress && fop == SLO_SAVE && dft == DFT_GAME_FILE && threaded) {
+	if (_sl.saveinprogress && fop == SLO_SAVE && dft == DetailedFileType::GameFile && threaded) {
 		/* if not an autosave, but a user action, show error message */
 		if (!_do_autosave) ShowErrorMessage(GetEncodedString(STR_ERROR_SAVE_STILL_IN_PROGRESS), {}, WL_ERROR);
 		return SL_OK;
@@ -3302,7 +3302,7 @@ SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, De
 
 	try {
 		/* Load a TTDLX or TTDPatch game */
-		if (fop == SLO_LOAD && dft == DFT_OLD_GAME_FILE) {
+		if (fop == SLO_LOAD && dft == DetailedFileType::OldGameFile) {
 			ResetSaveloadData();
 
 			InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
@@ -3325,7 +3325,7 @@ SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, De
 			return SL_OK;
 		}
 
-		assert(dft == DFT_GAME_FILE);
+		assert(dft == DetailedFileType::GameFile);
 		switch (fop) {
 			case SLO_CHECK:
 				_sl.action = SLA_LOAD_CHECK;
@@ -3391,7 +3391,7 @@ void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 	}
 
 	Debug(sl, 2, "Autosaving to '{}'", filename);
-	if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR) != SL_OK) {
+	if (SaveOrLoad(filename, SLO_SAVE, DetailedFileType::GameFile, AUTOSAVE_DIR) != SL_OK) {
 		ShowErrorMessage(GetEncodedString(STR_ERROR_AUTOSAVE_FAILED), {}, WL_ERROR);
 	}
 }
@@ -3400,7 +3400,7 @@ void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 /** Do a save when exiting the game (_settings_client.gui.autosave_on_exit) */
 void DoExitSave()
 {
-	SaveOrLoad("exit.sav", SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR);
+	SaveOrLoad("exit.sav", SLO_SAVE, DetailedFileType::GameFile, AUTOSAVE_DIR);
 }
 
 /**

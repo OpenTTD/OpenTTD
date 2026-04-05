@@ -303,19 +303,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_save_dialog_widgets 
 };
 
 /** Text colours of #DetailedFileType fios entries in the window. */
-static const TextColour _fios_colours[] = {
-	TC_LIGHT_BROWN,  // DFT_OLD_GAME_FILE
-	TC_ORANGE,       // DFT_GAME_FILE
-	TC_YELLOW,       // DFT_HEIGHTMAP_BMP
-	TC_ORANGE,       // DFT_HEIGHTMAP_PNG
-	TC_LIGHT_BROWN,  // DFT_TOWN_DATA_JSON
-	TC_LIGHT_BLUE,   // DFT_FIOS_DRIVE
-	TC_DARK_GREEN,   // DFT_FIOS_PARENT
-	TC_DARK_GREEN,   // DFT_FIOS_DIR
-	TC_ORANGE,       // DFT_FIOS_DIRECT
+static const EnumClassIndexContainer<std::array<TextColour, to_underlying(DetailedFileType::End)>, DetailedFileType> _fios_colours = {
+	TC_LIGHT_BROWN, // DetailedFileType::OldGameFile
+	TC_ORANGE, // DetailedFileType::GameFile
+	TC_YELLOW, // DetailedFileType::HeightmapBmp
+	TC_ORANGE, // DetailedFileType::HeightmapPng
+	TC_LIGHT_BROWN, // DetailedFileType::TownDataJson
+	TC_LIGHT_BLUE, // DetailedFileType::FiosDrive
+	TC_DARK_GREEN, // DetailedFileType::FiosParent
+	TC_DARK_GREEN, // DetailedFileType::FiosDirectory
+	TC_ORANGE, // DetailedFileType::FiosDirect
 };
-/* This should align with the DetailedFileType enum defined in fileio_type.h */
-static_assert(std::size(_fios_colours) == DFT_END);
 
 /**
  * Sort the collected list save games prior to displaying it in the save/load gui.
@@ -332,9 +330,9 @@ static void SortSaveGameList(FileList &file_list)
 	 */
 	for (const auto &item : file_list) {
 		switch (item.type.detailed) {
-			case DFT_FIOS_DIR:    sort_start++; break;
-			case DFT_FIOS_PARENT: sort_start++; break;
-			case DFT_FIOS_DRIVE:  sort_end++;   break;
+			case DetailedFileType::FiosDirectory: sort_start++; break;
+			case DetailedFileType::FiosParent: sort_start++; break;
+			case DetailedFileType::FiosDrive: sort_end++; break;
 			default: break;
 		}
 	}
@@ -759,9 +757,9 @@ public:
 						this->selected = file;
 						_load_check_data.Clear();
 
-						if (file->type.detailed == DFT_GAME_FILE) {
+						if (file->type.detailed == DetailedFileType::GameFile) {
 							/* Other detailed file types cannot be checked before. */
-							SaveOrLoad(file->name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
+							SaveOrLoad(file->name, SLO_CHECK, DetailedFileType::GameFile, NO_DIRECTORY, false);
 						}
 
 						this->InvalidateData(SLIWD_SELECTION_CHANGES);

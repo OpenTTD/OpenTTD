@@ -505,11 +505,11 @@ static bool ReadHeightMap(DetailedFileType dft, std::string_view filename, uint 
 			NOT_REACHED();
 
 #ifdef WITH_PNG
-		case DFT_HEIGHTMAP_PNG:
+		case DetailedFileType::HeightmapPng:
 			return ReadHeightmapPNG(filename, x, y, map);
 #endif /* WITH_PNG */
 
-		case DFT_HEIGHTMAP_BMP:
+		case DetailedFileType::HeightmapBmp:
 			return ReadHeightmapBMP(filename, x, y, map);
 	}
 }
