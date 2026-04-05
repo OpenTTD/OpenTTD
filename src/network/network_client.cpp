@@ -863,7 +863,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 	/* Set the abstract filetype. This is read during savegame load. */
 	_file_to_saveload.SetMode(FIOS_TYPE_FILE, SLO_LOAD);
 
-	bool load_success = SafeLoad({}, SLO_LOAD, DFT_GAME_FILE, GM_NORMAL, NO_DIRECTORY, this->savegame);
+	bool load_success = SafeLoad({}, SLO_LOAD, DetailedFileType::GameFile, GM_NORMAL, NO_DIRECTORY, this->savegame);
 	this->savegame = nullptr;
 
 	/* Long savegame loads shouldn't affect the lag calculation! */

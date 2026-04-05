@@ -232,7 +232,7 @@ bool CrashLog::WriteSavegame()
 		this->savegame_filename = this->CreateFileName(".sav");
 
 		/* Don't do a threaded saveload. */
-		return SaveOrLoad(this->savegame_filename, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY, false) == SL_OK;
+		return SaveOrLoad(this->savegame_filename, SLO_SAVE, DetailedFileType::GameFile, NO_DIRECTORY, false) == SL_OK;
 	} catch (...) {
 		return false;
 	}

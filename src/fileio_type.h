@@ -25,27 +25,27 @@ enum class AbstractFileType : uint8_t {
 };
 
 /** Kinds of files in each #AbstractFileType. */
-enum DetailedFileType : uint8_t {
+enum class DetailedFileType : uint8_t {
 	/* Save game and scenario files. */
-	DFT_OLD_GAME_FILE, ///< Old save game or scenario file.
-	DFT_GAME_FILE,     ///< Save game or scenario file.
+	OldGameFile, ///< Old save game or scenario file.
+	GameFile, ///< Save game or scenario file.
 
 	/* Heightmap files. */
-	DFT_HEIGHTMAP_BMP, ///< BMP file.
-	DFT_HEIGHTMAP_PNG, ///< PNG file.
+	HeightmapBmp, ///< BMP file.
+	HeightmapPng, ///< PNG file.
 
 	/* Town data files. */
-	DFT_TOWN_DATA_JSON,  ///< JSON file.
+	TownDataJson, ///< JSON file.
 
 	/* fios 'files' */
-	DFT_FIOS_DRIVE,  ///< A drive (letter) entry.
-	DFT_FIOS_PARENT, ///< A parent directory entry.
-	DFT_FIOS_DIR,    ///< A directory entry.
-	DFT_FIOS_DIRECT, ///< Direct filename.
+	FiosDrive, ///< A drive (letter) entry.
+	FiosParent, ///< A parent directory entry.
+	FiosDirectory, ///< A directory entry.
+	FiosDirect, ///< Direct filename.
 
-	DFT_END,         ///< End of this enum. Supports a compile time size check against _fios_colours in fios_gui.cpp
+	End, ///< End marker.
 
-	DFT_INVALID = 255, ///< Unknown or invalid file.
+	Invalid = 255, ///< Unknown or invalid file.
 };
 
 /** Operation performed on the file. */
@@ -67,20 +67,20 @@ struct FiosType {
 	constexpr bool operator==(const FiosType &) const noexcept = default;
 };
 
-constexpr FiosType FIOS_TYPE_DRIVE{AbstractFileType::None, DFT_FIOS_DRIVE};
-constexpr FiosType FIOS_TYPE_PARENT{AbstractFileType::None, DFT_FIOS_PARENT};
-constexpr FiosType FIOS_TYPE_DIR{AbstractFileType::None, DFT_FIOS_DIR};
-constexpr FiosType FIOS_TYPE_DIRECT{AbstractFileType::None, DFT_FIOS_DIRECT};
+constexpr FiosType FIOS_TYPE_DRIVE{AbstractFileType::None, DetailedFileType::FiosDrive};
+constexpr FiosType FIOS_TYPE_PARENT{AbstractFileType::None, DetailedFileType::FiosParent};
+constexpr FiosType FIOS_TYPE_DIR{AbstractFileType::None, DetailedFileType::FiosDirectory};
+constexpr FiosType FIOS_TYPE_DIRECT{AbstractFileType::None, DetailedFileType::FiosDirect};
 
-constexpr FiosType FIOS_TYPE_FILE{AbstractFileType::Savegame, DFT_GAME_FILE};
-constexpr FiosType FIOS_TYPE_OLDFILE{AbstractFileType::Savegame, DFT_OLD_GAME_FILE};
-constexpr FiosType FIOS_TYPE_SCENARIO{AbstractFileType::Scenario, DFT_GAME_FILE};
-constexpr FiosType FIOS_TYPE_OLD_SCENARIO{AbstractFileType::Scenario, DFT_OLD_GAME_FILE};
-constexpr FiosType FIOS_TYPE_PNG{AbstractFileType::Heightmap, DFT_HEIGHTMAP_PNG};
-constexpr FiosType FIOS_TYPE_BMP{AbstractFileType::Heightmap, DFT_HEIGHTMAP_BMP};
-constexpr FiosType FIOS_TYPE_JSON{AbstractFileType::TownData, DFT_TOWN_DATA_JSON};
+constexpr FiosType FIOS_TYPE_FILE{AbstractFileType::Savegame, DetailedFileType::GameFile};
+constexpr FiosType FIOS_TYPE_OLDFILE{AbstractFileType::Savegame, DetailedFileType::OldGameFile};
+constexpr FiosType FIOS_TYPE_SCENARIO{AbstractFileType::Scenario, DetailedFileType::GameFile};
+constexpr FiosType FIOS_TYPE_OLD_SCENARIO{AbstractFileType::Scenario, DetailedFileType::OldGameFile};
+constexpr FiosType FIOS_TYPE_PNG{AbstractFileType::Heightmap, DetailedFileType::HeightmapPng};
+constexpr FiosType FIOS_TYPE_BMP{AbstractFileType::Heightmap, DetailedFileType::HeightmapBmp};
+constexpr FiosType FIOS_TYPE_JSON{AbstractFileType::TownData, DetailedFileType::TownDataJson};
 
-constexpr FiosType FIOS_TYPE_INVALID{AbstractFileType::Invalid, DFT_INVALID};
+constexpr FiosType FIOS_TYPE_INVALID{AbstractFileType::Invalid, DetailedFileType::Invalid};
 
 /**
  * The different kinds of subdirectories OpenTTD uses

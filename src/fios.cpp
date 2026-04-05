@@ -133,17 +133,17 @@ std::string FiosGetCurrentPath()
 bool FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type.detailed) {
-		case DFT_FIOS_DRIVE:
+		case DetailedFileType::FiosDrive:
 #if defined(_WIN32)
 			assert(_fios_path != nullptr);
 			*_fios_path = std::string{ item->name, 0, 1 } + ":" PATHSEP;
 #endif
 			break;
 
-		case DFT_INVALID:
+		case DetailedFileType::Invalid:
 			break;
 
-		case DFT_FIOS_PARENT: {
+		case DetailedFileType::FiosParent: {
 			assert(_fios_path != nullptr);
 			auto s = _fios_path->find_last_of(PATHSEPCHAR);
 			if (s != std::string::npos && s != 0) {
@@ -157,13 +157,13 @@ bool FiosBrowseTo(const FiosItem *item)
 			break;
 		}
 
-		case DFT_FIOS_DIR:
+		case DetailedFileType::FiosDirectory:
 			assert(_fios_path != nullptr);
 			*_fios_path += item->name;
 			*_fios_path += PATHSEP;
 			break;
 
-		case DFT_FIOS_DIRECT:
+		case DetailedFileType::FiosDirect:
 			assert(_fios_path != nullptr);
 			*_fios_path = item->name;
 			break;
