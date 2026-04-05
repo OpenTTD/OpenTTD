@@ -714,6 +714,7 @@ SettingsContainer &GetSettingsTree()
 			accounting->Add(new SettingEntry("difficulty.subsidy_multiplier"));
 			accounting->Add(new SettingEntry("difficulty.subsidy_duration"));
 			accounting->Add(new SettingEntry("economy.feeder_payment_share"));
+			accounting->Add(new SettingEntry("economy.feeder_payment_immediate"));
 			accounting->Add(new SettingEntry("economy.infrastructure_maintenance"));
 			accounting->Add(new SettingEntry("difficulty.vehicle_costs"));
 			accounting->Add(new SettingEntry("difficulty.construction_cost"));
