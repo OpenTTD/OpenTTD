@@ -123,7 +123,7 @@ uint32_t NewGRFProfiler::Finish()
 
 	uint32_t total_microseconds = 0;
 
-	auto f = FioFOpenFile(filename, "wt", Subdirectory::NO_DIRECTORY);
+	auto f = FioFOpenFile(filename, "wt", Subdirectory::None);
 
 	if (!f.has_value()) {
 		IConsolePrint(CC_ERROR, "Failed to open '{}' for writing.", filename);

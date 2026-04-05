@@ -85,26 +85,26 @@ constexpr FiosType FIOS_TYPE_INVALID{AbstractFileType::Invalid, DetailedFileType
 /**
  * The different kinds of subdirectories OpenTTD uses
  */
-enum Subdirectory : uint8_t {
-	BASE_DIR,      ///< Base directory for all subdirectories
-	SAVE_DIR,      ///< Base directory for all savegames
-	AUTOSAVE_DIR,  ///< Subdirectory of save for autosaves
-	SCENARIO_DIR,  ///< Base directory for all scenarios
-	HEIGHTMAP_DIR, ///< Subdirectory of scenario for heightmaps
-	OLD_GM_DIR,    ///< Old subdirectory for the music
-	OLD_DATA_DIR,  ///< Old subdirectory for the data.
-	BASESET_DIR,   ///< Subdirectory for all base data (base sets, intro game)
-	NEWGRF_DIR,    ///< Subdirectory for all NewGRFs
-	LANG_DIR,      ///< Subdirectory for all translation files
-	AI_DIR,        ///< Subdirectory for all %AI files
-	AI_LIBRARY_DIR,///< Subdirectory for all %AI libraries
-	GAME_DIR,      ///< Subdirectory for all game scripts
-	GAME_LIBRARY_DIR, ///< Subdirectory for all GS libraries
-	SCREENSHOT_DIR,   ///< Subdirectory for all screenshots
-	SOCIAL_INTEGRATION_DIR, ///< Subdirectory for all social integration plugins
-	DOCS_DIR,      ///< Subdirectory for documentation
-	NUM_SUBDIRS,   ///< Number of subdirectories
-	NO_DIRECTORY,  ///< A path without any base directory
+enum class Subdirectory : uint8_t {
+	Base, ///< Base directory for all subdirectories.
+	Save, ///< Base directory for all savegames.
+	Autosave, ///< Subdirectory of save for autosaves.
+	Scenario, ///< Base directory for all scenarios.
+	Heightmap, ///< Subdirectory of scenario for heightmaps.
+	OldGm, ///< Old subdirectory for the music.
+	OldData, ///< Old subdirectory for the data.
+	Baseset, ///< Subdirectory for all base data (base sets, intro game).
+	NewGrf, ///< Subdirectory for all NewGRFs.
+	Lang, ///< Subdirectory for all translation files.
+	Ai, ///< Subdirectory for all %AI files.
+	AiLibrary, ///< Subdirectory for all %AI libraries.
+	Gs, ///< Subdirectory for all game scripts.
+	GsLibrary, ///< Subdirectory for all GS libraries.
+	Screenshot, ///< Subdirectory for all screenshots.
+	SocialIntegration, ///< Subdirectory for all social integration plugins.
+	Docs, ///< Subdirectory for documentation.
+	End, ///< End marker.
+	None, ///< A path without any base directory.
 };
 
 /**

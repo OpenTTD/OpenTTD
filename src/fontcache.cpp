@@ -199,7 +199,7 @@ static std::string GetDefaultTruetypeFontFile([[maybe_unused]] FontSize fs)
 {
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	/* Find font file. */
-	return FioFindFullPath(BASESET_DIR, GetDefaultTruetypeFont(fs));
+	return FioFindFullPath(Subdirectory::Baseset, GetDefaultTruetypeFont(fs));
 #else
 	return {};
 #endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */

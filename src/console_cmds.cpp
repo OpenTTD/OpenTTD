@@ -425,7 +425,7 @@ static bool ConSave(std::span<std::string_view> argv)
 		std::string filename = fmt::format("{}.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, SAVE_DIR) != SL_OK) {
+		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Save) != SL_OK) {
 			IConsolePrint(CC_ERROR, "Saving map failed.");
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
@@ -1207,7 +1207,7 @@ static bool ConExec(std::span<std::string_view> argv)
 
 	if (argv.size() < 2) return false;
 
-	auto script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
+	auto script_file = FioFOpenFile(argv[1], "r", Subdirectory::Base);
 
 	if (!script_file.has_value()) {
 		if (argv.size() == 2 || argv[2] != "0") IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[1]);
@@ -1254,7 +1254,7 @@ static bool ConSchedule(std::span<std::string_view> argv)
 	}
 
 	/* Check if the file exists. It might still go away later, but helpful to show an error now. */
-	if (!FioCheckFileExists(argv[2], BASE_DIR)) {
+	if (!FioCheckFileExists(argv[2], Subdirectory::Base)) {
 		IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[2]);
 		return true;
 	}
@@ -2551,19 +2551,19 @@ static bool ConListDirs(std::span<std::string_view> argv)
 	};
 	static const SubdirNameMap subdir_name_map[] = {
 		/* Game data directories */
-		{ "baseset", BASESET_DIR, false },
-		{ "newgrf", NEWGRF_DIR, false },
-		{ "ai", AI_DIR, false },
-		{ "ailib", AI_LIBRARY_DIR, false },
-		{ "gs", GAME_DIR, false },
-		{ "gslib", GAME_LIBRARY_DIR, false },
-		{ "scenario", SCENARIO_DIR, false },
-		{ "heightmap", HEIGHTMAP_DIR, false },
+		{ "baseset", Subdirectory::Baseset, false },
+		{ "newgrf", Subdirectory::NewGrf, false },
+		{ "ai", Subdirectory::Ai, false },
+		{ "ailib", Subdirectory::AiLibrary, false },
+		{ "gs", Subdirectory::Gs, false },
+		{ "gslib", Subdirectory::GsLibrary, false },
+		{ "scenario", Subdirectory::Scenario, false },
+		{ "heightmap", Subdirectory::Heightmap, false },
 		/* Default save locations for user data */
-		{ "save", SAVE_DIR, true },
-		{ "autosave", AUTOSAVE_DIR, true },
-		{ "screenshot", SCREENSHOT_DIR, true },
-		{ "social_integration", SOCIAL_INTEGRATION_DIR, true },
+		{ "save", Subdirectory::Save, true },
+		{ "autosave", Subdirectory::Autosave, true },
+		{ "screenshot", Subdirectory::Screenshot, true },
+		{ "social_integration", Subdirectory::SocialIntegration, true },
 	};
 
 	if (argv.size() != 2) {

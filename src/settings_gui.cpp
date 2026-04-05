@@ -104,7 +104,7 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 	BaseSetTextfileWindow(Window *parent, TextfileType file_type, const std::string &name, const std::string &textfile, StringID content_type) : TextfileWindow(parent, file_type), name(name), content_type(content_type)
 	{
 		this->ConstructWindow();
-		this->LoadTextfile(textfile, BASESET_DIR);
+		this->LoadTextfile(textfile, Subdirectory::Baseset);
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override

@@ -2256,7 +2256,7 @@ static void FillLanguageList(const std::string &path)
 void InitializeLanguagePacks()
 {
 	for (Searchpath sp : _valid_searchpaths) {
-		FillLanguageList(FioGetDirectory(sp, LANG_DIR));
+		FillLanguageList(FioGetDirectory(sp, Subdirectory::Lang));
 	}
 	if (_languages.empty()) UserError("No available language packs (invalid versions?)");
 

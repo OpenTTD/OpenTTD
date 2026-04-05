@@ -168,7 +168,7 @@ int16_t WindowDesc::GetDefaultHeight() const
 void WindowDesc::LoadFromConfig()
 {
 	IniFile ini;
-	ini.LoadFromDisk(_windows_file, NO_DIRECTORY);
+	ini.LoadFromDisk(_windows_file, Subdirectory::None);
 	for (WindowDesc *wd : *_window_descs) {
 		if (wd->ini_key.empty()) continue;
 		IniLoadWindowSettings(ini, wd->ini_key, wd);
@@ -190,7 +190,7 @@ void WindowDesc::SaveToConfig()
 	std::sort(_window_descs->begin(), _window_descs->end(), DescSorter);
 
 	IniFile ini;
-	ini.LoadFromDisk(_windows_file, NO_DIRECTORY);
+	ini.LoadFromDisk(_windows_file, Subdirectory::None);
 	for (WindowDesc *wd : *_window_descs) {
 		if (wd->ini_key.empty()) continue;
 		IniSaveWindowSettings(ini, wd->ini_key, wd);

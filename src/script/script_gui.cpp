@@ -618,7 +618,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 		if (!textfile.has_value()) {
 			this->Close();
 		} else {
-			this->LoadTextfile(textfile.value(), (this->slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
+			this->LoadTextfile(textfile.value(), (this->slot == OWNER_DEITY) ? Subdirectory::Gs : Subdirectory::Ai);
 		}
 	}
 };

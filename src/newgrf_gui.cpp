@@ -554,7 +554,7 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 		this->ConstructWindow();
 
 		auto textfile = this->grf_config->GetTextfile(file_type);
-		this->LoadTextfile(textfile.value(), NEWGRF_DIR);
+		this->LoadTextfile(textfile.value(), Subdirectory::NewGrf);
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override

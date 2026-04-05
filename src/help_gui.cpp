@@ -54,7 +54,7 @@ static std::optional<std::string> FindGameManualFilePath(std::string_view filena
 	for (Searchpath sp : searchpaths) {
 		std::string file_path = FioGetDirectory(sp, subdir);
 		file_path.append(filename);
-		if (FioCheckFileExists(file_path, NO_DIRECTORY)) return file_path;
+		if (FioCheckFileExists(file_path, Subdirectory::None)) return file_path;
 	}
 
 	return {};
@@ -76,7 +76,7 @@ struct GameManualTextfileWindow : public TextfileWindow {
 		}
 
 		this->filepath = filepath.value();
-		this->LoadTextfile(this->filepath, NO_DIRECTORY);
+		this->LoadTextfile(this->filepath, Subdirectory::None);
 		this->OnClick({ 0, 0 }, WID_TF_WRAPTEXT, 1);
 	}
 
@@ -129,30 +129,30 @@ struct HelpWindow : public Window {
 	{
 		this->InitNested(number);
 
-		this->EnableTextfileButton(README_FILENAME, BASE_DIR, WID_HW_README);
-		this->EnableTextfileButton(CHANGELOG_FILENAME, BASE_DIR, WID_HW_CHANGELOG);
-		this->EnableTextfileButton(KNOWN_BUGS_FILENAME, BASE_DIR, WID_HW_KNOWN_BUGS);
-		this->EnableTextfileButton(LICENSE_FILENAME, BASE_DIR, WID_HW_LICENSE);
-		this->EnableTextfileButton(FONTS_FILENAME, DOCS_DIR, WID_HW_FONTS);
+		this->EnableTextfileButton(README_FILENAME, Subdirectory::Base, WID_HW_README);
+		this->EnableTextfileButton(CHANGELOG_FILENAME, Subdirectory::Base, WID_HW_CHANGELOG);
+		this->EnableTextfileButton(KNOWN_BUGS_FILENAME, Subdirectory::Base, WID_HW_KNOWN_BUGS);
+		this->EnableTextfileButton(LICENSE_FILENAME, Subdirectory::Base, WID_HW_LICENSE);
+		this->EnableTextfileButton(FONTS_FILENAME, Subdirectory::Docs, WID_HW_FONTS);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_HW_README:
-				new GameManualTextfileWindow(README_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(README_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_CHANGELOG:
-				new GameManualTextfileWindow(CHANGELOG_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(CHANGELOG_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_KNOWN_BUGS:
-				new GameManualTextfileWindow(KNOWN_BUGS_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(KNOWN_BUGS_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_LICENSE:
-				new GameManualTextfileWindow(LICENSE_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(LICENSE_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_FONTS:
-				new GameManualTextfileWindow(FONTS_FILENAME, DOCS_DIR);
+				new GameManualTextfileWindow(FONTS_FILENAME, Subdirectory::Docs);
 				break;
 			case WID_HW_WEBSITE:
 				OpenBrowser(WEBSITE_LINK);

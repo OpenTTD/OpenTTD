@@ -470,16 +470,16 @@ public:
 		o_dir.type = FIOS_TYPE_DIRECT;
 		switch (this->abstract_filetype) {
 			case AbstractFileType::Savegame:
-				o_dir.name = FioFindDirectory(SAVE_DIR);
+				o_dir.name = FioFindDirectory(Subdirectory::Save);
 				break;
 
 			case AbstractFileType::Scenario:
-				o_dir.name = FioFindDirectory(SCENARIO_DIR);
+				o_dir.name = FioFindDirectory(Subdirectory::Scenario);
 				break;
 
 			case AbstractFileType::Heightmap:
 			case AbstractFileType::TownData:
-				o_dir.name = FioFindDirectory(HEIGHTMAP_DIR);
+				o_dir.name = FioFindDirectory(Subdirectory::Heightmap);
 				break;
 
 			default:
@@ -759,7 +759,7 @@ public:
 
 						if (file->type.detailed == DetailedFileType::GameFile) {
 							/* Other detailed file types cannot be checked before. */
-							SaveOrLoad(file->name, SaveLoadOperation::Check, DetailedFileType::GameFile, NO_DIRECTORY, false);
+							SaveOrLoad(file->name, SaveLoadOperation::Check, DetailedFileType::GameFile, Subdirectory::None, false);
 						}
 
 						this->InvalidateData(SLIWD_SELECTION_CHANGES);
@@ -849,7 +849,7 @@ public:
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (this->abstract_filetype == AbstractFileType::Savegame || this->abstract_filetype == AbstractFileType::Scenario) {
 				_file_to_saveload.name = FiosMakeSavegameName(this->filename_editbox.text.GetText());
-				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
+				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::Save)) {
 					ShowQuery(GetEncodedString(STR_SAVELOAD_OVERWRITE_TITLE), GetEncodedString(STR_SAVELOAD_OVERWRITE_WARNING),
 							this, SaveLoadWindow::SaveGameConfirmationCallback);
 				} else {
@@ -857,7 +857,7 @@ public:
 				}
 			} else {
 				_file_to_saveload.name = FiosMakeHeightmapName(this->filename_editbox.text.GetText());
-				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
+				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::Save)) {
 					ShowQuery(GetEncodedString(STR_SAVELOAD_OVERWRITE_TITLE), GetEncodedString(STR_SAVELOAD_OVERWRITE_WARNING),
 							this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
 				} else {

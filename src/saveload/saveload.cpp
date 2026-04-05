@@ -3345,9 +3345,9 @@ SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, De
 		auto fh = (fop == SaveLoadOperation::Save) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
 		/* Make it a little easier to load savegames from the console */
-		if (!fh.has_value() && fop != SaveLoadOperation::Save) fh = FioFOpenFile(filename, "rb", SAVE_DIR);
-		if (!fh.has_value() && fop != SaveLoadOperation::Save) fh = FioFOpenFile(filename, "rb", BASE_DIR);
-		if (!fh.has_value() && fop != SaveLoadOperation::Save) fh = FioFOpenFile(filename, "rb", SCENARIO_DIR);
+		if (!fh.has_value() && fop != SaveLoadOperation::Save) fh = FioFOpenFile(filename, "rb", Subdirectory::Save);
+		if (!fh.has_value() && fop != SaveLoadOperation::Save) fh = FioFOpenFile(filename, "rb", Subdirectory::Base);
+		if (!fh.has_value() && fop != SaveLoadOperation::Save) fh = FioFOpenFile(filename, "rb", Subdirectory::Scenario);
 
 		if (!fh.has_value()) {
 			SlError(fop == SaveLoadOperation::Save ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
@@ -3391,7 +3391,7 @@ void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 	}
 
 	Debug(sl, 2, "Autosaving to '{}'", filename);
-	if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, AUTOSAVE_DIR) != SL_OK) {
+	if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Autosave) != SL_OK) {
 		ShowErrorMessage(GetEncodedString(STR_ERROR_AUTOSAVE_FAILED), {}, WL_ERROR);
 	}
 }
@@ -3400,7 +3400,7 @@ void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 /** Do a save when exiting the game (_settings_client.gui.autosave_on_exit) */
 void DoExitSave()
 {
-	SaveOrLoad("exit.sav", SaveLoadOperation::Save, DetailedFileType::GameFile, AUTOSAVE_DIR);
+	SaveOrLoad("exit.sav", SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Autosave);
 }
 
 /**

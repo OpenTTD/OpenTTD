@@ -1148,7 +1148,7 @@ void NetworkGameLoop()
 
 #ifdef DEBUG_DUMP_COMMANDS
 		/* Loading of the debug commands from -ddesync>=1 */
-		static auto f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
+		static auto f = FioFOpenFile("commands.log", "rb", Subdirectory::Save);
 		static TimerGameEconomy::Date next_date(0);
 		static uint32_t next_date_fract;
 		static CommandPacket *cp = nullptr;

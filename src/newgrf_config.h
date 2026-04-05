@@ -236,7 +236,7 @@ void AppendToGRFConfigList(GRFConfigList &dst, std::unique_ptr<GRFConfig> &&el);
 void ClearGRFConfigList(GRFConfigList &config);
 void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig);
-bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir = NEWGRF_DIR);
+bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir = Subdirectory::NewGrf);
 std::string GRFBuildParamList(const GRFConfig &c);
 
 /* In newgrf_gui.cpp */
