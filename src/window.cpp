@@ -2454,10 +2454,10 @@ static EventState HandleActiveWidget()
 static EventState HandleViewportScroll()
 {
 	/* Modus 3 (Touchpad) und 4 (Chromepad) nutzen die neue Liquid-Logik */
-    bool liquid_mode = (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
+	bool liquid_mode = (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
 
 	bool scrollwheel_panning = _cursor.wheel_moved && (
-		_settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap || liquid_mode
+		(((int)_settings_client.gui.scrollwheel_scrolling) == 1) || liquid_mode
 	);
 
 	if (!_scrolling_viewport) return ES_NOT_HANDLED;
@@ -2577,31 +2577,16 @@ static EventState HandleViewportScroll()
 
 
     /* ORIGINALER FALLBACK (für Smallmap und Panning ohne Touchpad-Modus) */
-	Point delta;
+    Point delta;
 	if (scrollwheel_panning) {
-		/* Wir berechnen das Delta aus den Rad-Daten */
-		Point delta = {static_cast<int>(_cursor.h_wheel), static_cast<int>(_cursor.v_wheel)};
-
-		/* Falls wir einen Viewport haben, verschieben wir die Karte */
-		if (_last_scroll_window->viewport != nullptr) {
-			/* Viewport-Fenster (Main, Vehicle, etc.) direkt schieben */
-			ViewportData &vp = *_last_scroll_window->viewport;
-			vp.scrollpos_x += ScaleByZoom(delta.x, vp.zoom);
-			vp.scrollpos_y += ScaleByZoom(delta.y, vp.zoom);
-			vp.dest_scrollpos_x = vp.scrollpos_x;
-			vp.dest_scrollpos_y = vp.scrollpos_y;
-			_last_scroll_window->SetDirty();
-		} else {
-			/* WICHTIG: Erlaubt Panning auf der Weltkarte (Smallmap) */
-			_last_scroll_window->OnScroll(delta);
-		}
-
-		/* WICHTIG: IMMER die Werte verbrauchen, um Freeze zu verhindern */
-		_cursor.v_wheel = 0;
-		_cursor.h_wheel = 0;
-		_cursor.wheel_moved = false;
-		return ES_HANDLED;
-
+		/* We are using scrollwheels for scrolling */
+		/* Use the integer part for movement */
+		delta.x = static_cast<int>(_cursor.h_wheel);
+		delta.y = static_cast<int>(_cursor.v_wheel);
+		/* Keep the fractional part so that subtle movement is accumulated */
+		float temp;
+		_cursor.v_wheel = std::modf(_cursor.v_wheel, &temp);
+		_cursor.h_wheel = std::modf(_cursor.h_wheel, &temp);
 	} else {
 		if (_settings_client.gui.scroll_mode != ViewportScrollMode::ViewportRMBFixed) {
 			delta.x = -_cursor.delta.x;
@@ -3009,7 +2994,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	HandleMouseOver();
 
 	/* Panning ist aktiv bei State 1 (Original) oder State 3 (Touchpad) */
-	bool scrollwheel_scrolling = _cursor.wheel_moved && (((int)_settings_client.gui.scrollwheel_scrolling) > 2);
+	bool scrollwheel_scrolling = _cursor.wheel_moved && (((int)_settings_client.gui.scrollwheel_scrolling == 1) || (((int)_settings_client.gui.scrollwheel_scrolling) > 2));
 
 	/* Fenster verschieben (LMB) hat Priorität vor Karten-Panning */
 	if (_dragging_window) scrollwheel_scrolling = false;
@@ -3110,7 +3095,6 @@ void HandleMouseEvents()
 	 * But there is no company related window open anyway, so _current_company is not used. */
 	assert(HasModalProgress() || IsLocalCompany());
 
-
 	static std::chrono::steady_clock::time_point double_click_time = {};
 	static Point double_click_pos = {0, 0};
 
@@ -3156,11 +3140,8 @@ void HandleMouseEvents()
 		}
 	}
 
-    /* --- HPEP-2026: UNIFIED GESTURE ZOOM (Mode 3 & 4) --- */
-	int scroll_mode = (int)_settings_client.gui.scrollwheel_scrolling;
-
-    /* --- HPEP-2026: VOLATILE GESTURE ZOOM (Mode 4) --- */
-	if (_right_button_down && scroll_mode == 4) {
+    /* --- VOLATILE GESTURE ZOOM (Mode 4) --- */
+	if (_right_button_down && (int)_settings_client.gui.scrollwheel_scrolling > 2) {
 		static float zoom_acc = 0.0f;
 		if (_right_button_clicked) {
 			zoom_acc = 0.0f;
@@ -3176,7 +3157,10 @@ void HandleMouseEvents()
 			float driver_mult = (float)_settings_client.gui.scrollwheel_multiplier;
 			if (driver_mult < 1.0f) driver_mult = 1.0f;
 
-			zoom_acc += (float)_cursor.delta.y + (_cursor.v_wheel / driver_mult);
+            /* In Modus 3 ignorieren wir die Mausbewegung (delta.y) für den Zoom.
+             * Nur in Modus 4 (Chromepad) bleibt der RMB+Move-Zoom aktiv. */
+            float move_input = ((int)_settings_client.gui.scrollwheel_scrolling == 4) ? (float)_cursor.delta.y : 0.0f;
+            zoom_acc += move_input + (_cursor.v_wheel / driver_mult);
 
 			if (abs(zoom_acc) > 20.0f) {
 				Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
@@ -3204,15 +3188,13 @@ void HandleMouseEvents()
 		_newgrf_debug_sprite_picker.mode = SPM_REDRAW;
 		MarkWholeScreenDirty();
 	} else {
-		/* Dies MUSS immer gerufen werden, damit LMB-Objekte und Fenster-Dragging funktionieren */
 		MouseLoop(click, mousewheel);
 	}
 
-	/* Delta-Cleanup NUR, wenn kein Lasso aktiv ist */
-	if (!_cursor.fix_at && !_scrolling_viewport) {
-		_cursor.delta.x = 0;
-		_cursor.delta.y = 0;
-	}
+	/* We have moved the mouse the required distance,
+	 * no need to move it at any later time. */
+	_cursor.delta.x = 0;
+	_cursor.delta.y = 0;
 }
 
 /**

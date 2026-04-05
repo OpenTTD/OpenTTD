@@ -384,32 +384,15 @@ static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 
 bool VideoDriver_SDL_Base::PollEvent()
 {
-    SDL_Event ev;
+	SDL_Event ev;
 
 	if (!SDL_PollEvent(&ev)) return false;
 
 	switch (ev.type) {
-	    /* --- HPEP-2026: HIGH-RESOLUTION FINGER BYPASS --- */
-        case SDL_FINGERMOTION: {
-            /* Wir wandeln die normalisierte Bewegung (0.0 bis 1.0) in Pixel um */
-            float touch_dx = ev.tfinger.dx * (float)_screen.width;
-            float touch_dy = ev.tfinger.dy * (float)_screen.height;
-
-            /* Wir füttern unseren Akkumulator direkt mit den Hi-Res Floats.
-             * Wichtig: Nur wenn wir im Panning-Modus sind (Modus 4). */
-            if ((int)_settings_client.gui.scrollwheel_scrolling == 4) {
-                _cursor.h_wheel += touch_dx;
-                _cursor.v_wheel += touch_dy;
-                _cursor.wheel_moved = true;
-            }
-            break;
-        }
 		case SDL_MOUSEMOTION: {
 			int32_t x = ev.motion.x;
 			int32_t y = ev.motion.y;
 
-			/* Original-Logik: Wenn fix_at aktiv ist (z.B. beim Panning),
-			 * wird der Zeiger am Monitor-Punkt festgenagelt. */
 			if (_cursor.fix_at) {
 				/* Get all queued mouse events now in case we have to warp the cursor. In the
 				 * end, we only care about the current mouse position and not bygone events. */
@@ -419,12 +402,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 				}
 			}
 
-			/* Wir nutzen UpdateCursorPosition. Wenn diese Funktion 'true' zurückgibt,
-			 * heißt das: "Die Maus wurde bewegt, aber wir wollen sie an der alten
-			 * Stelle behalten (Warping)". */
 			if (_cursor.UpdateCursorPosition(x, y)) {
-				/* DAS IST DAS FESTNAGELN:
-				 * Wir schicken den Zeiger des Betriebssystems sofort wieder zurück. */
 				SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
 			}
 			HandleMouseEvents();
@@ -464,9 +442,9 @@ bool VideoDriver_SDL_Base::PollEvent()
 				case SDL_BUTTON_RIGHT:
 					_right_button_down = true;
 					_right_button_clicked = true;
-					/* Wir aktivieren das Festnageln nur im neuen Modus 3 */
+					/* Wir aktivieren das Festnageln nur im neuen Modus 3/4 */
 					if ((int)_settings_client.gui.scrollwheel_scrolling > 2) {
-//						_cursor.fix_at = true;
+						_cursor.fix_at = true;
 						/* MAUS-KÄFIG AKTIVIEREN: Verhindert das Verlassen des Fensters beim Zoomen */
 						SDL_SetWindowGrab(this->sdl_window, SDL_TRUE);
 					}
@@ -489,7 +467,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 				_right_button_down = false;
 				/* Wir deaktivieren das Festnageln nur im neuen Modus 3/4 */
 				if ((int)_settings_client.gui.scrollwheel_scrolling > 2) {
-                    _cursor.fix_at = false;
+					_cursor.fix_at = false;
 					SDL_SetWindowGrab(this->sdl_window, SDL_FALSE);
 					/* Wir löschen auch die Deltas für diesen einen Frame,
 					 * damit der "Release-Ruckler" nicht als Zoom oder Panning zählt. */
@@ -575,9 +553,6 @@ static std::optional<std::string_view> InitializeSDL()
 {
 	/* Check if the video-driver is already initialized. */
 	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return std::nullopt;
-
-	SDL_SetHintWithPriority("SDL_TOUCH_MOUSE_EVENTS", "0", SDL_HINT_DEFAULT);
-
 
 #ifdef SDL_HINT_APP_NAME
 	SDL_SetHint(SDL_HINT_APP_NAME, "OpenTTD");
