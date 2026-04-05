@@ -67,16 +67,6 @@ struct IndustriesResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
-/** When should the industry(tile) be triggered for random bits? */
-enum IndustryTrigger : uint8_t {
-	/** Triggered each tile loop */
-	INDUSTRY_TRIGGER_TILELOOP_PROCESS = 1,
-	/** Triggered (whole industry) each 256 ticks */
-	INDUSTRY_TRIGGER_256_TICKS        = 2,
-	/** Triggered on cargo delivery */
-	INDUSTRY_TRIGGER_CARGO_DELIVERY   = 4,
-};
-
 /** From where has callback #CBID_INDUSTRY_PROBABILITY been called */
 enum IndustryAvailabilityCallType : uint8_t {
 	IACT_MAPGENERATION,    ///< during random map generation
