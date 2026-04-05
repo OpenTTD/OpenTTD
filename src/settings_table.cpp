@@ -50,6 +50,8 @@
 #include "void_map.h"
 #include "station_func.h"
 #include "station_base.h"
+#include "aircraft.h"
+#include "aircraft_cmd.h"
 
 #include "table/strings.h"
 #include "table/settings.h"
@@ -361,6 +363,24 @@ static void RoadVehSlopeSteepnessChanged(int32_t)
 {
 	for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 		if (rv->IsFrontEngine()) rv->CargoChanged();
+	}
+}
+
+/**
+ * This function updates the aircraft cache when the aircraft range setting is changed.
+ */
+static void AircraftRangeChanged(int32_t)
+{
+	for (Aircraft *v : Aircraft::Iterate()) {
+		v->acache.cached_max_range = Engine::Get(v->engine_type)->GetRange();
+		v->acache.cached_max_range_sqr = v->acache.cached_max_range * v->acache.cached_max_range;
+
+		/* Reset destination is too far state */
+		if (v->flags.Test(VehicleAirFlag::DestinationTooFar)) {
+			v->flags.Reset(VehicleAirFlag::DestinationTooFar);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+			DeleteVehicleNews(v->index, AdviceType::AircraftDestinationTooFar);
+		}
 	}
 }
 
