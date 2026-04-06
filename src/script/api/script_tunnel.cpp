@@ -90,10 +90,10 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance &instance)
 
 	if (vehicle_type == ScriptVehicle::VT_RAIL) {
 		/* For rail we do nothing special */
-		return ScriptObject::Command<Commands::BuildTunnel>::Do(start, TRANSPORT_RAIL, ScriptRail::GetCurrentRailType());
+		return ScriptObject::Command<Commands::BuildTunnel>::Do(start, TRANSPORT_RAIL, static_cast<::RailType>(ScriptRail::GetCurrentRailType()), INVALID_ROADTYPE);
 	} else {
 		ScriptObject::SetCallbackVariable(0, start.base());
-		return ScriptObject::Command<Commands::BuildTunnel>::Do(&::_DoCommandReturnBuildTunnel1, start, TRANSPORT_ROAD, ScriptRoad::GetCurrentRoadType());
+		return ScriptObject::Command<Commands::BuildTunnel>::Do(&::_DoCommandReturnBuildTunnel1, start, TRANSPORT_ROAD, INVALID_RAILTYPE, static_cast<::RoadType>(ScriptRoad::GetCurrentRoadType()));
 	}
 }
 
