@@ -570,7 +570,7 @@ struct PLYRChunkHandler : ChunkHandler {
 		while ((index = SlIterateArray()) != -1) {
 			Company *c = Company::CreateAtIndex(CompanyID(index));
 			SlObject(c, slt);
-			_company_colours[index] = c->colour;
+			_company_colours[c->index] = c->colour;
 		}
 	}
 
