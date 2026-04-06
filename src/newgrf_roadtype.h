@@ -64,5 +64,6 @@ uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile);
 void ConvertRoadTypes();
 void SetCurrentRoadTypeLabelList();
 void ClearRoadTypeLabelList();
+void PreloadRoadTypeMaps();
 
 #endif /* NEWGRF_ROADTYPE_H */

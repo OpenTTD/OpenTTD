@@ -124,7 +124,7 @@ inline RoadBits AxisToRoadBits(Axis a)
  */
 inline Money RoadMaintenanceCost(RoadType roadtype, uint32_t num, uint32_t total_num)
 {
-	assert(roadtype < ROADTYPE_END);
+	assert(roadtype < GetNumRoadTypes());
 	return (_price[Price::InfrastructureRoad] * GetRoadTypeInfo(roadtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 12;
 }
 
@@ -135,7 +135,7 @@ inline Money RoadMaintenanceCost(RoadType roadtype, uint32_t num, uint32_t total
  */
 inline bool HasRoadCatenary(RoadType roadtype)
 {
-	assert(roadtype < ROADTYPE_END);
+	assert(roadtype < GetNumRoadTypes());
 	return GetRoadTypeInfo(roadtype)->flags.Test(RoadTypeFlag::Catenary);
 }
 
@@ -153,7 +153,7 @@ bool HasRoadTypeAvail(CompanyID company, RoadType roadtype);
 bool ValParamRoadType(RoadType roadtype);
 RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces = true);
 RoadTypes GetRoadTypes(bool introduces);
-RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date date);
+RoadTypes AddDateIntroducedRoadTypes(const RoadTypes &current, TimerGameCalendar::Date date);
 
 void UpdateLevelCrossing(TileIndex tile, bool sound = true, bool force_bar = false);
 void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis);

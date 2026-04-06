@@ -21,17 +21,17 @@
 /* static */ SQInteger ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= GetNumRailTypes()) return 0;
 
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->infrastructure.rail[railtype];
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->infrastructure.GetRailCount(static_cast<::RailType>(railtype));
 }
 
 /* static */ SQInteger ScriptInfrastructure::GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= GetNumRoadTypes()) return 0;
 
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->infrastructure.road[roadtype];
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->infrastructure.GetRoadCount(static_cast<::RoadType>(roadtype));
 }
 
 /* static */ SQInteger ScriptInfrastructure::GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type)
@@ -66,20 +66,22 @@
 
 /* static */ Money ScriptInfrastructure::GetMonthlyRailCosts(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {
+	::RailType rt = static_cast<::RailType>(railtype);
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || rt >= GetNumRailTypes() || !_settings_game.economy.infrastructure_maintenance) return 0;
 
 	const ::Company *c = ::Company::Get(ScriptCompany::FromScriptCompanyID(company));
-	return ::RailMaintenanceCost((::RailType)railtype, c->infrastructure.rail[railtype], c->infrastructure.GetRailTotal());
+	return ::RailMaintenanceCost(rt, c->infrastructure.GetRailCount(rt), c->infrastructure.GetRailTotal());
 }
 
 /* static */ Money ScriptInfrastructure::GetMonthlyRoadCosts(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
 {
+	::RoadType rt = static_cast<::RoadType>(roadtype);
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || rt >= GetNumRoadTypes() || !_settings_game.economy.infrastructure_maintenance) return 0;
 
 	const ::Company *c = ::Company::Get(ScriptCompany::FromScriptCompanyID(company));
-	return ::RoadMaintenanceCost((::RoadType)roadtype, c->infrastructure.road[roadtype], RoadTypeIsRoad((::RoadType)roadtype) ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal());
+	return ::RoadMaintenanceCost(rt, c->infrastructure.GetRoadCount(rt), RoadTypeIsRoad(rt) ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal());
 }
 
 /* static */ Money ScriptInfrastructure::GetMonthlyInfrastructureCosts(ScriptCompany::CompanyID company, Infrastructure infra_type)
@@ -92,8 +94,8 @@
 		case INFRASTRUCTURE_RAIL: {
 			Money cost;
 			uint32_t rail_total = c->infrastructure.GetRailTotal();
-			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
-				cost += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
+			for (const auto &[railtype, count] : c->infrastructure.rail) {
+				cost += RailMaintenanceCost(railtype, count, rail_total);
 			}
 			return cost;
 		}
@@ -105,8 +107,8 @@
 			Money cost;
 			uint32_t road_total = c->infrastructure.GetRoadTotal();
 			uint32_t tram_total = c->infrastructure.GetTramTotal();
-			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
-				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total);
+			for (const auto &[roadtype, count] : c->infrastructure.road) {
+				cost += RoadMaintenanceCost(roadtype, count, RoadTypeIsRoad(roadtype) ? road_total : tram_total);
 			}
 			return cost;
 		}

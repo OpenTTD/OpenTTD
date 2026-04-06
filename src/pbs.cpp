@@ -196,7 +196,7 @@ void UnreserveRailTrack(TileIndex tile, Track t)
  * @param ignore_oneway Whether one way signals are to be ignored.
  * @return The end of the path.
  */
-static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Trackdir trackdir, bool ignore_oneway = false)
+static PBSTileInfo FollowReservation(Owner o, const RailTypes &rts, TileIndex tile, Trackdir trackdir, bool ignore_oneway = false)
 {
 	TileIndex start_tile = tile;
 	Trackdir  start_trackdir = trackdir;

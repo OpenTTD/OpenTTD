@@ -29,8 +29,8 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	const auto &type_map = (rtt == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
+	extern std::vector<RoadTypeInfo> _roadtypes;
+	auto  &type_map = (rtt == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 
 	if (last > std::size(type_map)) {
 		GrfMsg(1, "RoadTypeChangeInfo: Road type {} is invalid, max {}, ignoring", last, std::size(type_map));
@@ -150,13 +150,10 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	auto &type_map = (rtt == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
+	extern std::vector<RoadTypeInfo> _roadtypes;
+	auto  &type_map = (rtt == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 
-	if (last > std::size(type_map)) {
-		GrfMsg(1, "RoadTypeReserveInfo: Road type {} is invalid, max {}, ignoring", last, std::size(type_map));
-		return CIR_INVALID_ID;
-	}
+	if (type_map.size() < last) type_map.resize(last, INVALID_ROADTYPE);
 
 	for (uint id = first; id < last; ++id) {
 		switch (prop) {

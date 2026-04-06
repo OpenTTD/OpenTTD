@@ -148,15 +148,15 @@ inline void MakeBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection
  * @param owner_tram the new owner of the tram on the bridge
  * @param bridgetype the type of bridge this bridge ramp belongs to
  * @param d          the direction this ramp must be facing
- * @param road_rt    the road type of the bridge
- * @param tram_rt    the tram type of the bridge
+ * @param map_roadtype the map road type of the bridge
+ * @param map_tramtype the map tram type of the bridge
  */
-inline void MakeRoadBridgeRamp(Tile t, Owner o, Owner owner_road, Owner owner_tram, BridgeType bridgetype, DiagDirection d, RoadType road_rt, RoadType tram_rt)
+inline void MakeRoadBridgeRamp(Tile t, Owner o, Owner owner_road, Owner owner_tram, BridgeType bridgetype, DiagDirection d, MapRoadType map_roadtype, MapTramType map_tramtype)
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD);
 	SetRoadOwner(t, RTT_ROAD, owner_road);
 	if (owner_tram != OWNER_TOWN) SetRoadOwner(t, RTT_TRAM, owner_tram);
-	SetRoadTypes(t, road_rt, tram_rt);
+	SetMapRoadTypes(t, map_roadtype, map_tramtype);
 }
 
 /**
@@ -165,12 +165,12 @@ inline void MakeRoadBridgeRamp(Tile t, Owner o, Owner owner_road, Owner owner_tr
  * @param o          the new owner of the bridge ramp
  * @param bridgetype the type of bridge this bridge ramp belongs to
  * @param d          the direction this ramp must be facing
- * @param rt         the rail type of the bridge
+ * @param map_railtype the map rail type of the bridge
  */
-inline void MakeRailBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection d, RailType rt)
+inline void MakeRailBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection d, MapRailType map_railtype)
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL);
-	SetRailType(t, rt);
+	SetMapRailType(t, map_railtype);
 }
 
 /**

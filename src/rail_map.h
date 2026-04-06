@@ -107,6 +107,29 @@ inline void SetHasSignals(Tile tile, bool signals)
 	return IsTileType(t, TileType::Railway) && IsRailDepot(t);
 }
 
+
+/**
+ * Gets the map rail type of the given tile
+ * @param t the tile to get the map rail type from
+ * @return the map rail type of the tile
+ */
+inline MapRailType GetMapRailType(Tile t)
+{
+	return static_cast<MapRailType>(GB(t.m8(), 0, 6));
+}
+
+
+/**
+ * Sets the rail type of the given tile
+ * @param t the tile to set the rail type of
+ * @param map_railtype the new mapped rail type for the tile
+ */
+inline void SetMapRailType(Tile t, MapRailType map_railtype)
+{
+	SB(t.m8(), 0, 6, map_railtype.base());
+}
+
+
 /**
  * Gets the rail type of the given tile
  * @param t the tile to get the rail type from
@@ -114,17 +137,7 @@ inline void SetHasSignals(Tile tile, bool signals)
  */
 inline RailType GetRailType(Tile t)
 {
-	return (RailType)GB(t.m8(), 0, 6);
-}
-
-/**
- * Sets the rail type of the given tile
- * @param t the tile to set the rail type of
- * @param r the new rail type for the tile
- */
-inline void SetRailType(Tile t, RailType r)
-{
-	SB(t.m8(), 0, 6, r);
+	return _railtype_mapping.GetType(GetMapRailType(t));
 }
 
 
@@ -609,9 +622,9 @@ inline bool IsSnowOrDesertRailGround(Tile t)
  * @param t The tile to convert.
  * @param o The new owner.
  * @param b The bits/tracks to set.
- * @param r The new rail type.
+ * @param map_railtype The new mapped rail type.
  */
-inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
+inline void MakeRailNormal(Tile t, Owner o, TrackBits b, MapRailType map_railtype)
 {
 	SetTileType(t, TileType::Railway);
 	SetTileOwner(t, o);
@@ -622,7 +635,7 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 	t.m5() = to_underlying(RailTileType::Normal) << 6 | b;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
-	t.m8() = r;
+	t.m8() = map_railtype.base();
 }
 
 /**
@@ -642,9 +655,9 @@ inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
  * @param owner     New owner of the depot.
  * @param depot_id  New depot ID.
  * @param dir       Direction of the depot exit.
- * @param rail_type Rail type of the depot.
+ * @param map_railtype Mapped rail type of the depot.
  */
-inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RailType rail_type)
+inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, MapRailType map_railtype)
 {
 	SetTileType(tile, TileType::Railway);
 	SetTileOwner(tile, owner);
@@ -655,7 +668,7 @@ inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m5() = to_underlying(RailTileType::Depot) << 6 | dir;
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = 0;
-	tile.m8() = rail_type;
+	tile.m8() = map_railtype.base();
 }
 
 #endif /* RAIL_MAP_H */
