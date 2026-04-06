@@ -37,16 +37,12 @@ concept ConvertibleThroughBaseOrTo = std::is_convertible_v<T, TTo> || Convertibl
 template <typename Container, typename Index>
 class TypedIndexContainer : public Container {
 public:
-	Container::reference at(size_t pos) { return this->Container::at(pos); }
 	Container::reference at(const Index &pos) { return this->Container::at(pos.base()); }
 
-	Container::const_reference at(size_t pos) const { return this->Container::at(pos); }
 	Container::const_reference at(const Index &pos) const { return this->Container::at(pos.base()); }
 
-	Container::reference operator[](size_t pos) { return this->Container::operator[](pos); }
 	Container::reference operator[](const Index &pos) { return this->Container::operator[](pos.base()); }
 
-	Container::const_reference operator[](size_t pos) const { return this->Container::operator[](pos); }
 	Container::const_reference operator[](const Index &pos) const { return this->Container::operator[](pos.base()); }
 };
 

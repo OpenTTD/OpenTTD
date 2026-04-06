@@ -258,7 +258,8 @@ struct AIConfigWindow : public Window {
 
 			case WID_AIC_MOVE_UP:
 				if (IsEditable(this->selected_slot) && IsEditable(static_cast<CompanyID>(this->selected_slot - 1))) {
-					std::swap(GetGameSettings().script_config.ai[this->selected_slot], GetGameSettings().script_config.ai[this->selected_slot - 1]);
+					auto it = std::next(std::begin(GetGameSettings().script_config.ai), this->selected_slot.base());
+					std::swap(*it, *std::prev(it));
 					this->selected_slot = static_cast<CompanyID>(this->selected_slot - 1);
 					this->vscroll->ScrollTowards(this->selected_slot.base());
 					this->InvalidateData();
@@ -267,7 +268,8 @@ struct AIConfigWindow : public Window {
 
 			case WID_AIC_MOVE_DOWN:
 				if (IsEditable(this->selected_slot) && IsEditable(static_cast<CompanyID>(this->selected_slot + 1))) {
-					std::swap(GetGameSettings().script_config.ai[this->selected_slot], GetGameSettings().script_config.ai[this->selected_slot + 1]);
+					auto it = std::next(std::begin(GetGameSettings().script_config.ai), this->selected_slot.base());
+					std::swap(*it, *std::next(it));
 					++this->selected_slot;
 					this->vscroll->ScrollTowards(this->selected_slot.base());
 					this->InvalidateData();

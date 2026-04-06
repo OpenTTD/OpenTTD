@@ -2047,7 +2047,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 
 	t->fund_buildings_months = 0;
 
-	for (uint i = 0; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
+	t->ratings.fill(RATING_INITIAL);
 
 	t->have_ratings = {};
 	t->exclusivity = CompanyID::Invalid();
@@ -3826,8 +3826,8 @@ static void UpdateTownRating(Town *t)
 	});
 
 	/* clamp all ratings to valid values */
-	for (uint i = 0; i < MAX_COMPANIES; i++) {
-		t->ratings[i] = Clamp(t->ratings[i], RATING_MINIMUM, RATING_MAXIMUM);
+	for (auto it = t->ratings.begin(); it != t->ratings.end(); ++it) {
+		*it = Clamp(*it, RATING_MINIMUM, RATING_MAXIMUM);
 	}
 
 	SetWindowDirty(WC_TOWN_AUTHORITY, t->index);

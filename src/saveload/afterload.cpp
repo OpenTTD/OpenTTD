@@ -2100,7 +2100,7 @@ bool AfterLoadGame()
 
 		for (Town *t : Town::Iterate()) {
 			if (t->have_ratings.base() == 0xFF) t->have_ratings.Set();
-			for (uint i = 8; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
+			t->ratings.fill(RATING_INITIAL);
 		}
 	}
 
