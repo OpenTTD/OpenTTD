@@ -1354,6 +1354,7 @@ void NetworkUpdateClientName(const std::string &client_name)
 			NetworkTextMessage(NetworkAction::ClientNameChange, CC_DEFAULT, false, ci->client_name, temporary_name);
 			ci->client_name = std::move(temporary_name);
 			NetworkUpdateClientInfo(CLIENT_ID_SERVER);
+			InvalidateWindowData(WC_CLIENT_LIST, 0);
 		}
 	}
 }
