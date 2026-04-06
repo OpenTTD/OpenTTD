@@ -1489,6 +1489,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::ReceiveClientSetName(Packet &p
 			NetworkTextMessage(NetworkAction::ClientNameChange, CC_DEFAULT, false, ci->client_name, client_name);
 			ci->client_name = std::move(client_name);
 			NetworkUpdateClientInfo(ci->client_id);
+			InvalidateWindowData(WC_CLIENT_LIST, 0);
 		}
 	}
 	return NETWORK_RECV_STATUS_OKAY;
