@@ -68,7 +68,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 
 	TileArea ta(start, end);
 	for (TileIndex tile : ta) {
-		SetTropicZone(tile, (_ctrl_pressed) ? TROPICZONE_NORMAL : TROPICZONE_DESERT);
+		SetTropicZone(tile, (_ctrl_pressed) ? TropicZone::Normal : TropicZone::Desert);
 		Command<Commands::LandscapeClear>::Post(tile);
 		MarkTileDirtyByTile(tile);
 	}

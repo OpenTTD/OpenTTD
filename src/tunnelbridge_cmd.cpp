@@ -1838,7 +1838,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 		}
 
 		case LandscapeType::Tropic:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT && !snow_or_desert) {
+			if (GetTropicZone(tile) == TropicZone::Desert && !snow_or_desert) {
 				SetTunnelBridgeSnowOrDesert(tile, true);
 				MarkTileDirtyByTile(tile);
 			}

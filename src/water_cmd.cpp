@@ -483,7 +483,7 @@ void MakeRiverAndModifyDesertZoneAround(TileIndex tile)
 
 	/* Remove desert directly around the river tile. */
 	for (auto t : SpiralTileSequence(tile, RIVER_OFFSET_DESERT_DISTANCE)) {
-		if (GetTropicZone(t) == TROPICZONE_DESERT) SetTropicZone(t, TROPICZONE_NORMAL);
+		if (GetTropicZone(t) == TropicZone::Desert) SetTropicZone(t, TropicZone::Normal);
 	}
 }
 
@@ -540,7 +540,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 					if (_game_mode == GM_EDITOR) {
 						/* Remove desert directly around the river tile. */
 						for (auto t : SpiralTileSequence(current_tile, RIVER_OFFSET_DESERT_DISTANCE)) {
-							if (GetTropicZone(t) == TROPICZONE_DESERT) SetTropicZone(t, TROPICZONE_NORMAL);
+							if (GetTropicZone(t) == TropicZone::Desert) SetTropicZone(t, TropicZone::Normal);
 						}
 					}
 					break;

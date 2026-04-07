@@ -155,7 +155,7 @@
 			return 0;
 
 		case TOWN_GROWTH_DESERT:
-			if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->cache.population > 60) return 1;
+			if (GetTropicZone(t->xy) == TropicZone::Desert && t->cache.population > 60) return 1;
 			return 0;
 
 		default: return t->goal[towneffect_id];

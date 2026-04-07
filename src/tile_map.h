@@ -225,8 +225,8 @@ inline bool IsTileOwner(Tile tile, Owner owner)
 inline void SetTropicZone(Tile tile, TropicZone type)
 {
 	assert(tile < Map::Size());
-	assert(!IsTileType(tile, TileType::Void) || type == TROPICZONE_NORMAL);
-	SB(tile.type(), 0, 2, type);
+	assert(!IsTileType(tile, TileType::Void) || type == TropicZone::Normal);
+	SB(tile.type(), 0, 2, to_underlying(type));
 }
 
 /**
@@ -238,7 +238,7 @@ inline void SetTropicZone(Tile tile, TropicZone type)
 inline TropicZone GetTropicZone(Tile tile)
 {
 	assert(tile < Map::Size());
-	return (TropicZone)GB(tile.type(), 0, 2);
+	return static_cast<TropicZone>(GB(tile.type(), 0, 2));
 }
 
 /**

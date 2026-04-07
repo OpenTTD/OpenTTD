@@ -2022,7 +2022,7 @@ static void TileLoop_Road(TileIndex tile)
 		}
 
 		case LandscapeType::Tropic:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT && !IsOnSnowOrDesert(tile)) {
+			if (GetTropicZone(tile) == TropicZone::Desert && !IsOnSnowOrDesert(tile)) {
 				ToggleSnowOrDesert(tile);
 				MarkTileDirtyByTile(tile);
 			}

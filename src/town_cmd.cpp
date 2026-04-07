@@ -3929,7 +3929,7 @@ static void UpdateTownGrowth(Town *t)
 					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->cache.population > 90) return;
 					break;
 				case TOWN_GROWTH_DESERT:
-					if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->received[i].old_act == 0 && t->cache.population > 60) return;
+					if (GetTropicZone(t->xy) == TropicZone::Desert && t->received[i].old_act == 0 && t->cache.population > 60) return;
 					break;
 				default:
 					if (t->goal[i] > t->received[i].old_act) return;

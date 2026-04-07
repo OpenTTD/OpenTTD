@@ -2681,7 +2681,7 @@ static void TileLoop_Rail(TileIndex tile)
 			}
 
 		case LandscapeType::Tropic:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
+			if (GetTropicZone(tile) == TropicZone::Desert) {
 				new_ground = RailGroundType::SnowOrDesert;
 				goto set_ground;
 			}

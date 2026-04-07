@@ -416,7 +416,7 @@ public:
 		for (int i = TAE_BEGIN; i < TAE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
-			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->cache.population <= 60)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TropicZone::Desert || this->town->cache.population <= 60)) continue;
 
 			if (first) {
 				DrawString(tr, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
@@ -540,7 +540,7 @@ public:
 		for (int i = TAE_BEGIN; i < TAE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
-			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->cache.population <= 60)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TropicZone::Desert || this->town->cache.population <= 60)) continue;
 
 			if (first) {
 				aimed_height += GetCharacterHeight(FS_NORMAL);
