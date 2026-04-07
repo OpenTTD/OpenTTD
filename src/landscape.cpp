@@ -847,7 +847,7 @@ void InitializeLandscape()
 		for (uint x = _settings_game.construction.freeform_edges ? 1 : 0; x < Map::MaxX(); x++) {
 			MakeClear(TileXY(x, y), ClearGround::Grass, 3);
 			SetTileHeight(TileXY(x, y), 0);
-			SetTropicZone(TileXY(x, y), TROPICZONE_NORMAL);
+			SetTropicZone(TileXY(x, y), TropicZone::Normal);
 			ClearBridgeMiddle(TileXY(x, y));
 		}
 	}
@@ -995,7 +995,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 			return t == INVALID_TILE || (TileHeight(t) < desert_tropic_line && !IsTileType(t, TileType::Water));
 		};
 		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_desert)) {
-			SetTropicZone(tile, TROPICZONE_DESERT);
+			SetTropicZone(tile, TropicZone::Desert);
 		}
 	}
 
@@ -1015,7 +1015,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 			return t == INVALID_TILE || !IsTileType(t, TileType::Clear) || !IsClearGround(t, ClearGround::Desert);
 		};
 		if (std::all_of(std::begin(_make_desert_or_rainforest_data), std::end(_make_desert_or_rainforest_data), allows_rainforest)) {
-			SetTropicZone(tile, TROPICZONE_RAINFOREST);
+			SetTropicZone(tile, TropicZone::Rainforest);
 		}
 	}
 }
@@ -1033,7 +1033,7 @@ static bool FindSpring(TileIndex tile)
 	if (!IsTileFlat(tile, &reference_height) || IsWaterTile(tile)) return false;
 
 	/* In the tropics rivers start in the rainforest. */
-	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) != TROPICZONE_RAINFOREST) return false;
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) != TropicZone::Rainforest) return false;
 
 	/* Rivers begin where water flows off hillsides and collects at the bottom. */
 	uint max_hill_distance = 1;
@@ -1070,7 +1070,7 @@ static bool FindSpring(TileIndex tile)
 static bool IsValidRiverTerminusTile(TileIndex tile, uint height)
 {
 	if (!IsValidTile(tile) || TileHeight(tile) != height || !IsTileFlat(tile)) return false;
-	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TropicZone::Desert) return false;
 
 	return true;
 }
@@ -1151,7 +1151,7 @@ static bool TryMakeRiverTerminus(TileIndex tile, TileIndex begin)
 	if (tile == begin) return false;
 
 	/* We don't want the river to end in the desert. */
-	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TropicZone::Desert) return false;
 
 	/* Only end on flat slopes. */
 	int height_lake;
