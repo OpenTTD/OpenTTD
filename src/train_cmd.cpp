@@ -3436,7 +3436,14 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 							v->wait_counter = 0;
 							return false;
 						}
-						goto reverse_train_direction;
+
+						if (reverse) {
+							v->wait_counter = 0;
+							v->cur_speed = 0;
+							v->subspeed = 0;
+							ReverseTrainDirection(v);
+						}
+						return false;
 					} else {
 						TryReserveRailTrack(gp.new_tile, TrackBitsToTrack(chosen_track), false);
 					}
@@ -3610,16 +3617,6 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 	if (direction_changed) first->tcache.cached_max_curve_speed = first->GetCurveSpeedLimit();
 
 	return true;
-
-reverse_train_direction:
-	if (reverse) {
-		v->wait_counter = 0;
-		v->cur_speed = 0;
-		v->subspeed = 0;
-		ReverseTrainDirection(v);
-	}
-
-	return false;
 }
 
 static bool IsRailStationPlatformOccupied(TileIndex tile)
