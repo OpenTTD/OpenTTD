@@ -3333,9 +3333,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					if (v->IsFrontEngine() && !TrainCheckIfLineEnds(v, reverse)) return false;
 
 					auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-					if (vets.Test(VehicleEnterTileState::CannotEnter)) {
-						goto invalid_rail;
-					}
+					assert(!vets.Test(VehicleEnterTileState::CannotEnter));
 					if (vets.Test(VehicleEnterTileState::EnteredStation)) {
 						/* The new position is the end of the platform */
 						TrainEnterStation(v, GetStationIndex(gp.new_tile));
@@ -3363,11 +3361,10 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					bits &= ~TrackCrossesTracks(FindFirstTrack(v->track));
 				}
 
-				if (bits == TRACK_BIT_NONE) goto invalid_rail;
+				assert(bits != TRACK_BIT_NONE);
 
-				/* Check if the new tile constrains tracks that are compatible
-				 * with the current train, if not, bail out. */
-				if (!CheckCompatibleRail(v, gp.new_tile)) goto invalid_rail;
+				/* The new tile must contain tracks that are compatible with the current train. */
+				assert(CheckCompatibleRail(v, gp.new_tile));
 
 				TrackBits chosen_track;
 				if (prev == nullptr) {
@@ -3490,9 +3487,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
 				auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-				if (vets.Test(VehicleEnterTileState::CannotEnter)) {
-					goto invalid_rail;
-				}
+				assert(!vets.Test(VehicleEnterTileState::CannotEnter));
 
 				if (!vets.Test(VehicleEnterTileState::EnteredWormhole)) {
 					Track track = FindFirstTrack(chosen_track);
@@ -3615,10 +3610,6 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 	if (direction_changed) first->tcache.cached_max_curve_speed = first->GetCurveSpeedLimit();
 
 	return true;
-
-invalid_rail:
-	/* We've reached end of line?? */
-	if (prev != nullptr) FatalError("Disconnecting train");
 
 reverse_train_direction:
 	if (reverse) {
