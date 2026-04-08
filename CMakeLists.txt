@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.17)
 
+#
+#
+set(CMAKE_EXE_LINKER_FLAGS, "{CMAKE_EXE_LINKER_FLAGS} -latomic")
+#
+#
+
 if(NOT BINARY_NAME)
     set(BINARY_NAME openttd)
 endif()
