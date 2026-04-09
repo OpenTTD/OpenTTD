@@ -26,7 +26,7 @@
 
 /* static */ std::vector<std::vector<Map::TileBase>> Map::base_tiles{};
 /* static */ std::vector<std::vector<Map::TileExtended>> Map::extended_tiles;
-/* static */ std::vector<uint16_t> Map::offsets{};
+/* static */ std::vector<MapOffsetType> Map::offsets{};
 
 /**
  * (Re)allocates a map with the given dimension
@@ -56,13 +56,13 @@
 	/* Allocate tiles. */
 	Map::base_tiles.clear();
 	Map::extended_tiles.clear();
-	Map::base_tiles.resize(size_y, std::vector<Map::TileBase>{ size_x });
-	Map::extended_tiles.resize(size_y, std::vector<Map::TileExtended>{ size_x });
+	Map::base_tiles.resize(Map::size >> LOG_2_OF_TILE_INDEXES_PER_CHUNK, std::vector<Map::TileBase>{ TILE_INDEXES_PER_CHUNK });
+	Map::extended_tiles.resize(Map::size >> LOG_2_OF_TILE_INDEXES_PER_CHUNK, std::vector<Map::TileExtended>{ TILE_INDEXES_PER_CHUNK });
 	/* Allocate offset array for each map line. */
 	Map::offsets.clear();
-	Map::offsets.resize(size_x * size_y);
-	for (uint i = 0; i < size_x * size_y; i++) {
-		Map::offsets[i] = i & (size_x - 1);
+	Map::offsets.resize(Map::size);
+	for (uint i = 0; i < Map::size; i++) {
+		Map::offsets[i] = i & (TILE_INDEXES_PER_CHUNK - 1);
 	}
 
 	AllocateWaterRegions();

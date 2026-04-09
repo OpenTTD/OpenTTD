@@ -92,7 +92,7 @@ private:
 
 	static std::vector<std::vector<TileBase>> base_tiles; ///< Map array organized as an array of tile lines.
 	static std::vector<std::vector<TileExtended>> extended_tiles; ///< Extended map array organized as an array of tile lines.
-	static std::vector<uint16_t> offsets; ///< Mapping of TileIndex to offset in tile line.
+	static std::vector<MapOffsetType> offsets; ///< Mapping of TileIndex to offset in tile line.
 
 public:
 	static void Allocate(uint size_x, uint size_y);
@@ -259,8 +259,8 @@ public:
 	Tile(TileIndex::BaseType tile_index)
 	{
 		if (tile_index < Map::Size()) {
-			this->tile = &Map::base_tiles[TileY(TileIndex{tile_index})][Map::offsets[tile_index]];
-			this->tile_extended = &Map::extended_tiles[TileY(TileIndex{tile_index})][Map::offsets[tile_index]];
+			this->tile = &Map::base_tiles[tile_index >> LOG_2_OF_TILE_INDEXES_PER_CHUNK][Map::offsets[tile_index]];
+			this->tile_extended = &Map::extended_tiles[tile_index >> LOG_2_OF_TILE_INDEXES_PER_CHUNK][Map::offsets[tile_index]];
 		} else {
 			this->tile = nullptr;
 			this->tile_extended = nullptr;

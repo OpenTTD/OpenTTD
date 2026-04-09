@@ -39,6 +39,17 @@ static const uint MAX_MAP_SIZE_BITS = 12;                      ///< Maximal size
 static const uint MIN_MAP_SIZE      = 1U << MIN_MAP_SIZE_BITS; ///< Minimal map size = 64
 static const uint MAX_MAP_SIZE      = 1U << MAX_MAP_SIZE_BITS; ///< Maximal map size = 4096
 
+static constexpr uint LOG_2_OF_TILES_PER_TILE_INDEX = 2; ///< TILES_PER_TILE_INDEX is a power of two. This is the power to wich 2 has to be raised.
+static constexpr uint TILES_PER_TILE_INDEX = 1 << LOG_2_OF_TILES_PER_TILE_INDEX; ///< How many tiles can be under one TileIndex.
+/* While TILES_PER_TILE_INDEX is less than 11 the uint8_t is more memory efficient than uint16_t.
+ * That's because std::vector usually takes up 24 bytes.
+ * To calculate this the following formula can be used, where: n is number of bits used to store offset and l is log 2 from number of tile indexes per map.
+ * `8 * sizeof(std::vector<Map::TileBase>) * TILES_PER_TILE_INDEX * (1 << (l - n)) + (1 << l) * n`
+ * @note The result on how many bits to use to store the offset is independent on chosen value of l. */
+using MapOffsetType = uint8_t; ///< Type used for Map::offset.
+static constexpr uint LOG_2_OF_TILE_INDEXES_PER_CHUNK = sizeof(MapOffsetType) * 8 - LOG_2_OF_TILES_PER_TILE_INDEX; ///< TILE_INDEXES_PER_CHUNK is a power of two. This is the power to wich 2 has to be raised.
+static constexpr uint TILE_INDEXES_PER_CHUNK = 1U << LOG_2_OF_TILE_INDEXES_PER_CHUNK; ///< How many tile indexes fit into one chunk of map array.
+
 /** Argument for CmdLevelLand describing what to do. */
 enum LevelMode : uint8_t {
 	LM_LEVEL, ///< Level the land.
