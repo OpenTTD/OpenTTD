@@ -846,6 +846,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_station_view_widgets
 					SetStringTip(STR_STATION_VIEW_CLOSE_AIRPORT, STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP),
 		EndContainer(),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SV_CATCHMENT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_GRAPH), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_INDUSTRY_VIEW_CARGO_GRAPH, STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_TRAINS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_ROADVEHS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_SHIPS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
@@ -2044,6 +2045,12 @@ struct StationViewWindow : public Window {
 				this->SelectSortOrder(this->sort_orders[1] == SO_ASCENDING ? SO_DESCENDING : SO_ASCENDING);
 				this->SetTimeout();
 				this->LowerWidget(WID_SV_SORT_ORDER);
+				break;
+			}
+
+			case WID_SV_GRAPH: {
+				extern void ShowStationGraph(WindowNumber window_number);
+				ShowStationGraph(this->window_number);
 				break;
 			}
 		}

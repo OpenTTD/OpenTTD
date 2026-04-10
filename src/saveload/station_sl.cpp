@@ -366,6 +366,76 @@ public:
 	}
 };
 
+/** Saveload handler for staiton cargo history. */
+class SlStationCargoHistory : public DefaultSaveLoadHandler<SlStationCargoHistory, GoodsEntry::CargoHistoryData> {
+public:
+	/** Saveload description for handler. */
+	static inline const SaveLoad description[] = {
+		 SLE_VAR(GoodsEntry::CargoHistory, rx_accepted, SLE_UINT16),
+		 SLE_VAR(GoodsEntry::CargoHistory, rx_waiting, SLE_UINT16),
+		 SLE_VAR(GoodsEntry::CargoHistory, rx_supply, SLE_UINT16),
+		 SLE_VAR(GoodsEntry::CargoHistory, rx_lost, SLE_UINT16),
+		 SLE_VAR(GoodsEntry::CargoHistory, rating, SLE_UINT8),
+	};
+	/** Compatibility saveload description for handler. */
+	static inline const SaveLoadCompatTable compat_description = {};
+
+	void Save(GoodsEntry::CargoHistoryData *chd) const override
+	{
+		auto &history = chd->history;
+		SlSetStructListLength(history.size());
+		for (auto &h : history) {
+			SlObject(&h, this->GetDescription());
+		}
+	}
+
+	void Load(GoodsEntry::CargoHistoryData *chd) const override
+	{
+		size_t len = SlGetStructListLength(UINT32_MAX);
+
+		auto &history = chd->history;
+		for (auto &h : history) {
+			if (--len > history.size()) break; // unsigned so wraps after hitting zero.
+			SlObject(&h, this->GetDescription());
+		}
+	}
+};
+
+/** Saveload handler for staiton cargo history data. */
+class SlStationCargoHistoryData : public DefaultSaveLoadHandler<SlStationCargoHistoryData, GoodsEntry> {
+public:
+	/** Saveload description for handler. */
+	static inline const SaveLoad description[] = {
+		SLE_VAR(GoodsEntry::CargoHistoryData, accumulated_waiting, SLE_UINT32),
+		SLE_VAR(GoodsEntry::CargoHistoryData, supply, SLE_UINT32),
+		SLE_VAR(GoodsEntry::CargoHistoryData, lost, SLE_UINT32),
+		SLE_VAR(GoodsEntry::CargoHistoryData, accepted, SLE_UINT32),
+		SLEG_STRUCTLIST("history", SlStationCargoHistory),
+	};
+	/** Compatibility saveload description for handler. */
+	static inline const SaveLoadCompatTable compat_description = _station_cargo_sl_compat;
+
+	void Save(GoodsEntry *ge) const override
+	{
+		/* Cargo history data isn't really a list, however because it's optional data we use the list length to
+		 * record whether the data is present or not. */
+
+		if (!ge->HasHistory()) {
+			SlSetStructListLength(0);
+			return;
+		}
+
+		SlSetStructListLength(1);
+		SlObject(&ge->GetHistory(), this->GetDescription());
+	}
+
+	void Load(GoodsEntry *ge) const override
+	{
+		if (SlGetStructListLength(1) != 1) return;
+		SlObject(&ge->GetOrCreateHistory(), this->GetLoadDescription());
+	}
+};
+
 class SlStationGoods : public DefaultSaveLoadHandler<SlStationGoods, BaseStation> {
 public:
 	static inline uint cargo_reserved_count;
@@ -393,6 +463,9 @@ public:
 		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_183, SL_MAX_VERSION),
 		SLEG_CONDSTRUCTLIST("flow", SlStationFlow,                                SLV_183, SL_MAX_VERSION),
 		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo,                              SLV_183, SL_MAX_VERSION),
+
+		SLE_VAR(GoodsEntry, accumulated_rating, SLE_UINT16),
+		SLEG_STRUCTLIST("stats", SlStationCargoHistoryData),
 	};
 
 	static inline const SaveLoadCompatTable compat_description = _station_goods_sl_compat;
@@ -655,6 +728,7 @@ public:
 		SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 		SLEG_CONDSTRUCTLIST("speclist", SlRoadStopTileData,                          SLV_NEWGRF_ROAD_STOPS, SLV_ROAD_STOP_TILE_DATA),
 		SLEG_STRUCTLIST("goods", SlStationGoods),
+		SLE_VAR(Station, valid_cargo_history, SLE_UINT64),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_normal_sl_compat;
 

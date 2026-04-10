@@ -1376,6 +1376,17 @@ struct BaseCargoGraphWindow : BaseGraphWindow {
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_GRAPH_MATRIX);
 	}
+
+	/** Timer to periodically refresh the available cargo types. */
+	const IntervalTimer<TimerGameCalendar> update_cargo_types_interval = {{TimerGameCalendar::Trigger::Day, TimerGameCalendar::Priority::None}, [this](auto) {
+		CargoTypes new_cargo_types = this->GetCargoTypes(this->window_number);
+		if (new_cargo_types == this->cargo_types) return;
+
+		this->cargo_types = new_cargo_types;
+		this->vscroll->SetCount(CountBits(this->cargo_types));
+
+		this->InvalidateData(0, false);
+	}};
 };
 
 /*****************/
@@ -2055,6 +2066,184 @@ static WindowDesc _town_cargo_graph_desc(
 void ShowTownCargoGraph(WindowNumber window_number)
 {
 	AllocateWindowDescFront<TownCargoGraphWindow>(_town_cargo_graph_desc, window_number);
+}
+
+/** Window for station cargo graphs. */
+struct StationGraphWindow : BaseCargoGraphWindow {
+	/** List of range label strings. */
+	static inline constexpr StringID RANGE_LABELS[] = {
+		STR_GRAPH_STATION_RANGE_ACCEPTED,
+		STR_GRAPH_STATION_RANGE_WAITING,
+		STR_GRAPH_STATION_RANGE_SUPPLY,
+		STR_GRAPH_STATION_RANGE_LOST,
+	};
+
+	/** Cargo types to filter out. */
+	static inline CargoTypes excluded_cargo_types{};
+
+	/**
+	 * Construct this station graph window.
+	 * @param desc Window description.
+	 * @param window_number Station index.
+	 */
+	StationGraphWindow(WindowDesc &desc, WindowNumber window_number) :
+			BaseCargoGraphWindow(desc, STR_JUST_COMMA)
+	{
+		this->num_on_x_axis = GRAPH_NUM_MONTHS;
+		this->num_vert_lines = GRAPH_NUM_MONTHS;
+		this->month_increment = 1;
+		this->x_values_reversed = true;
+		this->x_values_increment = ECONOMY_MONTH_MINUTES;
+		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
+		this->ranges = RANGE_LABELS;
+
+		this->InitializeWindow(window_number, STR_GRAPH_LAST_24_MINUTES_TIME_LABEL);
+	}
+
+	void OnInit() override
+	{
+		this->BaseCargoGraphWindow::OnInit();
+
+		this->scales = TimerGameEconomy::UsingWallclockUnits() ? MONTHLY_SCALE_WALLCLOCK : MONTHLY_SCALE_CALENDAR;
+	}
+
+	CargoTypes GetCargoTypes(WindowNumber window_number) const override
+	{
+		CargoTypes cargo_types{};
+		const Station *st = Station::Get(window_number);
+		for (CargoType cargo_type : SetCargoBitIterator(_cargo_mask)) {
+			if (st->goods[cargo_type].HasRating() || st->goods[cargo_type].HasHistory()) SetBit(cargo_types, cargo_type);
+		}
+		return cargo_types;
+	}
+
+	CargoTypes &GetExcludedCargoTypes() const override
+	{
+		return StationGraphWindow::excluded_cargo_types;
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_STATION_CAPTION, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
+	}
+
+	void UpdateStatistics(bool initialize) override
+	{
+		int mo = TimerGameEconomy::month - this->num_vert_lines;
+		auto yr = TimerGameEconomy::year;
+		while (mo < 0) {
+			yr--;
+			mo += 12;
+		}
+
+		if (!initialize && this->excluded_data == this->GetExcludedCargoTypes() && this->num_on_x_axis == this->num_vert_lines && this->year == yr && this->month == mo) {
+			/* There's no reason to get new stats */
+			return;
+		}
+
+		this->excluded_data = this->GetExcludedCargoTypes();
+		this->year = yr;
+		this->month = mo;
+
+		const Station *st = Station::Get(this->window_number);
+
+		this->data.clear();
+		this->data.reserve(
+			4 * std::ranges::count_if(st->goods, &GoodsEntry::HasHistory));
+
+		for (CargoType cargo_type : SetCargoBitIterator(this->cargo_types)) {
+			const GoodsEntry &ge = st->goods[cargo_type];
+			if (!ge.HasHistory()) continue;
+
+			const CargoSpec *cs = CargoSpec::Get(cargo_type);
+
+			DataSet &accepted = this->data.emplace_back();
+			accepted.colour = cs->legend_colour;
+			accepted.exclude_bit = cs->Index();
+			accepted.range_bit = 0;
+
+			DataSet &waiting = this->data.emplace_back();
+			waiting.colour = cs->legend_colour;
+			waiting.exclude_bit = cs->Index();
+			waiting.range_bit = 1;
+			waiting.dash = 1;
+
+			DataSet &supply = this->data.emplace_back();
+			supply.colour = cs->legend_colour;
+			supply.exclude_bit = cs->Index();
+			supply.range_bit = 2;
+			supply.dash = 2;
+
+			DataSet &lost = this->data.emplace_back();
+			lost.colour = cs->legend_colour;
+			lost.exclude_bit = cs->Index();
+			lost.range_bit = 3;
+			lost.dash = 3;
+
+			FillFromHistory<GRAPH_NUM_MONTHS>(ge.GetHistory().history, st->valid_cargo_history, *this->scales[this->selected_scale].history_range,
+				RxFiller{{accepted}, &GoodsEntry::CargoHistory::rx_accepted},
+				RxFiller{{waiting}, &GoodsEntry::CargoHistory::rx_waiting},
+				RxFiller{{supply}, &GoodsEntry::CargoHistory::rx_supply},
+				RxFiller{{lost}, &GoodsEntry::CargoHistory::rx_lost});
+		}
+
+		this->SetDirty();
+	}
+};
+
+/** Widgets of the station graph window. */
+static constexpr NWidgetPart _nested_station_graph_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GRAPH_CAPTION),
+		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WID_GRAPH_BACKGROUND), SetMinimalSize(568, 128),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_RANGE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_ENABLE_CARGOES), SetStringTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GRAPH_DISABLE_CARGOES), SetStringTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_MATRIX), SetFill(1, 0), SetResize(0, 2), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO), SetScrollbar(WID_GRAPH_MATRIX_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GRAPH_MATRIX_SCROLLBAR),
+				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidget(WWT_MATRIX, COLOUR_BROWN, WID_GRAPH_SCALE_MATRIX), SetFill(1, 0), SetResize(0, 0), SetMatrixDataTip(1, 0, STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FontSize::Small), SetAlignment(SA_CENTER),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
+		EndContainer(),
+	EndContainer(),
+};
+
+/** Window definition for the station graph window. */
+static WindowDesc _station_graph_desc(
+	WDP_AUTO, "graph_station", 0, 0,
+	WC_INDUSTRY_PRODUCTION, WC_STATION_VIEW,
+	{},
+	_nested_station_graph_widgets
+);
+
+/**
+ * Create a station graph window for a station.
+ * @param window_number The station index.
+ */
+void ShowStationGraph(WindowNumber window_number)
+{
+	AllocateWindowDescFront<StationGraphWindow>(_station_graph_desc, window_number);
 }
 
 /**
