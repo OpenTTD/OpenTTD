@@ -662,6 +662,16 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Toggle graph of
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Delivered
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Toggle graph of cargo delivered to this town
 
+STR_GRAPH_STATION_CAPTION                                       :{WHITE}{STATION} - Cargo History
+STR_GRAPH_STATION_RANGE_ACCEPTED                                :Accepted
+STR_GRAPH_STATION_RANGE_ACCEPTED_TOOLTIP                        :Toggle graph of cargo accepted by this station
+STR_GRAPH_STATION_RANGE_WAITING                                 :Waiting
+STR_GRAPH_STATION_RANGE_WAITING_TOOLTIP                         :Toggle graph of cargo waiting at this station
+STR_GRAPH_STATION_RANGE_SUPPLY                                  :Supply
+STR_GRAPH_STATION_RANGE_SUPPLY_TOOLTIP                          :Toggle graph of cargo supply of this station
+STR_GRAPH_STATION_RANGE_LOST                                    :Lost
+STR_GRAPH_STATION_RANGE_LOST_TOOLTIP                            :Toggle graph of cargo lost at this station
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
 # Graph key window
@@ -3927,6 +3937,9 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show sta
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Supply per month and local rating:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Supply per minute and local rating:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GRAPH                                          :Graph
+STR_STATION_VIEW_GRAPH_TOOLTIP                                  :Shows the graph of station cargo history
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Group by
 STR_STATION_VIEW_WAITING_STATION                                :Station: Waiting
