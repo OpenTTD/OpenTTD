@@ -152,4 +152,42 @@ void FillFromHistory(const HistoryData<T> *history, ValidHistoryMask valid_histo
 	}
 }
 
+/** First knee of range-compressed data. */
+static constexpr uint RX_KNEE1{0x100};
+/** Second knee of range-compressed data. */
+static constexpr uint RX_KNEE2{0x1000};
+/** Shift to apply after first knee. */
+static constexpr uint RX_SHIFT1{3};
+/** Shift to apply after second knee. */
+static constexpr uint RX_SHIFT2{6};
+/** Offset for uncompressed data after first knee. */
+static constexpr uint RX_OFFSET1{RX_KNEE1};
+/** Offset for uncompressed data after second knee. */
+static constexpr uint RX_OFFSET2{((RX_KNEE2 - RX_KNEE1) << RX_SHIFT1) + RX_KNEE1};
+
+/**
+ * Compress unsigned integer into 16 bits, in a way that increases dynamic range at the expense of precision for large values.
+ * @note The largest compressable value is 3963072. Values beyond this will be clamped.
+ * @param num Value to compress.
+ * @return Range compressed value.
+ */
+inline uint16_t RxCompress(uint32_t num)
+{
+	if (num > RX_OFFSET2) return ClampTo<uint16_t>(RX_KNEE2 + ((num - RX_OFFSET2) >> RX_SHIFT2));
+	if (num > RX_OFFSET1) return ClampTo<uint16_t>(RX_KNEE1 + ((num - RX_OFFSET1) >> RX_SHIFT1));
+	return num;
+}
+
+/**
+ * Decompress a range-compressed integer.
+ * @param num Range compressed value.
+ * @return Decompressed value.
+ */
+inline uint32_t RxDecompress(uint16_t num)
+{
+	if (num > RX_KNEE2) return ((num - RX_KNEE2) << RX_SHIFT2) + RX_OFFSET2;
+	if (num > RX_KNEE1) return ((num - RX_KNEE1) << RX_SHIFT1) + RX_OFFSET1;
+	return num;
+}
+
 #endif /* HISTORY_FUNC_HPP */

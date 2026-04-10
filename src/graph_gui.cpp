@@ -269,6 +269,24 @@ protected:
 	};
 
 	/**
+	 * Fill graph dataset with transformed data.
+	 * @param Tprojection Projection to apply to data.
+	 * @param Ttransformer Transformer to apply to data.
+	 */
+	template <typename Tprojection, typename Ttransformer>
+	struct TransformFiller : BaseFiller {
+		Tprojection proj; ///< Projection to apply.
+		Ttransformer transformer; ///< Transformer to apply.
+
+		/**
+		 * Fill graph dataset with transform data.
+		 * @param i data index to fill.
+		 * @param data data with field.
+		 */
+		inline void Fill(uint i, const auto &data) const { this->dataset.values[i] = transformer(std::invoke(this->proj, data)); }
+	};
+
+	/**
 	 * Get appropriate part of dataset values for the current number of horizontal points.
 	 * @param dataset Dataset to get values of
 	 * @returns span covering dataset's current valid range.
