@@ -262,6 +262,22 @@ protected:
 	};
 
 	/**
+	 * Fill graph dataset with range-compressed data.
+	 * @param Tprojection Projection to apply to data.
+	 */
+	template <typename Tprojection>
+	struct RxFiller : BaseFiller {
+		Tprojection proj; ///< Projection to apply.
+
+		/**
+		 * Fill graph dataset with range-compressed data.
+		 * @param i data index to fill.
+		 * @param data data with range-compressed field.
+		 */
+		inline void Fill(uint i, const auto &data) const { this->dataset.values[i] = RxDecompress(std::invoke(this->proj, data)); }
+	};
+
+	/**
 	 * Get appropriate part of dataset values for the current number of horizontal points.
 	 * @param dataset Dataset to get values of
 	 * @returns span covering dataset's current valid range.
