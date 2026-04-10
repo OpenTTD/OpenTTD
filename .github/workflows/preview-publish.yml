@@ -56,4 +56,4 @@ jobs:
         -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
         -H "X-GitHub-Api-Version: 2026-03-10" \
         ${{ steps.deployment.outputs.url }} \
-        -d '{"state":"${{ job.status }}","log_url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","environment_url":"https://preview.openttd.org/pr${{ steps.pr.outputs.number }}/"}'
+        -d '{"state":"${{ job.status }}","log_url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","environment_url":"https://preview.openttd.org/pr${{ steps.pr.outputs.number }}/","auto_inactive":false}'
