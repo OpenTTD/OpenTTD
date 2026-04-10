@@ -26,7 +26,7 @@ jobs:
         -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
         -H "X-GitHub-Api-Version: 2026-03-10" \
         https://api.github.com/repos/${{ github.repository }}/deployments \
-        -d '{"ref":"${{ github.event.workflow_run.head_branch }}","environment":"preview","required_contexts":[]}' \
+        -d '{"ref":"${{ github.event.workflow_run.head_sha }}","environment":"preview","required_contexts":[]}' \
         | jq --raw-output0 '"url=\(.statuses_url)"' >> $GITHUB_OUTPUT
 
     - name: Download artifacts
