@@ -295,7 +295,7 @@ struct AIConfigWindow : public Window {
 				if (!_network_available) {
 					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WL_ERROR);
 				} else {
-					ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_AI);
+					ShowNetworkContentListWindow(nullptr, ContentType::Ai);
 				}
 				break;
 		}

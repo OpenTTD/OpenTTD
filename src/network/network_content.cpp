@@ -69,16 +69,16 @@ using HasContentProc = bool(const ContentInfo &ci, bool md5sum);
 static HasContentProc *GetHasContentProcforContentType(ContentType type)
 {
 	switch (type) {
-		case CONTENT_TYPE_NEWGRF: return HasGRFConfig;
-		case CONTENT_TYPE_BASE_GRAPHICS: return BaseGraphics::HasSet;
-		case CONTENT_TYPE_BASE_MUSIC: return BaseMusic::HasSet;
-		case CONTENT_TYPE_BASE_SOUNDS: return BaseSounds::HasSet;
-		case CONTENT_TYPE_AI: return AI::HasAI;
-		case CONTENT_TYPE_AI_LIBRARY: return AI::HasAILibrary;
-		case CONTENT_TYPE_GAME: return Game::HasGame;
-		case CONTENT_TYPE_GAME_LIBRARY: return Game::HasGameLibrary;
-		case CONTENT_TYPE_SCENARIO: return HasScenario;
-		case CONTENT_TYPE_HEIGHTMAP: return HasScenario;
+		case ContentType::NewGRF: return HasGRFConfig;
+		case ContentType::BaseGraphics: return BaseGraphics::HasSet;
+		case ContentType::BaseMusic: return BaseMusic::HasSet;
+		case ContentType::BaseSounds: return BaseSounds::HasSet;
+		case ContentType::Ai: return AI::HasAI;
+		case ContentType::AiLibrary: return AI::HasAILibrary;
+		case ContentType::Gs: return Game::HasGame;
+		case ContentType::GsLibrary: return Game::HasGameLibrary;
+		case ContentType::Scenario: return HasScenario;
+		case ContentType::Heightmap: return HasScenario;
 		default: return nullptr;
 	}
 }
@@ -174,24 +174,24 @@ bool ClientNetworkContentSocketHandler::ReceiveServerInfo(Packet &p)
  */
 void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 {
-	if (type == CONTENT_TYPE_END) {
-		this->RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
-		this->RequestContentList(CONTENT_TYPE_BASE_MUSIC);
-		this->RequestContentList(CONTENT_TYPE_BASE_SOUNDS);
-		this->RequestContentList(CONTENT_TYPE_SCENARIO);
-		this->RequestContentList(CONTENT_TYPE_HEIGHTMAP);
-		this->RequestContentList(CONTENT_TYPE_AI);
-		this->RequestContentList(CONTENT_TYPE_AI_LIBRARY);
-		this->RequestContentList(CONTENT_TYPE_GAME);
-		this->RequestContentList(CONTENT_TYPE_GAME_LIBRARY);
-		this->RequestContentList(CONTENT_TYPE_NEWGRF);
+	if (type == ContentType::End) {
+		this->RequestContentList(ContentType::BaseGraphics);
+		this->RequestContentList(ContentType::BaseMusic);
+		this->RequestContentList(ContentType::BaseSounds);
+		this->RequestContentList(ContentType::Scenario);
+		this->RequestContentList(ContentType::Heightmap);
+		this->RequestContentList(ContentType::Ai);
+		this->RequestContentList(ContentType::AiLibrary);
+		this->RequestContentList(ContentType::Gs);
+		this->RequestContentList(ContentType::GsLibrary);
+		this->RequestContentList(ContentType::NewGRF);
 		return;
 	}
 
 	this->Connect();
 
 	auto p = std::make_unique<Packet>(this, PacketContentType::ClientInfoList);
-	p->Send_uint8 ((uint8_t)type);
+	p->Send_uint8 (to_underlying(type));
 	p->Send_uint32(0xffffffff);
 	p->Send_uint8 (1);
 	p->Send_string("vanilla");
@@ -533,7 +533,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 		std::string fname = GetFullFilename(*this->cur_info, false);
 		ts.AddFile(sd, fname);
 
-		if (this->cur_info->type == CONTENT_TYPE_BASE_MUSIC) {
+		if (this->cur_info->type == ContentType::BaseMusic) {
 			/* Music can't be in a tar. So extract the tar! */
 			ExtractTar(fname, Subdirectory::Baseset);
 			FioRemove(fname);
