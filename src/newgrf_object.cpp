@@ -138,6 +138,9 @@ void ResetObjects()
 	/* Set class for originals. */
 	_object_specs[OBJECT_LIGHTHOUSE].class_index = ObjectClass::Allocate('LTHS');
 	_object_specs[OBJECT_TRANSMITTER].class_index = ObjectClass::Allocate('TRNS');
+
+	/* Reset any overrides that have been set. */
+	_object_mngr.ResetOverride();
 }
 
 template <>
