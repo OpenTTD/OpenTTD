@@ -203,12 +203,12 @@ struct GRFConfig {
 using GRFConfigList = std::vector<std::unique_ptr<GRFConfig>>;
 
 /** Method to find GRFs using FindGRFConfig */
-enum FindGRFConfigMode : uint8_t {
-	FGCM_EXACT,       ///< Only find Grfs matching md5sum
-	FGCM_COMPATIBLE,  ///< Find best compatible Grf wrt. desired_version
-	FGCM_NEWEST,      ///< Find newest Grf
-	FGCM_NEWEST_VALID,///< Find newest Grf, ignoring Grfs with GRFConfigFlag::Invalid set
-	FGCM_ANY,         ///< Use first found
+enum class FindGRFConfigMode : uint8_t {
+	Exact, ///< Only find Grfs matching md5sum
+	Compatible, ///< Find best compatible Grf wrt. desired_version
+	Newest, ///< Find newest Grf
+	NewestValid, ///< Find newest Grf, ignoring Grfs with GRFConfigFlag::Invalid set
+	Any, ///< Use first found
 };
 
 extern GRFConfigList _all_grfs;          ///< First item in list of all scanned NewGRFs
