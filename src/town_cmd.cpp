@@ -2033,12 +2033,12 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 	/* Set the default cargo requirement for town growth */
 	switch (_settings_game.game_creation.landscape) {
 		case LandscapeType::Arctic:
-			if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_WINTER;
+			if (FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect::Food) != nullptr) t->goal[TownAcceptanceEffect::Food] = TOWN_GROWTH_WINTER;
 			break;
 
 		case LandscapeType::Tropic:
-			if (FindFirstCargoWithTownAcceptanceEffect(TAE_FOOD) != nullptr) t->goal[TAE_FOOD] = TOWN_GROWTH_DESERT;
-			if (FindFirstCargoWithTownAcceptanceEffect(TAE_WATER) != nullptr) t->goal[TAE_WATER] = TOWN_GROWTH_DESERT;
+			if (FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect::Food) != nullptr) t->goal[TownAcceptanceEffect::Food] = TOWN_GROWTH_DESERT;
+			if (FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect::Water) != nullptr) t->goal[TownAcceptanceEffect::Water] = TOWN_GROWTH_DESERT;
 			break;
 
 		default:
@@ -3182,7 +3182,7 @@ CommandCost CmdTownCargoGoal(DoCommandFlags flags, TownID town_id, TownAcceptanc
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
-	if (tae < TAE_BEGIN || tae >= TAE_END) return CMD_ERROR;
+	if (tae < TownAcceptanceEffect::Begin || tae >= TownAcceptanceEffect::End) return CMD_ERROR;
 
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr) return CMD_ERROR;
@@ -3923,7 +3923,7 @@ static void UpdateTownGrowth(Town *t)
 
 	if (t->fund_buildings_months == 0) {
 		/* Check if all goals are reached for this town to grow (given we are not funding it) */
-		for (int i = TAE_BEGIN; i < TAE_END; i++) {
+		for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; i++) {
 			switch (t->goal[i]) {
 				case TOWN_GROWTH_WINTER:
 					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->cache.population > 90) return;
