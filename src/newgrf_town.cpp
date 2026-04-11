@@ -113,14 +113,14 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 		case 0xC9: return TownHistoryHelper(this->t, CT_MAIL, LAST_MONTH, &Town::SuppliedHistory::transported) >> 8;
 		case 0xCA: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_PASSENGERS));
 		case 0xCB: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_MAIL));
-		case 0xCC: return this->t->received[TAE_FOOD].new_act;
-		case 0xCD: return GB(this->t->received[TAE_FOOD].new_act, 8, 8);
-		case 0xCE: return this->t->received[TAE_WATER].new_act;
-		case 0xCF: return GB(this->t->received[TAE_WATER].new_act, 8, 8);
-		case 0xD0: return this->t->received[TAE_FOOD].old_act;
-		case 0xD1: return GB(this->t->received[TAE_FOOD].old_act, 8, 8);
-		case 0xD2: return this->t->received[TAE_WATER].old_act;
-		case 0xD3: return GB(this->t->received[TAE_WATER].old_act, 8, 8);
+		case 0xCC: return this->t->received[TownAcceptanceEffect::Food].new_act;
+		case 0xCD: return GB(this->t->received[TownAcceptanceEffect::Food].new_act, 8, 8);
+		case 0xCE: return this->t->received[TownAcceptanceEffect::Water].new_act;
+		case 0xCF: return GB(this->t->received[TownAcceptanceEffect::Water].new_act, 8, 8);
+		case 0xD0: return this->t->received[TownAcceptanceEffect::Food].old_act;
+		case 0xD1: return GB(this->t->received[TownAcceptanceEffect::Food].old_act, 8, 8);
+		case 0xD2: return this->t->received[TownAcceptanceEffect::Water].old_act;
+		case 0xD3: return GB(this->t->received[TownAcceptanceEffect::Water].old_act, 8, 8);
 		case 0xD4: return this->t->road_build_months;
 		case 0xD5: return this->t->fund_buildings_months;
 	}

@@ -25,7 +25,7 @@
 
 /* static */ bool ScriptCargo::IsValidTownEffect(TownEffect towneffect_type)
 {
-	return (towneffect_type >= (TownEffect)TAE_BEGIN && towneffect_type < (TownEffect)TAE_END);
+	return (towneffect_type >= (TownEffect)TownAcceptanceEffect::Begin && towneffect_type < (TownEffect)TownAcceptanceEffect::End);
 }
 
 /* static */ std::optional<std::string> ScriptCargo::GetName(CargoType cargo_type)

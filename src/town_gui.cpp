@@ -413,7 +413,7 @@ public:
 		}
 
 		bool first = true;
-		for (int i = TAE_BEGIN; i < TAE_END; i++) {
+		for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; i++) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TropicZone::Desert || this->town->cache.population <= 60)) continue;
@@ -537,7 +537,7 @@ public:
 		uint aimed_height = static_cast<uint>(1 + CargoSpec::town_production_cargoes[TPE_PASSENGERS].size() + CargoSpec::town_production_cargoes[TPE_MAIL].size()) * GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
-		for (int i = TAE_BEGIN; i < TAE_END; i++) {
+		for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; i++) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TropicZone::Desert || this->town->cache.population <= 60)) continue;

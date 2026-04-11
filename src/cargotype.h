@@ -19,17 +19,18 @@
 #include "core/bitmath_func.hpp"
 
 /** Town growth effect when delivering cargo. */
-enum TownAcceptanceEffect : uint8_t {
-	TAE_BEGIN = 0,
-	TAE_NONE = TAE_BEGIN, ///< Cargo has no effect.
-	TAE_PASSENGERS, ///< Cargo behaves passenger-like.
-	TAE_MAIL, ///< Cargo behaves mail-like.
-	TAE_GOODS, ///< Cargo behaves goods/candy-like.
-	TAE_WATER, ///< Cargo behaves water-like.
-	TAE_FOOD, ///< Cargo behaves food/fizzy-drinks-like.
-	TAE_END, ///< End of town effects.
-	NUM_TAE = TAE_END, ///< Amount of town effects.
+enum class TownAcceptanceEffect : uint8_t {
+	Begin = 0,
+	None = TownAcceptanceEffect::Begin, ///< Cargo has no effect.
+	Passengers, ///< Cargo behaves passenger-like.
+	Mail, ///< Cargo behaves mail-like.
+	Goods, ///< Cargo behaves goods/candy-like.
+	Water, ///< Cargo behaves water-like.
+	Food, ///< Cargo behaves food/fizzy-drinks-like.
+	End, ///< End of town effects.
 };
+
+DECLARE_INCREMENT_DECREMENT_OPERATORS(TownAcceptanceEffect)
 
 /** Town effect when producing cargo. */
 enum TownProductionEffect : uint8_t {

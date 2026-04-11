@@ -145,15 +145,15 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				uint8_t substitute_type = buf.ReadByte();
 
 				switch (substitute_type) {
-					case 0x00: cs->town_acceptance_effect = TAE_PASSENGERS; break;
-					case 0x02: cs->town_acceptance_effect = TAE_MAIL; break;
-					case 0x05: cs->town_acceptance_effect = TAE_GOODS; break;
-					case 0x09: cs->town_acceptance_effect = TAE_WATER; break;
-					case 0x0B: cs->town_acceptance_effect = TAE_FOOD; break;
+					case 0x00: cs->town_acceptance_effect = TownAcceptanceEffect::Passengers; break;
+					case 0x02: cs->town_acceptance_effect = TownAcceptanceEffect::Mail; break;
+					case 0x05: cs->town_acceptance_effect = TownAcceptanceEffect::Goods; break;
+					case 0x09: cs->town_acceptance_effect = TownAcceptanceEffect::Water; break;
+					case 0x0B: cs->town_acceptance_effect = TownAcceptanceEffect::Food; break;
 					default:
 						GrfMsg(1, "CargoChangeInfo: Unknown town growth substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
-					case 0xFF: cs->town_acceptance_effect = TAE_NONE; break;
+					case 0xFF: cs->town_acceptance_effect = TownAcceptanceEffect::None; break;
 				}
 				break;
 			}
