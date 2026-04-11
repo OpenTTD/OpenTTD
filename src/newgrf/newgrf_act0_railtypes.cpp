@@ -244,5 +244,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 	return ret;
 }
 
+/** @copydoc GrfChangeInfoHandler::Reserve */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_RAILTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RailTypeReserveInfo(first, last, prop, buf); }
+/** @copydoc GrfChangeInfoHandler::Activation */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_RAILTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RailTypeChangeInfo(first, last, prop, buf); }

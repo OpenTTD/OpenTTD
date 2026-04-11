@@ -221,5 +221,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 	return ret;
 }
 
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ShipVehicleChangeInfo(first, last, prop, buf); }

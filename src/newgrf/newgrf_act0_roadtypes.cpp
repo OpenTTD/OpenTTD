@@ -228,8 +228,12 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 	return ret;
 }
 
+/** @copydoc GrfChangeInfoHandler::Reserve */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RTT_ROAD); }
+/** @copydoc GrfChangeInfoHandler::Activation */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RTT_ROAD); }
 
+/** @copydoc GrfChangeInfoHandler::Reserve */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RTT_TRAM); }
+/** @copydoc GrfChangeInfoHandler::Activation */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RTT_TRAM); }

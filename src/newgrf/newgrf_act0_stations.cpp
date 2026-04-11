@@ -321,5 +321,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 	return ret;
 }
 
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return StationChangeInfo(first, last, prop, buf); }

@@ -234,5 +234,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 	return ret;
 }
 
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadVehicleChangeInfo(first, last, prop, buf); }

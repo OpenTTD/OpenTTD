@@ -197,5 +197,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 	return ret;
 }
 
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Activation(uint first, uint last, int prop, ByteReader &buf) { return AircraftVehicleChangeInfo(first, last, prop, buf); }

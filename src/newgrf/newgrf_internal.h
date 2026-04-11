@@ -28,7 +28,23 @@ enum class ChangeInfoResult : uint8_t {
 /** GRF feature handler */
 template <GrfSpecFeature TFeature>
 struct GrfChangeInfoHandler {
+	/**
+	 * Implementation of the \ref GrfLoadingStage::Reserve stage of this feature.
+	 * @param first The first id of the feature instance (engine, station, ...) to reserve for.
+	 * @param last The id to stop iterating at (exclusive).
+	 * @param prop The property to reserve for.
+	 * @param buf The buffer containing the sprite data.
+	 * @return Whether it was successful, or why it wasn't.
+	 */
 	static ChangeInfoResult Reserve(uint first, uint last, int prop, ByteReader &buf);
+	/**
+	 * Implementation of the \ref GrfLoadingStage::Activation stage of this feature.
+	 * @param first The first id of the feature instance (engine, station, ...) to activate for.
+	 * @param last The id to stop iterating at (exclusive).
+	 * @param prop The property to activate for.
+	 * @param buf The buffer containing the sprite data.
+	 * @return Whether it was successful, or why it wasn't.
+	 */
 	static ChangeInfoResult Activation(uint first, uint last, int prop, ByteReader &buf);
 };
 
