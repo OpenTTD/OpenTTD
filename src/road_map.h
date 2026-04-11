@@ -329,7 +329,7 @@ inline void SetDisallowedRoadDirections(Tile t, DisallowedRoadDirections drd)
 /**
 * Checks if given tile is a one-way road tile
 * @param t the tile to check
-* @return True if one-way road tile
+* @return \c true iff the given tile is a one-way road tile.
 */
 inline bool IsOneWayRoadTile(Tile t)
 {
