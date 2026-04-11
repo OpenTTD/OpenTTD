@@ -589,11 +589,11 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 }
 
 /**
- * Extract the tar with the given filename in the directory
- * where the tar resides.
+ * Extract the tar with the given filename in the directory where the tar resides.
+ * There must be a directory in the .tar file, but the names of directories in the .tar will be replaced with the \c tar_filename without `.tar` extension.
  * @param tar_filename the name of the tar to extract.
  * @param subdir The sub directory the tar is in.
- * @return false on failure.
+ * @return \c false on failure.
  */
 bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 {
@@ -601,30 +601,27 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 	/* We don't know the file. */
 	if (it == _tar_list[subdir].end()) return false;
 
-	const auto &dirname = it->second;
-
 	/* The file doesn't have a sub directory! */
-	if (dirname.empty()) {
+	if (it->second.empty()) {
 		Debug(misc, 3, "Extracting {} failed; archive rejected, the contents must be in a sub directory", tar_filename);
 		return false;
 	}
 
-	std::string filename = tar_filename;
-	auto p = filename.find_last_of(PATHSEPCHAR);
-	/* The file's path does not have a separator? */
+	auto p = tar_filename.rfind(".tar");
+	/* The file's path does not have a ".tar"? */
 	if (p == std::string::npos) return false;
 
-	filename.replace(p + 1, std::string::npos, dirname);
-	Debug(misc, 8, "Extracting {} to directory {}", tar_filename, filename);
-	FioCreateDirectory(filename);
+	const std::string dirname = tar_filename.substr(0, p);
+	Debug(misc, 8, "Extracting {} to directory {}", tar_filename, dirname);
+	FioCreateDirectory(dirname);
 
 	for (auto &it2 : _tar_filelist[subdir]) {
 		if (tar_filename != it2.second.tar_filename) continue;
 
 		/* it2.first is tarball + PATHSEPCHAR + name. */
 		std::string_view name = it2.first;
-		name.remove_prefix(name.find_first_of(PATHSEPCHAR) + 1);
-		filename.replace(p + 1, std::string::npos, name);
+		name.remove_prefix(name.find_last_of(PATHSEPCHAR) + 1);
+		std::string filename = fmt::format("{}{}{}", dirname, PATHSEP, name);
 
 		Debug(misc, 9, "  extracting {}", filename);
 
