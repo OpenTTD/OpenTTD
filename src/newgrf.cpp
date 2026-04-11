@@ -760,7 +760,7 @@ static void CalculateRefitMasks()
 
 			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
-			only_defaultcargo = _gted[engine].refittability != GRFTempEngineData::NONEMPTY;
+			only_defaultcargo = _gted[engine].refittability != GRFTempEngineData::Refittability::NonEmpty;
 
 			if (_gted[engine].cargo_allowed.Any()) {
 				/* Build up the list of cargo types from the set cargo classes. */
