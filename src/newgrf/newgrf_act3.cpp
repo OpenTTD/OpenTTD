@@ -104,7 +104,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 			/* No engine could be allocated?!? Deal with it. Okay,
 			 * this might look bad. Also make sure this NewGRF
 			 * gets disabled, as a half loaded one is bad. */
-			HandleChangeInfoResult("VehicleMapSpriteGroup", CIR_INVALID_ID, feature, 0);
+			HandleChangeInfoResult("VehicleMapSpriteGroup", ChangeInfoResult::InvalidId, feature, 0);
 			return;
 		}
 

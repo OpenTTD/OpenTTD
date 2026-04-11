@@ -28,11 +28,11 @@
  */
 static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	for (uint id = first; id < last; ++id) {
 		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_AIRCRAFT, id);
-		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
+		if (e == nullptr) return ChangeInfoResult::InvalidId; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
 		AircraftVehicleInfo *avi = &e->VehInfo<AircraftVehicleInfo>();
@@ -197,5 +197,5 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
 template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Activation(uint first, uint last, int prop, ByteReader &buf) { return AircraftVehicleChangeInfo(first, last, prop, buf); }
