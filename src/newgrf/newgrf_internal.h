@@ -17,12 +17,12 @@
 #include "newgrf_bytereader.h"
 
 /** Possible return values for the GrfChangeInfoHandler functions */
-enum ChangeInfoResult : uint8_t {
-	CIR_SUCCESS,    ///< Variable was parsed and read
-	CIR_DISABLED,   ///< GRF was disabled due to error
-	CIR_UNHANDLED,  ///< Variable was parsed but unread
-	CIR_UNKNOWN,    ///< Variable is unknown
-	CIR_INVALID_ID, ///< Attempt to modify an invalid ID
+enum class ChangeInfoResult : uint8_t {
+	Success, ///< Variable was parsed and read
+	Disabled, ///< GRF was disabled due to error
+	Unhandled, ///< Variable was parsed but unread
+	Unknown, ///< Variable is unknown
+	InvalidId, ///< Attempt to modify an invalid ID
 };
 
 /** GRF feature handler */
