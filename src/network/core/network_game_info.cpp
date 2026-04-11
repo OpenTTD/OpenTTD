@@ -185,7 +185,7 @@ const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo()
 static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::string_view name)
 {
 	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config.ident.grfid, FGCM_EXACT, &config.ident.md5sum);
+	const GRFConfig *f = FindGRFConfig(config.ident.grfid, FindGRFConfigMode::Exact, &config.ident.md5sum);
 	if (f == nullptr) {
 		AddGRFTextToList(config.name, name.empty() ? GetString(STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN) : name);
 		config.status = GRFStatus::NotFound;

@@ -118,7 +118,7 @@ static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, 
 	if (gc != nullptr) {
 		fmt::format_to(output_iterator, ", filename: {} (md5sum matches)", gc->filename);
 	} else {
-		gc = FindGRFConfig(grfid, FGCM_ANY);
+		gc = FindGRFConfig(grfid, FindGRFConfigMode::Any);
 		if (gc != nullptr) {
 			fmt::format_to(output_iterator, ", filename: {} (matches GRFID only)", gc->filename);
 		} else {
@@ -231,7 +231,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 /* virtual */ void LoggedChangeGRFAdd::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType)
 {
 	/* A NewGRF got added to the game, either at the start of the game (never an issue), or later on when it could be an issue. */
-	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, &this->md5sum);
+	const GRFConfig *gc = FindGRFConfig(this->grfid, FindGRFConfigMode::Exact, &this->md5sum);
 	fmt::format_to(output_iterator, "Added NewGRF: ");
 	AddGrfInfo(output_iterator, this->grfid, &this->md5sum, gc);
 	auto gm = grf_names.find(this->grfid);
@@ -264,7 +264,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 /* virtual */ void LoggedChangeGRFChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType)
 {
 	/* Another version of the same NewGRF got loaded. */
-	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, &this->md5sum);
+	const GRFConfig *gc = FindGRFConfig(this->grfid, FindGRFConfigMode::Exact, &this->md5sum);
 	fmt::format_to(output_iterator, "Compatible NewGRF loaded: ");
 	AddGrfInfo(output_iterator, this->grfid, &this->md5sum, gc);
 	if (grf_names.count(this->grfid) == 0) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");

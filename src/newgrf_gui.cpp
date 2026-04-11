@@ -1207,7 +1207,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					bool compatible = c->flags.Test(GRFConfigFlag::Compatible);
 					if (c->status != GRFStatus::NotFound && !compatible) continue;
 
-					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? &c->original_md5sum : &c->ident.md5sum);
+					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Exact, compatible ? &c->original_md5sum : &c->ident.md5sum);
 					if (f == nullptr || f->flags.Test(GRFConfigFlag::Invalid)) continue;
 
 					c = std::make_unique<GRFConfig>(*f);
@@ -1423,7 +1423,7 @@ private:
 			if (_settings_client.gui.newgrf_show_old_versions) {
 				this->avails.push_back(c.get());
 			} else {
-				const GRFConfig *best = FindGRFConfig(c->ident.grfid, c->flags.Test(GRFConfigFlag::Invalid) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
+				const GRFConfig *best = FindGRFConfig(c->ident.grfid, c->flags.Test(GRFConfigFlag::Invalid) ? FindGRFConfigMode::Newest : FindGRFConfigMode::NewestValid);
 				/* Never triggers; FindGRFConfig returns either c, or a newer version of c. */
 				assert(best != nullptr);
 

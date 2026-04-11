@@ -49,7 +49,7 @@ ClientNetworkContentSocketHandler _network_content_client;
 /** Check whether NewGRF content exists. @copydoc HasContentProc */
 static bool HasGRFConfig(const ContentInfo &ci, bool md5sum)
 {
-	return FindGRFConfig(std::byteswap(ci.unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci.md5sum : nullptr) != nullptr;
+	return FindGRFConfig(std::byteswap(ci.unique_id), md5sum ? FindGRFConfigMode::Exact : FindGRFConfigMode::Any, md5sum ? &ci.md5sum : nullptr) != nullptr;
 }
 
 /**
