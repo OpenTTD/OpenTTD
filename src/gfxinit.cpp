@@ -172,7 +172,7 @@ static void LoadSpriteTables()
 {
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
-	LoadGrfFile(used_set->files[GFT_BASE].filename, 0, PAL_DOS != used_set->palette);
+	LoadGrfFile(used_set->files[GFT_BASE].filename, 0, PaletteType::DOS != used_set->palette);
 
 	/*
 	 * The second basic file always starts at the given location and does
@@ -180,7 +180,7 @@ static void LoadSpriteTables()
 	 * has a few sprites less. However, we do not care about those missing
 	 * sprites as they are not shown anyway (logos in intro game).
 	 */
-	LoadGrfFile(used_set->files[GFT_LOGOS].filename, 4793, PAL_DOS != used_set->palette);
+	LoadGrfFile(used_set->files[GFT_LOGOS].filename, 4793, PaletteType::DOS != used_set->palette);
 
 	/*
 	 * Load additional sprites for climates other than temperate.
@@ -191,7 +191,7 @@ static void LoadSpriteTables()
 		LoadGrfFileIndexed(
 			used_set->files[GFT_ARCTIC + to_underlying(_settings_game.game_creation.landscape) - 1].filename,
 			_landscape_spriteindexes[to_underlying(_settings_game.game_creation.landscape) - 1],
-			PAL_DOS != used_set->palette
+			PaletteType::DOS != used_set->palette
 		);
 	}
 
@@ -361,7 +361,7 @@ bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, co
 
 	item = this->GetMandatoryItem(full_filename, *metadata, "palette");
 	if (item == nullptr) return false;
-	this->palette = ((*item->value)[0] == 'D' || (*item->value)[0] == 'd') ? PAL_DOS : PAL_WINDOWS;
+	this->palette = ((*item->value)[0] == 'D' || (*item->value)[0] == 'd') ? PaletteType::DOS : PaletteType::Windows;
 
 	/* Get optional blitter information. */
 	item = metadata->GetItem("blitter");
@@ -384,8 +384,8 @@ GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
 		 * one which might be the wrong palette for this base NewGRF.
 		 * The value set here might be overridden via action14 later. */
 		switch (this->palette) {
-			case PAL_DOS:     this->extra_cfg->palette |= GRFP_GRF_DOS;     break;
-			case PAL_WINDOWS: this->extra_cfg->palette |= GRFP_GRF_WINDOWS; break;
+			case PaletteType::DOS: this->extra_cfg->palette |= GRFP_GRF_DOS; break;
+			case PaletteType::Windows: this->extra_cfg->palette |= GRFP_GRF_WINDOWS; break;
 			default: break;
 		}
 		FillGRFDetails(*this->extra_cfg, false, Subdirectory::Baseset);
@@ -498,7 +498,7 @@ template <>
 		/* Having a later version of the same base set is better. */
 		if (best->shortname == current->shortname && best->version < current->version) return true;
 		/* The DOS palette is the better palette. */
-		return best->palette != PAL_DOS && current->palette == PAL_DOS;
+		return best->palette != PaletteType::DOS && current->palette == PaletteType::DOS;
 	};
 
 	for (const auto &c : BaseMedia<GraphicsSet>::available_sets) {

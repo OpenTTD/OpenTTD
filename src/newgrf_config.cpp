@@ -134,11 +134,11 @@ void GRFConfig::SetSuitablePalette()
 {
 	PaletteType pal;
 	switch (this->palette & GRFP_GRF_MASK) {
-		case GRFP_GRF_DOS:     pal = PAL_DOS;      break;
-		case GRFP_GRF_WINDOWS: pal = PAL_WINDOWS;  break;
-		default:               pal = _settings_client.gui.newgrf_default_palette == 1 ? PAL_WINDOWS : PAL_DOS; break;
+		case GRFP_GRF_DOS: pal = PaletteType::DOS; break;
+		case GRFP_GRF_WINDOWS: pal = PaletteType::Windows; break;
+		default: pal = _settings_client.gui.newgrf_default_palette == 1 ? PaletteType::Windows : PaletteType::DOS; break;
 	}
-	SB(this->palette, GRFP_USE_BIT, 1, pal == PAL_WINDOWS ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
+	SB(this->palette, GRFP_USE_BIT, 1, pal == PaletteType::Windows ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
 }
 
 /**
