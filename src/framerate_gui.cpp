@@ -152,7 +152,8 @@ namespace {
 
 			/* Sum durations, skipping invalid points */
 			double sumtime = 0;
-			for (int i = first_point; i < first_point + count; i++) {
+			const int last_point = first_point + count;
+			for (int i = first_point; i < last_point; i++) {
 				auto d = this->durations[i % NUM_FRAMERATE_POINTS];
 				if (d != INVALID_DURATION) {
 					sumtime += d;
