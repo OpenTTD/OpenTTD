@@ -1320,7 +1320,7 @@ static void ViewportAddLandscape()
  * @param dpi current viewport area
  * @param sign sign position and dimension
  * @param flags ViewportStringFlags to control the string's appearance.
- * @param colour colour of the sign background; or INVALID_COLOUR if transparent
+ * @param colour colour of the sign background; or Colours::Invalid if transparent
  * @returns Pointer to std::string to filled with sign, or nullptr if string would be outside the viewport bounds.
  */
 std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, ViewportStringFlags flags, Colours colour)
@@ -1377,7 +1377,7 @@ static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const T
 	}
 
 	for (const Town *t : towns) {
-		std::string *str = ViewportAddString(dpi, &t->cache.sign, flags, INVALID_COLOUR);
+		std::string *str = ViewportAddString(dpi, &t->cache.sign, flags, Colours::Invalid);
 		if (str == nullptr) continue;
 
 		if (t->larger_town) {
@@ -1407,11 +1407,11 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 
 	for (const Sign *si : signs) {
 		/* Workaround to make sure white is actually white. The string drawing logic changes all
-		 * colours that are not INVALID_COLOUR slightly, turning white into a light gray. */
-		const Colours deity_colour = si->text_colour == COLOUR_WHITE ? INVALID_COLOUR : si->text_colour;
+		 * colours that are not Colours::Invalid slightly, turning white into a light gray. */
+		const Colours deity_colour = si->text_colour == Colours::White ? Colours::Invalid : si->text_colour;
 
 		std::string *str = ViewportAddString(dpi, &si->sign, (si->owner == OWNER_DEITY) ? deity_flags : flags,
-			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? deity_colour : _company_colours[si->owner]));
+			(si->owner == OWNER_NONE) ? Colours::Grey : (si->owner == OWNER_DEITY ? deity_colour : _company_colours[si->owner]));
 		if (str == nullptr) continue;
 
 		*str = GetString(STR_SIGN_NAME, si->index);
@@ -1431,7 +1431,7 @@ static void ViewportAddStationStrings(DrawPixelInfo *dpi, const std::vector<cons
 	if (small) flags.Set(ViewportStringFlag::Small);
 
 	for (const BaseStation *st : stations) {
-		std::string *str = ViewportAddString(dpi, &st->sign, flags, (st->owner == OWNER_NONE || !st->IsInUse()) ? COLOUR_GREY : _company_colours[st->owner]);
+		std::string *str = ViewportAddString(dpi, &st->sign, flags, (st->owner == OWNER_NONE || !st->IsInUse()) ? Colours::Grey : _company_colours[st->owner]);
 		if (str == nullptr) continue;
 
 		if (Station::IsExpected(st)) { /* Station */
@@ -1782,14 +1782,14 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 
 		TextColour colour = TC_WHITE;
 		if (ss.flags.Test(ViewportStringFlag::ColourRect)) {
-			if (ss.colour != INVALID_COLOUR) DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, {});
+			if (ss.colour != Colours::Invalid) DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, {});
 			colour = TC_BLACK;
 		} else if (ss.flags.Test(ViewportStringFlag::TransparentRect)) {
 			DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, FrameFlag::Transparent);
 		}
 
 		if (ss.flags.Test(ViewportStringFlag::TextColour)) {
-			if (ss.colour != INVALID_COLOUR) colour = GetColourGradient(ss.colour, SHADE_LIGHTER).ToTextColour();
+			if (ss.colour != Colours::Invalid) colour = GetColourGradient(ss.colour, SHADE_LIGHTER).ToTextColour();
 		}
 
 		int left = x + WidgetDimensions::scaled.fullbevel.left;

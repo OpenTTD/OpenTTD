@@ -220,15 +220,15 @@ static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
 /** Widget definitions of the cheat GUI. */
 static constexpr std::initializer_list<NWidgetPart> _nested_cheat_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.framerect),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_PANEL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_SETTINGS),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_C_PANEL),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_C_SETTINGS),
 		EndContainer(),
 	EndContainer(),
 };
@@ -286,7 +286,7 @@ struct CheatWindow : Window {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
-					DrawBoolButton(button_left, y + button_y_offset, COLOUR_YELLOW, COLOUR_GREY, on, true);
+					DrawBoolButton(button_left, y + button_y_offset, Colours::Yellow, Colours::Grey, on, true);
 					str = GetString(ce->str, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 					break;
 				}
@@ -295,7 +295,7 @@ struct CheatWindow : Window {
 					int32_t val = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
 
 					/* Draw [<][>] boxes for settings of an integer-type */
-					DrawArrowButtons(button_left, y + button_y_offset, COLOUR_YELLOW, clicked - (i * 2), true, true);
+					DrawArrowButtons(button_left, y + button_y_offset, Colours::Yellow, clicked - (i * 2), true, true);
 
 					switch (ce->str) {
 						/* Display date for change date cheat */
@@ -354,13 +354,13 @@ struct CheatWindow : Window {
 		int32_t value = sd->Read(&GetGameSettings());
 		if (sd->IsBoolSetting()) {
 			/* Draw checkbox for boolean-value either on/off */
-			DrawBoolButton(buttons.left, buttons.top, COLOUR_YELLOW, COLOUR_GREY, value != 0, editable);
+			DrawBoolButton(buttons.left, buttons.top, Colours::Yellow, Colours::Grey, value != 0, editable);
 		} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 			/* Draw [v] button for settings of an enum-type */
-			DrawDropDownButton(buttons.left, buttons.top, COLOUR_YELLOW, state != 0, editable);
+			DrawDropDownButton(buttons.left, buttons.top, Colours::Yellow, state != 0, editable);
 		} else {
 			/* Draw [<][>] boxes for settings of an integer-type */
-			DrawArrowButtons(buttons.left, buttons.top, COLOUR_YELLOW, state,
+			DrawArrowButtons(buttons.left, buttons.top, Colours::Yellow, state,
 					editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 		}
 		auto [param1, param2] = sd->GetValueParams(value);

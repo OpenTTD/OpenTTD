@@ -1856,7 +1856,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				}
 
 				case SCC_COLOUR: { // {COLOUR}
-					StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
+					StringControlCode scc = static_cast<StringControlCode>(SCC_BLUE + to_underlying(args.GetNextParameter<Colours>()));
 					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.PutUtf8(scc);
 					break;
 				}

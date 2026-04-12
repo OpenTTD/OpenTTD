@@ -279,29 +279,29 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum Colours : uint8_t {
-	COLOUR_BEGIN,
-	COLOUR_DARK_BLUE = COLOUR_BEGIN,
-	COLOUR_PALE_GREEN,
-	COLOUR_PINK,
-	COLOUR_YELLOW,
-	COLOUR_RED,
-	COLOUR_LIGHT_BLUE,
-	COLOUR_GREEN,
-	COLOUR_DARK_GREEN,
-	COLOUR_BLUE,
-	COLOUR_CREAM,
-	COLOUR_MAUVE,
-	COLOUR_PURPLE,
-	COLOUR_ORANGE,
-	COLOUR_BROWN,
-	COLOUR_GREY,
-	COLOUR_WHITE,
-	COLOUR_END,
-	INVALID_COLOUR = 0xFF,
+/** One of 16 base colours used for companies and windows/widgets. */
+enum class Colours : uint8_t {
+	Begin, ///< Begin marker.
+	DarkBlue = Colours::Begin, ///< Dark blue
+	PaleGreen, ///< Pale green
+	Pink, ///< Pink
+	Yellow, ///< Yellow
+	Red, ///< Red
+	LightBlue, ///< Light blue
+	Green, ///< Green
+	DarkGreen, ///< Dark green
+	Blue, ///< Blue
+	Cream, ///< Cream
+	Mauve, ///< Mauve
+	Purple, ///< Purple
+	Orange, ///< Orange
+	Brown, ///< Brown
+	Grey, ///< Grey
+	White, ///< White
+	End, ///< End-of-array marker.
+	Invalid = 0xFF, ///< Invalid marker.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
-DECLARE_ENUM_AS_ADDABLE(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
 enum TextColour : uint16_t {

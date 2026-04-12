@@ -133,8 +133,8 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t referen
  */
 void StoryPageButtonData::SetColour(Colours button_colour)
 {
-	assert(button_colour < COLOUR_END);
-	SB(this->referenced_id, 0, 8, button_colour);
+	assert(button_colour < Colours::End);
+	SB(this->referenced_id, 0, 8, to_underlying(button_colour));
 }
 
 /**
@@ -173,7 +173,7 @@ void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 Colours StoryPageButtonData::GetColour() const
 {
 	Colours colour = static_cast<Colours>(GB(this->referenced_id, 0, 8));
-	if (!IsValidColours(colour)) return INVALID_COLOUR;
+	if (!IsValidColours(colour)) return Colours::Invalid;
 	return colour;
 }
 
@@ -212,7 +212,7 @@ VehicleType StoryPageButtonData::GetVehicleType() const
  */
 bool StoryPageButtonData::ValidateColour() const
 {
-	return GB(this->referenced_id, 0, 8) < COLOUR_END;
+	return GB(this->referenced_id, 0, 8) < to_underlying(Colours::End);
 }
 
 /**

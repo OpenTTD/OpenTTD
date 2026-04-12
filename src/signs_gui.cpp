@@ -335,27 +335,27 @@ struct SignListWindow : Window, SignList {
 
 static constexpr std::initializer_list<NWidgetPart> _nested_sign_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SIL_CAPTION),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_CAPTION, Colours::Brown, WID_SIL_CAPTION),
+		NWidget(WWT_SHADEBOX, Colours::Brown),
+		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
+		NWidget(WWT_STICKYBOX, Colours::Brown),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PANEL, COLOUR_BROWN, WID_SIL_LIST), SetMinimalSize(WidgetDimensions::unscaled.frametext.Horizontal() + 16 + 255, 0),
+			NWidget(WWT_PANEL, Colours::Brown, WID_SIL_LIST), SetMinimalSize(WidgetDimensions::unscaled.frametext.Horizontal() + 16 + 255, 0),
 								SetResize(1, 1), SetFill(1, 0), SetScrollbar(WID_SIL_SCROLLBAR), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PANEL, COLOUR_BROWN), SetFill(1, 1),
-					NWidget(WWT_EDITBOX, COLOUR_BROWN, WID_SIL_FILTER_TEXT), SetMinimalSize(80, 0), SetResize(1, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
+				NWidget(WWT_PANEL, Colours::Brown), SetFill(1, 1),
+					NWidget(WWT_EDITBOX, Colours::Brown, WID_SIL_FILTER_TEXT), SetMinimalSize(80, 0), SetResize(1, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
 							SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 				EndContainer(),
-				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SIL_FILTER_MATCH_CASE_BTN), SetStringTip(STR_SIGN_LIST_MATCH_CASE, STR_SIGN_LIST_MATCH_CASE_TOOLTIP),
+				NWidget(WWT_TEXTBTN, Colours::Brown, WID_SIL_FILTER_MATCH_CASE_BTN), SetStringTip(STR_SIGN_LIST_MATCH_CASE, STR_SIGN_LIST_MATCH_CASE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_SIL_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+			NWidget(NWID_VSCROLLBAR, Colours::Brown, WID_SIL_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Brown),
 		EndContainer(),
 	EndContainer(),
 };
@@ -477,7 +477,7 @@ struct SignWindow : Window, SignList {
 				return GetString(this->name_editbox.caption);
 
 			case WID_QES_COLOUR:
-				return GetString(STR_COLOUR_DARK_BLUE + this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour));
+				return GetString(STR_COLOUR_DARK_BLUE + to_underlying(this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour)));
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -489,8 +489,8 @@ struct SignWindow : Window, SignList {
 		if (widget == WID_QES_COLOUR) {
 			const Dimension square_size = GetSpriteSize(SPR_SQUARE);
 			const uint string_padding = square_size.width + WidgetDimensions::scaled.hsep_normal + padding.width;
-			for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; ++colour) {
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + colour).width + string_padding);
+			for (Colours colour = Colours::Begin; colour != Colours::End; ++colour) {
+				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + to_underlying(colour)).width + string_padding);
 			}
 			size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DEFAULT).width + string_padding);
 			return;
@@ -502,10 +502,10 @@ struct SignWindow : Window, SignList {
 	void ShowColourDropDownMenu()
 	{
 		DropDownList list;
-		for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; ++colour) {
-			list.emplace_back(MakeDropDownListIconItem(SPR_SQUARE, GetColourPalette(colour), STR_COLOUR_DARK_BLUE + colour, colour));
+		for (Colours colour = Colours::Begin; colour != Colours::End; ++colour) {
+			list.emplace_back(MakeDropDownListIconItem(SPR_SQUARE, GetColourPalette(colour), STR_COLOUR_DARK_BLUE + to_underlying(colour), colour));
 		}
-		const int selected = this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour);
+		const int selected = to_underlying(this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour));
 		ShowDropDownList(this, std::move(list), selected, WID_QES_COLOUR);
 	}
 
@@ -545,7 +545,7 @@ struct SignWindow : Window, SignList {
 			}
 
 			case WID_QES_OK:
-				if (RenameSign(this->cur_sign, this->name_editbox.text.GetText(), this->new_colour.value_or(INVALID_COLOUR))) break;
+				if (RenameSign(this->cur_sign, this->name_editbox.text.GetText(), this->new_colour.value_or(Colours::Invalid))) break;
 				[[fallthrough]];
 
 			case WID_QES_CANCEL:
@@ -554,7 +554,7 @@ struct SignWindow : Window, SignList {
 
 			case WID_QES_DELETE:
 				/* Only need to set the buffer to null, the rest is handled as the OK button */
-				RenameSign(this->cur_sign, "", INVALID_COLOUR);
+				RenameSign(this->cur_sign, "", Colours::Invalid);
 				/* don't delete this, we are deleted in Sign::~Sign() -> DeleteRenameSignWindow() */
 				break;
 
@@ -569,7 +569,7 @@ struct SignWindow : Window, SignList {
 	{
 		switch (this->last_user_action) {
 			case WID_QES_MOVE: // Place sign button
-				RenameSign(this->cur_sign, this->name_editbox.text.GetText(), this->new_colour.value_or(INVALID_COLOUR));
+				RenameSign(this->cur_sign, this->name_editbox.text.GetText(), this->new_colour.value_or(Colours::Invalid));
 				MoveSign(this->cur_sign, tile);
 				this->Close();
 				break;
@@ -591,24 +591,24 @@ struct SignWindow : Window, SignList {
 
 static constexpr std::initializer_list<NWidgetPart> _nested_query_sign_edit_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QES_CAPTION), SetTextStyle(TC_WHITE),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_QES_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_EDIT_SIGN_LOCATION_TOOLTIP),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_QES_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_QES_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_EDIT_SIGN_LOCATION_TOOLTIP),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QES_TEXT), SetMinimalSize(256, 0), SetStringTip(STR_EDIT_SIGN_SIGN_OSKTITLE), SetPadding(2, 2, 2, 2),
+	NWidget(WWT_PANEL, Colours::Grey),
+		NWidget(WWT_EDITBOX, Colours::Grey, WID_QES_TEXT), SetMinimalSize(256, 0), SetStringTip(STR_EDIT_SIGN_SIGN_OSKTITLE), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_OK), SetMinimalSize(61, 12), SetStringTip(STR_BUTTON_OK),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_CANCEL), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_CANCEL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_DELETE), SetMinimalSize(60, 12), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QES_MOVE), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_MOVE),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_QES_COLOUR_PANE),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_QES_COLOUR), SetMinimalSize(60, 12), SetToolTip(STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_QES_OK), SetMinimalSize(61, 12), SetStringTip(STR_BUTTON_OK),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_QES_CANCEL), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_CANCEL),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_QES_DELETE), SetMinimalSize(60, 12), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_QES_MOVE), SetMinimalSize(60, 12), SetStringTip(STR_BUTTON_MOVE),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_QES_COLOUR_PANE),
+			NWidget(WWT_DROPDOWN, Colours::Grey, WID_QES_COLOUR), SetMinimalSize(60, 12), SetToolTip(STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
-		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_PREVIOUS), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease, STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP),
-		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_NEXT), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Increase, STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP),
+		NWidget(WWT_PANEL, Colours::Grey), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PUSHARROWBTN, Colours::Grey, WID_QES_PREVIOUS), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease, STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP),
+		NWidget(WWT_PUSHARROWBTN, Colours::Grey, WID_QES_NEXT), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Increase, STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP),
 	EndContainer(),
 };
 
@@ -629,7 +629,7 @@ void HandleClickOnSign(const Sign *si)
 	if (!CompanyCanEditSign(si)) return;
 
 	if (_ctrl_pressed && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GM_EDITOR))) {
-		RenameSign(si->index, "", INVALID_COLOUR);
+		RenameSign(si->index, "", Colours::Invalid);
 		return;
 	}
 

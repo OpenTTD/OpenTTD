@@ -1412,7 +1412,7 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadType rt, RoadBits rb)
 	/* Catenary uses 1st company colour to help identify owner.
 	 * For tiles with OWNER_TOWN or OWNER_NONE, recolour CC to grey as a neutral colour. */
 	Owner owner = GetRoadOwner(ti->tile, GetRoadTramType(rt));
-	PaletteID pal = (owner == OWNER_NONE || owner == OWNER_TOWN ? GetColourPalette(COLOUR_GREY) : GetCompanyPalette(owner));
+	PaletteID pal = (owner == OWNER_NONE || owner == OWNER_TOWN ? GetColourPalette(Colours::Grey) : GetCompanyPalette(owner));
 	uint8_t z_wires = (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT) + BB_HEIGHT_UNDER_BRIDGE;
 	if (back != 0) {
 		/* The "back" sprite contains the west, north and east pillars.

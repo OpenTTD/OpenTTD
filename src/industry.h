@@ -114,7 +114,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	IndustryType type = 0; ///< type of industry.
 	Owner owner = INVALID_OWNER; ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
-	Colours random_colour = COLOUR_BEGIN; ///< randomized colour of the industry, for display purpose
+	Colours random_colour = Colours::Begin; ///< randomized colour of the industry, for display purpose
 	TimerGameEconomy::Year last_prod_year{}; ///< last economy year of production
 	uint8_t was_cargo_delivered = 0; ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 	IndustryControlFlags ctlflags{}; ///< flags overriding standard behaviours

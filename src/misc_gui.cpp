@@ -46,12 +46,12 @@
 
 static constexpr std::initializer_list<NWidgetPart> _nested_land_info_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_LI_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP),
-		NWidget(WWT_DEBUGBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_LI_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP),
+		NWidget(WWT_DEBUGBOX, Colours::Grey),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_LI_BACKGROUND), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_LI_BACKGROUND), EndContainer(),
 };
 
 static WindowDesc _land_info_desc(
@@ -319,17 +319,17 @@ void ShowLandInfo(TileIndex tile)
 
 static constexpr std::initializer_list<NWidgetPart> _nested_about_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_ABOUT_OPENTTD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY), SetPIP(4, 2, 4),
-		NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_ABOUT_ORIGINAL_COPYRIGHT),
-		NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_ABOUT_VERSION),
-		NWidget(WWT_FRAME, COLOUR_GREY), SetPadding(0, 5, 1, 5),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_A_SCROLLING_TEXT),
+	NWidget(WWT_PANEL, Colours::Grey), SetPIP(4, 2, 4),
+		NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_ABOUT_ORIGINAL_COPYRIGHT),
+		NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_ABOUT_VERSION),
+		NWidget(WWT_FRAME, Colours::Grey), SetPadding(0, 5, 1, 5),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_A_SCROLLING_TEXT),
 		EndContainer(),
-		NWidget(WWT_LABEL, INVALID_COLOUR, WID_A_WEBSITE),
-		NWidget(WWT_LABEL, INVALID_COLOUR, WID_A_COPYRIGHT),
+		NWidget(WWT_LABEL, Colours::Invalid, WID_A_WEBSITE),
+		NWidget(WWT_LABEL, Colours::Invalid, WID_A_COPYRIGHT),
 	EndContainer(),
 };
 
@@ -586,7 +586,7 @@ void HideFillingPercent(TextEffectID *te_id)
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_tooltips_widgets = {
-	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_TT_BACKGROUND),
+	NWidget(WWT_EMPTY, Colours::Invalid, WID_TT_BACKGROUND),
 };
 
 static WindowDesc _tool_tips_desc(
@@ -1021,20 +1021,20 @@ struct QueryStringWindow : public Window
 
 static constexpr std::initializer_list<NWidgetPart> _nested_query_string_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QS_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_QS_CAPTION), SetTextStyle(TC_WHITE),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QS_TEXT), SetMinimalSize(256, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
+	NWidget(WWT_PANEL, Colours::Grey),
+		NWidget(WWT_EDITBOX, Colours::Grey, WID_QS_TEXT), SetMinimalSize(256, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_QS_DEFAULT_SEL),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_DEFAULT), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_DEFAULT),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_QS_DEFAULT_SEL),
+			NWidget(WWT_TEXTBTN, Colours::Grey, WID_QS_DEFAULT), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_DEFAULT),
 		EndContainer(),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_CANCEL), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_CANCEL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_OK), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_OK),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_QS_MOVE_SEL),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_MOVE), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_MOVE),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_QS_CANCEL), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_CANCEL),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_QS_OK), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_OK),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_QS_MOVE_SEL),
+			NWidget(WWT_TEXTBTN, Colours::Grey, WID_QS_MOVE), SetMinimalSize(65, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_MOVE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1174,15 +1174,15 @@ struct QueryWindow : public Window {
 
 static constexpr std::initializer_list<NWidgetPart> _nested_query_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_RED),
-		NWidget(WWT_CAPTION, COLOUR_RED, WID_Q_CAPTION),
+		NWidget(WWT_CLOSEBOX, Colours::Red),
+		NWidget(WWT_CAPTION, Colours::Red, WID_Q_CAPTION),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_RED),
+	NWidget(WWT_PANEL, Colours::Red),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
-			NWidget(WWT_TEXT, INVALID_COLOUR, WID_Q_TEXT), SetMinimalSize(200, 12),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_Q_TEXT), SetMinimalSize(200, 12),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.hsep_indent),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_NO), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_QUIT_NO),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_YES), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_QUIT_YES),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_Q_NO), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_QUIT_NO),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_Q_YES), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_QUIT_YES),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),

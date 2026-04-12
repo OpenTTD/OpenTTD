@@ -458,15 +458,15 @@ static inline Colours RemapTTOColour(Colours tto)
 {
 	/** Lossy remapping of TTO colours to TTD colours. SVXConverter uses the same conversion. */
 	static const Colours tto_colour_remap[] = {
-		COLOUR_DARK_BLUE,  COLOUR_GREY,       COLOUR_YELLOW,     COLOUR_RED,
-		COLOUR_PURPLE,     COLOUR_DARK_GREEN, COLOUR_ORANGE,     COLOUR_PALE_GREEN,
-		COLOUR_BLUE,       COLOUR_GREEN,      COLOUR_CREAM,      COLOUR_BROWN,
-		COLOUR_WHITE,      COLOUR_LIGHT_BLUE, COLOUR_MAUVE,      COLOUR_PINK
+		Colours::DarkBlue, Colours::Grey, Colours::Yellow, Colours::Red,
+		Colours::Purple, Colours::DarkGreen, Colours::Orange, Colours::PaleGreen,
+		Colours::Blue, Colours::Green, Colours::Cream, Colours::Brown,
+		Colours::White, Colours::LightBlue, Colours::Mauve, Colours::Pink
 	};
 
-	if (static_cast<size_t>(tto) >= std::size(tto_colour_remap)) return COLOUR_GREY; // this shouldn't happen
+	if (static_cast<size_t>(tto) >= std::size(tto_colour_remap)) return Colours::Grey; // this shouldn't happen
 
-	return tto_colour_remap[tto];
+	return tto_colour_remap[to_underlying(tto)];
 }
 
 static inline uint RemapTownIndex(uint x)

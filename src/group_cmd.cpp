@@ -694,16 +694,16 @@ CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool prima
 
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
-	if (colour >= COLOUR_END && colour != INVALID_COLOUR) return CMD_ERROR;
+	if (colour >= Colours::End && colour != Colours::Invalid) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (primary) {
-			g->livery.in_use.Set(Livery::Flag::Primary, colour != INVALID_COLOUR);
-			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour1;
+			g->livery.in_use.Set(Livery::Flag::Primary, colour != Colours::Invalid);
+			if (colour == Colours::Invalid) colour = GetParentLivery(g)->colour1;
 			g->livery.colour1 = colour;
 		} else {
-			g->livery.in_use.Set(Livery::Flag::Secondary, colour != INVALID_COLOUR);
-			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour2;
+			g->livery.in_use.Set(Livery::Flag::Secondary, colour != Colours::Invalid);
+			if (colour == Colours::Invalid) colour = GetParentLivery(g)->colour2;
 			g->livery.colour2 = colour;
 		}
 

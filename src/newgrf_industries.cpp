@@ -406,7 +406,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 
 		case 0xA6: return indspec->grf_prop.local_id;
 		case 0xA7: return this->industry->founder.base();
-		case 0xA8: return this->industry->random_colour;
+		case 0xA8: return to_underlying(this->industry->random_colour);
 		case 0xA9: return ClampTo<uint8_t>(this->industry->last_prod_year - EconomyTime::ORIGINAL_BASE_YEAR);
 		case 0xAA: return this->industry->counter;
 		case 0xAB: return GB(this->industry->counter, 8, 8);

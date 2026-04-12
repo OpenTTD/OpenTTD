@@ -381,7 +381,7 @@ struct ColourGradients
 {
 	using ColourGradient = std::array<PixelColour, SHADE_END>;
 
-	static inline std::array<ColourGradient, COLOUR_END> gradient{};
+	static inline std::array<ColourGradient, to_underlying(Colours::End)> gradient{};
 };
 
 /**
@@ -392,7 +392,7 @@ struct ColourGradients
  */
 PixelColour GetColourGradient(Colours colour, ColourShade shade)
 {
-	return ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END];
+	return ColourGradients::gradient[to_underlying(colour) % to_underlying(Colours::End)][shade % SHADE_END];
 }
 
 /**
@@ -403,7 +403,7 @@ PixelColour GetColourGradient(Colours colour, ColourShade shade)
  */
 void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_index)
 {
-	assert(colour < COLOUR_END);
+	assert(colour < Colours::End);
 	assert(shade < SHADE_END);
-	ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END] = palette_index;
+	ColourGradients::gradient[to_underlying(colour) % to_underlying(Colours::End)][shade % SHADE_END] = palette_index;
 }

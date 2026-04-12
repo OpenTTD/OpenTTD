@@ -305,12 +305,12 @@ struct NewGRFParametersWindow : public Window {
 			bool selected = (i == this->clicked_row);
 
 			if (par_info.type == GRFParameterType::Bool) {
-				DrawBoolButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, COLOUR_MAUVE, current_value != 0, this->editable);
+				DrawBoolButton(buttons_left, ir.top + button_y_offset, Colours::Yellow, Colours::Mauve, current_value != 0, this->editable);
 			} else if (par_info.type == GRFParameterType::UintEnum) {
 				if (par_info.complete_labels) {
-					DrawDropDownButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
+					DrawDropDownButton(buttons_left, ir.top + button_y_offset, Colours::Yellow, this->clicked_row == i && this->clicked_dropdown, this->editable);
 				} else {
-					DrawArrowButtons(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info.min_value, this->editable && current_value < par_info.max_value);
+					DrawArrowButtons(buttons_left, ir.top + button_y_offset, Colours::Yellow, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info.min_value, this->editable && current_value < par_info.max_value);
 				}
 			}
 
@@ -394,7 +394,7 @@ struct NewGRFParametersWindow : public Window {
 								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, std::string(*text)), value));
 							}
 
-							ShowDropDownListAt(this, std::move(list), old_val, WID_NP_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
+							ShowDropDownListAt(this, std::move(list), old_val, WID_NP_SETTING_DROPDOWN, wi_rect, Colours::Orange);
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
@@ -502,32 +502,32 @@ GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 
 static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_parameter_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_NP_CAPTION),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CLOSEBOX, Colours::Mauve),
+		NWidget(WWT_CAPTION, Colours::Mauve, WID_NP_CAPTION),
+		NWidget(WWT_DEFSIZEBOX, Colours::Mauve),
 	EndContainer(),
-	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NP_SHOW_NUMPAR),
-		NWidget(WWT_PANEL, COLOUR_MAUVE), SetResize(1, 0), SetFill(1, 0), SetPIP(4, 0, 4),
+	NWidget(NWID_SELECTION, Colours::Invalid, WID_NP_SHOW_NUMPAR),
+		NWidget(WWT_PANEL, Colours::Mauve), SetResize(1, 0), SetFill(1, 0), SetPIP(4, 0, 4),
 			NWidget(NWID_HORIZONTAL), SetPIP(4, 0, 4),
-				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_NP_NUMPAR_DEC), SetMinimalSize(12, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease),
-				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_NP_NUMPAR_INC), SetMinimalSize(12, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Increase),
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_NP_NUMPAR), SetResize(1, 0), SetFill(1, 0), SetPadding(0, 0, 0, 4),
+				NWidget(WWT_PUSHARROWBTN, Colours::Yellow, WID_NP_NUMPAR_DEC), SetMinimalSize(12, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease),
+				NWidget(WWT_PUSHARROWBTN, Colours::Yellow, WID_NP_NUMPAR_INC), SetMinimalSize(12, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Increase),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_NP_NUMPAR), SetResize(1, 0), SetFill(1, 0), SetPadding(0, 0, 0, 4),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_NP_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_NP_SCROLLBAR),
-		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NP_SCROLLBAR),
+		NWidget(WWT_MATRIX, Colours::Mauve, WID_NP_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_NP_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, Colours::Mauve, WID_NP_SCROLLBAR),
 	EndContainer(),
-	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NP_SHOW_DESCRIPTION),
-		NWidget(WWT_PANEL, COLOUR_MAUVE, WID_NP_DESCRIPTION), SetResize(1, 0), SetFill(1, 0),
+	NWidget(NWID_SELECTION, Colours::Invalid, WID_NP_SHOW_DESCRIPTION),
+		NWidget(WWT_PANEL, Colours::Mauve, WID_NP_DESCRIPTION), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_NP_RESET), SetStringTip(STR_NEWGRF_PARAMETERS_RESET, STR_NEWGRF_PARAMETERS_RESET_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_MAUVE), SetResize(1, 0), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Mauve, WID_NP_RESET), SetStringTip(STR_NEWGRF_PARAMETERS_RESET, STR_NEWGRF_PARAMETERS_RESET_TOOLTIP),
+		NWidget(WWT_PANEL, Colours::Mauve), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_RESIZEBOX, Colours::Mauve),
 	EndContainer(),
 };
 
@@ -907,7 +907,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_NEWGRF_INFO_TITLE: {
 				/* Create the nice darker rectangle at the details top. */
-				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(COLOUR_MAUVE, SHADE_NORMAL));
+				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Mauve, SHADE_NORMAL));
 				DrawString(r.left, r.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal)), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
@@ -1750,49 +1750,49 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_actives_widge
 		/* Left side, presets. */
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_NEWGRF_SETTINGS_SELECT_PRESET),
+				NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_NEWGRF_SETTINGS_SELECT_PRESET),
 						SetPadding(0, WidgetDimensions::unscaled.hsep_wide, 0, 0),
-				NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WID_NS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_DROPDOWN, Colours::Yellow, WID_NS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
 						SetToolTip(STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_PRESET_SAVE), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_PRESET_SAVE), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_NEWGRF_SETTINGS_PRESET_SAVE, STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_PRESET_DELETE), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_PRESET_DELETE), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_NEWGRF_SETTINGS_PRESET_DELETE, STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 
-		NWidget(WWT_FRAME, COLOUR_MAUVE), SetStringTip(STR_NEWGRF_SETTINGS_ACTIVE_LIST), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+		NWidget(WWT_FRAME, Colours::Mauve), SetStringTip(STR_NEWGRF_SETTINGS_ACTIVE_LIST), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 			/* Left side, active grfs. */
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PANEL, COLOUR_MAUVE),
-					NWidget(WWT_INSET, COLOUR_MAUVE, WID_NS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2),
+				NWidget(WWT_PANEL, Colours::Mauve),
+					NWidget(WWT_INSET, Colours::Mauve, WID_NS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2),
 							SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_NS_SCROLLBAR), SetToolTip(STR_NEWGRF_SETTINGS_FILE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
-				NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NS_SCROLLBAR),
+				NWidget(NWID_VSCROLLBAR, Colours::Mauve, WID_NS_SCROLLBAR),
 			EndContainer(),
 
 			/* Buttons. */
-			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_REMOVE),
+			NWidget(NWID_SELECTION, Colours::Invalid, WID_NS_SHOW_REMOVE),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_REMOVE), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_REMOVE), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),
 					NWidget(NWID_VERTICAL),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
 								SetStringTip(STR_NEWGRF_SETTINGS_MOVEUP, STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
 								SetStringTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
 					EndContainer(),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_UPGRADE), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_UPGRADE), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_NEWGRF_SETTINGS_UPGRADE, STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP),
 				EndContainer(),
 
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_RESCAN_FILES2), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_RESCAN_FILES2), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_NEWGRF_SETTINGS_RESCAN_FILES, STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_CONTENT_DOWNLOAD2), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_CONTENT_DOWNLOAD2), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 				EndContainer(),
 			EndContainer(),
@@ -1801,32 +1801,32 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_actives_widge
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_availables_widgets = {
-	NWidget(WWT_FRAME, COLOUR_MAUVE), SetStringTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+	NWidget(WWT_FRAME, Colours::Mauve), SetStringTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Left side, available grfs, filter edit box. */
 		NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-			NWidget(WWT_TEXT, INVALID_COLOUR), SetFill(0, 1), SetStringTip(STR_NEWGRF_FILTER_TITLE),
-			NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_NS_FILTER), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_TEXT, Colours::Invalid), SetFill(0, 1), SetStringTip(STR_NEWGRF_FILTER_TITLE),
+			NWidget(WWT_EDITBOX, Colours::Mauve, WID_NS_FILTER), SetFill(1, 0), SetResize(1, 0),
 					SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),
 
 		/* Left side, available grfs. */
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_MAUVE),
-				NWidget(WWT_INSET, COLOUR_MAUVE, WID_NS_AVAIL_LIST), SetMinimalSize(100, 1), SetPadding(2),
+			NWidget(WWT_PANEL, Colours::Mauve),
+				NWidget(WWT_INSET, Colours::Mauve, WID_NS_AVAIL_LIST), SetMinimalSize(100, 1), SetPadding(2),
 						SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_NS_SCROLL2BAR),
 				EndContainer(),
 			EndContainer(),
-			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NS_SCROLL2BAR),
+			NWidget(NWID_VSCROLLBAR, Colours::Mauve, WID_NS_SCROLL2BAR),
 		EndContainer(),
 
 		/* Left side, available grfs, buttons. */
 		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_ADD), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_ADD), SetFill(1, 0), SetResize(1, 0),
 					SetStringTip(STR_NEWGRF_SETTINGS_ADD, STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_RESCAN_FILES), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_RESCAN_FILES), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_NEWGRF_SETTINGS_RESCAN_FILES, STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_CONTENT_DOWNLOAD), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_CONTENT_DOWNLOAD), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 			EndContainer(),
 		EndContainer(),
@@ -1836,42 +1836,42 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_availables_wi
 static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_infopanel_widgets = {
 	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Right side, info panel. */
-		NWidget(WWT_PANEL, COLOUR_MAUVE),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
+		NWidget(WWT_PANEL, Colours::Mauve),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_NS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_NS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
 		EndContainer(),
 
 		/* Right side, info buttons. */
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_OPEN_URL), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_OPEN_URL), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 
 		/* Right side, config buttons. */
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_EDIT),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_NS_SHOW_EDIT),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
 				EndContainer(),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_APPLY),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
+				NWidget(NWID_SELECTION, Colours::Invalid, WID_NS_SHOW_APPLY),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_VIEW_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_VIEW_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
 					SetStringTip(STR_NEWGRF_SETTINGS_SHOW_PARAMETERS),
 		EndContainer(),
 	EndContainer(),
@@ -1890,16 +1890,16 @@ std::unique_ptr<NWidgetBase> NewGRFDisplay()
 /** Widget definition of the manage newgrfs window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetStringTip(STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CLOSEBOX, Colours::Mauve),
+		NWidget(WWT_CAPTION, Colours::Mauve), SetStringTip(STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEFSIZEBOX, Colours::Mauve),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE),
+	NWidget(WWT_PANEL, Colours::Mauve),
 		NWidgetFunction(NewGRFDisplay), SetPadding(WidgetDimensions::unscaled.sparse_resize),
 		/* Resize button. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, Colours::Mauve), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1974,24 +1974,24 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 /** Widget parts of the save preset window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_save_preset_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_SAVE_PRESET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_SAVE_PRESET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_INSET, COLOUR_GREY, WID_SVP_PRESET_LIST), SetPadding(2, 1, 2, 2),
+			NWidget(WWT_INSET, Colours::Grey, WID_SVP_PRESET_LIST), SetPadding(2, 1, 2, 2),
 					SetToolTip(STR_SAVE_PRESET_LIST_TOOLTIP), SetResize(1, 10), SetScrollbar(WID_SVP_SCROLLBAR), EndContainer(),
-			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SVP_SCROLLBAR),
+			NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_SVP_SCROLLBAR),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SVP_EDITBOX), SetPadding(2, 2, 2, 2), SetFill(1, 0), SetResize(1, 0),
+	NWidget(WWT_PANEL, Colours::Grey),
+		NWidget(WWT_EDITBOX, Colours::Grey, WID_SVP_EDITBOX), SetPadding(2, 2, 2, 2), SetFill(1, 0), SetResize(1, 0),
 				SetStringTip(STR_SAVE_PRESET_TITLE, STR_SAVE_PRESET_EDITBOX_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SVP_SAVE), SetStringTip(STR_SAVE_PRESET_SAVE, STR_SAVE_PRESET_SAVE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SVP_SAVE), SetStringTip(STR_SAVE_PRESET_SAVE, STR_SAVE_PRESET_SAVE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
 };
 
@@ -2126,12 +2126,12 @@ static void ShowSavePresetWindow(std::string_view initial_text)
 
 /** Widgets for the progress window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_scan_progress_widgets = {
-	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_NEWGRF_SCAN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_NEWGRF_SCAN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
-			NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_NEWGRF_SCAN_MESSAGE), SetFill(1, 0),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SP_PROGRESS_BAR), SetFill(1, 0),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SP_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(400, 0),
+			NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_NEWGRF_SCAN_MESSAGE), SetFill(1, 0),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_SP_PROGRESS_BAR), SetFill(1, 0),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_SP_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(400, 0),
 		EndContainer(),
 	EndContainer(),
 };
@@ -2181,10 +2181,10 @@ struct ScanProgressWindow : public Window {
 		switch (widget) {
 			case WID_SP_PROGRESS_BAR: {
 				/* Draw the % complete with a bar and a text */
-				DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
+				DrawFrameRect(r, Colours::Grey, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				uint percent = scanned * 100 / std::max(1U, _settings_client.gui.last_newgrf_count);
-				DrawFrameRect(ir.WithWidth(ir.Width() * percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
+				DrawFrameRect(ir.WithWidth(ir.Width() * percent / 100, _current_text_dir == TD_RTL), Colours::Mauve, {});
 				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), GetString(STR_GENERATION_PROGRESS, percent), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}

@@ -871,13 +871,13 @@ static void MakeNewGameDone()
 	c->settings = _settings_client.company;
 
 	/* Overwrite colour from settings if needed
-	 * COLOUR_END corresponds to Random colour */
+	 * Colours::End corresponds to Random colour */
 
-	if (_settings_client.gui.starting_colour != COLOUR_END) {
+	if (_settings_client.gui.starting_colour != Colours::End) {
 		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
 	}
 
-	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
+	if (_settings_client.gui.starting_colour_secondary != Colours::End && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
 		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
 	}
 

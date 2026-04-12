@@ -112,6 +112,6 @@ void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, Eng
 		x += x_offs;
 		y += UnScaleGUI(rect.top) - heli_offs;
 		Rect hr = {x, y, x + width - 1, y + UnScaleGUI(rect.Height()) + heli_offs - 1};
-		DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
+		DrawFrameRect(hr.Expand(WidgetDimensions::scaled.bevel), Colours::White, FrameFlag::BorderOnly);
 	}
 }

@@ -246,19 +246,19 @@ struct ScriptListWindow : public Window {
 /** Widgets for the AI list window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_script_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRL_CAPTION),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CLOSEBOX, Colours::Mauve),
+		NWidget(WWT_CAPTION, Colours::Mauve, WID_SCRL_CAPTION),
+		NWidget(WWT_DEFSIZEBOX, Colours::Mauve),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_SCRL_LIST), SetMinimalSize(188, 112), SetFill(1, 1), SetResize(1, 1), SetMatrixDataTip(1, 0, STR_AI_LIST_TOOLTIP), SetScrollbar(WID_SCRL_SCROLLBAR),
-		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_SCRL_SCROLLBAR),
+		NWidget(WWT_MATRIX, Colours::Mauve, WID_SCRL_LIST), SetMinimalSize(188, 112), SetFill(1, 1), SetResize(1, 1), SetMatrixDataTip(1, 0, STR_AI_LIST_TOOLTIP), SetScrollbar(WID_SCRL_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, Colours::Mauve, WID_SCRL_SCROLLBAR),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_SCRL_INFO_BG), SetMinimalTextLines(8, WidgetDimensions::unscaled.framerect.Vertical() + WidgetDimensions::unscaled.vsep_normal * 3), SetResize(1, 0),
+	NWidget(WWT_PANEL, Colours::Mauve, WID_SCRL_INFO_BG), SetMinimalTextLines(8, WidgetDimensions::unscaled.framerect.Vertical() + WidgetDimensions::unscaled.vsep_normal * 3), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRL_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_ACCEPT, STR_AI_LIST_ACCEPT_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_PUSHTXTBTN, Colours::Mauve, WID_SCRL_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_ACCEPT, STR_AI_LIST_ACCEPT_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, Colours::Mauve),
 	EndContainer(),
 };
 
@@ -369,13 +369,13 @@ struct ScriptSettingsWindow : public Window {
 			bool editable = this->IsEditableItem(config_item);
 
 			if (config_item.flags.Test(ScriptConfigFlag::Boolean)) {
-				DrawBoolButton(br.left, y + button_y_offset, COLOUR_YELLOW, COLOUR_MAUVE, current_value != 0, editable);
+				DrawBoolButton(br.left, y + button_y_offset, Colours::Yellow, Colours::Mauve, current_value != 0, editable);
 			} else {
 				int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 				if (config_item.complete_labels) {
-					DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, editable);
+					DrawDropDownButton(br.left, y + button_y_offset, Colours::Yellow, this->clicked_row == i && this->clicked_dropdown, editable);
 				} else {
-					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+					DrawArrowButtons(br.left, y + button_y_offset, Colours::Yellow, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
 			}
 
@@ -444,7 +444,7 @@ struct ScriptSettingsWindow : public Window {
 								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, config_item.labels.find(i)->second), i));
 							}
 
-							ShowDropDownListAt(this, std::move(list), old_val, WID_SCRS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
+							ShowDropDownListAt(this, std::move(list), old_val, WID_SCRS_SETTING_DROPDOWN, wi_rect, Colours::Orange);
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
@@ -557,19 +557,19 @@ private:
 /** Widgets for the Script settings window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_script_settings_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRS_CAPTION),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CLOSEBOX, Colours::Mauve),
+		NWidget(WWT_CAPTION, Colours::Mauve, WID_SCRS_CAPTION),
+		NWidget(WWT_DEFSIZEBOX, Colours::Mauve),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_SCRS_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_SCRS_SCROLLBAR),
-		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_SCRS_SCROLLBAR),
+		NWidget(WWT_MATRIX, Colours::Mauve, WID_SCRS_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_SCRS_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, Colours::Mauve, WID_SCRS_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_RESET), SetStringTip(STR_AI_SETTINGS_RESET),
-		NWidget(WWT_PANEL, COLOUR_MAUVE), SetResize(1, 0), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Mauve, WID_SCRS_RESET), SetStringTip(STR_AI_SETTINGS_RESET),
+		NWidget(WWT_PANEL, Colours::Mauve), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_RESIZEBOX, Colours::Mauve),
 	EndContainer(),
 };
 
@@ -648,8 +648,8 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
 {
 	/* Dead scripts are indicated with red background and
 	 * paused scripts are indicated with yellow background. */
-	Colours colour = dead ? COLOUR_RED :
-		(paused ? COLOUR_YELLOW : COLOUR_GREY);
+	Colours colour = dead ? Colours::Red :
+		(paused ? Colours::Yellow : Colours::Grey);
 	if (button.colour != colour) {
 		button.colour = colour;
 		return true;
@@ -1199,53 +1199,53 @@ struct ScriptDebugWindow : public Window {
 /** Make a number of rows with buttons for each company for the Script debug window. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsScriptDebug()
 {
-	return MakeCompanyButtonRows(WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END, COLOUR_GREY, 5, STR_AI_DEBUG_SELECT_AI_TOOLTIP, false);
+	return MakeCompanyButtonRows(WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END, Colours::Grey, 5, STR_AI_DEBUG_SELECT_AI_TOOLTIP, false);
 }
 
 /** Widgets for the Script debug window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_script_debug_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_AI_DEBUG, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_AI_DEBUG, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCRD_VIEW),
+		NWidget(WWT_PANEL, Colours::Grey, WID_SCRD_VIEW),
 			NWidgetFunction(MakeCompanyButtonRowsScriptDebug), SetPadding(0, 2, 1, 2),
 		EndContainer(),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_SCRIPT_GAME), SetMinimalSize(100, 20), SetStringTip(STR_AI_GAME_SCRIPT, STR_AI_GAME_SCRIPT_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_NAME_TEXT), SetResize(1, 0), SetToolTip(STR_AI_DEBUG_NAME_TOOLTIP),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_SCRD_SCRIPT_GAME), SetMinimalSize(100, 20), SetStringTip(STR_AI_GAME_SCRIPT, STR_AI_GAME_SCRIPT_TOOLTIP),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_SCRD_NAME_TEXT), SetResize(1, 0), SetToolTip(STR_AI_DEBUG_NAME_TOOLTIP),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_SETTINGS), SetMinimalSize(100, 20), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SCRD_SETTINGS), SetMinimalSize(100, 20), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SCRD_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 		/* Log panel */
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCRD_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1), SetScrollbar(WID_SCRD_VSCROLLBAR),
+		NWidget(WWT_PANEL, Colours::Grey, WID_SCRD_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1), SetScrollbar(WID_SCRD_VSCROLLBAR),
 		EndContainer(),
 		/* Break string widgets */
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SCRD_BREAK_STRING_WIDGETS),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_SCRD_BREAK_STRING_WIDGETS),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_IMGBTN_2, COLOUR_GREY, WID_SCRD_BREAK_STR_ON_OFF_BTN), SetAspect(WidgetDimensions::ASPECT_VEHICLE_FLAG), SetFill(0, 1), SetSpriteTip(SPR_FLAG_VEH_STOPPED, STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP),
-				NWidget(WWT_PANEL, COLOUR_GREY),
+				NWidget(WWT_IMGBTN_2, Colours::Grey, WID_SCRD_BREAK_STR_ON_OFF_BTN), SetAspect(WidgetDimensions::ASPECT_VEHICLE_FLAG), SetFill(0, 1), SetSpriteTip(SPR_FLAG_VEH_STOPPED, STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP),
+				NWidget(WWT_PANEL, Colours::Grey),
 					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_LABEL, INVALID_COLOUR), SetPadding(2, 2, 2, 4), SetStringTip(STR_AI_DEBUG_BREAK_ON_LABEL),
-						NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SCRD_BREAK_STR_EDIT_BOX), SetFill(1, 1), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetStringTip(STR_AI_DEBUG_BREAK_STR_OSKTITLE, STR_AI_DEBUG_BREAK_STR_TOOLTIP),
+						NWidget(WWT_LABEL, Colours::Invalid), SetPadding(2, 2, 2, 4), SetStringTip(STR_AI_DEBUG_BREAK_ON_LABEL),
+						NWidget(WWT_EDITBOX, Colours::Grey, WID_SCRD_BREAK_STR_EDIT_BOX), SetFill(1, 1), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetStringTip(STR_AI_DEBUG_BREAK_STR_OSKTITLE, STR_AI_DEBUG_BREAK_STR_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_MATCH_CASE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_MATCH_CASE, STR_AI_DEBUG_MATCH_CASE_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_CONTINUE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_CONTINUE, STR_AI_DEBUG_CONTINUE_TOOLTIP),
+				NWidget(WWT_TEXTBTN, Colours::Grey, WID_SCRD_MATCH_CASE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_MATCH_CASE, STR_AI_DEBUG_MATCH_CASE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SCRD_CONTINUE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_CONTINUE, STR_AI_DEBUG_CONTINUE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_HSCROLLBAR, COLOUR_GREY, WID_SCRD_HSCROLLBAR),
+		NWidget(NWID_HSCROLLBAR, Colours::Grey, WID_SCRD_HSCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_VERTICAL),
-		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCRD_VSCROLLBAR),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+		NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_SCRD_VSCROLLBAR),
+		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
 EndContainer(),
 };

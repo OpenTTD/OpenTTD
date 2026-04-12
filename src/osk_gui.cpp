@@ -234,7 +234,7 @@ static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_h
 		spc->SetMinimalTextLines(1, pad_y, FontSize::Normal);
 		hor->Add(std::move(spc));
 	} else {
-		auto leaf = std::make_unique<NWidgetLeaf>(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
+		auto leaf = std::make_unique<NWidgetLeaf>(widtype, Colours::Grey, widnum, widdata, STR_NULL);
 		leaf->SetMinimalSize(key_width, 0);
 		leaf->SetMinimalTextLines(1, pad_y, FontSize::Normal);
 		hor->Add(std::move(leaf));
@@ -322,11 +322,11 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 
 
 static constexpr std::initializer_list<NWidgetPart> _nested_osk_widgets = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetTextStyle(TC_WHITE),
-	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_OSK_TEXT), SetMinimalSize(252, 0), SetPadding(2, 2, 2, 2),
+	NWidget(WWT_CAPTION, Colours::Grey, WID_OSK_CAPTION), SetTextStyle(TC_WHITE),
+	NWidget(WWT_PANEL, Colours::Grey),
+		NWidget(WWT_EDITBOX, Colours::Grey, WID_OSK_TEXT), SetMinimalSize(252, 0), SetPadding(2, 2, 2, 2),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_VERTICAL), SetPadding(3), SetPIP(0, INTER_KEY_SPACE, 0),
 			NWidgetFunction(MakeTopKeys),
 			NWidgetFunction(MakeNumberKeys),

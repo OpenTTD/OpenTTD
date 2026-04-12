@@ -104,7 +104,7 @@ public:
 		COLOUR_BROWN,
 		COLOUR_GREY,
 		COLOUR_WHITE,
-		COLOUR_INVALID = ::INVALID_COLOUR
+		COLOUR_INVALID = to_underlying(::Colours::Invalid)
 	};
 
 	/**

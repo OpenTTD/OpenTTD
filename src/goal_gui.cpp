@@ -276,22 +276,22 @@ struct GoalListWindow : public Window {
 /** Widgets of the #GoalListWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_goals_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GOAL_SELECT_BUTTONS),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
+		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_CAPTION, Colours::Brown, WID_GOAL_CAPTION),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_GOAL_SELECT_BUTTONS),
+			NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
+			NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
 		EndContainer(),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+		NWidget(WWT_SHADEBOX, Colours::Brown),
+		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
+		NWidget(WWT_STICKYBOX, Colours::Brown),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_GOAL_LIST), SetToolTip(STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR), SetResize(1, 1), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PANEL, Colours::Brown, WID_GOAL_LIST), SetToolTip(STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR), SetResize(1, 1), SetMinimalTextLines(2, 0),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GOAL_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+			NWidget(NWID_VSCROLLBAR, Colours::Brown, WID_GOAL_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Brown),
 		EndContainer(),
 	EndContainer(),
 };
@@ -412,8 +412,8 @@ struct NestedGoalWidgets {
 		EndContainer(),
 		NWidget(WWT_PANEL, bg_colour),
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.modalpopup), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetFill(1, 0),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
+				NWidget(WWT_EMPTY, Colours::Invalid, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetFill(1, 0),
+				NWidget(NWID_SELECTION, Colours::Invalid, WID_GQ_BUTTONS),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(85, WidgetDimensions::unscaled.hsep_wide, 85),
 						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
 					EndContainer(),
@@ -432,10 +432,10 @@ struct NestedGoalWidgets {
 	};
 };
 
-static constexpr auto _nested_goal_question_widgets_question = NestedGoalWidgets<COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, STR_GOAL_QUESTION_CAPTION_QUESTION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_info     = NestedGoalWidgets<COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, STR_GOAL_QUESTION_CAPTION_INFORMATION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets<COLOUR_YELLOW,     COLOUR_YELLOW,     STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<COLOUR_RED,        COLOUR_YELLOW,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_question = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue, STR_GOAL_QUESTION_CAPTION_QUESTION>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_info     = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue, STR_GOAL_QUESTION_CAPTION_INFORMATION>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets<Colours::Yellow,     Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<Colours::Red,        Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
 
 static WindowDesc _goal_question_list_desc[] = {
 	{
