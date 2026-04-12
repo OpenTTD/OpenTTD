@@ -801,11 +801,8 @@ static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 	/* Track does not continue along overtaking direction. */
 	if (!HasBit(trackdirbits, od->trackdir)) return true;
 
-	/* Allow overtaking if tile is one-way or next tile is one-way. */
-	if (IsOneWayRoadTile(od->tile) || IsOneWayRoadTile(next_tile)) return false;
-
-	/* Track has junction or level crossing is barred. */
-	if ((trackbits & ~TRACK_BIT_CROSS) || (red_signals != TRACKDIR_BIT_NONE)) return true;
+	/* Track has junction or level crossing is barred and tile or next tile is not one-way. */
+	if (((trackbits & ~TRACK_BIT_CROSS) || (red_signals != TRACKDIR_BIT_NONE)) && !(IsOneWayRoadTile(od->tile) || IsOneWayRoadTile(next_tile))) return true;
 
 	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
 	return HasVehicleOnTile(od->tile, [&](const Vehicle *v) {
