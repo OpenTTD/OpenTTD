@@ -401,7 +401,7 @@ public:
 		this->badge_classes = GUIBadgeClasses{GSF_INDUSTRIES};
 
 		/* Width of the legend blob -- slightly larger than the smallmap legend blob. */
-		this->legend.height = GetCharacterHeight(FS_SMALL);
+		this->legend.height = GetCharacterHeight(FontSize::Small);
 		this->legend.width = this->legend.height * 9 / 6;
 
 		this->SetupArrays();
@@ -411,7 +411,7 @@ public:
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
-				Dimension count = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxDigits(4)), FS_SMALL);
+				Dimension count = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxDigits(4)), FontSize::Small);
 				Dimension d{};
 				for (const auto &indtype : this->list) {
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
@@ -429,7 +429,7 @@ public:
 				uint extra_lines_req = 0;
 				uint extra_lines_prd = 0;
 				uint extra_lines_newgrf = 0;
-				uint max_minwidth = GetCharacterHeight(FS_NORMAL) * MAX_MINWIDTH_LINEHEIGHTS;
+				uint max_minwidth = GetCharacterHeight(FontSize::Normal) * MAX_MINWIDTH_LINEHEIGHTS;
 				Dimension d = {0, 0};
 				for (const auto &indtype : this->list) {
 					const IndustrySpec *indsp = GetIndustrySpec(indtype);
@@ -463,7 +463,7 @@ public:
 
 				/* Set it to something more sane :) */
 				height += extra_lines_prd + extra_lines_req + extra_lines_newgrf;
-				size.height = height * GetCharacterHeight(FS_NORMAL) + padding.height;
+				size.height = height * GetCharacterHeight(FontSize::Normal) + padding.height;
 				size.width = d.width + padding.width;
 				break;
 			}
@@ -536,7 +536,7 @@ public:
 					DrawString(tr, indsp->name, selected ? TC_WHITE : TC_ORANGE);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
-					DrawString(tr, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TC_BLACK, SA_RIGHT, false, FS_SMALL);
+					DrawString(tr, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TC_BLACK, SA_RIGHT, false, FontSize::Small);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
@@ -556,7 +556,7 @@ public:
 
 				if (_game_mode != GM_EDITOR) {
 					DrawString(ir, GetString(STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST, indsp->GetConstructionCost()));
-					ir.top += GetCharacterHeight(FS_NORMAL);
+					ir.top += GetCharacterHeight(FontSize::Normal);
 				}
 
 				CargoSuffix cargo_suffix[std::tuple_size_v<decltype(indsp->accepts_cargo)>];
@@ -809,7 +809,7 @@ public:
 	IndustryViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->flags.Set(WindowFlag::DisableVpScroll);
-		this->info_height = WidgetDimensions::scaled.framerect.Vertical() + 2 * GetCharacterHeight(FS_NORMAL); // Info panel has at least two lines text.
+		this->info_height = WidgetDimensions::scaled.framerect.Vertical() + 2 * GetCharacterHeight(FontSize::Normal); // Info panel has at least two lines text.
 
 		this->InitNested(window_number);
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_IV_VIEWPORT);
@@ -830,7 +830,7 @@ public:
 	void OnInit() override
 	{
 		/* This only used when the cheat to alter industry production is enabled */
-		this->cheat_line_height = std::max(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
+		this->cheat_line_height = std::max(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FontSize::Normal));
 		this->cargo_icon_size = GetLargestCargoIconSize();
 	}
 
@@ -854,7 +854,7 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		SpriteID icon = CargoSpec::Get(cargo_type)->GetCargoIcon();
 		Dimension d = GetSpriteSize(icon);
-		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
+		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FontSize::Normal));
 		DrawSprite(icon, PAL_NONE, CentreBounds(ir.left, ir.right, d.width), CentreBounds(ir.top, ir.bottom, this->cargo_icon_size.height));
 	}
 
@@ -889,7 +889,7 @@ public:
 
 		if (i->prod_level == PRODLEVEL_CLOSURE) {
 			DrawString(ir, STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE);
-			ir.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+			ir.top += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 		}
 
 		const int label_indent = WidgetDimensions::scaled.hsep_normal + this->cargo_icon_size.width;
@@ -900,7 +900,7 @@ public:
 			has_accept = true;
 			if (first) {
 				DrawString(ir, STR_INDUSTRY_VIEW_REQUIRES);
-				ir.top += GetCharacterHeight(FS_NORMAL);
+				ir.top += GetCharacterHeight(FontSize::Normal);
 				first = false;
 			}
 
@@ -913,11 +913,11 @@ public:
 			if (!stockpiling && suffix.display == CargoSuffixDisplay::Amount) suffix.display = CargoSuffixDisplay::None;
 
 			DrawString(ir.Indent(label_indent, rtl), this->GetAcceptedCargoString(a, suffix));
-			ir.top += GetCharacterHeight(FS_NORMAL);
+			ir.top += GetCharacterHeight(FontSize::Normal);
 		}
 
-		int line_height = this->editable == Editability::Rate ? this->cheat_line_height : GetCharacterHeight(FS_NORMAL);
-		int text_y_offset = (line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int line_height = this->editable == Editability::Rate ? this->cheat_line_height : GetCharacterHeight(FontSize::Normal);
+		int text_y_offset = (line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 		int button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
 		first = true;
 		for (const auto &p : i->produced) {
@@ -925,7 +925,7 @@ public:
 			if (first) {
 				if (has_accept) ir.top += WidgetDimensions::scaled.vsep_wide;
 				DrawString(ir, TimerGameEconomy::UsingWallclockUnits() ? STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE : STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
-				ir.top += GetCharacterHeight(FS_NORMAL);
+				ir.top += GetCharacterHeight(FontSize::Normal);
 				if (this->editable == Editability::Rate) this->production_offset_y = ir.top;
 				first = false;
 			}
@@ -948,7 +948,7 @@ public:
 		/* Display production multiplier if editable */
 		if (this->editable == Editability::Multiplier) {
 			line_height = this->cheat_line_height;
-			text_y_offset = (line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+			text_y_offset = (line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 			button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
 			ir.top += WidgetDimensions::scaled.vsep_wide;
 			this->production_offset_y = ir.top;
@@ -2150,7 +2150,7 @@ struct CargoesField {
 				break;
 
 			case CargoesFieldType::Header:
-				ypos += (small_height - GetCharacterHeight(FS_NORMAL)) / 2;
+				ypos += (small_height - GetCharacterHeight(FontSize::Normal)) / 2;
 				DrawString(xpos, xpos + industry_width, ypos, this->u.header, TC_WHITE, SA_HOR_CENTER);
 				break;
 
@@ -2159,7 +2159,7 @@ struct CargoesField {
 				int ypos2 = ypos + normal_height - 1 - vert_inter_industry_space / 2;
 				int xpos2 = xpos + industry_width - 1;
 				DrawRectOutline({xpos, ypos1, xpos2, ypos2}, INDUSTRY_LINE_COLOUR);
-				ypos += (normal_height - GetCharacterHeight(FS_NORMAL)) / 2;
+				ypos += (normal_height - GetCharacterHeight(FontSize::Normal)) / 2;
 				if (this->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 					const IndustrySpec *indsp = GetIndustrySpec(this->u.industry.ind_type);
 					DrawString(xpos, xpos2, ypos, indsp->name, TC_WHITE, SA_HOR_CENTER);
@@ -2188,7 +2188,7 @@ struct CargoesField {
 					other_right = this->u.industry.other_produced;
 					other_left  = this->u.industry.other_accepted;
 				}
-				ypos1 += CargoesField::cargo_border.height + (GetCharacterHeight(FS_NORMAL) - CargoesField::cargo_line.height) / 2;
+				ypos1 += CargoesField::cargo_border.height + (GetCharacterHeight(FontSize::Normal) - CargoesField::cargo_line.height) / 2;
 				for (uint i = 0; i < CargoesField::max_cargoes; i++) {
 					if (IsValidCargoType(other_right[i])) {
 						const CargoSpec *csp = CargoSpec::Get(other_right[i]);
@@ -2202,7 +2202,7 @@ struct CargoesField {
 						DrawHorConnection(xp + 1, xpos - 1, ypos1, csp);
 						GfxDrawLine(xp, ypos1, xp, ypos1 + CargoesField::cargo_line.height - 1, CARGO_LINE_COLOUR);
 					}
-					ypos1 += GetCharacterHeight(FS_NORMAL) + CargoesField::cargo_space.height;
+					ypos1 += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
 				}
 				break;
 			}
@@ -2232,7 +2232,7 @@ struct CargoesField {
 					hor_left  = this->u.cargo.supp_cargoes;
 					hor_right = this->u.cargo.cust_cargoes;
 				}
-				ypos += CargoesField::cargo_border.height + vert_inter_industry_space / 2 + (GetCharacterHeight(FS_NORMAL) - CargoesField::cargo_line.height) / 2;
+				ypos += CargoesField::cargo_border.height + vert_inter_industry_space / 2 + (GetCharacterHeight(FontSize::Normal) - CargoesField::cargo_line.height) / 2;
 				for (uint i = 0; i < MAX_CARGOES; i++) {
 					if (HasBit(hor_left, i)) {
 						int col = i;
@@ -2256,7 +2256,7 @@ struct CargoesField {
 						}
 						DrawHorConnection(cargo_base + col * CargoesField::cargo_space.width + (col + 1) * CargoesField::cargo_line.width - 1 + dx, xpos + CargoesField::cargo_field_width - 1, ypos, csp);
 					}
-					ypos += GetCharacterHeight(FS_NORMAL) + CargoesField::cargo_space.height;
+					ypos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
 				}
 				break;
 			}
@@ -2269,7 +2269,7 @@ struct CargoesField {
 						DrawString(xpos + WidgetDimensions::scaled.framerect.left, xpos + industry_width - 1 - WidgetDimensions::scaled.framerect.right, ypos, csp->name, TC_WHITE,
 								(this->u.cargo_label.left_align) ? SA_LEFT : SA_RIGHT);
 					}
-					ypos += GetCharacterHeight(FS_NORMAL) + CargoesField::cargo_space.height;
+					ypos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
 				}
 				break;
 
@@ -2299,12 +2299,12 @@ struct CargoesField {
 		}
 		/* col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col. */
 
-		int vpos = (vert_inter_industry_space / 2) + CargoesField::cargo_border.height + (GetCharacterHeight(FS_NORMAL) - CargoesField::cargo_line.height) / 2;
+		int vpos = (vert_inter_industry_space / 2) + CargoesField::cargo_border.height + (GetCharacterHeight(FontSize::Normal) - CargoesField::cargo_line.height) / 2;
 		uint row;
 		for (row = 0; row < MAX_CARGOES; row++) {
 			if (pt.y < vpos) return INVALID_CARGO;
 			if (pt.y < vpos + static_cast<int>(CargoesField::cargo_line.height)) break;
-			vpos += GetCharacterHeight(FS_NORMAL) + CargoesField::cargo_space.height;
+			vpos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
 		}
 		if (row == MAX_CARGOES) return INVALID_CARGO;
 
@@ -2351,8 +2351,8 @@ struct CargoesField {
 		uint row;
 		for (row = 0; row < MAX_CARGOES; row++) {
 			if (pt.y < vpos) return INVALID_CARGO;
-			if (pt.y < vpos + GetCharacterHeight(FS_NORMAL)) break;
-			vpos += GetCharacterHeight(FS_NORMAL) + CargoesField::cargo_space.height;
+			if (pt.y < vpos + GetCharacterHeight(FontSize::Normal)) break;
+			vpos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
 		}
 		if (row == MAX_CARGOES) return INVALID_CARGO;
 		return this->u.cargo_label.cargoes[row];
@@ -2560,7 +2560,7 @@ struct IndustryCargoesWindow : public Window {
 		CargoesField::small_height = d.height;
 
 		/* Size of the legend blob -- slightly larger than the smallmap legend blob. */
-		CargoesField::legend.height = GetCharacterHeight(FS_SMALL);
+		CargoesField::legend.height = GetCharacterHeight(FontSize::Small);
 		CargoesField::legend.width = CargoesField::legend.height * 9 / 6;
 
 		/* Size of cargo lines. */
@@ -2608,7 +2608,7 @@ struct IndustryCargoesWindow : public Window {
 
 		d.width += WidgetDimensions::scaled.frametext.Horizontal();
 		/* Ensure the height is enough for the industry type text, for the horizontal connections, and for the cargo labels. */
-		uint min_ind_height = CargoesField::cargo_border.height * 2 + CargoesField::max_cargoes * GetCharacterHeight(FS_NORMAL) + (CargoesField::max_cargoes - 1) * CargoesField::cargo_space.height;
+		uint min_ind_height = CargoesField::cargo_border.height * 2 + CargoesField::max_cargoes * GetCharacterHeight(FontSize::Normal) + (CargoesField::max_cargoes - 1) * CargoesField::cargo_space.height;
 		d.height = std::max(d.height + WidgetDimensions::scaled.frametext.Vertical(), min_ind_height);
 
 		CargoesField::industry_width = d.width;

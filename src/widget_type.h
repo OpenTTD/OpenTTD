@@ -430,7 +430,7 @@ protected:
 	WidgetID scrollbar_index = INVALID_WIDGET; ///< Index of an attached scrollbar.
 	TextColour highlight_colour{}; ///< Colour of highlight.
 	TextColour text_colour{}; ///< Colour of text within widget.
-	FontSize text_size = FS_NORMAL; ///< Size of text within widget.
+	FontSize text_size = FontSize::Normal; ///< Size of text within widget.
 	StringAlignment align = SA_CENTER; ///< Alignment of text/image within widget.
 
 	/* This function constructs the widgets, so it should be able to write the variables. */
@@ -1220,7 +1220,7 @@ constexpr NWidgetPart SetToolbarMinimalSize(int width)
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
+constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FontSize::Normal)
 {
 	return NWidgetPart{WPT_MINTEXTLINES, NWidgetPartTextLines{lines, spacing, size}};
 }
@@ -1232,7 +1232,7 @@ constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSi
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NORMAL)
+constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FontSize::Normal)
 {
 	return NWidgetPart{WPT_TEXTSTYLE, NWidgetPartTextStyle{colour, size}};
 }

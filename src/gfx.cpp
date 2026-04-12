@@ -51,7 +51,7 @@ SwitchMode _switch_mode;  ///< The next mainloop command.
 PauseModes _pause_mode;
 GameSessionStats _game_session_stats; ///< Statistics about the current session.
 
-static uint8_t _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
+static EnumClassIndexContainer<std::array<std::array<uint8_t, 244>, to_underlying(FontSize::End)>, FontSize> _stringwidth_table; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
 
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);
@@ -669,7 +669,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 int DrawString(int left, int right, int top, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
-	int max_height = std::max({GetCharacterHeight(FS_SMALL), GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_LARGE), GetCharacterHeight(FS_MONO)});
+	int max_height = std::max({GetCharacterHeight(FontSize::Small), GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Large), GetCharacterHeight(FontSize::Monospace)});
 
 	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
 	int extra = max_height / 2;
@@ -873,7 +873,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
-	int max_height = std::max({GetCharacterHeight(FS_SMALL), GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_LARGE), GetCharacterHeight(FS_MONO)});
+	int max_height = std::max({GetCharacterHeight(FontSize::Small), GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Large), GetCharacterHeight(FontSize::Monospace)});
 
 	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
 	int extra = max_height / 2;
@@ -955,9 +955,9 @@ Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize font
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
 	SetColourRemap(colour);
-	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
-		CentreBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
-		CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
+	GfxMainBlitter(GetGlyph(FontSize::Normal, c),
+		CentreBounds(r.left, r.right, GetCharacterWidth(FontSize::Normal, c)),
+		CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal)),
 		BlitterMode::ColourRemap);
 }
 

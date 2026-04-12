@@ -98,7 +98,7 @@ struct ExpensesList {
 	uint GetHeight() const
 	{
 		/* Add up the height of all the lines.  */
-		return static_cast<uint>(this->items.size()) * GetCharacterHeight(FS_NORMAL);
+		return static_cast<uint>(this->items.size()) * GetCharacterHeight(FontSize::Normal);
 	}
 
 	/**
@@ -129,15 +129,15 @@ static const std::initializer_list<ExpensesList> _expenses_list_types = {
 static uint GetTotalCategoriesHeight()
 {
 	/* There's an empty line and blockspace on the year row */
-	uint total_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+	uint total_height = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	for (const ExpensesList &list : _expenses_list_types) {
 		/* Title + expense list + total line + total + blockspace after category */
-		total_height += GetCharacterHeight(FS_NORMAL) + list.GetHeight() + WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+		total_height += GetCharacterHeight(FontSize::Normal) + list.GetHeight() + WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 	}
 
 	/* Total income */
-	total_height += WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+	total_height += WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	return total_height;
 }
@@ -175,7 +175,7 @@ static void DrawCategory(const Rect &r, int start_y, const ExpensesList &list)
 
 	for (const ExpensesType &et : list.items) {
 		DrawString(tr, STR_FINANCES_SECTION_CONSTRUCTION + et);
-		tr.top += GetCharacterHeight(FS_NORMAL);
+		tr.top += GetCharacterHeight(FontSize::Normal);
 	}
 }
 
@@ -189,12 +189,12 @@ static void DrawCategories(const Rect &r)
 	int y = r.top;
 	/* Draw description of 12-minute economic period. */
 	DrawString(r.left, r.right, y, (TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION), TC_FROMSTRING, SA_LEFT, true);
-	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+	y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	for (const ExpensesList &list : _expenses_list_types) {
 		/* Draw category title and advance y */
 		DrawString(r.left, r.right, y, list.title, TC_FROMSTRING, SA_LEFT);
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Draw category items and advance y */
 		DrawCategory(r, y, list);
@@ -205,7 +205,7 @@ static void DrawCategories(const Rect &r)
 
 		/* Draw category total and advance y */
 		DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Advance y by a blockspace after this category block */
 		y += WidgetDimensions::scaled.vsep_wide;
@@ -253,7 +253,7 @@ static Money DrawYearCategory(const Rect &r, int start_y, const ExpensesList &li
 		Money cost = tbl[et];
 		sum += cost;
 		if (cost != 0) DrawPrice(cost, r.left, r.right, y, TC_BLACK);
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	/* Draw the total at the bottom of the category. */
@@ -280,14 +280,14 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 
 	/* Year header */
 	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TC_FROMSTRING, SA_RIGHT | SA_FORCE, true);
-	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+	y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	/* Categories */
 	for (const ExpensesList &list : _expenses_list_types) {
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 		sum += DrawYearCategory(r, y, list, tbl);
 		/* Expense list + expense category title + expense category total + blockspace after category */
-		y += list.GetHeight() + WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+		y += list.GetHeight() + WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 	}
 
 	/* Total income. */
@@ -426,7 +426,7 @@ struct CompanyFinancesWindow : Window {
 			}
 
 			case WID_CF_INTEREST_RATE:
-				size.height = GetCharacterHeight(FS_NORMAL);
+				size.height = GetCharacterHeight(FontSize::Normal);
 				break;
 		}
 	}
@@ -769,7 +769,7 @@ public:
 			case WID_SCL_MATRIX: {
 				/* 11 items in the default rail class */
 				this->square = GetSpriteSize(SPR_SQUARE);
-				this->line_height = std::max(this->square.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				this->line_height = std::max(this->square.height, (uint)GetCharacterHeight(FontSize::Normal)) + padding.height;
 
 				size.height = 5 * this->line_height;
 				resize.width = 1;
@@ -872,7 +872,7 @@ public:
 
 		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
 		int square_offs = (ir.Height() - this->square.height) / 2;
-		int text_offs   = (ir.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_offs   = (ir.Height() - GetCharacterHeight(FontSize::Normal)) / 2;
 
 		int y = ir.top;
 
@@ -1264,7 +1264,7 @@ public:
 
 	void OnInit() override
 	{
-		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
+		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FontSize::Normal)) + WidgetDimensions::scaled.matrix.Vertical();
 	}
 
 	/**
@@ -1344,7 +1344,7 @@ public:
 				bool rtl = _current_text_dir == TD_RTL;
 
 				Rect br = ir.CentreToHeight(SETTING_BUTTON_HEIGHT).WithWidth(SETTING_BUTTON_WIDTH, rtl);
-				Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FS_NORMAL)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
+				Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FontSize::Normal)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 				DrawArrowButtons(br.left, br.top, COLOUR_YELLOW, this->selected_var == UINT_MAX - 1 ? this->click_state : 0, true, true);
 				DrawString(tr, GetString(STR_FACE_SETTING_NUMERIC, STR_FACE_STYLE, this->face.style + 1, GetNumCompanyManagerFaceStyles()), TC_WHITE);
@@ -1363,7 +1363,7 @@ public:
 					const FaceVar &facevar = **it;
 
 					Rect br = ir.CentreToHeight(SETTING_BUTTON_HEIGHT).WithWidth(SETTING_BUTTON_WIDTH, rtl);
-					Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FS_NORMAL)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
+					Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FontSize::Normal)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 					uint val = vars[var].GetBits(this->face);
 					if (facevar.type == FaceVarType::Toggle) {
@@ -1708,9 +1708,9 @@ struct CompanyInfrastructureWindow : Window
 	{
 		if (def_height == 0) {
 			/* Try to open the window with the exact required rows, but clamp to a reasonable limit. */
-			int rows = (this->GetWidget<NWidgetBase>(WID_CI_LIST)->current_y - WidgetDimensions::scaled.framerect.Vertical()) / GetCharacterHeight(FS_NORMAL);
+			int rows = (this->GetWidget<NWidgetBase>(WID_CI_LIST)->current_y - WidgetDimensions::scaled.framerect.Vertical()) / GetCharacterHeight(FontSize::Normal);
 			int delta = std::min(20, static_cast<int>(std::size(this->list))) - rows;
-			def_height = this->height + delta * GetCharacterHeight(FS_NORMAL);
+			def_height = this->height + delta * GetCharacterHeight(FontSize::Normal);
 		}
 
 		this->Window::FindWindowPlacementAndResize(def_width, def_height, allow_resize);
@@ -1763,7 +1763,7 @@ struct CompanyInfrastructureWindow : Window
 		size.width = max_label_width + WidgetDimensions::scaled.hsep_wide + this->count_width + WidgetDimensions::scaled.hsep_wide + this->cost_width;
 		size.width = std::max(size.width, max_header_width) + WidgetDimensions::scaled.framerect.Horizontal();
 
-		fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
+		fill.height = resize.height = GetCharacterHeight(FontSize::Normal);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -1771,7 +1771,7 @@ struct CompanyInfrastructureWindow : Window
 		if (widget != WID_CI_LIST) return;
 
 		bool rtl = _current_text_dir == TD_RTL; // We allocate space from end-to-start so the label fills.
-		int line_height = GetCharacterHeight(FS_NORMAL);
+		int line_height = GetCharacterHeight(FontSize::Normal);
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		Rect countr = ir.WithWidth(this->count_width, !rtl);
@@ -2065,7 +2065,7 @@ struct CompanyWindow : Window
 			uint amount = c->group_all[type].num_vehicle;
 			if (amount != 0) {
 				DrawString(r.left, r.right, y, GetString(_company_view_vehicle_count_strings[type], amount));
-				y += GetCharacterHeight(FS_NORMAL);
+				y += GetCharacterHeight(FontSize::Normal);
 			}
 		}
 
@@ -2082,29 +2082,29 @@ struct CompanyWindow : Window
 		uint rail_pieces = c->infrastructure.signal + c->infrastructure.GetRailTotal();
 		if (rail_pieces != 0) {
 			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL, rail_pieces));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 
 		/* GetRoadTotal() skips tram pieces, but we actually want road and tram here. */
 		uint road_pieces = std::accumulate(std::begin(c->infrastructure.road), std::end(c->infrastructure.road), 0U);
 		if (road_pieces != 0) {
 			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD, road_pieces));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 
 		if (c->infrastructure.water != 0) {
 			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_WATER, c->infrastructure.water));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 
 		if (c->infrastructure.station != 0) {
 			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_STATION, c->infrastructure.station));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 
 		if (c->infrastructure.airport != 0) {
 			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT, c->infrastructure.airport));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 
 		if (y == r.top) {

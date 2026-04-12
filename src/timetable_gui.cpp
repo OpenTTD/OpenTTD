@@ -226,13 +226,13 @@ struct TimetableWindow : Window {
 				/* We handle this differently depending on the timetable mode. */
 				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 					/* A five-digit number would fit a timetable lasting 2.7 real-world hours, which should be plenty. */
-					uint64_t max_digits = GetParamMaxDigits(4, FS_SMALL);
+					uint64_t max_digits = GetParamMaxDigits(4, FontSize::Small);
 					size.width = std::max(
 							GetStringBoundingBox(GetString(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, TC_BLACK, max_digits)).width,
 							GetStringBoundingBox(GetString(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, TC_BLACK, max_digits)).width)
 							+ WidgetDimensions::scaled.hsep_wide + padding.width;
 				} else {
-					uint64_t max_value = GetParamMaxValue(TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR).base(), 0, FS_SMALL);
+					uint64_t max_value = GetParamMaxValue(TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR).base(), 0, FontSize::Small);
 					size.width = std::max(
 							GetStringBoundingBox(GetString(STR_TIMETABLE_ARRIVAL_DATE, TC_BLACK, max_value)).width,
 							GetStringBoundingBox(GetString(STR_TIMETABLE_DEPARTURE_DATE, TC_BLACK, max_value)).width)
@@ -241,12 +241,12 @@ struct TimetableWindow : Window {
 				[[fallthrough]];
 
 			case WID_VT_TIMETABLE_PANEL:
-				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = GetCharacterHeight(FontSize::Normal);
 				size.height = 8 * resize.height + padding.height;
 				break;
 
 			case WID_VT_SUMMARY_PANEL:
-				size.height = 2 * GetCharacterHeight(FS_NORMAL) + padding.height;
+				size.height = 2 * GetCharacterHeight(FontSize::Normal) + padding.height;
 				break;
 		}
 	}
@@ -456,7 +456,7 @@ struct TimetableWindow : Window {
 			}
 
 			i++;
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top += GetCharacterHeight(FontSize::Normal);
 		}
 	}
 
@@ -533,7 +533,7 @@ struct TimetableWindow : Window {
 					}
 				}
 			}
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top += GetCharacterHeight(FontSize::Normal);
 		}
 	}
 
@@ -558,7 +558,7 @@ struct TimetableWindow : Window {
 		if (total_time != 0) {
 			DrawString(tr, GetTimetableTotalTimeString(total_time));
 		}
-		tr.top += GetCharacterHeight(FS_NORMAL);
+		tr.top += GetCharacterHeight(FontSize::Normal);
 
 		/* Draw the lateness display, or indicate that the timetable has not started yet. */
 		if (v->timetable_start != 0) {

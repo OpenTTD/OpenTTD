@@ -34,14 +34,14 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 	for (const Aircraft *u = v; u != nullptr; u = u->Next()) {
 		if (u->IsNormalAircraft()) {
 			DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_BUILT_VALUE, PackEngineNameDParam(u->engine_type, EngineNameContext::VehicleDetails), u->build_year, u->value));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 
 			if (u->Next()->cargo_cap != 0) {
 				DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_CAPACITY_CAPACITY, u->cargo_type, u->cargo_cap, u->Next()->cargo_type, u->Next()->cargo_cap, GetCargoSubtypeText(u)));
 			} else {
 				DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_CAPACITY, u->cargo_type, u->cargo_cap, GetCargoSubtypeText(u)));
 			}
-			y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+			y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		}
 
 		if (u->cargo_cap != 0) {
@@ -50,7 +50,7 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 			if (cargo_count != 0) {
 				/* Cargo names (fix pluralness) */
 				DrawString(r.left, r.right, y, GetString(STR_VEHICLE_DETAILS_CARGO_FROM, u->cargo_type, cargo_count, u->cargo.GetFirstStation()));
-				y += GetCharacterHeight(FS_NORMAL);
+				y += GetCharacterHeight(FontSize::Normal);
 				feeder_share += u->cargo.GetFeederShare();
 			}
 		}

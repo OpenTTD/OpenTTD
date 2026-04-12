@@ -139,7 +139,7 @@ struct EnginePreviewWindow : Window {
 				for (const EngineID &engine : this->engines) {
 					int title_height = GetStringHeight(GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), size.width);
 					int body_height = GetStringHeight(GetEngineInfoString(engine), size.width);
-					height = std::max(height, title_height + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) + this->vehicle_space + body_height);
+					height = std::max(height, title_height + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FontSize::Normal) + this->vehicle_space + body_height);
 				}
 
 				size.height = height;
@@ -169,7 +169,7 @@ struct EnginePreviewWindow : Window {
 		int y = DrawStringMultiLine(r, GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), TC_FROMSTRING, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
 
 		DrawString(r.left, r.right, y, GetString(STR_ENGINE_NAME, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)), TC_BLACK, SA_HOR_CENTER);
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		DrawVehicleEngine(r.left, r.right, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 

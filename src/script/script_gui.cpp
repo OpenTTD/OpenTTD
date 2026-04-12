@@ -109,7 +109,7 @@ struct ScriptListWindow : public Window {
 	{
 		if (widget != WID_SCRL_LIST) return;
 
-		this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
+		this->line_height = GetCharacterHeight(FontSize::Normal) + padding.height;
 
 		resize.width = 1;
 		fill.height = resize.height = this->line_height;
@@ -148,12 +148,12 @@ struct ScriptListWindow : public Window {
 				if (selected_info != nullptr) {
 					Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 					DrawString(tr, GetString(STR_AI_LIST_AUTHOR, selected_info->GetAuthor()));
-					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+					tr.top += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 					DrawString(tr, GetString(STR_AI_LIST_VERSION, selected_info->GetVersion()));
-					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+					tr.top += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 					if (!selected_info->GetURL().empty()) {
 						DrawString(tr, GetString(STR_AI_LIST_URL, selected_info->GetURL()));
-						tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+						tr.top += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 					}
 					DrawStringMultiLine(tr, selected_info->GetDescription(), TC_WHITE);
 				}
@@ -342,7 +342,7 @@ struct ScriptSettingsWindow : public Window {
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
-		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
+		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FontSize::Normal)) + padding.height;
 
 		resize.width = 1;
 		fill.height = resize.height = this->line_height;
@@ -360,7 +360,7 @@ struct ScriptSettingsWindow : public Window {
 
 		int y = r.top;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 
 		const auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->visible_settings);
 		for (auto it = first; it != last; ++it) {
@@ -792,7 +792,7 @@ struct ScriptDebugWindow : public Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_SCRD_LOG_PANEL) {
-			fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+			fill.height = resize.height = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 			size.height = 14 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
 		}
 	}

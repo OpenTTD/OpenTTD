@@ -1133,7 +1133,7 @@ private:
 public:
 	BuildRailStationWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, StationPickerCallbacks::instance)
 	{
-		this->coverage_height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+		this->coverage_height = 2 * GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		this->ConstructWindow();
 	}
 

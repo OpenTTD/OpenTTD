@@ -33,7 +33,7 @@ static int ScaleFontTrad(int value)
 	return UnScaleByZoom(value * ZOOM_BASE, _font_zoom);
 }
 
-static std::array<std::unordered_map<char32_t, SpriteID>, FS_END> _char_maps{}; ///< Glyph map for each font size.
+static EnumClassIndexContainer<std::array<std::unordered_map<char32_t, SpriteID>, to_underlying(FontSize::End)>, FontSize> _char_maps{}; ///< Glyph map for each font size.
 
 /**
  * Get SpriteID associated with a character.
@@ -72,10 +72,10 @@ void InitializeUnicodeGlyphMap(FontSize fs)
 	SpriteID base;
 	switch (fs) {
 		default: NOT_REACHED();
-		case FS_MONO:   // Use normal as default for mono spaced font
-		case FS_NORMAL: base = SPR_ASCII_SPACE;       break;
-		case FS_SMALL:  base = SPR_ASCII_SPACE_SMALL; break;
-		case FS_LARGE:  base = SPR_ASCII_SPACE_BIG;   break;
+		case FontSize::Monospace:// Use normal as default for mono spaced font
+		case FontSize::Normal: base = SPR_ASCII_SPACE; break;
+		case FontSize::Small: base = SPR_ASCII_SPACE_SMALL; break;
+		case FontSize::Large: base = SPR_ASCII_SPACE_BIG; break;
 	}
 
 	for (uint i = ASCII_LETTERSTART; i < 256; i++) {
@@ -106,7 +106,7 @@ void InitializeUnicodeGlyphMap(FontSize fs)
  */
 void InitializeUnicodeGlyphMap()
 {
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+	for (FontSize fs = FontSize::Begin; fs < FontSize::End; fs++) {
 		InitializeUnicodeGlyphMap(fs);
 	}
 }
@@ -139,7 +139,7 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 {
 	SpriteID sprite = static_cast<SpriteID>(key & ~SPRITE_GLYPH);
 	if (sprite == 0) sprite = GetUnicodeGlyph(this->fs, '?');
-	return SpriteExists(sprite) ? GetSprite(sprite, SpriteType::Font)->width + ScaleFontTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
+	return SpriteExists(sprite) ? GetSprite(sprite, SpriteType::Font)->width + ScaleFontTrad(this->fs != FontSize::Normal ? 1 : 0) : 0;
 }
 
 GlyphID SpriteFontCache::MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback)

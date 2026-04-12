@@ -282,7 +282,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 				editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
 	auto [param1, param2] = sd->GetValueParams(value);
-	DrawString(text_left, text_right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FS_NORMAL)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	DrawString(text_left, text_right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FontSize::Normal)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -559,7 +559,7 @@ void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - BaseSettingEntry::circle_size.width : left, y + (BaseSettingEntry::line_height - BaseSettingEntry::circle_size.height) / 2);
-	DrawString(rtl ? left : left + BaseSettingEntry::circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - BaseSettingEntry::circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
+	DrawString(rtl ? left : left + BaseSettingEntry::circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - BaseSettingEntry::circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FontSize::Normal)) / 2, this->title, TC_ORANGE);
 }
 
 /**

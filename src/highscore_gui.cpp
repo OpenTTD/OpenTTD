@@ -214,7 +214,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55),
 						GetString(STR_JUST_BIG_RAW_STRING, hs[i].name), colour);
-				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FS_LARGE) + ScaleSpriteTrad(i * 55),
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FontSize::Large) + ScaleSpriteTrad(i * 55),
 						GetString(STR_HIGHSCORE_STATS, hs[i].title, hs[i].score), colour);
 			}
 		}

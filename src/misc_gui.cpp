@@ -83,7 +83,7 @@ public:
 		Rect ir = r.Shrink(WidgetDimensions::scaled.frametext);
 		for (size_t i = 0; i < this->landinfo_data.size(); i++) {
 			DrawString(ir, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_HOR_CENTER);
-			ir.top += GetCharacterHeight(FS_NORMAL) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
+			ir.top += GetCharacterHeight(FontSize::Normal) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
 		}
 
 		if (!this->cargo_acceptance.empty()) {
@@ -100,7 +100,7 @@ public:
 			uint width = GetStringBoundingBox(this->landinfo_data[i]).width + WidgetDimensions::scaled.frametext.Horizontal();
 			size.width = std::max(size.width, width);
 
-			size.height += GetCharacterHeight(FS_NORMAL) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
+			size.height += GetCharacterHeight(FontSize::Normal) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
 		}
 
 		if (!this->cargo_acceptance.empty()) {
@@ -439,7 +439,7 @@ struct AboutWindow : public Window {
 	{
 		if (widget != WID_A_SCROLLING_TEXT) return;
 
-		this->line_height = GetCharacterHeight(FS_NORMAL);
+		this->line_height = GetCharacterHeight(FontSize::Normal);
 
 		Dimension d;
 		d.height = this->line_height * num_visible_lines;
@@ -469,9 +469,9 @@ struct AboutWindow : public Window {
 	/**
 	 * Scroll the text in the about window slow.
 	 *
-	 * The interval of 2100ms is chosen to maintain parity: 2100 / GetCharacterHeight(FS_NORMAL) = 150ms.
+	 * The interval of 2100ms is chosen to maintain parity: 2100 / GetCharacterHeight(FontSize::Normal) = 150ms.
 	 */
-	const IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(2100) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
+	const IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(2100) / GetCharacterHeight(FontSize::Normal), [this](uint count) {
 		this->text_position -= count;
 		/* If the last text has scrolled start a new from the start */
 		if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - std::size(_credits) * this->line_height)) {
@@ -713,7 +713,7 @@ void QueryString::HandleEditBox(Window *w, WidgetID wid)
 
 static int GetCaretWidth()
 {
-	return GetCharacterWidth(FS_NORMAL, '_');
+	return GetCharacterWidth(FontSize::Normal, '_');
 }
 
 /**
@@ -774,14 +774,14 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 	/* If we have a marked area, draw a background highlight. */
 	if (tb->marklength != 0) GfxFillRect(fr.left + tb->markxoffs, fr.top, fr.left + tb->markxoffs + tb->marklength - 1, fr.bottom, PC_GREY);
 
-	DrawString(fr.left, fr.right, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), tb->GetText(), TC_YELLOW);
+	DrawString(fr.left, fr.right, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), tb->GetText(), TC_YELLOW);
 	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
 	if (focussed && tb->caret) {
 		int caret_width = GetCaretWidth();
 		if (rtl) {
-			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), "_", TC_WHITE);
 		} else {
-			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), "_", TC_WHITE);
 		}
 	}
 }
@@ -837,8 +837,8 @@ Rect QueryString::GetBoundingRect(const Window *w, WidgetID wid, size_t from, si
 	r = ScrollEditBoxTextRect(r, *tb);
 
 	/* Get location of first and last character. */
-	const auto p1 = GetCharPosInString(tb->GetText(), from, FS_NORMAL);
-	const auto p2 = from != to ? GetCharPosInString(tb->GetText(), to, FS_NORMAL) : p1;
+	const auto p1 = GetCharPosInString(tb->GetText(), from, FontSize::Normal);
+	const auto p2 = from != to ? GetCharPosInString(tb->GetText(), to, FontSize::Normal) : p1;
 
 	return r.WithX(Clamp(r.left + p1.left, r.left, r.right), Clamp(r.left + p2.right, r.left, r.right));
 }

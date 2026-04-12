@@ -57,7 +57,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	/* Don't use SYMBOL fonts */
 	if (logfont->elfLogFont.lfCharSet == SYMBOL_CHARSET) return 1;
 	/* Use monospaced fonts when asked for it. */
-	if (info->callback->missing_fontsizes.Test(FS_MONO) && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
+	if (info->callback->missing_fontsizes.Test(FontSize::Monospace) && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
 	/* The font has to have at least one of the supported locales to be usable. */
 	auto check_bitfields = [&]() {
@@ -120,7 +120,7 @@ void Win32FontCache::SetFontSize(int pixels)
 
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
-			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FS_SMALL));
+			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FontSize::Small));
 			/* Clamp() is not used as scaled_height could be greater than MAX_FONT_SIZE, which is not permitted in Clamp(). */
 			pixels = std::min(std::max(std::min<int>(otm->otmusMinimumPPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height), MAX_FONT_SIZE);
 
@@ -184,7 +184,7 @@ void Win32FontCache::ClearFontCache()
 	if (size == GDI_ERROR) UserError("Unable to render font glyph");
 
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
-	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
+	uint shadow = (this->fs == FontSize::Normal) ? ScaleGUITrad(1) : 0;
 	uint width = std::max(1U, (uint)gm.gmBlackBoxX + shadow);
 	uint height = std::max(1U, (uint)gm.gmBlackBoxY + shadow);
 
@@ -215,7 +215,7 @@ void Win32FontCache::ClearFontCache()
 		uint pitch = Align(aa ? gm.gmBlackBoxX : std::max((gm.gmBlackBoxX + 7u) / 8u, 1u), 4);
 
 		/* Draw shadow for medium size. */
-		if (this->fs == FS_NORMAL && !aa) {
+		if (this->fs == FontSize::Normal && !aa) {
 			for (uint y = 0; y < gm.gmBlackBoxY; y++) {
 				for (uint x = 0; x < gm.gmBlackBoxX; x++) {
 					if (aa ? (bmp[x + y * pitch] > 0) : HasBit(bmp[(x / 8) + y * pitch], 7 - (x % 8))) {
@@ -275,7 +275,7 @@ public:
 		if (fonttype != FontType::TrueType) return nullptr;
 
 		LOGFONT logfont{};
-		logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
+		logfont.lfPitchAndFamily = fs == FontSize::Monospace ? FIXED_PITCH : VARIABLE_PITCH;
 		logfont.lfCharSet = DEFAULT_CHARSET;
 		logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
 		logfont.lfClipPrecision = CLIP_DEFAULT_PRECIS;

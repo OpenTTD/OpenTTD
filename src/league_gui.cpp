@@ -107,7 +107,7 @@ public:
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
-		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect rank_rect = ir.WithWidth(this->rank_width, rtl);
@@ -145,7 +145,7 @@ public:
 		}
 
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
+		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FontSize::Normal));
 
 		for (const Company *c : Company::Iterate()) {
 			widest_width = std::max(widest_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, widest_title)).width);
@@ -321,7 +321,7 @@ public:
 		}
 
 		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
-		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 
 		/* Calculate positions.of the columns */
 		bool rtl = _current_text_dir == TD_RTL;
@@ -353,7 +353,7 @@ public:
 		if (lt == nullptr) return;
 
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), GetCharacterHeight(FS_NORMAL));
+		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), GetCharacterHeight(FontSize::Normal));
 
 		/* Calculate maximum width of every column */
 		this->rank_width = this->text_width = this->score_width = 0;

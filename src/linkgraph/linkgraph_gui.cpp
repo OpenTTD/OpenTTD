@@ -458,7 +458,7 @@ std::unique_ptr<NWidgetBase> MakeSaturationLegendLinkGraphGUI()
 	for (uint i = 0; i < lengthof(LinkGraphOverlay::LINK_COLOURS[0]); ++i) {
 		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_DARK_GREEN, i + WID_LGL_SATURATION_FIRST);
 		wid->SetMinimalSize(50, 0);
-		wid->SetMinimalTextLines(1, 0, FS_SMALL);
+		wid->SetMinimalTextLines(1, 0, FontSize::Small);
 		wid->SetFill(1, 1);
 		wid->SetResize(0, 0);
 		panel->Add(std::move(wid));
@@ -480,7 +480,7 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 		}
 		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_GREY, i + WID_LGL_CARGO_FIRST);
 		wid->SetMinimalSize(25, 0);
-		wid->SetMinimalTextLines(1, 0, FS_SMALL);
+		wid->SetMinimalTextLines(1, 0, FontSize::Small);
 		wid->SetFill(1, 1);
 		wid->SetResize(0, 0);
 		col->Add(std::move(wid));
@@ -488,7 +488,7 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 	/* Fill up last row */
 	for (uint i = num_cargo; i < Ceil(num_cargo, ENTRIES_PER_COL); ++i) {
 		auto spc = std::make_unique<NWidgetSpacer>(25, 0);
-		spc->SetMinimalTextLines(1, 0, FS_SMALL);
+		spc->SetMinimalTextLines(1, 0, FontSize::Small);
 		spc->SetFill(1, 1);
 		spc->SetResize(0, 0);
 		col->Add(std::move(spc));
@@ -585,7 +585,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			Dimension dim = GetStringBoundingBox(str, FS_SMALL);
+			Dimension dim = GetStringBoundingBox(str, FontSize::Small);
 			dim.width += padding.width;
 			dim.height += padding.height;
 			size = maxdim(size, dim);
@@ -593,7 +593,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		const CargoSpec *cargo = _sorted_cargo_specs[widget - WID_LGL_CARGO_FIRST];
-		Dimension dim = GetStringBoundingBox(cargo->abbrev, FS_SMALL);
+		Dimension dim = GetStringBoundingBox(cargo->abbrev, FontSize::Small);
 		dim.width += padding.width;
 		dim.height += padding.height;
 		size = maxdim(size, dim);
@@ -621,13 +621,13 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER, false, FS_SMALL);
+			DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FontSize::Small)), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER, false, FontSize::Small);
 		}
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		const CargoSpec *cargo = _sorted_cargo_specs[widget - WID_LGL_CARGO_FIRST];
 		GfxFillRect(br, cargo->legend_colour);
-		DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER, false, FS_SMALL);
+		DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FontSize::Small)), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER, false, FontSize::Small);
 	}
 }
 

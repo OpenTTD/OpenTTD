@@ -21,9 +21,9 @@
 #include "safeguards.h"
 
 /** Default unscaled heights for the different sizes of fonts. */
-/* static */ const int FontCache::DEFAULT_FONT_HEIGHT[FS_END] = {10, 6, 18, 10};
+/* static */ const EnumClassIndexContainer<std::array<int, to_underlying(FontSize::End)>, FontSize> FontCache::DEFAULT_FONT_HEIGHT{10, 6, 18, 10};
 /** Default unscaled ascenders for the different sizes of fonts. */
-/* static */ const int FontCache::DEFAULT_FONT_ASCENDER[FS_END] = {8, 5, 15, 8};
+/* static */ const EnumClassIndexContainer<std::array<int, to_underlying(FontSize::End)>, FontSize> FontCache::DEFAULT_FONT_ASCENDER{8, 5, 15, 8};
 
 FontCacheSettings _fcsettings;
 
@@ -91,14 +91,14 @@ int GetCharacterHeight(FontSize size)
 }
 
 
-/* static */ std::array<std::unique_ptr<FontCache>, FS_END> FontCache::caches{};
+/* static */ EnumClassIndexContainer<std::array<std::unique_ptr<FontCache>, to_underlying(FontSize::End)>, FontSize> FontCache::caches{};
 
 /**
  * Initialise font caches with the base sprite font cache for all sizes.
  */
 /* static */ void FontCache::InitializeFontCaches()
 {
-	for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
+	for (FontSize fs = FontSize::Begin; fs != FontSize::End; fs++) {
 		if (FontCache::Get(fs) != nullptr) continue;
 		FontCache::Register(FontProviderManager::LoadFont(fs, FontType::Sprite, false, {}, {}));
 	}
@@ -130,10 +130,10 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 
 	if (!changed) return;
 
-	if (fontsize != FS_MONO) {
+	if (fontsize != FontSize::Monospace) {
 		/* Try to reload only the modified font. */
 		FontCacheSettings backup = _fcsettings;
-		for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		for (FontSize fs = FontSize::Begin; fs < FontSize::End; fs++) {
 			if (fs == fontsize) continue;
 			FontCache *fc = FontCache::Get(fs);
 			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
@@ -181,10 +181,10 @@ uint GetFontCacheFontSize(FontSize fs)
 static std::string GetDefaultTruetypeFont(FontSize fs)
 {
 	switch (fs) {
-		case FS_NORMAL: return "OpenTTD-Sans.ttf";
-		case FS_SMALL: return "OpenTTD-Small.ttf";
-		case FS_LARGE: return "OpenTTD-Serif.ttf";
-		case FS_MONO: return "OpenTTD-Mono.ttf";
+		case FontSize::Normal: return "OpenTTD-Sans.ttf";
+		case FontSize::Small: return "OpenTTD-Small.ttf";
+		case FontSize::Large: return "OpenTTD-Serif.ttf";
+		case FontSize::Monospace: return "OpenTTD-Mono.ttf";
 		default: NOT_REACHED();
 	}
 }
@@ -257,7 +257,7 @@ static std::string GetFontCacheFontName(FontSize fs)
 /* static */ bool FontCache::TryFallback(FontSizes, const std::set<char32_t> &glyphs, const std::string &name, const std::any &os_handle)
 {
 	/* Load the font without registering it. The font size does not matter. */
-	auto fc = FontProviderManager::LoadFont(FS_NORMAL, FontType::TrueType, false, name, os_handle);
+	auto fc = FontProviderManager::LoadFont(FontSize::Normal, FontType::TrueType, false, name, os_handle);
 	if (fc == nullptr) return false;
 
 	size_t matching_chars = 0;

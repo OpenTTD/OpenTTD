@@ -297,13 +297,13 @@ void Textbuf::UpdateStringIter()
 /** Update pixel width of the text. */
 void Textbuf::UpdateWidth()
 {
-	this->pixels = GetStringBoundingBox(this->buf, FS_NORMAL).width;
+	this->pixels = GetStringBoundingBox(this->buf, FontSize::Normal).width;
 }
 
 /** Update pixel position of the caret. */
 void Textbuf::UpdateCaretPosition()
 {
-	const auto pos = GetCharPosInString(this->buf, this->caretpos, FS_NORMAL);
+	const auto pos = GetCharPosInString(this->buf, this->caretpos, FontSize::Normal);
 	this->caretxoffs = _current_text_dir == TD_LTR ? pos.left : pos.right;
 }
 
@@ -311,8 +311,8 @@ void Textbuf::UpdateCaretPosition()
 void Textbuf::UpdateMarkedText()
 {
 	if (this->markend != 0) {
-		const auto pos = GetCharPosInString(this->buf, this->markpos, FS_NORMAL);
-		const auto end = GetCharPosInString(this->buf, this->markend, FS_NORMAL);
+		const auto pos = GetCharPosInString(this->buf, this->markpos, FontSize::Normal);
+		const auto end = GetCharPosInString(this->buf, this->markend, FontSize::Normal);
 		this->markxoffs = std::min(pos.left, end.left);
 		this->marklength = std::max(pos.right, end.right) - this->markxoffs;
 	} else {

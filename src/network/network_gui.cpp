@@ -371,7 +371,7 @@ protected:
 		}
 
 		/* Offset to vertically position text. */
-		int text_y_offset = WidgetDimensions::scaled.matrix.top + (this->resize.step_height - WidgetDimensions::scaled.matrix.Vertical() - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_y_offset = WidgetDimensions::scaled.matrix.top + (this->resize.step_height - WidgetDimensions::scaled.matrix.Vertical() - GetCharacterHeight(FontSize::Normal)) / 2;
 
 		info = info.Shrink(WidgetDimensions::scaled.framerect);
 		name = name.Shrink(WidgetDimensions::scaled.framerect);
@@ -491,12 +491,12 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				fill.height = resize.height = std::max<uint>(this->blot.height, GetCharacterHeight(FS_NORMAL)) + padding.height;
+				fill.height = resize.height = std::max<uint>(this->blot.height, GetCharacterHeight(FontSize::Normal)) + padding.height;
 				size.height = 12 * resize.height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size.height = std::max<uint>(this->blot.height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
+				size.height = std::max<uint>(this->blot.height, GetCharacterHeight(FontSize::Normal)) + WidgetDimensions::scaled.matrix.Vertical();
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
@@ -1522,7 +1522,7 @@ public:
 		PaletteID pal = Company::IsValidID(this->company_id) ? GetCompanyPalette(this->company_id) : PALETTE_TO_GREY;
 		DrawSpriteIgnorePadding(SPR_COMPANY_ICON, pal, r.WithWidth(d.width, rtl), SA_CENTER);
 
-		Rect tr = r.CentreToHeight(GetCharacterHeight(FS_NORMAL)).Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
+		Rect tr = r.CentreToHeight(GetCharacterHeight(FontSize::Normal)).Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 		if (this->company_id == COMPANY_SPECTATOR) {
 			DrawString(tr, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
 		} else if (this->company_id == COMPANY_NEW_COMPANY) {
@@ -1553,7 +1553,7 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		r = this->DrawButtons(r);
 
-		Rect tr = r.CentreToHeight(GetCharacterHeight(FS_NORMAL));
+		Rect tr = r.CentreToHeight(GetCharacterHeight(FontSize::Normal));
 
 		SpriteID player_icon = 0;
 		if (ci->client_id == _network_own_client_id) {
@@ -1836,7 +1836,7 @@ public:
 			case WID_CL_MATRIX: {
 				uint height = std::max({GetScaledSpriteSize(SPR_COMPANY_ICON).height, GetScaledSpriteSize(SPR_JOIN).height, GetScaledSpriteSize(SPR_ADMIN).height, GetScaledSpriteSize(SPR_CHAT).height});
 				height += WidgetDimensions::scaled.framerect.Vertical();
-				this->line_height = std::max(height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				this->line_height = std::max(height, (uint)GetCharacterHeight(FontSize::Normal)) + padding.height;
 
 				resize.width = 1;
 				fill.height = resize.height = this->line_height;
@@ -2124,7 +2124,7 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + to_underlying(_network_join_status), TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), STR_NETWORK_CONNECTING_1 + to_underlying(_network_join_status), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 

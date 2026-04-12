@@ -24,7 +24,7 @@
 /** Cached current locale. */
 static CFAutoRelease<CFLocaleRef> _osx_locale;
 /** CoreText cache for font information, cleared when OTTD changes fonts. */
-static CFAutoRelease<CTFontRef> _font_cache[FS_END];
+static EnumClassIndexContainer<std::array<CFAutoRelease<CTFontRef>, to_underlying(FontSize::End)>, FontSize> _font_cache;
 
 
 /**
@@ -171,7 +171,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 		/* Install a size callback for our special private-use sprite glyphs in case the font does not provide them. */
 		for (ssize_t c = last; c < position; c++) {
 			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && font->fc->MapCharToGlyph(buff[c], false) == 0) {
-				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (font->fc->GetSize() << 24))));
+				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (to_underlying(font->fc->GetSize()) << 24))));
 				/* According to the official documentation, if a run delegate is used, the char should always be 0xFFFC. */
 				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacement_str.get());
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());

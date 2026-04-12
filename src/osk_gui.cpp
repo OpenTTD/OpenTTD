@@ -231,12 +231,12 @@ static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_h
 
 	if (widtype == NWID_SPACER) {
 		auto spc = std::make_unique<NWidgetSpacer>(key_width, 0);
-		spc->SetMinimalTextLines(1, pad_y, FS_NORMAL);
+		spc->SetMinimalTextLines(1, pad_y, FontSize::Normal);
 		hor->Add(std::move(spc));
 	} else {
 		auto leaf = std::make_unique<NWidgetLeaf>(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
 		leaf->SetMinimalSize(key_width, 0);
-		leaf->SetMinimalTextLines(1, pad_y, FS_NORMAL);
+		leaf->SetMinimalTextLines(1, pad_y, FontSize::Normal);
 		hor->Add(std::move(leaf));
 	}
 }

@@ -2392,11 +2392,11 @@ struct ScenarioEditorToolbarWindow : Window {
 		switch (widget) {
 			case WID_TE_SPACER: {
 				int height = r.Height();
-				if (height > 2 * GetCharacterHeight(FS_NORMAL)) {
-					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FS_NORMAL), STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
+				if (height > 2 * GetCharacterHeight(FontSize::Normal)) {
+					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FontSize::Normal), STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
 					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				} else {
-					DrawString(r.left, r.right, (height - GetCharacterHeight(FS_NORMAL)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, (height - GetCharacterHeight(FontSize::Normal)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				}
 				break;
 			}

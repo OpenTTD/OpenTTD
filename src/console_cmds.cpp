@@ -2417,12 +2417,12 @@ static bool ConFont(std::span<std::string_view> argv)
 	}
 
 	FontSize argfs;
-	for (argfs = FS_BEGIN; argfs < FS_END; argfs++) {
+	for (argfs = FontSize::Begin; argfs < FontSize::End; argfs++) {
 		if (argv.size() > 1 && StrEqualsIgnoreCase(argv[1], FontSizeToName(argfs))) break;
 	}
 
 	/* First argument must be a FontSize. */
-	if (argv.size() > 1 && argfs == FS_END) return false;
+	if (argv.size() > 1 && argfs == FontSize::End) return false;
 
 	if (argv.size() > 2) {
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
@@ -2447,7 +2447,7 @@ static bool ConFont(std::span<std::string_view> argv)
 		SetFont(argfs, font, size);
 	}
 
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+	for (FontSize fs = FontSize::Begin; fs < FontSize::End; fs++) {
 		FontCache *fc = FontCache::Get(fs);
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
 		/* Make sure all non sprite fonts are loaded. */

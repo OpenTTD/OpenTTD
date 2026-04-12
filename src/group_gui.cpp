@@ -264,7 +264,7 @@ private:
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_PROFIT].height);
 
 		int num_vehicle = GetGroupNumVehicle(this->vli.company, ALL_GROUP, this->vli.vtype);
-		uint64_t max_value = GetParamMaxValue(num_vehicle, 3, FS_SMALL);
+		uint64_t max_value = GetParamMaxValue(num_vehicle, 3, FontSize::Small);
 		this->column_size[VGC_NUMBER] = GetStringBoundingBox(GetString(STR_GROUP_COUNT_WITH_SUBGROUP, max_value, max_value));
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_NUMBER].height);
 
@@ -396,7 +396,7 @@ private:
 		int num_vehicle_with_subgroups = GetGroupNumVehicle(this->vli.company, g_id, this->vli.vtype);
 		int num_vehicle = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype).num_vehicle;
 		if (IsAllGroupID(g_id) || IsDefaultGroupID(g_id) || num_vehicle_with_subgroups == num_vehicle) {
-			DrawString(r.WithX(this->column_rects[VGC_NUMBER]).CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_JUST_COMMA, num_vehicle), colour, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+			DrawString(r.WithX(this->column_rects[VGC_NUMBER]).CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_JUST_COMMA, num_vehicle), colour, SA_RIGHT | SA_FORCE, false, FontSize::Small);
 		} else {
 			DrawString(r.WithX(this->column_rects[VGC_NUMBER]).CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_GROUP_COUNT_WITH_SUBGROUP, num_vehicle, num_vehicle_with_subgroups - num_vehicle), colour, SA_RIGHT | SA_FORCE);
 		}
@@ -665,11 +665,11 @@ public:
 				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_THIS_PERIOD : STR_GROUP_PROFIT_THIS_YEAR, TC_BLACK);
 				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, this_year), TC_BLACK, SA_RIGHT);
 
-				tr.top += GetCharacterHeight(FS_NORMAL);
+				tr.top += GetCharacterHeight(FontSize::Normal);
 				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_LAST_PERIOD : STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
 				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, last_year), TC_BLACK, SA_RIGHT);
 
-				tr.top += GetCharacterHeight(FS_NORMAL);
+				tr.top += GetCharacterHeight(FontSize::Normal);
 				DrawString(tr, STR_GROUP_OCCUPANCY, TC_BLACK);
 				const size_t vehicle_count = this->vehicles.size();
 				if (vehicle_count > 0) {
