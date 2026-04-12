@@ -99,7 +99,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 
 	int x = rtl ? right : left;
 	if (cur_row >= first_row) {
-		PixelColour colour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
+		PixelColour colour = GetColourGradient(Colours::Orange, SHADE_NORMAL);
 		y += (cur_row - first_row) * BaseSettingEntry::line_height; // Compute correct y start position
 
 		/* Draw vertical for parent nesting levels */
@@ -272,13 +272,13 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 	if (sd->IsBoolSetting()) {
 		/* Draw checkbox for boolean-value either on/off */
-		DrawBoolButton(buttons_left, button_y, COLOUR_YELLOW, COLOUR_MAUVE, value != 0, editable);
+		DrawBoolButton(buttons_left, button_y, Colours::Yellow, Colours::Mauve, value != 0, editable);
 	} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 		/* Draw [v] button for settings of an enum-type */
-		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
+		DrawDropDownButton(buttons_left, button_y, Colours::Yellow, state != 0, editable);
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
-		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
+		DrawArrowButtons(buttons_left, button_y, Colours::Yellow, state,
 				editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
 	auto [param1, param2] = sd->GetValueParams(value);

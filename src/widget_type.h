@@ -383,7 +383,7 @@ struct WidgetData {
 	SpriteID sprite{};
 	ArrowWidgetType arrow_widget_type{};
 	ResizeWidgetType resize_widget_type{};
-	Colours alternate_colour = INVALID_COLOUR;
+	Colours alternate_colour = Colours::Invalid;
 	Dimension matrix{};
 };
 
@@ -1453,7 +1453,7 @@ constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_
  */
 constexpr NWidgetPart SetScrollbar(WidgetID index)
 {
-	return NWidgetPart{WPT_SCROLLBAR, NWidgetPartWidget{INVALID_COLOUR, index}};
+	return NWidgetPart{WPT_SCROLLBAR, NWidgetPartWidget{Colours::Invalid, index}};
 }
 
 /**

@@ -134,22 +134,22 @@ public:
 	 * Place a colour value in the lowest 8 bits of the \c reference parameter to the button.
 	 */
 	enum StoryPageButtonColour : uint8_t {
-		SPBC_DARK_BLUE  = ::COLOUR_DARK_BLUE,
-		SPBC_PALE_GREEN = ::COLOUR_PALE_GREEN,
-		SPBC_PINK       = ::COLOUR_PINK,
-		SPBC_YELLOW     = ::COLOUR_YELLOW,
-		SPBC_RED        = ::COLOUR_RED,
-		SPBC_LIGHT_BLUE = ::COLOUR_LIGHT_BLUE,
-		SPBC_GREEN      = ::COLOUR_GREEN,
-		SPBC_DARK_GREEN = ::COLOUR_DARK_GREEN,
-		SPBC_BLUE       = ::COLOUR_BLUE,
-		SPBC_CREAM      = ::COLOUR_CREAM,
-		SPBC_MAUVE      = ::COLOUR_MAUVE,
-		SPBC_PURPLE     = ::COLOUR_PURPLE,
-		SPBC_ORANGE     = ::COLOUR_ORANGE,
-		SPBC_BROWN      = ::COLOUR_BROWN,
-		SPBC_GREY       = ::COLOUR_GREY,
-		SPBC_WHITE      = ::COLOUR_WHITE,
+		SPBC_DARK_BLUE  = to_underlying(::Colours::DarkBlue),
+		SPBC_PALE_GREEN = to_underlying(::Colours::PaleGreen),
+		SPBC_PINK       = to_underlying(::Colours::Pink),
+		SPBC_YELLOW     = to_underlying(::Colours::Yellow),
+		SPBC_RED        = to_underlying(::Colours::Red),
+		SPBC_LIGHT_BLUE = to_underlying(::Colours::LightBlue),
+		SPBC_GREEN      = to_underlying(::Colours::Green),
+		SPBC_DARK_GREEN = to_underlying(::Colours::DarkGreen),
+		SPBC_BLUE       = to_underlying(::Colours::Blue),
+		SPBC_CREAM      = to_underlying(::Colours::Cream),
+		SPBC_MAUVE      = to_underlying(::Colours::Mauve),
+		SPBC_PURPLE     = to_underlying(::Colours::Purple),
+		SPBC_ORANGE     = to_underlying(::Colours::Orange),
+		SPBC_BROWN      = to_underlying(::Colours::Brown),
+		SPBC_GREY       = to_underlying(::Colours::Grey),
+		SPBC_WHITE      = to_underlying(::Colours::White),
 	};
 
 	/**

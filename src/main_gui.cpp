@@ -178,7 +178,7 @@ void FixTitleGameZoom(int zoom_adjust)
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_main_window_widgets = {
-	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
+	NWidget(NWID_VIEWPORT, Colours::Invalid, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
 enum GlobalHotKeys : int32_t {
@@ -552,7 +552,7 @@ void ShowSelectGameWindow();
  */
 void SetupColoursAndInitialWindow()
 {
-	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
+	for (Colours i = Colours::Begin; i != Colours::End; i++) {
 		const uint8_t *b = GetNonSprite(GetColourPalette(i), SpriteType::Recolour) + 1;
 		assert(b != nullptr);
 		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {

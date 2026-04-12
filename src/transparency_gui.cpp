@@ -62,7 +62,7 @@ public:
 					if (i == WID_TT_TEXT) continue; // Loading and cost/income text has no invisibility button.
 
 					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
-					DrawFrameRect(wr.WithY(fr), COLOUR_PALE_GREEN,
+					DrawFrameRect(wr.WithY(fr), Colours::PaleGreen,
 							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FrameFlag::Lowered : FrameFlags{});
 				}
 				break;
@@ -128,24 +128,24 @@ public:
 
 static constexpr std::initializer_list<NWidgetPart> _nested_transparency_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_TRANSPARENCY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
+		NWidget(WWT_CAPTION, Colours::DarkGreen), SetStringTip(STR_TRANSPARENCY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_SIGNS), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_SIGN, STR_TRANSPARENT_SIGNS_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_TREES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_PLANTTREES, STR_TRANSPARENT_TREES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_HOUSES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_TOWN, STR_TRANSPARENT_HOUSES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_INDUSTRIES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_INDUSTRY, STR_TRANSPARENT_INDUSTRIES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_BUILDINGS), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_COMPANY_LIST, STR_TRANSPARENT_BUILDINGS_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_BRIDGES), SetToolbarMinimalSize(2), SetFill(0, 1), SetSpriteTip(SPR_IMG_BRIDGE, STR_TRANSPARENT_BRIDGES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_STRUCTURES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_TRANSMITTER, STR_TRANSPARENT_STRUCTURES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_CATENARY), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_BUILD_X_ELRAIL, STR_TRANSPARENT_CATENARY_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_TEXT), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_TRAINLIST, STR_TRANSPARENT_TEXT_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_SIGNS), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_SIGN, STR_TRANSPARENT_SIGNS_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_TREES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_PLANTTREES, STR_TRANSPARENT_TREES_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_HOUSES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_TOWN, STR_TRANSPARENT_HOUSES_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_INDUSTRIES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_INDUSTRY, STR_TRANSPARENT_INDUSTRIES_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_BUILDINGS), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_COMPANY_LIST, STR_TRANSPARENT_BUILDINGS_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_BRIDGES), SetToolbarMinimalSize(2), SetFill(0, 1), SetSpriteTip(SPR_IMG_BRIDGE, STR_TRANSPARENT_BRIDGES_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_STRUCTURES), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_TRANSMITTER, STR_TRANSPARENT_STRUCTURES_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_CATENARY), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_BUILD_X_ELRAIL, STR_TRANSPARENT_CATENARY_TOOLTIP),
+		NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_TT_TEXT), SetToolbarMinimalSize(1), SetFill(0, 1), SetSpriteTip(SPR_IMG_TRAINLIST, STR_TRANSPARENT_TEXT_TOOLTIP),
+		NWidget(WWT_PANEL, Colours::DarkGreen), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	/* Panel with 'invisibility' buttons. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_TT_BUTTONS), SetMinimalSize(219, 13), SetToolTip(STR_TRANSPARENT_INVISIBLE_TOOLTIP),
+	NWidget(WWT_PANEL, Colours::DarkGreen, WID_TT_BUTTONS), SetMinimalSize(219, 13), SetToolTip(STR_TRANSPARENT_INVISIBLE_TOOLTIP),
 	EndContainer(),
 };
 

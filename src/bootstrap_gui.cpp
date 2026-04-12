@@ -34,7 +34,7 @@
 
 /** Widgets for the background window to prevent smearing. */
 static constexpr std::initializer_list<NWidgetPart> _background_widgets = {
-	NWidget(WWT_PANEL, COLOUR_DARK_BLUE, WID_BB_BACKGROUND), SetResize(1, 1),
+	NWidget(WWT_PANEL, Colours::DarkBlue, WID_BB_BACKGROUND), SetResize(1, 1),
 	EndContainer(),
 };
 
@@ -68,11 +68,11 @@ public:
 /** Nested widgets for the error window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_errmsg_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_BEM_MESSAGE), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_BEM_MESSAGE), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BEM_QUIT), SetStringTip(STR_MISSING_GRAPHICS_ERROR_QUIT), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BEM_QUIT), SetStringTip(STR_MISSING_GRAPHICS_ERROR_QUIT), SetFill(1, 0),
 	EndContainer(),
 };
 
@@ -124,11 +124,11 @@ public:
 
 /** Nested widgets for the download window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_download_status_window_widgets = {
-	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NCDS_PROGRESS_BAR), SetFill(1, 0),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NCDS_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(350, 0),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_NCDS_PROGRESS_BAR), SetFill(1, 0),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_NCDS_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(350, 0),
 		EndContainer(),
 	EndContainer(),
 };
@@ -176,12 +176,12 @@ public:
 /** The widgets for the query. It has no close box as that sprite does not exist yet. */
 static constexpr std::initializer_list<NWidgetPart> _bootstrap_query_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_MISSING_GRAPHICS_SET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_MISSING_GRAPHICS_SET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_BAFD_QUESTION), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_BAFD_QUESTION), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_YES), SetStringTip(STR_MISSING_GRAPHICS_YES_DOWNLOAD),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_NO), SetStringTip(STR_MISSING_GRAPHICS_NO_QUIT),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BAFD_YES), SetStringTip(STR_MISSING_GRAPHICS_YES_DOWNLOAD),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BAFD_NO), SetStringTip(STR_MISSING_GRAPHICS_NO_QUIT),
 	EndContainer(),
 };
 
@@ -387,9 +387,9 @@ bool HandleBootstrap()
 	 * This way the mauve and gray colours work and we can show the user interface. */
 	GfxInitPalettes();
 	static const uint8_t offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
-	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
+	for (Colours i = Colours::Begin; i != Colours::End; i++) {
 		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
-			SetColourGradient(i, j, PixelColour(offsets[i] + j));
+			SetColourGradient(i, j, PixelColour(offsets[to_underlying(i)] + j));
 		}
 	}
 

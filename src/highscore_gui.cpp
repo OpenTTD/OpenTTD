@@ -222,7 +222,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_highscore_widgets = {
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Brown, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
 static WindowDesc _highscore_desc(
