@@ -110,27 +110,65 @@ void GfxDrawLine(int left, int top, int right, int bottom, PixelColour colour, i
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 void DrawRectOutline(const Rect &r, PixelColour colour, int width = 1, int dash = 0);
 
-/* Versions of DrawString/DrawStringMultiLine that accept a Rect instead of separate left, right, top and bottom parameters. */
+/**
+ * Draw string, possibly truncated to make it fit in its allocated space
+ *
+ * @param r The rectangle to draw the string in.
+ * @param str String to draw.
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param align The alignment of the string when drawing left-to-right. In the case a right-to-left language is chosen this is inverted so it will be drawn in the right direction.
+ * @param underline Whether to underline what has been drawn or not.
+ * @param fontsize The size of the initial characters.
+ * @return In case of left or center alignment the right most pixel we have drawn to. In case of right alignment the left most pixel we have drawn to.
+ */
 inline int DrawString(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
 }
 
+/** @copydoc DrawString(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FontSize::Normal) */
 inline int DrawString(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
 }
 
+/**
+ * Draw string, possibly over multiple lines.
+ *
+ * @param r The rectangle to draw the string in.
+ * @param str String to draw.
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param align The horizontal and vertical alignment of the string.
+ * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
+ *
+ * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
+ */
 inline int DrawStringMultiLine(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
+/** @copydoc DrawStringMultiLine(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal) */
 inline int DrawStringMultiLine(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
+/**
+ * Draw a multiline string, possibly over multiple lines, if the region is within the current display clipping area.
+ * @note With clipping, it is not possible to determine how tall the rendered text will be, as it's not layouted.
+ *       Regular DrawStringMultiLine must be used if the height needs to be known.
+ *
+ * @param r The rectangle to draw the string in.
+ * @param str String to draw.
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param align The horizontal and vertical alignment of the string.
+ * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
+ *
+ * @return \c true iff the string was drawn.
+ */
 inline bool DrawStringMultiLineWithClipping(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawStringMultiLineWithClipping(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
