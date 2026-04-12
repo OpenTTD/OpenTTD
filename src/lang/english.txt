@@ -711,23 +711,23 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total po
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
-STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}All
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Old Style
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}New Style
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Custom 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Custom 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Music Volume
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Effects Volume
-STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
-STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}No music available
-STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{RAW_STRING}"
-STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Track
-STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Title
-STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Shuffle
-STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programme
+STR_MUSIC_PLAYLIST_ALL                                          :{BLACK}All
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{BLACK}Old Style
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{BLACK}New Style
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{BLACK}Custom 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{BLACK}Custom 2
+STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}Music Volume
+STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}Effects Volume
+STR_MUSIC_TRACK_NONE                                            :{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{DKGREEN}No music available
+STR_MUSIC_TITLE_NAME                                            :{DKGREEN}"{RAW_STRING}"
+STR_MUSIC_TRACK                                                 :{BLACK}Track
+STR_MUSIC_XTITLE                                                :{BLACK}Title
+STR_MUSIC_SHUFFLE                                               :{BLACK}Shuffle
+STR_MUSIC_PROGRAM                                               :{BLACK}Programme
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Skip to previous track in selection
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Skip to next track in selection
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stop playing music
@@ -744,10 +744,10 @@ STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Show mus
 
 # Playlist window
 STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Music Programme - '{RAW_STRING}'
-STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{RAW_STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Track Index
-STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programme - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Clear
+STR_PLAYLIST_TRACK_NAME                                         :{LTBLUE}{ZEROFILL_NUM} "{RAW_STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{BLACK}Track Index
+STR_PLAYLIST_PROGRAM                                            :{BLACK}Programme - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{BLACK}Clear
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Change set
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clear current programme (Custom1 or Custom2 only)
 STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Change music selection to another installed set
