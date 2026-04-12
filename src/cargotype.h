@@ -20,7 +20,7 @@
 
 /** Town growth effect when delivering cargo. */
 enum class TownAcceptanceEffect : uint8_t {
-	Begin = 0,
+	Begin = 0, ///< Used for iteration.
 	None = TownAcceptanceEffect::Begin, ///< Cargo has no effect.
 	Passengers, ///< Cargo behaves passenger-like.
 	Mail, ///< Cargo behaves mail-like.
@@ -33,17 +33,17 @@ enum class TownAcceptanceEffect : uint8_t {
 DECLARE_INCREMENT_DECREMENT_OPERATORS(TownAcceptanceEffect)
 
 /** Town effect when producing cargo. */
-enum TownProductionEffect : uint8_t {
-	TPE_NONE, ///< Town will not produce this cargo type.
-	TPE_PASSENGERS, ///< Cargo behaves passenger-like for production.
-	TPE_MAIL, ///< Cargo behaves mail-like for production.
-	NUM_TPE,
+enum class TownProductionEffect : uint8_t {
+	None, ///< Town will not produce this cargo type.
+	Passengers, ///< Cargo behaves passenger-like for production.
+	Mail, ///< Cargo behaves mail-like for production.
+	End, ///< End marker.
 
 	/**
 	 * Invalid town production effect. Used as a sentinel to indicate if a NewGRF has explicitly set an effect.
 	 * This does not 'exist' after cargo types are finalised.
 	 */
-	INVALID_TPE,
+	Invalid,
 };
 
 /** Cargo classes. */
@@ -85,7 +85,7 @@ struct CargoSpec {
 
 	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownAcceptanceEffect town_acceptance_effect; ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
-	TownProductionEffect town_production_effect = INVALID_TPE; ///< The effect on town cargo production.
+	TownProductionEffect town_production_effect = TownProductionEffect::Invalid; ///< The effect on town cargo production.
 	uint16_t town_production_multiplier = TOWN_PRODUCTION_DIVISOR; ///< Town production multiplier, if commanded by TownProductionEffect.
 	CargoCallbackMasks callback_mask;             ///< Bitmask of cargo callbacks that have to be called
 
@@ -192,7 +192,7 @@ struct CargoSpec {
 	static IterateWrapper Iterate(size_t from = 0) { return IterateWrapper(from); }
 
 	/** List of cargo specs for each Town Product Effect. */
-	static std::array<std::vector<const CargoSpec *>, NUM_TPE> town_production_cargoes;
+	static inline EnumClassIndexContainer<std::array<std::vector<const CargoSpec *>, to_underlying(TownProductionEffect::End)>, TownProductionEffect> town_production_cargoes{};
 
 private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs

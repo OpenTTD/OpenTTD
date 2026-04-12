@@ -174,12 +174,12 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				uint8_t substitute_type = buf.ReadByte();
 
 				switch (substitute_type) {
-					case 0x00: cs->town_production_effect = TPE_PASSENGERS; break;
-					case 0x02: cs->town_production_effect = TPE_MAIL; break;
+					case 0x00: cs->town_production_effect = TownProductionEffect::Passengers; break;
+					case 0x02: cs->town_production_effect = TownProductionEffect::Mail; break;
 					default:
 						GrfMsg(1, "CargoChangeInfo: Unknown town production substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
-					case 0xFF: cs->town_production_effect = TPE_NONE; break;
+					case 0xFF: cs->town_production_effect = TownProductionEffect::None; break;
 				}
 				break;
 			}

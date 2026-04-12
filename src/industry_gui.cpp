@@ -2431,7 +2431,7 @@ struct CargoesRow {
 			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
 				CargoType cargo_type = cargo_fld->u.cargo.vertical_cargoes[i];
 				TownProductionEffect tpe = CargoSpec::Get(cargo_type)->town_production_effect;
-				if (tpe == TPE_PASSENGERS || tpe == TPE_MAIL) cargo_fld->ConnectCargo(cargo_type, true);
+				if (tpe == TownProductionEffect::Passengers || tpe == TownProductionEffect::Mail) cargo_fld->ConnectCargo(cargo_type, true);
 			}
 		}
 	}
@@ -2677,7 +2677,7 @@ struct IndustryCargoesWindow : public Window {
 		for (const CargoType cargo_type : cargoes) {
 			if (!IsValidCargoType(cargo_type)) continue;
 			TownProductionEffect tpe = CargoSpec::Get(cargo_type)->town_production_effect;
-			if (tpe == TPE_PASSENGERS || tpe == TPE_MAIL) return true;
+			if (tpe == TownProductionEffect::Passengers || tpe == TownProductionEffect::Mail) return true;
 		}
 		return false;
 	}

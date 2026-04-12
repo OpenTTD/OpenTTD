@@ -631,8 +631,8 @@ static void TileLoop_Town(TileIndex tile)
 		switch (_settings_game.economy.town_cargogen_mode) {
 			case TCGM_ORIGINAL:
 				/* Original (quadratic) cargo generation algorithm */
-				TownGenerateCargoOriginal(t, TPE_PASSENGERS, hs->population, stations);
-				TownGenerateCargoOriginal(t, TPE_MAIL, hs->mail_generation, stations);
+				TownGenerateCargoOriginal(t, TownProductionEffect::Passengers, hs->population, stations);
+				TownGenerateCargoOriginal(t, TownProductionEffect::Mail, hs->mail_generation, stations);
 				break;
 
 			case TCGM_BITCOUNT:
@@ -640,8 +640,8 @@ static void TileLoop_Town(TileIndex tile)
 				/* Reduce generation rate to a 1/4, using tile bits to spread out distribution.
 				 * As tick counter is incremented by 256 between each call, we ignore the lower 8 bits. */
 				if (GB(TimerGameTick::counter, 8, 2) == GB(tile.base(), 0, 2)) {
-					TownGenerateCargoBinomial(t, TPE_PASSENGERS, hs->population, stations);
-					TownGenerateCargoBinomial(t, TPE_MAIL, hs->mail_generation, stations);
+					TownGenerateCargoBinomial(t, TownProductionEffect::Passengers, hs->population, stations);
+					TownGenerateCargoBinomial(t, TownProductionEffect::Mail, hs->mail_generation, stations);
 				}
 				break;
 
@@ -747,12 +747,12 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 		}
 	} else {
 		if (hs->population > 0) {
-			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) {
+			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Passengers]) {
 				produced[cs->Index()]++;
 			}
 		}
 		if (hs->mail_generation > 0) {
-			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) {
+			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Mail]) {
 				produced[cs->Index()]++;
 			}
 		}
@@ -1980,7 +1980,7 @@ void UpdateTownRadius(Town *t)
  */
 void UpdateTownMaxPass(Town *t)
 {
-	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) {
+	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Passengers]) {
 		uint32_t production = ScaleByCargoScale(t->cache.population >> 3, true);
 		if (production == 0) continue;
 
@@ -1988,7 +1988,7 @@ void UpdateTownMaxPass(Town *t)
 		supplied.history[LAST_MONTH].production = production;
 	}
 
-	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) {
+	for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Mail]) {
 		uint32_t production = ScaleByCargoScale(t->cache.population >> 4, true);
 		if (production == 0) continue;
 

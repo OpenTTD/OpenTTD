@@ -399,7 +399,7 @@ public:
 
 		StringID str_last_period = TimerGameEconomy::UsingWallclockUnits() ? STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX : STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX;
 
-		for (auto tpe : {TPE_PASSENGERS, TPE_MAIL}) {
+		for (auto tpe : {TownProductionEffect::Passengers, TownProductionEffect::Mail}) {
 			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
 				CargoType cargo_type = cs->Index();
 				auto it = this->town->GetCargoSupplied(cargo_type);
@@ -534,7 +534,7 @@ public:
 	 */
 	uint GetDesiredInfoHeight(int width) const
 	{
-		uint aimed_height = static_cast<uint>(1 + CargoSpec::town_production_cargoes[TPE_PASSENGERS].size() + CargoSpec::town_production_cargoes[TPE_MAIL].size()) * GetCharacterHeight(FS_NORMAL);
+		uint aimed_height = static_cast<uint>(1 + CargoSpec::town_production_cargoes[TownProductionEffect::Passengers].size() + CargoSpec::town_production_cargoes[TownProductionEffect::Mail].size()) * GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
 		for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; i++) {
@@ -1645,8 +1645,8 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 		}
 	} else {
 		/* Cargo is not controlled by NewGRF, town production effect is used instead. */
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) SetBit(produced, cs->Index());
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) SetBit(produced, cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Passengers]) SetBit(produced, cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Mail]) SetBit(produced, cs->Index());
 	}
 	return produced;
 }

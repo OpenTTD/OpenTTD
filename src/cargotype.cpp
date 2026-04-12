@@ -22,7 +22,6 @@
 #include "safeguards.h"
 
 CargoSpec CargoSpec::array[NUM_CARGO];
-std::array<std::vector<const CargoSpec *>, NUM_TPE> CargoSpec::town_production_cargoes{};
 
 /**
  * Bitmask of cargo types available. This includes phony cargoes like regearing cargoes.
@@ -241,7 +240,7 @@ void InitializeSortedCargoSpecs()
 	_standard_cargo_mask = 0;
 	uint8_t nb_standard_cargo = 0;
 	for (const auto &cargo : _sorted_cargo_specs) {
-		assert(cargo->town_production_effect != INVALID_TPE);
+		assert(cargo->town_production_effect != TownProductionEffect::Invalid);
 		CargoSpec::town_production_cargoes[cargo->town_production_effect].push_back(cargo);
 		if (cargo->classes.Test(CargoClass::Special)) break;
 		nb_standard_cargo++;
