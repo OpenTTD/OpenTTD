@@ -137,15 +137,15 @@ public:
 
 	void OnInit() override
 	{
-		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
+		Town *t = ClosestTownFromTile(this->tile, _settings_game.economy.dist_local_authority);
 
 		TileDesc td{};
 		td.owner_type[0] = STR_LAND_AREA_INFORMATION_OWNER; // At least one owner is displayed, though it might be "N/A".
 
 		CargoArray acceptance{};
 		CargoTypes always_accepted{};
-		AddAcceptedCargo(tile, acceptance, always_accepted);
-		GetTileDesc(tile, td);
+		AddAcceptedCargo(this->tile, acceptance, always_accepted);
+		GetTileDesc(this->tile, td);
 
 		this->landinfo_data.clear();
 
@@ -159,7 +159,7 @@ public:
 			if (td.owner[i] == OWNER_NONE || td.owner[i] == OWNER_WATER) {
 				this->landinfo_data.push_back(GetString(td.owner_type[i], STR_LAND_AREA_INFORMATION_OWNER_N_A, std::monostate{}));
 			} else {
-				auto params = GetParamsForOwnedBy(td.owner[i], tile);
+				auto params = GetParamsForOwnedBy(td.owner[i], this->tile);
 				this->landinfo_data.push_back(GetStringWithArgs(td.owner_type[i], params));
 			}
 		}
@@ -168,7 +168,7 @@ public:
 		Company *c = Company::GetIfValid(_local_company);
 		if (c != nullptr) {
 			assert(_current_company == _local_company);
-			CommandCost costclear = Command<Commands::LandscapeClear>::Do(DoCommandFlag::QueryCost, tile);
+			CommandCost costclear = Command<Commands::LandscapeClear>::Do(DoCommandFlag::QueryCost, this->tile);
 			if (costclear.Succeeded()) {
 				Money cost = costclear.GetCost();
 				StringID str;
@@ -187,10 +187,10 @@ public:
 		}
 
 		/* Location */
-		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS, TileX(tile), TileY(tile), GetTileZ(tile)));
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS, TileX(this->tile), TileY(this->tile), GetTileZ(this->tile)));
 
 		/* Tile index */
-		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_INDEX, tile, tile));
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_INDEX, this->tile, this->tile));
 
 		/* Local authority */
 		if (t == nullptr) {
