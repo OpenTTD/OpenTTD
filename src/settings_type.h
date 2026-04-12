@@ -186,6 +186,14 @@ enum class ScrollWheelScrolling : uint8_t {
 	Off = 2, ///< Scroll wheel has no effect.
 };
 
+/** Method to open the on screen keyboard. */
+enum class OskActivation : uint8_t {
+	Disabled, ///< The OSK shall not be activated at all.
+	DoubleClick, ///< Double click on the edit box opens OSK.
+	SingleClick, ///< Single click after focus click opens OSK.
+	Immediately, ///< Focusing click already opens OSK.
+};
+
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
 	bool sg_full_load_any; ///< new full load calculation, any cargo must be full read from pre v93 savegames
@@ -254,7 +262,7 @@ struct GUISettings {
 	uint32_t last_newgrf_count; ///< the numbers of NewGRFs we found during the last scan
 	uint8_t missing_strings_threshold; ///< the number of missing strings before showing the warning
 	uint8_t graph_line_thickness; ///< the thickness of the lines in the various graph guis
-	uint8_t osk_activation; ///< Mouse gesture to trigger the OSK.
+	OskActivation osk_activation; ///< Mouse gesture to trigger the OSK.
 	Colours starting_colour; ///< default colour scheme for the company to start a new game with
 	Colours starting_colour_secondary; ///< default secondary colour scheme for the company to start a new game with
 	bool show_newgrf_name; ///< Show the name of the NewGRF in the build vehicle window
