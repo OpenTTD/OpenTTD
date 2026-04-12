@@ -1143,15 +1143,15 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_BASE_GRF_CONTENT_DOWNLOAD:
-				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_GRAPHICS);
+				ShowNetworkContentListWindow(nullptr, ContentType::BaseGraphics);
 				break;
 
 			case WID_GO_BASE_SFX_CONTENT_DOWNLOAD:
-				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_SOUNDS);
+				ShowNetworkContentListWindow(nullptr, ContentType::BaseSounds);
 				break;
 
 			case WID_GO_BASE_MUSIC_CONTENT_DOWNLOAD:
-				ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_BASE_MUSIC);
+				ShowNetworkContentListWindow(nullptr, ContentType::BaseMusic);
 				break;
 
 			case WID_GO_AUTOSAVE_DROPDOWN:

@@ -793,8 +793,8 @@ public:
 					assert(this->fop == SaveLoadOperation::Load);
 					switch (this->abstract_filetype) {
 						default: NOT_REACHED();
-						case AbstractFileType::Scenario: ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_SCENARIO); break;
-						case AbstractFileType::Heightmap: ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_HEIGHTMAP); break;
+						case AbstractFileType::Scenario: ShowNetworkContentListWindow(nullptr, ContentType::Scenario); break;
+						case AbstractFileType::Heightmap: ShowNetworkContentListWindow(nullptr, ContentType::Heightmap); break;
 					}
 				}
 				break;

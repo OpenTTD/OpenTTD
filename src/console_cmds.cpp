@@ -2258,22 +2258,22 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 /**
  * Resolve a string to a content type.
  * @param str The string to resolve.
- * @return The content type, or #CONTENT_TYPE_END when the string is not a content type.
+ * @return The content type, or #ContentType::End when the string is not a content type.
  */
 static ContentType StringToContentType(std::string_view str)
 {
 	static const std::initializer_list<std::pair<std::string_view, ContentType>> content_types = {
-		{"base",      CONTENT_TYPE_BASE_GRAPHICS},
-		{"newgrf",    CONTENT_TYPE_NEWGRF},
-		{"ai",        CONTENT_TYPE_AI},
-		{"ailib",     CONTENT_TYPE_AI_LIBRARY},
-		{"scenario",  CONTENT_TYPE_SCENARIO},
-		{"heightmap", CONTENT_TYPE_HEIGHTMAP},
+		{"base",      ContentType::BaseGraphics},
+		{"newgrf",    ContentType::NewGRF},
+		{"ai",        ContentType::Ai},
+		{"ailib",     ContentType::AiLibrary},
+		{"scenario",  ContentType::Scenario},
+		{"heightmap", ContentType::Heightmap},
 	};
 	for (const auto &ct : content_types) {
 		if (StrEqualsIgnoreCase(str, ct.first)) return ct.second;
 	}
-	return CONTENT_TYPE_END;
+	return ContentType::End;
 }
 
 /** Asynchronous callback */
@@ -2300,12 +2300,12 @@ struct ConsoleContentCallback : public ContentCallback {
  */
 static void OutputContentState(const ContentInfo &ci)
 {
-	static const std::string_view types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
-	static_assert(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
+	static const std::string_view types[] = { "", "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
+	static_assert(std::size(types) == to_underlying(ContentType::End));
 	static const std::string_view states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
-	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
+	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[to_underlying(ci.type)], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
 /** Downloading of content from the server. @copydoc IConsoleCmdProc */
@@ -2329,7 +2329,7 @@ static bool ConContent(std::span<std::string_view> argv)
 	}
 
 	if (StrEqualsIgnoreCase(argv[1], "update")) {
-		_network_content_client.RequestContentList((argv.size() > 2) ? StringToContentType(argv[2]) : CONTENT_TYPE_END);
+		_network_content_client.RequestContentList((argv.size() > 2) ? StringToContentType(argv[2]) : ContentType::End);
 		return true;
 	}
 

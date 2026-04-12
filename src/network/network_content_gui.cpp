@@ -37,6 +37,27 @@
 /** Whether the user accepted to enter external websites during this session. */
 static bool _accepted_external_search = false;
 
+/**
+ * Get the string associated with a ContentType.
+ * @param type The content type.
+ * @return StringID associated with content type.
+ */
+static StringID GetContentTypeString(ContentType type)
+{
+	switch (type) {
+		case ContentType::NewGRF: return STR_CONTENT_TYPE_NEWGRF;
+		case ContentType::BaseGraphics: return STR_CONTENT_TYPE_BASE_GRAPHICS;
+		case ContentType::BaseSounds: return STR_CONTENT_TYPE_BASE_SOUNDS;
+		case ContentType::BaseMusic: return STR_CONTENT_TYPE_BASE_MUSIC;
+		case ContentType::Ai: return STR_CONTENT_TYPE_AI;
+		case ContentType::AiLibrary: return STR_CONTENT_TYPE_AI_LIBRARY;
+		case ContentType::Gs: return STR_CONTENT_TYPE_GAME_SCRIPT;
+		case ContentType::GsLibrary: return STR_CONTENT_TYPE_GS_LIBRARY;
+		case ContentType::Scenario: return STR_CONTENT_TYPE_SCENARIO;
+		case ContentType::Heightmap: return STR_CONTENT_TYPE_HEIGHTMAP;
+		default: NOT_REACHED();
+	}
+}
 
 /** Window for displaying the textfile of an item in the content list. */
 struct ContentTextfileWindow : public TextfileWindow {
@@ -56,31 +77,10 @@ struct ContentTextfileWindow : public TextfileWindow {
 		this->LoadTextfile(textfile.value(), GetContentInfoSubDir(this->ci->type));
 	}
 
-	/**
-	 * Get the #StringID of the content type associated with this window.
-	 * @return The string.
-	 */
-	StringID GetTypeString() const
-	{
-		switch (this->ci->type) {
-			case CONTENT_TYPE_NEWGRF:        return STR_CONTENT_TYPE_NEWGRF;
-			case CONTENT_TYPE_BASE_GRAPHICS: return STR_CONTENT_TYPE_BASE_GRAPHICS;
-			case CONTENT_TYPE_BASE_SOUNDS:   return STR_CONTENT_TYPE_BASE_SOUNDS;
-			case CONTENT_TYPE_BASE_MUSIC:    return STR_CONTENT_TYPE_BASE_MUSIC;
-			case CONTENT_TYPE_AI:            return STR_CONTENT_TYPE_AI;
-			case CONTENT_TYPE_AI_LIBRARY:    return STR_CONTENT_TYPE_AI_LIBRARY;
-			case CONTENT_TYPE_GAME:          return STR_CONTENT_TYPE_GAME_SCRIPT;
-			case CONTENT_TYPE_GAME_LIBRARY:  return STR_CONTENT_TYPE_GS_LIBRARY;
-			case CONTENT_TYPE_SCENARIO:      return STR_CONTENT_TYPE_SCENARIO;
-			case CONTENT_TYPE_HEIGHTMAP:     return STR_CONTENT_TYPE_HEIGHTMAP;
-			default: NOT_REACHED();
-		}
-	}
-
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			return GetString(stringid, this->GetTypeString(), this->ci->name);
+			return GetString(stringid, GetContentTypeString(this->ci->type), this->ci->name);
 		}
 
 		return this->Window::GetWidgetString(widget, stringid);
@@ -218,27 +218,27 @@ public:
 		TarScanner::Modes modes{};
 		for (auto ctype : this->received_types) {
 			switch (ctype) {
-				case CONTENT_TYPE_AI:
-				case CONTENT_TYPE_AI_LIBRARY:
+				case ContentType::Ai:
+				case ContentType::AiLibrary:
 					/* AI::Rescan calls the scanner. */
 					break;
-				case CONTENT_TYPE_GAME:
-				case CONTENT_TYPE_GAME_LIBRARY:
+				case ContentType::Gs:
+				case ContentType::GsLibrary:
 					/* Game::Rescan calls the scanner. */
 					break;
 
-				case CONTENT_TYPE_BASE_GRAPHICS:
-				case CONTENT_TYPE_BASE_SOUNDS:
-				case CONTENT_TYPE_BASE_MUSIC:
+				case ContentType::BaseGraphics:
+				case ContentType::BaseSounds:
+				case ContentType::BaseMusic:
 					modes.Set(TarScanner::Mode::Baseset);
 					break;
 
-				case CONTENT_TYPE_NEWGRF:
+				case ContentType::NewGRF:
 					/* ScanNewGRFFiles calls the scanner. */
 					break;
 
-				case CONTENT_TYPE_SCENARIO:
-				case CONTENT_TYPE_HEIGHTMAP:
+				case ContentType::Scenario:
+				case ContentType::Heightmap:
 					modes.Set(TarScanner::Mode::Scenario);
 					break;
 
@@ -252,37 +252,37 @@ public:
 		/* Tell all the backends about what we've downloaded */
 		for (auto ctype : this->received_types) {
 			switch (ctype) {
-				case CONTENT_TYPE_AI:
-				case CONTENT_TYPE_AI_LIBRARY:
+				case ContentType::Ai:
+				case ContentType::AiLibrary:
 					AI::Rescan();
 					break;
 
-				case CONTENT_TYPE_GAME:
-				case CONTENT_TYPE_GAME_LIBRARY:
+				case ContentType::Gs:
+				case ContentType::GsLibrary:
 					Game::Rescan();
 					break;
 
-				case CONTENT_TYPE_BASE_GRAPHICS:
+				case ContentType::BaseGraphics:
 					BaseGraphics::FindSets();
 					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
 					break;
 
-				case CONTENT_TYPE_BASE_SOUNDS:
+				case ContentType::BaseSounds:
 					BaseSounds::FindSets();
 					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
 					break;
 
-				case CONTENT_TYPE_BASE_MUSIC:
+				case ContentType::BaseMusic:
 					BaseMusic::FindSets();
 					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
 					break;
 
-				case CONTENT_TYPE_NEWGRF:
+				case ContentType::NewGRF:
 					RequestNewGRFScan();
 					break;
 
-				case CONTENT_TYPE_SCENARIO:
-				case CONTENT_TYPE_HEIGHTMAP:
+				case ContentType::Scenario:
+				case ContentType::Heightmap:
 					ScanScenarios();
 					InvalidateWindowData(WC_SAVELOAD, 0, 0);
 					break;
@@ -358,7 +358,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	uint filesize_sum = 0; ///< The sum of all selected file sizes
 	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar
 
-	static std::string content_type_strs[CONTENT_TYPE_END]; ///< Cached strings for all content types.
+	static std::array<std::string, to_underlying(ContentType::End)> content_type_strs; ///< Cached strings for all content types.
 
 	/** Search external websites for content */
 	void OpenExternalSearch()
@@ -454,7 +454,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	{
 		int r = 0;
 		if (a->type != b->type) {
-			r = StrNaturalCompare(content_type_strs[a->type], content_type_strs[b->type]);
+			r = StrNaturalCompare(content_type_strs[to_underlying(a->type)], content_type_strs[to_underlying(b->type)]);
 		}
 		if (r == 0) return NameSorter(a, b);
 		return r < 0;
@@ -552,8 +552,8 @@ public:
 	 * Create the content list window.
 	 * @param desc the window description to pass to Window's constructor.
 	 * @param select_all Whether the select all button is allowed or not.
-	 * @param types the main type of content to display or #CONTENT_TYPE_END.
-	 *   When a type other than #CONTENT_TYPE_END is given, dependencies of
+	 * @param types the main type of content to display or #ContentType::End.
+	 *   When a type other than #ContentType::End is given, dependencies of
 	 *   other types are only shown when content that depend on them are
 	 *   selected.
 	 */
@@ -609,8 +609,8 @@ public:
 				size.width += Window::SortButtonWidth() * 2;
 				/* And also enough for the width of each type of content. */
 				Dimension d = size;
-				for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {
-					d = maxdim(d, GetStringBoundingBox(STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS));
+				for (ContentType ct = ContentType::Begin; ct != ContentType::End; ++ct) {
+					d = maxdim(d, GetStringBoundingBox(GetContentTypeString(ct)));
 				}
 				size.width = std::max(size.width, d.width + padding.width);
 				break;
@@ -693,7 +693,7 @@ public:
 			}
 			DrawSpriteIgnorePadding(sprite, pal, checkbox.WithY(mr), SA_CENTER);
 
-			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
+			StringID str = GetContentTypeString(ci->type);
 			DrawString(type.left, type.right, mr.top + text_y_offset, str, TC_BLACK, SA_HOR_CENTER);
 
 			int x = DrawString(name.left, name.right, mr.top + version_y_offset, ci->version, TC_BLACK, SA_RIGHT, false, FS_SMALL);
@@ -733,7 +733,7 @@ public:
 		tr.bottom -= GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 		if (this->selected->upgrade) {
-			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_UPDATE, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS));
+			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_UPDATE, GetContentTypeString(this->selected->type)));
 			tr.top += WidgetDimensions::scaled.vsep_wide;
 		}
 
@@ -751,7 +751,7 @@ public:
 			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_URL, this->selected->url));
 		}
 
-		tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_TYPE, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS));
+		tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_TYPE, GetContentTypeString(this->selected->type)));
 
 		tr.top += WidgetDimensions::scaled.vsep_wide;
 		tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_FILESIZE, this->selected->filesize));
@@ -1030,15 +1030,15 @@ const std::initializer_list<NetworkContentListWindow::GUIContentList::FilterFunc
 	&TypeOrSelectedFilter,
 };
 
-std::string NetworkContentListWindow::content_type_strs[CONTENT_TYPE_END];
+std::array<std::string, to_underlying(ContentType::End)> NetworkContentListWindow::content_type_strs;
 
 /**
  * Build array of all strings corresponding to the content types.
  */
 void BuildContentTypeStringList()
 {
-	for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {
-		NetworkContentListWindow::content_type_strs[i] = GetString(STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS);
+	for (ContentType ct = ContentType::Begin; ct != ContentType::End; ++ct) {
+		NetworkContentListWindow::content_type_strs[to_underlying(ct)] = GetString(GetContentTypeString(ct));
 	}
 }
 
@@ -1128,9 +1128,9 @@ static WindowDesc _network_content_list_desc(
 /**
  * Show the content list window with a given set of content
  * @param cv the content to show, or nullptr when it has to search for itself
- * @param type1 the first type to (only) show or #CONTENT_TYPE_END to show all.
- * @param type2 the second type to (only) show in addition to type1. If type2 is != #CONTENT_TYPE_END, then also type1 should be != #CONTENT_TYPE_END.
- *   If type2 != #CONTENT_TYPE_END, then type1 != type2 must be true.
+ * @param type1 the first type to (only) show or #ContentType::End to show all.
+ * @param type2 the second type to (only) show in addition to type1. If type2 is != #ContentType::End, then also type1 should be != #ContentType::End.
+ *   If type2 != #ContentType::End, then type1 != type2 must be true.
  */
 void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentType type2)
 {
@@ -1138,13 +1138,13 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	ContentTypes types{};
 	_network_content_client.Clear();
 	if (cv == nullptr) {
-		assert(type1 != CONTENT_TYPE_END || type2 == CONTENT_TYPE_END);
-		assert(type1 == CONTENT_TYPE_END || type1 != type2);
+		assert(type1 != ContentType::End || type2 == ContentType::End);
+		assert(type1 == ContentType::End || type1 != type2);
 		_network_content_client.RequestContentList(type1);
-		if (type2 != CONTENT_TYPE_END) _network_content_client.RequestContentList(type2);
+		if (type2 != ContentType::End) _network_content_client.RequestContentList(type2);
 
-		if (type1 != CONTENT_TYPE_END) types.Set(type1);
-		if (type2 != CONTENT_TYPE_END) types.Set(type2);
+		if (type1 != ContentType::End) types.Set(type1);
+		if (type2 != ContentType::End) types.Set(type2);
 	} else {
 		_network_content_client.RequestContentList(cv, true);
 	}

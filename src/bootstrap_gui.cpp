@@ -270,7 +270,7 @@ public:
 		}
 
 		/* Once connected, request the metadata. */
-		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+		_network_content_client.RequestContentList(ContentType::BaseGraphics);
 	}
 
 	void OnReceiveContentInfo(const ContentInfo &ci) override
@@ -318,7 +318,7 @@ public:
 		}
 
 		/* Once connected, request the metadata. */
-		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+		_network_content_client.RequestContentList(ContentType::BaseGraphics);
 	}
 
 	void OnReceiveContentInfo(const ContentInfo &ci) override
