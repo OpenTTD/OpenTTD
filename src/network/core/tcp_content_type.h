@@ -50,6 +50,13 @@ struct ContentInfo {
 		Invalid, ///< The content's invalid
 	};
 
+	/** For wich games the content is available. */
+	enum class Availability : uint8_t {
+		SavegamesOnly = 0, ///< Content only available for savegames.
+		NewGames = 1, ///< Content available for both savegames and new games.
+		Invalid = 0xFF, ///< The availability is unknown.
+	};
+
 	ContentType type = INVALID_CONTENT_TYPE; ///< Type of content
 	ContentID id = INVALID_CONTENT_ID;       ///< Unique (server side) ID for the content
 	uint32_t filesize = 0;                     ///< Size of the file
@@ -64,6 +71,7 @@ struct ContentInfo {
 	StringList tags;                         ///< Tags associated with the content
 	State state = State::Unselected;         ///< Whether the content info is selected (for download)
 	bool upgrade = false;                    ///< This item is an upgrade
+	ContentInfo::Availability availability = ContentInfo::Availability::Invalid; ///< @copydocs ContentInfo::Availability
 
 	bool IsSelected() const;
 	bool IsValid() const;
