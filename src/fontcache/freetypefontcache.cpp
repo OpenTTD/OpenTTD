@@ -71,7 +71,7 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 		if (head != nullptr) {
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
-			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FS_SMALL));
+			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FontSize::Small));
 			/* Clamp() is not used as scaled_height could be greater than MAX_FONT_SIZE, which is not permitted in Clamp(). */
 			pixels = std::min(std::max(std::min<int>(head->Lowest_Rec_PPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height), MAX_FONT_SIZE);
 		}
@@ -144,7 +144,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	aa = (slot->bitmap.pixel_mode == FT_PIXEL_MODE_GRAY);
 
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
-	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
+	uint shadow = (this->fs == FontSize::Normal) ? ScaleGUITrad(1) : 0;
 	uint width  = std::max(1U, (uint)slot->bitmap.width + shadow);
 	uint height = std::max(1U, (uint)slot->bitmap.rows  + shadow);
 
@@ -163,7 +163,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	sprite.y_offs = this->ascender - slot->bitmap_top;
 
 	/* Draw shadow for medium size */
-	if (this->fs == FS_NORMAL && !aa) {
+	if (this->fs == FontSize::Normal && !aa) {
 		for (uint y = 0; y < (uint)slot->bitmap.rows; y++) {
 			for (uint x = 0; x < (uint)slot->bitmap.width; x++) {
 				if (HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {

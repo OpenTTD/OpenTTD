@@ -571,7 +571,7 @@ struct MusicTrackSelectionWindow : public Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (const auto &song : _music.music_set) {
 					DrawString(tr, GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
-					tr.top += GetCharacterHeight(FS_SMALL);
+					tr.top += GetCharacterHeight(FontSize::Small);
 				}
 				break;
 			}
@@ -582,7 +582,7 @@ struct MusicTrackSelectionWindow : public Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (const auto &song : _music.active_playlist) {
 					DrawString(tr, GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
-					tr.top += GetCharacterHeight(FS_SMALL);
+					tr.top += GetCharacterHeight(FontSize::Small);
 				}
 				break;
 			}
@@ -593,13 +593,13 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_MTS_LIST_LEFT: { // add to playlist
-				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_SMALL));
+				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Small));
 				_music.PlaylistAdd(y);
 				break;
 			}
 
 			case WID_MTS_LIST_RIGHT: { // remove from playlist
-				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_SMALL));
+				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Small));
 				_music.PlaylistRemove(y);
 				break;
 			}
@@ -722,7 +722,7 @@ struct MusicWindow : public Window {
 
 			case WID_M_TRACK_NR: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TRACK_NONE);
-				d = maxdim(d, GetStringBoundingBox(GetString(STR_MUSIC_TRACK_DIGIT, GetParamMaxDigits(2, FS_SMALL), 2)));
+				d = maxdim(d, GetStringBoundingBox(GetString(STR_MUSIC_TRACK_DIGIT, GetParamMaxDigits(2, FontSize::Small), 2)));
 				d.width += padding.width;
 				d.height += padding.height + WidgetDimensions::scaled.fullbevel.bottom;
 				size = maxdim(size, d);

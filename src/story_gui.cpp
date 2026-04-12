@@ -287,7 +287,7 @@ protected:
 		int height = 0;
 
 		/* Title lines */
-		height += GetCharacterHeight(FS_NORMAL); // Date always use exactly one line.
+		height += GetCharacterHeight(FontSize::Normal); // Date always use exactly one line.
 		height += GetStringHeight(GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), max_width);
 
 		return height;
@@ -335,7 +335,7 @@ protected:
 			case SPET_BUTTON_PUSH:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
-				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FS_NORMAL);
+				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FontSize::Normal);
 				return dim.height + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
 
@@ -378,7 +378,7 @@ protected:
 			case SPET_BUTTON_PUSH:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
-				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FS_NORMAL);
+				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FontSize::Normal);
 				return dim.width + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
 
@@ -402,7 +402,7 @@ protected:
 		StoryPage *page = this->GetSelPage();
 		if (page == nullptr) return;
 		int max_width = GetAvailablePageContentWidth();
-		int element_dist = GetCharacterHeight(FS_NORMAL);
+		int element_dist = GetCharacterHeight(FontSize::Normal);
 
 		/* Make space for the header */
 		int main_y = GetHeadHeight(max_width) + element_dist;
@@ -423,7 +423,7 @@ protected:
 
 			if (fl == ElementFloat::None) {
 				/* Verify available width */
-				const int min_required_width = 10 * GetCharacterHeight(FS_NORMAL);
+				const int min_required_width = 10 * GetCharacterHeight(FontSize::Normal);
 				int left_offset = (left_width == 0) ? 0 : (left_width + element_dist);
 				int right_offset = (right_width == 0) ? 0 : (right_width + element_dist);
 				if (left_offset + right_offset + min_required_width >= max_width) {
@@ -593,7 +593,7 @@ public:
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SB_SCROLLBAR);
-		this->vscroll->SetStepSize(GetCharacterHeight(FS_NORMAL));
+		this->vscroll->SetStepSize(GetCharacterHeight(FontSize::Normal));
 
 		/* Initialize page sort. */
 		this->story_pages.SetSortFuncs(StoryBookWindow::page_sorter_funcs);
@@ -691,7 +691,7 @@ public:
 
 		/* Draw content (now coordinates given to Draw** are local to the new clipping region). */
 		fr = fr.Translate(-fr.left, -fr.top);
-		int line_height = GetCharacterHeight(FS_NORMAL);
+		int line_height = GetCharacterHeight(FontSize::Normal);
 		const int scrollpos = this->vscroll->GetPosition();
 		int y_offset = -scrollpos;
 
@@ -755,7 +755,7 @@ public:
 		if (widget != WID_SB_SEL_PAGE && widget != WID_SB_PAGE_PANEL) return;
 
 		Dimension d;
-		d.height = GetCharacterHeight(FS_NORMAL);
+		d.height = GetCharacterHeight(FontSize::Normal);
 		d.width = 0;
 
 		switch (widget) {

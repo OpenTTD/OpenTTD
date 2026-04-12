@@ -529,9 +529,9 @@ public:
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				if (free_space.has_value()) {
-					DrawString(ir.left, ir.right, ir.top + GetCharacterHeight(FS_NORMAL), GetString(STR_SAVELOAD_BYTES_FREE, free_space.value()));
+					DrawString(ir.left, ir.right, ir.top + GetCharacterHeight(FontSize::Normal), GetString(STR_SAVELOAD_BYTES_FREE, free_space.value()));
 				} else {
-					DrawString(ir.left, ir.right, ir.top + GetCharacterHeight(FS_NORMAL), STR_ERROR_UNABLE_TO_READ_DRIVE);
+					DrawString(ir.left, ir.right, ir.top + GetCharacterHeight(FontSize::Normal), STR_ERROR_UNABLE_TO_READ_DRIVE);
 				}
 				DrawString(ir.left, ir.right, ir.top, path, TC_BLACK);
 				break;
@@ -566,7 +566,7 @@ public:
 	void DrawDetails(const Rect &r) const
 	{
 		/* Header panel */
-		int HEADER_HEIGHT = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.Vertical();
+		int HEADER_HEIGHT = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.frametext.Vertical();
 
 		Rect hr = r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.frametext);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
@@ -579,26 +579,26 @@ public:
 		if (this->selected == nullptr) return;
 
 		/* Details panel */
-		tr.bottom -= GetCharacterHeight(FS_NORMAL) - 1;
+		tr.bottom -= GetCharacterHeight(FontSize::Normal) - 1;
 		if (tr.top > tr.bottom) return;
 
 		if (!_load_check_data.checkable) {
 			/* Old savegame, no information available */
 			DrawString(tr, STR_SAVELOAD_DETAIL_NOT_AVAILABLE);
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top += GetCharacterHeight(FontSize::Normal);
 		} else if (_load_check_data.error != INVALID_STRING_ID) {
 			/* Incompatible / broken savegame */
 			tr.top = DrawStringMultiLine(tr, GetString(_load_check_data.error, _load_check_data.error_msg), TC_RED);
 		} else {
 			/* Mapsize */
 			DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_MAP_SIZE, _load_check_data.map_size_x, _load_check_data.map_size_y));
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top += GetCharacterHeight(FontSize::Normal);
 			if (tr.top > tr.bottom) return;
 
 			/* Climate */
 			if (to_underlying(_load_check_data.landscape) < NUM_LANDSCAPE) {
 				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(_load_check_data.landscape)));
-				tr.top += GetCharacterHeight(FS_NORMAL);
+				tr.top += GetCharacterHeight(FontSize::Normal);
 			}
 
 			tr.top += WidgetDimensions::scaled.vsep_normal;
@@ -607,7 +607,7 @@ public:
 			/* Start date (if available) */
 			if (_load_check_data.starting_year != 0) {
 				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_START_DATE, TimerGameCalendar::ConvertYMDToDate(_load_check_data.starting_year, 0, 1)));
-				tr.top += GetCharacterHeight(FS_NORMAL);
+				tr.top += GetCharacterHeight(FontSize::Normal);
 			}
 			if (tr.top > tr.bottom) return;
 
@@ -615,7 +615,7 @@ public:
 			if (this->abstract_filetype != AbstractFileType::Scenario) {
 				/* Current date */
 				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_CURRENT_DATE, _load_check_data.current_date));
-				tr.top += GetCharacterHeight(FS_NORMAL);
+				tr.top += GetCharacterHeight(FontSize::Normal);
 			}
 
 			/* Hide the NewGRF stuff when saving. We also hide the button. */
@@ -625,7 +625,7 @@ public:
 
 				/* NewGrf compatibility */
 				DrawString(tr, GetString(STR_SAVELOAD_DETAIL_GRFSTATUS, _load_check_data.grfconfig.empty() ? STR_NEWGRF_LIST_NONE : STR_NEWGRF_LIST_ALL_FOUND + to_underlying(_load_check_data.grf_compatibility)));
-				tr.top += GetCharacterHeight(FS_NORMAL);
+				tr.top += GetCharacterHeight(FontSize::Normal);
 			}
 			if (tr.top > tr.bottom) return;
 
@@ -644,7 +644,7 @@ public:
 						DrawString(tr, GetString(STR_SAVELOAD_DETAIL_COMPANY_INDEX, pair.first + 1, STR_JUST_RAW_STRING, c.name));
 					}
 
-					tr.top += GetCharacterHeight(FS_NORMAL);
+					tr.top += GetCharacterHeight(FontSize::Normal);
 					if (tr.top > tr.bottom) break;
 				}
 			}
@@ -655,11 +655,11 @@ public:
 	{
 		switch (widget) {
 			case WID_SL_BACKGROUND:
-				size.height = 2 * GetCharacterHeight(FS_NORMAL) + padding.height;
+				size.height = 2 * GetCharacterHeight(FontSize::Normal) + padding.height;
 				break;
 
 			case WID_SL_DRIVES_DIRECTORIES_LIST:
-				fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
+				fill.height = resize.height = GetCharacterHeight(FontSize::Normal);
 				size.height = resize.height * 10 + padding.height;
 				break;
 			case WID_SL_SORT_BYNAME:

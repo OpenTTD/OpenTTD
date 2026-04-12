@@ -1387,7 +1387,7 @@ private:
 public:
 	BuildRoadStationWindow(WindowDesc &desc, Window *parent, RoadStopType rs) : PickerWindow(desc, parent, TRANSPORT_ROAD, GetRoadStopPickerCallbacks(rs))
 	{
-		this->coverage_height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+		this->coverage_height = 2 * GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 
 		/* Trams don't have non-drivethrough stations */
 		if (RoadTypeIsTram(_cur_roadtype) && _roadstop_gui.orientation < DIAGDIR_END) {

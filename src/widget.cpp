@@ -611,7 +611,7 @@ static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colo
 
 	/* If the frame has text, adjust the top bar to fit half-way through */
 	Rect inner = r.Shrink(ScaleGUITrad(1));
-	if (!str.empty()) inner.top = r.top + GetCharacterHeight(FS_NORMAL) / 2;
+	if (!str.empty()) inner.top = r.top + GetCharacterHeight(FontSize::Normal) / 2;
 
 	Rect outer  = inner.Expand(WidgetDimensions::scaled.bevel);
 	Rect inside = inner.Shrink(WidgetDimensions::scaled.bevel);
@@ -772,7 +772,7 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 	Rect text = r.Indent(NWidgetLeaf::dropdown_dimension.width, !rtl);
 	DrawFrameRect(text, colour, clicked_button ? FrameFlag::Lowered : FrameFlags{});
 	if (!str.empty()) {
-		text = text.CentreToHeight(GetCharacterHeight(FS_NORMAL)).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
+		text = text.CentreToHeight(GetCharacterHeight(FontSize::Normal)).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
 		DrawString(text, str, TC_BLACK, align);
 	}
 
@@ -1117,7 +1117,7 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 bool NWidgetResizeBase::UpdateMultilineWidgetSize(const std::string &str, int max_lines)
 {
 	int y = GetStringHeight(str, this->current_x);
-	if (y > max_lines * GetCharacterHeight(FS_NORMAL)) {
+	if (y > max_lines * GetCharacterHeight(FontSize::Normal)) {
 		/* Text at the current width is too tall, so try to guess a better width. */
 		Dimension d = GetStringBoundingBox(str);
 		d.height *= max_lines;
@@ -2751,7 +2751,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, const Wi
 			this->SetFill(1, 0);
 			this->SetResize(1, 0);
 			this->SetMinimalSize(0, WidgetDimensions::WD_CAPTION_HEIGHT);
-			this->SetMinimalTextLines(1, WidgetDimensions::unscaled.captiontext.Vertical(), FS_NORMAL);
+			this->SetMinimalTextLines(1, WidgetDimensions::unscaled.captiontext.Vertical(), FontSize::Normal);
 			this->SetToolTip(STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 			break;
 
@@ -3190,7 +3190,7 @@ void ApplyNWidgetPartAttribute(const NWidgetPart &nwid, NWidgetBase *dest)
 		case WPT_MINTEXTLINES: {
 			NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(dest);
 			if (nwrb == nullptr) [[unlikely]] throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
-			assert(nwid.u.text_lines.size >= FS_BEGIN && nwid.u.text_lines.size < FS_END);
+			assert(nwid.u.text_lines.size >= FontSize::Begin && nwid.u.text_lines.size < FontSize::End);
 			nwrb->SetMinimalTextLines(nwid.u.text_lines.lines, nwid.u.text_lines.spacing, nwid.u.text_lines.size);
 			break;
 		}

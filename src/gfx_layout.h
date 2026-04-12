@@ -26,7 +26,7 @@ struct FontState {
 	TextColour cur_colour;   ///< Current text colour.
 	std::vector<TextColour> colour_stack; ///< Stack of colours to assist with colour switching.
 
-	FontState() : fontsize(FS_END), cur_colour(TC_INVALID) {}
+	FontState() : fontsize(FontSize::End), cur_colour(TC_INVALID) {}
 	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour) {}
 
 	auto operator<=>(const FontState &) const = default;
@@ -279,11 +279,11 @@ private:
 	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
 	using FontColourMap = std::map<TextColour, std::unique_ptr<Font>>;
-	static FontColourMap fonts[FS_END];
+	static EnumClassIndexContainer<std::array<FontColourMap, to_underlying(FontSize::End)>, FontSize> fonts; ///< The colour mapping of each of the fonts.
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
 
-	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FS_NORMAL);
+	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FontSize::Normal);
 	Dimension GetBounds();
 	ParagraphLayouter::Position GetCharPosition(std::string_view::const_iterator ch) const;
 	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
@@ -293,8 +293,8 @@ public:
 	static void ResetLineCache();
 };
 
-ParagraphLayouter::Position GetCharPosInString(std::string_view str, size_t pos, FontSize start_fontsize = FS_NORMAL);
-ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize = FS_NORMAL);
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, size_t pos, FontSize start_fontsize = FontSize::Normal);
+ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize = FontSize::Normal);
 
 template <> struct std::hash<Layouter::LineCacheQuery> {
 	std::size_t operator()(const Layouter::LineCacheQuery &state) const noexcept

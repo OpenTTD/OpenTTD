@@ -719,7 +719,7 @@ protected:
 	inline uint GetLegendHeight(uint num_columns) const
 	{
 		return WidgetDimensions::scaled.framerect.Vertical() +
-				this->GetNumberRowsLegend(num_columns) * GetCharacterHeight(FS_SMALL);
+				this->GetNumberRowsLegend(num_columns) * GetCharacterHeight(FontSize::Small);
 	}
 
 	/**
@@ -1000,7 +1000,7 @@ protected:
 			/* Check if the town sign is within bounds */
 			if (x + t->cache.sign.width_small > dpi->left &&
 					x < dpi->left + dpi->width &&
-					y + GetCharacterHeight(FS_SMALL) > dpi->top &&
+					y + GetCharacterHeight(FontSize::Small) > dpi->top &&
 					y < dpi->top + dpi->height) {
 				/* And draw it. */
 				DrawString(x, x + t->cache.sign.width_small, y, GetString(STR_SMALLMAP_TOWN, t->index));
@@ -1026,7 +1026,7 @@ protected:
 			if (is_blinking) continue;
 
 			if (_industry_to_name_string_width[i->type] == 0) {
-				_industry_to_name_string_width[i->type] = GetStringBoundingBox(tbl.legend, FS_SMALL).width;
+				_industry_to_name_string_width[i->type] = GetStringBoundingBox(tbl.legend, FontSize::Small).width;
 			}
 			const uint16_t &legend_text_width = _industry_to_name_string_width[i->type];
 
@@ -1039,11 +1039,11 @@ protected:
 			/* Check if the industry name is within bounds */
 			if (x + legend_text_width > dpi->left &&
 					x < dpi->left + dpi->width &&
-					y + GetCharacterHeight(FS_SMALL) > dpi->top &&
+					y + GetCharacterHeight(FontSize::Small) > dpi->top &&
 					y < dpi->top + dpi->height) {
 
 				/* And draw it. */
-				DrawString(x, x + legend_text_width, y, tbl.legend, TC_WHITE, SA_LEFT, false, FS_SMALL);
+				DrawString(x, x + legend_text_width, y, tbl.legend, TC_WHITE, SA_LEFT, false, FontSize::Small);
 			}
 		}
 	}
@@ -1407,7 +1407,7 @@ protected:
 	int GetPositionOnLegend(Point pt)
 	{
 		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND);
-		uint line = (pt.y - wi->pos_y - WidgetDimensions::scaled.framerect.top) / GetCharacterHeight(FS_SMALL);
+		uint line = (pt.y - wi->pos_y - WidgetDimensions::scaled.framerect.top) / GetCharacterHeight(FontSize::Small);
 		uint columns = this->GetNumberColumnsLegend(wi->current_x);
 		uint number_of_rows = this->GetNumberRowsLegend(columns);
 		if (line >= number_of_rows) return -1;
@@ -1576,7 +1576,7 @@ public:
 		}
 
 		/* Width of the legend blob. */
-		this->legend_width = GetCharacterHeight(FS_SMALL) * 9 / 6;
+		this->legend_width = GetCharacterHeight(FontSize::Small) * 9 / 6;
 
 		/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
 		this->column_width = min_width + WidgetDimensions::scaled.hsep_normal + this->legend_width + WidgetDimensions::scaled.framerect.Horizontal();
@@ -1617,7 +1617,7 @@ public:
 				uint number_of_rows = this->GetNumberRowsLegend(columns);
 				bool rtl = _current_text_dir == TD_RTL;
 				uint i = 0; // Row counter for industry legend.
-				uint row_height = GetCharacterHeight(FS_SMALL);
+				uint row_height = GetCharacterHeight(FontSize::Small);
 				int padding = ScaleGUITrad(1);
 
 				Rect origin = r.WithWidth(this->column_width, rtl).Shrink(WidgetDimensions::scaled.framerect).WithHeight(row_height);

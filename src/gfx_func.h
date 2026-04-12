@@ -96,11 +96,11 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub 
 void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, StringAlignment align); /* widget.cpp */
 std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zoom = _gui_zoom);
 
-int DrawString(int left, int right, int top, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
-int DrawString(int left, int right, int top, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
-int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
-int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
-bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
+int DrawString(int left, int right, int top, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FontSize::Normal);
+int DrawString(int left, int right, int top, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FontSize::Normal);
+int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal);
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal);
+bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal);
 
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour);
 
@@ -111,27 +111,27 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 void DrawRectOutline(const Rect &r, PixelColour colour, int width = 1, int dash = 0);
 
 /* Versions of DrawString/DrawStringMultiLine that accept a Rect instead of separate left, right, top and bottom parameters. */
-inline int DrawString(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawString(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
 }
 
-inline int DrawString(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawString(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
 }
 
-inline int DrawStringMultiLine(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawStringMultiLine(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
-inline int DrawStringMultiLine(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawStringMultiLine(const Rect &r, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
-inline bool DrawStringMultiLineWithClipping(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+inline bool DrawStringMultiLineWithClipping(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FontSize::Normal)
 {
 	return DrawStringMultiLineWithClipping(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
@@ -141,15 +141,15 @@ inline void GfxFillRect(const Rect &r, const std::variant<PixelColour, PaletteID
 	GfxFillRect(r.left, r.top, r.right, r.bottom, colour, mode);
 }
 
-Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize = FS_NORMAL);
-Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize = FS_NORMAL);
-uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize = FS_NORMAL);
-Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize fontsize = FS_NORMAL);
-int GetStringHeight(std::string_view str, int maxw, FontSize fontsize = FS_NORMAL);
+Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize = FontSize::Normal);
+Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize = FontSize::Normal);
+uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize = FontSize::Normal);
+Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize fontsize = FontSize::Normal);
+int GetStringHeight(std::string_view str, int maxw, FontSize fontsize = FontSize::Normal);
 int GetStringHeight(StringID str, int maxw);
 int GetStringLineCount(std::string_view str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
-Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion, FontSize fontsize = FS_NORMAL);
+Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion, FontSize fontsize = FontSize::Normal);
 void LoadStringWidthTable(FontSizes fontsizes = FONTSIZES_REQUIRED);
 
 void DrawDirtyBlocks();
@@ -180,7 +180,7 @@ bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */
 uint8_t GetCharacterWidth(FontSize size, char32_t key);
-uint8_t GetDigitWidth(FontSize size = FS_NORMAL);
+uint8_t GetDigitWidth(FontSize size = FontSize::Normal);
 std::pair<uint8_t, uint8_t> GetBroadestDigit(FontSize size);
 
 int GetCharacterHeight(FontSize size);

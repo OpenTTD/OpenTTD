@@ -52,8 +52,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_textfile_widgets = {
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_TF_SEL_JUMPLIST),
 		NWidget(WWT_PANEL, COLOUR_MAUVE),
 			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, 0, WidgetDimensions::unscaled.frametext.right),
-				/* As this widget can be toggled, it needs to be a multiplier of FS_MONO. So add a spacer that ensures this. */
-				NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetMinimalTextLines(2, 0, FS_MONO),
+				/* As this widget can be toggled, it needs to be a multiplier of FontSize::Monospace. So add a spacer that ensures this. */
+				NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetMinimalTextLines(2, 0, FontSize::Monospace),
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_SPACER), SetFill(1, 1), SetResize(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_TF_JUMPLIST), SetStringTip(STR_TEXTFILE_JUMPLIST, STR_TEXTFILE_JUMPLIST_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
@@ -83,7 +83,7 @@ static WindowDesc _textfile_desc(
 	_nested_textfile_widgets
 );
 
-TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), BaseStringMissingGlyphSearcher(FS_MONO), file_type(file_type)
+TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), BaseStringMissingGlyphSearcher(FontSize::Monospace), file_type(file_type)
 {
 	/* Init of nested tree is deferred.
 	 * TextfileWindow::ConstructWindow must be called by the inheriting window. */
@@ -123,8 +123,8 @@ void TextfileWindow::ReflowContent()
 {
 	switch (widget) {
 		case WID_TF_BACKGROUND:
-			resize.width = GetCharacterHeight(FS_MONO); // Width is not available here as the font may not be loaded yet.
-			fill.height = resize.height = GetCharacterHeight(FS_MONO);
+			resize.width = GetCharacterHeight(FontSize::Monospace); // Width is not available here as the font may not be loaded yet.
+			fill.height = resize.height = GetCharacterHeight(FontSize::Monospace);
 
 			size.height = 4 * resize.height + WidgetDimensions::scaled.frametext.Vertical(); // At least 4 lines are visible.
 			size.width = std::max(200u, size.width); // At least 200 pixels wide.
@@ -286,7 +286,7 @@ const TextfileWindow::Hyperlink *TextfileWindow::GetHyperlink(Point pt) const
 	if (this->links.empty()) return nullptr;
 
 	/* Which line was clicked. */
-	const int clicked_row = this->GetRowFromWidget(pt.y, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.top, GetCharacterHeight(FS_MONO)) + this->GetScrollbar(WID_TF_VSCROLLBAR)->GetPosition();
+	const int clicked_row = this->GetRowFromWidget(pt.y, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.top, GetCharacterHeight(FontSize::Monospace)) + this->GetScrollbar(WID_TF_VSCROLLBAR)->GetPosition();
 
 	int visible_line = 0;
 	auto it = std::ranges::find_if(this->lines, [&visible_line, clicked_row](const Line &l) {
@@ -308,7 +308,7 @@ const TextfileWindow::Hyperlink *TextfileWindow::GetHyperlink(Point pt) const
 
 	/* Build line layout to figure out character position that was clicked. */
 	const Line &line = this->lines[line_index];
-	Layouter layout(line.text, line.wrapped_width == 0 ? INT32_MAX : line.wrapped_width, FS_MONO);
+	Layouter layout(line.text, line.wrapped_width == 0 ? INT32_MAX : line.wrapped_width, FontSize::Monospace);
 	assert(subline < layout.size());
 	ptrdiff_t char_index = layout.GetCharAtPosition(pt.x - WidgetDimensions::scaled.frametext.left, subline);
 	if (char_index < 0) return nullptr;
@@ -566,7 +566,7 @@ void TextfileWindow::AfterLoadMarkdown()
 
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
 	fr = fr.Translate(-fr.left, -fr.top);
-	int line_height = GetCharacterHeight(FS_MONO);
+	int line_height = GetCharacterHeight(FontSize::Monospace);
 
 	if (!this->IsTextWrapped()) fr = ScrollRect(fr, *this->hscroll, this->resize.step_width);
 
@@ -582,9 +582,9 @@ void TextfileWindow::AfterLoadMarkdown()
 		int y_offset = (top - pos) * line_height;
 		if (line.wrapped_width != 0) {
 			Rect tr = fr.WithWidth(line.wrapped_width, _current_text_dir == TD_RTL);
-			DrawStringMultiLineWithClipping(tr.left, tr.right, y_offset, y_offset + line.num_lines * line_height, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLineWithClipping(tr.left, tr.right, y_offset, y_offset + line.num_lines * line_height, line.text, line.colour, SA_TOP | SA_LEFT, false, FontSize::Monospace);
 		} else {
-			DrawString(fr.left, fr.right, y_offset, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawString(fr.left, fr.right, y_offset, line.text, line.colour, SA_TOP | SA_LEFT, false, FontSize::Monospace);
 		}
 	}
 }
@@ -647,12 +647,12 @@ TextfileWindow::ReflowState TextfileWindow::ContinueReflow()
 		int old_lines = line.num_lines;
 		if (wrapped) {
 			if (line.wrapped_width != window_width) {
-				line.num_lines = GetStringHeight(line.text, window_width, FS_MONO) / GetCharacterHeight(FS_MONO);
+				line.num_lines = GetStringHeight(line.text, window_width, FontSize::Monospace) / GetCharacterHeight(FontSize::Monospace);
 				line.wrapped_width = window_width;
 			}
 		} else {
 			if (line.max_width == -1) {
-				line.max_width = GetStringBoundingBox(line.text, FS_MONO).width;
+				line.max_width = GetStringBoundingBox(line.text, FontSize::Monospace).width;
 				this->max_width = std::max(this->max_width, line.max_width);
 			}
 			line.num_lines = 1;
@@ -744,7 +744,7 @@ bool TextfileWindow::IsTextWrapped() const
 
 /* virtual */ FontSize TextfileWindow::DefaultSize()
 {
-	return FS_MONO;
+	return FontSize::Monospace;
 }
 
 /* virtual */ std::optional<std::string_view> TextfileWindow::NextString()

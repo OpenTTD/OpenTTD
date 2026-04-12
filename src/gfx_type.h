@@ -245,29 +245,29 @@ using Colour = std::conditional_t<std::endian::native == std::endian::little, Co
 static_assert(sizeof(Colour) == sizeof(uint32_t));
 
 /** Available font sizes */
-enum FontSize : uint8_t {
-	FS_NORMAL, ///< Index of the normal font in the font tables.
-	FS_SMALL,  ///< Index of the small font in the font tables.
-	FS_LARGE,  ///< Index of the large font in the font tables.
-	FS_MONO,   ///< Index of the monospaced font in the font tables.
-	FS_END,
+enum class FontSize : uint8_t {
+	Normal, ///< Index of the normal font in the font tables.
+	Small, ///< Index of the small font in the font tables.
+	Large, ///< Index of the large font in the font tables.
+	Monospace, ///< Index of the monospaced font in the font tables.
 
-	FS_BEGIN = FS_NORMAL, ///< First font.
+	End, ///< Marker for the end of the enumerations.
+	Begin = FontSize::Normal, ///< Marker for the first font in the enumeration.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
 using FontSizes = EnumBitSet<FontSize, uint8_t>;
 
 /** Mask of all possible font sizes. */
-constexpr FontSizes FONTSIZES_ALL{FS_NORMAL, FS_SMALL, FS_LARGE, FS_MONO};
+constexpr FontSizes FONTSIZES_ALL{FontSize::Normal, FontSize::Small, FontSize::Large, FontSize::Monospace};
 /** Mask of font sizes required to be present. */
-constexpr FontSizes FONTSIZES_REQUIRED{FS_NORMAL, FS_SMALL, FS_LARGE};
+constexpr FontSizes FONTSIZES_REQUIRED{FontSize::Normal, FontSize::Small, FontSize::Large};
 
 inline std::string_view FontSizeToName(FontSize fs)
 {
 	static const std::string_view SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
-	assert(fs < FS_END);
-	return SIZE_TO_NAME[fs];
+	assert(fs < FontSize::End);
+	return SIZE_TO_NAME[to_underlying(fs)];
 }
 
 /**

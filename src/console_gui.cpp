@@ -161,9 +161,9 @@ struct IConsoleWindow : Window
 
 	void OnInit() override
 	{
-		this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.hsep_normal;
+		this->line_height = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.hsep_normal;
 		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
-		this->cursor_width = GetCharacterWidth(FS_NORMAL, '_');
+		this->cursor_width = GetCharacterWidth(FontSize::Normal, '_');
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -345,8 +345,8 @@ struct IConsoleWindow : Window
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		const auto p1 = GetCharPosInString(_iconsole_cmdline.GetText(), from, FS_NORMAL);
-		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.GetText(), to, FS_NORMAL) : p1;
+		const auto p1 = GetCharPosInString(_iconsole_cmdline.GetText(), from, FontSize::Normal);
+		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.GetText(), to, FontSize::Normal) : p1;
 
 		Rect r = {this->line_offset + delta + p1.left, this->height - this->line_height, this->line_offset + delta + p2.right, this->height};
 		return r;

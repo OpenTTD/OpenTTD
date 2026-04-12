@@ -230,7 +230,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoType c
 	TextColour tc = GetContrastColour(colour);
 	uint w = std::min(amount + 5, units_full) * width / units_full;
 
-	int height = GetCharacterHeight(FS_SMALL) + padding - 1;
+	int height = GetCharacterHeight(FontSize::Small) + padding - 1;
 
 	if (amount > 30) {
 		/* Draw total cargo (limited) on station */
@@ -244,7 +244,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoType c
 		}
 	}
 
-	DrawString(left + padding, right, y, cs->abbrev, tc, SA_CENTER, false, FS_SMALL);
+	DrawString(left + padding, right, y, cs->abbrev, tc, SA_CENTER, false, FontSize::Small);
 
 	/* Draw green/red ratings bar (fits under the waiting bar) */
 	y += height + padding + 1;
@@ -471,13 +471,13 @@ public:
 			}
 
 			case WID_STL_LIST:
-				fill.height = resize.height = std::max(GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_SMALL) + ScaleGUITrad(3));
+				fill.height = resize.height = std::max(GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Small) + ScaleGUITrad(3));
 				size.height = padding.height + 5 * resize.height;
 
 				/* Determine appropriate width for mini station rating graph */
 				this->rating_width = 0;
 				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					this->rating_width = std::max(this->rating_width, GetStringBoundingBox(cs->abbrev, FS_SMALL).width);
+					this->rating_width = std::max(this->rating_width, GetStringBoundingBox(cs->abbrev, FontSize::Small).width);
 				}
 				/* Approximately match original 16 pixel wide rating bars by multiplying string width by 1.6 */
 				this->rating_width = this->rating_width * 16 / 10;
@@ -519,7 +519,7 @@ public:
 					 * when the order had been removed and the station list hasn't been removed yet */
 					assert(st->owner == owner || st->owner == OWNER_NONE);
 
-					int x = DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2, GetString(STR_STATION_LIST_STATION, st->index, st->facilities));
+					int x = DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FontSize::Normal)) / 2, GetString(STR_STATION_LIST_STATION, st->index, st->facilities));
 					x += rtl ? -text_spacing : text_spacing;
 
 					/* show cargo waiting and station ratings */
@@ -545,7 +545,7 @@ public:
 				}
 
 				if (this->vscroll->GetCount() == 0) { // company has no stations
-					DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2, STR_STATION_LIST_NONE);
+					DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FontSize::Normal)) / 2, STR_STATION_LIST_NONE);
 					return;
 				}
 				break;
@@ -572,7 +572,7 @@ public:
 	DropDownList BuildCargoDropDownList(bool expanded) const
 	{
 		/* Define a custom item consisting of check mark, count string, icon and name string. */
-		using DropDownListCargoItem = DropDownCheck<DropDownString<DropDownListIconItem, FS_SMALL, true>>;
+		using DropDownListCargoItem = DropDownCheck<DropDownString<DropDownListIconItem, FontSize::Small, true>>;
 
 		DropDownList list;
 		list.push_back(MakeDropDownListStringItem(STR_STATION_LIST_CARGO_FILTER_SELECT_ALL, CargoFilterCriteria::CF_SELECT_ALL));
@@ -584,7 +584,7 @@ public:
 		if (count == 0 && !expanded) {
 			any_hidden = true;
 		} else {
-			list.push_back(std::make_unique<DropDownString<DropDownListCheckedItem, FS_SMALL, true>>(fmt::format("{}", count), 0, this->filter.include_no_rating, GetString(STR_STATION_LIST_CARGO_FILTER_NO_RATING), CargoFilterCriteria::CF_NO_RATING, false, count == 0));
+			list.push_back(std::make_unique<DropDownString<DropDownListCheckedItem, FontSize::Small, true>>(fmt::format("{}", count), 0, this->filter.include_no_rating, GetString(STR_STATION_LIST_CARGO_FILTER_NO_RATING), CargoFilterCriteria::CF_NO_RATING, false, count == 0));
 		}
 
 		Dimension d = GetLargestCargoIconSize();
@@ -777,7 +777,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_stations_wid
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_BUS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_BUS, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_SHIP), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_SHIP, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_AIRPLANE), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_PLANE, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_STL_FACILALL), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_ABBREV_ALL, STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP), SetTextStyle(TC_BLACK, FS_SMALL), SetFill(0, 1),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_STL_FACILALL), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_ABBREV_ALL, STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP), SetTextStyle(TC_BLACK, FontSize::Small), SetFill(0, 1),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(5, 0), SetFill(0, 1), EndContainer(),
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_STL_CARGODROPDOWN), SetFill(1, 0), SetToolTip(STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), SetFill(1, 1), EndContainer(),
@@ -1354,8 +1354,8 @@ struct StationViewWindow : public Window {
 	void OnInit() override
 	{
 		this->cargo_icon_size = GetLargestCargoIconSize();
-		this->line_height = std::max<int>(GetCharacterHeight(FS_NORMAL), this->cargo_icon_size.height);
-		this->expand_shrink_width = std::max(GetCharacterWidth(FS_NORMAL, '-'), GetCharacterWidth(FS_NORMAL, '+'));
+		this->line_height = std::max<int>(GetCharacterHeight(FontSize::Normal), this->cargo_icon_size.height);
+		this->expand_shrink_width = std::max(GetCharacterWidth(FontSize::Normal, '-'), GetCharacterWidth(FontSize::Normal, '+'));
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -1424,7 +1424,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case WID_SV_ACCEPT_RATING_LIST:
-				size.height = ((this->GetWidget<NWidgetCore>(WID_SV_ACCEPTS_RATINGS)->GetString() == STR_STATION_VIEW_RATINGS_BUTTON) ? this->accepts_lines : this->rating_lines) * GetCharacterHeight(FS_NORMAL) + padding.height;
+				size.height = ((this->GetWidget<NWidgetCore>(WID_SV_ACCEPTS_RATINGS)->GetString() == STR_STATION_VIEW_RATINGS_BUTTON) ? this->accepts_lines : this->rating_lines) * GetCharacterHeight(FontSize::Normal) + padding.height;
 				break;
 		}
 	}
@@ -1820,7 +1820,7 @@ struct StationViewWindow : public Window {
 		} else {
 			entry.Resort(CargoSortType::Count, this->sort_orders[column]);
 		}
-		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 		for (CargoDataSet::iterator i = entry.Begin(); i != entry.End(); ++i) {
 			CargoDataEntry &cd = **i;
 
@@ -1891,7 +1891,7 @@ struct StationViewWindow : public Window {
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		int bottom = DrawStringMultiLine(tr.left, tr.right, tr.top, INT32_MAX, GetString(STR_STATION_VIEW_ACCEPTS_CARGO, GetAcceptanceMask(st)));
-		return CeilDiv(bottom - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL));
+		return CeilDiv(bottom - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Normal));
 	}
 
 	/**
@@ -1911,7 +1911,7 @@ struct StationViewWindow : public Window {
 		}
 
 		DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE : STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH);
-		tr.top += GetCharacterHeight(FS_NORMAL);
+		tr.top += GetCharacterHeight(FontSize::Normal);
 
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			const GoodsEntry *ge = &st->goods[cs->Index()];
@@ -1924,9 +1924,9 @@ struct StationViewWindow : public Window {
 					lg != nullptr ? lg->Monthly((*lg)[ge->node].supply) : 0,
 					STR_CARGO_RATING_APPALLING + (ge->rating >> 5),
 					ToPercent8(ge->rating)));
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top += GetCharacterHeight(FontSize::Normal);
 		}
-		return CeilDiv(tr.top - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL));
+		return CeilDiv(tr.top - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Normal));
 	}
 
 	/**
@@ -2002,7 +2002,7 @@ struct StationViewWindow : public Window {
 					nwi->SetStringTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP); // Switch to ratings view.
 					height_change = this->accepts_lines - this->rating_lines;
 				}
-				this->ReInit(0, height_change * GetCharacterHeight(FS_NORMAL));
+				this->ReInit(0, height_change * GetCharacterHeight(FontSize::Normal));
 				break;
 			}
 

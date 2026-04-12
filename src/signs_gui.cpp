@@ -196,7 +196,7 @@ struct SignListWindow : Window, SignList {
 		switch (widget) {
 			case WID_SIL_LIST: {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint text_offset_y = (this->resize.step_height - GetCharacterHeight(FS_NORMAL) + 1) / 2;
+				uint text_offset_y = (this->resize.step_height - GetCharacterHeight(FontSize::Normal) + 1) / 2;
 				/* No signs? */
 				if (this->vscroll->GetCount() == 0) {
 					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_STATION_LIST_NONE);
@@ -262,7 +262,7 @@ struct SignListWindow : Window, SignList {
 			case WID_SIL_LIST: {
 				Dimension spr_dim = GetSpriteSize(SPR_COMPANY_ICON);
 				this->text_offset = WidgetDimensions::scaled.frametext.left + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
-				fill.height = resize.height = std::max<uint>(GetCharacterHeight(FS_NORMAL), spr_dim.height + 2);
+				fill.height = resize.height = std::max<uint>(GetCharacterHeight(FontSize::Normal), spr_dim.height + 2);
 				Dimension d = {(uint)(this->text_offset + WidgetDimensions::scaled.frametext.right), padding.height + 5 * resize.height};
 				size = maxdim(size, d);
 				break;

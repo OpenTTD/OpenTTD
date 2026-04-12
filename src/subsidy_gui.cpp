@@ -136,7 +136,7 @@ struct SubsidyListWindow : Window {
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
+		fill.height = resize.height = GetCharacterHeight(FontSize::Normal);
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();
@@ -149,7 +149,7 @@ struct SubsidyListWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 		SpriteID icon = CargoSpec::Get(cargo_type)->GetCargoIcon();
 		Dimension d = GetSpriteSize(icon);
-		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
+		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FontSize::Normal));
 		DrawSprite(icon, PAL_NONE, CentreBounds(ir.left, ir.right, d.width), CentreBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
 	}
 
@@ -166,7 +166,7 @@ struct SubsidyListWindow : Window {
 		const int cap = this->vscroll->GetCapacity();
 
 		/* Section for drawing the offered subsidies */
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_OFFERED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_OFFERED_TITLE);
 		pos++;
 
 		uint num = 0;
@@ -190,8 +190,8 @@ struct SubsidyListWindow : Window {
 							TimerGameEconomy::date.base() - ymd.day + s->remaining * 32);
 					}
 
-					DrawCargoIcon(tr, pos * GetCharacterHeight(FS_NORMAL), s->cargo_type);
-					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FS_NORMAL), text);
+					DrawCargoIcon(tr, pos * GetCharacterHeight(FontSize::Normal), s->cargo_type);
+					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FontSize::Normal), text);
 				}
 				pos++;
 				num++;
@@ -199,13 +199,13 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 
 		/* Section for drawing the already granted subsidies */
 		pos++;
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_SUBSIDISED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_SUBSIDISED_TITLE);
 		pos++;
 		num = 0;
 
@@ -231,8 +231,8 @@ struct SubsidyListWindow : Window {
 					}
 
 					/* Displays the two connected stations */
-					DrawCargoIcon(tr, pos * GetCharacterHeight(FS_NORMAL), s->cargo_type);
-					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FS_NORMAL), text);
+					DrawCargoIcon(tr, pos * GetCharacterHeight(FontSize::Normal), s->cargo_type);
+					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FontSize::Normal), text);
 				}
 				pos++;
 				num++;
@@ -240,7 +240,7 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 	}

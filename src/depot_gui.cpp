@@ -359,9 +359,9 @@ struct DepotWindow : Window {
 				/* Length of consist in tiles with 1 fractional digit (rounded up) */
 				uint length = u->gcache.cached_total_length + this->CountDraggedLength(u);
 				Rect count = text.WithWidth(this->count_width - WidgetDimensions::scaled.hsep_normal, !rtl);
-				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FS_SMALL) + 1,
+				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FontSize::Small) + 1,
 						GetString(STR_JUST_DECIMAL, CeilDiv(length * 10, TILE_SIZE), 1),
-						TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL); // Draw the counter
+						TC_BLACK, SA_RIGHT | SA_FORCE, false, FontSize::Small); // Draw the counter
 				break;
 			}
 
@@ -379,10 +379,10 @@ struct DepotWindow : Window {
 		} else {
 			/* Arrange unitnumber and flag vertically */
 			diff_x = 0;
-			diff_y = WidgetDimensions::scaled.matrix.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+			diff_y = WidgetDimensions::scaled.matrix.top + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		}
 
-		text = text.WithWidth(this->header_width - WidgetDimensions::scaled.hsep_normal, rtl).WithHeight(GetCharacterHeight(FS_NORMAL)).Indent(diff_x, rtl);
+		text = text.WithWidth(this->header_width - WidgetDimensions::scaled.hsep_normal, rtl).WithHeight(GetCharacterHeight(FontSize::Normal)).Indent(diff_x, rtl);
 		if (free_wagon) {
 			DrawString(text, STR_DEPOT_NO_ENGINE);
 		} else {
@@ -538,7 +538,7 @@ struct DepotWindow : Window {
 
 				case VEH_SHIP:
 				case VEH_AIRCRAFT:
-					if (xm <= this->flag_size.width && ym >= (uint)(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal)) return {.action = DepotGUIAction::StartStop, .vehicle = vehicle};
+					if (xm <= this->flag_size.width && ym >= (uint)(GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal)) return {.action = DepotGUIAction::StartStop, .vehicle = vehicle};
 					break;
 
 				default: NOT_REACHED();
@@ -688,7 +688,7 @@ struct DepotWindow : Window {
 				uint min_height = 0;
 
 				if (this->type == VEH_TRAIN) {
-					this->count_width = GetStringBoundingBox(GetString(STR_JUST_DECIMAL, GetParamMaxValue(1000, 0, FS_SMALL), 1), FS_SMALL).width + WidgetDimensions::scaled.hsep_normal;
+					this->count_width = GetStringBoundingBox(GetString(STR_JUST_DECIMAL, GetParamMaxValue(1000, 0, FontSize::Small), 1), FontSize::Small).width + WidgetDimensions::scaled.hsep_normal;
 				} else {
 					this->count_width = 0;
 				}

@@ -232,7 +232,7 @@ struct DropdownWindow : Window {
 		if (!this->options.Test(DropDownOption::Filterable)) return 0;
 
 		/* The edit panel widget does not exist yet so we don't know its real size. Calculate it instead. */
-		return GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.fullbevel.Vertical() * 3;
+		return GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.fullbevel.Vertical() * 3;
 	}
 
 	/**
