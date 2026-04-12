@@ -75,6 +75,25 @@ enum CompanyFinancesWidgets : WidgetID {
 };
 
 
+/** Widgets of the #SelectCustomColourWindow class. */
+enum SelectCustomColourWidgets {
+	WID_SCC_CAPTION,       ///< Caption of window.
+	WID_SCC_HUE,
+	WID_SCC_SCROLLBAR_HUE, ///< Hue scrollbar.
+	WID_SCC_SAT,
+	WID_SCC_SCROLLBAR_SAT, ///< Saturation scrollbar.
+	WID_SCC_VAL,
+	WID_SCC_SCROLLBAR_VAL, ///< Value scrollbar.
+	WID_SCC_CON,
+	WID_SCC_SCROLLBAR_CON, ///< Contrast scrollbar.
+	WID_SCC_OUTPUT,
+	WID_SCC_DEFAULT,       ///< First default colour.
+	WID_SCC_DEFAULT_LAST = WID_SCC_DEFAULT + COLOUR_END - 1,
+	WID_SCC_PRESETS,       ///< First preset colour.
+	WID_SCC_PRESETS_LAST = WID_SCC_PRESETS + COLOUR_END - 1,
+};
+
+
 /** Widgets of the #SelectCompanyLiveryWindow class. */
 enum SelectCompanyLiveryWidgets : WidgetID {
 	WID_SCL_CAPTION,          ///< Caption of window.

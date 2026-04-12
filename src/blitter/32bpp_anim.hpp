@@ -57,6 +57,12 @@ public:
 		return this->palette.palette[index];
 	}
 
+	inline Colour LookupColourInRemapPalette(const Colour *remap_rgba, uint index)
+	{
+		if (remap_rgba[index] == UNMAPPED_COLOUR) return this->LookupColourInPalette(index);
+		return remap_rgba[index];
+	}
+
 	inline int ScreenToAnimOffset(const uint32_t *video)
 	{
 		int raw_offset = video - (const uint32_t *)_screen.dst_ptr;

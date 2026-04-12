@@ -236,6 +236,12 @@ enum WindowClass : uint16_t {
 	WC_COMPANY_COLOUR,
 
 	/**
+	 * Custom colour selection; %Window numbers:
+	 *   - #CompanyID = #SelectCustomColourWidgets
+	 */
+	WC_CUSTOM_COLOUR,
+
+	/**
 	 * Alter company face window; %Window numbers:
 	 *   - #CompanyID = #SelectCompanyManagerFaceWidgets
 	 */
