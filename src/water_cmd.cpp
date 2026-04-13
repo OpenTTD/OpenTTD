@@ -1291,7 +1291,7 @@ static void DoDryUp(TileIndex tile)
  * @copydoc TileLoopProc
  *
  * Let a water tile floods its diagonal adjoining tiles
- * called from tunnelbridge_cmd, and by TileLoop_Industry() and TileLoop_Track()
+ * called by #TileLoop_Industry, #TileLoop_Rail, #TileLoop_Station, #TileLoop_Object, #TileLoop_Trees and #TileLoop_Void.
  */
 void TileLoop_Water(TileIndex tile)
 {
