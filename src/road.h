@@ -32,21 +32,21 @@ using RoadTypeFlags = EnumBitSet<RoadTypeFlag, uint8_t>;
 
 struct SpriteGroup;
 
-/** Sprite groups for a roadtype. */
-enum RoadTypeSpriteGroup : uint8_t {
-	ROTSG_CURSORS,        ///< Optional: Cursor and toolbar icon images
-	ROTSG_OVERLAY,        ///< Optional: Images for overlaying track
-	ROTSG_GROUND,         ///< Required: Main group of ground images
-	ROTSG_TUNNEL,         ///< Optional: Ground images for tunnels
-	ROTSG_CATENARY_FRONT, ///< Optional: Catenary front
-	ROTSG_CATENARY_BACK,  ///< Optional: Catenary back
-	ROTSG_BRIDGE,         ///< Required: Bridge surface images
-	ROTSG_reserved2,      ///<           Placeholder, if we need specific level crossing sprites.
-	ROTSG_DEPOT,          ///< Optional: Depot images
-	ROTSG_reserved3,      ///<           Placeholder, if we add road fences (for highways).
-	ROTSG_ROADSTOP,       ///< Required: Bay stop surface
-	ROTSG_ONEWAY,         ///< Optional: One-way indicator images
-	ROTSG_END,
+/** Sprite types for a roadtype. */
+enum class RoadSpriteType : uint8_t {
+	UI, ///< Optional: Cursor and toolbar icon images
+	Overlay, ///< Optional: Images for overlaying track
+	Ground, ///< Required: Main group of ground images
+	Tunnel, ///< Optional: Ground images for tunnels
+	CatenaryFront, ///< Optional: Catenary front
+	CatenaryRear, ///< Optional: Catenary back
+	Bridge, ///< Required: Bridge surface images
+	ReservedCrossing, ///< Placeholder, if we need specific level crossing sprites.
+	Depot, ///< Optional: Depot images
+	ReservedFence, ///< Placeholder, if we add road fences (for highways).
+	Roadstop, ///< Required: Bay stop surface
+	Oneway, ///< Optional: One-way indicator images
+	End, ///< End marker.
 };
 
 class RoadTypeInfo {
@@ -158,18 +158,18 @@ public:
 	/**
 	 * NewGRF providing the Action3 for the roadtype. nullptr if not available.
 	 */
-	const GRFFile *grffile[ROTSG_END];
+	EnumClassIndexContainer<std::array<const GRFFile *, to_underlying(RoadSpriteType::End)>, RoadSpriteType> grffile{};
 
 	/**
 	 * Sprite groups for resolving sprites
 	 */
-	const SpriteGroup *group[ROTSG_END];
+	EnumClassIndexContainer<std::array<const SpriteGroup *, to_underlying(RoadSpriteType::End)>, RoadSpriteType> group{};
 
 	std::vector<BadgeID> badges;
 
 	inline bool UsesOverlay() const
 	{
-		return this->group[ROTSG_GROUND] != nullptr;
+		return this->group[RoadSpriteType::Ground] != nullptr;
 	}
 
 	RoadType Index() const;

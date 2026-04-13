@@ -3517,7 +3517,7 @@ static void DrawTile_Station(TileInfo *ti)
 			assert(road_rt != INVALID_ROADTYPE && tram_rt == INVALID_ROADTYPE);
 
 			if ((stopspec == nullptr || stop_draw_mode.Test(RoadStopDrawMode::Road)) && road_rti->UsesOverlay()) {
-				SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_ROADSTOP);
+				SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, RoadSpriteType::Roadstop);
 				DrawGroundSprite(ground + view, PAL_NONE);
 			}
 		}
@@ -3568,10 +3568,10 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 
 			/* Road underlay takes precedence over tram */
 			if (roadtype_info->UsesOverlay()) {
-				SpriteID ground = GetCustomRoadSprite(roadtype_info, INVALID_TILE, ROTSG_GROUND);
+				SpriteID ground = GetCustomRoadSprite(roadtype_info, INVALID_TILE, RoadSpriteType::Ground);
 				DrawSprite(ground + sprite_offset, PAL_NONE, x, y);
 
-				SpriteID overlay = GetCustomRoadSprite(roadtype_info, INVALID_TILE, ROTSG_OVERLAY);
+				SpriteID overlay = GetCustomRoadSprite(roadtype_info, INVALID_TILE, RoadSpriteType::Overlay);
 				if (overlay) DrawSprite(overlay + sprite_offset, PAL_NONE, x, y);
 			} else if (RoadTypeIsTram(roadtype)) {
 				DrawSprite(SPR_TRAMWAY_TRAM + sprite_offset, PAL_NONE, x, y);
@@ -3579,7 +3579,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 		} else {
 			/* Bay stop */
 			if (RoadTypeIsRoad(roadtype) && roadtype_info->UsesOverlay()) {
-				SpriteID ground = GetCustomRoadSprite(roadtype_info, INVALID_TILE, ROTSG_ROADSTOP);
+				SpriteID ground = GetCustomRoadSprite(roadtype_info, INVALID_TILE, RoadSpriteType::Roadstop);
 				DrawSprite(ground + image, PAL_NONE, x, y);
 			}
 		}
