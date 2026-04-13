@@ -516,12 +516,12 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 				if (roadtype_road != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_road)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 				if (roadtype_tram != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_tram)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 
-				RoadBits road = GetRoadBits(tile, RTT_ROAD);
-				RoadBits tram = GetRoadBits(tile, RTT_TRAM);
+				RoadBits road = GetRoadBits(tile, RoadTramType::Road);
+				RoadBits tram = GetRoadBits(tile, RoadTramType::Tram);
 				if ((track == TRACK_X && ((road | tram) & ROAD_X) == 0) ||
 						(track == TRACK_Y && ((road | tram) & ROAD_Y) == 0)) {
-					Owner road_owner = GetRoadOwner(tile, RTT_ROAD);
-					Owner tram_owner = GetRoadOwner(tile, RTT_TRAM);
+					Owner road_owner = GetRoadOwner(tile, RoadTramType::Road);
+					Owner tram_owner = GetRoadOwner(tile, RoadTramType::Tram);
 					/* Disallow breaking end-of-line of someone else
 					 * so trams can still reverse on this tile. */
 					if (Company::IsValidID(tram_owner) && HasExactlyOneBit(tram)) {
@@ -654,7 +654,7 @@ CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track trac
 				owner = GetTileOwner(tile);
 				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
 				DirtyCompanyInfrastructureWindows(owner);
-				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM));
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RoadTramType::Road), GetRoadOwner(tile, RoadTramType::Tram));
 				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile.base());
 			}
 			break;
@@ -1199,7 +1199,7 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
 	if (tile == INVALID_TILE) return false;
 
 	/* Check for track bits on the new tile */
-	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0));
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid));
 
 	if (TracksOverlap(TrackdirBitsToTrackBits(trackdirbits))) return false;
 	trackdirbits &= TrackdirReachesTrackdirs(trackdir);
@@ -2740,7 +2740,7 @@ set_ground:
 
 
 /** @copydoc GetTileTrackStatusProc */
-static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [[maybe_unused]] uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, DiagDirection side)
 {
 	/* Case of half tile slope with water. */
 	if (mode == TRANSPORT_WATER && IsPlainRail(tile) && GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {

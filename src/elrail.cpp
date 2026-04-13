@@ -141,7 +141,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 		TileIndex next_tile = TileAddByDiagDir(t, d);
 		RailType rt = GetTileRailType(next_tile);
 		if (rt == INVALID_RAILTYPE || !HasRailCatenary(rt) ||
-				((TrackStatusToTrackBits(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, 0)) & DiagdirReachesTracks(d)) == TRACK_BIT_NONE &&
+				((TrackStatusToTrackBits(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, RoadTramType::Invalid)) & DiagdirReachesTracks(d)) == TRACK_BIT_NONE &&
 				(!HasStationTileRail(next_tile) || GetRailStationAxis(next_tile) != DiagDirToAxis(d) || !CanStationTileHaveWires(next_tile)))) {
 			neighbour_tdb |= DiagdirReachesTrackdirs(ReverseDiagDir(d));
 		}

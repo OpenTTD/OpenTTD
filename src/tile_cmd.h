@@ -13,6 +13,7 @@
 #include "core/enum_type.hpp"
 #include "core/geometry_type.hpp"
 #include "command_type.h"
+#include "road_type.h"
 #include "vehicle_type.h"
 #include "cargo_type.h"
 #include "track_type.h"
@@ -116,7 +117,7 @@ using GetTileDescProc = void(TileIndex tile, TileDesc &td);
  * @return the track status information
  * @see GetTileTrackStatus
  */
-using GetTileTrackStatusProc = TrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side);
+using GetTileTrackStatusProc = TrackStatus(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side);
 
 /**
  * Tile callback function signature for obtaining the produced cargo of a tile.
@@ -215,7 +216,7 @@ struct TileTypeProcs {
 	ClearTileProc *clear_tile_proc; ////< Called to clear a tile.
 	AddAcceptedCargoProc *add_accepted_cargo_proc = nullptr; ///< Adds accepted cargo of the tile to cargo array supplied as parameter.
 	GetTileDescProc *get_tile_desc_proc; ///< Get a description of a tile (for the 'land area information' tool).
-	GetTileTrackStatusProc *get_tile_track_status_proc = [](TileIndex, TransportType, uint, DiagDirection) -> TrackStatus { return {}; }; ///< Get available tracks and status of a tile.
+	GetTileTrackStatusProc *get_tile_track_status_proc = [](TileIndex, TransportType, RoadTramType, DiagDirection) -> TrackStatus { return {}; }; ///< Get available tracks and status of a tile.
 	ClickTileProc *click_tile_proc = nullptr; ///< Called when tile is clicked
 	AnimateTileProc *animate_tile_proc = nullptr; ///< Called to animate a tile.
 	TileLoopProc *tile_loop_proc; ///< Called to periodically update the tile.
@@ -229,7 +230,7 @@ struct TileTypeProcs {
 
 extern const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs;
 
-TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
+TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side = INVALID_DIAGDIR);
 VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void GetTileDesc(TileIndex tile, TileDesc &td);

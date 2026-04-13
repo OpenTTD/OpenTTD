@@ -186,7 +186,7 @@ bool IsPossibleDockingTile(Tile t)
 		case TileType::Railway:
 		case TileType::Station:
 		case TileType::TunnelBridge:
-			return TrackStatusToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, 0)) != TRACK_BIT_NONE;
+			return TrackStatusToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, RoadTramType::Invalid)) != TRACK_BIT_NONE;
 
 		default:
 			return false;
@@ -1384,7 +1384,7 @@ void ConvertGroundTilesIntoWaterTiles()
 }
 
 /** @copydoc GetTileTrackStatusProc */
-static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] uint sub_mode, [[maybe_unused]] DiagDirection side)
+static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, [[maybe_unused]] DiagDirection side)
 {
 	static const TrackBits coast_tracks[] = {TRACK_BIT_NONE, TRACK_BIT_RIGHT, TRACK_BIT_UPPER, TRACK_BIT_NONE, TRACK_BIT_LEFT, TRACK_BIT_NONE, TRACK_BIT_NONE,
 		TRACK_BIT_NONE, TRACK_BIT_LOWER, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE};

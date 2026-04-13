@@ -438,8 +438,8 @@ static void FixOwnerOfRailTrack(Tile t)
 	/* try to find any connected rail */
 	for (DiagDirection dd = DIAGDIR_BEGIN; dd < DIAGDIR_END; dd++) {
 		TileIndex tt{t + TileOffsByDiagDir(dd)};
-		if (GetTileTrackStatus(t, TRANSPORT_RAIL, 0, dd) != 0 &&
-				GetTileTrackStatus(tt, TRANSPORT_RAIL, 0, ReverseDiagDir(dd)) != 0 &&
+		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd) != 0 &&
+				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)) != 0 &&
 				Company::IsValidID(GetTileOwner(tt))) {
 			SetTileOwner(t, GetTileOwner(tt));
 			return;
@@ -448,8 +448,8 @@ static void FixOwnerOfRailTrack(Tile t)
 
 	if (IsLevelCrossingTile(t)) {
 		/* else change the crossing to normal road (road vehicles won't care) */
-		Owner road = GetRoadOwner(t, RTT_ROAD);
-		Owner tram = GetRoadOwner(t, RTT_TRAM);
+		Owner road = GetRoadOwner(t, RoadTramType::Road);
+		Owner tram = GetRoadOwner(t, RoadTramType::Tram);
 		RoadBits bits = GetCrossingRoadBits(t);
 		bool hasroad = HasBit(t.m7(), 6);
 		bool hastram = HasBit(t.m7(), 7);
@@ -460,7 +460,7 @@ static void FixOwnerOfRailTrack(Tile t)
 		t.m3() = (hasroad ? bits : 0);
 		t.m5() = (hastram ? bits : 0) | to_underlying(RoadTileType::Normal) << 6;
 		SB(t.m6(), 2, 4, 0);
-		SetRoadOwner(t, RTT_TRAM, tram);
+		SetRoadOwner(t, RoadTramType::Tram, tram);
 		return;
 	}
 
@@ -1248,7 +1248,7 @@ bool AfterLoadGame()
 							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X) | to_underlying(RoadTileType::Normal) << 6;
 							SB(t.m6(), 2, 4, 0);
 							t.m7() = 1 << 6;
-							SetRoadOwner(t, RTT_TRAM, OWNER_NONE);
+							SetRoadOwner(t, RoadTramType::Tram, OWNER_NONE);
 						}
 					} else {
 						if (GB(t.m5(), 3, 2) == 0) {
@@ -1952,7 +1952,7 @@ bool AfterLoadGame()
 				}
 			} else if (IsTileType(t, TileType::Road)) {
 				/* works for all RoadTileType */
-				for (RoadTramType rtt : _roadtramtypes) {
+				for (RoadTramType rtt : ROADTRAMTYPES_ALL) {
 					/* update even non-existing road types to update tile owner too */
 					Owner o = GetRoadOwner(t, rtt);
 					if (o < MAX_COMPANIES && !Company::IsValidID(o)) SetRoadOwner(t, rtt, OWNER_NONE);
@@ -2964,8 +2964,8 @@ bool AfterLoadGame()
 		for (const auto t : Map::Iterate()) {
 			if (!IsBayRoadStopTile(t)) continue;
 			Owner o = GetTileOwner(t);
-			SetRoadOwner(t, RTT_ROAD, o);
-			SetRoadOwner(t, RTT_TRAM, o);
+			SetRoadOwner(t, RoadTramType::Road, o);
+			SetRoadOwner(t, RoadTramType::Tram, o);
 		}
 	}
 

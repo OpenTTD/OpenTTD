@@ -306,7 +306,7 @@ struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	{
 		if (cid >= ROTSG_END) return;
 
-		const auto &type_map = (TRoadTramType == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
+		const auto &type_map = (TRoadTramType == RoadTramType::Tram) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 		RoadType roadtype = local_id < std::size(type_map) ? type_map[local_id] : INVALID_ROADTYPE;
 		if (roadtype == INVALID_ROADTYPE) return;
 
@@ -441,8 +441,8 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 		case GSF_AIRPORTS: MapSpriteGroup(buf, idcount, AirportMapSpriteGroupHandler{}); return;
 		case GSF_OBJECTS: MapSpriteGroup(buf, idcount, ObjectMapSpriteGroupHandler{}); return;
 		case GSF_RAILTYPES: MapSpriteGroup(buf, idcount, RailTypeMapSpriteGroupHandler{}); return;
-		case GSF_ROADTYPES: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RTT_ROAD>{}); return;
-		case GSF_TRAMTYPES: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RTT_TRAM>{}); return;
+		case GSF_ROADTYPES: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RoadTramType::Road>{}); return;
+		case GSF_TRAMTYPES: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RoadTramType::Tram>{}); return;
 		case GSF_AIRPORTTILES: MapSpriteGroup(buf, idcount, AirportTileMapSpriteGroupHandler{}); return;
 		case GSF_ROADSTOPS: MapSpriteGroup(buf, idcount, RoadStopMapSpriteGroupHandler{}); return;
 		case GSF_BADGES: MapSpriteGroup(buf, idcount, BadgeMapSpriteGroupHandler{}); return;

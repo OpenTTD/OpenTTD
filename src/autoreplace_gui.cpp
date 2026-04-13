@@ -547,7 +547,7 @@ public:
 
 			case WID_RV_ROAD_TYPE_DROPDOWN: { // Roadtype selection dropdown menu
 				static std::string roadtype_filter;
-				ShowDropDownList(this, GetRoadTypeDropDownList(RTTB_ROAD | RTTB_TRAM, true, true), this->sel_roadtype, widget, 0, DropDownOption::Filterable, &roadtype_filter);
+				ShowDropDownList(this, GetRoadTypeDropDownList(ROADTRAMTYPES_ALL, true, true), this->sel_roadtype, widget, 0, DropDownOption::Filterable, &roadtype_filter);
 				break;
 			}
 

@@ -106,10 +106,10 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 		case 0x42: return this->tile == INVALID_TILE ? 0 : (GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile, TCX_NORMAL));
 
 		/* Road type */
-		case 0x43: return get_road_type_variable(RTT_ROAD);
+		case 0x43: return get_road_type_variable(RoadTramType::Road);
 
 		/* Tram type */
-		case 0x44: return get_road_type_variable(RTT_TRAM);
+		case 0x44: return get_road_type_variable(RoadTramType::Tram);
 
 		/* Town zone and Manhattan distance of closest town */
 		case 0x45: {

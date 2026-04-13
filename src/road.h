@@ -184,27 +184,27 @@ inline RoadTypes GetMaskForRoadTramType(RoadTramType rtt)
 {
 	extern RoadTypes _roadtypes_road;
 	extern RoadTypes _roadtypes_tram;
-	return rtt == RTT_ROAD ? _roadtypes_road : _roadtypes_tram;
+	return rtt == RoadTramType::Road ? _roadtypes_road : _roadtypes_tram;
 }
 
 inline bool RoadTypeIsRoad(RoadType roadtype)
 {
-	return GetMaskForRoadTramType(RTT_ROAD).Test(roadtype);
+	return GetMaskForRoadTramType(RoadTramType::Road).Test(roadtype);
 }
 
 inline bool RoadTypeIsTram(RoadType roadtype)
 {
-	return GetMaskForRoadTramType(RTT_TRAM).Test(roadtype);
+	return GetMaskForRoadTramType(RoadTramType::Tram).Test(roadtype);
 }
 
 inline RoadTramType GetRoadTramType(RoadType roadtype)
 {
-	return RoadTypeIsTram(roadtype) ? RTT_TRAM : RTT_ROAD;
+	return RoadTypeIsTram(roadtype) ? RoadTramType::Tram : RoadTramType::Road;
 }
 
 inline RoadTramType OtherRoadTramType(RoadTramType rtt)
 {
-	return rtt == RTT_ROAD ? RTT_TRAM : RTT_ROAD;
+	return rtt == RoadTramType::Road ? RoadTramType::Tram : RoadTramType::Road;
 }
 
 /**

@@ -442,7 +442,7 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 	if (::IsNormalRoadTile(tile)) {
 		rb = ::GetAllRoadBits(tile);
 	} else {
-		rb = ::GetAnyRoadBits(tile, RTT_ROAD) | ::GetAnyRoadBits(tile, RTT_TRAM);
+		rb = ::GetAnyRoadBits(tile, RoadTramType::Road) | ::GetAnyRoadBits(tile, RoadTramType::Tram);
 	}
 
 	Array<TileIndex> existing;
@@ -656,7 +656,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 
 /* static */ ScriptRoad::RoadTramTypes ScriptRoad::GetRoadTramType(RoadType roadtype)
 {
-	return (RoadTramTypes)(1 << ::GetRoadTramType((::RoadType)roadtype));
+	return static_cast<RoadTramTypes>(::RoadTramTypes{::GetRoadTramType(static_cast<::RoadType>(roadtype))}.base());
 }
 
 /* static */ SQInteger ScriptRoad::GetMaxSpeed(RoadType road_type)

@@ -445,7 +445,7 @@ public:
 		/* set origin (tile, trackdir) */
 		TileIndex src_tile = v->tile;
 		Trackdir src_td = v->GetVehicleTrackdir();
-		if (!HasTrackdir(GetTrackdirBitsForRoad(src_tile, Yapf().IsTram() ? RTT_TRAM : RTT_ROAD), src_td)) {
+		if (!HasTrackdir(GetTrackdirBitsForRoad(src_tile, Yapf().IsTram() ? RoadTramType::Tram : RoadTramType::Road), src_td)) {
 			/* sometimes the roadveh is not on the road (it resides on non-existing track)
 			 * how should we handle that situation? */
 			return false;

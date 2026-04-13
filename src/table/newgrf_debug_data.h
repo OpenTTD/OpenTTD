@@ -652,14 +652,14 @@ static const NIFeature _nif_roadtype = {
 	{},
 	{},
 	_niv_roadtypes,
-	std::make_unique<NIHRoadType<RoadTramType::RTT_ROAD>>(),
+	std::make_unique<NIHRoadType<RoadTramType::Road>>(),
 };
 
 static const NIFeature _nif_tramtype = {
 	{},
 	{},
 	_niv_roadtypes,
-	std::make_unique<NIHRoadType<RoadTramType::RTT_TRAM>>(),
+	std::make_unique<NIHRoadType<RoadTramType::Tram>>(),
 };
 
 #define NICRS(cb_id, bit) NIC(cb_id, RoadStopSpec, callback_mask, bit)

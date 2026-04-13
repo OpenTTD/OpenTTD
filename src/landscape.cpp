@@ -563,7 +563,7 @@ void DoClearSquare(TileIndex tile)
  * @param side side we are entering from, INVALID_DIAGDIR to return all trackbits
  * @return trackdirbits and other info depending on 'mode'
  */
-TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side)
 {
 	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode, sub_mode, side);
 }

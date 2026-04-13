@@ -114,8 +114,8 @@ GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 {
 	RoadType rt = GetRoadTypeByLabel(this->roadtype_scope.rti->label, false);
 	switch (GetRoadTramType(rt)) {
-		case RTT_ROAD: return GSF_ROADTYPES;
-		case RTT_TRAM: return GSF_TRAMTYPES;
+		case RoadTramType::Road: return GSF_ROADTYPES;
+		case RoadTramType::Tram: return GSF_TRAMTYPES;
 		default: return GSF_INVALID;
 	}
 }
@@ -183,7 +183,7 @@ RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8_t tracktype, const GRFFi
 
 	if (grffile == nullptr) return INVALID_ROADTYPE;
 
-	const auto &list = rtt == RTT_TRAM ? grffile->tramtype_list : grffile->roadtype_list;
+	const auto &list = rtt == RoadTramType::Tram ? grffile->tramtype_list : grffile->roadtype_list;
 	if (tracktype >= list.size()) return INVALID_ROADTYPE;
 
 	/* Look up roadtype including alternate labels. */
@@ -231,7 +231,7 @@ void ConvertRoadTypes()
 	bool needs_conversion = false;
 	for (auto it = std::begin(_roadtype_list); it != std::end(_roadtype_list); ++it) {
 		RoadType rt = GetRoadTypeByLabel(it->label);
-		if (rt == INVALID_ROADTYPE || GetRoadTramType(rt) != it->subtype) {
+		if (rt == INVALID_ROADTYPE || GetRoadTramType(rt) != RoadTramType{it->subtype}) {
 			rt = it->subtype ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		}
 
@@ -274,7 +274,7 @@ void SetCurrentRoadTypeLabelList()
 {
 	_roadtype_list.clear();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, GetRoadTramType(rt));
+		_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, to_underlying(GetRoadTramType(rt)));
 	}
 }
 
