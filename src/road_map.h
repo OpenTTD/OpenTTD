@@ -300,7 +300,7 @@ inline bool HasTownOwnedRoad(Tile t)
  */
 inline bool IsValidDisallowedRoadDirections(DisallowedRoadDirections drt)
 {
-	return drt < DRD_END;
+	return drt.Reset({DisallowedRoadDirection::Northbound, DisallowedRoadDirection::Southbound}).None();
 }
 
 /**
@@ -311,7 +311,7 @@ inline bool IsValidDisallowedRoadDirections(DisallowedRoadDirections drt)
 inline DisallowedRoadDirections GetDisallowedRoadDirections(Tile t)
 {
 	assert(IsNormalRoad(t));
-	return (DisallowedRoadDirections)GB(t.m5(), 4, 2);
+	return static_cast<DisallowedRoadDirections>(GB(t.m5(), 4, 2));
 }
 
 /**
@@ -322,8 +322,8 @@ inline DisallowedRoadDirections GetDisallowedRoadDirections(Tile t)
 inline void SetDisallowedRoadDirections(Tile t, DisallowedRoadDirections drd)
 {
 	assert(IsNormalRoad(t));
-	assert(drd < DRD_END);
-	SB(t.m5(), 4, 2, drd);
+	assert(IsValidDisallowedRoadDirections(drd));
+	SB(t.m5(), 4, 2, drd.base());
 }
 
 /**

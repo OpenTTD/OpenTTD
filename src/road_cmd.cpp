@@ -461,7 +461,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 							const Town *town = CalcClosestTownFromTile(tile);
 							SetTownIndex(tile, town == nullptr ? TownID::Invalid() : town->index);
 						}
-						if (rtt == RoadTramType::Road) SetDisallowedRoadDirections(tile, DRD_NONE);
+						if (rtt == RoadTramType::Road) SetDisallowedRoadDirections(tile, {});
 						SetRoadBits(tile, {}, rtt);
 						SetRoadType(tile, rtt, INVALID_ROADTYPE);
 						MarkTileDirtyByTile(tile);
@@ -470,7 +470,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 					/* When bits are removed, you *always* end up with something that
 					 * is not a complete straight road tile. However, trams do not have
 					 * onewayness, so they cannot remove it either. */
-					if (rtt == RoadTramType::Road) SetDisallowedRoadDirections(tile, DRD_NONE);
+					if (rtt == RoadTramType::Road) SetDisallowedRoadDirections(tile, {});
 					SetRoadBits(tile, present, rtt);
 					MarkTileDirtyByTile(tile);
 				}
@@ -644,13 +644,13 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 
 					existing = GetRoadBits(tile, rtt);
 					bool crossing = !IsStraightRoad(existing | pieces);
-					if (rtt == RoadTramType::Road && (GetDisallowedRoadDirections(tile) != DRD_NONE || toggle_drd != DRD_NONE) && crossing) {
+					if (rtt == RoadTramType::Road && (GetDisallowedRoadDirections(tile).Any() || toggle_drd.Any()) && crossing) {
 						/* Junctions cannot be one-way */
 						return CommandCost(STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 					}
 					if ((existing & pieces) == pieces) {
 						/* We only want to set the (dis)allowed road directions */
-						if (toggle_drd != DRD_NONE && rtt == RoadTramType::Road) {
+						if (toggle_drd.Any() && rtt == RoadTramType::Road) {
 							Owner owner = GetRoadOwner(tile, rtt);
 							if (owner != OWNER_NONE) {
 								CommandCost ret = CheckOwnership(owner, tile);
@@ -658,13 +658,13 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 							}
 
 							DisallowedRoadDirections dis_existing = GetDisallowedRoadDirections(tile);
-							DisallowedRoadDirections dis_new      = dis_existing ^ toggle_drd;
+							DisallowedRoadDirections dis_new = GetDisallowedRoadDirections(tile).Flip(toggle_drd);
 
 							/* We allow removing disallowed directions to break up
 							 * deadlocks, but adding them can break articulated
 							 * vehicles. As such, only when less is disallowed,
 							 * i.e. bits are removed, we skip the vehicle check. */
-							if (CountBits(dis_existing) <= CountBits(dis_new)) {
+							if (dis_existing.Count() <= dis_new.Count()) {
 								CommandCost ret = EnsureNoVehicleOnGround(tile);
 								if (ret.Failed()) return ret;
 							}
@@ -923,7 +923,7 @@ do_clear:;
 		if (rtt == RoadTramType::Road && IsNormalRoadTile(tile)) {
 			existing |= pieces;
 			SetDisallowedRoadDirections(tile, IsStraightRoad(existing) ?
-					GetDisallowedRoadDirections(tile) ^ toggle_drd : DRD_NONE);
+					GetDisallowedRoadDirections(tile).Flip(toggle_drd) : DisallowedRoadDirections{});
 		}
 
 		MarkTileDirtyByTile(tile);
@@ -984,13 +984,13 @@ CommandCost CmdBuildLongRoad(DoCommandFlags flags, TileIndex end_tile, TileIndex
 		dir = ReverseDiagDir(dir);
 		start_half = !start_half;
 		end_half = !end_half;
-		if (drd == DRD_NORTHBOUND || drd == DRD_SOUTHBOUND) drd ^= DRD_BOTH;
+		if (drd == DisallowedRoadDirection::Northbound || drd == DisallowedRoadDirection::Southbound) drd.Flip({DisallowedRoadDirection::Northbound, DisallowedRoadDirection::Southbound});
 	}
 
 	/* On the X-axis, we have to swap the initial bits, so they
 	 * will be interpreted correctly in the GTTS. Furthermore
 	 * when you just 'click' on one tile to build them. */
-	if ((drd == DRD_NORTHBOUND || drd == DRD_SOUTHBOUND) && (axis == AXIS_Y) == (start_tile == end_tile && start_half == end_half)) drd ^= DRD_BOTH;
+	if ((drd == DisallowedRoadDirection::Northbound || drd == DisallowedRoadDirection::Southbound) && (axis == AXIS_Y) == (start_tile == end_tile && start_half == end_half)) drd.Flip({DisallowedRoadDirection::Northbound, DisallowedRoadDirection::Southbound});
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
@@ -1645,7 +1645,7 @@ static void DrawRoadBits(TileInfo *ti)
 	/* Draw one way */
 	if (road_rti != nullptr) {
 		DisallowedRoadDirections drd = GetDisallowedRoadDirections(ti->tile);
-		if (drd != DRD_NONE) {
+		if (drd.Any()) {
 			SpriteID oneway = GetCustomRoadSprite(road_rti, ti->tile, ROTSG_ONEWAY);
 
 			if (oneway == 0) oneway = SPR_ONEWAY_BASE;
@@ -1656,7 +1656,7 @@ static void DrawRoadBits(TileInfo *ti)
 				oneway += ONEWAY_SLOPE_S_OFFSET;
 			}
 
-			DrawGroundSpriteAt(oneway + drd - 1 + ((road == ROAD_X) ? 0 : 3), PAL_NONE, 8, 8, GetPartialPixelZ(8, 8, ti->tileh));
+			DrawGroundSpriteAt(oneway + drd.base() - 1 + ((road == ROAD_X) ? 0 : 3), PAL_NONE, 8, 8, GetPartialPixelZ(8, 8, ti->tileh));
 		}
 	}
 
@@ -2156,13 +2156,13 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 			if (!HasTileRoadType(tile, rtt)) break;
 			switch (GetRoadTileType(tile)) {
 				case RoadTileType::Normal: {
-					const uint drd_to_multiplier[DRD_END] = { 0x101, 0x100, 0x1, 0x0 };
+					const uint drd_to_multiplier[] = { 0x101, 0x100, 0x1, 0x0 };
 					RoadBits bits = GetRoadBits(tile, rtt);
 
 					/* no roadbit at this side of tile, return 0 */
 					if (side != INVALID_DIAGDIR && !DiagDirToRoadBits(side).Any(bits)) break;
 
-					uint multiplier = drd_to_multiplier[(rtt == RoadTramType::Tram) ? DRD_NONE : GetDisallowedRoadDirections(tile)];
+					uint multiplier = drd_to_multiplier[(rtt == RoadTramType::Tram) ? 0 : GetDisallowedRoadDirections(tile).base()];
 					if (!HasRoadWorks(tile)) trackdirbits = (TrackdirBits)(_road_trackbits[bits.base()] * multiplier);
 					break;
 				}
