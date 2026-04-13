@@ -165,7 +165,7 @@ void AfterLoadCompanyStats()
 					if (rt == INVALID_ROADTYPE) continue;
 					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rtt));
 					/* A level crossings and depots have two road bits. */
-					if (c != nullptr) c->infrastructure.road[rt] += IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rtt)) : 2;
+					if (c != nullptr) c->infrastructure.road[rt] += IsNormalRoad(tile) ? GetRoadBits(tile, rtt).Count() : 2;
 				}
 				break;
 			}

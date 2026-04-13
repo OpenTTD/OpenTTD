@@ -138,9 +138,9 @@ inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
 {
 	assert(IsNormalRoad(t)); // XXX incomplete
 	if (rtt == RoadTramType::Tram) {
-		SB(t.m3(), 0, 4, r);
+		SB(t.m3(), 0, 4, r.base());
 	} else {
-		SB(t.m5(), 0, 4, r);
+		SB(t.m5(), 0, 4, r.base());
 	}
 }
 
@@ -648,8 +648,8 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
 	SetTileType(t, TileType::Road);
 	SetTileOwner(t, road);
 	t.m2() = town.base();
-	t.m3() = (tram_rt != INVALID_ROADTYPE ? bits : 0);
-	t.m5() = (road_rt != INVALID_ROADTYPE ? bits : 0) | to_underlying(RoadTileType::Normal) << 6;
+	t.m3() = (tram_rt != INVALID_ROADTYPE ? bits.base() : 0);
+	t.m5() = (road_rt != INVALID_ROADTYPE ? bits.base() : 0) | to_underlying(RoadTileType::Normal) << 6;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;

@@ -950,8 +950,8 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 			 * trackbits or when it is a valid turning tile (i.e. one roadbit) */
 			RoadBits rb = GetAnyRoadBits(tile, RoadTramType::Tram);
 			RoadBits straight = AxisToRoadBits(DiagDirToAxis(enterdir));
-			reverse = ((rb & straight) == straight) ||
-			          (rb == DiagDirToRoadBits(enterdir));
+			reverse = rb.All(straight) ||
+			          rb == DiagDirToRoadBits(enterdir);
 		}
 		if (reverse) {
 			v->reverse_ctr = 0;
@@ -1114,12 +1114,18 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 
 	/* Do some sanity checking. */
 	static const RoadBits required_roadbits[] = {
-		ROAD_X,            ROAD_Y,            ROAD_NW | ROAD_NE, ROAD_SW | ROAD_SE,
-		ROAD_NW | ROAD_SW, ROAD_NE | ROAD_SE, ROAD_X,            ROAD_Y
+		ROAD_X,
+		ROAD_Y,
+		{RoadBit::NW, RoadBit::NE},
+		{RoadBit::SW, RoadBit::SE},
+		{RoadBit::NW, RoadBit::SW},
+		{RoadBit::NE, RoadBit::SE},
+		ROAD_X,
+		ROAD_Y,
 	};
 	RoadBits required = required_roadbits[dir & 0x07];
 
-	if ((required & GetAnyRoadBits(tile, GetRoadTramType(v->roadtype), true)) == ROAD_NONE) {
+	if (!required.Any(GetAnyRoadBits(tile, GetRoadTramType(v->roadtype), true))) {
 		dir = INVALID_TRACKDIR;
 	}
 
@@ -1232,18 +1238,18 @@ again:
 			if (RoadTypeIsTram(v->roadtype)) {
 				/* Determine the road bits the tram needs to be able to turn around
 				 * using the 'big' corner loop. */
-				RoadBits needed;
+				RoadBit needed;
 				switch (dir) {
 					default: NOT_REACHED();
-					case TRACKDIR_RVREV_NE: needed = ROAD_SW; break;
-					case TRACKDIR_RVREV_SE: needed = ROAD_NW; break;
-					case TRACKDIR_RVREV_SW: needed = ROAD_NE; break;
-					case TRACKDIR_RVREV_NW: needed = ROAD_SE; break;
+					case TRACKDIR_RVREV_NE: needed = RoadBit::SW; break;
+					case TRACKDIR_RVREV_SE: needed = RoadBit::NW; break;
+					case TRACKDIR_RVREV_SW: needed = RoadBit::NE; break;
+					case TRACKDIR_RVREV_NW: needed = RoadBit::SE; break;
 				}
 				if ((v->Previous() != nullptr && v->Previous()->tile == tile) ||
 						(v->IsFrontEngine() && IsNormalRoadTile(tile) && !HasRoadWorks(tile) &&
 							HasTileAnyRoadType(tile, v->compatible_roadtypes) &&
-							(needed & GetRoadBits(tile, RoadTramType::Tram)) != ROAD_NONE)) {
+							GetRoadBits(tile, RoadTramType::Tram).Test(needed))) {
 					/*
 					 * Taking the 'big' corner for trams only happens when:
 					 * - The previous vehicle in this (articulated) tram chain is
@@ -1254,7 +1260,7 @@ again:
 					 *   going to cause the tram to split up.
 					 * - Or the front of the tram can drive over the next tile.
 					 */
-				} else if (!v->IsFrontEngine() || !CanBuildTramTrackOnTile(v->owner, tile, v->roadtype, needed) || ((~needed & GetAnyRoadBits(v->tile, RoadTramType::Tram, false)) == ROAD_NONE)) {
+				} else if (!v->IsFrontEngine() || !CanBuildTramTrackOnTile(v->owner, tile, v->roadtype, needed) || GetAnyRoadBits(v->tile, RoadTramType::Tram, false).Reset(needed).Any()) {
 					/*
 					 * Taking the 'small' corner for trams only happens when:
 					 * - We are not the from vehicle of an articulated tram.
@@ -1365,7 +1371,7 @@ again:
 		Trackdir dir;
 		uint turn_around_start_frame = RVC_TURN_AROUND_START_FRAME;
 
-		if (RoadTypeIsTram(v->roadtype) && !IsRoadDepotTile(v->tile) && HasExactlyOneBit(GetAnyRoadBits(v->tile, RoadTramType::Tram, true))) {
+		if (RoadTypeIsTram(v->roadtype) && !IsRoadDepotTile(v->tile) && GetAnyRoadBits(v->tile, RoadTramType::Tram, true).Count() == 1) {
 			/*
 			 * The tram is turning around with one tram 'roadbit'. This means that
 			 * it is using the 'big' corner 'drive data'. However, to support the

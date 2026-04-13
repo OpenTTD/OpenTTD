@@ -518,23 +518,23 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 
 				RoadBits road = GetRoadBits(tile, RoadTramType::Road);
 				RoadBits tram = GetRoadBits(tile, RoadTramType::Tram);
-				if ((track == TRACK_X && ((road | tram) & ROAD_X) == 0) ||
-						(track == TRACK_Y && ((road | tram) & ROAD_Y) == 0)) {
+				if ((track == TRACK_X && !(road | tram).Any(ROAD_X)) ||
+						(track == TRACK_Y && !(road | tram).Any(ROAD_Y))) {
 					Owner road_owner = GetRoadOwner(tile, RoadTramType::Road);
 					Owner tram_owner = GetRoadOwner(tile, RoadTramType::Tram);
 					/* Disallow breaking end-of-line of someone else
 					 * so trams can still reverse on this tile. */
-					if (Company::IsValidID(tram_owner) && HasExactlyOneBit(tram)) {
+					if (Company::IsValidID(tram_owner) && tram.Count() == 1) {
 						ret = CheckOwnership(tram_owner);
 						if (ret.Failed()) return ret;
 					}
 
-					uint num_new_road_pieces = (road != ROAD_NONE) ? 2 - CountBits(road) : 0;
+					uint num_new_road_pieces = road.Any() ? 2 - road.Count() : 0;
 					if (num_new_road_pieces > 0) {
 						cost.AddCost(num_new_road_pieces * RoadBuildCost(roadtype_road));
 					}
 
-					uint num_new_tram_pieces = (tram != ROAD_NONE) ? 2 - CountBits(tram) : 0;
+					uint num_new_tram_pieces = tram.Any() ? 2 - tram.Count() : 0;
 					if (num_new_tram_pieces > 0) {
 						cost.AddCost(num_new_tram_pieces * RoadBuildCost(roadtype_tram));
 					}

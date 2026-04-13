@@ -924,7 +924,7 @@ void OnTick_Town()
  */
 static RoadBits GetTownRoadBits(TileIndex tile)
 {
-	if (IsRoadDepotTile(tile) || IsBayRoadStopTile(tile)) return ROAD_NONE;
+	if (IsRoadDepotTile(tile) || IsBayRoadStopTile(tile)) return {};
 
 	return GetAnyRoadBits(tile, RoadTramType::Road, true);
 }
@@ -1033,7 +1033,7 @@ static bool IsNeighbourRoadTile(TileIndex tile, const DiagDirection dir, uint di
 
 		/* Test for roadbit parallel to dir and facing towards the middle axis */
 		if (IsValidTile(tile + cur) &&
-				GetTownRoadBits(TileAdd(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
+				GetTownRoadBits(TileAdd(tile, cur)).Any(DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir)))) return true;
 	}
 	return false;
 }
@@ -1054,7 +1054,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 	if (IsBridgeAbove(tile) && GetBridgeAxis(tile) == DiagDirToAxis(dir)) return false;
 
 	/* Check if there already is a road at this point? */
-	if (GetTownRoadBits(tile) == ROAD_NONE) {
+	if (GetTownRoadBits(tile).None()) {
 		/* No, try if we are able to build a road piece there.
 		 * If that fails clear the land, and if that fails exit.
 		 * This is to make sure that we can build a road here later. */
@@ -1127,7 +1127,7 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 {
 	/* align the grid to the downtown */
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile); // Vector from downtown to the tile
-	RoadBits rcmd = ROAD_NONE;
+	RoadBits rcmd{};
 
 	switch (t->layout) {
 		default: NOT_REACHED();
@@ -1150,24 +1150,24 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 
 	switch (GetTileSlope(tile)) {
 		default:       rb_template = ROAD_ALL; break;
-		case SLOPE_W:  rb_template = ROAD_NW | ROAD_SW; break;
-		case SLOPE_SW: rb_template = ROAD_Y  | ROAD_SW; break;
-		case SLOPE_S:  rb_template = ROAD_SW | ROAD_SE; break;
-		case SLOPE_SE: rb_template = ROAD_X  | ROAD_SE; break;
-		case SLOPE_E:  rb_template = ROAD_SE | ROAD_NE; break;
-		case SLOPE_NE: rb_template = ROAD_Y  | ROAD_NE; break;
-		case SLOPE_N:  rb_template = ROAD_NE | ROAD_NW; break;
-		case SLOPE_NW: rb_template = ROAD_X  | ROAD_NW; break;
+		case SLOPE_W:  rb_template = {RoadBit::NW, RoadBit::SW}; break;
+		case SLOPE_SW: rb_template = ROAD_Y | RoadBit::SW; break;
+		case SLOPE_S:  rb_template = {RoadBit::SW, RoadBit::SE}; break;
+		case SLOPE_SE: rb_template = ROAD_X | RoadBit::SE; break;
+		case SLOPE_E:  rb_template = {RoadBit::SE, RoadBit::NE}; break;
+		case SLOPE_NE: rb_template = ROAD_Y | RoadBit::NE; break;
+		case SLOPE_N:  rb_template = {RoadBit::NE, RoadBit::NW}; break;
+		case SLOPE_NW: rb_template = ROAD_X | RoadBit::NW; break;
 		case SLOPE_STEEP_W:
 		case SLOPE_STEEP_S:
 		case SLOPE_STEEP_E:
 		case SLOPE_STEEP_N:
-			rb_template = ROAD_NONE;
+			rb_template = {};
 			break;
 	}
 
 	/* Stop if the template is compatible to the growth dir */
-	if (DiagDirToRoadBits(ReverseDiagDir(dir)) & rb_template) return rb_template;
+	if (DiagDirToRoadBits(ReverseDiagDir(dir)).Any(rb_template)) return rb_template;
 	/* If not generate a straight road in the direction of the growth */
 	return DiagDirToRoadBits(dir) | DiagDirToRoadBits(ReverseDiagDir(dir));
 }
@@ -1294,7 +1294,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	if (slope != SLOPE_FLAT && slope & InclinedSlope(bridge_dir)) return false;
 
 	/* Assure that the bridge is connectable to the start side */
-	if (!(GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(bridge_dir))) & DiagDirToRoadBits(bridge_dir))) return false;
+	if (!GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(bridge_dir))).Any(DiagDirToRoadBits(bridge_dir))) return false;
 
 	/* We are in the right direction */
 	uint bridge_length = 0;       // This value stores the length of the possible bridge
@@ -1381,7 +1381,7 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 	if (slope != InclinedSlope(tunnel_dir)) return false;
 
 	/* Assure that the tunnel is connectable to the start side */
-	if (!(GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(tunnel_dir))) & DiagDirToRoadBits(tunnel_dir))) return false;
+	if (!GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(tunnel_dir))).Any(DiagDirToRoadBits(tunnel_dir))) return false;
 
 	const TileIndexDiff delta = TileOffsByDiagDir(tunnel_dir);
 	int max_tunnel_length = 0;
@@ -1509,12 +1509,12 @@ enum class TownGrowthResult {
  */
 static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection target_dir, Town *t1, TownExpandModes modes)
 {
-	RoadBits rcmd = ROAD_NONE;  // RoadBits for the road construction command
+	RoadBits rcmd{}; // RoadBits for the road construction command
 	TileIndex tile = *tile_ptr; // The main tile on which we base our growth
 
 	assert(tile < Map::Size());
 
-	if (cur_rb == ROAD_NONE) {
+	if (cur_rb.None()) {
 		/* Tile has no road.
 		 * We will return TownGrowthResult::SearchStopped to say that this is the last iteration. */
 
@@ -1531,7 +1531,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 			case TL_3X3_GRID:
 			case TL_2X2_GRID:
 				rcmd = GetTownRoadGridElement(t1, tile, target_dir);
-				if (rcmd == ROAD_NONE) return TownGrowthResult::SearchStopped;
+				if (rcmd.None()) return TownGrowthResult::SearchStopped;
 				break;
 
 			case TL_BETTER_ROADS:
@@ -1564,7 +1564,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 				break;
 		}
 
-	} else if (target_dir < DIAGDIR_END && !(cur_rb & DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
+	} else if (target_dir < DIAGDIR_END && !cur_rb.Any(DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
 		if (!TownCanGrowRoad(tile)) return TownGrowthResult::Continue;
 
 		if (!TownAllowedToBuildRoads(modes)) return TownGrowthResult::SearchStopped;
@@ -1603,7 +1603,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 		RoadBits target_rb = DiagDirToRoadBits(target_dir);
 		TileIndex house_tile; // position of a possible house
 
-		if (cur_rb & target_rb) {
+		if (cur_rb.Any(target_rb)) {
 			/* If it's a road turn possibly build a house in a corner.
 			 * Use intersection with straight road as an indicator
 			 * that we randomised corner house position.
@@ -1615,17 +1615,17 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 			/* Check whether it is a turn and if so determine
 			 * position of the corner tile */
-			switch (cur_rb) {
-				case ROAD_N:
+			switch (cur_rb.base()) {
+				case ROAD_N.base():
 					house_tile = TileAddByDir(tile, DIR_S);
 					break;
-				case ROAD_S:
+				case ROAD_S.base():
 					house_tile = TileAddByDir(tile, DIR_N);
 					break;
-				case ROAD_E:
+				case ROAD_E.base():
 					house_tile = TileAddByDir(tile, DIR_W);
 					break;
-				case ROAD_W:
+				case ROAD_W.base():
 					house_tile = TileAddByDir(tile, DIR_E);
 					break;
 				default:
@@ -1655,7 +1655,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 				case TL_2X2_GRID:
 					rcmd = GetTownRoadGridElement(t1, tile, target_dir);
-					allow_house = (rcmd & target_rb) == ROAD_NONE;
+					allow_house = !rcmd.Any(target_rb);
 					break;
 
 				case TL_BETTER_ROADS: // Use original afterwards!
@@ -1698,7 +1698,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 	/* Make the roads look nicer */
 	rcmd = CleanUpRoadBits(tile, rcmd);
-	if (rcmd == ROAD_NONE) return TownGrowthResult::SearchStopped;
+	if (rcmd.None()) return TownGrowthResult::SearchStopped;
 
 	/* Only use the target direction for bridges and tunnels to ensure they're connected.
 	 * The target_dir is as computed previously according to town layout, so
@@ -1735,7 +1735,7 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir, TownExpandModes mod
 		/* Check whether a road connection exists or can be build. */
 		switch (GetTileType(target_tile)) {
 			case TileType::Road:
-				return target_rb != ROAD_NONE;
+				return target_rb.Any();
 
 			case TileType::Station:
 				return IsDriveThroughStopTile(target_tile);
@@ -1756,7 +1756,7 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir, TownExpandModes mod
 		/* Check whether a road connection already exists,
 		 * and it leads somewhere else. */
 		RoadBits back_rb = DiagDirToRoadBits(ReverseDiagDir(dir));
-		return (target_rb & back_rb) != 0 && (target_rb & ~back_rb) != 0;
+		return target_rb.Any(back_rb) && target_rb.Reset(back_rb).Any();
 	}
 }
 
@@ -1811,8 +1811,8 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile, TownExpandModes modes)
 
 		/* Exclude the source position from the bitmask
 		 * and return if no more road blocks available */
-		if (IsValidDiagDirection(target_dir)) cur_rb &= ~DiagDirToRoadBits(ReverseDiagDir(target_dir));
-		if (cur_rb == ROAD_NONE) return false;
+		if (IsValidDiagDirection(target_dir)) cur_rb.Reset(DiagDirToRoadBits(ReverseDiagDir(target_dir)));
+		if (cur_rb.None()) return false;
 
 		if (IsTileType(tile, TileType::TunnelBridge)) {
 			/* Only build in the direction away from the tunnel or bridge. */
@@ -1821,13 +1821,13 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile, TownExpandModes modes)
 			/* Select a random bit from the blockmask, walk a step
 			 * and continue the search from there. */
 			do {
-				if (cur_rb == ROAD_NONE) return false;
+				if (cur_rb.None()) return false;
 				RoadBits target_bits;
 				do {
 					target_dir = RandomDiagDir();
 					target_bits = DiagDirToRoadBits(target_dir);
-				} while (!(cur_rb & target_bits));
-				cur_rb &= ~target_bits;
+				} while (!cur_rb.Any(target_bits));
+				cur_rb.Reset(target_bits);
 			} while (!CanFollowRoad(tile, target_dir, modes));
 		}
 		tile = TileAddByDiagDir(tile, target_dir);
@@ -1863,7 +1863,7 @@ static RoadBits GenRandomRoadBits()
 	uint a = GB(r, 0, 2);
 	uint b = GB(r, 8, 2);
 	if (a == b) b ^= 2;
-	return (RoadBits)((ROAD_NW << a) + (ROAD_NW << b));
+	return static_cast<RoadBits>((RoadBits{RoadBit::NW}.base() << a) + (RoadBits{RoadBit::NW}.base() << b));
 }
 
 /**
@@ -1897,7 +1897,7 @@ static bool GrowTown(Town *t, TownExpandModes modes)
 
 	/* Find a road that we can base the construction on. */
 	for (const auto &ptr : _town_coord_mod) {
-		if (GetTownRoadBits(tile) != ROAD_NONE) {
+		if (GetTownRoadBits(tile).Any()) {
 			bool success = GrowTownAtRoad(t, tile, modes);
 			cur_company.Restore();
 			return success;

@@ -135,8 +135,8 @@ Axis GetAxisForNewRoadWaypoint(TileIndex tile)
 
 	RoadBits bits = GetAllRoadBits(tile);
 
-	if ((bits & ROAD_Y) == 0) return AXIS_X;
-	if ((bits & ROAD_X) == 0) return AXIS_Y;
+	if (!bits.Any(ROAD_Y)) return AXIS_X;
+	if (!bits.Any(ROAD_X)) return AXIS_Y;
 
 	return INVALID_AXIS;
 }
@@ -447,8 +447,8 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			/* Update company infrastructure counts. If the current tile is a normal road tile, remove the old
 			 * bits first. */
 			if (IsNormalRoadTile(cur_tile)) {
-				UpdateCompanyRoadInfrastructure(road_rt, road_owner, -(int)CountBits(GetRoadBits(cur_tile, RoadTramType::Road)));
-				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -(int)CountBits(GetRoadBits(cur_tile, RoadTramType::Tram)));
+				UpdateCompanyRoadInfrastructure(road_rt, road_owner, -static_cast<int>(GetRoadBits(cur_tile, RoadTramType::Road).Count()));
+				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -static_cast<int>(GetRoadBits(cur_tile, RoadTramType::Tram).Count()));
 			}
 
 			UpdateCompanyRoadInfrastructure(road_rt, road_owner, ROAD_STOP_TRACKBIT_FACTOR);

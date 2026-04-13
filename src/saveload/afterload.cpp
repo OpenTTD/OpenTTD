@@ -457,8 +457,8 @@ static void FixOwnerOfRailTrack(Tile t)
 		/* MakeRoadNormal */
 		SetTileType(t, TileType::Road);
 		SetTileOwner(t, road);
-		t.m3() = (hasroad ? bits : 0);
-		t.m5() = (hastram ? bits : 0) | to_underlying(RoadTileType::Normal) << 6;
+		t.m3() = (hasroad ? bits.base() : 0);
+		t.m5() = (hastram ? bits.base() : 0) | to_underlying(RoadTileType::Normal) << 6;
 		SB(t.m6(), 2, 4, 0);
 		SetRoadOwner(t, RoadTramType::Tram, tram);
 		return;
@@ -1245,7 +1245,7 @@ bool AfterLoadGame()
 							SetTileType(t, TileType::Road);
 							t.m2() = town.base();
 							t.m3() = 0;
-							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X) | to_underlying(RoadTileType::Normal) << 6;
+							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X).base() | to_underlying(RoadTileType::Normal) << 6;
 							SB(t.m6(), 2, 4, 0);
 							t.m7() = 1 << 6;
 							SetRoadOwner(t, RoadTramType::Tram, OWNER_NONE);

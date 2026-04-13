@@ -117,12 +117,12 @@
 	RoadBits r1 = ::GetAnyRoadBits(t1, rtt); // TODO
 	RoadBits r2 = ::GetAnyRoadBits(t2, rtt); // TODO
 
-	uint dir_1 = (::TileX(t1) == ::TileX(t2)) ? (::TileY(t1) < ::TileY(t2) ? 2 : 0) : (::TileX(t1) < ::TileX(t2) ? 1 : 3);
-	uint dir_2 = 2 ^ dir_1;
+	RoadBit dir_1 = (::TileX(t1) == ::TileX(t2)) ? (::TileY(t1) < ::TileY(t2) ? RoadBit::SE : RoadBit::NW) : (::TileX(t1) < ::TileX(t2) ? RoadBit::SW : RoadBit::NE);
+	RoadBit dir_2 = static_cast<RoadBit>(2 ^ to_underlying(dir_1));
 
 	DisallowedRoadDirections drd2 = IsNormalRoadTile(t2) ? GetDisallowedRoadDirections(t2) : DRD_NONE;
 
-	return HasBit(r1, dir_1) && HasBit(r2, dir_2) && drd2 != DRD_BOTH && drd2 != (dir_1 > dir_2 ? DRD_SOUTHBOUND : DRD_NORTHBOUND);
+	return r1.Test(dir_1) && r2.Test(dir_2) && drd2 != DRD_BOTH && drd2 != (dir_1 > dir_2 ? DRD_SOUTHBOUND : DRD_NORTHBOUND);
 }
 
 /* static */ bool ScriptRoad::ConvertRoadType(TileIndex start_tile, TileIndex end_tile, RoadType road_type)
@@ -241,10 +241,10 @@ static RoadPartOrientation RotateNeighbour(RoadPartOrientation neighbour)
 static RoadBits NeighbourToRoadBits(RoadPartOrientation neighbour)
 {
 	switch (neighbour) {
-		case RoadPartOrientation::NW: return ROAD_NW;
-		case RoadPartOrientation::NE: return ROAD_NE;
-		case RoadPartOrientation::SE: return ROAD_SE;
-		case RoadPartOrientation::SW: return ROAD_SW;
+		case RoadPartOrientation::NW: return RoadBit::NW;
+		case RoadPartOrientation::NE: return RoadBit::NE;
+		case RoadPartOrientation::SE: return RoadBit::SE;
+		case RoadPartOrientation::SW: return RoadBit::SW;
 		default: NOT_REACHED();
 	}
 }
@@ -314,9 +314,9 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 	}
 
 	/* Create roadbits out of the data for easier handling. */
-	RoadBits start_roadbits    = NeighbourToRoadBits(start);
-	RoadBits new_roadbits      = start_roadbits | NeighbourToRoadBits(end);
-	RoadBits existing_roadbits = ROAD_NONE;
+	RoadBits start_roadbits = NeighbourToRoadBits(start);
+	RoadBits new_roadbits = start_roadbits | NeighbourToRoadBits(end);
+	RoadBits existing_roadbits{};
 	for (RoadPartOrientation neighbour : existing) {
 		for (int j = 0; j < base_rotate; j++) {
 			neighbour = RotateNeighbour(neighbour);
@@ -327,15 +327,15 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 	switch (slope) {
 		case SLOPE_W:
 			/* A slope similar to a SLOPE_W. */
-			switch (new_roadbits) {
-				case ROAD_N:
-				case ROAD_E:
-				case ROAD_S:
+			switch (new_roadbits.base()) {
+				case ROAD_N.base():
+				case ROAD_E.base():
+				case ROAD_S.base():
 					/* Cannot build anything with a turn from the low side. */
 					return 0;
 
-				case ROAD_X:
-				case ROAD_Y:
+				case ROAD_X.base():
+				case ROAD_Y.base():
 					/* A 'sloped' tile is going to be build. */
 					if ((existing_roadbits | new_roadbits) != new_roadbits) {
 						/* There is already a foundation on the tile, or at least
@@ -344,25 +344,25 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 					}
 					/* If the start is in the low part, it is automatically
 					 * building the second part too. */
-					return ((start_roadbits & ROAD_E) && !(existing_roadbits & ROAD_W)) ? 2 : 1;
+					return (start_roadbits.Any(ROAD_E) && !existing_roadbits.Any(ROAD_W)) ? 2 : 1;
 
 				default:
 					/* Roadbits causing a foundation are going to be build.
 					 * When the existing roadbits are slopes (the lower bits
 					 * are used), this cannot be done. */
 					if ((existing_roadbits | new_roadbits) == new_roadbits) return 1;
-					return (existing_roadbits & ROAD_E) ? 0 : 1;
+					return existing_roadbits.Any(ROAD_E) ? 0 : 1;
 			}
 
 		case SLOPE_SW:
 			/* A slope similar to a SLOPE_SW. */
-			switch (new_roadbits) {
-				case ROAD_N:
-				case ROAD_E:
+			switch (new_roadbits.base()) {
+				case ROAD_N.base():
+				case ROAD_E.base():
 					/* Cannot build anything with a turn from the low side. */
 					return 0;
 
-				case ROAD_X:
+				case ROAD_X.base():
 					/* A 'sloped' tile is going to be build. */
 					if ((existing_roadbits | new_roadbits) != new_roadbits) {
 						/* There is already a foundation on the tile, or at least
@@ -371,13 +371,13 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 					}
 					/* If the start is in the low part, it is automatically
 					 * building the second part too. */
-					return ((start_roadbits & ROAD_NE) && !(existing_roadbits & ROAD_SW)) ? 2 : 1;
+					return (start_roadbits.Test(RoadBit::NE) && !existing_roadbits.Test(RoadBit::SW)) ? 2 : 1;
 
 				default:
 					/* Roadbits causing a foundation are going to be build.
 					 * When the existing roadbits are slopes (the lower bits
 					 * are used), this cannot be done. */
-					return (existing_roadbits & ROAD_NE) ? 0 : 1;
+					return existing_roadbits.Test(RoadBit::NE) ? 0 : 1;
 			}
 
 		default:
@@ -432,13 +432,13 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 	if (::DistanceManhattan(tile, start) != 1 || ::DistanceManhattan(tile, end) != 1) return -1;
 
 	const TileIndex neighbours[] = {
-		ScriptMap::GetTileIndex(0, -1), // ROAD_NW
-		ScriptMap::GetTileIndex(1, 0),  // ROAD_SW
-		ScriptMap::GetTileIndex(0, 1),  // ROAD_SE
-		ScriptMap::GetTileIndex(-1, 0), // ROAD_NE
+		ScriptMap::GetTileIndex(0, -1), // RoadBit::NW
+		ScriptMap::GetTileIndex(1, 0), // RoadBit::SW
+		ScriptMap::GetTileIndex(0, 1), // RoadBit::SE
+		ScriptMap::GetTileIndex(-1, 0), // RoadBit::NE
 	};
 
-	::RoadBits rb = ::ROAD_NONE;
+	::RoadBits rb{};
 	if (::IsNormalRoadTile(tile)) {
 		rb = ::GetAllRoadBits(tile);
 	} else {
@@ -446,8 +446,8 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 	}
 
 	Array<TileIndex> existing;
-	for (uint i = 0; i < lengthof(neighbours); i++) {
-		if (HasBit(rb, i)) existing.emplace_back(neighbours[i]);
+	for (RoadBit roadbit : rb) {
+		existing.emplace_back(neighbours[to_underlying(roadbit)]);
 	}
 
 	return ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::GetSlope(tile), std::move(existing), start - tile, end - tile);

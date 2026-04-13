@@ -1127,10 +1127,10 @@ static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, con
 	} else {
 		bool build_over_road = is_drive_through && IsNormalRoadTile(cur_tile);
 		/* Road bits in the wrong direction. */
-		RoadBits rb = IsNormalRoadTile(cur_tile) ? GetAllRoadBits(cur_tile) : ROAD_NONE;
-		if (build_over_road && (rb & (axis == AXIS_X ? ROAD_Y : ROAD_X)) != 0) {
+		RoadBits rb = IsNormalRoadTile(cur_tile) ? GetAllRoadBits(cur_tile) : RoadBits{};
+		if (build_over_road && rb.Any(axis == AXIS_X ? ROAD_Y : ROAD_X)) {
 			/* Someone was pedantic and *NEEDED* three fracking different error messages. */
-			switch (CountBits(rb)) {
+			switch (rb.Count()) {
 				case 1:
 					return CommandCost(STR_ERROR_DRIVE_THROUGH_DIRECTION);
 
@@ -1154,7 +1154,7 @@ static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, con
 					ret = CheckOwnership(road_owner);
 					if (ret.Failed()) return ret;
 				}
-				uint num_pieces = CountBits(GetRoadBits(cur_tile, RoadTramType::Road));
+				uint num_pieces = GetRoadBits(cur_tile, RoadTramType::Road).Count();
 
 				if (rt != INVALID_ROADTYPE && RoadTypeIsRoad(rt) && !HasPowerOnRoad(rt, road_rt)) return CommandCost(STR_ERROR_NO_SUITABLE_ROAD);
 
@@ -1176,11 +1176,11 @@ static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, con
 						(!_settings_game.construction.road_stop_on_competitor_road ||
 						/* Disallow breaking end-of-line of someone else
 						 * so trams can still reverse on this tile. */
-							HasExactlyOneBit(GetRoadBits(cur_tile, RoadTramType::Tram)))) {
+							GetRoadBits(cur_tile, RoadTramType::Tram).Count() == 1)) {
 					ret = CheckOwnership(tram_owner);
 					if (ret.Failed()) return ret;
 				}
-				uint num_pieces = CountBits(GetRoadBits(cur_tile, RoadTramType::Tram));
+				uint num_pieces = GetRoadBits(cur_tile, RoadTramType::Tram).Count();
 
 				if (rt != INVALID_ROADTYPE && RoadTypeIsTram(rt) && !HasPowerOnRoad(rt, tram_rt)) return CommandCost(STR_ERROR_NO_SUITABLE_ROAD);
 
@@ -2206,8 +2206,8 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 				/* Update company infrastructure counts. If the current tile is a normal road tile, remove the old
 				 * bits first. */
 				if (IsNormalRoadTile(cur_tile)) {
-					UpdateCompanyRoadInfrastructure(road_rt, road_owner, -(int)CountBits(GetRoadBits(cur_tile, RoadTramType::Road)));
-					UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -(int)CountBits(GetRoadBits(cur_tile, RoadTramType::Tram)));
+					UpdateCompanyRoadInfrastructure(road_rt, road_owner, -static_cast<int>(GetRoadBits(cur_tile, RoadTramType::Road).Count()));
+					UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -static_cast<int>(GetRoadBits(cur_tile, RoadTramType::Tram).Count()));
 				}
 
 				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
@@ -2450,7 +2450,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlags flags, const TileArea &r
 		if (!IsTileType(cur_tile, TileType::Station) || !IsAnyRoadStop(cur_tile) || IsRoadWaypoint(cur_tile) != road_waypoint) continue;
 
 		/* Save information on to-be-restored roads before the stop is removed. */
-		RoadBits road_bits = ROAD_NONE;
+		RoadBits road_bits{};
 		EnumClassIndexContainer<std::array<RoadType, to_underlying(RoadTramType::End)>, RoadTramType> road_type{INVALID_ROADTYPE, INVALID_ROADTYPE};
 		EnumClassIndexContainer<std::array<Owner, to_underlying(RoadTramType::End)>, RoadTramType> road_owner{OWNER_NONE, OWNER_NONE};
 		if (IsDriveThroughStopTile(cur_tile)) {
@@ -2483,7 +2483,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlags flags, const TileArea &r
 					road_owner[RoadTramType::Road], road_owner[RoadTramType::Tram]);
 
 			/* Update company infrastructure counts. */
-			int count = CountBits(road_bits);
+			int count = road_bits.Count();
 			UpdateCompanyRoadInfrastructure(road_type[RoadTramType::Road], road_owner[RoadTramType::Road], count);
 			UpdateCompanyRoadInfrastructure(road_type[RoadTramType::Tram], road_owner[RoadTramType::Tram], count);
 		}
@@ -3409,8 +3409,8 @@ static void DrawTile_Station(TileInfo *ti)
 		RoadBits bits = AxisToRoadBits(GetDriveThroughStopAxis(ti->tile));
 		RoadType road_rt = GetRoadTypeRoad(ti->tile);
 		RoadType tram_rt = GetRoadTypeTram(ti->tile);
-		RoadBits road = (road_rt != INVALID_ROADTYPE) ? bits : ROAD_NONE;
-		RoadBits tram = (tram_rt != INVALID_ROADTYPE) ? bits : ROAD_NONE;
+		RoadBits road = (road_rt != INVALID_ROADTYPE) ? bits : RoadBits{};
+		RoadBits tram = (tram_rt != INVALID_ROADTYPE) ? bits : RoadBits{};
 		const RoadTypeInfo *road_rti = (road_rt != INVALID_ROADTYPE) ? GetRoadTypeInfo(road_rt) : nullptr;
 		const RoadTypeInfo *tram_rti = (tram_rt != INVALID_ROADTYPE) ? GetRoadTypeInfo(tram_rt) : nullptr;
 
