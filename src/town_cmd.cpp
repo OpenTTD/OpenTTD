@@ -926,7 +926,7 @@ static RoadBits GetTownRoadBits(TileIndex tile)
 {
 	if (IsRoadDepotTile(tile) || IsBayRoadStopTile(tile)) return ROAD_NONE;
 
-	return GetAnyRoadBits(tile, RTT_ROAD, true);
+	return GetAnyRoadBits(tile, RoadTramType::Road, true);
 }
 
 /**
@@ -940,7 +940,7 @@ RoadType GetTownRoadType()
 	const RoadTypeInfo *best = nullptr;
 	const uint16_t assume_max_speed = 50;
 
-	for (RoadType rt : GetMaskForRoadTramType(RTT_ROAD)) {
+	for (RoadType rt : GetMaskForRoadTramType(RoadTramType::Road)) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		/* Can town build this road. */
@@ -967,7 +967,7 @@ RoadType GetTownRoadType()
 static TimerGameCalendar::Date GetTownRoadTypeFirstIntroductionDate()
 {
 	const RoadTypeInfo *best = nullptr;
-	for (RoadType rt : GetMaskForRoadTramType(RTT_ROAD)) {
+	for (RoadType rt : GetMaskForRoadTramType(RoadTramType::Road)) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		if (!rti->flags.Test(RoadTypeFlag::TownBuild)) continue; // Town can't build this road type.
@@ -1832,14 +1832,14 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile, TownExpandModes modes)
 		}
 		tile = TileAddByDiagDir(tile, target_dir);
 
-		if (IsTileType(tile, TileType::Road) && !IsRoadDepot(tile) && HasTileRoadType(tile, RTT_ROAD)) {
+		if (IsTileType(tile, TileType::Road) && !IsRoadDepot(tile) && HasTileRoadType(tile, RoadTramType::Road)) {
 			/* Don't allow building over roads of other cities */
-			if (IsRoadOwner(tile, RTT_ROAD, OWNER_TOWN) && Town::GetByTile(tile) != t) {
+			if (IsRoadOwner(tile, RoadTramType::Road, OWNER_TOWN) && Town::GetByTile(tile) != t) {
 				return false;
-			} else if (IsRoadOwner(tile, RTT_ROAD, OWNER_NONE) && _game_mode == GM_EDITOR) {
+			} else if (IsRoadOwner(tile, RoadTramType::Road, OWNER_NONE) && _game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				 * owner :) (happy happy happy road now) */
-				SetRoadOwner(tile, RTT_ROAD, OWNER_TOWN);
+				SetRoadOwner(tile, RoadTramType::Road, OWNER_TOWN);
 				SetTownIndex(tile, t->index);
 			}
 		}

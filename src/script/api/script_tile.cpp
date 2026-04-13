@@ -38,9 +38,9 @@
 			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
 			/* Depots and crossings aren't considered buildable */
 			if (::GetRoadTileType(tile) != RoadTileType::Normal) return false;
-			if (!HasExactlyOneBit(::GetRoadBits(tile, RTT_ROAD))) return false;
-			if (::IsRoadOwner(tile, RTT_ROAD, OWNER_TOWN)) return true;
-			if (::IsRoadOwner(tile, RTT_ROAD, ScriptObject::GetCompany())) return true;
+			if (!HasExactlyOneBit(::GetRoadBits(tile, RoadTramType::Road))) return false;
+			if (::IsRoadOwner(tile, RoadTramType::Road, OWNER_TOWN)) return true;
+			if (::IsRoadOwner(tile, RoadTramType::Road, ScriptObject::GetCompany())) return true;
 			return false;
 	}
 }
@@ -219,10 +219,10 @@
 	if (!::IsValidTile(tile)) return false;
 
 	if (transport_type == TRANSPORT_ROAD) {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE ||
-				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 1)) != TRACKDIR_BIT_NONE;
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Road)) != TRACKDIR_BIT_NONE ||
+				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Tram)) != TRACKDIR_BIT_NONE;
 	} else {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE;
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Invalid)) != TRACKDIR_BIT_NONE;
 	}
 }
 

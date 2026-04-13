@@ -1478,7 +1478,8 @@ static const RoadDriveEntry * const _road_tram_drive_data[] = {
 	nullptr,
 };
 
-static const RoadDriveEntry * const * const _road_drive_data[2] = {
+/** Road drive data for all \c RoadTramTypes */
+static const EnumClassIndexContainer<std::array<const RoadDriveEntry * const *, to_underlying(RoadTramType::End)>, RoadTramType> _road_drive_data{
 	_road_road_drive_data,
 	_road_tram_drive_data,
 };

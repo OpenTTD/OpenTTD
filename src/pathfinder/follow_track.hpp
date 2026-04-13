@@ -105,7 +105,7 @@ struct CFollowTrackT {
 		assert(this->IsTram()); // this function shouldn't be called in other cases
 
 		if (IsNormalRoadTile(tile)) {
-			RoadBits rb = GetRoadBits(tile, RTT_TRAM);
+			RoadBits rb = GetRoadBits(tile, RoadTramType::Tram);
 			switch (rb) {
 				case ROAD_NW: return DIAGDIR_NW;
 				case ROAD_SW: return DIAGDIR_SW;
@@ -132,7 +132,7 @@ struct CFollowTrackT {
 
 		assert([&]() {
 			if (this->IsTram() && this->GetSingleTramBit(this->old_tile) != INVALID_DIAGDIR) return true; // Skip the check for single tram bits
-			const uint sub_mode = (IsRoadTT() && this->veh != nullptr) ? (this->IsTram() ? RTT_TRAM : RTT_ROAD) : 0;
+			const RoadTramType sub_mode = (IsRoadTT() && this->veh != nullptr) ? (this->IsTram() ? RoadTramType::Tram : RoadTramType::Road) : RoadTramType::Invalid;
 			const TrackdirBits old_tile_valid_dirs = TrackStatusToTrackdirBits(GetTileTrackStatus(this->old_tile, TT(), sub_mode));
 			return (old_tile_valid_dirs & TrackdirToTrackdirBits(this->old_td)) != TRACKDIR_BIT_NONE;
 		}());
@@ -251,9 +251,9 @@ protected:
 		if (IsRailTT() && IsPlainRailTile(this->new_tile)) {
 			this->new_td_bits = (TrackdirBits)(GetTrackBits(this->new_tile) * 0x101);
 		} else if (IsRoadTT()) {
-			this->new_td_bits = GetTrackdirBitsForRoad(this->new_tile, this->IsTram() ? RTT_TRAM : RTT_ROAD);
+			this->new_td_bits = GetTrackdirBitsForRoad(this->new_tile, this->IsTram() ? RoadTramType::Tram : RoadTramType::Road);
 		} else {
-			this->new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(this->new_tile, TT(), 0));
+			this->new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(this->new_tile, TT(), RoadTramType::Invalid));
 		}
 		return (this->new_td_bits != TRACKDIR_BIT_NONE);
 	}

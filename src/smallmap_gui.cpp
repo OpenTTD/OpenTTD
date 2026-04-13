@@ -588,7 +588,7 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 		case TileType::Industry: return MKCOLOUR_XXXX(PC_DARK_GREY);
 		case TileType::House:    return MKCOLOUR_XXXX(PC_DARK_RED);
 		case TileType::Road:
-			o = GetRoadOwner(tile, HasRoadTypeRoad(tile) ? RTT_ROAD : RTT_TRAM);
+			o = GetRoadOwner(tile, HasRoadTypeRoad(tile) ? RoadTramType::Road : RoadTramType::Tram);
 			break;
 
 		default:
