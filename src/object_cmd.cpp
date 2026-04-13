@@ -348,7 +348,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 			}
 
 			if (flags.Test(DoCommandFlag::Execute)) {
-				hq_score = UpdateCompanyRatingAndValue(c, false);
+				hq_score = UpdateCompanyRatingAndValue(c, false, false);
 				c->location_of_HQ = tile;
 				SetWindowDirty(WC_COMPANY, c->index);
 			}

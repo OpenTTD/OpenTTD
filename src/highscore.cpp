@@ -13,6 +13,7 @@
 #include "company_func.h"
 #include "cheat_func.h"
 #include "fileio_func.h"
+#include "misc/history_func.hpp"
 #include "string_func.h"
 #include "strings_func.h"
 #include "debug.h"
@@ -58,7 +59,7 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 int8_t SaveHighScoreValue(const Company *c)
 {
 	auto &highscores = _highscore_table[SP_CUSTOM];
-	uint16_t score = c->old_economy[0].performance_history;
+	uint16_t score = GetHistory(c->economy, HISTORY_QUARTER, 0).performance_history;
 
 	auto it = std::ranges::find_if(highscores, [&score](auto &highscore) { return highscore.score <= score; });
 
@@ -78,7 +79,7 @@ int8_t SaveHighScoreValue(const Company *c)
 /** Sort all companies given their performance. @copydoc GUIList::Sorter */
 static bool HighScoreSorter(const Company * const &a, const Company * const &b)
 {
-	return b->old_economy[0].performance_history < a->old_economy[0].performance_history;
+	return GetHistory(b->economy, HISTORY_QUARTER, 0).performance_history < GetHistory(a->economy, HISTORY_QUARTER, 0).performance_history;
 }
 
 /**
@@ -103,7 +104,7 @@ int8_t SaveHighScoreValueNetwork()
 		const Company *c = cl[i];
 		auto &highscore = highscores[i];
 		highscore.name = GetString(STR_HIGHSCORE_NAME, c->index, c->index); // get manager/company name string
-		highscore.score = c->old_economy[0].performance_history;
+		highscore.score = GetHistory(c->economy, HISTORY_QUARTER, 0).performance_history;
 		highscore.title = EndGameGetPerformanceTitleFromValue(highscore.score);
 
 		if (c->index == _local_company) local_company_place = static_cast<int8_t>(i);

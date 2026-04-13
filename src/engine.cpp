@@ -11,6 +11,7 @@
 #include "core/container_func.hpp"
 #include "company_func.h"
 #include "command_func.h"
+#include "misc/history_func.hpp"
 #include "news_func.h"
 #include "aircraft.h"
 #include "newgrf.h"
@@ -926,18 +927,20 @@ static CompanyID GetPreviewCompany(Engine *e)
 
 	int32_t best_hist = -1;
 	for (const Company *c : Company::Iterate()) {
-		if (c->block_preview == 0 && !e->preview_asked.Test(c->index) &&
-				c->old_economy[0].performance_history > best_hist) {
+		if (c->block_preview != 0) continue;
+		if (e->preview_asked.Test(c->index)) continue;
 
-			/* Check whether the company uses similar vehicles */
-			for (const Vehicle *v : Vehicle::Iterate()) {
-				if (v->owner != c->index || v->type != e->type) continue;
-				if (!v->GetEngine()->CanCarryCargo() || !HasBit(cargomask, v->cargo_type)) continue;
+		auto history = GetHistory(c->economy, HISTORY_QUARTER, 0);
+		if (history.performance_history <= best_hist) continue;
 
-				best_hist = c->old_economy[0].performance_history;
-				best_company = c->index;
-				break;
-			}
+		/* Check whether the company uses similar vehicles */
+		for (const Vehicle *v : Vehicle::Iterate()) {
+			if (v->owner != c->index || v->type != e->type) continue;
+			if (!v->GetEngine()->CanCarryCargo() || !HasBit(cargomask, v->cargo_type)) continue;
+
+			best_hist = history.performance_history;
+			best_company = c->index;
+			break;
 		}
 	}
 

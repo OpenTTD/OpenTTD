@@ -23,21 +23,6 @@ uint16_t SumHistory(std::span<const uint16_t> history)
 	return ClampTo<uint16_t>(total);
 }
 
-/**
- * Helper to get history records and return the value, instead returning its validity.
- * @param history History data to extract from.
- * @param hr History range to get.
- * @param age Age of data to get.
- * @return Historical value for the period and age.
- */
-template <typename T>
-T GetHistory(const HistoryData<T> &history, const HistoryRange &hr, uint age)
-{
-	T result;
-	GetHistory(history, 0, hr, age, result);
-	return result;
-}
-
 TEST_CASE("History Rotation and Reporting tests")
 {
 	HistoryData<uint16_t> history{};

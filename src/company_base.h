@@ -10,6 +10,7 @@
 #ifndef COMPANY_BASE_H
 #define COMPANY_BASE_H
 
+#include "misc/history_type.hpp"
 #include "road_type.h"
 #include "livery.h"
 #include "autoreplace_type.h"
@@ -116,11 +117,11 @@ struct CompanyProperties {
 	 * @note It is possible that the user is also participating in such a company.
 	 */
 	bool is_ai = false;
+	uint8_t num_valid_stat_ent = 0; ///< Number of valid statistical entries in #economy.
 
 	std::array<Expenses, 3> yearly_expenses{}; ///< Expenses of the company for the last three years.
-	CompanyEconomyEntry cur_economy{}; ///< Economic data of the company of this quarter.
-	std::array<CompanyEconomyEntry, MAX_HISTORY_QUARTERS> old_economy{}; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
-	uint8_t num_valid_stat_ent = 0; ///< Number of valid statistical entries in #old_economy.
+	HistoryData<CompanyEconomyEntry> economy{}; ///< Economic data of the company.
+	ValidHistoryMask valid_history{}; ///< Mask of valid history records.
 
 	std::array<Livery, LS_END> livery{};
 

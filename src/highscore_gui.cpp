@@ -11,6 +11,7 @@
 #include "highscore.h"
 #include "gfx_func.h"
 #include "table/sprites.h"
+#include "misc/history_func.hpp"
 #include "window_gui.h"
 #include "window_func.h"
 #include "network/network.h"
@@ -118,7 +119,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 		if (_local_company != COMPANY_SPECTATOR) {
 			const Company *c = Company::Get(_local_company);
-			if (c->old_economy[0].performance_history == SCORE_MAX) {
+			if (GetHistory(c->economy, HISTORY_QUARTER, 0).performance_history == SCORE_MAX) {
 				this->background_img = SPR_TYCOON_IMG2_BEGIN;
 			}
 		}
@@ -157,11 +158,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		 * at the start of the new year when these things have already been copied */
 		if (this->background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
 			DrawStringMultiLine(pt.x + ScaleSpriteTrad(15), pt.x + ScaleSpriteTrad(640) - ScaleSpriteTrad(25), pt.y + ScaleSpriteTrad(90), pt.y + ScaleSpriteTrad(160),
-					GetString(STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, c->index, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
+					GetString(STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, c->index, c->index, EndGameGetPerformanceTitleFromValue(GetHistory(c->economy, HISTORY_QUARTER, 0).performance_history)),
 					TC_FROMSTRING, SA_CENTER);
 		} else {
 			DrawStringMultiLine(pt.x + ScaleSpriteTrad(36), pt.x + ScaleSpriteTrad(640), pt.y + ScaleSpriteTrad(140), pt.y + ScaleSpriteTrad(206),
-					GetString(STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
+					GetString(STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, c->index, EndGameGetPerformanceTitleFromValue(GetHistory(c->economy, HISTORY_QUARTER, 0).performance_history)),
 					TC_FROMSTRING, SA_CENTER);
 		}
 	}
