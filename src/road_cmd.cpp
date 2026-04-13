@@ -1790,7 +1790,7 @@ static void DrawTile_Road(TileInfo *ti)
 			bool draw_pbs = _game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile);
 			if (rti->UsesOverlay()) {
 				pal = draw_pbs ? PALETTE_CRASH : PAL_NONE;
-				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RTSG_CROSSING) + axis;
+				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Crossing) + axis;
 				DrawGroundSprite(rail, pal);
 
 				const Axis road_axis = GetCrossingRoadAxis(ti->tile);
