@@ -380,7 +380,7 @@ CommandCost CmdTurnRoadVeh(DoCommandFlags flags, VehicleID veh_id)
 		return CMD_ERROR;
 	}
 
-	if (IsNormalRoadTile(v->tile) && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
+	if (IsNormalRoadTile(v->tile) && GetDisallowedRoadDirections(v->tile).Any()) return CMD_ERROR;
 
 	if (IsTileType(v->tile, TileType::TunnelBridge) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
 
@@ -1145,7 +1145,7 @@ static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadType rt, RoadB
 	/* The 'current' company is not necessarily the owner of the vehicle. */
 	Backup<CompanyID> cur_company(_current_company, c);
 
-	CommandCost ret = Command<Commands::BuildRoad>::Do(DoCommandFlag::NoWater, t, r, rt, DRD_NONE, TownID::Invalid());
+	CommandCost ret = Command<Commands::BuildRoad>::Do(DoCommandFlag::NoWater, t, r, rt, {}, TownID::Invalid());
 
 	cur_company.Restore();
 	return ret.Succeeded();
@@ -1279,7 +1279,7 @@ again:
 					v->cur_speed = 0;
 					return false;
 				}
-			} else if (IsNormalRoadTile(v->tile) && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
+			} else if (IsNormalRoadTile(v->tile) && GetDisallowedRoadDirections(v->tile).Any()) {
 				v->cur_speed = 0;
 				return false;
 			} else {

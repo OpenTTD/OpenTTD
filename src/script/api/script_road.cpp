@@ -120,9 +120,9 @@
 	RoadBit dir_1 = (::TileX(t1) == ::TileX(t2)) ? (::TileY(t1) < ::TileY(t2) ? RoadBit::SE : RoadBit::NW) : (::TileX(t1) < ::TileX(t2) ? RoadBit::SW : RoadBit::NE);
 	RoadBit dir_2 = static_cast<RoadBit>(2 ^ to_underlying(dir_1));
 
-	DisallowedRoadDirections drd2 = IsNormalRoadTile(t2) ? GetDisallowedRoadDirections(t2) : DRD_NONE;
+	DisallowedRoadDirections drd2 = IsNormalRoadTile(t2) ? GetDisallowedRoadDirections(t2) : DisallowedRoadDirections{};
 
-	return r1.Test(dir_1) && r2.Test(dir_2) && drd2 != DRD_BOTH && drd2 != (dir_1 > dir_2 ? DRD_SOUTHBOUND : DRD_NORTHBOUND);
+	return r1.Test(dir_1) && r2.Test(dir_2) && !drd2.All({DisallowedRoadDirection::Northbound, DisallowedRoadDirection::Southbound}) && drd2 != (dir_1 > dir_2 ? DisallowedRoadDirection::Southbound : DisallowedRoadDirection::Northbound);
 }
 
 /* static */ bool ScriptRoad::ConvertRoadType(TileIndex start_tile, TileIndex end_tile, RoadType road_type)
@@ -531,7 +531,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
 	Axis axis = ::TileY(start) != ::TileY(end) ? AXIS_Y : AXIS_X;
-	return ScriptObject::Command<Commands::BuildRoadLong>::Do(end, start, ScriptObject::GetRoadType(), axis, one_way ? DRD_NORTHBOUND : DRD_NONE, (start < end) == !full, (start < end) != !full, true);
+	return ScriptObject::Command<Commands::BuildRoadLong>::Do(end, start, ScriptObject::GetRoadType(), axis, one_way ? DisallowedRoadDirection::Northbound : DisallowedRoadDirections{}, (start < end) == !full, (start < end) != !full, true);
 }
 
 /* static */ bool ScriptRoad::BuildRoad(TileIndex start, TileIndex end)
