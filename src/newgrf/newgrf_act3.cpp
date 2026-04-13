@@ -304,7 +304,8 @@ template <RoadTramType TRoadTramType>
 struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
 	{
-		if (cid >= ROTSG_END) return;
+		RoadSpriteType rst{cid};
+		if (rst >= RoadSpriteType::End) return;
 
 		const auto &type_map = (TRoadTramType == RoadTramType::Tram) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 		RoadType roadtype = local_id < std::size(type_map) ? type_map[local_id] : INVALID_ROADTYPE;
@@ -312,8 +313,8 @@ struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 
 		extern RoadTypeInfo _roadtypes[ROADTYPE_END];
 		RoadTypeInfo &rti = _roadtypes[roadtype];
-		rti.grffile[cid] = _cur_gps.grffile;
-		rti.group[cid] = group;
+		rti.grffile[rst] = _cur_gps.grffile;
+		rti.group[rst] = group;
 	}
 
 	void MapDefault(uint16_t, const SpriteGroup *) override {}

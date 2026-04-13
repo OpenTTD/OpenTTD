@@ -40,7 +40,7 @@ struct RoadTypeScopeResolver : public ScopeResolver {
 struct RoadTypeResolverObject : public ResolverObject {
 	RoadTypeScopeResolver roadtype_scope; ///< Resolver for the roadtype scope.
 
-	RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32_t param1 = 0, uint32_t param2 = 0);
+	RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadSpriteType rtsg, uint32_t param1 = 0, uint32_t param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
@@ -54,7 +54,7 @@ struct RoadTypeResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
-SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);
+SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadSpriteType rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);
 
 RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8_t tracktype, const GRFFile *grffile);
 uint8_t GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile);
