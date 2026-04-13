@@ -38,7 +38,7 @@
 			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
 			/* Depots and crossings aren't considered buildable */
 			if (::GetRoadTileType(tile) != RoadTileType::Normal) return false;
-			if (!HasExactlyOneBit(::GetRoadBits(tile, RoadTramType::Road))) return false;
+			if (::GetRoadBits(tile, RoadTramType::Road).Count() != 1) return false;
 			if (::IsRoadOwner(tile, RoadTramType::Road, OWNER_TOWN)) return true;
 			if (::IsRoadOwner(tile, RoadTramType::Road, ScriptObject::GetCompany())) return true;
 			return false;

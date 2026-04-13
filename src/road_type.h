@@ -53,25 +53,25 @@ static constexpr RoadTramTypes ROADTRAMTYPES_ALL{RoadTramType::Road, RoadTramTyp
  * This enumeration defines the possible road parts which
  * can be build on a tile.
  */
-enum RoadBits : uint8_t {
-	ROAD_NONE = 0U,                  ///< No road-part is build
-	ROAD_NW   = 1U,                  ///< North-west part
-	ROAD_SW   = 2U,                  ///< South-west part
-	ROAD_SE   = 4U,                  ///< South-east part
-	ROAD_NE   = 8U,                  ///< North-east part
-	ROAD_X    = ROAD_SW | ROAD_NE,   ///< Full road along the x-axis (south-west + north-east)
-	ROAD_Y    = ROAD_NW | ROAD_SE,   ///< Full road along the y-axis (north-west + south-east)
-
-	ROAD_N    = ROAD_NE | ROAD_NW,   ///< Road at the two northern edges
-	ROAD_E    = ROAD_NE | ROAD_SE,   ///< Road at the two eastern edges
-	ROAD_S    = ROAD_SE | ROAD_SW,   ///< Road at the two southern edges
-	ROAD_W    = ROAD_NW | ROAD_SW,   ///< Road at the two western edges
-
-	ROAD_ALL  = ROAD_X  | ROAD_Y,    ///< Full 4-way crossing
-
-	ROAD_END  = ROAD_ALL + 1,        ///< Out-of-range roadbits, used for iterations
+enum class RoadBit : uint8_t {
+	NW = 0, ///< North-west part
+	SW = 1, ///< South-west part
+	SE = 2, ///< South-east part
+	NE = 3, ///< North-east part
 };
-DECLARE_ENUM_AS_BIT_SET(RoadBits)
+
+/** Bitset of \c RoadBit elements. */
+using RoadBits = EnumBitSet<RoadBit, uint8_t>;
+
+static constexpr RoadBits ROAD_X{RoadBit::SW, RoadBit::NE}; ///< Full road along the x-axis (south-west + north-east)
+static constexpr RoadBits ROAD_Y{RoadBit::NW, RoadBit::SE}; ///< Full road along the y-axis (north-west + south-east)
+
+static constexpr RoadBits ROAD_N{RoadBit::NE, RoadBit::NW}; ///< Road at the two northern edges
+static constexpr RoadBits ROAD_E{RoadBit::NE, RoadBit::SE}; ///< Road at the two eastern edges
+static constexpr RoadBits ROAD_S{RoadBit::SE, RoadBit::SW}; ///< Road at the two southern edges
+static constexpr RoadBits ROAD_W{RoadBit::NW, RoadBit::SW}; ///< Road at the two western edges
+
+static constexpr RoadBits ROAD_ALL{RoadBit::NW, RoadBit::SW, RoadBit::SE, RoadBit::NE}; ///< Full 4-way crossing
 
 /** Which directions are disallowed ? */
 enum DisallowedRoadDirections : uint8_t {

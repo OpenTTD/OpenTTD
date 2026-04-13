@@ -106,11 +106,11 @@ struct CFollowTrackT {
 
 		if (IsNormalRoadTile(tile)) {
 			RoadBits rb = GetRoadBits(tile, RoadTramType::Tram);
-			switch (rb) {
-				case ROAD_NW: return DIAGDIR_NW;
-				case ROAD_SW: return DIAGDIR_SW;
-				case ROAD_SE: return DIAGDIR_SE;
-				case ROAD_NE: return DIAGDIR_NE;
+			switch (rb.base()) {
+				case RoadBits{RoadBit::NW}.base(): return DIAGDIR_NW;
+				case RoadBits{RoadBit::SW}.base(): return DIAGDIR_SW;
+				case RoadBits{RoadBit::SE}.base(): return DIAGDIR_SE;
+				case RoadBits{RoadBit::NE}.base(): return DIAGDIR_NE;
 				default: break;
 			}
 		}
