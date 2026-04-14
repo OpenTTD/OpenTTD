@@ -139,6 +139,17 @@ void CocoaSetApplicationBundleDir()
 }
 
 /**
+ * Returns the path to the user's Application Support folder.
+ */
+std::string CocoaGetAppSupportDir()
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+	NSString *appSupportPath = [paths firstObject];
+
+	return [appSupportPath UTF8String];
+}
+
+/**
  * Setup autorelease for the application pool.
  *
  * These are called from main() to prevent a _NSAutoreleaseNoPool error when
