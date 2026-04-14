@@ -1359,6 +1359,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :گاڑیوں ک
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :مال گاڑی کی حد رفتار فعال کریں: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :الیلٹرک ریل گاڑیاں غیر فعال کریں: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}

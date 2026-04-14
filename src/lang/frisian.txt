@@ -1593,6 +1593,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :By ynskeakeljen
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Wagon snelheids limiet: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :By ynskeakeljen sille de faasjelimyten fan de weinen meinaam wurde by it bepalen fan de maksimale faasje foar in trein
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :skeakelje elektryske spoaren út: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :By ynskeakeljen ferfalt de ferplichting spoar te elektrifisearjen foardat dizze troch elektryske treinen brûkt wurde kin
 

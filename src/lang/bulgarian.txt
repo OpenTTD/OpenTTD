@@ -1869,6 +1869,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Когато е
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Вагоните имат ограничение на скоростта: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ако тази настройка бъде активирана, максималната скорост на вагоните ще се взима предвид при изчисляването на максималната скорост на влака
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Без електрифициране на релси: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Активирането на тази настройка премахва нуждата от електрифициране на двурелсовите линии, за да могат електрическите локомотиви да се движат по тях
 

@@ -1906,6 +1906,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ja aktīvs, vil
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot elektrificēto dzelzceļu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Šī iestatījuma ieslēgšana atcels ceļu elektrifikācijas prasību, lai pa tiem varētu pārvietoties elektrolokomotīves
 

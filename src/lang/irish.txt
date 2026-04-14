@@ -1694,6 +1694,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Má tá sé cum
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cumasaigh teorainneacha luais vaigíní: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Má tá sé cumasaithe, úsáid teorainneacha luais na vaigíní freisin chun luas uasta traenacha a shocrú
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Díchumasaigh ráillí leictreacha: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Má dhéantar an socrú seo a chumasú ní bheidh sé riachtanach iarnróid a leictriú chun go mbeidh traenacha leictreacha in ann taisteal orthu
 

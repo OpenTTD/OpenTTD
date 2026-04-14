@@ -1569,6 +1569,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :غیرفعال 
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :فعال کردن حد برای سرعت واگن: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :غیر فعال کردن ریل برقی: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن: {STRING}

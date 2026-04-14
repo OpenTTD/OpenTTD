@@ -1969,6 +1969,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ha bekapcsolva,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :A vagonok sebessége korlátozható: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Bekapcsolva a szerelvényben lévő vasúti kocsik maximális sebessége is korlátozza a vonat maximális sebességét
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Villamosított vágányok letiltása: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Bekapcsolva nem szükséges villamosítani egy vágányt ahhoz, hogy azon villanymozdonyok közlekedhessenek
 

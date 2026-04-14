@@ -2158,6 +2158,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Пры ўклю
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Уключыць абмежаваньне хуткасьці ваґонаў: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Калі ўключана, выкарыстоўваць таксама й ліміты хуткасьці ў асобных ваґонаў для вызначэньня максымальнай хуткасьці ўсяго цягніка.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Адключыць электрыфікаваную чыгунку: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Уключэньне гэтай наладкі скасуе неабходнасьць электрыфікаваць чыгунку для запуску цягнікоў на электрычнай цязе.
 

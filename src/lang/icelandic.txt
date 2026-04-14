@@ -1527,6 +1527,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ef þessi still
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Leyfa hraðatakmarkanir vagna: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ef þessi stilling er virk er hámarkshraði á vögnum einnig notaður til að ákvarða hámarks hraða á járnbrautalestum
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ekki nota rafknúnar lestir: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ef þessi stilling er virk er ekki boðið upp á að nota rafmagns knúnar járnbrautalestar né spor fyrir þá
 

@@ -1904,6 +1904,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ina kā, ka pō
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Whakakāngia ngā tepetere wākena: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ina kā, whakamahia ngā tepetere o ngā wākena hei whakatau i te tere mōrahi o te tereina
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Āraia ngā rēra hiko: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ina kā, kāore te whakahiko ara e pīrangitia kia rere ai ngā tereina hiko
 

@@ -1899,6 +1899,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Falls aktiviert
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiviere elektrifizierte Strecken: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Erlaube Elektrolokomotiven das Fahren auf nicht elektrifizierten Gleisen
 

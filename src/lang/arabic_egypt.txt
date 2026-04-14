@@ -1548,6 +1548,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :الغاء ال
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :السماح بتحديد سرعة العربات: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :تعطيل سكة القطار الكهربائي: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :وصول اول مركبة لمحطة اللاعب: {STRING}

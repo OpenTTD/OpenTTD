@@ -1905,6 +1905,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quand activé, 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activer la vitesse limite des wagons{NBSP}: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Lorsqu'il est activé, utiliser la vitesse limite des wagons pour déterminer la vitesse maximum d'un train
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Désactiver les rails électriques{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activer ce paramètre désactive le besoin d'avoir des voies électrifiées pour faire rouler des engins électriques
 

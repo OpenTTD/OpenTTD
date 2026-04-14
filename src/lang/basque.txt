@@ -1545,6 +1545,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Gaitua dagoenea
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bagoiaren abiadura mugak aktibatu: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Gaitua dagoenean, bagoien gehienezko abiadura erabili trenen geheienezko abiadura zehazteko
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Trenbide elektrikoa desaktibatu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Gaitua dagoenean, ez da beharrezkoa izango trenbideak elektrifikatzea tren elektrikoak funtzionatzeko
 

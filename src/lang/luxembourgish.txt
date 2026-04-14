@@ -1086,7 +1086,7 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Gréisst autom.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Klick dës Optioun fir d'Interfacegréisst automatesch anzestellen
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Bevels skaléiren
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Klick dës Optioun fir d'Bevels mat der Gréisst vum Interface ze skaléiren
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Uschalten fir d'Bevels mat der Gréisst vum Interface ze skaléiren
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Traditionell Spriteschrëft benotzen
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Klick dës Optioun wanns du déi traditionell fix-Gréisst Spriteschrëft wëlls
@@ -1626,7 +1626,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Flaach
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Fielseg
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Ganz Fielseg
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Duerchschnëttshéischt: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Wiel d'Duerchschnëttshéischt vum Land. 'Automatesch' hëllt d'Standardhéischt baséirend op dem gewielte Klima: 'Niddreg' fir subtropesch, 'Normal' fir temperéiert a Spillsaacheland, a 'Plateauen' fir subarktësch.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Automatesch
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Niddreg
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Plateauen
 
 STR_CONFIG_SETTING_VARIETY                                      :Vielfaltverdeelung: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Wielt aus op d'Kaart flaach Stécker an och Bierger huet. Wat d'Vielfalt méi héich, wat méi Ennerscheeder an der Landschaft tëscht de Bierger a flaach Arealer
@@ -1897,6 +1903,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Wann ugeschalt 
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Geschwindegkeetsbegrenzungen fir Waggonen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wann ugeschalt, benotz och Geschwindegkeetslimitatiounen fir Waggonen fir d'maximal Geschwindegkeet vun engem Zuch ze definéiren
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektreschschinnen ausschalten: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, ginn keng elektresch Schinnen gebraucht fir mat elektreschen Zich ze fueren
@@ -2223,7 +2230,7 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... igno
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Feeler an de Videoastellungen
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... keng kompatibel GPU fonnt. Hardwarebeschleunegung deaktivéiert
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :... keng kompatibel GPU fonnt. Hardwarebeschleunegung deaktivéiert
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU driver huet d'Spill gecrasht. Hardwarebeschleunegung ausgeschalt
 
 # Intro window
@@ -2539,6 +2546,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via e Re
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kicken
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Läschen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :All Client erlaben
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :Nëmme Clients vun der Lëscht erlaben
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administrativ Actioun
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Bassde sécher dass du de Spiller '{STRING}' kicke wëlls?
@@ -2850,18 +2859,33 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :D'Héicht vun V
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :D'Héicht vun Virschaubiller eropsetzen. Ctrl+Klick fir op de Maximum ze setzen.
 
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Eng Kollektioun auswielen
+STR_PICKER_COLLECTION_ADD                                       :Dobäisetzen
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Eng nei Kollektioun erstellen
+STR_PICKER_COLLECTION_RENAME                                    :Ëmbenennen
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Eng Kollektioun embenennen
+STR_PICKER_COLLECTION_DELETE                                    :Läschen
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Eng Kollektioun läschen
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Des Kollektioun embenennen
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Kollektioun läschen
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Bass du sécher, dass du des Kollektioun läsche wëlls?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Bass du sécher, dass du des Kollektioun läsche wëlls? Et sinn Deeler vun ausgeschalte NewGRFs dran!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wiel eng Statiounsklass fir unzeweisen
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wiel en Typ vu Statioun fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Wiel eng Kollektioun u Garen aus déi ugewise ginn
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Wiel e Weepunkt fir unzeweisen
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Wiel e Weepunkt fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Wiel eng Kollektioun u Weepunkter aus déi ugewise ginn
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Wiel eng Busarrêtsklass fir unzeweisen
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Wiel en Typ vu Busarrêt fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Wiel eng Kollektioun u Busarrêten aus déi ugewise ginn
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Wiel eng Camionsstatioun fir unzeweisen
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Wiel en Typ vu Camionsstatioun fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wiel eng Objetsklass fir unzeweisen
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wiel en Typ vun Objet fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäi ze setzen oder ewech ze huelen.Ctrl+Klick+Zéien fir en Areal diagonal auszewielen. Mat Shift ginn nëmmen d'ongeféier Käschten ugewisen
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Wiel eng Kollektioun aus déi ugewise gëtt
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wiel eng Stad-Zone fir unzeweisen
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wiel en Haustyp fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
 
@@ -3388,7 +3412,8 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Wüstenu
 STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Wüstenundeel em zéng Prozent eropsetzen
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Wüstenundeel em zéng Prozent erofsetzen
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maximal Héischt:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Duerchschnëttshéischt:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Mieresspigel:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Mieresspigel auswielen
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flëss:
@@ -4144,7 +4169,7 @@ STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Wiessel 
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klick fir déi Grupp vum globalen "Autoersetzen" auszeschléissen. Ctrl+Klick protegéiert och Ennergruppen
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Grupp läschen
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Bassde sécher, dass du des Grupp an all Ennergruppen läsche wëlls?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Bass du sécher, dass du des Grupp an all Ennergruppe läsche wëlls?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Gedeelte Gefierer bäisetzen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :All Gefierer ewechhuelen
@@ -4205,6 +4230,17 @@ STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Fliger T
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Schinnentypen: {GOLD}{STRING}
 
 # Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/Joer
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/Period
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :{COMMA}%
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} Felder
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :All Wuerentyp
@@ -4365,8 +4401,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du verk
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meldung vum Gefierkonstrukteur
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Message vun der Gefierfirma ({COMMA} vun {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mir hunn elo en neien {STRING} gebaut - bass du dorun interesséiert dëst Gefier 1 Joer exklusiv ze notzen, fir ze testen op et komplett maarträif ass?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Virdrun
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Klick fir op dat virëscht Gefier ze goen
+STR_ENGINE_PREVIEW_NEXT                                         :Nächst
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Klick fir op en neit Gefier ze goen
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Klick fir op en neit Gefier ze sprangen
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Lokomotiv
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Elektresch Lokomotiv
@@ -4711,6 +4754,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Iwwerspr
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Iwwersprang de momentanen Optrag. Ctrl+Klick iwwerspréngt op den ugewieltenen Optrag
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Läschen
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}All läschen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Läscht den ungewielten Optrag
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}All Opträg läschen
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}D'Deele stoppen
@@ -5039,7 +5083,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Matdeel
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Ausserhalb vun der Kaart
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Ze no um Rand vun der Kaart
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Net genuch Geld - des Aktioun kascht {CURRENCY_LONG}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :net genuch Geld - des Aktioun kascht {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}D'Land muss flaach sinn
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land ass an déi falsch Richtung geneigt
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kann dat net maachen...
@@ -5066,12 +5110,13 @@ STR_ERROR_BRIBE_FAILED                                          :{WHITE}D'Bestie
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kann d'Land hei net unhiewen...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kann d'Land hei net erofsetzen...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kann d'Land net ebenen...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Kann d'Land net ebenen...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Verdéiwung géif den Tunnel beschiedegen
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... schon op Mieresspigel
 STR_ERROR_TOO_HIGH                                              :{WHITE}... ze héich
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... scho flaach
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Dono wier d'Bréck ze héich fir dësen Terrain.
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :muss de Floss fir d'éischt ofrappen
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kann de Firmennumm net änneren...
@@ -5135,7 +5180,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kann de 
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kann de Fluchhafen hei net bauen...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt un méi wéi eng Gare un
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Statioun ze ausgebreed
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :... Statioun zevill ausgebreed
 STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... net supportéiert Unzuel u Schinnen
 STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... net supportéiert Längt
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill Garen/Luedstatiounen
@@ -5154,20 +5199,20 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... Duer
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kann den Deel vun der Gare net ofrappen...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Muss d'Gare fir d'éischt ofrappen
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kann de Busarrêt net ofrappen...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Kann de Busarrêt net ofrappen...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kann d'Camionsgare net ofrappen...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kann d'Tramstatioun net ofrappen...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kann d'Wueren-Tramstatioun net ofrappen...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Kann d'Wueren-Tramstatioun net ofrappen...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Busarrêt muss fir d'éischt ofgerappt ginn
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... et ass keng Statioun do
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Muss d'Gare fir d'éischt ofrappen
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Busarrêt muss fir d'éischt ofgerapt ginn
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :Muss de Busarrêt fir d'éischt ofgerapt ginn
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Muss d'Camionsgare fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Muss d'Tramstatioun fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Muss d'Tramstatioun fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Muss de Quai fir déischt ofrappen
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Muss de Fluchhafe fir d'éischt ofrappen
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :muss de Fluchhafe fir d'éischt ofrappen
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenzt un méi wéi een Weepunkt
@@ -5277,8 +5322,8 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kann d'B
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kann d'Bréck hei net bauen...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Muss d'Bréck fir d'éischt ofrappen
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kann net op der selwechter Plaz ufänken an ophalen
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :muss d'Bréck fir d'éischt ofrappen
+STR_ERROR_CAN_T_START_AND_END_ON                                :kann net op der selwechter Plaz ufänken an ophalen
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bréckenenner net op der selwechter Héicht
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bréck ass ze déif fir dësen Terrain
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Bréck ass ze héich fir dësen Terrain.
@@ -5313,14 +5358,14 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... scho
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... Limit fir d'Baue vun Objeten erreecht
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kann d'Grupp net erstellen...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Kann d'Grupp net läschen...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :Kann d'Grupp net erstellen...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :Kann d'Grupp net läschen...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kann d'Grupp net ëmbenennen...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Kann iwwergeuerdent Grupp net setzen...
 STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... Schläifen an der Gruppenhierarchie si net erlaabt
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Kann net all d'Gefierer aus der Grupp läschen...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Kann d'Gefier net bei d'Grupp bäisetzen...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kann dei gedeelten Gefierer net bei d'Grupp bäisetzen...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :Kann net all d'Gefierer aus der Grupp läschen...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :Kann d'Gefier net an d'Grupp bäisetzen...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Kann déi gedeelten Gefierer net an d'Grupp bäisetzen...
 
 # Generic vehicle errors
 
@@ -5971,7 +6016,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Badgekonfiguratioun opman

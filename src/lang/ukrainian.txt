@@ -2035,6 +2035,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Якщо уві
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Враховувати обмеження швидкості вагонів: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :При включенні максимальна швидкість потяга враховує обмеження швидкості вагонів.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Скасувати електрифіковану залізницю: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :При включенні відпадає необхідність побудови електрифікованої колії для потягів на електричній тязі - вони будуть працювати на звичайній залізниці.
 

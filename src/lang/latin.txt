@@ -1790,6 +1790,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Electa, vehicul
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Annuere currus ferriviarios habere velocitates maximas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Electa, velocitates maximae curruum afficiunt velocitatem maximam traminis
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Neglegere ferrivias electricas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Electa, tramina electrica non postulant electricam ferriviam, modo ferriviam solitam
 

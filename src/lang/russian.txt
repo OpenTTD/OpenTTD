@@ -2056,6 +2056,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :При вклю
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Учитывать ограничение скорости у вагонов: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :При наличии в составе вагонов с ограничением скорости учитывать это ограничение при определении максимальной скорости состава
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Не требовать электрификации железной дороги: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :При включении этой настройки электровозы смогут ездить по неэлектрифицированной железной дороге
 
@@ -4762,8 +4763,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Пере
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Переименовать судно
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Переименовать воздушное судно
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} {P год года лет} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P год года лет} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} {P год года лет} / {COMMA} {P года лет лет}
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P год года лет} / {COMMA} {P года лет лет}
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY_LONG}/год
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY_LONG}/цикл
 
@@ -4777,6 +4778,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Приб
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Прибыль в текущем году: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Прибыль в текущем цикле: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Прибыль в текущем цикле: {LTBLUE}{CURRENCY_LONG} (в прошлом: {CURRENCY_LONG}) {BLACK}Мин. удельная мощн.: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надёжность: {LTBLUE}{COMMA}% (макс. {COMMA}%) {BLACK}Поломок после ТО: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ёмкость: {LTBLUE}отсутствует{STRING}

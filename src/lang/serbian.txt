@@ -2008,6 +2008,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kada je uključ
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Uključeno ograničenje brzine kod vagona: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kada je omogućeno, takođe upotrebi ograničenje brzine vagona za određivanje maksimalne brzine voza
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ne postoji posebna električna pruga: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Omogućavanje ovog podešavanja onemogućava potrebu elektrifikacije pruge da bi električni vozovi mogli voziti po njoj
 

@@ -1916,6 +1916,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Keď je táto m
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Obmedzenie rýchlosti pre vagóny: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ak je zapnuté, použijú sa tiež rýchlostné obmedzenia pre vagóny na obmedzenie celkovej rýchlosti vlakov.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zakázať elektrifikovanú železnicu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Povolením nastavenia vypne nutnosť elektrifikovať železnice aby na nich mohli jazdiť elektrické vlaky.
 

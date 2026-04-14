@@ -1458,6 +1458,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Servis tidak di
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Benarkan had kelajuan untuk gerabak: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tiada landasan elektrik: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ketibaan kenderaan di stesen pemain: {STRING}

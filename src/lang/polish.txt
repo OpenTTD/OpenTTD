@@ -2285,6 +2285,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Kiedy włączon
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tylko jeden rodzaj torów: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Przy włączonym ustawieniu nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
 

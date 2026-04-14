@@ -1892,6 +1892,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Al activarse, l
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad para vagones: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Al activarse, se tienen en cuenta los límites de velocidad de los vagones para decidir la máxima velocidad de un tren
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferrocarriles eléctricos: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Al activarse, no es necesario electrificar las vías para que los trenes eléctricos las usen
 
@@ -2086,6 +2087,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMM
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguno
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial de tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades relativo a los pueblos al inicio de la partida
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Distancia mínima entre pueblos: {STRING}
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualizar gráfica de distribución cada {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tiempo entre nuevos cálculos sucesivos de la gráfica de conexiones. Un valor de X segundos significa que los planes de un solo componente se actualizarán, mas no toda la gráfica. Entre más corto sea el valor, mayor tiempo de CPU será necesario para cada nuevo cálculo; entre más largo, más tardará hasta que la distribución de carga inicie en nuevas rutas
@@ -2841,7 +2843,17 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Reducir la altu
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Incrementar la altura de las imágenes previas. Ctrl+Clic aumenta al máximo
 
+STR_PICKER_COLLECTION_ADD                                       :Agregar
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Crear nueva colección
+STR_PICKER_COLLECTION_RENAME                                    :Renombrar
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Renombrar una colección
+STR_PICKER_COLLECTION_DELETE                                    :Eliminar
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Eliminar una colección
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Renombrar esta colección
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Eliminar colección
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}¿Estás seguro de que quieres eliminar esta colección?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :¿Estás seguro de que quieres eliminar esta colección? ¡Hay elementos de NewGRFs deshabilitados en ella!
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Elegir qué clase de estación mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Elegir qué tipo de estación construir. Ctrl+Clic lo añade o elimina de guardados
@@ -4335,8 +4347,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Se vend
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje del fabricante de vehículos
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}Mensaje del fabricante de vehículos ({COMMA} de {COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a "" a} nuev{G o a o a} {STRING}. ¿Le interesaría el uso exclusivo de este vehículo por un año para que podamos probar su desempeño antes de lanzarlo al público?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :Anterior
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :Pulsa para ir al anterior vehículo nuevo
+STR_ENGINE_PREVIEW_NEXT                                         :Siguiente
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :Pulsa para ir al siguiente vehículo nuevo
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :Pulsa para ir a un nuevo vehículo
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotora
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotora eléctrica
@@ -4359,6 +4378,7 @@ STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Costo de operac
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Costo de operación: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidad: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidad: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :Tipos de via: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING} - {STRING}

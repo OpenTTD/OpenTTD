@@ -1792,6 +1792,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan-luaiths nan carbadan-rèile an comas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan-luaiths nan carbadan cuideachd gus an luaths as motha aig trèan a shuidheachadh
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealain à comas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealain a thogail gus einnseanan dealain a chleachdadh orra
 

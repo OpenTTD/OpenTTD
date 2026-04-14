@@ -1906,6 +1906,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, usa o limite de velocidade dos vagões para definir a velocidade máxima de um trem
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ativando esta configuração, não será necessário eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
 

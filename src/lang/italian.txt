@@ -1912,6 +1912,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando abilitat
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Abilita limiti di velocità dei vagoni: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando abilitata, tiene conto anche dei limiti di velocità dei vagoni per determinare la velocità massima di un treno.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disabilita ferrovie elettrificate: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Abilitando questa impostazione si rimuove l'obbligo di elettrificare i binari per utilizzarli con le locomotive elettriche.
 

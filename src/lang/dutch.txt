@@ -1898,6 +1898,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Indien ingescha
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Snelheidslimieten voor wagons inschakelen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrische sporen uitschakelen: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wanneer dit is ingeschakeld, hoeven sporen niet te zijn geëlektrificeerd voor elektrische treinen
 

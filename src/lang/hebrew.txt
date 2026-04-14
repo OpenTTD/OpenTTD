@@ -1735,6 +1735,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :כאשר מאו
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{STRING} :אפשר הגבלת מהירות עבור קרונות רכבת
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :כאשר מאופשר, השתמש גם במגבלות מהירות של קרונות לצורך קביעות המהירות המירבית של רכבת
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{STRING} : בטל פסים חשמליים
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :אפשור הגדרה זו מבטל את הדרישה לחשמל מסילות כדי שקטרים חשמליים יוכלו לנסוע עליהן
 

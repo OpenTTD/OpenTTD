@@ -1598,6 +1598,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :เมื่อ
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :จำกัดความเร็วของรถจักร/รถพ่วง: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :เมื่อเปิดใช้งาน จะทำให้มีจำกัดความเร็วสูงสุดของยานพาหนะและรถพ่วงต่างๆ
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :ปิดระบบสายส่งไฟฟ้า(Electricfield): {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :เมื่อเปิดการใช้งาน จะทำการปิดความต้องการการใช้งานระบบ Electrifield ของรถจักรหรือรถไฟฟ้า
 

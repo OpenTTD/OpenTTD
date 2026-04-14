@@ -1904,6 +1904,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :启用站台长
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :列车车厢限速：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :启用时，列车的最高速度将取决于车厢的速度上限
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :停用电气化铁路：{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :启用时允许电力机车在普通轨道上运行而无需铺设电气化轨道
 

@@ -1906,6 +1906,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quan s'activa, 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa límits de velocitat per als vagons: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si està activat, també utilitza els límits de velocitat dels vagons per a decidir la velocitat màxima del tren.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
 

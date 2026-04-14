@@ -1907,6 +1907,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Sisselülitatud
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagunite kiiruspiirangud: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kui on aktiveeritud siis kasutatakse rongi maksimaalse kiiruse arvutamiseks ka vagunite kiiruse piirangut
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrirongide keeld: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole tarvis rööpaid elektrifitseerida, et lubada elektrisõidukitel nendel rööbastel liikuda
 

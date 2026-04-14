@@ -1545,6 +1545,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Deaktiver vedli
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver fartsgrenser for vogner: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiver elektriske tog: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første køyretøy kjem fram på stasjonen til spelaren: {STRING}

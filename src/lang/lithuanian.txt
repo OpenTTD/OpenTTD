@@ -2007,6 +2007,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jeigu įjungta,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvinti vagonų greičio apribojimą: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Įgalinus šią nuostatą, vagonų didžiausias leistinas greitis įtakos viso traukinio greitį
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Įjungiant šį nustatymą išjungia elektrifikuotų bėgių reikalavimą padaryti elektrinius variklius veikti ant jų
 

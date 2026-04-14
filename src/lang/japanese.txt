@@ -1758,6 +1758,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :有効にする
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の上限速度: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :有効にすると、上限速度が設定されている貨車を使用した場合、列車はその速度以上出せなくなります
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を無効化: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :この設定を有効にすると電気鉄道を敷設できなくなります。ただし電気機関車・電車は架線のない非電化の線路を走ることができるようになります
 

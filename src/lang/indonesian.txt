@@ -1802,6 +1802,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jika diaktifkan
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktifkan batas kecepatan gerbong: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Jika diaktifkan, batas kecepatan gerbong juga digunakan untuk menentukan kecepatan maksimum kereta
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Non-aktifkan rel listrik: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mengaktifkan setelan ini mematikan kebutuhan kereta listrik untuk berjalan di rel elektris
 

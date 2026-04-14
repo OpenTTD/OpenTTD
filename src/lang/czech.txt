@@ -1991,6 +1991,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Pokud je zapnut
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Zapnout omezení rychlosti vagonů: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pokud zapnuto, použije rychlostní omezení vagónů při stanovení maximální rychlosti vlaku
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Vypnout elektrickou železnici: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Zapnutí této možnosti odstraní potřebu elektrifikované trati pro elektrické lokomotivy
 

@@ -1905,6 +1905,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Si se activa, l
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad en vagones: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si se activa, se tienen en cuenta los límites de velocidad de los vagones a la hora de establecer la velocidad máxima de un tren
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferrocarril eléctricos: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Si se activa, no es necesario electrificar los ferrocarriles para hacer que los trenes eléctricos puedan recorrerlos
 

@@ -1905,6 +1905,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Mikäli käytö
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön vaunujen nopeusrajoitukset: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Mikäli käytössä, vaunujen nopeusrajoitusta käytetään junan maksiminopeuden määrittämisessä
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Poista sähköradat käytöstä: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mikäli käytössä, sähköveturit toimivat ei-sähköistetyillä radoilla
 

@@ -1905,6 +1905,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Etkinleştirild
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagonların treni yavaşlatması izinli: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Etkinleştirildiğinde, bir trenin azami hızına karar verirken vagonların hız limitleri de göz önünde bulundurulur
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrikli rayları iptal et: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Etkinleştirildiğinde, elektrikli araçları kullanabilmek için rayların elektrikli olması gerekmez
 

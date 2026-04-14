@@ -1907,6 +1907,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Når aktivert v
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver fartsgrenser for vogner: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Når aktivert, brukes også fartsgrenser til vogner for å avgjøre topphastigheten til et tog
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiver elektriske spor: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Aktivering av denne innstillingen deaktiverer kravet om å elektrifisere spor for å tillate at elektriske motorer kan kjøre på dem
 
@@ -4577,8 +4578,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Navngi k
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Navngi skip
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Navngi luftfartøy
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} år (levetid: {COMMA} år)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år (levetid: {COMMA} år)
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK} Driftskostnader: {LTBLUE}{CURRENCY_LONG}/år
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Alder: {LTBLUE}{STRING}{BLACK} Driftskostnader: {LTBLUE}{CURRENCY_LONG}/periode
 
@@ -4592,6 +4593,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Fortjene
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Fortjeneste dette år: {LTBLUE}{CURRENCY_LONG} (forrige år: {CURRENCY_LONG}) {BLACK}Min. ytelse: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Fortjeneste denne perioden: {LTBLUE}{CURRENCY_LONG} (forrige periode: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Fortjeneste denne perioden: {LTBLUE}{CURRENCY_LONG} (forrige periode: {CURRENCY_LONG}) {BLACK}Minste ytelse: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelighet: {LTBLUE}{COMMA}% (maks: {COMMA}%) {BLACK}Havarier siden siste vedlikehold: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitet: {LTBLUE}Ingen{STRING}

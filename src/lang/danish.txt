@@ -1904,6 +1904,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Når den er akt
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastighedsbegrænsning for vogne: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Når tilladt, brug også fartgrænse på vogne, for at bestemme makshastigheden på tog
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Slå elektriske jernbaner fra: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Tilladelse af denne indstilling slår nødvendigheden af elektrisk jernbaner fra, for at få elektriske tog til at kører
 

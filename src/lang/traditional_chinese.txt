@@ -1905,6 +1905,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :啟用後，對
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :開啟列車車廂速限：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :如啟用此選項，無動力車廂的限速會影響列車的最高速度。
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :停用電氣化鐵道：{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :如啟用此選項，電動列車可於普通軌道上行走，毋須鋪設電氣化軌道。
 
