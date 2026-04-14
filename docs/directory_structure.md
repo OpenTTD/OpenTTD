@@ -38,6 +38,17 @@ your operating system:
 
     It includes the OpenTTD files (grf+lng) and it will work as long as they
     are not touched
+7. The Atari Transport Tycoon Deluxe directory, if installed (path may vary)
+
+    This refers to the `CD` folder within the Transport Tycoon Deluxe
+    installation folder (2026 Atari re-release). OpenTTD detects the presence
+    of this folder based upon the contents of the `installpath.ini` file located
+    in:
+    - Windows: `%APPDATA%\Atari\Transport Tycoon Deluxe`
+    - macOS: `~/Library/Application Support/Atari/Transport Tycoon Deluxe`
+    - Linux: `$XDG_DATA_HOME/Atari/Transport Tycoon Deluxe`
+
+    This is used only for the loading of base sets (graphics, sound, music).
 
 Different types of data or extensions go into different subdirectories of the
 chosen main OpenTTD directory:
