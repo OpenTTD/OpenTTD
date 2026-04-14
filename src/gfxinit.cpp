@@ -124,7 +124,7 @@ void CheckExternalFiles()
 		fmt::format_to(output_iterator, "Trying to load graphics set '{}', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one. See section 1.4 of README.md.\n\nThe following files are corrupted or missing:\n", used_set->name);
 		for (const auto &file : used_set->files) {
 			MD5File::ChecksumResult res = GraphicsSet::CheckMD5(&file, Subdirectory::Baseset);
-			if (res != MD5File::CR_MATCH) fmt::format_to(output_iterator, "\t{} is {} ({})\n", file.filename, res == MD5File::CR_MISMATCH ? "corrupt" : "missing", file.missing_warning);
+			if (res != MD5File::ChecksumResult::Match) fmt::format_to(output_iterator, "\t{} is {} ({})\n", file.filename, res == MD5File::ChecksumResult::Mismatch ? "corrupt" : "missing", file.missing_warning);
 		}
 		fmt::format_to(output_iterator, "\n");
 	}
@@ -136,7 +136,7 @@ void CheckExternalFiles()
 		static_assert(SoundsSet::NUM_FILES == 1);
 		/* No need to loop each file, as long as there is only a single
 		 * sound file. */
-		fmt::format_to(output_iterator, "\t{} is {} ({})\n", sounds_set->files[0].filename, SoundsSet::CheckMD5(&sounds_set->files[0], Subdirectory::Baseset) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files[0].missing_warning);
+		fmt::format_to(output_iterator, "\t{} is {} ({})\n", sounds_set->files[0].filename, SoundsSet::CheckMD5(&sounds_set->files[0], Subdirectory::Baseset) == MD5File::ChecksumResult::Mismatch ? "corrupt" : "missing", sounds_set->files[0].missing_warning);
 	}
 
 	if (!error_msg.empty()) ShowInfoI(error_msg);
@@ -419,15 +419,15 @@ void GraphicsSet::CopyCompatibleConfig(const GraphicsSet &src)
  * @param file The file get the hash of.
  * @param subdir The sub directory to get the files from.
  * @return
- * - #CR_MATCH if the MD5 hash matches
- * - #CR_MISMATCH if the MD5 does not match
- * - #CR_NO_FILE if the file misses
+ * - #MD5File::ChecksumResult::Match if the MD5 hash matches
+ * - #MD5File::ChecksumResult::Mismatch if the MD5 does not match
+ * - #MD5File::ChecksumResult::NoFile if the file misses
  */
 /* static */ MD5File::ChecksumResult GraphicsSet::CheckMD5(const MD5File *file, Subdirectory subdir)
 {
 	size_t size = 0;
 	auto f = FioFOpenFile(file->filename, "rb", subdir, &size);
-	if (!f.has_value()) return MD5File::CR_NO_FILE;
+	if (!f.has_value()) return MD5File::ChecksumResult::NoFile;
 
 	size_t max = GRFGetSizeOfDataSection(*f);
 
@@ -440,15 +440,15 @@ void GraphicsSet::CopyCompatibleConfig(const GraphicsSet &src)
  * @param subdir The sub directory to get the files from
  * @param max_size Only calculate the hash for this many bytes from the file start.
  * @return
- * - #CR_MATCH if the MD5 hash matches
- * - #CR_MISMATCH if the MD5 does not match
- * - #CR_NO_FILE if the file misses
+ * - #MD5File::ChecksumResult::Match if the MD5 hash matches
+ * - #MD5File::ChecksumResult::Mismatch if the MD5 does not match
+ * - #MD5File::ChecksumResult::NoFile if the file misses
  */
 MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) const
 {
 	size_t size;
 	auto f = FioFOpenFile(this->filename, "rb", subdir, &size);
-	if (!f.has_value()) return CR_NO_FILE;
+	if (!f.has_value()) return ChecksumResult::NoFile;
 
 	size = std::min(size, max_size);
 
@@ -463,7 +463,7 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 	}
 
 	checksum.Finish(digest);
-	return this->hash == digest ? CR_MATCH : CR_MISMATCH;
+	return this->hash == digest ? ChecksumResult::Match : ChecksumResult::Mismatch;
 }
 
 /** Names corresponding to the GraphicsFileType */

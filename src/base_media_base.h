@@ -24,11 +24,11 @@ struct ContentInfo;
 /** Structure holding filename and MD5 information about a single file */
 struct MD5File {
 	/** The result of a checksum check */
-	enum ChecksumResult : uint8_t {
-		CR_UNKNOWN,  ///< The file has not been checked yet
-		CR_MATCH,    ///< The file did exist and the md5 checksum did match
-		CR_MISMATCH, ///< The file did exist, just the md5 checksum did not match
-		CR_NO_FILE,  ///< The file did not exist
+	enum class ChecksumResult : uint8_t {
+		Unknown, ///< The file has not been checked yet
+		Match, ///< The file did exist and the md5 checksum did match
+		Mismatch, ///< The file did exist, just the md5 checksum did not match
+		NoFile, ///< The file did not exist
 	};
 
 	std::string filename;        ///< filename
@@ -132,9 +132,9 @@ struct BaseSet {
 	 * @param file The file get the hash of.
 	 * @param subdir The sub directory to get the files from.
 	 * @return
-	 * - #CR_MATCH if the MD5 hash matches
-	 * - #CR_MISMATCH if the MD5 does not match
-	 * - #CR_NO_FILE if the file misses
+	 * - #MD5File::ChecksumResult::Match if the MD5 hash matches
+	 * - #MD5File::ChecksumResult::Mismatch if the MD5 does not match
+	 * - #MD5File::ChecksumResult::NoFile if the file misses
 	 */
 	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir)
 	{
