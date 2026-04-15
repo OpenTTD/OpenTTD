@@ -744,6 +744,7 @@ static const EnumIndexArray<const NIFeature *, GrfSpecFeature, GrfSpecFeature::F
 	&_nif_tramtype, // GrfSpecFeature::TramTypes
 	&_nif_roadstop, // GrfSpecFeature::RoadStops
 	nullptr, // GrfSpecFeature::Badges
+	nullptr, // GrfSpecFeature::Trees
 
 	&_nif_town, // GrfSpecFeature::FakeTowns
 };
