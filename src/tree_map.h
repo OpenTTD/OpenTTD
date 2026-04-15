@@ -161,6 +161,26 @@ inline void AddTreeCount(Tile t, int c)
 }
 
 /**
+ * Get a tree tile's month cycle.
+ * @param t The tile.
+ * @return The tree's month cycle.
+ */
+inline uint GetTreeMonth(Tile t)
+{
+	return GB(t.m4(), 0, 4);
+}
+
+/**
+ * Set a tree tile's month cycle.
+ * @param t The tile.
+ * @param month The month cycle to set.
+ */
+inline void SetTreeMonth(Tile t, uint month)
+{
+	SB(t.m4(), 0, 4, month);
+}
+
+/**
  * Returns the tree growth stage.
  *
  * This function returns the tree growth stage of a tile with trees.

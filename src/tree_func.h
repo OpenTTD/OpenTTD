@@ -12,9 +12,13 @@
 
 #include "gfx_type.h"
 #include "tree_map.h"
+#include "tree_type.h"
 
 void ResetTrees();
 void FinaliseTrees();
+
+std::span<const TreeSpec> GetOriginalTreeSpecs();
+const TreeSpec &GetTreeSpec(uint16_t tree);
 
 std::span<const TreeType> GetTreeTypes();
 PalSpriteID GetTreeSprite(TreeType treetype);

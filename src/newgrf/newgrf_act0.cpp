@@ -170,7 +170,7 @@ struct InvokeGrfChangeInfoHandler {
 		Invoke<GrfSpecFeature::GlobalVar>,    Invoke<GrfSpecFeature::IndustryTiles>, Invoke<GrfSpecFeature::Industries>,    Invoke<GrfSpecFeature::Cargoes>,
 		Invoke<GrfSpecFeature::SoundEffects>, Invoke<GrfSpecFeature::Airports>,      nullptr /* GrfSpecFeature::Signals */, Invoke<GrfSpecFeature::Objects>,
 		Invoke<GrfSpecFeature::RailTypes>,    Invoke<GrfSpecFeature::AirportTiles>,  Invoke<GrfSpecFeature::RoadTypes>,     Invoke<GrfSpecFeature::TramTypes>,
-		Invoke<GrfSpecFeature::RoadStops>,    Invoke<GrfSpecFeature::Badges>,
+		Invoke<GrfSpecFeature::RoadStops>,    Invoke<GrfSpecFeature::Badges>,        Invoke<GrfSpecFeature::Trees>,
 	};
 
 	/**
