@@ -452,7 +452,7 @@ void LoadTownData()
 				break;
 			case HM_COUNTER_CLOCKWISE:
 				/* Tile coordinates are rotated and must be adjusted. */
-				target_tile = TileXY((1 - y_proportion * Map::MaxX()), x_proportion * Map::MaxY());
+				target_tile = TileXY((1 - y_proportion) * Map::MaxX(), x_proportion * Map::MaxY());
 				break;
 			default: NOT_REACHED();
 		}
