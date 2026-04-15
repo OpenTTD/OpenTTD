@@ -19,6 +19,7 @@
 /** Flags controlling tree behaviour. */
 enum class TreeFlag : uint8_t {
 	Colour = 0, ///< Apply random 'company' recolour.
+	MonthlyRefresh = 1, ///< Enable monthly refresh cycle.
 };
 
 /** Bitset of \c TreeFlag elements. */
