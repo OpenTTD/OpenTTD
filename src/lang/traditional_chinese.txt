@@ -1905,6 +1905,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :啟用後，對
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :開啟列車車廂速限：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :如啟用此選項，無動力車廂的限速會影響列車的最高速度。
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :啟用飛機最大航程：{STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :啟用後，NewGRF 將能限制飛機的最大航程
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :停用電氣化鐵道：{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :如啟用此選項，電動列車可於普通軌道上行走，毋須鋪設電氣化軌道。
@@ -4077,8 +4079,8 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 無 -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} (運送了{COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}、{STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}、{STRING}……（尚有 {NUM} 個未顯示）
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新檢視視窗
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接受貨物：{SILVER}{STRING}
@@ -5259,6 +5261,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :無法移動車
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :後端車頭一定要跟著前端車頭
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :找不到前往附近機廠的路徑
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :找不到附近的車廠
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :找不到附近的機棚
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :機廠種類錯誤
 

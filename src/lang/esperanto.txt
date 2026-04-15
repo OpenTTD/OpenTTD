@@ -1998,6 +1998,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Kiam ŝaltita, 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktivigi vagonajn rapideclimojn: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiam ebligita, ankaŭ uzu rapideco-limigojn de vagonoj por decidi la maksimuman rapidecon de vagonaro
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Ŝalti maksimuman flugdistancon por aviadiloj: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Kiam ŝaltita, dosieroj NewGRF povos limigi maksimuman flugdistancon de aviadiloj
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Malŝalti elektrajn relojn: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, ne necesas elektrigi relojn por ke elektraj lokomotivoj povu veturi sur ili
@@ -5364,6 +5366,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Ne povas movi v
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :la malantaŭa maŝino ĉiam sekvos la antaŭan
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :ne povas trovi vojon al loka tenejo
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :ne povas trovi lokan garaĝon
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :ne povas trovi lokan hangaron
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :malĝusta tenejotipo
 

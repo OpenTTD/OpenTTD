@@ -1142,7 +1142,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Falsch Sig
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} feelend/korrupt Datei{P "" en})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Konnt keng Lëscht vun supportéierten Opléisunge fannen
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fehler beim Vollbild
+STR_ERROR_FULLSCREEN_FAILED                                     :Feeler beim Vollbild
 
 # Custom currency window
 
@@ -1503,7 +1503,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Erlaabt d'Iwwer
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaabt d'Bauen vu säitlechen Busarrêten op Stroossen déi der Stad gehéieren
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Erlaabt d'Iwwerfueren vu Stopschëlder op Stroossen vun der Konkurrenz: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Erlaabt d'Bauen vu säitlechen Busarrêten op Stroossen déi enger anerer Firma gehéieren
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Astellung kann net geännert ginn wann et Gefierer gëtt
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Déi Astellung ka net geännert gi wann et Gefierer gëtt
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastrukturënnerhalt {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wann ugeschalt, kaschten Infrastrukturen Ennerhaltskäschten. D'Käschten wuessen iwwerproportional zu der Netzwierkgréisst, an treffen sou grouss Firmen méi wéi klenger
@@ -1521,7 +1521,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann e G
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Messagen uweisen wann Gefierer keen Wee op hiert Ziel fannen
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opträg vun de Gefierer nopréifen: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wann ugeschalt, ginn d'Opträg vu Gefierer periodesch kontrolléiert, an e puer evident Fehler ginn mat engem Noriichtenmessage gemellt wann se fonnt ginn
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wann ugeschalt, ginn d'Opträg vu Gefierer periodesch kontrolléiert, an e puer evident Feeler gi mat engem Noriichtenmessage gemellt wa se fonnt ginn
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jo, mee net déi gestoppten Gefierer
@@ -1904,6 +1904,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Wann ugeschalt 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Geschwindegkeetsbegrenzungen fir Waggonen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wann ugeschalt, benotz och Geschwindegkeetslimitatiounen fir Waggonen fir d'maximal Geschwindegkeet vun engem Zuch ze definéiren
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Maximal Reechwäit vu Fligere limitéieren: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Wann ugeschalt, gëtt NewGRFen erlabt d'maximal Reechwäit vu Fligeren ze begrenzen
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektreschschinnen ausschalten: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, ginn keng elektresch Schinnen gebraucht fir mat elektreschen Zich ze fueren
@@ -2211,11 +2213,11 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Erlab Zich bei 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Astellung änneren
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Fehler mat der Konfiguratiounsdatei...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... Fehler am Array '{STRING}'
+STR_CONFIG_ERROR                                                :Feeler mat der Konfiguratiounsdatei...
+STR_CONFIG_ERROR_ARRAY                                          :Feeler am Array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... falsche Wäert '{STRING}' fir '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... Trailing-characters um Enn vun der Astellung '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoréiren NewGRF '{STRING}': Duplikat-GRF ID wéi '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :ignoréiren NewGRF '{STRING}': Duplikat-GRF ID wéi '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoréiren ongültëgen NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :net fonnt
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :onsécher fir statesche Gebrauch
@@ -2224,7 +2226,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :net mat dëser 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekannt
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressiounslevel '{STRING}' ass net gültëg.
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Späicherstand format '{STRING}' gëtt et net. Revertéiren zu '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoréiren Basis Grafik Set '{STRING}': net fonnt
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignoréiren Basis Grafik Set '{STRING}': net fonnt
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoréiren Basis Sound Set '{STRING}': net fonnt
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoréiren Basis Musik Set '{STRING}': net fonnt
 
@@ -2718,8 +2720,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Downloa
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Ausgewielt wéinst: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Ofhängegkeeten: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD ass ouni "zlib" Support compiléiert...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... Inhalt eroflueden ass net méiglech!
+STR_CONTENT_NO_ZLIB                                             :OpenTTD ass ouni "zlib" Support compiléiert...
+STR_CONTENT_NO_ZLIB_SUB                                         :Inhalt eroflueden ass net méiglech!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Standard Grafiken
@@ -2741,9 +2743,9 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Download
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} vun {BYTES} downgeload ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Konnt net op de Contentserver konnektéiren...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Download mësslong...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Datei net beschreiwbar
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Konnt net op de Contentserver konnektéiren...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Download mësslong...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :Datei net beschreiwbar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Konnt d'erofgelueden Datei net dekompriméiren
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Feelend Grafiken
@@ -2874,13 +2876,13 @@ STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Bass du
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wiel eng Statiounsklass fir unzeweisen
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wiel en Typ vu Statioun fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
-STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Wiel eng Kollektioun u Garen aus déi ugewise ginn
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Wiel eng Kollektioun u Garen aus déi ugewise gëtt
 STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Wiel e Weepunkt fir unzeweisen
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Wiel e Weepunkt fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
-STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Wiel eng Kollektioun u Weepunkter aus déi ugewise ginn
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Wiel eng Kollektioun u Weepunkter aus déi ugewise gëtt
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Wiel eng Busarrêtsklass fir unzeweisen
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Wiel en Typ vu Busarrêt fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
-STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Wiel eng Kollektioun u Busarrêten aus déi ugewise ginn
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Wiel eng Kollektioun u Busarrêten aus déi ugewise gëtt
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Wiel eng Camionsstatioun fir unzeweisen
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Wiel en Typ vu Camionsstatioun fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Wiel eng Objetsklass fir unzeweisen
@@ -2888,6 +2890,7 @@ STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Wiel en Typ vun
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Wiel eng Kollektioun aus déi ugewise gëtt
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Wiel eng Stad-Zone fir unzeweisen
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Wiel en Haustyp fir ze bauen. Ctrl+Klick fir en bei d'gespäichert Objeten dobäizesetzen oder ewechzehuelen
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Wiel eng Kollektioun un Häiser aus déi ugewise gëtt
 
 STR_HOUSE_PICKER_CAPTION                                        :Häiserauswiel
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Numm: {GOLD}{STRING}
@@ -3694,7 +3697,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zuch'{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' huet Fehlinformatiounen
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit Informatioun fir '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ass anescht wéi an der Kaflëscht no der Constructioun. Dëst kann en Autoerneirung/-ersetzen Feeler oprufen
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' huet eng Endlosschläif am Production callback verursaacht
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} huet en onbekannten/invalid Resultat {2:HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Callback {1:HEX} huet en onbekannt/ongültegt Resultat {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' huet en ongültegen Wuerentyp am Production-callback bei {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -5033,7 +5036,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Geschät
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Nach amgaangen ze späicheren.{} W.e.g. waarde bis daat fäerdeg ass!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Fehler beim Autospäicheren
+STR_ERROR_AUTOSAVE_FAILED                                       :Feeler beim Autospäicheren
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kann net um Laafwierk liesen
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Feeler beim Späicheren...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kann d'Datei net läschen
@@ -5049,7 +5052,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<keen do>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spill gouf an enger Versioun ouni Tram support gesaved. All Tram gouf wechgeholl
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartenerstellung ofgebrach...{}{}... keng passend Stadplazen
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Kaartenerstellung ofgebrach...{}{}... keng passend Stadplazen
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... et ass keng Stad an dësem Szenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kann d'Landschaft net vum PNG lueden...
@@ -5057,7 +5060,7 @@ STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Date
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... konnt de Bildtyp net konvertéieren. Brauch en 8 oder 24-bit PNG Bild.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eppes ass schief gaangen (warscheinlech eng korrupt Datei)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Kann d'Landschaft net aus der BMP lueden...
+STR_ERROR_BMPMAP                                                :Kann d'Landschaft net aus der BMP lueden...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... konnt de Bildtyp net konvertéieren
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... Bild ass ze grouss
@@ -5074,7 +5077,7 @@ STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}De Scre
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Héichtekaart ofgespäichert als '{STRING}'. Héchste Punkt ass {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespäichert als '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshotfehler!
+STR_ERROR_SCREENSHOT_FAILED                                     :Screenshotfeeler!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Meldung
@@ -5138,15 +5141,15 @@ STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kann d'S
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kann d'Stad hei net bauen...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kann d'Stad net vergréisseren...
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ze no un enger anerer Stad
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ze vill Stied
+STR_ERROR_TOO_MANY_TOWNS                                        :ze vill Stied
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... et ass keng Plaz méi op der Kaart
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Stroossenarbeschten amgaangen
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des Stad net läschen...{}{}Eng Statioun oder Schapp huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
+STR_ERROR_TOWN_CAN_T_DELETE                                     :Kann des Stad net läschen...{}{}Eng Statioun oder Schapp huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... et gëtt keng gëeegent Plaz fir eng Statu am Stadzentrum
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kann d'Haus net bauen...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zevill Industrien
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :ze vill Industrien
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kann keng Industrien bauen...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kann {STRING} net hei bauen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kann deen Industrietyp hei net bauen...
@@ -5158,7 +5161,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kann
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kann nëmmen am Reebësch gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kann nëmmen an der Wüst gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kann nëmmen a Stied gebaut ginn (ersetzt Haiser)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kann nëmmen an der Géigend vum Zentrum vun der Stad gebaut ginn
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :kann nëmmen an der Géigend vum Zentrum vun der Stad gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kann nëmmen an niddregen Beräicher gebaut ginn
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann nëmmen no un den Ecker vun der Kaart positionéiert ginn
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Bësch kann nëmmen iwwert der Schnéilinn geplanzt ginn
@@ -5166,9 +5169,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann nëmmen ënnert der Schnéilinn gebaut ginn
 
 STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Wéinst Pech huet d'Finanzéiren vun der Förderung net geklappt; probéier nach eng Kéier
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Et gouf keng passend Plaz fonnt fir dës Industrie ze förderen
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Et gouf keng brauchbar Plaz fir '{STRING}' Industrien fonnt
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Änner d'Parameter fir d'Kaartegeneratioun fir eng besser Kaart ze erstellen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :Et gouf keng passend Plaz fonnt fir dës Industrie ze förderen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Et gouf keng brauchbar Plaz fir '{STRING}' Industrien fonnt
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Änner d'Parameter fir d'Kaartegeneratioun fir eng besser Kaart ze erstellen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kann d'Gare hei net bauen...
@@ -5183,10 +5186,10 @@ STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt u
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :... Statioun zevill ausgebreed
 STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... net supportéiert Unzuel u Schinnen
 STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... net supportéiert Längt
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill Garen/Luedstatiounen
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Ze vill Garesdeeler
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busarrêten
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Ze vill Camionsgaren
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :ze vill Garen/Luedstatiounen
+STR_ERROR_TOO_MANY_STATION_SPECS                                :ze vill Deeler un der Gare
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :ze vill Busarrêten
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :ze vill Camionsgaren
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Ze no un engem aanere Quai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Ze no un engem aanere Fluchhafen
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kann d'Gare net ëmbenennen...
@@ -5252,8 +5255,9 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Onkompatibel Sc
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kann d'Gefier net réckelen...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}D'hënnescht Maschinn geet ëmmer der viischter no.
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kann de Wee an de Schapp net fannen
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann de Schapp net fannen
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :Kann de Wee an de Schapp net fannen
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :Kann de Schapp net fannen
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :ka lokalen Hangar net fannen
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falschen Schapp-Typ
 
@@ -5344,12 +5348,12 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kann den
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Plaz onpassend fir den Tunnelsagang
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Muss den Tunnel fir d'éischt ofrappen
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Aaneren Tunnel am Wee
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel géif ausserhalb der Kaart erauskommen
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :Tunnel géif ausserhalb der Kaart erauskommen
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kann d'Land net fir dei aaner Säit vum Tunnel fräi leen
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... Tunnel ze laang
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... zevill Objeten
+STR_ERROR_TOO_MANY_OBJECTS                                      :zevill Objeten
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kann Objet net bauen...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objet am Wee
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... Firmen Haaptgebai am Wee
@@ -5435,7 +5439,7 @@ STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Ka Gefie
 STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Ka Schëffer net automatesch ersetzen...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Ka Fliger net automatesch ersetzen...
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ze vill Gefierer am Spill
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :ze vill Gefierer am Spill
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}De Service-Intervall kann net geännert ginn...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Gefier ass zerstéiert
@@ -5463,7 +5467,7 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Fliger a
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Keng Plaz méi fir Opträg
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Ze vill Opträg
+STR_ERROR_TOO_MANY_ORDERS                                       :Ze vill Opträg
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Kann keen neien Optrag bäisetzen...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Kann den Optrag net läschen...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Kann den Optrag net änneren...
@@ -5505,7 +5509,7 @@ STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... Zäi
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... Zäitplang gouf nach net gestart
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ze vill Schëlder
+STR_ERROR_TOO_MANY_SIGNS                                        :ze vill Schëlder
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kann d'Schëld hei net opriichten...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kann den Numm vum Schëld net änneren...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann d'Schëld net läschen...

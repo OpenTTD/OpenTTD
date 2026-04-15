@@ -1905,6 +1905,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Mikäli käytö
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön vaunujen nopeusrajoitukset: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Mikäli käytössä, vaunujen nopeusrajoitusta käytetään junan maksiminopeuden määrittämisessä
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Ilma-alusten rajallinen toimintasäde: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Mikäli käytössä, NewGRF:t voivat rajoittaa ilma-alusten enimmäistoimintasädettä
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Poista sähköradat käytöstä: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mikäli käytössä, sähköveturit toimivat ei-sähköistetyillä radoilla
@@ -4079,7 +4081,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} ja {NUM} muuta
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} ja {NUM} muuta…
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Teollisuushaarojen nimet – kohdista päänäkymä tuotantolaitokseen napsauttamalla nimeä. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Vastaanotettava rahti: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Tuotettu rahti: {SILVER}{STRING}
@@ -5259,6 +5261,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Kulkuneuvoa ei 
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :moottorivaunun takaosa seuraa aina etuosaansa
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :reittiä paikalliselle varikolle ei löydy
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :paikallista varikkoa ei löydy
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :paikallista lentokonehallia ei löydy
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :väärä varikkotyyppi
 

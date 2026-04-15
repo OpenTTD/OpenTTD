@@ -2592,7 +2592,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in 
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Inget nätverkskort funnet
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Anslutning till servern tog för lång tid eller avvisades
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunde inte ansluta på grund av att NewGRF är omaka
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering av nätverks-spel misslyckades
+STR_NETWORK_ERROR_DESYNC                                        :Synkronisering av nätverksspel misslyckades
 STR_NETWORK_ERROR_LOSTCONNECTION                                :Anslutning till nätverksspel förlorad
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunde inte ladda det sparade spelet
 STR_NETWORK_ERROR_SERVER_START                                  :Kunde inte starta servern
@@ -2604,8 +2604,8 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :Fel lösenord
 STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Du finns ej med på listan över tillåtna klienter
 STR_NETWORK_ERROR_SERVER_FULL                                   :Servern är full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :Du är bannlyst från den här servern
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev utkastad från spelet
-STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Orsak: {STRING}
+STR_NETWORK_ERROR_KICKED                                        :Du blev utkastad från spelet
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :Orsak: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :Fusk är inte tillåtet på denna server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :Du skickade för många kommandon till servern
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du tog för lång tid på dig att mata in löserondet
@@ -2623,7 +2623,7 @@ STR_NETWORK_ERROR_CLIENT_DESYNC                                 :synkroniserings
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :kunde inte ladda kartan
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :anslutning förlorad
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokollfel
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF är omaka
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF:er är omaka
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :inte godkänd
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottog felaktigt eller oväntat paket
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :fel revision
@@ -2669,11 +2669,11 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har ändrat sitt namn till {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav {CURRENCY_LONG} till {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :Servern avslutade sessionen
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern startar om...{}{}Var vänlig vänta...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :Servern startar om...{}{}Var vänlig vänta...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} kastades ut. Orsak: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :Serverregistrering misslyckades
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}En annan server med samma inbjudningskod registrerade sig. Växlar till "lokal" speltyp.
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :En annan server med samma inbjudningskod registrerade sig. Växlar till "lokal" speltyp.
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Din server tillåter inte fjärranslutningar
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Andra spelare kommer inte ha möjlighet att ansluta till din server
 
@@ -3689,13 +3689,13 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Hittade
 STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Beteendet hos NewGRF:en '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
+STR_NEWGRF_BROKEN                                               :Beteendet hos NewGRF:en '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Kraftförsörjning-vagn-tillstånd för '{1:ENGINE}' ändrades utanför en depå
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depån
 STR_NEWGRF_BROKEN_CAPACITY                                      :Kapaciteten ändrades för '{1:ENGINE}' utan att den var i depå eller under anpassning
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING} ger felaktig information
+STR_NEWGRF_BUGGY                                                :NewGRF:en '{0:STRING}' ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en oändlig loop i produktions-callback-funktionen
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktion {1:HEX} returnerade ett okänt/ogiltligt resultat {2:HEX}
@@ -5088,12 +5088,12 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Meddela
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Utanför kanten
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :för nära kanten av kartan
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Inte tillräckligt med pengar - kräver {CURRENCY_LONG}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :inte tillräckligt med pengar - kräver {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :platt mark krävs
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :marken lutar åt fel håll
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan inte utföra detta...
+STR_ERROR_CAN_T_DO_THIS                                         :Kan inte utföra detta...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :byggnad måste rivas först
-STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... byggnaden är skyddad
+STR_ERROR_BUILDING_IS_PROTECTED                                 :byggnaden är skyddad
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Kan inte röja området...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... platsen passar inte
 STR_ERROR_ALREADY_BUILT                                         :redan byggd
@@ -5107,7 +5107,7 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :inte tillåtet när spelet är pausat
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte detta
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :De lokala myndigheterna i {TOWN} tillåter inte detta
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte att ytterligare en flygplats byggs i staden
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}De lokala myndigheterna i {TOWN} vägrar ge tillåtelse att bygga en flygplats på grund av ljudproblem
 STR_ERROR_BRIBE_FAILED                                          :Ditt mutningsförsök upptäcktes av en regional utredare
@@ -5140,7 +5140,7 @@ STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Kan inte bygga 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :Kan inte bygga några städer...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :Kan inte byta namn på stad...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan inte grunda stad här...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Kan inte grunda stad här...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan inte expandera stad...
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :för nära en annan stad
 STR_ERROR_TOO_MANY_TOWNS                                        :för många städer
@@ -5155,7 +5155,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :för många ind
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :Kan inte generera industrier...
 STR_ERROR_CAN_T_BUILD_HERE                                      :Kan inte bygga {STRING} här...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan inte bygga denna typ av industri här...
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Kan inte prospektera för industrin...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :Kan inte prospektera för industrin...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :för nära en annan industri
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... måste grunda stad först
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :endast en per stad är tillåten
@@ -5165,7 +5165,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :kan bara byggas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :kan bara byggas i städer (ersätter hus)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :kan bara byggas nära stadskärnor
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :kan bara byggas i låglandsområden
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan bara placeras nära kartans kant
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :kan bara placeras nära kartans kanter
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bara planteras ovanför snögränsen
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :kan endast byggas ovanför snögränsen
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :kan endast byggas nedanför snögränsen
@@ -5258,7 +5258,8 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Fel järnvägst
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Kan inte flytta fordon...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Det bakre loket kommer alltid följa med det tillhörande främre loket
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :kan inte hitta vägen till närmaste depå
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :kan inte hitta till lokal depå
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :kan inte hitta lokal depå
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :kan inte hitta lokal hangar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Felaktig depå-typ
 
@@ -5273,8 +5274,8 @@ STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan 
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} är för långt efter utbyte
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Inga regler för automatisk förnyelse/utbyte av fordon är aktiverade
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pengagräns)
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nya fordonet kan ej bära {STRING}
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nytt fordon kan inte anpassas till order {NUM}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Det nya fordonet kan ej bära {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Det nya fordonet kan inte anpassas till order {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :omöjlig kombination av spår
@@ -5323,7 +5324,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Kan inte bygga 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... träd redan här
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... fel sorts terräng för trädtyp
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan inte plantera träd här...
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Kan inte plantera träd här...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Kan inte bygga bro här...
@@ -5377,7 +5378,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Kan inte lägga
 ###length VEHICLE_TYPES
 STR_ERROR_TRAIN_IN_THE_WAY                                      :tåg i vägen
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :vägfordon i vägen
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Skepp i vägen
+STR_ERROR_SHIP_IN_THE_WAY                                       :skepp i vägen
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Flygplan i vägen
 
 ###length VEHICLE_TYPES
@@ -5407,13 +5408,13 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Kan inte stoppa
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Kan inte skicka tåg till depå...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Kan inte skicka fordon till depå...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan inte skicka skepp till depå...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Kan inte skicka skepp till depå...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan inte skicka flygplan till hangar...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan inte köpa järnvägsfordon...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :Kan inte köpa järnvägsfordon...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :Kan inte köpa vägfordon...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan inte köpa skepp...
+STR_ERROR_CAN_T_BUY_SHIP                                        :Kan inte köpa skepp...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan inte köpa flygplan...
 
 ###length VEHICLE_TYPES
@@ -5423,9 +5424,9 @@ STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Kan inte byta n
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Kan inte byta namn på flygplanstyp...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan inte sälja järnvägsfordon...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Kan inte sälja järnvägsfordon...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Kan inte sälja vägfordon...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan inte sälja skepp...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Kan inte sälja skepp...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan inte sälja flygplan...
 
 ###length VEHICLE_TYPES
@@ -5441,7 +5442,7 @@ STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Kan inte byta u
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Kan inte byta ut flygplan...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :för många fordon i spelet
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan inte ändra service-intervall...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :Kan inte ändra serviceintervall...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :fordonet är förstört
 

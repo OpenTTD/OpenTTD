@@ -1906,6 +1906,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, usa o limite de velocidade dos vagões para definir a velocidade máxima de um trem
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Ativar alcance máximo das aeronaves: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Quando ativado, NewGRFs poderão limitar o alcance máximo das aeronaves
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ativando esta configuração, não será necessário eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
@@ -5260,6 +5262,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Não é possív
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :a locomotiva traseira sempre seguirá a sua equivalente dianteira
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :não é possível encontrar uma rota para depósito local
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :não é possível encontrar depósito local
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :não é possível encontrar o hangar local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :tipo de depósito errado
 

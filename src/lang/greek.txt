@@ -1998,6 +1998,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Όταν είν
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοποίηση ορίων ταχύτητας βαγονιών: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, χρησιμοποιούνται και τα όρια ταχύτητας των βαγονιών όταν αποφασίζεται η μέγιστη ταχύτητα ενός τρένου
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Ενεργοποίηση μέγιστης εμβέλειας αεροσκάφους: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Όταν είναι ενεργοποιημένο, τα NewGRF θα μπορούν να περιορίσουν τη μέγιστη εμβέλεια αεροσκαφών
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Απενεργοποίηση ηλεκτρικών σιδηροτροχιών: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ενεργοποιώντας αυτήν την ρύθμιση απενεργοποιείται η ανάγκη ηλεκτροδότησης των σιδηροτροχιών για να μπορέσουν σε αυτές να λειτουργήσουν οι ηλεκτρικές μηχανές
@@ -5360,6 +5362,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Δεν μπορ
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :η πίσω μηχανή θα ακολουθεί πάντα την αντίστοιχη μπροστινή
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :αδύνατο να βρεθεί διαδρομή προς το τοπικό αμαξοστάσιο
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :αδύνατο να βρεθεί τοπικό αμαξοστάσιο
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :αδύνατο να βρεθεί τοπικό υπόστεγο
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :λάθος τύπος αμαξοστάσιου
 
