@@ -5,26 +5,16 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file tree_func.h Function definitions related to tree tiles. */
+/** @file newgrf_tree.h NewGRF handling of tree tiles. */
 
-#ifndef TREE_FUNC_H
-#define TREE_FUNC_H
+#ifndef NEWGRF_TREE_H
+#define NEWGRF_TREE_H
 
 #include "gfx_type.h"
-#include "tree_map.h"
-#include "tree_type.h"
+#include "newgrf_callbacks.h"
+#include "tile_type.h"
 
-void ResetTrees();
-void FinaliseTrees();
+uint16_t GetTreeTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, uint16_t tree, TileIndex tile, std::span<int32_t> regs100 = {});
+SpriteID GetCustomTreeSprite(TileIndex tile, uint16_t tree, uint8_t slot);
 
-std::span<const TreeSpec> GetOriginalTreeSpecs();
-const TreeSpec &GetTreeSpec(uint16_t tree);
-
-std::span<const TreeType> GetTreeTypes();
-PalSpriteID GetTreeSprite(TreeType treetype);
-
-void PlaceTree(TileIndex tile, uint32_t r, bool keep_density = false);
-void PlaceTreesRandomly();
-uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
-
-#endif /* TREE_FUNC_H */
+#endif /* NEWGRF_TREE_H */

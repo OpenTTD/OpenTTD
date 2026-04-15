@@ -303,7 +303,7 @@ public:
 struct TreeSpec;
 class TreeOverrideManager : public OverrideManagerBase {
 protected:
-	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFFFF; }
 public:
 	TreeOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}

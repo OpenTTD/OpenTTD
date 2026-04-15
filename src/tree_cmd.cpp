@@ -23,6 +23,7 @@
 #include "core/geometry_type.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
+#include "newgrf_tree.h"
 #include "timer/timer_game_tick.h"
 #include "tree_cmd.h"
 #include "tree_func.h"
@@ -165,6 +166,15 @@ void TreeOverrideManager::SetEntitySpec(TreeSpec &&spec)
 		this->entity_overrides[i] = this->invalid_id;
 		this->grfid_overrides[i] = {};
 	}
+}
+
+/**
+ * Get the original tree specs.
+ * @return Span of original tree specs.
+ */
+std::span<const TreeSpec> GetOriginalTreeSpecs()
+{
+	return _original_tree_specs;
 }
 
 /**
@@ -348,7 +358,11 @@ static bool IsTreeTypeValidForTile(TileIndex tile, TreeType treetype)
 PalSpriteID GetTreeSprite(TreeType treetype)
 {
 	const auto &tts = GetTreeTileSpec(treetype);
-	return {GetTreeSpec(tts.trees[0][0]).normal + to_underlying(TreeGrowthStage::Growing3), tts.palettes[0][0]};
+
+	SpriteID base = GetCustomTreeSprite(INVALID_TILE, tts.trees[0][0], 0);
+	if (base == 0) base = GetTreeSpec(tts.trees[0][0]).normal;
+
+	return {base + to_underlying(TreeGrowthStage::Growing3), tts.palettes[0][0]};
 }
 
 /**
@@ -927,8 +941,11 @@ static void DrawTile_Trees(TileInfo *ti)
 	const Coord2D<uint8_t> *d = _tree_layout_xy[position];
 
 	for (uint i = 0; i < trees; i++) {
-		const auto &ts = GetTreeSpec(sprites[i]);
-		SpriteID base = snowy ? ts.snowy : ts.normal;
+		SpriteID base = GetCustomTreeSprite(ti->tile, sprites[i], i);
+		if (base == 0) {
+			const auto &ts = GetTreeSpec(sprites[i]);
+			base = snowy ? ts.snowy : ts.normal;
+		}
 
 		te[i].sprite = base + to_underlying(i == trees - 1 ? GetTreeGrowth(ti->tile) : TreeGrowthStage::Grown);
 		te[i].pal = palettes[i];
@@ -1189,6 +1206,12 @@ static bool TileLoopHandleTreeCycle(TileIndex tile, uint32_t cycle)
 	const TreeTileSpec &tts = GetTreeTileSpec(GetTreeType(tile));
 
 	bool mark_dirty = false;
+
+	/* Update monthly refresh if requested. */
+	if (tts.flags.Test(TreeFlag::MonthlyRefresh) && GetTreeMonth(tile) != TimerGameCalendar::month) {
+		SetTreeMonth(tile, TimerGameCalendar::month);
+		mark_dirty = true;
+	}
 
 	/* Skip cycles to slow tree growth. */
 	const auto &ts = GetTreeSpec(tts.trees[GetTreeVariantPosition(tile).first][GetTreeCount(tile) - 1]);

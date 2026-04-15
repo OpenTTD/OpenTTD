@@ -98,6 +98,7 @@ enum class GrfSpecFeature : uint8_t {
 	TramTypes, ///< Tram types feature
 	RoadStops, ///< Road stops feature
 	Badges, ///< Badges feature
+	Trees, ///< Trees feature
 	End, ///< End marker
 
 	Default = End, ///< Unspecified feature, default badge

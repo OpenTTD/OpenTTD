@@ -35,16 +35,11 @@
  */
 static Dimension GetMaxTreeSpriteSize()
 {
-	Dimension size, this_size;
-	Point offset;
-	/* Avoid to use it uninitialized */
-	size.width = ScaleGUITrad(32); // default width - WD_FRAMERECT_LEFT
-	size.height = ScaleGUITrad(39); // default height - BUTTON_BOTTOM_OFFSET
-	offset.x = 0;
-	offset.y = 0;
+	Dimension size{};
+	Point offset{};
 
 	for (const TreeType &treetype : GetTreeTypes()) {
-		this_size = GetSpriteSize(GetTreeSprite(treetype).sprite, &offset);
+		Dimension this_size = GetSpriteSize(GetTreeSprite(treetype).sprite, &offset);
 		size.width = std::max<int>(size.width, 2 * std::max<int>(this_size.width, -offset.x));
 		size.height = std::max<int>(size.height, std::max<int>(this_size.height, -offset.y));
 	}
