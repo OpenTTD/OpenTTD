@@ -737,7 +737,7 @@ SettingsContainer &GetSettingsTree()
 			SettingsPage *routing = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_ROUTING));
 			{
 				routing->Add(new SettingEntry("vehicle.road_side"));
-				routing->Add(new SettingEntry("difficulty.line_reverse_mode"));
+				routing->Add(new SettingEntry("difficulty.train_flip_reverse_allowed"));
 				routing->Add(new SettingEntry("pf.reverse_at_signals"));
 				routing->Add(new SettingEntry("pf.forbid_90_deg"));
 			}

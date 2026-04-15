@@ -2943,6 +2943,9 @@ bool AfterLoadGame()
 				u->direction = ReverseDir(u->direction);
 			}
 		}
+
+		/* Update the setting for train flipping. */
+		_settings_game.difficulty.train_flip_reverse_allowed = _settings_game.difficulty.line_reverse_mode ? TrainFlipReversingAllowed::EndOfLineOnly : TrainFlipReversingAllowed::All;
 	}
 
 	if (IsSavegameVersionBefore(SLV_165)) {

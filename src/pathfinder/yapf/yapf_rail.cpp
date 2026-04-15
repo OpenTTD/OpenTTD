@@ -618,6 +618,16 @@ bool YapfTrainCheckReverse(const Train *v)
 
 	int reverse_penalty = 0;
 
+	/* Consider whether the train might back up at reduced speed. */
+	if (_settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::None && !v->Last()->CanLeadTrain()) {
+		constexpr int DRIVING_BACKWARDS_PENALTY = 100 * YAPF_TILE_LENGTH;
+
+		if (!v->vehicle_flags.Test(VehicleFlag::DrivingBackwards)) {
+			/* We're currently driving forwards at full speed, and would rather not reverse if possible. */
+			reverse_penalty += DRIVING_BACKWARDS_PENALTY;
+		}
+	}
+
 	if (moving_front->track == TRACK_BIT_WORMHOLE) {
 		/* front in tunnel / on bridge */
 		DiagDirection dir_into_wormhole = GetTunnelBridgeDirection(tile);

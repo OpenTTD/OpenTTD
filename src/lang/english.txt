@@ -1352,8 +1352,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :High
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING2}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur periodically. During a recession all production is significantly lower (it returns to previous level when the recession is over)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Disallow train reversing in stations: {STRING2}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled, trains will not reverse in non-terminus stations, even if there is a shorter path to their next destination when reversing
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Allow trains to flip when reversing: {STRING2}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Choose where trains may flip to reverse direction. With "All" trains may flip anywhere. With "End of line only" trains will not flip in stations if a route forwards is possible. With "None" trains cannot flip and will drive backwards if needed, but at reduced speed if the rear vehicle lacks a driving cab
+
+###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :All
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :End of line only
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :None
 
 STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STRING2}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
