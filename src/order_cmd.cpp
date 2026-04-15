@@ -802,6 +802,7 @@ CommandCost CmdInsertOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			if (occ >= OrderConditionComparator::End) return CMD_ERROR;
 			switch (new_order.GetConditionVariable()) {
 				case OrderConditionVariable::RequiresService:
+				case OrderConditionVariable::DrivingBackwards:
 					if (occ != OrderConditionComparator::IsTrue && occ != OrderConditionComparator::IsFalse) return CMD_ERROR;
 					break;
 
@@ -1295,6 +1296,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 				case OrderConditionVariable::Unconditionally: return CMD_ERROR;
 
 				case OrderConditionVariable::RequiresService:
+				case OrderConditionVariable::DrivingBackwards:
 					if (cond_comparator != OrderConditionComparator::IsTrue && cond_comparator != OrderConditionComparator::IsFalse) return CMD_ERROR;
 					break;
 
@@ -1309,6 +1311,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			switch (order->GetConditionVariable()) {
 				case OrderConditionVariable::Unconditionally:
 				case OrderConditionVariable::RequiresService:
+				case OrderConditionVariable::DrivingBackwards:
 					return CMD_ERROR;
 
 				case OrderConditionVariable::LoadPercentage:
@@ -1393,6 +1396,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 						break;
 
 					case OrderConditionVariable::RequiresService:
+					case OrderConditionVariable::DrivingBackwards:
 						if (occ != OrderConditionComparator::IsTrue && occ != OrderConditionComparator::IsFalse) order->SetConditionComparator(OrderConditionComparator::IsTrue);
 						order->SetConditionValue(0);
 						break;
@@ -1939,6 +1943,7 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
 		case OrderConditionVariable::RequiresService: skip_order = OrderConditionCompare(occ, v->NeedsServicing(), value); break;
 		case OrderConditionVariable::Unconditionally: skip_order = true; break;
 		case OrderConditionVariable::RemainingLifetime: skip_order = OrderConditionCompare(occ, std::max(TimerGameCalendar::DateToYear(v->max_age - v->age + CalendarTime::DAYS_IN_LEAP_YEAR - 1), TimerGameCalendar::Year(0)), value); break;
+		case OrderConditionVariable::DrivingBackwards: skip_order = OrderConditionCompare(occ, v->IsDrivingBackwards(), value); break;
 		default: NOT_REACHED();
 	}
 
