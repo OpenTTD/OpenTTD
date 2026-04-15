@@ -137,6 +137,8 @@ void SetLocalCompany(CompanyID new_company)
 		InvalidateWindowClassesData(WC_VEHICLE_VIEW);
 		/* Delete any construction windows... */
 		CloseConstructionWindows();
+		/* Update the default rail based on most used */
+		SetDefaultRailGui();
 	}
 
 	/* ... and redraw the whole screen. */
