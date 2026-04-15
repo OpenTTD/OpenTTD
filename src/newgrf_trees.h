@@ -5,28 +5,21 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file tree_func.h Function definitions related to tree tiles. */
+/** @file newgrf_trees.h NewGRF handling of trees and tree tiles. */
 
-#ifndef TREE_FUNC_H
-#define TREE_FUNC_H
+#ifndef NEWGRF_TREES_H
+#define NEWGRF_TREES_H
 
 #include "gfx_type.h"
+#include "newgrf_callbacks.h"
+#include "tile_cmd.h"
 #include "tree_map.h"
-#include "tree_type.h"
 
-void ResetTrees();
-void FinaliseTrees();
+struct TreeListEnt : PalSpriteID, Coord2D<int8_t> {};
 
-std::span<const TreeSpec> GetOriginalTreeSpecs();
-const TreeSpec &GetTreeSpec(TreeType treetype);
+uint16_t GetTreeTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, TreeType treetype, TileIndex tile, std::span<int32_t> regs100 = {});
+PalSpriteID GetCustomTreeSprite(TileIndex tile, TreeType treetype);
+bool GetNewTreeList(const TileInfo *ti, TreeType treetype, uint trees, std::array<TreeListEnt, 4> &te);
+// bool DrawNewTrees(const TileInfo *ti, TreeType treetype);
 
-std::span<const TreeType> GetTreeTypes();
-PalSpriteID GetTreeSprite(TreeType treetype);
-
-void PlaceTree(TileIndex tile, uint32_t r, bool keep_density = false);
-void PlaceTreesRandomly();
-uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
-
-const Coord2D<uint8_t> *GetTreePositions(uint8_t seed);
-
-#endif /* TREE_FUNC_H */
+#endif /* NEWGRF_TREES_H */

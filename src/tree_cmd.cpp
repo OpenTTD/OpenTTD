@@ -23,6 +23,7 @@
 #include "core/geometry_type.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
+#include "newgrf_trees.h"
 #include "timer/timer_game_tick.h"
 #include "tree_cmd.h"
 #include "tree_func.h"
@@ -158,12 +159,23 @@ void TreeOverrideManager::SetEntitySpec(TreeSpec &&spec)
 	for (int i = 0; i < this->max_offset; i++) {
 		TreeSpec *overridden_tree = &_tree_specs[i];
 
-		if (this->entity_overrides[i] != _tree_specs[treetype].grf_prop.local_id || this->grfid_overrides[i] != _tree_tile_info[treetype].grf_prop.grfid) continue;
+		if (this->entity_overrides[i] != _tree_specs[treetype].grf_prop.local_id || this->grfid_overrides[i] != _tree_specs[treetype].grf_prop.grfid) continue;
 
 		overridden_tree->grf_prop.override_id = treetype;
 		this->entity_overrides[i] = this->invalid_id;
 		this->grfid_overrides[i] = {};
 	}
+}
+
+std::span<const TreeSpec> GetOriginalTreeSpecs()
+{
+	return _original_tree_specs;
+}
+
+const TreeSpec &GetTreeSpec(TreeType treetype)
+{
+	assert(treetype < _tree_specs.size());
+	return _tree_specs[treetype];
 }
 
 /**
@@ -240,7 +252,11 @@ PalSpriteID GetTreeSprite(TreeType treetype)
 {
 	assert(treetype < _tree_specs.size());
 	const auto &tree_spec = _tree_specs[treetype];
-	return {_tree_sprites[tree_spec.trees[0][0]].normal + 2, tree_spec.palettes[0][0]};
+
+	PalSpriteID ps = GetCustomTreeSprite(INVALID_TILE, treetype);
+	if (ps.sprite != 0) return ps;
+
+	return {_tree_sprites[tree_spec.trees[0][0]].normal + to_underlying(TreeGrowthStage::Growing3), tree_spec.palettes[0][0]};
 }
 
 /**
@@ -749,8 +765,6 @@ const Coord2D<uint8_t> *GetTreePositions(uint8_t seed)
 	return _tree_layout_xy[seed];
 }
 
-struct TreeListEnt : PalSpriteID, Coord2D<int8_t> {};
-
 /**
  * Draw a tree sprite list.
  * @param ti Tile info of tile to draw.
@@ -786,6 +800,36 @@ static void DrawTreeList(const TileInfo *ti, std::span<TreeListEnt> te, uint tre
 	EndSpriteCombine();
 }
 
+void GetDefaultTreeList(const TileInfo *ti, TreeType treetype, uint trees, std::array<TreeListEnt, 4> &te)
+{
+	/* Put the trees to draw in a list */
+	TreeGrowthStage growth = GetTreeGrowth(ti->tile);
+
+	uint8_t variant = CountBits(ti->tile.base() + ti->x + ti->y);
+
+	const TreeSpec &tree_spec = GetTreeSpec(treetype);
+
+	/* different tree styles above one of the grounds */
+	bool snowy = tree_spec.landscapes.Test(LandscapeType::Arctic) &&
+			(GetTreeGround(ti->tile) == TreeGround::SnowOrDesert || GetTreeGround(ti->tile) == TreeGround::RoughSnow) &&
+			GetTreeDensity(ti->tile) >= 2;
+
+	const auto &sprites = tree_spec.trees[GB(variant, 0, 2)];
+	const auto &palettes = tree_spec.palettes[GB(variant, 0, 2)];
+
+	const Coord2D<uint8_t> *d = GetTreePositions(GB(variant, 2, 2));
+
+	for (uint i = 0; i < trees; i++) {
+		SpriteID base = snowy ? _tree_sprites[sprites[i]].snowy : _tree_sprites[sprites[i]].normal;
+
+		te[i].sprite = base + (i == trees - 1 ? to_underlying(growth) : 3);
+		te[i].pal = palettes[i];
+		te[i].x = d->x;
+		te[i].y = d->y;
+		d++;
+	}
+}
+
 /** @copydoc DrawTileProc */
 static void DrawTile_Trees(TileInfo *ti)
 {
@@ -799,38 +843,14 @@ static void DrawTile_Trees(TileInfo *ti)
 	/* Do not draw trees when the invisible trees setting is set */
 	if (IsInvisibilitySet(TransparencyOption::Trees)) return;
 
-	uint8_t variant = CountBits(ti->tile.base() + ti->x + ti->y);
 	TreeType treetype = GetTreeType(ti->tile);
-
 	assert(treetype < std::size(_tree_specs));
-	const TreeSpec &tree_spec = _tree_specs[treetype];
 
-	/* different tree styles above one of the grounds */
-	bool snowy = tree_spec.landscapes.Test(LandscapeType::Arctic) &&
-			(GetTreeGround(ti->tile) == TreeGround::SnowOrDesert || GetTreeGround(ti->tile) == TreeGround::RoughSnow) &&
-			GetTreeDensity(ti->tile) >= 2;
-
-	const Coord2D<uint8_t> *d = _tree_layout_xy[GB(variant, 2, 2)];
-
-	TreeListEnt te[4];
-
-	/* put the trees to draw in a list */
 	uint trees = GetTreeCount(ti->tile);
-	TreeGrowthStage growth = GetTreeGrowth(ti->tile);
 
-	const auto &sprites = tree_spec.trees[GB(variant, 0, 2)];
-	const auto &palettes = tree_spec.palettes[GB(variant, 0, 2)];
+	static std::array<TreeListEnt, 4> te;
 
-	for (uint i = 0; i < trees; i++) {
-		SpriteID base = snowy ? _tree_sprites[sprites[i]].snowy : _tree_sprites[sprites[i]].normal;
-
-		te[i].sprite = base + (i == trees - 1 ? to_underlying(growth) : 3);
-		te[i].pal = palettes[i];
-		te[i].x = d->x;
-		te[i].y = d->y;
-		d++;
-	}
-
+	if (!GetNewTreeList(ti, treetype, trees, te)) GetDefaultTreeList(ti, treetype, trees, te);
 	DrawTreeList(ti, te, trees);
 }
 
@@ -852,7 +872,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 	}
 
 	uint num = GetTreeCount(tile);
-	if (_tree_specs[GetTreeType(tile)].tropiczones.Test(TropicZone::Rainforest)) num *= 4;
+	if (GetTreeSpec(GetTreeType(tile)).tropiczones.Test(TropicZone::Rainforest)) num *= 4;
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
 
