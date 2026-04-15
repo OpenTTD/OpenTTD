@@ -740,7 +740,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 				if (powered && has_power) SetBit(modflags, 5);
 				if (powered && !has_power) SetBit(modflags, 6);
-				if (t->flags.Test(VehicleRailFlag::Reversed)) SetBit(modflags, 8);
+				if (t->flags.Test(VehicleRailFlag::Reversed) ^ v->vehicle_flags.Test(VehicleFlag::DrivingBackwards)) SetBit(modflags, 8); // old newgrfs relied on this to provide sprites for driving backwards we no longer want that
 			}
 			if (v->vehicle_flags.Test(VehicleFlag::CargoUnloading)) SetBit(modflags, 1);
 			if (v->vehicle_flags.Test(VehicleFlag::BuiltAsPrototype)) SetBit(modflags, 10);
