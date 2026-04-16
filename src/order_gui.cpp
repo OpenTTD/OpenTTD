@@ -162,6 +162,7 @@ static const OrderConditionVariable _order_conditional_variable[] = {
 	OrderConditionVariable::Age,
 	OrderConditionVariable::RemainingLifetime,
 	OrderConditionVariable::RequiresService,
+	OrderConditionVariable::DrivingBackwards,
 	OrderConditionVariable::Unconditionally,
 };
 
@@ -1039,7 +1040,7 @@ public:
 					this->GetWidget<NWidgetCore>(WID_O_COND_VARIABLE)->SetString(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv));
 					this->GetWidget<NWidgetCore>(WID_O_COND_COMPARATOR)->SetString(_order_conditional_condition[to_underlying(order->GetConditionComparator())]);
 					this->SetWidgetDisabledState(WID_O_COND_COMPARATOR, ocv == OrderConditionVariable::Unconditionally);
-					this->SetWidgetDisabledState(WID_O_COND_VALUE, ocv == OrderConditionVariable::RequiresService || ocv == OrderConditionVariable::Unconditionally);
+					this->SetWidgetDisabledState(WID_O_COND_VALUE, ocv == OrderConditionVariable::DrivingBackwards || ocv == OrderConditionVariable::RequiresService || ocv == OrderConditionVariable::Unconditionally);
 					break;
 				}
 
@@ -1301,6 +1302,7 @@ public:
 			case WID_O_COND_VARIABLE: {
 				DropDownList list;
 				for (const auto &ocv : _order_conditional_variable) {
+					if (ocv == OrderConditionVariable::DrivingBackwards && this->vehicle->type != VEH_TRAIN) continue;
 					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv), to_underlying(ocv)));
 				}
 				ShowDropDownList(this, std::move(list), to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable()), WID_O_COND_VARIABLE);
@@ -1310,7 +1312,7 @@ public:
 			case WID_O_COND_COMPARATOR: {
 				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 				assert(o != nullptr);
-				ShowDropDownMenu(this, _order_conditional_condition, to_underlying(o->GetConditionComparator()), WID_O_COND_COMPARATOR, 0, (o->GetConditionVariable() == OrderConditionVariable::RequiresService) ? 0x3F : 0xC0);
+				ShowDropDownMenu(this, _order_conditional_condition, to_underlying(o->GetConditionComparator()), WID_O_COND_COMPARATOR, 0, (o->GetConditionVariable() == OrderConditionVariable::RequiresService || o->GetConditionVariable() == OrderConditionVariable::DrivingBackwards) ? 0x3F : 0xC0);
 				break;
 			}
 
