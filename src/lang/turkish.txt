@@ -1352,8 +1352,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Yüksek
 STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Etkinleştirilirse, periyodik olarak bir ekonomik durgunluk yaşanır. Durgunluk süresince tüm üretim seviyeleri belirgin oranda düşer (durgunluk sona erdiğinde önceki seviyesine tekrar yükselir)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenlerin istasyonda yön değiştirmesini yasakla: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Etkinleştirildiğinde, trenler dönüş yaparak bir sonraki varış yerlerine daha kısa yoldan ulaşabilecek olsalar dahi, son-durak-olmayan istasyonlarda geri dönüş yapmalarına izin verilmez
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Felaketler: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya da altyapıyı yok edebilecek felaketleri açın ya da kapatın

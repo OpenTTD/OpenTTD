@@ -1732,8 +1732,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Wysokie
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może występować okresowo. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nie pozwalaj pociągom zawracać na stacjach: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jeśli włączone, pociągi nie będą zawracać na stacjach dwu-wjazdowych, nawet jeśli droga do następnego celu jest krótsza po zawróceniu
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrofy, które mogą okazjonalnie zablokować lub zniszczyć pojazdy albo infrastrukturę
@@ -2285,6 +2285,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Kiedy włączon
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Włącz maksymalny zasięg samolotu: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Kiedy włączone, NewGRF-y będą mogły ograniczyć maksymalny zasięg samolotów
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tylko jeden rodzaj torów: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Przy włączonym ustawieniu nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
@@ -5645,6 +5647,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Nie można prze
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :tylna lokomotywa zawsze porusza się razem z przednią
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :nie można znaleźć drogi do najbliższych warsztatów
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :nie można znaleźć zajezdni
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :nie można znaleźć lokalnego hangaru
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :zły typ zajezdni
 

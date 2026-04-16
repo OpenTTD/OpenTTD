@@ -1445,8 +1445,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Υψηλό
 STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, ενδέχεται περιοδικά να υπάρχουν υφέσεις. Κατά τη διάρκεια μιας ύφεσης, όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Απαγορεύεται η αντιστροφή τρένων στους σταθμούς: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Όταν είναι ενεργοποιημένο, τα τρένα δεν θα κάνουν όπισθεν σε μη-τελικούς σταθμούς, ακόμα και εάν υπάρχει κοντινότερη διαδρομή προς τον επόμενή τους προορισμό όταν κάνουν όπισθεν
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Καταστροφές: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Εναλλαγή καταστροφών που μπορούν περιστασιακά να εμποδίσουν ή να καταστρέψουν οχήματα ή υποδομές

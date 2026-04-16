@@ -1280,8 +1280,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastavitev cene
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Če je omogočeno, se recesije lahko pojavijo vsakih nekaj let. Med recesijo je proizvodnja znatno nižja, povrne se v tek po recesiji.
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prepovej obračanje vlakov na postajah: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Če je omogočeno, se vlaki ne obračajo na vmesnih postajah
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Nesreče: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Preklop med pojavljanjem nesreč

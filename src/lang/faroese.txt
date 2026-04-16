@@ -1088,8 +1088,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set hvussu høg
 STR_CONFIG_SETTING_RECESSIONS                                   :Ringar tíðir: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Um hetta er tendra kunnu ringar tíðir koma fyri við nøkrum ára millumbili. Meðan ringar tíðir eru, er øll framleiðsla munandi lægri (fer aftur á støði ta var áðrenn tá ringu tíðinar eru av)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tok hava ikki loyvi at venda inni á støðum: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Um hetta er sligi til, venda tok ikki vi inni á ikki-endastøðum, sjálvt um ta er ein styttri leið til næsta stað um tey venda vi
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Ólukkur: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Tendra/sløkk ólukkur sum kunnu av og á blokera ella oyðileggja flutningstól ella innankervi

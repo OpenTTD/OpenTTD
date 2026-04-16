@@ -1131,8 +1131,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivået kostnad
 STR_CONFIG_SETTING_RECESSIONS                                   :Nedgangstider: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Skru på at det frå tid til anna kjem nedgangstider. Under nedgangstider fell all produksjon kraftig. (Han går opp att når nedgangstida er over.)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ikkje la tog vende om på stasjonar: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Skru på for å hindre at tog snur på andre stasjonar enn endestasjonar.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Ulukker: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skru av/på katastrofar og ulukker, som kan stogge eller øydeleggje køyretøy og øydeleggje infrastruktur.

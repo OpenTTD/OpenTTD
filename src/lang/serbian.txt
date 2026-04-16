@@ -1482,8 +1482,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Podešava nivo 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ako je omogućeno, recesije mogu da se jave svakih nekoliko godina. Proizvodnja je značajno smanjena tokom recesije (vraća se na prethodni nivo kada se recesija završi)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Onemogući okretanje voza u stanicama: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ako je uključeno i ako postoji kraća putanja do sledećeg odredišta, vozovi se neće okretati u neterminalnim stanicama
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofe: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključuje i isključuje katastrofe koje s vremena na vreme mogu blokirati ili uništiti vozila i infrastrukturu

@@ -1441,8 +1441,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :altaj
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kiam tiu ĉi agordo estas aktiva, recesioj povas okazi periode. Dum recesio, ĉia produktado estas signife malpli alta (ĝi revenos al la antaŭa nivelo, kiam finiĝas la recesio)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Malpermesi al vagonaroj turniĝi en stacioj: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, vagonaroj ne turniĝos en trairaj stacioj, eĉ se troveblus pli mallonga vojo al la sekva celpunkto turniĝinte
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ŝalti akcidentojn, kiuj de temp' al tempo povas bloki aŭ detrui veturilojn aŭ infrastrukturon

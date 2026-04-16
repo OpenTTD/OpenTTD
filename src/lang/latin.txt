@@ -1320,8 +1320,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Eligere magnitu
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Sinere recessiones oeconomicae aliquando accidere. In recessione oeconomica, productio omnino minuitur (sed, recessione confecta, productio redit ad magnitudinem priorem)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vetare tramina cursum reflectere in stationibus: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si electa, tramina non possunt cursum reflectere in stationibus quae non sunt termini, etsi adest iter brevius ad destinatum cursu reflexo
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Calamitates: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Sinere calamitates accidere, quae forte vehicula aut infrastructuram destruant

@@ -1352,8 +1352,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Korkeat
 STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, taloudellinen lama voi ilmaantua ajoittain. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Estä junien kääntyminen asemilla: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Mikäli käytössä, junat eivät käänny läpiajettavilla asemilla vaikka kääntymisen jälkeen tarjolla olisi lyhempi reitti
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Onnettomuudet: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ottaa käyttöön onnettomuudet jotka saattavat ajoittain estää tai tuhota liikennettä tai infrastruktuuria

@@ -1416,8 +1416,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Magas
 STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, időszakonként gazdasági válság fog kitörni. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vonatok állomáson történő megfordulásának tiltása: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ha engedélyezve van, a vonatok nem fordulnak vissza egy (nem vég-) állomáson, még ha lenne egy rövidebb út is visszafordulva
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katasztrófák: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ha engedélyezve van, néha katasztrófa történhet, ami megállíthatja vagy megsemmisítheti a járműveket és az infrastruktúrát
@@ -1969,6 +1969,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ha bekapcsolva,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :A vagonok sebessége korlátozható: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Bekapcsolva a szerelvényben lévő vasúti kocsik maximális sebessége is korlátozza a vonat maximális sebességét
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Maximális repülőgép hatótáv: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Ha bekapcsolt, a NewGRF-ek képesek lesznek korlátozni a repülők maximális hatótávolságát
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Villamosított vágányok letiltása: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Bekapcsolva nem szükséges villamosítani egy vágányt ahhoz, hogy azon villanymozdonyok közlekedhessenek
@@ -5323,6 +5325,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Nem mozgathatod
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :a mozdony első felének mindig elől kell lennie
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :nem találok utat a helyi járműtelepre
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :nem találom a helyi garázst
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :nem található helyi hangár
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :rossz járműteleptípus
 

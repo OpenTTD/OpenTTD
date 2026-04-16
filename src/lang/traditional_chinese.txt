@@ -1352,8 +1352,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :高
 STR_CONFIG_SETTING_RECESSIONS                                   :經濟衰退：{STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :如果此選項被啟用，經濟衰退將會週期性發生。屆時所有工業生產都會大幅下降，直至衰退結束後回到之前的水平
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :禁止列車在車站內折返：{STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :如果此選項被啟用，即使折返能使列車走較少的路到達下一目的地，列車仍不會在非端點的車站折返。
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :災難：{STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :切換那些有可能阻礙、摧毀車輛或基礎建設的災難。

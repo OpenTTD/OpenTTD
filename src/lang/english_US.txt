@@ -1352,8 +1352,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :High
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur periodically. During a recession all production is significantly lower (it returns to previous level when the recession is over)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Disallow train reversing in stations: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled, trains will not reverse in non-terminus stations, even if there is a shorter path to their next destination when reversing
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
@@ -1905,6 +1905,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :When enabled, t
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable railroad car speed limits: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Enable aircraft maximum range: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :When enabled, NewGRFs will be able to limit maximum range of aircraft
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Enabling this setting disables the requirement to electrify tracks to make electric engines run on them
@@ -5259,6 +5261,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Can't move vehi
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :the rear engine will always follow its front counterpart
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :unable to find route to local depot
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :unable to find local depot
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :unable to find local hangar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :wrong depot type
 

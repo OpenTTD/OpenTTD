@@ -1503,8 +1503,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Высокая
 STR_CONFIG_SETTING_RECESSIONS                                   :Экономические кризисы: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Если эта настройка включена, в игре иногда происходят экономические кризисы. В это время объёмы производства значительно снижаются (и возвращаются к прежнему уровню, когда спад заканчивается).
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Запретить разворот поездов на станциях: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Если включено, поезда не будут разворачиваться на проходных станциях, даже если это позволит сократить путь к следующему пункту назначения
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Катастрофы: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включение/отключение катастроф, которые могут время от времени блокировать или уничтожать транспортные средства или инфраструктуру

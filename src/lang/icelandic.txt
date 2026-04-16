@@ -1087,8 +1087,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stillingar á b
 STR_CONFIG_SETTING_RECESSIONS                                   :Efnahagslægð: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ef virkt getur komið efnahagslægð á nokkurra ára fresti. Meðan á efnahagslægð stendur er öll framleiðsla marktækt minni (framleiðslan fellur í fyrra horf þegar efnahagslægðinni líkur)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Banna lest að snúa í lestarstöð: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ef virkt, munu lestar ekki snúa við á lestastöðvum sem eru ekki endastöðvarekki snúa við á lestarstöðvar, þó að styttri leið sé á næsta áfangastað þegar þær snúa við
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Hörmungar: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Kveikja eða slökkva á hörmungum, hörmungar sem af og til stoppa eða eyðileggja farartæki eða byggingar

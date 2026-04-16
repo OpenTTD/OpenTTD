@@ -1107,8 +1107,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta er
 STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, ekoizpen orokorra dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenak geltokietan buelta eman ahal izatea: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Gaitua dagoenean, trenak ezingo dute geltoki ez-finaletan buelta eman, nahiz eta biderik motzena izan helmugara iristeko
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Hondamendiak: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Azpiegiturak eta ibilgailuak suntsitu edo blokeatu ditzaketen hondamendiak txandakatu

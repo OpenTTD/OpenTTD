@@ -1352,8 +1352,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Élevé
 STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire périodiquement. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession).
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Interdire le retournement des trains dans les stations{NBSP}: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si activé, les trains ne feront plus demi-tour dans les stations non terminus, même si ce faisant il y avait un chemin plus court vers leur prochaine destination.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Catastrophes{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désactiver les catastrophes qui peuvent occasionnellement bloquer ou détruire des véhicules ou des infrastructures

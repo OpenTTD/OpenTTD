@@ -1351,8 +1351,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Cao
 STR_CONFIG_SETTING_RECESSIONS                                   :Suy thoái: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Nếu bật, thì các đợt suy thoái sẽ xảy ra vài năm một lần. Trong suy thoái tất cả sản xuất sẽ giảm mạnh (và sẽ trở lại như cũ sau khi suy thoái kết thúc)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Không cho phép tàu hỏa quay đầu ở ga: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Nếu bật thì tàu hỏa sẽ không quay đẩu đối với ga không phải đầu cuối, kể cả khi đó là đường ngắn nhất đến nơi tiếp theo khi quay đầu
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Thảm họa: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Thay đổi tùy chọn để thảm họa đôi lúc ngăn chặn hoặc phá hủy phương tiện và công trình hạ tầng

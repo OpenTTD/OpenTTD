@@ -1364,8 +1364,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Imposta il live
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessioni: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se abilitata, le recessioni possono verificarsi periodicamente. Durante una recessione, tutta la produzione è significativamente più bassa (torna al livello precedente quando la recessione è terminata).
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Non consentire inversione dei treni alle stazioni: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se abilitata, i treni non invertono la marcia nelle stazioni passanti, neanche nel caso in cui invertendo la marcia sia possibile raggiungere la destinazione successiva con un percorso più breve.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Disastri: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Consente il verificarsi o meno di occasionali eventi negativi che possono bloccare o distruggere veicoli e infrastrutture.

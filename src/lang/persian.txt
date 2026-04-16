@@ -1195,6 +1195,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :هزینه ها
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special

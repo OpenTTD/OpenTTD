@@ -1324,8 +1324,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Задава н
 STR_CONFIG_SETTING_RECESSIONS                                   :Рецесии: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ако е разрешено, рецесии може да се появяват на всеки няколко години. По време на рецесия цялото производство е значително намалено (връща се на предишно ниво след края на рецесията)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забрани обръщане на посоката на влакове в гарите: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ако е избрано, влаковете няма да обръщат на не-терминални гари, ако има по-кратък път до целта им при обръщане
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Бедствия: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включване/Изключване на бедствия, които могат от време на време да блокират или разрушат превозни средства или инфраструктура

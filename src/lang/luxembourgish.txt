@@ -1351,8 +1351,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Héich
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessiounen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wann ugeschalt kann vun Zäit zur Zäit eng Rezessioun kommen. Während enger Rezessioun ass d'Produktioun däitlech méi niddreg (an klëmmt erëm op den alen Niveau no der Rezessioun)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Den Zich verbidden an enger Statioun emzedréinen: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Wann ugeschalt kënnen Zich net an Net-Terminusen emdréinen, och wann et en méi kuerzen Wee op d'Destinatioun gëtt wann en emdréint
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Stell Katastrophen un oder aus déi eventuell Gefierer an Industrien blockéiren oder zerstéiren

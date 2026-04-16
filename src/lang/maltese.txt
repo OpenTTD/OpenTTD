@@ -502,8 +502,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stabbilixxi l-l
 STR_CONFIG_SETTING_RECESSIONS                                   :Riċessjonijiet: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jekk mixgħula kull ftit snin tista' sseħħ riċessjoni. Waqt riċessjoni, il-produzzjoni ta' kollox tonqos (tirritorna għal kemm kienet qabel kif tgħaddi r-riċessjoni)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tħallix li ferrovija ddur lura fi stazzjon: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jekk tinxtegħel, ferroviji ma jdurux lura fi stazzjonijiet li mhumiex fit-tarf, jekk teżisti rotta iqsar għad-destinazzjoni li jmiss
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Diżastri: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ixgħel jew itfi diżastri li xi drabi jistgħu jaffetwaw jew ikissru vetturi jew infrastrutturi

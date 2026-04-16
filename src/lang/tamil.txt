@@ -1262,8 +1262,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :கட்டு
 
 STR_CONFIG_SETTING_RECESSIONS                                   :பொருளதாரத் தேக்கங்கள்: {STRING}
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :நிலையங்களில் இரயில்களை திருப்புவதை அனுமதிக்காதே: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :இயக்கப்பட்டால், தலைகீழாக மாறும்போது, அடுத்த இலக்குக்கு குறுகிய பாதை இருந்தாலும், ரயில்கள் டெர்மினஸ் அல்லாத நிலையங்களில் தலைகீழாக மாறாது
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :பேரழிவுகள்: {STRING}
 

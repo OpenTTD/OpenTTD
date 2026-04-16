@@ -1143,8 +1143,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Verstel die vla
 STR_CONFIG_SETTING_RECESSIONS                                   :Resessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :As dit geaktiveer is, kan resessie elke paar jaar voorkom. Gedurende 'n resessie word is vervaardiging drasties minder en aan die einde van die resessie word dit weer herstel na normale vlakke.
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Verhoed dat treine kan omdraai in stasies: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :As dit geaktiveer is, sal treine nie in deurstasies omdraai nie, selfs al is daar 'n korter roete deur om te draai.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Rampe: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skakel rampe aan wat af en toe voertuie of infrastruktuur kan blokkeer of vernietig.

@@ -1248,8 +1248,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入
 STR_CONFIG_SETTING_RECESSIONS                                   :景気後退: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :設定を有効にすると数年おきに短期間、景気の後退が起こる可能性が出ます。景気後退の間はすべての生産がかなりの落ち込みを見せます (景気後退が終わると元のレベルに戻ります)。
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :列車の転回不可: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :設定を有効にすると路線の末端駅でない限り、転回(折り返し)した方が次の目的地に早く着ける場合であっても転回をしなくなります
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :設定を有効にすると時折、乗り物や交通インフラを遮断・破壊する災害が起きるようになります

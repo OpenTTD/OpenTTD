@@ -1201,8 +1201,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Socraigh leibh�
 STR_CONFIG_SETTING_RECESSIONS                                   :Cúluithe eacnamaíochta: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Má dhéantar seo a chumasú, féadfaidh cúluithe a bheith ann gach cúpla bliain. Le linn cúlú, bíonn an táirgeadh ar fad cuid mhaith níos ísle (téann sé ar ais chuig an leibhéal roimhe sin nuair a bheidh an cúlú thart)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ná ceadaigh cúlú traenacha i stáisiúin: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Má tá sé cumasaithe, ní rachaidh traenacha ar cúl i stáisiúin nach ceannstáisiúin iad, fiú má tá bealach níos giorra chuig an chéad cheann scríbe eile má dhéanann siad sin
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Tubaistí: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Cuir tubaistí, ar féidir leo feithiclí nó bonneagar a bhlocáil nó a scriosadh anois is arís, ar siúl nó as

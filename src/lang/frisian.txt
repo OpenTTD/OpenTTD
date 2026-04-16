@@ -1140,8 +1140,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stel hichte bou
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjes: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :By ynskeakeljen kinne der om de safolle jier resesjes plakfine. Under in resesje nim de produksje op alle flakken ôf (sadree in resesje oergean is giet de produkje wer nei it âlde nivo omheech)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ferbied treinen te draaien yn stasjons: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :By ynskeakeljen sille treinen net draaie op net kopstasjons, ek net as der in koarter paad is nei de folgjende bestimming by it wol omdraaien
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skeakel rampen oan/út. Rampen kinne sa no en dan fiertugen en ynfrastruktuer sawol blokearje as ferneatigje

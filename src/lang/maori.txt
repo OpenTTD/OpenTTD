@@ -1351,8 +1351,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Nui
 STR_CONFIG_SETTING_RECESSIONS                                   :Auheke ohaoha: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ina kā, ka taea te tūpono e ngā auheke i ētahi wā. I te auheke, ka iti rawa atu te whakaputa katoa (ka hoki ki te kōeke o mua i te mutunga o te auheke)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Āraia ngā tereina kei haere whakamuri i roto i ngā teihana: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ina kā, kāore ngā tereina e haere whakamuri i roto i ngā teihana ehara i te momo whakamutunga, kāore hoki ina poto ake te ara ki te ūnga mehemea ka haere whakamuri
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Maikiroa: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Hohokona ngā maikiroa ka ārai pea, whakangaro pea rānei i ngā waka, te tūāhanga rānei

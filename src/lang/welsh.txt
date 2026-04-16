@@ -1352,8 +1352,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Uchel
 STR_CONFIG_SETTING_RECESSIONS                                   :Dirwasgiadau: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Os y galluogir, gall dirwasgiadau ddigwydd yn ysbeidiol. Yn ystod dirwasgiad bydd lefelau gweithgynhyrchu'n is o lawer (gan ddychwelyd at y lefel gwreiddiol wedi diwedd y dirwasgiad)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Rhwystro trenau rhag gwrthdroi mewn gorsafoedd: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Os y galluogir, ni fydd trenau yn gwrthdroi mewn gorsafoedd nad ydynt yn derfynfeydd, hyd yn oed os oes llwybr byrach i'w cyrchfan drwy wrthdroi
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Trychinebau: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglo trychinebau a all rhwystro neu ddinistrio cerbydau neu tanadeiledd

@@ -1170,7 +1170,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :تحديد مس
 
 STR_CONFIG_SETTING_RECESSIONS                                   :حالات الركود: {STRING}
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :عدم السماح بعودة القطار إلى الخلف في المحطات: {STRING}
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :الكوارث: {STRING}
 

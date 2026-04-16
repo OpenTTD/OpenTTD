@@ -1087,8 +1087,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Tetapkan tahap 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kemelesetan: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diupayakan, kemelesetan mungkin berlaku setiap tahun. Semasa kemelesetan, pengeluaran adalah lebih rendah (ia kembali ke tahap sebelumnya apabila kemelesetan berakhir)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Kereta api dilarang berpatah balik di stesen: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diupayakan kereta api tidak kembali di stesen bukan perhentian, ia berpatah balik ke destinasi berikutnya jika ada jalan pintas
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Jika kereta api diupayakan tidak kembali ke stesen bukan perhentian, ia diterbalikkan ke destinasi berikutnya jika ada jalan pintas

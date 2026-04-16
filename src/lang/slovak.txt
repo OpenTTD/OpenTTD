@@ -1376,8 +1376,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Zvoľte úrove�
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesie: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ak je povolené, recesia sa môže periodicky opakovať. Počas recesie je všetká produkcia znatelne nižšia (po skončení recesie sa produkcia vráti na normálnu úroveň)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zakázať otáčanie vlakov v staniciach: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ak je povolené vlaky sa nebudú otáčať v staniciach, ktoré niesu na konci trate, aj keby sa im tým skrátila cesta do ďalšieho cieľa
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Havárie: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vypne alebo zapne katastrofy, ktoré môžu občas zablokovať alebo zničiť vozidlá alebo infraštruktúru

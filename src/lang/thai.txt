@@ -1136,8 +1136,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :การตั
 STR_CONFIG_SETTING_RECESSIONS                                   :เศรษฐกิจถดถอย: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :หากเปิดใช้งาน การถดถอย อาจเกิดขึ้นทุก 2 - 3 ปี ในช่วงเศรษฐกิจตกต่ำในการผลิตทั้งหมด อย่างมีนัยสำคัญต่ำกว่า (มันจะกลับไปที่ระดับก่อนหน้านี้เมื่อภาวะถดถอยจบลง)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :ไม่อนุญาตให้รถไฟกลับขบวนในสถานี: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :หากเปิดใช้งานรถไฟจะไม่ย้อนกลับในสถานีที่ไม่ใช่ปลายทางถ้ามีเส้นทางที่สั้นไปยังปลายทางต่อไปของพวกเขา จะย้อนกลับ
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :ภัยพิบัติ: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :ภัยพิบัติซึ่งบางครั้งสลับอาจปิดกั้นหรือทำลายยานพาหนะหรือโครงสร้างพื้นฐาน
