@@ -2656,9 +2656,17 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 		if (!command.Test(DepotCommandFlag::Service)) this->current_order.SetDepotActionType(OrderDepotActionFlag::Halt);
 		InvalidateWindowData(WC_VEHICLE_VIEW, this->index);
 
-		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
-		if (this->type == VEH_TRAIN && (closest_depot.reverse ^ Train::From(this)->flags.Test(VehicleRailFlag::Reversing))) {
-			Command<Commands::ReverseTrainDirection>::Do(DoCommandFlag::Execute, this->index, false);
+		/* Handle some train only behaviours */
+		if (this->type == VEH_TRAIN) {
+			Train *v = Train::From(this);
+			if (closest_depot.reverse ^ v->flags.Test(VehicleRailFlag::Reversing)) {
+				/* If there is no depot in front and the train is not already reversing, reverse automatically. */
+				Command<Commands::ReverseTrainDirection>::Do(flags, this->index, false);
+			} else if (flags.Test(DoCommandFlag::Execute)) {
+				/* Otherwise, trigger a path re-reservation, because the destination changed. */
+				if (!v->flags.Test(VehicleRailFlag::Stuck)) FreeTrainTrackReservation(v);
+				TryPathReserve(v);
+			}
 		}
 
 		if (this->type == VEH_AIRCRAFT) {

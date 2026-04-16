@@ -4257,6 +4257,10 @@ static void CheckIfTrainNeedsService(Train *v)
 	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service, OrderNonStopFlag::NonStop, OrderDepotActionFlag::NearestDepot);
 	v->dest_tile = tfdd.tile;
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+
+	/* Trigger a path re-reservation, because the destination changed. */
+	if (!v->flags.Test(VehicleRailFlag::Stuck)) FreeTrainTrackReservation(v);
+	TryPathReserve(v);
 }
 
 /** Calendar day handler. */

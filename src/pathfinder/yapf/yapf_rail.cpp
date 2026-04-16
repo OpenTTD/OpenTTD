@@ -671,7 +671,12 @@ FindDepotData YapfTrainFindNearestDepot(const Train *v, int max_penalty)
 {
 	const Train *moving_back = v->GetMovingBack();
 
-	PBSTileInfo origin = FollowTrainReservation(v);
+	/* Use the train current position instead of end of PBS reservation, depots might be along the currently reserved path. */
+	PBSTileInfo origin;
+	origin.tile = v->tile;
+	origin.trackdir = v->GetVehicleTrackdir();
+	origin.okay = true;
+
 	TileIndex last_tile = moving_back->tile;
 	Trackdir td_rev = ReverseTrackdir(moving_back->GetVehicleTrackdir());
 
