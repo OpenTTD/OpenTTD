@@ -470,23 +470,23 @@ bad_town_name:;
 /** Sorting weights for the company colours. */
 static const uint8_t _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 /** Similar colours, so we can try to prevent same coloured companies. */
-static const Colours _similar_colour[COLOUR_END][2] = {
-	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE
-	{ COLOUR_GREEN,      COLOUR_DARK_GREEN }, // COLOUR_PALE_GREEN
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_PINK
-	{ COLOUR_ORANGE,     INVALID_COLOUR    }, // COLOUR_YELLOW
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_RED
-	{ COLOUR_DARK_BLUE,  COLOUR_BLUE       }, // COLOUR_LIGHT_BLUE
-	{ COLOUR_PALE_GREEN, COLOUR_DARK_GREEN }, // COLOUR_GREEN
-	{ COLOUR_PALE_GREEN, COLOUR_GREEN      }, // COLOUR_DARK_GREEN
-	{ COLOUR_DARK_BLUE,  COLOUR_LIGHT_BLUE }, // COLOUR_BLUE
-	{ COLOUR_BROWN,      COLOUR_ORANGE     }, // COLOUR_CREAM
-	{ COLOUR_PURPLE,     INVALID_COLOUR    }, // COLOUR_MAUVE
-	{ COLOUR_MAUVE,      INVALID_COLOUR    }, // COLOUR_PURPLE
-	{ COLOUR_YELLOW,     COLOUR_CREAM      }, // COLOUR_ORANGE
-	{ COLOUR_CREAM,      INVALID_COLOUR    }, // COLOUR_BROWN
-	{ COLOUR_WHITE,      INVALID_COLOUR    }, // COLOUR_GREY
-	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
+static const std::initializer_list<Colours> _similar_colour[COLOUR_END] = {
+	{COLOUR_BLUE, COLOUR_LIGHT_BLUE}, // COLOUR_DARK_BLUE
+	{COLOUR_GREEN, COLOUR_DARK_GREEN}, // COLOUR_PALE_GREEN
+	{}, // COLOUR_PINK
+	{COLOUR_ORANGE}, // COLOUR_YELLOW
+	{}, // COLOUR_RED
+	{COLOUR_DARK_BLUE, COLOUR_BLUE}, // COLOUR_LIGHT_BLUE
+	{COLOUR_PALE_GREEN, COLOUR_DARK_GREEN}, // COLOUR_GREEN
+	{COLOUR_PALE_GREEN, COLOUR_GREEN}, // COLOUR_DARK_GREEN
+	{COLOUR_DARK_BLUE, COLOUR_LIGHT_BLUE}, // COLOUR_BLUE
+	{COLOUR_BROWN, COLOUR_ORANGE}, // COLOUR_CREAM
+	{COLOUR_PURPLE}, // COLOUR_MAUVE
+	{COLOUR_MAUVE}, // COLOUR_PURPLE
+	{COLOUR_YELLOW, COLOUR_CREAM}, // COLOUR_ORANGE
+	{COLOUR_CREAM}, // COLOUR_BROWN
+	{COLOUR_WHITE}, // COLOUR_GREY
+	{COLOUR_GREY}, // COLOUR_WHITE
 };
 
 /**
@@ -495,10 +495,9 @@ static const Colours _similar_colour[COLOUR_END][2] = {
  */
 static Colours GenerateCompanyColour()
 {
-	Colours colours[COLOUR_END];
-
-	/* Initialize array */
-	for (uint i = 0; i < COLOUR_END; i++) colours[i] = static_cast<Colours>(i);
+	/* Initialize colour table. */
+	std::vector<Colours> colours(COLOUR_END);
+	std::iota(colours.begin(), colours.end(), COLOUR_BEGIN);
 
 	/* And randomize it */
 	for (uint i = 0; i < 100; i++) {
@@ -506,42 +505,22 @@ static Colours GenerateCompanyColour()
 		std::swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
 	}
 
-	/* Bubble sort it according to the values in table 1 */
-	for (uint i = 0; i < COLOUR_END; i++) {
-		for (uint j = 1; j < COLOUR_END; j++) {
-			if (_colour_sort[colours[j - 1]] < _colour_sort[colours[j]]) {
-				std::swap(colours[j - 1], colours[j]);
-			}
-		}
-	}
+	/* Sort it according to the values in _colour_sort. */
+	std::ranges::stable_sort(colours, {}, [](auto &i) { return _colour_sort[i]; });
 
 	/* Move the colours that look similar to each company's colour to the side */
 	for (const Company *c : Company::Iterate()) {
-		Colours pcolour = c->colour;
+		/* This company's colour is not available at all. */
+		std::erase(colours, c->colour);
 
-		for (uint i = 0; i < COLOUR_END; i++) {
-			if (colours[i] == pcolour) {
-				colours[i] = INVALID_COLOUR;
-				break;
-			}
-		}
-
-		for (uint j = 0; j < 2; j++) {
-			Colours similar = _similar_colour[pcolour][j];
-			if (similar == INVALID_COLOUR) break;
-
-			for (uint i = 1; i < COLOUR_END; i++) {
-				if (colours[i - 1] == similar) std::swap(colours[i - 1], colours[i]);
-			}
+		for (Colours similar : _similar_colour[c->colour]) {
+			auto it = std::ranges::find(colours, similar);
+			if (it != colours.end()) std::rotate(it, it + 1, colours.end());
 		}
 	}
 
 	/* Return the first available colour */
-	for (uint i = 0; i < COLOUR_END; i++) {
-		if (colours[i] != INVALID_COLOUR) return colours[i];
-	}
-
-	NOT_REACHED();
+	return colours.at(0);
 }
 
 /**
