@@ -87,6 +87,16 @@ struct Livery {
 	Flags in_use{}; ///< Livery flags.
 	Colours colour1 = COLOUR_BEGIN; ///< First colour, for all vehicles.
 	Colours colour2 = COLOUR_BEGIN; ///< Second colour, for vehicles with 2CC support.
+
+	/**
+	 * Get offset for recolour palette.
+	 * @param use_secondary Specify whether to add secondary colour offset to the result.
+	 * @return The palette offset.
+	 */
+	inline uint8_t GetRecolourOffset(bool use_secondary = true) const
+	{
+		return use_secondary ? this->colour1 + this->colour2 * 16 : this->colour1;
+	}
 };
 
 void ResetCompanyLivery(Company *c);
