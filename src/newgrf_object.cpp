@@ -340,7 +340,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		case 0x46: return DistanceSquare(this->tile, t->xy);
 
 		/* Object colour */
-		case 0x47: return this->obj->colour;
+		case 0x47: return this->obj->recolour_offset;
 
 		/* Object view */
 		case 0x48: return this->obj->view;
@@ -449,7 +449,7 @@ uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2
  */
 static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, const ObjectSpec *spec)
 {
-	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->colour;
+	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->recolour_offset;
 
 	SpriteID image = dts.ground.sprite;
 	PaletteID pal = dts.ground.pal;
