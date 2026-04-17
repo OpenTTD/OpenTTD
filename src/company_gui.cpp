@@ -620,15 +620,15 @@ private:
 
 	void ShowColourDropDownMenu(uint32_t widget)
 	{
-		uint32_t used_colours = 0;
+		EnumBitSet<Colours, uint16_t, COLOUR_END> used_colours{};
 		const Livery *livery, *default_livery = nullptr;
 		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
-		uint8_t default_col = 0;
+		Colours default_col{};
 
 		/* Disallow other company colours for the primary colour */
 		if (this->livery_class < LC_GROUP_RAIL && HasBit(this->sel, LS_DEFAULT) && primary) {
 			for (const Company *c : Company::Iterate()) {
-				if (c->index != _local_company) SetBit(used_colours, c->colour);
+				if (c->index != _local_company) used_colours.Set(c->colour);
 			}
 		}
 
@@ -661,10 +661,10 @@ private:
 			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
 		}
 		for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; colour++) {
-			list.push_back(std::make_unique<DropDownListColourItem<>>(colour, HasBit(used_colours, colour)));
+			list.push_back(std::make_unique<DropDownListColourItem<>>(colour, used_colours.Test(colour)));
 		}
 
-		uint8_t sel;
+		Colours sel;
 		if (default_livery == nullptr || livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
 			sel = primary ? livery->colour1 : livery->colour2;
 		} else {
