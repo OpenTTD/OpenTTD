@@ -14,6 +14,7 @@
 
 #include "script_controller.hpp"
 #include "script_error.hpp"
+#include "script_execmode.hpp"
 #include "../script_fatalerror.hpp"
 #include "../script_info.hpp"
 #include "../script_instance.hpp"
@@ -58,6 +59,8 @@
 	ShowScriptDebugWindow(ScriptObject::GetRootCompany());
 
 	if (!_pause_mode.Test(PauseMode::Normal)) {
+		/* Force ExecMode so pause always happens. */
+		auto exec = ScriptExecMode();
 		ScriptObject::Command<Commands::Pause>::Do(PauseMode::Normal, true);
 	}
 }
