@@ -1983,7 +1983,7 @@ void ReinitGuiAfterToggleElrail(bool disable)
 }
 
 /** Set the initial (default) railtype to use */
-static void SetDefaultRailGui()
+void SetDefaultRailGui()
 {
 	if (_local_company == COMPANY_SPECTATOR || !Company::IsValidID(_local_company)) return;
 
@@ -1993,8 +1993,8 @@ static void SetDefaultRailGui()
 			/* Find the most used rail type */
 			std::array<uint, RAILTYPE_END> count{};
 			for (const auto t : Map::Iterate()) {
-				if (IsTileType(t, TileType::Railway) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
-						(IsTileType(t, TileType::TunnelBridge) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {
+				if ((IsTileType(t, TileType::Railway) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
+						(IsTileType(t, TileType::TunnelBridge) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) && IsTileOwner(t, _local_company)) {
 					count[GetRailType(t)]++;
 				}
 			}
