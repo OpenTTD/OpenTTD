@@ -607,6 +607,17 @@ public:
 	}
 };
 
+/**
+ * Get either the primary or secondary colour of the given Livery for offsets.
+ * @param l The livery to get the offset for.
+ * @param primary Whether to get the primary colour.
+ * @return The requested colour (offset).
+ */
+constexpr uint8_t GetColourOffset(const Livery &l, bool primary)
+{
+	return primary ? l.colour1 : l.colour2;
+}
+
 /** Company livery colour scheme window. */
 struct SelectCompanyLiveryWindow : public Window {
 private:
@@ -657,7 +668,7 @@ private:
 		DropDownList list;
 		if (default_livery != nullptr) {
 			/* Add COLOUR_END to put the colour out of range, but also allow us to show what the default is */
-			default_col = (primary ? default_livery->colour1 : default_livery->colour2) + COLOUR_END;
+			default_col = GetColourOffset(*default_livery, primary) + COLOUR_END;
 			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
 		}
 		for (Colours colour = COLOUR_BEGIN; colour != COLOUR_END; colour++) {
@@ -666,7 +677,7 @@ private:
 
 		Colours sel;
 		if (default_livery == nullptr || livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
-			sel = primary ? livery->colour1 : livery->colour2;
+			sel = GetColourOffset(*livery, primary);
 		} else {
 			sel = default_col;
 		}
@@ -826,17 +837,17 @@ public:
 							if (HasBit(this->sel, scheme)) break;
 						}
 						if (scheme == LS_END) scheme = LS_DEFAULT;
-						const Livery *livery = &c->livery[scheme];
-						if (scheme == LS_DEFAULT || livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
-							colour = STR_COLOUR_DARK_BLUE + (primary ? livery->colour1 : livery->colour2);
+						const Livery &livery = c->livery[scheme];
+						if (scheme == LS_DEFAULT || livery.in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
+							colour = STR_COLOUR_DARK_BLUE + GetColourOffset(livery, primary);
 						}
 					}
 				} else {
 					if (this->sel != GroupID::Invalid()) {
 						const Group *g = Group::Get(this->sel);
-						const Livery *livery = &g->livery;
-						if (livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
-							colour = STR_COLOUR_DARK_BLUE + (primary ? livery->colour1 : livery->colour2);
+						const Livery &livery = g->livery;
+						if (livery.in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
+							colour = STR_COLOUR_DARK_BLUE + GetColourOffset(livery, primary);
 						}
 					}
 				}
