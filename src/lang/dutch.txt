@@ -4684,7 +4684,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selectee
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuiggegevens voor basisspringen wanneer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laadpercentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouwbaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximumsnelheid

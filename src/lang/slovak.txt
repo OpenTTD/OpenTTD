@@ -4590,7 +4590,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Zvoľte 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Spoľahlivosť
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlosť

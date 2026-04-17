@@ -1352,8 +1352,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :High
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur periodically. During a recession all production is significantly lower (it returns to previous level when the recession is over)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Allow trains to flip when reversing: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Choose where trains may flip to reverse direction. With "All" trains may flip anywhere. With "End of line only" trains will not flip in stations if a route forwards is possible. With "None" trains cannot flip and will drive backwards if needed, but at reduced speed if the rear vehicle lacks a driving cab
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :All
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :End of line only
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :None
 
 STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
@@ -1905,6 +1910,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :When enabled, t
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable wagon speed limits: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Enable aircraft maximum range: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :When enabled, NewGRFs will be able to limit maximum range of aircraft
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Enabling this setting disables the requirement to electrify tracks to make electric engines run on them
@@ -4731,7 +4738,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Select t
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Load percentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliability
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum speed
@@ -5259,6 +5266,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Can't move vehi
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :the rear engine will always follow its front counterpart
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :unable to find route to local depot
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :unable to find local depot
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :unable to find local hangar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :wrong depot type
 

@@ -3921,7 +3921,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig data om sprong op te baseer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Vrag persentasie
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betroubaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimum spoed

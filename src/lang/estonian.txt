@@ -4588,7 +4588,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Vali teg
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel korralduse vahelejätmine põhineb
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Koorem protsentides
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Tehnoseisund
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tippkiirus

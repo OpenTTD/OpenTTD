@@ -4732,7 +4732,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Trieu l'
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dades del vehicle on basar el salt a
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentatge de càrrega
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilitat
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocitat màxima

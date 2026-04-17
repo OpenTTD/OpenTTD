@@ -4412,7 +4412,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kondisi yang diperiksa
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :% muatan
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Kehandalan
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Kecepatan maks.

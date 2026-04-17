@@ -4329,7 +4329,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :運用停止
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}輸送機器データに基づく条件分岐
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :積載率
 STR_ORDER_CONDITIONAL_RELIABILITY                               :信頼度
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最高速度

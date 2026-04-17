@@ -4733,7 +4733,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}选择�
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}条件性命令的条件
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :装载进度
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠性
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最高速度

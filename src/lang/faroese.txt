@@ -3394,7 +3394,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Steðga
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lessingar prosent
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Álítandi
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Mesta ferð

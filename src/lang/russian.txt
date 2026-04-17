@@ -1503,8 +1503,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Высокая
 STR_CONFIG_SETTING_RECESSIONS                                   :Экономические кризисы: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Если эта настройка включена, в игре иногда происходят экономические кризисы. В это время объёмы производства значительно снижаются (и возвращаются к прежнему уровню, когда спад заканчивается).
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Разрешить разворот поездов: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Укажите, можно ли составам поездов разворачиваться для изменения направления движения. "Везде" - значит, можно в любом месте. "В конце пути" - составы не будут разворачиваться на станциях, если могут продолжить движение вперёд. "Нет" - поезда не будут разворачиваться, но смогут ехать назад со сниженной скоростью, если в хвосте состава нет локомотива.
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :везде
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :в конце пути
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :нет
 
 STR_CONFIG_SETTING_DISASTERS                                    :Катастрофы: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включение/отключение катастроф, которые могут время от времени блокировать или уничтожать транспортные средства или инфраструктуру
@@ -4920,7 +4925,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Выбе
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Загрузка (%)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надёжность
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максимальная скорость

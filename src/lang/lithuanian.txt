@@ -4692,7 +4692,7 @@ STR_ORDER_DROP_UNBUNCH                                          :Iškrauti
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Transporto priemonės parametras, kuriuo bus remiamasi vykdant sąlyginę užduotį
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :krovinio užpilda (proc.)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :patikimumas
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :didžiausias greitis

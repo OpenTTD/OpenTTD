@@ -4730,7 +4730,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Séléct
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Données du véhicule servant de base au saut
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Pourcentage de chargement
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilité
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Vitesse maximum

@@ -4723,7 +4723,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Chọn m
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dữ kiện của phương tiện để xác định
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Tiến độ bốc xếp
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Độ tin cậy
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tốc độ tối đa

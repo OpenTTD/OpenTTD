@@ -4731,7 +4731,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Dewis y 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data cerbyd i seilio'r naid arno
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Canran llwyth
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Dibynadwyedd
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Cyflymder uchaf

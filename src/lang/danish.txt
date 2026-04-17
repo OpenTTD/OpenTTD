@@ -4729,7 +4729,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Vælg de
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data som ordrespring baseres på
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Last-procentdel
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålidelighed
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tophastighed

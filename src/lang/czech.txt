@@ -4787,7 +4787,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Vyber p�
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vlastnost vozidla, podle které přeskakovat
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procento naložení
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolehlivost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximální rychlost

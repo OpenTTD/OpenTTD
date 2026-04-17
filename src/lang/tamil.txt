@@ -4133,7 +4133,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}இந�
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}அடிப்படை ஜம்பிங் செய்ய வாகனத் தரவு
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :சுமை அளவு
 STR_ORDER_CONDITIONAL_RELIABILITY                               :நம்பகத்தன்மை
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :அதிகபட்ச வேகம்

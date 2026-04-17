@@ -1352,8 +1352,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Korkeat
 STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, taloudellinen lama voi ilmaantua ajoittain. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Salli junien kääntyminen suuntaa vaihdettaessa: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Valitse, missä junat voivat kääntyä ympäri suuntaa vaihtaessaan. ”Kaikkialla”: junat voivat kääntyä kaikkialla. ”Vain linjan päässä”: junat eivät käänny asemilla, jos reitti eteenpäin on mahdollinen. ”Ei missään”: junat eivät käänny, vaan kulkevat tarvittaessa taaksepäin, mutta alennetulla nopeudella, jos taimmaisessa vaunussa ei ole ohjaamoa
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Kaikkialla
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Vain linjan päässä
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Ei missään
 
 STR_CONFIG_SETTING_DISASTERS                                    :Onnettomuudet: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ottaa käyttöön onnettomuudet jotka saattavat ajoittain estää tai tuhota liikennettä tai infrastruktuuria
@@ -4733,7 +4738,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Valitse 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kulkuneuvon tiedot, joiden perusteella hypätään
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lastin prosentuaalinen määrä
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Luotettavuus
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Huippunopeus

@@ -4834,7 +4834,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Επιλ
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Δεδομένα οχήματος για να βασιστεί το άλμα
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :{G=n}Ποσοστό φόρτωσης
 STR_ORDER_CONDITIONAL_RELIABILITY                               :{G=f}Αξιοπιστία
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Μέγιστη ταχύτητα

@@ -1353,8 +1353,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Altos
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativado, recessões podem ocorrer periodicamente. Durante uma recessão, toda a produção é significativamente menor (ela retorna ao nível anterior quando a recessão termina)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Permitir que os trens invertam a direção: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Escolha onde os trens podem virar para inverter a direção. Com a opção “Todos”, os trens podem virar em qualquer lugar. Com a opção “Apenas no fim da linha”, os trens não invertem a direção nas estações se for possível seguir em frente. Com a opção “Nenhum”, os trens não poderão inverter e seguirão de ré se necessário, mas a velocidade será reduzida se não houver cabine de comando no vagão traseiro
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Todos
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Apenas no fim da linha
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Nenhum
 
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ativar desastres que podem, ocasionalmente, bloquear ou destruir veículos ou infraestrutura
@@ -4734,7 +4739,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Escolher
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo para basear o salto de ordem
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentagem de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Confiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima

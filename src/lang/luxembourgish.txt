@@ -4729,7 +4729,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Wiel d'A
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gefierdaten als Basis fir den Optragssprong
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Prozent gelueden
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zouverlässegkeet
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximal Geschwindegkeet

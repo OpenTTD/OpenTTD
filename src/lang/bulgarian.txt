@@ -4582,7 +4582,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Избе
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данни за превозното средство, на които се базира
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент натовареност
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надеждност
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максимална скорост

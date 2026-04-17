@@ -3697,7 +3697,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Gelditu
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Ibilgailuaren xehetasunak jauzia oinarritzeko
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Kargatutako ehunekoa
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidagarritasuna
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Gehienezko abiadua

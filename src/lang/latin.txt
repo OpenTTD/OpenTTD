@@ -4063,7 +4063,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Consiste
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Indicia vehiculi ad quae spectat ordines conditionales
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :portio oneris
 STR_ORDER_CONDITIONAL_RELIABILITY                               :constantia
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :velocitas maxima

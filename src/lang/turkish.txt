@@ -4730,7 +4730,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Bu hanga
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dallanmanın temel alacağı araç verisi
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Yükleme yüzdesi
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Güvenilirlik
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Azami hız

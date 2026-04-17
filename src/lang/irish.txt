@@ -4182,7 +4182,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sonraí feithicle a bhunófar an léim air
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Céatadán lódáilte
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Iontaofacht
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luas uasta

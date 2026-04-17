@@ -3589,7 +3589,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stoppa
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gögn farartækis sem skilyrði byggja á
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Hleðsluhlutfall
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Áreiðanleiki
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Hámarkshraði

@@ -3675,7 +3675,7 @@ STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :ایستگاه 
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :عمر مفید باقی مانده (سال)
 ###next-name-looks-similar
 

@@ -4074,7 +4074,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stad
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dàta a' charbaid air a bheil an leum stèidhichte
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ceudad an luchdaidh
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Earbsachd
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luaths as motha

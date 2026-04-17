@@ -4729,7 +4729,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Tīpakon
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Te raraunga waka me peke ai
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ōrau o te utanga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Horopū
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tere mōrahi
