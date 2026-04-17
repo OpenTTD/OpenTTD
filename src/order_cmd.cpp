@@ -801,8 +801,11 @@ CommandCost CmdInsertOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			OrderConditionComparator occ = new_order.GetConditionComparator();
 			if (occ >= OrderConditionComparator::End) return CMD_ERROR;
 			switch (new_order.GetConditionVariable()) {
-				case OrderConditionVariable::RequiresService:
 				case OrderConditionVariable::DrivingBackwards:
+					if (v->type != VEH_TRAIN) return CMD_ERROR;
+					[[fallthrough]];
+
+				case OrderConditionVariable::RequiresService:
 					if (occ != OrderConditionComparator::IsTrue && occ != OrderConditionComparator::IsFalse) return CMD_ERROR;
 					break;
 
@@ -1286,6 +1289,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 		case MOF_COND_VARIABLE: {
 			OrderConditionVariable cond_variable = static_cast<OrderConditionVariable>(data);
 			if (cond_variable >= OrderConditionVariable::End) return CMD_ERROR;
+			if (cond_variable == OrderConditionVariable::DrivingBackwards && v->type != VEH_TRAIN) return CMD_ERROR;
 			break;
 		}
 
