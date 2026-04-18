@@ -405,7 +405,6 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 
 	if (spec->size != OBJECT_SIZE_1X1) return CMD_ERROR;
 
-	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
@@ -416,28 +415,24 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex t = *iter;
-		CommandCost ret = Command<Commands::BuildObject>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, type, view);
+		CommandCost ret = Command<Commands::BuildObject>::Do(flags, t, type, view);
+		cost.AddCost(ret.GetCost());
+		if (ret.Failed()) {
+			last_error = ret;
+		} else {
+			had_success = true;
+		}
 
 		/* If we've reached the limit, stop building (or testing). */
 		if (c != nullptr && limit-- <= 0) break;
-
-		if (ret.Failed()) {
-			last_error = std::move(ret);
-			continue;
-		}
-
-		had_success = true;
-		if (flags.Test(DoCommandFlag::Execute)) {
-			money -= ret.GetCost();
-
-			/* If we run out of money, stop building. */
-			if (ret.GetCost() > 0 && money < 0) break;
-			Command<Commands::BuildObject>::Do(flags, t, type, view);
-		}
-		cost.AddCost(ret.GetCost());
 	}
 
-	return had_success ? cost : last_error;
+	if (!had_success) {
+		/* We already added the cost of the last error, so undo it before adding the complete error. */
+		cost.AddCost(-last_error.GetCost());
+		cost.AddCost(std::move(last_error));
+	}
+	return cost;
 }
 
 /** @copydoc GetFoundationProc */
