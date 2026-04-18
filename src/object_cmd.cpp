@@ -232,6 +232,12 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 	if (type == OBJECT_OWNED_LAND) {
 		/* Owned land is special as it can be placed on any slope. */
+		if (IsTileType(tile, TileType::Object) &&
+				IsTileOwner(tile, _current_company) &&
+				IsObjectType(tile, OBJECT_OWNED_LAND)) {
+			return CommandCost(STR_ERROR_YOU_ALREADY_OWN_IT);
+		}
+
 		cost.AddCost(Command<Commands::LandscapeClear>::Do(flags, tile));
 	} else {
 		/* Check the surface to build on. At this time we can't actually execute the
@@ -329,11 +335,6 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 			break;
 
 		case OBJECT_OWNED_LAND:
-			if (IsTileType(tile, TileType::Object) &&
-					IsTileOwner(tile, _current_company) &&
-					IsObjectType(tile, OBJECT_OWNED_LAND)) {
-				return CommandCost(STR_ERROR_YOU_ALREADY_OWN_IT);
-			}
 			break;
 
 		case OBJECT_HQ: {
