@@ -4922,7 +4922,7 @@ STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Выбе
 STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Выберите действие, которое нужно выполнить в этом ангаре
 ###next-name-looks-similar
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Значение состояния транспортного средства, в зависимости от которого принимать решение
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 ###length 9
@@ -4934,6 +4934,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Требует�
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Всегда
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Оставшийся срок службы (лет)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Максимальная надёжность
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Движется назад
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Условие перехода

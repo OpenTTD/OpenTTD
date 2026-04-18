@@ -5131,6 +5131,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga serwisow
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Pozostały czas życia (w latach)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksymalna niezawodność
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Jadąc tyłem
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porównać dane pojazdu z zadaną wartością

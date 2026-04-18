@@ -1441,8 +1441,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :altaj
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kiam tiu ĉi agordo estas aktiva, recesioj povas okazi periode. Dum recesio, ĉia produktado estas signife malpli alta (ĝi revenos al la antaŭa nivelo, kiam finiĝas la recesio)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Permesi renversigadon de vagonaroj: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Elektu, kie vagonaroj povas renversiĝi por direktoŝanĝado. Se "ĉie", vagonaroj povas renversiĝi en ĉiu loko. Se "nur ĉe finoj de trakoj", vagonaroj ne renversiĝos, se vojo antaŭen estas disponebla. Se "nenie", vagonaroj neniam renversiĝos, kaj anstataŭe veturos malantaŭen, sed pli malrapide, se mankas kajuto de maŝinisto en la plej malantaŭa vagono
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :ĉie
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :nur ĉe finoj de trakoj
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :nenie
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ŝalti akcidentojn, kiuj de temp' al tempo povas bloki aŭ detrui veturilojn aŭ infrastrukturon
@@ -4847,6 +4852,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Bontenado neces
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ĉiam
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resta vivo (jaroj)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimuma fidindeco
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :veturas malantaŭen
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kiel kompari la veturilajn datumoj al la donita valoro

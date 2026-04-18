@@ -4747,6 +4747,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要維護
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :總是
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :剩餘年限 (年)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :最大可靠度
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :倒車
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}車輛相關數字與指定數值比對的條件

@@ -4748,6 +4748,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Precisa de manu
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida útil restante (anos)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Confiabilidade máxima
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Dirigindo em marcha à ré
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o valor que foi passado
