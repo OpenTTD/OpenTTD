@@ -235,7 +235,9 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 
 /* static */ SQInteger ScriptOrder::GetOrderCount(VehicleID vehicle_id)
 {
-	return ScriptVehicle::IsPrimaryVehicle(vehicle_id) ? ::Vehicle::Get(vehicle_id)->GetNumManualOrders() : -1;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return -1;
+
+	return ::Vehicle::Get(vehicle_id)->GetNumManualOrders();
 }
 
 /* static */ TileIndex ScriptOrder::GetOrderDestination(VehicleID vehicle_id, OrderPosition order_position)

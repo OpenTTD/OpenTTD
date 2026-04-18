@@ -69,7 +69,9 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return v->IsGroundVehicle() ? v->GetGroundVehicleCache()->cached_total_length : -1;
+	if (!v->IsGroundVehicle()) return -1;
+
+	return v->GetGroundVehicleCache()->cached_total_length;
 }
 
 /* static */ VehicleID ScriptVehicle::_BuildVehicleInternal(TileIndex depot, EngineID engine_id, CargoType cargo)
@@ -105,7 +107,9 @@
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
 	auto [res, veh_id, refit_capacity, refit_mail, cargo_capacities] = ::Command<Commands::BuildVehicle>::Do(DoCommandFlag::QueryCost, depot, engine_id, true, cargo, ClientID::Invalid);
-	return res.Succeeded() ? refit_capacity : -1;
+	if (res.Failed()) return -1;
+
+	return refit_capacity;
 }
 
 /* static */ VehicleID ScriptVehicle::CloneVehicle(TileIndex depot, VehicleID vehicle_id, bool share_orders)
@@ -154,7 +158,9 @@
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
 	auto [res, refit_capacity, refit_mail, cargo_capacities] = ::Command<Commands::RefitVehicle>::Do(DoCommandFlag::QueryCost, vehicle_id, cargo, 0, false, false, 0);
-	return res.Succeeded() ? refit_capacity : -1;
+	if (res.Failed()) return -1;
+
+	return refit_capacity;
 }
 
 /* static */ bool ScriptVehicle::RefitVehicle(VehicleID vehicle_id, CargoType cargo)
