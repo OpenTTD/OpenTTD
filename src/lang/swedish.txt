@@ -1354,6 +1354,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är akti
 
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Ingen
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på katastrofer vilka då och då kan blockera eller förstöra fordon och infrastruktur
@@ -1905,6 +1906,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Om aktiverad, k
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :När det är aktiverat tas även hänsyn till vagnarnas hastighetsbegränsningar när ett tågs maxhastighet beräknas
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Möjliggör begränsad räckvidd för luftfarkoster: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :När det är aktiverat blir det möjligt för NewGRF:er att begränsa luftfarkosters maximala räckvidd
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte elektriska spår: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Om denna inställning aktiveras så tas kravet på att elektrifiera spår för att elektriska lok ska kunna köra på dem bort
@@ -4740,6 +4743,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Behöver servic
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltid
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Återstående livstid (år)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximal tillförlitlighet
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Backar
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hur man jämför fordonsdata med givet värde

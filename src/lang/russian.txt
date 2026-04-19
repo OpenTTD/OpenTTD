@@ -4892,7 +4892,7 @@ STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Полн
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Погрузить, если доступно
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Полная загрузка всего груза
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Полная загрузка любым грузом
-STR_ORDER_DROP_NO_LOADING                                       :Не грузиться
+STR_ORDER_DROP_NO_LOADING                                       :Не загружаться
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Изменить способ погрузки на указанной станции
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Выгрузить всё
