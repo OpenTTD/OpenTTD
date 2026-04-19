@@ -571,7 +571,7 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupI
 		if (!GenerateVehicleSortList(&list, vli) || list.empty()) return { CMD_ERROR, GroupID::Invalid() };
 	} else {
 		const Vehicle *v = Vehicle::GetIfValid(veh_id);
-		if (v == nullptr) return { CMD_ERROR, GroupID::Invalid() };
+		if (v == nullptr || !IsCompanyBuildableVehicleType(v)) return { CMD_ERROR, GroupID::Invalid() };
 		list.push_back(v);
 	}
 
