@@ -571,7 +571,7 @@ struct MusicTrackSelectionWindow : public Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (const auto &song : _music.music_set) {
 					DrawString(tr, GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
-					tr.top += GetCharacterHeight(FontSize::Small);
+					tr.top += GetCharacterHeight(FontSize::Normal);
 				}
 				break;
 			}
@@ -582,7 +582,7 @@ struct MusicTrackSelectionWindow : public Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (const auto &song : _music.active_playlist) {
 					DrawString(tr, GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
-					tr.top += GetCharacterHeight(FontSize::Small);
+					tr.top += GetCharacterHeight(FontSize::Normal);
 				}
 				break;
 			}
@@ -593,13 +593,13 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_MTS_LIST_LEFT: { // add to playlist
-				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Small));
+				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Normal));
 				_music.PlaylistAdd(y);
 				break;
 			}
 
 			case WID_MTS_LIST_RIGHT: { // remove from playlist
-				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Small));
+				int y = this->GetRowFromWidget(pt.y, widget, WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Normal));
 				_music.PlaylistRemove(y);
 				break;
 			}
@@ -722,7 +722,7 @@ struct MusicWindow : public Window {
 
 			case WID_M_TRACK_NR: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TRACK_NONE);
-				d = maxdim(d, GetStringBoundingBox(GetString(STR_MUSIC_TRACK_DIGIT, GetParamMaxDigits(2, FontSize::Small), 2)));
+				d = maxdim(d, GetStringBoundingBox(GetString(STR_MUSIC_TRACK_DIGIT, GetParamMaxDigits(2, FontSize::Normal), 2)));
 				d.width += padding.width;
 				d.height += padding.height + WidgetDimensions::scaled.fullbevel.bottom;
 				size = maxdim(size, d);
@@ -879,22 +879,20 @@ static constexpr std::initializer_list<NWidgetPart> _nested_music_window_widgets
 
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_PREV), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_SKIP_TO_PREV, STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_NEXT), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_SKIP_TO_NEXT, STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_STOP), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_STOP_MUSIC, STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_PLAY), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_PLAY_MUSIC, STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_PREV), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_SKIP_TO_PREV, STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK), SetFill(0, 1),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_NEXT), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_SKIP_TO_NEXT, STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION), SetFill(0, 1),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_STOP), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_STOP_MUSIC, STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC), SetFill(0, 1),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_PLAY), SetToolbarMinimalSize(1), SetSpriteTip(SPR_IMG_PLAY_MUSIC, STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC), SetFill(0, 1),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_M_SLIDERS),
 			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.hsep_wide),
-				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.vsep_normal), SetPIPRatio(1, 0, 1),
+				NWidget(NWID_VERTICAL), SetPIP(WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.vsep_normal), SetPIPRatio(1, 0, 1),
 					NWidget(WWT_LABEL, INVALID_COLOUR), SetFill(1, 0), SetStringTip(STR_MUSIC_MUSIC_VOLUME),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_M_MUSIC_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetToolTip(STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 				EndContainer(),
-				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.vsep_normal), SetPIPRatio(1, 0, 1),
+				NWidget(NWID_VERTICAL), SetPIP(WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.vsep_normal), SetPIPRatio(1, 0, 1),
 					NWidget(WWT_LABEL, INVALID_COLOUR), SetFill(1, 0), SetStringTip(STR_MUSIC_EFFECTS_VOLUME),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_M_EFFECT_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetToolTip(STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 				EndContainer(),
