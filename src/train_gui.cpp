@@ -35,7 +35,7 @@ void CcBuildWagon(Commands, const CommandCost &result, VehicleID new_veh_id, uin
 	/* The non-deterministic order returned from VehiclesOnTile() does not
 	 * matter here as there must only be one locomotive for anything to happen. */
 	for (const Vehicle *v : VehiclesOnTile(tile)) {
-		if (v->type != VEH_TRAIN) continue;
+		if (v->type != VehicleType::Train) continue;
 
 		const Train *t = Train::From(v);
 		if (t->IsFrontEngine() && t->IsStoppedInDepot()) {

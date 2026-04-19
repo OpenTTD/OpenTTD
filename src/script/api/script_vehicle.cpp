@@ -33,7 +33,7 @@
 {
 	EnforceDeityOrCompanyModeValid(false);
 	const Vehicle *v = ::Vehicle::GetIfValid(vehicle_id);
-	return v != nullptr && IsCompanyBuildableVehicleType(v) && (v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()));
+	return v != nullptr && IsCompanyBuildableVehicleType(v) && (v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (v->IsPrimaryVehicle() || (v->type == ::VehicleType::Train && ::Train::From(v)->IsFreeWagon()));
 }
 
 /* static */ bool ScriptVehicle::IsPrimaryVehicle(VehicleID vehicle_id)
@@ -124,8 +124,8 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidVehicle(source_vehicle_id) && source_wagon < GetNumWagons(source_vehicle_id));
 	EnforcePrecondition(false, dest_vehicle_id == -1 || (IsValidVehicle(static_cast<VehicleID>(dest_vehicle_id)) && dest_wagon < GetNumWagons(static_cast<VehicleID>(dest_vehicle_id))));
-	EnforcePrecondition(false, ::Vehicle::Get(source_vehicle_id)->type == VEH_TRAIN);
-	EnforcePrecondition(false, dest_vehicle_id == -1 || ::Vehicle::Get(static_cast<VehicleID>(dest_vehicle_id))->type == VEH_TRAIN);
+	EnforcePrecondition(false, ::Vehicle::Get(source_vehicle_id)->type == ::VehicleType::Train);
+	EnforcePrecondition(false, dest_vehicle_id == -1 || ::Vehicle::Get(static_cast<VehicleID>(dest_vehicle_id))->type == ::VehicleType::Train);
 
 	const Train *v = ::Train::Get(source_vehicle_id);
 	while (source_wagon-- > 0) v = v->GetNextUnit();
@@ -172,14 +172,14 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return ScriptObject::Command<Commands::SellVehicle>::Do(vehicle_id, v->type == VEH_TRAIN, false, INVALID_CLIENT_ID);
+	return ScriptObject::Command<Commands::SellVehicle>::Do(vehicle_id, v->type == ::VehicleType::Train, false, INVALID_CLIENT_ID);
 }
 
 /* static */ bool ScriptVehicle::_SellWagonInternal(VehicleID vehicle_id, SQInteger wagon, bool sell_attached_wagons)
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id) && wagon < GetNumWagons(vehicle_id));
-	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == VEH_TRAIN);
+	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == ::VehicleType::Train);
 
 	const Train *v = ::Train::Get(vehicle_id);
 	while (wagon-- > 0) v = v->GetNextUnit();
@@ -237,11 +237,11 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsPrimaryVehicle(vehicle_id));
-	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == VEH_ROAD || ::Vehicle::Get(vehicle_id)->type == VEH_TRAIN);
+	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == ::VehicleType::Road || ::Vehicle::Get(vehicle_id)->type == ::VehicleType::Train);
 
 	switch (::Vehicle::Get(vehicle_id)->type) {
-		case VEH_ROAD: return ScriptObject::Command<Commands::TurnRoadVehicle>::Do(vehicle_id);
-		case VEH_TRAIN: return ScriptObject::Command<Commands::ReverseTrainDirection>::Do(vehicle_id, false);
+		case ::VehicleType::Road: return ScriptObject::Command<Commands::TurnRoadVehicle>::Do(vehicle_id);
+		case ::VehicleType::Train: return ScriptObject::Command<Commands::ReverseTrainDirection>::Do(vehicle_id, false);
 		default: NOT_REACHED();
 	}
 }
@@ -265,7 +265,7 @@
 	if (!IsValidVehicle(vehicle_id)) return INVALID_TILE;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	if (v->type == VEH_AIRCRAFT) {
+	if (v->type == ::VehicleType::Aircraft) {
 		uint x = Clamp(v->x_pos / TILE_SIZE, 0, ScriptMap::GetMapSizeX() - 2);
 		uint y = Clamp(v->y_pos / TILE_SIZE, 0, ScriptMap::GetMapSizeY() - 2);
 		return ::TileXY(x, y);
@@ -287,7 +287,7 @@
 	if (wagon >= GetNumWagons(vehicle_id)) return ::EngineID::Invalid();
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	if (v->type == VEH_TRAIN) {
+	if (v->type == ::VehicleType::Train) {
 		while (wagon-- > 0) v = ::Train::From(v)->GetNextUnit();
 	}
 	return v->engine_type;
@@ -320,7 +320,7 @@
 	if (wagon >= GetNumWagons(vehicle_id)) return -1;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	if (v->type == VEH_TRAIN) {
+	if (v->type == ::VehicleType::Train) {
 		while (wagon-- > 0) v = ::Train::From(v)->GetNextUnit();
 	}
 	return v->age.base();
@@ -396,11 +396,11 @@
 	if (!IsValidVehicle(vehicle_id)) return VT_INVALID;
 
 	switch (::Vehicle::Get(vehicle_id)->type) {
-		case VEH_ROAD:     return VT_ROAD;
-		case VEH_TRAIN:    return VT_RAIL;
-		case VEH_SHIP:     return VT_WATER;
-		case VEH_AIRCRAFT: return VT_AIR;
-		default:           return VT_INVALID;
+		case ::VehicleType::Road: return VT_ROAD;
+		case ::VehicleType::Train: return VT_RAIL;
+		case ::VehicleType::Ship: return VT_WATER;
+		case ::VehicleType::Aircraft: return VT_AIR;
+		default: return VT_INVALID;
 	}
 }
 
@@ -452,8 +452,8 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	switch (v->type) {
-		case VEH_ROAD: return ::RoadVehicle::From(v)->HasArticulatedPart();
-		case VEH_TRAIN: return ::Train::From(v)->HasArticulatedPart();
+		case ::VehicleType::Road: return ::RoadVehicle::From(v)->HasArticulatedPart();
+		case ::VehicleType::Train: return ::Train::From(v)->HasArticulatedPart();
 		default: NOT_REACHED();
 	}
 }
@@ -479,6 +479,6 @@
 	if (!IsPrimaryVehicle(vehicle_id)) return 0;
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
-	if (v->type != VEH_AIRCRAFT) return 0;
+	if (v->type != ::VehicleType::Aircraft) return 0;
 	return ::Aircraft::From(v)->acache.cached_max_range_sqr;
 }

@@ -551,7 +551,7 @@ public:
 	uint8_t time_since_load = 0;
 	uint8_t time_since_unload = 0;
 
-	uint8_t last_vehicle_type = 0;
+	VehicleType last_vehicle_type = VehicleType::Invalid;
 	std::list<Vehicle *> loading_vehicles{};
 	std::array<GoodsEntry, NUM_CARGO> goods; ///< Goods at this station
 	CargoTypes always_accepted{}; ///< Bitmask of always accepted cargo types (by houses, HQs, industry tiles when industry doesn't accept cargo)

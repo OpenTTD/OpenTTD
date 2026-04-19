@@ -69,7 +69,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 	if (!IsEngineBuildable(to, type, company)) return false;
 
 	switch (type) {
-		case VEH_TRAIN: {
+		case VehicleType::Train: {
 			/* make sure the railtypes are compatible */
 			if (!GetAllCompatibleRailTypes(e_from->VehInfo<RailVehicleInfo>().railtypes).Any(GetAllCompatibleRailTypes(e_to->VehInfo<RailVehicleInfo>().railtypes))) return false;
 
@@ -78,7 +78,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 			break;
 		}
 
-		case VEH_ROAD:
+		case VehicleType::Road:
 			/* make sure the roadtypes are compatible */
 			if (!GetRoadTypeInfo(e_from->VehInfo<RoadVehicleInfo>().roadtype)->powered_roadtypes.Any(GetRoadTypeInfo(e_to->VehInfo<RoadVehicleInfo>().roadtype)->powered_roadtypes)) return false;
 
@@ -86,7 +86,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 			if (e_from->info.misc_flags.Test(EngineMiscFlag::RoadIsTram) != e_to->info.misc_flags.Test(EngineMiscFlag::RoadIsTram)) return false;
 			break;
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			/* make sure that we do not replace a plane with a helicopter or vice versa */
 			if ((e_from->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL) != (e_to->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL)) return false;
 			break;
@@ -145,7 +145,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 	/* Loop through source parts */
 	for (Vehicle *src = old_veh; src != nullptr; src = src->Next()) {
 		assert(src->cargo.TotalCount() == src->cargo.ActionCount(VehicleCargoList::MTA_KEEP));
-		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !src->IsArticulatedPart()) {
+		if (!part_of_chain && src->type == VehicleType::Train && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !src->IsArticulatedPart()) {
 			/* Skip vehicles, which do not belong to old_veh */
 			src = src->GetLastEnginePart();
 			continue;
@@ -155,7 +155,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 		/* Find free space in the new chain */
 		for (Vehicle *dest = new_head; dest != nullptr && src->cargo.TotalCount() > 0; dest = dest->Next()) {
 			assert(dest->cargo.TotalCount() == dest->cargo.ActionCount(VehicleCargoList::MTA_KEEP));
-			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !dest->IsArticulatedPart()) {
+			if (!part_of_chain && dest->type == VehicleType::Train && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !dest->IsArticulatedPart()) {
 				/* Skip vehicles, which do not belong to new_head */
 				dest = dest->GetLastEnginePart();
 				continue;
@@ -170,7 +170,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 	}
 
 	/* Update train weight etc., the old vehicle will be sold anyway */
-	if (part_of_chain && new_head->type == VEH_TRAIN) Train::From(new_head)->ConsistChanged(CCF_LOADUNLOAD);
+	if (part_of_chain && new_head->type == VehicleType::Train) Train::From(new_head)->ConsistChanged(CCF_LOADUNLOAD);
 }
 
 /**
@@ -184,7 +184,7 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
 	CargoTypes union_refit_mask_a = GetUnionOfArticulatedRefitMasks(v->engine_type, false);
 	CargoTypes union_refit_mask_b = GetUnionOfArticulatedRefitMasks(engine_type, false);
 
-	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
+	const Vehicle *u = (v->type == VehicleType::Train) ? v->First() : v;
 	for (const Order &o : u->Orders()) {
 		if (!o.IsRefit() || o.IsAutoRefit()) continue;
 		CargoType cargo_type = o.GetRefitCargo();
@@ -206,7 +206,7 @@ static int GetIncompatibleRefitOrderIdForAutoreplace(const Vehicle *v, EngineID 
 {
 	CargoTypes union_refit_mask = GetUnionOfArticulatedRefitMasks(engine_type, false);
 
-	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
+	const Vehicle *u = (v->type == VehicleType::Train) ? v->First() : v;
 
 	const OrderList *orders = u->orders;
 	if (orders == nullptr) return -1;
@@ -247,7 +247,7 @@ static CargoType GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, boo
 	}
 
 	if (!IsValidCargoType(cargo_type)) {
-		if (v->type != VEH_TRAIN) return CARGO_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.
+		if (v->type != VehicleType::Train) return CARGO_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.
 
 		if (!part_of_chain) return CARGO_NO_REFIT;
 
@@ -280,11 +280,11 @@ static CargoType GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, boo
  */
 static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool always_replace, EngineID &e)
 {
-	assert(v->type != VEH_TRAIN || !v->IsArticulatedPart());
+	assert(v->type != VehicleType::Train || !v->IsArticulatedPart());
 
 	e = EngineID::Invalid();
 
-	if (v->type == VEH_TRAIN && Train::From(v)->IsRearDualheaded()) {
+	if (v->type == VehicleType::Train && Train::From(v)->IsRearDualheaded()) {
 		/* we build the rear ends of multiheaded trains with the front ones */
 		return CommandCost();
 	}
@@ -305,7 +305,7 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool alw
 	if (e == EngineID::Invalid() || IsEngineBuildable(e, v->type, _current_company)) return CommandCost();
 
 	/* The engine we need is not available. Report error to user */
-	return CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + v->type);
+	return CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + to_underlying(v->type));
 }
 
 /**
@@ -333,7 +333,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (!IsValidCargoType(refit_cargo)) {
 		if (!IsLocalCompany() || !flags.Test(DoCommandFlag::Execute)) return CommandCost();
 
-		VehicleID old_veh_id = (old_veh->type == VEH_TRAIN) ? Train::From(old_veh)->First()->index : old_veh->index;
+		VehicleID old_veh_id = (old_veh->type == VehicleType::Train) ? Train::From(old_veh)->First()->index : old_veh->index;
 		EncodedString headline;
 
 		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
@@ -372,7 +372,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	}
 
 	/* Try to reverse the vehicle, but do not care if it fails as the new type might not be reversible */
-	if (new_veh->type == VEH_TRAIN && Train::From(old_veh)->flags.Test(VehicleRailFlag::Flipped)) {
+	if (new_veh->type == VehicleType::Train && Train::From(old_veh)->flags.Test(VehicleRailFlag::Flipped)) {
 		/* Only copy the reverse state if neither old or new vehicle implements reverse-on-build probability callback. */
 		if (!TestVehicleBuildProbability(old_veh, BuildProbabilityType::Reversed).has_value() &&
 			!TestVehicleBuildProbability(new_veh, BuildProbabilityType::Reversed).has_value()) {
@@ -536,7 +536,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlags flags, bool wago
 
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, (Money)0);
 
-	if (old_head->type == VEH_TRAIN) {
+	if (old_head->type == VehicleType::Train) {
 		/* Store the length of the old vehicle chain, rounded up to whole tiles */
 		uint16_t old_total_length = CeilDiv(Train::From(old_head)->gcache.cached_total_length, TILE_SIZE) * TILE_SIZE;
 
@@ -754,7 +754,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id)
 	if (v->vehstatus.Test(VehState::Crashed)) return CMD_ERROR;
 
 	bool free_wagon = false;
-	if (v->type == VEH_TRAIN) {
+	if (v->type == VehicleType::Train) {
 		Train *t = Train::From(v);
 		if (t->IsArticulatedPart() || t->IsRearDualheaded()) return CMD_ERROR;
 		free_wagon = !t->IsFrontEngine();
@@ -778,7 +778,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id)
 		CommandCost cost = GetNewEngineType(w, c, false, e);
 		if (cost.Failed()) return cost;
 		any_replacements |= (e != EngineID::Invalid());
-		w = (!free_wagon && w->type == VEH_TRAIN ? Train::From(w)->GetNextUnit() : nullptr);
+		w = (!free_wagon && w->type == VehicleType::Train ? Train::From(w)->GetNextUnit() : nullptr);
 	}
 
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, (Money)0);

@@ -1971,7 +1971,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 	uint8_t frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
 
 	if (IsTunnel(tile)) {
-		if (v->type == VEH_TRAIN) {
+		if (v->type == VehicleType::Train) {
 			Train *t = Train::From(v);
 
 			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
@@ -1997,7 +1997,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 				t->vehstatus.Reset(VehState::Hidden);
 				return VehicleEnterTileState::EnteredWormhole;
 			}
-		} else if (v->type == VEH_ROAD) {
+		} else if (v->type == VehicleType::Road) {
 			RoadVehicle *rv = RoadVehicle::From(v);
 
 			/* Enter tunnel? */
@@ -2024,11 +2024,11 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 			}
 		}
 	} else { // IsBridge(tile)
-		if (v->type != VEH_SHIP) {
+		if (v->type != VehicleType::Ship) {
 			/* modify speed of vehicle */
 			uint16_t spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 
-			if (v->type == VEH_ROAD) spd *= 2;
+			if (v->type == VehicleType::Road) spd *= 2;
 			Vehicle *first = v->First();
 			first->cur_speed = std::min(first->cur_speed, spd);
 		}
@@ -2037,21 +2037,21 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 			/* Vehicle enters bridge at the last frame inside this tile. */
 			if (frame != TILE_SIZE - 1) return {};
 			switch (v->type) {
-				case VEH_TRAIN: {
+				case VehicleType::Train: {
 					Train *t = Train::From(v);
 					t->track = TRACK_BIT_WORMHOLE;
 					PrepareToEnterBridge(t);
 					break;
 				}
 
-				case VEH_ROAD: {
+				case VehicleType::Road: {
 					RoadVehicle *rv = RoadVehicle::From(v);
 					rv->state = RVSB_WORMHOLE;
 					PrepareToEnterBridge(rv);
 					break;
 				}
 
-				case VEH_SHIP:
+				case VehicleType::Ship:
 					Ship::From(v)->state = TRACK_BIT_WORMHOLE;
 					break;
 
@@ -2061,7 +2061,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 		} else if (vdir == ReverseDiagDir(dir)) {
 			v->tile = tile;
 			switch (v->type) {
-				case VEH_TRAIN: {
+				case VehicleType::Train: {
 					Train *t = Train::From(v);
 					if (t->track == TRACK_BIT_WORMHOLE) {
 						t->track = DiagDirToDiagTrackBits(vdir);
@@ -2070,7 +2070,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 					break;
 				}
 
-				case VEH_ROAD: {
+				case VehicleType::Road: {
 					RoadVehicle *rv = RoadVehicle::From(v);
 					if (rv->state == RVSB_WORMHOLE) {
 						rv->state = DiagDirToDiagTrackdir(vdir);
@@ -2080,7 +2080,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 					break;
 				}
 
-				case VEH_SHIP: {
+				case VehicleType::Ship: {
 					Ship *ship = Ship::From(v);
 					if (ship->state == TRACK_BIT_WORMHOLE) {
 						ship->state = DiagDirToDiagTrackBits(vdir);

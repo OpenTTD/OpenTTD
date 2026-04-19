@@ -481,7 +481,7 @@ struct BuildRailToolbarWindow : Window {
 			return;
 		}
 
-		bool can_build = CanBuildVehicleInfrastructure(VEH_TRAIN);
+		bool can_build = CanBuildVehicleInfrastructure(VehicleType::Train);
 		for (const WidgetID widget : can_build_widgets) this->SetWidgetDisabledState(widget, !can_build);
 		if (!can_build) {
 			CloseWindowById(WC_BUILD_SIGNAL, TRANSPORT_RAIL);
@@ -494,7 +494,7 @@ struct BuildRailToolbarWindow : Window {
 
 	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
 	{
-		bool can_build = CanBuildVehicleInfrastructure(VEH_TRAIN);
+		bool can_build = CanBuildVehicleInfrastructure(VehicleType::Train);
 		if (can_build) return false;
 
 		if (std::ranges::find(can_build_widgets, widget) == std::end(can_build_widgets)) return false;
@@ -562,7 +562,7 @@ struct BuildRailToolbarWindow : Window {
 		if (widget == WID_RAT_CAPTION) {
 			const RailTypeInfo *rti = GetRailTypeInfo(this->railtype);
 			if (rti->max_speed > 0) {
-				return GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed, VEH_TRAIN));
+				return GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed, VehicleType::Train));
 			}
 			return GetString(rti->strings.toolbar_caption);
 		}

@@ -1073,7 +1073,7 @@ static void FloodVehicleProc(Vehicle *v, int z)
 	switch (v->type) {
 		default: break;
 
-		case VEH_AIRCRAFT: {
+		case VehicleType::Aircraft: {
 			if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) break;
 			if (v->subtype == AIR_SHADOW) break;
 
@@ -1087,8 +1087,8 @@ static void FloodVehicleProc(Vehicle *v, int z)
 			break;
 		}
 
-		case VEH_TRAIN:
-		case VEH_ROAD: {
+		case VehicleType::Train:
+		case VehicleType::Road: {
 			if (v->z_pos > z) break;
 			FloodVehicle(v->First());
 			break;
@@ -1415,7 +1415,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 static bool ClickTile_Water(TileIndex tile)
 {
 	if (GetWaterTileType(tile) == WaterTileType::Depot) {
-		ShowDepotWindow(GetShipDepotNorthTile(tile), VEH_SHIP);
+		ShowDepotWindow(GetShipDepotNorthTile(tile), VehicleType::Ship);
 		return true;
 	}
 	return false;

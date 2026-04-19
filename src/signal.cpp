@@ -200,7 +200,7 @@ static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of 
  */
 static bool IsTrainAndNotInDepot(const Vehicle *v)
 {
-	return v->type == VEH_TRAIN && Train::From(v)->track != TRACK_BIT_DEPOT;
+	return v->type == VehicleType::Train && Train::From(v)->track != TRACK_BIT_DEPOT;
 }
 
 

@@ -283,10 +283,10 @@ static int32_t GetDefaultServiceInterval(const IntSettingDesc &sd, VehicleType t
 
 	if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
 		switch (type) {
-			case VEH_TRAIN:    return DEF_SERVINT_MINUTES_TRAINS;
-			case VEH_ROAD:     return DEF_SERVINT_MINUTES_ROADVEH;
-			case VEH_AIRCRAFT: return DEF_SERVINT_MINUTES_AIRCRAFT;
-			case VEH_SHIP:     return DEF_SERVINT_MINUTES_SHIPS;
+			case VehicleType::Train: return DEF_SERVINT_MINUTES_TRAINS;
+			case VehicleType::Road: return DEF_SERVINT_MINUTES_ROADVEH;
+			case VehicleType::Aircraft: return DEF_SERVINT_MINUTES_AIRCRAFT;
+			case VehicleType::Ship: return DEF_SERVINT_MINUTES_SHIPS;
 			default: NOT_REACHED();
 		}
 	}

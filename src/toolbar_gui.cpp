@@ -785,7 +785,7 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 
 static CallBackFunction ToolbarTrainClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_TRAIN);
+	ToolbarVehicleClick(w, VehicleType::Train);
 	return CallBackFunction::None;
 }
 
@@ -797,7 +797,7 @@ static CallBackFunction ToolbarTrainClick(Window *w)
  */
 static CallBackFunction MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_TRAIN);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Train);
 	return CallBackFunction::None;
 }
 
@@ -805,7 +805,7 @@ static CallBackFunction MenuClickShowTrains(int index)
 
 static CallBackFunction ToolbarRoadClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_ROAD);
+	ToolbarVehicleClick(w, VehicleType::Road);
 	return CallBackFunction::None;
 }
 
@@ -817,7 +817,7 @@ static CallBackFunction ToolbarRoadClick(Window *w)
  */
 static CallBackFunction MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_ROAD);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Road);
 	return CallBackFunction::None;
 }
 
@@ -825,7 +825,7 @@ static CallBackFunction MenuClickShowRoad(int index)
 
 static CallBackFunction ToolbarShipClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_SHIP);
+	ToolbarVehicleClick(w, VehicleType::Ship);
 	return CallBackFunction::None;
 }
 
@@ -837,7 +837,7 @@ static CallBackFunction ToolbarShipClick(Window *w)
  */
 static CallBackFunction MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_SHIP);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Ship);
 	return CallBackFunction::None;
 }
 
@@ -845,7 +845,7 @@ static CallBackFunction MenuClickShowShips(int index)
 
 static CallBackFunction ToolbarAirClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_AIRCRAFT);
+	ToolbarVehicleClick(w, VehicleType::Aircraft);
 	return CallBackFunction::None;
 }
 
@@ -857,7 +857,7 @@ static CallBackFunction ToolbarAirClick(Window *w)
  */
 static CallBackFunction MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_AIRCRAFT);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Aircraft);
 	return CallBackFunction::None;
 }
 
@@ -2059,10 +2059,10 @@ struct MainToolbarWindow : Window {
 			case MTHK_GRAPHS: ShowOperatingProfitGraph(); break;
 			case MTHK_LEAGUE: ShowFirstLeagueTable(); break;
 			case MTHK_INDUSTRIES: ShowBuildIndustryWindow(); break;
-			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VEH_TRAIN); break;
-			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VEH_ROAD); break;
-			case MTHK_SHIP_LIST: ShowVehicleListWindow(_local_company, VEH_SHIP); break;
-			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VEH_AIRCRAFT); break;
+			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VehicleType::Train); break;
+			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VehicleType::Road); break;
+			case MTHK_SHIP_LIST: ShowVehicleListWindow(_local_company, VehicleType::Ship); break;
+			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VehicleType::Aircraft); break;
 			case MTHK_ZOOM_IN: ToolbarZoomInClick(this); break;
 			case MTHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
 			case MTHK_BUILD_RAIL: ShowBuildRailToolbar(_last_built_railtype); break;

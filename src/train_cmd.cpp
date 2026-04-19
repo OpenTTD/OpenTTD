@@ -55,7 +55,7 @@ static const uint8_t _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
 
 /** @copydoc IsValidImageIndex */
 template <>
-bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
+bool IsValidImageIndex<VehicleType::Train>(uint8_t image_index)
 {
 	return image_index < lengthof(_engine_sprite_base);
 }
@@ -497,7 +497,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 
 static SpriteID GetDefaultTrainSprite(uint8_t spritenum, Direction direction)
 {
-	assert(IsValidImageIndex<VEH_TRAIN>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Train>(spritenum));
 	return ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
 }
 
@@ -521,7 +521,7 @@ void Train::GetImage(Direction direction, EngineImageType image_type, VehicleSpr
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
-	assert(IsValidImageIndex<VEH_TRAIN>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Train>(spritenum));
 	SpriteID sprite = GetDefaultTrainSprite(spritenum, direction);
 
 	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _wagon_full_adder[spritenum];
@@ -632,7 +632,7 @@ static std::vector<VehicleID> GetFreeWagonsInDepot(TileIndex tile)
 	std::vector<VehicleID> free_wagons;
 
 	for (Vehicle *v : VehiclesOnTile(tile)) {
-		if (v->type != VEH_TRAIN) continue;
+		if (v->type != VehicleType::Train) continue;
 		if (v->vehstatus.Test(VehState::Crashed)) continue;
 		if (!Train::From(v)->IsFreeWagon()) continue;
 
@@ -1031,7 +1031,7 @@ static CommandCost CheckNewTrain(Train *original_dst, Train *dst, Train *origina
 
 	/* Get a free unit number and check whether it's within the bounds.
 	 * There will always be a maximum of one new train. */
-	if (GetFreeUnitNumber(VEH_TRAIN) <= _settings_game.vehicle.max_trains) return CommandCost();
+	if (GetFreeUnitNumber(VehicleType::Train) <= _settings_game.vehicle.max_trains) return CommandCost();
 
 	return CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 }
@@ -1234,7 +1234,7 @@ static void NormaliseTrainHead(Train *head)
 
 	/* If we don't have a unit number yet, set one. */
 	if (head->unitnumber != 0) return;
-	head->unitnumber = Company::Get(head->owner)->freeunits[head->type].UseID(GetFreeUnitNumber(VEH_TRAIN));
+	head->unitnumber = Company::Get(head->owner)->freeunits[head->type].UseID(GetFreeUnitNumber(VehicleType::Train));
 }
 
 /**
@@ -1719,7 +1719,7 @@ void ReverseTrainSwapVeh(Train *v, int l, int r)
  */
 static bool IsTrain(const Vehicle *v)
 {
-	return v->type == VEH_TRAIN;
+	return v->type == VehicleType::Train;
 }
 
 /**
@@ -1743,7 +1743,7 @@ bool TrainOnCrossing(TileIndex tile)
  */
 static bool TrainApproachingCrossingEnum(const Vehicle *v, TileIndex tile)
 {
-	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return false;
+	if (v->type != VehicleType::Train || v->vehstatus.Test(VehState::Crashed)) return false;
 
 	const Train *t = Train::From(v);
 	if (!t->IsMovingFront()) return false;
@@ -3270,7 +3270,7 @@ static uint TrainCrashed(Train *v)
 static uint CheckTrainCollision(Vehicle *v, Train *moving_front)
 {
 	/* Make sure we are a train, and are not in a depot. */
-	if (v->type != VEH_TRAIN) return 0;
+	if (v->type != VehicleType::Train) return 0;
 
 	/* We can't crash into trains in a depot. */
 	if (Train::From(v)->track == TRACK_BIT_DEPOT) return 0;
@@ -3463,7 +3463,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 								/* check if a train is waiting on the other side */
 								if (!HasVehicleOnTile(o_tile, [&exitdir](const Vehicle *u) {
-										if (u->type != VEH_TRAIN || u->vehstatus.Test(VehState::Crashed)) return false;
+										if (u->type != VehicleType::Train || u->vehstatus.Test(VehState::Crashed)) return false;
 										const Train *t = Train::From(u);
 
 										/* not front engine of a train, inside wormhole or depot, crashed */
@@ -3737,7 +3737,7 @@ static void DeleteLastWagon(Train *v)
 		/* If there are still crashed vehicles on the tile, give the track reservation to them */
 		TrackBits remaining_trackbits = TRACK_BIT_NONE;
 		for (const Vehicle *u : VehiclesOnTile(tile)) {
-			if (u->type != VEH_TRAIN || !u->vehstatus.Test(VehState::Crashed)) continue;
+			if (u->type != VehicleType::Train || !u->vehstatus.Test(VehState::Crashed)) continue;
 			TrackBits train_tbits = Train::From(u)->track;
 			if (train_tbits == TRACK_BIT_WORMHOLE) {
 				/* Vehicle is inside a wormhole, u->track contains no useful value then. */

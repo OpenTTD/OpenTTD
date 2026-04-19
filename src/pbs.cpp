@@ -279,7 +279,7 @@ struct FindTrainOnTrackInfo {
 static void CheckTrainsOnTrack(FindTrainOnTrackInfo &info, TileIndex tile)
 {
 	for (Vehicle *v : VehiclesOnTile(tile)) {
-		if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) continue;
+		if (v->type != VehicleType::Train || v->vehstatus.Test(VehState::Crashed)) continue;
 
 		Train *t = Train::From(v);
 		if (t->track == TRACK_BIT_WORMHOLE || HasBit(static_cast<TrackBits>(t->track), TrackdirToTrack(info.res.trackdir))) {
@@ -300,7 +300,7 @@ static void CheckTrainsOnTrack(FindTrainOnTrackInfo &info, TileIndex tile)
  */
 PBSTileInfo FollowTrainReservation(const Train *consist, Vehicle **train_on_res)
 {
-	assert(consist->type == VEH_TRAIN);
+	assert(consist->type == VehicleType::Train);
 
 	const Train *moving_front = consist->GetMovingFront();
 

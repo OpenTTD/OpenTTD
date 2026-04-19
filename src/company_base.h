@@ -139,12 +139,12 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	class AIInfo *ai_info = nullptr;
 	std::unique_ptr<class AIConfig> ai_config{};
 
-	std::array<GroupStatistics, VEH_COMPANY_END> group_all{}; ///< NOSAVE: Statistics for the ALL_GROUP group.
-	std::array<GroupStatistics, VEH_COMPANY_END> group_default{};  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
+	VehicleTypeIndexArray<GroupStatistics> group_all{}; ///< NOSAVE: Statistics for the ALL_GROUP group.
+	VehicleTypeIndexArray<GroupStatistics> group_default{};  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
 
 	CompanyInfrastructure infrastructure{}; ///< NOSAVE: Counts of company owned infrastructure.
 
-	std::array<FreeUnitIDGenerator, VEH_COMPANY_END> freeunits{};
+	VehicleTypeIndexArray<FreeUnitIDGenerator> freeunits{};
 	FreeUnitIDGenerator freegroups{};
 
 	Money GetMaxLoan() const;

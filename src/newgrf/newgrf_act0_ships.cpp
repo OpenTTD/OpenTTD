@@ -33,7 +33,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_SHIP, id);
+		Engine *e = GetNewEngine(_cur_gps.grffile, VehicleType::Ship, id);
 		if (e == nullptr) return ChangeInfoResult::InvalidId; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
@@ -49,7 +49,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 
 				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
-				if (IsValidNewGRFImageIndex<VEH_SHIP>(spriteid)) {
+				if (IsValidNewGRFImageIndex<VehicleType::Ship>(spriteid)) {
 					svi->image_index = spriteid;
 				} else {
 					GrfMsg(1, "ShipVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);

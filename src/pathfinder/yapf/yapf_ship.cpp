@@ -381,7 +381,7 @@ public:
 			/* Check docking tile for occupancy. */
 			uint count = std::ranges::count_if(VehiclesOnTile(n.GetTile()), [](const Vehicle *v) {
 				/* Ignore other vehicles (aircraft) and ships inside depot. */
-				return v->type == VEH_SHIP && !v->vehstatus.Test(VehState::Hidden);
+				return v->type == VehicleType::Ship && !v->vehstatus.Test(VehState::Hidden);
 			});
 			c += count * 3 * YAPF_TILE_LENGTH;
 		}

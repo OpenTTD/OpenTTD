@@ -29,7 +29,7 @@ using ShipPathCache = std::vector<ShipPathElement>;
 /**
  * All ships have this type.
  */
-struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
+struct Ship final : public SpecializedVehicle<Ship, VehicleType::Ship> {
 	ShipPathCache path{}; ///< Cached path.
 	TrackBits state{}; ///< The "track" the ship is following.
 	Direction rotation = INVALID_DIR; ///< Visible direction.

@@ -348,7 +348,7 @@ void AddArticulatedParts(Vehicle *first)
 		switch (type) {
 			default: NOT_REACHED();
 
-			case VEH_TRAIN: {
+			case VehicleType::Train: {
 				Train *front = Train::From(first);
 				Train *t = Train::Create();
 				v->SetNext(t);
@@ -372,7 +372,7 @@ void AddArticulatedParts(Vehicle *first)
 				break;
 			}
 
-			case VEH_ROAD: {
+			case VehicleType::Road: {
 				RoadVehicle *front = RoadVehicle::From(first);
 				RoadVehicle *rv = RoadVehicle::Create();
 				v->SetNext(rv);
@@ -423,7 +423,7 @@ void AddArticulatedParts(Vehicle *first)
 
 		if (flip_image) v->spritenum++;
 
-		if (v->type == VEH_TRAIN) {
+		if (v->type == VehicleType::Train) {
 			auto prob = TestVehicleBuildProbability(v, BuildProbabilityType::Reversed);
 			if (prob.has_value()) Train::From(v)->flags.Set(VehicleRailFlag::Flipped, prob.value());
 		}

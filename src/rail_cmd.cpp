@@ -1626,7 +1626,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				MarkTileDirtyByTile(tile);
 				/* update power of train on this tile */
 				for (Vehicle *v : VehiclesOnTile(tile)) {
-					if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+					if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 				}
 			}
 		}
@@ -1706,10 +1706,10 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					SetRailType(endtile, totype);
 
 					for (Vehicle *v : VehiclesOnTile(tile)) {
-						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+						if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 					}
 					for (Vehicle *v : VehiclesOnTile(endtile)) {
-						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+						if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 					}
 
 					YapfNotifyTrackLayoutChange(tile, track);
@@ -2808,7 +2808,7 @@ static bool ClickTile_Rail(TileIndex tile)
 {
 	if (!IsRailDepot(tile)) return false;
 
-	ShowDepotWindow(tile, VEH_TRAIN);
+	ShowDepotWindow(tile, VehicleType::Train);
 	return true;
 }
 
@@ -2967,7 +2967,7 @@ int TicksToLeaveDepot(const Train *v)
 static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, int x, int y)
 {
 	/* This routine applies only to trains in depot tiles. */
-	if (v->type != VEH_TRAIN || !IsRailDepotTile(tile)) return {};
+	if (v->type != VehicleType::Train || !IsRailDepotTile(tile)) return {};
 
 	/* Depot direction. */
 	DiagDirection dir = GetRailDepotDirection(tile);
@@ -3085,7 +3085,7 @@ static CommandCost TerraformTile_Rail(TileIndex tile, DoCommandFlags flags, int 
 
 		/* Allow clearing the water only if there is no ship */
 		if (was_water && HasVehicleOnTile(tile, [](const Vehicle *v) {
-				return v->type == VEH_SHIP;
+				return v->type == VehicleType::Ship;
 			})) return CommandCost(STR_ERROR_SHIP_IN_THE_WAY);
 
 		/* First test autoslope. However if it succeeds we still have to test the rest, because non-autoslope terraforming is cheaper. */

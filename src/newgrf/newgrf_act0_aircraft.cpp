@@ -31,7 +31,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_AIRCRAFT, id);
+		Engine *e = GetNewEngine(_cur_gps.grffile, VehicleType::Aircraft, id);
 		if (e == nullptr) return ChangeInfoResult::InvalidId; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
@@ -47,7 +47,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 
 				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
-				if (IsValidNewGRFImageIndex<VEH_AIRCRAFT>(spriteid)) {
+				if (IsValidNewGRFImageIndex<VehicleType::Aircraft>(spriteid)) {
 					avi->image_index = spriteid;
 				} else {
 					GrfMsg(1, "AircraftVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);

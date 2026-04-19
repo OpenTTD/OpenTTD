@@ -282,7 +282,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 					}
 				}
 
-				if (v->type == VEH_TRAIN && !order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
+				if (v->type == VehicleType::Train && !order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
 					/* Only show the stopping location if other than the default chosen by the player. */
 					if (order->GetStopLocation() != _settings_client.gui.stop_location) {
 						line += GetString(STR_ORDER_STOP_LOCATION_NEAR_END + to_underlying(order->GetStopLocation()));
@@ -296,12 +296,12 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			if (!order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) {
 				/* Going to a specific depot. */
 				line = GetString(STR_ORDER_GO_TO_DEPOT_FORMAT, GetOrderGoToString(*order), v->type, order->GetDestination());
-			} else if (v->type == VEH_AIRCRAFT) {
+			} else if (v->type == VehicleType::Aircraft) {
 				/* Going to the nearest hangar. */
 				line = GetString(STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT, GetOrderGoToString(*order));
 			} else {
 				/* Going to the nearest depot. */
-				line = GetString(STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT, GetOrderGoToString(*order), STR_ORDER_TRAIN_DEPOT + v->type);
+				line = GetString(STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT, GetOrderGoToString(*order), STR_ORDER_TRAIN_DEPOT + to_underlying(v->type));
 			}
 
 			/* Do not show stopping in the depot in the timetable window. */
@@ -350,7 +350,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 	}
 
 	/* Check range for aircraft. */
-	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->GetRange() > 0 && order->IsGotoOrder()) {
+	if (v->type == VehicleType::Aircraft && Aircraft::From(v)->GetRange() > 0 && order->IsGotoOrder()) {
 		if (GetOrderDistance(order_index, v->orders->GetNext(order_index), v) > Aircraft::From(v)->acache.cached_max_range_sqr) {
 			line += GetString(STR_ORDER_OUT_OF_RANGE);
 		}
@@ -385,7 +385,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 	/* check rail waypoint */
 	if (IsRailWaypointTile(tile) &&
-			v->type == VEH_TRAIN &&
+			v->type == VehicleType::Train &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
 		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
@@ -394,7 +394,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 	/* check road waypoint */
 	if (IsRoadWaypointTile(tile) &&
-			v->type == VEH_ROAD &&
+			v->type == VehicleType::Road &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
 		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
@@ -402,7 +402,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	}
 
 	/* check buoy (no ownership) */
-	if (IsBuoyTile(tile) && v->type == VEH_SHIP) {
+	if (IsBuoyTile(tile) && v->type == VehicleType::Ship) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
 		return order;
 	}
@@ -420,17 +420,17 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		if (st != nullptr && (st->owner == _local_company || st->owner == OWNER_NONE)) {
 			StationFacilities facil;
 			switch (v->type) {
-				case VEH_SHIP:     facil = StationFacility::Dock;    break;
-				case VEH_TRAIN:    facil = StationFacility::Train;   break;
-				case VEH_AIRCRAFT: facil = StationFacility::Airport; break;
-				case VEH_ROAD:     facil = {StationFacility::BusStop, StationFacility::TruckStop}; break;
+				case VehicleType::Ship:     facil = StationFacility::Dock;    break;
+				case VehicleType::Train:    facil = StationFacility::Train;   break;
+				case VehicleType::Aircraft: facil = StationFacility::Airport; break;
+				case VehicleType::Road:     facil = {StationFacility::BusStop, StationFacility::TruckStop}; break;
 				default: NOT_REACHED();
 			}
 			if (st->facilities.Any(facil)) {
 				order.MakeGoToStation(st->index);
 				if (_ctrl_pressed) order.SetLoadType(OrderLoadType::FullLoadAny);
 				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(OrderNonStopFlag::NonStop);
-				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OrderStopLocation::FarEnd);
+				order.SetStopLocation(v->type == VehicleType::Train ? (OrderStopLocation)(_settings_client.gui.stop_location) : OrderStopLocation::FarEnd);
 				return order;
 			}
 		}
@@ -777,7 +777,7 @@ public:
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_O_SCROLLBAR);
 		if (NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_O_DEPOT_ACTION); nwid != nullptr) {
-			nwid->SetToolTip(STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP + v->type);
+			nwid->SetToolTip(STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP + to_underlying(v->type));
 		}
 		this->FinishInitNested(v->index);
 
@@ -1201,7 +1201,7 @@ public:
 					/* Deselect clicked order */
 					this->selected_order = -1;
 				} else if (sel == this->selected_order && click_count > 1) {
-					if (this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
+					if (this->vehicle->type == VehicleType::Train && sel < this->vehicle->GetNumOrders()) {
 						Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER,
 								this->vehicle->tile, this->vehicle->index, sel,
 								MOF_STOP_LOCATION, (to_underlying(this->vehicle->GetOrder(sel)->GetStopLocation()) + 1) % to_underlying(OrderStopLocation::End));
@@ -1259,7 +1259,7 @@ public:
 						case OPOS_SHARE:       sel =  3; break;
 						default: NOT_REACHED();
 					}
-					ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, sel, WID_O_GOTO, 0, 0);
+					ShowDropDownMenu(this, this->vehicle->type == VehicleType::Aircraft ? _order_goto_dropdown_aircraft : _order_goto_dropdown, sel, WID_O_GOTO, 0, 0);
 				}
 				break;
 
@@ -1302,7 +1302,7 @@ public:
 			case WID_O_COND_VARIABLE: {
 				DropDownList list;
 				for (const auto &ocv : _order_conditional_variable) {
-					if (ocv == OrderConditionVariable::DrivingBackwards && this->vehicle->type != VEH_TRAIN) continue;
+					if (ocv == OrderConditionVariable::DrivingBackwards && this->vehicle->type != VehicleType::Train) continue;
 					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv), to_underlying(ocv)));
 				}
 				ShowDropDownList(this, std::move(list), to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable()), WID_O_COND_VARIABLE);

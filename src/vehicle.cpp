@@ -174,7 +174,7 @@ bool Vehicle::NeedsAutorenewing(const Company *c, bool use_renew_setting) const
 	if (this->age - this->max_age < (c->settings.engine_renew_months * 30)) return false;
 
 	/* Only engines need renewing */
-	if (this->type == VEH_TRAIN && !Train::From(this)->IsEngine()) return false;
+	if (this->type == VehicleType::Train && !Train::From(this)->IsEngine()) return false;
 
 	return true;
 }
@@ -242,7 +242,7 @@ bool Vehicle::NeedsServicing() const
 	Money needed_money = c->settings.engine_renew_money;
 	if (needed_money > GetAvailableMoney(c->index)) return false;
 
-	for (const Vehicle *v = this; v != nullptr; v = (v->type == VEH_TRAIN) ? Train::From(v)->GetNextUnit() : nullptr) {
+	for (const Vehicle *v = this; v != nullptr; v = (v->type == VehicleType::Train) ? Train::From(v)->GetNextUnit() : nullptr) {
 		bool replace_when_old = false;
 		EngineID new_engine = EngineReplacementForCompany(c, v->engine_type, v->group_id, &replace_when_old);
 
@@ -563,10 +563,10 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 	 * Such a message does not affect MP synchronisation.
 	 */
 	for (const Vehicle *v : VehiclesOnTile(tile)) {
-		if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) continue;
+		if (v->type == VehicleType::Disaster || (v->type == VehicleType::Aircraft && v->subtype == AIR_SHADOW)) continue;
 		if (v->z_pos > z) continue;
 
-		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + to_underlying(v->type));
 	}
 	return CommandCost();
 }
@@ -586,9 +586,9 @@ CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle 
 		 * Such a message does not affect MP synchronisation.
 		 */
 		for (const Vehicle *v : VehiclesOnTile(t)) {
-			if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) continue;
+			if (v->type != VehicleType::Train && v->type != VehicleType::Road && v->type != VehicleType::Ship) continue;
 			if (v == ignore) continue;
-			return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+			return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + to_underlying(v->type));
 		}
 	}
 	return CommandCost();
@@ -609,12 +609,12 @@ CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
 	 * Such a message does not affect MP synchronisation.
 	 */
 	for (const Vehicle *v : VehiclesOnTile(tile)) {
-		if (v->type != VEH_TRAIN) continue;
+		if (v->type != VehicleType::Train) continue;
 
 		const Train *t = Train::From(v);
 		if ((t->track != track_bits) && !TracksOverlap(t->track | track_bits)) continue;
 
-		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + to_underlying(v->type));
 	}
 	return CommandCost();
 }
@@ -715,12 +715,12 @@ uint CountVehiclesInChain(const Vehicle *v)
 bool Vehicle::IsEngineCountable() const
 {
 	switch (this->type) {
-		case VEH_AIRCRAFT: return Aircraft::From(this)->IsNormalAircraft(); // don't count plane shadows and helicopter rotors
-		case VEH_TRAIN:
+		case VehicleType::Aircraft: return Aircraft::From(this)->IsNormalAircraft(); // don't count plane shadows and helicopter rotors
+		case VehicleType::Train:
 			return !this->IsArticulatedPart() && // tenders and other articulated parts
 					!Train::From(this)->IsRearDualheaded(); // rear parts of multiheaded engines
-		case VEH_ROAD: return RoadVehicle::From(this)->IsFrontEngine();
-		case VEH_SHIP: return true;
+		case VehicleType::Road: return RoadVehicle::From(this)->IsFrontEngine();
+		case VehicleType::Ship: return true;
 		default: return false; // Only count company buildable vehicles
 	}
 }
@@ -732,10 +732,10 @@ bool Vehicle::IsEngineCountable() const
 bool Vehicle::HasEngineType() const
 {
 	switch (this->type) {
-		case VEH_AIRCRAFT: return Aircraft::From(this)->IsNormalAircraft();
-		case VEH_TRAIN:
-		case VEH_ROAD:
-		case VEH_SHIP: return true;
+		case VehicleType::Aircraft: return Aircraft::From(this)->IsNormalAircraft();
+		case VehicleType::Train:
+		case VehicleType::Road:
+		case VehicleType::Ship: return true;
 		default: return false;
 	}
 }
@@ -848,7 +848,7 @@ void Vehicle::PreDestructor()
 
 	Company::Get(this->owner)->freeunits[this->type].ReleaseID(this->unitnumber);
 
-	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
+	if (this->type == VehicleType::Aircraft && this->IsPrimaryVehicle()) {
 		Aircraft *a = Aircraft::From(this);
 		Station *st = GetTargetAirportIfValid(a);
 		if (st != nullptr) {
@@ -858,7 +858,7 @@ void Vehicle::PreDestructor()
 	}
 
 
-	if (this->type == VEH_ROAD && this->IsPrimaryVehicle()) {
+	if (this->type == VehicleType::Road && this->IsPrimaryVehicle()) {
 		RoadVehicle *v = RoadVehicle::From(this);
 		if (!v->vehstatus.Test(VehState::Crashed) && IsInsideMM(v->state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END)) {
 			/* Leave the drive through roadstop, when you have not already left it. */
@@ -908,7 +908,7 @@ Vehicle::~Vehicle()
 
 	UpdateVehicleTileHash(this, true);
 	UpdateVehicleViewportHash(this, INVALID_COORD, 0, this->sprite_cache.old_coord.left, this->sprite_cache.old_coord.top);
-	if (this->type != VEH_EFFECT) {
+	if (this->type != VehicleType::Effect) {
 		DeleteVehicleNews(this->index);
 		DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
 	}
@@ -1010,10 +1010,10 @@ void CallVehicleTicks()
 		switch (v->type) {
 			default: break;
 
-			case VEH_TRAIN:
-			case VEH_ROAD:
-			case VEH_AIRCRAFT:
-			case VEH_SHIP: {
+			case VehicleType::Train:
+			case VehicleType::Road:
+			case VehicleType::Aircraft:
+			case VehicleType::Ship: {
 				Vehicle *front = v->First();
 
 				if (v->vcache.cached_cargo_age_period != 0) {
@@ -1031,22 +1031,22 @@ void CallVehicleTicks()
 				if (v->vehstatus.Test(VehState::Hidden)) continue;
 
 				/* Do not play any sound when stopped */
-				if (front->vehstatus.Test(VehState::Stopped) && (front->type != VEH_TRAIN || front->cur_speed == 0)) continue;
+				if (front->vehstatus.Test(VehState::Stopped) && (front->type != VehicleType::Train || front->cur_speed == 0)) continue;
 
 				/* Update motion counter for animation purposes. */
 				v->motion_counter += front->cur_speed;
 
 				/* Check vehicle type specifics */
 				switch (v->type) {
-					case VEH_TRAIN:
+					case VehicleType::Train:
 						if (!Train::From(v)->IsEngine()) continue;
 						break;
 
-					case VEH_ROAD:
+					case VehicleType::Road:
 						if (!RoadVehicle::From(v)->IsFrontEngine()) continue;
 						break;
 
-					case VEH_AIRCRAFT:
+					case VehicleType::Aircraft:
 						if (!Aircraft::From(v)->IsNormalAircraft()) continue;
 						break;
 
@@ -1128,7 +1128,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	/* Check whether the vehicle shall be transparent due to the game state */
 	bool shadowed = v->vehstatus.Test(VehState::Shadow);
 
-	if (v->type == VEH_EFFECT) {
+	if (v->type == VehicleType::Effect) {
 		/* Check whether the vehicle shall be transparent/invisible due to GUI settings.
 		 * However, transparent smoke and bubbles look weird, so always hide them. */
 		TransparencyOption to = EffectVehicle::From(v)->GetTransparencyOption();
@@ -1355,7 +1355,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* Calculate reliability value to use in comparison. */
 	rel = v->reliability;
-	if (v->type == VEH_SHIP) rel += 0x6666;
+	if (v->type == VehicleType::Ship) rel += 0x6666;
 
 	/* Reduce the chance if the player has chosen the Reduced setting. */
 	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced) rel += 0x6666;
@@ -1392,14 +1392,14 @@ bool Vehicle::HandleBreakdown()
 				this->breakdowns_since_last_service++;
 			}
 
-			if (this->type == VEH_AIRCRAFT) {
+			if (this->type == VehicleType::Aircraft) {
 				/* Aircraft just need this flag, the rest is handled elsewhere */
 				this->vehstatus.Set(VehState::AircraftBroken);
 			} else {
 				this->cur_speed = 0;
 
 				if (!PlayVehicleSound(this, VSE_BREAKDOWN)) {
-					bool train_or_ship = this->type == VEH_TRAIN || this->type == VEH_SHIP;
+					bool train_or_ship = this->type == VehicleType::Train || this->type == VehicleType::Ship;
 					SndPlayVehicleFx((_settings_game.game_creation.landscape != LandscapeType::Toyland) ?
 						(train_or_ship ? SND_10_BREAKDOWN_TRAIN_SHIP : SND_0F_BREAKDOWN_ROADVEHICLE) :
 						(train_or_ship ? SND_3A_BREAKDOWN_TRAIN_SHIP_TOYLAND : SND_35_BREAKDOWN_ROADVEHICLE_TOYLAND), this);
@@ -1418,10 +1418,10 @@ bool Vehicle::HandleBreakdown()
 			[[fallthrough]];
 		case 1:
 			/* Aircraft breakdowns end only when arriving at the airport */
-			if (this->type == VEH_AIRCRAFT) return false;
+			if (this->type == VehicleType::Aircraft) return false;
 
 			/* For trains this function is called twice per tick, so decrease v->breakdown_delay at half the rate */
-			if ((this->tick_counter & (this->type == VEH_TRAIN ? 3 : 1)) == 0) {
+			if ((this->tick_counter & (this->type == VehicleType::Train ? 3 : 1)) == 0) {
 				if (--this->breakdown_delay == 0) {
 					this->breakdown_ctr = 0;
 					this->MarkDirty();
@@ -1456,7 +1456,7 @@ void AgeVehicle(Vehicle *v)
 {
 	if (v->age < CalendarTime::MAX_DATE) v->age++;
 
-	if (!v->IsPrimaryVehicle() && (v->type != VEH_TRAIN || !Train::From(v)->IsEngine())) return;
+	if (!v->IsPrimaryVehicle() && (v->type != VehicleType::Train || !Train::From(v)->IsEngine())) return;
 
 	auto age = v->age - v->max_age;
 	for (int32_t i = 0; i <= 4; i++) {
@@ -1568,7 +1568,7 @@ void VehicleEnterDepot(Vehicle *v)
 	assert(v == v->First());
 
 	switch (v->type) {
-		case VEH_TRAIN: {
+		case VehicleType::Train: {
 			Train *t = Train::From(v);
 			SetWindowClassesDirty(WC_TRAINS_LIST);
 			/* Clear path reservation */
@@ -1583,11 +1583,11 @@ void VehicleEnterDepot(Vehicle *v)
 			break;
 		}
 
-		case VEH_ROAD:
+		case VehicleType::Road:
 			SetWindowClassesDirty(WC_ROADVEH_LIST);
 			break;
 
-		case VEH_SHIP: {
+		case VehicleType::Ship: {
 			SetWindowClassesDirty(WC_SHIPS_LIST);
 			Ship *ship = Ship::From(v);
 			ship->state = TRACK_BIT_DEPOT;
@@ -1597,13 +1597,13 @@ void VehicleEnterDepot(Vehicle *v)
 			break;
 		}
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			SetWindowClassesDirty(WC_AIRCRAFT_LIST);
 			HandleAircraftEnterHangar(Aircraft::From(v));
 			break;
 		default: NOT_REACHED();
 	}
-	if (v->type != VEH_TRAIN) {
+	if (v->type != VehicleType::Train) {
 		/* Trains update the vehicle list when the first unit enters the depot and calls VehicleEnterDepot() when the last unit enters.
 		 * We only increase the number of vehicles when the first one enters, so we will not need to search for more vehicles in the depot */
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -1631,7 +1631,7 @@ void VehicleEnterDepot(Vehicle *v)
 		 * Note: The target depot for nearest-/manual-depot-orders is only updated on junctions, but we want to accept every depot. */
 		if (v->current_order.GetDepotOrderType().Test(OrderDepotTypeFlag::PartOfOrders) &&
 				real_order != nullptr && !real_order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot) &&
-				(v->type == VEH_AIRCRAFT ? v->current_order.GetDestination() != GetStationIndex(v->tile) : v->dest_tile != v->tile)) {
+				(v->type == VehicleType::Aircraft ? v->current_order.GetDestination() != GetStationIndex(v->tile) : v->dest_tile != v->tile)) {
 			/* We are heading for another depot, keep driving. */
 			return;
 		}
@@ -1674,7 +1674,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 			/* Announce that the vehicle is waiting to players and AIs. */
 			if (v->owner == _local_company) {
-				AddVehicleAdviceNewsItem(AdviceType::VehicleWaiting, GetEncodedString(STR_NEWS_TRAIN_IS_WAITING + v->type, v->index), v->index);
+				AddVehicleAdviceNewsItem(AdviceType::VehicleWaiting, GetEncodedString(STR_NEWS_TRAIN_IS_WAITING + to_underlying(v->type), v->index), v->index);
 			}
 			AI::NewEvent(v->owner, new ScriptEventVehicleWaitingInDepot(v->index));
 		}
@@ -1785,7 +1785,7 @@ void Vehicle::UpdateViewport(bool dirty)
  */
 void Vehicle::UpdatePositionAndViewport()
 {
-	if (this->type != VEH_EFFECT) this->UpdatePosition();
+	if (this->type != VehicleType::Effect) this->UpdatePosition();
 	this->UpdateViewport(true);
 }
 
@@ -1919,10 +1919,10 @@ UnitID GetFreeUnitNumber(VehicleType type)
 	/* Check whether it is allowed to build another vehicle. */
 	uint max_veh;
 	switch (type) {
-		case VEH_TRAIN:    max_veh = _settings_game.vehicle.max_trains;   break;
-		case VEH_ROAD:     max_veh = _settings_game.vehicle.max_roadveh;  break;
-		case VEH_SHIP:     max_veh = _settings_game.vehicle.max_ships;    break;
-		case VEH_AIRCRAFT: max_veh = _settings_game.vehicle.max_aircraft; break;
+		case VehicleType::Train:    max_veh = _settings_game.vehicle.max_trains;   break;
+		case VehicleType::Road:     max_veh = _settings_game.vehicle.max_roadveh;  break;
+		case VehicleType::Ship:     max_veh = _settings_game.vehicle.max_ships;    break;
+		case VehicleType::Aircraft: max_veh = _settings_game.vehicle.max_aircraft; break;
 		default: NOT_REACHED();
 	}
 
@@ -1950,16 +1950,16 @@ bool CanBuildVehicleInfrastructure(VehicleType type, RoadTramType subtype)
 
 	UnitID max;
 	switch (type) {
-		case VEH_TRAIN:
+		case VehicleType::Train:
 			if (!HasAnyRailTypesAvail(_local_company)) return false;
 			max = _settings_game.vehicle.max_trains;
 			break;
-		case VEH_ROAD:
+		case VehicleType::Road:
 			if (!HasAnyRoadTypesAvail(_local_company, subtype)) return false;
 			max = _settings_game.vehicle.max_roadveh;
 			break;
-		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
-		case VEH_AIRCRAFT: max = _settings_game.vehicle.max_aircraft; break;
+		case VehicleType::Ship:     max = _settings_game.vehicle.max_ships; break;
+		case VehicleType::Aircraft: max = _settings_game.vehicle.max_aircraft; break;
 		default: NOT_REACHED();
 	}
 
@@ -1967,7 +1967,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, RoadTramType subtype)
 	if (max > 0) {
 		/* Can we actually build the vehicle type? */
 		for (const Engine *e : Engine::IterateType(type)) {
-			if (type == VEH_ROAD && GetRoadTramType(e->VehInfo<RoadVehicleInfo>().roadtype) != subtype) continue;
+			if (type == VehicleType::Road && GetRoadTramType(e->VehInfo<RoadVehicleInfo>().roadtype) != subtype) continue;
 			if (e->company_avail.Test(_local_company)) return true;
 		}
 		return false;
@@ -1975,7 +1975,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, RoadTramType subtype)
 
 	/* We should be able to build infrastructure when we have the actual vehicle type */
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->type == VEH_ROAD && GetRoadTramType(RoadVehicle::From(v)->roadtype) != subtype) continue;
+		if (v->type == VehicleType::Road && GetRoadTramType(RoadVehicle::From(v)->roadtype) != subtype) continue;
 		if (v->owner == _local_company && v->type == type) return true;
 	}
 
@@ -1996,7 +1996,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 	const Engine *e = Engine::Get(engine_type);
 	switch (e->type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:
+		case VehicleType::Train:
 			if (v != nullptr && parent_engine_type != EngineID::Invalid() && (UsesWagonOverride(v) || (v->IsArticulatedPart() && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON))) {
 				/* Wagonoverrides use the colour scheme of the front engine.
 				 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
@@ -2039,7 +2039,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 				}
 			}
 
-		case VEH_ROAD:
+		case VehicleType::Road:
 			/* Always use the livery of the front */
 			if (v != nullptr && parent_engine_type != EngineID::Invalid()) {
 				engine_type = parent_engine_type;
@@ -2059,13 +2059,13 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 				return IsCargoInClass(cargo_type, CargoClass::Passengers) ? LS_BUS : LS_TRUCK;
 			}
 
-		case VEH_SHIP:
+		case VehicleType::Ship:
 			if (!IsValidCargoType(cargo_type)) cargo_type = e->GetDefaultCargoType();
 			if (!IsValidCargoType(cargo_type)) cargo_type = GetCargoTypeByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
 			assert(IsValidCargoType(cargo_type));
 			return IsCargoInClass(cargo_type, CargoClass::Passengers) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			switch (e->VehInfo<AircraftVehicleInfo>().subtype) {
 				case AIR_HELI: return LS_HELICOPTER;
 				case AIR_CTOL: return LS_SMALL_PLANE;
@@ -2219,11 +2219,11 @@ void Vehicle::DeleteUnreachedImplicitOrders()
 
 /**
  * Prepare everything to begin the loading when arriving at a station.
- * @pre IsTileType(this->tile, TileType::Station) || this->type == VEH_SHIP.
+ * @pre IsTileType(this->tile, TileType::Station) || this->type == VehicleType::Ship.
  */
 void Vehicle::BeginLoading()
 {
-	assert(IsTileType(this->GetMovingFront()->tile, TileType::Station) || this->type == VEH_SHIP);
+	assert(IsTileType(this->GetMovingFront()->tile, TileType::Station) || this->type == VehicleType::Ship);
 
 	TimerGameTick::Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
@@ -2403,7 +2403,7 @@ void Vehicle::LeaveStation()
 	HideFillingPercent(&this->fill_percent_te_id);
 	trip_occupancy = CalcPercentVehicleFilled(this, nullptr);
 
-	if (this->type == VEH_TRAIN && !this->vehstatus.Test(VehState::Crashed)) {
+	if (this->type == VehicleType::Train && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger station animation (trains only) */
 		TileIndex tile = this->GetMovingFront()->tile;
 		if (IsTileType(tile, TileType::Station)) {
@@ -2413,7 +2413,7 @@ void Vehicle::LeaveStation()
 
 		Train::From(this)->flags.Set(VehicleRailFlag::LeavingStation);
 	}
-	if (this->type == VEH_ROAD && !this->vehstatus.Test(VehState::Crashed)) {
+	if (this->type == VehicleType::Road && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger road stop animation */
 		if (IsStationRoadStopTile(this->tile)) {
 			TriggerRoadStopRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
@@ -2639,7 +2639,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 	}
 
 	ClosestDepot closest_depot = this->FindClosestDepot();
-	static const StringID no_depot[] = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR};
+	static constexpr VehicleTypeIndexArray<const StringID> no_depot = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR};
 	if (!closest_depot.found) return CommandCost(no_depot[this->type]);
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -2656,11 +2656,11 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 		InvalidateWindowData(WC_VEHICLE_VIEW, this->index);
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
-		if (this->type == VEH_TRAIN && (closest_depot.reverse ^ Train::From(this)->flags.Test(VehicleRailFlag::Reversing))) {
+		if (this->type == VehicleType::Train && (closest_depot.reverse ^ Train::From(this)->flags.Test(VehicleRailFlag::Reversing))) {
 			Command<Commands::ReverseTrainDirection>::Do(DoCommandFlag::Execute, this->index, false);
 		}
 
-		if (this->type == VEH_AIRCRAFT) {
+		if (this->type == VehicleType::Aircraft) {
 			Aircraft *a = Aircraft::From(this);
 			if (a->state == FLYING && a->targetairport != closest_depot.destination) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
@@ -2685,9 +2685,9 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	/* Evaluate properties */
 	uint8_t visual_effect;
 	switch (e->type) {
-		case VEH_TRAIN: visual_effect = e->VehInfo<RailVehicleInfo>().visual_effect; break;
-		case VEH_ROAD:  visual_effect = e->VehInfo<RoadVehicleInfo>().visual_effect; break;
-		case VEH_SHIP:  visual_effect = e->VehInfo<ShipVehicleInfo>().visual_effect; break;
+		case VehicleType::Train: visual_effect = e->VehInfo<RailVehicleInfo>().visual_effect; break;
+		case VehicleType::Road:  visual_effect = e->VehInfo<RoadVehicleInfo>().visual_effect; break;
+		case VehicleType::Ship:  visual_effect = e->VehInfo<ShipVehicleInfo>().visual_effect; break;
 		default:        visual_effect = 1 << VE_DISABLE_EFFECT;  break;
 	}
 
@@ -2714,7 +2714,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 			(!HasBit(visual_effect, VE_DISABLE_EFFECT) && GB(visual_effect, VE_TYPE_START, VE_TYPE_COUNT) == VE_TYPE_DEFAULT)) {
 		/* Only train engines have default effects.
 		 * Note: This is independent of whether the engine is a front engine or articulated part or whatever. */
-		if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON || !IsInsideMM(e->VehInfo<RailVehicleInfo>().engclass, EC_STEAM, EC_MONORAIL)) {
+		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON || !IsInsideMM(e->VehInfo<RailVehicleInfo>().engclass, EC_STEAM, EC_MONORAIL)) {
 			if (visual_effect == VE_DEFAULT) {
 				visual_effect = 1 << VE_DISABLE_EFFECT;
 			} else {
@@ -2759,14 +2759,14 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 	int8_t l_center = 0;
 	if (auto_center) {
 		/* For road vehicles: Compute offset from vehicle position to vehicle center */
-		if (v->type == VEH_ROAD) l_center = -(int)(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
+		if (v->type == VehicleType::Road) l_center = -(int)(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
 	} else {
 		/* For trains: Compute offset from vehicle position to sprite position */
-		if (v->type == VEH_TRAIN) l_center = (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
+		if (v->type == VehicleType::Train) l_center = (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
 	}
 
 	Direction l_dir = v->direction;
-	if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) l_dir = ReverseDir(l_dir);
+	if (v->type == VehicleType::Train && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) l_dir = ReverseDir(l_dir);
 	Direction t_dir = ChangeDir(l_dir, DIRDIFF_90RIGHT);
 
 	int8_t x_center = _vehicle_smoke_pos[l_dir] * l_center;
@@ -2837,7 +2837,7 @@ void Vehicle::ShowVisualEffect() const
 	/* Use the speed as limited by underground and orders. */
 	uint max_speed = this->GetCurrentMaxSpeed();
 
-	if (this->type == VEH_TRAIN) {
+	if (this->type == VehicleType::Train) {
 		const Train *t = Train::From(this);
 		const Train *moving_front = t->GetMovingFront();
 		/* For trains, do not show any smoke when:
@@ -2881,7 +2881,7 @@ void Vehicle::ShowVisualEffect() const
 				IsBridgeAboveVehicle(v) ||
 				IsDepotTile(v->tile) ||
 				IsTunnelTile(v->tile) ||
-				(v->type == VEH_TRAIN &&
+				(v->type == VehicleType::Train &&
 				!HasPowerOnRail(Train::From(v)->railtypes, GetTileRailType(v->tile)))) {
 			continue;
 		}
@@ -2912,7 +2912,7 @@ void Vehicle::ShowVisualEffect() const
 				 * - up to which speed a diesel vehicle is emitting smoke (with reduced/small setting only until 1/2 of max_speed),
 				 * - in Chance16 - the last value is 512 / 2^smoke_amount (max. smoke when 128 = smoke_amount of 2). */
 				int power_weight_effect = 0;
-				if (v->type == VEH_TRAIN) {
+				if (v->type == VehicleType::Train) {
 					power_weight_effect = (32 >> (Train::From(this)->gcache.cached_power >> 10)) - (32 >> (Train::From(this)->gcache.cached_weight >> 9));
 				}
 				if (this->cur_speed < (max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
@@ -2948,12 +2948,12 @@ void Vehicle::ShowVisualEffect() const
 			/* The effect offset is relative to a point 4 units behind the vehicle's
 			 * front (which is the center of an 8/8 vehicle). Shorter vehicles need a
 			 * correction factor. */
-			if (v->type == VEH_TRAIN) effect_offset += (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
+			if (v->type == VehicleType::Train) effect_offset += (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
 
 			int x = _vehicle_smoke_pos[v->direction] * effect_offset;
 			int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
 
-			if (v->type == VEH_TRAIN && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
+			if (v->type == VehicleType::Train && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
 				x = -x;
 				y = -y;
 			}
@@ -3101,19 +3101,19 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
 	assert(e != nullptr);
 
 	switch (e->type) {
-		case VEH_TRAIN:
+		case VehicleType::Train:
 			return st->facilities.Test(StationFacility::Train);
 
-		case VEH_ROAD:
+		case VehicleType::Road:
 			/* For road vehicles we need the vehicle to know whether it can actually
 			 * use the station, but if it doesn't have facilities for RVs it is
 			 * certainly not possible that the station can be used. */
 			return st->facilities.Any({StationFacility::BusStop, StationFacility::TruckStop});
 
-		case VEH_SHIP:
+		case VehicleType::Ship:
 			return st->facilities.Test(StationFacility::Dock);
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			return st->facilities.Test(StationFacility::Airport) &&
 					st->airport.GetFTA()->flags.Test(e->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL ? AirportFTAClass::Flag::Airplanes : AirportFTAClass::Flag::Helicopters);
 
@@ -3130,7 +3130,7 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
  */
 bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 {
-	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop(RoadVehicle::From(v)) != nullptr;
+	if (v->type == VehicleType::Road) return st->GetPrimaryRoadStop(RoadVehicle::From(v)) != nullptr;
 
 	return CanVehicleUseStation(v->engine_type, st);
 }
@@ -3144,10 +3144,10 @@ bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st)
 {
 	switch (v->type) {
-		case VEH_TRAIN:
+		case VehicleType::Train:
 			return STR_ERROR_NO_RAIL_STATION;
 
-		case VEH_ROAD: {
+		case VehicleType::Road: {
 			const RoadVehicle *rv = RoadVehicle::From(v);
 			RoadStop *rs = st->GetPrimaryRoadStop(rv->IsBus() ? RoadStopType::Bus : RoadStopType::Truck);
 
@@ -3171,10 +3171,10 @@ StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st)
 			return err;
 		}
 
-		case VEH_SHIP:
+		case VehicleType::Ship:
 			return STR_ERROR_NO_DOCK;
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			if (!st->facilities.Test(StationFacility::Airport)) return STR_ERROR_NO_AIRPORT;
 			if (v->GetEngine()->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL) {
 				return STR_ERROR_AIRPORT_NO_PLANES;
@@ -3195,7 +3195,7 @@ StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st)
 GroundVehicleCache *Vehicle::GetGroundVehicleCache()
 {
 	assert(this->IsGroundVehicle());
-	if (this->type == VEH_TRAIN) {
+	if (this->type == VehicleType::Train) {
 		return &Train::From(this)->gcache;
 	} else {
 		return &RoadVehicle::From(this)->gcache;
@@ -3210,7 +3210,7 @@ GroundVehicleCache *Vehicle::GetGroundVehicleCache()
 const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
 {
 	assert(this->IsGroundVehicle());
-	if (this->type == VEH_TRAIN) {
+	if (this->type == VehicleType::Train) {
 		return &Train::From(this)->gcache;
 	} else {
 		return &RoadVehicle::From(this)->gcache;
@@ -3225,7 +3225,7 @@ const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
 uint16_t &Vehicle::GetGroundVehicleFlags()
 {
 	assert(this->IsGroundVehicle());
-	if (this->type == VEH_TRAIN) {
+	if (this->type == VehicleType::Train) {
 		return Train::From(this)->gv_flags;
 	} else {
 		return RoadVehicle::From(this)->gv_flags;
@@ -3240,7 +3240,7 @@ uint16_t &Vehicle::GetGroundVehicleFlags()
 const uint16_t &Vehicle::GetGroundVehicleFlags() const
 {
 	assert(this->IsGroundVehicle());
-	if (this->type == VEH_TRAIN) {
+	if (this->type == VehicleType::Train) {
 		return Train::From(this)->gv_flags;
 	} else {
 		return RoadVehicle::From(this)->gv_flags;
@@ -3257,7 +3257,7 @@ const uint16_t &Vehicle::GetGroundVehicleFlags() const
  */
 void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8_t num_vehicles)
 {
-	if (v->type == VEH_TRAIN) {
+	if (v->type == VehicleType::Train) {
 		Train *u = Train::From(v);
 		/* Only include whole vehicles, so start with the first articulated part */
 		u = u->GetFirstEnginePart();

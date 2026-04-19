@@ -123,7 +123,7 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 
-		bool can_build = CanBuildVehicleInfrastructure(VEH_SHIP);
+		bool can_build = CanBuildVehicleInfrastructure(VehicleType::Ship);
 		this->SetWidgetsDisabledState(!can_build,
 			WID_DT_DEPOT,
 			WID_DT_STATION,

@@ -211,7 +211,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 {
 	RoadTypes rts{};
 
-	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
+	for (const Engine *e : Engine::IterateType(VehicleType::Road)) {
 		const EngineInfo *ei = &e->info;
 
 		if (ei->climates.Test(_settings_game.game_creation.landscape) &&
@@ -239,7 +239,7 @@ RoadTypes GetRoadTypes(bool introduces)
 {
 	RoadTypes rts{};
 
-	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
+	for (const Engine *e : Engine::IterateType(VehicleType::Road)) {
 		const EngineInfo *ei = &e->info;
 		if (!ei->climates.Test(_settings_game.game_creation.landscape)) continue;
 

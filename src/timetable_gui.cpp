@@ -351,7 +351,7 @@ struct TimetableWindow : Window {
 					disable = order == nullptr || ((!order->IsType(OT_GOTO_STATION) || order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) && !order->IsType(OT_CONDITIONAL));
 				}
 			}
-			bool disable_speed = disable || selected % 2 == 0 || v->type == VEH_AIRCRAFT;
+			bool disable_speed = disable || selected % 2 == 0 || v->type == VehicleType::Aircraft;
 
 			this->SetWidgetDisabledState(WID_VT_CHANGE_TIME, disable);
 			this->SetWidgetDisabledState(WID_VT_CLEAR_TIME, disable);

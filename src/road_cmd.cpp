@@ -2117,7 +2117,7 @@ static bool ClickTile_Road(TileIndex tile)
 {
 	if (!IsRoadDepot(tile)) return false;
 
-	ShowDepotWindow(tile, VEH_ROAD);
+	ShowDepotWindow(tile, VehicleType::Road);
 	return true;
 }
 
@@ -2297,7 +2297,7 @@ static VehicleEnterTileStates VehicleEnterTile_Road(Vehicle *v, TileIndex tile, 
 {
 	switch (GetRoadTileType(tile)) {
 		case RoadTileType::Depot: {
-			if (v->type != VEH_ROAD) break;
+			if (v->type != VehicleType::Road) break;
 
 			RoadVehicle *rv = RoadVehicle::From(v);
 			if (rv->frame == RVC_DEPOT_STOP_FRAME &&
@@ -2574,7 +2574,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 
 				/* update power of train on this tile */
 				for (Vehicle *v : VehiclesOnTile(tile)) {
-					if (v->type == VEH_ROAD) include(affected_rvs, RoadVehicle::From(v)->First());
+					if (v->type == VehicleType::Road) include(affected_rvs, RoadVehicle::From(v)->First());
 				}
 
 				if (IsRoadDepotTile(tile)) {
@@ -2633,10 +2633,10 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				SetRoadType(endtile, rtt, to_type);
 
 				for (Vehicle *v : VehiclesOnTile(tile)) {
-					if (v->type == VEH_ROAD) include(affected_rvs, RoadVehicle::From(v)->First());
+					if (v->type == VehicleType::Road) include(affected_rvs, RoadVehicle::From(v)->First());
 				}
 				for (Vehicle *v : VehiclesOnTile(endtile)) {
-					if (v->type == VEH_ROAD) include(affected_rvs, RoadVehicle::From(v)->First());
+					if (v->type == VehicleType::Road) include(affected_rvs, RoadVehicle::From(v)->First());
 				}
 
 				if (IsBridge(tile)) {
