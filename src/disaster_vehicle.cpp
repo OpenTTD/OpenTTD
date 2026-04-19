@@ -338,7 +338,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *ufo)
 
 		uint n = 0; // Total number of targetable road vehicles.
 		for (const Company *c : Company::Iterate()) {
-			n += c->group_all[VEH_ROAD].num_vehicle;
+			n += c->group_all[VehicleType::Road].num_vehicle;
 		}
 
 		if (n == 0) {
@@ -368,7 +368,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *ufo)
 	} else {
 		/* Target a vehicle */
 		RoadVehicle *target = RoadVehicle::Get(ufo->dest_tile.base());
-		assert(target != nullptr && target->type == VEH_ROAD && target->IsFrontEngine());
+		assert(target != nullptr && target->type == VehicleType::Road && target->IsFrontEngine());
 
 		uint dist = Delta(ufo->x_pos, target->x_pos) + Delta(ufo->y_pos, target->y_pos);
 
@@ -1003,7 +1003,7 @@ void ReleaseDisasterVehicle(VehicleID vehicle)
 	if (v == nullptr) return;
 
 	/* primary disaster vehicles that have chosen target */
-	assert(v->type == VEH_DISASTER);
+	assert(v->type == VehicleType::Disaster);
 	assert(v->subtype == ST_SMALL_UFO);
 	assert(v->state != 0);
 

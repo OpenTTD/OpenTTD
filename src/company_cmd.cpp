@@ -683,10 +683,10 @@ bool CheckTakeoverVehicleLimit(CompanyID cbig, CompanyID csmall)
 	const Company *c2 = Company::Get(csmall);
 
 	/* Do the combined vehicle counts stay within the limits? */
-	return c1->group_all[VEH_TRAIN].num_vehicle + c2->group_all[VEH_TRAIN].num_vehicle <= _settings_game.vehicle.max_trains &&
-		c1->group_all[VEH_ROAD].num_vehicle     + c2->group_all[VEH_ROAD].num_vehicle     <= _settings_game.vehicle.max_roadveh &&
-		c1->group_all[VEH_SHIP].num_vehicle     + c2->group_all[VEH_SHIP].num_vehicle     <= _settings_game.vehicle.max_ships &&
-		c1->group_all[VEH_AIRCRAFT].num_vehicle + c2->group_all[VEH_AIRCRAFT].num_vehicle <= _settings_game.vehicle.max_aircraft;
+	return c1->group_all[VehicleType::Train].num_vehicle + c2->group_all[VehicleType::Train].num_vehicle <= _settings_game.vehicle.max_trains &&
+		c1->group_all[VehicleType::Road].num_vehicle + c2->group_all[VehicleType::Road].num_vehicle <= _settings_game.vehicle.max_roadveh &&
+		c1->group_all[VehicleType::Ship].num_vehicle + c2->group_all[VehicleType::Ship].num_vehicle <= _settings_game.vehicle.max_ships &&
+		c1->group_all[VehicleType::Aircraft].num_vehicle + c2->group_all[VehicleType::Aircraft].num_vehicle <= _settings_game.vehicle.max_aircraft;
 }
 
 /**
@@ -1285,10 +1285,10 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 	const VehicleDefaultSettings *vds = (c == nullptr) ? &_settings_client.company.vehicle : &c->settings.vehicle;
 	switch (type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:    return vds->servint_trains;
-		case VEH_ROAD:     return vds->servint_roadveh;
-		case VEH_AIRCRAFT: return vds->servint_aircraft;
-		case VEH_SHIP:     return vds->servint_ships;
+		case VehicleType::Train: return vds->servint_trains;
+		case VehicleType::Road: return vds->servint_roadveh;
+		case VehicleType::Aircraft: return vds->servint_aircraft;
+		case VehicleType::Ship: return vds->servint_ships;
 	}
 }
 

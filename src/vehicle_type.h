@@ -19,21 +19,21 @@ using VehicleID = PoolID<uint32_t, struct VehicleIDTag, 0xFF000, 0xFFFFF>;
 static const int GROUND_ACCELERATION = 9800; ///< Acceleration due to gravity, 9.8 m/s^2
 
 /** Available vehicle types. It needs to be 8bits, because we save and load it as such */
-enum VehicleType : uint8_t {
-	VEH_BEGIN,
+enum class VehicleType : uint8_t {
+	Begin, ///< Begin marker.
 
-	VEH_TRAIN = VEH_BEGIN,        ///< %Train vehicle type.
-	VEH_ROAD,                     ///< Road vehicle type.
-	VEH_SHIP,                     ///< %Ship vehicle type.
-	VEH_AIRCRAFT,                 ///< %Aircraft vehicle type.
+	Train = VehicleType::Begin, ///< %Train vehicle type.
+	Road, ///< Road vehicle type.
+	Ship, ///< %Ship vehicle type.
+	Aircraft, ///< %Aircraft vehicle type.
 
-	VEH_COMPANY_END,              ///< Last company-ownable type.
+	CompanyEnd, ///< Last company-ownable type.
 
-	VEH_EFFECT = VEH_COMPANY_END, ///< Effect vehicle type (smoke, explosions, sparks, bubbles)
-	VEH_DISASTER,                 ///< Disaster vehicle type.
+	Effect = VehicleType::CompanyEnd, ///< Effect vehicle type (smoke, explosions, sparks, bubbles)
+	Disaster, ///< Disaster vehicle type.
+	End, ///< End marker.
 
-	VEH_END,
-	VEH_INVALID = 0xFF,           ///< Non-existing type of vehicle.
+	Invalid = 0xFF, ///< Non-existing type of vehicle.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(VehicleType)
 DECLARE_ENUM_AS_ADDABLE(VehicleType)
@@ -48,7 +48,7 @@ struct DisasterVehicle;
 
 /** Base vehicle class. */
 struct BaseVehicle {
-	VehicleType type = VEH_INVALID; ///< Type of vehicle
+	VehicleType type = VehicleType::Invalid; ///< Type of vehicle
 };
 
 /** Flags for goto depot commands. */
@@ -89,5 +89,13 @@ enum class VehicleRandomTrigger : uint8_t {
 	Callback32, ///< All vehicles in consist: 32 day callback requested rerandomisation
 };
 using VehicleRandomTriggers = EnumBitSet<VehicleRandomTrigger, uint8_t>;
+
+/**
+ * Array with \c VehicleType as index.
+ * @tparam T the type contained within the array.
+ * @tparam Tend the number of elements in the array.
+ */
+template <typename T, VehicleType Tend = VehicleType::CompanyEnd>
+using VehicleTypeIndexArray = EnumClassIndexContainer<std::array<T, to_underlying(Tend)>, VehicleType>;
 
 #endif /* VEHICLE_TYPE_H */

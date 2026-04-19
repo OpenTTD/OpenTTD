@@ -138,7 +138,7 @@ RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
 {
 	RailTypes rts{};
 
-	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
+	for (const Engine *e : Engine::IterateType(VehicleType::Train)) {
 		const EngineInfo *ei = &e->info;
 
 		if (ei->climates.Test(_settings_game.game_creation.landscape) &&
@@ -169,7 +169,7 @@ RailTypes GetRailTypes(bool introduces)
 {
 	RailTypes rts{};
 
-	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
+	for (const Engine *e : Engine::IterateType(VehicleType::Train)) {
 		const EngineInfo *ei = &e->info;
 		if (!ei->climates.Test(_settings_game.game_creation.landscape)) continue;
 

@@ -67,7 +67,7 @@ static_assert(lengthof(_roadveh_images) == lengthof(_roadveh_full_adder));
 
 /** @copydoc IsValidImageIndex */
 template <>
-bool IsValidImageIndex<VEH_ROAD>(uint8_t image_index)
+bool IsValidImageIndex<VehicleType::Road>(uint8_t image_index)
 {
 	return image_index < lengthof(_roadveh_images);
 }
@@ -114,7 +114,7 @@ static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleS
 		spritenum = e->original_image_index;
 	}
 
-	assert(IsValidImageIndex<VEH_ROAD>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Road>(spritenum));
 	result->Set(DIR_W + _roadveh_images[spritenum]);
 }
 
@@ -130,7 +130,7 @@ void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, Vehi
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
-	assert(IsValidImageIndex<VEH_ROAD>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Road>(spritenum));
 	SpriteID sprite = direction + _roadveh_images[spritenum];
 
 	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _roadveh_full_adder[spritenum];
@@ -220,7 +220,7 @@ static uint GetRoadVehLength(const RoadVehicle *v)
  */
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
 {
-	assert(v->type == VEH_ROAD);
+	assert(v->type == VehicleType::Road);
 	assert(v->IsFrontEngine());
 
 	v->InvalidateNewGRFCacheOfChain();
@@ -582,7 +582,7 @@ static bool RoadVehCheckTrainCrash(RoadVehicle *v)
 		if (!IsLevelCrossingTile(tile)) continue;
 
 		if (HasVehicleNearTileXY(v->x_pos, v->y_pos, 4, [&u](const Vehicle *t) {
-				return t->type == VEH_TRAIN && abs(t->z_pos - u->z_pos) <= 6;
+				return t->type == VehicleType::Train && abs(t->z_pos - u->z_pos) <= 6;
 			})) {
 			RoadVehCrash(v);
 			return true;
@@ -635,7 +635,7 @@ static void FindClosestBlockingRoadVeh(Vehicle *v, RoadVehFindData *rvf)
 	int y_diff = v->y_pos - rvf->y;
 
 	/* Not a close Road vehicle when it's not a road vehicle, in the depot, or ourself. */
-	if (v->type != VEH_ROAD || v->IsInDepot() || rvf->veh->First() == v->First()) return;
+	if (v->type != VehicleType::Road || v->IsInDepot() || rvf->veh->First() == v->First()) return;
 
 	/* Not close when at a different height or when going in a different direction. */
 	if (abs(v->z_pos - rvf->veh->z_pos) >= 6 || v->direction != rvf->dir) return;
@@ -802,7 +802,7 @@ static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 
 	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
 	return HasVehicleOnTile(od->tile, [&](const Vehicle *v) {
-		return v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v;
+		return v->type == VehicleType::Road && v->First() == v && v != od->u && v != od->v;
 	});
 }
 

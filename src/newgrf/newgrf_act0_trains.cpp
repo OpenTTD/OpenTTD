@@ -31,7 +31,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_TRAIN, id);
+		Engine *e = GetNewEngine(_cur_gps.grffile, VehicleType::Train, id);
 		if (e == nullptr) return ChangeInfoResult::InvalidId; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
@@ -101,7 +101,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				 * as an array index, so we need it to be half the original value. */
 				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
-				if (IsValidNewGRFImageIndex<VEH_TRAIN>(spriteid)) {
+				if (IsValidNewGRFImageIndex<VehicleType::Train>(spriteid)) {
 					rvi->image_index = spriteid;
 				} else {
 					GrfMsg(1, "RailVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);

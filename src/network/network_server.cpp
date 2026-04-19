@@ -1558,10 +1558,10 @@ NetworkCompanyStatsArray NetworkGetCompanyStats()
 		if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
 		NetworkVehicleType type;
 		switch (v->type) {
-			case VEH_TRAIN: type = NetworkVehicleType::Train; break;
-			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? NetworkVehicleType::Bus : NetworkVehicleType::Truck; break;
-			case VEH_AIRCRAFT: type = NetworkVehicleType::Aircraft; break;
-			case VEH_SHIP: type = NetworkVehicleType::Ship; break;
+			case VehicleType::Train: type = NetworkVehicleType::Train; break;
+			case VehicleType::Road: type = RoadVehicle::From(v)->IsBus() ? NetworkVehicleType::Bus : NetworkVehicleType::Truck; break;
+			case VehicleType::Aircraft: type = NetworkVehicleType::Aircraft; break;
+			case VehicleType::Ship: type = NetworkVehicleType::Ship; break;
 			default: continue;
 		}
 		stats[v->owner].num_vehicle[type]++;

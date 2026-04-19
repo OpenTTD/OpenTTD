@@ -205,7 +205,7 @@ void UpdateOldAircraft()
 	for (Station *st : Station::Iterate()) {
 		for (auto iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); /* nothing */) {
 			Vehicle *v = *iter;
-			if (v->type == VEH_AIRCRAFT && !v->current_order.IsType(OT_LOADING)) {
+			if (v->type == VehicleType::Aircraft && !v->current_order.IsType(OT_LOADING)) {
 				iter = st->loading_vehicles.erase(iter);
 				delete v->cargo_payment;
 			} else {
@@ -225,20 +225,20 @@ void UpdateOldAircraft()
 static void CheckValidVehicles()
 {
 	size_t total_engines = Engine::GetPoolSize();
-	EngineID first_engine[4] = { EngineID::Invalid(), EngineID::Invalid(), EngineID::Invalid(), EngineID::Invalid() };
+	VehicleTypeIndexArray<EngineID> first_engine = { EngineID::Invalid(), EngineID::Invalid(), EngineID::Invalid(), EngineID::Invalid() };
 
-	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) { first_engine[VEH_TRAIN] = e->index; break; }
-	for (const Engine *e : Engine::IterateType(VEH_ROAD)) { first_engine[VEH_ROAD] = e->index; break; }
-	for (const Engine *e : Engine::IterateType(VEH_SHIP)) { first_engine[VEH_SHIP] = e->index; break; }
-	for (const Engine *e : Engine::IterateType(VEH_AIRCRAFT)) { first_engine[VEH_AIRCRAFT] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VehicleType::Train)) { first_engine[VehicleType::Train] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VehicleType::Road)) { first_engine[VehicleType::Road] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VehicleType::Ship)) { first_engine[VehicleType::Ship] = e->index; break; }
+	for (const Engine *e : Engine::IterateType(VehicleType::Aircraft)) { first_engine[VehicleType::Aircraft] = e->index; break; }
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Test if engine types match */
 		switch (v->type) {
-			case VEH_TRAIN:
-			case VEH_ROAD:
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
+			case VehicleType::Train:
+			case VehicleType::Road:
+			case VehicleType::Ship:
+			case VehicleType::Aircraft:
 				if (v->engine_type >= total_engines || v->type != v->GetEngine()->type) {
 					v->engine_type = first_engine[v->type];
 				}
@@ -362,7 +362,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 		if (IsSavegameVersionBefore(SLV_160)) {
 			/* In some old savegames there might be some "crap" stored. */
 			for (Vehicle *v : Vehicle::Iterate()) {
-				if (!v->IsPrimaryVehicle() && v->type != VEH_DISASTER) {
+				if (!v->IsPrimaryVehicle() && v->type != VehicleType::Disaster) {
 					v->current_order.Free();
 					v->unitnumber = 0;
 				}
@@ -439,7 +439,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 		v->trip_occupancy = CalcPercentVehicleFilled(v, nullptr);
 
 		switch (v->type) {
-			case VEH_TRAIN: {
+			case VehicleType::Train: {
 				Train *t = Train::From(v);
 				if (t->IsFrontEngine() || t->IsFreeWagon()) {
 					t->gcache.last_speed = t->cur_speed; // update displayed train speed
@@ -448,7 +448,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 				break;
 			}
 
-			case VEH_ROAD: {
+			case VehicleType::Road: {
 				RoadVehicle *rv = RoadVehicle::From(v);
 				if (rv->IsFrontEngine()) {
 					rv->gcache.last_speed = rv->cur_speed; // update displayed road vehicle speed
@@ -470,7 +470,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 				break;
 			}
 
-			case VEH_SHIP:
+			case VehicleType::Ship:
 				Ship::From(v)->UpdateCache();
 				break;
 
@@ -481,7 +481,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 	/* Stop non-front engines */
 	if (part_of_load && IsSavegameVersionBefore(SLV_112)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->type == VEH_TRAIN) {
+			if (v->type == VehicleType::Train) {
 				Train *t = Train::From(v);
 				if (!t->IsFrontEngine()) {
 					if (t->IsEngine()) t->vehstatus.Set(VehState::Stopped);
@@ -492,7 +492,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 			}
 			/* trains weren't stopping gradually in old OTTD versions (and TTO/TTD)
 			 * other vehicle types didn't have zero speed while stopped (even in 'recent' OTTD versions) */
-			if (v->vehstatus.Test(VehState::Stopped) && (v->type != VEH_TRAIN || IsSavegameVersionBefore(SLV_2, 1))) {
+			if (v->vehstatus.Test(VehState::Stopped) && (v->type != VehicleType::Train || IsSavegameVersionBefore(SLV_2, 1))) {
 				v->cur_speed = 0;
 			}
 		}
@@ -500,13 +500,13 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		switch (v->type) {
-			case VEH_ROAD:
-			case VEH_TRAIN:
-			case VEH_SHIP:
+			case VehicleType::Road:
+			case VehicleType::Train:
+			case VehicleType::Ship:
 				v->GetImage(v->direction, EIT_ON_MAP, &v->sprite_cache.sprite_seq);
 				break;
 
-			case VEH_AIRCRAFT:
+			case VehicleType::Aircraft:
 				if (Aircraft::From(v)->IsNormalAircraft()) {
 					v->GetImage(v->direction, EIT_ON_MAP, &v->sprite_cache.sprite_seq);
 
@@ -528,7 +528,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 				}
 				break;
 
-			case VEH_DISASTER: {
+			case VehicleType::Disaster: {
 				auto *dv = DisasterVehicle::From(v);
 				if (dv->subtype == ST_SMALL_UFO && dv->state != 0) {
 					RoadVehicle *u = RoadVehicle::GetIfValid(v->dest_tile.base());
@@ -555,7 +555,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 		v->UpdateDeltaXY();
 		v->coord.left = INVALID_COORD;
 		v->sprite_cache.old_coord.left = INVALID_COORD;
-		if (v->type != VEH_EFFECT) v->UpdatePosition();
+		if (v->type != VehicleType::Effect) v->UpdatePosition();
 		v->UpdateViewport(false);
 	}
 }
@@ -569,7 +569,7 @@ void FixupTrainLengths()
 	/* Vehicle center was moved from 4 units behind the front to half the length
 	 * behind the front. Move vehicles so they end up on the same spot. */
 	for (Vehicle *v : Vehicle::Iterate()) {
-		if (v->type == VEH_TRAIN && v->IsPrimaryVehicle()) {
+		if (v->type == VehicleType::Train && v->IsPrimaryVehicle()) {
 			/* The vehicle center is now more to the front depending on vehicle length,
 			 * so we need to move all vehicles forward to cover the difference to the
 			 * old center, otherwise wagon spacing in trains would be broken upon load. */
@@ -823,19 +823,19 @@ public:
 
 	void Save(Vehicle *v) const override
 	{
-		if (v->type != VEH_TRAIN) return;
+		if (v->type != VehicleType::Train) return;
 		SlObject(v, this->GetDescription());
 	}
 
 	void Load(Vehicle *v) const override
 	{
-		if (v->type != VEH_TRAIN) return;
+		if (v->type != VehicleType::Train) return;
 		SlObject(v, this->GetLoadDescription());
 	}
 
 	void FixPointers(Vehicle *v) const override
 	{
-		if (v->type != VEH_TRAIN) return;
+		if (v->type != VehicleType::Train) return;
 		SlObject(v, this->GetDescription());
 	}
 };
@@ -896,13 +896,13 @@ public:
 
 	void Save(Vehicle *v) const override
 	{
-		if (v->type != VEH_ROAD) return;
+		if (v->type != VehicleType::Road) return;
 		SlObject(v, this->GetDescription());
 	}
 
 	void Load(Vehicle *v) const override
 	{
-		if (v->type != VEH_ROAD) return;
+		if (v->type != VehicleType::Road) return;
 		SlObject(v, this->GetLoadDescription());
 		if (!IsSavegameVersionBefore(SLV_ROADVEH_PATH_CACHE) && IsSavegameVersionBefore(SLV_PATH_CACHE_FORMAT)) {
 			ConvertPathCache(*static_cast<RoadVehicle *>(v));
@@ -911,7 +911,7 @@ public:
 
 	void FixPointers(Vehicle *v) const override
 	{
-		if (v->type != VEH_ROAD) return;
+		if (v->type != VehicleType::Road) return;
 		SlObject(v, this->GetDescription());
 	}
 };
@@ -941,13 +941,13 @@ public:
 
 	void Save(Vehicle *v) const override
 	{
-		if (v->type != VEH_SHIP) return;
+		if (v->type != VehicleType::Ship) return;
 		SlObject(v, this->GetDescription());
 	}
 
 	void Load(Vehicle *v) const override
 	{
-		if (v->type != VEH_SHIP) return;
+		if (v->type != VehicleType::Ship) return;
 		SlObject(v, this->GetLoadDescription());
 
 		if (IsSavegameVersionBefore(SLV_PATH_CACHE_FORMAT)) {
@@ -959,7 +959,7 @@ public:
 
 	void FixPointers(Vehicle *v) const override
 	{
-		if (v->type != VEH_SHIP) return;
+		if (v->type != VehicleType::Ship) return;
 		SlObject(v, this->GetDescription());
 	}
 };
@@ -987,19 +987,19 @@ public:
 
 	void Save(Vehicle *v) const override
 	{
-		if (v->type != VEH_AIRCRAFT) return;
+		if (v->type != VehicleType::Aircraft) return;
 		SlObject(v, this->GetDescription());
 	}
 
 	void Load(Vehicle *v) const override
 	{
-		if (v->type != VEH_AIRCRAFT) return;
+		if (v->type != VehicleType::Aircraft) return;
 		SlObject(v, this->GetLoadDescription());
 	}
 
 	void FixPointers(Vehicle *v) const override
 	{
-		if (v->type != VEH_AIRCRAFT) return;
+		if (v->type != VehicleType::Aircraft) return;
 		SlObject(v, this->GetDescription());
 	}
 };
@@ -1032,19 +1032,19 @@ public:
 
 	void Save(Vehicle *v) const override
 	{
-		if (v->type != VEH_EFFECT) return;
+		if (v->type != VehicleType::Effect) return;
 		SlObject(v, this->GetDescription());
 	}
 
 	void Load(Vehicle *v) const override
 	{
-		if (v->type != VEH_EFFECT) return;
+		if (v->type != VehicleType::Effect) return;
 		SlObject(v, this->GetLoadDescription());
 	}
 
 	void FixPointers(Vehicle *v) const override
 	{
-		if (v->type != VEH_EFFECT) return;
+		if (v->type != VehicleType::Effect) return;
 		SlObject(v, this->GetDescription());
 	}
 };
@@ -1090,19 +1090,19 @@ public:
 
 	void Save(Vehicle *v) const override
 	{
-		if (v->type != VEH_DISASTER) return;
+		if (v->type != VehicleType::Disaster) return;
 		SlObject(v, this->GetDescription());
 	}
 
 	void Load(Vehicle *v) const override
 	{
-		if (v->type != VEH_DISASTER) return;
+		if (v->type != VehicleType::Disaster) return;
 		SlObject(v, this->GetLoadDescription());
 	}
 
 	void FixPointers(Vehicle *v) const override
 	{
-		if (v->type != VEH_DISASTER) return;
+		if (v->type != VehicleType::Disaster) return;
 		SlObject(v, this->GetDescription());
 	}
 };
@@ -1144,13 +1144,13 @@ struct VEHSChunkHandler : ChunkHandler {
 			VehicleType vtype = (VehicleType)SlReadByte();
 
 			switch (vtype) {
-				case VEH_TRAIN: v = Train::CreateAtIndex(VehicleID(index)); break;
-				case VEH_ROAD: v = RoadVehicle::CreateAtIndex(VehicleID(index)); break;
-				case VEH_SHIP: v = Ship::CreateAtIndex(VehicleID(index)); break;
-				case VEH_AIRCRAFT: v = Aircraft::CreateAtIndex(VehicleID(index)); break;
-				case VEH_EFFECT: v = EffectVehicle::CreateAtIndex(VehicleID(index)); break;
-				case VEH_DISASTER: v = DisasterVehicle::CreateAtIndex(VehicleID(index)); break;
-				case VEH_INVALID: // Savegame shouldn't contain invalid vehicles
+				case VehicleType::Train: v = Train::CreateAtIndex(VehicleID(index)); break;
+				case VehicleType::Road: v = RoadVehicle::CreateAtIndex(VehicleID(index)); break;
+				case VehicleType::Ship: v = Ship::CreateAtIndex(VehicleID(index)); break;
+				case VehicleType::Aircraft: v = Aircraft::CreateAtIndex(VehicleID(index)); break;
+				case VehicleType::Effect: v = EffectVehicle::CreateAtIndex(VehicleID(index)); break;
+				case VehicleType::Disaster: v = DisasterVehicle::CreateAtIndex(VehicleID(index)); break;
+				case VehicleType::Invalid: // Savegame shouldn't contain invalid vehicles
 				default: SlErrorCorrupt("Invalid vehicle type");
 			}
 

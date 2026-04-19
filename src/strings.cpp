@@ -950,7 +950,7 @@ static const Units _units_time_years_or_minutes[] = {
  */
 static const Units GetVelocityUnits(VehicleType type)
 {
-	uint8_t setting = (type == VEH_SHIP || type == VEH_AIRCRAFT) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
+	uint8_t setting = (type == VehicleType::Ship || type == VehicleType::Aircraft) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
 
 	assert(setting < lengthof(_units_velocity_calendar));
 	assert(setting < lengthof(_units_velocity_realtime));
@@ -1637,7 +1637,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_DEPOT_NAME: { // {DEPOT}
 					VehicleType vt = args.GetNextParameter<VehicleType>();
-					if (vt == VEH_AIRCRAFT) {
+					if (vt == VehicleType::Aircraft) {
 						auto tmp_params = MakeParameters(args.GetNextParameter<StationID>());
 						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_AIRCRAFT, tmp_params);
 						break;
@@ -1649,7 +1649,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
 						auto tmp_params = MakeParameters(d->town->index, d->town_cn + 1);
-						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * vt + (d->town_cn == 0 ? 0 : 1), tmp_params);
+						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * to_underlying(vt) + (d->town_cn == 0 ? 0 : 1), tmp_params);
 					}
 					break;
 				}
@@ -1826,10 +1826,10 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						StringID string_id;
 						switch (v->type) {
 							default:           string_id = STR_INVALID_VEHICLE; break;
-							case VEH_TRAIN:    string_id = STR_SV_TRAIN_NAME; break;
-							case VEH_ROAD:     string_id = STR_SV_ROAD_VEHICLE_NAME; break;
-							case VEH_SHIP:     string_id = STR_SV_SHIP_NAME; break;
-							case VEH_AIRCRAFT: string_id = STR_SV_AIRCRAFT_NAME; break;
+							case VehicleType::Train:    string_id = STR_SV_TRAIN_NAME; break;
+							case VehicleType::Road:     string_id = STR_SV_ROAD_VEHICLE_NAME; break;
+							case VehicleType::Ship:     string_id = STR_SV_SHIP_NAME; break;
+							case VehicleType::Aircraft: string_id = STR_SV_AIRCRAFT_NAME; break;
 						}
 
 						GetStringWithArgs(builder, string_id, tmp_params);

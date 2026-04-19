@@ -43,11 +43,13 @@ StringID GetEngineCategoryName(EngineID engine)
 	const Engine *e = Engine::Get(engine);
 	switch (e->type) {
 		default: NOT_REACHED();
-		case VEH_ROAD:
+		case VehicleType::Road:
 			return GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->strings.new_engine;
-		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
-		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
-		case VEH_TRAIN:
+		case VehicleType::Aircraft:
+			return STR_ENGINE_PREVIEW_AIRCRAFT;
+		case VehicleType::Ship:
+			return STR_ENGINE_PREVIEW_SHIP;
+		case VehicleType::Train:
 			assert(e->VehInfo<RailVehicleInfo>().railtypes.Any());
 			return GetRailTypeInfo(e->VehInfo<RailVehicleInfo>().railtypes.GetNthSetBit(0).value())->strings.new_loco;
 	}
@@ -125,10 +127,10 @@ struct EnginePreviewWindow : Window {
 					const Engine *e = Engine::Get(engine);
 					switch (e->type) {
 						default: NOT_REACHED();
-						case VEH_TRAIN:    GetTrainSpriteSize(   engine, x, y, x_offs, y_offs, image_type); break;
-						case VEH_ROAD:     GetRoadVehSpriteSize( engine, x, y, x_offs, y_offs, image_type); break;
-						case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
-						case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+						case VehicleType::Train: GetTrainSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+						case VehicleType::Road: GetRoadVehSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+						case VehicleType::Ship: GetShipSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+						case VehicleType::Aircraft: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
 					}
 
 					this->vehicle_space = std::max<int>(this->vehicle_space, y - y_offs);
@@ -434,16 +436,16 @@ std::string GetEngineInfoString(EngineID engine)
 	const Engine &e = *Engine::Get(engine);
 
 	switch (e.type) {
-		case VEH_TRAIN:
+		case VehicleType::Train:
 			return GetTrainEngineInfoString(e);
 
-		case VEH_ROAD:
+		case VehicleType::Road:
 			return GetRoadVehEngineInfoString(e);
 
-		case VEH_SHIP:
+		case VehicleType::Ship:
 			return GetShipEngineInfoString(e);
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			return GetAircraftEngineInfoString(e);
 
 		default: NOT_REACHED();
@@ -465,19 +467,19 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
 	const Engine *e = Engine::Get(engine);
 
 	switch (e->type) {
-		case VEH_TRAIN:
+		case VehicleType::Train:
 			DrawTrainEngine(left, right, preferred_x, y, engine, pal, image_type);
 			break;
 
-		case VEH_ROAD:
+		case VehicleType::Road:
 			DrawRoadVehEngine(left, right, preferred_x, y, engine, pal, image_type);
 			break;
 
-		case VEH_SHIP:
+		case VehicleType::Ship:
 			DrawShipEngine(left, right, preferred_x, y, engine, pal, image_type);
 			break;
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			DrawAircraftEngine(left, right, preferred_x, y, engine, pal, image_type);
 			break;
 

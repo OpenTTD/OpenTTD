@@ -91,11 +91,11 @@ void CheckCaches()
 			grf_cache.emplace_back(u->grf_cache);
 			veh_cache.emplace_back(u->vcache);
 			switch (u->type) {
-				case VEH_TRAIN:
+				case VehicleType::Train:
 					gro_cache.emplace_back(Train::From(u)->gcache);
 					tra_cache.emplace_back(Train::From(u)->tcache);
 					break;
-				case VEH_ROAD:
+				case VehicleType::Road:
 					gro_cache.emplace_back(RoadVehicle::From(u)->gcache);
 					break;
 				default:
@@ -104,10 +104,10 @@ void CheckCaches()
 		}
 
 		switch (v->type) {
-			case VEH_TRAIN:    Train::From(v)->ConsistChanged(CCF_TRACK); break;
-			case VEH_ROAD:     RoadVehUpdateCache(RoadVehicle::From(v)); break;
-			case VEH_AIRCRAFT: UpdateAircraftCache(Aircraft::From(v));   break;
-			case VEH_SHIP:     Ship::From(v)->UpdateCache();             break;
+			case VehicleType::Train: Train::From(v)->ConsistChanged(CCF_TRACK); break;
+			case VehicleType::Road: RoadVehUpdateCache(RoadVehicle::From(v)); break;
+			case VehicleType::Aircraft: UpdateAircraftCache(Aircraft::From(v)); break;
+			case VehicleType::Ship: Ship::From(v)->UpdateCache(); break;
 			default: break;
 		}
 
@@ -121,7 +121,7 @@ void CheckCaches()
 				Debug(desync, 2, "warning: vehicle cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
 			}
 			switch (u->type) {
-				case VEH_TRAIN:
+				case VehicleType::Train:
 					if (gro_cache[length] != Train::From(u)->gcache) {
 						Debug(desync, 2, "warning: train ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
@@ -129,7 +129,7 @@ void CheckCaches()
 						Debug(desync, 2, "warning: train cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					break;
-				case VEH_ROAD:
+				case VehicleType::Road:
 					if (gro_cache[length] != RoadVehicle::From(u)->gcache) {
 						Debug(desync, 2, "warning: road vehicle ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}

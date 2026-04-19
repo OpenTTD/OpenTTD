@@ -87,7 +87,7 @@ class ReplaceVehicleWindow : public Window {
 	bool reset_sel_engine = true; ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group = GroupID::Invalid(); ///< Group selected to replace.
 	int details_height = 0; ///< Minimal needed height of the details panels, in text lines (found so far).
-	VehicleType vehicle_type = VEH_INVALID; ///< Type of vehicle in this window.
+	VehicleType vehicle_type = VehicleType::Invalid; ///< Type of vehicle in this window.
 	uint8_t sort_criteria = 0; ///< Criteria of sorting vehicles.
 	bool descending_sort_order = false; ///< Order of sorting vehicles.
 	bool show_hidden_engines = false; ///< Whether to show the hidden engines.
@@ -134,11 +134,11 @@ class ReplaceVehicleWindow : public Window {
 			if (!draw_left && !this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			switch (type) {
-				case VEH_TRAIN:
+				case VehicleType::Train:
 					if (!this->GenerateReplaceRailList(eid, draw_left, this->replace_engines)) continue; // special rules for trains
 					break;
 
-				case VEH_ROAD:
+				case VehicleType::Road:
 					if (draw_left && this->sel_roadtype != INVALID_ROADTYPE) {
 						/* Ensure that the roadtype is specific to the selected one */
 						if (e->VehInfo<RoadVehicleInfo>().roadtype != this->sel_roadtype) continue;
@@ -273,7 +273,7 @@ public:
 		this->vehicle_type = vehicletype;
 		this->engines[0].ForceRebuild();
 		this->engines[1].ForceRebuild();
-		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9);
+		this->details_height = ((vehicletype == VehicleType::Train) ? 10 : 9);
 		this->sel_engine[0] = EngineID::Invalid();
 		this->sel_engine[1] = EngineID::Invalid();
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
@@ -283,7 +283,7 @@ public:
 		this->vscroll[1] = this->GetScrollbar(WID_RV_RIGHT_SCROLLBAR);
 
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_RV_SHOW_HIDDEN_ENGINES);
-		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + vehicletype, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + vehicletype);
+		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + to_underlying(vehicletype), STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + to_underlying(vehicletype));
 		widget->SetLowered(this->show_hidden_engines);
 		this->FinishInitNested(vehicletype);
 
@@ -312,7 +312,7 @@ public:
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX:
 				fill.height = resize.height = GetEngineListHeight(this->window_number);
-				size.height = (this->window_number <= VEH_ROAD ? 8 : 4) * resize.height;
+				size.height = (this->vehicle_type <= VehicleType::Road ? 8 : 4) * resize.height;
 				break;
 
 			case WID_RV_LEFT_DETAILS:
@@ -514,14 +514,14 @@ public:
 		switch (widget) {
 			case WID_RV_SORT_ASCENDING_DESCENDING:
 				this->descending_sort_order ^= true;
-				_engine_sort_last_order[this->window_number] = this->descending_sort_order;
+				_engine_sort_last_order[this->vehicle_type] = this->descending_sort_order;
 				this->engines[1].ForceRebuild();
 				this->SetDirty();
 				break;
 
 			case WID_RV_SHOW_HIDDEN_ENGINES:
 				this->show_hidden_engines ^= true;
-				_engine_sort_show_hidden_engines[this->window_number] = this->show_hidden_engines;
+				_engine_sort_show_hidden_engines[this->vehicle_type] = this->show_hidden_engines;
 				this->engines[1].ForceRebuild();
 				this->SetWidgetLoweredState(widget, this->show_hidden_engines);
 				this->SetDirty();
@@ -633,7 +633,7 @@ public:
 			case WID_RV_SORT_DROPDOWN:
 				if (this->sort_criteria != index) {
 					this->sort_criteria = index;
-					_engine_sort_last_criteria[this->window_number] = this->sort_criteria;
+					_engine_sort_last_criteria[this->vehicle_type] = this->sort_criteria;
 					this->engines[1].ForceRebuild();
 					this->SetDirty();
 				}
@@ -891,8 +891,8 @@ void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
 	CloseWindowById(WC_REPLACE_VEHICLE, vehicletype);
 	switch (vehicletype) {
-		case VEH_TRAIN: new ReplaceVehicleWindow(_replace_rail_vehicle_desc, vehicletype, id_g); break;
-		case VEH_ROAD:  new ReplaceVehicleWindow(_replace_road_vehicle_desc, vehicletype, id_g); break;
-		default:        new ReplaceVehicleWindow(_replace_vehicle_desc, vehicletype, id_g);      break;
+		case VehicleType::Train: new ReplaceVehicleWindow(_replace_rail_vehicle_desc, vehicletype, id_g); break;
+		case VehicleType::Road: new ReplaceVehicleWindow(_replace_road_vehicle_desc, vehicletype, id_g); break;
+		default: new ReplaceVehicleWindow(_replace_vehicle_desc, vehicletype, id_g); break;
 	}
 }

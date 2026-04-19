@@ -162,8 +162,8 @@ void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
  */
 void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 {
-	assert(vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END);
-	SB(this->referenced_id, 16, 8, vehtype);
+	assert(vehtype == VehicleType::Invalid || vehtype < VehicleType::CompanyEnd);
+	SB(this->referenced_id, 16, 8, to_underlying(vehtype));
 }
 
 /**
@@ -245,8 +245,8 @@ bool StoryPageButtonData::ValidateCursor() const
  */
 bool StoryPageButtonData::ValidateVehicleType() const
 {
-	uint8_t vehtype = GB(this->referenced_id, 16, 8);
-	return vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END;
+	VehicleType vehtype = static_cast<VehicleType>(GB(this->referenced_id, 16, 8));
+	return vehtype == VehicleType::Invalid || vehtype < VehicleType::CompanyEnd;
 }
 
 /**

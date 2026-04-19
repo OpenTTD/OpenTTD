@@ -68,7 +68,7 @@ static const uint16_t _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
 /** @copydoc IsValidImageIndex */
 template <>
-bool IsValidImageIndex<VEH_SHIP>(uint8_t image_index)
+bool IsValidImageIndex<VehicleType::Ship>(uint8_t image_index)
 {
 	return image_index < lengthof(_ship_sprites);
 }
@@ -90,7 +90,7 @@ static void GetShipIcon(EngineID engine, EngineImageType image_type, VehicleSpri
 		spritenum = e->original_image_index;
 	}
 
-	assert(IsValidImageIndex<VEH_SHIP>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Ship>(spritenum));
 	result->Set(DIR_W + _ship_sprites[spritenum]);
 }
 
@@ -144,7 +144,7 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
-	assert(IsValidImageIndex<VEH_SHIP>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Ship>(spritenum));
 	result->Set(_ship_sprites[spritenum] + direction);
 }
 
@@ -384,7 +384,7 @@ static bool CheckShipStayInDepot(Ship *v)
 	/* Don't leave depot if another vehicle is already entering/leaving */
 	/* This helps avoid CPU load if many ships are set to start at the same time */
 	if (HasVehicleOnTile(v->tile, [](const Vehicle *u) {
-			return u->type == VEH_SHIP && u->cur_speed != 0;
+			return u->type == VehicleType::Ship && u->cur_speed != 0;
 		})) return true;
 
 	assert(v->GetVehicleTrackdir() == TRACKDIR_X_NE || v->GetVehicleTrackdir() == TRACKDIR_Y_NW);

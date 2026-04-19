@@ -277,7 +277,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 		/* Resize temporary engine data ... */
 		_gted.resize(Engine::GetPoolSize());
 	}
-	if (type == VEH_TRAIN) {
+	if (type == VehicleType::Train) {
 		_gted[e->index].railtypelabels.clear();
 		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
@@ -434,7 +434,7 @@ void ResetNewGRFData()
 	_gted.resize(Engine::GetPoolSize());
 
 	/* Fill rail type label temporary data for default trains */
-	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
+	for (const Engine *e : Engine::IterateType(VehicleType::Train)) {
 		_gted[e->index].railtypelabels.clear();
 		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
@@ -670,7 +670,7 @@ static void CalculateRefitMasks()
 		/* If the NewGRF did not set any cargo properties, we apply default values. */
 		if (_gted[engine].defaultcargo_grf == nullptr) {
 			/* If the vehicle has any capacity, apply the default refit masks */
-			if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().capacity != 0) {
+			if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().capacity != 0) {
 				static constexpr LandscapeType T = LandscapeType::Temperate;
 				static constexpr LandscapeType A = LandscapeType::Arctic;
 				static constexpr LandscapeType S = LandscapeType::Tropic;
@@ -696,11 +696,11 @@ static void CalculateRefitMasks()
 					{{         Y}, CT_CANDY,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
 				};
 
-				if (e->type == VEH_AIRCRAFT) {
+				if (e->type == VehicleType::Aircraft) {
 					/* Aircraft default to "light" cargoes */
 					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express};
 					_gted[engine].cargo_disallowed = {CargoClass::Liquid};
-				} else if (e->type == VEH_SHIP) {
+				} else if (e->type == VehicleType::Ship) {
 					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
 					switch (label.base()) {
 						case CT_PASSENGERS.base():
@@ -726,7 +726,7 @@ static void CalculateRefitMasks()
 							break;
 					}
 					e->VehInfo<ShipVehicleInfo>().old_refittable = true;
-				} else if (e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+				} else if (e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
 					/* Train engines default to all cargoes, so you can build single-cargo consists with fast engines.
 					 * Trains loading multiple cargoes may start stations accepting unwanted cargoes. */
 					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
@@ -802,7 +802,7 @@ static void CalculateRefitMasks()
 
 		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargoes.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
-		if (!only_defaultcargo && (e->type != VEH_SHIP || e->VehInfo<ShipVehicleInfo>().old_refittable) && IsValidCargoType(ei->cargo_type) && !ei->refit_mask.Test(ei->cargo_type)) {
+		if (!only_defaultcargo && (e->type != VehicleType::Ship || e->VehInfo<ShipVehicleInfo>().old_refittable) && IsValidCargoType(ei->cargo_type) && !ei->refit_mask.Test(ei->cargo_type)) {
 			ei->cargo_type = INVALID_CARGO;
 		}
 
@@ -829,7 +829,7 @@ static void CalculateRefitMasks()
 				ei->cargo_type = *ei->refit_mask.begin();
 			}
 		}
-		if (!IsValidCargoType(ei->cargo_type) && e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON && e->VehInfo<RailVehicleInfo>().capacity == 0) {
+		if (!IsValidCargoType(ei->cargo_type) && e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON && e->VehInfo<RailVehicleInfo>().capacity == 0) {
 			/* For train engines which do not carry cargo it does not matter if their cargo type is invalid.
 			 * Fallback to the first available instead, if the cargo type has not been changed (as indicated by
 			 * cargo_label not being CT_INVALID). */
@@ -840,7 +840,7 @@ static void CalculateRefitMasks()
 		if (!IsValidCargoType(ei->cargo_type)) ei->climates = {};
 
 		/* Clear refit_mask for not refittable ships */
-		if (e->type == VEH_SHIP && !e->VehInfo<ShipVehicleInfo>().old_refittable) {
+		if (e->type == VehicleType::Ship && !e->VehInfo<ShipVehicleInfo>().old_refittable) {
 			ei->refit_mask.Reset();
 		}
 	}
@@ -876,22 +876,22 @@ static void FinaliseEngineArray()
 		if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		switch (e->type) {
-			case VEH_TRAIN:
+			case VehicleType::Train:
 				for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) {
 					AppendCopyableBadgeList(e->badges, GetRailTypeInfo(rt)->badges, GrfSpecFeature::Trains);
 				}
 				break;
-			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->badges, GrfSpecFeature::RoadVehicles); break;
+			case VehicleType::Road: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->badges, GrfSpecFeature::RoadVehicles); break;
 			default: break;
 		}
 
 		/* Skip wagons, there livery is defined via the engine */
-		if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
 			LiveryScheme ls = GetEngineLiveryScheme(e->index, EngineID::Invalid(), nullptr);
 			SetBit(_loaded_newgrf_features.used_liveries, ls);
 			/* Note: For ships and roadvehicles we assume that they cannot be refitted between passenger and freight */
 
-			if (e->type == VEH_TRAIN) {
+			if (e->type == VehicleType::Train) {
 				SetBit(_loaded_newgrf_features.used_liveries, LS_FREIGHT_WAGON);
 				switch (ls) {
 					case LS_STEAM:
@@ -1699,7 +1699,7 @@ static void AfterLoadGRFs()
 	InitRailTypes();
 	InitRoadTypes();
 
-	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
+	for (Engine *e : Engine::IterateType(VehicleType::Road)) {
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
 			e->VehInfo<RoadVehicleInfo>().max_speed = _gted[e->index].rv_max_speed * 4;
@@ -1731,7 +1731,7 @@ static void AfterLoadGRFs()
 		e->info.climates = {};
 	}
 
-	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
+	for (Engine *e : Engine::IterateType(VehicleType::Train)) {
 		RailTypes railtypes{};
 		for (RailTypeLabel label : _gted[e->index].railtypelabels) {
 			auto rt = GetRailTypeByLabel(label);
@@ -1905,10 +1905,10 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 {
 	switch (type) {
-		case VEH_TRAIN: return GrfSpecFeature::Trains;
-		case VEH_ROAD: return GrfSpecFeature::RoadVehicles;
-		case VEH_SHIP: return GrfSpecFeature::Ships;
-		case VEH_AIRCRAFT: return GrfSpecFeature::Aircraft;
+		case VehicleType::Train: return GrfSpecFeature::Trains;
+		case VehicleType::Road: return GrfSpecFeature::RoadVehicles;
+		case VehicleType::Ship: return GrfSpecFeature::Ships;
+		case VehicleType::Aircraft: return GrfSpecFeature::Aircraft;
 		default: return GrfSpecFeature::Invalid;
 	}
 }
@@ -1921,10 +1921,10 @@ GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 VehicleType GetVehicleType(GrfSpecFeature feature)
 {
 	switch (feature) {
-		case GrfSpecFeature::Trains: return VEH_TRAIN;
-		case GrfSpecFeature::RoadVehicles: return VEH_ROAD;
-		case GrfSpecFeature::Ships: return VEH_SHIP;
-		case GrfSpecFeature::Aircraft: return VEH_AIRCRAFT;
-		default: return VEH_INVALID;
+		case GrfSpecFeature::Trains: return VehicleType::Train;
+		case GrfSpecFeature::RoadVehicles: return VehicleType::Road;
+		case GrfSpecFeature::Ships: return VehicleType::Ship;
+		case GrfSpecFeature::Aircraft: return VehicleType::Aircraft;
+		default: return VehicleType::Invalid;
 	}
 }

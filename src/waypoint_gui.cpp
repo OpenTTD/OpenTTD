@@ -34,7 +34,7 @@
 /** GUI for accessing waypoints and buoys. */
 struct WaypointWindow : Window {
 private:
-	VehicleType vt = VEH_INVALID; ///< Vehicle type using the waypoint.
+	VehicleType vt = VehicleType::Invalid; ///< Vehicle type using the waypoint.
 	Waypoint *wp = nullptr; ///< Waypoint displayed by the window.
 
 	/**
@@ -47,15 +47,15 @@ private:
 
 		StationType type;
 		switch (this->vt) {
-			case VEH_TRAIN:
+			case VehicleType::Train:
 				type = StationType::RailWaypoint;
 				break;
 
-			case VEH_ROAD:
+			case VehicleType::Road:
 				type = StationType::RoadWaypoint;
 				break;
 
-			case VEH_SHIP:
+			case VehicleType::Ship:
 				type = StationType::Buoy;
 				break;
 
@@ -75,19 +75,19 @@ public:
 	{
 		this->wp = Waypoint::Get(window_number);
 		if (wp->string_id == STR_SV_STNAME_WAYPOINT) {
-			this->vt = HasBit(this->wp->waypoint_flags, WPF_ROAD) ? VEH_ROAD : VEH_TRAIN;
+			this->vt = HasBit(this->wp->waypoint_flags, WPF_ROAD) ? VehicleType::Road : VehicleType::Train;
 		} else {
-			this->vt = VEH_SHIP;
+			this->vt = VehicleType::Ship;
 		}
 
 		this->CreateNestedTree();
-		if (this->vt == VEH_TRAIN) {
+		if (this->vt == VehicleType::Train) {
 			this->GetWidget<NWidgetCore>(WID_W_SHOW_VEHICLES)->SetStringTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
 		}
-		if (this->vt == VEH_ROAD) {
+		if (this->vt == VehicleType::Road) {
 			this->GetWidget<NWidgetCore>(WID_W_SHOW_VEHICLES)->SetStringTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP);
 		}
-		if (this->vt != VEH_SHIP) {
+		if (this->vt != VehicleType::Ship) {
 			this->GetWidget<NWidgetCore>(WID_W_CENTER_VIEW)->SetToolTip(STR_WAYPOINT_VIEW_CENTER_TOOLTIP);
 			this->GetWidget<NWidgetCore>(WID_W_RENAME)->SetToolTip(STR_WAYPOINT_VIEW_EDIT_TOOLTIP);
 		}

@@ -2275,7 +2275,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlags flags, int repl
 		/* remove the 'going through road stop' status from all vehicles on that tile */
 		if (flags.Test(DoCommandFlag::Execute)) {
 			for (Vehicle *v : VehiclesOnTile(tile)) {
-				if (v->type != VEH_ROAD) continue;
+				if (v->type != VehicleType::Road) continue;
 				/* Okay... we are a road vehicle on a drive through road stop.
 				 * But that road stop has just been removed, so we need to make
 				 * sure we are in a valid state... however, vehicles can also
@@ -2336,7 +2336,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlags flags, int repl
 		 * this station, then look for any currently heading to the tile. */
 		StationID station_id = st->index;
 		FindVehiclesWithOrder(
-			[](const Vehicle *v) { return v->type == VEH_ROAD; },
+			[](const Vehicle *v) { return v->type == VehicleType::Road; },
 			[station_id](const Order *order) { return order->IsType(OT_GOTO_STATION) && order->GetDestination() == station_id; },
 			[station_id, tile](Vehicle *v) {
 				if (v->current_order.IsType(OT_GOTO_STATION) && v->dest_tile == tile) {
@@ -3849,7 +3849,7 @@ static bool ClickTile_Station(TileIndex tile)
 		ShowWaypointWindow(Waypoint::From(bst));
 	} else if (IsHangar(tile)) {
 		const Station *st = Station::From(bst);
-		ShowDepotWindow(st->airport.GetHangarTile(st->airport.GetHangarNum(tile)), VEH_AIRCRAFT);
+		ShowDepotWindow(st->airport.GetHangarTile(st->airport.GetHangarNum(tile)), VehicleType::Aircraft);
 	} else {
 		ShowStationViewWindow(bst->index);
 	}
@@ -3859,7 +3859,7 @@ static bool ClickTile_Station(TileIndex tile)
 /** @copydoc VehicleEnterTileProc */
 static VehicleEnterTileStates VehicleEnterTile_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
-	if (v->type == VEH_TRAIN) {
+	if (v->type == VehicleType::Train) {
 		StationID station_id = GetStationIndex(tile);
 		if (!IsRailStation(tile) || !v->IsMovingFront()) return {};
 		Vehicle *consist = v->First();
@@ -3893,7 +3893,7 @@ static VehicleEnterTileStates VehicleEnterTile_Station(Vehicle *v, TileIndex til
 				if (spd < v->cur_speed) v->cur_speed = spd;
 			}
 		}
-	} else if (v->type == VEH_ROAD) {
+	} else if (v->type == VehicleType::Road) {
 		RoadVehicle *rv = RoadVehicle::From(v);
 		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
 			if (IsStationRoadStop(tile) && rv->IsFrontEngine()) {
@@ -4055,7 +4055,7 @@ static void UpdateStationRating(Station *st)
 				| (ClampTo<uint16_t>(ge->max_waiting_cargo) << 8)
 				| (ClampTo<uint8_t>(last_speed) << 24);
 			/* Convert to the 'old' vehicle types */
-			uint32_t var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
+			uint32_t var10 = (st->last_vehicle_type == VehicleType::Invalid) ? 0x0 : (to_underlying(st->last_vehicle_type) + 0x10);
 			uint16_t callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
 			if (callback != CALLBACK_FAILED) {
 				skip = true;
@@ -4071,7 +4071,7 @@ static void UpdateStationRating(Station *st)
 			if (b >= 0) rating += b >> 2;
 
 			uint8_t waittime = ge->time_since_pickup;
-			if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
+			if (st->last_vehicle_type == VehicleType::Ship) waittime >>= 2;
 			if (waittime <= 21) rating += 25;
 			if (waittime <= 12) rating += 25;
 			if (waittime <= 6) rating += 45;

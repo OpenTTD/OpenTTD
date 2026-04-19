@@ -383,16 +383,16 @@ struct NewsWindow : Window {
 		if (has_vehicle_id && nwid != nullptr) {
 			const Vehicle *v = Vehicle::Get(std::get<VehicleID>(ni->ref1));
 			switch (v->type) {
-				case VEH_TRAIN:
+				case VehicleType::Train:
 					nwid->SetString(STR_TRAIN);
 					break;
-				case VEH_ROAD:
+				case VehicleType::Road:
 					nwid->SetString(RoadVehicle::From(v)->IsBus() ? STR_BUS : STR_LORRY);
 					break;
-				case VEH_SHIP:
+				case VehicleType::Ship:
 					nwid->SetString(STR_SHIP);
 					break;
-				case VEH_AIRCRAFT:
+				case VehicleType::Aircraft:
 					nwid->SetString(STR_PLANE);
 					break;
 				default:

@@ -308,10 +308,10 @@ struct NewGRFInspectWindow : Window {
 	VehicleType GetVehicleTypeForWindow() const
 	{
 		switch (GetFeatureNum(this->window_number)) {
-			case GrfSpecFeature::Trains: return VEH_TRAIN;
-			case GrfSpecFeature::RoadVehicles: return VEH_ROAD;
-			case GrfSpecFeature::Ships: return VEH_SHIP;
-			case GrfSpecFeature::Aircraft: return VEH_AIRCRAFT;
+			case GrfSpecFeature::Trains: return VehicleType::Train;
+			case GrfSpecFeature::RoadVehicles: return VehicleType::Road;
+			case GrfSpecFeature::Ships: return VehicleType::Ship;
+			case GrfSpecFeature::Aircraft: return VehicleType::Aircraft;
 			default: NOT_REACHED();
 		}
 	}
@@ -409,8 +409,8 @@ struct NewGRFInspectWindow : Window {
 		for (const Vehicle *u = v->First(); u != nullptr; u = u->Next()) {
 			if (u == v) sel_start = total_width;
 			switch (u->type) {
-				case VEH_TRAIN: total_width += Train::From(u)->GetDisplayImageWidth(); break;
-				case VEH_ROAD:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
+				case VehicleType::Train: total_width += Train::From(u)->GetDisplayImageWidth(); break;
+				case VehicleType::Road:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
 				default: NOT_REACHED();
 			}
 			if (u == v) sel_end = total_width;

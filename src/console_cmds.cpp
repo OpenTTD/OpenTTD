@@ -2026,10 +2026,10 @@ static bool ConCompanies(std::span<std::string_view> argv)
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),
-			c->group_all[VEH_TRAIN].num_vehicle,
-			c->group_all[VEH_ROAD].num_vehicle,
-			c->group_all[VEH_AIRCRAFT].num_vehicle,
-			c->group_all[VEH_SHIP].num_vehicle,
+			c->group_all[VehicleType::Train].num_vehicle,
+			c->group_all[VehicleType::Road].num_vehicle,
+			c->group_all[VehicleType::Aircraft].num_vehicle,
+			c->group_all[VehicleType::Ship].num_vehicle,
 			c->is_ai ? "AI" : "");
 	}
 
