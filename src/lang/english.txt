@@ -655,6 +655,12 @@ STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produced
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transported
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Delivered
 
+STR_GRAPH_STATION_CAPTION                                       :{WHITE}{STATION} - Cargo History
+STR_GRAPH_STATION_RANGE_ACCEPTED                                :Accepted
+STR_GRAPH_STATION_RANGE_WAITING                                 :Waiting
+STR_GRAPH_STATION_RANGE_SUPPLY                                  :Supply
+STR_GRAPH_STATION_RANGE_LOST                                    :Lost
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
 # Graph key window

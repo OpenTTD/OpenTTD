@@ -11,6 +11,7 @@
 #include "core/flatset_type.hpp"
 #include "aircraft.h"
 #include "bridge_map.h"
+#include "misc/history_func.hpp"
 #include "vehiclelist_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
@@ -4094,6 +4095,7 @@ static void UpdateStationRating(Station *st)
 
 		{
 			int or_ = ge->rating; // old rating
+			uint old_waiting = waiting;
 
 			/* only modify rating in steps of -2, -1, 0, 1 or 2 */
 			ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
@@ -4143,6 +4145,8 @@ static void UpdateStationRating(Station *st)
 			} else {
 				/* If the average number per next hop is low, be more forgiving. */
 				ge->max_waiting_cargo = waiting_avg;
+
+				if (old_waiting > waiting) ge->GetOrCreateHistory().lost += old_waiting - waiting;
 			}
 		}
 	}
@@ -4375,6 +4379,16 @@ void OnTick_Station()
 			DeleteStaleLinks(Station::From(st));
 		};
 
+		if (Station::IsExpected(st) && (TimerGameTick::counter + st->index) % Ticks::DAY_TICKS == 0) {
+			for (GoodsEntry &ge : Station::From(st)->goods) {
+				ge.accumulated_rating += ge.rating;
+
+				if (ge.HasData()) {
+					ge.GetOrCreateHistory().accumulated_waiting += ge.GetData().cargo.TotalCount();
+				}
+			}
+		}
+
 		/* Spread out big-tick over STATION_ACCEPTANCE_TICKS ticks. */
 		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
 			/* Stop processing this station if it was deleted */
@@ -4390,13 +4404,53 @@ void OnTick_Station()
 	}
 }
 
+/**
+ * Sum history for station cargo history.
+ * @param history History to be summed.
+ * @return The summed data.
+ */
+template <>
+GoodsEntry::CargoHistory SumHistory(std::span<const GoodsEntry::CargoHistory> history)
+{
+	uint32_t accepted = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &h) { return r + RxDecompress(h.rx_accepted); });
+	uint32_t waiting = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &h) { return r + RxDecompress(h.rx_waiting); });
+	uint32_t supply = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &h) { return r + RxDecompress(h.rx_supply); });
+	uint32_t lost = std::accumulate(std::begin(history), std::end(history), 0, [](uint32_t r, const auto &h) { return r + RxDecompress(h.rx_lost); });
+	uint16_t rating = std::accumulate(std::begin(history), std::end(history), 0, [](uint16_t r, const auto &h) { return r + h.rating; });
+	auto count = std::size(history);
+	return {
+		.rx_accepted = RxCompress(ClampTo<uint32_t>(accepted / count)),
+		.rx_waiting = RxCompress(ClampTo<uint32_t>(waiting / count)),
+		.rx_supply = RxCompress(ClampTo<uint32_t>(supply / count)),
+		.rx_lost = RxCompress(ClampTo<uint32_t>(lost / count)),
+		.rating = ClampTo<uint8_t>(rating / count),
+	};
+}
+
 /** Economy monthly loop for stations. */
 static const IntervalTimer<TimerGameEconomy> _economy_stations_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::Station}, [](auto)
 {
 	for (Station *st : Station::Iterate()) {
+		UpdateValidHistory(st->valid_cargo_history, HISTORY_YEAR, TimerGameEconomy::month);
+
 		for (GoodsEntry &ge : st->goods) {
 			ge.status.Set(GoodsEntry::State::LastMonth, ge.status.Test(GoodsEntry::State::CurrentMonth));
 			ge.status.Reset(GoodsEntry::State::CurrentMonth);
+
+			if (ge.HasRating() || ge.HasHistory()) {
+				auto &stats = ge.GetOrCreateHistory();
+				stats.history[THIS_MONTH].rx_waiting = RxCompress(GetAndResetAccumulatedAverage<uint32_t>(stats.accumulated_waiting));
+				stats.history[THIS_MONTH].rx_supply = RxCompress(stats.supply);
+				stats.history[THIS_MONTH].rx_lost = RxCompress(stats.lost);
+				stats.history[THIS_MONTH].rx_accepted = RxCompress(stats.accepted);
+				stats.history[THIS_MONTH].rating = ToPercent8(GetAndResetAccumulatedAverage<uint8_t>(ge.accumulated_rating));
+
+				RotateHistory(stats.history, st->valid_cargo_history, HISTORY_YEAR, TimerGameEconomy::month);
+
+				stats.supply = 0;
+				stats.lost = 0;
+				stats.accepted = 0;
+			}
 		}
 	}
 });
@@ -4435,6 +4489,9 @@ static uint UpdateStationWaiting(Station *st, CargoType cargo, uint amount, Sour
 	amount >>= 8;
 	/* No new "real" cargo item yet. */
 	if (amount == 0) return 0;
+
+	/* Track amount supplied to the station. */
+	ge.GetOrCreateHistory().supply += amount;
 
 	StationID next = ge.GetVia(st->index);
 	ge.GetOrCreateData().cargo.Append(CargoPacket::Create(st->index, amount, source), next);

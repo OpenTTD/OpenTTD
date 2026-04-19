@@ -13,6 +13,7 @@
 #include "core/flatset_type.hpp"
 #include "core/random_func.hpp"
 #include "base_station_base.h"
+#include "misc/history_type.hpp"
 #include "newgrf_airport.h"
 #include "cargopacket.h"
 #include "industry_type.h"
@@ -219,6 +220,25 @@ struct GoodsEntry {
 		}
 	};
 
+	/** Individual data point for station cargo history. */
+	struct CargoHistory {
+		uint16_t rx_accepted; ///< Compressed cargo accepted.
+		uint16_t rx_waiting; ///< Compressed cargo waiting.
+		uint16_t rx_supply; ///< Compressed cargo supply.
+		uint16_t rx_lost; ///< Compressed cargo lost.
+		uint8_t rating; ///< Cargo rating.
+	};
+
+	/** Storage for station cargo history. */
+	struct CargoHistoryData {
+		HistoryData<CargoHistory> history{}; ///< Historical cargo data.
+
+		uint32_t accumulated_waiting = 0; ///< Accumulated waiting over the last period.
+		uint32_t supply = 0; ///< Cargo supplied over the last period.
+		uint32_t lost = 0; ///< Cargo lost over the last period.
+		uint32_t accepted = 0; ///< Cargo accepted over the last period.
+	};
+
 	uint max_waiting_cargo = 0; ///< Max cargo from this station waiting at any station.
 	NodeID node = INVALID_NODE; ///< ID of node in link graph referring to this goods entry.
 	LinkGraphID link_graph = LinkGraphID::Invalid(); ///< Link graph this station belongs to.
@@ -252,6 +272,8 @@ struct GoodsEntry {
 	uint8_t last_age = 255;
 
 	uint8_t amount_fract = 0; ///< Fractional part of the amount in the cargo list
+
+	uint16_t accumulated_rating = 0; ///< Accumulated rating over the last month.
 
 	/**
 	 * Reports whether a vehicle has ever tried to load the cargo at this station.
@@ -341,6 +363,42 @@ struct GoodsEntry {
 		return *this->data;
 	}
 
+	/**
+	 * Test if cargo history is present.
+	 * @return \c true iff cargo history is present.
+	 */
+	inline bool HasHistory() const { return this->stats != nullptr; }
+
+	/**
+	 * Get the cargo history data.
+	 * @return the cargo history data.
+	 */
+	inline const CargoHistoryData &GetHistory() const
+	{
+		assert(this->HasHistory());
+		return *this->stats;
+	}
+
+	/**
+	 * Get the cargo history data.
+	 * @return the cargo history data.
+	 */
+	inline CargoHistoryData &GetHistory()
+	{
+		assert(this->HasHistory());
+		return *this->stats;
+	}
+
+	/**
+	 * Get or create the cargo history data.
+	 * @return the cargo history data.
+	 */
+	inline CargoHistoryData &GetOrCreateHistory()
+	{
+		if (!this->HasHistory()) this->stats = std::make_unique<CargoHistoryData>();
+		return *this->stats;
+	}
+
 	uint8_t ConvertState() const;
 
 	/**
@@ -365,6 +423,7 @@ struct GoodsEntry {
 
 private:
 	std::unique_ptr<GoodsEntryData> data = nullptr; ///< Optional cargo packet and flow data.
+	std::unique_ptr<CargoHistoryData> stats; ///< Optional cargo history data.
 };
 
 /** All airport-related information. Only valid if tile != INVALID_TILE. */
@@ -558,6 +617,8 @@ public:
 
 	IndustryList industries_near{}; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
 	Industry *industry = nullptr; ///< NOSAVE: Associated industry for neutral stations. (Rebuilt on load from Industry->st)
+
+	ValidHistoryMask valid_cargo_history = 0; ///< Mask of valid cargo history records.
 
 	Station(StationID index, TileIndex tile = INVALID_TILE);
 	~Station() override;
