@@ -86,7 +86,7 @@ static void FeatureNewName(ByteReader &buf)
 			case GrfSpecFeature::Ships:
 			case GrfSpecFeature::Aircraft:
 				if (!generic) {
-					Engine *e = GetNewEngine(_cur_gps.grffile, (VehicleType)feature, id, _cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static));
+					Engine *e = GetNewEngine(_cur_gps.grffile, GetVehicleType(feature), id, _cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static));
 					if (e == nullptr) break;
 					StringID string = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{feature_overlay | e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;

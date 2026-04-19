@@ -17,6 +17,7 @@
 #include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
+#include "vehicle_type.h"
 
 struct GRFConfig;
 
@@ -239,5 +240,8 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile);
 
 StringID MapGRFStringID(uint32_t grfid, GRFStringID str);
 void ShowNewGRFError();
+
+GrfSpecFeature GetGrfSpecFeature(VehicleType type);
+VehicleType GetVehicleType(GrfSpecFeature feature);
 
 #endif /* NEWGRF_H */

@@ -790,22 +790,6 @@ GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 	}
 }
 
-/**
- * Get the GrfSpecFeature associated with the vehicle.
- * @param type The vehicle type to get the feature from.
- * @return the GrfSpecFeature.
- */
-GrfSpecFeature GetGrfSpecFeature(VehicleType type)
-{
-	switch (type) {
-		case VEH_TRAIN:    return GrfSpecFeature::Trains;
-		case VEH_ROAD:     return GrfSpecFeature::RoadVehicles;
-		case VEH_SHIP:     return GrfSpecFeature::Ships;
-		case VEH_AIRCRAFT: return GrfSpecFeature::Aircraft;
-		default:           return GrfSpecFeature::Invalid;
-	}
-}
-
 
 /**** Sprite Aligner ****/
 
