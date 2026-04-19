@@ -89,6 +89,7 @@ struct EnginePreviewWindow : Window {
 		this->engines.push_back(engine);
 
 		this->InitNested();
+		this->SetWidgetsDisabledState(true, WID_EP_PREV, WID_EP_LIST, WID_EP_NEXT);
 
 		/* There is no way to recover the window; so disallow closure via DEL; unless SHIFT+DEL */
 		this->flags.Set(WindowFlag::Sticky);
