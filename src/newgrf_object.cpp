@@ -415,7 +415,7 @@ TownScopeResolver *ObjectResolverObject::GetTown()
 
 GrfSpecFeature ObjectResolverObject::GetFeature() const
 {
-	return GSF_OBJECTS;
+	return GrfSpecFeature::Objects;
 }
 
 uint32_t ObjectResolverObject::GetDebugID() const

@@ -1013,7 +1013,7 @@ class StationPickerCallbacks : public PickerCallbacksNewGRFClass<StationClass> {
 public:
 	StationPickerCallbacks() : PickerCallbacksNewGRFClass<StationClass>("fav_stations") {}
 
-	GrfSpecFeature GetFeature() const override { return GSF_STATIONS; }
+	GrfSpecFeature GetFeature() const override { return GrfSpecFeature::Stations; }
 
 	StringID GetClassTooltip() const override { return STR_PICKER_STATION_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_STATION_TYPE_TOOLTIP; }
@@ -1205,7 +1205,7 @@ public:
 		Rect r = this->GetWidget<NWidgetBase>(WID_BRAS_COVERAGE_TEXTS)->GetCurrentRect();
 		const int bottom = r.bottom;
 		r.bottom = INT_MAX; // Allow overflow as we want to know the required height.
-		if (statspec != nullptr) r.top = DrawBadgeNameList(r, statspec->badges, GSF_STATIONS);
+		if (statspec != nullptr) r.top = DrawBadgeNameList(r, statspec->badges, GrfSpecFeature::Stations);
 		r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, false) + WidgetDimensions::scaled.vsep_normal;
 		r.top = DrawStationCoverageAreaText(r, SCT_ALL, rad, true);
 		/* Resize background if the window is too small.
@@ -1838,7 +1838,7 @@ class WaypointPickerCallbacks : public PickerCallbacksNewGRFClass<StationClass> 
 public:
 	WaypointPickerCallbacks() : PickerCallbacksNewGRFClass<StationClass>("fav_waypoints") {}
 
-	GrfSpecFeature GetFeature() const override { return GSF_STATIONS; }
+	GrfSpecFeature GetFeature() const override { return GrfSpecFeature::Stations; }
 
 	StringID GetClassTooltip() const override { return STR_PICKER_WAYPOINT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_WAYPOINT_TYPE_TOOLTIP; }
@@ -2107,7 +2107,7 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	}
 
 	/* Shared list so that each item can take ownership. */
-	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_RAILTYPES);
+	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GrfSpecFeature::RailTypes);
 
 	for (const auto &rt : _sorted_railtypes) {
 		/* If it's not used ever, don't show it to the user. */
@@ -2116,12 +2116,12 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GrfSpecFeature::RailTypes, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_railtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_RAILTYPES, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GrfSpecFeature::RailTypes, rti->introduction_date, RailBuildCost(rt), d, rti->gui_sprites.build_x_rail, PAL_NONE, std::move(str), rt, !avail_railtypes.Test(rt)));
 		}
 	}
 

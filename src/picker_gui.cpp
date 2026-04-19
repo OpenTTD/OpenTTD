@@ -400,7 +400,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 
 				GrfSpecFeature feature = this->callbacks.GetFeature();
 				/* Houses have recolours but not related to the company colour and other items depend on gamemode. */
-				PaletteID palette = _game_mode != GM_NORMAL || feature == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				PaletteID palette = _game_mode != GM_NORMAL || feature == GrfSpecFeature::Houses ? PAL_NONE : GetCompanyPalette(_local_company);
 				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, palette);
 
 				if (this->callbacks.saved.contains(this->callbacks.sel_collection)) {
@@ -565,7 +565,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 		default:
 			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
 				/* Houses have recolours but not related to the company colour and other items depend on gamemode. */
-				PaletteID palette = _game_mode != GM_NORMAL || this->callbacks.GetFeature() == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				PaletteID palette = _game_mode != GM_NORMAL || this->callbacks.GetFeature() == GrfSpecFeature::Houses ? PAL_NONE : GetCompanyPalette(_local_company);
 				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0, DropDownOption::Filterable);
 			}
 			break;

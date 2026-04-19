@@ -554,6 +554,6 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 }
 
 /** @copydoc GrfChangeInfoHandler::Reserve */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_GLOBALVAR>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return GlobalVarReserveInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::GlobalVar>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return GlobalVarReserveInfo(first, last, prop, buf); }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_GLOBALVAR>::Activation(uint first, uint last, int prop, ByteReader &buf) { return GlobalVarChangeInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::GlobalVar>::Activation(uint first, uint last, int prop, ByteReader &buf) { return GlobalVarChangeInfo(first, last, prop, buf); }

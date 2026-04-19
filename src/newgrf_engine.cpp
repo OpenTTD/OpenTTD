@@ -1041,11 +1041,11 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 GrfSpecFeature VehicleResolverObject::GetFeature() const
 {
 	switch (Engine::Get(this->self_scope.self_type)->type) {
-		case VEH_TRAIN: return GSF_TRAINS;
-		case VEH_ROAD: return GSF_ROADVEHICLES;
-		case VEH_SHIP: return GSF_SHIPS;
-		case VEH_AIRCRAFT: return GSF_AIRCRAFT;
-		default: return GSF_INVALID;
+		case VEH_TRAIN: return GrfSpecFeature::Trains;
+		case VEH_ROAD: return GrfSpecFeature::RoadVehicles;
+		case VEH_SHIP: return GrfSpecFeature::Ships;
+		case VEH_AIRCRAFT: return GrfSpecFeature::Aircraft;
+		default: return GrfSpecFeature::Invalid;
 	}
 }
 

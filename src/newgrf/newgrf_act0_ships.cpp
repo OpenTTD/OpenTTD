@@ -209,7 +209,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x26: // Badge list
-				e->badges = ReadBadgeList(buf, GSF_SHIPS);
+				e->badges = ReadBadgeList(buf, GrfSpecFeature::Ships);
 				break;
 
 			default:
@@ -222,6 +222,6 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 }
 
 /** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Ships>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ShipVehicleChangeInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Ships>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ShipVehicleChangeInfo(first, last, prop, buf); }

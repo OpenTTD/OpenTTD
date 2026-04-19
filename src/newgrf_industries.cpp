@@ -448,7 +448,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		/* Create storage on first modification. */
 		const IndustrySpec *indsp = GetIndustrySpec(this->industry->type);
 		assert(PersistentStorage::CanAllocateItem());
-		this->industry->psa = PersistentStorage::Create(indsp->grf_prop.grfid, GSF_INDUSTRIES, this->industry->location.tile);
+		this->industry->psa = PersistentStorage::Create(indsp->grf_prop.grfid, GrfSpecFeature::Industries, this->industry->location.tile);
 	}
 
 	this->industry->psa->StoreValue(pos, value);
@@ -506,7 +506,7 @@ TownScopeResolver *IndustriesResolverObject::GetTown()
 
 GrfSpecFeature IndustriesResolverObject::GetFeature() const
 {
-	return GSF_INDUSTRIES;
+	return GrfSpecFeature::Industries;
 }
 
 uint32_t IndustriesResolverObject::GetDebugID() const

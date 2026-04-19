@@ -191,7 +191,7 @@ struct BadgeResolverObject : public ResolverObject {
 
 GrfSpecFeature BadgeResolverObject::GetFeature() const
 {
-	return GSF_BADGES;
+	return GrfSpecFeature::Badges;
 }
 
 uint32_t BadgeResolverObject::GetDebugID() const
@@ -211,8 +211,8 @@ uint32_t BadgeResolverObject::GetDebugID() const
 BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
 		: ResolverObject(badge.grf_prop.grffile, callback, callback_param1, callback_param2), self_scope(*this, badge, introduction_date)
 {
-	assert(feature <= GSF_END);
-	this->root_spritegroup = this->self_scope.badge.grf_prop.GetFirstSpriteGroupOf({feature, GSF_DEFAULT});
+	assert(feature <= GrfSpecFeature::End);
+	this->root_spritegroup = this->self_scope.badge.grf_prop.GetFirstSpriteGroupOf({feature, GrfSpecFeature::Default});
 }
 
 /**

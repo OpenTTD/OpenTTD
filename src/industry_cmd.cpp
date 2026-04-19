@@ -158,7 +158,7 @@ Industry::~Industry()
 	for (TileIndex tile_cur : this->location) {
 		if (IsTileType(tile_cur, TileType::Industry)) {
 			if (GetIndustryIndex(tile_cur) == this->index) {
-				DeleteNewGRFInspectWindow(GSF_INDUSTRYTILES, tile_cur.base());
+				DeleteNewGRFInspectWindow(GrfSpecFeature::IndustryTiles, tile_cur.base());
 
 				/* MakeWaterKeepingClass() can also handle 'land' */
 				MakeWaterKeepingClass(tile_cur, OWNER_NONE);
@@ -199,7 +199,7 @@ Industry::~Industry()
 	DeleteIndustryNews(this->index);
 	CloseWindowById(WC_INDUSTRY_VIEW, this->index);
 	CloseWindowById(WC_INDUSTRY_PRODUCTION, this->index);
-	DeleteNewGRFInspectWindow(GSF_INDUSTRIES, this->index);
+	DeleteNewGRFInspectWindow(GrfSpecFeature::Industries, this->index);
 
 	Source src{this->index, SourceType::Industry};
 	DeleteSubsidyWith(src);

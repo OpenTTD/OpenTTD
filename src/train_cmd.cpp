@@ -244,7 +244,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 		InvalidateWindowData(WC_VEHICLE_REFIT, this->index, VIWD_CONSIST_CHANGED);
 		InvalidateWindowData(WC_VEHICLE_ORDERS, this->index, VIWD_CONSIST_CHANGED);
-		InvalidateNewGRFInspectWindow(GSF_TRAINS, this->index);
+		InvalidateNewGRFInspectWindow(GrfSpecFeature::Trains, this->index);
 
 		/* If the consist is changed while in a depot, the vehicle view window must be invalidated to update the availability of refitting. */
 		InvalidateWindowData(WC_VEHICLE_VIEW, this->index, VIWD_CONSIST_CHANGED);
@@ -1380,7 +1380,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlags flags, VehicleID src_veh, VehicleI
 			CloseWindowById(WC_VEHICLE_REFIT, src->index);
 			CloseWindowById(WC_VEHICLE_DETAILS, src->index);
 			CloseWindowById(WC_VEHICLE_TIMETABLE, src->index);
-			DeleteNewGRFInspectWindow(GSF_TRAINS, src->index);
+			DeleteNewGRFInspectWindow(GrfSpecFeature::Trains, src->index);
 			SetWindowDirty(WC_COMPANY, _current_company);
 
 			if (src_head != nullptr && src_head->IsFrontEngine()) {

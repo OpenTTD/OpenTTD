@@ -343,7 +343,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 			}
 
 			case 0x24: // Badge list
-				housespec->badges = ReadBadgeList(buf, GSF_HOUSES);
+				housespec->badges = ReadBadgeList(buf, GrfSpecFeature::Houses);
 				break;
 
 			default:
@@ -356,6 +356,6 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 }
 
 /** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Houses>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return TownHouseChangeInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Houses>::Activation(uint first, uint last, int prop, ByteReader &buf) { return TownHouseChangeInfo(first, last, prop, buf); }

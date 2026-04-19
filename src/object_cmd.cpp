@@ -515,7 +515,7 @@ static void ReallyClearObjectTile(Object *o)
 {
 	Object::DecTypeCount(o->type);
 	for (TileIndex tile_cur : o->location) {
-		DeleteNewGRFInspectWindow(GSF_OBJECTS, tile_cur.base());
+		DeleteNewGRFInspectWindow(GrfSpecFeature::Objects, tile_cur.base());
 
 		MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
 	}

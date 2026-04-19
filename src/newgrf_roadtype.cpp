@@ -114,9 +114,9 @@ GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 {
 	RoadType rt = GetRoadTypeByLabel(this->roadtype_scope.rti->label, false);
 	switch (GetRoadTramType(rt)) {
-		case RoadTramType::Road: return GSF_ROADTYPES;
-		case RoadTramType::Tram: return GSF_TRAMTYPES;
-		default: return GSF_INVALID;
+		case RoadTramType::Road: return GrfSpecFeature::RoadTypes;
+		case RoadTramType::Tram: return GrfSpecFeature::TramTypes;
+		default: return GrfSpecFeature::Invalid;
 	}
 }
 

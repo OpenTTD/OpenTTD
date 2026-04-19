@@ -187,7 +187,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x19: // Badge list
-				spec->badges = ReadBadgeList(buf, GSF_OBJECTS);
+				spec->badges = ReadBadgeList(buf, GrfSpecFeature::Objects);
 				break;
 
 			default:
@@ -200,6 +200,6 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 }
 
 /** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_OBJECTS>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Objects>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_OBJECTS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ObjectChangeInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Objects>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ObjectChangeInfo(first, last, prop, buf); }

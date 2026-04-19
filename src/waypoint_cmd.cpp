@@ -318,7 +318,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			MarkTileDirtyByTile(tile);
 
 			DeallocateSpecFromStation(wp, old_specindex);
-			if (spec == nullptr) DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
+			if (spec == nullptr) DeleteNewGRFInspectWindow(GrfSpecFeature::Stations, tile);
 			YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 		}
 		DirtyCompanyInfrastructureWindows(wp->owner);

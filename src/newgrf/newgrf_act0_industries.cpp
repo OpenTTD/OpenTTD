@@ -191,7 +191,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 			}
 
 			case 0x14: // Badge list
-				tsp->badges = ReadBadgeList(buf, GSF_INDUSTRYTILES);
+				tsp->badges = ReadBadgeList(buf, GrfSpecFeature::IndustryTiles);
 				break;
 
 			default:
@@ -691,7 +691,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 			}
 
 			case 0x29: // Badge list
-				indsp->badges = ReadBadgeList(buf, GSF_INDUSTRIES);
+				indsp->badges = ReadBadgeList(buf, GrfSpecFeature::Industries);
 				break;
 
 			default:
@@ -704,11 +704,11 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 }
 
 /** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRYTILES>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::IndustryTiles>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRYTILES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return IndustrytilesChangeInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::IndustryTiles>::Activation(uint first, uint last, int prop, ByteReader &buf) { return IndustrytilesChangeInfo(first, last, prop, buf); }
 
 /** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRIES>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Industries>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRIES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return IndustriesChangeInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Industries>::Activation(uint first, uint last, int prop, ByteReader &buf) { return IndustriesChangeInfo(first, last, prop, buf); }

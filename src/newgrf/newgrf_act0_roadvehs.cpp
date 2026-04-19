@@ -222,7 +222,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x2A: // Badge list
-				e->badges = ReadBadgeList(buf, GSF_ROADVEHICLES);
+				e->badges = ReadBadgeList(buf, GrfSpecFeature::RoadVehicles);
 				break;
 
 			default:
@@ -235,6 +235,6 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 }
 
 /** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::RoadVehicles>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
 /** @copydoc GrfChangeInfoHandler::Activation */
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadVehicleChangeInfo(first, last, prop, buf); }
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::RoadVehicles>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadVehicleChangeInfo(first, last, prop, buf); }

@@ -151,7 +151,7 @@ IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileInde
 
 GrfSpecFeature IndustryTileResolverObject::GetFeature() const
 {
-	return GSF_INDUSTRYTILES;
+	return GrfSpecFeature::IndustryTiles;
 }
 
 uint32_t IndustryTileResolverObject::GetDebugID() const
