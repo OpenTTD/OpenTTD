@@ -62,6 +62,7 @@
 #include "timer/timer_game_calendar.h"
 #include "help_gui.h"
 #include "core/string_consumer.hpp"
+#include "genworld.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -352,6 +353,7 @@ static CallBackFunction MenuClickSettings(int index)
 enum class SaveLoadEditorMenuEntries : uint8_t {
 	SaveScenario = 0, ///< Save the scenario.
 	LoadScenario, ///< Load a scenario.
+	NewScenario, ///< Create new scenario configuring climate, size, etc.
 	SaveHeightmap, ///< Save the heightmap.
 	LoadHeightmap, ///< Load a heightmap.
 	ExitToMainMenu, ///< Exit to main menu.
@@ -390,8 +392,9 @@ static CallBackFunction ToolbarSaveClick(Window *w)
 static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 {
 	PopupMainToolbarMenu(w, WID_TE_SAVE, {STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO,
-			STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP,
-			STR_SCENEDIT_FILE_MENU_QUIT_EDITOR, STR_NULL, STR_SCENEDIT_FILE_MENU_QUIT});
+			STR_SCENEDIT_FILE_MENU_NEW_SCENARIO, STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP,
+			STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_QUIT_EDITOR, STR_NULL,
+			STR_SCENEDIT_FILE_MENU_QUIT});
 	return CallBackFunction::None;
 }
 
@@ -407,6 +410,7 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 		switch (SaveLoadEditorMenuEntries(index)) {
 			case SaveLoadEditorMenuEntries::SaveScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Save); break;
 			case SaveLoadEditorMenuEntries::LoadScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Load); break;
+			case SaveLoadEditorMenuEntries::NewScenario: ShowCreateScenario(); break;
 			case SaveLoadEditorMenuEntries::SaveHeightmap: ShowSaveLoadDialog(AbstractFileType::Heightmap, SaveLoadOperation::Save); break;
 			case SaveLoadEditorMenuEntries::LoadHeightmap: ShowSaveLoadDialog(AbstractFileType::Heightmap, SaveLoadOperation::Load); break;
 			case SaveLoadEditorMenuEntries::ExitToMainMenu: AskExitToGameMenu(); break;
