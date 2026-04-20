@@ -50,21 +50,43 @@ EngineOverrideManager _engine_mngr;
  */
 static TimerGameCalendar::Year _year_engine_aging_stops;
 
-/** Number of engines of each vehicle type in original engine data */
-const uint8_t _engine_counts[4] = {
-	lengthof(_orig_rail_vehicle_info),
-	lengthof(_orig_road_vehicle_info),
-	lengthof(_orig_ship_vehicle_info),
-	lengthof(_orig_aircraft_vehicle_info),
-};
+/**
+ * Get the number of original engines for a \c VehicleType
+ * @param type the vehicle type
+ * @return the number of original engines of the given type
+ */
+uint8_t GetOriginalEngineCount(VehicleType type)
+{
+	/** Number of engines of each vehicle type in original engine data */
+	static constexpr uint8_t ENGINE_COUNTS[VEH_COMPANY_END] = {
+		lengthof(_orig_rail_vehicle_info),
+		lengthof(_orig_road_vehicle_info),
+		lengthof(_orig_ship_vehicle_info),
+		lengthof(_orig_aircraft_vehicle_info),
+	};
 
-/** Offset of the first engine of each vehicle type in original engine data */
-const uint8_t _engine_offsets[4] = {
-	0,
-	lengthof(_orig_rail_vehicle_info),
-	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info),
-	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info),
-};
+	assert(IsCompanyBuildableVehicleType(type));
+	return ENGINE_COUNTS[type];
+}
+
+/**
+ * Get the index offset for original engines of a \c VehicleType
+ * @param type the vehicle type
+ * @return the index offset for original engines of the given type
+ */
+uint8_t GetOriginalEngineOffset(VehicleType type)
+{
+	/** Offset of the first engine of each vehicle type in original engine data */
+	static constexpr uint8_t ENGINE_OFFSETS[VEH_COMPANY_END] = {
+		0,
+		lengthof(_orig_rail_vehicle_info),
+		lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info),
+		lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info),
+	};
+
+	assert(IsCompanyBuildableVehicleType(type));
+	return ENGINE_OFFSETS[type];
+}
 
 static_assert(lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info) + lengthof(_orig_aircraft_vehicle_info) == lengthof(_orig_engine_info));
 
@@ -81,7 +103,7 @@ Engine::Engine(EngineID index, VehicleType type, uint16_t local_id) : EnginePool
 	this->display_last_variant = EngineID::Invalid();
 
 	/* Check if this base engine is within the original engine data range */
-	if (local_id >= _engine_counts[type]) {
+	if (local_id >= GetOriginalEngineCount(type)) {
 		/* Initialise default type-specific information. */
 		switch (type) {
 			case VEH_TRAIN: this->vehicle_info.emplace<RailVehicleInfo>(); break;
@@ -103,7 +125,7 @@ Engine::Engine(EngineID index, VehicleType type, uint16_t local_id) : EnginePool
 	}
 
 	/* Copy the original engine info for this slot */
-	this->info = _orig_engine_info[_engine_offsets[type] + local_id];
+	this->info = _orig_engine_info[GetOriginalEngineOffset(type) + local_id];
 
 	/* Copy the original engine data for this slot */
 	switch (type) {
@@ -516,7 +538,7 @@ void EngineOverrideManager::ResetToDefaultMapping()
 	for (VehicleType type = VEH_TRAIN; type <= VEH_AIRCRAFT; type++) {
 		auto &map = this->mappings[type];
 		map.clear();
-		for (uint internal_id = 0; internal_id < _engine_counts[type]; internal_id++, ++id) {
+		for (uint internal_id = 0; internal_id < GetOriginalEngineCount(type); internal_id++, ++id) {
 			map.emplace_back(INVALID_GRFID, internal_id, type, internal_id, id);
 		}
 	}
@@ -611,7 +633,7 @@ void SetupEngines()
 		const auto &mapping = _engine_mngr.mappings[type];
 
 		/* Verify that the engine override manager has at least been set up with the default engines. */
-		assert(std::size(mapping) >= _engine_counts[type]);
+		assert(std::size(mapping) >= GetOriginalEngineCount(type));
 
 		for (const EngineIDMapping &eid : mapping) {
 			Engine::CreateAtIndex(eid.engine, type, eid.internal_id);
