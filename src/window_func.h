@@ -35,9 +35,17 @@ void SetupColoursAndInitialWindow();
 void InputLoop();
 
 void InvalidateWindowData(WindowClass cls, WindowNumber number, int data = 0, bool gui_scope = false);
+/** @copydoc InvalidateWindowData */
 void InvalidateWindowData(WindowClass cls, WindowNumber number, ConvertibleThroughBase auto data, bool gui_scope = false) { InvalidateWindowData(cls, number, data.base(), gui_scope); }
+/** @copydoc InvalidateWindowData */
+template <typename T> requires is_scoped_enum_v<T>
+void InvalidateWindowData(WindowClass cls, WindowNumber number, T data, bool gui_scope = false) { InvalidateWindowData(cls, number, to_underlying(data), gui_scope); }
 void InvalidateWindowClassesData(WindowClass cls, int data = 0, bool gui_scope = false);
+/** @copydoc InvalidateWindowClassesData */
 void InvalidateWindowClassesData(WindowClass cls, ConvertibleThroughBase auto data, bool gui_scope = false) { InvalidateWindowClassesData(cls, data.base(), gui_scope); }
+/** @copydoc InvalidateWindowClassesData */
+template <typename T> requires is_scoped_enum_v<T>
+void InvalidateWindowClassesData(WindowClass cls, T data, bool gui_scope = false) { InvalidateWindowClassesData(cls, to_underlying(data), gui_scope); }
 
 void CloseNonVitalWindows();
 void CloseAllNonVitalWindows();
