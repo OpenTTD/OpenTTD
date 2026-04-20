@@ -271,7 +271,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 	e->grf_prop.SetGRFFile(file);
 
 	/* Reserve the engine slot */
-	_engine_mngr.SetID(type, internal_id, scope_grfid, std::min<uint8_t>(internal_id, _engine_counts[type]), e->index);
+	_engine_mngr.SetID(type, internal_id, scope_grfid, std::min<uint8_t>(internal_id, GetOriginalEngineCount(type)), e->index);
 
 	if (engine_pool_size != Engine::GetPoolSize()) {
 		/* Resize temporary engine data ... */
