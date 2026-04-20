@@ -4341,31 +4341,31 @@ STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flygplan
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dra tågvagn hit för att sälja den
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dra vägfordon hit för att sälja det
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Dra skepp hit för att sälja det
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Dra flygplan hit för att sälja det
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Dra luftfarkost hit för att sälja den
 
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Sälj alla tåg i depån
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Sälj alla vägfordon i depån
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Sälj alla skepp i depån
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Sälj alla flygplan i hangaren
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Sälj alla luftfarkoster i hangaren
 
 ###length VEHICLE_TYPES
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Byt ut alla tåg i depån
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Byt ut alla vägfordon i depån
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Byt ut alla skepp i depån
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Byt ut alla flygplan i hangaren
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Byt ut alla luftfarkoster i hangaren
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nytt fordon
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nytt fordon
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nytt skepp
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nytt flygplan
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Ny luftfarkost
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Köp ny tågvagn
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Köp nytt vägfordon
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Köp nytt skepp
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Köp nytt flygplan
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Köp ny luftfarkost
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klona tåg
@@ -5062,7 +5062,7 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Generering av k
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det finns ingen stad i detta scenario
 
 STR_ERROR_PNGMAP                                                :Kan inte ladda landskap från PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... hittar inte filen
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :hittar inte filen
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kunde inte konvertera bildtyp. 8 eller 24-bitars PNG-bild krävs
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... något gick fel (förmodligen korrupt fil)
 
@@ -5112,8 +5112,8 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :inte tillåtet 
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :De lokala myndigheterna i {TOWN} tillåter inte detta
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte att ytterligare en flygplats byggs i staden
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}De lokala myndigheterna i {TOWN} vägrar ge tillåtelse att bygga en flygplats på grund av ljudproblem
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :De lokala myndigheterna i {TOWN} tillåter inte att ytterligare en flygplats byggs i staden
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :De lokala myndigheterna i {TOWN} vägrar att ge tillåtelse att bygga en flygplats av bullerskäl
 STR_ERROR_BRIBE_FAILED                                          :Ditt mutningsförsök upptäcktes av en regional utredare
 
 # Levelling errors
@@ -5224,7 +5224,7 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :måste riva ham
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :måste riva flygplats först
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Gränsar mot mer än ett existerande riktmärke
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :gränsar mot mer än ett existerande riktmärke
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :för nära ett annat riktmärke
 
 STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Kan inte bygga järnvägsriktmärke här...
@@ -5265,7 +5265,7 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :kan inte hitta 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :kan inte hitta lokal depå
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :kan inte hitta lokal hangar
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Felaktig depå-typ
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :felaktig depåtyp
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan endast inneha en utglesningsorder
@@ -5284,7 +5284,7 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Det nya fordone
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :omöjlig kombination av spår
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :måste ta bort signaler först
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Inget passande järnvägsspår
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :inget passande järnvägsspår
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :måste ta bort järnväg först
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :vägen är enkelriktad eller blockerad
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :plankorsningar är inte tillåtna för denna typ av spår
@@ -5333,7 +5333,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Kan inte plante
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Kan inte bygga bro här...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :måste riva bro först
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan inte börja och sluta på samma plats
+STR_ERROR_CAN_T_START_AND_END_ON                                :kan inte börja och sluta på samma plats
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :broändarna är inte på samma höjd
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :bron är för låg för terrängen
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :bron är för hög för denna terräng.
@@ -5354,9 +5354,9 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Kan inte bygga 
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :platsen passar inte för tunnelingång
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :måste riva tunnel först
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :en annan tunnel i vägen
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneln slutar utanför kartans gränser
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :tunneln skulle sluta utanför kartan
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :kan inte gräva till marken på andra sidan av tunneln
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel för lång
+STR_ERROR_TUNNEL_TOO_LONG                                       :tunneln är för lång
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :för många objekt
@@ -5383,13 +5383,13 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Kan inte lägga
 STR_ERROR_TRAIN_IN_THE_WAY                                      :tåg i vägen
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :vägfordon i vägen
 STR_ERROR_SHIP_IN_THE_WAY                                       :skepp i vägen
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Flygplan i vägen
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :luftfarkost i vägen
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :fordonet är ej tillgängligt
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Fordonet är ej tillgängligt
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Fartyget är ej tillgängligt
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Flygplanet är ej tillgängligt
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :luftfarkosten är ej tillgänglig
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :Kan inte anpassa tåg...
@@ -5413,13 +5413,13 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Kan inte stoppa
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Kan inte skicka tåg till depå...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Kan inte skicka fordon till depå...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Kan inte skicka skepp till depå...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan inte skicka flygplan till hangar...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Kan inte skicka luftfarkost till hangar...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :Kan inte köpa järnvägsfordon...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :Kan inte köpa vägfordon...
 STR_ERROR_CAN_T_BUY_SHIP                                        :Kan inte köpa skepp...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan inte köpa flygplan...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Kan inte köpa luftfarkost...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Kan inte byta namn på tågets fordonstyp...
@@ -5469,7 +5469,7 @@ STR_ERROR_TRAIN_START_NO_POWER                                  :tåget har inge
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Fordon kan inte vända...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Flygplan är i luften
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :luftfarkosten är i luften
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :ingen mer plats för order
@@ -5500,7 +5500,7 @@ STR_ERROR_NO_DOCK                                               :Det finns ingen
 STR_ERROR_NO_AIRPORT                                            :Det finns ingen flygplats/helikopterflygplats
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Det finns inga hållplatser med en kompatibel vägtyp
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Det finns inga hållplatser med en kompatibel spårvagnstyp
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Det finns inga hållplatser som passar för ledade vägfordon.{}Ledade vägfordon kräver genomfartshållplatser, inte lastbryggor
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Det finns inga hållplatser som passar för ledade vägfordon.{}Ledade vägfordon kräver genomfartshållplatser, inte lastbryggor
 STR_ERROR_AIRPORT_NO_PLANES                                     :Det här flygplanet kan inte landa på den här helikopterflygplatsen
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Den här helikoptern kan inte landa på den här flygplatsen
 STR_ERROR_NO_RAIL_WAYPOINT                                      :Det finns inget järnvägsriktmärke
