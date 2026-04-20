@@ -1614,7 +1614,7 @@ static void FinaliseBadges()
 		for (Engine *e : Engine::Iterate()) {
 			if (e->grf_prop.grffile != &file) continue;
 			e->badges.push_back(badge->index);
-			badge->features.Set(static_cast<GrfSpecFeature>(GrfSpecFeature::Trains + e->type));
+			badge->features.Set(GetGrfSpecFeature(e->type));
 		}
 
 		AddBadgeToSpecs(file.stations, GrfSpecFeature::Stations, *badge);
@@ -1894,4 +1894,36 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 	TimerGameTick::counter = tick_counter;
 	_display_opt  = display_opt;
+}
+
+/**
+ * Get the \c GrfSpecFeature associated with a \c VehicleType
+ * @param type The vehicle type.
+ * @return the \c GrfSpecFeature
+ */
+GrfSpecFeature GetGrfSpecFeature(VehicleType type)
+{
+	switch (type) {
+		case VEH_TRAIN: return GrfSpecFeature::Trains;
+		case VEH_ROAD: return GrfSpecFeature::RoadVehicles;
+		case VEH_SHIP: return GrfSpecFeature::Ships;
+		case VEH_AIRCRAFT: return GrfSpecFeature::Aircraft;
+		default: return GrfSpecFeature::Invalid;
+	}
+}
+
+/**
+ * Get the \c VehicleType associated with a \c GrfSpecFeature
+ * @param feature The feature.
+ * @return the \c VehicleType
+ */
+VehicleType GetVehicleType(GrfSpecFeature feature)
+{
+	switch (feature) {
+		case GrfSpecFeature::Trains: return VEH_TRAIN;
+		case GrfSpecFeature::RoadVehicles: return VEH_ROAD;
+		case GrfSpecFeature::Ships: return VEH_SHIP;
+		case GrfSpecFeature::Aircraft: return VEH_AIRCRAFT;
+		default: return VEH_INVALID;
+	}
 }

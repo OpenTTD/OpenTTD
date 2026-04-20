@@ -266,7 +266,7 @@ static void ParamSet(ByteReader &buf)
 						case GrfSpecFeature::Ships:
 						case GrfSpecFeature::Aircraft:
 							if (!_settings_game.vehicle.dynamic_engines) {
-								src1 = PerformGRM({std::begin(_grm_engines) + _engine_offsets[to_underlying(feature)], _engine_counts[to_underlying(feature)]}, count, op, target, "vehicles");
+								src1 = PerformGRM({std::begin(_grm_engines) + _engine_offsets[GetVehicleType(feature)], _engine_counts[GetVehicleType(feature)]}, count, op, target, "vehicles");
 								if (_cur_gps.skip_sprites == -1) return;
 							} else {
 								/* GRM does not apply for dynamic engine allocation. */

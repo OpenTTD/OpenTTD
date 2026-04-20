@@ -11,6 +11,7 @@
 
 #include "../debug.h"
 #include "../house.h"
+#include "../newgrf.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
@@ -99,7 +100,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 	std::vector<EngineID> engines;
 	engines.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		Engine *e = GetNewEngine(_cur_gps.grffile, (VehicleType)feature, buf.ReadExtendedByte());
+		Engine *e = GetNewEngine(_cur_gps.grffile, GetVehicleType(feature), buf.ReadExtendedByte());
 		if (e == nullptr) {
 			/* No engine could be allocated?!? Deal with it. Okay,
 			 * this might look bad. Also make sure this NewGRF
