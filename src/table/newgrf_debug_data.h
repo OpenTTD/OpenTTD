@@ -624,7 +624,7 @@ static const NIVariable _niv_roadtypes[] = {
 	NIV(0x45, "track types"),
 };
 
-template <RoadTramType TRoadTramType>
+template <RoadTramType Troad_tram_type>
 class NIHRoadType : public NIHelper {
 	bool IsInspectable(uint) const override              { return true; }
 	uint GetParent(uint) const override                  { return UINT32_MAX; }
@@ -634,7 +634,7 @@ class NIHRoadType : public NIHelper {
 	uint32_t GetGRFID(uint) const override               { return 0; }
 	std::span<const BadgeID> GetBadges(uint index) const override
 	{
-		RoadType rt = GetRoadType(TileIndex{index}, TRoadTramType);
+		RoadType rt = GetRoadType(TileIndex{index}, Troad_tram_type);
 		if (rt == INVALID_ROADTYPE) return {};
 		return GetRoadTypeInfo(rt)->badges;
 	}

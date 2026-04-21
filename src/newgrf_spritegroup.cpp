@@ -141,42 +141,42 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
-template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ResolverObject &object, ScopeResolver *scope, U last_value, uint32_t value)
+template <typename Tunsigned, typename Tsigned>
+static Tunsigned EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ResolverObject &object, ScopeResolver *scope, Tunsigned last_value, uint32_t value)
 {
 	value >>= adjust.shift_num;
 	value  &= adjust.and_mask;
 
 	switch (adjust.type) {
-		case DSGA_TYPE_DIV:  value = ((S)value + (S)adjust.add_val) / (S)adjust.divmod_val; break;
-		case DSGA_TYPE_MOD:  value = ((S)value + (S)adjust.add_val) % (S)adjust.divmod_val; break;
+		case DSGA_TYPE_DIV:  value = ((Tsigned)value + (Tsigned)adjust.add_val) / (Tsigned)adjust.divmod_val; break;
+		case DSGA_TYPE_MOD:  value = ((Tsigned)value + (Tsigned)adjust.add_val) % (Tsigned)adjust.divmod_val; break;
 		case DSGA_TYPE_NONE: break;
 	}
 
 	switch (adjust.operation) {
 		case DSGA_OP_ADD:  return last_value + value;
 		case DSGA_OP_SUB:  return last_value - value;
-		case DSGA_OP_SMIN: return std::min<S>(last_value, value);
-		case DSGA_OP_SMAX: return std::max<S>(last_value, value);
-		case DSGA_OP_UMIN: return std::min<U>(last_value, value);
-		case DSGA_OP_UMAX: return std::max<U>(last_value, value);
-		case DSGA_OP_SDIV: return value == 0 ? (S)last_value : (S)last_value / (S)value;
-		case DSGA_OP_SMOD: return value == 0 ? (S)last_value : (S)last_value % (S)value;
-		case DSGA_OP_UDIV: return value == 0 ? (U)last_value : (U)last_value / (U)value;
-		case DSGA_OP_UMOD: return value == 0 ? (U)last_value : (U)last_value % (U)value;
+		case DSGA_OP_SMIN: return std::min<Tsigned>(last_value, value);
+		case DSGA_OP_SMAX: return std::max<Tsigned>(last_value, value);
+		case DSGA_OP_UMIN: return std::min<Tunsigned>(last_value, value);
+		case DSGA_OP_UMAX: return std::max<Tunsigned>(last_value, value);
+		case DSGA_OP_SDIV: return value == 0 ? (Tsigned)last_value : (Tsigned)last_value / (Tsigned)value;
+		case DSGA_OP_SMOD: return value == 0 ? (Tsigned)last_value : (Tsigned)last_value % (Tsigned)value;
+		case DSGA_OP_UDIV: return value == 0 ? (Tunsigned)last_value : (Tunsigned)last_value / (Tunsigned)value;
+		case DSGA_OP_UMOD: return value == 0 ? (Tunsigned)last_value : (Tunsigned)last_value % (Tunsigned)value;
 		case DSGA_OP_MUL:  return last_value * value;
 		case DSGA_OP_AND:  return last_value & value;
 		case DSGA_OP_OR:   return last_value | value;
 		case DSGA_OP_XOR:  return last_value ^ value;
-		case DSGA_OP_STO:  object.SetRegister((U)value, (S)last_value); return last_value;
+		case DSGA_OP_STO:  object.SetRegister((Tunsigned)value, (Tsigned)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
-		case DSGA_OP_STOP: scope->StorePSA((U)value, (S)last_value); return last_value;
-		case DSGA_OP_ROR:  return std::rotr<uint32_t>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
-		case DSGA_OP_SCMP: return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
-		case DSGA_OP_UCMP: return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);
-		case DSGA_OP_SHL:  return (uint32_t)(U)last_value << ((U)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
-		case DSGA_OP_SHR:  return (uint32_t)(U)last_value >> ((U)value & 0x1F);
-		case DSGA_OP_SAR:  return (int32_t)(S)last_value >> ((U)value & 0x1F);
+		case DSGA_OP_STOP: scope->StorePSA((Tunsigned)value, (Tsigned)last_value); return last_value;
+		case DSGA_OP_ROR:  return std::rotr<uint32_t>((Tunsigned)last_value, (Tunsigned)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
+		case DSGA_OP_SCMP: return ((Tsigned)last_value == (Tsigned)value) ? 1 : ((Tsigned)last_value < (Tsigned)value ? 0 : 2);
+		case DSGA_OP_UCMP: return ((Tunsigned)last_value == (Tunsigned)value) ? 1 : ((Tunsigned)last_value < (Tunsigned)value ? 0 : 2);
+		case DSGA_OP_SHL:  return (uint32_t)(Tunsigned)last_value << ((Tunsigned)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
+		case DSGA_OP_SHR:  return (uint32_t)(Tunsigned)last_value >> ((Tunsigned)value & 0x1F);
+		case DSGA_OP_SAR:  return (int32_t)(Tsigned)last_value >> ((Tunsigned)value & 0x1F);
 		default:           return value;
 	}
 }

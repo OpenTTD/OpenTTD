@@ -348,8 +348,8 @@ static void ComposePart(StringBuilder &builder, const std::string &value)
 }
 
 /* Helper to compose a string from unicode or string parts. */
-template <typename... Args>
-static std::string Compose(Args &&... args)
+template <typename... Targs>
+static std::string Compose(Targs &&... args)
 {
 	std::string result;
 	StringBuilder builder(result);

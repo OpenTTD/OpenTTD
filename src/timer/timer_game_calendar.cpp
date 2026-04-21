@@ -72,7 +72,7 @@ uint16_t TimerGameCalendar::sub_date_fract = {};
 }
 
 template <>
-void IntervalTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigger)
+void IntervalTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::Telapsed trigger)
 {
 	if (trigger == this->period.trigger) {
 		this->callback(1);
@@ -80,7 +80,7 @@ void IntervalTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigg
 }
 
 template <>
-void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigger)
+void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::Telapsed trigger)
 {
 	if (this->fired) return;
 
@@ -91,7 +91,7 @@ void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigge
 }
 
 template <>
-bool TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed)
+bool TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::Telapsed)
 {
 	if (_game_mode == GM_MENU) return false;
 
@@ -162,7 +162,7 @@ bool TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed)
 
 #ifdef WITH_ASSERT
 template <>
-void TimerManager<TimerGameCalendar>::Validate(TimerGameCalendar::TPeriod period)
+void TimerManager<TimerGameCalendar>::Validate(TimerGameCalendar::Tperiod period)
 {
 	if (period.priority == TimerGameCalendar::Priority::None) return;
 

@@ -122,26 +122,26 @@ public:
 		Vehicle, ///< Income and profit warnings.
 	};
 
-	struct TPeriod {
+	struct Tperiod {
 		Trigger trigger;
 		Priority priority;
 
-		TPeriod(Trigger trigger, Priority priority) : trigger(trigger), priority(priority)
+		Tperiod(Trigger trigger, Priority priority) : trigger(trigger), priority(priority)
 		{}
 
-		bool operator < (const TPeriod &other) const
+		bool operator < (const Tperiod &other) const
 		{
 			if (this->trigger != other.trigger) return this->trigger < other.trigger;
 			return this->priority < other.priority;
 		}
 
-		bool operator == (const TPeriod &other) const
+		bool operator == (const Tperiod &other) const
 		{
 			return this->trigger == other.trigger && this->priority == other.priority;
 		}
 	};
 
-	using TElapsed = Trigger;
+	using Telapsed = Trigger;
 	struct TStorage {};
 };
 

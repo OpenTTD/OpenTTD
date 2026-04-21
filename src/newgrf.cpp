@@ -1217,16 +1217,16 @@ static void FinaliseAirportsArray()
 
 /** Helper class to invoke a GrfActionHandler. */
 struct InvokeGrfActionHandler {
-	template <uint8_t TAction>
+	template <uint8_t Taction>
 	static void Invoke(ByteReader &buf, GrfLoadingStage stage)
 	{
 		switch (stage) {
-			case GrfLoadingStage::FileScan: GrfActionHandler<TAction>::FileScan(buf); break;
-			case GrfLoadingStage::SafetyScan: GrfActionHandler<TAction>::SafetyScan(buf); break;
-			case GrfLoadingStage::LabelScan: GrfActionHandler<TAction>::LabelScan(buf); break;
-			case GrfLoadingStage::Init: GrfActionHandler<TAction>::Init(buf); break;
-			case GrfLoadingStage::Reserve: GrfActionHandler<TAction>::Reserve(buf); break;
-			case GrfLoadingStage::Activation: GrfActionHandler<TAction>::Activation(buf); break;
+			case GrfLoadingStage::FileScan: GrfActionHandler<Taction>::FileScan(buf); break;
+			case GrfLoadingStage::SafetyScan: GrfActionHandler<Taction>::SafetyScan(buf); break;
+			case GrfLoadingStage::LabelScan: GrfActionHandler<Taction>::LabelScan(buf); break;
+			case GrfLoadingStage::Init: GrfActionHandler<Taction>::Init(buf); break;
+			case GrfLoadingStage::Reserve: GrfActionHandler<Taction>::Reserve(buf); break;
+			case GrfLoadingStage::Activation: GrfActionHandler<Taction>::Activation(buf); break;
 			default: NOT_REACHED();
 		}
 	}

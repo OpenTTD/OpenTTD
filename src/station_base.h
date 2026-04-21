@@ -643,13 +643,13 @@ void RebuildStationKdtree();
 
 /**
  * Call a function on all stations that have any part of the requested area within their catchment.
- * @tparam Func The type of function to call
+ * @tparam Tfunc The type of function to call
  * @param ta The TileArea to check.
  * @param func The function to call, must take two parameters: Station* and TileIndex and return true
  *             if coverage of that tile is acceptable for a given station or false if search should continue
  */
-template <typename Func>
-void ForAllStationsAroundTiles(const TileArea &ta, Func func)
+template <typename Tfunc>
+void ForAllStationsAroundTiles(const TileArea &ta, Tfunc func)
 {
 	/* There are no stations, so we will never find anything. */
 	if (Station::GetNumItems() == 0) return;

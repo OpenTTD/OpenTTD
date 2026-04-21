@@ -36,11 +36,11 @@ public:
 	}
 };
 
-template <class Types>
+template <class Ttypes>
 class CYapfDestinationAnyDepotRailT : public CYapfDestinationRailBase {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 	/** @copydoc CYapfBaseT::Yapf */
@@ -69,13 +69,13 @@ public:
 	}
 };
 
-template <class Types>
+template <class Ttypes>
 class CYapfDestinationAnySafeTileRailT : public CYapfDestinationRailBase {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
-	typedef typename Types::TrackFollower TrackFollower; ///< TrackFollower. Need to typedef for gcc 2.95
+	typedef typename Ttypes::TrackFollower TrackFollower; ///< TrackFollower. Need to typedef for gcc 2.95
 
 	/** @copydoc CYapfBaseT::Yapf */
 	Tpf &Yapf()
@@ -104,11 +104,11 @@ public:
 	}
 };
 
-template <class Types>
+template <class Ttypes>
 class CYapfDestinationTileOrStationRailT : public CYapfDestinationRailBase {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:

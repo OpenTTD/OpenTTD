@@ -19,11 +19,11 @@
  * PfNodeCacheFetch(). Used when nodes don't have CachedData
  * defined (they don't count with any segment cost caching).
  */
-template <class Types>
+template <class Ttypes>
 class CYapfSegmentCostCacheNoneT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 
 	/**
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
@@ -99,11 +99,11 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
  *  caching functionality to yapf. Using this class as base of your will provide the global
  *  segment cost caching services for your Nodes.
  */
-template <class Types>
+template <class Ttypes>
 class CYapfSegmentCostCacheGlobalT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 	typedef typename Node::CachedData CachedData;
 	typedef typename CachedData::Key CacheKey;

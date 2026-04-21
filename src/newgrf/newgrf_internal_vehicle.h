@@ -60,10 +60,10 @@ void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location,
  * @param image_index The image index to check.
  * @return True iff the image index is valid, or CUSTOM_VEHICLE_SPRITENUM (use new graphics).
  */
-template <VehicleType T>
+template <VehicleType Tvehicle_type>
 static inline bool IsValidNewGRFImageIndex(uint8_t image_index)
 {
-	return image_index == CUSTOM_VEHICLE_SPRITENUM || IsValidImageIndex<T>(image_index);
+	return image_index == CUSTOM_VEHICLE_SPRITENUM || IsValidImageIndex<Tvehicle_type>(image_index);
 }
 
 ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteReader &buf);

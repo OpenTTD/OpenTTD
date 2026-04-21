@@ -21,7 +21,7 @@
  * @param vm The virtual machine to push to.
  * @return The number of stack places used.
  */
-template <class CL, ScriptType ST> SQInteger PushClassName(HSQUIRRELVM vm);
+template <class Tcls, ScriptType Tscript_type> SQInteger PushClassName(HSQUIRRELVM vm);
 
 /**
  * The Squirrel convert routines
@@ -165,17 +165,17 @@ namespace SQConvert {
 		}
 
 	private:
-		template <size_t... i>
-		static int SQCall(void *, Tretval(*func)(Targs...), [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
+		template <size_t... Tindices>
+		static int SQCall(void *, Tretval(*func)(Targs...), [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<Tindices...>)
 		{
 			if constexpr (std::is_void_v<Tretval>) {
 				(*func)(
-					Param<Targs>::Get(vm, 2 + i)...
+					Param<Targs>::Get(vm, 2 + Tindices)...
 				);
 				return 0;
 			} else {
 				Tretval ret = (*func)(
-					Param<Targs>::Get(vm, 2 + i)...
+					Param<Targs>::Get(vm, 2 + Tindices)...
 				);
 				return Return<Tretval>::Set(vm, std::move(ret));
 			}
@@ -198,27 +198,27 @@ namespace SQConvert {
 		}
 
 	private:
-		template <size_t... i>
-		static int SQCall(Tcls *instance, auto func, [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
+		template <size_t... Tindices>
+		static int SQCall(Tcls *instance, auto func, [[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<Tindices...>)
 		{
 			if constexpr (std::is_void_v<Tretval>) {
 				(instance->*func)(
-					Param<Targs>::Get(vm, 2 + i)...
+					Param<Targs>::Get(vm, 2 + Tindices)...
 				);
 				return 0;
 			} else {
 				Tretval ret = (instance->*func)(
-					Param<Targs>::Get(vm, 2 + i)...
+					Param<Targs>::Get(vm, 2 + Tindices)...
 				);
 				return Return<Tretval>::Set(vm, std::move(ret));
 			}
 		}
 
-		template <size_t... i>
-		static Tcls *SQConstruct([[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<i...>)
+		template <size_t... Tindices>
+		static Tcls *SQConstruct([[maybe_unused]] HSQUIRRELVM vm, std::index_sequence<Tindices...>)
 		{
 			Tcls *inst = new Tcls(
-				Param<Targs>::Get(vm, 2 + i)...
+				Param<Targs>::Get(vm, 2 + Tindices)...
 			);
 
 			return inst;

@@ -45,8 +45,8 @@ struct fmt::formatter<T, Char> : fmt::formatter<typename T::BaseType> {
 	}
 };
 
-template <class... Args>
-void format_append(std::string &out, fmt::format_string<Args...> &&fmt, Args&&... args)
+template <class... Targs>
+void format_append(std::string &out, fmt::format_string<Targs...> &&fmt, Targs&&... args)
 {
 	fmt::format_to(std::back_inserter(out), std::forward<decltype(fmt)>(fmt), std::forward<decltype(args)>(args)...);
 }

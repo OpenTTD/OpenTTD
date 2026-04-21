@@ -34,24 +34,24 @@ public:
 		Autosave, ///< Only run when not paused or there was a Command executed recently.
 	};
 
-	struct TPeriod {
+	struct Tperiod {
 		std::chrono::milliseconds period;
 		Trigger trigger;
 
-		TPeriod(std::chrono::milliseconds period, Trigger trigger) : period(period), trigger(trigger) {}
+		Tperiod(std::chrono::milliseconds period, Trigger trigger) : period(period), trigger(trigger) {}
 
-		bool operator < (const TPeriod &other) const
+		bool operator < (const Tperiod &other) const
 		{
 			if (this->trigger != other.trigger) return this->trigger < other.trigger;
 			return this->period < other.period;
 		}
 
-		bool operator == (const TPeriod &other) const
+		bool operator == (const Tperiod &other) const
 		{
 			return this->trigger == other.trigger && this->period == other.period;
 		}
 	};
-	using TElapsed = std::chrono::milliseconds;
+	using Telapsed = std::chrono::milliseconds;
 	struct TStorage {
 		std::chrono::milliseconds elapsed;
 	};

@@ -104,8 +104,8 @@ std::string_view GetEllipsis();
  * @param args The parameters to set for the to be created StringParameters.
  * @return The constructed StringParameters.
  */
-template <typename... Args>
-auto MakeParameters(Args &&... args)
+template <typename... Targs>
+auto MakeParameters(Targs &&... args)
 {
 	return std::array<StringParameter, sizeof...(args)>({std::forward<StringParameter>(args)...});
 }
@@ -116,10 +116,10 @@ auto MakeParameters(Args &&... args)
  * @param args The parameters to set.
  * @return The parsed string.
  */
-template <typename... Args>
-std::string GetString(StringID string, Args &&... args)
+template <typename... Targs>
+std::string GetString(StringID string, Targs &&... args)
 {
-	auto params = MakeParameters(std::forward<Args &&>(args)...);
+	auto params = MakeParameters(std::forward<Targs &&>(args)...);
 	return GetStringWithArgs(string, params);
 }
 
@@ -144,10 +144,10 @@ static inline EncodedString GetEncodedStringIfValid(StringID str)
  * @param args The parameters to set.
  * @return The encoded string.
  */
-template <typename... Args>
-EncodedString GetEncodedString(StringID string, const Args&... args)
+template <typename... Targs>
+EncodedString GetEncodedString(StringID string, const Targs&... args)
 {
-	auto params = MakeParameters(std::forward<const Args&>(args)...);
+	auto params = MakeParameters(std::forward<const Targs&>(args)...);
 	return GetEncodedStringWithArgs(string, params);
 }
 

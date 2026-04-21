@@ -598,11 +598,11 @@ static const LiveryClass _livery_class[LS_END] = {
  * Colour selection list item, with icon and string components.
  * @tparam TSprite Recolourable sprite to draw as icon.
  */
-template <SpriteID TSprite = SPR_SQUARE>
+template <SpriteID Tsprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
 	DropDownListColourItem(int colour, bool masked) :
-			DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GetColourPalette(static_cast<Colours>(colour % to_underlying(Colours::End))), GetString(colour < to_underlying(Colours::End) ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
+			DropDownIcon<DropDownString<DropDownListItem>>(Tsprite, GetColourPalette(static_cast<Colours>(colour % to_underlying(Colours::End))), GetString(colour < to_underlying(Colours::End) ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
 
 	{
 	}

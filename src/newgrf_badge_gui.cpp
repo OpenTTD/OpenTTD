@@ -186,12 +186,12 @@ void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &gui_classe
 }
 
 /** Drop down element that draws a list of badges. */
-template <class TBase, bool TEnd = true, FontSize TFs = FontSize::Normal>
-class DropDownBadges : public TBase {
+template <class Tbase, bool Tend = true, FontSize Tfs = FontSize::Normal>
+class DropDownBadges : public Tbase {
 public:
-	template <typename... Args>
-	explicit DropDownBadges(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Args &&...args) :
-		TBase(std::forward<Args>(args)...), gui_classes(gui_classes), badges(badges), feature(feature), introduction_date(introduction_date)
+	template <typename... Targs>
+	explicit DropDownBadges(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Targs &&...args) :
+		Tbase(std::forward<Targs>(args)...), gui_classes(gui_classes), badges(badges), feature(feature), introduction_date(introduction_date)
 	{
 		for (const auto &gc : gui_classes->GetClasses()) {
 			if (gc.column_group != 0) continue;
@@ -211,38 +211,38 @@ public:
 			if (badge->name == STR_NULL) continue;
 			string_filter.AddLine(GetString(badge->name));
 		}
-		this->TBase::FilterText(string_filter);
+		this->Tbase::FilterText(string_filter);
 	}
 
 	uint Height() const override
 	{
-		return std::max<uint>(this->dim.height, this->TBase::Height());
+		return std::max<uint>(this->dim.height, this->Tbase::Height());
 	}
 
 	uint Width() const override
 	{
-		if (this->dim.width == 0) return this->TBase::Width();
-		return this->dim.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width();
+		if (this->dim.width == 0) return this->Tbase::Width();
+		return this->dim.width + WidgetDimensions::scaled.hsep_normal + this->Tbase::Width();
 	}
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
 		if (this->dim.width == 0) {
-			return this->TBase::OnClick(r, pt);
+			return this->Tbase::OnClick(r, pt);
 		} else {
-			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-			return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
+			bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+			return this->Tbase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
 		}
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		if (this->dim.width == 0) {
-			this->TBase::Draw(full, r, sel, click_result, bg_colour);
+			this->Tbase::Draw(full, r, sel, click_result, bg_colour);
 		} else {
-			bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+			bool rtl = Tend ^ (_current_text_dir == TD_RTL);
 			DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
-			this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
+			this->Tbase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
 		}
 	}
 
@@ -277,23 +277,23 @@ std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::share
 /**
  * Drop down component that shows extra buttons to indicate that the item can be moved up or down.
  */
-template <class TBase, bool TEnd = true, FontSize TFs = FontSize::Normal>
-class DropDownMover : public TBase {
+template <class Tbase, bool Tend = true, FontSize Tfs = FontSize::Normal>
+class DropDownMover : public Tbase {
 public:
-	template <typename... Args>
-	explicit DropDownMover(int click_up, int click_down, Colours button_colour, Args &&...args)
-		: TBase(std::forward<Args>(args)...), click_up(click_up), click_down(click_down), button_colour(button_colour)
+	template <typename... Targs>
+	explicit DropDownMover(int click_up, int click_down, Colours button_colour, Targs &&...args)
+		: Tbase(std::forward<Targs>(args)...), click_up(click_up), click_down(click_down), button_colour(button_colour)
 	{
 	}
 
 	uint Height() const override
 	{
-		return std::max<uint>(SETTING_BUTTON_HEIGHT, this->TBase::Height());
+		return std::max<uint>(SETTING_BUTTON_HEIGHT, this->Tbase::Height());
 	}
 
 	uint Width() const override
 	{
-		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->Tbase::Width();
 	}
 
 	int OnClick(const Rect &r, const Point &pt) const override
@@ -301,11 +301,11 @@ public:
 		bool rtl = (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, Tend ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		if (br.WithWidth(w / 2, rtl).Contains(pt)) return this->click_up;
 		if (br.WithWidth(w / 2, !rtl).Contains(pt)) return this->click_down;
 
-		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), pt);
+		return this->Tbase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, Tend ^ rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
@@ -319,10 +319,10 @@ public:
 			if (click_result == this->click_down) state = 2;
 		}
 
-		Rect br = r.WithWidth(w, TEnd ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
+		Rect br = r.WithWidth(w, Tend ^ rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		DrawUpDownButtons(br.left, br.top, this->button_colour, state, this->click_up != 0, this->click_down != 0);
 
-		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, TEnd ^ rtl), sel, click_result, bg_colour);
+		this->Tbase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, Tend ^ rtl), sel, click_result, bg_colour);
 	}
 
 private:

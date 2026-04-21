@@ -399,32 +399,32 @@ struct GoalQuestionWindow : public Window {
 
 /**
  * Widgets of the goal question window.
- * @tparam bg_colour Background colour.
- * @tparam btn_colour Button colour.
- * @tparam caption Window caption string.
+ * @tparam Tbackground_colour Background colour.
+ * @tparam Tbutton_colour Button colour.
+ * @tparam Tcaption Window caption string.
  */
-template <Colours bg_colour, Colours btn_colour, StringID caption>
+template <Colours Tbackground_colour, Colours Tbutton_colour, StringID Tcaption>
 struct NestedGoalWidgets {
 	static constexpr auto widgetparts = {
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_CLOSEBOX, bg_colour),
-			NWidget(WWT_CAPTION, bg_colour, WID_GQ_CAPTION), SetStringTip(caption, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+			NWidget(WWT_CLOSEBOX, Tbackground_colour),
+			NWidget(WWT_CAPTION, Tbackground_colour, WID_GQ_CAPTION), SetStringTip(Tcaption, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		EndContainer(),
-		NWidget(WWT_PANEL, bg_colour),
+		NWidget(WWT_PANEL, Tbackground_colour),
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.modalpopup), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 				NWidget(WWT_EMPTY, Colours::Invalid, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetFill(1, 0),
 				NWidget(NWID_SELECTION, Colours::Invalid, WID_GQ_BUTTONS),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(85, WidgetDimensions::unscaled.hsep_wide, 85),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Tbutton_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(65, WidgetDimensions::unscaled.hsep_wide, 65),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_2), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Tbutton_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Tbutton_colour, WID_GQ_BUTTON_2), SetFill(1, 0),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(25, WidgetDimensions::unscaled.hsep_wide, 25),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_2), SetFill(1, 0),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_3), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Tbutton_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Tbutton_colour, WID_GQ_BUTTON_2), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, Tbutton_colour, WID_GQ_BUTTON_3), SetFill(1, 0),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),

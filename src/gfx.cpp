@@ -1064,16 +1064,16 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
  * @param sprite_id The unique identifier of the sprite for NewGRF debug purposes.
  * @param zoom The zoom level at which to draw the sprites.
  * @param dst Optional parameter for a different blitting destination.
- * @tparam ZOOM_BASE The factor required to get the sub sprite information into the right size.
- * @tparam SCALED_XY Whether the X and Y are scaled or unscaled.
+ * @tparam Tzoom_base The factor required to get the sub sprite information into the right size.
+ * @tparam Txy_is_scaed Whether the X and Y are scaled or unscaled.
  */
-template <int ZOOM_BASE, bool SCALED_XY>
+template <int Tzoom_base, bool Txy_is_scaled>
 static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mode, const SubSprite * const sub, SpriteID sprite_id, ZoomLevel zoom, const DrawPixelInfo *dst = nullptr)
 {
 	const DrawPixelInfo *dpi = (dst != nullptr) ? dst : _cur_dpi;
 	Blitter::BlitterParams bp;
 
-	if (SCALED_XY) {
+	if (Txy_is_scaled) {
 		/* Scale it */
 		x = ScaleByZoom(x, zoom);
 		y = ScaleByZoom(y, zoom);
@@ -1091,10 +1091,10 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 		bp.height = UnScaleByZoom(sprite->height, zoom);
 	} else {
 		/* Amount of pixels to clip from the source sprite */
-		int clip_left   = std::max(0,                   -sprite->x_offs +  sub->left        * ZOOM_BASE );
-		int clip_top    = std::max(0,                   -sprite->y_offs +  sub->top         * ZOOM_BASE );
-		int clip_right  = std::max(0, sprite->width  - (-sprite->x_offs + (sub->right + 1)  * ZOOM_BASE));
-		int clip_bottom = std::max(0, sprite->height - (-sprite->y_offs + (sub->bottom + 1) * ZOOM_BASE));
+		int clip_left   = std::max(0,                   -sprite->x_offs +  sub->left        * Tzoom_base );
+		int clip_top    = std::max(0,                   -sprite->y_offs +  sub->top         * Tzoom_base );
+		int clip_right  = std::max(0, sprite->width  - (-sprite->x_offs + (sub->right + 1)  * Tzoom_base));
+		int clip_bottom = std::max(0, sprite->height - (-sprite->y_offs + (sub->bottom + 1) * Tzoom_base));
 
 		if (clip_left + clip_right >= sprite->width) return;
 		if (clip_top + clip_bottom >= sprite->height) return;
@@ -1125,7 +1125,7 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	if (bp.width <= 0) return;
 	if (bp.height <= 0) return;
 
-	y -= SCALED_XY ? ScaleByZoom(dpi->top, zoom) : dpi->top;
+	y -= Txy_is_scaled ? ScaleByZoom(dpi->top, zoom) : dpi->top;
 	int y_unscaled = UnScaleByZoom(y, zoom);
 	/* Check for top overflow */
 	if (y < 0) {
@@ -1138,13 +1138,13 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	}
 
 	/* Check for bottom overflow */
-	y += SCALED_XY ? ScaleByZoom(bp.height - dpi->height, zoom) : ScaleByZoom(bp.height, zoom) - dpi->height;
+	y += Txy_is_scaled ? ScaleByZoom(bp.height - dpi->height, zoom) : ScaleByZoom(bp.height, zoom) - dpi->height;
 	if (y > 0) {
 		bp.height -= UnScaleByZoom(y, zoom);
 		if (bp.height <= 0) return;
 	}
 
-	x -= SCALED_XY ? ScaleByZoom(dpi->left, zoom) : dpi->left;
+	x -= Txy_is_scaled ? ScaleByZoom(dpi->left, zoom) : dpi->left;
 	int x_unscaled = UnScaleByZoom(x, zoom);
 	/* Check for left overflow */
 	if (x < 0) {
@@ -1157,7 +1157,7 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 	}
 
 	/* Check for right overflow */
-	x += SCALED_XY ? ScaleByZoom(bp.width - dpi->width, zoom) : ScaleByZoom(bp.width, zoom) - dpi->width;
+	x += Txy_is_scaled ? ScaleByZoom(bp.width - dpi->width, zoom) : ScaleByZoom(bp.width, zoom) - dpi->width;
 	if (x > 0) {
 		bp.width -= UnScaleByZoom(x, zoom);
 		if (bp.width <= 0) return;

@@ -601,40 +601,40 @@ public:
  * @tparam TImpl The class initializing this template.
  * @tparam TObject The class of the object using this SaveLoadHandler.
  */
-template <class TImpl, class TObject>
+template <class Timpl, class Tobject>
 class DefaultSaveLoadHandler : public SaveLoadHandler {
 public:
-	SaveLoadTable GetDescription() const override { return static_cast<const TImpl *>(this)->description; }
+	SaveLoadTable GetDescription() const override { return static_cast<const Timpl *>(this)->description; }
 
-	SaveLoadCompatTable GetCompatDescription() const override { return static_cast<const TImpl *>(this)->compat_description; }
+	SaveLoadCompatTable GetCompatDescription() const override { return static_cast<const Timpl *>(this)->compat_description; }
 
 	/**
 	 * Save the object to disk.
 	 * @param object The object to store.
 	 */
-	virtual void Save([[maybe_unused]] TObject *object) const {}
-	void Save(void *object) const override { this->Save(static_cast<TObject *>(object)); }
+	virtual void Save([[maybe_unused]] Tobject *object) const {}
+	void Save(void *object) const override { this->Save(static_cast<Tobject *>(object)); }
 
 	/**
 	 * Load the object from disk.
 	 * @param object The object to load.
 	 */
-	virtual void Load([[maybe_unused]] TObject *object) const {}
-	void Load(void *object) const override { this->Load(static_cast<TObject *>(object)); }
+	virtual void Load([[maybe_unused]] Tobject *object) const {}
+	void Load(void *object) const override { this->Load(static_cast<Tobject *>(object)); }
 
 	/**
 	 * Similar to load, but used only to validate savegames.
 	 * @param object The object to load.
 	 */
-	virtual void LoadCheck([[maybe_unused]] TObject *object) const {}
-	void LoadCheck(void *object) const override { this->LoadCheck(static_cast<TObject *>(object)); }
+	virtual void LoadCheck([[maybe_unused]] Tobject *object) const {}
+	void LoadCheck(void *object) const override { this->LoadCheck(static_cast<Tobject *>(object)); }
 
 	/**
 	 * A post-load callback to fix #SL_REF integers into pointers.
 	 * @param object The object to fix.
 	 */
-	virtual void FixPointers([[maybe_unused]] TObject *object) const {}
-	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
+	virtual void FixPointers([[maybe_unused]] Tobject *object) const {}
+	void FixPointers(void *object) const override { this->FixPointers(static_cast<Tobject *>(object)); }
 };
 
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
@@ -1407,24 +1407,24 @@ extern bool _do_autosave;
  * @tparam TElementType The type of the elements contained within the vector.
  * @tparam MAX_LENGTH maximum number of elements to load.
  */
-template <class TImpl, class TObject, class TElementType, size_t MAX_LENGTH = UINT32_MAX>
-class VectorSaveLoadHandler : public DefaultSaveLoadHandler<TImpl, TObject> {
+template <class Timpl, class Tobject, class Telement_type, size_t Tmax_length = UINT32_MAX>
+class VectorSaveLoadHandler : public DefaultSaveLoadHandler<Timpl, Tobject> {
 public:
 	/**
 	 * Get instance of vector to load/save.
 	 * @param object Object containing vector.
 	 * @returns Vector to load/save.
 	 */
-	virtual std::vector<TElementType> &GetVector(TObject *object) const = 0;
+	virtual std::vector<Telement_type> &GetVector(Tobject *object) const = 0;
 
 	/**
 	 * Get number of elements to load into vector.
 	 * @returns Number of elements to load into the vector.
 	 * @note This is only overridden if the number of elements comes from a different location due to savegame changes.
 	 */
-	virtual size_t GetLength() const { return SlGetStructListLength(MAX_LENGTH); }
+	virtual size_t GetLength() const { return SlGetStructListLength(Tmax_length); }
 
-	void Save(TObject *object) const override
+	void Save(Tobject *object) const override
 	{
 		auto &vector = this->GetVector(object);
 		SlSetStructListLength(vector.size());
@@ -1434,7 +1434,7 @@ public:
 		}
 	}
 
-	void Load(TObject *object) const override
+	void Load(Tobject *object) const override
 	{
 		auto &vector = this->GetVector(object);
 		size_t count = this->GetLength();

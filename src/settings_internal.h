@@ -72,10 +72,10 @@ struct IniItem;
 /**
  * Type is convertible to TTo, either directly, through ConvertibleThroughBase or through to_underlying.
  * @tparam T The type under consideration.
- * @tparam TTo The type to convert to.
+ * @tparam Tto The type to convert to.
  */
-template <typename T, typename TTo>
-concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, TTo> || (is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, TTo>);
+template <typename T, typename Tto>
+concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, Tto> || (is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, Tto>);
 
 /** Properties of config file settings. */
 struct SettingDesc {

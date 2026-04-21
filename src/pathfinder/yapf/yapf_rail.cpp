@@ -32,12 +32,12 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	fwrite(dmp2.output_buffer.data(), 1, dmp2.output_buffer.size(), *f2);
 }
 
-template <class Types>
+template <class Ttypes>
 class CYapfReserveTrack {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 
 protected:
 	/** @copydoc CYapfBaseT::Yapf */
@@ -177,7 +177,7 @@ public:
 		/* We will never pass more than two signals, no need to check for a safe tile. */
 		if (node->parent->num_signals_passed >= 2) return;
 
-		if (!node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::FindSafePositionProc)) {
+		if (!node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Ttypes>::FindSafePositionProc)) {
 			this->res_dest_node = node;
 		}
 	}
@@ -204,7 +204,7 @@ public:
 
 		this->signals_set_to_red.clear();
 		for (Node *node = this->res_dest_node; node->parent != nullptr; node = node->parent) {
-			node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::ReserveSingleTrack);
+			node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Ttypes>::ReserveSingleTrack);
 			if (this->res_fail_tile != INVALID_TILE) {
 				/* Reservation failed, undo. */
 				Node *fail_node = this->res_dest_node;
@@ -212,7 +212,7 @@ public:
 				do {
 					/* If this is the node that failed, stop at the failed tile. */
 					this->res_fail_tile = fail_node == node ? stop_tile : INVALID_TILE;
-					fail_node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::UnreserveSingleTrack);
+					fail_node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Ttypes>::UnreserveSingleTrack);
 				} while (fail_node != node && (fail_node = fail_node->parent) != nullptr);
 
 				/* Re-instate green path signals we turned to red. */
@@ -234,12 +234,12 @@ public:
 	}
 };
 
-template <class Types>
+template <class Ttypes>
 class CYapfFollowAnyDepotRailT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
@@ -321,12 +321,12 @@ public:
 	}
 };
 
-template <class Types>
-class CYapfFollowAnySafeTileRailT : public CYapfReserveTrack<Types> {
+template <class Ttypes>
+class CYapfFollowAnySafeTileRailT : public CYapfReserveTrack<Ttypes> {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
@@ -399,12 +399,12 @@ public:
 	}
 };
 
-template <class Types>
-class CYapfFollowRailT : public CYapfReserveTrack<Types> {
+template <class Ttypes>
+class CYapfFollowRailT : public CYapfReserveTrack<Ttypes> {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
@@ -544,25 +544,25 @@ public:
 	}
 };
 
-template <class Tpf_, class Ttrack_follower, template <class Types> class TdestinationT, template <class Types> class TfollowT>
+template <class Tpf_, class Ttrack_follower, template <class Ttypes> class Tdestination, template <class Ttypes> class Tfollow>
 struct CYapfRail_TypesT {
-	typedef CYapfRail_TypesT<Tpf_, Ttrack_follower, TdestinationT, TfollowT>  Types;
+	typedef CYapfRail_TypesT<Tpf_, Ttrack_follower, Tdestination, Tfollow>  Types;
 
 	typedef Tpf_                                Tpf;
 	typedef Ttrack_follower                     TrackFollower;
 	typedef CRailNodeList                       NodeList;
 	typedef Train                               VehicleType;
 	typedef CYapfBaseT<Types>                   PfBase;
-	typedef TfollowT<Types>                     PfFollow;
+	typedef Tfollow<Types>                      PfFollow;
 	typedef CYapfOriginTileTwoWayT<Types>       PfOrigin;
-	typedef TdestinationT<Types>                PfDestination;
+	typedef Tdestination<Types>                 PfDestination;
 	typedef CYapfSegmentCostCacheGlobalT<Types> PfCache;
 	typedef CYapfCostRailT<Types>               PfCost;
 };
 
-template <typename Types>
-struct CYapfRailBase : CYapfT<Types> {
-	typedef typename Types::NodeList::Item Node;
+template <typename Ttypes>
+struct CYapfRailBase : CYapfT<Ttypes> {
+	typedef typename Ttypes::NodeList::Item Node;
 
 	/**
 	 * In some cases an intermediate node branch should be pruned.

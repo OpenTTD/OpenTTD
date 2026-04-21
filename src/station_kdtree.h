@@ -30,8 +30,8 @@ extern StationKdtree _station_kdtree;
  * @param radius  Distance in both X and Y to search within.
  * @param func    The function to call, must take a single parameter which is Station*.
  */
-template <typename Func>
-void ForAllStationsRadius(TileIndex center, uint radius, Func func)
+template <typename Tfunc>
+void ForAllStationsRadius(TileIndex center, uint radius, Tfunc func)
 {
 	uint16_t x1, y1, x2, y2;
 	x1 = (uint16_t)std::max<int>(0, TileX(center) - radius);

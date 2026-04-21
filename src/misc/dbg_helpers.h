@@ -26,8 +26,8 @@
  * @param unknown_name The default value when the index does not exist.
  * @return The idx'th string of \c names, or \c unknown_name.
  */
-template <typename E>
-inline std::string_view ItemAt(E idx, std::span<const std::string_view> names, std::string_view unknown_name)
+template <typename Tenum_type>
+inline std::string_view ItemAt(Tenum_type idx, std::span<const std::string_view> names, std::string_view unknown_name)
 {
 	if (static_cast<size_t>(idx) >= std::size(names)) {
 		return unknown_name;
@@ -46,8 +46,8 @@ inline std::string_view ItemAt(E idx, std::span<const std::string_view> names, s
  * @param invalid_name The value to output when the invalid value is given.
  * @return The idx'th string of \c names, \c invalid_name, or \c unknown_name.
  */
-template <typename E>
-inline std::string_view ItemAt(E idx, std::span<const std::string_view> names, std::string_view unknown_name, E invalid_index, std::string_view invalid_name)
+template <typename Tenum_type>
+inline std::string_view ItemAt(Tenum_type idx, std::span<const std::string_view> names, std::string_view unknown_name, Tenum_type invalid_index, std::string_view invalid_name)
 {
 	if (idx == invalid_index) {
 		return invalid_name;
@@ -67,8 +67,8 @@ inline std::string_view ItemAt(E idx, std::span<const std::string_view> names, s
  * @param invalid_name The value to output when the invalid value is given.
  * @return The composed name.
  */
-template <typename E>
-inline std::string ComposeName(E value, std::span<const std::string_view> names, std::string_view unknown_name, E invalid_index, std::string_view invalid_name)
+template <typename Tenum_type>
+inline std::string ComposeName(Tenum_type value, std::span<const std::string_view> names, std::string_view unknown_name, Tenum_type invalid_index, std::string_view invalid_name)
 {
 	std::string out;
 	if (value == invalid_index) {
@@ -80,7 +80,7 @@ inline std::string ComposeName(E value, std::span<const std::string_view> names,
 			if ((value & (1 << i)) == 0) continue;
 			out += (!out.empty() ? "+" : "");
 			out += names[i];
-			value &= ~(E)(1 << i);
+			value &= ~(Tenum_type)(1 << i);
 		}
 		if (value != 0) {
 			out += (!out.empty() ? "+" : "");
@@ -99,18 +99,18 @@ inline std::string ComposeName(E value, std::span<const std::string_view> names,
  * @param unknown_name The default value when the index does not exist.
  * @return The composed name.
  */
-template <typename E>
-inline std::string ComposeName(E value, std::span<const std::string_view> names, std::string_view unknown_name)
+template <typename Tenum_type>
+inline std::string ComposeName(Tenum_type value, std::span<const std::string_view> names, std::string_view unknown_name)
 {
 	std::string out;
 	if (value.base() == 0) {
 		out = "<none>";
 	} else {
 		for (size_t i = 0; i < std::size(names); ++i) {
-			if (!value.Test(static_cast<E::EnumType>(i))) continue;
+			if (!value.Test(static_cast<Tenum_type::EnumType>(i))) continue;
 			out += (!out.empty() ? "+" : "");
 			out += names[i];
-			value.Reset(static_cast<E::EnumType>(i));
+			value.Reset(static_cast<Tenum_type::EnumType>(i));
 		}
 		if (value.base() != 0) {
 			out += (!out.empty() ? "+" : "");
@@ -180,7 +180,7 @@ struct DumpTarget {
 	 * @param name The name of the enumeration.
 	 * @param e The value of the enumeration.
 	 */
-	template <typename E> void WriteEnumT(std::string_view name, E e)
+	template <typename Tenum_type> void WriteEnumT(std::string_view name, Tenum_type e)
 	{
 		this->WriteValue(name, ValueStr(e));
 	}
@@ -193,7 +193,7 @@ struct DumpTarget {
 	 * @param name The name of the struct.
 	 * @param s Pointer to the struct.
 	 */
-	template <typename S> void WriteStructT(std::string_view name, const S *s)
+	template <typename T> void WriteStructT(std::string_view name, const T *s)
 	{
 		static const size_t type_id = this->NewTypeId();
 
@@ -218,7 +218,7 @@ struct DumpTarget {
 	 * @param name The name of the struct.
 	 * @param s Pointer to the std::deque of structs.
 	 */
-	template <typename S> void WriteStructT(std::string_view name, const std::deque<S> *s)
+	template <typename T> void WriteStructT(std::string_view name, const std::deque<T> *s)
 	{
 		static const size_t type_id = this->NewTypeId();
 

@@ -100,7 +100,7 @@ uint TimerGameEconomy::days_since_last_month = {};
 }
 
 template <>
-void IntervalTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
+void IntervalTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::Telapsed trigger)
 {
 	if (trigger == this->period.trigger) {
 		this->callback(1);
@@ -108,7 +108,7 @@ void IntervalTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger
 }
 
 template <>
-void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
+void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::Telapsed trigger)
 {
 	if (this->fired) return;
 
@@ -119,7 +119,7 @@ void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 }
 
 template <>
-bool TimerManager<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed)
+bool TimerManager<TimerGameEconomy>::Elapsed(TimerGameEconomy::Telapsed)
 {
 	if (_game_mode == GM_MENU) return false;
 
@@ -190,7 +190,7 @@ bool TimerManager<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed)
 
 #ifdef WITH_ASSERT
 template <>
-void TimerManager<TimerGameEconomy>::Validate(TimerGameEconomy::TPeriod period)
+void TimerManager<TimerGameEconomy>::Validate(TimerGameEconomy::Tperiod period)
 {
 	if (period.priority == TimerGameEconomy::Priority::None) return;
 

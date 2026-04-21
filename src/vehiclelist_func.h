@@ -20,8 +20,8 @@
  * @param ord_pred Order selection predicate.
  * @param veh_func Called for each vehicle that matches both vehicle and order predicates.
  **/
-template <class VehiclePredicate, class OrderPredicate, class VehicleFunc>
-void FindVehiclesWithOrder(VehiclePredicate veh_pred, OrderPredicate ord_pred, VehicleFunc veh_func)
+template <class Tvehicle_pred, class Torder_pred, class Tvehicle_func>
+void FindVehiclesWithOrder(Tvehicle_pred veh_pred, Torder_pred ord_pred, Tvehicle_func veh_func)
 {
 	for (const OrderList *orderlist : OrderList::Iterate()) {
 

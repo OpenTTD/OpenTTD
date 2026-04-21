@@ -394,11 +394,11 @@ public:
 	 * @return Result spritegroup.
 	 * @tparam TSpriteGroup Sprite group type
 	 */
-	template <class TSpriteGroup>
-	inline const TSpriteGroup *Resolve()
+	template <class Tsprite_group>
+	inline const Tsprite_group *Resolve()
 	{
 		auto result = this->DoResolve();
-		const auto *group = std::get_if<const TSpriteGroup *>(&result);
+		const auto *group = std::get_if<const Tsprite_group *>(&result);
 		if (group == nullptr) return nullptr;
 		return *group;
 	}
@@ -487,7 +487,7 @@ public:
 /**
  * Specialization of ResolverObject with type-safe access to RandomTriggers.
  */
-template <class RandomTriggers>
+template <class Trandom_triggers>
 struct SpecializedResolverObject : public ResolverObject {
 	using ResolverObject::ResolverObject;
 
@@ -496,7 +496,7 @@ struct SpecializedResolverObject : public ResolverObject {
 	 * This is scope independent, even though this is broken-by-design in most cases.
 	 * @param triggers The triggers to set wating.
 	 */
-	void SetWaitingRandomTriggers(RandomTriggers triggers)
+	void SetWaitingRandomTriggers(Trandom_triggers triggers)
 	{
 		this->waiting_random_triggers = triggers.base();
 	}
@@ -506,9 +506,9 @@ struct SpecializedResolverObject : public ResolverObject {
 	 * This is scope independent, even though this is broken-by-design in most cases.
 	 * @return The triggers that have used random triggers.
 	 */
-	RandomTriggers GetUsedRandomTriggers() const
+	Trandom_triggers GetUsedRandomTriggers() const
 	{
-		return static_cast<RandomTriggers>(this->used_random_triggers);
+		return static_cast<Trandom_triggers>(this->used_random_triggers);
 	}
 };
 

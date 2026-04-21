@@ -26,36 +26,36 @@ std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim,
 std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, int value, bool masked = false, bool shaded = false, uint indent = 0);
 
 /** @copydoc MakeDropDownListStringItem */
-template <typename EnumType> requires is_scoped_enum_v<EnumType>
-inline std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, EnumType value, bool masked = false, bool shaded = false)
+template <typename Tenum_type> requires is_scoped_enum_v<Tenum_type>
+inline std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, Tenum_type value, bool masked = false, bool shaded = false)
 {
 	return MakeDropDownListStringItem(str, to_underlying(value), masked, shaded);
 }
 
 /** @copydoc MakeDropDownListStringItem */
-template <typename EnumType> requires is_scoped_enum_v<EnumType>
-inline std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, EnumType value, bool masked = false, bool shaded = false)
+template <typename Tenum_type> requires is_scoped_enum_v<Tenum_type>
+inline std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, Tenum_type value, bool masked = false, bool shaded = false)
 {
 	return MakeDropDownListStringItem(std::move(str), to_underlying(value), masked, shaded);
 }
 
 /** @copydoc MakeDropDownListIconItem */
-template <typename EnumType> requires is_scoped_enum_v<EnumType>
-inline std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, EnumType value, bool masked = false, bool shaded = false)
+template <typename Tenum_type> requires is_scoped_enum_v<Tenum_type>
+inline std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, Tenum_type value, bool masked = false, bool shaded = false)
 {
 	return MakeDropDownListIconItem(sprite, palette, str, to_underlying(value), masked, shaded);
 }
 
 /** @copydoc MakeDropDownListIconItem(const Dimension &, SpriteID, PaletteID, StringID, int, bool, bool) */
-template <typename EnumType> requires is_scoped_enum_v<EnumType>
-inline std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, EnumType value, bool masked = false, bool shaded = false)
+template <typename Tenum_type> requires is_scoped_enum_v<Tenum_type>
+inline std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, Tenum_type value, bool masked = false, bool shaded = false)
 {
 	return MakeDropDownListIconItem(dim, sprite, palette, str, to_underlying(value), masked, shaded);
 }
 
 /** @copydoc MakeDropDownListCheckedItem */
-template <typename EnumType> requires is_scoped_enum_v<EnumType>
-inline std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, EnumType value, bool masked = false, bool shaded = false, uint indent = 0)
+template <typename Tenum_type> requires is_scoped_enum_v<Tenum_type>
+inline std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, Tenum_type value, bool masked = false, bool shaded = false, uint indent = 0)
 {
 	return MakeDropDownListCheckedItem(checked, str, to_underlying(value), masked, shaded, indent);
 }

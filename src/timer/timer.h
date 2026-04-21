@@ -18,22 +18,22 @@
  *
  * Never use this class directly yourself.
  */
-template <typename TTimerType>
+template <typename Ttimer_type>
 class BaseTimer {
 public:
-	using TPeriod = typename TTimerType::TPeriod;
-	using TElapsed = typename TTimerType::TElapsed;
-	using TStorage = typename TTimerType::TStorage;
+	using Tperiod = typename Ttimer_type::Tperiod;
+	using Telapsed = typename Ttimer_type::Telapsed;
+	using TStorage = typename Ttimer_type::TStorage;
 
 	/**
 	 * Create a new timer.
 	 *
 	 * @param period The period of the timer.
 	 */
-	[[nodiscard]] BaseTimer(const TPeriod period) :
+	[[nodiscard]] BaseTimer(const Tperiod period) :
 		period(period)
 	{
-		TimerManager<TTimerType>::RegisterTimer(*this);
+		TimerManager<Ttimer_type>::RegisterTimer(*this);
 	}
 
 	/**
@@ -41,12 +41,12 @@ public:
 	 */
 	virtual ~BaseTimer()
 	{
-		TimerManager<TTimerType>::UnregisterTimer(*this);
+		TimerManager<Ttimer_type>::UnregisterTimer(*this);
 	}
 
 	/* Although these variables are public, they are only public to make saveload easier; not for common use. */
 
-	TPeriod period; ///< The period of the timer.
+	Tperiod period; ///< The period of the timer.
 	TStorage storage = {}; ///< The storage of the timer.
 
 protected:
@@ -55,10 +55,10 @@ protected:
 	 *
 	 * @param delta Depending on the time type, this is either in milliseconds or in ticks.
 	 */
-	virtual void Elapsed(TElapsed delta) = 0;
+	virtual void Elapsed(Telapsed delta) = 0;
 
 	/* To ensure only TimerManager can access Elapsed. */
-	friend class TimerManager<TTimerType>;
+	friend class TimerManager<Ttimer_type>;
 };
 
 /**
@@ -72,11 +72,11 @@ protected:
  * Setting the period to zero disables the interval. It can be reenabled at any time by
  * calling SetInterval() with a non-zero period.
  */
-template <typename TTimerType>
-class IntervalTimer : public BaseTimer<TTimerType> {
+template <typename Ttimer_type>
+class IntervalTimer : public BaseTimer<Ttimer_type> {
 public:
-	using TPeriod = typename TTimerType::TPeriod;
-	using TElapsed = typename TTimerType::TElapsed;
+	using Tperiod = typename Ttimer_type::Tperiod;
+	using Telapsed = typename Ttimer_type::Telapsed;
 
 	/**
 	 * Create a new interval timer.
@@ -84,8 +84,8 @@ public:
 	 * @param interval The interval between each callback.
 	 * @param callback The callback to call when the interval has passed.
 	 */
-	[[nodiscard]] IntervalTimer(const TPeriod interval, std::function<void(uint)> callback) :
-		BaseTimer<TTimerType>(interval),
+	[[nodiscard]] IntervalTimer(const Tperiod interval, std::function<void(uint)> callback) :
+		BaseTimer<Ttimer_type>(interval),
 		callback(std::move(callback))
 	{
 	}
@@ -96,27 +96,27 @@ public:
 	 * @param interval The interval between each callback.
 	 * @param reset Whether to reset the timer to zero.
 	 */
-	void SetInterval(const TPeriod interval, bool reset = true)
+	void SetInterval(const Tperiod interval, bool reset = true)
 	{
-		TimerManager<TTimerType>::ChangeRegisteredTimerPeriod(*this, interval);
+		TimerManager<Ttimer_type>::ChangeRegisteredTimerPeriod(*this, interval);
 		if (reset) this->storage = {};
 	}
 
 private:
 	std::function<void(uint)> callback;
 
-	void Elapsed(TElapsed count) override;
+	void Elapsed(Telapsed count) override;
 };
 
 /**
  * A timeout timer will fire once after the interval. You can reset it to fire again.
  * The timer will never fire before the interval has passed, but in times of severe stress it might be late.
  */
-template <typename TTimerType>
-class TimeoutTimer : public BaseTimer<TTimerType> {
+template <typename Ttimer_type>
+class TimeoutTimer : public BaseTimer<Ttimer_type> {
 public:
-	using TPeriod = typename TTimerType::TPeriod;
-	using TElapsed = typename TTimerType::TElapsed;
+	using Tperiod = typename Ttimer_type::Tperiod;
+	using Telapsed = typename Ttimer_type::Telapsed;
 
 	/**
 	 * Create a new timeout timer.
@@ -127,8 +127,8 @@ public:
 	 * @param callback The callback to call when the timeout has passed.
 	 * @param start Whether to start the timer immediately. If false, you can call Reset() to start it.
 	 */
-	[[nodiscard]] TimeoutTimer(const TPeriod timeout, std::function<void()> callback, bool start = false) :
-		BaseTimer<TTimerType>(timeout),
+	[[nodiscard]] TimeoutTimer(const Tperiod timeout, std::function<void()> callback, bool start = false) :
+		BaseTimer<Ttimer_type>(timeout),
 		fired(!start),
 		callback(std::move(callback))
 	{
@@ -148,9 +148,9 @@ public:
 	 *
 	 * @param timeout Set a new timeout for the next trigger.
 	 */
-	void Reset(const TPeriod timeout)
+	void Reset(const Tperiod timeout)
 	{
-		TimerManager<TTimerType>::ChangeRegisteredTimerPeriod(*this, timeout);
+		TimerManager<Ttimer_type>::ChangeRegisteredTimerPeriod(*this, timeout);
 		this->fired = false;
 		this->storage = {};
 	}
@@ -180,7 +180,7 @@ public:
 private:
 	std::function<void()> callback;
 
-	void Elapsed(TElapsed count) override;
+	void Elapsed(Telapsed count) override;
 };
 
 #endif /* TIMER_H */

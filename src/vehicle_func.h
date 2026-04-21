@@ -105,8 +105,8 @@ private:
  * @param predicate The filter to apply to find vehicles.
  * @return \c true iff a suitable vehicle has been found within the given distance.
  */
-template <class UnaryPred>
-bool HasVehicleOnTile(TileIndex tile, UnaryPred &&predicate)
+template <class Tunary_pred>
+bool HasVehicleOnTile(TileIndex tile, Tunary_pred &&predicate)
 {
 	for (const auto *v : VehiclesOnTile(tile)) {
 		if (predicate(v)) return true;
@@ -180,8 +180,8 @@ private:
  * @return \c true iff a suitable vehicle has been found within the given distance.
  * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
  */
-template <class UnaryPred>
-bool HasVehicleNearTileXY(int32_t x, int32_t y, uint max_dist, UnaryPred &&predicate)
+template <class Tunary_pred>
+bool HasVehicleNearTileXY(int32_t x, int32_t y, uint max_dist, Tunary_pred &&predicate)
 {
 	for (const auto *v : VehiclesNearTileXY(x, y, max_dist)) {
 		if (predicate(v)) return true;

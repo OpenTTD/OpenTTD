@@ -3783,8 +3783,8 @@ CommandCost CmdDoTownAction(DoCommandFlags flags, TownID town_id, TownAction act
 	return cost;
 }
 
-template <typename Func>
-static void ForAllStationsNearTown(Town *t, Func func)
+template <typename Tfunc>
+static void ForAllStationsNearTown(Town *t, Tfunc func)
 {
 	/* Ideally the search radius should be close to the actual town zone 0 radius.
 	 * The true radius is not stored or calculated anywhere, only the squared radius. */

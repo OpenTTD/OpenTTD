@@ -1438,8 +1438,8 @@ static void PrintLineByLine(const std::string &full_string)
  * @param args The arguments for the list function.
  * @return \c true, to ease the use in @see IConsoleCmdProc.
  */
-template <typename F, typename ... Args>
-bool PrintList(F list_function, Args... args)
+template <typename Tfunc, typename ... Targs>
+bool PrintList(Tfunc list_function, Targs... args)
 {
 	std::string output_str;
 	auto inserter = std::back_inserter(output_str);

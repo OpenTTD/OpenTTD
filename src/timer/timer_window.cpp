@@ -14,7 +14,7 @@
 #include "../safeguards.h"
 
 template <>
-void IntervalTimer<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
+void IntervalTimer<TimerWindow>::Elapsed(TimerWindow::Telapsed delta)
 {
 	if (this->period == std::chrono::milliseconds::zero()) return;
 
@@ -32,7 +32,7 @@ void IntervalTimer<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 }
 
 template <>
-void TimeoutTimer<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
+void TimeoutTimer<TimerWindow>::Elapsed(TimerWindow::Telapsed delta)
 {
 	if (this->fired) return;
 	if (this->period == std::chrono::milliseconds::zero()) return;
@@ -46,7 +46,7 @@ void TimeoutTimer<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 }
 
 template <>
-bool TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
+bool TimerManager<TimerWindow>::Elapsed(TimerWindow::Telapsed delta)
 {
 	/* Make a temporary copy of the timers, as a timer's callback might add/remove other timers. */
 	auto timers = TimerManager<TimerWindow>::GetTimers();
@@ -60,7 +60,7 @@ bool TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 
 #ifdef WITH_ASSERT
 template <>
-void TimerManager<TimerWindow>::Validate(TimerWindow::TPeriod)
+void TimerManager<TimerWindow>::Validate(TimerWindow::Tperiod)
 {
 }
 #endif /* WITH_ASSERT */

@@ -124,8 +124,8 @@ struct BaseSetTextfileWindow : public TextfileWindow {
  * @param baseset The BaseSet to use.
  * @param content_type STR_CONTENT_TYPE_xxx for title.
  */
-template <class TBaseSet>
-void ShowBaseSetTextfileWindow(Window *parent, TextfileType file_type, const TBaseSet *baseset, StringID content_type)
+template <class Tbase_set>
+void ShowBaseSetTextfileWindow(Window *parent, TextfileType file_type, const Tbase_set *baseset, StringID content_type)
 {
 	parent->CloseChildWindowById(WC_TEXTFILE, file_type);
 	new BaseSetTextfileWindow(parent, file_type, baseset->name, *baseset->GetTextfile(file_type), content_type);
@@ -138,8 +138,8 @@ void ShowBaseSetTextfileWindow(Window *parent, TextfileType file_type, const TBa
  * @param baseset The selected baseset.
  * @return the string to display.
  */
-template <typename TBaseSet>
-static std::string GetListLabel(const TBaseSet *baseset)
+template <typename Tbase_set>
+static std::string GetListLabel(const Tbase_set *baseset)
 {
 	if (baseset->GetNumInvalid() == 0) return GetString(STR_JUST_RAW_STRING, baseset->name);
 	return GetString(STR_BASESET_STATUS, baseset->name, baseset->GetNumInvalid());

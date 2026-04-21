@@ -51,8 +51,8 @@ protected:
 	template <ConvertibleThroughBase T>
 	static auto GetRawIndex(const T &index) { return index.base(); }
 
-	template <typename T, class ItemValid, class ItemFilter>
-	static void FillList(ScriptList *list, ItemValid item_valid, ItemFilter item_filter)
+	template <typename T, class Titem_valid, class Titem_filter>
+	static void FillList(ScriptList *list, Titem_valid item_valid, Titem_filter item_filter)
 	{
 		for (const T *item : T::Iterate()) {
 			if (!item_valid(item)) continue;
@@ -61,8 +61,8 @@ protected:
 		}
 	}
 
-	template <typename T, class ItemValid>
-	static void FillList(ScriptList *list, ItemValid item_valid)
+	template <typename T, class Titem_valid>
+	static void FillList(ScriptList *list, Titem_valid item_valid)
 	{
 		ScriptList::FillList<T>(list, item_valid, [](const T *) { return true; });
 	}
@@ -73,8 +73,8 @@ protected:
 		ScriptList::FillList<T>(list, [](const T *) { return true; });
 	}
 
-	template <typename T, class ItemValid>
-	static void FillList(HSQUIRRELVM vm, ScriptList *list, ItemValid item_valid)
+	template <typename T, class Titem_valid>
+	static void FillList(HSQUIRRELVM vm, ScriptList *list, Titem_valid item_valid)
 	{
 		int nparam = sq_gettop(vm) - 1;
 		if (nparam >= 1) {
@@ -155,8 +155,8 @@ protected:
 	 */
 	void CopyList(const ScriptList *list);
 
-	template <class ValueFilter>
-	bool RemoveItems(ValueFilter value_filter)
+	template <class Tvalue_filter>
+	bool RemoveItems(Tvalue_filter value_filter)
 	{
 		this->modifications++;
 

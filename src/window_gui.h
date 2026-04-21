@@ -329,10 +329,10 @@ public:
 	Window *parent = nullptr; ///< Parent window.
 	WindowList::iterator z_position{};
 
-	template <class NWID>
-	inline const NWID *GetWidget(WidgetID widnum) const;
-	template <class NWID>
-	inline NWID *GetWidget(WidgetID widnum);
+	template <class T>
+	inline const T *GetWidget(WidgetID widnum) const;
+	template <class T>
+	inline T *GetWidget(WidgetID widnum);
 
 	const Scrollbar *GetScrollbar(WidgetID widnum) const;
 	Scrollbar *GetScrollbar(WidgetID widnum);
@@ -512,8 +512,8 @@ public:
 	 * @param disab_stat status to use ie: disabled = true, enabled = false
 	 * @param widgets list of widgets
 	 */
-	template <typename... Args>
-	void SetWidgetsDisabledState(bool disab_stat, Args... widgets)
+	template <typename... Targs>
+	void SetWidgetsDisabledState(bool disab_stat, Targs... widgets)
 	{
 		(SetWidgetDisabledState(widgets, disab_stat), ...);
 	}
@@ -523,8 +523,8 @@ public:
 	 * @param lowered_stat status to use ie: lowered = true, raised = false
 	 * @param widgets list of widgets
 	 */
-	template <typename... Args>
-	void SetWidgetsLoweredState(bool lowered_stat, Args... widgets)
+	template <typename... Targs>
+	void SetWidgetsLoweredState(bool lowered_stat, Targs... widgets)
 	{
 		(SetWidgetLoweredState(widgets, lowered_stat), ...);
 	}
@@ -533,8 +533,8 @@ public:
 	 * Raises the widgets and sets widgets dirty that are lowered.
 	 * @param widgets list of widgets
 	 */
-	template <typename... Args>
-	void RaiseWidgetsWhenLowered(Args... widgets)
+	template <typename... Targs>
+	void RaiseWidgetsWhenLowered(Targs... widgets)
 	{
 		(this->RaiseWidgetWhenLowered(widgets), ...);
 	}
@@ -876,9 +876,9 @@ public:
 
 	/**
 	 * Iterator to iterate all valid Windows
-	 * @tparam TtoBack whether we iterate towards the back.
+	 * @tparam Tto_back whether we iterate towards the back.
 	 */
-	template <bool TtoBack>
+	template <bool Tto_back>
 	struct WindowIterator {
 		typedef Window *value_type;
 		typedef value_type *pointer;
@@ -906,7 +906,7 @@ public:
 		}
 		void Next()
 		{
-			if constexpr (!TtoBack) {
+			if constexpr (!Tto_back) {
 				++this->it;
 			} else if (this->it == _z_windows.begin()) {
 				this->it = _z_windows.end();
@@ -949,24 +949,24 @@ public:
  * @param pred The predicate to use.
  * @return True if all elements are equal, false otherwise.
  */
-template <class It, class Pred>
-inline bool AllEqual(It begin, It end, Pred pred)
+template <class Titer, class Tpred>
+inline bool AllEqual(Titer begin, Titer end, Tpred pred)
 {
 	return std::adjacent_find(begin, end, std::not_fn(pred)) == end;
 }
 
 /**
  * Get the nested widget with number \a widnum from the nested widget tree.
- * @tparam NWID Type of the nested widget.
+ * @tparam T Type of the nested widget.
  * @param widnum Widget number of the widget to retrieve.
  * @return The requested widget if it is instantiated, \c nullptr otherwise.
  */
-template <class NWID>
-inline NWID *Window::GetWidget(WidgetID widnum)
+template <class T>
+inline T *Window::GetWidget(WidgetID widnum)
 {
 	auto it = this->widget_lookup.find(widnum);
 	if (it == std::end(this->widget_lookup)) return nullptr;
-	NWID *nwid = dynamic_cast<NWID *>(it->second);
+	T *nwid = dynamic_cast<T *>(it->second);
 	assert(nwid != nullptr);
 	return nwid;
 }
@@ -982,14 +982,14 @@ inline const NWidgetBase *Window::GetWidget<NWidgetBase>(WidgetID widnum) const
 
 /**
  * Get the nested widget with number \a widnum from the nested widget tree.
- * @tparam NWID Type of the nested widget.
+ * @tparam T Type of the nested widget.
  * @param widnum Widget number of the widget to retrieve.
  * @return The requested widget if it is instantiated, \c nullptr otherwise.
  */
-template <class NWID>
-inline const NWID *Window::GetWidget(WidgetID widnum) const
+template <class T>
+inline const T *Window::GetWidget(WidgetID widnum) const
 {
-	return const_cast<Window *>(this)->GetWidget<NWID>(widnum);
+	return const_cast<Window *>(this)->GetWidget<T>(widnum);
 }
 
 

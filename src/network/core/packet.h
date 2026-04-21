@@ -29,7 +29,7 @@ typedef uint8_t  PacketType; ///< Identifier for the packet
  * creating the packet, but not any other enumeration. It is up to the developer to
  * enusre that the right enumeration is used for a socket handler.
  */
-template <typename enum_type>
+template <typename T>
 struct IsEnumPacketType {
 	static constexpr bool value = false; ///< True iff a PacketType.
 };
@@ -80,8 +80,8 @@ public:
 	 *              the limit as it might break things if the other side is not expecting
 	 *              much larger packets than what they support.
 	 */
-	template <typename E, typename = std::enable_if_t<IsEnumPacketType<E>::value>>
-	Packet(NetworkSocketHandler *cs, E type, size_t limit = COMPAT_MTU) : Packet(cs, to_underlying(type), limit) {}
+	template <typename T, typename = std::enable_if_t<IsEnumPacketType<T>::value>>
+	Packet(NetworkSocketHandler *cs, T type, size_t limit = COMPAT_MTU) : Packet(cs, to_underlying(type), limit) {}
 
 	/* Sending/writing of packets */
 	void PrepareToSend();
@@ -124,11 +124,11 @@ public:
 	 * @param transfer_function The function to pass span of bytes to write to.
 	 *                          It returns the amount that was written or -1 upon errors.
 	 * @param limit             The maximum amount of bytes to transfer.
-	 * @tparam F The type of the transfer_function.
+	 * @tparam T The type of the transfer_function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <typename F>
-	ssize_t TransferOutWithLimit(F transfer_function, size_t limit)
+	template <typename T>
+	ssize_t TransferOutWithLimit(T transfer_function, size_t limit)
 	{
 		size_t amount = std::min(this->RemainingBytesToTransfer(), limit);
 		if (amount == 0) return 0;
@@ -147,11 +147,11 @@ public:
 	 * See Packet::TransferIn for more information about transferring data to functions.
 	 * @param transfer_function The function to pass span of bytes to write to.
 	 *                          It returns the amount that was written or -1 upon errors.
-	 * @tparam F The type of the transfer_function.
+	 * @tparam T The type of the transfer_function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <typename F>
-	ssize_t TransferOut(F transfer_function)
+	template <typename T>
+	ssize_t TransferOut(T transfer_function)
 	{
 		return TransferOutWithLimit(transfer_function, std::numeric_limits<size_t>::max());
 	}
@@ -176,11 +176,11 @@ public:
 	 * position based on how many bytes were actually written by the called transfer_function.
 	 * @param transfer_function The function to pass a span of bytes to read to.
 	 *                          It returns the amount that was read or -1 upon errors.
-	 * @tparam F The type of the transfer_function.
+	 * @tparam T The type of the transfer_function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <typename F>
-	ssize_t TransferIn(F transfer_function)
+	template <typename T>
+	ssize_t TransferIn(T transfer_function)
 	{
 		size_t amount = this->RemainingBytesToTransfer();
 		if (amount == 0) return 0;

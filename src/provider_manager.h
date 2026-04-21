@@ -17,7 +17,7 @@
  *
  * @tparam T Service provider type.
  */
-template <typename TProviderType>
+template <typename Tprovider_type>
 class ProviderManager {
 public:
 	/* Avoid copying this object; it is a singleton object. */
@@ -25,15 +25,15 @@ public:
 
 	ProviderManager &operator=(ProviderManager const &) = delete;
 
-	static void Register(const TProviderType &instance)
+	static void Register(const Tprovider_type &instance)
 	{
 		/* Insert according to comparator. */
 		auto &providers = GetProviders();
-		auto it = std::ranges::lower_bound(providers, &instance, typename TProviderType::ProviderSorter());
+		auto it = std::ranges::lower_bound(providers, &instance, typename Tprovider_type::ProviderSorter());
 		providers.insert(it, &instance);
 	}
 
-	static void Unregister(const TProviderType &instance)
+	static void Unregister(const Tprovider_type &instance)
 	{
 		auto &providers = GetProviders();
 		providers.erase(std::find(std::begin(providers), std::end(providers), &instance));
@@ -43,9 +43,9 @@ public:
 	 * Get the currently known providers.
 	 * @return The known providers.
 	 */
-	static std::vector<const TProviderType *> &GetProviders()
+	static std::vector<const Tprovider_type *> &GetProviders()
 	{
-		static std::vector<const TProviderType *> providers{};
+		static std::vector<const Tprovider_type *> providers{};
 		return providers;
 	}
 };

@@ -35,22 +35,22 @@ void SetCurrentThreadName(const std::string &name);
 
 /**
  * Start a new thread.
- * @tparam TFn Type of the function to call on the thread.
- * @tparam TArgs Type of the parameters of the thread function.
+ * @tparam Tfn Type of the function to call on the thread.
+ * @tparam Targs Type of the parameters of the thread function.
  * @param thr Pointer to a thread object; may be \c nullptr if a detached thread is wanted.
  * @param name Name of the thread.
  * @param _Fx Function to call on the thread.
  * @param _Ax Arguments for the thread function.
  * @return True if the thread was successfully started, false otherwise.
  */
-template <class TFn, class... TArgs>
-inline bool StartNewThread(std::thread *thr, std::string_view name, TFn&& _Fx, TArgs&&... _Ax)
+template <class Tfn, class... Targs>
+inline bool StartNewThread(std::thread *thr, std::string_view name, Tfn&& _Fx, Targs&&... _Ax)
 {
 	try {
 		static std::mutex thread_startup_mutex;
 		std::lock_guard<std::mutex> lock(thread_startup_mutex);
 
-		std::thread t([] (std::string name, TFn&& F, TArgs&&... A) {
+		std::thread t([] (std::string name, Tfn&& F, Targs&&... A) {
 				/* Delay starting the thread till the main thread is finished
 				 * with the administration. This prevent race-conditions on
 				 * startup. */
@@ -68,7 +68,7 @@ inline bool StartNewThread(std::thread *thr, std::string_view name, TFn&& _Fx, T
 				} catch (...) {
 					NOT_REACHED();
 				}
-			}, std::string{name}, std::forward<TFn>(_Fx), std::forward<TArgs>(_Ax)...);
+			}, std::string{name}, std::forward<Tfn>(_Fx), std::forward<Targs>(_Ax)...);
 
 		if (thr != nullptr) {
 			*thr = std::move(t);

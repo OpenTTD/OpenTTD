@@ -24,12 +24,12 @@
  *
  * The element type T must be less-than comparable for FindNearest to work.
  *
- * @tparam T       Type stored in the tree, should be cheap to copy.
- * @tparam TxyFunc Functor type to extract coordinate from a T value and dimension index (0 or 1).
- * @tparam CoordT  Type of coordinate values extracted via TxyFunc.
- * @tparam DistT   Type to use for representing distance values.
+ * @tparam T Type stored in the tree, should be cheap to copy.
+ * @tparam Txy_func Functor type to extract coordinate from a T value and dimension index (0 or 1).
+ * @tparam Tcoord Type of coordinate values extracted via TxyFunc.
+ * @tparam Tdist Type to use for representing distance values.
  */
-template <typename T, typename TxyFunc, typename CoordT, typename DistT>
+template <typename T, typename Txy_func, typename Tcoord, typename Tdist>
 class Kdtree {
 	/** Type of a node in the tree */
 	struct node {
@@ -73,12 +73,12 @@ class Kdtree {
 	 * @param level The depth into the tree.
 	 * @return The coordinate to split at.
 	 */
-	template <typename It>
-	CoordT SelectSplitCoord(It begin, It end, int level)
+	template <typename Titer>
+	Tcoord SelectSplitCoord(Titer begin, Titer end, int level)
 	{
-		It mid = begin + (end - begin) / 2;
-		std::nth_element(begin, mid, end, [&](T a, T b) { return TxyFunc()(a, level % 2) < TxyFunc()(b, level % 2); });
-		return TxyFunc()(*mid, level % 2);
+		Titer mid = begin + (end - begin) / 2;
+		std::nth_element(begin, mid, end, [&](T a, T b) { return Txy_func()(a, level % 2) < Txy_func()(b, level % 2); });
+		return Txy_func()(*mid, level % 2);
 	}
 
 	/**
@@ -88,8 +88,8 @@ class Kdtree {
 	 * @param level The depth into the tree.
 	 * @return The index of root.
 	 */
-	template <typename It>
-	size_t BuildSubtree(It begin, It end, int level)
+	template <typename Titer>
+	size_t BuildSubtree(Titer begin, Titer end, int level)
 	{
 		ptrdiff_t count = end - begin;
 
@@ -98,8 +98,8 @@ class Kdtree {
 		} else if (count == 1) {
 			return this->AddNode(*begin);
 		} else if (count > 1) {
-			CoordT split_coord = this->SelectSplitCoord(begin, end, level);
-			It split = std::partition(begin, end, [&](T v) { return TxyFunc()(v, level % 2) < split_coord; });
+			Tcoord split_coord = this->SelectSplitCoord(begin, end, level);
+			Titer split = std::partition(begin, end, [&](T v) { return Txy_func()(v, level % 2) < split_coord; });
 			size_t newidx = this->AddNode(*split);
 			this->nodes[newidx].left = this->BuildSubtree(begin, split, level + 1);
 			this->nodes[newidx].right = this->BuildSubtree(split + 1, end, level + 1);
@@ -153,9 +153,9 @@ class Kdtree {
 		node &n = this->nodes[node_idx];
 
 		/* Coordinate of element splitting at this node */
-		CoordT nc = TxyFunc()(n.element, dim);
+		Tcoord nc = Txy_func()(n.element, dim);
 		/* Coordinate of the new element */
-		CoordT ec = TxyFunc()(element, dim);
+		Tcoord ec = Txy_func()(element, dim);
 		/* Which side to insert on */
 		size_t &next = (ec < nc) ? n.left : n.right;
 
@@ -227,9 +227,9 @@ class Kdtree {
 			/* Dimension index of current level */
 			int dim = level % 2;
 			/* Coordinate of element splitting at this node */
-			CoordT nc = TxyFunc()(n.element, dim);
+			Tcoord nc = Txy_func()(n.element, dim);
 			/* Coordinate of the element being removed */
-			CoordT ec = TxyFunc()(element, dim);
+			Tcoord ec = Txy_func()(element, dim);
 			/* Which side to remove from */
 			size_t next = (ec < nc) ? n.left : n.right;
 			assert(next != INVALID_NODE); // node must exist somewhere and must be found before a leaf is reached
@@ -245,13 +245,13 @@ class Kdtree {
 	}
 
 
-	DistT ManhattanDistance(const T &element, CoordT x, CoordT y) const
+	Tdist ManhattanDistance(const T &element, Tcoord x, Tcoord y) const
 	{
-		return abs((DistT)TxyFunc()(element, 0) - (DistT)x) + abs((DistT)TxyFunc()(element, 1) - (DistT)y);
+		return abs((Tdist)Txy_func()(element, 0) - (Tdist)x) + abs((Tdist)Txy_func()(element, 1) - (Tdist)y);
 	}
 
 	/** A data element and its distance to a searched-for point */
-	using node_distance = std::pair<T, DistT>;
+	using node_distance = std::pair<T, Tdist>;
 	/**
 	 * Ordering function for node_distance objects, elements with equal distance are ordered by less-than comparison.
 	 * @param a The first distance to compare.
@@ -274,7 +274,7 @@ class Kdtree {
 	 * @param limit Distance to limit searching at.
 	 * @return The distance to the nearest element.
 	 */
-	node_distance FindNearestRecursive(CoordT xy[2], size_t node_idx, int level, DistT limit = std::numeric_limits<DistT>::max()) const
+	node_distance FindNearestRecursive(Tcoord xy[2], size_t node_idx, int level, Tdist limit = std::numeric_limits<Tdist>::max()) const
 	{
 		/* Dimension index of current level */
 		int dim = level % 2;
@@ -282,9 +282,9 @@ class Kdtree {
 		const node &n = this->nodes[node_idx];
 
 		/* Coordinate of element splitting at this node */
-		CoordT c = TxyFunc()(n.element, dim);
+		Tcoord c = Txy_func()(n.element, dim);
 		/* This node's distance to target */
-		DistT thisdist = this->ManhattanDistance(n.element, xy[0], xy[1]);
+		Tdist thisdist = this->ManhattanDistance(n.element, xy[0], xy[1]);
 		/* Assume this node is the best choice for now */
 		node_distance best = std::make_pair(n.element, thisdist);
 
@@ -308,8 +308,8 @@ class Kdtree {
 		return best;
 	}
 
-	template <typename Outputter>
-	void FindContainedRecursive(CoordT p1[2], CoordT p2[2], size_t node_idx, int level, const Outputter &outputter) const
+	template <typename Toutputter>
+	void FindContainedRecursive(Tcoord p1[2], Tcoord p2[2], size_t node_idx, int level, const Toutputter &outputter) const
 	{
 		/* Dimension index of current level */
 		int dim = level % 2;
@@ -317,9 +317,9 @@ class Kdtree {
 		const node &n = this->nodes[node_idx];
 
 		/* Coordinate of element splitting at this node */
-		CoordT ec = TxyFunc()(n.element, dim);
+		Tcoord ec = Txy_func()(n.element, dim);
 		/* Opposite coordinate of element */
-		CoordT oc = TxyFunc()(n.element, 1 - dim);
+		Tcoord oc = Txy_func()(n.element, 1 - dim);
 
 		/* Test if this element is within rectangle */
 		if (ec >= p1[dim] && ec < p2[dim] && oc >= p1[1 - dim] && oc < p2[1 - dim]) outputter(n.element);
@@ -369,13 +369,13 @@ class Kdtree {
 	 * @param min_y The expected minimum Y-coordinate.
 	 * @param max_y The expected maximum Y-coordinate.
 	 */
-	void CheckInvariant(size_t node_idx, int level, CoordT min_x, CoordT max_x, CoordT min_y, CoordT max_y) const
+	void CheckInvariant(size_t node_idx, int level, Tcoord min_x, Tcoord max_x, Tcoord min_y, Tcoord max_y) const
 	{
 		if (node_idx == INVALID_NODE) return;
 
 		const node &n = this->nodes[node_idx];
-		CoordT cx = TxyFunc()(n.element, 0);
-		CoordT cy = TxyFunc()(n.element, 1);
+		Tcoord cx = Txy_func()(n.element, 0);
+		Tcoord cy = Txy_func()(n.element, 1);
 
 		assert(cx >= min_x);
 		assert(cx < max_x);
@@ -411,8 +411,8 @@ public:
 	 * @param  begin First element in sequence.
 	 * @param  end   One past last element in sequence.
 	 */
-	template <typename It>
-	void Build(It begin, It end)
+	template <typename Titer>
+	void Build(Titer begin, Titer end)
 	{
 		this->nodes.clear();
 		this->free_list.clear();
@@ -499,11 +499,11 @@ public:
 	 * @param y The Y-coordinate.
 	 * @return The nearest element.
 	 */
-	T FindNearest(CoordT x, CoordT y) const
+	T FindNearest(Tcoord x, Tcoord y) const
 	{
 		assert(this->Count() > 0);
 
-		CoordT xy[2] = { x, y };
+		Tcoord xy[2] = { x, y };
 		return this->FindNearestRecursive(xy, this->root, 0).first;
 	}
 
@@ -516,16 +516,16 @@ public:
 	 * @param y2 End second coordinate, points found are less than this.
 	 * @param outputter Callback used to return values from the search.
 	 */
-	template <typename Outputter>
-	void FindContained(CoordT x1, CoordT y1, CoordT x2, CoordT y2, const Outputter &outputter) const
+	template <typename Toutputter>
+	void FindContained(Tcoord x1, Tcoord y1, Tcoord x2, Tcoord y2, const Toutputter &outputter) const
 	{
 		assert(x1 < x2);
 		assert(y1 < y2);
 
 		if (this->Count() == 0) return;
 
-		CoordT p1[2] = { x1, y1 };
-		CoordT p2[2] = { x2, y2 };
+		Tcoord p1[2] = { x1, y1 };
+		Tcoord p2[2] = { x2, y2 };
 		this->FindContainedRecursive(p1, p2, this->root, 0, outputter);
 	}
 
@@ -538,7 +538,7 @@ public:
 	 * @param y2 End second coordinate, points found are less than this.
 	 * @return The result of the search.
 	 */
-	std::vector<T> FindContained(CoordT x1, CoordT y1, CoordT x2, CoordT y2) const
+	std::vector<T> FindContained(Tcoord x1, Tcoord y1, Tcoord x2, Tcoord y2) const
 	{
 		std::vector<T> result;
 		this->FindContained(x1, y1, x2, y2, [&result](T e) {result.push_back(e); });

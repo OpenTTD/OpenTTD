@@ -25,7 +25,7 @@
  * @param Tfull_packet The packet type to return when we don't allow more sockets.
  * @param Tban_packet The packet type to return when the client is banned.
  */
-template <class Tsocket, typename EnumPacketType, EnumPacketType Tfull_packet, EnumPacketType Tban_packet>
+template <class Tsocket, typename Tenum_packet_type, Tenum_packet_type Tfull_packet, Tenum_packet_type Tban_packet>
 class TCPListenHandler {
 	/** List of sockets we listen on. */
 	static SocketList sockets;
@@ -178,6 +178,6 @@ public:
 };
 
 /** Instantiate the sockets. */
-template <class Tsocket, typename EnumPacketType, EnumPacketType Tfull_packet, EnumPacketType Tban_packet> SocketList TCPListenHandler<Tsocket, EnumPacketType, Tfull_packet, Tban_packet>::sockets;
+template <class Tsocket, typename Tenum_packet_type, Tenum_packet_type Tfull_packet, Tenum_packet_type Tban_packet> SocketList TCPListenHandler<Tsocket, Tenum_packet_type, Tfull_packet, Tban_packet>::sockets;
 
 #endif /* NETWORK_CORE_TCP_LISTEN_H */
