@@ -1352,6 +1352,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Höga
 STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat kan lågkonjunkturer uppstå regelbundet. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Välj var tåg kan vända för att byta körriktning. Med "Alla" kan tåg vända var som helst. Med "Endast vid linjens slut" kommer tåg inte att vända vid stationer om det finns en möjlig rutt framåt. Med "Inga" kan tåg inte vända och kommer att köra baklänges om nödvändigt, men med reducerad hastighet om det bakersta fordonet saknar en förarhytt
 
 ###length 3
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Ingen
@@ -1852,7 +1853,7 @@ STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max antal vägf
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximalt antal vägfordon som ett företag kan ha
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max antal luftfarkoster per företag: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximalt antal flygplan som ett företag kan ha
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximalt antal luftfarkoster som ett företag kan ha
 
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Max antal skepp per företag: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximalt antal skepp som ett företag kan ha
@@ -2226,7 +2227,7 @@ STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :osäker för st
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :system-NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel med denna version av OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :okänd
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressionsnivån '{STRING}' är inte giltig
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :kompressionsnivån '{STRING}' är inte giltig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... filformatet '{STRING}' är inte tillgängligt. Återgår till '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignorerar grundgrafikpaketet '{STRING}': hittades ej
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignorerar grundljudpaketet '{STRING}': hittades ej
@@ -4270,7 +4271,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Köp fly
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Köp och anpassa fordon
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Köp och anpassa fordon
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Köp och anpassa skepp
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Köp och anpassa flygplan
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Köp och anpassa luftfarkost
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Köp markerat tågfordon. Håll även in Shift för att endast visa uppskattad kostnad
@@ -4371,13 +4372,13 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Köp ny 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klona tåg
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klona fordon
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klona skepp
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klona flygplan
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klona luftfarkost
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Köp en kopia av ett tåg inklusive alla vagnar. Klicka på denna knapp och sedan på ett tåg i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Köp en kopia av ett vägfordon. Klicka på denna knapp och sedan på ett vägfordon i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Köp en kopia av ett skepp. Klicka på denna knapp och sedan på ett skepp i eller utanför depån. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Köp en kopia av en flygfarkost. Klicka på denna knapp och sedan på en flygfarkost i eller utanför hangaren. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Köp en kopia av en luftfarkost. Klicka på denna knapp och sedan på en luftfarkost i eller utanför hangaren. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrera huvudvyn ovanför depån. Ctrl+Klick för att öppna en ny fönstervy över tågdepåns läge
@@ -4389,7 +4390,7 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrera
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Visa en lista med alla tåg som har denna depå i sitt körschema
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Visa en lista med alla vägfordon som har denna depå i sitt körschema
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Visa en lista med alla fartyg som har denna depå i sitt körschema
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Visa en lista med alla flygplan som har en hangar på denna flygplats i sitt körschema
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Visa en lista med alla luftfarkoster som har en hangar på denna flygplats i sitt körschema
 
 ###length VEHICLE_TYPES
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klicka för att stanna alla tåg i depån
@@ -4426,7 +4427,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lok
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vägfordon
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :spårvägsfordon
 
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :flygplan
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :luftfarkost
 STR_ENGINE_PREVIEW_SHIP                                         :skepp
 
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Kostnad: {CURRENCY_LONG}  Vikt: {WEIGHT_SHORT}
@@ -5063,8 +5064,8 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det 
 
 STR_ERROR_PNGMAP                                                :Kan inte ladda landskap från PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :hittar inte filen
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kunde inte konvertera bildtyp. 8 eller 24-bitars PNG-bild krävs
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... något gick fel (förmodligen korrupt fil)
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :kunde inte konvertera bildtyp. 8- eller 24-bitars PNG-bild krävs
+STR_ERROR_PNGMAP_MISC                                           :något gick fel (förmodligen korrupt fil)
 
 STR_ERROR_BMPMAP                                                :Kan inte ladda landskap från BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :kunde inte konvertera bildformat
@@ -5150,7 +5151,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :för nära en a
 STR_ERROR_TOO_MANY_TOWNS                                        :för många städer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :det finns ingen plats kvar på kartan
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :vägarbete pågår
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :Kan inte ta bort den här staden...{}{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det finns ingen lämplig plats för en staty i stadens centrum
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :Kan inte bygga hus...
 
@@ -5253,7 +5254,7 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :måste stoppas 
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :måste stoppas inuti en depå
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... måste stoppas i en hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tåg kan bara ändras när det står stilla inuti en depå
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :tåg kan bara ändras när de står stilla inuti en depå
 STR_ERROR_TRAIN_TOO_LONG                                        :tåget är för långt
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :Kan inte byta fordonets riktning...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :består av flera delar
@@ -5490,7 +5491,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Kan inte dela o
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Kan inte sluta dela orderlistan...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Kan inte kopiera orderlistan...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :för långt från föregående destination
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... flygplanet har inte tillräcklig räckvidd
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :luftfarkosten har inte tillräcklig räckvidd
 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :Det finns ingen järnvägsstation
