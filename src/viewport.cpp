@@ -114,12 +114,13 @@ static const int MAX_TILE_EXTENT_TOP    = ZOOM_BASE * MAX_BUILDING_PIXELS;      
 static const int MAX_TILE_EXTENT_BOTTOM = ZOOM_BASE * (TILE_PIXELS + 2 * TILE_HEIGHT); ///< Maximum bottom extent of tile relative to north corner (worst case: #SLOPE_STEEP_N).
 
 struct StringSpriteToDraw {
-	std::string string;
-	uint16_t width;
-	Colours colour;
-	ViewportStringFlags flags;
-	int32_t x;
-	int32_t y;
+	std::string string; ///< The string to draw.
+	uint16_t width; ///< The width of the string in pixels.
+	Colours colour; ///< Colour of the string.
+	Colours colour2; ///< Second colour for two company colour signs.
+	ViewportStringFlags flags; ///< ViewportStringFlags to control string appearance.
+	int32_t x; ///< Left position of string.
+	int32_t y; ///< Top position of string.
 };
 
 struct TileSpriteToDraw {
@@ -861,13 +862,15 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
  * @param colour Colour of string.
  * @param flags ViewportStringFlags to control the string's appearance.
  * @param width Width of the string.
+ * @param colour2 Optional second colour, for two company colour signs. Defaults to Colours::Invalid.
  * @returns Reference to raw string which should be filled in by the caller.
  */
-static std::string &AddStringToDraw(int x, int y, Colours colour, ViewportStringFlags flags, uint16_t width)
+static std::string &AddStringToDraw(int x, int y, Colours colour, ViewportStringFlags flags, uint16_t width, Colours colour2 = Colours::Invalid)
 {
 	assert(width != 0);
 	StringSpriteToDraw &ss = _vd.string_sprites_to_draw.emplace_back();
 	ss.colour = colour;
+	ss.colour2 = colour2;
 	ss.flags = flags;
 	ss.x = x;
 	ss.y = y;
@@ -1321,9 +1324,10 @@ static void ViewportAddLandscape()
  * @param sign sign position and dimension
  * @param flags ViewportStringFlags to control the string's appearance.
  * @param colour colour of the sign background; or Colours::Invalid if transparent
+ * @param colour2 secondary colour of the sign background flash; or Colours::Invalid if absent
  * @returns Pointer to std::string to filled with sign, or nullptr if string would be outside the viewport bounds.
  */
-std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, ViewportStringFlags flags, Colours colour)
+std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, ViewportStringFlags flags, Colours colour, Colours colour2)
 {
 	int left   = dpi->left;
 	int top    = dpi->top;
@@ -1341,7 +1345,7 @@ std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sig
 		return nullptr;
 	}
 
-	return &AddStringToDraw(sign->center - sign_half_width, sign->top, colour, flags, small ? sign->width_small : sign->width_normal);
+	return &AddStringToDraw(sign->center - sign_half_width, sign->top, colour, flags, small ? sign->width_small : sign->width_normal, colour2);
 }
 
 static Rect ExpandRectWithViewportSignMargins(Rect r, ZoomLevel zoom)
@@ -1410,8 +1414,18 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 		 * colours that are not Colours::Invalid slightly, turning white into a light gray. */
 		const Colours deity_colour = si->text_colour == Colours::White ? Colours::Invalid : si->text_colour;
 
-		std::string *str = ViewportAddString(dpi, &si->sign, (si->owner == OWNER_DEITY) ? deity_flags : flags,
-			(si->owner == OWNER_NONE) ? Colours::Grey : (si->owner == OWNER_DEITY ? deity_colour : _company_colours[si->owner]));
+		Colours colour1 = Colours::Grey;
+		Colours colour2 = Colours::Invalid;
+
+		if (si->owner == OWNER_DEITY) {
+			colour1 = deity_colour;
+		} else if (si->owner != OWNER_NONE) {
+			colour1 = _company_colours[si->owner];
+			const Company *c = Company::GetIfValid(si->owner);
+			if (c != nullptr) colour2 = c->livery[LS_DEFAULT].colour2;
+		}
+
+		std::string *str = ViewportAddString(dpi, &si->sign, (si->owner == OWNER_DEITY) ? deity_flags : flags, colour1, colour2);
 		if (str == nullptr) continue;
 
 		*str = GetString(STR_SIGN_NAME, si->index);
@@ -1431,7 +1445,16 @@ static void ViewportAddStationStrings(DrawPixelInfo *dpi, const std::vector<cons
 	if (small) flags.Set(ViewportStringFlag::Small);
 
 	for (const BaseStation *st : stations) {
-		std::string *str = ViewportAddString(dpi, &st->sign, flags, (st->owner == OWNER_NONE || !st->IsInUse()) ? Colours::Grey : _company_colours[st->owner]);
+		Colours colour1 = Colours::Grey;
+		Colours colour2 = Colours::Invalid;
+
+		if (st->owner != OWNER_NONE && st->IsInUse()) {
+			colour1 = _company_colours[st->owner];
+			const Company *c = Company::GetIfValid(st->owner);
+			if (c != nullptr) colour2 = c->livery[LS_DEFAULT].colour2;
+		}
+
+		std::string *str = ViewportAddString(dpi, &st->sign, flags, colour1, colour2);
 		if (str == nullptr) continue;
 
 		if (Station::IsExpected(st)) { /* Station */
@@ -1782,7 +1805,13 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 
 		TextColour colour = TC_WHITE;
 		if (ss.flags.Test(ViewportStringFlag::ColourRect)) {
-			if (ss.colour != Colours::Invalid) DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, {});
+			if (ss.colour != Colours::Invalid) {
+				DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, {});
+				if (ss.colour2 != Colours::Invalid) {
+					Rect rect = {x, y, x + w - 1, y + h - 1};
+					DrawColourSwatch(rect, ss.colour2, 4, true, {});
+				}
+			}
 			colour = TC_BLACK;
 		} else if (ss.flags.Test(ViewportStringFlag::TransparentRect)) {
 			DrawFrameRect(x, y, x + w - 1, y + h - 1, ss.colour, FrameFlag::Transparent);
