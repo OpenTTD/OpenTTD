@@ -184,7 +184,7 @@ class ReplaceVehicleWindow : public Window {
 			EngList_Sort(list, &EngineNumberSorter);
 		} else {
 			_engine_sort_direction = this->descending_sort_order;
-			EngList_Sort(list, _engine_sort_functions[this->window_number][this->sort_criteria]);
+			EngList_Sort(list, GetEngineSortFunctions(this->vehicle_type)[this->sort_criteria]);
 		}
 
 		this->engines[side].clear();
@@ -401,7 +401,7 @@ public:
 				break;
 
 			case WID_RV_SORT_DROPDOWN:
-				return GetString(std::data(_engine_sort_listing[this->window_number])[this->sort_criteria]);
+				return GetString(GetEngineSortNames(this->window_number)[this->sort_criteria]);
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE:
 				if (const Group *g = Group::GetIfValid(this->sel_group); g != nullptr) {

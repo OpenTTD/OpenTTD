@@ -407,6 +407,17 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 	&AircraftRangeSorter,
 }};
 
+/**
+ * Get the engine sorter functions for a \c VehicleType
+ * @param vehicle_type the vehicle type
+ * @return list of sorter functions.
+ */
+std::span<EngList_SortTypeFunction * const> GetEngineSortFunctions(VehicleType vehicle_type)
+{
+	assert(IsCompanyBuildableVehicleType(vehicle_type));
+	return _engine_sort_functions[to_underlying(vehicle_type)];
+}
+
 /** Dropdown menu strings for the vehicle sort criteria. */
 const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	/* Trains */
@@ -456,6 +467,17 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_CARGO_CAPACITY,
 	STR_SORT_BY_RANGE,
 }};
+
+/**
+ * Get the engine sorter names for a \c VehicleType
+ * @param vehicle_type the vehicle type
+ * @return list of sorter names.
+ */
+std::span<StringID const> GetEngineSortNames(VehicleType vehicle_type)
+{
+	assert(IsCompanyBuildableVehicleType(vehicle_type));
+	return _engine_sort_listing[to_underlying(vehicle_type)];
+}
 
 /**
  * Filters vehicles by cargo and engine (in case of rail vehicle).
@@ -1013,7 +1035,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		/* Draw the value of the currently selected sort property to the right (or left in RTL), if applicable */
 		std::string sort_prop_detail;
 
-		switch (std::data(_engine_sort_listing[type])[sort_criteria]) {
+		switch (GetEngineSortNames(type)[sort_criteria]) {
 			case STR_SORT_BY_ENGINE_ID:
 				/* No extra interesting info to show in this case */
 				break;
@@ -1141,7 +1163,7 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 	if (vehicle_type == VEH_TRAIN && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
 		SetBit(hidden_mask, 4); // tractive effort
 	}
-	ShowDropDownMenu(w, _engine_sort_listing[vehicle_type], selected, button, 0, hidden_mask);
+	ShowDropDownMenu(w, GetEngineSortNames(vehicle_type), selected, button, 0, hidden_mask);
 }
 
 /**
@@ -1480,10 +1502,10 @@ struct BuildVehicleWindow : Window {
 
 		/* and then sort engines */
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
+		EngList_SortPartial(list, GetEngineSortFunctions(this->vehicle_type)[this->sort_criteria], 0, num_engines);
 
 		/* and finally sort wagons */
-		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
+		EngList_SortPartial(list, GetEngineSortFunctions(this->vehicle_type)[this->sort_criteria], num_engines, list.size() - num_engines);
 	}
 
 	/** Figure out what road vehicle EngineIDs to put in the list. */
@@ -1622,7 +1644,7 @@ struct BuildVehicleWindow : Window {
 		}
 
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_Sort(this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
+		EngList_Sort(this->eng_list, GetEngineSortFunctions(this->vehicle_type)[this->sort_criteria]);
 
 		this->eng_list.swap(list);
 		GUIEngineListAddChildren(this->eng_list, list, EngineID::Invalid(), 0);
@@ -1812,7 +1834,7 @@ struct BuildVehicleWindow : Window {
 				return GetString((this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
 
 			case WID_BV_SORT_DROPDOWN:
-				return GetString(std::data(_engine_sort_listing[this->vehicle_type])[this->sort_criteria]);
+				return GetString(GetEngineSortNames(this->vehicle_type)[this->sort_criteria]);
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
 				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
