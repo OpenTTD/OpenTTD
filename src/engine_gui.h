@@ -47,8 +47,9 @@ extern bool _engine_sort_direction;
 extern uint8_t _engine_sort_last_criteria[];
 extern bool _engine_sort_last_order[];
 extern bool _engine_sort_show_hidden_engines[];
-extern const std::initializer_list<const StringID> _engine_sort_listing[];
-extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
+
+std::span<StringID const> GetEngineSortNames(VehicleType vehicle_type);
+std::span<EngList_SortTypeFunction * const> GetEngineSortFunctions(VehicleType vehicle_type);
 
 /* Functions in build_vehicle_gui.cpp */
 uint GetEngineListHeight(VehicleType type);
