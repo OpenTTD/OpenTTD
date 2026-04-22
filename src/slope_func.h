@@ -23,7 +23,7 @@
  */
 static constexpr inline bool IsValidCorner(Corner corner)
 {
-	return IsInsideMM(corner, 0, CORNER_END);
+	return IsInsideMM(corner, Corner::Begin, Corner::End);
 }
 
 
@@ -99,7 +99,7 @@ inline bool IsSlopeWithOneCornerRaised(Slope s)
 inline Slope SlopeWithOneCornerRaised(Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return (Slope)(1 << corner);
+	return Slope(1 << to_underlying(corner));
 }
 
 /**
@@ -127,13 +127,13 @@ inline Corner GetHighestSlopeCorner(Slope s)
 {
 	switch (RemoveHalftileSlope(s)) {
 		case SLOPE_W:
-		case SLOPE_STEEP_W: return CORNER_W;
+		case SLOPE_STEEP_W: return Corner::W;
 		case SLOPE_S:
-		case SLOPE_STEEP_S: return CORNER_S;
+		case SLOPE_STEEP_S: return Corner::S;
 		case SLOPE_E:
-		case SLOPE_STEEP_E: return CORNER_E;
+		case SLOPE_STEEP_E: return Corner::E;
 		case SLOPE_N:
-		case SLOPE_STEEP_N: return CORNER_N;
+		case SLOPE_STEEP_N: return Corner::N;
 		default: NOT_REACHED();
 	}
 }
@@ -183,7 +183,7 @@ static constexpr inline int GetSlopeMaxPixelZ(Slope s)
  */
 inline Corner OppositeCorner(Corner corner)
 {
-	return (Corner)(corner ^ 2);
+	return static_cast<Corner>(to_underlying(corner) ^ 2);
 }
 
 /**
@@ -274,7 +274,7 @@ inline Slope InclinedSlope(DiagDirection dir)
 static constexpr inline Slope HalftileSlope(Slope s, Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return (Slope)(s | SLOPE_HALFTILE | (corner << 6));
+	return static_cast<Slope>(s | SLOPE_HALFTILE | (to_underlying(corner) << 6));
 }
 
 

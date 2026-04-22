@@ -54,8 +54,8 @@ TEST_CASE("PartialPixelSlopeAdditionTest - Diagonal slopes with their opposite s
 
 TEST_CASE("PartialPixelSlopeAdditionTest - Half tile slopes with their opposite half tile slope result in a flat but elevated slope")
 {
-	CHECK(CheckPartialPixelZSlopeAddition(SLOPE_ELEVATED, HalftileSlope(SLOPE_N, CORNER_N), HalftileSlope(SLOPE_S, CORNER_S)));
-	CHECK(CheckPartialPixelZSlopeAddition(SLOPE_ELEVATED, HalftileSlope(SLOPE_E, CORNER_E), HalftileSlope(SLOPE_W, CORNER_W)));
+	CHECK(CheckPartialPixelZSlopeAddition(SLOPE_ELEVATED, HalftileSlope(SLOPE_N, Corner::N), HalftileSlope(SLOPE_S, Corner::S)));
+	CHECK(CheckPartialPixelZSlopeAddition(SLOPE_ELEVATED, HalftileSlope(SLOPE_E, Corner::E), HalftileSlope(SLOPE_W, Corner::W)));
 }
 
 TEST_CASE("PartialPixelSlopeAdditionTest - Two opposite one corner slopes result in the two corner slope with opposite corners")
@@ -74,10 +74,10 @@ TEST_CASE("PartialPixelSlopeAdditionTest - A steep slope is a one corner slope o
 
 TEST_CASE("PartialPixelSlopeAdditionTest - A half tile steep slope is a one corner half tile on top of a three corner slope")
 {
-	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_N, CORNER_N), HalftileSlope(SLOPE_N, CORNER_N), SLOPE_ENW));
-	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_E, CORNER_E), HalftileSlope(SLOPE_E, CORNER_E), SLOPE_SEN));
-	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_S, CORNER_S), HalftileSlope(SLOPE_S, CORNER_S), SLOPE_WSE));
-	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_W, CORNER_W), HalftileSlope(SLOPE_W, CORNER_W), SLOPE_NWS));
+	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_N, Corner::N), HalftileSlope(SLOPE_N, Corner::N), SLOPE_ENW));
+	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_E, Corner::E), HalftileSlope(SLOPE_E, Corner::E), SLOPE_SEN));
+	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_S, Corner::S), HalftileSlope(SLOPE_S, Corner::S), SLOPE_WSE));
+	CHECK(CheckPartialPixelZSlopeAddition(HalftileSlope(SLOPE_STEEP_W, Corner::W), HalftileSlope(SLOPE_W, Corner::W), SLOPE_NWS));
 }
 
 /**
@@ -390,9 +390,9 @@ TEST_CASE("PartialPixelTest - Three corner up slopes - SLOPE_NWS")
 		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8}));
 }
 
-TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/CORNER_N")
+TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/Corner::N")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_N, CORNER_N), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_N, Corner::N), {
 		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
 		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0,
 		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0,
@@ -411,9 +411,9 @@ TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/CORNER_N")
 		8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 }
 
-TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/CORNER_E")
+TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/Corner::E")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_E, CORNER_E), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_E, Corner::E), {
 		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
 		0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
 		0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
@@ -432,9 +432,9 @@ TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/CORNER_E")
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8}));
 }
 
-TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/CORNER_S")
+TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/Corner::S")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_S, CORNER_S), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_S, Corner::S), {
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8,
@@ -453,9 +453,9 @@ TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/CORNER_S")
 		0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8}));
 }
 
-TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/CORNER_W")
+TEST_CASE("PartialPixelTest - Normal half tile slopes - SLOPE/Corner::W")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_W, CORNER_W), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_W, Corner::W), {
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -558,9 +558,9 @@ TEST_CASE("PartialPixelTest - Steep slopes - SLOPE_STEEP_W")
 		15, 15, 14, 14, 13, 13, 12, 12, 11, 11, 10, 10,  9,  9,  8,  8}));
 }
 
-TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/CORNER_N")
+TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/Corner::N")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_N, CORNER_N), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_N, Corner::N), {
 		16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
 		16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,  8,
 		16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,  8,  7,
@@ -579,9 +579,9 @@ TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/COR
 		16,  8,  7,  7,  6,  6,  5,  5,  4,  4,  3,  3,  2,  2,  1,  1}));
 }
 
-TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/CORNER_E")
+TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/Corner::E")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_E, CORNER_E), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_E, Corner::E), {
 		16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
 		 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
 		 7,  8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
@@ -600,9 +600,9 @@ TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/COR
 		 1,  1,  2,  2,  3,  3,  4,  4,  5,  5,  6,  6,  7,  7,  8, 16}));
 }
 
-TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/CORNER_S")
+TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/Corner::S")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_S, CORNER_S), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_S, Corner::S), {
 		 0,  1,  1,  2,  2,  3,  3,  4,  4,  5,  5,  6,  6,  7,  7,  8,
 		 1,  1,  2,  2,  3,  3,  4,  4,  5,  5,  6,  6,  7,  7,  8, 16,
 		 1,  2,  2,  3,  3,  4,  4,  5,  5,  6,  6,  7,  7,  8, 16, 16,
@@ -621,9 +621,9 @@ TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/COR
 		 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16}));
 }
 
-TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/CORNER_W")
+TEST_CASE("PartialPixelTest - Half tile on top of steep slopes - SLOPE_STEEP/Corner::W")
 {
-	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_W, CORNER_W), {
+	CHECK(CheckPartialPixelZ(HalftileSlope(SLOPE_STEEP_W, Corner::W), {
 		 8,  7,  7,  6,  6,  5,  5,  4,  4,  3,  3,  2,  2,  1,  1,  0,
 		16,  8,  7,  7,  6,  6,  5,  5,  4,  4,  3,  3,  2,  2,  1,  1,
 		16, 16,  8,  7,  7,  6,  6,  5,  5,  4,  4,  3,  3,  2,  2,  1,
