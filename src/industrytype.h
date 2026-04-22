@@ -205,7 +205,7 @@ struct IndustryTileSpec {
 	 * @param is_construction Chooses between animation or construction stage.
 	 */
 	constexpr IndustryTileSpec(int8_t cargo_acceptance1, std::variant<CargoLabel, MixedCargoType> cargo1, int8_t cargo_acceptance2, std::variant<CargoLabel, MixedCargoType> cargo2, bool is_construction) :
-		IndustryTileSpec(cargo_acceptance1, cargo1, cargo_acceptance2, cargo2, 0, CT_INVALID, SLOPE_STEEP, INDUSTRYTILE_NOANIM, INDUSTRYTILE_NOANIM, is_construction)
+		IndustryTileSpec(cargo_acceptance1, cargo1, cargo_acceptance2, cargo2, 0, CT_INVALID, Corner::Steep, INDUSTRYTILE_NOANIM, INDUSTRYTILE_NOANIM, is_construction)
 	{}
 };
 

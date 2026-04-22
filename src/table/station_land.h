@@ -860,10 +860,10 @@ static const DrawTileSpriteSpan _station_display_datas_oilrig[] = {
 };
 
 static const DrawTileSpriteSpan _station_display_datas_dock[] = {
-	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_SW,      _station_display_datas_76)
-	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NW,      _station_display_datas_77)
-	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NE,      _station_display_datas_78)
-	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_SE,      _station_display_datas_79)
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_SW.base(), _station_display_datas_76)
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NW.base(), _station_display_datas_77)
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NE.base(), _station_display_datas_78)
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_SE.base(), _station_display_datas_79)
 	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_80)
 	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_81)
 };
