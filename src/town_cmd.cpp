@@ -1076,7 +1076,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 			if (!_generating_world && Chance16(1, 10)) {
 				/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
 				res = std::get<0>(Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater},
-						tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, false));
+						tile, Chance16(1, 16) ? cur_slope : cur_slope.Flip(SLOPE_ELEVATED), false));
 			}
 			if (res.Failed() && Chance16(1, 3)) {
 				/* We can consider building on the slope, though. */
@@ -1108,7 +1108,7 @@ static void LevelTownLand(TileIndex tile)
 	if (tileh == SLOPE_FLAT) return;
 
 	/* First try up, then down */
-	if (!TerraformTownTile(tile, ~tileh & SLOPE_ELEVATED, true)) {
+	if (!TerraformTownTile(tile, Slope(tileh).Reset(SLOPE_ELEVATED), true)) {
 		TerraformTownTile(tile, tileh & SLOPE_ELEVATED, false);
 	}
 }
@@ -1146,20 +1146,20 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 
 	RoadBits rb_template;
 
-	switch (GetTileSlope(tile)) {
+	switch (GetTileSlope(tile).base()) {
 		default:       rb_template = ROAD_ALL; break;
-		case SLOPE_W:  rb_template = {RoadBit::NW, RoadBit::SW}; break;
-		case SLOPE_SW: rb_template = ROAD_Y | RoadBit::SW; break;
-		case SLOPE_S:  rb_template = {RoadBit::SW, RoadBit::SE}; break;
-		case SLOPE_SE: rb_template = ROAD_X | RoadBit::SE; break;
-		case SLOPE_E:  rb_template = {RoadBit::SE, RoadBit::NE}; break;
-		case SLOPE_NE: rb_template = ROAD_Y | RoadBit::NE; break;
-		case SLOPE_N:  rb_template = {RoadBit::NE, RoadBit::NW}; break;
-		case SLOPE_NW: rb_template = ROAD_X | RoadBit::NW; break;
-		case SLOPE_STEEP_W:
-		case SLOPE_STEEP_S:
-		case SLOPE_STEEP_E:
-		case SLOPE_STEEP_N:
+		case Slope{Corner::W}.base(): rb_template = {RoadBit::NW, RoadBit::SW}; break;
+		case Slope{Corner::S}.base(): rb_template = {RoadBit::SW, RoadBit::SE}; break;
+		case Slope{Corner::E}.base(): rb_template = {RoadBit::SE, RoadBit::NE}; break;
+		case Slope{Corner::N}.base(): rb_template = {RoadBit::NE, RoadBit::NW}; break;
+		case SLOPE_SW.base(): rb_template = ROAD_Y | RoadBit::SW; break;
+		case SLOPE_SE.base(): rb_template = ROAD_X | RoadBit::SE; break;
+		case SLOPE_NE.base(): rb_template = ROAD_Y | RoadBit::NE; break;
+		case SLOPE_NW.base(): rb_template = ROAD_X | RoadBit::NW; break;
+		case SLOPE_STEEP_W.base():
+		case SLOPE_STEEP_S.base():
+		case SLOPE_STEEP_E.base():
+		case SLOPE_STEEP_N.base():
 			rb_template = {};
 			break;
 	}
@@ -1289,7 +1289,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	/* Make sure the direction is compatible with the slope.
 	 * Well we check if the slope has an up bit set in the
 	 * reverse direction. */
-	if (slope != SLOPE_FLAT && slope & InclinedSlope(bridge_dir)) return false;
+	if (slope != SLOPE_FLAT && slope.Any(InclinedSlope(bridge_dir))) return false;
 
 	/* Assure that the bridge is connectable to the start side */
 	if (!GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(bridge_dir))).Any(DiagDirToRoadBits(bridge_dir))) return false;
@@ -1341,7 +1341,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 			if (GetTunnelBridgeTransportType(search) != TRANSPORT_ROAD) continue;
 
 			/* If the bridge is facing the same direction as the proposed bridge, we've found a redundant bridge. */
-			if (GetTileSlope(search) & InclinedSlope(ReverseDiagDir(bridge_dir))) return false;
+			if (GetTileSlope(search).Any(InclinedSlope(ReverseDiagDir(bridge_dir)))) return false;
 		}
 	}
 

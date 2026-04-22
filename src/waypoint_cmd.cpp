@@ -177,7 +177,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 
 	Slope tileh = GetTileSlope(tile);
 	if (tileh != SLOPE_FLAT &&
-			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
+			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(axis == AXIS_X ? (tileh.Any(SLOPE_SW) && tileh.Any(SLOPE_NE)) : (tileh.Any(SLOPE_SE) && tileh.Any(SLOPE_NW))))) {
 		return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 	}
 

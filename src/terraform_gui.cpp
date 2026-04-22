@@ -405,7 +405,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, bool mode)
 		StringID msg =
 			mode ? STR_ERROR_CAN_T_RAISE_LAND_HERE : STR_ERROR_CAN_T_LOWER_LAND_HERE;
 
-		Command<Commands::TerraformLand>::Post(msg, CcTerraform, tile, SLOPE_N, mode);
+		Command<Commands::TerraformLand>::Post(msg, CcTerraform, tile, Corner::N, mode);
 	} else {
 		assert(_terraform_size != 0);
 		TileArea ta(tile, _terraform_size, _terraform_size);
@@ -432,7 +432,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, bool mode)
 
 		for (TileIndex tile2 : ta) {
 			if (TileHeight(tile2) == h) {
-				Command<Commands::TerraformLand>::Post(tile2, SLOPE_N, mode);
+				Command<Commands::TerraformLand>::Post(tile2, Corner::N, mode);
 			}
 		}
 	}

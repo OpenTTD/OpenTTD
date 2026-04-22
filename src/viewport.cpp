@@ -921,7 +921,7 @@ static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 		if (IsSteepSlope(ti->tileh)) {
 			sel = SPR_HALFTILE_SELECTION_DOWN;
 		} else {
-			sel = ((ti->tileh & SlopeWithOneCornerRaised(opposite_corner)) != 0 ? SPR_HALFTILE_SELECTION_UP : SPR_HALFTILE_SELECTION_FLAT);
+			sel = ti->tileh.Any(SlopeWithOneCornerRaised(opposite_corner)) ? SPR_HALFTILE_SELECTION_UP : SPR_HALFTILE_SELECTION_FLAT;
 		}
 		sel += to_underlying(opposite_corner);
 	} else {
@@ -1143,7 +1143,7 @@ draw_inner:
 			/* Figure out the Z coordinate for the single dot. */
 			int z = 0;
 			FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
-			if (ti->tileh & SLOPE_N) {
+			if (ti->tileh.Test(Corner::N)) {
 				z += TILE_HEIGHT;
 				if (RemoveHalftileSlope(ti->tileh) == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}

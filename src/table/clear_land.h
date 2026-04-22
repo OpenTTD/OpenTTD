@@ -20,28 +20,32 @@ static const SpriteID _landscape_clear_sprites_rough[8] = {
 	SPR_FLAT_ROUGH_LAND_2,
 };
 
-static const uint8_t _fence_mod_by_tileh_sw[32] = {
+/** Lookup table to convert tile's slope into corresponding SW fence sprite offset. */
+static constexpr TypedIndexContainer<std::array<uint8_t, 32>, Slope> _fence_mod_by_tileh_sw = {
 	0, 2, 4, 0, 0, 2, 4, 0,
 	0, 2, 4, 0, 0, 2, 4, 0,
 	0, 2, 4, 0, 0, 2, 4, 4,
 	0, 2, 4, 2, 0, 2, 4, 0,
 };
 
-static const uint8_t _fence_mod_by_tileh_se[32] = {
+/** Lookup table to convert tile's slope into corresponding SE fence sprite offset. */
+static constexpr TypedIndexContainer<std::array<uint8_t, 32>, Slope> _fence_mod_by_tileh_se = {
 	1, 1, 5, 5, 3, 3, 1, 1,
 	1, 1, 5, 5, 3, 3, 1, 1,
 	1, 1, 5, 5, 3, 3, 1, 5,
 	1, 1, 5, 5, 3, 3, 3, 1,
 };
 
-static const uint8_t _fence_mod_by_tileh_ne[32] = {
+/** Lookup table to convert tile's slope into corresponding NE fence sprite offset. */
+static constexpr TypedIndexContainer<std::array<uint8_t, 32>, Slope> _fence_mod_by_tileh_ne = {
 	0, 0, 0, 0, 4, 4, 4, 4,
 	2, 2, 2, 2, 0, 0, 0, 0,
 	0, 0, 0, 0, 4, 4, 4, 4,
 	2, 2, 2, 2, 0, 2, 4, 0,
 };
 
-static const uint8_t _fence_mod_by_tileh_nw[32] = {
+/** Lookup table to convert tile's slope into corresponding NW fence sprite offset. */
+static constexpr TypedIndexContainer<std::array<uint8_t, 32>, Slope> _fence_mod_by_tileh_nw = {
 	1, 5, 1, 5, 1, 5, 1, 5,
 	3, 1, 3, 1, 3, 1, 3, 1,
 	1, 5, 1, 5, 1, 5, 1, 5,
