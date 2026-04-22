@@ -18,15 +18,18 @@
 /**
  * Enumeration of tile corners
  */
-enum Corner : uint8_t {
-	CORNER_W = 0,
-	CORNER_S = 1,
-	CORNER_E = 2,
-	CORNER_N = 3,
-	CORNER_END,
-	CORNER_INVALID = 0xFF
+enum class Corner : uint8_t {
+	Begin = 0, ///< The lowest valid value.
+	W = Corner::Begin, ///< West tile corner.
+	S, ///< South tile corner.
+	E, ///< East tile corner.
+	N, ///< North tile corner.
+	End, ///< End marker.
+	Invalid = 0xFF, ///< Invalid marker.
 };
 
+/** Bitset of \c Corner elements. */
+using Corners = EnumBitSet<Corner, uint8_t>;
 
 /**
  * Enumeration for the slope-type.
@@ -69,10 +72,10 @@ enum Slope : uint8_t {
 
 	SLOPE_HALFTILE = 0x20,                                  ///< one halftile is leveled (non continuous slope)
 	SLOPE_HALFTILE_MASK = 0xE0,                             ///< three bits used for halftile slopes
-	SLOPE_HALFTILE_W = SLOPE_HALFTILE | (CORNER_W << 6),    ///< the west halftile is leveled (non continuous slope)
-	SLOPE_HALFTILE_S = SLOPE_HALFTILE | (CORNER_S << 6),    ///< the south halftile is leveled (non continuous slope)
-	SLOPE_HALFTILE_E = SLOPE_HALFTILE | (CORNER_E << 6),    ///< the east halftile is leveled (non continuous slope)
-	SLOPE_HALFTILE_N = SLOPE_HALFTILE | (CORNER_N << 6),    ///< the north halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_W = SLOPE_HALFTILE | (to_underlying(Corner::W) << 6), ///< the west halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_S = SLOPE_HALFTILE | (to_underlying(Corner::S) << 6), ///< the south halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_E = SLOPE_HALFTILE | (to_underlying(Corner::E) << 6), ///< the east halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_N = SLOPE_HALFTILE | (to_underlying(Corner::N) << 6), ///< the north halftile is leveled (non continuous slope)
 };
 DECLARE_ENUM_AS_BIT_SET(Slope)
 

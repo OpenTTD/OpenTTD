@@ -52,12 +52,11 @@ public:
 	 */
 	enum Corner {
 		/* Note: these values represent part of the in-game Corner enum */
-		CORNER_W       = ::CORNER_W,       ///< West corner
-		CORNER_S       = ::CORNER_S,       ///< South corner
-		CORNER_E       = ::CORNER_E,       ///< East corner
-		CORNER_N       = ::CORNER_N,       ///< North corner
-
-		CORNER_INVALID = ::CORNER_INVALID, ///< An invalid corner
+		CORNER_W = to_underlying(::Corner::W), ///< West corner.
+		CORNER_S = to_underlying(::Corner::S), ///< South corner.
+		CORNER_E = to_underlying(::Corner::E), ///< East corner.
+		CORNER_N = to_underlying(::Corner::N), ///< North corner.
+		CORNER_INVALID = to_underlying(::Corner::Invalid), ///< An invalid corner
 	};
 
 	/**

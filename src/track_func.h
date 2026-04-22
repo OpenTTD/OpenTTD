@@ -98,9 +98,11 @@ inline TrackBits AxisToTrackBits(Axis a)
  */
 inline TrackBits CornerToTrackBits(Corner corner)
 {
-	extern const TrackBits _corner_to_trackbits[];
+	constexpr EnumIndexArray<TrackBits, Corner, Corner::End> corner_to_trackbits = {
+		TRACK_BIT_LEFT, TRACK_BIT_LOWER, TRACK_BIT_RIGHT, TRACK_BIT_UPPER,
+	};
 	assert(IsValidCorner(corner));
-	return _corner_to_trackbits[corner];
+	return corner_to_trackbits[corner];
 }
 
 /**
