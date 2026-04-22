@@ -2447,7 +2447,7 @@ STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER 
 STR_NETWORK_SERVER_LIST_SERVER_BANNED                           :{SILVER}SERVERN BANNLYSTE DIG
 STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD                          :{SILVER}SERVERN FÖR GAMMAL
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIONERNA MATCHAR EJ
-STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NewGRF Matchar Ej
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF:ER MATCHAR EJ
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Gå med i spelet
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Uppdatera server
@@ -3676,12 +3676,12 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ogiltig industr
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du håller på att göra ändringar i ett pågående spel; detta kan krascha OpenTTD eller orsaka andra fel i spelet. Skicka inte buggrapporter om sådana fel.{}Är du helt säker på detta?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande NewGRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :Kan inte lägga till filen: redan existerande NewGRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel NewGRF laddad)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Kan inte lägga till fil: Gränsen för NewGRF-filer uppnådd
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Kompatibel NewGRF laddad för saknade filer
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad NewGRF-fil har stängts av
+STR_NEWGRF_DISABLED_WARNING                                     :Saknad(e) NewGRF-fil(er) har inaktiverats
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) NewGRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej bugg-rapporter för eventuella resulterande krascher.{}Är du säker på att du vill avpausa?
 
@@ -5102,7 +5102,7 @@ STR_ERROR_BUILDING_IS_PROTECTED                                 :byggnaden är s
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Kan inte röja området...
 STR_ERROR_SITE_UNSUITABLE                                       :platsen passar inte
 STR_ERROR_ALREADY_BUILT                                         :redan byggd
-STR_ERROR_OWNED_BY                                              :{WHITE}... ägs av {STRING}
+STR_ERROR_OWNED_BY                                              :ägs av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :området ägs av ett annat företag
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landskapsarkitektursbegränsning uppnådd
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutrensningsbegränsning uppnådd
@@ -5135,7 +5135,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Kan inte ändra
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :maximal tillåten storlek på lånet är {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Kan inte låna mer pengar...
 STR_ERROR_LOAN_ALREADY_REPAID                                   :det finns inget lån att återbetala
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} krävs
+STR_ERROR_CURRENCY_REQUIRED                                     :{CURRENCY_LONG} krävs
 STR_ERROR_CAN_T_REPAY_LOAN                                      :Kan inte återbetala lånet...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan inte ge bort pengar som är lånade från banken...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :Kan inte ge pengar till detta företag...
@@ -5196,7 +5196,7 @@ STR_ERROR_STATION_DISALLOWED_LENGTH                             :längden stöds
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :för många stationer/hållplatser
 STR_ERROR_TOO_MANY_STATION_SPECS                                :för många delar på järnvägsstationen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :för många busshållplatser
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För många lastbryggor
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :för många lastbryggor
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :för nära en annan hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :för nära en annan flygplats
 STR_ERROR_CAN_T_RENAME_STATION                                  :Kan inte byta namn på station...
@@ -5250,9 +5250,9 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Kan inte bygga 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :Kan inte byta namn på terminal
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... måste stoppas i en depå
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :måste stoppas i en depå
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :måste stoppas inuti en depå
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... måste stoppas i en hangar
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :måste stoppas inne i en depå
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :måste stoppas inne i en depå
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :måste stoppas inne i en hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :tåg kan bara ändras när de står stilla inuti en depå
 STR_ERROR_TRAIN_TOO_LONG                                        :tåget är för långt

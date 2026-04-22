@@ -1733,12 +1733,12 @@ STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może występować okresowo. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
 
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Pozwól pociągom obrócić się przy zawracaniu: {STRING}
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Wybierz kiedy pociągi mogą obrócić się, aby zmienić kierunek jazdy. Z ustawnieniem "Wszędzie", pociągi mogą obrócić się wszędzie. Z "Tylko koniec trasy", pociągi nie obrócą się na stacjach, jeśli jest możliwa trasa na przód. Z "Nigdzie", pociągi nie będą mogłz się obracać i cofać jeżeli będzie to potrzebne, lecz w zwolnionym tempie, gdy tylni pojazd nie ma kabiny maszynisty.
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Wybierz kiedy pociągi mogą obrócić się, aby zmienić kierunek jazdy. Z ustawnieniem "Wszędzie", pociągi mogą obrócić się wszędzie. Z "Tylko koniec toru", pociągi nie obrócą się na stacjach, jeśli jest możliwa trasa na przód. Z "Nigdzie", pociągi nie będą mogły się obracać i cofać jeżeli będzie to potrzebne, lecz w zwolnionym tempie, gdy tylni pojazd nie ma kabiny maszynisty.
 
 ###length 3
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Zawsze
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Na krańcu toru
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Nigdy
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Wszędzie
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Tylko koniec toru
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Nigdzie
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrofy, które mogą okazjonalnie zablokować lub zniszczyć pojazdy albo infrastrukturę
