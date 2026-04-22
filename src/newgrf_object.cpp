@@ -322,7 +322,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		}
 
 		/* Tile information. */
-		case 0x41: return GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile);
+		case 0x41: return GetTileSlope(this->tile).base() << 8 | GetTerrainType(this->tile);
 
 		/* Construction date */
 		case 0x42: return this->obj->build_date.base();

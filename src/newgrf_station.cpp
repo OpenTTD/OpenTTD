@@ -301,9 +301,9 @@ TownScopeResolver *StationResolverObject::GetTown()
 					if (parameter != 0) tile = GetNearbyTile(parameter, tile, true, this->axis); // only perform if it is required
 
 					Slope tileh = GetTileSlope(tile);
-					bool swap = (this->axis == AXIS_Y && HasBit(tileh, to_underlying(Corner::W)) != HasBit(tileh, to_underlying(Corner::E)));
+					bool swap = (this->axis == AXIS_Y && tileh.Test(Corner::W) != tileh.Test(Corner::E));
 
-					return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
+					return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW.base() : 0);
 				}
 				break;
 
@@ -362,9 +362,9 @@ TownScopeResolver *StationResolverObject::GetTown()
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 
 			Slope tileh = GetTileSlope(tile);
-			bool swap = (axis == AXIS_Y && HasBit(tileh, to_underlying(Corner::W)) != HasBit(tileh, to_underlying(Corner::E)));
+			bool swap = (axis == AXIS_Y && tileh.Test(Corner::W) != tileh.Test(Corner::E));
 
-			return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
+			return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW.base() : 0);
 		}
 
 		case 0x68: { // Station info of nearby tiles
@@ -701,7 +701,7 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 	Slope slope = GetTileSlope(cur_tile);
 
 	StationResolverObject object(statspec, nullptr, cur_tile, CBID_STATION_LAND_SLOPE_CHECK,
-			(slope << 4) | (slope ^ (axis == AXIS_Y && HasBit(slope, to_underlying(Corner::W)) != HasBit(slope, to_underlying(Corner::E)) ? SLOPE_EW : 0)),
+			(slope.base() << 4) | Slope(slope).Flip(axis == AXIS_Y && slope.Test(Corner::W) != slope.Test(Corner::E) ? SLOPE_EW : SLOPE_FLAT).base(),
 			(numtracks << 24) | (plat_len << 16) | (axis == AXIS_Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff)));
 	object.station_scope.axis = axis;
 

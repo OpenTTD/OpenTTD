@@ -502,7 +502,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 			flags.Test(DoCommandFlag::Auto) ||
 			(_current_company == OWNER_WATER &&
 				(indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) ||
-				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
+				GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused.Test(Corner::HalfTile)))) {
 
 		if (flags.Test(DoCommandFlag::Auto)) {
 			return CommandCostWithParam(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY, indspec->name);
@@ -1453,10 +1453,10 @@ bool IsSlopeRefused(Slope current, Slope refused)
 
 		Slope t = ComplementSlope(current);
 
-		if ((refused & SLOPE_W) && (t & SLOPE_NW)) return true;
-		if ((refused & SLOPE_S) && (t & SLOPE_NE)) return true;
-		if ((refused & SLOPE_E) && (t & SLOPE_SW)) return true;
-		if ((refused & SLOPE_N) && (t & SLOPE_SE)) return true;
+		if (refused.Test(Corner::W) && t.Any(SLOPE_NW)) return true;
+		if (refused.Test(Corner::S) && t.Any(SLOPE_NE)) return true;
+		if (refused.Test(Corner::E) && t.Any(SLOPE_SW)) return true;
+		if (refused.Test(Corner::N) && t.Any(SLOPE_SE)) return true;
 	}
 
 	return false;
@@ -1494,7 +1494,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
 
 			/* Perform land/water check if not disabled */
-			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) != ind_behav.Test(IndustryBehaviour::BuiltOnWater))) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
+			if (!its->slopes_refused.Test(Corner::HalfTile) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) != ind_behav.Test(IndustryBehaviour::BuiltOnWater))) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 
 			if (ind_behav.Any({IndustryBehaviour::OnlyInTown, IndustryBehaviour::Town1200More}) || // Tile must be a house
 					(ind_behav.Test(IndustryBehaviour::OnlyNearTown) && IsTileType(cur_tile, TileType::House))) { // Tile is allowed to be a house (and it is a house)
@@ -1660,7 +1660,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
-			if (std::get<0>(Command<Commands::TerraformLand>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), tile_walk, SLOPE_N, curh <= h)).Failed()) {
+			if (std::get<0>(Command<Commands::TerraformLand>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), tile_walk, Corner::N, curh <= h)).Failed()) {
 				return false;
 			}
 		}
@@ -1674,7 +1674,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 				/* We give the terraforming for free here, because we can't calculate
 				 *  exact cost in the test-round, and as we all know, that will cause
 				 *  a nice assert if they don't match ;) */
-				Command<Commands::TerraformLand>::Do(flags, tile_walk, SLOPE_N, curh <= h);
+				Command<Commands::TerraformLand>::Do(flags, tile_walk, Corner::N, curh <= h);
 				curh += (curh > h) ? -1 : 1;
 			}
 		}

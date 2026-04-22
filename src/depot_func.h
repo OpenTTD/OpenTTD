@@ -30,7 +30,7 @@ inline bool CanBuildDepotByTileh(DiagDirection direction, Slope tileh)
 	Slope entrance_corners = InclinedSlope(direction);
 	/* For steep slopes both entrance corners must be raised (i.e. neither of them is the lowest corner),
 	 * For non-steep slopes at least one corner must be raised. */
-	return IsSteepSlope(tileh) ? (tileh & entrance_corners) == entrance_corners : (tileh & entrance_corners) != 0;
+	return IsSteepSlope(tileh) ? tileh.All(entrance_corners) : tileh.Any(entrance_corners);
 }
 
 #endif /* DEPOT_FUNC_H */

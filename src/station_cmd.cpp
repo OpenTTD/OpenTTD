@@ -3243,13 +3243,13 @@ static bool DrawCustomStationFoundations(const StationSpec *statspec, BaseStatio
 
 	if (statspec->flags.Test(StationSpecFlag::ExtendedFoundations)) {
 		/* Station provides extended foundations. */
-		static constexpr uint8_t foundation_parts[] = {
+		static constexpr TypedIndexContainer<std::array<uint8_t, 15>, Slope> foundation_parts = {
 			UINT8_MAX, UINT8_MAX, UINT8_MAX,         0, // Invalid,  Invalid,   Invalid,   SLOPE_SW
 			UINT8_MAX,         1,         2,         3, // Invalid,  SLOPE_EW,  SLOPE_SE,  SLOPE_WSE
 			UINT8_MAX,         4,         5,         6, // Invalid,  SLOPE_NW,  SLOPE_NS,  SLOPE_NWS
 			        7,         8,         9,            // SLOPE_NE, SLOPE_ENW, SLOPE_SEN
 		};
-		assert(ti->tileh < std::size(foundation_parts));
+		assert(ti->tileh.base() < std::size(foundation_parts));
 		if (foundation_parts[ti->tileh] == UINT8_MAX) return false;
 
 		AddSortableSpriteToDraw(image + foundation_parts[ti->tileh], PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {}});
@@ -3257,13 +3257,13 @@ static bool DrawCustomStationFoundations(const StationSpec *statspec, BaseStatio
 		/* Draw simple foundations, built up from 8 possible foundation sprites.
 		 * Each set bit represents one of the eight composite sprites to be drawn.
 		 * 'Invalid' entries will not drawn but are included for completeness. */
-		static constexpr uint8_t composite_foundation_parts[] = {
+		static constexpr TypedIndexContainer<std::array<uint8_t, 15>, Slope> composite_foundation_parts = {
 			0b0000'0000, 0b1101'0001, 0b1110'0100, 0b1110'0000, // Invalid,  Invalid,   Invalid,   SLOPE_SW
 			0b1100'1010, 0b1100'1001, 0b1100'0100, 0b1100'0000, // Invalid,  SLOPE_EW,  SLOPE_SE,  SLOPE_WSE
 			0b1101'0010, 0b1001'0001, 0b1110'0100, 0b1010'0000, // Invalid,  SLOPE_NW,  SLOPE_NS,  SLOPE_NWS
 			0b0100'1010, 0b0000'1001, 0b0100'0100,              // SLOPE_NE, SLOPE_ENW, SLOPE_SEN
 		};
-		assert(ti->tileh < std::size(composite_foundation_parts));
+		assert(ti->tileh.base() < std::size(composite_foundation_parts));
 
 		uint8_t parts = composite_foundation_parts[ti->tileh];
 

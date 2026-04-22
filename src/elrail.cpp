@@ -209,7 +209,7 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 {
 	if (IsTileType(tile, TileType::TunnelBridge)) {
 		if (IsTunnel(tile)) {
-			*tileh = SLOPE_STEEP; // XXX - Hack to make tunnel entrances to always have a pylon
+			*tileh = Slope(Corner::Steep); // XXX - Hack to make tunnel entrances to always have a pylon
 		} else if (*tileh != SLOPE_FLAT) {
 			*tileh = SLOPE_FLAT;
 		} else {
@@ -311,12 +311,12 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	SpriteID pylon_halftile = (halftile_corner != Corner::Invalid) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
 
 	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
-		/* Separete constant for each array member in order to MVSC compile it correctly. */
-		static constexpr Corners edge_corners_diagdir_NE = Corners{Corner::N, Corner::E}; // DIAGDIR_NE
-		static constexpr Corners edge_corners_diagdir_SE = Corners{Corner::S, Corner::E}; // DIAGDIR_SE
-		static constexpr Corners edge_corners_diagdir_SW = Corners{Corner::S, Corner::W}; // DIAGDIR_SW
-		static constexpr Corners edge_corners_diagdir_NW = Corners{Corner::N, Corner::W}; // DIAGDIR_NW
-		static constexpr std::array<Corners, DIAGDIR_END> edge_corners = {edge_corners_diagdir_NE, edge_corners_diagdir_SE, edge_corners_diagdir_SW, edge_corners_diagdir_NW};
+		static constexpr std::array<Slope, DIAGDIR_END> edge_corners = {
+			SLOPE_NE, // DIAGDIR_NE
+			SLOPE_SE, // DIAGDIR_SE
+			SLOPE_SW, // DIAGDIR_SW
+			SLOPE_NW, // DIAGDIR_NW
+		};
 		SpriteID pylon_base = (halftile_corner != Corner::Invalid && edge_corners[i].Test(halftile_corner)) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		int elevation = GetPCPElevation(ti->tile, i);
@@ -472,7 +472,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		SpriteID wire_base = (t == halftile_track) ? wire_halftile : wire_normal;
 		uint8_t pcp_config = pcp_status.Test(_pcp_positions[t][0]) +
 			(pcp_status.Test(_pcp_positions[t][1]) << 1);
-		int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; // tileh for the slopes, 0 otherwise
+		int tileh_selector = !(tileh[TS_HOME].base() % 3) * tileh[TS_HOME].base() / 3; // tileh for the slopes, 0 otherwise
 
 		assert(pcp_config != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
 		assert(!IsSteepSlope(tileh[TS_HOME]));
