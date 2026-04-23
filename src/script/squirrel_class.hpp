@@ -16,7 +16,7 @@
  * The template to define classes in Squirrel. It takes care of the creation
  *  and calling of such classes, to minimize the API layer.
  */
-template <class CL, ScriptType ST>
+template <class Tcls, ScriptType Tscript_type>
 class DefSQClass {
 private:
 	std::string_view classname;
@@ -37,11 +37,11 @@ public:
 	 * @param params String describing the types of the parameters.
 	 * @param suspendable Whether this function can be suspended, or not.
 	 */
-	template <typename Func>
-	void DefSQMethod(Squirrel &engine, Func function_proc, std::string_view function_name, std::string_view params = {}, bool suspendable = false)
+	template <typename Tfunc>
+	void DefSQMethod(Squirrel &engine, Tfunc function_proc, std::string_view function_name, std::string_view params = {}, bool suspendable = false)
 	{
 		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQNonStaticCallback<CL, Func, ST>, params, &function_proc, sizeof(function_proc), suspendable);
+		engine.AddMethod(function_name, DefSQNonStaticCallback<Tcls, Tfunc, Tscript_type>, params, &function_proc, sizeof(function_proc), suspendable);
 	}
 
 	/**
@@ -51,11 +51,11 @@ public:
 	 * @param function_name The name of the function.
 	 * @param suspendable Whether this function can be suspended, or not.
 	 */
-	template <typename Func>
-	void DefSQAdvancedMethod(Squirrel &engine, Func function_proc, std::string_view function_name, bool suspendable = false)
+	template <typename Tfunc>
+	void DefSQAdvancedMethod(Squirrel &engine, Tfunc function_proc, std::string_view function_name, bool suspendable = false)
 	{
 		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQAdvancedNonStaticCallback<CL, Func, ST>, {}, &function_proc, sizeof(function_proc), suspendable);
+		engine.AddMethod(function_name, DefSQAdvancedNonStaticCallback<Tcls, Tfunc, Tscript_type>, {}, &function_proc, sizeof(function_proc), suspendable);
 	}
 
 	/**
@@ -69,11 +69,11 @@ public:
 	 * @param params String describing the types of the parameters.
 	 * @param suspendable Whether this function can be suspended, or not.
 	 */
-	template <typename Func>
-	void DefSQStaticMethod(Squirrel &engine, Func function_proc, std::string_view function_name, std::string_view params = {}, bool suspendable = false)
+	template <typename Tfunc>
+	void DefSQStaticMethod(Squirrel &engine, Tfunc function_proc, std::string_view function_name, std::string_view params = {}, bool suspendable = false)
 	{
 		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQStaticCallback<CL, Func>, params, &function_proc, sizeof(function_proc), suspendable);
+		engine.AddMethod(function_name, DefSQStaticCallback<Tcls, Tfunc>, params, &function_proc, sizeof(function_proc), suspendable);
 	}
 
 	/**
@@ -83,15 +83,15 @@ public:
 	 * @param function_name The name of the function.
 	 * @param suspendable Whether this function can be suspended, or not.
 	 */
-	template <typename Func>
-	void DefSQAdvancedStaticMethod(Squirrel &engine, Func function_proc, std::string_view function_name, bool suspendable = false)
+	template <typename Tfunc>
+	void DefSQAdvancedStaticMethod(Squirrel &engine, Tfunc function_proc, std::string_view function_name, bool suspendable = false)
 	{
 		using namespace SQConvert;
-		engine.AddMethod(function_name, DefSQAdvancedStaticCallback<CL, Func>, {}, &function_proc, sizeof(function_proc), suspendable);
+		engine.AddMethod(function_name, DefSQAdvancedStaticCallback<Tcls, Tfunc>, {}, &function_proc, sizeof(function_proc), suspendable);
 	}
 
-	template <typename Var>
-	void DefSQConst(Squirrel &engine, Var value, std::string_view var_name)
+	template <typename Tvar>
+	void DefSQConst(Squirrel &engine, Tvar value, std::string_view var_name)
 	{
 		engine.AddConst(var_name, value);
 	}
@@ -106,17 +106,17 @@ public:
 		engine.AddClassBegin(this->classname, parent_class);
 	}
 
-	template <typename Func>
+	template <typename Tfunc>
 	void AddConstructor(Squirrel &engine, std::string_view params)
 	{
 		using namespace SQConvert;
-		engine.AddMethod("constructor", DefSQConstructorCallback<CL, Func>, params);
+		engine.AddMethod("constructor", DefSQConstructorCallback<Tcls, Tfunc>, params);
 	}
 
 	void AddSQAdvancedConstructor(Squirrel &engine)
 	{
 		using namespace SQConvert;
-		engine.AddMethod("constructor", DefSQAdvancedConstructorCallback<CL>);
+		engine.AddMethod("constructor", DefSQAdvancedConstructorCallback<Tcls>);
 	}
 
 	void PostRegister(Squirrel &engine)

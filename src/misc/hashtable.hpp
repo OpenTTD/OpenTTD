@@ -145,11 +145,11 @@ struct HashTableSlot {
  *    - public 'equality' operator to compare the key with another one
  *        bool operator==(const Key &other) const;
  */
-template <class Titem, int Thash_bits_>
+template <class Titem, int Thash_bits>
 class HashTable {
 public:
 	typedef typename Titem::Key Tkey; ///< Make Titem::Key a property of HashTable.
-	static constexpr int HASH_BITS = Thash_bits_; ///< Publish num of hash bits.
+	static constexpr int HASH_BITS = Thash_bits; ///< Publish num of hash bits.
 	static constexpr int CAPACITY = 1 << HASH_BITS; ///< And num of slots 2^bits.
 
 protected:

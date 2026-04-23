@@ -157,7 +157,7 @@ public:
 	static SQInteger _cloned(HSQUIRRELVM);
 
 protected:
-	template <Commands TCmd, typename T> struct ScriptDoCommandHelper;
+	template <Commands Tcmd, typename T> struct ScriptDoCommandHelper;
 
 	/**
 	 * Templated wrapper that exposes the command parameter arguments

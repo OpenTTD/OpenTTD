@@ -78,18 +78,18 @@ enum GroundVehicleFlags : uint8_t {
  * virtual uint16_t      GetMaxTrackSpeed() const = 0;
  * virtual bool        TileMayHaveSlopedTrack() const = 0;
  */
-template <class T, VehicleType Type>
-struct GroundVehicle : public SpecializedVehicle<T, Type> {
+template <class T, VehicleType Tvehicle_type>
+struct GroundVehicle : public SpecializedVehicle<T, Tvehicle_type> {
 	GroundVehicleCache gcache{}; ///< Cache of often calculated values.
 	uint16_t gv_flags = 0; ///< @see GroundVehicleFlags.
 
-	typedef GroundVehicle<T, Type> GroundVehicleBase; ///< Our type
+	typedef GroundVehicle<T, Tvehicle_type> GroundVehicleBase; ///< Our type
 
 	/**
 	 * The constructor at SpecializedVehicle must be called.
 	 * @param index The index into the vehicle pool.
 	 */
-	GroundVehicle(VehicleID index) : SpecializedVehicle<T, Type>(index) {}
+	GroundVehicle(VehicleID index) : SpecializedVehicle<T, Tvehicle_type>(index) {}
 
 	void PowerChanged();
 	void CargoChanged();

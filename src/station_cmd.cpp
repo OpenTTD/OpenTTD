@@ -120,8 +120,8 @@ bool IsHangar(Tile t)
  * @param filter Filter function
  * @return Succeeded command (if zero or one station found) or failed command (for two or more stations found).
  */
-template <class T, class F>
-CommandCost GetStationAround(TileArea ta, StationID closest_station, CompanyID company, T **st, F filter)
+template <class T, class Tfilter_func>
+CommandCost GetStationAround(TileArea ta, StationID closest_station, CompanyID company, T **st, Tfilter_func filter)
 {
 	ta.Expand(1);
 
@@ -1262,8 +1262,8 @@ StationGfx RailStationTileLayout::Iterator::operator*() const
 /**
  * Find a nearby station that joins this station.
  * @tparam T the class to find a station for
- * @tparam error_message the error message when building a station on top of others
- * @tparam F the filter functor type
+ * @tparam Terror_message the error message when building a station on top of others
+ * @tparam Tfilter_func the filter functor type
  * @param existing_station an existing station we build over
  * @param station_to_join the station to join to
  * @param adjacent whether adjacent stations are allowed
@@ -1272,8 +1272,8 @@ StationGfx RailStationTileLayout::Iterator::operator*() const
  * @param filter The filter to remove unwanted stations.
  * @return command cost with the error or 'okay'
  */
-template <class T, StringID error_message, class F>
-CommandCost FindJoiningBaseStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, T **st, F filter)
+template <class T, StringID Terror_message, class Tfilter_func>
+CommandCost FindJoiningBaseStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, T **st, Tfilter_func filter)
 {
 	assert(*st == nullptr);
 	bool check_surrounding = true;
@@ -1282,7 +1282,7 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
 		if (adjacent && existing_station != station_to_join) {
 			/* You can't build an adjacent station over the top of one that
 			 * already exists. */
-			return CommandCost(error_message);
+			return CommandCost(Terror_message);
 		} else {
 			/* Extend the current station, and don't check whether it will
 			 * be near any other stations. */

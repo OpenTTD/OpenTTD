@@ -157,28 +157,28 @@ public:
 
 	/**
 	 * Get parent widget of type NWID.
-	 * @tparam NWID Type of the nested widget.
+	 * @tparam T Type of the nested widget.
 	 * @returns Parent widget, or nullptr if no widget of the specified type is found.
 	 */
-	template <class NWID>
-	NWID *GetParentWidget()
+	template <class T>
+	T *GetParentWidget()
 	{
 		for (NWidgetBase *nwid_parent = this->parent; nwid_parent != nullptr; nwid_parent = nwid_parent->parent) {
-			if (NWID *nwid = dynamic_cast<NWID *>(nwid_parent); nwid != nullptr) return nwid;
+			if (T *nwid = dynamic_cast<T *>(nwid_parent); nwid != nullptr) return nwid;
 		}
 		return nullptr;
 	}
 
 	/**
 	 * Get parent widget of type NWID.
-	 * @tparam NWID Type of the nested widget.
+	 * @tparam T Type of the nested widget.
 	 * @returns Parent widget, or nullptr if no widget of the specified type is found.
 	 */
-	template <class NWID>
-	const NWID *GetParentWidget() const
+	template <class T>
+	const T *GetParentWidget() const
 	{
 		for (const NWidgetBase *nwid_parent = this->parent; nwid_parent != nullptr; nwid_parent = nwid_parent->parent) {
-			if (const NWID *nwid = dynamic_cast<const NWID *>(nwid_parent); nwid != nullptr) return nwid;
+			if (const T *nwid = dynamic_cast<const T *>(nwid_parent); nwid != nullptr) return nwid;
 		}
 		return nullptr;
 	}

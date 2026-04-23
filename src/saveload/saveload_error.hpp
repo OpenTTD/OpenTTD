@@ -24,10 +24,10 @@
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-template <typename ... Args>
-[[noreturn]] inline void SlErrorCorruptFmt(const fmt::format_string<Args...> format, Args&&... fmt_args)
+template <typename ... Targs>
+[[noreturn]] inline void SlErrorCorruptFmt(const fmt::format_string<Targs...> format, Targs&&... fmt_args)
 {
-	SlErrorCorrupt(fmt::format(format, std::forward<Args>(fmt_args)...));
+	SlErrorCorrupt(fmt::format(format, std::forward<Targs>(fmt_args)...));
 }
 
 #endif /* SAVELOAD_ERROR_HPP */

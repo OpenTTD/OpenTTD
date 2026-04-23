@@ -163,55 +163,55 @@ constexpr uint ClampU(const uint a, const uint min, const uint max)
  * for the return type.
  * @see Clamp(int, int, int)
  */
-template <typename To, typename From, std::enable_if_t<std::is_integral<From>::value, int> = 0>
-constexpr To ClampTo(From value)
+template <typename Tto, typename Tfrom, std::enable_if_t<std::is_integral<Tfrom>::value, int> = 0>
+constexpr Tto ClampTo(Tfrom value)
 {
-	static_assert(std::numeric_limits<To>::is_integer, "Do not clamp from non-integer values");
-	static_assert(std::numeric_limits<From>::is_integer, "Do not clamp to non-integer values");
+	static_assert(std::numeric_limits<Tto>::is_integer, "Do not clamp from non-integer values");
+	static_assert(std::numeric_limits<Tfrom>::is_integer, "Do not clamp to non-integer values");
 
-	if constexpr (sizeof(To) >= sizeof(From) && std::numeric_limits<To>::is_signed == std::numeric_limits<From>::is_signed) {
+	if constexpr (sizeof(Tto) >= sizeof(Tfrom) && std::numeric_limits<Tto>::is_signed == std::numeric_limits<Tfrom>::is_signed) {
 		/* Same signedness and To type is larger or equal than From type, no clamping is required. */
-		return static_cast<To>(value);
+		return static_cast<Tto>(value);
 	}
 
-	if constexpr (sizeof(To) > sizeof(From) && std::numeric_limits<To>::is_signed) {
+	if constexpr (sizeof(Tto) > sizeof(Tfrom) && std::numeric_limits<Tto>::is_signed) {
 		/* Signed destination and a larger To type, no clamping is required. */
-		return static_cast<To>(value);
+		return static_cast<Tto>(value);
 	}
 
 	/* Get the bigger of the two types based on essentially the number of bits. */
-	using BiggerType = typename std::conditional<sizeof(From) >= sizeof(To), From, To>::type;
+	using BiggerType = typename std::conditional<sizeof(Tfrom) >= sizeof(Tto), Tfrom, Tto>::type;
 
-	if constexpr (std::numeric_limits<To>::is_signed) {
+	if constexpr (std::numeric_limits<Tto>::is_signed) {
 		/* The output is a signed number. */
-		if constexpr (std::numeric_limits<From>::is_signed) {
+		if constexpr (std::numeric_limits<Tfrom>::is_signed) {
 			/* Both input and output are signed. */
-			return static_cast<To>(std::clamp<BiggerType>(value,
-					std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+			return static_cast<Tto>(std::clamp<BiggerType>(value,
+					std::numeric_limits<Tto>::lowest(), std::numeric_limits<Tto>::max()));
 		}
 
 		/* The input is unsigned, so skip the minimum check and use unsigned variant of the biggest type as intermediate type. */
 		using BiggerUnsignedType = typename std::make_unsigned<BiggerType>::type;
-		return static_cast<To>(std::min<BiggerUnsignedType>(std::numeric_limits<To>::max(), value));
+		return static_cast<Tto>(std::min<BiggerUnsignedType>(std::numeric_limits<Tto>::max(), value));
 	}
 
 	/* The output is unsigned. */
 
-	if constexpr (std::numeric_limits<From>::is_signed) {
+	if constexpr (std::numeric_limits<Tfrom>::is_signed) {
 		/* Input is signed; account for the negative numbers in the input. */
-		if constexpr (sizeof(To) >= sizeof(From)) {
+		if constexpr (sizeof(Tto) >= sizeof(Tfrom)) {
 			/* If the output type is larger or equal to the input type, then only clamp the negative numbers. */
-			return static_cast<To>(std::max<From>(value, 0));
+			return static_cast<Tto>(std::max<Tfrom>(value, 0));
 		}
 
 		/* The output type is smaller than the input type. */
 		using BiggerSignedType = typename std::make_signed<BiggerType>::type;
-		return static_cast<To>(std::clamp<BiggerSignedType>(value,
-				std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+		return static_cast<Tto>(std::clamp<BiggerSignedType>(value,
+				std::numeric_limits<Tto>::lowest(), std::numeric_limits<Tto>::max()));
 	}
 
 	/* The input and output are unsigned, just clamp at the high side. */
-	return static_cast<To>(std::min<BiggerType>(value, std::numeric_limits<To>::max()));
+	return static_cast<Tto>(std::min<BiggerType>(value, std::numeric_limits<Tto>::max()));
 }
 
 /** Specialization of ClampTo for #ConvertibleThroughBase. @copydoc ClampTo(From) */
@@ -272,8 +272,8 @@ constexpr bool IsInsideMM(const size_t x, const size_t min, const size_t max) no
 constexpr bool IsInsideMM(const ConvertibleThroughBase auto x, const size_t min, const size_t max) noexcept { return IsInsideMM(x.base(), min, max); }
 
 /** Specialization of IsInsideMM for enums. @copydoc IsInsideMM(const size_t, const size_t, const size_t) */
-template <typename enum_type, std::enable_if_t<std::is_enum_v<enum_type>, bool> = true>
-constexpr bool IsInsideMM(enum_type x, enum_type min, enum_type max) noexcept
+template <typename Tenum_type, std::enable_if_t<std::is_enum_v<Tenum_type>, bool> = true>
+constexpr bool IsInsideMM(Tenum_type x, Tenum_type min, Tenum_type max) noexcept
 {
 	return IsInsideMM(to_underlying(x), to_underlying(min), to_underlying(max));
 }

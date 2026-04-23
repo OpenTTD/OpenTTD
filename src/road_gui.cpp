@@ -1244,7 +1244,7 @@ static void ShowRoadDepotPicker(Window *parent)
 	new BuildRoadDepotWindow(_build_road_depot_desc, parent);
 }
 
-template <RoadStopType roadstoptype>
+template <RoadStopType Troad_stop_type>
 class RoadStopPickerCallbacks : public PickerCallbacksNewGRFClass<RoadStopClass> {
 public:
 	RoadStopPickerCallbacks(const std::string &ini_group) : PickerCallbacksNewGRFClass<RoadStopClass>(ini_group) {}
@@ -1261,8 +1261,8 @@ public:
 			if (IsWaypointClass(cls)) continue;
 			for (const auto *spec : cls.Specs()) {
 				if (spec == nullptr) continue;
-				if (roadstoptype == RoadStopType::Truck && spec->stop_type != ROADSTOPTYPE_FREIGHT && spec->stop_type != ROADSTOPTYPE_ALL) continue;
-				if (roadstoptype == RoadStopType::Bus && spec->stop_type != ROADSTOPTYPE_PASSENGER && spec->stop_type != ROADSTOPTYPE_ALL) continue;
+				if (Troad_stop_type == RoadStopType::Truck && spec->stop_type != ROADSTOPTYPE_FREIGHT && spec->stop_type != ROADSTOPTYPE_ALL) continue;
+				if (Troad_stop_type == RoadStopType::Bus && spec->stop_type != ROADSTOPTYPE_PASSENGER && spec->stop_type != ROADSTOPTYPE_ALL) continue;
 				return true;
 			}
 		}
@@ -1271,7 +1271,7 @@ public:
 
 	static bool IsClassChoice(const RoadStopClass &cls)
 	{
-		return !IsWaypointClass(cls) && GetIfClassHasNewStopsByType(&cls, roadstoptype, _cur_roadtype);
+		return !IsWaypointClass(cls) && GetIfClassHasNewStopsByType(&cls, Troad_stop_type, _cur_roadtype);
 	}
 
 	bool HasClassChoice() const override
@@ -1295,14 +1295,14 @@ public:
 	StringID GetTypeName(int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
-		if (!IsRoadStopEverAvailable(spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck)) return INVALID_STRING_ID;
+		if (!IsRoadStopEverAvailable(spec, Troad_stop_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck)) return INVALID_STRING_ID;
 		return (spec == nullptr) ? STR_STATION_CLASS_DFLT_ROADSTOP : spec->name;
 	}
 
 	std::span<const BadgeID> GetTypeBadges(int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
-		if (!IsRoadStopEverAvailable(spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck)) return {};
+		if (!IsRoadStopEverAvailable(spec, Troad_stop_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck)) return {};
 		if (spec == nullptr) return {};
 		return spec->badges;
 	}
@@ -1310,18 +1310,18 @@ public:
 	bool IsTypeAvailable(int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
-		return IsRoadStopAvailable(spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck);
+		return IsRoadStopAvailable(spec, Troad_stop_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck);
 	}
 
 	void DrawType(int x, int y, int cls_id, int id) const override
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
 		if (spec == nullptr) {
-			StationPickerDrawSprite(x, y, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, INVALID_RAILTYPE, _cur_roadtype, _roadstop_gui.orientation);
+			StationPickerDrawSprite(x, y, Troad_stop_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck, INVALID_RAILTYPE, _cur_roadtype, _roadstop_gui.orientation);
 		} else {
 			DiagDirection orientation = _roadstop_gui.orientation;
 			if (orientation < DIAGDIR_END && spec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) orientation = DIAGDIR_END;
-			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, (uint8_t)orientation);
+			DrawRoadStopTile(x, y, _cur_roadtype, spec, Troad_stop_type == RoadStopType::Bus ? StationType::Bus : StationType::Truck, (uint8_t)orientation);
 		}
 	}
 
@@ -1329,13 +1329,13 @@ public:
 	{
 		for (const Station *st : Station::Iterate()) {
 			if (st->owner != _local_company) continue;
-			if (roadstoptype == RoadStopType::Truck && !st->facilities.Test(StationFacility::TruckStop)) continue;
-			if (roadstoptype == RoadStopType::Bus && !st->facilities.Test(StationFacility::BusStop)) continue;
+			if (Troad_stop_type == RoadStopType::Truck && !st->facilities.Test(StationFacility::TruckStop)) continue;
+			if (Troad_stop_type == RoadStopType::Bus && !st->facilities.Test(StationFacility::BusStop)) continue;
 			items.insert({0, 0, ROADSTOP_CLASS_DFLT.base(), 0}); // We would need to scan the map to find out if default is used.
 			for (const auto &sm : st->roadstop_speclist) {
 				if (sm.spec == nullptr) continue;
-				if (roadstoptype == RoadStopType::Truck && sm.spec->stop_type != ROADSTOPTYPE_FREIGHT && sm.spec->stop_type != ROADSTOPTYPE_ALL) continue;
-				if (roadstoptype == RoadStopType::Bus && sm.spec->stop_type != ROADSTOPTYPE_PASSENGER && sm.spec->stop_type != ROADSTOPTYPE_ALL) continue;
+				if (Troad_stop_type == RoadStopType::Truck && sm.spec->stop_type != ROADSTOPTYPE_FREIGHT && sm.spec->stop_type != ROADSTOPTYPE_ALL) continue;
+				if (Troad_stop_type == RoadStopType::Bus && sm.spec->stop_type != ROADSTOPTYPE_PASSENGER && sm.spec->stop_type != ROADSTOPTYPE_ALL) continue;
 				items.insert({sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
 			}
 		}

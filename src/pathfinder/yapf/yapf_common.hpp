@@ -15,11 +15,11 @@
 #include "../../track_type.h"
 
 /** YAPF origin provider base class - used when origin is one tile / multiple trackdirs */
-template <class Types>
+template <class Ttypes>
 class CYapfOriginTileT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
@@ -48,11 +48,11 @@ public:
 };
 
 /** YAPF origin provider base class - used when there are two tile/trackdir origins */
-template <class Types>
+template <class Ttypes>
 class CYapfOriginTileTwoWayT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:

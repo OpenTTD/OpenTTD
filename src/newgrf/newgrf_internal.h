@@ -26,7 +26,7 @@ enum class ChangeInfoResult : uint8_t {
 };
 
 /** GRF feature handler */
-template <GrfSpecFeature TFeature>
+template <GrfSpecFeature Tfeature>
 struct GrfChangeInfoHandler {
 	/**
 	 * Implementation of the \ref GrfLoadingStage::Reserve stage of this feature.
@@ -49,7 +49,7 @@ struct GrfChangeInfoHandler {
 };
 
 /** GRF action handler */
-template <uint8_t TAction>
+template <uint8_t Taction>
 struct GrfActionHandler {
 	/**
 	 * Implementation of the \ref GrfLoadingStage::FileScan stage of this action.

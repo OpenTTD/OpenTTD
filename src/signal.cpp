@@ -47,11 +47,11 @@ static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
 };
 
 /**
- * Set containing 'items' items of 'tile and Tdir'
+ * Set containing 'Titems' items of 'tile and Tdir'
  * No tree structure is used because it would cause
  * slowdowns in most usual cases
  */
-template <typename Tdir, uint items>
+template <typename Tdir, uint Titems>
 struct SmallSet {
 private:
 	uint n = 0; ///< Actual number of units.
@@ -62,7 +62,7 @@ private:
 	struct SSdata {
 		TileIndex tile;
 		Tdir dir;
-	} data[items];
+	} data[Titems];
 
 public:
 	/**
@@ -159,7 +159,7 @@ public:
 	{
 		if (this->IsFull()) {
 			overflowed = true;
-			Debug(misc, 0, "SignalSegment too complex. Set {} is full (maximum {})", name, items);
+			Debug(misc, 0, "SignalSegment too complex. Set {} is full (maximum {})", name, Titems);
 			return false; // set is full
 		}
 

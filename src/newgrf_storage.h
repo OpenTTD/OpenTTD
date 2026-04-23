@@ -61,12 +61,12 @@ private:
 /**
  * Class for persistent storage of data.
  * On #ClearChanges that data is either reverted or saved.
- * @tparam TYPE the type of variable to store.
- * @tparam SIZE the size of the array.
+ * @tparam T the type of variable to store.
+ * @tparam Tsize the size of the array.
  */
-template <typename TYPE, uint SIZE>
+template <typename T, size_t Tsize>
 struct PersistentStorageArray : BasePersistentStorageArray {
-	using StorageType = std::array<TYPE, SIZE>;
+	using StorageType = std::array<T, Tsize>;
 
 	StorageType storage{}; ///< Memory for the storage array
 	std::unique_ptr<StorageType> prev_storage{}; ///< Temporary memory to store previous state so it can be reverted, e.g. for command tests.
@@ -81,7 +81,7 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 	void StoreValue(uint pos, int32_t value)
 	{
 		/* Out of the scope of the array */
-		if (pos >= SIZE) return;
+		if (pos >= Tsize) return;
 
 		/* The value hasn't changed, so we pretend nothing happened.
 		 * Saves a few cycles and such and it's pretty easy to check. */
@@ -106,10 +106,10 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE GetValue(uint pos) const
+	T GetValue(uint pos) const
 	{
 		/* Out of the scope of the array */
-		if (pos >= SIZE) return 0;
+		if (pos >= Tsize) return 0;
 
 		return this->storage[pos];
 	}
@@ -127,13 +127,13 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 /**
  * Class for temporary storage of data.
  * On #ClearChanges that data is always zero-ed.
- * @tparam TYPE the type of variable to store.
- * @tparam SIZE the size of the array.
+ * @tparam T the type of variable to store.
+ * @tparam Tsize the size of the array.
  */
-template <typename TYPE, uint SIZE>
+template <typename T, size_t Tsize>
 struct TemporaryStorageArray {
-	using StorageType = std::array<TYPE, SIZE>;
-	using StorageInitType = std::array<uint16_t, SIZE>;
+	using StorageType = std::array<T, Tsize>;
+	using StorageInitType = std::array<uint16_t, Tsize>;
 
 	StorageType storage{}; ///< Memory for the storage array
 	StorageInitType init{}; ///< Storage has been assigned, if this equals 'init_key'.
@@ -147,7 +147,7 @@ struct TemporaryStorageArray {
 	void StoreValue(uint pos, int32_t value)
 	{
 		/* Out of the scope of the array */
-		if (pos >= SIZE) return;
+		if (pos >= Tsize) return;
 
 		this->storage[pos] = value;
 		this->init[pos] = this->init_key;
@@ -158,10 +158,10 @@ struct TemporaryStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE GetValue(uint pos) const
+	T GetValue(uint pos) const
 	{
 		/* Out of the scope of the array */
-		if (pos >= SIZE) return 0;
+		if (pos >= Tsize) return 0;
 
 		if (this->init[pos] != this->init_key) {
 			/* Unassigned since last call to ClearChanges */

@@ -208,15 +208,15 @@ bool IsOpenGLVersionAtLeast(uint8_t major, uint8_t minor)
 
 /**
  * Try loading an OpenGL function.
- * @tparam F Type of the function pointer.
+ * @tparam T Type of the function pointer.
  * @param f Reference where to store the function pointer in.
  * @param name Name of the function.
  * @return True if the function could be bound.
  */
-template <typename F>
-static bool BindGLProc(F &f, const char *name)
+template <typename T>
+static bool BindGLProc(T &f, const char *name)
 {
-	f = reinterpret_cast<F>(GetOGLProcAddress(name));
+	f = reinterpret_cast<T>(GetOGLProcAddress(name));
 	return f != nullptr;
 }
 

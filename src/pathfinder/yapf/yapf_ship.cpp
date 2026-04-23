@@ -23,12 +23,12 @@ constexpr int MAX_SHIP_PF_NODES = (NUMBER_OR_WATER_REGIONS_LOOKAHEAD + 1) * WATE
 
 constexpr int SHIP_LOST_PATH_LENGTH = 8; ///< The length of the (aimless) path assigned when a ship is lost.
 
-template <class Types>
+template <class Ttypes>
 class CYapfDestinationTileWaterT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type.
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type.
 	typedef typename Node::Key Key; ///< key to hash tables.
 
 protected:
@@ -106,12 +106,12 @@ public:
 };
 
 /** Node Follower module of YAPF for ships */
-template <class Types>
+template <class Ttypes>
 class CYapfFollowShipT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type.
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type.
 	typedef typename Node::Key Key; ///< key to hash tables.
 
 protected:
@@ -322,12 +322,12 @@ public:
 };
 
 /** Cost Provider module of YAPF for ships. */
-template <class Types>
+template <class Ttypes>
 class CYapfCostShipT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type.
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class).
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type.
 	typedef typename Node::Key Key; ///< key to hash tables.
 
 	/** @copydoc CYapfBaseT::Yapf */

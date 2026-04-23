@@ -24,7 +24,7 @@
  *  controllers). See 6 different typedefs below for 3 different transport
  *  types w/ or w/o 90-deg turns allowed
  */
-template <TransportType Ttr_type_, typename VehicleType, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
+template <TransportType Ttransport_type, typename Tvehicle, bool T90deg_turns_allowed = true, bool Tmask_reserved_tracks = false>
 struct CFollowTrackT {
 	enum ErrorCode : uint8_t {
 		EC_NONE,
@@ -35,7 +35,7 @@ struct CFollowTrackT {
 		EC_RESERVED,
 	};
 
-	const VehicleType *veh; ///< moving vehicle
+	const Tvehicle *veh; ///< moving vehicle
 	Owner veh_owner; ///< owner of the vehicle
 	TileIndex old_tile; ///< the origin (vehicle moved from) before move
 	Trackdir old_td; ///< the trackdir (the vehicle was on) before move
@@ -49,7 +49,7 @@ struct CFollowTrackT {
 	ErrorCode err;
 	RailTypes railtypes;
 
-	inline CFollowTrackT(const VehicleType *v = nullptr, RailTypes railtype_override = INVALID_RAILTYPES)
+	inline CFollowTrackT(const Tvehicle *v = nullptr, RailTypes railtype_override = INVALID_RAILTYPES)
 	{
 		Init(v, railtype_override);
 	}
@@ -61,7 +61,7 @@ struct CFollowTrackT {
 		Init(o, railtype_override);
 	}
 
-	inline void Init(const VehicleType *v, RailTypes railtype_override)
+	inline void Init(const Tvehicle *v, RailTypes railtype_override)
 	{
 		assert(!IsRailTT() || (v != nullptr && v->type == VEH_TRAIN));
 		this->veh = v;
@@ -87,12 +87,12 @@ struct CFollowTrackT {
 		this->railtypes = railtype_override;
 	}
 
-	[[debug_inline]] inline static TransportType TT() { return Ttr_type_; }
+	[[debug_inline]] inline static TransportType TT() { return Ttransport_type; }
 	[[debug_inline]] inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
 	[[debug_inline]] inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
 	inline bool IsTram() { return IsRoadTT() && RoadTypeIsTram(RoadVehicle::From(this->veh)->roadtype); }
 	[[debug_inline]] inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
-	static inline bool Allow90degTurns() { return T90deg_turns_allowed_; }
+	static inline bool Allow90degTurns() { return T90deg_turns_allowed; }
 	static inline bool DoTrackMasking() { return Tmask_reserved_tracks; }
 
 	/**

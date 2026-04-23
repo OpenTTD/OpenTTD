@@ -20,8 +20,8 @@
  *
  * @return Whether the item was already present
  */
-template <typename Container>
-inline bool include(Container &container, typename Container::const_reference &item)
+template <typename Tcontainer>
+inline bool include(Tcontainer &container, typename Tcontainer::const_reference &item)
 {
 	const bool is_member = std::ranges::find(container, item) != container.end();
 	if (!is_member) container.emplace_back(item);
@@ -37,8 +37,8 @@ inline bool include(Container &container, typename Container::const_reference &i
  *
  * @return Index of element if found, otherwise -1
  */
-template <typename Container>
-int find_index(Container const &container, typename Container::const_reference item)
+template <typename Tcontainer>
+int find_index(Tcontainer const &container, typename Tcontainer::const_reference item)
 {
 	auto const it = std::ranges::find(container, item);
 	if (it != container.end()) return std::distance(container.begin(), it);
@@ -53,8 +53,8 @@ int find_index(Container const &container, typename Container::const_reference i
  * @param position Iterator to where range should be moved to.
  * @returns Iterators to first and last after being moved.
  */
-template <typename TIter>
-auto Slide(TIter first, TIter last, TIter position) -> std::pair<TIter, TIter>
+template <typename Titer>
+auto Slide(Titer first, Titer last, Titer position) -> std::pair<Titer, Titer>
 {
 	if (last < position) return { std::rotate(first, last, position), position };
 	if (position < first) return { position, std::rotate(position, first, last) };

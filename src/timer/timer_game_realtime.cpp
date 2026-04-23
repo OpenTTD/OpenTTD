@@ -15,7 +15,7 @@
 #include "../safeguards.h"
 
 template <>
-void IntervalTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
+void IntervalTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::Telapsed delta)
 {
 	if (this->period.period == std::chrono::milliseconds::zero()) return;
 	if (this->period.trigger == TimerGameRealtime::Trigger::Autosave && _pause_mode.Any() && !_pause_mode.Test(PauseMode::CommandDuringPause)) return;
@@ -35,7 +35,7 @@ void IntervalTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta
 }
 
 template <>
-void TimeoutTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
+void TimeoutTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::Telapsed delta)
 {
 	if (this->fired) return;
 	if (this->period.period == std::chrono::milliseconds::zero()) return;
@@ -51,7 +51,7 @@ void TimeoutTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 }
 
 template <>
-bool TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
+bool TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::Telapsed delta)
 {
 	for (auto timer : TimerManager<TimerGameRealtime>::GetTimers()) {
 		timer->Elapsed(delta);
@@ -62,7 +62,7 @@ bool TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 
 #ifdef WITH_ASSERT
 template <>
-void TimerManager<TimerGameRealtime>::Validate(TimerGameRealtime::TPeriod)
+void TimerManager<TimerGameRealtime>::Validate(TimerGameRealtime::Tperiod)
 {
 }
 #endif /* WITH_ASSERT */

@@ -15,12 +15,12 @@
 #include "../../safeguards.h"
 
 
-template <class Types>
+template <class Ttypes>
 class CYapfCostRoadT {
 public:
-	typedef typename Types::Tpf Tpf; ///< pathfinder (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower; ///< track follower helper
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< pathfinder (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower; ///< track follower helper
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
@@ -183,12 +183,12 @@ public:
 };
 
 
-template <class Types>
+template <class Ttypes>
 class CYapfDestinationAnyDepotRoadT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 	/** @copydoc CYapfBaseT::Yapf */
@@ -218,12 +218,12 @@ public:
 };
 
 
-template <class Types>
+template <class Ttypes>
 class CYapfDestinationTileRoadT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
@@ -303,12 +303,12 @@ public:
 
 
 
-template <class Types>
+template <class Ttypes>
 class CYapfFollowRoadT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Item Node; ///< this will be our node type
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 
 protected:
@@ -483,7 +483,7 @@ public:
 	}
 };
 
-template <class Tpf_, template <class Types> class Tdestination>
+template <class Tpf_, template <class Ttypes> class Tdestination>
 struct CYapfRoad_TypesT {
 	typedef CYapfRoad_TypesT<Tpf_, Tdestination>  Types;
 

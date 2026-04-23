@@ -25,8 +25,8 @@
  */
 class TimerWindow {
 public:
-	using TPeriod = std::chrono::milliseconds;
-	using TElapsed = std::chrono::milliseconds;
+	using Tperiod = std::chrono::milliseconds;
+	using Telapsed = std::chrono::milliseconds;
 	struct TStorage {
 		std::chrono::milliseconds elapsed;
 	};

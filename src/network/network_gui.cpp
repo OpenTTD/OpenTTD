@@ -1446,10 +1446,10 @@ public:
 	 * @param ...args The arguments to construct the button.
 	 * @return Reference to the created button.
 	 */
-	template <typename T, typename...TArgs>
-	T &AddButton(TArgs &&... args)
+	template <typename T, typename...Targs>
+	T &AddButton(Targs &&... args)
 	{
-		auto &button = this->buttons.emplace_back(std::make_unique<T>(std::forward<TArgs &&>(args)...));
+		auto &button = this->buttons.emplace_back(std::make_unique<T>(std::forward<Targs &&>(args)...));
 		return static_cast<T &>(*button);
 	}
 

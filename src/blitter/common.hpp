@@ -14,8 +14,8 @@
 
 #include <utility>
 
-template <typename SetPixelT>
-void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel)
+template <typename Tset_pixel_func>
+void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, int screen_height, int width, int dash, Tset_pixel_func set_pixel)
 {
 	int dy;
 	int dx;

@@ -43,45 +43,45 @@ struct PoolIDBase {};
  * @tparam TEnd The PoolID at the end of the pool (equivalent to size).
  * @tparam TInvalid The PoolID denoting an invalid value.
  */
-template <typename TBaseType, typename TTag, TBaseType TEnd, TBaseType TInvalid>
+template <typename Tbase_type, typename Ttag, Tbase_type Tend, Tbase_type Tinvalid>
 struct EMPTY_BASES PoolID : PoolIDBase {
-	using BaseType = TBaseType;
+	using BaseType = Tbase_type;
 
 	constexpr PoolID() = default;
 	constexpr PoolID(const PoolID &) = default;
 	constexpr PoolID(PoolID &&) = default;
 
-	explicit constexpr PoolID(const TBaseType &value) : value(value) {}
+	explicit constexpr PoolID(const Tbase_type &value) : value(value) {}
 
 	constexpr PoolID &operator =(const PoolID &rhs) { this->value = rhs.value; return *this; }
 	constexpr PoolID &operator =(PoolID &&rhs) { this->value = std::move(rhs.value); return *this; }
 
 	/* Only allow conversion to BaseType via method. */
-	constexpr TBaseType base() const noexcept { return this->value; }
+	constexpr Tbase_type base() const noexcept { return this->value; }
 
 	static constexpr PoolID Begin() { return PoolID{}; }
-	static constexpr PoolID End() { return PoolID{static_cast<TBaseType>(TEnd)}; }
-	static constexpr PoolID Invalid() { return PoolID{static_cast<TBaseType>(TInvalid)}; }
+	static constexpr PoolID End() { return PoolID{static_cast<Tbase_type>(Tend)}; }
+	static constexpr PoolID Invalid() { return PoolID{static_cast<Tbase_type>(Tinvalid)}; }
 
 	constexpr auto operator++() { ++this->value; return this; }
 	constexpr auto operator+(const std::integral auto &val) const { return this->value + val; }
 	constexpr auto operator-(const std::integral auto &val) const { return this->value - val; }
 	constexpr auto operator%(const std::integral auto &val) const { return this->value % val; }
 
-	constexpr bool operator==(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value == rhs.value; }
-	constexpr auto operator<=>(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value <=> rhs.value; }
+	constexpr bool operator==(const PoolID<Tbase_type, Ttag, Tend, Tinvalid> &rhs) const { return this->value == rhs.value; }
+	constexpr auto operator<=>(const PoolID<Tbase_type, Ttag, Tend, Tinvalid> &rhs) const { return this->value <=> rhs.value; }
 
 	constexpr bool operator==(const size_t &rhs) const { return this->value == rhs; }
 	constexpr auto operator<=>(const size_t &rhs) const { return this->value <=> rhs; }
 private:
 	/** The bare storage. @warning Do not explicitly initialize. */
-	TBaseType value;
+	Tbase_type value;
 };
 
-template <typename T> requires std::is_base_of_v<PoolIDBase, T>
-constexpr auto operator+(const std::integral auto &val, const T &pool_id) { return pool_id + val; }
-template <typename Te, typename Tp> requires std::is_enum_v<Te> && std::is_base_of_v<PoolIDBase, Tp>
-constexpr auto operator+(const Te &val, const Tp &pool_id) { return pool_id + to_underlying(val); }
+template <typename Tpool_type> requires std::is_base_of_v<PoolIDBase, Tpool_type>
+constexpr auto operator+(const std::integral auto &val, const Tpool_type &pool_id) { return pool_id + val; }
+template <typename Tenum_type, typename Tpool_type> requires std::is_enum_v<Tenum_type> && std::is_base_of_v<PoolIDBase, Tpool_type>
+constexpr auto operator+(const Tenum_type &val, const Tpool_type &pool_id) { return pool_id + to_underlying(val); }
 
 /** Base class for base of all pools. */
 struct PoolBase {

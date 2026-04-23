@@ -86,7 +86,7 @@ private:
 #	define SILENCE_GCC_FUNCTION_POINTER_CAST
 #endif
 
-template <Commands TCmd, typename T, bool THasTile> struct CommandHelper;
+template <Commands Tcmd, typename T, bool Thas_tile> struct CommandHelper;
 
 class CommandHelperBase {
 protected:

@@ -44,13 +44,13 @@
  *  declaration. There are some examples. For another example look at
  *  test_yapf.h (part or unittest project).
  */
-template <class Types>
+template <class Ttypes>
 class CYapfBaseT {
 public:
-	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
-	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList NodeList; ///< our node list
-	typedef typename Types::VehicleType VehicleType; ///< the type of vehicle
+	typedef typename Ttypes::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
+	typedef typename Ttypes::TrackFollower TrackFollower;
+	typedef typename Ttypes::NodeList NodeList; ///< our node list
+	typedef typename Ttypes::VehicleType VehicleType; ///< the type of vehicle
 	typedef typename NodeList::Item Node; ///< this will be our node type
 	typedef typename Node::Key Key; ///< key to hash tables
 

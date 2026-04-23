@@ -73,10 +73,10 @@ static BaseVehicleListWindow::VehicleGroupSortFunction VehicleGroupAverageProfit
 static BaseVehicleListWindow::VehicleGroupSortFunction VehicleGroupAverageProfitLastYearSorter;
 
 /** Wrapper to convert a VehicleIndividualSortFunction to a VehicleGroupSortFunction. @copydoc GUIList::Sorter */
-template <BaseVehicleListWindow::VehicleIndividualSortFunction func>
+template <BaseVehicleListWindow::VehicleIndividualSortFunction T>
 static bool VehicleIndividualToGroupSorterWrapper(GUIVehicleGroup const &a, GUIVehicleGroup const &b)
 {
-	return func(*(a.vehicles_begin), *(b.vehicles_begin));
+	return T(*(a.vehicles_begin), *(b.vehicles_begin));
 }
 
 const std::initializer_list<BaseVehicleListWindow::VehicleGroupSortFunction * const> BaseVehicleListWindow::vehicle_group_none_sorter_funcs = {

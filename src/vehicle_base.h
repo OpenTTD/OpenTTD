@@ -1054,17 +1054,17 @@ public:
  * Class defining several overloaded accessors so we don't
  * have to cast vehicle types that often
  */
-template <class T, VehicleType Type>
+template <class T, VehicleType Tvehicle_type>
 struct SpecializedVehicle : public Vehicle {
-	static const VehicleType EXPECTED_TYPE = Type; ///< Specialized type
+	static const VehicleType EXPECTED_TYPE = Tvehicle_type; ///< Specialized type
 
-	typedef SpecializedVehicle<T, Type> SpecializedVehicleBase; ///< Our type
+	typedef SpecializedVehicle<T, Tvehicle_type> SpecializedVehicleBase; ///< Our type
 
 	/**
 	 * Set vehicle type correctly
 	 * @param index The index into the vehicle pool.
 	 */
-	inline SpecializedVehicle(VehicleID index) : Vehicle(index, Type)
+	inline SpecializedVehicle(VehicleID index) : Vehicle(index, Tvehicle_type)
 	{
 		this->sprite_cache.sprite_seq.count = 1;
 	}
@@ -1159,7 +1159,7 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	static inline bool IsValidID(auto index)
 	{
-		return Vehicle::IsValidID(index) && Vehicle::Get(index)->type == Type;
+		return Vehicle::IsValidID(index) && Vehicle::Get(index)->type == Tvehicle_type;
 	}
 
 	/**
@@ -1212,7 +1212,7 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	static inline T *From(Vehicle *v)
 	{
-		assert(v->type == Type);
+		assert(v->type == Tvehicle_type);
 		return (T *)v;
 	}
 
@@ -1223,7 +1223,7 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	static inline const T *From(const Vehicle *v)
 	{
-		assert(v->type == Type);
+		assert(v->type == Tvehicle_type);
 		return (const T *)v;
 	}
 

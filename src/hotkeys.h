@@ -24,12 +24,12 @@ struct Hotkey {
 	Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, int num);
 
 	/** @copydoc Hotkey(uint16_t, const std::string &, int) */
-	template <typename EnumType> requires is_scoped_enum_v<EnumType>
-	Hotkey(uint16_t default_keycode, const std::string &name, EnumType num) : Hotkey(default_keycode, name, to_underlying(num)) {}
+	template <typename Tenum_type> requires is_scoped_enum_v<Tenum_type>
+	Hotkey(uint16_t default_keycode, const std::string &name, Tenum_type num) : Hotkey(default_keycode, name, to_underlying(num)) {}
 
 	/** @copydoc Hotkey(const std::vector<uint16_t> &, const std::string &, int) */
-	template <typename EnumType> requires is_scoped_enum_v<EnumType>
-	Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, EnumType num) : Hotkey(default_keycodes, name, to_underlying(num)) {}
+	template <typename Tenum_type> requires is_scoped_enum_v<Tenum_type>
+	Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, Tenum_type num) : Hotkey(default_keycodes, name, to_underlying(num)) {}
 
 	void AddKeycode(uint16_t keycode);
 
@@ -99,15 +99,14 @@ enum class SpecialListHotkeys : int {
 
 /**
  * Gets the first index in the list for given hotkey and the step to look for another if first is invalid.
- * @tparam ItemType The type of items stored in the list.
- * @tparam ListType The type of the list. For example: std::vector<ItemType>, std::list<ItemType>.
+ * @tparam T The type of items stored in the list.
  * @param hotkey The special hotkey to get the index and step for.
  * @param list The list containing items.
  * @param current_item The item that is currently chosen, used for next and previous hotkeys.
  * @return Tuple containing index as first element and step as second. The step for backward direction has positive value, use `% list.size()` to remain in bounds.
  */
-template<class ItemType, class ListType>
-std::tuple<size_t, size_t> GetListIndexStep(SpecialListHotkeys hotkey, const ListType &list, const ItemType &current_item)
+template <class T>
+std::tuple<size_t, size_t> GetListIndexStep(SpecialListHotkeys hotkey, const std::vector<T> &list, const T &current_item)
 {
 	/* Don't use -1, because how % is implemented for negative numbers. */
 	size_t step_back = list.size() - 1;

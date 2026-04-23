@@ -34,27 +34,27 @@ public:
 		CompetitorTimeout, ///< Considering starting a new competitor/AI.
 	};
 
-	struct TPeriod {
+	struct Tperiod {
 		Priority priority;
 		uint value;
 
-		TPeriod(Priority priority, uint value) : priority(priority), value(value)
+		Tperiod(Priority priority, uint value) : priority(priority), value(value)
 		{}
 
-		bool operator < (const TPeriod &other) const
+		bool operator < (const Tperiod &other) const
 		{
 			/* Sort by priority before value, such that changes in value for priorities other than NONE do not change the container order */
 			if (this->priority != other.priority) return this->priority < other.priority;
 			return this->value < other.value;
 		}
 
-		bool operator == (const TPeriod &other) const
+		bool operator == (const Tperiod &other) const
 		{
 			return this->priority == other.priority && this->value == other.value;
 		}
 	};
 
-	using TElapsed = uint;
+	using Telapsed = uint;
 	struct TStorage {
 		uint elapsed;
 	};

@@ -166,8 +166,8 @@ enum class CargoSuffixDirection : uint8_t {
  * @param cargoes array with cargotypes. for INVALID_CARGO no suffix will be determined
  * @param suffixes is filled with the suffixes
  */
-template <typename TC, typename TS>
-static inline void GetAllCargoSuffixes(CargoSuffixDirection use_input, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargoes, TS &suffixes)
+template <typename Tcargo_container, typename Tsuffix_container>
+static inline void GetAllCargoSuffixes(CargoSuffixDirection use_input, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const Tcargo_container &cargoes, Tsuffix_container &suffixes)
 {
 	static_assert(std::tuple_size_v<std::remove_reference_t<decltype(cargoes)>> <= lengthof(suffixes));
 

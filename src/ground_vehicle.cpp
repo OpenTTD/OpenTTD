@@ -17,8 +17,8 @@
 /**
  * Recalculates the cached total power of a vehicle. Should be called when the consist is changed.
  */
-template <class T, VehicleType Type>
-void GroundVehicle<T, Type>::PowerChanged()
+template <class T, VehicleType Tvehicle_type>
+void GroundVehicle<T, Tvehicle_type>::PowerChanged()
 {
 	assert(this->First() == this);
 	const T *v = T::From(this);
@@ -75,8 +75,8 @@ void GroundVehicle<T, Type>::PowerChanged()
  * Recalculates the cached weight of a vehicle and its parts. Should be called each time the cargo on
  * the consist changes.
  */
-template <class T, VehicleType Type>
-void GroundVehicle<T, Type>::CargoChanged()
+template <class T, VehicleType Tvehicle_type>
+void GroundVehicle<T, Tvehicle_type>::CargoChanged()
 {
 	assert(this->First() == this);
 	uint32_t weight = 0;
@@ -101,8 +101,8 @@ void GroundVehicle<T, Type>::CargoChanged()
  * Calculates the acceleration of the vehicle under its current conditions.
  * @return Current acceleration of the vehicle.
  */
-template <class T, VehicleType Type>
-int GroundVehicle<T, Type>::GetAcceleration() const
+template <class T, VehicleType Tvehicle_type>
+int GroundVehicle<T, Tvehicle_type>::GetAcceleration() const
 {
 	/* Templated class used for function calls for performance reasons. */
 	const T *v = T::From(this);
@@ -186,14 +186,14 @@ int GroundVehicle<T, Type>::GetAcceleration() const
  * Check whether the whole vehicle chain is in the depot.
  * @return true if and only if the whole chain is in the depot.
  */
-template <class T, VehicleType Type>
-bool GroundVehicle<T, Type>::IsChainInDepot() const
+template <class T, VehicleType Tvehicle_type>
+bool GroundVehicle<T, Tvehicle_type>::IsChainInDepot() const
 {
 	const T *v = this->First();
 	/* Is the front engine stationary in the depot? */
 	static_assert((int)TRANSPORT_RAIL == (int)VEH_TRAIN);
 	static_assert((int)TRANSPORT_ROAD == (int)VEH_ROAD);
-	if (!IsDepotTypeTile(v->tile, (TransportType)Type) || v->cur_speed != 0) return false;
+	if (!IsDepotTypeTile(v->tile, (TransportType)Tvehicle_type) || v->cur_speed != 0) return false;
 
 	/* Check whether the rest is also already trying to enter the depot. */
 	for (; v != nullptr; v = v->Next()) {

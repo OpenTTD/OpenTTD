@@ -16,7 +16,7 @@
 TimerGameTick::TickCounter TimerGameTick::counter = 0;
 
 template <>
-void IntervalTimer<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
+void IntervalTimer<TimerGameTick>::Elapsed(TimerGameTick::Telapsed delta)
 {
 	if (this->period.value == 0) return;
 
@@ -34,7 +34,7 @@ void IntervalTimer<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
 }
 
 template <>
-void TimeoutTimer<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
+void TimeoutTimer<TimerGameTick>::Elapsed(TimerGameTick::Telapsed delta)
 {
 	if (this->fired) return;
 	if (this->period.value == 0) return;
@@ -48,7 +48,7 @@ void TimeoutTimer<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
 }
 
 template <>
-bool TimerManager<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
+bool TimerManager<TimerGameTick>::Elapsed(TimerGameTick::Telapsed delta)
 {
 	TimerGameTick::counter++;
 
@@ -61,7 +61,7 @@ bool TimerManager<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
 
 #ifdef WITH_ASSERT
 template <>
-void TimerManager<TimerGameTick>::Validate(TimerGameTick::TPeriod period)
+void TimerManager<TimerGameTick>::Validate(TimerGameTick::Tperiod period)
 {
 	if (period.priority == TimerGameTick::Priority::None) return;
 

@@ -24,17 +24,17 @@
 
 /**
  * Drop down divider component.
- * @tparam TBase Base component.
- * @tparam TFs Font size -- used to determine height.
+ * @tparam Tbase Base component.
+ * @tparam Tfs Font size -- used to determine height.
  */
-template <class TBase, FontSize TFs = FontSize::Normal>
-class DropDownDivider : public TBase {
+template <class Tbase, FontSize Tfs = FontSize::Normal>
+class DropDownDivider : public Tbase {
 public:
-	template <typename... Args>
-	explicit DropDownDivider(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+	template <typename... Targs>
+	explicit DropDownDivider(Targs&&... args) : Tbase(std::forward<Targs>(args)...) {}
 
 	bool Selectable() const override { return false; }
-	uint Height() const override { return std::max<uint>(GetCharacterHeight(TFs), this->TBase::Height()); }
+	uint Height() const override { return std::max<uint>(GetCharacterHeight(Tfs), this->Tbase::Height()); }
 
 	void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const override
 	{
@@ -49,17 +49,17 @@ public:
 
 /**
  * Drop down string component.
- * @tparam TBase Base component.
- * @tparam TFs Font size.
- * @tparam TEnd Position string at end if true, or start if false.
+ * @tparam Tbase Base component.
+ * @tparam Tfs Font size.
+ * @tparam Tend Position string at end if true, or start if false.
  */
-template <class TBase, FontSize TFs = FontSize::Normal, bool TEnd = false>
-class DropDownString : public TBase {
+template <class Tbase, FontSize Tfs = FontSize::Normal, bool Tend = false>
+class DropDownString : public Tbase {
 	std::string string; ///< String to be drawn.
 	Dimension dim; ///< Dimensions of string.
 public:
-	template <typename... Args>
-	explicit DropDownString(std::string &&string, Args&&... args) : TBase(std::forward<Args>(args)...)
+	template <typename... Targs>
+	explicit DropDownString(std::string &&string, Targs&&... args) : Tbase(std::forward<Targs>(args)...)
 	{
 		this->SetString(std::move(string));
 	}
@@ -68,33 +68,33 @@ public:
 	void FilterText(StringFilter &string_filter) const override
 	{
 		string_filter.AddLine(this->string);
-		this->TBase::FilterText(string_filter);
+		this->Tbase::FilterText(string_filter);
 	}
 
 	void SetString(std::string &&string)
 	{
 		this->string = std::move(string);
-		this->dim = GetStringBoundingBox(this->string, TFs);
+		this->dim = GetStringBoundingBox(this->string, Tfs);
 	}
 
 	uint Height() const override
 	{
-		return std::max<uint>(this->dim.height, this->TBase::Height());
+		return std::max<uint>(this->dim.height, this->Tbase::Height());
 	}
 
-	uint Width() const override { return this->dim.width + this->TBase::Width(); }
+	uint Width() const override { return this->dim.width + this->Tbase::Width(); }
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(this->dim.width, rtl), pt);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		return this->Tbase::OnClick(r.Indent(this->dim.width, rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), this->string, this->GetColour(sel), SA_CENTER, false, TFs);
-		this->TBase::Draw(full, r.Indent(this->dim.width, rtl), sel, click_result, bg_colour);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), this->string, this->GetColour(sel), SA_CENTER, false, Tfs);
+		this->Tbase::Draw(full, r.Indent(this->dim.width, rtl), sel, click_result, bg_colour);
 	}
 
 	/**
@@ -114,195 +114,195 @@ public:
 
 /**
  * Drop down icon component.
- * @tparam TBase Base component.
- * @tparam TEnd Position icon at end if true, or start if false.
+ * @tparam Tbase Base component.
+ * @tparam Tend Position icon at end if true, or start if false.
  */
-template <class TBase, bool TEnd = false>
-class DropDownIcon : public TBase {
+template <class Tbase, bool Tend = false>
+class DropDownIcon : public Tbase {
 	SpriteID sprite; ///< Sprite ID to be drawn.
 	PaletteID palette; ///< Palette ID to use.
 	Dimension dsprite; ///< Bounding box dimensions of sprite.
 	Dimension dbounds; ///< Bounding box dimensions of bounds.
 public:
-	template <typename... Args>
-	explicit DropDownIcon(SpriteID sprite, PaletteID palette, Args&&... args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette)
+	template <typename... Targs>
+	explicit DropDownIcon(SpriteID sprite, PaletteID palette, Targs&&... args) : Tbase(std::forward<Targs>(args)...), sprite(sprite), palette(palette)
 	{
 		this->dsprite = GetSpriteSize(this->sprite);
 		this->dbounds = this->dsprite;
 	}
 
-	template <typename... Args>
-	explicit DropDownIcon(const Dimension &dim, SpriteID sprite, PaletteID palette, Args&&... args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette), dbounds(dim)
+	template <typename... Targs>
+	explicit DropDownIcon(const Dimension &dim, SpriteID sprite, PaletteID palette, Targs&&... args) : Tbase(std::forward<Targs>(args)...), sprite(sprite), palette(palette), dbounds(dim)
 	{
 		this->dsprite = GetSpriteSize(this->sprite);
 	}
 
-	uint Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
-	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
+	uint Height() const override { return std::max(this->dbounds.height, this->Tbase::Height()); }
+	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->Tbase::Width(); }
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		return this->Tbase::OnClick(r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
 		Rect ir = r.WithWidth(this->dbounds.width, rtl);
 		DrawSprite(this->sprite, this->palette, CentreBounds(ir.left, ir.right, this->dsprite.width), CentreBounds(r.top, r.bottom, this->dsprite.height));
-		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
+		this->Tbase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
 	}
 };
 
 /**
  * Drop down checkmark component.
- * @tparam TBase Base component.
- * @tparam TFs Font size.
- * @tparam TEnd Position checkmark at end if true, or start if false.
+ * @tparam Tbase Base component.
+ * @tparam Tend Position checkmark at end if true, or start if false.
+ * @tparam Tfs Font size.
  */
-template <class TBase, bool TEnd = false, FontSize TFs = FontSize::Normal>
-class DropDownCheck : public TBase {
+template <class Tbase, bool Tend = false, FontSize Tfs = FontSize::Normal>
+class DropDownCheck : public Tbase {
 	bool checked; ///< Is item checked.
 	Dimension dim; ///< Dimension of checkmark.
 public:
-	template <typename... Args>
-	explicit DropDownCheck(bool checked, Args&&... args) : TBase(std::forward<Args>(args)...), checked(checked)
+	template <typename... Targs>
+	explicit DropDownCheck(bool checked, Targs&&... args) : Tbase(std::forward<Targs>(args)...), checked(checked)
 	{
-		this->dim = GetStringBoundingBox(STR_JUST_CHECKMARK, TFs);
+		this->dim = GetStringBoundingBox(STR_JUST_CHECKMARK, Tfs);
 	}
 
-	uint Height() const override { return std::max<uint>(this->dim.height, this->TBase::Height()); }
-	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+	uint Height() const override { return std::max<uint>(this->dim.height, this->Tbase::Height()); }
+	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->Tbase::Width(); }
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		return this->Tbase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
 		if (this->checked) {
-			DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), STR_JUST_CHECKMARK, this->GetColour(sel), SA_CENTER, false, TFs);
+			DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), STR_JUST_CHECKMARK, this->GetColour(sel), SA_CENTER, false, Tfs);
 		}
-		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		this->Tbase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
 	}
 };
 
 /**
  * Drop down boolean toggle component.
- * @tparam TBase Base component.
- * @tparam TEnd Position toggle at end if true, or start if false.
+ * @tparam Tbase Base component.
+ * @tparam Tend Position toggle at end if true, or start if false.
  */
-template <class TBase, bool TEnd = false>
-class DropDownToggle : public TBase {
+template <class Tbase, bool Tend = false>
+class DropDownToggle : public Tbase {
 	bool on; ///< Is item on.
 	int click; ///< Click result when toggle used.
 	Colours button_colour; ///< Colour of toggle button.
 	Colours background_colour; ///< Colour of toggle background.
 public:
-	template <typename... Args>
-	explicit DropDownToggle(bool on, int click, Colours button_colour, Colours background_colour, Args&&... args)
-		: TBase(std::forward<Args>(args)...), on(on), click(click), button_colour(button_colour), background_colour(background_colour)
+	template <typename... Targs>
+	explicit DropDownToggle(bool on, int click, Colours button_colour, Colours background_colour, Targs&&... args)
+		: Tbase(std::forward<Targs>(args)...), on(on), click(click), button_colour(button_colour), background_colour(background_colour)
 	{
 	}
 
 	uint Height() const override
 	{
-		return std::max<uint>(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, this->TBase::Height());
+		return std::max<uint>(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, this->Tbase::Height());
 	}
 
 	uint Width() const override
 	{
-		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+		return SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide + this->Tbase::Width();
 	}
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
 		if (r.WithWidth(w, rtl).CentreToHeight(SETTING_BUTTON_HEIGHT).Contains(pt)) return this->click;
 
-		return this->TBase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		return this->Tbase::OnClick(r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
 		int w = SETTING_BUTTON_WIDTH;
 
 		Rect br = r.WithWidth(w, rtl).CentreToHeight(SETTING_BUTTON_HEIGHT);
 		DrawBoolButton(br.left, br.top, this->button_colour, this->background_colour, this->on, true);
 
-		this->TBase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		this->Tbase::Draw(full, r.Indent(w + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
 	}
 };
 
 /**
  * Drop down indent component.
- * @tparam TBase Base component.
- * @tparam TEnd Position indent at end if true, or start if false.
+ * @tparam Tbase Base component.
+ * @tparam Tend Position indent at end if true, or start if false.
  */
-template <class TBase, bool TEnd = false>
-class DropDownIndent : public TBase {
+template <class Tbase, bool Tend = false>
+class DropDownIndent : public Tbase {
 	uint indent;
 public:
 	template <typename... Args>
-	explicit DropDownIndent(uint indent, Args&&... args) : TBase(std::forward<Args>(args)...), indent(indent) {}
+	explicit DropDownIndent(uint indent, Args&&... args) : Tbase(std::forward<Args>(args)...), indent(indent) {}
 
-	uint Width() const override { return this->indent * WidgetDimensions::scaled.hsep_indent + this->TBase::Width(); }
+	uint Width() const override { return this->indent * WidgetDimensions::scaled.hsep_indent + this->Tbase::Width(); }
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), pt);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		return this->Tbase::OnClick(r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		this->TBase::Draw(full, r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), sel, click_result, bg_colour);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		this->Tbase::Draw(full, r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), sel, click_result, bg_colour);
 	}
 };
 
 /**
  * Drop down spacer component.
- * @tparam TBase Base component.
- * @tparam TEnd Position space at end if true, or start if false.
+ * @tparam Tbase Base component.
+ * @tparam Tend Position space at end if true, or start if false.
  */
-template <class TBase, bool TEnd = false>
-class DropDownSpacer : public TBase {
+template <class Tbase, bool Tend = false>
+class DropDownSpacer : public Tbase {
 public:
-	template <typename... Args>
-	explicit DropDownSpacer(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+	template <typename... Targs>
+	explicit DropDownSpacer(Targs&&... args) : Tbase(std::forward<Targs>(args)...) {}
 
-	uint Width() const override { return WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+	uint Width() const override { return WidgetDimensions::scaled.hsep_wide + this->Tbase::Width(); }
 
 	int OnClick(const Rect &r, const Point &pt) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		return this->TBase::OnClick(r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), pt);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		return this->Tbase::OnClick(r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), pt);
 	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
-		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		this->TBase::Draw(full, r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
+		bool rtl = Tend ^ (_current_text_dir == TD_RTL);
+		this->Tbase::Draw(full, r.Indent(WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
 	}
 };
 
 /**
  * Drop down component that makes the item unselectable.
- * @tparam TBase Base component.
+ * @tparam Tbase Base component.
  */
-template <class TBase, FontSize TFs = FontSize::Normal>
-class DropDownUnselectable : public TBase {
+template <class Tbase>
+class DropDownUnselectable : public Tbase {
 public:
-	template <typename... Args>
-	explicit DropDownUnselectable(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+	template <typename... Targs>
+	explicit DropDownUnselectable(Targs&&... args) : Tbase(std::forward<Targs>(args)...) {}
 
 	bool Selectable() const override { return false; }
 };

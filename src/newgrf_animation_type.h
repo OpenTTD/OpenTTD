@@ -18,12 +18,12 @@ enum class AnimationStatus : uint8_t {
 };
 
 /** Information about animation. */
-template <class AnimationTriggers>
+template <class Tanimation_triggers>
 struct AnimationInfo {
 	uint8_t frames = 0; ///< The number of frames.
 	AnimationStatus status = AnimationStatus::NoAnimation; ///< Status.
 	uint8_t speed = 2; ///< The speed: time between frames = 2^speed ticks.
-	AnimationTriggers triggers; ///< The enabled animation triggers.
+	Tanimation_triggers triggers; ///< The enabled animation triggers.
 };
 
 template <>

@@ -12,6 +12,7 @@
 
 #include "../../misc/hashtable.hpp"
 #include "../../misc/binaryheap.hpp"
+#include "../../misc/dbg_helpers.h"
 
 /**
  * Hash table based node list multi-container class.
@@ -184,8 +185,7 @@ public:
 	 * Helper for creating output of this array.
 	 * @param dmp The data to dump.
 	 */
-	template <class D>
-	void Dump(D &dmp) const
+	void Dump(DumpTarget &dmp) const
 	{
 		dmp.WriteStructT("data", &this->items);
 	}

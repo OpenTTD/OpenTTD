@@ -13,7 +13,7 @@
 #ifndef TIMER_MANAGER_H
 #define TIMER_MANAGER_H
 
-template <typename TTimerType>
+template <typename Ttimer_type>
 class BaseTimer;
 
 /**
@@ -23,11 +23,11 @@ class BaseTimer;
  *
  * Each Timer-type needs to implement the Elapsed() method, and distribute that to the timers if needed.
  */
-template <typename TTimerType>
+template <typename Ttimer_type>
 class TimerManager {
 public:
-	using TPeriod = typename TTimerType::TPeriod;
-	using TElapsed = typename TTimerType::TElapsed;
+	using Tperiod = typename Ttimer_type::Tperiod;
+	using Telapsed = typename Ttimer_type::Telapsed;
 
 	/* Avoid copying this object; it is a singleton object. */
 	TimerManager(TimerManager const &) = delete;
@@ -38,7 +38,7 @@ public:
 	 *
 	 * @param timer The timer to register.
 	 */
-	static void RegisterTimer(BaseTimer<TTimerType> &timer)
+	static void RegisterTimer(BaseTimer<Ttimer_type> &timer)
 	{
 #ifdef WITH_ASSERT
 		Validate(timer.period);
@@ -51,7 +51,7 @@ public:
 	 *
 	 * @param timer The timer to unregister.
 	 */
-	static void UnregisterTimer(BaseTimer<TTimerType> &timer)
+	static void UnregisterTimer(BaseTimer<Ttimer_type> &timer)
 	{
 		GetTimers().erase(&timer);
 	}
@@ -62,7 +62,7 @@ public:
 	 * @param timer The timer to change the period of.
 	 * @param new_period The new period value.
 	 */
-	static void ChangeRegisteredTimerPeriod(BaseTimer<TTimerType> &timer, TPeriod new_period)
+	static void ChangeRegisteredTimerPeriod(BaseTimer<Ttimer_type> &timer, Tperiod new_period)
 	{
 		/* Unregistration and re-registration is necessary because the period is used as the sort key in base_timer_sorter */
 		UnregisterTimer(timer);
@@ -82,7 +82,7 @@ public:
 	 *
 	 * @param period The period to validate.
 	 */
-	static void Validate(TPeriod period);
+	static void Validate(Tperiod period);
 #endif /* WITH_ASSERT */
 
 	/**
@@ -94,7 +94,7 @@ public:
 	 * @param value The amount of time that has elapsed.
 	 * @return True iff time has progressed.
 	 */
-	static bool Elapsed(TElapsed value);
+	static bool Elapsed(Telapsed value);
 
 private:
 	/**
@@ -104,7 +104,7 @@ private:
 	 * same, it will sort based on the pointer value.
 	 */
 	struct base_timer_sorter {
-		bool operator() (BaseTimer<TTimerType> *a, BaseTimer<TTimerType> *b) const
+		bool operator() (BaseTimer<Ttimer_type> *a, BaseTimer<Ttimer_type> *b) const
 		{
 			if (a->period == b->period) return a < b;
 			return a->period < b->period;
@@ -115,9 +115,9 @@ private:
 	 * Singleton list, to store all the active timers.
 	 * @return The set of timers.
 	 */
-	static std::set<BaseTimer<TTimerType> *, base_timer_sorter> &GetTimers()
+	static std::set<BaseTimer<Ttimer_type> *, base_timer_sorter> &GetTimers()
 	{
-		static std::set<BaseTimer<TTimerType> *, base_timer_sorter> timers;
+		static std::set<BaseTimer<Ttimer_type> *, base_timer_sorter> timers;
 		return timers;
 	}
 };

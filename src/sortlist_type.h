@@ -36,10 +36,10 @@ struct Filtering {
 /**
  * List template of 'things' \p T to sort in a GUI.
  * @tparam T Type of data stored in the list to represent each item.
- * @tparam P Tyoe of data passed as additional parameter to the sort function.
- * @tparam F Type of data fed as additional value to the filter function. @see FilterFunction
+ * @tparam Tsort_param Tyoe of data passed as additional parameter to the sort function.
+ * @tparam Tfilter_param Type of data fed as additional value to the filter function. @see FilterFunction
  */
-template <typename T, typename P = std::nullptr_t, typename F = std::string_view>
+template <typename T, typename Tsort_param = std::nullptr_t, typename Tfilter_param = std::string_view>
 class GUIList : public std::vector<T> {
 public:
 	/**
@@ -57,9 +57,9 @@ public:
 	 * @param filter Filter parameter for a subsection of the data, e.g. a specific cargo type when comparing industry production.
 	 * @return \c true if the first element is less than the second element.
 	 */
-	using SorterWithFilter = bool(const T &a, const T &b, const P filter);
+	using SorterWithFilter = bool(const T &a, const T &b, const Tsort_param filter);
 
-	using SortFunction = std::conditional_t<std::is_same_v<P, std::nullptr_t>, bool (const T&, const T&), bool (const T&, const T&, const P)>; ///< Signature of sort function.
+	using SortFunction = std::conditional_t<std::is_same_v<Tsort_param, std::nullptr_t>, bool (const T&, const T&), bool (const T&, const T&, const Tsort_param)>; ///< Signature of sort function.
 
 	/**
 	 * Check whether an element should be kept in the list.
@@ -67,7 +67,7 @@ public:
 	 * @param filter The filter parameter.
 	 * @return \c true iff the element should be in the list.
 	 */
-	using FilterFunction = bool(const T *item, F filter); ///< Signature of filter function.
+	using FilterFunction = bool(const T *item, Tfilter_param filter); ///< Signature of filter function.
 
 protected:
 	std::span<SortFunction * const> sort_func_list;     ///< the sort criteria functions
@@ -81,7 +81,7 @@ protected:
 	 * If sort parameters are used then params must be a reference,
 	 * however if not then params cannot be a reference as it will not be able to reference anything.
 	 */
-	using SortParameterReference = std::conditional_t<std::is_same_v<P, std::nullptr_t>, P, P&>;
+	using SortParameterReference = std::conditional_t<std::is_same_v<Tsort_param, std::nullptr_t>, Tsort_param, Tsort_param&>;
 	const SortParameterReference params; ///< @copydoc SortParameterReference
 
 	/**
@@ -105,7 +105,7 @@ protected:
 
 public:
 	/* If sort parameters are not used then we don't require a reference to the params. */
-	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<std::is_same_v<P_, std::nullptr_t>>* = nullptr>
+	template <typename T_ = T, typename Tsort_param_ = Tsort_param, typename Tfilter_param_ = Tfilter_param, std::enable_if_t<std::is_same_v<Tsort_param_, std::nullptr_t>>* = nullptr>
 	GUIList() :
 		sort_func_list({}),
 		filter_func_list({}),
@@ -117,8 +117,8 @@ public:
 	{};
 
 	/* If sort parameters are used then we require a reference to the params. */
-	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<!std::is_same_v<P_, std::nullptr_t>>* = nullptr>
-	GUIList(const P &params) :
+	template <typename T_ = T, typename Tsort_param_ = Tsort_param, typename Tfilter_param_ = Tfilter_param, std::enable_if_t<!std::is_same_v<Tsort_param_, std::nullptr_t>>* = nullptr>
+	GUIList(const Tsort_param &params) :
 		sort_func_list({}),
 		filter_func_list({}),
 		flags({}),
@@ -288,8 +288,8 @@ public:
 	 * @return true if the list sequence has been altered
 	 *
 	 */
-	template <typename Comp>
-	bool Sort(Comp compare)
+	template <typename Tcomp>
+	bool Sort(Tcomp compare)
 	{
 		/* Do not sort if the resort bit is not set */
 		if (!this->flags.Test(SortListFlag::Resort)) return false;
@@ -303,7 +303,7 @@ public:
 
 		const bool desc = this->flags.Test(SortListFlag::Desc);
 
-		if constexpr (std::is_same_v<P, std::nullptr_t>) {
+		if constexpr (std::is_same_v<Tsort_param, std::nullptr_t>) {
 			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a) : compare(a, b); });
 		} else {
 			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a, params) : compare(a, b, params); });
@@ -365,7 +365,7 @@ public:
 	 * @param filter_data Additional data passed to the filter function
 	 * @return true if the list has been altered by filtering
 	 */
-	bool Filter(FilterFunction *decide, F filter_data)
+	bool Filter(FilterFunction *decide, Tfilter_param filter_data)
 	{
 		/* Do not filter if the filter bit is not set */
 		if (!this->flags.Test(SortListFlag::Filter)) return false;
@@ -399,7 +399,7 @@ public:
 	 * @param filter_data Additional data passed to the filter function.
 	 * @return true if the list has been altered by filtering
 	 */
-	bool Filter(F filter_data)
+	bool Filter(Tfilter_param filter_data)
 	{
 		if (this->filter_func_list.empty()) return false;
 		assert(this->filter_type < this->filter_func_list.size());

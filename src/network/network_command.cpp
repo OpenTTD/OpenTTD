@@ -104,10 +104,10 @@ static constexpr auto _callback_tuple = std::make_tuple(
 
 inline constexpr size_t _callback_tuple_size = std::tuple_size_v<decltype(_callback_tuple)>;
 
-template <size_t... i>
-inline auto MakeCallbackTable(std::index_sequence<i...>) noexcept
+template <size_t... Tindices>
+inline auto MakeCallbackTable(std::index_sequence<Tindices...>) noexcept
 {
-	return std::array<CommandCallback *, sizeof...(i)>{{ reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(std::get<i>(_callback_tuple)))... }}; // MingW64 fails linking when casting a pointer to its own type. To work around, cast it to some other type first.
+	return std::array<CommandCallback *, sizeof...(Tindices)>{{ reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(std::get<Tindices>(_callback_tuple)))... }}; // MingW64 fails linking when casting a pointer to its own type. To work around, cast it to some other type first.
 }
 
 /** Type-erased table of callbacks. */
@@ -133,7 +133,7 @@ struct CallbackArgsHelper<void(*const)(Commands, const CommandCost &, Targs...)>
 /* Helpers to generate the command dispatch table from the command traits. */
 
 template <Commands Tcmd> static CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data);
-template <Commands Tcmd, size_t cb> static void UnpackNetworkCommand(const CommandPacket &cp);
+template <Commands Tcmd, size_t Tcb> static void UnpackNetworkCommand(const CommandPacket &cp);
 template <Commands Tcmd> static void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id);
 using UnpackNetworkCommandProc = void (*)(const CommandPacket &);
 using UnpackDispatchT = std::array<UnpackNetworkCommandProc, _callback_tuple_size>;
@@ -158,14 +158,14 @@ constexpr UnpackNetworkCommandProc MakeUnpackNetworkCommandCallback() noexcept
 	}
 }
 
-template <Commands Tcmd, size_t... i>
-constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) noexcept
+template <Commands Tcmd, size_t... Tindices>
+constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<Tindices...>) noexcept
 {
-	return UnpackDispatchT{{ MakeUnpackNetworkCommandCallback<Tcmd, i>()...}};
+	return UnpackDispatchT{{ MakeUnpackNetworkCommandCallback<Tcmd, Tindices>()...}};
 }
 
-template <typename T, T... i, size_t... j>
-inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::index_sequence<j...>) noexcept
+template <typename T, T... i, size_t... Tindices>
+inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::index_sequence<Tindices...>) noexcept
 {
 	return EnumClassIndexContainer<std::array<CommandDispatch, sizeof...(i)>, Commands>{{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }}};
 }

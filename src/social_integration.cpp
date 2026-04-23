@@ -170,8 +170,8 @@ void SocialIntegration::Initialize()
  * @param func   Function pointer to call.
  * @param args The arguments to pass to the given function pointer.
  */
-template <typename T, typename... Ts>
-static void PluginCall(std::unique_ptr<InternalSocialIntegrationPlugin> &plugin, T func, Ts... args)
+template <typename Tfunc, typename... Targs>
+static void PluginCall(std::unique_ptr<InternalSocialIntegrationPlugin> &plugin, Tfunc func, Targs... args)
 {
 	if (plugin->external.state != SocialIntegrationPlugin::RUNNING) {
 		return;

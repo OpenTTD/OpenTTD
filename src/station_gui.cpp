@@ -53,14 +53,14 @@ struct StationTypeFilter
 	static constexpr bool IsWaypoint() { return false; }
 };
 
-template <bool ROAD, TileType TILE_TYPE>
+template <bool Tis_road, TileType Ttile_type>
 struct GenericWaypointTypeFilter
 {
 	using StationType = Waypoint;
 
-	static bool IsValidID(StationID id) { return Waypoint::IsValidID(id) && HasBit(Waypoint::Get(id)->waypoint_flags, WPF_ROAD) == ROAD; }
-	static bool IsValidBaseStation(const BaseStation *st) { return Waypoint::IsExpected(st) && HasBit(Waypoint::From(st)->waypoint_flags, WPF_ROAD) == ROAD; }
-	static bool IsAcceptableWaypointTile(TileIndex tile) { return IsTileType(tile, TILE_TYPE); }
+	static bool IsValidID(StationID id) { return Waypoint::IsValidID(id) && HasBit(Waypoint::Get(id)->waypoint_flags, WPF_ROAD) == Tis_road; }
+	static bool IsValidBaseStation(const BaseStation *st) { return Waypoint::IsExpected(st) && HasBit(Waypoint::From(st)->waypoint_flags, WPF_ROAD) == Tis_road; }
+	static bool IsAcceptableWaypointTile(TileIndex tile) { return IsTileType(tile, Ttile_type); }
 	static constexpr bool IsWaypoint() { return true; }
 };
 using RailWaypointTypeFilter = GenericWaypointTypeFilter<false, TileType::Railway>;
