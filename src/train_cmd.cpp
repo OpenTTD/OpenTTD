@@ -4192,7 +4192,12 @@ bool Train::CanLeadConsist() const
 	/* NewGRFs can allow unpowered wagons to lead trains. */
 	if (v->GetEngine()->info.extra_flags.Test(ExtraEngineFlag::HasCab)) return true;
 
-	return v->IsEngine() || v->IsRearDualheaded();
+	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_ALLOW_DENY_REVERSE, 0, 0, v->engine_type, v, {});
+	switch (callback) {
+		case 0: return false;
+		case 1: return true;
+		default: return v->IsEngine() || v->IsRearDualheaded();
+	}
 }
 
 /**
