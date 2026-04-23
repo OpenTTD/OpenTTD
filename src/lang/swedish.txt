@@ -1352,9 +1352,12 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Höga
 STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat kan lågkonjunkturer uppstå regelbundet. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Tillåt tåg att vända när de backar: {STRING}
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Välj var tåg kan vända för att byta körriktning. Med "Alla" kan tåg vända var som helst. Med "Endast vid linjens slut" kommer tåg inte att vända vid stationer om det finns en möjlig rutt framåt. Med "Inga" kan tåg inte vända och kommer att köra baklänges om nödvändigt, men med reducerad hastighet om det bakersta fordonet saknar en förarhytt
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Alla
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Endast vid linjens slut
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Ingen
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
@@ -1506,7 +1509,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfa
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfartshållplatser på vägar som ägs av städer
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillåt dina fordon att köra genom motståndarens hållplatser: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillåt konstruktion av genomfartshållplatser på vägar som ägs av andra företag
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Det är inte möjligt att ändra denna inställning när det finns fordon
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Underhåll av infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är aktiverat så kostar underhåll av infrastruktur. Kostnaden ökar mer än proportionellt mot nätverkets storlek, vilket innebär att större företag drabbas hårdare än små företag av underhållskostnader.
@@ -2593,9 +2596,9 @@ STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in text för nätverkschat
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Inget nätverkskort funnet
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Anslutning till servern tog för lång tid eller avvisades
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunde inte ansluta på grund av att NewGRF är omaka
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :Inget nätverkskort funnet
+STR_NETWORK_ERROR_NOCONNECTION                                  :Anslutning till servern tog för lång tid eller avvisades
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :Kunde inte ansluta på grund av att NewGRF:er är omaka
 STR_NETWORK_ERROR_DESYNC                                        :Synkronisering av nätverksspel misslyckades
 STR_NETWORK_ERROR_LOSTCONNECTION                                :Anslutning till nätverksspel förlorad
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunde inte ladda det sparade spelet
@@ -2605,7 +2608,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Du har inte ang
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Du har inte angivit något servernamn. Namninställning kan göras högst upp i flerspelarfönstret
 STR_NETWORK_ERROR_WRONG_REVISION                                :Servern har en annan version än denna klient
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :Fel lösenord
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Du finns ej med på listan över tillåtna klienter
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :Du finns inte med på listan över tillåtna klienter
 STR_NETWORK_ERROR_SERVER_FULL                                   :Servern är full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :Du är bannlyst från den här servern
 STR_NETWORK_ERROR_KICKED                                        :Du blev utkastad från spelet
@@ -4277,7 +4280,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Köp och
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Köp markerat tågfordon. Håll även in Shift för att endast visa uppskattad kostnad
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Köp markerat vägfordon. Håll även in Shift för att endast visa uppskattad kostnad
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Köp markerat skepp. Håll även in Shift för att endast visa uppskattad kostnad
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Köp markerad flygfarkost. Håll även in Shift för att endast visa uppskattad kostnad
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Köp markerad luftfarkost. Håll även in Shift för att endast visa uppskattad kostnad
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Köp och bygg om markerat tågfordon. Håll även in Shift för att endast visa uppskattad kostnad
@@ -5060,7 +5063,7 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet s
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Generering av kartan avbruten...{}{}... inga lämpliga platser för någon stad
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det finns ingen stad i detta scenario
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :det finns ingen stad i detta scenario
 
 STR_ERROR_PNGMAP                                                :Kan inte ladda landskap från PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :hittar inte filen
@@ -5296,7 +5299,7 @@ STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Kan inte ta bor
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Kan inte ta bort signaler härifrån...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan inte konvertera signaler här...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :det finns inget järnvägsspår
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... det finns inga signaler
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :det finns inga signaler
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :Kan inte konvertera spårtyp här...
 
@@ -5461,7 +5464,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starta e
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Inga vägtyper som kan byggas av städer finns tillgängliga
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Ändra din NewGRF-konfiguration
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Inga vägtyper som kan byggas av städer finns tillgängliga ännu
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som tidigt erbjuder vägtyper som städer kan bygga
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som erbjuder vägtyper som städer kan bygga tidigt
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...
