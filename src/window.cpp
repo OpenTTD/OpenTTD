@@ -2862,7 +2862,7 @@ static void HandleKeyScrolling()
 	 * Check that any of the dirkeys is pressed and that the focused window
 	 * doesn't have an edit-box as focused widget.
 	 */
-	if (_dirkeys && !EditBoxInGlobalFocus()) {
+	if (_dirkeys.Any() && !EditBoxInGlobalFocus()) {
 		int factor = _shift_pressed ? 50 : 10;
 
 		if (_game_mode != GM_MENU && _game_mode != GM_BOOTSTRAP) {
@@ -2871,7 +2871,7 @@ static void HandleKeyScrolling()
 			main_window->viewport->CancelFollow(*main_window);
 		}
 
-		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
+		ScrollMainViewport(scrollamt[_dirkeys.base()][0] * factor, scrollamt[_dirkeys.base()][1] * factor);
 	}
 }
 

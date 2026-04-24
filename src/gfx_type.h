@@ -401,6 +401,15 @@ enum StringAlignment : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(StringAlignment)
 
+/** The four direction keys on a keyboard. */
+enum class DirectionKey {
+	Left, ///< Left
+	Up, ///< Up
+	Right, ///< Right
+	Down, ///< Down
+};
+using DirectionKeys = EnumBitSet<DirectionKey, uint8_t>; ///< Bitset of the direction keys.
+
 /** Colour for pixel/line drawing. */
 struct PixelColour {
 	uint8_t p; ///< Palette index.
