@@ -235,7 +235,10 @@ static const uint TUNNELBRIDGE_TRACKBIT_FACTOR = 4;
 /** Multiplier for how many regular track bits a level crossing counts. */
 static const uint LEVELCROSSING_TRACKBIT_FACTOR = 2;
 /** Multiplier for how many regular track bits a road depot counts. */
-static const uint ROAD_DEPOT_TRACKBIT_FACTOR = 2;
+// Depot infrastructure contribution factor.
+// Increased to ensure depot maintenance is visible under the current cost formula,
+// which uses scaling and integer division that can round small values to zero.
+static const uint ROAD_DEPOT_TRACKBIT_FACTOR = 64;
 /** Multiplier for how many regular track bits a bay stop counts. */
 static const uint ROAD_STOP_TRACKBIT_FACTOR = 2;
 /** Multiplier for how many regular tiles a lock counts. */
