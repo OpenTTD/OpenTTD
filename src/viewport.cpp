@@ -3849,5 +3849,7 @@ void ViewportData::CancelFollow(const Window &viewport_window)
 		if (vehicle_window != nullptr) vehicle_window->RaiseWidgetWhenLowered(WID_VV_LOCATION);
 	}
 
+	this->dest_scrollpos_x = this->scrollpos_x;
+	this->dest_scrollpos_y = this->scrollpos_y;
 	this->follow_vehicle = VehicleID::Invalid();
 }
