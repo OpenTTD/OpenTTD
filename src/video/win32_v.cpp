@@ -139,7 +139,7 @@ static uint MapWindowsKey(uint sym)
 uint8_t VideoDriver_Win32Base::GetFullscreenBpp()
 {
 	/* Check modes for the relevant fullscreen bpp */
-	return _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+	return _support8bpp != Support8bpp::Hardware ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 }
 
 /**

@@ -268,7 +268,7 @@ static bool SwitchNewGRFBlitter()
 	 * between multiple 32bpp blitters, which perform differently with 8bpp sprites.
 	 */
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
-	uint depth_wanted_by_grf = _support8bpp != S8BPP_NONE ? 8 : 32;
+	uint depth_wanted_by_grf = _support8bpp != Support8bpp::None ? 8 : 32;
 	for (const auto &c : _grfconfig) {
 		if (c->status == GRFStatus::Disabled || c->status == GRFStatus::NotFound || c->flags.Test(GRFConfigFlag::InitOnly)) continue;
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
