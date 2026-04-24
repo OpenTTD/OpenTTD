@@ -48,7 +48,7 @@ void GameLoop();
 
 void CreateConsole();
 
-extern uint8_t _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
+extern DirectionKeys _dirkeys;
 extern bool _fullscreen;
 extern Support8bpp _support8bpp;
 extern CursorVars _cursor;
