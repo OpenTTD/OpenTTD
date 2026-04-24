@@ -254,7 +254,7 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
 		/* Depot tile? Can't continue. */
 		if (IsRailDepotTile(tile)) break;
 		/* Non-pbs signal? Reservation can't continue. */
-		if (IsTileType(tile, TileType::Railway) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) break;
+		if (HasBlockSignalOnTrackdir(tile, trackdir)) break;
 	}
 
 	return PBSTileInfo(tile, trackdir, false);
@@ -396,10 +396,8 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 {
 	if (IsRailDepotTile(tile)) return true;
 
-	if (IsTileType(tile, TileType::Railway)) {
-		/* For non-pbs signals, stop on the signal tile. */
-		if (HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) return true;
-	}
+	/* For non-pbs signals, stop on the signal tile. */
+	if (HasBlockSignalOnTrackdir(tile, trackdir)) return true;
 
 	/* Check next tile. For performance reasons, we check for 90 degree turns ourself. */
 	CFollowTrackRail ft(v, GetAllCompatibleRailTypes(v->railtypes));
@@ -448,7 +446,7 @@ bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bo
 
 	/* Not reserved and depot or not a pbs signal -> free. */
 	if (IsRailDepotTile(tile)) return true;
-	if (IsTileType(tile, TileType::Railway) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, track))) return true;
+	if (HasBlockSignalOnTrackdir(tile, trackdir)) return true;
 
 	/* Check the next tile, it has to be free as well. Do not filter for compatible railtypes
 	 * to make sure we never accidentally join up reservations. */
