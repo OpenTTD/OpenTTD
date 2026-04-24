@@ -68,6 +68,12 @@ void GroundVehicle<T, Type>::PowerChanged()
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 	}
 
+	/* If the consist is going backwards, without a leading cab, restrict its speed. */
+	if (!v->GetMovingFront()->CanLeadConsist()) {
+		constexpr int BACKWARDS_NO_CAB_SPEED_LIMIT = 32;
+		max_track_speed = std::min<int>(max_track_speed, BACKWARDS_NO_CAB_SPEED_LIMIT);
+	}
+
 	this->gcache.cached_max_track_speed = max_track_speed;
 }
 

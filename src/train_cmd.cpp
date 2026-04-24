@@ -429,12 +429,6 @@ int Train::GetCurrentMaxSpeed() const
 
 	max_speed = std::min<int>(max_speed, this->current_order.GetMaxSpeed());
 
-	/* If the train is going backwards, without a leading cab, restrict its speed. */
-	if (!moving_front->CanLeadConsist()) {
-		constexpr int BACKWARDS_NO_CAB_SPEED_LIMIT = 32;
-		max_speed = std::min<int>(max_speed, BACKWARDS_NO_CAB_SPEED_LIMIT);
-	}
-
 	return std::min<int>(max_speed, this->gcache.cached_max_track_speed);
 }
 
