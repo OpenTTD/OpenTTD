@@ -1597,7 +1597,7 @@ static void UpdateLoadUnloadTicks(Vehicle *front, const Station *st, int ticks)
 {
 	if (front->type == VEH_TRAIN && _settings_game.order.station_length_loading_penalty) {
 		/* Each platform tile is worth 2 rail vehicles. */
-		int overhang = front->GetGroundVehicleCache()->cached_total_length - st->GetPlatformLength(front->tile) * TILE_SIZE;
+		int overhang = front->GetGroundVehicleCache()->cached_total_length - st->GetPlatformLength(front->GetMovingFront()->tile) * TILE_SIZE;
 		if (overhang > 0) {
 			ticks <<= 1;
 			ticks += (overhang * ticks) / 8;
