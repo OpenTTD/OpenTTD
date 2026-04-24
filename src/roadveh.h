@@ -146,6 +146,12 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	int UpdateSpeed();
 	void SetDestTile(TileIndex tile) override;
 
+	/**
+	 * Check if this vehicle can lead a consist.
+	 * @return \c true iff this vehicle can lead a consist.
+	 */
+	inline bool CanLeadConsist() const { return this->IsFrontEngine(); }
+
 protected: // These functions should not be called outside acceleration code.
 
 	/**

@@ -77,6 +77,7 @@ enum GroundVehicleFlags : uint8_t {
  * virtual int         GetDisplayMaxSpeed() const = 0;
  * virtual uint16_t      GetMaxTrackSpeed() const = 0;
  * virtual bool        TileMayHaveSlopedTrack() const = 0;
+ * virtual bool CanLeadConsist() const = 0;
  */
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
@@ -335,23 +336,6 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * @return True if the engine is the rear part of a dualheaded engine.
 	 */
 	inline bool IsRearDualheaded() const { return this->IsMultiheaded() && !this->IsEngine(); }
-
-	/**
-	 * Check if this vehicle can lead a train.
-	 * @return \c true iff this vehicle can lead a train.
-	 */
-	inline bool CanLeadTrain() const
-	{
-		/* NewGRFs can allow unpowered wagons to lead trains. */
-		if (this->GetEngine()->info.extra_flags.Test(ExtraEngineFlag::HasCab)) return true;
-
-		/* This might be an articulated engine. */
-		if (this->IsArticulatedPart()) {
-			return this->GetFirstEnginePart()->IsEngine();
-		}
-
-		return this->IsEngine() || this->IsRearDualheaded();
-	}
 
 	/**
 	 * Update the GUI variant of the current speed of the vehicle.

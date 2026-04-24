@@ -430,7 +430,7 @@ int Train::GetCurrentMaxSpeed() const
 	max_speed = std::min<int>(max_speed, this->current_order.GetMaxSpeed());
 
 	/* If the train is going backwards, without a leading cab, restrict its speed. */
-	if (!moving_front->CanLeadTrain()) {
+	if (!moving_front->CanLeadConsist()) {
 		constexpr int BACKWARDS_NO_CAB_SPEED_LIMIT = 32;
 		max_speed = std::min<int>(max_speed, BACKWARDS_NO_CAB_SPEED_LIMIT);
 	}
@@ -2026,7 +2026,7 @@ static void ReverseTrainDirection(Train *consist)
 	TileIndex crossing = TrainApproachingCrossingTile(moving_front);
 
 	/* Check if we should back up or flip the train. */
-	if (consist->vehicle_flags.Test(VehicleFlag::DrivingBackwards) || _settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::None || consist->Last()->CanLeadTrain()) {
+	if (consist->vehicle_flags.Test(VehicleFlag::DrivingBackwards) || _settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::None || consist->Last()->CanLeadConsist()) {
 		/* The train will back up. */
 		consist->vehicle_flags.Flip(VehicleFlag::DrivingBackwards);
 
@@ -4184,6 +4184,21 @@ Money Train::GetRunningCost() const
 	} while ((v = v->GetNextVehicle()) != nullptr);
 
 	return cost;
+}
+
+/**
+ * Check if this vehicle can lead a consist.
+ * @return \c true iff this vehicle can lead a consist.
+ */
+bool Train::CanLeadConsist() const
+{
+	/* This might be an articulated engine. */
+	const Train *v = this->GetFirstEnginePart();
+
+	/* NewGRFs can allow unpowered wagons to lead trains. */
+	if (v->GetEngine()->info.extra_flags.Test(ExtraEngineFlag::HasCab)) return true;
+
+	return v->IsEngine() || v->IsRearDualheaded();
 }
 
 /**
