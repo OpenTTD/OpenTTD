@@ -65,7 +65,7 @@ static CompanyID _admin_company_id = CompanyID::Invalid(); ///< For what company
  */
 void UpdateNetworkGameWindow()
 {
-	InvalidateWindowData(WC_NETWORK_WINDOW, NetworkWindowNumber::Game, 0);
+	InvalidateWindowData(WindowClass::Network, NetworkWindowNumber::Game, 0);
 }
 
 /**
@@ -953,7 +953,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_game_widgets
 /** Description of the NetworkGameWindow. */
 static WindowDesc _network_game_window_desc(
 	WindowPosition::Center, "list_servers", 1000, 730,
-	WC_NETWORK_WINDOW, WC_NONE,
+	WindowClass::Network, WindowClass::None,
 	{},
 	_nested_network_game_widgets
 );
@@ -962,7 +962,7 @@ static WindowDesc _network_game_window_desc(
 void ShowNetworkGameWindow()
 {
 	static bool first = true;
-	CloseWindowById(WC_NETWORK_WINDOW, NetworkWindowNumber::StartServer);
+	CloseWindowById(WindowClass::Network, NetworkWindowNumber::StartServer);
 
 	/* Only show once */
 	if (first) {
@@ -1230,7 +1230,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_start_server
 /** Description of the NetworkStartServerWindow. */
 static WindowDesc _network_start_server_window_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_NETWORK_WINDOW, WC_NONE,
+	WindowClass::Network, WindowClass::None,
 	{},
 	_nested_network_start_server_window_widgets
 );
@@ -1240,7 +1240,7 @@ static void ShowNetworkStartServerWindow()
 {
 	if (!NetworkValidateOurClientName()) return;
 
-	CloseWindowById(WC_NETWORK_WINDOW, NetworkWindowNumber::Game);
+	CloseWindowById(WindowClass::Network, NetworkWindowNumber::Game);
 
 	new NetworkStartServerWindow(_network_start_server_window_desc);
 }
@@ -1307,7 +1307,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_client_list_widgets 
 /** Description of the NetworkClientListWindow. */
 static WindowDesc _client_list_desc(
 	WindowPosition::Automatic, "list_clients", 220, 300,
-	WC_CLIENT_LIST, WC_NONE,
+	WindowClass::NetworkClientList, WindowClass::None,
 	{},
 	_nested_client_list_widgets
 );
@@ -2092,7 +2092,7 @@ struct NetworkJoinStatusWindow : Window {
 	 */
 	NetworkJoinStatusWindow(WindowDesc &desc) : Window(desc)
 	{
-		this->parent = FindWindowById(WC_NETWORK_WINDOW, NetworkWindowNumber::Game);
+		this->parent = FindWindowById(WindowClass::Network, NetworkWindowNumber::Game);
 		this->InitNested(NetworkStatusWindowNumber::Join);
 	}
 
@@ -2209,7 +2209,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_join_status_
 /** Description of the NetworkJoinStatusWindow. */
 static WindowDesc _network_join_status_window_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_NETWORK_STATUS_WINDOW, WC_NONE,
+	WindowClass::NetworkStatus, WindowClass::None,
 	WindowDefaultFlag::Modal,
 	_nested_network_join_status_window_widgets
 );
@@ -2217,7 +2217,7 @@ static WindowDesc _network_join_status_window_desc(
 /** Open the window showing the status of joining the server. */
 void ShowJoinStatusWindow()
 {
-	CloseWindowById(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
+	CloseWindowById(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
 	new NetworkJoinStatusWindow(_network_join_status_window_desc);
 }
 
@@ -2227,7 +2227,7 @@ void ShowJoinStatusWindow()
  */
 void ShowNetworkNeedPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request)
 {
-	NetworkJoinStatusWindow *w = dynamic_cast<NetworkJoinStatusWindow *>(FindWindowById(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join));
+	NetworkJoinStatusWindow *w = dynamic_cast<NetworkJoinStatusWindow *>(FindWindowById(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join));
 	if (w == nullptr) return;
 	w->request = std::move(request);
 
@@ -2331,7 +2331,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_relay_wi
 /** Description of the NetworkAskRelayWindow. */
 static WindowDesc _network_ask_relay_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_NETWORK_ASK_RELAY, WC_NONE,
+	WindowClass::NetworkAskRelay, WindowClass::None,
 	WindowDefaultFlag::Modal,
 	_nested_network_ask_relay_widgets
 );
@@ -2344,7 +2344,7 @@ static WindowDesc _network_ask_relay_desc(
  */
 void ShowNetworkAskRelay(std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token)
 {
-	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
+	CloseWindowByClass(WindowClass::NetworkAskRelay, NRWCD_HANDLED);
 
 	Window *parent = GetMainWindow();
 	new NetworkAskRelayWindow(_network_ask_relay_desc, parent, server_connection_string, std::move(relay_connection_string), std::move(token));
@@ -2436,7 +2436,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_survey_w
 /** Description of the NetworkAskSurveyWindow. */
 static WindowDesc _network_ask_survey_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_NETWORK_ASK_SURVEY, WC_NONE,
+	WindowClass::NetworkAskSurvey, WindowClass::None,
 	WindowDefaultFlag::Modal,
 	_nested_network_ask_survey_widgets
 );
@@ -2449,7 +2449,7 @@ void ShowNetworkAskSurvey()
 	/* If we can't send a survey, don't ask the question. */
 	if constexpr (!NetworkSurveyHandler::IsSurveyPossible()) return;
 
-	CloseWindowByClass(WC_NETWORK_ASK_SURVEY);
+	CloseWindowByClass(WindowClass::NetworkAskSurvey);
 
 	Window *parent = GetMainWindow();
 	new NetworkAskSurveyWindow(_network_ask_survey_desc, parent);
@@ -2480,6 +2480,6 @@ struct SurveyResultTextfileWindow : public TextfileWindow {
  */
 void ShowSurveyResultTextfileWindow(Window *parent)
 {
-	parent->CloseChildWindowById(WC_TEXTFILE, TFT_SURVEY_RESULT);
+	parent->CloseChildWindowById(WindowClass::Textfile, TFT_SURVEY_RESULT);
 	new SurveyResultTextfileWindow(parent, TFT_SURVEY_RESULT);
 }

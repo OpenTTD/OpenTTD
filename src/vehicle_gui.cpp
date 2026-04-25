@@ -1344,7 +1344,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_refit_widget
 /** Window definition for the vehicle refit window. */
 static WindowDesc _vehicle_refit_desc(
 	WindowPosition::Automatic, "view_vehicle_refit", 240, 174,
-	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
+	WindowClass::VehicleRefit, WindowClass::VehicleView,
 	WindowDefaultFlag::Construction,
 	_nested_vehicle_refit_widgets
 );
@@ -1358,7 +1358,7 @@ static WindowDesc _vehicle_refit_desc(
  */
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit)
 {
-	CloseWindowById(WC_VEHICLE_REFIT, v->index);
+	CloseWindowById(WindowClass::VehicleRefit, v->index);
 	RefitWindow *w = new RefitWindow(_vehicle_refit_desc, v, order, auto_refit);
 	w->parent = parent;
 }
@@ -1607,11 +1607,11 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
  */
 void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 {
-	ChangeVehicleWindow(WC_VEHICLE_VIEW,      from_index, to_index);
-	ChangeVehicleWindow(WC_VEHICLE_ORDERS,    from_index, to_index);
-	ChangeVehicleWindow(WC_VEHICLE_REFIT,     from_index, to_index);
-	ChangeVehicleWindow(WC_VEHICLE_DETAILS,   from_index, to_index);
-	ChangeVehicleWindow(WC_VEHICLE_TIMETABLE, from_index, to_index);
+	ChangeVehicleWindow(WindowClass::VehicleView, from_index, to_index);
+	ChangeVehicleWindow(WindowClass::VehicleOrders, from_index, to_index);
+	ChangeVehicleWindow(WindowClass::VehicleRefit, from_index, to_index);
+	ChangeVehicleWindow(WindowClass::VehicleDetails, from_index, to_index);
+	ChangeVehicleWindow(WindowClass::VehicleTimetable, from_index, to_index);
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_list = {
@@ -2084,7 +2084,7 @@ public:
 		this->SortVehicleList();
 
 		if (this->vehicles.empty() && this->IsWidgetLowered(WID_VL_MANAGE_VEHICLES_DROPDOWN)) {
-			this->CloseChildWindows(WC_DROPDOWN_MENU);
+			this->CloseChildWindows(WindowClass::DropdownMenu);
 		}
 
 		/* Hide the widgets that we will not use in this window
@@ -2284,25 +2284,25 @@ public:
 static VehicleTypeIndexArray<WindowDesc> _vehicle_list_desc = {{
 	WindowDesc{
 		WindowPosition::Automatic, "list_vehicles_train", 325, 246,
-		WC_TRAINS_LIST, WC_NONE,
+		WindowClass::TrainList, WindowClass::None,
 		{},
 		_nested_vehicle_list
 	},
 	WindowDesc{
 		WindowPosition::Automatic, "list_vehicles_roadveh", 260, 246,
-		WC_ROADVEH_LIST, WC_NONE,
+		WindowClass::RoadVehicleList, WindowClass::None,
 		{},
 		_nested_vehicle_list
 	},
 	WindowDesc{
 		WindowPosition::Automatic, "list_vehicles_ship", 260, 246,
-		WC_SHIPS_LIST, WC_NONE,
+		WindowClass::ShipList, WindowClass::None,
 		{},
 		_nested_vehicle_list
 	},
 	WindowDesc{
 		WindowPosition::Automatic, "list_vehicles_aircraft", 260, 246,
-		WC_AIRCRAFT_LIST, WC_NONE,
+		WindowClass::AircraftList, WindowClass::None,
 		{},
 		_nested_vehicle_list
 	}
@@ -2835,7 +2835,7 @@ struct VehicleDetailsWindow : Window {
 /** Vehicle details window descriptor. */
 static WindowDesc _train_vehicle_details_desc(
 	WindowPosition::Automatic, "view_vehicle_details_train", 405, 178,
-	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
+	WindowClass::VehicleDetails, WindowClass::VehicleView,
 	{},
 	_nested_train_vehicle_details_widgets
 );
@@ -2843,7 +2843,7 @@ static WindowDesc _train_vehicle_details_desc(
 /** Vehicle details window descriptor for other vehicles than a train. */
 static WindowDesc _nontrain_vehicle_details_desc(
 	WindowPosition::Automatic, "view_vehicle_details", 405, 113,
-	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
+	WindowClass::VehicleDetails, WindowClass::VehicleView,
 	{},
 	_nested_nontrain_vehicle_details_widgets
 );
@@ -2854,8 +2854,8 @@ static WindowDesc _nontrain_vehicle_details_desc(
  */
 static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
-	CloseWindowById(WC_VEHICLE_ORDERS, v->index, false);
-	CloseWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
+	CloseWindowById(WindowClass::VehicleOrders, v->index, false);
+	CloseWindowById(WindowClass::VehicleTimetable, v->index, false);
 	AllocateWindowDescFront<VehicleDetailsWindow>((v->type == VehicleType::Train) ? _train_vehicle_details_desc : _nontrain_vehicle_details_desc, v->index);
 }
 
@@ -3103,10 +3103,10 @@ public:
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowById(WC_VEHICLE_ORDERS, this->window_number, false);
-		CloseWindowById(WC_VEHICLE_REFIT, this->window_number, false);
-		CloseWindowById(WC_VEHICLE_DETAILS, this->window_number, false);
-		CloseWindowById(WC_VEHICLE_TIMETABLE, this->window_number, false);
+		CloseWindowById(WindowClass::VehicleOrders, this->window_number, false);
+		CloseWindowById(WindowClass::VehicleRefit, this->window_number, false);
+		CloseWindowById(WindowClass::VehicleDetails, this->window_number, false);
+		CloseWindowById(WindowClass::VehicleTimetable, this->window_number, false);
 		this->Window::Close();
 	}
 
@@ -3473,7 +3473,7 @@ public:
 /** Vehicle view window descriptor for all vehicles but trains. */
 static WindowDesc _vehicle_view_desc(
 	WindowPosition::Automatic, "view_vehicle", 250, 116,
-	WC_VEHICLE_VIEW, WC_NONE,
+	WindowClass::VehicleView, WindowClass::None,
 	{},
 	_nested_vehicle_view_widgets,
 	&VehicleViewWindow::hotkeys
@@ -3485,7 +3485,7 @@ static WindowDesc _vehicle_view_desc(
  */
 static WindowDesc _train_view_desc(
 	WindowPosition::Automatic, "view_vehicle_train", 250, 134,
-	WC_VEHICLE_VIEW, WC_NONE,
+	WindowClass::VehicleView, WindowClass::None,
 	{},
 	_nested_vehicle_view_widgets,
 	&VehicleViewWindow::hotkeys

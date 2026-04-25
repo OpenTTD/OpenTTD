@@ -17,9 +17,9 @@ ${INCLUDES}
 /**
  * Class that handles window interaction. A Window in OpenTTD has two important
  *  values. The WindowClass, and a Window number. The first indicates roughly
- *  which window it is. WC_TOWN_VIEW for example, is the view of a town.
+ *  which window it is. WindowClass::TownView for example, is the view of a town.
  * The Window number is a bit more complex, as it depends mostly on the
- *  WindowClass. For example for WC_TOWN_VIEW it is the TownID. In general a
+ *  WindowClass. For example for WindowClass::TownView it is the TownID. In general a
  *  good rule of thumb is: either the number is always 0, or the ID of the
  *  object in question.
  * In the comment at the widget enum, it is mentioned how the number is used.

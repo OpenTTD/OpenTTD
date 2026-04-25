@@ -411,7 +411,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_object_widgets
 /** Window definition for the build object window. */
 static WindowDesc _build_object_desc(
 	WindowPosition::Automatic, "build_object", 0, 0,
-	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
+	WindowClass::BuildObject, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_build_object_widgets,
 	&BuildObjectWindow::hotkeys

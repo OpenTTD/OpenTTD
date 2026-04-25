@@ -391,7 +391,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_select_game_widgets 
 /** Window definition for the select game window. */
 static WindowDesc _select_game_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_SELECT_GAME, WC_NONE,
+	WindowClass::SelectGame, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_nested_select_game_widgets
 );

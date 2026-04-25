@@ -129,7 +129,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets 
 /** Window definition for the normal news window. */
 static WindowDesc _normal_news_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
+	WindowClass::News, WindowClass::None,
 	{},
 	_nested_normal_news_widgets
 );
@@ -178,7 +178,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets
 /** Window definition for the vehicle news window. */
 static WindowDesc _vehicle_news_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
+	WindowClass::News, WindowClass::None,
 	{},
 	_nested_vehicle_news_widgets
 );
@@ -224,7 +224,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets
 /** Window definition for the company news window. */
 static WindowDesc _company_news_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
+	WindowClass::News, WindowClass::None,
 	{},
 	_nested_company_news_widgets
 );
@@ -259,7 +259,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = 
 /** Window definition for the thin news window. */
 static WindowDesc _thin_news_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
+	WindowClass::News, WindowClass::None,
 	{},
 	_nested_thin_news_widgets
 );
@@ -298,7 +298,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets =
 /** Window definition for the small news window. */
 static WindowDesc _small_news_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
+	WindowClass::News, WindowClass::None,
 	{},
 	_nested_small_news_widgets
 );
@@ -367,9 +367,9 @@ struct NewsWindow : Window {
 	NewsWindow(WindowDesc &desc, const NewsItem *ni) : Window(desc), ni(ni)
 	{
 		NewsWindow::duration = 16650;
-		const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
+		const Window *w = FindWindowByClass(WindowClass::NetworkChat);
 		this->chat_height = (w != nullptr) ? w->height : 0;
-		this->status_height = FindWindowById(WC_STATUS_BAR, 0)->height;
+		this->status_height = FindWindowById(WindowClass::Statusbar, 0)->height;
 
 		this->flags.Set(WindowFlag::DisableVpScroll);
 
@@ -718,7 +718,7 @@ static void ShowTicker(NewsIterator ni)
 	if (_settings_client.sound.news_ticker) SndPlayFx(SND_16_NEWS_TICKER);
 
 	_statusbar_news = ni;
-	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_TICKER);
+	InvalidateWindowData(WindowClass::Statusbar, 0, SBI_SHOW_TICKER);
 }
 
 /** Initialize the news-items data structures */
@@ -756,7 +756,7 @@ static bool ReadyForNextNewsItem()
 	if (_forced_news == std::end(_news) && _current_news == std::end(_news)) return true;
 
 	/* neither newsticker nor newspaper are running */
-	return (NewsWindow::duration <= 0 || FindWindowById(WC_NEWS_WINDOW, 0) == nullptr);
+	return (NewsWindow::duration <= 0 || FindWindowById(WindowClass::News, 0) == nullptr);
 }
 
 /** Move to the next ticker item */
@@ -765,7 +765,7 @@ static void MoveToNextTickerItem()
 	/* There is no status bar, so no reason to show news;
 	 * especially important with the end game screen when
 	 * there is no status bar but possible news. */
-	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
+	if (FindWindowById(WindowClass::Statusbar, 0) == nullptr) return;
 
 	/* No news to move to. */
 	if (std::empty(_news)) return;
@@ -781,7 +781,7 @@ static void MoveToNextTickerItem()
 		switch (_news_type_data[to_underlying(type)].GetDisplay()) {
 			default: NOT_REACHED();
 			case NewsDisplay::Off: // Show nothing only a small reminder in the status bar.
-				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
+				InvalidateWindowData(WindowClass::Statusbar, 0, SBI_SHOW_REMINDER);
 				return;
 
 			case NewsDisplay::Summary: // Show ticker.
@@ -800,9 +800,9 @@ static void MoveToNextNewsItem()
 	/* There is no status bar, so no reason to show news;
 	 * especially important with the end game screen when
 	 * there is no status bar but possible news. */
-	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
+	if (FindWindowById(WindowClass::Statusbar, 0) == nullptr) return;
 
-	CloseWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
+	CloseWindowById(WindowClass::News, 0); // close the newspapers window if shown
 	_forced_news = std::end(_news);
 
 	/* No news to move to. */
@@ -865,7 +865,7 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
 
 	if (update_statusbar_news) {
 		/* About to remove the currently displayed item (ticker, or just a reminder) */
-		InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
+		InvalidateWindowData(WindowClass::Statusbar, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 		MoveToNextTickerItem();
 	}
 
@@ -928,7 +928,7 @@ void AddNewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsF
 		DeleteNewsItem(std::prev(std::end(_news)));
 	}
 
-	InvalidateWindowData(WC_MESSAGE_HISTORY, 0);
+	InvalidateWindowData(WindowClass::MessageHistory, 0);
 }
 
 /**
@@ -1010,7 +1010,7 @@ void DeleteNews(Tpredicate predicate)
 			++it;
 		}
 	}
-	if (dirty) InvalidateWindowData(WC_MESSAGE_HISTORY, 0);
+	if (dirty) InvalidateWindowData(WindowClass::MessageHistory, 0);
 }
 
 template <typename T>
@@ -1133,13 +1133,13 @@ static void ShowNewsMessage(NewsIterator ni)
 	assert(!std::empty(_news));
 
 	/* Delete the news window */
-	CloseWindowById(WC_NEWS_WINDOW, 0);
+	CloseWindowById(WindowClass::News, 0);
 
 	/* setup forced news item */
 	_forced_news = ni;
 
 	if (_forced_news != std::end(_news)) {
-		CloseWindowById(WC_NEWS_WINDOW, 0);
+		CloseWindowById(WindowClass::News, 0);
 		ShowNewspaper(&*ni);
 	}
 }
@@ -1150,7 +1150,7 @@ static void ShowNewsMessage(NewsIterator ni)
  */
 bool HideActiveNewsMessage()
 {
-	NewsWindow *w = dynamic_cast<NewsWindow *>(FindWindowById(WC_NEWS_WINDOW, 0));
+	NewsWindow *w = dynamic_cast<NewsWindow *>(FindWindowById(WindowClass::News, 0));
 	if (w == nullptr) return false;
 	w->Close();
 	return true;
@@ -1170,7 +1170,7 @@ void ShowLastNewsMessage()
 			 * Treat this as if _forced_news reached the oldest news; so, wrap around and start anew with the latest. */
 			ni = std::begin(_news);
 		} else {
-			const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
+			const Window *w = FindWindowById(WindowClass::News, 0);
 			ni = (w == nullptr || (std::next(_current_news) == std::end(_news))) ? _current_news : std::next(_current_news);
 		}
 	} else if (std::next(_forced_news) == std::end(_news)) {
@@ -1317,7 +1317,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_message_history = {
 /** Window definition for the news message history window. */
 static WindowDesc _message_history_desc(
 	WindowPosition::Automatic, "list_news", 400, 140,
-	WC_MESSAGE_HISTORY, WC_NONE,
+	WindowClass::MessageHistory, WindowClass::None,
 	{},
 	_nested_message_history
 );
@@ -1325,6 +1325,6 @@ static WindowDesc _message_history_desc(
 /** Display window with news messages history */
 void ShowMessageHistory()
 {
-	CloseWindowById(WC_MESSAGE_HISTORY, 0);
+	CloseWindowById(WindowClass::MessageHistory, 0);
 	new MessageHistoryWindow(_message_history_desc);
 }

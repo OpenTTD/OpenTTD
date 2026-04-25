@@ -49,7 +49,7 @@ void CcBuildWagon(Commands, const CommandCost &result, VehicleID new_veh_id, uin
 		found = found->Last();
 		/* put the new wagon at the end of the loco. */
 		Command<Commands::MoveRailVehicle>::Post(found->tile, new_veh_id, found->index, false);
-		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
+		InvalidateWindowClassesData(WindowClass::TrainList, 0);
 	}
 }
 

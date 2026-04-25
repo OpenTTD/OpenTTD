@@ -228,7 +228,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_highscore_widgets = 
 /** Window definition for the highscore window. */
 static WindowDesc _highscore_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_HIGHSCORE, WC_NONE,
+	WindowClass::Highscore, WindowClass::None,
 	{},
 	_nested_highscore_widgets
 );
@@ -236,7 +236,7 @@ static WindowDesc _highscore_desc(
 /** Window definition for the endgame window. */
 static WindowDesc _endgame_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_ENDSCREEN, WC_NONE,
+	WindowClass::Endscreen, WindowClass::None,
 	{},
 	_nested_highscore_widgets
 );
@@ -250,7 +250,7 @@ static WindowDesc _endgame_desc(
  */
 void ShowHighscoreTable(int difficulty, int8_t ranking)
 {
-	CloseWindowByClass(WC_HIGHSCORE);
+	CloseWindowByClass(WindowClass::Highscore);
 	new HighScoreWindow(_highscore_desc, difficulty, ranking);
 }
 
@@ -264,7 +264,7 @@ void ShowEndGameChart()
 	if (_network_dedicated || (!_networking && !Company::IsValidID(_local_company))) return;
 
 	HideVitalWindows();
-	CloseWindowByClass(WC_ENDSCREEN);
+	CloseWindowByClass(WindowClass::Endscreen);
 	new EndGameWindow(_endgame_desc);
 }
 

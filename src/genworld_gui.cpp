@@ -70,8 +70,8 @@ static uint GetMapHeightLimit()
 void SetNewLandscapeType(LandscapeType landscape)
 {
 	_settings_newgame.game_creation.landscape = landscape;
-	InvalidateWindowClassesData(WC_SELECT_GAME);
-	InvalidateWindowClassesData(WC_GENERATE_LANDSCAPE);
+	InvalidateWindowClassesData(WindowClass::SelectGame);
+	InvalidateWindowClassesData(WindowClass::GenerateLandscape);
 }
 
 /** Widgets of GenerateLandscapeWindow when generating world */
@@ -897,7 +897,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_TOWNNAME_DROPDOWN: // Town names
 				if (_game_mode == GM_MENU || Town::GetNumItems() == 0) {
 					_settings_newgame.game_creation.town_name = index;
-					SetWindowDirty(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions);
+					SetWindowDirty(WindowClass::GameOptions, GameOptionsWindowNumber::GameOptions);
 				}
 				break;
 
@@ -1019,7 +1019,7 @@ struct GenerateLandscapeWindow : public Window {
 /** Window definition for the landscape generation window. */
 static WindowDesc _generate_landscape_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_GENERATE_LANDSCAPE, WC_NONE,
+	WindowClass::GenerateLandscape, WindowClass::None,
 	{},
 	_nested_generate_landscape_widgets
 );
@@ -1027,7 +1027,7 @@ static WindowDesc _generate_landscape_desc(
 /** Window definition for the heightmap configuration window. */
 static WindowDesc _heightmap_load_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_GENERATE_LANDSCAPE, WC_NONE,
+	WindowClass::GenerateLandscape, WindowClass::None,
 	{},
 	_nested_heightmap_load_widgets
 );
@@ -1037,7 +1037,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 	uint x = 0;
 	uint y = 0;
 
-	CloseWindowByClass(WC_GENERATE_LANDSCAPE);
+	CloseWindowByClass(WindowClass::GenerateLandscape);
 
 	/* Generate a new seed when opening the window */
 	_settings_newgame.game_creation.generation_seed = InteractiveRandom();
@@ -1056,7 +1056,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 		w->name = _file_to_saveload.title;
 	}
 
-	SetWindowDirty(WC_GENERATE_LANDSCAPE, mode);
+	SetWindowDirty(WindowClass::GenerateLandscape, mode);
 }
 
 /** Start with a normal game. */
@@ -1328,7 +1328,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_create_scenario_widg
 /** Window definition for the create scenario window. */
 static WindowDesc _create_scenario_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_GENERATE_LANDSCAPE, WC_NONE,
+	WindowClass::GenerateLandscape, WindowClass::None,
 	{},
 	_nested_create_scenario_widgets
 );
@@ -1336,7 +1336,7 @@ static WindowDesc _create_scenario_desc(
 /** Show the window to create a scenario. */
 void ShowCreateScenario()
 {
-	CloseWindowByClass(WC_GENERATE_LANDSCAPE);
+	CloseWindowByClass(WindowClass::GenerateLandscape);
 	new CreateScenarioWindow(_create_scenario_desc, GLWM_SCENARIO);
 }
 
@@ -1355,7 +1355,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_progress_wi
 /** Window definition for the map generation progress window. */
 static WindowDesc _generate_progress_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_MODAL_PROGRESS, WC_NONE,
+	WindowClass::ModalProgress, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_nested_generate_progress_widgets
 );
@@ -1475,7 +1475,7 @@ void PrepareGenerateWorldProgress()
  */
 void ShowGenerateWorldProgress()
 {
-	if (BringWindowToFrontById(WC_MODAL_PROGRESS, 0)) return;
+	if (BringWindowToFrontById(WindowClass::ModalProgress, 0)) return;
 	new GenerateProgressWindow();
 }
 
@@ -1528,7 +1528,7 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 		return;
 	}
 
-	SetWindowDirty(WC_MODAL_PROGRESS, 0);
+	SetWindowDirty(WindowClass::ModalProgress, 0);
 
 	VideoDriver::GetInstance()->GameLoopPause();
 }

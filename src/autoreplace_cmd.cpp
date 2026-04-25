@@ -853,7 +853,7 @@ CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_e
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		GroupStatistics::UpdateAutoreplace(_current_company);
-		if (IsLocalCompany()) SetWindowDirty(WC_REPLACE_VEHICLE, Engine::Get(old_engine_type)->type);
+		if (IsLocalCompany()) SetWindowDirty(WindowClass::ReplaceVehicle, Engine::Get(old_engine_type)->type);
 
 		const VehicleType vt = Engine::Get(old_engine_type)->type;
 		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).ToWindowNumber());

@@ -350,7 +350,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 			if (flags.Test(DoCommandFlag::Execute)) {
 				hq_score = UpdateCompanyRatingAndValue(c, false);
 				c->location_of_HQ = tile;
-				SetWindowDirty(WC_COMPANY, c->index);
+				SetWindowDirty(WindowClass::Company, c->index);
 			}
 			break;
 		}
@@ -592,7 +592,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 			Company *c = Company::Get(GetTileOwner(tile));
 			if (flags.Test(DoCommandFlag::Execute)) {
 				c->location_of_HQ = INVALID_TILE; // reset HQ position
-				SetWindowDirty(WC_COMPANY, c->index);
+				SetWindowDirty(WindowClass::Company, c->index);
 				CargoPacket::InvalidateAllFrom({c->index, SourceType::Headquarters});
 			}
 
@@ -605,7 +605,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 			if (flags.Test(DoCommandFlag::Execute)) {
 				Town *town = o->town;
 				town->statues.Reset(GetTileOwner(tile));
-				SetWindowDirty(WC_TOWN_AUTHORITY, town->index);
+				SetWindowDirty(WindowClass::TownAuthority, town->index);
 			}
 			break;
 
@@ -888,7 +888,7 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 			do_clear = true;
 		}
 
-		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+		SetWindowDirty(WindowClass::TownAuthority, t->index);
 	} else {
 		do_clear = true;
 	}

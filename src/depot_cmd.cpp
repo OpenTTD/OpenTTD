@@ -67,8 +67,8 @@ CommandCost CmdRenameDepot(DoCommandFlags flags, DepotID depot_id, const std::st
 		}
 
 		/* Update the orders and depot */
-		SetWindowClassesDirty(WC_VEHICLE_ORDERS);
-		SetWindowDirty(WC_VEHICLE_DEPOT, d->xy);
+		SetWindowClassesDirty(WindowClass::VehicleOrders);
+		SetWindowDirty(WindowClass::VehicleDepot, d->xy);
 
 		/* Update the depot list */
 		VehicleType vt = GetDepotVehicleType(d->xy);

@@ -681,7 +681,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_inspect_widge
 /** Window definition for the NewGRF chain inspection window. */
 static WindowDesc _newgrf_inspect_chain_desc(
 	WindowPosition::Automatic, "newgrf_inspect_chain", 400, 300,
-	WC_NEWGRF_INSPECT, WC_NONE,
+	WindowClass::NewGRFInspect, WindowClass::None,
 	{},
 	_nested_newgrf_inspect_chain_widgets
 );
@@ -689,7 +689,7 @@ static WindowDesc _newgrf_inspect_chain_desc(
 /** Window definition for the NewGRF inspection window. */
 static WindowDesc _newgrf_inspect_desc(
 	WindowPosition::Automatic, "newgrf_inspect", 400, 300,
-	WC_NEWGRF_INSPECT, WC_NONE,
+	WindowClass::NewGRFInspect, WindowClass::None,
 	{},
 	_nested_newgrf_inspect_widgets
 );
@@ -726,7 +726,7 @@ void InvalidateNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 	if (feature == GrfSpecFeature::Invalid) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	InvalidateWindowData(WC_NEWGRF_INSPECT, wno);
+	InvalidateWindowData(WindowClass::NewGRFInspect, wno);
 }
 
 /**
@@ -742,12 +742,12 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 	if (feature == GrfSpecFeature::Invalid) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	CloseWindowById(WC_NEWGRF_INSPECT, wno);
+	CloseWindowById(WindowClass::NewGRFInspect, wno);
 
 	/* Reinitialise the land information window to remove the "debug" sprite if needed.
 	 * Note: Since we might be called from a command here, it is important to not execute
 	 * the invalidation immediately. The landinfo window tests commands itself. */
-	InvalidateWindowData(WC_LAND_INFO, 0, 1);
+	InvalidateWindowData(WindowClass::LandInfo, 0, 1);
 }
 
 /**
@@ -1190,7 +1190,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_sprite_aligner_widge
 /** Window definition for the sprite aligner window. */
 static WindowDesc _sprite_aligner_desc(
 	WindowPosition::Automatic, "sprite_aligner", 400, 300,
-	WC_SPRITE_ALIGNER, WC_NONE,
+	WindowClass::SpriteAligner, WindowClass::None,
 	{},
 	_nested_sprite_aligner_widgets
 );

@@ -212,17 +212,17 @@ uint16_t Order::MapOldOrder() const
  */
 void InvalidateVehicleOrder(const Vehicle *v, int data)
 {
-	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
+	InvalidateWindowData(WindowClass::VehicleView, v->index);
 
 	if (data != 0) {
 		/* Calls SetDirty() too */
-		InvalidateWindowData(WC_VEHICLE_ORDERS,    v->index, data);
-		InvalidateWindowData(WC_VEHICLE_TIMETABLE, v->index, data);
+		InvalidateWindowData(WindowClass::VehicleOrders, v->index, data);
+		InvalidateWindowData(WindowClass::VehicleTimetable, v->index, data);
 		return;
 	}
 
-	SetWindowDirty(WC_VEHICLE_ORDERS,    v->index);
-	SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+	SetWindowDirty(WindowClass::VehicleOrders, v->index);
+	SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 }
 
 /**
@@ -297,7 +297,7 @@ void OrderList::FreeChain(bool keep_orderlist)
 		if (order.IsType(OT_GOTO_STATION) || order.IsType(OT_GOTO_WAYPOINT)) {
 			BaseStation *bs = BaseStation::GetIfValid(order.GetDestination().ToStationID());
 			if (bs != nullptr && bs->owner == OWNER_NONE) {
-				InvalidateWindowClassesData(WC_STATION_LIST, 0);
+				InvalidateWindowClassesData(WindowClass::StationList, 0);
 				break;
 			}
 		}
@@ -426,7 +426,7 @@ void OrderList::InsertOrderAt(Order &&order, VehicleOrderID index)
 	 * the list of stations. So, we need to invalidate that window if needed. */
 	if (new_order->IsType(OT_GOTO_STATION) || new_order->IsType(OT_GOTO_WAYPOINT)) {
 		BaseStation *bs = BaseStation::Get(new_order->GetDestination().ToStationID());
-		if (bs->owner == OWNER_NONE) InvalidateWindowClassesData(WC_STATION_LIST, 0);
+		if (bs->owner == OWNER_NONE) InvalidateWindowClassesData(WindowClass::StationList, 0);
 	}
 }
 
@@ -1059,8 +1059,8 @@ CommandCost CmdSkipToOrder(DoCommandFlags flags, VehicleID veh_id, VehicleOrderI
 		InvalidateVehicleOrder(v, VIWD_MODIFY_ORDERS);
 
 		/* We have an aircraft/ship, they have a mini-schedule, so update them all */
-		if (v->type == VehicleType::Aircraft) SetWindowClassesDirty(WC_AIRCRAFT_LIST);
-		if (v->type == VehicleType::Ship) SetWindowClassesDirty(WC_SHIPS_LIST);
+		if (v->type == VehicleType::Aircraft) SetWindowClassesDirty(WindowClass::AircraftList);
+		if (v->type == VehicleType::Ship) SetWindowClassesDirty(WindowClass::ShipList);
 	}
 
 	return CommandCost();
@@ -1771,7 +1771,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool 
 		if ((v->type == VehicleType::Aircraft && v->current_order.IsType(OT_GOTO_DEPOT) && !hangar ? OT_GOTO_STATION : v->current_order.GetType()) == type &&
 				(!hangar || v->type == VehicleType::Aircraft) && v->current_order.GetDestination() == destination) {
 			v->current_order.MakeDummy();
-			InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
+			InvalidateWindowData(WindowClass::VehicleView, v->index);
 		}
 
 		if (v->orders == nullptr) continue;

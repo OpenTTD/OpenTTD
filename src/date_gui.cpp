@@ -197,7 +197,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_set_date_widgets = {
 /** Description of the date setting window. */
 static WindowDesc _set_date_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_SET_DATE, WC_NONE,
+	WindowClass::SetDate, WindowClass::None,
 	{},
 	_nested_set_date_widgets
 );
@@ -213,6 +213,6 @@ static WindowDesc _set_date_desc(
  */
 void ShowSetDateWindow(Window *parent, int window_number, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback &&callback)
 {
-	CloseWindowByClass(WC_SET_DATE);
+	CloseWindowByClass(WindowClass::SetDate);
 	new SetDateWindow(_set_date_desc, window_number, parent, initial_date, min_year, max_year, std::move(callback));
 }

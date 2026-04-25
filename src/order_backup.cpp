@@ -70,7 +70,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	} else if (!this->orders.empty() && OrderList::CanAllocateItem()) {
 		v->orders = OrderList::Create(std::move(this->orders), v);
 		/* Make sure buoys/oil rigs are updated in the station list. */
-		InvalidateWindowClassesData(WC_STATION_LIST, 0);
+		InvalidateWindowClassesData(WindowClass::StationList, 0);
 	}
 
 	/* Remove backed up name if it's no longer unique. */

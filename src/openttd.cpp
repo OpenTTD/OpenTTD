@@ -1178,13 +1178,13 @@ void SwitchToMode(SwitchMode new_mode)
 			if (SaveOrLoad(_file_to_saveload.name, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::None) != SL_OK) {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_ERROR);
 			} else {
-				CloseWindowById(WC_SAVELOAD, 0);
+				CloseWindowById(WindowClass::SaveLoad, 0);
 			}
 			break;
 
 		case SM_SAVE_HEIGHTMAP: // Save heightmap.
 			MakeHeightmapScreenshot(_file_to_saveload.name);
-			CloseWindowById(WC_SAVELOAD, 0);
+			CloseWindowById(WindowClass::SaveLoad, 0);
 			break;
 
 		case SM_GENRANDLAND: // Generate random land within scenario editor
@@ -1290,13 +1290,13 @@ static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::millise
 	_pause_mode.Reset(PauseMode::CommandDuringPause);
 
 	_do_autosave = true;
-	SetWindowDirty(WC_STATUS_BAR, 0);
+	SetWindowDirty(WindowClass::Statusbar, 0);
 
 	static FiosNumberedSaveName _autosave_ctr("autosave");
 	DoAutoOrNetsave(_autosave_ctr);
 
 	_do_autosave = false;
-	SetWindowDirty(WC_STATUS_BAR, 0);
+	SetWindowDirty(WindowClass::Statusbar, 0);
 });
 
 /**
