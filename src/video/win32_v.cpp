@@ -331,7 +331,7 @@ static void SetCandidatePos(HWND hwnd)
 			Point pt = _focused_window->GetCaretPosition();
 			cf.ptCurrentPos.x = _focused_window->left + pt.x;
 			cf.ptCurrentPos.y = _focused_window->top  + pt.y;
-			if (_focused_window->window_class == WC_CONSOLE) {
+			if (_focused_window->window_class == WindowClass::Console) {
 				cf.rcArea.left   = _focused_window->left;
 				cf.rcArea.top    = _focused_window->top;
 				cf.rcArea.right  = _focused_window->left + _focused_window->width;
@@ -1076,7 +1076,7 @@ bool VideoDriver_Win32Base::ToggleFullscreen(bool full_screen)
 {
 	bool res = this->MakeWindow(full_screen);
 
-	InvalidateWindowClassesData(WC_GAME_OPTIONS, 3);
+	InvalidateWindowClassesData(WindowClass::GameOptions, 3);
 	return res;
 }
 

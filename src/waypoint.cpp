@@ -46,7 +46,7 @@ TileArea Waypoint::GetTileArea(StationType type) const
 Waypoint::~Waypoint()
 {
 	if (CleaningPool()) return;
-	CloseWindowById(WC_WAYPOINT_VIEW, this->index);
+	CloseWindowById(WindowClass::WaypointView, this->index);
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 }

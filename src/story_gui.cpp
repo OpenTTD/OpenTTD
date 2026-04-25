@@ -964,7 +964,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_story_book_widgets =
 /** Window definition for the story book window. */
 static WindowDesc _story_book_desc(
 	WindowPosition::Automatic, "view_story", 400, 300,
-	WC_STORY_BOOK, WC_NONE,
+	WindowClass::StoryBook, WindowClass::None,
 	{},
 	_nested_story_book_widgets
 );
@@ -972,7 +972,7 @@ static WindowDesc _story_book_desc(
 /** Window definition for the game script window. */
 static WindowDesc _story_book_gs_desc(
 	WindowPosition::Center, "view_story_gs", 400, 300,
-	WC_STORY_BOOK, WC_NONE,
+	WindowClass::StoryBook, WindowClass::None,
 	{},
 	_nested_story_book_widgets
 );

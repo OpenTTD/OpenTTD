@@ -159,8 +159,8 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
 		if (_settings_client.music.playing) this->Play();
 	}
 
-	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WindowClass::MusicTrackSelection, 0);
+	InvalidateWindowData(WindowClass::Music, 0);
 }
 
 /**
@@ -175,9 +175,9 @@ void MusicSystem::ChangeMusicSet(const std::string &set_name)
 	this->BuildPlaylists();
 	this->ChangePlaylist(this->selected_playlist);
 
-	InvalidateWindowData(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions, 0, true);
-	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0, 1, true);
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0, 1, true);
+	InvalidateWindowData(WindowClass::GameOptions, GameOptionsWindowNumber::GameOptions, 0, true);
+	InvalidateWindowData(WindowClass::MusicTrackSelection, 0, 1, true);
+	InvalidateWindowData(WindowClass::Music, 0, 1, true);
 }
 
 /**
@@ -216,8 +216,8 @@ void MusicSystem::Shuffle()
 	}
 	this->SetPositionBySetIndex(set_index);
 
-	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WindowClass::MusicTrackSelection, 0);
+	InvalidateWindowData(WindowClass::Music, 0);
 }
 
 /**
@@ -231,8 +231,8 @@ void MusicSystem::Unshuffle()
 	this->active_playlist = this->standard_playlists[this->selected_playlist];
 	this->SetPositionBySetIndex(set_index);
 
-	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WindowClass::MusicTrackSelection, 0);
+	InvalidateWindowData(WindowClass::Music, 0);
 }
 
 /** Start/restart playback at current song */
@@ -251,7 +251,7 @@ void MusicSystem::Play()
 	if (_game_mode == GM_MENU && this->selected_playlist == PLCH_THEMEONLY) song.loop = true;
 	MusicDriver::GetInstance()->PlaySong(song);
 
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WindowClass::Music, 0);
 }
 
 /** Stop playback and set flag that we don't intend to play music */
@@ -260,7 +260,7 @@ void MusicSystem::Stop()
 	MusicDriver::GetInstance()->StopSong();
 	_settings_client.music.playing = false;
 
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WindowClass::Music, 0);
 }
 
 /** Skip to next track */
@@ -269,7 +269,7 @@ void MusicSystem::Next()
 	this->ChangePlaylistPosition(+1);
 	if (_settings_client.music.playing) this->Play();
 
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WindowClass::Music, 0);
 }
 
 /** Skip to previous track */
@@ -278,7 +278,7 @@ void MusicSystem::Prev()
 	this->ChangePlaylistPosition(-1);
 	if (_settings_client.music.playing) this->Play();
 
-	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
+	InvalidateWindowData(WindowClass::Music, 0);
 }
 
 /** Check that music is playing if it should, and that appropriate playlist is active for game/main menu */
@@ -366,7 +366,7 @@ void MusicSystem::PlaylistAdd(size_t song_index)
 
 	this->SaveCustomPlaylist(this->selected_playlist);
 
-	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
+	InvalidateWindowData(WindowClass::MusicTrackSelection, 0);
 }
 
 /**
@@ -400,7 +400,7 @@ void MusicSystem::PlaylistRemove(size_t song_index)
 
 	this->SaveCustomPlaylist(this->selected_playlist);
 
-	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
+	InvalidateWindowData(WindowClass::MusicTrackSelection, 0);
 }
 
 /**
@@ -673,7 +673,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_music_track_selectio
 /** Window definition for the music track selection window. */
 static WindowDesc _music_track_selection_desc(
 	WindowPosition::Automatic, {}, 0, 0,
-	WC_MUSIC_TRACK_SELECTION, WC_NONE,
+	WindowClass::MusicTrackSelection, WindowClass::None,
 	{},
 	_nested_music_track_selection_widgets
 );
@@ -841,7 +841,7 @@ struct MusicWindow : public Window {
 						SetEffectVolume(vol);
 					}
 					this->SetWidgetDirty(widget);
-					SetWindowClassesDirty(WC_GAME_OPTIONS);
+					SetWindowClassesDirty(WindowClass::GameOptions);
 				}
 
 				if (click_count > 0) this->mouse_capture_widget = widget;
@@ -933,7 +933,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_music_window_widgets
 /** Window definition for the music window. */
 static WindowDesc _music_window_desc(
 	WindowPosition::Automatic, "music", 0, 0,
-	WC_MUSIC_WINDOW, WC_NONE,
+	WindowClass::Music, WindowClass::None,
 	{},
 	_nested_music_window_widgets
 );

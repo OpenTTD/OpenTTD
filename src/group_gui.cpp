@@ -543,14 +543,14 @@ public:
 
 		/* Process ID-invalidation in command-scope as well */
 		if (this->group_rename != GroupID::Invalid() && !Group::IsValidID(this->group_rename)) {
-			CloseWindowByClass(WC_QUERY_STRING);
+			CloseWindowByClass(WindowClass::QueryString);
 			this->group_rename = GroupID::Invalid();
 		}
 
 		GroupID group = this->vli.ToGroupID();
 		if (!(IsAllGroupID(group) || IsDefaultGroupID(group) || Group::IsValidID(group))) {
 			this->vli.SetIndex(ALL_GROUP);
-			this->CloseChildWindows(WC_DROPDOWN_MENU);
+			this->CloseChildWindows(WindowClass::DropdownMenu);
 		}
 		this->SetDirty();
 	}
@@ -595,7 +595,7 @@ public:
 		/* The drop down menu is out, *but* it may not be used, retract it. */
 		if (this->vehicles.empty() && this->IsWidgetLowered(WID_GL_MANAGE_VEHICLES_DROPDOWN)) {
 			this->RaiseWidget(WID_GL_MANAGE_VEHICLES_DROPDOWN);
-			this->CloseChildWindows(WC_DROPDOWN_MENU);
+			this->CloseChildWindows(WindowClass::DropdownMenu);
 		}
 
 		/* Disable all lists management button when the list is empty */
@@ -1194,25 +1194,25 @@ public:
 static VehicleTypeIndexArray<WindowDesc> _vehicle_group_desc = {{
 	WindowDesc{
 		WindowPosition::Automatic, "list_groups_train", 525, 246,
-		WC_TRAINS_LIST, WC_NONE,
+		WindowClass::TrainList, WindowClass::None,
 		{},
 		_nested_group_widgets
 	},
 	WindowDesc{
 		WindowPosition::Automatic, "list_groups_roadveh", 460, 246,
-		WC_ROADVEH_LIST, WC_NONE,
+		WindowClass::RoadVehicleList, WindowClass::None,
 		{},
 		_nested_group_widgets
 	},
 	WindowDesc{
 		WindowPosition::Automatic, "list_groups_ship", 460, 246,
-		WC_SHIPS_LIST, WC_NONE,
+		WindowClass::ShipList, WindowClass::None,
 		{},
 		_nested_group_widgets
 	},
 	WindowDesc{
 		WindowPosition::Automatic, "list_groups_aircraft", 460, 246,
-		WC_AIRCRAFT_LIST, WC_NONE,
+		WindowClass::AircraftList, WindowClass::None,
 		{},
 		_nested_group_widgets
 	},

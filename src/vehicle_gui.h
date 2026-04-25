@@ -98,10 +98,10 @@ inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 {
 	switch (vt) {
 		default: NOT_REACHED();
-		case VehicleType::Train:    return WC_TRAINS_LIST;
-		case VehicleType::Road:     return WC_ROADVEH_LIST;
-		case VehicleType::Ship:     return WC_SHIPS_LIST;
-		case VehicleType::Aircraft: return WC_AIRCRAFT_LIST;
+		case VehicleType::Train: return WindowClass::TrainList;
+		case VehicleType::Road: return WindowClass::RoadVehicleList;
+		case VehicleType::Ship: return WindowClass::ShipList;
+		case VehicleType::Aircraft: return WindowClass::AircraftList;
 	}
 }
 

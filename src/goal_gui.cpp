@@ -299,7 +299,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_goals_list_widgets =
 /** Window definition for the goal listing window. */
 static WindowDesc _goals_list_desc(
 	WindowPosition::Automatic, "list_goals", 500, 127,
-	WC_GOALS_LIST, WC_NONE,
+	WindowClass::GoalList, WindowClass::None,
 	{},
 	_nested_goals_list_widgets
 );
@@ -442,25 +442,25 @@ static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets
 static WindowDesc _goal_question_list_desc[] = {
 	{
 		WindowPosition::Center, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_question,
 	},
 	{
 		WindowPosition::Center, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_info,
 	},
 	{
 		WindowPosition::Center, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_warning,
 	},
 	{
 		WindowPosition::Center, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_error,
 	},

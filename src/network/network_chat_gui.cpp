@@ -178,7 +178,7 @@ void NetworkDrawChatMessage()
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	if (!_chatmessage_dirty) return;
 
-	const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
+	const Window *w = FindWindowByClass(WindowClass::NetworkChat);
 	bool show_all = (w != nullptr);
 
 	/* First undraw if needed */
@@ -324,14 +324,14 @@ struct NetworkChatWindow : public Window {
 		this->FinishInitNested(type);
 
 		this->SetFocusedWidget(WID_NC_TEXTBOX);
-		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
+		InvalidateWindowData(WindowClass::News, 0, this->height);
 
 		PositionNetworkChatWindow(this);
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
+		InvalidateWindowData(WindowClass::News, 0, 0);
 		this->Window::Close();
 	}
 
@@ -352,7 +352,7 @@ struct NetworkChatWindow : public Window {
 
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
-		Point pt = { 0, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height };
+		Point pt = { 0, _screen.height - sm_height - FindWindowById(WindowClass::Statusbar, 0)->height };
 		return pt;
 	}
 
@@ -426,7 +426,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_chat_window_widgets 
 /** The description of the chat window. */
 static WindowDesc _chat_window_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_SEND_NETWORK_MSG, WC_NONE,
+	WindowClass::NetworkChat, WindowClass::None,
 	{},
 	_nested_chat_window_widgets
 );
@@ -439,6 +439,6 @@ static WindowDesc _chat_window_desc(
  */
 void ShowNetworkChatQueryWindow(NetworkChatDestinationType type, int dest)
 {
-	CloseWindowByClass(WC_SEND_NETWORK_MSG);
+	CloseWindowByClass(WindowClass::NetworkChat);
 	new NetworkChatWindow(_chat_window_desc, type, dest);
 }

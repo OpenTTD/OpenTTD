@@ -65,7 +65,7 @@
 	c->ai_instance->LoadOnStack(config->GetToLoadData());
 	config->SetToLoadData(nullptr);
 
-	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
+	InvalidateWindowClassesData(WindowClass::ScriptDebug, -1);
 	return;
 }
 
@@ -112,7 +112,7 @@
 	c->ai_info = nullptr;
 	c->ai_config.reset();
 
-	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
+	InvalidateWindowClassesData(WindowClass::ScriptDebug, -1);
 }
 
 /* static */ void AI::Pause(CompanyID company)
@@ -307,9 +307,9 @@
 	AI::scanner_library->RescanDir();
 	ResetConfig();
 
-	InvalidateWindowData(WC_SCRIPT_LIST, 0, 1);
-	SetWindowClassesDirty(WC_SCRIPT_DEBUG);
-	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
+	InvalidateWindowData(WindowClass::ScriptList, 0, 1);
+	SetWindowClassesDirty(WindowClass::ScriptDebug);
+	InvalidateWindowClassesData(WindowClass::ScriptSettings);
 }
 
 /**

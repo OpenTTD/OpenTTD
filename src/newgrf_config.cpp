@@ -193,7 +193,7 @@ void GRFConfig::SetValue(const GRFParameterInfo &info, uint32_t value)
 		SB(this->param[info.param_nr], info.first_bit, info.num_bit, value);
 	}
 
-	SetWindowDirty(WC_GAME_OPTIONS, GameOptionsWindowNumber::NewGRFState);
+	SetWindowDirty(WindowClass::GameOptions, GameOptionsWindowNumber::NewGRFState);
 }
 
 /**
@@ -566,11 +566,11 @@ void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 	NetworkAfterNewGRFScan();
 
 	/* Yes... these are the NewGRF windows */
-	InvalidateWindowClassesData(WC_SAVELOAD, 0, true);
-	InvalidateWindowData(WC_GAME_OPTIONS, GameOptionsWindowNumber::NewGRFState, GOID_NEWGRF_RESCANNED, true);
+	InvalidateWindowClassesData(WindowClass::SaveLoad, 0, true);
+	InvalidateWindowData(WindowClass::GameOptions, GameOptionsWindowNumber::NewGRFState, GOID_NEWGRF_RESCANNED, true);
 	if (!_exit_game && callback != nullptr) callback->OnNewGRFsScanned();
 
-	CloseWindowByClass(WC_MODAL_PROGRESS);
+	CloseWindowByClass(WindowClass::ModalProgress);
 	SetModalProgress(false);
 	MarkWholeScreenDirty();
 }

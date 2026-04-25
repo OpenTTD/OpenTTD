@@ -12,7 +12,7 @@
 
 #include "../cargo_type.h"
 
-/** Widgets of the WC_LINKGRAPH_LEGEND. */
+/** Widgets of the WindowClass::LinkGraphLegend. */
 
 enum LinkGraphLegendWidgets : WidgetID {
 	WID_LGL_CAPTION,           ///< Caption widget.

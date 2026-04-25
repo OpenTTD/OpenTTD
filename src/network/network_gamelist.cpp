@@ -99,5 +99,5 @@ void NetworkAfterNewGRFScan()
 		}
 	}
 
-	InvalidateWindowClassesData(WC_NETWORK_WINDOW);
+	InvalidateWindowClassesData(WindowClass::Network);
 }

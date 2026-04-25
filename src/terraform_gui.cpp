@@ -73,7 +73,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 		MarkTileDirtyByTile(tile);
 	}
 	old_generating_world.Restore();
-	InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
+	InvalidateWindowClassesData(WindowClass::TownView, 0);
 }
 
 /**
@@ -265,7 +265,7 @@ struct TerraformToolbarWindow : Window {
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
-		if (FindWindowByClass(WC_BUILD_TOOLBAR) != nullptr && !_settings_client.gui.link_terraform_toolbar) pt.y += sm_height;
+		if (FindWindowByClass(WindowClass::BuildToolbar) != nullptr && !_settings_client.gui.link_terraform_toolbar) pt.y += sm_height;
 
 		return pt;
 	}
@@ -359,7 +359,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_terraform_widgets = 
 /** Window definition for the landscaping toolbar. */
 static WindowDesc _terraform_desc(
 	WindowPosition::Manual, "toolbar_landscape", 0, 0,
-	WC_SCEN_LAND_GEN, WC_NONE,
+	WindowClass::ScenarioGenerateLandscape, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_terraform_widgets,
 	&TerraformToolbarWindow::hotkeys
@@ -375,7 +375,7 @@ Window *ShowTerraformToolbar(Window *link)
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
 	/* Delete the terraform toolbar to place it again. */
-	CloseWindowById(WC_SCEN_LAND_GEN, 0, true);
+	CloseWindowById(WindowClass::ScenarioGenerateLandscape, 0, true);
 
 	if (link == nullptr) return AllocateWindowDescFront<TerraformToolbarWindow>(_terraform_desc, 0);
 
@@ -739,7 +739,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 /** Window definition for the landscaping toolbar for he scenario editor. */
 static WindowDesc _scen_edit_land_gen_desc(
 	WindowPosition::Automatic, "toolbar_landscape_scen", 0, 0,
-	WC_SCEN_LAND_GEN, WC_NONE,
+	WindowClass::ScenarioGenerateLandscape, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_scen_edit_land_gen_widgets,
 	&ScenarioEditorLandscapeGenerationWindow::hotkeys

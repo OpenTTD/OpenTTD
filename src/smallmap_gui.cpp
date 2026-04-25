@@ -657,7 +657,7 @@ protected:
 	/** Notify the industry chain window to stop sending newly selected industries. */
 	static void BreakIndustryChainLink()
 	{
-		InvalidateWindowClassesData(WC_INDUSTRY_CARGOES, NUM_INDUSTRYTYPES);
+		InvalidateWindowClassesData(WindowClass::IndustryCargoes, NUM_INDUSTRYTYPES);
 	}
 
 	static inline Point SmallmapRemapCoords(int x, int y)
@@ -2061,7 +2061,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_widgets = {
 /** Window definition for the smallmap window. */
 static WindowDesc _smallmap_desc(
 	WindowPosition::Automatic, "smallmap", 484, 314,
-	WC_SMALLMAP, WC_NONE,
+	WindowClass::SmallMap, WindowClass::None,
 	{},
 	_nested_smallmap_widgets
 );
@@ -2092,7 +2092,7 @@ bool ScrollMainWindowTo(int x, int y, int z, bool instant)
 
 	if (res) return res;
 
-	SmallMapWindow *w = dynamic_cast<SmallMapWindow*>(FindWindowById(WC_SMALLMAP, 0));
+	SmallMapWindow *w = dynamic_cast<SmallMapWindow*>(FindWindowById(WindowClass::SmallMap, 0));
 	if (w != nullptr) w->SmallMapCenterOnCurrentPos();
 
 	return res;

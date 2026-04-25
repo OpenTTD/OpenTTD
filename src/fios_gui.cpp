@@ -460,7 +460,7 @@ public:
 		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
 			Command<Commands::Pause>::Post(PauseMode::SaveLoad, true);
 		}
-		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
+		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WindowClass::MainWindow, 0);
 
 		this->OnInvalidateData(SLIWD_RESCAN_FILES);
 
@@ -983,7 +983,7 @@ public:
 /** Load game/scenario */
 static WindowDesc _load_dialog_desc(
 	WindowPosition::Center, "load_game", 500, 294,
-	WC_SAVELOAD, WC_NONE,
+	WindowClass::SaveLoad, WindowClass::None,
 	{},
 	_nested_load_dialog_widgets
 );
@@ -991,7 +991,7 @@ static WindowDesc _load_dialog_desc(
 /** Load heightmap */
 static WindowDesc _load_heightmap_dialog_desc(
 	WindowPosition::Center, "load_heightmap", 257, 320,
-	WC_SAVELOAD, WC_NONE,
+	WindowClass::SaveLoad, WindowClass::None,
 	{},
 	_nested_load_heightmap_dialog_widgets
 );
@@ -999,7 +999,7 @@ static WindowDesc _load_heightmap_dialog_desc(
 /** Load town data */
 static WindowDesc _load_town_data_dialog_desc(
 	WindowPosition::Center, "load_town_data", 257, 320,
-	WC_SAVELOAD, WC_NONE,
+	WindowClass::SaveLoad, WindowClass::None,
 	{},
 	_nested_load_town_data_dialog_widgets
 );
@@ -1007,7 +1007,7 @@ static WindowDesc _load_town_data_dialog_desc(
 /** Save game/scenario */
 static WindowDesc _save_dialog_desc(
 	WindowPosition::Center, "save_game", 500, 294,
-	WC_SAVELOAD, WC_NONE,
+	WindowClass::SaveLoad, WindowClass::None,
 	{},
 	_nested_save_dialog_widgets
 );
@@ -1019,7 +1019,7 @@ static WindowDesc _save_dialog_desc(
  */
 void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fop)
 {
-	CloseWindowById(WC_SAVELOAD, 0);
+	CloseWindowById(WindowClass::SaveLoad, 0);
 
 	if (fop == SaveLoadOperation::Save) {
 		new SaveLoadWindow(_save_dialog_desc, abstract_filetype, fop);

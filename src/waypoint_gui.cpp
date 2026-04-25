@@ -127,7 +127,7 @@ public:
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		Window *w = FindWindowByClass(WC_QUERY_STRING);
+		Window *w = FindWindowByClass(WindowClass::QueryString);
 
 		switch (widget) {
 			case WID_W_CENTER_VIEW: // scroll to location
@@ -151,8 +151,8 @@ public:
 				SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), !this->IsWidgetLowered(WID_W_CATCHMENT));
 
 				if (w != nullptr && this->IsWidgetLowered(WID_W_CATCHMENT)) {
-					if (w->parent->window_class == WC_STATION_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
-					if (w->parent->window_class == WC_WAYPOINT_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WindowClass::StationView && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WindowClass::WaypointView && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
 				}
 				break;
 		}
@@ -220,7 +220,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_waypoint_view_widget
 /** The description of the waypoint view. */
 static WindowDesc _waypoint_view_desc(
 	WindowPosition::Automatic, "view_waypoint", 260, 118,
-	WC_WAYPOINT_VIEW, WC_NONE,
+	WindowClass::WaypointView, WindowClass::None,
 	{},
 	_nested_waypoint_view_widgets
 );
