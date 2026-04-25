@@ -225,15 +225,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_highscore_widgets = 
 	NWidget(WWT_PANEL, Colours::Brown, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
+/** Window definition for the highscore window. */
 static WindowDesc _highscore_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	{},
 	_nested_highscore_widgets
 );
 
+/** Window definition for the endgame window. */
 static WindowDesc _endgame_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	{},
 	_nested_highscore_widgets

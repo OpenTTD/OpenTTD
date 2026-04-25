@@ -356,8 +356,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_terraform_widgets = 
 	EndContainer(),
 };
 
+/** Window definition for the landscaping toolbar. */
 static WindowDesc _terraform_desc(
-	WDP_MANUAL, "toolbar_landscape", 0, 0,
+	WindowPosition::Manual, "toolbar_landscape", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_terraform_widgets,
@@ -735,8 +736,9 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	}, TerraformToolbarEditorGlobalHotkeys};
 };
 
+/** Window definition for the landscaping toolbar for he scenario editor. */
 static WindowDesc _scen_edit_land_gen_desc(
-	WDP_AUTO, "toolbar_landscape_scen", 0, 0,
+	WindowPosition::Automatic, "toolbar_landscape_scen", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_scen_edit_land_gen_widgets,

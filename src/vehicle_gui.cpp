@@ -1340,8 +1340,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_refit_widget
 	EndContainer(),
 };
 
+/** Window definition for the vehicle refit window. */
 static WindowDesc _vehicle_refit_desc(
-	WDP_AUTO, "view_vehicle_refit", 240, 174,
+	WindowPosition::Automatic, "view_vehicle_refit", 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WindowDefaultFlag::Construction,
 	_nested_vehicle_refit_widgets
@@ -2278,27 +2279,28 @@ public:
 	}
 };
 
+/** Window definitions for the vehicle list windows. */
 static WindowDesc _vehicle_list_desc[] = {
 	{
-		WDP_AUTO, "list_vehicles_train", 325, 246,
+		WindowPosition::Automatic, "list_vehicles_train", 325, 246,
 		WC_TRAINS_LIST, WC_NONE,
 		{},
 		_nested_vehicle_list
 	},
 	{
-		WDP_AUTO, "list_vehicles_roadveh", 260, 246,
+		WindowPosition::Automatic, "list_vehicles_roadveh", 260, 246,
 		WC_ROADVEH_LIST, WC_NONE,
 		{},
 		_nested_vehicle_list
 	},
 	{
-		WDP_AUTO, "list_vehicles_ship", 260, 246,
+		WindowPosition::Automatic, "list_vehicles_ship", 260, 246,
 		WC_SHIPS_LIST, WC_NONE,
 		{},
 		_nested_vehicle_list
 	},
 	{
-		WDP_AUTO, "list_vehicles_aircraft", 260, 246,
+		WindowPosition::Automatic, "list_vehicles_aircraft", 260, 246,
 		WC_AIRCRAFT_LIST, WC_NONE,
 		{},
 		_nested_vehicle_list
@@ -2831,7 +2833,7 @@ struct VehicleDetailsWindow : Window {
 
 /** Vehicle details window descriptor. */
 static WindowDesc _train_vehicle_details_desc(
-	WDP_AUTO, "view_vehicle_details_train", 405, 178,
+	WindowPosition::Automatic, "view_vehicle_details_train", 405, 178,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	{},
 	_nested_train_vehicle_details_widgets
@@ -2839,7 +2841,7 @@ static WindowDesc _train_vehicle_details_desc(
 
 /** Vehicle details window descriptor for other vehicles than a train. */
 static WindowDesc _nontrain_vehicle_details_desc(
-	WDP_AUTO, "view_vehicle_details", 405, 113,
+	WindowPosition::Automatic, "view_vehicle_details", 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	{},
 	_nested_nontrain_vehicle_details_widgets
@@ -3469,7 +3471,7 @@ public:
 
 /** Vehicle view window descriptor for all vehicles but trains. */
 static WindowDesc _vehicle_view_desc(
-	WDP_AUTO, "view_vehicle", 250, 116,
+	WindowPosition::Automatic, "view_vehicle", 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
 	{},
 	_nested_vehicle_view_widgets,
@@ -3481,7 +3483,7 @@ static WindowDesc _vehicle_view_desc(
  *  default_height are different for train view.
  */
 static WindowDesc _train_view_desc(
-	WDP_AUTO, "view_vehicle_train", 250, 134,
+	WindowPosition::Automatic, "view_vehicle_train", 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
 	{},
 	_nested_vehicle_view_widgets,

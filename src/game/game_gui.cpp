@@ -77,7 +77,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_gs_config_widgets = 
 
 /** Window definition for the configure GS window. */
 static WindowDesc _gs_config_desc(
-	WDP_CENTER, "settings_gs_config", 500, 350,
+	WindowPosition::Center, "settings_gs_config", 500, 350,
 	WC_GAME_OPTIONS, WC_NONE,
 	{},
 	_nested_gs_config_widgets

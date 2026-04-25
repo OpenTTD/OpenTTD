@@ -525,8 +525,9 @@ struct MainWindow : Window
 	}};
 };
 
+/** Window definition for the main window. */
 static WindowDesc _main_window_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_nested_main_window_widgets,

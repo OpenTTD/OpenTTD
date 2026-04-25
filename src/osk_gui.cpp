@@ -338,8 +338,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_osk_widgets = {
 	EndContainer(),
 };
 
+/** Window definition for the on screen keyboard window. */
 static WindowDesc _osk_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_OSK, WC_NONE,
 	{},
 	_nested_osk_widgets

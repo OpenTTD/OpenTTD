@@ -1642,8 +1642,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_orders_train_widgets
 	EndContainer(),
 };
 
+/** Window definition for the train orders window. */
 static WindowDesc _orders_train_desc(
-	WDP_AUTO, "view_vehicle_orders_train", 384, 100,
+	WindowPosition::Automatic, "view_vehicle_orders_train", 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WindowDefaultFlag::Construction,
 	_nested_orders_train_widgets,
@@ -1715,8 +1716,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_orders_widgets = {
 	EndContainer(),
 };
 
+/** Window definition for the orders window for road vehicles, ships and aircraft. */
 static WindowDesc _orders_desc(
-	WDP_AUTO, "view_vehicle_orders", 384, 100,
+	WindowPosition::Automatic, "view_vehicle_orders", 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WindowDefaultFlag::Construction,
 	_nested_orders_widgets,
@@ -1742,8 +1744,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_other_orders_widgets
 	EndContainer(),
 };
 
+/** Window definition for the orders window for other companies. */
 static WindowDesc _other_orders_desc(
-	WDP_AUTO, "view_vehicle_orders_competitor", 384, 86,
+	WindowPosition::Automatic, "view_vehicle_orders_competitor", 384, 86,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WindowDefaultFlag::Construction,
 	_nested_other_orders_widgets,

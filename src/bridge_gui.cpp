@@ -350,7 +350,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_bridge_widgets
 
 /** Window definition for the rail bridge selection window. */
 static WindowDesc _build_bridge_desc(
-	WDP_AUTO, "build_bridge", 200, 114,
+	WindowPosition::Automatic, "build_bridge", 200, 114,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_build_bridge_widgets

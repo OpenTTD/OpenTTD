@@ -408,8 +408,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_object_widgets
 	EndContainer(),
 };
 
+/** Window definition for the build object window. */
 static WindowDesc _build_object_desc(
-	WDP_AUTO, "build_object", 0, 0,
+	WindowPosition::Automatic, "build_object", 0, 0,
 	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_build_object_widgets,

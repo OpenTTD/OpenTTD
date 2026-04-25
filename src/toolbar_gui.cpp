@@ -2256,8 +2256,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolbar_normal_widge
 	NWidgetFunction(MakeMainToolbar),
 };
 
+/** Window definition for the normal (top) toolbar. */
 static WindowDesc _toolb_normal_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolbar_normal_widgets,
@@ -2599,8 +2600,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolb_scen_widgets =
 	NWidgetFunction(MakeScenarioToolbar),
 };
 
+/** Window definition for the scenario editor (top) toolbar window. */
 static WindowDesc _toolb_scen_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolb_scen_widgets,

@@ -191,8 +191,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_performance_league_w
 	EndContainer(),
 };
 
+/** Window definition for the performance league window. */
 static WindowDesc _performance_league_desc(
-	WDP_AUTO, "performance_league", 0, 0,
+	WindowPosition::Automatic, "performance_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	{},
 	_nested_performance_league_widgets
@@ -427,8 +428,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_script_league_widget
 	EndContainer(),
 };
 
+/** Window definition for the script league window. */
 static WindowDesc _script_league_desc(
-	WDP_AUTO, "script_league", 0, 0,
+	WindowPosition::Automatic, "script_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	{},
 	_nested_script_league_widgets

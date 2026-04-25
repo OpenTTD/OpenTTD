@@ -146,8 +146,9 @@ public:
 	}
 };
 
+/** Window definition for the extra viewport window. */
 static WindowDesc _extra_viewport_desc(
-	WDP_AUTO, "extra_viewport", 300, 268,
+	WindowPosition::Automatic, "extra_viewport", 300, 268,
 	WC_EXTRA_VIEWPORT, WC_NONE,
 	{},
 	_nested_extra_viewport_widgets

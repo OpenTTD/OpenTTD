@@ -145,8 +145,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_graph_legend_widgets
 	EndContainer(),
 };
 
+/** Window definition for the graph legend window. */
 static WindowDesc _graph_legend_desc(
-	WDP_AUTO, "graph_legend", 0, 0,
+	WindowPosition::Automatic, "graph_legend", 0, 0,
 	WC_GRAPH_LEGEND, WC_NONE,
 	{},
 	_nested_graph_legend_widgets
@@ -961,8 +962,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_operating_profit_wid
 	EndContainer(),
 };
 
+/** Window definition for the operating profit graph window. */
 static WindowDesc _operating_profit_desc(
-	WDP_AUTO, "graph_operating_profit", 0, 0,
+	WindowPosition::Automatic, "graph_operating_profit", 0, 0,
 	WC_OPERATING_PROFIT, WC_NONE,
 	{},
 	_nested_operating_profit_widgets
@@ -1014,8 +1016,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_income_graph_widgets
 	EndContainer(),
 };
 
+/** Window definition for the income graph window. */
 static WindowDesc _income_graph_desc(
-	WDP_AUTO, "graph_income", 0, 0,
+	WindowPosition::Automatic, "graph_income", 0, 0,
 	WC_INCOME_GRAPH, WC_NONE,
 	{},
 	_nested_income_graph_widgets
@@ -1065,8 +1068,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_delivered_cargo_grap
 	EndContainer(),
 };
 
+/** Window definition for the delivered cargo graph window. */
 static WindowDesc _delivered_cargo_graph_desc(
-	WDP_AUTO, "graph_delivered_cargo", 0, 0,
+	WindowPosition::Automatic, "graph_delivered_cargo", 0, 0,
 	WC_DELIVERED_CARGO, WC_NONE,
 	{},
 	_nested_delivered_cargo_graph_widgets
@@ -1123,8 +1127,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_performance_history_
 	EndContainer(),
 };
 
+/** Window definition for the performance history graph window. */
 static WindowDesc _performance_history_desc(
-	WDP_AUTO, "graph_performance", 0, 0,
+	WindowPosition::Automatic, "graph_performance", 0, 0,
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	{},
 	_nested_performance_history_widgets
@@ -1174,8 +1179,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_value_graph_
 	EndContainer(),
 };
 
+/** Window definition for the company value graph window. */
 static WindowDesc _company_value_graph_desc(
-	WDP_AUTO, "graph_company_value", 0, 0,
+	WindowPosition::Automatic, "graph_company_value", 0, 0,
 	WC_COMPANY_VALUE, WC_NONE,
 	{},
 	_nested_company_value_graph_widgets
@@ -1462,8 +1468,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_cargo_payment_rates_
 	EndContainer(),
 };
 
+/** Window definition for the cargo payment rates graph window. */
 static WindowDesc _cargo_payment_rates_desc(
-	WDP_AUTO, "graph_cargo_payment_rates", 0, 0,
+	WindowPosition::Automatic, "graph_cargo_payment_rates", 0, 0,
 	WC_PAYMENT_RATES, WC_NONE,
 	{},
 	_nested_cargo_payment_rates_widgets
@@ -1866,8 +1873,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_industry_production_
 	EndContainer(),
 };
 
+/** Window definition for the industry production graph window. */
 static WindowDesc _industry_production_desc(
-	WDP_AUTO, "graph_industry_production", 0, 0,
+	WindowPosition::Automatic, "graph_industry_production", 0, 0,
 	WC_INDUSTRY_PRODUCTION, WC_INDUSTRY_VIEW,
 	{},
 	_nested_industry_production_widgets
@@ -2029,8 +2037,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_town_cargo_graph_wid
 	EndContainer(),
 };
 
+/** Window definition for the town cargo graph window. */
 static WindowDesc _town_cargo_graph_desc(
-	WDP_AUTO, "graph_town_cargo", 0, 0,
+	WindowPosition::Automatic, "graph_town_cargo", 0, 0,
 	WC_TOWN_CARGO_GRAPH, WC_TOWN_VIEW,
 	{},
 	_nested_town_cargo_graph_widgets
@@ -2092,8 +2101,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_performance_rating_d
 	NWidgetFunction(MakePerformanceDetailPanels),
 };
 
+/** Window definition for the performance rating details window. */
 static WindowDesc _performance_rating_detail_desc(
-	WDP_AUTO, "league_details", 0, 0,
+	WindowPosition::Automatic, "league_details", 0, 0,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	{},
 	_nested_performance_rating_detail_widgets

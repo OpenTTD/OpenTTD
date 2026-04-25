@@ -219,7 +219,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_waypoint_view_widget
 
 /** The description of the waypoint view. */
 static WindowDesc _waypoint_view_desc(
-	WDP_AUTO, "view_waypoint", 260, 118,
+	WindowPosition::Automatic, "view_waypoint", 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
 	{},
 	_nested_waypoint_view_widgets

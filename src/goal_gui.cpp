@@ -296,8 +296,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_goals_list_widgets =
 	EndContainer(),
 };
 
+/** Window definition for the goal listing window. */
 static WindowDesc _goals_list_desc(
-	WDP_AUTO, "list_goals", 500, 127,
+	WindowPosition::Automatic, "list_goals", 500, 127,
 	WC_GOALS_LIST, WC_NONE,
 	{},
 	_nested_goals_list_widgets
@@ -437,27 +438,28 @@ static constexpr auto _nested_goal_question_widgets_info     = NestedGoalWidgets
 static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets<Colours::Yellow,     Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
 static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<Colours::Red,        Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
 
+/** Window definitions for the goal question windows. */
 static WindowDesc _goal_question_list_desc[] = {
 	{
-		WDP_CENTER, {}, 0, 0,
+		WindowPosition::Center, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_question,
 	},
 	{
-		WDP_CENTER, {}, 0, 0,
+		WindowPosition::Center, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_info,
 	},
 	{
-		WDP_CENTER, {}, 0, 0,
+		WindowPosition::Center, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_warning,
 	},
 	{
-		WDP_CENTER, {}, 0, 0,
+		WindowPosition::Center, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_error,

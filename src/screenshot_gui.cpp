@@ -64,8 +64,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_screenshot = {
 	EndContainer(),
 };
 
+/** Window definition for the screenshot window. */
 static WindowDesc _screenshot_window_desc(
-	WDP_AUTO, "take_a_screenshot", 200, 100,
+	WindowPosition::Automatic, "take_a_screenshot", 200, 100,
 	WC_SCREENSHOT, WC_NONE,
 	{},
 	_nested_screenshot

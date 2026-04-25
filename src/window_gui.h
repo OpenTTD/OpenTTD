@@ -139,11 +139,11 @@ extern Window *_focused_window;
 
 
 /** How do we the window to be placed? */
-enum WindowPosition : uint8_t {
-	WDP_MANUAL,        ///< Manually align the window (so no automatic location finding)
-	WDP_AUTO,          ///< Find a place automatically
-	WDP_CENTER,        ///< Center the window
-	WDP_ALIGN_TOOLBAR, ///< Align toward the toolbar
+enum class WindowPosition : uint8_t {
+	Manual, ///< Manually align the window (so no automatic location finding)
+	Automatic, ///< Find a place automatically
+	Center, ///< Center the window
+	AlignToolbar, ///< Align toward the toolbar
 };
 
 /**

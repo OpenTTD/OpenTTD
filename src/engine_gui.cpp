@@ -271,8 +271,9 @@ struct EnginePreviewWindow : Window {
 	}
 };
 
+/** Window definition for the engine preview window. */
 static WindowDesc _engine_preview_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_engine_preview_widgets

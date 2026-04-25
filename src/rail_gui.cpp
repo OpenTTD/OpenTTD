@@ -942,8 +942,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_rail_widgets =
 	EndContainer(),
 };
 
+/** Window definition for the rail toolbar. */
 static WindowDesc _build_rail_desc(
-	WDP_MANUAL, "toolbar_rail", 0, 0,
+	WindowPosition::Manual, "toolbar_rail", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_build_rail_widgets,
@@ -1483,7 +1484,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_station_builder_widg
 
 /** High level window description of the station-build window (default & newGRF) */
 static WindowDesc _station_builder_desc(
-	WDP_AUTO, "build_station_rail", 0, 0,
+	WindowPosition::Automatic, "build_station_rail", 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_station_builder_widgets,
@@ -1741,7 +1742,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_signal_builder_widge
 
 /** Signal selection window description */
 static WindowDesc _signal_builder_desc(
-	WDP_AUTO, {}, 0, 0,
+	WindowPosition::Automatic, {}, 0, 0,
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_signal_builder_widgets
@@ -1822,8 +1823,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_depot_widgets 
 	EndContainer(),
 };
 
+/** Window definition for the build rail depot window. */
 static WindowDesc _build_depot_desc(
-	WDP_AUTO, {}, 0, 0,
+	WindowPosition::Automatic, {}, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_build_depot_widgets
@@ -1942,8 +1944,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_waypoint_widge
 	EndContainer(),
 };
 
+/** Window definition for the build rail waypoint window. */
 static WindowDesc _build_waypoint_desc(
-	WDP_AUTO, "build_waypoint", 0, 0,
+	WindowPosition::Automatic, "build_waypoint", 0, 0,
 	WC_BUILD_WAYPOINT, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_build_waypoint_widgets,

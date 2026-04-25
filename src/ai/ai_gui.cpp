@@ -84,7 +84,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_ai_config_widgets = 
 
 /** Window definition for the configure AI window. */
 static WindowDesc _ai_config_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	{},
 	_nested_ai_config_widgets

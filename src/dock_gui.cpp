@@ -356,8 +356,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_toolbar_
 	EndContainer(),
 };
 
+/** Window definition for the water/docks toolbar. */
 static WindowDesc _build_docks_toolbar_desc(
-	WDP_MANUAL, "toolbar_water", 0, 0,
+	WindowPosition::Manual, "toolbar_water", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_toolbar_widgets,
@@ -401,7 +402,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_scen_too
 
 /** Window definition for the build docks in scenario editor window. */
 static WindowDesc _build_docks_scen_toolbar_desc(
-	WDP_AUTO, "toolbar_water_scen", 0, 0,
+	WindowPosition::Automatic, "toolbar_water_scen", 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_scen_toolbar_widgets
@@ -502,8 +503,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_dock_station_w
 	EndContainer(),
 };
 
+/** Window definition for the dock building window. */
 static WindowDesc _build_dock_station_desc(
-	WDP_AUTO, {}, 0, 0,
+	WindowPosition::Automatic, {}, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_build_dock_station_widgets
@@ -597,8 +599,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_depot_wi
 	EndContainer(),
 };
 
+/** Window definition for the ship depot window. */
 static WindowDesc _build_docks_depot_desc(
-	WDP_AUTO, {}, 0, 0,
+	WindowPosition::Automatic, {}, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_depot_widgets

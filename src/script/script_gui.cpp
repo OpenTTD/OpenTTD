@@ -264,7 +264,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_script_list_widgets 
 
 /** Window definition for the ai list window. */
 static WindowDesc _script_list_desc(
-	WDP_CENTER, "settings_script_list", 200, 234,
+	WindowPosition::Center, "settings_script_list", 200, 234,
 	WC_SCRIPT_LIST, WC_NONE,
 	{},
 	_nested_script_list_widgets
@@ -575,7 +575,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_script_settings_widg
 
 /** Window definition for the Script settings window. */
 static WindowDesc _script_settings_desc(
-	WDP_CENTER, "settings_script", 500, 208,
+	WindowPosition::Center, "settings_script", 500, 208,
 	WC_SCRIPT_SETTINGS, WC_NONE,
 	{},
 	_nested_script_settings_widgets
@@ -1252,7 +1252,7 @@ EndContainer(),
 
 /** Window definition for the Script debug window. */
 static WindowDesc _script_debug_desc(
-	WDP_AUTO, "script_debug", 600, 450,
+	WindowPosition::Automatic, "script_debug", 600, 450,
 	WC_SCRIPT_DEBUG, WC_NONE,
 	{},
 	_nested_script_debug_widgets,

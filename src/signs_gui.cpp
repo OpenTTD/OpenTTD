@@ -360,8 +360,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_sign_list_widgets = 
 	EndContainer(),
 };
 
+/** Window definition for the sign list window. */
 static WindowDesc _sign_list_desc(
-	WDP_AUTO, "list_signs", 358, 138,
+	WindowPosition::Automatic, "list_signs", 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	{},
 	_nested_sign_list_widgets,
@@ -612,8 +613,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_query_sign_edit_widg
 	EndContainer(),
 };
 
+/** Window definition for the sign editor window. */
 static WindowDesc _query_sign_edit_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_query_sign_edit_widgets

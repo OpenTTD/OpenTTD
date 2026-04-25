@@ -196,7 +196,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_set_date_widgets = {
 
 /** Description of the date setting window. */
 static WindowDesc _set_date_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	{},
 	_nested_set_date_widgets
