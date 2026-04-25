@@ -163,7 +163,7 @@ static void RedrawSmallmap(int32_t)
 {
 	BuildLandLegend();
 	BuildOwnerLegend();
-	SetWindowClassesDirty(WC_SMALLMAP);
+	SetWindowClassesDirty(WindowClass::SmallMap);
 }
 
 /** Redraw linkgraph links after a colour scheme change. */
@@ -175,8 +175,8 @@ static void UpdateLinkgraphColours(int32_t)
 
 static void StationSpreadChanged(int32_t)
 {
-	InvalidateWindowData(WC_SELECT_STATION, 0);
-	InvalidateWindowData(WC_BUILD_STATION, 0);
+	InvalidateWindowData(WindowClass::JoinStation, 0);
+	InvalidateWindowData(WindowClass::BuildStation, 0);
 }
 
 static void UpdateConsists(int32_t)
@@ -185,7 +185,7 @@ static void UpdateConsists(int32_t)
 		/* Update the consist of all trains so the maximum speed is set correctly. */
 		if (t->IsFrontEngine() || t->IsFreeWagon()) t->ConsistChanged(CCF_TRACK);
 	}
-	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
+	InvalidateWindowClassesData(WindowClass::BuildVehicle, 0);
 }
 
 /**
@@ -234,7 +234,7 @@ static void UpdateAllServiceInterval(int32_t new_value)
 		}
 	}
 
-	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
+	SetWindowClassesDirty(WindowClass::VehicleDetails);
 }
 
 static bool CanUpdateServiceInterval(VehicleType, int32_t &new_value)
@@ -261,7 +261,7 @@ static void UpdateServiceInterval(VehicleType type, int32_t new_value)
 		}
 	}
 
-	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
+	SetWindowClassesDirty(WindowClass::VehicleDetails);
 }
 
 /**
@@ -322,9 +322,9 @@ static void TrainAccelerationModelChanged(int32_t)
 	}
 
 	/* These windows show acceleration values only when realistic acceleration is on. They must be redrawn after a setting change. */
-	SetWindowClassesDirty(WC_ENGINE_PREVIEW);
-	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
-	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
+	SetWindowClassesDirty(WindowClass::EnginePreview);
+	InvalidateWindowClassesData(WindowClass::BuildVehicle, 0);
+	SetWindowClassesDirty(WindowClass::VehicleDetails);
 }
 
 /**
@@ -351,9 +351,9 @@ static void RoadVehAccelerationModelChanged(int32_t)
 	}
 
 	/* These windows show acceleration values only when realistic acceleration is on. They must be redrawn after a setting change. */
-	SetWindowClassesDirty(WC_ENGINE_PREVIEW);
-	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
-	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
+	SetWindowClassesDirty(WindowClass::EnginePreview);
+	InvalidateWindowClassesData(WindowClass::BuildVehicle, 0);
+	SetWindowClassesDirty(WindowClass::VehicleDetails);
 }
 
 /**
@@ -378,7 +378,7 @@ static void AircraftRangeChanged(int32_t)
 		/* Reset destination is too far state */
 		if (v->flags.Test(VehicleAirFlag::DestinationTooFar)) {
 			v->flags.Reset(VehicleAirFlag::DestinationTooFar);
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+			SetWindowWidgetDirty(WindowClass::VehicleView, v->index, WID_VV_START_STOP);
 			DeleteVehicleNews(v->index, AdviceType::AircraftDestinationTooFar);
 		}
 	}
@@ -387,9 +387,9 @@ static void AircraftRangeChanged(int32_t)
 static void TownFoundingChanged(int32_t)
 {
 	if (_game_mode != GM_EDITOR && _settings_game.economy.found_town == TF_FORBIDDEN) {
-		CloseWindowById(WC_FOUND_TOWN, 0);
+		CloseWindowById(WindowClass::FoundTown, 0);
 	} else {
-		InvalidateWindowData(WC_FOUND_TOWN, 0);
+		InvalidateWindowData(WindowClass::FoundTown, 0);
 	}
 }
 
@@ -397,7 +397,7 @@ static void ZoomMinMaxChanged(int32_t)
 {
 	ConstrainAllViewportsZoom();
 	GfxClearSpriteCache();
-	InvalidateWindowClassesData(WC_SPRITE_ALIGNER);
+	InvalidateWindowClassesData(WindowClass::SpriteAligner);
 	if (AdjustGUIZoom(false)) {
 		ReInitAllWindows(true);
 	}
@@ -417,14 +417,14 @@ static void SpriteZoomMinChanged(int32_t)
  */
 static void InvalidateNewGRFChangeWindows(int32_t)
 {
-	InvalidateWindowClassesData(WC_SAVELOAD);
-	CloseWindowByClass(WC_GAME_OPTIONS);
+	InvalidateWindowClassesData(WindowClass::SaveLoad);
+	CloseWindowByClass(WindowClass::GameOptions);
 	ReInitAllWindows(false);
 }
 
 static void InvalidateCompanyLiveryWindow(int32_t)
 {
-	InvalidateWindowClassesData(WC_COMPANY_COLOUR, -1);
+	InvalidateWindowClassesData(WindowClass::CompanyLivery, -1);
 	ResetVehicleColourMap();
 }
 
@@ -433,7 +433,7 @@ static void DifficultyNoiseChange(int32_t)
 	if (_game_mode == GM_NORMAL) {
 		UpdateAirportsNoise();
 		if (_settings_game.economy.station_noise_level) {
-			InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
+			InvalidateWindowClassesData(WindowClass::TownView, 0);
 		}
 	}
 }
@@ -446,7 +446,7 @@ static void MaxNoAIsChange(int32_t)
 		ShowErrorMessage(GetEncodedString(STR_WARNING_NO_SUITABLE_AI), {}, WL_CRITICAL);
 	}
 
-	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+	InvalidateWindowClassesData(WindowClass::GameOptions, 0);
 }
 
 /**
@@ -583,7 +583,7 @@ static void StationCatchmentChanged(int32_t)
 
 static void MaxVehiclesChanged(int32_t)
 {
-	InvalidateWindowClassesData(WC_BUILD_TOOLBAR);
+	InvalidateWindowClassesData(WindowClass::BuildToolbar);
 	MarkWholeScreenDirty();
 }
 
@@ -603,7 +603,7 @@ static void UpdateClientConfigValues()
 {
 	NetworkServerUpdateGameInfo();
 
-	InvalidateWindowData(WC_CLIENT_LIST, 0);
+	InvalidateWindowData(WindowClass::NetworkClientList, 0);
 
 	if (_network_server) {
 		NetworkServerSendConfigUpdate();
@@ -625,7 +625,7 @@ static void ChangeTimekeepingUnits()
 		_settings_newgame.economy.minutes_per_calendar_year = CalendarTime::DEF_MINUTES_PER_YEAR;
 	}
 
-	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+	InvalidateWindowClassesData(WindowClass::GameOptions, 0);
 
 	/* It is possible to change these units in Scenario Editor. We must set the economy date appropriately. */
 	if (_game_mode == GM_EDITOR) {

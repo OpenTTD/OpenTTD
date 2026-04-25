@@ -282,7 +282,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_subsidies_list_widge
 /** Window definition for the subsidies window. */
 static WindowDesc _subsidies_list_desc(
 	WindowPosition::Automatic, "list_subsidies", 500, 127,
-	WC_SUBSIDIES_LIST, WC_NONE,
+	WindowClass::SubsidyList, WindowClass::None,
 	{},
 	_nested_subsidies_list_widgets
 );

@@ -546,9 +546,9 @@ public:
 	void DrawSortButtonState(WidgetID widget, SortButtonState state) const;
 	static int SortButtonWidth();
 
-	Window *FindChildWindow(WindowClass wc = WC_INVALID) const;
+	Window *FindChildWindow(WindowClass wc = WindowClass::Invalid) const;
 	Window *FindChildWindowById(WindowClass wc, WindowNumber number) const;
-	void CloseChildWindows(WindowClass wc = WC_INVALID) const;
+	void CloseChildWindows(WindowClass wc = WindowClass::Invalid) const;
 	void CloseChildWindowById(WindowClass wc, WindowNumber number) const;
 	virtual void Close(int data = 0);
 	static void DeleteClosedWindows();

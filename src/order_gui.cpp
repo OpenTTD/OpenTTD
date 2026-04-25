@@ -1645,7 +1645,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_orders_train_widgets
 /** Window definition for the train orders window. */
 static WindowDesc _orders_train_desc(
 	WindowPosition::Automatic, "view_vehicle_orders_train", 384, 100,
-	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
+	WindowClass::VehicleOrders, WindowClass::VehicleView,
 	WindowDefaultFlag::Construction,
 	_nested_orders_train_widgets,
 	&OrdersWindow::hotkeys
@@ -1719,7 +1719,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_orders_widgets = {
 /** Window definition for the orders window for road vehicles, ships and aircraft. */
 static WindowDesc _orders_desc(
 	WindowPosition::Automatic, "view_vehicle_orders", 384, 100,
-	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
+	WindowClass::VehicleOrders, WindowClass::VehicleView,
 	WindowDefaultFlag::Construction,
 	_nested_orders_widgets,
 	&OrdersWindow::hotkeys
@@ -1747,7 +1747,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_other_orders_widgets
 /** Window definition for the orders window for other companies. */
 static WindowDesc _other_orders_desc(
 	WindowPosition::Automatic, "view_vehicle_orders_competitor", 384, 86,
-	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
+	WindowClass::VehicleOrders, WindowClass::VehicleView,
 	WindowDefaultFlag::Construction,
 	_nested_other_orders_widgets,
 	&OrdersWindow::hotkeys
@@ -1755,9 +1755,9 @@ static WindowDesc _other_orders_desc(
 
 void ShowOrdersWindow(const Vehicle *v)
 {
-	CloseWindowById(WC_VEHICLE_DETAILS, v->index, false);
-	CloseWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
-	if (BringWindowToFrontById(WC_VEHICLE_ORDERS, v->index) != nullptr) return;
+	CloseWindowById(WindowClass::VehicleDetails, v->index, false);
+	CloseWindowById(WindowClass::VehicleTimetable, v->index, false);
+	if (BringWindowToFrontById(WindowClass::VehicleOrders, v->index) != nullptr) return;
 
 	/* Using a different WindowDescs for _local_company causes problems.
 	 * Due to this we have to close order windows in ChangeWindowOwner/CloseCompanyWindows,

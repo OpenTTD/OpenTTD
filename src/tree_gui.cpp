@@ -313,7 +313,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_trees_widgets 
 /** Window definition for the tree building window. */
 static WindowDesc _build_trees_desc(
 	WindowPosition::Automatic, "build_tree", 0, 0,
-	WC_BUILD_TREES, WC_NONE,
+	WindowClass::BuildTrees, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_trees_widgets
 );

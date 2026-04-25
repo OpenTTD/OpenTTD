@@ -361,7 +361,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	inline void SetLastSpeed()
 	{
 		if (this->cur_speed != this->gcache.last_speed) {
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
+			SetWindowWidgetDirty(WindowClass::VehicleView, this->index, WID_VV_START_STOP);
 			this->gcache.last_speed = this->cur_speed;
 		}
 	}

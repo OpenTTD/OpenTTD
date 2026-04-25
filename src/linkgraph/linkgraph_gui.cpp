@@ -535,7 +535,7 @@ static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
 /** Window definition for the linkgraph toolbar. */
 static WindowDesc _linkgraph_legend_desc(
 	WindowPosition::Automatic, "toolbar_linkgraph", 0, 0,
-	WC_LINKGRAPH_LEGEND, WC_NONE,
+	WindowClass::LinkGraphLegend, WindowClass::None,
 	{},
 	_nested_linkgraph_legend_widgets
 );

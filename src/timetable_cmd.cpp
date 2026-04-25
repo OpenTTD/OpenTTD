@@ -117,7 +117,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16_t va
 					NOT_REACHED();
 			}
 		}
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 	}
 }
 
@@ -289,14 +289,14 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 					if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) continue;
 
 					u->lateness_counter -= most_late;
-					SetWindowDirty(WC_VEHICLE_TIMETABLE, u->index);
+					SetWindowDirty(WindowClass::VehicleTimetable, u->index);
 				}
 			}
 		} else {
 			v->lateness_counter = 0;
 			/* Unbunching data is no longer valid. */
 			v->ResetDepotUnbunching();
-			SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+			SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 		}
 	}
 
@@ -400,7 +400,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool ti
 			/* Unbunching data is no longer valid. */
 			v->ResetDepotUnbunching();
 
-			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
+			SetWindowDirty(WindowClass::VehicleTimetable, w->index);
 			++idx;
 		}
 
@@ -452,7 +452,7 @@ CommandCost CmdAutofillTimetable(DoCommandFlags flags, VehicleID veh, bool autof
 				v2->vehicle_flags.Reset(VehicleFlag::AutofillTimetable);
 				v2->vehicle_flags.Reset(VehicleFlag::AutofillPreserveWaitTime);
 			}
-			SetWindowDirty(WC_VEHICLE_TIMETABLE, v2->index);
+			SetWindowDirty(WindowClass::VehicleTimetable, v2->index);
 		}
 	}
 
@@ -498,7 +498,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		}
 
 		v->vehicle_flags.Set(VehicleFlag::TimetableStarted);
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 	}
 
 	if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) return;
@@ -568,6 +568,6 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	}
 
 	for (v = v->FirstShared(); v != nullptr; v = v->NextShared()) {
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 	}
 }

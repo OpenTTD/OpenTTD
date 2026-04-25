@@ -475,7 +475,7 @@ struct MainWindow : Window
 	{
 		if (!gui_scope) return;
 		/* Forward the message to the appropriate toolbar (ingame or scenario editor) */
-		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data, true);
+		InvalidateWindowData(WindowClass::MainToolbar, 0, data, true);
 	}
 
 	static inline HotkeyList hotkeys{"global", {
@@ -528,7 +528,7 @@ struct MainWindow : Window
 /** Window definition for the main window. */
 static WindowDesc _main_window_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_MAIN_WINDOW, WC_NONE,
+	WindowClass::MainWindow, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_nested_main_window_widgets,
 	&MainWindow::hotkeys

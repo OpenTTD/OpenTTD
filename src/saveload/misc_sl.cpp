@@ -40,7 +40,7 @@ ZoomLevel _saved_scrollpos_zoom;
 void SaveViewportBeforeSaveGame()
 {
 	/* Don't use GetMainWindow() in case the window does not exist. */
-	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	const Window *w = FindWindowById(WindowClass::MainWindow, 0);
 	if (w == nullptr || w->viewport == nullptr) {
 		/* Ensure saved position is clearly invalid. */
 		_saved_scrollpos_x = INT_MAX;

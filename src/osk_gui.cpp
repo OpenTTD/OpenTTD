@@ -341,7 +341,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_osk_widgets = {
 /** Window definition for the on screen keyboard window. */
 static WindowDesc _osk_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_OSK, WC_NONE,
+	WindowClass::OnScreenKeyboard, WindowClass::None,
 	{},
 	_nested_osk_widgets
 );
@@ -391,7 +391,7 @@ void GetKeyboardLayout()
  */
 void ShowOnScreenKeyboard(Window *parent, WidgetID button)
 {
-	CloseWindowById(WC_OSK, 0);
+	CloseWindowById(WindowClass::OnScreenKeyboard, 0);
 
 	GetKeyboardLayout();
 	new OskWindow(_osk_desc, parent, button);
@@ -406,7 +406,7 @@ void ShowOnScreenKeyboard(Window *parent, WidgetID button)
  */
 void UpdateOSKOriginalText(const Window *parent, WidgetID button)
 {
-	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
+	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WindowClass::OnScreenKeyboard, 0));
 	if (osk == nullptr || osk->parent != parent || osk->text_btn != button) return;
 
 	osk->orig_str = osk->qs->text.GetText();
@@ -422,6 +422,6 @@ void UpdateOSKOriginalText(const Window *parent, WidgetID button)
  */
 bool IsOSKOpenedFor(const Window *w, WidgetID button)
 {
-	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
+	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WindowClass::OnScreenKeyboard, 0));
 	return osk != nullptr && osk->parent == w && osk->text_btn == button;
 }

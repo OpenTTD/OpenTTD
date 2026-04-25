@@ -152,7 +152,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_transparency_widgets
 /** Window definition for the transparency toolbar window. */
 static WindowDesc _transparency_desc(
 	WindowPosition::Manual, "toolbar_transparency", 0, 0,
-	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
+	WindowClass::TransparencyToolbar, WindowClass::None,
 	{},
 	_nested_transparency_widgets
 );

@@ -1465,7 +1465,7 @@ void LoadFromConfig(bool startup)
 
 		/* Display scheduled errors */
 		ScheduleErrorMessage(_settings_error_list);
-		if (FindWindowById(WC_ERRMSG, 0) == nullptr) ShowFirstError();
+		if (FindWindowById(WindowClass::ErrorMessage, 0) == nullptr) ShowFirstError();
 	}
 }
 
@@ -1628,8 +1628,8 @@ void IntSettingDesc::ChangeValue(const void *object, int32_t newval) const
 		_gamelog.StopAction();
 	}
 
-	SetWindowClassesDirty(WC_GAME_OPTIONS);
-	if (this->flags.Test(SettingFlag::Sandbox)) SetWindowClassesDirty(WC_CHEATS);
+	SetWindowClassesDirty(WindowClass::GameOptions);
+	if (this->flags.Test(SettingFlag::Sandbox)) SetWindowClassesDirty(WindowClass::Cheat);
 
 	if (_save_config) SaveToConfig();
 }

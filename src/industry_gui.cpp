@@ -292,7 +292,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_industry_widge
 /** Window definition of the dynamic place industries gui */
 static WindowDesc _build_industry_desc(
 	WindowPosition::Automatic, "build_industry", 170, 212,
-	WC_BUILD_INDUSTRY, WC_NONE,
+	WindowClass::BuildIndustry, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_industry_widgets
 );
@@ -765,7 +765,7 @@ public:
 void ShowBuildIndustryWindow()
 {
 	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
-	if (BringWindowToFrontById(WC_BUILD_INDUSTRY, 0)) return;
+	if (BringWindowToFrontById(WindowClass::BuildIndustry, 0)) return;
 	new BuildIndustryWindow();
 }
 
@@ -824,7 +824,7 @@ public:
 	/** Close the industry production window. */
 	~IndustryViewWindow() override
 	{
-		CloseWindowById(WC_INDUSTRY_PRODUCTION, this->window_number, false);
+		CloseWindowById(WindowClass::IndustryProductionGraph, this->window_number, false);
 	}
 
 	void OnInit() override
@@ -1222,7 +1222,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_industry_view_widget
 /** Window definition of the view industry gui */
 static WindowDesc _industry_view_desc(
 	WindowPosition::Automatic, "view_industry", 260, 120,
-	WC_INDUSTRY_VIEW, WC_NONE,
+	WindowClass::IndustryView, WindowClass::None,
 	{},
 	_nested_industry_view_widgets
 );
@@ -1916,7 +1916,7 @@ CargoType IndustryDirectoryWindow::produced_cargo_filter = CargoFilterCriteria::
 /** Window definition of the industry directory gui */
 static WindowDesc _industry_directory_desc(
 	WindowPosition::Automatic, "list_industries", 428, 190,
-	WC_INDUSTRY_DIRECTORY, WC_NONE,
+	WindowClass::IndustryDirectory, WindowClass::None,
 	{},
 	_nested_industry_directory_widgets,
 	&IndustryDirectoryWindow::hotkeys
@@ -1955,7 +1955,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_industry_cargoes_wid
 /** Window description for the industry cargoes window. */
 static WindowDesc _industry_cargoes_desc(
 	WindowPosition::Automatic, "industry_cargoes", 300, 210,
-	WC_INDUSTRY_CARGOES, WC_NONE,
+	WindowClass::IndustryCargoes, WindowClass::None,
 	{},
 	_nested_industry_cargoes_widgets
 );
@@ -2786,7 +2786,7 @@ struct IndustryCargoesWindow : public Window {
 
 		/* Only notify the smallmap window if it exists. In particular, do not
 		 * bring it to the front to prevent messing up any nice layout of the user. */
-		InvalidateWindowClassesData(WC_SMALLMAP, 0);
+		InvalidateWindowClassesData(WindowClass::SmallMap, 0);
 	}
 
 	/**
@@ -3076,7 +3076,7 @@ struct IndustryCargoesWindow : public Window {
 				SndClickBeep();
 
 				if (this->IsWidgetLowered(WID_IC_NOTIFY)) {
-					if (FindWindowByClass(WC_SMALLMAP) == nullptr) ShowSmallMap();
+					if (FindWindowByClass(WindowClass::SmallMap) == nullptr) ShowSmallMap();
 					this->NotifySmallmap();
 				}
 				break;
@@ -3190,7 +3190,7 @@ static void ShowIndustryCargoesWindow(IndustryType id)
 		if (id >= NUM_INDUSTRYTYPES) return;
 	}
 
-	Window *w = BringWindowToFrontById(WC_INDUSTRY_CARGOES, 0);
+	Window *w = BringWindowToFrontById(WindowClass::IndustryCargoes, 0);
 	if (w != nullptr) {
 		w->InvalidateData(id);
 		return;
