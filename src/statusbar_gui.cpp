@@ -218,8 +218,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_main_status_widgets 
 	EndContainer(),
 };
 
+/** Window definition for the main status bar. */
 static WindowDesc _main_status_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_STATUS_BAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_main_status_widgets

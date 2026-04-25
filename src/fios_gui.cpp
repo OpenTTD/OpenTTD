@@ -982,7 +982,7 @@ public:
 
 /** Load game/scenario */
 static WindowDesc _load_dialog_desc(
-	WDP_CENTER, "load_game", 500, 294,
+	WindowPosition::Center, "load_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	{},
 	_nested_load_dialog_widgets
@@ -990,7 +990,7 @@ static WindowDesc _load_dialog_desc(
 
 /** Load heightmap */
 static WindowDesc _load_heightmap_dialog_desc(
-	WDP_CENTER, "load_heightmap", 257, 320,
+	WindowPosition::Center, "load_heightmap", 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	{},
 	_nested_load_heightmap_dialog_widgets
@@ -998,7 +998,7 @@ static WindowDesc _load_heightmap_dialog_desc(
 
 /** Load town data */
 static WindowDesc _load_town_data_dialog_desc(
-	WDP_CENTER, "load_town_data", 257, 320,
+	WindowPosition::Center, "load_town_data", 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	{},
 	_nested_load_town_data_dialog_widgets
@@ -1006,7 +1006,7 @@ static WindowDesc _load_town_data_dialog_desc(
 
 /** Save game/scenario */
 static WindowDesc _save_dialog_desc(
-	WDP_CENTER, "save_game", 500, 294,
+	WindowPosition::Center, "save_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	{},
 	_nested_save_dialog_widgets

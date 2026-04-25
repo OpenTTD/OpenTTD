@@ -137,8 +137,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_console_window_widge
 	NWidget(WWT_EMPTY, Colours::Invalid, WID_C_BACKGROUND), SetResize(1, 1),
 };
 
+/** Window definition for the console window. */
 static WindowDesc _console_window_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	{},
 	_nested_console_window_widgets

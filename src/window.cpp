@@ -1435,7 +1435,7 @@ void Window::InitializeData(WindowNumber window_number)
 	/* Set up window properties; some of them are needed to set up smallest size below */
 	this->window_class = this->window_desc.cls;
 	this->SetWhiteBorder();
-	if (this->window_desc.default_pos == WDP_CENTER) this->flags.Set(WindowFlag::Centred);
+	if (this->window_desc.default_pos == WindowPosition::Center) this->flags.Set(WindowFlag::Centred);
 	this->owner = INVALID_OWNER;
 	this->nested_focus = nullptr;
 	this->window_number = window_number;
@@ -1775,18 +1775,18 @@ static Point LocalGetWindowPlacement(const WindowDesc &desc, int16_t sm_width, i
 	}
 
 	switch (desc.default_pos) {
-		case WDP_ALIGN_TOOLBAR: // Align to the toolbar
+		case WindowPosition::AlignToolbar: // Align to the toolbar
 			return GetToolbarAlignedWindowPosition(default_width);
 
-		case WDP_AUTO: // Find a good automatic position for the window
+		case WindowPosition::Automatic: // Find a good automatic position for the window
 			return GetAutoPlacePosition(default_width, default_height);
 
-		case WDP_CENTER: // Centre the window horizontally
+		case WindowPosition::Center: // Centre the window horizontally
 			pt.x = (_screen.width - default_width) / 2;
 			pt.y = (_screen.height - default_height) / 2;
 			break;
 
-		case WDP_MANUAL:
+		case WindowPosition::Manual:
 			pt.x = 0;
 			pt.y = 0;
 			break;

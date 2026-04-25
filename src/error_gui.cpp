@@ -43,8 +43,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_errmsg_widgets = {
 	EndContainer(),
 };
 
+/** Window definition for the error message window. */
 static WindowDesc _errmsg_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	{},
 	_nested_errmsg_widgets
@@ -63,8 +64,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_errmsg_face_widgets 
 	EndContainer(),
 };
 
+/** Window definition for the error message with company president face window. */
 static WindowDesc _errmsg_face_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	{},
 	_nested_errmsg_face_widgets

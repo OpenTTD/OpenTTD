@@ -429,7 +429,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_chat_window_widgets 
 
 /** The description of the chat window. */
 static WindowDesc _chat_window_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	{},
 	_nested_chat_window_widgets

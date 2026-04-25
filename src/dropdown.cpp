@@ -115,7 +115,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_dropdown_menu_widget
 
 /** Window description for dropdown menus. */
 static WindowDesc _dropdown_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	{},
 	_nested_dropdown_menu_widgets

@@ -760,8 +760,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_replace_rail_vehicle
 	EndContainer(),
 };
 
+/** Window definition for the replace rail vehicle window. */
 static WindowDesc _replace_rail_vehicle_desc(
-	WDP_AUTO, "replace_vehicle_train", 500, 140,
+	WindowPosition::Automatic, "replace_vehicle_train", 500, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_replace_rail_vehicle_widgets
@@ -818,8 +819,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_replace_road_vehicle
 	EndContainer(),
 };
 
+/** Window definition for the replace road vehicle window. */
 static WindowDesc _replace_road_vehicle_desc(
-	WDP_AUTO, "replace_vehicle_road", 500, 140,
+	WindowPosition::Automatic, "replace_vehicle_road", 500, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_replace_road_vehicle_widgets
@@ -872,8 +874,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_replace_vehicle_widg
 	EndContainer(),
 };
 
+/** Window definition for the replace ship/aircraft window. */
 static WindowDesc _replace_vehicle_desc(
-	WDP_AUTO, "replace_vehicle", 456, 118,
+	WindowPosition::Automatic, "replace_vehicle", 456, 118,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_replace_vehicle_widgets

@@ -202,8 +202,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_helpwin_widgets = {
 	EndContainer(),
 };
 
+/** Window definition for the help window. */
 static WindowDesc _helpwin_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_HELPWIN, WC_NONE,
 	{},
 	_nested_helpwin_widgets

@@ -1016,15 +1016,17 @@ struct GenerateLandscapeWindow : public Window {
 	}
 };
 
+/** Window definition for the landscape generation window. */
 static WindowDesc _generate_landscape_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	{},
 	_nested_generate_landscape_widgets
 );
 
+/** Window definition for the heightmap configuration window. */
 static WindowDesc _heightmap_load_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	{},
 	_nested_heightmap_load_widgets
@@ -1323,8 +1325,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_create_scenario_widg
 	EndContainer(),
 };
 
+/** Window definition for the create scenario window. */
 static WindowDesc _create_scenario_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	{},
 	_nested_create_scenario_widgets
@@ -1349,8 +1352,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_progress_wi
 };
 
 
+/** Window definition for the map generation progress window. */
 static WindowDesc _generate_progress_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_nested_generate_progress_widgets

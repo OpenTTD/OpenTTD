@@ -564,8 +564,9 @@ struct CompanyFinancesWindow : Window {
 /** First conservative estimate of the maximum amount of money */
 Money CompanyFinancesWindow::max_money = INT32_MAX;
 
+/** Window definition for the company finances window. */
 static WindowDesc _company_finances_desc(
-	WDP_AUTO, "company_finances", 0, 0,
+	WindowPosition::Automatic, "company_finances", 0, 0,
 	WC_FINANCES, WC_NONE,
 	{},
 	_nested_company_finances_widgets
@@ -1116,8 +1117,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_select_company_liver
 	EndContainer(),
 };
 
+/** Window definition for the company livery configuration window. */
 static WindowDesc _select_company_livery_desc(
-	WDP_AUTO, "company_colour_scheme", 0, 0,
+	WindowPosition::Automatic, "company_colour_scheme", 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
 	{},
 	_nested_select_company_livery_widgets
@@ -1539,7 +1541,7 @@ public:
 
 /** Company manager face selection window description */
 static WindowDesc _select_company_manager_face_desc(
-	WDP_AUTO, {}, 0, 0,
+	WindowPosition::Automatic, {}, 0, 0,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_select_company_manager_face_widgets
@@ -1845,8 +1847,9 @@ struct CompanyInfrastructureWindow : Window
 	}
 };
 
+/** Window definition for the company infrastructure statistics window. */
 static WindowDesc _company_infrastructure_desc(
-	WDP_AUTO, "company_infrastructure", 0, 0,
+	WindowPosition::Automatic, "company_infrastructure", 0, 0,
 	WC_COMPANY_INFRASTRUCTURE, WC_NONE,
 	{},
 	_nested_company_infrastructure_widgets
@@ -2326,8 +2329,9 @@ struct CompanyWindow : Window
 	}
 };
 
+/** Window definition for the company window. */
 static WindowDesc _company_desc(
-	WDP_AUTO, "company", 0, 0,
+	WindowPosition::Automatic, "company", 0, 0,
 	WC_COMPANY, WC_NONE,
 	{},
 	_nested_company_widgets
@@ -2457,8 +2461,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_buy_company_widgets 
 	EndContainer(),
 };
 
+/** Window definition for the window to buy a company. */
 static WindowDesc _buy_company_desc(
-	WDP_AUTO, {}, 0, 0,
+	WindowPosition::Automatic, {}, 0, 0,
 	WC_BUY_COMPANY, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_buy_company_widgets

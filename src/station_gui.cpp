@@ -796,8 +796,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_stations_wid
 	EndContainer(),
 };
 
+/** Window definition for the company stations window. */
 static WindowDesc _company_stations_desc(
-	WDP_AUTO, "list_stations", 358, 162,
+	WindowPosition::Automatic, "list_stations", 358, 162,
 	WC_STATION_LIST, WC_NONE,
 	{},
 	_nested_company_stations_widgets
@@ -2174,8 +2175,9 @@ struct StationViewWindow : public Window {
 	}
 };
 
+/** Window definition for the station view window. */
 static WindowDesc _station_view_desc(
-	WDP_AUTO, "view_station", 249, 117,
+	WindowPosition::Automatic, "view_station", 249, 117,
 	WC_STATION_VIEW, WC_NONE,
 	{},
 	_nested_station_view_widgets
@@ -2427,8 +2429,9 @@ struct SelectStationWindow : Window {
 	}
 };
 
+/** Window definition for the station selection window for (distant) joining. */
 static WindowDesc _select_station_desc(
-	WDP_AUTO, "build_station_join", 200, 180,
+	WindowPosition::Automatic, "build_station_join", 200, 180,
 	WC_SELECT_STATION, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_select_station_widgets

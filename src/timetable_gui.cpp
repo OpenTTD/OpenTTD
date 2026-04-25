@@ -842,8 +842,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_timetable_widgets = 
 	EndContainer(),
 };
 
+/** Window definition for the timetable window. */
 static WindowDesc _timetable_desc(
-	WDP_AUTO, "view_vehicle_timetable", 400, 130,
+	WindowPosition::Automatic, "view_vehicle_timetable", 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WindowDefaultFlag::Construction,
 	_nested_timetable_widgets

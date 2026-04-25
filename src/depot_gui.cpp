@@ -86,29 +86,33 @@ static constexpr std::initializer_list<NWidgetPart> _nested_train_depot_widgets 
 	EndContainer(),
 };
 
+/** Window definition for the train depot window. */
 static WindowDesc _train_depot_desc(
-	WDP_AUTO, "depot_train", 362, 123,
+	WindowPosition::Automatic, "depot_train", 362, 123,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	{},
 	_nested_train_depot_widgets
 );
 
+/** Window definition for the road depot window. */
 static WindowDesc _road_depot_desc(
-	WDP_AUTO, "depot_roadveh", 316, 97,
+	WindowPosition::Automatic, "depot_roadveh", 316, 97,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	{},
 	_nested_train_depot_widgets
 );
 
+/** Window definition for the ship depot window. */
 static WindowDesc _ship_depot_desc(
-	WDP_AUTO, "depot_ship", 306, 99,
+	WindowPosition::Automatic, "depot_ship", 306, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	{},
 	_nested_train_depot_widgets
 );
 
+/** Window definition for the aircraft depot window. */
 static WindowDesc _aircraft_depot_desc(
-	WDP_AUTO, "depot_aircraft", 332, 99,
+	WindowPosition::Automatic, "depot_aircraft", 332, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	{},
 	_nested_train_depot_widgets

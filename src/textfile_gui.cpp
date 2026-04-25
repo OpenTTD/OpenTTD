@@ -77,7 +77,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_textfile_widgets = {
 
 /** Window definition for the textfile window */
 static WindowDesc _textfile_desc(
-	WDP_CENTER, "textfile", 630, 460,
+	WindowPosition::Center, "textfile", 630, 460,
 	WC_TEXTFILE, WC_NONE,
 	{},
 	_nested_textfile_widgets

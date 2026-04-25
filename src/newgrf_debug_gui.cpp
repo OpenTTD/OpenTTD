@@ -678,15 +678,17 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_inspect_widge
 	EndContainer(),
 };
 
+/** Window definition for the NewGRF chain inspection window. */
 static WindowDesc _newgrf_inspect_chain_desc(
-	WDP_AUTO, "newgrf_inspect_chain", 400, 300,
+	WindowPosition::Automatic, "newgrf_inspect_chain", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	{},
 	_nested_newgrf_inspect_chain_widgets
 );
 
+/** Window definition for the NewGRF inspection window. */
 static WindowDesc _newgrf_inspect_desc(
-	WDP_AUTO, "newgrf_inspect", 400, 300,
+	WindowPosition::Automatic, "newgrf_inspect", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	{},
 	_nested_newgrf_inspect_widgets
@@ -1185,8 +1187,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_sprite_aligner_widge
 	EndContainer(),
 };
 
+/** Window definition for the sprite aligner window. */
 static WindowDesc _sprite_aligner_desc(
-	WDP_AUTO, "sprite_aligner", 400, 300,
+	WindowPosition::Automatic, "sprite_aligner", 400, 300,
 	WC_SPRITE_ALIGNER, WC_NONE,
 	{},
 	_nested_sprite_aligner_widgets

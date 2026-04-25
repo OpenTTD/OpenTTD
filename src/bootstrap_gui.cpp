@@ -42,7 +42,7 @@ static constexpr std::initializer_list<NWidgetPart> _background_widgets = {
  * Window description for the background window to prevent smearing.
  */
 static WindowDesc _background_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_background_widgets
@@ -78,7 +78,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_errmsg_wid
 
 /** Window description for the error window. */
 static WindowDesc _bootstrap_errmsg_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_errmsg_widgets
@@ -135,7 +135,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_download_s
 
 /** Window description for the download window */
 static WindowDesc _bootstrap_download_status_window_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_download_status_window_widgets
@@ -187,7 +187,7 @@ static constexpr std::initializer_list<NWidgetPart> _bootstrap_query_widgets = {
 
 /** The window description for the query. */
 static WindowDesc _bootstrap_query_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_bootstrap_query_widgets

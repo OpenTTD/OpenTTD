@@ -1852,8 +1852,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_game_options_widgets
 	EndContainer(),
 };
 
+/** Window definition for the game options window. */
 static WindowDesc _game_options_desc(
-	WDP_CENTER, "game_options", 0, 0,
+	WindowPosition::Center, "game_options", 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	{},
 	_nested_game_options_widgets
@@ -2195,8 +2196,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_cust_currency_widget
 	EndContainer(),
 };
 
+/** Window definition for the custom currency window. */
 static WindowDesc _cust_currency_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	{},
 	_nested_cust_currency_widgets

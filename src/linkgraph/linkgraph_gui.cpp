@@ -532,8 +532,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_linkgraph_legend_wid
 static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
 		lengthof(LinkGraphOverlay::LINK_COLOURS[0]) - 1);
 
+/** Window definition for the linkgraph toolbar. */
 static WindowDesc _linkgraph_legend_desc(
-	WDP_AUTO, "toolbar_linkgraph", 0, 0,
+	WindowPosition::Automatic, "toolbar_linkgraph", 0, 0,
 	WC_LINKGRAPH_LEGEND, WC_NONE,
 	{},
 	_nested_linkgraph_legend_widgets

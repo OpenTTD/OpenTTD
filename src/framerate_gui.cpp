@@ -719,8 +719,9 @@ struct FramerateWindow : Window {
 	}
 };
 
+/** Window definition for the frame rate window. */
 static WindowDesc _framerate_display_desc(
-	WDP_AUTO, "framerate_display", 0, 0,
+	WindowPosition::Automatic, "framerate_display", 0, 0,
 	WC_FRAMERATE_DISPLAY, WC_NONE,
 	{},
 	_framerate_window_widgets
@@ -1014,8 +1015,9 @@ struct FrametimeGraphWindow : Window {
 	}
 };
 
+/** Window definition for the frame rate graph window. */
 static WindowDesc _frametime_graph_window_desc(
-	WDP_AUTO, "frametime_graph", 140, 90,
+	WindowPosition::Automatic, "frametime_graph", 140, 90,
 	WC_FRAMETIME_GRAPH, WC_NONE,
 	{},
 	_frametime_graph_window_widgets
