@@ -421,7 +421,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 			 * @li if build on slopes is disabled */
 			if ((IsStraightRoad(other) && other.Any(_invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED])) ||
 					(tileh != SLOPE_FLAT && !_settings_game.construction.build_on_slopes)) {
-				pieces |= MirrorRoadBits(pieces);
+				pieces.Set(MirrorRoadBits(pieces));
 			}
 
 			/* limit the bits to delete to the existing bits. */
@@ -433,7 +433,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 
 			/* Check for invalid RoadBit combinations on slopes */
 			if (tileh != SLOPE_FLAT && present.Any() &&
-					(present & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) == present) {
+					_invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED].All(present)) {
 				return CMD_ERROR;
 			}
 
@@ -564,7 +564,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 	}
 
 	/* Autocomplete uphill roads */
-	*pieces |= MirrorRoadBits(*pieces);
+	pieces->Set(MirrorRoadBits(*pieces));
 	type_bits = existing | *pieces;
 
 	/* Uphill roads */
@@ -648,7 +648,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 						/* Junctions cannot be one-way */
 						return CommandCost(STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 					}
-					if ((existing & pieces) == pieces) {
+					if (existing.All(pieces)) {
 						/* We only want to set the (dis)allowed road directions */
 						if (toggle_drd.Any() && rtt == RoadTramType::Road) {
 							Owner owner = GetRoadOwner(tile, rtt);
@@ -703,7 +703,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 					break;
 
 				case RoadTileType::Depot:
-					if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return CommandCost(STR_ERROR_ALREADY_BUILT);
+					if (GetAnyRoadBits(tile, rtt).All(pieces)) return CommandCost(STR_ERROR_ALREADY_BUILT);
 					goto do_clear;
 
 				default: NOT_REACHED();
@@ -779,7 +779,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 		}
 
 		case TileType::Station: {
-			if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return CommandCost(STR_ERROR_ALREADY_BUILT);
+			if (GetAnyRoadBits(tile, rtt).All(pieces)) return CommandCost(STR_ERROR_ALREADY_BUILT);
 			if (!IsDriveThroughStopTile(tile)) goto do_clear;
 
 			RoadBits curbits = AxisToRoadBits(GetDriveThroughStopAxis(tile));
@@ -921,7 +921,7 @@ do_clear:;
 		UpdateCompanyRoadInfrastructure(rt, GetRoadOwner(tile, rtt), num_pieces);
 
 		if (rtt == RoadTramType::Road && IsNormalRoadTile(tile)) {
-			existing |= pieces;
+			existing.Set(pieces);
 			SetDisallowedRoadDirections(tile, IsStraightRoad(existing) ?
 					GetDisallowedRoadDirections(tile).Flip(toggle_drd) : DisallowedRoadDirections{});
 		}
@@ -1386,7 +1386,7 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadType rt, RoadBits rb)
 
 					if ((rt_road != INVALID_ROADTYPE && HasRoadCatenary(rt_road)) ||
 							(rt_tram != INVALID_ROADTYPE && HasRoadCatenary(rt_tram))) {
-						rb_new |= DiagDirToRoadBits(dir);
+						rb_new.Set(DiagDirToRoadBits(dir));
 					}
 				}
 			}

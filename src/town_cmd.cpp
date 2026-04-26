@@ -1133,13 +1133,13 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 		default: NOT_REACHED();
 
 		case TL_2X2_GRID:
-			if ((grid_pos.x % 3) == 0) rcmd |= ROAD_Y;
-			if ((grid_pos.y % 3) == 0) rcmd |= ROAD_X;
+			if ((grid_pos.x % 3) == 0) rcmd.Set(ROAD_Y);
+			if ((grid_pos.y % 3) == 0) rcmd.Set(ROAD_X);
 			break;
 
 		case TL_3X3_GRID:
-			if ((grid_pos.x % 4) == 0) rcmd |= ROAD_Y;
-			if ((grid_pos.y % 4) == 0) rcmd |= ROAD_X;
+			if ((grid_pos.x % 4) == 0) rcmd.Set(ROAD_Y);
+			if ((grid_pos.y % 4) == 0) rcmd.Set(ROAD_X);
 			break;
 	}
 
