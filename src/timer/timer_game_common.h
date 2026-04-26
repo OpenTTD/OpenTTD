@@ -98,7 +98,7 @@ public:
 
 	/** Trigger reasons for the timer based triggers. */
 	enum class Trigger : uint8_t {
-		Day, ///< Triggeres daily.
+		Day, ///< Triggers daily.
 		Week, ///< Triggers every Tuesday.
 		Month, ///< Triggered at the first of the month.
 		Quarter, ///< Triggered every first of January, April, July and October.

@@ -27,7 +27,7 @@ typedef uint8_t  PacketType; ///< Identifier for the packet
  * identifier is unique for each stream of packets, which are separate enumerations.
  * This trait allows us to only allow one of these PacketType enumerations when
  * creating the packet, but not any other enumeration. It is up to the developer to
- * enusre that the right enumeration is used for a socket handler.
+ * ensure that the right enumeration is used for a socket handler.
  */
 template <typename enum_type>
 struct IsEnumPacketType {

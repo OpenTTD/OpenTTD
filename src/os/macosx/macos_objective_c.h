@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file macos_objective_c.h Includes of mac os specific headers wich contain objective c. */
+/** @file macos_objective_c.h Includes of mac os specific headers which contain objective c. */
 
 #ifndef MACOS_OBJECTIVE_C_H
 #define MACOS_OBJECTIVE_C_H

@@ -1722,7 +1722,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
-/** Calander day handler */
+/** Calender day handler */
 void RoadVehicle::OnNewCalendarDay()
 {
 	if (!this->IsFrontEngine()) return;

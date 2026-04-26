@@ -85,7 +85,7 @@ RoadType _last_built_tramtype;
 
 /** Toolbar modes */
 enum class ToolbarMode : uint8_t {
-	Normal, ///< Toolbar is in normal mode, in wich all 30 buttons are accessible.
+	Normal, ///< Toolbar is in normal mode, in which all 30 buttons are accessible.
 	Upper, ///< Toolbar is in split mode and the first part is selected.
 	Lower, ///< Toolbar is in split mode and the second part is selected.
 };

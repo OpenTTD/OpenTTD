@@ -28,7 +28,7 @@ inline int CentreBounds(int min, int max, int size)
 	return (min + max - size + 1) / 2;
 }
 
-/** A coordinate with two dimensons. */
+/** A coordinate with two dimensions. */
 template <typename T>
 struct Coord2D {
 	T x = 0; ///< X coordinate.
@@ -264,7 +264,7 @@ struct Rect {
 	}
 
 	/**
-	 * Create a new Rect, replacing the left and right coordiates.
+	 * Create a new Rect, replacing the left and right coordinates.
 	 * @param new_left New left coordinate.
 	 * @param new_right New right coordinate.
 	 * @return The new Rect.
@@ -272,7 +272,7 @@ struct Rect {
 	[[nodiscard]] inline Rect WithX(int new_left, int new_right) const { return {new_left, this->top, new_right, this->bottom}; }
 
 	/**
-	 * Create a new Rect, replacing the top and bottom coordiates.
+	 * Create a new Rect, replacing the top and bottom coordinates.
 	 * @param new_top New top coordinate.
 	 * @param new_bottom New bottom coordinate.
 	 * @return The new Rect.
@@ -280,14 +280,14 @@ struct Rect {
 	[[nodiscard]] inline Rect WithY(int new_top, int new_bottom) const { return {this->left, new_top, this->right, new_bottom}; }
 
 	/**
-	 * Create a new Rect, replacing the left and right coordiates.
+	 * Create a new Rect, replacing the left and right coordinates.
 	 * @param other Rect containing the new left and right coordinates.
 	 * @return The new Rect.
 	 */
 	[[nodiscard]] inline Rect WithX(const Rect &other) const { return this->WithX(other.left, other.right); }
 
 	/**
-	 * Create a new Rect, replacing the top and bottom coordiates.
+	 * Create a new Rect, replacing the top and bottom coordinates.
 	 * @param other Rect containing the new top and bottom coordinates.
 	 * @return The new Rect.
 	 */

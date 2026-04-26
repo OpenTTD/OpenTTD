@@ -905,7 +905,7 @@ const StationSpec *GetStationSpec(TileIndex t)
  * @param param1 The first parameter of the NewGRF callback.
  * @param param2 The second parameter of the NewGRF callback.
  * @param statspec The specification to run the callback on.
- * @param st The station for the calback.
+ * @param st The station for the callback.
  * @param tile The tile the station is at.
  * @return The NewGRF result of the callback.
  */

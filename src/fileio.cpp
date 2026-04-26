@@ -669,7 +669,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
  */
 extern void DetermineBasePaths(std::string_view exe);
 
-/** Mimicks the getcwd from POSIX for Windows. */
+/** Mimics the getcwd from POSIX for Windows. */
 char *getcwd(char *buf, size_t size);
 #else /* defined(_WIN32) */
 

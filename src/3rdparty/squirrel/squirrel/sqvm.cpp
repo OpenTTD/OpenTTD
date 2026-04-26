@@ -424,7 +424,7 @@ bool SQVM::Return(SQInteger _arg0, SQInteger _arg1, SQObjectPtr &retval)
 		else retval = _null_;
 	}
 	else {
-		if(target != -1) { //-1 is when a class contructor ret value has to be ignored
+		if(target != -1) { //-1 is when a class constructor ret value has to be ignored
 			if (_arg0 != MAX_FUNC_STACKSIZE)
 				STK(target) = _stack._vals[oldstackbase+_arg1];
 			else

@@ -63,10 +63,10 @@ enum class ScoreID : uint8_t {
 	Vehicles = ScoreID::Begin, ///< Number of vehicles that turned profit last year.
 	Stations, ///< Number of recently-serviced stations.
 	MinProfit, ///< The profit of the vehicle with the lowest income.
-	MinIncome, ///< Income in the quater with the lowest profit of the last 12 quaters.
-	MaxIncome, ///< Income in the quater with the highest profit of the last 12 quaters.
-	Delivered, ///< Units of cargo delivered in the last four quaters.
-	Cargo, ///< Number of types of cargo delivered in the last four quaters.
+	MinIncome, ///< Income in the quarter with the lowest profit of the last 12 quarters.
+	MaxIncome, ///< Income in the quarter with the highest profit of the last 12 quarters.
+	Delivered, ///< Units of cargo delivered in the last four quarter.
+	Cargo, ///< Number of types of cargo delivered in the last four quarter.
 	Money, ///< Amount of money company has in the bank.
 	Loan, ///< The amount of money company can take as a loan.
 	Total, ///< Total points out of possible points ,must always be the last entry.

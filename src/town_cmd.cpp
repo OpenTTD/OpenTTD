@@ -3836,7 +3836,7 @@ static void UpdateTownRating(Town *t)
 
 /**
  * Updates town grow counter after growth rate change.
- * Preserves relative house builting progress whenever it can.
+ * Preserves relative house building progress whenever it can.
  * @param t The town to calculate grow counter for
  * @param prev_growth_rate Town growth rate before it changed (one that was used with grow counter to be updated)
  */
