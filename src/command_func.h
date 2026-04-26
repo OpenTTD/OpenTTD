@@ -120,7 +120,7 @@ private:
 		if constexpr (std::is_same_v<Tret, CommandCost>) {
 			return ret;
 		} else {
-			return std::get<0>(ret);
+			return std::get<CommandCost>(ret);
 		}
 	}
 
@@ -443,7 +443,7 @@ protected:
 		if constexpr (std::is_same_v<Tret, CommandCost>) {
 			return InternalExecuteProcessResult(Tcmd, cmd_flags, res, res2, additional_money, tile, cur_company);
 		} else {
-			std::get<0>(res2) = InternalExecuteProcessResult(Tcmd, cmd_flags, ExtractCommandCost(res), ExtractCommandCost(res2), additional_money, tile, cur_company);
+			std::get<CommandCost>(res2) = InternalExecuteProcessResult(Tcmd, cmd_flags, ExtractCommandCost(res), ExtractCommandCost(res2), additional_money, tile, cur_company);
 			return res2;
 		}
 	}

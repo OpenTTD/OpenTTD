@@ -1638,7 +1638,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (v->current_order.IsRefit()) {
 			Backup<CompanyID> cur_company(_current_company, v->owner);
-			CommandCost cost = std::get<0>(Command<Commands::RefitVehicle>::Do(DoCommandFlag::Execute, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
+			CommandCost cost = std::get<CommandCost>(Command<Commands::RefitVehicle>::Do(DoCommandFlag::Execute, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
 			cur_company.Restore();
 
 			if (cost.Failed()) {

@@ -1514,7 +1514,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 		 * "via any station" before reserving. We rather produce some more "any station" cargo than
 		 * misrouting it. */
 		IterateVehicleParts(v_start, ReturnCargoAction(st, StationID::Invalid()));
-		CommandCost cost = std::get<0>(Command<Commands::RefitVehicle>::Do(DoCommandFlag::Execute, v_start->index, new_cargo_type, 0xFF, true, false, 1)); // Auto-refit and only this vehicle including artic parts.
+		CommandCost cost = std::get<CommandCost>(Command<Commands::RefitVehicle>::Do(DoCommandFlag::Execute, v_start->index, new_cargo_type, 0xFF, true, false, 1)); // Auto-refit and only this vehicle including artic parts.
 		if (cost.Succeeded()) v->First()->profit_this_year -= cost.GetCost() << 8;
 	}
 

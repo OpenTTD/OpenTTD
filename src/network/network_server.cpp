@@ -1146,7 +1146,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::ReceiveClientCommand(Packet &p
 	 * to match the company in the packet. If it doesn't, the client has done
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
-	CompanyCtrlAction cca = cp.cmd == Commands::CompanyControl ? std::get<0>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyControl>::Args>(cp.data)) : CompanyCtrlAction::New;
+	CompanyCtrlAction cca = cp.cmd == Commands::CompanyControl ? std::get<CompanyCtrlAction>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyControl>::Args>(cp.data)) : CompanyCtrlAction::New;
 	if (!(cp.cmd == Commands::CompanyControl && cca == CompanyCtrlAction::New && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a command as another company {}.",
 		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
@@ -1170,7 +1170,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::ReceiveClientCommand(Packet &p
 		if (ci->client_id != CLIENT_ID_SERVER && ci->client_playas != cp.company) return NETWORK_RECV_STATUS_OKAY;
 
 		/* Only allow clients to add/remove currently joined clients. The server owner does not go via this method, so is allowed to do more. */
-		std::string public_key = std::get<1>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyAllowListControl>::Args>(cp.data));
+		std::string public_key = std::get<std::string>(EndianBufferReader::ToValue<CommandTraits<Commands::CompanyAllowListControl>::Args>(cp.data));
 		if (!public_key.empty()) {
 			bool found = false;
 			for (const NetworkClientInfo *info : NetworkClientInfo::Iterate()) {
