@@ -443,7 +443,7 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
 {
 	const ObjectSpec *spec = ObjectSpec::Get(GetObjectType(tile));
-	return spec->IsEnabled() && spec->flags.Test(ObjectFlag::HasNoFoundation) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
+	return spec->IsEnabled() && spec->flags.Test(ObjectFlag::HasNoFoundation) ? Foundation::None : FlatteningFoundation(tileh);
 }
 
 /** @copydoc DrawTileProc */
