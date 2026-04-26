@@ -262,7 +262,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
     endif()
 
     # We need to make specialized conversions for enums
-    if("${LINE}" MATCHES "^(\t*)enum ([^ ]*)")
+    if("${LINE}" MATCHES "^(\t*)enum *(class)? *([^ ]*)")
         math(EXPR CLS_LEVEL "${CLS_LEVEL} + 1")
 
         # Check if we want to publish this enum
@@ -280,7 +280,10 @@ foreach(LINE IN LISTS SOURCE_LINES)
         endif()
 
         set(IN_ENUM TRUE)
-        list(APPEND ENUMS "${CLS}::${CMAKE_MATCH_2}")
+        if(CMAKE_MATCH_2 STREQUAL "class")
+            set(IN_SCOPED_ENUM TRUE)
+        endif()
+        list(APPEND ENUMS "${CLS}::${CMAKE_MATCH_3}")
         continue()
     endif()
 
@@ -289,6 +292,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
         math(EXPR CLS_LEVEL "${CLS_LEVEL} - 1")
         if(CLS_LEVEL)
             unset(IN_ENUM)
+            unset(IN_SCOPED_ENUM)
             continue()
         endif()
 
@@ -365,9 +369,33 @@ foreach(LINE IN LISTS SOURCE_LINES)
         string(APPEND SQUIRREL_EXPORT "\n")
 
         # Enum values
+
+        macro(add_scoped_enum_end_if_needed)
+            if(CURRENT_ENUM_NAME)
+                unset(CURRENT_ENUM_NAME)
+                string(APPEND SQUIRREL_EXPORT "\n\tSQ${API_CLS}.AddScopedEnumEnd(engine);\n")
+            endif()
+        endmacro()
+
+        set(CURRENT_ENUM_NAME 0)
         foreach(ENUM_VALUE IN LISTS ENUM_VALUES)
+            if(ENUM_VALUE MATCHES "::")
+                string(REGEX REPLACE ".*:" "" ENUM_VALUE_NAME "${ENUM_VALUE}")
+                string(REGEX MATCH "::(.*)::" ENUM_NAME "${ENUM_VALUE}")
+                set(ENUM_NAME ${CMAKE_MATCH_1})
+                if(CURRENT_ENUM_NAME STREQUAL ENUM_NAME)
+                else()
+                    add_scoped_enum_end_if_needed()
+                    string(APPEND SQUIRREL_EXPORT "\n\tSQ${API_CLS}.AddScopedEnumBegin(engine, \"${ENUM_NAME}\");")
+                    set(CURRENT_ENUM_NAME ${ENUM_NAME})
+                endif()
+                string(APPEND SQUIRREL_EXPORT "\n\tSQ${API_CLS}.DefSQConst(engine, to_underlying(${ENUM_VALUE}), \"${ENUM_VALUE_NAME}\");")
+                continue()
+            endif()
+            add_scoped_enum_end_if_needed()
             string(APPEND SQUIRREL_EXPORT "\n\tSQ${API_CLS}.DefSQConst(engine, ${CLS}::${ENUM_VALUE}, \"${ENUM_VALUE}\");")
         endforeach()
+        add_scoped_enum_end_if_needed()
 
         # Const values
         foreach(CONST_VALUE IN LISTS CONST_VALUES)
@@ -440,11 +468,16 @@ foreach(LINE IN LISTS SOURCE_LINES)
 
     # Add enums
     if(IN_ENUM)
-        string(REGEX MATCH "([^,\t ]+)" ENUM_VALUE "${LINE}")
-        list(APPEND ENUM_VALUES "${ENUM_VALUE}")
-
         # Check if this a special error enum
         list(GET ENUMS -1 ENUM)
+
+        string(REGEX MATCH "([^,\t ]+)" ENUM_VALUE "${LINE}")
+        if(IN_SCOPED_ENUM)
+            list(APPEND ENUM_VALUES "${ENUM}::${ENUM_VALUE}")
+        else()
+            list(APPEND ENUM_VALUES "${ENUM_VALUE}")
+        endif()
+
         if("${ENUM}" MATCHES ".*::ErrorMessages")
             # syntax:
             # enum ErrorMessages {

@@ -65,7 +65,8 @@ foreach(ENUM IN LISTS ENUM_LINES)
             endif()
 
             # Check for enum match
-            if("${LINE}" MATCHES "^	*enum *${ENUM_PATTERN}( *: *[^ ]*)? *\{")
+            if("${LINE}" MATCHES "^	*enum *(class)? *(${ENUM_PATTERN})( *: *[^ ]*)? *\{")
+                set(ENUM_NAME "${CMAKE_MATCH_2}")
                 # REGEX REPLACE does a REGEX MATCHALL and fails if an empty string is matched
                 string(REGEX MATCH "[^	]*" RESULT "${LINE}")
                 string(REPLACE "${RESULT}" "" RM_INDENT "${LINE}")
@@ -111,9 +112,9 @@ foreach(ENUM IN LISTS ENUM_LINES)
                     if(CMAKE_MATCH_3)
                         # CMAKE_MATCH_3 contains inline comment.
                         remove_invalid_links("${CMAKE_MATCH_3}")
-                        string(APPEND ${PLACE_HOLDER} "\n${ADD_INDENT}${CMAKE_MATCH_1}${CMAKE_MATCH_2}${SPACES} = ::${CMAKE_MATCH_2},${SPACES}${NO_INVALID_LINKS}")
+                        string(APPEND ${PLACE_HOLDER} "\n${ADD_INDENT}${CMAKE_MATCH_1}${CMAKE_MATCH_2}${SPACES} = to_underlying(::${ENUM_NAME}::${CMAKE_MATCH_2}),${SPACES}${NO_INVALID_LINKS}")
                     else()
-                        string(APPEND ${PLACE_HOLDER} "\n${ADD_INDENT}${CMAKE_MATCH_1}${CMAKE_MATCH_2}${SPACES} = ::${CMAKE_MATCH_2},")
+                        string(APPEND ${PLACE_HOLDER} "\n${ADD_INDENT}${CMAKE_MATCH_1}${CMAKE_MATCH_2}${SPACES} = to_underlying(::${ENUM_NAME}::${CMAKE_MATCH_2}),")
                     endif()
                 elseif("${LINE}" STREQUAL "")
                     string(APPEND ${PLACE_HOLDER} "\n")
