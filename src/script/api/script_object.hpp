@@ -441,7 +441,7 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)
 		return ScriptObject::DoCommandProcessResult(res, callback, estimate_only, asynchronous);
 	} else {
 		ScriptObject::SetLastCommandResData(EndianBufferWriter<CommandDataBuffer>::FromValue(ScriptObjectInternal::RemoveFirstTupleElement(res)));
-		return ScriptObject::DoCommandProcessResult(std::get<0>(res), callback, estimate_only, asynchronous);
+		return ScriptObject::DoCommandProcessResult(ExtractCommandCost(res), callback, estimate_only, asynchronous);
 	}
 }
 
