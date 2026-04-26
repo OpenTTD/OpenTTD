@@ -115,7 +115,7 @@ Foundation GetBridgeFoundation(Slope tileh, Axis axis)
 {
 	if (tileh == SLOPE_FLAT ||
 			((tileh == SLOPE_NE || tileh == SLOPE_SW) && axis == AXIS_X) ||
-			((tileh == SLOPE_NW || tileh == SLOPE_SE) && axis == AXIS_Y)) return FOUNDATION_NONE;
+			((tileh == SLOPE_NW || tileh == SLOPE_SE) && axis == AXIS_Y)) return Foundation::None;
 
 	return (HasSlopeHighestCorner(tileh) ? InclinedFoundation(axis) : FlatteningFoundation(tileh));
 }
@@ -224,7 +224,7 @@ static CommandCost CheckBridgeSlope(BridgePieces bridge_piece, Axis axis, Slope 
 	}
 	if ((tileh != SLOPE_FLAT) && (tileh != valid_inclined)) return CMD_ERROR;
 
-	if (f == FOUNDATION_NONE) return CommandCost();
+	if (f == Foundation::None) return CommandCost();
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
 }
@@ -1750,7 +1750,7 @@ static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y, bool grou
 /** @copydoc GetFoundationProc */
 static Foundation GetFoundation_TunnelBridge(TileIndex tile, Slope tileh)
 {
-	return IsTunnel(tile) ? FOUNDATION_NONE : GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(tile)));
+	return IsTunnel(tile) ? Foundation::None : GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(tile)));
 }
 
 /** @copydoc GetTileDescProc */

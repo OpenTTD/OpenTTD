@@ -223,7 +223,7 @@ struct TileTypeProcs {
 	ChangeTileOwnerProc *change_tile_owner_proc = [](TileIndex, CompanyID, CompanyID) {}; ///< Called to change the ownership of elements on a tile.
 	AddProducedCargoProc *add_produced_cargo_proc = nullptr; ///< Adds produced cargo of the tile to cargo array supplied as parameter.
 	VehicleEnterTileProc *vehicle_enter_tile_proc = nullptr; ///< Called when a vehicle enters a tile.
-	GetFoundationProc *get_foundation_proc = [](TileIndex, Slope) { return FOUNDATION_NONE; }; ///< Called to get the foundation.
+	GetFoundationProc *get_foundation_proc = [](TileIndex, Slope) { return Foundation::None; }; ///< Called to get the foundation.
 	TerraformTileProc *terraform_tile_proc; ///< Called when a terraforming operation is about to take place.
 	CheckBuildAboveProc *check_build_above_proc = nullptr; ///< Called to check whether a bridge can be build above.
 };

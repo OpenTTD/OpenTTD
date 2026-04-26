@@ -199,7 +199,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 			if (callback_res != CALLBACK_FAILED) draw_old_one = ConvertBooleanCallback(inds->grf_prop.grffile, CBID_INDTILE_DRAW_FOUNDATIONS, callback_res);
 		}
 
-		if (draw_old_one) DrawFoundation(ti, FOUNDATION_LEVELED);
+		if (draw_old_one) DrawFoundation(ti, Foundation::Leveled);
 	}
 
 	IndustryTileResolverObject object(gfx, ti->tile, i);

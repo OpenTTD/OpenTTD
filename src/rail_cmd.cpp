@@ -306,16 +306,16 @@ static const TrackBits _valid_tracks_on_leveled_foundation[15] = {
  *
  * @param tileh Tile slope.
  * @param bits  Trackbits.
- * @return Needed foundation or FOUNDATION_INVALID if track/slope combination is not allowed.
+ * @return Needed foundation or Foundation::Invalid if track/slope combination is not allowed.
  */
 Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 {
-	if (bits == TRACK_BIT_NONE) return FOUNDATION_NONE;
+	if (bits == TRACK_BIT_NONE) return Foundation::None;
 
 	if (IsSteepSlope(tileh)) {
 		/* Test for inclined foundations */
-		if (bits == TRACK_BIT_X) return FOUNDATION_INCLINED_X;
-		if (bits == TRACK_BIT_Y) return FOUNDATION_INCLINED_Y;
+		if (bits == TRACK_BIT_X) return Foundation::InclinedX;
+		if (bits == TRACK_BIT_Y) return Foundation::InclinedY;
 
 		/* Get higher track */
 		Corner highest_corner = GetHighestSlopeCorner(tileh);
@@ -325,12 +325,12 @@ Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 		if (bits == higher_track) return HalftileFoundation(highest_corner);
 
 		/* Overlap with higher track? */
-		if (TracksOverlap(bits | higher_track)) return FOUNDATION_INVALID;
+		if (TracksOverlap(bits | higher_track)) return Foundation::Invalid;
 
 		/* either lower track or both higher and lower track */
-		return ((bits & higher_track) != 0 ? FOUNDATION_STEEP_BOTH : FOUNDATION_STEEP_LOWER);
+		return ((bits & higher_track) != 0 ? Foundation::SteepBoth : Foundation::SteepLower);
 	} else {
-		if ((~_valid_tracks_without_foundation[tileh] & bits) == 0) return FOUNDATION_NONE;
+		if ((~_valid_tracks_without_foundation[tileh] & bits) == 0) return Foundation::None;
 
 		bool valid_on_leveled = ((~_valid_tracks_on_leveled_foundation[tileh] & bits) == 0);
 
@@ -344,31 +344,31 @@ Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 			case TRACK_BIT_HORZ:
 				if (tileh == SLOPE_N) return HalftileFoundation(CORNER_N);
 				if (tileh == SLOPE_S) return HalftileFoundation(CORNER_S);
-				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+				return (valid_on_leveled ? Foundation::Leveled : Foundation::Invalid);
 
 			case TRACK_BIT_VERT:
 				if (tileh == SLOPE_W) return HalftileFoundation(CORNER_W);
 				if (tileh == SLOPE_E) return HalftileFoundation(CORNER_E);
-				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+				return (valid_on_leveled ? Foundation::Leveled : Foundation::Invalid);
 
 			case TRACK_BIT_X:
-				if (IsSlopeWithOneCornerRaised(tileh)) return FOUNDATION_INCLINED_X;
-				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+				if (IsSlopeWithOneCornerRaised(tileh)) return Foundation::InclinedX;
+				return (valid_on_leveled ? Foundation::Leveled : Foundation::Invalid);
 
 			case TRACK_BIT_Y:
-				if (IsSlopeWithOneCornerRaised(tileh)) return FOUNDATION_INCLINED_Y;
-				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+				if (IsSlopeWithOneCornerRaised(tileh)) return Foundation::InclinedY;
+				return (valid_on_leveled ? Foundation::Leveled : Foundation::Invalid);
 
 			default:
-				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+				return (valid_on_leveled ? Foundation::Leveled : Foundation::Invalid);
 		}
 		/* Single diagonal track */
 
 		/* Track must be at least valid on leveled foundation */
-		if (!valid_on_leveled) return FOUNDATION_INVALID;
+		if (!valid_on_leveled) return Foundation::Invalid;
 
 		/* If slope has three raised corners, build leveled foundation */
-		if (IsSlopeWithThreeCornersRaised(tileh)) return FOUNDATION_LEVELED;
+		if (IsSlopeWithThreeCornersRaised(tileh)) return Foundation::Leveled;
 
 		/* If neighboured corners of track_corner are lowered, build halftile foundation */
 		if ((tileh & SlopeWithThreeCornersRaised(OppositeCorner(track_corner))) == SlopeWithOneCornerRaised(track_corner)) return HalftileFoundation(track_corner);
@@ -398,8 +398,8 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	Foundation f_new = GetRailFoundation(tileh, rail_bits | existing);
 
 	/* check track/slope combination */
-	if ((f_new == FOUNDATION_INVALID) ||
-			((f_new != FOUNDATION_NONE) && (!_settings_game.construction.build_on_slopes))) {
+	if ((f_new == Foundation::Invalid) ||
+			((f_new != Foundation::None) && (!_settings_game.construction.build_on_slopes))) {
 		return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -2080,10 +2080,10 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 
 	if (IsNonContinuousFoundation(f)) {
 		/* Save halftile corner */
-		halftile_corner = (f == FOUNDATION_STEEP_BOTH ? GetHighestSlopeCorner(ti->tileh) : GetHalftileFoundationCorner(f));
+		halftile_corner = (f == Foundation::SteepBoth ? GetHighestSlopeCorner(ti->tileh) : GetHalftileFoundationCorner(f));
 		/* Draw lower part first */
 		track &= ~CornerToTrackBits(halftile_corner);
-		f = (f == FOUNDATION_STEEP_BOTH ? FOUNDATION_STEEP_LOWER : FOUNDATION_NONE);
+		f = (f == Foundation::SteepBoth ? Foundation::SteepLower : Foundation::None);
 	}
 
 	DrawFoundation(ti, f);
@@ -2271,10 +2271,10 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 
 	if (IsNonContinuousFoundation(f)) {
 		/* Save halftile corner */
-		halftile_corner = (f == FOUNDATION_STEEP_BOTH ? GetHighestSlopeCorner(ti->tileh) : GetHalftileFoundationCorner(f));
+		halftile_corner = (f == Foundation::SteepBoth ? GetHighestSlopeCorner(ti->tileh) : GetHalftileFoundationCorner(f));
 		/* Draw lower part first */
 		track &= ~CornerToTrackBits(halftile_corner);
-		f = (f == FOUNDATION_STEEP_BOTH ? FOUNDATION_STEEP_LOWER : FOUNDATION_NONE);
+		f = (f == Foundation::SteepBoth ? Foundation::SteepLower : Foundation::None);
 	}
 
 	DrawFoundation(ti, f);
@@ -2466,7 +2466,7 @@ static void DrawTile_Rail(TileInfo *ti)
 		const DrawTileSprites *dts;
 		DiagDirection dir = GetRailDepotDirection(ti->tile);
 
-		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
+		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, Foundation::Leveled);
 
 		if (IsInvisibilitySet(TO_BUILDINGS)) {
 			/* Draw rail instead of depot */
@@ -2636,18 +2636,18 @@ static void TileLoop_Rail(TileIndex tile)
 				Foundation f = GetRailFoundation(slope, track);
 
 				switch (f) {
-					case FOUNDATION_NONE:
+					case Foundation::None:
 						/* no foundation - is the track on the upper side of three corners raised tile? */
 						if (IsSlopeWithThreeCornersRaised(slope)) z++;
 						break;
 
-					case FOUNDATION_INCLINED_X:
-					case FOUNDATION_INCLINED_Y:
+					case Foundation::InclinedX:
+					case Foundation::InclinedY:
 						/* sloped track - is it on a steep slope? */
 						if (IsSteepSlope(slope)) z++;
 						break;
 
-					case FOUNDATION_STEEP_LOWER:
+					case Foundation::SteepLower:
 						/* only lower part of steep slope */
 						z++;
 						break;
@@ -2659,7 +2659,7 @@ static void TileLoop_Rail(TileIndex tile)
 						break;
 				}
 
-				half = IsInsideMM(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
+				half = IsNonContinuousFoundation(f);
 			} else {
 				/* is the depot on a non-flat tile? */
 				if (slope != SLOPE_FLAT) z++;

@@ -372,7 +372,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 			ppp_allowed[i].Reset();
 		}
 
-		Foundation foundation = FOUNDATION_NONE;
+		Foundation foundation = Foundation::None;
 
 		/* Station and road crossings are always "flat", so adjust the tileh accordingly */
 		if (IsTileType(neighbour, TileType::Station) || IsTileType(neighbour, TileType::Road)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
