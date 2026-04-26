@@ -582,7 +582,13 @@ static bool RoadVehCheckTrainCrash(RoadVehicle *v)
 		if (!IsLevelCrossingTile(tile)) continue;
 
 		if (HasVehicleNearTileXY(v->x_pos, v->y_pos, 4, [&u](const Vehicle *t) {
-				return t->type == VEH_TRAIN && abs(t->z_pos - u->z_pos) <= 6;
+				if (t->type == VEH_TRAIN && abs(t->z_pos - u->z_pos) <= 6) {
+					/* Cause an immediate breakdown on the train upon colliding with a road vehicle. */
+					Vehicle *w = t->First();
+					if (CanVehicleBreakdown(w)) VehicleBreakdown(w, 0xFF);
+					return true;
+				}
+				return false;
 			})) {
 			RoadVehCrash(v);
 			return true;
