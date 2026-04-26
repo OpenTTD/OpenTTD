@@ -962,7 +962,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 				/* Find out what's the best sub type */
 				uint8_t subtype = GetBestFittingSubType(v, w, v->cargo_type);
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
-					CommandCost cost = std::get<0>(Command<Commands::RefitVehicle>::Do(flags, w->index, v->cargo_type, subtype, false, true, 0));
+					CommandCost cost = std::get<CommandCost>(Command<Commands::RefitVehicle>::Do(flags, w->index, v->cargo_type, subtype, false, true, 0));
 					if (cost.Succeeded()) total_cost.AddCost(cost.GetCost());
 				}
 
