@@ -187,7 +187,7 @@ void ChangeSoundSet(int index)
 		sound->priority = 0;
 	}
 
-	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS, 0, true);
+	InvalidateWindowData(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions, 0, true);
 }
 
 /**

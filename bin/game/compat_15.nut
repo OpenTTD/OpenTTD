@@ -6,3 +6,24 @@
  */
 
 /* This file contains code to downgrade the API from 16 to 15. */
+
+/*
+ * These window/widget related enumerations have never been stable, but breaking anything using them
+ * is a really big ask when restructuring code. If in the future things are removed from the underlying
+ * enumerations, feel free to remove them from this compatibility script.
+ */
+GSWindow.WN_GAME_OPTIONS_AI <- GSWindow.GameOptionsWindowNumber.AI;
+GSWindow.WN_GAME_OPTIONS_GS <- GSWindow.GameOptionsWindowNumber.GS;
+GSWindow.WN_GAME_OPTIONS_ABOUT <- GSWindow.GameOptionsWindowNumber.About;
+GSWindow.WN_GAME_OPTIONS_NEWGRF_STATE <- GSWindow.GameOptionsWindowNumber.NewGRFState;
+GSWindow.WN_GAME_OPTIONS_GAME_OPTIONS <- GSWindow.GameOptionsWindowNumber.GameOptions;
+GSWindow.WN_GAME_OPTIONS_GAME_SETTINGS <- GSWindow.GameOptionsWindowNumber.GameSettings;
+GSWindow.WN_QUERY_STRING <- GSWindow.QueryStringWindowNumber.Default;
+GSWindow.WN_QUERY_STRING_SIGN <- GSWindow.QueryStringWindowNumber.Sign;
+GSWindow.WN_CONFIRM_POPUP_QUERY <- GSWindow.ConfirmPopupQueryWindowNumber.Default;
+GSWindow.WN_CONFIRM_POPUP_QUERY_BOOTSTRAP <- GSWindow.ConfirmPopupQueryWindowNumber.Bootstrap;
+GSWindow.WN_NETWORK_WINDOW_GAME <- GSWindow.NetworkWindowNumber.Game;
+GSWindow.WN_NETWORK_WINDOW_CONTENT_LIST <- GSWindow.NetworkWindowNumber.ContentList;
+GSWindow.WN_NETWORK_WINDOW_START <- GSWindow.NetworkWindowNumber.StartServer;
+GSWindow.WN_NETWORK_STATUS_WINDOW_JOIN <- GSWindow.NetworkStatusWindowNumber.Join;
+GSWindow.WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD <- GSWindow.NetworkStatusWindowNumber.ContentDownload;
