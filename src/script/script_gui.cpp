@@ -186,7 +186,7 @@ struct ScriptListWindow : public Window {
 				}
 			}
 		}
-		InvalidateWindowData(WC_GAME_OPTIONS, this->slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
+		InvalidateWindowData(WC_GAME_OPTIONS, this->slot == OWNER_DEITY ? GameOptionsWindowNumber::GS : GameOptionsWindowNumber::AI);
 		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
 		InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 		CloseWindowByClass(WC_QUERY_STRING);

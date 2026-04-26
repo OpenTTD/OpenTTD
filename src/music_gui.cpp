@@ -175,7 +175,7 @@ void MusicSystem::ChangeMusicSet(const std::string &set_name)
 	this->BuildPlaylists();
 	this->ChangePlaylist(this->selected_playlist);
 
-	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS, 0, true);
+	InvalidateWindowData(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions, 0, true);
 	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0, 1, true);
 	InvalidateWindowData(WC_MUSIC_WINDOW, 0, 1, true);
 }

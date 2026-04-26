@@ -1048,7 +1048,7 @@ void NetworkDisconnect(bool close_admins)
 		}
 	}
 
-	CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	CloseWindowById(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	NetworkClose(close_admins);
 

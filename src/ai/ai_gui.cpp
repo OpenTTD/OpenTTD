@@ -100,7 +100,7 @@ struct AIConfigWindow : public Window {
 
 	AIConfigWindow() : Window(_ai_config_desc)
 	{
-		this->InitNested(WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
+		this->InitNested(GameOptionsWindowNumber::AI); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_AIC_SCROLLBAR);
 		this->selected_slot = CompanyID::Invalid();
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);

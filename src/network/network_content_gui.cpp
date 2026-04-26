@@ -124,7 +124,7 @@ BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(W
 	_network_content_client.AddCallback(this);
 	_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
 
-	this->InitNested(WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
+	this->InitNested(NetworkStatusWindowNumber::ContentDownload);
 }
 
 void BaseNetworkContentDownloadStatusWindow::Close([[maybe_unused]] int data)
@@ -210,7 +210,7 @@ public:
 	 */
 	NetworkContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(_network_content_download_status_window_desc)
 	{
-		this->parent = FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
+		this->parent = FindWindowById(WC_NETWORK_WINDOW, NetworkWindowNumber::ContentList);
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -264,17 +264,17 @@ public:
 
 				case ContentType::BaseGraphics:
 					BaseGraphics::FindSets();
-					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
+					SetWindowDirty(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions);
 					break;
 
 				case ContentType::BaseSounds:
 					BaseSounds::FindSets();
-					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
+					SetWindowDirty(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions);
 					break;
 
 				case ContentType::BaseMusic:
 					BaseMusic::FindSets();
-					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
+					SetWindowDirty(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions);
 					break;
 
 				case ContentType::NewGRF:
@@ -293,7 +293,7 @@ public:
 		}
 
 		/* Always invalidate the download window; tell it we are going to be gone */
-		InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST, 2);
+		InvalidateWindowData(WC_NETWORK_WINDOW, NetworkWindowNumber::ContentList, 2);
 
 		this->BaseNetworkContentDownloadStatusWindow::Close();
 	}
@@ -307,7 +307,7 @@ public:
 			} else {
 				/* If downloading succeeded, close the online content window. This will close
 				 * the current window as well. */
-				CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
+				CloseWindowById(WC_NETWORK_WINDOW, NetworkWindowNumber::ContentList);
 			}
 		}
 	}
@@ -564,7 +564,7 @@ public:
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NCL_SCROLLBAR);
-		this->FinishInitNested(WN_NETWORK_WINDOW_CONTENT_LIST);
+		this->FinishInitNested(NetworkWindowNumber::ContentList);
 
 		this->GetWidget<NWidgetStacked>(WID_NCL_SEL_ALL_UPDATE)->SetDisplayedPlane(select_all);
 
@@ -870,7 +870,7 @@ public:
 				break;
 
 			case WID_NCL_DOWNLOAD:
-				if (BringWindowToFrontById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) == nullptr) new NetworkContentDownloadStatusWindow();
+				if (BringWindowToFrontById(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::ContentDownload) == nullptr) new NetworkContentDownloadStatusWindow();
 				break;
 
 			case WID_NCL_SEARCH_EXTERNAL:
@@ -1005,7 +1005,7 @@ public:
 		}
 
 		/* If data == 2 then the status window caused this OnInvalidate */
-		this->SetWidgetDisabledState(WID_NCL_DOWNLOAD, this->filesize_sum == 0 || (FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) != nullptr && data != 2));
+		this->SetWidgetDisabledState(WID_NCL_DOWNLOAD, this->filesize_sum == 0 || (FindWindowById(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::ContentDownload) != nullptr && data != 2));
 		this->SetWidgetDisabledState(WID_NCL_UNSELECT, this->filesize_sum == 0);
 		this->SetWidgetDisabledState(WID_NCL_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(WID_NCL_SELECT_UPDATE, !show_select_upgrade || !this->filter_data.string_filter.IsEmpty());
@@ -1149,7 +1149,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 		_network_content_client.RequestContentList(cv, true);
 	}
 
-	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
+	CloseWindowById(WC_NETWORK_WINDOW, NetworkWindowNumber::ContentList);
 	new NetworkContentListWindow(_network_content_list_desc, cv != nullptr, types);
 #else
 	ShowErrorMessage(

@@ -201,7 +201,7 @@ public:
 	/** Start listening to the content client events. */
 	BootstrapAskForDownloadWindow() : Window(_bootstrap_query_desc)
 	{
-		this->InitNested(WN_CONFIRM_POPUP_QUERY_BOOTSTRAP);
+		this->InitNested(ConfirmPopupQueryWindowNumber::Bootstrap);
 		_network_content_client.AddCallback(this);
 	}
 
