@@ -279,14 +279,14 @@ static constexpr inline Slope HalftileSlope(Slope s, Corner corner)
 
 
 /**
- * Tests for FOUNDATION_NONE.
+ * Tests whether the given foundation is a foundation.
  *
  * @param f  Maybe a #Foundation.
  * @return   true iff f is a foundation.
  */
 inline bool IsFoundation(Foundation f)
 {
-	return f != FOUNDATION_NONE;
+	return f != Foundation::None;
 }
 
 /**
@@ -297,7 +297,7 @@ inline bool IsFoundation(Foundation f)
  */
 inline bool IsLeveledFoundation(Foundation f)
 {
-	return f == FOUNDATION_LEVELED;
+	return f == Foundation::Leveled;
 }
 
 /**
@@ -308,32 +308,32 @@ inline bool IsLeveledFoundation(Foundation f)
  */
 inline bool IsInclinedFoundation(Foundation f)
 {
-	return (f == FOUNDATION_INCLINED_X) || (f == FOUNDATION_INCLINED_Y);
+	return (f == Foundation::InclinedX) || (f == Foundation::InclinedY);
 }
 
 /**
- * Tests if a foundation is a non-continuous foundation, i.e. halftile-foundation or FOUNDATION_STEEP_BOTH.
+ * Tests if a foundation is a non-continuous foundation, i.e. halftile-foundation or Foundation::SteepBoth.
  *
  * @param f  The #Foundation.
  * @return   true iff f is a non-continuous foundation
  */
 inline bool IsNonContinuousFoundation(Foundation f)
 {
-	return IsInsideMM(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
+	return IsInsideMM(f, Foundation::SteepBoth, Foundation::HalfTileEnd);
 }
 
 /**
  * Returns the halftile corner of a halftile-foundation
  *
- * @pre f != FOUNDATION_STEEP_BOTH
+ * @pre f != Foundation::SteepBoth
  *
  * @param f  The #Foundation.
  * @return   The #Corner with track.
  */
 inline Corner GetHalftileFoundationCorner(Foundation f)
 {
-	assert(IsInsideMM(f, FOUNDATION_HALFTILE_W, FOUNDATION_HALFTILE_N + 1));
-	return (Corner)(f - FOUNDATION_HALFTILE_W);
+	assert(IsInsideMM(f, Foundation::HalfTileW, Foundation::HalfTileEnd));
+	return static_cast<Corner>(to_underlying(f) - to_underlying(Foundation::HalfTileW));
 }
 
 /**
@@ -344,7 +344,7 @@ inline Corner GetHalftileFoundationCorner(Foundation f)
  */
 inline bool IsSpecialRailFoundation(Foundation f)
 {
-	return IsInsideMM(f, FOUNDATION_RAIL_W, FOUNDATION_RAIL_N + 1);
+	return IsInsideMM(f, Foundation::RailW, Foundation::End);
 }
 
 /**
@@ -356,19 +356,17 @@ inline bool IsSpecialRailFoundation(Foundation f)
 inline Corner GetRailFoundationCorner(Foundation f)
 {
 	assert(IsSpecialRailFoundation(f));
-	return (Corner)(f - FOUNDATION_RAIL_W);
+	return static_cast<Corner>(to_underlying(f) - to_underlying(Foundation::RailW));
 }
 
 /**
  * Returns the foundation needed to flatten a slope.
- * The returned foundation is either FOUNDATION_NONE if the tile was already flat, or FOUNDATION_LEVELED.
- *
  * @param s  The current #Slope.
- * @return   The needed #Foundation.
+ * @return Either Foundation::None if the tile was already flat, or Foundation::Leveled.
  */
 inline Foundation FlatteningFoundation(Slope s)
 {
-	return (s == SLOPE_FLAT ? FOUNDATION_NONE : FOUNDATION_LEVELED);
+	return (s == SLOPE_FLAT ? Foundation::None : Foundation::Leveled);
 }
 
 /**
@@ -379,7 +377,7 @@ inline Foundation FlatteningFoundation(Slope s)
  */
 inline Foundation InclinedFoundation(Axis axis)
 {
-	return (axis == AXIS_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
+	return (axis == AXIS_X ? Foundation::InclinedX : Foundation::InclinedY);
 }
 
 /**
@@ -391,7 +389,7 @@ inline Foundation InclinedFoundation(Axis axis)
 inline Foundation HalftileFoundation(Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return static_cast<Foundation>(static_cast<uint>(FOUNDATION_HALFTILE_W) + static_cast<uint>(corner));
+	return static_cast<Foundation>(static_cast<uint>(Foundation::HalfTileW) + static_cast<uint>(corner));
 }
 
 /**
@@ -403,7 +401,7 @@ inline Foundation HalftileFoundation(Corner corner)
 inline Foundation SpecialRailFoundation(Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return static_cast<Foundation>(static_cast<uint>(FOUNDATION_RAIL_W) + static_cast<uint>(corner));
+	return static_cast<Foundation>(static_cast<uint>(Foundation::RailW) + static_cast<uint>(corner));
 }
 
 /**

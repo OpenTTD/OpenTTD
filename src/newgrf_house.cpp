@@ -511,7 +511,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 			if (callback_res != CALLBACK_FAILED) draw_old_one = ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DRAW_FOUNDATIONS, callback_res);
 		}
 
-		if (draw_old_one) DrawFoundation(ti, FOUNDATION_LEVELED);
+		if (draw_old_one) DrawFoundation(ti, Foundation::Leveled);
 	}
 
 	HouseResolverObject object(house_id, ti->tile, Town::GetByTile(ti->tile));

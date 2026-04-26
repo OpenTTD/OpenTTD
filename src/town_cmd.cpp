@@ -278,7 +278,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Retrieve pointer to the draw town tile struct */
 	const DrawBuildingsTileStruct *dcts = &_town_draw_tile_data[house_id << 4 | TileHash2Bit(ti->x, ti->y) << 2 | GetHouseBuildingStage(ti->tile)];
 
-	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
+	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, Foundation::Leveled);
 
 	DrawGroundSprite(dcts->ground.sprite, dcts->ground.pal);
 
@@ -313,7 +313,7 @@ static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 		const HouseSpec *hs = HouseSpec::Get(hid);
 		if (hs->callback_mask.Test(HouseCallbackMask::DrawFoundations)) {
 			uint32_t callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, hid, Town::GetByTile(tile), tile);
-			if (callback_res != CALLBACK_FAILED && !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DRAW_FOUNDATIONS, callback_res)) return FOUNDATION_NONE;
+			if (callback_res != CALLBACK_FAILED && !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DRAW_FOUNDATIONS, callback_res)) return Foundation::None;
 		}
 	}
 	return FlatteningFoundation(tileh);
