@@ -897,7 +897,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_TOWNNAME_DROPDOWN: // Town names
 				if (_game_mode == GM_MENU || Town::GetNumItems() == 0) {
 					_settings_newgame.game_creation.town_name = index;
-					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
+					SetWindowDirty(WC_GAME_OPTIONS, GameOptionsWindowNumber::GameOptions);
 				}
 				break;
 

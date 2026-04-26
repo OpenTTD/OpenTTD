@@ -32,7 +32,7 @@ ${INCLUDES}
  */
 class ScriptWindow : public ScriptObject {
 public:
-	// @enum WindowNumberEnum ../../window_type.h@ENUM_WINDOWNUMBERENUM@
+	// @enum .*WindowNumber ../../window_type.h@ENUM_WINDOWNUMBERENUM@
 	// @endenum
 
 	// @enum WindowClass ../../window_type.h@ENUM_WINDOWCLASS@
