@@ -388,7 +388,7 @@ protected:
 	/** @} */
 
 	uint distance = 0; ///< Sum(distance of all legs up to this one).
-	uint capacity = 0; ///< This capacity is min(capacity) fom all edges.
+	uint capacity = 0; ///< This capacity is min(capacity) of all edges.
 	int free_capacity = 0; ///< This capacity is min(edge.capacity - edge.flow) for the current run of Dijkstra.
 	uint flow = 0; ///< Flow the current run of the mcf solver assigns.
 	NodeID node = INVALID_NODE; ///< Link graph node this leg passes.

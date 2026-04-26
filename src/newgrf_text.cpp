@@ -539,7 +539,7 @@ void AddGRFTextToList(GRFTextWrapper &list, std::string_view text_to_add)
  * @param allow_newlines Whether newlines are allowed in the string.
  * @param text_to_add The actual text of the string.
  * @param def_string The fallback string if a translation for this string isn't available.
- * @return The OpenTTD internal string identifer.
+ * @return The OpenTTD internal string identifier.
  */
 StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
 {

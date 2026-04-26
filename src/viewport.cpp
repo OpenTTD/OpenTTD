@@ -1945,7 +1945,7 @@ static inline void ClampViewportToMap(const Viewport &vp, int *scroll_x, int *sc
 }
 
 /**
- * Clamp the smooth scroll to a maxmimum speed and distance based on time elapsed.
+ * Clamp the smooth scroll to a maximum speed and distance based on time elapsed.
  *
  * Every 30ms, we move 1/4th of the distance, to give a smooth movement experience.
  * But we never go over the max_scroll speed.

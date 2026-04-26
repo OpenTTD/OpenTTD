@@ -95,7 +95,7 @@ struct GSConfigWindow : public Window {
 	bool closing_dropdown = false; ///< True, if the dropdown list is currently closing.
 	int clicked_row = 0; ///< The clicked row of settings.
 	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
-	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
+	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typedef for a vector of script settings
 	VisibleSettingsList visible_settings{}; ///< List of visible GS settings
 
 	GSConfigWindow() : Window(_gs_config_desc)

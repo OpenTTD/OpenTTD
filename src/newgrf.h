@@ -60,7 +60,7 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(GrfLoadingStage)
 enum class GrfMiscBit : uint8_t {
 	DesertTreesFields = 0, ///< Unsupported: allow trees and fields in desert climate.
 	DesertPavedRoads = 1, ///< Show pavement and lights in desert towns
-	FieldBoundingBox = 2, ///< Unsupported: fiels have a height.
+	FieldBoundingBox = 2, ///< Unsupported: fields have a height.
 	TrainWidth32Pixels = 3, ///< Use 32 pixels per train vehicle in depot gui and vehicle details. Never set in the global variable; @see GRFFile::traininfo_vehicle_width
 	AmbientSoundCallback = 4, ///< Enable ambient sound effect callback 144.
 	CatenaryOn3rdTrack = 5, ///< Unsupported: enable catenaries over third track type.

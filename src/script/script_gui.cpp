@@ -295,7 +295,7 @@ struct ScriptSettingsWindow : public Window {
 	int clicked_row = 0; ///< The clicked row of settings.
 	int line_height = 0; ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
-	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
+	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typedef for a vector of script settings
 	VisibleSettingsList visible_settings{}; ///< List of visible AI settings
 
 	/**

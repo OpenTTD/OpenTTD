@@ -529,7 +529,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 					indsp->accepts_cargo[j] = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 					indsp->accepts_cargo_label[j] = CT_INVALID;
 				}
-				buf.ReadByte(); // Unnused, eat it up
+				buf.ReadByte(); // Unused, eat it up
 				break;
 
 			case 0x12: // Production multipliers

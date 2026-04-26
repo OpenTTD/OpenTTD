@@ -494,7 +494,7 @@ struct SpecializedResolverObject : public ResolverObject {
 	/**
 	 * Set waiting triggers for rerandomisation.
 	 * This is scope independent, even though this is broken-by-design in most cases.
-	 * @param triggers The triggers to set wating.
+	 * @param triggers The triggers to set waiting.
 	 */
 	void SetWaitingRandomTriggers(RandomTriggers triggers)
 	{

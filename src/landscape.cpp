@@ -1141,7 +1141,7 @@ static void MakeWetlands(TileIndex centre, uint height, uint river_length)
  * Try to end a river at a tile which is not the sea.
  * @param tile The tile to try ending the river at.
  * @param begin The starting tile of the river.
- * @return Whether we succesfully ended the river on the given tile.
+ * @return Whether we successfully ended the river on the given tile.
  */
 static bool TryMakeRiverTerminus(TileIndex tile, TileIndex begin)
 {
@@ -1364,7 +1364,7 @@ static bool CountConnectedSeaTiles(TileIndex tile, std::unordered_set<TileIndex>
 	 * Count this tile but don't check its neighbors. */
 	if (sea.size() > limit) return false;
 
-	/* Count adjacent tiles using recusion. */
+	/* Count adjacent tiles using recursion. */
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (IsValidTile(t) && !sea.contains(t)) {
