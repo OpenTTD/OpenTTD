@@ -225,7 +225,7 @@ void NetworkDrawChatMessage()
 	int bottom = _screen.height - _chatmsg_box.y - 2;
 	/* Paint a half-transparent box behind the chat messages */
 	GfxFillRect(_chatmsg_box.x, top - 2, _chatmsg_box.x + _chatmsg_box.width - 1, bottom,
-			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR // black, but with some alpha for background
+			PALETTE_TO_TRANSPARENT, FillRectMode::Recolour // black, but with some alpha for background
 		);
 
 	/* Paint the chat messages starting with the lowest at the bottom */

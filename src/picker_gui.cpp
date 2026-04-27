@@ -414,7 +414,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			}
 
 			if (!this->callbacks.IsTypeAvailable(item.class_index, item.index)) {
-				GfxFillRect(ir, GetColourGradient(Colours::Grey, SHADE_DARKER), FILLRECT_CHECKER);
+				GfxFillRect(ir, GetColourGradient(Colours::Grey, SHADE_DARKER), FillRectMode::Checker);
 			}
 			break;
 		}

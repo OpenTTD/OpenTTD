@@ -553,7 +553,7 @@ void TextfileWindow::AfterLoadMarkdown()
 		Rect fr = r.Shrink(WidgetDimensions::scaled.captiontext).WithHeight(WidgetDimensions::scaled.vsep_normal, true);
 		size_t remaining = std::distance(this->reflow_iter, this->reflow_end);
 		fr = fr.WithWidth(static_cast<int>(remaining * fr.Width() / std::size(this->lines)), _current_text_dir != TD_RTL);
-		GfxFillRect(fr, PC_WHITE, FILLRECT_CHECKER);
+		GfxFillRect(fr, PC_WHITE, FillRectMode::Checker);
 	}
 
 	if (widget != WID_TF_BACKGROUND) return;

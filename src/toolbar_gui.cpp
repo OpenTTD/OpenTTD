@@ -1494,7 +1494,7 @@ public:
 		/* Draw brown-red toolbar bg. */
 		const Rect r = this->GetCurrentRect();
 		GfxFillRect(r, PC_VERY_DARK_RED);
-		GfxFillRect(r, PC_DARK_RED, FILLRECT_CHECKER);
+		GfxFillRect(r, PC_DARK_RED, FillRectMode::Checker);
 
 		this->NWidgetContainer::Draw(w);
 	}

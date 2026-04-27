@@ -532,7 +532,7 @@ struct NewsWindow : Window {
 			case WID_N_MGR_FACE: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
 				DrawCompanyManagerFace(cni->face, cni->colour, r);
-				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+				GfxFillRect(r, PALETTE_NEWSPAPER, FillRectMode::Recolour);
 				break;
 			}
 			case WID_N_MGR_NAME: {
@@ -554,7 +554,7 @@ struct NewsWindow : Window {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
 				DrawVehicleEngine(r.left, r.right, CentreBounds(r.left, r.right, 0), CentreBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
-				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+				GfxFillRect(r, PALETTE_NEWSPAPER, FillRectMode::Recolour);
 				break;
 			}
 			case WID_N_VEH_INFO: {
