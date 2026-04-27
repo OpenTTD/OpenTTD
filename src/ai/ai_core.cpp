@@ -40,7 +40,7 @@
 	/* Clients shouldn't start AIs */
 	if (_networking && !_network_server) return;
 
-	Backup<CompanyID> cur_company(_current_company, company);
+	AutoRestoreBackup cur_company(_current_company, company);
 	Company *c = Company::Get(company);
 
 	AIConfig *config = c->ai_config.get();
@@ -65,8 +65,6 @@
 	c->ai_instance->LoadOnStack(config->GetToLoadData());
 	config->SetToLoadData(nullptr);
 
-	cur_company.Restore();
-
 	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 	return;
 }
@@ -81,11 +79,10 @@
 	assert(_settings_game.difficulty.competitor_speed <= 4);
 	if ((AI::frame_counter & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
 
-	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) {
 			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
-			cur_company.Change(c->index);
+			AutoRestoreBackup cur_company(_current_company, c->index);
 			c->ai_instance->GameLoop();
 			/* Occasionally collect garbage; every 255 ticks do one company.
 			 * Effectively collecting garbage once every two months per AI. */
@@ -96,7 +93,6 @@
 			PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + c->index));
 		}
 	}
-	cur_company.Restore();
 }
 
 /* static */ uint AI::GetTick()
@@ -109,14 +105,12 @@
 	if (_networking && !_network_server) return;
 	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
 
-	Backup<CompanyID> cur_company(_current_company, company);
+	AutoRestoreBackup cur_company(_current_company, company);
 	Company *c = Company::Get(company);
 
 	c->ai_instance.reset();
 	c->ai_info = nullptr;
 	c->ai_config.reset();
-
-	cur_company.Restore();
 
 	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 }
@@ -128,28 +122,20 @@
 	 * for the server owner to unpause the script again. */
 	if (_network_dedicated) return;
 
-	Backup<CompanyID> cur_company(_current_company, company);
+	AutoRestoreBackup cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Pause();
-
-	cur_company.Restore();
 }
 
 /* static */ void AI::Unpause(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company);
+	AutoRestoreBackup cur_company(_current_company, company);
 	Company::Get(company)->ai_instance->Unpause();
-
-	cur_company.Restore();
 }
 
 /* static */ bool AI::IsPaused(CompanyID company)
 {
-	Backup<CompanyID> cur_company(_current_company, company);
-	bool paused = Company::Get(company)->ai_instance->IsPaused();
-
-	cur_company.Restore();
-
-	return paused;
+	AutoRestoreBackup cur_company(_current_company, company);
+	return Company::Get(company)->ai_instance->IsPaused();
 }
 
 /* static */ void AI::KillAll()
@@ -247,9 +233,8 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyID> cur_company(_current_company, company);
+	AutoRestoreBackup cur_company(_current_company, company);
 	Company::Get(_current_company)->ai_instance->InsertEvent(event);
-	cur_company.Restore();
 }
 
 /* static */ void AI::BroadcastNewEvent(ScriptEvent *event, CompanyID skip_company)
@@ -275,9 +260,8 @@
 
 		/* When doing emergency saving, an AI can be not fully initialised. */
 		if (c->ai_instance != nullptr) {
-			Backup<CompanyID> cur_company(_current_company, company);
+			AutoRestoreBackup cur_company(_current_company, company);
 			c->ai_instance->Save();
-			cur_company.Restore();
 			return;
 		}
 	}

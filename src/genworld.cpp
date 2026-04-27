@@ -98,7 +98,7 @@ static void CleanupGeneration()
 static void _GenerateWorld()
 {
 	/* Make sure everything is done via OWNER_NONE. */
-	Backup<CompanyID> _cur_company(_current_company, OWNER_NONE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 	try {
 		_generating_world = true;
@@ -198,7 +198,7 @@ static void _GenerateWorld()
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 
 		ResetObjectToPlace();
-		_cur_company.Trash();
+		cur_company.Trash();
 		_current_company = _local_company = GenWorldInfo::lc;
 		/* Show all vital windows again, because we have hidden them. */
 		if (_game_mode != GM_MENU) ShowVitalWindows();
@@ -223,7 +223,7 @@ static void _GenerateWorld()
 		CleanupGeneration();
 
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP, true);
-		if (_cur_company.IsValid()) _cur_company.Restore();
+		if (cur_company.IsValid()) cur_company.Restore();
 
 		if (_network_dedicated) {
 			/* Exit the game to prevent a return to main menu.  */

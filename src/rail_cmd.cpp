@@ -773,10 +773,10 @@ bool FloodHalftile(TileIndex t)
 
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != TRACK_BIT_NONE) {
-			Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
+			AutoRestoreBackup cur_company(_current_company, OWNER_WATER);
 			flooded = Command<Commands::RemoveRail>::Do(DoCommandFlag::Execute, t, FindFirstTrack(to_remove)).Succeeded();
-			cur_company.Restore();
 			if (!flooded) return flooded; // not yet floodable
+
 			rail_bits = rail_bits & ~to_remove;
 			if (rail_bits == TRACK_BIT_NONE) {
 				MakeShore(t);

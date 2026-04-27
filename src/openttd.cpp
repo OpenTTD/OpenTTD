@@ -1252,7 +1252,7 @@ void StateGameLoop()
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
-		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+		AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
@@ -1277,7 +1277,6 @@ void StateGameLoop()
 
 		CallWindowGameTickEvent();
 		NewsLoop();
-		cur_company.Restore();
 	}
 
 	assert(IsLocalCompany());
