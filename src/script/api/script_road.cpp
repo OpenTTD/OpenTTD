@@ -321,7 +321,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 		for (int j = 0; j < base_rotate; j++) {
 			neighbour = RotateNeighbour(neighbour);
 		}
-		existing_roadbits |= NeighbourToRoadBits(neighbour);
+		existing_roadbits.Set(NeighbourToRoadBits(neighbour));
 	}
 
 	switch (slope) {
