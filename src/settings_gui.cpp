@@ -1892,10 +1892,10 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 	/* Grey out the buttons that aren't clickable */
 	bool rtl = _current_text_dir == TD_RTL;
 	if (rtl ? !clickable_right : !clickable_left) {
-		GfxFillRect(lr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
+		GfxFillRect(lr.Shrink(WidgetDimensions::scaled.bevel), colour, FillRectMode::Checker);
 	}
 	if (rtl ? !clickable_left : !clickable_right) {
-		GfxFillRect(rr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
+		GfxFillRect(rr.Shrink(WidgetDimensions::scaled.bevel), colour, FillRectMode::Checker);
 	}
 }
 
@@ -1922,8 +1922,8 @@ void DrawUpDownButtons(int x, int y, Colours button_colour, uint8_t state, bool 
 	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, dr, SA_CENTER);
 
 	/* Grey out the buttons that aren't clickable */
-	if (!clickable_up) GfxFillRect(ur.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
-	if (!clickable_down) GfxFillRect(dr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
+	if (!clickable_up) GfxFillRect(ur.Shrink(WidgetDimensions::scaled.bevel), colour, FillRectMode::Checker);
+	if (!clickable_down) GfxFillRect(dr.Shrink(WidgetDimensions::scaled.bevel), colour, FillRectMode::Checker);
 }
 
 /**
@@ -1944,7 +1944,7 @@ void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool cl
 	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, r, SA_CENTER);
 
 	if (!clickable) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), colour, FillRectMode::Checker);
 	}
 }
 
@@ -1962,13 +1962,13 @@ void DrawBoolButton(int x, int y, Colours button_colour, Colours background, boo
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 	DrawFrameRect(r, state ? Colours::Green : background, state ? FrameFlags{FrameFlag::Lowered} : FrameFlags{FrameFlag::Lowered, FrameFlag::BorderOnly});
 	if (!clickable) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(state ? Colours::Green : background, SHADE_DARKER), FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(state ? Colours::Green : background, SHADE_DARKER), FillRectMode::Checker);
 	}
 
 	Rect button_rect = r.WithWidth(SETTING_BUTTON_WIDTH / 3, state ^ (_current_text_dir == TD_RTL));
 	DrawFrameRect(button_rect, button_colour, {});
 	if (!clickable) {
-		GfxFillRect(button_rect.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button_colour, SHADE_DARKER), FILLRECT_CHECKER);
+		GfxFillRect(button_rect.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button_colour, SHADE_DARKER), FillRectMode::Checker);
 	}
 }
 

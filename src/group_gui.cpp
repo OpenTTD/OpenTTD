@@ -708,7 +708,7 @@ public:
 					for (auto it = first; it != last; ++it) {
 						const Vehicle *v = it->GetSingleVehicle();
 						if (v->group_id != this->vli.ToGroupID()) {
-							GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Grey, SHADE_DARK), FILLRECT_CHECKER);
+							GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Grey, SHADE_DARK), FillRectMode::Checker);
 						}
 						mr = mr.Translate(0, this->resize.step_height);
 					}

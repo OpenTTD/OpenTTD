@@ -76,7 +76,7 @@ public:
 	 */
 	virtual void Draw(const Rect &full, [[maybe_unused]] const Rect &r, [[maybe_unused]] bool sel, [[maybe_unused]] int click_result, Colours bg_colour) const
 	{
-		if (this->masked) GfxFillRect(full, GetColourGradient(bg_colour, SHADE_LIGHT), FILLRECT_CHECKER);
+		if (this->masked) GfxFillRect(full, GetColourGradient(bg_colour, SHADE_LIGHT), FillRectMode::Checker);
 	}
 
 	/**

@@ -50,7 +50,7 @@ struct EndGameHighScoreBaseWindow : Window {
 		this->DrawWidgets();
 
 		/* Fill with the appropriate background colour instead of leaving default window colour */
-		GfxFillRect(Rect{0, 0, this->width, this->height}, PixelColour{105}, FILLRECT_OPAQUE);
+		GfxFillRect(Rect{0, 0, this->width, this->height}, PixelColour{105}, FillRectMode::Opaque);
 
 		/* Standard background slices are 50 pixels high, but it's designed
 		 * for 480 pixels total. 96% of 500 is 480. */

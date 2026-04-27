@@ -104,8 +104,8 @@ bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, s
 
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour);
 
-void GfxFillRect(int left, int top, int right, int bottom, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FILLRECT_OPAQUE);
-void GfxFillPolygon(std::span<const Point> shape, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FILLRECT_OPAQUE);
+void GfxFillRect(int left, int top, int right, int bottom, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FillRectMode::Opaque);
+void GfxFillPolygon(std::span<const Point> shape, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FillRectMode::Opaque);
 void GfxDrawLine(int left, int top, int right, int bottom, PixelColour colour, int width = 1, int dash = 0);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 void DrawRectOutline(const Rect &r, PixelColour colour, int width = 1, int dash = 0);
@@ -174,7 +174,18 @@ inline bool DrawStringMultiLineWithClipping(const Rect &r, std::string_view str,
 	return DrawStringMultiLineWithClipping(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }
 
-inline void GfxFillRect(const Rect &r, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FILLRECT_OPAQUE)
+/**
+ * Applies a certain FillRectMode-operation to a rectangle [left, right] x [top, bottom] on the screen.
+ *
+ * @pre dpi->zoom == ZoomLevel::Min, right >= left, bottom >= top
+ * @param r The rectangle to fill.
+ * @param colour A 8 bit palette index (FillRectMode::Opaque and FillRectMode::Checker) or a recolour spritenumber (FillRectMode::Recolour)
+ * @param mode
+ *         FillRectMode::Opaque: Fill the rectangle with the specified colour
+ *         FillRectMode::Checker: Like FillRectMode::Opaque, but only draw every second pixel (used to grey out things)
+ *         FillRectMode::Recolour: Apply a recolour sprite to every pixel in the rectangle currently on screen
+ */
+inline void GfxFillRect(const Rect &r, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode = FillRectMode::Opaque)
 {
 	GfxFillRect(r.left, r.top, r.right, r.bottom, colour, mode);
 }

@@ -60,8 +60,8 @@ public:
 
 	void DrawWidget(const Rect &r, WidgetID) const override
 	{
-		GfxFillRect(r, PixelColour{4}, FILLRECT_OPAQUE);
-		GfxFillRect(r, PixelColour{0}, FILLRECT_CHECKER);
+		GfxFillRect(r, PixelColour{4}, FillRectMode::Opaque);
+		GfxFillRect(r, PixelColour{0}, FillRectMode::Checker);
 	}
 };
 

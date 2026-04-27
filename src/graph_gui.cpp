@@ -725,7 +725,7 @@ public:
 					DrawString(text, str, (this->highlight_state && this->highlight_range == index) ? TC_WHITE : TC_BLACK, SA_CENTER, false, FontSize::Small);
 
 					if (HasBit(this->masked_range, index)) {
-						GfxFillRect(line.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Brown, SHADE_DARKER), FILLRECT_CHECKER);
+						GfxFillRect(line.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Brown, SHADE_DARKER), FillRectMode::Checker);
 					}
 
 					line = line.Translate(0, line_height);

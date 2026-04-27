@@ -398,7 +398,7 @@ public:
 				for (auto it = first; it != last; ++it) {
 					const AirportSpec *as = *it;
 					if (!as->IsAvailable()) {
-						GfxFillRect(row, PC_BLACK, FILLRECT_CHECKER);
+						GfxFillRect(row, PC_BLACK, FillRectMode::Checker);
 					}
 					DrawString(text, as->name, (static_cast<int>(as->index) == _selected_airport_index) ? TC_WHITE : TC_BLACK);
 					row = row.Translate(0, this->line_height);
