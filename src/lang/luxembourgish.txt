@@ -1083,7 +1083,7 @@ STR_GAME_OPTIONS_INTERFACE                                      :Interface
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interfacegréisst
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :De Slider zéien fir d'Gréisst vum Interface ze änneren. Ctrl+Zéien fir eng kontinuéierlech Ännerung
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Gréisst autom. erkennen
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Klick dës Optioun fir d'Interfacegréisst automatesch anzestellen
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Uschalte fir d'Interfacegréisst automatesch anzestellen
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Bevels skaléiren
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Uschalten fir d'Bevels mat der Gréisst vum Interface ze skaléiren
@@ -1351,6 +1351,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Héich
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessiounen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wann ugeschalt kann vun Zäit zur Zäit eng Rezessioun kommen. Während enger Rezessioun ass d'Produktioun däitlech méi niddreg (an klëmmt erëm op den alen Niveau no der Rezessioun)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Zich erlabe sech emzedréine beim no hanne fueren: {STRING}
 
 ###length 3
 
