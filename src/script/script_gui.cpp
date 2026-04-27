@@ -124,14 +124,14 @@ struct ScriptListWindow : public Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.matrix);
 				/* First AI in the list is hardcoded to random */
 				if (this->vscroll->IsVisible(0)) {
-					DrawString(tr, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
+					DrawString(tr, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TextColour::White : TextColour::Orange);
 					tr.top += this->line_height;
 				}
 				int i = 0;
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->vscroll->IsVisible(i)) {
-						DrawString(tr, this->show_all ? GetString(STR_AI_CONFIG_NAME_VERSION, item.second->GetName(), item.second->GetVersion()) : item.second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						DrawString(tr, this->show_all ? GetString(STR_AI_CONFIG_NAME_VERSION, item.second->GetName(), item.second->GetVersion()) : item.second->GetName(), (this->selected == i - 1) ? TextColour::White : TextColour::Orange);
 						tr.top += this->line_height;
 					}
 				}
@@ -155,7 +155,7 @@ struct ScriptListWindow : public Window {
 						DrawString(tr, GetString(STR_AI_LIST_URL, selected_info->GetURL()));
 						tr.top += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 					}
-					DrawStringMultiLine(tr, selected_info->GetDescription(), TC_WHITE);
+					DrawStringMultiLine(tr, selected_info->GetDescription(), TextColour::White);
 				}
 				break;
 			}
@@ -882,19 +882,19 @@ struct ScriptDebugWindow : public Window {
 
 			TextColour colour;
 			switch (line.type) {
-				case ScriptLogTypes::LOG_SQ_INFO:  colour = TC_BLACK;  break;
-				case ScriptLogTypes::LOG_SQ_ERROR: colour = TC_WHITE;  break;
-				case ScriptLogTypes::LOG_INFO:     colour = TC_BLACK;  break;
-				case ScriptLogTypes::LOG_WARNING:  colour = TC_YELLOW; break;
-				case ScriptLogTypes::LOG_ERROR:    colour = TC_RED;    break;
-				default:                           colour = TC_BLACK;  break;
+				case ScriptLogTypes::LOG_SQ_INFO: colour = TextColour::Black; break;
+				case ScriptLogTypes::LOG_SQ_ERROR: colour = TextColour::White; break;
+				case ScriptLogTypes::LOG_INFO: colour = TextColour::Black; break;
+				case ScriptLogTypes::LOG_WARNING: colour = TextColour::Yellow; break;
+				case ScriptLogTypes::LOG_ERROR: colour = TextColour::Red; break;
+				default: colour = TextColour::Black; break;
 			}
 
 			/* Check if the current line should be highlighted */
 			if (std::distance(std::begin(log), it) == this->highlight_row) {
 				fr.bottom = fr.top + this->resize.step_height - 1;
 				GfxFillRect(fr, PC_BLACK);
-				if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.
+				if (colour == TextColour::Black) colour = TextColour::White; // Make black text readable by inverting it to white.
 			}
 
 			DrawString(fr, line.text, colour, SA_LEFT | SA_FORCE);

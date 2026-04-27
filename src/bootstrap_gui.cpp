@@ -110,7 +110,7 @@ public:
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_BEM_MESSAGE) {
-			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_ERROR, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_ERROR, TextColour::FromString, SA_CENTER);
 		}
 	}
 
@@ -239,7 +239,7 @@ public:
 	{
 		if (widget != WID_BAFD_QUESTION) return;
 
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_SET_MESSAGE, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_SET_MESSAGE, TextColour::FromString, SA_CENTER);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

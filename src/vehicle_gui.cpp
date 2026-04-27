@@ -739,7 +739,7 @@ static void DrawVehicleRefitWindow(const RefitOptions &refits, const RefitOption
 				}
 			}
 
-			TextColour colour = (sel != nullptr && sel->cargo == refit.cargo && sel->subtype == refit.subtype) ? TC_WHITE : TC_BLACK;
+			TextColour colour = (sel != nullptr && sel->cargo == refit.cargo && sel->subtype == refit.subtype) ? TextColour::White : TextColour::Black;
 			/* Get the cargo name. */
 			DrawString(tr, GetString(STR_JUST_STRING_STRING, CargoSpec::Get(refit.cargo)->name, refit.string), colour);
 
@@ -1686,10 +1686,10 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uin
 	VehicleOrderID oid = start;
 
 	do {
-		if (oid == v->cur_real_order_index) DrawString(left, right, y, rtl ? STR_JUST_LEFT_ARROW : STR_JUST_RIGHT_ARROW, TC_BLACK, SA_LEFT, false, FontSize::Small);
+		if (oid == v->cur_real_order_index) DrawString(left, right, y, rtl ? STR_JUST_LEFT_ARROW : STR_JUST_RIGHT_ARROW, TextColour::Black, SA_LEFT, false, FontSize::Small);
 
 		if (orders[oid].IsType(OT_GOTO_STATION)) {
-			DrawString(left + l_offset, right - r_offset, y, GetString(STR_STATION_NAME, orders[oid].GetDestination()), TC_BLACK, SA_LEFT, false, FontSize::Small);
+			DrawString(left + l_offset, right - r_offset, y, GetString(STR_STATION_NAME, orders[oid].GetDestination()), TextColour::Black, SA_LEFT, false, FontSize::Small);
 
 			y += GetCharacterHeight(FontSize::Small);
 			if (++i == 4) break;
@@ -1718,7 +1718,7 @@ static void DrawSmallOrderList(const OrderList *orderlist, int left, int right, 
 
 	for (const Order &order : orderlist->GetOrders()) {
 		if (order.IsType(OT_GOTO_STATION)) {
-			DrawString(left + l_offset, right - r_offset, y, GetString(STR_STATION_NAME, order.GetDestination()), TC_BLACK, SA_LEFT, false, FontSize::Small);
+			DrawString(left + l_offset, right - r_offset, y, GetString(STR_STATION_NAME, order.GetDestination()), TextColour::Black, SA_LEFT, false, FontSize::Small);
 
 			y += GetCharacterHeight(FontSize::Small);
 			if (++i == 4) break;
@@ -1833,31 +1833,31 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 						/* The vehicle got a name so we will print it and the cargoes */
 						DrawString(tr.left, tr.right, ir.top,
 								GetString(STR_VEHICLE_LIST_NAME_AND_CARGO, STR_VEHICLE_NAME, v->index, STR_VEHICLE_LIST_CARGO, vehicle_cargoes),
-								TC_BLACK, SA_LEFT, false, FontSize::Small);
+								TextColour::Black, SA_LEFT, false, FontSize::Small);
 					} else if (v->group_id != DEFAULT_GROUP) {
 						/* The vehicle has no name, but is member of a group, so print group name and the cargoes */
 						DrawString(tr.left, tr.right, ir.top,
 								GetString(STR_VEHICLE_LIST_NAME_AND_CARGO, STR_GROUP_NAME, v->group_id, STR_VEHICLE_LIST_CARGO, vehicle_cargoes),
-								TC_BLACK, SA_LEFT, false, FontSize::Small);
+								TextColour::Black, SA_LEFT, false, FontSize::Small);
 					} else {
 						/* The vehicle has no name, and is not a member of a group, so just print the cargoes */
-						DrawString(tr.left, tr.right, ir.top, GetString(STR_VEHICLE_LIST_CARGO, vehicle_cargoes), TC_BLACK, SA_LEFT, false, FontSize::Small);
+						DrawString(tr.left, tr.right, ir.top, GetString(STR_VEHICLE_LIST_CARGO, vehicle_cargoes), TextColour::Black, SA_LEFT, false, FontSize::Small);
 					}
 				} else if (!v->name.empty()) {
 					/* The vehicle got a name so we will print it */
-					DrawString(tr.left, tr.right, ir.top, GetString(STR_VEHICLE_NAME, v->index), TC_BLACK, SA_LEFT, false, FontSize::Small);
+					DrawString(tr.left, tr.right, ir.top, GetString(STR_VEHICLE_NAME, v->index), TextColour::Black, SA_LEFT, false, FontSize::Small);
 				} else if (v->group_id != DEFAULT_GROUP) {
 					/* The vehicle has no name, but is member of a group, so print group name */
-					DrawString(tr.left, tr.right, ir.top, GetString(STR_GROUP_NAME, v->group_id), TC_BLACK, SA_LEFT, false, FontSize::Small);
+					DrawString(tr.left, tr.right, ir.top, GetString(STR_GROUP_NAME, v->group_id), TextColour::Black, SA_LEFT, false, FontSize::Small);
 				}
 
 				if (show_orderlist) DrawSmallOrderList(v, olr.left, olr.right, ir.top + GetCharacterHeight(FontSize::Small), this->order_arrow_width, v->cur_real_order_index);
 
 				TextColour tc;
 				if (v->IsChainInDepot()) {
-					tc = TC_BLUE;
+					tc = TextColour::Blue;
 				} else {
-					tc = (v->age > v->max_age - CalendarTime::DAYS_IN_LEAP_YEAR) ? TC_RED : TC_BLACK;
+					tc = (v->age > v->max_age - CalendarTime::DAYS_IN_LEAP_YEAR) ? TextColour::Red : TextColour::Black;
 				}
 
 				DrawString(ir.left, ir.right, ir.top + WidgetDimensions::scaled.framerect.top, GetString(STR_JUST_COMMA, v->unitnumber), tc);
@@ -1874,7 +1874,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 				if (show_orderlist) DrawSmallOrderList(vehgroup.vehicles_begin[0]->orders, olr.left, olr.right, ir.top + GetCharacterHeight(FontSize::Small), this->order_arrow_width);
 
-				DrawString(ir.left, ir.right, ir.top + WidgetDimensions::scaled.framerect.top, GetString(STR_JUST_COMMA, vehgroup.NumVehicles()), TC_BLACK);
+				DrawString(ir.left, ir.right, ir.top + WidgetDimensions::scaled.framerect.top, GetString(STR_JUST_COMMA, vehgroup.NumVehicles()), TextColour::Black);
 				break;
 
 			default:
@@ -3180,9 +3180,15 @@ public:
 		return GetString(STR_VEHICLE_VIEW_CAPTION, v->index);
 	}
 
-	std::string GetVehicleStatusString(const Vehicle *v, TextColour &text_colour) const
+	/**
+	 * Get the status of the vehicle.
+	 * @param v The vehicle to check.
+	 * @param[out] text_colour The text colour.
+	 * @return The status as string.
+	 */
+	std::string GetVehicleStatusString(const Vehicle *v, ExtendedTextColour &text_colour) const
 	{
-		text_colour = TC_BLACK;
+		text_colour = TextColour::Black;
 
 		if (v->vehstatus.Test(VehState::Crashed)) return GetString(STR_VEHICLE_STATUS_CRASHED);
 
@@ -3204,9 +3210,9 @@ public:
 		/* Vehicle is in a "normal" state, show current order. */
 		if (mouse_over_start_stop) {
 			if (v->vehstatus.Test(VehState::Stopped)) {
-				text_colour = TC_RED | TC_FORCED;
+				text_colour = ExtendedTextColour{TextColour::Red, ExtendedTextColourFlag::Forced};
 			} else if (v->type == VehicleType::Train && Train::From(v)->flags.Test(VehicleRailFlag::Stuck) && !v->current_order.IsType(OT_LOADING)) {
-				text_colour = TC_ORANGE | TC_FORCED;
+				text_colour = ExtendedTextColour{TextColour::Orange, ExtendedTextColourFlag::Forced};
 			}
 		}
 
@@ -3274,7 +3280,7 @@ public:
 
 		tr = tr.Indent(icon_width + WidgetDimensions::scaled.imgbtn.Horizontal(), rtl);
 
-		TextColour text_colour = TC_FROMSTRING;
+		ExtendedTextColour text_colour{TextColour::FromString};
 		std::string str = GetVehicleStatusString(v, text_colour);
 		DrawString(tr.left, tr.right, CentreBounds(tr.top, tr.bottom, GetCharacterHeight(FontSize::Normal)), str, text_colour, SA_HOR_CENTER);
 	}

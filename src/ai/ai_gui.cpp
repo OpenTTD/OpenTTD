@@ -181,10 +181,10 @@ struct AIConfigWindow : public Window {
 	 */
 	TextColour GetSlotColour(CompanyID cid, CompanyID max_slot) const
 	{
-		if (this->selected_slot == cid) return TC_WHITE;
-		if (IsEditable(cid)) return cid < max_slot ? TC_ORANGE : TC_SILVER;
-		if (Company::IsValidAiID(cid)) return TC_GREEN;
-		return TC_SILVER;
+		if (this->selected_slot == cid) return TextColour::White;
+		if (IsEditable(cid)) return cid < max_slot ? TextColour::Orange : TextColour::Silver;
+		if (Company::IsValidAiID(cid)) return TextColour::Green;
+		return TextColour::Silver;
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

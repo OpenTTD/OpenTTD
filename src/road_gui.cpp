@@ -958,7 +958,7 @@ struct BuildRoadToolbarWindow : Window {
 static constexpr std::initializer_list<NWidgetPart> _nested_build_road_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
-		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TextColour::White),
 		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -1006,7 +1006,7 @@ static WindowDesc _build_road_desc(
 static constexpr std::initializer_list<NWidgetPart> _nested_build_tramway_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
-		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TextColour::White),
 		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -1071,7 +1071,7 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 static constexpr std::initializer_list<NWidgetPart> _nested_build_road_scen_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
-		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TextColour::White),
 		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -1111,7 +1111,7 @@ static WindowDesc _build_road_scen_desc(
 static constexpr std::initializer_list<NWidgetPart> _nested_build_tramway_scen_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
-		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_ROT_CAPTION), SetTextStyle(TextColour::White),
 		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),

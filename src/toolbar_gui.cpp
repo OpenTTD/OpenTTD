@@ -2394,10 +2394,10 @@ struct ScenarioEditorToolbarWindow : Window {
 			case WID_TE_SPACER: {
 				int height = r.Height();
 				if (height > 2 * GetCharacterHeight(FontSize::Normal)) {
-					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FontSize::Normal), STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
-					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FontSize::Normal), STR_SCENEDIT_TOOLBAR_OPENTTD, TextColour::FromString, SA_HOR_CENTER);
+					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TextColour::FromString, SA_HOR_CENTER);
 				} else {
-					DrawString(r.left, r.right, (height - GetCharacterHeight(FontSize::Normal)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, (height - GetCharacterHeight(FontSize::Normal)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TextColour::FromString, SA_HOR_CENTER);
 				}
 				break;
 			}
@@ -2567,7 +2567,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolb_scen_inner_wid
 	NWidget(WWT_PANEL, Colours::Grey, WID_TE_DATE_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 2, 2), SetPadding(1),
 			NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_DATE_BACKWARD), SetSpriteTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP), SetFill(0, 1),
-			NWidget(WWT_TEXT, Colours::Invalid, WID_TE_DATE), SetToolTip(STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP), SetTextStyle(TC_WHITE), SetAlignment(SA_CENTER), SetFill(0, 1),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_TE_DATE), SetToolTip(STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP), SetTextStyle(TextColour::White), SetAlignment(SA_CENTER), SetFill(0, 1),
 			NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_DATE_FORWARD), SetSpriteTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP), SetFill(0, 1),
 		EndContainer(),
 	EndContainer(),

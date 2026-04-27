@@ -51,7 +51,7 @@ protected:
 		int num_lines = 1; ///< Number of visual lines for this line.
 		int wrapped_width = 0;
 		int max_width = -1;
-		TextColour colour = TC_WHITE; ///< Colour to render text line in.
+		TextColour colour = TextColour::White; ///< Colour to render text line in.
 		std::string text{};           ///< Contents of the line.
 
 		Line(std::string_view text) : text(text) {}
