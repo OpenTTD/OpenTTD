@@ -450,7 +450,7 @@ public:
 					str = GetString(STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
 				}
 
-				DrawString(r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect), std::move(str), TC_BLACK, SA_HOR_CENTER);
+				DrawString(r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect), std::move(str), TextColour::Black, SA_HOR_CENTER);
 				break;
 			}
 

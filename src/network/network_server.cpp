@@ -741,7 +741,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
  * @param msg The actual message.
  * @return The new state the network.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(std::string_view source, ExtendedTextColour colour, std::string_view user, std::string_view msg)
 {
 	Debug(net, 9, "client[{}] SendExternalChat(): source={}", this->client_id, source);
 
@@ -750,7 +750,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(std::string_v
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerExternalChat);
 
 	p->Send_string(source);
-	p->Send_uint16(colour);
+	p->Send_uint16(colour.ToNetwork());
 	p->Send_string(user);
 	p->Send_string(msg);
 
@@ -1422,7 +1422,7 @@ void NetworkServerSendChat(NetworkAction action, NetworkChatDestinationType dest
  * @param user Name of the user who sent the message.
  * @param msg The actual message.
  */
-void NetworkServerSendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg)
+void NetworkServerSendExternalChat(std::string_view source, ExtendedTextColour colour, std::string_view user, std::string_view msg)
 {
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) cs->SendExternalChat(source, colour, user, msg);
@@ -2076,9 +2076,9 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
  * @param colour_code The colour of the text.
  * @param string The actual reply.
  */
-void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, std::string_view string)
+void NetworkServerSendRcon(ClientID client_id, ExtendedTextColour colour_code, std::string_view string)
 {
-	NetworkClientSocket::GetByClientID(client_id)->SendRConResult(colour_code, string);
+	NetworkClientSocket::GetByClientID(client_id)->SendRConResult(colour_code.ToNetwork(), string);
 }
 
 /**

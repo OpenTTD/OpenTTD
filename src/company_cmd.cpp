@@ -154,10 +154,10 @@ void SetLocalCompany(CompanyID new_company)
  * @param company Company to get the colour of.
  * @return Colour of \a company.
  */
-TextColour GetDrawStringCompanyColour(CompanyID company)
+ExtendedTextColour GetDrawStringCompanyColour(CompanyID company)
 {
-	if (!Company::IsValidID(company)) return GetColourGradient(Colours::White, SHADE_NORMAL).ToTextColour();
-	return GetColourGradient(_company_colours[company], SHADE_NORMAL).ToTextColour();
+	if (!Company::IsValidID(company)) return ExtendedTextColour{GetColourGradient(Colours::White, SHADE_NORMAL)};
+	return ExtendedTextColour{GetColourGradient(_company_colours[company], SHADE_NORMAL)};
 }
 
 /**

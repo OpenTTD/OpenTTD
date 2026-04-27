@@ -236,7 +236,7 @@ void Window::DisableAllWidgetHighlight()
 	for (auto &pair : this->widget_lookup) {
 		NWidgetBase *nwid = pair.second;
 		if (nwid->IsHighlighted()) {
-			nwid->SetHighlighted(TC_INVALID);
+			nwid->SetHighlighted(TextColour::Invalid);
 			nwid->SetDirty(this);
 		}
 	}
@@ -247,7 +247,7 @@ void Window::DisableAllWidgetHighlight()
 /**
  * Sets the highlighted status of a widget.
  * @param widget_index index of this widget in the window
- * @param highlighted_colour Colour of highlight, or TC_INVALID to disable.
+ * @param highlighted_colour Colour of highlight, or TextColour::Invalid to disable.
  */
 void Window::SetWidgetHighlight(WidgetID widget_index, TextColour highlighted_colour)
 {
@@ -257,7 +257,7 @@ void Window::SetWidgetHighlight(WidgetID widget_index, TextColour highlighted_co
 	nwid->SetHighlighted(highlighted_colour);
 	nwid->SetDirty(this);
 
-	if (highlighted_colour != TC_INVALID) {
+	if (highlighted_colour != TextColour::Invalid) {
 		/* If we set a highlight, the window has a highlight */
 		this->flags.Set(WindowFlag::Highlighted);
 	} else {
@@ -759,7 +759,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 
 	/* Check if the widget is highlighted; if so, disable highlight and dispatch an event to the GameScript */
 	if (w->IsWidgetHighlighted(widget_index)) {
-		w->SetWidgetHighlight(widget_index, TC_INVALID);
+		w->SetWidgetHighlight(widget_index, TextColour::Invalid);
 		Game::NewEvent(new ScriptEventWindowWidgetClick((ScriptWindow::WindowClass)w->window_class, w->window_number, widget_index));
 	}
 

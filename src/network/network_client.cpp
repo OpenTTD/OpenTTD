@@ -1034,7 +1034,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerExternalChat(Pack
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
-	TextColour colour = (TextColour)p.Recv_uint16();
+	ExtendedTextColour colour = ExtendedTextColour::FromNetwork(p.Recv_uint16());
 	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 
@@ -1146,12 +1146,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerRemoteConsoleComm
 
 	Debug(net, 9, "Client::ReceiveServerRemoteConsoleCommand()");
 
-	TextColour colour_code = (TextColour)p.Recv_uint16();
-	if (!IsValidConsoleColour(colour_code)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	ExtendedTextColour colour = ExtendedTextColour::FromNetwork(p.Recv_uint16());
+	if (!IsValidConsoleColour(colour)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	std::string rcon_out = p.Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
-	IConsolePrint(colour_code, rcon_out);
+	IConsolePrint(colour, rcon_out);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

@@ -75,12 +75,12 @@ public:
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.frametext);
 		for (size_t i = 0; i < this->landinfo_data.size(); i++) {
-			DrawString(ir, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING, SA_HOR_CENTER);
+			DrawString(ir, this->landinfo_data[i], i == 0 ? TextColour::LightBlue : TextColour::FromString, SA_HOR_CENTER);
 			ir.top += GetCharacterHeight(FontSize::Normal) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
 		}
 
 		if (!this->cargo_acceptance.empty()) {
-			DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, this->cargo_acceptance), TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, this->cargo_acceptance), TextColour::FromString, SA_CENTER);
 		}
 	}
 
@@ -454,7 +454,7 @@ struct AboutWindow : public Window {
 		/* Show all scrolling _credits */
 		for (const auto &str : _credits) {
 			if (y >= r.top + 7 && y < r.bottom - this->line_height) {
-				DrawString(r.left, r.right, y, str, TC_BLACK, SA_LEFT | SA_FORCE);
+				DrawString(r.left, r.right, y, str, TextColour::Black, SA_LEFT | SA_FORCE);
 			}
 			y += this->line_height;
 		}
@@ -654,7 +654,7 @@ struct TooltipsWindow : public Window
 		GfxFillRect(r, PC_BLACK);
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_LIGHT_YELLOW);
 
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect).Shrink(WidgetDimensions::scaled.fullbevel), this->text.GetDecodedString(), TC_BLACK, SA_CENTER);
+		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect).Shrink(WidgetDimensions::scaled.fullbevel), this->text.GetDecodedString(), TextColour::Black, SA_CENTER);
 	}
 
 	void OnMouseLoop() override
@@ -769,14 +769,14 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 	/* If we have a marked area, draw a background highlight. */
 	if (tb->marklength != 0) GfxFillRect(fr.left + tb->markxoffs, fr.top, fr.left + tb->markxoffs + tb->marklength - 1, fr.bottom, PC_GREY);
 
-	DrawString(fr.left, fr.right, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), tb->GetText(), TC_YELLOW);
+	DrawString(fr.left, fr.right, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), tb->GetText(), TextColour::Yellow);
 	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
 	if (focussed && tb->caret) {
 		int caret_width = GetCaretWidth();
 		if (rtl) {
-			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), "_", TC_WHITE);
+			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), "_", TextColour::White);
 		} else {
-			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), "_", TC_WHITE);
+			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FontSize::Normal)), "_", TextColour::White);
 		}
 	}
 }
@@ -1025,7 +1025,7 @@ struct QueryStringWindow : public Window
 static constexpr std::initializer_list<NWidgetPart> _nested_query_string_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::Grey),
-		NWidget(WWT_CAPTION, Colours::Grey, WID_QS_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_QS_CAPTION), SetTextStyle(TextColour::White),
 	EndContainer(),
 	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(WWT_EDITBOX, Colours::Grey, WID_QS_TEXT), SetMinimalSize(256, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
@@ -1130,7 +1130,7 @@ struct QueryWindow : public Window {
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		DrawStringMultiLine(r, this->message.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r, this->message.GetDecodedString(), TextColour::FromString, SA_CENTER);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

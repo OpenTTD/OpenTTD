@@ -198,11 +198,11 @@ static constexpr Colours GAME_OPTIONS_BACKGROUND = Colours::Mauve;
 /** Colour for buttons of game options. */
 static constexpr Colours GAME_OPTIONS_BUTTON = Colours::Yellow;
 /** Colour for frame text of game options. */
-static constexpr TextColour GAME_OPTIONS_FRAME = TC_ORANGE;
+static constexpr TextColour GAME_OPTIONS_FRAME = TextColour::Orange;
 /** Colour for label text of game options. */
-static constexpr TextColour GAME_OPTIONS_LABEL = TC_LIGHT_BLUE;
+static constexpr TextColour GAME_OPTIONS_LABEL = TextColour::LightBlue;
 /** Colour for selected text of game options. */
-static constexpr TextColour GAME_OPTIONS_SELECTED = TC_WHITE;
+static constexpr TextColour GAME_OPTIONS_SELECTED = TextColour::White;
 
 static constexpr std::initializer_list<NWidgetPart> _nested_social_plugins_widgets = {
 	NWidget(NWID_HORIZONTAL),
@@ -693,7 +693,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_GUI_SCALE:
-				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TC_BLACK, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, SCALE_NMARKS, this->gui_scale, ScaleMarkFunc);
+				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TextColour::Black, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, SCALE_NMARKS, this->gui_scale, ScaleMarkFunc);
 				break;
 
 			case WID_GO_VIDEO_DRIVER_INFO:
@@ -701,11 +701,11 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
-				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TC_BLACK, 0, INT8_MAX, VOLUME_NMARKS, _settings_client.music.effect_vol, VolumeMarkFunc);
+				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TextColour::Black, 0, INT8_MAX, VOLUME_NMARKS, _settings_client.music.effect_vol, VolumeMarkFunc);
 				break;
 
 			case WID_GO_BASE_MUSIC_VOLUME:
-				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TC_BLACK, 0, INT8_MAX, VOLUME_NMARKS, _settings_client.music.music_vol, VolumeMarkFunc);
+				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TextColour::Black, 0, INT8_MAX, VOLUME_NMARKS, _settings_client.music.music_vol, VolumeMarkFunc);
 				break;
 
 			case WID_GO_OPTIONSPANEL: {
@@ -746,7 +746,7 @@ struct GameOptionsWindow : Window {
 					if (FillDrawPixelInfo(&tmp_dpi, r)) {
 						AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 						int scrolls_pos = this->vscroll_description->GetPosition() * GetCharacterHeight(FontSize::Normal);
-						DrawStringMultiLine(0, r.Width() - 1, -scrolls_pos, r.Height() - 1, sd->GetHelp(), TC_WHITE);
+						DrawStringMultiLine(0, r.Width() - 1, -scrolls_pos, r.Height() - 1, sd->GetHelp(), TextColour::White);
 					}
 				}
 				break;
@@ -926,7 +926,7 @@ struct GameOptionsWindow : Window {
 		if (this->warn_missing != WHR_NONE) {
 			DrawStringMultiLineWithClipping(panel.WithHeight(this->warn_lines * GetCharacterHeight(FontSize::Normal)),
 				GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]),
-				TC_BLACK, SA_CENTER);
+				TextColour::Black, SA_CENTER);
 		}
 	}
 

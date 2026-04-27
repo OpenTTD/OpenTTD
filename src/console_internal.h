@@ -94,6 +94,6 @@ void IConsoleStdLibRegister();
 
 void IConsoleGUIInit();
 void IConsoleGUIFree();
-void IConsoleGUIPrint(TextColour colour_code, const std::string &string);
+void IConsoleGUIPrint(ExtendedTextColour colour_code, const std::string &string);
 
 #endif /* CONSOLE_INTERNAL_H */

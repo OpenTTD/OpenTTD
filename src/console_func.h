@@ -22,7 +22,7 @@ void IConsoleFree();
 void IConsoleClose();
 
 /* console output */
-void IConsolePrint(TextColour colour_code, const std::string &string);
+void IConsolePrint(ExtendedTextColour colour_code, const std::string &string);
 
 /**
  * Handle the printing of text entered into the console or redirected there
@@ -38,7 +38,7 @@ void IConsolePrint(TextColour colour_code, const std::string &string);
  * @tparam Args The types of the other arguments.
  */
 template <typename A, typename ... Args>
-inline void IConsolePrint(TextColour colour_code, fmt::format_string<A, Args...> format, A&& first_arg, Args&&... other_args)
+inline void IConsolePrint(ExtendedTextColour colour_code, fmt::format_string<A, Args...> format, A&& first_arg, Args&&... other_args)
 {
 	/* The separate first_arg argument is added to aid overloading.
 	 * Otherwise the calls that do no need formatting will still use this function. */
@@ -48,6 +48,6 @@ inline void IConsolePrint(TextColour colour_code, fmt::format_string<A, Args...>
 /* Parser */
 void IConsoleCmdExec(std::string_view command_string, const uint recurse_count = 0);
 
-bool IsValidConsoleColour(TextColour c);
+bool IsValidConsoleColour(ExtendedTextColour c);
 
 #endif /* CONSOLE_FUNC_H */
