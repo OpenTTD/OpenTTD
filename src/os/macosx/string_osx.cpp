@@ -164,7 +164,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 		}
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTFontAttributeName, font_handle);
 
-		CGColorRef colour = CGColorCreateGenericGray((uint8_t)font->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
+		CGColorRef colour = CGColorCreateGenericGray(to_underlying(font->colour.colour) / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTForegroundColorAttributeName, colour);
 		CGColorRelease(colour);
 

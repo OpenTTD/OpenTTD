@@ -534,10 +534,10 @@ public:
 					}
 
 					/* Draw the name of the industry in white is selected, otherwise, in orange */
-					DrawString(tr, indsp->name, selected ? TC_WHITE : TC_ORANGE);
+					DrawString(tr, indsp->name, selected ? TextColour::White : TextColour::Orange);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
-					DrawString(tr, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TC_BLACK, SA_RIGHT, false, FontSize::Small);
+					DrawString(tr, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TextColour::Black, SA_RIGHT, false, FontSize::Small);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
@@ -588,7 +588,7 @@ public:
 							str = GetGRFStringWithTextStack(indsp->grf_prop.grffile, GRFSTR_MISC_GRF_TEXT + callback_res, regs100);
 						}
 						if (!str.empty()) {
-							DrawStringMultiLine(ir, str, TC_YELLOW);
+							DrawStringMultiLine(ir, str, TextColour::Yellow);
 						}
 					}
 				}
@@ -974,14 +974,14 @@ public:
 				}
 				if (!str.empty()) {
 					ir.top += WidgetDimensions::scaled.vsep_wide;
-					ir.top = DrawStringMultiLine(ir, str, TC_YELLOW);
+					ir.top = DrawStringMultiLine(ir, str, TextColour::Yellow);
 				}
 			}
 		}
 
 		if (!i->text.empty()) {
 			ir.top += WidgetDimensions::scaled.vsep_wide;
-			ir.top = DrawStringMultiLine(ir, i->text.GetDecodedString(), TC_BLACK);
+			ir.top = DrawStringMultiLine(ir, i->text.GetDecodedString(), TextColour::Black);
 		}
 
 		/* Return required bottom position, the last pixel row plus some padding. */
@@ -1717,11 +1717,11 @@ public:
 				const CargoType acf_cargo_type = this->accepted_cargo_filter_criteria;
 				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->industries);
 				for (auto it = first; it != last; ++it) {
-					TextColour tc = TC_FROMSTRING;
+					ExtendedTextColour tc{TextColour::FromString};
 					if (acf_cargo_type != CargoFilterCriteria::CF_ANY && acf_cargo_type != CargoFilterCriteria::CF_NONE) {
 						Industry *ind = const_cast<Industry *>(*it);
 						if (IndustryTemporarilyRefusesCargo(ind, acf_cargo_type)) {
-							tc = TC_GREY | TC_FORCED;
+							tc = ExtendedTextColour{TextColour::Grey, ExtendedTextColourFlag::Forced};
 						}
 					}
 					DrawString(ir, this->GetIndustryString(*it), tc);
@@ -2151,7 +2151,7 @@ struct CargoesField {
 
 			case CargoesFieldType::Header:
 				ypos += (small_height - GetCharacterHeight(FontSize::Normal)) / 2;
-				DrawString(xpos, xpos + industry_width, ypos, this->u.header, TC_WHITE, SA_HOR_CENTER);
+				DrawString(xpos, xpos + industry_width, ypos, this->u.header, TextColour::White, SA_HOR_CENTER);
 				break;
 
 			case CargoesFieldType::Industry: {
@@ -2162,7 +2162,7 @@ struct CargoesField {
 				ypos += (normal_height - GetCharacterHeight(FontSize::Normal)) / 2;
 				if (this->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 					const IndustrySpec *indsp = GetIndustrySpec(this->u.industry.ind_type);
-					DrawString(xpos, xpos2, ypos, indsp->name, TC_WHITE, SA_HOR_CENTER);
+					DrawString(xpos, xpos2, ypos, indsp->name, TextColour::White, SA_HOR_CENTER);
 
 					/* Draw the industry legend. */
 					int blob_left, blob_right;
@@ -2176,7 +2176,7 @@ struct CargoesField {
 					GfxFillRect(blob_left,     ypos2 - blob_distance - CargoesField::legend.height,     blob_right,     ypos2 - blob_distance,     PC_BLACK); // Border
 					GfxFillRect(blob_left + 1, ypos2 - blob_distance - CargoesField::legend.height + 1, blob_right - 1, ypos2 - blob_distance - 1, indsp->map_colour);
 				} else {
-					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TextColour::FromString, SA_HOR_CENTER);
 				}
 
 				/* Draw the other_produced/other_accepted cargoes. */
@@ -2266,7 +2266,7 @@ struct CargoesField {
 				for (uint i = 0; i < MAX_CARGOES; i++) {
 					if (IsValidCargoType(this->u.cargo_label.cargoes[i])) {
 						const CargoSpec *csp = CargoSpec::Get(this->u.cargo_label.cargoes[i]);
-						DrawString(xpos + WidgetDimensions::scaled.framerect.left, xpos + industry_width - 1 - WidgetDimensions::scaled.framerect.right, ypos, csp->name, TC_WHITE,
+						DrawString(xpos + WidgetDimensions::scaled.framerect.left, xpos + industry_width - 1 - WidgetDimensions::scaled.framerect.right, ypos, csp->name, TextColour::White,
 								(this->u.cargo_label.left_align) ? SA_LEFT : SA_RIGHT);
 					}
 					ypos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;

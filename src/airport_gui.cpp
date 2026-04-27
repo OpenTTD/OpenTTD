@@ -400,7 +400,7 @@ public:
 					if (!as->IsAvailable()) {
 						GfxFillRect(row, PC_BLACK, FillRectMode::Checker);
 					}
-					DrawString(text, as->name, (static_cast<int>(as->index) == _selected_airport_index) ? TC_WHITE : TC_BLACK);
+					DrawString(text, as->name, (static_cast<int>(as->index) == _selected_airport_index) ? TextColour::White : TextColour::Black);
 					row = row.Translate(0, this->line_height);
 					text = text.Translate(0, this->line_height);
 				}
@@ -419,7 +419,7 @@ public:
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_ADDITIONAL_TEXT);
 					if (string != STR_UNDEFINED) {
-						DrawStringMultiLine(r, string, TC_BLACK);
+						DrawStringMultiLine(r, string, TextColour::Black);
 					}
 				}
 				break;

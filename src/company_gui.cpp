@@ -188,12 +188,12 @@ static void DrawCategories(const Rect &r)
 {
 	int y = r.top;
 	/* Draw description of 12-minute economic period. */
-	DrawString(r.left, r.right, y, (TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION), TC_FROMSTRING, SA_LEFT, true);
+	DrawString(r.left, r.right, y, (TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION), TextColour::FromString, SA_LEFT, true);
 	y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	for (const ExpensesList &list : _expenses_list_types) {
 		/* Draw category title and advance y */
-		DrawString(r.left, r.right, y, list.title, TC_FROMSTRING, SA_LEFT);
+		DrawString(r.left, r.right, y, list.title, TextColour::FromString, SA_LEFT);
 		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Draw category items and advance y */
@@ -204,7 +204,7 @@ static void DrawCategories(const Rect &r)
 		y += WidgetDimensions::scaled.vsep_normal;
 
 		/* Draw category total and advance y */
-		DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
+		DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TextColour::FromString, SA_RIGHT);
 		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Advance y by a blockspace after this category block */
@@ -213,7 +213,7 @@ static void DrawCategories(const Rect &r)
 
 	/* Draw total profit/loss */
 	y += WidgetDimensions::scaled.vsep_normal;
-	DrawString(r.left, r.right, y, STR_FINANCES_PROFIT, TC_FROMSTRING, SA_LEFT);
+	DrawString(r.left, r.right, y, STR_FINANCES_PROFIT, TextColour::FromString, SA_LEFT);
 }
 
 /**
@@ -252,14 +252,14 @@ static Money DrawYearCategory(const Rect &r, int start_y, const ExpensesList &li
 	for (const ExpensesType &et : list.items) {
 		Money cost = tbl[et];
 		sum += cost;
-		if (cost != 0) DrawPrice(cost, r.left, r.right, y, TC_BLACK);
+		if (cost != 0) DrawPrice(cost, r.left, r.right, y, TextColour::Black);
 		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	/* Draw the total at the bottom of the category. */
 	GfxFillRect(r.left, y, r.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_BLACK);
 	y += WidgetDimensions::scaled.vsep_normal;
-	if (sum != 0) DrawPrice(sum, r.left, r.right, y, TC_WHITE);
+	if (sum != 0) DrawPrice(sum, r.left, r.right, y, TextColour::White);
 
 	/* Return the sum for the yearly total. */
 	return sum;
@@ -279,7 +279,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	Money sum;
 
 	/* Year header */
-	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TC_FROMSTRING, SA_RIGHT | SA_FORCE, true);
+	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TextColour::FromString, SA_RIGHT | SA_FORCE, true);
 	y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	/* Categories */
@@ -293,7 +293,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	/* Total income. */
 	GfxFillRect(r.left, y, r.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_BLACK);
 	y += WidgetDimensions::scaled.vsep_normal;
-	DrawPrice(sum, r.left, r.right, y, TC_WHITE);
+	DrawPrice(sum, r.left, r.right, y, TextColour::White);
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_company_finances_widgets = {
@@ -892,16 +892,16 @@ public:
 		/* Helper function to draw livery info. */
 		auto draw_livery = [&](std::string_view str, const Livery &livery, bool is_selected, bool is_default_scheme, int indent) {
 			/* Livery Label. */
-			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TC_WHITE : TC_BLACK);
+			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TextColour::White : TextColour::Black);
 
 			/* Text below the first dropdown. */
 			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour1), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Primary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour1) : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Primary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour1) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
 				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour2), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Secondary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour2) : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Secondary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour2) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
 			}
 
 			y += this->line_height;
@@ -927,7 +927,7 @@ public:
 			if (this->vscroll->GetCount() == 0) {
 				constexpr VehicleTypeIndexArray<const StringID> empty_labels = { STR_LIVERY_TRAIN_GROUP_EMPTY, STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY, STR_LIVERY_SHIP_GROUP_EMPTY, STR_LIVERY_AIRCRAFT_GROUP_EMPTY };
 				VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
-				DrawString(ir.left, ir.right, y + text_offs, empty_labels[vtype], TC_BLACK);
+				DrawString(ir.left, ir.right, y + text_offs, empty_labels[vtype], TextColour::Black);
 			}
 		}
 	}
@@ -1361,7 +1361,7 @@ public:
 				Rect tr = ir.Shrink(RectPadding::zero, WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FontSize::Normal)).Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 				DrawArrowButtons(br.left, br.top, Colours::Yellow, this->selected_var == UINT_MAX - 1 ? this->click_state : 0, true, true);
-				DrawString(tr, GetString(STR_FACE_SETTING_NUMERIC, STR_FACE_STYLE, this->face.style + 1, GetNumCompanyManagerFaceStyles()), TC_WHITE);
+				DrawString(tr, GetString(STR_FACE_SETTING_NUMERIC, STR_FACE_STYLE, this->face.style + 1, GetNumCompanyManagerFaceStyles()), TextColour::White);
 				break;
 			}
 
@@ -1382,10 +1382,10 @@ public:
 					uint val = vars[var].GetBits(this->face);
 					if (facevar.type == FaceVarType::Toggle) {
 						DrawBoolButton(br.left, br.top, Colours::Yellow, Colours::Grey, val == 1, true);
-						DrawString(tr, GetString(STR_FACE_SETTING_TOGGLE, facevar.name, val == 1 ? STR_FACE_YES : STR_FACE_NO), TC_WHITE);
+						DrawString(tr, GetString(STR_FACE_SETTING_TOGGLE, facevar.name, val == 1 ? STR_FACE_YES : STR_FACE_NO), TextColour::White);
 					} else {
 						DrawArrowButtons(br.left, br.top, Colours::Yellow, this->selected_var == var ? this->click_state : 0, true, true);
-						DrawString(tr, GetString(STR_FACE_SETTING_NUMERIC, facevar.name, val + 1, facevar.valid_values), TC_WHITE);
+						DrawString(tr, GetString(STR_FACE_SETTING_NUMERIC, facevar.name, val + 1, facevar.valid_values), TextColour::White);
 					}
 
 					ir = ir.Translate(0, this->line_height);
@@ -1797,7 +1797,7 @@ struct CompanyInfrastructureWindow : Window
 			switch (it->type) {
 				case InfrastructureItemType::Header:
 					/* Header is allowed to fill the window's width. */
-					DrawString(ir.left, ir.right, labelr.top, GetString(it->label), TC_ORANGE);
+					DrawString(ir.left, ir.right, labelr.top, GetString(it->label), TextColour::Orange);
 					break;
 
 				case InfrastructureItemType::Spacer:
@@ -1806,14 +1806,14 @@ struct CompanyInfrastructureWindow : Window
 				case InfrastructureItemType::Total:
 					/* Draw line in the spacer above the total. */
 					GfxFillRect(costr.Translate(0, -WidgetDimensions::scaled.vsep_normal).WithHeight(WidgetDimensions::scaled.fullbevel.top), PC_WHITE);
-					DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TC_BLACK, SA_RIGHT | SA_FORCE);
+					DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TextColour::Black, SA_RIGHT | SA_FORCE);
 					break;
 
 				case InfrastructureItemType::Value:
-					DrawString(labelr.Indent(WidgetDimensions::scaled.hsep_indent, rtl), GetString(it->label), TC_WHITE);
-					DrawString(countr, GetString(STR_JUST_COMMA, it->count), TC_WHITE, SA_RIGHT | SA_FORCE);
+					DrawString(labelr.Indent(WidgetDimensions::scaled.hsep_indent, rtl), GetString(it->label), TextColour::White);
+					DrawString(countr, GetString(STR_JUST_COMMA, it->count), TextColour::White, SA_RIGHT | SA_FORCE);
 					if (_settings_game.economy.infrastructure_maintenance) {
-						DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TC_BLACK, SA_RIGHT | SA_FORCE);
+						DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TextColour::Black, SA_RIGHT | SA_FORCE);
 					}
 					break;
 			}
@@ -2135,7 +2135,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_FACE_TITLE:
-				DrawStringMultiLine(r, GetString(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, c->index), TC_FROMSTRING, SA_HOR_CENTER);
+				DrawStringMultiLine(r, GetString(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, c->index), TextColour::FromString, SA_HOR_CENTER);
 				break;
 
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
@@ -2401,7 +2401,7 @@ struct BuyCompanyWindow : Window {
 
 			case WID_BC_QUESTION: {
 				const Company *c = Company::Get(this->window_number);
-				DrawStringMultiLine(r, GetString(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, c->index, this->company_value), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, c->index, this->company_value), TextColour::FromString, SA_CENTER);
 				break;
 			}
 		}

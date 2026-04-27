@@ -1344,8 +1344,8 @@ static bool ConEchoC(std::span<std::string_view> argv)
 	if (argv.size() < 3) return false;
 
 	auto colour = ParseInteger(argv[1]);
-	if (!colour.has_value() || !IsInsideMM(*colour, TC_BEGIN, TC_END)) {
-		IConsolePrint(CC_ERROR, "The colour must be a number between {} and {}.", TC_BEGIN, TC_END - 1);
+	if (!colour.has_value() || !IsInsideMM(*colour, to_underlying(TextColour::Begin), to_underlying(TextColour::End))) {
+		IConsolePrint(CC_ERROR, "The colour must be a number between {} and {}.", TextColour::Begin, to_underlying(TextColour::End) - 1);
 		return true;
 	}
 
@@ -1962,7 +1962,7 @@ static bool ConHelp(std::span<std::string_view> argv)
 		return true;
 	}
 
-	IConsolePrint(TC_LIGHT_BLUE, " ---- OpenTTD Console Help ---- ");
+	IConsolePrint(TextColour::LightBlue, " ---- OpenTTD Console Help ---- ");
 	IConsolePrint(CC_DEFAULT, " - commands: the command to list all commands is 'list_cmds'.");
 	IConsolePrint(CC_DEFAULT, " call commands with '<command> <arg2> <arg3>...'");
 	IConsolePrint(CC_DEFAULT, " - to assign strings, or use them as arguments, enclose it within quotes.");
@@ -2641,7 +2641,7 @@ static bool ConNewGRFProfile(std::span<std::string_view> argv)
 			auto profiler = std::ranges::find(_newgrf_profilers, &grf, &NewGRFProfiler::grffile);
 			bool selected = profiler != _newgrf_profilers.end();
 			bool active = selected && profiler->active;
-			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
+			TextColour tc = active ? TextColour::LightBlue : selected ? TextColour::Green : CC_INFO;
 			std::string_view statustext = active ? " (active)" : selected ? " (selected)" : "";
 			IConsolePrint(tc, "{}: [{:08X}] {}{}", i, std::byteswap(grf.grfid), grf.filename, statustext);
 			i++;

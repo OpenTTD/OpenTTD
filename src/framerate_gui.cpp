@@ -599,14 +599,14 @@ struct FramerateWindow : Window {
 		int32_t skip = sb->GetPosition();
 		int drawable = this->num_displayed;
 		int y = r.top;
-		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER, true);
+		DrawString(r.left, r.right, y, heading_str, TextColour::FromString, SA_CENTER, true);
 		y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		for (PerformanceElement e : DISPLAY_ORDER_PFE) {
 			if (_pf_data[e].num_valid == 0) continue;
 			if (skip > 0) {
 				skip--;
 			} else {
-				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TextColour::FromString, SA_RIGHT | SA_FORCE);
 				y += GetCharacterHeight(FontSize::Normal);
 				drawable--;
 				if (drawable == 0) break;
@@ -620,7 +620,7 @@ struct FramerateWindow : Window {
 		int32_t skip = sb->GetPosition();
 		int drawable = this->num_displayed;
 		int y = r.top;
-		DrawString(r.left, r.right, y, STR_FRAMERATE_MEMORYUSE, TC_FROMSTRING, SA_CENTER, true);
+		DrawString(r.left, r.right, y, STR_FRAMERATE_MEMORYUSE, TextColour::FromString, SA_CENTER, true);
 		y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		for (PerformanceElement e : DISPLAY_ORDER_PFE) {
 			if (_pf_data[e].num_valid == 0) continue;
@@ -628,12 +628,12 @@ struct FramerateWindow : Window {
 				skip--;
 			} else if (e == PFE_GAMESCRIPT || e >= PFE_AI0) {
 				uint64_t value = e == PFE_GAMESCRIPT ? Game::GetInstance()->GetAllocatedMemory() : Company::Get(e - PFE_AI0)->ai_instance->GetAllocatedMemory();
-				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TextColour::FromString, SA_RIGHT | SA_FORCE);
 				y += GetCharacterHeight(FontSize::Normal);
 				drawable--;
 				if (drawable == 0) break;
 			} else if (e == PFE_SOUND) {
-				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, GetSoundPoolAllocatedMemory()), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, GetSoundPoolAllocatedMemory()), TextColour::FromString, SA_RIGHT | SA_FORCE);
 				y += GetCharacterHeight(FontSize::Normal);
 				drawable--;
 				if (drawable == 0) break;
@@ -661,9 +661,9 @@ struct FramerateWindow : Window {
 						skip--;
 					} else {
 						if (e < PFE_AI0) {
-							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + e, TC_FROMSTRING, SA_LEFT);
+							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + e, TextColour::FromString, SA_LEFT);
 						} else {
-							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, e - PFE_AI0 + 1, GetAIName(e - PFE_AI0)), TC_FROMSTRING, SA_LEFT);
+							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, e - PFE_AI0 + 1, GetAIName(e - PFE_AI0)), TextColour::FromString, SA_LEFT);
 						}
 						y += GetCharacterHeight(FontSize::Normal);
 						drawable--;
@@ -732,7 +732,7 @@ static WindowDesc _framerate_display_desc(
 static constexpr std::initializer_list<NWidgetPart> _frametime_graph_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::Grey),
-		NWidget(WWT_CAPTION, Colours::Grey, WID_FGW_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_FGW_CAPTION), SetTextStyle(TextColour::White),
 		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
 	NWidget(WWT_PANEL, Colours::Grey),
@@ -931,11 +931,11 @@ struct FrametimeGraphWindow : Window {
 					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
 						DrawString(r.left, x_zero - WidgetDimensions::scaled.hsep_normal, y - GetCharacterHeight(FontSize::Small),
 							GetString(STR_FRAMERATE_GRAPH_SECONDS, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION),
-							TC_GREY, SA_RIGHT | SA_FORCE, false, FontSize::Small);
+							TextColour::Grey, SA_RIGHT | SA_FORCE, false, FontSize::Small);
 					} else {
 						DrawString(r.left, x_zero - WidgetDimensions::scaled.hsep_normal, y - GetCharacterHeight(FontSize::Small),
 							GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION),
-							TC_GREY, SA_RIGHT | SA_FORCE, false, FontSize::Small);
+							TextColour::Grey, SA_RIGHT | SA_FORCE, false, FontSize::Small);
 					}
 				}
 			}
@@ -946,7 +946,7 @@ struct FrametimeGraphWindow : Window {
 				if (division % 2 == 0) {
 					DrawString(x, x_max, y_zero + WidgetDimensions::scaled.vsep_normal,
 						GetString(STR_FRAMERATE_GRAPH_SECONDS, division * horz_div_scl / 2),
-						TC_GREY, SA_LEFT | SA_FORCE, false, FontSize::Small);
+						TextColour::Grey, SA_LEFT | SA_FORCE, false, FontSize::Small);
 				}
 			}
 
@@ -1001,7 +1001,7 @@ struct FrametimeGraphWindow : Window {
 
 			/* If the peak value is significantly larger than the average, mark and label it */
 			if (points_drawn > 0 && peak_value > TIMESTAMP_PRECISION / 100 && 2 * peak_value > 3 * value_sum / points_drawn) {
-				TextColour tc_peak = c_peak.ToTextColour();
+				ExtendedTextColour tc_peak{c_peak};
 				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
 				uint64_t value = peak_value * 1000 / TIMESTAMP_PRECISION;
 				int label_y = std::max(y_max, peak_point.y - GetCharacterHeight(FontSize::Small));
@@ -1048,7 +1048,7 @@ void ConPrintFramerate()
 	const int count2 = NUM_FRAMERATE_POINTS / 4;
 	const int count3 = NUM_FRAMERATE_POINTS / 1;
 
-	IConsolePrint(TC_SILVER, "Based on num. data points: {} {} {}", count1, count2, count3);
+	IConsolePrint(TextColour::Silver, "Based on num. data points: {} {} {}", count1, count2, count3);
 
 	static const std::array<std::string_view, PFE_MAX> MEASUREMENT_NAMES = {
 		"Game loop",
@@ -1073,7 +1073,7 @@ void ConPrintFramerate()
 	for (const auto &e : { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO }) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
-		IConsolePrint(TC_GREEN, "{} rate: {:.2f}fps  (expected: {:.2f}fps)",
+		IConsolePrint(TextColour::Green, "{} rate: {:.2f}fps  (expected: {:.2f}fps)",
 			MEASUREMENT_NAMES[e],
 			pf.GetRate(),
 			pf.expected_rate);
@@ -1090,7 +1090,7 @@ void ConPrintFramerate()
 			ai_name_buf = fmt::format("AI {} {}", e - PFE_AI0 + 1, GetAIName(e - PFE_AI0));
 			name = ai_name_buf;
 		}
-		IConsolePrint(TC_LIGHT_BLUE, "{} times: {:.2f}ms  {:.2f}ms  {:.2f}ms",
+		IConsolePrint(TextColour::LightBlue, "{} times: {:.2f}ms  {:.2f}ms  {:.2f}ms",
 			name,
 			pf.GetAverageDurationMilliseconds(count1),
 			pf.GetAverageDurationMilliseconds(count2),

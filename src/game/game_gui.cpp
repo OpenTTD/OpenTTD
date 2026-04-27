@@ -176,7 +176,7 @@ struct GSConfigWindow : public Window {
 		switch (widget) {
 			case WID_GSC_GSLIST: {
 				/* There is only one slot, unlike with the GS GUI, so it should never be white */
-				DrawString(r.Shrink(WidgetDimensions::scaled.matrix), this->GetText(), (IsEditable() ? TC_ORANGE : TC_SILVER));
+				DrawString(r.Shrink(WidgetDimensions::scaled.matrix), this->GetText(), (IsEditable() ? TextColour::Orange : TextColour::Silver));
 				break;
 			}
 			case WID_GSC_SETTINGS: {

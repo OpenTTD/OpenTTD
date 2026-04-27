@@ -364,7 +364,7 @@ struct CheatWindow : Window {
 					editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 		}
 		auto [param1, param2] = sd->GetValueParams(value);
-		DrawString(text.left, text.right, text.top, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), TC_LIGHT_BLUE);
+		DrawString(text.left, text.right, text.top, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), TextColour::LightBlue);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override

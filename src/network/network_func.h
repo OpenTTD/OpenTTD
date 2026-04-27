@@ -75,9 +75,9 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 
 bool NetworkCanJoinCompany(CompanyID company_id);
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
-void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, std::string_view string);
+void NetworkServerSendRcon(ClientID client_id, ExtendedTextColour colour_code, std::string_view string);
 void NetworkServerSendChat(NetworkAction action, NetworkChatDestinationType type, int dest, std::string_view msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
-void NetworkServerSendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg);
+void NetworkServerSendExternalChat(std::string_view source, ExtendedTextColour colour, std::string_view user, std::string_view msg);
 
 void NetworkServerKickClient(ClientID client_id, std::string_view reason);
 uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, std::string_view reason);
@@ -85,7 +85,7 @@ uint NetworkServerKickOrBanIP(std::string_view ip, bool ban, std::string_view re
 
 void NetworkInitChatMessage();
 void NetworkReInitChatBoxSize();
-void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message);
+void CDECL NetworkAddChatMessage(ExtendedTextColour colour, uint duration, const std::string &message);
 void NetworkUndrawChatMessage();
 
 void NetworkAfterNewGRFScan();

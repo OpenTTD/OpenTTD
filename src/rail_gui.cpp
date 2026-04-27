@@ -904,7 +904,7 @@ struct BuildRailToolbarWindow : Window {
 static constexpr std::initializer_list<NWidgetPart> _nested_build_rail_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
-		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_RAT_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_RAT_CAPTION), SetTextStyle(TextColour::White),
 		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -1729,7 +1729,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_signal_builder_widge
 			NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_BS_CONVERT), SetSpriteTip(SPR_IMG_SIGNAL_CONVERT, STR_BUILD_SIGNAL_CONVERT_TOOLTIP), SetFill(0, 1),
 			NWidget(WWT_PANEL, Colours::DarkGreen), SetToolTip(STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP), SetFill(0, 1),
 				NWidget(NWID_VERTICAL), SetPadding(2), SetPIPRatio(1, 0, 1),
-					NWidget(WWT_LABEL, Colours::Invalid, WID_BS_DRAG_SIGNALS_DENSITY_LABEL), SetToolTip(STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP), SetTextStyle(TC_ORANGE), SetFill(1, 1),
+					NWidget(WWT_LABEL, Colours::Invalid, WID_BS_DRAG_SIGNALS_DENSITY_LABEL), SetToolTip(STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP), SetTextStyle(TextColour::Orange), SetFill(1, 1),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
 						NWidget(WWT_PUSHARROWBTN, Colours::Grey, WID_BS_DRAG_SIGNALS_DENSITY_DECREASE), SetMinimalSize(9, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP),
 						NWidget(WWT_PUSHARROWBTN, Colours::Grey, WID_BS_DRAG_SIGNALS_DENSITY_INCREASE), SetMinimalSize(9, 12), SetArrowWidgetTypeTip(ArrowWidgetType::Increase, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP),

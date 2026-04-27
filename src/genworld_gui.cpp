@@ -224,7 +224,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_heightmap_load_widge
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				/* Heightmap name label. */
 				NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_HEIGHTMAP_NAME, STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP),
-				NWidget(WWT_TEXT, Colours::Invalid, WID_GL_HEIGHTMAP_NAME_TEXT), SetTextStyle(TC_ORANGE), SetToolTip(STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_GL_HEIGHTMAP_NAME_TEXT), SetTextStyle(TextColour::Orange), SetToolTip(STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP), SetFill(1, 0),
 			EndContainer(),
 
 			/* Generation options. */
@@ -1444,17 +1444,17 @@ struct GenerateProgressWindow : public Window {
 				DrawFrameRect(r, Colours::Grey, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 				DrawFrameRect(br.WithWidth(br.Width() * GenWorldStatus::percent / 100, _current_text_dir == TD_RTL), Colours::Mauve, {});
-				DrawString(br.CentreToHeight(GetCharacterHeight(FontSize::Normal)), GetString(STR_GENERATION_PROGRESS, GenWorldStatus::percent), TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(br.CentreToHeight(GetCharacterHeight(FontSize::Normal)), GetString(STR_GENERATION_PROGRESS, GenWorldStatus::percent), TextColour::FromString, SA_HOR_CENTER);
 				break;
 			}
 
 			case WID_GP_PROGRESS_TEXT:
 				/* Tell which class we are generating */
-				DrawString(r.left, r.right, r.top, GenWorldStatus::cls, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top, GenWorldStatus::cls, TextColour::FromString, SA_HOR_CENTER);
 
 				/* And say where we are in that class */
 				DrawString(r.left, r.right, r.top + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal,
-					GetString(STR_GENERATION_PROGRESS_NUM, GenWorldStatus::current, GenWorldStatus::total), TC_FROMSTRING, SA_HOR_CENTER);
+					GetString(STR_GENERATION_PROGRESS_NUM, GenWorldStatus::current, GenWorldStatus::total), TextColour::FromString, SA_HOR_CENTER);
 		}
 	}
 };

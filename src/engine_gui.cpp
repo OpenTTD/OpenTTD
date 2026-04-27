@@ -169,15 +169,15 @@ struct EnginePreviewWindow : Window {
 		if (this->selected_index >= this->engines.size()) return;
 
 		EngineID engine = this->engines[selected_index];
-		int y = DrawStringMultiLine(r, GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), TC_FROMSTRING, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
+		int y = DrawStringMultiLine(r, GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), TextColour::FromString, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
 
-		DrawString(r.left, r.right, y, GetString(STR_ENGINE_NAME, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)), TC_BLACK, SA_HOR_CENTER);
+		DrawString(r.left, r.right, y, GetString(STR_ENGINE_NAME, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)), TextColour::Black, SA_HOR_CENTER);
 		y += GetCharacterHeight(FontSize::Normal);
 
 		DrawVehicleEngine(r.left, r.right, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 
 		y += this->vehicle_space;
-		DrawStringMultiLine(r.left, r.right, y, r.bottom, GetEngineInfoString(engine), TC_BLACK, SA_CENTER);
+		DrawStringMultiLine(r.left, r.right, y, r.bottom, GetEngineInfoString(engine), TextColour::Black, SA_CENTER);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

@@ -47,7 +47,7 @@
 	if (ScriptGame::IsMultiplayer()) return;
 	if (number == NUMBER_ALL) return;
 	if (!IsOpen(window, number)) return;
-	if (colour != TC_INVALID && (::TextColour)colour >= ::TC_END) return;
+	if (colour != TC_INVALID && (::TextColour)colour >= ::TextColour::End) return;
 
 	number = Clamp<SQInteger>(number, 0, INT32_MAX);
 

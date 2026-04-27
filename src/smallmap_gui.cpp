@@ -1043,7 +1043,7 @@ protected:
 					y < dpi->top + dpi->height) {
 
 				/* And draw it. */
-				DrawString(x, x + legend_text_width, y, tbl.legend, TC_WHITE, SA_LEFT, false, FontSize::Small);
+				DrawString(x, x + legend_text_width, y, tbl.legend, TextColour::White, SA_LEFT, false, FontSize::Small);
 			}
 		}
 	}
@@ -1674,9 +1674,9 @@ public:
 								if (!tbl->show_on_map) {
 									/* Simply draw the string, not the black border of the legend colour.
 									 * This will enforce the idea of the disabled item */
-									DrawString(text, GetStringWithArgs(string, params), TC_GREY);
+									DrawString(text, GetStringWithArgs(string, params), TextColour::Grey);
 								} else {
-									DrawString(text, GetStringWithArgs(string, params), TC_BLACK);
+									DrawString(text, GetStringWithArgs(string, params), TextColour::Black);
 									GfxFillRect(icon, PC_BLACK); // Outer border of the legend colour
 								}
 								break;

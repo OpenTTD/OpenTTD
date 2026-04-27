@@ -101,7 +101,7 @@ struct OskWindow : public Window {
 		if (widget < WID_OSK_LETTERS) return;
 
 		widget -= WID_OSK_LETTERS;
-		DrawCharCentered(_keyboard[this->shift][widget], r, TC_BLACK);
+		DrawCharCentered(_keyboard[this->shift][widget], r, TextColour::Black);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -322,7 +322,7 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 
 
 static constexpr std::initializer_list<NWidgetPart> _nested_osk_widgets = {
-	NWidget(WWT_CAPTION, Colours::Grey, WID_OSK_CAPTION), SetTextStyle(TC_WHITE),
+	NWidget(WWT_CAPTION, Colours::Grey, WID_OSK_CAPTION), SetTextStyle(TextColour::White),
 	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(WWT_EDITBOX, Colours::Grey, WID_OSK_TEXT), SetMinimalSize(252, 0), SetPadding(2, 2, 2, 2),
 	EndContainer(),

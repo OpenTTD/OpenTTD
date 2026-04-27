@@ -376,7 +376,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			const int y_step = this->GetWidget<NWidgetResizeBase>(widget)->resize_y;
 			auto [first, last] = vscroll->GetVisibleRangeIterators(this->classes);
 			for (auto it = first; it != last; ++it) {
-				DrawString(ir, this->callbacks.GetClassName(*it), *it == selected ? TC_WHITE : TC_BLACK);
+				DrawString(ir, this->callbacks.GetClassName(*it), *it == selected ? TextColour::White : TextColour::Black);
 				ir.top += y_step;
 			}
 			break;
@@ -421,7 +421,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 
 		case WID_PW_TYPE_NAME: {
 			StringID str = this->callbacks.GetTypeName(this->callbacks.GetSelectedClass(), this->callbacks.GetSelectedType());
-			if (str != INVALID_STRING_ID) DrawString(r, str, TC_GOLD, SA_CENTER);
+			if (str != INVALID_STRING_ID) DrawString(r, str, TextColour::Gold, SA_CENTER);
 			break;
 		}
 	}

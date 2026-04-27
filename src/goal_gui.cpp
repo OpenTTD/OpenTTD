@@ -210,7 +210,7 @@ struct GoalListWindow : public Window {
 						case GC_PROGRESS:
 							if (!s->progress.empty()) {
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress.GetDecodedString()), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress.GetDecodedString()), TextColour::FromString, SA_RIGHT | SA_FORCE);
 							}
 							break;
 					}
@@ -476,5 +476,5 @@ static WindowDesc _goal_question_list_desc[] = {
 void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const EncodedString &question)
 {
 	assert(type < GQT_END);
-	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
+	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == 3 ? TextColour::White : TextColour::Black, button_mask, question);
 }

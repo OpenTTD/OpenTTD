@@ -236,11 +236,11 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)GetCharacterHeight(FontSize::Normal) - (int)sprite_size.height) / 2);
 	}
 
-	TextColour colour = TC_BLACK;
+	ExtendedTextColour colour{TextColour::Black};
 	if (order->IsType(OT_IMPLICIT)) {
-		colour = (selected ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
+		colour = ExtendedTextColour{selected ? TextColour::Silver : TextColour::Grey, ExtendedTextColourFlag::NoShade};
 	} else if (selected) {
-		colour = TC_WHITE;
+		colour = TextColour::White;
 	}
 
 	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, GetString(STR_ORDER_INDEX, order_index + 1), colour, SA_RIGHT | SA_FORCE);
@@ -1130,7 +1130,7 @@ public:
 
 		if (this->vscroll->IsVisible(i)) {
 			StringID str = this->vehicle->IsOrderListShared() ? STR_ORDERS_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
-			DrawString(rtl ? ir.left : middle, rtl ? middle : ir.right, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
+			DrawString(rtl ? ir.left : middle, rtl ? middle : ir.right, y, str, (i == this->selected_order) ? TextColour::White : TextColour::Black);
 		}
 	}
 

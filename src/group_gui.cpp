@@ -349,7 +349,7 @@ private:
 		if (g_id == NEW_GROUP) return;
 
 		/* draw the selected group in white, else we draw it in black */
-		TextColour colour = g_id == this->vli.ToGroupID() ? TC_WHITE : TC_BLACK;
+		TextColour colour = g_id == this->vli.ToGroupID() ? TextColour::White : TextColour::Black;
 		const GroupStatistics &stats = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype);
 		bool rtl = _current_text_dir == TD_RTL;
 
@@ -662,18 +662,18 @@ public:
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
-				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_THIS_PERIOD : STR_GROUP_PROFIT_THIS_YEAR, TC_BLACK);
-				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, this_year), TC_BLACK, SA_RIGHT);
+				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_THIS_PERIOD : STR_GROUP_PROFIT_THIS_YEAR, TextColour::Black);
+				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, this_year), TextColour::Black, SA_RIGHT);
 
 				tr.top += GetCharacterHeight(FontSize::Normal);
-				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_LAST_PERIOD : STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
-				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, last_year), TC_BLACK, SA_RIGHT);
+				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_LAST_PERIOD : STR_GROUP_PROFIT_LAST_YEAR, TextColour::Black);
+				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, last_year), TextColour::Black, SA_RIGHT);
 
 				tr.top += GetCharacterHeight(FontSize::Normal);
-				DrawString(tr, STR_GROUP_OCCUPANCY, TC_BLACK);
+				DrawString(tr, STR_GROUP_OCCUPANCY, TextColour::Black);
 				const size_t vehicle_count = this->vehicles.size();
 				if (vehicle_count > 0) {
-					DrawString(tr, GetString(STR_GROUP_OCCUPANCY_VALUE, occupancy / vehicle_count), TC_BLACK, SA_RIGHT);
+					DrawString(tr, GetString(STR_GROUP_OCCUPANCY_VALUE, occupancy / vehicle_count), TextColour::Black, SA_RIGHT);
 				}
 
 				break;

@@ -759,9 +759,9 @@ struct MusicWindow : public Window {
 				}
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				if (_music.IsPlaying()) {
-					DrawString(ir, GetString(STR_MUSIC_TRACK_DIGIT, _music.GetCurrentSong().tracknr, 2), TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(ir, GetString(STR_MUSIC_TRACK_DIGIT, _music.GetCurrentSong().tracknr, 2), TextColour::FromString, SA_HOR_CENTER);
 				} else {
-					DrawString(ir, STR_MUSIC_TRACK_NONE, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(ir, STR_MUSIC_TRACK_NONE, TextColour::FromString, SA_HOR_CENTER);
 				}
 				break;
 			}
@@ -772,22 +772,22 @@ struct MusicWindow : public Window {
 
 				MusicSystem::PlaylistEntry entry(_music.GetCurrentSong());
 				if (BaseMusic::GetUsedSet()->num_available == 0) {
-					DrawString(ir, STR_MUSIC_TITLE_NOMUSIC, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(ir, STR_MUSIC_TITLE_NOMUSIC, TextColour::FromString, SA_HOR_CENTER);
 				} else if (_music.IsPlaying()) {
-					DrawString(ir, GetString(STR_MUSIC_TITLE_NAME, entry.songname), TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(ir, GetString(STR_MUSIC_TITLE_NAME, entry.songname), TextColour::FromString, SA_HOR_CENTER);
 				} else {
-					DrawString(ir, STR_MUSIC_TITLE_NONE, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(ir, STR_MUSIC_TITLE_NONE, TextColour::FromString, SA_HOR_CENTER);
 				}
 
 				break;
 			}
 
 			case WID_M_MUSIC_VOL:
-				DrawSliderWidget(r, Colours::Grey, Colours::Grey, TC_BLACK, 0, INT8_MAX, 0, _settings_client.music.music_vol, nullptr);
+				DrawSliderWidget(r, Colours::Grey, Colours::Grey, TextColour::Black, 0, INT8_MAX, 0, _settings_client.music.music_vol, nullptr);
 				break;
 
 			case WID_M_EFFECT_VOL:
-				DrawSliderWidget(r, Colours::Grey, Colours::Grey, TC_BLACK, 0, INT8_MAX, 0, _settings_client.music.effect_vol, nullptr);
+				DrawSliderWidget(r, Colours::Grey, Colours::Grey, TextColour::Black, 0, INT8_MAX, 0, _settings_client.music.effect_vol, nullptr);
 				break;
 		}
 	}

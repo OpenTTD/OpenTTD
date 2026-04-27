@@ -303,38 +303,84 @@ enum class Colours : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
 
-/** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
-enum TextColour : uint16_t {
-	TC_BEGIN       = 0x00,
-	TC_FROMSTRING  = 0x00,
-	TC_BLUE        = 0x00,
-	TC_SILVER      = 0x01,
-	TC_GOLD        = 0x02,
-	TC_RED         = 0x03,
-	TC_PURPLE      = 0x04,
-	TC_LIGHT_BROWN = 0x05,
-	TC_ORANGE      = 0x06,
-	TC_GREEN       = 0x07,
-	TC_YELLOW      = 0x08,
-	TC_DARK_GREEN  = 0x09,
-	TC_CREAM       = 0x0A,
-	TC_BROWN       = 0x0B,
-	TC_WHITE       = 0x0C,
-	TC_LIGHT_BLUE  = 0x0D,
-	TC_GREY        = 0x0E,
-	TC_DARK_BLUE   = 0x0F,
-	TC_BLACK       = 0x10,
-	TC_END,
-	TC_INVALID     = 0xFF,
+/** Colour for pixel/line drawing. */
+struct PixelColour {
+	uint8_t p; ///< Palette index.
 
-	TC_IS_PALETTE_COLOUR = 0x100, ///< Colour value is already a real palette colour index, not an index of a StringColour.
-	TC_NO_SHADE          = 0x200, ///< Do not add shading to this text colour.
-	TC_FORCED            = 0x400, ///< Ignore colour changes from strings.
-
-	TC_COLOUR_MASK = 0xFF, ///< Mask to test if TextColour (without flags) is within limits.
-	TC_FLAGS_MASK = 0x700, ///< Mask to test if TextColour (with flags) is within limits.
+	constexpr PixelColour() : p(0) {}
+	explicit constexpr PixelColour(uint8_t p) : p(p) {}
 };
-DECLARE_ENUM_AS_BIT_SET(TextColour)
+
+/** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
+enum class TextColour : uint8_t {
+	Begin = 0x00, ///< Marker for the begin of the range.
+	FromString = Begin, ///< Marker for telling to use the colour from the string.
+	Blue = Begin, ///< Blue colour.
+	Silver, ///< Silver colour.
+	Gold, ///< Gold colour.
+	Red, ///< Red colour.
+	Purple, ///< Purple colour.
+	LightBrown, ///< Light brown colour.
+	Orange, ///< Orange colour.
+	Green, ///< Green colour.
+	Yellow, ///< Yellow colour.
+	DarkGreen, ///< Dark green colour.
+	Cream, ///< Cream colour.
+	Brown, ///< Brown colour.
+	White, ///< White colour.
+	LightBlue, ///< Light blue colour.
+	Grey, ///< Grey colour.
+	DarkBlue, ///< Dark blue colour.
+	Black, ///< Black colour.
+	End, ///< Marker for the end of the range.
+	Invalid = 0xFF, ///< Invalid colour.
+};
+
+/** Enumeration of the flags of ExtendedTextColour. */
+enum class ExtendedTextColourFlag : uint8_t{
+	IsPaletteColour, ///< Colour value is already a real palette colour index, not an index of a StringColour.
+	NoShade, ///< Do not add shading to this text colour.
+	Forced, ///< Ignore colour changes from strings.
+};
+using ExtendedTextColourFlags = EnumBitSet<ExtendedTextColourFlag, uint8_t>; ///< Bitset of the flags of ExtendedTextColour. */
+
+/** Container for the text colour and some text colour related flags for drawing. */
+struct ExtendedTextColour {
+	/**
+	 * Create the extended text colour based on a TextColour and optional flags.
+	 * @param colour The colour.
+	 * @param flags The flags.
+	 */
+	constexpr ExtendedTextColour(TextColour colour = TextColour::Invalid, ExtendedTextColourFlags flags = {}) : colour(colour), flags(flags) {}
+
+	/**
+	 * Create the extended text colour based on a PixelColour.
+	 * @param pc The pixel colour for this colour.
+	 */
+	constexpr ExtendedTextColour(PixelColour pc) : colour(static_cast<TextColour>(pc.p)), flags(ExtendedTextColourFlag::IsPaletteColour) {}
+
+	TextColour colour; ///< The colour
+	ExtendedTextColourFlags flags{}; ///< The flags.
+
+	/**
+	 * Compare with another instance of this class.
+	 * @return The std::strong_ordering of the comparison.
+	 */
+	constexpr auto operator<=>(const ExtendedTextColour &) const = default;
+
+	/**
+	 * Decode the network encoded text colour.
+	 * @param tc The network encoded colour.
+	 * @return The decoded colour.
+	 */
+	constexpr static ExtendedTextColour FromNetwork(uint16_t tc) { return ExtendedTextColour{static_cast<TextColour>(tc & 0xFF), ExtendedTextColourFlags(tc >> 8)}; }
+
+	/**
+	 * Encode this text colour for sending over the network.
+	 * @return The encoded colour.
+	 */
+	constexpr uint16_t ToNetwork() const { return to_underlying(this->colour) | this->flags.base() << 8; }
+};
 
 /* A few values that are related to animations using palette changes */
 static constexpr uint8_t PALETTE_ANIM_SIZE = 28; ///< number of animated colours
@@ -409,15 +455,5 @@ enum class DirectionKey {
 	Down, ///< Down
 };
 using DirectionKeys = EnumBitSet<DirectionKey, uint8_t>; ///< Bitset of the direction keys.
-
-/** Colour for pixel/line drawing. */
-struct PixelColour {
-	uint8_t p; ///< Palette index.
-
-	constexpr PixelColour() : p(0) {}
-	explicit constexpr PixelColour(uint8_t p) : p(p) {}
-
-	constexpr inline TextColour ToTextColour() const { return static_cast<TextColour>(this->p) | TC_IS_PALETTE_COLOUR; }
-};
 
 #endif /* GFX_TYPE_H */

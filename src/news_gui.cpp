@@ -111,7 +111,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets 
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
 						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
 						NWidget(WWT_LABEL, Colours::Invalid, WID_N_DATE),
-								SetTextStyle(TC_BLACK, FontSize::Small),
+								SetTextStyle(TextColour::Black, FontSize::Small),
 								SetAlignment(SA_RIGHT | SA_TOP),
 					EndContainer(),
 				EndContainer(),
@@ -120,7 +120,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets 
 						SetMinimalTextLines(8, 0, FontSize::Large),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
-						SetTextStyle(TC_BLACK, FontSize::Large),
+						SetTextStyle(TextColour::Black, FontSize::Large),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -152,7 +152,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 						SetStringTip(STR_EMPTY),
-						SetTextStyle(TC_BLACK, FontSize::Large),
+						SetTextStyle(TextColour::Black, FontSize::Large),
 			EndContainer(),
 			NWidget(WWT_PANEL, Colours::White, WID_N_VEH_BKGND), SetPadding(WidgetDimensions::unscaled.fullbevel),
 				NWidget(NWID_VERTICAL),
@@ -200,7 +200,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets
 						SetMinimalTextLines(1, 0, FontSize::Large),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
-						SetTextStyle(TC_BLACK, FontSize::Large),
+						SetTextStyle(TextColour::Black, FontSize::Large),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(2),
@@ -215,7 +215,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets
 						SetFill(1, 1),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 						SetMinimalSize(300, 0),
-						SetTextStyle(TC_BLACK, FontSize::Large),
+						SetTextStyle(TextColour::Black, FontSize::Large),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -239,7 +239,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = 
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
 						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
 						NWidget(WWT_LABEL, Colours::Invalid, WID_N_DATE),
-								SetTextStyle(TC_BLACK, FontSize::Small),
+								SetTextStyle(TextColour::Black, FontSize::Small),
 								SetAlignment(SA_RIGHT | SA_TOP),
 					EndContainer(),
 				EndContainer(),
@@ -248,7 +248,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = 
 						SetMinimalTextLines(3, 0, FontSize::Large),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
-						SetTextStyle(TC_BLACK, FontSize::Large),
+						SetTextStyle(TextColour::Black, FontSize::Large),
 			EndContainer(),
 			NWidget(NWID_VIEWPORT, Colours::Invalid, WID_N_VIEWPORT), SetMinimalSize(426, 70),
 					SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -290,7 +290,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets =
 			NWidget(WWT_EMPTY, Colours::Invalid, WID_N_MESSAGE),
 					SetMinimalTextLines(2, 0),
 					SetMinimalSize(275, 0),
-					SetTextStyle(TC_WHITE, FontSize::Normal),
+					SetTextStyle(TextColour::White, FontSize::Normal),
 		EndContainer(),
 	EndContainer(),
 };
@@ -515,7 +515,7 @@ struct NewsWindow : Window {
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
-				DrawCaption(r, Colours::LightBlue, this->owner, TC_FROMSTRING, GetString(STR_NEWS_MESSAGE_CAPTION), SA_CENTER, FontSize::Normal);
+				DrawCaption(r, Colours::LightBlue, this->owner, TextColour::FromString, GetString(STR_NEWS_MESSAGE_CAPTION), SA_CENTER, FontSize::Normal);
 				break;
 
 			case WID_N_PANEL:
@@ -537,7 +537,7 @@ struct NewsWindow : Window {
 			}
 			case WID_N_MGR_NAME: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
-				DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, cni->president_name), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, cni->president_name), TextColour::FromString, SA_CENTER);
 				break;
 			}
 
@@ -547,7 +547,7 @@ struct NewsWindow : Window {
 
 			case WID_N_VEH_NAME:
 			case WID_N_VEH_TITLE:
-				DrawStringMultiLine(r, this->GetNewVehicleMessageString(widget), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, this->GetNewVehicleMessageString(widget), TextColour::FromString, SA_CENTER);
 				break;
 
 			case WID_N_VEH_SPR: {
@@ -560,7 +560,7 @@ struct NewsWindow : Window {
 			case WID_N_VEH_INFO: {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
-				DrawStringMultiLine(r, GetEngineInfoString(engine), TC_BLACK, SA_CENTER);
+				DrawStringMultiLine(r, GetEngineInfoString(engine), TextColour::Black, SA_CENTER);
 				break;
 			}
 		}
@@ -1257,9 +1257,9 @@ struct MessageHistoryWindow : Window {
 
 		auto [first, last] = this->vscroll->GetVisibleRangeIterators(_news);
 		for (auto ni = first; ni != last; ++ni) {
-			DrawString(date.left, date.right, y, GetString(STR_JUST_DATE_TINY, ni->date), TC_WHITE);
+			DrawString(date.left, date.right, y, GetString(STR_JUST_DATE_TINY, ni->date), TextColour::White);
 
-			DrawNewsString(news.left, news.right, y, TC_WHITE, *ni);
+			DrawNewsString(news.left, news.right, y, TextColour::White, *ni);
 			y += this->line_height;
 		}
 	}

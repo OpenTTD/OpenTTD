@@ -241,7 +241,7 @@ uint8_t NetworkSpectatorCount()
  * @param str Arbitrary extra string, depending on the action. For example a complete message or company name.
  * @param data Arbitrary extra data, depending on the action. For example a client's ID or an amount of money that was given.
  */
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, std::string_view name, std::string_view str, StringParameter &&data)
+void NetworkTextMessage(NetworkAction action, ExtendedTextColour colour, bool self_send, std::string_view name, std::string_view str, StringParameter &&data)
 {
 	std::string message;
 	StringBuilder builder(message);
