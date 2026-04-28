@@ -24,7 +24,7 @@
 /** Cached current locale. */
 static CFAutoRelease<CFLocaleRef> _osx_locale;
 /** CoreText cache for font information, cleared when OTTD changes fonts. */
-static EnumClassIndexContainer<std::array<CFAutoRelease<CTFontRef>, to_underlying(FontSize::End)>, FontSize> _font_cache;
+static EnumClassArray<CFAutoRelease<CTFontRef>, FontSize, FontSize::End> _font_cache;
 
 
 /**

@@ -228,7 +228,7 @@ struct TileTypeProcs {
 	CheckBuildAboveProc *check_build_above_proc = nullptr; ///< Called to check whether a bridge can be build above.
 };
 
-extern const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs;
+extern const EnumClassArray<const TileTypeProcs *, TileType, TileType::MaxSize> _tile_type_procs;
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side = INVALID_DIAGDIR);
 VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);

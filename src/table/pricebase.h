@@ -7,7 +7,7 @@
 
 /** @file pricebase.h Table of all default price bases. */
 
-static const EnumClassIndexContainer<std::array<PriceBaseSpec, to_underlying(Price::End)>, Price> _price_base_specs = {
+static const EnumClassArray<PriceBaseSpec, Price, Price::End> _price_base_specs = {
 	PriceBaseSpec(100, PCAT_NONE, GrfSpecFeature::End, Price::Invalid), // Price::StationValue
 	PriceBaseSpec(100, PCAT_CONSTRUCTION, GrfSpecFeature::End, Price::Invalid), // Price::BuildRail
 	PriceBaseSpec(95, PCAT_CONSTRUCTION, GrfSpecFeature::End, Price::Invalid), // Price::BuildRoad

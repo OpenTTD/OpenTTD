@@ -24,13 +24,13 @@ class BadgeClassConfig {
 public:
 	static inline const BadgeClassConfigItem EMPTY_CONFIG_ITEM{};
 
-	EnumClassIndexContainer<std::array<std::vector<BadgeClassConfigItem>, to_underlying(GrfSpecFeature::End)>, GrfSpecFeature> features = {};
+	EnumClassArray<std::vector<BadgeClassConfigItem>, GrfSpecFeature, GrfSpecFeature::End> features = {};
 
 	static constexpr GrfSpecFeatures CONFIGURABLE_FEATURES = {
 		GrfSpecFeature::Trains, GrfSpecFeature::RoadVehicles, GrfSpecFeature::Ships, GrfSpecFeature::Aircraft, GrfSpecFeature::Stations, GrfSpecFeature::Houses, GrfSpecFeature::Objects, GrfSpecFeature::RoadStops,
 	};
 
-	static inline const EnumClassIndexContainer<std::array<std::string_view, to_underlying(GrfSpecFeature::End)>, GrfSpecFeature> sections = {
+	static inline const EnumClassArray<std::string_view, GrfSpecFeature, GrfSpecFeature::End> sections = {
 		"badges_trains", // GrfSpecFeature::Trains
 		"badges_roadvehicles", // GrfSpecFeature::RoadVehicles
 		"badges_ships", // GrfSpecFeature::Ships

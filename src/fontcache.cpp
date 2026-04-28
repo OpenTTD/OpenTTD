@@ -21,9 +21,9 @@
 #include "safeguards.h"
 
 /** Default unscaled heights for the different sizes of fonts. */
-/* static */ const EnumClassIndexContainer<std::array<int, to_underlying(FontSize::End)>, FontSize> FontCache::DEFAULT_FONT_HEIGHT{10, 6, 18, 10};
+/* static */ const EnumClassArray<int, FontSize, FontSize::End> FontCache::DEFAULT_FONT_HEIGHT{10, 6, 18, 10};
 /** Default unscaled ascenders for the different sizes of fonts. */
-/* static */ const EnumClassIndexContainer<std::array<int, to_underlying(FontSize::End)>, FontSize> FontCache::DEFAULT_FONT_ASCENDER{8, 5, 15, 8};
+/* static */ const EnumClassArray<int, FontSize, FontSize::End> FontCache::DEFAULT_FONT_ASCENDER{8, 5, 15, 8};
 
 FontCacheSettings _fcsettings;
 
@@ -91,7 +91,7 @@ int GetCharacterHeight(FontSize size)
 }
 
 
-/* static */ EnumClassIndexContainer<std::array<std::unique_ptr<FontCache>, to_underlying(FontSize::End)>, FontSize> FontCache::caches{};
+/* static */ EnumClassArray<std::unique_ptr<FontCache>, FontSize, FontSize::End> FontCache::caches{};
 
 /**
  * Initialise font caches with the base sprite font cache for all sizes.

@@ -279,7 +279,7 @@ private:
 	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
 	using FontColourMap = std::map<TextColour, std::unique_ptr<Font>>;
-	static EnumClassIndexContainer<std::array<FontColourMap, to_underlying(FontSize::End)>, FontSize> fonts; ///< The colour mapping of each of the fonts.
+	static EnumClassArray<FontColourMap, FontSize, FontSize::End> fonts; ///< The colour mapping of each of the fonts.
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
 

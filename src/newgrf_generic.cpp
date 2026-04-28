@@ -86,7 +86,7 @@ struct GenericCallback {
 typedef std::list<GenericCallback> GenericCallbackList;
 
 /** Generic callbacks for each feature. */
-static EnumClassIndexContainer<std::array<GenericCallbackList, to_underlying(GrfSpecFeature::End)>, GrfSpecFeature> _gcl{};
+static EnumClassArray<GenericCallbackList, GrfSpecFeature, GrfSpecFeature::End> _gcl{};
 
 
 /**
