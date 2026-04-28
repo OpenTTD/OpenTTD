@@ -2222,7 +2222,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra i
 STR_CONFIG_ERROR                                                :Problem med konfigurationsfilen...
 STR_CONFIG_ERROR_ARRAY                                          :fel i listan '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :ogiltigt värde '{STRING}' för '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... extra tecken vid slutet av inställning '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :extra tecken vid slutet av inställning '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :ignorerar NewGRF '{STRING}': NewGRF ID-dublett med '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :ignorerar ogiltig NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :hittades ej
@@ -2231,7 +2231,7 @@ STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :system-NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel med denna version av OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :okänd
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :kompressionsnivån '{STRING}' är inte giltig
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... filformatet '{STRING}' är inte tillgängligt. Återgår till '{STRING}'
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :filformatet '{STRING}' är inte tillgängligt. Återgår till '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignorerar grundgrafikpaketet '{STRING}': hittades ej
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignorerar grundljudpaketet '{STRING}': hittades ej
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignorerar grundmusikpaket '{STRING}': hittades ej
@@ -2615,9 +2615,9 @@ STR_NETWORK_ERROR_KICKED                                        :Du blev utkasta
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :Orsak: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :Fusk är inte tillåtet på denna server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :Du skickade för många kommandon till servern
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du tog för lång tid på dig att mata in löserondet
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Du tog för lång tid på dig att mata in lösenordet
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Din dator tog för lång tid på sig för att ansluta
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Du tog för lång tid på dig att ladda ner kartan
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Din dator tog för lång tid på sig att ladda ner kartan
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Du tog för lång tid på dig att ansluta till servern
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :Ditt spelarnamn är inte tillåtet
 
@@ -3529,7 +3529,7 @@ STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kör skr
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Förbereder spel
 
 STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Inläsning av stadsdata misslyckades
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON-filen är felaktigt formaterad
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :JSON-filen är felaktigt formaterad
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING}s data är felaktigt formaterad
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinater är felaktigt formaterade; måste vara mellan 0 och 1 i proportion till höjdkartans totala dimension
 
@@ -3700,7 +3700,7 @@ STR_NEWGRF_BROKEN                                               :Beteendet hos N
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Kraftförsörjning-vagn-tillstånd för '{1:ENGINE}' ändrades utanför en depå
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depån
 STR_NEWGRF_BROKEN_CAPACITY                                      :Kapaciteten ändrades för '{1:ENGINE}' utan att den var i depå eller under anpassning
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
+STR_BROKEN_VEHICLE_LENGTH                                       :Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :NewGRF:en '{0:STRING}' ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
@@ -4949,7 +4949,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spelskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visa felsökningsutskrifter för spelskript. Ctrl+klicka för att öppna i ett nytt fönster
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande datorspelare hittades.{}Denna datorspelare är en test-datorspelare och kommer inte göra någonting.{}Du kan ladda ner nya datorspelare genom spelets 'Online-innehåll'-system
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ett av skripten som körs har kraschat. Vänligen rapportera detta till datorspelarens skapare med en skärmdump av förstret 'Felsökning av datorspelare / spelskript'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Ett av skripten som körs har kraschat. Vänligen rapportera detta till skriptets skapare med en skärmdump av fönstret 'Felsökning av datorspelare / spelskript'
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelare / spelskript är bara tillgänglig för servern
 
 # AI configuration window
@@ -5280,7 +5280,7 @@ STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan 
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} är för långt efter utbyte
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Inga regler för automatisk förnyelse/utbyte av fordon är aktiverade
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :Inga regler för automatisk förnyelse/utbyte av fordon är aktiverade
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pengagräns)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Det nya fordonet kan ej bära {STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Det nya fordonet kan inte anpassas till order {NUM}
@@ -5514,9 +5514,9 @@ STR_ERROR_NO_BUOY                                               :Det finns ingen
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan inte lägga till fordonet i en tidtabell...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :fordon kan endast vänta vid stationer
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Detta fordon stannar inte vid denna station
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... tidtabellen är ofullständig
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... tidtabellen har inte startat än
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :detta fordon stannar inte vid denna station
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :tidtabellen är ofullständig
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :tidtabellen har inte startat än
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :för många skyltar

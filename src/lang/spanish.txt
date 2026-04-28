@@ -3422,7 +3422,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ríos:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Uniformidad:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedad:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generar
-STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}¡Crear el mundo y juegar a OpenTTD!
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}¡Crear el mundo y jugar a OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Configuración de NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Abrir la configuración de NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Configuración de IA
