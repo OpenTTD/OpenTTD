@@ -2450,7 +2450,7 @@ static const std::string_view _name_hungarian_3[] = {
 	"fa",
 	"f\u00f6ld",
 	"hegyes",
-	"kak",
+	"lak",
 	"kereszt",
 	"k\u00fcrt",
 	"lad\u00e1ny",
