@@ -515,6 +515,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
+	bool limit_reached = false;
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
@@ -537,6 +538,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				/* Test tree limit. */
 				if (--limit < 1) {
 					msg = STR_ERROR_TREE_PLANT_LIMIT_REACHED;
+					limit_reached = true;
 					break;
 				}
 
@@ -578,6 +580,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				/* Test tree limit. */
 				if (--limit < 1) {
 					msg = STR_ERROR_TREE_PLANT_LIMIT_REACHED;
+					limit_reached = true;
 					break;
 				}
 
@@ -628,6 +631,10 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 		/* Tree limit used up? No need to check more. */
 		if (limit < 0) break;
+	}
+
+	if (limit_reached) {
+		return CommandCost(msg);
 	}
 
 	if (cost.GetCost() == 0) {

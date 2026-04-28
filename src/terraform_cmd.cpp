@@ -335,6 +335,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error(lm == LM_LEVEL ? STR_ERROR_ALREADY_LEVELLED : INVALID_STRING_ID);
 	bool had_success = false;
+	bool limit_reached = false;
 
 	const Company *c = Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->terraform_limit, 16, 16));
@@ -370,6 +371,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 				 * cut off earlier might even give a better estimate in some cases. */
 				if (--limit <= 0) {
 					had_success = true;
+					limit_reached = true;
 					break;
 				}
 			}
@@ -382,6 +384,11 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 		if (limit <= 0) break;
 	}
 
-	CommandCost cc_ret = had_success ? cost : last_error;
+	CommandCost cc_ret;
+	if (limit_reached) {
+		cc_ret = CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED);
+	} else {
+		cc_ret = had_success ? cost : last_error;
+	}
 	return { cc_ret, 0, cc_ret.Succeeded() ? tile : error_tile };
 }
