@@ -262,12 +262,12 @@ public:
 	/**
 	 * NewGRF providing the Action3 for the railtype. nullptr if not available.
 	 */
-	EnumClassIndexContainer<std::array<const GRFFile *, to_underlying(RailSpriteType::End)>, RailSpriteType> grffile{};
+	EnumClassArray<const GRFFile *, RailSpriteType, RailSpriteType::End> grffile{};
 
 	/**
 	 * Sprite groups for resolving sprites
 	 */
-	EnumClassIndexContainer<std::array<const SpriteGroup *, to_underlying(RailSpriteType::End)>, RailSpriteType> group{};
+	EnumClassArray<const SpriteGroup *, RailSpriteType, RailSpriteType::End> group{};
 
 	std::vector<BadgeID> badges;
 

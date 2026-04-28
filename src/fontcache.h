@@ -22,7 +22,7 @@ static const GlyphID SPRITE_GLYPH = 1U << 30;
 /** Font cache for basic fonts. */
 class FontCache {
 protected:
-	static EnumClassIndexContainer<std::array<std::unique_ptr<FontCache>, to_underlying(FontSize::End)>, FontSize> caches; ///< All the font caches.
+	static EnumClassArray<std::unique_ptr<FontCache>, FontSize, FontSize::End> caches; ///< All the font caches.
 	std::unique_ptr<FontCache> parent; ///< The parent of this font cache.
 	const FontSize fs; ///< The size of the font.
 	int height = 0; ///< The height of the font.
@@ -42,9 +42,9 @@ public:
 	static void ClearFontCaches(FontSizes fontsizes);
 
 	/** Default unscaled font heights. */
-	static const EnumClassIndexContainer<std::array<int, to_underlying(FontSize::End)>, FontSize> DEFAULT_FONT_HEIGHT;
+	static const EnumClassArray<int, FontSize, FontSize::End> DEFAULT_FONT_HEIGHT;
 	/** Default unscaled font ascenders. */
-	static const EnumClassIndexContainer<std::array<int, to_underlying(FontSize::End)>, FontSize> DEFAULT_FONT_ASCENDER;
+	static const EnumClassArray<int, FontSize, FontSize::End> DEFAULT_FONT_ASCENDER;
 
 	static int GetDefaultFontHeight(FontSize fs);
 

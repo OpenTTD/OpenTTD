@@ -36,7 +36,7 @@ extern std::string _config_file;
 extern std::string _highscore_file;
 
 /** Subdirectory names. */
-static const EnumClassIndexContainer<std::array<std::string_view, to_underlying(Subdirectory::End)>, Subdirectory> _subdirs = {
+static const EnumClassArray<std::string_view, Subdirectory, Subdirectory::End> _subdirs = {
 	"",
 	"save" PATHSEP,
 	"save" PATHSEP "autosave" PATHSEP,
@@ -62,12 +62,12 @@ static const EnumClassIndexContainer<std::array<std::string_view, to_underlying(
  * An empty string tells that there is no such path for the
  * current operating system.
  */
-EnumClassIndexContainer<std::array<std::string, to_underlying(Searchpath::End)>, Searchpath> _searchpaths;
+EnumClassArray<std::string, Searchpath, Searchpath::End> _searchpaths;
 std::vector<Searchpath> _valid_searchpaths;
 /** List of tar files found in each subdirectory. */
-EnumClassIndexContainer<std::array<TarList, to_underlying(Subdirectory::End)>, Subdirectory> _tar_list;
+EnumClassArray<TarList, Subdirectory, Subdirectory::End> _tar_list;
 /** List of files within tar files found in each subdirectory. */
-EnumClassIndexContainer<std::array<TarFileList, to_underlying(Subdirectory::End)>, Subdirectory> _tar_filelist;
+EnumClassArray<TarFileList, Subdirectory, Subdirectory::End> _tar_filelist;
 
 /**
  * Checks whether the given search path is a valid search path

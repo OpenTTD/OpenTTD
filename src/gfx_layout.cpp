@@ -38,7 +38,7 @@
 std::unique_ptr<Layouter::LineCache> Layouter::linecache;
 
 /** Cache of Font instances. */
-EnumClassIndexContainer<std::array<Layouter::FontColourMap, to_underlying(FontSize::End)>, FontSize> Layouter::fonts;
+EnumClassArray<Layouter::FontColourMap, FontSize, FontSize::End> Layouter::fonts;
 
 
 /**

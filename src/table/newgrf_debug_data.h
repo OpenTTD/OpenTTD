@@ -721,7 +721,7 @@ static const NIFeature _nif_roadstop = {
 };
 
 /** Table with all NIFeatures. */
-static const EnumClassIndexContainer<std::array<const NIFeature *, to_underlying(GrfSpecFeature::FakeEnd)>, GrfSpecFeature> _nifeatures{
+static const EnumClassArray<const NIFeature *, GrfSpecFeature, GrfSpecFeature::FakeEnd> _nifeatures{
 	&_nif_vehicle, // GrfSpecFeature::Trains
 	&_nif_vehicle, // GrfSpecFeature::RoadVehicles
 	&_nif_vehicle, // GrfSpecFeature::Ships

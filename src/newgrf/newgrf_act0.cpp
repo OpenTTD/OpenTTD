@@ -164,7 +164,7 @@ struct InvokeGrfChangeInfoHandler {
 	using Invoker = ChangeInfoResult(*)(uint first, uint last, int prop, ByteReader &buf, GrfLoadingStage stage);
 
 	/** List of invoke handlers for each feature. */
-	static constexpr EnumClassIndexContainer<std::array<Invoker, to_underlying(GrfSpecFeature::End)>, GrfSpecFeature> funcs { // Must be listed in feature order.
+	static constexpr EnumClassArray<Invoker, GrfSpecFeature, GrfSpecFeature::End> funcs { // Must be listed in feature order.
 		Invoke<GrfSpecFeature::Trains>,       Invoke<GrfSpecFeature::RoadVehicles>,  Invoke<GrfSpecFeature::Ships>,         Invoke<GrfSpecFeature::Aircraft>,
 		Invoke<GrfSpecFeature::Stations>,     Invoke<GrfSpecFeature::Canals>,        Invoke<GrfSpecFeature::Bridges>,       Invoke<GrfSpecFeature::Houses>,
 		Invoke<GrfSpecFeature::GlobalVar>,    Invoke<GrfSpecFeature::IndustryTiles>, Invoke<GrfSpecFeature::Industries>,    Invoke<GrfSpecFeature::Cargoes>,

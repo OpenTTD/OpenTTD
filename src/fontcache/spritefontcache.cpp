@@ -33,7 +33,7 @@ static int ScaleFontTrad(int value)
 	return UnScaleByZoom(value * ZOOM_BASE, _font_zoom);
 }
 
-static EnumClassIndexContainer<std::array<std::unordered_map<char32_t, SpriteID>, to_underlying(FontSize::End)>, FontSize> _char_maps{}; ///< Glyph map for each font size.
+static EnumClassArray<std::unordered_map<char32_t, SpriteID>, FontSize, FontSize::End> _char_maps{}; ///< Glyph map for each font size.
 
 /**
  * Get SpriteID associated with a character.

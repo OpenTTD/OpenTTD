@@ -303,7 +303,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_save_dialog_widgets 
 };
 
 /** Text colours of #DetailedFileType fios entries in the window. */
-static const EnumClassIndexContainer<std::array<TextColour, to_underlying(DetailedFileType::End)>, DetailedFileType> _fios_colours = {
+static const EnumClassArray<TextColour, DetailedFileType, DetailedFileType::End> _fios_colours = {
 	TC_LIGHT_BROWN, // DetailedFileType::OldGameFile
 	TC_ORANGE, // DetailedFileType::GameFile
 	TC_YELLOW, // DetailedFileType::HeightmapBmp

@@ -51,7 +51,7 @@ SwitchMode _switch_mode;  ///< The next mainloop command.
 PauseModes _pause_mode;
 GameSessionStats _game_session_stats; ///< Statistics about the current session.
 
-static EnumClassIndexContainer<std::array<std::array<uint8_t, 244>, to_underlying(FontSize::End)>, FontSize> _stringwidth_table; ///< Cache containing width of often used characters. @see GetCharacterWidth()
+static EnumClassArray<std::array<uint8_t, 244>, FontSize, FontSize::End> _stringwidth_table; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
 
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);

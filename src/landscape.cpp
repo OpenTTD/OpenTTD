@@ -66,7 +66,7 @@ extern const TileTypeProcs
  * @ingroup TileCallbackGroup
  * @see TileType
  */
-const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs = {
+const EnumClassArray<const TileTypeProcs *, TileType, TileType::MaxSize> _tile_type_procs = {
 	&_tile_type_clear_procs, // Callback functions for TileType::Clear tiles
 	&_tile_type_rail_procs, // Callback functions for TileType::Railway tiles
 	&_tile_type_road_procs, // Callback functions for TileType::Road tiles

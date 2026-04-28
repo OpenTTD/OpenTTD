@@ -168,8 +168,8 @@ enum class Price : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Price)
 
-using Prices = EnumClassIndexContainer<std::array<Money,to_underlying(Price::End)>, Price>; ///< Prices of everything. @see Price
-using PriceMultipliers = EnumClassIndexContainer<std::array<int8_t, to_underlying(Price::End)>, Price>;
+using Prices = EnumClassArray<Money, Price, Price::End>; ///< Prices of everything. @see Price
+using PriceMultipliers = EnumClassArray<int8_t, Price, Price::End>;
 
 /** Types of expenses. */
 enum ExpensesType : uint8_t {

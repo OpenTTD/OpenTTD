@@ -129,8 +129,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	SuppliedCargoes supplied{}; ///< Cargo statistics about supplied cargo.
 	AcceptedCargoes accepted{}; ///< Cargo statistics about accepted cargo.
-	EnumClassIndexContainer<std::array<TransportedCargoStat<uint16_t>, to_underlying(TownAcceptanceEffect::End)>, TownAcceptanceEffect> received{}; ///< Cargo statistics about received cargotypes.
-	EnumClassIndexContainer<std::array<uint32_t, to_underlying(TownAcceptanceEffect::End)>, TownAcceptanceEffect> goal{}; ///< Amount of cargo required for the town to grow.
+	EnumClassArray<TransportedCargoStat<uint16_t>, TownAcceptanceEffect, TownAcceptanceEffect::End> received{}; ///< Cargo statistics about received cargotypes.
+	EnumClassArray<uint32_t, TownAcceptanceEffect, TownAcceptanceEffect::End> goal{}; ///< Amount of cargo required for the town to grow.
 	ValidHistoryMask valid_history = 0; ///< Mask of valid history records.
 
 	EncodedString text{}; ///< General text with additional information.

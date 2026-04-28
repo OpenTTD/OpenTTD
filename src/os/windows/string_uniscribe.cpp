@@ -29,7 +29,7 @@
 
 
 /** Uniscribe cache for internal font information, cleared when OTTD changes fonts. */
-static EnumClassIndexContainer<std::array<SCRIPT_CACHE, to_underlying(FontSize::End)>, FontSize> _script_cache;
+static EnumClassArray<SCRIPT_CACHE, FontSize, FontSize::End> _script_cache;
 
 /**
  * Contains all information about a run of characters. A run are consecutive

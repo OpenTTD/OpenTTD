@@ -258,7 +258,7 @@ static inline const NIHelper &GetFeatureHelper(uint window_number)
 /** Window used for inspecting NewGRFs. */
 struct NewGRFInspectWindow : Window {
 	/** The value for the variable 60 parameters. */
-	static inline EnumClassIndexContainer<std::array<std::array<uint32_t, 0x20>, to_underlying(GrfSpecFeature::FakeEnd)>, GrfSpecFeature> var60params{};
+	static inline EnumClassArray<std::array<uint32_t, 0x20>, GrfSpecFeature, GrfSpecFeature::FakeEnd> var60params{};
 
 	/** GRFID of the caller of this window, 0 if it has no caller. */
 	uint32_t caller_grfid = 0;

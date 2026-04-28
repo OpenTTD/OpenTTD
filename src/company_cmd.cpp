@@ -470,7 +470,7 @@ bad_town_name:;
 }
 
 /** Sorting weights for the company colours. */
-static const EnumClassIndexContainer<std::array<uint8_t, to_underlying(Colours::End)>, Colours> _colour_sort{2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
+static const EnumClassArray<uint8_t, Colours, Colours::End> _colour_sort{2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 /** Similar colours, so we can try to prevent same coloured companies. */
 static const std::initializer_list<Colours> _similar_colour[to_underlying(Colours::End)] = {
 	{Colours::Blue, Colours::LightBlue }, // Colours::DarkBlue

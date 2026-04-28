@@ -126,7 +126,7 @@ std::optional<std::string> GetClipboardContents()
  */
 void CocoaSetApplicationBundleDir()
 {
-	extern EnumClassIndexContainer<std::array<std::string, to_underlying(Searchpath::End)>, Searchpath> _searchpaths;
+	extern EnumClassArray<std::string, Searchpath, Searchpath::End> _searchpaths;
 
 	char tmp[MAXPATHLEN];
 	CFAutoRelease<CFURLRef> url(CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle()));

@@ -158,12 +158,12 @@ public:
 	/**
 	 * NewGRF providing the Action3 for the roadtype. nullptr if not available.
 	 */
-	EnumClassIndexContainer<std::array<const GRFFile *, to_underlying(RoadSpriteType::End)>, RoadSpriteType> grffile{};
+	EnumClassArray<const GRFFile *, RoadSpriteType, RoadSpriteType::End> grffile{};
 
 	/**
 	 * Sprite groups for resolving sprites
 	 */
-	EnumClassIndexContainer<std::array<const SpriteGroup *, to_underlying(RoadSpriteType::End)>, RoadSpriteType> group{};
+	EnumClassArray<const SpriteGroup *, RoadSpriteType, RoadSpriteType::End> group{};
 
 	std::vector<BadgeID> badges;
 

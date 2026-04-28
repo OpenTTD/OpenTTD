@@ -96,6 +96,6 @@ using VehicleRandomTriggers = EnumBitSet<VehicleRandomTrigger, uint8_t>;
  * @tparam Tend the number of elements in the array.
  */
 template <typename T, VehicleType Tend = VehicleType::CompanyEnd>
-using VehicleTypeIndexArray = EnumClassIndexContainer<std::array<T, to_underlying(Tend)>, VehicleType>;
+using VehicleTypeIndexArray = EnumClassArray<T, VehicleType, Tend>;
 
 #endif /* VEHICLE_TYPE_H */

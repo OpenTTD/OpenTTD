@@ -192,7 +192,7 @@ struct CargoSpec {
 	static IterateWrapper Iterate(size_t from = 0) { return IterateWrapper(from); }
 
 	/** List of cargo specs for each Town Product Effect. */
-	static inline EnumClassIndexContainer<std::array<std::vector<const CargoSpec *>, to_underlying(TownProductionEffect::End)>, TownProductionEffect> town_production_cargoes{};
+	static inline EnumClassArray<std::vector<const CargoSpec *>, TownProductionEffect, TownProductionEffect::End> town_production_cargoes{};
 
 private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs

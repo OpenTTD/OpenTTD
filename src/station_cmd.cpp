@@ -2451,8 +2451,8 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlags flags, const TileArea &r
 
 		/* Save information on to-be-restored roads before the stop is removed. */
 		RoadBits road_bits{};
-		EnumClassIndexContainer<std::array<RoadType, to_underlying(RoadTramType::End)>, RoadTramType> road_type{INVALID_ROADTYPE, INVALID_ROADTYPE};
-		EnumClassIndexContainer<std::array<Owner, to_underlying(RoadTramType::End)>, RoadTramType> road_owner{OWNER_NONE, OWNER_NONE};
+		EnumClassArray<RoadType, RoadTramType, RoadTramType::End> road_type{INVALID_ROADTYPE, INVALID_ROADTYPE};
+		EnumClassArray<Owner, RoadTramType, RoadTramType::End> road_owner{OWNER_NONE, OWNER_NONE};
 		if (IsDriveThroughStopTile(cur_tile)) {
 			for (RoadTramType rtt : ROADTRAMTYPES_ALL) {
 				road_type[rtt] = GetRoadType(cur_tile, rtt);
