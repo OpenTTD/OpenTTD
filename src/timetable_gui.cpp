@@ -845,7 +845,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_timetable_widgets = 
 /** Window definition for the timetable window. */
 static WindowDesc _timetable_desc(
 	WindowPosition::Automatic, "view_vehicle_timetable", 400, 130,
-	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
+	WindowClass::VehicleTimetable, WindowClass::VehicleView,
 	WindowDefaultFlag::Construction,
 	_nested_timetable_widgets
 );
@@ -856,7 +856,7 @@ static WindowDesc _timetable_desc(
  */
 void ShowTimetableWindow(const Vehicle *v)
 {
-	CloseWindowById(WC_VEHICLE_DETAILS, v->index, false);
-	CloseWindowById(WC_VEHICLE_ORDERS, v->index, false);
+	CloseWindowById(WindowClass::VehicleDetails, v->index, false);
+	CloseWindowById(WindowClass::VehicleOrders, v->index, false);
 	AllocateWindowDescFront<TimetableWindow>(_timetable_desc, v->index);
 }

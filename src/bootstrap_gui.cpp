@@ -43,7 +43,7 @@ static constexpr std::initializer_list<NWidgetPart> _background_widgets = {
  */
 static WindowDesc _background_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_BOOTSTRAP, WC_NONE,
+	WindowClass::Bootstrap, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_background_widgets
 );
@@ -79,7 +79,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_errmsg_wid
 /** Window description for the error window. */
 static WindowDesc _bootstrap_errmsg_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_BOOTSTRAP, WC_NONE,
+	WindowClass::Bootstrap, WindowClass::None,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_errmsg_widgets
 );
@@ -136,7 +136,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_download_s
 /** Window description for the download window */
 static WindowDesc _bootstrap_download_status_window_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_NETWORK_STATUS_WINDOW, WC_NONE,
+	WindowClass::NetworkStatus, WindowClass::None,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_download_status_window_widgets
 );
@@ -188,7 +188,7 @@ static constexpr std::initializer_list<NWidgetPart> _bootstrap_query_widgets = {
 /** The window description for the query. */
 static WindowDesc _bootstrap_query_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_CONFIRM_POPUP_QUERY, WC_NONE,
+	WindowClass::ConfirmPopupQuery, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_bootstrap_query_widgets
 );
@@ -201,7 +201,7 @@ public:
 	/** Start listening to the content client events. */
 	BootstrapAskForDownloadWindow() : Window(_bootstrap_query_desc)
 	{
-		this->InitNested(WN_CONFIRM_POPUP_QUERY_BOOTSTRAP);
+		this->InitNested(ConfirmPopupQueryWindowNumber::Bootstrap);
 		_network_content_client.AddCallback(this);
 	}
 

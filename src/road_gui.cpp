@@ -368,7 +368,7 @@ struct BuildRoadToolbarWindow : Window {
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		if (_game_mode == GM_NORMAL && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
-		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
+		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WindowClass::ScenarioGenerateLandscape, 0, false);
 		this->Window::Close();
 	}
 
@@ -396,10 +396,10 @@ struct BuildRoadToolbarWindow : Window {
 			WID_ROT_BUS_STATION,
 			WID_ROT_TRUCK_STATION);
 		if (!can_build) {
-			CloseWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
-			CloseWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
-			CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
-			CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_ROAD);
+			CloseWindowById(WindowClass::BuildBusStation, TRANSPORT_ROAD);
+			CloseWindowById(WindowClass::BuildTruckStation, TRANSPORT_ROAD);
+			CloseWindowById(WindowClass::BuildDepot, TRANSPORT_ROAD);
+			CloseWindowById(WindowClass::BuildWaypoint, TRANSPORT_ROAD);
 		}
 
 		if (_game_mode != GM_EDITOR) {
@@ -603,7 +603,7 @@ struct BuildRoadToolbarWindow : Window {
 			case WID_ROT_REMOVE:
 				if (this->IsWidgetDisabled(WID_ROT_REMOVE)) return;
 
-				CloseWindowById(WC_SELECT_STATION, 0);
+				CloseWindowById(WindowClass::JoinStation, 0);
 				ToggleRoadButton_Remove(this);
 				SndClickBeep();
 				break;
@@ -634,7 +634,7 @@ struct BuildRoadToolbarWindow : Window {
 		this->ModifyRoadType(_cur_roadtype);
 
 		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
-		for (WindowClass cls : {WC_BUS_STATION, WC_TRUCK_STATION, WC_BUILD_WAYPOINT, WC_BUILD_DEPOT}) SetWindowDirty(cls, TRANSPORT_ROAD);
+		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TRANSPORT_ROAD);
 
 		return ES_HANDLED;
 	}
@@ -721,12 +721,12 @@ struct BuildRoadToolbarWindow : Window {
 			this->SetWidgetDirty(WID_ROT_ONE_WAY);
 		}
 
-		CloseWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
-		CloseWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
-		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
-		CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_ROAD);
-		CloseWindowById(WC_SELECT_STATION, 0);
-		CloseWindowByClass(WC_BUILD_BRIDGE);
+		CloseWindowById(WindowClass::BuildBusStation, TRANSPORT_ROAD);
+		CloseWindowById(WindowClass::BuildTruckStation, TRANSPORT_ROAD);
+		CloseWindowById(WindowClass::BuildDepot, TRANSPORT_ROAD);
+		CloseWindowById(WindowClass::BuildWaypoint, TRANSPORT_ROAD);
+		CloseWindowById(WindowClass::JoinStation, 0);
+		CloseWindowByClass(WindowClass::BuildBridge);
 	}
 
 	void OnPlaceDrag(ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt) override
@@ -997,7 +997,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_road_widgets =
 /** Window definition for the road toolbar. */
 static WindowDesc _build_road_desc(
 	WindowPosition::Manual, "toolbar_road", 0, 0,
-	WC_BUILD_TOOLBAR, WC_NONE,
+	WindowClass::BuildToolbar, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_road_widgets,
 	&BuildRoadToolbarWindow::road_hotkeys
@@ -1043,7 +1043,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_tramway_widget
 /** Window definition for the tram toolbar. */
 static WindowDesc _build_tramway_desc(
 	WindowPosition::Manual, "toolbar_tramway", 0, 0,
-	WC_BUILD_TOOLBAR, WC_NONE,
+	WindowClass::BuildToolbar, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_tramway_widgets,
 	&BuildRoadToolbarWindow::tram_hotkeys
@@ -1062,7 +1062,7 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRoadType(roadtype)) return nullptr;
 
-	CloseWindowByClass(WC_BUILD_TOOLBAR);
+	CloseWindowByClass(WindowClass::BuildToolbar);
 	_cur_roadtype = roadtype;
 
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_desc : _build_tramway_desc, TRANSPORT_ROAD);
@@ -1102,7 +1102,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_road_scen_widg
 /** Window definition for the road toolbar of the scenario editor. */
 static WindowDesc _build_road_scen_desc(
 	WindowPosition::Automatic, "toolbar_road_scen", 0, 0,
-	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
+	WindowClass::ScenarioBuildToolbar, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_road_scen_widgets,
 	&BuildRoadToolbarWindow::road_hotkeys
@@ -1140,7 +1140,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_tramway_scen_w
 /** Window definition for the tram toolbar of the scenario editor. */
 static WindowDesc _build_tramway_scen_desc(
 	WindowPosition::Automatic, "toolbar_tram_scen", 0, 0,
-	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
+	WindowClass::ScenarioBuildToolbar, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_tramway_scen_widgets,
 	&BuildRoadToolbarWindow::tram_hotkeys
@@ -1153,7 +1153,7 @@ static WindowDesc _build_tramway_scen_desc(
  */
 Window *ShowBuildRoadScenToolbar(RoadType roadtype)
 {
-	CloseWindowById(WC_SCEN_BUILD_TOOLBAR, TRANSPORT_ROAD);
+	CloseWindowById(WindowClass::ScenarioBuildToolbar, TRANSPORT_ROAD);
 	_cur_roadtype = roadtype;
 
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_scen_desc : _build_tramway_scen_desc, TRANSPORT_ROAD);
@@ -1239,7 +1239,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_road_depot_wid
 /** Window definition for the build road depot window. */
 static WindowDesc _build_road_depot_desc(
 	WindowPosition::Automatic, {}, 0, 0,
-	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
+	WindowClass::BuildDepot, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_build_road_depot_widgets
 );
@@ -1385,7 +1385,7 @@ private:
 			_roadstop_gui.orientation = DIAGDIR_END;
 			this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
 			this->SetDirty();
-			CloseWindowById(WC_SELECT_STATION, 0);
+			CloseWindowById(WindowClass::JoinStation, 0);
 		}
 	}
 
@@ -1410,12 +1410,12 @@ public:
 		this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
 		this->LowerWidget(WID_BROS_LT_OFF + _settings_client.gui.station_show_coverage);
 
-		this->window_class = (rs == RoadStopType::Bus) ? WC_BUS_STATION : WC_TRUCK_STATION;
+		this->window_class = (rs == RoadStopType::Bus) ? WindowClass::BuildBusStation : WindowClass::BuildTruckStation;
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WindowClass::JoinStation, 0);
 		this->PickerWindow::Close();
 	}
 
@@ -1434,7 +1434,7 @@ public:
 
 		this->DrawWidgets();
 
-		int rad = _settings_game.station.modified_catchment ? ((this->window_class == WC_BUS_STATION) ? CA_BUS : CA_TRUCK) : CA_UNMODIFIED;
+		int rad = _settings_game.station.modified_catchment ? ((this->window_class == WindowClass::BuildBusStation) ? CA_BUS : CA_TRUCK) : CA_UNMODIFIED;
 		if (_settings_client.gui.station_show_coverage) {
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		} else {
@@ -1444,7 +1444,7 @@ public:
 		if (this->IsShaded()) return;
 
 		/* 'Accepts' and 'Supplies' texts. */
-		StationCoverageType sct = (this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;
+		StationCoverageType sct = (this->window_class == WindowClass::BuildBusStation) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;
 		Rect r = this->GetWidget<NWidgetBase>(WID_BROS_ACCEPTANCE)->GetCurrentRect();
 		const int bottom = r.bottom;
 		r.bottom = INT_MAX; // Allow overflow as we want to know the required height.
@@ -1491,8 +1491,8 @@ public:
 	StationType GetRoadStationTypeByWindowClass(WindowClass window_class) const
 	{
 		switch (window_class) {
-			case WC_BUS_STATION:          return StationType::Bus;
-			case WC_TRUCK_STATION:        return StationType::Truck;
+			case WindowClass::BuildBusStation: return StationType::Bus;
+			case WindowClass::BuildTruckStation: return StationType::Truck;
 			default: NOT_REACHED();
 		}
 	}
@@ -1547,7 +1547,7 @@ public:
 				this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
 				SndClickBeep();
 				this->SetDirty();
-				CloseWindowById(WC_SELECT_STATION, 0);
+				CloseWindowById(WindowClass::JoinStation, 0);
 				break;
 
 			case WID_BROS_LT_OFF:
@@ -1637,7 +1637,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_road_station_picker_
 /** Window definition for the build road station window. */
 static WindowDesc _road_station_picker_desc(
 	WindowPosition::Automatic, "build_station_road", 0, 0,
-	WC_BUS_STATION, WC_BUILD_TOOLBAR,
+	WindowClass::BuildBusStation, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_road_station_picker_widgets,
 	&BuildRoadStationWindow::road_hotkeys
@@ -1678,7 +1678,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_tram_station_picker_
 /** Window definition for the build tram station window. */
 static WindowDesc _tram_station_picker_desc(
 	WindowPosition::Automatic, "build_station_tram", 0, 0,
-	WC_BUS_STATION, WC_BUILD_TOOLBAR,
+	WindowClass::BuildBusStation, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_tram_station_picker_widgets,
 	&BuildRoadStationWindow::tram_hotkeys
@@ -1801,7 +1801,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_road_waypoint_
 /** Window definition for the build road waypoint window. */
 static WindowDesc _build_road_waypoint_desc(
 	WindowPosition::Automatic, "build_road_waypoint", 0, 0,
-	WC_BUILD_WAYPOINT, WC_BUILD_TOOLBAR,
+	WindowClass::BuildWaypoint, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_build_road_waypoint_widgets,
 	&BuildRoadWaypointWindow::hotkeys
@@ -1826,7 +1826,7 @@ void InitializeRoadGui()
  */
 void InitializeRoadGUI()
 {
-	BuildRoadToolbarWindow *w = dynamic_cast<BuildRoadToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_ROAD));
+	BuildRoadToolbarWindow *w = dynamic_cast<BuildRoadToolbarWindow *>(FindWindowById(WindowClass::BuildToolbar, TRANSPORT_ROAD));
 	if (w != nullptr) w->ModifyRoadType(_cur_roadtype);
 }
 

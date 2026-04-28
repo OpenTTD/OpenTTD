@@ -48,7 +48,7 @@ std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex til
 		Sign *si = Sign::Create(_game_mode == GM_EDITOR ? OWNER_DEITY : _current_company, x, y, GetSlopePixelZ(x, y), text);
 
 		si->UpdateVirtCoord();
-		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
+		InvalidateWindowData(WindowClass::SignList, 0, 0);
 		return { CommandCost(), si->index };
 	}
 
@@ -82,7 +82,7 @@ CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::strin
 			if (_game_mode != GM_EDITOR) si->owner = _current_company;
 
 			si->UpdateVirtCoord();
-			InvalidateWindowData(WC_SIGN_LIST, 0, 1);
+			InvalidateWindowData(WindowClass::SignList, 0, 1);
 		}
 	} else { // Delete sign
 		if (flags.Test(DoCommandFlag::Execute)) {
@@ -90,7 +90,7 @@ CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::strin
 			if (si->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeSign(si->index));
 			delete si;
 
-			InvalidateWindowData(WC_SIGN_LIST, 0, 0);
+			InvalidateWindowData(WindowClass::SignList, 0, 0);
 		}
 	}
 

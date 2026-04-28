@@ -85,7 +85,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_ai_config_widgets = 
 /** Window definition for the configure AI window. */
 static WindowDesc _ai_config_desc(
 	WindowPosition::Center, {}, 0, 0,
-	WC_GAME_OPTIONS, WC_NONE,
+	WindowClass::GameOptions, WindowClass::None,
 	{},
 	_nested_ai_config_widgets
 );
@@ -100,7 +100,7 @@ struct AIConfigWindow : public Window {
 
 	AIConfigWindow() : Window(_ai_config_desc)
 	{
-		this->InitNested(WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
+		this->InitNested(GameOptionsWindowNumber::AI); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_AIC_SCROLLBAR);
 		this->selected_slot = CompanyID::Invalid();
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);
@@ -111,8 +111,8 @@ struct AIConfigWindow : public Window {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowByClass(WC_SCRIPT_LIST);
-		CloseWindowByClass(WC_SCRIPT_SETTINGS);
+		CloseWindowByClass(WindowClass::ScriptList);
+		CloseWindowByClass(WindowClass::ScriptSettings);
 		this->Window::Close();
 	}
 
@@ -335,7 +335,7 @@ struct AIConfigWindow : public Window {
 /** Open the AI config window. */
 void ShowAIConfigWindow()
 {
-	CloseWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WindowClass::GameOptions);
 	new AIConfigWindow();
 }
 

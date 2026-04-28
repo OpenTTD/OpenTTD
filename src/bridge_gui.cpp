@@ -178,7 +178,7 @@ public:
 		this->GetWidget<NWidgetCore>(WID_BBS_CAPTION)->SetString((transport_type == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION);
 		this->FinishInitNested(transport_type); // Initializes 'this->icon_width'.
 
-		this->parent = FindWindowById(WC_BUILD_TOOLBAR, transport_type);
+		this->parent = FindWindowById(WindowClass::BuildToolbar, transport_type);
 		this->bridges.SetListing(BuildBridgeWindow::last_sorting);
 		this->bridges.SetSortFuncs(BuildBridgeWindow::sorter_funcs);
 		this->bridges.NeedResort();
@@ -351,7 +351,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_bridge_widgets
 /** Window definition for the rail bridge selection window. */
 static WindowDesc _build_bridge_desc(
 	WindowPosition::Automatic, "build_bridge", 200, 114,
-	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
+	WindowClass::BuildBridge, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_build_bridge_widgets
 );
@@ -369,7 +369,7 @@ static WindowDesc _build_bridge_desc(
  */
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, RailType railtype, RoadType roadtype)
 {
-	CloseWindowByClass(WC_BUILD_BRIDGE);
+	CloseWindowByClass(WindowClass::BuildBridge);
 
 	/* The bridge length without ramps. */
 	const uint bridge_len = GetTunnelBridgeLength(start, end);

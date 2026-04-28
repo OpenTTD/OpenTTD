@@ -212,8 +212,8 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause)
 			VideoDriver::GetInstance()->SetScreensaverInhibited(_pause_mode.None());
 		}
 
-		SetWindowDirty(WC_STATUS_BAR, 0);
-		SetWindowDirty(WC_MAIN_TOOLBAR, 0);
+		SetWindowDirty(WindowClass::Statusbar, 0);
+		SetWindowDirty(WindowClass::MainToolbar, 0);
 	}
 	return CommandCost();
 }

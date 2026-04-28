@@ -67,14 +67,14 @@ static constexpr std::initializer_list<NWidgetPart> _nested_screenshot = {
 /** Window definition for the screenshot window. */
 static WindowDesc _screenshot_window_desc(
 	WindowPosition::Automatic, "take_a_screenshot", 200, 100,
-	WC_SCREENSHOT, WC_NONE,
+	WindowClass::Screenshot, WindowClass::None,
 	{},
 	_nested_screenshot
 );
 
 void ShowScreenshotWindow()
 {
-	CloseWindowById(WC_SCREENSHOT, 0);
+	CloseWindowById(WindowClass::Screenshot, 0);
 	new ScreenshotWindow(_screenshot_window_desc);
 }
 
@@ -84,7 +84,7 @@ void ShowScreenshotWindow()
  */
 void SetScreenshotWindowVisibility(bool hide)
 {
-	ScreenshotWindow *scw = dynamic_cast<ScreenshotWindow *>(FindWindowById(WC_SCREENSHOT, 0));
+	ScreenshotWindow *scw = dynamic_cast<ScreenshotWindow *>(FindWindowById(WindowClass::Screenshot, 0));
 
 	if (scw == nullptr) return;
 

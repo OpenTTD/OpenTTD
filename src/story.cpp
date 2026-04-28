@@ -271,8 +271,8 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlags flags, Co
 
 		StoryPage *s = StoryPage::Create(_story_page_next_sort_value, TimerGameCalendar::date, company, text);
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
-		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
+		InvalidateWindowClassesData(WindowClass::StoryBook, -1);
+		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WindowClass::MainToolbar, 0);
 
 		_story_page_next_sort_value++;
 		return { CommandCost(), s->index };
@@ -316,7 +316,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 		StoryPageElement *pe = StoryPageElement::Create(_story_page_element_next_sort_value, type, page_id);
 		UpdateElement(*pe, tile, reference, text);
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 
 		_story_page_element_next_sort_value++;
 		return { CommandCost(), pe->index };
@@ -347,7 +347,7 @@ CommandCost CmdUpdateStoryPageElement(DoCommandFlags flags, TileIndex tile, Stor
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		UpdateElement(*pe, tile, reference, text);
-		InvalidateWindowClassesData(WC_STORY_BOOK, pe->page);
+		InvalidateWindowClassesData(WindowClass::StoryBook, pe->page);
 	}
 
 	return CommandCost();
@@ -369,7 +369,7 @@ CommandCost CmdSetStoryPageTitle(DoCommandFlags flags, StoryPageID page_id, cons
 		StoryPage *p = StoryPage::Get(page_id);
 		p->title = text;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 	}
 
 	return CommandCost();
@@ -391,7 +391,7 @@ CommandCost CmdSetStoryPageDate(DoCommandFlags flags, StoryPageID page_id, Timer
 		StoryPage *p = StoryPage::Get(page_id);
 		p->date = date;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 	}
 
 	return CommandCost();
@@ -438,8 +438,8 @@ CommandCost CmdRemoveStoryPage(DoCommandFlags flags, StoryPageID page_id)
 
 		delete p;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
-		if (StoryPage::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
+		InvalidateWindowClassesData(WindowClass::StoryBook, -1);
+		if (StoryPage::GetNumItems() == 0) InvalidateWindowData(WindowClass::MainToolbar, 0);
 	}
 
 	return CommandCost();
@@ -462,7 +462,7 @@ CommandCost CmdRemoveStoryPageElement(DoCommandFlags flags, StoryPageElementID p
 
 		delete pe;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 	}
 
 	return CommandCost();

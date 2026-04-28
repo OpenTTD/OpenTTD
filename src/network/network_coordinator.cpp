@@ -199,7 +199,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorRegisterAck(Pa
 	 * attempt to re-use when registering again. */
 	_network_server_invite_code = _settings_client.network.server_invite_code;
 
-	SetWindowDirty(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WindowClass::NetworkClientList, 0);
 
 	if (_network_dedicated) {
 		std::string connection_type;
@@ -454,7 +454,7 @@ NetworkRecvStatus ClientNetworkCoordinatorSocketHandler::CloseConnection(bool er
 
 	this->CloseAllConnections();
 
-	SetWindowDirty(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WindowClass::NetworkClientList, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -467,7 +467,7 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 	_network_server_connection_type = CONNECTION_TYPE_UNKNOWN;
 	this->next_update = {};
 
-	SetWindowDirty(WC_CLIENT_LIST, 0);
+	SetWindowDirty(WindowClass::NetworkClientList, 0);
 
 	this->Connect();
 
@@ -672,7 +672,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(std::string_view to
  */
 void ClientNetworkCoordinatorSocketHandler::CloseTurnHandler(std::string_view token)
 {
-	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
+	CloseWindowByClass(WindowClass::NetworkAskRelay, NRWCD_HANDLED);
 
 	auto turn_it = this->turn_handlers.find(token);
 	if (turn_it == this->turn_handlers.end()) return;

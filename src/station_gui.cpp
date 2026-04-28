@@ -720,7 +720,7 @@ public:
 			}
 
 			/* Always close the list if ctrl is not pressed. */
-			if (!_ctrl_pressed) this->CloseChildWindows(WC_DROPDOWN_MENU);
+			if (!_ctrl_pressed) this->CloseChildWindows(WindowClass::DropdownMenu);
 		}
 	}
 
@@ -799,7 +799,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_stations_wid
 /** Window definition for the company stations window. */
 static WindowDesc _company_stations_desc(
 	WindowPosition::Automatic, "list_stations", 358, 162,
-	WC_STATION_LIST, WC_NONE,
+	WindowClass::StationList, WindowClass::None,
 	{},
 	_nested_company_stations_widgets
 );
@@ -1361,10 +1361,10 @@ struct StationViewWindow : public Window {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VehicleType::Train,    this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VehicleType::Road,     this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VehicleType::Ship,     this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Aircraft, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::TrainList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Train, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::RoadVehicleList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Road, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::ShipList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Ship, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::AircraftList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Aircraft, this->owner, this->window_number).ToWindowNumber(), false);
 
 		SetViewportCatchmentStation(Station::Get(this->window_number), false);
 		this->Window::Close();
@@ -1968,7 +1968,7 @@ struct StationViewWindow : public Window {
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		Window *w = FindWindowByClass(WC_QUERY_STRING);
+		Window *w = FindWindowByClass(WindowClass::QueryString);
 
 		switch (widget) {
 			case WID_SV_WAITING:
@@ -1979,8 +1979,8 @@ struct StationViewWindow : public Window {
 				SetViewportCatchmentStation(Station::Get(this->window_number), !this->IsWidgetLowered(WID_SV_CATCHMENT));
 
 				if (w != nullptr && this->IsWidgetLowered(WID_SV_CATCHMENT)) {
-					if (w->parent->window_class == WC_STATION_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
-					if (w->parent->window_class == WC_WAYPOINT_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WindowClass::StationView && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WindowClass::WaypointView && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
 				}
 				break;
 
@@ -2178,7 +2178,7 @@ struct StationViewWindow : public Window {
 /** Window definition for the station view window. */
 static WindowDesc _station_view_desc(
 	WindowPosition::Automatic, "view_station", 249, 117,
-	WC_STATION_VIEW, WC_NONE,
+	WindowClass::StationView, WindowClass::None,
 	{},
 	_nested_station_view_widgets
 );
@@ -2386,7 +2386,7 @@ struct SelectStationWindow : Window {
 		this->select_station_proc(false, *it);
 
 		/* Close Window; this might cause double frees! */
-		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WindowClass::JoinStation, 0);
 	}
 
 	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
@@ -2432,7 +2432,7 @@ struct SelectStationWindow : Window {
 /** Window definition for the station selection window for (distant) joining. */
 static WindowDesc _select_station_desc(
 	WindowPosition::Automatic, "build_station_join", 200, 180,
-	WC_SELECT_STATION, WC_NONE,
+	WindowClass::JoinStation, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_select_station_widgets
 );
@@ -2450,7 +2450,7 @@ static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 
 	/* If a window is already opened and we didn't ctrl-click,
 	 * return true (i.e. just flash the old window) */
-	Window *selection_window = FindWindowById(WC_SELECT_STATION, 0);
+	Window *selection_window = FindWindowById(WindowClass::JoinStation, 0);
 	if (selection_window != nullptr) {
 		/* Abort current distant-join and start new one */
 		selection_window->Close();

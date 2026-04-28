@@ -341,6 +341,21 @@ void Squirrel::AddClassEnd()
 	sq_pop(vm, 1);
 }
 
+void Squirrel::AddScopedEnumBegin(std::string_view enum_name)
+{
+	ScriptAllocatorScope alloc_scope(this);
+
+	sq_pushstring(this->vm, enum_name);
+	sq_newclass(this->vm, SQFalse);
+}
+
+void Squirrel::AddScopedEnumEnd()
+{
+	ScriptAllocatorScope alloc_scope(this);
+
+	sq_newslot(vm, -3, SQFalse);
+}
+
 bool Squirrel::MethodExists(HSQOBJECT instance, std::string_view method_name)
 {
 	assert(!this->crashed);

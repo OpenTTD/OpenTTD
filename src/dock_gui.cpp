@@ -110,7 +110,7 @@ struct BuildDocksToolbarWindow : Window {
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
-		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
+		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WindowClass::ScenarioGenerateLandscape, 0, false);
 		this->Window::Close();
 	}
 
@@ -129,8 +129,8 @@ struct BuildDocksToolbarWindow : Window {
 			WID_DT_STATION,
 			WID_DT_BUOY);
 		if (!can_build) {
-			CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
-			CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
+			CloseWindowById(WindowClass::BuildStation, TRANSPORT_WATER);
+			CloseWindowById(WindowClass::BuildDepot, TRANSPORT_WATER);
 		}
 
 		if (_game_mode != GM_EDITOR) {
@@ -284,10 +284,10 @@ struct BuildDocksToolbarWindow : Window {
 
 		this->RaiseButtons();
 
-		CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
-		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
-		CloseWindowById(WC_SELECT_STATION, 0);
-		CloseWindowByClass(WC_BUILD_BRIDGE);
+		CloseWindowById(WindowClass::BuildStation, TRANSPORT_WATER);
+		CloseWindowById(WindowClass::BuildDepot, TRANSPORT_WATER);
+		CloseWindowById(WindowClass::JoinStation, 0);
+		CloseWindowByClass(WindowClass::BuildBridge);
 	}
 
 	void OnPlacePresize([[maybe_unused]] Point pt, TileIndex tile_from) override
@@ -359,7 +359,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_toolbar_
 /** Window definition for the water/docks toolbar. */
 static WindowDesc _build_docks_toolbar_desc(
 	WindowPosition::Manual, "toolbar_water", 0, 0,
-	WC_BUILD_TOOLBAR, WC_NONE,
+	WindowClass::BuildToolbar, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_toolbar_widgets,
 	&BuildDocksToolbarWindow::hotkeys
@@ -376,7 +376,7 @@ Window *ShowBuildDocksToolbar()
 {
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
-	CloseWindowByClass(WC_BUILD_TOOLBAR);
+	CloseWindowByClass(WindowClass::BuildToolbar);
 	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
@@ -403,7 +403,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_scen_too
 /** Window definition for the build docks in scenario editor window. */
 static WindowDesc _build_docks_scen_toolbar_desc(
 	WindowPosition::Automatic, "toolbar_water_scen", 0, 0,
-	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
+	WindowClass::ScenarioBuildToolbar, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_scen_toolbar_widgets
 );
@@ -428,7 +428,7 @@ public:
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WindowClass::JoinStation, 0);
 		this->PickerWindowBase::Close();
 	}
 
@@ -506,7 +506,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_dock_station_w
 /** Window definition for the dock building window. */
 static WindowDesc _build_dock_station_desc(
 	WindowPosition::Automatic, {}, 0, 0,
-	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
+	WindowClass::BuildStation, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_build_dock_station_widgets
 );
@@ -602,7 +602,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_docks_depot_wi
 /** Window definition for the ship depot window. */
 static WindowDesc _build_docks_depot_desc(
 	WindowPosition::Automatic, {}, 0, 0,
-	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
+	WindowClass::BuildDepot, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_build_docks_depot_widgets
 );

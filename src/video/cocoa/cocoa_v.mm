@@ -187,7 +187,7 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 		[ NSMenu setMenuBarVisible:!full_screen ];
 
 		this->UpdateVideoModes();
-		InvalidateWindowClassesData(WC_GAME_OPTIONS, 3);
+		InvalidateWindowClassesData(WindowClass::GameOptions, 3);
 		return true;
 	}
 

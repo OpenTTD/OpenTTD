@@ -205,7 +205,7 @@ static CallBackFunction SelectSignTool()
 		ResetObjectToPlace();
 		return CallBackFunction::None;
 	} else {
-		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
+		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, HT_RECT, WindowClass::MainToolbar, 0);
 		return CallBackFunction::PlaceSign;
 	}
 }
@@ -335,7 +335,7 @@ static CallBackFunction MenuClickSettings(int index)
 		case OptionMenuEntries::ShowSigns: ToggleBit(_display_opt, DO_SHOW_SIGNS); break;
 		case OptionMenuEntries::ShowCompetitorSigns:
 			ToggleBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
-			InvalidateWindowClassesData(WC_SIGN_LIST, -1);
+			InvalidateWindowClassesData(WindowClass::SignList, -1);
 			break;
 		case OptionMenuEntries::FullAnimation: ToggleBit(_display_opt, DO_FULL_ANIMATION); CheckBlitter(); break;
 		case OptionMenuEntries::FullDetails: ToggleBit(_display_opt, DO_FULL_DETAIL); break;
@@ -1069,7 +1069,7 @@ static CallBackFunction PlaceLandBlockInfo()
 		ResetObjectToPlace();
 		return CallBackFunction::None;
 	} else {
-		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
+		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, WindowClass::MainToolbar, 0);
 		return CallBackFunction::PlaceLandInfo;
 	}
 }
@@ -2259,7 +2259,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolbar_normal_widge
 /** Window definition for the normal (top) toolbar. */
 static WindowDesc _toolb_normal_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_MAIN_TOOLBAR, WC_NONE,
+	WindowClass::MainToolbar, WindowClass::None,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolbar_normal_widgets,
 	&MainToolbarWindow::hotkeys
@@ -2603,7 +2603,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolb_scen_widgets =
 /** Window definition for the scenario editor (top) toolbar window. */
 static WindowDesc _toolb_scen_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_MAIN_TOOLBAR, WC_NONE,
+	WindowClass::MainToolbar, WindowClass::None,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolb_scen_widgets,
 	&ScenarioEditorToolbarWindow::hotkeys

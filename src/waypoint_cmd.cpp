@@ -55,7 +55,7 @@ void Waypoint::UpdateVirtCoord()
 	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 
 	/* Recenter viewport */
-	InvalidateWindowData(WC_WAYPOINT_VIEW, this->index);
+	InvalidateWindowData(WindowClass::WaypointView, this->index);
 }
 
 /**
@@ -497,7 +497,7 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 		} else {
 			/* Move existing (recently deleted) buoy to the new location */
 			wp->xy = tile;
-			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
+			InvalidateWindowData(WindowClass::WaypointView, wp->index);
 		}
 		wp->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
@@ -516,7 +516,7 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 		ClearNeighbourNonFloodingStates(tile);
 
 		wp->UpdateVirtCoord();
-		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
+		InvalidateWindowData(WindowClass::WaypointView, wp->index);
 	}
 
 	return cost;
@@ -546,7 +546,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlags flags)
 	if (flags.Test(DoCommandFlag::Execute)) {
 		wp->facilities.Reset(StationFacility::Dock);
 
-		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
+		InvalidateWindowData(WindowClass::WaypointView, wp->index);
 
 		/* We have to set the water tile's state to the same state as before the
 		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,

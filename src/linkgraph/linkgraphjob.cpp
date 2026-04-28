@@ -172,7 +172,7 @@ LinkGraphJob::~LinkGraphJob()
 		}
 		geflows.insert(flows.begin(), flows.end());
 		if (ge.GetData().IsEmpty()) ge.ClearData();
-		InvalidateWindowData(WC_STATION_VIEW, st->index, this->Cargo());
+		InvalidateWindowData(WindowClass::StationView, st->index, this->Cargo());
 	}
 }
 

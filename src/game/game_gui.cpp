@@ -78,7 +78,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_gs_config_widgets = 
 /** Window definition for the configure GS window. */
 static WindowDesc _gs_config_desc(
 	WindowPosition::Center, "settings_gs_config", 500, 350,
-	WC_GAME_OPTIONS, WC_NONE,
+	WindowClass::GameOptions, WindowClass::None,
 	{},
 	_nested_gs_config_widgets
 );
@@ -104,7 +104,7 @@ struct GSConfigWindow : public Window {
 
 		this->CreateNestedTree(); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_GSC_SCROLLBAR);
-		this->FinishInitNested(WN_GAME_OPTIONS_GS);
+		this->FinishInitNested(GameOptionsWindowNumber::GS);
 		this->OnInvalidateData(0);
 
 		this->RebuildVisibleSettings();
@@ -112,7 +112,7 @@ struct GSConfigWindow : public Window {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowByClass(WC_SCRIPT_LIST);
+		CloseWindowByClass(WindowClass::ScriptList);
 		this->Window::Close();
 	}
 
@@ -260,8 +260,8 @@ struct GSConfigWindow : public Window {
 
 				int num = it - this->visible_settings.begin();
 				if (this->clicked_row != num) {
-					this->CloseChildWindows(WC_QUERY_STRING);
-					this->CloseChildWindows(WC_DROPDOWN_MENU);
+					this->CloseChildWindows(WindowClass::QueryString);
+					this->CloseChildWindows(WindowClass::DropdownMenu);
 					this->clicked_row = num;
 					this->clicked_dropdown = false;
 				}
@@ -277,7 +277,7 @@ struct GSConfigWindow : public Window {
 				if (!bool_item && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && config_item.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
-						this->CloseChildWindows(WC_DROPDOWN_MENU);
+						this->CloseChildWindows(WindowClass::DropdownMenu);
 						this->clicked_dropdown = false;
 						this->closing_dropdown = false;
 					} else {
@@ -400,8 +400,8 @@ struct GSConfigWindow : public Window {
 			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !config->GetTextfile(tft, OWNER_DEITY).has_value());
 		}
 		this->RebuildVisibleSettings();
-		this->CloseChildWindows(WC_DROPDOWN_MENU);
-		this->CloseChildWindows(WC_QUERY_STRING);
+		this->CloseChildWindows(WindowClass::DropdownMenu);
+		this->CloseChildWindows(WindowClass::QueryString);
 	}
 private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
@@ -424,6 +424,6 @@ private:
 /** Open the GS config window. */
 void ShowGSConfigWindow()
 {
-	CloseWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WindowClass::GameOptions);
 	new GSConfigWindow();
 }

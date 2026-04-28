@@ -140,7 +140,7 @@ struct StatusBarWindow : Window {
 				} else if (this->ticker_scroll < TICKER_STOP && GetStatusbarNews() != nullptr && !GetStatusbarNews()->headline.empty()) {
 					/* Draw the scrolling news text */
 					if (!DrawScrollingStatusText(*GetStatusbarNews(), ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
-						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
+						InvalidateWindowData(WindowClass::Statusbar, 0, SBI_NEWS_DELETED);
 						if (Company::IsValidID(_local_company)) {
 							/* This is the default text */
 							DrawString(tr, GetString(STR_STATUSBAR_COMPANY_NAME, _local_company), TC_FROMSTRING, SA_HOR_CENTER);
@@ -221,7 +221,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_main_status_widgets 
 /** Window definition for the main status bar. */
 static WindowDesc _main_status_desc(
 	WindowPosition::Manual, {}, 0, 0,
-	WC_STATUS_BAR, WC_NONE,
+	WindowClass::Statusbar, WindowClass::None,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_main_status_widgets
 );
@@ -232,7 +232,7 @@ static WindowDesc _main_status_desc(
  */
 bool IsNewsTickerShown()
 {
-	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WC_STATUS_BAR, 0));
+	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WindowClass::Statusbar, 0));
 	return w != nullptr && w->ticker_scroll < StatusBarWindow::TICKER_STOP;
 }
 

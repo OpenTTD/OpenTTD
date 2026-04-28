@@ -87,7 +87,7 @@ static void CleanupGeneration()
 	GenWorldInfo::proc     = nullptr;
 	GenWorldInfo::abortp   = nullptr;
 
-	CloseWindowByClass(WC_MODAL_PROGRESS);
+	CloseWindowByClass(WindowClass::ModalProgress);
 	ShowFirstError();
 	MarkWholeScreenDirty();
 }
@@ -106,7 +106,7 @@ static void _GenerateWorld()
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 		_random.SetSeed(_settings_game.game_creation.generation_seed);
 		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
-		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
+		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WindowClass::MainWindow, 0);
 		ScriptObject::InitializeRandomizers();
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
@@ -339,7 +339,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 	/* Create toolbars */
 	SetupColoursAndInitialWindow();
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WindowClass::MainWindow, 0);
 
 	UnshowCriticalError();
 	CloseAllNonVitalWindows();
