@@ -18,13 +18,13 @@ jobs:
 
     steps:
     - name: Download bundle (Windows Store)
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v8
       with:
         name: openttd-windows-store
         path: openttd-windows-store
 
     - name: Configure Microsoft Store CLI
-      uses: microsoft/microsoft-store-apppublisher@v1.1
+      uses: microsoft/microsoft-store-apppublisher@v1.3
 
     - name: Reconfigure store credentials
       run: msstore reconfigure `
