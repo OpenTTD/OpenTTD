@@ -101,6 +101,35 @@ protected:
 };
 
 /**
+ * Extract the \c CommandCost from a command proc result.
+ * @tparam Tret Return type of the command.
+ * @param ret The return value of the command.
+ * @return The command cost.
+ */
+template <typename Tret>
+inline CommandCost &ExtractCommandCost(Tret &ret)
+{
+	if constexpr (std::is_same_v<Tret, CommandCost>) {
+		return ret;
+	} else {
+		static_assert(std::is_same_v<std::tuple_element_t<0, Tret>, CommandCost>);
+		return std::get<0>(ret);
+	}
+}
+
+/** @copydoc ExtractCommandCost(Tret &) */
+template <typename Tret>
+inline CommandCost ExtractCommandCost(Tret &&ret)
+{
+	if constexpr (std::is_same_v<Tret, CommandCost>) {
+		return ret;
+	} else {
+		static_assert(std::is_same_v<std::tuple_element_t<0, Tret>, CommandCost>);
+		return std::get<0>(ret);
+	}
+}
+
+/**
  * Templated wrapper that exposes the command parameter arguments
  * for the various Commands::Do/Post calls.
  * @tparam Tcmd The command-id to execute.
@@ -110,20 +139,6 @@ protected:
 template <Commands Tcmd, typename Tret, typename... Targs>
 struct CommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...), true> : protected CommandHelperBase {
 private:
-	/**
-	 * Extract the \c CommandCost from a command proc result.
-	 * @param ret The return value of the command.
-	 * @return The command cost.
-	 */
-	static inline CommandCost &ExtractCommandCost(Tret &ret)
-	{
-		if constexpr (std::is_same_v<Tret, CommandCost>) {
-			return ret;
-		} else {
-			return std::get<0>(ret);
-		}
-	}
-
 	/**
 	 * Make a command proc result from a \c CommandCost.
 	 * @param cost The cost of the command.
@@ -443,7 +458,7 @@ protected:
 		if constexpr (std::is_same_v<Tret, CommandCost>) {
 			return InternalExecuteProcessResult(Tcmd, cmd_flags, res, res2, additional_money, tile, cur_company);
 		} else {
-			std::get<0>(res2) = InternalExecuteProcessResult(Tcmd, cmd_flags, ExtractCommandCost(res), ExtractCommandCost(res2), additional_money, tile, cur_company);
+			ExtractCommandCost(res2) = InternalExecuteProcessResult(Tcmd, cmd_flags, ExtractCommandCost(res), ExtractCommandCost(res2), additional_money, tile, cur_company);
 			return res2;
 		}
 	}
