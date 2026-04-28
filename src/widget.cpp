@@ -10,6 +10,8 @@
 #include "stdafx.h"
 #include "core/backup_type.hpp"
 #include "company_func.h"
+#include "company_base.h"
+#include "livery.h"
 #include "settings_gui.h"
 #include "strings_type.h"
 #include "window_gui.h"
@@ -337,6 +339,74 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 		}
 		if (!flags.Test(FrameFlag::BorderOnly)) {
 			GfxFillRect(inner.left,  inner.top, inner.right, inner.bottom, interior); // Inner
+		}
+	}
+}
+
+/**
+ * Draw a colour swatch, as used in 2CC title bars and signs.
+ * @param rect Rectangle in which to draw the swatch.
+ * @param colour Colour table to use. @see Colours
+ * @param swatch_width Width of the swatch.
+ * @param frame Whether to draw a raised frame around the swatch.
+ * @param flags Flags controlling how to draw the frame. @see FrameFlags
+ * @param shade_override Optional shade to use for the interior fill. If not set, shade is determined by flags.
+ */
+void DrawColourSwatch(Rect rect, Colours colour, int swatch_width, bool frame, FrameFlags flags, std::optional<ColourShade> shade_override)
+{
+	assert (colour < Colours::End);
+	if (colour == Colours::Invalid) return;
+
+	const PixelColour dark = GetColourGradient(colour, SHADE_DARK);
+	const PixelColour medium_dark = GetColourGradient(colour, SHADE_LIGHT);
+	const PixelColour medium_light = GetColourGradient(colour, SHADE_LIGHTER);
+	const PixelColour light = GetColourGradient(colour, SHADE_LIGHTEST);
+	PixelColour interior;
+	PixelColour border_top_left;
+	PixelColour border_bottom_right;
+
+	if (flags.Test(FrameFlag::Lowered)) {
+		interior = (flags.Test(FrameFlag::Darkened) ? medium_dark : medium_light);
+		border_top_left = (flags.Test(FrameFlag::Darkened) ? light : dark);
+		border_bottom_right = (flags.Test(FrameFlag::Darkened) ? dark : light);
+	} else {
+		interior = medium_dark;
+		border_top_left = (flags.Test(FrameFlag::Darkened) ? dark : light);
+		border_bottom_right = (flags.Test(FrameFlag::Darkened) ? light : dark);
+	}
+	if (shade_override.has_value()) {
+		interior = GetColourGradient(colour, *shade_override);
+	}
+
+	Rect inner = rect.Shrink(WidgetDimensions::scaled.bevel);
+
+	int width_top = std::min(ScaleGUITrad(swatch_width), inner.Width() / 2);
+	int width_bottom = std::min(ScaleGUITrad(swatch_width) + inner.Height() / 2, inner.Width() / 2);
+	Point shape[] = { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
+	if (_current_text_dir == TD_RTL) {
+		shape[0] = { inner.left + width_top, inner.top };
+		shape[1] = { inner.left, inner.top };
+		shape[2] = { inner.left, inner.bottom + 1 };
+		shape[3] = { inner.left + width_bottom, inner.bottom + 1 };
+	} else {
+		shape[0] = { inner.right - width_top, inner.top };
+		shape[1] = { inner.right + 1, inner.top };
+		shape[2] = { inner.right + 1, inner.bottom + 1};
+		shape[3] = { inner.right - width_bottom, inner.bottom + 1};
+	}
+
+	if (!flags.Test(FrameFlag::BorderOnly)) {
+		GfxFillPolygon(shape, interior);
+	}
+	if (frame) {
+		if (_current_text_dir == TD_RTL) {
+			GfxFillRect(rect.left, inner.top, inner.left - 1, inner.bottom, border_top_left);
+			GfxFillRect(rect.left, rect.top, inner.left + width_top, inner.top - 1, border_top_left);
+			GfxFillRect(rect.left, inner.bottom + 1, inner.left + width_bottom, rect.bottom, border_bottom_right);
+		} else {
+			GfxFillRect(inner.right - width_top, rect.top, rect.right, inner.top - 1, border_top_left);
+			GfxFillRect(inner.right + 1, inner.top, rect.right, inner.bottom, border_bottom_right);
+			GfxFillRect(inner.right - width_bottom, inner.bottom + 1, rect.right, rect.bottom, border_bottom_right);
 		}
 	}
 }
@@ -744,7 +814,9 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 	DrawFrameRect(ir, colour, company_owned ? FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened, FrameFlag::BorderOnly} : FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened});
 
 	if (company_owned) {
+		const Company *c = Company::GetIfValid(owner);
 		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(_company_colours[owner], SHADE_NORMAL));
+		DrawColourSwatch(ir, c->livery[LS_DEFAULT].colour2, 12, false, {}, SHADE_NORMAL);
 	}
 
 	if (str.empty()) return;

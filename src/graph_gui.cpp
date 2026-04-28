@@ -232,11 +232,12 @@ protected:
 	StringID format_str_y_axis{};
 
 	struct DataSet {
-		std::array<OverflowSafeInt64, GRAPH_NUM_MONTHS> values;
-		PixelColour colour;
-		uint8_t exclude_bit;
-		uint8_t range_bit;
-		uint8_t dash;
+		std::array<OverflowSafeInt64, GRAPH_NUM_MONTHS> values; ///< Monthly values for the dataset.
+		PixelColour colour; ///< Primary color for plotting the dataset.
+		PixelColour colour2; ///< Secondary color for plotting the dataset.
+		uint8_t exclude_bit; ///< Bitmask flag indicating if this dataset is excluded from display.
+		uint8_t range_bit; ///< Bitmask flag for y axis range range control.
+		uint8_t dash; ///< Dash pattern for line styling.
 	};
 	std::vector<DataSet> data{};
 
@@ -551,10 +552,11 @@ protected:
 		/* Draw lines and dots. */
 		uint linewidth = ScaleGUITrad(_settings_client.gui.graph_line_thickness);
 		uint pointwidth = ScaleGUITrad(_settings_client.gui.graph_line_thickness + 1);
+		uint pointborder = ScaleGUITrad(1);
 		uint pointoffs1 = pointwidth / 2;
 		uint pointoffs2 = pointwidth - pointoffs1;
 
-		auto draw_dataset = [&](const DataSet &dataset, PixelColour colour) {
+		auto draw_dataset = [&](const DataSet &dataset, PixelColour colour, PixelColour colour2) {
 			if (HasBit(this->excluded_data, dataset.exclude_bit)) return;
 			if (HasBit(this->excluded_range, dataset.range_bit)) return;
 
@@ -596,11 +598,16 @@ protected:
 					}
 					y = r.top + x_axis_offset - ((r.bottom - r.top) * datapoint) / (interval_size >> reduce_range);
 
-					/* Draw the point. */
-					GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, colour);
+					/* Draw the line connected to the previous point, and redraw previous point for border tidyness. */
+					if (prev_x != INVALID_DATAPOINT_POS) {
+						GfxDrawLine(prev_x, prev_y, x, y, colour, linewidth, dash);
+						GfxFillRect(prev_x - pointoffs1, prev_y - pointoffs1, prev_x + pointoffs2, prev_y + pointoffs2, colour2);
+						GfxFillRect(prev_x - pointoffs1 + pointborder, prev_y - pointoffs1 + pointborder, prev_x + pointoffs2 - pointborder, prev_y + pointoffs2 - pointborder, colour);
+					}
 
-					/* Draw the line connected to the previous point. */
-					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, colour, linewidth, dash);
+					/* Draw the point. */
+					GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, colour2);
+					GfxFillRect(x - pointoffs1 + pointborder, y - pointoffs1 + pointborder, x + pointoffs2 - pointborder, y + pointoffs2 - pointborder, colour);
 
 					prev_x = x;
 					prev_y = y;
@@ -616,7 +623,7 @@ protected:
 		/* Draw unhighlighted datasets. */
 		for (const DataSet &dataset : this->data) {
 			if (dataset.exclude_bit != this->highlight_data && dataset.range_bit != this->highlight_range) {
-				draw_dataset(dataset, dataset.colour);
+				draw_dataset(dataset, dataset.colour, dataset.colour2);
 			}
 		}
 
@@ -625,7 +632,7 @@ protected:
 		if (this->highlight_state && (this->highlight_data != UINT8_MAX || this->highlight_range != UINT8_MAX)) {
 			for (const DataSet &dataset : this->data) {
 				if (dataset.exclude_bit == this->highlight_data || dataset.range_bit == this->highlight_range) {
-					draw_dataset(dataset, PC_WHITE);
+					draw_dataset(dataset, PC_WHITE, PC_WHITE);
 				}
 			}
 		}
@@ -898,6 +905,7 @@ public:
 
 			DataSet &dataset = this->data.emplace_back();
 			dataset.colour = GetColourGradient(c->colour, SHADE_LIGHTER);
+			dataset.colour2 = GetColourGradient(c->livery[LS_DEFAULT].colour2, SHADE_LIGHTER);
 			dataset.exclude_bit = k.base();
 
 			for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
@@ -1427,6 +1435,7 @@ struct PaymentRatesGraphWindow : BaseCargoGraphWindow {
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			DataSet &dataset = this->data.emplace_back();
 			dataset.colour = cs->legend_colour;
+			dataset.colour2 = dataset.colour;
 			dataset.exclude_bit = cs->Index();
 
 			for (uint j = 0; j != this->num_on_x_axis; j++) {
@@ -1799,11 +1808,13 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
+			produced.colour2 = produced.colour;
 			produced.exclude_bit = cs->Index();
 			produced.range_bit = 0;
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
+			transported.colour2 = transported.colour;
 			transported.exclude_bit = cs->Index();
 			transported.range_bit = 1;
 			transported.dash = 2;
@@ -1819,12 +1830,14 @@ struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
 
 			DataSet &accepted = this->data.emplace_back();
 			accepted.colour = cs->legend_colour;
+			accepted.colour2 = accepted.colour;
 			accepted.exclude_bit = cs->Index();
 			accepted.range_bit = 2;
 			accepted.dash = 1;
 
 			DataSet &waiting = this->data.emplace_back();
 			waiting.colour = cs->legend_colour;
+			waiting.colour2 = waiting.colour;
 			waiting.exclude_bit = cs->Index();
 			waiting.range_bit = 3;
 			waiting.dash = 4;
