@@ -814,12 +814,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminExternalChat(Pack
 	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NetworkErrorCode::NotExpected);
 
 	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
-	TextColour colour = (TextColour)p.Recv_uint16();
+	ExtendedTextColour colour = ExtendedTextColour::FromNetwork(p.Recv_uint16());
 	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 
 	if (!IsValidConsoleColour(colour)) {
-		Debug(net, 1, "[admin] Not supported chat colour {} ({}, {}, {}) from '{}' ({}).", (uint16_t)colour, source, user, msg, this->admin_name, this->admin_version);
+		Debug(net, 1, "[admin] Not supported chat colour {} ({}, {}, {}) from '{}' ({}).", colour.ToNetwork(), source, user, msg, this->admin_name, this->admin_version);
 		return this->SendError(NetworkErrorCode::IllegalPacket);
 	}
 
@@ -1050,9 +1050,9 @@ void NetworkAdminChat(NetworkAction action, NetworkChatDestinationType desttype,
  * @param colour_code The colour of the string.
  * @param string      The string to show.
  */
-void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, std::string_view string)
+void NetworkServerSendAdminRcon(AdminID admin_index, ExtendedTextColour colour_code, std::string_view string)
 {
-	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code, string);
+	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code.ToNetwork(), string);
 }
 
 /**

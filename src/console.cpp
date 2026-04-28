@@ -87,7 +87,7 @@ void IConsoleFree()
  * @param colour_code The colour of the command.
  * @param string The message to output on the console (notice, error, etc.)
  */
-void IConsolePrint(TextColour colour_code, const std::string &string)
+void IConsolePrint(ExtendedTextColour colour_code, const std::string &string)
 {
 	assert(IsValidConsoleColour(colour_code));
 

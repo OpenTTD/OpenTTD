@@ -84,10 +84,10 @@ public:
 	 * @param sel Whether the item is selected or not.
 	 * @return The text colour.
 	 */
-	TextColour GetColour(bool sel) const
+	ExtendedTextColour GetColour(bool sel) const
 	{
-		if (this->shaded) return (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
-		return sel ? TC_WHITE : TC_BLACK;
+		if (this->shaded) return ExtendedTextColour{sel ? TextColour::Silver : TextColour::Grey, ExtendedTextColourFlag::NoShade};
+		return sel ? TextColour::White : TextColour::Black;
 	}
 };
 

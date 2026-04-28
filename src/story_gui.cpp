@@ -522,7 +522,7 @@ protected:
 		uint text_top = y_offset + (element_height - line_height) / 2;
 
 		DrawSprite(action_sprite, PAL_NONE, 0, sprite_top);
-		DrawString(sprite_dim.width + WidgetDimensions::scaled.frametext.left, width, text_top, text, TC_BLACK);
+		DrawString(sprite_dim.width + WidgetDimensions::scaled.frametext.left, width, text_top, text, TextColour::Black);
 
 		y_offset += element_height;
 	}
@@ -697,13 +697,13 @@ public:
 
 		/* Date */
 		if (page->date != CalendarTime::INVALID_DATE) {
-			DrawString(0, fr.right, y_offset, GetString(STR_JUST_DATE_LONG, page->date), TC_BLACK);
+			DrawString(0, fr.right, y_offset, GetString(STR_JUST_DATE_LONG, page->date), TextColour::Black);
 		}
 		y_offset += line_height;
 
 		/* Title */
 		y_offset = DrawStringMultiLine(0, fr.right, y_offset, fr.bottom,
-			GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), TC_BLACK, SA_TOP | SA_HOR_CENTER);
+			GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), TextColour::Black, SA_TOP | SA_HOR_CENTER);
 
 		/* Page elements */
 		this->EnsureStoryPageElementLayout();
@@ -716,7 +716,7 @@ public:
 			switch (ce.pe->type) {
 				case SPET_TEXT:
 					DrawStringMultiLineWithClipping(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos,
-						ce.pe->text.GetDecodedString(), TC_BLACK, SA_TOP | SA_LEFT);
+						ce.pe->text.GetDecodedString(), TextColour::Black, SA_TOP | SA_LEFT);
 					break;
 
 				case SPET_GOAL: {
@@ -741,7 +741,7 @@ public:
 					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);
 
 					DrawString(ce.bounds.left + WidgetDimensions::scaled.bevel.left, ce.bounds.right - WidgetDimensions::scaled.bevel.right, ce.bounds.top + tmargin - scrollpos,
-						ce.pe->text.GetDecodedString(), TC_WHITE, SA_CENTER);
+						ce.pe->text.GetDecodedString(), TextColour::White, SA_CENTER);
 					break;
 				}
 

@@ -46,7 +46,7 @@ EnumClassIndexContainer<std::array<Layouter::FontColourMap, to_underlying(FontSi
  * @param size   The font size to use for this font.
  * @param colour The colour to draw this font in.
  */
-Font::Font(FontSize size, TextColour colour) :
+Font::Font(FontSize size, ExtendedTextColour colour) :
 		fc(FontCache::Get(size)), colour(colour)
 {
 	assert(size < FontSize::End);
@@ -128,7 +128,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
  */
 Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(str)
 {
-	FontState state(TC_INVALID, fontsize);
+	FontState state(TextColour::Invalid, fontsize);
 
 	while (true) {
 		auto line_length = str.find_first_of('\n');
@@ -346,7 +346,7 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
  * @param colour The font's colour.
  * @return The cached font.
  */
-Font *Layouter::GetFont(FontSize size, TextColour colour)
+Font *Layouter::GetFont(FontSize size, ExtendedTextColour colour)
 {
 	FontColourMap::iterator it = fonts[size].find(colour);
 	if (it != fonts[size].end()) return it->second.get();

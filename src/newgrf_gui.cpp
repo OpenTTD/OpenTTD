@@ -133,7 +133,7 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 
 	/* Draw GRF info if it exists */
 	if (auto desc = c.GetDescription(); desc.has_value() && !desc->empty()) {
-		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, std::move(*desc)), TC_BLACK);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, std::move(*desc)), TextColour::Black);
 	} else {
 		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
@@ -286,7 +286,7 @@ struct NewGRFParametersWindow : public Window {
 			const GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
 			auto desc = GetGRFStringFromGRFText(par_info.desc);
 			if (!desc.has_value()) return;
-			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect), *desc, TC_BLACK);
+			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect), *desc, TextColour::Black);
 			return;
 		} else if (widget != WID_NP_BACKGROUND) {
 			return;
@@ -314,7 +314,7 @@ struct NewGRFParametersWindow : public Window {
 				}
 			}
 
-			DrawString(tr.left, tr.right, ir.top + text_y_offset, this->GetSettingString(par_info, i, current_value), selected ? TC_WHITE : TC_LIGHT_BLUE);
+			DrawString(tr.left, tr.right, ir.top + text_y_offset, this->GetSettingString(par_info, i, current_value), selected ? TextColour::White : TextColour::LightBlue);
 			ir.top += this->line_height;
 		}
 	}
@@ -873,7 +873,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
 						if (!c->errors.empty()) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
 						uint txtoffset = c->errors.empty() ? 0 : warning.width;
-						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, std::move(text), h ? TC_WHITE : TC_ORANGE);
+						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, std::move(text), h ? TextColour::White : TextColour::Orange);
 						tr.top += step_height;
 					}
 					i++;
@@ -899,7 +899,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					std::string text = c->GetName();
 
 					if (h) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
-					DrawString(tr.left, tr.right, tr.top + offset_y, std::move(text), h ? TC_WHITE : TC_SILVER);
+					DrawString(tr.left, tr.right, tr.top + offset_y, std::move(text), h ? TextColour::White : TextColour::Silver);
 					tr.top += step_height;
 				}
 				break;
@@ -908,7 +908,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_NEWGRF_INFO_TITLE: {
 				/* Create the nice darker rectangle at the details top. */
 				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Mauve, SHADE_NORMAL));
-				DrawString(r.left, r.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal)), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal)), STR_NEWGRF_SETTINGS_INFO_TITLE, TextColour::FromString, SA_HOR_CENTER);
 				break;
 			}
 
@@ -2074,7 +2074,7 @@ struct SavePresetWindow : public Window {
 					int row = static_cast<int>(std::distance(std::begin(this->presets), it));
 					if (row == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 
-					DrawString(tr.left, tr.right, tr.top + offset_y, *it, (row == this->selected) ? TC_WHITE : TC_SILVER);
+					DrawString(tr.left, tr.right, tr.top + offset_y, *it, (row == this->selected) ? TextColour::White : TextColour::Silver);
 					tr.top += step_height;
 				}
 				break;
@@ -2185,14 +2185,14 @@ struct ScanProgressWindow : public Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				uint percent = scanned * 100 / std::max(1U, _settings_client.gui.last_newgrf_count);
 				DrawFrameRect(ir.WithWidth(ir.Width() * percent / 100, _current_text_dir == TD_RTL), Colours::Mauve, {});
-				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), GetString(STR_GENERATION_PROGRESS, percent), TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), GetString(STR_GENERATION_PROGRESS, percent), TextColour::FromString, SA_HOR_CENTER);
 				break;
 			}
 
 			case WID_SP_PROGRESS_TEXT:
-				DrawString(r.left, r.right, r.top, GetString(STR_NEWGRF_SCAN_STATUS, this->scanned, _settings_client.gui.last_newgrf_count), TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top, GetString(STR_NEWGRF_SCAN_STATUS, this->scanned, _settings_client.gui.last_newgrf_count), TextColour::FromString, SA_HOR_CENTER);
 
-				DrawString(r.left, r.right, r.top + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal, this->last_name, TC_BLACK, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal, this->last_name, TextColour::Black, SA_HOR_CENTER);
 				break;
 		}
 	}

@@ -161,19 +161,19 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), Colours::Mauve, {});
 			DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)),
 				GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, this->downloaded_bytes, this->total_bytes, this->downloaded_bytes * 100LL / this->total_bytes),
-				TC_FROMSTRING, SA_HOR_CENTER);
+				TextColour::FromString, SA_HOR_CENTER);
 			break;
 		}
 
 		case WID_NCDS_PROGRESS_TEXT:
 			if (this->downloaded_bytes == this->total_bytes) {
-				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_COMPLETE, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_COMPLETE, TextColour::FromString, SA_CENTER);
 			} else if (!this->name.empty()) {
 				DrawStringMultiLine(r,
 					GetString(STR_CONTENT_DOWNLOAD_FILE, this->name, this->downloaded_files, this->total_files),
-					TC_FROMSTRING, SA_CENTER);
+					TextColour::FromString, SA_CENTER);
 			} else {
-				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_INITIALISE, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_INITIALISE, TextColour::FromString, SA_CENTER);
 			}
 			break;
 	}
@@ -694,12 +694,12 @@ public:
 			DrawSpriteIgnorePadding(sprite, pal, checkbox.WithY(mr), SA_CENTER);
 
 			StringID str = GetContentTypeString(ci->type);
-			DrawString(type.left, type.right, mr.top + text_y_offset, str, TC_BLACK, SA_HOR_CENTER);
+			DrawString(type.left, type.right, mr.top + text_y_offset, str, TextColour::Black, SA_HOR_CENTER);
 
-			int x = DrawString(name.left, name.right, mr.top + version_y_offset, ci->version, TC_BLACK, SA_RIGHT, false, FontSize::Small);
+			int x = DrawString(name.left, name.right, mr.top + version_y_offset, ci->version, TextColour::Black, SA_RIGHT, false, FontSize::Small);
 			x += rtl ? WidgetDimensions::scaled.hsep_wide : -WidgetDimensions::scaled.hsep_wide;
 
-			DrawString(rtl ? x : name.left, rtl ? name.right : x, mr.top + text_y_offset, ci->name, TC_BLACK);
+			DrawString(rtl ? x : name.left, rtl ? name.right : x, mr.top + text_y_offset, ci->name, TextColour::Black);
 			mr = mr.Translate(0, step_height);
 		}
 	}
@@ -719,7 +719,7 @@ public:
 
 		/* Create the nice darker rectangle at the details top */
 		GfxFillRect(r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.bevel.left, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, 0), GetColourGradient(Colours::LightBlue, SHADE_NORMAL));
-		DrawString(hr.left, hr.right, hr.top, STR_CONTENT_DETAIL_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
+		DrawString(hr.left, hr.right, hr.top, STR_CONTENT_DETAIL_TITLE, TextColour::FromString, SA_HOR_CENTER);
 
 		/* Draw the total download size */
 		DrawString(tr.left, tr.right, tr.bottom - GetCharacterHeight(FontSize::Normal) + 1, GetString(STR_CONTENT_TOTAL_DOWNLOAD_SIZE, this->filesize_sum));
@@ -727,7 +727,7 @@ public:
 		if (this->selected == nullptr) return;
 
 		/* And fill the rest of the details when there's information to place there */
-		DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FontSize::Normal), hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + to_underlying(this->selected->state), TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FontSize::Normal), hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + to_underlying(this->selected->state), TextColour::FromString, SA_CENTER);
 
 		/* Also show the total download size, so keep some space from the bottom */
 		tr.bottom -= GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;

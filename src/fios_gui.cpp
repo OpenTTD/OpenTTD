@@ -304,15 +304,15 @@ static constexpr std::initializer_list<NWidgetPart> _nested_save_dialog_widgets 
 
 /** Text colours of #DetailedFileType fios entries in the window. */
 static const EnumClassIndexContainer<std::array<TextColour, to_underlying(DetailedFileType::End)>, DetailedFileType> _fios_colours = {
-	TC_LIGHT_BROWN, // DetailedFileType::OldGameFile
-	TC_ORANGE, // DetailedFileType::GameFile
-	TC_YELLOW, // DetailedFileType::HeightmapBmp
-	TC_ORANGE, // DetailedFileType::HeightmapPng
-	TC_LIGHT_BROWN, // DetailedFileType::TownDataJson
-	TC_LIGHT_BLUE, // DetailedFileType::FiosDrive
-	TC_DARK_GREEN, // DetailedFileType::FiosParent
-	TC_DARK_GREEN, // DetailedFileType::FiosDirectory
-	TC_ORANGE, // DetailedFileType::FiosDirect
+	TextColour::LightBrown, // DetailedFileType::OldGameFile
+	TextColour::Orange, // DetailedFileType::GameFile
+	TextColour::Yellow, // DetailedFileType::HeightmapBmp
+	TextColour::Orange, // DetailedFileType::HeightmapPng
+	TextColour::LightBrown, // DetailedFileType::TownDataJson
+	TextColour::LightBlue, // DetailedFileType::FiosDrive
+	TextColour::DarkGreen, // DetailedFileType::FiosParent
+	TextColour::DarkGreen, // DetailedFileType::FiosDirectory
+	TextColour::Orange, // DetailedFileType::FiosDirect
 };
 
 /**
@@ -533,7 +533,7 @@ public:
 				} else {
 					DrawString(ir.left, ir.right, ir.top + GetCharacterHeight(FontSize::Normal), STR_ERROR_UNABLE_TO_READ_DRIVE);
 				}
-				DrawString(ir.left, ir.right, ir.top, path, TC_BLACK);
+				DrawString(ir.left, ir.right, ir.top, path, TextColour::Black);
 				break;
 			}
 
@@ -574,7 +574,7 @@ public:
 
 		/* Create the nice lighter rectangle at the details top */
 		GfxFillRect(r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.bevel.left, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, 0), GetColourGradient(Colours::Grey, SHADE_LIGHTEST));
-		DrawString(hr.left, hr.right, hr.top, STR_SAVELOAD_DETAIL_CAPTION, TC_FROMSTRING, SA_HOR_CENTER);
+		DrawString(hr.left, hr.right, hr.top, STR_SAVELOAD_DETAIL_CAPTION, TextColour::FromString, SA_HOR_CENTER);
 
 		if (this->selected == nullptr) return;
 
@@ -588,7 +588,7 @@ public:
 			tr.top += GetCharacterHeight(FontSize::Normal);
 		} else if (_load_check_data.error != INVALID_STRING_ID) {
 			/* Incompatible / broken savegame */
-			tr.top = DrawStringMultiLine(tr, GetString(_load_check_data.error, _load_check_data.error_msg), TC_RED);
+			tr.top = DrawStringMultiLine(tr, GetString(_load_check_data.error, _load_check_data.error_msg), TextColour::Red);
 		} else {
 			/* Mapsize */
 			DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_MAP_SIZE, _load_check_data.map_size_x, _load_check_data.map_size_y));

@@ -221,6 +221,6 @@ std::string ScriptConfigItem::GetString(int value) const
  */
 TextColour ScriptConfigItem::GetColour() const
 {
-	return this->description.empty() ? TC_ORANGE : TC_LIGHT_BLUE;
+	return this->description.empty() ? TextColour::Orange : TextColour::LightBlue;
 }
 

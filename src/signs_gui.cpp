@@ -216,7 +216,7 @@ struct SignListWindow : Window, SignList {
 
 					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, tr.top + sprite_offset_y);
 
-					DrawString(tr.left, tr.right, tr.top + text_offset_y, GetString(STR_SIGN_NAME, si->index), TC_YELLOW);
+					DrawString(tr.left, tr.right, tr.top + text_offset_y, GetString(STR_SIGN_NAME, si->index), TextColour::Yellow);
 					tr.top += this->resize.step_height;
 				}
 				break;
@@ -593,7 +593,7 @@ struct SignWindow : Window, SignList {
 static constexpr std::initializer_list<NWidgetPart> _nested_query_sign_edit_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::Grey),
-		NWidget(WWT_CAPTION, Colours::Grey, WID_QES_CAPTION), SetTextStyle(TC_WHITE),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_QES_CAPTION), SetTextStyle(TextColour::White),
 		NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_QES_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_EDIT_SIGN_LOCATION_TOOLTIP),
 	EndContainer(),
 	NWidget(WWT_PANEL, Colours::Grey),

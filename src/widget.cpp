@@ -722,7 +722,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
 	d.width  -= offset.x;
 	d.height -= offset.y;
 	int s = ScaleSpriteTrad(1); // Offset to account for shadow of SPR_CLOSEBOX.
-	DrawSprite(SPR_CLOSEBOX, (colour != Colours::White ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CentreBounds(r.left, r.right, d.width - s) - offset.x, CentreBounds(r.top, r.bottom, d.height - s) - offset.y);
+	DrawSprite(SPR_CLOSEBOX, to_underlying(colour != Colours::White ? TextColour::Black : TextColour::Silver) | (1U << PALETTE_TEXT_RECOLOUR), CentreBounds(r.left, r.right, d.width - s) - offset.x, CentreBounds(r.top, r.bottom, d.height - s) - offset.y);
 }
 
 /**
@@ -773,7 +773,7 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 	DrawFrameRect(text, colour, clicked_button ? FrameFlag::Lowered : FrameFlags{});
 	if (!str.empty()) {
 		text = text.CentreToHeight(GetCharacterHeight(FontSize::Normal)).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
-		DrawString(text, str, TC_BLACK, align);
+		DrawString(text, str, TextColour::Black, align);
 	}
 
 	Rect button = r.WithWidth(NWidgetLeaf::dropdown_dimension.width, !rtl);
@@ -800,7 +800,7 @@ void Window::DrawWidgets() const
 			Rect outer = widget->GetCurrentRect();
 			Rect inner = outer.Shrink(WidgetDimensions::scaled.bevel).Expand(1);
 
-			PixelColour colour = _string_colourmap[_window_highlight_colour ? widget->GetHighlightColour() : TC_WHITE];
+			PixelColour colour = _string_colourmap[to_underlying(_window_highlight_colour ? widget->GetHighlightColour() : TextColour::White)];
 
 			GfxFillRect(outer.left,     outer.top,    inner.left,      inner.bottom, colour);
 			GfxFillRect(inner.left + 1, outer.top,    inner.right - 1, inner.top,    colour);
@@ -1175,7 +1175,7 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fil
 	this->colour = colour;
 	this->widget_data = widget_data;
 	this->SetToolTip(tool_tip);
-	this->text_colour = tp == WWT_CAPTION ? TC_WHITE : TC_BLACK;
+	this->text_colour = tp == WWT_CAPTION ? TextColour::White : TextColour::Black;
 }
 
 /**

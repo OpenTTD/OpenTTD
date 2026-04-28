@@ -20,13 +20,13 @@ enum IConsoleModes : uint8_t {
 };
 
 /* Colours of the console messages. */
-static const TextColour CC_DEFAULT = TC_SILVER;      ///< Default colour of the console.
-static const TextColour CC_ERROR   = TC_RED;         ///< Colour for error lines.
-static const TextColour CC_WARNING = TC_LIGHT_BLUE;  ///< Colour for warning lines.
-static const TextColour CC_HELP    = TC_LIGHT_BLUE;  ///< Colour for help lines.
-static const TextColour CC_INFO    = TC_YELLOW;      ///< Colour for information lines.
-static const TextColour CC_DEBUG   = TC_LIGHT_BROWN; ///< Colour for debug output.
-static const TextColour CC_COMMAND = TC_GOLD;        ///< Colour for the console's commands.
-static const TextColour CC_WHITE   = TC_WHITE;       ///< White console lines for various things such as the welcome.
+static const TextColour CC_DEFAULT = TextColour::Silver; ///< Default colour of the console.
+static const TextColour CC_ERROR = TextColour::Red; ///< Colour for error lines.
+static const TextColour CC_WARNING = TextColour::LightBlue; ///< Colour for warning lines.
+static const TextColour CC_HELP = TextColour::LightBlue; ///< Colour for help lines.
+static const TextColour CC_INFO = TextColour::Yellow; ///< Colour for information lines.
+static const TextColour CC_DEBUG = TextColour::LightBrown; ///< Colour for debug output.
+static const TextColour CC_COMMAND = TextColour::Gold; ///< Colour for the console's commands.
+static const TextColour CC_WHITE = TextColour::White; ///< White console lines for various things such as the welcome.
 
 #endif /* CONSOLE_TYPE_H */

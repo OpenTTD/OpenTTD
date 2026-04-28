@@ -495,7 +495,7 @@ void TextfileWindow::AfterLoadMarkdown()
 		/* All lines beginning with # are headings. */
 		if (!line.text.empty() && line.text[0] == '#') {
 			this->jumplist.push_back(line_index);
-			this->lines[line_index].colour = TC_GOLD;
+			this->lines[line_index].colour = TextColour::Gold;
 			this->link_anchors.emplace_back(line_index, 0, 0, MakeAnchorSlug(line.text));
 		}
 	}

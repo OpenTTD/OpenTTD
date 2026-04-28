@@ -214,9 +214,9 @@ public:
 			if (!this->enabled_actions.Test(i)) continue;
 
 			/* Set colour of action based on ability to execute and if selected. */
-			TextColour action_colour = TC_GREY | TC_NO_SHADE;
-			if (this->available_actions.Test(i)) action_colour = TC_ORANGE;
-			if (this->sel_action == i) action_colour = TC_WHITE;
+			ExtendedTextColour action_colour{TextColour::Grey, ExtendedTextColourFlag::NoShade};
+			if (this->available_actions.Test(i)) action_colour = TextColour::Orange;
+			if (this->sel_action == i) action_colour = TextColour::White;
 
 			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i), action_colour);
 			r.top += GetCharacterHeight(FontSize::Normal);
@@ -240,7 +240,7 @@ public:
 
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
 						GetString(this->action_tooltips[to_underlying(this->sel_action)], action_cost),
-						affordable ? TC_YELLOW : TC_RED);
+						affordable ? TextColour::Yellow : TextColour::Red);
 				}
 				break;
 		}
@@ -469,7 +469,7 @@ public:
 		}
 
 		if (!this->town->text.empty()) {
-			tr.top = DrawStringMultiLine(tr, this->town->text.GetDecodedString(), TC_BLACK);
+			tr.top = DrawStringMultiLine(tr, this->town->text.GetDecodedString(), TextColour::Black);
 		}
 	}
 
