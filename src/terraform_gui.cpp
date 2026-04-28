@@ -80,8 +80,9 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
  * Scenario editor command that generates rocky areas.
  * @param end The end tile of the map drag.
  * @param start The start tile of the map drag.
+ * @param remove If true, remove rocks instead of placing them.
  */
-static void GenerateRockyArea(TileIndex end, TileIndex start)
+static void GenerateRockyArea(TileIndex end, TileIndex start, bool remove)
 {
 	if (_game_mode != GM_EDITOR) return;
 
@@ -92,10 +93,19 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 		switch (GetTileType(tile)) {
 			case TileType::Trees:
 				if (GetTreeGround(tile) == TreeGround::Shore) continue;
-				[[fallthrough]];
+				if (!remove) {
+					MakeClear(tile, ClearGround::Rocks, 3);
+				}
+				break;
 
 			case TileType::Clear:
-				MakeClear(tile, ClearGround::Rocks, 3);
+				if (remove) {
+					if (GetClearGround(tile) == ClearGround::Rocks) {
+						MakeClear(tile, ClearGround::Grass, 3);
+					}
+				} else {
+					MakeClear(tile, ClearGround::Rocks, 3);
+				}
 				break;
 
 			default:
@@ -140,7 +150,7 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LM_LEVEL);
 			break;
 		case DDSP_CREATE_ROCKS:
-			GenerateRockyArea(end_tile, start_tile);
+			GenerateRockyArea(end_tile, start_tile, _ctrl_pressed);
 			break;
 		case DDSP_CREATE_DESERT:
 			GenerateDesertArea(end_tile, start_tile);
@@ -704,6 +714,20 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 					break;
 			}
 		}
+	}
+
+	EventState OnCTRLStateChange() override
+	{
+		switch (this->last_user_action) {
+			case WID_ETT_PLACE_ROCKS:
+			case WID_ETT_PLACE_DESERT:
+				if (this->IsWidgetLowered(this->last_user_action)) {
+					SetSelectionRed(_ctrl_pressed);
+					return ES_HANDLED;
+				}
+				break;
+		}
+		return ES_NOT_HANDLED;
 	}
 
 	void OnPlaceObjectAbort() override
