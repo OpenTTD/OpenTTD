@@ -55,7 +55,7 @@ protected:
 	void CheckPaletteAnim() override;
 	bool PollEvent() override;
 
-	void Initialize();
+	std::optional<std::string_view> Initialize();
 	bool MakeWindow(bool full_screen, bool resize = true);
 	void ClientSizeChanged(int w, int h, bool force = false);
 
