@@ -365,6 +365,9 @@
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 	const Town *t = ::Town::Get(town_id);
+	static const SQInteger max_delta = RATING_MAXIMUM - RATING_MINIMUM;
+	static const SQInteger min_delta = RATING_MINIMUM - RATING_MAXIMUM;
+	delta = Clamp<SQInteger>(delta, min_delta, max_delta);
 	int16_t new_rating = Clamp(t->ratings[c] + delta, RATING_MINIMUM, RATING_MAXIMUM);
 	if (new_rating == t->ratings[c]) return false;
 
