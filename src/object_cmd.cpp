@@ -429,8 +429,12 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 		if (flags.Test(DoCommandFlag::Execute)) {
 			money -= ret.GetCost();
 
-			/* If we run out of money, stop building. */
-			if (ret.GetCost() > 0 && money < 0) break;
+			/* If we run out of money, stop building and report error. */
+			if (ret.GetCost() > 0 && money < 0) {
+				had_success = false;
+				last_error = CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
+				break;
+			}
 			Command<Commands::BuildObject>::Do(flags, t, type, view);
 		}
 		cost.AddCost(ret.GetCost());
