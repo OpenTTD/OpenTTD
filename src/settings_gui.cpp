@@ -438,7 +438,7 @@ struct GameOptionsWindow : Window {
 		this->vscroll = this->GetScrollbar(WID_GO_SCROLLBAR);
 		this->vscroll_description = this->GetScrollbar(WID_GO_HELP_TEXT_SCROLL);
 		this->vscroll_description->SetCapacity(NUM_DESCRIPTION_LINES);
-		this->FinishInitNested(WN_GAME_OPTIONS_GAME_OPTIONS);
+		this->FinishInitNested(GameOptionsWindowNumber::GameOptions);
 
 		this->querystrings[WID_GO_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;

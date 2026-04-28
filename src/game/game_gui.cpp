@@ -104,7 +104,7 @@ struct GSConfigWindow : public Window {
 
 		this->CreateNestedTree(); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_GSC_SCROLLBAR);
-		this->FinishInitNested(WN_GAME_OPTIONS_GS);
+		this->FinishInitNested(GameOptionsWindowNumber::GS);
 		this->OnInvalidateData(0);
 
 		this->RebuildVisibleSettings();

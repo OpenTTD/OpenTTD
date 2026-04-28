@@ -187,6 +187,17 @@ public:
 	void AddClassEnd();
 
 	/**
+	 * Adds an enum to the scope. Make sure to call AddScopedEnumEnd when you are done adding constants.
+	 * @param enum_name The name of the enum.
+	 */
+	void AddScopedEnumBegin(std::string_view enum_name);
+
+	/**
+	 * Finishes adding an enum to the scope. If this isn't called, no enum is really created.
+	 */
+	void AddScopedEnumEnd();
+
+	/**
 	 * Resume a VM when it was suspended via a throw.
 	 * @param suspend The number of opcodes that are allowed before suspending.
 	 * @return \c true iff the VM is still alive.
