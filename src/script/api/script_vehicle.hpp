@@ -196,6 +196,15 @@ public:
 	static SQInteger GetAge(VehicleID vehicle_id);
 
 	/**
+	 * Get the current economy age of a vehicle.
+	 * @param vehicle_id The vehicle to get the economy age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The current economy age of the vehicle in economy-days.
+	 * @see \ref ScriptEconomyTime
+	 */
+	static SQInteger GetEconomyAge(VehicleID vehicle_id);
+
+	/**
 	 * Get the current age of a second (or third, etc.) engine in a train vehicle.
 	 * @param vehicle_id The vehicle to get the age of.
 	 * @param wagon The wagon in the vehicle to get the age of.
@@ -205,6 +214,17 @@ public:
 	 * @see \ref ScriptCalendarTime
 	 */
 	static SQInteger GetWagonAge(VehicleID vehicle_id, SQInteger wagon);
+
+	/**
+	 * Get the current economy age of a second (or third, etc.) engine in a train vehicle.
+	 * @param vehicle_id The vehicle to get the economy age of.
+	 * @param wagon The wagon in the vehicle to get the economy age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre wagon < GetNumWagons(vehicle_id).
+	 * @return The current economy age of the vehicle in economy-days.
+	 * @see \ref ScriptEconomyTime
+	 */
+	static SQInteger GetWagonEconomyAge(VehicleID vehicle_id, SQInteger wagon);
 
 	/**
 	 * Get the maximum age of a vehicle.
