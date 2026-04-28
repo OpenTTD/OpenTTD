@@ -1436,6 +1436,16 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Amount of flat 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Allow multiple similar industries per town: {STRING2}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normally, a town does not want more than one industry of each type. With this setting, it will allow several industries of the same type in the same town
 
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES                          :Allow bulldozing industries: {STRING2}
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_HELPTEXT                 :Allow industries to be demolished
+###length 3
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_NONE                     :None
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_UNSERVED                 :Unserved only
+STR_CONFIG_SETTING_BULLDOZE_INDUSTRIES_ALL                      :All
+
+STR_CONFIG_SETTING_BULLDOZE_OBJECTS                             :Allow bulldozing immovable objects
+STR_CONFIG_SETTING_BULLDOZE_OBJECTS_HELPTEXT                    :Allow lighthouses, transmitters, and NewGRF objects to be demolished
+
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Show signals: {STRING2}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Select on which side of the track to place signals
 ###length 3
@@ -2308,7 +2318,6 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Communit
 STR_CHEATS                                                      :{WHITE}Sandbox Options
 STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Playing as company: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovable objects): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edit the maximum map height: {ORANGE}{NUM}
@@ -5102,6 +5111,8 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :land sloped in 
 STR_ERROR_CAN_T_DO_THIS                                         :Can't do this...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :building must be demolished first
 STR_ERROR_BUILDING_IS_PROTECTED                                 :building is protected
+STR_ERROR_INDUSTRY_IN_USE                                       :industry is in use
+STR_ERROR_INDUSTRIES_CANNOT_BE_REMOVED                          :industries cannot be removed
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Can't clear this area...
 STR_ERROR_SITE_UNSUITABLE                                       :site unsuitable
 STR_ERROR_ALREADY_BUILT                                         :already built

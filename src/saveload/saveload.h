@@ -416,6 +416,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_BUOYS_AT_0_0,                       ///< 364  PR#14983 Allow to build buoys at (0x0).
 
 	SLV_DRIVE_BACKWARDS,                    ///< 365  PR#15379 Trains can drive backwards.
+	SLV_REMOVE_MAGIC_BULLDOZER,             ///< 366  PR#13265 Remove Magic Bulldozer cheat.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
