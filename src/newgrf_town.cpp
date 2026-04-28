@@ -41,6 +41,9 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 		/* Town index */
 		case 0x41: return this->t->index.base();
 
+		/* Number of nearby stations */
+		case 0x43: return ClampTo<uint16_t>(this->t->stations_near.size());
+
 		/* Get a variable from the persistent storage */
 		case 0x7C: {
 			/* Check the persistent storage for the GrfID stored in register 100h. */
