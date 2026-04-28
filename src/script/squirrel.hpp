@@ -295,7 +295,7 @@ public:
 	 * @param tag Name of the class without the Script/AI/GS moniker.
 	 * @return The pointer.
 	 */
-	static SQUserPointer GetRealInstance(HSQUIRRELVM vm, int index, std::string_view tag);
+	static SQUserPointer GetRealInstance(HSQUIRRELVM vm, SQInteger index, std::string_view tag);
 
 	/**
 	 * Get the Squirrel-instance pointer.

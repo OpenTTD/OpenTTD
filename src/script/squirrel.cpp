@@ -511,7 +511,7 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, nullptr);
 }
 
-/* static */ SQUserPointer Squirrel::GetRealInstance(HSQUIRRELVM vm, int index, std::string_view tag)
+/* static */ SQUserPointer Squirrel::GetRealInstance(HSQUIRRELVM vm, SQInteger index, std::string_view tag)
 {
 	if (index < 0) index += sq_gettop(vm) + 1;
 	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
