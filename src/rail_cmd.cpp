@@ -43,6 +43,11 @@
 /** Helper type for lists/vectors of trains */
 typedef std::vector<Train *> TrainList;
 
+// Depot infrastructure contribution factor.
+// Increased to ensure depot maintenance is visible under the current cost formula,
+// which uses scaling and integer division that can round small values to zero.
+static constexpr uint RAIL_DEPOT_TRACKBIT_FACTOR = 64;
+
 RailTypeInfo _railtypes[RAILTYPE_END];
 std::vector<RailType> _sorted_railtypes; ///< Sorted list of rail types.
 RailTypes _railtypes_hidden_mask;
@@ -1010,8 +1015,9 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 
 			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 			MakeDefaultName(d);
-
-			Company::Get(_current_company)->infrastructure.rail[railtype]++;
+			//updated to make it so company incurs mainance fee by constant amount when building depot
+			//per bug request
+			Company::Get(_current_company)->infrastructure.rail[railtype] += RAIL_DEPOT_TRACKBIT_FACTOR;
 			DirtyCompanyInfrastructureWindows(_current_company);
 		}
 
@@ -1775,8 +1781,9 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlags flags)
 			v = GetTrainForReservation(tile, DiagDirToDiagTrack(dir));
 			if (v != nullptr) FreeTrainTrackReservation(v);
 		}
+		//updated the infrastructure cost if removed by constant amount, per request of bug
 
-		Company::Get(owner)->infrastructure.rail[GetRailType(tile)]--;
+		Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= RAIL_DEPOT_TRACKBIT_FACTOR;
 		DirtyCompanyInfrastructureWindows(owner);
 
 		delete Depot::GetByTile(tile);
@@ -2909,6 +2916,8 @@ static void GetTileDesc_Rail(TileIndex tile, TileDesc &td)
 /** @copydoc ChangeTileOwnerProc */
 static void ChangeTileOwner_Rail(TileIndex tile, Owner old_owner, Owner new_owner)
 {
+	//Added another branch to transfer. Made it so it would consistenly reduce the maintance fee if 
+	//depot transfered, maintance fee would update with scale
 	if (!IsTileOwner(tile, old_owner)) return;
 
 	if (new_owner != INVALID_OWNER) {
@@ -2918,6 +2927,8 @@ static void ChangeTileOwner_Rail(TileIndex tile, Owner old_owner, Owner new_owne
 			TrackBits bits = GetTrackBits(tile);
 			num_pieces = CountBits(bits);
 			if (TracksOverlap(bits)) num_pieces *= num_pieces;
+		} else if (IsRailDepotTile(tile)) {
+			num_pieces = RAIL_DEPOT_TRACKBIT_FACTOR;
 		}
 		RailType rt = GetRailType(tile);
 		Company::Get(old_owner)->infrastructure.rail[rt] -= num_pieces;
