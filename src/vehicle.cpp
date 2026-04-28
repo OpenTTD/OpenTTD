@@ -1326,6 +1326,9 @@ void CheckVehicleBreakdown(Vehicle *v)
 	/* With Reduced breakdowns, vehicles (un)loading at stations don't lose reliability. */
 	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced && v->current_order.IsType(OT_LOADING)) return;
 
+	/* If vehicle is stopped in a depot, it doesn't lose reliability. */
+	if (v->IsStoppedInDepot()) return;
+
 	/* Decrease reliability. */
 	int rel, rel_old;
 	v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
