@@ -26,6 +26,7 @@
 #include "cheat_type.h"
 #include "order_cmd.h"
 #include "train_cmd.h"
+#include "train.h"
 
 #include "table/strings.h"
 
@@ -1947,7 +1948,7 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
 		case OrderConditionVariable::RequiresService: skip_order = OrderConditionCompare(occ, v->NeedsServicing(), value); break;
 		case OrderConditionVariable::Unconditionally: skip_order = true; break;
 		case OrderConditionVariable::RemainingLifetime: skip_order = OrderConditionCompare(occ, std::max(TimerGameCalendar::DateToYear(v->max_age - v->age + CalendarTime::DAYS_IN_LEAP_YEAR - 1), TimerGameCalendar::Year(0)), value); break;
-		case OrderConditionVariable::DrivingBackwards: skip_order = OrderConditionCompare(occ, v->IsDrivingBackwards(), value); break;
+		case OrderConditionVariable::DrivingBackwards: skip_order = OrderConditionCompare(occ, v->IsDrivingBackwards() && !Train::From(v)->GetMovingFront()->CanLeadTrain(), value); break;
 		default: NOT_REACHED();
 	}
 
