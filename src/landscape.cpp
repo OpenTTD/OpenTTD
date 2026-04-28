@@ -751,6 +751,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
+	bool limit_reached = false;
 
 	const Company *c = flags.Any({DoCommandFlag::Auto, DoCommandFlag::Bankrupt}) ? nullptr : Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->clear_limit, 16, 16));
@@ -765,7 +766,10 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 			last_error = std::move(ret);
 
 			/* We may not clear more tiles. */
-			if (c != nullptr && GB(c->clear_limit, 16, 16) < 1) break;
+			if (c != nullptr && GB(c->clear_limit, 16, 16) < 1) {
+				limit_reached = true;
+				break;
+			}
 			continue;
 		}
 
@@ -792,6 +796,9 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 		cost.AddCost(ret.GetCost());
 	}
 
+	if (limit_reached) {
+		return { CommandCost(STR_ERROR_CLEARING_LIMIT_REACHED), 0 };
+	}
 	return { had_success ? cost : last_error, 0 };
 }
 

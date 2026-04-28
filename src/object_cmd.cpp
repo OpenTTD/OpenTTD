@@ -408,6 +408,7 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
+	bool limit_reached = false;
 
 	const Company *c = Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->build_object_limit, 16, 16));
@@ -418,7 +419,10 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 		CommandCost ret = Command<Commands::BuildObject>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, type, view);
 
 		/* If we've reached the limit, stop building (or testing). */
-		if (c != nullptr && limit-- <= 0) break;
+		if (c != nullptr && limit-- <= 0) {
+			limit_reached = true;
+			break;
+		}
 
 		if (ret.Failed()) {
 			last_error = std::move(ret);
@@ -436,6 +440,9 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 		cost.AddCost(ret.GetCost());
 	}
 
+	if (limit_reached) {
+		return CommandCost(STR_ERROR_BUILD_OBJECT_LIMIT_REACHED);
+	}
 	return had_success ? cost : last_error;
 }
 
