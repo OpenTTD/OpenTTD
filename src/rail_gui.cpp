@@ -1018,6 +1018,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_STATION_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_STATION_TYPE_TOOLTIP; }
+	StringID GetRandomTooltip() const override { return STR_PICKER_STATION_RANDOM_TOOLTIP; }
 	StringID GetCollectionTooltip() const override { return STR_PICKER_STATION_COLLECTION_TOOLTIP; }
 
 	bool IsActive() const override
@@ -1073,6 +1074,8 @@ public:
 			StationPickerDrawSprite(x, y, StationType::Rail, _cur_railtype, INVALID_ROADTYPE, 2 + _station_gui.axis);
 		}
 	}
+
+	void SetSelectedCollection([[maybe_unused]] const std::set<PickerItem> items) const override { return; }
 
 	void FillUsedItems(std::set<PickerItem> &items) override
 	{
@@ -1844,6 +1847,7 @@ public:
 
 	StringID GetClassTooltip() const override { return STR_PICKER_WAYPOINT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_WAYPOINT_TYPE_TOOLTIP; }
+	StringID GetRandomTooltip() const override { return STR_PICKER_WAYPOINT_RANDOM_TOOLTIP; }
 	StringID GetCollectionTooltip() const override { return STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP; }
 
 	bool IsActive() const override
@@ -1898,6 +1902,8 @@ public:
 	{
 		DrawWaypointSprite(x, y, this->GetClassIndex(cls_id), id, _cur_railtype);
 	}
+
+	void SetSelectedCollection([[maybe_unused]] const std::set<PickerItem> items) const override { return; }
 
 	void FillUsedItems(std::set<PickerItem> &items) override
 	{
