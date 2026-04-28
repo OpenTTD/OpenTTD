@@ -137,6 +137,13 @@ enum class PlaceHouses : uint8_t {
 	AllowedConstructed,
 };
 
+/** Possible values for the "bridges_over_stations" setting. */
+enum class BridgesOverStations : uint8_t {
+	None = 0, ///< Bridges over stations are not allowed.
+	CheckHeight, ///< Allow if the height limit is met.
+	IgnoreHeight, ///< Always allow, regardless of height.
+};
+
 /** Possible values for "vehicle_breakdowns" setting. */
 enum class VehicleBreakdowns : uint8_t {
 	None = 0,
@@ -639,6 +646,7 @@ struct StationSettings {
 	bool modified_catchment; ///< different-size catchment areas
 	bool serve_neutral_industries; ///< company stations can serve industries with attached neutral stations
 	bool distant_join_stations; ///< allow to join non-adjacent stations
+	BridgesOverStations bridges_over_stations; ///< whether to allow bridges over stations, and whether to check height
 	bool never_expire_airports; ///< never expire airports
 	uint8_t station_spread; ///< amount a station may spread
 };
