@@ -740,18 +740,82 @@ static bool ClickTile_Object(TileIndex tile)
 	return true;
 }
 
+/**
+ * Try to build a lighthouse near a coast tile.
+ * @param coast_tile The tile to try building near.
+ * @return \c true iff a lighthouse was built.
+ */
+static bool TryBuildLighthouseNearTile(TileIndex coast_tile)
+{
+	if (!Object::CanAllocateItem()) return false;
+	if (!IsValidTile(coast_tile)) return false;
+
+	/* We always start on a coast tile. */
+	if (!IsTileType(coast_tile, TileType::Water) || GetWaterTileType(coast_tile) != WaterTileType::Coast) return false;
+
+	/* Don't build near another lighthouse. */
+	constexpr uint LIGHTHOUSE_MIN_DISTANCE_DIAMETER = 16 * 2 + 1; // 16 tile radius, plus middle tile.
+	for (auto t : SpiralTileSequence(coast_tile, LIGHTHOUSE_MIN_DISTANCE_DIAMETER)) {
+		if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
+	}
+
+	/* Find a suitable tile nearby to build. */
+	for (TileIndex build_tile : SpiralTileSequence(coast_tile, 3)) {
+		if (!IsTileType(build_tile, TileType::Clear) || !IsTileFlat(build_tile) || IsBridgeAbove(build_tile)) continue;
+		BuildObject(OBJECT_LIGHTHOUSE, build_tile);
+		return true;
+	}
+
+	return false;
+}
 
 /**
- * Try to build a lighthouse.
- * @return True iff building a lighthouse succeeded.
+ * Try to build a lighthouse near a town.
+ * @param town The town to build the lighthouse near.
  */
-static bool TryBuildLightHouse()
+static void TryBuildTownLighthouse(Town *town)
+{
+	TileIndex start_tile = town->xy;
+
+	/* As a sanity check to speed up generation, a town in the mountains is unlikely to have a lighthouse. */
+	if (GetTileZ(start_tile) > 4) return;
+
+	/* Create a perimeter a random distance around the town to search. */
+	int radius = town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)];
+	radius = std::sqrt(radius);
+	radius += RandomRange(radius);
+
+	/* Find the northern tile of the perimeter for the SpiralTileSequence. */
+	start_tile = TileAddWrap(town->xy, -radius, -radius);
+	if (!IsValidTile(start_tile)) return;
+
+	/* Search the perimeter for a suitable tile. */
+	for (TileIndex coast_tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
+		if (TryBuildLighthouseNearTile(coast_tile)) return;
+	}
+}
+
+/**
+ * Try to build lighthouses near every town.
+ */
+static void BuildTownLighthouses()
+{
+	for (Town *town : Town::Iterate()) {
+		TryBuildTownLighthouse(town);
+	}
+}
+
+/**
+ * Try to build a lighthouse along the coast.
+ * @return \c true iff a lighthouse was built.
+ */
+static bool TryBuildCoastLighthouse()
 {
 	uint maxx = Map::MaxX();
 	uint maxy = Map::MaxY();
 	uint r = Random();
 
-	/* Scatter the lighthouses more evenly around the perimeter */
+	/* Pick a random perimeter tile to start from. */
 	int perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
 	DiagDirection dir;
 	for (dir = DIAGDIR_NE; perimeter > 0; dir++) {
@@ -763,27 +827,28 @@ static bool TryBuildLightHouse()
 		default:
 		case DIAGDIR_NE: tile = TileXY(maxx - 1, r % maxy); break;
 		case DIAGDIR_SE: tile = TileXY(r % maxx, 1); break;
-		case DIAGDIR_SW: tile = TileXY(1,        r % maxy); break;
+		case DIAGDIR_SW: tile = TileXY(1, r % maxy); break;
 		case DIAGDIR_NW: tile = TileXY(r % maxx, maxy - 1); break;
 	}
 
-	/* Only build lighthouses at tiles where the border is sea. */
-	if (!IsTileType(tile, TileType::Water) || GetWaterClass(tile) != WaterClass::Sea) return false;
-
-	for (int j = 0; j < 19; j++) {
-		int h;
-		if (IsTileType(tile, TileType::Clear) && IsTileFlat(tile, &h) && h <= 2 && !IsBridgeAbove(tile)) {
-			for (auto t : SpiralTileSequence(tile, 9)) {
-				if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
-			}
-			BuildObject(OBJECT_LIGHTHOUSE, tile);
-			assert(tile < Map::Size());
-			return true;
-		}
+	/* Now walk inwards until we find a valid tile, or hit the other edge of the map. */
+	while (IsValidTile(tile)) {
+		if (TryBuildLighthouseNearTile(tile)) return true;
 		tile += TileOffsByDiagDir(dir);
-		if (!IsValidTile(tile)) return false;
 	}
+
 	return false;
+}
+
+/**
+ * Try to build lighthouses along coasts.
+ * @param amount The number of lighthouses to try to generate.
+ */
+static void BuildCoastLighthouses(uint16_t amount)
+{
+	for (uint j = amount; j != 0; j--) {
+		TryBuildCoastLighthouse();
+	}
 }
 
 /**
@@ -804,6 +869,9 @@ static bool TryBuildTransmitter()
 	return false;
 }
 
+/**
+ * Generate objects, including lighthouses, transmitters, and any NewGRF objects.
+ */
 void GenerateObjects()
 {
 	/* Set a guestimate on how much we progress */
@@ -832,7 +900,7 @@ void GenerateObjects()
 
 		/* Scale by map size */
 		if (spec.flags.Test(ObjectFlag::ScaleByWater) && _settings_game.construction.freeform_edges) {
-			/* Scale the amount of lighthouses with the amount of land at the borders.
+			/* Maybe scale the object count by the amount of land at the borders.
 			 * The -6 is because the top borders are TileType::Void (-2) and all corners
 			 * are counted twice (-4). */
 			amount = Map::ScaleBySize1D(amount * num_water_tiles) / (2 * Map::MaxY() + 2 * Map::MaxX() - 6);
@@ -842,22 +910,25 @@ void GenerateObjects()
 			amount = Map::ScaleBySize(amount);
 		}
 
-		/* Now try to place the requested amount of this object */
-		for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
-			switch (spec.Index()) {
-				case OBJECT_TRANSMITTER:
+		/* Ready to place objects. */
+		switch (spec.Index()) {
+			case OBJECT_TRANSMITTER:
+				for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
 					if (TryBuildTransmitter()) amount--;
-					break;
+				}
+				break;
 
-				case OBJECT_LIGHTHOUSE:
-					if (TryBuildLightHouse()) amount--;
-					break;
+			case OBJECT_LIGHTHOUSE:
+				BuildTownLighthouses();
+				BuildCoastLighthouses(amount);
+				break;
 
-				default:
+			default:
+				for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
 					uint8_t view = RandomRange(spec.views);
-					if (CmdBuildObject({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating}, RandomTile(), spec.Index(), view).Succeeded()) amount--;
-					break;
-			}
+					if (CmdBuildObject({ DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating }, RandomTile(), spec.Index(), view).Succeeded()) amount--;
+				}
+				break;
 		}
 		IncreaseGeneratingWorldProgress(GWP_OBJECT);
 	}
