@@ -407,7 +407,9 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
-	bool had_success = false;
+	bool had_success = true;
+	std::vector<TileIndex> valid_tiles;
+	Money total_cost = 0;
 
 	const Company *c = Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->build_object_limit, 16, 16));
@@ -425,17 +427,23 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 			continue;
 		}
 
-		had_success = true;
-		if (flags.Test(DoCommandFlag::Execute)) {
-			money -= ret.GetCost();
-
-			/* If we run out of money, stop building. */
-			if (ret.GetCost() > 0 && money < 0) break;
-			Command<Commands::BuildObject>::Do(flags, t, type, view);
-		}
+		total_cost += ret.GetCost();
 		cost.AddCost(ret.GetCost());
+		valid_tiles.push_back(t);
 	}
 
+	/* Check if there are insufficient funds to prevent partial building. */
+	if (total_cost > money) {
+		had_success = false;
+		return CommandCostWithParam(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, total_cost);
+	}
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		/* Build tiles that passed first pass. */
+		for (size_t i = 0; i < valid_tiles.size(); i++) {
+			Command<Commands::BuildObject>::Do(flags, valid_tiles[i], type, view);
+		}
+	}
 	return had_success ? cost : last_error;
 }
 
