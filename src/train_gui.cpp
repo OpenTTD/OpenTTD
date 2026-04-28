@@ -218,11 +218,9 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 	if (!IsValidCargoType(item->cargo)) {
 		str = GetString(STR_QUANTITY_N_A);
 	} else if (item->amount == 0) {
-		str = GetString(STR_VEHICLE_DETAILS_CARGO_EMPTY);
-	} else if (FreightWagonMult(item->cargo) > 1) {
-		str = GetString(STR_VEHICLE_DETAILS_CARGO_FROM_MULT, item->cargo, item->amount, item->source, _settings_game.vehicle.freight_trains);
+		str = GetString(STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY, item->cargo, item->capacity, item->subtype);
 	} else {
-		str = GetString(STR_VEHICLE_DETAILS_CARGO_FROM, item->cargo, item->amount, item->source);
+		str = GetString(STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM, item->cargo, item->amount, item->cargo, item->capacity, item->source, item->subtype);
 	}
 	DrawString(left, right, y, str, TC_LIGHT_BLUE);
 }
@@ -242,28 +240,6 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 		str = GetString(STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails), v->value);
 	} else {
 		str = GetString(STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails), v->build_year, v->value);
-	}
-	DrawString(left, right, y, str);
-}
-
-/**
- * Draw the details capacity tab for the given vehicle at the given position
- *
- * @param item  Data to draw
- * @param left  The left most coordinate to draw
- * @param right The right most coordinate to draw
- * @param y     The y coordinate
- */
-static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int right, int y)
-{
-	std::string str;
-	if (!IsValidCargoType(item->cargo)) {
-		/* Draw subtype only */
-		str = GetString(STR_VEHICLE_INFO_NO_CAPACITY, item->subtype);
-	} else if (FreightWagonMult(item->cargo) > 1) {
-		str = GetString(STR_VEHICLE_INFO_CAPACITY_MULT, item->cargo, item->capacity, item->subtype, _settings_game.vehicle.freight_trains);
-	} else {
-		str = GetString(STR_VEHICLE_INFO_CAPACITY, item->cargo, item->capacity, item->subtype);
 	}
 	DrawString(left, right, y, str);
 }
@@ -421,14 +397,6 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 							if (i == 0) TrainDetailsInfoTab(v, dr.left, dr.right, py);
 							break;
 
-						case TDW_TAB_CAPACITY:
-							if (i < _cargo_summary.size()) {
-								TrainDetailsCapacityTab(&_cargo_summary[i], dr.left, dr.right, py);
-							} else {
-								DrawString(dr.left, dr.right, py, GetString(STR_VEHICLE_INFO_NO_CAPACITY, STR_EMPTY));
-							}
-							break;
-
 						default: NOT_REACHED();
 					}
 				}
@@ -436,6 +404,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			}
 		}
 	} else {
+		/* Draw Totals tab. */
 		int y = r.top;
 		CargoArray act_cargo{};
 		CargoArray max_cargo{};
@@ -447,7 +416,13 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			feeder_share             += u->cargo.GetFeederShare();
 		}
 
-		/* draw total cargo tab */
+		/* Draw the total vehicle length. */
+		uint train_length = CeilDiv(v->gcache.cached_total_length * 10, TILE_SIZE);
+		std::string str = GetString(STR_VEHICLE_DETAILS_TRAIN_LENGTH, train_length, /* digits for DECIMAL */ 1);
+		DrawString(r.left, r.right, y + text_y_offset, str);
+		y += line_height;
+
+		/* Draw the header for the total capacity. */
 		DrawString(r.left, r.right, y + text_y_offset, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
 		y += line_height;
 
@@ -457,11 +432,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			CargoType cargo_type = cs->Index();
 			if (max_cargo[cargo_type] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				std::string str;
-				if (FreightWagonMult(cargo_type) > 1) {
-					str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type], _settings_game.vehicle.freight_trains);
-				} else {
-					str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type]);
-				}
+				str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type]);
 				DrawString(ir.left, ir.right, y + text_y_offset, str);
 				y += line_height;
 			}
