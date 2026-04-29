@@ -178,6 +178,20 @@ void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig &c)
 static std::map<uint32_t, uint32_t> _grf_id_overrides;
 
 /**
+ * Get the override for a NewGRF
+ * @param source_grfid The grfID which wants to override another NewGRF.
+ */
+uint32_t GetNewGRFOverride(uint32_t source_grfid)
+{
+	auto found = _grf_id_overrides.find(source_grfid);
+	if (found != std::end(_grf_id_overrides)) {
+		return found->second;
+	}
+	return INVALID_GRFID;
+}
+
+
+/**
  * Set the override for a NewGRF
  * @param source_grfid The grfID which wants to override another NewGRF.
  * @param target_grfid The grfID which is being overridden.
