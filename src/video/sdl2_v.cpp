@@ -18,6 +18,7 @@
 #include "../core/utf8.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
+#include "../settings_type.h"
 #include "../window_func.h"
 #include "sdl2_v.h"
 #include <SDL.h>
@@ -472,6 +473,14 @@ bool VideoDriver_SDL_Base::PollEvent()
 					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				if (ev.key.repeat == 0) ToggleFullScreen(!_fullscreen);
 			} else {
+				/* Suppress WASD keys when WASD scrolling is active, but allow Alt+WASD through. */
+				if (_settings_client.gui.wasd_scrolling && !this->edit_box_focused &&
+						!(ev.key.keysym.mod & KMOD_ALT)) {
+					SDL_Scancode sc = ev.key.keysym.scancode;
+					if (sc == SDL_SCANCODE_W || sc == SDL_SCANCODE_A ||
+						sc == SDL_SCANCODE_S || sc == SDL_SCANCODE_D) break;
+				}
+
 				char32_t character;
 
 				uint keycode = ConvertSdlKeyIntoMy(&ev.key.keysym, &character);
@@ -631,6 +640,12 @@ void VideoDriver_SDL_Base::InputLoop()
 	_dirkeys.Set(DirectionKey::Up, keys[SDL_SCANCODE_UP]);
 	_dirkeys.Set(DirectionKey::Right, keys[SDL_SCANCODE_RIGHT]);
 	_dirkeys.Set(DirectionKey::Down, keys[SDL_SCANCODE_DOWN]);
+	if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
+		if (keys[SDL_SCANCODE_A]) _dirkeys.Set(DirectionKey::Left);
+		if (keys[SDL_SCANCODE_W]) _dirkeys.Set(DirectionKey::Up);
+		if (keys[SDL_SCANCODE_D]) _dirkeys.Set(DirectionKey::Right);
+		if (keys[SDL_SCANCODE_S]) _dirkeys.Set(DirectionKey::Down);
+	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }

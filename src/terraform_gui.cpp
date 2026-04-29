@@ -315,9 +315,9 @@ struct TerraformToolbarWindow : Window {
 
 	static inline HotkeyList hotkeys{"terraform", {
 		Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_TT_LOWER_LAND),
-		Hotkey('W' | WKC_GLOBAL_HOTKEY, "raise", WID_TT_RAISE_LAND),
+		Hotkey({'W' | WKC_GLOBAL_HOTKEY, WKC_SHIFT | 'W' | WKC_GLOBAL_HOTKEY, WKC_ALT | 'W' | WKC_GLOBAL_HOTKEY}, "raise", WID_TT_RAISE_LAND),
 		Hotkey('E' | WKC_GLOBAL_HOTKEY, "level", WID_TT_LEVEL_LAND),
-		Hotkey('D' | WKC_GLOBAL_HOTKEY, "dynamite", WID_TT_DEMOLISH),
+		Hotkey({'D' | WKC_GLOBAL_HOTKEY, WKC_SHIFT | 'D' | WKC_GLOBAL_HOTKEY, WKC_ALT | 'D' | WKC_GLOBAL_HOTKEY}, "dynamite", WID_TT_DEMOLISH),
 		Hotkey('U', "buyland", WID_TT_BUY_LAND),
 		Hotkey('I', "trees", WID_TT_PLANT_TREES),
 		Hotkey('O', "placesign", WID_TT_PLACE_SIGN),
@@ -726,9 +726,9 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	}
 
 	static inline HotkeyList hotkeys{"terraform_editor", {
-		Hotkey('D' | WKC_GLOBAL_HOTKEY, "dynamite", WID_ETT_DEMOLISH),
+		Hotkey({'D' | WKC_GLOBAL_HOTKEY, WKC_SHIFT | 'D' | WKC_GLOBAL_HOTKEY, WKC_ALT | 'D' | WKC_GLOBAL_HOTKEY}, "dynamite", WID_ETT_DEMOLISH),
 		Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_ETT_LOWER_LAND),
-		Hotkey('W' | WKC_GLOBAL_HOTKEY, "raise", WID_ETT_RAISE_LAND),
+		Hotkey({'W' | WKC_GLOBAL_HOTKEY, WKC_SHIFT | 'W' | WKC_GLOBAL_HOTKEY, WKC_ALT | 'W' | WKC_GLOBAL_HOTKEY}, "raise", WID_ETT_RAISE_LAND),
 		Hotkey('E' | WKC_GLOBAL_HOTKEY, "level", WID_ETT_LEVEL_LAND),
 		Hotkey('R', "rocky", WID_ETT_PLACE_ROCKS),
 		Hotkey('T', "desert", WID_ETT_PLACE_DESERT),
