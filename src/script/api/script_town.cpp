@@ -128,7 +128,7 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	return t->received[towneffect_id].old_act;
+	return t->received[static_cast<TownAcceptanceEffect>(towneffect_id)].old_act;
 }
 
 /* static */ bool ScriptTown::SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, SQInteger goal)
@@ -149,16 +149,16 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	switch (t->goal[towneffect_id]) {
+	switch (t->goal[static_cast<TownAcceptanceEffect>(towneffect_id)]) {
 		case TOWN_GROWTH_WINTER:
 			if (TileHeight(t->xy) >= GetSnowLine() && t->cache.population > 90) return 1;
 			return 0;
 
 		case TOWN_GROWTH_DESERT:
-			if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->cache.population > 60) return 1;
+			if (GetTropicZone(t->xy) == TropicZone::Desert && t->cache.population > 60) return 1;
 			return 0;
 
-		default: return t->goal[towneffect_id];
+		default: return t->goal[static_cast<TownAcceptanceEffect>(towneffect_id)];
 	}
 }
 

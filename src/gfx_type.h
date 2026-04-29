@@ -245,29 +245,29 @@ using Colour = std::conditional_t<std::endian::native == std::endian::little, Co
 static_assert(sizeof(Colour) == sizeof(uint32_t));
 
 /** Available font sizes */
-enum FontSize : uint8_t {
-	FS_NORMAL, ///< Index of the normal font in the font tables.
-	FS_SMALL,  ///< Index of the small font in the font tables.
-	FS_LARGE,  ///< Index of the large font in the font tables.
-	FS_MONO,   ///< Index of the monospaced font in the font tables.
-	FS_END,
+enum class FontSize : uint8_t {
+	Normal, ///< Index of the normal font in the font tables.
+	Small, ///< Index of the small font in the font tables.
+	Large, ///< Index of the large font in the font tables.
+	Monospace, ///< Index of the monospaced font in the font tables.
 
-	FS_BEGIN = FS_NORMAL, ///< First font.
+	End, ///< Marker for the end of the enumerations.
+	Begin = FontSize::Normal, ///< Marker for the first font in the enumeration.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
 using FontSizes = EnumBitSet<FontSize, uint8_t>;
 
 /** Mask of all possible font sizes. */
-constexpr FontSizes FONTSIZES_ALL{FS_NORMAL, FS_SMALL, FS_LARGE, FS_MONO};
+constexpr FontSizes FONTSIZES_ALL{FontSize::Normal, FontSize::Small, FontSize::Large, FontSize::Monospace};
 /** Mask of font sizes required to be present. */
-constexpr FontSizes FONTSIZES_REQUIRED{FS_NORMAL, FS_SMALL, FS_LARGE};
+constexpr FontSizes FONTSIZES_REQUIRED{FontSize::Normal, FontSize::Small, FontSize::Large};
 
 inline std::string_view FontSizeToName(FontSize fs)
 {
 	static const std::string_view SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
-	assert(fs < FS_END);
-	return SIZE_TO_NAME[fs];
+	assert(fs < FontSize::End);
+	return SIZE_TO_NAME[to_underlying(fs)];
 }
 
 /**
@@ -279,29 +279,29 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum Colours : uint8_t {
-	COLOUR_BEGIN,
-	COLOUR_DARK_BLUE = COLOUR_BEGIN,
-	COLOUR_PALE_GREEN,
-	COLOUR_PINK,
-	COLOUR_YELLOW,
-	COLOUR_RED,
-	COLOUR_LIGHT_BLUE,
-	COLOUR_GREEN,
-	COLOUR_DARK_GREEN,
-	COLOUR_BLUE,
-	COLOUR_CREAM,
-	COLOUR_MAUVE,
-	COLOUR_PURPLE,
-	COLOUR_ORANGE,
-	COLOUR_BROWN,
-	COLOUR_GREY,
-	COLOUR_WHITE,
-	COLOUR_END,
-	INVALID_COLOUR = 0xFF,
+/** One of 16 base colours used for companies and windows/widgets. */
+enum class Colours : uint8_t {
+	Begin, ///< Begin marker.
+	DarkBlue = Colours::Begin, ///< Dark blue
+	PaleGreen, ///< Pale green
+	Pink, ///< Pink
+	Yellow, ///< Yellow
+	Red, ///< Red
+	LightBlue, ///< Light blue
+	Green, ///< Green
+	DarkGreen, ///< Dark green
+	Blue, ///< Blue
+	Cream, ///< Cream
+	Mauve, ///< Mauve
+	Purple, ///< Purple
+	Orange, ///< Orange
+	Brown, ///< Brown
+	Grey, ///< Grey
+	White, ///< White
+	End, ///< End-of-array marker.
+	Invalid = 0xFF, ///< Invalid marker.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Colours)
-DECLARE_ENUM_AS_ADDABLE(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
 enum TextColour : uint16_t {
@@ -341,16 +341,16 @@ static constexpr uint8_t PALETTE_ANIM_SIZE = 28; ///< number of animated colours
 static constexpr uint8_t PALETTE_ANIM_START = 227; ///< Index in  the _palettes array from which all animations are taking places (table/palettes.h)
 
 /** Define the operation GfxFillRect performs */
-enum FillRectMode : uint8_t {
-	FILLRECT_OPAQUE,  ///< Fill rectangle with a single colour
-	FILLRECT_CHECKER, ///< Draw only every second pixel, used for greying-out
-	FILLRECT_RECOLOUR, ///< Apply a recolour sprite to the screen content
+enum class FillRectMode : uint8_t {
+	Opaque, ///< Fill rectangle with a single colour
+	Checker, ///< Draw only every second pixel, used for greying-out
+	Recolour, ///< Apply a recolour sprite to the screen content
 };
 
 /** Palettes OpenTTD supports. */
-enum PaletteType : uint8_t {
-	PAL_DOS,        ///< Use the DOS palette.
-	PAL_WINDOWS,    ///< Use the Windows palette.
+enum class PaletteType : uint8_t {
+	DOS, ///< Use the DOS palette.
+	Windows, ///< Use the Windows palette.
 };
 
 /** Types of sprites that might be loaded */
@@ -377,10 +377,10 @@ struct Palette {
 };
 
 /** Modes for 8bpp support */
-enum Support8bpp : uint8_t {
-	S8BPP_NONE = 0, ///< No support for 8bpp by OS or hardware, force 32bpp blitters.
-	S8BPP_SYSTEM,   ///< No 8bpp support by hardware, do not try to use 8bpp video modes or hardware palettes.
-	S8BPP_HARDWARE, ///< Full 8bpp support by OS and hardware.
+enum class Support8bpp : uint8_t {
+	None = 0, ///< No support for 8bpp by OS or hardware, force 32bpp blitters.
+	System, ///< No 8bpp support by hardware, do not try to use 8bpp video modes or hardware palettes.
+	Hardware, ///< Full 8bpp support by OS and hardware.
 };
 
 	/** How to align the to-be drawn text. */
@@ -400,6 +400,15 @@ enum StringAlignment : uint8_t {
 	SA_FORCE       = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
 };
 DECLARE_ENUM_AS_BIT_SET(StringAlignment)
+
+/** The four direction keys on a keyboard. */
+enum class DirectionKey {
+	Left, ///< Left
+	Up, ///< Up
+	Right, ///< Right
+	Down, ///< Down
+};
+using DirectionKeys = EnumBitSet<DirectionKey, uint8_t>; ///< Bitset of the direction keys.
 
 /** Colour for pixel/line drawing. */
 struct PixelColour {

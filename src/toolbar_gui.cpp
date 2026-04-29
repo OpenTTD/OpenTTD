@@ -8,7 +8,9 @@
 /** @file toolbar_gui.cpp Code related to the (main) toolbar. */
 
 #include "stdafx.h"
+#include "core/geometry_func.hpp"
 #include "gui.h"
+#include "spritecache.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "viewport_func.h"
@@ -83,7 +85,7 @@ RoadType _last_built_tramtype;
 
 /** Toolbar modes */
 enum class ToolbarMode : uint8_t {
-	Normal, ///< Toolbar is in normal mode, in wich all 30 buttons are accessible.
+	Normal, ///< Toolbar is in normal mode, in which all 30 buttons are accessible.
 	Upper, ///< Toolbar is in split mode and the first part is selected.
 	Lower, ///< Toolbar is in split mode and the second part is selected.
 };
@@ -403,17 +405,17 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 {
 	if (_game_mode == GM_EDITOR) {
 		switch (SaveLoadEditorMenuEntries(index)) {
-			case SaveLoadEditorMenuEntries::SaveScenario: ShowSaveLoadDialog(FT_SCENARIO, SLO_SAVE); break;
-			case SaveLoadEditorMenuEntries::LoadScenario: ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD); break;
-			case SaveLoadEditorMenuEntries::SaveHeightmap: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_SAVE); break;
-			case SaveLoadEditorMenuEntries::LoadHeightmap: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD); break;
+			case SaveLoadEditorMenuEntries::SaveScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Save); break;
+			case SaveLoadEditorMenuEntries::LoadScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Load); break;
+			case SaveLoadEditorMenuEntries::SaveHeightmap: ShowSaveLoadDialog(AbstractFileType::Heightmap, SaveLoadOperation::Save); break;
+			case SaveLoadEditorMenuEntries::LoadHeightmap: ShowSaveLoadDialog(AbstractFileType::Heightmap, SaveLoadOperation::Load); break;
 			case SaveLoadEditorMenuEntries::ExitToMainMenu: AskExitToGameMenu(); break;
 			case SaveLoadEditorMenuEntries::ExitGame: HandleExitGameRequest(); break;
 		}
 	} else {
 		switch (SaveLoadNormalMenuEntries(index)) {
-			case SaveLoadNormalMenuEntries::SaveGame: ShowSaveLoadDialog(FT_SAVEGAME, SLO_SAVE); break;
-			case SaveLoadNormalMenuEntries::LoadGame: ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
+			case SaveLoadNormalMenuEntries::SaveGame: ShowSaveLoadDialog(AbstractFileType::Savegame, SaveLoadOperation::Save); break;
+			case SaveLoadNormalMenuEntries::LoadGame: ShowSaveLoadDialog(AbstractFileType::Savegame, SaveLoadOperation::Load); break;
 			case SaveLoadNormalMenuEntries::ExitToMainMenu: AskExitToGameMenu(); break;
 			case SaveLoadNormalMenuEntries::ExitGame: HandleExitGameRequest(); break;
 		}
@@ -783,7 +785,7 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 
 static CallBackFunction ToolbarTrainClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_TRAIN);
+	ToolbarVehicleClick(w, VehicleType::Train);
 	return CallBackFunction::None;
 }
 
@@ -795,7 +797,7 @@ static CallBackFunction ToolbarTrainClick(Window *w)
  */
 static CallBackFunction MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_TRAIN);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Train);
 	return CallBackFunction::None;
 }
 
@@ -803,7 +805,7 @@ static CallBackFunction MenuClickShowTrains(int index)
 
 static CallBackFunction ToolbarRoadClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_ROAD);
+	ToolbarVehicleClick(w, VehicleType::Road);
 	return CallBackFunction::None;
 }
 
@@ -815,7 +817,7 @@ static CallBackFunction ToolbarRoadClick(Window *w)
  */
 static CallBackFunction MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_ROAD);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Road);
 	return CallBackFunction::None;
 }
 
@@ -823,7 +825,7 @@ static CallBackFunction MenuClickShowRoad(int index)
 
 static CallBackFunction ToolbarShipClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_SHIP);
+	ToolbarVehicleClick(w, VehicleType::Ship);
 	return CallBackFunction::None;
 }
 
@@ -835,7 +837,7 @@ static CallBackFunction ToolbarShipClick(Window *w)
  */
 static CallBackFunction MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_SHIP);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Ship);
 	return CallBackFunction::None;
 }
 
@@ -843,7 +845,7 @@ static CallBackFunction MenuClickShowShips(int index)
 
 static CallBackFunction ToolbarAirClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_AIRCRAFT);
+	ToolbarVehicleClick(w, VehicleType::Aircraft);
 	return CallBackFunction::None;
 }
 
@@ -855,7 +857,7 @@ static CallBackFunction ToolbarAirClick(Window *w)
  */
 static CallBackFunction MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_AIRCRAFT);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Aircraft);
 	return CallBackFunction::None;
 }
 
@@ -908,7 +910,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
+	ShowDropDownList(w, GetRoadTypeDropDownList(RoadTramType::Road), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -929,7 +931,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
+	ShowDropDownList(w, GetRoadTypeDropDownList(RoadTramType::Tram), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1266,7 +1268,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RoadTramType::Road), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1285,7 +1287,7 @@ static CallBackFunction ToolbarScenBuildRoad(int index)
 
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RoadTramType::Tram), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1492,7 +1494,7 @@ public:
 		/* Draw brown-red toolbar bg. */
 		const Rect r = this->GetCurrentRect();
 		GfxFillRect(r, PC_VERY_DARK_RED);
-		GfxFillRect(r, PC_DARK_RED, FILLRECT_CHECKER);
+		GfxFillRect(r, PC_DARK_RED, FillRectMode::Checker);
 
 		this->NWidgetContainer::Draw(w);
 	}
@@ -2045,7 +2047,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
 			case MTHK_SETTINGS: ShowGameOptions(); break;
 			case MTHK_SAVEGAME: MenuClickSaveLoad(); break;
-			case MTHK_LOADGAME: ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
+			case MTHK_LOADGAME: ShowSaveLoadDialog(AbstractFileType::Savegame, SaveLoadOperation::Load); break;
 			case MTHK_SMALLMAP: ShowSmallMap(); break;
 			case MTHK_TOWNDIRECTORY: ShowTownDirectory(); break;
 			case MTHK_SUBSIDIES: ShowSubsidiesList(); break;
@@ -2057,10 +2059,10 @@ struct MainToolbarWindow : Window {
 			case MTHK_GRAPHS: ShowOperatingProfitGraph(); break;
 			case MTHK_LEAGUE: ShowFirstLeagueTable(); break;
 			case MTHK_INDUSTRIES: ShowBuildIndustryWindow(); break;
-			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VEH_TRAIN); break;
-			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VEH_ROAD); break;
-			case MTHK_SHIP_LIST: ShowVehicleListWindow(_local_company, VEH_SHIP); break;
-			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VEH_AIRCRAFT); break;
+			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VehicleType::Train); break;
+			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VehicleType::Road); break;
+			case MTHK_SHIP_LIST: ShowVehicleListWindow(_local_company, VehicleType::Ship); break;
+			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VehicleType::Aircraft); break;
 			case MTHK_ZOOM_IN: ToolbarZoomInClick(this); break;
 			case MTHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
 			case MTHK_BUILD_RAIL: ShowBuildRailToolbar(_last_built_railtype); break;
@@ -2175,45 +2177,63 @@ struct MainToolbarWindow : Window {
 	}};
 };
 
+/** Sprites to use for the different toolbar buttons */
+static constexpr std::tuple<WidgetID, WidgetType, SpriteID> _toolbar_button_sprites[] = {
+	{WID_TN_PAUSE,        WWT_IMGBTN,     SPR_IMG_PAUSE},
+	{WID_TN_FAST_FORWARD, WWT_IMGBTN,     SPR_IMG_FASTFORWARD},
+	{WID_TN_SETTINGS,     WWT_IMGBTN,     SPR_IMG_SETTINGS},
+	{WID_TN_SAVE,         WWT_IMGBTN_2,   SPR_IMG_SAVE},
+	{WID_TN_SMALL_MAP,    WWT_IMGBTN,     SPR_IMG_SMALLMAP},
+	{WID_TN_TOWNS,        WWT_IMGBTN,     SPR_IMG_TOWN},
+	{WID_TN_SUBSIDIES,    WWT_IMGBTN,     SPR_IMG_SUBSIDIES},
+	{WID_TN_STATIONS,     WWT_IMGBTN,     SPR_IMG_COMPANY_LIST},
+	{WID_TN_FINANCES,     WWT_IMGBTN,     SPR_IMG_COMPANY_FINANCE},
+	{WID_TN_COMPANIES,    WWT_IMGBTN,     SPR_IMG_COMPANY_GENERAL},
+	{WID_TN_STORY,        WWT_IMGBTN,     SPR_IMG_STORY_BOOK},
+	{WID_TN_GOAL,         WWT_IMGBTN,     SPR_IMG_GOAL},
+	{WID_TN_GRAPHS,       WWT_IMGBTN,     SPR_IMG_GRAPHS},
+	{WID_TN_LEAGUE,       WWT_IMGBTN,     SPR_IMG_COMPANY_LEAGUE},
+	{WID_TN_INDUSTRIES,   WWT_IMGBTN,     SPR_IMG_INDUSTRY},
+	{WID_TN_TRAINS,       WWT_IMGBTN,     SPR_IMG_TRAINLIST},
+	{WID_TN_ROADVEHS,     WWT_IMGBTN,     SPR_IMG_TRUCKLIST},
+	{WID_TN_SHIPS,        WWT_IMGBTN,     SPR_IMG_SHIPLIST},
+	{WID_TN_AIRCRAFT,     WWT_IMGBTN,     SPR_IMG_AIRPLANESLIST},
+	{WID_TN_ZOOM_IN,      WWT_PUSHIMGBTN, SPR_IMG_ZOOMIN},
+	{WID_TN_ZOOM_OUT,     WWT_PUSHIMGBTN, SPR_IMG_ZOOMOUT},
+	{WID_TN_RAILS,        WWT_IMGBTN,     SPR_IMG_BUILDRAIL},
+	{WID_TN_ROADS,        WWT_IMGBTN,     SPR_IMG_BUILDROAD},
+	{WID_TN_TRAMS,        WWT_IMGBTN,     SPR_IMG_BUILDTRAMS},
+	{WID_TN_WATER,        WWT_IMGBTN,     SPR_IMG_BUILDWATER},
+	{WID_TN_AIR,          WWT_IMGBTN,     SPR_IMG_BUILDAIR},
+	{WID_TN_LANDSCAPE,    WWT_IMGBTN,     SPR_IMG_LANDSCAPING},
+	{WID_TN_MUSIC_SOUND,  WWT_IMGBTN,     SPR_IMG_MUSIC},
+	{WID_TN_MESSAGES,     WWT_IMGBTN,     SPR_IMG_MESSAGES},
+	{WID_TN_HELP,         WWT_IMGBTN,     SPR_IMG_QUERY},
+	{WID_TN_SWITCH_BAR,   WWT_IMGBTN,     SPR_IMG_SWITCH_TOOLBAR},
+};
+
+/**
+ * Get maximal square size of a toolbar image.
+ * @return maximal toolbar image size.
+ */
+Dimension GetToolbarMaximalImageSize()
+{
+	Dimension d{};
+	for (const auto &[widget, tp, sprite] : _toolbar_button_sprites) {
+		if (!SpriteExists(sprite)) continue;
+		d = maxdim(d, GetSquareScaledSpriteSize(sprite));
+	}
+	return d;
+}
+
+/**
+ * Make widgets for the main toolbar.
+ * @return widgets for the main toolbar.
+ */
 static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 {
-	/** Sprites to use for the different toolbar buttons */
-	static const std::tuple<WidgetID, WidgetType, SpriteID> toolbar_button_sprites[] = {
-		{WID_TN_PAUSE,        WWT_IMGBTN,     SPR_IMG_PAUSE},
-		{WID_TN_FAST_FORWARD, WWT_IMGBTN,     SPR_IMG_FASTFORWARD},
-		{WID_TN_SETTINGS,     WWT_IMGBTN,     SPR_IMG_SETTINGS},
-		{WID_TN_SAVE,         WWT_IMGBTN_2,   SPR_IMG_SAVE},
-		{WID_TN_SMALL_MAP,    WWT_IMGBTN,     SPR_IMG_SMALLMAP},
-		{WID_TN_TOWNS,        WWT_IMGBTN,     SPR_IMG_TOWN},
-		{WID_TN_SUBSIDIES,    WWT_IMGBTN,     SPR_IMG_SUBSIDIES},
-		{WID_TN_STATIONS,     WWT_IMGBTN,     SPR_IMG_COMPANY_LIST},
-		{WID_TN_FINANCES,     WWT_IMGBTN,     SPR_IMG_COMPANY_FINANCE},
-		{WID_TN_COMPANIES,    WWT_IMGBTN,     SPR_IMG_COMPANY_GENERAL},
-		{WID_TN_STORY,        WWT_IMGBTN,     SPR_IMG_STORY_BOOK},
-		{WID_TN_GOAL,         WWT_IMGBTN,     SPR_IMG_GOAL},
-		{WID_TN_GRAPHS,       WWT_IMGBTN,     SPR_IMG_GRAPHS},
-		{WID_TN_LEAGUE,       WWT_IMGBTN,     SPR_IMG_COMPANY_LEAGUE},
-		{WID_TN_INDUSTRIES,   WWT_IMGBTN,     SPR_IMG_INDUSTRY},
-		{WID_TN_TRAINS,       WWT_IMGBTN,     SPR_IMG_TRAINLIST},
-		{WID_TN_ROADVEHS,     WWT_IMGBTN,     SPR_IMG_TRUCKLIST},
-		{WID_TN_SHIPS,        WWT_IMGBTN,     SPR_IMG_SHIPLIST},
-		{WID_TN_AIRCRAFT,     WWT_IMGBTN,     SPR_IMG_AIRPLANESLIST},
-		{WID_TN_ZOOM_IN,      WWT_PUSHIMGBTN, SPR_IMG_ZOOMIN},
-		{WID_TN_ZOOM_OUT,     WWT_PUSHIMGBTN, SPR_IMG_ZOOMOUT},
-		{WID_TN_RAILS,        WWT_IMGBTN,     SPR_IMG_BUILDRAIL},
-		{WID_TN_ROADS,        WWT_IMGBTN,     SPR_IMG_BUILDROAD},
-		{WID_TN_TRAMS,        WWT_IMGBTN,     SPR_IMG_BUILDTRAMS},
-		{WID_TN_WATER,        WWT_IMGBTN,     SPR_IMG_BUILDWATER},
-		{WID_TN_AIR,          WWT_IMGBTN,     SPR_IMG_BUILDAIR},
-		{WID_TN_LANDSCAPE,    WWT_IMGBTN,     SPR_IMG_LANDSCAPING},
-		{WID_TN_MUSIC_SOUND,  WWT_IMGBTN,     SPR_IMG_MUSIC},
-		{WID_TN_MESSAGES,     WWT_IMGBTN,     SPR_IMG_MESSAGES},
-		{WID_TN_HELP,         WWT_IMGBTN,     SPR_IMG_QUERY},
-		{WID_TN_SWITCH_BAR,   WWT_IMGBTN,     SPR_IMG_SWITCH_TOOLBAR},
-	};
-
 	auto hor = std::make_unique<NWidgetMainToolbarContainer>();
-	for (const auto &[widget, tp, sprite] : toolbar_button_sprites) {
+	for (const auto &[widget, tp, sprite] : _toolbar_button_sprites) {
 		switch (widget) {
 			case WID_TN_SMALL_MAP:
 			case WID_TN_FINANCES:
@@ -2224,8 +2244,8 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 				hor->Add(std::make_unique<NWidgetSpacer>(0, 0));
 				break;
 		}
-		auto leaf = std::make_unique<NWidgetLeaf>(tp, COLOUR_GREY, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
-		leaf->SetMinimalSize(20, 20);
+		auto leaf = std::make_unique<NWidgetLeaf>(tp, Colours::Grey, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
+		leaf->SetToolbarMinimalSize(1);
 		hor->Add(std::move(leaf));
 	}
 
@@ -2236,8 +2256,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolbar_normal_widge
 	NWidgetFunction(MakeMainToolbar),
 };
 
+/** Window definition for the normal (top) toolbar. */
 static WindowDesc _toolb_normal_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolbar_normal_widgets,
@@ -2350,8 +2371,8 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		this->SetWidgetDisabledState(WID_TE_DATE_BACKWARD, _settings_game.game_creation.starting_year <= CalendarTime::MIN_YEAR);
 		this->SetWidgetDisabledState(WID_TE_DATE_FORWARD, _settings_game.game_creation.starting_year >= CalendarTime::MAX_YEAR);
-		this->SetWidgetDisabledState(WID_TE_ROADS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RTT_ROAD)));
-		this->SetWidgetDisabledState(WID_TE_TRAMS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RTT_TRAM)));
+		this->SetWidgetDisabledState(WID_TE_ROADS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RoadTramType::Road)));
+		this->SetWidgetDisabledState(WID_TE_TRAMS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RoadTramType::Tram)));
 
 		this->DrawWidgets();
 	}
@@ -2372,11 +2393,11 @@ struct ScenarioEditorToolbarWindow : Window {
 		switch (widget) {
 			case WID_TE_SPACER: {
 				int height = r.Height();
-				if (height > 2 * GetCharacterHeight(FS_NORMAL)) {
-					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FS_NORMAL), STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
+				if (height > 2 * GetCharacterHeight(FontSize::Normal)) {
+					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FontSize::Normal), STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
 					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				} else {
-					DrawString(r.left, r.right, (height - GetCharacterHeight(FS_NORMAL)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, (height - GetCharacterHeight(FontSize::Normal)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				}
 				break;
 			}
@@ -2536,38 +2557,38 @@ struct ScenarioEditorToolbarWindow : Window {
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_toolb_scen_inner_widgets = {
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_PAUSE), SetSpriteTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_FAST_FORWARD), SetSpriteTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SETTINGS), SetSpriteTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
-	NWidget(WWT_IMGBTN_2, COLOUR_GREY, WID_TE_SAVE), SetSpriteTip(SPR_IMG_SAVE, STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_PAUSE), SetSpriteTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_FAST_FORWARD), SetSpriteTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_SETTINGS), SetSpriteTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
+	NWidget(WWT_IMGBTN_2, Colours::Grey, WID_TE_SAVE), SetSpriteTip(SPR_IMG_SAVE, STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_SPACER), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_TE_SPACER), EndContainer(),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_DATE_PANEL),
+	NWidget(WWT_PANEL, Colours::Grey, WID_TE_DATE_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 2, 2), SetPadding(1),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_BACKWARD), SetSpriteTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP), SetFill(0, 1),
-			NWidget(WWT_TEXT, INVALID_COLOUR, WID_TE_DATE), SetToolTip(STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP), SetTextStyle(TC_WHITE), SetAlignment(SA_CENTER), SetFill(0, 1),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_FORWARD), SetSpriteTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP), SetFill(0, 1),
+			NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_DATE_BACKWARD), SetSpriteTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP), SetFill(0, 1),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_TE_DATE), SetToolTip(STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP), SetTextStyle(TC_WHITE), SetAlignment(SA_CENTER), SetFill(0, 1),
+			NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_DATE_FORWARD), SetSpriteTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP), SetFill(0, 1),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SMALL_MAP), SetSpriteTip(SPR_IMG_SMALLMAP, STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_SMALL_MAP), SetSpriteTip(SPR_IMG_SMALLMAP, STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_ZOOM_IN), SetSpriteTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_ZOOM_OUT), SetSpriteTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_ZOOM_IN), SetSpriteTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_ZOOM_OUT), SetSpriteTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_LAND_GENERATE), SetSpriteTip(SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_TOWN_GENERATE), SetSpriteTip(SPR_IMG_TOWN, STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_INDUSTRY), SetSpriteTip(SPR_IMG_INDUSTRY, STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_ROADS), SetSpriteTip(SPR_IMG_BUILDROAD, STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_TRAMS), SetSpriteTip(SPR_IMG_BUILDTRAMS, STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_WATER), SetSpriteTip(SPR_IMG_BUILDWATER, STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_TREES), SetSpriteTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_SIGNS), SetSpriteTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_LAND_GENERATE), SetSpriteTip(SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_TOWN_GENERATE), SetSpriteTip(SPR_IMG_TOWN, STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_INDUSTRY), SetSpriteTip(SPR_IMG_INDUSTRY, STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_ROADS), SetSpriteTip(SPR_IMG_BUILDROAD, STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_TRAMS), SetSpriteTip(SPR_IMG_BUILDTRAMS, STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_WATER), SetSpriteTip(SPR_IMG_BUILDWATER, STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_TREES), SetSpriteTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_SIGNS), SetSpriteTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_MUSIC_SOUND), SetSpriteTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_HELP), SetSpriteTip(SPR_IMG_QUERY, STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SWITCH_BAR), SetSpriteTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_MUSIC_SOUND), SetSpriteTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_HELP), SetSpriteTip(SPR_IMG_QUERY, STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_SWITCH_BAR), SetSpriteTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
 };
 
 static std::unique_ptr<NWidgetBase> MakeScenarioToolbar()
@@ -2579,8 +2600,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolb_scen_widgets =
 	NWidgetFunction(MakeScenarioToolbar),
 };
 
+/** Window definition for the scenario editor (top) toolbar window. */
 static WindowDesc _toolb_scen_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolb_scen_widgets,

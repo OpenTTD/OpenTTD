@@ -75,22 +75,22 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 		case 0x9B: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownInnerSuburb)]), 8, 8);
 		case 0x9C: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownCentre)]);
 		case 0x9D: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownCentre)]), 8, 8);
-		case 0x9E: return this->t->ratings[0];
-		case 0x9F: return GB(this->t->ratings[0], 8, 8);
-		case 0xA0: return this->t->ratings[1];
-		case 0xA1: return GB(this->t->ratings[1], 8, 8);
-		case 0xA2: return this->t->ratings[2];
-		case 0xA3: return GB(this->t->ratings[2], 8, 8);
-		case 0xA4: return this->t->ratings[3];
-		case 0xA5: return GB(this->t->ratings[3], 8, 8);
-		case 0xA6: return this->t->ratings[4];
-		case 0xA7: return GB(this->t->ratings[4], 8, 8);
-		case 0xA8: return this->t->ratings[5];
-		case 0xA9: return GB(this->t->ratings[5], 8, 8);
-		case 0xAA: return this->t->ratings[6];
-		case 0xAB: return GB(this->t->ratings[6], 8, 8);
-		case 0xAC: return this->t->ratings[7];
-		case 0xAD: return GB(this->t->ratings[7], 8, 8);
+		case 0x9E: return this->t->ratings[CompanyID{0}];
+		case 0x9F: return GB(this->t->ratings[CompanyID{0}], 8, 8);
+		case 0xA0: return this->t->ratings[CompanyID{1}];
+		case 0xA1: return GB(this->t->ratings[CompanyID{1}], 8, 8);
+		case 0xA2: return this->t->ratings[CompanyID{2}];
+		case 0xA3: return GB(this->t->ratings[CompanyID{2}], 8, 8);
+		case 0xA4: return this->t->ratings[CompanyID{3}];
+		case 0xA5: return GB(this->t->ratings[CompanyID{3}], 8, 8);
+		case 0xA6: return this->t->ratings[CompanyID{4}];
+		case 0xA7: return GB(this->t->ratings[CompanyID{4}], 8, 8);
+		case 0xA8: return this->t->ratings[CompanyID{5}];
+		case 0xA9: return GB(this->t->ratings[CompanyID{5}], 8, 8);
+		case 0xAA: return this->t->ratings[CompanyID{6}];
+		case 0xAB: return GB(this->t->ratings[CompanyID{6}], 8, 8);
+		case 0xAC: return this->t->ratings[CompanyID{7}];
+		case 0xAD: return GB(this->t->ratings[CompanyID{7}], 8, 8);
 		case 0xAE: return this->t->have_ratings.base();
 		case 0xB2: return this->t->statues.base();
 		case 0xB6: return ClampTo<uint16_t>(this->t->cache.num_houses);
@@ -113,14 +113,14 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 		case 0xC9: return TownHistoryHelper(this->t, CT_MAIL, LAST_MONTH, &Town::SuppliedHistory::transported) >> 8;
 		case 0xCA: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_PASSENGERS));
 		case 0xCB: return this->t->GetPercentTransported(GetCargoTypeByLabel(CT_MAIL));
-		case 0xCC: return this->t->received[TAE_FOOD].new_act;
-		case 0xCD: return GB(this->t->received[TAE_FOOD].new_act, 8, 8);
-		case 0xCE: return this->t->received[TAE_WATER].new_act;
-		case 0xCF: return GB(this->t->received[TAE_WATER].new_act, 8, 8);
-		case 0xD0: return this->t->received[TAE_FOOD].old_act;
-		case 0xD1: return GB(this->t->received[TAE_FOOD].old_act, 8, 8);
-		case 0xD2: return this->t->received[TAE_WATER].old_act;
-		case 0xD3: return GB(this->t->received[TAE_WATER].old_act, 8, 8);
+		case 0xCC: return this->t->received[TownAcceptanceEffect::Food].new_act;
+		case 0xCD: return GB(this->t->received[TownAcceptanceEffect::Food].new_act, 8, 8);
+		case 0xCE: return this->t->received[TownAcceptanceEffect::Water].new_act;
+		case 0xCF: return GB(this->t->received[TownAcceptanceEffect::Water].new_act, 8, 8);
+		case 0xD0: return this->t->received[TownAcceptanceEffect::Food].old_act;
+		case 0xD1: return GB(this->t->received[TownAcceptanceEffect::Food].old_act, 8, 8);
+		case 0xD2: return this->t->received[TownAcceptanceEffect::Water].old_act;
+		case 0xD3: return GB(this->t->received[TownAcceptanceEffect::Water].old_act, 8, 8);
 		case 0xD4: return this->t->road_build_months;
 		case 0xD5: return this->t->fund_buildings_months;
 	}
@@ -156,7 +156,7 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 
 	/* Create a new storage. */
 	assert(PersistentStorage::CanAllocateItem());
-	PersistentStorage *psa = PersistentStorage::Create(grfid, GSF_FAKE_TOWNS, this->t->xy);
+	PersistentStorage *psa = PersistentStorage::Create(grfid, GrfSpecFeature::FakeTowns, this->t->xy);
 	psa->StoreValue(pos, value);
 	t->psa_list.push_back(psa);
 }

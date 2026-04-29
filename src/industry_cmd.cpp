@@ -158,7 +158,7 @@ Industry::~Industry()
 	for (TileIndex tile_cur : this->location) {
 		if (IsTileType(tile_cur, TileType::Industry)) {
 			if (GetIndustryIndex(tile_cur) == this->index) {
-				DeleteNewGRFInspectWindow(GSF_INDUSTRYTILES, tile_cur.base());
+				DeleteNewGRFInspectWindow(GrfSpecFeature::IndustryTiles, tile_cur.base());
 
 				/* MakeWaterKeepingClass() can also handle 'land' */
 				MakeWaterKeepingClass(tile_cur, OWNER_NONE);
@@ -199,7 +199,7 @@ Industry::~Industry()
 	DeleteIndustryNews(this->index);
 	CloseWindowById(WC_INDUSTRY_VIEW, this->index);
 	CloseWindowById(WC_INDUSTRY_PRODUCTION, this->index);
-	DeleteNewGRFInspectWindow(GSF_INDUSTRIES, this->index);
+	DeleteNewGRFInspectWindow(GrfSpecFeature::Industries, this->index);
 
 	Source src{this->index, SourceType::Industry};
 	DeleteSubsidyWith(src);
@@ -458,13 +458,13 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		acceptance[cargo] += cargo_acceptance[i];
 
 		/* Maybe set 'always accepted' bit (if it's not set already) */
-		if (HasBit(always_accepted, cargo)) continue;
+		if (always_accepted.Test(cargo)) continue;
 
 		/* Test whether the industry itself accepts the cargo type */
 		if (ind->IsCargoAccepted(cargo)) continue;
 
 		/* If the industry itself doesn't accept this cargo, set 'always accepted' bit */
-		SetBit(always_accepted, cargo);
+		always_accepted.Set(cargo);
 	}
 }
 
@@ -1131,7 +1131,7 @@ static void ChopLumberMillTrees(Industry *i)
 		_industry_sound_tile = tile;
 		if (_settings_client.sound.ambient) SndPlayTileFx(SND_38_LUMBER_MILL_1, tile);
 
-		AutoRestoreBackup<CompanyID> cur_company(_current_company, OWNER_NONE);
+		AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 		Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile);
 
 		/* Add according value to waiting cargo. */
@@ -1354,7 +1354,7 @@ static CommandCost CheckNewIndustry_Farm(TileIndex tile)
  */
 static CommandCost CheckNewIndustry_Plantation(TileIndex tile)
 {
-	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
+	if (GetTropicZone(tile) == TropicZone::Desert) {
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 	return CommandCost();
@@ -1367,7 +1367,7 @@ static CommandCost CheckNewIndustry_Plantation(TileIndex tile)
  */
 static CommandCost CheckNewIndustry_Water(TileIndex tile)
 {
-	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
+	if (GetTropicZone(tile) != TropicZone::Desert) {
 		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
 	}
 	return CommandCost();
@@ -1380,7 +1380,7 @@ static CommandCost CheckNewIndustry_Water(TileIndex tile)
  */
 static CommandCost CheckNewIndustry_Lumbermill(TileIndex tile)
 {
-	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
+	if (GetTropicZone(tile) != TropicZone::Rainforest) {
 		return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
 	}
 	return CommandCost();
@@ -1503,9 +1503,8 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				}
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
-				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
+				AutoRestoreBackup cur_company(_current_company, OWNER_TOWN);
 				ret = Command<Commands::LandscapeClear>::Do({}, cur_tile);
-				cur_company.Restore();
 
 				if (ret.Failed()) return ret;
 			} else {
@@ -1649,7 +1648,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope and town ratings. */
-	Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
+	AutoRestoreBackup cur_company(_current_company, OWNER_TOWN);
 
 	for (TileIndex tile_walk : ta) {
 		uint curh = TileHeight(tile_walk);
@@ -1657,13 +1656,11 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 			/* This tile needs terraforming. Check if we can do that without
 			 *  damaging the surroundings too much. */
 			if (!CheckCanTerraformSurroundingTiles(tile_walk, h, 0)) {
-				cur_company.Restore();
 				return false;
 			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
 			if (std::get<0>(Command<Commands::TerraformLand>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), tile_walk, SLOPE_N, curh <= h)).Failed()) {
-				cur_company.Restore();
 				return false;
 			}
 		}
@@ -1683,7 +1680,6 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 		}
 	}
 
-	cur_company.Restore();
 	return true;
 }
 
@@ -2102,7 +2098,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 			if (prospect_success) {
 				/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
 				IndustryAvailabilityCallType calltype = _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_PROSPECTCREATION;
-				Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
+				AutoRestoreBackup cur_company(_current_company, OWNER_TOWN);
 				for (int i = 0; i < 5000; i++) {
 					/* We should not have more than one Random() in a function call
 					 * because parameter evaluation order is not guaranteed in the c++ standard
@@ -2118,7 +2114,6 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 					}
 					if (ret.Succeeded()) break;
 				}
-				cur_company.Restore();
 			}
 			if (ret.Failed() && IsLocalCompany()) {
 				if (prospect_success) {
@@ -2406,12 +2401,10 @@ static Industry *PlaceIndustry(IndustryType type, IndustryAvailabilityCallType c
  */
 static void PlaceInitialIndustry(IndustryType type, bool water, bool try_hard)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 	IncreaseGeneratingWorldProgress(water ? GWP_WATER_INDUSTRY : GWP_LAND_INDUSTRY);
 	PlaceIndustry(type, IACT_MAPGENERATION, try_hard);
-
-	cur_company.Restore();
 }
 
 /**
@@ -2807,11 +2800,11 @@ int WhoCanServiceIndustry(Industry *ind)
 		/* Check whether it accepts the right kind of cargo */
 		bool c_accepts = false;
 		bool c_produces = false;
-		if (v->type == VEH_TRAIN && v->IsFrontEngine()) {
+		if (v->type == VehicleType::Train && v->IsFrontEngine()) {
 			for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 				CanCargoServiceIndustry(u->cargo_type, ind, &c_accepts, &c_produces);
 			}
-		} else if (v->type == VEH_ROAD || v->type == VEH_SHIP || v->type == VEH_AIRCRAFT) {
+		} else if (v->type == VehicleType::Road || v->type == VehicleType::Ship || v->type == VehicleType::Aircraft) {
 			CanCargoServiceIndustry(v->cargo_type, ind, &c_accepts, &c_produces);
 		} else {
 			continue;
@@ -2944,25 +2937,21 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				if (!IsValidCargoType(p.cargo)) continue;
 				uint32_t r = Random();
 				int old_prod, new_prod, percent;
-				/* If over 60% is transported, mult is 1, else mult is -1. */
-				int mult = (p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_60) ? 1 : -1;
-
 				new_prod = old_prod = p.rate;
 
-				/* For industries with only_decrease flags (temperate terrain Oil Wells),
-				 * the multiplier will always be -1 so they will only decrease. */
-				if (only_decrease) {
-					mult = -1;
-				/* For normal industries, if over 60% is transported, 33% chance for decrease.
-				 * Bonus for very high station ratings (over 80%): 16% chance for decrease. */
-				} else if (Chance16I(1, ((p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_80) ? 6 : 3), r)) {
-					mult *= -1;
-				}
-
-				/* 4.5% chance for 3-23% (or 1 unit for very low productions) production change,
-				 * determined by mult value. If mult = 1 prod. increases, else (-1) it decreases. */
+				/* 1 in 22 chance to change production rate, randomly up/down depending on percent transported last month */
 				if (Chance16I(1, 22, r >> 16)) {
-					new_prod += mult * (std::max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
+					int prod_change_direction;
+					if (only_decrease) {
+						prod_change_direction = -1;
+					} else if (p.history[LAST_MONTH].PctTransported() <= PERCENT_TRANSPORTED_60) {
+						prod_change_direction = Chance16I(1, 3, r) ? 1 : -1;
+					} else if (p.history[LAST_MONTH].PctTransported() <= PERCENT_TRANSPORTED_80) {
+						prod_change_direction = Chance16I(2, 3, r) ? 1 : -1;
+					} else {
+						prod_change_direction = Chance16I(5, 6, r) ? 1 : -1;
+					}
+					new_prod += prod_change_direction * (std::max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
 				}
 
 				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
@@ -3105,7 +3094,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGam
 		return;  // Nothing to do? get out
 	}
 
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 	/* perform the required industry changes for the day */
 
@@ -3125,15 +3114,14 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGam
 		}
 	}
 
-	cur_company.Restore();
-
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
 });
 
+/** Economy monthly loop for industries. */
 static const IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::Industry}, [](auto)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 	_industry_builder.EconomyMonthlyLoop();
 
@@ -3146,8 +3134,6 @@ static const IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerG
 			SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
 		}
 	}
-
-	cur_company.Restore();
 
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);

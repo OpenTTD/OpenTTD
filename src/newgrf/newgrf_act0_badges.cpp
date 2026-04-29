@@ -18,18 +18,18 @@
 
 static ChangeInfoResult BadgeChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last >= UINT16_MAX) {
 		GrfMsg(1, "BadgeChangeInfo: Tag {} is invalid, max {}, ignoring", last, UINT16_MAX - 1);
-		return CIR_INVALID_ID;
+		return ChangeInfoResult::InvalidId;
 	}
 
 	for (uint id = first; id < last; ++id) {
 		auto it = _cur_gps.grffile->badge_map.find(id);
 		if (prop != 0x08 && it == std::end(_cur_gps.grffile->badge_map)) {
 			GrfMsg(1, "BadgeChangeInfo: Attempt to modify undefined tag {}, ignoring", id);
-			return CIR_INVALID_ID;
+			return ChangeInfoResult::InvalidId;
 		}
 
 		Badge *badge = nullptr;
@@ -47,7 +47,7 @@ static ChangeInfoResult BadgeChangeInfo(uint first, uint last, int prop, ByteRea
 				break;
 
 			default:
-				ret = CIR_UNKNOWN;
+				ret = ChangeInfoResult::Unknown;
 				break;
 		}
 	}
@@ -55,5 +55,7 @@ static ChangeInfoResult BadgeChangeInfo(uint first, uint last, int prop, ByteRea
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_BADGES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_BADGES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return BadgeChangeInfo(first, last, prop, buf); }
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Badges>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Badges>::Activation(uint first, uint last, int prop, ByteReader &buf) { return BadgeChangeInfo(first, last, prop, buf); }

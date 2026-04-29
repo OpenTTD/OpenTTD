@@ -86,7 +86,7 @@ void LinkGraphOverlay::RebuildCache()
 		StationLinkMap &seen_links = this->cached_links[from];
 
 		uint supply = 0;
-		for (CargoType cargo : SetCargoBitIterator(this->cargo_mask)) {
+		for (CargoType cargo : this->cargo_mask) {
 			if (!CargoSpec::Get(cargo)->IsValid()) continue;
 			if (!LinkGraph::IsValidID(sta->goods[cargo].link_graph)) continue;
 			const LinkGraph &lg = *LinkGraph::Get(sta->goods[cargo].link_graph);
@@ -212,7 +212,7 @@ inline bool LinkGraphOverlay::IsLinkVisible(Point pta, Point ptb, const DrawPixe
  */
 void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 {
-	for (CargoType cargo : SetCargoBitIterator(this->cargo_mask)) {
+	for (CargoType cargo : this->cargo_mask) {
 		if (!CargoSpec::Get(cargo)->IsValid()) continue;
 		const GoodsEntry &ge = from->goods[cargo];
 		if (!LinkGraph::IsValidID(ge.link_graph) ||
@@ -314,7 +314,7 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 		GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, width, dash);
 	}
 
-	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, GetColourGradient(COLOUR_GREY, SHADE_DARKEST), width);
+	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, GetColourGradient(Colours::Grey, SHADE_DARKEST), width);
 }
 
 /**
@@ -335,8 +335,8 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 
 		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
 				GetColourGradient(st->owner != OWNER_NONE ?
-						Company::Get(st->owner)->colour : COLOUR_GREY, SHADE_LIGHT),
-				GetColourGradient(COLOUR_GREY, SHADE_DARKEST));
+						Company::Get(st->owner)->colour : Colours::Grey, SHADE_LIGHT),
+				GetColourGradient(Colours::Grey, SHADE_DARKEST));
 	}
 }
 
@@ -449,16 +449,16 @@ void LinkGraphOverlay::SetCompanyMask(CompanyMask company_mask)
 /** Make a number of rows with buttons for each company for the linkgraph legend window. @copydoc NWidgetFunctionType */
 std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsLinkGraphGUI()
 {
-	return MakeCompanyButtonRows(WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST, COLOUR_GREY, 3, STR_NULL);
+	return MakeCompanyButtonRows(WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST, Colours::Grey, 3, STR_NULL);
 }
 
 std::unique_ptr<NWidgetBase> MakeSaturationLegendLinkGraphGUI()
 {
 	auto panel = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	for (uint i = 0; i < lengthof(LinkGraphOverlay::LINK_COLOURS[0]); ++i) {
-		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_DARK_GREEN, i + WID_LGL_SATURATION_FIRST);
+		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, Colours::DarkGreen, i + WID_LGL_SATURATION_FIRST);
 		wid->SetMinimalSize(50, 0);
-		wid->SetMinimalTextLines(1, 0, FS_SMALL);
+		wid->SetMinimalTextLines(1, 0, FontSize::Small);
 		wid->SetFill(1, 1);
 		wid->SetResize(0, 0);
 		panel->Add(std::move(wid));
@@ -478,9 +478,9 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 			if (col != nullptr) panel->Add(std::move(col));
 			col = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 		}
-		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_GREY, i + WID_LGL_CARGO_FIRST);
+		auto wid = std::make_unique<NWidgetBackground>(WWT_PANEL, Colours::Grey, i + WID_LGL_CARGO_FIRST);
 		wid->SetMinimalSize(25, 0);
-		wid->SetMinimalTextLines(1, 0, FS_SMALL);
+		wid->SetMinimalTextLines(1, 0, FontSize::Small);
 		wid->SetFill(1, 1);
 		wid->SetResize(0, 0);
 		col->Add(std::move(wid));
@@ -488,7 +488,7 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 	/* Fill up last row */
 	for (uint i = num_cargo; i < Ceil(num_cargo, ENTRIES_PER_COL); ++i) {
 		auto spc = std::make_unique<NWidgetSpacer>(25, 0);
-		spc->SetMinimalTextLines(1, 0, FS_SMALL);
+		spc->SetMinimalTextLines(1, 0, FontSize::Small);
 		spc->SetFill(1, 1);
 		spc->SetResize(0, 0);
 		col->Add(std::move(spc));
@@ -501,28 +501,28 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 
 static constexpr std::initializer_list<NWidgetPart> _nested_linkgraph_legend_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_LGL_CAPTION), SetStringTip(STR_LINKGRAPH_LEGEND_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
+		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_LGL_CAPTION), SetStringTip(STR_LINKGRAPH_LEGEND_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::DarkGreen),
+		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+	NWidget(WWT_PANEL, Colours::DarkGreen),
 		NWidget(NWID_HORIZONTAL), SetPadding(WidgetDimensions::unscaled.framerect), SetPIP(0, WidgetDimensions::unscaled.framerect.Horizontal(), 0),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_SATURATION),
+			NWidget(WWT_PANEL, Colours::DarkGreen, WID_LGL_SATURATION),
 				NWidgetFunction(MakeSaturationLegendLinkGraphGUI),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_COMPANIES),
+			NWidget(WWT_PANEL, Colours::DarkGreen, WID_LGL_COMPANIES),
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 					NWidgetFunction(MakeCompanyButtonRowsLinkGraphGUI),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_COMPANIES_ALL), SetStringTip(STR_LINKGRAPH_LEGEND_ALL),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_COMPANIES_NONE), SetStringTip(STR_LINKGRAPH_LEGEND_NONE),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_LGL_COMPANIES_ALL), SetStringTip(STR_LINKGRAPH_LEGEND_ALL),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_LGL_COMPANIES_NONE), SetStringTip(STR_LINKGRAPH_LEGEND_NONE),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_LGL_CARGOES),
+			NWidget(WWT_PANEL, Colours::DarkGreen, WID_LGL_CARGOES),
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 					NWidgetFunction(MakeCargoesLegendLinkGraphGUI),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_CARGOES_ALL), SetStringTip(STR_LINKGRAPH_LEGEND_ALL),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_LGL_CARGOES_NONE), SetStringTip(STR_LINKGRAPH_LEGEND_NONE),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_LGL_CARGOES_ALL), SetStringTip(STR_LINKGRAPH_LEGEND_ALL),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_LGL_CARGOES_NONE), SetStringTip(STR_LINKGRAPH_LEGEND_NONE),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
@@ -532,8 +532,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_linkgraph_legend_wid
 static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
 		lengthof(LinkGraphOverlay::LINK_COLOURS[0]) - 1);
 
+/** Window definition for the linkgraph toolbar. */
 static WindowDesc _linkgraph_legend_desc(
-	WDP_AUTO, "toolbar_linkgraph", 0, 0,
+	WindowPosition::Automatic, "toolbar_linkgraph", 0, 0,
 	WC_LINKGRAPH_LEGEND, WC_NONE,
 	{},
 	_nested_linkgraph_legend_widgets
@@ -569,7 +570,7 @@ void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay
 	}
 	CargoTypes cargoes = this->overlay->GetCargoMask();
 	for (uint c = 0; c < this->num_cargo; c++) {
-		this->SetWidgetLoweredState(WID_LGL_CARGO_FIRST + c, HasBit(cargoes, _sorted_cargo_specs[c]->Index()));
+		this->SetWidgetLoweredState(WID_LGL_CARGO_FIRST + c, cargoes.Test(_sorted_cargo_specs[c]->Index()));
 	}
 }
 
@@ -585,7 +586,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			Dimension dim = GetStringBoundingBox(str, FS_SMALL);
+			Dimension dim = GetStringBoundingBox(str, FontSize::Small);
 			dim.width += padding.width;
 			dim.height += padding.height;
 			size = maxdim(size, dim);
@@ -593,7 +594,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		const CargoSpec *cargo = _sorted_cargo_specs[widget - WID_LGL_CARGO_FIRST];
-		Dimension dim = GetStringBoundingBox(cargo->abbrev, FS_SMALL);
+		Dimension dim = GetStringBoundingBox(cargo->abbrev, FontSize::Small);
 		dim.width += padding.width;
 		dim.height += padding.height;
 		size = maxdim(size, dim);
@@ -621,13 +622,13 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER, false, FS_SMALL);
+			DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FontSize::Small)), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER, false, FontSize::Small);
 		}
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		const CargoSpec *cargo = _sorted_cargo_specs[widget - WID_LGL_CARGO_FIRST];
 		GfxFillRect(br, cargo->legend_colour);
-		DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER, false, FS_SMALL);
+		DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FontSize::Small)), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER, false, FontSize::Small);
 	}
 }
 
@@ -672,10 +673,10 @@ void LinkGraphLegendWindow::UpdateOverlayCompanies()
  */
 void LinkGraphLegendWindow::UpdateOverlayCargoes()
 {
-	CargoTypes mask = 0;
+	CargoTypes mask{};
 	for (uint c = 0; c < num_cargo; c++) {
 		if (!this->IsWidgetLowered(WID_LGL_CARGO_FIRST + c)) continue;
-		SetBit(mask, _sorted_cargo_specs[c]->Index());
+		mask.Set(_sorted_cargo_specs[c]->Index());
 	}
 	this->overlay->SetCargoMask(mask);
 }

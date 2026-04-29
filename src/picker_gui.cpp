@@ -294,7 +294,7 @@ void PickerWindow::ConstructWindow()
 void PickerWindow::OnInit()
 {
 	this->badge_classes = GUIBadgeClasses(this->callbacks.GetFeature());
-	this->badge_filters = AddBadgeDropdownFilters(this, WID_PW_BADGE_FILTER, WID_PW_BADGE_FILTER, COLOUR_DARK_GREEN, this->callbacks.GetFeature());
+	this->badge_filters = AddBadgeDropdownFilters(this, WID_PW_BADGE_FILTER, WID_PW_BADGE_FILTER, Colours::DarkGreen, this->callbacks.GetFeature());
 
 	this->widget_lookup.clear();
 	this->nested_root->FillWidgetLookup(this->widget_lookup);
@@ -311,7 +311,7 @@ void PickerWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, const Dime
 	switch (widget) {
 		/* Class picker */
 		case WID_PW_CLASS_LIST:
-			fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
+			fill.height = resize.height = GetCharacterHeight(FontSize::Normal) + padding.height;
 			size.height = 5 * resize.height;
 			break;
 
@@ -400,7 +400,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 
 				GrfSpecFeature feature = this->callbacks.GetFeature();
 				/* Houses have recolours but not related to the company colour and other items depend on gamemode. */
-				PaletteID palette = _game_mode != GM_NORMAL || feature == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				PaletteID palette = _game_mode != GM_NORMAL || feature == GrfSpecFeature::Houses ? PAL_NONE : GetCompanyPalette(_local_company);
 				DrawBadgeColumn({0, by, ir.Width() - 1, ir.Height() - 1}, 0, this->badge_classes, this->callbacks.GetTypeBadges(item.class_index, item.index), feature, std::nullopt, palette);
 
 				if (this->callbacks.saved.contains(this->callbacks.sel_collection)) {
@@ -414,7 +414,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			}
 
 			if (!this->callbacks.IsTypeAvailable(item.class_index, item.index)) {
-				GfxFillRect(ir, GetColourGradient(COLOUR_GREY, SHADE_DARKER), FILLRECT_CHECKER);
+				GfxFillRect(ir, GetColourGradient(Colours::Grey, SHADE_DARKER), FillRectMode::Checker);
 			}
 			break;
 		}
@@ -559,13 +559,13 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 
 		case WID_PW_CONFIGURE_BADGES:
 			if (this->badge_classes.GetClasses().empty()) break;
-			ShowDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, COLOUR_DARK_GREEN), -1, widget, 0, DropDownOption::Persist);
+			ShowDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, Colours::DarkGreen), -1, widget, 0, DropDownOption::Persist);
 			break;
 
 		default:
 			if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
 				/* Houses have recolours but not related to the company colour and other items depend on gamemode. */
-				PaletteID palette = _game_mode != GM_NORMAL || this->callbacks.GetFeature() == GSF_HOUSES ? PAL_NONE : GetCompanyPalette(_local_company);
+				PaletteID palette = _game_mode != GM_NORMAL || this->callbacks.GetFeature() == GrfSpecFeature::Houses ? PAL_NONE : GetCompanyPalette(_local_company);
 				ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0, DropDownOption::Filterable);
 			}
 			break;
@@ -626,7 +626,7 @@ void PickerWindow::OnDropdownSelect(WidgetID widget, int index, int click_result
 			this->ReInit();
 
 			if (reopen) {
-				ReplaceDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, COLOUR_DARK_GREEN), -1);
+				ReplaceDropDownList(this, BuildBadgeClassConfigurationList(this->badge_classes, 1, {}, Colours::DarkGreen), -1);
 			} else {
 				this->CloseChildWindows(WC_DROPDOWN_MENU);
 			}
@@ -933,28 +933,28 @@ void PickerWindow::BuildPickerCollectionList()
 std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 {
 	static constexpr std::initializer_list<NWidgetPart> picker_class_widgets = {
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_CLASS_SEL),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_PW_CLASS_SEL),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-					NWidget(WWT_EDITBOX, COLOUR_DARK_GREEN, WID_PW_CLASS_FILTER), SetMinimalSize(144, 0), SetPadding(2), SetFill(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+				NWidget(WWT_PANEL, Colours::DarkGreen),
+					NWidget(WWT_EDITBOX, Colours::DarkGreen, WID_PW_CLASS_FILTER), SetMinimalSize(144, 0), SetPadding(2), SetFill(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 				EndContainer(),
 				/* Collection view */
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_PW_COLEC_ADD), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_COLLECTION_ADD, STR_PICKER_COLLECTION_ADD_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_PW_COLEC_RENAME), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_COLLECTION_RENAME, STR_PICKER_COLLECTION_RENAME_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_PW_COLEC_DELETE), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_COLLECTION_DELETE, STR_PICKER_COLLECTION_DELETE_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::DarkGreen, WID_PW_COLEC_ADD), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_COLLECTION_ADD, STR_PICKER_COLLECTION_ADD_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::DarkGreen, WID_PW_COLEC_RENAME), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_COLLECTION_RENAME, STR_PICKER_COLLECTION_RENAME_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::DarkGreen, WID_PW_COLEC_DELETE), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_COLLECTION_DELETE, STR_PICKER_COLLECTION_DELETE_TOOLTIP),
 					EndContainer(),
-					NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, WID_PW_COLEC_LIST), SetMinimalSize(144, 12), SetFill(0, 1), SetResize(1, 0), SetToolTip(STR_PICKER_SELECT_COLLECTION_TOOLTIP),
+					NWidget(WWT_DROPDOWN, Colours::DarkGreen, WID_PW_COLEC_LIST), SetMinimalSize(144, 12), SetFill(0, 1), SetResize(1, 0), SetToolTip(STR_PICKER_SELECT_COLLECTION_TOOLTIP),
 				EndContainer(),
 				/* Class view */
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-							NWidget(WWT_MATRIX, COLOUR_GREY, WID_PW_CLASS_LIST), SetFill(1, 1), SetResize(1, 1), SetPadding(WidgetDimensions::unscaled.picker),
+						NWidget(WWT_PANEL, Colours::DarkGreen),
+							NWidget(WWT_MATRIX, Colours::Grey, WID_PW_CLASS_LIST), SetFill(1, 1), SetResize(1, 1), SetPadding(WidgetDimensions::unscaled.picker),
 									SetMatrixDataTip(1, 0), SetScrollbar(WID_PW_CLASS_SCROLL),
 						EndContainer(),
-						NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_CLASS_SCROLL),
+						NWidget(NWID_VSCROLLBAR, Colours::DarkGreen, WID_PW_CLASS_SCROLL),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -968,37 +968,37 @@ std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 {
 	static constexpr std::initializer_list<NWidgetPart> picker_type_widgets = {
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_TYPE_SEL),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_PW_TYPE_SEL),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-						NWidget(WWT_EDITBOX, COLOUR_DARK_GREEN, WID_PW_TYPE_FILTER), SetPadding(2), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+					NWidget(WWT_PANEL, Colours::DarkGreen),
+						NWidget(WWT_EDITBOX, Colours::DarkGreen, WID_PW_TYPE_FILTER), SetPadding(2), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 					EndContainer(),
-					NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_PW_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
+					NWidget(WWT_IMGBTN, Colours::DarkGreen, WID_PW_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_VERTICAL, NWidContainerFlag{}, WID_PW_BADGE_FILTER),
 			EndContainer(),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
-					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_USED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
-					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_SAVED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_SAVED, STR_PICKER_MODE_SAVED_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_PW_SHRINK), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetStringTip(STR_PICKER_PREVIEW_SHRINK, STR_PICKER_PREVIEW_SHRINK_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_PW_EXPAND), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetStringTip(STR_PICKER_PREVIEW_EXPAND, STR_PICKER_PREVIEW_EXPAND_TOOLTIP),
+					NWidget(WWT_TEXTBTN, Colours::DarkGreen, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
+					NWidget(WWT_TEXTBTN, Colours::DarkGreen, WID_PW_MODE_USED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
+					NWidget(WWT_TEXTBTN, Colours::DarkGreen, WID_PW_MODE_SAVED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_SAVED, STR_PICKER_MODE_SAVED_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, Colours::DarkGreen, WID_PW_SHRINK), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetStringTip(STR_PICKER_PREVIEW_SHRINK, STR_PICKER_PREVIEW_SHRINK_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, Colours::DarkGreen, WID_PW_EXPAND), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetStringTip(STR_PICKER_PREVIEW_EXPAND, STR_PICKER_PREVIEW_EXPAND_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_PW_TYPE_SCROLL),
-						NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_PW_TYPE_MATRIX), SetPIP(0, 2, 0), SetPadding(WidgetDimensions::unscaled.picker),
-							NWidget(WWT_PANEL, COLOUR_GREY, WID_PW_TYPE_ITEM), SetScrollbar(WID_PW_TYPE_SCROLL),
+					NWidget(WWT_PANEL, Colours::DarkGreen), SetScrollbar(WID_PW_TYPE_SCROLL),
+						NWidget(NWID_MATRIX, Colours::DarkGreen, WID_PW_TYPE_MATRIX), SetPIP(0, 2, 0), SetPadding(WidgetDimensions::unscaled.picker),
+							NWidget(WWT_PANEL, Colours::Grey, WID_PW_TYPE_ITEM), SetScrollbar(WID_PW_TYPE_SCROLL),
 							EndContainer(),
 						EndContainer(),
 					EndContainer(),
-					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_TYPE_SCROLL),
+					NWidget(NWID_VSCROLLBAR, Colours::DarkGreen, WID_PW_TYPE_SCROLL),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_PW_TYPE_NAME), SetPadding(WidgetDimensions::unscaled.framerect), SetResize(1, 0), SetFill(1, 0), SetMinimalTextLines(1, 0),
+					NWidget(WWT_PANEL, Colours::DarkGreen),
+						NWidget(WWT_EMPTY, Colours::Invalid, WID_PW_TYPE_NAME), SetPadding(WidgetDimensions::unscaled.framerect), SetResize(1, 0), SetFill(1, 0), SetMinimalTextLines(1, 0),
 					EndContainer(),
-					NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, WID_PW_TYPE_RESIZE),
+					NWidget(WWT_RESIZEBOX, Colours::DarkGreen, WID_PW_TYPE_RESIZE),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

@@ -30,15 +30,17 @@
 template <class T>
 class TimerGame {
 public:
-	/** The type to store our dates in. */
+	/** The tag for making Date StrongType. */
 	template <class ST> struct DateTag;
+	/** The type to store our dates in. */
 	using Date = StrongType::Typedef<int32_t, DateTag<T>, StrongType::Compare, StrongType::Integer>;
 
 	/** The fraction of a date we're in, i.e. the number of ticks since the last date changeover. */
 	using DateFract = uint16_t;
 
-	/** Type for the year, note: 0 based, i.e. starts at the year 0. */
+	/** The tag for making Year StrongType. */
 	template <class ST> struct YearTag;
+	/** Type for the year, note: 0 based, i.e. starts at the year 0. */
 	using Year = StrongType::Typedef<int32_t, struct YearTag<T>, StrongType::Compare, StrongType::Integer>;
 	/** Type for the month, note: 0 based, i.e. 0 = January, 11 = December. */
 	using Month = uint8_t;
@@ -96,7 +98,7 @@ public:
 
 	/** Trigger reasons for the timer based triggers. */
 	enum class Trigger : uint8_t {
-		Day, ///< Triggeres daily.
+		Day, ///< Triggers daily.
 		Week, ///< Triggers every Tuesday.
 		Month, ///< Triggered at the first of the month.
 		Quarter, ///< Triggered every first of January, April, July and October.

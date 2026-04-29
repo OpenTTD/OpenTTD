@@ -27,7 +27,7 @@ public:
 
 	/**
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
-	 *  @return true if globally cached data were used or false if local data was used
+	 * @return \c true if globally cached data were used or \c false if local data was used.
 	 */
 	inline bool PfNodeCacheFetch(Node &)
 	{
@@ -116,7 +116,7 @@ protected:
 
 	inline CYapfSegmentCostCacheGlobalT() : global_cache(stGetGlobalCache()) {};
 
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
@@ -138,7 +138,8 @@ protected:
 public:
 	/**
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
-	 *  @return true if globally cached data were used or false if local data was used
+	 * @param n The node to get the cache for.
+	 * @return \c true if globally cached data were used or \c false if local data was used
 	 */
 	inline bool PfNodeCacheFetch(Node &n)
 	{

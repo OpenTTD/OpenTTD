@@ -126,7 +126,7 @@ void SetLocalCompany(CompanyID new_company)
 	bool switching_company = _local_company != new_company;
 
 	/* Delete the chat window, if you were team chatting. */
-	if (switching_company) InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
+	if (switching_company) InvalidateWindowData(WC_SEND_NETWORK_MSG, NetworkChatDestinationType::Team, _local_company);
 
 	assert(IsLocalCompany());
 
@@ -137,6 +137,8 @@ void SetLocalCompany(CompanyID new_company)
 		InvalidateWindowClassesData(WC_VEHICLE_VIEW);
 		/* Delete any construction windows... */
 		CloseConstructionWindows();
+		/* Update the default rail based on most used */
+		SetDefaultRailGui();
 	}
 
 	/* ... and redraw the whole screen. */
@@ -154,7 +156,7 @@ void SetLocalCompany(CompanyID new_company)
  */
 TextColour GetDrawStringCompanyColour(CompanyID company)
 {
-	if (!Company::IsValidID(company)) return GetColourGradient(COLOUR_WHITE, SHADE_NORMAL).ToTextColour();
+	if (!Company::IsValidID(company)) return GetColourGradient(Colours::White, SHADE_NORMAL).ToTextColour();
 	return GetColourGradient(_company_colours[company], SHADE_NORMAL).ToTextColour();
 }
 
@@ -468,25 +470,25 @@ bad_town_name:;
 }
 
 /** Sorting weights for the company colours. */
-static const uint8_t _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
+static const EnumClassIndexContainer<std::array<uint8_t, to_underlying(Colours::End)>, Colours> _colour_sort{2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 /** Similar colours, so we can try to prevent same coloured companies. */
-static const Colours _similar_colour[COLOUR_END][2] = {
-	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE
-	{ COLOUR_GREEN,      COLOUR_DARK_GREEN }, // COLOUR_PALE_GREEN
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_PINK
-	{ COLOUR_ORANGE,     INVALID_COLOUR    }, // COLOUR_YELLOW
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_RED
-	{ COLOUR_DARK_BLUE,  COLOUR_BLUE       }, // COLOUR_LIGHT_BLUE
-	{ COLOUR_PALE_GREEN, COLOUR_DARK_GREEN }, // COLOUR_GREEN
-	{ COLOUR_PALE_GREEN, COLOUR_GREEN      }, // COLOUR_DARK_GREEN
-	{ COLOUR_DARK_BLUE,  COLOUR_LIGHT_BLUE }, // COLOUR_BLUE
-	{ COLOUR_BROWN,      COLOUR_ORANGE     }, // COLOUR_CREAM
-	{ COLOUR_PURPLE,     INVALID_COLOUR    }, // COLOUR_MAUVE
-	{ COLOUR_MAUVE,      INVALID_COLOUR    }, // COLOUR_PURPLE
-	{ COLOUR_YELLOW,     COLOUR_CREAM      }, // COLOUR_ORANGE
-	{ COLOUR_CREAM,      INVALID_COLOUR    }, // COLOUR_BROWN
-	{ COLOUR_WHITE,      INVALID_COLOUR    }, // COLOUR_GREY
-	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
+static const std::initializer_list<Colours> _similar_colour[to_underlying(Colours::End)] = {
+	{Colours::Blue, Colours::LightBlue }, // Colours::DarkBlue
+	{Colours::Green, Colours::DarkGreen }, // Colours::PaleGreen
+	{}, // Colours::Pink
+	{Colours::Orange}, // Colours::Yellow
+	{}, // Colours::Red
+	{Colours::DarkBlue, Colours::Blue }, // Colours::LightBlue
+	{Colours::PaleGreen, Colours::DarkGreen }, // Colours::Green
+	{Colours::PaleGreen, Colours::Green }, // Colours::DarkGreen
+	{Colours::DarkBlue, Colours::LightBlue }, // Colours::Blue
+	{Colours::Brown, Colours::Orange }, // Colours::Cream
+	{Colours::Purple}, // Colours::Mauve
+	{Colours::Mauve}, // Colours::Purple
+	{Colours::Yellow, Colours::Cream }, // Colours::Orange
+	{Colours::Cream}, // Colours::Brown
+	{Colours::White}, // Colours::Grey
+	{Colours::Grey}, // Colours::White
 };
 
 /**
@@ -495,10 +497,9 @@ static const Colours _similar_colour[COLOUR_END][2] = {
  */
 static Colours GenerateCompanyColour()
 {
-	Colours colours[COLOUR_END];
-
-	/* Initialize array */
-	for (uint i = 0; i < COLOUR_END; i++) colours[i] = static_cast<Colours>(i);
+	/* Initialize colour table. */
+	std::vector<Colours> colours(to_underlying(Colours::End));
+	std::iota(colours.begin(), colours.end(), Colours::Begin);
 
 	/* And randomize it */
 	for (uint i = 0; i < 100; i++) {
@@ -506,42 +507,22 @@ static Colours GenerateCompanyColour()
 		std::swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
 	}
 
-	/* Bubble sort it according to the values in table 1 */
-	for (uint i = 0; i < COLOUR_END; i++) {
-		for (uint j = 1; j < COLOUR_END; j++) {
-			if (_colour_sort[colours[j - 1]] < _colour_sort[colours[j]]) {
-				std::swap(colours[j - 1], colours[j]);
-			}
-		}
-	}
+	/* Sort it according to the values in _colour_sort. */
+	std::ranges::stable_sort(colours, {}, [](auto &i) { return _colour_sort[i]; });
 
 	/* Move the colours that look similar to each company's colour to the side */
 	for (const Company *c : Company::Iterate()) {
-		Colours pcolour = c->colour;
+		/* This company's colour is not available at all. */
+		std::erase(colours, c->colour);
 
-		for (uint i = 0; i < COLOUR_END; i++) {
-			if (colours[i] == pcolour) {
-				colours[i] = INVALID_COLOUR;
-				break;
-			}
-		}
-
-		for (uint j = 0; j < 2; j++) {
-			Colours similar = _similar_colour[pcolour][j];
-			if (similar == INVALID_COLOUR) break;
-
-			for (uint i = 1; i < COLOUR_END; i++) {
-				if (colours[i - 1] == similar) std::swap(colours[i - 1], colours[i]);
-			}
+		for (Colours similar : _similar_colour[to_underlying(c->colour)]) {
+			auto it = std::ranges::find(colours, similar);
+			if (it != colours.end()) std::rotate(it, it + 1, colours.end());
 		}
 	}
 
 	/* Return the first available colour */
-	for (uint i = 0; i < COLOUR_END; i++) {
-		if (colours[i] != INVALID_COLOUR) return colours[i];
-	}
-
-	NOT_REACHED();
+	return colours.at(0);
 }
 
 /**
@@ -702,10 +683,10 @@ bool CheckTakeoverVehicleLimit(CompanyID cbig, CompanyID csmall)
 	const Company *c2 = Company::Get(csmall);
 
 	/* Do the combined vehicle counts stay within the limits? */
-	return c1->group_all[VEH_TRAIN].num_vehicle + c2->group_all[VEH_TRAIN].num_vehicle <= _settings_game.vehicle.max_trains &&
-		c1->group_all[VEH_ROAD].num_vehicle     + c2->group_all[VEH_ROAD].num_vehicle     <= _settings_game.vehicle.max_roadveh &&
-		c1->group_all[VEH_SHIP].num_vehicle     + c2->group_all[VEH_SHIP].num_vehicle     <= _settings_game.vehicle.max_ships &&
-		c1->group_all[VEH_AIRCRAFT].num_vehicle + c2->group_all[VEH_AIRCRAFT].num_vehicle <= _settings_game.vehicle.max_aircraft;
+	return c1->group_all[VehicleType::Train].num_vehicle + c2->group_all[VehicleType::Train].num_vehicle <= _settings_game.vehicle.max_trains &&
+		c1->group_all[VehicleType::Road].num_vehicle + c2->group_all[VehicleType::Road].num_vehicle <= _settings_game.vehicle.max_roadveh &&
+		c1->group_all[VehicleType::Ship].num_vehicle + c2->group_all[VehicleType::Ship].num_vehicle <= _settings_game.vehicle.max_ships &&
+		c1->group_all[VehicleType::Aircraft].num_vehicle + c2->group_all[VehicleType::Aircraft].num_vehicle <= _settings_game.vehicle.max_aircraft;
 }
 
 /**
@@ -1113,10 +1094,10 @@ void UpdateCompanyLiveries(Company *c)
  */
 CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour)
 {
-	if (scheme >= LS_END || (colour >= COLOUR_END && colour != INVALID_COLOUR)) return CMD_ERROR;
+	if (scheme >= LS_END || (colour >= Colours::End && colour != Colours::Invalid)) return CMD_ERROR;
 
 	/* Default scheme can't be reset to invalid. */
-	if (scheme == LS_DEFAULT && colour == INVALID_COLOUR) return CMD_ERROR;
+	if (scheme == LS_DEFAULT && colour == Colours::Invalid) return CMD_ERROR;
 
 	Company *c = Company::Get(_current_company);
 
@@ -1129,8 +1110,8 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (primary) {
-			if (scheme != LS_DEFAULT) c->livery[scheme].in_use.Set(Livery::Flag::Primary, colour != INVALID_COLOUR);
-			if (colour == INVALID_COLOUR) colour = c->livery[LS_DEFAULT].colour1;
+			if (scheme != LS_DEFAULT) c->livery[scheme].in_use.Set(Livery::Flag::Primary, colour != Colours::Invalid);
+			if (colour == Colours::Invalid) colour = c->livery[LS_DEFAULT].colour1;
 			c->livery[scheme].colour1 = colour;
 
 			/* If setting the first colour of the default scheme, adjust the
@@ -1142,8 +1123,8 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 				CompanyAdminUpdate(c);
 			}
 		} else {
-			if (scheme != LS_DEFAULT) c->livery[scheme].in_use.Set(Livery::Flag::Secondary, colour != INVALID_COLOUR);
-			if (colour == INVALID_COLOUR) colour = c->livery[LS_DEFAULT].colour2;
+			if (scheme != LS_DEFAULT) c->livery[scheme].in_use.Set(Livery::Flag::Secondary, colour != Colours::Invalid);
+			if (colour == Colours::Invalid) colour = c->livery[LS_DEFAULT].colour2;
 			c->livery[scheme].colour2 = colour;
 
 			if (scheme == LS_DEFAULT) {
@@ -1304,10 +1285,10 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 	const VehicleDefaultSettings *vds = (c == nullptr) ? &_settings_client.company.vehicle : &c->settings.vehicle;
 	switch (type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:    return vds->servint_trains;
-		case VEH_ROAD:     return vds->servint_roadveh;
-		case VEH_AIRCRAFT: return vds->servint_aircraft;
-		case VEH_SHIP:     return vds->servint_ships;
+		case VehicleType::Train: return vds->servint_trains;
+		case VehicleType::Road: return vds->servint_roadveh;
+		case VehicleType::Aircraft: return vds->servint_aircraft;
+		case VehicleType::Ship: return vds->servint_ships;
 	}
 }
 
@@ -1354,7 +1335,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
 			std::string dest_company_name = GetString(STR_COMPANY_NAME, dest_company);
 			std::string from_company_name = GetString(STR_COMPANY_NAME, _current_company);
 
-			NetworkTextMessage(NETWORK_ACTION_GIVE_MONEY, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
+			NetworkTextMessage(NetworkAction::GiveMoney, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
 		}
 	}
 

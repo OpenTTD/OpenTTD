@@ -31,10 +31,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - msystem: MINGW64
+        - msystem: UCRT64
           arch: x86_64
-        - msystem: MINGW32
-          arch: i686
 
     name: MinGW (${{ matrix.arch }})
 

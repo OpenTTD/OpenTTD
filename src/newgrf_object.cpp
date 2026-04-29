@@ -138,6 +138,9 @@ void ResetObjects()
 	/* Set class for originals. */
 	_object_specs[OBJECT_LIGHTHOUSE].class_index = ObjectClass::Allocate('LTHS');
 	_object_specs[OBJECT_TRANSMITTER].class_index = ObjectClass::Allocate('TRNS');
+
+	/* Reset any overrides that have been set. */
+	_object_mngr.ResetOverride();
 }
 
 template <>
@@ -337,7 +340,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		case 0x46: return DistanceSquare(this->tile, t->xy);
 
 		/* Object colour */
-		case 0x47: return this->obj->colour;
+		case 0x47: return this->obj->recolour_offset;
 
 		/* Object view */
 		case 0x48: return this->obj->view;
@@ -376,7 +379,7 @@ unhandled:
 /**
  * Constructor of the object resolver.
  * @param obj Object being resolved.
- * @param spec Specifiction of the object's type.
+ * @param spec Specification of the object's type.
  * @param tile %Tile of the object.
  * @param view View of the object.
  * @param callback Callback ID.
@@ -412,7 +415,7 @@ TownScopeResolver *ObjectResolverObject::GetTown()
 
 GrfSpecFeature ObjectResolverObject::GetFeature() const
 {
-	return GSF_OBJECTS;
+	return GrfSpecFeature::Objects;
 }
 
 uint32_t ObjectResolverObject::GetDebugID() const
@@ -446,7 +449,7 @@ uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2
  */
 static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, const ObjectSpec *spec)
 {
-	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->colour;
+	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->recolour_offset;
 
 	SpriteID image = dts.ground.sprite;
 	PaletteID pal = dts.ground.pal;
@@ -503,7 +506,7 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 		/* Get the colours of our company! */
 		if (spec->flags.Test(ObjectFlag::Uses2CC)) {
 			const Livery &l = Company::Get(_local_company)->livery[0];
-			palette = SPR_2CCMAP_BASE + l.colour1 + l.colour2 * 16;
+			palette = SPR_2CCMAP_BASE + l.GetRecolourOffset();
 		} else {
 			palette = GetCompanyPalette(_local_company);
 		}

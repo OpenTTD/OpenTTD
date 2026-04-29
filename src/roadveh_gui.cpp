@@ -32,7 +32,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 	Money feeder_share = 0;
 
 	DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_BUILT_VALUE, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails), v->build_year, v->value));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	if (v->HasArticulatedPart()) {
 		CargoArray max_cargo{};
@@ -67,7 +67,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 		}
 
 		DrawString(r.left, r.right, y, GetString(STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY, capacity), TC_BLUE);
-		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+		y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
@@ -80,12 +80,12 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 				str = GetString(STR_VEHICLE_DETAILS_CARGO_EMPTY);
 			}
 			DrawString(r.left, r.right, y, str);
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 		y += WidgetDimensions::scaled.vsep_normal;
 	} else {
 		DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_CAPACITY, v->cargo_type, v->cargo_cap, GetCargoSubtypeText(v)));
-		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+		y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 
 		std::string str;
 		if (v->cargo.StoredCount() > 0) {
@@ -95,7 +95,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			str = GetString(STR_VEHICLE_DETAILS_CARGO_EMPTY);
 		}
 		DrawString(r.left, r.right, y, str);
-		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+		y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 	}
 
 	/* Draw Transfer credits text */
@@ -153,6 +153,6 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 	if (v->index == selection) {
 		int height = ScaleSpriteTrad(12);
 		Rect hr = {(rtl ? px : 0), 0, (rtl ? max_width : px) - 1, height - 1};
-		DrawFrameRect(hr.Translate(r.left, CentreBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
+		DrawFrameRect(hr.Translate(r.left, CentreBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), Colours::White, FrameFlag::BorderOnly);
 	}
 }

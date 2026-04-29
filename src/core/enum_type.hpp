@@ -246,16 +246,16 @@ public:
 template <typename Container, typename Index>
 class EnumClassIndexContainer : public Container {
 public:
-	Container::reference at(size_t pos) { return this->Container::at(pos); }
+	Container::reference at(size_t pos) = delete;
 	Container::reference at(const Index &pos) { return this->Container::at(to_underlying(pos)); }
 
-	Container::const_reference at(size_t pos) const { return this->Container::at(pos); }
+	Container::const_reference at(size_t pos) const = delete;
 	Container::const_reference at(const Index &pos) const { return this->Container::at(to_underlying(pos)); }
 
-	Container::reference operator[](size_t pos) { return this->Container::operator[](pos); }
+	Container::reference operator[](size_t pos) = delete;
 	Container::reference operator[](const Index &pos) { return this->Container::operator[](to_underlying(pos)); }
 
-	Container::const_reference operator[](size_t pos) const { return this->Container::operator[](pos); }
+	Container::const_reference operator[](size_t pos) const = delete;
 	Container::const_reference operator[](const Index &pos) const { return this->Container::operator[](to_underlying(pos)); }
 };
 

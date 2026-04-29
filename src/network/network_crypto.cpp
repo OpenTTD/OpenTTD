@@ -187,6 +187,7 @@ X25519AuthenticationHandler::X25519AuthenticationHandler(const X25519SecretKey &
 {
 }
 
+/** @copydoc NetworkAuthenticationServerHandler::SendRequest */
 /* virtual */ void X25519AuthenticationHandler::SendRequest(Packet &p)
 {
 	p.Send_bytes(this->our_public_key);
@@ -265,11 +266,13 @@ bool X25519AuthenticationHandler::ReceiveEnableEncryption(struct Packet &p)
 	return p.Recv_bytes(this->encryption_nonce) == this->encryption_nonce.size();
 }
 
+/** @copydoc NetworkAuthenticationHandler::CreateClientToServerEncryptionHandler */
 std::unique_ptr<NetworkEncryptionHandler> X25519AuthenticationHandler::CreateClientToServerEncryptionHandler() const
 {
 	return std::make_unique<X25519EncryptionHandler>(this->derived_keys.ClientToServer(), this->encryption_nonce);
 }
 
+/** @copydoc NetworkAuthenticationHandler::CreateServerToClientEncryptionHandler */
 std::unique_ptr<NetworkEncryptionHandler> X25519AuthenticationHandler::CreateServerToClientEncryptionHandler() const
 {
 	return std::make_unique<X25519EncryptionHandler>(this->derived_keys.ServerToClient(), this->encryption_nonce);

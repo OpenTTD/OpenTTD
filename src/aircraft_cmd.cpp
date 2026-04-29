@@ -93,8 +93,9 @@ static const SpriteID _aircraft_sprite[] = {
 	0x0EBD, 0x0EC5
 };
 
+/** @copydoc IsValidImageIndex */
 template <>
-bool IsValidImageIndex<VEH_AIRCRAFT>(uint8_t image_index)
+bool IsValidImageIndex<VehicleType::Aircraft>(uint8_t image_index)
 {
 	return image_index < lengthof(_aircraft_sprite);
 }
@@ -177,7 +178,7 @@ void Aircraft::GetImage(Direction direction, EngineImageType image_type, Vehicle
 		spritenum = this->GetEngine()->original_image_index;
 	}
 
-	assert(IsValidImageIndex<VEH_AIRCRAFT>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Aircraft>(spritenum));
 	result->Set(direction + _aircraft_sprite[spritenum]);
 }
 
@@ -207,7 +208,7 @@ static void GetAircraftIcon(EngineID engine, EngineImageType image_type, Vehicle
 		spritenum = e->original_image_index;
 	}
 
-	assert(IsValidImageIndex<VEH_AIRCRAFT>(spritenum));
+	assert(IsValidImageIndex<VehicleType::Aircraft>(spritenum));
 	result->Set(DIR_W + _aircraft_sprite[spritenum]);
 }
 
@@ -615,7 +616,7 @@ void UpdateAircraftCache(Aircraft *v, bool update_range)
 
 	/* Update aircraft range. */
 	if (update_range) {
-		v->acache.cached_max_range = GetVehicleProperty(v, PROP_AIRCRAFT_RANGE, AircraftVehInfo(v->engine_type)->max_range);
+		v->acache.cached_max_range = Engine::Get(v->engine_type)->GetRange();
 		/* Squared it now so we don't have to do it later all the time. */
 		v->acache.cached_max_range_sqr = v->acache.cached_max_range * v->acache.cached_max_range;
 	}
@@ -723,7 +724,7 @@ int GetTileHeightBelowAircraft(const Vehicle *v)
 void GetAircraftFlightLevelBounds(const Vehicle *v, int *min_level, int *max_level)
 {
 	int base_altitude = GetTileHeightBelowAircraft(v);
-	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->subtype == AIR_HELICOPTER) {
+	if (v->type == VehicleType::Aircraft && Aircraft::From(v)->subtype == AIR_HELICOPTER) {
 		base_altitude += HELICOPTER_HOLD_MAX_FLYING_ALTITUDE - PLANE_HOLD_MAX_FLYING_ALTITUDE;
 	}
 
@@ -1299,9 +1300,8 @@ void HandleMissingAircraftOrders(Aircraft *v)
 	 */
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == nullptr) {
-		Backup<CompanyID> cur_company(_current_company, v->owner);
+		AutoRestoreBackup cur_company(_current_company, v->owner);
 		CommandCost ret = Command<Commands::SendVehicleToDepot>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag{}, {});
-		cur_company.Restore();
 
 		if (ret.Failed()) CrashAirplane(v);
 	} else if (!v->current_order.IsType(OT_GOTO_DEPOT)) {
@@ -1659,9 +1659,8 @@ static void AircraftEventHandler_HeliTakeOff(Aircraft *v, [[maybe_unused]] const
 
 	/* Send the helicopter to a hangar if needed for replacement */
 	if (v->NeedsAutomaticServicing()) {
-		Backup<CompanyID> cur_company(_current_company, v->owner);
+		AutoRestoreBackup cur_company(_current_company, v->owner);
 		Command<Commands::SendVehicleToDepot>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag::Service, {});
-		cur_company.Restore();
 	}
 }
 
@@ -1712,9 +1711,8 @@ static void AircraftEventHandler_Landing(Aircraft *v, [[maybe_unused]] const Air
 
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
 	if (v->NeedsAutomaticServicing()) {
-		Backup<CompanyID> cur_company(_current_company, v->owner);
+		AutoRestoreBackup cur_company(_current_company, v->owner);
 		Command<Commands::SendVehicleToDepot>::Do(DoCommandFlag::Execute, v->index, DepotCommandFlag::Service, {});
-		cur_company.Restore();
 	}
 }
 
@@ -2173,7 +2171,7 @@ bool Aircraft::Tick()
  */
 Station *GetTargetAirportIfValid(const Aircraft *v)
 {
-	assert(v->type == VEH_AIRCRAFT);
+	assert(v->type == VehicleType::Aircraft);
 
 	Station *st = Station::GetIfValid(v->targetairport);
 	if (st == nullptr) return nullptr;

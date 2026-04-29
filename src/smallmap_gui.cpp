@@ -552,7 +552,7 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 			if (IsSnowTile(tile)) return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
 			if (IsClearGround(tile, ClearGround::Grass)) {
 				if (GetClearDensity(tile) < 3) return MKCOLOUR_XXXX(PC_BARE_LAND);
-				if (GetTropicZone(tile) == TROPICZONE_RAINFOREST) return MKCOLOUR_XXXX(PC_RAINFOREST);
+				if (GetTropicZone(tile) == TropicZone::Rainforest) return MKCOLOUR_XXXX(PC_RAINFOREST);
 			}
 			return _vegetation_clear_bits[to_underlying(GetClearGround(tile))];
 
@@ -563,7 +563,7 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 			if (GetTreeGround(tile) == TreeGround::SnowOrDesert || GetTreeGround(tile) == TreeGround::RoughSnow) {
 				return (_settings_game.game_creation.landscape == LandscapeType::Arctic) ? MKCOLOUR_XYYX(PC_LIGHT_BLUE, PC_TREES) : MKCOLOUR_XYYX(PC_ORANGE, PC_TREES);
 			}
-			return (GetTropicZone(tile) == TROPICZONE_RAINFOREST) ? MKCOLOUR_XYYX(PC_RAINFOREST, PC_TREES) : MKCOLOUR_XYYX(PC_GRASS_LAND, PC_TREES);
+			return (GetTropicZone(tile) == TropicZone::Rainforest) ? MKCOLOUR_XYYX(PC_RAINFOREST, PC_TREES) : MKCOLOUR_XYYX(PC_GRASS_LAND, PC_TREES);
 
 		default:
 			return ApplyMask(MKCOLOUR_XXXX(PC_GRASS_LAND), &_smallmap_vehicles_andor[t]);
@@ -588,7 +588,7 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 		case TileType::Industry: return MKCOLOUR_XXXX(PC_DARK_GREY);
 		case TileType::House:    return MKCOLOUR_XXXX(PC_DARK_RED);
 		case TileType::Road:
-			o = GetRoadOwner(tile, HasRoadTypeRoad(tile) ? RTT_ROAD : RTT_TRAM);
+			o = GetRoadOwner(tile, HasRoadTypeRoad(tile) ? RoadTramType::Road : RoadTramType::Tram);
 			break;
 
 		default:
@@ -609,7 +609,7 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 }
 
 /** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleType. */
-static const PixelColour _vehicle_type_colours[6] = {
+static constexpr VehicleTypeIndexArray<PixelColour, VehicleType::End> _vehicle_type_colours = {
 	PC_RED, PC_YELLOW, PC_LIGHT_BLUE, PC_WHITE, PC_BLACK, PC_RED
 };
 
@@ -719,7 +719,7 @@ protected:
 	inline uint GetLegendHeight(uint num_columns) const
 	{
 		return WidgetDimensions::scaled.framerect.Vertical() +
-				this->GetNumberRowsLegend(num_columns) * GetCharacterHeight(FS_SMALL);
+				this->GetNumberRowsLegend(num_columns) * GetCharacterHeight(FontSize::Small);
 	}
 
 	/**
@@ -953,7 +953,7 @@ protected:
 	void DrawVehicles(const DrawPixelInfo *dpi, Blitter *blitter) const
 	{
 		for (const Vehicle *v : Vehicle::Iterate()) {
-			if (v->type == VEH_EFFECT) continue;
+			if (v->type == VehicleType::Effect) continue;
 			if (v->vehstatus.Any({VehState::Hidden, VehState::Unclickable})) continue;
 
 			/* Remap into flat coordinates. */
@@ -1000,7 +1000,7 @@ protected:
 			/* Check if the town sign is within bounds */
 			if (x + t->cache.sign.width_small > dpi->left &&
 					x < dpi->left + dpi->width &&
-					y + GetCharacterHeight(FS_SMALL) > dpi->top &&
+					y + GetCharacterHeight(FontSize::Small) > dpi->top &&
 					y < dpi->top + dpi->height) {
 				/* And draw it. */
 				DrawString(x, x + t->cache.sign.width_small, y, GetString(STR_SMALLMAP_TOWN, t->index));
@@ -1026,7 +1026,7 @@ protected:
 			if (is_blinking) continue;
 
 			if (_industry_to_name_string_width[i->type] == 0) {
-				_industry_to_name_string_width[i->type] = GetStringBoundingBox(tbl.legend, FS_SMALL).width;
+				_industry_to_name_string_width[i->type] = GetStringBoundingBox(tbl.legend, FontSize::Small).width;
 			}
 			const uint16_t &legend_text_width = _industry_to_name_string_width[i->type];
 
@@ -1039,11 +1039,11 @@ protected:
 			/* Check if the industry name is within bounds */
 			if (x + legend_text_width > dpi->left &&
 					x < dpi->left + dpi->width &&
-					y + GetCharacterHeight(FS_SMALL) > dpi->top &&
+					y + GetCharacterHeight(FontSize::Small) > dpi->top &&
 					y < dpi->top + dpi->height) {
 
 				/* And draw it. */
-				DrawString(x, x + legend_text_width, y, tbl.legend, TC_WHITE, SA_LEFT, false, FS_SMALL);
+				DrawString(x, x + legend_text_width, y, tbl.legend, TC_WHITE, SA_LEFT, false, FontSize::Small);
 			}
 		}
 	}
@@ -1260,9 +1260,9 @@ protected:
 	 */
 	void SetOverlayCargoMask()
 	{
-		CargoTypes cargo_mask = 0;
+		CargoTypes cargo_mask{};
 		for (int i = 0; i != _smallmap_cargo_count; ++i) {
-			if (_legend_linkstats[i].show_on_map) SetBit(cargo_mask, _legend_linkstats[i].type);
+			if (_legend_linkstats[i].show_on_map) cargo_mask.Set(static_cast<CargoType>(_legend_linkstats[i].type));
 		}
 		this->overlay->SetCargoMask(cargo_mask);
 	}
@@ -1407,7 +1407,7 @@ protected:
 	int GetPositionOnLegend(Point pt)
 	{
 		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND);
-		uint line = (pt.y - wi->pos_y - WidgetDimensions::scaled.framerect.top) / GetCharacterHeight(FS_SMALL);
+		uint line = (pt.y - wi->pos_y - WidgetDimensions::scaled.framerect.top) / GetCharacterHeight(FontSize::Small);
 		uint columns = this->GetNumberColumnsLegend(wi->current_x);
 		uint number_of_rows = this->GetNumberRowsLegend(columns);
 		if (line >= number_of_rows) return -1;
@@ -1459,7 +1459,7 @@ public:
 	SmallMapWindow(WindowDesc &desc, int window_number) : Window(desc)
 	{
 		_smallmap_industry_highlight = IT_INVALID;
-		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
+		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, CargoTypes{}, this->GetOverlayCompanyMask(), 1);
 		this->CreateNestedTree();
 		this->LowerWidget(WID_SM_CONTOUR + this->map_type);
 
@@ -1576,7 +1576,7 @@ public:
 		}
 
 		/* Width of the legend blob. */
-		this->legend_width = GetCharacterHeight(FS_SMALL) * 9 / 6;
+		this->legend_width = GetCharacterHeight(FontSize::Small) * 9 / 6;
 
 		/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
 		this->column_width = min_width + WidgetDimensions::scaled.hsep_normal + this->legend_width + WidgetDimensions::scaled.framerect.Horizontal();
@@ -1617,7 +1617,7 @@ public:
 				uint number_of_rows = this->GetNumberRowsLegend(columns);
 				bool rtl = _current_text_dir == TD_RTL;
 				uint i = 0; // Row counter for industry legend.
-				uint row_height = GetCharacterHeight(FS_SMALL);
+				uint row_height = GetCharacterHeight(FontSize::Small);
 				int padding = ScaleGUITrad(1);
 
 				Rect origin = r.WithWidth(this->column_width, rtl).Shrink(WidgetDimensions::scaled.framerect).WithHeight(row_height);
@@ -1953,62 +1953,62 @@ public:
 		NWidgetBase *display = this->children.front().get();
 		NWidgetBase *bar = this->children.back().get();
 
-		if (sizing == ST_SMALLEST) {
+		if (sizing == SizingType::Smallest) {
 			this->smallest_x = given_width;
 			this->smallest_y = given_height;
 			/* Make display and bar exactly equal to their minimal size. */
-			display->AssignSizePosition(ST_SMALLEST, x, y, display->smallest_x, display->smallest_y, rtl);
-			bar->AssignSizePosition(ST_SMALLEST, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
+			display->AssignSizePosition(SizingType::Smallest, x, y, display->smallest_x, display->smallest_y, rtl);
+			bar->AssignSizePosition(SizingType::Smallest, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
 		}
 
 		uint bar_height = std::max(bar->smallest_y, this->smallmap_window->GetLegendHeight(this->smallmap_window->GetNumberColumnsLegend(given_width - bar->smallest_x)));
 		uint display_height = given_height - bar_height;
-		display->AssignSizePosition(ST_RESIZE, x, y, given_width, display_height, rtl);
-		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);
+		display->AssignSizePosition(SizingType::Resize, x, y, given_width, display_height, rtl);
+		bar->AssignSizePosition(SizingType::Resize, x, y + display_height, given_width, bar_height, rtl);
 	}
 };
 
 /** Widget parts of the smallmap display. */
 static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_display = {
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SM_MAP_BORDER),
-		NWidget(WWT_INSET, COLOUR_BROWN, WID_SM_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Brown, WID_SM_MAP_BORDER),
+		NWidget(WWT_INSET, Colours::Brown, WID_SM_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
 	EndContainer(),
 };
 
 /** Widget parts of the smallmap legend bar + image buttons. */
 static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_bar = {
-	NWidget(WWT_PANEL, COLOUR_BROWN),
+	NWidget(WWT_PANEL, Colours::Brown),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SM_LEGEND), SetResize(1, 1),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_SM_LEGEND), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				/* Top button row. */
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_ZOOM_IN),
+					NWidget(WWT_PUSHIMGBTN, Colours::Brown, WID_SM_ZOOM_IN),
 							SetSpriteTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN), SetFill(1, 1),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_CENTERMAP),
+					NWidget(WWT_PUSHIMGBTN, Colours::Brown, WID_SM_CENTERMAP),
 							SetSpriteTip(SPR_IMG_SMALLMAP, STR_SMALLMAP_CENTER_TOOLTIP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_BLANK),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_BLANK),
 							SetSpriteTip(SPR_EMPTY), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_CONTOUR),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_CONTOUR),
 							SetSpriteTip(SPR_IMG_SHOW_COUNTOURS, STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_VEHICLES),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_VEHICLES),
 							SetSpriteTip(SPR_IMG_SHOW_VEHICLES, STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_INDUSTRIES),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_INDUSTRIES),
 							SetSpriteTip(SPR_IMG_INDUSTRY, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP), SetFill(1, 1),
 				EndContainer(),
 				/* Bottom button row. */
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_ZOOM_OUT),
+					NWidget(WWT_PUSHIMGBTN, Colours::Brown, WID_SM_ZOOM_OUT),
 							SetSpriteTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_TOGGLETOWNNAME),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_TOGGLETOWNNAME),
 							SetSpriteTip(SPR_IMG_TOWN, STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_LINKSTATS),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_LINKSTATS),
 							SetSpriteTip(SPR_IMG_CARGOFLOW, STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_ROUTES),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_ROUTES),
 							SetSpriteTip(SPR_IMG_SHOW_ROUTES, STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_VEGETATION),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_VEGETATION),
 							SetSpriteTip(SPR_IMG_PLANTTREES, STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_OWNERS),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_OWNERS),
 							SetSpriteTip(SPR_IMG_COMPANY_GENERAL, STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP), SetFill(1, 1),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetResize(0, 1),
@@ -2028,38 +2028,39 @@ static std::unique_ptr<NWidgetBase> SmallMapDisplay()
 
 static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SM_CAPTION),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_CAPTION, Colours::Brown, WID_SM_CAPTION),
+		NWidget(WWT_SHADEBOX, Colours::Brown),
+		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
+		NWidget(WWT_STICKYBOX, Colours::Brown),
 	EndContainer(),
 	NWidgetFunction(SmallMapDisplay), // Smallmap display and legend bar + image buttons.
 	/* Bottom button row and resize box. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SM_SELECT_BUTTONS),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_SM_SELECT_BUTTONS),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_SM_ENABLE_ALL), SetStringTip(STR_SMALLMAP_ENABLE_ALL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_SM_DISABLE_ALL), SetStringTip(STR_SMALLMAP_DISABLE_ALL),
-				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SM_SHOW_HEIGHT), SetStringTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
+				NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_SM_ENABLE_ALL), SetStringTip(STR_SMALLMAP_ENABLE_ALL),
+				NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_SM_DISABLE_ALL), SetStringTip(STR_SMALLMAP_DISABLE_ALL),
+				NWidget(WWT_TEXTBTN, Colours::Brown, WID_SM_SHOW_HEIGHT), SetStringTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
 
 				/* 'show industry names' button and container. Only shown for the industry map type. */
-				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SM_SHOW_IND_NAMES_SEL),
-					NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SM_SHOW_IND_NAMES), SetStringTip(STR_SMALLMAP_SHOW_INDUSTRY_NAMES, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES),
+				NWidget(NWID_SELECTION, Colours::Invalid, WID_SM_SHOW_IND_NAMES_SEL),
+					NWidget(WWT_TEXTBTN, Colours::Brown, WID_SM_SHOW_IND_NAMES), SetStringTip(STR_SMALLMAP_SHOW_INDUSTRY_NAMES, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES),
 				EndContainer(),
 
-				NWidget(WWT_PANEL, COLOUR_BROWN), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PANEL, Colours::Brown), SetFill(1, 0), SetResize(1, 0),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_BROWN), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_PANEL, Colours::Brown), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+		NWidget(WWT_RESIZEBOX, Colours::Brown),
 	EndContainer(),
 };
 
+/** Window definition for the smallmap window. */
 static WindowDesc _smallmap_desc(
-	WDP_AUTO, "smallmap", 484, 314,
+	WindowPosition::Automatic, "smallmap", 484, 314,
 	WC_SMALLMAP, WC_NONE,
 	{},
 	_nested_smallmap_widgets

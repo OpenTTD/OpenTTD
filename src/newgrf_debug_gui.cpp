@@ -72,7 +72,7 @@ static inline uint GetFeatureIndex(uint window_number)
 static inline uint GetInspectWindowNumber(GrfSpecFeature feature, uint index)
 {
 	assert((index >> 24) == 0);
-	return (feature << 24) | index;
+	return (to_underlying(feature) << 24) | index;
 }
 
 static inline uint GetInspectWindowNumber(GrfSpecFeature feature, ConvertibleThroughBase auto index) { return GetInspectWindowNumber(feature, index.base()); }
@@ -241,7 +241,7 @@ static inline GrfSpecFeature GetFeatureNum(uint window_number)
 static inline const NIFeature *GetFeature(uint window_number)
 {
 	GrfSpecFeature idx = GetFeatureNum(window_number);
-	return idx < GSF_FAKE_END ? _nifeatures[idx] : nullptr;
+	return idx < GrfSpecFeature::FakeEnd ? _nifeatures[idx] : nullptr;
 }
 
 /**
@@ -258,7 +258,7 @@ static inline const NIHelper &GetFeatureHelper(uint window_number)
 /** Window used for inspecting NewGRFs. */
 struct NewGRFInspectWindow : Window {
 	/** The value for the variable 60 parameters. */
-	static uint32_t var60params[GSF_FAKE_END][0x20];
+	static inline EnumClassIndexContainer<std::array<std::array<uint32_t, 0x20>, to_underlying(GrfSpecFeature::FakeEnd)>, GrfSpecFeature> var60params{};
 
 	/** GRFID of the caller of this window, 0 if it has no caller. */
 	uint32_t caller_grfid = 0;
@@ -298,7 +298,22 @@ struct NewGRFInspectWindow : Window {
 	bool HasChainIndex() const
 	{
 		GrfSpecFeature f = GetFeatureNum(this->window_number);
-		return f == GSF_TRAINS || f == GSF_ROADVEHICLES;
+		return f == GrfSpecFeature::Trains || f == GrfSpecFeature::RoadVehicles;
+	}
+
+	/**
+	 * Get the vehicle type corresponding to the grf feature for this window.
+	 * @return vehicle type for this window.
+	 */
+	VehicleType GetVehicleTypeForWindow() const
+	{
+		switch (GetFeatureNum(this->window_number)) {
+			case GrfSpecFeature::Trains: return VehicleType::Train;
+			case GrfSpecFeature::RoadVehicles: return VehicleType::Road;
+			case GrfSpecFeature::Ships: return VehicleType::Ship;
+			case GrfSpecFeature::Aircraft: return VehicleType::Aircraft;
+			default: NOT_REACHED();
+		}
 	}
 
 	/**
@@ -353,15 +368,13 @@ struct NewGRFInspectWindow : Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_NGRFI_VEH_CHAIN: {
+			case WID_NGRFI_VEH_CHAIN:
 				assert(this->HasChainIndex());
-				GrfSpecFeature f = GetFeatureNum(this->window_number);
-				size.height = std::max(size.height, GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
+				size.height = std::max(size.height, GetVehicleImageCellSize(this->GetVehicleTypeForWindow(), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
 				break;
-			}
 
 			case WID_NGRFI_MAINPANEL:
-				fill.height = resize.height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
+				fill.height = resize.height = std::max(11, GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal);
 				resize.width  = 1;
 
 				size.height = 5 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
@@ -396,8 +409,8 @@ struct NewGRFInspectWindow : Window {
 		for (const Vehicle *u = v->First(); u != nullptr; u = u->Next()) {
 			if (u == v) sel_start = total_width;
 			switch (u->type) {
-				case VEH_TRAIN: total_width += Train::From(u)->GetDisplayImageWidth(); break;
-				case VEH_ROAD:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
+				case VehicleType::Train: total_width += Train::From(u)->GetDisplayImageWidth(); break;
+				case VehicleType::Road:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
 				default: NOT_REACHED();
 			}
 			if (u == v) sel_end = total_width;
@@ -411,16 +424,15 @@ struct NewGRFInspectWindow : Window {
 			if (sel_center > width / 2) skip = std::min(total_width - width, sel_center - width / 2);
 		}
 
-		GrfSpecFeature f = GetFeatureNum(this->window_number);
-		int h = GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
+		int h = GetVehicleImageCellSize(this->GetVehicleTypeForWindow(), EIT_IN_DEPOT).height;
 		int y = CentreBounds(br.top, br.bottom, h);
 		DrawVehicleImage(v->First(), br, VehicleID::Invalid(), EIT_IN_DETAILS, skip);
 
 		/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
 		if (_current_text_dir == TD_RTL) {
-			DrawFrameRect(r.right - sel_end + skip, y, r.right - sel_start + skip, y + h, COLOUR_WHITE, FrameFlag::BorderOnly);
+			DrawFrameRect(r.right - sel_end + skip, y, r.right - sel_start + skip, y + h, Colours::White, FrameFlag::BorderOnly);
 		} else {
-			DrawFrameRect(r.left + sel_start - skip, y, r.left + sel_end - skip, y + h, COLOUR_WHITE, FrameFlag::BorderOnly);
+			DrawFrameRect(r.left + sel_start - skip, y, r.left + sel_end - skip, y + h, Colours::White, FrameFlag::BorderOnly);
 		}
 	}
 
@@ -428,7 +440,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		switch (nip.type) {
 			case NIT_INT: return GetString(STR_JUST_INT, value);
-			case NIT_CARGO: return GetString(IsValidCargoType(value) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
+			case NIT_CARGO: return GetString(IsValidCargoType(static_cast<CargoType>(value)) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
 			default: NOT_REACHED();
 		}
 	}
@@ -624,59 +636,59 @@ struct NewGRFInspectWindow : Window {
 	}
 };
 
-/* static */ uint32_t NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
-
 static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_inspect_chain_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_NGRFI_CAPTION), SetStringTip(STR_NEWGRF_INSPECT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_NGRFI_CAPTION), SetStringTip(STR_NEWGRF_INSPECT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_NGRFI_VEH_PREV), SetArrowWidgetTypeTip(AWV_DECREASE),
-			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_NGRFI_VEH_NEXT), SetArrowWidgetTypeTip(AWV_INCREASE),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NGRFI_VEH_CHAIN), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_PUSHARROWBTN, Colours::Grey, WID_NGRFI_VEH_PREV), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease),
+			NWidget(WWT_PUSHARROWBTN, Colours::Grey, WID_NGRFI_VEH_NEXT), SetArrowWidgetTypeTip(ArrowWidgetType::Increase),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_NGRFI_VEH_CHAIN), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_NGRFI_MAINPANEL), SetMinimalSize(300, 0), SetScrollbar(WID_NGRFI_SCROLLBAR), EndContainer(),
+		NWidget(WWT_PANEL, Colours::Grey, WID_NGRFI_MAINPANEL), SetMinimalSize(300, 0), SetScrollbar(WID_NGRFI_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_NGRFI_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+			NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_NGRFI_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Grey),
 		EndContainer(),
 	EndContainer(),
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_inspect_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_NGRFI_CAPTION), SetStringTip(STR_NEWGRF_INSPECT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NGRFI_PARENT), SetStringTip(STR_NEWGRF_INSPECT_PARENT_BUTTON, STR_NEWGRF_INSPECT_PARENT_TOOLTIP),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_NGRFI_CAPTION), SetStringTip(STR_NEWGRF_INSPECT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_NGRFI_PARENT), SetStringTip(STR_NEWGRF_INSPECT_PARENT_BUTTON, STR_NEWGRF_INSPECT_PARENT_TOOLTIP),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_NGRFI_MAINPANEL), SetMinimalSize(300, 0), SetScrollbar(WID_NGRFI_SCROLLBAR), EndContainer(),
+		NWidget(WWT_PANEL, Colours::Grey, WID_NGRFI_MAINPANEL), SetMinimalSize(300, 0), SetScrollbar(WID_NGRFI_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_NGRFI_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+			NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_NGRFI_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Grey),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the NewGRF chain inspection window. */
 static WindowDesc _newgrf_inspect_chain_desc(
-	WDP_AUTO, "newgrf_inspect_chain", 400, 300,
+	WindowPosition::Automatic, "newgrf_inspect_chain", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	{},
 	_nested_newgrf_inspect_chain_widgets
 );
 
+/** Window definition for the NewGRF inspection window. */
 static WindowDesc _newgrf_inspect_desc(
-	WDP_AUTO, "newgrf_inspect", 400, 300,
+	WindowPosition::Automatic, "newgrf_inspect", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	{},
 	_nested_newgrf_inspect_widgets
@@ -696,7 +708,7 @@ void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32_t 
 	if (!IsNewGRFInspectable(feature, index)) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	WindowDesc &desc = (feature == GSF_TRAINS || feature == GSF_ROADVEHICLES) ? _newgrf_inspect_chain_desc : _newgrf_inspect_desc;
+	WindowDesc &desc = (feature == GrfSpecFeature::Trains || feature == GrfSpecFeature::RoadVehicles) ? _newgrf_inspect_chain_desc : _newgrf_inspect_desc;
 	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow, true>(desc, wno);
 	w->SetCallerGRFID(grfid);
 }
@@ -711,7 +723,7 @@ void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32_t 
  */
 void InvalidateNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 {
-	if (feature == GSF_INVALID) return;
+	if (feature == GrfSpecFeature::Invalid) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
 	InvalidateWindowData(WC_NEWGRF_INSPECT, wno);
@@ -727,7 +739,7 @@ void InvalidateNewGRFInspectWindow(GrfSpecFeature feature, uint index)
  */
 void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 {
-	if (feature == GSF_INVALID) return;
+	if (feature == GrfSpecFeature::Invalid) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
 	CloseWindowById(WC_NEWGRF_INSPECT, wno);
@@ -762,37 +774,21 @@ bool IsNewGRFInspectable(GrfSpecFeature feature, uint index)
 GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
-		default:              return GSF_INVALID;
-		case TileType::Railway:      return GSF_RAILTYPES;
-		case TileType::Road:         return IsLevelCrossing(tile) ? GSF_RAILTYPES : GSF_ROADTYPES;
-		case TileType::House:        return GSF_HOUSES;
-		case TileType::Industry:     return GSF_INDUSTRYTILES;
-		case TileType::Object:       return GSF_OBJECTS;
+		default: return GrfSpecFeature::Invalid;
+		case TileType::Railway: return GrfSpecFeature::RailTypes;
+		case TileType::Road: return IsLevelCrossing(tile) ? GrfSpecFeature::RailTypes : GrfSpecFeature::RoadTypes;
+		case TileType::House: return GrfSpecFeature::Houses;
+		case TileType::Industry: return GrfSpecFeature::IndustryTiles;
+		case TileType::Object: return GrfSpecFeature::Objects;
 
 		case TileType::Station:
 			switch (GetStationType(tile)) {
-				case StationType::Rail:    return GSF_STATIONS;
-				case StationType::Airport: return GSF_AIRPORTTILES;
-				case StationType::Bus:     return GSF_ROADSTOPS;
-				case StationType::Truck:   return GSF_ROADSTOPS;
-				default:              return GSF_INVALID;
+				case StationType::Rail: return GrfSpecFeature::Stations;
+				case StationType::Airport: return GrfSpecFeature::AirportTiles;
+				case StationType::Bus: return GrfSpecFeature::RoadStops;
+				case StationType::Truck: return GrfSpecFeature::RoadStops;
+				default: return GrfSpecFeature::Invalid;
 			}
-	}
-}
-
-/**
- * Get the GrfSpecFeature associated with the vehicle.
- * @param type The vehicle type to get the feature from.
- * @return the GrfSpecFeature.
- */
-GrfSpecFeature GetGrfSpecFeature(VehicleType type)
-{
-	switch (type) {
-		case VEH_TRAIN:    return GSF_TRAINS;
-		case VEH_ROAD:     return GSF_ROADVEHICLES;
-		case VEH_SHIP:     return GSF_SHIPS;
-		case VEH_AIRCRAFT: return GSF_AIRCRAFT;
-		default:           return GSF_INVALID;
 	}
 }
 
@@ -890,7 +886,7 @@ struct SpriteAlignerWindow : Window {
 					d = maxdim(d, GetStringBoundingBox(GetString(STR_SPRITE_ALIGNER_SPRITE, spritefile->GetSimplifiedFilename(), GetParamMaxDigits(6))));
 				}
 				size.width = d.width + padding.width;
-				fill.height = resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
+				fill.height = resize.height = GetCharacterHeight(FontSize::Normal) + padding.height;
 				resize.width = 1;
 				break;
 			}
@@ -1123,76 +1119,77 @@ bool SpriteAlignerWindow::crosshair = true;
 
 static constexpr std::initializer_list<NWidgetPart> _nested_sprite_aligner_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SA_CAPTION),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_SA_CAPTION),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse_resize),
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_PREVIOUS), SetStringTip(STR_SPRITE_ALIGNER_PREVIOUS_BUTTON, STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_GOTO), SetStringTip(STR_SPRITE_ALIGNER_GOTO_BUTTON, STR_SPRITE_ALIGNER_GOTO_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_NEXT), SetStringTip(STR_SPRITE_ALIGNER_NEXT_BUTTON, STR_SPRITE_ALIGNER_NEXT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SA_PREVIOUS), SetStringTip(STR_SPRITE_ALIGNER_PREVIOUS_BUTTON, STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SA_GOTO), SetStringTip(STR_SPRITE_ALIGNER_GOTO_BUTTON, STR_SPRITE_ALIGNER_GOTO_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SA_NEXT), SetStringTip(STR_SPRITE_ALIGNER_NEXT_BUTTON, STR_SPRITE_ALIGNER_NEXT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetFill(1, 1), SetResize(1, 0),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SA_UP), SetSpriteTip(SPR_ARROW_UP, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
+					NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_SA_UP), SetSpriteTip(SPR_ARROW_UP, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
 					NWidget(NWID_SPACER), SetFill(1, 1), SetResize(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL_LTR), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),
-						NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SA_LEFT), SetSpriteTip(SPR_ARROW_LEFT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
+						NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_SA_LEFT), SetSpriteTip(SPR_ARROW_LEFT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
 						NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),
 					EndContainer(),
-					NWidget(WWT_PANEL, COLOUR_DARK_BLUE, WID_SA_SPRITE), SetToolTip(STR_SPRITE_ALIGNER_SPRITE_TOOLTIP), SetResize(1, 1), SetFill(1, 1),
+					NWidget(WWT_PANEL, Colours::DarkBlue, WID_SA_SPRITE), SetToolTip(STR_SPRITE_ALIGNER_SPRITE_TOOLTIP), SetResize(1, 1), SetFill(1, 1),
 					EndContainer(),
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),
-						NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SA_RIGHT), SetSpriteTip(SPR_ARROW_RIGHT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
+						NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_SA_RIGHT), SetSpriteTip(SPR_ARROW_RIGHT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
 						NWidget(NWID_SPACER), SetFill(1, 1), SetResize(0, 1),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetFill(1, 1), SetResize(1, 0),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SA_DOWN), SetSpriteTip(SPR_ARROW_DOWN, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
+					NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_SA_DOWN), SetSpriteTip(SPR_ARROW_DOWN, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
 					NWidget(NWID_SPACER), SetFill(1, 1), SetResize(1, 0),
 				EndContainer(),
-				NWidget(WWT_LABEL, INVALID_COLOUR, WID_SA_OFFSETS_ABS), SetFill(1, 0), SetResize(1, 0),
-				NWidget(WWT_LABEL, INVALID_COLOUR, WID_SA_OFFSETS_REL), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_LABEL, Colours::Invalid, WID_SA_OFFSETS_ABS), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_LABEL, Colours::Invalid, WID_SA_OFFSETS_REL), SetFill(1, 0), SetResize(1, 0),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-					NWidget(WWT_TEXTBTN_2, COLOUR_GREY, WID_SA_CENTRE), SetStringTip(STR_SPRITE_ALIGNER_CENTRE_OFFSET), SetFill(1, 0), SetResize(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_RESET_REL), SetStringTip(STR_SPRITE_ALIGNER_RESET_BUTTON, STR_SPRITE_ALIGNER_RESET_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_CROSSHAIR), SetStringTip(STR_SPRITE_ALIGNER_CROSSHAIR), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_TEXTBTN_2, Colours::Grey, WID_SA_CENTRE), SetStringTip(STR_SPRITE_ALIGNER_CENTRE_OFFSET), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SA_RESET_REL), SetStringTip(STR_SPRITE_ALIGNER_RESET_BUTTON, STR_SPRITE_ALIGNER_RESET_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_CROSSHAIR), SetStringTip(STR_SPRITE_ALIGNER_CROSSHAIR), SetFill(1, 0), SetResize(1, 0),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_PICKER), SetStringTip(STR_SPRITE_ALIGNER_PICKER_BUTTON, STR_SPRITE_ALIGNER_PICKER_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_PICKER), SetStringTip(STR_SPRITE_ALIGNER_PICKER_BUTTON, STR_SPRITE_ALIGNER_PICKER_TOOLTIP), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_MATRIX, COLOUR_GREY, WID_SA_LIST), SetResize(1, 1), SetMatrixDataTip(1, 0), SetFill(1, 1), SetScrollbar(WID_SA_SCROLLBAR),
-					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SA_SCROLLBAR),
+					NWidget(WWT_MATRIX, Colours::Grey, WID_SA_LIST), SetResize(1, 1), SetMatrixDataTip(1, 0), SetFill(1, 1), SetScrollbar(WID_SA_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_SA_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::In4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::In2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Normal)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out8x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::In4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::In2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Normal)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Out2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Out4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Out8x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, Colours::Grey), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the sprite aligner window. */
 static WindowDesc _sprite_aligner_desc(
-	WDP_AUTO, "sprite_aligner", 400, 300,
+	WindowPosition::Automatic, "sprite_aligner", 400, 300,
 	WC_SPRITE_ALIGNER, WC_NONE,
 	{},
 	_nested_sprite_aligner_widgets

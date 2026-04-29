@@ -1195,6 +1195,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :هزینه ها
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special
@@ -1568,6 +1570,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :غیرفعال 
 
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :فعال کردن حد برای سرعت واگن: {STRING}
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :غیر فعال کردن ریل برقی: {STRING}
 
@@ -3672,7 +3675,7 @@ STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :ایستگاه 
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :عمر مفید باقی مانده (سال)
 ###next-name-looks-similar
 

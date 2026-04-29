@@ -48,13 +48,13 @@ static constexpr size_t CHANGELOG_VERSIONS_LIMIT = 20;
 static std::optional<std::string> FindGameManualFilePath(std::string_view filename, Subdirectory subdir)
 {
 	static const Searchpath searchpaths[] = {
-		SP_APPLICATION_BUNDLE_DIR, SP_INSTALLATION_DIR, SP_SHARED_DIR, SP_BINARY_DIR, SP_WORKING_DIR
+		Searchpath::ApplicationBundleDir, Searchpath::InstallationDir, Searchpath::SharedDir, Searchpath::BinaryDir, Searchpath::WorkingDir
 	};
 
 	for (Searchpath sp : searchpaths) {
 		std::string file_path = FioGetDirectory(sp, subdir);
 		file_path.append(filename);
-		if (FioCheckFileExists(file_path, NO_DIRECTORY)) return file_path;
+		if (FioCheckFileExists(file_path, Subdirectory::None)) return file_path;
 	}
 
 	return {};
@@ -76,7 +76,7 @@ struct GameManualTextfileWindow : public TextfileWindow {
 		}
 
 		this->filepath = filepath.value();
-		this->LoadTextfile(this->filepath, NO_DIRECTORY);
+		this->LoadTextfile(this->filepath, Subdirectory::None);
 		this->OnClick({ 0, 0 }, WID_TF_WRAPTEXT, 1);
 	}
 
@@ -129,30 +129,30 @@ struct HelpWindow : public Window {
 	{
 		this->InitNested(number);
 
-		this->EnableTextfileButton(README_FILENAME, BASE_DIR, WID_HW_README);
-		this->EnableTextfileButton(CHANGELOG_FILENAME, BASE_DIR, WID_HW_CHANGELOG);
-		this->EnableTextfileButton(KNOWN_BUGS_FILENAME, BASE_DIR, WID_HW_KNOWN_BUGS);
-		this->EnableTextfileButton(LICENSE_FILENAME, BASE_DIR, WID_HW_LICENSE);
-		this->EnableTextfileButton(FONTS_FILENAME, DOCS_DIR, WID_HW_FONTS);
+		this->EnableTextfileButton(README_FILENAME, Subdirectory::Base, WID_HW_README);
+		this->EnableTextfileButton(CHANGELOG_FILENAME, Subdirectory::Base, WID_HW_CHANGELOG);
+		this->EnableTextfileButton(KNOWN_BUGS_FILENAME, Subdirectory::Base, WID_HW_KNOWN_BUGS);
+		this->EnableTextfileButton(LICENSE_FILENAME, Subdirectory::Base, WID_HW_LICENSE);
+		this->EnableTextfileButton(FONTS_FILENAME, Subdirectory::Docs, WID_HW_FONTS);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_HW_README:
-				new GameManualTextfileWindow(README_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(README_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_CHANGELOG:
-				new GameManualTextfileWindow(CHANGELOG_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(CHANGELOG_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_KNOWN_BUGS:
-				new GameManualTextfileWindow(KNOWN_BUGS_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(KNOWN_BUGS_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_LICENSE:
-				new GameManualTextfileWindow(LICENSE_FILENAME, BASE_DIR);
+				new GameManualTextfileWindow(LICENSE_FILENAME, Subdirectory::Base);
 				break;
 			case WID_HW_FONTS:
-				new GameManualTextfileWindow(FONTS_FILENAME, DOCS_DIR);
+				new GameManualTextfileWindow(FONTS_FILENAME, Subdirectory::Docs);
 				break;
 			case WID_HW_WEBSITE:
 				OpenBrowser(WEBSITE_LINK);
@@ -178,32 +178,33 @@ private:
 
 static constexpr std::initializer_list<NWidgetPart> _nested_helpwin_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_HELP_WINDOW_CAPTION),
+		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
+		NWidget(WWT_CAPTION, Colours::DarkGreen), SetStringTip(STR_HELP_WINDOW_CAPTION),
 	EndContainer(),
 
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+	NWidget(WWT_PANEL, Colours::DarkGreen),
 		NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse),
-			NWidget(WWT_FRAME, COLOUR_DARK_GREEN), SetStringTip(STR_HELP_WINDOW_WEBSITES),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_WEBSITE), SetStringTip(STR_HELP_WINDOW_MAIN_WEBSITE), SetMinimalSize(128, 12), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_WIKI), SetStringTip(STR_HELP_WINDOW_MANUAL_WIKI), SetMinimalSize(128, 12), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_BUGTRACKER), SetStringTip(STR_HELP_WINDOW_BUGTRACKER), SetMinimalSize(128, 12), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_COMMUNITY), SetStringTip(STR_HELP_WINDOW_COMMUNITY), SetMinimalSize(128, 12), SetFill(1, 0),
+			NWidget(WWT_FRAME, Colours::DarkGreen), SetStringTip(STR_HELP_WINDOW_WEBSITES),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_WEBSITE), SetStringTip(STR_HELP_WINDOW_MAIN_WEBSITE), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_WIKI), SetStringTip(STR_HELP_WINDOW_MANUAL_WIKI), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_BUGTRACKER), SetStringTip(STR_HELP_WINDOW_BUGTRACKER), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_COMMUNITY), SetStringTip(STR_HELP_WINDOW_COMMUNITY), SetMinimalSize(128, 12), SetFill(1, 0),
 			EndContainer(),
 
-			NWidget(WWT_FRAME, COLOUR_DARK_GREEN), SetStringTip(STR_HELP_WINDOW_DOCUMENTS),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_README), SetStringTip(STR_HELP_WINDOW_README), SetMinimalSize(128, 12), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_CHANGELOG), SetStringTip(STR_HELP_WINDOW_CHANGELOG), SetMinimalSize(128, 12), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_KNOWN_BUGS),SetStringTip(STR_HELP_WINDOW_KNOWN_BUGS), SetMinimalSize(128, 12), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_LICENSE), SetStringTip(STR_HELP_WINDOW_LICENSE), SetMinimalSize(128, 12), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_HW_FONTS), SetStringTip(STR_HELP_WINDOW_FONTS), SetMinimalSize(128, 12), SetFill(1, 0),
+			NWidget(WWT_FRAME, Colours::DarkGreen), SetStringTip(STR_HELP_WINDOW_DOCUMENTS),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_README), SetStringTip(STR_HELP_WINDOW_README), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_CHANGELOG), SetStringTip(STR_HELP_WINDOW_CHANGELOG), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_KNOWN_BUGS),SetStringTip(STR_HELP_WINDOW_KNOWN_BUGS), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_LICENSE), SetStringTip(STR_HELP_WINDOW_LICENSE), SetMinimalSize(128, 12), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Green, WID_HW_FONTS), SetStringTip(STR_HELP_WINDOW_FONTS), SetMinimalSize(128, 12), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the help window. */
 static WindowDesc _helpwin_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_HELPWIN, WC_NONE,
 	{},
 	_nested_helpwin_widgets

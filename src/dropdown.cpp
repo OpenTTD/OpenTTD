@@ -98,16 +98,16 @@ std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, Stri
 
 static constexpr std::initializer_list<NWidgetPart> _nested_dropdown_menu_widgets = {
 	NWidget(NWID_VERTICAL),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_FILTER_SEL),
-			NWidget(WWT_PANEL, COLOUR_END, WID_DM_FILTER_PANEL),
-				NWidget(WWT_EDITBOX, COLOUR_END, WID_DM_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_DM_FILTER_SEL),
+			NWidget(WWT_PANEL, Colours::End, WID_DM_FILTER_PANEL),
+				NWidget(WWT_EDITBOX, Colours::End, WID_DM_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetScrollbar(WID_DM_SCROLL),
+			NWidget(WWT_PANEL, Colours::End, WID_DM_ITEMS), SetScrollbar(WID_DM_SCROLL),
 			EndContainer(),
-			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_SHOW_SCROLL),
-				NWidget(NWID_VSCROLLBAR, COLOUR_END, WID_DM_SCROLL),
+			NWidget(NWID_SELECTION, Colours::Invalid, WID_DM_SHOW_SCROLL),
+				NWidget(NWID_VSCROLLBAR, Colours::End, WID_DM_SCROLL),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -115,7 +115,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_dropdown_menu_widget
 
 /** Window description for dropdown menus. */
 static WindowDesc _dropdown_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	{},
 	_nested_dropdown_menu_widgets
@@ -195,6 +195,8 @@ struct DropdownWindow : Window {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
+		this->UnfocusFocusedWidget();
+
 		/* Finish closing the dropdown, so it doesn't affect new window placement.
 		 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
 		this->Window::Close();
@@ -230,7 +232,7 @@ struct DropdownWindow : Window {
 		if (!this->options.Test(DropDownOption::Filterable)) return 0;
 
 		/* The edit panel widget does not exist yet so we don't know its real size. Calculate it instead. */
-		return GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.fullbevel.Vertical() * 3;
+		return GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.fullbevel.Vertical() * 3;
 	}
 
 	/**

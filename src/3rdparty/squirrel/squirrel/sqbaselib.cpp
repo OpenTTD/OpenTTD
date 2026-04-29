@@ -554,7 +554,7 @@ bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bott
 		if (ret < 0) {
 			if (root == maxChild) {
 				v->Raise_Error("inconsistent compare function");
-				return false; // We'd be swapping ourselve. The compare function is incorrect
+				return false; // We'd be swapping ourself. The compare function is incorrect
 			}
 			_Swap(arr->_values[root],arr->_values[maxChild]);
 			root = maxChild;

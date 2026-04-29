@@ -146,7 +146,7 @@ GRFError *DisableGrf(StringID message, GRFConfig *config)
 		file = _cur_gps.grffile;
 	}
 
-	config->status = GCS_DISABLED;
+	config->status = GRFStatus::Disabled;
 	if (file != nullptr) ClearTemporaryNewGRFData(file);
 	if (config == _cur_gps.grfconfig) _cur_gps.skip_sprites = -1;
 
@@ -271,13 +271,13 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 	e->grf_prop.SetGRFFile(file);
 
 	/* Reserve the engine slot */
-	_engine_mngr.SetID(type, internal_id, scope_grfid, std::min<uint8_t>(internal_id, _engine_counts[type]), e->index);
+	_engine_mngr.SetID(type, internal_id, scope_grfid, std::min<uint8_t>(internal_id, GetOriginalEngineCount(type)), e->index);
 
 	if (engine_pool_size != Engine::GetPoolSize()) {
 		/* Resize temporary engine data ... */
 		_gted.resize(Engine::GetPoolSize());
 	}
-	if (type == VEH_TRAIN) {
+	if (type == VehicleType::Train) {
 		_gted[e->index].railtypelabels.clear();
 		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
@@ -320,10 +320,10 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16_t internal
  */
 CargoTypes TranslateRefitMask(uint32_t refit_mask)
 {
-	CargoTypes result = 0;
+	CargoTypes result{};
 	for (uint8_t bit : SetBitIterator(refit_mask)) {
 		CargoType cargo = GetCargoTranslation(bit, _cur_gps.grffile, true);
-		if (IsValidCargoType(cargo)) SetBit(result, cargo);
+		if (IsValidCargoType(cargo)) result.Set(cargo);
 	}
 	return result;
 }
@@ -434,7 +434,7 @@ void ResetNewGRFData()
 	_gted.resize(Engine::GetPoolSize());
 
 	/* Fill rail type label temporary data for default trains */
-	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
+	for (const Engine *e : Engine::IterateType(VehicleType::Train)) {
 		_gted[e->index].railtypelabels.clear();
 		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
@@ -448,7 +448,7 @@ void ResetNewGRFData()
 	/* Reset price base data */
 	ResetPriceBaseMultipliers();
 
-	/* Reset the curencies array */
+	/* Reset the currencies array */
 	ResetCurrencies();
 
 	/* Reset the house array */
@@ -494,8 +494,8 @@ void ResetNewGRFData()
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;
-	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
-	_loaded_newgrf_features.tram              = TRAMWAY_REPLACE_DEPOT_NONE;
+	_loaded_newgrf_features.shore             = ShoreReplacement::None;
+	_loaded_newgrf_features.tram              = TramDepotReplacement::None;
 
 	/* Clear all GRF overrides */
 	_grf_id_overrides.clear();
@@ -652,9 +652,9 @@ static CargoLabel GetActiveCargoLabel(const std::variant<CargoLabel, MixedCargoT
  */
 static void CalculateRefitMasks()
 {
-	CargoTypes original_known_cargoes = 0;
-	for (CargoType cargo_type = 0; cargo_type != NUM_CARGO; ++cargo_type) {
-		if (IsDefaultCargo(cargo_type)) SetBit(original_known_cargoes, cargo_type);
+	CargoTypes original_known_cargoes{};
+	for (CargoType cargo_type{}; cargo_type != NUM_CARGO; ++cargo_type) {
+		if (IsDefaultCargo(cargo_type)) original_known_cargoes.Set(cargo_type);
 	}
 
 	for (Engine *e : Engine::Iterate()) {
@@ -670,7 +670,7 @@ static void CalculateRefitMasks()
 		/* If the NewGRF did not set any cargo properties, we apply default values. */
 		if (_gted[engine].defaultcargo_grf == nullptr) {
 			/* If the vehicle has any capacity, apply the default refit masks */
-			if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().capacity != 0) {
+			if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().capacity != 0) {
 				static constexpr LandscapeType T = LandscapeType::Temperate;
 				static constexpr LandscapeType A = LandscapeType::Arctic;
 				static constexpr LandscapeType S = LandscapeType::Tropic;
@@ -696,11 +696,11 @@ static void CalculateRefitMasks()
 					{{         Y}, CT_CANDY,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
 				};
 
-				if (e->type == VEH_AIRCRAFT) {
+				if (e->type == VehicleType::Aircraft) {
 					/* Aircraft default to "light" cargoes */
 					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express};
 					_gted[engine].cargo_disallowed = {CargoClass::Liquid};
-				} else if (e->type == VEH_SHIP) {
+				} else if (e->type == VehicleType::Ship) {
 					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
 					switch (label.base()) {
 						case CT_PASSENGERS.base():
@@ -726,7 +726,7 @@ static void CalculateRefitMasks()
 							break;
 					}
 					e->VehInfo<ShipVehicleInfo>().old_refittable = true;
-				} else if (e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+				} else if (e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
 					/* Train engines default to all cargoes, so you can build single-cargo consists with fast engines.
 					 * Trains loading multiple cargoes may start stations accepting unwanted cargoes. */
 					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
@@ -749,32 +749,33 @@ static void CalculateRefitMasks()
 			}
 			_gted[engine].UpdateRefittability(_gted[engine].cargo_allowed.Any());
 
-			if (IsValidCargoType(ei->cargo_type)) ClrBit(_gted[engine].ctt_exclude_mask, ei->cargo_type);
+			if (IsValidCargoType(ei->cargo_type)) _gted[engine].ctt_exclude_mask.Reset(ei->cargo_type);
 		}
 
 		/* Compute refittability */
 		{
-			CargoTypes mask = 0;
-			CargoTypes not_mask = 0;
+			CargoTypes mask{};
+			CargoTypes not_mask{};
 			CargoTypes xor_mask = ei->refit_mask;
 
 			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
-			only_defaultcargo = _gted[engine].refittability != GRFTempEngineData::NONEMPTY;
+			only_defaultcargo = _gted[engine].refittability != GRFTempEngineData::Refittability::NonEmpty;
 
 			if (_gted[engine].cargo_allowed.Any()) {
 				/* Build up the list of cargo types from the set cargo classes. */
 				for (const CargoSpec *cs : CargoSpec::Iterate()) {
-					if (cs->classes.Any(_gted[engine].cargo_allowed) && cs->classes.All(_gted[engine].cargo_allowed_required)) SetBit(mask, cs->Index());
-					if (cs->classes.Any(_gted[engine].cargo_disallowed)) SetBit(not_mask, cs->Index());
+					if (cs->classes.Any(_gted[engine].cargo_allowed) && cs->classes.All(_gted[engine].cargo_allowed_required)) mask.Set(cs->Index());
+					if (cs->classes.Any(_gted[engine].cargo_disallowed)) not_mask.Set(cs->Index());
 				}
 			}
 
-			ei->refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
+			CargoTypes invalid_mask = CargoTypes{_cargo_mask}.Flip();
+			ei->refit_mask = mask.Reset(not_mask).Flip(xor_mask).Reset(invalid_mask);
 
 			/* Apply explicit refit includes/excludes. */
-			ei->refit_mask |= _gted[engine].ctt_include_mask;
-			ei->refit_mask &= ~_gted[engine].ctt_exclude_mask;
+			ei->refit_mask.Set(_gted[engine].ctt_include_mask);
+			ei->refit_mask.Reset(_gted[engine].ctt_exclude_mask);
 
 			/* Custom refit mask callback. */
 			const GRFFile *file = _gted[e->index].defaultcargo_grf;
@@ -787,8 +788,8 @@ static void CalculateRefitMasks()
 						case CALLBACK_FAILED:
 						case 0:
 							break; // Do nothing.
-						case 1: SetBit(ei->refit_mask, cs->Index()); break;
-						case 2: ClrBit(ei->refit_mask, cs->Index()); break;
+						case 1: ei->refit_mask.Set(cs->Index()); break;
+						case 2: ei->refit_mask.Reset(cs->Index()); break;
 
 						default: ErrorUnknownCallbackResult(file->grfid, CBID_VEHICLE_CUSTOM_REFIT, callback);
 					}
@@ -797,24 +798,24 @@ static void CalculateRefitMasks()
 		}
 
 		/* Clear invalid cargoslots (from default vehicles or pre-NewCargo GRFs) */
-		if (IsValidCargoType(ei->cargo_type) && !HasBit(_cargo_mask, ei->cargo_type)) ei->cargo_type = INVALID_CARGO;
+		if (IsValidCargoType(ei->cargo_type) && !_cargo_mask.Test(ei->cargo_type)) ei->cargo_type = INVALID_CARGO;
 
 		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargoes.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
-		if (!only_defaultcargo && (e->type != VEH_SHIP || e->VehInfo<ShipVehicleInfo>().old_refittable) && IsValidCargoType(ei->cargo_type) && !HasBit(ei->refit_mask, ei->cargo_type)) {
+		if (!only_defaultcargo && (e->type != VehicleType::Ship || e->VehInfo<ShipVehicleInfo>().old_refittable) && IsValidCargoType(ei->cargo_type) && !ei->refit_mask.Test(ei->cargo_type)) {
 			ei->cargo_type = INVALID_CARGO;
 		}
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
-		if (!IsValidCargoType(ei->cargo_type) && ei->refit_mask != 0) {
+		if (!IsValidCargoType(ei->cargo_type) && ei->refit_mask.Any()) {
 			/* Figure out which CTT to use for the default cargo, if it is 'first refittable'. */
 			const GRFFile *file = _gted[engine].defaultcargo_grf;
 			if (file == nullptr) file = e->GetGRF();
 			if (file != nullptr && file->grf_version >= 8 && !file->cargo_list.empty()) {
 				/* Use first refittable cargo from cargo translation table */
 				uint8_t best_local_slot = UINT8_MAX;
-				for (CargoType cargo_type : SetCargoBitIterator(ei->refit_mask)) {
+				for (CargoType cargo_type : ei->refit_mask) {
 					uint8_t local_slot = file->cargo_map[cargo_type];
 					if (local_slot < best_local_slot) {
 						best_local_slot = local_slot;
@@ -825,22 +826,22 @@ static void CalculateRefitMasks()
 
 			if (!IsValidCargoType(ei->cargo_type)) {
 				/* Use first refittable cargo slot */
-				ei->cargo_type = (CargoType)FindFirstBit(ei->refit_mask);
+				ei->cargo_type = *ei->refit_mask.begin();
 			}
 		}
-		if (!IsValidCargoType(ei->cargo_type) && e->type == VEH_TRAIN && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON && e->VehInfo<RailVehicleInfo>().capacity == 0) {
+		if (!IsValidCargoType(ei->cargo_type) && e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON && e->VehInfo<RailVehicleInfo>().capacity == 0) {
 			/* For train engines which do not carry cargo it does not matter if their cargo type is invalid.
 			 * Fallback to the first available instead, if the cargo type has not been changed (as indicated by
 			 * cargo_label not being CT_INVALID). */
 			if (GetActiveCargoLabel(ei->cargo_label) != CT_INVALID) {
-				ei->cargo_type = static_cast<CargoType>(FindFirstBit(_standard_cargo_mask));
+				ei->cargo_type = *_standard_cargo_mask.begin();
 			}
 		}
 		if (!IsValidCargoType(ei->cargo_type)) ei->climates = {};
 
 		/* Clear refit_mask for not refittable ships */
-		if (e->type == VEH_SHIP && !e->VehInfo<ShipVehicleInfo>().old_refittable) {
-			ei->refit_mask = 0;
+		if (e->type == VehicleType::Ship && !e->VehInfo<ShipVehicleInfo>().old_refittable) {
+			ei->refit_mask.Reset();
 		}
 	}
 }
@@ -875,22 +876,22 @@ static void FinaliseEngineArray()
 		if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		switch (e->type) {
-			case VEH_TRAIN:
+			case VehicleType::Train:
 				for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) {
-					AppendCopyableBadgeList(e->badges, GetRailTypeInfo(rt)->badges, GSF_TRAINS);
+					AppendCopyableBadgeList(e->badges, GetRailTypeInfo(rt)->badges, GrfSpecFeature::Trains);
 				}
 				break;
-			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->badges, GSF_ROADVEHICLES); break;
+			case VehicleType::Road: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->VehInfo<RoadVehicleInfo>().roadtype)->badges, GrfSpecFeature::RoadVehicles); break;
 			default: break;
 		}
 
 		/* Skip wagons, there livery is defined via the engine */
-		if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
 			LiveryScheme ls = GetEngineLiveryScheme(e->index, EngineID::Invalid(), nullptr);
 			SetBit(_loaded_newgrf_features.used_liveries, ls);
 			/* Note: For ships and roadvehicles we assume that they cannot be refitted between passenger and freight */
 
-			if (e->type == VEH_TRAIN) {
+			if (e->type == VehicleType::Train) {
 				SetBit(_loaded_newgrf_features.used_liveries, LS_FREIGHT_WAGON);
 				switch (ls) {
 					case LS_STEAM:
@@ -943,12 +944,12 @@ static void FinaliseEngineArray()
 void FinaliseCargoArray()
 {
 	for (CargoSpec &cs : CargoSpec::array) {
-		if (cs.town_production_effect == INVALID_TPE) {
+		if (cs.town_production_effect == TownProductionEffect::Invalid) {
 			/* Set default town production effect by cargo label. */
 			switch (cs.label.base()) {
-				case CT_PASSENGERS.base(): cs.town_production_effect = TPE_PASSENGERS; break;
-				case CT_MAIL.base():       cs.town_production_effect = TPE_MAIL; break;
-				default:                   cs.town_production_effect = TPE_NONE; break;
+				case CT_PASSENGERS.base(): cs.town_production_effect = TownProductionEffect::Passengers; break;
+				case CT_MAIL.base():       cs.town_production_effect = TownProductionEffect::Mail; break;
+				default:                   cs.town_production_effect = TownProductionEffect::None; break;
 			}
 		}
 		if (!cs.IsValid()) {
@@ -1410,7 +1411,7 @@ void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdi
 	if (stage != GrfLoadingStage::FileScan && stage != GrfLoadingStage::SafetyScan && stage != GrfLoadingStage::LabelScan) {
 		_cur_gps.grffile = GetFileByFilename(filename);
 		if (_cur_gps.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
-		if (stage == GrfLoadingStage::Reserve && config.status != GCS_INITIALISED) return;
+		if (stage == GrfLoadingStage::Reserve && config.status != GRFStatus::Initialised) return;
 		if (stage == GrfLoadingStage::Activation && !config.flags.Test(GRFConfigFlag::Reserved)) return;
 	}
 
@@ -1426,17 +1427,17 @@ void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdi
 /**
  * Relocates the old shore sprites at new positions.
  *
- * 1. If shore sprites are neither loaded by Action5 nor ActionA, the extra sprites from openttd(w/d).grf are used. (SHORE_REPLACE_ONLY_NEW)
- * 2. If a newgrf replaces some shore sprites by ActionA. The (maybe also replaced) grass tiles are used for corner shores. (SHORE_REPLACE_ACTION_A)
- * 3. If a newgrf replaces shore sprites by Action5 any shore replacement by ActionA has no effect. (SHORE_REPLACE_ACTION_5)
+ * 1. If shore sprites are neither loaded by Action5 nor ActionA, the extra sprites from openttd(w/d).grf are used. (ShoreReplacement::OnlyNew)
+ * 2. If a newgrf replaces some shore sprites by ActionA. The (maybe also replaced) grass tiles are used for corner shores. (ShoreReplacement::ActionA)
+ * 3. If a newgrf replaces shore sprites by Action5 any shore replacement by ActionA has no effect. (ShoreReplacement::Action5)
  */
 static void ActivateOldShore()
 {
 	/* Use default graphics, if no shore sprites were loaded.
 	 * Should not happen, as the base set's extra grf should include some. */
-	if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_A;
+	if (_loaded_newgrf_features.shore == ShoreReplacement::None) _loaded_newgrf_features.shore = ShoreReplacement::ActionA;
 
-	if (_loaded_newgrf_features.shore != SHORE_REPLACE_ACTION_5) {
+	if (_loaded_newgrf_features.shore != ShoreReplacement::Action5) {
 		DupSprite(SPR_ORIGINALSHORE_START +  1, SPR_SHORE_BASE +  1); // SLOPE_W
 		DupSprite(SPR_ORIGINALSHORE_START +  2, SPR_SHORE_BASE +  2); // SLOPE_S
 		DupSprite(SPR_ORIGINALSHORE_START +  6, SPR_SHORE_BASE +  3); // SLOPE_SW
@@ -1447,7 +1448,7 @@ static void ActivateOldShore()
 		DupSprite(SPR_ORIGINALSHORE_START +  5, SPR_SHORE_BASE + 12); // SLOPE_NE
 	}
 
-	if (_loaded_newgrf_features.shore == SHORE_REPLACE_ACTION_A) {
+	if (_loaded_newgrf_features.shore == ShoreReplacement::ActionA) {
 		DupSprite(SPR_FLAT_GRASS_TILE + 16, SPR_SHORE_BASE +  0); // SLOPE_STEEP_S
 		DupSprite(SPR_FLAT_GRASS_TILE + 17, SPR_SHORE_BASE +  5); // SLOPE_STEEP_W
 		DupSprite(SPR_FLAT_GRASS_TILE +  7, SPR_SHORE_BASE +  7); // SLOPE_WSE
@@ -1469,7 +1470,7 @@ static void ActivateOldShore()
  */
 static void ActivateOldTramDepot()
 {
-	if (_loaded_newgrf_features.tram == TRAMWAY_REPLACE_DEPOT_WITH_TRACK) {
+	if (_loaded_newgrf_features.tram == TramDepotReplacement::WithTrack) {
 		DupSprite(SPR_ROAD_DEPOT               + 0, SPR_TRAMWAY_DEPOT_NO_TRACK + 0); // use road depot graphics for "no tracks"
 		DupSprite(SPR_TRAMWAY_DEPOT_WITH_TRACK + 1, SPR_TRAMWAY_DEPOT_NO_TRACK + 1);
 		DupSprite(SPR_ROAD_DEPOT               + 2, SPR_TRAMWAY_DEPOT_NO_TRACK + 2); // use road depot graphics for "no tracks"
@@ -1485,7 +1486,7 @@ static void ActivateOldTramDepot()
 static void FinalisePriceBaseMultipliers()
 {
 	/** Features, to which '_grf_id_overrides' applies. Currently vehicle features only. */
-	static constexpr GrfSpecFeatures override_features{GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT};
+	static constexpr GrfSpecFeatures override_features{GrfSpecFeature::Trains, GrfSpecFeature::RoadVehicles, GrfSpecFeature::Ships, GrfSpecFeature::Aircraft};
 
 	/* Evaluate grf overrides */
 	int num_grfs = (uint)_grf_files.size();
@@ -1614,17 +1615,17 @@ static void FinaliseBadges()
 		for (Engine *e : Engine::Iterate()) {
 			if (e->grf_prop.grffile != &file) continue;
 			e->badges.push_back(badge->index);
-			badge->features.Set(static_cast<GrfSpecFeature>(GSF_TRAINS + e->type));
+			badge->features.Set(GetGrfSpecFeature(e->type));
 		}
 
-		AddBadgeToSpecs(file.stations, GSF_STATIONS, *badge);
-		AddBadgeToSpecs(file.housespec, GSF_HOUSES, *badge);
-		AddBadgeToSpecs(file.industryspec, GSF_INDUSTRIES, *badge);
-		AddBadgeToSpecs(file.indtspec, GSF_INDUSTRYTILES, *badge);
-		AddBadgeToSpecs(file.objectspec, GSF_OBJECTS, *badge);
-		AddBadgeToSpecs(file.airportspec, GSF_AIRPORTS, *badge);
-		AddBadgeToSpecs(file.airtspec, GSF_AIRPORTTILES, *badge);
-		AddBadgeToSpecs(file.roadstops, GSF_ROADSTOPS, *badge);
+		AddBadgeToSpecs(file.stations, GrfSpecFeature::Stations, *badge);
+		AddBadgeToSpecs(file.housespec, GrfSpecFeature::Houses, *badge);
+		AddBadgeToSpecs(file.industryspec, GrfSpecFeature::Industries, *badge);
+		AddBadgeToSpecs(file.indtspec, GrfSpecFeature::IndustryTiles, *badge);
+		AddBadgeToSpecs(file.objectspec, GrfSpecFeature::Objects, *badge);
+		AddBadgeToSpecs(file.airportspec, GrfSpecFeature::Airports, *badge);
+		AddBadgeToSpecs(file.airtspec, GrfSpecFeature::AirportTiles, *badge);
+		AddBadgeToSpecs(file.roadstops, GrfSpecFeature::RoadStops, *badge);
 	}
 
 	ApplyBadgeFeaturesToClassBadges();
@@ -1698,24 +1699,24 @@ static void AfterLoadGRFs()
 	InitRailTypes();
 	InitRoadTypes();
 
-	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
+	for (Engine *e : Engine::IterateType(VehicleType::Road)) {
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
 			e->VehInfo<RoadVehicleInfo>().max_speed = _gted[e->index].rv_max_speed * 4;
 		}
 
-		RoadTramType rtt = e->info.misc_flags.Test(EngineMiscFlag::RoadIsTram) ? RTT_TRAM : RTT_ROAD;
+		RoadTramType rtt = e->info.misc_flags.Test(EngineMiscFlag::RoadIsTram) ? RoadTramType::Tram : RoadTramType::Road;
 
 		const GRFFile *file = e->GetGRF();
 		if (file == nullptr || _gted[e->index].roadtramtype == 0) {
-			e->VehInfo<RoadVehicleInfo>().roadtype = (rtt == RTT_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+			e->VehInfo<RoadVehicleInfo>().roadtype = (rtt == RoadTramType::Tram) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 			continue;
 		}
 
 		/* Remove +1 offset. */
 		_gted[e->index].roadtramtype--;
 
-		const std::vector<RoadTypeLabel> *list = (rtt == RTT_TRAM) ? &file->tramtype_list : &file->roadtype_list;
+		const std::vector<RoadTypeLabel> *list = (rtt == RoadTramType::Tram) ? &file->tramtype_list : &file->roadtype_list;
 		if (_gted[e->index].roadtramtype < list->size())
 		{
 			RoadTypeLabel rtl = (*list)[_gted[e->index].roadtramtype];
@@ -1730,7 +1731,7 @@ static void AfterLoadGRFs()
 		e->info.climates = {};
 	}
 
-	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
+	for (Engine *e : Engine::IterateType(VehicleType::Train)) {
 		RailTypes railtypes{};
 		for (RailTypeLabel label : _gted[e->index].railtypelabels) {
 			auto rt = GetRailTypeByLabel(label);
@@ -1802,7 +1803,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	 * have been enabled.
 	 */
 	for (const auto &c : _grfconfig) {
-		if (c->status != GCS_NOT_FOUND) c->status = GCS_UNKNOWN;
+		if (c->status != GRFStatus::NotFound) c->status = GRFStatus::Unknown;
 	}
 
 	_cur_gps.spriteid = load_index;
@@ -1814,7 +1815,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		/* Set activated grfs back to will-be-activated between reservation- and activation-stage.
 		 * This ensures that action7/9 conditions 0x06 - 0x0A work correctly. */
 		for (const auto &c : _grfconfig) {
-			if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
+			if (c->status == GRFStatus::Activated) c->status = GRFStatus::Initialised;
 		}
 
 		if (stage == GrfLoadingStage::Reserve) {
@@ -1833,13 +1834,13 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 		_cur_gps.stage = stage;
 		for (const auto &c : _grfconfig) {
-			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
+			if (c->status == GRFStatus::Disabled || c->status == GRFStatus::NotFound) continue;
 			if (stage > GrfLoadingStage::Init && c->flags.Test(GRFConfigFlag::InitOnly)) continue;
 
-			Subdirectory subdir = num_grfs < num_baseset ? BASESET_DIR : NEWGRF_DIR;
+			Subdirectory subdir = num_grfs < num_baseset ? Subdirectory::Baseset : Subdirectory::NewGrf;
 			if (!FioCheckFileExists(c->filename, subdir)) {
 				Debug(grf, 0, "NewGRF file is missing '{}'; disabling", c->filename);
-				c->status = GCS_NOT_FOUND;
+				c->status = GRFStatus::NotFound;
 				continue;
 			}
 
@@ -1848,7 +1849,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 			if (!c->flags.Test(GRFConfigFlag::Static) && !c->flags.Test(GRFConfigFlag::System)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
 					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
-					c->status = GCS_DISABLED;
+					c->status = GRFStatus::Disabled;
 					c->errors.emplace_back(STR_NEWGRF_ERROR_MSG_FATAL, 0, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 					continue;
 				}
@@ -1894,4 +1895,36 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 	TimerGameTick::counter = tick_counter;
 	_display_opt  = display_opt;
+}
+
+/**
+ * Get the \c GrfSpecFeature associated with a \c VehicleType
+ * @param type The vehicle type.
+ * @return the \c GrfSpecFeature
+ */
+GrfSpecFeature GetGrfSpecFeature(VehicleType type)
+{
+	switch (type) {
+		case VehicleType::Train: return GrfSpecFeature::Trains;
+		case VehicleType::Road: return GrfSpecFeature::RoadVehicles;
+		case VehicleType::Ship: return GrfSpecFeature::Ships;
+		case VehicleType::Aircraft: return GrfSpecFeature::Aircraft;
+		default: return GrfSpecFeature::Invalid;
+	}
+}
+
+/**
+ * Get the \c VehicleType associated with a \c GrfSpecFeature
+ * @param feature The feature.
+ * @return the \c VehicleType
+ */
+VehicleType GetVehicleType(GrfSpecFeature feature)
+{
+	switch (feature) {
+		case GrfSpecFeature::Trains: return VehicleType::Train;
+		case GrfSpecFeature::RoadVehicles: return VehicleType::Road;
+		case GrfSpecFeature::Ships: return VehicleType::Ship;
+		case GrfSpecFeature::Aircraft: return VehicleType::Aircraft;
+		default: return VehicleType::Invalid;
+	}
 }

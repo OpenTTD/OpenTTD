@@ -67,7 +67,7 @@
 	if (!IsValidEngine(engine_id)) return false;
 	if (!ScriptCargo::IsValidCargo(cargo_type)) return false;
 
-	return HasBit(::GetUnionOfArticulatedRefitMasks(engine_id, true), cargo_type);
+	return ::GetUnionOfArticulatedRefitMasks(engine_id, true).Test(cargo_type);
 }
 
 /* static */ bool ScriptEngine::CanPullCargo(EngineID engine_id, CargoType cargo_type)
@@ -86,8 +86,8 @@
 
 	const Engine *e = ::Engine::Get(engine_id);
 	switch (e->type) {
-		case VEH_ROAD:
-		case VEH_TRAIN: {
+		case VehicleType::Road:
+		case VehicleType::Train: {
 			CargoArray capacities = GetCapacityOfArticulatedParts(engine_id);
 			for (uint &cap : capacities) {
 				if (cap != 0) return cap;
@@ -95,8 +95,8 @@
 			return -1;
 		}
 
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
+		case VehicleType::Ship:
+		case VehicleType::Aircraft:
 			return e->GetDisplayDefaultCapacity();
 
 		default: NOT_REACHED();
@@ -117,7 +117,7 @@
 
 	const Engine *e = ::Engine::Get(engine_id);
 	uint max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
-	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
+	if (e->type == VehicleType::Aircraft) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
 }
 
@@ -181,10 +181,10 @@
 	if (!IsValidEngine(engine_id)) return ScriptVehicle::VT_INVALID;
 
 	switch (::Engine::Get(engine_id)->type) {
-		case VEH_ROAD:     return ScriptVehicle::VT_ROAD;
-		case VEH_TRAIN:    return ScriptVehicle::VT_RAIL;
-		case VEH_SHIP:     return ScriptVehicle::VT_WATER;
-		case VEH_AIRCRAFT: return ScriptVehicle::VT_AIR;
+		case VehicleType::Road:     return ScriptVehicle::VT_ROAD;
+		case VehicleType::Train:    return ScriptVehicle::VT_RAIL;
+		case VehicleType::Ship:     return ScriptVehicle::VT_WATER;
+		case VehicleType::Aircraft: return ScriptVehicle::VT_AIR;
 		default: NOT_REACHED();
 	}
 }

@@ -222,7 +222,7 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 
 	for (i = 0; i < lengthof(x_dir); i++, dir++, diagdir++) {
 		TileIndex neighbour_tile = tile + TileOffsByDir(*dir);
-		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(neighbour_tile, TRANSPORT_RAIL, 0));
+		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(neighbour_tile, TRANSPORT_RAIL, RoadTramType::Invalid));
 		if (trackbits != TRACK_BIT_NONE) {
 			/* If there is any track on the tile, set the bit in the second byte */
 			SetBit(res, i + 8);
@@ -427,7 +427,7 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 {
 	switch (variable) {
 		case 0x48: { // Accepted cargo types
-			uint32_t value = GetAcceptanceMask(this);
+			uint32_t value = GetAcceptanceMask(this).base();
 			return value;
 		}
 
@@ -496,8 +496,8 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 		case 0xF7: return 0; // airport flags cont.
 	}
 
-	/* Handle cargo variables with parameter, 0x60 to 0x65 */
-	if (variable >= 0x60 && variable <= 0x65) {
+	/* Handle cargo variables with parameter, 0x60 to 0x65 and 0x69. */
+	if ((variable >= 0x60 && variable <= 0x65) || variable == 0x69) {
 		return 0;
 	}
 
@@ -546,7 +546,15 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 		}
 	}
 
-	if (this->station_scope.statspec->flags.Test(StationSpecFlag::DivByStationSize)) cargo /= (st->train_station.w + st->train_station.h);
+	if (this->station_scope.statspec->flags.Test(StationSpecFlag::DivByStationArea)) {
+		uint area = 0;
+		for (const TileIndex &tile : st->train_station) {
+			if (st->TileBelongsToRailStation(tile)) ++area;
+		}
+		cargo /= area;
+	} else if (this->station_scope.statspec->flags.Test(StationSpecFlag::DivByStationSize)) {
+		cargo /= (st->train_station.w + st->train_station.h); // Old code that uses half of the perimeter as the station size, compatible with TTDPatch.
+	}
 	cargo = std::min(0xfffu, cargo);
 
 	if (cargo > this->station_scope.statspec->cargo_threshold) {
@@ -567,7 +575,7 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 GrfSpecFeature StationResolverObject::GetFeature() const
 {
-	return GSF_STATIONS;
+	return GrfSpecFeature::Stations;
 }
 
 uint32_t StationResolverObject::GetDebugID() const
@@ -599,7 +607,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 		/* Pick the first cargo that we have waiting */
 		for (const auto &[cargo, spritegroup] : statspec->grf_prop.spritegroups) {
 			if (cargo < NUM_CARGO && st->goods[cargo].TotalCount() > 0) {
-				ctype = cargo;
+				ctype = static_cast<CargoType>(cargo);
 				break;
 			}
 		}
@@ -796,7 +804,7 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 		} else {
 			st->speclist.clear();
 			st->cached_anim_triggers = {};
-			st->cached_cargo_triggers = 0;
+			st->cached_cargo_triggers.Reset();
 			return;
 		}
 	}
@@ -867,7 +875,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	PaletteID pal = sprites->ground.pal;
 	RailTrackOffset overlay_offset;
 	if (rti->UsesOverlay() && SplitGroundSpriteForOverlay(nullptr, &image, &overlay_offset)) {
-		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
+		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::Ground);
 		DrawSprite(image, PAL_NONE, x, y);
 		DrawSprite(ground + overlay_offset, PAL_NONE, x, y);
 	} else {
@@ -897,7 +905,7 @@ const StationSpec *GetStationSpec(TileIndex t)
  * @param param1 The first parameter of the NewGRF callback.
  * @param param2 The second parameter of the NewGRF callback.
  * @param statspec The specification to run the callback on.
- * @param st The station for the calback.
+ * @param st The station for the callback.
  * @param tile The tile the station is at.
  * @return The NewGRF result of the callback.
  */
@@ -981,15 +989,14 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	/* Check the cached cargo trigger bitmask to see if we need
 	 * to bother with any further processing.
 	 * Note: cached_cargo_triggers must be non-zero even for cargo-independent triggers. */
-	if (st->cached_cargo_triggers == 0) return;
-	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
+	if (st->cached_cargo_triggers.None()) return;
+	if (IsValidCargoType(cargo_type) && !st->cached_cargo_triggers.Test(cargo_type)) return;
 
 	uint32_t whole_reseed = 0;
 
-	/* Bitmask of completely empty cargo types to be matched. */
-	CargoTypes empty_mask{};
+	CargoTypes cargo_waiting{};
 	if (trigger == StationRandomTrigger::CargoTaken) {
-		empty_mask = GetEmptyMask(Station::From(st));
+		cargo_waiting = GetCargoWaitingMask(Station::From(st));
 	}
 
 	/* Store triggers now for var 5F */
@@ -1009,10 +1016,10 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 			/* Cargo taken "will only be triggered if all of those
 			 * cargo types have no more cargo waiting." */
 			if (trigger == StationRandomTrigger::CargoTaken) {
-				if ((ss->cargo_triggers & ~empty_mask) != 0) continue;
+				if (ss->cargo_triggers.Any(cargo_waiting)) continue;
 			}
 
-			if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
+			if (!IsValidCargoType(cargo_type) || ss->cargo_triggers.Test(cargo_type)) {
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
 				object.SetWaitingRandomTriggers(st->waiting_random_triggers | st->tile_waiting_random_triggers[tile]);
 
@@ -1053,14 +1060,14 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 void StationUpdateCachedTriggers(BaseStation *st)
 {
 	st->cached_anim_triggers = {};
-	st->cached_cargo_triggers = 0;
+	st->cached_cargo_triggers.Reset();
 
 	/* Combine animation trigger bitmask for all station specs
 	 * of this station. */
 	for (const auto &sm : GetStationSpecList<StationSpec>(st)) {
 		if (sm.spec == nullptr) continue;
 		st->cached_anim_triggers.Set(sm.spec->animation.triggers);
-		st->cached_cargo_triggers |= sm.spec->cargo_triggers;
+		st->cached_cargo_triggers.Set(sm.spec->cargo_triggers);
 	}
 }
 

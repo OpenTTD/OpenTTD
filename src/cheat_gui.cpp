@@ -220,15 +220,15 @@ static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
 /** Widget definitions of the cheat GUI. */
 static constexpr std::initializer_list<NWidgetPart> _nested_cheat_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.framerect),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_PANEL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_SETTINGS),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_C_PANEL),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_C_SETTINGS),
 		EndContainer(),
 	EndContainer(),
 };
@@ -274,7 +274,7 @@ struct CheatWindow : Window {
 		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH);
 		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH : 0);
 
-		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
 
@@ -286,7 +286,7 @@ struct CheatWindow : Window {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
-					DrawBoolButton(button_left, y + button_y_offset, COLOUR_YELLOW, COLOUR_GREY, on, true);
+					DrawBoolButton(button_left, y + button_y_offset, Colours::Yellow, Colours::Grey, on, true);
 					str = GetString(ce->str, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 					break;
 				}
@@ -295,7 +295,7 @@ struct CheatWindow : Window {
 					int32_t val = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
 
 					/* Draw [<][>] boxes for settings of an integer-type */
-					DrawArrowButtons(button_left, y + button_y_offset, COLOUR_YELLOW, clicked - (i * 2), true, true);
+					DrawArrowButtons(button_left, y + button_y_offset, Colours::Yellow, clicked - (i * 2), true, true);
 
 					switch (ce->str) {
 						/* Display date for change date cheat */
@@ -345,7 +345,7 @@ struct CheatWindow : Window {
 		Rect buttons = r.WithWidth(SETTING_BUTTON_WIDTH, rtl);
 		Rect text = r.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 		buttons.top += (r.Height() - SETTING_BUTTON_HEIGHT) / 2;
-		text.top += (r.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
+		text.top += (r.Height() - GetCharacterHeight(FontSize::Normal)) / 2;
 
 		/* We do not allow changes of some items when we are a client in a network game */
 		bool editable = sd->IsEditable();
@@ -354,13 +354,13 @@ struct CheatWindow : Window {
 		int32_t value = sd->Read(&GetGameSettings());
 		if (sd->IsBoolSetting()) {
 			/* Draw checkbox for boolean-value either on/off */
-			DrawBoolButton(buttons.left, buttons.top, COLOUR_YELLOW, COLOUR_GREY, value != 0, editable);
+			DrawBoolButton(buttons.left, buttons.top, Colours::Yellow, Colours::Grey, value != 0, editable);
 		} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 			/* Draw [v] button for settings of an enum-type */
-			DrawDropDownButton(buttons.left, buttons.top, COLOUR_YELLOW, state != 0, editable);
+			DrawDropDownButton(buttons.left, buttons.top, Colours::Yellow, state != 0, editable);
 		} else {
 			/* Draw [<][>] boxes for settings of an integer-type */
-			DrawArrowButtons(buttons.left, buttons.top, COLOUR_YELLOW, state,
+			DrawArrowButtons(buttons.left, buttons.top, Colours::Yellow, state,
 					editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 		}
 		auto [param1, param2] = sd->GetValueParams(value);
@@ -406,7 +406,7 @@ struct CheatWindow : Window {
 		}
 
 		this->line_height = std::max<uint>(this->icon.height, SETTING_BUTTON_HEIGHT);
-		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
+		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FontSize::Normal)) + WidgetDimensions::scaled.framerect.Vertical();
 
 		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
 		size.height = this->line_height * lengthof(_cheats_ui);
@@ -641,7 +641,7 @@ struct CheatWindow : Window {
 
 /** Window description of the cheats GUI. */
 static WindowDesc _cheats_desc(
-	WDP_AUTO, "cheats", 0, 0,
+	WindowPosition::Automatic, "cheats", 0, 0,
 	WC_CHEATS, WC_NONE,
 	{},
 	_nested_cheat_widgets

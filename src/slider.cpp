@@ -34,7 +34,7 @@ static const int SLIDER_WIDTH = 3;
 void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextColour text_colour, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func)
 {
 	/* Allow space for labels. We assume they are in the small font. */
-	if (mark_func != nullptr) r.bottom -= GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.hsep_normal;
+	if (mark_func != nullptr) r.bottom -= GetCharacterHeight(FontSize::Small) + WidgetDimensions::scaled.hsep_normal;
 
 	max_value -= min_value;
 
@@ -68,9 +68,9 @@ void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextC
 			GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (str->empty() ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
 			if (str->empty()) continue;
 
-			Dimension d = GetStringBoundingBox(*str, FS_SMALL);
+			Dimension d = GetStringBoundingBox(*str, FontSize::Small);
 			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
-			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, SA_CENTER, false, FS_SMALL);
+			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, SA_CENTER, false, FontSize::Small);
 		}
 	}
 

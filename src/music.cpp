@@ -25,9 +25,9 @@
  */
 std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum)
 {
-	if (!FioCheckFileExists(filename, BASESET_DIR)) return std::nullopt;
+	if (!FioCheckFileExists(filename, Subdirectory::Baseset)) return std::nullopt;
 
-	RandomAccessFile file(filename, BASESET_DIR);
+	RandomAccessFile file(filename, Subdirectory::Baseset);
 	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum >= entry_count) return std::nullopt;
@@ -49,9 +49,9 @@ std::optional<std::string> GetMusicCatEntryName(const std::string &filename, siz
  */
 std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &filename, size_t entrynum)
 {
-	if (!FioCheckFileExists(filename, BASESET_DIR)) return std::nullopt;
+	if (!FioCheckFileExists(filename, Subdirectory::Baseset)) return std::nullopt;
 
-	RandomAccessFile file(filename, BASESET_DIR);
+	RandomAccessFile file(filename, Subdirectory::Baseset);
 	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum >= entry_count) return std::nullopt;
@@ -84,12 +84,14 @@ template <>
 	return _music_file_names;
 }
 
+/** @copydoc BaseMedia::GetExtension */
 template <>
 /* static */ std::string_view BaseMedia<MusicSet>::GetExtension()
 {
 	return ".obm"; // OpenTTD Base Music
 }
 
+/** @copydoc BaseMedia::DetermineBestSet */
 template <>
 /* static */ bool BaseMedia<MusicSet>::DetermineBestSet()
 {
@@ -125,7 +127,7 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 		uint tracknr = 1;
 		for (uint i = 0; i < lengthof(this->songinfo); i++) {
 			const std::string &filename = this->files[i].filename;
-			if (filename.empty() || this->files[i].check_result == MD5File::CR_NO_FILE) {
+			if (filename.empty() || this->files[i].check_result == MD5File::ChecksumResult::NoFile) {
 				continue;
 			}
 

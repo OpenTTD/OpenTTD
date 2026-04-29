@@ -243,7 +243,7 @@ bool LoadOldSaveGame(std::string_view file)
 	_settings_game.construction.freeform_edges = false; // disable so we can convert map array (SetTileType is still used)
 
 	/* Open file */
-	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
+	ls.file = FioFOpenFile(file, "rb", Subdirectory::None);
 
 	if (!ls.file.has_value()) {
 		Debug(oldloader, 0, "Cannot open file '{}'", file);
@@ -286,7 +286,7 @@ bool LoadOldSaveGame(std::string_view file)
 
 std::string GetOldSaveGameName(std::string_view file)
 {
-	auto f = FioFOpenFile(file, "rb", NO_DIRECTORY);
+	auto f = FioFOpenFile(file, "rb", Subdirectory::None);
 	if (!f.has_value()) return {};
 
 	std::string name;

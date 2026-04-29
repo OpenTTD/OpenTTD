@@ -16,17 +16,17 @@
 #include "window_type.h"
 
 /** Values for an arrow widget */
-enum ArrowWidgetValues : uint8_t {
-	AWV_DECREASE, ///< Arrow to the left or in case of RTL to the right
-	AWV_INCREASE, ///< Arrow to the right or in case of RTL to the left
-	AWV_LEFT,     ///< Force the arrow to the left
-	AWV_RIGHT,    ///< Force the arrow to the right
+enum class ArrowWidgetType : uint8_t {
+	Decrease, ///< Arrow to the left or in case of RTL to the right
+	Increase, ///< Arrow to the right or in case of RTL to the left
+	Left, ///< Force the arrow to the left
+	Right, ///< Force the arrow to the right
 };
 
 /** WidgetData values for a resize box widget. */
-enum ResizeWidgetValues : uint8_t {
-	RWV_SHOW_BEVEL, ///< Bevel of resize box is shown.
-	RWV_HIDE_BEVEL, ///< Bevel of resize box is hidden.
+enum class ResizeWidgetType : uint8_t {
+	ShowBevel, ///< Bevel of resize box is shown.
+	HideBevel, ///< Bevel of resize box is hidden.
 };
 
 /**
@@ -90,6 +90,7 @@ enum WidgetType : uint8_t {
 	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
 	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
 	WPT_ASPECT,       ///< Widget part for specifying aspect ratio.
+	WPT_TOOLBARSIZE,  ///< Widget part for specifying minimal size in terms of toolbar images.
 	WPT_ATTRIBUTE_END, ///< End marker for attribute NWidgetPart types.
 
 	WPT_FUNCTION, ///< Widget part for calling a user function.
@@ -109,14 +110,15 @@ enum WidgetType : uint8_t {
 };
 
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */
-enum SizingType : uint8_t {
-	ST_SMALLEST, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
-	ST_RESIZE,   ///< Resize the nested widget tree.
+enum class SizingType : uint8_t {
+	Smallest, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
+	Resize, ///< Resize the nested widget tree.
 };
 
+/** Flags to control how a widgeet is resized to reach its aspect ratio. */
 enum class AspectFlag : uint8_t {
-	ResizeX,
-	ResizeY,
+	ResizeX, ///< Resize horizontally to reach desired aspect ratio.
+	ResizeY, ///< Resize vertically to reach desired aspect ratio.
 };
 using AspectFlags = EnumBitSet<AspectFlag, uint8_t>;
 
@@ -280,7 +282,7 @@ protected:
  */
 inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 {
-	return (sizing == ST_RESIZE) ? this->resize_x : this->fill_x;
+	return (sizing == SizingType::Resize) ? this->resize_x : this->fill_x;
 }
 
 /**
@@ -290,7 +292,7 @@ inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
  */
 inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
 {
-	return (sizing == ST_RESIZE) ? this->resize_y : this->fill_y;
+	return (sizing == SizingType::Resize) ? this->resize_y : this->fill_y;
 }
 
 /**
@@ -305,7 +307,7 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, uint
 {
 	this->pos_x = x;
 	this->pos_y = y;
-	if (sizing == ST_SMALLEST) {
+	if (sizing == SizingType::Smallest) {
 		this->smallest_x = given_width;
 		this->smallest_y = given_height;
 	}
@@ -326,6 +328,7 @@ public:
 	void SetMinimalSize(uint min_x, uint min_y);
 	void SetMinimalSizeAbsolute(uint min_x, uint min_y);
 	void SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size);
+	void SetToolbarMinimalSize(uint8_t toolbar_size);
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 	void SetAspect(float ratio, AspectFlags flags = AspectFlag::ResizeX);
@@ -347,10 +350,11 @@ public:
 	uint8_t uz_text_lines = 0; ///< 'Unscaled' text lines, stored for resize calculation.
 	uint8_t uz_text_spacing = 0; ///< 'Unscaled' text padding, stored for resize calculation.
 	FontSize uz_text_size{}; ///< 'Unscaled' font size, stored for resize calculation.
+	uint8_t toolbar_size = 0; ///< Minimal size in terms of toolbar images.
 };
 
 /** Nested widget flags that affect display and interaction with 'real' widgets. */
-enum NWidgetDisplayFlag : uint8_t {
+enum class NWidgetDisplayFlag : uint8_t {
 	/* Generic. */
 	Lowered, ///< Widget is lowered (pressed down) bit.
 	Disabled, ///< Widget is disabled (greyed out) bit.
@@ -377,9 +381,9 @@ using NWidgetDisplayFlags = EnumBitSet<NWidgetDisplayFlag, uint16_t>;
 struct WidgetData {
 	StringID string{};
 	SpriteID sprite{};
-	ArrowWidgetValues arrow_widget_type{};
-	ResizeWidgetValues resize_widget_type{};
-	Colours alternate_colour = INVALID_COLOUR;
+	ArrowWidgetType arrow_widget_type{};
+	ResizeWidgetType resize_widget_type{};
+	Colours alternate_colour = Colours::Invalid;
 	Dimension matrix{};
 };
 
@@ -396,7 +400,7 @@ public:
 	void SetSprite(SpriteID sprite);
 	void SetSpriteTip(SpriteID sprite, StringID tool_tip);
 	void SetMatrixDimension(uint32_t columns, uint32_t rows);
-	void SetResizeWidgetType(ResizeWidgetValues type);
+	void SetResizeWidgetType(ResizeWidgetType type);
 	void SetToolTip(StringID tool_tip);
 	StringID GetToolTip() const;
 	void SetTextStyle(TextColour colour, FontSize size);
@@ -426,7 +430,7 @@ protected:
 	WidgetID scrollbar_index = INVALID_WIDGET; ///< Index of an attached scrollbar.
 	TextColour highlight_colour{}; ///< Colour of highlight.
 	TextColour text_colour{}; ///< Colour of text within widget.
-	FontSize text_size = FS_NORMAL; ///< Size of text within widget.
+	FontSize text_size = FontSize::Normal; ///< Size of text within widget.
 	StringAlignment align = SA_CENTER; ///< Alignment of text/image within widget.
 
 	/* This function constructs the widgets, so it should be able to write the variables. */
@@ -562,7 +566,7 @@ private:
 };
 
 /** Nested widget container flags, */
-enum NWidContainerFlag : uint8_t {
+enum class NWidContainerFlag : uint8_t {
 	EqualSize, ///< Containers should keep all their (resizing) children equally large.
 	BigFirst, ///< Allocate space to biggest resize first.
 };
@@ -746,10 +750,10 @@ private:
 
 public:
 	/** Stepping sizes when scrolling */
-	enum ScrollbarStepping : uint8_t {
-		SS_RAW,             ///< Step in single units.
-		SS_SMALL,           ///< Step in #stepsize units.
-		SS_BIG,             ///< Step in #cap units.
+	enum class Stepping : uint8_t {
+		Single, ///< Step in single units.
+		Small, ///< Step in #stepsize units.
+		Big, ///< Step in #cap units.
 	};
 
 	Scrollbar(bool is_vertical) : is_vertical(is_vertical) {}
@@ -860,12 +864,12 @@ public:
 	 * @param unit The stepping unit of \a difference
 	 * @return true iff the position has changed
 	 */
-	bool UpdatePosition(int difference, ScrollbarStepping unit = SS_SMALL)
+	bool UpdatePosition(int difference, Scrollbar::Stepping unit = Stepping::Small)
 	{
 		if (difference == 0) return false;
 		switch (unit) {
-			case SS_SMALL: difference *= this->stepsize; break;
-			case SS_BIG:   difference *= this->cap; break;
+			case Stepping::Small: difference *= this->stepsize; break;
+			case Stepping::Big: difference *= this->cap; break;
 			default: break;
 		}
 		return this->SetPosition(this->pos + difference);
@@ -1205,7 +1209,7 @@ constexpr NWidgetPart SetToolbarSpacerMinimalSize()
  */
 constexpr NWidgetPart SetToolbarMinimalSize(int width)
 {
-	return NWidgetPart{WPT_MINSIZE, Point{20 * width + 2, 22}};
+	return NWidgetPart{WPT_TOOLBARSIZE, Point{width, 1}};
 }
 
 /**
@@ -1216,7 +1220,7 @@ constexpr NWidgetPart SetToolbarMinimalSize(int width)
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
+constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FontSize::Normal)
 {
 	return NWidgetPart{WPT_MINTEXTLINES, NWidgetPartTextLines{lines, spacing, size}};
 }
@@ -1228,7 +1232,7 @@ constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSi
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NORMAL)
+constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FontSize::Normal)
 {
 	return NWidgetPart{WPT_TEXTSTYLE, NWidgetPartTextStyle{colour, size}};
 }
@@ -1311,7 +1315,7 @@ constexpr NWidgetPart SetSpriteStringTip(SpriteID sprite, StringID string, Strin
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, StringID tip = {})
+constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetType widget_type, StringID tip = {})
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.arrow_widget_type = widget_type}, tip}};
 }
@@ -1323,7 +1327,7 @@ constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, Strin
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, StringID tip)
+constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetType widget_type, StringID tip)
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.resize_widget_type = widget_type}, tip}};
 }
@@ -1449,7 +1453,7 @@ constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_
  */
 constexpr NWidgetPart SetScrollbar(WidgetID index)
 {
-	return NWidgetPart{WPT_SCROLLBAR, NWidgetPartWidget{INVALID_COLOUR, index}};
+	return NWidgetPart{WPT_SCROLLBAR, NWidgetPartWidget{Colours::Invalid, index}};
 }
 
 /**

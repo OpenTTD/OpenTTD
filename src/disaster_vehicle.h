@@ -35,7 +35,7 @@ enum DisasterSubType : uint8_t {
 /**
  * Disasters, like submarines, skyrangers and their shadows, belong to this class.
  */
-struct DisasterVehicle final : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER> {
+struct DisasterVehicle final : public SpecializedVehicle<DisasterVehicle, VehicleType::Disaster> {
 	SpriteID image_override{}; ///< Override for the default disaster vehicle sprite.
 	VehicleID big_ufo_destroyer_target = VehicleID::Invalid(); ///< The big UFO that this destroyer is supposed to bomb.
 	VehicleAirFlags flags{}; ///< Flags about the state of the vehicle, @see VehicleAirFlags

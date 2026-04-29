@@ -98,7 +98,7 @@ static void CleanupGeneration()
 static void _GenerateWorld()
 {
 	/* Make sure everything is done via OWNER_NONE. */
-	Backup<CompanyID> _cur_company(_current_company, OWNER_NONE);
+	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 	try {
 		_generating_world = true;
@@ -198,7 +198,7 @@ static void _GenerateWorld()
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
 
 		ResetObjectToPlace();
-		_cur_company.Trash();
+		cur_company.Trash();
 		_current_company = _local_company = GenWorldInfo::lc;
 		/* Show all vital windows again, because we have hidden them. */
 		if (_game_mode != GM_MENU) ShowVitalWindows();
@@ -217,13 +217,13 @@ static void _GenerateWorld()
 
 		if (_debug_desync_level > 0) {
 			std::string name = fmt::format("dmp_cmds_{:08x}_{:08x}.sav", _settings_game.game_creation.generation_seed, TimerGameEconomy::date);
-			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
+			SaveOrLoad(name, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Autosave, false);
 		}
 	} catch (AbortGenerateWorldSignal&) {
 		CleanupGeneration();
 
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP, true);
-		if (_cur_company.IsValid()) _cur_company.Restore();
+		if (cur_company.IsValid()) cur_company.Restore();
 
 		if (_network_dedicated) {
 			/* Exit the game to prevent a return to main menu.  */
@@ -360,7 +360,7 @@ void LoadTownData()
 {
 	/* Load the JSON file as a string initially. We'll parse it soon. */
 	size_t filesize;
-	auto f = FioFOpenFile(_file_to_saveload.name, "rb", HEIGHTMAP_DIR, &filesize);
+	auto f = FioFOpenFile(_file_to_saveload.name, "rb", Subdirectory::Heightmap, &filesize);
 
 	if (!f.has_value()) {
 		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
@@ -452,7 +452,7 @@ void LoadTownData()
 				break;
 			case HM_COUNTER_CLOCKWISE:
 				/* Tile coordinates are rotated and must be adjusted. */
-				target_tile = TileXY((1 - y_proportion * Map::MaxX()), x_proportion * Map::MaxY());
+				target_tile = TileXY((1 - y_proportion) * Map::MaxX(), x_proportion * Map::MaxY());
 				break;
 			default: NOT_REACHED();
 		}

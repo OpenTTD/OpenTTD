@@ -577,6 +577,8 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special
@@ -750,6 +752,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 ###length 3
 
 ###setting-zero-is-special
+
 
 
 
@@ -1437,7 +1440,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 ###next-name-looks-similar
 
 

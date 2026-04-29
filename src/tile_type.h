@@ -69,19 +69,19 @@ static_assert(TileType::End <= TileType::MaxSize);
  * The tropiczone is not modified during gameplay. It mainly affects tree growth. (desert tiles are visible though)
  *
  * In randomly generated maps:
- *  TROPICZONE_DESERT: Generated everywhere, if there is neither water nor mountains (TileHeight >= 4) in a certain distance from the tile.
- *  TROPICZONE_RAINFOREST: Generated everywhere, if there is no desert in a certain distance from the tile.
- *  TROPICZONE_NORMAL: Everywhere else, i.e. between desert and rainforest and on sea (if you clear the water).
+ *  TropicZone::Desert: Generated everywhere, if there is neither water nor mountains (TileHeight >= 4) in a certain distance from the tile.
+ *  TropicZone::Rainforest: Generated everywhere, if there is no desert in a certain distance from the tile.
+ *  TropicZone::Normal: Everywhere else, i.e. between desert and rainforest and on sea (if you clear the water).
  *
  * In scenarios:
- *  TROPICZONE_NORMAL: Default value.
- *  TROPICZONE_DESERT: Placed manually.
- *  TROPICZONE_RAINFOREST: Placed if you plant certain rainforest-trees.
+ *  TropicZone::Normal: Default value.
+ *  TropicZone::Desert: Placed manually.
+ *  TropicZone::Rainforest: Placed if you plant certain rainforest-trees.
  */
-enum TropicZone : uint8_t {
-	TROPICZONE_NORMAL     = 0,      ///< Normal tropiczone
-	TROPICZONE_DESERT     = 1,      ///< Tile is desert
-	TROPICZONE_RAINFOREST = 2,      ///< Rainforest tile
+enum class TropicZone : uint8_t {
+	Normal = 0, ///< Normal tropiczone
+	Desert = 1, ///< Tile is desert
+	Rainforest = 2, ///< Rainforest tile
 };
 
 /**

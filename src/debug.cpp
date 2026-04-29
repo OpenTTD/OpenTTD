@@ -111,14 +111,14 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
 void DebugPrint(std::string_view category, int level, std::string &&message)
 {
 	if (category == "desync" && level != 0) {
-		static auto f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
+		static auto f = FioFOpenFile("commands-out.log", "wb", Subdirectory::Autosave);
 		if (!f.has_value()) return;
 
 		fmt::print(*f, "{}{}\n", GetLogPrefix(true), message);
 		fflush(*f);
 #ifdef RANDOM_DEBUG
 	} else if (category == "random") {
-		static auto f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
+		static auto f = FioFOpenFile("random-out.log", "wb", Subdirectory::Autosave);
 		if (!f.has_value()) return;
 
 		fmt::print(*f, "{}\n", message);

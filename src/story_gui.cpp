@@ -287,7 +287,7 @@ protected:
 		int height = 0;
 
 		/* Title lines */
-		height += GetCharacterHeight(FS_NORMAL); // Date always use exactly one line.
+		height += GetCharacterHeight(FontSize::Normal); // Date always use exactly one line.
 		height += GetStringHeight(GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), max_width);
 
 		return height;
@@ -335,7 +335,7 @@ protected:
 			case SPET_BUTTON_PUSH:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
-				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FS_NORMAL);
+				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FontSize::Normal);
 				return dim.height + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
 
@@ -378,7 +378,7 @@ protected:
 			case SPET_BUTTON_PUSH:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
-				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FS_NORMAL);
+				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FontSize::Normal);
 				return dim.width + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
 
@@ -402,7 +402,7 @@ protected:
 		StoryPage *page = this->GetSelPage();
 		if (page == nullptr) return;
 		int max_width = GetAvailablePageContentWidth();
-		int element_dist = GetCharacterHeight(FS_NORMAL);
+		int element_dist = GetCharacterHeight(FontSize::Normal);
 
 		/* Make space for the header */
 		int main_y = GetHeadHeight(max_width) + element_dist;
@@ -423,7 +423,7 @@ protected:
 
 			if (fl == ElementFloat::None) {
 				/* Verify available width */
-				const int min_required_width = 10 * GetCharacterHeight(FS_NORMAL);
+				const int min_required_width = 10 * GetCharacterHeight(FontSize::Normal);
 				int left_offset = (left_width == 0) ? 0 : (left_width + element_dist);
 				int right_offset = (right_width == 0) ? 0 : (right_width + element_dist);
 				if (left_offset + right_offset + min_required_width >= max_width) {
@@ -593,7 +593,7 @@ public:
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SB_SCROLLBAR);
-		this->vscroll->SetStepSize(GetCharacterHeight(FS_NORMAL));
+		this->vscroll->SetStepSize(GetCharacterHeight(FontSize::Normal));
 
 		/* Initialize page sort. */
 		this->story_pages.SetSortFuncs(StoryBookWindow::page_sorter_funcs);
@@ -691,7 +691,7 @@ public:
 
 		/* Draw content (now coordinates given to Draw** are local to the new clipping region). */
 		fr = fr.Translate(-fr.left, -fr.top);
-		int line_height = GetCharacterHeight(FS_NORMAL);
+		int line_height = GetCharacterHeight(FontSize::Normal);
 		const int scrollpos = this->vscroll->GetPosition();
 		int y_offset = -scrollpos;
 
@@ -755,7 +755,7 @@ public:
 		if (widget != WID_SB_SEL_PAGE && widget != WID_SB_PAGE_PANEL) return;
 
 		Dimension d;
-		d.height = GetCharacterHeight(FS_NORMAL);
+		d.height = GetCharacterHeight(FontSize::Normal);
 		d.width = 0;
 
 		switch (widget) {
@@ -918,7 +918,7 @@ public:
 		/* Check that the vehicle matches the requested type */
 		StoryPageButtonData data{ pe->referenced_id };
 		VehicleType wanted_vehtype = data.GetVehicleType();
-		if (wanted_vehtype != VEH_INVALID && wanted_vehtype != v->type) return false;
+		if (wanted_vehtype != VehicleType::Invalid && wanted_vehtype != v->type) return false;
 
 		Command<Commands::StoryPageButton>::Post(TileIndex{}, pe->index, v->index);
 		ResetObjectToPlace();
@@ -942,34 +942,36 @@ const std::initializer_list<GUIStoryPageElementList::SortFunction * const> Story
 
 static constexpr std::initializer_list<NWidgetPart> _nested_story_book_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SB_CAPTION),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_CAPTION, Colours::Brown, WID_SB_CAPTION),
+		NWidget(WWT_SHADEBOX, Colours::Brown),
+		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
+		NWidget(WWT_STICKYBOX, Colours::Brown),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_SB_PAGE_PANEL), SetResize(1, 1), SetScrollbar(WID_SB_SCROLLBAR), EndContainer(),
-		NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_SB_SCROLLBAR),
+		NWidget(WWT_PANEL, Colours::Brown, WID_SB_PAGE_PANEL), SetResize(1, 1), SetScrollbar(WID_SB_SCROLLBAR), EndContainer(),
+		NWidget(NWID_VSCROLLBAR, Colours::Brown, WID_SB_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SB_PREV_PAGE), SetMinimalSize(100, 0), SetFill(0, 0), SetStringTip(STR_STORY_BOOK_PREV_PAGE, STR_STORY_BOOK_PREV_PAGE_TOOLTIP),
-		NWidget(NWID_BUTTON_DROPDOWN, COLOUR_BROWN, WID_SB_SEL_PAGE), SetMinimalSize(93, 12), SetFill(1, 0),
+		NWidget(WWT_TEXTBTN, Colours::Brown, WID_SB_PREV_PAGE), SetMinimalSize(100, 0), SetFill(0, 0), SetStringTip(STR_STORY_BOOK_PREV_PAGE, STR_STORY_BOOK_PREV_PAGE_TOOLTIP),
+		NWidget(NWID_BUTTON_DROPDOWN, Colours::Brown, WID_SB_SEL_PAGE), SetMinimalSize(93, 12), SetFill(1, 0),
 												SetToolTip(STR_STORY_BOOK_SEL_PAGE_TOOLTIP), SetResize(1, 0),
-		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SB_NEXT_PAGE), SetMinimalSize(100, 0), SetFill(0, 0), SetStringTip(STR_STORY_BOOK_NEXT_PAGE, STR_STORY_BOOK_NEXT_PAGE_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+		NWidget(WWT_TEXTBTN, Colours::Brown, WID_SB_NEXT_PAGE), SetMinimalSize(100, 0), SetFill(0, 0), SetStringTip(STR_STORY_BOOK_NEXT_PAGE, STR_STORY_BOOK_NEXT_PAGE_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, Colours::Brown),
 	EndContainer(),
 };
 
+/** Window definition for the story book window. */
 static WindowDesc _story_book_desc(
-	WDP_AUTO, "view_story", 400, 300,
+	WindowPosition::Automatic, "view_story", 400, 300,
 	WC_STORY_BOOK, WC_NONE,
 	{},
 	_nested_story_book_widgets
 );
 
+/** Window definition for the game script window. */
 static WindowDesc _story_book_gs_desc(
-	WDP_CENTER, "view_story_gs", 400, 300,
+	WindowPosition::Center, "view_story_gs", 400, 300,
 	WC_STORY_BOOK, WC_NONE,
 	{},
 	_nested_story_book_widgets

@@ -241,7 +241,7 @@ static void ParamSet(ByteReader &buf)
 				uint16_t count   = GB(data, 16, 16);
 
 				if (_cur_gps.stage == GrfLoadingStage::Reserve) {
-					if (feature == GSF_GLOBALVAR) {
+					if (feature == GrfSpecFeature::GlobalVar) {
 						/* General sprites */
 						if (op == 0) {
 							/* Check if the allocated sprites will fit below the original sprite limit */
@@ -261,12 +261,12 @@ static void ParamSet(ByteReader &buf)
 					src1 = 0;
 				} else if (_cur_gps.stage == GrfLoadingStage::Activation) {
 					switch (feature) {
-						case GSF_TRAINS:
-						case GSF_ROADVEHICLES:
-						case GSF_SHIPS:
-						case GSF_AIRCRAFT:
+						case GrfSpecFeature::Trains:
+						case GrfSpecFeature::RoadVehicles:
+						case GrfSpecFeature::Ships:
+						case GrfSpecFeature::Aircraft:
 							if (!_settings_game.vehicle.dynamic_engines) {
-								src1 = PerformGRM({std::begin(_grm_engines) + _engine_offsets[feature], _engine_counts[feature]}, count, op, target, "vehicles");
+								src1 = PerformGRM({std::begin(_grm_engines) + GetOriginalEngineOffset(GetVehicleType(feature)), GetOriginalEngineCount(GetVehicleType(feature))}, count, op, target, "vehicles");
 								if (_cur_gps.skip_sprites == -1) return;
 							} else {
 								/* GRM does not apply for dynamic engine allocation. */
@@ -283,7 +283,7 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case GSF_GLOBALVAR: // General sprites
+						case GrfSpecFeature::GlobalVar: // General sprites
 							switch (op) {
 								case 0:
 									/* Return space reserved during reservation stage */
@@ -301,7 +301,7 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case GSF_CARGOES: // Cargo
+						case GrfSpecFeature::Cargoes: // Cargo
 							/* There are two ranges: one for cargo IDs and one for cargo bitmasks */
 							src1 = PerformGRM(_grm_cargoes, count, op, target, "cargoes");
 							if (_cur_gps.skip_sprites == -1) return;
@@ -322,7 +322,7 @@ static void ParamSet(ByteReader &buf)
 				/* Disable the read GRF if it is a static NewGRF. */
 				DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 				src1 = 0;
-			} else if (file == nullptr || c == nullptr || c->status == GCS_DISABLED) {
+			} else if (file == nullptr || c == nullptr || c->status == GRFStatus::Disabled) {
 				src1 = 0;
 			} else if (src1 == 0xFE) {
 				src1 = c->version;

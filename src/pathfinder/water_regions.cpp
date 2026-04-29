@@ -28,7 +28,7 @@ constexpr WaterRegionPatchLabel FIRST_REGION_LABEL{1};
 static_assert(sizeof(WaterRegionTraversabilityBits) * 8 == WATER_REGION_EDGE_LENGTH);
 static_assert(sizeof(WaterRegionPatchLabel) == sizeof(uint8_t)); // Important for the hash calculation.
 
-static inline TrackBits GetWaterTracks(TileIndex tile) { return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0)); }
+static inline TrackBits GetWaterTracks(TileIndex tile) { return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, RoadTramType::Invalid)); }
 static inline bool IsAqueductTile(TileIndex tile) { return IsBridgeTile(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER; }
 
 static inline int GetWaterRegionX(TileIndex tile) { return TileX(tile) / WATER_REGION_EDGE_LENGTH; }
@@ -262,6 +262,7 @@ static WaterRegion GetUpdatedWaterRegion(TileIndex tile)
 /**
  * Returns the index of the water region.
  * @param water_region The water region to return the index for.
+ * @return The index of the region.
  */
 static WaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region)
 {
@@ -271,6 +272,7 @@ static WaterRegionIndex GetWaterRegionIndex(const WaterRegionDesc &water_region)
 /**
  * Calculates a number that uniquely identifies the provided water region patch.
  * @param water_region_patch The Water region to calculate the hash for.
+ * @return The calculated hash.
  */
 int CalculateWaterRegionPatchHash(const WaterRegionPatchDesc &water_region_patch)
 {
@@ -290,6 +292,7 @@ TileIndex GetWaterRegionCenterTile(const WaterRegionDesc &water_region)
 /**
  * Returns basic water region information for the provided tile.
  * @param tile The tile for which the information will be calculated.
+ * @return The region information.
  */
 WaterRegionDesc GetWaterRegionInfo(TileIndex tile)
 {
@@ -299,6 +302,7 @@ WaterRegionDesc GetWaterRegionInfo(TileIndex tile)
 /**
  * Returns basic water region patch information for the provided tile.
  * @param tile The tile for which the information will be calculated.
+ * @return Information about the patches of a region.
  */
 WaterRegionPatchDesc GetWaterRegionPatchInfo(TileIndex tile)
 {

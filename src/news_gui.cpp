@@ -103,31 +103,32 @@ static TileIndex GetReferenceTile(const NewsReference &reference)
 
 /** Normal news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
+	NWidget(WWT_PANEL, Colours::White, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
-			NWidget(NWID_LAYER, INVALID_COLOUR),
+			NWidget(NWID_LAYER, Colours::Invalid),
 				/* Layer 1 */
 				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
-						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
-						NWidget(WWT_LABEL, INVALID_COLOUR, WID_N_DATE),
-								SetTextStyle(TC_BLACK, FS_SMALL),
+						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
+						NWidget(WWT_LABEL, Colours::Invalid, WID_N_DATE),
+								SetTextStyle(TC_BLACK, FontSize::Small),
 								SetAlignment(SA_RIGHT | SA_TOP),
 					EndContainer(),
 				EndContainer(),
 				/* Layer 2 */
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_MESSAGE),
-						SetMinimalTextLines(8, 0, FS_LARGE),
+				NWidget(WWT_EMPTY, Colours::Invalid, WID_N_MESSAGE),
+						SetMinimalTextLines(8, 0, FontSize::Large),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
-						SetTextStyle(TC_BLACK, FS_LARGE),
+						SetTextStyle(TC_BLACK, FontSize::Large),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the normal news window. */
 static WindowDesc _normal_news_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_normal_news_widgets
@@ -135,36 +136,36 @@ static WindowDesc _normal_news_desc(
 
 /** New vehicles news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
+	NWidget(WWT_PANEL, Colours::White, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
-			NWidget(NWID_LAYER, INVALID_COLOUR),
+			NWidget(NWID_LAYER, Colours::Invalid),
 				/* Layer 1 */
 				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
-						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
+						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
 					EndContainer(),
 				EndContainer(),
 				/* Layer 2 */
-				NWidget(WWT_LABEL, INVALID_COLOUR, WID_N_VEH_TITLE),
+				NWidget(WWT_LABEL, Colours::Invalid, WID_N_VEH_TITLE),
 						SetFill(1, 1),
-						SetMinimalTextLines(2, 0, FS_LARGE),
+						SetMinimalTextLines(2, 0, FontSize::Large),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 						SetStringTip(STR_EMPTY),
-						SetTextStyle(TC_BLACK, FS_LARGE),
+						SetTextStyle(TC_BLACK, FontSize::Large),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_VEH_BKGND), SetPadding(WidgetDimensions::unscaled.fullbevel),
+			NWidget(WWT_PANEL, Colours::White, WID_N_VEH_BKGND), SetPadding(WidgetDimensions::unscaled.fullbevel),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_NAME),
-							SetMinimalTextLines(1, 0, FS_LARGE),
+					NWidget(WWT_EMPTY, Colours::Invalid, WID_N_VEH_NAME),
+							SetMinimalTextLines(1, 0, FontSize::Large),
 							SetMinimalSize(350, 0),
 							SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 							SetFill(1, 0),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_SPR),
+					NWidget(WWT_EMPTY, Colours::Invalid, WID_N_VEH_SPR),
 							SetMinimalSize(350, 32),
 							SetFill(1, 0),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_VEH_INFO),
-							SetMinimalTextLines(3, 0, FS_NORMAL),
+					NWidget(WWT_EMPTY, Colours::Invalid, WID_N_VEH_INFO),
+							SetMinimalTextLines(3, 0, FontSize::Normal),
 							SetMinimalSize(350, 0),
 							SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 							SetFill(1, 0),
@@ -174,8 +175,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_news_widgets
 	EndContainer(),
 };
 
+/** Window definition for the vehicle news window. */
 static WindowDesc _vehicle_news_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_vehicle_news_widgets
@@ -183,44 +185,45 @@ static WindowDesc _vehicle_news_desc(
 
 /** Company news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_company_news_widgets = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
+	NWidget(WWT_PANEL, Colours::White, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
-			NWidget(NWID_LAYER, INVALID_COLOUR),
+			NWidget(NWID_LAYER, Colours::Invalid),
 				/* Layer 1 */
 				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
-						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
+						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
 					EndContainer(),
 				EndContainer(),
 				/* Layer 2 */
-				NWidget(WWT_LABEL, INVALID_COLOUR, WID_N_TITLE),
+				NWidget(WWT_LABEL, Colours::Invalid, WID_N_TITLE),
 						SetFill(1, 1),
-						SetMinimalTextLines(1, 0, FS_LARGE),
+						SetMinimalTextLines(1, 0, FontSize::Large),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
-						SetTextStyle(TC_BLACK, FS_LARGE),
+						SetTextStyle(TC_BLACK, FontSize::Large),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(2),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_MGR_FACE),
+					NWidget(WWT_EMPTY, Colours::Invalid, WID_N_MGR_FACE),
 							SetFill(0, 0),
 							SetMinimalSize(93, 119),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_MGR_NAME),
+					NWidget(WWT_EMPTY, Colours::Invalid, WID_N_MGR_NAME),
 							SetFill(0, 1),
 							SetMinimalTextLines(2, 0),
 				EndContainer(),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_COMPANY_MSG),
+				NWidget(WWT_EMPTY, Colours::Invalid, WID_N_COMPANY_MSG),
 						SetFill(1, 1),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 						SetMinimalSize(300, 0),
-						SetTextStyle(TC_BLACK, FS_LARGE),
+						SetTextStyle(TC_BLACK, FontSize::Large),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the company news window. */
 static WindowDesc _company_news_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_company_news_widgets
@@ -228,33 +231,34 @@ static WindowDesc _company_news_desc(
 
 /** Thin news items. */
 static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = {
-	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
+	NWidget(WWT_PANEL, Colours::White, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
-			NWidget(NWID_LAYER, INVALID_COLOUR),
+			NWidget(NWID_LAYER, Colours::Invalid),
 				/* Layer 1 */
 				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
-						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
-						NWidget(WWT_LABEL, INVALID_COLOUR, WID_N_DATE),
-								SetTextStyle(TC_BLACK, FS_SMALL),
+						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
+						NWidget(WWT_LABEL, Colours::Invalid, WID_N_DATE),
+								SetTextStyle(TC_BLACK, FontSize::Small),
 								SetAlignment(SA_RIGHT | SA_TOP),
 					EndContainer(),
 				EndContainer(),
 				/* Layer 2 */
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_MESSAGE),
-						SetMinimalTextLines(3, 0, FS_LARGE),
+				NWidget(WWT_EMPTY, Colours::Invalid, WID_N_MESSAGE),
+						SetMinimalTextLines(3, 0, FontSize::Large),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
-						SetTextStyle(TC_BLACK, FS_LARGE),
+						SetTextStyle(TC_BLACK, FontSize::Large),
 			EndContainer(),
-			NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT), SetMinimalSize(426, 70),
+			NWidget(NWID_VIEWPORT, Colours::Invalid, WID_N_VIEWPORT), SetMinimalSize(426, 70),
 					SetPadding(WidgetDimensions::unscaled.fullbevel),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the thin news window. */
 static WindowDesc _thin_news_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_thin_news_widgets
@@ -264,10 +268,10 @@ static WindowDesc _thin_news_desc(
 static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets = {
 	/* Caption + close box. The caption is not WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
-		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_CAPTION),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_N_SHOW_GROUP_SEL),
-			NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP),
+		NWidget(WWT_CLOSEBOX, Colours::LightBlue, WID_N_CLOSEBOX),
+		NWidget(WWT_EMPTY, Colours::Invalid, WID_N_CAPTION),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_N_SHOW_GROUP_SEL),
+			NWidget(WWT_TEXTBTN, Colours::LightBlue, WID_N_SHOW_GROUP),
 					SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON),
 					SetResize(1, 0),
 					SetToolTip(STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
@@ -275,24 +279,25 @@ static constexpr std::initializer_list<NWidgetPart> _nested_small_news_widgets =
 	EndContainer(),
 
 	/* Main part */
-	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_N_HEADLINE),
+	NWidget(WWT_PANEL, Colours::LightBlue, WID_N_HEADLINE),
 		NWidget(NWID_VERTICAL),
 				SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
 				SetPadding(2),
-			NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, WID_N_INSET),
-				NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT),
+			NWidget(WWT_INSET, Colours::LightBlue, WID_N_INSET),
+				NWidget(NWID_VIEWPORT, Colours::Invalid, WID_N_VIEWPORT),
 						SetMinimalSize(274, 47),
 			EndContainer(),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_MESSAGE),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_N_MESSAGE),
 					SetMinimalTextLines(2, 0),
 					SetMinimalSize(275, 0),
-					SetTextStyle(TC_WHITE, FS_NORMAL),
+					SetTextStyle(TC_WHITE, FontSize::Normal),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the small news window. */
 static WindowDesc _small_news_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	{},
 	_nested_small_news_widgets
@@ -378,16 +383,16 @@ struct NewsWindow : Window {
 		if (has_vehicle_id && nwid != nullptr) {
 			const Vehicle *v = Vehicle::Get(std::get<VehicleID>(ni->ref1));
 			switch (v->type) {
-				case VEH_TRAIN:
+				case VehicleType::Train:
 					nwid->SetString(STR_TRAIN);
 					break;
-				case VEH_ROAD:
+				case VehicleType::Road:
 					nwid->SetString(RoadVehicle::From(v)->IsBus() ? STR_BUS : STR_LORRY);
 					break;
-				case VEH_SHIP:
+				case VehicleType::Ship:
 					nwid->SetString(STR_SHIP);
 					break;
-				case VEH_AIRCRAFT:
+				case VehicleType::Aircraft:
 					nwid->SetString(STR_PLANE);
 					break;
 				default:
@@ -436,7 +441,7 @@ struct NewsWindow : Window {
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		FontSize fontsize = FS_NORMAL;
+		FontSize fontsize = FontSize::Normal;
 		std::string str;
 		switch (widget) {
 			case WID_N_CAPTION: {
@@ -510,7 +515,7 @@ struct NewsWindow : Window {
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
-				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, TC_FROMSTRING, GetString(STR_NEWS_MESSAGE_CAPTION), SA_CENTER, FS_NORMAL);
+				DrawCaption(r, Colours::LightBlue, this->owner, TC_FROMSTRING, GetString(STR_NEWS_MESSAGE_CAPTION), SA_CENTER, FontSize::Normal);
 				break;
 
 			case WID_N_PANEL:
@@ -527,7 +532,7 @@ struct NewsWindow : Window {
 			case WID_N_MGR_FACE: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
 				DrawCompanyManagerFace(cni->face, cni->colour, r);
-				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+				GfxFillRect(r, PALETTE_NEWSPAPER, FillRectMode::Recolour);
 				break;
 			}
 			case WID_N_MGR_NAME: {
@@ -549,7 +554,7 @@ struct NewsWindow : Window {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
 				DrawVehicleEngine(r.left, r.right, CentreBounds(r.left, r.right, 0), CentreBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
-				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+				GfxFillRect(r, PALETTE_NEWSPAPER, FillRectMode::Recolour);
 				break;
 			}
 			case WID_N_VEH_INFO: {
@@ -588,7 +593,7 @@ struct NewsWindow : Window {
 				break;
 			default:
 				if (std::holds_alternative<VehicleID>(ni->ref1)) {
-					const Vehicle *v = Vehicle::Get(std::get<VehicleID>(this->ni->ref1));
+					const Vehicle *v = Vehicle::Get(std::get<VehicleID>(this->ni->ref1))->GetMovingFront();
 					ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos);
 				} else {
 					TileIndex tile1 = GetReferenceTile(this->ni->ref1);
@@ -648,9 +653,9 @@ struct NewsWindow : Window {
 	/**
 	 * Scroll the news message slowly up from the bottom.
 	 *
-	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / GetCharacterHeight(FS_NORMAL) = 15ms.
+	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / GetCharacterHeight(FontSize::Normal) = 15ms.
 	 */
-	const IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
+	const IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / GetCharacterHeight(FontSize::Normal), [this](uint count) {
 		int newtop = std::max(this->top - 2 * static_cast<int>(count), _screen.height - this->height - this->status_height - this->chat_height);
 		this->SetWindowTop(newtop);
 	}};
@@ -1228,7 +1233,7 @@ struct MessageHistoryWindow : Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
-			this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+			this->line_height = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 			fill.height = resize.height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using
@@ -1292,25 +1297,26 @@ struct MessageHistoryWindow : Window {
 
 static constexpr std::initializer_list<NWidgetPart> _nested_message_history = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_CAPTION, Colours::Brown), SetStringTip(STR_MESSAGE_HISTORY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::Brown),
+		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
+		NWidget(WWT_STICKYBOX, Colours::Brown),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_MH_BACKGROUND), SetMinimalSize(200, 125), SetToolTip(STR_MESSAGE_HISTORY_TOOLTIP), SetResize(1, 12), SetScrollbar(WID_MH_SCROLLBAR),
+		NWidget(WWT_PANEL, Colours::Brown, WID_MH_BACKGROUND), SetMinimalSize(200, 125), SetToolTip(STR_MESSAGE_HISTORY_TOOLTIP), SetResize(1, 12), SetScrollbar(WID_MH_SCROLLBAR),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_MH_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+			NWidget(NWID_VSCROLLBAR, Colours::Brown, WID_MH_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Brown),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the news message history window. */
 static WindowDesc _message_history_desc(
-	WDP_AUTO, "list_news", 400, 140,
+	WindowPosition::Automatic, "list_news", 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	{},
 	_nested_message_history

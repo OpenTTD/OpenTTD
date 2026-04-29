@@ -14,47 +14,47 @@
 #include "misc/autorelease.hpp"
 
 /** The different abstract types of files that the system knows about. */
-enum AbstractFileType : uint8_t {
-	FT_NONE,      ///< nothing to do
-	FT_SAVEGAME,  ///< old or new savegame
-	FT_SCENARIO,  ///< old or new scenario
-	FT_HEIGHTMAP, ///< heightmap file
-	FT_TOWN_DATA, ///< town data file
+enum class AbstractFileType : uint8_t {
+	None, ///< nothing to do
+	Savegame, ///< old or new savegame
+	Scenario, ///< old or new scenario
+	Heightmap, ///< heightmap file
+	TownData, ///< town data file
 
-	FT_INVALID = 7, ///< Invalid or unknown file type.
+	Invalid = 7, ///< Invalid or unknown file type.
 };
 
 /** Kinds of files in each #AbstractFileType. */
-enum DetailedFileType : uint8_t {
+enum class DetailedFileType : uint8_t {
 	/* Save game and scenario files. */
-	DFT_OLD_GAME_FILE, ///< Old save game or scenario file.
-	DFT_GAME_FILE,     ///< Save game or scenario file.
+	OldGameFile, ///< Old save game or scenario file.
+	GameFile, ///< Save game or scenario file.
 
 	/* Heightmap files. */
-	DFT_HEIGHTMAP_BMP, ///< BMP file.
-	DFT_HEIGHTMAP_PNG, ///< PNG file.
+	HeightmapBmp, ///< BMP file.
+	HeightmapPng, ///< PNG file.
 
 	/* Town data files. */
-	DFT_TOWN_DATA_JSON,  ///< JSON file.
+	TownDataJson, ///< JSON file.
 
 	/* fios 'files' */
-	DFT_FIOS_DRIVE,  ///< A drive (letter) entry.
-	DFT_FIOS_PARENT, ///< A parent directory entry.
-	DFT_FIOS_DIR,    ///< A directory entry.
-	DFT_FIOS_DIRECT, ///< Direct filename.
+	FiosDrive, ///< A drive (letter) entry.
+	FiosParent, ///< A parent directory entry.
+	FiosDirectory, ///< A directory entry.
+	FiosDirect, ///< Direct filename.
 
-	DFT_END,         ///< End of this enum. Supports a compile time size check against _fios_colours in fios_gui.cpp
+	End, ///< End marker.
 
-	DFT_INVALID = 255, ///< Unknown or invalid file.
+	Invalid = 255, ///< Unknown or invalid file.
 };
 
 /** Operation performed on the file. */
-enum SaveLoadOperation : uint8_t {
-	SLO_CHECK,   ///< Load file for checking and/or preview.
-	SLO_LOAD,    ///< File is being loaded.
-	SLO_SAVE,    ///< File is being saved.
+enum class SaveLoadOperation : uint8_t {
+	Check, ///< Load file for checking and/or preview.
+	Load, ///< File is being loaded.
+	Save, ///< File is being saved.
 
-	SLO_INVALID, ///< Unknown file operation.
+	Invalid, ///< Unknown file operation.
 };
 
 /**
@@ -67,64 +67,65 @@ struct FiosType {
 	constexpr bool operator==(const FiosType &) const noexcept = default;
 };
 
-constexpr FiosType FIOS_TYPE_DRIVE{FT_NONE, DFT_FIOS_DRIVE};
-constexpr FiosType FIOS_TYPE_PARENT{FT_NONE, DFT_FIOS_PARENT};
-constexpr FiosType FIOS_TYPE_DIR{FT_NONE, DFT_FIOS_DIR};
-constexpr FiosType FIOS_TYPE_DIRECT{FT_NONE, DFT_FIOS_DIRECT};
+constexpr FiosType FIOS_TYPE_DRIVE{AbstractFileType::None, DetailedFileType::FiosDrive};
+constexpr FiosType FIOS_TYPE_PARENT{AbstractFileType::None, DetailedFileType::FiosParent};
+constexpr FiosType FIOS_TYPE_DIR{AbstractFileType::None, DetailedFileType::FiosDirectory};
+constexpr FiosType FIOS_TYPE_DIRECT{AbstractFileType::None, DetailedFileType::FiosDirect};
 
-constexpr FiosType FIOS_TYPE_FILE{FT_SAVEGAME, DFT_GAME_FILE};
-constexpr FiosType FIOS_TYPE_OLDFILE{FT_SAVEGAME, DFT_OLD_GAME_FILE};
-constexpr FiosType FIOS_TYPE_SCENARIO{FT_SCENARIO, DFT_GAME_FILE};
-constexpr FiosType FIOS_TYPE_OLD_SCENARIO{FT_SCENARIO, DFT_OLD_GAME_FILE};
-constexpr FiosType FIOS_TYPE_PNG{FT_HEIGHTMAP, DFT_HEIGHTMAP_PNG};
-constexpr FiosType FIOS_TYPE_BMP{FT_HEIGHTMAP, DFT_HEIGHTMAP_BMP};
-constexpr FiosType FIOS_TYPE_JSON{FT_TOWN_DATA, DFT_TOWN_DATA_JSON};
+constexpr FiosType FIOS_TYPE_FILE{AbstractFileType::Savegame, DetailedFileType::GameFile};
+constexpr FiosType FIOS_TYPE_OLDFILE{AbstractFileType::Savegame, DetailedFileType::OldGameFile};
+constexpr FiosType FIOS_TYPE_SCENARIO{AbstractFileType::Scenario, DetailedFileType::GameFile};
+constexpr FiosType FIOS_TYPE_OLD_SCENARIO{AbstractFileType::Scenario, DetailedFileType::OldGameFile};
+constexpr FiosType FIOS_TYPE_PNG{AbstractFileType::Heightmap, DetailedFileType::HeightmapPng};
+constexpr FiosType FIOS_TYPE_BMP{AbstractFileType::Heightmap, DetailedFileType::HeightmapBmp};
+constexpr FiosType FIOS_TYPE_JSON{AbstractFileType::TownData, DetailedFileType::TownDataJson};
 
-constexpr FiosType FIOS_TYPE_INVALID{FT_INVALID, DFT_INVALID};
+constexpr FiosType FIOS_TYPE_INVALID{AbstractFileType::Invalid, DetailedFileType::Invalid};
 
 /**
  * The different kinds of subdirectories OpenTTD uses
  */
-enum Subdirectory : uint8_t {
-	BASE_DIR,      ///< Base directory for all subdirectories
-	SAVE_DIR,      ///< Base directory for all savegames
-	AUTOSAVE_DIR,  ///< Subdirectory of save for autosaves
-	SCENARIO_DIR,  ///< Base directory for all scenarios
-	HEIGHTMAP_DIR, ///< Subdirectory of scenario for heightmaps
-	OLD_GM_DIR,    ///< Old subdirectory for the music
-	OLD_DATA_DIR,  ///< Old subdirectory for the data.
-	BASESET_DIR,   ///< Subdirectory for all base data (base sets, intro game)
-	NEWGRF_DIR,    ///< Subdirectory for all NewGRFs
-	LANG_DIR,      ///< Subdirectory for all translation files
-	AI_DIR,        ///< Subdirectory for all %AI files
-	AI_LIBRARY_DIR,///< Subdirectory for all %AI libraries
-	GAME_DIR,      ///< Subdirectory for all game scripts
-	GAME_LIBRARY_DIR, ///< Subdirectory for all GS libraries
-	SCREENSHOT_DIR,   ///< Subdirectory for all screenshots
-	SOCIAL_INTEGRATION_DIR, ///< Subdirectory for all social integration plugins
-	DOCS_DIR,      ///< Subdirectory for documentation
-	NUM_SUBDIRS,   ///< Number of subdirectories
-	NO_DIRECTORY,  ///< A path without any base directory
+enum class Subdirectory : uint8_t {
+	Base, ///< Base directory for all subdirectories.
+	Save, ///< Base directory for all savegames.
+	Autosave, ///< Subdirectory of save for autosaves.
+	Scenario, ///< Base directory for all scenarios.
+	Heightmap, ///< Subdirectory of scenario for heightmaps.
+	OldGm, ///< Old subdirectory for the music.
+	OldData, ///< Old subdirectory for the data.
+	Baseset, ///< Subdirectory for all base data (base sets, intro game).
+	NewGrf, ///< Subdirectory for all NewGRFs.
+	Lang, ///< Subdirectory for all translation files.
+	Ai, ///< Subdirectory for all %AI files.
+	AiLibrary, ///< Subdirectory for all %AI libraries.
+	Gs, ///< Subdirectory for all game scripts.
+	GsLibrary, ///< Subdirectory for all GS libraries.
+	Screenshot, ///< Subdirectory for all screenshots.
+	SocialIntegration, ///< Subdirectory for all social integration plugins.
+	Docs, ///< Subdirectory for documentation.
+	End, ///< End marker.
+	None, ///< A path without any base directory.
 };
 
 /**
  * Types of searchpaths OpenTTD might use
  */
-enum Searchpath : uint8_t {
-	SP_FIRST_DIR,
-	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
+enum class Searchpath : uint8_t {
+	Begin, ///< The lowest valid value.
+	WorkingDir = Searchpath::Begin, ///< Search in the working directory.
 #ifdef USE_XDG
-	SP_PERSONAL_DIR_XDG,           ///< Search in the personal directory from the XDG specification
+	PersonalDirXdg, ///< Search in the personal directory from the XDG specification.
 #endif
-	SP_PERSONAL_DIR,               ///< Search in the personal directory
-	SP_SHARED_DIR,                 ///< Search in the shared directory, like 'Shared Files' under Windows
-	SP_BINARY_DIR,                 ///< Search in the directory where the binary resides
-	SP_INSTALLATION_DIR,           ///< Search in the installation directory
-	SP_APPLICATION_BUNDLE_DIR,     ///< Search within the application bundle
-	SP_AUTODOWNLOAD_DIR,           ///< Search within the autodownload directory
-	SP_AUTODOWNLOAD_PERSONAL_DIR,  ///< Search within the autodownload directory located in the personal directory
-	SP_AUTODOWNLOAD_PERSONAL_DIR_XDG, ///< Search within the autodownload directory located in the personal directory (XDG variant)
-	NUM_SEARCHPATHS
+	PersonalDir, ///< Search in the personal directory.
+	SharedDir, ///< Search in the shared directory, like 'Shared Files' under Windows.
+	BinaryDir, ///< Search in the directory where the binary resides.
+	InstallationDir, ///< Search in the installation directory.
+	ApplicationBundleDir, ///< Search within the application bundle.
+	TransportTycoonDeluxeDir, ///< Search within the Transport Tycoon Deluxe data directory (if installed).
+	AutodownloadDir, ///< Search within the autodownload directory.
+	AutodownloadPersonalDir,///< Search within the autodownload directory located in the personal directory.
+	AutodownloadPersonalDirXdg, ///< Search within the autodownload directory located in the personal directory (XDG variant).
+	End, ///< End marker.
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Searchpath)

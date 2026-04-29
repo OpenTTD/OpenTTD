@@ -140,7 +140,7 @@ static uint MapWindowsKey(uint sym)
 uint8_t VideoDriver_Win32Base::GetFullscreenBpp()
 {
 	/* Check modes for the relevant fullscreen bpp */
-	return _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+	return _support8bpp != Support8bpp::Hardware ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 }
 
 /**
@@ -1013,22 +1013,20 @@ void VideoDriver_Win32Base::InputLoop()
 
 	/* Determine which directional keys are down. */
 	if (this->has_focus) {
-		_dirkeys =
-			(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
-			(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
-			(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
-			(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
+		_dirkeys.Set(DirectionKey::Left, GetAsyncKeyState(VK_LEFT));
+		_dirkeys.Set(DirectionKey::Up, GetAsyncKeyState(VK_UP));
+		_dirkeys.Set(DirectionKey::Right, GetAsyncKeyState(VK_RIGHT));
+		_dirkeys.Set(DirectionKey::Down, GetAsyncKeyState(VK_DOWN));
 		if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
 			/* Use scan codes so the physical key positions work on any keyboard layout.
 			 * W=0x11, A=0x1E, S=0x1F, D=0x20. */
-			_dirkeys |=
-				(GetAsyncKeyState(MapVirtualKey(0x1E, MAPVK_VSC_TO_VK)) < 0 ? 1 : 0) |
-				(GetAsyncKeyState(MapVirtualKey(0x11, MAPVK_VSC_TO_VK)) < 0 ? 2 : 0) |
-				(GetAsyncKeyState(MapVirtualKey(0x20, MAPVK_VSC_TO_VK)) < 0 ? 4 : 0) |
-				(GetAsyncKeyState(MapVirtualKey(0x1F, MAPVK_VSC_TO_VK)) < 0 ? 8 : 0);
+			if (GetAsyncKeyState(MapVirtualKey(0x1E, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Left);
+			if (GetAsyncKeyState(MapVirtualKey(0x11, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Up);
+			if (GetAsyncKeyState(MapVirtualKey(0x20, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Right);
+			if (GetAsyncKeyState(MapVirtualKey(0x1F, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Down);
 		}
 	} else {
-		_dirkeys = 0;
+		_dirkeys.Reset();
 	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();

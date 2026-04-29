@@ -257,7 +257,7 @@ HotkeyList::HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &
 	_hotkey_lists->push_back(this);
 }
 
-/** Remove outselves from the global hotkey list. */
+/** Remove ourselves from the global hotkey list. */
 HotkeyList::~HotkeyList()
 {
 	_hotkey_lists->erase(std::ranges::find(*_hotkey_lists, this));
@@ -315,7 +315,7 @@ int HotkeyList::CheckMatch(uint16_t keycode, bool global_only) const
 static void SaveLoadHotkeys(bool save)
 {
 	IniFile ini{};
-	ini.LoadFromDisk(_hotkeys_file, NO_DIRECTORY);
+	ini.LoadFromDisk(_hotkeys_file, Subdirectory::None);
 
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (save) {

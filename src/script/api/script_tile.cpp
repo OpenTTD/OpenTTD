@@ -38,9 +38,9 @@
 			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
 			/* Depots and crossings aren't considered buildable */
 			if (::GetRoadTileType(tile) != RoadTileType::Normal) return false;
-			if (!HasExactlyOneBit(::GetRoadBits(tile, RTT_ROAD))) return false;
-			if (::IsRoadOwner(tile, RTT_ROAD, OWNER_TOWN)) return true;
-			if (::IsRoadOwner(tile, RTT_ROAD, ScriptObject::GetCompany())) return true;
+			if (::GetRoadBits(tile, RoadTramType::Road).Count() != 1) return false;
+			if (::IsRoadOwner(tile, RoadTramType::Road, OWNER_TOWN)) return true;
+			if (::IsRoadOwner(tile, RoadTramType::Road, ScriptObject::GetCompany())) return true;
 			return false;
 	}
 }
@@ -48,15 +48,10 @@
 /* static */ bool ScriptTile::IsBuildableRectangle(TileIndex tile, SQInteger width, SQInteger height)
 {
 	/* Check whether we can extract valid X and Y */
-	if (!::IsValidTile(tile) || width < 0 || height < 0) return false;
+	if (!::IsValidTile(tile) || width < 1 || height < 1) return false;
 
-	uint tx = ScriptMap::GetTileX(tile);
-	uint ty = ScriptMap::GetTileY(tile);
-
-	for (uint x = tx; x < width + tx; x++) {
-		for (uint y = ty; y < height + ty; y++) {
-			if (!IsBuildable(ScriptMap::GetTileIndex(x, y))) return false;
-		}
+	for (auto cur_tile : TileArea(tile, width, height)) {
+		if (!IsBuildable(cur_tile)) return false;
 	}
 
 	return true;
@@ -224,10 +219,10 @@
 	if (!::IsValidTile(tile)) return false;
 
 	if (transport_type == TRANSPORT_ROAD) {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE ||
-				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 1)) != TRACKDIR_BIT_NONE;
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Road)) != TRACKDIR_BIT_NONE ||
+				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Tram)) != TRACKDIR_BIT_NONE;
 	} else {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE;
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Invalid)) != TRACKDIR_BIT_NONE;
 	}
 }
 

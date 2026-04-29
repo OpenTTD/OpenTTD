@@ -131,6 +131,7 @@ public:
 		this->dest.Set(water_region_patch);
 	}
 
+	/** @copydoc CYapfBaseT::PfFollowNodeFunc */
 	inline void PfFollowNode(Node &old_node)
 	{
 		VisitWaterRegionPatchCallback visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
@@ -141,12 +142,14 @@ public:
 		VisitWaterRegionPatchNeighbours(old_node.key.water_region_patch, visit_func);
 	}
 
+	/** @copydoc CYapfBaseT::PfDetectDestinationFunc */
 	inline bool PfDetectDestination(Node &n) const
 	{
 		return n.key == this->dest;
 	}
 
-	inline bool PfCalcCost(Node &n, const TrackFollower *)
+	/** @copydoc CYapfBaseT::PfCalcCostFunc */
+	inline bool PfCalcCost(Node &n, [[maybe_unused]] const TrackFollower *follower)
 	{
 		n.cost = n.parent->cost + ManhattanDistance(n.key, n.parent->key);
 
@@ -160,6 +163,7 @@ public:
 		return true;
 	}
 
+	/** @copydoc CYapfBaseT::PfCalcEstimateFunc */
 	inline bool PfCalcEstimate(Node &n)
 	{
 		if (this->PfDetectDestination(n)) {
@@ -172,8 +176,10 @@ public:
 		return true;
 	}
 
+	/** @copydoc CYapfBaseT::TransportTypeCharFunc */
 	inline char TransportTypeChar() const { return '^'; }
 
+	/** @copydoc YapfShipFindWaterRegionPath */
 	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
 	{
 		const WaterRegionPatchDesc start_water_region_patch = GetWaterRegionPatchInfo(start_tile);

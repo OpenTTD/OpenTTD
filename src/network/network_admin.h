@@ -17,26 +17,27 @@
 extern AdminID _redirect_console_to_admin;
 
 class ServerNetworkAdminSocketHandler;
-/** Pool with all admin connections. */
+/** Pool type for admin connections. */
 using NetworkAdminSocketPool = Pool<ServerNetworkAdminSocketHandler, AdminID, 2, PoolType::NetworkAdmin>;
+/** Pool with all admin connections. */
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */
-class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, ADMIN_PACKET_SERVER_FULL, ADMIN_PACKET_SERVER_BANNED> {
+class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, PacketAdminType, PacketAdminType::ServerFull, PacketAdminType::ServerBanned> {
 private:
 	std::unique_ptr<NetworkAuthenticationServerHandler> authentication_handler = nullptr; ///< The handler for the authentication.
 protected:
-	NetworkRecvStatus Receive_ADMIN_JOIN(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_QUIT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_POLL(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_CHAT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_EXTERNAL_CHAT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_RCON(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_PING(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_JOIN_SECURE(Packet &p) override;
-	NetworkRecvStatus Receive_ADMIN_AUTH_RESPONSE(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminJoin(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminQuit(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminUpdateFrequency(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminPoll(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminChat(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminExternalChat(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminRemoteConsoleCommand(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminGameScript(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminPing(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminJoinSecure(Packet &p) override;
+	NetworkRecvStatus ReceiveAdminAuthenticationResponse(Packet &p) override;
 
 	NetworkRecvStatus SendProtocol();
 	NetworkRecvStatus SendPong(uint32_t d1);
@@ -68,7 +69,7 @@ public:
 	NetworkRecvStatus SendCompanyEconomy();
 	NetworkRecvStatus SendCompanyStats();
 
-	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data);
+	NetworkRecvStatus SendChat(NetworkAction action, NetworkChatDestinationType desttype, ClientID client_id, std::string_view msg, int64_t data);
 	NetworkRecvStatus SendRcon(uint16_t colour, std::string_view command);
 	NetworkRecvStatus SendConsole(std::string_view origin, std::string_view command);
 	NetworkRecvStatus SendGameScript(std::string_view json);
@@ -90,7 +91,13 @@ public:
 		return "admin";
 	}
 
+	/** Filter for the #IterateActive iterator. */
 	struct ServerNetworkAdminSocketHandlerFilter {
+		/**
+		 * Check whether the given admin is active.
+		 * @param index The index of the admin.
+		 * @return \c true iff the admin's status is #ADMIN_STATUS_ACTIVE.
+		 */
 		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; }
 	};
 
@@ -113,7 +120,7 @@ void NetworkAdminCompanyNew(const Company *company);
 void NetworkAdminCompanyUpdate(const Company *company);
 void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 
-void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data = 0, bool from_admin = false);
+void NetworkAdminChat(NetworkAction action, NetworkChatDestinationType desttype, ClientID client_id, std::string_view msg, int64_t data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, std::string_view string);
 void NetworkAdminConsole(std::string_view origin, std::string_view string);

@@ -90,10 +90,10 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance &instance)
 
 	if (vehicle_type == ScriptVehicle::VT_RAIL) {
 		/* For rail we do nothing special */
-		return ScriptObject::Command<Commands::BuildTunnel>::Do(start, TRANSPORT_RAIL, ScriptRail::GetCurrentRailType());
+		return ScriptObject::Command<Commands::BuildTunnel>::Do(start, TRANSPORT_RAIL, static_cast<::RailType>(ScriptRail::GetCurrentRailType()), INVALID_ROADTYPE);
 	} else {
 		ScriptObject::SetCallbackVariable(0, start.base());
-		return ScriptObject::Command<Commands::BuildTunnel>::Do(&::_DoCommandReturnBuildTunnel1, start, TRANSPORT_ROAD, ScriptRoad::GetCurrentRoadType());
+		return ScriptObject::Command<Commands::BuildTunnel>::Do(&::_DoCommandReturnBuildTunnel1, start, TRANSPORT_ROAD, INVALID_RAILTYPE, static_cast<::RoadType>(ScriptRoad::GetCurrentRoadType()));
 	}
 }
 
@@ -108,7 +108,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance &instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::Command<Commands::BuildRoad>::Do(&::_DoCommandReturnBuildTunnel2, start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2), ScriptRoad::GetRoadType(), DRD_NONE, TownID::Invalid());
+	return ScriptObject::Command<Commands::BuildRoad>::Do(&::_DoCommandReturnBuildTunnel2, start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2), ScriptRoad::GetRoadType(), {}, TownID::Invalid());
 }
 
 /* static */ bool ScriptTunnel::_BuildTunnelRoad2()
@@ -122,7 +122,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance &instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::Command<Commands::BuildRoad>::Do(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1), ScriptRoad::GetRoadType(), DRD_NONE, TownID::Invalid());
+	return ScriptObject::Command<Commands::BuildRoad>::Do(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1), ScriptRoad::GetRoadType(), {}, TownID::Invalid());
 }
 
 /* static */ bool ScriptTunnel::RemoveTunnel(TileIndex tile)

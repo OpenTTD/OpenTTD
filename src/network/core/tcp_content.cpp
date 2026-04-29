@@ -46,7 +46,7 @@ bool ContentInfo::IsSelected() const
  */
 bool ContentInfo::IsValid() const
 {
-	return this->state < ContentInfo::State::Invalid && this->type >= CONTENT_TYPE_BEGIN && this->type < CONTENT_TYPE_END;
+	return this->state < ContentInfo::State::Invalid && this->type >= ContentType::Begin && this->type < ContentType::End;
 }
 
 /**
@@ -60,34 +60,34 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 	std::optional<std::string_view> tmp;
 	switch (this->type) {
 		default: NOT_REACHED();
-		case CONTENT_TYPE_AI:
+		case ContentType::Ai:
 			tmp = AI::GetScannerInfo()->FindMainScript(*this, true);
 			break;
-		case CONTENT_TYPE_AI_LIBRARY:
+		case ContentType::AiLibrary:
 			tmp = AI::GetScannerLibrary()->FindMainScript(*this, true);
 			break;
-		case CONTENT_TYPE_GAME:
+		case ContentType::Gs:
 			tmp = Game::GetScannerInfo()->FindMainScript(*this, true);
 			break;
-		case CONTENT_TYPE_GAME_LIBRARY:
+		case ContentType::GsLibrary:
 			tmp = Game::GetScannerLibrary()->FindMainScript(*this, true);
 			break;
-		case CONTENT_TYPE_NEWGRF: {
-			const GRFConfig *gc = FindGRFConfig(std::byteswap(this->unique_id), FGCM_EXACT, &this->md5sum);
+		case ContentType::NewGRF: {
+			const GRFConfig *gc = FindGRFConfig(std::byteswap(this->unique_id), FindGRFConfigMode::Exact, &this->md5sum);
 			if (gc != nullptr) tmp = gc->filename;
 			break;
 		}
-		case CONTENT_TYPE_BASE_GRAPHICS:
+		case ContentType::BaseGraphics:
 			tmp = TryGetBaseSetFile(*this, true, BaseGraphics::GetAvailableSets());
 			break;
-		case CONTENT_TYPE_BASE_SOUNDS:
+		case ContentType::BaseSounds:
 			tmp = TryGetBaseSetFile(*this, true, BaseSounds::GetAvailableSets());
 			break;
-		case CONTENT_TYPE_BASE_MUSIC:
+		case ContentType::BaseMusic:
 			tmp = TryGetBaseSetFile(*this, true, BaseMusic::GetAvailableSets());
 			break;
-		case CONTENT_TYPE_SCENARIO:
-		case CONTENT_TYPE_HEIGHTMAP:
+		case ContentType::Scenario:
+		case ContentType::Heightmap:
 			tmp = FindScenario(*this, true);
 			break;
 	}
@@ -184,19 +184,19 @@ bool NetworkContentSocketHandler::ReceiveServerContent(Packet &) { return this->
 Subdirectory GetContentInfoSubDir(ContentType type)
 {
 	switch (type) {
-		default: return NO_DIRECTORY;
-		case CONTENT_TYPE_AI:           return AI_DIR;
-		case CONTENT_TYPE_AI_LIBRARY:   return AI_LIBRARY_DIR;
-		case CONTENT_TYPE_GAME:         return GAME_DIR;
-		case CONTENT_TYPE_GAME_LIBRARY: return GAME_LIBRARY_DIR;
-		case CONTENT_TYPE_NEWGRF:       return NEWGRF_DIR;
+		default: return Subdirectory::None;
+		case ContentType::Ai: return Subdirectory::Ai;
+		case ContentType::AiLibrary: return Subdirectory::AiLibrary;
+		case ContentType::Gs: return Subdirectory::Gs;
+		case ContentType::GsLibrary: return Subdirectory::GsLibrary;
+		case ContentType::NewGRF: return Subdirectory::NewGrf;
 
-		case CONTENT_TYPE_BASE_GRAPHICS:
-		case CONTENT_TYPE_BASE_SOUNDS:
-		case CONTENT_TYPE_BASE_MUSIC:
-			return BASESET_DIR;
+		case ContentType::BaseGraphics:
+		case ContentType::BaseSounds:
+		case ContentType::BaseMusic:
+			return Subdirectory::Baseset;
 
-		case CONTENT_TYPE_SCENARIO:     return SCENARIO_DIR;
-		case CONTENT_TYPE_HEIGHTMAP:    return HEIGHTMAP_DIR;
+		case ContentType::Scenario: return Subdirectory::Scenario;
+		case ContentType::Heightmap: return Subdirectory::Heightmap;
 	}
 }

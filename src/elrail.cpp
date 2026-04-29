@@ -141,7 +141,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 		TileIndex next_tile = TileAddByDiagDir(t, d);
 		RailType rt = GetTileRailType(next_tile);
 		if (rt == INVALID_RAILTYPE || !HasRailCatenary(rt) ||
-				((TrackStatusToTrackBits(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, 0)) & DiagdirReachesTracks(d)) == TRACK_BIT_NONE &&
+				((TrackStatusToTrackBits(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, RoadTramType::Invalid)) & DiagdirReachesTracks(d)) == TRACK_BIT_NONE &&
 				(!HasStationTileRail(next_tile) || GetRailStationAxis(next_tile) != DiagDirToAxis(d) || !CanStationTileHaveWires(next_tile)))) {
 			neighbour_tdb |= DiagdirReachesTrackdirs(ReverseDiagDir(d));
 		}
@@ -183,7 +183,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES, context);
+	SpriteID wires = GetCustomRailSprite(rti, tile, RailSpriteType::Wires, context);
 	return wires == 0 ? SPR_WIRE_BASE : wires;
 }
 
@@ -196,7 +196,7 @@ static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NOR
 static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS, context);
+	SpriteID pylons = GetCustomRailSprite(rti, tile, RailSpriteType::Pylons, context);
 	return pylons == 0 ? SPR_PYLON_BASE : pylons;
 }
 
@@ -591,7 +591,7 @@ void SettingsDisableElrail(int32_t new_value)
 void UpdateDisableElrailSettingState(bool disable, bool update_vehicles)
 {
 	/* walk through all train engines */
-	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
+	for (Engine *e : Engine::IterateType(VehicleType::Train)) {
 		RailVehicleInfo *rv_info = &e->VehInfo<RailVehicleInfo>();
 		/* update railtype of engines intended to use elrail */
 		if (rv_info->intended_railtypes.Test(RAILTYPE_ELECTRIC)) {

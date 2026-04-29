@@ -75,7 +75,7 @@ public:
 	void Free();
 
 	void MakeGoToStation(StationID destination);
-	void MakeGoToDepot(DestinationID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = OrderNonStopFlag::NoIntermediate, OrderDepotActionFlags action = {}, CargoType cargo = CARGO_NO_REFIT);
+	void MakeGoToDepot(DestinationID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = OrderNonStopFlag::NonStop, OrderDepotActionFlags action = {}, CargoType cargo = CARGO_NO_REFIT);
 	void MakeGoToWaypoint(StationID destination);
 	void MakeLoading(bool ordered);
 	void MakeLeaveStation();
@@ -300,7 +300,7 @@ public:
 	inline uint16_t GetTravelTime() const { return this->travel_time; }
 
 	/**
-	 * Get the maxmimum speed in km-ish/h a vehicle is allowed to reach on the way to the
+	 * Get the maximum speed in km-ish/h a vehicle is allowed to reach on the way to the
 	 * destination.
 	 * @return maximum speed.
 	 */
@@ -331,7 +331,7 @@ public:
 	inline void SetTravelTime(uint16_t time) { this->travel_time = time; }
 
 	/**
-	 * Set the maxmimum speed in km-ish/h a vehicle is allowed to reach on the way to the
+	 * Set the maximum speed in km-ish/h a vehicle is allowed to reach on the way to the
 	 * destination.
 	 * @param speed Speed to be set.
 	 */
@@ -351,7 +351,7 @@ public:
 	{
 		if (!this->IsTravelTimetabled() && !this->IsType(OT_CONDITIONAL)) return false;
 		if (!this->IsWaitTimetabled() && this->IsType(OT_GOTO_STATION) &&
-				!this->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) {
+				!this->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
 			return false;
 		}
 		return true;

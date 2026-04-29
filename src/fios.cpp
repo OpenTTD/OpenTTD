@@ -26,7 +26,6 @@
 #include "safeguards.h"
 
 static std::string *_fios_path = nullptr;
-SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix .c) */
 extern bool FiosIsRoot(const std::string &path);
@@ -36,52 +35,47 @@ extern void FiosGetDrives(FileList &file_list);
 /* get the name of an oldstyle savegame */
 extern std::string GetOldSaveGameName(std::string_view file);
 
-/**
- * Compare two FiosItem's. Used with sort when sorting the file list.
- * @param other The FiosItem to compare to.
- * @return for ascending order: returns true if da < db. Vice versa for descending order.
- */
-bool FiosItem::operator< (const FiosItem &other) const
+/** Sort files by their name. @copydoc GUIList::Sorter */
+bool FiosItemNameSorter(const FiosItem &a, const FiosItem &b)
 {
-	int r = false;
+	return StrNaturalCompare(a.title.GetDecodedString(), b.title.GetDecodedString()) < 0;
+}
 
-	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
-		r = ClampTo<int32_t>(this->mtime - other.mtime);
-	} else {
-		r = StrNaturalCompare(this->title.GetDecodedString(), other.title.GetDecodedString());
-	}
-	if (r == 0) return false;
-	return (_savegame_sort_order & SORT_DESCENDING) ? r > 0 : r < 0;
+/** Sort files by their modification date, and name when they are equal. @copydoc GUIList::Sorter */
+bool FiosItemModificationDateSorter(const FiosItem &a, const FiosItem &b)
+{
+	if (a.mtime == b.mtime) return FiosItemNameSorter(a, b);
+	return a.mtime < b.mtime;
 }
 
 /**
  * Construct a file list with the given kind of files, for the stated purpose.
  * @param abstract_filetype Kind of files to collect.
- * @param fop Purpose of the collection, either #SLO_LOAD or #SLO_SAVE.
+ * @param fop Purpose of the collection, either #SaveLoadOperation::Load or #SaveLoadOperation::Save.
  * @param show_dirs Whether to show directories.
  */
 void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop, bool show_dirs)
 {
 	this->clear();
 
-	assert(fop == SLO_LOAD || fop == SLO_SAVE);
+	assert(fop == SaveLoadOperation::Load || fop == SaveLoadOperation::Save);
 	switch (abstract_filetype) {
-		case FT_NONE:
+		case AbstractFileType::None:
 			break;
 
-		case FT_SAVEGAME:
+		case AbstractFileType::Savegame:
 			FiosGetSavegameList(fop, show_dirs, *this);
 			break;
 
-		case FT_SCENARIO:
+		case AbstractFileType::Scenario:
 			FiosGetScenarioList(fop, show_dirs, *this);
 			break;
 
-		case FT_HEIGHTMAP:
+		case AbstractFileType::Heightmap:
 			FiosGetHeightmapList(fop, show_dirs, *this);
 			break;
 
-		case FT_TOWN_DATA:
+		case AbstractFileType::TownData:
 			FiosGetTownDataList(fop, show_dirs, *this);
 			break;
 
@@ -139,17 +133,17 @@ std::string FiosGetCurrentPath()
 bool FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type.detailed) {
-		case DFT_FIOS_DRIVE:
+		case DetailedFileType::FiosDrive:
 #if defined(_WIN32)
 			assert(_fios_path != nullptr);
 			*_fios_path = std::string{ item->name, 0, 1 } + ":" PATHSEP;
 #endif
 			break;
 
-		case DFT_INVALID:
+		case DetailedFileType::Invalid:
 			break;
 
-		case DFT_FIOS_PARENT: {
+		case DetailedFileType::FiosParent: {
 			assert(_fios_path != nullptr);
 			auto s = _fios_path->find_last_of(PATHSEPCHAR);
 			if (s != std::string::npos && s != 0) {
@@ -163,13 +157,13 @@ bool FiosBrowseTo(const FiosItem *item)
 			break;
 		}
 
-		case DFT_FIOS_DIR:
+		case DetailedFileType::FiosDirectory:
 			assert(_fios_path != nullptr);
 			*_fios_path += item->name;
 			*_fios_path += PATHSEP;
 			break;
 
-		case DFT_FIOS_DIRECT:
+		case DetailedFileType::FiosDirect:
 			assert(_fios_path != nullptr);
 			*_fios_path = item->name;
 			break;
@@ -333,11 +327,8 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.title = GetEncodedString(STR_SAVELOAD_DIRECTORY, fios.name + PATHSEP);
 		}
 
-		/* Sort the subdirs always by name, ascending, remember user-sorting order */
-		SortingBits order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		std::sort(file_list.begin() + sort_start, file_list.end());
-		_savegame_sort_order = order;
+		/* Sort the subdirs always ascending by name. */
+		std::sort(file_list.begin() + sort_start, file_list.end(), FiosItemNameSorter);
 	}
 
 	/* This is where to start sorting for the filenames */
@@ -345,13 +336,13 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 
 	/* Show files */
 	FiosFileScanner scanner(fop, callback_proc, file_list);
-	if (subdir == NO_DIRECTORY) {
+	if (subdir == Subdirectory::None) {
 		scanner.Scan({}, *_fios_path, false);
 	} else {
 		scanner.Scan({}, subdir, true, true);
 	}
 
-	std::sort(file_list.begin() + sort_start, file_list.end());
+	std::sort(file_list.begin() + sort_start, file_list.end(), FiosItemSorter);
 
 	/* Show drives */
 	FiosGetDrives(file_list);
@@ -395,10 +386,10 @@ std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation 
 	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game */
 
 	if (StrEqualsIgnoreCase(ext, ".sav")) {
-		return { FIOS_TYPE_FILE, GetFileTitle(file, SAVE_DIR) };
+		return { FIOS_TYPE_FILE, GetFileTitle(file, Subdirectory::Save) };
 	}
 
-	if (fop == SLO_LOAD) {
+	if (fop == SaveLoadOperation::Load) {
 		if (StrEqualsIgnoreCase(ext, ".ss1") || StrEqualsIgnoreCase(ext, ".sv1") ||
 				StrEqualsIgnoreCase(ext, ".sv2")) {
 			return { FIOS_TYPE_OLDFILE, GetOldSaveGameName(file) };
@@ -419,11 +410,11 @@ void FiosGetSavegameList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
 {
 	static std::optional<std::string> fios_save_path;
 
-	if (!fios_save_path) fios_save_path = FioFindDirectory(SAVE_DIR);
+	if (!fios_save_path) fios_save_path = FioFindDirectory(Subdirectory::Save);
 
 	_fios_path = &(*fios_save_path);
 
-	FiosGetFileList(fop, show_dirs, &FiosGetSavegameListCallback, NO_DIRECTORY, file_list);
+	FiosGetFileList(fop, show_dirs, &FiosGetSavegameListCallback, Subdirectory::None, file_list);
 }
 
 /**
@@ -442,11 +433,11 @@ std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation 
 	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
 	 * .SS0 Transport Tycoon Deluxe preset scenario */
 	if (StrEqualsIgnoreCase(ext, ".scn")) {
-		return { FIOS_TYPE_SCENARIO, GetFileTitle(file, SCENARIO_DIR) };
+		return { FIOS_TYPE_SCENARIO, GetFileTitle(file, Subdirectory::Scenario) };
 
 	}
 
-	if (fop == SLO_LOAD) {
+	if (fop == SaveLoadOperation::Load) {
 		if (StrEqualsIgnoreCase(ext, ".sv0") || StrEqualsIgnoreCase(ext, ".ss0")) {
 			return { FIOS_TYPE_OLD_SCENARIO, GetOldSaveGameName(file) };
 		}
@@ -467,12 +458,12 @@ void FiosGetScenarioList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
 	static std::optional<std::string> fios_scn_path;
 
 	/* Copy the default path on first run or on 'New Game' */
-	if (!fios_scn_path) fios_scn_path = FioFindDirectory(SCENARIO_DIR);
+	if (!fios_scn_path) fios_scn_path = FioFindDirectory(Subdirectory::Scenario);
 
 	_fios_path = &(*fios_scn_path);
 
-	std::string base_path = FioFindDirectory(SCENARIO_DIR);
-	Subdirectory subdir = (fop == SLO_LOAD && base_path == *_fios_path) ? SCENARIO_DIR : NO_DIRECTORY;
+	std::string base_path = FioFindDirectory(Subdirectory::Scenario);
+	Subdirectory subdir = (fop == SaveLoadOperation::Load && base_path == *_fios_path) ? Subdirectory::Scenario : Subdirectory::None;
 	FiosGetFileList(fop, show_dirs, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
@@ -493,8 +484,8 @@ std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation
 
 	if (type == FIOS_TYPE_INVALID) return { FIOS_TYPE_INVALID, {} };
 
-	TarFileList::iterator it = _tar_filelist[SCENARIO_DIR].find(file);
-	if (it != _tar_filelist[SCENARIO_DIR].end()) {
+	TarFileList::iterator it = _tar_filelist[Subdirectory::Scenario].find(file);
+	if (it != _tar_filelist[Subdirectory::Scenario].end()) {
 		/* If the file is in a tar and that tar is not in a heightmap
 		 * directory we are for sure not supposed to see it.
 		 * Examples of this are pngs part of documentation within
@@ -502,7 +493,7 @@ std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation
 		 */
 		bool match = false;
 		for (Searchpath sp : _valid_searchpaths) {
-			std::string buf = FioGetDirectory(sp, HEIGHTMAP_DIR);
+			std::string buf = FioGetDirectory(sp, Subdirectory::Heightmap);
 
 			if (it->second.tar_filename.starts_with(buf)) {
 				match = true;
@@ -513,7 +504,7 @@ std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation
 		if (!match) return { FIOS_TYPE_INVALID, {} };
 	}
 
-	return { type, GetFileTitle(file, HEIGHTMAP_DIR) };
+	return { type, GetFileTitle(file, Subdirectory::Heightmap) };
 }
 
 /**
@@ -526,12 +517,12 @@ void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_
 {
 	static std::optional<std::string> fios_hmap_path;
 
-	if (!fios_hmap_path) fios_hmap_path = FioFindDirectory(HEIGHTMAP_DIR);
+	if (!fios_hmap_path) fios_hmap_path = FioFindDirectory(Subdirectory::Heightmap);
 
 	_fios_path = &(*fios_hmap_path);
 
-	std::string base_path = FioFindDirectory(HEIGHTMAP_DIR);
-	Subdirectory subdir = base_path == *_fios_path ? HEIGHTMAP_DIR : NO_DIRECTORY;
+	std::string base_path = FioFindDirectory(Subdirectory::Heightmap);
+	Subdirectory subdir = base_path == *_fios_path ? Subdirectory::Heightmap : Subdirectory::None;
 	FiosGetFileList(fop, show_dirs, &FiosGetHeightmapListCallback, subdir, file_list);
 }
 
@@ -544,9 +535,9 @@ void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_
  */
 static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext)
 {
-	if (fop == SLO_LOAD) {
+	if (fop == SaveLoadOperation::Load) {
 		if (StrEqualsIgnoreCase(ext, ".json")) {
-			return { FIOS_TYPE_JSON, GetFileTitle(file, SAVE_DIR) };
+			return { FIOS_TYPE_JSON, GetFileTitle(file, Subdirectory::Save) };
 		}
 	}
 
@@ -563,12 +554,12 @@ void FiosGetTownDataList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
 {
 	static std::optional<std::string> fios_town_data_path;
 
-	if (!fios_town_data_path) fios_town_data_path = FioFindDirectory(HEIGHTMAP_DIR);
+	if (!fios_town_data_path) fios_town_data_path = FioFindDirectory(Subdirectory::Heightmap);
 
 	_fios_path = &(*fios_town_data_path);
 
-	std::string base_path = FioFindDirectory(HEIGHTMAP_DIR);
-	Subdirectory subdir = base_path == *_fios_path ? HEIGHTMAP_DIR : NO_DIRECTORY;
+	std::string base_path = FioFindDirectory(Subdirectory::Heightmap);
+	Subdirectory subdir = base_path == *_fios_path ? Subdirectory::Heightmap : Subdirectory::None;
 	FiosGetFileList(fop, show_dirs, &FiosGetTownDataListCallback, subdir, file_list);
 }
 
@@ -580,7 +571,7 @@ std::string_view FiosGetScreenshotDir()
 {
 	static std::optional<std::string> fios_screenshot_path;
 
-	if (!fios_screenshot_path) fios_screenshot_path = FioFindDirectory(SCREENSHOT_DIR);
+	if (!fios_screenshot_path) fios_screenshot_path = FioFindDirectory(Subdirectory::Screenshot);
 
 	return *fios_screenshot_path;
 }
@@ -614,13 +605,13 @@ public:
 	{
 		if (this->scanned && !rescan) return;
 
-		this->FileScanner::Scan(".id", SCENARIO_DIR, true, true);
+		this->FileScanner::Scan(".id", Subdirectory::Scenario, true, true);
 		this->scanned = true;
 	}
 
 	bool AddFile(const std::string &filename, size_t, const std::string &) override
 	{
-		auto f = FioFOpenFile(filename, "r", SCENARIO_DIR);
+		auto f = FioFOpenFile(filename, "r", Subdirectory::Scenario);
 		if (!f.has_value()) return false;
 
 		ScenarioIdentifier id;
@@ -635,7 +626,7 @@ public:
 		/* open the scenario file, but first get the name.
 		 * This is safe as we check on extension which
 		 * must always exist. */
-		f = FioFOpenFile(filename.substr(0, filename.rfind('.')), "rb", SCENARIO_DIR, &size);
+		f = FioFOpenFile(filename.substr(0, filename.rfind('.')), "rb", Subdirectory::Scenario, &size);
 		if (!f.has_value()) return false;
 
 		/* calculate md5sum */
@@ -699,7 +690,7 @@ void ScanScenarios()
 FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(prefix), number(-1)
 {
 	static std::optional<std::string> _autosave_path;
-	if (!_autosave_path) _autosave_path = FioFindDirectory(AUTOSAVE_DIR);
+	if (!_autosave_path) _autosave_path = FioFindDirectory(Subdirectory::Autosave);
 
 	static std::string _prefix; ///< Static as the lambda needs access to it.
 
@@ -714,17 +705,13 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 
 	/* Get the save list. */
 	FileList list;
-	FiosFileScanner scanner(SLO_SAVE, proc, list);
+	FiosFileScanner scanner(SaveLoadOperation::Save, proc, list);
 	scanner.Scan(".sav", *_autosave_path, false);
 
 	/* Find the number for the most recent save, if any. */
-	if (list.begin() != list.end()) {
-		SortingBits order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
-		std::sort(list.begin(), list.end());
-		_savegame_sort_order = order;
-
-		std::string name = list.begin()->title.GetDecodedString();
+	if (!list.empty()) {
+		auto elem = std::ranges::max_element(list, FiosItemModificationDateSorter);
+		std::string name = elem->title.GetDecodedString();
 		std::from_chars(name.data() + this->prefix.size(), name.data() + name.size(), this->number);
 	}
 }

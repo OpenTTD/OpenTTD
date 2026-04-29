@@ -74,7 +74,7 @@ void ResetRailTypes()
 
 void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 {
-	SpriteID cursors_base = GetCustomRailSprite(rti, INVALID_TILE, RTSG_CURSORS);
+	SpriteID cursors_base = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::UI);
 	if (cursors_base != 0) {
 		rti->gui_sprites.build_ns_rail = cursors_base +  0;
 		rti->gui_sprites.build_x_rail  = cursors_base +  1;
@@ -506,7 +506,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 			if (IsNormalRoad(tile)) {
 				if (HasRoadWorks(tile)) return CommandCost(STR_ERROR_ROAD_WORKS_IN_PROGRESS);
 
-				if (GetDisallowedRoadDirections(tile) != DRD_NONE) return CommandCost(STR_ERROR_CROSSING_ON_ONEWAY_ROAD);
+				if (GetDisallowedRoadDirections(tile).Any()) return CommandCost(STR_ERROR_CROSSING_ON_ONEWAY_ROAD);
 
 				if (RailNoLevelCrossings(railtype)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_RAIL);
 
@@ -516,25 +516,25 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 				if (roadtype_road != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_road)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 				if (roadtype_tram != INVALID_ROADTYPE && RoadNoLevelCrossing(roadtype_tram)) return CommandCost(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 
-				RoadBits road = GetRoadBits(tile, RTT_ROAD);
-				RoadBits tram = GetRoadBits(tile, RTT_TRAM);
-				if ((track == TRACK_X && ((road | tram) & ROAD_X) == 0) ||
-						(track == TRACK_Y && ((road | tram) & ROAD_Y) == 0)) {
-					Owner road_owner = GetRoadOwner(tile, RTT_ROAD);
-					Owner tram_owner = GetRoadOwner(tile, RTT_TRAM);
+				RoadBits road = GetRoadBits(tile, RoadTramType::Road);
+				RoadBits tram = GetRoadBits(tile, RoadTramType::Tram);
+				if ((track == TRACK_X && !(road | tram).Any(ROAD_X)) ||
+						(track == TRACK_Y && !(road | tram).Any(ROAD_Y))) {
+					Owner road_owner = GetRoadOwner(tile, RoadTramType::Road);
+					Owner tram_owner = GetRoadOwner(tile, RoadTramType::Tram);
 					/* Disallow breaking end-of-line of someone else
 					 * so trams can still reverse on this tile. */
-					if (Company::IsValidID(tram_owner) && HasExactlyOneBit(tram)) {
+					if (Company::IsValidID(tram_owner) && tram.Count() == 1) {
 						ret = CheckOwnership(tram_owner);
 						if (ret.Failed()) return ret;
 					}
 
-					uint num_new_road_pieces = (road != ROAD_NONE) ? 2 - CountBits(road) : 0;
+					uint num_new_road_pieces = road.Any() ? 2 - road.Count() : 0;
 					if (num_new_road_pieces > 0) {
 						cost.AddCost(num_new_road_pieces * RoadBuildCost(roadtype_road));
 					}
 
-					uint num_new_tram_pieces = (tram != ROAD_NONE) ? 2 - CountBits(tram) : 0;
+					uint num_new_tram_pieces = tram.Any() ? 2 - tram.Count() : 0;
 					if (num_new_tram_pieces > 0) {
 						cost.AddCost(num_new_tram_pieces * RoadBuildCost(roadtype_tram));
 					}
@@ -654,8 +654,8 @@ CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track trac
 				owner = GetTileOwner(tile);
 				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
 				DirtyCompanyInfrastructureWindows(owner);
-				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM));
-				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile.base());
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RoadTramType::Road), GetRoadOwner(tile, RoadTramType::Tram));
+				DeleteNewGRFInspectWindow(GrfSpecFeature::RailTypes, tile.base());
 			}
 			break;
 		}
@@ -713,7 +713,7 @@ CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track trac
 					} else {
 						DoClearSquare(tile);
 					}
-					DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile.base());
+					DeleteNewGRFInspectWindow(GrfSpecFeature::RailTypes, tile.base());
 				} else {
 					SetTrackBits(tile, present);
 					SetTrackReservation(tile, GetRailReservationTrackBits(tile) & present);
@@ -773,10 +773,10 @@ bool FloodHalftile(TileIndex t)
 
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != TRACK_BIT_NONE) {
-			Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
+			AutoRestoreBackup cur_company(_current_company, OWNER_WATER);
 			flooded = Command<Commands::RemoveRail>::Do(DoCommandFlag::Execute, t, FindFirstTrack(to_remove)).Succeeded();
-			cur_company.Restore();
 			if (!flooded) return flooded; // not yet floodable
+
 			rail_bits = rail_bits & ~to_remove;
 			if (rail_bits == TRACK_BIT_NONE) {
 				MakeShore(t);
@@ -1179,9 +1179,10 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 		AddTrackToSignalBuffer(tile, track, _current_company);
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != nullptr && v->track != TRACK_BIT_DEPOT) {
+			Train *moving_front = v->GetMovingFront();
 			/* Extend the train's path if it's not stopped or loading, or not at a safe position. */
 			if (!((v->vehstatus.Test(VehState::Stopped) && v->cur_speed == 0) || v->current_order.IsType(OT_LOADING)) ||
-					!IsSafeWaitingPosition(v, v->tile, v->GetVehicleTrackdir(), true, _settings_game.pf.forbid_90_deg)) {
+					!IsSafeWaitingPosition(v, moving_front->tile, moving_front->GetVehicleTrackdir(), true, _settings_game.pf.forbid_90_deg)) {
 				TryPathReserve(v, true);
 			}
 		}
@@ -1199,7 +1200,7 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
 	if (tile == INVALID_TILE) return false;
 
 	/* Check for track bits on the new tile */
-	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0));
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid));
 
 	if (TracksOverlap(TrackdirBitsToTrackBits(trackdirbits))) return false;
 	trackdirbits &= TrackdirReachesTrackdirs(trackdir);
@@ -1625,7 +1626,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				MarkTileDirtyByTile(tile);
 				/* update power of train on this tile */
 				for (Vehicle *v : VehiclesOnTile(tile)) {
-					if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+					if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 				}
 			}
 		}
@@ -1705,10 +1706,10 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					SetRailType(endtile, totype);
 
 					for (Vehicle *v : VehiclesOnTile(tile)) {
-						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+						if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 					}
 					for (Vehicle *v : VehiclesOnTile(endtile)) {
-						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+						if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 					}
 
 					YapfNotifyTrackLayoutChange(tile, track);
@@ -2012,7 +2013,7 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, Palett
 	 * Note: Halftile slopes only have fences on the upper part. */
 	uint num_sprites = 0;
 	PalSpriteID psid{
-		.sprite = GetCustomRailSprite(rti, ti->tile, RTSG_FENCES, IsHalftileSlope(ti->tileh) ? TCX_UPPER_HALFTILE : TCX_NORMAL, &num_sprites),
+		.sprite = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Fences, IsHalftileSlope(ti->tileh) ? TCX_UPPER_HALFTILE : TCX_NORMAL, &num_sprites),
 		.pal = pal,
 	};
 	if (psid.sprite == 0) {
@@ -2112,8 +2113,8 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 	}
 
 	bool no_combine = ti->tileh == SLOPE_FLAT && rti->flags.Test(RailTypeFlag::NoSpriteCombine);
-	SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
-	SpriteID ground = GetCustomRailSprite(rti, ti->tile, no_combine ? RTSG_GROUND_COMPLETE : RTSG_GROUND);
+	SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
+	SpriteID ground = GetCustomRailSprite(rti, ti->tile, no_combine ? RailSpriteType::GroundComplete : RailSpriteType::Ground);
 	TrackBits pbs = _settings_client.gui.show_track_reservation ? GetRailReservationTrackBits(ti->tile) : TRACK_BIT_NONE;
 
 	if (track == TRACK_BIT_NONE) {
@@ -2195,8 +2196,8 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 
 	if (IsValidCorner(halftile_corner)) {
 		DrawFoundation(ti, HalftileFoundation(halftile_corner));
-		overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY, TCX_UPPER_HALFTILE);
-		ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND, TCX_UPPER_HALFTILE);
+		overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay, TCX_UPPER_HALFTILE);
+		ground = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Ground, TCX_UPPER_HALFTILE);
 
 		/* Draw higher halftile-overlay: Use the sloped sprites with three corners raised. They probably best fit the lightning. */
 		Slope fake_slope = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
@@ -2494,7 +2495,7 @@ static void DrawTile_Rail(TileInfo *ti)
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, PAL_NONE, pal));
 
 		if (rti->UsesOverlay()) {
-			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND);
+			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Ground);
 
 			switch (GetRailDepotDirection(ti->tile)) {
 				case DIAGDIR_NE:
@@ -2514,7 +2515,7 @@ static void DrawTile_Rail(TileInfo *ti)
 			}
 
 			if (_settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
-				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
+				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
 
 				switch (GetRailDepotDirection(ti->tile)) {
 					case DIAGDIR_NE:
@@ -2554,7 +2555,7 @@ static void DrawTile_Rail(TileInfo *ti)
 				}
 			}
 		}
-		int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
+		int depot_sprite = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Depot);
 		int relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
 
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
@@ -2578,7 +2579,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	DrawSprite(image, PAL_NONE, x, y);
 
 	if (rti->UsesOverlay()) {
-		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
+		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::Ground);
 
 		switch (dir) {
 			case DIAGDIR_SW: DrawSprite(ground + RTO_X, PAL_NONE, x, y); break;
@@ -2586,7 +2587,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 			default: break;
 		}
 	}
-	int depot_sprite = GetCustomRailSprite(rti, INVALID_TILE, RTSG_DEPOT);
+	int depot_sprite = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::Depot);
 	if (depot_sprite != 0) offset = depot_sprite - SPR_RAIL_DEPOT_SE_1;
 
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
@@ -2681,7 +2682,7 @@ static void TileLoop_Rail(TileIndex tile)
 			}
 
 		case LandscapeType::Tropic:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
+			if (GetTropicZone(tile) == TropicZone::Desert) {
 				new_ground = RailGroundType::SnowOrDesert;
 				goto set_ground;
 			}
@@ -2740,7 +2741,7 @@ set_ground:
 
 
 /** @copydoc GetTileTrackStatusProc */
-static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [[maybe_unused]] uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, DiagDirection side)
 {
 	/* Case of half tile slope with water. */
 	if (mode == TRANSPORT_WATER && IsPlainRail(tile) && GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {
@@ -2807,7 +2808,7 @@ static bool ClickTile_Rail(TileIndex tile)
 {
 	if (!IsRailDepot(tile)) return false;
 
-	ShowDepotWindow(tile, VEH_TRAIN);
+	ShowDepotWindow(tile, VehicleType::Train);
 	return true;
 }
 
@@ -2966,7 +2967,7 @@ int TicksToLeaveDepot(const Train *v)
 static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, int x, int y)
 {
 	/* This routine applies only to trains in depot tiles. */
-	if (v->type != VEH_TRAIN || !IsRailDepotTile(tile)) return {};
+	if (v->type != VehicleType::Train || !IsRailDepotTile(tile)) return {};
 
 	/* Depot direction. */
 	DiagDirection dir = GetRailDepotDirection(tile);
@@ -2977,7 +2978,7 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
 	if (_fractcoords_behind[dir] == fract_coord) return VehicleEnterTileState::CannotEnter;
 
 	/* Leaving depot? */
-	if (v->direction == DiagDirToDir(dir)) {
+	if (v->GetMovingDirection() == DiagDirToDir(dir)) {
 		/* Calculate the point where the following wagon should be activated. */
 		int length = Train::From(v)->CalcNextVehicleOffset();
 
@@ -2989,18 +2990,30 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
 
 		if (fract_coord_leave == fract_coord) {
 			/* Leave the depot. */
-			if ((v = v->Next()) != nullptr) {
+			if ((v = v->GetMovingNext()) != nullptr) {
 				v->vehstatus.Reset(VehState::Hidden);
 				Train::From(v)->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 			}
 		}
 	} else if (_fractcoords_enter[dir] == fract_coord) {
 		/* Entering depot. */
-		assert(DiagDirToDir(ReverseDiagDir(dir)) == v->direction);
-		Train::From(v)->track = TRACK_BIT_DEPOT,
+		assert(DiagDirToDir(ReverseDiagDir(dir)) == v->GetMovingDirection());
+		Train::From(v)->track = TRACK_BIT_DEPOT;
 		v->vehstatus.Set(VehState::Hidden);
-		v->direction = ReverseDir(v->direction);
-		if (v->Next() == nullptr) VehicleEnterDepot(v->First());
+		if (v->GetMovingNext() == nullptr) {
+			Train *consist = Train::From(v)->First();
+			if (consist->vehicle_flags.Test(VehicleFlag::DrivingBackwards)) {
+				/* Trains always drive forwards out of a depot.
+				 * This allows a player to easily reset a confused train,
+				 * and matches the behaviour of the \c VehicleRailFlag::Reversed variable. */
+				consist->vehicle_flags.Reset(VehicleFlag::DrivingBackwards);
+			} else {
+				for (Train *u = consist; u != nullptr; u = u->Next()) {
+					u->direction = ReverseDir(u->direction);
+				}
+			}
+			VehicleEnterDepot(consist);
+		}
 		v->tile = tile;
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -3072,7 +3085,7 @@ static CommandCost TerraformTile_Rail(TileIndex tile, DoCommandFlags flags, int 
 
 		/* Allow clearing the water only if there is no ship */
 		if (was_water && HasVehicleOnTile(tile, [](const Vehicle *v) {
-				return v->type == VEH_SHIP;
+				return v->type == VehicleType::Ship;
 			})) return CommandCost(STR_ERROR_SHIP_IN_THE_WAY);
 
 		/* First test autoslope. However if it succeeds we still have to test the rest, because non-autoslope terraforming is cheaper. */

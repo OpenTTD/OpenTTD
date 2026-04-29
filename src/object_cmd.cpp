@@ -95,19 +95,19 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	/* If nothing owns the object, the colour will be random. Otherwise
 	 * get the colour from the company's livery settings. */
 	if (owner == OWNER_NONE) {
-		o->colour = Random();
+		o->recolour_offset = Random();
 	} else {
-		o->colour = Company::Get(owner)->GetCompanyRecolourOffset(LS_DEFAULT);
+		o->recolour_offset = Company::Get(owner)->GetCompanyRecolourOffset(LS_DEFAULT);
 	}
 
 	/* If the object wants only one colour, then give it that colour. */
-	if (!spec->flags.Test(ObjectFlag::Uses2CC)) o->colour &= 0xF;
+	if (!spec->flags.Test(ObjectFlag::Uses2CC)) o->recolour_offset &= 0xF;
 
 	if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) {
-		uint16_t res = GetObjectCallback(CBID_OBJECT_COLOUR, o->colour, 0, spec, o, tile);
+		uint16_t res = GetObjectCallback(CBID_OBJECT_COLOUR, o->recolour_offset, 0, spec, o, tile);
 		if (res != CALLBACK_FAILED) {
 			if (res >= 0x100) ErrorUnknownCallbackResult(spec->grf_prop.grfid, CBID_OBJECT_COLOUR, res);
-			o->colour = GB(res, 0, 8);
+			o->recolour_offset = GB(res, 0, 8);
 		}
 	}
 
@@ -192,7 +192,7 @@ void UpdateObjectColours(const Company *c)
 		/* Using the object colour callback, so not using company colour. */
 		if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) continue;
 
-		obj->colour = c->GetCompanyRecolourOffset(LS_DEFAULT, spec->flags.Test(ObjectFlag::Uses2CC));
+		obj->recolour_offset = c->GetCompanyRecolourOffset(LS_DEFAULT, spec->flags.Test(ObjectFlag::Uses2CC));
 	}
 }
 
@@ -515,7 +515,7 @@ static void ReallyClearObjectTile(Object *o)
 {
 	Object::DecTypeCount(o->type);
 	for (TileIndex tile_cur : o->location) {
-		DeleteNewGRFInspectWindow(GSF_OBJECTS, tile_cur.base());
+		DeleteNewGRFInspectWindow(GrfSpecFeature::Objects, tile_cur.base());
 
 		MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
 	}
@@ -636,7 +636,7 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 	CargoType pass = GetCargoTypeByLabel(CT_PASSENGERS);
 	if (IsValidCargoType(pass)) {
 		acceptance[pass] += std::max(1U, level);
-		SetBit(always_accepted, pass);
+		always_accepted.Set(pass);
 	}
 
 	/* Top town building generates 4, HQ can make up to 8. The
@@ -646,7 +646,7 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 	CargoType mail = GetCargoTypeByLabel(CT_MAIL);
 	if (IsValidCargoType(mail)) {
 		acceptance[mail] += std::max(1U, level / 2);
-		SetBit(always_accepted, mail);
+		always_accepted.Set(mail);
 	}
 }
 

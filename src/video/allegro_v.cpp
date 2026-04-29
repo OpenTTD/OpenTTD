@@ -474,17 +474,15 @@ void VideoDriver_Allegro::InputLoop()
 	this->fast_forward_key_pressed = key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0;
 
 	/* Determine which directional keys are down. */
-	_dirkeys =
-		(key[KEY_LEFT]  ? 1 : 0) |
-		(key[KEY_UP]    ? 2 : 0) |
-		(key[KEY_RIGHT] ? 4 : 0) |
-		(key[KEY_DOWN]  ? 8 : 0);
+	_dirkeys.Set(DirectionKey::Left, key[KEY_LEFT]);
+	_dirkeys.Set(DirectionKey::Up, key[KEY_UP]);
+	_dirkeys.Set(DirectionKey::Right, key[KEY_RIGHT]);
+	_dirkeys.Set(DirectionKey::Down, key[KEY_DOWN]);
 	if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
-		_dirkeys |=
-			(key[KEY_A] ? 1 : 0) |
-			(key[KEY_W] ? 2 : 0) |
-			(key[KEY_D] ? 4 : 0) |
-			(key[KEY_S] ? 8 : 0);
+		if (key[KEY_A]) _dirkeys.Set(DirectionKey::Left);
+		if (key[KEY_W]) _dirkeys.Set(DirectionKey::Up);
+		if (key[KEY_D]) _dirkeys.Set(DirectionKey::Right);
+		if (key[KEY_S]) _dirkeys.Set(DirectionKey::Down);
 	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();

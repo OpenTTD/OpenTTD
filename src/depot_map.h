@@ -82,10 +82,10 @@ inline VehicleType GetDepotVehicleType(Tile t)
 {
 	switch (GetTileType(t)) {
 		default: NOT_REACHED();
-		case TileType::Railway: return VEH_TRAIN;
-		case TileType::Road:    return VEH_ROAD;
-		case TileType::Water:   return VEH_SHIP;
-		case TileType::Station: return VEH_AIRCRAFT;
+		case TileType::Railway: return VehicleType::Train;
+		case TileType::Road: return VehicleType::Road;
+		case TileType::Water: return VehicleType::Ship;
+		case TileType::Station: return VehicleType::Aircraft;
 	}
 }
 

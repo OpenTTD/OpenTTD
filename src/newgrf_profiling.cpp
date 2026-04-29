@@ -123,7 +123,7 @@ uint32_t NewGRFProfiler::Finish()
 
 	uint32_t total_microseconds = 0;
 
-	auto f = FioFOpenFile(filename, "wt", Subdirectory::NO_DIRECTORY);
+	auto f = FioFOpenFile(filename, "wt", Subdirectory::None);
 
 	if (!f.has_value()) {
 		IConsolePrint(CC_ERROR, "Failed to open '{}' for writing.", filename);
@@ -184,7 +184,7 @@ static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({ TimerGameTick::Pr
 
 /**
  * Start the timeout timer that will finish all profiling sessions.
- * @param ticks The timemout in game ticks.
+ * @param ticks The timeout in game ticks.
  */
 /* static */ void NewGRFProfiler::StartTimer(uint64_t ticks)
 {

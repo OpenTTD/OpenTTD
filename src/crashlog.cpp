@@ -192,7 +192,7 @@ bool CrashLog::WriteCrashLog()
 {
 	this->crashlog_filename = this->CreateFileName(".json.log");
 
-	auto file = FioFOpenFile(this->crashlog_filename, "w", NO_DIRECTORY);
+	auto file = FioFOpenFile(this->crashlog_filename, "w", Subdirectory::None);
 	if (!file.has_value()) return false;
 
 	std::string survey_json = this->survey.dump(4);
@@ -232,7 +232,7 @@ bool CrashLog::WriteSavegame()
 		this->savegame_filename = this->CreateFileName(".sav");
 
 		/* Don't do a threaded saveload. */
-		return SaveOrLoad(this->savegame_filename, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY, false) == SL_OK;
+		return SaveOrLoad(this->savegame_filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::None, false) == SL_OK;
 	} catch (...) {
 		return false;
 	}

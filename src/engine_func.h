@@ -20,8 +20,8 @@ void StartupEngines();
 void CheckEngines();
 
 /* Original engine data counts and offsets */
-extern const uint8_t _engine_counts[4];
-extern const uint8_t _engine_offsets[4];
+uint8_t GetOriginalEngineCount(VehicleType type);
+uint8_t GetOriginalEngineOffset(VehicleType type);
 
 bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company);
 bool IsEngineRefittable(EngineID engine);

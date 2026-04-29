@@ -50,7 +50,7 @@ struct EndGameHighScoreBaseWindow : Window {
 		this->DrawWidgets();
 
 		/* Fill with the appropriate background colour instead of leaving default window colour */
-		GfxFillRect(Rect{0, 0, this->width, this->height}, PixelColour{105}, FILLRECT_OPAQUE);
+		GfxFillRect(Rect{0, 0, this->width, this->height}, PixelColour{105}, FillRectMode::Opaque);
 
 		/* Standard background slices are 50 pixels high, but it's designed
 		 * for 480 pixels total. 96% of 500 is 480. */
@@ -214,7 +214,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55),
 						GetString(STR_JUST_BIG_RAW_STRING, hs[i].name), colour);
-				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FS_LARGE) + ScaleSpriteTrad(i * 55),
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FontSize::Large) + ScaleSpriteTrad(i * 55),
 						GetString(STR_HIGHSCORE_STATS, hs[i].title, hs[i].score), colour);
 			}
 		}
@@ -222,18 +222,20 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_highscore_widgets = {
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Brown, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
+/** Window definition for the highscore window. */
 static WindowDesc _highscore_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	{},
 	_nested_highscore_widgets
 );
 
+/** Window definition for the endgame window. */
 static WindowDesc _endgame_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	{},
 	_nested_highscore_widgets

@@ -59,7 +59,7 @@ static void GRFInfo(ByteReader &buf)
 	uint32_t grfid     = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
-	if (_cur_gps.stage < GrfLoadingStage::Reserve && _cur_gps.grfconfig->status != GCS_UNKNOWN) {
+	if (_cur_gps.stage < GrfLoadingStage::Reserve && _cur_gps.grfconfig->status != GRFStatus::Unknown) {
 		DisableGrf(STR_NEWGRF_ERROR_MULTIPLE_ACTION_8);
 		return;
 	}
@@ -70,7 +70,7 @@ static void GRFInfo(ByteReader &buf)
 	}
 
 	_cur_gps.grffile->grf_version = version;
-	_cur_gps.grfconfig->status = _cur_gps.stage < GrfLoadingStage::Reserve ? GCS_INITIALISED : GCS_ACTIVATED;
+	_cur_gps.grfconfig->status = _cur_gps.stage < GrfLoadingStage::Reserve ? GRFStatus::Initialised : GRFStatus::Activated;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, std::byteswap(grfid), StrMakeValid(name), (_cur_gps.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_gps.grfconfig->version);

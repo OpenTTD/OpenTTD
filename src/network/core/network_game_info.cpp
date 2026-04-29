@@ -132,7 +132,7 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 
 	/* Check if we have all the GRFs on the client-system too. */
 	for (const auto &c : ngi.grfconfig) {
-		if (c->status == GCS_NOT_FOUND) ngi.compatible = false;
+		if (c->status == GRFStatus::NotFound) ngi.compatible = false;
 	}
 }
 
@@ -185,10 +185,10 @@ const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo()
 static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::string_view name)
 {
 	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config.ident.grfid, FGCM_EXACT, &config.ident.md5sum);
+	const GRFConfig *f = FindGRFConfig(config.ident.grfid, FindGRFConfigMode::Exact, &config.ident.md5sum);
 	if (f == nullptr) {
 		AddGRFTextToList(config.name, name.empty() ? GetString(STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN) : name);
-		config.status = GCS_NOT_FOUND;
+		config.status = GRFStatus::NotFound;
 	} else {
 		config.filename = f->filename;
 		config.name = f->name;

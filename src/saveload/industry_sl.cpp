@@ -264,7 +264,7 @@ struct INDYChunkHandler : ChunkHandler {
 			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_76)) {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
-				i->psa = PersistentStorage::Create(0, GSF_INVALID, TileIndex{});
+				i->psa = PersistentStorage::Create(0, GrfSpecFeature::Invalid, TileIndex{});
 				std::copy(std::begin(_old_ind_persistent_storage.storage), std::end(_old_ind_persistent_storage.storage), std::begin(i->psa->storage));
 			}
 			if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {

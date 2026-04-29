@@ -64,7 +64,7 @@ void CheckTrainsLengths();
 void FreeTrainTrackReservation(const Train *v);
 bool TryPathReserve(Train *v, bool mark_as_stuck = false, bool first_tile_okay = false);
 
-int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, int *station_ahead, int *station_length);
+int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *moving_front, int *station_ahead, int *station_length);
 
 void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
@@ -94,7 +94,7 @@ struct TrainCache {
 /**
  * 'Train' is either a loco or a wagon.
  */
-struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
+struct Train final : public GroundVehicle<Train, VehicleType::Train> {
 	VehicleRailFlags flags{}; ///< Which flags has this train currently set. @see VehicleRailFlag for more details.
 	uint16_t crash_anim_pos = 0; ///< Crash animation counter.
 	uint16_t wait_counter = 0; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
@@ -115,7 +115,7 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	/** We want to 'destruct' the right class. */
 	~Train() override { this->PreDestructor(); }
 
-	friend struct GroundVehicle<Train, VEH_TRAIN>; // GroundVehicle needs to use the acceleration functions defined at Train.
+	friend struct GroundVehicle<Train, VehicleType::Train>; // GroundVehicle needs to use the acceleration functions defined at Train.
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
@@ -183,7 +183,8 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 		 * longer than the part after the center. This means we have to round up the
 		 * length of the next vehicle but may not round the length of the current
 		 * vehicle. */
-		return this->gcache.cached_veh_length / 2 + (this->Next() != nullptr ? this->Next()->gcache.cached_veh_length + 1 : 0) / 2;
+		uint8_t rounding = this->IsDrivingBackwards() ? 1 : 0;
+		return (this->gcache.cached_veh_length + rounding) / 2 + (this->GetMovingNext() != nullptr ? this->GetMovingNext()->gcache.cached_veh_length + 1 - rounding : 0) / 2;
 	}
 
 	/**

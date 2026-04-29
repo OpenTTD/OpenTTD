@@ -333,7 +333,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec &&spec)
 uint32_t GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LandscapeType::Tropic: return GetTropicZone(tile);
+		case LandscapeType::Tropic: return to_underlying(GetTropicZone(tile));
 		case LandscapeType::Arctic: {
 			bool has_snow;
 			switch (GetTileType(tile)) {
@@ -454,7 +454,7 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 uint32_t GetCompanyInfo(CompanyID owner, const Livery *l)
 {
 	if (l == nullptr && Company::IsValidID(owner)) l = &Company::Get(owner)->livery[LS_DEFAULT];
-	return owner.base() | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (l->colour1 << 24) | (l->colour2 << 28) : 0);
+	return owner.base() | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (to_underlying(l->colour1) << 24) | (to_underlying(l->colour2) << 28) : 0);
 }
 
 /**

@@ -28,7 +28,7 @@
  */
 static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	switch (prop) {
 		case 0x09:
@@ -79,7 +79,7 @@ static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader &buf)
 			break;
 
 		default:
-			ret = CIR_UNKNOWN;
+			ret = ChangeInfoResult::Unknown;
 			break;
 	}
 	return ret;
@@ -95,11 +95,11 @@ static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader &buf)
  */
 static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_HOUSES_PER_GRF) {
 		GrfMsg(1, "TownHouseChangeInfo: Too many houses loaded ({}), max ({}). Ignoring.", last, NUM_HOUSES_PER_GRF);
-		return CIR_INVALID_ID;
+		return ChangeInfoResult::InvalidId;
 	}
 
 	/* Allocate house specs if they haven't been allocated already. */
@@ -139,10 +139,10 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 					housespec->grf_prop.subst_id = subs_id;
 					housespec->grf_prop.SetGRFFile(_cur_gps.grffile);
 					/* Set default colours for randomization, used if not overridden. */
-					housespec->random_colour[0] = COLOUR_RED;
-					housespec->random_colour[1] = COLOUR_BLUE;
-					housespec->random_colour[2] = COLOUR_ORANGE;
-					housespec->random_colour[3] = COLOUR_GREEN;
+					housespec->random_colour[0] = Colours::Red;
+					housespec->random_colour[1] = Colours::Blue;
+					housespec->random_colour[2] = Colours::Orange;
+					housespec->random_colour[3] = Colours::Green;
 
 					/* House flags 40 and 80 are exceptions; these flags are never set automatically. */
 					housespec->building_flags.Reset({BuildingFlag::IsChurch, BuildingFlag::IsStadium});
@@ -305,7 +305,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				uint8_t count = buf.ReadByte();
 				for (uint8_t j = 0; j < count; j++) {
 					CargoType cargo = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
-					if (IsValidCargoType(cargo)) SetBit(housespec->watched_cargoes, cargo);
+					if (IsValidCargoType(cargo)) housespec->watched_cargoes.Set(cargo);
 				}
 				break;
 			}
@@ -324,7 +324,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				if (count > lengthof(housespec->accepts_cargo)) {
 					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
 					error->param_value[1] = prop;
-					return CIR_DISABLED;
+					return ChangeInfoResult::Disabled;
 				}
 				/* Always write the full accepts_cargo array, and check each index for being inside the
 				 * provided data. This ensures all values are properly initialized, and also avoids
@@ -343,11 +343,11 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 			}
 
 			case 0x24: // Badge list
-				housespec->badges = ReadBadgeList(buf, GSF_HOUSES);
+				housespec->badges = ReadBadgeList(buf, GrfSpecFeature::Houses);
 				break;
 
 			default:
-				ret = CIR_UNKNOWN;
+				ret = ChangeInfoResult::Unknown;
 				break;
 		}
 	}
@@ -355,5 +355,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return TownHouseChangeInfo(first, last, prop, buf); }
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Houses>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Houses>::Activation(uint first, uint last, int prop, ByteReader &buf) { return TownHouseChangeInfo(first, last, prop, buf); }

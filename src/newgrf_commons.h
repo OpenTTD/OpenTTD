@@ -462,9 +462,9 @@ struct VariableGRFFileProps : GRFFilePropsBase {
  * Sprite groups indexed by CargoType.
  */
 struct CargoGRFFileProps : VariableGRFFileProps<CargoType> {
-	static constexpr CargoType SG_DEFAULT = NUM_CARGO; ///< Default type used when no more-specific cargo matches.
-	static constexpr CargoType SG_PURCHASE = NUM_CARGO + 1; ///< Used in purchase lists before an item exists.
-	static constexpr CargoType SG_DEFAULT_NA = NUM_CARGO + 2; ///< Used only by stations and roads when no more-specific cargo matches.
+	static constexpr CargoType SG_DEFAULT{NUM_CARGO}; ///< Default type used when no more-specific cargo matches.
+	static constexpr CargoType SG_PURCHASE{NUM_CARGO + 1}; ///< Used in purchase lists before an item exists.
+	static constexpr CargoType SG_DEFAULT_NA{NUM_CARGO + 2}; ///< Used only by stations and roads when no more-specific cargo matches.
 };
 
 /**

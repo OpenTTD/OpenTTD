@@ -1143,8 +1143,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Verstel die vla
 STR_CONFIG_SETTING_RECESSIONS                                   :Resessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :As dit geaktiveer is, kan resessie elke paar jaar voorkom. Gedurende 'n resessie word is vervaardiging drasties minder en aan die einde van die resessie word dit weer herstel na normale vlakke.
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Verhoed dat treine kan omdraai in stasies: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :As dit geaktiveer is, sal treine nie in deurstasies omdraai nie, selfs al is daar 'n korter roete deur om te draai.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Rampe: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skakel rampe aan wat af en toe voertuie of infrastruktuur kan blokkeer of vernietig.
@@ -1611,6 +1611,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :As dit geaktive
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed beperkings toe: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :As dit geaktiveer is bepaal die spoedbeperking van treinwaens ook die maksimum spoed van die hele trein
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spore: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :As dit geaktiveerd is, is dit nie nodig om spore te elektrifiseer voordat elektriese treine die spore kan gebruik nie
@@ -3799,7 +3800,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Massa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY_LONG} (vorige jaar: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Hoeveel keer onklaar sedert laaste diens: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Geen{STRING}
@@ -3921,7 +3921,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig data om sprong op te baseer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Vrag persentasie
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betroubaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimum spoed

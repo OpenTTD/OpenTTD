@@ -49,11 +49,11 @@ static void MaybeInstallFallbackCargoLabel(uint id, uint last, CargoLabel label)
  */
 static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_CARGO) {
 		GrfMsg(2, "CargoChangeInfo: Cargo type {} out of range (max {})", last, NUM_CARGO - 1);
-		return CIR_INVALID_ID;
+		return ChangeInfoResult::InvalidId;
 	}
 
 	for (uint id = first; id < last; ++id) {
@@ -64,9 +64,9 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				cs->bitnum = buf.ReadByte();
 				if (cs->IsValid()) {
 					cs->grffile = _cur_gps.grffile;
-					SetBit(_cargo_mask, id);
+					_cargo_mask.Set(cs->Index());
 				} else {
-					ClrBit(_cargo_mask, id);
+					_cargo_mask.Reset(cs->Index());
 				}
 				BuildCargoLabelMap();
 				break;
@@ -145,15 +145,15 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				uint8_t substitute_type = buf.ReadByte();
 
 				switch (substitute_type) {
-					case 0x00: cs->town_acceptance_effect = TAE_PASSENGERS; break;
-					case 0x02: cs->town_acceptance_effect = TAE_MAIL; break;
-					case 0x05: cs->town_acceptance_effect = TAE_GOODS; break;
-					case 0x09: cs->town_acceptance_effect = TAE_WATER; break;
-					case 0x0B: cs->town_acceptance_effect = TAE_FOOD; break;
+					case 0x00: cs->town_acceptance_effect = TownAcceptanceEffect::Passengers; break;
+					case 0x02: cs->town_acceptance_effect = TownAcceptanceEffect::Mail; break;
+					case 0x05: cs->town_acceptance_effect = TownAcceptanceEffect::Goods; break;
+					case 0x09: cs->town_acceptance_effect = TownAcceptanceEffect::Water; break;
+					case 0x0B: cs->town_acceptance_effect = TownAcceptanceEffect::Food; break;
 					default:
 						GrfMsg(1, "CargoChangeInfo: Unknown town growth substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
-					case 0xFF: cs->town_acceptance_effect = TAE_NONE; break;
+					case 0xFF: cs->town_acceptance_effect = TownAcceptanceEffect::None; break;
 				}
 				break;
 			}
@@ -174,12 +174,12 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				uint8_t substitute_type = buf.ReadByte();
 
 				switch (substitute_type) {
-					case 0x00: cs->town_production_effect = TPE_PASSENGERS; break;
-					case 0x02: cs->town_production_effect = TPE_MAIL; break;
+					case 0x00: cs->town_production_effect = TownProductionEffect::Passengers; break;
+					case 0x02: cs->town_production_effect = TownProductionEffect::Mail; break;
 					default:
 						GrfMsg(1, "CargoChangeInfo: Unknown town production substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
-					case 0xFF: cs->town_production_effect = TPE_NONE; break;
+					case 0xFF: cs->town_production_effect = TownProductionEffect::None; break;
 				}
 				break;
 			}
@@ -189,7 +189,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			default:
-				ret = CIR_UNKNOWN;
+				ret = ChangeInfoResult::Unknown;
 				break;
 		}
 	}
@@ -197,5 +197,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return CargoReserveInfo(first, last, prop, buf); }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Activation(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
+/** @copydoc GrfChangeInfoHandler::Reserve */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Cargoes>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return CargoReserveInfo(first, last, prop, buf); }
+/** @copybrief GrfChangeInfoHandler::Activation @return Always ChangeInfoResult::Unhandled. */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Cargoes>::Activation(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }

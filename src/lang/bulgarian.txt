@@ -1324,8 +1324,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Задава н
 STR_CONFIG_SETTING_RECESSIONS                                   :Рецесии: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ако е разрешено, рецесии може да се появяват на всеки няколко години. По време на рецесия цялото производство е значително намалено (връща се на предишно ниво след края на рецесията)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забрани обръщане на посоката на влакове в гарите: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ако е избрано, влаковете няма да обръщат на не-терминални гари, ако има по-кратък път до целта им при обръщане
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Бедствия: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включване/Изключване на бедствия, които могат от време на време да блокират или разрушат превозни средства или инфраструктура
@@ -1868,6 +1868,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Когато е
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Вагоните имат ограничение на скоростта: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ако тази настройка бъде активирана, максималната скорост на вагоните ще се взима предвид при изчисляването на максималната скорост на влака
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Без електрифициране на релси: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Активирането на тази настройка премахва нуждата от електрифициране на двурелсовите линии, за да могат електрическите локомотиви да се движат по тях
@@ -4442,7 +4443,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Печа
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Печалба за тази година: {LTBLUE}{CURRENCY_LONG} (за миналата: {CURRENCY_LONG}) {BLACK}Мин. производителност: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Печалба за този период: {LTBLUE}{CURRENCY_LONG} (за миналия: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Печалба за този период: {LTBLUE}{CURRENCY_LONG} (за миналия: {CURRENCY_LONG}) {BLACK}Мин. производителност: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надеждност: {LTBLUE}{COMMA}% {BLACK}Разваляния от последното сервизиране: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{G=m}{LTBLUE}{ENGINE} {BLACK}Построен: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Капацитет: {LTBLUE}няма{STRING}
@@ -4582,7 +4582,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Избе
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данни за превозното средство, на които се базира
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент натовареност
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надеждност
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максимална скорост

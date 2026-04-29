@@ -251,7 +251,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			/* We don't know where the nearest depot is... (yet) */
 			if (order->GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) return INVALID_TILE;
 
-			if (v->type != VEH_AIRCRAFT) return ::Depot::Get(order->GetDestination().ToDepotID())->xy;
+			if (v->type != VehicleType::Aircraft) return ::Depot::Get(order->GetDestination().ToDepotID())->xy;
 			/* Aircraft's hangars are referenced by StationID, not DepotID */
 			const Station *st = ::Station::Get(order->GetDestination().ToStationID());
 			if (!st->airport.HasHangar()) return INVALID_TILE;
@@ -492,13 +492,13 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) odaf.Set(OrderDepotActionFlag::NearestDepot);
 
 			OrderNonStopFlags onsf{};
-			if ((order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NoIntermediate);
+			if ((order_flags & OF_NON_STOP_INTERMEDIATE) != 0) onsf.Set(OrderNonStopFlag::NonStop);
 			if ((order_flags & OF_GOTO_NEAREST_DEPOT) != 0) {
 				order.MakeGoToDepot(DepotID::Invalid(), odtf, onsf, odaf);
 			} else {
 				/* Check explicitly if the order is to a station (for aircraft) or
 				 * to a depot (other vehicle types). */
-				if (::Vehicle::Get(vehicle_id)->type == VEH_AIRCRAFT) {
+				if (::Vehicle::Get(vehicle_id)->type == VehicleType::Aircraft) {
 					if (!::IsTileType(destination, TileType::Station)) return false;
 					order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
 				} else {

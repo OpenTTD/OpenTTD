@@ -64,7 +64,7 @@ static inline uint8_t GetColourBrightness(Colour colour)
  */
 inline bool IsValidColours(Colours colours)
 {
-	return colours < COLOUR_END;
+	return colours < Colours::End;
 }
 
 TextColour GetContrastColour(PixelColour background, uint8_t threshold = 128);

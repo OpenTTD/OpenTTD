@@ -83,10 +83,10 @@ void NetworkAfterNewGRFScan()
 		for (auto &c : item->info.grfconfig) {
 			assert(c->flags.Test(GRFConfigFlag::Copy));
 
-			const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
+			const GRFConfig *f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Exact, &c->ident.md5sum);
 			if (f == nullptr) {
 				/* Don't know the GRF (anymore), so mark game incompatible. */
-				c->status = GCS_NOT_FOUND;
+				c->status = GRFStatus::NotFound;
 
 				/* If we miss a file, we're obviously incompatible. */
 				item->info.compatible = false;
@@ -94,7 +94,7 @@ void NetworkAfterNewGRFScan()
 				c->filename = f->filename;
 				c->name = f->name;
 				c->info = f->info;
-				c->status = GCS_UNKNOWN;
+				c->status = GRFStatus::Unknown;
 			}
 		}
 	}

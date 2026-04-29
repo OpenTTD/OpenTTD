@@ -191,6 +191,7 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 
 /**
  * Start the game loop.
+ * @param note Notification containing the application object. Exists because the API requires it.
  */
 - (void)launchGameEngine: (NSNotification*) note
 {
@@ -210,6 +211,7 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 
 /**
  * Called when the internal event loop has just started running.
+ * @param note Notification containing the application object. Exists because the API requires it.
  */
 - (void) applicationDidFinishLaunching: (NSNotification*) note
 {
@@ -222,6 +224,8 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 
 /**
  * Display the in game quit confirmation dialog.
+ * @param sender The application object. Exists because the API requires it.
+ * @return Whether the application should be terminating right now.
  */
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication*) sender
 {
@@ -244,6 +248,8 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
  * Starting with 14, macOS logs a warning if we don't implement this ourselves. Since OpenTTD does not (yet) make use of restorable state, we simply don't care what happens with it.
  *
  * Explained here: https://developer.apple.com/documentation/foundation/nssecurecoding
+ * @param sender The application object. Exists because the API requires it.
+ * @return Always \c YES.
  */
 - (BOOL)applicationSupportsSecureRestorableState:(NSApplication*) sender
 {
@@ -434,6 +440,12 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 
 /**
  * Initialize event system for the application rectangle
+ * @param contentRect The boundaries of the window.
+ * @param styleMask The window style to apply.
+ * @param backingType How the drawing is buffered.
+ * @param flag Whether to create the window immediately, or once it's moved on screen.
+ * @param drv The underlying video driver.
+ * @return The initialized window.
  */
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv
 {
@@ -454,7 +466,9 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 }
 
 /**
- * Define the rectangle we draw our window in
+ * Define the rectangle we draw our window in.
+ * @param frameRect The new boundaries of the window.
+ * @param flag Whether the window redraws the views.
  */
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag
 {
@@ -567,7 +581,8 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 }
 
 /**
- * Allow to handle events
+ * Allow to handle events.
+ * @return Always \c YES.
  */
 - (BOOL)acceptsFirstResponder
 {
@@ -582,7 +597,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	}
 }
 
-/** Update mouse cursor to use for this view. */
+/**
+ * Update mouse cursor to use for this view.
+ * @param event Event from the operating system. Exists because the API requires it.
+ */
 - (void)cursorUpdate:(NSEvent *)event
 {
 	[ (_game_mode == GM_BOOTSTRAP ? [ NSCursor arrowCursor ] : [ NSCursor clearCocoaCursor ]) set ];
@@ -832,10 +850,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 - (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(char32_t)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
 {
 	switch (keycode) {
-		case QZ_UP:    SB(_dirkeys, 1, 1, down); break;
-		case QZ_DOWN:  SB(_dirkeys, 3, 1, down); break;
-		case QZ_LEFT:  SB(_dirkeys, 0, 1, down); break;
-		case QZ_RIGHT: SB(_dirkeys, 2, 1, down); break;
+		case QZ_UP: _dirkeys.Set(DirectionKey::Up, down); break;
+		case QZ_DOWN: _dirkeys.Set(DirectionKey::Down, down); break;
+		case QZ_LEFT: _dirkeys.Set(DirectionKey::Left, down); break;
+		case QZ_RIGHT: _dirkeys.Set(DirectionKey::Right, down); break;
 
 		case QZ_w:
 			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(modifiers & NSEventModifierFlagOption)) {
@@ -1012,7 +1030,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 }
 
 
-/** Insert the given text at the given range. */
+/**
+ * Insert the given text at the given range.
+ * @param aString The string to insert.
+ * @param replacementRange The range of the original string to replace.
+ */
 - (void)insertText:(id)aString replacementRange:(NSRange)replacementRange
 {
 	if (!EditBoxInGlobalFocus()) return;
@@ -1032,13 +1054,21 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	HandleTextInput([ s UTF8String ], false, std::nullopt, insert_point, replace_range);
 }
 
-/** Insert the given text at the caret. */
+/**
+ * Insert the given text at the caret.
+ * @param aString The string to insert.
+ */
 - (void)insertText:(id)aString
 {
 	[ self insertText:aString replacementRange:NSMakeRange(NSNotFound, 0) ];
 }
 
-/** Set a new marked text and reposition the caret. */
+/**
+ * Set a new marked text and reposition the caret.
+ * @param aString The string to set the marked text for.
+ * @param selRange The new selection range.
+ * @param replacementRange The range to replace, counted from the marked range.
+ */
 - (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange replacementRange:(NSRange)replacementRange
 {
 	if (!EditBoxInGlobalFocus()) return;
@@ -1064,7 +1094,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	}
 }
 
-/** Set a new marked text and reposition the caret. */
+/**
+ * Set a new marked text and reposition the caret.
+ * @param aString The string to set the marked text for.
+ * @param selRange The new selection range.
+ */
 - (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange
 {
 	[ self setMarkedText:aString selectedRange:selRange replacementRange:NSMakeRange(NSNotFound, 0) ];
@@ -1076,7 +1110,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	HandleTextInput({}, true);
 }
 
-/** Get the caret position. */
+/**
+ * Get the caret position.
+ * @return The range with caret position.
+ */
 - (NSRange)selectedRange
 {
 	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
@@ -1087,7 +1124,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return NSMakeRange(start, 0);
 }
 
-/** Get the currently marked range. */
+/**
+ * Get the currently marked range.
+ * @return The currently marked range.
+ */
 - (NSRange)markedRange
 {
 	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
@@ -1104,7 +1144,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return NSMakeRange(NSNotFound, 0);
 }
 
-/** Is any text marked? */
+/**
+ * Is any text marked?
+ * @return \c YES iff text is marked.
+ */
 - (BOOL)hasMarkedText
 {
 	if (!EditBoxInGlobalFocus()) return NO;
@@ -1112,7 +1155,12 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return _focused_window->GetFocusedTextbuf()->markend != 0;
 }
 
-/** Get a string corresponding to the given range. */
+/**
+ * Get a string corresponding to the given range.
+ * @param theRange The requested range of the string to return.
+ * @param[out] actualRange Optional output of range after validation.
+ * @return The requested substring.
+ */
 - (NSAttributedString *)attributedSubstringForProposedRange:(NSRange)theRange actualRange:(NSRangePointer)actualRange
 {
 	if (!EditBoxInGlobalFocus()) return nil;
@@ -1127,13 +1175,20 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return [ [ [ NSAttributedString alloc ] initWithString:[ s substringWithRange:valid_range ] ] autorelease ];
 }
 
-/** Get a string corresponding to the given range. */
+/**
+ * Get a string corresponding to the given range.
+ * @param theRange The requested range of the string to return.
+ * @return The requested substring.
+ */
 - (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange
 {
 	return [ self attributedSubstringForProposedRange:theRange actualRange:nil ];
 }
 
-/** Get the current edit box string. */
+/**
+ * Get the current edit box string.
+ * @return The string from the edit box.
+ */
 - (NSAttributedString *)attributedString
 {
 	if (!EditBoxInGlobalFocus()) return [ [ [ NSAttributedString alloc ] initWithString:@"" ] autorelease ];
@@ -1142,7 +1197,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return [ [ [ NSAttributedString alloc ] initWithString:[ [ NSString alloc ] initWithBytes:text.data() length:text.size() encoding:NSUTF8StringEncoding ] ] autorelease ];
 }
 
-/** Get the character that is rendered at the given point. */
+/**
+ * Get the character that is rendered at the given point.
+ * @param thePoint The point in screen coordinates to get the character index for.
+ * @return A negative number to denote an error, otherwise the number of UTF-16 characters up to \c thePoint.
+ */
 - (NSUInteger)characterIndexForPoint:(NSPoint)thePoint
 {
 	if (!EditBoxInGlobalFocus()) return NSNotFound;
@@ -1158,7 +1217,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return CountUtf16Units(text.substr(0, index));
 }
 
-/** Get the bounding rect for the given range. */
+/**
+ * Get the bounding rect for the given range.
+ * @param aRange The start and end location of the string in UTF-16 characters.
+ * @return The rectangle in screen coordinates for the given range.
+ */
 - (NSRect)firstRectForCharacterRange:(NSRange)aRange
 {
 	if (!EditBoxInGlobalFocus()) return NSMakeRect(0, 0, 0, 0);
@@ -1175,13 +1238,21 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return [ [ self window ] convertRectToScreen:[ self convertRect:view_rect toView:nil ] ];
 }
 
-/** Get the bounding rect for the given range. */
+/**
+ * Get the bounding rect for the given range.
+ * @param aRange The start and end location of the string in UTF-16 characters.
+ * @param[out] actualRange Optional output of range after validation. Exists because the API requires it.
+ * @return The rectangle in screen coordinates for the given range.
+ */
 - (NSRect)firstRectForCharacterRange:(NSRange)aRange actualRange:(NSRangePointer)actualRange
 {
 	return [ self firstRectForCharacterRange:aRange ];
 }
 
-/** Get all string attributes that we can process for marked text. */
+/**
+ * Get all string attributes that we can process for marked text.
+ * @return The valid attributes, in this case an empty array.
+ */
 - (NSArray*)validAttributesForMarkedText
 {
 	return [ NSArray array ];
@@ -1403,7 +1474,11 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	VideoDriver_Cocoa *driver;
 }
 
-/** Initialize the video driver */
+/**
+ * Initialize the video driver.
+ * @param drv Instance of the video driver.
+ * @return The new instance, or \c nullptr.
+ */
 - (instancetype)initWithDriver:(VideoDriver_Cocoa *)drv
 {
 	if (self = [ super init ]) {
@@ -1412,8 +1487,9 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	return self;
 }
 /**
- * Handle closure requests
+ * Handle closure requests.
  * @param sender Where the event comes from.
+ * @return \c NO as we want to ask the user whether to quit.
  */
 - (BOOL)windowShouldClose:(id)sender
 {
@@ -1421,7 +1497,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 
 	return NO;
 }
-/** Window entered fullscreen mode (10.7). */
+/**
+ * Window entered fullscreen mode (10.7).
+ * @param aNotification Notification containing the window object.
+ */
 - (void)windowDidEnterFullScreen:(NSNotification *)aNotification
 {
 	NSPoint loc = [ driver->cocoaview convertPoint:[ [ aNotification object ] mouseLocationOutsideOfEventStream ] fromView:nil ];
@@ -1434,7 +1513,10 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 		[ e release ];
 	}
 }
-/** Screen the window is on changed. */
+/**
+ * Screen the window is on changed.
+ * @param notification Notification containing the window object. Exists because the API requires it.
+ */
 - (void)windowDidChangeBackingProperties:(NSNotification *)notification
 {
 	bool did_adjust = AdjustGUIZoom(true);
@@ -1445,7 +1527,12 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	if (did_adjust) ReInitAllWindows(true);
 }
 
-/** Presentation options to use for full screen mode. */
+/**
+ * Presentation options to use for full screen mode.
+ * @param window The window to get the presentation options for.
+ * @param proposedOptions A proposed set of options.
+ * @return The actual options we want.
+ */
 - (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
 {
 	return NSApplicationPresentationFullScreen | NSApplicationPresentationHideMenuBar | NSApplicationPresentationHideDock;

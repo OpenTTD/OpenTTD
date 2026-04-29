@@ -110,7 +110,7 @@ public:
 	void ValidateFileList(bool force_reload = false)
 	{
 		if (force_reload || !this->file_list_valid) {
-			this->BuildFileList(this->abstract_filetype, SLO_LOAD, this->show_dirs);
+			this->BuildFileList(this->abstract_filetype, SaveLoadOperation::Load, this->show_dirs);
 			this->file_list_valid = true;
 		}
 	}
@@ -120,9 +120,9 @@ public:
 	bool file_list_valid = false; ///< If set, the file list is valid.
 };
 
-static ConsoleFileList _console_file_list_savegame{FT_SAVEGAME, true}; ///< File storage cache for savegames.
-static ConsoleFileList _console_file_list_scenario{FT_SCENARIO, false}; ///< File storage cache for scenarios.
-static ConsoleFileList _console_file_list_heightmap{FT_HEIGHTMAP, false}; ///< File storage cache for heightmaps.
+static ConsoleFileList _console_file_list_savegame{AbstractFileType::Savegame, true}; ///< File storage cache for savegames.
+static ConsoleFileList _console_file_list_scenario{AbstractFileType::Scenario, false}; ///< File storage cache for scenarios.
+static ConsoleFileList _console_file_list_heightmap{AbstractFileType::Heightmap, false}; ///< File storage cache for heightmaps.
 
 /****************
  * command hooks
@@ -425,7 +425,7 @@ static bool ConSave(std::span<std::string_view> argv)
 		std::string filename = fmt::format("{}.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
+		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Save) != SL_OK) {
 			IConsolePrint(CC_ERROR, "Saving map failed.");
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
@@ -467,7 +467,7 @@ static bool ConLoad(std::span<std::string_view> argv)
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_SAVEGAME) {
+		if (item->type.abstract == AbstractFileType::Savegame) {
 			_switch_mode = SM_LOAD_GAME;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -494,7 +494,7 @@ static bool ConLoadScenario(std::span<std::string_view> argv)
 	_console_file_list_scenario.ValidateFileList();
 	const FiosItem *item = _console_file_list_scenario.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_SCENARIO) {
+		if (item->type.abstract == AbstractFileType::Scenario) {
 			_switch_mode = SM_LOAD_GAME;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -521,7 +521,7 @@ static bool ConLoadHeightmap(std::span<std::string_view> argv)
 	_console_file_list_heightmap.ValidateFileList();
 	const FiosItem *item = _console_file_list_heightmap.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_HEIGHTMAP) {
+		if (item->type.abstract == AbstractFileType::Heightmap) {
 			_switch_mode = SM_START_HEIGHTMAP;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -548,7 +548,7 @@ static bool ConRemove(std::span<std::string_view> argv)
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		if (item->type.abstract == FT_SAVEGAME) {
+		if (item->type.abstract == AbstractFileType::Savegame) {
 			if (!FioRemove(item->name)) {
 				IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
 			}
@@ -627,9 +627,9 @@ static bool ConChangeDirectory(std::span<std::string_view> argv)
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
 		switch (item->type.detailed) {
-			case DFT_FIOS_DIR:
-			case DFT_FIOS_DRIVE:
-			case DFT_FIOS_PARENT:
+			case DetailedFileType::FiosDirectory:
+			case DetailedFileType::FiosDrive:
+			case DetailedFileType::FiosParent:
 				FiosBrowseTo(item);
 				break;
 			default: IConsolePrint(CC_ERROR, "{}: Not a directory.", file);
@@ -1207,7 +1207,7 @@ static bool ConExec(std::span<std::string_view> argv)
 
 	if (argv.size() < 2) return false;
 
-	auto script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
+	auto script_file = FioFOpenFile(argv[1], "r", Subdirectory::Base);
 
 	if (!script_file.has_value()) {
 		if (argv.size() == 2 || argv[2] != "0") IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[1]);
@@ -1254,7 +1254,7 @@ static bool ConSchedule(std::span<std::string_view> argv)
 	}
 
 	/* Check if the file exists. It might still go away later, but helpful to show an error now. */
-	if (!FioCheckFileExists(argv[2], BASE_DIR)) {
+	if (!FioCheckFileExists(argv[2], Subdirectory::Base)) {
 		IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[2]);
 		return true;
 	}
@@ -1407,7 +1407,7 @@ static bool ConReload(std::span<std::string_view> argv)
 		return true;
 	}
 
-	if (_file_to_saveload.ftype.abstract == FT_NONE || _file_to_saveload.ftype.abstract == FT_INVALID) {
+	if (_file_to_saveload.ftype.abstract == AbstractFileType::None || _file_to_saveload.ftype.abstract == AbstractFileType::Invalid) {
 		IConsolePrint(CC_ERROR, "No game loaded to reload.");
 		return true;
 	}
@@ -2022,14 +2022,14 @@ static bool ConCompanies(std::span<std::string_view> argv)
 		/* Grab the company name */
 		std::string company_name = GetString(STR_COMPANY_NAME, c->index);
 
-		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
+		std::string colour = GetString(STR_COLOUR_DARK_BLUE + to_underlying(_company_colours[c->index]));
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),
-			c->group_all[VEH_TRAIN].num_vehicle,
-			c->group_all[VEH_ROAD].num_vehicle,
-			c->group_all[VEH_AIRCRAFT].num_vehicle,
-			c->group_all[VEH_SHIP].num_vehicle,
+			c->group_all[VehicleType::Train].num_vehicle,
+			c->group_all[VehicleType::Road].num_vehicle,
+			c->group_all[VehicleType::Aircraft].num_vehicle,
+			c->group_all[VehicleType::Ship].num_vehicle,
 			c->is_ai ? "AI" : "");
 	}
 
@@ -2047,10 +2047,10 @@ static bool ConSay(std::span<std::string_view> argv)
 	if (argv.size() != 2) return false;
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
+		NetworkClientSendChat(NetworkAction::ChatBroadcast, NetworkChatDestinationType::Broadcast, 0 /* param does not matter */, argv[1]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatBroadcast, NetworkChatDestinationType::Broadcast, 0, argv[1], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;
@@ -2079,10 +2079,10 @@ static bool ConSayCompany(std::span<std::string_view> argv)
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id->base(), argv[2]);
+		NetworkClientSendChat(NetworkAction::ChatTeam, NetworkChatDestinationType::Team, company_id->base(), argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id->base(), argv[2], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatTeam, NetworkChatDestinationType::Team, company_id->base(), argv[2], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;
@@ -2106,10 +2106,10 @@ static bool ConSayClient(std::span<std::string_view> argv)
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, *client_id, argv[2]);
+		NetworkClientSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, *client_id, argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, *client_id, argv[2], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, *client_id, argv[2], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;
@@ -2258,22 +2258,22 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 /**
  * Resolve a string to a content type.
  * @param str The string to resolve.
- * @return The content type, or #CONTENT_TYPE_END when the string is not a content type.
+ * @return The content type, or #ContentType::End when the string is not a content type.
  */
 static ContentType StringToContentType(std::string_view str)
 {
 	static const std::initializer_list<std::pair<std::string_view, ContentType>> content_types = {
-		{"base",      CONTENT_TYPE_BASE_GRAPHICS},
-		{"newgrf",    CONTENT_TYPE_NEWGRF},
-		{"ai",        CONTENT_TYPE_AI},
-		{"ailib",     CONTENT_TYPE_AI_LIBRARY},
-		{"scenario",  CONTENT_TYPE_SCENARIO},
-		{"heightmap", CONTENT_TYPE_HEIGHTMAP},
+		{"base",      ContentType::BaseGraphics},
+		{"newgrf",    ContentType::NewGRF},
+		{"ai",        ContentType::Ai},
+		{"ailib",     ContentType::AiLibrary},
+		{"scenario",  ContentType::Scenario},
+		{"heightmap", ContentType::Heightmap},
 	};
 	for (const auto &ct : content_types) {
 		if (StrEqualsIgnoreCase(str, ct.first)) return ct.second;
 	}
-	return CONTENT_TYPE_END;
+	return ContentType::End;
 }
 
 /** Asynchronous callback */
@@ -2300,12 +2300,12 @@ struct ConsoleContentCallback : public ContentCallback {
  */
 static void OutputContentState(const ContentInfo &ci)
 {
-	static const std::string_view types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
-	static_assert(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
+	static const std::string_view types[] = { "", "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
+	static_assert(std::size(types) == to_underlying(ContentType::End));
 	static const std::string_view states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
-	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
+	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[to_underlying(ci.type)], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
 /** Downloading of content from the server. @copydoc IConsoleCmdProc */
@@ -2329,7 +2329,7 @@ static bool ConContent(std::span<std::string_view> argv)
 	}
 
 	if (StrEqualsIgnoreCase(argv[1], "update")) {
-		_network_content_client.RequestContentList((argv.size() > 2) ? StringToContentType(argv[2]) : CONTENT_TYPE_END);
+		_network_content_client.RequestContentList((argv.size() > 2) ? StringToContentType(argv[2]) : ContentType::End);
 		return true;
 	}
 
@@ -2417,12 +2417,12 @@ static bool ConFont(std::span<std::string_view> argv)
 	}
 
 	FontSize argfs;
-	for (argfs = FS_BEGIN; argfs < FS_END; argfs++) {
+	for (argfs = FontSize::Begin; argfs < FontSize::End; argfs++) {
 		if (argv.size() > 1 && StrEqualsIgnoreCase(argv[1], FontSizeToName(argfs))) break;
 	}
 
 	/* First argument must be a FontSize. */
-	if (argv.size() > 1 && argfs == FS_END) return false;
+	if (argv.size() > 1 && argfs == FontSize::End) return false;
 
 	if (argv.size() > 2) {
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
@@ -2447,7 +2447,7 @@ static bool ConFont(std::span<std::string_view> argv)
 		SetFont(argfs, font, size);
 	}
 
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+	for (FontSize fs = FontSize::Begin; fs < FontSize::End; fs++) {
 		FontCache *fc = FontCache::Get(fs);
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
 		/* Make sure all non sprite fonts are loaded. */
@@ -2551,19 +2551,19 @@ static bool ConListDirs(std::span<std::string_view> argv)
 	};
 	static const SubdirNameMap subdir_name_map[] = {
 		/* Game data directories */
-		{ "baseset", BASESET_DIR, false },
-		{ "newgrf", NEWGRF_DIR, false },
-		{ "ai", AI_DIR, false },
-		{ "ailib", AI_LIBRARY_DIR, false },
-		{ "gs", GAME_DIR, false },
-		{ "gslib", GAME_LIBRARY_DIR, false },
-		{ "scenario", SCENARIO_DIR, false },
-		{ "heightmap", HEIGHTMAP_DIR, false },
+		{ "baseset", Subdirectory::Baseset, false },
+		{ "newgrf", Subdirectory::NewGrf, false },
+		{ "ai", Subdirectory::Ai, false },
+		{ "ailib", Subdirectory::AiLibrary, false },
+		{ "gs", Subdirectory::Gs, false },
+		{ "gslib", Subdirectory::GsLibrary, false },
+		{ "scenario", Subdirectory::Scenario, false },
+		{ "heightmap", Subdirectory::Heightmap, false },
 		/* Default save locations for user data */
-		{ "save", SAVE_DIR, true },
-		{ "autosave", AUTOSAVE_DIR, true },
-		{ "screenshot", SCREENSHOT_DIR, true },
-		{ "social_integration", SOCIAL_INTEGRATION_DIR, true },
+		{ "save", Subdirectory::Save, true },
+		{ "autosave", Subdirectory::Autosave, true },
+		{ "screenshot", Subdirectory::Screenshot, true },
+		{ "social_integration", Subdirectory::SocialIntegration, true },
 	};
 
 	if (argv.size() != 2) {
@@ -2809,7 +2809,7 @@ static void ConDumpRoadTypes()
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32_t grfid = 0;
-		const GRFFile *grf = rti->grffile[ROTSG_GROUND];
+		const GRFFile *grf = rti->grffile[RoadSpriteType::Ground];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
@@ -2848,7 +2848,7 @@ static void ConDumpRailTypes()
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32_t grfid = 0;
-		const GRFFile *grf = rti->grffile[RTSG_GROUND];
+		const GRFFile *grf = rti->grffile[RailSpriteType::Ground];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);

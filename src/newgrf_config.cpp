@@ -134,11 +134,11 @@ void GRFConfig::SetSuitablePalette()
 {
 	PaletteType pal;
 	switch (this->palette & GRFP_GRF_MASK) {
-		case GRFP_GRF_DOS:     pal = PAL_DOS;      break;
-		case GRFP_GRF_WINDOWS: pal = PAL_WINDOWS;  break;
-		default:               pal = _settings_client.gui.newgrf_default_palette == 1 ? PAL_WINDOWS : PAL_DOS; break;
+		case GRFP_GRF_DOS: pal = PaletteType::DOS; break;
+		case GRFP_GRF_WINDOWS: pal = PaletteType::Windows; break;
+		default: pal = _settings_client.gui.newgrf_default_palette == 1 ? PaletteType::Windows : PaletteType::DOS; break;
 	}
-	SB(this->palette, GRFP_USE_BIT, 1, pal == PAL_WINDOWS ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
+	SB(this->palette, GRFP_USE_BIT, 1, pal == PaletteType::Windows ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
 }
 
 /**
@@ -294,7 +294,7 @@ static bool CalcGRFMD5Sum(GRFConfig &config, Subdirectory subdir)
 bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir)
 {
 	if (!FioCheckFileExists(config.filename, subdir)) {
-		config.status = GCS_NOT_FOUND;
+		config.status = GRFStatus::NotFound;
 		return false;
 	}
 
@@ -421,22 +421,22 @@ void ResetGRFConfig(bool defaults)
  * @param grfconfig GrfConfig to check
  * @return will return any of the following 3 values:<br>
  * <ul>
- * <li> GLC_ALL_GOOD: No problems occurred, all GRF files were found and loaded
- * <li> GLC_COMPATIBLE: For one or more GRF's no exact match was found, but a
+ * <li> GRFListCompatibility::AllGood: No problems occurred, all GRF files were found and loaded
+ * <li> GRFListCompatibility::Compatible: For one or more GRF's no exact match was found, but a
  *     compatible GRF with the same grfid was found and used instead
- * <li> GLC_NOT_FOUND: For one or more GRF's no match was found at all
+ * <li> GRFListCompatibility::NotFound: For one or more GRF's no match was found at all
  * </ul>
  */
 GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 {
-	GRFListCompatibility res = GLC_ALL_GOOD;
+	GRFListCompatibility res = GRFListCompatibility::AllGood;
 
 	for (auto &c : grfconfig) {
-		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
+		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Exact, &c->ident.md5sum);
 		if (f == nullptr || f->flags.Test(GRFConfigFlag::Invalid)) {
 			/* If we have not found the exactly matching GRF try to find one with the
 			 * same grfid, as it most likely is compatible */
-			f = FindGRFConfig(c->ident.grfid, FGCM_COMPATIBLE, nullptr, c->version);
+			f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Compatible, nullptr, c->version);
 			if (f != nullptr) {
 				Debug(grf, 1, "NewGRF {:08X} ({}) not found; checksum {}. Compatibility mode on", std::byteswap(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 				if (!c->flags.Test(GRFConfigFlag::Compatible)) {
@@ -446,15 +446,15 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 				}
 
 				/* Non-found has precedence over compatibility load */
-				if (res != GLC_NOT_FOUND) res = GLC_COMPATIBLE;
+				if (res != GRFListCompatibility::NotFound) res = GRFListCompatibility::Compatible;
 				goto compatible_grf;
 			}
 
 			/* No compatible grf was found, mark it as disabled */
 			Debug(grf, 0, "NewGRF {:08X} ({}) not found; checksum {}", std::byteswap(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 
-			c->status = GCS_NOT_FOUND;
-			res = GLC_NOT_FOUND;
+			c->status = GRFStatus::NotFound;
+			res = GRFListCompatibility::NotFound;
 		} else {
 compatible_grf:
 			Debug(grf, 1, "Loading GRF {:08X} from {}", std::byteswap(f->ident.grfid), f->filename);
@@ -510,7 +510,7 @@ public:
 		}
 
 		GRFFileScanner fs;
-		int ret = fs.Scan(".grf", NEWGRF_DIR);
+		int ret = fs.Scan(".grf", Subdirectory::NewGrf);
 		/* The number scanned and the number returned may not be the same;
 		 * duplicate NewGRFs and base sets are ignored in the return value. */
 		_settings_client.gui.last_newgrf_count = fs.num_scanned;
@@ -599,17 +599,17 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
  */
 const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5Hash *md5sum, uint32_t desired_version)
 {
-	assert((mode == FGCM_EXACT) != (md5sum == nullptr));
+	assert((mode == FindGRFConfigMode::Exact) != (md5sum == nullptr));
 	const GRFConfig *best = nullptr;
 	for (const auto &c : _all_grfs) {
 		/* if md5sum is set, we look for an exact match and continue if not found */
 		if (!c->ident.HasGrfIdentifier(grfid, md5sum)) continue;
 		/* return it, if the exact same newgrf is found, or if we do not care about finding "the best" */
-		if (md5sum != nullptr || mode == FGCM_ANY) return c.get();
+		if (md5sum != nullptr || mode == FindGRFConfigMode::Any) return c.get();
 		/* Skip incompatible stuff, unless explicitly allowed */
-		if (mode != FGCM_NEWEST && c->flags.Test(GRFConfigFlag::Invalid)) continue;
+		if (mode != FindGRFConfigMode::Newest && c->flags.Test(GRFConfigFlag::Invalid)) continue;
 		/* check version compatibility */
-		if (mode == FGCM_COMPATIBLE && !c->IsCompatible(desired_version)) continue;
+		if (mode == FindGRFConfigMode::Compatible && !c->IsCompatible(desired_version)) continue;
 		/* remember the newest one as "the best" */
 		if (best == nullptr || c->version > best->version) best = c.get();
 	}
@@ -654,5 +654,5 @@ std::string GRFBuildParamList(const GRFConfig &c)
  */
 std::optional<std::string> GRFConfig::GetTextfile(TextfileType type) const
 {
-	return ::GetTextfile(type, NEWGRF_DIR, this->filename);
+	return ::GetTextfile(type, Subdirectory::NewGrf, this->filename);
 }

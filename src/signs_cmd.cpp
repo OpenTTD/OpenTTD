@@ -62,7 +62,7 @@ std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex til
  * @param flags type of operation
  * @param sign_id index of the sign to be renamed/removed
  * @param text the new name or an empty string when resetting to the default
- * @param text_colour colour of the sign's text. Only relevant for OWNER_DEITY. Use INVALID_COLOUR to keep the current colour.
+ * @param text_colour colour of the sign's text. Only relevant for OWNER_DEITY. Use Colours::Invalid to keep the current colour.
  * @return the cost of this operation or an error
  */
 CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::string &text, Colours text_colour)
@@ -78,7 +78,7 @@ CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::strin
 		if (flags.Test(DoCommandFlag::Execute)) {
 			/* Assign the new one */
 			si->name = text;
-			if (text_colour != INVALID_COLOUR) si->text_colour = text_colour;
+			if (text_colour != Colours::Invalid) si->text_colour = text_colour;
 			if (_game_mode != GM_EDITOR) si->owner = _current_company;
 
 			si->UpdateVirtCoord();

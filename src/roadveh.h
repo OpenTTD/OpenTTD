@@ -102,7 +102,7 @@ using RoadVehPathCache = std::vector<RoadVehPathElement>;
 /**
  * Buses, trucks and trams belong to this class.
  */
-struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
+struct RoadVehicle final : public GroundVehicle<RoadVehicle, VehicleType::Road> {
 	RoadVehPathCache path{};  ///< Cached path.
 	uint8_t state = 0; ///< @see RoadVehicleStates
 	uint8_t frame = 0;
@@ -120,7 +120,7 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	/** We want to 'destruct' the right class. */
 	~RoadVehicle() override { this->PreDestructor(); }
 
-	friend struct GroundVehicle<RoadVehicle, VEH_ROAD>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
+	friend struct GroundVehicle<RoadVehicle, VehicleType::Road>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;

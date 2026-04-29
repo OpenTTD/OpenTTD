@@ -248,7 +248,7 @@ extern std::string _config_file;
 
 void DetermineBasePaths(std::string_view exe)
 {
-	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+	extern EnumClassIndexContainer<std::array<std::string, to_underlying(Searchpath::End)>, Searchpath> _searchpaths;
 
 	wchar_t path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
@@ -257,13 +257,13 @@ void DetermineBasePaths(std::string_view exe)
 		AppendPathSeparator(tmp);
 		tmp += PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_PERSONAL_DIR] = tmp;
+		_searchpaths[Searchpath::PersonalDir] = tmp;
 
 		tmp += "content_download";
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR] = tmp;
+		_searchpaths[Searchpath::AutodownloadPersonalDir] = tmp;
 	} else {
-		_searchpaths[SP_PERSONAL_DIR].clear();
+		_searchpaths[Searchpath::PersonalDir].clear();
 	}
 
 	if (SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_COMMON_DOCUMENTS, nullptr, SHGFP_TYPE_CURRENT, path))) {
@@ -271,13 +271,13 @@ void DetermineBasePaths(std::string_view exe)
 		AppendPathSeparator(tmp);
 		tmp += PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-		_searchpaths[SP_SHARED_DIR] = tmp;
+		_searchpaths[Searchpath::SharedDir] = tmp;
 	} else {
-		_searchpaths[SP_SHARED_DIR].clear();
+		_searchpaths[Searchpath::SharedDir].clear();
 	}
 #else
-	_searchpaths[SP_PERSONAL_DIR].clear();
-	_searchpaths[SP_SHARED_DIR].clear();
+	_searchpaths[Searchpath::PersonalDir].clear();
+	_searchpaths[Searchpath::SharedDir].clear();
 #endif
 
 	if (_config_file.empty()) {
@@ -285,43 +285,62 @@ void DetermineBasePaths(std::string_view exe)
 		getcwd(cwd, lengthof(cwd));
 		std::string cwd_s(cwd);
 		AppendPathSeparator(cwd_s);
-		_searchpaths[SP_WORKING_DIR] = cwd_s;
+		_searchpaths[Searchpath::WorkingDir] = cwd_s;
 	} else {
 		/* Use the folder of the config file as working directory. */
 		wchar_t config_dir[MAX_PATH];
 		convert_to_fs(_config_file, path);
 		if (!GetFullPathName(path, static_cast<DWORD>(std::size(config_dir)), config_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
-			_searchpaths[SP_WORKING_DIR].clear();
+			_searchpaths[Searchpath::WorkingDir].clear();
 		} else {
 			std::string tmp(FS2OTTD(config_dir));
 			auto pos = tmp.find_last_of(PATHSEPCHAR);
 			if (pos != std::string::npos) tmp.erase(pos + 1);
 
-			_searchpaths[SP_WORKING_DIR] = tmp;
+			_searchpaths[Searchpath::WorkingDir] = tmp;
 		}
 	}
 
 	if (!GetModuleFileName(nullptr, path, static_cast<DWORD>(std::size(path)))) {
 		Debug(misc, 0, "GetModuleFileName failed ({})", GetLastError());
-		_searchpaths[SP_BINARY_DIR].clear();
+		_searchpaths[Searchpath::BinaryDir].clear();
 	} else {
 		wchar_t exec_dir[MAX_PATH];
 		convert_to_fs(exe, path);
 		if (!GetFullPathName(path, static_cast<DWORD>(std::size(exec_dir)), exec_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
-			_searchpaths[SP_BINARY_DIR].clear();
+			_searchpaths[Searchpath::BinaryDir].clear();
 		} else {
 			std::string tmp(FS2OTTD(exec_dir));
 			auto pos = tmp.find_last_of(PATHSEPCHAR);
 			if (pos != std::string::npos) tmp.erase(pos + 1);
 
-			_searchpaths[SP_BINARY_DIR] = tmp;
+			_searchpaths[Searchpath::BinaryDir] = tmp;
 		}
 	}
 
-	_searchpaths[SP_INSTALLATION_DIR].clear();
-	_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
+	_searchpaths[Searchpath::InstallationDir].clear();
+	_searchpaths[Searchpath::ApplicationBundleDir].clear();
+	_searchpaths[Searchpath::TransportTycoonDeluxeDir].clear();
+
+	if (SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_APPDATA, nullptr, SHGFP_TYPE_CURRENT, path))) {
+		std::string config_file_path(FS2OTTD(path));
+		AppendPathSeparator(config_file_path);
+		config_file_path += "Atari\\Transport Tycoon Deluxe\\installpath.ini";
+
+		size_t installpath_len;
+		std::unique_ptr<char[]> installpath = ReadFileToMem(config_file_path, installpath_len, MAX_PATH);
+
+		if (installpath != nullptr && installpath_len > 0) {
+			std::string ttd_path = installpath.get();
+			AppendPathSeparator(ttd_path);
+			ttd_path += "CD";
+			AppendPathSeparator(ttd_path);
+
+			if (FileExists(ttd_path)) _searchpaths[Searchpath::TransportTycoonDeluxeDir] = ttd_path;
+		}
+	}
 }
 
 

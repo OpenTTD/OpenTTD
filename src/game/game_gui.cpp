@@ -35,49 +35,49 @@
 /** Widgets for the configure GS window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_gs_config_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetStringTip(STR_AI_CONFIG_CAPTION_GAMESCRIPT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CLOSEBOX, Colours::Mauve),
+		NWidget(WWT_CAPTION, Colours::Mauve), SetStringTip(STR_AI_CONFIG_CAPTION_GAMESCRIPT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEFSIZEBOX, Colours::Mauve),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_GSC_BACKGROUND),
+	NWidget(WWT_PANEL, Colours::Mauve, WID_GSC_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse_resize),
-			NWidget(WWT_FRAME, COLOUR_MAUVE), SetStringTip(STR_AI_CONFIG_GAMESCRIPT), SetFill(1, 0), SetResize(1, 0),
-				NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_GSC_GSLIST), SetMinimalSize(288, 14), SetFill(1, 1), SetResize(1, 0), SetMatrixDataTip(1, 1, STR_AI_CONFIG_GAMELIST_TOOLTIP),
+			NWidget(WWT_FRAME, Colours::Mauve), SetStringTip(STR_AI_CONFIG_GAMESCRIPT), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_MATRIX, Colours::Mauve, WID_GSC_GSLIST), SetMinimalSize(288, 14), SetFill(1, 1), SetResize(1, 0), SetMatrixDataTip(1, 1, STR_AI_CONFIG_GAMELIST_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_FRAME, COLOUR_MAUVE), SetStringTip(STR_AI_CONFIG_GAMESCRIPT_PARAM), SetFill(1, 1), SetResize(1, 0), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
+			NWidget(WWT_FRAME, Colours::Mauve), SetStringTip(STR_AI_CONFIG_GAMESCRIPT_PARAM), SetFill(1, 1), SetResize(1, 0), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_GSC_SETTINGS), SetFill(1, 0), SetResize(1, 1), SetMinimalSize(188, 182), SetMatrixDataTip(1, 0), SetScrollbar(WID_GSC_SCROLLBAR),
-					NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_GSC_SCROLLBAR),
+					NWidget(WWT_MATRIX, Colours::Mauve, WID_GSC_SETTINGS), SetFill(1, 0), SetResize(1, 1), SetMinimalSize(188, 182), SetMatrixDataTip(1, 0), SetScrollbar(WID_GSC_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, Colours::Mauve, WID_GSC_SCROLLBAR),
 				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_RESET), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_AI_SETTINGS_RESET),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_GSC_RESET), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_AI_SETTINGS_RESET),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_CHANGE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_AI_CONFIG_CHANGE_GAMESCRIPT, STR_AI_CONFIG_CHANGE_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_CONTENT_DOWNLOAD), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_GSC_CHANGE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_AI_CONFIG_CHANGE_GAMESCRIPT, STR_AI_CONFIG_CHANGE_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_GSC_CONTENT_DOWNLOAD), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 				EndContainer(),
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_README), SetFill(1, 1), SetResize(1, 0), SetMinimalSize(93, 0), SetStringTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_GSC_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_GSC_TEXTFILE + TFT_README), SetFill(1, 1), SetResize(1, 0), SetMinimalSize(93, 0), SetStringTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_LICENSE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_GSC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_GSC_TEXTFILE + TFT_LICENSE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+			NWidget(WWT_RESIZEBOX, Colours::Mauve), SetResizeWidgetTypeTip(ResizeWidgetType::HideBevel, STR_TOOLTIP_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
 
 /** Window definition for the configure GS window. */
 static WindowDesc _gs_config_desc(
-	WDP_CENTER, "settings_gs_config", 500, 350,
+	WindowPosition::Center, "settings_gs_config", 500, 350,
 	WC_GAME_OPTIONS, WC_NONE,
 	{},
 	_nested_gs_config_widgets
@@ -95,7 +95,7 @@ struct GSConfigWindow : public Window {
 	bool closing_dropdown = false; ///< True, if the dropdown list is currently closing.
 	int clicked_row = 0; ///< The clicked row of settings.
 	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
-	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
+	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typedef for a vector of script settings
 	VisibleSettingsList visible_settings{}; ///< List of visible GS settings
 
 	GSConfigWindow() : Window(_gs_config_desc)
@@ -139,14 +139,14 @@ struct GSConfigWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GSC_SETTINGS:
-				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
+				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FontSize::Normal)) + padding.height;
 				resize.width = 1;
 				fill.height = resize.height = this->line_height;
 				size.height = 5 * this->line_height;
 				break;
 
 			case WID_GSC_GSLIST:
-				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
+				this->line_height = GetCharacterHeight(FontSize::Normal) + padding.height;
 				size.height = 1 * this->line_height;
 				break;
 		}
@@ -187,7 +187,7 @@ struct GSConfigWindow : public Window {
 
 				int y = r.top;
 				int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-				int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+				int text_y_offset = (this->line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 
 				const auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->visible_settings);
 				for (auto it = first; it != last; ++it) {
@@ -196,13 +196,13 @@ struct GSConfigWindow : public Window {
 					bool editable = this->IsEditableItem(config_item);
 
 					if (config_item.flags.Test(ScriptConfigFlag::Boolean)) {
-						DrawBoolButton(br.left, y + button_y_offset, COLOUR_YELLOW, COLOUR_MAUVE, current_value != 0, editable);
+						DrawBoolButton(br.left, y + button_y_offset, Colours::Yellow, Colours::Mauve, current_value != 0, editable);
 					} else {
 						int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 						if (config_item.complete_labels) {
-							DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, editable);
+							DrawDropDownButton(br.left, y + button_y_offset, Colours::Yellow, this->clicked_row == i && this->clicked_dropdown, editable);
 						} else {
-							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+							DrawArrowButtons(br.left, y + button_y_offset, Colours::Yellow, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 						}
 					}
 
@@ -247,7 +247,7 @@ struct GSConfigWindow : public Window {
 				if (!_network_available) {
 					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WL_ERROR);
 				} else {
-					ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_GAME);
+					ShowNetworkContentListWindow(nullptr, ContentType::Gs);
 				}
 				break;
 
@@ -299,7 +299,7 @@ struct GSConfigWindow : public Window {
 								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, config_item.labels.find(i)->second), i));
 							}
 
-							ShowDropDownListAt(this, std::move(list), old_val, WID_GSC_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
+							ShowDropDownListAt(this, std::move(list), old_val, WID_GSC_SETTING_DROPDOWN, wi_rect, Colours::Orange);
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {

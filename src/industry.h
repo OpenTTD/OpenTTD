@@ -71,7 +71,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		}
 	};
 	struct ProducedCargo {
-		CargoType cargo = 0; ///< Cargo type
+		CargoType cargo = INVALID_CARGO; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo produced
 		uint8_t rate = 0; ///< Production rate
 		HistoryData<ProducedHistory> history{}; ///< History of cargo produced and transported for this month and 24 previous months
@@ -83,7 +83,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	};
 
 	struct AcceptedCargo {
-		CargoType cargo = 0; ///< Cargo type
+		CargoType cargo = INVALID_CARGO; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo waiting to processed
 		uint32_t accumulated_waiting = 0; ///< Accumulated waiting total over the last month, used to calculate average.
 		TimerGameEconomy::Date last_accepted{}; ///< Last day cargo was accepted by this industry
@@ -114,7 +114,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	IndustryType type = 0; ///< type of industry.
 	Owner owner = INVALID_OWNER; ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
-	Colours random_colour = COLOUR_BEGIN; ///< randomized colour of the industry, for display purpose
+	Colours random_colour = Colours::Begin; ///< randomized colour of the industry, for display purpose
 	TimerGameEconomy::Year last_prod_year{}; ///< last economy year of production
 	uint8_t was_cargo_delivered = 0; ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 	IndustryControlFlags ctlflags{}; ///< flags overriding standard behaviours

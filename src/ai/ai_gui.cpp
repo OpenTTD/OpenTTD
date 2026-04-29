@@ -30,51 +30,51 @@
 /** Widgets for the configure AI window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_ai_config_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetStringTip(STR_AI_CONFIG_CAPTION_AI, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, Colours::Mauve),
+		NWidget(WWT_CAPTION, Colours::Mauve), SetStringTip(STR_AI_CONFIG_CAPTION_AI, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_AIC_BACKGROUND),
+	NWidget(WWT_PANEL, Colours::Mauve, WID_AIC_BACKGROUND),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse),
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_DECREASE_NUMBER), SetArrowWidgetTypeTip(AWV_DECREASE),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_INCREASE_NUMBER), SetArrowWidgetTypeTip(AWV_INCREASE),
+						NWidget(WWT_PUSHARROWBTN, Colours::Yellow, WID_AIC_DECREASE_NUMBER), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease),
+						NWidget(WWT_PUSHARROWBTN, Colours::Yellow, WID_AIC_INCREASE_NUMBER), SetArrowWidgetTypeTip(ArrowWidgetType::Increase),
 					EndContainer(),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_AIC_NUMBER), SetFill(1, 0),
+					NWidget(WWT_TEXT, Colours::Invalid, WID_AIC_NUMBER), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_DECREASE_INTERVAL), SetArrowWidgetTypeTip(AWV_DECREASE),
-						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_INCREASE_INTERVAL), SetArrowWidgetTypeTip(AWV_INCREASE),
+						NWidget(WWT_PUSHARROWBTN, Colours::Yellow, WID_AIC_DECREASE_INTERVAL), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease),
+						NWidget(WWT_PUSHARROWBTN, Colours::Yellow, WID_AIC_INCREASE_INTERVAL), SetArrowWidgetTypeTip(ArrowWidgetType::Increase),
 					EndContainer(),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_AIC_INTERVAL), SetFill(1, 0),
+					NWidget(WWT_TEXT, Colours::Invalid, WID_AIC_INTERVAL), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_MOVE_UP), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_CONFIG_MOVE_UP, STR_AI_CONFIG_MOVE_UP_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_MOVE_DOWN), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_CONFIG_MOVE_DOWN, STR_AI_CONFIG_MOVE_DOWN_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_MOVE_UP), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_CONFIG_MOVE_UP, STR_AI_CONFIG_MOVE_UP_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_MOVE_DOWN), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_CONFIG_MOVE_DOWN, STR_AI_CONFIG_MOVE_DOWN_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_FRAME, COLOUR_MAUVE), SetStringTip(STR_AI_CONFIG_AI), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
+			NWidget(WWT_FRAME, Colours::Mauve), SetStringTip(STR_AI_CONFIG_AI), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIC_LIST), SetMinimalSize(288, 112), SetFill(1, 0), SetMatrixDataTip(1, 8, STR_AI_CONFIG_AILIST_TOOLTIP), SetScrollbar(WID_AIC_SCROLLBAR),
-					NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_AIC_SCROLLBAR),
+					NWidget(WWT_MATRIX, Colours::Mauve, WID_AIC_LIST), SetMinimalSize(288, 112), SetFill(1, 0), SetMatrixDataTip(1, 8, STR_AI_CONFIG_AILIST_TOOLTIP), SetScrollbar(WID_AIC_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, Colours::Mauve, WID_AIC_SCROLLBAR),
 				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONFIGURE), SetFill(1, 0), SetStringTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_CONFIGURE), SetFill(1, 0), SetStringTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CHANGE), SetFill(1, 1), SetStringTip(STR_AI_CONFIG_CHANGE_AI, STR_AI_CONFIG_CHANGE_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONTENT_DOWNLOAD), SetFill(1, 1), SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_CHANGE), SetFill(1, 1), SetStringTip(STR_AI_CONFIG_CHANGE_AI, STR_AI_CONFIG_CHANGE_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_CONTENT_DOWNLOAD), SetFill(1, 1), SetStringTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 				EndContainer(),
 				NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_README), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_TEXTFILE + TFT_README), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_LICENSE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_AIC_TEXTFILE + TFT_LICENSE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -84,7 +84,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_ai_config_widgets = 
 
 /** Window definition for the configure AI window. */
 static WindowDesc _ai_config_desc(
-	WDP_CENTER, {}, 0, 0,
+	WindowPosition::Center, {}, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	{},
 	_nested_ai_config_widgets
@@ -141,7 +141,7 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case WID_AIC_LIST:
-				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
+				this->line_height = GetCharacterHeight(FontSize::Normal) + padding.height;
 				fill.height = resize.height = this->line_height;
 				size.height = 8 * this->line_height;
 				break;
@@ -258,7 +258,8 @@ struct AIConfigWindow : public Window {
 
 			case WID_AIC_MOVE_UP:
 				if (IsEditable(this->selected_slot) && IsEditable(static_cast<CompanyID>(this->selected_slot - 1))) {
-					std::swap(GetGameSettings().script_config.ai[this->selected_slot], GetGameSettings().script_config.ai[this->selected_slot - 1]);
+					auto it = std::next(std::begin(GetGameSettings().script_config.ai), this->selected_slot.base());
+					std::swap(*it, *std::prev(it));
 					this->selected_slot = static_cast<CompanyID>(this->selected_slot - 1);
 					this->vscroll->ScrollTowards(this->selected_slot.base());
 					this->InvalidateData();
@@ -267,7 +268,8 @@ struct AIConfigWindow : public Window {
 
 			case WID_AIC_MOVE_DOWN:
 				if (IsEditable(this->selected_slot) && IsEditable(static_cast<CompanyID>(this->selected_slot + 1))) {
-					std::swap(GetGameSettings().script_config.ai[this->selected_slot], GetGameSettings().script_config.ai[this->selected_slot + 1]);
+					auto it = std::next(std::begin(GetGameSettings().script_config.ai), this->selected_slot.base());
+					std::swap(*it, *std::next(it));
 					++this->selected_slot;
 					this->vscroll->ScrollTowards(this->selected_slot.base());
 					this->InvalidateData();
@@ -293,7 +295,7 @@ struct AIConfigWindow : public Window {
 				if (!_network_available) {
 					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WL_ERROR);
 				} else {
-					ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_AI);
+					ShowNetworkContentListWindow(nullptr, ContentType::Ai);
 				}
 				break;
 		}

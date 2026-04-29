@@ -133,8 +133,8 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t referen
  */
 void StoryPageButtonData::SetColour(Colours button_colour)
 {
-	assert(button_colour < COLOUR_END);
-	SB(this->referenced_id, 0, 8, button_colour);
+	assert(button_colour < Colours::End);
+	SB(this->referenced_id, 0, 8, to_underlying(button_colour));
 }
 
 /**
@@ -162,8 +162,8 @@ void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
  */
 void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 {
-	assert(vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END);
-	SB(this->referenced_id, 16, 8, vehtype);
+	assert(vehtype == VehicleType::Invalid || vehtype < VehicleType::CompanyEnd);
+	SB(this->referenced_id, 16, 8, to_underlying(vehtype));
 }
 
 /**
@@ -173,7 +173,7 @@ void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 Colours StoryPageButtonData::GetColour() const
 {
 	Colours colour = static_cast<Colours>(GB(this->referenced_id, 0, 8));
-	if (!IsValidColours(colour)) return INVALID_COLOUR;
+	if (!IsValidColours(colour)) return Colours::Invalid;
 	return colour;
 }
 
@@ -212,7 +212,7 @@ VehicleType StoryPageButtonData::GetVehicleType() const
  */
 bool StoryPageButtonData::ValidateColour() const
 {
-	return GB(this->referenced_id, 0, 8) < COLOUR_END;
+	return GB(this->referenced_id, 0, 8) < to_underlying(Colours::End);
 }
 
 /**
@@ -245,8 +245,8 @@ bool StoryPageButtonData::ValidateCursor() const
  */
 bool StoryPageButtonData::ValidateVehicleType() const
 {
-	uint8_t vehtype = GB(this->referenced_id, 16, 8);
-	return vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END;
+	VehicleType vehtype = static_cast<VehicleType>(GB(this->referenced_id, 16, 8));
+	return vehtype == VehicleType::Invalid || vehtype < VehicleType::CompanyEnd;
 }
 
 /**

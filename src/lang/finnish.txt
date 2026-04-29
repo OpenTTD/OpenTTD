@@ -651,8 +651,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Toimitettu
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Odottava
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} – rahtihistoria
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Tarjonta
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Tuotettu
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Kuljetettu
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Toimitettu
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
@@ -1351,8 +1352,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Korkeat
 STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, taloudellinen lama voi ilmaantua ajoittain. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Estä junien kääntyminen asemilla: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Mikäli käytössä, junat eivät käänny läpiajettavilla asemilla vaikka kääntymisen jälkeen tarjolla olisi lyhempi reitti
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Salli junien kääntyminen suuntaa vaihdettaessa: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Valitse, missä junat voivat kääntyä ympäri suuntaa vaihtaessaan. ”Kaikkialla”: junat voivat kääntyä kaikkialla. ”Vain linjan päässä”: junat eivät käänny asemilla, jos reitti eteenpäin on mahdollinen. ”Ei missään”: junat eivät käänny, vaan kulkevat tarvittaessa taaksepäin, mutta alennetulla nopeudella, jos taimmaisessa vaunussa ei ole ohjaamoa
+
+###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Kaikkialla
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Vain linjan päässä
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Ei missään
 
 STR_CONFIG_SETTING_DISASTERS                                    :Onnettomuudet: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ottaa käyttöön onnettomuudet jotka saattavat ajoittain estää tai tuhota liikennettä tai infrastruktuuria
@@ -1903,6 +1909,9 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Mikäli käytö
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön vaunujen nopeusrajoitukset: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Mikäli käytössä, vaunujen nopeusrajoitusta käytetään junan maksiminopeuden määrittämisessä
+
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Ilma-alusten rajallinen toimintasäde: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Mikäli käytössä, NewGRF:t voivat rajoittaa ilma-alusten enimmäistoimintasädettä
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Poista sähköradat käytöstä: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mikäli käytössä, sähköveturit toimivat ei-sähköistetyillä radoilla
@@ -4077,7 +4086,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} ja {NUM} muuta
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} ja {NUM} muuta…
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Teollisuushaarojen nimet – kohdista päänäkymä tuotantolaitokseen napsauttamalla nimeä. Ctrl+napsautus avaa uuden näkymäikkunan laitoksen sijaintiin
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Vastaanotettava rahti: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Tuotettu rahti: {SILVER}{STRING}
@@ -4574,8 +4583,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nimeä a
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nimeä laiva
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nimeä ilma-alus
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P si tta} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P si tta} (elinikä {COMMA} vuo{P si tta})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} (elinikä {COMMA} vuo{P si tta})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK} Käyttökustannukset: {LTBLUE}{CURRENCY_LONG}/vuosi
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY_LONG}/jakso
 
@@ -4589,7 +4598,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Tuotto t
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG}) {BLACK}Vähimmäissuorituskyky: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Tuotto tällä jaksolla: {LTBLUE}{CURRENCY_LONG} (viime jaksolla: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Tuotto tällä jaksolla: {LTBLUE}{CURRENCY_LONG} (viime jaksolla: {CURRENCY_LONG}) {BLACK}Vähimmäissuorituskyky: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Luotettavuus: {LTBLUE}{COMMA}{NBSP}% (enimmillään {COMMA}{NBSP}%)  {BLACK}Hajoamiset viime huollon jälkeen: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteetti: {LTBLUE}-{STRING}
@@ -4729,7 +4738,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Valitse 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kulkuneuvon tiedot, joiden perusteella hypätään
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lastin prosentuaalinen määrä
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Luotettavuus
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Huippunopeus
@@ -4738,6 +4747,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vaatii huoltoa
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Aina
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Jäljelläoleva elinikä (vuotta)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Enimmäisluotettavuus
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Kuljetaan takaperin
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Miten kulkuneuvon tietoja verrataan annettuihin arvoihin
@@ -5257,6 +5267,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Kulkuneuvoa ei 
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :moottorivaunun takaosa seuraa aina etuosaansa
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :reittiä paikalliselle varikolle ei löydy
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :paikallista varikkoa ei löydy
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :paikallista lentokonehallia ei löydy
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :väärä varikkotyyppi
 

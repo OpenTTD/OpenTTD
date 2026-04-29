@@ -1025,13 +1025,14 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historia Ładunków
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Wyprodukowany
-STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Przetransportowany
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Zabrany
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Dostarczony
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Oczekujący
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historia Ładunków
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Dostępny
-STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Przetransportowany
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Wyprodukowany
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Zabrany
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Dostarczony
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
 
@@ -1731,8 +1732,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Wysokie
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może występować okresowo. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nie pozwalaj pociągom zawracać na stacjach: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jeśli włączone, pociągi nie będą zawracać na stacjach dwu-wjazdowych, nawet jeśli droga do następnego celu jest krótsza po zawróceniu
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Pozwól pociągom obrócić się przy zawracaniu: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Wybierz kiedy pociągi mogą obrócić się, aby zmienić kierunek jazdy. Z ustawnieniem "Wszędzie", pociągi mogą obrócić się wszędzie. Z "Tylko koniec toru", pociągi nie obrócą się na stacjach, jeśli jest możliwa trasa na przód. Z "Nigdzie", pociągi nie będą mogły się obracać i cofać jeżeli będzie to potrzebne, lecz w zwolnionym tempie, gdy tylni pojazd nie ma kabiny maszynisty.
+
+###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Wszędzie
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Tylko koniec toru
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Nigdzie
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrofy, które mogą okazjonalnie zablokować lub zniszczyć pojazdy albo infrastrukturę
@@ -2283,6 +2289,9 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Kiedy włączon
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
+
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Włącz maksymalny zasięg samolotu: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Kiedy włączone, NewGRF-y będą mogły ograniczyć maksymalny zasięg samolotów
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tylko jeden rodzaj torów: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Przy włączonym ustawieniu nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
@@ -4960,8 +4969,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Zmień n
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Zmień nazwę statku
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Zmień nazwę samolotu
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok lata lat} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok lata lat} (żywotność: {COMMA} {P rok lata lat})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} (żywotność: {COMMA} {P rok lata lat})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK} Koszt utrzymania: {LTBLUE}{CURRENCY_LONG}/rok
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK} Koszt utrzymania: {LTBLUE}{CURRENCY_LONG}/okres
 
@@ -4975,7 +4984,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w t
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (poprzedni rok: {CURRENCY_LONG}) {BLACK}Min. wydajność: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Zysk w tym okresie: {LTBLUE}{CURRENCY_LONG} (w poprzednim okresie: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Zysk w tym okresie: {LTBLUE}{CURRENCY_LONG} (w poprzednim okresie: {CURRENCY_LONG}) {BLACK}Min. wydajność: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}% (maks.: {COMMA}%) {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ładowność: {LTBLUE}żadna{STRING}
@@ -5115,7 +5124,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Wybierz 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dane pojazdu wykorzystane w warunku
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procent załadowania
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
@@ -5124,6 +5133,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga serwisow
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Pozostały czas życia (w latach)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksymalna niezawodność
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Jadąc tyłem
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porównać dane pojazdu z zadaną wartością
@@ -5324,7 +5334,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż o
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log tego Game Script. Użyj Ctrl, aby otworzyć w nowym oknie
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz pobrać kilka SI z przeglądarki „Dodatków Online”
+STR_ERROR_AI_NO_AI_FOUND                                        :Brak odpowiedniej SI do załadowania.{}Obecna SI jest tylko symboliczna i nie wykonuje żadnych czynności.{}Możesz pobrać SI z „Przeglądarki Dodatków”
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut obrazu okna debugowania SI / GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko dla serwera
 
@@ -5455,7 +5465,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ostrzeż
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źródłowej. Kontynuować tworzenie?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono tylko podstawowy schemat dźwiękowy. Jeśli chcesz mieć pełny dźwięk, zainstaluj inny schemat dźwiękowy używając menadżera pobierania
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono jedynie awaryjny zestaw dźwięków. Jeśli chcesz używać dźwięków, zainstaluj zestaw za pomocą przeglądarki dodatków
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut obrazu
@@ -5643,6 +5653,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Nie można prze
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :tylna lokomotywa zawsze porusza się razem z przednią
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :nie można znaleźć drogi do najbliższych warsztatów
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :nie można znaleźć zajezdni
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :nie można znaleźć lokalnego hangaru
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :zły typ zajezdni
 

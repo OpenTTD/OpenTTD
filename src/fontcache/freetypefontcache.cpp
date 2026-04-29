@@ -71,7 +71,7 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 		if (head != nullptr) {
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
-			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FS_SMALL));
+			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FontSize::Small));
 			/* Clamp() is not used as scaled_height could be greater than MAX_FONT_SIZE, which is not permitted in Clamp(). */
 			pixels = std::min(std::max(std::min<int>(head->Lowest_Rec_PPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height), MAX_FONT_SIZE);
 		}
@@ -144,7 +144,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	aa = (slot->bitmap.pixel_mode == FT_PIXEL_MODE_GRAY);
 
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
-	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
+	uint shadow = (this->fs == FontSize::Normal) ? ScaleGUITrad(1) : 0;
 	uint width  = std::max(1U, (uint)slot->bitmap.width + shadow);
 	uint height = std::max(1U, (uint)slot->bitmap.rows  + shadow);
 
@@ -163,7 +163,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	sprite.y_offs = this->ascender - slot->bitmap_top;
 
 	/* Draw shadow for medium size */
-	if (this->fs == FS_NORMAL && !aa) {
+	if (this->fs == FontSize::Normal && !aa) {
 		for (uint y = 0; y < (uint)slot->bitmap.rows; y++) {
 			for (uint x = 0; x < (uint)slot->bitmap.width; x++) {
 				if (HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
@@ -220,23 +220,9 @@ public:
 		_ft_library = nullptr;
 	}
 
-	/**
-	 * Loads the freetype font.
-	 * First try to load the fontname as if it were a path. If that fails,
-	 * try to resolve the filename of the font using fontconfig, where the
-	 * format is 'font family name' or 'font family name, font style'.
-	 * @param fs The font size to load.
-	 * @param fonttype The type of font that is requested to be loaded.
-	 * @return The loaded font, or \c nullptr when none could be loaded.
-	 */
-	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype) const override
+	std::unique_ptr<FontCache> LoadFont(FontSize fs, FontType fonttype, bool search, const std::string &font_name, const std::any &os_handle) const override
 	{
 		if (fonttype != FontType::TrueType) return nullptr;
-
-		FontCacheSubSetting *settings = GetFontCacheSubSetting(fs);
-
-		std::string font = GetFontCacheFontName(fs);
-		if (font.empty()) return nullptr;
 
 		if (_ft_library == nullptr) {
 			if (FT_Init_FreeType(&_ft_library) != FT_Err_Ok) {
@@ -251,20 +237,22 @@ public:
 
 		/* If font is an absolute path to a ttf, try loading that first. */
 		int32_t index = 0;
-		if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
-		FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
+		if (auto ptr = std::any_cast<int32_t>(&os_handle)) {
+			index = *ptr;
+		}
+		FT_Error error = FT_New_Face(_ft_library, font_name.c_str(), index, &face);
 
 		if (error != FT_Err_Ok) {
 			/* Check if font is a relative filename in one of our search-paths. */
-			std::string full_font = FioFindFullPath(BASE_DIR, font);
+			std::string full_font = FioFindFullPath(Subdirectory::Base, font_name);
 			if (!full_font.empty()) {
 				error = FT_New_Face(_ft_library, full_font.c_str(), 0, &face);
 			}
 		}
 
 #ifdef WITH_FONTCONFIG
-		/* Try loading based on font face name (OS-wide fonts). */
-		if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
+		/* If allowed to search, try loading based on font face name (OS-wide fonts). */
+		if (error != FT_Err_Ok && search) error = GetFontByFaceName(font_name, &face);
 #endif /* WITH_FONTCONFIG */
 
 		if (error != FT_Err_Ok) {
@@ -272,13 +260,13 @@ public:
 			return nullptr;
 		}
 
-		return LoadFont(fs, face, font, GetFontCacheFontSize(fs));
+		return LoadFont(fs, face, font_name, GetFontCacheFontSize(fs));
 	}
 
-	bool FindFallbackFont(struct FontCacheSettings *settings, const std::string &language_isocode, class MissingGlyphSearcher *callback) const override
+	bool FindFallbackFont(const std::string &language_isocode, class MissingGlyphSearcher *callback) const override
 	{
 #ifdef WITH_FONTCONFIG
-		if (FontConfigFindFallbackFont(settings, language_isocode, callback)) return true;
+		if (FontConfigFindFallbackFont(language_isocode, callback)) return true;
 #endif /* WITH_FONTCONFIG */
 
 		return false;

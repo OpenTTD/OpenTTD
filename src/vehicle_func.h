@@ -216,7 +216,7 @@ UnitID GetFreeUnitNumber(VehicleType type);
 
 void VehicleEnterDepot(Vehicle *v);
 
-bool CanBuildVehicleInfrastructure(VehicleType type, uint8_t subtype = 0);
+bool CanBuildVehicleInfrastructure(VehicleType type, RoadTramType subtype = RoadTramType::Invalid);
 
 /** Position information of a vehicle after it moved */
 struct GetNewVehiclePosResult {
@@ -235,7 +235,7 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y);
  */
 inline bool IsCompanyBuildableVehicleType(VehicleType type)
 {
-	return type < VEH_COMPANY_END;
+	return type < VehicleType::CompanyEnd;
 }
 
 /**
@@ -254,12 +254,12 @@ const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, En
 SpriteID GetEnginePalette(EngineID engine_type, CompanyID company);
 SpriteID GetVehiclePalette(const Vehicle *v);
 
-extern const StringID _veh_build_msg_table[];
-extern const StringID _veh_sell_msg_table[];
-extern const StringID _veh_sell_all_msg_table[];
-extern const StringID _veh_autoreplace_msg_table[];
-extern const StringID _veh_refit_msg_table[];
-extern const StringID _send_to_depot_msg_table[];
+extern VehicleTypeIndexArray<const StringID> _veh_build_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_sell_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_sell_all_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_autoreplace_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_refit_msg_table;
+extern VehicleTypeIndexArray<const StringID> _send_to_depot_msg_table;
 
 /* Functions to find the right command for certain vehicle type */
 inline StringID GetCmdBuildVehMsg(VehicleType type)

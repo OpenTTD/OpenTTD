@@ -950,7 +950,7 @@ static const Units _units_time_years_or_minutes[] = {
  */
 static const Units GetVelocityUnits(VehicleType type)
 {
-	uint8_t setting = (type == VEH_SHIP || type == VEH_AIRCRAFT) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
+	uint8_t setting = (type == VehicleType::Ship || type == VehicleType::Aircraft) ? _settings_game.locale.units_velocity_nautical : _settings_game.locale.units_velocity;
 
 	assert(setting < lengthof(_units_velocity_calendar));
 	assert(setting < lengthof(_units_velocity_realtime));
@@ -1458,7 +1458,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 					std::string_view list_separator = GetListSeparator();
 					for (const auto &cs : _sorted_cargo_specs) {
-						if (!HasBit(cmask, cs->Index())) continue;
+						if (!cmask.Test(cs->Index())) continue;
 
 						if (first) {
 							first = false;
@@ -1637,7 +1637,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_DEPOT_NAME: { // {DEPOT}
 					VehicleType vt = args.GetNextParameter<VehicleType>();
-					if (vt == VEH_AIRCRAFT) {
+					if (vt == VehicleType::Aircraft) {
 						auto tmp_params = MakeParameters(args.GetNextParameter<StationID>());
 						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_AIRCRAFT, tmp_params);
 						break;
@@ -1649,7 +1649,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
 						auto tmp_params = MakeParameters(d->town->index, d->town_cn + 1);
-						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * vt + (d->town_cn == 0 ? 0 : 1), tmp_params);
+						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * to_underlying(vt) + (d->town_cn == 0 ? 0 : 1), tmp_params);
 					}
 					break;
 				}
@@ -1826,10 +1826,10 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						StringID string_id;
 						switch (v->type) {
 							default:           string_id = STR_INVALID_VEHICLE; break;
-							case VEH_TRAIN:    string_id = STR_SV_TRAIN_NAME; break;
-							case VEH_ROAD:     string_id = STR_SV_ROAD_VEHICLE_NAME; break;
-							case VEH_SHIP:     string_id = STR_SV_SHIP_NAME; break;
-							case VEH_AIRCRAFT: string_id = STR_SV_AIRCRAFT_NAME; break;
+							case VehicleType::Train:    string_id = STR_SV_TRAIN_NAME; break;
+							case VehicleType::Road:     string_id = STR_SV_ROAD_VEHICLE_NAME; break;
+							case VehicleType::Ship:     string_id = STR_SV_SHIP_NAME; break;
+							case VehicleType::Aircraft: string_id = STR_SV_AIRCRAFT_NAME; break;
 						}
 
 						GetStringWithArgs(builder, string_id, tmp_params);
@@ -1856,7 +1856,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				}
 
 				case SCC_COLOUR: { // {COLOUR}
-					StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
+					StringControlCode scc = static_cast<StringControlCode>(SCC_BLUE + to_underlying(args.GetNextParameter<Colours>()));
 					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.PutUtf8(scc);
 					break;
 				}
@@ -2256,7 +2256,7 @@ static void FillLanguageList(const std::string &path)
 void InitializeLanguagePacks()
 {
 	for (Searchpath sp : _valid_searchpaths) {
-		FillLanguageList(FioGetDirectory(sp, LANG_DIR));
+		FillLanguageList(FioGetDirectory(sp, Subdirectory::Lang));
 	}
 	if (_languages.empty()) UserError("No available language packs (invalid versions?)");
 
@@ -2306,34 +2306,42 @@ std::string_view GetCurrentLanguageIsoCode()
 	return _langpack.langpack->isocode;
 }
 
-/**
- * Check whether there are glyphs missing in the current language.
- * @return If glyphs are missing, return \c true, else return \c false.
- */
-bool MissingGlyphSearcher::FindMissingGlyphs()
+void BaseStringMissingGlyphSearcher::DetermineRequiredGlyphs(FontSizes fontsizes)
 {
-	FontCache::LoadFontCaches(this->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
+	this->missing_fontsizes.Reset();
+	this->missing_glyphs.clear();
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
-		FontSize size = this->DefaultSize();
-		FontCache *fc = FontCache::Get(size);
+		FontSize fs = this->DefaultSize();
+		FontCache *fc = FontCache::Get(fs);
 		for (char32_t c : Utf8View(*text)) {
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
-				size = (FontSize)(c - SCC_FIRST_FONT);
-				fc = FontCache::Get(size);
-			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && fc->MapCharToGlyph(c, false) == 0) {
-				/* The character is printable, but not in the normal font. This is the case we were testing for. */
-				Debug(fontcache, 0, "Font is missing glyphs to display char 0x{:X} in {} font size", static_cast<uint32_t>(c), FontSizeToName(size));
-				return true;
+				fs = (FontSize)(c - SCC_FIRST_FONT);
+				fc = FontCache::Get(fs);
+				continue;
 			}
+
+			if (!fontsizes.Test(fs)) continue;
+			if (!IsPrintable(c) || IsTextDirectionChar(c)) continue;
+			if (IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END)) continue;
+			if (fc->MapCharToGlyph(c, false) != 0) continue;
+
+			this->missing_fontsizes.Set(fs);
+			this->missing_glyphs.insert(c);
 		}
 	}
-	return false;
 }
 
 /** Helper for searching through the language pack. */
-class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
+class LanguagePackGlyphSearcher : public BaseStringMissingGlyphSearcher {
+public:
+	/**
+	 * Create this language pack glyph searcher.
+	 */
+	LanguagePackGlyphSearcher() : BaseStringMissingGlyphSearcher(FONTSIZES_REQUIRED) {}
+
+private:
 	uint i; ///< Iterator for the primary language tables.
 	uint j; ///< Iterator for the secondary language tables.
 
@@ -2345,7 +2353,7 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 
 	FontSize DefaultSize() override
 	{
-		return FS_NORMAL;
+		return FontSize::Normal;
 	}
 
 	std::optional<std::string_view> NextString() override
@@ -2361,24 +2369,6 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		}
 
 		return ret;
-	}
-
-	bool Monospace() override
-	{
-		return false;
-	}
-
-	void SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] std::string_view font_name, [[maybe_unused]] const void *os_data) override
-	{
-#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
-		settings->small.font = font_name;
-		settings->medium.font = font_name;
-		settings->large.font = font_name;
-
-		settings->small.os_handle = os_data;
-		settings->medium.os_handle = os_data;
-		settings->large.os_handle = os_data;
-#endif
 	}
 };
 
@@ -2398,7 +2388,12 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 {
 	static LanguagePackGlyphSearcher pack_searcher;
 	if (searcher == nullptr) searcher = &pack_searcher;
-	bool bad_font = searcher->FindMissingGlyphs();
+
+	FontCache::LoadFontCaches(searcher->fontsizes);
+
+	searcher->DetermineRequiredGlyphs(searcher->fontsizes);
+	bool bad_font = searcher->missing_fontsizes.Any();
+
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
@@ -2406,10 +2401,10 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 		bool any_font_configured = !_fcsettings.medium.font.empty();
 		FontCacheSettings backup = _fcsettings;
 
-		_fcsettings.mono.os_handle = nullptr;
-		_fcsettings.medium.os_handle = nullptr;
-
-		bad_font = !FontProviderManager::FindFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
+		bad_font = !FontProviderManager::FindFallbackFont(_langpack.langpack->isocode, searcher);
+		if (!bad_font) {
+			FontCache::LoadFontCaches(searcher->missing_fontsizes);
+		}
 
 		_fcsettings = std::move(backup);
 
@@ -2423,15 +2418,11 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 			builder.Put("The current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
 			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 		}
-
-		if (bad_font) {
-			/* Our fallback font does miss characters too, so keep the
-			 * user chosen font as that is more likely to be any good than
-			 * the wild guess we made */
-			FontCache::LoadFontCaches(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
-		}
 	}
 #endif
+
+	/* Update the font width cache */
+	LoadStringWidthTable(searcher->fontsizes);
 
 	if (bad_font) {
 		/* All attempts have failed. Display an error. As we do not want the string to be translated by
@@ -2443,14 +2434,8 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 		builder.PutUtf8(SCC_YELLOW);
 		builder.Put("The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
 		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
-
-		/* Reset the font width */
-		LoadStringWidthTable(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 		return;
 	}
-
-	/* Update the font with cache */
-	LoadStringWidthTable(searcher->Monospace() ? FontSizes{FS_MONO} : FONTSIZES_REQUIRED);
 
 #if !(defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) && !defined(WITH_UNISCRIBE) && !defined(WITH_COCOA)
 	/*

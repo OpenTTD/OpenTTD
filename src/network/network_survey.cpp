@@ -19,13 +19,15 @@
 
 #include "../safeguards.h"
 
-/** Mapping to a string representation of the Reason enumeration. */
+#ifndef DOXYGEN_API
+/* Mapping to a string representation of the Reason enumeration. */
 NLOHMANN_JSON_SERIALIZE_ENUM(NetworkSurveyHandler::Reason, {
 	{NetworkSurveyHandler::Reason::Preview, "preview"},
 	{NetworkSurveyHandler::Reason::Leave, "leave"},
 	{NetworkSurveyHandler::Reason::Exit, "exit"},
 	{NetworkSurveyHandler::Reason::Crash, "crash"},
 })
+#endif /* DOXYGEN_API */
 
 NetworkSurveyHandler _survey = {};
 

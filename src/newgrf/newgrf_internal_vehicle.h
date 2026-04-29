@@ -18,10 +18,10 @@
 /** Temporary engine data used when loading only */
 struct GRFTempEngineData {
 	/** Summary state of refittability properties */
-	enum Refittability : uint8_t {
-		UNSET    =  0,  ///< No properties assigned. Default refit masks shall be activated.
-		EMPTY,          ///< GRF defined vehicle as not-refittable. The vehicle shall only carry the default cargo.
-		NONEMPTY,       ///< GRF defined the vehicle as refittable. If the refitmask is empty after translation (cargotypes not available), disable the vehicle.
+	enum class Refittability : uint8_t {
+		Unset, ///< No properties assigned. Default refit masks shall be activated.
+		Empty, ///< GRF defined vehicle as not-refittable. The vehicle shall only carry the default cargo.
+		NonEmpty, ///< GRF defined the vehicle as refittable. If the refitmask is empty after translation (cargotypes not available), disable the vehicle.
 	};
 
 	CargoClasses cargo_allowed;          ///< Bitmask of cargo classes that are allowed as a refit.
@@ -30,7 +30,7 @@ struct GRFTempEngineData {
 	std::vector<RailTypeLabel> railtypelabels;
 	uint8_t roadtramtype;
 	const GRFFile *defaultcargo_grf; ///< GRF defining the cargo translation table to use if the default cargo is the 'first refittable'.
-	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
+	Refittability refittability = Refittability::Unset; ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	uint8_t rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 	CargoTypes ctt_include_mask; ///< Cargo types always included in the refit mask.
 	CargoTypes ctt_exclude_mask; ///< Cargo types always excluded from the refit mask.
@@ -42,9 +42,9 @@ struct GRFTempEngineData {
 	void UpdateRefittability(bool non_empty)
 	{
 		if (non_empty) {
-			this->refittability = NONEMPTY;
-		} else if (this->refittability == UNSET) {
-			this->refittability = EMPTY;
+			this->refittability = Refittability::NonEmpty;
+		} else if (this->refittability == Refittability::Unset) {
+			this->refittability = Refittability::Empty;
 		}
 	}
 };

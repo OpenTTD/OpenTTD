@@ -69,20 +69,26 @@ protected:
 		}
 	}
 
-	/** to access inherited path finder */
+	/** @copydoc CYapfBaseT::Yapf */
 	Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
 
 public:
-	/** Sets whether the first two-way signal should be treated as a dead end */
+	/**
+	 * Sets whether the first two-way signal should be treated as a dead end.
+	 * @param enabled Whether to treat them as dead ends.
+	 */
 	void SetTreatFirstRedTwoWaySignalAsEOL(bool enabled)
 	{
 		this->treat_first_red_two_way_signal_as_eol = enabled;
 	}
 
-	/** Returns whether the first two-way signal should be treated as a dead end */
+	/**
+	 * Returns whether the first two-way signal should be treated as a dead end.
+	 * @return \c true iff the `rail_firstred_twoway_eol` setting is enabled, and it is enabled for this instance.
+	 */
 	inline bool TreatFirstRedTwoWaySignalAsEOL()
 	{
 		return Yapf().PfGetSettings().rail_firstred_twoway_eol && this->treat_first_red_two_way_signal_as_eol;
@@ -120,8 +126,13 @@ public:
 		return 0;
 	}
 
-	/** Return one tile cost (base cost + level crossing penalty). */
-	inline int OneTileCost(TileIndex &tile, Trackdir trackdir)
+	/**
+	 * Return one tile cost (base cost + level crossing penalty).
+	 * @param tile The tile to consider.
+	 * @param trackdir The direction of travel.
+	 * @return The cost.
+	 */
+	inline int OneTileCost(TileIndex tile, Trackdir trackdir)
 	{
 		int cost = 0;
 		/* set base cost */
@@ -145,17 +156,30 @@ public:
 		return cost;
 	}
 
-	/** Check for a reserved station platform. */
-	inline bool IsAnyStationTileReserved(TileIndex tile, Trackdir trackdir, int skipped)
+	/**
+	 * Check for a reserved station platform.
+	 * @param tile The tile to check.
+	 * @param trackdir The direction to check in.
+	 * @param distance The number of tiles to check.
+	 * @return \c true iff there is any reserved tile in the given direction for the given distance.
+	 */
+	inline bool IsAnyStationTileReserved(TileIndex tile, Trackdir trackdir, int distance)
 	{
 		TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(trackdir)));
-		for (; skipped >= 0; skipped--, tile += diff) {
+		for (; distance >= 0; distance--, tile += diff) {
 			if (HasStationReservation(tile)) return true;
 		}
 		return false;
 	}
 
-	/** The cost for reserved tiles, including skipped ones. */
+	/**
+	 * Calculate the cost for reserved tiles, including skipped ones.
+	 * @param n The current node.
+	 * @param tile The start tile to look at.
+	 * @param trackdir The chosen track direction at the tile.
+	 * @param skipped The number of tiles the path follower skipped.
+	 * @return The total reservation cost.
+	 */
 	inline int ReservationCost(Node &n, TileIndex tile, Trackdir trackdir, int skipped)
 	{
 		if (n.num_signals_passed >= this->sig_look_ahead_costs.size() / 2) return 0;
@@ -247,7 +271,7 @@ public:
 		int cost = 0;
 		const Train *v = Yapf().GetVehicle();
 		assert(v != nullptr);
-		assert(v->type == VEH_TRAIN);
+		assert(v->type == VehicleType::Train);
 		assert(v->gcache.cached_total_length != 0);
 		int missing_platform_length = CeilDiv(v->gcache.cached_total_length, TILE_SIZE) - platform_length;
 		if (missing_platform_length < 0) {
@@ -266,11 +290,7 @@ public:
 		this->max_cost = max_cost;
 	}
 
-	/**
-	 * Called by YAPF to calculate the cost from the origin to the given node.
-	 *  Calculates only the cost of given node, adds it to the parent node cost
-	 *  and stores the result into Node::cost member
-	 */
+	/** @copydoc CYapfBaseT::PfCalcCostFunc */
 	inline bool PfCalcCost(Node &n, const TrackFollower *follower)
 	{
 		assert(!n.flags_u.flags_s.target_seen);

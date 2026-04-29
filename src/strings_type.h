@@ -11,6 +11,7 @@
 #define STRINGS_TYPE_H
 
 #include "core/convertible_through_base.hpp"
+#include "core/enum_type.hpp"
 #include "core/strong_typedef_type.hpp"
 
 /**
@@ -90,6 +91,14 @@ struct StringParameter {
 	inline StringParameter(const std::string &data) : data(data), type(0) {}
 
 	inline StringParameter(const ConvertibleThroughBase auto &data) : data(static_cast<uint64_t>(data.base())), type(0) {}
+
+	/**
+	 * Create a StringParameter from a scoped enum.
+	 * @tparam T the type of the scoped enum.
+	 * @param data the scoped enum value.
+	 */
+	template <typename T> requires is_scoped_enum_v<T>
+	inline StringParameter(const T &data) : data(static_cast<uint64_t>(to_underlying(data))), type(0) {}
 };
 
 /**

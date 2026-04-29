@@ -1351,8 +1351,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Nui
 STR_CONFIG_SETTING_RECESSIONS                                   :Auheke ohaoha: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ina kā, ka taea te tūpono e ngā auheke i ētahi wā. I te auheke, ka iti rawa atu te whakaputa katoa (ka hoki ki te kōeke o mua i te mutunga o te auheke)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Āraia ngā tereina kei haere whakamuri i roto i ngā teihana: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ina kā, kāore ngā tereina e haere whakamuri i roto i ngā teihana ehara i te momo whakamutunga, kāore hoki ina poto ake te ara ki te ūnga mehemea ka haere whakamuri
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Maikiroa: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Hohokona ngā maikiroa ka ārai pea, whakangaro pea rānei i ngā waka, te tūāhanga rānei
@@ -1903,6 +1903,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ina kā, ka pō
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Whakakāngia ngā tepetere wākena: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ina kā, whakamahia ngā tepetere o ngā wākena hei whakatau i te tere mōrahi o te tereina
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Āraia ngā rēra hiko: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ina kā, kāore te whakahiko ara e pīrangitia kia rere ai ngā tereina hiko
@@ -4589,7 +4590,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Monihua 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Monihua i tēnei tau: {LTBLUE}{CURRENCY_LONG} (tērā tau: {CURRENCY_LONG}) {BLACK}Pānga mōkito: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Monihua i tēnei wā: {LTBLUE}{CURRENCY_LONG} (tērā wā: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Monihua i tēnei wā: {LTBLUE}{CURRENCY_LONG} (tērā wā: {CURRENCY_LONG}) {BLACK}Pānga mōkito: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Horopū: {LTBLUE}{COMMA}%  {BLACK}Turingonge mai rānō i te tapi hou rawa atu: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rā i hangaia ai: {LTBLUE}{NUM}{BLACK} Uara: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kītanga: {LTBLUE}None{STRING}
@@ -4729,7 +4729,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Tīpakon
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Te raraunga waka me peke ai
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ōrau o te utanga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Horopū
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tere mōrahi

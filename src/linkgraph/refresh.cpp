@@ -72,7 +72,7 @@ bool LinkRefresher::HandleRefit(CargoType refit_cargo)
 	bool any_refit = false;
 	for (Vehicle *v = this->vehicle; v != nullptr; v = v->Next()) {
 		const Engine *e = Engine::Get(v->engine_type);
-		if (!HasBit(e->info.refit_mask, this->cargo)) {
+		if (!e->info.refit_mask.Test(this->cargo)) {
 			++refit_it;
 			continue;
 		}
@@ -105,7 +105,7 @@ bool LinkRefresher::HandleRefit(CargoType refit_cargo)
 		++refit_it;
 
 		/* Special case for aircraft with mail. */
-		if (v->type == VEH_AIRCRAFT) {
+		if (v->type == VehicleType::Aircraft) {
 			if (mail_capacity < refit_it->remaining) {
 				this->capacities[refit_it->cargo] -= refit_it->remaining - mail_capacity;
 				refit_it->remaining = mail_capacity;
@@ -188,7 +188,7 @@ void LinkRefresher::RefreshStats(VehicleOrderID cur, VehicleOrderID next)
 	Station *st = Station::GetIfValid(orders[cur].GetDestination().ToStationID());
 	if (st != nullptr && next_station != StationID::Invalid() && next_station != st->index) {
 		Station *st_to = Station::Get(next_station);
-		for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 			/* Refresh the link and give it a minimum capacity. */
 
 			uint cargo_quantity = this->capacities[cargo];
@@ -260,7 +260,7 @@ void LinkRefresher::RefreshLinks(VehicleOrderID cur, VehicleOrderID next, Refres
 			} else if (!flags.Test(RefreshFlag::InAutorefit)) {
 				flags.Set(RefreshFlag::InAutorefit);
 				LinkRefresher backup(*this);
-				for (CargoType cargo = 0; cargo != NUM_CARGO; ++cargo) {
+				for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 					if (CargoSpec::Get(cargo)->IsValid() && this->HandleRefit(cargo)) {
 						this->RefreshLinks(cur, next, flags, num_hops);
 						*this = backup;

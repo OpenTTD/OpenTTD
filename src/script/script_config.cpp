@@ -179,7 +179,7 @@ std::optional<std::string> ScriptConfig::GetTextfile(TextfileType type, CompanyI
 {
 	if (slot == CompanyID::Invalid() || this->GetInfo() == nullptr) return std::nullopt;
 
-	return ::GetTextfile(type, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR, this->GetInfo()->GetMainScript());
+	return ::GetTextfile(type, (slot == OWNER_DEITY) ? Subdirectory::Gs : Subdirectory::Ai, this->GetInfo()->GetMainScript());
 }
 
 void ScriptConfig::SetToLoadData(ScriptInstance::ScriptData *data)
