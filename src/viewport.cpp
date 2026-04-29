@@ -914,16 +914,16 @@ static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 	SpriteID sel;
 	if (IsHalftileSlope(ti->tileh)) {
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
-		SpriteID sel2 = SPR_HALFTILE_SELECTION_FLAT + halftile_corner;
+		SpriteID sel2 = SPR_HALFTILE_SELECTION_FLAT + to_underlying(halftile_corner);
 		DrawSelectionSprite(sel2, pal, ti, 7 + TILE_HEIGHT, FOUNDATION_PART_HALFTILE);
 
 		Corner opposite_corner = OppositeCorner(halftile_corner);
 		if (IsSteepSlope(ti->tileh)) {
 			sel = SPR_HALFTILE_SELECTION_DOWN;
 		} else {
-			sel = ((ti->tileh & SlopeWithOneCornerRaised(opposite_corner)) != 0 ? SPR_HALFTILE_SELECTION_UP : SPR_HALFTILE_SELECTION_FLAT);
+			sel = ti->tileh.Any(SlopeWithOneCornerRaised(opposite_corner)) ? SPR_HALFTILE_SELECTION_UP : SPR_HALFTILE_SELECTION_FLAT;
 		}
-		sel += opposite_corner;
+		sel += to_underlying(opposite_corner);
 	} else {
 		sel = SPR_SELECT_TILE + SlopeToSpriteOffset(ti->tileh);
 	}
@@ -976,9 +976,9 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 	FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
 	Slope autorail_tileh = RemoveHalftileSlope(ti->tileh);
 	if (IsHalftileSlope(ti->tileh)) {
-		static const uint _lower_rail[4] = { 5U, 2U, 4U, 3U };
+		static constexpr EnumClassIndexContainer<std::array<uint, to_underlying(Corner::End)>, Corner> lower_rail = {5U, 2U, 4U, 3U};
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
-		if (autorail_type != _lower_rail[halftile_corner]) {
+		if (autorail_type != lower_rail[halftile_corner]) {
 			foundation_part = FOUNDATION_PART_HALFTILE;
 			/* Here we draw the highlights of the "three-corners-raised"-slope. That looks ok to me. */
 			autorail_tileh = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
@@ -1143,14 +1143,14 @@ draw_inner:
 			/* Figure out the Z coordinate for the single dot. */
 			int z = 0;
 			FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
-			if (ti->tileh & SLOPE_N) {
+			if (ti->tileh.Test(Corner::N)) {
 				z += TILE_HEIGHT;
 				if (RemoveHalftileSlope(ti->tileh) == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}
 			if (IsHalftileSlope(ti->tileh)) {
 				Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
-				if ((halftile_corner == CORNER_W) || (halftile_corner == CORNER_E)) z += TILE_HEIGHT;
-				if (halftile_corner != CORNER_S) {
+				if ((halftile_corner == Corner::W) || (halftile_corner == Corner::E)) z += TILE_HEIGHT;
+				if (halftile_corner != Corner::S) {
 					foundation_part = FOUNDATION_PART_HALFTILE;
 					if (IsSteepSlope(ti->tileh)) z -= TILE_HEIGHT;
 				}

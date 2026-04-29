@@ -209,7 +209,7 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 {
 	if (IsTileType(tile, TileType::TunnelBridge)) {
 		if (IsTunnel(tile)) {
-			*tileh = SLOPE_STEEP; // XXX - Hack to make tunnel entrances to always have a pylon
+			*tileh = Slope(Corner::Steep); // XXX - Hack to make tunnel entrances to always have a pylon
 		} else if (*tileh != SLOPE_FLAT) {
 			*tileh = SLOPE_FLAT;
 		} else {
@@ -282,7 +282,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 
 	/* Half tile slopes coincide only with horizontal/vertical track.
 	 * Faking a flat slope results in the correct sprites on positions. */
-	Corner halftile_corner = CORNER_INVALID;
+	Corner halftile_corner = Corner::Invalid;
 	if (IsHalftileSlope(tileh[TS_HOME])) {
 		halftile_corner = GetHalftileSlopeCorner(tileh[TS_HOME]);
 		tileh[TS_HOME] = SLOPE_FLAT;
@@ -308,16 +308,16 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
 	SpriteID pylon_normal = GetPylonBase(ti->tile);
-	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
+	SpriteID pylon_halftile = (halftile_corner != Corner::Invalid) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
 
 	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
-		static const uint edge_corners[] = {
-			1 << CORNER_N | 1 << CORNER_E, // DIAGDIR_NE
-			1 << CORNER_S | 1 << CORNER_E, // DIAGDIR_SE
-			1 << CORNER_S | 1 << CORNER_W, // DIAGDIR_SW
-			1 << CORNER_N | 1 << CORNER_W, // DIAGDIR_NW
+		static constexpr std::array<Slope, DIAGDIR_END> edge_corners = {
+			SLOPE_NE, // DIAGDIR_NE
+			SLOPE_SE, // DIAGDIR_SE
+			SLOPE_SW, // DIAGDIR_SW
+			SLOPE_NW, // DIAGDIR_NW
 		};
-		SpriteID pylon_base = (halftile_corner != CORNER_INVALID && HasBit(edge_corners[i], halftile_corner)) ? pylon_halftile : pylon_normal;
+		SpriteID pylon_base = (halftile_corner != Corner::Invalid && edge_corners[i].Test(halftile_corner)) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		int elevation = GetPCPElevation(ti->tile, i);
 
@@ -372,7 +372,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 			ppp_allowed[i].Reset();
 		}
 
-		Foundation foundation = FOUNDATION_NONE;
+		Foundation foundation = Foundation::None;
 
 		/* Station and road crossings are always "flat", so adjust the tileh accordingly */
 		if (IsTileType(neighbour, TileType::Station) || IsTileType(neighbour, TileType::Road)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
@@ -457,13 +457,13 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	if (IsRailStationTile(ti->tile) && !CanStationTileHaveWires(ti->tile)) return;
 
 	SpriteID wire_normal = GetWireBase(ti->tile);
-	SpriteID wire_halftile = (halftile_corner != CORNER_INVALID) ? GetWireBase(ti->tile, TCX_UPPER_HALFTILE) : wire_normal;
+	SpriteID wire_halftile = (halftile_corner != Corner::Invalid) ? GetWireBase(ti->tile, TCX_UPPER_HALFTILE) : wire_normal;
 	Track halftile_track;
 	switch (halftile_corner) {
-		case CORNER_W: halftile_track = TRACK_LEFT; break;
-		case CORNER_S: halftile_track = TRACK_LOWER; break;
-		case CORNER_E: halftile_track = TRACK_RIGHT; break;
-		case CORNER_N: halftile_track = TRACK_UPPER; break;
+		case Corner::W: halftile_track = TRACK_LEFT; break;
+		case Corner::S: halftile_track = TRACK_LOWER; break;
+		case Corner::E: halftile_track = TRACK_RIGHT; break;
+		case Corner::N: halftile_track = TRACK_UPPER; break;
 		default:       halftile_track = INVALID_TRACK; break;
 	}
 
@@ -472,7 +472,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		SpriteID wire_base = (t == halftile_track) ? wire_halftile : wire_normal;
 		uint8_t pcp_config = pcp_status.Test(_pcp_positions[t][0]) +
 			(pcp_status.Test(_pcp_positions[t][1]) << 1);
-		int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; // tileh for the slopes, 0 otherwise
+		int tileh_selector = !(tileh[TS_HOME].base() % 3) * tileh[TS_HOME].base() / 3; // tileh for the slopes, 0 otherwise
 
 		assert(pcp_config != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
 		assert(!IsSteepSlope(tileh[TS_HOME]));

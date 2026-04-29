@@ -52,12 +52,11 @@ public:
 	 */
 	enum Corner {
 		/* Note: these values represent part of the in-game Corner enum */
-		CORNER_W       = ::CORNER_W,       ///< West corner
-		CORNER_S       = ::CORNER_S,       ///< South corner
-		CORNER_E       = ::CORNER_E,       ///< East corner
-		CORNER_N       = ::CORNER_N,       ///< North corner
-
-		CORNER_INVALID = ::CORNER_INVALID, ///< An invalid corner
+		CORNER_W = to_underlying(::Corner::W), ///< West corner.
+		CORNER_S = to_underlying(::Corner::S), ///< South corner.
+		CORNER_E = to_underlying(::Corner::E), ///< East corner.
+		CORNER_N = to_underlying(::Corner::N), ///< North corner.
+		CORNER_INVALID = to_underlying(::Corner::Invalid), ///< An invalid corner
 	};
 
 	/**
@@ -69,27 +68,27 @@ public:
 	 */
 	enum Slope {
 		/* Note: these values represent part of the in-game Slope enum */
-		SLOPE_FLAT     = ::SLOPE_FLAT,     ///< A flat tile
-		SLOPE_W        = ::SLOPE_W,        ///< The west corner of the tile is raised
-		SLOPE_S        = ::SLOPE_S,        ///< The south corner of the tile is raised
-		SLOPE_E        = ::SLOPE_E,        ///< The east corner of the tile is raised
-		SLOPE_N        = ::SLOPE_N,        ///< The north corner of the tile is raised
-		SLOPE_STEEP    = ::SLOPE_STEEP,    ///< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
-		SLOPE_NW       = ::SLOPE_NW,       ///< North and west corner are raised
-		SLOPE_SW       = ::SLOPE_SW,       ///< South and west corner are raised
-		SLOPE_SE       = ::SLOPE_SE,       ///< South and east corner are raised
-		SLOPE_NE       = ::SLOPE_NE,       ///< North and east corner are raised
-		SLOPE_EW       = ::SLOPE_EW,       ///< East and west corner are raised
-		SLOPE_NS       = ::SLOPE_NS,       ///< North and south corner are raised
-		SLOPE_ELEVATED = ::SLOPE_ELEVATED, ///< Bit mask containing all 'simple' slopes. Does not appear as a slope.
-		SLOPE_NWS      = ::SLOPE_NWS,      ///< North, west and south corner are raised
-		SLOPE_WSE      = ::SLOPE_WSE,      ///< West, south and east corner are raised
-		SLOPE_SEN      = ::SLOPE_SEN,      ///< South, east and north corner are raised
-		SLOPE_ENW      = ::SLOPE_ENW,      ///< East, north and west corner are raised
-		SLOPE_STEEP_W  = ::SLOPE_STEEP_W,  ///< A steep slope falling to east (from west)
-		SLOPE_STEEP_S  = ::SLOPE_STEEP_S,  ///< A steep slope falling to north (from south)
-		SLOPE_STEEP_E  = ::SLOPE_STEEP_E,  ///< A steep slope falling to west (from east)
-		SLOPE_STEEP_N  = ::SLOPE_STEEP_N,  ///< A steep slope falling to south (from north)
+		SLOPE_FLAT = ::SLOPE_FLAT.base(), ///< A flat tile.
+		SLOPE_W = ::Slope(::Corner::W).base(), ///< The west corner of the tile is raised.
+		SLOPE_S = ::Slope(::Corner::S).base(), ///< The south corner of the tile is raised.
+		SLOPE_E = ::Slope(::Corner::E).base(), ///< The east corner of the tile is raised.
+		SLOPE_N = ::Slope(::Corner::N).base(), ///< The north corner of the tile is raised.
+		SLOPE_STEEP = ::Slope(::Corner::Steep).base(), ///< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times).
+		SLOPE_NW = ::SLOPE_NW.base(), ///< North and west corner are raised.
+		SLOPE_SW = ::SLOPE_SW.base(), ///< South and west corner are raised.
+		SLOPE_SE = ::SLOPE_SE.base(), ///< South and east corner are raised.
+		SLOPE_NE = ::SLOPE_NE.base(), ///< North and east corner are raised.
+		SLOPE_EW = ::SLOPE_EW.base(), ///< East and west corner are raised.
+		SLOPE_NS = ::SLOPE_NS.base(), ///< North and south corner are raised.
+		SLOPE_ELEVATED = ::SLOPE_ELEVATED.base(), ///< Bit mask containing all 'simple' slopes. Does not appear as a slope.
+		SLOPE_NWS = ::SLOPE_NWS.base(), ///< North, west and south corner are raised.
+		SLOPE_WSE = ::SLOPE_WSE.base(), ///< West, south and east corner are raised.
+		SLOPE_SEN = ::SLOPE_SEN.base(), ///< South, east and north corner are raised.
+		SLOPE_ENW = ::SLOPE_ENW.base(), ///< East, north and west corner are raised.
+		SLOPE_STEEP_W = ::SLOPE_STEEP_W.base(), ///< A steep slope falling to east (from west).
+		SLOPE_STEEP_S = ::SLOPE_STEEP_S.base(), ///< A steep slope falling to north (from south).
+		SLOPE_STEEP_E = ::SLOPE_STEEP_E.base(), ///< A steep slope falling to west (from east).
+		SLOPE_STEEP_N = ::SLOPE_STEEP_N.base(), ///< A steep slope falling to south (from north).
 
 		/* Custom added value, only valid for this API */
 		SLOPE_INVALID  = 0xFFFF,           ///< An invalid slope
@@ -206,6 +205,15 @@ public:
 	 */
 	static bool IsStationTile(TileIndex tile);
 
+private:
+	/**
+	 * Check if given slope value is invalid.
+	 * @param slope The slope to check validity.
+	 * @return True if the slope has invalid value.
+	 */
+	static bool IsInvalidSlope(Slope slope);
+
+public:
 	/**
 	 * Check if a tile has a steep slope.
 	 * Steep slopes are slopes with a height difference of 2 across one diagonal of the tile.

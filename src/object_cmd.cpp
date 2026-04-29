@@ -282,7 +282,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 			std::array<int32_t, 16> regs100;
 			if (spec->callback_mask.Test(ObjectCallbackMask::SlopeCheck)) {
 				TileIndex diff = t - tile;
-				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, regs100, view);
+				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t).base(), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, regs100, view);
 			}
 
 			if (callback == CALLBACK_FAILED) {
@@ -443,7 +443,7 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
 {
 	const ObjectSpec *spec = ObjectSpec::Get(GetObjectType(tile));
-	return spec->IsEnabled() && spec->flags.Test(ObjectFlag::HasNoFoundation) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
+	return spec->IsEnabled() && spec->flags.Test(ObjectFlag::HasNoFoundation) ? Foundation::None : FlatteningFoundation(tileh);
 }
 
 /** @copydoc DrawTileProc */

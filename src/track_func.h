@@ -98,9 +98,11 @@ inline TrackBits AxisToTrackBits(Axis a)
  */
 inline TrackBits CornerToTrackBits(Corner corner)
 {
-	extern const TrackBits _corner_to_trackbits[];
+	constexpr EnumClassIndexContainer<std::array<TrackBits, to_underlying(Corner::End)>, Corner> corner_to_trackbits = {
+		TRACK_BIT_LEFT, TRACK_BIT_LOWER, TRACK_BIT_RIGHT, TRACK_BIT_UPPER,
+	};
 	assert(IsValidCorner(corner));
-	return _corner_to_trackbits[corner];
+	return corner_to_trackbits[corner];
 }
 
 /**
@@ -705,7 +707,7 @@ inline bool IsStraightRoadTrackdir(Trackdir dir)
 inline bool IsUphillTrackdir(Slope slope, Trackdir dir)
 {
 	assert(IsValidTrackdirForRoadVehicle(dir));
-	extern const TrackdirBits _uphill_trackdirs[];
+	extern const TypedIndexContainer<std::array<TrackdirBits, 31>, Slope> _uphill_trackdirs;
 	return HasBit(_uphill_trackdirs[RemoveHalftileSlope(slope)], dir);
 }
 

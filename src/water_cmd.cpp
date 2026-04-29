@@ -49,22 +49,22 @@
 /**
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */
-static const Directions _flood_from_dirs[] = {
-	{DIR_NW, DIR_SW, DIR_SE, DIR_NE}, // SLOPE_FLAT
-	{DIR_NE, DIR_SE},                 // SLOPE_W
-	{DIR_NW, DIR_NE},                 // SLOPE_S
-	{DIR_NE},                         // SLOPE_SW
-	{DIR_NW, DIR_SW},                 // SLOPE_E
-	{},                               // SLOPE_EW
-	{DIR_NW},                         // SLOPE_SE
-	{DIR_N, DIR_NW, DIR_NE},          // SLOPE_WSE, SLOPE_STEEP_S
-	{DIR_SW, DIR_SE},                 // SLOPE_N
-	{DIR_SE},                         // SLOPE_NW
-	{},                               // SLOPE_NS
-	{DIR_E, DIR_NE, DIR_SE},          // SLOPE_NWS, SLOPE_STEEP_W
-	{DIR_SW},                         // SLOPE_NE
-	{DIR_S, DIR_SW, DIR_SE},          // SLOPE_ENW, SLOPE_STEEP_N
-	{DIR_W, DIR_SW, DIR_NW},          // SLOPE_SEN, SLOPE_STEEP_E
+static const TypedIndexContainer<std::array<Directions, 15>, Slope> _flood_from_dirs = {
+	Directions{DIR_NW, DIR_SW, DIR_SE, DIR_NE}, // SLOPE_FLAT
+	Directions{DIR_NE, DIR_SE}, // SLOPE_W
+	Directions{DIR_NW, DIR_NE}, // SLOPE_S
+	Directions{DIR_NE}, // SLOPE_SW
+	Directions{DIR_NW, DIR_SW}, // SLOPE_E
+	Directions{}, // SLOPE_EW
+	Directions{DIR_NW}, // SLOPE_SE
+	Directions{DIR_N, DIR_NW, DIR_NE}, // SLOPE_WSE, SLOPE_STEEP_S
+	Directions{DIR_SW, DIR_SE}, // SLOPE_N
+	Directions{DIR_SE}, // SLOPE_NW
+	Directions{}, // SLOPE_NS
+	Directions{DIR_E, DIR_NE, DIR_SE}, // SLOPE_NWS, SLOPE_STEEP_W
+	Directions{DIR_SW}, // SLOPE_NE
+	Directions{DIR_S, DIR_SW, DIR_SE}, // SLOPE_ENW, SLOPE_STEEP_N
+	Directions{DIR_W, DIR_SW, DIR_NW}, // SLOPE_SEN, SLOPE_STEEP_E
 };
 
 /**
@@ -682,25 +682,25 @@ bool IsWateredTile(TileIndex tile, Direction from)
 				case WaterTileType::Lock: return DiagDirToAxis(GetLockDirection(tile)) == DiagDirToAxis(DirToDiagDir(from));
 
 				case WaterTileType::Coast:
-					switch (GetTileSlope(tile)) {
-						case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
-						case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
-						case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
-						case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
-						default: return false;
-					}
+					Slope slope = GetTileSlope(tile);
+					if (slope.Count() != 1) return false;
+					if (slope.Test(Corner::W)) return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
+					if (slope.Test(Corner::S)) return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
+					if (slope.Test(Corner::E)) return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
+					if (slope.Test(Corner::N)) return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
+					return false;
 			}
 
 		case TileType::Railway:
 			if (GetRailGroundType(tile) == RailGroundType::HalfTileWater) {
 				assert(IsPlainRail(tile));
-				switch (GetTileSlope(tile)) {
-					case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
-					case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
-					case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
-					case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
-					default: return false;
-				}
+				Slope slope = GetTileSlope(tile);
+				if (slope.Count() != 1) return false;
+				if (slope.Test(Corner::W)) return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
+				if (slope.Test(Corner::S)) return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
+				if (slope.Test(Corner::E)) return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
+				if (slope.Test(Corner::N)) return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
+				return false;
 			}
 			return false;
 
@@ -918,22 +918,22 @@ static void DrawRiverWater(const TileInfo *ti)
 	if (ti->tileh != SLOPE_FLAT || HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
 		image = GetCanalSprite(CF_RIVER_SLOPE, ti->tile);
 		if (image == 0) {
-			switch (ti->tileh) {
-				case SLOPE_NW: image = SPR_WATER_SLOPE_Y_DOWN; break;
-				case SLOPE_SW: image = SPR_WATER_SLOPE_X_UP;   break;
-				case SLOPE_SE: image = SPR_WATER_SLOPE_Y_UP;   break;
-				case SLOPE_NE: image = SPR_WATER_SLOPE_X_DOWN; break;
+			switch (ti->tileh.base()) {
+				case SLOPE_NW.base(): image = SPR_WATER_SLOPE_Y_DOWN; break;
+				case SLOPE_SW.base(): image = SPR_WATER_SLOPE_X_UP; break;
+				case SLOPE_SE.base(): image = SPR_WATER_SLOPE_Y_UP; break;
+				case SLOPE_NE.base(): image = SPR_WATER_SLOPE_X_DOWN; break;
 				default:       image = SPR_FLAT_WATER_TILE;    break;
 			}
 		} else {
 			/* Flag bit 0 indicates that the first sprite is flat water. */
 			offset = HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE) ? 1 : 0;
 
-			switch (ti->tileh) {
-				case SLOPE_SE:              edges_offset += 12; break;
-				case SLOPE_NE: offset += 1; edges_offset += 24; break;
-				case SLOPE_SW: offset += 2; edges_offset += 36; break;
-				case SLOPE_NW: offset += 3; edges_offset += 48; break;
+			switch (ti->tileh.base()) {
+				case SLOPE_SE.base(): edges_offset += 12; break;
+				case SLOPE_NE.base(): offset += 1; edges_offset += 24; break;
+				case SLOPE_SW.base(): offset += 2; edges_offset += 36; break;
+				case SLOPE_NW.base(): offset += 3; edges_offset += 48; break;
 				default:       offset  = 0; break;
 			}
 
@@ -951,7 +951,7 @@ void DrawShoreTile(Slope tileh)
 {
 	/* Converts the enum Slope into an offset based on SPR_SHORE_BASE.
 	 * This allows to calculate the proper sprite to display for this Slope */
-	static const uint8_t tileh_to_shoresprite[32] = {
+	static constexpr TypedIndexContainer<std::array<uint8_t, 32>, Slope> tileh_to_shoresprite = {
 		0, 1, 2, 3, 4, 16, 6, 7, 8, 9, 17, 11, 12, 13, 14, 0,
 		0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0,  5,  0, 10, 15, 0,
 	};
@@ -1318,7 +1318,7 @@ void TileLoop_Water(TileIndex tile)
 				auto [slope_dest, z_dest] = GetFoundationSlope(dest);
 				if (z_dest > 0) continue;
 
-				if (!_flood_from_dirs[slope_dest & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP].Test(ReverseDir(dir))) continue;
+				if (!_flood_from_dirs[Slope(slope_dest).Reset(SLOPE_HALFTILE_MASK).Reset(Corner::Steep)].Test(ReverseDir(dir))) continue;
 
 				DoFloodTile(dest);
 			}
@@ -1327,7 +1327,7 @@ void TileLoop_Water(TileIndex tile)
 		}
 
 		case FLOOD_DRYUP: {
-			Slope slope_here = std::get<0>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+			Slope slope_here = std::get<0>(GetFoundationSlope(tile)).Reset(SLOPE_HALFTILE_MASK).Reset(Corner::Steep);
 			for (Direction dir : _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to flooding, drying up does consider TileType::Void tiles. */
@@ -1352,22 +1352,22 @@ void ConvertGroundTilesIntoWaterTiles()
 			/* Make both water for tiles at level 0
 			 * and make shore, as that looks much better
 			 * during the generation. */
-			switch (slope) {
-				case SLOPE_FLAT:
+			switch (slope.Count()) {
+				case 0:
 					MakeSea(tile);
 					break;
 
-				case SLOPE_N:
-				case SLOPE_E:
-				case SLOPE_S:
-				case SLOPE_W:
-					MakeShore(tile);
-					break;
+				case 1:
+					if (!slope.Any({Corner::Steep, Corner::HalfTile})) {
+						MakeShore(tile);
+						break;
+					}
+					[[fallthrough]];
 
 				default:
-					for (Direction dir : _flood_from_dirs[slope & ~SLOPE_STEEP]) {
+					for (Direction dir : _flood_from_dirs[slope.Reset(Corner::Steep)]) {
 						TileIndex dest = TileAddByDir(tile, dir);
-						Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
+						Slope slope_dest = GetTileSlope(dest).Reset(Corner::Steep);
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest) || IsTileType(dest, TileType::Void)) {
 							MakeShore(tile);
 							break;
@@ -1382,8 +1382,10 @@ void ConvertGroundTilesIntoWaterTiles()
 /** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, [[maybe_unused]] DiagDirection side)
 {
-	static const TrackBits coast_tracks[] = {TRACK_BIT_NONE, TRACK_BIT_RIGHT, TRACK_BIT_UPPER, TRACK_BIT_NONE, TRACK_BIT_LEFT, TRACK_BIT_NONE, TRACK_BIT_NONE,
-		TRACK_BIT_NONE, TRACK_BIT_LOWER, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE};
+	static constexpr TypedIndexContainer<std::array<TrackBits, 16>, Slope> coast_tracks = {
+		TRACK_BIT_NONE, TRACK_BIT_RIGHT, TRACK_BIT_UPPER, TRACK_BIT_NONE, TRACK_BIT_LEFT, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE,
+		TRACK_BIT_LOWER, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE
+	};
 
 	TrackBits ts;
 
@@ -1391,7 +1393,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 
 	switch (GetWaterTileType(tile)) {
 		case WaterTileType::Clear: ts = IsTileFlat(tile) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
-		case WaterTileType::Coast: ts = coast_tracks[GetTileSlope(tile) & 0xF]; break;
+		case WaterTileType::Coast: ts = coast_tracks[GetTileSlope(tile) & SLOPE_ELEVATED]; break;
 		case WaterTileType::Lock:  ts = DiagDirToDiagTrackBits(GetLockDirection(tile)); break;
 		case WaterTileType::Depot: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
 		default: return 0;
