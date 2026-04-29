@@ -5334,7 +5334,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż o
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log tego Game Script. Użyj Ctrl, aby otworzyć w nowym oknie
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz pobrać kilka SI z przeglądarki „Dodatków Online”
+STR_ERROR_AI_NO_AI_FOUND                                        :Brak odpowiedniej SI do załadowania.{}Obecna SI jest tylko symboliczna i nie wykonuje żadnych czynności.{}Możesz pobrać SI z „Przeglądarki Dodatków”
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut obrazu okna debugowania SI / GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko dla serwera
 
@@ -5465,7 +5465,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ostrzeż
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źródłowej. Kontynuować tworzenie?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono tylko podstawowy schemat dźwiękowy. Jeśli chcesz mieć pełny dźwięk, zainstaluj inny schemat dźwiękowy używając menadżera pobierania
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono jedynie awaryjny zestaw dźwięków. Jeśli chcesz używać dźwięków, zainstaluj zestaw za pomocą przeglądarki dodatków
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut obrazu
