@@ -1007,10 +1007,14 @@ void CallVehicleTicks()
 
 		assert(Vehicle::Get(vehicle_index) == v);
 
+		bool vehicle_flipped = false;
+
 		switch (v->type) {
 			default: break;
 
 			case VehicleType::Train:
+				vehicle_flipped = Train::From(v)->flags.Test(VehicleRailFlag::Flipped);
+				[[fallthrough]];
 			case VehicleType::Road:
 			case VehicleType::Aircraft:
 			case VehicleType::Ship: {
@@ -1033,8 +1037,8 @@ void CallVehicleTicks()
 				/* Do not play any sound when stopped */
 				if (front->vehstatus.Test(VehState::Stopped) && (front->type != VehicleType::Train || front->cur_speed == 0)) continue;
 
-				/* Update motion counter for animation purposes. */
-				v->motion_counter += front->cur_speed;
+				/* Update motion counter for animation purposes. Relative motion is negative (animations go backwards) if the vehicle is reversed xor reversing */
+				v->motion_counter += (v->IsDrivingBackwards() != vehicle_flipped) ? -front->cur_speed : front->cur_speed;
 
 				/* Check vehicle type specifics */
 				switch (v->type) {
