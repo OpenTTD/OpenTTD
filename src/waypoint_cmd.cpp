@@ -192,6 +192,16 @@ extern CommandCost IsBuoyBridgeAboveOk(TileIndex tile);
 
 extern CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int replacement_spec_index);
 
+/** @copydoc RailStationTileLayout::Iterator::operator* */
+template <>
+StationGfx RailStationTileLayout<StationType::RailWaypoint>::Iterator::operator*() const
+{
+	/* Use predefined layout if it exists. Mask bit zero which will indicate axis. */
+	if (!stl.layout.empty()) return this->stl.layout[this->position] & ~1;
+
+	return 0;
+}
+
 /**
  * Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
@@ -239,7 +249,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	StationID est = StationID::Invalid();
 
 	const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
-	RailStationTileLayout stl{spec, count, 1};
+	RailStationTileLayout<StationType::RailWaypoint> stl{spec, count, 1};
 
 	/* Check whether the tiles we're building on are valid rail or not. */
 	TileIndexDiff offset = TileOffsByAxis(OtherAxis(axis));

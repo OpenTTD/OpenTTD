@@ -1226,16 +1226,9 @@ CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta)
 	return CommandCost();
 }
 
-RailStationTileLayout::RailStationTileLayout(const StationSpec *spec, uint8_t platforms, uint8_t length) : platforms(platforms), length(length)
-{
-	if (spec == nullptr) return;
-
-	/* Look for a predefined layout for the required size. */
-	auto found = spec->layouts.find(GetStationLayoutKey(platforms, length));
-	if (found != std::end(spec->layouts)) this->layout = found->second;
-}
-
-StationGfx RailStationTileLayout::Iterator::operator*() const
+/** @copydoc RailStationTileLayout::Iterator::operator* */
+template <>
+StationGfx RailStationTileLayout<StationType::Rail>::Iterator::operator*() const
 {
 	/* Use predefined layout if it exists. Mask bit zero which will indicate axis. */
 	if (!stl.layout.empty()) return this->stl.layout[this->position] & ~1;
@@ -1515,7 +1508,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
 	TileIndexDiff track_delta = TileOffsByAxis(OtherAxis(axis)); // offset to go to the next track
 
-	RailStationTileLayout stl{statspec, numtracks, plat_len};
+	RailStationTileLayout<StationType::Rail> stl{statspec, numtracks, plat_len};
 	for (auto [i, it, tile_track] = std::make_tuple(0, stl.begin(), tile_org); i != numtracks; ++i, tile_track += track_delta) {
 		for (auto [j, tile] = std::make_tuple(0, tile_track); j != plat_len; ++j, tile += tile_delta, ++it) {
 			/* Don't check the layout if there's no bridge above anyway. */
