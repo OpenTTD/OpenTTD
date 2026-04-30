@@ -68,11 +68,11 @@ struct IndustriesResolverObject : public ResolverObject {
 };
 
 /** From where has callback #CBID_INDUSTRY_PROBABILITY been called */
-enum IndustryAvailabilityCallType : uint8_t {
-	IACT_MAPGENERATION,    ///< during random map generation
-	IACT_RANDOMCREATION,   ///< during creation of random ingame industry
-	IACT_USERCREATION,     ///< from the Fund/build window
-	IACT_PROSPECTCREATION, ///< from the Fund/build using prospecting
+enum class IndustryAvailabilityCallType : uint8_t {
+	MapGeneration, ///< during random map generation
+	RandomCreation, ///< during creation of random ingame industry
+	UserCreation, ///< from the Fund/build window
+	ProspectCreation, ///< from the Fund/build using prospecting
 };
 
 /* in newgrf_industry.cpp */

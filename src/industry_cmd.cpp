@@ -2076,7 +2076,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 		return CMD_ERROR;
 	}
 
-	if (_game_mode != GM_EDITOR && GetIndustryProbabilityCallback(it, _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) {
+	if (_game_mode != GM_EDITOR && GetIndustryProbabilityCallback(it, _current_company == OWNER_DEITY ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, 1) == 0) {
 		return CMD_ERROR;
 	}
 
@@ -2097,7 +2097,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 			bool prospect_success = deity_prospect || Random() <= indspec->prospecting_chance;
 			if (prospect_success) {
 				/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
-				IndustryAvailabilityCallType calltype = _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_PROSPECTCREATION;
+				IndustryAvailabilityCallType calltype = _current_company == OWNER_DEITY ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::ProspectCreation;
 				AutoRestoreBackup cur_company(_current_company, OWNER_TOWN);
 				for (int i = 0; i < 5000; i++) {
 					/* We should not have more than one Random() in a function call
@@ -2130,7 +2130,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 		/* Check subsequently each layout, starting with the given layout in p1 */
 		for (size_t i = 0; i < num_layouts; i++) {
 			layout = (layout + 1) % num_layouts;
-			ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_USERCREATION, &ind);
+			ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, _current_company == OWNER_DEITY ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, &ind);
 			if (ret.Succeeded()) break;
 		}
 
@@ -2309,7 +2309,7 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, std::opt
 	uint32_t chance = ind_spc->appear_creation[to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == IndustryDensity::FundedOnly) ||
-			(chance = GetIndustryProbabilityCallback(it, IACT_MAPGENERATION, chance)) == 0) {
+			(chance = GetIndustryProbabilityCallback(it, IndustryAvailabilityCallType::MapGeneration, chance)) == 0) {
 		*force_at_least_one = false;
 		return 0;
 	} else {
@@ -2341,7 +2341,7 @@ static uint16_t GetIndustryGamePlayProbability(IndustryType it, uint8_t *min_num
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			(ind_spc->behaviour.Test(IndustryBehaviour::Before1950) && TimerGameCalendar::year > 1950) ||
 			(ind_spc->behaviour.Test(IndustryBehaviour::After1960) && TimerGameCalendar::year < 1960) ||
-			(chance = GetIndustryProbabilityCallback(it, IACT_RANDOMCREATION, chance)) == 0) {
+			(chance = GetIndustryProbabilityCallback(it, IndustryAvailabilityCallType::RandomCreation, chance)) == 0) {
 		*min_number = 0;
 		return 0;
 	}
@@ -2404,7 +2404,7 @@ static void PlaceInitialIndustry(IndustryType type, bool water, bool try_hard)
 	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 	IncreaseGeneratingWorldProgress(water ? GWP_WATER_INDUSTRY : GWP_LAND_INDUSTRY);
-	PlaceIndustry(type, IACT_MAPGENERATION, try_hard);
+	PlaceIndustry(type, IndustryAvailabilityCallType::MapGeneration, try_hard);
 }
 
 /**
@@ -2722,7 +2722,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 		}
 
 		/* Try to create the industry. */
-		const Industry *ind = PlaceIndustry(it, IACT_RANDOMCREATION, false);
+		const Industry *ind = PlaceIndustry(it, IndustryAvailabilityCallType::RandomCreation, false);
 		if (ind == nullptr) {
 			this->builddata[it].wait_count = this->builddata[it].max_wait + 1; // Compensate for decrementing below.
 			this->builddata[it].max_wait = std::min(1000, this->builddata[it].max_wait + 2);

@@ -556,7 +556,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	ind.founder = founder;
 	ind.psa = nullptr;
 
-	IndustriesResolverObject object(tile, &ind, type, seed, CBID_INDUSTRY_LOCATION, 0, creation_type);
+	IndustriesResolverObject object(tile, &ind, type, seed, CBID_INDUSTRY_LOCATION, 0, to_underlying(creation_type));
 	std::array<int32_t, 16> regs100;
 	uint16_t result = object.ResolveCallback(regs100);
 
@@ -579,7 +579,7 @@ uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityC
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	if (indspec->callback_mask.Test(IndustryCallbackMask::Probability)) {
-		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_PROBABILITY, 0, creation_type, nullptr, type, INVALID_TILE);
+		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_PROBABILITY, 0, to_underlying(creation_type), nullptr, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
 			if (indspec->grf_prop.grffile->grf_version < 8) {
 				/* Disallow if result != 0 */

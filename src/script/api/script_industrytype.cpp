@@ -96,7 +96,7 @@
 	if (!IsValidIndustryType(industry_type)) return false;
 
 	const bool deity = ScriptCompanyMode::IsDeity();
-	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
+	if (::GetIndustryProbabilityCallback(industry_type, deity ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, 1) == 0) return false;
 	if (deity) return true;
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return true;
 
@@ -110,7 +110,7 @@
 
 	const bool deity = ScriptCompanyMode::IsDeity();
 	if (!deity && !::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
-	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
+	if (::GetIndustryProbabilityCallback(industry_type, deity ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, 1) == 0) return false;
 
 	/* raw_industry_construction == 2 means "prospect" */
 	return deity || _settings_game.construction.raw_industry_construction == 2;

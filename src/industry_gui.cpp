@@ -311,7 +311,7 @@ class BuildIndustryWindow : public Window {
 
 	void UpdateAvailability()
 	{
-		this->enabled = this->selected_type != IT_INVALID && (_game_mode == GM_EDITOR || GetIndustryProbabilityCallback(this->selected_type, IACT_USERCREATION, 1) > 0);
+		this->enabled = this->selected_type != IT_INVALID && (_game_mode == GM_EDITOR || GetIndustryProbabilityCallback(this->selected_type, IndustryAvailabilityCallType::UserCreation, 1) > 0);
 	}
 
 	void SetupArrays()
