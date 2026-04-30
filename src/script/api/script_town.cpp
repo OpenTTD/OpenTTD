@@ -284,7 +284,11 @@
 
 	houses = std::min<SQInteger>(houses, UINT32_MAX);
 
-	return ScriptObject::Command<Commands::ExpandTown>::Do(town_id, houses, {TownExpandMode::Buildings, TownExpandMode::Roads});
+	TownExpandModes modes{TownExpandMode::Buildings};
+
+	if (_settings_game.economy.allow_town_roads) modes.Set(TownExpandMode::Roads);
+
+	return ScriptObject::Command<Commands::ExpandTown>::Do(town_id, houses, modes);
 }
 
 /* static */ bool ScriptTown::FoundTown(TileIndex tile, TownSize size, bool city, RoadLayout layout, Text *name)
