@@ -1255,16 +1255,16 @@ void OnTick_Industry()
 }
 
 /**
- * Check the conditions of #CHECK_NOTHING (Always succeeds).
+ * Check the conditions of #IndustryCheck::None (Always succeeds).
  * @return Succeeded or failed command.
  */
-static CommandCost CheckNewIndustry_NULL(TileIndex)
+static CommandCost CheckNewIndustry_None(TileIndex)
 {
 	return CommandCost();
 }
 
 /**
- * Check the conditions of #CHECK_FOREST (Industry should be build above snow-line in arctic climate).
+ * Check the conditions of #IndustryCheck::Forest (Industry should be build above snow-line in arctic climate).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1302,7 +1302,7 @@ static bool CheckScaledDistanceFromEdge(TileIndex tile, uint maxdist)
 }
 
 /**
- * Check the conditions of #CHECK_REFINERY (Industry should be positioned near edge of the map).
+ * Check the conditions of #IndustryCheck::Refinery (Industry should be positioned near edge of the map).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1318,7 +1318,7 @@ static CommandCost CheckNewIndustry_OilRefinery(TileIndex tile)
 extern bool _ignore_industry_restrictions;
 
 /**
- * Check the conditions of #CHECK_OIL_RIG (Industries at sea should be positioned near edge of the map).
+ * Check the conditions of #IndustryCheck::OilRig (Industries at sea should be positioned near edge of the map).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1333,7 +1333,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 }
 
 /**
- * Check the conditions of #CHECK_FARM (Industry should be below snow-line in arctic).
+ * Check the conditions of #IndustryCheck::Farm (Industry should be below snow-line in arctic).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1348,7 +1348,7 @@ static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 }
 
 /**
- * Check the conditions of #CHECK_PLANTATION (Industry should NOT be in the desert).
+ * Check the conditions of #IndustryCheck::Plantation (Industry should NOT be in the desert).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1361,7 +1361,7 @@ static CommandCost CheckNewIndustry_Plantation(TileIndex tile)
 }
 
 /**
- * Check the conditions of #CHECK_WATER (Industry should be in the desert).
+ * Check the conditions of #IndustryCheck::Water (Industry should be in the desert).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1374,7 +1374,7 @@ static CommandCost CheckNewIndustry_Water(TileIndex tile)
 }
 
 /**
- * Check the conditions of #CHECK_LUMBERMILL (Industry should be in the rainforest).
+ * Check the conditions of #IndustryCheck::Lumbermill (Industry should be in the rainforest).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1387,7 +1387,7 @@ static CommandCost CheckNewIndustry_Lumbermill(TileIndex tile)
 }
 
 /**
- * Check the conditions of #CHECK_BUBBLEGEN (Industry should be in low land).
+ * Check the conditions of #IndustryCheck::BubbleGen (Industry should be in low land).
  * @param tile %Tile to perform the checking.
  * @return Succeeded or failed command.
  */
@@ -1407,16 +1407,16 @@ static CommandCost CheckNewIndustry_BubbleGen(TileIndex tile)
 typedef CommandCost CheckNewIndustryProc(TileIndex tile);
 
 /** Check functions for different types of industry. */
-static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
-	CheckNewIndustry_NULL,        ///< CHECK_NOTHING
-	CheckNewIndustry_Forest,      ///< CHECK_FOREST
-	CheckNewIndustry_OilRefinery, ///< CHECK_REFINERY
-	CheckNewIndustry_Farm,        ///< CHECK_FARM
-	CheckNewIndustry_Plantation,  ///< CHECK_PLANTATION
-	CheckNewIndustry_Water,       ///< CHECK_WATER
-	CheckNewIndustry_Lumbermill,  ///< CHECK_LUMBERMILL
-	CheckNewIndustry_BubbleGen,   ///< CHECK_BUBBLEGEN
-	CheckNewIndustry_OilRig,      ///< CHECK_OIL_RIG
+static constexpr EnumIndexArray<CheckNewIndustryProc * const, IndustryCheck, IndustryCheck::End> _check_new_industry_procs = {
+	CheckNewIndustry_None, // IndustryCheck::None
+	CheckNewIndustry_Forest, // IndustryCheck::Forest
+	CheckNewIndustry_OilRefinery, // IndustryCheck::Refinery
+	CheckNewIndustry_Farm, // IndustryCheck::Farm
+	CheckNewIndustry_Plantation, // IndustryCheck::Plantation
+	CheckNewIndustry_Water, // IndustryCheck::Water
+	CheckNewIndustry_Lumbermill, // IndustryCheck::Lumbermill
+	CheckNewIndustry_BubbleGen, // IndustryCheck::BubbleGen
+	CheckNewIndustry_OilRig, // IndustryCheck::OilRig
 };
 
 /**
@@ -2316,7 +2316,7 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, std::opt
 		chance *= 16; // to increase precision
 		/* We want industries appearing at coast to appear less often on bigger maps, as length of coast increases slower than map area.
 		 * For simplicity we scale in both cases, though scaling the probabilities of all industries has no effect. */
-		chance = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? Map::ScaleBySize1D(chance) : Map::ScaleBySize(chance);
+		chance = (ind_spc->check_proc == IndustryCheck::Refinery || ind_spc->check_proc == IndustryCheck::OilRig) ? Map::ScaleBySize1D(chance) : Map::ScaleBySize(chance);
 
 		*force_at_least_one = (chance > 0) && !ind_spc->behaviour.Test(IndustryBehaviour::NoBuildMapCreation) && (_game_mode != GM_EDITOR);
 		return chance;
