@@ -125,7 +125,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	Owner founder = INVALID_OWNER; ///< Founder of the industry
 	TimerGameCalendar::Date construction_date{}; ///< Date of the construction of the industry
-	uint8_t construction_type = 0; ///< Way the industry was constructed (@see IndustryConstructionType)
+	IndustryConstructionType construction_type{}; ///< Way the industry was constructed (@see IndustryConstructionType)
 	uint8_t selected_layout = 0; ///< Which tile layout was used when creating the industry
 	Owner exclusive_supplier = INVALID_OWNER; ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
 	Owner exclusive_consumer = INVALID_OWNER; ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)

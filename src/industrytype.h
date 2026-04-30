@@ -48,11 +48,11 @@ enum class IndustryCheck : uint8_t {
 };
 
 /** How was the industry created */
-enum IndustryConstructionType : uint8_t {
-	ICT_UNKNOWN,          ///< in previous game version or without newindustries activated
-	ICT_NORMAL_GAMEPLAY,  ///< either by user or random creation process
-	ICT_MAP_GENERATION,   ///< during random map creation
-	ICT_SCENARIO_EDITOR,  ///< while editing a scenario
+enum class IndustryConstructionType : uint8_t {
+	Unknown, ///< in previous game version or without newindustries activated
+	Gameplay, ///< either by user or random creation process
+	MapGeneration, ///< during random map creation
+	ScenarioEditor, ///< while editing a scenario
 };
 
 /** Various industry behaviours mostly to represent original TTD specialities */

@@ -1812,8 +1812,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->ctlflags = {};
 
 	i->construction_date = TimerGameCalendar::date;
-	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
-			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
+	i->construction_type = (_game_mode == GM_EDITOR) ? IndustryConstructionType::ScenarioEditor :
+			(_generating_world ? IndustryConstructionType::MapGeneration : IndustryConstructionType::Gameplay);
 
 	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
 	 * 0 = created prior of newindustries
