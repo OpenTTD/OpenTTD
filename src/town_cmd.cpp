@@ -2433,7 +2433,7 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 	uint32_t townnameparts;
 	TownNames town_names;
 
-	SetGeneratingWorldProgress(GWP_TOWN, total);
+	SetGeneratingWorldProgress(GenWorldProgress::Towns, total);
 
 	/* Pre-populate the town names list with the names of any towns already on the map */
 	for (const Town *town : Town::Iterate()) {
@@ -2449,7 +2449,7 @@ bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 	 * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
 	do {
 		bool city = (_settings_game.economy.larger_towns != 0 && ((city_random_offset + current_number) % _settings_game.economy.larger_towns) == 0);
-		IncreaseGeneratingWorldProgress(GWP_TOWN);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Towns);
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(_random, &townnameparts, &town_names)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
