@@ -180,6 +180,7 @@ static std::map<uint32_t, uint32_t> _grf_id_overrides;
 /**
  * Get the override for a NewGRF
  * @param source_grfid The grfID which wants to override another NewGRF.
+ * @return The grfID of the overridden NewGRF if present, or INVALID_GRFID.
  */
 uint32_t GetNewGRFOverride(uint32_t source_grfid)
 {
