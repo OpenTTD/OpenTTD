@@ -178,6 +178,13 @@ struct DifficultySettings {
 	bool infinite_money; ///< whether spending money despite negative balance is allowed
 };
 
+/** Possible values for the `order_review_system` setting. */
+enum class OrderReviewSystem : uint8_t {
+	Off, ///< Do not review orders.
+	ExcludeStopped, ///< Review orders of vehicles which are not stopped in a depot, or manually by the player.
+	All, ///< Review orders of all vehicles.
+};
+
 /** Settings relating to viewport/smallmap scrolling. */
 enum class ViewportScrollMode : uint8_t {
 	ViewportRMBFixed, ///< Viewport moves with mouse movement on holding right mouse button, cursor position is fixed.
@@ -206,7 +213,7 @@ enum class OskActivation : uint8_t {
 struct GUISettings {
 	bool sg_full_load_any; ///< new full load calculation, any cargo must be full read from pre v93 savegames
 	bool lost_vehicle_warn; ///< if a vehicle can't find its destination, show a warning
-	uint8_t order_review_system; ///< perform order reviews on vehicles
+	OrderReviewSystem order_review_system; ///< perform order reviews on vehicles
 	bool vehicle_income_warn; ///< if a vehicle isn't generating income, show a warning
 	bool old_vehicle_warn; ///< if a vehicle is getting old, show a warning
 	bool show_finances; ///< show finances at end of year
