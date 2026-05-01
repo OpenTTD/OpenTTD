@@ -13,6 +13,9 @@
 #include "core/overflowsafe_type.hpp"
 #include "core/enum_type.hpp"
 #include "core/pool_type.hpp"
+/* IWYU: does use PoolID */
+
+#include <cstdint>
 
 typedef OverflowSafeInt64 Money;
 
