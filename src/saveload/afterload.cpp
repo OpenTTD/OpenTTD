@@ -3412,6 +3412,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (!IsSavegameVersionBefore(SLV_STATIONS_UNDER_BRIDGES) && IsSavegameVersionBeforeOrAt(SLV_DRIVE_BACKWARDS)) {
+		/* Default waypoints were built with an incorrect layout that prevents building bridges over them. */
+		for (auto tile : Map::Iterate()) {
+			if (!IsRailWaypointTile(tile)) continue; // Not a waypoint.
+			if (GetCustomStationSpecIndex(tile) > 0) continue; // Not a default waypoint.
+			SetStationGfx(tile, GetStationGfx(tile) & 1);
+		}
+	}
+
 	for (Company *c : Company::Iterate()) {
 		UpdateCompanyLiveries(c);
 	}
