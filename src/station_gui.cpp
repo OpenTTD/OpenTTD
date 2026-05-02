@@ -436,8 +436,8 @@ public:
 
 		if (this->filter.cargoes == ALL_CARGOTYPES) this->filter.cargoes = _cargo_mask;
 
-		for (uint i = 0; i < 5; i++) {
-			if (HasBit(this->filter.facilities.base(), i)) this->LowerWidget(i + WID_STL_TRAIN);
+		for (StationFacility facil : this->filter.facilities) {
+			this->LowerWidget(WID_STL_TRAIN + to_underlying(facil));
 		}
 
 		this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->SetString(CompanyStationsWindow::sorter_names[this->stations.SortType()]);
@@ -633,11 +633,10 @@ public:
 					this->filter.facilities.Flip(static_cast<StationFacility>(widget - WID_STL_TRAIN));
 					this->ToggleWidgetLoweredState(widget);
 				} else {
-					for (StationFacility i : this->filter.facilities) {
-						this->RaiseWidget(to_underlying(i) + WID_STL_TRAIN);
+					for (StationFacility facil : this->filter.facilities) {
+						this->RaiseWidget(WID_STL_TRAIN + to_underlying(facil));
 					}
-					this->filter.facilities = {};
-					this->filter.facilities.Set(static_cast<StationFacility>(widget - WID_STL_TRAIN));
+					this->filter.facilities = static_cast<StationFacility>(widget - WID_STL_TRAIN);
 					this->LowerWidget(widget);
 				}
 				this->stations.ForceRebuild();
