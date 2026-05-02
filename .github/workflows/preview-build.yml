@@ -90,7 +90,7 @@ jobs:
         echo ${{ github.event.pull_request.number }} > ./pr/number
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: pr${{ github.event.pull_request.number }}
         path: |
