@@ -29,6 +29,7 @@
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
 #include "vehiclelist.h"
+#include "sound_func.h"
 #include "town.h"
 #include "linkgraph/linkgraph.h"
 #include "zoom_func.h"
@@ -642,6 +643,7 @@ public:
 				}
 				this->stations.ForceRebuild();
 				this->SetDirty();
+				SndClickBeep();
 				break;
 
 			case WID_STL_FACILALL:
