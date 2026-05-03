@@ -23,6 +23,8 @@
 
 #ifdef WITH_SDL2
 #include <SDL.h>
+#elif defined(WITH_SDL3)
+#include <SDL3/SDL.h>
 #endif
 
 #ifdef WITH_ICONV
