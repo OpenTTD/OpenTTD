@@ -2268,7 +2268,7 @@ void Train::PlayLeaveStationSound(bool force) const
 
 	if (PlayVehicleSound(this, VSE_START, force)) return;
 
-	SndPlayVehicleFx(sfx[RailVehInfo(this->engine_type)->engclass], this);
+	SndPlayVehicleFx(sfx[to_underlying(RailVehInfo(this->engine_type)->engclass)], this);
 }
 
 /**

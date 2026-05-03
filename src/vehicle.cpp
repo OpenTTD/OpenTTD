@@ -2012,11 +2012,11 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 						bool is_mu = EngInfo(parent_engine_type)->misc_flags.Test(EngineMiscFlag::RailIsMU);
 						switch (RailVehInfo(parent_engine_type)->engclass) {
 							default: NOT_REACHED();
-							case EC_STEAM:    return LS_PASSENGER_WAGON_STEAM;
-							case EC_DIESEL:   return is_mu ? LS_DMU : LS_PASSENGER_WAGON_DIESEL;
-							case EC_ELECTRIC: return is_mu ? LS_EMU : LS_PASSENGER_WAGON_ELECTRIC;
-							case EC_MONORAIL: return LS_PASSENGER_WAGON_MONORAIL;
-							case EC_MAGLEV:   return LS_PASSENGER_WAGON_MAGLEV;
+							case EngineClass::Steam: return LS_PASSENGER_WAGON_STEAM;
+							case EngineClass::Diesel: return is_mu ? LS_DMU : LS_PASSENGER_WAGON_DIESEL;
+							case EngineClass::Electric: return is_mu ? LS_EMU : LS_PASSENGER_WAGON_ELECTRIC;
+							case EngineClass::Monorail: return LS_PASSENGER_WAGON_MONORAIL;
+							case EngineClass::Maglev: return LS_PASSENGER_WAGON_MAGLEV;
 						}
 					}
 				} else {
@@ -2027,11 +2027,11 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 
 				switch (e->VehInfo<RailVehicleInfo>().engclass) {
 					default: NOT_REACHED();
-					case EC_STEAM:    return LS_STEAM;
-					case EC_DIESEL:   return is_mu ? LS_DMU : LS_DIESEL;
-					case EC_ELECTRIC: return is_mu ? LS_EMU : LS_ELECTRIC;
-					case EC_MONORAIL: return LS_MONORAIL;
-					case EC_MAGLEV:   return LS_MAGLEV;
+					case EngineClass::Steam: return LS_STEAM;
+					case EngineClass::Diesel: return is_mu ? LS_DMU : LS_DIESEL;
+					case EngineClass::Electric: return is_mu ? LS_EMU : LS_ELECTRIC;
+					case EngineClass::Monorail: return LS_MONORAIL;
+					case EngineClass::Maglev: return LS_MAGLEV;
 				}
 			}
 
@@ -2710,7 +2710,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 			(!HasBit(visual_effect, VE_DISABLE_EFFECT) && GB(visual_effect, VE_TYPE_START, VE_TYPE_COUNT) == VE_TYPE_DEFAULT)) {
 		/* Only train engines have default effects.
 		 * Note: This is independent of whether the engine is a front engine or articulated part or whatever. */
-		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON || !IsInsideMM(e->VehInfo<RailVehicleInfo>().engclass, EC_STEAM, EC_MONORAIL)) {
+		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON || !IsInsideMM(e->VehInfo<RailVehicleInfo>().engclass, EngineClass::Steam, EngineClass::Monorail)) {
 			if (visual_effect == VE_DEFAULT) {
 				visual_effect = 1 << VE_DISABLE_EFFECT;
 			} else {
@@ -2719,9 +2719,9 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 		} else {
 			if (visual_effect == VE_DEFAULT) {
 				/* Also set the offset */
-				visual_effect = (VE_OFFSET_CENTRE - (e->VehInfo<RailVehicleInfo>().engclass == EC_STEAM ? 4 : 0)) << VE_OFFSET_START;
+				visual_effect = (VE_OFFSET_CENTRE - (e->VehInfo<RailVehicleInfo>().engclass == EngineClass::Steam ? 4 : 0)) << VE_OFFSET_START;
 			}
-			SB(visual_effect, VE_TYPE_START, VE_TYPE_COUNT, e->VehInfo<RailVehicleInfo>().engclass - EC_STEAM + VE_TYPE_STEAM);
+			SB(visual_effect, VE_TYPE_START, VE_TYPE_COUNT, to_underlying(e->VehInfo<RailVehicleInfo>().engclass) - to_underlying(EngineClass::Steam) + VE_TYPE_STEAM);
 		}
 	}
 

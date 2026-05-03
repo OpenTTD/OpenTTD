@@ -35,12 +35,12 @@ enum RailVehicleTypes : uint8_t {
 };
 
 /** Type of rail engine. */
-enum EngineClass : uint8_t {
-	EC_STEAM,    ///< Steam rail engine.
-	EC_DIESEL,   ///< Diesel rail engine.
-	EC_ELECTRIC, ///< Electric rail engine.
-	EC_MONORAIL, ///< Mono rail engine.
-	EC_MAGLEV,   ///< Maglev engine.
+enum class EngineClass : uint8_t {
+	Steam, ///< Steam rail engine.
+	Diesel, ///< Diesel rail engine.
+	Electric, ///< Electric rail engine.
+	Monorail, ///< Mono rail engine.
+	Maglev, ///< Maglev engine.
 };
 
 /** Acceleration model of a vehicle. */

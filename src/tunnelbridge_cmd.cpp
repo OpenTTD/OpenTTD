@@ -1976,7 +1976,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 
 			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
 				if (t->IsMovingFront() && frame == TUNNEL_SOUND_FRAME) {
-					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == 0) {
+					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == EngineClass::Steam) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					}
 					return {};

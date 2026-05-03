@@ -388,13 +388,13 @@ static constexpr EngineInfo _orig_engine_info[] = {
 #define M RAILVEH_MULTIHEAD
 #define W RAILVEH_WAGON
 #define G RAILVEH_SINGLEHEAD
-#define S EC_STEAM
-#define D EC_DIESEL
-#define E EC_ELECTRIC
-#define N EC_MONORAIL
-#define V EC_MAGLEV
+#define S EngineClass::Steam
+#define D EngineClass::Diesel
+#define E EngineClass::Electric
+#define N EngineClass::Monorail
+#define V EngineClass::Maglev
 /** Wagons always have engine type 0, i.e. steam. */
-#define A EC_STEAM
+#define A EngineClass::Steam
 
 #define R RAILTYPE_RAIL
 #define C RAILTYPE_ELECTRIC
