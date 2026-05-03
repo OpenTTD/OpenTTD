@@ -744,7 +744,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			}
 			if (v->vehicle_flags.Test(VehicleFlag::CargoUnloading)) SetBit(modflags, 1);
 			if (v->vehicle_flags.Test(VehicleFlag::BuiltAsPrototype)) SetBit(modflags, 10);
-			if (v->vehicle_flags.Test(VehicleFlag::DrivingBackwards)) SetBit(modflags, 11);
+			if (v->IsDrivingBackwards()) SetBit(modflags, 11);
 
 			return variable == 0xFE ? modflags : GB(modflags, 8, 8);
 		}
