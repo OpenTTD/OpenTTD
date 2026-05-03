@@ -404,7 +404,6 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 
 	if (spec->size != OBJECT_SIZE_1X1) return CMD_ERROR;
 
-	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
@@ -417,23 +416,29 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 		TileIndex t = *iter;
 		CommandCost ret = Command<Commands::BuildObject>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, type, view);
 
-		/* If we've reached the limit, stop building (or testing). */
-		if (c != nullptr && limit-- <= 0) break;
+		/* Test object limit. */
+		if (c != nullptr && limit-- <= 0) {
+			last_error = CommandCost(STR_ERROR_BUILD_OBJECT_LIMIT_REACHED);
+			break;
+		}
 
+		/* Ignore individual tile failures. */
 		if (ret.Failed()) {
 			last_error = std::move(ret);
 			continue;
 		}
 
+		/* Build the object */
 		had_success = true;
 		if (flags.Test(DoCommandFlag::Execute)) {
-			money -= ret.GetCost();
-
-			/* If we run out of money, stop building. */
-			if (ret.GetCost() > 0 && money < 0) break;
 			Command<Commands::BuildObject>::Do(flags, t, type, view);
 		}
+
 		cost.AddCost(ret.GetCost());
+	}
+
+	if (!flags.Test(DoCommandFlag::Execute)) {
+		CheckCompanyHasMoney(cost);
 	}
 
 	return had_success ? cost : last_error;
