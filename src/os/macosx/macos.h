@@ -10,7 +10,6 @@
 #ifndef MACOS_H
 #define MACOS_H
 
-/** Helper function displaying a message the best possible way. */
 void ShowMacDialog(std::string_view title, std::string_view message, std::string_view button_label);
 
 std::tuple<int, int, int> GetMacOSVersion();
