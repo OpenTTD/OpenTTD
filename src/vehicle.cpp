@@ -1993,7 +1993,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VehicleType::Train:
-			if (v != nullptr && parent_engine_type != EngineID::Invalid() && (UsesWagonOverride(v) || (v->IsArticulatedPart() && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON))) {
+			if (v != nullptr && parent_engine_type != EngineID::Invalid() && (UsesWagonOverride(v) || (v->IsArticulatedPart() && e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon))) {
 				/* Wagonoverrides use the colour scheme of the front engine.
 				 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
 				engine_type = parent_engine_type;
@@ -2004,7 +2004,7 @@ LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_
 			if (!IsValidCargoType(cargo_type)) cargo_type = e->GetDefaultCargoType();
 			if (!IsValidCargoType(cargo_type)) cargo_type = GetCargoTypeByLabel(CT_GOODS); // The vehicle does not carry anything, let's pick some freight cargo
 			assert(IsValidCargoType(cargo_type));
-			if (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) {
+			if (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon) {
 				if (!CargoSpec::Get(cargo_type)->is_freight) {
 					if (parent_engine_type == EngineID::Invalid()) {
 						return LS_PASSENGER_WAGON_STEAM;
@@ -2710,7 +2710,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 			(!HasBit(visual_effect, VE_DISABLE_EFFECT) && GB(visual_effect, VE_TYPE_START, VE_TYPE_COUNT) == VE_TYPE_DEFAULT)) {
 		/* Only train engines have default effects.
 		 * Note: This is independent of whether the engine is a front engine or articulated part or whatever. */
-		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON || !IsInsideMM(e->VehInfo<RailVehicleInfo>().engclass, EngineClass::Steam, EngineClass::Monorail)) {
+		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon || !IsInsideMM(e->VehInfo<RailVehicleInfo>().engclass, EngineClass::Steam, EngineClass::Monorail)) {
 			if (visual_effect == VE_DEFAULT) {
 				visual_effect = 1 << VE_DISABLE_EFFECT;
 			} else {

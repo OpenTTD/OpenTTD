@@ -238,7 +238,7 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 {
 	std::string str;
-	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
+	if (RailVehInfo(v->engine_type)->railveh_type == RailVehicleType::Wagon) {
 		str = GetString(STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails), v->value);
 	} else {
 		str = GetString(STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails), v->build_year, v->value);

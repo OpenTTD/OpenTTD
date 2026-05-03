@@ -385,9 +385,9 @@ static constexpr EngineInfo _orig_engine_info[] = {
  * Air drag value depends on the top speed of the vehicle.
  */
 #define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, j, j, 0, d, e, f, g, h, k, i, 0, 0, VE_DEFAULT, 0, 76, 0, 0, 0 }
-#define M RAILVEH_MULTIHEAD
-#define W RAILVEH_WAGON
-#define G RAILVEH_SINGLEHEAD
+#define M RailVehicleType::Multihead
+#define W RailVehicleType::Wagon
+#define G RailVehicleType::Singlehead
 #define S EngineClass::Steam
 #define D EngineClass::Diesel
 #define E EngineClass::Electric

@@ -108,7 +108,7 @@ class ReplaceVehicleWindow : public Window {
 		const RailVehicleInfo *rvi = RailVehInfo(e);
 
 		/* Ensure that the wagon/engine selection fits the engine. */
-		if ((rvi->railveh_type == RAILVEH_WAGON) == show_engines) return false;
+		if ((rvi->railveh_type == RailVehicleType::Wagon) == show_engines) return false;
 
 		if (draw_left && this->sel_railtype != INVALID_RAILTYPE) {
 			/* Ensure that the railtype is specific to the selected one */

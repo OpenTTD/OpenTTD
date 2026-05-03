@@ -133,7 +133,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	/* Check whether the number of vehicles we need to build can be built according to pool space. */
 	uint num_vehicles;
 	switch (type) {
-		case VehicleType::Train:    num_vehicles = (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) + CountArticulatedParts(eid); break;
+		case VehicleType::Train:    num_vehicles = (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Multihead ? 2 : 1) + CountArticulatedParts(eid); break;
 		case VehicleType::Road:     num_vehicles = 1 + CountArticulatedParts(eid); break;
 		case VehicleType::Ship:     num_vehicles = 1; break;
 		case VehicleType::Aircraft: num_vehicles = e->VehInfo<AircraftVehicleInfo>().subtype & AIR_CTOL ? 2 : 3; break;
@@ -144,7 +144,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	/* Check whether we can allocate a unit number. Autoreplace does not allocate
 	 * an unit number as it will (always) reuse the one of the replaced vehicle
 	 * and (train) wagons don't have an unit number in any scenario. */
-	UnitID unit_num = (flags.Test(DoCommandFlag::QueryCost) || flags.Test(DoCommandFlag::AutoReplace) || (type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON)) ? 0 : GetFreeUnitNumber(type);
+	UnitID unit_num = (flags.Test(DoCommandFlag::QueryCost) || flags.Test(DoCommandFlag::AutoReplace) || (type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon)) ? 0 : GetFreeUnitNumber(type);
 	if (unit_num == UINT16_MAX) return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid(), 0, 0, {} };
 
 	/* If we are refitting we need to temporarily purchase the vehicle to be able to
@@ -336,7 +336,7 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoTyp
 			break;
 
 		case VehicleType::Train:
-			base_price = (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) ? Price::BuildVehicleWagon : Price::BuildVehicleTrain;
+			base_price = (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon) ? Price::BuildVehicleWagon : Price::BuildVehicleTrain;
 			cost_factor <<= 1;
 			expense_type = EXPENSES_TRAIN_RUN;
 			break;

@@ -77,11 +77,11 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 
 				/* Set engine / wagon state based on power */
 				if (rvi->power != 0) {
-					if (rvi->railveh_type == RAILVEH_WAGON) {
-						rvi->railveh_type = RAILVEH_SINGLEHEAD;
+					if (rvi->railveh_type == RailVehicleType::Wagon) {
+						rvi->railveh_type = RailVehicleType::Singlehead;
 					}
 				} else {
-					rvi->railveh_type = RAILVEH_WAGON;
+					rvi->railveh_type = RailVehicleType::Wagon;
 				}
 				break;
 
@@ -114,10 +114,10 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				uint8_t dual = buf.ReadByte();
 
 				if (dual != 0) {
-					rvi->railveh_type = RAILVEH_MULTIHEAD;
+					rvi->railveh_type = RailVehicleType::Multihead;
 				} else {
 					rvi->railveh_type = rvi->power == 0 ?
-						RAILVEH_WAGON : RAILVEH_SINGLEHEAD;
+						RailVehicleType::Wagon : RailVehicleType::Singlehead;
 				}
 				break;
 			}

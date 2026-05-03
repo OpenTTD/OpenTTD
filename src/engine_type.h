@@ -28,10 +28,10 @@ using EngineID = PoolID<uint16_t, struct EngineIDTag, 64000, 0xFFFF>;
 class Engine;
 
 /** Available types of rail vehicles. */
-enum RailVehicleTypes : uint8_t {
-	RAILVEH_SINGLEHEAD,  ///< indicates a "standalone" locomotive
-	RAILVEH_MULTIHEAD,   ///< indicates a combination of two locomotives
-	RAILVEH_WAGON,       ///< simple wagon, not motorized
+enum class RailVehicleType : uint8_t {
+	Singlehead, ///< indicates a "standalone" locomotive
+	Multihead, ///< indicates a combination of two locomotives
+	Wagon, ///< simple wagon, not motorized
 };
 
 /** Type of rail engine. */
@@ -73,7 +73,7 @@ enum VisualEffect : uint8_t {
 /** Information about a rail vehicle. */
 struct RailVehicleInfo {
 	uint8_t image_index = 0;
-	RailVehicleTypes railveh_type = RAILVEH_WAGON;
+	RailVehicleType railveh_type = RailVehicleType::Wagon; ///< Type of rail vehicle.
 	uint8_t cost_factor = 0; ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
 	RailTypes railtypes{RAILTYPE_RAIL}; ///< Railtypes, mangled if elrail is disabled.
 	RailTypes intended_railtypes{RAILTYPE_RAIL}; ///< Intended railtypes, regardless of elrail being enabled or disabled.

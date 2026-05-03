@@ -726,7 +726,7 @@ static void CalculateRefitMasks()
 							break;
 					}
 					e->VehInfo<ShipVehicleInfo>().old_refittable = true;
-				} else if (e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+				} else if (e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) {
 					/* Train engines default to all cargoes, so you can build single-cargo consists with fast engines.
 					 * Trains loading multiple cargoes may start stations accepting unwanted cargoes. */
 					_gted[engine].cargo_allowed = {CargoClass::Passengers, CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
@@ -829,7 +829,7 @@ static void CalculateRefitMasks()
 				ei->cargo_type = *ei->refit_mask.begin();
 			}
 		}
-		if (!IsValidCargoType(ei->cargo_type) && e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON && e->VehInfo<RailVehicleInfo>().capacity == 0) {
+		if (!IsValidCargoType(ei->cargo_type) && e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon && e->VehInfo<RailVehicleInfo>().capacity == 0) {
 			/* For train engines which do not carry cargo it does not matter if their cargo type is invalid.
 			 * Fallback to the first available instead, if the cargo type has not been changed (as indicated by
 			 * cargo_label not being CT_INVALID). */
@@ -886,7 +886,7 @@ static void FinaliseEngineArray()
 		}
 
 		/* Skip wagons, there livery is defined via the engine */
-		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) {
 			LiveryScheme ls = GetEngineLiveryScheme(e->index, EngineID::Invalid(), nullptr);
 			SetBit(_loaded_newgrf_features.used_liveries, ls);
 			/* Note: For ships and roadvehicles we assume that they cannot be refitted between passenger and freight */

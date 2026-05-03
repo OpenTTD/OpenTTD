@@ -267,8 +267,8 @@ static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngin
 	const RailVehicleInfo *rvi_a = RailVehInfo(a.engine_id);
 	const RailVehicleInfo *rvi_b = RailVehInfo(b.engine_id);
 
-	int va = GetTotalCapacityOfArticulatedParts(a.engine_id) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int va = GetTotalCapacityOfArticulatedParts(a.engine_id) * (rvi_a->railveh_type == RailVehicleType::Multihead ? 2 : 1);
+	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id) * (rvi_b->railveh_type == RailVehicleType::Multihead ? 2 : 1);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -279,8 +279,8 @@ static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngin
 /** Determines order of train engines by engine / wagon. @copydoc GUIList::Sorter */
 static bool TrainEnginesThenWagonsSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int val_a = (RailVehInfo(a.engine_id)->railveh_type == RAILVEH_WAGON ? 1 : 0);
-	int val_b = (RailVehInfo(b.engine_id)->railveh_type == RAILVEH_WAGON ? 1 : 0);
+	int val_a = (RailVehInfo(a.engine_id)->railveh_type == RailVehicleType::Wagon ? 1 : 0);
+	int val_b = (RailVehInfo(b.engine_id)->railveh_type == RailVehicleType::Wagon ? 1 : 0);
 	int r = val_a - val_b;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -842,7 +842,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VehicleType::Train:
-			if (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) {
+			if (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon) {
 				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->VehInfo<RailVehicleInfo>(), te);
 			} else {
 				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->VehInfo<RailVehicleInfo>(), te);
@@ -877,7 +877,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	}
 
 	/* Draw details that apply to all types except rail wagons. */
-	if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+	if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) {
 		/* Design date - Life length */
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_DESIGNED_LIFE, ymd.year, TimerGameCalendar::DateToYear(e->GetLifeLengthInDays())));
 		y += GetCharacterHeight(FontSize::Normal);
@@ -1062,7 +1062,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 				break;
 			case STR_SORT_BY_TRACTIVE_EFFORT:
 				/* Allow trucks, and allow trains that are not wagons */
-				if (type == VehicleType::Road || (type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON)) {
+				if (type == VehicleType::Road || (type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon)) {
 					auto max_te = e->GetDisplayMaxTractiveEffort();
 					if (max_te != 0) {
 						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_MAX_TE, max_te);
@@ -1089,7 +1089,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 				}
 				break;
 			case STR_SORT_BY_RELIABILITY:
-				if (auto isWagon = e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON; !isWagon) {
+				if (auto isWagon = e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon; !isWagon) {
 					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_RELIABILITY, ToPercent16(e->reliability));
 				}
 				break;
@@ -1097,7 +1097,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 					uint total_capacity;
 					switch (type) {
 						case VehicleType::Train:
-							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id) * (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id) * (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Multihead ? 2 : 1);
 							break;
 						case VehicleType::Road:
 							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
@@ -1479,7 +1479,7 @@ struct BuildVehicleWindow : Window {
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
-			if (rvi->railveh_type != RAILVEH_WAGON) num_engines++;
+			if (rvi->railveh_type != RailVehicleType::Wagon) num_engines++;
 
 			/* Add all parent variants of this engine to the variant list */
 			EngineID parent = e->info.variant_id;
@@ -1495,7 +1495,7 @@ struct BuildVehicleWindow : Window {
 			if (std::ranges::find(list, variant, &GUIEngineListItem::engine_id) == list.end()) {
 				const Engine *e = Engine::Get(variant);
 				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlag::Shaded, 0);
-				if (e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) num_engines++;
+				if (e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) num_engines++;
 			}
 		}
 
@@ -1696,7 +1696,7 @@ struct BuildVehicleWindow : Window {
 
 		CargoType cargo = this->cargo_filter_criteria;
 		if (cargo == CargoFilterCriteria::CF_ANY || cargo == CargoFilterCriteria::CF_ENGINES || cargo == CargoFilterCriteria::CF_NONE) cargo = INVALID_CARGO;
-		if (this->vehicle_type == VehicleType::Train && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
+		if (this->vehicle_type == VehicleType::Train && RailVehInfo(sel_eng)->railveh_type == RailVehicleType::Wagon) {
 			Command<Commands::BuildVehicle>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, TileIndex(this->window_number), sel_eng, true, cargo, INVALID_CLIENT_ID);
 		} else {
 			Command<Commands::BuildVehicle>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, TileIndex(this->window_number), sel_eng, true, cargo, INVALID_CLIENT_ID);

@@ -122,7 +122,7 @@ void ConvertOldMultiheadToNew()
 				ClrBit(u->subtype, 7);
 				switch (u->subtype) {
 					case 0: // TS_Front_Engine
-						if (rvi->railveh_type == RAILVEH_MULTIHEAD) u->SetMultiheaded();
+						if (rvi->railveh_type == RailVehicleType::Multihead) u->SetMultiheaded();
 						u->SetFrontEngine();
 						u->SetEngine();
 						break;
@@ -134,17 +134,17 @@ void ConvertOldMultiheadToNew()
 
 					case 2: // TS_Not_First
 						u->subtype = 0;
-						if (rvi->railveh_type == RAILVEH_WAGON) {
+						if (rvi->railveh_type == RailVehicleType::Wagon) {
 							/* normal wagon */
 							u->SetWagon();
 							break;
 						}
-						if (rvi->railveh_type == RAILVEH_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
+						if (rvi->railveh_type == RailVehicleType::Multihead && rvi->image_index == u->spritenum - 1) {
 							/* rear end of a multiheaded engine */
 							u->SetMultiheaded();
 							break;
 						}
-						if (rvi->railveh_type == RAILVEH_MULTIHEAD) u->SetMultiheaded();
+						if (rvi->railveh_type == RailVehicleType::Multihead) u->SetMultiheaded();
 						u->SetEngine();
 						break;
 

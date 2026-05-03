@@ -160,7 +160,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		/* Update powered-wagon-status and visual effect */
 		u->UpdateVisualEffect(true);
 
-		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
+		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RailVehicleType::Wagon &&
 				UsesWagonOverride(u) && !HasBit(u->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER)) {
 			/* wagon is powered */
 			u->flags.Set(VehicleRailFlag::PoweredWagon); // cache 'powered' status
@@ -183,7 +183,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 			}
 
 			/* max speed is the minimum of the speed limits of all vehicles in the consist */
-			if ((rvi_u->railveh_type != RAILVEH_WAGON || _settings_game.vehicle.wagon_speed_limits) && !UsesWagonOverride(u)) {
+			if ((rvi_u->railveh_type != RailVehicleType::Wagon || _settings_game.vehicle.wagon_speed_limits) && !UsesWagonOverride(u)) {
 				uint16_t speed = GetVehicleProperty(u, PROP_TRAIN_SPEED, rvi_u->max_speed);
 				if (speed != 0) max_speed = std::min(speed, max_speed);
 			}
@@ -554,7 +554,7 @@ static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType
 
 void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
 {
-	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
+	if (RailVehInfo(engine)->railveh_type == RailVehicleType::Multihead) {
 		int yf = y;
 		int yr = y;
 
@@ -610,7 +610,7 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 	xoffs  = UnScaleGUI(rect.left);
 	yoffs  = UnScaleGUI(rect.top);
 
-	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
+	if (RailVehInfo(engine)->railveh_type == RailVehicleType::Multihead) {
 		GetRailIcon(engine, true, y, image_type, &seq);
 		seq.GetBounds(&rect);
 
@@ -793,7 +793,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 {
 	const RailVehicleInfo *rvi = &e->VehInfo<RailVehicleInfo>();
 
-	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(flags, tile, e, ret);
+	if (rvi->railveh_type == RailVehicleType::Wagon) return CmdBuildRailWagon(flags, tile, e, ret);
 
 	/* Check if depot and new engine uses the same kind of tracks *
 	 * We need to see if the engine got power on the tile to avoid electric engines in non-electric depots */
@@ -850,7 +850,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		if (prob.has_value()) v->flags.Set(VehicleRailFlag::Flipped, prob.value());
 		v->UpdatePosition();
 
-		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
+		if (rvi->railveh_type == RailVehicleType::Multihead) {
 			AddRearEngineToMultiheadedTrain(v);
 		} else {
 			AddArticulatedParts(v);
