@@ -81,7 +81,7 @@ static int HighlightDragPosition(int px, int max_width, int y, VehicleID selecti
 		int top = y - height / 2;
 		Rect r = {drag_hlight_left, top, drag_hlight_right, top + height - 1};
 		/* Sprite-scaling is used here as the area is from sprite size */
-		GfxFillRect(r.Shrink(ScaleSpriteTrad(1)), GetColourGradient(Colours::Grey, SHADE_LIGHTEST));
+		GfxFillRect(r.Shrink(ScaleSpriteTrad(1)), GetColourGradient(Colours::Grey, Shade::Lightest));
 	}
 
 	return drag_hlight_width;
@@ -406,7 +406,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
 					int py = r.top - line_height * vscroll_pos + text_y_offset;
 					if (i > 0 || separate_sprite_row) {
-						if (vscroll_pos != 0) GfxFillRect(r.WithY(py - WidgetDimensions::scaled.matrix.top - 1, py - WidgetDimensions::scaled.matrix.top), GetColourGradient(Colours::Grey, SHADE_LIGHT));
+						if (vscroll_pos != 0) GfxFillRect(r.WithY(py - WidgetDimensions::scaled.matrix.top - 1, py - WidgetDimensions::scaled.matrix.top), GetColourGradient(Colours::Grey, Shade::Light));
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:

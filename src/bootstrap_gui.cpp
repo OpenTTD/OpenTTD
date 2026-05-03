@@ -386,10 +386,10 @@ bool HandleBootstrap()
 	/* Initialise the palette. The biggest step is 'faking' some recolour sprites.
 	 * This way the mauve and gray colours work and we can show the user interface. */
 	GfxInitPalettes();
-	static const uint8_t offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
+	static const EnumIndexArray<uint8_t, Colours, Colours::End> offsets = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
 	for (Colours i = Colours::Begin; i != Colours::End; i++) {
-		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
-			SetColourGradient(i, j, PixelColour(offsets[to_underlying(i)] + j));
+		for (Shade j = Shade::Begin; j < Shade::End; j++) {
+			SetColourGradient(i, j, PixelColour(offsets[i] + to_underlying(j)));
 		}
 	}
 

@@ -345,7 +345,7 @@ void BuildOwnerLegend()
 
 	int i = NUM_NO_COMPANY_ENTRIES;
 	for (const Company *c : Company::Iterate()) {
-		_legend_land_owners[i].colour = GetColourGradient(c->colour, SHADE_LIGHT);
+		_legend_land_owners[i].colour = GetColourGradient(c->colour, Shade::Light);
 		_legend_land_owners[i].company = c->index;
 		_legend_land_owners[i].show_on_map = true;
 		_legend_land_owners[i].col_break = false;

@@ -907,7 +907,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_NEWGRF_INFO_TITLE: {
 				/* Create the nice darker rectangle at the details top. */
-				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Mauve, SHADE_NORMAL));
+				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Mauve, Shade::Normal));
 				DrawString(r.left, r.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal)), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}

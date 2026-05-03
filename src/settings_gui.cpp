@@ -1878,7 +1878,7 @@ void ShowGameOptions()
  */
 void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_left, bool clickable_right)
 {
-	PixelColour colour = GetColourGradient(button_colour, SHADE_DARKER);
+	PixelColour colour = GetColourGradient(button_colour, Shade::Darker);
 	Dimension dim = NWidgetScrollbar::GetHorizontalDimension();
 
 	Rect lr = {x,                  y, x + (int)dim.width     - 1, y + (int)dim.height - 1};
@@ -1910,7 +1910,7 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
  */
 void DrawUpDownButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_up, bool clickable_down)
 {
-	PixelColour colour = GetColourGradient(button_colour, SHADE_DARKER);
+	PixelColour colour = GetColourGradient(button_colour, Shade::Darker);
 
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 	Rect ur = r.WithWidth(SETTING_BUTTON_WIDTH / 2, (_current_text_dir == TD_RTL));
@@ -1936,7 +1936,7 @@ void DrawUpDownButtons(int x, int y, Colours button_colour, uint8_t state, bool 
  */
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable)
 {
-	PixelColour colour = GetColourGradient(button_colour, SHADE_DARKER);
+	PixelColour colour = GetColourGradient(button_colour, Shade::Darker);
 
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 
@@ -1962,13 +1962,13 @@ void DrawBoolButton(int x, int y, Colours button_colour, Colours background, boo
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 	DrawFrameRect(r, state ? Colours::Green : background, state ? FrameFlags{FrameFlag::Lowered} : FrameFlags{FrameFlag::Lowered, FrameFlag::BorderOnly});
 	if (!clickable) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(state ? Colours::Green : background, SHADE_DARKER), FillRectMode::Checker);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(state ? Colours::Green : background, Shade::Darker), FillRectMode::Checker);
 	}
 
 	Rect button_rect = r.WithWidth(SETTING_BUTTON_WIDTH / 3, state ^ (_current_text_dir == TD_RTL));
 	DrawFrameRect(button_rect, button_colour, {});
 	if (!clickable) {
-		GfxFillRect(button_rect.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button_colour, SHADE_DARKER), FillRectMode::Checker);
+		GfxFillRect(button_rect.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button_colour, Shade::Darker), FillRectMode::Checker);
 	}
 }
 

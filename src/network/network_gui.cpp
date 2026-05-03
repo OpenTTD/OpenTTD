@@ -647,7 +647,7 @@ public:
 
 		/* Draw the right menu */
 		/* Create the nice darker rectangle at the details top */
-		GfxFillRect(r.WithHeight(header_height).Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::LightBlue, SHADE_NORMAL));
+		GfxFillRect(r.WithHeight(header_height).Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::LightBlue, Shade::Normal));
 		hr.top = DrawStringMultiLine(hr, header_msg, TC_FROMSTRING, SA_HOR_CENTER);
 		if (sel == nullptr) return;
 
@@ -1496,7 +1496,7 @@ protected:
 			DrawFrameRect(br, button->colour, {});
 			DrawSpriteIgnorePadding(button->sprite, PAL_NONE, br, SA_CENTER);
 			if (button->disabled) {
-				GfxFillRect(br.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button->colour, SHADE_DARKER), FillRectMode::Checker);
+				GfxFillRect(br.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button->colour, Shade::Darker), FillRectMode::Checker);
 			}
 			r = r.Indent(button->width + WidgetDimensions::scaled.hsep_normal, !rtl);
 		}

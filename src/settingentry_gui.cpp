@@ -99,7 +99,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 
 	int x = rtl ? right : left;
 	if (cur_row >= first_row) {
-		PixelColour colour = GetColourGradient(Colours::Orange, SHADE_NORMAL);
+		PixelColour colour = GetColourGradient(Colours::Orange, Shade::Normal);
 		y += (cur_row - first_row) * BaseSettingEntry::line_height; // Compute correct y start position
 
 		/* Draw vertical for parent nesting levels */

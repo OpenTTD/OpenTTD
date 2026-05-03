@@ -1104,7 +1104,7 @@ public:
 					int top = (this->order_over < this->selected_order ? y : y + line_height) - WidgetDimensions::scaled.framerect.top;
 					int bottom = std::min(top + 2, ir.bottom);
 					top = std::max(top - 3, ir.top);
-					GfxFillRect(ir.left, top, ir.right, bottom, GetColourGradient(Colours::Grey, SHADE_LIGHTEST));
+					GfxFillRect(ir.left, top, ir.right, bottom, GetColourGradient(Colours::Grey, Shade::Lightest));
 					break;
 				}
 				y += line_height;

@@ -313,10 +313,10 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	} else {
 		assert(colour < Colours::End);
 
-		const PixelColour dark         = GetColourGradient(colour, SHADE_DARK);
-		const PixelColour medium_dark  = GetColourGradient(colour, SHADE_LIGHT);
-		const PixelColour medium_light = GetColourGradient(colour, SHADE_LIGHTER);
-		const PixelColour light        = GetColourGradient(colour, SHADE_LIGHTEST);
+		const PixelColour dark         = GetColourGradient(colour, Shade::Dark);
+		const PixelColour medium_dark  = GetColourGradient(colour, Shade::Light);
+		const PixelColour medium_light = GetColourGradient(colour, Shade::Lighter);
+		const PixelColour light        = GetColourGradient(colour, Shade::Lightest);
 		PixelColour interior;
 
 		Rect outer = {left, top, right, bottom};                   // Outside rectangle
@@ -480,7 +480,7 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint3
 		row_height = r.Height() / num_rows;
 	}
 
-	PixelColour col = GetColourGradient(colour, SHADE_LIGHTER);
+	PixelColour col = GetColourGradient(colour, Shade::Lighter);
 
 	int x = r.left;
 	for (int ctr = num_columns; ctr > 1; ctr--) {
@@ -494,7 +494,7 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint3
 		GfxFillRect(r.left + WidgetDimensions::scaled.bevel.left, x, r.right - WidgetDimensions::scaled.bevel.right, x + WidgetDimensions::scaled.bevel.top - 1, col);
 	}
 
-	col = GetColourGradient(colour, SHADE_NORMAL);
+	col = GetColourGradient(colour, Shade::Normal);
 
 	x = r.left - 1;
 	for (int ctr = num_columns; ctr > 1; ctr--) {
@@ -526,8 +526,8 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	DrawImageButtons(r.WithHeight(height, false),  NWID_VSCROLLBAR, colour, up_clicked,   SPR_ARROW_UP,   SA_CENTER);
 	DrawImageButtons(r.WithHeight(height, true),   NWID_VSCROLLBAR, colour, down_clicked, SPR_ARROW_DOWN, SA_CENTER);
 
-	PixelColour c1 = GetColourGradient(colour, SHADE_DARK);
-	PixelColour c2 = GetColourGradient(colour, SHADE_LIGHTEST);
+	PixelColour c1 = GetColourGradient(colour, Shade::Dark);
+	PixelColour c2 = GetColourGradient(colour, Shade::Lightest);
 
 	/* draw "shaded" background */
 	Rect bg = r.Shrink(0, height);
@@ -566,8 +566,8 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	DrawImageButtons(r.WithWidth(width, false), NWID_HSCROLLBAR, colour, left_clicked,  SPR_ARROW_LEFT,  SA_CENTER);
 	DrawImageButtons(r.WithWidth(width, true),  NWID_HSCROLLBAR, colour, right_clicked, SPR_ARROW_RIGHT, SA_CENTER);
 
-	PixelColour c1 = GetColourGradient(colour, SHADE_DARK);
-	PixelColour c2 = GetColourGradient(colour, SHADE_LIGHTEST);
+	PixelColour c1 = GetColourGradient(colour, Shade::Dark);
+	PixelColour c2 = GetColourGradient(colour, Shade::Lightest);
 
 	/* draw "shaded" background */
 	Rect bg = r.Shrink(width, 0);
@@ -606,8 +606,8 @@ static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colo
 
 	if (!str.empty()) x2 = DrawString(r.left + WidgetDimensions::scaled.frametext.left, r.right - WidgetDimensions::scaled.frametext.right, r.top, str, text_colour, align, false, fs);
 
-	PixelColour c1 = GetColourGradient(colour, SHADE_DARK);
-	PixelColour c2 = GetColourGradient(colour, SHADE_LIGHTEST);
+	PixelColour c1 = GetColourGradient(colour, Shade::Dark);
+	PixelColour c2 = GetColourGradient(colour, Shade::Lightest);
 
 	/* If the frame has text, adjust the top bar to fit half-way through */
 	Rect inner = r.Shrink(ScaleGUITrad(1));
@@ -704,7 +704,7 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 	if (bevel) {
 		DrawFrameRect(r, colour, clicked ? FrameFlag::Lowered : FrameFlags{});
 	} else if (clicked) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(colour, SHADE_LIGHTER));
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(colour, Shade::Lighter));
 	}
 	DrawSpriteIgnorePadding(at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.Shrink(ScaleGUITrad(2)), at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
 }
@@ -744,7 +744,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 	DrawFrameRect(ir, colour, company_owned ? FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened, FrameFlag::BorderOnly} : FrameFlags{FrameFlag::Lowered, FrameFlag::Darkened});
 
 	if (company_owned) {
-		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(_company_colours[owner], SHADE_NORMAL));
+		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(_company_colours[owner], Shade::Normal));
 	}
 
 	if (str.empty()) return;
@@ -2093,7 +2093,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 /* virtual */ void NWidgetMatrix::Draw(const Window *w)
 {
 	/* Fill the background. */
-	GfxFillRect(this->GetCurrentRect(), GetColourGradient(this->colour, SHADE_LIGHT));
+	GfxFillRect(this->GetCurrentRect(), GetColourGradient(this->colour, Shade::Light));
 
 	/* Set up a clipping area for the previews. */
 	bool rtl = _current_text_dir == TD_RTL;
@@ -2361,7 +2361,7 @@ void NWidgetBackground::Draw(const Window *w)
 	if (this->child != nullptr) this->child->Draw(w);
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, SHADE_DARKER), FillRectMode::Checker);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, Shade::Darker), FillRectMode::Checker);
 	}
 
 	DrawOutline(w, this);
@@ -2636,7 +2636,7 @@ void NWidgetScrollbar::Draw(const Window *w)
 	}
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, SHADE_DARKER), FillRectMode::Checker);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, Shade::Darker), FillRectMode::Checker);
 	}
 
 	DrawOutline(w, this);
@@ -3126,7 +3126,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 	if (this->IsDisabled() && this->type != WWT_BOOLBTN) {
 		/* WWT_BOOLBTN is excluded as it draws its own disabled state. */
-		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, SHADE_DARKER), FillRectMode::Checker);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, Shade::Darker), FillRectMode::Checker);
 	}
 
 	DrawOutline(w, this);

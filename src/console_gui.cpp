@@ -548,7 +548,7 @@ bool IsValidConsoleColour(TextColour c)
 	 * colour gradient, so it must be one of those. */
 	c &= ~TC_IS_PALETTE_COLOUR;
 	for (Colours i = Colours::Begin; i < Colours::End; i++) {
-		if (GetColourGradient(i, SHADE_NORMAL).p == c) return true;
+		if (GetColourGradient(i, Shade::Normal).p == c) return true;
 	}
 
 	return false;

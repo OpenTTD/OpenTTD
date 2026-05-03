@@ -704,7 +704,7 @@ static void DrawVehicleRefitWindow(const RefitOptions &refits, const RefitOption
 	bool rtl = _current_text_dir == TD_RTL;
 	uint iconwidth = std::max(GetSpriteSize(SPR_CIRCLE_FOLDED).width, GetSpriteSize(SPR_CIRCLE_UNFOLDED).width);
 	uint iconheight = GetSpriteSize(SPR_CIRCLE_FOLDED).height;
-	PixelColour linecolour = GetColourGradient(Colours::Orange, SHADE_NORMAL);
+	PixelColour linecolour = GetColourGradient(Colours::Orange, Shade::Normal);
 
 	int iconleft   = rtl ? ir.right - iconwidth     : ir.left;
 	int iconcenter = rtl ? ir.right - iconwidth / 2 : ir.left + iconwidth / 2;

@@ -69,22 +69,24 @@ inline bool IsValidColours(Colours colours)
 
 TextColour GetContrastColour(PixelColour background, uint8_t threshold = 128);
 
-enum ColourShade : uint8_t {
-	SHADE_BEGIN = 0,
-	SHADE_DARKEST = SHADE_BEGIN,
-	SHADE_DARKER,
-	SHADE_DARK,
-	SHADE_NORMAL,
-	SHADE_LIGHT,
-	SHADE_LIGHTER,
-	SHADE_LIGHTEST,
-	SHADE_LIGHTEREST,
-	SHADE_END,
-};
-DECLARE_INCREMENT_DECREMENT_OPERATORS(ColourShade)
+/** The eight shades of each company colour. Not all shaded are used. */
+enum class Shade : uint8_t {
+	Darkest, ///< Darkest colour shade.
+	Darker, ///< Darker colour shade.
+	Dark, ///< Dark colour shade.
+	Normal, ///< Normal colour shade.
+	Light, ///< Light colour shade.
+	Lighter, ///< Lighter colour shade.
+	Lightest, ///< Lightest colour shade.
+	Lighterest, ///< Lighterest colour shade.
 
-PixelColour GetColourGradient(Colours colour, ColourShade shade);
-void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_colour);
+	End, ///< End marker for iteration.
+	Begin = Shade::Darkest, ///< Begin marker for iteration.
+};
+DECLARE_INCREMENT_DECREMENT_OPERATORS(Shade)
+
+PixelColour GetColourGradient(Colours colour, Shade shade);
+void SetColourGradient(Colours colour, Shade shade, PixelColour palette_colour);
 
 /**
  * Return the colour for a particular greyscale level.

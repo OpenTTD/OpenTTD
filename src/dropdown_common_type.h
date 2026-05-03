@@ -38,8 +38,8 @@ public:
 
 	void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const override
 	{
-		PixelColour c1 = GetColourGradient(bg_colour, SHADE_DARK);
-		PixelColour c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
+		PixelColour c1 = GetColourGradient(bg_colour, Shade::Dark);
+		PixelColour c2 = GetColourGradient(bg_colour, Shade::Lightest);
 
 		int mid = CentreBounds(full.top, full.bottom, 0);
 		GfxFillRect(full.WithY(mid - WidgetDimensions::scaled.bevel.bottom, mid - 1), c1);

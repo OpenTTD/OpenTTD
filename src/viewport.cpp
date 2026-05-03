@@ -1789,7 +1789,7 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 		}
 
 		if (ss.flags.Test(ViewportStringFlag::TextColour)) {
-			if (ss.colour != Colours::Invalid) colour = GetColourGradient(ss.colour, SHADE_LIGHTER).ToTextColour();
+			if (ss.colour != Colours::Invalid) colour = GetColourGradient(ss.colour, Shade::Lighter).ToTextColour();
 		}
 
 		int left = x + WidgetDimensions::scaled.fullbevel.left;

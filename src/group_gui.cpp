@@ -343,7 +343,7 @@ private:
 	{
 		/* Highlight the group if a vehicle is dragged over it */
 		if (g_id == this->group_over) {
-			GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Grey, SHADE_LIGHTEST));
+			GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Grey, Shade::Lightest));
 		}
 
 		if (g_id == NEW_GROUP) return;
@@ -355,7 +355,7 @@ private:
 
 		const int offset = (rtl ? -(int)this->column_size[VGC_FOLD].width : (int)this->column_size[VGC_FOLD].width) / 2;
 		const int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
-		const PixelColour linecolour = GetColourGradient(Colours::Orange, SHADE_NORMAL);
+		const PixelColour linecolour = GetColourGradient(Colours::Orange, Shade::Normal);
 
 		r = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
 		if (indent > 0) {
@@ -708,7 +708,7 @@ public:
 					for (auto it = first; it != last; ++it) {
 						const Vehicle *v = it->GetSingleVehicle();
 						if (v->group_id != this->vli.ToGroupID()) {
-							GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Grey, SHADE_DARK), FillRectMode::Checker);
+							GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::Grey, Shade::Dark), FillRectMode::Checker);
 						}
 						mr = mr.Translate(0, this->resize.step_height);
 					}

@@ -314,7 +314,7 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 		GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, width, dash);
 	}
 
-	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, GetColourGradient(Colours::Grey, SHADE_DARKEST), width);
+	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, GetColourGradient(Colours::Grey, Shade::Darkest), width);
 }
 
 /**
@@ -335,8 +335,8 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 
 		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
 				GetColourGradient(st->owner != OWNER_NONE ?
-						Company::Get(st->owner)->colour : Colours::Grey, SHADE_LIGHT),
-				GetColourGradient(Colours::Grey, SHADE_DARKEST));
+						Company::Get(st->owner)->colour : Colours::Grey, Shade::Light),
+				GetColourGradient(Colours::Grey, Shade::Darkest));
 	}
 }
 
