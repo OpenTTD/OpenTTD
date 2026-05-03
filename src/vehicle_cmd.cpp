@@ -122,7 +122,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	if (cargo >= NUM_CARGO && IsValidCargoType(cargo)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
 
 	const Engine *e = Engine::Get(eid);
-	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
+	CommandCost value(ExpensesType::NewVehicles, e->GetCost());
 
 	/* Engines without valid cargo should not be available */
 	CargoType default_cargo = e->GetDefaultCargoType();
@@ -261,7 +261,7 @@ CommandCost CmdSellVehicle(DoCommandFlags flags, VehicleID v_id, bool sell_chain
 	if (v->type == VehicleType::Train) {
 		ret = CmdSellRailWagon(flags, v, sell_chain, backup_order, client_id);
 	} else {
-		ret = CommandCost(EXPENSES_NEW_VEHICLES, -front->value);
+		ret = CommandCost(ExpensesType::NewVehicles, -front->value);
 
 		if (flags.Test(DoCommandFlag::Execute)) {
 			if (front->IsPrimaryVehicle() && backup_order) OrderBackup::Backup(front, client_id);
@@ -322,23 +322,23 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoTyp
 	switch (e->type) {
 		case VehicleType::Ship:
 			base_price = Price::BuildVehicleShip;
-			expense_type = EXPENSES_SHIP_RUN;
+			expense_type = ExpensesType::ShipRun;
 			break;
 
 		case VehicleType::Road:
 			base_price = Price::BuildVehicleRoad;
-			expense_type = EXPENSES_ROADVEH_RUN;
+			expense_type = ExpensesType::RoadVehRun;
 			break;
 
 		case VehicleType::Aircraft:
 			base_price = Price::BuildVehicleAircraft;
-			expense_type = EXPENSES_AIRCRAFT_RUN;
+			expense_type = ExpensesType::AircraftRun;
 			break;
 
 		case VehicleType::Train:
 			base_price = (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) ? Price::BuildVehicleWagon : Price::BuildVehicleTrain;
 			cost_factor <<= 1;
-			expense_type = EXPENSES_TRAIN_RUN;
+			expense_type = ExpensesType::TrainRun;
 			break;
 
 		default: NOT_REACHED();
@@ -708,7 +708,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlags flags, TileIndex tile, Vehicl
 {
 	VehicleList list;
 
-	CommandCost cost(EXPENSES_NEW_VEHICLES);
+	CommandCost cost(ExpensesType::NewVehicles);
 
 	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
@@ -741,7 +741,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlags flags, TileIndex tile, Vehicl
 CommandCost CmdDepotMassAutoReplace(DoCommandFlags flags, TileIndex tile, VehicleType vehicle_type)
 {
 	VehicleList list;
-	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
+	CommandCost cost = CommandCost(ExpensesType::NewVehicles);
 
 	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
@@ -836,7 +836,7 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
  */
 std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileIndex tile, VehicleID veh_id, bool share_orders)
 {
-	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
+	CommandCost total_cost(ExpensesType::NewVehicles);
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 	if (v == nullptr || !IsCompanyBuildableVehicleType(v) || !v->IsPrimaryVehicle()) return { CMD_ERROR, VehicleID::Invalid() };

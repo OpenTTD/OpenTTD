@@ -112,20 +112,20 @@ public:
 	 * @api -ai
 	 */
 	enum ExpensesType : uint8_t {
-		EXPENSES_CONSTRUCTION = ::EXPENSES_CONSTRUCTION,     ///< Construction costs.
-		EXPENSES_NEW_VEHICLES = ::EXPENSES_NEW_VEHICLES,     ///< New vehicles.
-		EXPENSES_TRAIN_RUN    = ::EXPENSES_TRAIN_RUN,        ///< Running costs trains.
-		EXPENSES_ROADVEH_RUN  = ::EXPENSES_ROADVEH_RUN,      ///< Running costs road vehicles.
-		EXPENSES_AIRCRAFT_RUN = ::EXPENSES_AIRCRAFT_RUN,     ///< Running costs aircraft.
-		EXPENSES_SHIP_RUN     = ::EXPENSES_SHIP_RUN,         ///< Running costs ships.
-		EXPENSES_PROPERTY     = ::EXPENSES_PROPERTY,         ///< Property costs.
-		EXPENSES_TRAIN_INC    = ::EXPENSES_TRAIN_REVENUE,    ///< Revenue from trains.
-		EXPENSES_ROADVEH_INC  = ::EXPENSES_ROADVEH_REVENUE,  ///< Revenue from road vehicles.
-		EXPENSES_AIRCRAFT_INC = ::EXPENSES_AIRCRAFT_REVENUE, ///< Revenue from aircraft.
-		EXPENSES_SHIP_INC     = ::EXPENSES_SHIP_REVENUE,     ///< Revenue from ships.
-		EXPENSES_LOAN_INT     = ::EXPENSES_LOAN_INTEREST,    ///< Interest payments over the loan.
-		EXPENSES_OTHER        = ::EXPENSES_OTHER,            ///< Other expenses.
-		EXPENSES_INVALID      = ::INVALID_EXPENSES,          ///< Invalid expense type.
+		EXPENSES_CONSTRUCTION = to_underlying(::ExpensesType::Construction), ///< Construction costs.
+		EXPENSES_NEW_VEHICLES = to_underlying(::ExpensesType::NewVehicles), ///< New vehicles.
+		EXPENSES_TRAIN_RUN    = to_underlying(::ExpensesType::TrainRun), ///< Running costs trains.
+		EXPENSES_ROADVEH_RUN  = to_underlying(::ExpensesType::RoadVehRun), ///< Running costs road vehicles.
+		EXPENSES_AIRCRAFT_RUN = to_underlying(::ExpensesType::AircraftRun), ///< Running costs aircraft.
+		EXPENSES_SHIP_RUN     = to_underlying(::ExpensesType::ShipRun), ///< Running costs ships.
+		EXPENSES_PROPERTY     = to_underlying(::ExpensesType::Property), ///< Property costs.
+		EXPENSES_TRAIN_INC    = to_underlying(::ExpensesType::TrainRevenue), ///< Revenue from trains.
+		EXPENSES_ROADVEH_INC  = to_underlying(::ExpensesType::RoadVehRevenue), ///< Revenue from road vehicles.
+		EXPENSES_AIRCRAFT_INC = to_underlying(::ExpensesType::AircraftRevenue), ///< Revenue from aircraft.
+		EXPENSES_SHIP_INC     = to_underlying(::ExpensesType::ShipRevenue), ///< Revenue from ships.
+		EXPENSES_LOAN_INT     = to_underlying(::ExpensesType::LoanInterest), ///< Interest payments over the loan.
+		EXPENSES_OTHER        = to_underlying(::ExpensesType::Other), ///< Other expenses.
+		EXPENSES_INVALID      = to_underlying(::ExpensesType::Invalid), ///< Invalid expense type.
 	};
 
 	/**

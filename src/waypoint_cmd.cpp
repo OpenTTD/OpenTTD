@@ -230,7 +230,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	TileArea new_location(start_tile, width, height);
 
 	/* only AddCost for non-existing waypoints */
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	for (TileIndex cur_tile : new_location) {
 		if (!IsRailWaypointTile(cur_tile)) cost.AddCost(_price[Price::BuildWaypointRail]);
 	}
@@ -484,7 +484,7 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY, OWNER_NONE, false);
 	if (wp == nullptr && !Waypoint::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
-	CommandCost cost(EXPENSES_CONSTRUCTION, _price[Price::BuildWaypointBuoy]);
+	CommandCost cost(ExpensesType::Construction, _price[Price::BuildWaypointBuoy]);
 	if (!IsWaterTile(tile)) {
 		CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
 		if (ret.Failed()) return ret;
@@ -559,7 +559,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlags flags)
 		wp->delete_ctr = 0;
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearWaypointBuoy]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearWaypointBuoy]);
 }
 
 /**

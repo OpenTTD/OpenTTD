@@ -904,8 +904,8 @@ static bool LoadOldCompanyYearly(LoadgameState &ls, int num)
 {
 	Company *c = Company::Get(_current_company_id);
 
-	for (uint i = 0; i < 13; i++) {
-		if (_savegame_type == SGT_TTO && i == 6) {
+	for (ExpensesType i = ExpensesType::Begin; i != ExpensesType::End; ++i) {
+		if (_savegame_type == SGT_TTO && i == ExpensesType::Property) {
 			_old_yearly = 0; // property maintenance
 		} else {
 			if (!LoadChunk(ls, nullptr, _company_yearly_chunk)) return false;

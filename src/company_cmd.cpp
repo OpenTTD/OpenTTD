@@ -287,23 +287,31 @@ bool CheckCompanyHasMoney(CommandCost &cost)
  */
 static void SubtractMoneyFromCompany(Company *c, const CommandCost &cost)
 {
+	using ExpensesTypes = EnumBitSet<ExpensesType, uint16_t>;
+	static constexpr ExpensesTypes EXPENSESTYPES_INCOME{
+		ExpensesType::TrainRevenue,
+		ExpensesType::RoadVehRevenue,
+		ExpensesType::AircraftRevenue,
+		ExpensesType::ShipRevenue
+	};
+	static constexpr ExpensesTypes EXPENSESTYPES_EXPENSES{
+		ExpensesType::TrainRun,
+		ExpensesType::RoadVehRun,
+		ExpensesType::AircraftRun,
+		ExpensesType::ShipRun,
+		ExpensesType::Property,
+		ExpensesType::LoanInterest
+	};
+
 	if (cost.GetCost() == 0) return;
-	assert(cost.GetExpensesType() != INVALID_EXPENSES);
+	assert(cost.GetExpensesType() != ExpensesType::Invalid);
 
 	c->money -= cost.GetCost();
 	c->yearly_expenses[0][cost.GetExpensesType()] += cost.GetCost();
 
-	if (HasBit(1 << EXPENSES_TRAIN_REVENUE    |
-	           1 << EXPENSES_ROADVEH_REVENUE  |
-	           1 << EXPENSES_AIRCRAFT_REVENUE |
-	           1 << EXPENSES_SHIP_REVENUE, cost.GetExpensesType())) {
+	if (EXPENSESTYPES_INCOME.Test(cost.GetExpensesType())) {
 		c->cur_economy.income -= cost.GetCost();
-	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
-	                  1 << EXPENSES_ROADVEH_RUN  |
-	                  1 << EXPENSES_AIRCRAFT_RUN |
-	                  1 << EXPENSES_SHIP_RUN     |
-	                  1 << EXPENSES_PROPERTY     |
-	                  1 << EXPENSES_LOAN_INTEREST, cost.GetExpensesType())) {
+	} else if (EXPENSESTYPES_EXPENSES.Test(cost.GetExpensesType())) {
 		c->cur_economy.expenses -= cost.GetCost();
 	}
 
@@ -1321,7 +1329,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
 	const Company *c = Company::Get(_current_company);
-	CommandCost amount(EXPENSES_OTHER, std::min<Money>(money, 20000000LL));
+	CommandCost amount(ExpensesType::Other, std::min<Money>(money, 20000000LL));
 
 	/* You can only transfer funds that is in excess of your loan */
 	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() < 0) return CommandCost(STR_ERROR_INSUFFICIENT_FUNDS);
@@ -1329,7 +1337,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Add money to company */
-		SubtractMoneyFromCompany(dest_company, CommandCost(EXPENSES_OTHER, -amount.GetCost()));
+		SubtractMoneyFromCompany(dest_company, CommandCost(ExpensesType::Other, -amount.GetCost()));
 
 		if (_networking) {
 			std::string dest_company_name = GetString(STR_COMPANY_NAME, dest_company);

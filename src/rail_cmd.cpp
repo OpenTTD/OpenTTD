@@ -404,7 +404,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	}
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
-	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price[Price::BuildFoundation] : (Money)0);
+	return CommandCost(ExpensesType::Construction, f_new != f_old ? _price[Price::BuildFoundation] : (Money)0);
 }
 
 /* Validate functions for rail building */
@@ -424,7 +424,7 @@ static inline bool ValParamTrackOrientation(Track track)
  */
 CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType railtype, Track track, bool auto_remove_signals)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 
 	if (!ValParamRailType(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 
@@ -613,7 +613,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
  */
 CommandCost CmdRemoveSingleRail(DoCommandFlags flags, TileIndex tile, Track track)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	bool crossing = false;
 
 	if (!ValParamTrackOrientation(track)) return CMD_ERROR;
@@ -874,7 +874,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  */
 static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, RailType railtype, Track track, bool remove, bool auto_remove_signals, bool fail_on_obstacle)
 {
-	CommandCost total_cost(EXPENSES_CONSTRUCTION);
+	CommandCost total_cost(ExpensesType::Construction);
 
 	if ((!remove && !ValParamRailType(railtype)) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (end_tile >= Map::Size() || tile >= Map::Size()) return CMD_ERROR;
@@ -964,7 +964,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 
 	Slope tileh = GetTileSlope(tile);
 
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 
 	/* Prohibit construction if
 	 * The tile is non-flat AND
@@ -1073,17 +1073,17 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 	CommandCost cost;
 	if (!HasSignalOnTrack(tile, track)) {
 		/* build new signals */
-		cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildSignals]);
+		cost = CommandCost(ExpensesType::Construction, _price[Price::BuildSignals]);
 	} else {
 		if (signals_copy != 0 && sigvar != GetSignalVariant(tile, track)) {
 			/* convert signals <-> semaphores */
-			cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildSignals] + _price[Price::ClearSignals]);
+			cost = CommandCost(ExpensesType::Construction, _price[Price::BuildSignals] + _price[Price::ClearSignals]);
 
 		} else if (convert_signal) {
 			/* convert button pressed */
 			if (ctrl_pressed || GetSignalVariant(tile, track) != sigvar) {
 				/* it costs money to change signal variant (light or semaphore) */
-				cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildSignals] + _price[Price::ClearSignals]);
+				cost = CommandCost(ExpensesType::Construction, _price[Price::BuildSignals] + _price[Price::ClearSignals]);
 			} else {
 				/* it is free to change signal type (block, exit, entry, combo, path, etc) */
 				cost = CommandCost();
@@ -1252,7 +1252,7 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
  */
 static CommandCost CmdSignalTrackHelper(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool remove, bool autofill, bool minimise_gaps, int signal_density)
 {
-	CommandCost total_cost(EXPENSES_CONSTRUCTION);
+	CommandCost total_cost(ExpensesType::Construction);
 
 	if (end_tile >= Map::Size() || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
@@ -1505,7 +1505,7 @@ CommandCost CmdRemoveSingleSignal(DoCommandFlags flags, TileIndex tile, Track tr
 		MarkTileDirtyByTile(tile);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearSignals]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearSignals]);
 }
 
 /**
@@ -1543,7 +1543,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 
 	TrainList affected_trains;
 
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
 	bool found_convertible_track = false; // whether we actually did convert some track (see bug #7633)
 
@@ -1786,13 +1786,13 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlags flags)
 		if (v != nullptr) TryPathReserve(v, true);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearDepotTrain]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearDepotTrain]);
 }
 
 /** @copydoc ClearTileProc */
 static CommandCost ClearTile_Rail(TileIndex tile, DoCommandFlags flags)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 
 	if (flags.Test(DoCommandFlag::Auto)) {
 		if (!IsTileOwner(tile, _current_company)) {
@@ -3056,7 +3056,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, DoCommandFlags flags,
 		/* Surface slope must not be changed */
 		default:
 			if (z_old != z_new || tileh_old != tileh_new) return CommandCost(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
-			return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+			return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
@@ -3064,7 +3064,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, DoCommandFlags flags,
 	z_new += GetSlopeZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
 	if (z_old != z_new) return CommandCost(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 
-	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+	CommandCost cost = CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 	/* Make the ground dirty, if surface slope has changed */
 	if (tileh_old != tileh_new) {
 		/* If there is flat water on the lower halftile add the cost for clearing it */
@@ -3116,10 +3116,10 @@ static CommandCost TerraformTile_Rail(TileIndex tile, DoCommandFlags flags, int 
 		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RailGroundType::Barren);
 
 		/* allow terraforming */
-		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[Price::ClearWater] : (Money)0);
+		return CommandCost(ExpensesType::Construction, was_water ? _price[Price::ClearWater] : (Money)0);
 	} else if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() &&
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
-		return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+		return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 	}
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }

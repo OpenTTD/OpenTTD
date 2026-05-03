@@ -63,27 +63,27 @@ static void ShowCompanyInfrastructure(CompanyID company);
 
 /** List of revenues. */
 static const std::initializer_list<ExpensesType> _expenses_list_revenue = {
-	EXPENSES_TRAIN_REVENUE,
-	EXPENSES_ROADVEH_REVENUE,
-	EXPENSES_AIRCRAFT_REVENUE,
-	EXPENSES_SHIP_REVENUE,
+	ExpensesType::TrainRevenue,
+	ExpensesType::RoadVehRevenue,
+	ExpensesType::AircraftRevenue,
+	ExpensesType::ShipRevenue,
 };
 
 /** List of operating expenses. */
 static const std::initializer_list<ExpensesType> _expenses_list_operating_costs = {
-	EXPENSES_TRAIN_RUN,
-	EXPENSES_ROADVEH_RUN,
-	EXPENSES_AIRCRAFT_RUN,
-	EXPENSES_SHIP_RUN,
-	EXPENSES_PROPERTY,
-	EXPENSES_LOAN_INTEREST,
+	ExpensesType::TrainRun,
+	ExpensesType::RoadVehRun,
+	ExpensesType::AircraftRun,
+	ExpensesType::ShipRun,
+	ExpensesType::Property,
+	ExpensesType::LoanInterest,
 };
 
 /** List of capital expenses. */
 static const std::initializer_list<ExpensesType> _expenses_list_capital_costs = {
-	EXPENSES_CONSTRUCTION,
-	EXPENSES_NEW_VEHICLES,
-	EXPENSES_OTHER,
+	ExpensesType::Construction,
+	ExpensesType::NewVehicles,
+	ExpensesType::Other,
 };
 
 /** Expense list container. */
@@ -109,7 +109,7 @@ struct ExpensesList {
 	{
 		uint width = 0;
 		for (const ExpensesType &et : this->items) {
-			width = std::max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + et).width);
+			width = std::max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + to_underlying(et)).width);
 		}
 		return width;
 	}
@@ -174,7 +174,7 @@ static void DrawCategory(const Rect &r, int start_y, const ExpensesList &list)
 	tr.top = start_y;
 
 	for (const ExpensesType &et : list.items) {
-		DrawString(tr, STR_FINANCES_SECTION_CONSTRUCTION + et);
+		DrawString(tr, STR_FINANCES_SECTION_CONSTRUCTION + to_underlying(et));
 		tr.top += GetCharacterHeight(FontSize::Normal);
 	}
 }

@@ -684,7 +684,7 @@ bool IsMapSurroundedByWater()
  */
 CommandCost CmdLandscapeClear(DoCommandFlags flags, TileIndex tile)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	bool do_clear = false;
 	/* Test for stuff which results in water when cleared. Then add the cost to also clear the water. */
 	if (flags.Test(DoCommandFlag::ForceClearTile) && HasTileWaterClass(tile) && IsTileOnWater(tile) && !IsWaterTile(tile) && !IsCoastTile(tile)) {
@@ -748,7 +748,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 	if (start_tile >= Map::Size()) return { CMD_ERROR, 0 };
 
 	Money money = GetAvailableMoneyForCommand();
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 

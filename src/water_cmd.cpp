@@ -130,7 +130,7 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
-	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildDepotShip]);
+	CommandCost cost = CommandCost(ExpensesType::Construction, _price[Price::BuildDepotShip]);
 
 	bool add_cost = !IsWaterTile(tile);
 	CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
@@ -305,7 +305,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlags flags)
 		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearDepotShip]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearDepotShip]);
 }
 
 /**
@@ -332,7 +332,7 @@ static uint8_t GetLockPartMinimalBridgeHeight(LockPart lock_part)
  */
 static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags flags)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 
 	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -448,7 +448,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlags flags)
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearLock]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearLock]);
 }
 
 /**
@@ -503,7 +503,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 	/* Outside of the editor you can only build canals, not oceans */
 	if (wc != WaterClass::Canal && _game_mode != GM_EDITOR) return CMD_ERROR;
 
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
@@ -619,7 +619,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ClearNeighbourNonFloodingStates(tile);
 			}
 
-			return CommandCost(EXPENSES_CONSTRUCTION, base_cost);
+			return CommandCost(ExpensesType::Construction, base_cost);
 		}
 
 		case WaterTileType::Coast: {
@@ -635,9 +635,9 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ClearNeighbourNonFloodingStates(tile);
 			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
-				return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearWater]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearWater]);
 			} else {
-				return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearRough]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearRough]);
 			}
 		}
 

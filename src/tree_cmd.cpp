@@ -514,7 +514,7 @@ void GenerateTrees()
 CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal)
 {
 	StringID msg = INVALID_STRING_ID;
-	CommandCost cost(EXPENSES_OTHER);
+	CommandCost cost(ExpensesType::Other);
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
@@ -735,7 +735,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[Price::ClearTrees]);
+	return CommandCost(ExpensesType::Construction, num * _price[Price::ClearTrees]);
 }
 
 /** @copydoc GetTileDescProc */

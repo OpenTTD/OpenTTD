@@ -698,7 +698,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlags flags)
 
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	cost.AddCost(hs->GetRemovalCost());
 
 	int rating = hs->remove_rating_decrease;
@@ -2138,7 +2138,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile, bool check_surrounding)
 		if (counter < VALID_TILE_GOAL) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	return CommandCost(EXPENSES_OTHER);
+	return CommandCost(ExpensesType::Other);
 }
 
 /**
@@ -2208,7 +2208,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 	/* multidimensional arrays have to have defined length of non-first dimension */
 	static_assert(lengthof(price_mult[0]) == 4);
 
-	CommandCost cost(EXPENSES_OTHER, _price[Price::BuildTown]);
+	CommandCost cost(ExpensesType::Other, _price[Price::BuildTown]);
 	uint8_t mult = price_mult[city][size];
 
 	cost.MultiplyCost(mult);
@@ -2217,7 +2217,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 	TownID new_town = TownID::Invalid();
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (cost.GetCost() > GetAvailableMoneyForCommand()) {
-			return { CommandCost(EXPENSES_OTHER), cost.GetCost(), TownID::Invalid() };
+			return { CommandCost(ExpensesType::Other), cost.GetCost(), TownID::Invalid() };
 		}
 
 		Backup<bool> old_generating_world(_generating_world, true);
@@ -3763,7 +3763,7 @@ CommandCost CmdDoTownAction(DoCommandFlags flags, TownID town_id, TownAction act
 
 	if (!GetMaskOfTownActions(_current_company, t).Test(action)) return CMD_ERROR;
 
-	CommandCost cost(EXPENSES_OTHER, _price[Price::TownAction] * GetTownActionCost(action) >> 8);
+	CommandCost cost(ExpensesType::Other, _price[Price::TownAction] * GetTownActionCost(action) >> 8);
 
 	CommandCost ret = _town_action_proc[to_underlying(action)](t, flags);
 	if (ret.Failed()) return ret;
@@ -4224,7 +4224,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlags flags, int 
 				if (res != CALLBACK_FAILED && ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_AUTOSLOPE, res)) allow_terraform = false;
 			}
 
-			if (allow_terraform) return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+			if (allow_terraform) return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 		}
 	}
 

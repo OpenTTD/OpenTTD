@@ -124,7 +124,7 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VehicleType::Road> 
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_ROADVEH_REVENUE : EXPENSES_ROADVEH_RUN; }
+	ExpensesType GetExpenseType(bool income) const override { return income ? ExpensesType::RoadVehRevenue : ExpensesType::RoadVehRun; }
 	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
 	int GetDisplaySpeed() const override { return this->gcache.last_speed / 2; }

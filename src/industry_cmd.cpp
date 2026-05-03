@@ -515,7 +515,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 		Game::NewEvent(new ScriptEventIndustryClose(i->index));
 		delete i;
 	}
-	return CommandCost(EXPENSES_CONSTRUCTION, indspec->GetRemovalCost());
+	return CommandCost(ExpensesType::Construction, indspec->GetRemovalCost());
 }
 
 /**
@@ -2142,7 +2142,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 		AdvertiseIndustryOpening(ind);
 	}
 
-	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
+	return CommandCost(ExpensesType::Other, indspec->GetConstructionCost());
 }
 
 /**
@@ -3245,10 +3245,10 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlags flags, 
 			if (itspec->callback_mask.Test(IndustryTileCallbackMask::Autoslope)) {
 				/* If the callback fails, allow autoslope. */
 				uint16_t res = GetIndustryTileCallback(CBID_INDTILE_AUTOSLOPE, 0, 0, gfx, Industry::GetByTile(tile), tile);
-				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(itspec->grf_prop.grffile, CBID_INDTILE_AUTOSLOPE, res)) return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(itspec->grf_prop.grffile, CBID_INDTILE_AUTOSLOPE, res)) return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 			} else {
 				/* allow autoslope */
-				return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+				return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 			}
 		}
 	}

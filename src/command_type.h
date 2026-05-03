@@ -34,14 +34,14 @@ public:
 	/**
 	 * Creates a command cost return with no cost and no error
 	 */
-	CommandCost() : cost(0), message(INVALID_STRING_ID), expense_type(INVALID_EXPENSES), success(true) {}
+	CommandCost() : cost(0), message(INVALID_STRING_ID), expense_type(ExpensesType::Invalid), success(true) {}
 
 	/**
 	 * Creates a command return value with one, or optionally two, error message strings.
 	 * @param msg The error message.
 	 * @param extra_msg Optional secondary error message.
 	 */
-	explicit CommandCost(StringID msg, StringID extra_msg = INVALID_STRING_ID) : cost(0), message(msg), expense_type(INVALID_EXPENSES), success(false), extra_message(extra_msg) {}
+	explicit CommandCost(StringID msg, StringID extra_msg = INVALID_STRING_ID) : cost(0), message(msg), expense_type(ExpensesType::Invalid), success(false), extra_message(extra_msg) {}
 
 	/**
 	 * Creates a command cost with given expense type and start cost of 0

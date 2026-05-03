@@ -36,7 +36,7 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 		Price::ClearRough, // Unused.
 		Price::ClearRough, // Unused.
 	};
-	CommandCost price(EXPENSES_CONSTRUCTION);
+	CommandCost price(ExpensesType::Construction);
 
 	ClearGround ground = GetClearGround(tile);
 	uint8_t density = GetClearDensity(tile);

@@ -1477,7 +1477,7 @@ CommandCost CmdSellRailWagon(DoCommandFlags flags, Vehicle *t, bool sell_chain, 
 		return CommandCost(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 	}
 
-	CommandCost cost(EXPENSES_NEW_VEHICLES);
+	CommandCost cost(ExpensesType::NewVehicles);
 	for (Train *part = sell_head; part != nullptr; part = part->Next()) cost.AddCost(-part->value);
 
 	/* do it? */
@@ -4284,7 +4284,7 @@ void Train::OnNewEconomyDay()
 
 		if (this->running_ticks != 0) {
 			/* running costs */
-			CommandCost cost(EXPENSES_TRAIN_RUN, this->GetRunningCost() * this->running_ticks / (CalendarTime::DAYS_IN_YEAR  * Ticks::DAY_TICKS));
+			CommandCost cost(ExpensesType::TrainRun, this->GetRunningCost() * this->running_ticks / (CalendarTime::DAYS_IN_YEAR  * Ticks::DAY_TICKS));
 
 			this->profit_this_year -= cost.GetCost();
 			this->running_ticks = 0;

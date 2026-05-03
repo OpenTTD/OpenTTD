@@ -226,7 +226,7 @@ static CommandCost CheckBridgeSlope(BridgePieces bridge_piece, Axis axis, Slope 
 
 	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+	return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 }
 
 /**
@@ -385,7 +385,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	if (z_start != z_end) return CommandCost(STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	Owner owner;
 	bool is_new_owner;
 	RoadType road_rt = INVALID_ROADTYPE;
@@ -701,7 +701,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 	/* Number of tiles at which the cost increase coefficient per tile is halved */
 	int tiles_bump = 25;
 
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	Slope end_tileh;
 	int end_z;
 	for (;;) {
@@ -929,7 +929,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, len * base_cost);
+	return CommandCost(ExpensesType::Construction, len * base_cost);
 }
 
 
@@ -1021,7 +1021,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, len * base_cost);
+	return CommandCost(ExpensesType::Construction, len * base_cost);
 }
 
 /** @copydoc ClearTileProc */
@@ -2115,7 +2115,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags fla
 		}
 
 		/* Surface slope is valid and remains unchanged? */
-		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildFoundation]);
+		if (res.Succeeded() && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 	}
 
 	return Command<Commands::LandscapeClear>::Do(flags, tile);

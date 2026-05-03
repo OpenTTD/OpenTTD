@@ -468,7 +468,7 @@ public:
 	 * @param income whether this is income or (running) expenses of the vehicle
 	 * @return The expense type.
 	 */
-	virtual ExpensesType GetExpenseType([[maybe_unused]] bool income) const { return EXPENSES_OTHER; }
+	virtual ExpensesType GetExpenseType([[maybe_unused]] bool income) const { return ExpensesType::Other; }
 
 	/**
 	 * Play the sound associated with leaving the station
