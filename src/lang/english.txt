@@ -2236,7 +2236,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignoring Base G
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignoring Base Sounds set '{RAW_STRING}': not found
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignoring Base Music set '{RAW_STRING}': not found
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :Error with video settings...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :no compatible GPU found. Hardware acceleration disabled
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :GPU driver crashed the game. Hardware acceleration disabled
