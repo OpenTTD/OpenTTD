@@ -425,7 +425,7 @@ static bool ConSave(std::span<std::string_view> argv)
 		std::string filename = fmt::format("{}.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Save) != SL_OK) {
+		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Save) != SaveLoadResult::Ok) {
 			IConsolePrint(CC_ERROR, "Saving map failed.");
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);

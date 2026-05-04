@@ -602,7 +602,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		this->last_frame_server = _frame_counter;
 
 		/* Make a dump of the current game */
-		if (SaveWithFilter(this->savegame, true) != SL_OK) UserError("network savedump failed");
+		if (SaveWithFilter(this->savegame, true) != SaveLoadResult::Ok) UserError("network savedump failed");
 	}
 
 	if (this->status == STATUS_MAP) {
