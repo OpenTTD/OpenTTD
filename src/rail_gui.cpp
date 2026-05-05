@@ -475,6 +475,16 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 
+		if (_cur_railtype != this->railtype) {
+			this->ModifyRailType(_cur_railtype);
+
+			/* Update cursor and all sub windows. */
+			if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
+			for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
+				SetWindowDirty(cls, TransportType::Rail);
+			}
+		}
+
 		if (!ValParamRailType(this->railtype)) {
 			/* Close toolbar if rail type is not available. */
 			this->Close();
@@ -965,8 +975,14 @@ Window *ShowBuildRailToolbar(RailType railtype)
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRailType(railtype)) return nullptr;
 
-	CloseWindowByClass(WindowClass::BuildToolbar);
 	_cur_railtype = railtype;
+	Window *w = BringWindowToFrontById(WindowClass::BuildToolbar, TransportType::Rail);
+	if (w != nullptr) {
+		w->OnInvalidateData();
+		return w;
+	}
+
+	CloseWindowByClass(WindowClass::BuildToolbar);
 	_remove_button_clicked = false;
 	return new BuildRailToolbarWindow(_build_rail_desc, railtype);
 }
