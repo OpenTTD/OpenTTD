@@ -11,14 +11,13 @@
 
 #include "../3rdparty/catch2/catch.hpp"
 
+#include "../core/geometry_type.hpp"
 #include "../tilearea_type.h"
 #include "../map_func.h"
 
 #include "../safeguards.h"
 
-struct TileCoord {
-	uint x, y;
-};
+using TileCoord = Coord2D<uint>;
 
 static void TestSpiralTileSequence(TileCoord center, uint diameter, std::span<TileCoord> expected)
 {

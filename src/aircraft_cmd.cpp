@@ -1247,10 +1247,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
  */
 static void HandleAircraftSmoke(Aircraft *v, bool mode)
 {
-	static const struct {
-		int8_t x;
-		int8_t y;
-	} smoke_pos[] = {
+	static const Coord2D<int8_t> smoke_pos[] = {
 		{  5,  5 },
 		{  6,  0 },
 		{  5, -5 },

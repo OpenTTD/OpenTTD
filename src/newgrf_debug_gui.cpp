@@ -797,11 +797,9 @@ GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 
 /** Window used for aligning sprites. */
 struct SpriteAlignerWindow : Window {
-	typedef std::pair<int16_t, int16_t> XyOffs; ///< Pair for x and y offsets of the sprite before alignment. First value contains the x offset, second value y offset.
-
 	SpriteID current_sprite{}; ///< The currently shown sprite.
 	Scrollbar *vscroll = nullptr;
-	std::map<SpriteID, XyOffs> offs_start_map{}; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
+	std::map<SpriteID, Coord2D<int16_t>> offs_start_map{}; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
 
 	static inline ZoomLevel zoom = ZoomLevel::End;
 	static bool centre;
@@ -861,8 +859,8 @@ struct SpriteAlignerWindow : Window {
 				const auto key_offs_pair = this->offs_start_map.find(this->current_sprite);
 				if (key_offs_pair != this->offs_start_map.end()) {
 					return GetString(STR_SPRITE_ALIGNER_OFFSETS_REL,
-						UnScaleByZoom(spr->x_offs - key_offs_pair->second.first, SpriteAlignerWindow::zoom),
-						UnScaleByZoom(spr->y_offs - key_offs_pair->second.second, SpriteAlignerWindow::zoom));
+						UnScaleByZoom(spr->x_offs - key_offs_pair->second.x, SpriteAlignerWindow::zoom),
+						UnScaleByZoom(spr->y_offs - key_offs_pair->second.y, SpriteAlignerWindow::zoom));
 				}
 
 				return GetString(STR_SPRITE_ALIGNER_OFFSETS_REL, 0, 0);
@@ -1016,7 +1014,7 @@ struct SpriteAlignerWindow : Window {
 
 				/* Remember the original offsets of the current sprite, if not already in mapping. */
 				if (this->offs_start_map.count(this->current_sprite) == 0) {
-					this->offs_start_map[this->current_sprite] = XyOffs(spr->x_offs, spr->y_offs);
+					this->offs_start_map[this->current_sprite] = {spr->x_offs, spr->y_offs};
 				}
 				int amt = ScaleByZoom(_ctrl_pressed ? 8 : 1, SpriteAlignerWindow::zoom);
 				switch (widget) {
