@@ -18,6 +18,7 @@
 #include "newgrf_badge_gui.h"
 #include "newgrf_badge_type.h"
 #include "settings_gui.h"
+#include "spritecache.h"
 #include "strings_func.h"
 #include "timer/timer_game_calendar.h"
 #include "window_gui.h"
@@ -49,7 +50,13 @@ static Dimension GetBadgeMaximalDimension(BadgeClassID class_index, GrfSpecFeatu
 		PalSpriteID ps = GetBadgeSprite(badge, feature, std::nullopt, PAL_NONE);
 		if (ps.sprite == 0) continue;
 
-		d.width = std::max(d.width, GetSpriteSize(ps.sprite, nullptr, ZoomLevel::Normal).width);
+		/* Get unscaled sprite size ignoring offsets. Don't use GetSpriteSize as it applies offsets,
+		 * and GetScaledSpriteSize uses interface scale. */
+		const Sprite *sprite = GetSprite(ps.sprite, SpriteType::Normal);
+		if (sprite == nullptr) continue;
+
+		uint width = UnScaleByZoom(sprite->width, ZoomLevel::Normal);
+		d.width = std::max(d.width, width);
 		if (d.width > MAX_BADGE_WIDTH) break;
 	}
 
