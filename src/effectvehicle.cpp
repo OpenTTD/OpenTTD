@@ -290,10 +290,7 @@ static const BulldozerMovement _bulldozer_movement[] = {
 	{ 3, 1, 7 }
 };
 
-static const struct {
-	int8_t x;
-	int8_t y;
-} _inc_by_dir[] = {
+static const Coord2D<int8_t> _inc_by_dir[] = {
 	{ -1,  0 },
 	{  0,  1 },
 	{  1,  0 },

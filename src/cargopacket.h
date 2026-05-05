@@ -40,19 +40,13 @@ extern SaveLoadTable GetCargoPacketDesc();
  */
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
-	/** A mathematical vector from (0,0). */
-	struct Vector {
-		int16_t x;
-		int16_t y;
-	};
-
 	uint16_t count = 0; ///< The amount of cargo in this packet.
 	uint16_t periods_in_transit = 0; ///< Amount of cargo aging periods this packet has been in transit.
 
 	Money feeder_share = 0; ///< Value of feeder pickup to be paid for on delivery of cargo.
 
 	TileIndex source_xy = INVALID_TILE; ///< The origin of the cargo.
-	Vector travelled{0, 0}; ///< If cargo is in station: the vector from the unload tile to the source tile. If in vehicle: an intermediate value.
+	Coord2D<int16_t> travelled{0, 0}; ///< If cargo is in station: the vector from the unload tile to the source tile. If in vehicle: an intermediate value.
 
 	Source source{Source::Invalid, SourceType::Industry}; ///< Source of the cargo
 
