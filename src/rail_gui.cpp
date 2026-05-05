@@ -96,6 +96,15 @@ static bool IsStationAvailable(const StationSpec *statspec)
 	return Convert8bitBooleanCallback(statspec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res);
 }
 
+/**
+ * Get the current railtype.
+ * @return the current railtype.
+ */
+RailType GetCurrentRailType()
+{
+	return _cur_railtype;
+}
+
 void CcPlaySound_CONSTRUCTION_RAIL(Commands, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, tile);
@@ -450,7 +459,7 @@ struct BuildRailToolbarWindow : Window {
 		this->CreateNestedTree();
 		this->FinishInitNested(TRANSPORT_RAIL);
 		this->DisableWidget(WID_RAT_REMOVE);
-		this->OnInvalidateData();
+		this->OnInvalidateData(railtype);
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -474,6 +483,15 @@ struct BuildRailToolbarWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
+
+		if(ValParamRailType(_cur_railtype = static_cast<RailType>(data))) {
+			_last_built_railtype = _cur_railtype;
+			this->ModifyRailType(_last_built_railtype);
+
+			/* Update cursor and all sub windows. */
+			if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
+			for (WindowClass cls : {WC_BUILD_STATION, WC_BUILD_SIGNAL, WC_BUILD_WAYPOINT, WC_BUILD_DEPOT}) SetWindowDirty(cls, TRANSPORT_RAIL);
+		}
 
 		if (!ValParamRailType(this->railtype)) {
 			/* Close toolbar if rail type is not available. */
@@ -964,6 +982,12 @@ Window *ShowBuildRailToolbar(RailType railtype)
 {
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRailType(railtype)) return nullptr;
+	Window *w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
+
+	if (w != nullptr) {
+		w->OnInvalidateData(railtype);
+		return w;
+	}
 
 	CloseWindowByClass(WC_BUILD_TOOLBAR);
 	_cur_railtype = railtype;

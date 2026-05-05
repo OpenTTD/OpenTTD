@@ -115,6 +115,15 @@ static bool IsRoadStopAvailable(const RoadStopSpec *spec, StationType type)
 	return Convert8bitBooleanCallback(spec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res);
 }
 
+/**
+ * Get the current roadtype.
+ * @return the current roadtype.
+ */
+RoadType GetCurrentRoadType()
+{
+	return _cur_roadtype;
+}
+
 void CcPlaySound_CONSTRUCTION_OTHER(Commands, const CommandCost &result, TileIndex tile)
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
@@ -360,7 +369,7 @@ struct BuildRoadToolbarWindow : Window {
 			this->SetWidgetDisabledState(WID_ROT_ONE_WAY, true);
 		}
 
-		this->OnInvalidateData();
+		this->OnInvalidateData(roadtype);
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -380,6 +389,18 @@ struct BuildRoadToolbarWindow : Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
+
+		if(ValParamRoadType(_cur_roadtype = static_cast<RoadType>(data))) {
+			if (RoadTypeIsRoad(_cur_roadtype)) {
+				_last_built_roadtype = _cur_roadtype;
+			} else {
+				_last_built_tramtype = _cur_roadtype;
+			}
+			this->ModifyRoadType(_cur_roadtype);
+
+			if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
+			for (WindowClass cls : {WC_BUS_STATION, WC_TRUCK_STATION, WC_BUILD_WAYPOINT, WC_BUILD_DEPOT}) SetWindowDirty(cls, TRANSPORT_ROAD);
+		}
 
 		if (!ValParamRoadType(this->roadtype)) {
 			/* Close toolbar if road type is not available. */
@@ -1061,6 +1082,12 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 {
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRoadType(roadtype)) return nullptr;
+	Window *w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
+
+	if (w != nullptr && GetRoadTramType(roadtype) == GetRoadTramType(_cur_roadtype)) {
+		w->OnInvalidateData(roadtype);
+		return w;
+	}
 
 	CloseWindowByClass(WC_BUILD_TOOLBAR);
 	_cur_roadtype = roadtype;

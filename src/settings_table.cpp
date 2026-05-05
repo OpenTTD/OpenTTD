@@ -28,6 +28,7 @@
 #endif
 #include "textbuf_gui.h"
 #include "rail_gui.h"
+#include "road_gui.h"
 #include "elrail_func.h"
 #include "error.h"
 #include "town.h"
@@ -583,7 +584,22 @@ static void StationCatchmentChanged(int32_t)
 
 static void MaxVehiclesChanged(int32_t)
 {
-	InvalidateWindowClassesData(WC_BUILD_TOOLBAR);
+	for (Window *w : Window::Iterate()) {
+		if (w->window_class == WC_BUILD_TOOLBAR) {
+			switch (static_cast<int>(w->window_number)) {
+				case TRANSPORT_RAIL:
+					w->InvalidateData(GetCurrentRailType());
+					break;
+
+				case TRANSPORT_ROAD:
+					w->InvalidateData(GetCurrentRoadType());
+					break;
+
+				default:
+					w->InvalidateData();
+			}
+		}
+	}
 	MarkWholeScreenDirty();
 }
 
