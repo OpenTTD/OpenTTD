@@ -1142,7 +1142,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Ogiltig si
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} fil{P "" er} saknas/kunde ej processas)
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Det gick inte att hämta en lista över upplösningar som stöds
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Det gick inte att hämta en lista över upplösningar som stöds
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskärmsläge misslyckades
 
 # Custom currency window
@@ -3528,12 +3528,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kör til
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kör skript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Förbereder spel
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Inläsning av stadsdata misslyckades
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :Inläsning av stadsdata misslyckades
 STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :JSON-filen är felaktigt formaterad
 STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING}s data är felaktigt formaterad
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} koordinater är felaktigt formaterade; måste vara mellan 0 och 1 i proportion till höjdkartans totala dimension
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{STRING} koordinater är felaktigt formaterade; måste vara mellan 0 och 1 i proportion till höjdkartans totala dimension
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Kunde ej finna någon lämplig plats för att grunda {NUM} st{P ad äder}. Skapade istället {P "en " ""}skylt{P "" ar} på de{P n ""} tilltänkta platse{P n rna}
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :Kunde ej finna någ{P 0 on ra} lämplig{P 0 "" a} plats{P 0 "" er} för att grunda {NUM} st{P ad äder}. Skapade istället {P "en " ""}skylt{P "" ar} på de{P n ""} tilltänkta platse{P n rna}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-inställningar
@@ -5073,7 +5073,7 @@ STR_ERROR_PNGMAP_MISC                                           :något gick fel
 STR_ERROR_BMPMAP                                                :Kan inte ladda landskap från BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :kunde inte konvertera bildformat
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... för stor bild
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :bilden är för stor
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala-varning
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}För stora storleksändringar av källkarta är inte rekomenderat. Fortsätt med generering?
@@ -5155,7 +5155,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :för många st�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :det finns ingen plats kvar på kartan
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :vägarbete pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :Kan inte ta bort den här staden...{}{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det finns ingen lämplig plats för en staty i stadens centrum
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :det finns ingen lämplig plats för en staty i stadens centrum
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :Kan inte bygga hus...
 
 # Industry related errors
@@ -5314,8 +5314,8 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :det finns ingen
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :det finns ingen spårvagnsräls
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :Kan inte konvertera vägtyp här...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Kan inte konvertera spårvagnstyp här...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen lämplig väg
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen passande spårväg
+STR_ERROR_NO_SUITABLE_ROAD                                      :ingen lämplig väg
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :ingen passande spårväg
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :Kan inte bygga kanaler här...
@@ -5331,7 +5331,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Kan inte bygga 
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... träd redan här
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... fel sorts terräng för trädtyp
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :fel sorts terräng för trädtyp
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Kan inte plantera träd här...
 
 # Bridge related errors
@@ -5341,7 +5341,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :kan inte börja
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :broändarna är inte på samma höjd
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :bron är för låg för terrängen
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :bron är för hög för denna terräng.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- och slutpunkt måste ligga i linje
+STR_ERROR_START_AND_END_MUST_BE_IN                              :start- och slutpunkt måste ligga i linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :brons båda ändar måste vara på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :bron är för lång
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :bron skulle sluta utanför kartans gränser
@@ -5368,7 +5368,7 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :Kan inte bygga 
 STR_ERROR_OBJECT_IN_THE_WAY                                     :objekt i vägen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :huvudkontor i vägen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Kan inte köpa denna mark...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du äger den redan!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :du äger den redan!
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :gränsen för konstruktion av objekt är nådd
 
 # Group related errors
@@ -5391,7 +5391,7 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :luftfarkost i v
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :fordonet är ej tillgängligt
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Fordonet är ej tillgängligt
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :fordonet är inte tillgängligt
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Fartyget är ej tillgängligt
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :luftfarkosten är ej tillgänglig
 
@@ -5459,7 +5459,7 @@ STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :alla fordon är
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Inga fordon alls kommer att vara tillgängliga
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :Ändra din konfiguration av NewGRF:er
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Inga fordon är tillgängliga än
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som erbjuder tidiga fordon
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som erbjuder tidiga fordon
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Inga vägtyper som kan byggas av städer finns tillgängliga
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Ändra din NewGRF-konfiguration

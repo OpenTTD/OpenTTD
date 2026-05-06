@@ -1354,7 +1354,7 @@ STR_CONFIG_SETTING_RECESSIONS                                   :경제 불황: 
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :이 설정을 켜면, 주기적으로 경제 불황이 발생할 수 있습니다. 불황 기간 동안에는 모든 화물의 생산량이 확연하게 줄어듭니다. (불황이 끝나면 이전 수준으로 회복됩니다.)
 
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :열차가 회차할 때 열차 전체가 뒤집히는 것을 허용: {STRING}
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :열차가 뒤로 이동할 때 열차 전체가 뒤집혀도 되는지를 선택합니다. "어디서나"를 선택하면 어디에서든 열차가 뒤집힐 수 있습니다. "선로 끝에서만"을 선택하면 역 안에서 전방에 진행 경로가 있다면 열차가 뒤집히지 않습니다. "불가능"을 선택하면 열차는 뒤집히지 않으며 필요한 경우에만 뒤로 운행하지만, 후방 기관차가 없으면 속도가 감소합니다
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :열차가 뒤로 이동할 때 열차 전체가 뒤집혀도 되는지를 선택합니다. "어디서나"를 선택하면 어디에서든 열차가 뒤집힐 수 있습니다. "선로 끝에서만"을 선택하면 역 안에서 전방에 진행 경로가 있다면 열차가 뒤집히지 않습니다. "불가능"을 선택하면 열차는 뒤집히지 않으며 필요한 경우에만 후진하여 운행하지만, 후방 기관차가 없으면 속도가 감소합니다
 
 ###length 3
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :어디에서든
