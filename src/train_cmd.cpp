@@ -2251,7 +2251,7 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 {
 	assert(!v->vehstatus.Test(VehState::Crashed));
 
-	return YapfTrainFindNearestDepot(v->GetMovingFront(), max_distance);
+	return YapfTrainFindNearestDepot(v, max_distance);
 }
 
 ClosestDepot Train::FindClosestDepot()
