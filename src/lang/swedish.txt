@@ -1143,7 +1143,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Ogiltig si
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} fil{P "" er} saknas/kunde ej processas)
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :Det gick inte att hämta en lista över upplösningar som stöds
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskärmsläge misslyckades
+STR_ERROR_FULLSCREEN_FAILED                                     :Fullskärmsläge misslyckades
 
 # Custom currency window
 
@@ -5087,7 +5087,7 @@ STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Skärmd
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Höjdkarta sparad som '{STRING}'. Högsta punkten är {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Skärmdump sparades som '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skärmdump misslyckades!
+STR_ERROR_SCREENSHOT_FAILED                                     :Skärmdump misslyckades!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Meddelande
@@ -5126,7 +5126,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Kan inte sänka
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Kan inte jämna ut land här...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :utgrävning skulle förstöra tunnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :redan på havsnivå
-STR_ERROR_TOO_HIGH                                              :{WHITE}För hög
+STR_ERROR_TOO_HIGH                                              :för hög
 STR_ERROR_ALREADY_LEVELLED                                      :redan platt
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :efteråt skulle bron ovanför vara för hög.
 STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :måste riva vattendrag först
@@ -5297,7 +5297,7 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Kan inte bygga 
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Kan inte bygga järnvägsspår här...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Kan inte ta bort järnvägsspår härifrån...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Kan inte ta bort signaler härifrån...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan inte konvertera signaler här...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Kan inte konvertera signaler här...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :det finns inget järnvägsspår
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :det finns inga signaler
 
@@ -5392,7 +5392,7 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :luftfarkost i v
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :fordonet är ej tillgängligt
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :fordonet är inte tillgängligt
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Fartyget är ej tillgängligt
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :fartyget är inte tillgängligt
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :luftfarkosten är ej tillgänglig
 
 ###length VEHICLE_TYPES

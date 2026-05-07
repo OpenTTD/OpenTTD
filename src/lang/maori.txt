@@ -581,32 +581,32 @@ STR_DAY_NUMBER_30TH                                             :30
 STR_DAY_NUMBER_31ST                                             :31
 
 ###length 12
-STR_MONTH_ABBREV_JAN                                            :Hān
-STR_MONTH_ABBREV_FEB                                            :Pēp
-STR_MONTH_ABBREV_MAR                                            :Māe
-STR_MONTH_ABBREV_APR                                            :Āpe
-STR_MONTH_ABBREV_MAY                                            :Mei
-STR_MONTH_ABBREV_JUN                                            :Hun
-STR_MONTH_ABBREV_JUL                                            :Hūr
-STR_MONTH_ABBREV_AUG                                            :Āku
-STR_MONTH_ABBREV_SEP                                            :Hep
-STR_MONTH_ABBREV_OCT                                            :Oke
-STR_MONTH_ABBREV_NOV                                            :Noe
-STR_MONTH_ABBREV_DEC                                            :Tīh
+STR_MONTH_ABBREV_JAN                                            :Koh
+STR_MONTH_ABBREV_FEB                                            :Hui
+STR_MONTH_ABBREV_MAR                                            :Pou
+STR_MONTH_ABBREV_APR                                            :Pae
+STR_MONTH_ABBREV_MAY                                            :Har
+STR_MONTH_ABBREV_JUN                                            :Pip
+STR_MONTH_ABBREV_JUL                                            :Hōn
+STR_MONTH_ABBREV_AUG                                            :Her
+STR_MONTH_ABBREV_SEP                                            :Mah
+STR_MONTH_ABBREV_OCT                                            :Wnu
+STR_MONTH_ABBREV_NOV                                            :Wra
+STR_MONTH_ABBREV_DEC                                            :Hak
 
 ###length 12
-STR_MONTH_JAN                                                   :Hānuere
-STR_MONTH_FEB                                                   :Pēpuere
-STR_MONTH_MAR                                                   :Māehe
-STR_MONTH_APR                                                   :Āperira
-STR_MONTH_MAY                                                   :Mei
-STR_MONTH_JUN                                                   :Hune
-STR_MONTH_JUL                                                   :Hūrae
-STR_MONTH_AUG                                                   :Ākuhata
-STR_MONTH_SEP                                                   :Hepetema
-STR_MONTH_OCT                                                   :Oketopa
-STR_MONTH_NOV                                                   :Noema
-STR_MONTH_DEC                                                   :Tīhema
+STR_MONTH_JAN                                                   :Kohitātea
+STR_MONTH_FEB                                                   :Huitanguru
+STR_MONTH_MAR                                                   :Poutūterangi
+STR_MONTH_APR                                                   :Paengawhāwhā
+STR_MONTH_MAY                                                   :Haratua
+STR_MONTH_JUN                                                   :Pipiri
+STR_MONTH_JUL                                                   :Hōngongoi
+STR_MONTH_AUG                                                   :Hereturikōkā
+STR_MONTH_SEP                                                   :Mahuru
+STR_MONTH_OCT                                                   :Whiringaanuku
+STR_MONTH_NOV                                                   :Whiringaarangi
+STR_MONTH_DEC                                                   :Hakihea
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Pātohu
@@ -651,8 +651,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Kua tukuna
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Kei te tatari
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Hītori Utanga
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Whakarato
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Kua whakaputaia
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Kawe
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Kua tukuna
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Whakaaria ngā taipitopito arotake tutukinga
 
@@ -1069,12 +1070,12 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Kōwhiria te ar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :kē atu
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Whakahohoro ā pūmārō
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Whakakā kia tuku i OpenTTD kia tarai ki te whakamahi i te whakahohoro ā pūmārō. Ka kitea te tautuhinga hou i muri i tētahi whakaara anō i te kēmu
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Whakahohoro pūmārō
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Whakakā kia tuku i OpenTTD kia tarai ki te whakamahi i te whakahohoro pūmārō. Ka kitea te tautuhinga hou i muri i tētahi whakaara anō i te kēmu
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ka kitea te tautuhinga i muri i tētahi whakaara anō i te kēmu
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Tukutahi poutū
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Whakakā kia tukutahi poutū i te mata. Ka kitea te tautuhinga hou i muri i tētahi whakaara anō i te kēmu. Kāore e tutuki mehemea kāore te whakahohoro ā pūmārō i te kā
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Whakakā kia tukutahi poutū i te mata. Ka kitea te tautuhinga hou i muri i tētahi whakaara anō i te kēmu. Kāore e tutuki mehemea kāore te whakahohoro pūmārō i te kā
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Pūtāhono onāianei: {STRING}
 
@@ -1351,8 +1352,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Nui
 STR_CONFIG_SETTING_RECESSIONS                                   :Auheke ohaoha: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ina kā, ka taea te tūpono e ngā auheke i ētahi wā. I te auheke, ka iti rawa atu te whakaputa katoa (ka hoki ki te kōeke o mua i te mutunga o te auheke)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Tukuna ngā tereina kia huri ina haere whakamuri: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Kōwhiri kei whea ka taea te huri e ngā tereina kia haere whakamuri. “katoa”: ka taea te huri i ngā wāhi katoa. “mutunga anake o te ara”: kāore ngā tereina e huri i roto i ngā teihana mehemea ka taea te haere whakamua. “kore”: tē taea te huri e ngā tereina, ka haere whakamuri mehemea ka pīrangitia, engari ka pōturi ake mehemea kāore he pūkaha i muri.
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Katoa
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Mutunga anake o te ara
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Kore
 
 STR_CONFIG_SETTING_DISASTERS                                    :Maikiroa: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Hohokona ngā maikiroa ka ārai pea, whakangaro pea rānei i ngā waka, te tūāhanga rānei
@@ -1417,7 +1423,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Te teitei mōra
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Roa anaroa mōrahi: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Te roa mōrahi mō te hanga anaroa
 
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Me pēwhea te hanga ahumahi mātāmua ā ringa: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Me pēwhea te hanga ahumahi mātāmua āringa: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Me pēwhea te whakarato moni mō tētahi ahumahi mātāmua. "Kore": tē taea te whakarato moni, "haurapa": ka taea, engari ka tūpono te hanga i tētahi wāhi matapōkere i te mahere, ka mūhore pea hoki, "pērā i ngā ahumahi kē": ka taea te hanga ahumahi e ngā umanga pērā i ngā ahumahi tukatuka i te wāhi e pīrangitia rā
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Kore
@@ -1465,8 +1471,8 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Tirohanga katoa
 
 STR_CONFIG_SETTING_BRIBE                                        :Tukuna kia whakapatia te kāwanatanga ārohe: {STRING}
 ###length 2
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tukuna ngā umanga kia tarai ki te whakapati i te kāwanatanga ārohe. Mehemea ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei te mahi i roto i te tāone mō te ono marama
-STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Tukuna ngā umanga kia tarai ki te whakapati i te kāwanatanga ārohe. Mehemea ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei te mahi i roto i te tāone mō te ono meneti
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tukuna ngā umanga kia tarai ki te whakapati i te kāwanatanga ārohe. Mehemea ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei ki te mahi i roto i te tāone mō te ono marama
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Tukuna ngā umanga kia tarai ki te whakapati i te kāwanatanga ārohe. Mehemea ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei ki te mahi i roto i te tāone mō te ono meneti
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tukuna kia hokona ngā mōtika kawekawe kaupare: {STRING}
 ###length 2
@@ -1539,13 +1545,13 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kāore rawa ng�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ina kā, ka wātea āke ake ngā tauira katoa o ngā waka i muri i ana whakaurunga
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tāima: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Tīpakona te waeine tāima o te kēmu. Tē taea te panoni ā muri atu.{}{}Ko te tāima ā maramataka te wheako taketake o OpenTTD, e 12 ngā marama o te tau, e 28 ki te 31 ngā rā o ia marama.{}{}I te tāima ā karaka, ka mahi te whakaputa utanga me te ahumoni ki ngā waeine kotahi meneti, he tata ōrite ai te roa o te marama o te 30 rā i te aratau tāima ā maramataka. Ka whakarōpūtia ēnei ki ngā wā o te 12 meneti, he ōrite ki te tau i te aratau ā maramataka.{}{}Kei ia aratau he maramataka taketake, e whakamahia ana mō ngā rā whakaurunga o ngā waka, ngā whare, me ētahi momo tūāhanga
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Tīpakona te waeine tāima o te kēmu. Tē taea te panoni ā muri atu.{}{}Ko te tāima āmaramataka te wheako taketake o OpenTTD, e 12 ngā marama o te tau, e 28 ki te 31 ngā rā o ia marama.{}{}I te tāima ākaraka, ka mahi te whakaputa utanga me te ahumoni ki ngā waeine kotahi meneti, he tata ōrite ai te roa o te marama o te 30 rā i te aratau tāima āmaramataka. Ka whakarōpūtia ēnei ki ngā wā o te 12 meneti, he ōrite ki te tau i te aratau āmaramataka.{}{}Kei ia aratau he maramataka taketake, e whakamahia ana mō ngā rā whakaurunga o ngā waka, ngā whare, me ētahi momo tūāhanga
 ###length 2
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Ā maramataka
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Ā karaka
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Āmaramataka
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Ākaraka
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Meneti i te tau: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kōwhiria te tatau o ngā meneti i te tau o te maramataka. Ko te 12 meneti te taunoa. Tautuhitia ki te 0 kia āraia te tāima o te maramataka kei haere tonu. Ka whakapōturitia te whakauru i ngā waka, ngā whare, me te tūāhanga e te whakaroa i te tau. Kāore e pāngia te tere o ngā waka me te whaihanga ohaoha, hāunga te pikiutu tukupū. Kāore tēnei tautuhinga e wātea mehemea kāore te tāima ā karaka i te whakamahia
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Kōwhiria te tatau o ngā meneti i te tau o te maramataka. Ko te 12 meneti te taunoa. Tautuhitia ki te 0 kia āraia te tāima o te maramataka kei haere tonu. Ka whakapōturitia te whakauru i ngā waka, ngā whare, me te tūāhanga e te whakaroa i te tau. Kāore e pāngia te tere o ngā waka me te whaihanga ohaoha, hāunga te pikiutu tukupū. Kāore tēnei tautuhinga e wātea mehemea kāore te tāima ākaraka i te whakamahia
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1570,7 +1576,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Moni mōkito ki
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Te tatau mōkito o te moni me noho i te pēke i mua i te whaiwhakaaro kia whakahou waka aunoa
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Wā o ngā karere hapa: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Te roa o te wā mō te whakaari i ngā karere i roto i te matapihi whero. Kia mahara kāore ētahi karere hapa (tino hirahira) e kati aunoatia i muri i taua wā, me kati ā ringa
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Te roa o te wā mō te whakaari i ngā karere i roto i te matapihi whero. Kia mahara kāore ētahi karere hapa (tino hirahira) e kati aunoatia i muri i taua wā, me kati āringa
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Whakaaria ngā whakamāramatanga hunahuna: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Te tōmuri i mua i te whakaari i ngā whakamāramatanga hunahuna ina whakaparo te kiore i runga i tētahi huānga tāhono. Ka here noatia iho ngā whakamāramatanga hunahuna ki te pātene matau o te kiore ina tautuhitia tēnei uara ki te 0
@@ -1657,8 +1663,8 @@ STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Taraiwa ki te m
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Hurihanga mahereteitei: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Kōwhiria te ahu me whakahuri ai te ata mahereteitei kia kuhuna ai ki te ao kēmu
 ###length 2
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ehara ā karaka
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ā karaka
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ehara ākaraka
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ākaraka
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kōeke teitei mō te mahere takiwā papatahi: {STRING}
 ###length 2
@@ -1726,8 +1732,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Topa i te maher
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Panuku i te mahere
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Poko
 
-STR_CONFIG_SETTING_OSK_ACTIVATION                               :Papapātuhi ā mata: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tīpakona me pēwhea te huaki i te papa pātuhi ā mata mō te pātuhi e whakamahi ana i te mata anake. Mō ngā pūrere tēnei kāore he papapātuhi tūturu
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Papapātuhi āmata: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tīpakona me pēwhea te huaki i te papapātuhi āmata mō te pātuhi e whakamahi ana i te mata anake. Mō ngā pūrere tēnei kāore he papapātuhi tūturu
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Tē āhei
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Pāwhirirua
@@ -1735,7 +1741,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pāwhiritahi (i
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pāwhiritahi (i ngā wā katoa)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Whakamahia he ratonga tānga: {STRING}
-STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Mehemea ka mūhore te hono ki te tūmau, ka taea te whakamahi te ratonga tānga kia hono atu. "kāore rawa": ka āraia, "pātai": ka pātai i mua atu, "whakaae": ka tukuna kāore he pātai
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Mehemea ka mūhore te hono ki te tūmau, ka taea te whakamahi te ratonga tānga kia hono atu. "Kāore rawa": ka āraia, "pātai": ka pātai i mua atu, "whakaae": ka tukuna kāore he pātai
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Kāore rawa
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Pātai
@@ -1793,7 +1799,7 @@ STR_CONFIG_SETTING_QUICKGOTO                                    :Hanga wawe i ng
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Tīpako aunoatia te pehu tohutohu (ānō nei kua pāwhiria te pātene "Haere ki") i te huaki i te matapihi mahi
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Momo rēra taunoa (i muri i te kēmu hou/uta i te kēmu): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Te momo rēra hei tīpako i muri i te tīmata, te uta rānei i tētahi kēmu. "wātea tuatahi": ka tīpakona te momo rēra tawhito rawa atu, "hou rawa atu": ka tīpakona te momo rēra hou rawa atu, "whakamahi nui rawa atu": ka tīpakona te momo e whakamahi nui rawatia atu ana ināianei
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Te momo rēra hei tīpako i muri i te tīmata, te uta rānei i tētahi kēmu. "Wātea tuatahi": ka tīpakona te momo rēra tawhito rawa atu, "hou rawa atu": ka tīpakona te momo rēra hou rawa atu, "whakamahi nui rawa atu": ka tīpakona te momo e whakamahi nui rawatia atu ana ināianei
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Wātea tuatahi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Hou rawa atu
@@ -1856,16 +1862,16 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Tatau mōrahi o
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Te tatau mōrahi o ngā kaipuke ka taea te whiwhi e ia umanga
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Āraia te rorohiko kei hanga tereina: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ina kā tēnei tautuhinga, tē taea te hanga tereina e te kaitākaro ā rorohiko
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ina kā tēnei tautuhinga, tē taea te hanga tereina e te kaitākaro rorohiko
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Āraia te rorohiko kei hanga waka rori: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ina kā tēnei tautuhinga, tē taea te hanga waka rori e te kaitākaro ā rorohiko
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ina kā tēnei tautuhinga, tē taea te hanga waka rori e te kaitākaro rorohiko
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Āraia te rorohiko kei hanga waka rererangi: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ina kā tēnei tautuhinga, tē taea te hanga waka rererangi e te kaitākaro ā rorohiko
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ina kā tēnei tautuhinga, tē taea te hanga waka rererangi e te kaitākaro rorohiko
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Āraia te rorohiko kei hanga kaipuke: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ina kā tēnei tautuhinga, tē taea te hanga kaipuke e te kaitākaro ā rorohiko
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ina kā tēnei tautuhinga, tē taea te hanga kaipuke e te kaitākaro rorohiko
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tukuna kia whakamahi kaitākaro hangahanga i te aratau kaitākarorau: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tukuna ngā kaitākaro hangahanga kia whai wāhi i ngā kēmu kaitākarorau
@@ -1904,6 +1910,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ina kā, ka pō
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Whakakāngia ngā tepetere wākena: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ina kā, whakamahia ngā tepetere o ngā wākena hei whakatau i te tere mōrahi o te tereina
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Tukuna te whānui mōrahi o ngā waka rererangi: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Ina tukuna, ka taea e ngā newGRF te whakatina te whānui mōrahi o ngā waka rererangi.
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Āraia ngā rēra hiko: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ina kā, kāore te whakahiko ara e pīrangitia kia rere ai ngā tereina hiko
@@ -2029,7 +2037,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Āhei
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Āhei, whakatakotoranga motuhake
 
 STR_CONFIG_SETTING_HOUSE_PLACER                                 :Makaia ia whare: {STRING}
-STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Ina āheia, ka tukuna ngā kaitākaro kia maka ā ringa i ia whare i roto i ngā tāone
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Ina āheia, ka tukuna ngā kaitākaro kia maka āringa i ia whare i roto i ngā tāone
 ###length 3
 STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Tē āhei
 STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Āhei
@@ -2108,15 +2116,15 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Whakamahia {STR
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Te wā i waenganui o ngā tātai anō i te kauwhata hono. I te tīmatanga o tētahi tātai anō, ka hangaia he miro ka mahi mō tēnei tatau o ngā hēkena. Ka poto ake te tautuhinga, ka nui ake te tūponotanga kāore te miro e oti i te wā tika. Kātahi te kēmu ka mutu tae noa ki te ("takaware"). Ka roa atu te tautuhinga, ka roa atu te tōmuri ki te whakahou i te tuari ina panonitia ngā ara
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Aratau tuari mō ngā kaieke: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Hangarite": ka tata ōrite te tatau o ngā kaieke ka haere mai i te teihana A ki te teihana E ki ērā ka haere mai i te teihana E ki te teihana A. "Hikuwaru": ka matapōkere te tatau o ngā kaieke ka haere ki ia ahu. "Ā ringa": kāore he tuari aunoa mō ngā kaieke
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Hangarite": ka tata ōrite te tatau o ngā kaieke ka haere mai i te teihana A ki te teihana E ki ērā ka haere mai i te teihana E ki te teihana A. "Hikuwaru": ka matapōkere te tatau o ngā kaieke ka haere ki ia ahu. "Āringa": kāore he tuari aunoa mō ngā kaieke
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Aratau tuari mō te mēra: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Hangarite": ka tata ōrite te tatau o te mēra ka haere mai i te teihana A ki te teihana E ki ērā ka haere mai i te teihana E ki te teihana A. "Hikuwaru": ka matapōkere te tatau o te mēra ka haere ki ia ahu. "Ā ringa": kāore he tuari aunoa mō te mēra
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Hangarite": ka tata ōrite te tatau o te mēra ka haere mai i te teihana A ki te teihana E ki ērā ka haere mai i te teihana E ki te teihana A. "Hikuwaru": ka matapōkere te tatau o te mēra ka haere ki ia ahu. "Āringa": kāore he tuari aunoa mō te mēra
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Aratau tuari mō te momo utanga PUKUPUKU RINO: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Kei roto i te momo utanga PUKUPUKU RINO te tino taonga i te taiao hātai, te taimana i te taiao wera, otirā te kōura i te taiao makariri. Ka taea te panoni tērā e ngā newGRF. "Hangarite": ka tata ōrite te tatau o taua utanga ka haere mai i te teihana A ki te teihana E ki ērā ka haere mai i te teihana E ki te teihana A. "Hikuwaru": ka matapōkere te tatau o taua utanga ka haere ki ia ahu. "Ā ringa": kāore he tuari aunoa mō taua utanga. Me tautuhitia tēnei ki te hikuwaru, te ā ringa rānei ina tākaro i te taiao makariri, te taiao wera rānei, nā te mea ka whiwhi utanga anake ngā pēke i aua taiao. Mō te taiao hātai, ka taea te kōwhiri te hangarite nā te mea ka tuku taonga ngā pēke ki te pēke taketake
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Kei roto i te momo utanga PUKUPUKU RINO te tino taonga i te taiao hātai, te taimana i te taiao wera, otirā te kōura i te taiao makariri. Ka taea te panoni tērā e ngā newGRF. "Hangarite": ka tata ōrite te tatau o taua utanga ka haere mai i te teihana A ki te teihana E ki ērā ka haere mai i te teihana E ki te teihana A. "Hikuwaru": ka matapōkere te tatau o taua utanga ka haere ki ia ahu. "Āringa": kāore he tuari aunoa mō taua utanga. Me tautuhitia tēnei ki te hikuwaru, te āringa rānei ina tākaro i te taiao makariri, te taiao wera rānei, nā te mea ka whiwhi utanga anake ngā pēke i aua taiao. Mō te taiao hātai, ka taea te kōwhiri te hangarite nā te mea ka tuku taonga ngā pēke ki te pēke taketake
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Aratau tuari mō ngā momo utanga kē: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Hikuwaru": ka matapōkere te tatau o te utanga ka haere ki ia ahu. "Ā ringa": kāore he tuari aunoa mō te utanga
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Hikuwaru": ka matapōkere te tatau o te utanga ka haere ki ia ahu. "Āringa": kāore he tuari aunoa mō te utanga
 ###length 3
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Ā ringa
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Āringa
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Hikuwaru
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Hangarite
 
@@ -2230,8 +2238,8 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :kei te waiho i 
 
 # Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :Hapa kei ngā tautuhinga ataata...
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :kāore he pūtukatuka whakairoiro hototahi i kitea. Kua whakapokoa te whakahohoro ā pūmārō
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :I whakahingaia te kēmu e te pūtāhono pūtukatuka whakairoiro. Kua whakapokoa te whakahohoro ā pūmārō
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :kāore he pūtukatuka whakairoiro hototahi i kitea. Kua whakapokoa te whakahohoro pūmārō
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :I whakahingaia te kēmu e te pūtāhono pūtukatuka whakairoiro. Kua whakapokoa te whakahohoro pūmārō
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
@@ -2654,7 +2662,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Kei te okioki t
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Kei te purei te kēmu ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :tatau o ngā kaitākaro
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kei te hono i ngā kiritaki
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ā ringa
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :āringa
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :hōtuhi kēmu
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :kei te tatari ki te whakahou i te kauwhata hono
 
@@ -2752,7 +2760,7 @@ STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Āe, tī
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Kāo, puta atu i OpenTTD
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}I mūhore te tiki ake
-STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}I mūhore te tiki whakairoiro ake.{}Tīkina ake koa ngā whakairoiro ā ringa
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}I mūhore te tiki whakairoiro ake.{}Tīkina ake koa ngā whakairoiro ringa
 STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Puta atu i OpenTTD
 
 # Transparency settings window
@@ -4575,8 +4583,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Tapaia t
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Tapaia te kaipuke
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Tapaia te waka rererangi
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} tau ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tau ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} tau (wāora: {COMMA} tau)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tau (wāora: {COMMA} tau)
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Tawhito: {LTBLUE}{STRING}{BLACK}   Utu Whakahaere: {LTBLUE}{CURRENCY_LONG}/tau
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Tawhito: {LTBLUE}{STRING}{BLACK}   Utu Whakahaere: {LTBLUE}{CURRENCY_LONG}/wā
 
@@ -4590,6 +4598,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Monihua 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Monihua i tēnei tau: {LTBLUE}{CURRENCY_LONG} (tērā tau: {CURRENCY_LONG}) {BLACK}Pānga mōkito: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Monihua i tēnei wā: {LTBLUE}{CURRENCY_LONG} (tērā wā: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Monihua i tēnei wā: {LTBLUE}{CURRENCY_LONG} (tērā wā: {CURRENCY_LONG}) {BLACK}Pānga mōkito: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Horopū: {LTBLUE}{COMMA}% (mōrahi: {COMMA}%)  {BLACK}Turingonge mai rānō i te tapi i mua: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Rā i hangaia ai: {LTBLUE}{NUM}{BLACK} Uara: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kītanga: {LTBLUE}None{STRING}
@@ -4602,8 +4611,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Moniwhiw
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Wā kia tapi ai: {LTBLUE}ia rā{NBSP}{COMMA}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Wā kia tapi ai: {LTBLUE}ia meneti{NBSP}{COMMA}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Wā kia tapi ai: {LTBLUE}{COMMA}%{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Tapi hou rawa atu: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Tapi hou rawa atu: {LTBLUE}{NUM} meneti i mua
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Tapi i mua: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Tapi i mua: {LTBLUE}{NUM} meneti i mua
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Whakarahia te āputa wā tapitapi mā te 10 rā. Pātaki+Pāwhiri kia whakarahia mā te 5 rā
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Whakarahia te āputa wā tapitapi mā te 5 meneti. Pātaki+Pāwhiri kia whakarahia mā te 1 meneti
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Whakarahia te wā tapitapi mā te 10 ōrau. Pātaki+Pāwhiri kia whakarahia mā te 5 ōrau
@@ -4738,6 +4747,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Hiahia kia tapi
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Wā katoa
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Wāora e toe ana (tau)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Horopū mōrahi
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Whakamuri
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Me pēwhea te whakataurite te raraunga waka ki te uara kua tukuna
@@ -4757,6 +4767,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Peke
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pekea atu te mahi onāianei, ka tīmatahia ai te mahi i muri. Pātaki+Pāwhiri kia peke ki te mahi kua tīpakona
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Muku
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}Mukua te katoa
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Mukua te mahi kua tīpakona
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Mukua ngā mahi katoa
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Whakamutua te toha
@@ -4851,7 +4862,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Whakawhi
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Wātaka - pāwhiria he mahi kia miramiratia
 
 STR_TIMETABLE_NO_TRAVEL                                         :Kāore e haere
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Haere (aunoa; ka whakaritea e te mahi ā ringa i muri)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Haere (aunoa; ka whakaritea e te mahi ringa i muri)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Haere (kāore anō kia whakaritea)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Haere (kāore anō kia whakaritea) ki te {VELOCITY} hei mōrahi
 STR_TIMETABLE_TRAVEL_FOR                                        :Haere mō te {STRING}
@@ -5256,6 +5267,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Tē taea te nek
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :ka whaiwhai te pūkaha muri i te pūkaha mua i ngā wā katoa
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :tē taea te kite te ara ki tētahi taupuni tata
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :tē taea te kite tētahi taupuni tata
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :tē taea te kite tētahi whare tata
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :momo taupuni hē
 
