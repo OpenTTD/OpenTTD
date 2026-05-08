@@ -1559,6 +1559,8 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escala la produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la producció de càrrega de les indústries segons aquest percentatge.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}{NBSP}%
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Si està activat, quan un vehicle arriba al final de la seva vida útil es substitueix automàticament quan es compleixen les condicions d'autorenovació.
 

@@ -923,7 +923,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} huet ze mann Opträg am Plang
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} huet en eidelen Optrag
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} huet en ongültegen Optrag
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} huet duebel Opträg
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} huet eng falsch Statioun an den Opträg
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} huet an séngen Opträg en Fluchhafen dem séng Landebunn ze kuerz ass
@@ -1070,11 +1070,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaner
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardwarebeschleunegung
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Dës Optioun wielen, dass OpenTTD Hardwarebeschleunigung dierf notzen. Wäert just geännert ginn wann d'Spill nei gestart gëtt
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Uschalten, dass OpenTTD Hardwarebeschleunigung dierf notzen. Wäert just geännert ginn wann d'Spill nei gestart gëtt
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}D'Astellung huet réicht en Afloss no engem Neistart vum Spill
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Wiel des Optioun fir de V-Sync unzeman. Des gëtt eréit no engem Neistart benotzt. Funktionéiert nëmmen wann Hardwarebeschleunigung un ass
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Uschalten fir de V-Sync unzeman. Des gëtt eréit no engem Neistart benotzt. Funktionéiert nëmmen wann Hardwarebeschleunigung un ass
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktuellen Driver: {STRING}
 
@@ -1560,6 +1560,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaléier d'Pro
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaléier d'industriell Wuereproduktioun: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaléier d'Produktioun vu Wuere vun Industrien em dëse Prozentsaz
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gefier automatesch erneiere wann et al gëtt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wann ugeschalt, gëtt e Gefier wat u säi Lafzäitenn kënnt automatesch ausgetosch
@@ -2604,14 +2606,14 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Konnt de
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}En Protokolfeeler ass entstanen an d'Connectioun ass getrennt ginn
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Däi Spillernumm gouf net definéiert. Den Numm kann uewen an der Multiplayerfënster agetippt ginn
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :De Servernumm gouf net definéiert. Den Numm kann iwwert der Multiplayerfënster agetippt ginn
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}D'Versioun vum Client stëmmt net mat däer vum Server iwwereneen
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falscht Passwuert
+STR_NETWORK_ERROR_WRONG_REVISION                                :D'Versioun vum Client stëmmt net mat däer vum Server iwwereneen
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Falscht Passwuert
 STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Du bass net op der Lëscht vun erlabte Clienten
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De Server ass voll
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du bass vun dësem Server gebannt
 STR_NETWORK_ERROR_KICKED                                        :Du goufs aus dem Spill gehäit
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Grond: {STRING}
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheaten ass op dësem Server net erlaabt
+STR_NETWORK_ERROR_CHEATER                                       :Cheaten ass op dësem Server net erlaabt
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du hues zevill Befeeler un de Server geschéckt
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du hues ze laang gebraucht fir e Passwuert anzeginn
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Däin Computer brauch ze laang fir bäizetrieden
@@ -2619,8 +2621,8 @@ STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Du hues 
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Du hues ze laang gebraucht fir dem Server bäizetrieden
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Däi Spillernumm ass ongülteg
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Méigleche Verbindungsverloscht
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Déi lescht {NUM} Sekonn{P "" e} si keng Date vum Server komm
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Méigleche Verbindungsverloscht
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :Déi lescht {NUM} Sekonn{P "" e} si keng Date vum Server komm
 
 ###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Feeler
@@ -2969,7 +2971,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Baut Str
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramschinne bauen. Ctrl+Klick wiësselt tëscht Tramschinne bauen/ofrappen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}D'Strooss mat der Bau-Automatik bauen. Ctrl+Klick wiësselt tëscht Stroossen bauen/ofrappen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Tramschinne mam "Autotram" Modus bauen. Ctrl+Klick wiesselt tëscht Tramschinne bauen/ofrappen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Baut Stroossendepot (fir Gefierer ze kafen an ze flécken). Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Baut Gefierschapp (fir Gefierer ze kafen an ze flécken). Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramschapp bauen (fir Gefierer ze kafen an d'Revisioun). Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Baut e Weepunkt op der Strooss. Ctrl+Klick fir Weepunkter ze verbannen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Baut e Weepunkt op Tramsschinnen. Ctrl+Klick fir Weepunkter ze verbannen. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
@@ -3241,7 +3243,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Zuchschapp
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strooss
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strooss mat Luuchten
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Strooss mat Beem
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Stroossendepot
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Gefierschapp
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Zuche/Stroosse-Barrière
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramsschinnen
 
@@ -3702,7 +3704,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit Informatioun fir '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' ass anescht wéi an der Kaflëscht no der Constructioun. Dëst kann en Autoerneirung/-ersetzen Feeler oprufen
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' huet eng Endlosschläif am Production callback verursaacht
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Callback {1:HEX} huet en onbekannt/ongültegt Resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' huet en ongültegen Wuerentyp am Production-callback bei {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :'{1:STRING}' huet en ongültegen Wuerentyp am Production-callback bei {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid Wuer>
@@ -4743,6 +4745,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Brauch eng Revi
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ëmmer
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Reschtlaafzäit (Joer)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximal Zouverlässegkeet
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Fiert hannerécks
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Wéi Gefierdaten verglach solle ginn
@@ -5061,7 +5064,7 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Kaartenerstellu
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... et ass keng Stad an dësem Szenario
 
 STR_ERROR_PNGMAP                                                :Kann d'Landschaft net aus dem PNG lueden...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Datei net fonnt
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :Datei net fonnt
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... konnt de Bildtyp net konvertéieren. Brauch en 8 oder 24-bit PNG Bild.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eppes ass schief gaangen (warscheinlech eng korrupt Datei)
 
@@ -5097,7 +5100,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land ass
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kann dat net maachen...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebai muss fir d'éischt ofgerapt ginn
 STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}... Gebai ass geschützt
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kann des Plaz net raumen...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Kann des Plaz net raumen...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... Plaz net gëeegent
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... scho gebaut
 STR_ERROR_OWNED_BY                                              :{WHITE}... am Besëtz vun {STRING}
@@ -5110,7 +5113,7 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :Net erlaabt an der Paus
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}D'Gemeng {TOWN} wëll dat net erlaben
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :D'Gemeng {TOWN} wëll dat net erlaben
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}D'Gemeng {TOWN} erlaabt keen weidere Fluchhafen an der Stad
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}D'Gemeng {TOWN} refuséiert de Bau vum Fluchhafen wéinst Kaméidi
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}D'Bestiechung as enger regionaler Ennersichung opgefall
@@ -5120,10 +5123,10 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kann d'L
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kann d'Land hei net erofsetzen...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Kann d'Land net ebenen...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Verdéiwung géif den Tunnel beschiedegen
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... schon op Mieresspigel
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :schon op Mieresspigel
 STR_ERROR_TOO_HIGH                                              :{WHITE}... ze héich
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... scho flaach
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Dono wier d'Bréck ze héich fir dësen Terrain.
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :dono wier d'Bréck ze héich fir den Terrain.
 STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :muss de Floss fir d'éischt ofrappen
 
 # Company related errors
@@ -5131,7 +5134,7 @@ STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Kann de Firmenn
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Kann den Numm vum Manager net änneren...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximale Kredit ass {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kann net méi Geld léinen...
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Kann net méi Geld léinen...
 STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... keen Kredit zeréckzebezuelen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... et ginn {CURRENCY_LONG} gebraucht
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann de Kredit net zeréckbezuelen...
@@ -5173,15 +5176,15 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Bës
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann nëmmen iwwert der Schnéilinn gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann nëmmen ënnert der Schnéilinn gebaut ginn
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Wéinst Pech huet d'Finanzéiren vun der Förderung net geklappt; probéier nach eng Kéier
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :Et gouf keng passend Plaz fonnt fir dës Industrie ze förderen
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Et gouf keng brauchbar Plaz fir '{STRING}' Industrien fonnt
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :Wéinst Pech huet d'Finanzéiren vun der Förderung net geklappt; probéier nach eng Kéier
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :Et gouf keng gëeegent Plaz fonnt fir dës Industrie ze förderen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Et gouf keng gëeegent Plaz fir '{STRING}' Industrien fonnt
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Änner d'Parameter fir d'Kaartegeneratioun fir eng besser Kaart ze erstellen
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kann d'Gare hei net bauen...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Kann d'Gare hei net bauen...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Kann de Busarrêt hei net bauen...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kann d'Camionsgare net bauen...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Kann d'Camionsgare net bauen...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Kann de Passagéier-Tramsarrêt net bauen...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Kann d'Wueren-Tramstatioun net bauen...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Kann de Quai hei net bauen...
@@ -5199,10 +5202,10 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :ze no un engem 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :ze no un engem aanere Fluchhafen
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kann d'Gare net ëmbenennen...
 STR_ERROR_CAN_T_MOVE_STATION_NAME                               :Ka Gareschëld net versetzen
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... d'Strooss ass am Besëtz vun der Stad
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Strooss geet an dei falsch Richtung
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Duerchfahrtstops kënnen keng Kéiren hunn
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... Duerchfahrtstops kënnen keng Kräizungen hunn
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :Strooss ass am Besëtz vun der Stad
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :Strooss geet an dei falsch Richtung
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :Duerchfahrtstops kënnen keng Kéiren hunn
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :Duerchfahrtstops kënnen keng Kräizungen hunn
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :Kann den Deel vun der Gare net ofrappen...
@@ -5217,7 +5220,7 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... et a
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Muss d'Gare fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :Muss de Busarrêt fir d'éischt ofgerapt ginn
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Muss d'Camionsgare fir d'éischt ofrappen
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Muss d'Tramstatioun fir d'éischt ofrappen
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :Muss d'Tramstatioun fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Muss d'Tramstatioun fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Muss de Quai fir déischt ofrappen
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :muss de Fluchhafe fir d'éischt ofrappen
@@ -5226,8 +5229,8 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :muss de Fluchha
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenzt un méi wéi een Weepunkt
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :ze no un engem aneren Weepunkt
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Kann keen Zuchweepunkt hei bauen...
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Kann kee Stroosseweepunkt he bauen...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Kann keen Zuchweepunkt hei bauen...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Kann kee Stroosseweepunkt he bauen...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kann Boje net hei plazéieren...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Kann de Weepunktnumm net änneren...
 STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Ka Weepunktschëld net versetzen
@@ -5236,16 +5239,16 @@ STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Kann de 
 STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Kann de Stroosseweepunkt hei net ofrappen...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Zuchweepunkt muss fir d'éischt ofgerappt ginn
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Muss fir d'éischt den Stroosseweepunkt ofrappen
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... Boje am Wee
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje ass am Gebrauch vun enger anerer Firma!
+STR_ERROR_BUOY_IN_THE_WAY                                       :Boje am Wee
+STR_ERROR_BUOY_IS_IN_USE                                        :Boje ass am Gebrauch vun enger anerer Firma!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kann den Zuchschapp hei net bauen...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kann de Schapp hei net bauen...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kann den Tramschapp hei net bauen...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kann d'Werft hei net bauen...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Kann den Zuchschapp hei net bauen...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Kann de Gefierschapp hei net bauen...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :Kann den Tramschapp hei net bauen...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Kann d'Werft hei net bauen...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kann de Schapp net ëmbenennen
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :Kann de Schapp net ëmbenennen
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... muss an engem Schapp gestoppt ginn
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss an engem Depot gestoppt ginn
@@ -5283,34 +5286,34 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Neit Gef
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Onméiglech Streckenkombinatioun
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signaler mussen fir d'éischt ewechgeholl ginn
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Keng gëeegent Schinnen
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :Keng gëeegent Schinnen
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}D'Schinne musse fir d'éischt ewech
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}D'Strooss ass eng Einbahn oder blockéiert
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Barrière si fir dëse Schinnentyp net erlaabt
-STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Barrière si fir dëse Stroossentyp net erlaabt
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kann d'Signaler hei net bauen...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kann d'Schinnen hei net bauen...
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :D'Strooss ass eng Einbahn oder blockéiert
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :Barrière si fir dëse Schinnentyp net erlaabt
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :Barrière si fir dëse Stroossentyp net erlaabt
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Kann d'Signaler hei net bauen...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Kann d'Schinnen hei net bauen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kann d'Schinnen hei net ewech huelen...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kann d'Signaler hei net ewech huelen...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kann d'Signal hei net konvertéieren...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... et si keng Schinnen do
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :et si keng Schinnen do
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... et si keng Signaler do
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kann de Schinnentyp hei net konvertéiren...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :Kann de Schinnentyp hei net konvertéiren...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Muss d'Strooss fir d'éischt ofrappen
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... Einbahnstroossen kënnen keng Kräizung hunn
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kann d'Strooss hei net bauen...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kann hei keng Tramsschinnen bauen...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Kann d'Strooss hei net bauen...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Kann hei keng Tramsschinnen bauen...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Kann d'Strooss hei net ofrappen...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kann hei d'Tramsschinnen net ewech huelen...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... et ass keng Strooss do
+STR_ERROR_THERE_IS_NO_ROAD                                      :et ass keng Strooss do
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... et si keng Tramsschinnen do
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kann den Gefiertyp hei net konvertéiren...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kann den Tramsschinnentyp hei net konvertéiren...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Keng geeegent Strooss
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Keng passend Tramsschinnen
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :Kann den Gefiertyp hei net konvertéiren...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Kann den Tramsschinnentyp hei net konvertéiren...
+STR_ERROR_NO_SUITABLE_ROAD                                      :Keng gëeegent Strooss
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :Keng gëeegent Tramsschinnen
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :Kann hei kee Kanal bauen...
@@ -5334,23 +5337,23 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Kann d'Bréck h
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :muss d'Bréck fir d'éischt ofrappen
 STR_ERROR_CAN_T_START_AND_END_ON                                :kann net op der selwechter Plaz ufänken an ophalen
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bréckenenner net op der selwechter Héicht
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bréck ass ze déif fir dësen Terrain
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :Bréck ass ze déif fir den Terrain
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Bréck ass ze héich fir dësen Terrain.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an Enn mussen op enger Linn sinn
+STR_ERROR_START_AND_END_MUST_BE_IN                              :Start an Enn mussen op enger Linn sinn
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... dei zwee Enner vun der Bréck mussen u Land sinn
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... Bréck ze laang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bréck géif ausserhalb der Kaart ukommen
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Bréck ass {HEIGHT} ze niddreg fir d'Gare
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Bréck ass {HEIGHT} ze niddreg fir e Stroossestop
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Bréck ass {HEIGHT} ze niddreg fir de Quai
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Bréck as {HEIGHT} ze niddreg fir d'Boje
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Bréck ass {HEIGHT} ze niddreg fir den Zuchweepunkt
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Bréck ass {HEIGHT} ze niddreg fir de Stroosseweepunkt
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Bréck ass {HEIGHT} ze niddreg fir d'Schleis
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :Bréck ass {HEIGHT} ze niddreg fir d'Gare
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :Bréck ass {HEIGHT} ze niddreg fir e Stroossestop
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :Bréck ass {HEIGHT} ze niddreg fir de Quai
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :Bréck as {HEIGHT} ze niddreg fir d'Boje
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :Bréck ass {HEIGHT} ze niddreg fir den Zuchweepunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :Bréck ass {HEIGHT} ze niddreg fir de Stroosseweepunkt
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :Bréck ass {HEIGHT} ze niddreg fir d'Schleis
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kann den Tunnel hei net bauen...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Plaz onpassend fir den Tunnelsagang
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Kann den Tunnel hei net bauen...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :Plaz net gëeegent fir den Tunnelsagang
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Muss den Tunnel fir d'éischt ofrappen
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :Aaneren Tunnel am Wee
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :Tunnel géif ausserhalb der Kaart erauskommen
@@ -5391,22 +5394,22 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Schëff 
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Fliger net verfügbar
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kann den Zuch net ëmbauen...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kann Stroossegefier net ëmbauen...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kann d'Schëff net ëmbauen...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kann de Fliger net ëmbauen...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :Kann den Zuch net ëmbauen...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Kann Stroossegefier net ëmbauen...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :Kann d'Schëff net ëmbauen...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Kann de Fliger net ëmbauen...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kann den Zuch net benennen...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kann d'Stroossegefier net benennen...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Kann d'Stroossegefier net benennen...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kann d'Schëff net benennen...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kann de Fliger net benennen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Kann de Fliger net benennen...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kann den Zuch net stoppen/starten...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kann d'Stroossegefier net stoppen/starten...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kann d'Schëff net stoppen/starten...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kann de Fliger net stoppen/starten...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Kann den Zuch net stoppen/starten...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Kann d'Stroossegefier net stoppen/starten...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Kann d'Schëff net stoppen/starten...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Kann de Fliger net stoppen/starten...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kann den Zuch net an de Schapp schécken...
@@ -5422,9 +5425,9 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Kann de Fliger 
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kann den Zuchgefiertyp net ëmbenennen...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kann de Gefiertyp net ëmbenennen...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Kann de Gefiertyp net ëmbenennen...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kann de Schëffstyp net ëmbenennen...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kann de Fligertyp net ëmbenennen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Kann de Fligertyp net ëmbenennen...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kann den Zuch net verkafen...
@@ -5439,9 +5442,9 @@ STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kann net
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kann all Fligeren net verkafen...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Kann Zich net automatesch ersetzen...
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Kann Zich net automatesch ersetzen...
 STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Ka Gefierer net automatesch ersetzen...
-STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Ka Schëffer net automatesch ersetzen...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Ka Schëffer net automatesch ersetzen...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Ka Fliger net automatesch ersetzen...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :ze vill Gefierer am Spill
@@ -5483,10 +5486,10 @@ STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... Gefi
 STR_ERROR_CAN_T_ADD_ORDER                                       :Gefier kann net op déi Statioun fueren
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :e Gefier dat dësen Optrag deelt kann net op déi Statioun goen
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :net all Gefierer hunn déi selwescht Opträg
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... net all Gefierer deelen Opträg
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :Net all Gefierer deelen Opträg
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kann d'Optragslëscht net deelen...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kann d'Deelen vun der Optragslëscht net stoppen...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Kann d'Optragslëscht net deelen...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Kann d'Deelen vun der Optragslëscht net stoppen...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Kann d'Optragslëscht net kopéieren...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... ze wäit ewech vu leschter Destinatioun
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Fliger huet net genuch Distanz
@@ -5497,9 +5500,9 @@ STR_ERROR_NO_BUS_STATION                                        :Et gëtt kee Bu
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Et gëtt keng Camionsgare
 STR_ERROR_NO_DOCK                                               :Et gëtt kee Quai
 STR_ERROR_NO_AIRPORT                                            :Et gëtt keen Fluchhafen/Helikopterlandeplaz
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Et gëtt keen Arret mat engem kompatible Stroossentyp
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Et gëtt keen Arret mat engem kompatible Tramtyp
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Et gëtt keen Arrêt fir Gelenkgefierer.{}Gelenkgefierer brauchen en Stop un der Stross a keen Terminus.
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Et gëtt keen Arret mat engem kompatible Stroossentyp
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Et gëtt keen Arret mat engem kompatiblen Tramtyp
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Et gëtt keen Arrêt fir Gelenkgefierer.{}Gelenkgefierer brauchen en Stop un der Stross a keen Terminus.
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dëse Fliger kann op dësem Fluchhafen net landen
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Dësen Helikopter kann op dësem Fluchhafen net landen
 STR_ERROR_NO_RAIL_WAYPOINT                                      :Et gëtt keen Zuchweepunkt
@@ -5945,7 +5948,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Weepunkt {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Zuchschapp vun {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Zuchschapp #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Stroossegefierdepot vun {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Stroossendepot #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Gefierschapp #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Schëffsschapp vun {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Schëffsschapp #{COMMA}
 ###next-name-looks-similar

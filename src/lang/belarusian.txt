@@ -1822,6 +1822,8 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Множнік 
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Памножыць прадуктыўнасьць прадпрыемстваў на паказанае значэнне.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Аўтазамена старых транспартных сродкаў: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Калі ўключана, транспарт напрыканцы свайго пэўнага тэрміна службы будзе аўтаматычна заменены, калі ўмовы замены будуць выкананыя.
 

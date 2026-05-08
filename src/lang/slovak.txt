@@ -1580,6 +1580,8 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Škála produkc
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Škála produkcie tovaru priemyslom o toľkoto percent
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatická obnova dopravných prostriedkov, keď sú staré: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ak je zapnuté, vozidlá blížiace sa ku koncu svojej životnosti budú automaticky vymenené ak sú splnené podmienky na výmenu.
 

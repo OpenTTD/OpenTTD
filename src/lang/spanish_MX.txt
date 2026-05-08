@@ -1553,6 +1553,8 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Adaptar producc
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Modifica la escala de producción de carga de las industrias a este porcentaje.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automáticamente vehículos viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Los vehículos próximos al final de su vida útil serán renovados automáticamente, siempre y cuando se cumplan las condiciones de renovación
 

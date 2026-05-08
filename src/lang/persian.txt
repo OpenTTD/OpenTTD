@@ -1342,6 +1342,8 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :ساعت دیو
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :مقیاس تولید بار شهر: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :تولید بار شهرها را با این درصد مقیاس کنید.
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :نوکردن خودکار وسایل نقلیه کهنه شده: {STRING}
 
 ###length 2

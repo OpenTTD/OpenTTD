@@ -866,6 +866,8 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 ###setting-zero-is-special
 
 
+###setting-zero-is-special
+
 
 ###length 2
 

@@ -1565,6 +1565,8 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaler en indus
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaler vareproduksjonen til industrier med denne prosenten
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Forny transportmiddel automatisk når det blir gammelt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktivert, blir et transportmiddel som nærmer seg slutten av sin levetid automatisk erstattet når betingelsene for fornyelse er oppfylt
 

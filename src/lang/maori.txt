@@ -1563,6 +1563,8 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Whakareatia te 
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Whakareatia te whakaputa utanga a ngā ahumahi ki tēnei ōrau
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Whakahou waka aunoa ina tawhito: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ina kā, ka whakakapi aunoatia ngā waka e tata ana ki te mutunga o te ora ina taea ngā herenga whakahou
 

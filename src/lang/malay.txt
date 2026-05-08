@@ -1249,6 +1249,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kenderaan tidak
 ###setting-zero-is-special
 
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gunakan pembaharuan automatik apabila kenderaan usang : {STRING}
 
 ###length 2

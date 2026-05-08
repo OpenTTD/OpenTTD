@@ -1558,6 +1558,8 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Échelle de pro
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Modifier la production de marchandise des industries de ce pourcentage
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+###setting-zero-is-special
+
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renouveler automatiquement les véhicules vieillissants{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Si activé, un véhicule approchant de la fin de sa durée de vie sera automatiquement remplacé quand les conditions du renouvellement seront remplies
 
