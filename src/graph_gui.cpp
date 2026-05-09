@@ -2022,6 +2022,98 @@ void ShowTownCargoGraph(WindowNumber window_number)
 	AllocateWindowDescFront<TownCargoGraphWindow>(_town_cargo_graph_desc, window_number);
 }
 
+/*********************/
+/* TOWN VICE HISTORY */
+/*********************/
+
+struct TownViceGraphWindow : BaseGraphWindow {
+	TownViceGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_COMMA)
+	{
+		this->num_on_x_axis = GRAPH_NUM_MONTHS;
+		this->num_vert_lines = GRAPH_NUM_MONTHS;
+		this->month_increment = 1;
+		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
+
+		this->UpdateStatistics(true);
+
+		this->CreateNestedTree();
+		this->FinishInitNested(window_number);
+	}
+
+	void UpdateStatistics(bool initialize) override
+	{
+		int mo = (TimerGameEconomy::month / this->month_increment - this->num_vert_lines) * this->month_increment;
+		auto yr = TimerGameEconomy::year;
+		while (mo < 0) {
+			yr--;
+			mo += 12;
+		}
+
+		if (!initialize && this->year == yr && this->month == mo) {
+			/* There's no reason to get new stats */
+			return;
+		}
+
+		this->year = yr;
+		this->month = mo;
+
+		const Town *t = Town::Get(this->window_number);
+
+		this->data.clear();
+		DataSet &ds = this->data.emplace_back();
+		ds.colour = GetColourGradient(COLOUR_RED, SHADE_NORMAL);
+		ds.exclude_bit = 0;
+		ds.range_bit = 0;
+
+		for (uint i = 0; i < GRAPH_NUM_MONTHS; ++i) {
+			uint8_t result = 0;
+			if (GetHistory(t->vice_history, t->vice_history_valid, HISTORY_MONTH, GRAPH_NUM_MONTHS - i - 1, result)) {
+				ds.values[i] = result;
+			} else {
+				ds.values[i] = INVALID_DATAPOINT;
+			}
+		}
+
+		this->SetDirty();
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		if (widget == WID_GRAPH_CAPTION) return GetString(STR_GRAPH_TOWN_VICE_CAPTION, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
+	}
+};
+
+static constexpr std::initializer_list<NWidgetPart> _nested_town_vice_graph_widgets = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_GRAPH_CAPTION),
+		NWidget(WWT_SHADEBOX, COLOUR_RED),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_RED),
+		NWidget(WWT_STICKYBOX, COLOUR_RED),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_RED, WID_GRAPH_BACKGROUND),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GRAPH_GRAPH), SetMinimalSize(576, 160), SetFill(1, 1), SetResize(1, 1),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_TEXT, INVALID_COLOUR, WID_GRAPH_FOOTER), SetFill(1, 0), SetResize(1, 0), SetPadding(2, 0, 2, 0), SetTextStyle(TC_BLACK, FS_SMALL), SetAlignment(SA_CENTER),
+			NWidget(WWT_RESIZEBOX, COLOUR_RED, WID_GRAPH_RESIZE), SetResizeWidgetTypeTip(RWV_HIDE_BEVEL, STR_TOOLTIP_RESIZE),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _town_vice_graph_desc(
+	WDP_AUTO, "graph_town_vice", 0, 0,
+	WC_TOWN_VICE_GRAPH, WC_TOWN_VIEW,
+	{},
+	_nested_town_vice_graph_widgets
+);
+
+void ShowTownViceGraph(WindowNumber window_number)
+{
+	AllocateWindowDescFront<TownViceGraphWindow>(_town_vice_graph_desc, window_number);
+}
+
 /**
  * Make a vertical list of panels for outputting score details.
  * @return Panel with performance details.

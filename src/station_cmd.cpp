@@ -4095,7 +4095,16 @@ static void UpdateStationRating(Station *st)
 			int or_ = ge->rating; // old rating
 
 			/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-			ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
+			int rating_step = Clamp(rating - or_, -2, 2);
+
+			/* Crime wave: halve positive rating recovery (stations recover 50% slower). */
+			if (rating_step > 0 && st->town != nullptr &&
+			    st->town->crime_wave_months > 0 &&
+			    _settings_game.economy.city_vice) {
+				rating_step /= 2;
+			}
+
+			ge->rating = rating = ClampTo<uint8_t>(or_ + rating_step);
 
 			/* if rating is <= 64 and more than 100 items waiting on average per destination,
 			 * remove some random amount of goods from the station */

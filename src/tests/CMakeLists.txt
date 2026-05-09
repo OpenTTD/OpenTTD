@@ -20,4 +20,5 @@ add_test_files(
     test_window_desc.cpp
     tilearea.cpp
     utf8.cpp
+    vice_func.cpp
 )

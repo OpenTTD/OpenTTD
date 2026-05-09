@@ -592,6 +592,12 @@ enum WindowClass : uint16_t {
 	WC_TOWN_CARGO_GRAPH,
 
 	/**
+	 * Town vice history graph; %Window numbers:
+	 *   - #TownID = #GraphWidgets
+	 */
+	WC_TOWN_VICE_GRAPH,
+
+	/**
 	 * Company infrastructure overview; %Window numbers:
 	 *   - #CompanyID = #CompanyInfrastructureWidgets
 	 */

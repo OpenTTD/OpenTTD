@@ -75,6 +75,24 @@ public:
 		 * Bribe the town in order to get a higher rating.
 		 */
 		TOWN_ACTION_BRIBE            = to_underlying(::TownAction::Bribe),
+
+		/**
+		 * Fund a small crime-reduction campaign.
+		 * Reduces town vice level and improves your company rating.
+		 */
+		TOWN_ACTION_CRIME_PATROL     = to_underlying(::TownAction::CrimePatrol),
+
+		/**
+		 * Fund a medium crime-reduction campaign.
+		 * Reduces town vice level and improves your company rating.
+		 */
+		TOWN_ACTION_CRIME_SECURITY   = to_underlying(::TownAction::CrimeSecurity),
+
+		/**
+		 * Fund a large crime-reduction campaign.
+		 * Reduces town vice level and improves your company rating.
+		 */
+		TOWN_ACTION_CRIME_PEACEKEEPING = to_underlying(::TownAction::CrimePeacekeeping),
 	};
 
 	/**

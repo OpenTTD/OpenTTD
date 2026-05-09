@@ -167,6 +167,7 @@ struct DifficultySettings {
 	bool   line_reverse_mode;                ///< reversing at stations or not
 	bool   disasters;                        ///< are disasters enabled
 	uint8_t town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
+	uint8_t  city_vice_severity;         ///< 0=Mild, 1=Normal, 2=Harsh
 	bool   infinite_money;                   ///< whether spending money despite negative balance is allowed
 };
 
@@ -350,6 +351,7 @@ struct NewsSettings {
 	uint8_t acceptance;                                     ///< NewsDisplay on changes affecting the acceptance of cargo at stations
 	uint8_t subsidies;                                      ///< NewsDisplay of changes on subsidies
 	uint8_t general;                                        ///< NewsDisplay of other topics
+	uint8_t crime;                                          ///< NewsDisplay of crime and unrest events in towns
 };
 
 /** All settings related to the network. */
@@ -594,6 +596,9 @@ struct EconomySettings {
 	uint16_t town_cargo_scale;               ///< scale cargo production of towns by this percentage.
 	uint16_t industry_cargo_scale;           ///< scale cargo production of industries by this percentage.
 	uint16_t town_min_distance; ///< minimum distance between towns.
+	bool     city_vice;                  ///< enable city vice (urban crime) events
+	uint8_t  city_vice_intensity;        ///< multiplier for vice event probability (0-20, default 10)
+	uint16_t city_vice_min_population;   ///< minimum town population for vice events (default 1000)
 };
 
 struct LinkGraphSettings {

@@ -1432,4 +1432,148 @@ private:
 	std::string new_name; ///< The new name of the president.
 };
 
+/**
+ * Event Station Vandalized, indicating a station was damaged by vandals.
+ * @api ai game
+ */
+class ScriptEventStationVandalized : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	ScriptEventStationVandalized(StationID station, TownID town, int32_t rating_loss) :
+		ScriptEvent(ET_VICE_STATION_VANDALIZED),
+		station(station), town(town), rating_loss(rating_loss)
+	{}
+#endif /* DOXYGEN_API */
+
+	static ScriptEventStationVandalized *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventStationVandalized *>(instance); }
+
+	StationID GetStationID() const { return this->station; }
+	TownID GetTownID() const { return this->town; }
+	int32_t GetRatingLoss() const { return this->rating_loss; }
+
+private:
+	StationID station;
+	TownID town;
+	int32_t rating_loss;
+};
+
+/**
+ * Event Vehicle Sabotaged, indicating a vehicle was sabotaged in a town.
+ * @api ai game
+ */
+class ScriptEventVehicleSabotaged : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	ScriptEventVehicleSabotaged(VehicleID vehicle, TownID town) :
+		ScriptEvent(ET_VICE_VEHICLE_SABOTAGED),
+		vehicle(vehicle), town(town)
+	{}
+#endif /* DOXYGEN_API */
+
+	static ScriptEventVehicleSabotaged *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleSabotaged *>(instance); }
+
+	VehicleID GetVehicleID() const { return this->vehicle; }
+	TownID GetTownID() const { return this->town; }
+
+private:
+	VehicleID vehicle;
+	TownID town;
+};
+
+/**
+ * Event Building Destroyed, indicating buildings were destroyed by arson.
+ * @api ai game
+ */
+class ScriptEventBuildingDestroyed : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	ScriptEventBuildingDestroyed(TownID town, TileIndex tile, uint32_t num_buildings) :
+		ScriptEvent(ET_VICE_BUILDING_DESTROYED),
+		town(town), tile(tile), num_buildings(num_buildings)
+	{}
+#endif /* DOXYGEN_API */
+
+	static ScriptEventBuildingDestroyed *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventBuildingDestroyed *>(instance); }
+
+	TownID GetTownID() const { return this->town; }
+	TileIndex GetTile() const { return this->tile; }
+	uint32_t GetNumBuildings() const { return this->num_buildings; }
+
+private:
+	TownID town;
+	TileIndex tile;
+	uint32_t num_buildings;
+};
+
+/**
+ * Event Riot, indicating a riot occurred in a town.
+ * @api ai game
+ */
+class ScriptEventRiot : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	ScriptEventRiot(TownID town, uint32_t num_buildings, uint32_t stations_affected) :
+		ScriptEvent(ET_VICE_RIOT),
+		town(town), num_buildings(num_buildings), stations_affected(stations_affected)
+	{}
+#endif /* DOXYGEN_API */
+
+	static ScriptEventRiot *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventRiot *>(instance); }
+
+	TownID GetTownID() const { return this->town; }
+	uint32_t GetNumBuildings() const { return this->num_buildings; }
+	uint32_t GetStationsAffected() const { return this->stations_affected; }
+
+private:
+	TownID town;
+	uint32_t num_buildings;
+	uint32_t stations_affected;
+};
+
+/**
+ * Event Crime Wave, indicating a crime wave started in a town.
+ * @api ai game
+ */
+class ScriptEventCrimeWave : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	ScriptEventCrimeWave(TownID town, uint32_t duration_months) :
+		ScriptEvent(ET_VICE_CRIME_WAVE),
+		town(town), duration_months(duration_months)
+	{}
+#endif /* DOXYGEN_API */
+
+	static ScriptEventCrimeWave *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventCrimeWave *>(instance); }
+
+	TownID GetTownID() const { return this->town; }
+	uint32_t GetDurationMonths() const { return this->duration_months; }
+
+private:
+	TownID town;
+	uint32_t duration_months;
+};
+
+/**
+ * Event Vice Level Changed, indicating a town's vice level crossed a threshold.
+ * @api ai game
+ */
+class ScriptEventViceLevelChanged : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	ScriptEventViceLevelChanged(TownID town, uint32_t new_level) :
+		ScriptEvent(ET_VICE_LEVEL_CHANGED),
+		town(town), new_level(new_level)
+	{}
+#endif /* DOXYGEN_API */
+
+	static ScriptEventViceLevelChanged *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventViceLevelChanged *>(instance); }
+
+	TownID GetTownID() const { return this->town; }
+	uint32_t GetNewLevel() const { return this->new_level; }
+
+private:
+	TownID town;
+	uint32_t new_level;
+};
+
 #endif /* SCRIPT_EVENT_TYPES_HPP */

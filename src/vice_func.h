@@ -5,22 +5,16 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file graph_gui.h Graph GUI functions. */
+/** @file vice_func.h Functions related to the City Vice system. */
 
-#ifndef GRAPH_GUI_H
-#define GRAPH_GUI_H
+#ifndef VICE_FUNC_H
+#define VICE_FUNC_H
 
-#include "window_type.h"
+#include "town_type.h"
 
-void ShowOperatingProfitGraph();
-void ShowIncomeGraph();
-void ShowDeliveredCargoGraph();
-void ShowPerformanceHistoryGraph();
-void ShowCompanyValueGraph();
-void ShowCargoPaymentRates();
-void ShowPerformanceRatingDetail();
-void ShowIndustryProductionGraph(WindowNumber window_number);
-void ShowTownCargoGraph(WindowNumber window_number);
-void ShowTownViceGraph(WindowNumber window_number);
+struct Town;
 
-#endif /* GRAPH_GUI_H */
+void UpdateTownViceLevel(Town *t);
+void CheckTownViceEvent(Town *t);
+
+#endif /* VICE_FUNC_H */

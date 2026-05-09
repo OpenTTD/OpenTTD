@@ -563,6 +563,9 @@ add_files(
     vehicle_type.h
     vehiclelist.cpp
     vehiclelist.h
+    vice_func.cpp
+    vice_func.h
+    vice_type.h
     vehiclelist_cmd.h
     vehiclelist_func.h
     viewport.cpp

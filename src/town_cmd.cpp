@@ -41,6 +41,8 @@
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
 #include "town.h"
+#include "vice_type.h"
+#include "vice_func.h"
 #include "town_kdtree.h"
 #include "townname_func.h"
 #include "core/random_func.hpp"
@@ -3434,7 +3436,7 @@ uint8_t GetTownActionCost(TownAction action)
 	 * @see TownActions
 	 */
 	static const uint8_t town_action_costs[] = {
-		2, 4, 9, 35, 48, 53, 117, 175
+		2, 4, 9, 35, 48, 53, 117, 175, 15, 30, 60, 12, 25, 50
 	};
 	static_assert(std::size(town_action_costs) == to_underlying(TownAction::End));
 
@@ -3689,6 +3691,80 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlags flags)
 	return CommandCost();
 }
 
+/**
+ * Helper: apply a policing tier to a town Benefits all companies equally.
+ * @param t The town.
+ * @param flags Command flags.
+ * @param tier Index into _policing_tier_data.
+ */
+static CommandCost DoCrimeReductionCampaign(Town *t, DoCommandFlags flags, uint8_t tier)
+{
+	const PolicingTierData &data = _policing_tier_data[tier];
+	if (flags.Test(DoCommandFlag::Execute)) {
+		/* New tier replaces current -- tiers do not stack. */
+		t->policing_months = data.months;
+		t->policing_reduction = data.reduction;
+		SetWindowDirty(WC_TOWN_VIEW, t->index);
+		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+	}
+	return CommandCost();
+}
+
+/** Perform the "small crime-reduction campaign" town action. */
+static CommandCost TownActionCrimePatrol(Town *t, DoCommandFlags flags)
+{
+	return DoCrimeReductionCampaign(t, flags, 0);
+}
+
+/** Perform the "medium crime-reduction campaign" town action. */
+static CommandCost TownActionCrimeSecurity(Town *t, DoCommandFlags flags)
+{
+	return DoCrimeReductionCampaign(t, flags, 1);
+}
+
+/** Perform the "large crime-reduction campaign" town action. */
+static CommandCost TownActionCrimePeacekeeping(Town *t, DoCommandFlags flags)
+{
+	return DoCrimeReductionCampaign(t, flags, 2);
+}
+
+/**
+ * Helper: apply a crime-incitement tier to a town. Affects all companies equally.
+ * @param t The town.
+ * @param flags Command flags.
+ * @param tier Index into _inciting_tier_data.
+ */
+static CommandCost DoCrimeIncitement(Town *t, DoCommandFlags flags, uint8_t tier)
+{
+	const PolicingTierData &data = _inciting_tier_data[tier];
+	if (flags.Test(DoCommandFlag::Execute)) {
+		/* New tier replaces current -- tiers do not stack. */
+		t->inciting_months = data.months;
+		t->inciting_increase = data.reduction;
+		SetWindowDirty(WC_TOWN_VIEW, t->index);
+		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+	}
+	return CommandCost();
+}
+
+/** Perform the "small crime-incitement campaign" town action. */
+static CommandCost TownActionCrimeInciteLow(Town *t, DoCommandFlags flags)
+{
+	return DoCrimeIncitement(t, flags, 0);
+}
+
+/** Perform the "medium crime-incitement campaign" town action. */
+static CommandCost TownActionCrimeInciteMedium(Town *t, DoCommandFlags flags)
+{
+	return DoCrimeIncitement(t, flags, 1);
+}
+
+/** Perform the "large crime-incitement campaign" town action. */
+static CommandCost TownActionCrimeInciteHigh(Town *t, DoCommandFlags flags)
+{
+	return DoCrimeIncitement(t, flags, 2);
+}
+
 typedef CommandCost TownActionProc(Town *t, DoCommandFlags flags);
 static TownActionProc * const _town_action_proc[] = {
 	TownActionAdvertiseSmall,
@@ -3698,7 +3774,13 @@ static TownActionProc * const _town_action_proc[] = {
 	TownActionBuildStatue,
 	TownActionFundBuildings,
 	TownActionBuyRights,
-	TownActionBribe
+	TownActionBribe,
+	TownActionCrimePatrol,
+	TownActionCrimeSecurity,
+	TownActionCrimePeacekeeping,
+	TownActionCrimeInciteLow,
+	TownActionCrimeInciteMedium,
+	TownActionCrimeInciteHigh
 };
 static_assert(std::size(_town_action_proc) == to_underlying(TownAction::End));
 
@@ -3745,6 +3827,12 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 
 			/* Is the company not able to build a statue ? */
 			if (cur == TownAction::BuildStatue && t->statues.Test(cid)) continue;
+
+			/* Crime-reduction and crime-incitement campaigns: skip if city vice is disabled. */
+			if (cur == TownAction::CrimePatrol || cur == TownAction::CrimeSecurity || cur == TownAction::CrimePeacekeeping ||
+					cur == TownAction::CrimeInciteLow || cur == TownAction::CrimeInciteMedium || cur == TownAction::CrimeInciteHigh) {
+				if (!_settings_game.economy.city_vice) continue;
+			}
 
 			if (avail >= GetTownActionCost(cur) * _price[Price::TownAction] >> 8) {
 				buttons.Set(cur);
@@ -3892,7 +3980,21 @@ static uint GetNormalGrowthRate(Town *t)
 	m >>= growth_multiplier;
 	if (t->larger_town) m /= 2;
 
-	return TownTicksToGameTicks(m / (t->cache.num_houses / 50 + 1));
+	uint rate = TownTicksToGameTicks(m / (t->cache.num_houses / 50 + 1));
+
+	/* Apply vice growth penalty. */
+	if (_settings_game.economy.city_vice) {
+		if (t->crime_wave_months > 0) {
+			rate *= 2; // Crime wave: halve growth speed
+		}
+		if (t->vice_level > 75) {
+			rate = rate * 3 / 2; // Vice > 75: 50% slower
+		} else if (t->vice_level > 50) {
+			rate = rate * 5 / 4; // Vice > 50: 25% slower
+		}
+	}
+
+	return rate;
 }
 
 /**
@@ -4152,6 +4254,13 @@ Town::SuppliedHistory SumHistory(std::span<const Town::SuppliedHistory> history)
 	return {.production = ClampTo<uint32_t>(production / count), .transported = ClampTo<uint32_t>(transported / count)};
 }
 
+template <>
+uint8_t SumHistory(std::span<const uint8_t> history)
+{
+	uint64_t sum = std::accumulate(std::begin(history), std::end(history), 0);
+	return ClampTo<uint8_t>(sum / std::size(history));
+}
+
 static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy::Trigger::Month, TimerGameEconomy::Priority::Town}, [](auto)
 {
 	for (Town *t : Town::Iterate()) {
@@ -4176,6 +4285,26 @@ static const IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEc
 
 		UpdateTownGrowth(t);
 		UpdateTownRating(t);
+
+		/* City Vice: decrement counters and recalculate vice level. */
+		if (_settings_game.economy.city_vice) {
+			if (t->vice_cooldown > 0) t->vice_cooldown--;
+			if (t->crime_wave_months > 0) t->crime_wave_months--;
+			if (t->policing_months > 0) {
+				if (--t->policing_months == 0) t->policing_reduction = 0;
+			}
+			if (t->inciting_months > 0) {
+				if (--t->inciting_months == 0) t->inciting_increase = 0;
+			}
+
+			UpdateTownViceLevel(t);
+			CheckTownViceEvent(t);
+
+			/* Rotate vice history. */
+			UpdateValidHistory(t->vice_history_valid, HISTORY_MONTH, TimerGameEconomy::month);
+			RotateHistory(t->vice_history, t->vice_history_valid, HISTORY_MONTH, TimerGameEconomy::month);
+			t->vice_history[THIS_MONTH] = t->vice_level;
+		}
 
 		SetWindowDirty(WC_TOWN_VIEW, t->index);
 	}

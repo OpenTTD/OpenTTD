@@ -43,6 +43,7 @@ enum class NewsType : uint8_t {
 	Acceptance, ///< A type of cargo is (no longer) accepted
 	Subsidies, ///< News about subsidies (announcements, expirations, acceptance)
 	General, ///< General news (from towns)
+	Crime, ///< Crime and unrest events in towns
 
 	End, ///< end-of-array marker
 };

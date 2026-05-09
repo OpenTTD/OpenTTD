@@ -314,7 +314,20 @@ static const SaveLoad _town_desc[] = {
 
 	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  SLV_56, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, layout,                SLE_UINT8,                SLV_113, SL_MAX_VERSION),
+
+	SLE_CONDVAR(Town, vice_level,          SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, vice_level_prev,     SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, vice_cooldown,       SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, crime_wave_months,   SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, policing_months,     SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, policing_reduction,  SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, inciting_months,     SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, inciting_increase,   SLE_UINT8, SLV_CITY_VICE, SL_MAX_VERSION),
+
 	SLE_CONDVAR(Town, valid_history, SLE_UINT64, SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
+
+	SLE_CONDARR(Town, vice_history, SLE_UINT8, HISTORY_RECORDS, SLV_CITY_VICE, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, vice_history_valid, SLE_UINT64, SLV_CITY_VICE, SL_MAX_VERSION),
 
 	SLE_CONDREFVECTOR(Town, psa_list,        REF_STORAGE,              SLV_161, SL_MAX_VERSION),
 

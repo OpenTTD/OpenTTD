@@ -669,6 +669,7 @@ SettingsContainer &GetSettingsTree()
 		{
 			advisors->Add(new SettingEntry("gui.coloured_news_year"));
 			advisors->Add(new SettingEntry("news_display.general"));
+			advisors->Add(new SettingEntry("news_display.crime"));
 			advisors->Add(new SettingEntry("news_display.new_vehicles"));
 			advisors->Add(new SettingEntry("news_display.accident"));
 			advisors->Add(new SettingEntry("news_display.accident_other"));
@@ -818,6 +819,10 @@ SettingsContainer &GetSettingsTree()
 				authorities->Add(new SettingEntry("economy.fund_roads"));
 				authorities->Add(new SettingEntry("economy.fund_buildings"));
 				authorities->Add(new SettingEntry("economy.station_noise_level"));
+				authorities->Add(new SettingEntry("economy.city_vice"));
+				authorities->Add(new SettingEntry("economy.city_vice_intensity"));
+				authorities->Add(new SettingEntry("economy.city_vice_min_population"));
+				authorities->Add(new SettingEntry("difficulty.city_vice_severity"));
 			}
 
 			SettingsPage *towns = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_TOWNS));

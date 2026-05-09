@@ -651,6 +651,7 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Delivered
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Waiting
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Cargo History
+STR_GRAPH_TOWN_VICE_CAPTION                                     :{WHITE}{TOWN} - Crime History
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Supply
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transported
 
@@ -963,6 +964,18 @@ STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transport monopoly!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}Local authority of {TOWN} signs contract with {RAW_STRING} for 12 months of exclusive transport rights!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}Local authority of {TOWN} signs contract with {RAW_STRING} for 12 minutes of exclusive transport rights!
+
+STR_NEWS_VICE_PETTY_VANDALISM                                  :{BIG_FONT}{BLACK}Vandals damage {STATION} in {TOWN}
+STR_NEWS_VICE_VEHICLE_SABOTAGE                                 :{BIG_FONT}{BLACK}Vehicle sabotaged near {TOWN}
+STR_NEWS_VICE_ARSON                                            :{BIG_FONT}{BLACK}Arson destroys building in {TOWN}
+STR_NEWS_VICE_RIOT                                             :{BIG_FONT}{BLACK}Riots break out in {TOWN}! {COMMA} buildings destroyed
+STR_NEWS_VICE_CRIME_WAVE                                       :{BIG_FONT}{BLACK}Crime wave grips {TOWN}! Authorities warn of ongoing disruption
+STR_NEWS_VICE_RISING_CONCERN                                   :{BIG_FONT}{BLACK}Petty crime rising in {TOWN}
+STR_NEWS_VICE_RISING_WARNING                                   :{BIG_FONT}{BLACK}Crime rate surges in {TOWN} - authorities urge action
+STR_NEWS_VICE_RISING_CRITICAL                                  :{BIG_FONT}{BLACK}Crime crisis in {TOWN}! Residents fear for safety
+STR_NEWS_VICE_FALLING_CONCERN                                  :{BIG_FONT}{BLACK}Crime declining in {TOWN}
+STR_NEWS_VICE_FALLING_WARNING                                  :{BIG_FONT}{BLACK}Crime rate falling in {TOWN} - improvements noted
+STR_NEWS_VICE_FALLING_CRITICAL                                 :{BIG_FONT}{BLACK}{TOWN} crime crisis easing - situation improving
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Viewport {COMMA}
@@ -1954,6 +1967,8 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Display a newsp
 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :General information: {STRING2}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Display newspaper about general events, such as purchase of exclusive rights or funding of road reconstruction
+STR_CONFIG_SETTING_NEWS_CRIME                                   :Crime events: {STRING2}
+STR_CONFIG_SETTING_NEWS_CRIME_HELPTEXT                          :Display newspaper about crime and unrest events in towns, such as vandalism, arson, and riots
 ###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summary
@@ -2019,6 +2034,17 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Enabling this s
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limit airport placement based on noise level: {STRING2}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Allow towns to block airport construction based on their noise acceptance level, which is based on the town's population and airport size and distance. If this setting is disabled, towns allow only two airports unless the local authority attitude is set to "Permissive"
+STR_CONFIG_SETTING_CITY_VICE                                    :City vice events: {STRING2}
+STR_CONFIG_SETTING_CITY_VICE_HELPTEXT                           :When enabled, towns with high population may experience crime and unrest events such as vandalism, arson, and riots. Well-serviced towns are largely immune
+STR_CONFIG_SETTING_CITY_VICE_INTENSITY                          :City vice intensity: {STRING2}
+STR_CONFIG_SETTING_CITY_VICE_INTENSITY_HELPTEXT                 :Controls the probability of vice events. 0 disables events, 10 is normal, 20 is very frequent
+STR_CONFIG_SETTING_CITY_VICE_MIN_POPULATION                     :Minimum population for city vice: {STRING2}
+STR_CONFIG_SETTING_CITY_VICE_MIN_POPULATION_HELPTEXT            :Towns below this population are immune to vice events
+STR_CONFIG_SETTING_CITY_VICE_SEVERITY                            :City vice severity: {STRING2}
+STR_CONFIG_SETTING_CITY_VICE_SEVERITY_HELPTEXT                  :Controls which event types can occur and their intensity. Mild allows only minor events, Harsh enables all events with increased frequency
+STR_CONFIG_SETTING_CITY_VICE_SEVERITY_MILD                      :Mild
+STR_CONFIG_SETTING_CITY_VICE_SEVERITY_NORMAL                    :Normal
+STR_CONFIG_SETTING_CITY_VICE_SEVERITY_HARSH                     :Harsh
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Founding towns in game: {STRING2}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Enabling this setting allows players to found new towns in the game
@@ -3751,6 +3777,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Town grows every {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town grows every {ORANGE}{UNITS_DAYS_OR_SECONDS} (funded)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Town is {RED}not{BLACK} growing
+STR_TOWN_VIEW_TOWN_GROW_SLOWED_VICE                            :{BLACK}Town growth {RED}slowed{BLACK} by crime ({COMMA}% penalty)
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centre the main view on town location. Ctrl+Click to open a new viewport on town location
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local Authority
@@ -3758,6 +3785,19 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Show inf
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change town name
 STR_TOWN_VIEW_CARGO_GRAPH                                       :Cargo Graph
 STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Show graph of town's cargo history
+STR_TOWN_VIEW_VICE_GRAPH                                        :Crime Graph
+STR_TOWN_VIEW_VICE_GRAPH_TOOLTIP                              :Show graph of town's crime history
+STR_TOWN_VIEW_VICE_PEACEFUL                                    :{BLACK}Crime: {GREEN}Peaceful {BLACK}({COMMA}/100)
+STR_TOWN_VIEW_VICE_LOW                                         :{BLACK}Crime: {GREEN}Low {BLACK}({COMMA}/100)
+STR_TOWN_VIEW_VICE_MODERATE                                    :{BLACK}Crime: {YELLOW}Moderate {BLACK}({COMMA}/100)
+STR_TOWN_VIEW_VICE_ELEVATED                                    :{BLACK}Crime: {ORANGE}Elevated {BLACK}({COMMA}/100)
+STR_TOWN_VIEW_VICE_HIGH                                        :{BLACK}Crime: {RED}High {BLACK}({COMMA}/100)
+STR_TOWN_VIEW_VICE_CRITICAL                                    :{BLACK}Crime: {RED}Critical {BLACK}({COMMA}/100)
+STR_TOWN_VIEW_SERVICE_COVERAGE                                 :{BLACK}Passenger service: {ORANGE}{COMMA}%{BLACK} coverage
+STR_TOWN_VIEW_VICE_TOOLTIP                                     :{BLACK}Vice level: {COMMA}/100 - Service coverage: {COMMA}%, Authority rating: {COMMA}
+STR_TOWN_VIEW_POLICING_ACTIVE                                  :{BLACK}Policing active ({COMMA} months remaining)
+STR_TOWN_VIEW_INCITING_ACTIVE                                  :{BLACK}Crime incitement active ({COMMA} months remaining)
+STR_TOWN_VIEW_CRIME_WAVE_ACTIVE                                :{BLACK}{RED}Crime wave in progress! ({COMMA} months remaining)
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expand
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Increase size of town
@@ -3781,7 +3821,7 @@ STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}List of 
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Do it
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Carry out the highlighted action in the list above
 
-###length 8
+###length 11
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Small advertising campaign
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Medium advertising campaign
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Large advertising campaign
@@ -3790,6 +3830,12 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Build statue of
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fund new buildings
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Buy exclusive transport rights
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bribe the local authority
+STR_LOCAL_AUTHORITY_ACTION_CRIME_PATROL                         :Small crime-reduction campaign
+STR_LOCAL_AUTHORITY_ACTION_CRIME_SECURITY                      :Medium crime-reduction campaign
+STR_LOCAL_AUTHORITY_ACTION_CRIME_PEACEKEEPING                  :Large crime-reduction campaign
+STR_LOCAL_AUTHORITY_ACTION_CRIME_INCITE_LOW                   :Small crime-incitement campaign
+STR_LOCAL_AUTHORITY_ACTION_CRIME_INCITE_MEDIUM                :Medium crime-incitement campaign
+STR_LOCAL_AUTHORITY_ACTION_CRIME_INCITE_HIGH                  :Large crime-incitement campaign
 ###next-name-looks-similar
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a small radius around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
@@ -3802,6 +3848,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Buy exclusive transport rights in town for 12 months.{}Town authority will not allow passengers and cargo to use your competitors' stations. A successful bribe from a competitor will cancel this contract.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Buy exclusive transport rights in town for 12 minutes.{}Town authority will not allow passengers and cargo to use your competitors' stations. A successful bribe from a competitor will cancel this contract.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bribe the local authority to increase your rating and abort a competitor's exclusive transport rights, at the risk of a severe penalty if caught.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_PATROL                 :{PUSH_COLOUR}{YELLOW}Fund a small local patrol to reduce crime.{}Provides a small reduction in town vice level for 3 months. Benefits all companies equally.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_SECURITY               :{PUSH_COLOUR}{YELLOW}Fund a security detail to reduce crime.{}Provides a moderate reduction in town vice level for 6 months. Benefits all companies equally.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_PEACEKEEPING           :{PUSH_COLOUR}{YELLOW}Fund a peacekeeping force to reduce crime.{}Provides a large reduction in town vice level for 12 months. Benefits all companies equally.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_INCITE_LOW             :{PUSH_COLOUR}{YELLOW}Fund local unrest to increase crime.{}Provides a small increase in town vice level for 3 months. Affects all companies equally.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_INCITE_MEDIUM          :{PUSH_COLOUR}{YELLOW}Fund organised disruption to increase crime.{}Provides a moderate increase in town vice level for 6 months. Affects all companies equally.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_INCITE_HIGH            :{PUSH_COLOUR}{YELLOW}Fund a large-scale operation to increase crime.{}Provides a large increase in town vice level for 12 months. Affects all companies equally.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
@@ -5090,6 +5142,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :not enough cash
 STR_ERROR_FLAT_LAND_REQUIRED                                    :flat land required
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :land sloped in wrong direction
 STR_ERROR_CAN_T_DO_THIS                                         :Can't do this...
+STR_ERROR_CITY_VICE_DISABLED                                   :City vice is not enabled
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :building must be demolished first
 STR_ERROR_BUILDING_IS_PROTECTED                                 :building is protected
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Can't clear this area...

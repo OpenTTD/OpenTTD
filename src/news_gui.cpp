@@ -337,6 +337,7 @@ static const NewsTypeData _news_type_data[] = {
 	NewsTypeData("news_display.acceptance",        90, SND_BEGIN       ),  ///< NewsType::Acceptance
 	NewsTypeData("news_display.subsidies",        180, SND_BEGIN       ),  ///< NewsType::Subsidies
 	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NewsType::General
+	NewsTypeData("news_display.crime",             90, SND_BEGIN       ),  ///< NewsType::Crime
 };
 
 static_assert(std::size(_news_type_data) == to_underlying(NewsType::End));

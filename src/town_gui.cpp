@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "town.h"
+#include "vice_type.h"
 #include "viewport_func.h"
 #include "error.h"
 #include "gui.h"
@@ -47,6 +48,8 @@
 #include "zoom_func.h"
 #include "hotkeys.h"
 #include "graph_gui.h"
+#include "gfx_func.h"
+#include "palette_func.h"
 
 #include "widgets/town_widget.h"
 
@@ -103,6 +106,14 @@ private:
 		if (!_settings_game.economy.fund_buildings) enabled.Reset(TownAction::FundBuildings);
 		if (!_settings_game.economy.exclusive_rights) enabled.Reset(TownAction::BuyRights);
 		if (!_settings_game.economy.bribe) enabled.Reset(TownAction::Bribe);
+		if (!_settings_game.economy.city_vice) {
+			enabled.Reset(TownAction::CrimePatrol);
+			enabled.Reset(TownAction::CrimeSecurity);
+			enabled.Reset(TownAction::CrimePeacekeeping);
+			enabled.Reset(TownAction::CrimeInciteLow);
+			enabled.Reset(TownAction::CrimeInciteMedium);
+			enabled.Reset(TownAction::CrimeInciteHigh);
+		}
 
 		return enabled;
 	}
@@ -122,6 +133,12 @@ public:
 		this->action_tooltips[5] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS;
 		this->action_tooltips[6] = realtime ? STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES : STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS;
 		this->action_tooltips[7] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE;
+		this->action_tooltips[8] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_PATROL;
+		this->action_tooltips[9] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_SECURITY;
+		this->action_tooltips[10] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_PEACEKEEPING;
+		this->action_tooltips[11] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_INCITE_LOW;
+		this->action_tooltips[12] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_INCITE_MEDIUM;
+		this->action_tooltips[13] = STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_CRIME_INCITE_HIGH;
 
 		this->InitNested(window_number);
 	}
@@ -314,6 +331,7 @@ public:
 		}
 	}
 
+
 	/** Redraw the whole window on a regular interval. */
 	const IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
 		this->SetDirty();
@@ -461,11 +479,84 @@ public:
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 
+		/* Show vice-related growth slowdown. */
+		if (_settings_game.economy.city_vice && this->town->flags.Test(TownFlag::IsGrowing)) {
+			uint8_t penalty = 0;
+			if (this->town->crime_wave_months > 0) {
+				penalty = 50;
+			} else if (this->town->vice_level > 75) {
+				penalty = 50;
+			} else if (this->town->vice_level > 50) {
+				penalty = 25;
+			}
+			if (penalty > 0) {
+				DrawString(tr, GetString(STR_TOWN_VIEW_TOWN_GROW_SLOWED_VICE, penalty));
+				tr.top += GetCharacterHeight(FS_NORMAL);
+			}
+		}
+
 		/* only show the town noise, if the noise option is activated. */
 		if (_settings_game.economy.station_noise_level) {
 			DrawString(tr, GetString(STR_TOWN_VIEW_NOISE_IN_TOWN, this->town->noise_reached, this->town->MaxTownNoise()));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
+
+		/* Show vice level if city vice is enabled. */
+		if (_settings_game.economy.city_vice) {
+			StringID vice_str;
+			PixelColour bar_colour;
+			if (this->town->vice_level <= 10) { vice_str = STR_TOWN_VIEW_VICE_PEACEFUL; bar_colour = GetColourGradient(COLOUR_GREEN, SHADE_NORMAL); }
+			else if (this->town->vice_level <= 20) { vice_str = STR_TOWN_VIEW_VICE_LOW; bar_colour = GetColourGradient(COLOUR_GREEN, SHADE_NORMAL); }
+			else if (this->town->vice_level <= 35) { vice_str = STR_TOWN_VIEW_VICE_MODERATE; bar_colour = GetColourGradient(COLOUR_YELLOW, SHADE_NORMAL); }
+			else if (this->town->vice_level <= 50) { vice_str = STR_TOWN_VIEW_VICE_ELEVATED; bar_colour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL); }
+			else if (this->town->vice_level <= 75) { vice_str = STR_TOWN_VIEW_VICE_HIGH; bar_colour = GetColourGradient(COLOUR_RED, SHADE_NORMAL); }
+			else { vice_str = STR_TOWN_VIEW_VICE_CRITICAL; bar_colour = GetColourGradient(COLOUR_RED, SHADE_DARK); }
+
+			bool rtl = _current_text_dir == TD_RTL;
+			const int bar_width = 60;
+			const int bar_height = 6;
+			int bar_x = rtl ? tr.right - bar_width + 1 : tr.left;
+			int bar_y = tr.top + (GetCharacterHeight(FS_NORMAL) - bar_height) / 2;
+
+			/* Draw bar background. */
+			GfxFillRect(bar_x, bar_y, bar_x + bar_width - 1, bar_y + bar_height - 1, PC_BLACK);
+
+			/* Draw bar fill. */
+			int fill_width = (this->town->vice_level * bar_width) / 100;
+			if (fill_width > 0) {
+				GfxFillRect(bar_x, bar_y, bar_x + fill_width - 1, bar_y + bar_height - 1, bar_colour);
+			}
+
+			/* Draw vice label next to the bar. */
+			int text_left = rtl ? tr.left : tr.left + bar_width + WidgetDimensions::scaled.hsep_normal;
+			int text_right = rtl ? tr.right - bar_width - WidgetDimensions::scaled.hsep_normal : tr.right;
+			DrawString(text_left, text_right, tr.top, GetString(vice_str, this->town->vice_level));
+			tr.top += GetCharacterHeight(FS_NORMAL);
+
+			/* Service coverage detail. */
+			const CargoSpec *passengers = FindFirstCargoWithTownAcceptanceEffect(TAE_PASSENGERS);
+			if (passengers != nullptr) {
+				uint8_t pct = this->town->GetPercentTransported(passengers->Index());
+				DrawString(tr, GetString(STR_TOWN_VIEW_SERVICE_COVERAGE, pct));
+				tr.top += GetCharacterHeight(FS_NORMAL);
+			}
+
+			if (this->town->policing_months > 0) {
+				DrawString(tr, GetString(STR_TOWN_VIEW_POLICING_ACTIVE, this->town->policing_months));
+				tr.top += GetCharacterHeight(FS_NORMAL);
+			}
+
+			if (this->town->inciting_months > 0) {
+				DrawString(tr, GetString(STR_TOWN_VIEW_INCITING_ACTIVE, this->town->inciting_months));
+				tr.top += GetCharacterHeight(FS_NORMAL);
+			}
+
+			if (this->town->crime_wave_months > 0) {
+				DrawString(tr, GetString(STR_TOWN_VIEW_CRIME_WAVE_ACTIVE, this->town->crime_wave_months));
+				tr.top += GetCharacterHeight(FS_NORMAL);
+			}
+		}
+
 
 		if (!this->town->text.empty()) {
 			tr.top = DrawStringMultiLine(tr, this->town->text.GetDecodedString(), TC_BLACK);
@@ -515,6 +606,11 @@ public:
 				ShowTownCargoGraph(this->window_number);
 				break;
 			}
+
+			case WID_TV_VICE_GRAPH: {
+				ShowTownViceGraph(this->window_number);
+				break;
+			}
 		}
 	}
 
@@ -551,6 +647,18 @@ public:
 		aimed_height += GetCharacterHeight(FS_NORMAL);
 
 		if (_settings_game.economy.station_noise_level) aimed_height += GetCharacterHeight(FS_NORMAL);
+
+		if (_settings_game.economy.city_vice) {
+			aimed_height += GetCharacterHeight(FS_NORMAL); // Vice level line with bar
+			aimed_height += GetCharacterHeight(FS_NORMAL); // Service coverage line
+			if (this->town->policing_months > 0) aimed_height += GetCharacterHeight(FS_NORMAL);
+			if (this->town->inciting_months > 0) aimed_height += GetCharacterHeight(FS_NORMAL);
+			if (this->town->crime_wave_months > 0) aimed_height += GetCharacterHeight(FS_NORMAL);
+			if (this->town->flags.Test(TownFlag::IsGrowing) &&
+					(this->town->crime_wave_months > 0 || this->town->vice_level > 50)) {
+				aimed_height += GetCharacterHeight(FS_NORMAL); // Growth slowdown line
+			}
+		}
 
 		if (!this->town->text.empty()) {
 			aimed_height += GetStringHeight(this->town->text.GetDecodedString(), width - WidgetDimensions::scaled.framerect.Horizontal());
@@ -632,6 +740,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_town_game_view_widge
 		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_SHOW_AUTHORITY), SetMinimalSize(80, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP),
 		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetMinimalSize(40, 12), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_GRAPH), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_CARGO_GRAPH, STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_VICE_GRAPH), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_VICE_GRAPH, STR_TOWN_VIEW_VICE_GRAPH_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
@@ -667,6 +776,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_town_editor_view_wid
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_DELETE), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_TOWN_VIEW_DELETE_TOOLTIP),
 		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TV_CATCHMENT), SetFill(1, 1), SetResize(1, 0), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TV_VICE_GRAPH), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_TOWN_VIEW_VICE_GRAPH, STR_TOWN_VIEW_VICE_GRAPH_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };

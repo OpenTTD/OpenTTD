@@ -149,6 +149,18 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint8_t fund_buildings_months = 0; ///< fund buildings program in action?
 	uint8_t road_build_months = 0; ///< fund road reconstruction in action?
 
+	uint8_t vice_level = 0;           ///< Cached vice level (0-100), recalculated monthly.
+	uint8_t vice_level_prev = 0;      ///< Previous month's vice level, for threshold notifications.
+	uint8_t vice_cooldown = 0;        ///< Months remaining until next vice event can trigger.
+	uint8_t crime_wave_months = 0;    ///< Remaining months of active Crime Wave effect.
+	uint8_t policing_months = 0;      ///< Remaining months of Fund Policing effect.
+	uint8_t policing_reduction = 0;   ///< Vice reduction from current policing tier (10/20/30).
+	uint8_t inciting_months = 0;    ///< Remaining months of Crime Incitement effect.
+	uint8_t inciting_increase = 0;  ///< Vice increase from current incitement tier (10/20/30).
+
+	HistoryData<uint8_t> vice_history{}; ///< Monthly vice level history for graphing.
+	ValidHistoryMask vice_history_valid = 0; ///< Mask of valid vice history records.
+
 	bool larger_town = false; ///< if this is a larger town and should grow more quickly
 	TownLayout layout{}; ///< town specific road layout
 
@@ -256,9 +268,15 @@ enum class TownAction : uint8_t {
 	FundBuildings, ///< Fund new buildings.
 	BuyRights, ///< Buy exclusive transport rights.
 	Bribe, ///< Try to bribe the council.
+	CrimePatrol, ///< Small crime-reduction campaign.
+	CrimeSecurity, ///< Medium crime-reduction campaign.
+	CrimePeacekeeping, ///< Large crime-reduction campaign.
+	CrimeInciteLow, ///< Small crime-incitement campaign.
+	CrimeInciteMedium, ///< Medium crime-incitement campaign.
+	CrimeInciteHigh, ///< Large crime-incitement campaign.
 	End, ///< End marker.
 };
-using TownActions = EnumBitSet<TownAction, uint8_t>;
+using TownActions = EnumBitSet<TownAction, uint16_t>;
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(TownAction);
 
