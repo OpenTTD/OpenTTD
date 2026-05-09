@@ -1943,7 +1943,11 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skala produkcji
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaluj produkcję ładunków w przedsiębiorstwach w oparciu o ten procent
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Skalowanie tempa spadku wartości ładunku: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Dostosuj szybkość, z jaką wartość ładunku przewożonego przez pojazd spada z upływem czasu
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Brak spadku wartości
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatyczne odnawianie pojazdów, gdy stają się stare: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kiedy włączone, pojazd zbliżający się do końca swojej żywotności zostaje automatycznie zastąpiony, gdy warunki jego odnowienia są spełnione
