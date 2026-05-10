@@ -1564,7 +1564,11 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar a produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escalar a produção de carga das indústrias nesta percentagem
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Taxa de depreciação do pagamento de cargas: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Ajustar a rapidez com que o valor da carga transportada num veículo diminui ao longo do tempo
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Sem depreciação
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automaticamente os veículos quando estão a ficar velhos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativo, um veículo a chegar ao fim de vida é automaticamente substituído quando as condições de renovação estão reunidas

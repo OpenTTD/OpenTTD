@@ -1627,7 +1627,11 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Gazdasági ép�
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :A gazdasági épületek rakománytermelésének mértéke százalékban.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Mért rakomány öregedési ráta: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Annak beállítása, hogy a járművekre rakodott áru hogyan vesszen az értékéből az idő folyamán
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Nincs öregedés
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatikusan felújítja a járművet ha elöregedik: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Bekapcsolva a jármű élettartamának végén automatikusan cserére kerül, ha a lecserélési feltételek teljesülnek
