@@ -650,6 +650,16 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		}
 	}
 
+	if (_shift_pressed && _ctrl_pressed) {
+		/* ctrl shift click resizes windows */
+		StartWindowSizing(w, false);
+		return;
+	} else if (_shift_pressed) {
+		/* shift click moves windows */
+		StartWindowDrag(w);
+		return;
+	}
+
 	if (nw == nullptr) return; // exit if clicked outside of widgets
 
 	/* don't allow any interaction if the button has been disabled */
