@@ -139,7 +139,11 @@ static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, 
 
 	if (op == 6) {
 		/* Return GRFID of set that reserved ID */
-		return grm[_cur_gps.grffile->GetParam(target)];
+		uint32_t index = _cur_gps.grffile->GetParam(target);
+		if (index < std::size(grm)) return grm[index];
+
+		GrfMsg(1, "ParamSet: GRM: Parameter {} refers to invalid {} id {}", target, type, index);
+		return 0;
 	}
 
 	/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
