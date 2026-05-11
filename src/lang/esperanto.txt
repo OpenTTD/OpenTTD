@@ -1652,7 +1652,11 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skali ŝarĝan 
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skali la produktadon de ŝarĝo de entreprenoj je tiu elcento
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Malpliigado de ŝarĝaj valoroj laŭ tempo: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Agordu, kiom rapide ŝarĝoj, ŝarĝitaj sur veturilo, perdas ties valoron laŭ tempo
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :neniu malpliigado
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Aŭtomate anstataŭu veturilon se malnoviĝas: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se tiu ĉi agordo estas aktiva, veturilo kiu alproksimiĝas al la fino de sia vivdaŭro estos aŭtomate anstataŭigita kiam la renovigkondiĉoj estas plenumitaj
