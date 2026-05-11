@@ -288,6 +288,8 @@ struct IntSettingDesc : SettingDesc {
 	virtual int32_t ParseValue(std::string_view str) const;
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
+	static std::optional<int32_t> ParseSingleValue(std::string_view str, int32_t min, uint32_t max);
+
 	bool IsSameValue(const IniItem *item, void *object) const override;
 	bool IsDefaultValue(void *object) const override;
 	void ResetToDefault(void *object) const override;

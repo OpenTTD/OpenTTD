@@ -1989,8 +1989,8 @@ void SetDefaultRailGui()
 	if (_local_company == COMPANY_SPECTATOR || !Company::IsValidID(_local_company)) return;
 
 	RailType rt;
-	switch (_settings_client.gui.default_rail_type) {
-		case 2: {
+	switch (_settings_client.gui.default_rail_road_type) {
+		case DefaultRailRoadType::MostUsed: {
 			/* Find the most used rail type */
 			std::array<uint, RAILTYPE_END> count{};
 			for (const auto t : Map::Iterate()) {
@@ -2006,14 +2006,14 @@ void SetDefaultRailGui()
 			/* No rail, just get the first available one */
 			[[fallthrough]];
 		}
-		case 0: {
+		case DefaultRailRoadType::FirstAvailable: {
 			/* Use first available type */
 			std::vector<RailType>::const_iterator it = std::find_if(_sorted_railtypes.begin(), _sorted_railtypes.end(),
 					[](RailType r) { return HasRailTypeAvail(_local_company, r); });
 			rt = it != _sorted_railtypes.end() ? *it : RAILTYPE_BEGIN;
 			break;
 		}
-		case 1: {
+		case DefaultRailRoadType::LastAvailable: {
 			/* Use last available type */
 			std::vector<RailType>::const_reverse_iterator it = std::find_if(_sorted_railtypes.rbegin(), _sorted_railtypes.rend(),
 					[](RailType r){ return HasRailTypeAvail(_local_company, r); });

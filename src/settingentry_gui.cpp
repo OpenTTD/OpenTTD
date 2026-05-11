@@ -647,7 +647,7 @@ SettingsContainer &GetSettingsTree()
 			{
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
-				construction->Add(new SettingEntry("gui.default_rail_type"));
+				construction->Add(new SettingEntry("gui.default_rail_road_type"));
 				construction->Add(new SettingEntry("gui.semaphore_build_before"));
 				construction->Add(new SettingEntry("gui.signal_gui_mode"));
 				construction->Add(new SettingEntry("gui.cycle_signal_types"));

@@ -41,6 +41,7 @@
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_window.h"
+#include "road_gui.h"
 
 #include "widgets/statusbar_widget.h"
 
@@ -141,8 +142,9 @@ void SetLocalCompany(CompanyID new_company, bool switching_game)
 	}
 
 	if (switching_company || switching_game) {
-		/* Update the default rail based on most used */
+		/* Update the default rail and road types */
 		SetDefaultRailGui();
+		SetDefaultRoadGui();
 	}
 
 	if (!switching_game) {
