@@ -915,22 +915,19 @@ static void HeightMapTectonicMoves(BorderFlags water_borders)
 {
 	const int64_t water_percent = _settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[_settings_game.difficulty.quantity_sea_lakes] : _settings_game.game_creation.custom_sea_level * WATER_PERCENT_FACTOR / 100;
 
-	const size_t n_points = 8;
+	const size_t n_points = 8; // number of random points
 	const size_t offset_NE = n_points;
 	const size_t offset_NW = n_points + 1;
 	const size_t offset_SE = n_points + 2;
 	const size_t offset_SW = n_points + 3;
 
-	const uint64_t h_scale = 1 << 16;
+	const uint64_t h_scale = 1 << 16; // scale for random generation
 	const uint64_t flag_skip = h_scale << 1;
 	const Height max_height = TGPGetMaxHeight();
 	const Height adjust_max = max_height/2;
 	const Height adjust_down = adjust_max*water_percent / WATER_PERCENT_FACTOR;
 
-	auto adj_normalize = [=] (uint64_t h) -> Height {
-		return (h*adjust_max) / h_scale - adjust_down;
-	};
-
+	// we have n_points random points and 4 map edges
 	uint64_t idw_h[n_points+4];
 	int idw_x[n_points+4];
 	int idw_y[n_points+4];
@@ -949,6 +946,7 @@ static void HeightMapTectonicMoves(BorderFlags water_borders)
 	Height peak = 0;
 	for (int y = 0; y <= (int)_height_map.size_y; y++) {
 		for (int x = 0; x <= (int)_height_map.size_x; x++) {
+			// adjust map edge points for current coordinates
 			idw_x[offset_NE] = 0;
 			idw_y[offset_NE] = y;
 
@@ -961,15 +959,16 @@ static void HeightMapTectonicMoves(BorderFlags water_borders)
 			idw_x[offset_SE] = x;
 			idw_y[offset_SE] = _height_map.size_y;
 
+			// calculate height using Inverse Distance Weighting
 			Height *h = &_height_map.height(x, y);
-			uint64_t sum_w = 0;
-			uint64_t sum_val = 0;
-			uint64_t adj_h;
+			uint64_t sum_w = 0; // weight sum for IDW algorithm
+			uint64_t sum_val = 0; // value sum for IDW algorithm
 			for (size_t i = 0; i < n_points+4; ++i) {
 				if (idw_h[i] == flag_skip) continue;
 				if (x == idw_x[i] && y == idw_y[i]) {
-					adj_h = idw_h[i];
-					goto height_tect_idw_cont;
+					sum_val = idw_h[i];
+					sum_w = 1;
+					break;
 				}
 				int dx = Delta(x, idw_x[i]);
 				int dy = Delta(y, idw_y[i]);
@@ -978,9 +977,9 @@ static void HeightMapTectonicMoves(BorderFlags water_borders)
 				sum_w +=  w;
 				sum_val += idw_h[i]*w;
 			}
-			adj_h = (sum_val / sum_w);
-		height_tect_idw_cont:
-			*h += adj_normalize(adj_h);
+			uint64_t adj_h = (sum_val / sum_w);
+
+			*h += (adj_h*adjust_max) / h_scale - adjust_down;
 			peak = std::max(peak, *h);
 		}
 	}
