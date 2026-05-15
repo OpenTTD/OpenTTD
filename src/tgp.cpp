@@ -913,7 +913,30 @@ static void HeightMapSmoothSlopes(Height dh_max)
  */
 static void HeightMapTectonicMoves(BorderFlags water_borders)
 {
-	const int64_t water_percent = _settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[_settings_game.difficulty.quantity_sea_lakes] : _settings_game.game_creation.custom_sea_level * WATER_PERCENT_FACTOR / 100;
+	int64_t water_percent = _settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[_settings_game.difficulty.quantity_sea_lakes] : _settings_game.game_creation.custom_sea_level * WATER_PERCENT_FACTOR / 100;
+	// The graph of "% area below or at X height" for height maps generated
+	// by IDW is not linear, especially near the higher end. The
+	// water_percent value is for % area under water, not for point heights
+	// so we need to adjust it accordingly.
+	static const int water_percent_adjust[][2] = {
+		{0,    0},
+		{614,   614},
+		{778,   717},
+		{973,   819},
+		{1024,  1024}
+	};
+	for (size_t i = 1; i < std::size(water_percent_adjust); ++i) {
+		int percent_from_A = water_percent_adjust[i-1][0];
+		int percent_to_A = water_percent_adjust[i-1][1];
+		int percent_from_B = water_percent_adjust[i][0];
+		int percent_to_B = water_percent_adjust[i][1];
+		if (water_percent <= percent_from_B) {
+			int orig_interval = percent_from_B - percent_from_A;
+			int new_interval = percent_to_B - percent_to_A;
+			water_percent = percent_to_A + (water_percent - percent_from_A) * new_interval / orig_interval;
+			break;
+		}
+	}
 
 	const size_t n_points = 8; // number of random points
 	const size_t offset_NE = n_points;
