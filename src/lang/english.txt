@@ -525,6 +525,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Airport constru
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landscaping
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant trees
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Place sign
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Place object
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Sound/music
