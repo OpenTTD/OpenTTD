@@ -25,6 +25,8 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "terraform_gui.h"
+#include "object.h"
+#include "newgrf_object.h"
 #include "strings_func.h"
 #include "company_func.h"
 #include "company_gui.h"
@@ -998,6 +1000,9 @@ static CallBackFunction ToolbarForestClick(Window *w)
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_LANDSCAPING, PAL_NONE, STR_LANDSCAPING_MENU_LANDSCAPING, 0));
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_PLANTTREES, PAL_NONE, STR_LANDSCAPING_MENU_PLANT_TREES, 1));
 	list.push_back(MakeDropDownListIconItem(SPR_IMG_SIGN, PAL_NONE, STR_LANDSCAPING_MENU_PLACE_SIGN, 2));
+	if (ObjectClass::GetUIClassCount() != 0) {
+		list.push_back(MakeDropDownListIconItem(SPR_IMG_TRANSMITTER, PAL_NONE, STR_LANDSCAPING_MENU_PLACE_OBJECT, 3));
+	}
 	ShowDropDownList(w, std::move(list), 0, WID_TN_LANDSCAPE, 100, GetToolbarDropDownOptions());
 	return CallBackFunction::None;
 }
@@ -1014,6 +1019,7 @@ static CallBackFunction MenuClickForest(int index)
 		case 0: ShowTerraformToolbar();  break;
 		case 1: ShowBuildTreesToolbar(); break;
 		case 2: return SelectSignTool();
+		case 3: ShowBuildObjectPicker(); break;
 	}
 	return CallBackFunction::None;
 }
