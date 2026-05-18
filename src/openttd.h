@@ -42,15 +42,18 @@ enum SwitchMode : uint8_t {
 };
 
 /** Display Options */
-enum DisplayOptions : uint8_t {
-	DO_SHOW_TOWN_NAMES     = 0, ///< Display town names.
-	DO_SHOW_STATION_NAMES  = 1, ///< Display station names.
-	DO_SHOW_SIGNS          = 2, ///< Display signs.
-	DO_FULL_ANIMATION      = 3, ///< Perform palette animation.
-	DO_FULL_DETAIL         = 5, ///< Also draw details of track and roads.
-	DO_SHOW_WAYPOINT_NAMES = 6, ///< Display waypoint names.
-	DO_SHOW_COMPETITOR_SIGNS = 7, ///< Display signs, station names and waypoint names of opponent companies. Buoys and oilrig-stations are always shown, even if this option is turned off.
+enum class DisplayOption : uint8_t {
+	ShowTownNames = 0, ///< Display town names.
+	ShowStationNames = 1, ///< Display station names.
+	ShowSigns = 2, ///< Display signs.
+	FullAnimation = 3, ///< Perform palette animation.
+	FullDetail = 5, ///< Also draw details of track and roads.
+	ShowWaypointNames = 6, ///< Display waypoint names.
+	ShowCompetitorSigns = 7, ///< Display signs, station names and waypoint names of opponent companies. Buoys and oilrig-stations are always shown, even if this option is turned off.
 };
+
+/** Bitset of \c DisplayOption elements. */
+using DisplayOptions = EnumBitSet<DisplayOption, uint8_t>;
 
 struct GameSessionStats {
 	std::chrono::steady_clock::time_point start_time; ///< Time when the current game was started.

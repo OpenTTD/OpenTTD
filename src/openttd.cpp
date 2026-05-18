@@ -1385,7 +1385,7 @@ void GameLoop()
 		StateGameLoop();
 	}
 
-	if (_pause_mode.None() && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
+	if (_pause_mode.None() && _display_opt.Test(DisplayOption::FullAnimation)) DoPaletteAnimations();
 
 	SoundDriver::GetInstance()->MainLoop();
 	MusicLoop();

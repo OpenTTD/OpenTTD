@@ -2449,7 +2449,7 @@ static void DrawTile_Rail(TileInfo *ti)
 
 		DrawTrackBits(ti, rails);
 
-		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti, rti, pal);
+		if (_display_opt.Test(DisplayOption::FullDetail)) DrawTrackDetails(ti, rti, pal);
 
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
