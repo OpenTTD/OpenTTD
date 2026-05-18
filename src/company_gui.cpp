@@ -586,7 +586,7 @@ void ShowCompanyFinances(CompanyID company)
 }
 
 /** Association of liveries to livery classes. */
-static const LiveryClass _livery_class[LS_END] = {
+static const EnumIndexArray<LiveryClass, LiveryScheme, LiveryScheme::End> _livery_class = {
 	LC_OTHER,
 	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,
 	LC_ROAD, LC_ROAD,
@@ -643,7 +643,7 @@ private:
 		uint8_t default_col{};
 
 		/* Disallow other company colours for the primary colour */
-		if (this->livery_class < LC_GROUP_RAIL && this->sel.schemes.Test(LS_DEFAULT) && primary) {
+		if (this->livery_class < LC_GROUP_RAIL && this->sel.schemes.Test(LiveryScheme::Default) && primary) {
 			for (const Company *c : Company::Iterate()) {
 				if (c->index != _local_company) used_colours.Set(c->colour);
 			}
@@ -653,14 +653,14 @@ private:
 
 		if (this->livery_class < LC_GROUP_RAIL) {
 			/* Get the first selected livery to use as the default dropdown item */
-			LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LS_DEFAULT);
+			LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LiveryScheme::Default);
 			livery = &c->livery[scheme];
-			if (scheme != LS_DEFAULT) default_livery = &c->livery[LS_DEFAULT];
+			if (scheme != LiveryScheme::Default) default_livery = &c->livery[LiveryScheme::Default];
 		} else {
 			const Group *g = Group::Get(this->sel.group);
 			livery = &g->livery;
 			if (g->parent == GroupID::Invalid()) {
-				default_livery = &c->livery[LS_DEFAULT];
+				default_livery = &c->livery[LiveryScheme::Default];
 			} else {
 				const Group *pg = Group::Get(g->parent);
 				default_livery = &pg->livery;
@@ -730,7 +730,7 @@ public:
 
 		if (group == GroupID::Invalid()) {
 			this->livery_class = LC_OTHER;
-			this->sel.schemes = LS_DEFAULT;
+			this->sel.schemes = LiveryScheme::Default;
 			this->LowerWidget(WID_SCL_CLASS_GENERAL);
 			this->BuildLiveryList();
 			this->BuildGroupList(company);
@@ -778,7 +778,7 @@ public:
 				/* The matrix widget below needs enough room to print all the schemes. */
 				Dimension d = {0, 0};
 				for (LiveryScheme scheme : _loaded_newgrf_features.used_liveries) {
-					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + scheme));
+					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + to_underlying(scheme)));
 				}
 
 				size.width = std::max(size.width, 5 + d.width + padding.width);
@@ -839,10 +839,10 @@ public:
 				StringID colour = STR_COLOUR_DEFAULT;
 
 				if (this->livery_class < LC_GROUP_RAIL) {
-					LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LS_END);
-					if (scheme != LS_END) {
+					LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LiveryScheme::End);
+					if (scheme != LiveryScheme::End) {
 						const Livery &livery = c->livery[scheme];
-						if (scheme == LS_DEFAULT || livery.in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
+						if (scheme == LiveryScheme::Default || livery.in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
 							colour = STR_COLOUR_DARK_BLUE + GetColourOffset(livery, primary);
 						}
 					}
@@ -915,7 +915,7 @@ public:
 			int pos = this->vscroll->GetPosition();
 			for (LiveryScheme scheme : this->visible_schemes) {
 				if (pos-- > 0) continue;
-				draw_livery(GetString(STR_LIVERY_DEFAULT + scheme), c->livery[scheme], this->sel.schemes.Test(scheme), scheme == LS_DEFAULT, 0);
+				draw_livery(GetString(STR_LIVERY_DEFAULT + to_underlying(scheme)), c->livery[scheme], this->sel.schemes.Test(scheme), scheme == LiveryScheme::Default, 0);
 			}
 		} else {
 			auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->groups);
@@ -952,7 +952,7 @@ public:
 				/* Select the first item in the list */
 				if (this->livery_class < LC_GROUP_RAIL) {
 					this->BuildLiveryList();
-					this->sel.schemes = this->visible_schemes.GetNthSetBit(0).value_or(LS_DEFAULT);
+					this->sel.schemes = this->visible_schemes.GetNthSetBit(0).value_or(LiveryScheme::Default);
 				} else {
 					this->sel.group = GroupID::Invalid();
 					this->groups.ForceRebuild();

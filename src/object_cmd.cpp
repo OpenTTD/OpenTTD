@@ -97,7 +97,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	if (owner == OWNER_NONE) {
 		o->recolour_offset = Random();
 	} else {
-		o->recolour_offset = Company::Get(owner)->GetCompanyRecolourOffset(LS_DEFAULT);
+		o->recolour_offset = Company::Get(owner)->GetCompanyRecolourOffset(LiveryScheme::Default);
 	}
 
 	/* If the object wants only one colour, then give it that colour. */
@@ -192,7 +192,7 @@ void UpdateObjectColours(const Company *c)
 		/* Using the object colour callback, so not using company colour. */
 		if (spec->callback_mask.Test(ObjectCallbackMask::Colour)) continue;
 
-		obj->recolour_offset = c->GetCompanyRecolourOffset(LS_DEFAULT, spec->flags.Test(ObjectFlag::Uses2CC));
+		obj->recolour_offset = c->GetCompanyRecolourOffset(LiveryScheme::Default, spec->flags.Test(ObjectFlag::Uses2CC));
 	}
 }
 

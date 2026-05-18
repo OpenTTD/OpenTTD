@@ -60,29 +60,29 @@ public:
 
 	/** List of different livery schemes. */
 	enum LiveryScheme {
-		LS_DEFAULT,                  ///< Default scheme.
-		LS_STEAM,                    ///< Steam engines.
-		LS_DIESEL,                   ///< Diesel engines.
-		LS_ELECTRIC,                 ///< Electric engines.
-		LS_MONORAIL,                 ///< Monorail engines.
-		LS_MAGLEV,                   ///< Maglev engines.
-		LS_DMU,                      ///< DMUs and their passenger wagons.
-		LS_EMU,                      ///< EMUs and their passenger wagons.
-		LS_PASSENGER_WAGON_STEAM,    ///< Passenger wagons attached to steam engines.
-		LS_PASSENGER_WAGON_DIESEL,   ///< Passenger wagons attached to diesel engines.
-		LS_PASSENGER_WAGON_ELECTRIC, ///< Passenger wagons attached to electric engines.
-		LS_PASSENGER_WAGON_MONORAIL, ///< Passenger wagons attached to monorail engines.
-		LS_PASSENGER_WAGON_MAGLEV,   ///< Passenger wagons attached to maglev engines.
-		LS_FREIGHT_WAGON,            ///< Freight wagons.
-		LS_BUS,                      ///< Buses.
-		LS_TRUCK,                    ///< Trucks.
-		LS_PASSENGER_SHIP,           ///< Passenger ships.
-		LS_FREIGHT_SHIP,             ///< Freight ships.
-		LS_HELICOPTER,               ///< Helicopters.
-		LS_SMALL_PLANE,              ///< Small aeroplanes.
-		LS_LARGE_PLANE,              ///< Large aeroplanes.
-		LS_PASSENGER_TRAM,           ///< Passenger trams.
-		LS_FREIGHT_TRAM,             ///< Freight trams.
+		LS_DEFAULT = to_underlying(::LiveryScheme::Default), ///< Default scheme.
+		LS_STEAM = to_underlying(::LiveryScheme::Steam), ///< Steam engines.
+		LS_DIESEL = to_underlying(::LiveryScheme::Diesel), ///< Diesel engines.
+		LS_ELECTRIC = to_underlying(::LiveryScheme::Electric), ///< Electric engines.
+		LS_MONORAIL = to_underlying(::LiveryScheme::Monorail), ///< Monorail engines.
+		LS_MAGLEV = to_underlying(::LiveryScheme::Maglev), ///< Maglev engines.
+		LS_DMU = to_underlying(::LiveryScheme::DMU), ///< DMUs and their passenger wagons.
+		LS_EMU = to_underlying(::LiveryScheme::EMU), ///< EMUs and their passenger wagons.
+		LS_PASSENGER_WAGON_STEAM = to_underlying(::LiveryScheme::PassengerWagonSteam), ///< Passenger wagons attached to steam engines.
+		LS_PASSENGER_WAGON_DIESEL = to_underlying(::LiveryScheme::PassengerWagonDiesel), ///< Passenger wagons attached to diesel engines.
+		LS_PASSENGER_WAGON_ELECTRIC = to_underlying(::LiveryScheme::PassengerWagonElectric), ///< Passenger wagons attached to electric engines.
+		LS_PASSENGER_WAGON_MONORAIL = to_underlying(::LiveryScheme::PassengerWagonMonorail), ///< Passenger wagons attached to monorail engines.
+		LS_PASSENGER_WAGON_MAGLEV = to_underlying(::LiveryScheme::PassengerWagonMaglev), ///< Passenger wagons attached to maglev engines.
+		LS_FREIGHT_WAGON = to_underlying(::LiveryScheme::FreightWagon), ///< Freight wagons.
+		LS_BUS = to_underlying(::LiveryScheme::Bus), ///< Buses.
+		LS_TRUCK = to_underlying(::LiveryScheme::Truck), ///< Trucks.
+		LS_PASSENGER_SHIP = to_underlying(::LiveryScheme::PassengerShip), ///< Passenger ships.
+		LS_FREIGHT_SHIP = to_underlying(::LiveryScheme::FreightShip), ///< Freight ships.
+		LS_HELICOPTER = to_underlying(::LiveryScheme::Helicopter), ///< Helicopters.
+		LS_SMALL_PLANE = to_underlying(::LiveryScheme::SmallPlane), ///< Small aeroplanes.
+		LS_LARGE_PLANE = to_underlying(::LiveryScheme::LargePlane), ///< Large aeroplanes.
+		LS_PASSENGER_TRAM = to_underlying(::LiveryScheme::PassengerTram), ///< Passenger trams.
+		LS_FREIGHT_TRAM = to_underlying(::LiveryScheme::FreightTram), ///< Freight trams.
 		LS_INVALID = -1,
 	};
 
@@ -452,7 +452,7 @@ public:
 	 * @param scheme Livery scheme to get.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @pre scheme >= LS_DEFAULT.
-	 * @pre scheme <= LS_LS_FREIGHT_TRAM.
+	 * @pre scheme <= LS_FREIGHT_TRAM.
 	 * @return Primary colour of livery.
 	 */
 	static ScriptCompany::Colours GetPrimaryLiveryColour(LiveryScheme scheme);
@@ -462,7 +462,7 @@ public:
 	 * @param scheme Livery scheme to get.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @pre scheme >= LS_DEFAULT.
-	 * @pre scheme <= LS_LS_FREIGHT_TRAM.
+	 * @pre scheme <= LS_FREIGHT_TRAM.
 	 * @return Secondary colour of livery.
 	 */
 	static ScriptCompany::Colours GetSecondaryLiveryColour(LiveryScheme scheme);

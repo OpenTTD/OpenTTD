@@ -374,19 +374,19 @@
 /* static */ ScriptCompany::Colours ScriptCompany::GetPrimaryLiveryColour(ScriptCompany::LiveryScheme scheme)
 {
 	EnforceCompanyModeValid(COLOUR_INVALID);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= LS_BEGIN);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < LS_END);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= ::LiveryScheme::Begin);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < ::LiveryScheme::End);
 
 	const Company *c = ::Company::Get(ScriptObject::GetCompany());
-	return (ScriptCompany::Colours)c->livery[scheme].colour1;
+	return (ScriptCompany::Colours)c->livery[static_cast<::LiveryScheme>(scheme)].colour1;
 }
 
 /* static */ ScriptCompany::Colours ScriptCompany::GetSecondaryLiveryColour(ScriptCompany::LiveryScheme scheme)
 {
 	EnforceCompanyModeValid(COLOUR_INVALID);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= LS_BEGIN);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < LS_END);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= ::LiveryScheme::Begin);
+	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < ::LiveryScheme::End);
 
 	const Company *c = ::Company::Get(ScriptObject::GetCompany());
-	return (ScriptCompany::Colours)c->livery[scheme].colour2;
+	return (ScriptCompany::Colours)c->livery[static_cast<::LiveryScheme>(scheme)].colour2;
 }

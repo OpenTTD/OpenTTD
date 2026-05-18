@@ -122,7 +122,7 @@ struct CompanyProperties {
 	std::array<CompanyEconomyEntry, MAX_HISTORY_QUARTERS> old_economy{}; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
 	uint8_t num_valid_stat_ent = 0; ///< Number of valid statistical entries in #old_economy.
 
-	std::array<Livery, LS_END> livery{};
+	EnumIndexArray<Livery, LiveryScheme, LiveryScheme::End> livery{};
 
 	EngineRenewList engine_renew_list = nullptr; ///< Engine renewals of this company.
 	CompanySettings settings{}; ///< settings specific for each company

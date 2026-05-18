@@ -19,50 +19,50 @@ static const uint8_t LIT_COMPANY = 1; ///< Show the liveries of your own company
 static const uint8_t LIT_ALL     = 2; ///< Show the liveries of all companies
 
 /** List of different livery schemes. */
-enum LiveryScheme : uint8_t {
-	LS_BEGIN = 0,
-	LS_DEFAULT = 0,
+enum class LiveryScheme : uint8_t {
+	Begin = 0, ///< Begin marker.
+	Default = 0, ///< Default scheme.
 
 	/* Rail vehicles */
-	LS_STEAM,
-	LS_DIESEL,
-	LS_ELECTRIC,
-	LS_MONORAIL,
-	LS_MAGLEV,
-	LS_DMU,
-	LS_EMU,
-	LS_PASSENGER_WAGON_STEAM,
-	LS_PASSENGER_WAGON_DIESEL,
-	LS_PASSENGER_WAGON_ELECTRIC,
-	LS_PASSENGER_WAGON_MONORAIL,
-	LS_PASSENGER_WAGON_MAGLEV,
-	LS_FREIGHT_WAGON,
+	Steam, ///< Steam engines.
+	Diesel, ///< Diesel engines.
+	Electric, ///< Electric engines.
+	Monorail, ///< Monorail engines.
+	Maglev, ///< Maglev engines.
+	DMU, ///< DMUs and their passenger wagons.
+	EMU, ///< EMUs and their passenger wagons.
+	PassengerWagonSteam, ///< Passenger wagons attached to steam engines.
+	PassengerWagonDiesel, ///< Passenger wagons attached to diesel engines.
+	PassengerWagonElectric, ///< Passenger wagons attached to electric engines.
+	PassengerWagonMonorail, ///< Passenger wagons attached to monorail engines.
+	PassengerWagonMaglev, ///< Passenger wagons attached to maglev engines.
+	FreightWagon, ///< Freight wagons.
 
 	/* Road vehicles */
-	LS_BUS,
-	LS_TRUCK,
+	Bus, ///< Buses.
+	Truck, ///< Trucks.
 
 	/* Ships */
-	LS_PASSENGER_SHIP,
-	LS_FREIGHT_SHIP,
+	PassengerShip, ///< Passenger ships.
+	FreightShip, ///< Freight ships.
 
 	/* Aircraft */
-	LS_HELICOPTER,
-	LS_SMALL_PLANE,
-	LS_LARGE_PLANE,
+	Helicopter, ///< Helicopters.
+	SmallPlane, ///< Small aeroplanes.
+	LargePlane, ///< Large aeroplanes.
 
 	/* Trams (appear on Road Vehicles tab) */
-	LS_PASSENGER_TRAM,
-	LS_FREIGHT_TRAM,
+	PassengerTram, ///< Passenger trams.
+	FreightTram, ///< Freight trams.
 
-	LS_END
+	End, ///< End marker.
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(LiveryScheme)
 DECLARE_ENUM_AS_ADDABLE(LiveryScheme)
 
 /** Bitset of \c LiveryScheme elements. */
-using LiverySchemes = EnumBitSet<LiveryScheme, uint32_t, LiveryScheme::LS_END>;
+using LiverySchemes = EnumBitSet<LiveryScheme, uint32_t, LiveryScheme::End>;
 
 /** List of different livery classes, used only by the livery GUI. */
 enum LiveryClass : uint8_t {
