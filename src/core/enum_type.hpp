@@ -166,8 +166,12 @@ inline constexpr auto operator-(enum_type a, enum_type b)
 /** Operator that allows this enumeration to be added to any other enumeration. */
 #define DECLARE_ENUM_AS_ADDABLE(EnumType) \
 	template <typename OtherEnumType, typename = typename std::enable_if<std::is_enum_v<OtherEnumType>, OtherEnumType>::type> \
-	constexpr OtherEnumType operator + (OtherEnumType m1, EnumType m2) { \
+	constexpr OtherEnumType operator +(OtherEnumType m1, EnumType m2) { \
 		return static_cast<OtherEnumType>(to_underlying(m1) + to_underlying(m2)); \
+	} \
+	template <typename OtherEnumType, typename = typename std::enable_if<std::is_enum_v<OtherEnumType>, OtherEnumType>::type> \
+	constexpr OtherEnumType operator -(OtherEnumType m1, EnumType m2) { \
+		return static_cast<OtherEnumType>(to_underlying(m1) - to_underlying(m2)); \
 	}
 
 /**

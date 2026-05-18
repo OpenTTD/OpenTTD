@@ -877,7 +877,7 @@ static void MakeNewGameDone()
 		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
 	}
 
-	if (_settings_client.gui.starting_colour_secondary != Colours::End && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
+	if (_settings_client.gui.starting_colour_secondary != Colours::End && _loaded_newgrf_features.used_liveries.Test(LS_DEFAULT)) {
 		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
 	}
 
