@@ -422,18 +422,18 @@ public:
 	 */
 	size_t GetNumLiveries() const
 	{
-		if (IsSavegameVersionBefore(SLV_63)) return LS_END - 4;
-		if (IsSavegameVersionBefore(SLV_85)) return LS_END - 2;
-		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return LS_END;
+		if (IsSavegameVersionBefore(SLV_63)) return to_underlying(LiveryScheme::End) - 4;
+		if (IsSavegameVersionBefore(SLV_85)) return to_underlying(LiveryScheme::End) - 2;
+		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return to_underlying(LiveryScheme::End);
 		/* Read from the savegame how long the list is. */
-		return SlGetStructListLength(LS_END);
+		return SlGetStructListLength(to_underlying(LiveryScheme::End));
 	}
 
 	void Save(CompanyProperties *c) const override
 	{
-		SlSetStructListLength(LS_END);
-		for (int i = 0; i < LS_END; i++) {
-			SlObject(&c->livery[i], this->GetDescription());
+		SlSetStructListLength(to_underlying(LiveryScheme::End));
+		for (auto &livery : c->livery) {
+			SlObject(&livery, this->GetDescription());
 		}
 	}
 
@@ -443,28 +443,29 @@ public:
 		bool update_in_use = IsSavegameVersionBefore(SLV_GROUP_LIVERIES);
 
 		for (size_t i = 0; i < num_liveries; i++) {
-			SlObject(&c->livery[i], this->GetLoadDescription());
-			if (update_in_use && i != LS_DEFAULT) {
-				if (!c->livery[i].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
-					c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
-					c->livery[i].colour2 = c->livery[LS_DEFAULT].colour2;
+			Livery &livery = c->livery[static_cast<LiveryScheme>(i)];
+			SlObject(&livery, this->GetLoadDescription());
+			if (update_in_use && i != 0) {
+				if (!livery.in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
+					livery.colour1 = c->livery[LiveryScheme::Default].colour1;
+					livery.colour2 = c->livery[LiveryScheme::Default].colour2;
 				} else {
-					c->livery[i].in_use = {Livery::Flag::Primary, Livery::Flag::Secondary};
+					livery.in_use = {Livery::Flag::Primary, Livery::Flag::Secondary};
 				}
 			}
 		}
 
 		if (IsSavegameVersionBefore(SLV_85)) {
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
-			std::move_backward(std::begin(c->livery) + LS_FREIGHT_WAGON - 2, std::end(c->livery) - 2, std::end(c->livery));
-			c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
-			c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
+			std::move_backward(std::begin(c->livery) + to_underlying(LiveryScheme::FreightWagon) - 2, std::end(c->livery) - 2, std::end(c->livery));
+			c->livery[LiveryScheme::PassengerWagonMonorail] = c->livery[LiveryScheme::Monorail];
+			c->livery[LiveryScheme::PassengerWagonMaglev] = c->livery[LiveryScheme::Maglev];
 		}
 
 		if (IsSavegameVersionBefore(SLV_63)) {
 			/* Copy bus/truck liveries over to trams */
-			c->livery[LS_PASSENGER_TRAM] = c->livery[LS_BUS];
-			c->livery[LS_FREIGHT_TRAM]   = c->livery[LS_TRUCK];
+			c->livery[LiveryScheme::PassengerTram] = c->livery[LiveryScheme::Bus];
+			c->livery[LiveryScheme::FreightTram] = c->livery[LiveryScheme::Truck];
 		}
 	}
 
