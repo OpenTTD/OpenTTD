@@ -65,18 +65,18 @@ DECLARE_ENUM_AS_ADDABLE(LiveryScheme)
 using LiverySchemes = EnumBitSet<LiveryScheme, uint32_t, LiveryScheme::End>;
 
 /** List of different livery classes, used only by the livery GUI. */
-enum LiveryClass : uint8_t {
-	LC_OTHER,
-	LC_RAIL,
-	LC_ROAD,
-	LC_SHIP,
-	LC_AIRCRAFT,
-	LC_GROUP_RAIL,
-	LC_GROUP_ROAD,
-	LC_GROUP_SHIP,
-	LC_GROUP_AIRCRAFT,
-	LC_END
+enum class LiveryClass : uint8_t {
+	Other, ///< General livery schemes.
+	Rail, ///< Rail livery schemes.
+	Road, ///< Road livery schemes.
+	Ship, ///< Ship livery schemes.
+	Aircraft, ///< Aircraft livery schemes.
+	GroupRail, ///< Rail group.
+	GroupRoad, ///< Road group.
+	GroupShip, ///< Ship group.
+	GroupAircraft, ///< Aircraft group.
 };
+
 DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */

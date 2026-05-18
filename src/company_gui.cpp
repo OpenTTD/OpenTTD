@@ -587,12 +587,12 @@ void ShowCompanyFinances(CompanyID company)
 
 /** Association of liveries to livery classes. */
 static const EnumIndexArray<LiveryClass, LiveryScheme, LiveryScheme::End> _livery_class = {
-	LC_OTHER,
-	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,
-	LC_ROAD, LC_ROAD,
-	LC_SHIP, LC_SHIP,
-	LC_AIRCRAFT, LC_AIRCRAFT, LC_AIRCRAFT,
-	LC_ROAD, LC_ROAD,
+	LiveryClass::Other,
+	LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail, LiveryClass::Rail,
+	LiveryClass::Road, LiveryClass::Road,
+	LiveryClass::Ship, LiveryClass::Ship,
+	LiveryClass::Aircraft, LiveryClass::Aircraft, LiveryClass::Aircraft,
+	LiveryClass::Road, LiveryClass::Road,
 };
 
 /**
@@ -643,7 +643,7 @@ private:
 		uint8_t default_col{};
 
 		/* Disallow other company colours for the primary colour */
-		if (this->livery_class < LC_GROUP_RAIL && this->sel.schemes.Test(LiveryScheme::Default) && primary) {
+		if (this->livery_class < LiveryClass::GroupRail && this->sel.schemes.Test(LiveryScheme::Default) && primary) {
 			for (const Company *c : Company::Iterate()) {
 				if (c->index != _local_company) used_colours.Set(c->colour);
 			}
@@ -651,7 +651,7 @@ private:
 
 		const Company *c = Company::Get(this->window_number);
 
-		if (this->livery_class < LC_GROUP_RAIL) {
+		if (this->livery_class < LiveryClass::GroupRail) {
 			/* Get the first selected livery to use as the default dropdown item */
 			LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LiveryScheme::Default);
 			livery = &c->livery[scheme];
@@ -702,8 +702,8 @@ private:
 
 		this->groups.clear();
 
-		if (this->livery_class >= LC_GROUP_RAIL) {
-			VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
+		if (this->livery_class >= LiveryClass::GroupRail) {
+			VehicleType vtype = static_cast<VehicleType>(this->livery_class - LiveryClass::GroupRail);
 			BuildGuiGroupList(this->groups, false, owner, vtype);
 		}
 
@@ -712,7 +712,7 @@ private:
 
 	void SetRows()
 	{
-		if (this->livery_class < LC_GROUP_RAIL) {
+		if (this->livery_class < LiveryClass::GroupRail) {
 			this->rows = this->visible_schemes.Count();
 		} else {
 			this->rows = (uint)this->groups.size();
@@ -729,7 +729,7 @@ public:
 		this->vscroll = this->GetScrollbar(WID_SCL_MATRIX_SCROLLBAR);
 
 		if (group == GroupID::Invalid()) {
-			this->livery_class = LC_OTHER;
+			this->livery_class = LiveryClass::Other;
 			this->sel.schemes = LiveryScheme::Default;
 			this->LowerWidget(WID_SCL_CLASS_GENERAL);
 			this->BuildLiveryList();
@@ -749,10 +749,10 @@ public:
 		this->RaiseWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 		const Group *g = Group::Get(group);
 		switch (g->vehicle_type) {
-			case VehicleType::Train: this->livery_class = LC_GROUP_RAIL; break;
-			case VehicleType::Road: this->livery_class = LC_GROUP_ROAD; break;
-			case VehicleType::Ship: this->livery_class = LC_GROUP_SHIP; break;
-			case VehicleType::Aircraft: this->livery_class = LC_GROUP_AIRCRAFT; break;
+			case VehicleType::Train: this->livery_class = LiveryClass::GroupRail; break;
+			case VehicleType::Road: this->livery_class = LiveryClass::GroupRoad; break;
+			case VehicleType::Ship: this->livery_class = LiveryClass::GroupShip; break;
+			case VehicleType::Aircraft: this->livery_class = LiveryClass::GroupAircraft; break;
 			default: NOT_REACHED();
 		}
 		this->sel.group = group;
@@ -817,7 +817,7 @@ public:
 		bool local = this->window_number == _local_company;
 
 		/* Disable dropdown controls if no scheme is selected */
-		bool disabled = this->livery_class < LC_GROUP_RAIL ? this->sel.schemes.None() : (this->sel.group == GroupID::Invalid());
+		bool disabled = this->livery_class < LiveryClass::GroupRail ? this->sel.schemes.None() : (this->sel.group == GroupID::Invalid());
 		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, !local || disabled);
 		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, !local || disabled);
 
@@ -838,7 +838,7 @@ public:
 				bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
 				StringID colour = STR_COLOUR_DEFAULT;
 
-				if (this->livery_class < LC_GROUP_RAIL) {
+				if (this->livery_class < LiveryClass::GroupRail) {
 					LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LiveryScheme::End);
 					if (scheme != LiveryScheme::End) {
 						const Livery &livery = c->livery[scheme];
@@ -911,7 +911,7 @@ public:
 
 		const Company *c = Company::Get(this->window_number);
 
-		if (livery_class < LC_GROUP_RAIL) {
+		if (livery_class < LiveryClass::GroupRail) {
 			int pos = this->vscroll->GetPosition();
 			for (LiveryScheme scheme : this->visible_schemes) {
 				if (pos-- > 0) continue;
@@ -926,7 +926,7 @@ public:
 
 			if (this->vscroll->GetCount() == 0) {
 				constexpr VehicleTypeIndexArray<const StringID> empty_labels = { STR_LIVERY_TRAIN_GROUP_EMPTY, STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY, STR_LIVERY_SHIP_GROUP_EMPTY, STR_LIVERY_AIRCRAFT_GROUP_EMPTY };
-				VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
+				VehicleType vtype = static_cast<VehicleType>(this->livery_class - LiveryClass::GroupRail);
 				DrawString(ir.left, ir.right, y + text_offs, empty_labels[vtype], TextColour::Black);
 			}
 		}
@@ -950,7 +950,7 @@ public:
 				this->LowerWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 
 				/* Select the first item in the list */
-				if (this->livery_class < LC_GROUP_RAIL) {
+				if (this->livery_class < LiveryClass::GroupRail) {
 					this->BuildLiveryList();
 					this->sel.schemes = this->visible_schemes.GetNthSetBit(0).value_or(LiveryScheme::Default);
 				} else {
@@ -976,7 +976,7 @@ public:
 				break;
 
 			case WID_SCL_MATRIX: {
-				if (this->livery_class < LC_GROUP_RAIL) {
+				if (this->livery_class < LiveryClass::GroupRail) {
 					uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
 					if (row >= this->rows) return;
 
@@ -1012,7 +1012,7 @@ public:
 		Colours colour = static_cast<Colours>(index);
 		if (colour >= Colours::End) colour = Colours::Invalid;
 
-		if (this->livery_class < LC_GROUP_RAIL) {
+		if (this->livery_class < LiveryClass::GroupRail) {
 			/* Set company colour livery */
 			for (LiveryScheme scheme : this->visible_schemes) {
 				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
@@ -1036,8 +1036,8 @@ public:
 		if (!gui_scope) return;
 
 		if (data != -1) {
-			/* data contains a VehicleType, rebuild list if it displayed */
-			if (this->livery_class == data + LC_GROUP_RAIL) {
+			/* data contains a VehicleType, rebuild list if it is displayed */
+			if (this->livery_class == static_cast<LiveryClass>(to_underlying(LiveryClass::GroupRail) + data)) {
 				this->groups.ForceRebuild();
 				this->BuildGroupList(this->window_number);
 				this->SetRows();
@@ -1054,7 +1054,7 @@ public:
 
 		this->SetWidgetsDisabledState(true, WID_SCL_CLASS_RAIL, WID_SCL_CLASS_ROAD, WID_SCL_CLASS_SHIP, WID_SCL_CLASS_AIRCRAFT);
 
-		bool current_class_valid = this->livery_class == LC_OTHER || this->livery_class >= LC_GROUP_RAIL;
+		bool current_class_valid = this->livery_class == LiveryClass::Other || this->livery_class >= LiveryClass::GroupRail;
 		if (_settings_client.gui.liveries == LIT_ALL || (_settings_client.gui.liveries == LIT_COMPANY && this->window_number == _local_company)) {
 			/* Clear selection of unused schemes. */
 			this->sel.schemes &= _loaded_newgrf_features.used_liveries;
