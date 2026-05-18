@@ -720,7 +720,6 @@ public:
 	SelectCompanyLiveryWindow(WindowDesc &desc, CompanyID company, GroupID group) : Window(desc)
 	{
 		this->CreateNestedTree();
-		this->GetWidget<NWidgetStacked>(WID_SCL_SEC_COL_DROP_SEL)->SetDisplayedPlane(_loaded_newgrf_features.has_2CC ? 0 : SZSP_NONE);
 		this->vscroll = this->GetScrollbar(WID_SCL_MATRIX_SCROLLBAR);
 
 		if (group == GroupID::Invalid()) {
@@ -790,11 +789,8 @@ public:
 				break;
 			}
 
-			case WID_SCL_SEC_COL_DROPDOWN:
-				if (!_loaded_newgrf_features.has_2CC) break;
-				[[fallthrough]];
-
-			case WID_SCL_PRI_COL_DROPDOWN: {
+			case WID_SCL_PRI_COL_DROPDOWN:
+			case WID_SCL_SEC_COL_DROPDOWN: {
 				this->square = GetSpriteSize(SPR_SQUARE);
 				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
 				for (Colours colour = Colours::Begin; colour != Colours::End; colour++) {
@@ -1110,9 +1106,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_select_company_liver
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, Colours::Grey, WID_SCL_SPACER_DROPDOWN), SetFill(1, 1), SetResize(1, 0), EndContainer(),
 		NWidget(WWT_DROPDOWN, Colours::Grey, WID_SCL_PRI_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_PRIMARY_TOOLTIP),
-		NWidget(NWID_SELECTION, Colours::Invalid, WID_SCL_SEC_COL_DROP_SEL),
-			NWidget(WWT_DROPDOWN, Colours::Grey, WID_SCL_SEC_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_SECONDARY_TOOLTIP),
-		EndContainer(),
+		NWidget(WWT_DROPDOWN, Colours::Grey, WID_SCL_SEC_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_SECONDARY_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
 };
