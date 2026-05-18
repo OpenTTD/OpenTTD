@@ -624,7 +624,7 @@ constexpr uint8_t GetColourOffset(const Livery &l, bool primary)
 struct SelectCompanyLiveryWindow : public Window {
 private:
 	struct {
-		uint32_t schemes{}; ///< Selected schemes.
+		LiverySchemes schemes{}; ///< Selected schemes.
 		GroupID group = GroupID::Invalid(); ///< Selected group.
 	} sel{}; ///< Current selection.
 	LiveryClass livery_class{};
@@ -633,6 +633,7 @@ private:
 	uint line_height = 0;
 	GUIGroupList groups{};
 	Scrollbar *vscroll = nullptr;
+	LiverySchemes visible_schemes{}; ///< Currently visible livery schemes.
 
 	void ShowColourDropDownMenu(uint32_t widget)
 	{
@@ -642,7 +643,7 @@ private:
 		uint8_t default_col{};
 
 		/* Disallow other company colours for the primary colour */
-		if (this->livery_class < LC_GROUP_RAIL && HasBit(this->sel.schemes, LS_DEFAULT) && primary) {
+		if (this->livery_class < LC_GROUP_RAIL && this->sel.schemes.Test(LS_DEFAULT) && primary) {
 			for (const Company *c : Company::Iterate()) {
 				if (c->index != _local_company) used_colours.Set(c->colour);
 			}
@@ -652,11 +653,7 @@ private:
 
 		if (this->livery_class < LC_GROUP_RAIL) {
 			/* Get the first selected livery to use as the default dropdown item */
-			LiveryScheme scheme;
-			for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-				if (HasBit(this->sel.schemes, scheme)) break;
-			}
-			if (scheme == LS_END) scheme = LS_DEFAULT;
+			LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LS_DEFAULT);
 			livery = &c->livery[scheme];
 			if (scheme != LS_DEFAULT) default_livery = &c->livery[LS_DEFAULT];
 		} else {
@@ -689,6 +686,16 @@ private:
 		ShowDropDownList(this, std::move(list), sel, widget);
 	}
 
+	/** Build 'list' of visible livery schemes. */
+	void BuildLiveryList()
+	{
+		visible_schemes.Reset();
+		for (LiveryScheme scheme : _loaded_newgrf_features.used_liveries) {
+			if (_livery_class[scheme] != this->livery_class) continue;
+			visible_schemes.Set(scheme);
+		}
+	}
+
 	void BuildGroupList(CompanyID owner)
 	{
 		if (!this->groups.NeedRebuild()) return;
@@ -706,12 +713,7 @@ private:
 	void SetRows()
 	{
 		if (this->livery_class < LC_GROUP_RAIL) {
-			this->rows = 0;
-			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-				if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
-					this->rows++;
-				}
-			}
+			this->rows = this->visible_schemes.Count();
 		} else {
 			this->rows = (uint)this->groups.size();
 		}
@@ -728,8 +730,9 @@ public:
 
 		if (group == GroupID::Invalid()) {
 			this->livery_class = LC_OTHER;
-			this->sel.schemes = 1;
+			this->sel.schemes = LS_DEFAULT;
 			this->LowerWidget(WID_SCL_CLASS_GENERAL);
+			this->BuildLiveryList();
 			this->BuildGroupList(company);
 			this->SetRows();
 		} else {
@@ -761,7 +764,7 @@ public:
 
 		/* Position scrollbar to selected group */
 		for (uint i = 0; i < this->rows; i++) {
-			if (this->groups[i].group->index == sel.group) {
+			if (this->groups[i].group->index == this->sel.group) {
 				this->vscroll->SetPosition(i - this->vscroll->GetCapacity() / 2);
 				break;
 			}
@@ -774,7 +777,7 @@ public:
 			case WID_SCL_SPACER_DROPDOWN: {
 				/* The matrix widget below needs enough room to print all the schemes. */
 				Dimension d = {0, 0};
-				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+				for (LiveryScheme scheme : _loaded_newgrf_features.used_liveries) {
 					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + scheme));
 				}
 
@@ -814,7 +817,7 @@ public:
 		bool local = this->window_number == _local_company;
 
 		/* Disable dropdown controls if no scheme is selected */
-		bool disabled = this->livery_class < LC_GROUP_RAIL ? (this->sel.schemes == 0) : (this->sel.group == GroupID::Invalid());
+		bool disabled = this->livery_class < LC_GROUP_RAIL ? this->sel.schemes.None() : (this->sel.group == GroupID::Invalid());
 		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, !local || disabled);
 		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, !local || disabled);
 
@@ -836,12 +839,8 @@ public:
 				StringID colour = STR_COLOUR_DEFAULT;
 
 				if (this->livery_class < LC_GROUP_RAIL) {
-					if (this->sel.schemes != 0) {
-						LiveryScheme scheme = LS_DEFAULT;
-						for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-							if (HasBit(this->sel.schemes, scheme)) break;
-						}
-						if (scheme == LS_END) scheme = LS_DEFAULT;
+					LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LS_END);
+					if (scheme != LS_END) {
 						const Livery &livery = c->livery[scheme];
 						if (scheme == LS_DEFAULT || livery.in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
 							colour = STR_COLOUR_DARK_BLUE + GetColourOffset(livery, primary);
@@ -914,11 +913,9 @@ public:
 
 		if (livery_class < LC_GROUP_RAIL) {
 			int pos = this->vscroll->GetPosition();
-			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-				if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
-					if (pos-- > 0) continue;
-					draw_livery(GetString(STR_LIVERY_DEFAULT + scheme), c->livery[scheme], HasBit(this->sel.schemes, scheme), scheme == LS_DEFAULT, 0);
-				}
+			for (LiveryScheme scheme : this->visible_schemes) {
+				if (pos-- > 0) continue;
+				draw_livery(GetString(STR_LIVERY_DEFAULT + scheme), c->livery[scheme], this->sel.schemes.Test(scheme), scheme == LS_DEFAULT, 0);
 			}
 		} else {
 			auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->groups);
@@ -949,18 +946,13 @@ public:
 			case WID_SCL_GROUPS_SHIP:
 			case WID_SCL_GROUPS_AIRCRAFT:
 				this->RaiseWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
-				this->livery_class = (LiveryClass)(widget - WID_SCL_CLASS_GENERAL);
+				this->livery_class = static_cast<LiveryClass>(widget - WID_SCL_CLASS_GENERAL);
 				this->LowerWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 
 				/* Select the first item in the list */
 				if (this->livery_class < LC_GROUP_RAIL) {
-					this->sel.schemes = 0;
-					for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-						if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
-							this->sel.schemes = 1 << scheme;
-							break;
-						}
-					}
+					this->BuildLiveryList();
+					this->sel.schemes = this->visible_schemes.GetNthSetBit(0).value_or(LS_DEFAULT);
 				} else {
 					this->sel.group = GroupID::Invalid();
 					this->groups.ForceRebuild();
@@ -988,17 +980,12 @@ public:
 					uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
 					if (row >= this->rows) return;
 
-					LiveryScheme j = (LiveryScheme)row;
-
-					for (LiveryScheme scheme = LS_BEGIN; scheme <= j && scheme < LS_END; scheme++) {
-						if (_livery_class[scheme] != this->livery_class || !HasBit(_loaded_newgrf_features.used_liveries, scheme)) j++;
-					}
-					assert(j < LS_END);
+					LiveryScheme scheme = this->visible_schemes.GetNthSetBit(row).value();
 
 					if (_ctrl_pressed) {
-						ToggleBit(this->sel.schemes, j);
+						this->sel.schemes.Flip(scheme);
 					} else {
-						this->sel.schemes = 1 << j;
+						this->sel.schemes = scheme;
 					}
 				} else {
 					auto it = this->vscroll->GetScrolledItemFromWidget(this->groups, pt.y, this, widget);
@@ -1027,9 +1014,9 @@ public:
 
 		if (this->livery_class < LC_GROUP_RAIL) {
 			/* Set company colour livery */
-			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+			for (LiveryScheme scheme : this->visible_schemes) {
 				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
-				if (HasBit(this->sel.schemes, scheme) || (_ctrl_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
+				if (this->sel.schemes.Test(scheme) || _ctrl_pressed) {
 					Command<Commands::SetCompanyColour>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
 				}
 			}
@@ -1069,13 +1056,11 @@ public:
 
 		bool current_class_valid = this->livery_class == LC_OTHER || this->livery_class >= LC_GROUP_RAIL;
 		if (_settings_client.gui.liveries == LIT_ALL || (_settings_client.gui.liveries == LIT_COMPANY && this->window_number == _local_company)) {
-			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-				if (HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
-					if (_livery_class[scheme] == this->livery_class) current_class_valid = true;
-					this->EnableWidget(WID_SCL_CLASS_GENERAL + _livery_class[scheme]);
-				} else if (this->livery_class < LC_GROUP_RAIL) {
-					ClrBit(this->sel.schemes, scheme);
-				}
+			/* Clear selection of unused schemes. */
+			this->sel.schemes &= _loaded_newgrf_features.used_liveries;
+			for (LiveryScheme scheme : _loaded_newgrf_features.used_liveries) {
+				if (_livery_class[scheme] == this->livery_class) current_class_valid = true;
+				this->EnableWidget(WID_SCL_CLASS_GENERAL + _livery_class[scheme]);
 			}
 		}
 

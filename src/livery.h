@@ -59,6 +59,10 @@ enum LiveryScheme : uint8_t {
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(LiveryScheme)
+DECLARE_ENUM_AS_ADDABLE(LiveryScheme)
+
+/** Bitset of \c LiveryScheme elements. */
+using LiverySchemes = EnumBitSet<LiveryScheme, uint32_t, LiveryScheme::LS_END>;
 
 /** List of different livery classes, used only by the livery GUI. */
 enum LiveryClass : uint8_t {

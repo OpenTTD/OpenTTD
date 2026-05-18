@@ -492,10 +492,10 @@ void ResetNewGRFData()
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = {};
 
-	_loaded_newgrf_features.has_2CC           = false;
-	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;
-	_loaded_newgrf_features.shore             = ShoreReplacement::None;
-	_loaded_newgrf_features.tram              = TramDepotReplacement::None;
+	_loaded_newgrf_features.has_2CC = false;
+	_loaded_newgrf_features.used_liveries = LS_DEFAULT;
+	_loaded_newgrf_features.shore = ShoreReplacement::None;
+	_loaded_newgrf_features.tram = TramDepotReplacement::None;
 
 	/* Clear all GRF overrides */
 	_grf_id_overrides.clear();
@@ -888,23 +888,23 @@ static void FinaliseEngineArray()
 		/* Skip wagons, there livery is defined via the engine */
 		if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) {
 			LiveryScheme ls = GetEngineLiveryScheme(e->index, EngineID::Invalid(), nullptr);
-			SetBit(_loaded_newgrf_features.used_liveries, ls);
+			_loaded_newgrf_features.used_liveries.Set(ls);
 			/* Note: For ships and roadvehicles we assume that they cannot be refitted between passenger and freight */
 
 			if (e->type == VehicleType::Train) {
-				SetBit(_loaded_newgrf_features.used_liveries, LS_FREIGHT_WAGON);
+				_loaded_newgrf_features.used_liveries.Set(LS_FREIGHT_WAGON);
 				switch (ls) {
 					case LS_STEAM:
 					case LS_DIESEL:
 					case LS_ELECTRIC:
 					case LS_MONORAIL:
 					case LS_MAGLEV:
-						SetBit(_loaded_newgrf_features.used_liveries, LS_PASSENGER_WAGON_STEAM + ls - LS_STEAM);
+						_loaded_newgrf_features.used_liveries.Set(LS_PASSENGER_WAGON_STEAM + ls - LS_STEAM);
 						break;
 
 					case LS_DMU:
 					case LS_EMU:
-						SetBit(_loaded_newgrf_features.used_liveries, LS_PASSENGER_WAGON_DIESEL + ls - LS_DMU);
+						_loaded_newgrf_features.used_liveries.Set(LS_PASSENGER_WAGON_DIESEL + ls - LS_DMU);
 						break;
 
 					default: NOT_REACHED();
