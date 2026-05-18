@@ -2244,7 +2244,7 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignorerar grund
 
 # Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :Fel i video-inställningarna...
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... Inget kompatibelt grafikkort hittat. Hårdvaruacceleration inaktiverad
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :inget kompatibelt grafikkort hittat. Hårdvaruacceleration inaktiverad
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :GPU-drivrutinen kraschade spelet. Maskinvaruacceleration inaktiverad
 
 # Intro window
@@ -2386,11 +2386,11 @@ STR_FACE_LOAD_DONE                                              :Ditt favoritans
 STR_FACE_FACECODE                                               :{BLACK}Spelarens ansiktsnummer
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Visa och/eller välj ansiktsnummer för VD
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Visa och/eller välj ansiktsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Nytt VD-ansikte har valts
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kunde inte ange ansiktsnumret för VD. Det måste vara en siffra mellan 0 och 4.294.967.295!
+STR_FACE_FACECODE_SET                                           :Nytt VD-ansikte har valts
+STR_FACE_FACECODE_ERR                                           :Kunde inte ange ansiktsnumret för VD. Det måste vara en siffra mellan 0 och 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Spara
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spara favoritansikte
-STR_FACE_SAVE_DONE                                              :{WHITE}Det här ansiktet kommer att sparas som ditt favoritansikte i OpenTTDs konfigurationsfil.
+STR_FACE_SAVE_DONE                                              :Det här ansiktet kommer att sparas som ditt favoritansikte i OpenTTDs konfigurationsfil.
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ja
@@ -3703,16 +3703,16 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade fi
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :Beteendet hos NewGRF:en '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Kraftförsörjning-vagn-tillstånd för '{1:ENGINE}' ändrades utanför en depå
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depån
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Kraftförsörjning-vagn-tillstånd för '{1:ENGINE}' ändrades utanför en depå
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :Fordonslängd för '{1:ENGINE}' ändrades utanför en depån
 STR_NEWGRF_BROKEN_CAPACITY                                      :Kapaciteten ändrades för '{1:ENGINE}' utan att den var i depå eller under anpassning
 STR_BROKEN_VEHICLE_LENGTH                                       :Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :NewGRF:en '{0:STRING}' ger felaktig information
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en oändlig loop i produktions-callback-funktionen
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :'{1:STRING}' skapade en oändlig loop i produktions-callback-funktionen
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Callback-funktion {1:HEX} returnerade ett okänt/ogiltigt resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returnerade ogiltig lasttyp i produktions-callback vid {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :'{1:STRING}' returnerade ogiltig lasttyp i produktions-callback vid {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
@@ -5100,7 +5100,7 @@ STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Meddela
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Meddelande från {COMPANY}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Utanför kanten
+STR_ERROR_OFF_EDGE_OF_MAP                                       :utanför kanten
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :för nära kanten av kartan
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :inte tillräckligt med pengar - kräver {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :platt mark krävs
@@ -5113,8 +5113,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :platsen passar 
 STR_ERROR_ALREADY_BUILT                                         :redan byggd
 STR_ERROR_OWNED_BY                                              :ägs av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :området ägs av ett annat företag
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landskapsarkitektursbegränsning uppnådd
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutrensningsbegränsning uppnådd
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :landskapsarkitektursbegränsning uppnådd
+STR_ERROR_CLEARING_LIMIT_REACHED                                :rutrensningsbegränsning uppnådd
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :trädplanteringsbegränsning uppnådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :namnet måste vara unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{STRING} i vägen
@@ -5146,7 +5146,7 @@ STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Kan inte låna 
 STR_ERROR_LOAN_ALREADY_REPAID                                   :det finns inget lån att återbetala
 STR_ERROR_CURRENCY_REQUIRED                                     :{CURRENCY_LONG} krävs
 STR_ERROR_CAN_T_REPAY_LOAN                                      :Kan inte återbetala lånet...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan inte ge bort pengar som är lånade från banken...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Kan inte ge bort pengar som är lånade från banken...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :Kan inte ge pengar till detta företag...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :Kan inte köpa företag...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Kan inte bygga huvudkontor här...
@@ -5258,7 +5258,7 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Kan inte bygga 
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :Kan inte byta namn på terminal
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... måste stoppas i en depå
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :måste stoppas i en depå
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :måste stoppas inne i en depå
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :måste stoppas inne i en depå
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :måste stoppas inne i en hangar
@@ -5270,7 +5270,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :består av fler
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :inkompatibla spårtyper
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Kan inte flytta fordon...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Det bakre loket kommer alltid följa med det tillhörande främre loket
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :Det bakre loket kommer alltid följa med det tillhörande främre loket
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :kan inte hitta vägen till närmaste depå
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :kan inte hitta lokal depå
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :kan inte hitta lokal hangar
@@ -5278,11 +5278,11 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :kan inte hitta 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :felaktig depåtyp
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan endast inneha en utglesningsorder
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... kan inte använda fulla lastordrar när fordonet har en utglesningsorder
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kan inte glesa ut ett fordon med en full lastorder
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... kan inte använda villkorade ordrar när fordonet har en utglesningsorder
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan inte glesa ut ett fordon med en villkorad order
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :kan endast inneha en utglesningsorder
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :kan inte använda fulla lastordrar när fordonet har en utglesningsorder
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :kan inte glesa ut ett fordon med en full lastorder
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :kan inte använda villkorade ordrar när fordonet har en utglesningsorder
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :kan inte glesa ut ett fordon med en villkorad order
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} är för långt efter utbyte
@@ -5405,7 +5405,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :luftfarkosten �
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :Kan inte anpassa tåg...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Kan inte anpassa vägfordon...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :Kan inte anpassa skepp...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan inte anpassa flygplan...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Kan inte anpassa flygplan...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :Kan inte byta namn på tåg...
@@ -5441,7 +5441,7 @@ STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Kan inte byta n
 STR_ERROR_CAN_T_SELL_TRAIN                                      :Kan inte sälja järnvägsfordon...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Kan inte sälja vägfordon...
 STR_ERROR_CAN_T_SELL_SHIP                                       :Kan inte sälja skepp...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan inte sälja flygplan...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Kan inte sälja flygplan...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Kan inte sälja alla järnvägsfordon...
@@ -5473,11 +5473,11 @@ STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Inga vägtyper 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som erbjuder vägtyper som städer kan bygga tidigt
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :Kan inte tillåta tåg att passera signal under fara...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :Kan inte byta tågets riktning...
 STR_ERROR_TRAIN_START_NO_POWER                                  :tåget har ingen kraft
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Fordon kan inte vända...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :Fordon kan inte vända...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :luftfarkosten är i luften
 
@@ -5505,7 +5505,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :luftfarkosten h
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :Det finns ingen järnvägsstation
 STR_ERROR_NO_BUS_STATION                                        :Det finns ingen busstation
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Det finns ingen lastbrygga
+STR_ERROR_NO_TRUCK_STATION                                      :Det finns ingen lastbrygga
 STR_ERROR_NO_DOCK                                               :Det finns ingen hamn
 STR_ERROR_NO_AIRPORT                                            :Det finns ingen flygplats/helikopterflygplats
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Det finns inga hållplatser med en kompatibel vägtyp
