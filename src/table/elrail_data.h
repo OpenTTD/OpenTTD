@@ -30,11 +30,10 @@ enum TileLocationGroup : uint8_t {
  * into account: the tile being drawn itself (the home tile, the one in
  * ti->tile), and the neighbouring tile
  */
-enum TileSource : uint8_t {
-	TS_HOME      = 0,
-	TS_NEIGHBOUR = 1,
-
-	TS_END
+enum class TileSource : uint8_t {
+	Home, ///< Home tile.
+	Neighbour, ///< Neighbouring tile.
+	End, ///< End marker.
 };
 
 static const uint NUM_TRACKS_AT_PCP = 6;
@@ -212,10 +211,10 @@ static const Track _tracks_at_pcp[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 
 /** Takes each of the 6 track bits from the array above and assigns it to the home tile or neighbour tile. */
 static const TileSource _track_source_tile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
-	{TS_HOME, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     },
-	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_HOME     },
-	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_HOME     , TS_NEIGHBOUR},
-	{TS_HOME, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR},
+	{TileSource::Home, TileSource::Neighbour, TileSource::Home, TileSource::Neighbour, TileSource::Neighbour, TileSource::Home},
+	{TileSource::Home, TileSource::Neighbour, TileSource::Neighbour, TileSource::Home, TileSource::Neighbour, TileSource::Home},
+	{TileSource::Home, TileSource::Neighbour, TileSource::Neighbour, TileSource::Home, TileSource::Home, TileSource::Neighbour},
+	{TileSource::Home, TileSource::Neighbour, TileSource::Home, TileSource::Neighbour, TileSource::Home, TileSource::Neighbour},
 };
 
 /** Several PPPs maybe exist, here they are sorted in order of preference. */
