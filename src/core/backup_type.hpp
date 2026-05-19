@@ -164,6 +164,14 @@ struct AutoRestoreBackup {
 	}
 
 	/**
+	 * Backup variable without switching value.
+	 * @param original Variable to backup.
+	 */
+	AutoRestoreBackup(T &original) : original(original), original_value(original)
+	{
+	}
+
+	/**
 	 * Restore the variable upon object destruction.
 	 */
 	~AutoRestoreBackup()
