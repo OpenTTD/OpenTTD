@@ -278,7 +278,7 @@ bool IsTileFlat(TileIndex tile, int *h = nullptr);
  */
 inline Slope GetTileSlope(TileIndex tile)
 {
-	return std::get<0>(GetTileSlopeZ(tile));
+	return std::get<Slope>(GetTileSlopeZ(tile));
 }
 
 /**
