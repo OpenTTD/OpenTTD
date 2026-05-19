@@ -7,11 +7,14 @@ cmake_minimum_required(VERSION 3.17)
 if(NOT REGRESSION_TEST)
     message(FATAL_ERROR "Script needs REGRESSION_TEST defined (tip: use -DREGRESSION_TEST=..)")
 endif()
+if(NOT SCRIPT_FOLDER)
+    message(FATAL_ERROR "Script needs SCRIPT_FOLDER defined (tip: use -DSCRIPT_FOLDER=..)")
+endif()
 if(NOT OPENTTD_EXECUTABLE)
     message(FATAL_ERROR "Script needs OPENTTD_EXECUTABLE defined (tip: use -DOPENTTD_EXECUTABLE=..)")
 endif()
 
-if(NOT EXISTS ai/${REGRESSION_TEST}/test.sav)
+if(NOT EXISTS ${SCRIPT_FOLDER}/${REGRESSION_TEST}/test.sav)
     message(FATAL_ERROR "Regression test ${REGRESSION_TEST} does not exist (tip: check regression folder for the correct spelling)")
 endif()
 
@@ -35,7 +38,7 @@ endif()
 execute_process(COMMAND ${OPENTTD_EXECUTABLE}
                         -x
                         -c regression/regression.cfg
-                        -g ai/${REGRESSION_TEST}/test.sav
+                        -g ${SCRIPT_FOLDER}/${REGRESSION_TEST}/test.sav
                         -snull
                         -mnull
                         -vnull:ticks=30000
@@ -77,7 +80,7 @@ string(REGEX REPLACE "\\\[script:[0-9]\\\]" "" REGRESSION_RESULT "${REGRESSION_R
 
 # Convert the output to a format that is expected (and more readable) by result.txt
 string(REPLACE "dbg:  " "ERROR: " REGRESSION_RESULT "${REGRESSION_RESULT}")
-string(REPLACE "ERROR: [1] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+string(REGEX REPLACE "ERROR: \\\[18?\\\] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "[P] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "[S] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REGEX REPLACE "dbg: ([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
@@ -88,7 +91,7 @@ string(REGEX REPLACE "ERROR:   [12]([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSI
 string(REGEX REPLACE "ERROR: The first([^\n]*)\n?" "" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
 # Read the expected result
-file(READ ai/${REGRESSION_TEST}/result.txt REGRESSION_EXPECTED)
+file(READ ${SCRIPT_FOLDER}/${REGRESSION_TEST}/result.txt REGRESSION_EXPECTED)
 
 # Convert the string to a list
 string(REPLACE "\n" ";" REGRESSION_RESULT "${REGRESSION_RESULT}")

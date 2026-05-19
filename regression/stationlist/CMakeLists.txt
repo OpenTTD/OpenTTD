@@ -1,5 +1,5 @@
 include(CreateRegression)
-create_regression(
+create_regression("ai"
     ${CMAKE_CURRENT_SOURCE_DIR}/info.nut
     ${CMAKE_CURRENT_SOURCE_DIR}/main.nut
     ${CMAKE_CURRENT_SOURCE_DIR}/result.txt
