@@ -1063,7 +1063,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Wielt d'Interfa
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% fäerdeg)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Vollbild
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Klick dës Optioun un fir OpenTTD am Vollbild ze spillen
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Uschalte fir OpenTTD am Vollbild ze spillen
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Bildopléisung
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Wielt d'Bildopléisung
@@ -1087,12 +1087,12 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Gréisst autom.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Uschalte fir d'Interfacegréisst automatesch anzestellen
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Bevels skaléiren
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Uschalten fir d'Bevels mat der Gréisst vum Interface ze skaléiren
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Uschalte fir d'Bevels mat der Gréisst vum Interface ze skaléiren
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Traditionell Spriteschrëft benotzen
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Klick dës Optioun wanns du déi traditionell fix-Gréisst Spriteschrëft wëlls
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Uschalte wanns du déi traditionell fix-Gréisst Spriteschrëft wëlls
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias Schrëften
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Klick dës Optioun fir verännerbar Schrëften ze anti-aliasen
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Uschalte fir verännerbar Schrëften ze anti-aliasen
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -2243,7 +2243,7 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignoréiren Bas
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignoréiren Basis Musik Set '{STRING}': net fonnt
 
 # Video initialization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Feeler an de Videoastellungen
+STR_VIDEO_DRIVER_ERROR                                          :Feeler an de Videoastellungen
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :... keng kompatibel GPU fonnt. Hardwarebeschleunegung deaktivéiert
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :GPU driver huet d'Spill gecrasht. Hardwarebeschleunegung ausgeschalt
 
@@ -2873,6 +2873,7 @@ STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :D'Héicht vun V
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :D'Héicht vun Virschaubiller eropsetzen. Ctrl+Klick fir op de Maximum ze setzen.
 
+STR_PICKER_DEFAULT_COLLECTION                                   :Standard Collectioun
 STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Eng Kollektioun auswielen
 STR_PICKER_COLLECTION_ADD                                       :Dobäisetzen
 STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Eng nei Kollektioun erstellen
@@ -3656,8 +3657,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feeler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Den NewGRF "{STRING}" huet e fatale Feeler gemet:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Den NewGRF "{STRING}" huet e Feeler gemet:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :Den NewGRF "{STRING}" huet e fatale Feeler gemet:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :Den NewGRF "{STRING}" huet e Feeler gemet:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} wärt net mat der TTDPatch Versioun déi vun OpenTTD erkannt gouf funktionéiren
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ass fir {2:STRING} Versioun vun TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ass designed fir mat {2:STRING} benotzt ze ginn
@@ -3674,7 +3675,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Versicht invali
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} huet eng korrupt Sprite. All korrupt Sprites ginn als Fragezeichen (?) duergestallt
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Huet eng Rei Action 8 Einträg (Sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lanscht d'Enn vum Pseudo-Sprite gelies (Sprite {3:NUM})
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Ugefroten GRF Ressource net verfügbar (sprite {3:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Ugefroten NewGRF Ressource net verfügbar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} gouf ausgeschalt vun {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/onbekannten Sprite Layout Format (Sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zevill Elementer an der Eegeschaftewert-Lëscht (Sprite {3:NUM}, Eegeschaft {4:HEX})
@@ -3684,13 +3685,13 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ongültegen Ind
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Opgepasst!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du mëss Ännerungen an engem lafende Spill. Dest kann OpenTTD crashen.W.e.g dest net als Bug melden.{}Bass du sécher?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kann Datei net bäisetzen: Duplikat GRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :Kann Datei net bäisetzen: Duplikat NewGRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passend Datei net fonnt (kompatibel NewGRF gelued)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Kann Datei net dobäisetzen : NewGRF Limiten erreecht
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Kompatibel NewGRF(e) gelued fir feelend Dateien
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlend GRF Datei(en) sinn ausgeschalt
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fehlend GRF Datei(en)
+STR_NEWGRF_DISABLED_WARNING                                     :Feelend GRF Datei(en) sinn ausgeschalt
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Feelend NewGRF Datei(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Entpausen kann OpenTTD crashen.{} Wellsde wierklech entpausen ?
 
 # NewGRF status
@@ -5108,7 +5109,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :Kann dat net ma
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :Gebai muss fir d'éischt ofgerappt ginn
 STR_ERROR_BUILDING_IS_PROTECTED                                 :Gebai ass geschützt
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Kann des Plaz net raumen...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... Plaz net gëeegent
+STR_ERROR_SITE_UNSUITABLE                                       :Plaz net gëeegent
 STR_ERROR_ALREADY_BUILT                                         :scho gebaut
 STR_ERROR_OWNED_BY                                              :am Besëtz vun {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :d'Plaz ass am Besëtz vun enger aanerer Firma
@@ -5131,7 +5132,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Kann d'Land hei
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Kann d'Land net ebenen...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :D'gruewe géif den Tunnel beschiedegen
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :schon op Mieresspigel
-STR_ERROR_TOO_HIGH                                              :{WHITE}... ze héich
+STR_ERROR_TOO_HIGH                                              :ze héich
 STR_ERROR_ALREADY_LEVELLED                                      :scho flaach
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :dono wier d'Bréck ze héich fir den Terrain.
 STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :muss de Floss fir d'éischt ofrappen
@@ -5158,7 +5159,7 @@ STR_ERROR_CAN_T_EXPAND_TOWN                                     :Kann d'Stad net
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :ze no un enger anerer Stad
 STR_ERROR_TOO_MANY_TOWNS                                        :ze vill Stied
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :et ass keng Plaz méi op der Kaart
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Stroossenarbeschten amgaangen
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :Stroossenarbeschten amgaangen
 STR_ERROR_TOWN_CAN_T_DELETE                                     :Kann des Stad net läschen...{}{}Eng Statioun oder Schapp huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :et gëtt keng gëeegent Plaz fir eng Statu am Stadzentrum
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :Kann d'Haus net bauen...
@@ -5233,7 +5234,7 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :muss de Quai fi
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :muss de Fluchhafe fir d'éischt ofrappen
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenzt un méi wéi een Weepunkt
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :grenzt un méi wéi ee Weepunkt
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :ze no un engem aneren Weepunkt
 
 STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Kann keen Zuchweepunkt hei bauen...
@@ -5257,7 +5258,7 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Kann d'Werft he
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :Kann de Schapp net ëmbenennen
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... muss an engem Schapp gestoppt ginn
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :muss an engem Schapp gestoppt ginn
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :muss an engem Depot gestoppt ginn
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :muss an engem Schëffsschapp gestoppt ginn
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :muss an engem Hangar gestoppt ginn
@@ -5269,7 +5270,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :ass aus e puer 
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :onkompatibel Schinnentypen
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Kann d'Gefier net réckelen...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}D'hënnescht Maschinn geet ëmmer der viischter no.
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :D'hënnescht Maschinn geet ëmmer der viischter no.
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :Kann de Wee an de Schapp net fannen
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :Kann de Schapp net fannen
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :ka lokalen Hangar net fannen
@@ -5335,7 +5336,7 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :muss de Kanal f
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Kann den Aquadukt hei net bauen...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... et ass schon e Bam hei
+STR_ERROR_TREE_ALREADY_HERE                                     :et ass schon e Bam do
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :falschen Terrain fir dëse Bam-Typ
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Kann d'Beem hei net planzen...
 
@@ -5373,7 +5374,7 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :Kann Objet net 
 STR_ERROR_OBJECT_IN_THE_WAY                                     :Objet am Wee
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :Firmenhaaptgebai am Wee
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Kann dat Land net kafen...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... schon am Besëtz!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :schon an dengem Besëtz!
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :Limit fir d'Baue vun Objeten erreecht
 
 # Group related errors
@@ -5396,8 +5397,8 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :Fliger am Wee
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :Gefier net verfügbar
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Stroossegefier net verfügbar
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Schëff net verfügbar
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :Stroossegefier net verfügbar
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :Schëff net verfügbar
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :Fliger net verfügbar
 
 ###length VEHICLE_TYPES
@@ -5520,7 +5521,7 @@ STR_ERROR_NO_BUOY                                               :Et gëtt keng B
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :Kann dem Gefier keen Zäitplang ginn...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :Gefierer kënnen nëmmen op Statiounen halen.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :dëst Gefier bleift net op dëser Gare stoën.
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... Zäitplang ass net komplett
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :Zäitplang ass net komplett
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :Zäitplang gouf nach net gestart
 
 # Sign related errors
