@@ -297,7 +297,7 @@ static bool SwitchNewGRFBlitter()
 		{ "32bpp-anim",      1,  8, 32,  8, 32 },
 	};
 
-	const bool animation_wanted = HasBit(_display_opt, DO_FULL_ANIMATION);
+	const bool animation_wanted = _display_opt.Test(DisplayOption::FullAnimation);
 	std::string_view cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 
 	for (const auto &replacement_blitter : replacement_blitters) {

@@ -1775,8 +1775,8 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	TimerGameEconomy::Year economy_year = TimerGameEconomy::year;
 	TimerGameEconomy::DateFract economy_date_fract = TimerGameEconomy::date_fract;
 
-	uint64_t tick_counter  = TimerGameTick::counter;
-	uint8_t display_opt     = _display_opt;
+	uint64_t tick_counter = TimerGameTick::counter;
+	DisplayOptions display_opt = _display_opt;
 
 	if (_networking) {
 		TimerGameCalendar::year = _settings_game.game_creation.starting_year;
@@ -1788,7 +1788,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		TimerGameEconomy::date_fract = 0;
 
 		TimerGameTick::counter = 0;
-		_display_opt  = 0;
+		_display_opt.Reset();
 	}
 
 	InitializePatchFlags();
@@ -1894,7 +1894,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	TimerGameEconomy::date_fract = economy_date_fract;
 
 	TimerGameTick::counter = tick_counter;
-	_display_opt  = display_opt;
+	_display_opt = display_opt;
 }
 
 /**

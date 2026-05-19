@@ -38,7 +38,7 @@ typedef uint TransparencyOptionBits; ///< transparency option bits
 extern TransparencyOptionBits _transparency_opt;
 extern TransparencyOptionBits _transparency_lock;
 extern TransparencyOptionBits _invisibility_opt;
-extern uint8_t _display_opt;
+extern DisplayOptions _display_opt;
 extern StationFacilities _facility_display_opt;
 
 /**

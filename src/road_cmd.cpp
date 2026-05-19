@@ -1670,7 +1670,7 @@ static void DrawRoadBits(TileInfo *ti)
 	DrawRoadCatenary(ti);
 
 	/* Return if full detail is disabled, or we are zoomed fully out. */
-	if (!HasBit(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom > ZoomLevel::Detail) return;
+	if (!_display_opt.Test(DisplayOption::FullDetail) || _cur_dpi->zoom > ZoomLevel::Detail) return;
 
 	/* Do not draw details (street lights, trees) under low bridge */
 	Roadside roadside = GetRoadside(ti->tile);

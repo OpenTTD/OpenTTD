@@ -287,19 +287,19 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	}
 	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS, OptionMenuEntries::Transparencies));
 	list.push_back(MakeDropDownListDividerItem());
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_TOWN_NAMES), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OptionMenuEntries::ShowTownNames));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_STATION_NAMES), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OptionMenuEntries::ShowStationNames));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowTownNames), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OptionMenuEntries::ShowTownNames));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowStationNames), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OptionMenuEntries::ShowStationNames));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Train), STR_SETTINGS_MENU_STATION_NAMES_TRAIN, OptionMenuEntries::ShowTrainStationNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::TruckStop), STR_SETTINGS_MENU_STATION_NAMES_LORRY, OptionMenuEntries::ShowLorryStationNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::BusStop), STR_SETTINGS_MENU_STATION_NAMES_BUS, OptionMenuEntries::ShowBusStationNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Dock), STR_SETTINGS_MENU_STATION_NAMES_SHIP, OptionMenuEntries::ShowDockNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Airport), STR_SETTINGS_MENU_STATION_NAMES_PLANE, OptionMenuEntries::ShowAirportNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(STATION_FACILITY_GHOST), STR_SETTINGS_MENU_STATION_NAMES_GHOST, OptionMenuEntries::ShowGhostStationNames, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OptionMenuEntries::ShowWaypointNames));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_SIGNS), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OptionMenuEntries::ShowSigns));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OptionMenuEntries::ShowCompetitorSigns));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_ANIMATION), STR_SETTINGS_MENU_FULL_ANIMATION, OptionMenuEntries::FullAnimation));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_DETAIL), STR_SETTINGS_MENU_FULL_DETAIL, OptionMenuEntries::FullDetails));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowWaypointNames), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OptionMenuEntries::ShowWaypointNames));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowSigns), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OptionMenuEntries::ShowSigns));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowCompetitorSigns), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OptionMenuEntries::ShowCompetitorSigns));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::FullAnimation), STR_SETTINGS_MENU_FULL_ANIMATION, OptionMenuEntries::FullAnimation));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::FullDetail), STR_SETTINGS_MENU_FULL_DETAIL, OptionMenuEntries::FullDetails));
 	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_HOUSES), STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS, OptionMenuEntries::TransparentBuildings));
 	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_SIGNS), STR_SETTINGS_MENU_TRANSPARENT_SIGNS, OptionMenuEntries::TransparentStationSigns));
 
@@ -323,22 +323,22 @@ static CallBackFunction MenuClickSettings(int index)
 		case OptionMenuEntries::SandboxOptions: ShowCheatWindow(); break;
 		case OptionMenuEntries::Transparencies: ShowTransparencyToolbar(); break;
 
-		case OptionMenuEntries::ShowTownNames: ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES); break;
-		case OptionMenuEntries::ShowStationNames: ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
+		case OptionMenuEntries::ShowTownNames: _display_opt.Flip(DisplayOption::ShowTownNames); break;
+		case OptionMenuEntries::ShowStationNames: _display_opt.Flip(DisplayOption::ShowStationNames); break;
 		case OptionMenuEntries::ShowTrainStationNames: _facility_display_opt.Flip(StationFacility::Train); break;
 		case OptionMenuEntries::ShowLorryStationNames: _facility_display_opt.Flip(StationFacility::TruckStop); break;
 		case OptionMenuEntries::ShowBusStationNames: _facility_display_opt.Flip(StationFacility::BusStop); break;
 		case OptionMenuEntries::ShowDockNames: _facility_display_opt.Flip(StationFacility::Dock); break;
 		case OptionMenuEntries::ShowAirportNames: _facility_display_opt.Flip(StationFacility::Airport); break;
 		case OptionMenuEntries::ShowGhostStationNames: _facility_display_opt.Flip(STATION_FACILITY_GHOST); break;
-		case OptionMenuEntries::ShowWaypointNames: ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
-		case OptionMenuEntries::ShowSigns: ToggleBit(_display_opt, DO_SHOW_SIGNS); break;
+		case OptionMenuEntries::ShowWaypointNames: _display_opt.Flip(DisplayOption::ShowWaypointNames); break;
+		case OptionMenuEntries::ShowSigns: _display_opt.Flip(DisplayOption::ShowSigns); break;
 		case OptionMenuEntries::ShowCompetitorSigns:
-			ToggleBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
+			_display_opt.Flip(DisplayOption::ShowCompetitorSigns);
 			InvalidateWindowClassesData(WC_SIGN_LIST, -1);
 			break;
-		case OptionMenuEntries::FullAnimation: ToggleBit(_display_opt, DO_FULL_ANIMATION); CheckBlitter(); break;
-		case OptionMenuEntries::FullDetails: ToggleBit(_display_opt, DO_FULL_DETAIL); break;
+		case OptionMenuEntries::FullAnimation: _display_opt.Flip(DisplayOption::FullAnimation); CheckBlitter(); break;
+		case OptionMenuEntries::FullDetails: _display_opt.Flip(DisplayOption::FullDetail); break;
 		case OptionMenuEntries::TransparentBuildings: ToggleTransparency(TO_HOUSES); break;
 		case OptionMenuEntries::TransparentStationSigns: ToggleTransparency(TO_SIGNS); break;
 	}
