@@ -1,0 +1,44 @@
+
+--TestInit--
+ Ops:      9988
+ TickTest: 1
+ TickTest: 2
+ Ops:      9990
+ SetCommandDelay: (null : 0x00000000)
+ IsValid(vehicle.plane_speed): true
+ vehicle.plane_speed: 4
+  Required this file
+ TestEnum.value1: 1
+ test_constant: 1
+ TestEnum.value2: 2
+ test_constant: 1
+ min(6, 3): 3
+ min(3, 6): 3
+ max(6, 3): 6
+ max(3, 6): 6
+
+--Company--
+  SetName():            false
+  SetName():            false
+  SetName():            false
+  SetName():            false
+  GetLastErrorString(): ERR_PRECONDITION_INVALID_COMPANY
+  GetName():                         (null : 0x00000000)
+  GetPresidentName():                (null : 0x00000000)
+  SetPresidentName():                false
+  GetPresidentName():                (null : 0x00000000)
+
+--CompanyMode--
+  SetName():            true
+  SetName():            true
+  SetName():            true
+  SetName():            false
+  GetLastErrorString(): ERR_NAME_IS_NOT_UNIQUE
+  GetName():                         Regression
+  GetPresidentName():                S. G. Bloggs
+  SetPresidentName():                true
+  GetPresidentName():                Regression GS
+
+Done...
+
+ERROR: The script died unexpectedly.
