@@ -105,13 +105,13 @@ static void _GenerateWorld()
 		if (_network_dedicated) Debug(net, 3, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 		_random.SetSeed(_settings_game.game_creation.generation_seed);
-		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
+		SetGeneratingWorldProgress(GenWorldProgress::Init, 2);
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 		ScriptObject::InitializeRandomizers();
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 
-		IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Init);
 		/* Must start economy early because of the costs. */
 		StartupEconomy();
 		if (!CheckTownRoadTypes()) {
@@ -127,7 +127,7 @@ static void _GenerateWorld()
 		}
 
 		if (!landscape_generated) {
-			SetGeneratingWorldProgress(GWP_OBJECT, 1);
+			SetGeneratingWorldProgress(GenWorldProgress::Objects, 1);
 
 			/* Make sure the tiles at the north border are void tiles if needed. */
 			if (_settings_game.construction.freeform_edges) {
@@ -140,7 +140,7 @@ static void _GenerateWorld()
 
 			ConvertGroundTilesIntoWaterTiles();
 			Map::CountLandTiles();
-			IncreaseGeneratingWorldProgress(GWP_OBJECT);
+			IncreaseGeneratingWorldProgress(GenWorldProgress::Objects);
 
 			_settings_game.game_creation.snow_line_height = DEF_SNOWLINE_HEIGHT;
 		} else {
@@ -160,11 +160,11 @@ static void _GenerateWorld()
 		}
 
 		/* These are probably pointless when inside the scenario editor. */
-		SetGeneratingWorldProgress(GWP_GAME_INIT, 3);
+		SetGeneratingWorldProgress(GenWorldProgress::GameInit, 3);
 		StartupCompanies();
-		IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::GameInit);
 		StartupEngines();
-		IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::GameInit);
 		StartupDisasters();
 		_generating_world = false;
 
@@ -174,20 +174,20 @@ static void _GenerateWorld()
 		if (GenWorldInfo::mode != GWM_EMPTY) {
 			uint i;
 
-			SetGeneratingWorldProgress(GWP_RUNTILELOOP, 0x500);
+			SetGeneratingWorldProgress(GenWorldProgress::RunTileLoop, 0x500);
 			for (i = 0; i < 0x500; i++) {
 				RunTileLoop();
 				TimerGameTick::counter++;
-				IncreaseGeneratingWorldProgress(GWP_RUNTILELOOP);
+				IncreaseGeneratingWorldProgress(GenWorldProgress::RunTileLoop);
 			}
 
 			if (_game_mode != GM_EDITOR) {
 				if (Game::GetInstance() != nullptr) {
-					SetGeneratingWorldProgress(GWP_RUNSCRIPT, 2500);
+					SetGeneratingWorldProgress(GenWorldProgress::GameScript, 2500);
 					_generating_world = true;
 					for (i = 0; i < 2500; i++) {
 						Game::GameLoop();
-						IncreaseGeneratingWorldProgress(GWP_RUNSCRIPT);
+						IncreaseGeneratingWorldProgress(GenWorldProgress::GameScript);
 						if (Game::GetInstance()->IsSleeping()) break;
 					}
 					_generating_world = false;
@@ -203,10 +203,10 @@ static void _GenerateWorld()
 		/* Show all vital windows again, because we have hidden them. */
 		if (_game_mode != GM_MENU) ShowVitalWindows();
 
-		SetGeneratingWorldProgress(GWP_GAME_START, 1);
+		SetGeneratingWorldProgress(GenWorldProgress::GameStart, 1);
 		/* Call any callback */
 		if (GenWorldInfo::proc != nullptr) GenWorldInfo::proc();
-		IncreaseGeneratingWorldProgress(GWP_GAME_START);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::GameStart);
 
 		CleanupGeneration();
 

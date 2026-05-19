@@ -2403,7 +2403,7 @@ static void PlaceInitialIndustry(IndustryType type, bool water, bool try_hard)
 {
 	AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
-	IncreaseGeneratingWorldProgress(water ? GWP_WATER_INDUSTRY : GWP_LAND_INDUSTRY);
+	IncreaseGeneratingWorldProgress(water ? GenWorldProgress::WaterIndustries : GenWorldProgress::LandIndustries);
 	PlaceIndustry(type, IndustryAvailabilityCallType::MapGeneration, try_hard);
 }
 
@@ -2510,7 +2510,7 @@ void GenerateIndustries()
 			total_amount = p.num_forced;
 		}
 
-		SetGeneratingWorldProgress(water ? GWP_WATER_INDUSTRY : GWP_LAND_INDUSTRY, total_amount);
+		SetGeneratingWorldProgress(water ? GenWorldProgress::WaterIndustries : GenWorldProgress::LandIndustries, total_amount);
 
 		/* Try to build one industry per type independent of any probabilities */
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {

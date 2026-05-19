@@ -311,7 +311,7 @@ static void PlaceTreeGroups(uint num_groups)
 		CreateRandomStarShapedPolygon(GROVE_RADIUS, grove);
 
 		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
-			IncreaseGeneratingWorldProgress(GWP_TREE);
+			IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
 
 			uint32_t r = Random();
 			int x = GB(r, 0, 5) - GROVE_RADIUS;
@@ -377,7 +377,7 @@ void PlaceTreesRandomly()
 		uint32_t r = Random();
 		TileIndex tile = RandomTileSeed(r);
 
-		IncreaseGeneratingWorldProgress(GWP_TREE);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
@@ -408,7 +408,7 @@ void PlaceTreesRandomly()
 			uint32_t r = Random();
 			TileIndex tile = RandomTileSeed(r);
 
-			IncreaseGeneratingWorldProgress(GWP_TREE);
+			IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
 
 			if (GetTropicZone(tile) == TropicZone::Rainforest && CanPlantTreesOnTile(tile, false)) {
 				PlaceTree(tile, r);
@@ -493,7 +493,7 @@ void GenerateTrees()
 	total *= i;
 	uint num_groups = (_settings_game.game_creation.landscape != LandscapeType::Toyland) ? Map::ScaleBySize(GB(Random(), 0, 5) + 25) : 0;
 	total += num_groups * DEFAULT_TREE_STEPS;
-	SetGeneratingWorldProgress(GWP_TREE, total);
+	SetGeneratingWorldProgress(GenWorldProgress::Trees, total);
 
 	if (num_groups != 0) PlaceTreeGroups(num_groups);
 

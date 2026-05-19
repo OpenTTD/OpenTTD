@@ -986,7 +986,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 	uint update_freq = Map::Size() / 4;
 
 	for (const auto tile : Map::Iterate()) {
-		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 		if (!IsValidTile(tile)) continue;
 
@@ -1000,13 +1000,13 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 	}
 
 	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {
-		if ((i % 64) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((i % 64) == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 		RunTileLoop();
 	}
 
 	for (const auto tile : Map::Iterate()) {
-		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 		if (!IsValidTile(tile)) continue;
 
@@ -1471,11 +1471,11 @@ static void CreateRivers()
 
 	uint wells = Map::ScaleBySize(4 << _settings_game.game_creation.amount_of_rivers);
 	const uint num_short_rivers = wells - std::max(1u, wells / 10);
-	SetGeneratingWorldProgress(GWP_RIVER, wells + TILE_UPDATE_FREQUENCY / 64); // Include the tile loop calls below.
+	SetGeneratingWorldProgress(GenWorldProgress::Rivers, wells + TILE_UPDATE_FREQUENCY / 64); // Include the tile loop calls below.
 
 	/* Try to create long rivers. */
 	for (; wells > num_short_rivers; wells--) {
-		IncreaseGeneratingWorldProgress(GWP_RIVER);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Rivers);
 		bool done = false;
 		for (int tries = 0; tries < 512; tries++) {
 			for (auto t : SpiralTileSequence(RandomTile(), 8)) {
@@ -1490,7 +1490,7 @@ static void CreateRivers()
 
 	/* Try to create short rivers. */
 	for (; wells != 0; wells--) {
-		IncreaseGeneratingWorldProgress(GWP_RIVER);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Rivers);
 		bool done = false;
 		for (int tries = 0; tries < 128; tries++) {
 			for (auto t : SpiralTileSequence(RandomTile(), 8)) {
@@ -1508,7 +1508,7 @@ static void CreateRivers()
 
 	/* Run tile loop to update the ground density. */
 	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {
-		if (i % 64 == 0) IncreaseGeneratingWorldProgress(GWP_RIVER);
+		if (i % 64 == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Rivers);
 		RunTileLoop();
 	}
 }
@@ -1626,16 +1626,16 @@ bool GenerateLandscape(uint8_t mode)
 	uint steps = (_settings_game.game_creation.landscape == LandscapeType::Tropic) ? GLS_TROPIC : GLS_OTHER;
 
 	if (mode == GWM_HEIGHTMAP) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_HEIGHTMAP);
+		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_HEIGHTMAP);
 		if (!LoadHeightmap(_file_to_saveload.ftype.detailed, _file_to_saveload.name)) {
 			return false;
 		}
-		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 	} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_TERRAGENESIS);
+		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_TERRAGENESIS);
 		GenerateTerrainPerlin();
 	} else {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_ORIGINAL);
+		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_ORIGINAL);
 		if (_settings_game.construction.freeform_edges) {
 			for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
 			for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
@@ -1693,11 +1693,11 @@ bool GenerateLandscape(uint8_t mode)
 	 * it allows screen redraw. Drawing of broken slopes crashes the game */
 	FixSlopes();
 	MarkWholeScreenDirty();
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 	ConvertGroundTilesIntoWaterTiles();
 	MarkWholeScreenDirty();
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 	switch (_settings_game.game_creation.landscape) {
 		case LandscapeType::Arctic:

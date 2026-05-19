@@ -1061,11 +1061,11 @@ void GenerateTerrainPerlin()
 
 	HeightMapGenerate();
 
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 	HeightMapNormalize();
 
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 	/* First make sure the tiles at the north border are void tiles if needed. */
 	if (_settings_game.construction.freeform_edges) {
