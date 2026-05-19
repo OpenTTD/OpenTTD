@@ -22,3 +22,4 @@
 
     add_subdirectory(regression)
     add_subdirectory(stationlist)
+    add_subdirectory(gs)
