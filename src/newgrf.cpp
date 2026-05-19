@@ -1767,16 +1767,16 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	 * so all NewGRFs are loaded equally. For this we use the
 	 * start date of the game and we set the counters, etc. to
 	 * 0 so they're the same too. */
-	TimerGameCalendar::Date date            = TimerGameCalendar::date;
-	TimerGameCalendar::Year year            = TimerGameCalendar::year;
-	TimerGameCalendar::DateFract date_fract = TimerGameCalendar::date_fract;
+	AutoRestoreBackup backup_date{TimerGameCalendar::date};
+	AutoRestoreBackup backup_year{TimerGameCalendar::year};
+	AutoRestoreBackup backup_date_fract{TimerGameCalendar::date_fract};
 
-	TimerGameEconomy::Date economy_date = TimerGameEconomy::date;
-	TimerGameEconomy::Year economy_year = TimerGameEconomy::year;
-	TimerGameEconomy::DateFract economy_date_fract = TimerGameEconomy::date_fract;
+	AutoRestoreBackup backup_economy_date{TimerGameEconomy::date};
+	AutoRestoreBackup backup_economy_year{TimerGameEconomy::year};
+	AutoRestoreBackup backup_economy_date_fract{TimerGameEconomy::date_fract};
 
-	uint64_t tick_counter = TimerGameTick::counter;
-	DisplayOptions display_opt = _display_opt;
+	AutoRestoreBackup backup_tick_counter{TimerGameTick::counter};
+	AutoRestoreBackup backup_display_opt{_display_opt};
 
 	if (_networking) {
 		TimerGameCalendar::year = _settings_game.game_creation.starting_year;
@@ -1883,18 +1883,6 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();
-
-	/* Now revert back to the original situation */
-	TimerGameCalendar::year = year;
-	TimerGameCalendar::date = date;
-	TimerGameCalendar::date_fract = date_fract;
-
-	TimerGameEconomy::year = economy_year;
-	TimerGameEconomy::date = economy_date;
-	TimerGameEconomy::date_fract = economy_date_fract;
-
-	TimerGameTick::counter = tick_counter;
-	_display_opt = display_opt;
 }
 
 /**
