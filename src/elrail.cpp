@@ -272,20 +272,19 @@ void DrawRailCatenaryOnTunnel(const TileInfo *ti)
 static void DrawRailCatenaryRailway(const TileInfo *ti)
 {
 	/* Pylons are placed on a tile edge, so we need to take into account
-	 * the track configuration of 2 adjacent tiles. trackconfig[0] stores the
-	 * current tile (home tile) while [1] holds the neighbour */
-	TrackBits track_config[TS_END];
-	TrackBits wire_config[TS_END];
-	bool is_flat[TS_END];
+	 * the track configuration of 2 adjacent tiles. */
+	EnumIndexArray<TrackBits, TileSource, TileSource::End> track_config;
+	EnumIndexArray<TrackBits, TileSource, TileSource::End> wire_config;
+	EnumIndexArray<bool, TileSource, TileSource::End> is_flat;
 	/* Note that ti->tileh has already been adjusted for Foundations */
-	Slope tileh[TS_END] = { ti->tileh, SLOPE_FLAT };
+	EnumIndexArray<Slope, TileSource, TileSource::End> tileh{ti->tileh, SLOPE_FLAT};
 
 	/* Half tile slopes coincide only with horizontal/vertical track.
 	 * Faking a flat slope results in the correct sprites on positions. */
 	Corner halftile_corner = CORNER_INVALID;
-	if (IsHalftileSlope(tileh[TS_HOME])) {
-		halftile_corner = GetHalftileSlopeCorner(tileh[TS_HOME]);
-		tileh[TS_HOME] = SLOPE_FLAT;
+	if (IsHalftileSlope(tileh[TileSource::Home])) {
+		halftile_corner = GetHalftileSlopeCorner(tileh[TileSource::Home]);
+		tileh[TileSource::Home] = SLOPE_FLAT;
 	}
 
 	TileLocationGroup tlg = GetTileLocationGroup(ti->tile);
@@ -300,12 +299,12 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	 * 2) on the "far" end of a bridge head (the one that connects to bridge middle),
 	 *    because that one is drawn on the bridge. Exception is for length 0 bridges
 	 *    which have no middle tiles */
-	track_config[TS_HOME] = GetRailTrackBitsUniversal(ti->tile, &override_pcp);
-	wire_config[TS_HOME] = MaskWireBits(ti->tile, track_config[TS_HOME]);
+	track_config[TileSource::Home] = GetRailTrackBitsUniversal(ti->tile, &override_pcp);
+	wire_config[TileSource::Home] = MaskWireBits(ti->tile, track_config[TileSource::Home]);
 	/* If a track bit is present that is not in the main direction, the track is level */
-	is_flat[TS_HOME] = ((track_config[TS_HOME] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
+	is_flat[TileSource::Home] = ((track_config[TileSource::Home] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
-	AdjustTileh(ti->tile, &tileh[TS_HOME]);
+	AdjustTileh(ti->tile, &tileh[TileSource::Home]);
 
 	SpriteID pylon_normal = GetPylonBase(ti->tile);
 	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
@@ -323,19 +322,19 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 
 		/* Here's one of the main headaches. GetTileSlope does not correct for possibly
 		 * existing foundataions, so we do have to do that manually later on.*/
-		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour);
-		track_config[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, nullptr);
-		wire_config[TS_NEIGHBOUR] = MaskWireBits(neighbour, track_config[TS_NEIGHBOUR]);
-		if (IsTunnelTile(neighbour) && i != GetTunnelBridgeDirection(neighbour)) wire_config[TS_NEIGHBOUR] = track_config[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		tileh[TileSource::Neighbour] = GetTileSlope(neighbour);
+		track_config[TileSource::Neighbour] = GetRailTrackBitsUniversal(neighbour, nullptr);
+		wire_config[TileSource::Neighbour] = MaskWireBits(neighbour, track_config[TileSource::Neighbour]);
+		if (IsTunnelTile(neighbour) && i != GetTunnelBridgeDirection(neighbour)) wire_config[TileSource::Neighbour] = track_config[TileSource::Neighbour] = TRACK_BIT_NONE;
 
 		/* Ignore station tiles that allow neither wires nor pylons. */
-		if (IsRailStationTile(neighbour) && !CanStationTileHavePylons(neighbour) && !CanStationTileHaveWires(neighbour)) wire_config[TS_NEIGHBOUR] = track_config[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		if (IsRailStationTile(neighbour) && !CanStationTileHavePylons(neighbour) && !CanStationTileHaveWires(neighbour)) wire_config[TileSource::Neighbour] = track_config[TileSource::Neighbour] = TRACK_BIT_NONE;
 
 		/* If the neighboured tile does not smoothly connect to the current tile (because of a foundation),
 		 * we have to draw all pillars on the current tile. */
-		if (elevation != GetPCPElevation(neighbour, ReverseDiagDir(i))) wire_config[TS_NEIGHBOUR] = track_config[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		if (elevation != GetPCPElevation(neighbour, ReverseDiagDir(i))) wire_config[TileSource::Neighbour] = track_config[TileSource::Neighbour] = TRACK_BIT_NONE;
 
-		is_flat[TS_NEIGHBOUR] = ((track_config[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
+		is_flat[TileSource::Neighbour] = ((track_config[TileSource::Neighbour] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
 		ppp_preferred[i] = DIRECTIONS_ALL; // We start with preferring everything (end-of-line in any direction)
 		ppp_allowed[i] = _allowed_ppp_on_pcp[i];
@@ -344,7 +343,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		 * PPPs we want to have, or may not have at all */
 		for (uint k = 0; k < NUM_TRACKS_AT_PCP; k++) {
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
-			if (_track_source_tile[i][k] == TS_NEIGHBOUR &&
+			if (_track_source_tile[i][k] == TileSource::Neighbour &&
 			    IsBridgeTile(neighbour) &&
 			    GetTunnelBridgeDirection(neighbour) == ReverseDiagDir(i)) {
 				continue;
@@ -356,7 +355,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 			if (HasBit(wire_config[_track_source_tile[i][k]], _tracks_at_pcp[i][k])) {
 				/* track found, if track is in the neighbour tile, adjust the number
 				 * of the PCP for preferred/allowed determination*/
-				pcp_pos = (_track_source_tile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
+				pcp_pos = (_track_source_tile[i][k] == TileSource::Home) ? i : ReverseDiagDir(i);
 				pcp_status.Set(i); // This PCP is in use
 				ppp_preferred[i] &= _preferred_ppp_of_track_at_pcp[_tracks_at_pcp[i][k]][pcp_pos];
 			}
@@ -375,26 +374,26 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		Foundation foundation = FOUNDATION_NONE;
 
 		/* Station and road crossings are always "flat", so adjust the tileh accordingly */
-		if (IsTileType(neighbour, TileType::Station) || IsTileType(neighbour, TileType::Road)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
+		if (IsTileType(neighbour, TileType::Station) || IsTileType(neighbour, TileType::Road)) tileh[TileSource::Neighbour] = SLOPE_FLAT;
 
 		/* Read the foundations if they are present, and adjust the tileh */
-		if (track_config[TS_NEIGHBOUR] != TRACK_BIT_NONE && IsTileType(neighbour, TileType::Railway) && HasRailCatenary(GetRailType(neighbour))) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], track_config[TS_NEIGHBOUR]);
+		if (track_config[TileSource::Neighbour] != TRACK_BIT_NONE && IsTileType(neighbour, TileType::Railway) && HasRailCatenary(GetRailType(neighbour))) foundation = GetRailFoundation(tileh[TileSource::Neighbour], track_config[TileSource::Neighbour]);
 		if (IsBridgeTile(neighbour)) {
-			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetTunnelBridgeDirection(neighbour)));
+			foundation = GetBridgeFoundation(tileh[TileSource::Neighbour], DiagDirToAxis(GetTunnelBridgeDirection(neighbour)));
 		}
 
-		ApplyFoundationToSlope(foundation, tileh[TS_NEIGHBOUR]);
+		ApplyFoundationToSlope(foundation, tileh[TileSource::Neighbour]);
 
 		/* Half tile slopes coincide only with horizontal/vertical track.
 		 * Faking a flat slope results in the correct sprites on positions. */
-		if (IsHalftileSlope(tileh[TS_NEIGHBOUR])) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
+		if (IsHalftileSlope(tileh[TileSource::Neighbour])) tileh[TileSource::Neighbour] = SLOPE_FLAT;
 
-		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
+		AdjustTileh(neighbour, &tileh[TileSource::Neighbour]);
 
 		/* If we have a straight (and level) track, we want a pylon only every 2 tiles
 		 * Delete the PCP if this is the case.
 		 * Level means that the slope is the same, or the track is flat */
-		if (tileh[TS_HOME] == tileh[TS_NEIGHBOUR] || (is_flat[TS_HOME] && is_flat[TS_NEIGHBOUR])) {
+		if (tileh[TileSource::Home] == tileh[TileSource::Neighbour] || (is_flat[TileSource::Home] && is_flat[TileSource::Neighbour])) {
 			for (uint k = 0; k < NUM_IGNORE_GROUPS; k++) {
 				if (ppp_preferred[i] == _ignored_pcp[k][tlg][i]) pcp_status.Reset(i);
 			}
@@ -430,7 +429,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 					/* Don't build the pylon if it would be outside the tile */
 					if (!_owned_ppp_on_pcp[i].Test(temp)) {
 						/* We have a neighbour that will draw it, bail out */
-						if (track_config[TS_NEIGHBOUR] != TRACK_BIT_NONE) break;
+						if (track_config[TileSource::Neighbour] != TRACK_BIT_NONE) break;
 						continue; // No neighbour, go looking for a better position
 					}
 
@@ -468,14 +467,14 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	}
 
 	/* Drawing of pylons is finished, now draw the wires */
-	for (Track t : SetTrackBitIterator(wire_config[TS_HOME])) {
+	for (Track t : SetTrackBitIterator(wire_config[TileSource::Home])) {
 		SpriteID wire_base = (t == halftile_track) ? wire_halftile : wire_normal;
 		uint8_t pcp_config = pcp_status.Test(_pcp_positions[t][0]) +
 			(pcp_status.Test(_pcp_positions[t][1]) << 1);
-		int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; // tileh for the slopes, 0 otherwise
+		int tileh_selector = !(tileh[TileSource::Home] % 3) * tileh[TileSource::Home] / 3; // tileh for the slopes, 0 otherwise
 
 		assert(pcp_config != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
-		assert(!IsSteepSlope(tileh[TS_HOME]));
+		assert(!IsSteepSlope(tileh[TileSource::Home]));
 		const SortableSpriteStruct &sss = _rail_catenary_sprite_data[_rail_wires[tileh_selector][t][pcp_config]];
 
 		/*
