@@ -23,6 +23,20 @@ BEGIN {
 	if (apis == "gs") apis = "game"
 }
 
+# Ignore special doxygen blocks
+/^#ifndef DOXYGEN_API/          { doxygen_skip = "true"; next; }
+/^#ifdef DOXYGEN_API/           { doxygen_skip = "next"; next; }
+/^#endif \/\* DOXYGEN_API \*\// { doxygen_skip = "false"; next; }
+/^#else/                         {
+	if (doxygen_skip == "next") {
+		doxygen_skip = "true";
+	} else {
+		doxygen_skip = "false";
+	}
+	next;
+}
+{ if (doxygen_skip == "true") next }
+
 {
 	# replace Script with AI/GS, except for ScriptErrorType
 	gsub(/Script/, api)
@@ -118,20 +132,6 @@ BEGIN {
 /^(	*)public/    { if (cls_level == 1) comment_buffer = ""; public = "true";  next; }
 /^(	*)protected/ { if (cls_level == 1) comment_buffer = ""; public = "false"; next; }
 /^(	*)private/   { if (cls_level == 1) comment_buffer = ""; public = "false"; next; }
-
-# Ignore special doxygen blocks
-/^#ifndef DOXYGEN_API/          { doxygen_skip = "true"; next; }
-/^#ifdef DOXYGEN_API/           { doxygen_skip = "next"; next; }
-/^#endif \/\* DOXYGEN_API \*\// { doxygen_skip = "false"; next; }
-/^#else/                         {
-	if (doxygen_skip == "next") {
-		doxygen_skip = "true";
-	} else {
-		doxygen_skip = "false";
-	}
-	next;
-}
-{ if (doxygen_skip == "true") next }
 
 /^#/ {
 	next

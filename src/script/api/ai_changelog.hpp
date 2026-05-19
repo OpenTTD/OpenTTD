@@ -17,6 +17,12 @@
  *
  * \b 16.0
  *
+ * \li AIEconomyDate
+ * \li AICalendarDate
+ *
+ * API removals:
+ * \li AIDate
+ *
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * \b 15.0
