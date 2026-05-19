@@ -5,12 +5,12 @@
 #
 # create_regression(file1 ...)
 #
-macro(create_regression)
+macro(create_regression SCRIPT_FOLDER)
     set(REGRESSION_SOURCE_FILES ${ARGN})
 
     foreach(REGRESSION_SOURCE_FILE IN LISTS REGRESSION_SOURCE_FILES)
         string(REPLACE "${CMAKE_SOURCE_DIR}/regression/" "" REGRESSION_SOURCE_FILE_NAME "${REGRESSION_SOURCE_FILE}")
-        string(CONCAT REGRESSION_BINARY_FILE "${CMAKE_BINARY_DIR}/ai/" "${REGRESSION_SOURCE_FILE_NAME}")
+        string(CONCAT REGRESSION_BINARY_FILE "${CMAKE_BINARY_DIR}/${SCRIPT_FOLDER}/" "${REGRESSION_SOURCE_FILE_NAME}")
 
         add_custom_command(OUTPUT ${REGRESSION_BINARY_FILE}
                 COMMAND ${CMAKE_COMMAND} -E copy
@@ -38,6 +38,7 @@ macro(create_regression)
                     -DOPENTTD_EXECUTABLE=$<TARGET_FILE:openttd>
                     -DEDITBIN_EXECUTABLE=${EDITBIN_EXECUTABLE}
                     -DREGRESSION_TEST=${REGRESSION_TEST_NAME}
+                    -DSCRIPT_FOLDER=${SCRIPT_FOLDER}
                     -P "${CMAKE_SOURCE_DIR}/cmake/scripts/Regression.cmake"
             DEPENDS openttd regression_${REGRESSION_TEST_NAME}_files
             WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
@@ -50,6 +51,7 @@ macro(create_regression)
                     -DOPENTTD_EXECUTABLE=$<TARGET_FILE:openttd>
                     -DEDITBIN_EXECUTABLE=${EDITBIN_EXECUTABLE}
                     -DREGRESSION_TEST=${REGRESSION_TEST_NAME}
+                    -DSCRIPT_FOLDER=${SCRIPT_FOLDER}
                     -P "${CMAKE_SOURCE_DIR}/cmake/scripts/Regression.cmake"
             WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     )
