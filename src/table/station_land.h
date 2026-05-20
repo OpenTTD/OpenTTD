@@ -891,7 +891,7 @@ static const DrawTileSpriteSpan _station_display_datas_waypoint[] = {
  * As these are drawn/build like stations, they may use the same number of layouts. */
 static_assert(lengthof(_station_display_datas_rail) == lengthof(_station_display_datas_waypoint));
 
-static const std::array<std::span<const DrawTileSpriteSpan>, to_underlying(StationType::End)> _station_display_datas = {{
+static constexpr EnumIndexArray<std::span<const DrawTileSpriteSpan>, StationType, StationType::End> _station_display_datas{
 	_station_display_datas_rail,
 	_station_display_datas_airport,
 	_station_display_datas_truck,
@@ -901,7 +901,7 @@ static const std::array<std::span<const DrawTileSpriteSpan>, to_underlying(Stati
 	_station_display_datas_buoy,
 	_station_display_datas_waypoint,
 	_station_display_datas_road_waypoint,
-}};
+};
 
 static const BridgeableTileInfo _station_bridgeable_info_rail[] = {
 	{2, {BridgePillarFlag::EdgeSW, BridgePillarFlag::EdgeNE}}, // X-axis empty platform.
@@ -950,7 +950,7 @@ static const BridgeableTileInfo _station_bridgeable_info_road_waypoint[] = {
 	{2, {BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE}}, // Y-axis waypoint.
 };
 
-static const std::array<std::span<const BridgeableTileInfo>, to_underlying(StationType::End)> _station_bridgeable_info = {{
+static constexpr EnumIndexArray<std::span<const BridgeableTileInfo>, StationType, StationType::End> _station_bridgeable_info{
 	_station_bridgeable_info_rail, // Rail
 	{}, // Airport
 	_station_bridgeable_info_roadstop, // Truck
@@ -960,4 +960,4 @@ static const std::array<std::span<const BridgeableTileInfo>, to_underlying(Stati
 	_station_bridgeable_info_buoy, // Buoy
 	_station_bridgeable_info_waypoint, // RailWaypoint
 	_station_bridgeable_info_road_waypoint, // RoadWaypoint
-}};
+};
