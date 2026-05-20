@@ -16,6 +16,7 @@
 #include "network/network.h"
 #include "network/network_content.h"
 #include "strings_func.h"
+#include "string_func.h"
 #include "fileio_func.h"
 #include "fios.h"
 #include "window_func.h"
@@ -282,8 +283,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_save_dialog_widgets 
 				NWidget(WWT_EDITBOX, Colours::Grey, WID_SL_SAVE_OSK_TITLE), SetPadding(2, 2, 2, 2), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_SAVELOAD_OSKTITLE, STR_SAVELOAD_EDITBOX_TOOLTIP),
 			EndContainer(),
-			/* Save/delete buttons */
-			NWidget(NWID_HORIZONTAL),
+			/* New directory/delete/save buttons */
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+				NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SL_NEW_DIRECTORY), SetStringTip(STR_SAVELOAD_NEW_DIRECTORY_BUTTON, STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SL_DELETE_SELECTION), SetStringTip(STR_SAVELOAD_DELETE_BUTTON, STR_SAVELOAD_DELETE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SL_SAVE_GAME),        SetStringTip(STR_SAVELOAD_SAVE_BUTTON, STR_SAVELOAD_SAVE_TOOLTIP),     SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
@@ -343,6 +345,7 @@ static void SortSaveGameList(FileList &file_list)
 struct SaveLoadWindow : public Window {
 private:
 	static const uint EDITBOX_MAX_SIZE   =  50;
+	static const uint MAX_DIRECTORY_NAME_CHARS = 64; ///< Maximum length of a new directory name in characters.
 
 	QueryString filename_editbox; ///< Filename editbox.
 	AbstractFileType abstract_filetype{}; ///< Type of file to select.
@@ -383,6 +386,55 @@ private:
 				/* Reset file name to current date on successful delete */
 				if (save_load_window->abstract_filetype == AbstractFileType::Savegame) save_load_window->GenerateFileName();
 			}
+		}
+	}
+
+	/**
+	 * Check whether a user-entered name is safe to use as a single directory component.
+	 * Rejects only path separators and directory traversal; any other name the OS dislikes
+	 * is caught by FiosCreateDirectory and reported as an error.
+	 * @param name The candidate name. The caller must have stripped surrounding whitespace.
+	 * @return true if the name is safe to pass to FiosCreateDirectory.
+	 */
+	static bool IsValidDirectoryName(const std::string &name)
+	{
+		if (name.empty()) return false;
+
+		/* Reject path/drive separators and "."/".." traversal. ':' is rejected on all platforms for portable directory names. */
+		if (name.find_first_of("/\\:") != std::string::npos) return false;
+		if (name == "." || name == "..") return false;
+
+		return true;
+	}
+
+	/**
+	 * Validate a user-entered directory name and, if valid, create the directory in the current FIOS path.
+	 * On any failure, shows the appropriate error overlay; on success, refreshes the file list.
+	 * @param query_text The raw text returned from the query dialog.
+	 */
+	void HandleNewDirectoryRequest(const std::string &query_text)
+	{
+		/* CS_ALPHANUMERAL allows spaces, so trim them before validating. */
+		const std::string name{StrTrimView(query_text, " ")};
+
+		if (!IsValidDirectoryName(name)) {
+			ShowErrorMessage(GetEncodedString(STR_ERROR_CANNOT_CREATE_DIRECTORY), {}, WarningLevel::Error);
+			return;
+		}
+
+		switch (FiosCreateDirectory(name)) {
+			case DirectoryCreateResult::Success:
+				this->InvalidateData(SLIWD_RESCAN_FILES);
+				break;
+			case DirectoryCreateResult::AlreadyExists:
+				ShowErrorMessage(GetEncodedString(STR_ERROR_DIRECTORY_NAME_IN_USE), {}, WarningLevel::Error);
+				break;
+			case DirectoryCreateResult::PermissionDenied:
+				ShowErrorMessage(GetEncodedString(STR_ERROR_DIRECTORY_PERMISSION_DENIED), {}, WarningLevel::Error);
+				break;
+			case DirectoryCreateResult::OtherError:
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CANNOT_CREATE_DIRECTORY), {}, WarningLevel::Error);
+				break;
 		}
 	}
 
@@ -806,6 +858,16 @@ public:
 				/* Note, this is also called via the OSK; and we need to lower the button. */
 				this->HandleButtonClick(WID_SL_SAVE_GAME);
 				break;
+
+			case WID_SL_NEW_DIRECTORY: // Create directory
+				ShowQueryString(
+						{},
+						STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION,
+						MAX_DIRECTORY_NAME_CHARS,
+						this,
+						CS_ALPHANUMERAL,
+						{QueryStringFlag::LengthIsInChars});
+				break;
 		}
 	}
 
@@ -977,6 +1039,11 @@ public:
 			this->selected = nullptr;
 			this->InvalidateData(SLIWD_SELECTION_CHANGES);
 		}
+	}
+
+	void OnQueryTextFinished(std::optional<std::string> str) override
+	{
+		if (str.has_value()) this->HandleNewDirectoryRequest(*str);
 	}
 };
 
