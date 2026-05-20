@@ -29,11 +29,11 @@ static const uint NUM_STATIONS_PER_GRF = UINT16_MAX - 1;
  */
 static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_STATIONS_PER_GRF) {
 		GrfMsg(1, "StationChangeInfo: Station {} is invalid, max {}, ignoring", last, NUM_STATIONS_PER_GRF);
-		return CIR_INVALID_ID;
+		return ChangeInfoResult::InvalidId;
 	}
 
 	/* Allocate station specs if necessary */
@@ -45,7 +45,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 		/* Check that the station we are modifying is defined. */
 		if (statspec == nullptr && prop != 0x08) {
 			GrfMsg(2, "StationChangeInfo: Attempt to modify undefined station {}, ignoring", id);
-			return CIR_INVALID_ID;
+			return ChangeInfoResult::InvalidId;
 		}
 
 		switch (prop) {
@@ -79,9 +79,9 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 						continue;
 					}
 
-					ReadSpriteLayoutSprite(buf, false, false, false, GSF_STATIONS, &dts->ground);
+					ReadSpriteLayoutSprite(buf, false, false, false, GrfSpecFeature::Stations, &dts->ground);
 					/* On error, bail out immediately. Temporary GRF data was already freed */
-					if (_cur_gps.skip_sprites < 0) return CIR_DISABLED;
+					if (_cur_gps.skip_sprites < 0) return ChangeInfoResult::Disabled;
 
 					std::vector<DrawTileSeqStruct> tmp_layout;
 					for (;;) {
@@ -97,9 +97,9 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 						dtss.extent.y = buf.ReadByte();
 						dtss.extent.z = buf.ReadByte();
 
-						ReadSpriteLayoutSprite(buf, false, true, false, GSF_STATIONS, &dtss.image);
+						ReadSpriteLayoutSprite(buf, false, true, false, GrfSpecFeature::Stations, &dtss.image);
 						/* On error, bail out immediately. Temporary GRF data was already freed */
-						if (_cur_gps.skip_sprites < 0) return CIR_DISABLED;
+						if (_cur_gps.skip_sprites < 0) return ChangeInfoResult::Disabled;
 					}
 					dts->seq = std::move(tmp_layout);
 				}
@@ -257,7 +257,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 					NewGRFSpriteLayout *dts = &statspec->renderdata.emplace_back();
 					uint num_building_sprites = buf.ReadByte();
 					/* On error, bail out immediately. Temporary GRF data was already freed */
-					if (ReadSpriteLayout(buf, num_building_sprites, false, GSF_STATIONS, true, false, dts)) return CIR_DISABLED;
+					if (ReadSpriteLayout(buf, num_building_sprites, false, GrfSpecFeature::Stations, true, false, dts)) return ChangeInfoResult::Disabled;
 				}
 
 				/* Number of layouts must be even, alternating X and Y */
@@ -291,7 +291,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 			}
 
 			case 0x1F: // Badge list
-				statspec->badges = ReadBadgeList(buf, GSF_STATIONS);
+				statspec->badges = ReadBadgeList(buf, GrfSpecFeature::Stations);
 				break;
 
 			case 0x20: { // Minimum bridge height (extended)
@@ -313,7 +313,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 			}
 
 			default:
-				ret = CIR_UNKNOWN;
+				ret = ChangeInfoResult::Unknown;
 				break;
 		}
 	}
@@ -321,5 +321,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return StationChangeInfo(first, last, prop, buf); }
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Stations>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Stations>::Activation(uint first, uint last, int prop, ByteReader &buf) { return StationChangeInfo(first, last, prop, buf); }

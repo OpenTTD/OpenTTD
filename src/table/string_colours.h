@@ -9,21 +9,21 @@
 
 /** Colour mapping for #TextColour. */
 static constexpr PixelColour _string_colourmap[17] = {
-	PixelColour{150}, // TC_BLUE
-	PixelColour{ 12}, // TC_SILVER
-	PixelColour{189}, // TC_GOLD
-	PixelColour{184}, // TC_RED
-	PixelColour{174}, // TC_PURPLE
-	PixelColour{ 30}, // TC_LIGHT_BROWN
-	PixelColour{195}, // TC_ORANGE
-	PixelColour{209}, // TC_GREEN
-	PixelColour{ 68}, // TC_YELLOW
-	PixelColour{ 95}, // TC_DARK_GREEN
-	PixelColour{ 79}, // TC_CREAM
-	PixelColour{116}, // TC_BROWN
-	PixelColour{ 15}, // TC_WHITE
-	PixelColour{152}, // TC_LIGHT_BLUE
-	PixelColour{  6}, // TC_GREY
-	PixelColour{133}, // TC_DARK_BLUE
-	PixelColour{  1}, // TC_BLACK
+	PixelColour{150}, // TextColour::Blue
+	PixelColour{ 12}, // TextColour::Silver
+	PixelColour{189}, // TextColour::Gold
+	PixelColour{184}, // TextColour::Red
+	PixelColour{174}, // TextColour::Purple
+	PixelColour{ 30}, // TextColour::LightBrown
+	PixelColour{195}, // TextColour::Orange
+	PixelColour{209}, // TextColour::Green
+	PixelColour{ 68}, // TextColour::Yellow
+	PixelColour{ 95}, // TextColour::DarkGreen
+	PixelColour{ 79}, // TextColour::Cream
+	PixelColour{116}, // TextColour::Brown
+	PixelColour{ 15}, // TextColour::White
+	PixelColour{152}, // TextColour::LightBlue
+	PixelColour{  6}, // TextColour::Grey
+	PixelColour{133}, // TextColour::DarkBlue
+	PixelColour{  1}, // TextColour::Black
 };

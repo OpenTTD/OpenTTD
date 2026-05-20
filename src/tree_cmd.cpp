@@ -311,7 +311,7 @@ static void PlaceTreeGroups(uint num_groups)
 		CreateRandomStarShapedPolygon(GROVE_RADIUS, grove);
 
 		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
-			IncreaseGeneratingWorldProgress(GWP_TREE);
+			IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
 
 			uint32_t r = Random();
 			int x = GB(r, 0, 5) - GROVE_RADIUS;
@@ -377,7 +377,7 @@ void PlaceTreesRandomly()
 		uint32_t r = Random();
 		TileIndex tile = RandomTileSeed(r);
 
-		IncreaseGeneratingWorldProgress(GWP_TREE);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
@@ -408,7 +408,7 @@ void PlaceTreesRandomly()
 			uint32_t r = Random();
 			TileIndex tile = RandomTileSeed(r);
 
-			IncreaseGeneratingWorldProgress(GWP_TREE);
+			IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
 
 			if (GetTropicZone(tile) == TropicZone::Rainforest && CanPlantTreesOnTile(tile, false)) {
 				PlaceTree(tile, r);
@@ -493,7 +493,7 @@ void GenerateTrees()
 	total *= i;
 	uint num_groups = (_settings_game.game_creation.landscape != LandscapeType::Toyland) ? Map::ScaleBySize(GB(Random(), 0, 5) + 25) : 0;
 	total += num_groups * DEFAULT_TREE_STEPS;
-	SetGeneratingWorldProgress(GWP_TREE, total);
+	SetGeneratingWorldProgress(GenWorldProgress::Trees, total);
 
 	if (num_groups != 0) PlaceTreeGroups(num_groups);
 
@@ -514,7 +514,7 @@ void GenerateTrees()
 CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal)
 {
 	StringID msg = INVALID_STRING_ID;
-	CommandCost cost(EXPENSES_OTHER);
+	CommandCost cost(ExpensesType::Other);
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
@@ -637,9 +637,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 	}
 }
 
-struct TreeListEnt : PalSpriteID {
-	int8_t x, y;
-};
+struct TreeListEnt : PalSpriteID, Coord2D<int8_t> {};
 
 /** @copydoc DrawTileProc */
 static void DrawTile_Trees(TileInfo *ti)
@@ -667,7 +665,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	assert(index < lengthof(_tree_layout_sprite));
 
 	const PalSpriteID *s = _tree_layout_sprite[index];
-	const TreePos *d = _tree_layout_xy[GB(tmp, 2, 2)];
+	const Coord2D<uint8_t> *d = _tree_layout_xy[GB(tmp, 2, 2)];
 
 	/* combine trees into one sprite object */
 	StartSpriteCombine();
@@ -735,7 +733,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[Price::ClearTrees]);
+	return CommandCost(ExpensesType::Construction, num * _price[Price::ClearTrees]);
 }
 
 /** @copydoc GetTileDescProc */

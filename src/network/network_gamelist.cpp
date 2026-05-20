@@ -83,7 +83,7 @@ void NetworkAfterNewGRFScan()
 		for (auto &c : item->info.grfconfig) {
 			assert(c->flags.Test(GRFConfigFlag::Copy));
 
-			const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
+			const GRFConfig *f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Exact, &c->ident.md5sum);
 			if (f == nullptr) {
 				/* Don't know the GRF (anymore), so mark game incompatible. */
 				c->status = GRFStatus::NotFound;

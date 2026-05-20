@@ -1364,8 +1364,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Imposta il live
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessioni: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se abilitata, le recessioni possono verificarsi periodicamente. Durante una recessione, tutta la produzione è significativamente più bassa (torna al livello precedente quando la recessione è terminata).
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Non consentire inversione dei treni alle stazioni: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se abilitata, i treni non invertono la marcia nelle stazioni passanti, neanche nel caso in cui invertendo la marcia sia possibile raggiungere la destinazione successiva con un percorso più breve.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Disastri: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Consente il verificarsi o meno di occasionali eventi negativi che possono bloccare o distruggere veicoli e infrastrutture.
@@ -1569,6 +1569,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Scala la produz
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Scala la produzione delle industrie: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Scala la produzione industriale di questa percentuale
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Rinnova un veicolo quando diventa vecchio: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Se abilitata, un veicolo vicino alla sua età massima viene automaticamente sostituito quando si verificano le condizioni richieste per il rinnovo
@@ -1912,6 +1914,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando abilitat
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Abilita limiti di velocità dei vagoni: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando abilitata, tiene conto anche dei limiti di velocità dei vagoni per determinare la velocità massima di un treno.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disabilita ferrovie elettrificate: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Abilitando questa impostazione si rimuove l'obbligo di elettrificare i binari per utilizzarli con le locomotive elettriche.
 
@@ -2231,7 +2234,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorato pacchetto sonoro di base '{STRING}': non trovato
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorato pachetto musicale di base '{STRING}': non trovato
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Errore nelle impostazioni video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... non è stata trovata alcuna GPU compatibile. L'accelerazione hardware è stata disabilitata
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Il driver della GPU ha mandato in crash il gioco. Accelerazione hardware disattivata
@@ -4653,7 +4656,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selezion
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dato del veicolo sul quale basare il salto
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentuale di carico
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Affidabilità
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocità massima

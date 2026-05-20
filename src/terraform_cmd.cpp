@@ -129,7 +129,7 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
 	/* Store the height modification */
 	TerraformSetHeightOfTile(ts, tile, height);
 
-	CommandCost total_cost(EXPENSES_CONSTRUCTION);
+	CommandCost total_cost(ExpensesType::Construction);
 
 	/* Increment cost */
 	total_cost.AddCost(_price[Price::Terraform]);
@@ -168,7 +168,7 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
  */
 std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags, TileIndex tile, Slope slope, bool dir_up)
 {
-	CommandCost total_cost(EXPENSES_CONSTRUCTION);
+	CommandCost total_cost(ExpensesType::Construction);
 	int direction = (dir_up ? 1 : -1);
 	TerraformerState ts;
 
@@ -332,7 +332,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 	if (h > _settings_game.construction.map_height_limit) return { CommandCost(oldh == 0 ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH), 0, INVALID_TILE };
 
 	Money money = GetAvailableMoneyForCommand();
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	CommandCost last_error(lm == LM_LEVEL ? STR_ERROR_ALREADY_LEVELLED : INVALID_STRING_ID);
 	bool had_success = false;
 

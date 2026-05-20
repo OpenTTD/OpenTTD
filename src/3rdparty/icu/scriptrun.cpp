@@ -152,7 +152,7 @@ UBool ScriptRun::next()
         // if it's an open character, push it onto the stack.
         // if it's a close character, find the matching open on the
         // stack, and use that script code. Any non-matching open
-        // characters above it on the stack will be poped.
+        // characters above it on the stack will be popped.
         if (pairIndex >= 0) {
             if ((pairIndex & 1) == 0) {
                 parenStack[++parenSP].pairIndex = pairIndex;

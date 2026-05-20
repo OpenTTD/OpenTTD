@@ -81,6 +81,7 @@ jobs:
         yum install -y \
           alsa-lib-devel \
           pulseaudio-libs-devel \
+          pipewire-devel \
           # EOF
         echo "::endgroup::"
 

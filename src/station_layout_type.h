@@ -13,13 +13,21 @@
 #include "newgrf_station.h"
 #include "station_map.h"
 
+template <StationType T>
 class RailStationTileLayout {
 private:
 	std::span<const StationGfx> layout{}; ///< Predefined tile layout.
 	uint platforms; ///< Number of platforms.
 	uint length; ///< Length of platforms.
 public:
-	RailStationTileLayout(const StationSpec *spec, uint8_t platforms, uint8_t length);
+	RailStationTileLayout(const StationSpec *spec, uint8_t platforms, uint8_t length) : platforms(platforms), length(length)
+	{
+		if (spec == nullptr) return;
+
+		/* Look for a predefined layout for the required size. */
+		auto found = spec->layouts.find(GetStationLayoutKey(platforms, length));
+		if (found != std::end(spec->layouts)) this->layout = found->second;
+	}
 
 	class Iterator {
 		const RailStationTileLayout &stl; ///< Station tile layout being iterated.
@@ -36,6 +44,10 @@ public:
 		bool operator==(const Iterator &rhs) const { return this->position == rhs.position; }
 		bool operator==(const std::default_sentinel_t &) const { return this->position == this->stl.platforms * this->stl.length; }
 
+		/**
+		 * Dereference operator.
+		 * @return The StationGfx value associated with the index this iterator points to.
+		 */
 		StationGfx operator*() const;
 
 		Iterator &operator++()

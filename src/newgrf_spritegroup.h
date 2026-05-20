@@ -474,7 +474,7 @@ public:
 	 * This function is mainly intended for the callback profiling feature.
 	 * @return The feature.
 	 */
-	virtual GrfSpecFeature GetFeature() const { return GSF_INVALID; }
+	virtual GrfSpecFeature GetFeature() const { return GrfSpecFeature::Invalid; }
 	/**
 	 * Get an identifier for the item being resolved.
 	 * This function is mainly intended for the callback profiling feature,
@@ -494,7 +494,7 @@ struct SpecializedResolverObject : public ResolverObject {
 	/**
 	 * Set waiting triggers for rerandomisation.
 	 * This is scope independent, even though this is broken-by-design in most cases.
-	 * @param triggers The triggers to set wating.
+	 * @param triggers The triggers to set waiting.
 	 */
 	void SetWaitingRandomTriggers(RandomTriggers triggers)
 	{

@@ -1087,8 +1087,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Tetapkan tahap 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kemelesetan: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diupayakan, kemelesetan mungkin berlaku setiap tahun. Semasa kemelesetan, pengeluaran adalah lebih rendah (ia kembali ke tahap sebelumnya apabila kemelesetan berakhir)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Kereta api dilarang berpatah balik di stesen: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diupayakan kereta api tidak kembali di stesen bukan perhentian, ia berpatah balik ke destinasi berikutnya jika ada jalan pintas
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Jika kereta api diupayakan tidak kembali ke stesen bukan perhentian, ia diterbalikkan ke destinasi berikutnya jika ada jalan pintas
@@ -1248,6 +1248,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kenderaan tidak
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gunakan pembaharuan automatik apabila kenderaan usang : {STRING}
 
@@ -1458,6 +1460,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Servis tidak di
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Benarkan had kelajuan untuk gerabak: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tiada landasan elektrik: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ketibaan kenderaan di stesen pemain: {STRING}
@@ -1633,7 +1636,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE} ... aba
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE} ... abaikan set bunyi Base '{STRING}': tidak ditemui
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE} ... abaikan set grafik Base '{STRING}': tidak ditemui
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -3500,7 +3503,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Lompatan data kenderaan ke pengkalan diaktifkan
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Peratus muatan
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliabiliti
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Kelajuan maksimum

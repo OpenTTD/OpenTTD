@@ -32,9 +32,9 @@
 
 #include "safeguards.h"
 
-uint8_t _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
+DirectionKeys _dirkeys; ///< Pressed direction keys.
 bool _fullscreen;
-uint8_t _support8bpp;
+Support8bpp _support8bpp; ///< State of the support for 8bpp graphics.
 CursorVars _cursor;
 bool _ctrl_pressed;   ///< Is Ctrl pressed?
 bool _shift_pressed;  ///< Is Shift pressed?
@@ -51,7 +51,7 @@ SwitchMode _switch_mode;  ///< The next mainloop command.
 PauseModes _pause_mode;
 GameSessionStats _game_session_stats; ///< Statistics about the current session.
 
-static uint8_t _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
+static EnumIndexArray<std::array<uint8_t, 244>, FontSize, FontSize::End> _stringwidth_table; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
 
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);
@@ -107,11 +107,11 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
  * @param top Minimum Y (inclusive)
  * @param right Maximum X (inclusive)
  * @param bottom Maximum Y (inclusive)
- * @param colour A 8 bit palette index (FILLRECT_OPAQUE and FILLRECT_CHECKER) or a recolour spritenumber (FILLRECT_RECOLOUR)
+ * @param colour A 8 bit palette index (FillRectMode::Opaque and FillRectMode::Checker) or a recolour spritenumber (FillRectMode::Recolour)
  * @param mode
- *         FILLRECT_OPAQUE:   Fill the rectangle with the specified colour
- *         FILLRECT_CHECKER:  Like FILLRECT_OPAQUE, but only draw every second pixel (used to grey out things)
- *         FILLRECT_RECOLOUR:  Apply a recolour sprite to every pixel in the rectangle currently on screen
+ *         FillRectMode::Opaque: Fill the rectangle with the specified colour
+ *         FillRectMode::Checker: Like FillRectMode::Opaque, but only draw every second pixel (used to grey out things)
+ *         FillRectMode::Recolour: Apply a recolour sprite to every pixel in the rectangle currently on screen
  */
 void GfxFillRect(int left, int top, int right, int bottom, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode)
 {
@@ -141,15 +141,15 @@ void GfxFillRect(int left, int top, int right, int bottom, const std::variant<Pi
 	dst = blitter->MoveTo(dpi->dst_ptr, left, top);
 
 	switch (mode) {
-		default: // FILLRECT_OPAQUE
+		default: // FillRectMode::Opaque
 			blitter->DrawRect(dst, right, bottom, std::get<PixelColour>(colour));
 			break;
 
-		case FILLRECT_RECOLOUR:
+		case FillRectMode::Recolour:
 			blitter->DrawColourMappingRect(dst, right, bottom, GB(std::get<PaletteID>(colour), 0, PALETTE_WIDTH));
 			break;
 
-		case FILLRECT_CHECKER: {
+		case FillRectMode::Checker: {
 			uint8_t bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
 			PixelColour pc = std::get<PixelColour>(colour);
 			do {
@@ -204,11 +204,11 @@ static std::vector<LineSegment> MakePolygonSegments(std::span<const Point> shape
  * @note For rectangles the GfxFillRect function will be faster.
  * @pre dpi->zoom == ZoomLevel::Min
  * @param shape List of points on the polygon.
- * @param colour An 8 bit palette index (FILLRECT_OPAQUE and FILLRECT_CHECKER) or a recolour spritenumber (FILLRECT_RECOLOUR).
+ * @param colour An 8 bit palette index (FillRectMode::Opaque and FillRectMode::Checker) or a recolour spritenumber (FillRectMode::Recolour).
  * @param mode
- *         FILLRECT_OPAQUE:   Fill the polygon with the specified colour.
- *         FILLRECT_CHECKER:  Fill every other pixel with the specified colour, in a checkerboard pattern.
- *         FILLRECT_RECOLOUR: Apply a recolour sprite to every pixel in the polygon.
+ *         FillRectMode::Opaque: Fill the polygon with the specified colour.
+ *         FillRectMode::Checker: Fill every other pixel with the specified colour, in a checkerboard pattern.
+ *         FillRectMode::Recolour: Apply a recolour sprite to every pixel in the polygon.
  */
 void GfxFillPolygon(std::span<const Point> shape, const std::variant<PixelColour, PaletteID> &colour, FillRectMode mode)
 {
@@ -278,13 +278,13 @@ void GfxFillPolygon(std::span<const Point> shape, const std::variant<PixelColour
 			/* Fill line y from x1 to x2. */
 			void *dst = blitter->MoveTo(dpi->dst_ptr, x1, y);
 			switch (mode) {
-				default: // FILLRECT_OPAQUE
+				default: // FillRectMode::Opaque
 					blitter->DrawRect(dst, x2 - x1, 1, std::get<PixelColour>(colour));
 					break;
-				case FILLRECT_RECOLOUR:
+				case FillRectMode::Recolour:
 					blitter->DrawColourMappingRect(dst, x2 - x1, 1, GB(std::get<PaletteID>(colour), 0, PALETTE_WIDTH));
 					break;
-				case FILLRECT_CHECKER: {
+				case FillRectMode::Checker: {
 					/* Fill every other pixel, offset such that the sum of filled pixels' X and Y coordinates is odd.
 					 * This creates a checkerboard effect. */
 					PixelColour pc = std::get<PixelColour>(colour);
@@ -473,17 +473,16 @@ void DrawRectOutline(const Rect &r, PixelColour colour, int width, int dash)
  * Set the colour remap to be for the given colour.
  * @param colour the new colour of the remap.
  */
-static void SetColourRemap(TextColour colour)
+static void SetColourRemap(ExtendedTextColour colour)
 {
-	if (colour == TC_INVALID) return;
+	if (colour == TextColour::Invalid) return;
 
 	/* Black strings have no shading ever; the shading is black, so it
 	 * would be invisible at best, but it actually makes it illegible. */
-	bool no_shade   = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
-	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
-	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
+	bool no_shade = colour.flags.Test(ExtendedTextColourFlag::NoShade) || colour.colour == TextColour::Black;
+	bool raw_colour = colour.flags.Test(ExtendedTextColourFlag::IsPaletteColour);
 
-	_string_colourremap[1] = raw_colour ? (uint8_t)colour : _string_colourmap[colour].p;
+	_string_colourremap[1] = raw_colour ? to_underlying(colour.colour) : _string_colourmap[to_underlying(colour.colour)].p;
 	_string_colourremap[2] = no_shade ? 0 : 1;
 	_colour_remap_ptr = _string_colourremap;
 }
@@ -504,7 +503,7 @@ static void SetColourRemap(TextColour colour)
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, int right, StringAlignment align, bool underline, bool truncation, TextColour default_colour)
+static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, int right, StringAlignment align, bool underline, bool truncation, ExtendedTextColour default_colour)
 {
 	if (line.CountRuns() == 0) return 0;
 
@@ -586,11 +585,11 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 	const uint shadow_offset = ScaleGUITrad(1);
 
-	auto draw_line = [&](const ParagraphLayouter::Line &line, bool do_shadow, int left, int min_x, int max_x, bool truncation, TextColour initial_colour) {
+	auto draw_line = [&](const ParagraphLayouter::Line &line, bool do_shadow, int left, int min_x, int max_x, bool truncation, ExtendedTextColour initial_colour) {
 		const DrawPixelInfo *dpi = _cur_dpi;
 		int dpi_left = dpi->left;
 		int dpi_right = dpi->left + dpi->width - 1;
-		TextColour last_colour = initial_colour;
+		ExtendedTextColour last_colour{initial_colour};
 
 		for (size_t run_index = 0; run_index < line.CountRuns(); run_index++) {
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
@@ -599,13 +598,13 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			const Font *f = run.GetFont();
 
 			FontCache *fc = f->fc;
-			TextColour colour = f->colour;
-			if (colour == TC_INVALID || HasFlag(initial_colour, TC_FORCED)) colour = initial_colour;
-			bool colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
+			ExtendedTextColour colour{f->colour};
+			if (colour == TextColour::Invalid || initial_colour.flags.Test(ExtendedTextColourFlag::Forced)) colour = initial_colour;
+			bool colour_has_shadow = !colour.flags.Test(ExtendedTextColourFlag::NoShade) && colour != TextColour::Black;
 			/* Update the last colour for the truncation ellipsis. */
 			last_colour = colour;
 			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
-			SetColourRemap(do_shadow ? TC_BLACK : colour);
+			SetColourRemap(do_shadow ? TextColour::Black : colour);
 
 			for (size_t i = 0; i < run.GetGlyphCount(); i++) {
 				GlyphID glyph = glyphs[i];
@@ -634,7 +633,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 	/* Draw shadow, then foreground */
 	for (bool do_shadow : {true, false}) {
-		TextColour colour = draw_line(line, do_shadow, left - offset_x, min_x, max_x, truncation, default_colour);
+		ExtendedTextColour colour = draw_line(line, do_shadow, left - offset_x, min_x, max_x, truncation, default_colour);
 
 		if (truncation) {
 			int x = (_current_text_dir == TD_RTL) ? left : (right - truncation_width);
@@ -666,10 +665,10 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-int DrawString(int left, int right, int top, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawString(int left, int right, int top, std::string_view str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
-	int max_height = std::max({GetCharacterHeight(FS_SMALL), GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_LARGE), GetCharacterHeight(FS_MONO)});
+	int max_height = std::max({GetCharacterHeight(FontSize::Small), GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Large), GetCharacterHeight(FontSize::Monospace)});
 
 	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
 	int extra = max_height / 2;
@@ -702,7 +701,7 @@ int DrawString(int left, int right, int top, std::string_view str, TextColour co
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawString(int left, int right, int top, StringID str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	return DrawString(left, right, top, GetString(str), colour, align, underline, fontsize);
 }
@@ -785,7 +784,7 @@ Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &s
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	int maxw = right - left + 1;
 	int maxh = bottom - top + 1;
@@ -847,7 +846,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_vi
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	return DrawStringMultiLine(left, right, top, bottom, GetString(str), colour, align, underline, fontsize);
 }
@@ -870,10 +869,10 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  *
  * @return true iff the string was drawn.
  */
-bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
-	int max_height = std::max({GetCharacterHeight(FS_SMALL), GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_LARGE), GetCharacterHeight(FS_MONO)});
+	int max_height = std::max({GetCharacterHeight(FontSize::Small), GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Large), GetCharacterHeight(FontSize::Monospace)});
 
 	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
 	int extra = max_height / 2;
@@ -955,9 +954,9 @@ Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize font
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
 	SetColourRemap(colour);
-	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
-		CentreBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
-		CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
+	GfxMainBlitter(GetGlyph(FontSize::Normal, c),
+		CentreBounds(r.left, r.right, GetCharacterWidth(FontSize::Normal, c)),
+		CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal)),
 		BlitterMode::ColourRemap);
 }
 

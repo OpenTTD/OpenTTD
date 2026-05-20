@@ -1280,8 +1280,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastavitev cene
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Če je omogočeno, se recesije lahko pojavijo vsakih nekaj let. Med recesijo je proizvodnja znatno nižja, povrne se v tek po recesiji.
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prepovej obračanje vlakov na postajah: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Če je omogočeno, se vlaki ne obračajo na vmesnih postajah
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Nesreče: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Preklop med pojavljanjem nesreč
@@ -1453,6 +1453,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Če je omogoče
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Samoobnovi vozila, ko se postarajo: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Če je omogočeno, se vozila ob koncu življenjske dobe avtomatsko zamenjajo pod pogoji samoobnove.
@@ -1742,6 +1744,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Če je omogoče
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Omogoči omejitve hitrosti vagonov: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Če je omogočeno, se upošteva tudi omejitve hitrosti posameznih vagonov pri najvišji hitrosti vlaka.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Onemogoči električne tire: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Če je omogočeno, ni potrebna elektrifikacija železnice za električni pogon.
 
@@ -2016,7 +2019,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoriran osnovni zvočni set '{STRING}': ni najden
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriran osnovni glasbeni set '{STRING}': ni najden
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -3957,7 +3960,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Podatki vozila na osnovni preskok
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenti polnjenja
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zanesljivost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najvišja hitrost

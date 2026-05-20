@@ -180,7 +180,7 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, MissingGlyp
 		/* Get a font with the right spacing .*/
 		int value = 0;
 		FcPatternGetInteger(font, FC_SPACING, 0, &value);
-		if (callback->missing_fontsizes.Test(FS_MONO) != (value == FC_MONO) && value != FC_DUAL) continue;
+		if (callback->missing_fontsizes.Test(FontSize::Monospace) != (value == FC_MONO) && value != FC_DUAL) continue;
 
 		/* Do not use those that explicitly say they're slanted. */
 		FcPatternGetInteger(font, FC_SLANT, 0, &value);

@@ -349,7 +349,7 @@ static void NewSpriteGroup(ByteReader &buf)
 	const SpriteGroup *act_group = nullptr;
 
 	GrfSpecFeature feature{buf.ReadByte()};
-	if (feature >= GSF_END) {
+	if (feature >= GrfSpecFeature::End) {
 		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
@@ -500,7 +500,7 @@ static void NewSpriteGroup(ByteReader &buf)
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			if (HasBit(type, 2)) {
-				if (feature <= GSF_AIRCRAFT) group->var_scope = VSG_SCOPE_RELATIVE;
+				if (feature <= GrfSpecFeature::Aircraft) group->var_scope = VSG_SCOPE_RELATIVE;
 				group->count = buf.ReadByte();
 			}
 
@@ -531,18 +531,18 @@ static void NewSpriteGroup(ByteReader &buf)
 			}
 
 			switch (feature) {
-				case GSF_TRAINS:
-				case GSF_ROADVEHICLES:
-				case GSF_SHIPS:
-				case GSF_AIRCRAFT:
-				case GSF_STATIONS:
-				case GSF_CANALS:
-				case GSF_CARGOES:
-				case GSF_AIRPORTS:
-				case GSF_RAILTYPES:
-				case GSF_ROADTYPES:
-				case GSF_TRAMTYPES:
-				case GSF_BADGES:
+				case GrfSpecFeature::Trains:
+				case GrfSpecFeature::RoadVehicles:
+				case GrfSpecFeature::Ships:
+				case GrfSpecFeature::Aircraft:
+				case GrfSpecFeature::Stations:
+				case GrfSpecFeature::Canals:
+				case GrfSpecFeature::Cargoes:
+				case GrfSpecFeature::Airports:
+				case GrfSpecFeature::RailTypes:
+				case GrfSpecFeature::RoadTypes:
+				case GrfSpecFeature::TramTypes:
+				case GrfSpecFeature::Badges:
 				{
 					uint8_t num_loaded  = type;
 					uint8_t num_loading = buf.ReadByte();
@@ -614,11 +614,11 @@ static void NewSpriteGroup(ByteReader &buf)
 					break;
 				}
 
-				case GSF_HOUSES:
-				case GSF_AIRPORTTILES:
-				case GSF_OBJECTS:
-				case GSF_INDUSTRYTILES:
-				case GSF_ROADSTOPS: {
+				case GrfSpecFeature::Houses:
+				case GrfSpecFeature::AirportTiles:
+				case GrfSpecFeature::Objects:
+				case GrfSpecFeature::IndustryTiles:
+				case GrfSpecFeature::RoadStops: {
 					uint8_t num_building_sprites = std::max((uint8_t)1, type);
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
@@ -631,7 +631,7 @@ static void NewSpriteGroup(ByteReader &buf)
 					break;
 				}
 
-				case GSF_INDUSTRIES: {
+				case GrfSpecFeature::Industries: {
 					if (type > 2) {
 						GrfMsg(1, "NewSpriteGroup: Unsupported industry production version {}, skipping", type);
 						break;

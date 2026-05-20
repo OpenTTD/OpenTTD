@@ -73,7 +73,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
  */
 inline uint GetVehicleHeight(VehicleType type)
 {
-	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
+	return (type == VehicleType::Train || type == VehicleType::Road) ? 14 : 24;
 }
 
 int GetSingleVehicleWidth(const Vehicle *v, EngineImageType image_type);
@@ -98,10 +98,10 @@ inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 {
 	switch (vt) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:    return WC_TRAINS_LIST;
-		case VEH_ROAD:     return WC_ROADVEH_LIST;
-		case VEH_SHIP:     return WC_SHIPS_LIST;
-		case VEH_AIRCRAFT: return WC_AIRCRAFT_LIST;
+		case VehicleType::Train:    return WC_TRAINS_LIST;
+		case VehicleType::Road:     return WC_ROADVEH_LIST;
+		case VehicleType::Ship:     return WC_SHIPS_LIST;
+		case VehicleType::Aircraft: return WC_AIRCRAFT_LIST;
 	}
 }
 

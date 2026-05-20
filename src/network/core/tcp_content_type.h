@@ -15,23 +15,28 @@
 #include "../../string_type.h"
 #include "../../textfile_type.h"
 
-/** The values in the enum are important; they are used as database 'keys' */
-enum ContentType : uint8_t {
-	CONTENT_TYPE_BEGIN         = 1, ///< Helper to mark the begin of the types
-	CONTENT_TYPE_BASE_GRAPHICS = 1, ///< The content consists of base graphics
-	CONTENT_TYPE_NEWGRF        = 2, ///< The content consists of a NewGRF
-	CONTENT_TYPE_AI            = 3, ///< The content consists of an AI
-	CONTENT_TYPE_AI_LIBRARY    = 4, ///< The content consists of an AI library
-	CONTENT_TYPE_SCENARIO      = 5, ///< The content consists of a scenario
-	CONTENT_TYPE_HEIGHTMAP     = 6, ///< The content consists of a heightmap
-	CONTENT_TYPE_BASE_SOUNDS   = 7, ///< The content consists of base sounds
-	CONTENT_TYPE_BASE_MUSIC    = 8, ///< The content consists of base music
-	CONTENT_TYPE_GAME          = 9, ///< The content consists of a game script
-	CONTENT_TYPE_GAME_LIBRARY  = 10, ///< The content consists of a GS library
-	CONTENT_TYPE_END,               ///< Helper to mark the end of the types
-	INVALID_CONTENT_TYPE       = 0xFF, ///< Invalid/uninitialized content
+/** The values in the enum are important; they are received over the network from the content servers. */
+enum class ContentType : uint8_t {
+	Begin = 1, ///< Helper to mark the begin of the types
+
+	BaseGraphics = 1, ///< The content consists of base graphics
+	NewGRF = 2, ///< The content consists of a NewGRF
+	Ai = 3, ///< The content consists of an AI
+	AiLibrary = 4, ///< The content consists of an AI library
+	Scenario = 5, ///< The content consists of a scenario
+	Heightmap = 6, ///< The content consists of a heightmap
+	BaseSounds = 7, ///< The content consists of base sounds
+	BaseMusic = 8, ///< The content consists of base music
+	Gs = 9, ///< The content consists of a game script
+	GsLibrary = 10, ///< The content consists of a GS library
+
+	End, ///< Helper to mark the end of the types
+
+	Invalid = 0xFF, ///< Invalid/uninitialized content
 };
-using ContentTypes = EnumBitSet<ContentType, uint16_t, CONTENT_TYPE_END>; ///< Bitset of chosen content types.
+using ContentTypes = EnumBitSet<ContentType, uint16_t, ContentType::End>; ///< Bitset of chosen content types.
+
+DECLARE_INCREMENT_DECREMENT_OPERATORS(ContentType)
 
 /** Unique identifier for the content. */
 using ContentID = uint32_t;
@@ -50,7 +55,7 @@ struct ContentInfo {
 		Invalid, ///< The content's invalid
 	};
 
-	ContentType type = INVALID_CONTENT_TYPE; ///< Type of content
+	ContentType type = ContentType::Invalid; ///< Type of content
 	ContentID id = INVALID_CONTENT_ID;       ///< Unique (server side) ID for the content
 	uint32_t filesize = 0;                     ///< Size of the file
 	std::string filename;                    ///< Filename (for the .tar.gz; only valid on download)

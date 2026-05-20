@@ -15,7 +15,7 @@
 #include "town.h"
 #include "town_type.h"
 
-enum TownAcceptanceEffect : uint8_t;
+enum class TownAcceptanceEffect : uint8_t;
 using HouseID = uint16_t;
 
 std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text);

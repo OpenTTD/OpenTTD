@@ -85,7 +85,7 @@ RoadType _last_built_tramtype;
 
 /** Toolbar modes */
 enum class ToolbarMode : uint8_t {
-	Normal, ///< Toolbar is in normal mode, in wich all 30 buttons are accessible.
+	Normal, ///< Toolbar is in normal mode, in which all 30 buttons are accessible.
 	Upper, ///< Toolbar is in split mode and the first part is selected.
 	Lower, ///< Toolbar is in split mode and the second part is selected.
 };
@@ -287,19 +287,19 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	}
 	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS, OptionMenuEntries::Transparencies));
 	list.push_back(MakeDropDownListDividerItem());
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_TOWN_NAMES), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OptionMenuEntries::ShowTownNames));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_STATION_NAMES), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OptionMenuEntries::ShowStationNames));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowTownNames), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OptionMenuEntries::ShowTownNames));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowStationNames), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OptionMenuEntries::ShowStationNames));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Train), STR_SETTINGS_MENU_STATION_NAMES_TRAIN, OptionMenuEntries::ShowTrainStationNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::TruckStop), STR_SETTINGS_MENU_STATION_NAMES_LORRY, OptionMenuEntries::ShowLorryStationNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::BusStop), STR_SETTINGS_MENU_STATION_NAMES_BUS, OptionMenuEntries::ShowBusStationNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Dock), STR_SETTINGS_MENU_STATION_NAMES_SHIP, OptionMenuEntries::ShowDockNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Airport), STR_SETTINGS_MENU_STATION_NAMES_PLANE, OptionMenuEntries::ShowAirportNames, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(STATION_FACILITY_GHOST), STR_SETTINGS_MENU_STATION_NAMES_GHOST, OptionMenuEntries::ShowGhostStationNames, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OptionMenuEntries::ShowWaypointNames));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_SIGNS), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OptionMenuEntries::ShowSigns));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OptionMenuEntries::ShowCompetitorSigns));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_ANIMATION), STR_SETTINGS_MENU_FULL_ANIMATION, OptionMenuEntries::FullAnimation));
-	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_FULL_DETAIL), STR_SETTINGS_MENU_FULL_DETAIL, OptionMenuEntries::FullDetails));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowWaypointNames), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OptionMenuEntries::ShowWaypointNames));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowSigns), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OptionMenuEntries::ShowSigns));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::ShowCompetitorSigns), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OptionMenuEntries::ShowCompetitorSigns));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::FullAnimation), STR_SETTINGS_MENU_FULL_ANIMATION, OptionMenuEntries::FullAnimation));
+	list.push_back(MakeDropDownListCheckedItem(_display_opt.Test(DisplayOption::FullDetail), STR_SETTINGS_MENU_FULL_DETAIL, OptionMenuEntries::FullDetails));
 	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_HOUSES), STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS, OptionMenuEntries::TransparentBuildings));
 	list.push_back(MakeDropDownListCheckedItem(IsTransparencySet(TO_SIGNS), STR_SETTINGS_MENU_TRANSPARENT_SIGNS, OptionMenuEntries::TransparentStationSigns));
 
@@ -323,22 +323,22 @@ static CallBackFunction MenuClickSettings(int index)
 		case OptionMenuEntries::SandboxOptions: ShowCheatWindow(); break;
 		case OptionMenuEntries::Transparencies: ShowTransparencyToolbar(); break;
 
-		case OptionMenuEntries::ShowTownNames: ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES); break;
-		case OptionMenuEntries::ShowStationNames: ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
+		case OptionMenuEntries::ShowTownNames: _display_opt.Flip(DisplayOption::ShowTownNames); break;
+		case OptionMenuEntries::ShowStationNames: _display_opt.Flip(DisplayOption::ShowStationNames); break;
 		case OptionMenuEntries::ShowTrainStationNames: _facility_display_opt.Flip(StationFacility::Train); break;
 		case OptionMenuEntries::ShowLorryStationNames: _facility_display_opt.Flip(StationFacility::TruckStop); break;
 		case OptionMenuEntries::ShowBusStationNames: _facility_display_opt.Flip(StationFacility::BusStop); break;
 		case OptionMenuEntries::ShowDockNames: _facility_display_opt.Flip(StationFacility::Dock); break;
 		case OptionMenuEntries::ShowAirportNames: _facility_display_opt.Flip(StationFacility::Airport); break;
 		case OptionMenuEntries::ShowGhostStationNames: _facility_display_opt.Flip(STATION_FACILITY_GHOST); break;
-		case OptionMenuEntries::ShowWaypointNames: ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
-		case OptionMenuEntries::ShowSigns: ToggleBit(_display_opt, DO_SHOW_SIGNS); break;
+		case OptionMenuEntries::ShowWaypointNames: _display_opt.Flip(DisplayOption::ShowWaypointNames); break;
+		case OptionMenuEntries::ShowSigns: _display_opt.Flip(DisplayOption::ShowSigns); break;
 		case OptionMenuEntries::ShowCompetitorSigns:
-			ToggleBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
+			_display_opt.Flip(DisplayOption::ShowCompetitorSigns);
 			InvalidateWindowClassesData(WC_SIGN_LIST, -1);
 			break;
-		case OptionMenuEntries::FullAnimation: ToggleBit(_display_opt, DO_FULL_ANIMATION); CheckBlitter(); break;
-		case OptionMenuEntries::FullDetails: ToggleBit(_display_opt, DO_FULL_DETAIL); break;
+		case OptionMenuEntries::FullAnimation: _display_opt.Flip(DisplayOption::FullAnimation); CheckBlitter(); break;
+		case OptionMenuEntries::FullDetails: _display_opt.Flip(DisplayOption::FullDetail); break;
 		case OptionMenuEntries::TransparentBuildings: ToggleTransparency(TO_HOUSES); break;
 		case OptionMenuEntries::TransparentStationSigns: ToggleTransparency(TO_SIGNS); break;
 	}
@@ -785,7 +785,7 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 
 static CallBackFunction ToolbarTrainClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_TRAIN);
+	ToolbarVehicleClick(w, VehicleType::Train);
 	return CallBackFunction::None;
 }
 
@@ -797,7 +797,7 @@ static CallBackFunction ToolbarTrainClick(Window *w)
  */
 static CallBackFunction MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_TRAIN);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Train);
 	return CallBackFunction::None;
 }
 
@@ -805,7 +805,7 @@ static CallBackFunction MenuClickShowTrains(int index)
 
 static CallBackFunction ToolbarRoadClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_ROAD);
+	ToolbarVehicleClick(w, VehicleType::Road);
 	return CallBackFunction::None;
 }
 
@@ -817,7 +817,7 @@ static CallBackFunction ToolbarRoadClick(Window *w)
  */
 static CallBackFunction MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_ROAD);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Road);
 	return CallBackFunction::None;
 }
 
@@ -825,7 +825,7 @@ static CallBackFunction MenuClickShowRoad(int index)
 
 static CallBackFunction ToolbarShipClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_SHIP);
+	ToolbarVehicleClick(w, VehicleType::Ship);
 	return CallBackFunction::None;
 }
 
@@ -837,7 +837,7 @@ static CallBackFunction ToolbarShipClick(Window *w)
  */
 static CallBackFunction MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_SHIP);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Ship);
 	return CallBackFunction::None;
 }
 
@@ -845,7 +845,7 @@ static CallBackFunction MenuClickShowShips(int index)
 
 static CallBackFunction ToolbarAirClick(Window *w)
 {
-	ToolbarVehicleClick(w, VEH_AIRCRAFT);
+	ToolbarVehicleClick(w, VehicleType::Aircraft);
 	return CallBackFunction::None;
 }
 
@@ -857,7 +857,7 @@ static CallBackFunction ToolbarAirClick(Window *w)
  */
 static CallBackFunction MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_AIRCRAFT);
+	ShowVehicleListWindow((CompanyID)index, VehicleType::Aircraft);
 	return CallBackFunction::None;
 }
 
@@ -910,7 +910,7 @@ static CallBackFunction MenuClickBuildRail(int index)
 
 static CallBackFunction ToolbarBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
+	ShowDropDownList(w, GetRoadTypeDropDownList(RoadTramType::Road), _last_built_roadtype, WID_TN_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -931,7 +931,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
+	ShowDropDownList(w, GetRoadTypeDropDownList(RoadTramType::Tram), _last_built_tramtype, WID_TN_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1268,7 +1268,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 
 static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_ROAD), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RoadTramType::Road), _last_built_roadtype, WID_TE_ROADS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_roadtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1287,7 +1287,7 @@ static CallBackFunction ToolbarScenBuildRoad(int index)
 
 static CallBackFunction ToolbarScenBuildTramClick(Window *w)
 {
-	ShowDropDownList(w, GetScenRoadTypeDropDownList(RTTB_TRAM), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
+	ShowDropDownList(w, GetScenRoadTypeDropDownList(RoadTramType::Tram), _last_built_tramtype, WID_TE_TRAMS, 140, GetToolbarDropDownOptions(DropDownOption::Filterable), &_tramtype_filter);
 	return CallBackFunction::None;
 }
 
@@ -1494,7 +1494,7 @@ public:
 		/* Draw brown-red toolbar bg. */
 		const Rect r = this->GetCurrentRect();
 		GfxFillRect(r, PC_VERY_DARK_RED);
-		GfxFillRect(r, PC_DARK_RED, FILLRECT_CHECKER);
+		GfxFillRect(r, PC_DARK_RED, FillRectMode::Checker);
 
 		this->NWidgetContainer::Draw(w);
 	}
@@ -2059,10 +2059,10 @@ struct MainToolbarWindow : Window {
 			case MTHK_GRAPHS: ShowOperatingProfitGraph(); break;
 			case MTHK_LEAGUE: ShowFirstLeagueTable(); break;
 			case MTHK_INDUSTRIES: ShowBuildIndustryWindow(); break;
-			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VEH_TRAIN); break;
-			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VEH_ROAD); break;
-			case MTHK_SHIP_LIST: ShowVehicleListWindow(_local_company, VEH_SHIP); break;
-			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VEH_AIRCRAFT); break;
+			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VehicleType::Train); break;
+			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VehicleType::Road); break;
+			case MTHK_SHIP_LIST: ShowVehicleListWindow(_local_company, VehicleType::Ship); break;
+			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VehicleType::Aircraft); break;
 			case MTHK_ZOOM_IN: ToolbarZoomInClick(this); break;
 			case MTHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
 			case MTHK_BUILD_RAIL: ShowBuildRailToolbar(_last_built_railtype); break;
@@ -2244,7 +2244,7 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 				hor->Add(std::make_unique<NWidgetSpacer>(0, 0));
 				break;
 		}
-		auto leaf = std::make_unique<NWidgetLeaf>(tp, COLOUR_GREY, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
+		auto leaf = std::make_unique<NWidgetLeaf>(tp, Colours::Grey, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
 		leaf->SetToolbarMinimalSize(1);
 		hor->Add(std::move(leaf));
 	}
@@ -2256,8 +2256,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolbar_normal_widge
 	NWidgetFunction(MakeMainToolbar),
 };
 
+/** Window definition for the normal (top) toolbar. */
 static WindowDesc _toolb_normal_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolbar_normal_widgets,
@@ -2370,8 +2371,8 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		this->SetWidgetDisabledState(WID_TE_DATE_BACKWARD, _settings_game.game_creation.starting_year <= CalendarTime::MIN_YEAR);
 		this->SetWidgetDisabledState(WID_TE_DATE_FORWARD, _settings_game.game_creation.starting_year >= CalendarTime::MAX_YEAR);
-		this->SetWidgetDisabledState(WID_TE_ROADS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RTT_ROAD)));
-		this->SetWidgetDisabledState(WID_TE_TRAMS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RTT_TRAM)));
+		this->SetWidgetDisabledState(WID_TE_ROADS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RoadTramType::Road)));
+		this->SetWidgetDisabledState(WID_TE_TRAMS, !GetRoadTypes(true).Any(GetMaskForRoadTramType(RoadTramType::Tram)));
 
 		this->DrawWidgets();
 	}
@@ -2392,11 +2393,11 @@ struct ScenarioEditorToolbarWindow : Window {
 		switch (widget) {
 			case WID_TE_SPACER: {
 				int height = r.Height();
-				if (height > 2 * GetCharacterHeight(FS_NORMAL)) {
-					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FS_NORMAL), STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
-					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+				if (height > 2 * GetCharacterHeight(FontSize::Normal)) {
+					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FontSize::Normal), STR_SCENEDIT_TOOLBAR_OPENTTD, TextColour::FromString, SA_HOR_CENTER);
+					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TextColour::FromString, SA_HOR_CENTER);
 				} else {
-					DrawString(r.left, r.right, (height - GetCharacterHeight(FS_NORMAL)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, (height - GetCharacterHeight(FontSize::Normal)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TextColour::FromString, SA_HOR_CENTER);
 				}
 				break;
 			}
@@ -2556,38 +2557,38 @@ struct ScenarioEditorToolbarWindow : Window {
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_toolb_scen_inner_widgets = {
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_PAUSE), SetSpriteTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_FAST_FORWARD), SetSpriteTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SETTINGS), SetSpriteTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
-	NWidget(WWT_IMGBTN_2, COLOUR_GREY, WID_TE_SAVE), SetSpriteTip(SPR_IMG_SAVE, STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_PAUSE), SetSpriteTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_FAST_FORWARD), SetSpriteTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_SETTINGS), SetSpriteTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
+	NWidget(WWT_IMGBTN_2, Colours::Grey, WID_TE_SAVE), SetSpriteTip(SPR_IMG_SAVE, STR_SCENEDIT_TOOLBAR_SAVE_SCENARIO_LOAD_SCENARIO_TOOLTIP),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_SPACER), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_TE_SPACER), EndContainer(),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_DATE_PANEL),
+	NWidget(WWT_PANEL, Colours::Grey, WID_TE_DATE_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 2, 2), SetPadding(1),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_BACKWARD), SetSpriteTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP), SetFill(0, 1),
-			NWidget(WWT_TEXT, INVALID_COLOUR, WID_TE_DATE), SetToolTip(STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP), SetTextStyle(TC_WHITE), SetAlignment(SA_CENTER), SetFill(0, 1),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_FORWARD), SetSpriteTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP), SetFill(0, 1),
+			NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_DATE_BACKWARD), SetSpriteTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP), SetFill(0, 1),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_TE_DATE), SetToolTip(STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP), SetTextStyle(TextColour::White), SetAlignment(SA_CENTER), SetFill(0, 1),
+			NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_DATE_FORWARD), SetSpriteTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP), SetFill(0, 1),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SMALL_MAP), SetSpriteTip(SPR_IMG_SMALLMAP, STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_SMALL_MAP), SetSpriteTip(SPR_IMG_SMALLMAP, STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_ZOOM_IN), SetSpriteTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_ZOOM_OUT), SetSpriteTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_ZOOM_IN), SetSpriteTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_ZOOM_OUT), SetSpriteTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_LAND_GENERATE), SetSpriteTip(SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_TOWN_GENERATE), SetSpriteTip(SPR_IMG_TOWN, STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_INDUSTRY), SetSpriteTip(SPR_IMG_INDUSTRY, STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_ROADS), SetSpriteTip(SPR_IMG_BUILDROAD, STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_TRAMS), SetSpriteTip(SPR_IMG_BUILDTRAMS, STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_WATER), SetSpriteTip(SPR_IMG_BUILDWATER, STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_TREES), SetSpriteTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_SIGNS), SetSpriteTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_LAND_GENERATE), SetSpriteTip(SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_TOWN_GENERATE), SetSpriteTip(SPR_IMG_TOWN, STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_INDUSTRY), SetSpriteTip(SPR_IMG_INDUSTRY, STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_ROADS), SetSpriteTip(SPR_IMG_BUILDROAD, STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_TRAMS), SetSpriteTip(SPR_IMG_BUILDTRAMS, STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_WATER), SetSpriteTip(SPR_IMG_BUILDWATER, STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_TREES), SetSpriteTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP),
+	NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_TE_SIGNS), SetSpriteTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_MUSIC_SOUND), SetSpriteTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_HELP), SetSpriteTip(SPR_IMG_QUERY, STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SWITCH_BAR), SetSpriteTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_MUSIC_SOUND), SetSpriteTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_HELP), SetSpriteTip(SPR_IMG_QUERY, STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION),
+	NWidget(WWT_IMGBTN, Colours::Grey, WID_TE_SWITCH_BAR), SetSpriteTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
 };
 
 static std::unique_ptr<NWidgetBase> MakeScenarioToolbar()
@@ -2599,8 +2600,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_toolb_scen_widgets =
 	NWidgetFunction(MakeScenarioToolbar),
 };
 
+/** Window definition for the scenario editor (top) toolbar window. */
 static WindowDesc _toolb_scen_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_toolb_scen_widgets,

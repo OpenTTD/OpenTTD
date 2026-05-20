@@ -39,7 +39,6 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index);
 void DeleteNewGRFInspectWindow(GrfSpecFeature feature, ConvertibleThroughBase auto index) { DeleteNewGRFInspectWindow(feature, index.base()); }
 
 GrfSpecFeature GetGrfSpecFeature(TileIndex tile);
-GrfSpecFeature GetGrfSpecFeature(VehicleType type);
 
 void ShowSpriteAlignerWindow();
 

@@ -23,15 +23,6 @@ struct DrawIndustryAnimationStruct {
 };
 
 /**
- * Simple structure gathering x,y coordinates for
- * industries animations
- */
-struct DrawIndustryCoordinates {
-	uint8_t x;  ///< coordinate x of the pair
-	uint8_t y;  ///< coordinate y of the pair
-};
-
-/**
  * Macro to ease the declaration of the array
  * @param s1 sprite ID of ground sprite
  * @param p1 palette ID of ground sprite
@@ -853,7 +844,7 @@ static const DrawIndustryAnimationStruct _draw_industry_spec1[96] = {
 };
 
 /** This is ONLY used for Sugar Mine.*/
-static const DrawIndustryCoordinates _drawtile_proc1[5] = {
+static const Coord2D<uint8_t> _drawtile_proc1[5] = {
 	{22, 73},
 	{17, 70},
 	{14, 69},
@@ -945,7 +936,7 @@ static const uint8_t _industry_anim_offs_bubbles[] = {
 /**
  * Movement of the sparks , only used for Power Station
  */
-static const DrawIndustryCoordinates _coal_plant_sparks[] = {
+static const Coord2D<uint8_t> _coal_plant_sparks[] = {
 	{11, 23},
 	{11, 11},
 	{14,  6},

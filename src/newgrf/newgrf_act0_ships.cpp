@@ -30,11 +30,11 @@
  */
 static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_SHIP, id);
-		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
+		Engine *e = GetNewEngine(_cur_gps.grffile, VehicleType::Ship, id);
+		if (e == nullptr) return ChangeInfoResult::InvalidId; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
 		ShipVehicleInfo *svi = &e->VehInfo<ShipVehicleInfo>();
@@ -49,7 +49,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 
 				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
-				if (IsValidNewGRFImageIndex<VEH_SHIP>(spriteid)) {
+				if (IsValidNewGRFImageIndex<VehicleType::Ship>(spriteid)) {
 					svi->image_index = spriteid;
 				} else {
 					GrfMsg(1, "ShipVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);
@@ -173,10 +173,10 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				_gted[e->index].UpdateRefittability(prop == 0x1E && count != 0);
 				if (prop == 0x1E) _gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				CargoTypes &ctt = prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
-				ctt = 0;
+				ctt.Reset();
 				while (count--) {
 					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
-					if (IsValidCargoType(ctype)) SetBit(ctt, ctype);
+					if (IsValidCargoType(ctype)) ctt.Set(ctype);
 				}
 				break;
 			}
@@ -209,7 +209,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x26: // Badge list
-				e->badges = ReadBadgeList(buf, GSF_SHIPS);
+				e->badges = ReadBadgeList(buf, GrfSpecFeature::Ships);
 				break;
 
 			default:
@@ -221,5 +221,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ShipVehicleChangeInfo(first, last, prop, buf); }
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Ships>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::Ships>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ShipVehicleChangeInfo(first, last, prop, buf); }

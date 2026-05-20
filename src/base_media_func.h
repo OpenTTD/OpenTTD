@@ -159,21 +159,21 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 
 		file->check_result = T::CheckMD5(file, Subdirectory::Baseset);
 		switch (file->check_result) {
-			case MD5File::CR_UNKNOWN:
+			case MD5File::ChecksumResult::Unknown:
 				break;
 
-			case MD5File::CR_MATCH:
+			case MD5File::ChecksumResult::Match:
 				this->valid_files++;
 				this->found_files++;
 				break;
 
-			case MD5File::CR_MISMATCH:
+			case MD5File::ChecksumResult::Mismatch:
 				/* This is normal for original sample.cat, which either matches with orig_dos or orig_win. */
 				this->LogError(full_filename, fmt::format("MD5 checksum mismatch for: {}", filename), original_set ? 1 : 0);
 				this->found_files++;
 				break;
 
-			case MD5File::CR_NO_FILE:
+			case MD5File::ChecksumResult::NoFile:
 				/* Missing files is normal for the original basesets. Use lower debug level */
 				this->LogError(full_filename, fmt::format("File is missing: {}", filename), original_set ? 1 : 0);
 				break;

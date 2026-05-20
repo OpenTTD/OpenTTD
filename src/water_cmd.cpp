@@ -130,7 +130,7 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
-	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[Price::BuildDepotShip]);
+	CommandCost cost = CommandCost(ExpensesType::Construction, _price[Price::BuildDepotShip]);
 
 	bool add_cost = !IsWaterTile(tile);
 	CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
@@ -186,7 +186,7 @@ bool IsPossibleDockingTile(Tile t)
 		case TileType::Railway:
 		case TileType::Station:
 		case TileType::TunnelBridge:
-			return TrackStatusToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, 0)) != TRACK_BIT_NONE;
+			return TrackStatusToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, RoadTramType::Invalid)) != TRACK_BIT_NONE;
 
 		default:
 			return false;
@@ -305,7 +305,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlags flags)
 		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearDepotShip]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearDepotShip]);
 }
 
 /**
@@ -332,7 +332,7 @@ static uint8_t GetLockPartMinimalBridgeHeight(LockPart lock_part)
  */
 static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags flags)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 
 	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -448,7 +448,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlags flags)
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearLock]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearLock]);
 }
 
 /**
@@ -503,7 +503,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 	/* Outside of the editor you can only build canals, not oceans */
 	if (wc != WaterClass::Canal && _game_mode != GM_EDITOR) return CMD_ERROR;
 
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
@@ -619,7 +619,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ClearNeighbourNonFloodingStates(tile);
 			}
 
-			return CommandCost(EXPENSES_CONSTRUCTION, base_cost);
+			return CommandCost(ExpensesType::Construction, base_cost);
 		}
 
 		case WaterTileType::Coast: {
@@ -635,9 +635,9 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ClearNeighbourNonFloodingStates(tile);
 			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
-				return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearWater]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearWater]);
 			} else {
-				return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearRough]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearRough]);
 			}
 		}
 
@@ -1073,7 +1073,7 @@ static void FloodVehicleProc(Vehicle *v, int z)
 	switch (v->type) {
 		default: break;
 
-		case VEH_AIRCRAFT: {
+		case VehicleType::Aircraft: {
 			if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) break;
 			if (v->subtype == AIR_SHADOW) break;
 
@@ -1087,8 +1087,8 @@ static void FloodVehicleProc(Vehicle *v, int z)
 			break;
 		}
 
-		case VEH_TRAIN:
-		case VEH_ROAD: {
+		case VehicleType::Train:
+		case VehicleType::Road: {
 			if (v->z_pos > z) break;
 			FloodVehicle(v->First());
 			break;
@@ -1183,7 +1183,7 @@ static void DoFloodTile(TileIndex target)
 
 	bool flooded = false; // Will be set to true if something is changed.
 
-	Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
+	AutoRestoreBackup cur_company(_current_company, OWNER_WATER);
 
 	Slope tileh = GetTileSlope(target);
 	if (tileh != SLOPE_FLAT) {
@@ -1238,8 +1238,6 @@ static void DoFloodTile(TileIndex target)
 		if (IsPossibleDockingTile(target)) CheckForDockingTile(target);
 		InvalidateWaterRegion(target);
 	}
-
-	cur_company.Restore();
 }
 
 /**
@@ -1248,7 +1246,7 @@ static void DoFloodTile(TileIndex target)
  */
 static void DoDryUp(TileIndex tile)
 {
-	Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
+	AutoRestoreBackup cur_company(_current_company, OWNER_WATER);
 
 	switch (GetTileType(tile)) {
 		case TileType::Railway:
@@ -1283,15 +1281,13 @@ static void DoDryUp(TileIndex tile)
 
 		default: NOT_REACHED();
 	}
-
-	cur_company.Restore();
 }
 
 /**
  * @copydoc TileLoopProc
  *
  * Let a water tile floods its diagonal adjoining tiles
- * called from tunnelbridge_cmd, and by TileLoop_Industry() and TileLoop_Track()
+ * called by #TileLoop_Industry, #TileLoop_Rail, #TileLoop_Station, #TileLoop_Object, #TileLoop_Trees and #TileLoop_Void.
  */
 void TileLoop_Water(TileIndex tile)
 {
@@ -1331,7 +1327,7 @@ void TileLoop_Water(TileIndex tile)
 		}
 
 		case FLOOD_DRYUP: {
-			Slope slope_here = std::get<0>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+			Slope slope_here = std::get<Slope>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			for (Direction dir : _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to flooding, drying up does consider TileType::Void tiles. */
@@ -1384,7 +1380,7 @@ void ConvertGroundTilesIntoWaterTiles()
 }
 
 /** @copydoc GetTileTrackStatusProc */
-static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] uint sub_mode, [[maybe_unused]] DiagDirection side)
+static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, [[maybe_unused]] DiagDirection side)
 {
 	static const TrackBits coast_tracks[] = {TRACK_BIT_NONE, TRACK_BIT_RIGHT, TRACK_BIT_UPPER, TRACK_BIT_NONE, TRACK_BIT_LEFT, TRACK_BIT_NONE, TRACK_BIT_NONE,
 		TRACK_BIT_NONE, TRACK_BIT_LOWER, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE};
@@ -1415,7 +1411,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 static bool ClickTile_Water(TileIndex tile)
 {
 	if (GetWaterTileType(tile) == WaterTileType::Depot) {
-		ShowDepotWindow(GetShipDepotNorthTile(tile), VEH_SHIP);
+		ShowDepotWindow(GetShipDepotNorthTile(tile), VehicleType::Ship);
 		return true;
 	}
 	return false;

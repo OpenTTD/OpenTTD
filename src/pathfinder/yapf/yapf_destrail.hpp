@@ -140,7 +140,7 @@ public:
 				[[fallthrough]];
 
 			case OT_GOTO_STATION:
-				this->dest_tile = CalcClosestStationTile(v->current_order.GetDestination().ToStationID(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? StationType::Rail : StationType::RailWaypoint);
+				this->dest_tile = CalcClosestStationTile(v->current_order.GetDestination().ToStationID(), v->GetMovingFront()->tile, v->current_order.IsType(OT_GOTO_STATION) ? StationType::Rail : StationType::RailWaypoint);
 				this->dest_station_id = v->current_order.GetDestination().ToStationID();
 				this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 				break;
@@ -154,7 +154,7 @@ public:
 			default:
 				this->dest_tile = v->dest_tile == INVALID_TILE ? TileIndex{} : v->dest_tile;
 				this->dest_station_id = StationID::Invalid();
-				this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(this->dest_tile, TRANSPORT_RAIL, 0));
+				this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(this->dest_tile, TRANSPORT_RAIL, RoadTramType::Invalid));
 				break;
 		}
 		this->CYapfDestinationRailBase::SetDestination(v);

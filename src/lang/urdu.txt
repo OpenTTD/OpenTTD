@@ -1046,6 +1046,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special
@@ -1163,6 +1165,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں ک
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {STRING}
 
@@ -1359,6 +1363,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :گاڑیوں ک
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :مال گاڑی کی حد رفتار فعال کریں: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :الیلٹرک ریل گاڑیاں غیر فعال کریں: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}
@@ -1514,7 +1519,7 @@ STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :نا معلوم
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}- - - کمپریشن کی سطح '{STRING}' درست نہیں ہے
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE} ۔ ۔ ۔ کھیل بچانے کا یہ فارمیٹ '{STRING}' دستیاب نہیں ہے۔ واپس '{STRING}' پر جا رہے ہیں
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -2632,7 +2637,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 ###next-name-looks-similar
 
 

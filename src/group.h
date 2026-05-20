@@ -74,7 +74,7 @@ using GroupFlags = EnumBitSet<GroupFlag, uint8_t>;
 struct Group : GroupPool::PoolItem<&_group_pool> {
 	std::string name{}; ///< Group Name
 	Owner owner = INVALID_OWNER; ///< Group Owner
-	VehicleType vehicle_type = VEH_INVALID; ///< Vehicle type of the group
+	VehicleType vehicle_type = VehicleType::Invalid; ///< Vehicle type of the group
 
 	GroupFlags flags{}; ///< Group flags
 	Livery livery{}; ///< Custom colour scheme for vehicles in this group
@@ -86,7 +86,13 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	GroupID parent = GroupID::Invalid(); ///< Parent group
 	uint16_t number = 0; ///< Per-company group number.
 
-	Group(GroupID index, CompanyID owner = INVALID_OWNER, VehicleType vehicle_type = VEH_INVALID) :
+	/**
+	 * Create this group.
+	 * @param index Group index.
+	 * @param owner Owner of the group.
+	 * @param vehicle_type Vehicle type of the group.
+	 */
+	Group(GroupID index, CompanyID owner = INVALID_OWNER, VehicleType vehicle_type = VehicleType::Invalid) :
 		GroupPool::PoolItem<&_group_pool>(index), owner(owner), vehicle_type(vehicle_type) {}
 };
 

@@ -70,7 +70,7 @@ struct AircraftCache {
 /**
  * Aircraft, helicopters, rotors and their shadows belong to this class.
  */
-struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
+struct Aircraft final : public SpecializedVehicle<Aircraft, VehicleType::Aircraft> {
 	uint16_t crashed_counter = 0; ///< Timer for handling crash animations.
 	uint8_t pos = 0; ///< Next desired position of the aircraft.
 	uint8_t previous_pos = 0; ///< Previous desired position of the aircraft.
@@ -89,7 +89,7 @@ struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_AIRCRAFT_REVENUE : EXPENSES_AIRCRAFT_RUN; }
+	ExpensesType GetExpenseType(bool income) const override { return income ? ExpensesType::AircraftRevenue : ExpensesType::AircraftRun; }
 	bool IsPrimaryVehicle() const override                  { return this->IsNormalAircraft(); }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
 	int GetDisplaySpeed() const override    { return this->cur_speed; }

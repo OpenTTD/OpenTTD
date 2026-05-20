@@ -36,14 +36,14 @@ static void LoadFontGlyph(ByteReader &buf)
 		uint8_t  num_char  = buf.ReadByte();
 		uint16_t base_char = buf.ReadWord();
 
-		if (size >= FS_END) {
+		if (size >= FontSize::End) {
 			GrfMsg(1, "LoadFontGlyph: Size {} is not supported, ignoring", size);
 		}
 
 		GrfMsg(7, "LoadFontGlyph: Loading {} glyph(s) at 0x{:04X} for size {}", num_char, base_char, size);
 
 		for (uint c = 0; c < num_char; c++) {
-			if (size < FS_END) SetUnicodeGlyph(size, base_char + c, _cur_gps.spriteid);
+			if (size < FontSize::End) SetUnicodeGlyph(size, base_char + c, _cur_gps.spriteid);
 			_cur_gps.nfo_line++;
 			LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, _cur_gps.nfo_line);
 		}

@@ -67,7 +67,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
-			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FS_SMALL));
+			int diff = scaled_height - ScaleGUITrad(FontCache::GetDefaultFontHeight(FontSize::Small));
 			/* Clamp() is not used as scaled_height could be greater than MAX_FONT_SIZE, which is not permitted in Clamp(). */
 			pixels = std::min(std::max(std::min<int>(min_size, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height), MAX_FONT_SIZE);
 		}
@@ -130,7 +130,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	uint bb_height = (uint)std::ceil(bounds.size.height);
 
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
-	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
+	uint shadow = (this->fs == FontSize::Normal) ? ScaleGUITrad(1) : 0;
 	uint width = std::max(1U, bb_width + shadow);
 	uint height = std::max(1U, bb_height + shadow);
 
@@ -164,7 +164,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 		CTFontDrawGlyphs(this->font.get(), &glyph, &pos, 1, context.get());
 
 		/* Draw shadow for medium size. */
-		if (this->fs == FS_NORMAL && !use_aa) {
+		if (this->fs == FontSize::Normal && !use_aa) {
 			for (uint y = 0; y < bb_height; y++) {
 				for (uint x = 0; x < bb_width; x++) {
 					if (bmp[y * pitch + x] > 0) {
@@ -280,7 +280,7 @@ public:
 				/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
 				if (symbolic_traits & kCTFontBoldTrait) continue;
 				/* Select monospaced fonts if asked for. */
-				if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->missing_fontsizes.Test(FS_MONO)) continue;
+				if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->missing_fontsizes.Test(FontSize::Monospace)) continue;
 
 				/* Get font name. */
 				char buffer[128];

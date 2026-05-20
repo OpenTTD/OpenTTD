@@ -1321,8 +1321,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Alege nivelul d
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiuni: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Dacă este activată, recesiunile pot apărea periodic. În timpul unei recesiuni toată producția este semnificativ mai scăzută (revine la nivelul anterior când recesiunea se încheie)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nu permite întoarcerea trenurilor in statie: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Dacă este activată, trenurile nu vor întoarce într-o stație care nu este capăt de linie, chiar dacă există o cale mai scurtă către destinația următoare la întoarcere
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Dezastre: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Comută dezastre care ocazional pot bloca sau distruge vehicule sau infrastructură
@@ -1526,6 +1526,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Ajustarea produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Ajustarea producției de mărfuri: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Ajustarea producției de mărfuri cu acest procent.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi înnoit automat când condițiile de înlocuire automată sunt îndeplinite
@@ -1866,6 +1868,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Când este acti
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activează limite de viteză pentru vagoane: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Dacă este activată, folosește și limita de viteză a vagoanelor pentru a stabili viteza maximă a trenului
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Dezactivează șinele electrice: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Prin activarea acestei opțiuni, se dezactivează cerința de a avea cale feroviară electrificată pentru a putea folosi locomotive electrice pe această cale feroviară
 
@@ -2185,7 +2188,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... setu
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... setul de bază pentru sunete '{STRING}' este ignorat: nu a fost găsit
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... setul de bază pentru muzică '{STRING}' este ignorat: nu a fost găsit
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eroare în setările video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... GPU incompatibil. Accelerarea hardware este dezactivată
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Driverul GPU a dus la prăbușirea jocului. Accelerarea hardware a fost dezactivată
@@ -4592,7 +4595,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selecta�
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datele vehiculului pe care se bazează
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procentaj încărcare
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Eficiență
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Viteză maximă

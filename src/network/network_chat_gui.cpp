@@ -36,7 +36,7 @@ static const uint NETWORK_CHAT_LINE_SPACING = 3;
 /** Container for a message. */
 struct ChatMessage {
 	std::string message; ///< The action message.
-	TextColour colour;  ///< The colour of the message.
+	ExtendedTextColour colour;  ///< The colour of the message.
 	std::chrono::steady_clock::time_point remove_time; ///< The time to remove the message.
 };
 
@@ -82,17 +82,13 @@ static inline bool HaveChatMessages(bool show_all)
  * @param duration The duration of the chat message in seconds
  * @param message message itself
  */
-void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message)
+void CDECL NetworkAddChatMessage(ExtendedTextColour colour, uint duration, const std::string &message)
 {
 	if (_chatmsg_list.size() == MAX_CHAT_MESSAGES) {
 		_chatmsg_list.pop_back();
 	}
 
-	ChatMessage *cmsg = &_chatmsg_list.emplace_front();
-	cmsg->message = message;
-	cmsg->colour = colour;
-	cmsg->remove_time = std::chrono::steady_clock::now() + std::chrono::seconds(duration);
-
+	_chatmsg_list.emplace_front(message, colour, std::chrono::steady_clock::now() + std::chrono::seconds(duration));
 	_chatmessage_dirty_time = std::chrono::steady_clock::now();
 	_chatmessage_dirty = true;
 }
@@ -100,8 +96,8 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::st
 /** Initialize all font-dependent chat box sizes. */
 void NetworkReInitChatBoxSize()
 {
-	_chatmsg_box.y       = 3 * GetCharacterHeight(FS_NORMAL);
-	_chatmsg_box.height  = MAX_CHAT_MESSAGES * (GetCharacterHeight(FS_NORMAL) + ScaleGUITrad(NETWORK_CHAT_LINE_SPACING)) + ScaleGUITrad(4);
+	_chatmsg_box.y       = 3 * GetCharacterHeight(FontSize::Normal);
+	_chatmsg_box.height  = MAX_CHAT_MESSAGES * (GetCharacterHeight(FontSize::Normal) + ScaleGUITrad(NETWORK_CHAT_LINE_SPACING)) + ScaleGUITrad(4);
 }
 
 /** Initialize all buffers of the chat visualisation. */
@@ -216,16 +212,16 @@ void NetworkDrawChatMessage()
 	int string_height = 0;
 	for (auto &cmsg : _chatmsg_list) {
 		if (!show_all && cmsg.remove_time < now) continue;
-		string_height += GetStringLineCount(GetString(STR_JUST_RAW_STRING, cmsg.message), width - 1) * GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING;
+		string_height += GetStringLineCount(GetString(STR_JUST_RAW_STRING, cmsg.message), width - 1) * GetCharacterHeight(FontSize::Normal) + NETWORK_CHAT_LINE_SPACING;
 	}
 
-	string_height = std::min<uint>(string_height, MAX_CHAT_MESSAGES * (GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING));
+	string_height = std::min<uint>(string_height, MAX_CHAT_MESSAGES * (GetCharacterHeight(FontSize::Normal) + NETWORK_CHAT_LINE_SPACING));
 
 	int top = _screen.height - _chatmsg_box.y - string_height - 2;
 	int bottom = _screen.height - _chatmsg_box.y - 2;
 	/* Paint a half-transparent box behind the chat messages */
 	GfxFillRect(_chatmsg_box.x, top - 2, _chatmsg_box.x + _chatmsg_box.width - 1, bottom,
-			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR // black, but with some alpha for background
+			PALETTE_TO_TRANSPARENT, FillRectMode::Recolour // black, but with some alpha for background
 		);
 
 	/* Paint the chat messages starting with the lowest at the bottom */
@@ -415,13 +411,13 @@ struct NetworkChatWindow : public Window {
 /** The widgets of the chat window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_chat_window_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WID_NC_CLOSE),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),
+		NWidget(WWT_CLOSEBOX, Colours::Grey, WID_NC_CLOSE),
+		NWidget(WWT_PANEL, Colours::Grey, WID_NC_BACKGROUND),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NC_TEXTBOX), SetMinimalSize(100, 0), SetPadding(1, 0, 1, 0), SetResize(1, 0),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				NWidget(WWT_EDITBOX, Colours::Grey, WID_NC_TEXTBOX), SetMinimalSize(100, 0), SetPadding(1, 0, 1, 0), SetResize(1, 0),
 																	SetStringTip(STR_NETWORK_CHAT_OSKTITLE),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NC_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetStringTip(STR_NETWORK_CHAT_SEND),
+				NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_NC_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetStringTip(STR_NETWORK_CHAT_SEND),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -429,7 +425,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_chat_window_widgets 
 
 /** The description of the chat window. */
 static WindowDesc _chat_window_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	{},
 	_nested_chat_window_widgets

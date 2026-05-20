@@ -258,9 +258,9 @@ public:
 
 	void Load(Town *t) const override
 	{
-		size_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? static_cast<size_t>(TAE_END) : SlGetStructListLength(TAE_END);
+		size_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? to_underlying(TownAcceptanceEffect::End) : SlGetStructListLength(to_underlying(TownAcceptanceEffect::End));
 		for (size_t i = 0; i < length; i++) {
-			SlObject(&t->received[i], this->GetLoadDescription());
+			SlObject(&t->received[static_cast<TownAcceptanceEffect>(i)], this->GetLoadDescription());
 		}
 	}
 };
@@ -333,12 +333,12 @@ static const SaveLoad _town_desc[] = {
 	SLEG_CONDVAR(      "supplied[CT_MAIL].new_act", _old_mail_supplied[THIS_MONTH].transported, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_9),
 	SLEG_CONDVAR(      "supplied[CT_MAIL].new_act", _old_mail_supplied[THIS_MONTH].transported, SLE_UINT32,                 SLV_9, SLV_165),
 
-	SLE_CONDVARNAME(Town, received[TAE_FOOD].old_act,  "received[TE_FOOD].old_act",  SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
-	SLE_CONDVARNAME(Town, received[TAE_WATER].old_act, "received[TE_WATER].old_act", SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
-	SLE_CONDVARNAME(Town, received[TAE_FOOD].new_act,  "received[TE_FOOD].new_act",  SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
-	SLE_CONDVARNAME(Town, received[TAE_WATER].new_act, "received[TE_WATER].new_act", SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].old_act,  "received[TE_FOOD].old_act",  SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].old_act, "received[TE_WATER].old_act", SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].new_act,  "received[TE_FOOD].new_act",  SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].new_act, "received[TE_WATER].new_act", SLE_UINT16,                 SL_MIN_VERSION, SLV_165),
 
-	SLE_CONDARR(Town, goal, SLE_UINT32, NUM_TAE, SLV_165, SL_MAX_VERSION),
+	SLE_CONDARR(Town, goal, SLE_UINT32, to_underlying(TownAcceptanceEffect::End), SLV_165, SL_MAX_VERSION),
 
 	SLE_CONDSSTR(Town, text,                 SLE_STR | SLF_ALLOW_CONTROL, SLV_168, SL_MAX_VERSION),
 
@@ -398,10 +398,10 @@ struct CITYChunkHandler : ChunkHandler {
 
 			if (IsSavegameVersionBefore(SLV_165)) {
 				/* Passengers and mail were always treated as slots 0 and 2 in older saves. */
-				auto &pass = t->supplied.emplace_back(0);
+				auto &pass = t->supplied.emplace_back(CargoType{0});
 				pass.history[LAST_MONTH] = _old_pass_supplied[LAST_MONTH];
 				pass.history[THIS_MONTH] = _old_pass_supplied[THIS_MONTH];
-				auto &mail = t->supplied.emplace_back(2);
+				auto &mail = t->supplied.emplace_back(CargoType{2});
 				mail.history[LAST_MONTH] = _old_mail_supplied[LAST_MONTH];
 				mail.history[THIS_MONTH] = _old_mail_supplied[THIS_MONTH];
 			}

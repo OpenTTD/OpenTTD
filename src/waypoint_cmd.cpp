@@ -135,8 +135,8 @@ Axis GetAxisForNewRoadWaypoint(TileIndex tile)
 
 	RoadBits bits = GetAllRoadBits(tile);
 
-	if ((bits & ROAD_Y) == 0) return AXIS_X;
-	if ((bits & ROAD_X) == 0) return AXIS_Y;
+	if (!bits.Any(ROAD_Y)) return AXIS_X;
+	if (!bits.Any(ROAD_X)) return AXIS_Y;
 
 	return INVALID_AXIS;
 }
@@ -192,6 +192,16 @@ extern CommandCost IsBuoyBridgeAboveOk(TileIndex tile);
 
 extern CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int replacement_spec_index);
 
+/** @copydoc RailStationTileLayout::Iterator::operator* */
+template <>
+StationGfx RailStationTileLayout<StationType::RailWaypoint>::Iterator::operator*() const
+{
+	/* Use predefined layout if it exists. Mask bit zero which will indicate axis. */
+	if (!stl.layout.empty()) return this->stl.layout[this->position] & ~1;
+
+	return 0;
+}
+
 /**
  * Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
@@ -230,7 +240,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	TileArea new_location(start_tile, width, height);
 
 	/* only AddCost for non-existing waypoints */
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	for (TileIndex cur_tile : new_location) {
 		if (!IsRailWaypointTile(cur_tile)) cost.AddCost(_price[Price::BuildWaypointRail]);
 	}
@@ -239,7 +249,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	StationID est = StationID::Invalid();
 
 	const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
-	RailStationTileLayout stl{spec, count, 1};
+	RailStationTileLayout<StationType::RailWaypoint> stl{spec, count, 1};
 
 	/* Check whether the tiles we're building on are valid rail or not. */
 	TileIndexDiff offset = TileOffsByAxis(OtherAxis(axis));
@@ -318,7 +328,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			MarkTileDirtyByTile(tile);
 
 			DeallocateSpecFromStation(wp, old_specindex);
-			if (spec == nullptr) DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
+			if (spec == nullptr) DeleteNewGRFInspectWindow(GrfSpecFeature::Stations, tile);
 			YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 		}
 		DirtyCompanyInfrastructureWindows(wp->owner);
@@ -431,10 +441,10 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		/* Check every tile in the area. */
 		for (TileIndex cur_tile : roadstop_area) {
 			/* Get existing road types and owners before any tile clearing */
-			RoadType road_rt = MayHaveRoad(cur_tile) ? GetRoadType(cur_tile, RTT_ROAD) : INVALID_ROADTYPE;
-			RoadType tram_rt = MayHaveRoad(cur_tile) ? GetRoadType(cur_tile, RTT_TRAM) : INVALID_ROADTYPE;
-			Owner road_owner = road_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_ROAD) : _current_company;
-			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RTT_TRAM) : _current_company;
+			RoadType road_rt = MayHaveRoad(cur_tile) ? GetRoadType(cur_tile, RoadTramType::Road) : INVALID_ROADTYPE;
+			RoadType tram_rt = MayHaveRoad(cur_tile) ? GetRoadType(cur_tile, RoadTramType::Tram) : INVALID_ROADTYPE;
+			Owner road_owner = road_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RoadTramType::Road) : _current_company;
+			Owner tram_owner = tram_rt != INVALID_ROADTYPE ? GetRoadOwner(cur_tile, RoadTramType::Tram) : _current_company;
 
 			if (IsRoadWaypointTile(cur_tile)) {
 				RemoveRoadWaypointStop(cur_tile, flags, *specindex);
@@ -447,8 +457,8 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			/* Update company infrastructure counts. If the current tile is a normal road tile, remove the old
 			 * bits first. */
 			if (IsNormalRoadTile(cur_tile)) {
-				UpdateCompanyRoadInfrastructure(road_rt, road_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_ROAD)));
-				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_TRAM)));
+				UpdateCompanyRoadInfrastructure(road_rt, road_owner, -static_cast<int>(GetRoadBits(cur_tile, RoadTramType::Road).Count()));
+				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -static_cast<int>(GetRoadBits(cur_tile, RoadTramType::Tram).Count()));
 			}
 
 			UpdateCompanyRoadInfrastructure(road_rt, road_owner, ROAD_STOP_TRACKBIT_FACTOR);
@@ -484,7 +494,7 @@ CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile)
 	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY, OWNER_NONE, false);
 	if (wp == nullptr && !Waypoint::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
-	CommandCost cost(EXPENSES_CONSTRUCTION, _price[Price::BuildWaypointBuoy]);
+	CommandCost cost(ExpensesType::Construction, _price[Price::BuildWaypointBuoy]);
 	if (!IsWaterTile(tile)) {
 		CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
 		if (ret.Failed()) return ret;
@@ -559,7 +569,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlags flags)
 		wp->delete_ctr = 0;
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[Price::ClearWaypointBuoy]);
+	return CommandCost(ExpensesType::Construction, _price[Price::ClearWaypointBuoy]);
 }
 
 /**

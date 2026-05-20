@@ -144,10 +144,18 @@ enum class VehicleBreakdowns : uint8_t {
 	Normal,
 };
 
+/** Possible values for "train_flip_reverse_allowed" setting. */
+enum class TrainFlipReversingAllowed : uint8_t {
+	All = 0, ///< Trains can flip anywhere.
+	EndOfLineOnly, ///< Trains can only flip when the track ends.
+	None, ///< Trains cannot flip anywhere and must back up if the track ends.
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	uint8_t competitor_start_time; ///< Unused value, used to load old savegames.
 	uint8_t competitor_intelligence; ///< Unused value, used to load old savegames.
+	uint8_t line_reverse_mode; ///< Unused value, used to load old savegames.
 
 	uint8_t max_no_competitors; ///< the number of competitors (AIs)
 	uint16_t competitors_interval; ///< the interval (in minutes) between adding competitors
@@ -164,7 +172,7 @@ struct DifficultySettings {
 	GenworldMaxHeight terrain_type; ///< the mountainousness of the landscape
 	uint8_t quantity_sea_lakes; ///< the amount of seas/lakes
 	bool economy; ///< how volatile is the economy
-	bool line_reverse_mode; ///< reversing at stations or not
+	TrainFlipReversingAllowed train_flip_reverse_allowed; ///< which stations can the train reverse at?
 	bool disasters; ///< are disasters enabled
 	uint8_t town_council_tolerance; ///< minimum required town ratings to be allowed to demolish stuff
 	bool infinite_money; ///< whether spending money despite negative balance is allowed
@@ -184,6 +192,14 @@ enum class ScrollWheelScrolling : uint8_t {
 	ZoomMap = 0, ///< Scroll wheel zooms the map.
 	ScrollMap = 1, ///< Scroll wheel scrolls the map.
 	Off = 2, ///< Scroll wheel has no effect.
+};
+
+/** Method to open the on screen keyboard. */
+enum class OskActivation : uint8_t {
+	Disabled, ///< The OSK shall not be activated at all.
+	DoubleClick, ///< Double click on the edit box opens OSK.
+	SingleClick, ///< Single click after focus click opens OSK.
+	Immediately, ///< Focusing click already opens OSK.
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
@@ -254,7 +270,7 @@ struct GUISettings {
 	uint32_t last_newgrf_count; ///< the numbers of NewGRFs we found during the last scan
 	uint8_t missing_strings_threshold; ///< the number of missing strings before showing the warning
 	uint8_t graph_line_thickness; ///< the thickness of the lines in the various graph guis
-	uint8_t osk_activation; ///< Mouse gesture to trigger the OSK.
+	OskActivation osk_activation; ///< Mouse gesture to trigger the OSK.
 	Colours starting_colour; ///< default colour scheme for the company to start a new game with
 	Colours starting_colour_secondary; ///< default secondary colour scheme for the company to start a new game with
 	bool show_newgrf_name; ///< Show the name of the NewGRF in the build vehicle window
@@ -594,6 +610,7 @@ struct EconomySettings {
 	uint16_t minutes_per_calendar_year; ///< minutes per calendar year. Special value 0 means that calendar time is frozen.
 	uint16_t town_cargo_scale; ///< scale cargo production of towns by this percentage.
 	uint16_t industry_cargo_scale; ///< scale cargo production of industries by this percentage.
+	uint8_t cargo_aging_rate; ///< scale the delivery time factor of cargo delivery payments by this percentage.
 	uint16_t town_min_distance; ///< minimum distance between towns.
 };
 

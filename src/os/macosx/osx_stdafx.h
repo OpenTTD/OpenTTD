@@ -53,8 +53,6 @@
 /* Name conflict */
 #define GetTime OTTD_GetTime
 
-#define SL_ERROR OSX_SL_ERROR
-
 /* NSInteger and NSUInteger are part of 10.5 and higher. */
 #ifndef NSInteger
 #ifdef __LP64__

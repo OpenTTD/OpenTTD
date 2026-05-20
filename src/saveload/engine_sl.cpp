@@ -43,6 +43,13 @@ static const SaveLoad _engine_desc[] = {
 
 static TypedIndexContainer<std::vector<Engine>, EngineID> _temp_engine;
 
+/**
+ * Get temporary engine data for loading savegame engine information.
+ * @param index Engine ID of data.
+ * @param type Vehicle type of engine.
+ * @param local_id The local index of the engine.
+ * @return A temporary engine.
+ */
 Engine *GetTempDataEngine(EngineID index, VehicleType type, uint16_t local_id)
 {
 	if (index < _temp_engine.size()) {

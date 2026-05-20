@@ -114,9 +114,9 @@ GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 {
 	RoadType rt = GetRoadTypeByLabel(this->roadtype_scope.rti->label, false);
 	switch (GetRoadTramType(rt)) {
-		case RTT_ROAD: return GSF_ROADTYPES;
-		case RTT_TRAM: return GSF_TRAMTYPES;
-		default: return GSF_INVALID;
+		case RoadTramType::Road: return GrfSpecFeature::RoadTypes;
+		case RoadTramType::Tram: return GrfSpecFeature::TramTypes;
+		default: return GrfSpecFeature::Invalid;
 	}
 }
 
@@ -134,7 +134,7 @@ uint32_t RoadTypeResolverObject::GetDebugID() const
  * @param param1 Extra parameter (first parameter of the callback, except roadtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except roadtypes do not have callbacks).
  */
-RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2)
+RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadSpriteType rtsg, uint32_t param1, uint32_t param2)
 	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
@@ -149,9 +149,9 @@ RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileInde
  * @param [out] num_results If not nullptr, return the number of sprites in the spriteset.
  * @return The sprite to draw.
  */
-SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSpriteGroup rtsg, TileContext context, uint *num_results)
+SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadSpriteType rtsg, TileContext context, uint *num_results)
 {
-	assert(rtsg < ROTSG_END);
+	assert(rtsg < RoadSpriteType::End);
 
 	if (rti->group[rtsg] == nullptr) return 0;
 
@@ -183,7 +183,7 @@ RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8_t tracktype, const GRFFi
 
 	if (grffile == nullptr) return INVALID_ROADTYPE;
 
-	const auto &list = rtt == RTT_TRAM ? grffile->tramtype_list : grffile->roadtype_list;
+	const auto &list = rtt == RoadTramType::Tram ? grffile->tramtype_list : grffile->roadtype_list;
 	if (tracktype >= list.size()) return INVALID_ROADTYPE;
 
 	/* Look up roadtype including alternate labels. */
@@ -231,7 +231,7 @@ void ConvertRoadTypes()
 	bool needs_conversion = false;
 	for (auto it = std::begin(_roadtype_list); it != std::end(_roadtype_list); ++it) {
 		RoadType rt = GetRoadTypeByLabel(it->label);
-		if (rt == INVALID_ROADTYPE || GetRoadTramType(rt) != it->subtype) {
+		if (rt == INVALID_ROADTYPE || GetRoadTramType(rt) != RoadTramType{it->subtype}) {
 			rt = it->subtype ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		}
 
@@ -274,7 +274,7 @@ void SetCurrentRoadTypeLabelList()
 {
 	_roadtype_list.clear();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, GetRoadTramType(rt));
+		_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, to_underlying(GetRoadTramType(rt)));
 	}
 }
 

@@ -59,7 +59,7 @@ public:
 	CompanyID preview_company = CompanyID::Invalid();  ///< Company which is currently being offered a preview \c CompanyID::Invalid() means no company.
 	uint8_t preview_wait = 0; ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	uint8_t original_image_index = 0; ///< Original vehicle image index, thus the image index of the overridden vehicle
-	VehicleType type = VEH_INVALID; ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
+	VehicleType type = VehicleType::Invalid; ///< %Vehicle type, ie #VehicleType::Road, #VehicleType::Train, etc.
 
 	EngineDisplayFlags display_flags{}; ///< NOSAVE client-side-only display flags for build engine list.
 	EngineID display_last_variant = EngineID::Invalid(); ///< NOSAVE client-side-only last variant selected.
@@ -154,7 +154,7 @@ public:
 	 */
 	inline bool IsGroundVehicle() const
 	{
-		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
+		return this->type == VehicleType::Train || this->type == VehicleType::Road;
 	}
 
 	/**
@@ -225,7 +225,7 @@ struct EngineIDMappingKeyProjection {
  * Note: This is not part of Engine, as the data in the EngineOverrideManager and the engine pool get reset in different cases.
  */
 struct EngineOverrideManager {
-	std::array<std::vector<EngineIDMapping>, VEH_COMPANY_END> mappings;
+	VehicleTypeIndexArray<std::vector<EngineIDMapping>> mappings;
 
 	void ResetToDefaultMapping();
 	EngineID GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid);

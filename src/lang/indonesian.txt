@@ -1273,8 +1273,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Menetapkan ting
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesi : {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diaktifkan, resesi dapat terjadi secara berkala. Selama resesi, seluruh produksi jauh lebih rendah (akan kembali ke tingkat sebelumnya setelah resesi selesai)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Melarang pemutaran kereta di stasiun: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diaktifkan, kereta tidak akan berputar selain di stasiun ujung, termasuk jika ada jalan yang lebih pendek kalau berbalik
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Mengaktifkan bencana yang mungkin dapat menghalangi atau menghancurkan kendaraan / infrastruktur
@@ -1468,6 +1468,8 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalender dib
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Tingkatkan produksi kargo kota: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Tingkatkan produksi kargo di kota-kota sebesar persentase ini.
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Perbarui otomatis kendaraan yang telah tua: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Jika dinyalakan, kendaraan mendekati akhir usianya akan secara otomatis diperbarui jika masih tersedia kendaraan itu
@@ -1802,6 +1804,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jika diaktifkan
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktifkan batas kecepatan gerbong: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Jika diaktifkan, batas kecepatan gerbong juga digunakan untuk menentukan kecepatan maksimum kereta
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Non-aktifkan rel listrik: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mengaktifkan setelan ini mematikan kebutuhan kereta listrik untuk berjalan di rel elektris
 
@@ -2113,7 +2116,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... meng
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... mengabaikan set suara dasar '{STRING}': tidak ditemukan
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... mengabaikan set musik dasar '{STRING}': tidak ditemukan
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Kesalahan dengan pengaturan video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... tidak ditemukan GPU yang kompatibel. Akselerasi perangkat keras dinonaktifkan
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Driver GPU membuat game crash. Akselerasi perangkat keras dinonaktifkan
@@ -4411,7 +4414,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kondisi yang diperiksa
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :% muatan
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Kehandalan
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Kecepatan maks.

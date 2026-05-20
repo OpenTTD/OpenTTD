@@ -1351,8 +1351,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Hoog
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer dit is ingeschakeld kunnen nu en dan recessies optreden. Tijdens een recessie is alle productie aanzienlijk lager (deze keert terug naar het vorige niveau als de recessie voorbij is).
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, zelfs als er een kortere weg naar hun volgende bestemming is bij omkeren
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Rampen in-uitschakelen die af en toe voertuigen of infrastructuur kunnen blokkeren of vernietigen
@@ -1556,6 +1556,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Schaal de vrach
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Schaal vrachtproductie van industrie: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Schaal de vrachtproductie van industrieën met dit percentage
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Voertuig automatisch vernieuwen wanneer dit oud wordt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wanneer ingeschakeld, wordt een voertuig dat het einde van zijn levensduur nadert automatisch vervangen als aan de voorwaarden voor vernieuwing wordt voldaan
@@ -1898,6 +1900,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Indien ingescha
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Snelheidslimieten voor wagons inschakelen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrische sporen uitschakelen: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wanneer dit is ingeschakeld, hoeven sporen niet te zijn geëlektrificeerd voor elektrische treinen
 
@@ -2221,7 +2224,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... nege
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... negeert standaard geluidsset '{STRING}': niet gevonden
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... negeert standaard muziekset '{STRING}': niet gevonden
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fout met video-instellingen...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... geen compatibele GPU gevonden. Hardwareversnelling is uitgeschakeld
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Spel is vastgelopen door het GPU-stuurprogramma. Hardwareversnelling wordt uitgeschakeld
@@ -4683,7 +4686,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selectee
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuiggegevens voor basisspringen wanneer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laadpercentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouwbaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximumsnelheid

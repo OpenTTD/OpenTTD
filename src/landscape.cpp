@@ -66,7 +66,7 @@ extern const TileTypeProcs
  * @ingroup TileCallbackGroup
  * @see TileType
  */
-const EnumClassIndexContainer<std::array<const TileTypeProcs *, to_underlying(TileType::MaxSize)>, TileType> _tile_type_procs = {
+const EnumIndexArray<const TileTypeProcs *, TileType, TileType::MaxSize> _tile_type_procs = {
 	&_tile_type_clear_procs, // Callback functions for TileType::Clear tiles
 	&_tile_type_rail_procs, // Callback functions for TileType::Railway tiles
 	&_tile_type_road_procs, // Callback functions for TileType::Road tiles
@@ -563,7 +563,7 @@ void DoClearSquare(TileIndex tile)
  * @param side side we are entering from, INVALID_DIAGDIR to return all trackbits
  * @return trackdirbits and other info depending on 'mode'
  */
-TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side)
 {
 	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode, sub_mode, side);
 }
@@ -684,7 +684,7 @@ bool IsMapSurroundedByWater()
  */
 CommandCost CmdLandscapeClear(DoCommandFlags flags, TileIndex tile)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	bool do_clear = false;
 	/* Test for stuff which results in water when cleared. Then add the cost to also clear the water. */
 	if (flags.Test(DoCommandFlag::ForceClearTile) && HasTileWaterClass(tile) && IsTileOnWater(tile) && !IsWaterTile(tile) && !IsCoastTile(tile)) {
@@ -748,7 +748,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 	if (start_tile >= Map::Size()) return { CMD_ERROR, 0 };
 
 	Money money = GetAvailableMoneyForCommand();
-	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost cost(ExpensesType::Construction);
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 
@@ -986,7 +986,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 	uint update_freq = Map::Size() / 4;
 
 	for (const auto tile : Map::Iterate()) {
-		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 		if (!IsValidTile(tile)) continue;
 
@@ -1000,13 +1000,13 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 	}
 
 	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {
-		if ((i % 64) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((i % 64) == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 		RunTileLoop();
 	}
 
 	for (const auto tile : Map::Iterate()) {
-		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 		if (!IsValidTile(tile)) continue;
 
@@ -1141,7 +1141,7 @@ static void MakeWetlands(TileIndex centre, uint height, uint river_length)
  * Try to end a river at a tile which is not the sea.
  * @param tile The tile to try ending the river at.
  * @param begin The starting tile of the river.
- * @return Whether we succesfully ended the river on the given tile.
+ * @return Whether we successfully ended the river on the given tile.
  */
 static bool TryMakeRiverTerminus(TileIndex tile, TileIndex begin)
 {
@@ -1364,7 +1364,7 @@ static bool CountConnectedSeaTiles(TileIndex tile, std::unordered_set<TileIndex>
 	 * Count this tile but don't check its neighbors. */
 	if (sea.size() > limit) return false;
 
-	/* Count adjacent tiles using recusion. */
+	/* Count adjacent tiles using recursion. */
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (IsValidTile(t) && !sea.contains(t)) {
@@ -1471,11 +1471,11 @@ static void CreateRivers()
 
 	uint wells = Map::ScaleBySize(4 << _settings_game.game_creation.amount_of_rivers);
 	const uint num_short_rivers = wells - std::max(1u, wells / 10);
-	SetGeneratingWorldProgress(GWP_RIVER, wells + TILE_UPDATE_FREQUENCY / 64); // Include the tile loop calls below.
+	SetGeneratingWorldProgress(GenWorldProgress::Rivers, wells + TILE_UPDATE_FREQUENCY / 64); // Include the tile loop calls below.
 
 	/* Try to create long rivers. */
 	for (; wells > num_short_rivers; wells--) {
-		IncreaseGeneratingWorldProgress(GWP_RIVER);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Rivers);
 		bool done = false;
 		for (int tries = 0; tries < 512; tries++) {
 			for (auto t : SpiralTileSequence(RandomTile(), 8)) {
@@ -1490,7 +1490,7 @@ static void CreateRivers()
 
 	/* Try to create short rivers. */
 	for (; wells != 0; wells--) {
-		IncreaseGeneratingWorldProgress(GWP_RIVER);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Rivers);
 		bool done = false;
 		for (int tries = 0; tries < 128; tries++) {
 			for (auto t : SpiralTileSequence(RandomTile(), 8)) {
@@ -1508,7 +1508,7 @@ static void CreateRivers()
 
 	/* Run tile loop to update the ground density. */
 	for (uint i = 0; i != TILE_UPDATE_FREQUENCY; i++) {
-		if (i % 64 == 0) IncreaseGeneratingWorldProgress(GWP_RIVER);
+		if (i % 64 == 0) IncreaseGeneratingWorldProgress(GenWorldProgress::Rivers);
 		RunTileLoop();
 	}
 }
@@ -1626,16 +1626,16 @@ bool GenerateLandscape(uint8_t mode)
 	uint steps = (_settings_game.game_creation.landscape == LandscapeType::Tropic) ? GLS_TROPIC : GLS_OTHER;
 
 	if (mode == GWM_HEIGHTMAP) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_HEIGHTMAP);
+		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_HEIGHTMAP);
 		if (!LoadHeightmap(_file_to_saveload.ftype.detailed, _file_to_saveload.name)) {
 			return false;
 		}
-		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 	} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_TERRAGENESIS);
+		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_TERRAGENESIS);
 		GenerateTerrainPerlin();
 	} else {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_ORIGINAL);
+		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_ORIGINAL);
 		if (_settings_game.construction.freeform_edges) {
 			for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
 			for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
@@ -1693,11 +1693,11 @@ bool GenerateLandscape(uint8_t mode)
 	 * it allows screen redraw. Drawing of broken slopes crashes the game */
 	FixSlopes();
 	MarkWholeScreenDirty();
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 	ConvertGroundTilesIntoWaterTiles();
 	MarkWholeScreenDirty();
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GenWorldProgress::Landscape);
 
 	switch (_settings_game.game_creation.landscape) {
 		case LandscapeType::Arctic:

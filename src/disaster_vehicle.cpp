@@ -63,9 +63,8 @@ static void DisasterClearSquare(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case TileType::Railway:
 			if (Company::IsHumanID(GetTileOwner(tile)) && !IsRailDepot(tile)) {
-				Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
+				AutoRestoreBackup cur_company(_current_company, OWNER_WATER);
 				Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile);
-				cur_company.Restore();
 
 				/* update signals in buffer */
 				UpdateSignalsInBuffer();
@@ -73,9 +72,8 @@ static void DisasterClearSquare(TileIndex tile)
 			break;
 
 		case TileType::House: {
-			Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+			AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 			Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile);
-			cur_company.Restore();
 			break;
 		}
 
@@ -338,7 +336,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *ufo)
 
 		uint n = 0; // Total number of targetable road vehicles.
 		for (const Company *c : Company::Iterate()) {
-			n += c->group_all[VEH_ROAD].num_vehicle;
+			n += c->group_all[VehicleType::Road].num_vehicle;
 		}
 
 		if (n == 0) {
@@ -368,7 +366,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *ufo)
 	} else {
 		/* Target a vehicle */
 		RoadVehicle *target = RoadVehicle::Get(ufo->dest_tile.base());
-		assert(target != nullptr && target->type == VEH_ROAD && target->IsFrontEngine());
+		assert(target != nullptr && target->type == VehicleType::Road && target->IsFrontEngine());
 
 		uint dist = Delta(ufo->x_pos, target->x_pos) + Delta(ufo->y_pos, target->y_pos);
 
@@ -690,7 +688,7 @@ static bool DisasterTick_Submarine(DisasterVehicle *v)
 
 	TileIndex tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile)) {
-		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
+		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, RoadTramType::Invalid));
 		if (trackbits == TRACK_BIT_ALL && !Chance16(1, 90)) {
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			v->UpdatePosition(gp.x, gp.y, v->z_pos);
@@ -1003,6 +1001,7 @@ void ReleaseDisasterVehicle(VehicleID vehicle)
 	if (v == nullptr) return;
 
 	/* primary disaster vehicles that have chosen target */
+	assert(v->type == VehicleType::Disaster);
 	assert(v->subtype == ST_SMALL_UFO);
 	assert(v->state != 0);
 

@@ -1088,8 +1088,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set hvussu høg
 STR_CONFIG_SETTING_RECESSIONS                                   :Ringar tíðir: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Um hetta er tendra kunnu ringar tíðir koma fyri við nøkrum ára millumbili. Meðan ringar tíðir eru, er øll framleiðsla munandi lægri (fer aftur á støði ta var áðrenn tá ringu tíðinar eru av)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tok hava ikki loyvi at venda inni á støðum: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Um hetta er sligi til, venda tok ikki vi inni á ikki-endastøðum, sjálvt um ta er ein styttri leið til næsta stað um tey venda vi
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Ólukkur: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Tendra/sløkk ólukkur sum kunnu av og á blokera ella oyðileggja flutningstól ella innankervi
@@ -1258,6 +1258,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Um gilda, eru �
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Sjálvendurnýggja flutningstól tá ta gerst gamalt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Um gilda, verður eitt flutningstól tá tað nærkast endanum á sínum lívi sjálvirkandi umbýtt tá endurnýggjanar treytirnar eru nøktaðar
@@ -1528,6 +1530,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Um gilda fáa f
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Gilda hámarksferð fyri vognar: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Um gilda, verður hámarksferðin hjá vognum eisini nýtt fyri at avgerða mest loydu ferðina á tokum
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ógilda ravmagns jarnbreytir: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Um gilda er ikki neyðugt við ravmagns jarnbreytum fyri at fáa ravmagns tok at koyra
 
@@ -1699,7 +1702,7 @@ STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :system NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :ósambæriligur við hesa útgávuna av OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ókendur
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -3393,7 +3396,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Steðga
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lessingar prosent
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Álítandi
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Mesta ferð

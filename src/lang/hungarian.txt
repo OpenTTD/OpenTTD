@@ -1416,8 +1416,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Magas
 STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, időszakonként gazdasági válság fog kitörni. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés visszaáll az eredeti szintre.)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vonatok állomáson történő megfordulásának tiltása: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ha engedélyezve van, a vonatok nem fordulnak vissza egy (nem vég-) állomáson, még ha lenne egy rövidebb út is visszafordulva
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :A vonatok megfordíthatóságának engedélyezése ellenkező irányba váltáskor: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Válaszd ki, hogy vonatok megfordíthatók-e ellenkező  irányba váltáskor. A "Bárhol" esetén a vonatok bárhol megfordíthatók. A "Csak a a vonal végén" esetén a vonatok nem megfordíthatók az állomáson, ha előre van lehetséges út. A "Sehol" esetén a vonatok nem megfordíthatók, de mehetnek hátrafelé, de csökkentett sebességgel csak, ha az utolsó kocsi nem tartalmaz vezetőállást.
+
+###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Bárhol
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Csak a a vonal végén
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Sehol
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katasztrófák: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ha engedélyezve van, néha katasztrófa történhet, ami megállíthatja vagy megsemmisítheti a járműveket és az infrastruktúrát
@@ -1621,6 +1626,12 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :A települések
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Gazdasági épületek rakománytermelésének mértéke: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :A gazdasági épületek rakománytermelésének mértéke százalékban.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Mért rakomány öregedési ráta: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Annak beállítása, hogy a járművekre rakodott áru hogyan vesszen az értékéből az idő folyamán
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
+###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Nincs öregedés
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatikusan felújítja a járművet ha elöregedik: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Bekapcsolva a jármű élettartamának végén automatikusan cserére kerül, ha a lecserélési feltételek teljesülnek
@@ -1969,6 +1980,9 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ha bekapcsolva,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :A vagonok sebessége korlátozható: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Bekapcsolva a szerelvényben lévő vasúti kocsik maximális sebessége is korlátozza a vonat maximális sebességét
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Maximális repülőgép hatótáv: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Ha bekapcsolt, a NewGRF-ek képesek lesznek korlátozni a repülők maximális hatótávolságát
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Villamosított vágányok letiltása: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Bekapcsolva nem szükséges villamosítani egy vágányt ahhoz, hogy azon villanymozdonyok közlekedhessenek
 
@@ -2292,7 +2306,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :érvénytelen g
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :érvénytelen hang alapcsomag nem került betöltésre - '{STRING}': nem található
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :zenei alapcsomag kihagyása - '{STRING}': nem található
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :Hiba a videobeállításokban...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :nem található kompatibilis GPU. Hardveres gyorsítás kikapcsolva.
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :A videókártya illesztőprogram hibát okozott. Hardveres gyorsítás kikapcsolva
@@ -4794,7 +4808,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Válaszd
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Rakomány százaléka
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Megbízhatóság
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximális sebesség
@@ -4803,6 +4817,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Javításra szo
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Mindig
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Hátralévő élettartam (év)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximális megbízhatóság
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Tolatva halad
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan viszonyul a jármű kiválasztott adata a megadott értékhez
@@ -5322,6 +5337,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Nem mozgathatod
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :a mozdony első felének mindig elől kell lennie
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :nem találok utat a helyi járműtelepre
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :nem találom a helyi garázst
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :nem található helyi hangár
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :rossz járműteleptípus
 

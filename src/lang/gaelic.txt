@@ -1328,8 +1328,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Suidhich ìre n
 STR_CONFIG_SETTING_RECESSIONS                                   :Crìonaidhean eaconamaidh: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ma tha seo air, faodaidh crìonadh eaconamaidh tachairt gach beagan bhliadhnaichean. Rè crìonaidh eaconamaidh, tha a h-uile toradh mòran nas ìsle (tillidh e dhan ìre roimhe nuair a bhios an crìonadh eaconamaidh seachad)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Bac gun till trèanaichean ann an stèiseanan: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ma tha seo air, cha tionndaidh trèanaichean an comhair mura h-eil iad ann an stèisean ceann-rèile, fiù ’s nan robh slighe nas giorra dhan ath cheann-uidhe ann le tionndadh
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Dunaidh: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglaich dunaidh a dh'fhaodas carbadan no am bun-structar a bhacadh no a mhilleadh
@@ -1503,6 +1503,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ma tha seo air,
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fèin-nuadhaich carbad nuair a bhios e air fàs aosta: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nuair a bhios seo air, nuair a bhios carbad air fàs ro aosta, thèid fear ùr a chur na àite gu fèin-obrachail ma dh'fhreagras e ri cumhan an fhèin-nuadhachaidh
@@ -1792,6 +1794,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan-luaiths nan carbadan-rèile an comas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan-luaiths nan carbadan cuideachd gus an luaths as motha aig trèan a shuidheachadh
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealain à comas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealain a thogail gus einnseanan dealain a chleachdadh orra
 
@@ -2065,7 +2068,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a' l
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a' leigeil seachad an seata fuaime bunasach “{STRING}": cha deach a lorg
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a' leigeil seachad an seata ciùil bunasach “{STRING}": cha deach a lorg
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -4073,7 +4076,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stad
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dàta a' charbaid air a bheil an leum stèidhichte
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ceudad an luchdaidh
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Earbsachd
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luaths as motha

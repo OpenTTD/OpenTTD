@@ -236,7 +236,7 @@ void Window::DisableAllWidgetHighlight()
 	for (auto &pair : this->widget_lookup) {
 		NWidgetBase *nwid = pair.second;
 		if (nwid->IsHighlighted()) {
-			nwid->SetHighlighted(TC_INVALID);
+			nwid->SetHighlighted(TextColour::Invalid);
 			nwid->SetDirty(this);
 		}
 	}
@@ -247,7 +247,7 @@ void Window::DisableAllWidgetHighlight()
 /**
  * Sets the highlighted status of a widget.
  * @param widget_index index of this widget in the window
- * @param highlighted_colour Colour of highlight, or TC_INVALID to disable.
+ * @param highlighted_colour Colour of highlight, or TextColour::Invalid to disable.
  */
 void Window::SetWidgetHighlight(WidgetID widget_index, TextColour highlighted_colour)
 {
@@ -257,7 +257,7 @@ void Window::SetWidgetHighlight(WidgetID widget_index, TextColour highlighted_co
 	nwid->SetHighlighted(highlighted_colour);
 	nwid->SetDirty(this);
 
-	if (highlighted_colour != TC_INVALID) {
+	if (highlighted_colour != TextColour::Invalid) {
 		/* If we set a highlight, the window has a highlight */
 		this->flags.Set(WindowFlag::Highlighted);
 	} else {
@@ -759,7 +759,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 
 	/* Check if the widget is highlighted; if so, disable highlight and dispatch an event to the GameScript */
 	if (w->IsWidgetHighlighted(widget_index)) {
-		w->SetWidgetHighlight(widget_index, TC_INVALID);
+		w->SetWidgetHighlight(widget_index, TextColour::Invalid);
 		Game::NewEvent(new ScriptEventWindowWidgetClick((ScriptWindow::WindowClass)w->window_class, w->window_number, widget_index));
 	}
 
@@ -1435,7 +1435,7 @@ void Window::InitializeData(WindowNumber window_number)
 	/* Set up window properties; some of them are needed to set up smallest size below */
 	this->window_class = this->window_desc.cls;
 	this->SetWhiteBorder();
-	if (this->window_desc.default_pos == WDP_CENTER) this->flags.Set(WindowFlag::Centred);
+	if (this->window_desc.default_pos == WindowPosition::Center) this->flags.Set(WindowFlag::Centred);
 	this->owner = INVALID_OWNER;
 	this->nested_focus = nullptr;
 	this->window_number = window_number;
@@ -1674,7 +1674,7 @@ static Point GetAutoPlacePosition(int width, int height)
 	 */
 	int left = rtl ? _screen.width - width : 0, top = toolbar_y;
 	int offset_x = rtl ? -(int)NWidgetLeaf::closebox_dimension.width : (int)NWidgetLeaf::closebox_dimension.width;
-	int offset_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.captiontext.Vertical());
+	int offset_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.captiontext.Vertical());
 
 restart:
 	for (const Window *w : Window::Iterate()) {
@@ -1758,7 +1758,7 @@ static Point LocalGetWindowPlacement(const WindowDesc &desc, int16_t sm_width, i
 			 *  - Y position: closebox of parent + closebox of child + statusbar
 			 *  - X position: closebox on left/right, resizebox on right/left (depending on ltr/rtl)
 			 */
-			int indent_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.captiontext.Vertical());
+			int indent_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.captiontext.Vertical());
 			if (w->top + 3 * indent_y < _screen.height) {
 				pt.y = w->top + indent_y;
 				int indent_close = NWidgetLeaf::closebox_dimension.width;
@@ -1775,18 +1775,18 @@ static Point LocalGetWindowPlacement(const WindowDesc &desc, int16_t sm_width, i
 	}
 
 	switch (desc.default_pos) {
-		case WDP_ALIGN_TOOLBAR: // Align to the toolbar
+		case WindowPosition::AlignToolbar: // Align to the toolbar
 			return GetToolbarAlignedWindowPosition(default_width);
 
-		case WDP_AUTO: // Find a good automatic position for the window
+		case WindowPosition::Automatic: // Find a good automatic position for the window
 			return GetAutoPlacePosition(default_width, default_height);
 
-		case WDP_CENTER: // Centre the window horizontally
+		case WindowPosition::Center: // Centre the window horizontally
 			pt.x = (_screen.width - default_width) / 2;
 			pt.y = (_screen.height - default_height) / 2;
 			break;
 
-		case WDP_MANUAL:
+		case WindowPosition::Manual:
 			pt.x = 0;
 			pt.y = 0;
 			break;
@@ -2471,7 +2471,7 @@ static EventState HandleViewportScroll()
 
 	if (_last_scroll_window == GetMainWindow() && _last_scroll_window->viewport->follow_vehicle != VehicleID::Invalid()) {
 		/* If the main window is following a vehicle, then first let go of it! */
-		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle);
+		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle)->GetMovingFront();
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
 		return ES_NOT_HANDLED;
 	}
@@ -2862,7 +2862,7 @@ static void HandleKeyScrolling()
 	 * Check that any of the dirkeys is pressed and that the focused window
 	 * doesn't have an edit-box as focused widget.
 	 */
-	if (_dirkeys && !EditBoxInGlobalFocus()) {
+	if (_dirkeys.Any() && !EditBoxInGlobalFocus()) {
 		int factor = _shift_pressed ? 50 : 10;
 
 		if (_game_mode != GM_MENU && _game_mode != GM_BOOTSTRAP) {
@@ -2871,7 +2871,7 @@ static void HandleKeyScrolling()
 			main_window->viewport->CancelFollow(*main_window);
 		}
 
-		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
+		ScrollMainViewport(scrollamt[_dirkeys.base()][0] * factor, scrollamt[_dirkeys.base()][1] * factor);
 	}
 }
 

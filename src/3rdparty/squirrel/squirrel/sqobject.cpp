@@ -245,7 +245,7 @@ bool SafeWrite(HSQUIRRELVM v,SQWRITEFUNC write,SQUserPointer up,SQUserPointer de
 bool SafeRead(HSQUIRRELVM v,SQWRITEFUNC read,SQUserPointer up,SQUserPointer dest,SQInteger size)
 {
 	if(size && read(up,dest,size) != size) {
-		v->Raise_Error("io error, read function failure, the origin stream could be corrupted/trucated");
+		v->Raise_Error("io error, read function failure, the origin stream could be corrupted/truncated");
 		return false;
 	}
 	return true;

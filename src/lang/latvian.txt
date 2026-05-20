@@ -1353,8 +1353,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Augstas
 STR_CONFIG_SETTING_RECESSIONS                                   :Lejupslīde: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ja ieslēgts, periodiski var rasties recesijas. Recesijas laikā visa ražošana ir ievērojami zemāka (tā atgriežas iepriekšējā līmenī, kad recesija ir beigusies)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Neatļaut vilcienu apgriešanos stacijās: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ja ieslēgts, stacijās vilcieni negriezīsies pretējā virzienā, pat ja braucot tādā veidā tie atrastu īsāku ceļu un nākamo pieturu; izņēmums ir gala stacijas
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofas: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Pārslēgt katastrofas, kas laiku pa laikam var bloķēt vai iznīcināt transportlīdzekļus un infrastruktūru
@@ -1558,6 +1558,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Mērogojiet pil
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Merogot industrijas kravu ražošanu: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Mērogojiet nozaru kravu ražošanu par šo procentu
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ja ieslēgts, kad ir atbilstoši atjaunošanas apstākļi, automātiski tiek nomainīti transportlīdzekļi kuru kalpošanas laiks tuvojas beigām
@@ -1906,6 +1908,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ja aktīvs, vil
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot elektrificēto dzelzceļu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Šī iestatījuma ieslēgšana atcels ceļu elektrifikācijas prasību, lai pa tiem varētu pārvietoties elektrolokomotīves
 
@@ -2231,7 +2234,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorē pamata skaņas kopu '{STRING}': nav atrasta
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorē pamata mūzikas kopu '{STRING}': nav atrasta
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Kļūda ar video iestatījumiem
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nav atrasts saderīgs GPU. Aparatūras paātrinājums ir atspējots
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU dzinulis apturēja spēli. Aparatūras paātrinājums ir izslēgts
@@ -4739,7 +4742,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Atlasiet
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Iekraušanas procenti
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Uzticamība
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimālais ātrums

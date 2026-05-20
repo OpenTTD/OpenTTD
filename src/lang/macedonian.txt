@@ -861,6 +861,8 @@ STR_CONFIG_SETTING_REALISTIC                                    :Реален
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special
@@ -927,6 +929,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраст�
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -1036,6 +1040,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#ОПкодов
 ###length 3
 
 ###setting-zero-is-special
+
 
 
 
@@ -1158,7 +1163,7 @@ STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :непозна�
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... ниво на компресија '{STRING}' не е валидна
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... спаси играта формат '{STRING}' не е достапен. се врати на '{STRING}'
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -1905,7 +1910,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 ###next-name-looks-similar
 
 

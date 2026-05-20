@@ -139,7 +139,11 @@ static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, 
 
 	if (op == 6) {
 		/* Return GRFID of set that reserved ID */
-		return grm[_cur_gps.grffile->GetParam(target)];
+		uint32_t index = _cur_gps.grffile->GetParam(target);
+		if (index < std::size(grm)) return grm[index];
+
+		GrfMsg(1, "ParamSet: GRM: Parameter {} refers to invalid {} id {}", target, type, index);
+		return 0;
 	}
 
 	/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
@@ -241,7 +245,7 @@ static void ParamSet(ByteReader &buf)
 				uint16_t count   = GB(data, 16, 16);
 
 				if (_cur_gps.stage == GrfLoadingStage::Reserve) {
-					if (feature == GSF_GLOBALVAR) {
+					if (feature == GrfSpecFeature::GlobalVar) {
 						/* General sprites */
 						if (op == 0) {
 							/* Check if the allocated sprites will fit below the original sprite limit */
@@ -261,12 +265,12 @@ static void ParamSet(ByteReader &buf)
 					src1 = 0;
 				} else if (_cur_gps.stage == GrfLoadingStage::Activation) {
 					switch (feature) {
-						case GSF_TRAINS:
-						case GSF_ROADVEHICLES:
-						case GSF_SHIPS:
-						case GSF_AIRCRAFT:
+						case GrfSpecFeature::Trains:
+						case GrfSpecFeature::RoadVehicles:
+						case GrfSpecFeature::Ships:
+						case GrfSpecFeature::Aircraft:
 							if (!_settings_game.vehicle.dynamic_engines) {
-								src1 = PerformGRM({std::begin(_grm_engines) + _engine_offsets[feature], _engine_counts[feature]}, count, op, target, "vehicles");
+								src1 = PerformGRM({std::begin(_grm_engines) + GetOriginalEngineOffset(GetVehicleType(feature)), GetOriginalEngineCount(GetVehicleType(feature))}, count, op, target, "vehicles");
 								if (_cur_gps.skip_sprites == -1) return;
 							} else {
 								/* GRM does not apply for dynamic engine allocation. */
@@ -283,7 +287,7 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case GSF_GLOBALVAR: // General sprites
+						case GrfSpecFeature::GlobalVar: // General sprites
 							switch (op) {
 								case 0:
 									/* Return space reserved during reservation stage */
@@ -301,7 +305,7 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case GSF_CARGOES: // Cargo
+						case GrfSpecFeature::Cargoes: // Cargo
 							/* There are two ranges: one for cargo IDs and one for cargo bitmasks */
 							src1 = PerformGRM(_grm_cargoes, count, op, target, "cargoes");
 							if (_cur_gps.skip_sprites == -1) return;

@@ -178,7 +178,7 @@ void FixTitleGameZoom(int zoom_adjust)
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_main_window_widgets = {
-	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
+	NWidget(NWID_VIEWPORT, Colours::Invalid, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
 enum GlobalHotKeys : int32_t {
@@ -221,14 +221,14 @@ struct MainWindow : Window
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 		nvp->InitializeViewport(this, TileXY(32, 32), ScaleZoomGUI(ZoomLevel::Viewport));
 
-		this->viewport->overlay = std::make_shared<LinkGraphOverlay>(this, WID_M_VIEWPORT, 0, CompanyMask{}, 2);
+		this->viewport->overlay = std::make_shared<LinkGraphOverlay>(this, WID_M_VIEWPORT, CargoTypes{}, CompanyMask{}, 2);
 		this->refresh_timeout.Reset();
 	}
 
 	/** Refresh the link-graph overlay. */
 	void RefreshLinkGraph()
 	{
-		if (this->viewport->overlay->GetCargoMask() == 0 ||
+		if (this->viewport->overlay->GetCargoMask().None() ||
 				this->viewport->overlay->GetCompanyMask().None()) {
 			return;
 		}
@@ -271,8 +271,8 @@ struct MainWindow : Window
 				off_x += GetSpriteSize(sprite).width + letter_spacing;
 			}
 
-			int text_y = this->height - GetCharacterHeight(FS_NORMAL) * 2;
-			DrawString(0, this->width - 1, text_y, STR_INTRO_VERSION, TC_WHITE, SA_CENTER);
+			int text_y = this->height - GetCharacterHeight(FontSize::Normal) * 2;
+			DrawString(0, this->width - 1, text_y, STR_INTRO_VERSION, TextColour::White, SA_CENTER);
 		}
 	}
 
@@ -525,8 +525,9 @@ struct MainWindow : Window
 	}};
 };
 
+/** Window definition for the main window. */
 static WindowDesc _main_window_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_nested_main_window_widgets,
@@ -552,11 +553,11 @@ void ShowSelectGameWindow();
  */
 void SetupColoursAndInitialWindow()
 {
-	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
+	for (Colours i = Colours::Begin; i != Colours::End; i++) {
 		const uint8_t *b = GetNonSprite(GetColourPalette(i), SpriteType::Recolour) + 1;
 		assert(b != nullptr);
-		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
-			SetColourGradient(i, j, PixelColour{b[0xC6 + j]});
+		for (Shade j = Shade::Begin; j < Shade::End; j++) {
+			SetColourGradient(i, j, PixelColour{b[0xC6 + to_underlying(j)]});
 		}
 	}
 

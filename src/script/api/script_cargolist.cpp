@@ -53,7 +53,7 @@ ScriptCargoList_StationAccepting::ScriptCargoList_StationAccepting(StationID sta
 	if (!ScriptStation::IsValidStation(station_id)) return;
 
 	const Station *st = ::Station::Get(station_id);
-	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+	for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 		if (st->goods[cargo].status.Test(GoodsEntry::State::Acceptance)) this->AddItem(cargo);
 	}
 }

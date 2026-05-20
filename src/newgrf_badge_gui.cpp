@@ -18,6 +18,7 @@
 #include "newgrf_badge_gui.h"
 #include "newgrf_badge_type.h"
 #include "settings_gui.h"
+#include "spritecache.h"
 #include "strings_func.h"
 #include "timer/timer_game_calendar.h"
 #include "window_gui.h"
@@ -49,7 +50,13 @@ static Dimension GetBadgeMaximalDimension(BadgeClassID class_index, GrfSpecFeatu
 		PalSpriteID ps = GetBadgeSprite(badge, feature, std::nullopt, PAL_NONE);
 		if (ps.sprite == 0) continue;
 
-		d.width = std::max(d.width, GetSpriteSize(ps.sprite, nullptr, ZoomLevel::Normal).width);
+		/* Get unscaled sprite size ignoring offsets. Don't use GetSpriteSize as it applies offsets,
+		 * and GetScaledSpriteSize uses interface scale. */
+		const Sprite *sprite = GetSprite(ps.sprite, SpriteType::Normal);
+		if (sprite == nullptr) continue;
+
+		uint width = UnScaleByZoom(sprite->width, ZoomLevel::Normal);
+		d.width = std::max(d.width, width);
 		if (d.width > MAX_BADGE_WIDTH) break;
 	}
 
@@ -146,7 +153,7 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
 
 		if (s.empty()) continue;
 
-		r.top = DrawStringMultiLine(r, GetString(STR_BADGE_NAME_LIST, class_badge->name, std::move(s)), TC_BLACK);
+		r.top = DrawStringMultiLine(r, GetString(STR_BADGE_NAME_LIST, class_badge->name, std::move(s)), TextColour::Black);
 	}
 
 	return r.top;
@@ -186,7 +193,7 @@ void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &gui_classe
 }
 
 /** Drop down element that draws a list of badges. */
-template <class TBase, bool TEnd = true, FontSize TFs = FS_NORMAL>
+template <class TBase, bool TEnd = true, FontSize TFs = FontSize::Normal>
 class DropDownBadges : public TBase {
 public:
 	template <typename... Args>
@@ -256,8 +263,8 @@ private:
 	Dimension dim{};
 };
 
-using DropDownListBadgeItem = DropDownBadges<DropDownString<DropDownSpacer<DropDownListStringItem, true>, FS_SMALL, true>>;
-using DropDownListBadgeIconItem = DropDownBadges<DropDownString<DropDownSpacer<DropDownListIconItem, true>, FS_SMALL, true>>;
+using DropDownListBadgeItem = DropDownBadges<DropDownString<DropDownSpacer<DropDownListStringItem, true>, FontSize::Small, true>>;
+using DropDownListBadgeIconItem = DropDownBadges<DropDownString<DropDownSpacer<DropDownListIconItem, true>, FontSize::Small, true>>;
 
 std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded)
 {
@@ -277,7 +284,7 @@ std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::share
 /**
  * Drop down component that shows extra buttons to indicate that the item can be moved up or down.
  */
-template <class TBase, bool TEnd = true, FontSize TFs = FS_NORMAL>
+template <class TBase, bool TEnd = true, FontSize TFs = FontSize::Normal>
 class DropDownMover : public TBase {
 public:
 	template <typename... Args>
@@ -361,7 +368,7 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
 
 			bool first = (i == 0 && gc.class_index == front);
 			bool last = (i == columns - 1 && gc.class_index == back);
-			list.push_back(std::make_unique<DropDownListToggleMoverItem>(first ? 0 : BADGE_CLICK_MOVE_UP, last ? 0 : BADGE_CLICK_MOVE_DOWN, COLOUR_YELLOW, gc.visible, BADGE_CLICK_TOGGLE_ICON, COLOUR_YELLOW, bg_colour, GetString(GetClassBadge(gc.class_index)->name), gc.class_index.base()));
+			list.push_back(std::make_unique<DropDownListToggleMoverItem>(first ? 0 : BADGE_CLICK_MOVE_UP, last ? 0 : BADGE_CLICK_MOVE_DOWN, Colours::Yellow, gc.visible, BADGE_CLICK_TOGGLE_ICON, Colours::Yellow, bg_colour, GetString(GetClassBadge(gc.class_index)->name), gc.class_index.base()));
 		}
 
 		if (i >= column_separators.size()) continue;
@@ -381,7 +388,7 @@ DropDownList BuildBadgeClassConfigurationList(const GUIBadgeClasses &gui_classes
 		if (!badge->flags.Test(BadgeFlag::HasText)) continue;
 
 		const auto [config, _] = GetBadgeClassConfigItem(gui_classes.GetFeature(), badge->label);
-		list.push_back(std::make_unique<DropDownListToggleItem>(config.show_filter, BADGE_CLICK_TOGGLE_FILTER, COLOUR_YELLOW, bg_colour, GetString(badge->name), badge_class_index.base()));
+		list.push_back(std::make_unique<DropDownListToggleItem>(config.show_filter, BADGE_CLICK_TOGGLE_FILTER, Colours::Yellow, bg_colour, GetString(badge->name), badge_class_index.base()));
 	}
 
 	return list;

@@ -121,6 +121,7 @@ enum class Searchpath : uint8_t {
 	BinaryDir, ///< Search in the directory where the binary resides.
 	InstallationDir, ///< Search in the installation directory.
 	ApplicationBundleDir, ///< Search within the application bundle.
+	TransportTycoonDeluxeDir, ///< Search within the Transport Tycoon Deluxe data directory (if installed).
 	AutodownloadDir, ///< Search within the autodownload directory.
 	AutodownloadPersonalDir,///< Search within the autodownload directory located in the personal directory.
 	AutodownloadPersonalDirXdg, ///< Search within the autodownload directory located in the personal directory (XDG variant).

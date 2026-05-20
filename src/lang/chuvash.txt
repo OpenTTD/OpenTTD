@@ -587,6 +587,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмр�
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special
@@ -654,6 +656,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропор�
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -788,6 +792,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Грантсем: {STRING}
 
 ###length 3
@@ -867,7 +872,7 @@ STR_CONFIG_SETTING_AI                                           :Ӑмӑртуҫ�
 
 # Config errors
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -1552,7 +1557,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 ###next-name-looks-similar
 
 

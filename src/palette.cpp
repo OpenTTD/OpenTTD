@@ -360,8 +360,8 @@ void DoPaletteAnimations()
 /**
  * Determine a contrasty text colour for a coloured background.
  * @param background Background colour.
- * @param threshold Background colour brightness threshold below which the background is considered dark and TC_WHITE is returned, range: 0 - 255, default 128.
- * @return TC_BLACK or TC_WHITE depending on what gives a better contrast.
+ * @param threshold Background colour brightness threshold below which the background is considered dark and TextColour::White is returned, range: 0 - 255, default 128.
+ * @return TextColour::Black or TextColour::White depending on what gives a better contrast.
  */
 TextColour GetContrastColour(PixelColour background, uint8_t threshold)
 {
@@ -370,7 +370,7 @@ TextColour GetContrastColour(PixelColour background, uint8_t threshold)
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
 	/* Compare with threshold brightness which defaults to 128 (50%) */
-	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
+	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TextColour::White : TextColour::Black;
 }
 
 /**
@@ -379,9 +379,9 @@ TextColour GetContrastColour(PixelColour background, uint8_t threshold)
  */
 struct ColourGradients
 {
-	using ColourGradient = std::array<PixelColour, SHADE_END>;
+	using ColourGradient = std::array<PixelColour, to_underlying(Shade::End)>;
 
-	static inline std::array<ColourGradient, COLOUR_END> gradient{};
+	static inline std::array<ColourGradient, to_underlying(Colours::End)> gradient{};
 };
 
 /**
@@ -390,9 +390,9 @@ struct ColourGradients
  * @param shade Shade level from 1 to 7.
  * @returns palette index of colour.
  */
-PixelColour GetColourGradient(Colours colour, ColourShade shade)
+PixelColour GetColourGradient(Colours colour, Shade shade)
 {
-	return ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END];
+	return ColourGradients::gradient[to_underlying(colour) % to_underlying(Colours::End)][to_underlying(shade) % to_underlying(Shade::End)];
 }
 
 /**
@@ -401,9 +401,9 @@ PixelColour GetColourGradient(Colours colour, ColourShade shade)
  * @param shade Shade level from 1 to 7.
  * @param palette_index Palette index to set.
  */
-void SetColourGradient(Colours colour, ColourShade shade, PixelColour palette_index)
+void SetColourGradient(Colours colour, Shade shade, PixelColour palette_index)
 {
-	assert(colour < COLOUR_END);
-	assert(shade < SHADE_END);
-	ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END] = palette_index;
+	assert(colour < Colours::End);
+	assert(shade < Shade::End);
+	ColourGradients::gradient[to_underlying(colour) % to_underlying(Colours::End)][to_underlying(shade) % to_underlying(Shade::End)] = palette_index;
 }

@@ -334,7 +334,7 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 		this->length += TILE_SIZE;
 		for (const Vehicle *v : VehiclesOnTile(tile)) {
 			/* Not a RV or not in the right direction or crashed :( */
-			if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != entry_dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) continue;
+			if (v->type != VehicleType::Road || DirToDiagDir(v->direction) != entry_dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) continue;
 
 			const RoadVehicle *rv = RoadVehicle::From(v);
 			/* Don't add ones not in a road stop */

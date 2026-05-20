@@ -1093,11 +1093,11 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 
 				uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 				if (has_md5sum) {
-					const GRFConfig *s = FindGRFConfig(grfid, FGCM_EXACT, &md5sum);
+					const GRFConfig *s = FindGRFConfig(grfid, FindGRFConfigMode::Exact, &md5sum);
 					if (s != nullptr) c = std::make_unique<GRFConfig>(*s);
 				}
 				if (c == nullptr && !FioCheckFileExists(std::string(item_name), Subdirectory::NewGrf)) {
-					const GRFConfig *s = FindGRFConfig(grfid, FGCM_NEWEST_VALID);
+					const GRFConfig *s = FindGRFConfig(grfid, FindGRFConfigMode::NewestValid);
 					if (s != nullptr) c = std::make_unique<GRFConfig>(*s);
 				}
 			}

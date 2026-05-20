@@ -577,6 +577,8 @@ STR_CONFIG_SETTING_NONE                                         :Nulo
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special
@@ -643,6 +645,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -770,6 +774,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+
 ###length 3
 
 
@@ -831,7 +836,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 # Config errors
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -1437,7 +1442,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 ###next-name-looks-similar
 
 

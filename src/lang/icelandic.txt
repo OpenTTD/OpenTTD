@@ -1087,8 +1087,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stillingar á b
 STR_CONFIG_SETTING_RECESSIONS                                   :Efnahagslægð: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ef virkt getur komið efnahagslægð á nokkurra ára fresti. Meðan á efnahagslægð stendur er öll framleiðsla marktækt minni (framleiðslan fellur í fyrra horf þegar efnahagslægðinni líkur)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Banna lest að snúa í lestarstöð: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ef virkt, munu lestar ekki snúa við á lestastöðvum sem eru ekki endastöðvarekki snúa við á lestarstöðvar, þó að styttri leið sé á næsta áfangastað þegar þær snúa við
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Hörmungar: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Kveikja eða slökkva á hörmungum, hörmungar sem af og til stoppa eða eyðileggja farartæki eða byggingar
@@ -1257,6 +1257,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi still
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uppfæra faratæki sjálfvirkt þegar þau eldast: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ef þessi stilling er virk, eru farartæki endurnýjuð sjálfvirkt þegar endingartími þeirra er komin
@@ -1527,6 +1529,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ef þessi still
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Leyfa hraðatakmarkanir vagna: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ef þessi stilling er virk er hámarkshraði á vögnum einnig notaður til að ákvarða hámarks hraða á járnbrautalestum
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ekki nota rafknúnar lestir: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ef þessi stilling er virk er ekki boðið upp á að nota rafmagns knúnar járnbrautalestar né spor fyrir þá
 
@@ -1737,7 +1740,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... slep
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sleppi grunn hljóðsafni, '{STRING}' finnst ekki
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... sleppi grunn tónlistarsafni, '{STRING}' finnst ekki
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -3588,7 +3591,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stoppa
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gögn farartækis sem skilyrði byggja á
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Hleðsluhlutfall
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Áreiðanleiki
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Hámarkshraði

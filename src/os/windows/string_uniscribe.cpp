@@ -29,7 +29,7 @@
 
 
 /** Uniscribe cache for internal font information, cleared when OTTD changes fonts. */
-static SCRIPT_CACHE _script_cache[FS_END];
+static EnumIndexArray<SCRIPT_CACHE, FontSize, FontSize::End> _script_cache;
 
 /**
  * Contains all information about a run of characters. A run are consecutive

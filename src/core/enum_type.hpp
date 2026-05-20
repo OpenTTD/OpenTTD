@@ -166,8 +166,12 @@ inline constexpr auto operator-(enum_type a, enum_type b)
 /** Operator that allows this enumeration to be added to any other enumeration. */
 #define DECLARE_ENUM_AS_ADDABLE(EnumType) \
 	template <typename OtherEnumType, typename = typename std::enable_if<std::is_enum_v<OtherEnumType>, OtherEnumType>::type> \
-	constexpr OtherEnumType operator + (OtherEnumType m1, EnumType m2) { \
+	constexpr OtherEnumType operator +(OtherEnumType m1, EnumType m2) { \
 		return static_cast<OtherEnumType>(to_underlying(m1) + to_underlying(m2)); \
+	} \
+	template <typename OtherEnumType, typename = typename std::enable_if<std::is_enum_v<OtherEnumType>, OtherEnumType>::type> \
+	constexpr OtherEnumType operator -(OtherEnumType m1, EnumType m2) { \
+		return static_cast<OtherEnumType>(to_underlying(m1) - to_underlying(m2)); \
 	}
 
 /**
@@ -246,13 +250,26 @@ public:
 template <typename Container, typename Index>
 class EnumClassIndexContainer : public Container {
 public:
+	Container::reference at(size_t pos) = delete;
 	Container::reference at(const Index &pos) { return this->Container::at(to_underlying(pos)); }
 
+	Container::const_reference at(size_t pos) const = delete;
 	Container::const_reference at(const Index &pos) const { return this->Container::at(to_underlying(pos)); }
 
+	Container::reference operator[](size_t pos) = delete;
 	Container::reference operator[](const Index &pos) { return this->Container::operator[](to_underlying(pos)); }
 
+	Container::const_reference operator[](size_t pos) const = delete;
 	Container::const_reference operator[](const Index &pos) const { return this->Container::operator[](to_underlying(pos)); }
 };
+
+/**
+ * A typedef for EnumClassIndexContainer using std::array as the backing container type.
+ * @tparam T std::array value type.
+ * @tparam Index The enum class to use for indexing.
+ * @tparam N The std::array size.
+ */
+template <typename T, typename Index, Index N>
+using EnumIndexArray = EnumClassIndexContainer<std::array<T, to_underlying(N)>, Index>;
 
 #endif /* ENUM_TYPE_HPP */

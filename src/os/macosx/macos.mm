@@ -126,7 +126,7 @@ std::optional<std::string> GetClipboardContents()
  */
 void CocoaSetApplicationBundleDir()
 {
-	extern EnumClassIndexContainer<std::array<std::string, to_underlying(Searchpath::End)>, Searchpath> _searchpaths;
+	extern EnumIndexArray<std::string, Searchpath, Searchpath::End> _searchpaths;
 
 	char tmp[MAXPATHLEN];
 	CFAutoRelease<CFURLRef> url(CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle()));
@@ -136,6 +136,17 @@ void CocoaSetApplicationBundleDir()
 	} else {
 		_searchpaths[Searchpath::ApplicationBundleDir].clear();
 	}
+}
+
+/**
+ * Returns the path to the user's Application Support folder.
+ */
+std::string CocoaGetAppSupportDir()
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+	NSString *appSupportPath = [paths firstObject];
+
+	return [appSupportPath UTF8String];
 }
 
 /**

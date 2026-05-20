@@ -79,7 +79,7 @@ void SetRailStationPlatformReservation(TileIndex start, DiagDirection dir, bool 
  */
 bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 {
-	assert(HasTrack(TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)), t));
+	assert(HasTrack(TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid)), t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		/* show the reserved rail if needed */
@@ -143,7 +143,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
  */
 void UnreserveRailTrack(TileIndex tile, Track t)
 {
-	assert(HasTrack(TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)), t));
+	assert(HasTrack(TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid)), t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		if (IsBridgeTile(tile)) {
@@ -254,7 +254,7 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
 		/* Depot tile? Can't continue. */
 		if (IsRailDepotTile(tile)) break;
 		/* Non-pbs signal? Reservation can't continue. */
-		if (IsTileType(tile, TileType::Railway) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) break;
+		if (HasBlockSignalOnTrackdir(tile, trackdir)) break;
 	}
 
 	return PBSTileInfo(tile, trackdir, false);
@@ -279,7 +279,7 @@ struct FindTrainOnTrackInfo {
 static void CheckTrainsOnTrack(FindTrainOnTrackInfo &info, TileIndex tile)
 {
 	for (Vehicle *v : VehiclesOnTile(tile)) {
-		if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) continue;
+		if (v->type != VehicleType::Train || v->vehstatus.Test(VehState::Crashed)) continue;
 
 		Train *t = Train::From(v);
 		if (t->track == TRACK_BIT_WORMHOLE || HasBit(static_cast<TrackBits>(t->track), TrackdirToTrack(info.res.trackdir))) {
@@ -294,22 +294,24 @@ static void CheckTrainsOnTrack(FindTrainOnTrackInfo &info, TileIndex tile)
 /**
  * Follow a train reservation to the last tile.
  *
- * @param v the vehicle
+ * @param consist the vehicle
  * @param train_on_res Is set to a train we might encounter
  * @returns The last tile of the reservation or the current train tile if no reservation present.
  */
-PBSTileInfo FollowTrainReservation(const Train *v, Vehicle **train_on_res)
+PBSTileInfo FollowTrainReservation(const Train *consist, Vehicle **train_on_res)
 {
-	assert(v->type == VEH_TRAIN);
+	assert(consist->type == VehicleType::Train);
 
-	TileIndex tile = v->tile;
-	Trackdir  trackdir = v->GetVehicleTrackdir();
+	const Train *moving_front = consist->GetMovingFront();
+
+	TileIndex tile = moving_front->tile;
+	Trackdir trackdir = moving_front->GetVehicleTrackdir();
 
 	if (IsRailDepotTile(tile) && !GetDepotReservationTrackBits(tile)) return PBSTileInfo(tile, trackdir, false);
 
 	FindTrainOnTrackInfo ftoti;
-	ftoti.res = FollowReservation(v->owner, GetAllCompatibleRailTypes(v->railtypes), tile, trackdir);
-	ftoti.res.okay = IsSafeWaitingPosition(v, ftoti.res.tile, ftoti.res.trackdir, true, _settings_game.pf.forbid_90_deg);
+	ftoti.res = FollowReservation(consist->owner, GetAllCompatibleRailTypes(consist->railtypes), tile, trackdir);
+	ftoti.res.okay = IsSafeWaitingPosition(consist, ftoti.res.tile, ftoti.res.trackdir, true, _settings_game.pf.forbid_90_deg);
 	if (train_on_res != nullptr) {
 		CheckTrainsOnTrack(ftoti, ftoti.res.tile);
 		if (ftoti.best != nullptr) *train_on_res = ftoti.best->First();
@@ -394,10 +396,8 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 {
 	if (IsRailDepotTile(tile)) return true;
 
-	if (IsTileType(tile, TileType::Railway)) {
-		/* For non-pbs signals, stop on the signal tile. */
-		if (HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) return true;
-	}
+	/* For non-pbs signals, stop on the signal tile. */
+	if (HasBlockSignalOnTrackdir(tile, trackdir)) return true;
 
 	/* Check next tile. For performance reasons, we check for 90 degree turns ourself. */
 	CFollowTrackRail ft(v, GetAllCompatibleRailTypes(v->railtypes));
@@ -446,7 +446,7 @@ bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bo
 
 	/* Not reserved and depot or not a pbs signal -> free. */
 	if (IsRailDepotTile(tile)) return true;
-	if (IsTileType(tile, TileType::Railway) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, track))) return true;
+	if (HasBlockSignalOnTrackdir(tile, trackdir)) return true;
 
 	/* Check the next tile, it has to be free as well. Do not filter for compatible railtypes
 	 * to make sure we never accidentally join up reservations. */

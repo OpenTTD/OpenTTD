@@ -187,7 +187,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec &&as)
 
 GrfSpecFeature AirportResolverObject::GetFeature() const
 {
-	return GSF_AIRPORTS;
+	return GrfSpecFeature::Airports;
 }
 
 uint32_t AirportResolverObject::GetDebugID() const
@@ -216,7 +216,7 @@ uint32_t AirportResolverObject::GetDebugID() const
 		/* Create storage on first modification. */
 		uint32_t grfid = (this->ro.grffile != nullptr) ? this->ro.grffile->grfid : 0;
 		assert(PersistentStorage::CanAllocateItem());
-		this->st->airport.psa = PersistentStorage::Create(grfid, GSF_AIRPORTS, this->st->airport.tile);
+		this->st->airport.psa = PersistentStorage::Create(grfid, GrfSpecFeature::Airports, this->st->airport.tile);
 	}
 	this->st->airport.psa->StoreValue(pos, value);
 }

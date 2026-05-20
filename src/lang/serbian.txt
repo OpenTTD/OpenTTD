@@ -1482,8 +1482,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Podešava nivo 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ako je omogućeno, recesije mogu da se jave svakih nekoliko godina. Proizvodnja je značajno smanjena tokom recesije (vraća se na prethodni nivo kada se recesija završi)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Onemogući okretanje voza u stanicama: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ako je uključeno i ako postoji kraća putanja do sledećeg odredišta, vozovi se neće okretati u neterminalnim stanicama
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofe: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključuje i isključuje katastrofe koje s vremena na vreme mogu blokirati ili uništiti vozila i infrastrukturu
@@ -1677,6 +1677,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaliraj proizv
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaliranje proizvidnje tereta fabrika: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaliraj proizvodnju tereta fabrika prema ovom procentu.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatska zamena kada vozilo ostari: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kada je omogućeno, vozilo blizu kraja života će se automatski zameniti kada su ispunjeni uslovi obnavljanja
@@ -2008,6 +2010,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kada je uključ
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Uključeno ograničenje brzine kod vagona: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kada je omogućeno, takođe upotrebi ograničenje brzine vagona za određivanje maksimalne brzine voza
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ne postoji posebna električna pruga: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Omogućavanje ovog podešavanja onemogućava potrebu elektrifikacije pruge da bi električni vozovi mogli voziti po njoj
 
@@ -2319,7 +2322,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}...ignoriram osnovni skup zvukova '{STRING}': nije pronađen
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriram osnovni set muzike '{STRING}': nije pronađen
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Greška sa podešavanjima videa...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... kompatibilan GPU nije pronađen. Hardversko ubrzanje je isključeno
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU drajver je oborio igru. Hardversko ubrzanje je onemogućeno
@@ -4681,7 +4684,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Odabira 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Skok na osnovu podatka o vozilu
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenat natovarenog
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pouzdanost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najveća brzina

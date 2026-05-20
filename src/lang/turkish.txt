@@ -652,8 +652,9 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Taşınan
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Bekleyen
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Kargo Geçmişi
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Kaynak
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Üretilen Kaynak
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Taşınan
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Teslim edildi
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Detaylı performans oranlarını göster
 
@@ -1352,8 +1353,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Yüksek
 STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Etkinleştirilirse, periyodik olarak bir ekonomik durgunluk yaşanır. Durgunluk süresince tüm üretim seviyeleri belirgin oranda düşer (durgunluk sona erdiğinde önceki seviyesine tekrar yükselir)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenlerin istasyonda yön değiştirmesini yasakla: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Etkinleştirildiğinde, trenler dönüş yaparak bir sonraki varış yerlerine daha kısa yoldan ulaşabilecek olsalar dahi, son-durak-olmayan istasyonlarda geri dönüş yapmalarına izin verilmez
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Geri giderken trenlerin ters dönmesine izin ver: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Trenlerin yön değiştirmek için nerede ters dönebileceğini seçin. "Hepsi" seçeneğinde trenler her yerde dönebilir. "Sadece hat sonunda" seçeneğinde, ileriye doğru bir yol olduğu sürece trenler istasyonlarda dönmez. "Hiçbiri" seçeneğinde trenler ters dönemez ve gerekirse geri geri giderler; fakat en arkadaki araçta bir sürücü kabini yoksa hızları azalır.
+
+###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Hepsi
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Sadece hattın sonunda
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Hiçbiri
 
 STR_CONFIG_SETTING_DISASTERS                                    :Felaketler: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya da altyapıyı yok edebilecek felaketleri açın ya da kapatın
@@ -1557,6 +1563,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Şehirlerin kar
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Fabrikaların kargo üretimini ölçeklendirin: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Fabrikaların kargo üretimini bu yüzdeye göre ölçeklendirin
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Araç eskiyince otomatik olarak yenile: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Etkinleştirildiğinde, yenileme koşulları sağlandığı takdirde ömrünün sonuna yaklaşan bir araç otomatik olarak yenilenir.
@@ -1905,6 +1913,9 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Etkinleştirild
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagonların treni yavaşlatması izinli: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Etkinleştirildiğinde, bir trenin azami hızına karar verirken vagonların hız limitleri de göz önünde bulundurulur
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Hava aracının maksimum menzilini aktif et: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Aktif edildiğinde,NewGRF'ler hava araçlarının maksimum menzilini sınırlayabilecek.
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrikli rayları iptal et: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Etkinleştirildiğinde, elektrikli araçları kullanabilmek için rayların elektrikli olması gerekmez
 
@@ -2228,7 +2239,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :Temel Grafik k�
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :Temel Ses kümesi '{STRING}' görmezden geliniyor: bulunamadı
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :Temel Müzik kümesi '{STRING}' görmezden geliniyor: bulunamadı
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :video ayarlarında hata...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :uyumlu GPU bulunamadı. Donanım hızlandırma devre dışı bırakıldı
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :GPU sürücüsü oyunu çökertti. Donanım hızlandırma devre dışı bırakıldı
@@ -4575,8 +4586,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Karayolu
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Gemiyi adlandır
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Uçağı adlandır
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} sene ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} sene ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} sene (kullanım ömrü: {COMMA} sene)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} sene) (kullanım ömrü: {COMMA} sene)
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   İşletme gideri: {LTBLUE}{CURRENCY_LONG}/yıl
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   İşletme Maliyeti: {LTBLUE}{CURRENCY_LONG}/periyot
 
@@ -4590,6 +4601,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Bu yılk
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Bu yıl kâr: {LTBLUE}{CURRENCY_LONG} (geçen sene: {CURRENCY_LONG}) {BLACK}Min. performans: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Bu periyottaki kâr: {LTBLUE}{CURRENCY_LONG} (Geçen periyot: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Bu periyottaki kâr: {LTBLUE}{CURRENCY_LONG} (Geçen periyot: {CURRENCY_LONG}) {BLACK}Min. performans: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Güvenilirlik: {LTBLUE}{COMMA}% (maksimum: {COMMA}%)  {BLACK}Son bakımdan beri bozulma sayısı: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Üretim: {LTBLUE}{NUM}{BLACK} Değer: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasite: {LTBLUE}Yok{STRING}
@@ -4729,7 +4741,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Bu hanga
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dallanmanın temel alacağı araç verisi
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Yükleme yüzdesi
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Güvenilirlik
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Azami hız
@@ -4738,6 +4750,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Bakım gerektir
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Her zaman
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Kalan ömrü (yıl)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Azami güvenilirlik
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Geriye doğru sür
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Araç verisinin verilen değerle nasıl karşılaştırılacağı
@@ -5257,6 +5270,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Bu araç hareke
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :arkadaki lokomotif daima önündekini takip edecek
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :yakındaki bir gara gidecek yol yok
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :yerel garaj bulunamadı
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :yerel hangar bulunamadı
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :yanlış gar türü
 

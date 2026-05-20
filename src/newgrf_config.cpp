@@ -134,11 +134,11 @@ void GRFConfig::SetSuitablePalette()
 {
 	PaletteType pal;
 	switch (this->palette & GRFP_GRF_MASK) {
-		case GRFP_GRF_DOS:     pal = PAL_DOS;      break;
-		case GRFP_GRF_WINDOWS: pal = PAL_WINDOWS;  break;
-		default:               pal = _settings_client.gui.newgrf_default_palette == 1 ? PAL_WINDOWS : PAL_DOS; break;
+		case GRFP_GRF_DOS: pal = PaletteType::DOS; break;
+		case GRFP_GRF_WINDOWS: pal = PaletteType::Windows; break;
+		default: pal = _settings_client.gui.newgrf_default_palette == 1 ? PaletteType::Windows : PaletteType::DOS; break;
 	}
-	SB(this->palette, GRFP_USE_BIT, 1, pal == PAL_WINDOWS ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
+	SB(this->palette, GRFP_USE_BIT, 1, pal == PaletteType::Windows ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
 }
 
 /**
@@ -193,7 +193,7 @@ void GRFConfig::SetValue(const GRFParameterInfo &info, uint32_t value)
 		SB(this->param[info.param_nr], info.first_bit, info.num_bit, value);
 	}
 
-	SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
+	SetWindowDirty(WC_GAME_OPTIONS, GameOptionsWindowNumber::NewGRFState);
 }
 
 /**
@@ -432,11 +432,11 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 	GRFListCompatibility res = GRFListCompatibility::AllGood;
 
 	for (auto &c : grfconfig) {
-		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
+		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Exact, &c->ident.md5sum);
 		if (f == nullptr || f->flags.Test(GRFConfigFlag::Invalid)) {
 			/* If we have not found the exactly matching GRF try to find one with the
 			 * same grfid, as it most likely is compatible */
-			f = FindGRFConfig(c->ident.grfid, FGCM_COMPATIBLE, nullptr, c->version);
+			f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Compatible, nullptr, c->version);
 			if (f != nullptr) {
 				Debug(grf, 1, "NewGRF {:08X} ({}) not found; checksum {}. Compatibility mode on", std::byteswap(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 				if (!c->flags.Test(GRFConfigFlag::Compatible)) {
@@ -567,7 +567,7 @@ void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 
 	/* Yes... these are the NewGRF windows */
 	InvalidateWindowClassesData(WC_SAVELOAD, 0, true);
-	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE, GOID_NEWGRF_RESCANNED, true);
+	InvalidateWindowData(WC_GAME_OPTIONS, GameOptionsWindowNumber::NewGRFState, GOID_NEWGRF_RESCANNED, true);
 	if (!_exit_game && callback != nullptr) callback->OnNewGRFsScanned();
 
 	CloseWindowByClass(WC_MODAL_PROGRESS);
@@ -599,17 +599,17 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
  */
 const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5Hash *md5sum, uint32_t desired_version)
 {
-	assert((mode == FGCM_EXACT) != (md5sum == nullptr));
+	assert((mode == FindGRFConfigMode::Exact) != (md5sum == nullptr));
 	const GRFConfig *best = nullptr;
 	for (const auto &c : _all_grfs) {
 		/* if md5sum is set, we look for an exact match and continue if not found */
 		if (!c->ident.HasGrfIdentifier(grfid, md5sum)) continue;
 		/* return it, if the exact same newgrf is found, or if we do not care about finding "the best" */
-		if (md5sum != nullptr || mode == FGCM_ANY) return c.get();
+		if (md5sum != nullptr || mode == FindGRFConfigMode::Any) return c.get();
 		/* Skip incompatible stuff, unless explicitly allowed */
-		if (mode != FGCM_NEWEST && c->flags.Test(GRFConfigFlag::Invalid)) continue;
+		if (mode != FindGRFConfigMode::Newest && c->flags.Test(GRFConfigFlag::Invalid)) continue;
 		/* check version compatibility */
-		if (mode == FGCM_COMPATIBLE && !c->IsCompatible(desired_version)) continue;
+		if (mode == FindGRFConfigMode::Compatible && !c->IsCompatible(desired_version)) continue;
 		/* remember the newest one as "the best" */
 		if (best == nullptr || c->version > best->version) best = c.get();
 	}

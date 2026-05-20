@@ -45,7 +45,7 @@
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::Command<Commands::RenameSign>::Do(sign_id, text, INVALID_COLOUR);
+	return ScriptObject::Command<Commands::RenameSign>::Do(sign_id, text, Colours::Invalid);
 }
 
 /* static */ std::optional<std::string> ScriptSign::GetName(SignID sign_id)
@@ -67,7 +67,7 @@
 {
 	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidSign(sign_id));
-	return ScriptObject::Command<Commands::RenameSign>::Do(sign_id, "", INVALID_COLOUR);
+	return ScriptObject::Command<Commands::RenameSign>::Do(sign_id, "", Colours::Invalid);
 }
 
 /* static */ SignID ScriptSign::BuildSign(TileIndex location, Text *name)

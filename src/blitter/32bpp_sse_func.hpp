@@ -17,7 +17,7 @@
 #ifndef BLITTER_32BPP_SSE_FUNC_HPP
 #define BLITTER_32BPP_SSE_FUNC_HPP
 
-/** Prefix all things in this file wiht this specifier to make them linked internally only. */
+/** Prefix all things in this file with this specifier to make them linked internally only. */
 #define INTERNAL_LINKAGE static
 
 #ifdef WITH_SSE

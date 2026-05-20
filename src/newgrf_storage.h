@@ -32,7 +32,7 @@ enum PersistentStorageMode : uint8_t {
  */
 struct BasePersistentStorageArray {
 	uint32_t grfid = 0; ///< GRFID associated to this persistent storage. A value of zero means "default".
-	GrfSpecFeature feature = GSF_INVALID; ///< NOSAVE: Used to identify in the owner of the array in debug output.
+	GrfSpecFeature feature = GrfSpecFeature::Invalid; ///< NOSAVE: Used to identify in the owner of the array in debug output.
 	TileIndex tile = INVALID_TILE; ///< NOSAVE: Used to identify in the owner of the array in debug output.
 
 	virtual ~BasePersistentStorageArray();

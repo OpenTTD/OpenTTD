@@ -47,12 +47,12 @@ public:
 	 */
 	enum TownEffect {
 		/* Note: these values represent part of the in-game TownEffect enum */
-		TE_NONE       = ::TAE_NONE,       ///< This cargo has no effect on a town
-		TE_PASSENGERS = ::TAE_PASSENGERS, ///< This cargo supplies passengers to a town
-		TE_MAIL       = ::TAE_MAIL,       ///< This cargo supplies mail to a town
-		TE_GOODS      = ::TAE_GOODS,      ///< This cargo supplies goods to a town
-		TE_WATER      = ::TAE_WATER,      ///< This cargo supplies water to a town
-		TE_FOOD       = ::TAE_FOOD,       ///< This cargo supplies food to a town
+		TE_NONE       = to_underlying(::TownAcceptanceEffect::None),       ///< This cargo has no effect on a town
+		TE_PASSENGERS = to_underlying(::TownAcceptanceEffect::Passengers), ///< This cargo supplies passengers to a town
+		TE_MAIL       = to_underlying(::TownAcceptanceEffect::Mail),       ///< This cargo supplies mail to a town
+		TE_GOODS      = to_underlying(::TownAcceptanceEffect::Goods),      ///< This cargo supplies goods to a town
+		TE_WATER      = to_underlying(::TownAcceptanceEffect::Water),      ///< This cargo supplies water to a town
+		TE_FOOD       = to_underlying(::TownAcceptanceEffect::Food),       ///< This cargo supplies food to a town
 	};
 
 	/**

@@ -415,14 +415,16 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SIGN_TEXT_COLOURS,                  ///< 363  PR#14743 Configurable sign text colors in scenario editor.
 	SLV_BUOYS_AT_0_0,                       ///< 364  PR#14983 Allow to build buoys at (0x0).
 
+	SLV_DRIVE_BACKWARDS,                    ///< 365  PR#15379 Trains can drive backwards.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
 /** Save or load result codes. */
-enum SaveOrLoadResult : uint8_t {
-	SL_OK     = 0, ///< completed successfully
-	SL_ERROR  = 1, ///< error that was caught before internal structures were modified
-	SL_REINIT = 2, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
+enum class SaveLoadResult : uint8_t {
+	Ok, ///< completed successfully
+	Error, ///< error that was caught before internal structures were modified
+	ReInit, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
 };
 
 /** Deals with the type of the savegame, independent of extension */
@@ -452,15 +454,15 @@ std::string GenerateDefaultSaveName();
 void SetSaveLoadError(StringID str);
 EncodedString GetSaveLoadErrorType();
 EncodedString GetSaveLoadErrorMessage();
-SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
+SaveLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
 void ProcessAsyncSaveFinish();
 void DoExitSave();
 
 void DoAutoOrNetsave(FiosNumberedSaveName &counter);
 
-SaveOrLoadResult SaveWithFilter(std::shared_ptr<struct SaveFilter> writer, bool threaded);
-SaveOrLoadResult LoadWithFilter(std::shared_ptr<struct LoadFilter> reader);
+SaveLoadResult SaveWithFilter(std::shared_ptr<struct SaveFilter> writer, bool threaded);
+SaveLoadResult LoadWithFilter(std::shared_ptr<struct LoadFilter> reader);
 
 typedef void AutolengthProc(int);
 

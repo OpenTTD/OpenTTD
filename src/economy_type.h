@@ -63,10 +63,10 @@ enum class ScoreID : uint8_t {
 	Vehicles = ScoreID::Begin, ///< Number of vehicles that turned profit last year.
 	Stations, ///< Number of recently-serviced stations.
 	MinProfit, ///< The profit of the vehicle with the lowest income.
-	MinIncome, ///< Income in the quater with the lowest profit of the last 12 quaters.
-	MaxIncome, ///< Income in the quater with the highest profit of the last 12 quaters.
-	Delivered, ///< Units of cargo delivered in the last four quaters.
-	Cargo, ///< Number of types of cargo delivered in the last four quaters.
+	MinIncome, ///< Income in the quarter with the lowest profit of the last 12 quarters.
+	MaxIncome, ///< Income in the quarter with the highest profit of the last 12 quarters.
+	Delivered, ///< Units of cargo delivered in the last four quarter.
+	Cargo, ///< Number of types of cargo delivered in the last four quarter.
 	Money, ///< Amount of money company has in the bank.
 	Loan, ///< The amount of money company can take as a loan.
 	Total, ///< Total points out of possible points ,must always be the last entry.
@@ -168,32 +168,35 @@ enum class Price : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Price)
 
-using Prices = EnumClassIndexContainer<std::array<Money,to_underlying(Price::End)>, Price>; ///< Prices of everything. @see Price
-using PriceMultipliers = EnumClassIndexContainer<std::array<int8_t, to_underlying(Price::End)>, Price>;
+using Prices = EnumIndexArray<Money, Price, Price::End>; ///< Prices of everything. @see Price
+using PriceMultipliers = EnumIndexArray<int8_t, Price, Price::End>;
 
 /** Types of expenses. */
-enum ExpensesType : uint8_t {
-	EXPENSES_CONSTRUCTION =  0,   ///< Construction costs.
-	EXPENSES_NEW_VEHICLES,        ///< New vehicles.
-	EXPENSES_TRAIN_RUN,           ///< Running costs trains.
-	EXPENSES_ROADVEH_RUN,         ///< Running costs road vehicles.
-	EXPENSES_AIRCRAFT_RUN,        ///< Running costs aircraft.
-	EXPENSES_SHIP_RUN,            ///< Running costs ships.
-	EXPENSES_PROPERTY,            ///< Property costs.
-	EXPENSES_TRAIN_REVENUE,       ///< Revenue from trains.
-	EXPENSES_ROADVEH_REVENUE,     ///< Revenue from road vehicles.
-	EXPENSES_AIRCRAFT_REVENUE,    ///< Revenue from aircraft.
-	EXPENSES_SHIP_REVENUE,        ///< Revenue from ships.
-	EXPENSES_LOAN_INTEREST,       ///< Interest payments over the loan.
-	EXPENSES_OTHER,               ///< Other expenses.
-	EXPENSES_END,                 ///< Number of expense types.
-	INVALID_EXPENSES      = 0xFF, ///< Invalid expense type.
+enum class ExpensesType : uint8_t {
+	Construction =  0, ///< Construction costs.
+	NewVehicles, ///< New vehicles.
+	TrainRun, ///< Running costs trains.
+	RoadVehRun, ///< Running costs road vehicles.
+	AircraftRun, ///< Running costs aircraft.
+	ShipRun, ///< Running costs ships.
+	Property, ///< Property costs.
+	TrainRevenue, ///< Revenue from trains.
+	RoadVehRevenue, ///< Revenue from road vehicles.
+	AircraftRevenue, ///< Revenue from aircraft.
+	ShipRevenue, ///< Revenue from ships.
+	LoanInterest, ///< Interest payments over the loan.
+	Other, ///< Other expenses.
+	End, ///< End marker.
+	Begin = ExpensesType::Construction, ///< Begin marker.
+	Invalid = 0xFF, ///< Invalid expense type.
 };
+
+DECLARE_INCREMENT_DECREMENT_OPERATORS(ExpensesType)
 
 /**
  * Data type for storage of Money for each #ExpensesType category.
  */
-using Expenses = std::array<Money, EXPENSES_END>;
+using Expenses = EnumIndexArray<Money, ExpensesType, ExpensesType::End>;
 
 /**
  * Categories of a price bases.

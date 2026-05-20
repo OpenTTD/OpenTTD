@@ -472,7 +472,7 @@ SQRESULT sq_setroottable(HSQUIRRELVM v)
 		v->Pop();
 		return SQ_OK;
 	}
-	return sq_throwerror(v, "ivalid type");
+	return sq_throwerror(v, "invalid type");
 }
 
 SQRESULT sq_setconsttable(HSQUIRRELVM v)
@@ -483,7 +483,7 @@ SQRESULT sq_setconsttable(HSQUIRRELVM v)
 		v->Pop();
 		return SQ_OK;
 	}
-	return sq_throwerror(v, "ivalid type, expected table");
+	return sq_throwerror(v, "invalid type, expected table");
 }
 
 void sq_setforeignptr(HSQUIRRELVM v,SQUserPointer p)
@@ -796,7 +796,7 @@ SQRESULT sq_setdelegate(HSQUIRRELVM v,SQInteger idx)
 	switch(type) {
 	case OT_TABLE:
 		if(type(mt) == OT_TABLE) {
-			if(!_table(self)->SetDelegate(_table(mt))) return sq_throwerror(v, "delagate cycle");
+			if(!_table(self)->SetDelegate(_table(mt))) return sq_throwerror(v, "delegate cycle");
 			v->Pop();}
 		else if(type(mt)==OT_NULL) {
 			_table(self)->SetDelegate(nullptr); v->Pop(); }

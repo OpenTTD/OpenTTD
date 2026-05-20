@@ -41,10 +41,10 @@ static const uint ICON_BOTTOM_BORDERWIDTH = 12;
  */
 struct IConsoleLine {
 	std::string buffer;     ///< The data to store.
-	TextColour colour;      ///< The colour of the line.
+	ExtendedTextColour colour; ///< The colour of the line.
 	uint16_t time;            ///< The amount of time the line is in the backlog.
 
-	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0)
+	IConsoleLine() : buffer(), colour(TextColour::Begin), time(0)
 	{
 
 	}
@@ -54,7 +54,7 @@ struct IConsoleLine {
 	 * @param buffer the data to print.
 	 * @param colour the colour of the line.
 	 */
-	IConsoleLine(std::string buffer, TextColour colour) :
+	IConsoleLine(std::string buffer, ExtendedTextColour colour) :
 			buffer(std::move(buffer)),
 			colour(colour),
 			time(0)
@@ -134,11 +134,12 @@ static std::optional<std::string_view> IConsoleHistoryAdd(std::string_view cmd);
 static void IConsoleHistoryNavigate(int direction);
 
 static constexpr std::initializer_list<NWidgetPart> _nested_console_window_widgets = {
-	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
+	NWidget(WWT_EMPTY, Colours::Invalid, WID_C_BACKGROUND), SetResize(1, 1),
 };
 
+/** Window definition for the console window. */
 static WindowDesc _console_window_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	{},
 	_nested_console_window_widgets
@@ -161,9 +162,9 @@ struct IConsoleWindow : Window
 
 	void OnInit() override
 	{
-		this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.hsep_normal;
+		this->line_height = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.hsep_normal;
 		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
-		this->cursor_width = GetCharacterWidth(FS_NORMAL, '_');
+		this->cursor_width = GetCharacterWidth(FontSize::Normal, '_');
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -215,7 +216,7 @@ struct IConsoleWindow : Window
 		DrawString(this->line_offset + delta, right, this->height - this->line_height, _iconsole_cmdline.GetText(), static_cast<TextColour>(CC_COMMAND), SA_LEFT | SA_FORCE);
 
 		if (_focused_window == this && _iconsole_cmdline.caret) {
-			DrawString(this->line_offset + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TC_WHITE, SA_LEFT | SA_FORCE);
+			DrawString(this->line_offset + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TextColour::White, SA_LEFT | SA_FORCE);
 		}
 	}
 
@@ -345,8 +346,8 @@ struct IConsoleWindow : Window
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		const auto p1 = GetCharPosInString(_iconsole_cmdline.GetText(), from, FS_NORMAL);
-		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.GetText(), to, FS_NORMAL) : p1;
+		const auto p1 = GetCharPosInString(_iconsole_cmdline.GetText(), from, FontSize::Normal);
+		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.GetText(), to, FontSize::Normal) : p1;
 
 		Rect r = {this->line_offset + delta + p1.left, this->height - this->line_height, this->line_offset + delta + p2.right, this->height};
 		return r;
@@ -387,7 +388,7 @@ void IConsoleGUIInit()
 
 	IConsoleClearBuffer();
 
-	IConsolePrint(TC_LIGHT_BLUE, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
+	IConsolePrint(TextColour::LightBlue, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
 	IConsolePrint(CC_WHITE, "------------------------------------");
 	IConsolePrint(CC_WHITE, "use \"help\" for more information.");
 	IConsolePrint(CC_WHITE, "");
@@ -498,7 +499,7 @@ static void IConsoleHistoryNavigate(int direction)
  * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param str the message entered or output on the console (notice, error, etc.)
  */
-void IConsoleGUIPrint(TextColour colour_code, const std::string &str)
+void IConsoleGUIPrint(ExtendedTextColour colour_code, const std::string &str)
 {
 	_iconsole_buffer.push_front(IConsoleLine(str, colour_code));
 	SetWindowDirty(WC_CONSOLE, 0);
@@ -538,16 +539,15 @@ static bool TruncateBuffer()
  * @param c The text colour to compare to.
  * @return true iff the TextColour is valid for console usage.
  */
-bool IsValidConsoleColour(TextColour c)
+bool IsValidConsoleColour(ExtendedTextColour c)
 {
 	/* A normal text colour is used. */
-	if (!(c & TC_IS_PALETTE_COLOUR)) return TC_BEGIN <= c && c < TC_END;
+	if (!c.flags.Test(ExtendedTextColourFlag::IsPaletteColour)) return TextColour::Begin <= c.colour && c.colour < TextColour::End;
 
 	/* A text colour from the palette is used; must be the company
 	 * colour gradient, so it must be one of those. */
-	c &= ~TC_IS_PALETTE_COLOUR;
-	for (Colours i = COLOUR_BEGIN; i < COLOUR_END; i++) {
-		if (GetColourGradient(i, SHADE_NORMAL).p == c) return true;
+	for (Colours i = Colours::Begin; i < Colours::End; i++) {
+		if (ExtendedTextColour{GetColourGradient(i, Shade::Normal)} == c) return true;
 	}
 
 	return false;

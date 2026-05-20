@@ -27,7 +27,7 @@
  * @tparam TBase Base component.
  * @tparam TFs Font size -- used to determine height.
  */
-template <class TBase, FontSize TFs = FS_NORMAL>
+template <class TBase, FontSize TFs = FontSize::Normal>
 class DropDownDivider : public TBase {
 public:
 	template <typename... Args>
@@ -38,8 +38,8 @@ public:
 
 	void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const override
 	{
-		PixelColour c1 = GetColourGradient(bg_colour, SHADE_DARK);
-		PixelColour c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
+		PixelColour c1 = GetColourGradient(bg_colour, Shade::Dark);
+		PixelColour c2 = GetColourGradient(bg_colour, Shade::Lightest);
 
 		int mid = CentreBounds(full.top, full.bottom, 0);
 		GfxFillRect(full.WithY(mid - WidgetDimensions::scaled.bevel.bottom, mid - 1), c1);
@@ -53,7 +53,7 @@ public:
  * @tparam TFs Font size.
  * @tparam TEnd Position string at end if true, or start if false.
  */
-template <class TBase, FontSize TFs = FS_NORMAL, bool TEnd = false>
+template <class TBase, FontSize TFs = FontSize::Normal, bool TEnd = false>
 class DropDownString : public TBase {
 	std::string string; ///< String to be drawn.
 	Dimension dim; ///< Dimensions of string.
@@ -161,7 +161,7 @@ public:
  * @tparam TFs Font size.
  * @tparam TEnd Position checkmark at end if true, or start if false.
  */
-template <class TBase, bool TEnd = false, FontSize TFs = FS_NORMAL>
+template <class TBase, bool TEnd = false, FontSize TFs = FontSize::Normal>
 class DropDownCheck : public TBase {
 	bool checked; ///< Is item checked.
 	Dimension dim; ///< Dimension of checkmark.
@@ -298,7 +298,7 @@ public:
  * Drop down component that makes the item unselectable.
  * @tparam TBase Base component.
  */
-template <class TBase, FontSize TFs = FS_NORMAL>
+template <class TBase, FontSize TFs = FontSize::Normal>
 class DropDownUnselectable : public TBase {
 public:
 	template <typename... Args>

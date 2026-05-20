@@ -1107,8 +1107,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta er
 STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, ekoizpen orokorra dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenak geltokietan buelta eman ahal izatea: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Gaitua dagoenean, trenak ezingo dute geltoki ez-finaletan buelta eman, nahiz eta biderik motzena izan helmugara iristeko
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Hondamendiak: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Azpiegiturak eta ibilgailuak suntsitu edo blokeatu ditzaketen hondamendiak txandakatu
@@ -1277,6 +1277,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenea
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zahartzen denean automatikoki berritu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Gaitua dagoenean, Ibilgailuek bere lan-bizitza amaitzear dutenean eta beharrezko baldintzak betetzen badira automatikoki berrituko dira
@@ -1545,6 +1547,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Gaitua dagoenea
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bagoiaren abiadura mugak aktibatu: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Gaitua dagoenean, bagoien gehienezko abiadura erabili trenen geheienezko abiadura zehazteko
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Trenbide elektrikoa desaktibatu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Gaitua dagoenean, ez da beharrezkoa izango trenbideak elektrifikatzea tren elektrikoak funtzionatzeko
 
@@ -1784,7 +1787,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... jara
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... jaramonik ez egiten Soinu Paketeari '{STRING}': ez da aurkitu
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... jaramonik ez egiten musika paketeari'{STRING}': ez da aurkitu
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -3696,7 +3699,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Gelditu
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Ibilgailuaren xehetasunak jauzia oinarritzeko
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Kargatutako ehunekoa
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidagarritasuna
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Gehienezko abiadua

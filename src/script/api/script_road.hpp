@@ -65,8 +65,8 @@ public:
 	 * Road/tram types
 	 */
 	enum RoadTramTypes : uint8_t {
-		ROADTRAMTYPES_ROAD = ::RTTB_ROAD, ///< Road road types.
-		ROADTRAMTYPES_TRAM = ::RTTB_TRAM, ///< Tram road types.
+		ROADTRAMTYPES_ROAD = ::RoadTramTypes{RoadTramType::Road}.base(), ///< Road road types.
+		ROADTRAMTYPES_TRAM = ::RoadTramTypes{RoadTramType::Tram}.base(), ///< Tram road types.
 	};
 
 	/**

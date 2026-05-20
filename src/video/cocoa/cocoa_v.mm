@@ -117,7 +117,7 @@ std::optional<std::string_view> VideoDriver_Cocoa::Initialize()
 
 /**
  * Set dirty a rectangle managed by a cocoa video subdriver.
- * @param left Left x cooordinate of the dirty rectangle.
+ * @param left Left x coordinate of the dirty rectangle.
  * @param top Upper y coordinate of the dirty rectangle.
  * @param width Width of the dirty rectangle.
  * @param height Height of the dirty rectangle.

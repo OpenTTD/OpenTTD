@@ -22,7 +22,7 @@
  */
 inline bool IsValidRoadBits(RoadBits r)
 {
-	return r < ROAD_END;
+	return r.Reset(ROAD_ALL).None();
 }
 
 /**
@@ -37,7 +37,7 @@ inline bool IsValidRoadBits(RoadBits r)
 inline RoadBits ComplementRoadBits(RoadBits r)
 {
 	assert(IsValidRoadBits(r));
-	return (RoadBits)(ROAD_ALL ^ r);
+	return r.Flip(ROAD_ALL);
 }
 
 /**
@@ -51,7 +51,7 @@ inline RoadBits ComplementRoadBits(RoadBits r)
 inline RoadBits MirrorRoadBits(RoadBits r)
 {
 	assert(IsValidRoadBits(r));
-	return (RoadBits)(GB(r, 0, 2) << 2 | GB(r, 2, 2));
+	return static_cast<RoadBits>(GB(r.base(), 0, 2) << 2 | GB(r.base(), 2, 2));
 }
 
 /**
@@ -67,7 +67,7 @@ inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
 {
 	assert(IsValidRoadBits(r));
 	for (; rot > (DiagDirDiff)0; rot--) {
-		r = (RoadBits)(GB(r, 0, 1) << 3 | GB(r, 1, 3));
+		r = static_cast<RoadBits>(GB(r.base(), 0, 1) << 3 | GB(r.base(), 1, 3));
 	}
 	return r;
 }
@@ -96,7 +96,7 @@ inline bool IsStraightRoad(RoadBits r)
 inline RoadBits DiagDirToRoadBits(DiagDirection d)
 {
 	assert(IsValidDiagDirection(d));
-	return (RoadBits)(ROAD_NW << (3 ^ d));
+	return static_cast<RoadBits>(RoadBits{RoadBit::NW}.base() << (3 ^ d));
 }
 
 /**

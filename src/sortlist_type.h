@@ -36,7 +36,7 @@ struct Filtering {
 /**
  * List template of 'things' \p T to sort in a GUI.
  * @tparam T Type of data stored in the list to represent each item.
- * @tparam P Tyoe of data passed as additional parameter to the sort function.
+ * @tparam P Type of data passed as additional parameter to the sort function.
  * @tparam F Type of data fed as additional value to the filter function. @see FilterFunction
  */
 template <typename T, typename P = std::nullptr_t, typename F = std::string_view>

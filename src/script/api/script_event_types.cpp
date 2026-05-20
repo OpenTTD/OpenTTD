@@ -53,8 +53,8 @@ int32_t ScriptEventEnginePreview::GetCapacity() const
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
 	switch (e->type) {
-		case VEH_ROAD:
-		case VEH_TRAIN: {
+		case VehicleType::Road:
+		case VehicleType::Train: {
 			CargoArray capacities = GetCapacityOfArticulatedParts(this->engine);
 			for (uint &cap : capacities) {
 				if (cap != 0) return cap;
@@ -62,8 +62,8 @@ int32_t ScriptEventEnginePreview::GetCapacity() const
 			return -1;
 		}
 
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
+		case VehicleType::Ship:
+		case VehicleType::Aircraft:
 			return e->GetDisplayDefaultCapacity();
 
 		default: NOT_REACHED();
@@ -75,7 +75,7 @@ int32_t ScriptEventEnginePreview::GetMaxSpeed() const
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
 	int32_t max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
-	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
+	if (e->type == VehicleType::Aircraft) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
 }
 
@@ -95,10 +95,10 @@ int32_t ScriptEventEnginePreview::GetVehicleType() const
 {
 	if (!this->IsEngineValid()) return ScriptVehicle::VT_INVALID;
 	switch (::Engine::Get(this->engine)->type) {
-		case VEH_ROAD:     return ScriptVehicle::VT_ROAD;
-		case VEH_TRAIN:    return ScriptVehicle::VT_RAIL;
-		case VEH_SHIP:     return ScriptVehicle::VT_WATER;
-		case VEH_AIRCRAFT: return ScriptVehicle::VT_AIR;
+		case VehicleType::Road:     return ScriptVehicle::VT_ROAD;
+		case VehicleType::Train:    return ScriptVehicle::VT_RAIL;
+		case VehicleType::Ship:     return ScriptVehicle::VT_WATER;
+		case VehicleType::Aircraft: return ScriptVehicle::VT_AIR;
 		default: NOT_REACHED();
 	}
 }

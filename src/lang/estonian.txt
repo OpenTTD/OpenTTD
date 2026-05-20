@@ -1364,8 +1364,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määrab ehitus
 STR_CONFIG_SETTING_RECESSIONS                                   :Majanduslangused: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kui on aktiveeritud siis võib majanduslangus toimuda iga paari aasta tagant. Majanduslanguse ajal on kõik tootmismahud tunduvalt madalamad (majanduslanguse lõppedes taastuvad endised tootmismahud)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Keela rongide ümberpöörd jaamades: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Kui on aktiveeritud, siis ei pööra rongid vahejaamades ringi isegi siis kui ringi pööramisel oleks teekond järgmisse sihtpunkti lühem
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastroofid: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vahelda katastroofe, mis mõnikord takistavad või hävitavad sõidukeid ja taristut
@@ -1567,6 +1567,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaleeri veoset
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaleeri tööstuse veosetoodangut: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaleeri tööstuste veosetoodangut selle protsendiga.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vananenud sõidukite uuendamine: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kui on sisse lülitatud, siis uuendatalse kõik kasutusaja lõpu lähedal olevad sõidukid automaatselt, järgides uuendamise tingimusi
@@ -1907,6 +1909,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Sisselülitatud
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagunite kiiruspiirangud: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kui on aktiveeritud siis kasutatakse rongi maksimaalse kiiruse arvutamiseks ka vagunite kiiruse piirangut
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrirongide keeld: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole tarvis rööpaid elektrifitseerida, et lubada elektrisõidukitel nendel rööbastel liikuda
 
@@ -2221,7 +2224,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... eira
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... eiratakse põhihelide komplekti «{STRING}»: ei leitud
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... eiratakse põhimuusika komplekti «{STRING}»: ei leitud
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Videoseadete viga...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ei leitud ühilduvat GPU-d. Riistvarakiirendus väljalülitatud
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Mäng seiskus graafikadraiveri pärast. Riistvarakiirendus lülitati välja
@@ -4587,7 +4590,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Vali teg
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel korralduse vahelejätmine põhineb
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Koorem protsentides
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Tehnoseisund
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tippkiirus

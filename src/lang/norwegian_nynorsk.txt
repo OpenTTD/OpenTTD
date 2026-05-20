@@ -1131,8 +1131,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivået kostnad
 STR_CONFIG_SETTING_RECESSIONS                                   :Nedgangstider: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Skru på at det frå tid til anna kjem nedgangstider. Under nedgangstider fell all produksjon kraftig. (Han går opp att når nedgangstida er over.)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ikkje la tog vende om på stasjonar: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Skru på for å hindre at tog snur på andre stasjonar enn endestasjonar.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Ulukker: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skru av/på katastrofar og ulukker, som kan stogge eller øydeleggje køyretøy og øydeleggje infrastruktur.
@@ -1286,6 +1286,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køyretøy utg�
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny køyretøy når det vert gamalt: {STRING}
 
@@ -1545,6 +1547,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Deaktiver vedli
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver fartsgrenser for vogner: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiver elektriske tog: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første køyretøy kjem fram på stasjonen til spelaren: {STRING}
@@ -1800,7 +1803,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... utel
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... utelèt lydsettet "{STRING}": ikkje funne
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... utelèt musikksettet "{STRING}": ikkje funne
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -3740,7 +3743,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Køyretøy-data å basere hopp på
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lastprosent
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålitelegheit
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maks. hastigheit

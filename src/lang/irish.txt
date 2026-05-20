@@ -1201,8 +1201,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Socraigh leibh�
 STR_CONFIG_SETTING_RECESSIONS                                   :Cúluithe eacnamaíochta: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Má dhéantar seo a chumasú, féadfaidh cúluithe a bheith ann gach cúpla bliain. Le linn cúlú, bíonn an táirgeadh ar fad cuid mhaith níos ísle (téann sé ar ais chuig an leibhéal roimhe sin nuair a bheidh an cúlú thart)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ná ceadaigh cúlú traenacha i stáisiúin: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Má tá sé cumasaithe, ní rachaidh traenacha ar cúl i stáisiúin nach ceannstáisiúin iad, fiú má tá bealach níos giorra chuig an chéad cheann scríbe eile má dhéanann siad sin
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Tubaistí: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Cuir tubaistí, ar féidir leo feithiclí nó bonneagar a bhlocáil nó a scriosadh anois is arís, ar siúl nó as
@@ -1382,6 +1382,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Má dhéantar �
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Má tá sé cumasaithe, déantar feithicil atá ag teacht chuig deireadh a ré a ionadú go huathoibríoch má tá na coinníollacha athnuachana comhlíonta
@@ -1694,6 +1696,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Má tá sé cum
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cumasaigh teorainneacha luais vaigíní: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Má tá sé cumasaithe, úsáid teorainneacha luais na vaigíní freisin chun luas uasta traenacha a shocrú
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Díchumasaigh ráillí leictreacha: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Má dhéantar an socrú seo a chumasú ní bheidh sé riachtanach iarnróid a leictriú chun go mbeidh traenacha leictreacha in ann taisteal orthu
 
@@ -1993,7 +1996,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ag t
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ag tabhairt neamhaird ar an tsraith Bhunfhuaimeanna '{STRING}': níor aimsíodh í
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ag tabhairt neamhaird ar an tsraith Bhuncheoil '{STRING}': níor aimsíodh í
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Earráid leis na socruithe físeáin...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... níor aimsaíodh GPU comhoiriúnach. Luasghéarú cura-earraí díchumasaithe
 
@@ -4181,7 +4184,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sonraí feithicle a bhunófar an léim air
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Céatadán lódáilte
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Iontaofacht
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luas uasta

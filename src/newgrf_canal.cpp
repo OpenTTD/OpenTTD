@@ -107,7 +107,7 @@ struct CanalResolverObject : public ResolverObject {
 
 GrfSpecFeature CanalResolverObject::GetFeature() const
 {
-	return GSF_CANALS;
+	return GrfSpecFeature::Canals;
 }
 
 uint32_t CanalResolverObject::GetDebugID() const

@@ -127,7 +127,7 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 		uint tracknr = 1;
 		for (uint i = 0; i < lengthof(this->songinfo); i++) {
 			const std::string &filename = this->files[i].filename;
-			if (filename.empty() || this->files[i].check_result == MD5File::CR_NO_FILE) {
+			if (filename.empty() || this->files[i].check_result == MD5File::ChecksumResult::NoFile) {
 				continue;
 			}
 

@@ -1353,8 +1353,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Alt
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està activat, poden haver recessions periòdicament. Durant una recessió, tota la producció és significativament més baixa, tornant al nivell previ quan s'acabi el període de recessió.
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permetis que els trens canviïn de sentit a les estacions: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu, els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Catàstrofes: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Permet o no que passin catàstrofes que puguin bloquejar o destruir ocasionalment vehicles o infraestructures
@@ -1558,6 +1558,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escala la produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escala la producció de càrrega de les indústries: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la producció de càrrega de les indústries segons aquest percentatge.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}{NBSP}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Si està activat, quan un vehicle arriba al final de la seva vida útil es substitueix automàticament quan es compleixen les condicions d'autorenovació.
@@ -1906,6 +1908,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quan s'activa, 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa límits de velocitat per als vagons: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si està activat, també utilitza els límits de velocitat dels vagons per a decidir la velocitat màxima del tren.
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
 
@@ -2229,7 +2232,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :s'ignorarà el 
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}...s'ignorarà el conjunt de sons base «{STRING}» perquè no s'ha trobat.
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}...s'ignorarà el conjunt de peces de música «{STRING}» perquè no s'ha trobat.
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}S'ha produït un error en la configuració de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no s'ha trobat cap GPU compatible. Es desactiva l'acceleració per programari.
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... el controlador de la GPU ha fallat durant la partida. Es desactiva l'acceleració per maquinari.
@@ -4731,7 +4734,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Trieu l'
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dades del vehicle on basar el salt a
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentatge de càrrega
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilitat
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocitat màxima

@@ -153,7 +153,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 		this->CloseConnection(res);
 		_networking = false;
 
-		CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+		CloseWindowById(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 		return;
 	}
 
@@ -183,7 +183,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 		ClientNetworkEmergencySave();
 	}
 
-	CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	CloseWindowById(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	if (_game_mode != GM_MENU) _switch_mode = SM_MENU;
 	_networking = false;
@@ -292,7 +292,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	my_client->status = STATUS_JOIN;
 	Debug(net, 9, "Client::join_status = Authorizing");
 	_network_join_status = NetworkJoinStatus::Authorizing;
-	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientJoin);
 	p->Send_string(GetNetworkRevisionString());
@@ -689,7 +689,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerCheckNewGRFs(Pack
 		DeserializeGRFIdentifier(p, c);
 
 		/* Check whether we know this GRF */
-		const GRFConfig *f = FindGRFConfig(c.grfid, FGCM_EXACT, &c.md5sum);
+		const GRFConfig *f = FindGRFConfig(c.grfid, FindGRFConfigMode::Exact, &c.md5sum);
 		if (f == nullptr) {
 			/* We do not know this GRF, bail out of initialization */
 			Debug(grf, 0, "NewGRF {:08X} not found; checksum {}", std::byteswap(c.grfid), FormatArrayAsHex(c.md5sum));
@@ -788,7 +788,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerWaitForMap(Packet
 	Debug(net, 9, "Client::join_status = Waiting");
 	_network_join_status = NetworkJoinStatus::Waiting;
 	_network_join_waiting = p.Recv_uint8();
-	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -812,7 +812,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapBegin(Packet &
 
 	Debug(net, 9, "Client::join_status = Downloading");
 	_network_join_status = NetworkJoinStatus::Downloading;
-	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -823,7 +823,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapSize(Packet &p
 	if (this->savegame == nullptr) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	_network_join_bytes_total = p.Recv_uint32();
-	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	Debug(net, 9, "Client::ReceiveServerMapSize(): bytes_total={}", _network_join_bytes_total);
 
@@ -839,7 +839,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapData(Packet &p
 	this->savegame->AddPacket(p);
 
 	_network_join_bytes = static_cast<uint32_t>(this->savegame->buffer.size());
-	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -853,7 +853,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapDone(Packet &)
 
 	Debug(net, 9, "Client::join_status = Processing");
 	_network_join_status = NetworkJoinStatus::Processing;
-	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, NetworkStatusWindowNumber::Join);
 
 	this->savegame->Reset();
 
@@ -1034,7 +1034,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerExternalChat(Pack
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
-	TextColour colour = (TextColour)p.Recv_uint16();
+	ExtendedTextColour colour = ExtendedTextColour::FromNetwork(p.Recv_uint16());
 	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 
@@ -1146,12 +1146,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerRemoteConsoleComm
 
 	Debug(net, 9, "Client::ReceiveServerRemoteConsoleCommand()");
 
-	TextColour colour_code = (TextColour)p.Recv_uint16();
-	if (!IsValidConsoleColour(colour_code)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	ExtendedTextColour colour = ExtendedTextColour::FromNetwork(p.Recv_uint16());
+	if (!IsValidConsoleColour(colour)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	std::string rcon_out = p.Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
-	IConsolePrint(colour_code, rcon_out);
+	IConsolePrint(colour, rcon_out);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1270,7 +1270,7 @@ void NetworkClientRequestMove(CompanyID company_id)
  */
 void NetworkClientsToSpectators(CompanyID cid)
 {
-	Backup<CompanyID> cur_company(_current_company);
+	AutoRestoreBackup cur_company(_current_company, _current_company);
 	/* If our company is changing owner, go to spectators */
 	if (cid == _local_company) SetLocalCompany(COMPANY_SPECTATOR);
 
@@ -1279,8 +1279,6 @@ void NetworkClientsToSpectators(CompanyID cid)
 		NetworkTextMessage(NetworkAction::CompanySpectator, CC_DEFAULT, false, ci->client_name);
 		ci->client_playas = COMPANY_SPECTATOR;
 	}
-
-	cur_company.Restore();
 }
 
 /**

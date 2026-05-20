@@ -184,7 +184,7 @@ static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({ TimerGameTick::Pr
 
 /**
  * Start the timeout timer that will finish all profiling sessions.
- * @param ticks The timemout in game ticks.
+ * @param ticks The timeout in game ticks.
  */
 /* static */ void NewGRFProfiler::StartTimer(uint64_t ticks)
 {

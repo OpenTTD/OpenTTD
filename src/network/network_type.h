@@ -55,7 +55,7 @@ using AdminID = PoolID<uint8_t, struct AdminIDTag, 16, 0xFF>;
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
 	/** Array indexed by NetworkVehicleType. */
-	using NetworkVehicleTypeArray = EnumClassIndexContainer<std::array<uint16_t, to_underlying(NetworkVehicleType::End)>, NetworkVehicleType>;
+	using NetworkVehicleTypeArray = EnumIndexArray<uint16_t, NetworkVehicleType, NetworkVehicleType::End>;
 	NetworkVehicleTypeArray num_vehicle; ///< How many vehicles are there of this type?
 	NetworkVehicleTypeArray num_station; ///< How many stations are there of this type?
 };

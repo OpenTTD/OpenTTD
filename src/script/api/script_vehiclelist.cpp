@@ -29,7 +29,7 @@ ScriptVehicleList::ScriptVehicleList(HSQUIRRELVM vm)
 
 	ScriptList::FillList<Vehicle>(vm, this,
 		[is_deity, owner](const Vehicle *v) {
-			return (is_deity || v->owner == owner) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()));
+			return (is_deity || v->owner == owner) && (v->IsPrimaryVehicle() || (v->type == VehicleType::Train && ::Train::From(v)->IsFreeWagon()));
 		}
 	);
 }
@@ -51,7 +51,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(HSQUIRRELVM vm)
 
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	::CompanyID owner = ScriptObject::GetCompany();
-	::VehicleType type = VEH_INVALID;
+	::VehicleType type = VehicleType::Invalid;
 
 	if (nparam == 2) {
 		SQInteger sqtype;
@@ -63,7 +63,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(HSQUIRRELVM vm)
 	}
 
 	FindVehiclesWithOrder(
-		[is_deity, owner, type](const Vehicle *v) { return (is_deity || v->owner == owner) && (type == VEH_INVALID || v->type == type); },
+		[is_deity, owner, type](const Vehicle *v) { return (is_deity || v->owner == owner) && (type == VehicleType::Invalid || v->type == type); },
 		[station_id](const Order *order) { return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id; },
 		[this](const Vehicle *v) { this->AddItem(v->index.base()); }
 	);
@@ -95,25 +95,25 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case TileType::Station: // Aircraft
 			if (!IsAirport(tile)) return;
-			type = VEH_AIRCRAFT;
+			type = VehicleType::Aircraft;
 			dest = GetStationIndex(tile);
 			break;
 
 		case TileType::Railway:
 			if (!IsRailDepot(tile)) return;
-			type = VEH_TRAIN;
+			type = VehicleType::Train;
 			dest = GetDepotIndex(tile);
 			break;
 
 		case TileType::Road:
 			if (!IsRoadDepot(tile)) return;
-			type = VEH_ROAD;
+			type = VehicleType::Road;
 			dest = GetDepotIndex(tile);
 			break;
 
 		case TileType::Water:
 			if (!IsShipDepot(tile)) return;
-			type = VEH_SHIP;
+			type = VehicleType::Ship;
 			dest = GetDepotIndex(tile);
 			break;
 

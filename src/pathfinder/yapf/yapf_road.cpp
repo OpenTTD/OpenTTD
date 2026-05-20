@@ -141,33 +141,33 @@ public:
 			}
 
 			/* if there are no reachable trackdirs on new tile, we have end of road */
-			TrackFollower F(Yapf().GetVehicle());
-			if (!F.Follow(tile, trackdir)) break;
+			TrackFollower follower_local{Yapf().GetVehicle()};
+			if (!follower_local.Follow(tile, trackdir)) break;
 
 			/* if there are more trackdirs available & reachable, we are at the end of segment */
-			if (KillFirstBit(F.new_td_bits) != TRACKDIR_BIT_NONE) break;
+			if (KillFirstBit(follower_local.new_td_bits) != TRACKDIR_BIT_NONE) break;
 
-			Trackdir new_td = (Trackdir)FindFirstBit(F.new_td_bits);
+			Trackdir new_td = (Trackdir)FindFirstBit(follower_local.new_td_bits);
 
 			/* stop if RV is on simple loop with no junctions */
-			if (F.new_tile == n.key.tile && new_td == n.key.td) return false;
+			if (follower_local.new_tile == n.key.tile && new_td == n.key.td) return false;
 
 			/* if we skipped some tunnel tiles, add their cost */
-			segment_cost += F.tiles_skipped * YAPF_TILE_LENGTH;
-			tiles += F.tiles_skipped + 1;
+			segment_cost += follower_local.tiles_skipped * YAPF_TILE_LENGTH;
+			tiles += follower_local.tiles_skipped + 1;
 
 			/* add hilly terrain penalty */
-			segment_cost += Yapf().SlopeCost(tile, F.new_tile, trackdir);
+			segment_cost += Yapf().SlopeCost(tile, follower_local.new_tile, trackdir);
 
 			/* add min/max speed penalties */
 			int min_speed = 0;
 			int max_veh_speed = std::min<int>(v->GetDisplayMaxSpeed(), v->current_order.GetMaxSpeed() * 2);
-			int max_speed = F.GetSpeedLimit(&min_speed);
-			if (max_speed < max_veh_speed) segment_cost += YAPF_TILE_LENGTH * (max_veh_speed - max_speed) * (4 + F.tiles_skipped) / max_veh_speed;
+			int max_speed = follower_local.GetSpeedLimit(&min_speed);
+			if (max_speed < max_veh_speed) segment_cost += YAPF_TILE_LENGTH * (max_veh_speed - max_speed) * (4 + follower_local.tiles_skipped) / max_veh_speed;
 			if (min_speed > max_veh_speed) segment_cost += YAPF_TILE_LENGTH * (min_speed - max_veh_speed);
 
 			/* move to the next tile */
-			tile = F.new_tile;
+			tile = follower_local.new_tile;
 			trackdir = new_td;
 			if (tiles > MAX_MAP_SIZE) break;
 		}
@@ -323,9 +323,9 @@ public:
 	/** @copydoc CYapfBaseT::PfFollowNodeFunc */
 	inline void PfFollowNode(Node &old_node)
 	{
-		TrackFollower F(Yapf().GetVehicle());
-		if (F.Follow(old_node.segment_last_tile, old_node.segment_last_td)) {
-			Yapf().AddMultipleNodes(&old_node, F);
+		TrackFollower follower{Yapf().GetVehicle()};
+		if (follower.Follow(old_node.segment_last_tile, old_node.segment_last_td)) {
+			Yapf().AddMultipleNodes(&old_node, follower);
 		}
 	}
 
@@ -404,54 +404,6 @@ public:
 			}
 		}
 		return next_trackdir;
-	}
-
-	inline uint DistanceToTile(const RoadVehicle *v, TileIndex dst_tile)
-	{
-		/* handle special case - when current tile is the destination tile */
-		if (dst_tile == v->tile) {
-			/* distance is zero in this case */
-			return 0;
-		}
-
-		if (!this->SetOriginFromVehiclePos(v)) return UINT_MAX;
-
-		/* get available trackdirs on the destination tile */
-		Yapf().SetDestination(v);
-
-		/* if path not found - return distance = UINT_MAX */
-		uint dist = UINT_MAX;
-
-		/* find the best path */
-		if (!Yapf().FindPath(v)) return dist;
-
-		Node *node = Yapf().GetBestNode();
-		if (node != nullptr) {
-			/* path was found
-			 * get the path cost estimate */
-			dist = node->GetCostEstimate();
-		}
-
-		return dist;
-	}
-
-	/**
-	 * Return true if the valid origin (tile/trackdir) was set from the current vehicle position.
-	 * @param v The vehicle to get the position from.
-	 * @return \c true iff the origin was set.
-	 */
-	inline bool SetOriginFromVehiclePos(const RoadVehicle *v)
-	{
-		/* set origin (tile, trackdir) */
-		TileIndex src_tile = v->tile;
-		Trackdir src_td = v->GetVehicleTrackdir();
-		if (!HasTrackdir(GetTrackdirBitsForRoad(src_tile, Yapf().IsTram() ? RTT_TRAM : RTT_ROAD), src_td)) {
-			/* sometimes the roadveh is not on the road (it resides on non-existing track)
-			 * how should we handle that situation? */
-			return false;
-		}
-		Yapf().SetOrigin(src_tile, TrackdirToTrackdirBits(src_td));
-		return true;
 	}
 
 	static FindDepotData stFindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td, int max_distance)

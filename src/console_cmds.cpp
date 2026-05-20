@@ -425,7 +425,7 @@ static bool ConSave(std::span<std::string_view> argv)
 		std::string filename = fmt::format("{}.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
-		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Save) != SL_OK) {
+		if (SaveOrLoad(filename, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Save) != SaveLoadResult::Ok) {
 			IConsolePrint(CC_ERROR, "Saving map failed.");
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
@@ -1344,8 +1344,8 @@ static bool ConEchoC(std::span<std::string_view> argv)
 	if (argv.size() < 3) return false;
 
 	auto colour = ParseInteger(argv[1]);
-	if (!colour.has_value() || !IsInsideMM(*colour, TC_BEGIN, TC_END)) {
-		IConsolePrint(CC_ERROR, "The colour must be a number between {} and {}.", TC_BEGIN, TC_END - 1);
+	if (!colour.has_value() || !IsInsideMM(*colour, to_underlying(TextColour::Begin), to_underlying(TextColour::End))) {
+		IConsolePrint(CC_ERROR, "The colour must be a number between {} and {}.", TextColour::Begin, to_underlying(TextColour::End) - 1);
 		return true;
 	}
 
@@ -1962,7 +1962,7 @@ static bool ConHelp(std::span<std::string_view> argv)
 		return true;
 	}
 
-	IConsolePrint(TC_LIGHT_BLUE, " ---- OpenTTD Console Help ---- ");
+	IConsolePrint(TextColour::LightBlue, " ---- OpenTTD Console Help ---- ");
 	IConsolePrint(CC_DEFAULT, " - commands: the command to list all commands is 'list_cmds'.");
 	IConsolePrint(CC_DEFAULT, " call commands with '<command> <arg2> <arg3>...'");
 	IConsolePrint(CC_DEFAULT, " - to assign strings, or use them as arguments, enclose it within quotes.");
@@ -2022,14 +2022,14 @@ static bool ConCompanies(std::span<std::string_view> argv)
 		/* Grab the company name */
 		std::string company_name = GetString(STR_COMPANY_NAME, c->index);
 
-		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
+		std::string colour = GetString(STR_COLOUR_DARK_BLUE + to_underlying(_company_colours[c->index]));
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),
-			c->group_all[VEH_TRAIN].num_vehicle,
-			c->group_all[VEH_ROAD].num_vehicle,
-			c->group_all[VEH_AIRCRAFT].num_vehicle,
-			c->group_all[VEH_SHIP].num_vehicle,
+			c->group_all[VehicleType::Train].num_vehicle,
+			c->group_all[VehicleType::Road].num_vehicle,
+			c->group_all[VehicleType::Aircraft].num_vehicle,
+			c->group_all[VehicleType::Ship].num_vehicle,
 			c->is_ai ? "AI" : "");
 	}
 
@@ -2258,22 +2258,22 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 /**
  * Resolve a string to a content type.
  * @param str The string to resolve.
- * @return The content type, or #CONTENT_TYPE_END when the string is not a content type.
+ * @return The content type, or #ContentType::End when the string is not a content type.
  */
 static ContentType StringToContentType(std::string_view str)
 {
 	static const std::initializer_list<std::pair<std::string_view, ContentType>> content_types = {
-		{"base",      CONTENT_TYPE_BASE_GRAPHICS},
-		{"newgrf",    CONTENT_TYPE_NEWGRF},
-		{"ai",        CONTENT_TYPE_AI},
-		{"ailib",     CONTENT_TYPE_AI_LIBRARY},
-		{"scenario",  CONTENT_TYPE_SCENARIO},
-		{"heightmap", CONTENT_TYPE_HEIGHTMAP},
+		{"base",      ContentType::BaseGraphics},
+		{"newgrf",    ContentType::NewGRF},
+		{"ai",        ContentType::Ai},
+		{"ailib",     ContentType::AiLibrary},
+		{"scenario",  ContentType::Scenario},
+		{"heightmap", ContentType::Heightmap},
 	};
 	for (const auto &ct : content_types) {
 		if (StrEqualsIgnoreCase(str, ct.first)) return ct.second;
 	}
-	return CONTENT_TYPE_END;
+	return ContentType::End;
 }
 
 /** Asynchronous callback */
@@ -2300,12 +2300,12 @@ struct ConsoleContentCallback : public ContentCallback {
  */
 static void OutputContentState(const ContentInfo &ci)
 {
-	static const std::string_view types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
-	static_assert(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
+	static const std::string_view types[] = { "", "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
+	static_assert(std::size(types) == to_underlying(ContentType::End));
 	static const std::string_view states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
-	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
+	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[to_underlying(ci.type)], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
 /** Downloading of content from the server. @copydoc IConsoleCmdProc */
@@ -2329,7 +2329,7 @@ static bool ConContent(std::span<std::string_view> argv)
 	}
 
 	if (StrEqualsIgnoreCase(argv[1], "update")) {
-		_network_content_client.RequestContentList((argv.size() > 2) ? StringToContentType(argv[2]) : CONTENT_TYPE_END);
+		_network_content_client.RequestContentList((argv.size() > 2) ? StringToContentType(argv[2]) : ContentType::End);
 		return true;
 	}
 
@@ -2417,12 +2417,12 @@ static bool ConFont(std::span<std::string_view> argv)
 	}
 
 	FontSize argfs;
-	for (argfs = FS_BEGIN; argfs < FS_END; argfs++) {
+	for (argfs = FontSize::Begin; argfs < FontSize::End; argfs++) {
 		if (argv.size() > 1 && StrEqualsIgnoreCase(argv[1], FontSizeToName(argfs))) break;
 	}
 
 	/* First argument must be a FontSize. */
-	if (argv.size() > 1 && argfs == FS_END) return false;
+	if (argv.size() > 1 && argfs == FontSize::End) return false;
 
 	if (argv.size() > 2) {
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
@@ -2447,7 +2447,7 @@ static bool ConFont(std::span<std::string_view> argv)
 		SetFont(argfs, font, size);
 	}
 
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+	for (FontSize fs = FontSize::Begin; fs < FontSize::End; fs++) {
 		FontCache *fc = FontCache::Get(fs);
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
 		/* Make sure all non sprite fonts are loaded. */
@@ -2641,7 +2641,7 @@ static bool ConNewGRFProfile(std::span<std::string_view> argv)
 			auto profiler = std::ranges::find(_newgrf_profilers, &grf, &NewGRFProfiler::grffile);
 			bool selected = profiler != _newgrf_profilers.end();
 			bool active = selected && profiler->active;
-			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
+			TextColour tc = active ? TextColour::LightBlue : selected ? TextColour::Green : CC_INFO;
 			std::string_view statustext = active ? " (active)" : selected ? " (selected)" : "";
 			IConsolePrint(tc, "{}: [{:08X}] {}{}", i, std::byteswap(grf.grfid), grf.filename, statustext);
 			i++;
@@ -2809,7 +2809,7 @@ static void ConDumpRoadTypes()
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32_t grfid = 0;
-		const GRFFile *grf = rti->grffile[ROTSG_GROUND];
+		const GRFFile *grf = rti->grffile[RoadSpriteType::Ground];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
@@ -2848,7 +2848,7 @@ static void ConDumpRailTypes()
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32_t grfid = 0;
-		const GRFFile *grf = rti->grffile[RTSG_GROUND];
+		const GRFFile *grf = rti->grffile[RailSpriteType::Ground];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);

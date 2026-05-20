@@ -1170,7 +1170,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :تحديد مس
 
 STR_CONFIG_SETTING_RECESSIONS                                   :حالات الركود: {STRING}
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :عدم السماح بعودة القطار إلى الخلف في المحطات: {STRING}
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :الكوارث: {STRING}
 
@@ -1305,6 +1306,8 @@ STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :ساعة الح
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :جدد العربات عندما تصبح قديمة : {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :عند التمكين ، يتم استبدال العربة التي اقتربت من نهاية عمرها عند اكتمال شروط التجديد
@@ -1548,6 +1551,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :الغاء ال
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :السماح بتحديد سرعة العربات: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :تعطيل سكة القطار الكهربائي: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :وصول اول مركبة لمحطة اللاعب: {STRING}
@@ -1764,7 +1768,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :غير متطا
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :مجهول
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... نسبة الضغط '{STRING}' غير صحيحة
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... لم يتم العثور على GPU متوافق. تم تعطيل تسريع الأجهزة
 
 # Intro window
@@ -3793,7 +3797,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :توقف
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}بيانات العربة لتعريف التجاوز الى
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :نسبة التحميل
 STR_ORDER_CONDITIONAL_RELIABILITY                               :الصلاحية
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :السرعة القصوى

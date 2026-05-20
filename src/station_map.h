@@ -780,8 +780,8 @@ inline void MakeRoadStop(Tile t, Owner o, StationID sid, RoadStopType rst, RoadT
 {
 	MakeStation(t, o, sid, (rst == RoadStopType::Bus ? StationType::Bus : StationType::Truck), d);
 	SetRoadTypes(t, road_rt, tram_rt);
-	SetRoadOwner(t, RTT_ROAD, o);
-	SetRoadOwner(t, RTT_TRAM, o);
+	SetRoadOwner(t, RoadTramType::Road, o);
+	SetRoadOwner(t, RoadTramType::Tram, o);
 }
 
 /**
@@ -800,8 +800,8 @@ inline void MakeDriveThroughRoadStop(Tile t, Owner station, Owner road, Owner tr
 {
 	MakeStation(t, station, sid, rst, GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + a);
 	SetRoadTypes(t, road_rt, tram_rt);
-	SetRoadOwner(t, RTT_ROAD, road);
-	SetRoadOwner(t, RTT_TRAM, tram);
+	SetRoadOwner(t, RoadTramType::Road, road);
+	SetRoadOwner(t, RoadTramType::Tram, tram);
 }
 
 /**

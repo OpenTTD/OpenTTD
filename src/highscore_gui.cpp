@@ -50,7 +50,7 @@ struct EndGameHighScoreBaseWindow : Window {
 		this->DrawWidgets();
 
 		/* Fill with the appropriate background colour instead of leaving default window colour */
-		GfxFillRect(Rect{0, 0, this->width, this->height}, PixelColour{105}, FILLRECT_OPAQUE);
+		GfxFillRect(Rect{0, 0, this->width, this->height}, PixelColour{105}, FillRectMode::Opaque);
 
 		/* Standard background slices are 50 pixels high, but it's designed
 		 * for 480 pixels total. 96% of 500 is 480. */
@@ -158,11 +158,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		if (this->background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
 			DrawStringMultiLine(pt.x + ScaleSpriteTrad(15), pt.x + ScaleSpriteTrad(640) - ScaleSpriteTrad(25), pt.y + ScaleSpriteTrad(90), pt.y + ScaleSpriteTrad(160),
 					GetString(STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, c->index, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
-					TC_FROMSTRING, SA_CENTER);
+					TextColour::FromString, SA_CENTER);
 		} else {
 			DrawStringMultiLine(pt.x + ScaleSpriteTrad(36), pt.x + ScaleSpriteTrad(640), pt.y + ScaleSpriteTrad(140), pt.y + ScaleSpriteTrad(206),
 					GetString(STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
-					TC_FROMSTRING, SA_CENTER);
+					TextColour::FromString, SA_CENTER);
 		}
 	}
 };
@@ -202,7 +202,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		Point pt = this->GetTopLeft(ScaleSpriteTrad(640), ScaleSpriteTrad(480));
 
 		/* Draw the title. */
-		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), STR_HIGHSCORE_TOP_COMPANIES, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), STR_HIGHSCORE_TOP_COMPANIES, TextColour::FromString, SA_CENTER);
 
 		/* Draw Highscore peepz */
 		for (uint8_t i = 0; i < ClampTo<uint8_t>(hs.size()); i++) {
@@ -210,11 +210,11 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 					GetString(STR_HIGHSCORE_POSITION, i + 1));
 
 			if (!hs[i].name.empty()) {
-				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
+				TextColour colour = (this->rank == i) ? TextColour::Red : TextColour::Black; // draw new highscore in red
 
 				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55),
 						GetString(STR_JUST_BIG_RAW_STRING, hs[i].name), colour);
-				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FS_LARGE) + ScaleSpriteTrad(i * 55),
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FontSize::Large) + ScaleSpriteTrad(i * 55),
 						GetString(STR_HIGHSCORE_STATS, hs[i].title, hs[i].score), colour);
 			}
 		}
@@ -222,18 +222,20 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_highscore_widgets = {
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Brown, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
+/** Window definition for the highscore window. */
 static WindowDesc _highscore_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_HIGHSCORE, WC_NONE,
 	{},
 	_nested_highscore_widgets
 );
 
+/** Window definition for the endgame window. */
 static WindowDesc _endgame_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_ENDSCREEN, WC_NONE,
 	{},
 	_nested_highscore_widgets

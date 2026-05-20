@@ -48,7 +48,7 @@ static bool DrawScrollingStatusText(const NewsItem &ni, int scroll_pos, int left
 	int pos = (_current_text_dir == TD_RTL) ? (scroll_pos - width) : (right - scroll_pos - left);
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
-	DrawString(pos, INT16_MAX, 0, message, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
+	DrawString(pos, INT16_MAX, 0, message, TextColour::LightBlue, SA_LEFT | SA_FORCE);
 
 	return (_current_text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
 }
@@ -106,23 +106,23 @@ struct StatusBarWindow : Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
-		tr.top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
+		tr.top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal));
 		switch (widget) {
 			case WID_S_LEFT:
 				/* Draw the date */
-				DrawString(tr, GetString(STR_JUST_DATE_LONG, TimerGameCalendar::date), TC_WHITE, SA_HOR_CENTER);
+				DrawString(tr, GetString(STR_JUST_DATE_LONG, TimerGameCalendar::date), TextColour::White, SA_HOR_CENTER);
 				break;
 
 			case WID_S_RIGHT: {
 				if (_local_company == COMPANY_SPECTATOR) {
-					DrawString(tr, STR_STATUSBAR_SPECTATOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(tr, STR_STATUSBAR_SPECTATOR, TextColour::FromString, SA_HOR_CENTER);
 				} else if (_settings_game.difficulty.infinite_money) {
-					DrawString(tr, STR_STATUSBAR_INFINITE_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(tr, STR_STATUSBAR_INFINITE_MONEY, TextColour::FromString, SA_HOR_CENTER);
 				} else {
 					/* Draw company money, if any */
 					const Company *c = Company::GetIfValid(_local_company);
 					if (c != nullptr) {
-						DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, c->money), TC_WHITE, SA_HOR_CENTER);
+						DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, c->money), TextColour::White, SA_HOR_CENTER);
 					}
 				}
 				break;
@@ -131,25 +131,25 @@ struct StatusBarWindow : Window {
 			case WID_S_MIDDLE:
 				/* Draw status bar */
 				if (this->saving) { // true when saving is active
-					DrawString(tr, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_HOR_CENTER | SA_VERT_CENTER);
+					DrawString(tr, STR_STATUSBAR_SAVING_GAME, TextColour::FromString, SA_HOR_CENTER | SA_VERT_CENTER);
 				} else if (_do_autosave) {
-					DrawString(tr, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(tr, STR_STATUSBAR_AUTOSAVE, TextColour::FromString, SA_HOR_CENTER);
 				} else if (_pause_mode.Any()) {
 					StringID msg = _pause_mode.Test(PauseMode::LinkGraph) ? STR_STATUSBAR_PAUSED_LINK_GRAPH : STR_STATUSBAR_PAUSED;
-					DrawString(tr, msg, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(tr, msg, TextColour::FromString, SA_HOR_CENTER);
 				} else if (this->ticker_scroll < TICKER_STOP && GetStatusbarNews() != nullptr && !GetStatusbarNews()->headline.empty()) {
 					/* Draw the scrolling news text */
 					if (!DrawScrollingStatusText(*GetStatusbarNews(), ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
 						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
 						if (Company::IsValidID(_local_company)) {
 							/* This is the default text */
-							DrawString(tr, GetString(STR_STATUSBAR_COMPANY_NAME, _local_company), TC_FROMSTRING, SA_HOR_CENTER);
+							DrawString(tr, GetString(STR_STATUSBAR_COMPANY_NAME, _local_company), TextColour::FromString, SA_HOR_CENTER);
 						}
 					}
 				} else {
 					if (Company::IsValidID(_local_company)) {
 						/* This is the default text */
-						DrawString(tr, GetString(STR_STATUSBAR_COMPANY_NAME, _local_company), TC_FROMSTRING, SA_HOR_CENTER);
+						DrawString(tr, GetString(STR_STATUSBAR_COMPANY_NAME, _local_company), TextColour::FromString, SA_HOR_CENTER);
 					}
 				}
 
@@ -212,14 +212,15 @@ struct StatusBarWindow : Window {
 
 static constexpr std::initializer_list<NWidgetPart> _nested_main_status_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_S_LEFT), SetMinimalSize(140, 12), EndContainer(),
-		NWidget(WWT_PUSHBTN, COLOUR_GREY, WID_S_MIDDLE), SetMinimalSize(40, 12), SetToolTip(STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS), SetResize(1, 0),
-		NWidget(WWT_PUSHBTN, COLOUR_GREY, WID_S_RIGHT), SetMinimalSize(140, 12),
+		NWidget(WWT_PANEL, Colours::Grey, WID_S_LEFT), SetMinimalSize(140, 12), EndContainer(),
+		NWidget(WWT_PUSHBTN, Colours::Grey, WID_S_MIDDLE), SetMinimalSize(40, 12), SetToolTip(STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS), SetResize(1, 0),
+		NWidget(WWT_PUSHBTN, Colours::Grey, WID_S_RIGHT), SetMinimalSize(140, 12),
 	EndContainer(),
 };
 
+/** Window definition for the main status bar. */
 static WindowDesc _main_status_desc(
-	WDP_MANUAL, {}, 0, 0,
+	WindowPosition::Manual, {}, 0, 0,
 	WC_STATUS_BAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_main_status_widgets

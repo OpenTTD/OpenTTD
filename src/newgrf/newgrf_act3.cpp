@@ -11,6 +11,7 @@
 
 #include "../debug.h"
 #include "../house.h"
+#include "../newgrf.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
@@ -36,7 +37,7 @@
 static CargoType TranslateCargo(GrfSpecFeature feature, uint8_t ctype)
 {
 	/* Special cargo types for purchase list and stations */
-	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return CargoGRFFileProps::SG_DEFAULT_NA;
+	if ((feature == GrfSpecFeature::Stations || feature == GrfSpecFeature::RoadStops) && ctype == 0xFE) return CargoGRFFileProps::SG_DEFAULT_NA;
 	if (ctype == 0xFF) return CargoGRFFileProps::SG_PURCHASE;
 
 	auto cargo_list = GetCargoTranslationTable(*_cur_gps.grffile);
@@ -99,12 +100,12 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 	std::vector<EngineID> engines;
 	engines.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		Engine *e = GetNewEngine(_cur_gps.grffile, (VehicleType)feature, buf.ReadExtendedByte());
+		Engine *e = GetNewEngine(_cur_gps.grffile, GetVehicleType(feature), buf.ReadExtendedByte());
 		if (e == nullptr) {
 			/* No engine could be allocated?!? Deal with it. Okay,
 			 * this might look bad. Also make sure this NewGRF
 			 * gets disabled, as a half loaded one is bad. */
-			HandleChangeInfoResult("VehicleMapSpriteGroup", CIR_INVALID_ID, feature, 0);
+			HandleChangeInfoResult("VehicleMapSpriteGroup", ChangeInfoResult::InvalidId, feature, 0);
 			return;
 		}
 
@@ -213,7 +214,7 @@ template <typename T, typename Tclass>
 struct CargoTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
 	{
-		CargoType cargo_type = TranslateCargo(GSF_STATIONS, cid);
+		CargoType cargo_type = TranslateCargo(GrfSpecFeature::Stations, cid);
 		if (!IsValidCargoType(cargo_type)) return;
 
 		if (T *spec = GetSpec<T>(_cur_gps.grffile, local_id); spec == nullptr) {
@@ -285,7 +286,8 @@ struct ObjectMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<Object
 struct RailTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
 	{
-		if (cid >= RTSG_END) return;
+		RailSpriteType rst{cid};
+		if (rst >= RailSpriteType::End) return;
 
 		const auto &type_map = _cur_gps.grffile->railtype_map;
 		RailType railtype = local_id < std::size(type_map) ? type_map[local_id] : INVALID_RAILTYPE;
@@ -293,8 +295,8 @@ struct RailTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 
 		extern RailTypeInfo _railtypes[RAILTYPE_END];
 		RailTypeInfo &rti = _railtypes[railtype];
-		rti.grffile[cid] = _cur_gps.grffile;
-		rti.group[cid] = group;
+		rti.grffile[rst] = _cur_gps.grffile;
+		rti.group[rst] = group;
 	}
 
 	void MapDefault(uint16_t, const SpriteGroup *) override {}
@@ -304,16 +306,17 @@ template <RoadTramType TRoadTramType>
 struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
 	{
-		if (cid >= ROTSG_END) return;
+		RoadSpriteType rst{cid};
+		if (rst >= RoadSpriteType::End) return;
 
-		const auto &type_map = (TRoadTramType == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
+		const auto &type_map = (TRoadTramType == RoadTramType::Tram) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 		RoadType roadtype = local_id < std::size(type_map) ? type_map[local_id] : INVALID_ROADTYPE;
 		if (roadtype == INVALID_ROADTYPE) return;
 
 		extern RoadTypeInfo _roadtypes[ROADTYPE_END];
 		RoadTypeInfo &rti = _roadtypes[roadtype];
-		rti.grffile[cid] = _cur_gps.grffile;
-		rti.group[cid] = group;
+		rti.grffile[rst] = _cur_gps.grffile;
+		rti.group[rst] = group;
 	}
 
 	void MapDefault(uint16_t, const SpriteGroup *) override {}
@@ -331,7 +334,7 @@ struct RoadStopMapSpriteGroupHandler : CargoTypeMapSpriteGroupHandler<RoadStopSp
 struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
 	{
-		if (cid >= GSF_END) return;
+		if (cid >= to_underlying(GrfSpecFeature::End)) return;
 
 		auto found = _cur_gps.grffile->badge_map.find(local_id);
 		if (found == std::end(_cur_gps.grffile->badge_map)) {
@@ -349,7 +352,7 @@ struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
 			GrfMsg(1, "BadgeMapSpriteGroup: Badge {} undefined, skipping", local_id);
 		} else {
 			auto &badge = *GetBadge(found->second);
-			badge.grf_prop.SetSpriteGroup(GSF_DEFAULT, group);
+			badge.grf_prop.SetSpriteGroup(GrfSpecFeature::Default, group);
 			badge.grf_prop.SetGRFFile(_cur_gps.grffile);
 			badge.grf_prop.local_id = local_id;
 		}
@@ -404,7 +407,7 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 	GrfSpecFeature feature{buf.ReadByte()};
 	uint8_t idcount = buf.ReadByte();
 
-	if (feature >= GSF_END) {
+	if (feature >= GrfSpecFeature::End) {
 		GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
@@ -428,24 +431,24 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 	GrfMsg(6, "FeatureMapSpriteGroup: Feature 0x{:02X}, {} ids", feature, idcount);
 
 	switch (feature) {
-		case GSF_TRAINS:
-		case GSF_ROADVEHICLES:
-		case GSF_SHIPS:
-		case GSF_AIRCRAFT: VehicleMapSpriteGroup(buf, feature, idcount); return;
-		case GSF_CANALS: MapSpriteGroup(buf, idcount, CanalMapSpriteGroupHandler{}); return;
-		case GSF_STATIONS: MapSpriteGroup(buf, idcount, StationMapSpriteGroupHandler{}); return;
-		case GSF_HOUSES: MapSpriteGroup(buf, idcount, TownHouseMapSpriteGroupHandler{}); return;
-		case GSF_INDUSTRIES: MapSpriteGroup(buf, idcount, IndustryMapSpriteGroupHandler{}); return;
-		case GSF_INDUSTRYTILES: MapSpriteGroup(buf, idcount, IndustryTileMapSpriteGroupHandler{}); return;
-		case GSF_CARGOES: MapSpriteGroup(buf, idcount, CargoMapSpriteGroupHandler{}); return;
-		case GSF_AIRPORTS: MapSpriteGroup(buf, idcount, AirportMapSpriteGroupHandler{}); return;
-		case GSF_OBJECTS: MapSpriteGroup(buf, idcount, ObjectMapSpriteGroupHandler{}); return;
-		case GSF_RAILTYPES: MapSpriteGroup(buf, idcount, RailTypeMapSpriteGroupHandler{}); return;
-		case GSF_ROADTYPES: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RTT_ROAD>{}); return;
-		case GSF_TRAMTYPES: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RTT_TRAM>{}); return;
-		case GSF_AIRPORTTILES: MapSpriteGroup(buf, idcount, AirportTileMapSpriteGroupHandler{}); return;
-		case GSF_ROADSTOPS: MapSpriteGroup(buf, idcount, RoadStopMapSpriteGroupHandler{}); return;
-		case GSF_BADGES: MapSpriteGroup(buf, idcount, BadgeMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Trains:
+		case GrfSpecFeature::RoadVehicles:
+		case GrfSpecFeature::Ships:
+		case GrfSpecFeature::Aircraft: VehicleMapSpriteGroup(buf, feature, idcount); return;
+		case GrfSpecFeature::Canals: MapSpriteGroup(buf, idcount, CanalMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Stations: MapSpriteGroup(buf, idcount, StationMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Houses: MapSpriteGroup(buf, idcount, TownHouseMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Industries: MapSpriteGroup(buf, idcount, IndustryMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::IndustryTiles: MapSpriteGroup(buf, idcount, IndustryTileMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Cargoes: MapSpriteGroup(buf, idcount, CargoMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Airports: MapSpriteGroup(buf, idcount, AirportMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Objects: MapSpriteGroup(buf, idcount, ObjectMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::RailTypes: MapSpriteGroup(buf, idcount, RailTypeMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::RoadTypes: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RoadTramType::Road>{}); return;
+		case GrfSpecFeature::TramTypes: MapSpriteGroup(buf, idcount, RoadTypeMapSpriteGroupHandler<RoadTramType::Tram>{}); return;
+		case GrfSpecFeature::AirportTiles: MapSpriteGroup(buf, idcount, AirportTileMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::RoadStops: MapSpriteGroup(buf, idcount, RoadStopMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Badges: MapSpriteGroup(buf, idcount, BadgeMapSpriteGroupHandler{}); return;
 
 		default:
 			GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);

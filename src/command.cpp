@@ -84,7 +84,7 @@ inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::
 
 template <typename T, T... i>
 inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
-	return EnumClassIndexContainer<std::array<CommandInfo, sizeof...(i)>, Commands>{{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }}};
+	return EnumIndexArray<CommandInfo, Commands, static_cast<Commands>(sizeof...(i))>{{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }}};
 }
 
 /**

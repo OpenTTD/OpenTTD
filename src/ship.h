@@ -29,7 +29,7 @@ using ShipPathCache = std::vector<ShipPathElement>;
 /**
  * All ships have this type.
  */
-struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
+struct Ship final : public SpecializedVehicle<Ship, VehicleType::Ship> {
 	ShipPathCache path{}; ///< Cached path.
 	TrackBits state{}; ///< The "track" the ship is following.
 	Direction rotation = INVALID_DIR; ///< Visible direction.
@@ -42,7 +42,7 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_SHIP_REVENUE : EXPENSES_SHIP_RUN; }
+	ExpensesType GetExpenseType(bool income) const override { return income ? ExpensesType::ShipRevenue : ExpensesType::ShipRun; }
 	void PlayLeaveStationSound(bool force = false) const override;
 	bool IsPrimaryVehicle() const override { return true; }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;

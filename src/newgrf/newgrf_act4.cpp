@@ -49,7 +49,7 @@ static void FeatureNewName(ByteReader &buf)
 	bool new_scheme = _cur_gps.grffile->grf_version >= 7;
 
 	GrfSpecFeature feature{buf.ReadByte()};
-	if (feature >= GSF_END && feature != GSF_ORIGINAL_STRINGS) {
+	if (feature >= GrfSpecFeature::End && feature != GrfSpecFeature::OriginalStrings) {
 		GrfMsg(1, "FeatureNewName: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
@@ -60,7 +60,7 @@ static void FeatureNewName(ByteReader &buf)
 	uint16_t id;
 	if (generic) {
 		id = buf.ReadWord();
-	} else if (feature <= GSF_AIRCRAFT || feature == GSF_BADGES) {
+	} else if (feature <= GrfSpecFeature::Aircraft || feature == GrfSpecFeature::Badges) {
 		id = buf.ReadExtendedByte();
 	} else {
 		id = buf.ReadByte();
@@ -74,19 +74,19 @@ static void FeatureNewName(ByteReader &buf)
 	               id, endid, feature, lang);
 
 	/* Feature overlay to make non-generic strings unique in their feature. We use feature + 1 so that generic strings stay as they are. */
-	uint32_t feature_overlay = generic ? 0 : ((feature + 1) << 16);
+	uint32_t feature_overlay = generic ? 0 : ((to_underlying(feature) + 1) << 16);
 
 	for (; id < endid && buf.HasData(); id++) {
 		std::string_view name = buf.ReadString();
 		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, StrMakeValid(name));
 
 		switch (feature) {
-			case GSF_TRAINS:
-			case GSF_ROADVEHICLES:
-			case GSF_SHIPS:
-			case GSF_AIRCRAFT:
+			case GrfSpecFeature::Trains:
+			case GrfSpecFeature::RoadVehicles:
+			case GrfSpecFeature::Ships:
+			case GrfSpecFeature::Aircraft:
 				if (!generic) {
-					Engine *e = GetNewEngine(_cur_gps.grffile, (VehicleType)feature, id, _cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static));
+					Engine *e = GetNewEngine(_cur_gps.grffile, GetVehicleType(feature), id, _cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static));
 					if (e == nullptr) break;
 					StringID string = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{feature_overlay | e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;
@@ -95,7 +95,7 @@ static void FeatureNewName(ByteReader &buf)
 				}
 				break;
 
-			case GSF_BADGES: {
+			case GrfSpecFeature::Badges: {
 				if (!generic) {
 					auto found = _cur_gps.grffile->badge_map.find(id);
 					if (found == std::end(_cur_gps.grffile->badge_map)) {

@@ -176,7 +176,7 @@
 	EnforcePrecondition(false, goal_industry   == ScriptIndustryType::INDUSTRYTYPE_UNKNOWN || goal_industry   == ScriptIndustryType::INDUSTRYTYPE_TOWN || ScriptIndustryType::IsValidIndustryType(goal_industry));
 
 	auto res = GetAiPurchaseCallbackResult(
-		GSF_STATIONS,
+		GrfSpecFeature::Stations,
 		cargo_type,
 		0,
 		source_industry,

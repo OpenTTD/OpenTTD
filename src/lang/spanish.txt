@@ -1352,8 +1352,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Altos
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si se activa, ocurrirán recesiones periódicamente. Durante una recesión, toda la producción es significativamente menor (volverá a su nivel anterior cuando acabe la recesión)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prohibir cambio de dirección de trenes en estaciones: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, los trenes no se darán la vuelta en estaciones no finales, ni siquiera existiendo un camino más corto a su próximo destino aunque dieran la vuelta
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructuras
@@ -1557,6 +1557,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Escala la produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar producción de carga industrial al: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la producción de carga de las industrias a este porcentaje
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovación automática de vehículos cuando se vuelven viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Si se activa, los vehículos próximos al final de su vida útil serán reemplazados automáticamente, siempre y cuando se cumplan las condiciones de renovación
@@ -1905,6 +1907,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Si se activa, l
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad en vagones: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si se activa, se tienen en cuenta los límites de velocidad de los vagones a la hora de establecer la velocidad máxima de un tren
 
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferrocarril eléctricos: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Si se activa, no es necesario electrificar los ferrocarriles para hacer que los trenes eléctricos puedan recorrerlos
 
@@ -2228,7 +2231,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorando conjunto de sonidos base '{STRING}': no encontrado
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorando conjunto de música base '{STRING}': no encontrado
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error en los ajustes de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no se ha encontrado ninguna GPU compatible. La aceleración por hardware se ha desactivado
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :El controlador de GPU ha hecho fallar el juego. Se ha deshabilitado la aceleración por hardware
@@ -3421,7 +3424,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ríos:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Uniformidad:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedad:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generar
-STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}¡Crear el mundo y juegar a OpenTTD!
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}¡Crear el mundo y jugar a OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Configuración de NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Abrir la configuración de NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Configuración de IA
@@ -4727,7 +4730,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Seleccio
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos del vehículo en los que se basará para realizar el salto de orden
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentaje de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidad
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidad Máxima

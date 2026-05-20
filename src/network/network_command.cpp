@@ -167,7 +167,7 @@ constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) no
 template <typename T, T... i, size_t... j>
 inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::index_sequence<j...>) noexcept
 {
-	return EnumClassIndexContainer<std::array<CommandDispatch, sizeof...(i)>, Commands>{{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }}};
+	return EnumIndexArray<CommandDispatch, Commands, static_cast<Commands>(sizeof...(i))>{{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }}};
 }
 /** Command dispatch table. */
 static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{}, std::make_index_sequence<_callback_tuple_size>{});

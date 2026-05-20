@@ -55,6 +55,8 @@ void SaveViewportBeforeSaveGame()
 
 void ResetViewportAfterLoadGame()
 {
+	if (_saved_scrollpos_x == INT_MAX && _saved_scrollpos_y == INT_MAX) return;
+
 	Window *w = GetMainWindow();
 
 	w->viewport->scrollpos_x = _saved_scrollpos_x;

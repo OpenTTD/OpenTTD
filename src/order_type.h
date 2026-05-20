@@ -134,6 +134,7 @@ enum class OrderConditionVariable : uint8_t {
 	Unconditionally = 5, ///< Always skip
 	RemainingLifetime = 6, ///< Skip based on the remaining lifetime
 	MaxReliability = 7, ///< Skip based on the maximum reliability
+	DrivingBackwards = 8, ///< Skip when the train is driving backwards
 	End, ///< End marker.
 };
 

@@ -11,6 +11,7 @@
 #define OBJECT_BASE_H
 
 #include "core/pool_type.hpp"
+#include "gfx_type.h"
 #include "object_type.h"
 #include "tilearea_type.h"
 #include "town_type.h"
@@ -25,7 +26,7 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	Town *town = nullptr; ///< Town the object is built in
 	TileArea location{INVALID_TILE, 0, 0}; ///< Location of the object
 	TimerGameCalendar::Date build_date{}; ///< Date of construction
-	uint8_t colour = 0; ///< Colour of the object, for display purpose
+	uint8_t recolour_offset = 0; ///< Recolour offset of the object (basically the 2CC colour offset), for display purpose.
 	uint8_t view = 0; ///< The view setting for this object
 
 	Object(ObjectID index) : ObjectPool::PoolItem<&_object_pool>(index) {}

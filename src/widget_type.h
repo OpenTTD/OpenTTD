@@ -195,7 +195,7 @@ public:
 	 * Get the colour of the highlighted text.
 	 * @return The highlight colour.
 	 */
-	virtual TextColour GetHighlightColour() const { return TC_INVALID; }
+	virtual TextColour GetHighlightColour() const { return TextColour::Invalid; }
 
 	/**
 	 * Highlight the widget or not.
@@ -383,7 +383,7 @@ struct WidgetData {
 	SpriteID sprite{};
 	ArrowWidgetType arrow_widget_type{};
 	ResizeWidgetType resize_widget_type{};
-	Colours alternate_colour = INVALID_COLOUR;
+	Colours alternate_colour = Colours::Invalid;
 	Dimension matrix{};
 };
 
@@ -430,7 +430,7 @@ protected:
 	WidgetID scrollbar_index = INVALID_WIDGET; ///< Index of an attached scrollbar.
 	TextColour highlight_colour{}; ///< Colour of highlight.
 	TextColour text_colour{}; ///< Colour of text within widget.
-	FontSize text_size = FS_NORMAL; ///< Size of text within widget.
+	FontSize text_size = FontSize::Normal; ///< Size of text within widget.
 	StringAlignment align = SA_CENTER; ///< Alignment of text/image within widget.
 
 	/* This function constructs the widgets, so it should be able to write the variables. */
@@ -439,7 +439,7 @@ protected:
 
 inline void NWidgetCore::SetHighlighted(TextColour highlight_colour)
 {
-	highlight_colour != TC_INVALID ? this->disp_flags.Set(NWidgetDisplayFlag::Highlight) : this->disp_flags.Reset(NWidgetDisplayFlag::Highlight);
+	highlight_colour != TextColour::Invalid ? this->disp_flags.Set(NWidgetDisplayFlag::Highlight) : this->disp_flags.Reset(NWidgetDisplayFlag::Highlight);
 	this->highlight_colour = highlight_colour;
 }
 
@@ -1220,7 +1220,7 @@ constexpr NWidgetPart SetToolbarMinimalSize(int width)
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
+constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FontSize::Normal)
 {
 	return NWidgetPart{WPT_MINTEXTLINES, NWidgetPartTextLines{lines, spacing, size}};
 }
@@ -1232,7 +1232,7 @@ constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSi
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FS_NORMAL)
+constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FontSize::Normal)
 {
 	return NWidgetPart{WPT_TEXTSTYLE, NWidgetPartTextStyle{colour, size}};
 }
@@ -1453,7 +1453,7 @@ constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_
  */
 constexpr NWidgetPart SetScrollbar(WidgetID index)
 {
-	return NWidgetPart{WPT_SCROLLBAR, NWidgetPartWidget{INVALID_COLOUR, index}};
+	return NWidgetPart{WPT_SCROLLBAR, NWidgetPartWidget{Colours::Invalid, index}};
 }
 
 /**

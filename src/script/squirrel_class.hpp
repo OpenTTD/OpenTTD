@@ -123,6 +123,25 @@ public:
 	{
 		engine.AddClassEnd();
 	}
+
+	/**
+	 * Helper to start a scoped enumeration. Make sure to call #AddScopedEnumEnd when the enumeration is done.
+	 * @param engine The engine to add the enumeration to.
+	 * @param enum_name The name of the enumeration.
+	 */
+	void AddScopedEnumBegin(Squirrel &engine, std::string_view enum_name)
+	{
+		engine.AddScopedEnumBegin(enum_name);
+	}
+
+	/**
+	 * Helper to end a scoped enumeration.
+	 * @param engine The engine to end the enumeration in.
+	 */
+	void AddScopedEnumEnd(Squirrel &engine)
+	{
+		engine.AddScopedEnumEnd();
+	}
 };
 
 #endif /* SQUIRREL_CLASS_HPP */

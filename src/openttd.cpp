@@ -329,7 +329,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	SetupColoursAndInitialWindow();
 
 	/* Load the default opening screen savegame */
-	if (SaveOrLoad("opntitle.dat", SaveLoadOperation::Load, DetailedFileType::GameFile, Subdirectory::Baseset) != SL_OK) {
+	if (SaveOrLoad("opntitle.dat", SaveLoadOperation::Load, DetailedFileType::GameFile, Subdirectory::Baseset) != SaveLoadResult::Ok) {
 		GenerateWorld(GWM_EMPTY, 64, 64); // if failed loading, make empty world.
 		SetLocalCompany(COMPANY_SPECTATOR);
 	} else {
@@ -612,8 +612,8 @@ int openttd_main(std::span<std::string_view> arguments)
 			auto [_, title] = FiosGetSavegameListCallback(SaveLoadOperation::Load, mgo.opt, extension);
 
 			_load_check_data.Clear();
-			SaveOrLoadResult res = SaveOrLoad(mgo.opt, SaveLoadOperation::Check, DetailedFileType::GameFile, Subdirectory::Save, false);
-			if (res != SL_OK || _load_check_data.HasErrors()) {
+			SaveLoadResult res = SaveOrLoad(mgo.opt, SaveLoadOperation::Check, DetailedFileType::GameFile, Subdirectory::Save, false);
+			if (res != SaveLoadResult::Ok || _load_check_data.HasErrors()) {
 				fmt::print(stderr, "Failed to open savegame\n");
 				if (_load_check_data.HasErrors()) {
 					InitializeLanguagePacks(); // A language pack is needed for GetString()
@@ -740,7 +740,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	 *  - Use 8bpp blitter otherwise.
 	 */
 	if (!_blitter_autodetected ||
-			(_support8bpp != S8BPP_NONE && (BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP)) ||
+			(_support8bpp != Support8bpp::None && (BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP)) ||
 			BlitterFactory::SelectBlitter("32bpp-anim") == nullptr) {
 		if (BlitterFactory::SelectBlitter(blitter) == nullptr) {
 			blitter.empty() ?
@@ -871,14 +871,14 @@ static void MakeNewGameDone()
 	c->settings = _settings_client.company;
 
 	/* Overwrite colour from settings if needed
-	 * COLOUR_END corresponds to Random colour */
+	 * Colours::End corresponds to Random colour */
 
-	if (_settings_client.gui.starting_colour != COLOUR_END) {
-		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
+	if (_settings_client.gui.starting_colour != Colours::End) {
+		Command<Commands::SetCompanyColour>::Post(LiveryScheme::Default, true, _settings_client.gui.starting_colour);
 	}
 
-	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
-		Command<Commands::SetCompanyColour>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
+	if (_settings_client.gui.starting_colour_secondary != Colours::End && _loaded_newgrf_features.used_liveries.Test(LiveryScheme::Default)) {
+		Command<Commands::SetCompanyColour>::Post(LiveryScheme::Default, false, _settings_client.gui.starting_colour_secondary);
 	}
 
 	OnStartGame(false);
@@ -944,8 +944,8 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 
 	_game_mode = newgm;
 
-	SaveOrLoadResult result = (lf == nullptr) ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(std::move(lf));
-	if (result == SL_OK) return true;
+	SaveLoadResult result = (lf == nullptr) ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(std::move(lf));
+	if (result == SaveLoadResult::Ok) return true;
 
 	if (_network_dedicated && ogm == GM_MENU) {
 		/*
@@ -959,7 +959,7 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 		return false;
 	}
 
-	if (result != SL_REINIT) {
+	if (result != SaveLoadResult::ReInit) {
 		_game_mode = ogm;
 		return false;
 	}
@@ -1175,7 +1175,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_SAVE_GAME: // Save game.
 			/* Make network saved games on pause compatible to singleplayer mode */
-			if (SaveOrLoad(_file_to_saveload.name, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::None) != SL_OK) {
+			if (SaveOrLoad(_file_to_saveload.name, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::None) != SaveLoadResult::Ok) {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_ERROR);
 			} else {
 				CloseWindowById(WC_SAVELOAD, 0);
@@ -1252,7 +1252,7 @@ void StateGameLoop()
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
-		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
+		AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
 
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
@@ -1277,7 +1277,6 @@ void StateGameLoop()
 
 		CallWindowGameTickEvent();
 		NewsLoop();
-		cur_company.Restore();
 	}
 
 	assert(IsLocalCompany());
@@ -1386,7 +1385,7 @@ void GameLoop()
 		StateGameLoop();
 	}
 
-	if (_pause_mode.None() && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
+	if (_pause_mode.None() && _display_opt.Test(DisplayOption::FullAnimation)) DoPaletteAnimations();
 
 	SoundDriver::GetInstance()->MainLoop();
 	MusicLoop();

@@ -36,7 +36,7 @@ extern std::string _config_file;
 extern std::string _highscore_file;
 
 /** Subdirectory names. */
-static const EnumClassIndexContainer<std::array<std::string_view, to_underlying(Subdirectory::End)>, Subdirectory> _subdirs = {
+static const EnumIndexArray<std::string_view, Subdirectory, Subdirectory::End> _subdirs = {
 	"",
 	"save" PATHSEP,
 	"save" PATHSEP "autosave" PATHSEP,
@@ -62,12 +62,12 @@ static const EnumClassIndexContainer<std::array<std::string_view, to_underlying(
  * An empty string tells that there is no such path for the
  * current operating system.
  */
-EnumClassIndexContainer<std::array<std::string, to_underlying(Searchpath::End)>, Searchpath> _searchpaths;
+EnumIndexArray<std::string, Searchpath, Searchpath::End> _searchpaths;
 std::vector<Searchpath> _valid_searchpaths;
 /** List of tar files found in each subdirectory. */
-EnumClassIndexContainer<std::array<TarList, to_underlying(Subdirectory::End)>, Subdirectory> _tar_list;
+EnumIndexArray<TarList, Subdirectory, Subdirectory::End> _tar_list;
 /** List of files within tar files found in each subdirectory. */
-EnumClassIndexContainer<std::array<TarFileList, to_underlying(Subdirectory::End)>, Subdirectory> _tar_filelist;
+EnumIndexArray<TarFileList, Subdirectory, Subdirectory::End> _tar_filelist;
 
 /**
  * Checks whether the given search path is a valid search path
@@ -167,6 +167,9 @@ std::string FioGetDirectory(Searchpath sp, Subdirectory subdir)
 	assert(subdir < Subdirectory::End);
 	assert(sp < Searchpath::End);
 
+	/* For official TTD directory, don't include the subdirectory. */
+	if (sp == Searchpath::TransportTycoonDeluxeDir && subdir == Subdirectory::Baseset) return _searchpaths[sp];
+
 	return fmt::format("{}{}", _searchpaths[sp], _subdirs[subdir]);
 }
 
@@ -197,7 +200,7 @@ static std::optional<FileHandle> FioFOpenFileSp(std::string_view filename, std::
 	if (subdir == Subdirectory::None) {
 		buf = filename;
 	} else {
-		buf = fmt::format("{}{}{}", _searchpaths[sp], _subdirs[subdir], filename);
+		buf = fmt::format("{}{}", FioGetDirectory(sp, subdir), filename);
 	}
 
 	auto f = FileHandle::Open(buf, mode);
@@ -589,11 +592,11 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 }
 
 /**
- * Extract the tar with the given filename in the directory
- * where the tar resides.
+ * Extract the tar with the given filename in the directory where the tar resides.
+ * There must be a directory in the .tar file, but the names of directories in the .tar will be replaced with the \c tar_filename without `.tar` extension.
  * @param tar_filename the name of the tar to extract.
  * @param subdir The sub directory the tar is in.
- * @return false on failure.
+ * @return \c false on failure.
  */
 bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 {
@@ -601,30 +604,27 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 	/* We don't know the file. */
 	if (it == _tar_list[subdir].end()) return false;
 
-	const auto &dirname = it->second;
-
 	/* The file doesn't have a sub directory! */
-	if (dirname.empty()) {
+	if (it->second.empty()) {
 		Debug(misc, 3, "Extracting {} failed; archive rejected, the contents must be in a sub directory", tar_filename);
 		return false;
 	}
 
-	std::string filename = tar_filename;
-	auto p = filename.find_last_of(PATHSEPCHAR);
-	/* The file's path does not have a separator? */
+	auto p = tar_filename.rfind(".tar");
+	/* The file's path does not have a ".tar"? */
 	if (p == std::string::npos) return false;
 
-	filename.replace(p + 1, std::string::npos, dirname);
-	Debug(misc, 8, "Extracting {} to directory {}", tar_filename, filename);
-	FioCreateDirectory(filename);
+	const std::string dirname = tar_filename.substr(0, p);
+	Debug(misc, 8, "Extracting {} to directory {}", tar_filename, dirname);
+	FioCreateDirectory(dirname);
 
 	for (auto &it2 : _tar_filelist[subdir]) {
 		if (tar_filename != it2.second.tar_filename) continue;
 
 		/* it2.first is tarball + PATHSEPCHAR + name. */
 		std::string_view name = it2.first;
-		name.remove_prefix(name.find_first_of(PATHSEPCHAR) + 1);
-		filename.replace(p + 1, std::string::npos, name);
+		name.remove_prefix(name.find_last_of(PATHSEPCHAR) + 1);
+		std::string filename = fmt::format("{}{}{}", dirname, PATHSEP, name);
 
 		Debug(misc, 9, "  extracting {}", filename);
 
@@ -669,7 +669,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
  */
 extern void DetermineBasePaths(std::string_view exe);
 
-/** Mimicks the getcwd from POSIX for Windows. */
+/** Mimics the getcwd from POSIX for Windows. */
 char *getcwd(char *buf, size_t size);
 #else /* defined(_WIN32) */
 
@@ -874,6 +874,50 @@ extern void CocoaSetApplicationBundleDir();
 #else
 	_searchpaths[Searchpath::ApplicationBundleDir].clear();
 #endif
+
+	/* Look for Atari release of Transport Tycoon Deluxe for original data files */
+	std::string config_file_path;
+	const std::string atari_ini_filename = "Atari/Transport Tycoon Deluxe/installpath.ini";
+
+	_searchpaths[Searchpath::TransportTycoonDeluxeDir].clear();
+
+#ifdef WITH_COCOA
+extern std::string CocoaGetAppSupportDir();
+	config_file_path = CocoaGetAppSupportDir();
+
+	if (!config_file_path.empty()) {
+		AppendPathSeparator(config_file_path);
+		config_file_path += atari_ini_filename;
+	}
+#else
+	config_file_path = GetHomeDir();
+
+	if (!config_file_path.empty()) {
+		AppendPathSeparator(config_file_path);
+		config_file_path += ".local/share/";
+		config_file_path += atari_ini_filename;
+	}
+#endif
+
+	if (!config_file_path.empty()) {
+		size_t installpath_len;
+		std::unique_ptr<char[]> installpath = ReadFileToMem(config_file_path, installpath_len, MAX_PATH);
+
+		if (installpath != nullptr && installpath_len > 0) {
+			std::string ttd_path = installpath.get();
+			AppendPathSeparator(ttd_path);
+
+#ifdef WITH_COCOA
+			/* The path provided is to the TTD.app/Contents/MacOS folder */
+			ttd_path += "../Resources/";
+#endif
+
+			ttd_path += "CD";
+			AppendPathSeparator(ttd_path);
+
+			if (FileExists(ttd_path)) _searchpaths[Searchpath::TransportTycoonDeluxeDir] = ttd_path;
+		}
+	}
 }
 #endif /* defined(_WIN32) */
 

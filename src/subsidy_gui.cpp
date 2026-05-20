@@ -136,7 +136,7 @@ struct SubsidyListWindow : Window {
 		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
-		fill.height = resize.height = GetCharacterHeight(FS_NORMAL);
+		fill.height = resize.height = GetCharacterHeight(FontSize::Normal);
 
 		d.height *= 5;
 		d.width += WidgetDimensions::scaled.framerect.Horizontal();
@@ -149,7 +149,7 @@ struct SubsidyListWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 		SpriteID icon = CargoSpec::Get(cargo_type)->GetCargoIcon();
 		Dimension d = GetSpriteSize(icon);
-		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
+		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FontSize::Normal));
 		DrawSprite(icon, PAL_NONE, CentreBounds(ir.left, ir.right, d.width), CentreBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
 	}
 
@@ -166,7 +166,7 @@ struct SubsidyListWindow : Window {
 		const int cap = this->vscroll->GetCapacity();
 
 		/* Section for drawing the offered subsidies */
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_OFFERED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_OFFERED_TITLE);
 		pos++;
 
 		uint num = 0;
@@ -190,8 +190,8 @@ struct SubsidyListWindow : Window {
 							TimerGameEconomy::date.base() - ymd.day + s->remaining * 32);
 					}
 
-					DrawCargoIcon(tr, pos * GetCharacterHeight(FS_NORMAL), s->cargo_type);
-					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FS_NORMAL), text);
+					DrawCargoIcon(tr, pos * GetCharacterHeight(FontSize::Normal), s->cargo_type);
+					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FontSize::Normal), text);
 				}
 				pos++;
 				num++;
@@ -199,13 +199,13 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 
 		/* Section for drawing the already granted subsidies */
 		pos++;
-		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_SUBSIDISED_TITLE);
+		if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_SUBSIDISED_TITLE);
 		pos++;
 		num = 0;
 
@@ -231,8 +231,8 @@ struct SubsidyListWindow : Window {
 					}
 
 					/* Displays the two connected stations */
-					DrawCargoIcon(tr, pos * GetCharacterHeight(FS_NORMAL), s->cargo_type);
-					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FS_NORMAL), text);
+					DrawCargoIcon(tr, pos * GetCharacterHeight(FontSize::Normal), s->cargo_type);
+					DrawString(sr.left, sr.right, sr.top + pos * GetCharacterHeight(FontSize::Normal), text);
 				}
 				pos++;
 				num++;
@@ -240,7 +240,7 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FS_NORMAL), STR_SUBSIDIES_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(tr.left, tr.right, tr.top + pos * GetCharacterHeight(FontSize::Normal), STR_SUBSIDIES_NONE);
 			pos++;
 		}
 	}
@@ -264,23 +264,24 @@ struct SubsidyListWindow : Window {
 
 static constexpr std::initializer_list<NWidgetPart> _nested_subsidies_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_SUBSIDIES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_CAPTION, Colours::Brown), SetStringTip(STR_SUBSIDIES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::Brown),
+		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
+		NWidget(WWT_STICKYBOX, Colours::Brown),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_SUL_PANEL), SetToolTip(STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetScrollbar(WID_SUL_SCROLLBAR), EndContainer(),
+		NWidget(WWT_PANEL, Colours::Brown, WID_SUL_PANEL), SetToolTip(STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetScrollbar(WID_SUL_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_SUL_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+			NWidget(NWID_VSCROLLBAR, Colours::Brown, WID_SUL_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Brown),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the subsidies window. */
 static WindowDesc _subsidies_list_desc(
-	WDP_AUTO, "list_subsidies", 500, 127,
+	WindowPosition::Automatic, "list_subsidies", 500, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	{},
 	_nested_subsidies_list_widgets

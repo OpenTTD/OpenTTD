@@ -34,7 +34,7 @@ static const int SLIDER_WIDTH = 3;
 void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextColour text_colour, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func)
 {
 	/* Allow space for labels. We assume they are in the small font. */
-	if (mark_func != nullptr) r.bottom -= GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.hsep_normal;
+	if (mark_func != nullptr) r.bottom -= GetCharacterHeight(FontSize::Small) + WidgetDimensions::scaled.hsep_normal;
 
 	max_value -= min_value;
 
@@ -45,9 +45,9 @@ void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextC
 	int wx1 = r.left  + sw / 2;
 	int wx2 = r.right - sw / 2;
 	if (_current_text_dir == TD_RTL) std::swap(wx1, wx2);
-	const PixelColour shadow = GetColourGradient(wedge_colour, SHADE_DARK);
-	const PixelColour fill = GetColourGradient(wedge_colour, SHADE_LIGHTER);
-	const PixelColour light = GetColourGradient(wedge_colour, SHADE_LIGHTEST);
+	const PixelColour shadow = GetColourGradient(wedge_colour, Shade::Dark);
+	const PixelColour fill = GetColourGradient(wedge_colour, Shade::Lighter);
+	const PixelColour light = GetColourGradient(wedge_colour, Shade::Lightest);
 	const std::array<Point, 3> wedge{ Point{wx1, r.bottom - ha}, Point{wx2, r.top + ha}, Point{wx2, r.bottom - ha} };
 	GfxFillPolygon(wedge, fill);
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[2].x, wedge[2].y, light, t);
@@ -68,9 +68,9 @@ void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextC
 			GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (str->empty() ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
 			if (str->empty()) continue;
 
-			Dimension d = GetStringBoundingBox(*str, FS_SMALL);
+			Dimension d = GetStringBoundingBox(*str, FontSize::Small);
 			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
-			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, SA_CENTER, false, FS_SMALL);
+			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, SA_CENTER, false, FontSize::Small);
 		}
 	}
 

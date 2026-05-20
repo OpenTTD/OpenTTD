@@ -1353,8 +1353,13 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Altos
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativado, recessões podem ocorrer periodicamente. Durante uma recessão, toda a produção é significativamente menor (ela retorna ao nível anterior quando a recessão termina)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desativar a reversão de trens nas estações: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se ativado, os trens não podem inverter a direção em estações não-terminais, mesmo se existir um caminho mais curto para o próximo destino com a inversão
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Permitir que os trens invertam a direção: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Escolha onde os trens podem virar para inverter a direção. Com a opção “Todos”, os trens podem virar em qualquer lugar. Com a opção “Apenas no fim da linha”, os trens não invertem a direção nas estações se for possível seguir em frente. Com a opção “Nenhum”, os trens não poderão inverter e seguirão de ré se necessário, mas a velocidade será reduzida se não houver cabine de comando no vagão traseiro
+
+###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Todos
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Apenas no fim da linha
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Nenhum
 
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ativar desastres que podem, ocasionalmente, bloquear ou destruir veículos ou infraestrutura
@@ -1558,6 +1563,12 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Ajustar a produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escalar a produção de carga da indústria: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Ajustar a produção de carga das indústrias nesta porcentagem
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Taxa de depreciação para o pagamento de cargas: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Ajuste a rapidez com que o valor da carga transportada em um veículo diminui ao longo do tempo
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
+###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Sem depreciação
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automaticamente um veículo quando ele ficar velho: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, um veículo próximo do fim da vida útil é automaticamente substituído quando as condições de renovação são satisfeitas
@@ -1906,6 +1917,9 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quando ativado,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quando ativado, usa o limite de velocidade dos vagões para definir a velocidade máxima de um trem
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Ativar alcance máximo das aeronaves: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Quando ativado, NewGRFs poderão limitar o alcance máximo das aeronaves
+
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ativando esta configuração, não será necessário eletrificar os trilhos para que locomotivas elétricas possam utilizá-los
 
@@ -2229,7 +2243,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :ignorando conju
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignorando conjunto de Sons Básicos '{STRING}': não encontrado
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignorando conjunto de Músicas Básicas '{STRING}': não encontrado
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :Erro nas configurações de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :nenhuma GPU compatível encontrada. Aceleração por hardware desativada
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :O controlador gráfico interrompeu o jogo. Aceleração por hardware desativada
@@ -4731,7 +4745,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Escolher
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo para basear o salto de ordem
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentagem de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Confiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima
@@ -4740,6 +4754,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Precisa de manu
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida útil restante (anos)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Confiabilidade máxima
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Dirigindo em marcha à ré
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o valor que foi passado
@@ -5259,6 +5274,7 @@ STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Não é possív
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :a locomotiva traseira sempre seguirá a sua equivalente dianteira
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :não é possível encontrar uma rota para depósito local
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :não é possível encontrar depósito local
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :não é possível encontrar o hangar local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :tipo de depósito errado
 

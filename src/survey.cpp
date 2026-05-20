@@ -102,7 +102,7 @@ NLOHMANN_JSON_SERIALIZE_ENUM(SocialIntegrationPlugin::State, {
 #endif /* DOXYGEN_API */
 
 /** Lookup table to convert a VehicleType to a string. */
-static const std::string _vehicle_type_to_string[] = {
+static constexpr VehicleTypeIndexArray<std::string_view> _vehicle_type_to_string = {
 	"train",
 	"roadveh",
 	"ship",
@@ -303,10 +303,10 @@ void SurveyConfiguration(nlohmann::json &survey)
  */
 void SurveyFont(nlohmann::json &survey)
 {
-	survey["small"] = FontCache::Get(FS_SMALL)->GetFontName();
-	survey["medium"] = FontCache::Get(FS_NORMAL)->GetFontName();
-	survey["large"] = FontCache::Get(FS_LARGE)->GetFontName();
-	survey["mono"] = FontCache::Get(FS_MONO)->GetFontName();
+	survey["small"] = FontCache::Get(FontSize::Small)->GetFontName();
+	survey["medium"] = FontCache::Get(FontSize::Normal)->GetFontName();
+	survey["large"] = FontCache::Get(FontSize::Large)->GetFontName();
+	survey["mono"] = FontCache::Get(FontSize::Monospace)->GetFontName();
 }
 
 /**
@@ -325,7 +325,7 @@ void SurveyCompanies(nlohmann::json &survey)
 			company["script"] = fmt::format("{}.{}", c->ai_info->GetName(), c->ai_info->GetVersion());
 		}
 
-		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+		for (VehicleType type = VehicleType::Begin; type < VehicleType::CompanyEnd; type++) {
 			uint amount = c->group_all[type].num_vehicle;
 			company["vehicles"][_vehicle_type_to_string[type]] = amount;
 		}
