@@ -30,6 +30,7 @@
 #include "articulated_vehicles.h"
 #include "error.h"
 #include "engine_base.h"
+#include "road_gui.h"
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
@@ -872,7 +873,7 @@ static void EnableEngineForCompany(EngineID eid, CompanyID company)
 
 		/* Update the toolbar. */
 		InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
-		if (e->type == VehicleType::Road) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
+		if (e->type == VehicleType::Road) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD, GetCurrentRoadType());
 		if (e->type == VehicleType::Ship) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
 		if (e->type == VehicleType::Aircraft) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_AIR);
 	}
@@ -1155,7 +1156,7 @@ static void NewVehicleAvailable(Engine *e)
 	}
 
 	/* Update the toolbar. */
-	if (e->type == VehicleType::Road) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
+	if (e->type == VehicleType::Road) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD, GetCurrentRoadType());
 	if (e->type == VehicleType::Ship) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
 	if (e->type == VehicleType::Aircraft) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_AIR);
 

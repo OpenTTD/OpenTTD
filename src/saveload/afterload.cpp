@@ -53,6 +53,7 @@
 #include "../newgrf_station.h"
 #include "../engine_func.h"
 #include "../rail_gui.h"
+#include "../road_gui.h"
 #include "../core/backup_type.hpp"
 #include "../smallmap_gui.h"
 #include "../news_func.h"
@@ -3502,7 +3503,22 @@ void ReloadNewGRFData()
 	for (CompanyID i = CompanyID::Begin(); i < MAX_COMPANIES; ++i) InvalidateWindowData(WC_COMPANY_COLOUR, i);
 	/* Update company infrastructure counts. */
 	InvalidateWindowClassesData(WC_COMPANY_INFRASTRUCTURE);
-	InvalidateWindowClassesData(WC_BUILD_TOOLBAR);
+	for (Window *w : Window::Iterate()) {
+		if (w->window_class == WC_BUILD_TOOLBAR) {
+			switch (static_cast<int>(w->window_number)) {
+				case TRANSPORT_RAIL:
+					w->InvalidateData(GetCurrentRailType());
+					break;
+
+				case TRANSPORT_ROAD:
+					w->InvalidateData(GetCurrentRoadType());
+					break;
+
+				default:
+					w->InvalidateData();
+			}
+		}
+	}
 	InvalidateAllPickerWindows();
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
