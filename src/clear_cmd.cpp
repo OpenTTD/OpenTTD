@@ -26,7 +26,7 @@
 /** @copydoc ClearTileProc */
 static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 {
-	static constexpr Price clear_price_table[to_underlying(ClearGround::MaxSize)] = {
+	static constexpr EnumIndexArray<Price, ClearGround, ClearGround::MaxSize> clear_price_table{
 		Price::ClearGrass, // Base price for clearing grass.
 		Price::ClearRough, // Base price for clearing rough land.
 		Price::ClearRocks, // Base price for clearing rocks.
@@ -41,11 +41,11 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 	ClearGround ground = GetClearGround(tile);
 	uint8_t density = GetClearDensity(tile);
 	if (IsSnowTile(tile)) {
-		price.AddCost(_price[clear_price_table[to_underlying(ground)]]);
+		price.AddCost(_price[clear_price_table[ground]]);
 		/* Add a little more for removing snow. */
 		price.AddCost(std::abs(_price[Price::ClearRough] - _price[Price::ClearGrass]));
 	} else if (ground != ClearGround::Grass || density != 0) {
-		price.AddCost(_price[clear_price_table[to_underlying(ground)]]);
+		price.AddCost(_price[clear_price_table[ground]]);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
@@ -373,7 +373,7 @@ get_out:;
 static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
 {
 	/* Each pair holds a normal and a snowy ClearGround description. */
-	static constexpr std::pair<StringID, StringID> clear_land_str[to_underlying(ClearGround::MaxSize)] = {
+	static constexpr EnumIndexArray<std::pair<StringID, StringID>, ClearGround, ClearGround::MaxSize> clear_land_str{{{
 		{STR_LAI_CLEAR_DESCRIPTION_GRASS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS}, // Description for grass.
 		{STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND}, // Description for rough land.
 		{STR_LAI_CLEAR_DESCRIPTION_ROCKS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS}, // Description for rocks.
@@ -382,12 +382,12 @@ static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
 		{STR_LAI_CLEAR_DESCRIPTION_DESERT,     STR_EMPTY}, // Description for desert.
 		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
 		{STR_EMPTY,                            STR_EMPTY}, // unused entry does not appear in the map.
-	};
+	}}};
 
 	if (!IsSnowTile(tile) && IsClearGround(tile, ClearGround::Grass) && GetClearDensity(tile) == 0) {
 		td.str = STR_LAI_CLEAR_DESCRIPTION_BARE_LAND;
 	} else {
-		const auto &[name, snowy_name] = clear_land_str[to_underlying(GetClearGround(tile))];
+		const auto &[name, snowy_name] = clear_land_str[GetClearGround(tile)];
 		td.str = IsSnowTile(tile) ? snowy_name : name;
 	}
 	td.owner[0] = GetTileOwner(tile);
