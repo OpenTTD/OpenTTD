@@ -1556,17 +1556,17 @@ void ViewportSign::UpdatePosition(int center, int top, std::string_view str, std
  */
 void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 {
-	Rect zoomlevels[to_underlying(ZoomLevel::End)];
+	EnumIndexArray<Rect, ZoomLevel, ZoomLevel::End> zoomlevels;
 
 	/* We don't know which size will be drawn, so mark the largest area dirty. */
 	const uint half_width = std::max(this->width_normal, this->width_small) / 2 + 1;
 	const uint height = WidgetDimensions::scaled.fullbevel.top + std::max(GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Small)) + WidgetDimensions::scaled.fullbevel.bottom + 1;
 
 	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
-		zoomlevels[to_underlying(zoom)].left = this->center - ScaleByZoom(half_width, zoom);
-		zoomlevels[to_underlying(zoom)].top = this->top - ScaleByZoom(1, zoom);
-		zoomlevels[to_underlying(zoom)].right = this->center + ScaleByZoom(half_width, zoom);
-		zoomlevels[to_underlying(zoom)].bottom = this->top + ScaleByZoom(height, zoom);
+		zoomlevels[zoom].left = this->center - ScaleByZoom(half_width, zoom);
+		zoomlevels[zoom].top = this->top - ScaleByZoom(1, zoom);
+		zoomlevels[zoom].right = this->center + ScaleByZoom(half_width, zoom);
+		zoomlevels[zoom].bottom = this->top + ScaleByZoom(height, zoom);
 	}
 
 	for (const Window *w : Window::Iterate()) {
@@ -1575,7 +1575,7 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 		Viewport &vp = *w->viewport;
 		if (vp.zoom <= maxzoom) {
 			assert(vp.width != 0);
-			Rect &zl = zoomlevels[to_underlying(vp.zoom)];
+			Rect &zl = zoomlevels[vp.zoom];
 			MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
 		}
 	}
