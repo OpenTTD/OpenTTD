@@ -437,7 +437,7 @@ static inline uint64_t SlReadUint64()
 {
 	uint32_t x = SlReadUint32();
 	uint32_t y = SlReadUint32();
-	return (uint64_t)x << 32 | y;
+	return static_cast<uint64_t>(x) << 32 | y;
 }
 
 static inline void SlWriteUint16(uint16_t v)
@@ -454,8 +454,8 @@ static inline void SlWriteUint32(uint32_t v)
 
 static inline void SlWriteUint64(uint64_t x)
 {
-	SlWriteUint32((uint32_t)(x >> 32));
-	SlWriteUint32((uint32_t)x);
+	SlWriteUint32(static_cast<uint32_t>(x >> 32));
+	SlWriteUint32(static_cast<uint32_t>(x));
 }
 
 /**
@@ -516,21 +516,21 @@ static void SlWriteSimpleGamma(size_t i)
 			if (i >= (1 << 21)) {
 				if (i >= (1 << 28)) {
 					assert(i <= UINT32_MAX); // We can only support 32 bits for now.
-					SlWriteByte((uint8_t)(0xF0));
-					SlWriteByte((uint8_t)(i >> 24));
+					SlWriteByte(static_cast<uint8_t>(0xF0));
+					SlWriteByte(static_cast<uint8_t>(i >> 24));
 				} else {
-					SlWriteByte((uint8_t)(0xE0 | (i >> 24)));
+					SlWriteByte(static_cast<uint8_t>(0xE0 | (i >> 24)));
 				}
-				SlWriteByte((uint8_t)(i >> 16));
+				SlWriteByte(static_cast<uint8_t>(i >> 16));
 			} else {
-				SlWriteByte((uint8_t)(0xC0 | (i >> 16)));
+				SlWriteByte(static_cast<uint8_t>(0xC0 | (i >> 16)));
 			}
-			SlWriteByte((uint8_t)(i >> 8));
+			SlWriteByte(static_cast<uint8_t>(i >> 8));
 		} else {
-			SlWriteByte((uint8_t)(0x80 | (i >> 8)));
+			SlWriteByte(static_cast<uint8_t>(0x80 | (i >> 8)));
 		}
 	}
-	SlWriteByte((uint8_t)i);
+	SlWriteByte(static_cast<uint8_t>(i));
 }
 
 /**
@@ -709,7 +709,7 @@ int SlIterateArray()
 		int index;
 		switch (_sl.block_mode) {
 			case CH_SPARSE_TABLE:
-			case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
+			case CH_SPARSE_ARRAY: index = static_cast<int>(SlReadSparseIndex()); break;
 			case CH_TABLE:
 			case CH_ARRAY:        index = _sl.array_index++; break;
 			default:
@@ -775,7 +775,7 @@ void SlSetLength(size_t length)
 			break;
 
 		case NL_CALCLENGTH:
-			_sl.obj_len += (int)length;
+			_sl.obj_len += static_cast<int>(length);
 			break;
 
 		default: NOT_REACHED();
@@ -790,7 +790,7 @@ void SlSetLength(size_t length)
  */
 static void SlCopyBytes(void *ptr, size_t length)
 {
-	uint8_t *p = (uint8_t *)ptr;
+	uint8_t *p = static_cast<uint8_t *>(ptr);
 
 	switch (_sl.action) {
 		case SLA_LOAD_CHECK:
@@ -823,16 +823,16 @@ size_t SlGetFieldLength()
 int64_t ReadValue(const void *ptr, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL:  return (*(const bool *)ptr != 0);
-		case SLE_VAR_I8:  return *(const int8_t  *)ptr;
-		case SLE_VAR_U8:  return *(const uint8_t  *)ptr;
-		case SLE_VAR_I16: return *(const int16_t *)ptr;
-		case SLE_VAR_U16: return *(const uint16_t*)ptr;
-		case SLE_VAR_I32: return *(const int32_t *)ptr;
-		case SLE_VAR_U32: return *(const uint32_t*)ptr;
-		case SLE_VAR_I64: return *(const int64_t *)ptr;
-		case SLE_VAR_U64: return *(const uint64_t*)ptr;
-		case SLE_VAR_NULL:return 0;
+		case SLE_VAR_BL: return (*static_cast<const bool *>(ptr) != 0);
+		case SLE_VAR_I8: return *static_cast<const int8_t *>(ptr);
+		case SLE_VAR_U8: return *static_cast<const uint8_t *>(ptr);
+		case SLE_VAR_I16: return *static_cast<const int16_t *>(ptr);
+		case SLE_VAR_U16: return *static_cast<const uint16_t *>(ptr);
+		case SLE_VAR_I32: return *static_cast<const int32_t *>(ptr);
+		case SLE_VAR_U32: return *static_cast<const uint32_t *>(ptr);
+		case SLE_VAR_I64: return *static_cast<const int64_t *>(ptr);
+		case SLE_VAR_U64: return *static_cast<const uint64_t *>(ptr);
+		case SLE_VAR_NULL: return 0;
 		default: NOT_REACHED();
 	}
 }
@@ -847,15 +847,15 @@ int64_t ReadValue(const void *ptr, VarType conv)
 void WriteValue(void *ptr, VarType conv, int64_t val)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL:  *(bool  *)ptr = (val != 0);  break;
-		case SLE_VAR_I8:  *(int8_t  *)ptr = val; break;
-		case SLE_VAR_U8:  *(uint8_t  *)ptr = val; break;
-		case SLE_VAR_I16: *(int16_t *)ptr = val; break;
-		case SLE_VAR_U16: *(uint16_t*)ptr = val; break;
-		case SLE_VAR_I32: *(int32_t *)ptr = val; break;
-		case SLE_VAR_U32: *(uint32_t*)ptr = val; break;
-		case SLE_VAR_I64: *(int64_t *)ptr = val; break;
-		case SLE_VAR_U64: *(uint64_t*)ptr = val; break;
+		case SLE_VAR_BL: *static_cast<bool *>(ptr) = (val != 0); break;
+		case SLE_VAR_I8: *static_cast<int8_t *>(ptr) = val; break;
+		case SLE_VAR_U8: *static_cast<uint8_t *>(ptr) = val; break;
+		case SLE_VAR_I16: *static_cast<int16_t *>(ptr) = val; break;
+		case SLE_VAR_U16: *static_cast<uint16_t *>(ptr) = val; break;
+		case SLE_VAR_I32: *static_cast<int32_t *>(ptr) = val; break;
+		case SLE_VAR_U32: *static_cast<uint32_t *>(ptr) = val; break;
+		case SLE_VAR_I64: *static_cast<int64_t *>(ptr) = val; break;
+		case SLE_VAR_U64: *static_cast<uint64_t *>(ptr) = val; break;
 		case SLE_VAR_NAME: *reinterpret_cast<std::string *>(ptr) = CopyFromOldName(val); break;
 		case SLE_VAR_NULL: break;
 		default: NOT_REACHED();
@@ -878,15 +878,37 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 
 			/* Write the value to the file and check if its value is in the desired range */
 			switch (GetVarFileType(conv)) {
-				case SLE_FILE_I8: assert(x >= -128 && x <= 127);     SlWriteByte(x);break;
-				case SLE_FILE_U8: assert(x >= 0 && x <= 255);        SlWriteByte(x);break;
-				case SLE_FILE_I16:assert(x >= -32768 && x <= 32767); SlWriteUint16(x);break;
+				case SLE_FILE_I8:
+					assert(x >= -128 && x <= 127);
+					SlWriteByte(x);
+					break;
+
+				case SLE_FILE_U8:
+					assert(x >= 0 && x <= 255);
+					SlWriteByte(x);
+					break;
+
+				case SLE_FILE_I16:
+					assert(x >= -32768 && x <= 32767);
+					SlWriteUint16(x);
+					break;
+
 				case SLE_FILE_STRINGID:
-				case SLE_FILE_U16:assert(x >= 0 && x <= 65535);      SlWriteUint16(x);break;
+				case SLE_FILE_U16:
+					assert(x >= 0 && x <= 65535);
+					SlWriteUint16(x);
+					break;
+
 				case SLE_FILE_I32:
-				case SLE_FILE_U32:                                   SlWriteUint32((uint32_t)x);break;
+				case SLE_FILE_U32:
+					SlWriteUint32(static_cast<uint32_t>(x));
+					break;
+
 				case SLE_FILE_I64:
-				case SLE_FILE_U64:                                   SlWriteUint64(x);break;
+				case SLE_FILE_U64:
+					SlWriteUint64(x);
+					break;
+
 				default: NOT_REACHED();
 			}
 			break;
@@ -896,15 +918,15 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			int64_t x;
 			/* Read a value from the file */
 			switch (GetVarFileType(conv)) {
-				case SLE_FILE_I8:  x = (int8_t  )SlReadByte();   break;
-				case SLE_FILE_U8:  x = (uint8_t  )SlReadByte();   break;
-				case SLE_FILE_I16: x = (int16_t )SlReadUint16(); break;
-				case SLE_FILE_U16: x = (uint16_t)SlReadUint16(); break;
-				case SLE_FILE_I32: x = (int32_t )SlReadUint32(); break;
-				case SLE_FILE_U32: x = (uint32_t)SlReadUint32(); break;
-				case SLE_FILE_I64: x = (int64_t )SlReadUint64(); break;
-				case SLE_FILE_U64: x = (uint64_t)SlReadUint64(); break;
-				case SLE_FILE_STRINGID: x = RemapOldStringID((uint16_t)SlReadUint16()); break;
+				case SLE_FILE_I8: x = static_cast<int8_t>(SlReadByte()); break;
+				case SLE_FILE_U8: x = static_cast<uint8_t>(SlReadByte()); break;
+				case SLE_FILE_I16: x = static_cast<int16_t>(SlReadUint16()); break;
+				case SLE_FILE_U16: x = static_cast<uint16_t>(SlReadUint16()); break;
+				case SLE_FILE_I32: x = static_cast<int32_t>(SlReadUint32()); break;
+				case SLE_FILE_U32: x = static_cast<uint32_t>(SlReadUint32()); break;
+				case SLE_FILE_I64: x = static_cast<int64_t>(SlReadUint64()); break;
+				case SLE_FILE_U64: x = static_cast<uint64_t>(SlReadUint64()); break;
+				case SLE_FILE_STRINGID: x = RemapOldStringID(static_cast<uint16_t>(SlReadUint16())); break;
 				default: NOT_REACHED();
 			}
 
@@ -1130,7 +1152,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 		/* used for conversion of Money 32bit->64bit */
 		if (conv == (SLE_FILE_I32 | SLE_VAR_I64)) {
 			for (uint i = 0; i < length; i++) {
-				((int64_t*)object)[i] = (int32_t)std::byteswap(SlReadUint32());
+				static_cast<int64_t *>(object)[i] = std::byteswap(SlReadUint32());
 			}
 			return;
 		}
@@ -1141,7 +1163,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 	if (conv == SLE_INT8 || conv == SLE_UINT8) {
 		SlCopyBytes(object, length);
 	} else {
-		uint8_t *a = (uint8_t*)object;
+		uint8_t *a = static_cast<uint8_t *>(object);
 		uint8_t mem_size = SlCalcConvMemLen(conv);
 
 		for (; length != 0; length --) {
@@ -1236,7 +1258,7 @@ static void SlArray(void *array, size_t length, VarType conv)
  * @param rt SLRefType type of the object the index is being sought of
  * @return Return the pointer converted to an index of the type pointed to
  */
-static size_t ReferenceToInt(const void *obj, SLRefType rt)
+static uint32_t ReferenceToInt(const void *obj, SLRefType rt)
 {
 	assert(_sl.action == SLA_SAVE);
 
@@ -1244,16 +1266,16 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 
 	switch (rt) {
 		case REF_VEHICLE_OLD: // Old vehicles we save as new ones
-		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
-		case REF_STATION:   return ((const  Station*)obj)->index + 1;
-		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
-		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
-		case REF_ENGINE_RENEWS:  return ((const       EngineRenew*)obj)->index + 1;
-		case REF_CARGO_PACKET:   return ((const       CargoPacket*)obj)->index + 1;
-		case REF_ORDERLIST:      return ((const         OrderList*)obj)->index + 1;
-		case REF_STORAGE:        return ((const PersistentStorage*)obj)->index + 1;
-		case REF_LINK_GRAPH:     return ((const         LinkGraph*)obj)->index + 1;
-		case REF_LINK_GRAPH_JOB: return ((const      LinkGraphJob*)obj)->index + 1;
+		case REF_VEHICLE: return static_cast<const Vehicle *>(obj)->index + 1;
+		case REF_STATION: return static_cast<const Station *>(obj)->index + 1;
+		case REF_TOWN: return static_cast<const Town *>(obj)->index + 1;
+		case REF_ROADSTOPS: return static_cast<const RoadStop *>(obj)->index + 1;
+		case REF_ENGINE_RENEWS: return static_cast<const EngineRenew *>(obj)->index + 1;
+		case REF_CARGO_PACKET: return static_cast<const CargoPacket *>(obj)->index + 1;
+		case REF_ORDERLIST: return static_cast<const OrderList *>(obj)->index + 1;
+		case REF_STORAGE: return static_cast<const PersistentStorage *>(obj)->index + 1;
+		case REF_LINK_GRAPH: return static_cast<const LinkGraph *>(obj)->index + 1;
+		case REF_LINK_GRAPH_JOB: return static_cast<const LinkGraphJob *>(obj)->index + 1;
 		default: NOT_REACHED();
 	}
 }
@@ -1342,17 +1364,17 @@ void SlSaveLoadRef(void *ptr, VarType conv)
 {
 	switch (_sl.action) {
 		case SLA_SAVE:
-			SlWriteUint32((uint32_t)ReferenceToInt(*(void **)ptr, (SLRefType)conv));
+			SlWriteUint32(ReferenceToInt(*static_cast<void **>(ptr), static_cast<SLRefType>(conv)));
 			break;
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD:
-			*(size_t *)ptr = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32();
+			*static_cast<size_t *>(ptr) = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32();
 			break;
 		case SLA_PTRS:
-			*(void **)ptr = IntToReference(*(size_t *)ptr, (SLRefType)conv);
+			*static_cast<void **>(ptr) = IntToReference(*static_cast<size_t *>(ptr), static_cast<SLRefType>(conv));
 			break;
 		case SLA_NULL:
-			*(void **)ptr = nullptr;
+			*static_cast<void **>(ptr) = nullptr;
 			break;
 		default: NOT_REACHED();
 	}
@@ -1379,7 +1401,7 @@ public:
 		const SlStorageT *list = static_cast<const SlStorageT *>(storage);
 
 		int type_size = SlGetArrayLength(list->size());
-		int item_size = SlCalcConvFileLen(cmd == SL_VAR ? conv : (VarType)SLE_FILE_U32);
+		int item_size = SlCalcConvFileLen(cmd == SL_VAR ? conv : static_cast<VarType>(SLE_FILE_U32));
 		return list->size() * item_size + type_size;
 	}
 
@@ -1704,7 +1726,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 			void *ptr = GetVariableAddress(object, sld);
 
 			switch (_sl.action) {
-				case SLA_SAVE: SlWriteByte(*(uint8_t *)ptr); break;
+				case SLA_SAVE: SlWriteByte(*static_cast<uint8_t *>(ptr)); break;
 				case SLA_LOAD_CHECK:
 				case SLA_LOAD:
 				case SLA_PTRS:
@@ -1909,7 +1931,7 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 					}
 
 					/* We don't know this field, so read to nothing. */
-					saveloads.emplace_back(std::move(key), saveload_type, ((VarType)type & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SL_MIN_VERSION, SL_MAX_VERSION, nullptr, 0, std::move(handler));
+					saveloads.emplace_back(std::move(key), saveload_type, (static_cast<VarType>(type) & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SL_MIN_VERSION, SL_MAX_VERSION, nullptr, 0, std::move(handler));
 					continue;
 				}
 
@@ -2461,9 +2483,9 @@ struct LZOSaveFilter : SaveFilter {
 
 		do {
 			/* Compress up to LZO_BUFFER_SIZE bytes at once. */
-			lzo_uint len = size > LZO_BUFFER_SIZE ? LZO_BUFFER_SIZE : (lzo_uint)size;
+			lzo_uint len = size > LZO_BUFFER_SIZE ? LZO_BUFFER_SIZE : static_cast<lzo_uint>(size);
 			lzo1x_1_compress(in, len, out + sizeof(uint32_t) * 2, &outlen, wrkmem);
-			((uint32_t*)out)[1] = TO_BE32((uint32_t)outlen);
+			((uint32_t*)out)[1] = TO_BE32(static_cast<uint32_t>(outlen));
 			((uint32_t*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32_t), outlen + sizeof(uint32_t)));
 			this->chain->Write(out, outlen + sizeof(uint32_t) * 2);
 
@@ -2541,13 +2563,13 @@ struct ZlibLoadFilter : LoadFilter {
 	size_t Read(uint8_t *buf, size_t size) override
 	{
 		this->z.next_out  = buf;
-		this->z.avail_out = (uint)size;
+		this->z.avail_out = static_cast<uint>(size);
 
 		do {
 			/* read more bytes from the file? */
 			if (this->z.avail_in == 0) {
 				this->z.next_in = this->fread_buf;
-				this->z.avail_in = (uint)this->chain->Read(this->fread_buf, sizeof(this->fread_buf));
+				this->z.avail_in = static_cast<uint>(this->chain->Read(this->fread_buf, sizeof(this->fread_buf)));
 			}
 
 			/* inflate the data */
@@ -2592,7 +2614,7 @@ struct ZlibSaveFilter : SaveFilter {
 	{
 		uint n;
 		this->z.next_in = p;
-		this->z.avail_in = (uInt)len;
+		this->z.avail_in = static_cast<uInt>(len);
 		do {
 			this->z.next_out = this->fwrite_buf;
 			this->z.avail_out = sizeof(this->fwrite_buf);
