@@ -257,7 +257,15 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		CommandCost ret = IsValidTileForWaypoint(tile, axis, &est);
 		if (ret.Failed()) return ret;
 
-		ret = IsRailStationBridgeAboveOk(tile, spec, StationType::RailWaypoint, *it + to_underlying(axis));
+		StationGfx gfx = *it + to_underlying(axis);
+		if (spec != nullptr) {
+			uint32_t platinfo = GetPlatformInfo(gfx, count, 1, i, 0, false);
+			/* As the station is not yet completely finished, the station does not yet exist. */
+			uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, spec, nullptr, INVALID_TILE);
+			if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + to_underlying(axis);
+		}
+
+		ret = IsRailStationBridgeAboveOk(tile, spec, StationType::RailWaypoint, gfx);
 		if (ret.Failed()) return ret;
 	}
 
@@ -321,6 +329,20 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 					HasStationReservation(tile);
 			MakeRailWaypoint(tile, wp->owner, wp->index, axis, *it, GetRailType(tile));
 			SetCustomStationSpecIndex(tile, *specindex);
+
+			if (spec != nullptr) {
+				uint32_t platinfo = GetPlatformInfo(*it + to_underlying(axis), count, 1, i, 0, false);
+
+				/* As the station is not yet completely finished, the station does not yet exist. */
+				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, spec, nullptr, tile);
+				if (callback != CALLBACK_FAILED) {
+					if (callback <= UINT8_MAX) {
+						SetStationGfx(tile, (callback & ~1) + to_underlying(axis));
+					} else {
+						ErrorUnknownCallbackResult(spec->grf_prop.grfid, CBID_STATION_BUILD_TILE_LAYOUT, callback);
+					}
+				}
+			}
 
 			SetRailStationTileFlags(tile, spec);
 
