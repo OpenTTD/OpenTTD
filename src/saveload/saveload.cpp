@@ -582,7 +582,6 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 		case SL_STDSTR:
 		case SL_ARR:
 		case SL_VECTOR:
-		case SL_DEQUE:
 			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD; break;
 
 		case SL_REF:
@@ -1511,65 +1510,6 @@ static void SlRefVector(void *vector, VarType conv)
 }
 
 /**
- * Return the size in bytes of a std::deque.
- * @param deque The std::deque to find the size of
- * @param conv VarType type of variable that is used for calculating the size
- * @return The size of this type in bytes.
- */
-static inline size_t SlCalcDequeLen(const void *deque, VarType conv)
-{
-	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL: return SlStorageHelper<std::deque, bool>::SlCalcLen(deque, conv);
-		case SLE_VAR_I8: return SlStorageHelper<std::deque, int8_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U8: return SlStorageHelper<std::deque, uint8_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_I16: return SlStorageHelper<std::deque, int16_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U16: return SlStorageHelper<std::deque, uint16_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_I32: return SlStorageHelper<std::deque, int32_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U32: return SlStorageHelper<std::deque, uint32_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_I64: return SlStorageHelper<std::deque, int64_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U64: return SlStorageHelper<std::deque, uint64_t>::SlCalcLen(deque, conv);
-
-		case SLE_VAR_STR:
-			/* Strings are a length-prefixed field type in the savegame table format,
-			 * these may not be directly stored in another length-prefixed container type. */
-			NOT_REACHED();
-
-		default: NOT_REACHED();
-	}
-}
-
-/**
- * Save/load a std::deque.
- * @param deque The std::deque being manipulated
- * @param conv VarType type of variable that is used for calculating the size
- */
-static void SlDeque(void *deque, VarType conv)
-{
-	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL: SlStorageHelper<std::deque, bool>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I8: SlStorageHelper<std::deque, int8_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U8: SlStorageHelper<std::deque, uint8_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I16: SlStorageHelper<std::deque, int16_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U16: SlStorageHelper<std::deque, uint16_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I32: SlStorageHelper<std::deque, int32_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U32: SlStorageHelper<std::deque, uint32_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I64: SlStorageHelper<std::deque, int64_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U64: SlStorageHelper<std::deque, uint64_t>::SlSaveLoad(deque, conv); break;
-
-		case SLE_VAR_STR:
-			/* Strings are a length-prefixed field type in the savegame table format,
-			 * these may not be directly stored in another length-prefixed container type.
-			 * This is permitted for load-related actions, because invalid fields of this type are present
-			 * from SLV_COMPANY_ALLOW_LIST up to SLV_COMPANY_ALLOW_LIST_V2. */
-			assert(_sl.action != SLA_SAVE);
-			SlStorageHelper<std::deque, std::string>::SlSaveLoad(deque, conv, SL_STDSTR);
-			break;
-
-		default: NOT_REACHED();
-	}
-}
-
-/**
  * Return the size in bytes of a std::vector.
  * @param vector The std::vector to find the size of
  * @param conv VarType type of variable that is used for calculating the size
@@ -1695,7 +1635,6 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
 		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_REFVECTOR: return SlCalcRefVectorLen(GetVariableAddress(object, sld), sld.conv);
-		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_VECTOR: return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
 		case SL_SAVEBYTE: return 1; // a byte is logically of size 1
@@ -1741,7 +1680,6 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_ARR:
 		case SL_REFLIST:
 		case SL_REFVECTOR:
-		case SL_DEQUE:
 		case SL_VECTOR:
 		case SL_STDSTR: {
 			void *ptr = GetVariableAddress(object, sld);
@@ -1752,7 +1690,6 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				case SL_ARR: SlArray(ptr, sld.length, conv); break;
 				case SL_REFLIST: SlRefList(ptr, conv); break;
 				case SL_REFVECTOR: SlRefVector(ptr, conv); break;
-				case SL_DEQUE: SlDeque(ptr, conv); break;
 				case SL_VECTOR: SlVector(ptr, conv); break;
 				case SL_STDSTR: SlStdString(ptr, sld.conv); break;
 				default: NOT_REACHED();

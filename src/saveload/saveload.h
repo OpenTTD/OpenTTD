@@ -741,7 +741,6 @@ enum SaveLoadType : uint8_t {
 	SL_STDSTR      =  4, ///< Save/load a \c std::string.
 
 	SL_ARR         =  5, ///< Save/load a fixed-size array of #SL_VAR elements.
-	SL_DEQUE       =  6, ///< Save/load a deque of #SL_VAR elements.
 	SL_VECTOR      =  7, ///< Save/load a vector of #SL_VAR elements.
 	SL_REFLIST     =  8, ///< Save/load a list of #SL_REF elements.
 	SL_STRUCTLIST  =  9, ///< Save/load a list of structs.
@@ -855,7 +854,6 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 		case SL_REF: return sizeof(void *) == size;
 		case SL_STDSTR: return SlVarSize(type) == size;
 		case SL_ARR: return SlVarSize(type) * length <= size; // Partial load of array is permitted.
-		case SL_DEQUE: return sizeof(std::deque<void *>) == size;
 		case SL_VECTOR: return sizeof(std::vector<void *>) == size;
 		case SL_REFLIST: return sizeof(std::list<void *>) == size;
 		case SL_REFVECTOR: return sizeof(std::vector<void *>) == size;
@@ -1013,16 +1011,6 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param to       Last savegame version that has the list.
  */
 #define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SL_VECTOR, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a deque of #SL_VAR elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDDEQUE(base, variable, type, from, to) SLE_GENERAL(SL_DEQUE, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a vector of #SL_VAR elements in some savegame versions.
