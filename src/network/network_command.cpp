@@ -304,7 +304,7 @@ static void DistributeCommandPacket(CommandPacket &cp, const NetworkClientSocket
 	cp.frame = _frame_counter_max + 1;
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-		if (cs->status >= NetworkClientSocket::STATUS_MAP) {
+		if (cs->status >= NetworkClientSocket::ClientStatus::Map) {
 			/* Callbacks are only send back to the client who sent them in the
 			 *  first place. This filters that out. */
 			cp.callback = (cs != owner) ? nullptr : callback;
