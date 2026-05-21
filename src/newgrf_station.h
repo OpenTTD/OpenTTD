@@ -18,6 +18,7 @@
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "cargo_type.h"
+#include "station_map.h"
 #include "station_type.h"
 #include "rail_type.h"
 #include "newgrf_spritegroup.h"
@@ -206,7 +207,7 @@ inline bool IsWaypointClass(const StationClass &cls)
 }
 
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
-uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred);
+uint32_t GetPlatformInfo(StationGfx gfx, int platforms, int length, int platform, int position, bool centred);
 
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32_t var10 = 0);
 void GetCustomStationRelocation(SpriteLayoutProcessor &processor, const StationSpec *statspec, BaseStation *st, TileIndex tile);
