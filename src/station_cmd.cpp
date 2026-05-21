@@ -1516,7 +1516,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 
 			StationGfx gfx = *it + to_underlying(axis);
 			if (statspec != nullptr) {
-				uint32_t platinfo = GetPlatformInfo(Axis::X, gfx, plat_len, numtracks, j, i, false);
+				uint32_t platinfo = GetPlatformInfo(gfx, numtracks, plat_len, i, j, false);
 				/* As the station is not yet completely finished, the station does not yet exist. */
 				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, INVALID_TILE);
 				if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + to_underlying(axis);
@@ -1591,8 +1591,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				SetAnimationFrame(tile, 0);
 
 				if (statspec != nullptr) {
-					/* Use a fixed axis for GetPlatformInfo as our platforms / numtracks are always the right way around */
-					uint32_t platinfo = GetPlatformInfo(Axis::X, GetStationGfx(tile), plat_len, numtracks, j, i, false);
+					uint32_t platinfo = GetPlatformInfo(*it + to_underlying(axis), numtracks, plat_len, i, j, false);
 
 					/* As the station is not yet completely finished, the station does not yet exist. */
 					uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
