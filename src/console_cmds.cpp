@@ -2303,10 +2303,14 @@ static void OutputContentState(const ContentInfo &ci)
 	static constexpr EnumIndexArray<std::string_view, ContentType, ContentType::End> types{
 		"", "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library"
 	};
-	static const std::string_view states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
-	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
+	static constexpr EnumIndexArray<std::string_view, ContentInfo::State, ContentInfo::State::End> states{
+		"Not selected", "Selected", "Dep Selected", "Installed", "Unknown"
+	};
+	static constexpr EnumIndexArray<TextColour, ContentInfo::State, ContentInfo::State::End> state_to_colour{
+		CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR
+	};
 
-	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
+	IConsolePrint(state_to_colour[ci.state], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type], states[ci.state], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
 /** Downloading of content from the server. @copydoc IConsoleCmdProc */
