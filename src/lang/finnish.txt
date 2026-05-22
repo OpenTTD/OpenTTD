@@ -525,6 +525,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lentokentän ra
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Maastonmuokkaus
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Istuta puita
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Aseta kyltti
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Sijoita objekti
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Ääni/musiikki
@@ -3097,6 +3098,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sijoita 
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Määrittele aavikkoalue.{}Ctrl+napsautus poistaa aavikkoalueen.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Suurenna madallettavan/korotettavan maa-alueen kokoa
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pienennä madallettavan/korotettavan maa-alueen kokoa
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Laske maa-alueen kulmaa. Jos koko on 1×1, napsautus+veto laskee ensimmäisenä valittua kulmaa ja tasaa valitun alueen tämän kulman uudelle korkeudelle. Ctrl+napsautus+veto valitsee alueen vinottain. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Nosta maa-alueen kulmaa. Jos koko on 1×1, napsautus+veto nostaa ensimmäisenä valittua kulmaa ja tasaa valitun alueen tämän kulman uudelle korkeudelle. Ctrl+napsautus+veto valitsee alueen vinottain. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Luo satunnainen maasto
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Luo uusi skenaario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Nollaa maasto

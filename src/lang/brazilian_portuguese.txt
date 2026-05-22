@@ -294,7 +294,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - desloca a lista para cima/baixo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - desloca a lista para a esquerda/direita
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir construções, etc., num mosaico do terreno. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir construções, etc., num mosaico do terreno. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -429,9 +429,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Construi
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Construir ou gerar indústrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Construir infraestrutura rodoviária
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Construir infraestrutura para bondes
-STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plantar árvores. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plantar árvores. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Colocar placa
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Colocar objeto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Colocar objeto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 # Scenario editor file menu
 ###length 7
@@ -526,6 +526,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construção de
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisagismo
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantar árvores
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar placa
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Colocar objeto
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Som/música
@@ -1072,11 +1073,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Aceleração por hardware
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marque esta opção para permitir que o OpenTTD tente usar aceleração por hardware. Se modificada, esta configuração só terá efeito após reiniciar o jogo
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A configuração só terá efeito após reiniciar o jogo
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marque esta opção para permitir que o OpenTTD tente usar aceleração por hardware. Se modificada, esta configuração terá efeito somente após reiniciar o jogo
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A configuração terá efeito somente após reiniciar o jogo
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Marque esta caixa para ativar v-sync na tela. Se modificada, esta configuração só terá efeito após reiniciar o jogo. Funciona somente com aceleração por hardware ativada
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Marque esta caixa para ativar v-sync na tela. Se modificada, esta configuração terá efeito somente após reiniciar o jogo. Funciona somente com aceleração por hardware ativada
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador atual: {STRING}
 
@@ -1113,7 +1114,7 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Taxas de atualização superiores a 60Hz podem interferir no desempenho.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :Conjunto de gráficos básicos
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selecione um conjunto de gráficos básicos para usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selecione um conjunto de gráficos básicos para usar (não pode ser alterado no jogo, somente a partir do menu principal)
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informação adicional sobre sobre o conjunto de gráficos básicos
 
 STR_GAME_OPTIONS_BASE_SFX                                       :Conjunto de sons básicos
@@ -1254,10 +1255,10 @@ STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor padrão: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de configuração: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Configuração do cliente (não é armazenada no jogo salvo; afeta todos os jogos)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Configuração do jogo (armazenada no jogo salvo; só afeta novos jogos)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuração do jogo (armazenada no jogo salvo; só afeta o jogo atual)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configuração da empresa (armazenada no jogo salvo; só afeta novos jogos)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configuração da empresa (armazenada no jogo salvo; só afeta a empresa atual)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Configuração do jogo (armazenada no jogo salvo; afeta somente novos jogos)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuração do jogo (armazenada no jogo salvo; afeta somente o jogo atual)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configuração da empresa (armazenada no jogo salvo; afeta somente novos jogos)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configuração da empresa (armazenada no jogo salvo; afeta somente a empresa atual)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Cuidado!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta ação irá restaurar todas as configurações do jogo para os seus valores padrão.{}Você quer mesmo fazer a restauração?
 
@@ -1273,10 +1274,10 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Configurações
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringir a lista abaixo a certos tipos de configuração
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todos os tipos de configuração
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Configuração do cliente (não é armazenada no jogo salvo; afeta todos os jogos)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Configurações do jogo (armazenadas no jogo salvo; só afeta novos jogos)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Configurações do jogo (armazenadas no jogo salvo; só afeta o jogo atual)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Configurações da empresa (armazenadas no jogo salvo; só afeta novos jogos)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Configurações da empresa (armazenadas no jogo salvo; só afeta a empresa atual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Configurações do jogo (armazenadas no jogo salvo; afeta somente novos jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Configurações do jogo (armazenadas no jogo salvo; afeta somente o jogo atual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Configurações da empresa (armazenadas no jogo salvo; afeta somente novos jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Configurações da empresa (armazenadas no jogo salvo; afeta somente a empresa atual)
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nenhum -
 ###length 3
@@ -1453,10 +1454,10 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, a j
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :Se ativado, a janela de finanças será exibida no fim de cada período, permitindo uma inspeção fácil da situação financeira da empresa
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar', por padrão: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo irá parar em cada estação por onde passa. Ativando esta configuração, o veículo passará por todas as estações na sua rota, sem parar, até o destino final. Esta opção só define um modo padrão para novas ordens. Ordens individuais podem ser definidas explicitamente para qualquer um dos dois comportamentos
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo irá parar em cada estação por onde passa. Ativando esta configuração, o veículo passará por todas as estações na sua rota, sem parar, até o destino final. Esta opção apenas define um modo padrão para novas ordens. Ordens individuais podem ser definidas explicitamente para qualquer um dos dois comportamentos
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Novas ordens de trem, por padrão, têm parada no {STRING} da plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local padrão onde um trem irá parar na plataforma. No 'início' significa perto da entrada, 'meio' significa no meio da plataforma e 'final' significa na saída da plataforma. Esta opção só define um padrão para as novas ordens. Ordens individuais podem ter o local de parada definido clicando no texto da ordem
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local padrão onde um trem irá parar na plataforma. No 'início' significa perto da entrada, 'meio' significa no meio da plataforma e 'final' significa na saída da plataforma. Esta opção apenas define um padrão para as novas ordens. Ordens individuais podem ter o local de parada definido clicando no texto da ordem
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :início
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meio
@@ -1621,7 +1622,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máx
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isso garante que elas fiquem perto da costa. Em mapas com mais de 256 mosaicos esse valor é aumentado
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher em que latitude a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos para crescimento das localidades. Só pode ser modificado no Editor de Cenário ou então é calculado usando a "cobertura de neve"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher em que latitude a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos para crescimento das localidades. Somente pode ser modificado no Editor de Cenário ou então é calculado usando a "cobertura de neve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos para crescimento das localidades. Usado somente durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve
@@ -2828,16 +2829,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construção de Monotrilho
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construção de Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovia. Ctrl+Clique para remover a ferrovia. Pressione também Shift para só mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovia usando o modo Autotrilho. Ctrl+Clique para remover seção da ferrovia. Pressione também Shift para só mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de trens). Pressione também Shift para só mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para só mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Pressione também Shift para só mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressione também Shift para só mostrar o custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovia. Ctrl+Clique para remover a ferrovia. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovia usando o modo Autotrilho. Ctrl+Clique para remover seção da ferrovia. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de trens). Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir ponto de controle na ferrovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinal na ferrovia. Ctrl+Clique para construir o sinal com estilo diferente{}Clique+Arraste para preencher a seção selecionada da ferrovia com os sinais no espaçamento escolhido. Ctrl+Clique+Arraste para colocar sinais até a próxima junção, estação ou sinal. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Pressione também Shift para apenas mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Pressione também Shift para apenas mostrar o custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construir/Remover ferrovia, sinais, pontos de controle e estações. Ctrl+Clique para também remover os trilhos de pontos de controle e das estações
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de trilho. Pressione também Shift para só mostrar o custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de trilho. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrovia
 STR_RAIL_NAME_ELRAIL                                            :Ferrovia eletrificada
@@ -2901,7 +2902,7 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma 
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de estação de caminhões para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Selecione uma coleção de estações de caminhões para mostrar
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para mostrar
-STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Escolher um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens salvos. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Escolher um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens salvos. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Selecione uma coleção de objetos para mostrar
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecionar uma zona urbana para mostrar
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecionar um tipo de casa para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
@@ -2950,7 +2951,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (elétrico){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite construir ramificações complexas de pré-sinais.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de Caminho (elétrico){}Um sinal de caminho que permite mais de um trem entrar numa seção sinalizada ao mesmo tempo, se o trem puder reservar um caminho para um ponto de parada seguro. Sinais de caminho padrões podem ser passados no sentido contrário
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de Sentido Único (elétrico){}Um sinal de caminho que permite mais de um trem entrar numa seção sinalizada ao mesmo tempo, se o trem puder reservar um caminho para um ponto de parada seguro. Os sinais de sentido único não podem ser passados no sentido contrário
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique num sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique para mudar a variante existente. Shift+Clique para só mostrar o custo estimado de conversão
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique num sinal existente para convertê-lo para o tipo e variante de sinal selecionado. Ctrl+Clique para mudar a variante existente. Shift+Clique para apenas mostrar o custo estimado de conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distância entre os sinais quando arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir a distância entre os sinais quando arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a distância entre os sinais quando arrastar
@@ -2976,27 +2977,27 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Estrada
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Linha de Bonde
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir seção de estrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir seção de linha de bonde. Ctrl+Clique para remover seção da linha. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Autotrilho. Ctrl+Clique para remover seção da linha. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito rodoviário (para compra e manutenção de veículos). Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de bondes (para compra e manutenção de bondes). Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construir ponto de controle na rodovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construir ponto de controle na linha de bonde. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estação de bondes de passageiros. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de caminhões. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estação de bondes de carga. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir seção de estrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir seção de linha de bonde. Ctrl+Clique para remover seção da linha. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estrada usando o modo Autoestrada. Ctrl+Clique para remover seção da estrada. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir linha de bonde usando o modo Autotrilho. Ctrl+Clique para remover seção da linha. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito rodoviário (para compra e manutenção de veículos). Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de bondes (para compra e manutenção de bondes). Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construir ponto de controle na rodovia. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construir ponto de controle na linha de bonde. Ctrl+Clique para selecionar outro ponto de controle e unir com este. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de ônibus. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estação de bondes de passageiros. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estação de caminhões. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estação de bondes de carga. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ativar/Desativar estradas de sentido único
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para bondes. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para bondes. Pressione também Shift para apenas mostrar o custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Construir/Remover estrada
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Construir/Remover linha de bonde
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione também Shift para só mostrar o custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Pressione também Shift para só mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar o tipo de estrada. Pressione também Shift para apenas mostrar o custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Atualizar o tipo de bonde. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_ROAD_NAME_ROAD                                              :Estrada
 STR_ROAD_NAME_TRAM                                              :Bonde
@@ -3020,12 +3021,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Escolher
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Hidrovia
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Hidrovia
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressione também Shift para só mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito de embarcações (para compra e manutenção de embarcações). Pressione também Shift para só mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para só mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma boia que pode ser usada como ponto de controle. Pressione também Shift para só mostrar o custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Pressione também Shift para só mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apena mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito de embarcações (para compra e manutenção de embarcações). Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl+Clique para selecionar outra estação e unir com esta. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar uma boia que pode ser usada como ponto de controle. Pressione também Shift para apenas mostrar o custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Pressione também Shift para apenas mostrar o custo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construir canal. Ctrl+Clique no nível do mar para inundar com água do mar
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar rios. Ctrl+Clique para selecionar diagonalmente
 
@@ -3038,7 +3039,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doca
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroportos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl+Clique para selecionar outro aeroporto e unir com este. Pressione também Shift para só mostrar o custo estimado
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl+Clique para selecionar outro aeroporto e unir com este. Pressione também Shift para apenas mostrar o custo estimado
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Seleção de Aeroporto
@@ -3065,10 +3066,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Paisagismo
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaixar um canto do terreno. Clique+Arraste para abaixar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno. Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaixar um canto do terreno. Clique+Arraste para abaixar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno. Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleção de Objeto
@@ -3082,7 +3083,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolher um tipo de árvore para plantar. Se no mosaico já existir uma árvore, serão adicionadas mais árvores de diferentes tipos, ignorando o tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para só mostrar o custo estimado
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente no terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
@@ -3098,6 +3099,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Colocar 
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área de deserto.{}Ctrl+Clique para remover a área de deserto
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumentar área do terreno para abaixar/levantar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuir área do terreno para abaixar/levantar
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Abaixar um canto ou área do terreno. Se o tamanho for 1x1, Clique+Arraste para abaixar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Elevar um canto ou área do terreno. Se o tamanho for 1x1, Clique+Arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura do canto. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Gerar terreno aleatório
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Criar novo cenário
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restaurar paisagem
@@ -3109,7 +3112,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Você qu
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Geração de Localidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Localidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova localidade. Pressione também Shift para só mostrar o custo estimado
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova localidade. Pressione também Shift para apenas mostrar o custo estimado
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localidade Aleatória
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar localidade num local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias localidades aleatórias
@@ -4047,7 +4050,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Mostrar a sede da empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
-STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Reconstruir a sede da empresa em outro local por 1% do valor da empresa. Pressione também Shift para só mostrar o custo estimado
+STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Reconstruir a sede da empresa em outro local por 1% do valor da empresa. Pressione também Shift para apenas mostrar o custo estimado
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contagens detalhadas da infraestrutura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinheiro
@@ -4284,16 +4287,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e Adaptar Aeronave
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Pressione também Shift para só mostrar o custo estimado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Pressione também Shift para só mostrar o custo estimado
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar a embarcação selecionada. Pressione também Shift para só mostrar o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar a aeronave selecionada. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar a embarcação selecionada. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar a aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e adaptar o veículo ferroviário selecionado. Pressione também Shift para só mostrar o custo estimado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e adaptar o veículo rodoviário selecionado. Pressione também Shift para só mostrar o custo estimado
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e adaptar a embarcação selecionada. Pressione também Shift para só mostrar o custo estimado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e adaptar a aeronave selecionada. Pressione também Shift para só mostrar o custo estimado
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar e adaptar o veículo ferroviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar e adaptar o veículo rodoviário selecionado. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar e adaptar a embarcação selecionada. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e adaptar a aeronave selecionada. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
@@ -4385,10 +4388,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar E
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Comprar uma cópia de um trem, incluindo todos os vagões. Clique neste botão e depois num trem que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e depois num veículo que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
-STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Comprar uma cópia de uma embarcação. Clique neste botão e depois numa embarcação que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
-STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e depois numa aeronave que está dentro ou fora do hangar. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Comprar uma cópia de um trem, incluindo todos os vagões. Clique neste botão e depois num trem que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Comprar uma cópia de um veículo rodoviário. Clique neste botão e depois num veículo que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Comprar uma cópia de uma embarcação. Clique neste botão e depois numa embarcação que está dentro ou fora do depósito. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Comprar uma cópia de uma aeronave. Clique neste botão e depois numa aeronave que está dentro ou fora do hangar. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centralizar visualização principal na localização do depósito ferroviário. Ctrl+Clique para abrir uma nova visualização na localização do depósito ferroviário
@@ -4519,10 +4522,10 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar a
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar a aeronave para o hangar. Ctrl+Clique para fazer apenas manutenção
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do trem, incluindo todos os vagões. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Comprar uma cópia do veículo. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar uma cópia da embarcação. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para só mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Comprar uma cópia do trem, incluindo todos os vagões. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Comprar uma cópia do veículo. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Comprar uma cópia da embarcação. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar uma cópia da aeronave. Ctrl+Clique para compartilhar as ordens. Pressione também Shift para apenas mostrar o custo estimado
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forçar o trem a prosseguir sem aguardar o sinal de liberação
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverter a direção do trem
@@ -4957,7 +4960,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifica
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Não foi encontrada nenhuma IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Você pode obter várias IAs usando o sistema de 'Conteúdo Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Um dos scripts em execução travou. Favor relatar isto ao autor do script com uma captura de tela da Janela de Depuração de IA/Script de Jogo
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela de Depuração de IA/Script de Jogo só está disponível para o servidor
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela de Depuração de IA/Script de Jogo está disponível apenas para o servidor
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configurações de IA
@@ -5511,7 +5514,7 @@ STR_ERROR_NO_DOCK                                               :Não existe uma
 STR_ERROR_NO_AIRPORT                                            :Não existe aeroporto/heliporto
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Não existem estações com tipo de estrada compatível
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Não existem estações com tipo de bonde compatível
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Não existem estações adequadas para veículos rodoviários articulados.{}Veículos rodoviários articulados só podem parar em estações drive-through, não em estações padrão
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Não existem estações adequadas para veículos rodoviários articulados.{}Veículos rodoviários articulados podem parar somente em estações drive-through, não em estações terminais
 STR_ERROR_AIRPORT_NO_PLANES                                     :Este avião não pode pousar neste heliporto
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Este helicóptero não pode pousar neste aeroporto
 STR_ERROR_NO_RAIL_WAYPOINT                                      :Não existe ponto de controle ferroviário

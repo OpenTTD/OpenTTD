@@ -526,6 +526,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construção de
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisagem
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantar árvores
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar letreiro
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Colocar objeto
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Som/música
@@ -3098,6 +3099,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Colocar 
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área de deserto.{}Ctrl+Clique para remover área de deserto
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumentar área de terreno a baixar/levantar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuir área de terreno a baixar/levantar
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Baixe um canto ou uma área do terreno. Se o tamanho for 1x1, clique e arraste para baixar o primeiro canto selecionado e nivelar a área selecionada à nova altura. Pressione Ctrl + clique e arraste para selecionar a área na diagonal. Pressione também a tecla Shift para mostrar apenas a estimativa do custo
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Eleve um canto ou uma área do terreno. Se o tamanho for 1x1, clique e arraste para elevar o primeiro canto selecionado e nivelar a área selecionada à nova altura. Pressione Ctrl + clique e arraste para selecionar a área na diagonal. Pressione também a tecla Shift para mostrar apenas a estimativa do custo
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Gerar terreno aleatório
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Criar novo cenário
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Repor terreno
