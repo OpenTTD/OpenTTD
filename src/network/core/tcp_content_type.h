@@ -53,6 +53,7 @@ struct ContentInfo {
 		AlreadyHere, ///< The content is already at the client side
 		DoesNotExist, ///< The content does not exist in the content system
 		Invalid, ///< The content's invalid
+		End, ///< End marker.
 	};
 
 	ContentType type = ContentType::Invalid; ///< Type of content
