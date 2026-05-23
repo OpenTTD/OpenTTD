@@ -17,7 +17,7 @@ GSWindow.WN_GAME_OPTIONS_GS <- GSWindow.GameOptionsWindowNumber.GS;
 GSWindow.WN_GAME_OPTIONS_ABOUT <- GSWindow.GameOptionsWindowNumber.About;
 GSWindow.WN_GAME_OPTIONS_NEWGRF_STATE <- GSWindow.GameOptionsWindowNumber.NewGRFState;
 GSWindow.WN_GAME_OPTIONS_GAME_OPTIONS <- GSWindow.GameOptionsWindowNumber.GameOptions;
-GSWindow.WN_GAME_OPTIONS_GAME_SETTINGS <- GSWindow.GameOptionsWindowNumber.GameSettings;
+GSWindow.WN_GAME_OPTIONS_GAME_SETTINGS <- GSWindow.GameOptionsWindowNumber.GameOptions;
 GSWindow.WN_QUERY_STRING <- GSWindow.QueryStringWindowNumber.Default;
 GSWindow.WN_QUERY_STRING_SIGN <- GSWindow.QueryStringWindowNumber.Sign;
 GSWindow.WN_CONFIRM_POPUP_QUERY <- GSWindow.ConfirmPopupQueryWindowNumber.Default;
