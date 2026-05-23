@@ -613,6 +613,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flughavena kons
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landaspektigi
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Planti arbojn
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Meti ŝildon
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Meti objekton
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Sono/muziko
@@ -3191,6 +3192,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Meti rok
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difini dezertan regionon.{}Stir+Klaku por forigi dezertan regionon
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Grandigi landparton por (mal)altigi
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Malgrandigi landparton por (mal)altigi
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Malaltigi angulon aŭ landpecon. Se la grando estas 1x1, Klak+Trenu por malaltigi la unuan elektitan angulon kaj glatigi la elektitan areon laŭ la nova alteco de angulo. Stir+Klak+Trenu por elekti areon diagonale. Ankau premu la majuskligan klavon por nor montri kostotakson
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Altigi angulon aŭ landpecon. Se la grando estas 1x1, Klak+Trenu por altigi la unuan elektitan angulon kaj glatigi la elektitan areon laŭ la nova alteco de angulo. Stir+Klak+Trenu por elekti areon diagonale. Ankau premu la majuskligan klavon por nor montri kostotakson
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Krei landon hazarde
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Kreu novan scenaron
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reigi landaspekton

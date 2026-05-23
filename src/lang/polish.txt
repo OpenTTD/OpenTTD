@@ -904,6 +904,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Budowa lotnisk
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Kształtowanie krajobrazu
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Sadzenie drzew
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umieszczanie napisów
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Umieść obiekt
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Dźwięk/muzyka
