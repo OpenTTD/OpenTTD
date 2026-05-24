@@ -77,7 +77,7 @@ class NIHVehicle : public NIHelper {
 	uint Resolve(uint index, uint var, uint param, bool &avail) const override
 	{
 		Vehicle *v = Vehicle::Get(index);
-		VehicleResolverObject ro(v->engine_type, v, VehicleResolverObject::WO_CACHED);
+		VehicleResolverObject ro(v->engine_type, v, VehicleResolverObject::WagonOverride::Cached);
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };

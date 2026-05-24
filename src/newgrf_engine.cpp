@@ -1083,16 +1083,16 @@ VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle
 	relative_scope(*this, engine_type, v, rotor_in_gui),
 	cached_relative_count(0)
 {
-	if (wagon_override == WO_SELF) {
+	if (wagon_override == WagonOverride::Self) {
 		this->root_spritegroup = GetWagonOverrideSpriteSet(engine_type, CargoGRFFileProps::SG_DEFAULT, engine_type);
 	} else {
-		if (wagon_override != WO_NONE && v != nullptr && v->IsGroundVehicle()) {
+		if (wagon_override != WagonOverride::None && v != nullptr && v->IsGroundVehicle()) {
 			assert(v->engine_type == engine_type); // overrides make little sense with fake scopes
 
 			/* For trains we always use cached value, except for callbacks because the override spriteset
 			 * to use may be different than the one cached. It happens for callback 0x15 (refit engine),
 			 * as v->cargo_type is temporary changed to the new type */
-			if (wagon_override == WO_CACHED && v->type == VehicleType::Train) {
+			if (wagon_override == WagonOverride::Cached && v->type == VehicleType::Train) {
 				this->root_spritegroup = Train::From(v)->tcache.cached_override;
 			} else {
 				this->root_spritegroup = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, v->GetGroundVehicleCache()->first_engine);
@@ -1109,7 +1109,7 @@ VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle
 
 static void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type, VehicleSpriteSeq *result)
 {
-	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_CACHED, false, CBID_NO_CALLBACK);
+	VehicleResolverObject object(engine, v, VehicleResolverObject::WagonOverride::Cached, false, CBID_NO_CALLBACK);
 	result->Clear();
 
 	bool sprite_stack = EngInfo(engine)->misc_flags.Test(EngineMiscFlag::SpriteStack);
@@ -1150,7 +1150,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 	 * We use 'rotor_in_gui' to replicate when the variables differ.
 	 * But some other variables like 'rotor state' and 'rotor speed' are not available in OpenTTD, while they are in TTDPatch. */
 	bool rotor_in_gui = image_type != EIT_ON_MAP;
-	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_SELF, rotor_in_gui, CBID_NO_CALLBACK);
+	VehicleResolverObject object(engine, v, VehicleResolverObject::WagonOverride::Self, rotor_in_gui, CBID_NO_CALLBACK);
 	result->Clear();
 	uint rotor_pos = v == nullptr || rotor_in_gui ? 0 : v->Next()->Next()->state;
 
@@ -1202,7 +1202,7 @@ bool UsesWagonOverride(const Vehicle *v)
  */
 uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, std::span<int32_t> regs100)
 {
-	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_UNCACHED, false, callback, param1, param2);
+	VehicleResolverObject object(engine, v, VehicleResolverObject::WagonOverride::Uncached, false, callback, param1, param2);
 	return object.ResolveCallback(regs100);
 }
 
@@ -1219,7 +1219,7 @@ uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param
  */
 uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent, std::span<int32_t> regs100)
 {
-	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_NONE, false, callback, param1, param2);
+	VehicleResolverObject object(engine, v, VehicleResolverObject::WagonOverride::None, false, callback, param1, param2);
 	object.parent_scope.SetVehicle(parent);
 	return object.ResolveCallback(regs100);
 }
@@ -1267,7 +1267,7 @@ static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleRandomTrigger trigg
 	/* We can't trigger a non-existent vehicle... */
 	assert(v != nullptr);
 
-	VehicleResolverObject object(v->engine_type, v, VehicleResolverObject::WO_CACHED, false, CBID_RANDOM_TRIGGER);
+	VehicleResolverObject object(v->engine_type, v, VehicleResolverObject::WagonOverride::Cached, false, CBID_RANDOM_TRIGGER);
 	v->waiting_random_triggers.Set(trigger); // store now for var 5F
 	object.SetWaitingRandomTriggers(v->waiting_random_triggers);
 
@@ -1423,7 +1423,7 @@ void CommitVehicleListOrderChanges()
  */
 void FillNewGRFVehicleCache(const Vehicle *v)
 {
-	VehicleResolverObject ro(v->engine_type, v, VehicleResolverObject::WO_NONE);
+	VehicleResolverObject ro(v->engine_type, v, VehicleResolverObject::WagonOverride::None);
 
 	/* These variables we have to check; these are the ones with a cache. */
 	static const int cache_entries[][2] = {

@@ -46,11 +46,11 @@ struct VehicleScopeResolver : public ScopeResolver {
 /** Resolver for a vehicle (chain) */
 struct VehicleResolverObject : public SpecializedResolverObject<VehicleRandomTriggers> {
 	/** Application of 'wagon overrides'. */
-	enum WagonOverride : uint8_t {
-		WO_NONE,     //!< Resolve no wagon overrides.
-		WO_UNCACHED, //!< Resolve wagon overrides.
-		WO_CACHED,   //!< Resolve wagon overrides using TrainCache::cached_override.
-		WO_SELF,     //!< Resolve self-override (helicopter rotors and such).
+	enum class WagonOverride : uint8_t {
+		None, ///< Resolve no wagon overrides.
+		Uncached, ///< Resolve wagon overrides.
+		Cached, ///< Resolve wagon overrides using TrainCache::cached_override.
+		Self, ///< Resolve self-override (helicopter rotors and such).
 	};
 
 	VehicleScopeResolver self_scope;     ///< Scope resolver for the indicated vehicle.
