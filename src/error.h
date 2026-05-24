@@ -20,11 +20,11 @@
 struct GRFFile;
 
 /** Message severity/type */
-enum WarningLevel : uint8_t {
-	WL_INFO,     ///< Used for DoCommand-like (and some non-fatal AI GUI) errors/information
-	WL_WARNING,  ///< Other information
-	WL_ERROR,    ///< Errors (eg. saving/loading failed)
-	WL_CRITICAL, ///< Critical errors, the MessageBox is shown in all cases
+enum class WarningLevel : uint8_t {
+	Info, ///< Used for DoCommand-like (and some non-fatal AI GUI) errors/information
+	Warning, ///< Other information
+	Error, ///< Errors (eg. saving/loading failed)
+	Critical, ///< Critical errors, the MessageBox is shown in all cases
 };
 
 /** The data of the error message. */

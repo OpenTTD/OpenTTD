@@ -136,7 +136,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &
 			return false;
 
 		case NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED:
-			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED), {}, WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED), {}, WarningLevel::Error);
 
 			/* To prevent that we constantly try to reconnect, switch to local game. */
 			_settings_client.network.server_game_type = ServerGameType::Local;
@@ -160,7 +160,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &
 		}
 
 		case NETWORK_COORDINATOR_ERROR_REUSE_OF_INVITE_CODE:
-			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE), {}, WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE), {}, WarningLevel::Error);
 
 			/* To prevent that we constantly battle for the same invite-code, switch to local game. */
 			_settings_client.network.server_game_type = ServerGameType::Local;
@@ -189,7 +189,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorRegisterAck(Pa
 		ShowErrorMessage(
 			GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_ISOLATED),
 			GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL),
-			WL_ERROR);
+			WarningLevel::Error);
 	}
 
 	/* Users can change the invite code in the settings, but this has no effect

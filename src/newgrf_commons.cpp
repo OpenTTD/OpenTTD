@@ -519,7 +519,7 @@ void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
 		grfconfig->grf_bugs.Set(GRFBug::UnknownCbResult);
 		ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, grfconfig->GetName()),
 			GetEncodedString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res),
-			WL_CRITICAL);
+			WarningLevel::Critical);
 	}
 
 	/* debug output */

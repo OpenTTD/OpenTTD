@@ -345,7 +345,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	if (!grfconfig->grf_bugs.Test(bug_type)) {
 		grfconfig->grf_bugs.Set(bug_type);
 		ShowErrorMessage(GetEncodedString(part1, grfconfig->GetName()),
-			GetEncodedString(part2, std::monostate{}, engine), WL_CRITICAL);
+			GetEncodedString(part2, std::monostate{}, engine), WarningLevel::Critical);
 		if (!_networking) Command<Commands::Pause>::Do(DoCommandFlag::Execute, critical ? PauseMode::Error : PauseMode::Normal, true);
 	}
 
