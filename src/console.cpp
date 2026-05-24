@@ -341,9 +341,9 @@ void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 	 */
 	IConsoleCmd *cmd = IConsole::CmdGet(tokens[0]);
 	if (cmd != nullptr) {
-		ConsoleHookResult chr = (cmd->hook == nullptr ? CHR_ALLOW : cmd->hook(true));
+		ConsoleHookResult chr = (cmd->hook == nullptr ? ConsoleHookResult::Allow : cmd->hook(true));
 		switch (chr) {
-			case CHR_ALLOW: {
+			case ConsoleHookResult::Allow: {
 				std::vector<std::string_view> views;
 				for (auto &token : tokens) views.emplace_back(token);
 				if (!cmd->proc(views)) { // index started with 0
@@ -352,8 +352,8 @@ void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 				return;
 			}
 
-			case CHR_DISALLOW: return;
-			case CHR_HIDE: break;
+			case ConsoleHookResult::Disallow: return;
+			case ConsoleHookResult::Hide: break;
 		}
 	}
 
