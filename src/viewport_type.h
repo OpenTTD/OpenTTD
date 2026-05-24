@@ -123,6 +123,7 @@ enum ViewportDragDropSelectionProcess : uint8_t {
 	DDSP_LEVEL_AREA,           ///< Level area
 	DDSP_CREATE_DESERT,        ///< Fill area with desert
 	DDSP_CREATE_ROCKS,         ///< Fill area with rocks
+	DDSP_CREATE_ROUGH,         ///< Fill area with rough land
 	DDSP_CREATE_WATER,         ///< Create a canal
 	DDSP_CREATE_RIVER,         ///< Create rivers
 	DDSP_PLANT_TREES,          ///< Plant trees
