@@ -84,12 +84,12 @@ public:
 		StringID err_build_road;        ///< Building a normal piece of road
 		StringID err_remove_road;       ///< Removing a normal piece of road
 		StringID err_depot;             ///< Building a depot
-		StringID err_build_station[2];  ///< Building a bus or truck station
-		StringID err_remove_station[2]; ///< Removing of a bus or truck station
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> err_build_station; ///< Building a bus or truck station
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> err_remove_station; ///< Removing of a bus or truck station
 		StringID err_convert_road;      ///< Converting a road type
 
-		StringID picker_title[2];       ///< Title for the station picker for bus or truck stations
-		StringID picker_tooltip[2];     ///< Tooltip for the station picker for bus or truck stations
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> picker_title; ///< Title for the station picker for bus or truck stations
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> picker_tooltip; ///< Tooltip for the station picker for bus or truck stations
 	} strings;                        ///< Strings associated with the rail type.
 
 	/** bitmask to the OTHER roadtypes on which a vehicle of THIS roadtype generates power */
