@@ -841,13 +841,13 @@ static uint8_t AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *a
 	DiagDirection dir;
 	if (abs(delta_y) < abs(delta_x)) {
 		/* We are northeast or southwest of the airport */
-		dir = delta_x < 0 ? DIAGDIR_NE : DIAGDIR_SW;
+		dir = delta_x < 0 ? DiagDirection::NE : DiagDirection::SW;
 	} else {
 		/* We are northwest or southeast of the airport */
-		dir = delta_y < 0 ? DIAGDIR_NW : DIAGDIR_SE;
+		dir = delta_y < 0 ? DiagDirection::NW : DiagDirection::SE;
 	}
-	dir = ChangeDiagDir(dir, DiagDirDifference(DIAGDIR_NE, DirToDiagDir(rotation)));
-	return apc->entry_points[dir];
+	dir = ChangeDiagDir(dir, DiagDirDifference(DiagDirection::NE, DirToDiagDir(rotation)));
+	return apc->entry_points[to_underlying(dir)];
 }
 
 

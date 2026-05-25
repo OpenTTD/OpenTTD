@@ -205,11 +205,11 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 {
 	/* Tile offsets and exit dirs for X axis */
 	static const Direction x_dir[8] = { DIR_SW, DIR_NE, DIR_SE, DIR_NW, DIR_S, DIR_E, DIR_W, DIR_N };
-	static const DiagDirection x_exits[8] = { DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SW, DIAGDIR_NE };
+	static const DiagDirection x_exits[8] = { DiagDirection::SW, DiagDirection::NE, DiagDirection::SE, DiagDirection::NW, DiagDirection::SW, DiagDirection::NE, DiagDirection::SW, DiagDirection::NE };
 
 	/* Tile offsets and exit dirs for Y axis */
 	static const Direction y_dir[8] = { DIR_SE, DIR_NW, DIR_SW, DIR_NE, DIR_S, DIR_W, DIR_E, DIR_N };
-	static const DiagDirection y_exits[8] = { DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SE, DIAGDIR_NW };
+	static const DiagDirection y_exits[8] = { DiagDirection::SE, DiagDirection::NW, DiagDirection::SW, DiagDirection::NE, DiagDirection::SE, DiagDirection::NW, DiagDirection::SE, DiagDirection::NW };
 
 	Axis axis = GetRailStationAxis(tile);
 

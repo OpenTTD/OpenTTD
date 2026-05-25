@@ -489,10 +489,10 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	::RoadType rt = (::RoadType)GetCurrentRoadType();
 	int32_t neighbour = 0;
 
-	if (TileX(tile) > 0 && NeighbourHasReachableRoad(rt, tile, DIAGDIR_NE)) neighbour++;
-	if (NeighbourHasReachableRoad(rt, tile, DIAGDIR_SE)) neighbour++;
-	if (NeighbourHasReachableRoad(rt, tile, DIAGDIR_SW)) neighbour++;
-	if (TileY(tile) > 0 && NeighbourHasReachableRoad(rt, tile, DIAGDIR_NW)) neighbour++;
+	if (TileX(tile) > 0 && NeighbourHasReachableRoad(rt, tile, DiagDirection::NE)) neighbour++;
+	if (NeighbourHasReachableRoad(rt, tile, DiagDirection::SE)) neighbour++;
+	if (NeighbourHasReachableRoad(rt, tile, DiagDirection::SW)) neighbour++;
+	if (TileY(tile) > 0 && NeighbourHasReachableRoad(rt, tile, DiagDirection::NW)) neighbour++;
 
 	return neighbour;
 }
@@ -565,7 +565,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, ::TileX(tile) == ::TileX(front) || ::TileY(tile) == ::TileY(front));
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	DiagDirection entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? DIAGDIR_SE : DIAGDIR_NW) : (::TileX(tile) < ::TileX(front) ? DIAGDIR_SW : DIAGDIR_NE);
+	DiagDirection entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? DiagDirection::SE : DiagDirection::NW) : (::TileX(tile) < ::TileX(front) ? DiagDirection::SW : DiagDirection::NE);
 
 	return ScriptObject::Command<Commands::BuildRoadDepot>::Do(tile, ScriptObject::GetRoadType(), entrance_dir);
 }

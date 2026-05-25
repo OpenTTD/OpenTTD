@@ -76,7 +76,7 @@ static void DrawClearLandFence(const TileInfo *ti)
 
 	bounds.extent.z += GetSlopeMaxPixelZ(ti->tileh);
 
-	uint fence_nw = GetFence(ti->tile, DIAGDIR_NW);
+	uint fence_nw = GetFence(ti->tile, DiagDirection::NW);
 	if (fence_nw != 0) {
 		bounds.offset.x = 0;
 		bounds.offset.y = -static_cast<int>(TILE_SIZE);
@@ -85,7 +85,7 @@ static void DrawClearLandFence(const TileInfo *ti)
 		AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
 	}
 
-	uint fence_ne = GetFence(ti->tile, DIAGDIR_NE);
+	uint fence_ne = GetFence(ti->tile, DiagDirection::NE);
 	if (fence_ne != 0) {
 		bounds.offset.x = -static_cast<int>(TILE_SIZE);
 		bounds.offset.y = 0;
@@ -94,8 +94,8 @@ static void DrawClearLandFence(const TileInfo *ti)
 		AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
 	}
 
-	uint fence_sw = GetFence(ti->tile, DIAGDIR_SW);
-	uint fence_se = GetFence(ti->tile, DIAGDIR_SE);
+	uint fence_sw = GetFence(ti->tile, DiagDirection::SW);
+	uint fence_se = GetFence(ti->tile, DiagDirection::SE);
 
 	if (fence_sw != 0 || fence_se != 0) {
 		bounds.offset.x = 0;
@@ -179,7 +179,7 @@ static void UpdateFences(TileIndex tile)
 	assert(IsTileType(tile, TileType::Clear) && IsClearGround(tile, ClearGround::Fields));
 	bool dirty = false;
 
-	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
 		if (GetFence(tile, dir) != 0) continue;
 		TileIndex neighbour = tile + TileOffsByDiagDir(dir);
 		if (IsTileType(neighbour, TileType::Clear) && IsClearGround(neighbour, ClearGround::Fields)) continue;
@@ -232,7 +232,7 @@ static void TileLoopClearAlps(TileIndex tile)
  */
 static inline bool NeighbourIsNormal(TileIndex tile)
 {
-	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
 		TileIndex t = tile + TileOffsByDiagDir(dir);
 		if (!IsValidTile(t)) continue;
 		if (GetTropicZone(t) != TropicZone::Desert) return true;

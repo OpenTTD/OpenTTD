@@ -198,7 +198,7 @@ public:
 
 		const size_t max_element_width = fmt::format("{}", this->NumberOfPatches()).size();
 
-		std::string traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DIAGDIR_NW), WATER_REGION_EDGE_LENGTH);
+		std::string traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DiagDirection::NW), WATER_REGION_EDGE_LENGTH);
 		Debug(map, 9, "    {:{}}", fmt::join(traversability, " "), max_element_width);
 		Debug(map, 9, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
 
@@ -212,11 +212,11 @@ public:
 					line = fmt::format("{:{}} {}", label, max_element_width, line);
 				}
 			}
-			Debug(map, 9, "{} | {}| {}", GB(this->GetEdgeTraversabilityBits(DIAGDIR_SW), y, 1), line, GB(this->GetEdgeTraversabilityBits(DIAGDIR_NE), y, 1));
+			Debug(map, 9, "{} | {}| {}", GB(this->GetEdgeTraversabilityBits(DiagDirection::SW), y, 1), line, GB(this->GetEdgeTraversabilityBits(DiagDirection::NE), y, 1));
 		}
 
 		Debug(map, 9, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
-		traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DIAGDIR_SE), WATER_REGION_EDGE_LENGTH);
+		traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DiagDirection::SE), WATER_REGION_EDGE_LENGTH);
 		Debug(map, 9, "    {:{}}", fmt::join(traversability, " "), max_element_width);
 	}
 };
@@ -235,10 +235,10 @@ static TileIndex GetEdgeTileCoordinate(int region_x, int region_y, DiagDirection
 {
 	assert(x_or_y >= 0 && x_or_y < WATER_REGION_EDGE_LENGTH);
 	switch (side) {
-		case DIAGDIR_NE: return GetTileIndexFromLocalCoordinate(region_x, region_y, 0, x_or_y);
-		case DIAGDIR_SW: return GetTileIndexFromLocalCoordinate(region_x, region_y, WATER_REGION_EDGE_LENGTH - 1, x_or_y);
-		case DIAGDIR_NW: return GetTileIndexFromLocalCoordinate(region_x, region_y, x_or_y, 0);
-		case DIAGDIR_SE: return GetTileIndexFromLocalCoordinate(region_x, region_y, x_or_y, WATER_REGION_EDGE_LENGTH - 1);
+		case DiagDirection::NE: return GetTileIndexFromLocalCoordinate(region_x, region_y, 0, x_or_y);
+		case DiagDirection::SW: return GetTileIndexFromLocalCoordinate(region_x, region_y, WATER_REGION_EDGE_LENGTH - 1, x_or_y);
+		case DiagDirection::NW: return GetTileIndexFromLocalCoordinate(region_x, region_y, x_or_y, 0);
+		case DiagDirection::SE: return GetTileIndexFromLocalCoordinate(region_x, region_y, x_or_y, WATER_REGION_EDGE_LENGTH - 1);
 		default: NOT_REACHED();
 	}
 }

@@ -234,8 +234,8 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
 {
 	TileArea ta(start_tile, end_tile);
 	DiagDirection ddir = _roadstop_gui.orientation;
-	bool drive_through = ddir >= DIAGDIR_END;
-	if (drive_through) ddir = ddir - DIAGDIR_END; // Adjust picker result to actual direction.
+	bool drive_through = ddir >= DiagDirection::End;
+	if (drive_through) ddir = ddir - DiagDirection::End; // Adjust picker result to actual direction.
 	RoadStopClassID spec_class = _roadstop_gui.sel_class;
 	uint16_t spec_index = _roadstop_gui.sel_type;
 
@@ -284,7 +284,7 @@ static void PlaceRoad_BusStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_BUSSTOP);
 	} else {
-		if (_roadstop_gui.orientation < DIAGDIR_END) { // Not a drive-through stop.
+		if (_roadstop_gui.orientation < DiagDirection::End) { // Not a drive-through stop.
 			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == Axis::X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_BUSSTOP);
 		} else {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_BUSSTOP);
@@ -302,7 +302,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_TRUCKSTOP);
 	} else {
-		if (_roadstop_gui.orientation < DIAGDIR_END) { // Not a drive-through stop.
+		if (_roadstop_gui.orientation < DiagDirection::End) { // Not a drive-through stop.
 			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == Axis::X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
 		} else {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
@@ -1193,7 +1193,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (ir.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (ir.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
-			DrawRoadDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BROD_DEPOT_NE + to_underlying(DIAGDIR_NE)), _cur_roadtype);
+			DrawRoadDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BROD_DEPOT_NE + to_underlying(DiagDirection::NE)), _cur_roadtype);
 		}
 	}
 
@@ -1325,7 +1325,7 @@ public:
 			StationPickerDrawSprite(x, y, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, INVALID_RAILTYPE, _cur_roadtype, to_underlying(_roadstop_gui.orientation));
 		} else {
 			DiagDirection orientation = _roadstop_gui.orientation;
-			if (orientation < DIAGDIR_END && spec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) orientation = DIAGDIR_END;
+			if (orientation < DiagDirection::End && spec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) orientation = DiagDirection::End;
 			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, to_underlying(orientation));
 		}
 	}
@@ -1378,11 +1378,11 @@ private:
 			this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
 		}
 
-		if (_roadstop_gui.orientation >= DIAGDIR_END) return;
+		if (_roadstop_gui.orientation >= DiagDirection::End) return;
 
 		if (spec != nullptr && spec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) {
 			this->RaiseWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
-			_roadstop_gui.orientation = DIAGDIR_END;
+			_roadstop_gui.orientation = DiagDirection::End;
 			this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
 			this->SetDirty();
 			CloseWindowById(WindowClass::JoinStation, 0);
@@ -1395,8 +1395,8 @@ public:
 		this->coverage_height = 2 * GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 
 		/* Trams don't have non-drivethrough stations */
-		if (RoadTypeIsTram(_cur_roadtype) && _roadstop_gui.orientation < DIAGDIR_END) {
-			_roadstop_gui.orientation = DIAGDIR_END;
+		if (RoadTypeIsTram(_cur_roadtype) && _roadstop_gui.orientation < DiagDirection::End) {
+			_roadstop_gui.orientation = DiagDirection::End;
 		}
 		this->ConstructWindow();
 
@@ -1815,8 +1815,8 @@ static void ShowBuildRoadWaypointPicker(Window *parent)
 
 void InitializeRoadGui()
 {
-	_road_depot_orientation = DIAGDIR_NW;
-	_roadstop_gui.orientation = DIAGDIR_NW;
+	_road_depot_orientation = DiagDirection::NW;
+	_roadstop_gui.orientation = DiagDirection::NW;
 	_waypoint_gui.sel_class = ROADSTOP_CLASS_WAYP;
 	_waypoint_gui.sel_type = 0;
 }

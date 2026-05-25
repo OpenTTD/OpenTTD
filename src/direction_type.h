@@ -82,29 +82,30 @@ enum class DirDiff : uint8_t {
  *
  * This enumeration is used for the 4 direction of the tile-edges.
  */
-enum DiagDirection : uint8_t {
-	DIAGDIR_BEGIN = 0,      ///< Used for iterations
-	DIAGDIR_NE  = 0,        ///< Northeast, upper right on your monitor
-	DIAGDIR_SE  = 1,        ///< Southeast
-	DIAGDIR_SW  = 2,        ///< Southwest
-	DIAGDIR_NW  = 3,        ///< Northwest
-	DIAGDIR_END,            ///< Used for iterations
-	INVALID_DIAGDIR = 0xFF, ///< Flag for an invalid DiagDirection
+enum class DiagDirection : uint8_t {
+	Begin = 0, ///< Used for iterations
+	NE = 0, ///< Northeast, upper right on your monitor
+	SE = 1, ///< Southeast
+	SW = 2, ///< Southwest
+	NW = 3, ///< Northwest
+	End, ///< Used for iterations
+	Invalid = 0xFF, ///< Flag for an invalid DiagDirection
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirection)
 DECLARE_ENUM_AS_ADDABLE(DiagDirection)
 
+/** Bitset of \c DiagDirection elements. */
 using DiagDirections = EnumBitSet<DiagDirection, uint8_t>;
 
 /** All possible diagonal directions. */
-static constexpr DiagDirections DIAGDIRECTIONS_ALL{DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW};
+static constexpr DiagDirections DIAGDIRECTIONS_ALL{DiagDirection::NE, DiagDirection::SE, DiagDirection::SW, DiagDirection::NW};
 
 /**
  * Array with \c DiagDirection as index.
  * @tparam T the type contained within the array.
  */
 template <typename T>
-using DiagDirectionIndexArray = EnumIndexArray<T, DiagDirection, DIAGDIR_END>;
+using DiagDirectionIndexArray = EnumIndexArray<T, DiagDirection, DiagDirection::End>;
 
 /**
  * Enumeration for the difference between to DiagDirection.
@@ -112,7 +113,7 @@ using DiagDirectionIndexArray = EnumIndexArray<T, DiagDirection, DIAGDIR_END>;
  * As the DiagDirection only contains 4 possible directions the
  * difference between two of these directions can only be in 4 ways.
  * As the DirDiff enumeration the values can be added together and
- * you will get the resulting difference (use modulo DIAGDIR_END).
+ * you will get the resulting difference (use modulo DiagDirection::End).
  *
  * @see DirDiff
  */

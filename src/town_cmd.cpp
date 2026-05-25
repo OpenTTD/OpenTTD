@@ -255,7 +255,7 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
  */
 static inline DiagDirection RandomDiagDir()
 {
-	return static_cast<DiagDirection>(RandomRange(to_underlying(DIAGDIR_END)));
+	return static_cast<DiagDirection>(RandomRange(to_underlying(DiagDirection::End)));
 }
 
 /** @copydoc DrawTileProc */
@@ -1057,7 +1057,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		 * If that fails clear the land, and if that fails exit.
 		 * This is to make sure that we can build a road here later. */
 		RoadType rt = GetTownRoadType();
-		if (Command<Commands::BuildRoad>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X, rt, {}, t->index).Failed() &&
+		if (Command<Commands::BuildRoad>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, (dir == DiagDirection::NW || dir == DiagDirection::SE) ? ROAD_Y : ROAD_X, rt, {}, t->index).Failed() &&
 				Command<Commands::LandscapeClear>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile).Failed()) {
 			return false;
 		}
@@ -1069,7 +1069,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 
 	/* If the tile is not a slope in the right direction, then
 	 * maybe terraform some. */
-	Slope desired_slope = (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? SLOPE_NW : SLOPE_NE;
+	Slope desired_slope = (dir == DiagDirection::NW || dir == DiagDirection::SE) ? SLOPE_NW : SLOPE_NE;
 	if (desired_slope != cur_slope && ComplementSlope(desired_slope) != cur_slope) {
 		if (Chance16(1, 8)) {
 			CommandCost res = CMD_ERROR;
@@ -1189,7 +1189,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile, TownExpandModes mode
 	uint counter = 0; // counts the house neighbour tiles
 
 	/* Check the tiles E,N,W and S of the current tile for houses */
-	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
 		/* Count both void and house tiles for checking whether there
 		 * are enough houses in the area. This to make it likely that
 		 * houses get build up to the edge of the map. */
@@ -1282,7 +1282,7 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
  */
 static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDirection bridge_dir)
 {
-	assert(bridge_dir < DIAGDIR_END);
+	assert(bridge_dir < DiagDirection::End);
 
 	const Slope slope = GetTileSlope(tile);
 
@@ -1371,7 +1371,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
  */
 static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDirection tunnel_dir)
 {
-	assert(tunnel_dir < DIAGDIR_END);
+	assert(tunnel_dir < DiagDirection::End);
 
 	Slope slope = GetTileSlope(tile);
 
@@ -1562,7 +1562,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 				break;
 		}
 
-	} else if (target_dir < DIAGDIR_END && !cur_rb.Any(DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
+	} else if (target_dir < DiagDirection::End && !cur_rb.Any(DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
 		if (!TownCanGrowRoad(tile)) return TownGrowthResult::Continue;
 
 		if (!TownAllowedToBuildRoads(modes)) return TownGrowthResult::SearchStopped;
@@ -1589,7 +1589,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 		/* Reached a tunnel/bridge? Then continue at the other side of it, unless
 		 * it is the starting tile. Half the time, we stay on this side then.*/
 		if (IsTileType(tile, TileType::TunnelBridge)) {
-			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (target_dir != DIAGDIR_END || Chance16(1, 2))) {
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (target_dir != DiagDirection::End || Chance16(1, 2))) {
 				*tile_ptr = GetOtherTunnelBridgeEnd(tile);
 			}
 			return TownGrowthResult::Continue;
@@ -1629,7 +1629,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 				default:
 					return TownGrowthResult::Continue; // not a turn
 			}
-			target_dir = DIAGDIR_END;
+			target_dir = DiagDirection::End;
 		} else {
 			house_tile = TileAddByDiagDir(tile, target_dir);
 		}
@@ -1641,7 +1641,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 		TownGrowthResult result = TownGrowthResult::Continue;
 
-		if (target_dir != DIAGDIR_END && TownAllowedToBuildRoads(modes)) {
+		if (target_dir != DiagDirection::End && TownAllowedToBuildRoads(modes)) {
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
@@ -1770,7 +1770,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile, TownExpandModes modes)
 	/* Special case.
 	 * @see GrowTownInTile Check the else if
 	 */
-	DiagDirection target_dir = DIAGDIR_END; // The direction in which we want to extend the town
+	DiagDirection target_dir = DiagDirection::End; // The direction in which we want to extend the town
 
 	assert(tile < Map::Size());
 
@@ -2605,7 +2605,7 @@ static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
 	/* we need to check this tile too because we can be at different tile now */
 	if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
 
-	for (DiagDirection d = DIAGDIR_SE; d < DIAGDIR_END; d++) {
+	for (DiagDirection d = DiagDirection::SE; d < DiagDirection::End; d++) {
 		tile += TileOffsByDiagDir(d);
 		if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
 	}
@@ -2728,12 +2728,12 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool nosl
 {
 	TileIndex tile2 = *tile;
 
-	for (DiagDirection d = DIAGDIR_SE;; d++) { // 'd' goes through DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_END
+	for (DiagDirection d = DiagDirection::SE;; d++) { // 'd' goes through DiagDirection::SE, DiagDirection::SW, DiagDirection::NW, DiagDirection::End
 		if (TownLayoutAllows2x2HouseHere(t, tile2, modes) && CheckFree2x2Area(tile2, maxz, noslope)) {
 			*tile = tile2;
 			return true;
 		}
-		if (d == DIAGDIR_END) break;
+		if (d == DiagDirection::End) break;
 		tile2 += TileOffsByDiagDir(ReverseDiagDir(d)); // go clockwise
 	}
 
@@ -2889,9 +2889,9 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes)
 		if (hs->building_flags.Test(BuildingFlag::Size2x2)) {
 			if (!CheckTownBuild2x2House(&tile, t, maxz, noslope, modes)) continue;
 		} else if (hs->building_flags.Test(BuildingFlag::Size2x1)) {
-			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SW, modes)) continue;
+			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DiagDirection::SW, modes)) continue;
 		} else if (hs->building_flags.Test(BuildingFlag::Size1x2)) {
-			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SE, modes)) continue;
+			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DiagDirection::SE, modes)) continue;
 		} else {
 			/* 1x1 house checks are already done */
 		}
@@ -2938,8 +2938,8 @@ CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, b
 	/* Check each tile of a multi-tile house. */
 	TileArea ta(tile, 1, 1);
 	if (hs->building_flags.Test(BuildingFlag::Size2x2)) ta.Add(TileAddXY(tile, 1, 1));
-	if (hs->building_flags.Test(BuildingFlag::Size2x1)) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SW));
-	if (hs->building_flags.Test(BuildingFlag::Size1x2)) ta.Add(TileAddByDiagDir(tile, DIAGDIR_SE));
+	if (hs->building_flags.Test(BuildingFlag::Size2x1)) ta.Add(TileAddByDiagDir(tile, DiagDirection::SW));
+	if (hs->building_flags.Test(BuildingFlag::Size1x2)) ta.Add(TileAddByDiagDir(tile, DiagDirection::SE));
 
 	for (const TileIndex subtile : ta) {
 		/* Houses cannot be built on steep slopes. */

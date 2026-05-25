@@ -20,7 +20,7 @@
  */
 inline bool IsValidDiagDirection(DiagDirection d)
 {
-	return d < DIAGDIR_END;
+	return d < DiagDirection::End;
 }
 
 /**
@@ -168,7 +168,7 @@ inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
  *
  * This function can be used to convert the 8-way Direction to
  * the 4-way DiagDirection. If the direction cannot be mapped its
- * "rounded clockwise". So DIR_N becomes DIAGDIR_NE.
+ * "rounded clockwise". So DIR_N becomes DiagDirection::NE.
  *
  * @param dir The direction to convert
  * @return The resulting DiagDirection, maybe "rounded clockwise".
@@ -258,8 +258,8 @@ inline DiagDirections AxisToDiagDirs(Axis a)
 {
 	assert(IsValidAxis(a));
 	return a == Axis::X
-		? DiagDirections{DIAGDIR_NE, DIAGDIR_SW}
-		: DiagDirections{DIAGDIR_SE, DIAGDIR_NW};
+		? DiagDirections{DiagDirection::NE, DiagDirection::SW}
+		: DiagDirections{DiagDirection::SE, DiagDirection::NW};
 }
 
 /**

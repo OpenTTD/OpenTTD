@@ -23,7 +23,7 @@ struct CYapfNodeKeyExitDir {
 	{
 		this->tile = tile;
 		this->td = td;
-		this->exitdir = (this->td == INVALID_TRACKDIR) ? INVALID_DIAGDIR : TrackdirToExitdir(this->td);
+		this->exitdir = (this->td == INVALID_TRACKDIR) ? DiagDirection::Invalid : TrackdirToExitdir(this->td);
 	}
 
 	inline int CalcHash() const

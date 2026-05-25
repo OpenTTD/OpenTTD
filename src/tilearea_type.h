@@ -315,7 +315,7 @@ private:
 	 */
 	bool IsEnd() const
 	{
-		return this->cur_radius == this->max_radius && this->dir != INVALID_DIAGDIR;
+		return this->cur_radius == this->max_radius && this->dir != DiagDirection::Invalid;
 	}
 };
 

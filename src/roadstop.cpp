@@ -307,8 +307,8 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
 static DiagDirection GetEntryDirection(bool east, Axis axis)
 {
 	switch (axis) {
-		case Axis::X: return east ? DIAGDIR_NE : DIAGDIR_SW;
-		case Axis::Y: return east ? DIAGDIR_SE : DIAGDIR_NW;
+		case Axis::X: return east ? DiagDirection::NE : DiagDirection::SW;
+		case Axis::Y: return east ? DiagDirection::SE : DiagDirection::NW;
 		default: NOT_REACHED();
 	}
 }

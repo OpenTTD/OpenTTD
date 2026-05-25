@@ -1542,10 +1542,10 @@ void Train::UpdateDeltaXY()
 	if (!IsDiagonalDirection(dir)) {
 		static constexpr DiagDirectionIndexArray<Point> _sign_table{{{
 			/* x, y */
-			{-1, -1}, // DIAGDIR_N
-			{-1,  1}, // DIAGDIR_E
-			{ 1,  1}, // DIAGDIR_S
-			{ 1, -1}, // DIAGDIR_W
+			{-1, -1}, // DiagDirection::N
+			{-1,  1}, // DiagDirection::E
+			{ 1,  1}, // DiagDirection::S
+			{ 1, -1}, // DiagDirection::W
 		}}};
 
 		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length + flipped) / 2;
@@ -2089,7 +2089,7 @@ static void ReverseTrainDirection(Train *consist)
 	/* VehicleExitDir does not always produce the desired dir for depots and
 	 * tunnels/bridges that is needed for UpdateSignalsOnSegment. */
 	DiagDirection dir = VehicleExitDir(moving_front->GetMovingDirection(), moving_front->track);
-	if (IsRailDepotTile(moving_front->tile) || IsTileType(moving_front->tile, TileType::TunnelBridge)) dir = INVALID_DIAGDIR;
+	if (IsRailDepotTile(moving_front->tile) || IsTileType(moving_front->tile, TileType::TunnelBridge)) dir = DiagDirection::Invalid;
 
 	if (UpdateSignalsOnSegment(moving_front->tile, dir, consist->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
 		/* If we are currently on a tile with conventional signals, we can't treat the
@@ -2368,14 +2368,14 @@ static bool CheckTrainStayInDepot(Train *v)
 
 		v->wait_counter = 0;
 
-		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
+		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, DiagDirection::Invalid, v->owner);
 		if (seg_state == SIGSEG_FULL || HasDepotReservation(v->tile)) {
 			/* Full and no PBS signal in block or depot reserved, can't exit. */
 			SetWindowClassesDirty(WindowClass::TrainList);
 			return true;
 		}
 	} else {
-		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
+		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, DiagDirection::Invalid, v->owner);
 	}
 
 	/* We are leaving a depot, but have to go to the exact same one; re-enter. */
@@ -2408,7 +2408,7 @@ static bool CheckTrainStayInDepot(Train *v)
 
 	v->UpdateViewport(true, true);
 	v->UpdatePosition();
-	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
+	UpdateSignalsOnSegment(v->tile, DiagDirection::Invalid, v->owner);
 	v->UpdateAcceleration();
 	InvalidateWindowData(WindowClass::VehicleDepot, v->tile);
 
@@ -3353,7 +3353,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 	/* For every vehicle after and including the given vehicle */
 	for (prev = v->GetMovingPrev(); v != nomove; prev = v, v = v->GetMovingNext()) {
-		DiagDirection enterdir = DIAGDIR_BEGIN;
+		DiagDirection enterdir = DiagDirection::Begin;
 		bool update_signals_crossing = false; // will we update signals or crossing state?
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
@@ -3748,7 +3748,7 @@ static void DeleteLastWagon(Train *v)
 
 	/* Update signals */
 	if (IsTileType(tile, TileType::TunnelBridge) || IsRailDepotTile(tile)) {
-		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR, owner);
+		UpdateSignalsOnSegment(tile, DiagDirection::Invalid, owner);
 	} else {
 		SetSignalsOnBothDir(tile, track, owner);
 	}
@@ -4038,7 +4038,7 @@ static bool TrainLocoHandler(Train *consist, bool mode)
 		 * when an overlength train gets turned around in a station. */
 		const Train *moving_front = consist->GetMovingFront();
 		DiagDirection dir = VehicleExitDir(moving_front->GetMovingDirection(), moving_front->track);
-		if (IsRailDepotTile(moving_front->tile) || IsTileType(moving_front->tile, TileType::TunnelBridge)) dir = INVALID_DIAGDIR;
+		if (IsRailDepotTile(moving_front->tile) || IsTileType(moving_front->tile, TileType::TunnelBridge)) dir = DiagDirection::Invalid;
 
 		if (UpdateSignalsOnSegment(moving_front->tile, dir, consist->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
 			TryPathReserve(consist, true, true);

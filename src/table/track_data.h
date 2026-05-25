@@ -12,10 +12,10 @@
  * track entering in this direction (including those making 90 degree turns).
  */
 extern const DiagDirectionIndexArray<TrackdirBits> _exitdir_reaches_trackdirs{
-	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,  // DIAGDIR_NE
-	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E, // DIAGDIR_SE
-	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S, // DIAGDIR_SW
-	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W  // DIAGDIR_NW
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,  // DiagDirection::NE
+	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E, // DiagDirection::SE
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S, // DiagDirection::SW
+	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W  // DiagDirection::NW
 };
 
 /** Next trackdir to use when moving to a new tile for each current trackdir. */
@@ -46,8 +46,8 @@ extern const TrackIndexArray<TrackBits> _track_crosses_tracks{
 
 /** Maps a trackdir to the (4-way) direction the tile is exited when following that trackdir. */
 extern const TrackdirIndexArray<DiagDirection> _trackdir_to_exitdir{
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_NE,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
+	DiagDirection::NE, DiagDirection::SE, DiagDirection::NE, DiagDirection::SE, DiagDirection::SW, DiagDirection::SE, DiagDirection::NE, DiagDirection::NE,
+	DiagDirection::SW, DiagDirection::NW, DiagDirection::NW, DiagDirection::SW, DiagDirection::NW, DiagDirection::NE,
 };
 
 /** Maps a track and an (4-way) dir to the trackdir that represents the track with the exit in the given direction. */

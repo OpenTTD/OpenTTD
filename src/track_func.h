@@ -478,7 +478,7 @@ inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir)
  * you follow the DiagDirection and then turn by 45 deg left or right on the
  * next tile. The new direction on the new track will be the returning Trackdir
  * value. If the parameters makes no sense like the track TRACK_UPPER and the
- * direction DIAGDIR_NE (target track cannot be reached) this function returns
+ * direction DiagDirection::NE (target track cannot be reached) this function returns
  * INVALID_TRACKDIR.
  *
  * @param track The target track

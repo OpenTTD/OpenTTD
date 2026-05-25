@@ -1377,7 +1377,7 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadType rt, RoadBits rb)
 		/* On junctions we check whether neighbouring tiles also have catenary, and possibly
 		 * do not draw catenary towards those neighbours, which do not have catenary. */
 		RoadBits rb_new{};
-		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+		for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
 			if (rb.Any(DiagDirToRoadBits(dir))) {
 				TileIndex neighbour = TileAddByDiagDir(ti->tile, dir);
 				if (MayHaveRoad(neighbour)) {
@@ -1807,19 +1807,19 @@ static void DrawTile_Road(TileInfo *ti)
 						DrawRailTileSeq(ti, &_crossing_layout, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case DiagDirections{DIAGDIR_NE}.base():
+					case DiagDirections{DiagDirection::NE}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_SW, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case DiagDirections{DIAGDIR_SE}.base():
+					case DiagDirections{DiagDirection::SE}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_NW, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case DiagDirections{DIAGDIR_SW}.base():
+					case DiagDirections{DiagDirection::SW}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_NE, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case DiagDirections{DIAGDIR_NW}.base():
+					case DiagDirections{DiagDirection::NW}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_SE, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
@@ -2158,7 +2158,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 					RoadBits bits = GetRoadBits(tile, rtt);
 
 					/* no roadbit at this side of tile, return 0 */
-					if (side != INVALID_DIAGDIR && !DiagDirToRoadBits(side).Any(bits)) break;
+					if (side != DiagDirection::Invalid && !DiagDirToRoadBits(side).Any(bits)) break;
 
 					uint multiplier = drd_to_multiplier[(rtt == RoadTramType::Tram) ? 0 : GetDisallowedRoadDirections(tile).base()];
 					if (!HasRoadWorks(tile)) trackdirbits = static_cast<TrackdirBits>(_road_trackbits[bits.base()] * multiplier);
@@ -2168,7 +2168,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 				case RoadTileType::Crossing: {
 					Axis axis = GetCrossingRoadAxis(tile);
 
-					if (side != INVALID_DIAGDIR && axis != DiagDirToAxis(side)) break;
+					if (side != DiagDirection::Invalid && axis != DiagDirToAxis(side)) break;
 
 					trackdirbits = TrackBitsToTrackdirBits(AxisToTrackBits(axis));
 					if (IsCrossingBarred(tile)) {
@@ -2190,7 +2190,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 				case RoadTileType::Depot: {
 					DiagDirection dir = GetRoadDepotDirection(tile);
 
-					if (side != INVALID_DIAGDIR && side != dir) break;
+					if (side != DiagDirection::Invalid && side != dir) break;
 
 					trackdirbits = TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir));
 					break;
