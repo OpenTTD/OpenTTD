@@ -622,18 +622,18 @@ inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
  * The tiles do not necessarily have to be adjacent.
  * @param tile_from Origin tile
  * @param tile_to Destination tile
- * @return DiagDirection from tile_from towards tile_to, or INVALID_DIAGDIR if the tiles are not on an axis
+ * @return DiagDirection from tile_from towards tile_to, or DiagDirection::Invalid if the tiles are not on an axis
  */
 inline DiagDirection DiagdirBetweenTiles(TileIndex tile_from, TileIndex tile_to)
 {
 	int dx = (int)TileX(tile_to) - (int)TileX(tile_from);
 	int dy = (int)TileY(tile_to) - (int)TileY(tile_from);
 	if (dx == 0) {
-		if (dy == 0) return INVALID_DIAGDIR;
-		return (dy < 0 ? DIAGDIR_NW : DIAGDIR_SE);
+		if (dy == 0) return DiagDirection::Invalid;
+		return (dy < 0 ? DiagDirection::NW : DiagDirection::SE);
 	} else {
-		if (dy != 0) return INVALID_DIAGDIR;
-		return (dx < 0 ? DIAGDIR_NE : DIAGDIR_SW);
+		if (dy != 0) return DiagDirection::Invalid;
+		return (dx < 0 ? DiagDirection::NE : DiagDirection::SW);
 	}
 }
 

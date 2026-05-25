@@ -828,7 +828,7 @@ CommandCost CheckBuildableTile(TileIndex tile, DiagDirections invalid_dirs, int 
 	int flat_z = z + GetSlopeMaxZ(tileh);
 	if (tileh != SLOPE_FLAT) {
 		/* Forbid building if the tile faces a slope in a invalid direction. */
-		for (DiagDirection dir = DIAGDIR_BEGIN; dir != DIAGDIR_END; dir++) {
+		for (DiagDirection dir = DiagDirection::Begin; dir != DiagDirection::End; dir++) {
 			if (invalid_dirs.Test(dir) && !CanBuildDepotByTileh(dir, tileh)) {
 				return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 			}
@@ -1050,7 +1050,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 			if (HasPowerOnRail(GetRailType(tile_cur), rt)) {
 				TrackBits tracks = GetTrackBits(tile_cur);
 				Track track = RemoveFirstTrack(&tracks);
-				Track expected_track = invalid_dirs.Test(DIAGDIR_NE) ? TRACK_X : TRACK_Y;
+				Track expected_track = invalid_dirs.Test(DiagDirection::NE) ? TRACK_X : TRACK_Y;
 
 				/* The existing track must align with the desired station axis. */
 				if (tracks == TRACK_BIT_NONE && track == expected_track) {
@@ -2911,7 +2911,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
 	DiagDirection direction = GetInclinedSlopeDirection(GetTileSlope(tile));
-	if (direction == INVALID_DIAGDIR) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
+	if (direction == DiagDirection::Invalid) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	direction = ReverseDiagDir(direction);
 
 	/* Docks cannot be placed on rapids */
@@ -2992,7 +2992,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 
 void RemoveDockingTile(TileIndex t)
 {
-	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
+	for (DiagDirection d = DiagDirection::Begin; d != DiagDirection::End; d++) {
 		TileIndex tile = t + TileOffsByDiagDir(d);
 		if (!IsValidTile(tile)) continue;
 
@@ -3016,7 +3016,7 @@ void ClearDockingTilesCheckingNeighbours(TileIndex tile)
 	assert(IsValidTile(tile));
 
 	/* Clear and maybe re-set docking tile */
-	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
+	for (DiagDirection d = DiagDirection::Begin; d != DiagDirection::End; d++) {
 		TileIndex docking_tile = tile + TileOffsByDiagDir(d);
 		if (!IsValidTile(docking_tile)) continue;
 
@@ -3039,7 +3039,7 @@ static TileIndex FindDockLandPart(TileIndex t)
 	StationGfx gfx = GetStationGfx(t);
 	if (gfx < GFX_DOCK_BASE_WATER_PART) return t;
 
-	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
+	for (DiagDirection d = DiagDirection::Begin; d != DiagDirection::End; d++) {
 		TileIndex tile = t + TileOffsByDiagDir(d);
 		if (!IsValidTile(tile)) continue;
 		if (!IsDockTile(tile)) continue;
@@ -3721,11 +3721,11 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 
 				if (IsBayRoadStopTile(tile)) {
 					DiagDirection dir = GetBayRoadStopDir(tile);
-					if (side != INVALID_DIAGDIR && dir != side) break;
+					if (side != DiagDirection::Invalid && dir != side) break;
 					trackbits = DiagDirToDiagTrackBits(dir);
 				} else {
 					Axis axis = GetDriveThroughStopAxis(tile);
-					if (side != INVALID_DIAGDIR && axis != DiagDirToAxis(side)) break;
+					if (side != DiagDirection::Invalid && axis != DiagDirToAxis(side)) break;
 					trackbits = AxisToTrackBits(axis);
 				}
 			}
@@ -3872,7 +3872,7 @@ static VehicleEnterTileStates VehicleEnterTile_Station(Vehicle *v, TileIndex til
 
 		if (DiagDirToAxis(dir) != Axis::X) std::swap(x, y);
 		if (y == TILE_SIZE / 2) {
-			if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
+			if (dir != DiagDirection::SE && dir != DiagDirection::SW) x = TILE_SIZE - 1 - x;
 			stop &= TILE_SIZE - 1;
 
 			if (x == stop) {

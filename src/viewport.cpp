@@ -2891,7 +2891,7 @@ static void VpStartPreSizing()
  * @param direction The rough direction the drag has been made in.
  * @return The highlight style of the first tile.
  * @note Depending on where on the start tile the click was, and some hysterasis, the
- *       direction for dragging to the east could be either DIAGDIR_NE or DIAGDIR_SE.
+ *       direction for dragging to the east could be either DiagDirection::NE or DiagDirection::SE.
  */
 static HighLightStyle Check2x1AutoRail(DiagDirection direction)
 {
@@ -2902,22 +2902,22 @@ static HighLightStyle Check2x1AutoRail(DiagDirection direction)
 
 	switch (direction) {
 		default: NOT_REACHED();
-		case DIAGDIR_SE: // end piece is lower right
+		case DiagDirection::SE: // end piece is lower right
 			if (fxpy >= 20 && sxpy <= 12) return HT_DIR_HL;
 			if (fxmy < -3 && sxmy > 3) return HT_DIR_VR;
 			return HT_DIR_Y;
 
-		case DIAGDIR_NW:
+		case DiagDirection::NW:
 			if (fxmy > 3 && sxmy < -3) return HT_DIR_VL;
 			if (fxpy <= 12 && sxpy >= 20) return HT_DIR_HU;
 			return HT_DIR_Y;
 
-		case DIAGDIR_SW:
+		case DiagDirection::SW:
 			if (fxmy > 3 && sxmy < -3) return HT_DIR_VL;
 			if (fxpy >= 20 && sxpy <= 12) return HT_DIR_HL;
 			return HT_DIR_X;
 
-		case DIAGDIR_NE:
+		case DiagDirection::NE:
 			if (fxmy < -3 && sxmy > 3) return HT_DIR_VR;
 			if (fxpy <= 12 && sxpy >= 20) return HT_DIR_HU;
 			return HT_DIR_X;
@@ -3193,18 +3193,18 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 		}
 	} else if (h == TILE_SIZE) { // Is this in X direction?
 		if (dx == (int)TILE_SIZE) { // 2x1 special handling
-			b = Check2x1AutoRail(DIAGDIR_NE) | HT_LINE;
+			b = Check2x1AutoRail(DiagDirection::NE) | HT_LINE;
 		} else if (dx == -(int)TILE_SIZE) {
-			b = Check2x1AutoRail(DIAGDIR_SW) | HT_LINE;
+			b = Check2x1AutoRail(DiagDirection::SW) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_X;
 		}
 		y = _thd.selstart.y;
 	} else if (w == TILE_SIZE) { // Or Y direction?
 		if (dy == (int)TILE_SIZE) { // 2x1 special handling
-			b = Check2x1AutoRail(DIAGDIR_NW) | HT_LINE;
+			b = Check2x1AutoRail(DiagDirection::NW) | HT_LINE;
 		} else if (dy == -(int)TILE_SIZE) { // 2x1 other direction
-			b = Check2x1AutoRail(DIAGDIR_SE) | HT_LINE;
+			b = Check2x1AutoRail(DiagDirection::SE) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_Y;
 		}

@@ -214,7 +214,7 @@ struct BuildDocksToolbarWindow : Window {
 			case WID_DT_STATION: { // Build station button
 				/* Determine the watery part of the dock. */
 				DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
-				TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
+				TileIndex tile_to = (dir != DiagDirection::Invalid ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
 
 				bool adjacent = _ctrl_pressed;
 				auto proc = [=](bool test, StationID to_join) -> bool {

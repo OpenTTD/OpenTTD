@@ -133,7 +133,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 	if (!IsPlainRailTile(t)) return tracks;
 
 	TrackdirBits neighbour_tdb = TRACKDIR_BIT_NONE;
-	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+	for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
 		/* If the neighbour tile is either not electrified or has no tracks that can be reached
 		 * from this tile, mark all trackdirs that can be reached from the neighbour tile
 		 * as needing no catenary. We make an exception for blocked station tiles with a matching
@@ -309,7 +309,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	SpriteID pylon_normal = GetPylonBase(ti->tile);
 	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
 
-	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
+	for (DiagDirection i = DiagDirection::Begin; i < DiagDirection::End; i++) {
 		SpriteID pylon_base = (halftile_corner != CORNER_INVALID && HasBit(InclinedSlope(i), halftile_corner)) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		int elevation = GetPCPElevation(ti->tile, i);
@@ -525,7 +525,7 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 	/* Finished with wires, draw pylons
 	 * every other tile needs a pylon on the northern end */
 	if (num % 2) {
-		DiagDirection pcp_pos = (axis == Axis::X ? DIAGDIR_NE : DIAGDIR_NW);
+		DiagDirection pcp_pos = (axis == Axis::X ? DiagDirection::NE : DiagDirection::NW);
 		Direction ppp_pos = (axis == Axis::X ? DIR_NW : DIR_NE);
 		if (HasBit(tlg, (axis == Axis::X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
 		uint x = ti->x + _x_pcp_offsets[pcp_pos] + _x_ppp_offsets[ppp_pos];
@@ -535,7 +535,7 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 
 	/* need a pylon on the southern end of the bridge */
 	if (GetTunnelBridgeLength(ti->tile, start) + 1 == length) {
-		DiagDirection pcp_pos = (axis == Axis::X ? DIAGDIR_SW : DIAGDIR_SE);
+		DiagDirection pcp_pos = (axis == Axis::X ? DiagDirection::SW : DiagDirection::SE);
 		Direction ppp_pos = (axis == Axis::X ? DIR_NW : DIR_NE);
 		if (HasBit(tlg, (axis == Axis::X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
 		uint x = ti->x + _x_pcp_offsets[pcp_pos] + _x_ppp_offsets[ppp_pos];

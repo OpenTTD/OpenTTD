@@ -59,7 +59,7 @@ static bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 {
 	if (!IsValidTile(tile)) return {};
-	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
 		const TileIndex neighbour_tile = TileAddByDiagDir(tile, dir);
 
 		/* Get the Roadbit pointing to the neighbour_tile */

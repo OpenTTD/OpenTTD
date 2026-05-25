@@ -200,7 +200,7 @@ bool IsPossibleDockingTile(Tile t)
  */
 void CheckForDockingTile(TileIndex t)
 {
-	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
+	for (DiagDirection d = DiagDirection::Begin; d != DiagDirection::End; d++) {
 		TileIndex tile = t + TileOffsByDiagDir(d);
 		if (!IsValidTile(tile)) continue;
 
@@ -242,7 +242,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 		}
 
 		/* Only river water should be restored on appropriate slopes. Other water would be invalid on slopes */
-		if (wc != WaterClass::River || GetInclinedSlopeDirection(slope) == INVALID_DIAGDIR) {
+		if (wc != WaterClass::River || GetInclinedSlopeDirection(slope) == DiagDirection::Invalid) {
 			wc = WaterClass::Invalid;
 		}
 	}
@@ -460,7 +460,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlags flags)
 CommandCost CmdBuildLock(DoCommandFlags flags, TileIndex tile)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
-	if (dir == INVALID_DIAGDIR) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (dir == DiagDirection::Invalid) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	TileIndex lower_tile = TileAddByDiagDir(tile, ReverseDiagDir(dir));
 

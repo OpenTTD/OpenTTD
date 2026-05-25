@@ -593,7 +593,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 
 	if (flags.Test(DoCommandFlag::Execute) && transport_type == TRANSPORT_RAIL) {
 		Track track = AxisToTrack(direction);
-		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, company);
+		AddSideToSignalBuffer(tile_start, DiagDirection::Invalid, company);
 		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
@@ -672,7 +672,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 
 	auto [start_tileh, start_z] = GetTileSlopeZ(start_tile);
 	DiagDirection direction = GetInclinedSlopeDirection(start_tileh);
-	if (direction == INVALID_DIAGDIR) return CommandCost(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
+	if (direction == DiagDirection::Invalid) return CommandCost(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
 
 	if (HasTileWaterGround(start_tile)) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
@@ -687,9 +687,9 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 	TileIndexDiff delta = TileOffsByDiagDir(direction);
 	DiagDirection tunnel_in_way_dir;
 	if (DiagDirToAxis(direction) == Axis::Y) {
-		tunnel_in_way_dir = (TileX(start_tile) < (Map::MaxX() / 2)) ? DIAGDIR_SW : DIAGDIR_NE;
+		tunnel_in_way_dir = (TileX(start_tile) < (Map::MaxX() / 2)) ? DiagDirection::SW : DiagDirection::NE;
 	} else {
-		tunnel_in_way_dir = (TileY(start_tile) < (Map::MaxX() / 2)) ? DIAGDIR_SE : DIAGDIR_NW;
+		tunnel_in_way_dir = (TileY(start_tile) < (Map::MaxX() / 2)) ? DiagDirection::SE : DiagDirection::NW;
 	}
 
 	TileIndex end_tile = start_tile;
@@ -790,7 +790,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 			if (c != nullptr) c->infrastructure.rail[railtype] += num_pieces;
 			MakeRailTunnel(start_tile, company, direction,                 railtype);
 			MakeRailTunnel(end_tile,   company, ReverseDiagDir(direction), railtype);
-			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, company);
+			AddSideToSignalBuffer(start_tile, DiagDirection::Invalid, company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
 			if (c != nullptr) c->infrastructure.road[roadtype] += num_pieces * 2; // A full diagonal road has two road bits.
@@ -911,7 +911,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 			DoClearSquare(tile);
 			DoClearSquare(endtile);
 
-			/* cannot use INVALID_DIAGDIR for signal update because the tunnel doesn't exist anymore */
+			/* cannot use DiagDirection::Invalid for signal update because the tunnel doesn't exist anymore */
 			AddSideToSignalBuffer(tile,    ReverseDiagDir(dir), owner);
 			AddSideToSignalBuffer(endtile, dir,                 owner);
 
@@ -1009,7 +1009,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 		}
 
 		if (rail) {
-			/* cannot use INVALID_DIAGDIR for signal update because the bridge doesn't exist anymore */
+			/* cannot use DiagDirection::Invalid for signal update because the bridge doesn't exist anymore */
 			AddSideToSignalBuffer(tile,    ReverseDiagDir(direction), owner);
 			AddSideToSignalBuffer(endtile, direction,                 owner);
 
@@ -1736,10 +1736,10 @@ static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y, bool grou
 
 			switch (dir) {
 				default: NOT_REACHED();
-				case DIAGDIR_NE: tileh = SLOPE_NE; break;
-				case DIAGDIR_SE: tileh = SLOPE_SE; break;
-				case DIAGDIR_SW: tileh = SLOPE_SW; break;
-				case DIAGDIR_NW: tileh = SLOPE_NW; break;
+				case DiagDirection::NE: tileh = SLOPE_NE; break;
+				case DiagDirection::SE: tileh = SLOPE_SE; break;
+				case DiagDirection::SW: tileh = SLOPE_SW; break;
+				case DiagDirection::NW: tileh = SLOPE_NW; break;
 			}
 		}
 	}
@@ -1856,7 +1856,7 @@ static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType
 	if (transport_type != mode || (transport_type == TRANSPORT_ROAD && !HasTileRoadType(tile, (RoadTramType)sub_mode))) return 0;
 
 	DiagDirection dir = GetTunnelBridgeDirection(tile);
-	if (side != INVALID_DIAGDIR && side != ReverseDiagDir(dir)) return 0;
+	if (side != DiagDirection::Invalid && side != ReverseDiagDir(dir)) return 0;
 	return CombineTrackStatus(TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir)), TRACKDIR_BIT_NONE);
 }
 
@@ -1968,7 +1968,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 	/* New position of the vehicle on the tile */
 	uint8_t pos = (DiagDirToAxis(vdir) == Axis::X ? x : y) & TILE_UNIT_MASK;
 	/* Number of units moved by the vehicle since entering the tile */
-	uint8_t frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
+	uint8_t frame = (vdir == DiagDirection::NE || vdir == DiagDirection::NW) ? TILE_SIZE - 1 - pos : pos;
 
 	if (IsTunnel(tile)) {
 		if (v->type == VehicleType::Train) {
@@ -2106,7 +2106,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags fla
 		auto [tileh_old, z_old] = GetTileSlopeZ(tile);
 
 		/* Check if new slope is valid for bridges in general (so we can safely call GetBridgeFoundation()) */
-		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {
+		if ((direction == DiagDirection::NW) || (direction == DiagDirection::NE)) {
 			CheckBridgeSlope(BRIDGE_PIECE_SOUTH, axis, tileh_old, z_old);
 			res = CheckBridgeSlope(BRIDGE_PIECE_SOUTH, axis, tileh_new, z_new);
 		} else {

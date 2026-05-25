@@ -10,21 +10,21 @@
 #define TILE_SEQ_LINE(img, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 23, {img, PAL_NONE} },
 
 
-static const DrawTileSeqStruct _depot_gfx_NE[] = {
+static constexpr DrawTileSeqStruct _depot_gfx_NE[] = {
 	TILE_SEQ_LINE(SPR_RAIL_DEPOT_NE | (1 << PALETTE_MODIFIER_COLOUR), 2, 13, 13, 1)
 };
 
-static const DrawTileSeqStruct _depot_gfx_SE[] = {
+static constexpr DrawTileSeqStruct _depot_gfx_SE[] = {
 	TILE_SEQ_LINE(SPR_RAIL_DEPOT_SE_1 | (1 << PALETTE_MODIFIER_COLOUR),  2, 2, 1, 13)
 	TILE_SEQ_LINE(SPR_RAIL_DEPOT_SE_2 | (1 << PALETTE_MODIFIER_COLOUR), 13, 2, 1, 13)
 };
 
-static const DrawTileSeqStruct _depot_gfx_SW[] = {
+static constexpr DrawTileSeqStruct _depot_gfx_SW[] = {
 	TILE_SEQ_LINE(SPR_RAIL_DEPOT_SW_1 | (1 << PALETTE_MODIFIER_COLOUR), 2,  2, 13, 1)
 	TILE_SEQ_LINE(SPR_RAIL_DEPOT_SW_2 | (1 << PALETTE_MODIFIER_COLOUR), 2, 13, 13, 1)
 };
 
-static const DrawTileSeqStruct _depot_gfx_NW[] = {
+static constexpr DrawTileSeqStruct _depot_gfx_NW[] = {
 	TILE_SEQ_LINE(SPR_RAIL_DEPOT_NW | (1 << PALETTE_MODIFIER_COLOUR), 13, 2, 1, 13)
 };
 

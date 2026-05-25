@@ -1572,7 +1572,7 @@ void VehicleEnterDepot(Vehicle *v)
 			SetDepotReservation(t->tile, false);
 			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(t->tile);
 
-			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
+			UpdateSignalsOnSegment(t->tile, DiagDirection::Invalid, t->owner);
 			t->wait_counter = 0;
 			t->force_proceed = TFP_NONE;
 			t->flags.Reset(VehicleRailFlag::Reversed);

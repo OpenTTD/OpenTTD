@@ -114,7 +114,7 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 	bool has_canal = false;
 	bool has_river = false;
 
-	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
 		Tile neighbour = TileAddByDiagDir(t, dir);
 		switch (GetTileType(neighbour)) {
 			case TileType::Water:
@@ -436,7 +436,7 @@ static void FixOwnerOfRailTrack(Tile t)
 	}
 
 	/* try to find any connected rail */
-	for (DiagDirection dd = DIAGDIR_BEGIN; dd < DIAGDIR_END; dd++) {
+	for (DiagDirection dd = DiagDirection::Begin; dd < DiagDirection::End; dd++) {
 		TileIndex tt{t + TileOffsByDiagDir(dd)};
 		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd) != 0 &&
 				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)) != 0 &&
@@ -1285,10 +1285,10 @@ bool AfterLoadGame()
 				if (dir != DirToDiagDir(v->direction)) continue;
 				switch (dir) {
 					default: SlErrorCorrupt("Invalid vehicle direction");
-					case DIAGDIR_NE: if ((v->x_pos & 0xF) !=  0)            continue; break;
-					case DIAGDIR_SE: if ((v->y_pos & 0xF) != TILE_SIZE - 1) continue; break;
-					case DIAGDIR_SW: if ((v->x_pos & 0xF) != TILE_SIZE - 1) continue; break;
-					case DIAGDIR_NW: if ((v->y_pos & 0xF) !=  0)            continue; break;
+					case DiagDirection::NE: if ((v->x_pos & 0xF) !=  0)            continue; break;
+					case DiagDirection::SE: if ((v->y_pos & 0xF) != TILE_SIZE - 1) continue; break;
+					case DiagDirection::SW: if ((v->x_pos & 0xF) != TILE_SIZE - 1) continue; break;
+					case DiagDirection::NW: if ((v->y_pos & 0xF) !=  0)            continue; break;
 				}
 			} else if (v->z_pos > GetTileMaxPixelZ(TileVirtXY(v->x_pos, v->y_pos))) {
 				v->tile = GetNorthernBridgeEnd(v->tile);
@@ -2647,7 +2647,7 @@ bool AfterLoadGame()
 
 			/* Have we passed the visibility "switch" state already? */
 			uint8_t pos = (DiagDirToAxis(vdir) == Axis::X ? v->x_pos : v->y_pos) & TILE_UNIT_MASK;
-			uint8_t frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
+			uint8_t frame = (vdir == DiagDirection::NE || vdir == DiagDirection::NW) ? TILE_SIZE - 1 - pos : pos;
 			extern const DiagDirectionIndexArray<uint8_t> _tunnel_visibility_frame;
 
 			/* Should the vehicle be hidden or not? */
@@ -2916,11 +2916,11 @@ bool AfterLoadGame()
 			if (IsTileType(t, TileType::Clear) && IsClearGround(t, ClearGround::Fields)) continue;
 			uint fence = GB(t.m4(), 5, 3);
 			if (fence != 0 && IsTileType(TileAddXY(t, 1, 0), TileType::Clear) && IsClearGround(TileAddXY(t, 1, 0), ClearGround::Fields)) {
-				SetFence(TileAddXY(t, 1, 0), DIAGDIR_NE, fence);
+				SetFence(TileAddXY(t, 1, 0), DiagDirection::NE, fence);
 			}
 			fence = GB(t.m4(), 2, 3);
 			if (fence != 0 && IsTileType(TileAddXY(t, 0, 1), TileType::Clear) && IsClearGround(TileAddXY(t, 0, 1), ClearGround::Fields)) {
-				SetFence(TileAddXY(t, 0, 1), DIAGDIR_NW, fence);
+				SetFence(TileAddXY(t, 0, 1), DiagDirection::NW, fence);
 			}
 			SB(t.m4(), 2, 3, 0);
 			SB(t.m4(), 5, 3, 0);
@@ -3190,10 +3190,10 @@ bool AfterLoadGame()
 			DiagDirection shipdiagdir = DirToDiagDir(s->direction);
 			switch (shipdiagdir) {
 				default: NOT_REACHED();
-				case DIAGDIR_NE: second_half = x < 8; break;
-				case DIAGDIR_NW: second_half = y < 8; break;
-				case DIAGDIR_SW: second_half = x > 8; break;
-				case DIAGDIR_SE: second_half = y > 8; break;
+				case DiagDirection::NE: second_half = x < 8; break;
+				case DiagDirection::NW: second_half = y < 8; break;
+				case DiagDirection::SW: second_half = x > 8; break;
+				case DiagDirection::SE: second_half = y > 8; break;
 			}
 
 			DiagDirection slopediagdir = GetInclinedSlopeDirection(GetTileSlope(s->tile));

@@ -33,7 +33,7 @@
 
 	auto [start_tileh, start_z] = ::GetTileSlopeZ(tile);
 	DiagDirection direction = ::GetInclinedSlopeDirection(start_tileh);
-	if (direction == INVALID_DIAGDIR) return INVALID_TILE;
+	if (direction == DiagDirection::Invalid) return INVALID_TILE;
 
 	TileIndexDiff delta = ::TileOffsByDiagDir(direction);
 	int end_z;

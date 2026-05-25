@@ -234,16 +234,16 @@ inline bool IsInclinedSlope(Slope s)
  * Returns the direction of an inclined slope.
  *
  * @param s A #Slope
- * @return The direction the slope goes up in. Or INVALID_DIAGDIR if the slope is not an inclined slope.
+ * @return The direction the slope goes up in. Or DiagDirection::Invalid if the slope is not an inclined slope.
  */
 inline DiagDirection GetInclinedSlopeDirection(Slope s)
 {
 	switch (s) {
-		case SLOPE_NE: return DIAGDIR_NE;
-		case SLOPE_SE: return DIAGDIR_SE;
-		case SLOPE_SW: return DIAGDIR_SW;
-		case SLOPE_NW: return DIAGDIR_NW;
-		default: return INVALID_DIAGDIR;
+		case SLOPE_NE: return DiagDirection::NE;
+		case SLOPE_SE: return DiagDirection::SE;
+		case SLOPE_SW: return DiagDirection::SW;
+		case SLOPE_NW: return DiagDirection::NW;
+		default: return DiagDirection::Invalid;
 	}
 }
 
@@ -256,10 +256,10 @@ inline DiagDirection GetInclinedSlopeDirection(Slope s)
 inline Slope InclinedSlope(DiagDirection dir)
 {
 	switch (dir) {
-		case DIAGDIR_NE: return SLOPE_NE;
-		case DIAGDIR_SE: return SLOPE_SE;
-		case DIAGDIR_SW: return SLOPE_SW;
-		case DIAGDIR_NW: return SLOPE_NW;
+		case DiagDirection::NE: return SLOPE_NE;
+		case DiagDirection::SE: return SLOPE_SE;
+		case DiagDirection::SW: return SLOPE_SW;
+		case DiagDirection::NW: return SLOPE_NW;
 		default: NOT_REACHED();
 	}
 }

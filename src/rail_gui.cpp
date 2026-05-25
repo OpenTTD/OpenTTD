@@ -137,9 +137,9 @@ static constexpr std::array<DiagDirectionIndexArray<Track>, 3> _place_depot_extr
 
 /** Direction to check for existing track pieces. */
 static constexpr std::array<DiagDirectionIndexArray<DiagDirection>, 3> _place_depot_extra_dir{{
-	{DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_SW}, // First additional track for directions 0..3
-	{DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_SE}, // Second additional track
-	{DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_NE}, // Third additional track
+	{DiagDirection::SE, DiagDirection::SW, DiagDirection::SE, DiagDirection::SW}, // First additional track for directions 0..3
+	{DiagDirection::SW, DiagDirection::NW, DiagDirection::NE, DiagDirection::SE}, // Second additional track
+	{DiagDirection::NW, DiagDirection::NE, DiagDirection::NW, DiagDirection::NE}, // Third additional track
 }};
 
 void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, DiagDirection dir)
@@ -1780,7 +1780,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (ir.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (ir.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
-			DrawTrainDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BRAD_DEPOT_NE + to_underlying(DIAGDIR_NE)), _cur_railtype);
+			DrawTrainDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BRAD_DEPOT_NE + to_underlying(DiagDirection::NE)), _cur_railtype);
 		}
 	}
 
@@ -1962,7 +1962,7 @@ static void ShowBuildWaypointPicker(Window *parent)
  */
 void InitializeRailGui()
 {
-	_build_depot_direction = DIAGDIR_NW;
+	_build_depot_direction = DiagDirection::NW;
 	_station_gui.sel_class = STAT_CLASS_DFLT;
 	_station_gui.sel_type = 0;
 	_waypoint_gui.sel_class = STAT_CLASS_WAYP;

@@ -60,12 +60,12 @@ static const DiagDirectionIndexArray<Directions> _owned_ppp_on_pcp{{{
 
 /** Maps a track bit onto two PCP positions */
 static const TrackIndexArray<std::array<DiagDirection, 2>> _pcp_positions{{{
-	{DIAGDIR_NE, DIAGDIR_SW}, // X
-	{DIAGDIR_SE, DIAGDIR_NW}, // Y
-	{DIAGDIR_NW, DIAGDIR_NE}, // UPPER
-	{DIAGDIR_SE, DIAGDIR_SW}, // LOWER
-	{DIAGDIR_SW, DIAGDIR_NW}, // LEFT
-	{DIAGDIR_NE, DIAGDIR_SE}, // RIGHT
+	{DiagDirection::NE, DiagDirection::SW}, // X
+	{DiagDirection::SE, DiagDirection::NW}, // Y
+	{DiagDirection::NW, DiagDirection::NE}, // UPPER
+	{DiagDirection::SE, DiagDirection::SW}, // LOWER
+	{DiagDirection::SW, DiagDirection::NW}, // LEFT
+	{DiagDirection::NE, DiagDirection::SE}, // RIGHT
 }}};
 
 /**

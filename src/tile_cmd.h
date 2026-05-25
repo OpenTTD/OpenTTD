@@ -230,7 +230,7 @@ struct TileTypeProcs {
 
 extern const EnumIndexArray<const TileTypeProcs *, TileType, TileType::MaxSize> _tile_type_procs;
 
-TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side = INVALID_DIAGDIR);
+TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side = DiagDirection::Invalid);
 VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void GetTileDesc(TileIndex tile, TileDesc &td);

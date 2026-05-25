@@ -1066,7 +1066,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 	Trackdir dir;
 
 	if (prev_state == RVSB_WORMHOLE || prev_state == RVSB_IN_DEPOT) {
-		DiagDirection diag_dir = INVALID_DIAGDIR;
+		DiagDirection diag_dir = DiagDirection::Invalid;
 
 		if (IsTileType(tile, TileType::TunnelBridge)) {
 			diag_dir = GetTunnelBridgeDirection(tile);
@@ -1074,7 +1074,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 			diag_dir = ReverseDiagDir(GetRoadDepotDirection(tile));
 		}
 
-		if (diag_dir == INVALID_DIAGDIR) return INVALID_TRACKDIR;
+		if (diag_dir == DiagDirection::Invalid) return INVALID_TRACKDIR;
 		dir = DiagDirToDiagTrackdir(diag_dir);
 	} else {
 		if (already_reversed && (prev->tile != tile || (prev_state < TRACKDIR_END && IsReversingRoadTrackdir(static_cast<Trackdir>(prev_state))))) {
@@ -1381,10 +1381,10 @@ again:
 			turn_around_start_frame = RVC_START_FRAME_AFTER_LONG_TRAM;
 			switch (static_cast<DiagDirection>(rd.x & 0x3)) {
 				default: NOT_REACHED();
-				case DIAGDIR_NW: dir = TRACKDIR_RVREV_SE; break;
-				case DIAGDIR_NE: dir = TRACKDIR_RVREV_SW; break;
-				case DIAGDIR_SE: dir = TRACKDIR_RVREV_NW; break;
-				case DIAGDIR_SW: dir = TRACKDIR_RVREV_NE; break;
+				case DiagDirection::NW: dir = TRACKDIR_RVREV_SE; break;
+				case DiagDirection::NE: dir = TRACKDIR_RVREV_SW; break;
+				case DiagDirection::SE: dir = TRACKDIR_RVREV_NW; break;
+				case DiagDirection::SW: dir = TRACKDIR_RVREV_NE; break;
 			}
 		} else {
 			if (v->IsFrontEngine()) {

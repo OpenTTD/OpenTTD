@@ -53,7 +53,7 @@ static const std::string_view diagdir_names[] = {
  */
 std::string ValueStr(DiagDirection dd)
 {
-	return fmt::format("{} ({})", to_underlying(dd), ItemAt(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV"));
+	return fmt::format("{} ({})", to_underlying(dd), ItemAt(dd, diagdir_names, "UNK", DiagDirection::Invalid, "INV"));
 }
 
 

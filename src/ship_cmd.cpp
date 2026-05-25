@@ -569,7 +569,7 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 {
 	assert(IsDockingTile(tile));
 	/* Check each tile adjacent to docking tile. */
-	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
+	for (DiagDirection d = DiagDirection::Begin; d != DiagDirection::End; d++) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (!IsValidTile(t)) continue;
 		if (IsDockTile(t) && GetStationIndex(t) == station && IsDockWaterPart(t)) return true;
@@ -713,7 +713,7 @@ static void ShipController(Ship *v)
 				if (!IsValidTile(gp.new_tile)) return ReverseShip(v);
 
 				const DiagDirection diagdir = DiagdirBetweenTiles(gp.old_tile, gp.new_tile);
-				assert(diagdir != INVALID_DIAGDIR);
+				assert(diagdir != DiagDirection::Invalid);
 				const TrackBits tracks = GetAvailShipTracks(gp.new_tile, diagdir);
 				if (tracks == TRACK_BIT_NONE) {
 					Trackdir trackdir = INVALID_TRACKDIR;

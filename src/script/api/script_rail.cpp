@@ -143,7 +143,7 @@
 	EnforcePrecondition(false, ::TileX(tile) == ::TileX(front) || ::TileY(tile) == ::TileY(front));
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 
-	DiagDirection entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? DIAGDIR_SE : DIAGDIR_NW) : (::TileX(tile) < ::TileX(front) ? DIAGDIR_SW : DIAGDIR_NE);
+	DiagDirection entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? DiagDirection::SE : DiagDirection::NW) : (::TileX(tile) < ::TileX(front) ? DiagDirection::SW : DiagDirection::NE);
 
 	return ScriptObject::Command<Commands::BuildRailDepot>::Do(tile, (::RailType)ScriptObject::GetRailType(), entrance_dir);
 }

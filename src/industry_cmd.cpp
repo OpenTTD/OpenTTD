@@ -1090,10 +1090,10 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
-	SetupFarmFieldFence(ta.tile, ta.h, type, DIAGDIR_NE);
-	SetupFarmFieldFence(ta.tile, ta.w, type, DIAGDIR_NW);
-	SetupFarmFieldFence(ta.tile + TileDiffXY(ta.w - 1, 0), ta.h, type, DIAGDIR_SW);
-	SetupFarmFieldFence(ta.tile + TileDiffXY(0, ta.h - 1), ta.w, type, DIAGDIR_SE);
+	SetupFarmFieldFence(ta.tile, ta.h, type, DiagDirection::NE);
+	SetupFarmFieldFence(ta.tile, ta.w, type, DiagDirection::NW);
+	SetupFarmFieldFence(ta.tile + TileDiffXY(ta.w - 1, 0), ta.h, type, DiagDirection::SW);
+	SetupFarmFieldFence(ta.tile + TileDiffXY(0, ta.h - 1), ta.w, type, DiagDirection::SE);
 }
 
 void PlantRandomFarmField(const Industry *i)
@@ -1293,10 +1293,10 @@ static bool CheckScaledDistanceFromEdge(TileIndex tile, uint maxdist)
 	if (Map::SizeX() > 256) maxdist_x *= Map::SizeX() / 256;
 	if (Map::SizeY() > 256) maxdist_y *= Map::SizeY() / 256;
 
-	if (DistanceFromEdgeDir(tile, DIAGDIR_NE) < maxdist_x) return true;
-	if (DistanceFromEdgeDir(tile, DIAGDIR_NW) < maxdist_y) return true;
-	if (DistanceFromEdgeDir(tile, DIAGDIR_SW) < maxdist_x) return true;
-	if (DistanceFromEdgeDir(tile, DIAGDIR_SE) < maxdist_y) return true;
+	if (DistanceFromEdgeDir(tile, DiagDirection::NE) < maxdist_x) return true;
+	if (DistanceFromEdgeDir(tile, DiagDirection::NW) < maxdist_y) return true;
+	if (DistanceFromEdgeDir(tile, DiagDirection::SW) < maxdist_x) return true;
+	if (DistanceFromEdgeDir(tile, DiagDirection::SE) < maxdist_y) return true;
 
 	return false;
 }
