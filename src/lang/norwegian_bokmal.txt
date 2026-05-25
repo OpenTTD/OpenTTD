@@ -527,6 +527,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Bygge flyplass
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landskapsverktøy
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant trær
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plasser skilt
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Plasser objekt
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/musikk
@@ -3099,6 +3100,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasser 
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Ctrl+klikk for å fjerne ørkenområde
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Øk størrelse av landareal for heving/senking
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reduser størrelse av landareal for heving/senking
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Senk et hjørne eller areal av et landområde. Hvis størrelsen er 1x1, Ctrl+dra for å senke det første valgte hjørnet, og jevne resten av området til samme høyde. Ctrl+klikk+dra for å velge området diagonalt. Trykk også Shift for å kun vise kostnadsestimat
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Hev et hjørne eller areal av et landområde. Hvis størrelsen er 1x1, Ctrl+dra for å heve det første valgte hjørnet, og jevne resten av området til samme høyde. Ctrl+klikk+dra for å velge området diagonalt. Trykk også Shift for å kun vise kostnadsestimat
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfeldig landskap
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Opprett et nytt scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Tilbakestill landskap
