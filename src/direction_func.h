@@ -128,7 +128,7 @@ inline Direction ChangeDir(Direction d, DirDiff delta)
 inline DiagDirection ReverseDiagDir(DiagDirection d)
 {
 	assert(IsValidDiagDirection(d));
-	return (DiagDirection)(2 ^ d);
+	return static_cast<DiagDirection>(2 ^ to_underlying(d));
 }
 
 /**
@@ -176,7 +176,7 @@ inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 inline DiagDirection DirToDiagDir(Direction dir)
 {
 	assert(IsValidDirection(dir));
-	return (DiagDirection)(dir >> 1);
+	return static_cast<DiagDirection>(dir >> 1);
 }
 
 /**
@@ -192,7 +192,7 @@ inline DiagDirection DirToDiagDir(Direction dir)
 inline Direction DiagDirToDir(DiagDirection dir)
 {
 	assert(IsValidDiagDirection(dir));
-	return (Direction)(dir * 2 + 1);
+	return static_cast<Direction>(to_underlying(dir) * 2 + 1);
 }
 
 
@@ -224,7 +224,7 @@ inline Axis OtherAxis(Axis a)
 inline Axis DiagDirToAxis(DiagDirection d)
 {
 	assert(IsValidDiagDirection(d));
-	return static_cast<Axis>(d & 1);
+	return static_cast<Axis>(to_underlying(d) & 1);
 }
 
 

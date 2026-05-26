@@ -255,7 +255,7 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
  */
 static inline DiagDirection RandomDiagDir()
 {
-	return (DiagDirection)(RandomRange(DIAGDIR_END));
+	return static_cast<DiagDirection>(RandomRange(to_underlying(DIAGDIR_END)));
 }
 
 /** @copydoc DrawTileProc */

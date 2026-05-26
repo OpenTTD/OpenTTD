@@ -576,7 +576,7 @@ inline void TerminateRoadWorks(Tile t)
 inline DiagDirection GetRoadDepotDirection(Tile t)
 {
 	assert(IsRoadDepot(t));
-	return (DiagDirection)GB(t.m5(), 0, 2);
+	return static_cast<DiagDirection>(GB(t.m5(), 0, 2));
 }
 
 
@@ -692,7 +692,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
 {
 	assert(IsRoadDepotTile(tile));
-	SB(tile.m5(), 0, 2, dir);
+	SB(tile.m5(), 0, 2, to_underlying(dir));
 }
 
 /**
@@ -710,7 +710,7 @@ inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = INVALID_ROADTYPE;
-	tile.m5() = to_underlying(RoadTileType::Depot) << 6 | dir;
+	tile.m5() = to_underlying(RoadTileType::Depot) << 6 | to_underlying(dir);
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = owner.base();
 	tile.m8() = INVALID_ROADTYPE << 6;

@@ -235,7 +235,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
 	TileArea ta(start_tile, end_tile);
 	DiagDirection ddir = _roadstop_gui.orientation;
 	bool drive_through = ddir >= DIAGDIR_END;
-	if (drive_through) ddir = static_cast<DiagDirection>(ddir - DIAGDIR_END); // Adjust picker result to actual direction.
+	if (drive_through) ddir = ddir - DIAGDIR_END; // Adjust picker result to actual direction.
 	RoadStopClassID spec_class = _roadstop_gui.sel_class;
 	uint16_t spec_index = _roadstop_gui.sel_type;
 
@@ -1193,7 +1193,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (ir.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (ir.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
-			DrawRoadDepotSprite(x, y, (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
+			DrawRoadDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BROD_DEPOT_NE + to_underlying(DIAGDIR_NE)), _cur_roadtype);
 		}
 	}
 
@@ -1322,11 +1322,11 @@ public:
 	{
 		const auto *spec = this->GetSpec(cls_id, id);
 		if (spec == nullptr) {
-			StationPickerDrawSprite(x, y, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, INVALID_RAILTYPE, _cur_roadtype, _roadstop_gui.orientation);
+			StationPickerDrawSprite(x, y, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, INVALID_RAILTYPE, _cur_roadtype, to_underlying(_roadstop_gui.orientation));
 		} else {
 			DiagDirection orientation = _roadstop_gui.orientation;
 			if (orientation < DIAGDIR_END && spec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) orientation = DIAGDIR_END;
-			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, (uint8_t)orientation);
+			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, to_underlying(orientation));
 		}
 	}
 

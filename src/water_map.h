@@ -495,7 +495,7 @@ inline void MakeLockTile(Tile t, Owner o, LockPart part, DiagDirection dir, Wate
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = to_underlying(part) << WBL_LOCK_PART_BEGIN | dir << WBL_LOCK_ORIENT_BEGIN;
+	t.m5() = to_underlying(part) << WBL_LOCK_PART_BEGIN | to_underlying(dir) << WBL_LOCK_ORIENT_BEGIN;
 	SetWaterTileType(t, WaterTileType::Lock);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;

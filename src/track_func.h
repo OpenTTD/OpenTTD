@@ -517,7 +517,7 @@ inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir)
 inline Track DiagDirToDiagTrack(DiagDirection diagdir)
 {
 	assert(IsValidDiagDirection(diagdir));
-	return (Track)(diagdir & 1);
+	return static_cast<Track>(to_underlying(diagdir) & 1);
 }
 
 /**

@@ -1379,7 +1379,7 @@ again:
 			 * going to be properly shown.
 			 */
 			turn_around_start_frame = RVC_START_FRAME_AFTER_LONG_TRAM;
-			switch (rd.x & 0x3) {
+			switch (static_cast<DiagDirection>(rd.x & 0x3)) {
 				default: NOT_REACHED();
 				case DIAGDIR_NW: dir = TRACKDIR_RVREV_SE; break;
 				case DIAGDIR_NE: dir = TRACKDIR_RVREV_SW; break;
