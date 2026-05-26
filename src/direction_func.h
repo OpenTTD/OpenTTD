@@ -42,7 +42,7 @@ inline bool IsValidDirection(Direction d)
  */
 inline bool IsValidAxis(Axis d)
 {
-	return d < AXIS_END;
+	return d < Axis::End;
 }
 
 /**
@@ -247,7 +247,7 @@ inline DiagDirection AxisToDiagDir(Axis a)
 inline DiagDirections AxisToDiagDirs(Axis a)
 {
 	assert(IsValidAxis(a));
-	return a == AXIS_X
+	return a == Axis::X
 		? DiagDirections{DIAGDIR_NE, DIAGDIR_SW}
 		: DiagDirections{DIAGDIR_SE, DIAGDIR_NW};
 }

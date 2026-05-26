@@ -506,7 +506,7 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 	Axis axis = GetBridgeAxis(ti->tile);
 	TileLocationGroup tlg = GetTileLocationGroup(ti->tile);
 
-	RailCatenarySprite offset = (RailCatenarySprite)(axis == AXIS_X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH);
+	RailCatenarySprite offset = (RailCatenarySprite)(axis == Axis::X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH);
 
 	const SortableSpriteStruct *sss;
 	if ((length % 2) && num == length) {
@@ -531,9 +531,9 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 	/* Finished with wires, draw pylons
 	 * every other tile needs a pylon on the northern end */
 	if (num % 2) {
-		DiagDirection pcp_pos = (axis == AXIS_X ? DIAGDIR_NE : DIAGDIR_NW);
-		Direction ppp_pos = (axis == AXIS_X ? DIR_NW : DIR_NE);
-		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
+		DiagDirection pcp_pos = (axis == Axis::X ? DIAGDIR_NE : DIAGDIR_NW);
+		Direction ppp_pos = (axis == Axis::X ? DIR_NW : DIR_NE);
+		if (HasBit(tlg, (axis == Axis::X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
 		uint x = ti->x + _x_pcp_offsets[pcp_pos] + _x_ppp_offsets[ppp_pos];
 		uint y = ti->y + _y_pcp_offsets[pcp_pos] + _y_ppp_offsets[ppp_pos];
 		AddSortableSpriteToDraw(pylon_base + _pylon_sprites[ppp_pos], PAL_NONE, x, y, height, pylon_bounds, IsTransparencySet(TO_CATENARY));
@@ -541,9 +541,9 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 
 	/* need a pylon on the southern end of the bridge */
 	if (GetTunnelBridgeLength(ti->tile, start) + 1 == length) {
-		DiagDirection pcp_pos = (axis == AXIS_X ? DIAGDIR_SW : DIAGDIR_SE);
-		Direction ppp_pos = (axis == AXIS_X ? DIR_NW : DIR_NE);
-		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
+		DiagDirection pcp_pos = (axis == Axis::X ? DIAGDIR_SW : DIAGDIR_SE);
+		Direction ppp_pos = (axis == Axis::X ? DIR_NW : DIR_NE);
+		if (HasBit(tlg, (axis == Axis::X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
 		uint x = ti->x + _x_pcp_offsets[pcp_pos] + _x_ppp_offsets[ppp_pos];
 		uint y = ti->y + _y_pcp_offsets[pcp_pos] + _y_ppp_offsets[ppp_pos];
 		AddSortableSpriteToDraw(pylon_base + _pylon_sprites[ppp_pos], PAL_NONE, x, y, height, pylon_bounds, IsTransparencySet(TO_CATENARY));

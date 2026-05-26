@@ -39,8 +39,8 @@
 
 /** Sprite table for middle part of aqueduct. */
 static const PalSpriteID _aqueduct_sprite_table_middle[] = {
-	{SPR_AQUEDUCT_MIDDLE_X, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_X, PAL_NONE}, {0x0, PAL_NONE}, // AXIS_X
-	{SPR_AQUEDUCT_MIDDLE_Y, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_Y, PAL_NONE}, {0x0, PAL_NONE}, // AIXS_Y
+	{SPR_AQUEDUCT_MIDDLE_X, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_X, PAL_NONE}, {0x0, PAL_NONE}, // Axis::X
+	{SPR_AQUEDUCT_MIDDLE_Y, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_Y, PAL_NONE}, {0x0, PAL_NONE}, // Axis::Y
 };
 
 /** Sprite table for head part of aqueduct. */

@@ -125,8 +125,8 @@ static ChangeInfoResult BridgeChangeInfo(uint first, uint last, int prop, ByteRe
 				uint16_t tiles = buf.ReadExtendedByte();
 				for (uint j = 0; j != tiles; ++j) {
 					if (j < std::size(bridge->pillar_flags)) {
-						bridge->pillar_flags[j][AXIS_X] = BridgePillarFlags{buf.ReadByte()};
-						bridge->pillar_flags[j][AXIS_Y] = BridgePillarFlags{buf.ReadByte()};
+						bridge->pillar_flags[j][Axis::X] = BridgePillarFlags{buf.ReadByte()};
+						bridge->pillar_flags[j][Axis::Y] = BridgePillarFlags{buf.ReadByte()};
 					} else {
 						buf.ReadWord();
 					}

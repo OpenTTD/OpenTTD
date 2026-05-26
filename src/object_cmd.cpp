@@ -819,7 +819,7 @@ static bool TryBuildCoastLighthouse()
 	int perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
 	DiagDirection dir;
 	for (dir = DIAGDIR_NE; perimeter > 0; dir++) {
-		perimeter -= (DiagDirToAxis(dir) == AXIS_X) ? maxx : maxy;
+		perimeter -= (DiagDirToAxis(dir) == Axis::X) ? maxx : maxy;
 	}
 
 	TileIndex tile;

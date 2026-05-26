@@ -128,7 +128,7 @@ uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int
 {
 	uint32_t retval = 0;
 
-	if (axis == AXIS_X) {
+	if (axis == Axis::X) {
 		std::swap(platforms, length);
 		std::swap(x, y);
 	}
@@ -165,7 +165,7 @@ uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int
 static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool check_type, bool check_axis)
 {
 	uint8_t orig_type = 0;
-	Axis orig_axis = AXIS_X;
+	Axis orig_axis = Axis::X;
 	StationID sid = GetStationIndex(tile);
 
 	if (check_type) orig_type = GetCustomStationSpecIndex(tile);
@@ -214,8 +214,8 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 	Axis axis = GetRailStationAxis(tile);
 
 	/* Choose appropriate lookup table to use */
-	const Direction *dir = axis == AXIS_X ? x_dir : y_dir;
-	const DiagDirection *diagdir = axis == AXIS_X ? x_exits : y_exits;
+	const Direction *dir = axis == Axis::X ? x_dir : y_dir;
+	const DiagDirection *diagdir = axis == Axis::X ? x_exits : y_exits;
 
 	uint32_t res = 0;
 	uint i;
@@ -296,12 +296,12 @@ TownScopeResolver *StationResolverObject::GetTown()
 			case 0x43: return GetCompanyInfo(_current_company); // Station owner
 			case 0x44: return 2;                // PBS status
 			case 0x67: // Land info of nearby tile
-				if (this->axis != INVALID_AXIS && this->tile != INVALID_TILE) {
+				if (this->axis != Axis::Invalid && this->tile != INVALID_TILE) {
 					TileIndex tile = this->tile;
 					if (parameter != 0) tile = GetNearbyTile(parameter, tile, true, this->axis); // only perform if it is required
 
 					Slope tileh = GetTileSlope(tile);
-					bool swap = (this->axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
+					bool swap = (this->axis == Axis::Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
 
 					return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
 				}
@@ -362,7 +362,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 
 			Slope tileh = GetTileSlope(tile);
-			bool swap = (axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
+			bool swap = (axis == Axis::Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
 
 			return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
 		}
@@ -701,8 +701,8 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 	Slope slope = GetTileSlope(cur_tile);
 
 	StationResolverObject object(statspec, nullptr, cur_tile, CBID_STATION_LAND_SLOPE_CHECK,
-			(slope << 4) | (slope ^ (axis == AXIS_Y && HasBit(slope, CORNER_W) != HasBit(slope, CORNER_E) ? SLOPE_EW : 0)),
-			(numtracks << 24) | (plat_len << 16) | (axis == AXIS_Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff)));
+			(slope << 4) | (slope ^ (axis == Axis::Y && HasBit(slope, CORNER_W) != HasBit(slope, CORNER_E) ? SLOPE_EW : 0)),
+			(numtracks << 24) | (plat_len << 16) | (axis == Axis::Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff)));
 	object.station_scope.axis = axis;
 
 	std::array<int32_t, 16> regs100;

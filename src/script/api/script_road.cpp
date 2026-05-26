@@ -530,7 +530,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, !one_way || RoadTypeIsRoad(ScriptObject::GetRoadType()));
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	Axis axis = ::TileY(start) != ::TileY(end) ? AXIS_Y : AXIS_X;
+	Axis axis = ::TileY(start) != ::TileY(end) ? Axis::Y : Axis::X;
 	return ScriptObject::Command<Commands::BuildRoadLong>::Do(end, start, ScriptObject::GetRoadType(), axis, one_way ? DisallowedRoadDirection::Northbound : DisallowedRoadDirections{}, (start < end) == !full, (start < end) != !full, true);
 }
 
@@ -606,7 +606,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	return ScriptObject::Command<Commands::RemoveRoadLong>::Do(end, start, ScriptObject::GetRoadType(), ::TileY(start) != ::TileY(end) ? AXIS_Y : AXIS_X, start < end, start >= end);
+	return ScriptObject::Command<Commands::RemoveRoadLong>::Do(end, start, ScriptObject::GetRoadType(), ::TileY(start) != ::TileY(end) ? Axis::Y : Axis::X, start < end, start >= end);
 }
 
 /* static */ bool ScriptRoad::RemoveRoadFull(TileIndex start, TileIndex end)
@@ -618,7 +618,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	return ScriptObject::Command<Commands::RemoveRoadLong>::Do(end, start, ScriptObject::GetRoadType(), ::TileY(start) != ::TileY(end) ? AXIS_Y : AXIS_X, start >= end, start < end);
+	return ScriptObject::Command<Commands::RemoveRoadLong>::Do(end, start, ScriptObject::GetRoadType(), ::TileY(start) != ::TileY(end) ? Axis::Y : Axis::X, start >= end, start < end);
 }
 
 /* static */ bool ScriptRoad::RemoveRoadDepot(TileIndex tile)

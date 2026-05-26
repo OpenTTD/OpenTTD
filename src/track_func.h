@@ -56,8 +56,8 @@ inline bool IsValidTrackdir(Trackdir trackdir)
 
 /**
  * Convert an Axis to the corresponding Track
- * AXIS_X -> TRACK_X
- * AXIS_Y -> TRACK_Y
+ * Axis::X -> TRACK_X
+ * Axis::Y -> TRACK_Y
  * Uses the fact that they share the same internal encoding
  *
  * @param a the axis to convert

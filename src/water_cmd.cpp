@@ -993,7 +993,7 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WaterTileType::Lock:
 			DrawWaterLock(ti);
-			DrawBridgeMiddle(ti, DiagDirToAxis(GetLockDirection(ti->tile)) == AXIS_X
+			DrawBridgeMiddle(ti, DiagDirToAxis(GetLockDirection(ti->tile)) == Axis::X
 				? BridgePillarFlags{BridgePillarFlag::EdgeNE, BridgePillarFlag::EdgeSW}
 				: BridgePillarFlags{BridgePillarFlag::EdgeNW, BridgePillarFlag::EdgeSE});
 			break;

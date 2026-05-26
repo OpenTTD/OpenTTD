@@ -109,12 +109,12 @@ Axis GetAxisForNewRailWaypoint(TileIndex tile)
 	if (IsRailWaypointTile(tile)) return GetRailStationAxis(tile);
 
 	/* Non-plain rail type, no valid axis for waypoints. */
-	if (!IsTileType(tile, TileType::Railway) || GetRailTileType(tile) != RailTileType::Normal) return INVALID_AXIS;
+	if (!IsTileType(tile, TileType::Railway) || GetRailTileType(tile) != RailTileType::Normal) return Axis::Invalid;
 
 	switch (GetTrackBits(tile)) {
-		case TRACK_BIT_X: return AXIS_X;
-		case TRACK_BIT_Y: return AXIS_Y;
-		default:          return INVALID_AXIS;
+		case TRACK_BIT_X: return Axis::X;
+		case TRACK_BIT_Y: return Axis::Y;
+		default: return Axis::Invalid;
 	}
 }
 
@@ -131,14 +131,14 @@ Axis GetAxisForNewRoadWaypoint(TileIndex tile)
 	if (IsRoadWaypointTile(tile)) return GetDriveThroughStopAxis(tile);
 
 	/* Non-plain road type, no valid axis for waypoints. */
-	if (!IsNormalRoadTile(tile)) return INVALID_AXIS;
+	if (!IsNormalRoadTile(tile)) return Axis::Invalid;
 
 	RoadBits bits = GetAllRoadBits(tile);
 
-	if (!bits.Any(ROAD_Y)) return AXIS_X;
-	if (!bits.Any(ROAD_X)) return AXIS_Y;
+	if (!bits.Any(ROAD_Y)) return Axis::X;
+	if (!bits.Any(ROAD_X)) return Axis::Y;
 
-	return INVALID_AXIS;
+	return Axis::Invalid;
 }
 
 extern CommandCost ClearTile_Station(TileIndex tile, DoCommandFlags flags);
@@ -226,9 +226,9 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	if (spec_index >= cls->GetSpecCount()) return CMD_ERROR;
 
 	/* The number of parts to build */
-	uint8_t count = axis == AXIS_X ? height : width;
+	uint8_t count = axis == Axis::X ? height : width;
 
-	if ((axis == AXIS_X ? width : height) != 1) return CMD_ERROR;
+	if ((axis == Axis::X ? width : height) != 1) return CMD_ERROR;
 	if (count == 0 || count > _settings_game.station.station_spread) return CMD_ERROR;
 
 	bool reuse = (station_to_join != NEW_STATION);
@@ -362,9 +362,9 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 	const RoadStopSpec *roadstopspec = RoadStopClass::Get(spec_class)->GetSpec(spec_index);
 
 	/* The number of parts to build */
-	uint8_t count = axis == AXIS_X ? height : width;
+	uint8_t count = axis == Axis::X ? height : width;
 
-	if ((axis == AXIS_X ? width : height) != 1) return CMD_ERROR;
+	if ((axis == Axis::X ? width : height) != 1) return CMD_ERROR;
 	if (count == 0 || count > _settings_game.station.station_spread) return CMD_ERROR;
 
 	bool reuse = (station_to_join != NEW_STATION);

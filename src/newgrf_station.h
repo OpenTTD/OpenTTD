@@ -54,7 +54,7 @@ struct StationScopeResolver : public ScopeResolver {
 	 * @param tile %Tile of the station.
 	 */
 	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
-		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(INVALID_AXIS)
+		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(Axis::Invalid)
 	{
 	}
 

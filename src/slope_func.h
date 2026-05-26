@@ -379,7 +379,7 @@ inline Foundation FlatteningFoundation(Slope s)
  */
 inline Foundation InclinedFoundation(Axis axis)
 {
-	return (axis == AXIS_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
+	return (axis == Axis::X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
 }
 
 /**

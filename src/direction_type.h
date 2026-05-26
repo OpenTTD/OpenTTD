@@ -123,11 +123,11 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirDiff)
  * (and south-east edge). The Y axis must be so the one which goes
  * align the north-east edge (and south-west) edge.
  */
-enum Axis : uint8_t {
-	AXIS_X = 0,          ///< The X axis
-	AXIS_Y = 1,          ///< The y axis
-	AXIS_END,            ///< Used for iterations
-	INVALID_AXIS = 0xFF, ///< Flag for an invalid Axis
+enum class Axis : uint8_t {
+	X = 0, ///< The X axis
+	Y = 1, ///< The y axis
+	End, ///< End marker.
+	Invalid = 0xFF, ///< Flag for an invalid Axis
 };
 DECLARE_ENUM_AS_ADDABLE(Axis)
 
@@ -136,6 +136,6 @@ DECLARE_ENUM_AS_ADDABLE(Axis)
  * @tparam T the type contained within the array.
  */
 template <typename T>
-using AxisIndexArray = EnumIndexArray<T, Axis, AXIS_END>;
+using AxisIndexArray = EnumIndexArray<T, Axis, Axis::End>;
 
 #endif /* DIRECTION_TYPE_H */

@@ -266,12 +266,12 @@ static void PlaceRoad_Waypoint(TileIndex tile)
 	Axis axis = GetAxisForNewRoadWaypoint(tile);
 	if (IsValidAxis(axis)) {
 		/* Valid tile for waypoints */
-		VpStartPlaceSizing(tile, axis == AXIS_X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_ROAD_WAYPOINT);
+		VpStartPlaceSizing(tile, axis == Axis::X ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_ROAD_WAYPOINT);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	} else {
 		/* Tile where we can't build road waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
-		Command<Commands::BuildRoadWaypoint>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, tile, AXIS_X, 1, 1, ROADSTOP_CLASS_WAYP, 0, StationID::Invalid(), false);
+		Command<Commands::BuildRoadWaypoint>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, tile, Axis::X, 1, 1, ROADSTOP_CLASS_WAYP, 0, StationID::Invalid(), false);
 	}
 }
 
@@ -285,7 +285,7 @@ static void PlaceRoad_BusStation(TileIndex tile)
 		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_BUSSTOP);
 	} else {
 		if (_roadstop_gui.orientation < DIAGDIR_END) { // Not a drive-through stop.
-			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_BUSSTOP);
+			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == Axis::X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_BUSSTOP);
 		} else {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_BUSSTOP);
 		}
@@ -303,7 +303,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_TRUCKSTOP);
 	} else {
 		if (_roadstop_gui.orientation < DIAGDIR_END) { // Not a drive-through stop.
-			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
+			VpStartPlaceSizing(tile, (DiagDirToAxis(_roadstop_gui.orientation) == Axis::X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
 		} else {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
 		}
@@ -652,19 +652,19 @@ struct BuildRoadToolbarWindow : Window {
 		_one_way_button_clicked = RoadTypeIsRoad(this->roadtype) ? this->IsWidgetLowered(WID_ROT_ONE_WAY) : false;
 		switch (this->last_started_action) {
 			case WID_ROT_ROAD_X:
-				_place_road_dir = AXIS_X;
+				_place_road_dir = Axis::X;
 				_place_road_start_half_x = _tile_fract_coords.x >= 8;
 				VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_X_DIR);
 				break;
 
 			case WID_ROT_ROAD_Y:
-				_place_road_dir = AXIS_Y;
+				_place_road_dir = Axis::Y;
 				_place_road_start_half_y = _tile_fract_coords.y >= 8;
 				VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_Y_DIR);
 				break;
 
 			case WID_ROT_AUTOROAD:
-				_place_road_dir = INVALID_AXIS;
+				_place_road_dir = Axis::Invalid;
 				_place_road_start_half_x = _tile_fract_coords.x >= 8;
 				_place_road_start_half_y = _tile_fract_coords.y >= 8;
 				VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
@@ -751,11 +751,11 @@ struct BuildRoadToolbarWindow : Window {
 						( (_tile_fract_coords.x < _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) < 16) ||
 						(_tile_fract_coords.x > _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) > 16) ))) {
 					/* Set dir = X */
-					_place_road_dir = AXIS_X;
+					_place_road_dir = Axis::X;
 					_place_road_end_half = pt.x & 8;
 				} else {
 					/* Set dir = Y */
-					_place_road_dir = AXIS_Y;
+					_place_road_dir = Axis::Y;
 					_place_road_end_half = pt.y & 8;
 				}
 
@@ -790,7 +790,7 @@ struct BuildRoadToolbarWindow : Window {
 				case DDSP_PLACE_ROAD_X_DIR:
 				case DDSP_PLACE_ROAD_Y_DIR:
 				case DDSP_PLACE_AUTOROAD: {
-					bool start_half = _place_road_dir == AXIS_Y ? _place_road_start_half_y : _place_road_start_half_x;
+					bool start_half = _place_road_dir == Axis::Y ? _place_road_start_half_y : _place_road_start_half_x;
 
 					if (_remove_button_clicked) {
 						Command<Commands::RemoveRoadLong>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,
@@ -809,7 +809,7 @@ struct BuildRoadToolbarWindow : Window {
 							Command<Commands::RemoveFromRoadWaypoint>::Post(STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile);
 						} else {
 							TileArea ta(start_tile, end_tile);
-							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
+							Axis axis = select_method == VPM_X_LIMITED ? Axis::X : Axis::Y;
 							bool adjacent = _ctrl_pressed;
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
