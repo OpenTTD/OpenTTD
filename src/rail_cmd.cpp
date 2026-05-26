@@ -2992,7 +2992,7 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
 			/* Leave the depot. */
 			if ((v = v->GetMovingNext()) != nullptr) {
 				v->vehstatus.Reset(VehState::Hidden);
-				Train::From(v)->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+				Train::From(v)->track = AxisToTrackBits(DiagDirToAxis(dir));
 			}
 		}
 	} else if (_fractcoords_enter[dir] == fract_coord) {

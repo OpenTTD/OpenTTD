@@ -347,7 +347,7 @@ inline Axis GetCrossingRoadAxis(Tile t)
 inline Axis GetCrossingRailAxis(Tile t)
 {
 	assert(IsLevelCrossing(t));
-	return OtherAxis((Axis)GetCrossingRoadAxis(t));
+	return OtherAxis(GetCrossingRoadAxis(t));
 }
 
 /**
@@ -357,7 +357,7 @@ inline Axis GetCrossingRailAxis(Tile t)
  */
 inline RoadBits GetCrossingRoadBits(Tile tile)
 {
-	return GetCrossingRoadAxis(tile) == AXIS_X ? ROAD_X : ROAD_Y;
+	return AxisToRoadBits(GetCrossingRoadAxis(tile));
 }
 
 /**
