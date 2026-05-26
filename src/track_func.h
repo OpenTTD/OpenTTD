@@ -111,7 +111,7 @@ inline TrackBits CornerToTrackBits(Corner corner)
 inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
-	return (TrackdirBits)(1 << trackdir);
+	return static_cast<TrackdirBits>(1 << trackdir);
 }
 
 /**
@@ -294,7 +294,7 @@ inline Trackdir TrackToTrackdir(Track track)
 inline TrackdirBits TrackToTrackdirBits(Track track)
 {
 	Trackdir td = TrackToTrackdir(track);
-	return (TrackdirBits)(TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(ReverseTrackdir(td)));
+	return static_cast<TrackdirBits>(TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(ReverseTrackdir(td)));
 }
 
 /**
@@ -318,7 +318,7 @@ inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits)
  */
 inline TrackdirBits TrackBitsToTrackdirBits(TrackBits bits)
 {
-	return (TrackdirBits)(bits * 0x101);
+	return static_cast<TrackdirBits>(bits * 0x101);
 }
 
 /**
@@ -353,7 +353,7 @@ inline bool HasTrackdir(TrackdirBits trackdirs, Trackdir trackdir)
  */
 inline TrackdirBits TrackStatusToTrackdirBits(TrackStatus ts)
 {
-	return (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
+	return static_cast<TrackdirBits>(ts & TRACKDIR_BIT_MASK);
 }
 
 /**
@@ -377,7 +377,7 @@ inline TrackBits TrackStatusToTrackBits(TrackStatus ts)
  */
 inline TrackdirBits TrackStatusToRedSignals(TrackStatus ts)
 {
-	return (TrackdirBits)((ts >> 16) & TRACKDIR_BIT_MASK);
+	return static_cast<TrackdirBits>((ts >> 16) & TRACKDIR_BIT_MASK);
 }
 
 /**
