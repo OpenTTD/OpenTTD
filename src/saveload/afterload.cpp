@@ -2648,7 +2648,7 @@ bool AfterLoadGame()
 			/* Have we passed the visibility "switch" state already? */
 			uint8_t pos = (DiagDirToAxis(vdir) == Axis::X ? v->x_pos : v->y_pos) & TILE_UNIT_MASK;
 			uint8_t frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
-			extern const uint8_t _tunnel_visibility_frame[DIAGDIR_END];
+			extern const DiagDirectionIndexArray<uint8_t> _tunnel_visibility_frame;
 
 			/* Should the vehicle be hidden or not? */
 			bool hidden;

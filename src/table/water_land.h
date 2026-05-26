@@ -123,28 +123,27 @@ static const DrawTileSeqStruct _lock_display_upper_nw_seq[] = {
 	TILE_SEQ_LINE(15, 0, 0, 1, TILE_SIZE, LOCK_HEIGHT_UPPER_FRONT, 20 + 3)
 };
 
-static const DrawTileSpriteSpan _lock_display_data[][DIAGDIR_END] = {
-	{ // LockPart::Middle
+/** Sprite layout of a lock for each lock part and direction. */
+static const EnumIndexArray<DiagDirectionIndexArray<DrawTileSpriteSpan>, LockPart, LockPart::End> _lock_display_data{{{
+	{{{ // LockPart::Middle
 		TILE_SPRITE_LINE(1, _lock_display_middle_ne_seq) // NE
 		TILE_SPRITE_LINE(0, _lock_display_middle_se_seq) // SE
 		TILE_SPRITE_LINE(2, _lock_display_middle_sw_seq) // SW
 		TILE_SPRITE_LINE(3, _lock_display_middle_nw_seq) // NW
-	},
-
-	{ // LockPart::Lower
+	}}},
+	{{{ // LockPart::Lower
 		TILE_SPRITE_LINE(0xFDD, _lock_display_lower_ne_seq) // NE
 		TILE_SPRITE_LINE(0xFDD, _lock_display_lower_se_seq) // SE
 		TILE_SPRITE_LINE(0xFDD, _lock_display_lower_sw_seq) // SW
 		TILE_SPRITE_LINE(0xFDD, _lock_display_lower_nw_seq) // NW
-	},
-
-	{ // LockPart::Upper
+	}}},
+	{{{ // LockPart::Upper
 		TILE_SPRITE_LINE(0xFDD, _lock_display_upper_ne_seq) // NE
 		TILE_SPRITE_LINE(0xFDD, _lock_display_upper_se_seq) // SE
 		TILE_SPRITE_LINE(0xFDD, _lock_display_upper_sw_seq) // SW
 		TILE_SPRITE_LINE(0xFDD, _lock_display_upper_nw_seq) // NW
-	},
-};
+	}}},
+}}};
 
 #undef TILE_SEQ_LINE
 #undef TILE_SPRITE_LINE

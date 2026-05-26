@@ -290,8 +290,8 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	TileLocationGroup tlg = GetTileLocationGroup(ti->tile);
 	DiagDirections pcp_status{};
 	DiagDirections override_pcp{};
-	std::array<Directions, DIAGDIR_END> ppp_preferred{};
-	std::array<Directions, DIAGDIR_END> ppp_allowed{};
+	DiagDirectionIndexArray<Directions> ppp_preferred{};
+	DiagDirectionIndexArray<Directions> ppp_allowed{};
 
 	/* Find which rail bits are present, and select the override points.
 	 * We don't draw a pylon:

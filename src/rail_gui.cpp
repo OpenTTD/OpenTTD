@@ -129,18 +129,18 @@ static void PlaceExtraDepotRail(TileIndex tile, DiagDirection dir, Track track)
 }
 
 /** Additional pieces of track to add at the entrance of a depot. */
-static const Track _place_depot_extra_track[12] = {
-	TRACK_LEFT,  TRACK_UPPER, TRACK_UPPER, TRACK_RIGHT, // First additional track for directions 0..3
-	TRACK_X,     TRACK_Y,     TRACK_X,     TRACK_Y,     // Second additional track
-	TRACK_LOWER, TRACK_LEFT,  TRACK_RIGHT, TRACK_LOWER, // Third additional track
-};
+static constexpr std::array<DiagDirectionIndexArray<Track>, 3> _place_depot_extra_track{{
+	{TRACK_LEFT,  TRACK_UPPER, TRACK_UPPER, TRACK_RIGHT}, // First additional track for directions 0..3
+	{TRACK_X,     TRACK_Y,     TRACK_X,     TRACK_Y},     // Second additional track
+	{TRACK_LOWER, TRACK_LEFT,  TRACK_RIGHT, TRACK_LOWER}, // Third additional track
+}};
 
 /** Direction to check for existing track pieces. */
-static const DiagDirection _place_depot_extra_dir[12] = {
-	DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_SW,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_SE,
-	DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_NE,
-};
+static constexpr std::array<DiagDirectionIndexArray<DiagDirection>, 3> _place_depot_extra_dir{{
+	{DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_SW}, // First additional track for directions 0..3
+	{DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_SE}, // Second additional track
+	{DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_NE}, // Third additional track
+}};
 
 void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, DiagDirection dir)
 {
@@ -152,14 +152,14 @@ void CcRailDepot(Commands, const CommandCost &result, TileIndex tile, RailType, 
 	tile += TileOffsByDiagDir(dir);
 
 	if (IsTileType(tile, TileType::Railway)) {
-		PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir], _place_depot_extra_track[dir]);
+		PlaceExtraDepotRail(tile, _place_depot_extra_dir[0][dir], _place_depot_extra_track[0][dir]);
 
 		/* Don't place the rail straight out of the depot of there is another depot across from it. */
 		Tile double_depot_tile = tile + TileOffsByDiagDir(dir);
 		bool is_double_depot = IsValidTile(double_depot_tile) && IsRailDepotTile(double_depot_tile);
-		if (!is_double_depot) PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 4], _place_depot_extra_track[dir + 4]);
+		if (!is_double_depot) PlaceExtraDepotRail(tile, _place_depot_extra_dir[1][dir], _place_depot_extra_track[1][dir]);
 
-		PlaceExtraDepotRail(tile, _place_depot_extra_dir[dir + 8], _place_depot_extra_track[dir + 8]);
+		PlaceExtraDepotRail(tile, _place_depot_extra_dir[2][dir], _place_depot_extra_track[2][dir]);
 	}
 }
 
@@ -1780,7 +1780,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (ir.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (ir.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
-			DrawTrainDepotSprite(x, y, widget - WID_BRAD_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
+			DrawTrainDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BRAD_DEPOT_NE + to_underlying(DIAGDIR_NE)), _cur_railtype);
 		}
 	}
 

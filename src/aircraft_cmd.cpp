@@ -1247,16 +1247,16 @@ static bool HandleCrashedAircraft(Aircraft *v)
  */
 static void HandleAircraftSmoke(Aircraft *v, bool mode)
 {
-	static const Coord2D<int8_t> smoke_pos[] = {
-		{  5,  5 },
-		{  6,  0 },
-		{  5, -5 },
-		{  0, -6 },
-		{ -5, -5 },
-		{ -6,  0 },
-		{ -5,  5 },
-		{  0,  6 }
-	};
+	static constexpr DirectionIndexArray<Coord2D<int8_t>> smoke_pos{{{
+		{ 5,  5},
+		{ 6,  0},
+		{ 5, -5},
+		{ 0, -6},
+		{-5, -5},
+		{-6,  0},
+		{-5,  5},
+		{ 0,  6},
+	}}};
 
 	if (!v->vehstatus.Test(VehState::AircraftBroken)) return;
 

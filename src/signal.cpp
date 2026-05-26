@@ -31,7 +31,7 @@ static const uint SIG_GLOB_UPDATE =  64; ///< how many items need to be in _glob
 static_assert(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
 
 /** incidating trackbits with given enterdir */
-static const TrackBits _enterdir_to_trackbits[DIAGDIR_END] = {
+static constexpr DiagDirectionIndexArray<TrackBits> _enterdir_to_trackbits{
 	TRACK_BIT_3WAY_NE,
 	TRACK_BIT_3WAY_SE,
 	TRACK_BIT_3WAY_SW,
@@ -39,7 +39,7 @@ static const TrackBits _enterdir_to_trackbits[DIAGDIR_END] = {
 };
 
 /** incidating trackdirbits with given enterdir */
-static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
+static constexpr DiagDirectionIndexArray<TrackdirBits> _enterdir_to_trackdirbits{
 	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S,
 	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_RIGHT_N,
 	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,

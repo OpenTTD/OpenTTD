@@ -297,7 +297,7 @@ public:
 private:
 	/* set by constructor, const afterwards */
 	uint max_radius;
-	std::array<uint, DIAGDIR_END> extent;
+	DiagDirectionIndexArray<uint> extent;
 
 	/* mutable iterator state */
 	uint cur_radius;

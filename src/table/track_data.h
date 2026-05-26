@@ -11,7 +11,7 @@
  * Maps a diagonal direction to the all trackdirs that are connected to any
  * track entering in this direction (including those making 90 degree turns).
  */
-extern const TrackdirBits _exitdir_reaches_trackdirs[] = {
+extern const DiagDirectionIndexArray<TrackdirBits> _exitdir_reaches_trackdirs{
 	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,  // DIAGDIR_NE
 	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E, // DIAGDIR_SE
 	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S, // DIAGDIR_SW
@@ -76,7 +76,8 @@ extern const Trackdir _track_direction_to_trackdir[][DIR_END] = {
 	{TRACKDIR_RIGHT_N, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_RIGHT_S, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR}
 };
 
-extern const Trackdir _dir_to_diag_trackdir[] = {
+/** Maps a (4-way) direction to the diagonal trackdir that runs in that direction. */
+extern const DiagDirectionIndexArray<Trackdir> _dir_to_diag_trackdir{
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW,
 };
 
