@@ -1738,7 +1738,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			/* Draw base ground */
 			if (rti->UsesOverlay()) {
-				SpriteID image = SPR_ROAD_Y + axis;
+				SpriteID image = SPR_ROAD_Y + to_underlying(axis);
 
 				Roadside roadside = GetRoadside(ti->tile);
 				if (DrawRoadAsSnowOrDesert(IsOnSnowOrDesert(ti->tile), roadside)) {
@@ -1760,7 +1760,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 				DrawGroundSprite(image, pal);
 			} else {
-				SpriteID image = rti->base_sprites.crossing + axis;
+				SpriteID image = rti->base_sprites.crossing + to_underlying(axis);
 				if (IsCrossingBarred(ti->tile)) image += 2;
 
 				Roadside roadside = GetRoadside(ti->tile);
@@ -1784,13 +1784,13 @@ static void DrawTile_Road(TileInfo *ti)
 				DrawGroundSprite(image, pal);
 			}
 
-			DrawRoadOverlays(ti, pal, road_rti, tram_rti, axis, axis);
+			DrawRoadOverlays(ti, pal, road_rti, tram_rti, to_underlying(axis), to_underlying(axis));
 
 			/* Draw rail/PBS overlay */
 			bool draw_pbs = _game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile);
 			if (rti->UsesOverlay()) {
 				pal = draw_pbs ? PALETTE_CRASH : PAL_NONE;
-				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Crossing) + axis;
+				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Crossing) + to_underlying(axis);
 				DrawGroundSprite(rail, pal);
 
 				const Axis road_axis = GetCrossingRoadAxis(ti->tile);

@@ -1228,7 +1228,7 @@ bool AfterLoadGame()
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
 			if (IsBridgeTile(t)) {
 				if (HasBit(t.m5(), 6)) { // middle part
-					Axis axis = (Axis)GB(t.m5(), 0, 1);
+					Axis axis = static_cast<Axis>(GB(t.m5(), 0, 1));
 
 					if (HasBit(t.m5(), 5)) { // transport route under bridge?
 						if (GB(t.m5(), 3, 2) == TRANSPORT_RAIL) {
@@ -1267,7 +1267,7 @@ bool AfterLoadGame()
 					}
 					SetBridgeMiddle(t, axis);
 				} else { // ramp
-					Axis axis = (Axis)GB(t.m5(), 0, 1);
+					Axis axis = static_cast<Axis>(GB(t.m5(), 0, 1));
 					uint north_south = GB(t.m5(), 5, 1);
 					DiagDirection dir = ReverseDiagDir(XYNSToDiagDir(axis, north_south));
 					TransportType type = (TransportType)GB(t.m5(), 1, 2);

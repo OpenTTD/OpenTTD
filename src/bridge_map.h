@@ -68,7 +68,7 @@ inline BridgeType GetBridgeType(Tile t)
 inline Axis GetBridgeAxis(Tile t)
 {
 	assert(IsBridgeAbove(t));
-	return (Axis)(GB(t.type(), 2, 2) - 1);
+	return static_cast<Axis>(GB(t.type(), 2, 2) - 1);
 }
 
 TileIndex GetNorthernBridgeEnd(TileIndex t);
@@ -93,7 +93,7 @@ inline int GetBridgePixelHeight(TileIndex tile)
  */
 inline void ClearSingleBridgeMiddle(Tile t, Axis a)
 {
-	ClrBit(t.type(), 2 + a);
+	ClrBit(t.type(), 2 + to_underlying(a));
 }
 
 /**
@@ -113,7 +113,7 @@ inline void ClearBridgeMiddle(Tile t)
  */
 inline void SetBridgeMiddle(Tile t, Axis a)
 {
-	SetBit(t.type(), 2 + a);
+	SetBit(t.type(), 2 + to_underlying(a));
 }
 
 /**

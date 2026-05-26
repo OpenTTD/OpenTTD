@@ -66,7 +66,7 @@ inline bool IsValidTrackdir(Trackdir trackdir)
 inline Track AxisToTrack(Axis a)
 {
 	assert(IsValidAxis(a));
-	return (Track)a;
+	return static_cast<Track>(to_underlying(a));
 }
 
 /**
