@@ -406,7 +406,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		if (ppp_allowed[i].Any(ppp_preferred[i])) ppp_allowed[i] &= ppp_preferred[i];
 
 		if (IsBridgeAbove(ti->tile)) {
-			Track bridgetrack = GetBridgeAxis(ti->tile) == AXIS_X ? TRACK_X : TRACK_Y;
+			Track bridgetrack = AxisToTrack(GetBridgeAxis(ti->tile));
 			int height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
 			if ((height <= GetTileMaxZ(ti->tile) + 1) &&

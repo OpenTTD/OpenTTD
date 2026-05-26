@@ -1235,7 +1235,7 @@ bool AfterLoadGame()
 							MakeRailNormal(
 								t,
 								GetTileOwner(t),
-								axis == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X,
+								AxisToTrackBits(OtherAxis(axis)),
 								GetRailType(t)
 							);
 						} else {
@@ -1245,7 +1245,7 @@ bool AfterLoadGame()
 							SetTileType(t, TileType::Road);
 							t.m2() = town.base();
 							t.m3() = 0;
-							t.m5() = (axis == AXIS_X ? ROAD_Y : ROAD_X).base() | to_underlying(RoadTileType::Normal) << 6;
+							t.m5() = AxisToRoadBits(OtherAxis(axis)).base() | to_underlying(RoadTileType::Normal) << 6;
 							SB(t.m6(), 2, 4, 0);
 							t.m7() = 1 << 6;
 							SetRoadOwner(t, RoadTramType::Tram, OWNER_NONE);

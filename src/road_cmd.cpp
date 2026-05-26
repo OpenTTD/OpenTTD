@@ -1449,13 +1449,13 @@ void DrawRoadCatenary(const TileInfo *ti)
 			road = GetRoadBits(ti->tile, RoadTramType::Road);
 			tram = GetRoadBits(ti->tile, RoadTramType::Tram);
 		} else if (IsLevelCrossing(ti->tile)) {
-			tram = road = (GetCrossingRailAxis(ti->tile) == AXIS_Y ? ROAD_X : ROAD_Y);
+			tram = road = GetCrossingRoadBits(ti->tile);
 		}
 	} else if (IsTileType(ti->tile, TileType::Station)) {
 		if (IsAnyRoadStop(ti->tile)) {
 			if (IsDriveThroughStopTile(ti->tile)) {
 				Axis axis = GetDriveThroughStopAxis(ti->tile);
-				tram = road = (axis == AXIS_X ? ROAD_X : ROAD_Y);
+				tram = road = AxisToRoadBits(axis);
 			} else {
 				tram = road = DiagDirToRoadBits(GetBayRoadStopDir(ti->tile));
 			}
