@@ -845,9 +845,9 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	DrawTileSpriteSpan tmp_rail_layout;
 
 	if (statspec->renderdata.empty()) {
-		sprites = GetStationTileLayout(StationType::Rail, tile + axis);
+		sprites = GetStationTileLayout(StationType::Rail, tile + to_underlying(axis));
 	} else {
-		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + axis : (uint)axis];
+		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + to_underlying(axis) : to_underlying(axis)];
 		if (!layout->NeedsPreprocessing()) {
 			sprites = layout;
 			layout = nullptr;

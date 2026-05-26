@@ -28,7 +28,7 @@
 void DrawWaypointSprite(int x, int y, StationClassID station_class, uint16_t station_type, RailType railtype)
 {
 	if (!DrawStationTile(x, y, railtype, AXIS_X, station_class, station_type)) {
-		StationPickerDrawSprite(x, y, StationType::RailWaypoint, railtype, INVALID_ROADTYPE, AXIS_X);
+		StationPickerDrawSprite(x, y, StationType::RailWaypoint, railtype, INVALID_ROADTYPE, to_underlying(AXIS_X));
 	}
 }
 

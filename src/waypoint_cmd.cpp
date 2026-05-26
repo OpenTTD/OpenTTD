@@ -177,7 +177,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 
 	Slope tileh = GetTileSlope(tile);
 	if (tileh != SLOPE_FLAT &&
-			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
+			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << to_underlying(axis))) || !(tileh & ~(0x3 << to_underlying(axis))))) {
 		return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 	}
 
@@ -257,7 +257,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		CommandCost ret = IsValidTileForWaypoint(tile, axis, &est);
 		if (ret.Failed()) return ret;
 
-		ret = IsRailStationBridgeAboveOk(tile, spec, StationType::RailWaypoint, *it + axis);
+		ret = IsRailStationBridgeAboveOk(tile, spec, StationType::RailWaypoint, *it + to_underlying(axis));
 		if (ret.Failed()) return ret;
 	}
 
