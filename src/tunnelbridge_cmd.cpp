@@ -1085,14 +1085,14 @@ static int DrawPillarColumn(int z_bottom, int z_top, const PalSpriteID &psid, in
  */
 static void DrawBridgePillars(const PalSpriteID &psid, const TileInfo *ti, Axis axis, bool drawfarpillar, int x, int y, int z_bridge)
 {
-	static const int bounding_box_size[2]  = {16, 2}; ///< bounding box size of pillars along bridge direction
-	static const int back_pillar_offset[2] = { 0, 9}; ///< sprite position offset of back facing pillar
+	static constexpr AxisIndexArray<int> bounding_box_size{16, 2}; ///< bounding box size of pillars along bridge direction
+	static constexpr AxisIndexArray<int> back_pillar_offset{0, 9}; ///< sprite position offset of back facing pillar
 
 	static const int INF = 1000; ///< big number compared to sprite size
-	static const SubSprite half_pillar_sub_sprite[2][2] = {
+	static constexpr AxisIndexArray<SubSprite[2]> half_pillar_sub_sprite{{{
 		{ {  -14, -INF, INF, INF }, { -INF, -INF, -15, INF } }, // X axis, north and south
 		{ { -INF, -INF,  15, INF }, {   16, -INF, INF, INF } }, // Y axis, north and south
-	};
+	}}};
 
 	if (psid.sprite == 0) return;
 
@@ -1589,7 +1589,7 @@ static BridgePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex ramp
 		BridgePieces piece = CalcBridgePiece(GetTunnelBridgeLength(tile, rampnorth) + 1, GetTunnelBridgeLength(tile, rampsouth) + 1);
 		Axis axis = TileX(rampnorth) == TileX(rampsouth) ? AXIS_Y : AXIS_X;
 
-		return spec->pillar_flags[piece][axis == AXIS_Y ? 1 : 0];
+		return spec->pillar_flags[piece][axis];
 	}
 
 	return BRIDGEPILLARFLAGS_ALL_CORNERS;

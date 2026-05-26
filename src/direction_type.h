@@ -131,4 +131,11 @@ enum Axis : uint8_t {
 };
 DECLARE_ENUM_AS_ADDABLE(Axis)
 
+/**
+ * Array with \c Axis as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using AxisIndexArray = EnumIndexArray<T, Axis, AXIS_END>;
+
 #endif /* DIRECTION_TYPE_H */
