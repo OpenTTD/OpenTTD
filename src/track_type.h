@@ -31,6 +31,13 @@ enum Track : uint8_t {
 /** Allow incrementing of Track variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Track)
 
+/**
+ * Array with \c Track as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using TrackIndexArray = EnumIndexArray<T, Track, TRACK_END>;
+
 /** Bitfield corresponding to Track */
 enum TrackBits : uint8_t {
 	TRACK_BIT_NONE    = 0U,                                                 ///< No track
@@ -87,6 +94,13 @@ enum Trackdir : uint8_t {
 
 /** Allow incrementing of Trackdir variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Trackdir)
+
+/**
+ * Array with \c Trackdir as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using TrackdirIndexArray = EnumIndexArray<T, Trackdir, TRACKDIR_END>;
 
 /**
  * Enumeration of bitmasks for the TrackDirs

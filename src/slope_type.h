@@ -27,6 +27,12 @@ enum Corner : uint8_t {
 	CORNER_INVALID = 0xFF
 };
 
+/**
+ * Array with \c Corner as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using CornerIndexArray = EnumIndexArray<T, Corner, CORNER_END>;
 
 /**
  * Enumeration for the slope-type.
