@@ -28,7 +28,7 @@ struct CYapfNodeKeyExitDir {
 
 	inline int CalcHash() const
 	{
-		return this->exitdir | (this->tile.base() << 2);
+		return to_underlying(this->exitdir) | (this->tile.base() << 2);
 	}
 
 	inline bool operator==(const CYapfNodeKeyExitDir &other) const

@@ -644,7 +644,7 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
 {
 	assert(IsRailDepotTile(tile));
-	SB(tile.m5(), 0, 2, dir);
+	SB(tile.m5(), 0, 2, to_underlying(dir));
 }
 
 /**
@@ -663,7 +663,7 @@ inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = 0;
-	tile.m5() = to_underlying(RailTileType::Depot) << 6 | dir;
+	tile.m5() = to_underlying(RailTileType::Depot) << 6 | to_underlying(dir);
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = 0;
 	tile.m8() = rail_type;

@@ -1272,7 +1272,7 @@ bool AfterLoadGame()
 					DiagDirection dir = ReverseDiagDir(XYNSToDiagDir(axis, north_south));
 					TransportType type = (TransportType)GB(t.m5(), 1, 2);
 
-					t.m5() = 1 << 7 | type << 2 | dir;
+					t.m5() = 1 << 7 | type << 2 | to_underlying(dir);
 				}
 			}
 		}
