@@ -111,7 +111,7 @@ inline RoadBits DiagDirToRoadBits(DiagDirection d)
 inline RoadBits AxisToRoadBits(Axis a)
 {
 	assert(IsValidAxis(a));
-	return a == AXIS_X ? ROAD_X : ROAD_Y;
+	return a == Axis::X ? ROAD_X : ROAD_Y;
 }
 
 

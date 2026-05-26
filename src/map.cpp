@@ -133,8 +133,8 @@ TileIndex TileAddWrap(TileIndex tile, int addx, int addy)
 
 /** 'Lookup table' for tile offsets given an Axis */
 extern const AxisIndexArray<TileIndexDiffC> _tileoffs_by_axis{{{
-	{1, 0}, // AXIS_X
-	{0, 1}, // AXIS_Y
+	{1, 0}, // Axis::X
+	{0, 1}, // Axis::Y
 }}};
 
 /** 'Lookup table' for tile offsets given a DiagDirection */

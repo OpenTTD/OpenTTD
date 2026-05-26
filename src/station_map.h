@@ -503,7 +503,7 @@ inline void SetStationTileHavePylons(Tile t, bool b)
 inline Axis GetRailStationAxis(Tile t)
 {
 	assert(HasStationRail(t));
-	return HasBit(GetStationGfx(t), 0) ? AXIS_Y : AXIS_X;
+	return HasBit(GetStationGfx(t), 0) ? Axis::Y : Axis::X;
 }
 
 /**

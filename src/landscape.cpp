@@ -879,7 +879,7 @@ static void GenerateTerrain(int type, uint flag)
 	uint w = templ->width;
 	uint h = templ->height;
 
-	if (DiagDirToAxis(direction) == AXIS_Y) std::swap(w, h);
+	if (DiagDirToAxis(direction) == Axis::Y) std::swap(w, h);
 
 	const uint8_t *p = reinterpret_cast<const uint8_t *>(templ->data);
 

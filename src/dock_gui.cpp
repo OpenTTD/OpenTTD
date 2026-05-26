@@ -520,7 +520,7 @@ struct BuildDocksDepotWindow : public PickerWindowBase {
 private:
 	static void UpdateDocksDirection()
 	{
-		if (_ship_depot_direction != AXIS_X) {
+		if (_ship_depot_direction != Axis::X) {
 			SetTileSelectSize(1, 2);
 		} else {
 			SetTileSelectSize(2, 1);
@@ -553,7 +553,7 @@ public:
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y: {
-				Axis axis = widget == WID_BDD_X ? AXIS_X : AXIS_Y;
+				Axis axis = widget == WID_BDD_X ? Axis::X : Axis::Y;
 
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				if (FillDrawPixelInfo(&tmp_dpi, ir)) {
@@ -562,8 +562,8 @@ public:
 					int y = (ir.Height() - ScaleSpriteTrad(64)) / 2;
 					int x1 = ScaleSpriteTrad(63);
 					int x2 = ScaleSpriteTrad(31);
-					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DepotPart::North);
-					DrawShipDepotSprite(x + (axis == AXIS_X ? x2 : x1), y + ScaleSpriteTrad(33), axis, DepotPart::South);
+					DrawShipDepotSprite(x + (axis == Axis::X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DepotPart::North);
+					DrawShipDepotSprite(x + (axis == Axis::X ? x2 : x1), y + ScaleSpriteTrad(33), axis, DepotPart::South);
 				}
 				break;
 			}
@@ -576,7 +576,7 @@ public:
 			case WID_BDD_X:
 			case WID_BDD_Y:
 				this->RaiseWidget(WID_BDD_X + _ship_depot_direction);
-				_ship_depot_direction = (widget == WID_BDD_X ? AXIS_X : AXIS_Y);
+				_ship_depot_direction = (widget == WID_BDD_X ? Axis::X : Axis::Y);
 				this->LowerWidget(WID_BDD_X + _ship_depot_direction);
 				SndClickBeep();
 				UpdateDocksDirection();
@@ -616,5 +616,5 @@ static void ShowBuildDocksDepotPicker(Window *parent)
 
 void InitializeDockGui()
 {
-	_ship_depot_direction = AXIS_X;
+	_ship_depot_direction = Axis::X;
 }

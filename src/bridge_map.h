@@ -102,8 +102,8 @@ inline void ClearSingleBridgeMiddle(Tile t, Axis a)
  */
 inline void ClearBridgeMiddle(Tile t)
 {
-	ClearSingleBridgeMiddle(t, AXIS_X);
-	ClearSingleBridgeMiddle(t, AXIS_Y);
+	ClearSingleBridgeMiddle(t, Axis::X);
+	ClearSingleBridgeMiddle(t, Axis::Y);
 }
 
 /**

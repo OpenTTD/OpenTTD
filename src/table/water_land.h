@@ -46,11 +46,11 @@ static const DrawTileSeqStruct _shipdepot_display_se_seq[] = {
 
 /** Data for drawing ship depots by Axis and DepotPart. */
 static const AxisIndexArray<EnumIndexArray<DrawTileSpriteSpan, DepotPart, DepotPart::End>> _shipdepot_display_data{{{
-	{{{ // AXIS_X
+	{{{ // Axis::X
 		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_ne_seq) // DepotPart::North
 		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_sw_seq) // DepotPart::South
 	}}},
-	{{{ // AXIS_Y
+	{{{ // Axis::Y
 		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_nw_seq) // DepotPart::North
 		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_se_seq) // DepotPart::South
 	}}},
