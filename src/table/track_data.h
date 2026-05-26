@@ -18,13 +18,14 @@ extern const DiagDirectionIndexArray<TrackdirBits> _exitdir_reaches_trackdirs{
 	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W  // DIAGDIR_NW
 };
 
-extern const Trackdir _next_trackdir[TRACKDIR_END] = {
+/** Next trackdir to use when moving to a new tile for each current trackdir. */
+extern const TrackdirIndexArray<Trackdir> _next_trackdir{
 	TRACKDIR_X_NE,  TRACKDIR_Y_SE,  TRACKDIR_LOWER_E, TRACKDIR_UPPER_E, TRACKDIR_RIGHT_S, TRACKDIR_LEFT_S, INVALID_TRACKDIR, INVALID_TRACKDIR,
 	TRACKDIR_X_SW,  TRACKDIR_Y_NW,  TRACKDIR_LOWER_W, TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N
 };
 
 /** Maps a trackdir to all trackdirs that make 90 deg turns with it. */
-extern const TrackdirBits _track_crosses_trackdirs[TRACK_END] = {
+extern const TrackIndexArray<TrackdirBits> _track_crosses_trackdirs{
 	TRACKDIR_BIT_Y_SE     | TRACKDIR_BIT_Y_NW,                                                   // TRACK_X
 	TRACKDIR_BIT_X_NE     | TRACKDIR_BIT_X_SW,                                                   // TRACK_Y
 	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  // TRACK_UPPER
@@ -34,7 +35,7 @@ extern const TrackdirBits _track_crosses_trackdirs[TRACK_END] = {
 };
 
 /** Maps a track to all tracks that make 90 deg turns with it. */
-extern const TrackBits _track_crosses_tracks[] = {
+extern const TrackIndexArray<TrackBits> _track_crosses_tracks{
 	TRACK_BIT_Y,    // TRACK_X
 	TRACK_BIT_X,    // TRACK_Y
 	TRACK_BIT_VERT, // TRACK_UPPER
@@ -44,44 +45,48 @@ extern const TrackBits _track_crosses_tracks[] = {
 };
 
 /** Maps a trackdir to the (4-way) direction the tile is exited when following that trackdir. */
-extern const DiagDirection _trackdir_to_exitdir[TRACKDIR_END] = {
+extern const TrackdirIndexArray<DiagDirection> _trackdir_to_exitdir{
 	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_NE,
 	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
 };
 
-extern const Trackdir _track_exitdir_to_trackdir[][DIAGDIR_END] = {
+/** Maps a track and an (4-way) dir to the trackdir that represents the track with the exit in the given direction. */
+extern const TrackIndexArray<DiagDirectionIndexArray<Trackdir>> _track_exitdir_to_trackdir{{{
 	{TRACKDIR_X_NE,     INVALID_TRACKDIR,  TRACKDIR_X_SW,     INVALID_TRACKDIR},
 	{INVALID_TRACKDIR,  TRACKDIR_Y_SE,     INVALID_TRACKDIR,  TRACKDIR_Y_NW},
 	{TRACKDIR_UPPER_E,  INVALID_TRACKDIR,  INVALID_TRACKDIR,  TRACKDIR_UPPER_W},
 	{INVALID_TRACKDIR,  TRACKDIR_LOWER_E,  TRACKDIR_LOWER_W,  INVALID_TRACKDIR},
 	{INVALID_TRACKDIR,  INVALID_TRACKDIR,  TRACKDIR_LEFT_S,   TRACKDIR_LEFT_N},
 	{TRACKDIR_RIGHT_N,  TRACKDIR_RIGHT_S,  INVALID_TRACKDIR,  INVALID_TRACKDIR}
-};
+}}};
 
-extern const Trackdir _track_enterdir_to_trackdir[][DIAGDIR_END] = {
+/** Maps a track and an (4-way) dir to the trackdir that represents the track with the entry in the given direction. */
+extern const TrackIndexArray<DiagDirectionIndexArray<Trackdir>> _track_enterdir_to_trackdir{{{
 	{TRACKDIR_X_NE,     INVALID_TRACKDIR,  TRACKDIR_X_SW,     INVALID_TRACKDIR},
 	{INVALID_TRACKDIR,  TRACKDIR_Y_SE,     INVALID_TRACKDIR,  TRACKDIR_Y_NW},
 	{INVALID_TRACKDIR,  TRACKDIR_UPPER_E,  TRACKDIR_UPPER_W,  INVALID_TRACKDIR},
 	{TRACKDIR_LOWER_E,  INVALID_TRACKDIR,  INVALID_TRACKDIR,  TRACKDIR_LOWER_W},
 	{TRACKDIR_LEFT_N,   TRACKDIR_LEFT_S,   INVALID_TRACKDIR,  INVALID_TRACKDIR},
 	{INVALID_TRACKDIR,  INVALID_TRACKDIR,  TRACKDIR_RIGHT_S,  TRACKDIR_RIGHT_N}
-};
+}}};
 
-extern const Trackdir _track_direction_to_trackdir[][DIR_END] = {
+/** Maps a track and a full (8-way) direction to the trackdir that represents the track running in the given direction. */
+extern const TrackIndexArray<DirectionIndexArray<Trackdir>> _track_direction_to_trackdir{{{
 	{INVALID_TRACKDIR, TRACKDIR_X_NE,     INVALID_TRACKDIR, INVALID_TRACKDIR,  INVALID_TRACKDIR, TRACKDIR_X_SW,     INVALID_TRACKDIR, INVALID_TRACKDIR},
 	{INVALID_TRACKDIR, INVALID_TRACKDIR,  INVALID_TRACKDIR, TRACKDIR_Y_SE,     INVALID_TRACKDIR, INVALID_TRACKDIR,  INVALID_TRACKDIR, TRACKDIR_Y_NW},
 	{INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_UPPER_E, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_UPPER_W, INVALID_TRACKDIR},
 	{INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_LOWER_E, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_LOWER_W, INVALID_TRACKDIR},
 	{TRACKDIR_LEFT_N,  INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_LEFT_S,  INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR},
 	{TRACKDIR_RIGHT_N, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_RIGHT_S, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR}
-};
+}}};
 
 /** Maps a (4-way) direction to the diagonal trackdir that runs in that direction. */
 extern const DiagDirectionIndexArray<Trackdir> _dir_to_diag_trackdir{
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW,
 };
 
-extern const TrackBits _corner_to_trackbits[] = {
+/** Maps a single horizontal/vertical trackbit that is in a specific tile corner. */
+extern const CornerIndexArray<TrackBits> _corner_to_trackbits{
 	TRACK_BIT_LEFT, TRACK_BIT_LOWER, TRACK_BIT_RIGHT, TRACK_BIT_UPPER,
 };
 
