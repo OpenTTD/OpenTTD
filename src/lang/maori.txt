@@ -525,6 +525,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Hanga taunga re
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Hanga whenua
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Whakatō rākau
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Makaia he tohu
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Maka i tētahi mea
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Oro/Pūoro
@@ -3064,9 +3065,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Turituri
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Hanga Whenua
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Whakahekea he koko o te whenua. Pāwhiri+Tō kia whakaheke i te koko tuatahi kua tīpakona ka whakatūpā ai i te rohe kua tīpakona ki te teitei hou o te koko. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hīkina he koko o te whenua. Pāwhiri+Tō kia hiki i te koko tuatahi kua tīpakona ka whakatūpā ai i te rohe kua tīpakona ki te teitei hou o te koko. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Whakatūpātia he rohe o te whenua ki te teitei o te koko tuatahi kua tīpakona. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Whakahekea he kokonga o te whenua. Pāwhiri+Tō kia whakaheke i te kokonga tuatahi kua tīpakona ka whakatūpā ai i te rohe kua tīpakona ki te teitei hou o te kokonga. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hīkina he kokonga o te whenua. Pāwhiri+Tō kia hiki i te kokonga tuatahi kua tīpakona ka whakatūpā ai i te rohe kua tīpakona ki te teitei hou o te kokonga. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Whakatūpātia he rohe o te whenua ki te teitei o te kokonga tuatahi kua tīpakona. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Hokona he whenua hei whakamahi i muri. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
 
 # Object construction window
@@ -3097,6 +3098,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Maka roh
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Tautuhitia te rohe onepū.{}Pātaki+Pāwhiri kia tangohia te rohe onepū
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Whakarahia te horahanga o te whenua hei whakaheke/hiki
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Whakapakutia te horahanga o te whenua hei whakaheke/hiki
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Whakahekea he kokonga o te whenua. Mēnā 1x1 te rahi, Pāwhiri+Tō kia whakaheke i te kokonga tuatahi kua tīpakona, ka whakatūpā ai i te rohe kua tīpakona ki te teitei hou o te kokonga. Pātaki+Pāwhiri+Tō kia tīpako i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Hīkina he kokonga, he rohe rānei o te whenua. Mēnā 1x1 te rahi, Pāwhiri+Tō kia hiki i te kokonga tuatahi kua tīpakona, ka whakatūpā ai i te rohe kua tīpakona ki te teitei hou o te kokonga. Pātaki+Pāwhiri+Tō kia tīpako i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Hanga whenua matapōkere
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Hangaia he takiwā hou
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Tautuhitia anō te whenua

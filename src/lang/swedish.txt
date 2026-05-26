@@ -430,7 +430,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Bygg inf
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Bygg infrastruktur för spårvägar
 STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plantera träd. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Placera skylt
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Placera objekt. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Placera objekt. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 
 # Scenario editor file menu
 ###length 7
@@ -525,6 +525,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Bygg flygplats
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landskapsarkitektur
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantera träd
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Placera skylt
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Placera objekt
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Ljud/musik
@@ -3064,10 +3065,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Generera
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsplanering
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sänk ett hörn av marken. Klicka+dra för att sänka det först valda hörnet och utjämna vald yta till det nya hörnets höjd. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj ett hörn av marken. Klick+Drag för att höja det förstvalda hörnet och utjämna vald yta till det nya hörnets höjd. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sänk ett hörn av marken. Klicka+dra för att sänka det först valda hörnet och utjämna vald yta till hörnets nya höjd. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj ett hörn av marken. Klicka+dra för att höja det först valda hörnet och jämna ut den valda ytan till hörnets nya höjd. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna ett markområde till höjden av det först valda hörnet. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Val av objekt
@@ -3097,6 +3098,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placera 
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiera ökenområde.{}Ctrl+Klick för att ta bort ökenområde
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Öka storlek på ytan som ska höjas/sänkas
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minska storlek på ytan som ska höjas/sänkas
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Sänk ett hörn eller en yta av marken. Om storleken är 1x1, klicka+dra för att sänka det först valda hörnet och jämna ut den valda ytan till hörnets nya höjd. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Höj ett hörn eller en yta av marken. Om storleken är 1x1, klicka+dra för att höja det först valda hörnet och jämna ut den valda ytan till hörnets nya höjd. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generera slumpmässig mark
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Skapa ett nytt scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Återställ landskap
