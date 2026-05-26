@@ -44,6 +44,13 @@ using Directions = EnumBitSet<Direction, uint8_t>;
 static constexpr Directions DIRECTIONS_ALL{DIR_N, DIR_NE, DIR_E, DIR_SE, DIR_S, DIR_SW, DIR_W, DIR_NW};
 
 /**
+ * Array with \c Direction as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using DirectionIndexArray = EnumIndexArray<T, Direction, DIR_END>;
+
+/**
  * Enumeration for the difference between two directions.
  *
  * This enumeration is used to mark differences between
@@ -91,6 +98,13 @@ using DiagDirections = EnumBitSet<DiagDirection, uint8_t>;
 
 /** All possible diagonal directions. */
 static constexpr DiagDirections DIAGDIRECTIONS_ALL{DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW};
+
+/**
+ * Array with \c DiagDirection as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using DiagDirectionIndexArray = EnumIndexArray<T, DiagDirection, DIAGDIR_END>;
 
 /**
  * Enumeration for the difference between to DiagDirection.

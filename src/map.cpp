@@ -138,24 +138,24 @@ extern const AxisIndexArray<TileIndexDiffC> _tileoffs_by_axis{{{
 }}};
 
 /** 'Lookup table' for tile offsets given a DiagDirection */
-extern const TileIndexDiffC _tileoffs_by_diagdir[] = {
-	{-1,  0}, ///< DIAGDIR_NE
-	{ 0,  1}, ///< DIAGDIR_SE
-	{ 1,  0}, ///< DIAGDIR_SW
-	{ 0, -1}  ///< DIAGDIR_NW
-};
+extern const DiagDirectionIndexArray<TileIndexDiffC> _tileoffs_by_diagdir{{{
+	{-1,  0}, // DIAGDIR_NE
+	{ 0,  1}, // DIAGDIR_SE
+	{ 1,  0}, // DIAGDIR_SW
+	{ 0, -1}, // DIAGDIR_NW
+}}};
 
 /** 'Lookup table' for tile offsets given a Direction */
-extern const TileIndexDiffC _tileoffs_by_dir[] = {
-	{-1, -1}, ///< DIR_N
-	{-1,  0}, ///< DIR_NE
-	{-1,  1}, ///< DIR_E
-	{ 0,  1}, ///< DIR_SE
-	{ 1,  1}, ///< DIR_S
-	{ 1,  0}, ///< DIR_SW
-	{ 1, -1}, ///< DIR_W
-	{ 0, -1}  ///< DIR_NW
-};
+extern const DirectionIndexArray<TileIndexDiffC> _tileoffs_by_dir{{{
+	{-1, -1}, // DIR_N
+	{-1,  0}, // DIR_NE
+	{-1,  1}, // DIR_E
+	{ 0,  1}, // DIR_SE
+	{ 1,  1}, // DIR_S
+	{ 1,  0}, // DIR_SW
+	{ 1, -1}, // DIR_W
+	{ 0, -1}, // DIR_NW
+}}};
 
 /**
  * Gets the Manhattan distance between the two given tiles.
@@ -280,8 +280,8 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 		/* going counter-clockwise around this square */
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
-			static const int8_t ddx[DIAGDIR_END] = { -1,  1,  1, -1};
-			static const int8_t ddy[DIAGDIR_END] = {  1,  1, -1, -1};
+			static constexpr DiagDirectionIndexArray<int8_t> ddx{-1,  1,  1, -1};
+			static constexpr DiagDirectionIndexArray<int8_t> ddy{ 1,  1, -1, -1};
 
 			int dx = ddx[dir];
 			int dy = ddy[dir];

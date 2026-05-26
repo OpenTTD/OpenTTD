@@ -330,7 +330,7 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 
 void Ship::UpdateDeltaXY()
 {
-	static constexpr SpriteBounds ship_bounds[DIR_END] = {
+	static constexpr DirectionIndexArray<SpriteBounds> ship_bounds{{{
 		{{ -3,  -3, 0}, { 6,  6, 6}, {}}, // N
 		{{-16,  -3, 0}, {32,  6, 6}, {}}, // NE
 		{{ -3,  -3, 0}, { 6,  6, 6}, {}}, // E
@@ -339,7 +339,7 @@ void Ship::UpdateDeltaXY()
 		{{-16,  -3, 0}, {32,  6, 6}, {}}, // SW
 		{{ -3,  -3, 0}, { 6,  6, 6}, {}}, // W
 		{{ -3, -16, 0}, { 6, 32, 6}, {}}, // NW
-	};
+	}}};
 
 	this->bounds = ship_bounds[this->rotation];
 
@@ -520,44 +520,44 @@ struct ShipSubcoordData {
  * There will always be three possible tracks going into an adjacent tile via a Diagdir,
  * so each Diagdir sub-array will have three valid and three invalid structures per Track.
  */
-static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
+static constexpr DiagDirectionIndexArray<TrackIndexArray<ShipSubcoordData>> _ship_subcoord{{{
 	/* DIAGDIR_NE */
-	{
+	{{{
 		{15,  8, DIR_NE},      // TRACK_X
 		{ 0,  0, INVALID_DIR}, // TRACK_Y
 		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
 		{15,  8, DIR_E},       // TRACK_LOWER
 		{15,  7, DIR_N},       // TRACK_LEFT
 		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
-	},
+	}}},
 	/* DIAGDIR_SE */
-	{
+	{{{
 		{ 0,  0, INVALID_DIR}, // TRACK_X
 		{ 8,  0, DIR_SE},      // TRACK_Y
 		{ 7,  0, DIR_E},       // TRACK_UPPER
 		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
 		{ 8,  0, DIR_S},       // TRACK_LEFT
 		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
-	},
+	}}},
 	/* DIAGDIR_SW */
-	{
+	{{{
 		{ 0,  8, DIR_SW},      // TRACK_X
 		{ 0,  0, INVALID_DIR}, // TRACK_Y
 		{ 0,  7, DIR_W},       // TRACK_UPPER
 		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
 		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
 		{ 0,  8, DIR_S},       // TRACK_RIGHT
-	},
+	}}},
 	/* DIAGDIR_NW */
-	{
+	{{{
 		{ 0,  0, INVALID_DIR}, // TRACK_X
 		{ 8, 15, DIR_NW},      // TRACK_Y
 		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
 		{ 8, 15, DIR_W},       // TRACK_LOWER
 		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
 		{ 7, 15, DIR_N},       // TRACK_RIGHT
-	}
-};
+	}}},
+}}};
 
 /**
  * Test if a ship is in the centre of a lock and should move up or down.

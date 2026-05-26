@@ -2566,7 +2566,14 @@ static void DrawTile_Rail(TileInfo *ti)
 	DrawBridgeMiddle(ti, blocked_pillars);
 }
 
-void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
+/**
+ * Draw train depot sprite in the UI.
+ * @param x X position.
+ * @param y Y position.
+ * @param dir Direction of depot.
+ * @param railtype Railtype of depot.
+ */
+void DrawTrainDepotSprite(int x, int y, DiagDirection dir, RailType railtype)
 {
 	const DrawTileSprites *dts = &_depot_gfx_table[dir];
 	const RailTypeInfo *rti = GetRailTypeInfo(railtype);
@@ -2702,7 +2709,7 @@ static void TileLoop_Rail(TileIndex tile)
 		DiagDirections fences{};
 
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-			static const TrackBits dir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
+			static constexpr DiagDirectionIndexArray<TrackBits> dir_to_trackbits{TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
 
 			/* Track bit on this edge => no fence. */
 			if ((rail & dir_to_trackbits[d]) != TRACK_BIT_NONE) continue;

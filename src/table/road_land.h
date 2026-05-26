@@ -27,12 +27,13 @@ static const DrawTileSeqStruct _road_depot_NW[] = {
 	TILE_SEQ_LINE(0x585 | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE, 15, 0, 1, 16)
 };
 
-static const DrawTileSpriteSpan _road_depot[] = {
+/** Sprite layout for a road depot for each direction. */
+static const DiagDirectionIndexArray<DrawTileSpriteSpan> _road_depot{{{
 	{ {0xA4A, PAL_NONE}, _road_depot_NE },
 	{ {0xA4A, PAL_NONE}, _road_depot_SE },
 	{ {0xA4A, PAL_NONE}, _road_depot_SW },
 	{ {0xA4A, PAL_NONE}, _road_depot_NW }
-};
+}}};
 
 /**
  * Sprite layout for level crossings.

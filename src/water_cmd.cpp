@@ -642,17 +642,17 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 		}
 
 		case WaterTileType::Lock: {
-			static const TileIndexDiffC _lock_tomiddle_offs[to_underlying(LockPart::End)][DIAGDIR_END] = {
+			static const EnumIndexArray<DiagDirectionIndexArray<TileIndexDiffC>, LockPart, LockPart::End> _lock_tomiddle_offs{{{
 				/*   NE       SE        SW      NW       */
-				{ { 0,  0}, {0,  0}, { 0, 0}, {0,  0} }, // LockPart::Middle
-				{ {-1,  0}, {0,  1}, { 1, 0}, {0, -1} }, // LockPart::Lower
-				{ { 1,  0}, {0, -1}, {-1, 0}, {0,  1} }, // LockPart::Upper
-			};
+				{{{ { 0,  0}, {0,  0}, { 0, 0}, {0,  0} }}}, // LockPart::Middle
+				{{{ {-1,  0}, {0,  1}, { 1, 0}, {0, -1} }}}, // LockPart::Lower
+				{{{ { 1,  0}, {0, -1}, {-1, 0}, {0,  1} }}}, // LockPart::Upper
+			}}};
 
 			if (flags.Test(DoCommandFlag::Auto)) return CommandCost(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
 			if (_current_company == OWNER_WATER) return CMD_ERROR;
 			/* move to the middle tile.. */
-			return RemoveLock(tile + ToTileIndexDiff(_lock_tomiddle_offs[to_underlying(GetLockPart(tile))][GetLockDirection(tile)]), flags);
+			return RemoveLock(tile + ToTileIndexDiff(_lock_tomiddle_offs[GetLockPart(tile)][GetLockDirection(tile)]), flags);
 		}
 
 		case WaterTileType::Depot:
@@ -864,7 +864,7 @@ static void DrawWaterTileStruct(const TileInfo *ti, std::span<const DrawTileSeqS
 static void DrawWaterLock(const TileInfo *ti)
 {
 	LockPart part = GetLockPart(ti->tile);
-	const DrawTileSprites &dts = _lock_display_data[to_underlying(part)][GetLockDirection(ti->tile)];
+	const DrawTileSprites &dts = _lock_display_data[part][GetLockDirection(ti->tile)];
 
 	/* Draw ground sprite. */
 	SpriteID image = dts.ground.sprite;

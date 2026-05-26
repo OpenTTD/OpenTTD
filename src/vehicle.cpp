@@ -2733,7 +2733,8 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	}
 }
 
-static const int8_t _vehicle_smoke_pos[8] = {
+/** Vehicle smoke effect position offsets. */
+static constexpr DirectionIndexArray<int8_t> _vehicle_smoke_pos{
 	1, 1, 1, 0, -1, -1, -1, 0
 };
 

@@ -186,7 +186,7 @@ static uint8_t GetBridgeSpriteTableBaseOffset(TransportType transport_type, Tile
 static uint8_t GetBridgeRampDirectionBaseOffset(DiagDirection diagdir)
 {
 	/* Bridge ramps are ordered SW, SE, NE, NW instead of NE, SE, SW, NW. */
-	static constexpr uint8_t ramp_offsets[DIAGDIR_END] = {2, 1, 0, 3};
+	static constexpr DiagDirectionIndexArray<uint8_t> ramp_offsets{2, 1, 0, 3};
 	return ramp_offsets[diagdir];
 }
 
@@ -1294,34 +1294,34 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		 */
 
 		 /* Tunnel sprites are positioned at 15,15, but the bounding box covers most of the tile. */
-		static constexpr SpriteBounds roof_bounds[DIAGDIR_END] = {
+		static constexpr DiagDirectionIndexArray<SpriteBounds> roof_bounds{{{
 			{{0, 1, BB_Z_SEPARATOR}, {TILE_SIZE, TILE_SIZE - 1, 1}, {TILE_SIZE - 1, TILE_SIZE - 2, -BB_Z_SEPARATOR}}, // NE
 			{{1, 0, BB_Z_SEPARATOR}, {TILE_SIZE - 1, TILE_SIZE, 1}, {TILE_SIZE - 2, TILE_SIZE - 1, -BB_Z_SEPARATOR}}, // SE
 			{{0, 1, BB_Z_SEPARATOR}, {TILE_SIZE, TILE_SIZE - 1, 1}, {TILE_SIZE - 1, TILE_SIZE - 2, -BB_Z_SEPARATOR}}, // SW
 			{{1, 0, BB_Z_SEPARATOR}, {TILE_SIZE - 1, TILE_SIZE, 1}, {TILE_SIZE - 2, TILE_SIZE - 1, -BB_Z_SEPARATOR}}, // NW
-		};
+		}}};
 
 		/* Catenary sprites are positioned at 0,0, with the same bounding box as above. */
-		static constexpr SpriteBounds catenary_bounds[DIAGDIR_END] = {
+		static constexpr DiagDirectionIndexArray<SpriteBounds> catenary_bounds{{{
 			{{0, 1, BB_Z_SEPARATOR}, {TILE_SIZE, TILE_SIZE - 1, 1}, {0, -1, -BB_Z_SEPARATOR}}, // NE
 			{{1, 0, BB_Z_SEPARATOR}, {TILE_SIZE - 1, TILE_SIZE, 1}, {-1, 0, -BB_Z_SEPARATOR}}, // SE
 			{{0, 1, BB_Z_SEPARATOR}, {TILE_SIZE, TILE_SIZE - 1, 1}, {0, -1, -BB_Z_SEPARATOR}}, // SW
 			{{1, 0, BB_Z_SEPARATOR}, {TILE_SIZE - 1, TILE_SIZE, 1}, {-1, 0, -BB_Z_SEPARATOR}}, // NW
-		};
+		}}};
 
-		static constexpr SpriteBounds rear_sep[DIAGDIR_END] = {
+		static constexpr DiagDirectionIndexArray<SpriteBounds> rear_sep{{{
 			{{}, {TILE_SIZE, 1, TILE_HEIGHT}, {}}, // NE
 			{{}, {1, TILE_SIZE, TILE_HEIGHT}, {}}, // SE
 			{{}, {TILE_SIZE, 1, TILE_HEIGHT}, {}}, // SW
 			{{}, {1, TILE_SIZE, TILE_HEIGHT}, {}}, // NW
-		};
+		}}};
 
-		static constexpr SpriteBounds front_sep[DIAGDIR_END] = {
+		static constexpr DiagDirectionIndexArray<SpriteBounds> front_sep{{{
 			{{0, TILE_SIZE - 1, 0}, {TILE_SIZE, 1, TILE_HEIGHT}, {}}, // NE
 			{{TILE_SIZE - 1, 0, 0}, {1, TILE_SIZE, TILE_HEIGHT}, {}}, // SE
 			{{0, TILE_SIZE - 1, 0}, {TILE_SIZE, 1, TILE_HEIGHT}, {}}, // SW
 			{{TILE_SIZE - 1, 0, 0}, {1, TILE_SIZE, TILE_HEIGHT}, {}}, // NW
-		};
+		}}};
 
 		bool catenary = false;
 
@@ -1953,7 +1953,7 @@ static const uint8_t TUNNEL_SOUND_FRAME = 1;
  * When leaving a tunnel, show the vehicle when it is one frame further
  * to the 'outside', i.e. at (TILE_SIZE-1) - (frame) + 1
  */
-extern const uint8_t _tunnel_visibility_frame[DIAGDIR_END] = {12, 8, 8, 12};
+extern const DiagDirectionIndexArray<uint8_t> _tunnel_visibility_frame{12, 8, 8, 12};
 
 /** @copydoc VehicleEnterTileProc */
 static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)

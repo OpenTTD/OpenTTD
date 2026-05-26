@@ -72,7 +72,8 @@ bool IsValidImageIndex<VehicleType::Road>(uint8_t image_index)
 	return image_index < lengthof(_roadveh_images);
 }
 
-static const Trackdir _road_reverse_table[DIAGDIR_END] = {
+/** Track direction to use when reversing for each diagonal direction. */
+static constexpr DiagDirectionIndexArray<Trackdir> _road_reverse_table{
 	TRACKDIR_RVREV_NE, TRACKDIR_RVREV_SE, TRACKDIR_RVREV_SW, TRACKDIR_RVREV_NW
 };
 
@@ -410,13 +411,13 @@ void RoadVehicle::UpdateDeltaXY()
 	this->bounds = {{-1, -1, 0}, {3, 3, 6}, {}};
 
 	if (!IsDiagonalDirection(this->direction)) {
-		static const Point _sign_table[] = {
+		static const DiagDirectionIndexArray<Point> _sign_table{{{
 			/* x, y */
 			{-1, -1}, // DIR_N
 			{-1,  1}, // DIR_E
 			{ 1,  1}, // DIR_S
 			{ 1, -1}, // DIR_W
-		};
+		}}};
 
 		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length) / 2;
 
@@ -628,8 +629,8 @@ struct RoadVehFindData {
 
 static void FindClosestBlockingRoadVeh(Vehicle *v, RoadVehFindData *rvf)
 {
-	static const int8_t dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
-	static const int8_t dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
+	static constexpr DirectionIndexArray<int8_t> dist_x{-4, -8, -4, -1, 4, 8, 4, 1};
+	static constexpr DirectionIndexArray<int8_t> dist_y{-4, -1, 4, 8, 4, 1, -4, -8};
 
 	int x_diff = v->x_pos - rvf->x;
 	int y_diff = v->y_pos - rvf->y;
@@ -1098,7 +1099,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 			} else {
 				north = (prev_state == TRACKDIR_RVREV_NW || prev_state == TRACKDIR_RVREV_NE);
 			}
-			static const Trackdir reversed_turn_lookup[2][DIAGDIR_END] = {
+			static const DiagDirectionIndexArray<Trackdir> reversed_turn_lookup[2] = {
 				{ TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N,  TRACKDIR_UPPER_E },
 				{ TRACKDIR_RIGHT_S, TRACKDIR_LOWER_W, TRACKDIR_LOWER_E, TRACKDIR_LEFT_S  }};
 			dir = reversed_turn_lookup[north ? 0 : 1][ReverseDiagDir(entry_dir)];
@@ -1203,18 +1204,19 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 		(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->overtaking][v->frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
-		TileIndex tile = v->tile + TileOffsByDiagDir((DiagDirection)(rd.x & 3));
+		DiagDirection diagdir = static_cast<DiagDirection>(rd.x & 3);
+		TileIndex tile = v->tile + TileOffsByDiagDir(diagdir);
 		Trackdir dir;
 
 		if (v->IsFrontEngine()) {
 			/* If this is the front engine, look for the right path. */
 			if (HasTileAnyRoadType(tile, v->compatible_roadtypes)) {
-				dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
+				dir = RoadFindPathToDest(v, tile, diagdir);
 			} else {
-				dir = _road_reverse_table[(DiagDirection)(rd.x & 3)];
+				dir = _road_reverse_table[diagdir];
 			}
 		} else {
-			dir = FollowPreviousRoadVehicle(v, prev, tile, (DiagDirection)(rd.x & 3), false);
+			dir = FollowPreviousRoadVehicle(v, prev, tile, diagdir, false);
 		}
 
 		if (dir == INVALID_TRACKDIR) {
@@ -1306,7 +1308,7 @@ again:
 				return false;
 			}
 			/* Try an about turn to re-enter the previous tile */
-			dir = _road_reverse_table[rd.x & 3];
+			dir = _road_reverse_table[static_cast<DiagDirection>(rd.x & 3)];
 			goto again;
 		}
 
