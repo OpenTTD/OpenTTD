@@ -80,20 +80,17 @@ extern const Trackdir _dir_to_diag_trackdir[] = {
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW,
 };
 
-extern const TrackBits _corner_to_trackbits[] = {
-	TRACK_BIT_LEFT, TRACK_BIT_LOWER, TRACK_BIT_RIGHT, TRACK_BIT_UPPER,
-};
-
-extern const TrackdirBits _uphill_trackdirs[] = {
+/** Lookup table to convert tile's slope into corresponding track directions for going uphill. */
+extern const TypedIndexContainer<std::array<TrackdirBits, 31>, Slope> _uphill_trackdirs = {
 	TRACKDIR_BIT_NONE                    , ///<  0 SLOPE_FLAT
-	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW, ///<  1 SLOPE_W   -> inclined for diagonal track
-	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_SE, ///<  2 SLOPE_S   -> inclined for diagonal track
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW, ///<  1 Corner::W -> inclined for diagonal track
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_SE, ///<  2 Corner::S -> inclined for diagonal track
 	TRACKDIR_BIT_X_SW                    , ///<  3 SLOPE_SW
-	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE, ///<  4 SLOPE_E   -> inclined for diagonal track
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE, ///<  4 Corner::E -> inclined for diagonal track
 	TRACKDIR_BIT_NONE                    , ///<  5 SLOPE_EW
 	TRACKDIR_BIT_Y_SE                    , ///<  6 SLOPE_SE
 	TRACKDIR_BIT_NONE                    , ///<  7 SLOPE_WSE -> leveled
-	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_NW, ///<  8 SLOPE_N   -> inclined for diagonal track
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_NW, ///<  8 Corner::N -> inclined for diagonal track
 	TRACKDIR_BIT_Y_NW                    , ///<  9 SLOPE_NW
 	TRACKDIR_BIT_NONE                    , ///< 10 SLOPE_NS
 	TRACKDIR_BIT_NONE                    , ///< 11 SLOPE_NWS -> leveled

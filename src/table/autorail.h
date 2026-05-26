@@ -22,9 +22,9 @@
  * Table maps each of the six rail directions and tileh combinations to a sprite.
  * Invalid entries are required to make sure that this array can be quickly accessed.
  */
-static const int _AutorailTilehSprite[][6] = {
+static constexpr TypedIndexContainer<std::array<std::array<int, 6>, 32>, Slope> _AutorailTilehSprite = {
 /* type   0        1        2        3        4        5 */
-	{       0,       8,      16,      25,      34,      42 }, // tileh = 0
+	std::array<int, 6>{0, 8, 16, 25, 34, 42},
 	{       5,      13, RED(22), RED(31),      35,      42 }, // tileh = 1
 	{       5,      10,      16,      26, RED(38), RED(46) }, // tileh = 2
 	{       5,       9, RED(23),      26,      35, RED(46) }, // tileh = 3

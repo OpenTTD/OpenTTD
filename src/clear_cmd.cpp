@@ -80,7 +80,7 @@ static void DrawClearLandFence(const TileInfo *ti)
 	if (fence_nw != 0) {
 		bounds.offset.x = 0;
 		bounds.offset.y = -static_cast<int>(TILE_SIZE);
-		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, CORNER_W);
+		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, Corner::W);
 		SpriteID sprite = _clear_land_fence_sprites[fence_nw - 1] + _fence_mod_by_tileh_nw[ti->tileh];
 		AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
 	}
@@ -89,7 +89,7 @@ static void DrawClearLandFence(const TileInfo *ti)
 	if (fence_ne != 0) {
 		bounds.offset.x = -static_cast<int>(TILE_SIZE);
 		bounds.offset.y = 0;
-		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, CORNER_E);
+		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, Corner::E);
 		SpriteID sprite = _clear_land_fence_sprites[fence_ne - 1] + _fence_mod_by_tileh_ne[ti->tileh];
 		AddSortableSpriteToDraw(sprite, PAL_NONE, *ti, bounds, false);
 	}
@@ -100,7 +100,7 @@ static void DrawClearLandFence(const TileInfo *ti)
 	if (fence_sw != 0 || fence_se != 0) {
 		bounds.offset.x = 0;
 		bounds.offset.y = 0;
-		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
+		bounds.offset.z = GetSlopePixelZInCorner(ti->tileh, Corner::S);
 
 		if (fence_sw != 0) {
 			SpriteID sprite = _clear_land_fence_sprites[fence_sw - 1] + _fence_mod_by_tileh_sw[ti->tileh];
