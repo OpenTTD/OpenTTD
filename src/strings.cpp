@@ -2416,7 +2416,7 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 			StringBuilder builder(err_str);
 			builder.PutUtf8(SCC_YELLOW);
 			builder.Put("The current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
-			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
+			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WarningLevel::Warning);
 		}
 	}
 #endif
@@ -2433,7 +2433,7 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 		StringBuilder builder(err_str);
 		builder.PutUtf8(SCC_YELLOW);
 		builder.Put("The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WarningLevel::Warning);
 		return;
 	}
 
@@ -2452,7 +2452,7 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 		StringBuilder builder(err_str);
 		builder.PutUtf8(SCC_YELLOW);
 		builder.Put("This version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WarningLevel::Error);
 	}
 #endif /* !(WITH_ICU_I18N && WITH_HARFBUZZ) && !WITH_UNISCRIBE && !WITH_COCOA */
 }

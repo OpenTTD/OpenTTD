@@ -212,7 +212,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
 
 	if (_pause_mode.Any() && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
 		ShowErrorMessage(GetEncodedString(err_message), GetEncodedString(STR_ERROR_NOT_ALLOWED_WHILE_PAUSED),
-			WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
+			WarningLevel::Info, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
 		return { true, estimate_only, only_sending };
 	} else {
 		return { false, estimate_only, only_sending };

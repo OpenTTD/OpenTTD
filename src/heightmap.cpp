@@ -157,19 +157,19 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 
 	auto fp = FioFOpenFile(filename, "rb", Subdirectory::Heightmap);
 	if (!fp.has_value()) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WarningLevel::Error);
 		return false;
 	}
 
 	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
 	if (png_ptr == nullptr) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WarningLevel::Error);
 		return false;
 	}
 
 	info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == nullptr || setjmp(png_jmpbuf(png_ptr))) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WarningLevel::Error);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -184,7 +184,7 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 	/* Maps of wrong colour-depth are not used.
 	 * (this should have been taken care of by stripping alpha and 16-bit samples on load) */
 	if ((png_get_channels(png_ptr, info_ptr) != 1) && (png_get_channels(png_ptr, info_ptr) != 3) && (png_get_bit_depth(png_ptr, info_ptr) != 8)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_IMAGE_TYPE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_IMAGE_TYPE), WarningLevel::Error);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -193,7 +193,7 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 	uint height = png_get_image_height(png_ptr, info_ptr);
 
 	if (!IsValidHeightmapDimension(width, height)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WarningLevel::Error);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -283,7 +283,7 @@ static bool ReadHeightmapBMP(std::string_view filename, uint *x, uint *y, std::v
 {
 	auto f = FioFOpenFile(filename, "rb", Subdirectory::Heightmap);
 	if (!f.has_value()) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WarningLevel::Error);
 		return false;
 	}
 
@@ -292,18 +292,18 @@ static bool ReadHeightmapBMP(std::string_view filename, uint *x, uint *y, std::v
 	BmpData data{};
 
 	if (!BmpReadHeader(file, info, data)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WarningLevel::Error);
 		return false;
 	}
 
 	if (!IsValidHeightmapDimension(info.width, info.height)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WarningLevel::Error);
 		return false;
 	}
 
 	if (map != nullptr) {
 		if (!BmpReadBitmap(file, info, data)) {
-			ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WarningLevel::Error);
 			return false;
 		}
 

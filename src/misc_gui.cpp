@@ -495,7 +495,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 		cost = -cost;
 		msg = STR_MESSAGE_ESTIMATED_INCOME;
 	}
-	ShowErrorMessage(GetEncodedString(msg, cost), {}, WL_INFO, x, y);
+	ShowErrorMessage(GetEncodedString(msg, cost), {}, WarningLevel::Info, x, y);
 }
 
 /**

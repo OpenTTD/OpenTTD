@@ -1408,7 +1408,7 @@ public:
 			case WID_SCMF_LOAD: {
 				auto cmf = ParseCompanyManagerFaceCode(_company_manager_face);
 				if (cmf.has_value()) this->face = *cmf;
-				ShowErrorMessage(GetEncodedString(STR_FACE_LOAD_DONE), {}, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_FACE_LOAD_DONE), {}, WarningLevel::Info);
 				this->UpdateData();
 				this->SetDirty();
 				break;
@@ -1422,7 +1422,7 @@ public:
 			/* Save button */
 			case WID_SCMF_SAVE:
 				_company_manager_face = FormatCompanyManagerFaceCode(this->face);
-				ShowErrorMessage(GetEncodedString(STR_FACE_SAVE_DONE), {}, WL_INFO);
+				ShowErrorMessage(GetEncodedString(STR_FACE_SAVE_DONE), {}, WarningLevel::Info);
 				break;
 
 			/* Randomize face button */
@@ -1518,11 +1518,11 @@ public:
 		auto cmf = ParseCompanyManagerFaceCode(*str);
 		if (cmf.has_value()) {
 			this->face = *cmf;
-			ShowErrorMessage(GetEncodedString(STR_FACE_FACECODE_SET), {}, WL_INFO);
+			ShowErrorMessage(GetEncodedString(STR_FACE_FACECODE_SET), {}, WarningLevel::Info);
 			this->UpdateData();
 			this->SetDirty();
 		} else {
-			ShowErrorMessage(GetEncodedString(STR_FACE_FACECODE_ERR), {}, WL_INFO);
+			ShowErrorMessage(GetEncodedString(STR_FACE_FACECODE_ERR), {}, WarningLevel::Info);
 		}
 	}
 };

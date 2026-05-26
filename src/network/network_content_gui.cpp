@@ -965,7 +965,7 @@ public:
 	void OnConnect(bool success) override
 	{
 		if (!success) {
-			ShowErrorMessage(GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_CONNECT), {}, WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_CONNECT), {}, WarningLevel::Error);
 			this->Close();
 			return;
 		}
@@ -1155,6 +1155,6 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	ShowErrorMessage(
 		GetEncodedString(STR_CONTENT_NO_ZLIB),
 		GetEncodedString(STR_CONTENT_NO_ZLIB_SUB),
-		WL_ERROR);
+		WarningLevel::Error);
 #endif /* WITH_ZLIB */
 }

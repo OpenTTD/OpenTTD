@@ -471,7 +471,7 @@ bool ClientNetworkContentSocketHandler::ReceiveServerContent(Packet &p)
 			ShowErrorMessage(
 				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD),
 				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE),
-				WL_ERROR);
+				WarningLevel::Error);
 			this->CloseConnection();
 			this->cur_file.reset();
 
@@ -506,7 +506,7 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 			ShowErrorMessage(
 				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD),
 				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE),
-				WL_ERROR);
+				WarningLevel::Error);
 			return false;
 		}
 	}
@@ -545,7 +545,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 		this->OnDownloadComplete(this->cur_info->id);
 	} else {
-		ShowErrorMessage(GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_EXTRACT), {}, WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_EXTRACT), {}, WarningLevel::Error);
 	}
 }
 

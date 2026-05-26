@@ -364,7 +364,7 @@ void LoadTownData()
 
 	if (!f.has_value()) {
 		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-			GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+			GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
 		return;
 	}
 
@@ -373,7 +373,7 @@ void LoadTownData()
 	f.reset();
 	if (len != 1) {
 		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-			GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+			GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
 		return;
 	}
 
@@ -382,13 +382,13 @@ void LoadTownData()
 	try {
 		town_data = nlohmann::json::parse(text);
 	} catch (nlohmann::json::exception &) {
-		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
 		return;
 	}
 
 	/* Check for JSON formatting errors with the array of towns. */
 	if (!town_data.is_array()) {
-		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
 		return;
 	}
 
@@ -405,14 +405,14 @@ void LoadTownData()
 
 		/* Ensure JSON is formatted properly. */
 		if (!feature.is_object()) {
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
 			return;
 		}
 
 		/* Check to ensure all fields exist and are of the correct type.
 		 * If the town name is formatted wrong, all we can do is give a general warning. */
 		if (!feature.contains("name") || !feature.at("name").is_string()) {
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
 			return;
 		}
 
@@ -423,7 +423,7 @@ void LoadTownData()
 				!feature.contains("y") || !feature.at("y").is_number()) {
 			feature.at("name").get_to(name);
 			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-				GetEncodedString(STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY, name), WL_ERROR);
+				GetEncodedString(STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY, name), WarningLevel::Error);
 			return;
 		}
 
@@ -439,7 +439,7 @@ void LoadTownData()
 		/* Check for improper coordinates and warn the player. */
 		if (x_proportion <= 0.0f || y_proportion <= 0.0f || x_proportion >= 1.0f || y_proportion >= 1.0f) {
 			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-				GetEncodedString(STR_TOWN_DATA_ERROR_BAD_COORDINATE, name), WL_ERROR);
+				GetEncodedString(STR_TOWN_DATA_ERROR_BAD_COORDINATE, name), WarningLevel::Error);
 			return;
 		}
 
@@ -482,7 +482,7 @@ void LoadTownData()
 
 	/* If we couldn't found a town (or multiple), display a message to the player with the number of failed towns. */
 	if (failed_towns > 0) {
-		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN, failed_towns), {}, WL_WARNING);
+		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN, failed_towns), {}, WarningLevel::Warning);
 	}
 
 	/* Now that we've created the towns, let's grow them to their target populations. */

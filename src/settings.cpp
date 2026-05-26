@@ -1024,7 +1024,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 			} else {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
 					GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, *item->value, BaseGraphics::ini_data.name),
-					WL_CRITICAL);
+					WarningLevel::Critical);
 			}
 		}
 
@@ -1035,7 +1035,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 			} else {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
 					GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, *item->value, BaseGraphics::ini_data.name),
-					WL_CRITICAL);
+					WarningLevel::Critical);
 			}
 		}
 
@@ -1046,7 +1046,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 			} else {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
 					GetEncodedString(STR_CONFIG_ERROR_ARRAY, BaseGraphics::ini_data.name),
-					WL_CRITICAL);
+					WarningLevel::Critical);
 			}
 		}
 	}
@@ -1114,7 +1114,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 			} else {
 				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
 					GetEncodedString(STR_CONFIG_ERROR_ARRAY, filename),
-					WL_CRITICAL);
+					WarningLevel::Critical);
 			}
 		}
 
@@ -1135,7 +1135,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 
 			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
 				GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name : filename, reason),
-				WL_CRITICAL);
+				WarningLevel::Critical);
 			continue;
 		}
 
@@ -1144,7 +1144,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 		if (found != std::end(list)) {
 			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
 				GetEncodedString(STR_CONFIG_ERROR_DUPLICATE_GRFID, c->filename, (*found)->filename),
-				WL_CRITICAL);
+				WarningLevel::Critical);
 			continue;
 		}
 
@@ -1154,7 +1154,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 		} else if (++num_grfs > NETWORK_MAX_GRF_COUNT) {
 			/* Check we will not load more non-static NewGRFs than allowed. This could trigger issues for game servers. */
 			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-				GetEncodedString(STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED), WL_CRITICAL);
+				GetEncodedString(STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED), WarningLevel::Critical);
 			break;
 		}
 

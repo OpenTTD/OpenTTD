@@ -42,7 +42,7 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection([[maybe_unused]] boo
 		ClientNetworkEmergencySave();
 		_switch_mode = SM_MENU;
 		_networking = false;
-		ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_LOSTCONNECTION), {}, WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_LOSTCONNECTION), {}, WarningLevel::Critical);
 
 		return this->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 	}

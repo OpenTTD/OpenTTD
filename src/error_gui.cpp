@@ -290,7 +290,7 @@ void UnshowCriticalError()
 
 /**
  * Display an error message in a window.
- * Note: CommandCost errors are always severity level WL_INFO.
+ * Note: CommandCost errors are always severity level WarningLevel::Info.
  * @param summary_msg  General error message showed in first line. Must be valid.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
@@ -301,7 +301,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc
 	EncodedString error = std::move(cc.GetEncodedMessage());
 	if (error.empty()) error = GetEncodedStringIfValid(cc.GetErrorMessage());
 
-	ShowErrorMessage(std::move(summary_msg), std::move(error), WL_INFO, x, y,
+	ShowErrorMessage(std::move(summary_msg), std::move(error), WarningLevel::Info, x, y,
 		GetEncodedStringIfValid(cc.GetExtraErrorMessage()), cc.GetErrorOwner());
 }
 
@@ -317,7 +317,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc
  */
 void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x, int y, EncodedString &&extra_msg, CompanyID company)
 {
-	if (wl != WL_INFO) {
+	if (wl != WarningLevel::Info) {
 		/* Print message to console */
 
 		std::string message = summary_msg.GetDecodedString();
@@ -330,10 +330,10 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 			message += extra_msg.GetDecodedString();
 		}
 
-		IConsolePrint(wl == WL_WARNING ? CC_WARNING : CC_ERROR, message);
+		IConsolePrint(wl == WarningLevel::Warning ? CC_WARNING : CC_ERROR, message);
 	}
 
-	bool is_critical = wl == WL_CRITICAL;
+	bool is_critical = wl == WarningLevel::Critical;
 
 	if (_game_mode == GM_BOOTSTRAP) return;
 	if (_settings_client.gui.errmsg_duration == 0 && !is_critical) return;
@@ -344,7 +344,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 	if (w != nullptr) {
 		if (w->IsCritical()) {
 			/* A critical error is currently shown. */
-			if (wl == WL_CRITICAL) {
+			if (wl == WarningLevel::Critical) {
 				/* Push another critical error in the queue of errors,
 				 * but do not put other errors in the queue. */
 				_error_list.push_back(std::move(data));
