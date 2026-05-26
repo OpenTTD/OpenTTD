@@ -558,7 +558,7 @@ uint DistanceFromEdgeDir(TileIndex, DiagDirection); ///< distance from the map e
  */
 inline TileIndexDiff TileOffsByAxis(Axis axis)
 {
-	extern const TileIndexDiffC _tileoffs_by_axis[];
+	extern const AxisIndexArray<TileIndexDiffC> _tileoffs_by_axis;
 
 	assert(IsValidAxis(axis));
 	return ToTileIndexDiff(_tileoffs_by_axis[axis]);
