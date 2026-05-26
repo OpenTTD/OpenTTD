@@ -1075,7 +1075,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 			CommandCost res = CMD_ERROR;
 			if (!_generating_world && Chance16(1, 10)) {
 				/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
-				res = std::get<0>(Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater},
+				res = ExtractCommandCost(Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater},
 						tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, false));
 			}
 			if (res.Failed() && Chance16(1, 3)) {
@@ -1092,7 +1092,7 @@ static bool TerraformTownTile(TileIndex tile, Slope edges, bool dir)
 {
 	assert(tile < Map::Size());
 
-	CommandCost r = std::get<0>(Command<Commands::TerraformLand>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, edges, dir));
+	CommandCost r = ExtractCommandCost(Command<Commands::TerraformLand>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, edges, dir));
 	if (r.Failed() || r.GetCost() >= (_price[Price::Terraform] + 2) * 8) return false;
 	Command<Commands::TerraformLand>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater, DoCommandFlag::Execute}, tile, edges, dir);
 	return true;
