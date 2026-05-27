@@ -509,56 +509,6 @@ static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
 	return tracks;
 }
 
-/** Structure for ship sub-coordinate data for moving into a new tile via a Diagdir onto a Track. */
-struct ShipSubcoordData {
-	uint8_t x_subcoord; ///< New X sub-coordinate on the new tile
-	uint8_t y_subcoord; ///< New Y sub-coordinate on the new tile
-	Direction dir;   ///< New Direction to move in on the new track
-};
-/** Ship sub-coordinate data for moving into a new tile via a Diagdir onto a Track.
- * Array indexes are Diagdir, Track.
- * There will always be three possible tracks going into an adjacent tile via a Diagdir,
- * so each Diagdir sub-array will have three valid and three invalid structures per Track.
- */
-static constexpr DiagDirectionIndexArray<TrackIndexArray<ShipSubcoordData>> _ship_subcoord{{{
-	/* DIAGDIR_NE */
-	{{{
-		{15,  8, DIR_NE},      // TRACK_X
-		{ 0,  0, INVALID_DIR}, // TRACK_Y
-		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
-		{15,  8, DIR_E},       // TRACK_LOWER
-		{15,  7, DIR_N},       // TRACK_LEFT
-		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
-	}}},
-	/* DIAGDIR_SE */
-	{{{
-		{ 0,  0, INVALID_DIR}, // TRACK_X
-		{ 8,  0, DIR_SE},      // TRACK_Y
-		{ 7,  0, DIR_E},       // TRACK_UPPER
-		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
-		{ 8,  0, DIR_S},       // TRACK_LEFT
-		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
-	}}},
-	/* DIAGDIR_SW */
-	{{{
-		{ 0,  8, DIR_SW},      // TRACK_X
-		{ 0,  0, INVALID_DIR}, // TRACK_Y
-		{ 0,  7, DIR_W},       // TRACK_UPPER
-		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
-		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
-		{ 0,  8, DIR_S},       // TRACK_RIGHT
-	}}},
-	/* DIAGDIR_NW */
-	{{{
-		{ 0,  0, INVALID_DIR}, // TRACK_X
-		{ 8, 15, DIR_NW},      // TRACK_Y
-		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
-		{ 8, 15, DIR_W},       // TRACK_LOWER
-		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
-		{ 7, 15, DIR_N},       // TRACK_RIGHT
-	}}},
-}}};
-
 /**
  * Test if a ship is in the centre of a lock and should move up or down.
  * @param v Ship being tested.
@@ -776,10 +726,8 @@ static void ShipController(Ship *v)
 				const Track track = ChooseShipTrack(v, gp.new_tile, tracks);
 				if (track == INVALID_TRACK) return ReverseShip(v);
 
-				const ShipSubcoordData &b = _ship_subcoord[diagdir][track];
-
-				gp.x = (gp.x & ~0xF) | b.x_subcoord;
-				gp.y = (gp.y & ~0xF) | b.y_subcoord;
+				/* Update XY to reflect the entrance to the new tile, and select the direction to use */
+				Direction chosen_dir = VehicleEnterTileCoordinates(gp, diagdir, track);
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
 				auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
@@ -793,7 +741,7 @@ static void ShipController(Ship *v)
 					if (GetEffectiveWaterClass(gp.old_tile) != GetEffectiveWaterClass(gp.new_tile)) v->UpdateCache();
 				}
 
-				const Direction new_direction = b.dir;
+				const Direction new_direction = chosen_dir;
 				const DirDiff diff = DirDifference(new_direction, v->direction);
 				switch (diff) {
 					case DirDiff::Same:
