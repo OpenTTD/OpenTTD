@@ -157,7 +157,7 @@ public:
 		Node *grandparent = n.parent->parent;
 		if (grandparent != nullptr) {
 			const DiagDirDiff dir_diff = DiagDirDifference(n.parent->GetDiagDirFromParent(), n.GetDiagDirFromParent());
-			if (dir_diff != DIAGDIRDIFF_90LEFT && dir_diff != DIAGDIRDIFF_90RIGHT) n.cost += 1;
+			if (dir_diff != DiagDirDiff::Left90 && dir_diff != DiagDirDiff::Right90) n.cost += 1;
 		}
 
 		return true;

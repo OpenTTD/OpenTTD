@@ -102,18 +102,12 @@ static constexpr DiagDirections DIAGDIRECTIONS_ALL{DIAGDIR_NE, DIAGDIR_SE, DIAGD
  *
  * @see DirDiff
  */
-enum DiagDirDiff : uint8_t {
-	DIAGDIRDIFF_BEGIN   = 0,        ///< Used for iterations
-	DIAGDIRDIFF_SAME    = 0,        ///< Same directions
-	DIAGDIRDIFF_90RIGHT = 1,        ///< 90 degrees right
-	DIAGDIRDIFF_REVERSE = 2,        ///< Reverse directions
-	DIAGDIRDIFF_90LEFT  = 3,        ///< 90 degrees left
-	DIAGDIRDIFF_END,                ///< Used for iterations
+enum class DiagDirDiff : uint8_t {
+	Same = 0, ///< Same directions
+	Right90 = 1, ///< 90 degrees right
+	Reverse = 2, ///< Reverse directions
+	Left90 = 3, ///< 90 degrees left
 };
-
-/** Allow incrementing of DiagDirDiff variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirDiff)
-
 
 /**
  * Enumeration for the two axis X and Y
