@@ -430,7 +430,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Bau Stro
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Bau Traminfrastruktur
 STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Beem planzen. Ctrl+Klick+Zéien wielt d'Areal diagonal. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Schëld opstellen
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Objet plazéiren. Ctrl+Klick+Zéien wielt d'Areal diagonal aus. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Objet placéieren. Ctrl+Klick+Zéien wielt d'Areal diagonal aus. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 
 # Scenario editor file menu
 ###length 7
@@ -525,6 +525,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fluchhafebau
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landschaftsbau
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Beem planzen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Schëld opstellen
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Objet placéieren
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
@@ -1437,7 +1438,7 @@ STR_CONFIG_SETTING_MULTIPINDTOWN                                :Erlaabt méi de
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalerweis well eng Stad net méi wéi eng Industrie vun all Typ. Mat dëser Astellung erlaabt d'Stad méi Industrien vun dem selwëschten Typ
 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Signaler uweisen: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Wielt opp wéienger Säit vun der Schinn d'Signaler plazéiert ginn
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Wielt opp wéienger Säit vun der Schinn d'Signaler placéiert ginn
 ###length 3
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Lénks
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Op der Fuerersäit
@@ -2042,8 +2043,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verbueden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaabt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaabt, eegene Stad-Layout
 
-STR_CONFIG_SETTING_HOUSE_PLACER                                 :Individuell Haiser plazéiren: {STRING}
-STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Wann des Astellung ugeschalt ass, kënne Spiller Haiser manuell plazéiren
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Individuell Haiser placéieren: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Wann des Astellung ugeschalt ass, kënne Spiller Haiser manuell placéieren
 ###length 3
 STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Verbueden
 STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Erlabt
@@ -2055,7 +2056,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Wéivill Wuere 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratesch (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bamplazéirung: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bamplacéierung: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrolléiert zoufälleg Optauche vu Beem während dem Spill. Dëst kann Industrie beaflossen, déi op d'Wuessen vu Beem ugewisen sinn
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Wuessen, net ausbreeden {RED}(Mécht Seemille futti)
@@ -3097,6 +3098,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Fielsen 
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Zone fir Wüst défineieren.{}Ctrl+Klick fir se ze läschen
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergréisser d'Zone fir d'Land unzehiewen/erofzesetzen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklenger d'Zone fir d'Land unzehiewen/erofzesetzen
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}En Eck vum Land erofsetzen. Wann d'Gréisst 1x1 ass, Ctrl+Zéien setzt den éischten Eck erof an planéiert d'ugewielten Land ob déi nei Eckhéicht. Ctrl+Klick+Zéien wielt d'Areal diagonal. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}En Eck vum Land unhiewen. Wann d'Gréisst 1x1 ass, Ctrl+Zéien hiewt den éischten Eck an planéiert d'ugewielten Land ob déi nei Eckhéicht. Ctrl+Klick+Zéien wielt d'Areal diagonal. Dréck Shift fir nëmmen déi ongeféier Käschten unzeweisen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generéier en Zoufallsland
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Neie Szenario erstellen
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Setz d'Landschaft zeréck
@@ -5239,7 +5242,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :ze no un engem 
 
 STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Kann keen Zuchweepunkt hei bauen...
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Kann kee Stroosseweepunkt he bauen...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :Kann Boje net hei plazéieren...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :Kann Boje net hei placéieren...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Kann de Weepunktnumm net änneren...
 STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Ka Weepunktschëld net versetzen
 
@@ -5326,7 +5329,7 @@ STR_ERROR_NO_SUITABLE_TRAMWAY                                   :Keng gëeegent 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :Kann hei kee Kanal bauen...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :Kann d'Schleis hei net bauen...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :Kann hei kee Floss plazéiren...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :Kann hei kee Floss placéieren...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :muss op Waasser gebaut ginn
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :kann net um Waasser gebaut ginn
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :kann net op opener Séi bauen
