@@ -40,10 +40,10 @@ static const uint NUM_TRACKS_AT_PCP = 6;
 
 /** Which PPPs are possible at all on a given PCP */
 static const DiagDirectionIndexArray<Directions> _allowed_ppp_on_pcp{{{
-	{DIR_N, DIR_E, DIR_SE, DIR_S, DIR_W, DIR_NW},
-	{DIR_N, DIR_NE, DIR_E, DIR_S, DIR_SW, DIR_W},
-	{DIR_N, DIR_E, DIR_SE, DIR_S, DIR_W, DIR_NW},
-	{DIR_N, DIR_NE, DIR_E, DIR_S, DIR_SW, DIR_W},
+	{Direction::N, Direction::E, Direction::SE, Direction::S, Direction::W, Direction::NW},
+	{Direction::N, Direction::NE, Direction::E, Direction::S, Direction::SW, Direction::W},
+	{Direction::N, Direction::E, Direction::SE, Direction::S, Direction::W, Direction::NW},
+	{Direction::N, Direction::NE, Direction::E, Direction::S, Direction::SW, Direction::W},
 }}};
 
 /**
@@ -52,10 +52,10 @@ static const DiagDirectionIndexArray<Directions> _allowed_ppp_on_pcp{{{
  * north, the eastern PPP belongs to the tile.
  */
 static const DiagDirectionIndexArray<Directions> _owned_ppp_on_pcp{{{
-	{DIR_SE, DIR_S, DIR_SW, DIR_W},
-	{DIR_N, DIR_SW, DIR_W, DIR_NW},
-	{DIR_N, DIR_NE, DIR_E, DIR_NW},
-	{DIR_NE, DIR_E, DIR_SE, DIR_S},
+	{Direction::SE, Direction::S, Direction::SW, Direction::W},
+	{Direction::N, Direction::SW, Direction::W, Direction::NW},
+	{Direction::N, Direction::NE, Direction::E, Direction::NW},
+	{Direction::NE, Direction::E, Direction::SE, Direction::S},
 }}};
 
 /** Maps a track bit onto two PCP positions */
@@ -76,38 +76,38 @@ static const TrackIndexArray<std::array<DiagDirection, 2>> _pcp_positions{{{
  */
 static const TrackIndexArray<DiagDirectionIndexArray<Directions>> _preferred_ppp_of_track_at_pcp{{{
 	{{{ // X
-		{DIR_NE, DIR_SE, DIR_NW}, // NE
+		{Direction::NE, Direction::SE, Direction::NW}, // NE
 		DIRECTIONS_ALL,           // SE
-		{DIR_SE, DIR_SW, DIR_NW}, // SW
+		{Direction::SE, Direction::SW, Direction::NW}, // SW
 		DIRECTIONS_ALL            // NE
 	}}},
 	{{{ // Y
 		DIRECTIONS_ALL,
-		{DIR_NE, DIR_SE, DIR_SW},
+		{Direction::NE, Direction::SE, Direction::SW},
 		DIRECTIONS_ALL,
-		{DIR_SW, DIR_NW, DIR_NE},
+		{Direction::SW, Direction::NW, Direction::NE},
 	}}},
 	{{{ // UPPER
-		{DIR_E, DIR_N, DIR_S},
+		{Direction::E, Direction::N, Direction::S},
 		DIRECTIONS_ALL,
 		DIRECTIONS_ALL,
-		{DIR_W, DIR_N, DIR_S},
+		{Direction::W, Direction::N, Direction::S},
 	}}},
 	{{{ // LOWER
 		DIRECTIONS_ALL,
-		{DIR_E, DIR_N, DIR_S},
-		{DIR_W, DIR_N, DIR_S},
+		{Direction::E, Direction::N, Direction::S},
+		{Direction::W, Direction::N, Direction::S},
 		DIRECTIONS_ALL,
 	}}},
 	{{{ // LEFT
 		DIRECTIONS_ALL,
 		DIRECTIONS_ALL,
-		{DIR_S, DIR_E, DIR_W},
-		{DIR_N, DIR_E, DIR_W},
+		{Direction::S, Direction::E, Direction::W},
+		{Direction::N, Direction::E, Direction::W},
 	}}},
 	{{{ // RIGHT
-		{DIR_N, DIR_E, DIR_W},
-		{DIR_S, DIR_E, DIR_W},
+		{Direction::N, Direction::E, Direction::W},
+		{Direction::S, Direction::E, Direction::W},
 		DIRECTIONS_ALL,
 		DIRECTIONS_ALL,
 	}}},
@@ -123,77 +123,77 @@ static const DiagDirectionIndexArray<Directions> _ignored_pcp[NUM_IGNORE_GROUPS]
 	{   // Ignore group 1, X and Y tracks
 		{{{     // X even, Y even
 			DIRECTIONS_ALL,
-			{DIR_NE, DIR_SW},
-			{DIR_NW, DIR_SE},
+			{Direction::NE, Direction::SW},
+			{Direction::NW, Direction::SE},
 			DIRECTIONS_ALL,
 		}}},
 		{{{ // X even, Y odd
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
-			{DIR_NW, DIR_SE},
-			{DIR_NE, DIR_SW},
+			{Direction::NW, Direction::SE},
+			{Direction::NE, Direction::SW},
 		}}},
 		{{{ // X odd,  Y even
-			{DIR_NW, DIR_SE},
-			{DIR_NE, DIR_SW},
+			{Direction::NW, Direction::SE},
+			{Direction::NE, Direction::SW},
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
 		}}},
 		{{{ // X odd,  Y odd
-			{DIR_NW, DIR_SE},
+			{Direction::NW, Direction::SE},
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
-			{DIR_NE, DIR_SW},
+			{Direction::NE, Direction::SW},
 		}}},
 	},
 	{   // Ignore group 2, LEFT and RIGHT tracks
 		{{{
-			{DIR_E, DIR_W},
+			{Direction::E, Direction::W},
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
-			{DIR_E, DIR_W},
+			{Direction::E, Direction::W},
 		}}},
 		{{{
 			DIRECTIONS_ALL,
-			{DIR_E, DIR_W},
-			{DIR_E, DIR_W},
+			{Direction::E, Direction::W},
+			{Direction::E, Direction::W},
 			DIRECTIONS_ALL,
 		}}},
 		{{{
 			DIRECTIONS_ALL,
-			{DIR_E, DIR_W},
-			{DIR_E, DIR_W},
+			{Direction::E, Direction::W},
+			{Direction::E, Direction::W},
 			DIRECTIONS_ALL,
 		}}},
 		{{{
-			{DIR_E, DIR_W},
+			{Direction::E, Direction::W},
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
-			{DIR_E, DIR_W},
+			{Direction::E, Direction::W},
 		}}},
 	},
 	{   // Ignore group 3, UPPER and LOWER tracks
 		{{{
-			{DIR_N, DIR_S},
-			{DIR_N, DIR_S},
+			{Direction::N, Direction::S},
+			{Direction::N, Direction::S},
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
 		}}},
 		{{{
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
-			{DIR_N, DIR_S},
-			{DIR_N, DIR_S},
+			{Direction::N, Direction::S},
+			{Direction::N, Direction::S},
 		}}},
 		{{{
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
-			{DIR_N, DIR_S},
-			{DIR_N, DIR_S},
+			{Direction::N, Direction::S},
+			{Direction::N, Direction::S},
 		}}},
 		{{{
-			{DIR_N, DIR_S},
-			{DIR_N, DIR_S},
+			{Direction::N, Direction::S},
+			{Direction::N, Direction::S},
 			DIRECTIONS_ALL,
 			DIRECTIONS_ALL,
 		}}},
@@ -202,12 +202,12 @@ static const DiagDirectionIndexArray<Directions> _ignored_pcp[NUM_IGNORE_GROUPS]
 
 /** Which pylons can definitely NOT be built */
 static const TrackIndexArray<DiagDirectionIndexArray<Directions>> _disallowed_ppp_of_track_at_pcp{{{
-	{Directions{DIR_SW, DIR_NE}, Directions{},               Directions{DIR_SW, DIR_NE}, Directions{}              }, // X
-	{Directions{},               Directions{DIR_NW, DIR_SE}, Directions{},               Directions{DIR_NW, DIR_SE}}, // Y
-	{Directions{DIR_W, DIR_E},   Directions{},               Directions{},               Directions{DIR_W, DIR_E}  }, // UPPER
-	{Directions{},               Directions{DIR_W, DIR_E},   Directions{DIR_W, DIR_E},   Directions{}              }, // LOWER
-	{Directions{},               Directions{},               Directions{DIR_S, DIR_N},   Directions{DIR_N, DIR_S}  }, // LEFT
-	{Directions{DIR_S, DIR_N},   Directions{DIR_S, DIR_N},   Directions{},               Directions{},             }, // RIGHT
+	{Directions{Direction::SW, Direction::NE}, Directions{}, Directions{Direction::SW, Direction::NE}, Directions{}}, // X
+	{Directions{}, Directions{Direction::NW, Direction::SE}, Directions{}, Directions{Direction::NW, Direction::SE}}, // Y
+	{Directions{Direction::W, Direction::E}, Directions{}, Directions{}, Directions{Direction::W, Direction::E}}, // UPPER
+	{Directions{}, Directions{Direction::W, Direction::E}, Directions{Direction::W, Direction::E}, Directions{}}, // LOWER
+	{Directions{}, Directions{}, Directions{Direction::S, Direction::N}, Directions{Direction::N, Direction::S}}, // LEFT
+	{Directions{Direction::S, Direction::N}, Directions{Direction::S, Direction::N}, Directions{}, Directions{}}, // RIGHT
 }}};
 
 /** This array stores which track bits can meet at a tile edge. */
@@ -229,28 +229,28 @@ static const DiagDirectionIndexArray<std::array<TileSource, NUM_TRACKS_AT_PCP>> 
 /** Several PPPs maybe exist, here they are sorted in order of preference. */
 static const DiagDirectionIndexArray<std::array<DirectionIndexArray<Direction>, TLG_END>> _ppp_order{{{    //  X  -  Y
 	{{ // PCP 0
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_E, DIR_S, DIR_W}, // evn - evn
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_S, DIR_W, DIR_N, DIR_E}, // evn - odd
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_S, DIR_W, DIR_N, DIR_E}, // odd - evn
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_N, DIR_E, DIR_S, DIR_W}, // odd - odd
+		{Direction::NE, Direction::NW, Direction::SE, Direction::SW, Direction::N, Direction::E, Direction::S, Direction::W}, // evn - evn
+		{Direction::NE, Direction::SE, Direction::SW, Direction::NW, Direction::S, Direction::W, Direction::N, Direction::E}, // evn - odd
+		{Direction::SW, Direction::NW, Direction::NE, Direction::SE, Direction::S, Direction::W, Direction::N, Direction::E}, // odd - evn
+		{Direction::SW, Direction::SE, Direction::NE, Direction::NW, Direction::N, Direction::E, Direction::S, Direction::W}, // odd - odd
 	}},
 	{{ // PCP 1
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_S, DIR_E, DIR_N, DIR_W}, // evn - evn
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_N, DIR_W, DIR_S, DIR_E}, // evn - odd
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_N, DIR_W, DIR_S, DIR_E}, // odd - evn
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_S, DIR_E, DIR_N, DIR_W}, // odd - odd
+		{Direction::NE, Direction::NW, Direction::SE, Direction::SW, Direction::S, Direction::E, Direction::N, Direction::W}, // evn - evn
+		{Direction::NE, Direction::SE, Direction::SW, Direction::NW, Direction::N, Direction::W, Direction::S, Direction::E}, // evn - odd
+		{Direction::SW, Direction::NW, Direction::NE, Direction::SE, Direction::N, Direction::W, Direction::S, Direction::E}, // odd - evn
+		{Direction::SW, Direction::SE, Direction::NE, Direction::NW, Direction::S, Direction::E, Direction::N, Direction::W}, // odd - odd
 	}},
 	{{ // PCP 2
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_S, DIR_W, DIR_N, DIR_E}, // evn - evn
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_N, DIR_E, DIR_S, DIR_W}, // evn - odd
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_N, DIR_E, DIR_S, DIR_W}, // odd - evn
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_S, DIR_W, DIR_N, DIR_E}, // odd - odd
+		{Direction::NE, Direction::NW, Direction::SE, Direction::SW, Direction::S, Direction::W, Direction::N, Direction::E}, // evn - evn
+		{Direction::NE, Direction::SE, Direction::SW, Direction::NW, Direction::N, Direction::E, Direction::S, Direction::W}, // evn - odd
+		{Direction::SW, Direction::NW, Direction::NE, Direction::SE, Direction::N, Direction::E, Direction::S, Direction::W}, // odd - evn
+		{Direction::SW, Direction::SE, Direction::NE, Direction::NW, Direction::S, Direction::W, Direction::N, Direction::E}, // odd - odd
 	}},
 	{{ // PCP 3
-		{DIR_NE, DIR_NW, DIR_SE, DIR_SW, DIR_N, DIR_W, DIR_S, DIR_E}, // evn - evn
-		{DIR_NE, DIR_SE, DIR_SW, DIR_NW, DIR_S, DIR_E, DIR_N, DIR_W}, // evn - odd
-		{DIR_SW, DIR_NW, DIR_NE, DIR_SE, DIR_S, DIR_E, DIR_N, DIR_W}, // odd - evn
-		{DIR_SW, DIR_SE, DIR_NE, DIR_NW, DIR_N, DIR_W, DIR_S, DIR_E}, // odd - odd
+		{Direction::NE, Direction::NW, Direction::SE, Direction::SW, Direction::N, Direction::W, Direction::S, Direction::E}, // evn - evn
+		{Direction::NE, Direction::SE, Direction::SW, Direction::NW, Direction::S, Direction::E, Direction::N, Direction::W}, // evn - odd
+		{Direction::SW, Direction::NW, Direction::NE, Direction::SE, Direction::S, Direction::E, Direction::N, Direction::W}, // odd - evn
+		{Direction::SW, Direction::SE, Direction::NE, Direction::NW, Direction::N, Direction::W, Direction::S, Direction::E}, // odd - odd
 	}},
 }}};
 

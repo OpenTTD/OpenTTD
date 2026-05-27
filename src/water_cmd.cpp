@@ -50,21 +50,21 @@
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */
 static const Directions _flood_from_dirs[] = {
-	{DIR_NW, DIR_SW, DIR_SE, DIR_NE}, // SLOPE_FLAT
-	{DIR_NE, DIR_SE},                 // SLOPE_W
-	{DIR_NW, DIR_NE},                 // SLOPE_S
-	{DIR_NE},                         // SLOPE_SW
-	{DIR_NW, DIR_SW},                 // SLOPE_E
-	{},                               // SLOPE_EW
-	{DIR_NW},                         // SLOPE_SE
-	{DIR_N, DIR_NW, DIR_NE},          // SLOPE_WSE, SLOPE_STEEP_S
-	{DIR_SW, DIR_SE},                 // SLOPE_N
-	{DIR_SE},                         // SLOPE_NW
-	{},                               // SLOPE_NS
-	{DIR_E, DIR_NE, DIR_SE},          // SLOPE_NWS, SLOPE_STEEP_W
-	{DIR_SW},                         // SLOPE_NE
-	{DIR_S, DIR_SW, DIR_SE},          // SLOPE_ENW, SLOPE_STEEP_N
-	{DIR_W, DIR_SW, DIR_NW},          // SLOPE_SEN, SLOPE_STEEP_E
+	{Direction::NW, Direction::SW, Direction::SE, Direction::NE}, // SLOPE_FLAT
+	{Direction::NE, Direction::SE}, // SLOPE_W
+	{Direction::NW, Direction::NE}, // SLOPE_S
+	{Direction::NE}, // SLOPE_SW
+	{Direction::NW, Direction::SW}, // SLOPE_E
+	{}, // SLOPE_EW
+	{Direction::NW}, // SLOPE_SE
+	{Direction::N, Direction::NW, Direction::NE}, // SLOPE_WSE, SLOPE_STEEP_S
+	{Direction::SW, Direction::SE}, // SLOPE_N
+	{Direction::SE}, // SLOPE_NW
+	{}, // SLOPE_NS
+	{Direction::E, Direction::NE, Direction::SE}, // SLOPE_NWS, SLOPE_STEEP_W
+	{Direction::SW}, // SLOPE_NE
+	{Direction::S, Direction::SW, Direction::SE}, // SLOPE_ENW, SLOPE_STEEP_N
+	{Direction::W, Direction::SW, Direction::NW}, // SLOPE_SEN, SLOPE_STEEP_E
 };
 
 /**
@@ -86,7 +86,7 @@ static inline void MarkTileDirtyIfCanalOrRiver(TileIndex tile)
  */
 static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
 {
-	for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+	for (Direction dir = Direction::Begin; dir < Direction::End; dir++) {
 		MarkTileDirtyIfCanalOrRiver(tile + TileOffsByDir(dir));
 	}
 }
@@ -97,7 +97,7 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  */
 void ClearNeighbourNonFloodingStates(TileIndex tile)
 {
-	for (Direction dir = DIR_BEGIN; dir != DIR_END; dir++) {
+	for (Direction dir = Direction::Begin; dir != Direction::End; dir++) {
 		TileIndex dest = tile + TileOffsByDir(dir);
 		if (IsValidTile(dest) && IsTileType(dest, TileType::Water)) SetNonFloodingWaterTile(dest, false);
 	}
@@ -683,10 +683,10 @@ bool IsWateredTile(TileIndex tile, Direction from)
 
 				case WaterTileType::Coast:
 					switch (GetTileSlope(tile)) {
-						case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
-						case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
-						case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
-						case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
+						case SLOPE_W: return (from == Direction::SE) || (from == Direction::E) || (from == Direction::NE);
+						case SLOPE_S: return (from == Direction::NE) || (from == Direction::N) || (from == Direction::NW);
+						case SLOPE_E: return (from == Direction::NW) || (from == Direction::W) || (from == Direction::SW);
+						case SLOPE_N: return (from == Direction::SW) || (from == Direction::S) || (from == Direction::SE);
 						default: return false;
 					}
 			}
@@ -695,10 +695,10 @@ bool IsWateredTile(TileIndex tile, Direction from)
 			if (GetRailGroundType(tile) == RailGroundType::HalfTileWater) {
 				assert(IsPlainRail(tile));
 				switch (GetTileSlope(tile)) {
-					case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
-					case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
-					case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
-					case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
+					case SLOPE_W: return (from == Direction::SE) || (from == Direction::E) || (from == Direction::NE);
+					case SLOPE_S: return (from == Direction::NE) || (from == Direction::N) || (from == Direction::NW);
+					case SLOPE_E: return (from == Direction::NW) || (from == Direction::W) || (from == Direction::SW);
+					case SLOPE_N: return (from == Direction::SW) || (from == Direction::S) || (from == Direction::SE);
 					default: return false;
 				}
 			}
@@ -775,10 +775,10 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 	uint wa;
 
 	/* determine the edges around with water. */
-	wa  = IsWateredTile(TileAddXY(tile, -1,  0), DIR_SW) << 0;
-	wa += IsWateredTile(TileAddXY(tile,  0,  1), DIR_NW) << 1;
-	wa += IsWateredTile(TileAddXY(tile,  1,  0), DIR_NE) << 2;
-	wa += IsWateredTile(TileAddXY(tile,  0, -1), DIR_SE) << 3;
+	wa  = IsWateredTile(TileAddXY(tile, -1,  0), Direction::SW) << 0;
+	wa += IsWateredTile(TileAddXY(tile,  0,  1), Direction::NW) << 1;
+	wa += IsWateredTile(TileAddXY(tile,  1,  0), Direction::NE) << 2;
+	wa += IsWateredTile(TileAddXY(tile,  0, -1), Direction::SE) << 3;
 
 	if (!(wa & 1)) DrawWaterSprite(base, offset,     feature, tile);
 	if (!(wa & 2)) DrawWaterSprite(base, offset + 1, feature, tile);
@@ -788,25 +788,25 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 	/* right corner */
 	switch (wa & 0x03) {
 		case 0: DrawWaterSprite(base, offset + 4, feature, tile); break;
-		case 3: if (!IsWateredTile(TileAddXY(tile, -1, 1), DIR_W)) DrawWaterSprite(base, offset + 8, feature, tile); break;
+		case 3: if (!IsWateredTile(TileAddXY(tile, -1, 1), Direction::W)) DrawWaterSprite(base, offset + 8, feature, tile); break;
 	}
 
 	/* bottom corner */
 	switch (wa & 0x06) {
 		case 0: DrawWaterSprite(base, offset + 5, feature, tile); break;
-		case 6: if (!IsWateredTile(TileAddXY(tile, 1, 1), DIR_N)) DrawWaterSprite(base, offset + 9, feature, tile); break;
+		case 6: if (!IsWateredTile(TileAddXY(tile, 1, 1), Direction::N)) DrawWaterSprite(base, offset + 9, feature, tile); break;
 	}
 
 	/* left corner */
 	switch (wa & 0x0C) {
 		case  0: DrawWaterSprite(base, offset + 6, feature, tile); break;
-		case 12: if (!IsWateredTile(TileAddXY(tile, 1, -1), DIR_E)) DrawWaterSprite(base, offset + 10, feature, tile); break;
+		case 12: if (!IsWateredTile(TileAddXY(tile, 1, -1), Direction::E)) DrawWaterSprite(base, offset + 10, feature, tile); break;
 	}
 
 	/* upper corner */
 	switch (wa & 0x09) {
 		case 0: DrawWaterSprite(base, offset + 7, feature, tile); break;
-		case 9: if (!IsWateredTile(TileAddXY(tile, -1, -1), DIR_S)) DrawWaterSprite(base, offset + 11, feature, tile); break;
+		case 9: if (!IsWateredTile(TileAddXY(tile, -1, -1), Direction::S)) DrawWaterSprite(base, offset + 11, feature, tile); break;
 	}
 }
 
@@ -1299,7 +1299,7 @@ void TileLoop_Water(TileIndex tile)
 	switch (GetFloodingBehaviour(tile)) {
 		case FloodingBehaviour::Active: {
 			bool continue_flooding = false;
-			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+			for (Direction dir = Direction::Begin; dir < Direction::End; dir++) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to drying up, flooding does not consider TileType::Void tiles. */
 				if (!IsValidTile(dest)) continue;

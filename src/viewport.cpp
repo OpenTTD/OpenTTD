@@ -2927,10 +2927,10 @@ static HighLightStyle Check2x1AutoRail(DiagDirection direction)
 /**
  * Check if the direction of start and end tile should be swapped based on
  * the dragging-style. Default directions are:
- * in the case of a line (HT_RAIL, HT_LINE):  DIR_NE, DIR_NW, DIR_N, DIR_E
- * in the case of a rect (HT_RECT, HT_POINT): DIR_S, DIR_E
+ * in the case of a line (HT_RAIL, HT_LINE):  Direction::NE, Direction::NW, Direction::N, Direction::E
+ * in the case of a rect (HT_RECT, HT_POINT): Direction::S, Direction::E
  * For example dragging a rectangle area from south to north should be swapped to
- * north-south (DIR_S) to obtain the same results with less code. This is what
+ * north-south (Direction::S) to obtain the same results with less code. This is what
  * the return value signifies.
  * @param style HighLightStyle dragging style
  * @param start_tile start tile of drag
@@ -2985,11 +2985,11 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			 * east by checking the X-coordinates of the tiles */
 			if (TileX(end_tile) > TileX(start_tile)) {
 				/* Dragging south does not need to change the start tile. */
-				end_tile = TileAddByDir(end_tile, DIR_S);
+				end_tile = TileAddByDir(end_tile, Direction::S);
 			} else {
 				/* Dragging east. */
-				start_tile = TileAddByDir(start_tile, DIR_SW);
-				end_tile = TileAddByDir(end_tile, DIR_SE);
+				start_tile = TileAddByDir(start_tile, Direction::SW);
+				end_tile = TileAddByDir(end_tile, Direction::SE);
 			}
 			[[fallthrough]];
 

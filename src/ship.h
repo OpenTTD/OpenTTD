@@ -32,7 +32,7 @@ using ShipPathCache = std::vector<ShipPathElement>;
 struct Ship final : public SpecializedVehicle<Ship, VehicleType::Ship> {
 	ShipPathCache path{}; ///< Cached path.
 	TrackBits state{}; ///< The "track" the ship is following.
-	Direction rotation = INVALID_DIR; ///< Visible direction.
+	Direction rotation = Direction::Invalid; ///< Visible direction.
 	int16_t rotation_x_pos = 0; ///< NOSAVE: X Position before rotation.
 	int16_t rotation_y_pos = 0; ///< NOSAVE: Y Position before rotation.
 

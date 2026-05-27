@@ -471,7 +471,7 @@ static void FixOwnerOfRailTrack(Tile t)
 /**
  * Fixes inclination of a vehicle. Older OpenTTD versions didn't update the bits correctly.
  * @param v vehicle
- * @param dir vehicle's direction, or # INVALID_DIR if it can be ignored
+ * @param dir vehicle's direction, or # Direction::Invalid if it can be ignored
  * @return inclination bits to set
  */
 static uint FixVehicleInclination(Vehicle *v, Direction dir)
@@ -480,11 +480,11 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 	int entry_x = v->x_pos;
 	int entry_y = v->y_pos;
 	switch (dir) {
-		case DIR_NE: entry_x |= TILE_UNIT_MASK; break;
-		case DIR_NW: entry_y |= TILE_UNIT_MASK; break;
-		case DIR_SW: entry_x &= ~TILE_UNIT_MASK; break;
-		case DIR_SE: entry_y &= ~TILE_UNIT_MASK; break;
-		case INVALID_DIR: break;
+		case Direction::NE: entry_x |= TILE_UNIT_MASK; break;
+		case Direction::NW: entry_y |= TILE_UNIT_MASK; break;
+		case Direction::SW: entry_x &= ~TILE_UNIT_MASK; break;
+		case Direction::SE: entry_y &= ~TILE_UNIT_MASK; break;
+		case Direction::Invalid: break;
 		default: NOT_REACHED();
 	}
 	uint8_t entry_z = GetSlopePixelZ(entry_x, entry_y, true);
@@ -2533,7 +2533,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_145)) {
 		for (Station *st : Station::Iterate()) {
-			if (st->facilities.Test(StationFacility::Airport)) st->airport.rotation = DIR_N;
+			if (st->facilities.Test(StationFacility::Airport)) st->airport.rotation = Direction::N;
 		}
 	}
 
@@ -2786,7 +2786,7 @@ bool AfterLoadGame()
 							AxisToDirection(a) != ReverseDir(dir)) {
 						/* When reversing, the road vehicle is on the edge of the tile,
 						 * so it can be safely compared to the middle of the tile. */
-						dir = INVALID_DIR;
+						dir = Direction::Invalid;
 					}
 
 					rv->gv_flags |= FixVehicleInclination(rv, dir);

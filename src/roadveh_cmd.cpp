@@ -109,7 +109,7 @@ static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleS
 	uint8_t spritenum = e->VehInfo<RoadVehicleInfo>().image_index;
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
-		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
+		GetCustomVehicleIcon(engine, Direction::W, image_type, result);
 		if (result->IsValid()) return;
 
 		spritenum = e->original_image_index;
@@ -413,10 +413,10 @@ void RoadVehicle::UpdateDeltaXY()
 	if (!IsDiagonalDirection(this->direction)) {
 		static const DiagDirectionIndexArray<Point> _sign_table{{{
 			/* x, y */
-			{-1, -1}, // DIR_N
-			{-1,  1}, // DIR_E
-			{ 1,  1}, // DIR_S
-			{ 1, -1}, // DIR_W
+			{-1, -1}, // Direction::N
+			{-1,  1}, // Direction::E
+			{ 1,  1}, // Direction::S
+			{ 1, -1}, // Direction::W
 		}}};
 
 		int half_shorten = (VEHICLE_LENGTH - this->gcache.cached_veh_length) / 2;
@@ -428,26 +428,26 @@ void RoadVehicle::UpdateDeltaXY()
 		/* Unlike trains, road vehicles do not have their offsets moved to the centre. */
 		switch (this->direction) {
 				/* Shorten southern corner of the bounding box according the vehicle length. */
-			case DIR_NE:
+			case Direction::NE:
 				this->bounds.origin.x = -3;
 				this->bounds.extent.x = this->gcache.cached_veh_length;
 				this->bounds.offset.x = 1;
 				break;
 
-			case DIR_NW:
+			case Direction::NW:
 				this->bounds.origin.y = -3;
 				this->bounds.extent.y = this->gcache.cached_veh_length;
 				this->bounds.offset.y = 1;
 				break;
 
 				/* Move northern corner of the bounding box down according to vehicle length. */
-			case DIR_SW:
+			case Direction::SW:
 				this->bounds.origin.x = -3 + (VEHICLE_LENGTH - this->gcache.cached_veh_length);
 				this->bounds.extent.x = this->gcache.cached_veh_length;
 				this->bounds.offset.x = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
 				break;
 
-			case DIR_SE:
+			case Direction::SE:
 				this->bounds.origin.y = -3 + (VEHICLE_LENGTH - this->gcache.cached_veh_length);
 				this->bounds.extent.y = this->gcache.cached_veh_length;
 				this->bounds.offset.y = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
@@ -754,9 +754,9 @@ int RoadVehicle::UpdateSpeed()
 static Direction RoadVehGetNewDirection(const RoadVehicle *v, int x, int y)
 {
 	static const Direction _roadveh_new_dir[] = {
-		DIR_N , DIR_NW, DIR_W , INVALID_DIR,
-		DIR_NE, DIR_N , DIR_SW, INVALID_DIR,
-		DIR_E , DIR_SE, DIR_S
+		Direction::N, Direction::NW, Direction::W, Direction::Invalid,
+		Direction::NE, Direction::N, Direction::SW, Direction::Invalid,
+		Direction::E, Direction::SE, Direction::S
 	};
 
 	x = x - v->x_pos + 1;

@@ -581,8 +581,8 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			delete v;
 			return false;
 		}
-		DisasterVehicle *u = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER, v->index);
-		DisasterVehicle *w = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
+		DisasterVehicle *u = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, Direction::SW, ST_BIG_UFO_DESTROYER, v->index);
+		DisasterVehicle *w = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, Direction::SW, ST_BIG_UFO_DESTROYER_SHADOW);
 		u->SetNext(w);
 	} else if (v->state == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
@@ -763,9 +763,9 @@ static void Disaster_Zeppeliner_Init()
 		}
 	}
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, 0, DIR_SE, ST_ZEPPELINER);
+	DisasterVehicle *v = DisasterVehicle::Create(x, 0, Direction::SE, ST_ZEPPELINER);
 	/* Allocate shadow */
-	DisasterVehicle *u = DisasterVehicle::Create(x, 0, DIR_SE, ST_ZEPPELINER_SHADOW);
+	DisasterVehicle *u = DisasterVehicle::Create(x, 0, Direction::SE, ST_ZEPPELINER_SHADOW);
 	v->SetNext(u);
 }
 
@@ -779,11 +779,11 @@ static void Disaster_Small_Ufo_Init()
 	if (!Vehicle::CanAllocateItem(2)) return;
 
 	int x = TileX(RandomTile()) * TILE_SIZE + TILE_SIZE / 2;
-	DisasterVehicle *v = DisasterVehicle::Create(x, 0, DIR_SE, ST_SMALL_UFO);
+	DisasterVehicle *v = DisasterVehicle::Create(x, 0, Direction::SE, ST_SMALL_UFO);
 	v->dest_tile = TileXY(Map::SizeX() / 2, Map::SizeY() / 2);
 
 	/* Allocate shadow */
-	DisasterVehicle *u = DisasterVehicle::Create(x, 0, DIR_SE, ST_SMALL_UFO_SHADOW);
+	DisasterVehicle *u = DisasterVehicle::Create(x, 0, Direction::SE, ST_SMALL_UFO_SHADOW);
 	v->SetNext(u);
 }
 
@@ -808,8 +808,8 @@ static void Disaster_Airplane_Init()
 	int x = (Map::SizeX() + 9) * TILE_SIZE - 1;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, y, DIR_NE, ST_AIRPLANE);
-	DisasterVehicle *u = DisasterVehicle::Create(x, y, DIR_NE, ST_AIRPLANE_SHADOW);
+	DisasterVehicle *v = DisasterVehicle::Create(x, y, Direction::NE, ST_AIRPLANE);
+	DisasterVehicle *u = DisasterVehicle::Create(x, y, Direction::NE, ST_AIRPLANE_SHADOW);
 	v->SetNext(u);
 }
 
@@ -833,11 +833,11 @@ static void Disaster_Helicopter_Init()
 	int x = -16 * (int)TILE_SIZE;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, y, DIR_SW, ST_HELICOPTER);
-	DisasterVehicle *u = DisasterVehicle::Create(x, y, DIR_SW, ST_HELICOPTER_SHADOW);
+	DisasterVehicle *v = DisasterVehicle::Create(x, y, Direction::SW, ST_HELICOPTER);
+	DisasterVehicle *u = DisasterVehicle::Create(x, y, Direction::SW, ST_HELICOPTER_SHADOW);
 	v->SetNext(u);
 
-	DisasterVehicle *w = DisasterVehicle::Create(x, y, DIR_SW, ST_HELICOPTER_ROTORS);
+	DisasterVehicle *w = DisasterVehicle::Create(x, y, Direction::SW, ST_HELICOPTER_ROTORS);
 	u->SetNext(w);
 }
 
@@ -850,11 +850,11 @@ static void Disaster_Big_Ufo_Init()
 	int x = TileX(RandomTile()) * TILE_SIZE + TILE_SIZE / 2;
 	int y = Map::MaxX() * TILE_SIZE - 1;
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, y, DIR_NW, ST_BIG_UFO);
+	DisasterVehicle *v = DisasterVehicle::Create(x, y, Direction::NW, ST_BIG_UFO);
 	v->dest_tile = TileXY(Map::SizeX() / 2, Map::SizeY() / 2);
 
 	/* Allocate shadow */
-	DisasterVehicle *u = DisasterVehicle::Create(x, y, DIR_NW, ST_BIG_UFO_SHADOW);
+	DisasterVehicle *u = DisasterVehicle::Create(x, y, Direction::NW, ST_BIG_UFO_SHADOW);
 	v->SetNext(u);
 }
 
@@ -874,11 +874,11 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 
 	if (HasBit(r, 31)) {
 		y = Map::MaxY() * TILE_SIZE - TILE_SIZE / 2 - 1;
-		dir = DIR_NW;
+		dir = Direction::NW;
 	} else {
 		y = TILE_SIZE / 2;
 		if (_settings_game.construction.freeform_edges) y += TILE_SIZE;
-		dir = DIR_SE;
+		dir = Direction::SE;
 	}
 	if (!IsWaterTile(TileVirtXY(x, y))) return;
 

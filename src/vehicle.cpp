@@ -1825,9 +1825,9 @@ GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v)
 }
 
 static const Direction _new_direction_table[] = {
-	DIR_N,  DIR_NW, DIR_W,
-	DIR_NE, DIR_SE, DIR_SW,
-	DIR_E,  DIR_SE, DIR_S
+	Direction::N,  Direction::NW, Direction::W,
+	Direction::NE, Direction::SE, Direction::SW,
+	Direction::E,  Direction::SE, Direction::S
 };
 
 Direction GetDirectionTowards(const Vehicle *v, int x, int y)
@@ -3349,45 +3349,45 @@ bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2)
 
 /** Vehicle sub-coordinate data for moving into a new tile. */
 struct VehicleSubcoordData : Coord2D<uint8_t> {
-	Direction dir = INVALID_DIR; ///< new direction.
+	Direction dir = Direction::Invalid; ///< new direction.
 };
 
 /**
  * Table of subtile coordinates and direction for each combination of chosen track and tile enter direction.
- * Combinations that are not possible result in INVALID_DIR.
+ * Combinations that are not possible result in Direction::Invalid.
  */
 static constexpr DiagDirectionIndexArray<TrackIndexArray<VehicleSubcoordData>> _vehicle_subcoord{{{
 	{{{ // NE
-		{{15, 8}, DIR_NE}, // TRACK_X
+		{{15, 8}, Direction::NE}, // TRACK_X
 		{}, // TRACK_Y
 		{}, // TRACK_UPPER
-		{{15, 8}, DIR_E}, // TRACK_LOWER
-		{{15, 7}, DIR_N}, // TRACK_LEFT
+		{{15, 8}, Direction::E}, // TRACK_LOWER
+		{{15, 7}, Direction::N}, // TRACK_LEFT
 		{}, // TRACK_RIGHT
 	}}},
 	{{{ // SE
 		{}, // TRACK_X
-		{{8, 0}, DIR_SE}, // TRACK_Y
-		{{7, 0}, DIR_E}, // TRACK_UPPER
+		{{8, 0}, Direction::SE}, // TRACK_Y
+		{{7, 0}, Direction::E}, // TRACK_UPPER
 		{}, // TRACK_LOWER
-		{{8, 0}, DIR_S}, // TRACK_LEFT
+		{{8, 0}, Direction::S}, // TRACK_LEFT
 		{}, // TRACK_RIGHT
 	}}},
 	{{{ // SW
-		{{0, 8}, DIR_SW}, // TRACK_X
+		{{0, 8}, Direction::SW}, // TRACK_X
 		{}, // TRACK_Y
-		{{0, 7}, DIR_W}, // TRACK_UPPER
+		{{0, 7}, Direction::W}, // TRACK_UPPER
 		{}, // TRACK_LOWER
 		{}, // TRACK_LEFT
-		{{0, 8}, DIR_S}, // TRACK_RIGHT
+		{{0, 8}, Direction::S}, // TRACK_RIGHT
 	}}},
 	{{{ // NW
 		{}, // TRACK_X
-		{{8, 15}, DIR_NW}, // TRACK_Y
+		{{8, 15}, Direction::NW}, // TRACK_Y
 		{}, // TRACK_UPPER
-		{{8, 15}, DIR_W}, // TRACK_LOWER
+		{{8, 15}, Direction::W}, // TRACK_LOWER
 		{}, // TRACK_LEFT
-		{{7, 15}, DIR_N}, // TRACK_RIGHT
+		{{7, 15}, Direction::N}, // TRACK_RIGHT
 	}}},
 }}};
 

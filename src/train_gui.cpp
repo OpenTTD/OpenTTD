@@ -99,7 +99,7 @@ static int HighlightDragPosition(int px, int max_width, int y, VehicleID selecti
 void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest)
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	Direction dir = rtl ? DIR_E : DIR_W;
+	Direction dir = rtl ? Direction::E : Direction::W;
 
 	DrawPixelInfo tmp_dpi;
 	/* Position of highlight box */
@@ -365,7 +365,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 
 	/* draw the first 3 details tabs */
 	if (det_tab != TDW_TAB_TOTALS) {
-		Direction dir = rtl ? DIR_E : DIR_W;
+		Direction dir = rtl ? Direction::E : Direction::W;
 		int x = rtl ? r.right : r.left;
 		for (; v != nullptr && vscroll_pos > -vscroll_cap; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);

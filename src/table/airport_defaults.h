@@ -39,7 +39,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_country_0 = {
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_country = {
-	{ _tile_table_country_0, DIR_N },
+	{ _tile_table_country_0, Direction::N },
 };
 
 /** Tiles for Commuter Airfield (small) */
@@ -67,7 +67,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_commuter_0 = {
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_commuter = {
-	{ _tile_table_commuter_0, DIR_N },
+	{ _tile_table_commuter_0, Direction::N },
 };
 
 /** Tiles for City Airport (large) */
@@ -111,7 +111,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_city_0 = {
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_city = {
-	{ _tile_table_city_0, DIR_N },
+	{ _tile_table_city_0, Direction::N },
 };
 
 /** Tiles for Metropolitan Airport (large) - 2 runways */
@@ -155,7 +155,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_metropolitan_0 
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_metropolitan = {
-	{ _tile_table_metropolitan_0, DIR_N },
+	{ _tile_table_metropolitan_0, Direction::N },
 };
 
 /** Tiles for International Airport (large) - 2 runways */
@@ -212,7 +212,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_international_0
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_international = {
-	{ _tile_table_international_0, DIR_N },
+	{ _tile_table_international_0, Direction::N },
 };
 
 /** Tiles for International Airport (large) - 2 runways */
@@ -319,7 +319,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_intercontinenta
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_intercontinental = {
-	{ _tile_table_intercontinental_0, DIR_N },
+	{ _tile_table_intercontinental_0, Direction::N },
 };
 
 /** Tiles for Heliport */
@@ -328,7 +328,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_heliport_0 = {
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_heliport = {
-	{ _tile_table_heliport_0, DIR_N },
+	{ _tile_table_heliport_0, Direction::N },
 };
 
 /** Tiles for Helidepot */
@@ -340,7 +340,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_helidepot_0 = {
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_helidepot = {
-	{ _tile_table_helidepot_0, DIR_N },
+	{ _tile_table_helidepot_0, Direction::N },
 };
 
 /** Tiles for Helistation */
@@ -356,7 +356,7 @@ static const std::initializer_list<AirportTileTable> _tile_table_helistation_0 =
 };
 
 static const std::initializer_list<AirportTileLayout> _tile_table_helistation = {
-	{ _tile_table_helistation_0, DIR_N },
+	{ _tile_table_helistation_0, Direction::N },
 };
 
 #undef MK
