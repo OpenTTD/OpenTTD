@@ -328,11 +328,11 @@ uint16_t Train::GetCurveSpeedLimit() const
 		Direction next_dir = u->Next()->direction;
 
 		DirDiff dirdiff = DirDifference(this_dir, next_dir);
-		if (dirdiff == DIRDIFF_SAME) continue;
+		if (dirdiff == DirDiff::Same) continue;
 
-		if (dirdiff == DIRDIFF_45LEFT) curvecount[0]++;
-		if (dirdiff == DIRDIFF_45RIGHT) curvecount[1]++;
-		if (dirdiff == DIRDIFF_45LEFT || dirdiff == DIRDIFF_45RIGHT) {
+		if (dirdiff == DirDiff::Left45) curvecount[0]++;
+		if (dirdiff == DirDiff::Right45) curvecount[1]++;
+		if (dirdiff == DirDiff::Left45 || dirdiff == DirDiff::Right45) {
 			if (lastpos != -1) {
 				numcurve++;
 				sum += pos - lastpos;
@@ -344,7 +344,7 @@ uint16_t Train::GetCurveSpeedLimit() const
 		}
 
 		/* if we have a 90 degree turn, fix the speed limit to 60 */
-		if (dirdiff == DIRDIFF_90LEFT || dirdiff == DIRDIFF_90RIGHT) {
+		if (dirdiff == DirDiff::Left90 || dirdiff == DirDiff::Right90) {
 			max_speed = 61;
 		}
 	}
@@ -3574,7 +3574,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					if (prev == nullptr && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
 						const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(v->GetAccelerationType())];
 						DirDiff diff = DirDifference(v->direction, chosen_dir);
-						v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? asp->small_turn : asp->large_turn) * v->cur_speed >> 8;
+						v->cur_speed -= (diff == DirDiff::Right45 || diff == DirDiff::Left45 ? asp->small_turn : asp->large_turn) * v->cur_speed >> 8;
 					}
 					direction_changed = true;
 					v->SetMovingDirection(chosen_dir);
@@ -3782,7 +3782,7 @@ static void DeleteLastWagon(Train *v)
 static void ChangeTrainDirRandomly(Train *v)
 {
 	static const DirDiff delta[] = {
-		DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
+		DirDiff::Left45, DirDiff::Same, DirDiff::Same, DirDiff::Right45
 	};
 
 	do {

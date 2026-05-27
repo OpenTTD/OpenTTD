@@ -997,7 +997,7 @@ static bool AircraftController(Aircraft *v)
 		DirDiff dirdiff = DirDifference(amd.direction, v->direction);
 		/* if distance is 0, and plane points in right direction, no point in calling
 		 * UpdateAircraftSpeed(). So do it only afterwards */
-		if (dirdiff == DIRDIFF_SAME) {
+		if (dirdiff == DirDiff::Same) {
 			v->cur_speed = 0;
 			return true;
 		}
@@ -1207,7 +1207,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 		uint32_t r;
 		if (Chance16R(1, 32, r)) {
 			static const DirDiff delta[] = {
-				DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
+				DirDiff::Left45, DirDiff::Same, DirDiff::Same, DirDiff::Right45
 			};
 
 			v->direction = ChangeDir(v->direction, delta[GB(r, 16, 2)]);
