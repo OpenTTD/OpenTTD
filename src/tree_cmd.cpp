@@ -892,7 +892,7 @@ static void TileLoop_Trees(TileIndex tile)
 
 						TreeType treetype = GetTreeType(tile);
 
-						tile += TileOffsByDir(static_cast<Direction>(Random() % DIR_END));
+						tile += TileOffsByDir(static_cast<Direction>(RandomRange(to_underlying(Direction::End))));
 
 						if (!CanPlantTreesOnTile(tile, false)) return;
 

@@ -116,7 +116,7 @@ static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleS
 	}
 
 	assert(IsValidImageIndex<VehicleType::Road>(spritenum));
-	result->Set(DIR_W + _roadveh_images[spritenum]);
+	result->Set(to_underlying(Direction::W) + _roadveh_images[spritenum]);
 }
 
 void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
@@ -132,7 +132,7 @@ void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, Vehi
 	}
 
 	assert(IsValidImageIndex<VehicleType::Road>(spritenum));
-	SpriteID sprite = direction + _roadveh_images[spritenum];
+	SpriteID sprite = to_underlying(direction) + _roadveh_images[spritenum];
 
 	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _roadveh_full_adder[spritenum];
 

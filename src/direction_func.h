@@ -54,7 +54,7 @@ inline bool IsValidAxis(Axis d)
 inline Direction ReverseDir(Direction d)
 {
 	assert(IsValidDirection(d));
-	return (Direction)(4 ^ d);
+	return static_cast<Direction>(4 ^ to_underlying(d));
 }
 
 
@@ -176,7 +176,7 @@ inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 inline DiagDirection DirToDiagDir(Direction dir)
 {
 	assert(IsValidDirection(dir));
-	return static_cast<DiagDirection>(dir >> 1);
+	return static_cast<DiagDirection>(to_underlying(dir) >> 1);
 }
 
 /**
@@ -300,7 +300,7 @@ inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
 inline bool IsDiagonalDirection(Direction dir)
 {
 	assert(IsValidDirection(dir));
-	return (dir & 1) != 0;
+	return (to_underlying(dir) & 1) != 0;
 }
 
 #endif /* DIRECTION_FUNC_H */
