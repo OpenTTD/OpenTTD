@@ -2947,7 +2947,7 @@ void Vehicle::ShowVisualEffect() const
 			if (v->type == VehicleType::Train) effect_offset += (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
 
 			int x = _vehicle_smoke_pos[v->direction] * effect_offset;
-			int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
+			int y = _vehicle_smoke_pos[ChangeDir(v->direction, DIRDIFF_90RIGHT)] * effect_offset;
 
 			if (v->type == VehicleType::Train && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
 				x = -x;

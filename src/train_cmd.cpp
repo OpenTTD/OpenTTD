@@ -2404,8 +2404,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	v->PlayLeaveStationSound();
 	SetWindowClassesDirty(WindowClass::TrainList);
 
-	v->track = TRACK_BIT_X;
-	if (v->direction & 2) v->track = TRACK_BIT_Y;
+	v->track = AxisToTrackBits(DiagDirToAxis(DirToDiagDir(v->direction)));
 
 	v->vehstatus.Reset(VehState::Hidden);
 	v->cur_speed = 0;
@@ -3030,7 +3029,7 @@ static bool CheckReverseTrain(const Train *consist)
 	const Train *moving_front = consist->GetMovingFront();
 	if (_settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::EndOfLineOnly ||
 			moving_front->track == TRACK_BIT_DEPOT || moving_front->track == TRACK_BIT_WORMHOLE ||
-			!(moving_front->GetMovingDirection() & 1)) {
+			!IsDiagonalDirection(moving_front->GetMovingDirection())) {
 		return false;
 	}
 
