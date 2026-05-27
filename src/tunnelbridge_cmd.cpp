@@ -1089,9 +1089,9 @@ static void DrawBridgePillars(const PalSpriteID &psid, const TileInfo *ti, Axis 
 	static constexpr AxisIndexArray<int> back_pillar_offset{0, 9}; ///< sprite position offset of back facing pillar
 
 	static const int INF = 1000; ///< big number compared to sprite size
-	static constexpr AxisIndexArray<SubSprite[2]> half_pillar_sub_sprite{{{
-		{ {  -14, -INF, INF, INF }, { -INF, -INF, -15, INF } }, // X axis, north and south
-		{ { -INF, -INF,  15, INF }, {   16, -INF, INF, INF } }, // Y axis, north and south
+	static constexpr AxisIndexArray<std::array<SubSprite, 2>> half_pillar_sub_sprite{{{
+		{{ {  -14, -INF, INF, INF }, { -INF, -INF, -15, INF } }}, // X axis, north and south
+		{{ { -INF, -INF,  15, INF }, {   16, -INF, INF, INF } }}, // Y axis, north and south
 	}}};
 
 	if (psid.sprite == 0) return;
