@@ -365,7 +365,7 @@ void SpiralTileIterator::Increment()
 
 	/* Special value for first tile in areas with odd diameter */
 	if (this->dir == DiagDirection::Invalid) {
-		const auto west = TileIndexDiffCByDir(DIR_W);
+		const auto west = TileIndexDiffCByDir(Direction::W);
 		this->x += west.x;
 		this->y += west.y;
 		this->dir = DiagDirection::Begin;
@@ -385,7 +385,7 @@ void SpiralTileIterator::Increment()
 
 	if (this->dir == DiagDirection::End) {
 		/* Jump to next circle */
-		const auto west = TileIndexDiffCByDir(DIR_W);
+		const auto west = TileIndexDiffCByDir(Direction::W);
 		this->x += west.x;
 		this->y += west.y;
 		++this->cur_radius;

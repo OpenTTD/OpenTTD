@@ -113,7 +113,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip)
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	Direction dir = rtl ? DIR_E : DIR_W;
+	Direction dir = rtl ? Direction::E : Direction::W;
 	const RoadVehicle *u = RoadVehicle::From(v);
 
 	DrawPixelInfo tmp_dpi;

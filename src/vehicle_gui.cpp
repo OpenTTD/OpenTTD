@@ -3591,7 +3591,7 @@ int GetSingleVehicleWidth(const Vehicle *v, EngineImageType image_type)
 		default:
 			bool rtl = _current_text_dir == TD_RTL;
 			VehicleSpriteSeq seq;
-			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
+			v->GetImage(rtl ? Direction::E : Direction::W, image_type, &seq);
 			Rect rec;
 			seq.GetBounds(&rec);
 			return UnScaleGUI(rec.Width());
@@ -3643,7 +3643,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 			if (!seq.IsValid()) seq.Set(SPR_ROTOR_STOPPED);
 			y_offset = -ScaleSpriteTrad(5);
 		} else {
-			v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
+			v->GetImage(rtl ? Direction::E : Direction::W, image_type, &seq);
 		}
 
 		int x_offs = 0;

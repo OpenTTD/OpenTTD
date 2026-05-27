@@ -147,14 +147,14 @@ extern const DiagDirectionIndexArray<TileIndexDiffC> _tileoffs_by_diagdir{{{
 
 /** 'Lookup table' for tile offsets given a Direction */
 extern const DirectionIndexArray<TileIndexDiffC> _tileoffs_by_dir{{{
-	{-1, -1}, // DIR_N
-	{-1,  0}, // DIR_NE
-	{-1,  1}, // DIR_E
-	{ 0,  1}, // DIR_SE
-	{ 1,  1}, // DIR_S
-	{ 1,  0}, // DIR_SW
-	{ 1, -1}, // DIR_W
-	{ 0, -1}, // DIR_NW
+	{-1, -1}, // Direction::N
+	{-1,  0}, // Direction::NE
+	{-1,  1}, // Direction::E
+	{ 0,  1}, // Direction::SE
+	{ 1,  1}, // Direction::S
+	{ 1,  0}, // Direction::SW
+	{ 1, -1}, // Direction::W
+	{ 0, -1}, // Direction::NW
 }}};
 
 /**

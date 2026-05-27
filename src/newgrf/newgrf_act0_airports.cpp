@@ -119,7 +119,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 						}
 
 						/* Determine largest size. */
-						if (layout.rotation == DIR_E || layout.rotation == DIR_W) {
+						if (layout.rotation == Direction::E || layout.rotation == Direction::W) {
 							size_x = std::max<uint8_t>(size_x, tile.ti.y + 1);
 							size_y = std::max<uint8_t>(size_y, tile.ti.x + 1);
 						} else {

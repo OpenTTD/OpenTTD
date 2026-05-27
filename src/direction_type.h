@@ -21,18 +21,18 @@
  * your viewport and not rotated by 45 degrees left or right to get
  * a "north" used in you games.
  */
-enum Direction : uint8_t {
-	DIR_BEGIN = 0,          ///< Used to iterate
-	DIR_N   = 0,            ///< North
-	DIR_NE  = 1,            ///< Northeast
-	DIR_E   = 2,            ///< East
-	DIR_SE  = 3,            ///< Southeast
-	DIR_S   = 4,            ///< South
-	DIR_SW  = 5,            ///< Southwest
-	DIR_W   = 6,            ///< West
-	DIR_NW  = 7,            ///< Northwest
-	DIR_END,                ///< Used to iterate
-	INVALID_DIR = 0xFF,     ///< Flag for an invalid direction
+enum class Direction : uint8_t {
+	Begin = 0, ///< Used to iterate
+	N = 0, ///< North
+	NE = 1, ///< Northeast
+	E = 2, ///< East
+	SE = 3, ///< Southeast
+	S = 4, ///< South
+	SW = 5, ///< Southwest
+	W = 6, ///< West
+	NW = 7, ///< Northwest
+	End, ///< Used to iterate
+	Invalid = 0xFF, ///< Flag for an invalid direction
 };
 
 /** Allow incrementing of Direction variables */
@@ -41,14 +41,14 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(Direction)
 using Directions = EnumBitSet<Direction, uint8_t>;
 
 /** All possible directions. */
-static constexpr Directions DIRECTIONS_ALL{DIR_N, DIR_NE, DIR_E, DIR_SE, DIR_S, DIR_SW, DIR_W, DIR_NW};
+static constexpr Directions DIRECTIONS_ALL{Direction::N, Direction::NE, Direction::E, Direction::SE, Direction::S, Direction::SW, Direction::W, Direction::NW};
 
 /**
  * Array with \c Direction as index.
  * @tparam T the type contained within the array.
  */
 template <typename T>
-using DirectionIndexArray = EnumIndexArray<T, Direction, DIR_END>;
+using DirectionIndexArray = EnumIndexArray<T, Direction, Direction::End>;
 
 /**
  * Enumeration for the difference between two directions.
@@ -64,7 +64,7 @@ using DirectionIndexArray = EnumIndexArray<T, Direction, DIR_END>;
  * difference of 0 degrees.
  *
  * @note To get this mentioned addition of direction you must use
- *       modulo DIR_END or use the #ChangeDirDiff(DirDiff, DirDiff) function.
+ *       modulo Direction::End or use the #ChangeDirDiff(DirDiff, DirDiff) function.
  * @see ChangeDirDiff(DirDiff, DirDiff)
  */
 enum class DirDiff : uint8_t {

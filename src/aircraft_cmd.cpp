@@ -202,7 +202,7 @@ static void GetAircraftIcon(EngineID engine, EngineImageType image_type, Vehicle
 	uint8_t spritenum = e->VehInfo<AircraftVehicleInfo>().image_index;
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
-		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
+		GetCustomVehicleIcon(engine, Direction::W, image_type, result);
 		if (result->IsValid()) return;
 
 		spritenum = e->original_image_index;
@@ -280,7 +280,7 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 		Aircraft *u = Aircraft::Create(); // shadow
 		*ret = v;
 
-		v->direction = DIR_SE;
+		v->direction = Direction::SE;
 
 		v->owner = u->owner = _current_company;
 
@@ -369,7 +369,7 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 		if (v->subtype == AIR_HELICOPTER) {
 			Aircraft *w = Aircraft::Create();
 			w->engine_type = e->index;
-			w->direction = DIR_N;
+			w->direction = Direction::N;
 			w->owner = _current_company;
 			w->x_pos = v->x_pos;
 			w->y_pos = v->y_pos;
@@ -732,10 +732,10 @@ void GetAircraftFlightLevelBounds(const Vehicle *v, int *min_level, int *max_lev
 	 * other by providing them with vertical separation
 	 */
 	switch (v->direction) {
-		case DIR_N:
-		case DIR_NE:
-		case DIR_E:
-		case DIR_SE:
+		case Direction::N:
+		case Direction::NE:
+		case Direction::E:
+		case Direction::SE:
 			base_altitude += 10;
 			break;
 
@@ -866,7 +866,7 @@ static bool AircraftController(Aircraft *v)
 	const Station *st = Station::GetIfValid(v->targetairport);
 	/* INVALID_TILE if there is no station */
 	TileIndex tile = INVALID_TILE;
-	Direction rotation = DIR_N;
+	Direction rotation = Direction::N;
 	uint size_x = 1, size_y = 1;
 	if (st != nullptr) {
 		if (st->airport.tile != INVALID_TILE) {
@@ -885,7 +885,7 @@ static bool AircraftController(Aircraft *v)
 	if (st == nullptr || st->airport.tile == INVALID_TILE) {
 		/* Jump into our "holding pattern" state machine if possible */
 		if (v->pos >= afc->nofelements) {
-			v->pos = v->previous_pos = AircraftGetEntryPoint(v, afc, DIR_N);
+			v->pos = v->previous_pos = AircraftGetEntryPoint(v, afc, Direction::N);
 		} else if (v->targetairport != v->current_order.GetDestination()) {
 			/* If not possible, just get out of here fast */
 			v->state = FLYING;
@@ -1463,7 +1463,7 @@ void AircraftNextAirportPos_and_Order(Aircraft *v)
 
 	const Station *st = GetTargetAirportIfValid(v);
 	const AirportFTAClass *apc = st == nullptr ? GetAirport(AT_DUMMY) : st->airport.GetFTA();
-	Direction rotation = st == nullptr ? DIR_N : st->airport.rotation;
+	Direction rotation = st == nullptr ? Direction::N : st->airport.rotation;
 	v->pos = v->previous_pos = AircraftGetEntryPoint(v, apc, rotation);
 }
 
@@ -2184,7 +2184,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 {
 	/* only 1 station is updated per function call, so it is enough to get entry_point once */
 	const AirportFTAClass *ap = st->airport.GetFTA();
-	Direction rotation = st->airport.tile == INVALID_TILE ? DIR_N : st->airport.rotation;
+	Direction rotation = st->airport.tile == INVALID_TILE ? Direction::N : st->airport.rotation;
 
 	for (Aircraft *v : Aircraft::Iterate()) {
 		if (!v->IsNormalAircraft() || v->targetairport != st->index) continue;

@@ -1615,16 +1615,16 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 			 * position of the corner tile */
 			switch (cur_rb.base()) {
 				case ROAD_N.base():
-					house_tile = TileAddByDir(tile, DIR_S);
+					house_tile = TileAddByDir(tile, Direction::S);
 					break;
 				case ROAD_S.base():
-					house_tile = TileAddByDir(tile, DIR_N);
+					house_tile = TileAddByDir(tile, Direction::N);
 					break;
 				case ROAD_E.base():
-					house_tile = TileAddByDir(tile, DIR_W);
+					house_tile = TileAddByDir(tile, Direction::W);
 					break;
 				case ROAD_W.base():
-					house_tile = TileAddByDir(tile, DIR_E);
+					house_tile = TileAddByDir(tile, Direction::E);
 					break;
 				default:
 					return TownGrowthResult::Continue; // not a turn

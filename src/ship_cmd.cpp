@@ -84,7 +84,7 @@ static void GetShipIcon(EngineID engine, EngineImageType image_type, VehicleSpri
 	uint8_t spritenum = e->VehInfo<ShipVehicleInfo>().image_index;
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
-		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
+		GetCustomVehicleIcon(engine, Direction::W, image_type, result);
 		if (result->IsValid()) return;
 
 		spritenum = e->original_image_index;
@@ -585,12 +585,12 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 static void ReverseShipIntoTrackdir(Ship *v, Trackdir trackdir)
 {
 	static constexpr Direction _trackdir_to_direction[] = {
-		DIR_NE, DIR_SE, DIR_E, DIR_E, DIR_S, DIR_S, INVALID_DIR, INVALID_DIR,
-		DIR_SW, DIR_NW, DIR_W, DIR_W, DIR_N, DIR_N, INVALID_DIR, INVALID_DIR,
+		Direction::NE, Direction::SE, Direction::E, Direction::E, Direction::S, Direction::S, Direction::Invalid, Direction::Invalid,
+		Direction::SW, Direction::NW, Direction::W, Direction::W, Direction::N, Direction::N, Direction::Invalid, Direction::Invalid,
 	};
 
 	v->direction = _trackdir_to_direction[trackdir];
-	assert(v->direction != INVALID_DIR);
+	assert(v->direction != Direction::Invalid);
 	v->state = TrackdirBitsToTrackBits(TrackdirToTrackdirBits(trackdir));
 
 	/* Remember our current location to avoid movement glitch */
@@ -642,7 +642,7 @@ static void ShipController(Ship *v)
 			DirDiff diff = DirDifference(v->direction, v->rotation);
 			v->rotation = ChangeDir(v->rotation, LimitDirDiff(diff));
 			/* Invalidate the sprite cache direction to force recalculation of viewport */
-			v->sprite_cache.last_direction = INVALID_DIR;
+			v->sprite_cache.last_direction = Direction::Invalid;
 			v->UpdateViewport(true, true);
 		}
 		return;

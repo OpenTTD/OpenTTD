@@ -168,25 +168,25 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 
 		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT)) {
 			switch (this->GetMovingDirection()) {
-				case DIR_NE:
+				case Direction::NE:
 					this->z_pos += (this->x_pos & 1) ^ 1; break;
-				case DIR_SW:
+				case Direction::SW:
 					this->z_pos += (this->x_pos & 1); break;
-				case DIR_NW:
+				case Direction::NW:
 					this->z_pos += (this->y_pos & 1) ^ 1; break;
-				case DIR_SE:
+				case Direction::SE:
 					this->z_pos += (this->y_pos & 1); break;
 				default: break;
 			}
 		} else if (HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
 			switch (this->GetMovingDirection()) {
-				case DIR_NE:
+				case Direction::NE:
 					this->z_pos -= (this->x_pos & 1) ^ 1; break;
-				case DIR_SW:
+				case Direction::SW:
 					this->z_pos -= (this->x_pos & 1); break;
-				case DIR_NW:
+				case Direction::NW:
 					this->z_pos -= (this->y_pos & 1) ^ 1; break;
-				case DIR_SE:
+				case Direction::SE:
 					this->z_pos -= (this->y_pos & 1); break;
 				default: break;
 			}

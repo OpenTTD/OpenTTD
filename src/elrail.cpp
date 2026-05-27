@@ -413,7 +413,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 				(!HasStationTileRail(ti->tile) || CanStationTileHavePylons(ti->tile))) {
 
 			const auto &ppp_orders = _ppp_order[i][GetTileLocationGroup(ti->tile)];
-			for (Direction k = DIR_BEGIN; k < DIR_END; k++) {
+			for (Direction k = Direction::Begin; k < Direction::End; k++) {
 				Direction temp = ppp_orders[k];
 
 				if (ppp_allowed[i].Test(temp)) {
@@ -526,7 +526,7 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 	 * every other tile needs a pylon on the northern end */
 	if (num % 2) {
 		DiagDirection pcp_pos = (axis == Axis::X ? DiagDirection::NE : DiagDirection::NW);
-		Direction ppp_pos = (axis == Axis::X ? DIR_NW : DIR_NE);
+		Direction ppp_pos = (axis == Axis::X ? Direction::NW : Direction::NE);
 		if (HasBit(tlg, (axis == Axis::X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
 		uint x = ti->x + _x_pcp_offsets[pcp_pos] + _x_ppp_offsets[ppp_pos];
 		uint y = ti->y + _y_pcp_offsets[pcp_pos] + _y_ppp_offsets[ppp_pos];
@@ -536,7 +536,7 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 	/* need a pylon on the southern end of the bridge */
 	if (GetTunnelBridgeLength(ti->tile, start) + 1 == length) {
 		DiagDirection pcp_pos = (axis == Axis::X ? DiagDirection::SW : DiagDirection::SE);
-		Direction ppp_pos = (axis == Axis::X ? DIR_NW : DIR_NE);
+		Direction ppp_pos = (axis == Axis::X ? Direction::NW : Direction::NE);
 		if (HasBit(tlg, (axis == Axis::X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
 		uint x = ti->x + _x_pcp_offsets[pcp_pos] + _x_ppp_offsets[ppp_pos];
 		uint y = ti->y + _y_pcp_offsets[pcp_pos] + _y_ppp_offsets[ppp_pos];

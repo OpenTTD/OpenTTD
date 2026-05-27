@@ -32,7 +32,7 @@ void DrawShipImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineI
 	bool rtl = _current_text_dir == TD_RTL;
 
 	VehicleSpriteSeq seq;
-	v->GetImage(rtl ? DIR_E : DIR_W, image_type, &seq);
+	v->GetImage(rtl ? Direction::E : Direction::W, image_type, &seq);
 
 	Rect rect;
 	seq.GetBounds(&rect);

@@ -534,7 +534,7 @@ void Train::GetImage(Direction direction, EngineImageType image_type, VehicleSpr
 static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
-	Direction dir = rear_head ? DIR_E : DIR_W;
+	Direction dir = rear_head ? Direction::E : Direction::W;
 	uint8_t spritenum = e->VehInfo<RailVehicleInfo>().image_index;
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
@@ -551,7 +551,7 @@ static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType
 
 	if (rear_head) spritenum++;
 
-	result->Set(GetDefaultTrainSprite(spritenum, DIR_W));
+	result->Set(GetDefaultTrainSprite(spritenum, Direction::W));
 }
 
 void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
@@ -1557,13 +1557,13 @@ void Train::UpdateDeltaXY()
 		switch (dir) {
 				/* Shorten southern corner of the bounding box according the vehicle length
 				 * and center the bounding box on the vehicle. */
-			case DIR_NE:
+			case Direction::NE:
 				this->bounds.origin.x = -(this->gcache.cached_veh_length + 1) / 2 + flip_offs;
 				this->bounds.extent.x = this->gcache.cached_veh_length;
 				this->bounds.offset.x = 1;
 				break;
 
-			case DIR_NW:
+			case Direction::NW:
 				this->bounds.origin.y = -(this->gcache.cached_veh_length + 1) / 2 + flip_offs;
 				this->bounds.extent.y = this->gcache.cached_veh_length;
 				this->bounds.offset.y = 1;
@@ -1571,13 +1571,13 @@ void Train::UpdateDeltaXY()
 
 				/* Move northern corner of the bounding box down according to vehicle length
 				 * and center the bounding box on the vehicle. */
-			case DIR_SW:
+			case Direction::SW:
 				this->bounds.origin.x = -(this->gcache.cached_veh_length) / 2 - flip_offs;
 				this->bounds.extent.x = this->gcache.cached_veh_length;
 				this->bounds.offset.x = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
 				break;
 
-			case DIR_SE:
+			case Direction::SE:
 				this->bounds.origin.y = -(this->gcache.cached_veh_length) / 2 - flip_offs;
 				this->bounds.extent.y = this->gcache.cached_veh_length;
 				this->bounds.offset.y = 1 - (VEHICLE_LENGTH - this->gcache.cached_veh_length);
@@ -3849,13 +3849,13 @@ static bool TrainApproachingLineEnd(Train *moving_front, bool signal, bool rever
 	/* for diagonal directions, 'x' will be 0..15 -
 	 * for other directions, it will be 1, 3, 5, ..., 15 */
 	switch (vdir) {
-		case DIR_N : x = ~x + ~y + 25; break;
-		case DIR_NW: x = y;            [[fallthrough]];
-		case DIR_NE: x = ~x + 16;      break;
-		case DIR_E : x = ~x + y + 9;   break;
-		case DIR_SE: x = y;            break;
-		case DIR_S : x = x + y - 7;    break;
-		case DIR_W : x = ~y + x + 9;   break;
+		case Direction::N : x = ~x + ~y + 25; break;
+		case Direction::NW: x = y;            [[fallthrough]];
+		case Direction::NE: x = ~x + 16;      break;
+		case Direction::E : x = ~x + y + 9;   break;
+		case Direction::SE: x = y;            break;
+		case Direction::S : x = x + y - 7;    break;
+		case Direction::W : x = ~y + x + 9;   break;
 		default: break;
 	}
 
