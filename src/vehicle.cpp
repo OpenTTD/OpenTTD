@@ -1840,7 +1840,7 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y)
 	Direction dir = v->GetMovingDirection();
 
 	DirDiff dirdiff = DirDifference(_new_direction_table[i], dir);
-	if (dirdiff == DIRDIFF_SAME) return dir;
+	if (dirdiff == DirDiff::Same) return dir;
 	return ChangeDir(dir, LimitDirDiff(dirdiff));
 }
 
@@ -2763,7 +2763,7 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 
 	Direction l_dir = v->direction;
 	if (v->type == VehicleType::Train && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) l_dir = ReverseDir(l_dir);
-	Direction t_dir = ChangeDir(l_dir, DIRDIFF_90RIGHT);
+	Direction t_dir = ChangeDir(l_dir, DirDiff::Right90);
 
 	int8_t x_center = _vehicle_smoke_pos[l_dir] * l_center;
 	int8_t y_center = _vehicle_smoke_pos[t_dir] * l_center;
@@ -2947,7 +2947,7 @@ void Vehicle::ShowVisualEffect() const
 			if (v->type == VehicleType::Train) effect_offset += (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
 
 			int x = _vehicle_smoke_pos[v->direction] * effect_offset;
-			int y = _vehicle_smoke_pos[ChangeDir(v->direction, DIRDIFF_90RIGHT)] * effect_offset;
+			int y = _vehicle_smoke_pos[ChangeDir(v->direction, DirDiff::Right90)] * effect_offset;
 
 			if (v->type == VehicleType::Train && Train::From(v)->flags.Test(VehicleRailFlag::Flipped)) {
 				x = -x;

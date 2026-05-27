@@ -696,7 +696,7 @@ static bool DisasterTick_Submarine(DisasterVehicle *v)
 		}
 	}
 
-	v->direction = ChangeDir(v->direction, GB(Random(), 0, 1) ? DIRDIFF_90RIGHT : DIRDIFF_90LEFT);
+	v->direction = ChangeDir(v->direction, GB(Random(), 0, 1) ? DirDiff::Right90 : DirDiff::Left90);
 
 	return true;
 }

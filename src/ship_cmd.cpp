@@ -796,9 +796,9 @@ static void ShipController(Ship *v)
 				const Direction new_direction = b.dir;
 				const DirDiff diff = DirDifference(new_direction, v->direction);
 				switch (diff) {
-					case DIRDIFF_SAME:
-					case DIRDIFF_45RIGHT:
-					case DIRDIFF_45LEFT:
+					case DirDiff::Same:
+					case DirDiff::Right45:
+					case DirDiff::Left45:
 						/* Continue at speed */
 						v->rotation = v->direction = new_direction;
 						break;

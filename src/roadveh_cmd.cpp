@@ -507,7 +507,7 @@ static void DeleteLastRoadVeh(RoadVehicle *v)
 static void RoadVehSetRandomDirection(RoadVehicle *v)
 {
 	static const DirDiff delta[] = {
-		DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
+		DirDiff::Left45, DirDiff::Same, DirDiff::Same, DirDiff::Right45
 	};
 
 	do {

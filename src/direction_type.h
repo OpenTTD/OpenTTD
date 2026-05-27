@@ -60,13 +60,13 @@ static constexpr Directions DIRECTIONS_ALL{DIR_N, DIR_NE, DIR_E, DIR_SE, DIR_S, 
  *       modulo DIR_END or use the #ChangeDirDiff(DirDiff, DirDiff) function.
  * @see ChangeDirDiff(DirDiff, DirDiff)
  */
-enum DirDiff : uint8_t {
-	DIRDIFF_SAME    = 0,    ///< Both directions faces to the same direction
-	DIRDIFF_45RIGHT = 1,    ///< Angle of 45 degrees right
-	DIRDIFF_90RIGHT = 2,    ///< Angle of 90 degrees right
-	DIRDIFF_REVERSE = 4,    ///< One direction is the opposite of the other one
-	DIRDIFF_90LEFT  = 6,    ///< Angle of 90 degrees left
-	DIRDIFF_45LEFT  = 7,    ///< Angle of 45 degrees left
+enum class DirDiff : uint8_t {
+	Same = 0, ///< Both directions faces to the same direction
+	Right45 = 1, ///< Angle of 45 degrees right
+	Right90 = 2, ///< Angle of 90 degrees right
+	Reverse = 4, ///< One direction is the opposite of the other one
+	Left90 = 6, ///< Angle of 90 degrees left
+	Left45 = 7, ///< Angle of 45 degrees left
 };
 
 

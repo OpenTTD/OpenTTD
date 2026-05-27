@@ -71,15 +71,15 @@ inline DirDiff DirDifference(Direction d0, Direction d1)
 	assert(IsValidDirection(d1));
 	/* Cast to uint so compiler can use bitmask. If the difference is negative
 	 * and we used int instead of uint, further "+ 8" would have to be added. */
-	return static_cast<DirDiff>((static_cast<uint>(d0) - static_cast<uint>(d1)) % 8);
+	return static_cast<DirDiff>((to_underlying(d0) - to_underlying(d1)) % 8);
 }
 
 /**
  * Applies two differences together
  *
  * This function adds two differences together and returns the resulting
- * difference. So adding two DIRDIFF_REVERSE together results in the
- * DIRDIFF_SAME difference.
+ * difference. So adding two DirDiff::Reverse together results in the
+ * DirDiff::Same difference.
  *
  * @param d The first difference
  * @param delta The second difference to add on
@@ -88,7 +88,7 @@ inline DirDiff DirDifference(Direction d0, Direction d1)
 inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
 {
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
-	return static_cast<DirDiff>((static_cast<uint>(d) + static_cast<uint>(delta)) % 8);
+	return static_cast<DirDiff>((to_underlying(d) + to_underlying(delta)) % 8);
 }
 
 /**
@@ -98,7 +98,7 @@ inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
  */
 inline DirDiff LimitDirDiff(DirDiff d)
 {
-	return d > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT;
+	return d > DirDiff::Reverse ? DirDiff::Left45 : DirDiff::Right45;
 }
 
 /**
@@ -115,7 +115,7 @@ inline Direction ChangeDir(Direction d, DirDiff delta)
 {
 	assert(IsValidDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
-	return static_cast<Direction>((static_cast<uint>(d) + static_cast<uint>(delta)) % 8);
+	return static_cast<Direction>((to_underlying(d) + to_underlying(delta)) % 8);
 }
 
 
