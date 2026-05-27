@@ -723,7 +723,7 @@ inline DiagDirection VehicleExitDir(Direction direction, TrackBits track)
 	DiagDirection diagdir = DirToDiagDir(direction);
 
 	/* Determine the diagonal direction in which we will exit this tile */
-	if (!HasBit(direction, 0) && track != state_dir_table[diagdir]) {
+	if (!IsDiagonalDirection(direction) && track != state_dir_table[diagdir]) {
 		diagdir = ChangeDiagDir(diagdir, DIAGDIRDIFF_90LEFT);
 	}
 

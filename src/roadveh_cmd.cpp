@@ -472,7 +472,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 			if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)this->state)) {
 				max_speed = this->gcache.cached_max_track_speed / 2;
 				break;
-			} else if ((u->direction & 1) == 0) {
+			} else if (!IsDiagonalDirection(u->direction)) {
 				max_speed = this->gcache.cached_max_track_speed * 3 / 4;
 			}
 		}
@@ -823,7 +823,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	if (v->HasArticulatedPart()) return;
 
 	/* Vehicles are not driving in same direction || direction is not a diagonal direction */
-	if (v->direction != u->direction || !(v->direction & 1)) return;
+	if (v->direction != u->direction || !IsDiagonalDirection(v->direction)) return;
 
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
 	if (v->state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->state & RVSB_TRACKDIR_MASK))) return;

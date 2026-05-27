@@ -431,7 +431,7 @@ public:
 	 */
 	inline uint GetOldAdvanceSpeed(uint speed)
 	{
-		return (this->GetMovingDirection() & 1) ? speed : speed * 3 / 4;
+		return IsDiagonalDirection(this->GetMovingDirection()) ? speed : speed * 3 / 4;
 	}
 
 	/**
@@ -460,7 +460,7 @@ public:
 	 */
 	inline uint GetAdvanceDistance()
 	{
-		return (this->GetMovingDirection() & 1) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE * 2;
+		return IsDiagonalDirection(this->GetMovingDirection()) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE * 2;
 	}
 
 	/**
