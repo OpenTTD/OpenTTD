@@ -1139,37 +1139,37 @@ static void FloodVehicles(TileIndex tile)
  */
 FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 {
-	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, sea-docks (water part), rail with flooded halftile, sea-water-industries, sea-oilrigs
-	 * FLOOD_DRYUP:   coast with more than one corner raised, coast with rail-track, coast with trees
-	 * FLOOD_PASSIVE: (not used)
-	 * FLOOD_NONE:    canals, rivers, everything else
+	/* FloodingBehaviour::Active: 'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, sea-docks (water part), rail with flooded halftile, sea-water-industries, sea-oilrigs
+	 * FloodingBehaviour::DryOut: coast with more than one corner raised, coast with rail-track, coast with trees
+	 * FloodingBehaviour::Passive: (not used)
+	 * FloodingBehaviour::None: canals, rivers, everything else
 	 */
 	switch (GetTileType(tile)) {
 		case TileType::Water:
 			if (IsCoast(tile)) {
 				Slope tileh = GetTileSlope(tile);
-				return (IsSlopeWithOneCornerRaised(tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
+				return IsSlopeWithOneCornerRaised(tileh) ? FloodingBehaviour::Active : FloodingBehaviour::DryOut;
 			}
 			[[fallthrough]];
 		case TileType::Station:
 		case TileType::Industry:
 		case TileType::Object:
-			return (GetWaterClass(tile) == WaterClass::Sea) ? FLOOD_ACTIVE : FLOOD_NONE;
+			return GetWaterClass(tile) == WaterClass::Sea ? FloodingBehaviour::Active : FloodingBehaviour::None;
 
 		case TileType::Railway:
 			if (GetRailGroundType(tile) == RailGroundType::HalfTileWater) {
-				return (IsSlopeWithOneCornerRaised(GetTileSlope(tile)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
+				return IsSlopeWithOneCornerRaised(GetTileSlope(tile)) ? FloodingBehaviour::Active : FloodingBehaviour::DryOut;
 			}
-			return FLOOD_NONE;
+			return FloodingBehaviour::None;
 
 		case TileType::Trees:
-			return (GetTreeGround(tile) == TreeGround::Shore ? FLOOD_DRYUP : FLOOD_NONE);
+			return GetTreeGround(tile) == TreeGround::Shore ? FloodingBehaviour::DryOut : FloodingBehaviour::None;
 
 		case TileType::Void:
-			return FLOOD_ACTIVE;
+			return FloodingBehaviour::Active;
 
 		default:
-			return FLOOD_NONE;
+			return FloodingBehaviour::None;
 	}
 }
 
@@ -1297,7 +1297,7 @@ void TileLoop_Water(TileIndex tile)
 	}
 
 	switch (GetFloodingBehaviour(tile)) {
-		case FLOOD_ACTIVE: {
+		case FloodingBehaviour::Active: {
 			bool continue_flooding = false;
 			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
@@ -1326,7 +1326,7 @@ void TileLoop_Water(TileIndex tile)
 			break;
 		}
 
-		case FLOOD_DRYUP: {
+		case FloodingBehaviour::DryOut: {
 			Slope slope_here = std::get<Slope>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			for (Direction dir : _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
@@ -1334,7 +1334,7 @@ void TileLoop_Water(TileIndex tile)
 				if (dest == INVALID_TILE) continue;
 
 				FloodingBehaviour dest_behaviour = GetFloodingBehaviour(dest);
-				if ((dest_behaviour == FLOOD_ACTIVE) || (dest_behaviour == FLOOD_PASSIVE)) return;
+				if (dest_behaviour == FloodingBehaviour::Active || dest_behaviour == FloodingBehaviour::Passive) return;
 			}
 			DoDryUp(tile);
 			break;
