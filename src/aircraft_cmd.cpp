@@ -179,7 +179,7 @@ void Aircraft::GetImage(Direction direction, EngineImageType image_type, Vehicle
 	}
 
 	assert(IsValidImageIndex<VehicleType::Aircraft>(spritenum));
-	result->Set(direction + _aircraft_sprite[spritenum]);
+	result->Set(to_underlying(direction) + _aircraft_sprite[spritenum]);
 }
 
 void GetRotorImage(const Aircraft *v, EngineImageType image_type, VehicleSpriteSeq *result)
@@ -209,7 +209,7 @@ static void GetAircraftIcon(EngineID engine, EngineImageType image_type, Vehicle
 	}
 
 	assert(IsValidImageIndex<VehicleType::Aircraft>(spritenum));
-	result->Set(DIR_W + _aircraft_sprite[spritenum]);
+	result->Set(to_underlying(Direction::W) + _aircraft_sprite[spritenum]);
 }
 
 void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)

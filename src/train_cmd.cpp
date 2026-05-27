@@ -500,7 +500,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 static SpriteID GetDefaultTrainSprite(uint8_t spritenum, Direction direction)
 {
 	assert(IsValidImageIndex<VehicleType::Train>(spritenum));
-	return ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
+	return ((to_underlying(direction) + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
 }
 
 /**
