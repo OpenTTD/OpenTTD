@@ -143,7 +143,7 @@ inline DiagDirDiff DiagDirDifference(DiagDirection d0, DiagDirection d1)
 	assert(IsValidDiagDirection(d0));
 	assert(IsValidDiagDirection(d1));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
-	return (DiagDirDiff)((uint)(d0 - d1) % 4);
+	return static_cast<DiagDirDiff>((to_underlying(d0) - to_underlying(d1)) % 4);
 }
 
 /**
@@ -160,7 +160,7 @@ inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 {
 	assert(IsValidDiagDirection(d));
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
-	return static_cast<DiagDirection>((static_cast<uint>(d) + static_cast<uint>(delta)) % 4);
+	return static_cast<DiagDirection>((to_underlying(d) + to_underlying(delta)) % 4);
 }
 
 /**

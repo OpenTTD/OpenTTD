@@ -1218,8 +1218,8 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 				/* If the adjacent river tile flows downhill, we need to check where we are relative to the slope. */
 				if (IsInclinedSlope(other_slope) && GetTileMaxZ(tile) == GetTileMaxZ(other_tile)) {
 					/* Check for a parallel slope. If we don't find one, we're above or below the slope instead. */
-					if (GetInclinedSlopeDirection(other_slope) == ChangeDiagDir(d, DIAGDIRDIFF_90RIGHT) ||
-							GetInclinedSlopeDirection(other_slope) == ChangeDiagDir(d, DIAGDIRDIFF_90LEFT)) {
+					if (GetInclinedSlopeDirection(other_slope) == ChangeDiagDir(d, DiagDirDiff::Right90) ||
+							GetInclinedSlopeDirection(other_slope) == ChangeDiagDir(d, DiagDirDiff::Left90)) {
 						desired_slope = other_slope;
 						sloped_river_found = true;
 						break;
@@ -1251,10 +1251,8 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 			/* Don't break existing flat river tiles by terraforming under them. */
 			DiagDirection river_direction = ReverseDiagDir(GetInclinedSlopeDirection(desired_slope));
 
-			for (DiagDirDiff d = DIAGDIRDIFF_BEGIN; d < DIAGDIRDIFF_END; d++) {
+			for (DiagDirDiff d : {DiagDirDiff::Right90, DiagDirDiff::Left90}) {
 				/* We don't care about downstream or upstream tiles, just the riverbanks. */
-				if (d == DIAGDIRDIFF_SAME || d == DIAGDIRDIFF_REVERSE) continue;
-
 				TileIndex other_tile = (TileAddByDiagDir(tile, ChangeDiagDir(river_direction, d)));
 				if (IsWaterTile(other_tile) && IsRiver(other_tile) && IsTileFlat(other_tile)) return;
 			}
