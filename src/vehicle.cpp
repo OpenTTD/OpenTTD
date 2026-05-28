@@ -1841,7 +1841,7 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y)
 
 	DirDiff dirdiff = DirDifference(_new_direction_table[i], dir);
 	if (dirdiff == DIRDIFF_SAME) return dir;
-	return ChangeDir(dir, dirdiff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
+	return ChangeDir(dir, LimitDirDiff(dirdiff));
 }
 
 /**

@@ -769,11 +769,10 @@ static Direction RoadVehGetSlidingDirection(const RoadVehicle *v, int x, int y)
 {
 	Direction new_dir = RoadVehGetNewDirection(v, x, y);
 	Direction old_dir = v->direction;
-	DirDiff delta;
 
 	if (new_dir == old_dir) return old_dir;
-	delta = (DirDifference(new_dir, old_dir) > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
-	return ChangeDir(old_dir, delta);
+	DirDiff dirdiff = DirDifference(new_dir, old_dir);
+	return ChangeDir(old_dir, LimitDirDiff(dirdiff));
 }
 
 struct OvertakeData {

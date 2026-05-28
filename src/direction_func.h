@@ -92,6 +92,16 @@ inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
 }
 
 /**
+ * Limit a direction difference to up to 45 degrees.
+ * @param d direction difference to limit.
+ * @return limited difference.
+ */
+inline DirDiff LimitDirDiff(DirDiff d)
+{
+	return d > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT;
+}
+
+/**
  * Change a direction by a given difference
  *
  * This functions returns a new direction of the given direction
