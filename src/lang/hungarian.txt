@@ -588,6 +588,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Repülőtér é
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Tájrendezés
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Faültetés
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Felirat lerakása
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Objektum építése
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Hang/zene
