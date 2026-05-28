@@ -1004,7 +1004,7 @@ static bool AircraftController(Aircraft *v)
 
 		if (!UpdateAircraftSpeed(v, SPEED_LIMIT_TAXI)) return false;
 
-		v->direction = ChangeDir(v->direction, dirdiff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
+		v->direction = ChangeDir(v->direction, LimitDirDiff(dirdiff));
 		v->cur_speed >>= 1;
 
 		SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
