@@ -1801,13 +1801,20 @@ bool Vehicle::MarkAllViewportsDirty() const
  */
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v)
 {
-	static const int8_t _delta_coord[16] = {
-		-1,-1,-1, 0, 1, 1, 1, 0, /* x */
-		-1, 0, 1, 1, 1, 0,-1,-1, /* y */
-	};
+	static constexpr DirectionIndexArray<Coord2D<int8_t>> delta_coord{{{
+		{-1, -1}, // N
+		{-1, 0}, // NE
+		{-1, 1}, // E
+		{0, 1}, // SE
+		{1, 1}, // S
+		{1, 0}, // SW
+		{1, -1}, // W
+		{0, -1}, // NW
+	}}};
 
-	int x = v->x_pos + _delta_coord[v->GetMovingDirection()];
-	int y = v->y_pos + _delta_coord[v->GetMovingDirection() + 8];
+	const Coord2D<int8_t> &coord = delta_coord[v->GetMovingDirection()];
+	int x = v->x_pos + coord.x;
+	int y = v->y_pos + coord.y;
 
 	GetNewVehiclePosResult gp;
 	gp.x = x;
