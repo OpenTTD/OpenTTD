@@ -308,7 +308,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 
 	/* Create roadbits out of the data for easier handling. */
 	RoadBits start_roadbits = NeighbourToRoadBits(start);
-	RoadBits new_roadbits = start_roadbits | NeighbourToRoadBits(end);
+	RoadBits new_roadbits = NeighbourToRoadBits(end).Set(start_roadbits);
 	RoadBits existing_roadbits{};
 	for (RoadPartOrientation neighbour : existing) {
 		for (int j = 0; j < base_rotate; j++) {
@@ -329,7 +329,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 			case ROAD_X.base():
 			case ROAD_Y.base():
 				/* A 'sloped' tile is going to be build. */
-				if ((existing_roadbits | new_roadbits) != new_roadbits) {
+				if (existing_roadbits.Any(new_roadbits.Flip())) {
 					/* There is already a foundation on the tile, or at least
 					 * another slope that is not compatible with the new one. */
 					return 0;
@@ -342,7 +342,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 				/* Roadbits causing a foundation are going to be build.
 				 * When the existing roadbits are slopes (the lower bits
 				 * are used), this cannot be done. */
-				if ((existing_roadbits | new_roadbits) == new_roadbits) return 1;
+				if (!existing_roadbits.Any(new_roadbits.Flip())) return 1;
 				return existing_roadbits.Any(ROAD_E) ? 0 : 1;
 		}
 	} else {
@@ -355,7 +355,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 
 			case ROAD_X.base():
 				/* A 'sloped' tile is going to be build. */
-				if ((existing_roadbits | new_roadbits) != new_roadbits) {
+				if (existing_roadbits.Any(new_roadbits.Flip())) {
 					/* There is already a foundation on the tile, or at least
 					 * another slope that is not compatible with the new one. */
 					return 0;
