@@ -268,21 +268,15 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 
 	/* The slope is not steep. Furthermore lots of slopes are generally the
 	 * same but are only rotated. So to reduce the amount of lookup work that
-	 * needs to be done the data is made uniform. This means rotating the
-	 * existing parts and updating the slope. */
-	static const ::Slope base_slopes[] = {
-		SLOPE_FLAT, SLOPE_W,   SLOPE_W,   SLOPE_SW,
-		SLOPE_W,    SLOPE_EW,  SLOPE_SW,  SLOPE_WSE,
-		SLOPE_W,    SLOPE_SW,  SLOPE_EW,  SLOPE_WSE,
-		SLOPE_SW,   SLOPE_WSE, SLOPE_WSE};
+	 * needs to be done the data is made uniform.
+	 * This means rotating the existing parts. */
 	static const uint8_t base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
 
-	if (slope >= (::Slope)lengthof(base_slopes)) {
+	if (slope >= SLOPE_ELEVATED) {
 		/* This slope is an invalid slope, so ignore it. */
 		return -1;
 	}
 	uint8_t base_rotate = base_rotates[slope];
-	slope = base_slopes[slope];
 
 	/* Some slopes don't need rotating, so return early when we know we do
 	 * not need to rotate. */
@@ -292,19 +286,18 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 			return 1;
 
 		case SLOPE_EW:
+		case SLOPE_NS:
 		case SLOPE_WSE:
+		case SLOPE_NWS:
+		case SLOPE_SEN:
+		case SLOPE_ENW:
 			/* A slope similar to a SLOPE_EW or SLOPE_WSE will always cause
 			 * foundations which makes them accessible from all sides. */
 			return 1;
 
-		case SLOPE_W:
-		case SLOPE_SW:
+		default:
 			/* A slope for which we need perform some calculations. */
 			break;
-
-		default:
-			/* An invalid slope. */
-			return -1;
 	}
 
 	/* Now perform the actual rotation. */
@@ -324,64 +317,59 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 		existing_roadbits.Set(NeighbourToRoadBits(neighbour));
 	}
 
-	switch (slope) {
-		case SLOPE_W:
-			/* A slope similar to a SLOPE_W. */
-			switch (new_roadbits.base()) {
-				case ROAD_N.base():
-				case ROAD_E.base():
-				case ROAD_S.base():
-					/* Cannot build anything with a turn from the low side. */
+	if (IsSlopeWithOneCornerRaised(slope)) {
+		/* A slope similar to a SLOPE_W. */
+		switch (new_roadbits.base()) {
+			case ROAD_N.base():
+			case ROAD_E.base():
+			case ROAD_S.base():
+				/* Cannot build anything with a turn from the low side. */
+				return 0;
+
+			case ROAD_X.base():
+			case ROAD_Y.base():
+				/* A 'sloped' tile is going to be build. */
+				if ((existing_roadbits | new_roadbits) != new_roadbits) {
+					/* There is already a foundation on the tile, or at least
+					 * another slope that is not compatible with the new one. */
 					return 0;
+				}
+				/* If the start is in the low part, it is automatically
+				 * building the second part too. */
+				return (start_roadbits.Any(ROAD_E) && !existing_roadbits.Any(ROAD_W)) ? 2 : 1;
 
-				case ROAD_X.base():
-				case ROAD_Y.base():
-					/* A 'sloped' tile is going to be build. */
-					if ((existing_roadbits | new_roadbits) != new_roadbits) {
-						/* There is already a foundation on the tile, or at least
-						 * another slope that is not compatible with the new one. */
-						return 0;
-					}
-					/* If the start is in the low part, it is automatically
-					 * building the second part too. */
-					return (start_roadbits.Any(ROAD_E) && !existing_roadbits.Any(ROAD_W)) ? 2 : 1;
+			default:
+				/* Roadbits causing a foundation are going to be build.
+				 * When the existing roadbits are slopes (the lower bits
+				 * are used), this cannot be done. */
+				if ((existing_roadbits | new_roadbits) == new_roadbits) return 1;
+				return existing_roadbits.Any(ROAD_E) ? 0 : 1;
+		}
+	} else {
+		/* A slope similar to a SLOPE_SW. */
+		switch (new_roadbits.base()) {
+			case ROAD_N.base():
+			case ROAD_E.base():
+				/* Cannot build anything with a turn from the low side. */
+				return 0;
 
-				default:
-					/* Roadbits causing a foundation are going to be build.
-					 * When the existing roadbits are slopes (the lower bits
-					 * are used), this cannot be done. */
-					if ((existing_roadbits | new_roadbits) == new_roadbits) return 1;
-					return existing_roadbits.Any(ROAD_E) ? 0 : 1;
-			}
-
-		case SLOPE_SW:
-			/* A slope similar to a SLOPE_SW. */
-			switch (new_roadbits.base()) {
-				case ROAD_N.base():
-				case ROAD_E.base():
-					/* Cannot build anything with a turn from the low side. */
+			case ROAD_X.base():
+				/* A 'sloped' tile is going to be build. */
+				if ((existing_roadbits | new_roadbits) != new_roadbits) {
+					/* There is already a foundation on the tile, or at least
+					 * another slope that is not compatible with the new one. */
 					return 0;
+				}
+				/* If the start is in the low part, it is automatically
+				 * building the second part too. */
+				return (start_roadbits.Test(RoadBit::NE) && !existing_roadbits.Test(RoadBit::SW)) ? 2 : 1;
 
-				case ROAD_X.base():
-					/* A 'sloped' tile is going to be build. */
-					if ((existing_roadbits | new_roadbits) != new_roadbits) {
-						/* There is already a foundation on the tile, or at least
-						 * another slope that is not compatible with the new one. */
-						return 0;
-					}
-					/* If the start is in the low part, it is automatically
-					 * building the second part too. */
-					return (start_roadbits.Test(RoadBit::NE) && !existing_roadbits.Test(RoadBit::SW)) ? 2 : 1;
-
-				default:
-					/* Roadbits causing a foundation are going to be build.
-					 * When the existing roadbits are slopes (the lower bits
-					 * are used), this cannot be done. */
-					return existing_roadbits.Test(RoadBit::NE) ? 0 : 1;
-			}
-
-		default:
-			NOT_REACHED();
+			default:
+				/* Roadbits causing a foundation are going to be build.
+				 * When the existing roadbits are slopes (the lower bits
+				 * are used), this cannot be done. */
+				return existing_roadbits.Test(RoadBit::NE) ? 0 : 1;
+		}
 	}
 }
 
