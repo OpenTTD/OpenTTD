@@ -1831,12 +1831,11 @@ void UpdateLevelCrossing(TileIndex tile, bool sound, bool force_bar)
 
 	bool forced_state = force_bar;
 
-	const Axis axis = GetCrossingRoadAxis(tile);
-	const DiagDirection dir1 = AxisToDiagDir(axis);
-	const DiagDirection dir2 = ReverseDiagDir(dir1);
+	Axis axis = GetCrossingRoadAxis(tile);
+	DiagDirections diagdirs = AxisToDiagDirs(axis);
 
 	/* Check if an adjacent crossing is barred. */
-	for (DiagDirection dir : { dir1, dir2 }) {
+	for (DiagDirection dir : diagdirs) {
 		for (TileIndex t = tile; !forced_state && t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, dir)) {
 			forced_state |= CheckLevelCrossing(t);
 		}
@@ -1845,7 +1844,7 @@ void UpdateLevelCrossing(TileIndex tile, bool sound, bool force_bar)
 	/* Now that we know whether all tiles in this crossing should be barred or open,
 	 * we need to update those tiles. We start with the tile itself, then look along the road axis. */
 	UpdateLevelCrossingTile(tile, sound, forced_state);
-	for (DiagDirection dir : { dir1, dir2 }) {
+	for (DiagDirection dir : diagdirs) {
 		for (TileIndex t = TileAddByDiagDir(tile, dir); t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, dir)) {
 			UpdateLevelCrossingTile(t, sound, forced_state);
 		}
@@ -1859,9 +1858,7 @@ void UpdateLevelCrossing(TileIndex tile, bool sound, bool force_bar)
  */
 void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis)
 {
-	const DiagDirection dir1 = AxisToDiagDir(road_axis);
-	const DiagDirection dir2 = ReverseDiagDir(dir1);
-	for (DiagDirection dir : { dir1, dir2 }) {
+	for (DiagDirection dir : AxisToDiagDirs(road_axis)) {
 		const TileIndex t = TileAddByDiagDir(tile, dir);
 		if (t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
 			MarkTileDirtyByTile(t);
@@ -1876,9 +1873,7 @@ void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis)
  */
 void UpdateAdjacentLevelCrossingTilesOnLevelCrossingRemoval(TileIndex tile, Axis road_axis)
 {
-	const DiagDirection dir1 = AxisToDiagDir(road_axis);
-	const DiagDirection dir2 = ReverseDiagDir(dir1);
-	for (DiagDirection dir : { dir1, dir2 }) {
+	for (DiagDirection dir : AxisToDiagDirs(road_axis)) {
 		const TileIndexDiff diff = TileOffsByDiagDir(dir);
 		bool occupied = false;
 		for (TileIndex t = tile + diff; t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis; t += diff) {

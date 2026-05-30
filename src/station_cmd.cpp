@@ -2038,13 +2038,7 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  */
 CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, const RoadStopSpec *roadstopspec, Axis axis, DiagDirection ddir, StationID *station, RoadType rt, Money unit_cost)
 {
-	DiagDirections invalid_dirs{};
-	if (is_drive_through) {
-		invalid_dirs.Set(AxisToDiagDir(axis));
-		invalid_dirs.Set(ReverseDiagDir(AxisToDiagDir(axis)));
-	} else {
-		invalid_dirs.Set(ddir);
-	}
+	DiagDirections invalid_dirs = is_drive_through ? AxisToDiagDirs(axis) : ddir;
 
 	/* Check every tile in the area. */
 	int allowed_z = -1;
