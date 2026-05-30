@@ -461,7 +461,7 @@ struct GameOptionsWindow : Window {
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowById(WindowClass::CustomCurrenty, 0);
-		if (this->reload) _switch_mode = SM_MENU;
+		if (this->reload) _switch_mode = SwitchMode::Menu;
 		this->Window::Close();
 	}
 

@@ -431,11 +431,11 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
 		/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
-		if (_switch_mode != SM_NONE) MakeNewgameSettingsLive();
+		if (_switch_mode != SwitchMode::None) MakeNewgameSettingsLive();
 
 		if (_network_available && !connection_string.empty()) {
 			LoadIntroGame();
-			_switch_mode = SM_NONE;
+			_switch_mode = SwitchMode::None;
 
 			NetworkClientConnectGame(connection_string, COMPANY_NEW_COMPANY, join_server_password);
 		}
@@ -514,7 +514,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	_dedicated_forks = false;
 
 	_game_mode = GameMode::Menu;
-	_switch_mode = SM_MENU;
+	_switch_mode = SwitchMode::Menu;
 
 	auto options = CreateOptions();
 	GetOptData mgo(arguments.subspan(1), options);
@@ -565,9 +565,9 @@ int openttd_main(std::span<std::string_view> arguments)
 		case 'e':
 			/* Allow for '-e' before or after '-g'. */
 			switch (_switch_mode) {
-				case SM_MENU: _switch_mode = SM_EDITOR; break;
-				case SM_LOAD_GAME: _switch_mode = SM_LOAD_SCENARIO; break;
-				case SM_START_HEIGHTMAP: _switch_mode = SM_LOAD_HEIGHTMAP; break;
+				case SwitchMode::Menu: _switch_mode = SwitchMode::Editor; break;
+				case SwitchMode::LoadGame: _switch_mode = SwitchMode::LoadScenario; break;
+				case SwitchMode::StartHeightmap: _switch_mode = SwitchMode::LoadHeightmap; break;
 				default: break;
 			}
 			break;
@@ -586,9 +586,9 @@ int openttd_main(std::span<std::string_view> arguments)
 
 				/* Allow for '-e' before or after '-g'. */
 				switch (ft.abstract) {
-					case AbstractFileType::Savegame: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
-					case AbstractFileType::Scenario: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
-					case AbstractFileType::Heightmap: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP); break;
+					case AbstractFileType::Savegame: _switch_mode = (_switch_mode == SwitchMode::Editor ? SwitchMode::LoadScenario : SwitchMode::LoadGame); break;
+					case AbstractFileType::Scenario: _switch_mode = (_switch_mode == SwitchMode::Editor ? SwitchMode::LoadScenario : SwitchMode::LoadGame); break;
+					case AbstractFileType::Heightmap: _switch_mode = (_switch_mode == SwitchMode::Editor ? SwitchMode::LoadHeightmap : SwitchMode::StartHeightmap); break;
 					default: break;
 				}
 
@@ -596,7 +596,7 @@ int openttd_main(std::span<std::string_view> arguments)
 				break;
 			}
 
-			_switch_mode = SM_NEWGAME;
+			_switch_mode = SwitchMode::NewGame;
 			/* Give a random map if no seed has been given */
 			if (scanner->generation_seed == GENERATE_NEW_SEED) {
 				scanner->generation_seed = InteractiveRandom();
@@ -1016,10 +1016,10 @@ static void UpdateSocialIntegration(GameMode game_mode)
 void SwitchToMode(SwitchMode new_mode)
 {
 	/* If we are saving something, the network stays in its current state */
-	if (new_mode != SM_SAVE_GAME) {
+	if (new_mode != SwitchMode::SaveGame) {
 		/* If the network is active, make it not-active */
 		if (_networking) {
-			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
+			if (_network_server && (new_mode == SwitchMode::LoadGame || new_mode == SwitchMode::NewGame || new_mode == SwitchMode::RestartGame)) {
 				NetworkReboot();
 			} else {
 				NetworkDisconnect();
@@ -1029,7 +1029,7 @@ void SwitchToMode(SwitchMode new_mode)
 		/* If we are a server, we restart the server */
 		if (_is_network_server) {
 			/* But not if we are going to the menu */
-			if (new_mode != SM_MENU) {
+			if (new_mode != SwitchMode::Menu) {
 				/* check if we should reload the config */
 				if (_settings_client.network.reload_cfg) {
 					LoadFromConfig();
@@ -1045,56 +1045,56 @@ void SwitchToMode(SwitchMode new_mode)
 	}
 
 	/* Make sure all AI controllers are gone at quitting game */
-	if (new_mode != SM_SAVE_GAME) AI::KillAll();
+	if (new_mode != SwitchMode::SaveGame) AI::KillAll();
 
 	/* When we change mode, reset the autosave. */
-	if (new_mode != SM_SAVE_GAME) ChangeAutosaveFrequency(true);
+	if (new_mode != SwitchMode::SaveGame) ChangeAutosaveFrequency(true);
 
 	/* Transmit the survey if we were in normal-mode and not saving. It always means we leaving the current game. */
-	if (_game_mode == GameMode::Normal && new_mode != SM_SAVE_GAME) _survey.Transmit(NetworkSurveyHandler::Reason::Leave);
+	if (_game_mode == GameMode::Normal && new_mode != SwitchMode::SaveGame) _survey.Transmit(NetworkSurveyHandler::Reason::Leave);
 
 	/* Keep track when we last switch mode. Used for survey, to know how long someone was in a game. */
-	if (new_mode != SM_SAVE_GAME) {
+	if (new_mode != SwitchMode::SaveGame) {
 		_game_session_stats.start_time = std::chrono::steady_clock::now();
 		_game_session_stats.savegame_size = std::nullopt;
 	}
 
 	switch (new_mode) {
-		case SM_EDITOR: // Switch to scenario editor
+		case SwitchMode::Editor: // Switch to scenario editor
 			MakeNewEditorWorld();
 			GenerateSavegameId();
 
 			UpdateSocialIntegration(GameMode::Editor);
 			break;
 
-		case SM_RELOADGAME: // Reload with what-ever started the game
+		case SwitchMode::ReloadGame: // Reload with what-ever started the game
 			if (_file_to_saveload.ftype.abstract == AbstractFileType::Savegame || _file_to_saveload.ftype.abstract == AbstractFileType::Scenario) {
 				/* Reload current savegame/scenario */
-				_switch_mode = _game_mode == GameMode::Editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+				_switch_mode = _game_mode == GameMode::Editor ? SwitchMode::LoadScenario : SwitchMode::LoadGame;
 				SwitchToMode(_switch_mode);
 				break;
 			} else if (_file_to_saveload.ftype.abstract == AbstractFileType::Heightmap) {
 				/* Restart current heightmap */
-				_switch_mode = _game_mode == GameMode::Editor ? SM_LOAD_HEIGHTMAP : SM_RESTART_HEIGHTMAP;
+				_switch_mode = _game_mode == GameMode::Editor ? SwitchMode::LoadHeightmap : SwitchMode::RestartHeightmap;
 				SwitchToMode(_switch_mode);
 				break;
 			}
 
-			MakeNewGame(false, new_mode == SM_NEWGAME);
+			MakeNewGame(false, new_mode == SwitchMode::NewGame);
 			GenerateSavegameId();
 
 			UpdateSocialIntegration(GameMode::Normal);
 			break;
 
-		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
-		case SM_NEWGAME: // New Game --> 'Random game'
-			MakeNewGame(false, new_mode == SM_NEWGAME);
+		case SwitchMode::RestartGame: // Restart --> 'Random game' with current settings
+		case SwitchMode::NewGame: // New Game --> 'Random game'
+			MakeNewGame(false, new_mode == SwitchMode::NewGame);
 			GenerateSavegameId();
 
 			UpdateSocialIntegration(GameMode::Normal);
 			break;
 
-		case SM_LOAD_GAME: { // Load game, Play Scenario
+		case SwitchMode::LoadGame: { // Load game, Play Scenario
 			ResetGRFConfig(true);
 			ResetWindowSystem();
 
@@ -1113,15 +1113,15 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 		}
 
-		case SM_RESTART_HEIGHTMAP: // Load a heightmap and start a new game from it with current settings
-		case SM_START_HEIGHTMAP: // Load a heightmap and start a new game from it
-			MakeNewGame(true, new_mode == SM_START_HEIGHTMAP);
+		case SwitchMode::RestartHeightmap: // Load a heightmap and start a new game from it with current settings
+		case SwitchMode::StartHeightmap: // Load a heightmap and start a new game from it
+			MakeNewGame(true, new_mode == SwitchMode::StartHeightmap);
 			GenerateSavegameId();
 
 			UpdateSocialIntegration(GameMode::Normal);
 			break;
 
-		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
+		case SwitchMode::LoadHeightmap: // Load heightmap from scenario editor
 			SetLocalCompany(OWNER_NONE);
 
 			_game_mode = GameMode::Editor;
@@ -1133,7 +1133,7 @@ void SwitchToMode(SwitchMode new_mode)
 			UpdateSocialIntegration(GameMode::Editor);
 			break;
 
-		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
+		case SwitchMode::LoadScenario: { // Load scenario from scenario editor
 			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.ftype.detailed, GameMode::Editor, Subdirectory::None)) {
 				SetLocalCompany(OWNER_NONE);
 				GenerateSavegameId();
@@ -1148,14 +1148,14 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 		}
 
-		case SM_JOIN_GAME: // Join a multiplayer game
+		case SwitchMode::JoinGame: // Join a multiplayer game
 			LoadIntroGame();
 			NetworkClientJoinGame();
 
 			SocialIntegration::EventJoiningMultiplayer();
 			break;
 
-		case SM_MENU: // Switch to game intro menu
+		case SwitchMode::Menu: // Switch to game intro menu
 			LoadIntroGame();
 			if (BaseSounds::ini_set.empty() && BaseSounds::GetUsedSet()->fallback && SoundDriver::GetInstance()->HasOutput()) {
 				ShowErrorMessage(GetEncodedString(STR_WARNING_FALLBACK_SOUNDSET), {}, WarningLevel::Critical);
@@ -1173,7 +1173,7 @@ void SwitchToMode(SwitchMode new_mode)
 			UpdateSocialIntegration(GameMode::Menu);
 			break;
 
-		case SM_SAVE_GAME: // Save game.
+		case SwitchMode::SaveGame: // Save game.
 			/* Make network saved games on pause compatible to singleplayer mode */
 			if (SaveOrLoad(_file_to_saveload.name, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::None) != SaveLoadResult::Ok) {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WarningLevel::Error);
@@ -1182,12 +1182,12 @@ void SwitchToMode(SwitchMode new_mode)
 			}
 			break;
 
-		case SM_SAVE_HEIGHTMAP: // Save heightmap.
+		case SwitchMode::SaveHeightmap: // Save heightmap.
 			MakeHeightmapScreenshot(_file_to_saveload.name);
 			CloseWindowById(WindowClass::SaveLoad, 0);
 			break;
 
-		case SM_GENRANDLAND: // Generate random land within scenario editor
+		case SwitchMode::GenerateRandomLand: // Generate random land within scenario editor
 			SetLocalCompany(OWNER_NONE);
 			GenerateWorld(GWM_RANDOM, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			/* XXX: set date */
@@ -1359,9 +1359,9 @@ void GameLoop()
 	}
 
 	/* switch game mode? */
-	if (_switch_mode != SM_NONE && !HasModalProgress()) {
+	if (_switch_mode != SwitchMode::None && !HasModalProgress()) {
 		SwitchToMode(_switch_mode);
-		_switch_mode = SM_NONE;
+		_switch_mode = SwitchMode::None;
 		if (_exit_game) return;
 	}
 

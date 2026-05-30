@@ -149,7 +149,7 @@ void VideoDriver::Tick()
 			::InputLoop();
 
 			/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
-			if (_game_mode == GameMode::Bootstrap || _switch_mode == SM_NONE || HasModalProgress()) {
+			if (_game_mode == GameMode::Bootstrap || _switch_mode == SwitchMode::None || HasModalProgress()) {
 				::UpdateWindows();
 			}
 

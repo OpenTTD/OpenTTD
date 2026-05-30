@@ -40,7 +40,7 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection([[maybe_unused]] boo
 	/* Clients drop back to the main menu */
 	if (!_network_server && _networking) {
 		ClientNetworkEmergencySave();
-		_switch_mode = SM_MENU;
+		_switch_mode = SwitchMode::Menu;
 		_networking = false;
 		ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_LOSTCONNECTION), {}, WarningLevel::Critical);
 

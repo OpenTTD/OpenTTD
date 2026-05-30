@@ -278,7 +278,7 @@ bool IsGeneratingWorldAborted()
 void HandleGeneratingWorldAbortion()
 {
 	/* Clean up - in SE create an empty map, otherwise, go to intro menu */
-	_switch_mode = (_game_mode == GameMode::Editor) ? SM_EDITOR : SM_MENU;
+	_switch_mode = (_game_mode == GameMode::Editor) ? SwitchMode::Editor : SwitchMode::Menu;
 
 	if (GenWorldInfo::abortp != nullptr) GenWorldInfo::abortp();
 
