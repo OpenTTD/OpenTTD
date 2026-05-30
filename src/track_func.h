@@ -509,7 +509,7 @@ inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir)
 }
 
 /**
- * Maps a (4-way) direction to the diagonal track incidating with that diagdir
+ * Maps a DiagDirection to the associated diagonal Track.
  *
  * @param diagdir The direction
  * @return The resulting Track
@@ -521,7 +521,7 @@ inline Track DiagDirToDiagTrack(DiagDirection diagdir)
 }
 
 /**
- * Maps a (4-way) direction to the diagonal track bits incidating with that diagdir
+ * Maps a DiagDirection to the associated diagonal TrackBits.
  *
  * @param diagdir The direction
  * @return The resulting TrackBits
