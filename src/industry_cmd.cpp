@@ -497,7 +497,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 	 * with magic_bulldozer cheat you can destroy industries
 	 * (area around OILRIG is water, so water shouldn't flood it
 	 */
-	if ((_current_company != OWNER_WATER && _game_mode != GM_EDITOR &&
+	if ((_current_company != OWNER_WATER && _game_mode != GameMode::Editor &&
 			!_cheats.magic_bulldozer.value) ||
 			flags.Test(DoCommandFlag::Auto) ||
 			(_current_company == OWNER_WATER &&
@@ -850,7 +850,7 @@ static void TileLoop_Industry(TileIndex tile)
 		return;
 	}
 
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GameMode::Editor) return;
 
 	if (TransportIndustryGoods(tile) && !TriggerIndustryAnimation(Industry::GetByTile(tile), IndustryAnimationTrigger::CargoDistributed)) {
 		uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
@@ -1243,7 +1243,7 @@ void OnTick_Industry()
 		}
 	}
 
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GameMode::Editor) return;
 
 	for (Industry *i : Industry::Iterate()) {
 		ProduceIndustryGoods(i);
@@ -1308,7 +1308,7 @@ static bool CheckScaledDistanceFromEdge(TileIndex tile, uint maxdist)
  */
 static CommandCost CheckNewIndustry_OilRefinery(TileIndex tile)
 {
-	if (_game_mode == GM_EDITOR) return CommandCost();
+	if (_game_mode == GameMode::Editor) return CommandCost();
 
 	if (CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
@@ -1324,7 +1324,7 @@ extern bool _ignore_industry_restrictions;
  */
 static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 {
-	if (_game_mode == GM_EDITOR && _ignore_industry_restrictions) return CommandCost();
+	if (_game_mode == GameMode::Editor && _ignore_industry_restrictions) return CommandCost();
 
 	if (TileHeight(tile) == 0 &&
 			CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
@@ -1812,7 +1812,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->ctlflags = {};
 
 	i->construction_date = TimerGameCalendar::date;
-	i->construction_type = (_game_mode == GM_EDITOR) ? IndustryConstructionType::ScenarioEditor :
+	i->construction_type = (_game_mode == GameMode::Editor) ? IndustryConstructionType::ScenarioEditor :
 			(_generating_world ? IndustryConstructionType::MapGeneration : IndustryConstructionType::Gameplay);
 
 	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
@@ -2072,11 +2072,11 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 
 	/* If the setting for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now) */
-	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
+	if (_game_mode != GameMode::Editor && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
 		return CMD_ERROR;
 	}
 
-	if (_game_mode != GM_EDITOR && GetIndustryProbabilityCallback(it, _current_company == OWNER_DEITY ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, 1) == 0) {
+	if (_game_mode != GameMode::Editor && GetIndustryProbabilityCallback(it, _current_company == OWNER_DEITY ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, 1) == 0) {
 		return CMD_ERROR;
 	}
 
@@ -2089,7 +2089,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 	const bool deity_prospect = _current_company == OWNER_DEITY && !fund;
 
 	Industry *ind = nullptr;
-	if (deity_prospect || (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry())) {
+	if (deity_prospect || (_game_mode != GameMode::Editor && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry())) {
 		if (flags.Test(DoCommandFlag::Execute)) {
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
@@ -2138,7 +2138,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 		if (ret.Failed()) return ret;
 	}
 
-	if (flags.Test(DoCommandFlag::Execute) && ind != nullptr && _game_mode != GM_EDITOR) {
+	if (flags.Test(DoCommandFlag::Execute) && ind != nullptr && _game_mode != GameMode::Editor) {
 		AdvertiseIndustryOpening(ind);
 	}
 
@@ -2308,7 +2308,7 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, std::opt
 
 	uint32_t chance = ind_spc->appear_creation[to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
-			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == IndustryDensity::FundedOnly) ||
+			(_game_mode != GameMode::Editor && _settings_game.difficulty.industry_density == IndustryDensity::FundedOnly) ||
 			(chance = GetIndustryProbabilityCallback(it, IndustryAvailabilityCallType::MapGeneration, chance)) == 0) {
 		*force_at_least_one = false;
 		return 0;
@@ -2318,7 +2318,7 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, std::opt
 		 * For simplicity we scale in both cases, though scaling the probabilities of all industries has no effect. */
 		chance = (ind_spc->check_proc == IndustryCheck::Refinery || ind_spc->check_proc == IndustryCheck::OilRig) ? Map::ScaleBySize1D(chance) : Map::ScaleBySize(chance);
 
-		*force_at_least_one = (chance > 0) && !ind_spc->behaviour.Test(IndustryBehaviour::NoBuildMapCreation) && (_game_mode != GM_EDITOR);
+		*force_at_least_one = (chance > 0) && !ind_spc->behaviour.Test(IndustryBehaviour::NoBuildMapCreation) && (_game_mode != GameMode::Editor);
 		return chance;
 	}
 }
@@ -2367,7 +2367,7 @@ static uint GetNumberOfIndustries()
 	};
 
 	assert(lengthof(numof_industry_table) == to_underlying(IndustryDensity::End));
-	IndustryDensity density = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.industry_density : IndustryDensity::VeryLow;
+	IndustryDensity density = (_game_mode != GameMode::Editor) ? _settings_game.difficulty.industry_density : IndustryDensity::VeryLow;
 
 	if (density == IndustryDensity::Custom) return std::min<uint>(IndustryPool::MAX_SIZE, _settings_game.game_creation.custom_industry_number);
 
@@ -2486,7 +2486,7 @@ static IndustryGenerationProbabilities GetScaledProbabilities(bool water)
  */
 void GenerateIndustries()
 {
-	if (_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == IndustryDensity::FundedOnly) return; // No industries in the game.
+	if (_game_mode != GameMode::Editor && _settings_game.difficulty.industry_density == IndustryDensity::FundedOnly) return; // No industries in the game.
 
 	/* Get the probabilities for all industries. This is done first as we need the total of
 	 * both land and water for scaling later. */

@@ -121,7 +121,7 @@ void TimeoutTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 template <>
 bool TimerManager<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed)
 {
-	if (_game_mode == GM_MENU) return false;
+	if (_game_mode == GameMode::Menu) return false;
 
 	TimerGameEconomy::date_fract++;
 	if (TimerGameEconomy::date_fract < Ticks::DAY_TICKS) return true;

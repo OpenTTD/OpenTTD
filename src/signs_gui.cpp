@@ -125,7 +125,7 @@ struct SignList {
 	void FilterSignList()
 	{
 		this->signs.Filter(&SignNameFilter, this->string_filter);
-		if (_game_mode != GM_EDITOR) this->signs.Filter(&OwnerDeityFilter, this->string_filter);
+		if (_game_mode != GameMode::Editor) this->signs.Filter(&OwnerDeityFilter, this->string_filter);
 		if (!_display_opt.Test(DisplayOption::ShowCompetitorSigns)) {
 			this->signs.Filter(&OwnerVisibilityFilter, this->string_filter);
 		}
@@ -322,7 +322,7 @@ struct SignListWindow : Window, SignList {
 	 */
 	static EventState SignListGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+		if (_game_mode == GameMode::Menu) return ES_NOT_HANDLED;
 		Window *w = ShowSignList();
 		if (w == nullptr) return ES_NOT_HANDLED;
 		return w->OnHotkey(hotkey);
@@ -418,7 +418,7 @@ struct SignWindow : Window, SignList {
 
 		this->InitNested(QueryStringWindowNumber::Sign);
 
-		if (_game_mode != GameMode::GM_EDITOR) {
+		if (_game_mode != GameMode::Editor) {
 			this->GetWidget<NWidgetStacked>(WID_QES_COLOUR_PANE)->SetDisplayedPlane(SZSP_VERTICAL);
 			this->ReInit();
 		}
@@ -630,7 +630,7 @@ void HandleClickOnSign(const Sign *si)
 	/* If we can't edit the sign, don't even open the rename GUI. */
 	if (!CompanyCanEditSign(si)) return;
 
-	if (_ctrl_pressed && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GM_EDITOR))) {
+	if (_ctrl_pressed && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GameMode::Editor))) {
 		RenameSign(si->index, "", Colours::Invalid);
 		return;
 	}

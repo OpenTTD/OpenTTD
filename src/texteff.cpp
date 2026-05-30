@@ -41,7 +41,7 @@ static std::vector<TextEffect> _text_effects; ///< Text effects are stored there
 /* Text Effects */
 TextEffectID AddTextEffect(EncodedString &&msg, int center, int y, uint8_t duration, TextEffectMode mode)
 {
-	if (_game_mode == GM_MENU) return INVALID_TE_ID;
+	if (_game_mode == GameMode::Menu) return INVALID_TE_ID;
 
 	auto it = std::ranges::find_if(_text_effects, [](const TextEffect &te) { return !te.IsValid(); });
 	if (it == std::end(_text_effects)) {
@@ -90,7 +90,7 @@ void RemoveTextEffect(TextEffectID te_id)
 
 /** Slowly move text effects upwards. */
 const IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::milliseconds(30), [](uint count) {
-	if (_pause_mode.Any() && _game_mode != GM_EDITOR && _settings_game.construction.command_pause_level <= CommandPauseLevel::NoConstruction) return;
+	if (_pause_mode.Any() && _game_mode != GameMode::Editor && _settings_game.construction.command_pause_level <= CommandPauseLevel::NoConstruction) return;
 
 	for (TextEffect &te : _text_effects) {
 		if (!te.IsValid()) continue;

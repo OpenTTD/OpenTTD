@@ -457,7 +457,7 @@ public:
 
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */
-		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
+		if (_game_mode != GameMode::Menu && !_networking && _game_mode != GameMode::Editor) {
 			Command<Commands::Pause>::Post(PauseMode::SaveLoad, true);
 		}
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WindowClass::MainWindow, 0);
@@ -500,7 +500,7 @@ public:
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		/* pause is only used in single-player, non-editor mode, non menu mode */
-		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
+		if (!_networking && _game_mode != GameMode::Editor && _game_mode != GameMode::Menu) {
 			Command<Commands::Pause>::Post(PauseMode::SaveLoad, false);
 		}
 		this->Window::Close();
@@ -718,7 +718,7 @@ public:
 					this->Close();
 					LoadTownData();
 				} else if (!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility != GRFListCompatibility::NotFound || _settings_client.gui.UserIsAllowedToChangeNewGRFs()) {
-					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+					_switch_mode = (_game_mode == GameMode::Editor) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 					ClearErrorMessages();
 					this->Close();
 				}
@@ -866,7 +866,7 @@ public:
 			}
 
 			/* In the editor set up the vehicle engines correctly (date might have changed) */
-			if (_game_mode == GM_EDITOR) StartupEngines();
+			if (_game_mode == GameMode::Editor) StartupEngines();
 		}
 	}
 

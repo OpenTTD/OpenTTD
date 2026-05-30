@@ -653,7 +653,7 @@ void VideoDriver_SDL_Base::LoopOnce()
 		/* In effect, the game ends here. As emscripten_set_main_loop() caused
 		 * the stack to be unwound, the code after MainLoop() in
 		 * openttd_main() is never executed. */
-		if (_game_mode == GM_BOOTSTRAP) {
+		if (_game_mode == GameMode::Bootstrap) {
 			EM_ASM(if (window["openttd_bootstrap_reload"]) openttd_bootstrap_reload());
 		} else {
 			EM_ASM(if (window["openttd_exit"]) openttd_exit());

@@ -63,7 +63,7 @@ void AIInstance::Died()
 	ScriptInstance::Died();
 
 	/* Intro is not supposed to use AI, but it may have 'dummy' AI which instant dies. */
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GameMode::Menu) return;
 
 	/* Don't show errors while loading savegame. They will be shown at end of loading anyway. */
 	if (_switch_mode != SM_NONE) return;

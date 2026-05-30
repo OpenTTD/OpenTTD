@@ -430,7 +430,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 			}
 
 			/* Do not replace town bridges with lower speed bridges, unless in scenario editor. */
-			if (IsTileOwner(tile_start, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+			if (IsTileOwner(tile_start, OWNER_TOWN) && _game_mode != GameMode::Editor) {
 				Town *t = ClosestTownFromTile(tile_start, UINT_MAX);
 				if (t == nullptr) return CMD_ERROR;
 
@@ -814,7 +814,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 {
 	/* Floods can remove anything as well as the scenario editor */
-	if (_current_company == OWNER_WATER || _game_mode == GM_EDITOR) return CommandCost();
+	if (_current_company == OWNER_WATER || _game_mode == GameMode::Editor) return CommandCost();
 
 	switch (GetTunnelBridgeTransportType(tile)) {
 		case TRANSPORT_ROAD: {
@@ -872,7 +872,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 	_build_tunnel_endtile = endtile;
 
 	Town *t = nullptr;
-	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GameMode::Editor) {
 		t = ClosestTownFromTile(tile, UINT_MAX); // town penalty rating
 
 		/* Check if you are allowed to remove the tunnel owned by a town
@@ -883,7 +883,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 
 	/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 	 * you have a "Poor" (0) town rating */
-	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GameMode::Editor) {
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
@@ -953,7 +953,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 	TileIndexDiff delta = TileOffsByDiagDir(direction);
 
 	Town *t = nullptr;
-	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GameMode::Editor) {
 		t = ClosestTownFromTile(tile, UINT_MAX); // town penalty rating
 
 		/* Check if you are allowed to remove the bridge owned by a town
@@ -964,7 +964,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 
 	/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 	 * you have a "Poor" (0) town rating */
-	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GameMode::Editor) {
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
@@ -1404,7 +1404,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 
 			/* PBS debugging, draw reserved tracks darker */
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
+			if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
 				if (rti->UsesOverlay()) {
 					SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
 					DrawGroundSprite(overlay + RTO_X + to_underlying(DiagDirToAxis(tunnelbridge_direction)), PALETTE_CRASH);
@@ -1504,7 +1504,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 
 			/* PBS debugging, draw reserved tracks darker */
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
+			if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
 				if (rti->UsesOverlay()) {
 					SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
 					if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
@@ -1677,7 +1677,7 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 			}
 		}
 
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && !IsInvisibilitySet(TO_BRIDGES) && HasTunnelBridgeReservation(rampnorth)) {
+		if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && !IsInvisibilitySet(TO_BRIDGES) && HasTunnelBridgeReservation(rampnorth)) {
 			if (rti->UsesOverlay()) {
 				SpriteID overlay = GetCustomRailSprite(rti, rampnorth, RailSpriteType::Overlay, TCX_ON_BRIDGE);
 				AddSortableSpriteToDraw(overlay + RTO_X + to_underlying(axis), PALETTE_CRASH, ti->x, ti->y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TO_BRIDGES));

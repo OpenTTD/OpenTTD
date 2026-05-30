@@ -122,7 +122,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
  */
 bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 {
-	if (company == OWNER_DEITY || company == OWNER_TOWN || _game_mode == GM_EDITOR || _generating_world) {
+	if (company == OWNER_DEITY || company == OWNER_TOWN || _game_mode == GameMode::Editor || _generating_world) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(roadtype);
 		if (rti->label == 0) return false;
 

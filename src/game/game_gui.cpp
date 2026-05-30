@@ -158,7 +158,7 @@ struct GSConfigWindow : public Window {
 	 */
 	static bool IsEditable()
 	{
-		return _game_mode != GM_NORMAL || Game::GetInstance() != nullptr;
+		return _game_mode != GameMode::Normal || Game::GetInstance() != nullptr;
 	}
 
 	/**
@@ -235,7 +235,7 @@ struct GSConfigWindow : public Window {
 		switch (widget) {
 			case WID_GSC_GSLIST: {
 				this->InvalidateData();
-				if (click_count > 1 && _game_mode != GM_NORMAL) ShowScriptListWindow(OWNER_DEITY, _ctrl_pressed);
+				if (click_count > 1 && _game_mode != GameMode::Normal) ShowScriptListWindow(OWNER_DEITY, _ctrl_pressed);
 				break;
 			}
 
@@ -339,7 +339,7 @@ struct GSConfigWindow : public Window {
 			}
 
 			case WID_GSC_RESET:
-				this->gs_config->ResetEditableSettings(_game_mode == GM_MENU);
+				this->gs_config->ResetEditableSettings(_game_mode == GameMode::Menu);
 				this->SetDirty();
 				break;
 		}
@@ -392,7 +392,7 @@ struct GSConfigWindow : public Window {
 	{
 		if (!gui_scope) return;
 
-		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GM_NORMAL) || !IsEditable());
+		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GameMode::Normal) || !IsEditable());
 
 		const GameConfig *config = GameConfig::GetConfig();
 		this->SetWidgetDisabledState(WID_GSC_OPEN_URL, config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
@@ -406,8 +406,8 @@ struct GSConfigWindow : public Window {
 private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
 	{
-		return _game_mode == GM_MENU
-			|| _game_mode == GM_EDITOR
+		return _game_mode == GameMode::Menu
+			|| _game_mode == GameMode::Editor
 			|| config_item.flags.Test(ScriptConfigFlag::InGame)
 			|| _settings_client.gui.ai_developer_tools;
 	}
@@ -415,7 +415,7 @@ private:
 	void SetValue(int value)
 	{
 		const ScriptConfigItem &config_item = *this->visible_settings[this->clicked_row];
-		if (_game_mode == GM_NORMAL && !config_item.flags.Test(ScriptConfigFlag::InGame)) return;
+		if (_game_mode == GameMode::Normal && !config_item.flags.Test(ScriptConfigFlag::InGame)) return;
 		this->gs_config->SetSetting(config_item.name, value);
 		this->SetDirty();
 	}

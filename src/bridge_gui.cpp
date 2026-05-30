@@ -142,13 +142,13 @@ private:
 	{
 		/* If the bridge has no meaningful speed limit, don't display it. */
 		if (bridge_data.spec->speed == UINT16_MAX) {
-			return _game_mode == GM_EDITOR
+			return _game_mode == GameMode::Editor
 				? GetString(STR_SELECT_BRIDGE_INFO_NAME, bridge_data.spec->material)
 				: GetString(STR_SELECT_BRIDGE_INFO_NAME_COST, bridge_data.spec->material, bridge_data.cost);
 		}
 
 		uint64_t packed_velocity = PackVelocity(bridge_data.spec->speed, static_cast<VehicleType>(this->transport_type));
-		return _game_mode == GM_EDITOR
+		return _game_mode == GameMode::Editor
 			? GetString(STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED, bridge_data.spec->material, packed_velocity)
 			: GetString(STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST, bridge_data.spec->material, packed_velocity, bridge_data.cost);
 	}

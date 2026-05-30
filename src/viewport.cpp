@@ -1447,9 +1447,9 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 	Rect search_rect{ dpi->left, dpi->top, dpi->left + dpi->width, dpi->top + dpi->height };
 	search_rect = ExpandRectWithViewportSignMargins(search_rect, dpi->zoom);
 
-	bool show_stations = _display_opt.Test(DisplayOption::ShowStationNames) && _game_mode != GM_MENU;
-	bool show_waypoints = _display_opt.Test(DisplayOption::ShowWaypointNames) && _game_mode != GM_MENU;
-	bool show_towns = _display_opt.Test(DisplayOption::ShowTownNames) && _game_mode != GM_MENU;
+	bool show_stations = _display_opt.Test(DisplayOption::ShowStationNames) && _game_mode != GameMode::Menu;
+	bool show_waypoints = _display_opt.Test(DisplayOption::ShowWaypointNames) && _game_mode != GameMode::Menu;
+	bool show_towns = _display_opt.Test(DisplayOption::ShowTownNames) && _game_mode != GameMode::Menu;
 	bool show_signs = _display_opt.Test(DisplayOption::ShowSigns) && !IsInvisibilitySet(TO_SIGNS);
 	bool show_competitors = _display_opt.Test(DisplayOption::ShowCompetitorSigns);
 
@@ -2286,7 +2286,7 @@ static bool CheckClickOnViewportSign(const Viewport &vp, int x, int y, const Vie
  */
 static bool CheckClickOnViewportSign(const Viewport &vp, int x, int y)
 {
-	if (_game_mode == GM_MENU) return false;
+	if (_game_mode == GameMode::Menu) return false;
 
 	x = ScaleByZoom(x - vp.left, vp.zoom) + vp.virtual_left;
 	y = ScaleByZoom(y - vp.top, vp.zoom) + vp.virtual_top;

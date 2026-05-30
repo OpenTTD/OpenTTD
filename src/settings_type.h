@@ -721,7 +721,7 @@ extern VehicleDefaultSettings _old_vds;
  */
 inline GameSettings &GetGameSettings()
 {
-	return (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
+	return (_game_mode == GameMode::Menu) ? _settings_newgame : _settings_game;
 }
 
 #endif /* SETTINGS_TYPE_H */

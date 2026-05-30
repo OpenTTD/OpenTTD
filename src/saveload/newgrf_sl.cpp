@@ -124,7 +124,7 @@ struct NGRFChunkHandler : ChunkHandler {
 	{
 		this->LoadCommon(_grfconfig);
 
-		if (_game_mode == GM_MENU) {
+		if (_game_mode == GameMode::Menu) {
 			/* Intro game must not have NewGRF. */
 			if (!_grfconfig.empty()) SlErrorCorrupt("The intro game must not use NewGRF");
 

@@ -141,7 +141,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		if (!_networking) Command<Commands::Pause>::Post(PauseMode::Normal, false); // unpause
-		if (_game_mode != GM_MENU && !_exit_game) ShowHighscoreTable(this->window_number, this->rank);
+		if (_game_mode != GameMode::Menu && !_exit_game) ShowHighscoreTable(this->window_number, this->rank);
 		this->EndGameHighScoreBaseWindow::Close();
 	}
 
@@ -177,7 +177,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		if (!_networking && !this->game_paused_by_player) Command<Commands::Pause>::Post(PauseMode::Normal, true);
 
 		/* Close all always on-top windows to get a clean screen */
-		if (_game_mode != GM_MENU) HideVitalWindows();
+		if (_game_mode != GameMode::Menu) HideVitalWindows();
 
 		MarkWholeScreenDirty();
 		this->window_number = difficulty; // show highscore chart for difficulty...
@@ -187,7 +187,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		if (_game_mode != GM_MENU && !_exit_game) ShowVitalWindows();
+		if (_game_mode != GameMode::Menu && !_exit_game) ShowVitalWindows();
 
 		if (!_networking && !this->game_paused_by_player) Command<Commands::Pause>::Post(PauseMode::Normal, false); // unpause
 

@@ -185,7 +185,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 
 	CloseWindowById(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
 
-	if (_game_mode != GM_MENU) _switch_mode = SM_MENU;
+	if (_game_mode != GameMode::Menu) _switch_mode = SM_MENU;
 	_networking = false;
 }
 
@@ -863,7 +863,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapDone(Packet &)
 	/* Set the abstract filetype. This is read during savegame load. */
 	_file_to_saveload.SetMode(FIOS_TYPE_FILE, SaveLoadOperation::Load);
 
-	bool load_success = SafeLoad({}, SaveLoadOperation::Load, DetailedFileType::GameFile, GM_NORMAL, Subdirectory::None, this->savegame);
+	bool load_success = SafeLoad({}, SaveLoadOperation::Load, DetailedFileType::GameFile, GameMode::Normal, Subdirectory::None, this->savegame);
 	this->savegame = nullptr;
 
 	/* Long savegame loads shouldn't affect the lag calculation! */

@@ -683,7 +683,7 @@ static WindowDesc _town_editor_view_desc(
 
 void ShowTownViewWindow(TownID town)
 {
-	if (_game_mode == GM_EDITOR) {
+	if (_game_mode == GameMode::Editor) {
 		AllocateWindowDescFront<TownViewWindow>(_town_editor_view_desc, town);
 	} else {
 		AllocateWindowDescFront<TownViewWindow>(_town_game_view_desc, town);
@@ -872,7 +872,7 @@ public:
 					assert(t->xy != INVALID_TILE);
 
 					/* Draw rating icon. */
-					if (_game_mode == GM_EDITOR || !t->have_ratings.Test(_local_company)) {
+					if (_game_mode == GameMode::Editor || !t->have_ratings.Test(_local_company)) {
 						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
 					} else {
 						SpriteID icon = SPR_TOWN_RATING_APPALLING;
@@ -1174,7 +1174,7 @@ public:
 
 	void OnInit() override
 	{
-		if (_game_mode == GM_EDITOR) return;
+		if (_game_mode == GameMode::Editor) return;
 
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_ACTION_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_EXPAND_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
@@ -1202,7 +1202,7 @@ public:
 
 	void UpdateButtons(bool check_availability)
 	{
-		if (check_availability && _game_mode != GM_EDITOR) {
+		if (check_availability && _game_mode != GameMode::Editor) {
 			if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT) this->town_layout = _settings_game.economy.town_layout;
 			this->ReInit();
 		}
@@ -1301,7 +1301,7 @@ public:
 
 				/* If we are in the editor, sync the settings of the current game to the chosen layout,
 				 * so that importing towns from file uses the selected layout. */
-				if (_game_mode == GM_EDITOR) _settings_game.economy.town_layout = this->town_layout;
+				if (_game_mode == GameMode::Editor) _settings_game.economy.town_layout = this->town_layout;
 
 				this->UpdateButtons(false);
 				break;
@@ -1357,7 +1357,7 @@ static WindowDesc _found_town_desc(
 
 void ShowFoundTownWindow()
 {
-	if (_game_mode != GM_EDITOR && !Company::IsValidID(_local_company)) return;
+	if (_game_mode != GameMode::Editor && !Company::IsValidID(_local_company)) return;
 	AllocateWindowDescFront<FoundTownWindow>(_found_town_desc, 0);
 }
 

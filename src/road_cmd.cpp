@@ -254,7 +254,7 @@ static Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
  */
 CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadTramType rtt, DoCommandFlags flags, bool town_check)
 {
-	if (_game_mode == GM_EDITOR || remove.None()) return CommandCost();
+	if (_game_mode == GameMode::Editor || remove.None()) return CommandCost();
 
 	/* Water can always flood and towns can always remove "normal" road pieces.
 	 * Towns are not be allowed to remove non "normal" road pieces, like tram
@@ -1787,7 +1787,7 @@ static void DrawTile_Road(TileInfo *ti)
 			DrawRoadOverlays(ti, pal, road_rti, tram_rti, to_underlying(axis), to_underlying(axis));
 
 			/* Draw rail/PBS overlay */
-			bool draw_pbs = _game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile);
+			bool draw_pbs = _game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile);
 			if (rti->UsesOverlay()) {
 				pal = draw_pbs ? PALETTE_CRASH : PAL_NONE;
 				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Crossing) + to_underlying(axis);

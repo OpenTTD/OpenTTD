@@ -21,7 +21,7 @@
 {
 	assert(company < MAX_COMPANIES);
 
-	if (source == ScriptSettingSource::Default && _game_mode == GM_MENU) source = ScriptSettingSource::ForceNewGame;
+	if (source == ScriptSettingSource::Default && _game_mode == GameMode::Menu) source = ScriptSettingSource::ForceNewGame;
 
 	if (source == ScriptSettingSource::Default) {
 		Company *c = Company::GetIfValid(company);

@@ -47,7 +47,7 @@
 void ShowNewGRFError()
 {
 	/* Do not show errors when entering the main screen */
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GameMode::Menu) return;
 
 	for (const auto &c : _grfconfig) {
 		/* Only show Fatal and Error level messages */

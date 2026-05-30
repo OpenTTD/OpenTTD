@@ -820,7 +820,7 @@ bool NetworkClientConnectGame(std::string_view connection_string, CompanyID defa
 	_network_join.company = join_as;
 	_network_join.server_password = join_server_password;
 
-	if (_game_mode == GM_MENU) {
+	if (_game_mode == GameMode::Menu) {
 		/* From the menu we can immediately continue with the actual join. */
 		NetworkClientJoinGame();
 	} else {
