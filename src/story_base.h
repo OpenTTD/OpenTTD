@@ -38,12 +38,13 @@ enum StoryPageElementType : uint8_t {
 };
 
 /** Flags available for buttons */
-enum StoryPageButtonFlags : uint8_t {
-	SPBF_NONE        = 0,
-	SPBF_FLOAT_LEFT  = 1 << 0,
-	SPBF_FLOAT_RIGHT = 1 << 1,
+enum class StoryPageButtonFlag : uint8_t {
+	FloatLeft, ///< Button will float on the left.
+	FloatRight, ///< Button will float on the right.
 };
-DECLARE_ENUM_AS_BIT_SET(StoryPageButtonFlags)
+
+/** Bitset of \c StoryPageButtonFlag elements. */
+using StoryPageButtonFlags = EnumBitSet<StoryPageButtonFlag, uint8_t>;
 
 /** Mouse cursors usable by story page buttons. */
 enum StoryPageButtonCursor : uint8_t {

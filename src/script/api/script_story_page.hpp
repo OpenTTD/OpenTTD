@@ -63,9 +63,9 @@ public:
 	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
 	 */
 	enum StoryPageButtonFlags : uint8_t {
-		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
-		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
-		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
+		SPBF_NONE = ::StoryPageButtonFlags{}.base(), ///< No special formatting for button.
+		SPBF_FLOAT_LEFT = ::StoryPageButtonFlags{StoryPageButtonFlag::FloatLeft}.base(), ///< Button is placed to the left of the following paragraph.
+		SPBF_FLOAT_RIGHT = ::StoryPageButtonFlags{StoryPageButtonFlag::FloatRight}.base(), ///< Button is placed to the right of the following paragraph.
 	};
 
 	/**
