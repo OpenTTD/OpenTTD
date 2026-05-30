@@ -26,15 +26,14 @@ extern uint32_t _story_page_element_next_sort_value;
 extern uint32_t _story_page_next_sort_value;
 
 /** Each story page element is one of these types. */
-enum StoryPageElementType : uint8_t {
-	SPET_TEXT = 0,       ///< A text element.
-	SPET_LOCATION,       ///< An element that references a tile along with a one-line text.
-	SPET_GOAL,           ///< An element that references a goal.
-	SPET_BUTTON_PUSH,    ///< A push button that triggers an immediate event.
-	SPET_BUTTON_TILE,    ///< A button that allows the player to select a tile, and triggers an event with the tile.
-	SPET_BUTTON_VEHICLE, ///< A button that allows the player to select a vehicle, and triggers an event with the vehicle.
-	SPET_END,
-	INVALID_SPET = 0xFF,
+enum class StoryPageElementType : uint8_t {
+	Text = 0, ///< A text element.
+	Location, ///< An element that references a tile along with a one-line text.
+	Goal, ///< An element that references a goal.
+	ButtonPush, ///< A push button that triggers an immediate event.
+	ButtonTile, ///< A button that allows the player to select a tile, and triggers an event with the tile.
+	ButtonVehicle, ///< A button that allows the player to select a vehicle, and triggers an event with the vehicle.
+	Invalid = 0xFF, ///< Invalid story page element type.
 };
 
 /** Flags available for buttons */

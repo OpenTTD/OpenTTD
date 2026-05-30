@@ -297,17 +297,17 @@ protected:
 	 * Decides which sprite to display for a given page element.
 	 * @param pe The page element.
 	 * @return The SpriteID of the sprite to display.
-	 * @pre pe.type must be SPET_GOAL or SPET_LOCATION.
+	 * @pre pe.type must be StoryPageElementType::Goal or StoryPageElementType::Location.
 	 */
 	SpriteID GetPageElementSprite(const StoryPageElement &pe) const
 	{
 		switch (pe.type) {
-			case SPET_GOAL: {
+			case StoryPageElementType::Goal: {
 				Goal *g = Goal::Get((GoalID) pe.referenced_id);
 				if (g == nullptr) return SPR_IMG_GOAL_BROKEN_REF;
 				return g->completed ? SPR_IMG_GOAL_COMPLETED : SPR_IMG_GOAL;
 			}
-			case SPET_LOCATION:
+			case StoryPageElementType::Location:
 				return SPR_IMG_VIEW_LOCATION;
 			default:
 				NOT_REACHED();
@@ -323,18 +323,18 @@ protected:
 	uint GetPageElementHeight(const StoryPageElement &pe, int max_width) const
 	{
 		switch (pe.type) {
-			case SPET_TEXT:
+			case StoryPageElementType::Text:
 				return GetStringHeight(pe.text.GetDecodedString(), max_width);
 
-			case SPET_GOAL:
-			case SPET_LOCATION: {
+			case StoryPageElementType::Goal:
+			case StoryPageElementType::Location: {
 				Dimension sprite_dim = GetSpriteSize(GetPageElementSprite(pe));
 				return sprite_dim.height;
 			}
 
-			case SPET_BUTTON_PUSH:
-			case SPET_BUTTON_TILE:
-			case SPET_BUTTON_VEHICLE: {
+			case StoryPageElementType::ButtonPush:
+			case StoryPageElementType::ButtonTile:
+			case StoryPageElementType::ButtonVehicle: {
 				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FontSize::Normal);
 				return dim.height + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
@@ -353,9 +353,9 @@ protected:
 	ElementFloat GetPageElementFloat(const StoryPageElement &pe) const
 	{
 		switch (pe.type) {
-			case SPET_BUTTON_PUSH:
-			case SPET_BUTTON_TILE:
-			case SPET_BUTTON_VEHICLE: {
+			case StoryPageElementType::ButtonPush:
+			case StoryPageElementType::ButtonTile:
+			case StoryPageElementType::ButtonVehicle: {
 				StoryPageButtonFlags flags = StoryPageButtonData{ pe.referenced_id }.GetFlags();
 				if (flags.Test(StoryPageButtonFlag::FloatLeft)) return ElementFloat::Left;
 				if (flags.Test(StoryPageButtonFlag::FloatRight)) return ElementFloat::Right;
@@ -375,9 +375,9 @@ protected:
 	int GetPageElementFloatWidth(const StoryPageElement &pe) const
 	{
 		switch (pe.type) {
-			case SPET_BUTTON_PUSH:
-			case SPET_BUTTON_TILE:
-			case SPET_BUTTON_VEHICLE: {
+			case StoryPageElementType::ButtonPush:
+			case StoryPageElementType::ButtonTile:
+			case StoryPageElementType::ButtonVehicle: {
 				Dimension dim = GetStringBoundingBox(pe.text.GetDecodedString(), FontSize::Normal);
 				return dim.width + WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.frametext.Vertical();
 			}
@@ -440,9 +440,9 @@ protected:
 				/* Check for button that needs extra margin */
 				if (left_offset == 0 && right_offset == 0) {
 					switch (pe->type) {
-						case SPET_BUTTON_PUSH:
-						case SPET_BUTTON_TILE:
-						case SPET_BUTTON_VEHICLE:
+						case StoryPageElementType::ButtonPush:
+						case StoryPageElementType::ButtonTile:
+						case StoryPageElementType::ButtonVehicle:
 							left_offset = right_offset = available_width / 5;
 							break;
 						default:
@@ -534,11 +534,11 @@ protected:
 	void OnPageElementClick(const StoryPageElement &pe)
 	{
 		switch (pe.type) {
-			case SPET_TEXT:
+			case StoryPageElementType::Text:
 				/* Do nothing. */
 				break;
 
-			case SPET_LOCATION:
+			case StoryPageElementType::Location:
 				if (_ctrl_pressed) {
 					ShowExtraViewportWindow((TileIndex)pe.referenced_id);
 				} else {
@@ -546,11 +546,11 @@ protected:
 				}
 				break;
 
-			case SPET_GOAL:
+			case StoryPageElementType::Goal:
 				ShowGoalsList(this->window_number);
 				break;
 
-			case SPET_BUTTON_PUSH:
+			case StoryPageElementType::ButtonPush:
 				if (this->active_button_id != StoryPageElementID::Invalid()) ResetObjectToPlace();
 				this->active_button_id = pe.index;
 				this->SetTimeout();
@@ -559,7 +559,7 @@ protected:
 				Command<Commands::StoryPageButton>::Post(TileIndex{}, pe.index, VehicleID::Invalid());
 				break;
 
-			case SPET_BUTTON_TILE:
+			case StoryPageElementType::ButtonTile:
 				if (this->active_button_id == pe.index) {
 					ResetObjectToPlace();
 					this->active_button_id = StoryPageElementID::Invalid();
@@ -571,7 +571,7 @@ protected:
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 				break;
 
-			case SPET_BUTTON_VEHICLE:
+			case StoryPageElementType::ButtonVehicle:
 				if (this->active_button_id == pe.index) {
 					ResetObjectToPlace();
 					this->active_button_id = StoryPageElementID::Invalid();
@@ -714,26 +714,26 @@ public:
 			if (y_offset > fr.bottom) return;
 
 			switch (ce.pe->type) {
-				case SPET_TEXT:
+				case StoryPageElementType::Text:
 					DrawStringMultiLineWithClipping(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos,
 						ce.pe->text.GetDecodedString(), TextColour::Black, SA_TOP | SA_LEFT);
 					break;
 
-				case SPET_GOAL: {
+				case StoryPageElementType::Goal: {
 					Goal *g = Goal::Get((GoalID) ce.pe->referenced_id);
 					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe),
 						g == nullptr ? GetString(STR_STORY_BOOK_INVALID_GOAL_REF) : g->text.GetDecodedString());
 					break;
 				}
 
-				case SPET_LOCATION:
+				case StoryPageElementType::Location:
 					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe),
 						ce.pe->text.GetDecodedString());
 					break;
 
-				case SPET_BUTTON_PUSH:
-				case SPET_BUTTON_TILE:
-				case SPET_BUTTON_VEHICLE: {
+				case StoryPageElementType::ButtonPush:
+				case StoryPageElementType::ButtonTile:
+				case StoryPageElementType::ButtonVehicle: {
 					const int tmargin = WidgetDimensions::scaled.bevel.top + WidgetDimensions::scaled.frametext.top;
 					const FrameFlags frame = this->active_button_id == ce.pe->index ? FrameFlag::Lowered : FrameFlags{};
 					const Colours bgcolour = StoryPageButtonData{ ce.pe->referenced_id }.GetColour();
@@ -894,7 +894,7 @@ public:
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
-		if (pe == nullptr || pe->type != SPET_BUTTON_TILE) {
+		if (pe == nullptr || pe->type != StoryPageElementType::ButtonTile) {
 			ResetObjectToPlace();
 			this->active_button_id = StoryPageElementID::Invalid();
 			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
@@ -908,7 +908,7 @@ public:
 	bool OnVehicleSelect(const Vehicle *v) override
 	{
 		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
-		if (pe == nullptr || pe->type != SPET_BUTTON_VEHICLE) {
+		if (pe == nullptr || pe->type != StoryPageElementType::ButtonVehicle) {
 			ResetObjectToPlace();
 			this->active_button_id = StoryPageElementID::Invalid();
 			this->SetWidgetDirty(WID_SB_PAGE_PANEL);

@@ -62,28 +62,28 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 	StoryPageButtonData button_data{ reference };
 
 	switch (type) {
-		case SPET_TEXT:
+		case StoryPageElementType::Text:
 			if (text.empty()) return false;
 			break;
-		case SPET_LOCATION:
+		case StoryPageElementType::Location:
 			if (text.empty()) return false;
 			if (!IsValidTile(tile)) return false;
 			break;
-		case SPET_GOAL:
+		case StoryPageElementType::Goal:
 			if (!Goal::IsValidID((GoalID)reference)) return false;
 			/* Reject company specific goals on global pages */
 			if (StoryPage::Get(page_id)->company == CompanyID::Invalid() && Goal::Get((GoalID)reference)->company != CompanyID::Invalid()) return false;
 			break;
-		case SPET_BUTTON_PUSH:
+		case StoryPageElementType::ButtonPush:
 			if (!button_data.ValidateColour()) return false;
 			if (!button_data.ValidateFlags()) return false;
 			return true;
-		case SPET_BUTTON_TILE:
+		case StoryPageElementType::ButtonTile:
 			if (!button_data.ValidateColour()) return false;
 			if (!button_data.ValidateFlags()) return false;
 			if (!button_data.ValidateCursor()) return false;
 			return true;
-		case SPET_BUTTON_VEHICLE:
+		case StoryPageElementType::ButtonVehicle:
 			if (!button_data.ValidateColour()) return false;
 			if (!button_data.ValidateFlags()) return false;
 			if (!button_data.ValidateCursor()) return false;
@@ -107,19 +107,19 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t reference, const EncodedString &text)
 {
 	switch (pe.type) {
-		case SPET_TEXT:
+		case StoryPageElementType::Text:
 			pe.text = text;
 			break;
-		case SPET_LOCATION:
+		case StoryPageElementType::Location:
 			pe.text = text;
 			pe.referenced_id = tile.base();
 			break;
-		case SPET_GOAL:
+		case StoryPageElementType::Goal:
 			pe.referenced_id = reference;
 			break;
-		case SPET_BUTTON_PUSH:
-		case SPET_BUTTON_TILE:
-		case SPET_BUTTON_VEHICLE:
+		case StoryPageElementType::ButtonPush:
+		case StoryPageElementType::ButtonTile:
+		case StoryPageElementType::ButtonVehicle:
 			pe.text = text;
 			pe.referenced_id = reference;
 			break;
@@ -486,15 +486,15 @@ CommandCost CmdStoryPageButton(DoCommandFlags flags, TileIndex tile, StoryPageEl
 	if (sp->company != CompanyID::Invalid() && sp->company != _current_company) return CMD_ERROR;
 
 	switch (pe->type) {
-		case SPET_BUTTON_PUSH:
+		case StoryPageElementType::ButtonPush:
 			/* No validation required */
 			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageButtonClick(_current_company, pe->page, page_element_id));
 			break;
-		case SPET_BUTTON_TILE:
+		case StoryPageElementType::ButtonTile:
 			if (!IsValidTile(tile)) return CMD_ERROR;
 			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageTileSelect(_current_company, pe->page, page_element_id, tile));
 			break;
-		case SPET_BUTTON_VEHICLE:
+		case StoryPageElementType::ButtonVehicle:
 			if (!Vehicle::IsValidID(reference)) return CMD_ERROR;
 			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageVehicleSelect(_current_company, pe->page, page_element_id, reference));
 			break;
