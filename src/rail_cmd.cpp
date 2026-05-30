@@ -2942,13 +2942,32 @@ static void ChangeTileOwner_Rail(TileIndex tile, Owner old_owner, Owner new_owne
 	}
 }
 
-static const uint8_t _fractcoords_behind[4] = { 0x8F, 0x8, 0x80, 0xF8 };
-static const uint8_t _fractcoords_enter[4] = { 0x8A, 0x48, 0x84, 0xA8 };
-static const int8_t _deltacoord_leaveoffset[8] = {
-	-1,  0,  1,  0, /* x */
-	 0,  1,  0, -1  /* y */
-};
+/** Coordinates to detect when a train is approaching a depot from behind for each depot direction. */
+static constexpr DiagDirectionIndexArray<Coord2D<uint8_t>> _fractcoords_behind{{{
+	{15, 8}, // NE
+	{8, 0}, // SE
+	{0, 8}, // SW
+	{8, 15}, // NW
+}}};
 
+/** Coordinates where a train should enter a depot for each depot direction. */
+static constexpr DiagDirectionIndexArray<Coord2D<uint8_t>> _fractcoords_enter{{{
+	{10, 8}, // NE
+	{8, 4}, // SE
+	{4, 8}, // SW
+	{8, 10}, // NW
+}}};
+
+/**
+ * Offsets (to be multiplied by length) from the depot enter coordinates where
+ * a train should appear when exiting a depot for each depot direction.
+ */
+static constexpr DiagDirectionIndexArray<Coord2D<int8_t>> _deltacoord_leaveoffset{{{
+	{-1, 0}, // NE
+	{0, 1}, // SE
+	{1, 0}, // SW
+	{0, -1}, // NW
+}}};
 
 /**
  * Compute number of ticks when next wagon will leave a depot.
@@ -2959,13 +2978,13 @@ static const int8_t _deltacoord_leaveoffset[8] = {
 int TicksToLeaveDepot(const Train *v)
 {
 	DiagDirection dir = GetRailDepotDirection(v->tile);
-	int length = v->CalcNextVehicleOffset();
+	int length = v->CalcNextVehicleOffset() + 1;
 
 	switch (dir) {
-		case DIAGDIR_NE: return  ((int)(v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) - (length + 1)));
-		case DIAGDIR_SE: return -((int)(v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   + (length + 1)));
-		case DIAGDIR_SW: return -((int)(v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) + (length + 1)));
-		case DIAGDIR_NW: return  ((int)(v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   - (length + 1)));
+		case DIAGDIR_NE: return  (static_cast<int>(v->x_pos & TILE_UNIT_MASK) - (_fractcoords_enter[dir].x - length));
+		case DIAGDIR_SE: return -(static_cast<int>(v->y_pos & TILE_UNIT_MASK) - (_fractcoords_enter[dir].y + length));
+		case DIAGDIR_SW: return -(static_cast<int>(v->x_pos & TILE_UNIT_MASK) - (_fractcoords_enter[dir].x + length));
+		case DIAGDIR_NW: return  (static_cast<int>(v->y_pos & TILE_UNIT_MASK) - (_fractcoords_enter[dir].y - length));
 		default: NOT_REACHED();
 	}
 }
@@ -2979,7 +2998,9 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
 	/* Depot direction. */
 	DiagDirection dir = GetRailDepotDirection(tile);
 
-	uint8_t fract_coord = (x & 0xF) + ((y & 0xF) << 4);
+	Coord2D<uint8_t> fract_coord{
+		static_cast<uint8_t>(x & TILE_UNIT_MASK),
+		static_cast<uint8_t>(y & TILE_UNIT_MASK)};
 
 	/* Make sure a train is not entering the tile from behind. */
 	if (_fractcoords_behind[dir] == fract_coord) return VehicleEnterTileState::CannotEnter;
@@ -2987,13 +3008,11 @@ static VehicleEnterTileStates VehicleEnterTile_Rail(Vehicle *v, TileIndex tile, 
 	/* Leaving depot? */
 	if (v->GetMovingDirection() == DiagDirToDir(dir)) {
 		/* Calculate the point where the following wagon should be activated. */
-		int length = Train::From(v)->CalcNextVehicleOffset();
+		int length = Train::From(v)->CalcNextVehicleOffset() + 1;
 
-		uint8_t fract_coord_leave =
-			((_fractcoords_enter[dir] & 0x0F) + // x
-				(length + 1) * _deltacoord_leaveoffset[dir]) +
-			(((_fractcoords_enter[dir] >> 4) +  // y
-				((length + 1) * _deltacoord_leaveoffset[dir + 4])) << 4);
+		Coord2D<uint8_t> fract_coord_leave{
+			static_cast<uint8_t>(_fractcoords_enter[dir].x + length * _deltacoord_leaveoffset[dir].x),
+			static_cast<uint8_t>(_fractcoords_enter[dir].y + length * _deltacoord_leaveoffset[dir].y)};
 
 		if (fract_coord_leave == fract_coord) {
 			/* Leave the depot. */
