@@ -1889,7 +1889,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	 * if _settings_client.gui.loading_indicators == 1, _local_company must be the owner or must be a spectator to show ind., so 1 > 0
 	 * if _settings_client.gui.loading_indicators == 0, do not display indicators ... 0 is never greater than anything
 	 */
-	if (_game_mode != GM_MENU && (_settings_client.gui.loading_indicators > (uint)(front->owner != _local_company && _local_company != COMPANY_SPECTATOR))) {
+	if (_game_mode != GameMode::Menu && (_settings_client.gui.loading_indicators > (uint)(front->owner != _local_company && _local_company != COMPANY_SPECTATOR))) {
 		StringID percent_up_down = STR_NULL;
 		int percent = CalcPercentVehicleFilled(front, &percent_up_down);
 		if (front->fill_percent_te_id == INVALID_TE_ID) {

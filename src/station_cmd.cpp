@@ -3439,7 +3439,7 @@ static void DrawTile_Station(TileInfo *ti)
 			DrawGroundSprite(image, PAL_NONE);
 			DrawGroundSprite(ground + overlay_offset, PAL_NONE);
 
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationReservation(ti->tile)) {
+			if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasStationReservation(ti->tile)) {
 				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
 				DrawGroundSprite(overlay + overlay_offset, PALETTE_CRASH);
 			}
@@ -3449,7 +3449,7 @@ static void DrawTile_Station(TileInfo *ti)
 			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 
 			/* PBS debugging, draw reserved tracks darker */
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationRail(ti->tile) && HasStationReservation(ti->tile)) {
+			if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasStationRail(ti->tile) && HasStationReservation(ti->tile)) {
 				DrawGroundSprite(GetRailStationAxis(ti->tile) == Axis::X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH);
 			}
 		}
@@ -4355,7 +4355,7 @@ static void StationHandleSmallTick(BaseStation *st)
 
 void OnTick_Station()
 {
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GameMode::Editor) return;
 
 	for (BaseStation *st : BaseStation::Iterate()) {
 		StationHandleSmallTick(st);

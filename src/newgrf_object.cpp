@@ -78,7 +78,7 @@ size_t ObjectSpec::Count()
 bool ObjectSpec::IsEverAvailable() const
 {
 	return this->IsEnabled() && this->climate.Test(_settings_game.game_creation.landscape) &&
-			!this->flags.Test((_game_mode != GM_EDITOR && !_generating_world) ? ObjectFlag::OnlyInScenedit : ObjectFlag::OnlyInGame);
+			!this->flags.Test((_game_mode != GameMode::Editor && !_generating_world) ? ObjectFlag::OnlyInScenedit : ObjectFlag::OnlyInGame);
 }
 
 /**

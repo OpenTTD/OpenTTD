@@ -246,7 +246,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd)
 {
 	if (sd->flags.Test(SettingFlag::PerCompany)) {
-		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
+		if (Company::IsValidID(_local_company) && _game_mode != GameMode::Menu) {
 			return &Company::Get(_local_company)->settings;
 		}
 		return &_settings_client.company;

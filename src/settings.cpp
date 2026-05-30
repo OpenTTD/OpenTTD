@@ -896,12 +896,12 @@ bool SettingDesc::IsEditable(bool do_command) const
 {
 	if (!do_command && !this->flags.Test(SettingFlag::NoNetworkSync) && _networking && !_network_server && !this->flags.Test(SettingFlag::PerCompany)) return false;
 	if (do_command && this->flags.Test(SettingFlag::NoNetworkSync)) return false;
-	if (this->flags.Test(SettingFlag::NetworkOnly) && !_networking && _game_mode != GM_MENU) return false;
+	if (this->flags.Test(SettingFlag::NetworkOnly) && !_networking && _game_mode != GameMode::Menu) return false;
 	if (this->flags.Test(SettingFlag::NoNetwork) && _networking) return false;
 	if (this->flags.Test(SettingFlag::NewgameOnly) &&
-			(_game_mode == GM_NORMAL ||
-			(_game_mode == GM_EDITOR && !this->flags.Test(SettingFlag::SceneditToo)))) return false;
-	if (this->flags.Test(SettingFlag::SceneditOnly) && _game_mode != GM_EDITOR) return false;
+			(_game_mode == GameMode::Normal ||
+			(_game_mode == GameMode::Editor && !this->flags.Test(SettingFlag::SceneditToo)))) return false;
+	if (this->flags.Test(SettingFlag::SceneditOnly) && _game_mode != GameMode::Editor) return false;
 	return true;
 }
 
@@ -1824,7 +1824,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 {
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if (setting->flags.Test(SettingFlag::PerCompany)) {
-		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
+		if (Company::IsValidID(_local_company) && _game_mode != GameMode::Menu) {
 			return Command<Commands::ChangeCompanySetting>::Post(setting->GetName(), value);
 		}
 
@@ -1837,7 +1837,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame
 	 * of settings because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
 	if (setting->flags.Test(SettingFlag::NoNetworkSync)) {
-		if (_game_mode != GM_MENU) {
+		if (_game_mode != GameMode::Menu) {
 			setting->ChangeValue(&_settings_newgame, value);
 		}
 		setting->ChangeValue(&GetGameSettings(), value);
@@ -1906,7 +1906,7 @@ bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool f
 		value = {};
 	}
 
-	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
+	const void *object = (_game_mode == GameMode::Menu || force_newgame) ? &_settings_newgame : &_settings_game;
 	sd->AsStringSetting()->ChangeValue(object, std::string{value});
 	return true;
 }
@@ -1983,7 +1983,7 @@ void IConsoleGetSetting(std::string_view name, bool force_newgame)
 		return;
 	}
 
-	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
+	const void *object = (_game_mode == GameMode::Menu || force_newgame) ? &_settings_newgame : &_settings_game;
 
 	if (sd->IsStringSetting()) {
 		IConsolePrint(CC_INFO, "Current value for '{}' is '{}'.", sd->GetName(), sd->AsStringSetting()->Read(object));

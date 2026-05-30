@@ -165,7 +165,7 @@ public:
 		BaseGraphics::FindSets();
 
 		/* And continue going into the menu. */
-		_game_mode = GM_MENU;
+		_game_mode = GameMode::Menu;
 
 		/* _exit_game is used to break out of the outer video driver's MainLoop. */
 		_exit_game = true;
@@ -373,7 +373,7 @@ bool HandleBootstrap()
 	if (!_network_available) goto failure;
 
 	/* First tell the game we're bootstrapping. */
-	_game_mode = GM_BOOTSTRAP;
+	_game_mode = GameMode::Bootstrap;
 
 #if defined(__EMSCRIPTEN__)
 	new BootstrapEmscripten();
@@ -402,16 +402,16 @@ bool HandleBootstrap()
 	VideoDriver::GetInstance()->MainLoop();
 
 	/* _exit_game is used to get out of the video driver's main loop.
-	 * In case GM_BOOTSTRAP is still set we did not exit it via the
+	 * In case GameMode::Bootstrap is still set we did not exit it via the
 	 * "download complete" event, so it was a manual exit. Obey it. */
-	_exit_game = _game_mode == GM_BOOTSTRAP;
+	_exit_game = _game_mode == GameMode::Bootstrap;
 	if (_exit_game) return false;
 
 	/* Try to probe the graphics. Should work this time. */
 	if (!BaseGraphics::SetSet(nullptr)) goto failure;
 
 	/* Finally we can continue heading for the menu. */
-	_game_mode = GM_MENU;
+	_game_mode = GameMode::Menu;
 	return true;
 #endif
 

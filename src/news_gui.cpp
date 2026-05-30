@@ -916,7 +916,7 @@ std::string NewsItem::GetStatusText() const
  */
 void AddNewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
 {
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GameMode::Menu) return;
 
 	/* Create new news item node */
 	_news.emplace_front(std::move(headline), type, style, flags, ref1, ref2, std::move(data), advice_type);

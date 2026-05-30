@@ -369,7 +369,7 @@ public:
 	 */
 	static EventState BuildObjectGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+		if (_game_mode == GameMode::Menu) return ES_NOT_HANDLED;
 		Window *w = ShowBuildObjectPicker();
 		if (w == nullptr) return ES_NOT_HANDLED;
 		return w->OnHotkey(hotkey);

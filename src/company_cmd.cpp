@@ -649,7 +649,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 
 /** Start a new competitor company if possible. */
 TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::CompetitorTimeout, 0 }, []() {
-	if (_game_mode == GM_MENU || !AI::CanStartNew()) return;
+	if (_game_mode == GameMode::Menu || !AI::CanStartNew()) return;
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 	if (_settings_game.difficulty.competitors_interval == 0) return;
 
@@ -762,7 +762,7 @@ static void HandleBankruptcyTakeover(Company *c)
 /** Called every tick for updating some company info. */
 void OnTick_Companies()
 {
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GameMode::Editor) return;
 
 	Company *c = Company::GetIfValid(_cur_company_tick_index);
 	if (c != nullptr) {
@@ -770,7 +770,7 @@ void OnTick_Companies()
 		if (c->bankrupt_asked.Any()) HandleBankruptcyTakeover(c);
 	}
 
-	if (_new_competitor_timeout.HasFired() && _game_mode != GM_MENU && AI::CanStartNew()) {
+	if (_new_competitor_timeout.HasFired() && _game_mode != GameMode::Menu && AI::CanStartNew()) {
 		int32_t timeout = _settings_game.difficulty.competitors_interval * 60 * Ticks::TICKS_PER_SECOND;
 		/* If the interval is zero, start as many competitors as needed then check every ~10 minutes if a company went bankrupt and needs replacing. */
 		if (timeout == 0) {

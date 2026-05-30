@@ -501,7 +501,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 	if (start_tile >= Map::Size() || !IsValidWaterClass(wc)) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
-	if (wc != WaterClass::Canal && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (wc != WaterClass::Canal && _game_mode != GameMode::Editor) return CMD_ERROR;
 
 	CommandCost cost(ExpensesType::Construction);
 
@@ -518,7 +518,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 		bool water = IsWaterTile(current_tile);
 
 		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
-		if (water && IsCanal(current_tile) && _game_mode != GM_EDITOR && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
+		if (water && IsCanal(current_tile) && _game_mode != GameMode::Editor && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
 		ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
 		if (ret.Failed()) return ret;
@@ -537,7 +537,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 			switch (wc) {
 				case WaterClass::River:
 					MakeRiver(current_tile, Random());
-					if (_game_mode == GM_EDITOR) {
+					if (_game_mode == GameMode::Editor) {
 						/* Remove desert directly around the river tile. */
 						for (auto t : SpiralTileSequence(current_tile, RIVER_OFFSET_DESERT_DISTANCE)) {
 							if (GetTropicZone(t) == TropicZone::Desert) SetTropicZone(t, TropicZone::Normal);

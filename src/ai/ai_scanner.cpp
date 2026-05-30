@@ -53,7 +53,7 @@ void AIScannerInfo::RegisterAPI(class Squirrel &engine)
 
 AIInfo *AIScannerInfo::SelectRandomAI() const
 {
-	if (_game_mode == GM_MENU) {
+	if (_game_mode == GameMode::Menu) {
 		Debug(script, 0, "The intro game should not use AI, loading 'dummy' AI.");
 		return this->info_dummy.get();
 	}

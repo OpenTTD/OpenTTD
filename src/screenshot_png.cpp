@@ -85,7 +85,7 @@ public:
 		message.reserve(1024);
 		format_append(message, "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, fmt::join(BaseGraphics::GetUsedSet()->version, "."));
 		message += "NewGRFs:\n";
-		if (_game_mode != GM_MENU) {
+		if (_game_mode != GameMode::Menu) {
 			for (const auto &c : _grfconfig) {
 				format_append(message, "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
 			}

@@ -93,7 +93,7 @@ void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigge
 template <>
 bool TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed)
 {
-	if (_game_mode == GM_MENU) return false;
+	if (_game_mode == GameMode::Menu) return false;
 
 	/* If calendar day progress is frozen, don't try to advance time. */
 	if (_settings_game.economy.minutes_per_calendar_year == CalendarTime::FROZEN_MINUTES_PER_YEAR) return false;

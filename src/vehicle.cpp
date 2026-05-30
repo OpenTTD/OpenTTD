@@ -936,7 +936,7 @@ static void VehicleEnteredDepotThisTick(Vehicle *v)
  */
 void RunVehicleCalendarDayProc()
 {
-	if (_game_mode != GM_NORMAL) return;
+	if (_game_mode != GameMode::Normal) return;
 
 	/* Run the calendar day proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
 	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
@@ -953,7 +953,7 @@ void RunVehicleCalendarDayProc()
  */
 static void RunEconomyVehicleDayProc()
 {
-	if (_game_mode != GM_NORMAL) return;
+	if (_game_mode != GameMode::Normal) return;
 
 	/* Run the economy day proc for every DAY_TICKS vehicle starting at TimerGameEconomy::date_fract. */
 	for (size_t i = TimerGameEconomy::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
@@ -1318,7 +1318,7 @@ static const uint8_t _breakdown_chance[64] = {
 void CheckVehicleBreakdown(Vehicle *v)
 {
 	/* Vehicles in the menu don't break down. */
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GameMode::Menu) return;
 
 	/* If both breakdowns and automatic servicing are disabled, we don't decrease reliability or break down. */
 	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::None && _settings_game.order.no_servicing_if_no_breakdowns) return;

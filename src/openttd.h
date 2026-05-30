@@ -15,11 +15,11 @@
 #include "core/enum_type.hpp"
 
 /** Mode which defines the state of the game. */
-enum GameMode : uint8_t {
-	GM_MENU,
-	GM_NORMAL,
-	GM_EDITOR,
-	GM_BOOTSTRAP
+enum class GameMode : uint8_t {
+	Menu, ///< In the main menu.
+	Normal, ///< Playing a game.
+	Editor, ///< In the scenario editor.
+	Bootstrap, ///< In the content bootstrap process.
 };
 
 /** Mode which defines what mode we're switching to. */

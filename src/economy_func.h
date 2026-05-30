@@ -78,7 +78,7 @@ static uint ScaleByInverseCargoScale(uint num, bool town)
 inline uint ScaleByCargoScale(uint num, bool town)
 {
 	/* Don't bother scaling in the menu, especially since settings don't exist when starting OpenTTD and trying to read them crashes the game. */
-	if (_game_mode == GM_MENU) return num;
+	if (_game_mode == GameMode::Menu) return num;
 
 	if (num == 0) return num;
 

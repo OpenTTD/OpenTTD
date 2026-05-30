@@ -827,7 +827,7 @@ bool AfterLoadGame()
 	ClearOldOrders();
 
 	/* make sure there is a town in the game */
-	if (_game_mode == GM_NORMAL && Town::GetNumItems() == 0) {
+	if (_game_mode == GameMode::Normal && Town::GetNumItems() == 0) {
 		SetSaveLoadError(STR_ERROR_NO_TOWN_IN_SCENARIO);
 		/* Restore the signals */
 		ResetSignalHandlers();

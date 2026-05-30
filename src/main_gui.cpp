@@ -143,7 +143,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 {
 	assert(w != nullptr);
 
-	if (_game_mode != GM_MENU) {
+	if (_game_mode != GameMode::Menu) {
 		if ((in && w->viewport->zoom <= _settings_client.gui.zoom_min) || (!in && w->viewport->zoom >= _settings_client.gui.zoom_max)) return;
 
 		Point pt = GetTileZoomCenterWindow(in, w);
@@ -157,7 +157,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 void FixTitleGameZoom(int zoom_adjust)
 {
-	if (_game_mode != GM_MENU) return;
+	if (_game_mode != GameMode::Menu) return;
 
 	Viewport &vp = *GetMainWindow()->viewport;
 
@@ -256,7 +256,7 @@ struct MainWindow : Window
 	void OnPaint() override
 	{
 		this->DrawWidgets();
-		if (_game_mode == GM_MENU) {
+		if (_game_mode == GameMode::Menu) {
 			static const std::initializer_list<SpriteID> title_sprites = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
 			uint letter_spacing = ScaleGUITrad(10);
 			int name_width = static_cast<int>(std::size(title_sprites) - 1) * letter_spacing;
@@ -292,7 +292,7 @@ struct MainWindow : Window
 		switch (hotkey) {
 			case GHK_ABANDON:
 				/* No point returning from the main menu to itself */
-				if (_game_mode == GM_MENU) return ES_HANDLED;
+				if (_game_mode == GameMode::Menu) return ES_HANDLED;
 				if (_settings_client.gui.autosave_on_exit) {
 					DoExitSave();
 					_switch_mode = SM_MENU;
@@ -318,7 +318,7 @@ struct MainWindow : Window
 				return ES_HANDLED;
 		}
 
-		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+		if (_game_mode == GameMode::Menu) return ES_NOT_HANDLED;
 
 		switch (hotkey) {
 			case GHK_CENTER:
@@ -566,12 +566,12 @@ void SetupColoursAndInitialWindow()
 	/* XXX: these are not done */
 	switch (_game_mode) {
 		default: NOT_REACHED();
-		case GM_MENU:
+		case GameMode::Menu:
 			ShowSelectGameWindow();
 			break;
 
-		case GM_NORMAL:
-		case GM_EDITOR:
+		case GameMode::Normal:
+		case GameMode::Editor:
 			ShowVitalWindows();
 			break;
 	}
@@ -585,7 +585,7 @@ void ShowVitalWindows()
 	AllocateToolbar();
 
 	/* Status bad only for normal games */
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GameMode::Editor) return;
 
 	ShowStatusBar();
 }

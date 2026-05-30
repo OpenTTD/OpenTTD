@@ -477,7 +477,7 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: { // Setup currencies dropdown
 				*selected_index = this->opt->locale.currency;
-				uint64_t disabled = _game_mode == GM_MENU ? 0LL : ~GetMaskOfAllowedCurrencies();
+				uint64_t disabled = _game_mode == GameMode::Menu ? 0LL : ~GetMaskOfAllowedCurrencies();
 
 				/* Add non-custom currencies; sorted naturally */
 				for (const CurrencySpec &currency : _currency_specs) {
@@ -581,8 +581,8 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_TYPE_DROPDOWN:
 				list.push_back(MakeDropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL));
-				list.push_back(MakeDropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME));
-				list.push_back(MakeDropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY));
+				list.push_back(MakeDropDownListStringItem(_game_mode == GameMode::Menu ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME));
+				list.push_back(MakeDropDownListStringItem(_game_mode == GameMode::Menu ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY));
 				list.push_back(MakeDropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT));
 				break;
 		}
@@ -641,10 +641,10 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_TYPE_DROPDOWN:
 				switch (this->filter.type) {
-					case ST_GAME:    return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
-					case ST_COMPANY: return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
-					case ST_CLIENT:  return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
-					default:         return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
+					case ST_GAME: return GetString(_game_mode == GameMode::Menu ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
+					case ST_COMPANY: return GetString(_game_mode == GameMode::Menu ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
+					case ST_CLIENT: return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
+					default: return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
 				}
 				break;
 
@@ -725,9 +725,9 @@ struct GameOptionsWindow : Window {
 					Rect tr = r;
 					std::string str;
 					switch (sd->GetType()) {
-						case ST_COMPANY: str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME); break;
-						case ST_CLIENT:  str = GetString(STR_CONFIG_SETTING_TYPE, STR_CONFIG_SETTING_TYPE_CLIENT); break;
-						case ST_GAME:    str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME); break;
+						case ST_COMPANY: str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GameMode::Menu ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME); break;
+						case ST_CLIENT: str = GetString(STR_CONFIG_SETTING_TYPE, STR_CONFIG_SETTING_TYPE_CLIENT); break;
+						case ST_GAME: str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GameMode::Menu ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME); break;
 						default: NOT_REACHED();
 					}
 					DrawString(tr, str);
@@ -1100,8 +1100,8 @@ struct GameOptionsWindow : Window {
 				if (used_set == nullptr || !used_set->IsConfigurable()) break;
 				GRFConfig &extra_cfg = used_set->GetOrCreateExtraConfig();
 				if (extra_cfg.param.empty()) extra_cfg.SetParameterDefaults();
-				OpenGRFParameterWindow(true, extra_cfg, _game_mode == GM_MENU);
-				if (_game_mode == GM_MENU) this->reload = true;
+				OpenGRFParameterWindow(true, extra_cfg, _game_mode == GameMode::Menu);
+				if (_game_mode == GameMode::Menu) this->reload = true;
 				break;
 			}
 
@@ -1462,7 +1462,7 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_BASE_GRF_DROPDOWN:
-				if (_game_mode == GM_MENU) {
+				if (_game_mode == GameMode::Menu) {
 					CloseWindowByClass(WindowClass::NewGRFParameters);
 					auto set = BaseGraphics::GetSet(index);
 					BaseGraphics::SetSet(set);
@@ -1558,7 +1558,7 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetDisabledState(WID_GO_GUI_FONT_AA, _fcsettings.prefer_sprite);
 #endif /* HAS_TRUETYPE_FONT */
 
-		this->SetWidgetDisabledState(WID_GO_BASE_GRF_DROPDOWN, _game_mode != GM_MENU);
+		this->SetWidgetDisabledState(WID_GO_BASE_GRF_DROPDOWN, _game_mode != GameMode::Menu);
 
 		this->SetWidgetDisabledState(WID_GO_BASE_GRF_PARAMETERS, BaseGraphics::GetUsedSet() == nullptr || !BaseGraphics::GetUsedSet()->IsConfigurable());
 

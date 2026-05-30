@@ -206,7 +206,7 @@ static std::string FiosMakeFilename(const std::string *path, std::string_view na
  */
 std::string FiosMakeSavegameName(std::string_view name)
 {
-	std::string_view extension = (_game_mode == GM_EDITOR) ? ".scn" : ".sav";
+	std::string_view extension = (_game_mode == GameMode::Editor) ? ".scn" : ".sav";
 
 	return FiosMakeFilename(_fios_path, name, extension);
 }

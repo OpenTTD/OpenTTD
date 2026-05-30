@@ -225,7 +225,7 @@ void VideoDriver_Dedicated::MainLoop()
 
 #if defined(UNIX)
 		if (_dedicated_exit_requested) {
-			if (_game_mode == GM_NORMAL && _settings_client.gui.autosave_on_exit) DoExitSave();
+			if (_game_mode == GameMode::Normal && _settings_client.gui.autosave_on_exit) DoExitSave();
 			_exit_game = true;
 		}
 #endif

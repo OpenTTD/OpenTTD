@@ -213,11 +213,11 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 	if (type >= ObjectSpec::Count()) return CMD_ERROR;
 	const ObjectSpec *spec = ObjectSpec::Get(type);
-	if (_game_mode == GM_NORMAL && !spec->IsAvailable() && !_generating_world) return CMD_ERROR;
-	if ((_game_mode == GM_EDITOR || _generating_world) && !spec->WasEverAvailable()) return CMD_ERROR;
+	if (_game_mode == GameMode::Normal && !spec->IsAvailable() && !_generating_world) return CMD_ERROR;
+	if ((_game_mode == GameMode::Editor || _generating_world) && !spec->WasEverAvailable()) return CMD_ERROR;
 
-	if (spec->flags.Test(ObjectFlag::OnlyInScenedit) && ((!_generating_world && _game_mode != GM_EDITOR) || _current_company != OWNER_NONE)) return CMD_ERROR;
-	if (spec->flags.Test(ObjectFlag::OnlyInGame) && (_generating_world || _game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
+	if (spec->flags.Test(ObjectFlag::OnlyInScenedit) && ((!_generating_world && _game_mode != GameMode::Editor) || _current_company != OWNER_NONE)) return CMD_ERROR;
+	if (spec->flags.Test(ObjectFlag::OnlyInGame) && (_generating_world || _game_mode != GameMode::Normal || _current_company > MAX_COMPANIES)) return CMD_ERROR;
 	if (view >= spec->views) return CMD_ERROR;
 
 	if (!Object::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_OBJECTS);
@@ -564,7 +564,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 		} else if (!spec->flags.Test(ObjectFlag::Autoremove) && flags.Test(DoCommandFlag::Auto)) {
 			/* No automatic removal by overbuilding stuff. */
 			return CommandCost(type == OBJECT_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
-		} else if (_game_mode == GM_EDITOR) {
+		} else if (_game_mode == GameMode::Editor) {
 			/* No further limitations for the editor. */
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
 			/* Owned by nobody and unremovable, so we can only remove it with brute force! */

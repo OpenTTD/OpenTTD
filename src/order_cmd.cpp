@@ -1877,7 +1877,7 @@ uint16_t GetServiceIntervalClamped(int interval, bool ispercent)
 	if (ispercent) return Clamp(interval, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT);
 
 	/* Service intervals are in minutes. */
-	if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) return Clamp(interval, MIN_SERVINT_MINUTES, MAX_SERVINT_MINUTES);
+	if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GameMode::Menu)) return Clamp(interval, MIN_SERVINT_MINUTES, MAX_SERVINT_MINUTES);
 
 	/* Service intervals are in days. */
 	return Clamp(interval, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);

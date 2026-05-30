@@ -11,6 +11,7 @@
 #define GAMELOG_INTERNAL_H
 
 #include "gamelog.h"
+#include "openttd.h"
 #include "landscape_type.h"
 
 /**
@@ -45,13 +46,21 @@ struct LoggedChange {
 	GamelogChangeType ct{};
 };
 
+/** Log element for the change of the game mode and landscape. */
 struct LoggedChangeMode : LoggedChange {
+	/** Constructor for savegame loading. */
 	LoggedChangeMode() : LoggedChange(GLCT_MODE) {}
-	LoggedChangeMode(uint8_t mode, LandscapeType landscape) :
+
+	/**
+	 * Create the log for changing the game mode.
+	 * @param mode The new GameMode.
+	 * @param landscape The new landscape.
+	 */
+	LoggedChangeMode(GameMode mode, LandscapeType landscape) :
 		LoggedChange(GLCT_MODE), mode(mode), landscape(landscape) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
-	uint8_t mode = 0; ///< new game mode - Editor x Game
+	GameMode mode{}; ///< new game mode - Editor x Game
 	LandscapeType landscape{}; ///< landscape (temperate, arctic, ...)
 };
 

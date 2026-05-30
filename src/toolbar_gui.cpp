@@ -284,7 +284,7 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS, OptionMenuEntries::GameScriptSettings));
 	}
 	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_NEWGRF_SETTINGS, OptionMenuEntries::NewGRFSettings));
-	if (_game_mode != GM_EDITOR && !_networking) {
+	if (_game_mode != GameMode::Editor && !_networking) {
 		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_SANDBOX_OPTIONS, OptionMenuEntries::SandboxOptions));
 	}
 	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS, OptionMenuEntries::Transparencies));
@@ -405,7 +405,7 @@ static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
  */
 static CallBackFunction MenuClickSaveLoad(int index = 0)
 {
-	if (_game_mode == GM_EDITOR) {
+	if (_game_mode == GameMode::Editor) {
 		switch (SaveLoadEditorMenuEntries(index)) {
 			case SaveLoadEditorMenuEntries::SaveScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Save); break;
 			case SaveLoadEditorMenuEntries::LoadScenario: ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Load); break;
@@ -868,7 +868,7 @@ static CallBackFunction MenuClickShowAir(int index)
 static CallBackFunction ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, GetMainWindow())) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_IN : (WidgetID)WID_TN_ZOOM_IN);
+		w->HandleButtonClick((_game_mode == GameMode::Editor) ? (WidgetID)WID_TE_ZOOM_IN : (WidgetID)WID_TN_ZOOM_IN);
 	}
 	return CallBackFunction::None;
 }
@@ -878,7 +878,7 @@ static CallBackFunction ToolbarZoomInClick(Window *w)
 static CallBackFunction ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, GetMainWindow())) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_OUT : (WidgetID)WID_TN_ZOOM_OUT);
+		w->HandleButtonClick((_game_mode == GameMode::Editor) ? (WidgetID)WID_TE_ZOOM_OUT : (WidgetID)WID_TN_ZOOM_OUT);
 	}
 	return CallBackFunction::None;
 }
@@ -1028,7 +1028,7 @@ static CallBackFunction MenuClickForest(int index)
 
 static CallBackFunction ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_MUSIC_SOUND : (WidgetID)WID_TN_MUSIC_SOUND, {STR_TOOLBAR_SOUND_MUSIC});
+	PopupMainToolbarMenu(w, _game_mode == GameMode::Editor ? (WidgetID)WID_TE_MUSIC_SOUND : (WidgetID)WID_TN_MUSIC_SOUND, {STR_TOOLBAR_SOUND_MUSIC});
 	return CallBackFunction::None;
 }
 
@@ -1083,13 +1083,13 @@ static CallBackFunction PlaceLandBlockInfo()
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+		PopupMainToolbarMenu(w, _game_mode == GameMode::Editor ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
 				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD,
 				STR_ABOUT_MENU_SPRITE_ALIGNER, STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES, STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS,
 				STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES});
 	} else {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+		PopupMainToolbarMenu(w, _game_mode == GameMode::Editor ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
 				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD});
 	}
@@ -1199,7 +1199,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 	}
 
 	w->ReInit();
-	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == ToolbarMode::Lower);
+	w->SetWidgetLoweredState(_game_mode == GameMode::Editor ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == ToolbarMode::Lower);
 	SndClickBeep();
 	return CallBackFunction::None;
 }
@@ -2036,7 +2036,7 @@ struct MainToolbarWindow : Window {
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		if (_game_mode != GM_MENU && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
+		if (_game_mode != GameMode::Menu && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index, int) override
@@ -2425,7 +2425,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		if (_game_mode == GM_MENU) return;
+		if (_game_mode == GameMode::Menu) return;
 		CallBackFunction cbf = _scen_toolbar_button_procs[widget](this);
 		if (cbf != CallBackFunction::None) _last_started_action = cbf;
 	}
@@ -2622,7 +2622,7 @@ void AllocateToolbar()
 	_last_built_roadtype = ROADTYPE_ROAD;
 	_last_built_tramtype = ROADTYPE_TRAM;
 
-	if (_game_mode == GM_EDITOR) {
+	if (_game_mode == GameMode::Editor) {
 		new ScenarioEditorToolbarWindow(_toolb_scen_desc);
 	} else {
 		new MainToolbarWindow(_toolb_normal_desc);

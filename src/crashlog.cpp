@@ -259,7 +259,7 @@ bool CrashLog::WriteScreenshot()
  */
 void CrashLog::SendSurvey() const
 {
-	if (_game_mode == GM_NORMAL) {
+	if (_game_mode == GameMode::Normal) {
 		_survey.Transmit(NetworkSurveyHandler::Reason::Crash, true);
 	}
 }

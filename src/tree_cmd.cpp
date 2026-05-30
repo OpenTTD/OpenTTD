@@ -372,7 +372,7 @@ void PlaceTreesRandomly()
 	uint8_t max_height = _settings_game.construction.map_height_limit;
 
 	i = Map::ScaleBySize(DEFAULT_TREE_STEPS);
-	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
+	if (_game_mode == GameMode::Editor) i /= EDITOR_TREE_DIV;
 	do {
 		uint32_t r = Random();
 		TileIndex tile = RandomTileSeed(r);
@@ -402,7 +402,7 @@ void PlaceTreesRandomly()
 	/* place extra trees at rainforest area */
 	if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
 		i = Map::ScaleBySize(DEFAULT_RAINFOREST_TREE_STEPS);
-		if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
+		if (_game_mode == GameMode::Editor) i /= EDITOR_TREE_DIV;
 
 		do {
 			uint32_t r = Random();
@@ -431,7 +431,7 @@ void PlaceTreesRandomly()
  */
 uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone)
 {
-	assert(_game_mode == GM_EDITOR); // Due to InteractiveRandom being used in this function
+	assert(_game_mode == GameMode::Editor); // Due to InteractiveRandom being used in this function
 	assert(treetype < TREE_TOYLAND + TREE_COUNT_TOYLAND);
 	const bool allow_desert = treetype == TREE_CACTUS;
 	uint planted = 0;
@@ -520,7 +520,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 	/* Check the tree type within the current climate */
 	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
 
-	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
+	Company *c = (_game_mode != GameMode::Editor) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
 
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
@@ -568,7 +568,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 						/* No cacti outside the desert */
 						(treetype == TREE_CACTUS && GetTropicZone(current_tile) != TropicZone::Desert) ||
 						/* No rainforest trees outside the rainforest, except in the editor mode where it makes those tiles rainforest tile */
-						(IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS) && GetTropicZone(current_tile) != TropicZone::Rainforest && _game_mode != GM_EDITOR) ||
+						(IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS) && GetTropicZone(current_tile) != TropicZone::Rainforest && _game_mode != GameMode::Editor) ||
 						/* And no subtropical trees in the desert/rainforest */
 						(IsInsideMM(treetype, TREE_SUB_TROPICAL, TREE_TOYLAND) && GetTropicZone(current_tile) != TropicZone::Normal))) {
 					msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
@@ -596,7 +596,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 					}
 				}
 
-				if (_game_mode != GM_EDITOR && Company::IsValidID(_current_company)) {
+				if (_game_mode != GameMode::Editor && Company::IsValidID(_current_company)) {
 					Town *t = ClosestTownFromTile(current_tile, _settings_game.economy.dist_local_authority);
 					if (t != nullptr) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM, flags);
 				}
@@ -608,12 +608,12 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 					}
 
 					/* Plant full grown trees in scenario editor */
-					PlantTreesOnTile(current_tile, treetype, 0, _game_mode == GM_EDITOR ? TreeGrowthStage::Grown : TreeGrowthStage::Growing1);
+					PlantTreesOnTile(current_tile, treetype, 0, _game_mode == GameMode::Editor ? TreeGrowthStage::Grown : TreeGrowthStage::Growing1);
 					MarkTileDirtyByTile(current_tile);
 					if (c != nullptr) c->tree_limit -= 1 << 16;
 
 					/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
-					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
+					if (_game_mode == GameMode::Editor && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
 						SetTropicZone(current_tile, TropicZone::Rainforest);
 					}
 				}

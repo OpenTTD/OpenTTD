@@ -488,7 +488,7 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 			return true;
 
 		case 0x12: // Game mode
-			*value = _game_mode;
+			*value = to_underlying(_game_mode);
 			return true;
 
 		/* case 0x13: // Tile refresh offset to left    not implemented */

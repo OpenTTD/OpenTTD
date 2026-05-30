@@ -335,7 +335,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 
 	bool is_critical = wl == WarningLevel::Critical;
 
-	if (_game_mode == GM_BOOTSTRAP) return;
+	if (_game_mode == GameMode::Bootstrap) return;
 	if (_settings_client.gui.errmsg_duration == 0 && !is_critical) return;
 
 	ErrorMessageData data(std::move(summary_msg), std::move(detailed_msg), is_critical, x, y, std::move(extra_msg), company);

@@ -150,7 +150,7 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
 
 	if (pl != PLCH_THEMEONLY) _settings_client.music.playlist = pl;
 
-	if (_game_mode != GM_MENU || pl == PLCH_THEMEONLY) {
+	if (_game_mode != GameMode::Menu || pl == PLCH_THEMEONLY) {
 		this->selected_playlist = pl;
 		this->active_playlist = this->standard_playlists[this->selected_playlist];
 		this->playlist_position = 0;
@@ -248,7 +248,7 @@ void MusicSystem::Play()
 	if (this->active_playlist.empty()) return;
 
 	MusicSongInfo song = this->active_playlist[this->playlist_position];
-	if (_game_mode == GM_MENU && this->selected_playlist == PLCH_THEMEONLY) song.loop = true;
+	if (_game_mode == GameMode::Menu && this->selected_playlist == PLCH_THEMEONLY) song.loop = true;
 	MusicDriver::GetInstance()->PlaySong(song);
 
 	InvalidateWindowData(WindowClass::Music, 0);
@@ -284,9 +284,9 @@ void MusicSystem::Prev()
 /** Check that music is playing if it should, and that appropriate playlist is active for game/main menu */
 void MusicSystem::CheckStatus()
 {
-	if ((_game_mode == GM_MENU) != (this->selected_playlist == PLCH_THEMEONLY)) {
+	if ((_game_mode == GameMode::Menu) != (this->selected_playlist == PLCH_THEMEONLY)) {
 		/* Make sure the theme-only playlist is active when on the title screen, and not during gameplay */
-		this->ChangePlaylist((_game_mode == GM_MENU) ? PLCH_THEMEONLY : (PlaylistChoices)_settings_client.music.playlist);
+		this->ChangePlaylist((_game_mode == GameMode::Menu) ? PLCH_THEMEONLY : (PlaylistChoices)_settings_client.music.playlist);
 	}
 	if (this->active_playlist.empty()) return;
 	/* If we were supposed to be playing, but music has stopped, move to next song */
@@ -699,12 +699,12 @@ struct MusicWindow : public Window {
 		this->SetWidgetsDisabledState(BaseMusic::GetUsedSet()->num_available == 0, WID_M_STOP, WID_M_PLAY);
 		/* Disable most music control widgets if there is no music, or we are in the intro menu. */
 		this->SetWidgetsDisabledState(
-			BaseMusic::GetUsedSet()->num_available == 0 || _game_mode == GM_MENU,
+			BaseMusic::GetUsedSet()->num_available == 0 || _game_mode == GameMode::Menu,
 			WID_M_PREV, WID_M_NEXT, WID_M_SHUFFLE,
 			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2
 			);
 		/* Also disable programme button in the intro menu (not in game; it is desirable to allow change of music set.) */
-		this->SetWidgetsDisabledState(_game_mode == GM_MENU, WID_M_PROGRAMME);
+		this->SetWidgetsDisabledState(_game_mode == GameMode::Menu, WID_M_PROGRAMME);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override

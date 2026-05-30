@@ -336,8 +336,8 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 
 	SndConfirmBeep();
 	switch (mode) {
-		case GLWM_GENERATE:  _switch_mode = (_game_mode == GM_EDITOR) ? SM_GENRANDLAND    : SM_NEWGAME;         break;
-		case GLWM_HEIGHTMAP: _switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
+		case GLWM_GENERATE: _switch_mode = (_game_mode == GameMode::Editor) ? SM_GENRANDLAND : SM_NEWGAME; break;
+		case GLWM_HEIGHTMAP: _switch_mode = (_game_mode == GameMode::Editor) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
 		case GLWM_SCENARIO:  _switch_mode = SM_EDITOR; break;
 		default: NOT_REACHED();
 	}
@@ -416,8 +416,8 @@ struct GenerateLandscapeWindow : public Window {
 		this->mode = this->window_number;
 
 		/* Disable town and industry in SE */
-		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
-		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
+		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN, _game_mode == GameMode::Editor);
+		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GameMode::Editor);
 
 		/* In case the map_height_limit is changed, clamp heightmap_height and custom_terrain_type. */
 		_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
@@ -443,7 +443,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_DESERT_COVERAGE_TEXT: return GetString(STR_MAPGEN_DESERT_COVERAGE_TEXT, _settings_newgame.game_creation.desert_coverage);
 
 			case WID_GL_TOWN_PULLDOWN:
-				if (_game_mode == GM_EDITOR) {
+				if (_game_mode == GameMode::Editor) {
 					return GetString(STR_CONFIG_SETTING_OFF);
 				}
 				if (_settings_newgame.difficulty.number_towns == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
@@ -460,7 +460,7 @@ struct GenerateLandscapeWindow : public Window {
 			}
 
 			case WID_GL_INDUSTRY_PULLDOWN:
-				if (_game_mode == GM_EDITOR) {
+				if (_game_mode == GameMode::Editor) {
 					return GetString(STR_CONFIG_SETTING_OFF);
 				}
 				if (_settings_newgame.difficulty.industry_density == IndustryDensity::Custom) {
@@ -895,7 +895,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_TOWNNAME_DROPDOWN: // Town names
-				if (_game_mode == GM_MENU || Town::GetNumItems() == 0) {
+				if (_game_mode == GameMode::Menu || Town::GetNumItems() == 0) {
 					_settings_newgame.game_creation.town_name = index;
 					SetWindowDirty(WindowClass::GameOptions, GameOptionsWindowNumber::GameOptions);
 				}

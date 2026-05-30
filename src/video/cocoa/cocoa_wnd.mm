@@ -603,7 +603,7 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
  */
 - (void)cursorUpdate:(NSEvent *)event
 {
-	[ (_game_mode == GM_BOOTSTRAP ? [ NSCursor arrowCursor ] : [ NSCursor clearCocoaCursor ]) set ];
+	[ (_game_mode == GameMode::Bootstrap ? [ NSCursor arrowCursor ] : [ NSCursor clearCocoaCursor ]) set ];
 }
 
 - (void)viewWillMoveToWindow:(NSWindow *)win
