@@ -1793,11 +1793,9 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Crossing) + to_underlying(axis);
 				DrawGroundSprite(rail, pal);
 
-				const Axis road_axis = GetCrossingRoadAxis(ti->tile);
-				const DiagDirection dir1 = AxisToDiagDir(road_axis);
-				const DiagDirection dir2 = ReverseDiagDir(dir1);
+				Axis road_axis = GetCrossingRoadAxis(ti->tile);
 				DiagDirections adjacent_diagdirs{};
-				for (DiagDirection dir : { dir1, dir2 }) {
+				for (DiagDirection dir : AxisToDiagDirs(road_axis)) {
 					const TileIndex t = TileAddByDiagDir(ti->tile, dir);
 					if (t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
 						adjacent_diagdirs.Set(dir);
