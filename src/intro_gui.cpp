@@ -424,7 +424,7 @@ void AskExitGame()
 static void AskExitToGameMenuCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
-		_switch_mode = SM_MENU;
+		_switch_mode = SwitchMode::Menu;
 		ClearErrorMessages();
 	}
 }

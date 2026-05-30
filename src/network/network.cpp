@@ -315,7 +315,7 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
  */
 void ShowNetworkError(StringID error_string)
 {
-	_switch_mode = SM_MENU;
+	_switch_mode = SwitchMode::Menu;
 	ShowErrorMessage(GetEncodedString(error_string), {}, WarningLevel::Critical);
 }
 
@@ -829,7 +829,7 @@ bool NetworkClientConnectGame(std::string_view connection_string, CompanyID defa
 		 * load in the new. After all, there is little point in continuing to
 		 * play on a server if we are connecting to another one.
 		 */
-		_switch_mode = SM_JOIN_GAME;
+		_switch_mode = SwitchMode::JoinGame;
 	}
 	return true;
 }

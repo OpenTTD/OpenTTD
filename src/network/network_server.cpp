@@ -1877,15 +1877,15 @@ static void NetworkRestartMap()
 	switch (_file_to_saveload.ftype.abstract) {
 		case AbstractFileType::Savegame:
 		case AbstractFileType::Scenario:
-			_switch_mode = SM_LOAD_GAME;
+			_switch_mode = SwitchMode::LoadGame;
 			break;
 
 		case AbstractFileType::Heightmap:
-			_switch_mode = SM_START_HEIGHTMAP;
+			_switch_mode = SwitchMode::StartHeightmap;
 			break;
 
 		default:
-			_switch_mode = SM_NEWGAME;
+			_switch_mode = SwitchMode::NewGame;
 	}
 }
 

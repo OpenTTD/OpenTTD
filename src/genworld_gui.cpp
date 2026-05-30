@@ -336,9 +336,9 @@ static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 
 	SndConfirmBeep();
 	switch (mode) {
-		case GLWM_GENERATE: _switch_mode = (_game_mode == GameMode::Editor) ? SM_GENRANDLAND : SM_NEWGAME; break;
-		case GLWM_HEIGHTMAP: _switch_mode = (_game_mode == GameMode::Editor) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;
-		case GLWM_SCENARIO:  _switch_mode = SM_EDITOR; break;
+		case GLWM_GENERATE: _switch_mode = (_game_mode == GameMode::Editor) ? SwitchMode::GenerateRandomLand : SwitchMode::NewGame; break;
+		case GLWM_HEIGHTMAP: _switch_mode = (_game_mode == GameMode::Editor) ? SwitchMode::LoadHeightmap : SwitchMode::StartHeightmap; break;
+		case GLWM_SCENARIO: _switch_mode = SwitchMode::Editor; break;
 		default: NOT_REACHED();
 	}
 }

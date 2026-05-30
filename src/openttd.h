@@ -23,22 +23,22 @@ enum class GameMode : uint8_t {
 };
 
 /** Mode which defines what mode we're switching to. */
-enum SwitchMode : uint8_t {
-	SM_NONE,
-	SM_NEWGAME,           ///< New Game --> 'Random game'.
-	SM_RESTARTGAME,       ///< Restart --> 'Random game' with current settings.
-	SM_RELOADGAME,        ///< Reload the savegame / scenario / heightmap you started the game with.
-	SM_EDITOR,            ///< Switch to scenario editor.
-	SM_LOAD_GAME,         ///< Load game, Play Scenario.
-	SM_MENU,              ///< Switch to game intro menu.
-	SM_SAVE_GAME,         ///< Save game.
-	SM_SAVE_HEIGHTMAP,    ///< Save heightmap.
-	SM_GENRANDLAND,       ///< Generate random land within scenario editor.
-	SM_LOAD_SCENARIO,     ///< Load scenario from scenario editor.
-	SM_START_HEIGHTMAP,   ///< Load a heightmap and start a new game from it.
-	SM_LOAD_HEIGHTMAP,    ///< Load heightmap from scenario editor.
-	SM_RESTART_HEIGHTMAP, ///< Load a heightmap and start a new game from it with current settings.
-	SM_JOIN_GAME,         ///< Join a network game.
+enum class SwitchMode : uint8_t {
+	None, ///< Not switching game mode.
+	NewGame, ///< New Game --> 'Random game'.
+	RestartGame, ///< Restart --> 'Random game' with current settings.
+	ReloadGame, ///< Reload the savegame / scenario / heightmap you started the game with.
+	Editor, ///< Switch to scenario editor.
+	LoadGame, ///< Load game, Play Scenario.
+	Menu, ///< Switch to game intro menu.
+	SaveGame, ///< Save game.
+	SaveHeightmap, ///< Save heightmap.
+	GenerateRandomLand, ///< Generate random land within scenario editor.
+	LoadScenario, ///< Load scenario from scenario editor.
+	StartHeightmap, ///< Load a heightmap and start a new game from it.
+	LoadHeightmap, ///< Load heightmap from scenario editor.
+	RestartHeightmap, ///< Load a heightmap and start a new game from it with current settings.
+	JoinGame, ///< Join a network game.
 };
 
 /** Display Options */

@@ -66,7 +66,7 @@ void AIInstance::Died()
 	if (_game_mode == GameMode::Menu) return;
 
 	/* Don't show errors while loading savegame. They will be shown at end of loading anyway. */
-	if (_switch_mode != SM_NONE) return;
+	if (_switch_mode != SwitchMode::None) return;
 
 	ShowScriptDebugWindow(_current_company);
 

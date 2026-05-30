@@ -185,7 +185,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 
 	CloseWindowById(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
 
-	if (_game_mode != GameMode::Menu) _switch_mode = SM_MENU;
+	if (_game_mode != GameMode::Menu) _switch_mode = SwitchMode::Menu;
 	_networking = false;
 }
 

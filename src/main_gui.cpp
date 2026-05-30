@@ -295,7 +295,7 @@ struct MainWindow : Window
 				if (_game_mode == GameMode::Menu) return ES_HANDLED;
 				if (_settings_client.gui.autosave_on_exit) {
 					DoExitSave();
-					_switch_mode = SM_MENU;
+					_switch_mode = SwitchMode::Menu;
 				} else {
 					AskExitToGameMenu();
 				}
