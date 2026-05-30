@@ -744,11 +744,11 @@ void RecomputePrices()
 		/* Apply difficulty settings */
 		uint mod = 1;
 		switch (_price_base_specs[i].category) {
-			case PCAT_RUNNING:
+			case PriceCategory::Running:
 				mod = _settings_game.difficulty.vehicle_costs;
 				break;
 
-			case PCAT_CONSTRUCTION:
+			case PriceCategory::Construction:
 				mod = _settings_game.difficulty.construction_cost;
 				break;
 

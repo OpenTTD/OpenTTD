@@ -201,10 +201,10 @@ using Expenses = EnumIndexArray<Money, ExpensesType, ExpensesType::End>;
 /**
  * Categories of a price bases.
  */
-enum PriceCategory : uint8_t {
-	PCAT_NONE,         ///< Not affected by difficulty settings
-	PCAT_RUNNING,      ///< Price is affected by "vehicle running cost" difficulty setting
-	PCAT_CONSTRUCTION, ///< Price is affected by "construction cost" difficulty setting
+enum class PriceCategory : uint8_t {
+	None, ///< Not affected by difficulty settings
+	Running, ///< Price is affected by "vehicle running cost" difficulty setting
+	Construction, ///< Price is affected by "construction cost" difficulty setting
 };
 
 /** The "steps" in loan size, in British Pounds! */
