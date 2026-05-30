@@ -151,6 +151,13 @@ enum class TrainFlipReversingAllowed : uint8_t {
 	None, ///< Trains cannot flip anywhere and must back up if the track ends.
 };
 
+/** Settings related to bulldozing industries. */
+enum class BulldozeIndustries : uint8_t {
+	None = 0, ///< Do not allow bulldozing industries.
+	Unserved, ///< Allow bulldozing unserved industries only.
+	All, ///< Allow bulldozing all industries.
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	uint8_t competitor_start_time; ///< Unused value, used to load old savegames.
@@ -464,6 +471,8 @@ struct ConstructionSettings {
 	bool crossing_with_competitor; ///< allow building of level crossings with competitor roads or rails
 	uint8_t raw_industry_construction; ///< type of (raw) industry construction (none, "normal", prospecting)
 	uint8_t industry_platform; ///< the amount of flat land around an industry
+	BulldozeIndustries bulldoze_industries; ///< whether players can bulldoze industries
+	bool bulldoze_objects; ///< whether players can bulldoze immovable objects
 	bool freeform_edges; ///< allow terraforming the tiles at the map edges
 	uint8_t extra_tree_placement; ///< (dis)allow building extra trees in-game
 	CommandPauseLevel command_pause_level; ///< level/amount of commands that can't be executed while paused
