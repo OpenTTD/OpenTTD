@@ -357,8 +357,8 @@ protected:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
 				StoryPageButtonFlags flags = StoryPageButtonData{ pe.referenced_id }.GetFlags();
-				if (flags & SPBF_FLOAT_LEFT) return ElementFloat::Left;
-				if (flags & SPBF_FLOAT_RIGHT) return ElementFloat::Right;
+				if (flags.Test(StoryPageButtonFlag::FloatLeft)) return ElementFloat::Left;
+				if (flags.Test(StoryPageButtonFlag::FloatRight)) return ElementFloat::Right;
 				return ElementFloat::None;
 			}
 

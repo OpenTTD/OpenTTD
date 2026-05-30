@@ -143,7 +143,7 @@ void StoryPageButtonData::SetColour(Colours button_colour)
  */
 void StoryPageButtonData::SetFlags(StoryPageButtonFlags flags)
 {
-	SB(this->referenced_id, 24, 8, flags);
+	SB(this->referenced_id, 24, 8, flags.base());
 }
 
 /**
@@ -183,7 +183,7 @@ Colours StoryPageButtonData::GetColour() const
  */
 StoryPageButtonFlags StoryPageButtonData::GetFlags() const
 {
-	return (StoryPageButtonFlags)GB(this->referenced_id, 24, 8);
+	return static_cast<StoryPageButtonFlags>(GB(this->referenced_id, 24, 8));
 }
 
 /**
@@ -222,11 +222,11 @@ bool StoryPageButtonData::ValidateColour() const
  */
 bool StoryPageButtonData::ValidateFlags() const
 {
-	uint8_t flags = GB(this->referenced_id, 24, 8);
+	StoryPageButtonFlags flags = static_cast<StoryPageButtonFlags>(GB(this->referenced_id, 24, 8));
 	/* Don't allow float left and right together */
-	if ((flags & SPBF_FLOAT_LEFT) && (flags & SPBF_FLOAT_RIGHT)) return false;
+	if (flags.All({StoryPageButtonFlag::FloatLeft, StoryPageButtonFlag::FloatRight})) return false;
 	/* Don't allow undefined flags */
-	if (flags & ~(SPBF_FLOAT_LEFT | SPBF_FLOAT_RIGHT)) return false;
+	if (flags.Reset({StoryPageButtonFlag::FloatLeft, StoryPageButtonFlag::FloatRight}).Any()) return false;
 	return true;
 }
 
