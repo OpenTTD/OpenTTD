@@ -25,7 +25,7 @@
 
 static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 {
-	return type == SPET_TEXT || type == SPET_LOCATION || type == SPET_BUTTON_PUSH || type == SPET_BUTTON_TILE || type == SPET_BUTTON_VEHICLE;
+	return type == StoryPageElementType::Text || type == StoryPageElementType::Location || type == StoryPageElementType::ButtonPush || type == StoryPageElementType::ButtonTile || type == StoryPageElementType::ButtonVehicle;
 }
 
 /* static */ bool ScriptStoryPage::IsValidStoryPage(StoryPageID story_page_id)
@@ -123,23 +123,23 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 		encoded_text = text->GetEncodedText();
 		EnforcePreconditionEncodedText(false, encoded_text);
 	}
-	EnforcePrecondition(false, type != ::SPET_LOCATION || ::IsValidTile((::TileIndex)reference));
-	EnforcePrecondition(false, type != ::SPET_GOAL || ScriptGoal::IsValidGoal(static_cast<::GoalID>(reference)));
-	EnforcePrecondition(false, type != ::SPET_GOAL || !(p->company == CompanyID::Invalid() && Goal::Get(reference)->company != CompanyID::Invalid()));
+	EnforcePrecondition(false, type != ::StoryPageElementType::Location || ::IsValidTile((::TileIndex)reference));
+	EnforcePrecondition(false, type != ::StoryPageElementType::Goal || ScriptGoal::IsValidGoal(static_cast<::GoalID>(reference)));
+	EnforcePrecondition(false, type != ::StoryPageElementType::Goal || !(p->company == CompanyID::Invalid() && Goal::Get(reference)->company != CompanyID::Invalid()));
 
 	uint32_t refid = 0;
 	TileIndex reftile{};
 	switch (type) {
-		case ::SPET_LOCATION:
+		case ::StoryPageElementType::Location:
 			reftile = TileIndex(reference);
 			break;
-		case ::SPET_GOAL:
-		case ::SPET_BUTTON_PUSH:
-		case ::SPET_BUTTON_TILE:
-		case ::SPET_BUTTON_VEHICLE:
+		case ::StoryPageElementType::Goal:
+		case ::StoryPageElementType::ButtonPush:
+		case ::StoryPageElementType::ButtonTile:
+		case ::StoryPageElementType::ButtonVehicle:
 			refid = reference;
 			break;
-		case ::SPET_TEXT:
+		case ::StoryPageElementType::Text:
 			break;
 		default:
 			NOT_REACHED();
