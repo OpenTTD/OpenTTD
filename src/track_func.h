@@ -346,53 +346,6 @@ inline bool HasTrackdir(TrackdirBits trackdirs, Trackdir trackdir)
 }
 
 /**
- * Returns the present-trackdir-information of a TrackStatus.
- *
- * @param ts The TrackStatus returned by GetTileTrackStatus()
- * @return the present trackdirs
- */
-inline TrackdirBits TrackStatusToTrackdirBits(TrackStatus ts)
-{
-	return static_cast<TrackdirBits>(ts & TRACKDIR_BIT_MASK);
-}
-
-/**
- * Returns the present-track-information of a TrackStatus.
- *
- * @param ts The TrackStatus returned by GetTileTrackStatus()
- * @return the present tracks
- */
-inline TrackBits TrackStatusToTrackBits(TrackStatus ts)
-{
-	return TrackdirBitsToTrackBits(TrackStatusToTrackdirBits(ts));
-}
-
-/**
- * Returns the red-signal-information of a TrackStatus.
- *
- * Note: The result may contain red signals for non-present tracks.
- *
- * @param ts The TrackStatus returned by GetTileTrackStatus()
- * @return the The trackdirs that are blocked by red-signals
- */
-inline TrackdirBits TrackStatusToRedSignals(TrackStatus ts)
-{
-	return static_cast<TrackdirBits>((ts >> 16) & TRACKDIR_BIT_MASK);
-}
-
-/**
- * Builds a TrackStatus
- *
- * @param trackdirbits present trackdirs
- * @param red_signals red signals
- * @return the TrackStatus representing the given information
- */
-inline TrackStatus CombineTrackStatus(TrackdirBits trackdirbits, TrackdirBits red_signals)
-{
-	return (TrackStatus)(trackdirbits | (red_signals << 16));
-}
-
-/**
  * Maps a trackdir to the trackdir that you will end up on if you go straight
  * ahead.
  *

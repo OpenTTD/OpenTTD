@@ -128,6 +128,10 @@ enum TrackdirBits : uint16_t {
 };
 DECLARE_ENUM_AS_BIT_SET(TrackdirBits)
 
-typedef uint32_t TrackStatus;
+/** Track status of a tile. */
+struct TrackStatus {
+	TrackdirBits trackdirs; ///< Trackdirs present on the tile.
+	TrackdirBits signals; ///< Red signals on the tile.
+};
 
 #endif /* TRACK_TYPE_H */

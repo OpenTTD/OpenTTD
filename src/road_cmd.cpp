@@ -2201,7 +2201,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 
 		default: break;
 	}
-	return CombineTrackStatus(trackdirbits, red_signals);
+	return {trackdirbits, red_signals};
 }
 
 static const StringID _road_tile_strings[] = {
