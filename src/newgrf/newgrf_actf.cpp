@@ -50,8 +50,7 @@ static void FeatureTownName(ByteReader &buf)
 
 			std::string_view name = buf.ReadString();
 
-			std::string lang_name = TranslateTTDPatchCodes(grfid, lang, false, name);
-			GrfMsg(6, "FeatureTownName: lang 0x{:X} -> '{}'", lang, lang_name);
+			GrfMsg(6, "FeatureTownName: lang 0x{:X} (new_scheme: {}) -> '{}'", lang, new_scheme, TranslateTTDPatchCodes(grfid, 0, false, name));
 
 			style = AddGRFString(grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 
