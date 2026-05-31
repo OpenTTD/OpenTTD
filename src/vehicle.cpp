@@ -1129,7 +1129,7 @@ static void DoDrawVehicle(const Vehicle *v)
 		/* Check whether the vehicle shall be transparent/invisible due to GUI settings.
 		 * However, transparent smoke and bubbles look weird, so always hide them. */
 		TransparencyOption to = EffectVehicle::From(v)->GetTransparencyOption();
-		if (to != TO_INVALID && (IsTransparencySet(to) || IsInvisibilitySet(to))) return;
+		if (to != TransparencyOption::Invalid && (IsTransparencySet(to) || IsInvisibilitySet(to))) return;
 	}
 
 	StartSpriteCombine();

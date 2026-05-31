@@ -20,18 +20,17 @@
  * If you change the order, change the order of the ShowTransparencyToolbar() stuff in transparency_gui.cpp too.
  * If you add or remove an option don't forget to change the transparency 'hot keys' in main_gui.cpp.
  */
-enum TransparencyOption : uint8_t {
-	TO_SIGNS = 0,  ///< signs
-	TO_TREES,      ///< trees
-	TO_HOUSES,     ///< town buildings
-	TO_INDUSTRIES, ///< industries
-	TO_BUILDINGS,  ///< company buildings - depots, stations, HQ, ...
-	TO_BRIDGES,    ///< bridges
-	TO_STRUCTURES, ///< other objects such as transmitters and lighthouses
-	TO_CATENARY,   ///< catenary
-	TO_TEXT,       ///< loading and cost/income text
-	TO_END,
-	TO_INVALID,    ///< Invalid transparency option
+enum class TransparencyOption : uint8_t {
+	Signs = 0, ///< signs
+	Trees = 1, ///< trees
+	Houses = 2, ///< town buildings
+	Industries = 3, ///< industries
+	Buildings = 4, ///< company buildings - depots, stations, HQ, ...
+	Bridges = 5, ///< bridges
+	Structures = 6, ///< other objects such as transmitters and lighthouses
+	Catenary = 7, ///< catenary
+	Text = 8, ///< loading and cost/income text
+	Invalid, ///< Invalid transparency option
 };
 
 /** Bitset of \c TransparencyOption elements. */

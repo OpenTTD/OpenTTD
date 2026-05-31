@@ -371,15 +371,15 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 
 	/* If industries are transparent and invisible, do not draw the upper part */
-	if (IsInvisibilitySet(TO_INDUSTRIES)) return;
+	if (IsInvisibilitySet(TransparencyOption::Industries)) return;
 
 	/* Add industry on top of the ground? */
 	image = dits->building.sprite;
 	if (image != 0) {
 		AddSortableSpriteToDraw(image, SpriteLayoutPaletteTransform(image, dits->building.pal, GetColourPalette(ind->random_colour)),
-			*ti, *dits, IsTransparencySet(TO_INDUSTRIES));
+			*ti, *dits, IsTransparencySet(TransparencyOption::Industries));
 
-		if (IsTransparencySet(TO_INDUSTRIES)) return;
+		if (IsTransparencySet(TransparencyOption::Industries)) return;
 	}
 
 	{

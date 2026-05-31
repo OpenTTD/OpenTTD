@@ -496,7 +496,7 @@ static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, ui
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 	}
 
-	DrawNewGRFTileSeq(ti, &dts, TO_HOUSES, stage, palette);
+	DrawNewGRFTileSeq(ti, &dts, TransparencyOption::Houses, stage, palette);
 }
 
 void DrawNewHouseTile(TileInfo *ti, HouseID house_id)

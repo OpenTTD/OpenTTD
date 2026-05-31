@@ -118,7 +118,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 {
 	/* Don't draw the text effects when zoomed out a lot */
 	if (dpi->zoom > ZoomLevel::TextEffect) return;
-	if (IsTransparencySet(TO_TEXT)) return;
+	if (IsTransparencySet(TransparencyOption::Text)) return;
 
 	ViewportStringFlags flags{};
 	if (dpi->zoom >= ZoomLevel::TextEffect) flags.Set(ViewportStringFlag::Small);

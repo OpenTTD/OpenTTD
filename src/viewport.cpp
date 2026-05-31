@@ -1403,7 +1403,7 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 	ViewportStringFlags deity_flags{ flags };
 	deity_flags.Set(ViewportStringFlag::TextColour);
 
-	flags.Set(IsTransparencySet(TO_SIGNS) ? ViewportStringFlag::TransparentRect : ViewportStringFlag::ColourRect);
+	flags.Set(IsTransparencySet(TransparencyOption::Signs) ? ViewportStringFlag::TransparentRect : ViewportStringFlag::ColourRect);
 
 	for (const Sign *si : signs) {
 		/* Workaround to make sure white is actually white. The string drawing logic changes all
@@ -1427,7 +1427,7 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 static void ViewportAddStationStrings(DrawPixelInfo *dpi, const std::vector<const BaseStation *> &stations, bool small)
 {
 	/* Transparent station signs have colour text instead of a colour panel. */
-	ViewportStringFlags flags{IsTransparencySet(TO_SIGNS) ? ViewportStringFlag::TextColour : ViewportStringFlag::ColourRect};
+	ViewportStringFlags flags{IsTransparencySet(TransparencyOption::Signs) ? ViewportStringFlag::TextColour : ViewportStringFlag::ColourRect};
 	if (small) flags.Set(ViewportStringFlag::Small);
 
 	for (const BaseStation *st : stations) {
@@ -1450,7 +1450,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 	bool show_stations = _display_opt.Test(DisplayOption::ShowStationNames) && _game_mode != GameMode::Menu;
 	bool show_waypoints = _display_opt.Test(DisplayOption::ShowWaypointNames) && _game_mode != GameMode::Menu;
 	bool show_towns = _display_opt.Test(DisplayOption::ShowTownNames) && _game_mode != GameMode::Menu;
-	bool show_signs = _display_opt.Test(DisplayOption::ShowSigns) && !IsInvisibilitySet(TO_SIGNS);
+	bool show_signs = _display_opt.Test(DisplayOption::ShowSigns) && !IsInvisibilitySet(TransparencyOption::Signs);
 	bool show_competitors = _display_opt.Test(DisplayOption::ShowCompetitorSigns);
 
 	/* Collect all the items first and draw afterwards, to ensure layering */
@@ -1518,7 +1518,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 	ViewportAddTownStrings(dpi, towns, small);
 
 	/* Do not draw signs nor station names if they are set invisible */
-	if (IsInvisibilitySet(TO_SIGNS)) return;
+	if (IsInvisibilitySet(TransparencyOption::Signs)) return;
 
 	ViewportAddSignStrings(dpi, signs, small);
 	ViewportAddStationStrings(dpi, stations, small);
@@ -2294,10 +2294,10 @@ static bool CheckClickOnViewportSign(const Viewport &vp, int x, int y)
 	Rect search_rect{ x - 1, y - 1, x + 1, y + 1 };
 	search_rect = ExpandRectWithViewportSignMargins(search_rect, vp.zoom);
 
-	bool show_stations = _display_opt.Test(DisplayOption::ShowStationNames) && !IsInvisibilitySet(TO_SIGNS);
-	bool show_waypoints = _display_opt.Test(DisplayOption::ShowWaypointNames) && !IsInvisibilitySet(TO_SIGNS);
+	bool show_stations = _display_opt.Test(DisplayOption::ShowStationNames) && !IsInvisibilitySet(TransparencyOption::Signs);
+	bool show_waypoints = _display_opt.Test(DisplayOption::ShowWaypointNames) && !IsInvisibilitySet(TransparencyOption::Signs);
 	bool show_towns = _display_opt.Test(DisplayOption::ShowTownNames);
-	bool show_signs = _display_opt.Test(DisplayOption::ShowSigns) && !IsInvisibilitySet(TO_SIGNS);
+	bool show_signs = _display_opt.Test(DisplayOption::ShowSigns) && !IsInvisibilitySet(TransparencyOption::Signs);
 	bool show_competitors = _display_opt.Test(DisplayOption::ShowCompetitorSigns);
 
 	/* Topmost of each type that was hit */
