@@ -534,32 +534,13 @@ void AddGRFTextToList(GRFTextWrapper &list, std::string_view text_to_add)
  * @param grfid The GRF to load the string for.
  * @param stringid The GRF-local identifier of the string.
  * @param langid_to_add The language to add them to.
- * @param new_scheme Is the NewGRF version 7 or higher?
  * @param allow_newlines Whether newlines are allowed in the string.
  * @param text_to_add The actual text of the string.
  * @param def_string The fallback string if a translation for this string isn't available.
  * @return The OpenTTD internal string identifier.
  */
-StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
+static StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_add, bool allow_newlines, std::string_view text_to_add, StringID def_string)
 {
-	/* When working with the old language scheme (grf_version is less than 7) and
-	 * English or American is among the set bits, simply add it as English in
-	 * the new scheme, i.e. as langid = 1.
-	 * If English is set, it is pretty safe to assume the translations are not
-	 * actually translated.
-	 */
-	if (!new_scheme) {
-		if (langid_to_add & (GRFLB_AMERICAN | GRFLB_ENGLISH)) {
-			langid_to_add = GRFLX_ENGLISH;
-		} else {
-			StringID ret = STR_EMPTY;
-			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, GRFLX_GERMAN,  true, allow_newlines, text_to_add, def_string);
-			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, GRFLX_FRENCH,  true, allow_newlines, text_to_add, def_string);
-			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, GRFLX_SPANISH, true, allow_newlines, text_to_add, def_string);
-			return ret;
-		}
-	}
-
 	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
 	if (it == std::end(_grf_text)) {
 		/* Too many strings allocated, return empty. */
@@ -579,6 +560,36 @@ StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_ad
 	GrfMsg(3, "Added 0x{:X} grfid {:08X} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, grfid, stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
 
 	return MakeStringID(TEXT_TAB_NEWGRF_START, id);
+}
+
+/**
+ * Add the new read string into our structure.
+ * @param grfid The GRF to load the string for.
+ * @param stringid The GRF-local identifier of the string.
+ * @param langid_to_add The language to add them to.
+ * @param new_scheme Is the NewGRF version 7 or higher?
+ * @param allow_newlines Whether newlines are allowed in the string.
+ * @param text_to_add The actual text of the string.
+ * @param def_string The fallback string if a translation for this string isn't available.
+ * @return The OpenTTD internal string identifier.
+ */
+StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
+{
+	if (new_scheme) return AddGRFString(grfid, stringid, langid_to_add, allow_newlines, text_to_add, def_string);
+
+	/* When working with the old language scheme (grf_version is less than 7) and
+	 * English or American is among the set bits, simply add it as English in
+	 * the new scheme, i.e. as langid = 1.
+	 * If English is set, it is pretty safe to assume the translations are not
+	 * actually translated.
+	 */
+	if (langid_to_add & (GRFLB_AMERICAN | GRFLB_ENGLISH)) return AddGRFString(grfid, stringid, GRFLX_ENGLISH, allow_newlines, text_to_add, def_string);
+
+	StringID ret = STR_EMPTY;
+	if (langid_to_add & GRFLB_GERMAN) ret = AddGRFString(grfid, stringid, GRFLX_GERMAN, allow_newlines, text_to_add, def_string);
+	if (langid_to_add & GRFLB_FRENCH) ret = AddGRFString(grfid, stringid, GRFLX_FRENCH, allow_newlines, text_to_add, def_string);
+	if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, GRFLX_SPANISH, allow_newlines, text_to_add, def_string);
+	return ret;
 }
 
 /**
