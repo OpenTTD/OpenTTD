@@ -34,10 +34,12 @@ enum TransparencyOption : uint8_t {
 	TO_INVALID,    ///< Invalid transparency option
 };
 
-typedef uint TransparencyOptionBits; ///< transparency option bits
-extern TransparencyOptionBits _transparency_opt;
-extern TransparencyOptionBits _transparency_lock;
-extern TransparencyOptionBits _invisibility_opt;
+/** Bitset of \c TransparencyOption elements. */
+using TransparencyOptions = EnumBitSet<TransparencyOption, uint32_t>;
+
+extern TransparencyOptions _transparency_opt;
+extern TransparencyOptions _transparency_lock;
+extern TransparencyOptions _invisibility_opt;
 extern DisplayOptions _display_opt;
 extern StationFacilities _facility_display_opt;
 
@@ -50,7 +52,7 @@ extern StationFacilities _facility_display_opt;
  */
 inline bool IsTransparencySet(TransparencyOption to)
 {
-	return (HasBit(_transparency_opt, to) && _game_mode != GameMode::Menu);
+	return _transparency_opt.Test(to) && _game_mode != GameMode::Menu;
 }
 
 /**
@@ -62,7 +64,7 @@ inline bool IsTransparencySet(TransparencyOption to)
  */
 inline bool IsInvisibilitySet(TransparencyOption to)
 {
-	return (HasBit(_transparency_opt & _invisibility_opt, to) && _game_mode != GameMode::Menu);
+	return IsTransparencySet(to) && _invisibility_opt.Test(to) && _game_mode != GameMode::Menu;
 }
 
 /**
@@ -72,7 +74,7 @@ inline bool IsInvisibilitySet(TransparencyOption to)
  */
 inline void ToggleTransparency(TransparencyOption to)
 {
-	ToggleBit(_transparency_opt, to);
+	_transparency_opt.Flip(to);
 }
 
 /**
@@ -82,7 +84,7 @@ inline void ToggleTransparency(TransparencyOption to)
  */
 inline void ToggleInvisibility(TransparencyOption to)
 {
-	ToggleBit(_invisibility_opt, to);
+	_invisibility_opt.Flip(to);
 }
 
 /**
@@ -95,11 +97,11 @@ inline void ToggleInvisibility(TransparencyOption to)
 inline void ToggleInvisibilityWithTransparency(TransparencyOption to)
 {
 	if (IsInvisibilitySet(to)) {
-		ClrBit(_invisibility_opt, to);
-		ClrBit(_transparency_opt, to);
+		_invisibility_opt.Reset(to);
+		_transparency_opt.Reset(to);
 	} else {
-		SetBit(_invisibility_opt, to);
-		SetBit(_transparency_opt, to);
+		_invisibility_opt.Set(to);
+		_transparency_opt.Set(to);
 	}
 }
 
@@ -110,19 +112,22 @@ inline void ToggleInvisibilityWithTransparency(TransparencyOption to)
  */
 inline void ToggleTransparencyLock(TransparencyOption to)
 {
-	ToggleBit(_transparency_lock, to);
+	_transparency_lock.Flip(to);
 }
 
 /** Set or clear all non-locked transparency options */
 inline void ResetRestoreAllTransparency()
 {
+	TransparencyOptions unlocked = _transparency_lock;
+	unlocked.Flip();
+
 	/* if none of the non-locked options are set */
-	if ((_transparency_opt & ~_transparency_lock) == 0) {
+	if (!_transparency_opt.Any(unlocked)) {
 		/* set all non-locked options */
-		_transparency_opt |= GB(~_transparency_lock, 0, TO_END);
+		_transparency_opt.Set(unlocked);
 	} else {
 		/* clear all non-locked options */
-		_transparency_opt &= _transparency_lock;
+		_transparency_opt.Reset(unlocked);
 	}
 
 	MarkWholeScreenDirty();
