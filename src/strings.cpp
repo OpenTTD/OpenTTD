@@ -2105,7 +2105,6 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
 	_config_language_file = FS2OTTD(_current_language->file.filename().native());
-	SetCurrentGrfLangID(_current_language->newgrflangid);
 	_langpack.list_separator = GetString(STR_LIST_SEPARATOR);
 	_langpack.ellipsis = GetString(STR_TRUNCATION_ELLIPSIS);
 
