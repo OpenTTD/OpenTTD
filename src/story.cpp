@@ -152,8 +152,8 @@ void StoryPageButtonData::SetFlags(StoryPageButtonFlags flags)
  */
 void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
 {
-	assert(cursor < SPBC_END);
-	SB(this->referenced_id, 8, 8, cursor);
+	assert(cursor < StoryPageButtonCursor::End);
+	SB(this->referenced_id, 8, 8, to_underlying(cursor));
 }
 
 /**
@@ -193,7 +193,7 @@ StoryPageButtonFlags StoryPageButtonData::GetFlags() const
 StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 {
 	StoryPageButtonCursor cursor = (StoryPageButtonCursor)GB(this->referenced_id, 8, 8);
-	if (!IsValidStoryPageButtonCursor(cursor)) return INVALID_SPBC;
+	if (!IsValidStoryPageButtonCursor(cursor)) return StoryPageButtonCursor::Invalid;
 	return cursor;
 }
 
@@ -236,7 +236,7 @@ bool StoryPageButtonData::ValidateFlags() const
  */
 bool StoryPageButtonData::ValidateCursor() const
 {
-	return GB(this->referenced_id, 8, 8) < SPBC_END;
+	return static_cast<StoryPageButtonCursor>(GB(this->referenced_id, 8, 8)) < StoryPageButtonCursor::End;
 }
 
 /**
