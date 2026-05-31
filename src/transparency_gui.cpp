@@ -20,9 +20,9 @@
 
 #include "safeguards.h"
 
-TransparencyOptionBits _transparency_opt;  ///< The bits that should be transparent.
-TransparencyOptionBits _transparency_lock; ///< Prevent these bits from flipping with X.
-TransparencyOptionBits _invisibility_opt;  ///< The bits that should be invisible.
+TransparencyOptions _transparency_opt; ///< The bits that should be transparent.
+TransparencyOptions _transparency_lock; ///< Prevent these bits from flipping with X.
+TransparencyOptions _invisibility_opt; ///< The bits that should be invisible.
 DisplayOptions _display_opt; ///< What do we want to draw/do?
 StationFacilities _facility_display_opt; ///< What station facilities to draw.
 
@@ -40,6 +40,17 @@ public:
 		this->DrawWidgets();
 	}
 
+	/**
+	 * Get the \c TransparencyOption associated with a widget.
+	 * @param widget the widget.
+	 * @return Transparency option associated with the widget.
+	 */
+	TransparencyOption GetTransparencyOptionOfWidget(WidgetID widget) const
+	{
+		if (!IsInsideMM(widget, WID_TT_BEGIN, WID_TT_END)) return TransparencyOption::Invalid;
+		return static_cast<TransparencyOption>(widget - WID_TT_BEGIN);
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
@@ -52,8 +63,8 @@ public:
 			case WID_TT_STRUCTURES:
 			case WID_TT_CATENARY:
 			case WID_TT_TEXT: {
-				int i = widget - WID_TT_BEGIN;
-				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + WidgetDimensions::scaled.fullbevel.left, r.top + WidgetDimensions::scaled.fullbevel.top);
+				TransparencyOption to = GetTransparencyOptionOfWidget(widget);
+				if (_transparency_lock.Test(to)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + WidgetDimensions::scaled.fullbevel.left, r.top + WidgetDimensions::scaled.fullbevel.top);
 				break;
 			}
 			case WID_TT_BUTTONS: {
@@ -62,8 +73,8 @@ public:
 					if (i == WID_TT_TEXT) continue; // Loading and cost/income text has no invisibility button.
 
 					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
-					DrawFrameRect(wr.WithY(fr), Colours::PaleGreen,
-							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FrameFlag::Lowered : FrameFlags{});
+					TransparencyOption to = GetTransparencyOptionOfWidget(i);
+					DrawFrameRect(wr.WithY(fr), Colours::PaleGreen, _invisibility_opt.Test(to) ? FrameFlag::Lowered : FrameFlags{});
 				}
 				break;
 			}
@@ -75,11 +86,11 @@ public:
 		if (widget >= WID_TT_BEGIN && widget < WID_TT_END) {
 			if (_ctrl_pressed) {
 				/* toggle the bit of the transparencies lock variable */
-				ToggleTransparencyLock((TransparencyOption)(widget - WID_TT_BEGIN));
+				ToggleTransparencyLock(GetTransparencyOptionOfWidget(widget));
 				this->SetDirty();
 			} else {
 				/* toggle the bit of the transparencies variable and play a sound */
-				ToggleTransparency((TransparencyOption)(widget - WID_TT_BEGIN));
+				ToggleTransparency(GetTransparencyOptionOfWidget(widget));
 				SndClickBeep();
 				MarkWholeScreenDirty();
 			}
@@ -93,11 +104,11 @@ public:
 			}
 			if (i == WID_TT_TEXT|| i == WID_TT_END) return;
 
-			ToggleInvisibility((TransparencyOption)(i - WID_TT_BEGIN));
+			ToggleInvisibility(GetTransparencyOptionOfWidget(i));
 			SndClickBeep();
 
 			/* Redraw whole screen only if transparency is set */
-			if (IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN))) {
+			if (IsTransparencySet(GetTransparencyOptionOfWidget(i))) {
 				MarkWholeScreenDirty();
 			} else {
 				this->SetWidgetDirty(WID_TT_BUTTONS);
@@ -121,7 +132,7 @@ public:
 	{
 		if (!gui_scope) return;
 		for (WidgetID i = WID_TT_BEGIN; i < WID_TT_END; i++) {
-			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN)));
+			this->SetWidgetLoweredState(i, IsTransparencySet(GetTransparencyOptionOfWidget(i)));
 		}
 	}
 };
