@@ -36,19 +36,8 @@
 
 #include "safeguards.h"
 
-/**
- * Explains the newgrf shift bit positioning.
- * the grf base will not be used in order to find the string, but rather for
- * jumping from standard langID scheme to the new one.
- */
-enum GRFBaseLanguages : uint8_t {
-	GRFLB_AMERICAN    = 0x01,
-	GRFLB_ENGLISH     = 0x02,
-	GRFLB_GERMAN      = 0x04,
-	GRFLB_FRENCH      = 0x08,
-	GRFLB_SPANISH     = 0x10,
-	GRFLB_GENERIC     = 0x80,
-};
+/** The bitmask of the old GRF languages, which are conveniently the same as the first few GRFLanguages. */
+using OldGRFLanguages = EnumBitSet<GRFLanguage, uint8_t>;
 
 
 /**
@@ -568,18 +557,20 @@ StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_ad
 {
 	if (new_scheme) return AddGRFString(grfid, stringid, static_cast<GRFLanguage>(langid_to_add), allow_newlines, text_to_add, def_string);
 
+	OldGRFLanguages old_lang{langid_to_add};
+
 	/* When working with the old language scheme (grf_version is less than 7) and
 	 * English or American is among the set bits, simply add it as English in
 	 * the new scheme, i.e. as langid = 1.
 	 * If English is set, it is pretty safe to assume the translations are not
 	 * actually translated.
 	 */
-	if (langid_to_add & (GRFLB_AMERICAN | GRFLB_ENGLISH)) return AddGRFString(grfid, stringid, GRFLanguage::English, allow_newlines, text_to_add, def_string);
+	if (old_lang.Any({GRFLanguage::American, GRFLanguage::English})) return AddGRFString(grfid, stringid, GRFLanguage::English, allow_newlines, text_to_add, def_string);
 
 	StringID ret = STR_EMPTY;
-	if (langid_to_add & GRFLB_GERMAN) ret = AddGRFString(grfid, stringid, GRFLanguage::German, allow_newlines, text_to_add, def_string);
-	if (langid_to_add & GRFLB_FRENCH) ret = AddGRFString(grfid, stringid, GRFLanguage::French, allow_newlines, text_to_add, def_string);
-	if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, GRFLanguage::Spanish, allow_newlines, text_to_add, def_string);
+	for (GRFLanguage lang: {GRFLanguage::German, GRFLanguage::French, GRFLanguage::Spanish}) {
+		if (old_lang.Test(lang)) ret = AddGRFString(grfid, stringid, lang, allow_newlines, text_to_add, def_string);
+	}
 	return ret;
 }
 
@@ -660,11 +651,12 @@ std::string_view GetGRFStringPtr(StringIndexInTab stringid)
 bool CheckGrfLangID(uint8_t lang_id, uint8_t grf_version)
 {
 	if (grf_version < 7) {
+		OldGRFLanguages old_lang{lang_id};
 		switch (_current_language->newgrflangid) {
-			case GRFLanguage::German: return (lang_id & GRFLB_GERMAN) != 0;
-			case GRFLanguage::French: return (lang_id & GRFLB_FRENCH) != 0;
-			case GRFLanguage::Spanish: return (lang_id & GRFLB_SPANISH) != 0;
-			default:            return (lang_id & (GRFLB_ENGLISH | GRFLB_AMERICAN)) != 0;
+			case GRFLanguage::German: return old_lang.Test(GRFLanguage::German);
+			case GRFLanguage::French: return old_lang.Test(GRFLanguage::French);
+			case GRFLanguage::Spanish: return old_lang.Test(GRFLanguage::Spanish);
+			default: return old_lang.Any({GRFLanguage::American, GRFLanguage::English});
 		}
 	}
 
