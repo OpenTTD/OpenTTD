@@ -34,11 +34,11 @@ static void ScanInfo(ByteReader &buf)
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 0, 8) == 0xFF) _cur_gps.grfconfig->flags.Set(GRFConfigFlag::System);
 
-	AddGRFTextToList(_cur_gps.grfconfig->name, 0x7F, grfid, false, name);
+	AddGRFTextToList(_cur_gps.grfconfig->name, GRFLanguage::Unspecified, grfid, false, name);
 
 	if (buf.HasData()) {
 		std::string_view info = buf.ReadString();
-		AddGRFTextToList(_cur_gps.grfconfig->info, 0x7F, grfid, true, info);
+		AddGRFTextToList(_cur_gps.grfconfig->info, GRFLanguage::Unspecified, grfid, true, info);
 	}
 
 	/* GrfLoadingStage::FileScan only looks for the action 8, so we can skip the rest of the file */

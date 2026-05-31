@@ -266,10 +266,10 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 			case 0x13:   // Gender translation table
 			case 0x14:   // Case translation table
 			case 0x15: { // Plural form translation
-				uint curidx = id; // The current index, i.e. language.
-				const LanguageMetadata *lang = curidx < MAX_LANG ? GetLanguage(curidx) : nullptr;
+				GRFLanguage langid = static_cast<GRFLanguage>(id); // The current index, i.e. language.
+				const LanguageMetadata *lang = langid < GRFLanguage::End ? GetLanguage(langid) : nullptr;
 				if (lang == nullptr) {
-					GrfMsg(1, "GlobalVarChangeInfo: Language {} is not known, ignoring", curidx);
+					GrfMsg(1, "GlobalVarChangeInfo: Language {} is not known, ignoring", langid);
 					/* Skip over the data. */
 					if (prop == 0x15) {
 						buf.ReadByte();
@@ -286,7 +286,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					if (plural_form >= LANGUAGE_MAX_PLURAL) {
 						GrfMsg(1, "GlobalVarChanceInfo: Plural form {} is out of range, ignoring", plural_form);
 					} else {
-						_cur_gps.grffile->language_map[curidx].plural_form = plural_form;
+						_cur_gps.grffile->language_map[langid].plural_form = plural_form;
 					}
 					break;
 				}
@@ -309,14 +309,14 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 						if (map.openttd_id >= MAX_NUM_GENDERS) {
 							GrfMsg(1, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", StrMakeValid(name));
 						} else {
-							_cur_gps.grffile->language_map[curidx].gender_map.push_back(map);
+							_cur_gps.grffile->language_map[langid].gender_map.push_back(map);
 						}
 					} else {
 						map.openttd_id = lang->GetCaseIndex(name);
 						if (map.openttd_id >= MAX_NUM_CASES) {
 							GrfMsg(1, "GlobalVarChangeInfo: Case name {} is not known, ignoring", StrMakeValid(name));
 						} else {
-							_cur_gps.grffile->language_map[curidx].case_map.push_back(map);
+							_cur_gps.grffile->language_map[langid].case_map.push_back(map);
 						}
 					}
 					newgrf_id = buf.ReadByte();

@@ -50,7 +50,7 @@ static void FeatureTownName(ByteReader &buf)
 
 			std::string_view name = buf.ReadString();
 
-			GrfMsg(6, "FeatureTownName: lang 0x{:X} (new_scheme: {}) -> '{}'", lang, new_scheme, TranslateTTDPatchCodes(grfid, 0, false, name));
+			GrfMsg(6, "FeatureTownName: lang 0x{:X} (new_scheme: {}) -> '{}'", lang, new_scheme, TranslateTTDPatchCodes(grfid, GRFLanguage::Fallback, false, name));
 
 			style = AddGRFString(grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 
@@ -88,7 +88,7 @@ static void FeatureTownName(ByteReader &buf)
 				GrfMsg(6, "FeatureTownName: part {}, text {}, uses intermediate definition 0x{:02X} (with probability {})", partnum, textnum, ref_id, part.prob & 0x7F);
 			} else {
 				std::string_view text = buf.ReadString();
-				part.text = TranslateTTDPatchCodes(grfid, 0, false, text);
+				part.text = TranslateTTDPatchCodes(grfid, GRFLanguage::Fallback, false, text);
 				GrfMsg(6, "FeatureTownName: part {}, text {}, '{}' (with probability {})", partnum, textnum, part.text, part.prob);
 			}
 			partlist.maxprob += GB(part.prob, 0, 7);

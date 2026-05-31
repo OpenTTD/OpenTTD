@@ -143,7 +143,7 @@ void FileStringReader::HandlePragma(std::string_view str, LanguagePackHeader &la
 		if (langid >= 0x7F || langid < 0) {
 			FatalError("Invalid grflangid {}", langid);
 		}
-		lang.newgrflangid = static_cast<uint8_t>(langid);
+		lang.newgrflangid = static_cast<GRFLanguage>(langid);
 	} else if (name == "gender") {
 		if (this->master) FatalError("Genders are not allowed in the base translation.");
 		for (;;) {
