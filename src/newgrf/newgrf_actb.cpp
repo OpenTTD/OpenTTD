@@ -11,6 +11,7 @@
 #include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
+#include "../language.h"
 
 #include "table/strings.h"
 
@@ -98,7 +99,7 @@ static void GRFLoadError(ByteReader &buf)
 		if (buf.HasData()) {
 			std::string_view message = buf.ReadString();
 
-			error.custom_message = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER);
+			error.custom_message = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, _current_language->newgrflangid, true, message, SCC_RAW_STRING_POINTER);
 		} else {
 			GrfMsg(7, "GRFLoadError: No custom message supplied.");
 			error.custom_message.clear();
@@ -110,7 +111,7 @@ static void GRFLoadError(ByteReader &buf)
 	if (buf.HasData()) {
 		std::string_view data = buf.ReadString();
 
-		error.data = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, data);
+		error.data = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, _current_language->newgrflangid, true, data);
 	} else {
 		GrfMsg(7, "GRFLoadError: No message data supplied.");
 		error.data.clear();
