@@ -170,7 +170,7 @@ public:
 	VehicleCargoReroute(VehicleCargoList *source, VehicleCargoList *dest, uint max_move, StationID avoid, StationID avoid2, const GoodsEntry *ge) :
 			CargoReroute<VehicleCargoList>(source, dest, max_move, avoid, avoid2, ge)
 	{
-		assert(this->max_move <= source->ActionCount(VehicleCargoList::MTA_TRANSFER));
+		assert(this->max_move <= source->ActionCount(VehicleCargoList::MoveToAction::Transfer));
 	}
 	bool operator()(CargoPacket *cp);
 };
