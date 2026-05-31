@@ -2022,7 +2022,7 @@ bool LanguagePackHeader::IsValid() const
 	       this->version      == TO_LE32(LANGUAGE_PACK_VERSION) &&
 	       this->plural_form  <  LANGUAGE_MAX_PLURAL &&
 	       this->text_dir     <= 1 &&
-	       this->newgrflangid < MAX_LANG &&
+	       this->newgrflangid < GRFLanguage::End &&
 	       this->num_genders  < MAX_NUM_GENDERS &&
 	       this->num_cases    < MAX_NUM_CASES &&
 	       StrValid(this->name) &&
@@ -2183,7 +2183,7 @@ std::optional<std::string> GetCurrentLocale(const char *param);
  * @param newgrflangid NewGRF languages ID to check.
  * @return The language's metadata, or nullptr if it is not known.
  */
-const LanguageMetadata *GetLanguage(uint8_t newgrflangid)
+const LanguageMetadata *GetLanguage(GRFLanguage newgrflangid)
 {
 	for (const LanguageMetadata &lang : _languages) {
 		if (newgrflangid == lang.newgrflangid) return &lang;

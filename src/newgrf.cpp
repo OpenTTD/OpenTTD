@@ -360,9 +360,8 @@ void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location,
  * @param language_id The (NewGRF) language ID to get the map for.
  * @return The LanguageMap, or nullptr if it couldn't be found.
  */
-/* static */ const LanguageMap *LanguageMap::GetLanguageMap(uint32_t grfid, uint8_t language_id)
+/* static */ const LanguageMap *LanguageMap::GetLanguageMap(uint32_t grfid, GRFLanguage language_id)
 {
-	/* LanguageID "MAX_LANG", i.e. 7F is any. This language can't have a gender/case mapping, but has to be handled gracefully. */
 	const GRFFile *grffile = GetFileByGRFID(grfid);
 	if (grffile == nullptr) return nullptr;
 

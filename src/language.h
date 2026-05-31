@@ -14,6 +14,7 @@
 #include <unicode/coll.h>
 #endif /* WITH_ICU_I18N */
 #include "strings_type.h"
+#include "newgrf_text_type.h"
 #include <filesystem>
 
 static const uint8_t CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gender string.
@@ -49,7 +50,7 @@ struct LanguagePackHeader {
 	 *   http://msdn.microsoft.com/en-us/library/ms776294.aspx
 	 */
 	uint16_t winlangid = 0; ///< windows language id
-	uint8_t newgrflangid = 0; ///< newgrf language id
+	GRFLanguage newgrflangid{}; ///< newgrf language id
 	uint8_t num_genders = 0; ///< the number of genders of this language
 	uint8_t num_cases = 0; ///< the number of cases of this language
 	uint8_t pad[3] = {}; ///< pad header to be a multiple of 4
@@ -104,6 +105,6 @@ extern std::unique_ptr<icu::Collator> _current_collator;
 #endif /* WITH_ICU_I18N */
 
 bool ReadLanguagePack(const LanguageMetadata *lang);
-const LanguageMetadata *GetLanguage(uint8_t newgrflangid);
+const LanguageMetadata *GetLanguage(GRFLanguage newgrflangid);
 
 #endif /* LANGUAGE_H */
