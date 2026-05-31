@@ -1853,11 +1853,11 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side)
 {
 	TransportType transport_type = GetTunnelBridgeTransportType(tile);
-	if (transport_type != mode || (transport_type == TRANSPORT_ROAD && !HasTileRoadType(tile, (RoadTramType)sub_mode))) return 0;
+	if (transport_type != mode || (transport_type == TRANSPORT_ROAD && !HasTileRoadType(tile, (RoadTramType)sub_mode))) return {};
 
 	DiagDirection dir = GetTunnelBridgeDirection(tile);
-	if (side != DiagDirection::Invalid && side != ReverseDiagDir(dir)) return 0;
-	return CombineTrackStatus(TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir)), TRACKDIR_BIT_NONE);
+	if (side != DiagDirection::Invalid && side != ReverseDiagDir(dir)) return {};
+	return {TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir)), TRACKDIR_BIT_NONE};
 }
 
 /** @copydoc ChangeTileOwnerProc */

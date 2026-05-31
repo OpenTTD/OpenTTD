@@ -133,7 +133,7 @@ struct CFollowTrackT {
 		assert([&]() {
 			if (this->IsTram() && this->GetSingleTramBit(this->old_tile) != DiagDirection::Invalid) return true; // Skip the check for single tram bits
 			const RoadTramType sub_mode = (IsRoadTT() && this->veh != nullptr) ? (this->IsTram() ? RoadTramType::Tram : RoadTramType::Road) : RoadTramType::Invalid;
-			const TrackdirBits old_tile_valid_dirs = TrackStatusToTrackdirBits(GetTileTrackStatus(this->old_tile, TT(), sub_mode));
+			const TrackdirBits old_tile_valid_dirs = GetTileTrackStatus(this->old_tile, TT(), sub_mode).trackdirs;
 			return (old_tile_valid_dirs & TrackdirToTrackdirBits(this->old_td)) != TRACKDIR_BIT_NONE;
 		}());
 
@@ -253,7 +253,7 @@ protected:
 		} else if (IsRoadTT()) {
 			this->new_td_bits = GetTrackdirBitsForRoad(this->new_tile, this->IsTram() ? RoadTramType::Tram : RoadTramType::Road);
 		} else {
-			this->new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(this->new_tile, TT(), RoadTramType::Invalid));
+			this->new_td_bits = GetTileTrackStatus(this->new_tile, TT(), RoadTramType::Invalid).trackdirs;
 		}
 		return (this->new_td_bits != TRACKDIR_BIT_NONE);
 	}

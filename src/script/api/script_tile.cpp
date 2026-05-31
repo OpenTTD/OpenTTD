@@ -219,10 +219,10 @@
 	if (!::IsValidTile(tile)) return false;
 
 	if (transport_type == TRANSPORT_ROAD) {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Road)) != TRACKDIR_BIT_NONE ||
-				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Tram)) != TRACKDIR_BIT_NONE;
+		return ::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Road).trackdirs != TRACKDIR_BIT_NONE ||
+				::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Tram).trackdirs != TRACKDIR_BIT_NONE;
 	} else {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Invalid)) != TRACKDIR_BIT_NONE;
+		return ::GetTileTrackStatus(tile, (::TransportType)transport_type, ::RoadTramType::Invalid).trackdirs != TRACKDIR_BIT_NONE;
 	}
 }
 

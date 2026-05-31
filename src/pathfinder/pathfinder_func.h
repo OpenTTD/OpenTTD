@@ -47,8 +47,8 @@ inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, Stati
 }
 
 /**
- * Wrapper around GetTileTrackStatus() and TrackStatusToTrackdirBits(), as for
- * single tram bits GetTileTrackStatus() returns 0. The reason for this is
+ * Wrapper around GetTileTrackStatus(), as for single tram bits
+ * GetTileTrackStatus() returns 0. The reason for this is
  * that there are no half-tile TrackBits in OpenTTD.
  * This tile, however, is a valid tile for trams, one on which they can
  * reverse safely. To "fix" this, pretend that if we are on a half-tile, we
@@ -61,7 +61,7 @@ inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, Stati
  */
 inline TrackdirBits GetTrackdirBitsForRoad(TileIndex tile, RoadTramType rtt)
 {
-	TrackdirBits bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, rtt));
+	TrackdirBits bits = GetTileTrackStatus(tile, TRANSPORT_ROAD, rtt).trackdirs;
 
 	if (rtt == RoadTramType::Tram && bits == TRACKDIR_BIT_NONE) {
 		if (IsNormalRoadTile(tile)) {

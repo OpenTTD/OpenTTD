@@ -1200,7 +1200,7 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
 	if (tile == INVALID_TILE) return false;
 
 	/* Check for track bits on the new tile */
-	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid));
+	TrackdirBits trackdirbits = GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs;
 
 	if (TracksOverlap(TrackdirBitsToTrackBits(trackdirbits))) return false;
 	trackdirbits &= TrackdirReachesTrackdirs(trackdir);
@@ -2760,10 +2760,10 @@ static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [
 			case TRACK_BIT_LEFT:  tb = TRACK_BIT_RIGHT; break;
 			case TRACK_BIT_RIGHT: tb = TRACK_BIT_LEFT;  break;
 		}
-		return CombineTrackStatus(TrackBitsToTrackdirBits(tb), TRACKDIR_BIT_NONE);
+		return {TrackBitsToTrackdirBits(tb), TRACKDIR_BIT_NONE};
 	}
 
-	if (mode != TRANSPORT_RAIL) return 0;
+	if (mode != TRANSPORT_RAIL) return {};
 
 	TrackBits trackbits = TRACK_BIT_NONE;
 	TrackdirBits red_signals = TRACKDIR_BIT_NONE;
@@ -2807,7 +2807,7 @@ static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [
 		}
 	}
 
-	return CombineTrackStatus(TrackBitsToTrackdirBits(trackbits), red_signals);
+	return {TrackBitsToTrackdirBits(trackbits), red_signals};
 }
 
 /** @copydoc ClickTileProc */

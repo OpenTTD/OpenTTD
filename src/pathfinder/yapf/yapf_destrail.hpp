@@ -154,7 +154,7 @@ public:
 			default:
 				this->dest_tile = v->dest_tile == INVALID_TILE ? TileIndex{} : v->dest_tile;
 				this->dest_station_id = StationID::Invalid();
-				this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(this->dest_tile, TRANSPORT_RAIL, RoadTramType::Invalid));
+				this->dest_trackdirs = GetTileTrackStatus(this->dest_tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs;
 				break;
 		}
 		this->CYapfDestinationRailBase::SetDestination(v);

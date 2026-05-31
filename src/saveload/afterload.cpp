@@ -438,8 +438,8 @@ static void FixOwnerOfRailTrack(Tile t)
 	/* try to find any connected rail */
 	for (DiagDirection dd = DiagDirection::Begin; dd < DiagDirection::End; dd++) {
 		TileIndex tt{t + TileOffsByDiagDir(dd)};
-		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd) != 0 &&
-				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)) != 0 &&
+		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd).trackdirs != TRACKDIR_BIT_NONE &&
+				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)).trackdirs != TRACKDIR_BIT_NONE &&
 				Company::IsValidID(GetTileOwner(tt))) {
 			SetTileOwner(t, GetTileOwner(tt));
 			return;
@@ -2773,7 +2773,7 @@ bool AfterLoadGame()
 					if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) break;
 
 					TrackStatus ts = GetTileTrackStatus(rv->tile, TRANSPORT_ROAD, GetRoadTramType(rv->roadtype));
-					TrackBits trackbits = TrackStatusToTrackBits(ts);
+					TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
 					/* Only X/Y tracks can be sloped. */
 					if (trackbits != TRACK_BIT_X && trackbits != TRACK_BIT_Y) break;

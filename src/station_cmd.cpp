@@ -3734,7 +3734,7 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 			break;
 	}
 
-	return CombineTrackStatus(TrackBitsToTrackdirBits(trackbits), TRACKDIR_BIT_NONE);
+	return {TrackBitsToTrackdirBits(trackbits), TRACKDIR_BIT_NONE};
 }
 
 

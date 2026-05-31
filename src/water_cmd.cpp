@@ -186,7 +186,7 @@ bool IsPossibleDockingTile(Tile t)
 		case TileType::Railway:
 		case TileType::Station:
 		case TileType::TunnelBridge:
-			return TrackStatusToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, RoadTramType::Invalid)) != TRACK_BIT_NONE;
+			return TrackdirBitsToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, RoadTramType::Invalid).trackdirs) != TRACK_BIT_NONE;
 
 		default:
 			return false;
@@ -1387,14 +1387,14 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 
 	TrackBits ts;
 
-	if (mode != TRANSPORT_WATER) return 0;
+	if (mode != TRANSPORT_WATER) return {};
 
 	switch (GetWaterTileType(tile)) {
 		case WaterTileType::Clear: ts = IsTileFlat(tile) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
 		case WaterTileType::Coast: ts = coast_tracks[GetTileSlope(tile) & 0xF]; break;
 		case WaterTileType::Lock:  ts = DiagDirToDiagTrackBits(GetLockDirection(tile)); break;
 		case WaterTileType::Depot: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
-		default: return 0;
+		default: return {};
 	}
 	if (TileX(tile) == 0) {
 		/* NE border: remove tracks that connects NE tile edge */
@@ -1404,7 +1404,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 		/* NW border: remove tracks that connects NW tile edge */
 		ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
 	}
-	return CombineTrackStatus(TrackBitsToTrackdirBits(ts), TRACKDIR_BIT_NONE);
+	return {TrackBitsToTrackdirBits(ts), TRACKDIR_BIT_NONE};
 }
 
 /** @copydoc ClickTileProc */
