@@ -211,7 +211,7 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 	assert(IsPlainRailTile(t));
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(&b);
-	SB(t.m2(), 8, 3, track == INVALID_TRACK ? 0 : track + 1);
+	SB(t.m2(), 8, 3, IsValidTrack(track) ? to_underlying(track) + 1 : 0);
 	AssignBit(t.m2(), 11, b != TRACK_BIT_NONE);
 }
 
@@ -320,7 +320,7 @@ inline void SetSignalType(Tile t, Track track, SignalType s)
 	assert(GetRailTileType(t) == RailTileType::Signals);
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
 	SB(t.m2(), pos, 3, s);
-	if (track == INVALID_TRACK) SB(t.m2(), 4, 3, s);
+	if (!IsValidTrack(track)) SB(t.m2(), 4, 3, s);
 }
 
 /**
@@ -400,7 +400,7 @@ inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
 {
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
 	SB(t.m2(), pos, 1, v);
-	if (track == INVALID_TRACK) SB(t.m2(), 7, 1, v);
+	if (!IsValidTrack(track)) SB(t.m2(), 7, 1, v);
 }
 
 /**

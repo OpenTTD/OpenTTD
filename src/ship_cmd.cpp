@@ -724,7 +724,7 @@ static void ShipController(Ship *v)
 
 				/* Choose a direction, and continue if we find one */
 				const Track track = ChooseShipTrack(v, gp.new_tile, tracks);
-				if (track == INVALID_TRACK) return ReverseShip(v);
+				if (!IsValidTrack(track)) return ReverseShip(v);
 
 				/* Update XY to reflect the entrance to the new tile, and select the direction to use */
 				Direction chosen_dir = VehicleEnterTileCoordinates(gp, diagdir, track);
