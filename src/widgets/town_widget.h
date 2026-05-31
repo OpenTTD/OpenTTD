@@ -58,6 +58,8 @@ enum TownFoundingWidgets : WidgetID {
 	WID_TF_EXPAND_ALL_TOWNS,  ///< Make all towns grow slightly.
 	WID_TF_TOWN_NAME_EDITBOX, ///< Editor for the town name.
 	WID_TF_TOWN_NAME_RANDOM,  ///< Generate a random town name.
+	WID_TF_TOWN_NAME_GENERATOR_SEL, ///< Container of town name generator dropdown.
+	WID_TF_TOWN_NAME_DROPDOWN, ///< Select town name generator.
 	WID_TF_SIZE_SEL, ///< Container of town size buttons.
 	WID_TF_SIZE_SMALL,        ///< Selection for a small town.
 	WID_TF_SIZE_MEDIUM,       ///< Selection for a medium town.

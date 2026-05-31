@@ -531,6 +531,8 @@ add_files(
     town_type.h
     townname.cpp
     townname_func.h
+    townname_gui.cpp
+    townname_gui.h
     townname_type.h
     track_func.h
     track_type.h

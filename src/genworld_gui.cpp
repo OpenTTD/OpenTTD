@@ -27,7 +27,7 @@
 #include "saveload/saveload.h"
 #include "progress.h"
 #include "error.h"
-#include "newgrf_townname.h"
+#include "townname_gui.h"
 #include "townname_type.h"
 #include "video/video_driver.hpp"
 #include "ai/ai_gui.hpp"
@@ -38,8 +38,6 @@
 #include "widgets/genworld_widget.h"
 
 #include "table/strings.h"
-
-#include "dropdown_common_type.h"
 
 #include "safeguards.h"
 
@@ -359,34 +357,6 @@ static DropDownList BuildMapsizeDropDown()
 	return list;
 }
 
-static DropDownList BuildTownNameDropDown()
-{
-	DropDownList list;
-
-	/* Add and sort newgrf townnames generators */
-	const auto &grf_names = GetGRFTownNameList();
-	for (uint i = 0; i < grf_names.size(); i++) {
-		list.push_back(MakeDropDownListStringItem(grf_names[i], BUILTIN_TOWNNAME_GENERATOR_COUNT + i));
-	}
-	std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
-
-	size_t newgrf_size = list.size();
-	/* Insert newgrf_names at the top of the list */
-	if (newgrf_size > 0) {
-		list.push_back(MakeDropDownListDividerItem()); // separator line
-		newgrf_size++;
-	}
-
-	/* Add and sort original townnames generators */
-	for (uint i = 0; i < BUILTIN_TOWNNAME_GENERATOR_COUNT; i++) {
-		list.push_back(MakeDropDownListStringItem(STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH + i, i));
-	}
-	std::sort(list.begin() + newgrf_size, list.end(), DropDownListStringItem::NatSortFunc);
-
-	return list;
-}
-
-
 static const StringID _max_height[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, STR_TERRAIN_TYPE_ALPINIST, STR_TERRAIN_TYPE_CUSTOM};
 static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM};
 static const StringID _rivers[]      = {STR_RIVERS_NONE, STR_RIVERS_FEW, STR_RIVERS_MODERATE, STR_RIVERS_LOT};
@@ -452,11 +422,7 @@ struct GenerateLandscapeWindow : public Window {
 				return GetString(_num_towns[_settings_newgame.difficulty.number_towns]);
 
 			case WID_GL_TOWNNAME_DROPDOWN: {
-				uint gen = _settings_newgame.game_creation.town_name;
-				StringID name = gen < BUILTIN_TOWNNAME_GENERATOR_COUNT ?
-						STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH + gen :
-						GetGRFTownNameName(gen - BUILTIN_TOWNNAME_GENERATOR_COUNT);
-				return GetString(name);
+				return GetString(GetTownNameGeneratorName(_settings_newgame.game_creation.town_name));
 			}
 
 			case WID_GL_INDUSTRY_PULLDOWN:

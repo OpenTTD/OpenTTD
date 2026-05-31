@@ -1632,8 +1632,6 @@ static void FinaliseBadges()
 	AddBadgeClassesToConfiguration();
 }
 
-extern void InitGRFTownGeneratorNames();
-
 /** Finish loading NewGRFs and execute needed post-processing */
 static void AfterLoadGRFs()
 {

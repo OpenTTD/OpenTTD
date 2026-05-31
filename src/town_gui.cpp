@@ -32,6 +32,7 @@
 #include "querystring_gui.h"
 #include "window_func.h"
 #include "townname_func.h"
+#include "townname_gui.h"
 #include "core/backup_type.hpp"
 #include "core/geometry_func.hpp"
 #include "core/string_consumer.hpp"
@@ -1097,6 +1098,12 @@ static constexpr std::initializer_list<NWidgetPart> _nested_found_town_widgets =
 			NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_FOUND_TOWN_NAME_TITLE),
 			NWidget(WWT_EDITBOX, Colours::Grey, WID_TF_TOWN_NAME_EDITBOX), SetStringTip(STR_FOUND_TOWN_NAME_EDITOR_TITLE, STR_FOUND_TOWN_NAME_EDITOR_TOOLTIP), SetFill(1, 0),
 			NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_TF_TOWN_NAME_RANDOM), SetStringTip(STR_FOUND_TOWN_NAME_RANDOM_BUTTON, STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP), SetFill(1, 0),
+			NWidget(NWID_SELECTION, Colours::Invalid, WID_TF_TOWN_NAME_GENERATOR_SEL),
+				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
+					NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_MAPGEN_TOWN_NAME_LABEL, STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP),
+					NWidget(WWT_DROPDOWN, Colours::Grey, WID_TF_TOWN_NAME_DROPDOWN), SetToolTip(STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP), SetFill(1, 0),
+				EndContainer(),
+			EndContainer(),
 
 			/* Town size selection. */
 			NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_FOUND_TOWN_INITIAL_SIZE_TITLE),
@@ -1177,6 +1184,7 @@ public:
 		if (_game_mode == GameMode::Editor) return;
 
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_ACTION_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_NAME_GENERATOR_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_EXPAND_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_TF_SIZE_SEL)->SetDisplayedPlane(SZSP_VERTICAL);
 		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT) {
@@ -1184,6 +1192,29 @@ public:
 		} else {
 			this->GetWidget<NWidgetStacked>(WID_TF_ROAD_LAYOUT_SEL)->SetDisplayedPlane(0);
 		}
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		switch (widget) {
+			case WID_TF_TOWN_NAME_DROPDOWN:
+				return GetString(GetTownNameGeneratorName(_settings_game.game_creation.town_name));
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
+		}
+	}
+
+	std::string GetGeneratedTownName() const
+	{
+		return this->townnamevalid ? GetTownName(&this->params, this->townnameparts) : std::string{};
+	}
+
+	bool HasCustomTownName() const
+	{
+		std::string current_name{this->townname_editbox.text.GetText()};
+		if (!this->townnamevalid) return !current_name.empty();
+		return current_name != this->GetGeneratedTownName();
 	}
 
 	void RandomTownName()
@@ -1198,6 +1229,21 @@ public:
 		UpdateOSKOriginalText(this, WID_TF_TOWN_NAME_EDITBOX);
 
 		this->SetWidgetDirty(WID_TF_TOWN_NAME_EDITBOX);
+	}
+
+	void SetTownNameGenerator(uint gen)
+	{
+		bool keep_custom_name = this->HasCustomTownName();
+		_settings_game.game_creation.town_name = ClampTo<uint8_t>(gen);
+		this->params = TownNameParams(_settings_game.game_creation.town_name);
+
+		if (keep_custom_name) {
+			this->SetWidgetDirty(WID_TF_TOWN_NAME_EDITBOX);
+		} else {
+			this->RandomTownName();
+		}
+
+		this->SetWidgetDirty(WID_TF_TOWN_NAME_DROPDOWN);
 	}
 
 	void UpdateButtons(bool check_availability)
@@ -1228,13 +1274,7 @@ public:
 	{
 		std::string name;
 
-		if (!this->townnamevalid) {
-			name = this->townname_editbox.text.GetText();
-		} else {
-			/* If user changed the name, send it */
-			std::string original_name = GetTownName(&this->params, this->townnameparts);
-			if (original_name != this->townname_editbox.text.GetText()) name = this->townname_editbox.text.GetText();
-		}
+		if (!this->townnamevalid || this->HasCustomTownName()) name = this->townname_editbox.text.GetText();
 
 		bool success = Command<Commands::FoundTown>::Post(errstr, cc,
 				tile, this->town_size, this->city, this->town_layout, random, townnameparts, name);
@@ -1257,6 +1297,10 @@ public:
 			case WID_TF_TOWN_NAME_RANDOM:
 				this->RandomTownName();
 				this->SetFocusedWidget(WID_TF_TOWN_NAME_EDITBOX);
+				break;
+
+			case WID_TF_TOWN_NAME_DROPDOWN:
+				if (_game_mode == GameMode::Editor) ShowDropDownList(this, BuildTownNameDropDown(), _settings_game.game_creation.town_name, WID_TF_TOWN_NAME_DROPDOWN);
 				break;
 
 			case WID_TF_MANY_RANDOM_TOWNS: {
@@ -1304,6 +1348,18 @@ public:
 				if (_game_mode == GameMode::Editor) _settings_game.economy.town_layout = this->town_layout;
 
 				this->UpdateButtons(false);
+				break;
+		}
+	}
+
+	void OnDropdownSelect(WidgetID widget, int index, int) override
+	{
+		switch (widget) {
+			case WID_TF_TOWN_NAME_DROPDOWN:
+				if (_game_mode == GameMode::Editor) this->SetTownNameGenerator(index);
+				break;
+
+			default:
 				break;
 		}
 	}

@@ -44,6 +44,7 @@ GRFTownName *AddGRFTownName(uint32_t grfid);
 GRFTownName *GetGRFTownName(uint32_t grfid);
 void DelGRFTownName(uint32_t grfid);
 void CleanUpGRFTownNames();
+void InitGRFTownGeneratorNames();
 uint32_t GetGRFTownNameId(uint16_t gen);
 uint16_t GetGRFTownNameType(uint16_t gen);
 StringID GetGRFTownNameName(uint16_t gen);
