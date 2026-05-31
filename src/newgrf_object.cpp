@@ -464,7 +464,7 @@ static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, co
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, &dts, TO_STRUCTURES, 0, palette);
+	DrawNewGRFTileSeq(ti, &dts, TransparencyOption::Structures, 0, palette);
 }
 
 /**

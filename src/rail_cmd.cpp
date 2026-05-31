@@ -2468,7 +2468,7 @@ static void DrawTile_Rail(TileInfo *ti)
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-		if (IsInvisibilitySet(TO_BUILDINGS)) {
+		if (IsInvisibilitySet(TransparencyOption::Buildings)) {
 			/* Draw rail instead of depot */
 			dts = &_depot_invisible_gfx_table[dir];
 		} else {
@@ -2499,13 +2499,13 @@ static void DrawTile_Rail(TileInfo *ti)
 
 			switch (GetRailDepotDirection(ti->tile)) {
 				case DiagDirection::NE:
-					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
+					if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 					[[fallthrough]];
 				case DiagDirection::SW:
 					DrawGroundSprite(ground + RTO_X, PAL_NONE);
 					break;
 				case DiagDirection::NW:
-					if (!IsInvisibilitySet(TO_BUILDINGS)) break;
+					if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 					[[fallthrough]];
 				case DiagDirection::SE:
 					DrawGroundSprite(ground + RTO_Y, PAL_NONE);
@@ -2519,13 +2519,13 @@ static void DrawTile_Rail(TileInfo *ti)
 
 				switch (GetRailDepotDirection(ti->tile)) {
 					case DiagDirection::NE:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
+						if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 						[[fallthrough]];
 					case DiagDirection::SW:
 						DrawGroundSprite(overlay + RTO_X, PALETTE_CRASH);
 						break;
 					case DiagDirection::NW:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
+						if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 						[[fallthrough]];
 					case DiagDirection::SE:
 						DrawGroundSprite(overlay + RTO_Y, PALETTE_CRASH);
@@ -2539,13 +2539,13 @@ static void DrawTile_Rail(TileInfo *ti)
 			if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
 				switch (GetRailDepotDirection(ti->tile)) {
 					case DiagDirection::NE:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
+						if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 						[[fallthrough]];
 					case DiagDirection::SW:
 						DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
 						break;
 					case DiagDirection::NW:
-						if (!IsInvisibilitySet(TO_BUILDINGS)) break;
+						if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 						[[fallthrough]];
 					case DiagDirection::SE:
 						DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
@@ -2560,7 +2560,7 @@ static void DrawTile_Rail(TileInfo *ti)
 
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
-		DrawRailTileSeq(ti, dts, TO_BUILDINGS, relocation, 0, pal);
+		DrawRailTileSeq(ti, dts, TransparencyOption::Buildings, relocation, 0, pal);
 		/* Depots can't have bridges above so no blocked pillars. */
 	}
 	DrawBridgeMiddle(ti, blocked_pillars);

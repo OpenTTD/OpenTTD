@@ -650,7 +650,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	}
 
 	/* Do not draw trees when the invisible trees setting is set */
-	if (IsInvisibilitySet(TO_TREES)) return;
+	if (IsInvisibilitySet(TransparencyOption::Trees)) return;
 
 	uint tmp = CountBits(ti->tile.base() + ti->x + ti->y);
 	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
@@ -702,7 +702,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		}
 
 		SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, 48}, {te[mi].x, te[mi].y, 0}};
-		AddSortableSpriteToDraw(te[mi].sprite, te[mi].pal, ti->x, ti->y, z, bounds, IsTransparencySet(TO_TREES));
+		AddSortableSpriteToDraw(te[mi].sprite, te[mi].pal, ti->x, ti->y, z, bounds, IsTransparencySet(TransparencyOption::Trees));
 
 		/* replace the removed one with the last one */
 		te[mi] = te[trees - 1];

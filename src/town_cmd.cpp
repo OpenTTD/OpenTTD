@@ -283,14 +283,14 @@ static void DrawTile_Town(TileInfo *ti)
 	DrawGroundSprite(dcts->ground.sprite, dcts->ground.pal);
 
 	/* If houses are invisible, do not draw the upper part */
-	if (IsInvisibilitySet(TO_HOUSES)) return;
+	if (IsInvisibilitySet(TransparencyOption::Houses)) return;
 
 	/* Add a house on top of the ground? */
 	SpriteID image = dcts->building.sprite;
 	if (image != 0) {
-		AddSortableSpriteToDraw(image, dcts->building.pal, *ti, *dcts, IsTransparencySet(TO_HOUSES));
+		AddSortableSpriteToDraw(image, dcts->building.pal, *ti, *dcts, IsTransparencySet(TransparencyOption::Houses));
 
-		if (IsTransparencySet(TO_HOUSES)) return;
+		if (IsTransparencySet(TransparencyOption::Houses)) return;
 	}
 
 	{

@@ -254,7 +254,7 @@ static void AirportDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, &dts, TO_BUILDINGS, 0, GetColourPalette(colour));
+	DrawNewGRFTileSeq(ti, &dts, TransparencyOption::Buildings, 0, GetColourPalette(colour));
 }
 
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)

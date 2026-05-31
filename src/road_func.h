@@ -128,7 +128,7 @@ inline bool HasRoadCatenary(RoadType roadtype)
  */
 inline bool HasRoadCatenaryDrawn(RoadType roadtype)
 {
-	return HasRoadCatenary(roadtype) && !IsInvisibilitySet(TO_CATENARY);
+	return HasRoadCatenary(roadtype) && !IsInvisibilitySet(TransparencyOption::Catenary);
 }
 
 bool HasRoadTypeAvail(CompanyID company, RoadType roadtype);
