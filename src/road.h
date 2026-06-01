@@ -27,6 +27,7 @@ enum class RoadTypeFlag : uint8_t {
 	NoHouses        = 2, ///< Bit number for setting this roadtype as not house friendly
 	Hidden          = 3, ///< Bit number for hidden from construction.
 	TownBuild       = 4, ///< Bit number for allowing towns to build this roadtype.
+	NoComposedCursors = 5, ///< Bit number for disabling composed cursors.
 };
 using RoadTypeFlags = EnumBitSet<RoadTypeFlag, uint8_t>;
 
@@ -170,6 +171,16 @@ public:
 	inline bool UsesOverlay() const
 	{
 		return this->group[RoadSpriteType::Ground] != nullptr;
+	}
+
+	/**
+	 * Returns true if this road type should use composed cursors.
+	 * Only NewGRF road types without the NoComposedCursors flag use composed cursors.
+	 * @return true if composed cursors should be used.
+	 */
+	inline bool UseComposedCursors() const
+	{
+		return this->grffile[RoadSpriteType::UI] != nullptr && !this->flags.Test(RoadTypeFlag::NoComposedCursors);
 	}
 
 	RoadType Index() const;

@@ -31,6 +31,7 @@ enum class RailTypeFlag : uint8_t {
 	NoSpriteCombine = 3, ///< Bit number for using non-combined junctions.
 	Allow90Deg      = 4, ///< Bit number for always allowed 90 degree turns, regardless of setting.
 	Disallow90Deg   = 5, ///< Bit number for never allowed 90 degree turns, regardless of setting.
+	NoComposedCursors = 6, ///< Bit number for disabling composed cursors.
 };
 using RailTypeFlags = EnumBitSet<RailTypeFlag, uint8_t>;
 
@@ -274,6 +275,16 @@ public:
 	inline bool UsesOverlay() const
 	{
 		return this->group[RailSpriteType::Ground] != nullptr;
+	}
+
+	/**
+	 * Returns true if this rail type should use composed cursors.
+	 * Only NewGRF rail types without the NoComposedCursors flag use composed cursors.
+	 * @return true if composed cursors should be used.
+	 */
+	inline bool UseComposedCursors() const
+	{
+		return this->grffile[RailSpriteType::UI] != nullptr && !this->flags.Test(RailTypeFlag::NoComposedCursors);
 	}
 
 	/**

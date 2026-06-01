@@ -1744,6 +1744,34 @@ void SetCursor(CursorID icon, PaletteID pal)
 }
 
 /**
+ * Set a composed cursor from the blank cursor and an icon sprite.
+ * @param icon The icon sprite from the NewGRF GUI sprites.
+ */
+void SetComposedCursor(CursorID icon)
+{
+	/* Turn off animation */
+	_cursor.animate_timeout = 0;
+	_cursor.sprites.clear();
+
+	/* Add blank cursor as the base layer */
+	_cursor.sprites.emplace_back(SPR_CURSOR_BLANK, PAL_NONE, 0, 0);
+
+	/* Add icon as the overlay, centred with GUI-scaled offsets */
+	const Sprite *sprite = GetSprite(GB(icon, 0, SPRITE_WIDTH), SpriteType::Normal);
+	int content_width  = UnScaleGUI(sprite->width);
+	int content_height = UnScaleGUI(sprite->height);
+	int box_size = ScaleGUITrad(20);
+	int box_start = ScaleGUITrad(10);
+
+	int icon_offset_x = box_start + (box_size - content_width) / 2 - UnScaleGUI(sprite->x_offs);
+	int icon_offset_y = box_start + (box_size - content_height) / 2 - UnScaleGUI(sprite->y_offs);
+
+	_cursor.sprites.emplace_back(icon, PAL_NONE, icon_offset_x, icon_offset_y);
+
+	UpdateCursorSize();
+}
+
+/**
  * Update cursor position based on a relative change.
  *
  * @param delta_x How much change in the X position.
