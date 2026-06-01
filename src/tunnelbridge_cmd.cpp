@@ -645,7 +645,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 {
 	CompanyID company = _current_company;
 
-	_build_tunnel_endtile = TileIndex{};
+	_build_tunnel_endtile = INVALID_TILE;
 	switch (transport_type) {
 		case TRANSPORT_RAIL:
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
