@@ -803,14 +803,15 @@ bool FloodHalftile(TileIndex t)
 	return flooded;
 }
 
-static const TileIndexDiffC _trackdelta[] = {
+/** Tile deltas for each trackdir. */
+static const TrackdirIndexArray<TileIndexDiffC> _trackdelta{{{
 	{ -1,  0 }, {  0,  1 }, { -1,  0 }, {  0,  1 }, {  1,  0 }, {  0,  1 },
 	{  0,  0 },
 	{  0,  0 },
 	{  1,  0 }, {  0, -1 }, {  0, -1 }, {  1,  0 }, {  0, -1 }, { -1,  0 },
 	{  0,  0 },
 	{  0,  0 }
-};
+}}};
 
 /**
  * Get the other Trackdir for a non-diagonal Trackdir.
