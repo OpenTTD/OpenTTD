@@ -2286,7 +2286,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc &td)
  * Given the direction the road depot is pointing, this is the direction the
  * vehicle should be travelling in in order to enter the depot.
  */
-static constexpr DiagDirectionIndexArray<uint8_t> _roadveh_enter_depot_dir{
+static constexpr DiagDirectionIndexArray<Trackdir> _roadveh_enter_depot_dir{
 	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 
