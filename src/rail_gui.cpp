@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "gui.h"
 #include "station_base.h"
-#include "station_func.h"
 #include "waypoint_base.h"
 #include "window_gui.h"
 #include "station_gui.h"
@@ -18,6 +17,7 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "waypoint_func.h"
+#include "newgrf_badge.h"
 #include "newgrf_badge_gui.h"
 #include "newgrf_station.h"
 #include "company_base.h"
@@ -31,15 +31,17 @@
 #include "tilehighlight_func.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
+#include "engine_base.h"
 #include "vehicle_func.h"
 #include "zoom_func.h"
 #include "rail_gui.h"
 #include "toolbar_gui.h"
 #include "station_cmd.h"
+#include "station_func.h"
+#include "tile_cmd.h"
 #include "tunnelbridge_cmd.h"
 #include "waypoint_cmd.h"
 #include "rail_cmd.h"
-#include "tile_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "picker_gui.h"
@@ -237,7 +239,7 @@ static void PlaceRail_Station(TileIndex tile)
  */
 static void GenericPlaceSignals(TileIndex tile)
 {
-	TrackBits trackbits = TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid).trackdirs);
+	TrackBits trackbits = TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid, DiagDirection::Invalid).trackdirs);
 
 	if (trackbits.Any(TRACK_BIT_VERT)) { // N-S direction
 		trackbits = (_tile_fract_coords.x <= _tile_fract_coords.y) ? Track::Right : Track::Left;
@@ -479,7 +481,7 @@ struct BuildRailToolbarWindow : Window {
 			this->ModifyRailType(_cur_railtype);
 
 			/* Update cursor and all sub windows. */
-			if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
+			if (_thd.GetCallbackWnd() == this) this->SetRailCursor(this->last_user_action);
 			for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
 				SetWindowDirty(cls, TransportType::Rail);
 			}
@@ -588,19 +590,19 @@ struct BuildRailToolbarWindow : Window {
 	CursorID GetCursorForWidget(WidgetID widget)
 	{
 		switch (widget) {
-			case WID_RAT_BUILD_NS: return GetRailTypeInfo(_cur_railtype)->cursor.rail_ns;
-			case WID_RAT_BUILD_X: return GetRailTypeInfo(_cur_railtype)->cursor.rail_swne;
-			case WID_RAT_BUILD_EW: return GetRailTypeInfo(_cur_railtype)->cursor.rail_ew;
-			case WID_RAT_BUILD_Y: return GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse;
-			case WID_RAT_AUTORAIL: return GetRailTypeInfo(_cur_railtype)->cursor.autorail;
+			case WID_RAT_BUILD_NS: return GetRailTypeInfo(this->railtype)->cursor.rail_ns;
+			case WID_RAT_BUILD_X: return GetRailTypeInfo(this->railtype)->cursor.rail_swne;
+			case WID_RAT_BUILD_EW: return GetRailTypeInfo(this->railtype)->cursor.rail_ew;
+			case WID_RAT_BUILD_Y: return GetRailTypeInfo(this->railtype)->cursor.rail_nwse;
+			case WID_RAT_AUTORAIL: return GetRailTypeInfo(this->railtype)->cursor.autorail;
 			case WID_RAT_DEMOLISH: return ANIMCURSOR_DEMOLISH;
-			case WID_RAT_BUILD_DEPOT: return GetRailTypeInfo(_cur_railtype)->cursor.depot;
+			case WID_RAT_BUILD_DEPOT: return GetRailTypeInfo(this->railtype)->cursor.depot;
 			case WID_RAT_BUILD_WAYPOINT: return SPR_CURSOR_WAYPOINT;
 			case WID_RAT_BUILD_STATION: return SPR_CURSOR_RAIL_STATION;
 			case WID_RAT_BUILD_SIGNALS: return ANIMCURSOR_BUILDSIGNALS;
 			case WID_RAT_BUILD_BRIDGE: return SPR_CURSOR_BRIDGE;
-			case WID_RAT_BUILD_TUNNEL: return GetRailTypeInfo(_cur_railtype)->cursor.tunnel;
-			case WID_RAT_CONVERT_RAIL: return GetRailTypeInfo(_cur_railtype)->cursor.convert;
+			case WID_RAT_BUILD_TUNNEL: return GetRailTypeInfo(this->railtype)->cursor.tunnel;
+			case WID_RAT_CONVERT_RAIL: return GetRailTypeInfo(this->railtype)->cursor.convert;
 			default: NOT_REACHED();
 		}
 	}
@@ -629,9 +631,37 @@ struct BuildRailToolbarWindow : Window {
 			default: NOT_REACHED();
 		}
 	}
+/**
+ * Set the cursor for a given widget, using composed cursor when applicable.
+ * @param widget Widget ID of the button whose cursor to set.
+ */
+void SetRailCursor(WidgetID widget)
+{
+	CursorID cursor = this->GetCursorForWidget(widget);
+	bool uses_rail_cursor;
+	switch (widget) {
+		case WID_RAT_BUILD_NS:
+		case WID_RAT_BUILD_X:
+		case WID_RAT_BUILD_EW:
+		case WID_RAT_BUILD_Y:
+		case WID_RAT_AUTORAIL:
+		case WID_RAT_BUILD_DEPOT:
+		case WID_RAT_BUILD_TUNNEL:
+		case WID_RAT_CONVERT_RAIL:
+			uses_rail_cursor = true; break;
+		default:
+			uses_rail_cursor = false; break;
+	}
+
+	if (uses_rail_cursor && GetRailTypeInfo(this->railtype)->UseComposedCursors()) {
+		SetComposedCursor(cursor);
+	} else {
+		SetCursor(cursor, PAL_NONE);
+	}
+}
 
 
-	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget < WID_RAT_BUILD_NS) return;
 
@@ -645,6 +675,9 @@ struct BuildRailToolbarWindow : Window {
 
 		this->last_user_action = widget;
 		bool started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
+
+		/* Override cursor with composed version when composed cursors are enabled */
+		if (started) this->SetRailCursor(widget);
 
 		switch (widget) {
 			case WID_RAT_BUILD_DEPOT:
@@ -870,10 +903,8 @@ struct BuildRailToolbarWindow : Window {
 		this->ModifyRailType(_last_built_railtype);
 
 		/* Update cursor and all sub windows. */
-		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
-		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
-			SetWindowDirty(cls, TransportType::Rail);
-		}
+		if (_thd.GetCallbackWnd() == this) this->SetRailCursor(this->last_user_action);
+		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TransportType::Rail);
 
 		return EventState::Handled;
 	}
@@ -1098,12 +1129,12 @@ public:
 		for (const Station *st : Station::Iterate()) {
 			if (st->owner != _local_company) continue;
 			if (!default_added && StationUsesDefaultType(st)) {
-				items.insert({GrfID{}, 0, STAT_CLASS_DFLT.base(), 0});
+				items.insert(PickerItem{GrfID{}, 0, STAT_CLASS_DFLT.base(), 0});
 				default_added = true;
 			}
 			for (const auto &sm : st->speclist) {
 				if (sm.spec == nullptr) continue;
-				items.insert({sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
+				items.insert(PickerItem{sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
 			}
 		}
 	}
@@ -1934,12 +1965,12 @@ public:
 		for (const Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->owner != _local_company || HasBit(wp->waypoint_flags, WPF_ROAD)) continue;
 			if (!default_added && StationUsesDefaultType(wp)) {
-				items.insert({GrfID{}, 0, STAT_CLASS_WAYP.base(), 0});
+				items.insert(PickerItem{GrfID{}, 0, STAT_CLASS_WAYP.base(), 0});
 				default_added = true;
 			}
 			for (const auto &sm : wp->speclist) {
 				if (sm.spec == nullptr) continue;
-				items.insert({sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
+				items.insert(PickerItem{sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
 			}
 		}
 	}
