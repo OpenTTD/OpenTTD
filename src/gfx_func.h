@@ -221,8 +221,10 @@ void SetMouseCursorBusy(bool busy);
 void SetMouseCursor(CursorID cursor, PaletteID pal);
 void SetAnimatedMouseCursor(std::span<const AnimCursor> table);
 void SetCursor(CursorID cursor, PaletteID pal);
+void SetComposedCursor(CursorID icon);
 void CursorTick();
 void UpdateCursorSize();
+
 bool ChangeResInGame(int w, int h);
 void SortResolutions();
 bool ToggleFullScreen(bool fs);

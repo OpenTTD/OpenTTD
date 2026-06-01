@@ -82,12 +82,26 @@ void ResolveRoadTypeGUISprites(RoadTypeInfo *rti)
 		rti->gui_sprites.build_depot  = cursors_base +  3;
 		rti->gui_sprites.build_tunnel = cursors_base +  4;
 		rti->gui_sprites.convert_road = cursors_base +  5;
-		rti->cursor.road_swne         = cursors_base +  6;
-		rti->cursor.road_nwse         = cursors_base +  7;
-		rti->cursor.autoroad          = cursors_base +  8;
-		rti->cursor.depot             = cursors_base +  9;
-		rti->cursor.tunnel            = cursors_base + 10;
-		rti->cursor.convert_road      = cursors_base + 11;
+
+		/* Use GUI icon sprites (offsets 0-5) for composition by default,
+		 * or NewGRF-provided cursor sprites (offsets 6-11) when opted out via flag */
+		if (rti->UseComposedCursors()) {
+			/* Use GUI icon sprites (offsets 0-5) for composition */
+			rti->cursor.road_swne         = cursors_base +  1;  /* build_x_road */
+			rti->cursor.road_nwse         = cursors_base +  0;  /* build_y_road */
+			rti->cursor.autoroad          = cursors_base +  2;  /* auto_road */
+			rti->cursor.depot             = cursors_base +  3;  /* build_depot */
+			rti->cursor.tunnel            = cursors_base +  4;  /* build_tunnel */
+			rti->cursor.convert_road      = cursors_base +  5;  /* convert_road */
+		} else {
+			/* Opted out - use NewGRF-provided cursor sprites (offsets 6-11) */
+			rti->cursor.road_swne         = cursors_base +  6;
+			rti->cursor.road_nwse         = cursors_base +  7;
+			rti->cursor.autoroad          = cursors_base +  8;
+			rti->cursor.depot             = cursors_base +  9;
+			rti->cursor.tunnel            = cursors_base + 10;
+			rti->cursor.convert_road      = cursors_base + 11;
+		}
 	}
 }
 

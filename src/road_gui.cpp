@@ -385,7 +385,7 @@ struct BuildRoadToolbarWindow : Window {
 			bool close_build_station = this->ModifyRoadType(_cur_roadtype);
 
 			/* Update cursor and all sub windows. */
-			if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
+			if (_thd.GetCallbackWnd() == this) this->SetRoadCursor(this->last_started_action);
 			for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
 				SetWindowDirty(cls, TransportType::Road);
 			}
@@ -576,6 +576,33 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
+	/**
+	 * Set the cursor for a given widget, using composed cursor when applicable.
+	 * @param widget Widget ID of the button whose cursor to set.
+	 */
+	void SetRoadCursor(WidgetID widget)
+	{
+		CursorID cursor = this->GetCursorForWidget(widget);
+		bool uses_road_cursor;
+		switch (widget) {
+			case WID_ROT_ROAD_X:
+			case WID_ROT_ROAD_Y:
+			case WID_ROT_AUTOROAD:
+			case WID_ROT_DEPOT:
+			case WID_ROT_BUILD_TUNNEL:
+			case WID_ROT_CONVERT_ROAD:
+				uses_road_cursor = true; break;
+			default:
+				uses_road_cursor = false; break;
+		}
+
+		if (uses_road_cursor && GetRoadTypeInfo(this->roadtype)->UseComposedCursors()) {
+			SetComposedCursor(cursor);
+		} else {
+			SetCursor(cursor, PAL_NONE);
+		}
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		bool started;
@@ -585,6 +612,9 @@ struct BuildRoadToolbarWindow : Window {
 		if (widget != WID_ROT_ONE_WAY && widget != WID_ROT_REMOVE) {
 			started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
 			this->last_started_action = widget;
+
+			/* Override cursor with composed version when composed cursors are enabled */
+			if (started) this->SetRoadCursor(widget);
 		}
 
 		switch (widget) {
@@ -652,7 +682,7 @@ struct BuildRoadToolbarWindow : Window {
 		}
 		this->ModifyRoadType(_cur_roadtype);
 
-		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
+		if (_thd.GetCallbackWnd() == this) this->SetRoadCursor(this->last_started_action);
 		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TransportType::Road);
 
 		return EventState::Handled;
