@@ -584,7 +584,7 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 
 static void ReverseShipIntoTrackdir(Ship *v, Trackdir trackdir)
 {
-	static constexpr Direction _trackdir_to_direction[] = {
+	static constexpr TrackdirIndexArray<Direction> _trackdir_to_direction{
 		Direction::NE, Direction::SE, Direction::E, Direction::E, Direction::S, Direction::S, Direction::Invalid, Direction::Invalid,
 		Direction::SW, Direction::NW, Direction::W, Direction::W, Direction::N, Direction::N, Direction::Invalid, Direction::Invalid,
 	};
