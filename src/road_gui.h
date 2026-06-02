@@ -21,6 +21,5 @@ struct Window *ShowBuildRoadScenToolbar(RoadType roadtype);
 void ConnectRoadToStructure(TileIndex tile, DiagDirection direction);
 DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement = false, bool all_option = false);
 DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts);
-void InitializeRoadGUI();
 
 #endif /* ROAD_GUI_H */

@@ -2025,8 +2025,6 @@ void SetDefaultRailGui()
 	}
 
 	_last_built_railtype = _cur_railtype = rt;
-	BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WindowClass::BuildToolbar, TRANSPORT_RAIL));
-	if (w != nullptr) w->ModifyRailType(_cur_railtype);
 }
 
 /**
