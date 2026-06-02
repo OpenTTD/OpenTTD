@@ -16,7 +16,7 @@
 struct Window *ShowBuildRailToolbar(RailType railtype);
 void ReinitGuiAfterToggleElrail(bool disable);
 void ResetSignalVariant(int32_t = 0);
-void InitializeRailGUI();
+void InitializeSignalGui();
 DropDownList GetRailTypeDropDownList(bool for_replacement = false, bool all_option = false);
 void SetDefaultRailGui();
 

@@ -2056,7 +2056,7 @@ static const IntervalTimer<TimerGameCalendar> _check_reset_signal{{TimerGameCale
 /**
  * Resets the signal GUI.
  */
-void InitializeRailGUI()
+void InitializeSignalGui()
 {
 	_convert_signal_button = false;
 	_cur_signal_type = _settings_client.gui.default_signal_type;
