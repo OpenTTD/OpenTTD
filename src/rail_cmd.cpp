@@ -812,6 +812,16 @@ static const TileIndexDiffC _trackdelta[] = {
 	{  0,  0 }
 };
 
+/**
+ * Get the other Trackdir for a non-diagonal Trackdir.
+ * i.e. upper -> lower, left -> right, etc.
+ * @param trackdir the trackdir.
+ * @return The other trackdir.
+ */
+static Trackdir GetOtherTrackdir(Trackdir trackdir)
+{
+	return static_cast<Trackdir>(to_underlying(trackdir) ^ 1);
+}
 
 static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end)
 {
@@ -831,8 +841,8 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 	int trdy = _trackdelta[*trackdir].y;
 
 	if (!IsDiagonalTrackdir(*trackdir)) {
-		trdx += _trackdelta[*trackdir ^ 1].x;
-		trdy += _trackdelta[*trackdir ^ 1].y;
+		trdx += _trackdelta[GetOtherTrackdir(*trackdir)].x;
+		trdy += _trackdelta[GetOtherTrackdir(*trackdir)].y;
 	}
 
 	/* validate the direction */
@@ -909,7 +919,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 
 		/* toggle railbit for the non-diagonal tracks */
-		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
+		if (!IsDiagonalTrackdir(trackdir)) trackdir = GetOtherTrackdir(trackdir);
 	}
 
 	if (had_success) return total_cost;
@@ -1413,7 +1423,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlags flags, TileIndex tile, Ti
 			/* toggle railbit for the non-diagonal tracks (|, -- tracks) */
 
 			tile += ToTileIndexDiff(_trackdelta[trackdir]);
-			if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
+			if (!IsDiagonalTrackdir(trackdir)) trackdir = GetOtherTrackdir(trackdir);
 		}
 	}
 
