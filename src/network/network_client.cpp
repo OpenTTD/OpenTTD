@@ -888,7 +888,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapDone(Packet &)
 	/* New company/spectator (invalid company) or company we want to join is not active
 	 * Switch local company to spectator and await the server's judgement */
 	if (_network_join.company == COMPANY_NEW_COMPANY || !Company::IsValidID(_network_join.company)) {
-		SetLocalCompany(COMPANY_SPECTATOR);
+		SetLocalCompany(COMPANY_SPECTATOR, true);
 
 		if (_network_join.company != COMPANY_SPECTATOR) {
 			/* We have arrived and ready to start playing; send a command to make a new company;
@@ -900,7 +900,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapDone(Packet &)
 		}
 	} else {
 		/* take control over an existing company */
-		SetLocalCompany(_network_join.company);
+		SetLocalCompany(_network_join.company, true);
 	}
 
 	SocialIntegration::EventEnterMultiplayer(Map::SizeX(), Map::SizeY());

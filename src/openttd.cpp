@@ -845,7 +845,7 @@ static void OnStartGame(bool dedicated_server)
 {
 	/* Update the local company for a loaded game. It is either the first available company
 	 * or in the case of a dedicated server, a spectator */
-	SetLocalCompany(dedicated_server ? COMPANY_SPECTATOR : GetFirstPlayableCompanyID());
+	SetLocalCompany(dedicated_server ? COMPANY_SPECTATOR : GetFirstPlayableCompanyID(), true);
 
 	NetworkOnGameStart();
 

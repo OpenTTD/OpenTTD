@@ -18,7 +18,7 @@
 bool CheckTakeoverVehicleLimit(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
 std::array<StringParameter, 2> GetParamsForOwnedBy(Owner owner, TileIndex tile);
-void SetLocalCompany(CompanyID new_company);
+void SetLocalCompany(CompanyID new_company, bool switching_game = false);
 void ShowBuyCompanyDialog(CompanyID company, bool hostile_takeover);
 void CompanyAdminUpdate(const Company *company);
 void CompanyAdminBankrupt(CompanyID company_id);
