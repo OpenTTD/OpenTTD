@@ -1608,9 +1608,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 			}
 			if (flags.Test(DoCommandFlag::Execute)) { // we can safely convert, too
-				TrackBits reserved = GetReservedTrackbits(tile);
-				Track     track;
-				while ((track = RemoveFirstTrack(&reserved)) != INVALID_TRACK) {
+				for (Track track : SetTrackBitIterator(GetReservedTrackbits(tile))) {
 					Train *v = GetTrainForReservation(tile, track);
 					if (v != nullptr && !HasPowerOnRail(v->railtypes, totype)) {
 						/* No power on new rail type, reroute. */
@@ -1662,9 +1660,8 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					default: // RailTileType::Normal, RailTileType::Signals
 						if (flags.Test(DoCommandFlag::Execute)) {
 							/* notify YAPF about the track layout change */
-							TrackBits tracks = GetTrackBits(tile);
-							while (tracks != TRACK_BIT_NONE) {
-								YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
+							for (Track track : SetTrackBitIterator(GetTrackBits(tile))) {
+								YapfNotifyTrackLayoutChange(tile, track);
 							}
 						}
 						found_convertible_track = true;
@@ -1824,9 +1821,7 @@ static CommandCost ClearTile_Rail(TileIndex tile, DoCommandFlags flags)
 			/* Is there flat water on the lower halftile that gets cleared expensively? */
 			bool water_ground = (GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(tileh));
 
-			TrackBits tracks = GetTrackBits(tile);
-			while (tracks != TRACK_BIT_NONE) {
-				Track track = RemoveFirstTrack(&tracks);
+			for (Track track : SetTrackBitIterator(GetTrackBits(tile))) {
 				CommandCost ret = Command<Commands::RemoveRail>::Do(flags, tile, track);
 				if (ret.Failed()) return ret;
 				cost.AddCost(ret.GetCost());
