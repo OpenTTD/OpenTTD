@@ -115,9 +115,10 @@ Money Company::GetMaxLoan() const
  * Sets the local company and updates the settings that are set on a
  * per-company basis to reflect the core's state in the GUI.
  * @param new_company the new company
+ * @param switching_game Whether we are switching the game, e.g. a new game or loading a game.
  * @pre Company::IsValidID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE
  */
-void SetLocalCompany(CompanyID new_company)
+void SetLocalCompany(CompanyID new_company, bool switching_game)
 {
 	/* company could also be COMPANY_SPECTATOR or OWNER_NONE */
 	assert(Company::IsValidID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE);
@@ -137,16 +138,21 @@ void SetLocalCompany(CompanyID new_company)
 		InvalidateWindowClassesData(WindowClass::VehicleView);
 		/* Delete any construction windows... */
 		CloseConstructionWindows();
+	}
+
+	if (switching_company || switching_game) {
 		/* Update the default rail based on most used */
 		SetDefaultRailGui();
 	}
 
-	/* ... and redraw the whole screen. */
-	MarkWholeScreenDirty();
-	InvalidateWindowClassesData(WindowClass::SignList, -1);
-	InvalidateWindowClassesData(WindowClass::GoalList);
-	InvalidateWindowClassesData(WindowClass::CompanyLivery, -1);
-	ResetVehicleColourMap();
+	if (!switching_game) {
+		/* ... and redraw the whole screen. */
+		MarkWholeScreenDirty();
+		InvalidateWindowClassesData(WindowClass::SignList, -1);
+		InvalidateWindowClassesData(WindowClass::GoalList);
+		InvalidateWindowClassesData(WindowClass::CompanyLivery, -1);
+		ResetVehicleColourMap();
+	}
 }
 
 /**

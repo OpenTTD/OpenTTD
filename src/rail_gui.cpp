@@ -2054,13 +2054,10 @@ static const IntervalTimer<TimerGameCalendar> _check_reset_signal{{TimerGameCale
 }};
 
 /**
- * Resets the rail GUI - sets default railtype to build
- * and resets the signal GUI
+ * Resets the signal GUI.
  */
 void InitializeRailGUI()
 {
-	SetDefaultRailGui();
-
 	_convert_signal_button = false;
 	_cur_signal_type = _settings_client.gui.default_signal_type;
 	ResetSignalVariant();
