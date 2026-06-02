@@ -1821,15 +1821,6 @@ void InitializeRoadGui()
 	_waypoint_gui.sel_type = 0;
 }
 
-/**
- * I really don't know why rail_gui.cpp has this too, shouldn't be included in the other one?
- */
-void InitializeRoadGUI()
-{
-	BuildRoadToolbarWindow *w = dynamic_cast<BuildRoadToolbarWindow *>(FindWindowById(WindowClass::BuildToolbar, TRANSPORT_ROAD));
-	if (w != nullptr) w->ModifyRoadType(_cur_roadtype);
-}
-
 DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, bool all_option)
 {
 	RoadTypes used_roadtypes;

@@ -884,7 +884,6 @@ static void MakeNewGameDone()
 	OnStartGame(false);
 
 	InitializeRailGUI();
-	InitializeRoadGUI();
 
 	if (_settings_client.gui.pause_on_newgame) Command<Commands::Pause>::Post(PauseMode::Normal, true);
 
