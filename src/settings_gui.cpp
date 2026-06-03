@@ -43,6 +43,7 @@
 #include "rev.h"
 #include "video/video_driver.hpp"
 #include "music/music_driver.hpp"
+#include "music/sampled_music.h"
 #include "gui.h"
 #include "mixer.h"
 #include "newgrf_config.h"
@@ -1111,6 +1112,7 @@ struct GameOptionsWindow : Window {
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, 0, INT8_MAX, 0, vol)) {
 					if (widget == WID_GO_BASE_MUSIC_VOLUME) {
 						MusicDriver::GetInstance()->SetVolume(vol);
+						SetSampledMusicVolume(vol);
 					} else {
 						SetEffectVolume(vol);
 					}
