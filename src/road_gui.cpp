@@ -863,7 +863,7 @@ struct BuildRoadToolbarWindow : Window {
 	void OnPlacePresize([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		Command<Commands::BuildTunnel>::Do(DoCommandFlag::Auto, tile, TRANSPORT_ROAD, INVALID_RAILTYPE, _cur_roadtype);
-		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
+		VpSetPresizeRange(tile, _build_tunnel_endtile == INVALID_TILE ? tile : _build_tunnel_endtile);
 	}
 
 	EventState OnCTRLStateChange() override
