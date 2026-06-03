@@ -12,6 +12,7 @@
 #include "base_media_base.h"
 #include "base_media_music.h"
 #include "music/music_driver.hpp"
+#include "music/sampled_music.h"
 #include "window_gui.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -241,6 +242,7 @@ void MusicSystem::Play()
 	/* Always set the playing flag, even if there is no music */
 	_settings_client.music.playing = true;
 	MusicDriver::GetInstance()->StopSong();
+	StopSampledMusic();
 	/* Make sure playlist_position is a valid index, if playlist has changed etc. */
 	this->ChangePlaylistPosition(0);
 
@@ -249,7 +251,11 @@ void MusicSystem::Play()
 
 	MusicSongInfo song = this->active_playlist[this->playlist_position];
 	if (_game_mode == GameMode::Menu && this->selected_playlist == PLCH_THEMEONLY) song.loop = true;
-	MusicDriver::GetInstance()->PlaySong(song);
+	if (MusicTrackUsesSampledPlayback(song.filetype)) {
+		PlaySampledMusic(song, _settings_client.music.music_vol);
+	} else {
+		MusicDriver::GetInstance()->PlaySong(song);
+	}
 
 	InvalidateWindowData(WindowClass::Music, 0);
 }
@@ -258,6 +264,7 @@ void MusicSystem::Play()
 void MusicSystem::Stop()
 {
 	MusicDriver::GetInstance()->StopSong();
+	StopSampledMusic();
 	_settings_client.music.playing = false;
 
 	InvalidateWindowData(WindowClass::Music, 0);
@@ -290,7 +297,11 @@ void MusicSystem::CheckStatus()
 	}
 	if (this->active_playlist.empty()) return;
 	/* If we were supposed to be playing, but music has stopped, move to next song */
-	if (this->IsPlaying() && !MusicDriver::GetInstance()->IsSongPlaying()) this->Next();
+	if (this->IsPlaying()) {
+		const MusicSongInfo &song = this->active_playlist[this->playlist_position];
+		bool song_playing = MusicTrackUsesSampledPlayback(song.filetype) ? IsSampledMusicPlaying() : MusicDriver::GetInstance()->IsSongPlaying();
+		if (!song_playing) this->Next();
+	}
 }
 
 /**
@@ -837,6 +848,7 @@ struct MusicWindow : public Window {
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, 0, INT8_MAX, 0, vol)) {
 					if (widget == WID_M_MUSIC_VOL) {
 						MusicDriver::GetInstance()->SetVolume(vol);
+						SetSampledMusicVolume(vol);
 					} else {
 						SetEffectVolume(vol);
 					}
