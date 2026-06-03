@@ -320,7 +320,7 @@ static SigFlags ExploreSegment(Owner owner)
 					Track track = TrackBitsToTrack(tracks_masked); // mask TRACK_BIT_X and Y too
 					if (HasSignalOnTrack(tile, track)) { // now check whole track, not trackdir
 						SignalType sig = GetSignalType(tile, track);
-						Trackdir trackdir = (Trackdir)FindFirstBit((tracks * 0x101U) & _enterdir_to_trackdirbits[enterdir]);
+						Trackdir trackdir = static_cast<Trackdir>(FindFirstBit(TrackBitsToTrackdirBits(tracks) & _enterdir_to_trackdirbits[enterdir]));
 						Trackdir reversedir = ReverseTrackdir(trackdir);
 						/* add (tile, reversetrackdir) to 'to-be-updated' set when there is
 						 * ANY conventional signal in REVERSE direction
