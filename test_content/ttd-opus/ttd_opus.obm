@@ -1,0 +1,115 @@
+; Local Ogg Opus music set generated from the local ogg/ soundtrack folder.
+
+[metadata]
+name        = ttd_opus
+shortname   = TOPS
+version     = 1
+description = Local Transport Tycoon soundtrack encoded as Ogg Opus.
+
+[files]
+theme = ttd_01.opus
+old_0 = ttd_04.opus
+old_1 = ttd_07.opus
+old_2 = ttd_05.opus
+old_3 = ttd_14.opus
+old_4 = ttd_09.opus
+old_5 = ttd_13.opus
+old_6 = ttd_15.opus
+old_7 = ttd_12.opus
+old_8 =
+old_9 =
+new_0 = ttd_03.opus
+new_1 = ttd_02.opus
+new_2 = ttd_06.opus
+new_3 = ttd_16.opus
+new_4 = ttd_11.opus
+new_5 = ttd_17.opus
+new_6 = ttd_10.opus
+new_7 =
+new_8 =
+new_9 =
+ezy_0 = ttd_19.opus
+ezy_1 = ttd_20.opus
+ezy_2 = ttd_22.opus
+ezy_3 = ttd_18.opus
+ezy_4 = ttd_21.opus
+ezy_5 = ttd_08.opus
+ezy_6 =
+ezy_7 =
+ezy_8 =
+ezy_9 =
+
+[formats]
+theme = opus
+old_0 = opus
+old_1 = opus
+old_2 = opus
+old_3 = opus
+old_4 = opus
+old_5 = opus
+old_6 = opus
+old_7 = opus
+new_0 = opus
+new_1 = opus
+new_2 = opus
+new_3 = opus
+new_4 = opus
+new_5 = opus
+new_6 = opus
+ezy_0 = opus
+ezy_1 = opus
+ezy_2 = opus
+ezy_3 = opus
+ezy_4 = opus
+ezy_5 = opus
+
+[names]
+ttd_01.opus = Transport Tycoon Theme
+ttd_02.opus = Snarl Up
+ttd_03.opus = City Groove
+ttd_04.opus = Easy Driver
+ttd_05.opus = Little Red Diesel
+ttd_06.opus = Aliens Ate My Railway
+ttd_07.opus = Stoke It
+ttd_08.opus = Don't Walk!
+ttd_09.opus = Sawyer's Tune
+ttd_10.opus = Fell Apart On Me
+ttd_11.opus = Hard Drivin'
+ttd_12.opus = Can't Get There From Here
+ttd_13.opus = Hold That Train!
+ttd_14.opus = Road Hog
+ttd_15.opus = Broomer's Oil Rag
+ttd_16.opus = Goss Groove
+ttd_17.opus = Small Town
+ttd_18.opus = Cruise Control
+ttd_19.opus = Stroll On
+ttd_20.opus = Funk Central
+ttd_21.opus = Jammit
+ttd_22.opus = Movin' On
+
+[md5s]
+ttd_01.opus = ef116e8c1f91e3abc99b74ed1ead0eb7
+ttd_02.opus = d455dd00ce4a0c2a58eba7d0ba2a3aee
+ttd_03.opus = 49590e596c47a7518d26193ad6e6ee73
+ttd_04.opus = 86b63ba808d015f29abb19801bb24949
+ttd_05.opus = b7c7f43791aa24bb1bc9f93514c453e2
+ttd_06.opus = e96580825241b719cf2687f3b8d7da30
+ttd_07.opus = c0afa66c8c091334a0b313545dac4a32
+ttd_08.opus = ace0960a8d292311bc255302a4b30ade
+ttd_09.opus = ca26aebbdf4b9869f93d550af26e76bd
+ttd_10.opus = a657485a5049a2a6b461fe46d058e990
+ttd_11.opus = c6e5c5660b6cf058129fb35a922c50fd
+ttd_12.opus = 00bde9e29f9ca3bf295381141f251178
+ttd_13.opus = f338721a8d6aa1380d47061c79565dc5
+ttd_14.opus = 0bbde03e70656dfc5563c760878e0bb2
+ttd_15.opus = de7418bab4099f30181f890e9cd428c9
+ttd_16.opus = 2861b9ef62903d7a0831cb2684dc9599
+ttd_17.opus = f2b12a2dd89d7edb411c43300689522a
+ttd_18.opus = f98a7fc2fb0451958ea3b3f3fe791289
+ttd_19.opus = f207a584cdc94c8f05270bd09912f050
+ttd_20.opus = 4e755ce9a11f28aaf4fe38184603b102
+ttd_21.opus = 70ed636a69552f943a0b505a2525f529
+ttd_22.opus = 1876786dd27c69dd9edf28817e4ad4af
+
+[origin]
+default = Local test soundtrack in test_content/ttd-opus.
