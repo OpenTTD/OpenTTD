@@ -103,6 +103,12 @@
 
 Point _tile_fract_coords;
 
+/* Road highlight state variables (defined in road_gui.cpp). */
+extern Axis _place_road_dir;
+extern Axis _place_road_autoroad_axis;
+extern bool _place_road_start_half_low;
+extern bool _place_road_end_half;
+
 
 ViewportSignKdtree _viewport_sign_kdtree{};
 static int _viewport_sign_maxwidth = 0;
@@ -187,6 +193,9 @@ struct ViewportDrawer {
 };
 
 static bool MarkViewportDirty(const Viewport &vp, int left, int top, int right, int bottom);
+static HighLightStyle GetAutoroadHT(int x, int y);
+static HighLightStyle GetLockedAutoroadStyle();
+static void CalcRoaddirsDrawstyle(int x, int y);
 
 static ViewportDrawer _vd;
 
@@ -941,7 +950,8 @@ static bool IsPartOfAutoLine(int px, int py)
 	px -= _thd.selstart.x;
 	py -= _thd.selstart.y;
 
-	if ((_thd.drawstyle & HT_DRAG_MASK) != HT_LINE) return false;
+	HighLightStyle drag_type = _thd.drawstyle & HT_DRAG_MASK;
+	if (drag_type != HT_LINE && drag_type != HT_ROAD_LINE) return false;
 
 	switch (_thd.drawstyle & HT_DIR_MASK) {
 		case HT_DIR_X:  return py == 0; // x direction
@@ -1000,6 +1010,42 @@ static void DrawAutorailSelection(const TileInfo *ti, HighLightStyle highlight_s
 	}
 
 	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti, 7, foundation_part);
+}
+
+#include "table/autoroad.h"
+
+/**
+ * Draws autoroad highlights.
+ * @param ti Tile that is being drawn.
+ * @param autoroad_type Road direction index (HT_RD_DIR_*) for the sprite lookup.
+ */
+static void DrawAutoroadSelection(const TileInfo *ti, uint autoroad_type)
+{
+	SpriteID image;
+	PaletteID pal;
+	int offset;
+	int z_offset;
+
+	FoundationPart foundation_part = FoundationPart::Normal;
+	Slope autoroad_tileh = RemoveHalftileSlope(ti->tileh);
+	if (IsHalftileSlope(ti->tileh)) {
+		/* Use the three-corners-raised slope for highlights on halftile terrain. */
+		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
+		foundation_part = FoundationPart::Halftile;
+		autoroad_tileh = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
+	}
+
+	offset = _AutoroadTilehSprite[autoroad_tileh][autoroad_type];
+	z_offset = _AutoroadTilehZOffset[autoroad_tileh][autoroad_type];
+	if (offset >= 0) {
+		image = SPR_AUTOROAD_BASE + offset;
+		pal = PAL_NONE;
+	} else {
+		image = SPR_AUTOROAD_BASE - offset;
+		pal = PALETTE_SEL_TILE_RED;
+	}
+
+	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti, z_offset, foundation_part);
 }
 
 /** Types of tile highlight. */
@@ -1166,6 +1212,41 @@ draw_inner:
 			HighLightStyle type = _thd.drawstyle & HT_DIR_MASK;
 			assert(type < HT_DIR_END);
 			DrawAutorailSelection(ti, _autorail_type[type][0]);
+		} else if (_thd.drawstyle & HT_ROAD) {
+			/* Autoroad highlight under cursor. */
+			HighLightStyle type = _thd.drawstyle & HT_RD_DIR_MASK;
+			assert(type < HT_RD_DIR_END);
+			DrawAutoroadSelection(ti, type);
+		} else if ((_thd.drawstyle & HT_DRAG_MASK) == HT_ROAD_LINE && IsPartOfAutoLine(ti->x, ti->y)) {
+			/* Autoroad line highlighting on drag. */
+			HighLightStyle dir = _thd.drawstyle & HT_DIR_MASK;
+			assert(dir < HT_DIR_END);
+
+			bool is_x_dir = dir == HT_DIR_X || dir == HT_RD_DIR_X_SW || dir == HT_RD_DIR_X_NE;
+			TileIndex start = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
+			TileIndex end   = TileVirtXY(_thd.selend.x, _thd.selend.y);
+
+			if ((is_x_dir && TileX(start) == TileX(end)) || (!is_x_dir && TileY(start) == TileY(end))) {
+				/* Drag within start tile or row/column of tiles perpendicular to build direction. */
+				DrawAutoroadSelection(ti, dir);
+			} else if (ti->tile == start) {
+				/* Half tile for start of the line. */
+				if (is_x_dir) {
+					DrawAutoroadSelection(ti, end > start ? HT_RD_DIR_X_SW : HT_RD_DIR_X_NE);
+				} else {
+					DrawAutoroadSelection(ti, end > start ? HT_RD_DIR_Y_SE : HT_RD_DIR_Y_NW);
+				}
+			} else if (ti->tile == end) {
+				/* Half tile for end of the line. */
+				if (is_x_dir) {
+					DrawAutoroadSelection(ti, end > start ? HT_RD_DIR_X_NE : HT_RD_DIR_X_SW);
+				} else {
+					DrawAutoroadSelection(ti, end > start ? HT_RD_DIR_Y_NW : HT_RD_DIR_Y_SE);
+				}
+			} else {
+				/* Full tile for the middle of the line. */
+				DrawAutoroadSelection(ti, is_x_dir ? HT_RD_DIR_X : HT_RD_DIR_Y);
+			}
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
 			/* autorail highlighting long line */
 			HighLightStyle dir = _thd.drawstyle & HT_DIR_MASK;
@@ -2648,6 +2729,17 @@ static HighLightStyle GetAutorailHT(int x, int y)
 }
 
 /**
+ * Determine the best highlight style for autoroad on a single tile.
+ * @param x The map X-coordinate.
+ * @param y The map Y-coordinate.
+ * @return The best highlight style.
+ */
+static HighLightStyle GetAutoroadHT(int x, int y)
+{
+	return HT_ROAD | _autoroad_piece[x & TILE_UNIT_MASK][y & TILE_UNIT_MASK];
+}
+
+/**
  * Reset tile highlighting.
  */
 void TileHighlightData::Reset()
@@ -2656,6 +2748,8 @@ void TileHighlightData::Reset()
 	this->pos.y = 0;
 	this->new_pos.x = 0;
 	this->new_pos.y = 0;
+	this->place_start.x = 0;
+	this->place_start.y = 0;
 }
 
 /**
@@ -2738,6 +2832,19 @@ void UpdateTileSelection()
 					/* Draw one highlighted tile in any direction */
 					new_drawstyle = GetAutorailHT(pt.x, pt.y);
 					break;
+				case HT_ROAD: {
+					if (_thd.select_method == VPM_ROAD_FIX_X) {
+						/* Draw one half tile highlight in X direction */
+						new_drawstyle = HT_ROAD | ((pt.y & TILE_UNIT_MASK) < (int)(TILE_SIZE/2) ? HT_RD_DIR_Y_NW : HT_RD_DIR_Y_SE);
+					} else if (_thd.select_method == VPM_ROAD_FIX_Y) {
+						/* Draw one half tile highlight in Y direction */
+						new_drawstyle = HT_ROAD | ((pt.x & TILE_UNIT_MASK) < (int)(TILE_SIZE/2) ? HT_RD_DIR_X_NE : HT_RD_DIR_X_SW);
+					} else {
+						/* Autoroad, use highlight table for direction selection */
+						new_drawstyle = GetAutoroadHT(pt.x, pt.y);
+					}
+					break;
+				}
 				case HT_LINE:
 					switch (_thd.place_mode & HT_DIR_MASK) {
 						case HT_DIR_X: new_drawstyle = HT_LINE | HT_DIR_X; break;
@@ -2757,6 +2864,18 @@ void UpdateTileSelection()
 					}
 					_thd.selstart.x = x1 & ~TILE_UNIT_MASK;
 					_thd.selstart.y = y1 & ~TILE_UNIT_MASK;
+					break;
+				case HT_ROAD_LINE:
+					/* Draw one highlighted half tile in either X or Y direction */
+					switch (_thd.place_mode & HT_DIR_MASK) {
+						case HT_DIR_X: new_drawstyle = HT_ROAD_LINE | (_tile_fract_coords.x < (int)(TILE_SIZE/2) ? HT_RD_DIR_X_NE : HT_RD_DIR_X_SW); break;
+						case HT_DIR_Y: new_drawstyle = HT_ROAD_LINE | (_tile_fract_coords.y < (int)(TILE_SIZE/2) ? HT_RD_DIR_Y_NW : HT_RD_DIR_Y_SE); break;
+						default: NOT_REACHED();
+					}
+					_thd.selstart.x = x1 & ~TILE_UNIT_MASK;
+					_thd.selstart.y = y1 & ~TILE_UNIT_MASK;
+					_thd.selend.x = x1 & ~TILE_UNIT_MASK;
+					_thd.selend.y = y1 & ~TILE_UNIT_MASK;
 					break;
 				default:
 					NOT_REACHED();
@@ -2818,6 +2937,12 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 	_thd.selend.y = TileY(tile) * TILE_SIZE;
 	_thd.selstart.y = TileY(tile) * TILE_SIZE;
 
+	/* Record coordinates of mouse down event for road tools. */
+	if (method == VPM_ROADDIRS || method == (VPM_FIX_X | VPM_ROADDIRS) || method == (VPM_FIX_Y | VPM_ROADDIRS)) {
+		_thd.place_start.x = _thd.selstart.x;
+		_thd.place_start.y = _thd.selstart.y;
+	}
+
 	/* Needed so several things (road, autoroad, bridges, ...) are placed correctly.
 	 * In effect, placement starts from the centre of a tile
 	 */
@@ -2832,7 +2957,7 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 	if ((_thd.place_mode & HT_DRAG_MASK) == HT_RECT) {
 		_thd.place_mode = HT_SPECIAL | others;
 		_thd.next_drawstyle = HT_RECT | others;
-	} else if (_thd.place_mode & (HT_RAIL | HT_LINE)) {
+	} else if (_thd.place_mode & (HT_RAIL | HT_ROAD | HT_LINE | HT_ROAD_LINE)) {
 		_thd.place_mode = HT_SPECIAL | others;
 		_thd.next_drawstyle = _thd.drawstyle | others;
 	} else {
@@ -2951,7 +3076,9 @@ static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex 
 
 	switch (style & HT_DRAG_MASK) {
 		case HT_RAIL:
-		case HT_LINE: return (end_x > start_x || (end_x == start_x && end_y > start_y));
+		case HT_LINE:
+		case HT_ROAD:
+		case HT_ROAD_LINE: return (end_x > start_x || (end_x == start_x && end_y > start_y));
 
 		case HT_RECT:
 		case HT_POINT: return (end_x != start_x && end_y < start_y);
@@ -2999,10 +3126,13 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			[[fallthrough]];
 
 		case HT_POINT:
+		case HT_ROAD:
 			h0 = TileHeight(start_tile);
 			h1 = TileHeight(end_tile);
 			break;
-		default: { // All other types, this is mostly only line/autorail
+
+		case HT_ROAD_LINE:
+		default: { // HT_LINE (autorail)
 			static const HighLightStyle flip_style_direction[] = {
 				HT_DIR_X, HT_DIR_Y, HT_DIR_HL, HT_DIR_HU, HT_DIR_VR, HT_DIR_VL
 			};
@@ -3087,10 +3217,107 @@ static void CheckOverflow(int &test, int &other, int max, int mult)
 }
 
 /**
- * Determine and set the draw style, as well as the end point of the drag.
- * @param x The current X-coordinate of the mouse in map coordinates.
- * @param y The current Y-coordinate of the mouse in map coordinates.
- * @param method The user chosen method for dragging rails (specific orientation, autorail).
+ * Determine the highlight style for autoroad on a single tile with axis locking.
+ * For within-tile drags, there are exactly two outcomes:
+ *   - Half tile highlight showing the starting half direction when mouse crossed center line
+ *   - Full tile highlight in the locked direction otherwise
+ * @return The highlight style direction (HT_RD_DIR_*) or HT_DIR_X/Y for full tile.
+ */
+static HighLightStyle GetLockedAutoroadStyle()
+{
+	/* Determine the locked axis from global state set during road placement. */
+	Axis locked_axis = _place_road_dir;
+	if (locked_axis == Axis::Invalid) {
+		/* Autoroad tool in single tile mode: use the axis lock at mouse down. */
+		locked_axis = _place_road_autoroad_axis;
+	}
+
+	/* Start direction is determined by which half the road starts on. */
+	bool half_tile = (_place_road_start_half_low != _place_road_end_half);
+
+	if (locked_axis == Axis::X) {
+		HighLightStyle start_dir = _place_road_start_half_low ? HT_RD_DIR_X_NE : HT_RD_DIR_X_SW;
+		return half_tile ? start_dir : HT_RD_DIR_X;
+	}
+	HighLightStyle start_dir = _place_road_start_half_low ? HT_RD_DIR_Y_NW : HT_RD_DIR_Y_SE;
+	return half_tile ? start_dir : HT_RD_DIR_Y;
+}
+
+/**
+ * Calculate highlight drawstyle for autoroad placement.
+ * Determines which axis the user intends to build along based on drag direction.
+ * Fixed-axis road tools use dedicated switch cases and do not call this function.
+ * @param x X coordinate of end of selection.
+ * @param y Y coordinate of end of selection.
+ */
+static void CalcRoaddirsDrawstyle(int x, int y)
+{
+	HighLightStyle b = HT_NONE;
+
+	int dx = _thd.place_start.x - (_thd.selend.x & ~TILE_UNIT_MASK);
+	int dy = _thd.place_start.y - (_thd.selend.y & ~TILE_UNIT_MASK);
+	uint w = abs(dx) + TILE_SIZE;
+	uint h = abs(dy) + TILE_SIZE;
+
+	if (TileVirtXY(_thd.place_start.x, _thd.place_start.y) == TileVirtXY(x, y)) {
+		/* Autoroad within a single tile */
+		b = HT_ROAD | GetLockedAutoroadStyle();
+	} else if (h == TILE_SIZE) {
+		/* Drag is along X direction */
+		b = HT_ROAD_LINE | HT_RD_DIR_X;
+		y = _thd.selstart.y;
+	} else if (w == TILE_SIZE) {
+		/* Drag is along Y direction */
+		b = HT_ROAD_LINE | HT_RD_DIR_Y;
+		x = _thd.selstart.x;
+	} else if (w > h * 2) {
+		/* Still counts as X direction */
+		b = HT_ROAD_LINE | HT_RD_DIR_X;
+		y = _thd.selstart.y;
+	} else if (h > w * 2) {
+		/* Still counts as Y direction */
+		b = HT_ROAD_LINE | HT_RD_DIR_Y;
+		x = _thd.selstart.x;
+	} else {
+		/* Diagonal drag - snap to dominant axis */
+		if (w >= h) {
+			b = HT_ROAD_LINE | HT_RD_DIR_X;
+			y = _thd.selstart.y;
+		} else {
+			b = HT_ROAD_LINE | HT_RD_DIR_Y;
+			x = _thd.selstart.x;
+		}
+	}
+
+	if (_settings_client.gui.measure_tooltip) {
+		TileIndex t0 = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
+		TileIndex t1 = TileVirtXY(x, y);
+		uint distance = DistanceManhattan(t0, t1) + 1;
+
+		if (distance == 1) {
+			HideMeasurementTooltips();
+		} else {
+			int heightdiff = CalcHeightdiff(b, distance, t0, t1);
+
+			if (heightdiff == 0) {
+				ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_LENGTH, distance));
+			} else {
+				ShowMeasurementTooltips(GetEncodedString(STR_MEASURE_LENGTH_HEIGHTDIFF, distance, heightdiff));
+			}
+		}
+	}
+
+	_thd.selend.x = x;
+	_thd.selend.y = y;
+	_thd.next_drawstyle = b;
+}
+
+/**
+ * Calculate highlight drawstyle for autorail placement.
+ * Determines the rail direction to build based on drag geometry and selection method.
+ * @param x X coordinate of end of selection.
+ * @param y Y coordinate of end of selection.
+ * @param method ViewportPlaceMethod determining drag constraints.
  */
 static void CalcRaildirsDrawstyle(int x, int y, int method)
 {
@@ -3323,7 +3550,24 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 		return;
 	}
 
-	/* Special handling of drag in any (8-way) direction */
+	/* Autoroad uses axis detection */
+	if (method == VPM_ROADDIRS) {
+		_thd.selend.x = x;
+		_thd.selend.y = y;
+		CalcRoaddirsDrawstyle(x, y);
+		return;
+	}
+
+	/* Fixed axis road build directions */
+	if (method == (VPM_FIX_X | VPM_ROADDIRS)) {
+		method = VPM_ROAD_FIX_X;
+		_thd.select_method = method;
+	} else if (method == (VPM_FIX_Y | VPM_ROADDIRS)) {
+		method = VPM_ROAD_FIX_Y;
+		_thd.select_method = method;
+	}
+
+	/* Special handling of rail/signal drag in any (8-way) direction */
 	if (method & (VPM_RAILDIRS | VPM_SIGNALDIRS)) {
 		_thd.selend.x = x;
 		_thd.selend.y = y;
@@ -3356,6 +3600,56 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 		case VPM_X_LIMITED: // Drag in X direction (limited size).
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;
 			[[fallthrough]];
+
+		case VPM_ROAD_FIX_X: {
+			/* Road drag in Y direction */
+			TileIndex start_tile = TileVirtXY(_thd.place_start.x, _thd.place_start.y);
+			TileIndex end_tile = TileVirtXY(x, y);
+			bool same_tile = (start_tile == end_tile);
+			bool perpendicular = !same_tile && TileY(start_tile) == TileY(end_tile);
+
+			if (same_tile || perpendicular) {
+				/* Single-tile or perpendicular drag. */
+				bool current_half_low = (y & TILE_UNIT_MASK) < (int)(TILE_SIZE/2);
+				if (_place_road_start_half_low != current_half_low) {
+					style = HT_ROAD_LINE | HT_RD_DIR_Y;
+				} else {
+					style = HT_ROAD_LINE | (current_half_low ? HT_RD_DIR_Y_NW : HT_RD_DIR_Y_SE);
+				}
+				if (perpendicular) x = sx;
+			} else {
+				/* Build direction drag. */
+				style = HT_ROAD_LINE | HT_RD_DIR_Y;
+				x = sx;
+			}
+			_thd.next_drawstyle = style;
+			break;
+		}
+
+		case VPM_ROAD_FIX_Y: {
+			/* Road locked to X direction: y stays fixed, road extends along X axis */
+			TileIndex start_tile = TileVirtXY(_thd.place_start.x, _thd.place_start.y);
+			TileIndex end_tile = TileVirtXY(x, y);
+			bool same_tile = (start_tile == end_tile);
+			bool perpendicular = !same_tile && TileX(start_tile) == TileX(end_tile);
+
+			if (same_tile || perpendicular) {
+				/* Single-tile or perpendicular drag. */
+				bool current_half_low = (x & TILE_UNIT_MASK) < (int)(TILE_SIZE/2);
+				if (_place_road_start_half_low != current_half_low) {
+					style = HT_ROAD_LINE | HT_RD_DIR_X;
+				} else {
+					style = HT_ROAD_LINE | (current_half_low ? HT_RD_DIR_X_NE : HT_RD_DIR_X_SW);
+				}
+				if (perpendicular) y = sy;
+			} else {
+				/* Build direction drag. */
+				style = HT_ROAD_LINE | HT_RD_DIR_X;
+				y = sy;
+			}
+			_thd.next_drawstyle = style;
+			break;
+		}
 
 		case VPM_FIX_X: // drag in Y direction
 			x = sx;
@@ -3514,6 +3808,12 @@ EventState VpHandlePlaceSizingDrag()
 		_thd.place_mode = HT_RECT | others;
 	} else if (_thd.select_method & VPM_RAILDIRS) {
 		_thd.place_mode = (_thd.select_method & ~VPM_RAILDIRS) ? _thd.next_drawstyle : (HT_RAIL | others);
+	} else if (_thd.select_method == VPM_ROADDIRS) {
+		/* Pure autoroad */
+		_thd.place_mode = HT_ROAD | others;
+	} else if (_thd.select_method == VPM_ROAD_FIX_X || _thd.select_method == VPM_ROAD_FIX_Y) {
+		/* Fixed-axis road tool */
+		_thd.place_mode = HT_ROAD | others;
 	} else {
 		_thd.place_mode = HT_POINT | others;
 	}

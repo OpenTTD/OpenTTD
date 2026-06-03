@@ -48,6 +48,7 @@
 
 #include "widgets/road_widget.h"
 
+#include "table/autoroad.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -59,10 +60,10 @@ static void ShowBuildRoadWaypointPicker(Window *parent);
 static bool _remove_button_clicked;
 static bool _one_way_button_clicked;
 
-static Axis _place_road_dir;
-static bool _place_road_start_half_x;
-static bool _place_road_start_half_y;
-static bool _place_road_end_half;
+Axis _place_road_dir; ///< Road build direction (Axis::X or Axis::Y), or Axis::Invalid for autoroad.
+Axis _place_road_autoroad_axis; ///< Axis lock for single-tile autoroad drag (X or Y).
+bool _place_road_start_half_low; ///< True when the relevant coordinate < 8 on the active axis at mouse-down.
+bool _place_road_end_half; ///< True when the end half-road bit is set for the current placement.
 
 static RoadType _cur_roadtype;
 
@@ -542,9 +543,9 @@ struct BuildRoadToolbarWindow : Window {
 	HighLightStyle GetHighLightStyleForWidget(WidgetID widget)
 	{
 		switch (widget) {
-			case WID_ROT_ROAD_X: return HT_RECT;
-			case WID_ROT_ROAD_Y: return HT_RECT;
-			case WID_ROT_AUTOROAD: return HT_RECT;
+			case WID_ROT_ROAD_X: return HT_ROAD;
+			case WID_ROT_ROAD_Y: return HT_ROAD;
+			case WID_ROT_AUTOROAD: return HT_ROAD;
 			case WID_ROT_DEMOLISH: return HT_RECT | HT_DIAGONAL;
 			case WID_ROT_DEPOT: return HT_RECT;
 			case WID_ROT_BUILD_WAYPOINT: return HT_RECT;
@@ -566,6 +567,13 @@ struct BuildRoadToolbarWindow : Window {
 		if (widget != WID_ROT_ONE_WAY && widget != WID_ROT_REMOVE) {
 			started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
 			this->last_started_action = widget;
+			/* Set select_method early so hover highlight knows the axis lock before first click */
+			switch (widget) {
+				case WID_ROT_ROAD_X: _thd.select_method = VPM_ROAD_FIX_Y; break;
+				case WID_ROT_ROAD_Y: _thd.select_method = VPM_ROAD_FIX_X; break;
+				case WID_ROT_AUTOROAD: _thd.select_method = VPM_ROADDIRS; break;
+				default: break;
+			}
 		}
 
 		switch (widget) {
@@ -653,22 +661,34 @@ struct BuildRoadToolbarWindow : Window {
 		switch (this->last_started_action) {
 			case WID_ROT_ROAD_X:
 				_place_road_dir = Axis::X;
-				_place_road_start_half_x = _tile_fract_coords.x >= 8;
-				VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_X_DIR);
+				_place_road_start_half_low = _tile_fract_coords.x < 8;
+				_place_road_end_half = !_place_road_start_half_low;
+				VpStartPlaceSizing(tile, VPM_FIX_Y | VPM_ROADDIRS, DDSP_PLACE_ROAD_X_DIR);
 				break;
 
 			case WID_ROT_ROAD_Y:
 				_place_road_dir = Axis::Y;
-				_place_road_start_half_y = _tile_fract_coords.y >= 8;
-				VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_Y_DIR);
+				_place_road_start_half_low = _tile_fract_coords.y < 8;
+				_place_road_end_half = !_place_road_start_half_low;
+				VpStartPlaceSizing(tile, VPM_FIX_X | VPM_ROADDIRS, DDSP_PLACE_ROAD_Y_DIR);
 				break;
 
-			case WID_ROT_AUTOROAD:
+			case WID_ROT_AUTOROAD: {
 				_place_road_dir = Axis::Invalid;
-				_place_road_start_half_x = _tile_fract_coords.x >= 8;
-				_place_road_start_half_y = _tile_fract_coords.y >= 8;
-				VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
+				/* Determine axis lock for single-tile drag from the autoroad piece table. */
+				HighLightStyle piece = _autoroad_piece[_tile_fract_coords.x][_tile_fract_coords.y];
+				if (piece == HT_RD_DIR_X_NE || piece == HT_RD_DIR_X_SW) {
+					_place_road_autoroad_axis = Axis::X;
+					_place_road_start_half_low = _tile_fract_coords.x < 8;
+				} else {
+					/* piece is Y_NW or Y_SE */
+					_place_road_autoroad_axis = Axis::Y;
+					_place_road_start_half_low = _tile_fract_coords.y < 8;
+				}
+				_place_road_end_half = false;
+				VpStartPlaceSizing(tile, VPM_ROADDIRS, DDSP_PLACE_AUTOROAD);
 				break;
+			}
 
 			case WID_ROT_DEMOLISH:
 				PlaceProc_DemolishArea(tile);
@@ -790,7 +810,7 @@ struct BuildRoadToolbarWindow : Window {
 				case DDSP_PLACE_ROAD_X_DIR:
 				case DDSP_PLACE_ROAD_Y_DIR:
 				case DDSP_PLACE_AUTOROAD: {
-					bool start_half = _place_road_dir == Axis::Y ? _place_road_start_half_y : _place_road_start_half_x;
+					bool start_half = !_place_road_start_half_low;
 
 					if (_remove_button_clicked) {
 						Command<Commands::RemoveRoadLong>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_remove_road, CcPlaySound_CONSTRUCTION_OTHER,

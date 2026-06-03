@@ -219,7 +219,12 @@ static const uint16_t AUTORAIL_SPRITE_COUNT = 55;
 static const SpriteID SPR_ELRAIL_BASE   = SPR_AUTORAIL_BASE + AUTORAIL_SPRITE_COUNT;
 static const uint16_t ELRAIL_SPRITE_COUNT = 48;
 
-static const SpriteID SPR_2CCMAP_BASE   = SPR_ELRAIL_BASE + ELRAIL_SPRITE_COUNT;
+/** Autoroad overlay sprites */
+static const SpriteID SPR_AUTOROAD_BASE   = SPR_ELRAIL_BASE + ELRAIL_SPRITE_COUNT;
+/** Number of autoroad overlay sprites */
+static const uint16_t AUTOROAD_SPRITE_COUNT = 10;
+
+static const SpriteID SPR_2CCMAP_BASE   = SPR_AUTOROAD_BASE + AUTOROAD_SPRITE_COUNT;
 static const uint16_t TWOCCMAP_SPRITE_COUNT = 256;
 
 /** shore tiles - action 05-0D */
