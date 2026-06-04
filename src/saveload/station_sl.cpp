@@ -33,7 +33,7 @@ static void UpdateWaypointOrder(Order &o)
 	if (!o.IsType(OT_GOTO_STATION)) return;
 
 	const Station *st = Station::Get(o.GetDestination().ToStationID());
-	if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) return;
+	if (!st->had_vehicle_of_type.Test(StationVehicleType::Waypoint)) return;
 
 	o.MakeGoToWaypoint(o.GetDestination().ToStationID());
 }
@@ -61,7 +61,7 @@ void MoveBuoysToWaypoints()
 
 	/* Now make the stations waypoints */
 	for (Station *st : Station::Iterate()) {
-		if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) continue;
+		if (!st->had_vehicle_of_type.Test(StationVehicleType::Waypoint)) continue;
 
 		StationID index    = st->index;
 		TileIndex xy       = st->xy;

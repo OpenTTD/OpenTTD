@@ -705,8 +705,8 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 {
 	if (v->IsBus()) {
 		/* Check if station was ever visited before */
-		if (!(st->had_vehicle_of_type & HVOT_BUS)) {
-			st->had_vehicle_of_type |= HVOT_BUS;
+		if (!st->had_vehicle_of_type.Test(StationVehicleType::Bus)) {
+			st->had_vehicle_of_type.Set(StationVehicleType::Bus);
 			AddVehicleNewsItem(
 				GetEncodedString(RoadTypeIsRoad(v->roadtype) ? STR_NEWS_FIRST_BUS_ARRIVAL : STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL, st->index),
 				(v->owner == _local_company) ? NewsType::ArrivalCompany : NewsType::ArrivalOther,
@@ -718,8 +718,8 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 		}
 	} else {
 		/* Check if station was ever visited before */
-		if (!(st->had_vehicle_of_type & HVOT_TRUCK)) {
-			st->had_vehicle_of_type |= HVOT_TRUCK;
+		if (!st->had_vehicle_of_type.Test(StationVehicleType::Truck)) {
+			st->had_vehicle_of_type.Set(StationVehicleType::Truck);
 			AddVehicleNewsItem(
 				GetEncodedString(RoadTypeIsRoad(v->roadtype) ? STR_NEWS_FIRST_TRUCK_ARRIVAL : STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL, st->index),
 				(v->owner == _local_company) ? NewsType::ArrivalCompany : NewsType::ArrivalOther,

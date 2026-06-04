@@ -61,17 +61,18 @@ using StationFacilities = EnumBitSet<StationFacility, uint8_t>;
 static constexpr StationFacility STATION_FACILITY_GHOST{6};
 
 /** The vehicles that may have visited a station */
-enum StationHadVehicleOfType : uint8_t {
-	HVOT_NONE     = 0,      ///< Station has seen no vehicles
-	HVOT_TRAIN    = 1 << 1, ///< Station has seen a train
-	HVOT_BUS      = 1 << 2, ///< Station has seen a bus
-	HVOT_TRUCK    = 1 << 3, ///< Station has seen a truck
-	HVOT_AIRCRAFT = 1 << 4, ///< Station has seen an aircraft
-	HVOT_SHIP     = 1 << 5, ///< Station has seen a ship
+enum class StationVehicleType : uint8_t {
+	Train = 1, ///< Station has seen a train
+	Bus = 2, ///< Station has seen a bus
+	Truck = 3, ///< Station has seen a truck
+	Aircraft = 4, ///< Station has seen an aircraft
+	Ship = 5, ///< Station has seen a ship
 
-	HVOT_WAYPOINT = 1 << 6, ///< Station is a waypoint (NewGRF only!)
+	Waypoint = 6, ///< Station is a waypoint (Save load conversion and NewGRF only!)
 };
-DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType)
+
+/** Bitset of \c StationVehicleType elements. */
+using StationVehicleTypes = EnumBitSet<StationVehicleType, uint8_t>;
 
 /** Randomisation triggers for stations and roadstops */
 enum class StationRandomTrigger : uint8_t {

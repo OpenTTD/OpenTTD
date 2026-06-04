@@ -1415,8 +1415,8 @@ static void AircraftEntersTerminal(Aircraft *v)
 	v->last_station_visited = v->targetairport;
 
 	/* Check if station was ever visited before */
-	if (!(st->had_vehicle_of_type & HVOT_AIRCRAFT)) {
-		st->had_vehicle_of_type |= HVOT_AIRCRAFT;
+	if (!st->had_vehicle_of_type.Test(StationVehicleType::Aircraft)) {
+		st->had_vehicle_of_type.Set(StationVehicleType::Aircraft);
 		/* show newsitem of celebrating citizens */
 		AddVehicleNewsItem(
 			GetEncodedString(STR_NEWS_FIRST_AIRCRAFT_ARRIVAL, st->index),

@@ -440,8 +440,8 @@ static uint ShipAccelerate(Vehicle *v)
 static void ShipArrivesAt(const Vehicle *v, Station *st)
 {
 	/* Check if station was ever visited before */
-	if (!(st->had_vehicle_of_type & HVOT_SHIP)) {
-		st->had_vehicle_of_type |= HVOT_SHIP;
+	if (!st->had_vehicle_of_type.Test(StationVehicleType::Ship)) {
+		st->had_vehicle_of_type.Set(StationVehicleType::Ship);
 
 		AddVehicleNewsItem(
 			GetEncodedString(STR_NEWS_FIRST_SHIP_ARRIVAL, st->index),
