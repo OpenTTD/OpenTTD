@@ -976,9 +976,9 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 	FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
 	Slope autorail_tileh = RemoveHalftileSlope(ti->tileh);
 	if (IsHalftileSlope(ti->tileh)) {
-		static const uint _lower_rail[4] = { 5U, 2U, 4U, 3U };
+		static constexpr CornerIndexArray<uint> lower_rail = {5U, 2U, 4U, 3U};
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
-		if (autorail_type != _lower_rail[halftile_corner]) {
+		if (autorail_type != lower_rail[halftile_corner]) {
 			foundation_part = FOUNDATION_PART_HALFTILE;
 			/* Here we draw the highlights of the "three-corners-raised"-slope. That looks ok to me. */
 			autorail_tileh = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));

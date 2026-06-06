@@ -2064,14 +2064,14 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, Palett
 	}
 }
 
-/* SubSprite for drawing the track halftile of 'three-corners-raised'-sloped rail sprites. */
 static const int INF = 1000; ///< Big number compared to tilesprite size.
-static const SubSprite _halftile_sub_sprite[4] = {
+/** SubSprite for drawing the track halftile of 'three-corners-raised'-sloped rail sprites. */
+static constexpr CornerIndexArray<SubSprite> _halftile_sub_sprite = {{{
 	{ -INF    , -INF  , 32 - 33, INF     }, // CORNER_W, clip 33 pixels from right
 	{ -INF    ,  0 + 7, INF    , INF     }, // CORNER_S, clip 7 pixels from top
 	{ -31 + 33, -INF  , INF    , INF     }, // CORNER_E, clip 33 pixels from left
 	{ -INF    , -INF  , INF    , 30 - 23 }  // CORNER_N, clip 23 pixels from bottom
-};
+}}};
 
 static inline void DrawTrackSprite(SpriteID sprite, PaletteID pal, const TileInfo *ti, Slope s)
 {
@@ -2403,8 +2403,8 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
 
 		if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasReservedTracks(ti->tile, CornerToTrackBits(halftile_corner))) {
-			static const uint8_t _corner_to_track_sprite[] = {3, 1, 2, 0};
-			DrawGroundSprite(_corner_to_track_sprite[halftile_corner] + rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, -(int)TILE_HEIGHT);
+			static constexpr CornerIndexArray<uint8_t> corner_to_track_sprite = {3, 1, 2, 0};
+			DrawGroundSprite(corner_to_track_sprite[halftile_corner] + rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, -static_cast<int>(TILE_HEIGHT));
 		}
 	}
 }
