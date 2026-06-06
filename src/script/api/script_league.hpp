@@ -33,12 +33,12 @@ public:
 	 * The type of a link.
 	 */
 	enum LinkType : uint8_t {
-		LINK_NONE = ::LT_NONE,             ///< No link
-		LINK_TILE = ::LT_TILE,             ///< Link a tile
-		LINK_INDUSTRY = ::LT_INDUSTRY,     ///< Link an industry
-		LINK_TOWN = ::LT_TOWN,             ///< Link a town
-		LINK_COMPANY = ::LT_COMPANY,       ///< Link a company
-		LINK_STORY_PAGE = ::LT_STORY_PAGE, ///< Link a story page
+		LINK_NONE = to_underlying(::LinkType::None), ///< No link
+		LINK_TILE = to_underlying(::LinkType::Tile), ///< Link a tile
+		LINK_INDUSTRY = to_underlying(::LinkType::Industry), ///< Link an industry
+		LINK_TOWN = to_underlying(::LinkType::Town), ///< Link a town
+		LINK_COMPANY = to_underlying(::LinkType::Company), ///< Link a company
+		LINK_STORY_PAGE = to_underlying(::LinkType::StoryPage), ///< Link a story page
 	};
 
 	/**
