@@ -1556,7 +1556,7 @@ public:
 		const RailTypeInfo *rti = GetRailTypeInfo(_cur_railtype);
 		for (SignalType type = SignalType::Block; type < SignalType::End; type = static_cast<SignalType>(to_underlying(type) + 1)) {
 			for (SignalVariant variant : {SignalVariant::Electric, SignalVariant::Semaphore}) {
-				for (SignalState state : {SIGNAL_STATE_RED, SIGNAL_STATE_GREEN}) {
+				for (SignalState state : {SignalState::Red, SignalState::Green}) {
 					Point offset;
 					Dimension sprite_size = GetSpriteSize(rti->gui_sprites.signals[type][variant][state], &offset);
 					this->sig_sprite_bottom_offset = std::max<int>(this->sig_sprite_bottom_offset, sprite_size.height);

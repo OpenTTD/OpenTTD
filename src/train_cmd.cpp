@@ -2318,7 +2318,7 @@ static void CheckNextTrainTile(Train *consist)
 	Trackdir td = moving_front->GetVehicleTrackdir();
 
 	/* On a tile with a red non-pbs signal, don't look ahead. */
-	if (HasBlockSignalOnTrackdir(moving_front->tile, td) && GetSignalStateByTrackdir(moving_front->tile, td) == SIGNAL_STATE_RED) return;
+	if (HasBlockSignalOnTrackdir(moving_front->tile, td) && GetSignalStateByTrackdir(moving_front->tile, td) == SignalState::Red) return;
 
 	CFollowTrackRail ft(consist);
 	if (!ft.Follow(moving_front->tile, td)) return;
@@ -2502,12 +2502,12 @@ void FreeTrainTrackReservation(const Train *consist)
 				break;
 			}
 			if (HasPbsSignalOnTrackdir(tile, td)) {
-				if (GetSignalStateByTrackdir(tile, td) == SIGNAL_STATE_RED) {
+				if (GetSignalStateByTrackdir(tile, td) == SignalState::Red) {
 					/* Red PBS signal? Can't be our reservation, would be green then. */
 					break;
 				} else {
 					/* Turn the signal back to red. */
-					SetSignalStateByTrackdir(tile, td, SIGNAL_STATE_RED);
+					SetSignalStateByTrackdir(tile, td, SignalState::Red);
 					MarkTileDirtyByTile(tile);
 				}
 			} else if (HasPbsSignalOnTrackdir(tile, ReverseTrackdir(td))) {
@@ -2604,9 +2604,9 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 			bool wp_free = IsWaitingPositionFree(v, tile, cur_td, _settings_game.pf.forbid_90_deg);
 			if (!(wp_free && TryReserveRailTrack(tile, TrackdirToTrack(cur_td)))) break;
 			/* Green path signal opposing the path? Turn to red. */
-			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
+			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SignalState::Green) {
 				signals_set_to_red.emplace_back(tile, rev_td);
-				SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
+				SetSignalStateByTrackdir(tile, rev_td, SignalState::Red);
 				MarkTileDirtyByTile(tile);
 			}
 			/* Safe position is all good, path valid and okay. */
@@ -2616,9 +2616,9 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 		if (!TryReserveRailTrack(tile, TrackdirToTrack(cur_td))) break;
 
 		/* Green path signal opposing the path? Turn to red. */
-		if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
+		if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SignalState::Green) {
 			signals_set_to_red.emplace_back(tile, rev_td);
-			SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
+			SetSignalStateByTrackdir(tile, rev_td, SignalState::Red);
 			MarkTileDirtyByTile(tile);
 		}
 	}
@@ -2650,7 +2650,7 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 
 	/* Re-instate green signals we turned to red. */
 	for (auto [sig_tile, td] : signals_set_to_red) {
-		SetSignalStateByTrackdir(sig_tile, td, SIGNAL_STATE_GREEN);
+		SetSignalStateByTrackdir(sig_tile, td, SignalState::Green);
 	}
 
 	/* Path invalid. */
@@ -2791,7 +2791,7 @@ static Track ChooseTrainTrack(Train *consist, TileIndex tile, DiagDirection ente
 		if (IsValidTrack(track) && HasPbsSignalOnTrackdir(tile, TrackEnterdirToTrackdir(track, enterdir))) {
 			do_track_reservation = true;
 			changed_signal = true;
-			SetSignalStateByTrackdir(tile, TrackEnterdirToTrackdir(track, enterdir), SIGNAL_STATE_GREEN);
+			SetSignalStateByTrackdir(tile, TrackEnterdirToTrackdir(track, enterdir), SignalState::Green);
 		} else if (!do_track_reservation) {
 			return track;
 		}
@@ -2807,7 +2807,7 @@ static Track ChooseTrainTrack(Train *consist, TileIndex tile, DiagDirection ente
 		if (res_dest.tile == INVALID_TILE) {
 			/* Reservation failed? */
 			if (mark_stuck) MarkTrainAsStuck(consist);
-			if (changed_signal) SetSignalStateByTrackdir(tile, TrackEnterdirToTrackdir(best_track, enterdir), SIGNAL_STATE_RED);
+			if (changed_signal) SetSignalStateByTrackdir(tile, TrackEnterdirToTrackdir(best_track, enterdir), SignalState::Red);
 			return FindFirstTrack(tracks);
 		}
 		if (res_dest.okay) {
@@ -3531,7 +3531,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					Track track = FindFirstTrack(chosen_track);
 					Trackdir tdir = TrackDirectionToTrackdir(track, chosen_dir);
 					if (v->IsMovingFront() && HasPbsSignalOnTrackdir(gp.new_tile, tdir)) {
-						SetSignalStateByTrackdir(gp.new_tile, tdir, SIGNAL_STATE_RED);
+						SetSignalStateByTrackdir(gp.new_tile, tdir, SignalState::Red);
 						MarkTileDirtyByTile(gp.new_tile);
 					}
 

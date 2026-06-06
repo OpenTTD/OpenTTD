@@ -338,7 +338,7 @@ static SigFlags ExploreSegment(Owner owner)
 						if (!flags.Test(SigFlag::MultiGreen) && IsPresignalExit(tile, track) && HasSignalOnTrackdir(tile, trackdir)) { // found presignal exit
 							if (flags.Test(SigFlag::Exit)) flags.Set(SigFlag::MultiExit); // found two (or more) exits
 							flags.Set(SigFlag::Exit); // found at least one exit - allow for compiler optimizations
-							if (GetSignalStateByTrackdir(tile, trackdir) == SIGNAL_STATE_GREEN) { // found green presignal exit
+							if (GetSignalStateByTrackdir(tile, trackdir) == SignalState::Green) { // found green presignal exit
 								if (flags.Test(SigFlag::Green)) flags.Set(SigFlag::MultiGreen);
 								flags.Set(SigFlag::Green);
 							}
@@ -424,7 +424,7 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 
 		Track track = TrackdirToTrack(trackdir);
 		SignalType sig = GetSignalType(tile, track);
-		SignalState newstate = SIGNAL_STATE_GREEN;
+		SignalState newstate = SignalState::Green;
 
 		/* Signal state of reserved path signals is handled by the reserve/unreserve process. */
 		if (IsPbsSignal(sig) && (GetRailReservationTrackBits(tile) & TrackToTrackBits(track)) != TRACK_BIT_NONE) continue;
@@ -432,10 +432,10 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 		/* determine whether the new state is red */
 		if (flags.Test(SigFlag::Train)) {
 			/* train in the segment */
-			newstate = SIGNAL_STATE_RED;
+			newstate = SignalState::Red;
 		} else if (IsPbsSignal(sig) && flags.Any({SigFlag::Split, SigFlag::MultiEnter})) {
 			/* Turn path signals red if the segment has a junction or more than one way in. */
-			newstate = SIGNAL_STATE_RED;
+			newstate = SignalState::Red;
 		} else {
 			/* is it a bidir combo? - then do not count its other signal direction as exit */
 			if (sig == SignalType::Combo && HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
@@ -444,11 +444,11 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 						/* no green exit */
 						(!flags.Test(SigFlag::Green) ||
 						/* only one green exit, and it is this one - so all other exits are red */
-						(!flags.Test(SigFlag::MultiGreen) && GetSignalStateByTrackdir(tile, ReverseTrackdir(trackdir)) == SIGNAL_STATE_GREEN))) {
-					newstate = SIGNAL_STATE_RED;
+						(!flags.Test(SigFlag::MultiGreen) && GetSignalStateByTrackdir(tile, ReverseTrackdir(trackdir)) == SignalState::Green))) {
+					newstate = SignalState::Red;
 				}
 			} else { // entry, at least one exit, no green exit
-				if (IsPresignalEntry(tile, TrackdirToTrack(trackdir)) && flags.Test(SigFlag::Exit) && !flags.Test(SigFlag::Green)) newstate = SIGNAL_STATE_RED;
+				if (IsPresignalEntry(tile, TrackdirToTrack(trackdir)) && flags.Test(SigFlag::Exit) && !flags.Test(SigFlag::Green)) newstate = SignalState::Red;
 			}
 		}
 

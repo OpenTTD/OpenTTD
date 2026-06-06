@@ -214,7 +214,7 @@ public:
 
 					/* cache the look-ahead polynomial constant only if we didn't pass more signals than the look-ahead limit is */
 					int look_ahead_cost = (n.num_signals_passed < this->sig_look_ahead_costs.size()) ? this->sig_look_ahead_costs[n.num_signals_passed] : 0;
-					if (sig_state != SIGNAL_STATE_RED) {
+					if (sig_state != SignalState::Red) {
 						/* green signal */
 						n.flags_u.flags_s.last_signal_was_red = false;
 						/* negative look-ahead red-signal penalties would cause problems later, so use them as positive penalties for green signal */
@@ -376,7 +376,7 @@ public:
 					if (segment.last_signal_tile != INVALID_TILE) {
 						assert(HasSignalOnTrackdir(segment.last_signal_tile, segment.last_signal_td));
 						SignalState sig_state = GetSignalStateByTrackdir(segment.last_signal_tile, segment.last_signal_td);
-						bool is_red = (sig_state == SIGNAL_STATE_RED);
+						bool is_red = (sig_state == SignalState::Red);
 						n.flags_u.flags_s.last_signal_was_red = is_red;
 						if (is_red) {
 							n.last_red_signal_type = GetSignalType(segment.last_signal_tile, TrackdirToTrack(segment.last_signal_td));
