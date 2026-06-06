@@ -95,20 +95,20 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 	}
 
 	/* Array of default GUI signal sprite numbers. */
-	const SpriteID _signal_lookup[2][SIGTYPE_END] = {
+	const EnumIndexArray<EnumIndexArray<SpriteID, SignalType, SIGTYPE_END>, SignalVariant, SIG_END> _signal_lookup{{{
 		{SPR_IMG_SIGNAL_ELECTRIC_NORM,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY, SPR_IMG_SIGNAL_ELECTRIC_EXIT,
 		 SPR_IMG_SIGNAL_ELECTRIC_COMBO, SPR_IMG_SIGNAL_ELECTRIC_PBS,   SPR_IMG_SIGNAL_ELECTRIC_PBS_OWAY},
 
 		{SPR_IMG_SIGNAL_SEMAPHORE_NORM,  SPR_IMG_SIGNAL_SEMAPHORE_ENTRY, SPR_IMG_SIGNAL_SEMAPHORE_EXIT,
 		 SPR_IMG_SIGNAL_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_PBS,   SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY},
-	};
+	}}};
 
-	for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = (SignalType)(type + 1)) {
-		for (SignalVariant var = SIG_ELECTRIC; var <= SIG_SEMAPHORE; var = (SignalVariant)(var + 1)) {
-			SpriteID red   = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
+	for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = static_cast<SignalType>(to_underlying(type) + 1)) {
+		for (SignalVariant var : {SIG_ELECTRIC, SIG_SEMAPHORE}) {
+			SpriteID red = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
 			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
-			rti->gui_sprites.signals[type][var][0] = (red != 0)   ? red + SIGNAL_TO_SOUTH   : _signal_lookup[var][type];
-			rti->gui_sprites.signals[type][var][1] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
+			rti->gui_sprites.signals[type][var][SIGNAL_STATE_RED] = (red != 0) ? red + SIGNAL_TO_SOUTH : _signal_lookup[var][type];
+			rti->gui_sprites.signals[type][var][SIGNAL_STATE_GREEN] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
 		}
 	}
 }
@@ -2838,7 +2838,7 @@ static void GetTileDesc_Rail(TileIndex tile, TileDesc &td)
 			break;
 
 		case RailTileType::Signals: {
-			static const StringID signal_type[6][6] = {
+			static constexpr EnumIndexArray<EnumIndexArray<StringID, SignalType, SIGTYPE_END>, SignalType, SIGTYPE_END> signal_type{{{
 				{
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS,
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS,
@@ -2886,8 +2886,8 @@ static void GetTileDesc_Rail(TileIndex tile, TileDesc &td)
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS,
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS,
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS
-				}
-			};
+				},
+			}}};
 
 			SignalType primary_signal;
 			SignalType secondary_signal;

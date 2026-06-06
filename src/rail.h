@@ -147,7 +147,7 @@ public:
 		SpriteID build_depot;        ///< button for building depots
 		SpriteID build_tunnel;       ///< button for building a tunnel
 		SpriteID convert_rail;       ///< button for converting rail
-		SpriteID signals[SIGTYPE_END][2][2]; ///< signal GUI sprites (type, variant, state)
+		EnumIndexArray<EnumIndexArray<EnumIndexArray<SpriteID, SignalState, SIGNAL_STATE_END>, SignalVariant, SIG_END>, SignalType, SIGTYPE_END> signals; ///< signal GUI sprites (type, variant, state)
 	} gui_sprites;
 
 	struct {
