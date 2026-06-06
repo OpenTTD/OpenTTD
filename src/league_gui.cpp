@@ -208,28 +208,29 @@ static void HandleLinkClick(Link link)
 {
 	TileIndex xy;
 	switch (link.type) {
-		case LT_NONE: return;
+		case LinkType::None:
+			return;
 
-		case LT_TILE:
+		case LinkType::Tile:
 			if (!IsValidTile(link.target)) return;
 			xy = TileIndex{link.target};
 			break;
 
-		case LT_INDUSTRY:
+		case LinkType::Industry:
 			if (!Industry::IsValidID(link.target)) return;
 			xy = Industry::Get(link.target)->location.tile;
 			break;
 
-		case LT_TOWN:
+		case LinkType::Town:
 			if (!Town::IsValidID(link.target)) return;
 			xy = Town::Get(link.target)->xy;
 			break;
 
-		case LT_COMPANY:
+		case LinkType::Company:
 			ShowCompany((CompanyID)link.target);
 			return;
 
-		case LT_STORY_PAGE: {
+		case LinkType::StoryPage: {
 			if (!StoryPage::IsValidID(link.target)) return;
 			CompanyID story_company = StoryPage::Get(link.target)->company;
 			ShowStoryBook(story_company, static_cast<StoryPageID>(link.target));
