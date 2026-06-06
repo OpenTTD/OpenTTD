@@ -244,10 +244,10 @@ public:
 						/* special signal penalties */
 						if (n.num_signals_passed == 0) {
 							switch (sig_type) {
-								case SIGTYPE_COMBO:
-								case SIGTYPE_EXIT:   cost += Yapf().PfGetSettings().rail_firstred_exit_penalty; break; // first signal is red pre-signal-exit
-								case SIGTYPE_BLOCK:
-								case SIGTYPE_ENTRY:  cost += Yapf().PfGetSettings().rail_firstred_penalty; break;
+								case SignalType::Combo:
+								case SignalType::Exit:   cost += Yapf().PfGetSettings().rail_firstred_exit_penalty; break; // first signal is red pre-signal-exit
+								case SignalType::Block:
+								case SignalType::Entry:  cost += Yapf().PfGetSettings().rail_firstred_penalty; break;
 								default: break;
 							}
 						}
@@ -534,7 +534,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				if (HasSignalOnTrackdir(next.tile, next.td) && IsPbsSignal(GetSignalType(next.tile, TrackdirToTrack(next.td)))) {
 					/* Possible safe tile. */
 					end_segment_reason.Set(EndSegmentReason::SafeTile);
-				} else if (HasSignalOnTrackdir(next.tile, ReverseTrackdir(next.td)) && GetSignalType(next.tile, TrackdirToTrack(next.td)) == SIGTYPE_PBS_ONEWAY) {
+				} else if (HasSignalOnTrackdir(next.tile, ReverseTrackdir(next.td)) && GetSignalType(next.tile, TrackdirToTrack(next.td)) == SignalType::PathOneWay) {
 					/* Possible safe tile, but not so good as it's the back of a signal... */
 					end_segment_reason.Set({EndSegmentReason::SafeTile, EndSegmentReason::DeadEnd});
 					extra_cost += Yapf().PfGetSettings().rail_lastred_exit_penalty;
@@ -606,7 +606,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			n.flags_u.flags_s.target_seen = true;
 			/* Last-red and last-red-exit penalties. */
 			if (n.flags_u.flags_s.last_signal_was_red) {
-				if (n.last_red_signal_type == SIGTYPE_EXIT) {
+				if (n.last_red_signal_type == SignalType::Exit) {
 					/* last signal was red pre-signal-exit */
 					extra_cost += Yapf().PfGetSettings().rail_lastred_exit_penalty;
 				} else if (!IsPbsSignal(n.last_red_signal_type)) {

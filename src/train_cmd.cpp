@@ -3426,7 +3426,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						Trackdir dir = FindFirstTrackdir(trackdirbits);
 						if (HasSignalOnTrackdir(gp.new_tile, dir) ||
 								(HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(dir)) &&
-								GetSignalType(gp.new_tile, TrackdirToTrack(dir)) != SIGTYPE_PBS)) {
+								GetSignalType(gp.new_tile, TrackdirToTrack(dir)) != SignalType::Path)) {
 							/* However, we do not want to be stopped by PBS signals
 							 * entered via the back. */
 							first->force_proceed = (first->force_proceed == TFP_SIGNAL) ? TFP_STUCK : TFP_NONE;

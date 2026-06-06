@@ -95,7 +95,7 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 	}
 
 	/* Array of default GUI signal sprite numbers. */
-	const EnumIndexArray<EnumIndexArray<SpriteID, SignalType, SIGTYPE_END>, SignalVariant, SignalVariant::End> _signal_lookup{{{
+	const EnumIndexArray<EnumIndexArray<SpriteID, SignalType, SignalType::End>, SignalVariant, SignalVariant::End> _signal_lookup{{{
 		{SPR_IMG_SIGNAL_ELECTRIC_NORM,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY, SPR_IMG_SIGNAL_ELECTRIC_EXIT,
 		 SPR_IMG_SIGNAL_ELECTRIC_COMBO, SPR_IMG_SIGNAL_ELECTRIC_PBS,   SPR_IMG_SIGNAL_ELECTRIC_PBS_OWAY},
 
@@ -103,7 +103,7 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 		 SPR_IMG_SIGNAL_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_PBS,   SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY},
 	}}};
 
-	for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = static_cast<SignalType>(to_underlying(type) + 1)) {
+	for (SignalType type = SignalType::Block; type < SignalType::End; type = static_cast<SignalType>(to_underlying(type) + 1)) {
 		for (SignalVariant var : {SignalVariant::Electric, SignalVariant::Semaphore}) {
 			SpriteID red = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
 			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
@@ -1056,8 +1056,8 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
  */
 CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, uint8_t signals_copy)
 {
-	if (sigtype > SIGTYPE_LAST || sigvar > SignalVariant::Semaphore) return CMD_ERROR;
-	if (cycle_start > cycle_stop || cycle_stop > SIGTYPE_LAST) return CMD_ERROR;
+	if (sigtype >= SignalType::End || sigvar >= SignalVariant::End) return CMD_ERROR;
+	if (cycle_start > cycle_stop || cycle_stop >= SignalType::End) return CMD_ERROR;
 
 	if (ctrl_pressed) sigvar = (sigvar == SignalVariant::Electric ? SignalVariant::Semaphore : SignalVariant::Electric);
 
@@ -1154,7 +1154,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 
 				} else if (ctrl_pressed) {
 					/* cycle between cycle_start and cycle_end */
-					sigtype = (SignalType)(GetSignalType(tile, track) + 1);
+					sigtype = static_cast<SignalType>(to_underlying(GetSignalType(tile, track)) + 1);
 
 					if (sigtype < cycle_start || sigtype > cycle_stop) sigtype = cycle_start;
 
@@ -1267,7 +1267,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlags flags, TileIndex tile, Ti
 
 	if (end_tile >= Map::Size() || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
-	if (!remove && (sigtype > SIGTYPE_LAST || sigvar > SignalVariant::Semaphore)) return CMD_ERROR;
+	if (!remove && (sigtype >= SignalType::End || sigvar >= SignalVariant::End)) return CMD_ERROR;
 
 	if (!IsPlainRailTile(tile)) return CommandCost(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 	TileIndex start_tile = tile;
@@ -1296,7 +1296,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlags flags, TileIndex tile, Ti
 
 		sigtype = GetSignalType(tile, track);
 		/* Don't but copy entry or exit-signal type */
-		if (sigtype == SIGTYPE_ENTRY || sigtype == SIGTYPE_EXIT) sigtype = SIGTYPE_BLOCK;
+		if (sigtype == SignalType::Entry || sigtype == SignalType::Exit) sigtype = SignalType::Block;
 	} else { // no signals exist, drag a two-way signal stretch
 		signals = IsPbsSignal(sigtype) ? SignalAlongTrackdir(trackdir) : SignalOnTrack(track);
 	}
@@ -1331,7 +1331,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlags flags, TileIndex tile, Ti
 		if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
 		DoCommandFlags do_flags = test_only ? DoCommandFlags{flags}.Reset(DoCommandFlag::Execute) : flags;
-		CommandCost ret = remove ? Command<Commands::RemoveSignal>::Do(do_flags, tile, TrackdirToTrack(trackdir)) : Command<Commands::BuildSignal>::Do(do_flags, tile, TrackdirToTrack(trackdir), sigtype, sigvar, false, signal_ctr == 0, mode, SIGTYPE_BLOCK, SIGTYPE_BLOCK, 0, signals);
+		CommandCost ret = remove ? Command<Commands::RemoveSignal>::Do(do_flags, tile, TrackdirToTrack(trackdir)) : Command<Commands::BuildSignal>::Do(do_flags, tile, TrackdirToTrack(trackdir), sigtype, sigvar, false, signal_ctr == 0, mode, SignalType::Block, SignalType::Block, 0, signals);
 
 		if (test_only) return ret.Succeeded();
 
@@ -1532,7 +1532,7 @@ CommandCost CmdRemoveSingleSignal(DoCommandFlags flags, TileIndex tile, Track tr
  */
 CommandCost CmdRemoveSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, bool autofill)
 {
-	return CmdSignalTrackHelper(flags, tile, end_tile, track, SIGTYPE_BLOCK, SignalVariant::Electric, false, true, autofill, false, 1); // bit 5 is remove bit
+	return CmdSignalTrackHelper(flags, tile, end_tile, track, SignalType::Block, SignalVariant::Electric, false, true, autofill, false, 1); // bit 5 is remove bit
 }
 
 /**
@@ -1904,8 +1904,8 @@ static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track trac
 		sprite += image;
 	} else {
 		/* Normal electric signals are stored in a different sprite block than all other signals. */
-		sprite = (type == SIGTYPE_BLOCK && variant == SignalVariant::Electric) ? SPR_ORIGINAL_SIGNALS_BASE : SPR_SIGNALS_BASE - 16;
-		sprite += type * 16 + to_underlying(variant) * 64 + image * 2 + condition + (type > SIGTYPE_LAST_NOPBS ? 64 : 0);
+		sprite = (type == SignalType::Block && variant == SignalVariant::Electric) ? SPR_ORIGINAL_SIGNALS_BASE : SPR_SIGNALS_BASE - 16;
+		sprite += to_underlying(type) * 16 + to_underlying(variant) * 64 + image * 2 + condition + (type >= SignalType::Path ? 64 : 0);
 	}
 
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, GetSafeSlopeZ(x, y, track), {{}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {}});
@@ -2838,7 +2838,7 @@ static void GetTileDesc_Rail(TileIndex tile, TileDesc &td)
 			break;
 
 		case RailTileType::Signals: {
-			static constexpr EnumIndexArray<EnumIndexArray<StringID, SignalType, SIGTYPE_END>, SignalType, SIGTYPE_END> signal_type{{{
+			static constexpr EnumIndexArray<EnumIndexArray<StringID, SignalType, SignalType::End>, SignalType, SignalType::End> signal_type{{{
 				{
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS,
 					STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS,

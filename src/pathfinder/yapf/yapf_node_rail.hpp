@@ -134,7 +134,7 @@ struct CYapfRailNode : CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> {
 		if (parent == nullptr) {
 			this->num_signals_passed      = 0;
 			this->flags_u.inherited_flags = 0;
-			this->last_red_signal_type    = SIGTYPE_BLOCK;
+			this->last_red_signal_type    = SignalType::Block;
 			/* We use PBS as initial signal type because if we are in
 			 * a PBS section and need to route, i.e. we're at a safe
 			 * waiting point of a station, we need to account for the
@@ -145,7 +145,7 @@ struct CYapfRailNode : CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> {
 			 * then avoiding that train with help of the reservation
 			 * costs is not a bad thing, actually it would probably
 			 * be a good thing to do. */
-			this->last_signal_type        = SIGTYPE_PBS;
+			this->last_signal_type        = SignalType::Path;
 		} else {
 			this->num_signals_passed      = parent->num_signals_passed;
 			this->flags_u.inherited_flags = parent->flags_u.inherited_flags;

@@ -260,18 +260,18 @@ static void GenericPlaceSignals(TileIndex tile)
 
 		/* Start with the least restrictive case: the player wants to cycle through all signals they can see. */
 		if (_settings_client.gui.cycle_signal_types == SIGNAL_CYCLE_ALL) {
-			cycle_start = _settings_client.gui.signal_gui_mode == SIGNAL_GUI_ALL ? SIGTYPE_BLOCK : SIGTYPE_PBS;
-			cycle_end = SIGTYPE_LAST;
+			cycle_start = _settings_client.gui.signal_gui_mode == SIGNAL_GUI_ALL ? SignalType::Block : SignalType::Path;
+			cycle_end = SignalType::PathOneWay;
 		} else {
 			/* Only cycle through signals of the same group (block or path) as the current signal on the tile. */
-			if (cur_signal_on_tile <= SIGTYPE_LAST_NOPBS) {
+			if (cur_signal_on_tile <= SignalType::Combo) {
 				/* Block signals only. */
-				cycle_start = SIGTYPE_BLOCK;
-				cycle_end = SIGTYPE_LAST_NOPBS;
+				cycle_start = SignalType::Block;
+				cycle_end = SignalType::Combo;
 			} else {
 				/* Path signals only. */
-				cycle_start = SIGTYPE_PBS;
-				cycle_end = SIGTYPE_LAST;
+				cycle_start = SignalType::Path;
+				cycle_end = SignalType::PathOneWay;
 			}
 		}
 
@@ -1554,7 +1554,7 @@ public:
 		this->sig_sprite_size.height = 0;
 		this->sig_sprite_bottom_offset = 0;
 		const RailTypeInfo *rti = GetRailTypeInfo(_cur_railtype);
-		for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = static_cast<SignalType>(to_underlying(type) + 1)) {
+		for (SignalType type = SignalType::Block; type < SignalType::End; type = static_cast<SignalType>(to_underlying(type) + 1)) {
 			for (SignalVariant variant : {SignalVariant::Electric, SignalVariant::Semaphore}) {
 				for (SignalState state : {SIGNAL_STATE_RED, SIGNAL_STATE_GREEN}) {
 					Point offset;
@@ -1593,8 +1593,8 @@ public:
 	{
 		if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
 			/* Extract signal from widget number. */
-			SignalType type = static_cast<SignalType>((widget - WID_BS_SEMAPHORE_NORM) % SIGTYPE_END);
-			SignalVariant var = static_cast<SignalVariant>(to_underlying(SignalVariant::Semaphore) - (widget - WID_BS_SEMAPHORE_NORM) / SIGTYPE_END); // SignalVariant order is reversed compared to the widgets.
+			SignalType type = static_cast<SignalType>((widget - WID_BS_SEMAPHORE_NORM) % to_underlying(SignalType::End));
+			SignalVariant var = static_cast<SignalVariant>(to_underlying(SignalVariant::Semaphore) - (widget - WID_BS_SEMAPHORE_NORM) / to_underlying(SignalType::End)); // SignalVariant order is reversed compared to the widgets.
 			SpriteID sprite = GetRailTypeInfo(_cur_railtype)->gui_sprites.signals[type][var][static_cast<SignalState>(this->IsWidgetLowered(widget))];
 
 			this->DrawSignalSprite(r, sprite);
@@ -1616,9 +1616,9 @@ public:
 			case WID_BS_ELECTRIC_COMBO:
 			case WID_BS_ELECTRIC_PBS:
 			case WID_BS_ELECTRIC_PBS_OWAY:
-				this->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + _cur_signal_type);
+				this->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + to_underlying(_cur_signal_type));
 
-				_cur_signal_type = (SignalType)((uint)((widget - WID_BS_SEMAPHORE_NORM) % (SIGTYPE_LAST + 1)));
+				_cur_signal_type = static_cast<SignalType>((uint)((widget - WID_BS_SEMAPHORE_NORM) % to_underlying(SignalType::End)));
 				_cur_signal_variant = widget >= WID_BS_ELECTRIC_NORM ? SignalVariant::Electric : SignalVariant::Semaphore;
 
 				/* Update default (last-used) signal type in config file. */
@@ -1664,7 +1664,7 @@ public:
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		this->LowerWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + _cur_signal_type);
+		this->LowerWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + to_underlying(_cur_signal_type));
 
 		this->SetWidgetLoweredState(WID_BS_CONVERT, _convert_signal_button);
 
@@ -2039,7 +2039,7 @@ void ResetSignalVariant(int32_t)
 		Window *w = FindWindowById(WindowClass::BuildSignal, 0);
 		if (w != nullptr) {
 			w->SetDirty();
-			w->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + _cur_signal_type);
+			w->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + to_underlying(_cur_signal_type));
 		}
 		_cur_signal_variant = new_variant;
 	}

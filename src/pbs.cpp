@@ -419,7 +419,7 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 		if (HasPbsSignalOnTrackdir(ft.new_tile, td)) return true;
 		/* One-way PBS signal against us? Safe if end-of-line is allowed. */
 		if (IsTileType(ft.new_tile, TileType::Railway) && HasSignalOnTrackdir(ft.new_tile, ReverseTrackdir(td)) &&
-				GetSignalType(ft.new_tile, TrackdirToTrack(td)) == SIGTYPE_PBS_ONEWAY) {
+				GetSignalType(ft.new_tile, TrackdirToTrack(td)) == SignalType::PathOneWay) {
 			return include_line_end;
 		}
 	}
