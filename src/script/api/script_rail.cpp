@@ -457,7 +457,7 @@ static bool IsValidSignalType(int signal_type)
 		signal_cycles = _possible_trackdirs[data_index][i].signal_cycles;
 		break;
 	}
-	EnforcePrecondition(false, track != INVALID_TRACK);
+	EnforcePrecondition(false, IsValidTrack(track));
 
 	if (signal < SIGNALTYPE_TWOWAY) {
 		if (signal != SIGNALTYPE_PBS && signal != SIGNALTYPE_PBS_ONEWAY) signal_cycles++;
@@ -483,7 +483,7 @@ static bool IsValidSignalType(int signal_type)
 		track = t;
 		break;
 	}
-	EnforcePrecondition(false, track != INVALID_TRACK);
+	EnforcePrecondition(false, IsValidTrack(track));
 
 	return ScriptObject::Command<Commands::RemoveSignal>::Do(tile, track);
 }
