@@ -1404,7 +1404,7 @@ bool AfterLoadGame()
 						if (HasBit(t.m2(), 2)) SB(t.m2(), 0, 2, SIGTYPE_COMBO);
 
 						/* move the signal variant back */
-						SB(t.m2(), 2, 1, HasBit(t.m2(), 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+						SB(t.m2(), 2, 1, to_underlying(HasBit(t.m2(), 3) ? SignalVariant::Semaphore : SignalVariant::Electric));
 						ClrBit(t.m2(), 3);
 					}
 
@@ -2026,8 +2026,8 @@ bool AfterLoadGame()
 				case TileType::Railway:
 					if (HasSignals(t)) {
 						/* move the signal variant */
-						SetSignalVariant(t, TRACK_UPPER, HasBit(t.m2(), 2) ? SIG_SEMAPHORE : SIG_ELECTRIC);
-						SetSignalVariant(t, TRACK_LOWER, HasBit(t.m2(), 6) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+						SetSignalVariant(t, TRACK_UPPER, HasBit(t.m2(), 2) ? SignalVariant::Semaphore : SignalVariant::Electric);
+						SetSignalVariant(t, TRACK_LOWER, HasBit(t.m2(), 6) ? SignalVariant::Semaphore : SignalVariant::Electric);
 						ClrBit(t.m2(), 2);
 						ClrBit(t.m2(), 6);
 					}

@@ -13,10 +13,10 @@
 #include "core/enum_type.hpp"
 
 /** Variant of the signal, i.e. how does the signal look? */
-enum SignalVariant : uint8_t {
-	SIG_ELECTRIC  = 0, ///< Light signal
-	SIG_SEMAPHORE = 1, ///< Old-fashioned semaphore signal
-	SIG_END, ///< End marker.
+enum class SignalVariant : uint8_t {
+	Electric = 0, ///< Light signal.
+	Semaphore = 1, ///< Old-fashioned semaphore signal.
+	End, ///< End marker.
 };
 
 

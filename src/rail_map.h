@@ -386,7 +386,7 @@ inline void CycleSignalSide(Tile t, Track track)
 inline SignalVariant GetSignalVariant(Tile t, Track track)
 {
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
-	return (SignalVariant)GB(t.m2(), pos, 1);
+	return static_cast<SignalVariant>(GB(t.m2(), pos, 1));
 }
 
 /**
@@ -399,8 +399,8 @@ inline SignalVariant GetSignalVariant(Tile t, Track track)
 inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
 {
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
-	SB(t.m2(), pos, 1, v);
-	if (!IsValidTrack(track)) SB(t.m2(), 7, 1, v);
+	SB(t.m2(), pos, 1, to_underlying(v));
+	if (!IsValidTrack(track)) SB(t.m2(), 7, 1, to_underlying(v));
 }
 
 /**
