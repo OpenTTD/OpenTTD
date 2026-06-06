@@ -216,7 +216,7 @@ static bool CMSATree(TileIndex tile)
 }
 
 /** Station types a station could be named after. */
-enum StationNaming : uint8_t {
+enum class StationNaming : uint8_t {
 	Rail, ///< Railway station.
 	Road, ///< Truck or bus stop.
 	Airport, ///< Airport for fixed wing aircraft.
