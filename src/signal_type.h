@@ -16,6 +16,7 @@
 enum SignalVariant : uint8_t {
 	SIG_ELECTRIC  = 0, ///< Light signal
 	SIG_SEMAPHORE = 1, ///< Old-fashioned semaphore signal
+	SIG_END, ///< End marker.
 };
 
 
@@ -28,7 +29,7 @@ enum SignalType : uint8_t {
 	SIGTYPE_PBS        = 4, ///< normal pbs signal
 	SIGTYPE_PBS_ONEWAY = 5, ///< no-entry signal
 
-	SIGTYPE_END,
+	SIGTYPE_END, /// End marker.
 	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
 	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO,
 };
@@ -42,6 +43,7 @@ DECLARE_ENUM_AS_ADDABLE(SignalType)
 enum SignalState : uint8_t {
 	SIGNAL_STATE_RED   = 0, ///< The signal is red
 	SIGNAL_STATE_GREEN = 1, ///< The signal is green
+	SIGNAL_STATE_END, ///< End marker.
 };
 
 #endif /* SIGNAL_TYPE_H */

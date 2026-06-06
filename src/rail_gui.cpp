@@ -1554,11 +1554,11 @@ public:
 		this->sig_sprite_size.height = 0;
 		this->sig_sprite_bottom_offset = 0;
 		const RailTypeInfo *rti = GetRailTypeInfo(_cur_railtype);
-		for (uint type = SIGTYPE_BLOCK; type < SIGTYPE_END; type++) {
-			for (uint variant = SIG_ELECTRIC; variant <= SIG_SEMAPHORE; variant++) {
-				for (uint lowered = 0; lowered < 2; lowered++) {
+		for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = static_cast<SignalType>(to_underlying(type) + 1)) {
+			for (SignalVariant variant : {SIG_ELECTRIC, SIG_SEMAPHORE}) {
+				for (SignalState state : {SIGNAL_STATE_RED, SIGNAL_STATE_GREEN}) {
 					Point offset;
-					Dimension sprite_size = GetSpriteSize(rti->gui_sprites.signals[type][variant][lowered], &offset);
+					Dimension sprite_size = GetSpriteSize(rti->gui_sprites.signals[type][variant][state], &offset);
 					this->sig_sprite_bottom_offset = std::max<int>(this->sig_sprite_bottom_offset, sprite_size.height);
 					this->sig_sprite_size.width = std::max<int>(this->sig_sprite_size.width, sprite_size.width - offset.x);
 					this->sig_sprite_size.height = std::max<int>(this->sig_sprite_size.height, sprite_size.height - offset.y);
@@ -1593,9 +1593,9 @@ public:
 	{
 		if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
 			/* Extract signal from widget number. */
-			int type = (widget - WID_BS_SEMAPHORE_NORM) % SIGTYPE_END;
-			int var = SIG_SEMAPHORE - (widget - WID_BS_SEMAPHORE_NORM) / SIGTYPE_END; // SignalVariant order is reversed compared to the widgets.
-			SpriteID sprite = GetRailTypeInfo(_cur_railtype)->gui_sprites.signals[type][var][this->IsWidgetLowered(widget)];
+			SignalType type = static_cast<SignalType>((widget - WID_BS_SEMAPHORE_NORM) % SIGTYPE_END);
+			SignalVariant var = static_cast<SignalVariant>(SIG_SEMAPHORE - (widget - WID_BS_SEMAPHORE_NORM) / SIGTYPE_END); // SignalVariant order is reversed compared to the widgets.
+			SpriteID sprite = GetRailTypeInfo(_cur_railtype)->gui_sprites.signals[type][var][static_cast<SignalState>(this->IsWidgetLowered(widget))];
 
 			this->DrawSignalSprite(r, sprite);
 		}
