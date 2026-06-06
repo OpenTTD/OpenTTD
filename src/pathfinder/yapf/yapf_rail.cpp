@@ -115,9 +115,9 @@ private:
 			}
 
 			/* Green path signal opposing the path? Turn to red. */
-			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SIGNAL_STATE_GREEN) {
+			if (HasPbsSignalOnTrackdir(tile, rev_td) && GetSignalStateByTrackdir(tile, rev_td) == SignalState::Green) {
 				this->signals_set_to_red.emplace_back(tile, rev_td);
-				SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
+				SetSignalStateByTrackdir(tile, rev_td, SignalState::Red);
 				MarkTileDirtyByTile(tile);
 			}
 
@@ -217,7 +217,7 @@ public:
 
 				/* Re-instate green path signals we turned to red. */
 				for (auto [sig_tile, td] : this->signals_set_to_red) {
-					SetSignalStateByTrackdir(sig_tile, td, SIGNAL_STATE_GREEN);
+					SetSignalStateByTrackdir(sig_tile, td, SignalState::Green);
 				}
 
 				return false;

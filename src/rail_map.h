@@ -431,7 +431,7 @@ inline uint GetSignalStates(Tile tile)
  */
 inline SignalState GetSingleSignalState(Tile t, uint8_t signalbit)
 {
-	return (SignalState)HasBit(GetSignalStates(t), signalbit);
+	return static_cast<SignalState>(HasBit(GetSignalStates(t), signalbit));
 }
 
 /**
@@ -508,7 +508,7 @@ inline SignalState GetSignalStateByTrackdir(Tile tile, Trackdir trackdir)
 	assert(IsValidTrackdir(trackdir));
 	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
 	return GetSignalStates(tile) & SignalAlongTrackdir(trackdir) ?
-		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
+		SignalState::Green : SignalState::Red;
 }
 
 /**
@@ -519,7 +519,7 @@ inline SignalState GetSignalStateByTrackdir(Tile tile, Trackdir trackdir)
  */
 inline void SetSignalStateByTrackdir(Tile tile, Trackdir trackdir, SignalState state)
 {
-	if (state == SIGNAL_STATE_GREEN) { // set 1
+	if (state == SignalState::Green) { // set 1
 		SetSignalStates(tile, GetSignalStates(tile) | SignalAlongTrackdir(trackdir));
 	} else {
 		SetSignalStates(tile, GetSignalStates(tile) & ~SignalAlongTrackdir(trackdir));

@@ -105,10 +105,10 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 
 	for (SignalType type = SignalType::Block; type < SignalType::End; type = static_cast<SignalType>(to_underlying(type) + 1)) {
 		for (SignalVariant var : {SignalVariant::Electric, SignalVariant::Semaphore}) {
-			SpriteID red = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
-			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
-			rti->gui_sprites.signals[type][var][SIGNAL_STATE_RED] = (red != 0) ? red + SIGNAL_TO_SOUTH : _signal_lookup[var][type];
-			rti->gui_sprites.signals[type][var][SIGNAL_STATE_GREEN] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
+			SpriteID red = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SignalState::Red, true);
+			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SignalState::Green, true);
+			rti->gui_sprites.signals[type][var][SignalState::Red] = (red != 0) ? red + SIGNAL_TO_SOUTH : _signal_lookup[var][type];
+			rti->gui_sprites.signals[type][var][SignalState::Green] = (green != 0) ? green + SIGNAL_TO_SOUTH : _signal_lookup[var][type] + 1;
 		}
 	}
 }
@@ -1905,7 +1905,7 @@ static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track trac
 	} else {
 		/* Normal electric signals are stored in a different sprite block than all other signals. */
 		sprite = (type == SignalType::Block && variant == SignalVariant::Electric) ? SPR_ORIGINAL_SIGNALS_BASE : SPR_SIGNALS_BASE - 16;
-		sprite += to_underlying(type) * 16 + to_underlying(variant) * 64 + image * 2 + condition + (type >= SignalType::Path ? 64 : 0);
+		sprite += to_underlying(type) * 16 + to_underlying(variant) * 64 + image * 2 + to_underlying(condition) + (type >= SignalType::Path ? 64 : 0);
 	}
 
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, GetSafeSlopeZ(x, y, track), {{}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {}});
