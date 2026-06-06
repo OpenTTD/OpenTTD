@@ -561,7 +561,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 }
 
 bool TrainController(Train *v, Vehicle *nomove, bool reverse = true); // From train_cmd.cpp
-void ReverseTrainSwapVeh(Train *v, int l, int r);
+void ReverseTrainSwapVehicles(Train *v);
 
 /** Fixup old train spacing. */
 void FixupTrainLengths()
@@ -595,9 +595,7 @@ void FixupTrainLengths()
 					u->force_proceed = TFP_SIGNAL;
 
 					/* Swap start<>end, start+1<>end-1, ... */
-					int r = CountVehiclesInChain(u) - 1; // number of vehicles - 1
-					int l = 0;
-					do ReverseTrainSwapVeh(u, l++, r--); while (l <= r);
+					ReverseTrainSwapVehicles(u);
 
 					/* We moved the first vehicle which is now the last. Move it back to the
 					 * original position as we will fix up the last vehicle later in the loop. */
@@ -612,9 +610,7 @@ void FixupTrainLengths()
 					}
 
 					/* Swap start<>end, start+1<>end-1, ... again. */
-					r = CountVehiclesInChain(u) - 1; // number of vehicles - 1
-					l = 0;
-					do ReverseTrainSwapVeh(u, l++, r--); while (l <= r);
+					ReverseTrainSwapVehicles(u);
 
 					u->force_proceed = old_tfp;
 

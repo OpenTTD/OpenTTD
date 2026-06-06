@@ -1653,10 +1653,7 @@ static void UpdateStatusAfterSwap(Train *v, bool reverse = true)
 
 	/* Call the proper EnterTile function unless we are in a wormhole. */
 	if (v->track != TRACK_BIT_WORMHOLE) {
-		/* Do not call EnterTile for vehicles partially or totally in a depot. */
-		if (!IsRailDepotTile(v->tile)) {
-			VehicleEnterTile(v, v->tile, v->x_pos, v->y_pos);
-		}
+		VehicleEnterTile(v, v->tile, v->x_pos, v->y_pos);
 	} else {
 		/* VehicleEnterTile_TunnelBridge() sets TRACK_BIT_WORMHOLE when the vehicle
 		 * is on the last bit of the bridge head (frame == TILE_SIZE - 1).
@@ -1682,11 +1679,12 @@ static void UpdateStatusAfterSwap(Train *v, bool reverse = true)
 
 /**
  * Swap vehicles \a l and \a r in consist \a v, and reverse their direction.
+ * UpdateStatusAfterSwap calls should be made after all ReverseTrainSwapVeh calls have been completed.
  * @param v Consist to change.
  * @param l %Vehicle index in the consist of the first vehicle.
  * @param r %Vehicle index in the consist of the second vehicle.
  */
-void ReverseTrainSwapVeh(Train *v, int l, int r)
+static void ReverseTrainSwapVeh(Train *v, int l, int r)
 {
 	Train *a, *b;
 
@@ -1711,15 +1709,30 @@ void ReverseTrainSwapVeh(Train *v, int l, int r)
 		std::swap(a->z_pos, b->z_pos);
 
 		SwapTrainFlags(&a->gv_flags, &b->gv_flags);
-
-		UpdateStatusAfterSwap(a);
-		UpdateStatusAfterSwap(b);
 	} else {
 		/* Swap GVF_GOINGUP_BIT/GVF_GOINGDOWN_BIT.
 		 * This is a little bit redundant way, a->gv_flags will
 		 * be (re)set twice, but it reduces code duplication */
 		SwapTrainFlags(&a->gv_flags, &a->gv_flags);
-		UpdateStatusAfterSwap(a);
+	}
+}
+
+/**
+ * Swap vehicles in chain starting from \a v, and reverse their direction.
+ * @param v First vehicle in chain to change.
+ */
+void ReverseTrainSwapVehicles(Train *v)
+{
+	int r = CountVehiclesInChain(v) - 1;  // number of vehicles - 1
+
+	/* swap start<>end, start+1<>end-1, ... */
+	int l = 0;
+	do {
+		ReverseTrainSwapVeh(v, l++, r--);
+	} while (l <= r);
+
+	for (Train *u = v; u != nullptr; u = u->Next()) {
+		UpdateStatusAfterSwap(u);
 	}
 }
 
@@ -2048,15 +2061,10 @@ static void ReverseTrainDirection(Train *consist)
 		moving_front = consist->GetMovingFront();
 	} else {
 		/* The train will flip. */
-		int r = CountVehiclesInChain(consist) - 1;  // number of vehicles - 1
-
 		AdvanceWagonsBeforeSwap(moving_front);
 
 		/* swap start<>end, start+1<>end-1, ... */
-		int l = 0;
-		do {
-			ReverseTrainSwapVeh(consist, l++, r--);
-		} while (l <= r);
+		ReverseTrainSwapVehicles(consist);
 
 		AdvanceWagonsAfterSwap(moving_front);
 	}
