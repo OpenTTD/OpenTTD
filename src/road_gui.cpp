@@ -1927,3 +1927,49 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 
 	return list;
 }
+
+/**
+ * Determine the default road type to use for a given RoadTramType.
+ * @param rtt Whether to find a road or tram type.
+ * @return The default RoadType based on the setting.
+ */
+static RoadType GetDefaultRoadType(RoadTramType rtt)
+{
+	const auto find_available = [rtt]<typename It>(It begin, It end) {
+		const RoadTypes mask = GetMaskForRoadTramType(rtt);
+		auto it = std::find_if(begin, end, [&](RoadType r) {
+			return HasRoadTypeAvail(_local_company, r) && mask.Test(r);
+		});
+		return it != end ? *it : ROADTYPE_BEGIN;
+	};
+
+	switch (_settings_client.gui.default_rail_road_type) {
+		case DefaultRailRoadType::MostUsed: {
+			const Company *c = Company::Get(_local_company);
+			std::array<uint, ROADTYPE_END> count{};
+			for (RoadType rt : GetMaskForRoadTramType(rtt)) {
+				count[rt] = c->infrastructure.road[rt];
+			}
+			auto best = static_cast<RoadType>(std::distance(std::begin(count), std::ranges::max_element(count)));
+			if (c->infrastructure.road[best] > 0) return best;
+
+			/* No tile of this kind has been built yet, fall through to first available. */
+			[[fallthrough]];
+		}
+		case DefaultRailRoadType::FirstAvailable:
+			return find_available(_sorted_roadtypes.begin(), _sorted_roadtypes.end());
+		case DefaultRailRoadType::LastAvailable:
+			return find_available(_sorted_roadtypes.rbegin(), _sorted_roadtypes.rend());
+		default:
+			NOT_REACHED();
+	}
+}
+
+/** Set the initial (default) road & tram type to use. */
+void SetDefaultRoadGui()
+{
+	if (_local_company == COMPANY_SPECTATOR || !Company::IsValidID(_local_company)) return;
+
+	_last_built_roadtype = GetDefaultRoadType(RoadTramType::Road);
+	_last_built_tramtype = GetDefaultRoadType(RoadTramType::Tram);
+}

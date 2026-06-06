@@ -176,11 +176,34 @@ enum IniFileVersion : uint32_t {
 	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
 	IFV_RIGHT_CLICK_CLOSE,                                 ///< 6  PR#10204 Add alternative right click to close windows setting.
 	IFV_REMOVE_GENERATION_SEED,                            ///< 7  PR#11927 Remove "generation_seed" from configuration.
+	IFV_DEFAULT_RAIL_ROAD,                                 ///< 8  PR#15585 Update default rail type setting to support road and tram tiles
 
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
 
 const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
+
+/**
+ * Find whether a string was a valid int setting
+ *
+ * @param str the current value of the setting
+ * @param min the min value for the setting
+ * @param max the max value for the setting
+ * @return Either the parsed value, or nullopt if no value found within range.
+ */
+std::optional<int32_t> IntSettingDesc::ParseSingleValue(std::string_view str, int32_t min, uint32_t max)
+{
+	StringConsumer consumer{str};
+	/* The actual settings value might be int32 or uint32. Read as int64 and just cast away the high bits. */
+	auto value = consumer.TryReadIntegerBase<int64_t>(10);
+	/* check if it's an integer */
+	if (!value.has_value()) return std::nullopt;
+
+	if (value < min || value > max) {
+		return std::nullopt;
+	}
+	return value;
+}
 
 /**
  * Find the index value of a ONEofMANY type in a string
@@ -1447,6 +1470,11 @@ void LoadFromConfig(bool startup)
 		if (generic_version < IFV_RIGHT_CLICK_CLOSE && IsConversionNeeded(generic_ini, "gui", "right_mouse_wnd_close", "right_click_wnd_close", &old_item)) {
 			auto old_value = BoolSettingDesc::ParseSingleValue(*old_item->value);
 			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RightClickClose::Yes : RightClickClose::No;
+		}
+
+		if (generic_version < IFV_DEFAULT_RAIL_ROAD && IsConversionNeeded(generic_ini, "gui", "default_rail_type", "default_rail_road_type", &old_item)) {
+			auto old_value = IntSettingDesc::ParseSingleValue(*old_item->value, 0, 2);
+			_settings_client.gui.default_rail_road_type = static_cast<DefaultRailRoadType>(old_value.value_or(0));
 		}
 
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
