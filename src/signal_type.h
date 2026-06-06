@@ -21,17 +21,14 @@ enum class SignalVariant : uint8_t {
 
 
 /** Type of signal, i.e. how does the signal behave? */
-enum SignalType : uint8_t {
-	SIGTYPE_BLOCK      = 0, ///< block signal
-	SIGTYPE_ENTRY      = 1, ///< presignal block entry
-	SIGTYPE_EXIT       = 2, ///< presignal block exit
-	SIGTYPE_COMBO      = 3, ///< presignal inter-block
-	SIGTYPE_PBS        = 4, ///< normal pbs signal
-	SIGTYPE_PBS_ONEWAY = 5, ///< no-entry signal
-
-	SIGTYPE_END, /// End marker.
-	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
-	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO,
+enum class SignalType : uint8_t {
+	Block = 0, ///< block signal.
+	Entry = 1, ///< presignal block entry.
+	Exit = 2, ///< presignal block exit.
+	Combo = 3, ///< presignal inter-block.
+	Path = 4, ///< normal path signal.
+	PathOneWay = 5, ///< no-entry path signal.
+	End, ///< End marker.
 };
 DECLARE_ENUM_AS_ADDABLE(SignalType)
 

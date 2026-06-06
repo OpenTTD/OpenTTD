@@ -67,12 +67,12 @@ public:
 	 */
 	enum SignalType {
 		/* Note: these values represent part of the in-game SignalType enum */
-		SIGNALTYPE_NORMAL        = ::SIGTYPE_BLOCK,      ///< Block signal.
-		SIGNALTYPE_ENTRY         = ::SIGTYPE_ENTRY,      ///< Entry presignal.
-		SIGNALTYPE_EXIT          = ::SIGTYPE_EXIT,       ///< Exit signal.
-		SIGNALTYPE_COMBO         = ::SIGTYPE_COMBO,      ///< Combo signal.
-		SIGNALTYPE_PBS           = ::SIGTYPE_PBS,        ///< Normal PBS signal.
-		SIGNALTYPE_PBS_ONEWAY    = ::SIGTYPE_PBS_ONEWAY, ///< No-entry PBS signal.
+		SIGNALTYPE_NORMAL = to_underlying(::SignalType::Block), ///< Block signal.
+		SIGNALTYPE_ENTRY = to_underlying(::SignalType::Entry), ///< Entry presignal.
+		SIGNALTYPE_EXIT = to_underlying(::SignalType::Exit), ///< Exit signal.
+		SIGNALTYPE_COMBO = to_underlying(::SignalType::Combo), ///< Combo signal.
+		SIGNALTYPE_PBS = to_underlying(::SignalType::Path), ///< Normal path signal.
+		SIGNALTYPE_PBS_ONEWAY = to_underlying(::SignalType::PathOneWay), ///< No-entry path signal.
 
 		SIGNALTYPE_TWOWAY        = 8, ///< Bit mask for twoway signal.
 		SIGNALTYPE_NORMAL_TWOWAY = SIGNALTYPE_NORMAL | SIGNALTYPE_TWOWAY, ///< Normal twoway signal.

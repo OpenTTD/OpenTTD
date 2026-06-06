@@ -466,7 +466,7 @@ static bool IsValidSignalType(int signal_type)
 	}
 	::SignalType sig_type = (::SignalType)(signal >= SIGNALTYPE_TWOWAY ? signal ^ SIGNALTYPE_TWOWAY : signal);
 
-	return ScriptObject::Command<Commands::BuildSignal>::Do(tile, track, sig_type, ::SignalVariant::Electric, false, false, false, ::SIGTYPE_BLOCK, ::SIGTYPE_BLOCK, signal_cycles, 0);
+	return ScriptObject::Command<Commands::BuildSignal>::Do(tile, track, sig_type, ::SignalVariant::Electric, false, false, false, ::SignalType::Block, ::SignalType::Block, signal_cycles, 0);
 }
 
 /* static */ bool ScriptRail::RemoveSignal(TileIndex tile, TileIndex front)

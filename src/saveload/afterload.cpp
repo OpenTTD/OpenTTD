@@ -1400,8 +1400,8 @@ bool AfterLoadGame()
 						 * version 48 they are in m2. The bits has been already moved to m2
 						 * (see the code somewhere above) so don't use m4, use m2 instead. */
 
-						/* convert PBS signals to combo-signals */
-						if (HasBit(t.m2(), 2)) SB(t.m2(), 0, 2, SIGTYPE_COMBO);
+						/* convert old PBS signals to combo-signals */
+						if (HasBit(t.m2(), 2)) SB(t.m2(), 0, 2, to_underlying(SignalType::Combo));
 
 						/* move the signal variant back */
 						SB(t.m2(), 2, 1, to_underlying(HasBit(t.m2(), 3) ? SignalVariant::Semaphore : SignalVariant::Electric));

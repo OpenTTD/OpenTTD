@@ -438,7 +438,7 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 			newstate = SIGNAL_STATE_RED;
 		} else {
 			/* is it a bidir combo? - then do not count its other signal direction as exit */
-			if (sig == SIGTYPE_COMBO && HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
+			if (sig == SignalType::Combo && HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
 				/* at least one more exit */
 				if (flags.Test(SigFlag::MultiExit) &&
 						/* no green exit */

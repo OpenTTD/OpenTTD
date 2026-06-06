@@ -291,7 +291,7 @@ inline TrackBits GetDepotReservationTrackBits(Tile t)
  */
 inline bool IsPbsSignal(SignalType s)
 {
-	return s == SIGTYPE_PBS || s == SIGTYPE_PBS_ONEWAY;
+	return s == SignalType::Path || s == SignalType::PathOneWay;
 }
 
 /**
@@ -305,7 +305,7 @@ inline SignalType GetSignalType(Tile t, Track track)
 {
 	assert(GetRailTileType(t) == RailTileType::Signals);
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
-	return (SignalType)GB(t.m2(), pos, 3);
+	return static_cast<SignalType>(GB(t.m2(), pos, 3));
 }
 
 /**
@@ -319,8 +319,8 @@ inline void SetSignalType(Tile t, Track track, SignalType s)
 {
 	assert(GetRailTileType(t) == RailTileType::Signals);
 	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
-	SB(t.m2(), pos, 3, s);
-	if (!IsValidTrack(track)) SB(t.m2(), 4, 3, s);
+	SB(t.m2(), pos, 3, to_underlying(s));
+	if (!IsValidTrack(track)) SB(t.m2(), 4, 3, to_underlying(s));
 }
 
 /**
@@ -332,7 +332,7 @@ inline void SetSignalType(Tile t, Track track, SignalType s)
  */
 inline bool IsPresignalEntry(Tile t, Track track)
 {
-	return GetSignalType(t, track) == SIGTYPE_ENTRY || GetSignalType(t, track) == SIGTYPE_COMBO;
+	return GetSignalType(t, track) == SignalType::Entry || GetSignalType(t, track) == SignalType::Combo;
 }
 
 /**
@@ -344,7 +344,7 @@ inline bool IsPresignalEntry(Tile t, Track track)
  */
 inline bool IsPresignalExit(Tile t, Track track)
 {
-	return GetSignalType(t, track) == SIGTYPE_EXIT || GetSignalType(t, track) == SIGTYPE_COMBO;
+	return GetSignalType(t, track) == SignalType::Exit || GetSignalType(t, track) == SignalType::Combo;
 }
 
 /**
@@ -357,7 +357,7 @@ inline bool IsPresignalExit(Tile t, Track track)
  */
 inline bool IsOnewaySignal(Tile t, Track track)
 {
-	return GetSignalType(t, track) != SIGTYPE_PBS;
+	return GetSignalType(t, track) != SignalType::Path;
 }
 
 /**
