@@ -13,10 +13,10 @@
 #include "gfx_type.h"
 
 /** Modes of the in-game console. */
-enum IConsoleModes : uint8_t {
-	ICONSOLE_FULL,   ///< In-game console is opened, whole screen.
-	ICONSOLE_OPENED, ///< In-game console is opened, upper 1/3 of the screen.
-	ICONSOLE_CLOSED, ///< In-game console is closed.
+enum class IConsoleMode : uint8_t {
+	Full, ///< In-game console is opened, whole screen.
+	Opened, ///< In-game console is opened, upper 1/3 of the screen.
+	Closed, ///< In-game console is closed.
 };
 
 /* Colours of the console messages. */
