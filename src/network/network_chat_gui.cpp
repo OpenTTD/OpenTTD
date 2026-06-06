@@ -184,7 +184,7 @@ void NetworkDrawChatMessage()
 	/* First undraw if needed */
 	NetworkUndrawChatMessage();
 
-	if (_iconsole_mode == ICONSOLE_FULL) return;
+	if (_iconsole_mode == IConsoleMode::Full) return;
 
 	/* Check if we have anything to draw at all */
 	if (!HaveChatMessages(show_all)) return;

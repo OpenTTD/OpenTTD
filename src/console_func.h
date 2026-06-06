@@ -14,7 +14,7 @@
 #include "core/format.hpp"
 
 /** Console modes. */
-extern IConsoleModes _iconsole_mode;
+extern IConsoleMode _iconsole_mode;
 
 /* console functions */
 void IConsoleInit();
