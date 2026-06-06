@@ -52,10 +52,10 @@ inline uint8_t SignalOnTrack(Track track)
 }
 
 /** State of the signal segment */
-enum SigSegState : uint8_t {
-	SIGSEG_FREE,    ///< Free and has no pre-signal exits or at least one green exit
-	SIGSEG_FULL,    ///< Occupied by a train
-	SIGSEG_PBS,     ///< Segment is a PBS segment
+enum class SigSegState : uint8_t {
+	Free, ///< Free and has no pre-signal exits or at least one green exit
+	Full, ///< Occupied by a train
+	Path, ///< Segment is a path segment
 };
 
 SigSegState UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner);
