@@ -1805,12 +1805,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Näytä odotetu
 STR_CONFIG_SETTING_QUICKGOTO                                    :Nopea kulkuneuvon käskyjen luominen: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Valitse ”mene”-kursori kun määräysikkuna avataan
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Oletusraidetyyppi: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Ratatyyppi, joka valitaan pelin aloittamisen jälkeen: ”ensimmäinen saatavilla oleva” valitsee vanhimman ratatyypin, ”viimeisin saatavilla oleva” valitsee uusimman ratatyypin, ja ”eniten käytetty” valitsee eniten käytetyn ratatyypin
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimeisin saatavilla oleva
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Näytä reittivaraukset raiteilla: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Värjää varatut rataosuudet eri värillä. Tämä auttaa opastimien ja risteysten vianetsinnässä

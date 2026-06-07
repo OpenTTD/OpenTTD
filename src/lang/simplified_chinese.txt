@@ -1799,12 +1799,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :在时刻表中
 STR_CONFIG_SETTING_QUICKGOTO                                    :快捷载具调度计划创建：{STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :启用时，打开调度计划窗口时预先选定“前往”命令
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :默认铁路类型（新建/读取游戏后）：{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :设置开启或者载入游戏时的默认铁路类型，“最先可用的类型”是最老的铁路类型，“最新可用的类型”的是最新的铁路类型，“最常用的类型”是当前用的最多的铁路类型
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的类型
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的类型
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的类型
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :显示预留的轨道：{STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :让预留的铁路轨道显示不同的颜色，以帮助查找列车拒绝进入路径轨道的原因

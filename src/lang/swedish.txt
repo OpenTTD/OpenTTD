@@ -1805,12 +1805,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Visa förvänta
 STR_CONFIG_SETTING_QUICKGOTO                                    :Snabbskapande av fordonsorder: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Förvälj 'åk till'-pekaren när orderfönstret öppnas
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standardspår-typ (efter nytt/laddat spel): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spårtyp som ska förväljas efter att ett spel startas eller laddas. 'Först tillgängliga' väljer den äldsta spårtypen, 'Senast tillgängliga' väljer den nyaste spårtypen och 'Mest använda' väljer den spårtyp som för närvarande är mest använd
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Först tillgängliga
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Senast tillgängliga
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest använda
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Visa reserverat spår: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Ge reserverade spår en avvikande färg för att underlätta lösning av problem med tåg som vägrar köra in i avancerade signalblock

@@ -1460,12 +1460,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Erakutsi aurrei
 STR_CONFIG_SETTING_QUICKGOTO                                    :Ibilgailu aginduen sorrera azkarra: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :'Nora joan' aurrez hautatu agindu lehioak irekitzerakoan
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Lehenetsitako trenbide mota (joko berria hastean/jokoa kargatzean): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jokoa hasi edo jokoa kargatu eta gero trenbide lanabesetan lehenetsiko den trenbide mota. 'Zaharrena' trenbide mota zaharrena lehenetsiko da, 'Berriena' trenbide mota berriena lehenetsiko da, 'Erabiliena' trenbide mota erabiliena lehenetsiko da
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Lehena eskuragarri
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Azkena eskuragarri
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Gehien erabilia
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Erreserbatutako trenbide zatiak erakutsi: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Trenbide erreserbatuak kolore ezberdinarekin jarri blokeetan oinarritutako ibilbideetan sartzera ukatzen diren trenei laguntzeko

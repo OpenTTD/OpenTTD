@@ -2185,12 +2185,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie p
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po otworzeniu okna pustej listy poleceń pojazdu automatycznie wybierz narzędzie „idź do”
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Domyślny typ torów: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rodzaj torów wybierany przy rozpoczęciu lub załadowaniu gry. „Pierwszy dostępny” wybiera najstarszy rodzaj torów, „najnowszy” wybiera najnowszy rodzaj torów, a „najczęściej używany” wybiera ten, który jest używany najczęściej
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Pierwszy dostępny
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Najnowszy
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Najczęściej używany
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Pokaż zarezerwowane tory: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Nadaj inny kolor zarezerwowanym torom, aby pomóc w odnajdywaniu problemów z pociągami odmawiającymi wjazdu na blok trasy

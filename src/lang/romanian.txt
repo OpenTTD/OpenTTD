@@ -1756,12 +1756,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii e
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creare rapidă a comenzilor pentru vehicule: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselectează cursorul "mergi la" când se deschide fereastra de comenzi
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipul implicit de șină (după joc nou/încarcare joc): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipul de cale feroviară care va fi ales la pornirea sau îmcărcarea jocului. 'Prima disponibilă' alege cel mai nou tip de cale feroviară și 'Cea mai folosită' alege tipul cel mai des folosit în acel moment.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibilă
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibilă
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosită
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Arată liniile rezervate: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Acordă căilor feroviare rezervate o culoare diferită pentru a depista mai ușor probleme cum ar fi trenuri refuzând intrarea în secțiuni bazate pe căi stabilite anterior

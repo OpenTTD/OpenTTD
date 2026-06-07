@@ -1898,12 +1898,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Montri antaŭvi
 STR_CONFIG_SETTING_QUICKGOTO                                    :Rapidkreo de veturilordonoj: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Antaŭelekti la kursoron "iri al" dum malfermado de ordona fenestro
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Defaŭlta reltipo (post novludo/ŝargludo): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Elektita reltipo post startigo aŭ ŝarĝo de ludo. 'Unue havebla' elektas la plej malnovan tipon de reloj, 'laste havebla' elektas la plej novan tipon de reloj, kaj 'pli uzata' elektas tiun tipon kiu estas ĉi-momente la plej uzata
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :unua havebla
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :lasta havebla
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :plej uzata
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Montri rezervitajn trakojn: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donu alian koloron al rezervitaj trakoj por helpi je problemoj pri vagonaroj kiuj rifuzas eniri voj-bazitajn blokojn

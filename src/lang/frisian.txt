@@ -1501,12 +1501,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Lit oankomst- e
 STR_CONFIG_SETTING_QUICKGOTO                                    :Flugge oanmaak fan fiertúchoarders: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :By it iepenjen fan it oardersfinster direktst it 'gean-nei'-ark iepenje
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standert spoarsoart (by nij of bewarre spul): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spoartype om te selektearjen nei it starten fan in nij spul. 'Earst beskikber' selektearret it âldste spoartype, 'Lêst beskikber' selektearret it nijste spoartype en 'Meast brûkt' selektearret is spoartyp hokker it measte brûkt wurdt
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Earst beskikber
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Lêst beskikber
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meast brûkt
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Lit reservearre spoar sjen: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Jou reservearre spoaren in oare kleur om it makliker te meistjen problemen mei paad-basearre seinblokken te sjen

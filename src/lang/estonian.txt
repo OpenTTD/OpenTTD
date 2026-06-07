@@ -1797,12 +1797,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sõiduki graafi
 STR_CONFIG_SETTING_QUICKGOTO                                    :Sõiduki korralduste kiirloomine: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Siht-osuti on kohe aktiivne, kui korralduste aken avada
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Algne rööbastee liik (mängu alustamisel/jätkamisel): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Määrab mängu alguses või selle jätkamisel käibel oleva rööbastee liigi. «Vanim» valib kõige vanema rööbastee liigi, «Uusim» valib kõige uuema rööbastee liigi, ning «Enim kasutatud» valib kõige rohkem kasutatud rööbastee liigi
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Vanim
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Uusim
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Enim kasutatud
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Hõivatud blokkpiirkondade näitamine: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Värvib hõivatud blokkpiirkonnad eri värvi, abistamaks tõrgete puhul, kus rongid ei sisene trajektoorijärgsetesse blokkidesse

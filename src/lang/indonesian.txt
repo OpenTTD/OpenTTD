@@ -1697,12 +1697,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tampilkan waktu
 STR_CONFIG_SETTING_QUICKGOTO                                    :Buat pemberhentian kendaraan secara cepat: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pra-pilih kursor 'pergi ke' ketika jendela perintah dibuka
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Jenis rel saat baru bermain/memuat permainan: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jenis rel yang dipilih setelah memulai atau pemuatan permainan. 'tersedia pertama' pilihkan jenis rel paling tua, 'tersedia terakhir' pilihkan jenis rel paling baru, dan 'sering dipakai' pilihkan jenis yang sekarang paling sering dipakai
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Tersedia pertama
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Tampilkan rel yang akan terpakai: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Beri warna yang berbeda untuk jalur-jalur yang dicadangkan untuk menolong ketika terdapat kereta yang menolak masuk ke blok menurut jalurnya

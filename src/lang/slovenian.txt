@@ -1647,12 +1647,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Prikaži priča
 STR_CONFIG_SETTING_QUICKGOTO                                    :Hitro ustvarjanje ukazov vozila: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Predizbor operacije "pojdi do", ko se odpre okno ukazov.
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Privzeta vrsta železnice (ob zagonu nove igre): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tip tirov za izbor pri novi igri ali nalaganju igre. "Prvi na razpolago" je najstarejši tip, "zadnji na razpolago" je najnovejši, "najbolj uporabljen" je, kar je večina uporabe na ozemlju.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prvi/a/o/ na izbiro
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Zadnji/a/o/ na izbiro
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Najbolj uporabljan/a/o
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Prikaz posebnih tirov: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Rezervirani tiri naj bod odruge barve, za pomoč v težavah, ko vlak noče v polje, čez katerega vodi pot.

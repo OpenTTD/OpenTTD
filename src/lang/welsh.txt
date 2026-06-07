@@ -1800,12 +1800,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Dangos amseroed
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creu cyflym ar gyfer gorchmynion cerbydau: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Rhag-ddewis y 'cyrchydd mynd i' pan yn agor y ffenestr gorchmynion
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Math o gledrau i'w ddewis wedi dechrau neu lwytho gêm. Bydd 'y cyntaf ar gael' yn dewis y math hynaf, 'yr olaf ar gael' yn dewis y diweddaraf, a 'defnydd mwyaf' y math mwyaf cyffredin ar hyn o bryd
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y cyntaf sydd ar gael
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yr olaf sydd ar gael
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Defnydd mwyaf
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Dangos llwybrau traciau wedi'u cadw: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Rhoi lliw gwahanol ar gledrau lliw gwahanol i gynorthwyo datrys problemau gyda threnau sy'n gwrthod myned blociau llwybro

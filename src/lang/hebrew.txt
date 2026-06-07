@@ -1630,12 +1630,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :הצג זמני
 STR_CONFIG_SETTING_QUICKGOTO                                    :{STRING} :יצירה מהירה של מסלול הנסיעה
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :בחר מראש את סמן ה-"גש אל" בעת פתיחת חלון הפקודות
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{STRING} :(ברירת מחדל לפסי רכבת (בתחילת משחק או לאחר טעינה
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :סוג מסילה לבחירה אחרי התחלה או טעינה של משחק. "הראשון הזמין" בוחר את סוג המסילה הישן ביותר, "האחרון הזמין" בוחר את סוג המסילה החדש ביותר, ו-"הנפוץ ביותר" בוחר את הסוג אשר נמצא בשימוש רחב ביותר כרגע
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :הראשון הזמין
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :האחרון הזמין
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :הנפוץ ביותר
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :הדגש מסלולים שבשימוש: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :תן צבע שונה למסילות שמורות כדי לסייע בבעיות עם רכבות המסרבות להיכנס לגושים מבוססי מסלול

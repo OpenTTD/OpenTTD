@@ -1434,12 +1434,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vís væntaðu 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Skjót gerð av boðum til flutningstól: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :'far til pílurin' er longu valdur tá tú opnar boðs vindeyga
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Vanliga jarnbreyta slagi (aftaná nýtt spæl/heinta spæl): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jarnbreyta slag ið er valt eftir byrjan ella heintan av einum spæli. 'fyrst tøka' velur ta elsta slagi av breytum, 'síðst tøka' velur ta nýggjasta slagi av breytum, 'mest nýtta' velur ta slagi av breyt sum í verandi løtu er mest nýtt
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Fyrsta tøka
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Síðst tøka
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest nýtta
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vís umbidnar breytir: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Gev umbidnum breytum ein øðrvísi lit fyri at hjálpa tá ið tok sýta at koyra á leið-bygdum blokkum

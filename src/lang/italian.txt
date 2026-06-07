@@ -1802,12 +1802,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra gli orar
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creazione rapida degli ordini dei veicoli: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preseleziona il comando 'Vai a' quando si apre la finestra degli ordini
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo di rotaie predefinito (a inizio/ripresa partita): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo di rotaie da selezionare dopo l'inizio o il caricamento di una partita. 'Il primo disponibile' seleziona il tipo più vecchio di binari, 'L'ultimo disponibile' seleziona il tipo più nuovo di binari, e 'Il più usato' seleziona il tipo più utilizzato al momento
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Il primo disponibile
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :L'ultimo disponibile
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Il più usato
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra i percorsi riservati sui binari: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dà ai binari riservati un colore differente, aiutando a correggere problemi di treni che si rifiutano di entrare in blocchi protetti con segnali di percorso

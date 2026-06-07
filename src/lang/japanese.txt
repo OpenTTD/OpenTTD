@@ -1655,12 +1655,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :時刻表に出
 STR_CONFIG_SETTING_QUICKGOTO                                    :指令の作成を高速化: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :指令作成画面を開いたときに規定で「駅を選択」を選択するようにします
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :デフォルトの線路種類: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :新規ゲーム/ゲームロード直後に選択される線路の種類を指定します。「最初」では最初に開発された種類(普通は非電化の線路)、「最新」では最も新しく開発された種類、「最多」はマップ内で一番使われている種類になります
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最初
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最多
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :予約済み経路を表示: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :列車が移動のために予約した経路部分に色づけします。パス信号で作られた閉塞区間に他の列車が入れないといったトラブルの解決に役立ちます

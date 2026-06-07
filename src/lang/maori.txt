@@ -1805,12 +1805,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Whakaaria ngā 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Hanga wawe i ngā mahi a ngā waka: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Tīpako aunoatia te pehu tohutohu (ānō nei kua pāwhiria te pātene "Haere ki") i te huaki i te matapihi mahi
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Momo rēra taunoa (i muri i te kēmu hou/uta i te kēmu): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Te momo rēra hei tīpako i muri i te tīmata, te uta rānei i tētahi kēmu. "Wātea tuatahi": ka tīpakona te momo rēra tawhito rawaatu, "hou rawaatu": ka tīpakona te momo rēra hou rawaatu, "whakamahi nui rawaatu": ka tīpakona te momo e whakamahi nui rawatia atu ana ināianei
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Wātea tuatahi
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Hou rawaatu
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Whakamahi nui rawaatu
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Whakaaria ngā tāpui i ngā ara rerewhenua: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Hoatu he kara kē ki ngā ara kua tāpuia, kia āwhina ina kore he tereina e hiahia ki te haere ki runga i tētahi paraka ara

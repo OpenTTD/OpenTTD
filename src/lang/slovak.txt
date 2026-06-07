@@ -1809,12 +1809,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zobrazí predpo
 STR_CONFIG_SETTING_QUICKGOTO                                    :Rýchla tvorba cestovného poriadku vozidla: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Prednastaviť "Choď do" kurzor pri otvorení okna s príkazmi
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Predvolený typ koľají (v novej/nahranej hre): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Typ železnice zvolený po štarte alebo nahraní hry. 'prvé dostupné' zvolí najstarší typ koľají, 'posledný dostupný' zvolí najnovší typ koľají, a 'najpoužívanejší' vyberie typ ktorý je v danej dobe najviac používaný.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :prvé dostupné
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :posledné dostupné
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :najpoužívanejšie
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Zobraziť rezerváciu pre trate: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dá obsadenej trati inú farbu na pomoc pri problémoch s vlakmi odmietajúcimi vstúpiť do úseku danej trate

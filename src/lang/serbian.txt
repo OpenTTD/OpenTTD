@@ -1904,12 +1904,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Prikazivanje o�
 STR_CONFIG_SETTING_QUICKGOTO                                    :Brzo kreiranje naredbi vozila: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Označi kursor naredbe "idi do" kod otvaranja prozora sa naredbama
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Podrazumevana vrsta pruge (posle učitavanja/nove igre): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Vrsta železnice koja će biti odabrana prilikom pokretanja ili učitavanja igre. "Prva dostupna" odabira najstariju vrstu, "poslednja dostupna" odabire najnoviju vrstu, "najčešće korišćena" odabira vrstu koja je trenutno najviše u upotrebi
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prva dostupna
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Zadnja dostupna
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Najčešće korišćena
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Prikazivati rezervisane pruge: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Prikaži rezervisane pruge u drugoj boji kako bi se olakšalo rešavanje problema sa vozovima koji ne žele ući u određenu deonicu puta

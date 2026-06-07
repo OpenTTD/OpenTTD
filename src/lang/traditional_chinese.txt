@@ -1805,12 +1805,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :在時刻表上
 STR_CONFIG_SETTING_QUICKGOTO                                    :快速建立車輛指令：{STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :設定是否在打開指令視窗時自動選取「前往」按鈕。
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :預設的軌道類型（將在新遊戲或載入遊戲時生效）：{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :設定開始新遊戲或載入遊戲後預設選擇的軌道種類。「最先可用的軌道」指最早出現而可用的軌道種類；「最新可用的軌道」指最後出現而可用的軌道種類；「最常用的軌道」指遊戲中使用最多的軌道種類。
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的軌道
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的軌道
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的軌道
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :顯示列車預留佔用的路徑：{STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :設定是否在有列車預留的軌道著色，使玩家更清楚觀察到列車經過路徑號誌時預留的路徑。

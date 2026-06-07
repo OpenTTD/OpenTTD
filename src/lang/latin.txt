@@ -1696,12 +1696,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Monstrare in ho
 STR_CONFIG_SETTING_QUICKGOTO                                    :Celeris datio iussorum vehiculorum: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Praesumere ferramentum 'I ad' cum fenestra iussorum aperitur
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Typus astarii solitus (novo ludo/ludo lecto): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Typus astarii adhibendus in novo ludo sive ludo lecto. 'Primus parabilis' typus est veterrimus, 'postremus parabilis' est novissimus typus, et 'frequentissime usus' est typus maxime in tabula usus
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primus parabilis
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Postremus parabilis
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Frequentissime usus
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Monstrare cursus reservatos in astariis: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Facit ut astaria cum cursibus a tramine reservatis habeant alium colorem, ut facilior sit videre errores hamaxostichorum qui nolunt inire quosdam locos cum signalibus

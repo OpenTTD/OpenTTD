@@ -1458,12 +1458,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Syne ankomst og
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Hurtig-laging av køyretøy-ordrar: {STRING}
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard jernbanetype (etter nytt/lasta spel): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jernbanetype vald etter oppstart eller innlasting av spel. 'fyrste tilgjengelege' vel den eldste typen jernbane, 'sist tilgjengelege' vel den nyaste typen jernbane, og 'mest brukt' vel den typen som for øyeblikket er mest nytta
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelege
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelege
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukte
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Syne reserverte spor: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Gi reserverte sport ein anna farge for å assistera ved problem med tog som nektar å køyra inn på spor-baserte delar

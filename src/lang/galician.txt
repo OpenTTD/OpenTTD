@@ -1789,12 +1789,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Amosar chegadas
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de ordes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selecciona o cursor "ir a" cando se abre a ventá de ordes
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Carril por defecto (despois denova partida/cargar partida): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de carril seleccionado despois de comezar ou cargar unha partida. "o primeiro dispoñíbel" selecciona o tipo de vías máis antigo, "último dispoñíbel" selecciona o último dispoñíbel e "o máis usado" selecciona o tipo que se está a usar máis
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :O primeiro dispoñíbel
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :O último dispoñíbel
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :O máis usado
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra-las vías reservadas: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Usa unha cor distinta para as vías reservadas para axudar en problemas de trens que refusan entrar en bloques baseados en rutas

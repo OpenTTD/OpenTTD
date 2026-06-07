@@ -1804,12 +1804,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Hiển thị th
 STR_CONFIG_SETTING_QUICKGOTO                                    :Tạo nhanh lộ trình cho phương tiện: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Lựa chọn trước 'đi tới con trỏ' khi mở cửa số lập lộ trình
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Loại đường ray mặc định (sau game mới/nạp game): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Kiểu đường ray được chọn khi bắt đầu hoặc tải một ván chơi. 'sẵn có đầu tiên' chọn loại ray cũ nhất, 'sẵn có cuối cùng' chọn loại ray mới nhất, và 'dùng nhiều nhất' chọn loại ray đang được sử dụng nhiều nhất trong ván chơi
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Có trước tiên
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Có sau cùng
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Dùng nhiều
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Hiện đường ray dành trước: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Lựa chọn đường dành riêng với màu khác để thấy rõ vấn đề với việc tài không vào khu vực tìm đường path-based

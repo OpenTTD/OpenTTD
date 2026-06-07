@@ -1611,11 +1611,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :எதிர்
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :வாகன கட்டளைகளை விரிவாக உருவாக்கவும்: {STRING}
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :இயல்புநிலை இரயில் வகை (புதிய ஆட்ட துவக்கம்/பழைய ஆட்டத்தின் ஏற்றம்): {STRING}
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :முதலில் கிடைக்கும்
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :கடைசியில் கிடைக்கும்
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :அதிகமாக பயன்படுத்தியவை
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :ஒதுக்கீடு செய்யப்பட்ட தடங்களைக் காட்டவும்: {STRING}
 

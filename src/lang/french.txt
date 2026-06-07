@@ -1806,12 +1806,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Afficher les te
 STR_CONFIG_SETTING_QUICKGOTO                                    :Création rapide des ordres de véhicule{NBSP}: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Présélectionner le curseur "aller vers" lors de l'ouverture de la fenêtre d'ordres
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Type de rail par défaut (après nouvelle partie/chargement){NBSP}: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Type de rail à utiliser au début ou au chargement d'une partie. "premier disponible" sélectionne le type de voies le plus ancien, "dernier disponible" sélectionne le type de voies le plus récent, et "le plus utilisé" sélectionne le type qui est actuellement le plus utilisé
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Premier disponible
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Dernier disponible
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Le plus utilisé
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Afficher les réservations de chemin sur les voies{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donne une couleur différente aux voies réservées afin d'aider à résoudre les problèmes de trains refusant de s'engager dans des tronçons encadrés par des signaux de passage

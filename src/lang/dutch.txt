@@ -1788,12 +1788,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Geef de verwach
 STR_CONFIG_SETTING_QUICKGOTO                                    :Snel voertuigorders maken: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Selecteer meteen de 'ga-naar-cursor' wanneer je het ordervenster opent
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standaard spoorsoort (bij nieuw of opgeslagen spel): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spoortype om te selecteren na het starten of het laden van een spel. 'eerst beschikbare' selecteert de oudste vorm van sporen, 'laatst beschikbare' selecteert het nieuwste type van sporen, en 'meest gebruikte' selecteert het type dat op dit moment het meest in gebruik is
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Eerst beschikbare
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laatst beschikbare
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meest gebruikte
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Gereserveerd spoor weergeven: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Geeft gereserveerde sporen een andere kleur. Dit is handig om te bepalen waarom treinen een routeblok niet ingaan.

@@ -1471,11 +1471,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :عرض الوص
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :إنشاء سريع لأوامر المركبات: {STRING}
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :سكة الحديد القياسية (بعد بدأ لعبة جديدة أو تحميل لعبة): {STRING}
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :القديم
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :الجديد
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :الأكثر استخداما
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :اظهار الطرق المحجوزة: {STRING}
 

@@ -1698,12 +1698,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Seall na h-aman
 STR_CONFIG_SETTING_QUICKGOTO                                    :Cruthachadh luath aig òrduighean charbadan:{STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Ro-thagh an cùrsair “rach gu” nuair a thèid uinneag nan òrduighean fhosgladh
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Seòrsa rèile bunaiteach (le geama ùr/air ùr-luchdadh): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An seòrsa rèile a thèid a thaghadh nuair a bhios geama ùr air a thòiseachadh no geama air luchdadh. Taghaidh “Seòrsa as sine” an seòrsa as sine dhe rèile, “Seòrsa as ùire” an seòrsa as ùire a tha ri làimh is “Ga chleachdadh mar as trice” an seòrsa a tha thu a' cleachdadh mar as trice an-dràsta
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Seòrsa as sine
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Seòrsa as ùire
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ga chleachdadh mar as trice
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Seall slighean-rèile glèidhte: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Cuiridh seo dath eile air slighean glèidhte gus cuideachadh le duilgheadasan gun diùlt trèan dol a-steach dha bhlocaichean stèidhichte air slighean

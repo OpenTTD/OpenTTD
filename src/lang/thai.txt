@@ -1500,12 +1500,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :แสดงก
 STR_CONFIG_SETTING_QUICKGOTO                                    :เลือกคำสั่ง "ไปยัง" ไว้เสมอในการออกคำสั่งให้พาหนะ: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :เลือกคำสั่ง "ไปยัง" ไว้เป็นปกติเมื่อมีการเลือกปลายทาง
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :การเลือกทางรถไฟที่เป็นแบบแรกเริ่มเมื่อคลิ๊กเครื่องมือสร้าง (เริ่มเกมใหม่/โหลดเกม): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :ประเภทของทางรถไฟหลังจากเริ่มเกมใหม่ หรือโหลดเซฟเกม
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :มีใช้ครั้งแรก
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :มีใช้ครั้งสุดท้าย
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :ใช้มากที่สุด
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :แสดงทางรถไฟที่ขบวนรถขอทางไว้: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :แสดงการขอทางของขบวนรถไฟ โดยแสดงสีที่แตกต่างจากสีทางปกติเพื่อช่วยตรวจหาจุดบกพร่อง เมื่อขบวนรถไฟเข้าสู่ทางตอนที่ใช้สัญญาณระบบ Path-Based

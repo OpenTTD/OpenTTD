@@ -1789,12 +1789,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zeige geschätz
 STR_CONFIG_SETTING_QUICKGOTO                                    :Schnelle Erzeugung von Aufträgen für Fahrzeuge: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Setze die Vorauswahl des Mauszeigers auf „Fahre zu“, wenn ein Auftragsfenster mit weniger als zwei Einträgen geöffnet wird.
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Gleistyp bei Spielbeginn/geladenem Spiel: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Vorausgewählter Schienentyp nach Spielstart. „Erster verfügbarer“ wählt den ältesten Schienentyp, „Letzter verfügbarer“ den neuesten Schienentyp und „Meistbenutzter“ denjenigen, der am meisten verbaut ist.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Erster verfügbarer
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Letzter verfügbarer
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meistbenutzter
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Reservierte Gleise hervorheben: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Hebt reservierte Fahrabschnitte hervor, um bei der Problemanalyse zu helfen, wenn Züge die Einfahrt in pfadbasierte Streckenabschnitte verweigern

@@ -1869,12 +1869,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Várható érke
 STR_CONFIG_SETTING_QUICKGOTO                                    :Utasításlista gyors elkészítése: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :A 'Menj' parancs előzetes kiválasztása az utasításlista megnyitásakor
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Alapértelmezett vasúti pályatípus: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Egy játék kezdete vagy betöltése után használt vasúti pályatípus. 'Első elérhető' kiválasztja a legrégebbi típusú pályát, 'Utolsó elérhető' kiválasztja a legújabb típusú pályát, 'Legtöbbet használt' kiválasztja azt a pályatípust, amelyik a legtöbb helyen volt használva
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Legtöbbet használt
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vágányszakasz foglaltságának jelzése: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :A vonatok számára lezárt vágányutak jelölése más színnel, az irányjelzési rendszerrel kapcsolatos vonatmegállási problémák megoldásához

@@ -1795,12 +1795,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Muestra fechas 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de órdenes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselecciona el cursor "Ir a" al abrir la ventana de órdenes
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Ferrocarril por defecto (partida nueva/cargada): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de ferrocarril que se seleccionará al comenzar o cargar un juego. 'Primero disponible' selecciona el tipo de ferrocarril más antiguo, 'Último disponible' selecciona el tipo de ferrocarril más moderno, y 'Más usado' selecciona el tipo que se está usando más en ese momento
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponible
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Ver rutas reservadas en las vías: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Da a las vías reservadas un color diferente para ayudar a resolver problemas causados por trenes que rehúsan entrar en secciones de via

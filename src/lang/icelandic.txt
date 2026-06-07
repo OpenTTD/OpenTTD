@@ -1433,12 +1433,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sýna áætlað
 STR_CONFIG_SETTING_QUICKGOTO                                    :Fljótleg gerð skipana: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forvelja 'fara að' þegar skipana glugginn fyrir farartæki er opnaður
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Valin lestartegund (eftir nýjan leik/opnaðan leik): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tegund spors sem valið er fyrst eftir að leikur byrjar. 'Fyrsta mögulega' velur elstu gerð spors, 'Síðasta mögulega' velur nýjustu gerð spors og 'Mest notuð' velur það spor sem mest er af á kortinu
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Fyrsta mögulega
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Síðasta mögulega
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest notuð
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sýna frátekin spor: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Frátekin spor fá annan lit til að auðvelda að finna vandamál þegar lestar fara ekki inn á svæði

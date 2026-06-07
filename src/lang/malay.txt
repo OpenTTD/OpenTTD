@@ -1397,11 +1397,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tunjukkan jangk
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Pewujudan pantas arahan kenderaan: {STRING}
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Landasan keretapi lazim (apabila memulakan permainan baru/buka permainan: {STRING}
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Yang tersedia terawal
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yang tersedia sebelumnya
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yang selalu digunakan
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Tunjukkan landasan yang ditempah: {STRING}
 

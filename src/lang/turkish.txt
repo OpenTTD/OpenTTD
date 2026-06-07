@@ -1801,12 +1801,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zaman çizelgel
 STR_CONFIG_SETTING_QUICKGOTO                                    :Araç talimatlarının hızlı oluşturulması: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Komutlar penceresi açılırken "git" düğmesini otomatik olarak seç
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Öntanımlı ray türü (yeni oyundan/oyun yüklemeden sonra): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Oyuna başlandığında veya oyun yüklendiğinde seçilecek ray cinsi. "En eskisi" en eski ray cinsini, "en yenisi" en yeni ray cinsini, "en çok kullanılan" ise en fazla kullanılmış olan ray cinsini seçer.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :En eskisi
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :En yenisi
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :En çok kullanılan
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Raylar için yol ayrılmalarını göster: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Trenlerin güzergah tabanlı bloklara girmeyi reddetmesine dair sorunları engellemek için ayrılmış (rezerve) raylar için farklı bir renk kullan.

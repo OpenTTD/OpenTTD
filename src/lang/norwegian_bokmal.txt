@@ -1807,12 +1807,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vise forventede
 STR_CONFIG_SETTING_QUICKGOTO                                    :Rask opprettelse av kjøretøyordre: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forhåndsvelg 'gå til markøren' når ordrevinduet åpnes
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard jernbanetype (etter nytt/innlastet spill): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jernbanetype som velges når man starter eller laster et spill. 'første tilgjengelige' velger den eldste typen spor, 'siste tilgjengelige' velger den nyeste typen spor og 'mest brukt' velger den typen som for tiden er mest i bruk
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelige
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelige
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukt
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vis reserverte spor: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Gi reserverte spor en annen farge for å bistå med problemer hvor tog nekter å entre stibaserte blokker
