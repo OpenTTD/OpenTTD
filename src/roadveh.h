@@ -290,7 +290,7 @@ protected: // These functions should not be called outside acceleration code.
 		TrackStatus ts = GetTileTrackStatus(this->tile, TRANSPORT_ROAD, GetRoadTramType(this->roadtype));
 		TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
-		return trackbits == TRACK_BIT_X || trackbits == TRACK_BIT_Y;
+		return trackbits == Track::X || trackbits == Track::Y;
 	}
 
 	/**

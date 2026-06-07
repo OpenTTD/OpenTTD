@@ -16,50 +16,40 @@
  * These are used to specify a single track.
  * Can be translated to a trackbit with TrackToTrackbit
  */
-enum Track : uint8_t {
-	TRACK_BEGIN = 0,        ///< Used for iterations
-	TRACK_X     = 0,        ///< Track along the x-axis (north-east to south-west)
-	TRACK_Y     = 1,        ///< Track along the y-axis (north-west to south-east)
-	TRACK_UPPER = 2,        ///< Track in the upper corner of the tile (north)
-	TRACK_LOWER = 3,        ///< Track in the lower corner of the tile (south)
-	TRACK_LEFT  = 4,        ///< Track in the left corner of the tile (west)
-	TRACK_RIGHT = 5,        ///< Track in the right corner of the tile (east)
-	TRACK_END,              ///< Used for iterations
-	INVALID_TRACK = 0xFF,   ///< Flag for an invalid track
-};
+enum class Track : uint8_t {
+	Begin = 0, ///< Used for iterations
+	X = 0, ///< Track along the x-axis (north-east to south-west)
+	Y = 1, ///< Track along the y-axis (north-west to south-east)
+	Upper = 2, ///< Track in the upper corner of the tile (north)
+	Lower = 3, ///< Track in the lower corner of the tile (south)
+	Left = 4, ///< Track in the left corner of the tile (west)
+	Right = 5, ///< Track in the right corner of the tile (east)
+	End, ///< End marker (of regular track bits)
 
-/** Allow incrementing of Track variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(Track)
+	Wormhole = 6, ///< Special flag indicating vehicle is inside a bridge or tunnel.
+	Depot = 7, ///< Special flag indicating a vehicle is inside a depot.
+
+	Invalid = 0xFF, ///< Flag for an invalid track
+};
 
 /**
  * Array with \c Track as index.
  * @tparam T the type contained within the array.
  */
 template <typename T>
-using TrackIndexArray = EnumIndexArray<T, Track, TRACK_END>;
+using TrackIndexArray = EnumIndexArray<T, Track, Track::End>;
 
-/** Bitfield corresponding to Track */
-enum TrackBits : uint8_t {
-	TRACK_BIT_NONE    = 0U,                                                 ///< No track
-	TRACK_BIT_X       = 1U << TRACK_X,                                      ///< X-axis track
-	TRACK_BIT_Y       = 1U << TRACK_Y,                                      ///< Y-axis track
-	TRACK_BIT_UPPER   = 1U << TRACK_UPPER,                                  ///< Upper track
-	TRACK_BIT_LOWER   = 1U << TRACK_LOWER,                                  ///< Lower track
-	TRACK_BIT_LEFT    = 1U << TRACK_LEFT,                                   ///< Left track
-	TRACK_BIT_RIGHT   = 1U << TRACK_RIGHT,                                  ///< Right track
-	TRACK_BIT_CROSS   = TRACK_BIT_X     | TRACK_BIT_Y,                      ///< X-Y-axis cross
-	TRACK_BIT_HORZ    = TRACK_BIT_UPPER | TRACK_BIT_LOWER,                  ///< Upper and lower track
-	TRACK_BIT_VERT    = TRACK_BIT_LEFT  | TRACK_BIT_RIGHT,                  ///< Left and right track
-	TRACK_BIT_3WAY_NE = TRACK_BIT_X     | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,///< "Arrow" to the north-east
-	TRACK_BIT_3WAY_SE = TRACK_BIT_Y     | TRACK_BIT_LOWER | TRACK_BIT_RIGHT,///< "Arrow" to the south-east
-	TRACK_BIT_3WAY_SW = TRACK_BIT_X     | TRACK_BIT_LOWER | TRACK_BIT_LEFT, ///< "Arrow" to the south-west
-	TRACK_BIT_3WAY_NW = TRACK_BIT_Y     | TRACK_BIT_UPPER | TRACK_BIT_LEFT, ///< "Arrow" to the north-west
-	TRACK_BIT_ALL     = TRACK_BIT_CROSS | TRACK_BIT_HORZ  | TRACK_BIT_VERT, ///< All possible tracks
-	TRACK_BIT_MASK    = 0x3FU,                                              ///< Bitmask for the first 6 bits
-	TRACK_BIT_WORMHOLE = 0x40U,                                             ///< Bitflag for a wormhole (used for tunnels)
-	TRACK_BIT_DEPOT   = 0x80U,                                              ///< Bitflag for a depot
-};
-DECLARE_ENUM_AS_BIT_SET(TrackBits)
+/** Bitset of \c Track elements. */
+using TrackBits = EnumBitSet<Track, uint8_t>;
+
+static constexpr TrackBits TRACK_BIT_CROSS = {Track::X, Track::Y}; ///< X-Y-axis cross
+static constexpr TrackBits TRACK_BIT_HORZ = {Track::Upper, Track::Lower}; ///< Upper and lower track
+static constexpr TrackBits TRACK_BIT_VERT = {Track::Left, Track::Right}; ///< Left and right track
+static constexpr TrackBits TRACK_BIT_3WAY_NE = {Track::X, Track::Upper, Track::Right}; ///< "Arrow" to the north-east
+static constexpr TrackBits TRACK_BIT_3WAY_SE = {Track::Y, Track::Lower, Track::Right}; ///< "Arrow" to the south-east
+static constexpr TrackBits TRACK_BIT_3WAY_SW = {Track::X, Track::Lower, Track::Left}; ///< "Arrow" to the south-west
+static constexpr TrackBits TRACK_BIT_3WAY_NW = {Track::Y, Track::Upper, Track::Left}; ///< "Arrow" to the north-west
+static constexpr TrackBits TRACK_BIT_ALL = {Track::X, Track::Y, Track::Upper, Track::Lower, Track::Left, Track::Right}; ///< All possible tracks
 
 /**
  * Enumeration for tracks and directions.

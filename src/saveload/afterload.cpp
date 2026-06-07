@@ -1235,7 +1235,7 @@ bool AfterLoadGame()
 							MakeRailNormal(
 								t,
 								GetTileOwner(t),
-								AxisToTrackBits(OtherAxis(axis)),
+								AxisToTrack(OtherAxis(axis)),
 								GetRailType(t)
 							);
 						} else {
@@ -1297,7 +1297,7 @@ bool AfterLoadGame()
 				continue;
 			}
 			if (v->type == VehicleType::Train) {
-				Train::From(v)->track = TRACK_BIT_WORMHOLE;
+				Train::From(v)->track = Track::Wormhole;
 			} else {
 				RoadVehicle::From(v)->state = RVSB_WORMHOLE;
 			}
@@ -1439,7 +1439,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
+	YapfNotifyTrackLayoutChange(INVALID_TILE, Track::Invalid);
 
 	if (IsSavegameVersionBefore(SLV_34)) {
 		for (Company *c : Company::Iterate()) ResetCompanyLivery(c);
@@ -2026,8 +2026,8 @@ bool AfterLoadGame()
 				case TileType::Railway:
 					if (HasSignals(t)) {
 						/* move the signal variant */
-						SetSignalVariant(t, TRACK_UPPER, HasBit(t.m2(), 2) ? SignalVariant::Semaphore : SignalVariant::Electric);
-						SetSignalVariant(t, TRACK_LOWER, HasBit(t.m2(), 6) ? SignalVariant::Semaphore : SignalVariant::Electric);
+						SetSignalVariant(t, Track::Upper, HasBit(t.m2(), 2) ? SignalVariant::Semaphore : SignalVariant::Electric);
+						SetSignalVariant(t, Track::Lower, HasBit(t.m2(), 6) ? SignalVariant::Semaphore : SignalVariant::Electric);
 						ClrBit(t.m2(), 2);
 						ClrBit(t.m2(), 6);
 					}
@@ -2036,7 +2036,7 @@ bool AfterLoadGame()
 					if (IsRailDepot(t)) {
 						SetDepotReservation(t, false);
 					} else {
-						SetTrackReservation(t, TRACK_BIT_NONE);
+						SetTrackReservation(t, {});
 					}
 					break;
 
@@ -2672,16 +2672,16 @@ bool AfterLoadGame()
 				v->vehstatus.Set(VehState::Hidden);
 
 				switch (v->type) {
-					case VehicleType::Train: Train::From(v)->track       = TRACK_BIT_WORMHOLE; break;
-					case VehicleType::Road:  RoadVehicle::From(v)->state = RVSB_WORMHOLE;      break;
+					case VehicleType::Train: Train::From(v)->track = Track::Wormhole; break;
+					case VehicleType::Road: RoadVehicle::From(v)->state = RVSB_WORMHOLE; break;
 					default: NOT_REACHED();
 				}
 			} else {
 				v->vehstatus.Reset(VehState::Hidden);
 
 				switch (v->type) {
-					case VehicleType::Train: Train::From(v)->track       = DiagDirToDiagTrackBits(vdir); break;
-					case VehicleType::Road:  RoadVehicle::From(v)->state = DiagDirToDiagTrackdir(vdir); RoadVehicle::From(v)->frame = frame; break;
+					case VehicleType::Train: Train::From(v)->track = DiagDirToDiagTrack(vdir); break;
+					case VehicleType::Road: RoadVehicle::From(v)->state = DiagDirToDiagTrackdir(vdir); RoadVehicle::From(v)->frame = frame; break;
 					default: NOT_REACHED();
 				}
 			}
@@ -2757,7 +2757,7 @@ bool AfterLoadGame()
 					if (t->vehstatus.Test(VehState::Crashed)) break;
 
 					/* Only X/Y tracks can be sloped. */
-					if (t->track != TRACK_BIT_X && t->track != TRACK_BIT_Y) break;
+					if (t->track != Track::X && t->track != Track::Y) break;
 
 					t->gv_flags |= FixVehicleInclination(t, t->direction);
 					break;
@@ -2776,12 +2776,12 @@ bool AfterLoadGame()
 					TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
 					/* Only X/Y tracks can be sloped. */
-					if (trackbits != TRACK_BIT_X && trackbits != TRACK_BIT_Y) break;
+					if (trackbits != Track::X && trackbits != Track::Y) break;
 
 					Direction dir = rv->direction;
 
 					/* Test if we are reversing. */
-					Axis a = trackbits == TRACK_BIT_X ? Axis::X : Axis::Y;
+					Axis a = trackbits == Track::X ? Axis::X : Axis::Y;
 					if (AxisToDirection(a) != dir &&
 							AxisToDirection(a) != ReverseDir(dir)) {
 						/* When reversing, the road vehicle is on the edge of the tile,
@@ -2808,10 +2808,10 @@ bool AfterLoadGame()
 				if (v->type == VehicleType::Train && !v->vehstatus.Test(VehState::Crashed) &&
 						v->direction != DiagDirToDir(dir)) {
 					/* If the train has left the bridge, it shouldn't have
-					 * track == TRACK_BIT_WORMHOLE - this could happen
+					 * track == Track::Wormhole - this could happen
 					 * when the train was reversed while on the last "tick"
 					 * on the ramp before leaving the ramp to the bridge. */
-					Train::From(v)->track = DiagDirToDiagTrackBits(dir);
+					Train::From(v)->track = DiagDirToDiagTrack(dir);
 				}
 			}
 
@@ -2935,10 +2935,10 @@ bool AfterLoadGame()
 			if (!t->IsPrimaryVehicle()) continue;
 
 			/* Front not in depot -> consist not entering depot */
-			if (t->track != TRACK_BIT_DEPOT) continue;
+			if (t->track != Track::Depot) continue;
 			/* Back in depot -> consist completely in depot */
-			if (t->Last()->track == TRACK_BIT_DEPOT) continue;
-			for (Train *u = t; u->track == TRACK_BIT_DEPOT; u = u->Next()) {
+			if (t->Last()->track == Track::Depot) continue;
+			for (Train *u = t; u->track == Track::Depot; u = u->Next()) {
 				u->direction = ReverseDir(u->direction);
 			}
 		}

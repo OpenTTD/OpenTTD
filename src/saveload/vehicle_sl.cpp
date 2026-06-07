@@ -574,7 +574,7 @@ void FixupTrainLengths()
 			 * so we need to move all vehicles forward to cover the difference to the
 			 * old center, otherwise wagon spacing in trains would be broken upon load. */
 			for (Train *u = Train::From(v); u != nullptr; u = u->Next()) {
-				if (u->track == TRACK_BIT_DEPOT || u->vehstatus.Test(VehState::Crashed)) continue;
+				if (u->track == Track::Depot || u->vehstatus.Test(VehState::Crashed)) continue;
 
 				Train *next = u->Next();
 
@@ -627,12 +627,12 @@ void FixupTrainLengths()
 				}
 
 				/* If the next wagon is still in a depot, check if it shouldn't be outside already. */
-				if (next != nullptr && next->track == TRACK_BIT_DEPOT) {
+				if (next != nullptr && next->track == Track::Depot) {
 					int d = TicksToLeaveDepot(u);
 					if (d <= 0) {
 						/* Next vehicle should have left the depot already, show it and pull forward. */
 						next->vehstatus.Reset(VehState::Hidden);
-						next->track = TrackToTrackBits(GetRailDepotTrack(next->tile));
+						next->track = GetRailDepotTrack(next->tile);
 						for (int i = 0; i >= d; i--) TrainController(next, nullptr);
 					}
 				}

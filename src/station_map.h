@@ -518,17 +518,6 @@ inline Track GetRailStationTrack(Tile t)
 }
 
 /**
- * Get the trackbits of a rail station tile.
- * @param t Tile to query
- * @pre HasStationRail(t)
- * @return The trackbits of the rails on tile \a t.
- */
-inline TrackBits GetRailStationTrackBits(Tile t)
-{
-	return AxisToTrackBits(GetRailStationAxis(t));
-}
-
-/**
  * Check if a tile is a valid continuation to a railstation tile.
  * The tile \a test_tile is a valid continuation to \a station_tile, if all of the following are true:
  * \li \a test_tile is a rail station tile
@@ -582,7 +571,7 @@ inline void SetRailStationReservation(Tile t, bool b)
  */
 inline TrackBits GetStationReservationTrackBits(Tile t)
 {
-	return HasStationReservation(t) ? GetRailStationTrackBits(t) : TRACK_BIT_NONE;
+	return HasStationReservation(t) ? GetRailStationTrack(t) : TrackBits{};
 }
 
 /**

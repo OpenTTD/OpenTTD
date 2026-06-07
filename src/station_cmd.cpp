@@ -1050,9 +1050,9 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 			if (HasPowerOnRail(GetRailType(tile_cur), rt)) {
 				/* The existing track must align with the desired station axis. */
 				Track track = AxisToTrack(axis);
-				if (GetTrackBits(tile_cur) == TrackToTrackBits(track)) {
+				if (GetTrackBits(tile_cur) == track) {
 					/* Check for trains having a reservation for this tile. */
-					if (HasBit(GetRailReservationTrackBits(tile_cur), track)) {
+					if (GetRailReservationTrackBits(tile_cur).Test(track)) {
 						Train *v = GetTrainForReservation(tile_cur, track);
 						if (v != nullptr) {
 							affected_vehicles.push_back(v);
@@ -1810,7 +1810,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 
 			DoClearSquare(tile);
 			DeleteNewGRFInspectWindow(GrfSpecFeature::Stations, tile.base());
-			if (build_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
+			if (build_rail) MakeRailNormal(tile, owner, track, rt);
 			Company::Get(owner)->infrastructure.station--;
 			DirtyCompanyInfrastructureWindows(owner);
 
@@ -3690,12 +3690,12 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc &td)
 /** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side)
 {
-	TrackBits trackbits = TRACK_BIT_NONE;
+	TrackBits trackbits{};
 
 	switch (mode) {
 		case TRANSPORT_RAIL:
 			if (HasStationRail(tile) && !IsStationTileBlocked(tile)) {
-				trackbits = TrackToTrackBits(GetRailStationTrack(tile));
+				trackbits = GetRailStationTrack(tile);
 			}
 			break;
 
@@ -3704,9 +3704,9 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 			if (IsBuoy(tile)) {
 				trackbits = TRACK_BIT_ALL;
 				/* remove tracks that connect NE map edge */
-				if (TileX(tile) == 0) trackbits &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
+				if (TileX(tile) == 0) trackbits.Reset(TRACK_BIT_3WAY_NE);
 				/* remove tracks that connect NW map edge */
-				if (TileY(tile) == 0) trackbits &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
+				if (TileY(tile) == 0) trackbits.Reset({Track::Y, Track::Left, Track::Upper});
 			}
 			break;
 
@@ -3718,11 +3718,11 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 				if (IsBayRoadStopTile(tile)) {
 					DiagDirection dir = GetBayRoadStopDir(tile);
 					if (side != DiagDirection::Invalid && dir != side) break;
-					trackbits = DiagDirToDiagTrackBits(dir);
+					trackbits = DiagDirToDiagTrack(dir);
 				} else {
 					Axis axis = GetDriveThroughStopAxis(tile);
 					if (side != DiagDirection::Invalid && axis != DiagDirToAxis(side)) break;
-					trackbits = AxisToTrackBits(axis);
+					trackbits = AxisToTrack(axis);
 				}
 			}
 			break;

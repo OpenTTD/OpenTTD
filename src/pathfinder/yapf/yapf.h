@@ -23,7 +23,7 @@
  * @param tile     the tile to find the path from (should be next tile the ship is about to enter)
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @param path_cache Cache of a previously chosen path.
- * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
+ * @return         the best trackdir for next turn or Track::Invalid if the path could not be found
  */
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache);
 

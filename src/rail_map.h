@@ -136,7 +136,7 @@ inline void SetRailType(Tile t, RailType r)
 inline TrackBits GetTrackBits(Tile tile)
 {
 	assert(IsPlainRailTile(tile));
-	return (TrackBits)GB(tile.m5(), 0, 6);
+	return static_cast<TrackBits>(GB(tile.m5(), 0, 6));
 }
 
 /**
@@ -147,7 +147,7 @@ inline TrackBits GetTrackBits(Tile tile)
 inline void SetTrackBits(Tile t, TrackBits b)
 {
 	assert(IsPlainRailTile(t));
-	SB(t.m5(), 0, 6, b);
+	SB(t.m5(), 0, 6, b.base());
 }
 
 /**
@@ -159,7 +159,7 @@ inline void SetTrackBits(Tile t, TrackBits b)
  */
 inline bool HasTrack(Tile tile, Track track)
 {
-	return HasBit(GetTrackBits(tile), track);
+	return GetTrackBits(tile).Test(track);
 }
 
 /**
@@ -195,9 +195,9 @@ inline TrackBits GetRailReservationTrackBits(Tile t)
 {
 	assert(IsPlainRailTile(t));
 	uint8_t track_b = GB(t.m2(), 8, 3);
-	Track track = (Track)(track_b - 1);    // map array saves Track+1
-	if (track_b == 0) return TRACK_BIT_NONE;
-	return (TrackBits)(TrackToTrackBits(track) | (HasBit(t.m2(), 11) ? TrackToTrackBits(TrackToOppositeTrack(track)) : 0));
+	if (track_b == 0) return {};
+	Track track = static_cast<Track>(track_b - 1); // map array saves Track+1
+	return (HasBit(t.m2(), 11) ? TrackToOppositeTrack(track) : TrackBits{}) | track;
 }
 
 /**
@@ -212,7 +212,7 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(&b);
 	SB(t.m2(), 8, 3, IsValidTrack(track) ? to_underlying(track) + 1 : 0);
-	AssignBit(t.m2(), 11, b != TRACK_BIT_NONE);
+	AssignBit(t.m2(), 11, b.Any());
 }
 
 /**
@@ -225,10 +225,9 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 inline bool TryReserveTrack(Tile tile, Track t)
 {
 	assert(HasTrack(tile, t));
-	TrackBits bits = TrackToTrackBits(t);
 	TrackBits res = GetRailReservationTrackBits(tile);
-	if ((res & bits) != TRACK_BIT_NONE) return false;  // already reserved
-	res |= bits;
+	if (res.Test(t)) return false;  // already reserved
+	res.Set(t);
 	if (TracksOverlap(res)) return false;  // crossing reservation present
 	SetTrackReservation(tile, res);
 	return true;
@@ -244,7 +243,7 @@ inline void UnreserveTrack(Tile tile, Track t)
 {
 	assert(HasTrack(tile, t));
 	TrackBits res = GetRailReservationTrackBits(tile);
-	res &= ~TrackToTrackBits(t);
+	res.Reset(t);
 	SetTrackReservation(tile, res);
 }
 
@@ -280,7 +279,7 @@ inline void SetDepotReservation(Tile t, bool b)
  */
 inline TrackBits GetDepotReservationTrackBits(Tile t)
 {
-	return HasDepotReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
+	return HasDepotReservation(t) ? GetRailDepotTrack(t) : TrackBits{};
 }
 
 
@@ -304,7 +303,7 @@ inline bool IsPbsSignal(SignalType s)
 inline SignalType GetSignalType(Tile t, Track track)
 {
 	assert(GetRailTileType(t) == RailTileType::Signals);
-	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	uint8_t pos = (track == Track::Lower || track == Track::Right) ? 4 : 0;
 	return static_cast<SignalType>(GB(t.m2(), pos, 3));
 }
 
@@ -318,7 +317,7 @@ inline SignalType GetSignalType(Tile t, Track track)
 inline void SetSignalType(Tile t, Track track, SignalType s)
 {
 	assert(GetRailTileType(t) == RailTileType::Signals);
-	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	uint8_t pos = (track == Track::Lower || track == Track::Right) ? 4 : 0;
 	SB(t.m2(), pos, 3, to_underlying(s));
 	if (!IsValidTrack(track)) SB(t.m2(), 4, 3, to_underlying(s));
 }
@@ -369,7 +368,7 @@ inline bool IsOnewaySignal(Tile t, Track track)
 inline void CycleSignalSide(Tile t, Track track)
 {
 	uint8_t sig;
-	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 6;
+	uint8_t pos = (track == Track::Lower || track == Track::Right) ? 4 : 6;
 
 	sig = GB(t.m3(), pos, 2);
 	if (--sig == 0) sig = IsPbsSignal(GetSignalType(t, track)) ? 2 : 3;
@@ -385,7 +384,7 @@ inline void CycleSignalSide(Tile t, Track track)
  */
 inline SignalVariant GetSignalVariant(Tile t, Track track)
 {
-	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
+	uint8_t pos = (track == Track::Lower || track == Track::Right) ? 7 : 3;
 	return static_cast<SignalVariant>(GB(t.m2(), pos, 1));
 }
 
@@ -398,7 +397,7 @@ inline SignalVariant GetSignalVariant(Tile t, Track track)
  */
 inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
 {
-	uint8_t pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
+	uint8_t pos = (track == Track::Lower || track == Track::Right) ? 7 : 3;
 	SB(t.m2(), pos, 1, to_underlying(v));
 	if (!IsValidTrack(track)) SB(t.m2(), 7, 1, to_underlying(v));
 }
@@ -630,7 +629,7 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = to_underlying(RailTileType::Normal) << 6 | b;
+	t.m5() = to_underlying(RailTileType::Normal) << 6 | b.base();
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = r;

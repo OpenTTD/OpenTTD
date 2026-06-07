@@ -15,7 +15,6 @@
 #include "direction_func.h"
 #include "slope_func.h"
 
-using SetTrackBitIterator = SetBitIterator<Track, TrackBits>;
 using SetTrackdirBitIterator = SetBitIterator<Trackdir, TrackdirBits>;
 
 /**
@@ -27,7 +26,7 @@ using SetTrackdirBitIterator = SetBitIterator<Trackdir, TrackdirBits>;
  */
 inline bool IsValidTrack(Track track)
 {
-	return track < TRACK_END;
+	return track < Track::End;
 }
 
 /**
@@ -56,8 +55,8 @@ inline bool IsValidTrackdir(Trackdir trackdir)
 
 /**
  * Convert an Axis to the corresponding Track
- * Axis::X -> TRACK_X
- * Axis::Y -> TRACK_Y
+ * Axis::X -> Track::X
+ * Axis::Y -> Track::Y
  * Uses the fact that they share the same internal encoding
  *
  * @param a the axis to convert
@@ -67,27 +66,6 @@ inline Track AxisToTrack(Axis a)
 {
 	assert(IsValidAxis(a));
 	return static_cast<Track>(to_underlying(a));
-}
-
-/**
- * Maps a Track to the corresponding TrackBits value
- * @param track the track to convert
- * @return the converted TrackBits value of the track
- */
-inline TrackBits TrackToTrackBits(Track track)
-{
-	assert(IsValidTrack(track));
-	return (TrackBits)(1 << track);
-}
-
-/**
- * Maps an Axis to the corresponding TrackBits value
- * @param a the axis to convert
- * @return the converted TrackBits value of the axis
- */
-inline TrackBits AxisToTrackBits(Axis a)
-{
-	return TrackToTrackBits(AxisToTrack(a));
 }
 
 /**
@@ -119,10 +97,10 @@ inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir)
  *
  * This function searches for the first bit in the TrackBits,
  * remove this bit from the parameter and returns the found
- * bit as Track value. It returns INVALID_TRACK if the
- * parameter was TRACK_BIT_NONE. This
- * is basically used in while-loops to get up to 6 possible
- * tracks on a tile until the parameter becomes TRACK_BIT_NONE.
+ * bit as Track value. It returns Track::Invalid if the
+ * parameter was empty. This is basically used in while-loops
+ * to get up to 6 possible tracks on a tile until the parameter
+ * becomes empty.
  *
  * @param tracks The value with the TrackBits
  * @return The first Track from the TrackBits value
@@ -130,13 +108,12 @@ inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir)
  */
 inline Track RemoveFirstTrack(TrackBits *tracks)
 {
-	if (*tracks != TRACK_BIT_NONE) {
-		assert((*tracks & ~TRACK_BIT_MASK) == TRACK_BIT_NONE);
-		Track first = (Track)FindFirstBit(*tracks);
-		ClrBit(*tracks, first);
-		return first;
-	}
-	return INVALID_TRACK;
+	if (tracks->None()) return Track::Invalid;
+
+	assert(!tracks->Any({Track::Wormhole, Track::Depot}));
+	Track first = tracks->GetNthSetBit(0).value();
+	tracks->Reset(first);
+	return first;
 }
 
 /**
@@ -165,18 +142,18 @@ inline Trackdir RemoveFirstTrackdir(TrackdirBits *trackdirs)
 }
 
 /**
- * Returns first Track from TrackBits or INVALID_TRACK
+ * Returns first Track from TrackBits or Track::Invalid
  *
  * This function returns the first Track found in the TrackBits value as Track-value.
- * It returns INVALID_TRACK if the parameter is TRACK_BIT_NONE.
+ * It returns Track::Invalid if the parameter is empty.
  *
  * @param tracks The TrackBits value
- * @return The first Track found or INVALID_TRACK
+ * @return The first Track found or Track::Invalid
  * @see RemoveFirstTrack
  */
 inline Track FindFirstTrack(TrackBits tracks)
 {
-	return (tracks != TRACK_BIT_NONE) ? (Track)FindFirstBit(tracks) : INVALID_TRACK;
+	return tracks.GetNthSetBit(0).value_or(Track::Invalid);
 }
 
 /**
@@ -192,8 +169,8 @@ inline Track FindFirstTrack(TrackBits tracks)
  */
 inline Track TrackBitsToTrack(TrackBits tracks)
 {
-	assert(tracks != TRACK_BIT_NONE && KillFirstBit(tracks & TRACK_BIT_MASK) == TRACK_BIT_NONE);
-	return static_cast<Track>(FindFirstBit(tracks & TRACK_BIT_MASK));
+	assert(tracks.Count() == 1 && !tracks.Any({Track::Wormhole, Track::Depot}));
+	return FindFirstTrack(tracks);
 }
 
 /**
@@ -222,8 +199,8 @@ inline Trackdir FindFirstTrackdir(TrackdirBits trackdirs)
 /**
  * Find the opposite track to a given track.
  *
- * TRACK_LOWER -> TRACK_UPPER and vice versa, likewise for left/right.
- * TRACK_X is mapped to TRACK_Y and reversed.
+ * Track::Lower -> Track::Upper and vice versa, likewise for left/right.
+ * Track::X is mapped to Track::Y and reversed.
  *
  * @param t the track to convert
  * @return the opposite track
@@ -231,7 +208,7 @@ inline Trackdir FindFirstTrackdir(TrackdirBits trackdirs)
 inline Track TrackToOppositeTrack(Track t)
 {
 	assert(IsValidTrack(t));
-	return (Track)(t ^ 1);
+	return static_cast<Track>(to_underlying(t) ^ 1);
 }
 
 /**
@@ -262,7 +239,7 @@ inline Trackdir ReverseTrackdir(Trackdir trackdir)
 inline Track TrackdirToTrack(Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
-	return (Track)(trackdir & 0x7);
+	return static_cast<Track>(trackdir & 0x7);
 }
 
 /**
@@ -307,7 +284,7 @@ inline TrackdirBits TrackToTrackdirBits(Track track)
  */
 inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits)
 {
-	return (TrackBits)((bits | (bits >> 8)) & TRACK_BIT_MASK);
+	return static_cast<TrackBits>((bits | (bits >> 8)) & TRACK_BIT_ALL.base());
 }
 
 /**
@@ -318,19 +295,7 @@ inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits)
  */
 inline TrackdirBits TrackBitsToTrackdirBits(TrackBits bits)
 {
-	return static_cast<TrackdirBits>(bits * 0x101);
-}
-
-/**
- * Checks whether a TrackBits has a given Track.
- * @param tracks The track bits.
- * @param track The track to check.
- * @return \c true iff \c track is in \c tracks.
- */
-inline bool HasTrack(TrackBits tracks, Track track)
-{
-	assert(IsValidTrack(track));
-	return HasBit(tracks, track);
+	return static_cast<TrackdirBits>(bits.base() * 0x101);
 }
 
 /**
@@ -404,7 +369,7 @@ inline DiagDirection TrackdirToExitdir(Trackdir trackdir)
  *
  * For the diagonal tracks the resulting track direction are clear for a given
  * DiagDirection. It either matches the direction or it returns INVALID_TRACKDIR,
- * as a TRACK_X cannot be applied with DIAG_SE.
+ * as a Track::X cannot be applied with DIAG_SE.
  * For the straight tracks the resulting track direction will be the
  * direction which the DiagDirection is pointing. But this will be INVALID_TRACKDIR
  * if the DiagDirection is pointing 'away' the track.
@@ -430,7 +395,7 @@ inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir)
  * For the straight tracks this returns the track direction which results if
  * you follow the DiagDirection and then turn by 45 deg left or right on the
  * next tile. The new direction on the new track will be the returning Trackdir
- * value. If the parameters makes no sense like the track TRACK_UPPER and the
+ * value. If the parameters makes no sense like the track Track::Upper and the
  * direction DiagDirection::NE (target track cannot be reached) this function returns
  * INVALID_TRACKDIR.
  *
@@ -471,18 +436,6 @@ inline Track DiagDirToDiagTrack(DiagDirection diagdir)
 {
 	assert(IsValidDiagDirection(diagdir));
 	return static_cast<Track>(to_underlying(diagdir) & 1);
-}
-
-/**
- * Maps a DiagDirection to the associated diagonal TrackBits.
- *
- * @param diagdir The direction
- * @return The resulting TrackBits
- */
-inline TrackBits DiagDirToDiagTrackBits(DiagDirection diagdir)
-{
-	assert(IsValidDiagDirection(diagdir));
-	return TrackToTrackBits(DiagDirToDiagTrack(diagdir));
 }
 
 /**
@@ -577,7 +530,7 @@ inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir)
 inline bool IsDiagonalTrack(Track track)
 {
 	assert(IsValidTrack(track));
-	return (track == TRACK_X) || (track == TRACK_Y);
+	return (track == Track::X) || (track == Track::Y);
 }
 
 /**
@@ -603,7 +556,7 @@ inline bool IsDiagonalTrackdir(Trackdir trackdir)
 inline bool TracksOverlap(TrackBits bits)
 {
 	/* With no, or only one track, there is no overlap */
-	if (bits == TRACK_BIT_NONE || KillFirstBit(bits) == TRACK_BIT_NONE) return false;
+	if (bits.Count() <= 1) return false;
 	/* We know that there are at least two tracks present. When there are more
 	 * than 2 tracks, they will surely overlap. When there are two, they will
 	 * always overlap unless they are lower & upper or right & left. */
@@ -619,8 +572,8 @@ inline bool TracksOverlap(TrackBits bits)
  */
 inline bool TrackOverlapsTracks(TrackBits tracks, Track track)
 {
-	if (HasBit(tracks, track)) return true;
-	return TracksOverlap(tracks | TrackToTrackBits(track));
+	if (tracks.Test(track)) return true;
+	return TracksOverlap(tracks | track);
 }
 
 /**
@@ -671,7 +624,7 @@ inline bool IsUphillTrackdir(Slope slope, Trackdir dir)
  */
 inline DiagDirection VehicleExitDir(Direction direction, TrackBits track)
 {
-	static constexpr DiagDirectionIndexArray<TrackBits> state_dir_table{TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER};
+	static const DiagDirectionIndexArray<TrackBits> state_dir_table{Track::Right, Track::Lower, Track::Left, Track::Upper};
 
 	DiagDirection diagdir = DirToDiagDir(direction);
 

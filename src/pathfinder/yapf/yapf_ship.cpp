@@ -165,7 +165,7 @@ public:
 	}
 
 	/**
-	 * Returns a random tile/trackdir that can be reached from the current tile/trackdir, or tile/INVALID_TRACK if none is available.
+	 * Returns a random tile/trackdir that can be reached from the current tile/trackdir, or tile/Track::Invalid if none is available.
 	 * @param v The ship to get the direction for.
 	 * @param tile The start tile.
 	 * @param dir the start direction.
@@ -440,7 +440,7 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, bool &path_found, ShipP
 	Trackdir best_origin_dir = INVALID_TRACKDIR;
 	const TrackdirBits origin_dirs = TrackdirToTrackdirBits(v->GetVehicleTrackdir());
 	const Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, origin_dirs, TRACKDIR_BIT_NONE, path_found, path_cache, best_origin_dir);
-	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
+	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : Track::Invalid;
 }
 
 bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir)

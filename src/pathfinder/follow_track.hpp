@@ -194,8 +194,8 @@ struct CFollowTrackT {
 		/* Mask already reserved trackdirs. */
 		this->new_td_bits &= ~TrackBitsToTrackdirBits(reserved);
 		/* Mask out all trackdirs that conflict with the reservation. */
-		for (Track t : SetTrackBitIterator(TrackdirBitsToTrackBits(this->new_td_bits))) {
-			if (TracksOverlap(reserved | TrackToTrackBits(t))) this->new_td_bits &= ~TrackToTrackdirBits(t);
+		for (Track t : TrackdirBitsToTrackBits(this->new_td_bits)) {
+			if (TracksOverlap(reserved | t)) this->new_td_bits &= ~TrackToTrackdirBits(t);
 		}
 		if (this->new_td_bits == TRACKDIR_BIT_NONE) {
 			this->err = EC_RESERVED;

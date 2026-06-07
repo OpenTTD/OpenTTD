@@ -212,10 +212,10 @@ static const TrackIndexArray<DiagDirectionIndexArray<Directions>> _disallowed_pp
 
 /** This array stores which track bits can meet at a tile edge. */
 static const DiagDirectionIndexArray<std::array<Track, NUM_TRACKS_AT_PCP>> _tracks_at_pcp{{{
-	{TRACK_X, TRACK_X, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
-	{TRACK_Y, TRACK_Y, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
-	{TRACK_X, TRACK_X, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
-	{TRACK_Y, TRACK_Y, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
+	{Track::X, Track::X, Track::Upper, Track::Lower, Track::Left, Track::Right},
+	{Track::Y, Track::Y, Track::Upper, Track::Lower, Track::Left, Track::Right},
+	{Track::X, Track::X, Track::Upper, Track::Lower, Track::Left, Track::Right},
+	{Track::Y, Track::Y, Track::Upper, Track::Lower, Track::Left, Track::Right},
 }}};
 
 /** Takes each of the 6 track bits from the array above and assigns it to the home tile or neighbour tile. */
@@ -493,7 +493,7 @@ enum RailCatenarySprite : uint8_t {
  * d) both
  * PCP exists.
  */
-static const RailCatenarySprite _rail_wires[5][TRACK_END][4] = {
+static const RailCatenarySprite _rail_wires[5][to_underlying(Track::End)][4] = {
 	{ // Tileh == 0
 		{INVALID_CATENARY, WIRE_X_FLAT_NE,   WIRE_X_FLAT_SW,   WIRE_X_FLAT_BOTH},
 		{INVALID_CATENARY, WIRE_Y_FLAT_SE,   WIRE_Y_FLAT_NW,   WIRE_Y_FLAT_BOTH},
