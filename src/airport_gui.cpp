@@ -68,7 +68,7 @@ static void PlaceAirport(TileIndex tile)
 
 	uint8_t airport_type = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index)->GetIndex();
 	uint8_t layout = _selected_airport_layout;
-	bool adjacent = _ctrl_pressed;
+	bool adjacent = IsCtrlPressed();
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {

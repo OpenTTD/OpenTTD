@@ -31,17 +31,13 @@
 
 #include "safeguards.h"
 
+ControlInputs _input_pressed; ///< Control inputs that are currently pressed.
+ControlInputs _input_clicked; ///< Control inputs that have been actioned.
 DirectionKeys _dirkeys; ///< Pressed direction keys.
 bool _fullscreen;
 Support8bpp _support8bpp; ///< State of the support for 8bpp graphics.
 CursorVars _cursor;
-bool _ctrl_pressed;   ///< Is Ctrl pressed?
-bool _shift_pressed;  ///< Is Shift pressed?
 uint16_t _game_speed = 100; ///< Current game-speed; 100 is 1x, 0 is infinite.
-bool _left_button_down;     ///< Is left mouse button pressed?
-bool _left_button_clicked;  ///< Is left mouse button clicked?
-bool _right_button_down;    ///< Is right mouse button pressed?
-bool _right_button_clicked; ///< Is right mouse button clicked?
 DrawPixelInfo _screen;
 bool _screen_disable_anim = false;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
 std::atomic<bool> _exit_game;

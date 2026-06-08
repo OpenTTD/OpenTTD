@@ -698,7 +698,7 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 		self->_emulated_down = true;
 		[ self rightMouseDown:event ];
 	} else {
-		_left_button_down = true;
+		_input_clicked.Set(ControlInput::Left);
 		[ self internalMouseButtonEvent ];
 	}
 }
@@ -713,8 +713,8 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 		self->_emulated_down = false;
 		[ self rightMouseUp:event ];
 	} else {
-		_left_button_down = false;
-		_left_button_clicked = false;
+		_input_pressed.Reset(ControlInput::Left);
+		_input_clicked.Reset(ControlInput::Left);
 		[ self internalMouseButtonEvent ];
 	}
 }
@@ -734,8 +734,8 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
  */
 - (void)rightMouseDown:(NSEvent *)event
 {
-	_right_button_down = true;
-	_right_button_clicked = true;
+	_input_pressed.Set(ControlInput::Right);
+	_input_clicked.Set(ControlInput::Right);
 	[ self internalMouseButtonEvent ];
 }
 
@@ -745,7 +745,7 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
  */
 - (void)rightMouseUp:(NSEvent *)event
 {
-	_right_button_down = false;
+	_input_pressed.Reset(ControlInput::Right);
 	[ self internalMouseButtonEvent ];
 }
 

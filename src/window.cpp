@@ -703,7 +703,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			return;
 
 		case WWT_DEFSIZEBOX: {
-			if (_ctrl_pressed) {
+			if (IsCtrlPressed()) {
 				if (click_count > 1) {
 					w->window_desc.pref_width = 0;
 					w->window_desc.pref_height = 0;
@@ -742,7 +742,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		case WWT_STICKYBOX:
 			w->flags.Flip(WindowFlag::Sticky);
 			nw->SetDirty(w);
-			if (_ctrl_pressed) w->window_desc.pref_sticky = w->flags.Test(WindowFlag::Sticky);
+			if (IsCtrlPressed()) w->window_desc.pref_sticky = w->flags.Test(WindowFlag::Sticky);
 			return;
 
 		default:
@@ -1969,7 +1969,7 @@ static EventState HandleMouseDragDrop()
 {
 	if (_special_mouse_mode != SpecialMouseMode::DragDrop) return EventState::NotHandled;
 
-	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled; // Dragging, but the mouse did not move.
+	if (IsLeftButtonDown() && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled; // Dragging, but the mouse did not move.
 
 	Window *w = _thd.GetCallbackWnd();
 	if (w != nullptr) {
@@ -1977,14 +1977,14 @@ static EventState HandleMouseDragDrop()
 		Point pt;
 		pt.x = _cursor.pos.x - w->left;
 		pt.y = _cursor.pos.y - w->top;
-		if (_left_button_down) {
+		if (IsLeftButtonDown()) {
 			w->OnMouseDrag(pt, GetWidgetFromPos(w, pt.x, pt.y));
 		} else {
 			w->OnDragDrop(pt, GetWidgetFromPos(w, pt.x, pt.y));
 		}
 	}
 
-	if (!_left_button_down) ResetObjectToPlace(); // Button released, finished dragging.
+	if (!IsLeftButtonDown()) ResetObjectToPlace(); // Button released, finished dragging.
 	return EventState::Handled;
 }
 
@@ -2174,13 +2174,13 @@ static EventState HandleWindowDragging()
 	if (!_dragging_window) return EventState::NotHandled;
 
 	/* If button still down, but cursor hasn't moved, there is nothing to do. */
-	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled;
+	if (IsLeftButtonDown() && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled;
 
 	/* Otherwise find the window... */
 	for (Window *w : Window::Iterate()) {
 		if (w->flags.Test(WindowFlag::Dragging)) {
 			/* Stop the dragging if the left mouse button was released */
-			if (!_left_button_down) {
+			if (!IsLeftButtonDown()) {
 				w->flags.Reset(WindowFlag::Dragging);
 				break;
 			}
@@ -2272,7 +2272,7 @@ static EventState HandleWindowDragging()
 			return EventState::Handled;
 		} else if (w->flags.Test(WindowFlag::SizingLeft) || w->flags.Test(WindowFlag::SizingRight)) {
 			/* Stop the sizing if the left mouse button was released */
-			if (!_left_button_down) {
+			if (!IsLeftButtonDown()) {
 				w->flags.Reset(WindowFlag::SizingLeft);
 				w->flags.Reset(WindowFlag::SizingRight);
 				w->SetDirty();
@@ -2418,7 +2418,7 @@ static EventState HandleActiveWidget()
 	for (Window *w : Window::Iterate()) {
 		if (w->mouse_capture_widget >= 0) {
 			/* Abort if no button is clicked any more. */
-			if (!_left_button_down) {
+			if (!IsLeftButtonDown()) {
 				w->SetWidgetDirty(w->mouse_capture_widget);
 				w->mouse_capture_widget = INVALID_WIDGET;
 				return EventState::Handled;
@@ -2457,7 +2457,7 @@ static EventState HandleViewportScroll()
 	 * outside of the window and should not left-mouse scroll anymore. */
 	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && _left_button_down))) {
+	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && IsRightButtonDown()) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && IsLeftButtonDown()))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		_last_scroll_window = nullptr;
@@ -2648,8 +2648,7 @@ EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode
 static EventState HandleHotkey(Window *w, int hotkey)
 {
 	/* Clear global modifier keys so they do not interfere with modifiers assigned to hotkeys. */
-	AutoRestoreBackup _shift_backup{_shift_pressed, false};
-	AutoRestoreBackup _ctrl_backup{_ctrl_pressed, false};
+	AutoRestoreBackup pressed_backup{_input_pressed, {}};
 
 	return w->OnHotkey(hotkey);
 }
@@ -2875,7 +2874,7 @@ static void HandleKeyScrolling()
 	 * doesn't have an edit-box as focused widget.
 	 */
 	if (_dirkeys.Any() && !EditBoxInGlobalFocus()) {
-		int factor = _shift_pressed ? 50 : 10;
+		int factor = IsShiftPressed() ? 50 : 10;
 
 		if (_game_mode != GameMode::Menu && _game_mode != GameMode::Bootstrap) {
 			/* Key scrolling stops following a vehicle. */
@@ -3006,7 +3005,7 @@ void HandleMouseEvents()
 
 	/* Mouse event? */
 	MouseClick click = MouseClick::None;
-	if (_left_button_down && !_left_button_clicked) {
+	if (IsLeftButtonDown() && !_input_clicked.Test(ControlInput::Left)) {
 		click = MouseClick::Left;
 		if (std::chrono::steady_clock::now() <= double_click_time + TIME_BETWEEN_DOUBLE_CLICK &&
 				double_click_pos.x != 0 && abs(_cursor.pos.x - double_click_pos.x) < MAX_OFFSET_DOUBLE_CLICK  &&
@@ -3015,9 +3014,9 @@ void HandleMouseEvents()
 		}
 		double_click_time = std::chrono::steady_clock::now();
 		double_click_pos = _cursor.pos;
-		_left_button_clicked = true;
-	} else if (_right_button_clicked) {
-		_right_button_clicked = false;
+		_input_clicked.Set(ControlInput::Left);
+	} else if (_input_clicked.Test(ControlInput::Right)) {
+		_input_clicked.Reset(ControlInput::Right);
 		click = MouseClick::Right;
 	}
 
@@ -3031,7 +3030,7 @@ void HandleMouseEvents()
 	static Point hover_pos = {0, 0};
 
 	if (_settings_client.gui.hover_delay_ms > 0) {
-		if (!_cursor.in_window || click != MouseClick::None || mousewheel != 0 || _left_button_down || _right_button_down ||
+		if (!_cursor.in_window || click != MouseClick::None || mousewheel != 0 || IsLeftButtonDown() || IsRightButtonDown() ||
 				hover_pos.x == 0 || abs(_cursor.pos.x - hover_pos.x) >= MAX_OFFSET_HOVER  ||
 				hover_pos.y == 0 || abs(_cursor.pos.y - hover_pos.y) >= MAX_OFFSET_HOVER) {
 			hover_pos = _cursor.pos;

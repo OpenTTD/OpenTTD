@@ -532,7 +532,7 @@ struct CheatWindow : Window {
 		} else {
 			/* don't allow too fast scrolling */
 			if (this->flags.Test(WindowFlag::Timeout) && this->timeout_timer > 1) {
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				return;
 			}
 
@@ -564,7 +564,7 @@ struct CheatWindow : Window {
 				this->clicked_setting = sd;
 				this->clicked =  (x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? 2 : 1;
 				this->SetTimeout();
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 			}
 		}
 

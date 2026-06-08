@@ -51,14 +51,7 @@ extern DirectionKeys _dirkeys;
 extern bool _fullscreen;
 extern Support8bpp _support8bpp;
 extern CursorVars _cursor;
-extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
-extern bool _shift_pressed;  ///< Is Shift pressed?
 extern uint16_t _game_speed;
-
-extern bool _left_button_down;
-extern bool _left_button_clicked;
-extern bool _right_button_down;
-extern bool _right_button_clicked;
 
 extern DrawPixelInfo _screen;
 extern bool _screen_disable_anim;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
@@ -66,6 +59,33 @@ extern bool _screen_disable_anim;   ///< Disable palette animation (important fo
 extern std::vector<Dimension> _resolutions;
 extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
+
+extern ControlInputs _input_pressed;
+extern ControlInputs _input_clicked;
+
+/**
+ * Test if the left mouse button is pressed.
+ * @return \c true if the left mouse button is pressed.
+ */
+inline bool IsLeftButtonDown() { return _input_pressed.Test(ControlInput::Left); }
+
+/**
+ * Test if the right mouse button is pressed.
+ * @return \c true if the right mouse button is pressed.
+ */
+inline bool IsRightButtonDown() { return _input_pressed.Test(ControlInput::Right); }
+
+/**
+ * Test if the ctrl key is pressed.
+ * @return \c true if the ctrl key is pressed.
+ */
+inline bool IsCtrlPressed() { return _input_pressed.Test(ControlInput::Ctrl); }
+
+/**
+ * Test if the shift key is pressed.
+ * @return \c true if the shift is pressed.
+ */
+inline bool IsShiftPressed() { return _input_pressed.Test(ControlInput::Shift); }
 
 void HandleToolbarHotkey(int hotkey);
 void HandleKeypress(uint keycode, char32_t key);

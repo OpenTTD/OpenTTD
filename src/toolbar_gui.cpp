@@ -1178,7 +1178,7 @@ static CallBackFunction MenuClickHelp(int index)
 		case 1: ShowHelpWindow(); break;
 		case 2: ToggleScreensaverMode(); break;
 		case 3: IConsoleSwitch(); break;
-		case 4: ShowScriptDebugWindow(CompanyID::Invalid(), _ctrl_pressed); break;
+		case 4: ShowScriptDebugWindow(CompanyID::Invalid(), IsCtrlPressed()); break;
 		case 5: ShowScreenshotWindow(); break;
 		case 6: ShowFramerateWindow(); break;
 		case 7: ShowAboutWindow(); break;
@@ -1227,7 +1227,7 @@ static CallBackFunction ToolbarScenDateBackward(Window *w)
 
 		SetStartingYear(_settings_game.game_creation.starting_year - 1);
 	}
-	_left_button_clicked = false;
+	_input_clicked.Reset(ControlInput::Left);
 	return CallBackFunction::None;
 }
 
@@ -1240,7 +1240,7 @@ static CallBackFunction ToolbarScenDateForward(Window *w)
 
 		SetStartingYear(_settings_game.game_creation.starting_year + 1);
 	}
-	_left_button_clicked = false;
+	_input_clicked.Reset(ControlInput::Left);
 	return CallBackFunction::None;
 }
 

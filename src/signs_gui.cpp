@@ -520,7 +520,7 @@ struct SignWindow : Window, SignList {
 			case WID_QES_LOCATION: {
 				const Sign *si = Sign::Get(this->cur_sign);
 				TileIndex tile = TileVirtXY(si->x, si->y);
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowExtraViewportWindow(tile);
 				} else {
 					ScrollMainWindowToTile(tile);
@@ -629,7 +629,7 @@ void HandleClickOnSign(const Sign *si)
 	/* If we can't edit the sign, don't even open the rename GUI. */
 	if (!CompanyCanEditSign(si)) return;
 
-	if (_ctrl_pressed && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GameMode::Editor))) {
+	if (IsCtrlPressed() && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GameMode::Editor))) {
 		RenameSign(si->index, "", Colours::Invalid);
 		return;
 	}
