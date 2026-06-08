@@ -2516,7 +2516,7 @@ bool HandleViewportClicked(const Viewport &vp, int x, int y)
 		Debug(Facility::Misc, Severity::Warning, "Vehicle {} (index {}) at {}", v->unitnumber, v->index, fmt::ptr(v));
 		if (IsCompanyBuildableVehicleType(v)) {
 			v = v->First();
-			if (_ctrl_pressed && v->owner == _local_company) {
+			if (IsCtrlPressed() && v->owner == _local_company) {
 				StartStopVehicle(v, true);
 			} else {
 				ShowVehicleViewWindow(v);
@@ -2663,7 +2663,7 @@ void TileHighlightData::Reset()
  */
 bool TileHighlightData::IsDraggingDiagonal()
 {
-	return (this->place_mode & HT_DIAGONAL) != 0 && _ctrl_pressed && _left_button_down;
+	return (this->place_mode & HT_DIAGONAL) != 0 && IsCtrlPressed() && IsLeftButtonDown();
 }
 
 /**
@@ -3489,7 +3489,7 @@ EventState VpHandlePlaceSizingDrag()
 	}
 
 	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
-	if (_left_button_down) {
+	if (IsLeftButtonDown()) {
 		if (_special_mouse_mode == SpecialMouseMode::Dragging) {
 			/* Only register a drag event when the mouse moved. */
 			if (_thd.new_pos.x == _thd.selstart.x && _thd.new_pos.y == _thd.selstart.y) return EventState::Handled;

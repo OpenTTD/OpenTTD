@@ -240,7 +240,7 @@ static void HandleLinkClick(Link link)
 		default: NOT_REACHED();
 	}
 
-	if (_ctrl_pressed) {
+	if (IsCtrlPressed()) {
 		ShowExtraViewportWindow(xy);
 	} else {
 		ScrollMainWindowToTile(xy);

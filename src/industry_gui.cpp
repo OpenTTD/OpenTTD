@@ -1087,7 +1087,7 @@ public:
 
 			case WID_IV_GOTO: {
 				Industry *i = Industry::Get(this->window_number);
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowExtraViewportWindow(i->location.GetCentreTile());
 				} else {
 					ScrollMainWindowToTile(i->location.GetCentreTile());
@@ -1809,7 +1809,7 @@ public:
 			case WID_ID_INDUSTRY_LIST: {
 				auto it = this->vscroll->GetScrolledItemFromWidget(this->industries, pt.y, this, WID_ID_INDUSTRY_LIST, WidgetDimensions::scaled.framerect.top);
 				if (it != this->industries.end()) {
-					if (_ctrl_pressed) {
+					if (IsCtrlPressed()) {
 						ShowExtraViewportWindow((*it)->location.tile);
 					} else {
 						ScrollMainWindowToTile((*it)->location.tile);

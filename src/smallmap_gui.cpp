@@ -800,7 +800,7 @@ protected:
 	 */
 	void SelectLegendItem(int click_pos, LegendAndColour *legend, int end_legend_item, int begin_legend_item = 0)
 	{
-		if (_ctrl_pressed) {
+		if (IsCtrlPressed()) {
 			/* Disable all, except the clicked one */
 			bool changes = false;
 			for (int i = begin_legend_item; i != end_legend_item; i++) {

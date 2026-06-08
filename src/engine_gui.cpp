@@ -190,7 +190,7 @@ struct EnginePreviewWindow : Window {
 				[[fallthrough]];
 
 			case WID_EP_NO:
-				if (!_shift_pressed) {
+				if (!IsShiftPressed()) {
 					this->engines.erase(this->engines.begin() + this->selected_index);
 					this->InvalidateData();
 				}

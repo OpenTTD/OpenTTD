@@ -552,7 +552,7 @@ public:
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
 				const Group *g = Group::GetIfValid(this->sel_group);
 				if (g != nullptr) {
-					Command<Commands::SetGroupFlag>::Post(this->sel_group, GroupFlag::ReplaceWagonRemoval, !g->flags.Test(GroupFlag::ReplaceWagonRemoval), _ctrl_pressed);
+					Command<Commands::SetGroupFlag>::Post(this->sel_group, GroupFlag::ReplaceWagonRemoval, !g->flags.Test(GroupFlag::ReplaceWagonRemoval), IsCtrlPressed());
 				} else {
 					/* toggle renew_keep_length */
 					Command<Commands::ChangeCompanySetting>::Post("company.renew_keep_length", Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1);
@@ -606,7 +606,7 @@ public:
 
 				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
 				 * This is most common when we have finished autoreplacing the engine and want to remove it from the list. */
-				if (click_side == 0 && _ctrl_pressed && e != EngineID::Invalid() &&
+				if (click_side == 0 && IsCtrlPressed() && e != EngineID::Invalid() &&
 					(GetGroupNumEngines(_local_company, sel_group, e) == 0 || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0)) {
 						EngineID veh_from = e;
 						Command<Commands::SetAutoreplace>::Post(this->sel_group, veh_from, EngineID::Invalid(), false);

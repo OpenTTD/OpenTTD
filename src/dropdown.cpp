@@ -456,7 +456,7 @@ struct DropdownWindow : Window {
 		if (this->drag_mode) {
 			int result, click_result;
 
-			if (!_left_button_clicked) {
+			if (!IsLeftButtonDown()) {
 				this->drag_mode = false;
 				if (!this->GetDropDownItem(result, click_result)) {
 					if (this->options.Test(DropDownOption::InstantClose)) this->Close();

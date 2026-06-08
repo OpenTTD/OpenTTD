@@ -453,7 +453,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			auto it = vscroll->GetScrolledItemFromWidget(this->classes, pt.y, this, WID_PW_CLASS_LIST);
 			if (it == this->classes.end()) return;
 
-			if (_ctrl_pressed) {
+			if (IsCtrlPressed()) {
 				/* If no collections yet exist, create the default collection. */
 				if (this->callbacks.saved.find(this->callbacks.sel_collection) == this->callbacks.saved.end()) {
 					for (int i = 0; i < this->callbacks.GetTypeCount(*it); i++) {
@@ -503,13 +503,13 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			break;
 
 		case WID_PW_SHRINK:
-			this->callbacks.preview_height = this->preview_height = _ctrl_pressed ? PREVIEW_HEIGHT : std::max(PREVIEW_HEIGHT, this->preview_height - STEP_PREVIEW_HEIGHT);
+			this->callbacks.preview_height = this->preview_height = IsCtrlPressed() ? PREVIEW_HEIGHT : std::max(PREVIEW_HEIGHT, this->preview_height - STEP_PREVIEW_HEIGHT);
 			this->InvalidateData({});
 			this->ReInit();
 			break;
 
 		case WID_PW_EXPAND:
-			this->callbacks.preview_height = this->preview_height = _ctrl_pressed ? MAX_PREVIEW_HEIGHT : std::min(MAX_PREVIEW_HEIGHT, this->preview_height + STEP_PREVIEW_HEIGHT);
+			this->callbacks.preview_height = this->preview_height = IsCtrlPressed() ? MAX_PREVIEW_HEIGHT : std::min(MAX_PREVIEW_HEIGHT, this->preview_height + STEP_PREVIEW_HEIGHT);
 			this->InvalidateData({});
 			this->ReInit();
 			break;
@@ -520,7 +520,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			assert(sel < (int)this->types.size());
 			const auto &item = this->types[sel];
 
-			if (_ctrl_pressed) {
+			if (IsCtrlPressed()) {
 				if (this->callbacks.saved.find(this->callbacks.sel_collection) == this->callbacks.saved.end()) {
 					this->callbacks.saved[""].emplace(item);
 					this->InvalidateData({PickerInvalidation::Collection, PickerInvalidation::Class});

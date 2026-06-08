@@ -538,7 +538,7 @@ protected:
 				break;
 
 			case StoryPageElementType::Location:
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowExtraViewportWindow((TileIndex)pe.referenced_id);
 				} else {
 					ScrollMainWindowToTile((TileIndex)pe.referenced_id);
