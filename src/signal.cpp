@@ -35,7 +35,7 @@ static constexpr DiagDirectionIndexArray<TrackBits> _enterdir_to_trackbits{
 	TRACK_BIT_3WAY_NE,
 	TRACK_BIT_3WAY_SE,
 	TRACK_BIT_3WAY_SW,
-	TRACK_BIT_3WAY_NW
+	TRACK_BIT_3WAY_NW,
 };
 
 /** Accessible TrackdirBits from a given enter direction. */
@@ -200,7 +200,7 @@ static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of 
  */
 static bool IsTrainAndNotInDepot(const Vehicle *v)
 {
-	return v->type == VehicleType::Train && Train::From(v)->track != TRACK_BIT_DEPOT;
+	return v->type == VehicleType::Train && Train::From(v)->track != Track::Depot;
 }
 
 
@@ -302,19 +302,19 @@ static SigFlags ExploreSegment(Owner owner)
 
 				assert(IsValidDiagDirection(enterdir));
 				TrackBits tracks = GetTrackBits(tile); // trackbits of tile
-				TrackBits tracks_masked = static_cast<TrackBits>(tracks & _enterdir_to_trackbits[enterdir]); // only accessible trackbits
+				TrackBits tracks_masked = tracks & _enterdir_to_trackbits[enterdir]; // only accessible trackbits
 
 				if (tracks == TRACK_BIT_HORZ || tracks == TRACK_BIT_VERT) { // there is exactly one accessible track, no need to check
 					tracks = tracks_masked;
 					/* If no train detected yet, and there is not no train -> there is a train -> set the flag */
 					if (!flags.Test(SigFlag::Train) && EnsureNoTrainOnTrackBits(tile, tracks).Failed()) flags. Set(SigFlag::Train);
 				} else {
-					if (tracks_masked == TRACK_BIT_NONE) continue; // no accessible track
+					if (tracks_masked.None()) continue; // no accessible track
 					if (!flags.Test(SigFlag::Train) && HasVehicleOnTile(tile, IsTrainAndNotInDepot)) flags.Set(SigFlag::Train);
 				}
 
 				/* Is this a track merge or split? */
-				if (!HasAtMostOneBit(tracks)) flags.Set(SigFlag::Split);
+				if (tracks.Count() > 1) flags.Set(SigFlag::Split);
 
 				if (HasSignals(tile)) { // there is exactly one track - not zero, because there is exit from this tile
 					Track track = TrackBitsToTrack(tracks_masked); // mask TRACK_BIT_X and Y too
@@ -349,7 +349,7 @@ static SigFlags ExploreSegment(Owner owner)
 				}
 
 				for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) { // test all possible exit directions
-					if (dir != enterdir && (tracks & _enterdir_to_trackbits[dir])) { // any accessible track?
+					if (dir != enterdir && tracks.Any(_enterdir_to_trackbits[dir])) { // any accessible track?
 						TileIndex newtile = tile + TileOffsByDiagDir(dir);  // new tile to check
 						DiagDirection newdir = ReverseDiagDir(dir); // direction we are entering from
 						if (!MaybeAddToTodoSet(newtile, newdir, tile, dir)) return flags | SigFlag::Full;
@@ -427,7 +427,7 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 		SignalState newstate = SignalState::Green;
 
 		/* Signal state of reserved path signals is handled by the reserve/unreserve process. */
-		if (IsPbsSignal(sig) && (GetRailReservationTrackBits(tile) & TrackToTrackBits(track)) != TRACK_BIT_NONE) continue;
+		if (IsPbsSignal(sig) && GetRailReservationTrackBits(tile).Test(track)) continue;
 
 		/* determine whether the new state is red */
 		if (flags.Test(SigFlag::Train)) {
@@ -522,7 +522,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 
 			case TileType::Station:
 			case TileType::Road:
-				if ((TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
+				if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Any(_enterdir_to_trackbits[dir])) {
 					/* only add to set when there is some 'interesting' track */
 					_tbdset.Add(tile, dir);
 					_tbdset.Add(tile + TileOffsByDiagDir(dir), ReverseDiagDir(dir));
@@ -534,7 +534,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 				/* jump to next tile */
 				tile = tile + TileOffsByDiagDir(dir);
 				dir = ReverseDiagDir(dir);
-				if ((TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
+				if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Any(_enterdir_to_trackbits[dir])) {
 					_tbdset.Add(tile, dir);
 					break;
 				}
@@ -607,8 +607,8 @@ void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner)
 
 	_last_owner = owner;
 
-	_globset.Add(tile, _search_dir_1[track]);
-	_globset.Add(tile, _search_dir_2[track]);
+	_globset.Add(tile, _search_dir_1[to_underlying(track)]);
+	_globset.Add(tile, _search_dir_2[to_underlying(track)]);
 
 	if (_globset.Items() >= SIG_GLOB_UPDATE) {
 		/* too many items, force update */

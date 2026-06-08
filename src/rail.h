@@ -452,7 +452,7 @@ inline Money RailClearCost(RailType railtype)
  * Calculates the cost of rail conversion
  * @param from The railtype we are converting from
  * @param to   The railtype we are converting to
- * @return Cost per TrackBit
+ * @return Cost per Track
  */
 inline Money RailConvertCost(RailType from, RailType to)
 {

@@ -128,7 +128,7 @@ struct Train final : public GroundVehicle<Train, VehicleType::Train> {
 	Money GetRunningCost() const override;
 	int GetCursorImageOffset() const;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
+	bool IsInDepot() const override { return this->track == Track::Depot; }
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;
@@ -272,7 +272,7 @@ protected: // These functions should not be called outside acceleration code.
 	inline uint8_t GetAirDragArea() const
 	{
 		/* Air drag is higher in tunnels due to the limited cross-section. */
-		return (this->track == TRACK_BIT_WORMHOLE && this->vehstatus.Test(VehState::Hidden)) ? 28 : 14;
+		return (this->track == Track::Wormhole && this->vehstatus.Test(VehState::Hidden)) ? 28 : 14;
 	}
 
 	/**
@@ -348,7 +348,7 @@ protected: // These functions should not be called outside acceleration code.
 	inline bool TileMayHaveSlopedTrack() const
 	{
 		/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped. */
-		return this->track == TRACK_BIT_X || this->track == TRACK_BIT_Y;
+		return this->track == Track::X || this->track == Track::Y;
 	}
 
 	/**

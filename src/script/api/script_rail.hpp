@@ -53,12 +53,12 @@ public:
 	 */
 	enum RailTrack {
 		/* Note: these values represent part of the in-game TrackBits enum */
-		RAILTRACK_NE_SW   = ::TRACK_BIT_X,       ///< Track along the x-axis (north-east to south-west).
-		RAILTRACK_NW_SE   = ::TRACK_BIT_Y,       ///< Track along the y-axis (north-west to south-east).
-		RAILTRACK_NW_NE   = ::TRACK_BIT_UPPER,   ///< Track in the upper corner of the tile (north).
-		RAILTRACK_SW_SE   = ::TRACK_BIT_LOWER,   ///< Track in the lower corner of the tile (south).
-		RAILTRACK_NW_SW   = ::TRACK_BIT_LEFT,    ///< Track in the left corner of the tile (west).
-		RAILTRACK_NE_SE   = ::TRACK_BIT_RIGHT,   ///< Track in the right corner of the tile (east).
+		RAILTRACK_NE_SW = ::TrackBits{Track::X}.base(), ///< Track along the x-axis (north-east to south-west).
+		RAILTRACK_NW_SE = ::TrackBits{Track::Y}.base(), ///< Track along the y-axis (north-west to south-east).
+		RAILTRACK_NW_NE = ::TrackBits{Track::Upper}.base(), ///< Track in the upper corner of the tile (north).
+		RAILTRACK_SW_SE = ::TrackBits{Track::Lower}.base(), ///< Track in the lower corner of the tile (south).
+		RAILTRACK_NW_SW = ::TrackBits{Track::Left}.base(), ///< Track in the left corner of the tile (west).
+		RAILTRACK_NE_SE = ::TrackBits{Track::Right}.base(), ///< Track in the right corner of the tile (east).
 		RAILTRACK_INVALID = 0xFF, ///< Flag for an invalid track.
 	};
 

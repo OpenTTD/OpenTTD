@@ -371,17 +371,6 @@ inline Track GetCrossingRailTrack(Tile tile)
 }
 
 /**
- * Get the rail track bits of a level crossing.
- * @param tile The tile to query.
- * @return The rail track bits.
- */
-inline TrackBits GetCrossingRailBits(Tile tile)
-{
-	return AxisToTrackBits(GetCrossingRailAxis(tile));
-}
-
-
-/**
  * Get the reservation state of the rail crossing
  * @param t the crossing tile
  * @return reservation state
@@ -414,7 +403,7 @@ inline void SetCrossingReservation(Tile t, bool b)
  */
 inline TrackBits GetCrossingReservationTrackBits(Tile t)
 {
-	return HasCrossingReservation(t) ? GetCrossingRailBits(t) : TRACK_BIT_NONE;
+	return HasCrossingReservation(t) ? GetCrossingRailTrack(t) : TrackBits{};
 }
 
 /**

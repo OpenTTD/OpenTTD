@@ -18,7 +18,7 @@
 /**
  * Get the reserved trackbits for any tile, regardless of type.
  * @param t the tile
- * @return the reserved trackbits. TRACK_BIT_NONE on nothing reserved or
+ * @return the reserved trackbits, or empty on nothing reserved or
  *     a tile without rail.
  */
 TrackBits GetReservedTrackbits(TileIndex t)
@@ -44,7 +44,7 @@ TrackBits GetReservedTrackbits(TileIndex t)
 		default:
 			break;
 	}
-	return TRACK_BIT_NONE;
+	return {};
 }
 
 /**
@@ -79,7 +79,7 @@ void SetRailStationPlatformReservation(TileIndex start, DiagDirection dir, bool 
  */
 bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 {
-	assert(HasTrack(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs), t));
+	assert(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Test(t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		/* show the reserved rail if needed */
@@ -124,7 +124,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 			break;
 
 		case TileType::TunnelBridge:
-			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL && !GetTunnelBridgeReservationTrackBits(tile)) {
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL && GetTunnelBridgeReservationTrackBits(tile).None()) {
 				SetTunnelBridgeReservation(tile, true);
 				return true;
 			}
@@ -143,7 +143,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
  */
 void UnreserveRailTrack(TileIndex tile, Track t)
 {
-	assert(HasTrack(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs), t));
+	assert(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Test(t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		if (IsBridgeTile(tile)) {
@@ -205,7 +205,7 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
 	/* Start track not reserved? This can happen if two trains
 	 * are on the same tile. The reservation on the next tile
 	 * is not ours in this case, so exit. */
-	if (!HasReservedTracks(tile, TrackToTrackBits(TrackdirToTrack(trackdir)))) return PBSTileInfo(tile, trackdir, false);
+	if (!HasReservedTracks(tile, TrackdirToTrack(trackdir))) return PBSTileInfo(tile, trackdir, false);
 
 	/* Do not disallow 90 deg turns as the setting might have changed between reserving and now. */
 	CFollowTrackRail ft(o, rts);
@@ -282,7 +282,7 @@ static void CheckTrainsOnTrack(FindTrainOnTrackInfo &info, TileIndex tile)
 		if (v->type != VehicleType::Train || v->vehstatus.Test(VehState::Crashed)) continue;
 
 		Train *t = Train::From(v);
-		if (t->track == TRACK_BIT_WORMHOLE || HasBit(static_cast<TrackBits>(t->track), TrackdirToTrack(info.res.trackdir))) {
+		if (t->track == Track::Wormhole || t->track.Test(TrackdirToTrack(info.res.trackdir))) {
 			t = t->First();
 
 			/* ALWAYS return the lowest ID (anti-desync!) */
@@ -307,7 +307,7 @@ PBSTileInfo FollowTrainReservation(const Train *consist, Vehicle **train_on_res)
 	TileIndex tile = moving_front->tile;
 	Trackdir trackdir = moving_front->GetVehicleTrackdir();
 
-	if (IsRailDepotTile(tile) && !GetDepotReservationTrackBits(tile)) return PBSTileInfo(tile, trackdir, false);
+	if (IsRailDepotTile(tile) && GetDepotReservationTrackBits(tile).None()) return PBSTileInfo(tile, trackdir, false);
 
 	FindTrainOnTrackInfo ftoti;
 	ftoti.res = FollowReservation(consist->owner, GetAllCompatibleRailTypes(consist->railtypes), tile, trackdir);
@@ -344,7 +344,7 @@ PBSTileInfo FollowTrainReservation(const Train *consist, Vehicle **train_on_res)
  */
 Train *GetTrainForReservation(TileIndex tile, Track track)
 {
-	assert(HasReservedTracks(tile, TrackToTrackBits(track)));
+	assert(HasReservedTracks(tile, track));
 	Trackdir  trackdir = TrackToTrackdir(track);
 
 	RailTypes rts = GetRailTypeInfo(GetTileRailType(tile))->compatible_railtypes;

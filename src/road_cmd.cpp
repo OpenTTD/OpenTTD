@@ -494,12 +494,11 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 				/* A full diagonal road tile has two road bits. */
 				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -2);
 
-				Track railtrack = GetCrossingRailTrack(tile);
+				Track track = GetCrossingRailTrack(tile);
 				if (GetRoadType(tile, OtherRoadTramType(rtt)) == INVALID_ROADTYPE) {
-					TrackBits tracks = GetCrossingRailBits(tile);
 					bool reserved = HasCrossingReservation(tile);
-					MakeRailNormal(tile, GetTileOwner(tile), tracks, GetRailType(tile));
-					if (reserved) SetTrackReservation(tile, tracks);
+					MakeRailNormal(tile, GetTileOwner(tile), track, GetRailType(tile));
+					if (reserved) SetTrackReservation(tile, track);
 
 					/* Update rail count for level crossings. The plain track should still be accounted
 					 * for, so only subtract the difference to the level crossing cost. */
@@ -512,7 +511,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 					SetRoadType(tile, rtt, INVALID_ROADTYPE);
 				}
 				MarkTileDirtyByTile(tile);
-				YapfNotifyTrackLayoutChange(tile, railtrack);
+				YapfNotifyTrackLayoutChange(tile, track);
 			}
 			return CommandCost(ExpensesType::Construction, RoadClearCost(existing_rt) * 2);
 		}
@@ -736,13 +735,13 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 			}
 
 			Axis roaddir;
-			switch (GetTrackBits(tile)) {
-				case TRACK_BIT_X:
+			switch (GetTrackBits(tile).base()) {
+				case TrackBits{Track::X}.base():
 					if (pieces.Any(ROAD_X)) goto do_clear;
 					roaddir = Axis::Y;
 					break;
 
-				case TRACK_BIT_Y:
+				case TrackBits{Track::Y}.base():
 					if (pieces.Any(ROAD_Y)) goto do_clear;
 					roaddir = Axis::X;
 					break;
@@ -768,7 +767,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 				}
 
 				/* Always add road to the roadtypes (can't draw without it) */
-				bool reserved = HasBit(GetRailReservationTrackBits(tile), railtrack);
+				bool reserved = GetRailReservationTrackBits(tile).Test(railtrack);
 				MakeRoadCrossing(tile, company, company, GetTileOwner(tile), roaddir, GetRailType(tile), rtt == RoadTramType::Road ? rt : INVALID_ROADTYPE, (rtt == RoadTramType::Tram) ? rt : INVALID_ROADTYPE, town_id);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
@@ -2121,22 +2120,22 @@ static bool ClickTile_Road(TileIndex tile)
 
 /** Converts %RoadBits to %TrackBits. */
 static const TrackBits _road_trackbits[16] = {
-	TRACK_BIT_NONE,                                  // ROAD_NONE
-	TRACK_BIT_NONE,                                  // RoadBit::NW
-	TRACK_BIT_NONE,                                  // RoadBit::SW
-	TRACK_BIT_LEFT,                                  // ROAD_W
-	TRACK_BIT_NONE,                                  // RoadBit::SE
-	TRACK_BIT_Y,                                     // ROAD_Y
-	TRACK_BIT_LOWER,                                 // ROAD_S
-	TRACK_BIT_LEFT | TRACK_BIT_LOWER | TRACK_BIT_Y,  // ROAD_Y | RoadBit::SW
-	TRACK_BIT_NONE,                                  // RoadBit::NE
-	TRACK_BIT_UPPER,                                 // ROAD_N
-	TRACK_BIT_X,                                     // ROAD_X
-	TRACK_BIT_LEFT | TRACK_BIT_UPPER | TRACK_BIT_X,  // ROAD_X | RoadBit::NW
-	TRACK_BIT_RIGHT,                                 // ROAD_E
-	TRACK_BIT_RIGHT | TRACK_BIT_UPPER | TRACK_BIT_Y, // ROAD_Y | RoadBit::NE
-	TRACK_BIT_RIGHT | TRACK_BIT_LOWER | TRACK_BIT_X, // ROAD_X | RoadBit::SE
-	TRACK_BIT_ALL,                                   // ROAD_ALL
+	{}, // ROAD_NONE
+	{}, // RoadBit::NW
+	{}, // RoadBit::SW
+	Track::Left, // ROAD_W
+	{}, // RoadBit::SE
+	Track::Y, // ROAD_Y
+	Track::Lower, // ROAD_S
+	{Track::Left, Track::Lower, Track::Y}, // ROAD_Y | RoadBit::SW
+	{}, // RoadBit::NE
+	Track::Upper, // ROAD_N
+	Track::X, // ROAD_X
+	{Track::Left, Track::Upper, Track::X}, // ROAD_X | RoadBit::NW
+	Track::Right, // ROAD_E
+	{Track::Right, Track::Upper, Track::Y}, // ROAD_Y | RoadBit::NE
+	{Track::Right, Track::Lower, Track::X}, // ROAD_X | RoadBit::SE
+	TRACK_BIT_ALL, // ROAD_ALL
 };
 
 /** @copydoc GetTileTrackStatusProc */
@@ -2146,7 +2145,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 	TrackdirBits red_signals = TRACKDIR_BIT_NONE; // crossing barred
 	switch (mode) {
 		case TRANSPORT_RAIL:
-			if (IsLevelCrossing(tile)) trackdirbits = TrackBitsToTrackdirBits(GetCrossingRailBits(tile));
+			if (IsLevelCrossing(tile)) trackdirbits = TrackBitsToTrackdirBits(GetCrossingRailTrack(tile));
 			break;
 
 		case TRANSPORT_ROAD: {
@@ -2161,7 +2160,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 					if (side != DiagDirection::Invalid && !DiagDirToRoadBits(side).Any(bits)) break;
 
 					uint multiplier = drd_to_multiplier[(rtt == RoadTramType::Tram) ? 0 : GetDisallowedRoadDirections(tile).base()];
-					if (!HasRoadWorks(tile)) trackdirbits = static_cast<TrackdirBits>(_road_trackbits[bits.base()] * multiplier);
+					if (!HasRoadWorks(tile)) trackdirbits = static_cast<TrackdirBits>(_road_trackbits[bits.base()].base() * multiplier);
 					break;
 				}
 
@@ -2170,7 +2169,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 
 					if (side != DiagDirection::Invalid && axis != DiagDirToAxis(side)) break;
 
-					trackdirbits = TrackBitsToTrackdirBits(AxisToTrackBits(axis));
+					trackdirbits = TrackBitsToTrackdirBits(AxisToTrack(axis));
 					if (IsCrossingBarred(tile)) {
 						red_signals = trackdirbits;
 						if (TrainOnCrossing(tile)) break;
@@ -2192,7 +2191,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 
 					if (side != DiagDirection::Invalid && side != dir) break;
 
-					trackdirbits = TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir));
+					trackdirbits = TrackBitsToTrackdirBits(DiagDirToDiagTrack(dir));
 					break;
 				}
 			}

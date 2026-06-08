@@ -36,12 +36,12 @@ extern const TrackIndexArray<TrackdirBits> _track_crosses_trackdirs{
 
 /** Maps a track to all tracks that make 90 deg turns with it. */
 extern const TrackIndexArray<TrackBits> _track_crosses_tracks{
-	TRACK_BIT_Y,    // TRACK_X
-	TRACK_BIT_X,    // TRACK_Y
-	TRACK_BIT_VERT, // TRACK_UPPER
-	TRACK_BIT_VERT, // TRACK_LOWER
-	TRACK_BIT_HORZ, // TRACK_LEFT
-	TRACK_BIT_HORZ  // TRACK_RIGHT
+	Track::Y, // Track::X
+	Track::X, // Track::Y
+	{Track::Left, Track::Right}, // Track::Upper
+	{Track::Left, Track::Right}, // Track::Lower
+	{Track::Upper, Track::Lower}, // Track::Left
+	{Track::Upper, Track::Lower}, // Track::Right
 };
 
 /** Maps a trackdir to the (4-way) direction the tile is exited when following that trackdir. */
@@ -87,7 +87,7 @@ extern const DiagDirectionIndexArray<Trackdir> _dir_to_diag_trackdir{
 
 /** Maps a single horizontal/vertical trackbit that is in a specific tile corner. */
 extern const CornerIndexArray<TrackBits> _corner_to_trackbits{
-	TRACK_BIT_LEFT, TRACK_BIT_LOWER, TRACK_BIT_RIGHT, TRACK_BIT_UPPER,
+	Track::Left, Track::Lower, Track::Right, Track::Upper,
 };
 
 extern const TrackdirBits _uphill_trackdirs[] = {

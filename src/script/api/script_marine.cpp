@@ -68,12 +68,12 @@
 
 	/* Determine the reachable tracks from the shared edge */
 	TrackBits gtts1 = ::TrackdirBitsToTrackBits(::GetTileTrackStatus(t1, TRANSPORT_WATER, RoadTramType::Invalid, ReverseDiagDir(to_other_tile)).trackdirs) & ::DiagdirReachesTracks(to_other_tile);
-	if (gtts1 == TRACK_BIT_NONE) return false;
+	if (gtts1.None()) return false;
 
 	to_other_tile = ReverseDiagDir(to_other_tile);
 	TrackBits gtts2 = ::TrackdirBitsToTrackBits(::GetTileTrackStatus(t2, TRANSPORT_WATER, RoadTramType::Invalid, ReverseDiagDir(to_other_tile)).trackdirs) & ::DiagdirReachesTracks(to_other_tile);
 
-	return gtts2 != TRACK_BIT_NONE;
+	return gtts2.Any();
 }
 
 /* static */ bool ScriptMarine::BuildWaterDepot(TileIndex tile, TileIndex front)

@@ -227,7 +227,7 @@ public:
 		if (target != nullptr) target->okay = true;
 
 		if (Yapf().CanUseGlobalCache(*this->res_dest_node)) {
-			YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
+			YapfNotifyTrackLayoutChange(INVALID_TILE, Track::Invalid);
 		}
 
 		return true;
@@ -628,7 +628,7 @@ bool YapfTrainCheckReverse(const Train *v)
 		}
 	}
 
-	if (moving_front->track == TRACK_BIT_WORMHOLE) {
+	if (moving_front->track == Track::Wormhole) {
 		/* front in tunnel / on bridge */
 		DiagDirection dir_into_wormhole = GetTunnelBridgeDirection(tile);
 
@@ -643,7 +643,7 @@ bool YapfTrainCheckReverse(const Train *v)
 		reverse_penalty -= DistanceManhattan(cur_tile, tile) * YAPF_TILE_LENGTH;
 	}
 
-	if (moving_back->track == TRACK_BIT_WORMHOLE) {
+	if (moving_back->track == Track::Wormhole) {
 		/* back in tunnel / on bridge */
 		DiagDirection dir_into_wormhole = GetTunnelBridgeDirection(tile_rev);
 

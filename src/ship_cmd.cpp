@@ -294,7 +294,7 @@ Trackdir Ship::GetVehicleTrackdir() const
 		return DiagDirToDiagTrackdir(GetShipDepotDirection(this->tile));
 	}
 
-	if (this->state == TRACK_BIT_WORMHOLE) {
+	if (this->state == Track::Wormhole) {
 		/* ship on aqueduct, so just use its direction and assume a diagonal track */
 		return DiagDirToDiagTrackdir(DirToDiagDir(this->direction));
 	}
@@ -391,7 +391,7 @@ static bool CheckShipStayInDepot(Ship *v)
 	v->direction = DiagDirToDir(TrackdirToExitdir(v->GetVehicleTrackdir()));
 	if (CheckReverseShip(v)) v->direction = ReverseDir(v->direction);
 
-	v->state = AxisToTrackBits(GetShipDepotAxis(v->tile));
+	v->state = AxisToTrack(GetShipDepotAxis(v->tile));
 	v->rotation = v->direction;
 	v->vehstatus.Reset(VehState::Hidden);
 	v->cur_speed = 0;
@@ -461,7 +461,7 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
  * @param v Ship to navigate
  * @param tile Tile, the ship is about to enter
  * @param tracks Available track choices on \a tile
- * @return Track to choose, or INVALID_TRACK when to reverse.
+ * @return Track to choose, or Track::Invalid when to reverse.
  */
 static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks)
 {
@@ -472,14 +472,14 @@ static Track ChooseShipTrack(Ship *v, TileIndex tile, TrackBits tracks)
 		/* No destination, don't invoke pathfinder. */
 		track = TrackBitsToTrack(v->state);
 		if (!IsDiagonalTrack(track)) track = TrackToOppositeTrack(track);
-		if (!HasBit(tracks, track)) track = FindFirstTrack(tracks);
+		if (!tracks.Test(track)) track = FindFirstTrack(tracks);
 		path_found = false;
 	} else {
 		/* Attempt to follow cached path. */
 		if (!v->path.empty()) {
 			track = TrackdirToTrack(v->path.back().trackdir);
 
-			if (HasBit(tracks, track)) {
+			if (tracks.Test(track)) {
 				v->path.pop_back();
 				/* HandlePathfindResult() is not called here because this is not a new pathfinder result. */
 				return track;
@@ -655,7 +655,7 @@ static void ShipController(Ship *v)
 		if (ShipMoveUpDownOnLock(v)) return;
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-		if (v->state != TRACK_BIT_WORMHOLE) {
+		if (v->state != Track::Wormhole) {
 			/* Not on a bridge */
 			if (gp.old_tile == gp.new_tile) {
 				/* Staying in tile */
@@ -675,7 +675,7 @@ static void ShipController(Ship *v)
 						/* Test if continuing forward would lead to a dead-end, moving into the dock. */
 						const DiagDirection exitdir = VehicleExitDir(v->direction, v->state);
 						const TileIndex tile = TileAddByDiagDir(v->tile, exitdir);
-						if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, RoadTramType::Invalid, exitdir).trackdirs) == TRACK_BIT_NONE) return ReverseShip(v);
+						if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, RoadTramType::Invalid, exitdir).trackdirs).None()) return ReverseShip(v);
 					} else if (v->dest_tile != INVALID_TILE) {
 						/* We have a target, let's see if we reached it... */
 						if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
@@ -715,7 +715,7 @@ static void ShipController(Ship *v)
 				const DiagDirection diagdir = DiagdirBetweenTiles(gp.old_tile, gp.new_tile);
 				assert(diagdir != DiagDirection::Invalid);
 				const TrackBits tracks = GetAvailShipTracks(gp.new_tile, diagdir);
-				if (tracks == TRACK_BIT_NONE) {
+				if (tracks.None()) {
 					Trackdir trackdir = INVALID_TRACKDIR;
 					CheckReverseShip(v, &trackdir);
 					if (trackdir == INVALID_TRACKDIR) return ReverseShip(v);
@@ -735,7 +735,7 @@ static void ShipController(Ship *v)
 
 				if (!vets.Test(VehicleEnterTileState::EnteredWormhole)) {
 					v->tile = gp.new_tile;
-					v->state = TrackToTrackBits(track);
+					v->state = track;
 
 					/* Update ship cache when the water class changes. Aqueducts are always canals. */
 					if (GetEffectiveWaterClass(gp.old_tile) != GetEffectiveWaterClass(gp.new_tile)) v->UpdateCache();
@@ -853,7 +853,7 @@ CommandCost CmdBuildShip(DoCommandFlags flags, TileIndex tile, const Engine *e, 
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->GetLifeLengthInDays();
 
-		v->state = TRACK_BIT_DEPOT;
+		v->state = Track::Depot;
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_ships);
 		v->date_of_last_service = TimerGameEconomy::date;

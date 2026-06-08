@@ -123,16 +123,16 @@ static void PlaceExtraDepotRail(TileIndex tile, DiagDirection dir, Track track)
 {
 	if (GetRailTileType(tile) == RailTileType::Depot) return;
 	if (GetRailTileType(tile) == RailTileType::Signals && !_settings_client.gui.auto_remove_signals) return;
-	if ((GetTrackBits(tile) & DiagdirReachesTracks(dir)) == 0) return;
+	if (!GetTrackBits(tile).Any(DiagdirReachesTracks(dir))) return;
 
 	Command<Commands::BuildRail>::Post(tile, _cur_railtype, track, _settings_client.gui.auto_remove_signals);
 }
 
 /** Additional pieces of track to add at the entrance of a depot. */
 static constexpr std::array<DiagDirectionIndexArray<Track>, 3> _place_depot_extra_track{{
-	{TRACK_LEFT,  TRACK_UPPER, TRACK_UPPER, TRACK_RIGHT}, // First additional track for directions 0..3
-	{TRACK_X,     TRACK_Y,     TRACK_X,     TRACK_Y},     // Second additional track
-	{TRACK_LOWER, TRACK_LEFT,  TRACK_RIGHT, TRACK_LOWER}, // Third additional track
+	{Track::Left,  Track::Upper, Track::Upper, Track::Right}, // First additional track for directions 0..3
+	{Track::X,     Track::Y,     Track::X,     Track::Y},     // Second additional track
+	{Track::Lower, Track::Left,  Track::Right, Track::Lower}, // Third additional track
 }};
 
 /** Direction to check for existing track pieces. */
@@ -239,12 +239,12 @@ static void GenericPlaceSignals(TileIndex tile)
 {
 	TrackBits trackbits = TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs);
 
-	if (trackbits & TRACK_BIT_VERT) { // N-S direction
-		trackbits = (_tile_fract_coords.x <= _tile_fract_coords.y) ? TRACK_BIT_RIGHT : TRACK_BIT_LEFT;
+	if (trackbits.Any(TRACK_BIT_VERT)) { // N-S direction
+		trackbits = (_tile_fract_coords.x <= _tile_fract_coords.y) ? Track::Right : Track::Left;
 	}
 
-	if (trackbits & TRACK_BIT_HORZ) { // E-W direction
-		trackbits = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? TRACK_BIT_UPPER : TRACK_BIT_LOWER;
+	if (trackbits.Any(TRACK_BIT_HORZ)) { // E-W direction
+		trackbits = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? Track::Upper : Track::Lower;
 	}
 
 	Track track = FindFirstTrack(trackbits);
@@ -418,7 +418,7 @@ static void HandleAutodirPlacement()
  */
 static void HandleAutoSignalPlacement()
 {
-	Track track = (Track)GB(_thd.drawstyle, 0, 3); // 0..5
+	Track track = static_cast<Track>(_thd.drawstyle & HT_DIR_MASK); // 0..5
 
 	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_RECT) { // one tile case
 		GenericPlaceSignals(TileVirtXY(_thd.selend.x, _thd.selend.y));

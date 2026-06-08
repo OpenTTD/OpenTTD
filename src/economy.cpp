@@ -485,7 +485,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			 * because of different owner of crossing and approaching train */
 			for (const auto tile : Map::Iterate()) {
 				if (IsTileType(tile, TileType::Railway) && IsTileOwner(tile, new_owner) && HasSignals(tile)) {
-					for (Track track : SetTrackBitIterator(GetTrackBits(tile))) {
+					for (Track track : GetTrackBits(tile)) {
 						if (IsSignalPresent(tile, SignalOnTrack(track))) AddTrackToSignalBuffer(tile, track, new_owner);
 					}
 				} else if (IsLevelCrossingTile(tile) && IsTileOwner(tile, new_owner)) {

@@ -57,7 +57,7 @@ Train *GetTrainForReservation(TileIndex tile, Track track);
  */
 inline bool HasReservedTracks(TileIndex tile, TrackBits tracks)
 {
-	return (GetReservedTrackbits(tile) & tracks) != TRACK_BIT_NONE;
+	return GetReservedTrackbits(tile).Any(tracks);
 }
 
 #endif /* PBS_H */

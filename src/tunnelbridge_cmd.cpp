@@ -1857,7 +1857,7 @@ static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType
 
 	DiagDirection dir = GetTunnelBridgeDirection(tile);
 	if (side != DiagDirection::Invalid && side != ReverseDiagDir(dir)) return {};
-	return {TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir)), TRACKDIR_BIT_NONE};
+	return {TrackBitsToTrackdirBits(DiagDirToDiagTrack(dir)), TRACKDIR_BIT_NONE};
 }
 
 /** @copydoc ChangeTileOwnerProc */
@@ -1974,7 +1974,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 		if (v->type == VehicleType::Train) {
 			Train *t = Train::From(v);
 
-			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
+			if (t->track != Track::Wormhole && dir == vdir) {
 				if (t->IsMovingFront() && frame == TUNNEL_SOUND_FRAME) {
 					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == EngineClass::Steam) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
@@ -1983,7 +1983,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 				}
 				if (frame == _tunnel_visibility_frame[dir]) {
 					t->tile = tile;
-					t->track = TRACK_BIT_WORMHOLE;
+					t->track = Track::Wormhole;
 					t->vehstatus.Set(VehState::Hidden);
 					return VehicleEnterTileState::EnteredWormhole;
 				}
@@ -1992,8 +1992,8 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 			if (dir == ReverseDiagDir(vdir) && frame == TILE_SIZE - _tunnel_visibility_frame[dir] && z == 0) {
 				/* We're at the tunnel exit ?? */
 				t->tile = tile;
-				t->track = DiagDirToDiagTrackBits(vdir);
-				assert(t->track);
+				t->track = DiagDirToDiagTrack(vdir);
+				assert(t->track.Any());
 				t->vehstatus.Reset(VehState::Hidden);
 				return VehicleEnterTileState::EnteredWormhole;
 			}
@@ -2039,7 +2039,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 			switch (v->type) {
 				case VehicleType::Train: {
 					Train *t = Train::From(v);
-					t->track = TRACK_BIT_WORMHOLE;
+					t->track = Track::Wormhole;
 					PrepareToEnterBridge(t);
 					break;
 				}
@@ -2052,7 +2052,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 				}
 
 				case VehicleType::Ship:
-					Ship::From(v)->state = TRACK_BIT_WORMHOLE;
+					Ship::From(v)->state = Track::Wormhole;
 					break;
 
 				default: NOT_REACHED();
@@ -2063,8 +2063,8 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 			switch (v->type) {
 				case VehicleType::Train: {
 					Train *t = Train::From(v);
-					if (t->track == TRACK_BIT_WORMHOLE) {
-						t->track = DiagDirToDiagTrackBits(vdir);
+					if (t->track == Track::Wormhole) {
+						t->track = DiagDirToDiagTrack(vdir);
 						return VehicleEnterTileState::EnteredWormhole;
 					}
 					break;
@@ -2082,8 +2082,8 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 
 				case VehicleType::Ship: {
 					Ship *ship = Ship::From(v);
-					if (ship->state == TRACK_BIT_WORMHOLE) {
-						ship->state = DiagDirToDiagTrackBits(vdir);
+					if (ship->state == Track::Wormhole) {
+						ship->state = DiagDirToDiagTrack(vdir);
 						return VehicleEnterTileState::EnteredWormhole;
 					}
 					break;

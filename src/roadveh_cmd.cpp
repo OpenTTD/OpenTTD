@@ -796,7 +796,7 @@ static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 	TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
 	/* Track does not continue along overtaking direction || track has junction || levelcrossing is barred */
-	if (!HasBit(ts.trackdirs, od->trackdir) || (trackbits & ~TRACK_BIT_CROSS) || (ts.signals != TRACKDIR_BIT_NONE)) return true;
+	if (!HasBit(ts.trackdirs, od->trackdir) || trackbits.Any({Track::Upper, Track::Lower, Track::Left, Track::Right}) || (ts.signals != TRACKDIR_BIT_NONE)) return true;
 
 	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
 	return HasVehicleOnTile(od->tile, [&](const Vehicle *v) {

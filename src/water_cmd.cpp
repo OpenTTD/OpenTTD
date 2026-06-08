@@ -186,7 +186,7 @@ bool IsPossibleDockingTile(Tile t)
 		case TileType::Railway:
 		case TileType::Station:
 		case TileType::TunnelBridge:
-			return TrackdirBitsToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, RoadTramType::Invalid).trackdirs) != TRACK_BIT_NONE;
+			return TrackdirBitsToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, RoadTramType::Invalid).trackdirs).Any();
 
 		default:
 			return false;
@@ -1254,11 +1254,11 @@ static void DoDryUp(TileIndex tile)
 			assert(GetRailGroundType(tile) == RailGroundType::HalfTileWater);
 
 			RailGroundType new_ground;
-			switch (GetTrackBits(tile)) {
-				case TRACK_BIT_UPPER: new_ground = RailGroundType::FenceHoriz1; break;
-				case TRACK_BIT_LOWER: new_ground = RailGroundType::FenceHoriz2; break;
-				case TRACK_BIT_LEFT:  new_ground = RailGroundType::FenceVert1;  break;
-				case TRACK_BIT_RIGHT: new_ground = RailGroundType::FenceVert2;  break;
+			switch (TrackBitsToTrack(GetTrackBits(tile))) {
+				case Track::Upper: new_ground = RailGroundType::FenceHoriz1; break;
+				case Track::Lower: new_ground = RailGroundType::FenceHoriz2; break;
+				case Track::Left: new_ground = RailGroundType::FenceVert1; break;
+				case Track::Right: new_ground = RailGroundType::FenceVert2; break;
 				default: NOT_REACHED();
 			}
 			SetRailGroundType(tile, new_ground);
@@ -1382,27 +1382,26 @@ void ConvertGroundTilesIntoWaterTiles()
 /** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, [[maybe_unused]] DiagDirection side)
 {
-	static const TrackBits coast_tracks[] = {TRACK_BIT_NONE, TRACK_BIT_RIGHT, TRACK_BIT_UPPER, TRACK_BIT_NONE, TRACK_BIT_LEFT, TRACK_BIT_NONE, TRACK_BIT_NONE,
-		TRACK_BIT_NONE, TRACK_BIT_LOWER, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE, TRACK_BIT_NONE};
+	static const TrackBits coast_tracks[] = {{}, Track::Right, Track::Upper, {}, Track::Left, {}, {}, {}, Track::Lower, {}, {}, {}, {}, {}, {}, {}};
 
 	TrackBits ts;
 
 	if (mode != TRANSPORT_WATER) return {};
 
 	switch (GetWaterTileType(tile)) {
-		case WaterTileType::Clear: ts = IsTileFlat(tile) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
+		case WaterTileType::Clear: ts = IsTileFlat(tile) ? TRACK_BIT_ALL : TrackBits{}; break;
 		case WaterTileType::Coast: ts = coast_tracks[GetTileSlope(tile) & 0xF]; break;
-		case WaterTileType::Lock:  ts = DiagDirToDiagTrackBits(GetLockDirection(tile)); break;
-		case WaterTileType::Depot: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
+		case WaterTileType::Lock: ts = DiagDirToDiagTrack(GetLockDirection(tile)); break;
+		case WaterTileType::Depot: ts = AxisToTrack(GetShipDepotAxis(tile)); break;
 		default: return {};
 	}
 	if (TileX(tile) == 0) {
 		/* NE border: remove tracks that connects NE tile edge */
-		ts &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
+		ts.Reset({Track::X, Track::Upper, Track::Right});
 	}
 	if (TileY(tile) == 0) {
 		/* NW border: remove tracks that connects NW tile edge */
-		ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
+		ts.Reset({Track::Y, Track::Left, Track::Upper});
 	}
 	return {TrackBitsToTrackdirBits(ts), TRACKDIR_BIT_NONE};
 }

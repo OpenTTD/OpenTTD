@@ -144,7 +144,7 @@ void AfterLoadCompanyStats()
 					uint pieces = 1;
 					if (IsPlainRail(tile)) {
 						TrackBits bits = GetTrackBits(tile);
-						pieces = CountBits(bits);
+						pieces = bits.Count();
 						if (TracksOverlap(bits)) pieces *= pieces;
 					}
 					c->infrastructure.rail[GetRailType(tile)] += pieces;
