@@ -719,7 +719,7 @@ struct GenerateLandscapeWindow : public Window {
 					_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height + widget - WID_GL_HEIGHTMAP_HEIGHT_TEXT, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
 					this->InvalidateData();
 				}
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				break;
 
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: // Height level text
@@ -738,7 +738,7 @@ struct GenerateLandscapeWindow : public Window {
 					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_GL_START_DATE_TEXT, CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 					this->InvalidateData();
 				}
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				break;
 
 			case WID_GL_START_DATE_TEXT: // Year text
@@ -755,7 +755,7 @@ struct GenerateLandscapeWindow : public Window {
 					_settings_newgame.game_creation.snow_coverage = Clamp(_settings_newgame.game_creation.snow_coverage + (widget - WID_GL_SNOW_COVERAGE_TEXT) * 10, 0, 100);
 					this->InvalidateData();
 				}
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				break;
 
 			case WID_GL_SNOW_COVERAGE_TEXT: // Snow coverage text
@@ -773,7 +773,7 @@ struct GenerateLandscapeWindow : public Window {
 					_settings_newgame.game_creation.desert_coverage = Clamp(_settings_newgame.game_creation.desert_coverage + (widget - WID_GL_DESERT_COVERAGE_TEXT) * 10, 0, 100);
 					this->InvalidateData();
 				}
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				break;
 
 			case WID_GL_DESERT_COVERAGE_TEXT: // Desert line text
@@ -1198,7 +1198,7 @@ struct CreateScenarioWindow : public Window
 
 					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_CS_START_DATE_TEXT, CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 				}
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				break;
 
 			case WID_CS_START_DATE_TEXT: // Year text
@@ -1215,7 +1215,7 @@ struct CreateScenarioWindow : public Window
 
 					_settings_newgame.game_creation.se_flat_world_height = Clamp(_settings_newgame.game_creation.se_flat_world_height + widget - WID_CS_FLAT_LAND_HEIGHT_TEXT, 0, GetMapHeightLimit());
 				}
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				break;
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT: // Height level text

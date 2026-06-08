@@ -280,7 +280,7 @@ struct SelectGameWindow : public Window {
 		switch (widget) {
 			case WID_SGI_GENERATE_GAME:
 				_is_network_server = false;
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 				} else {
 					ShowGenerateLandscape();

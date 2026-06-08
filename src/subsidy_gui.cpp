@@ -86,8 +86,8 @@ struct SubsidyListWindow : Window {
 			default: NOT_REACHED();
 		}
 
-		if (_ctrl_pressed || !ScrollMainWindowToTile(xy)) {
-			if (_ctrl_pressed) ShowExtraViewportWindow(xy);
+		if (IsCtrlPressed() || !ScrollMainWindowToTile(xy)) {
+			if (IsCtrlPressed()) ShowExtraViewportWindow(xy);
 
 			/* otherwise determine dst coordinate for subsidy and scroll to it */
 			switch (s->dst.type) {
@@ -96,7 +96,7 @@ struct SubsidyListWindow : Window {
 				default: NOT_REACHED();
 			}
 
-			if (_ctrl_pressed) {
+			if (IsCtrlPressed()) {
 				ShowExtraViewportWindow(xy);
 			} else {
 				ScrollMainWindowToTile(xy);

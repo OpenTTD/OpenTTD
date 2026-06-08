@@ -439,4 +439,16 @@ enum class DirectionKey {
 };
 using DirectionKeys = EnumBitSet<DirectionKey, uint8_t>; ///< Bitset of the direction keys.
 
+/** Mouse control inputs and keyboard modifiers. */
+enum class ControlInput : uint8_t {
+	Left, ///< Left mouse button is pressed.
+	Right, ///< Right mouse button is pressed.
+	Ctrl, ///< Ctrl modifier is pressed.
+	Shift, ///< Shift modifier is pressed.
+};
+
+/** Bitset of \c ControlInput elements. */
+using ControlInputs = EnumBitSet<ControlInput, uint8_t>;
+
+
 #endif /* GFX_TYPE_H */

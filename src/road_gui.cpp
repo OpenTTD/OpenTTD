@@ -627,7 +627,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 		}
 		this->UpdateOptionWidgetStatus(static_cast<RoadToolbarWidgets>(widget));
-		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
+		if (IsCtrlPressed()) RoadToolbar_CtrlChanged(this);
 	}
 
 	/**
@@ -830,7 +830,7 @@ struct BuildRoadToolbarWindow : Window {
 						} else {
 							TileArea ta(start_tile, end_tile);
 							Axis axis = select_method == VPM_X_LIMITED ? Axis::X : Axis::Y;
-							bool adjacent = _ctrl_pressed;
+							bool adjacent = IsCtrlPressed();
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
@@ -851,10 +851,10 @@ struct BuildRoadToolbarWindow : Window {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_remove_station[RoadStopType::Bus];
-							Command<Commands::RemoveRoadStop>::Post(str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Bus, _ctrl_pressed);
+							Command<Commands::RemoveRoadStop>::Post(str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Bus, IsCtrlPressed());
 						} else {
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_build_station[RoadStopType::Bus];
-							PlaceRoadStop(start_tile, end_tile, RoadStopType::Bus, _ctrl_pressed, _cur_roadtype, str);
+							PlaceRoadStop(start_tile, end_tile, RoadStopType::Bus, IsCtrlPressed(), _cur_roadtype, str);
 						}
 					}
 					break;
@@ -865,16 +865,16 @@ struct BuildRoadToolbarWindow : Window {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_remove_station[RoadStopType::Truck];
-							Command<Commands::RemoveRoadStop>::Post(str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Truck, _ctrl_pressed);
+							Command<Commands::RemoveRoadStop>::Post(str, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, ta.w, ta.h, RoadStopType::Truck, IsCtrlPressed());
 						} else {
 							StringID str = GetRoadTypeInfo(this->roadtype)->strings.err_build_station[RoadStopType::Truck];
-							PlaceRoadStop(start_tile, end_tile, RoadStopType::Truck, _ctrl_pressed, _cur_roadtype, str);
+							PlaceRoadStop(start_tile, end_tile, RoadStopType::Truck, IsCtrlPressed(), _cur_roadtype, str);
 						}
 					}
 					break;
 
 				case DDSP_CONVERT_ROAD:
-					Command<Commands::ConvertRoad>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype, _ctrl_pressed);
+					Command<Commands::ConvertRoad>::Post(GetRoadTypeInfo(this->roadtype)->strings.err_convert_road, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, _cur_roadtype, IsCtrlPressed());
 					break;
 			}
 		}

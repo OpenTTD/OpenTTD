@@ -1065,7 +1065,7 @@ struct NetworkStartServerWindow : public Window {
 							break;
 					}
 				}
-				_left_button_clicked = false;
+				_input_clicked.Reset(ControlInput::Left);
 				break;
 
 			case WID_NSS_CLIENTS_TXT:    // Click on number of clients
@@ -1081,7 +1081,7 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_GENERATE_GAME: // Start game
 				if (!CheckServerName()) return;
 				_is_network_server = true;
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 				} else {
 					ShowGenerateLandscape();

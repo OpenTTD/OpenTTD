@@ -571,27 +571,27 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 		case WM_LBUTTONDOWN:
 			SetCapture(hwnd);
-			_left_button_down = true;
+			_input_pressed.Set(ControlInput::Left);
 			HandleMouseEvents();
 			return 0;
 
 		case WM_LBUTTONUP:
 			ReleaseCapture();
-			_left_button_down = false;
-			_left_button_clicked = false;
+			_input_pressed.Reset(ControlInput::Left);
+			_input_clicked.Reset(ControlInput::Left);
 			HandleMouseEvents();
 			return 0;
 
 		case WM_RBUTTONDOWN:
 			SetCapture(hwnd);
-			_right_button_down = true;
-			_right_button_clicked = true;
+			_input_pressed.Set(ControlInput::Right);
+			_input_clicked.Set(ControlInput::Right);
 			HandleMouseEvents();
 			return 0;
 
 		case WM_RBUTTONUP:
 			ReleaseCapture();
-			_right_button_down = false;
+			_input_pressed.Reset(ControlInput::Right);
 			HandleMouseEvents();
 			return 0;
 
@@ -599,7 +599,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			UndrawMouseCursor();
 			_cursor.in_window = false;
 
-			if (!_left_button_down && !_right_button_down) MyShowCursor(true);
+			if (!_input_pressed.Any({ControlInput::Left, ControlInput::Right})) MyShowCursor(true);
 			return 0;
 
 		case WM_MOUSEMOVE: {
@@ -1006,10 +1006,10 @@ void VideoDriver_Win32Base::CheckPaletteAnim()
 
 void VideoDriver_Win32Base::InputLoop()
 {
-	bool old_ctrl_pressed = _ctrl_pressed;
+	bool old_ctrl_pressed = IsCtrlPressed();
 
-	_ctrl_pressed = this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
-	_shift_pressed = this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
+	_input_pressed.Set(ControlInput::Ctrl, this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0);
+	_input_pressed.Set(ControlInput::Shift, this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0);
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
@@ -1025,7 +1025,7 @@ void VideoDriver_Win32Base::InputLoop()
 		_dirkeys.Reset();
 	}
 
-	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+	if (old_ctrl_pressed != IsCtrlPressed()) HandleCtrlChanged();
 }
 
 bool VideoDriver_Win32Base::PollEvent()

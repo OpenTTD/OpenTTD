@@ -67,7 +67,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 
 	TileArea ta(start, end);
 	for (TileIndex tile : ta) {
-		SetTropicZone(tile, (_ctrl_pressed) ? TropicZone::Normal : TropicZone::Desert);
+		SetTropicZone(tile, (IsCtrlPressed()) ? TropicZone::Normal : TropicZone::Desert);
 		Command<Commands::LandscapeClear>::Post(tile);
 		MarkTileDirtyByTile(tile);
 	}
@@ -224,22 +224,22 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 
 	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
-			Command<Commands::ClearArea>::Post(STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, _ctrl_pressed);
+			Command<Commands::ClearArea>::Post(STR_ERROR_CAN_T_CLEAR_THIS_AREA, CcPlaySound_EXPLOSION, end_tile, start_tile, IsCtrlPressed());
 			break;
 		case DDSP_RAISE_AND_LEVEL_AREA:
-			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LevelMode::Raise);
+			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_RAISE_LAND_HERE, CcTerraform, end_tile, start_tile, IsCtrlPressed(), LevelMode::Raise);
 			break;
 		case DDSP_LOWER_AND_LEVEL_AREA:
-			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LevelMode::Lower);
+			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_LOWER_LAND_HERE, CcTerraform, end_tile, start_tile, IsCtrlPressed(), LevelMode::Lower);
 			break;
 		case DDSP_LEVEL_AREA:
-			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LevelMode::Level);
+			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, IsCtrlPressed(), LevelMode::Level);
 			break;
 		case DDSP_CREATE_ROCKS:
-			PlaceRockyArea(end_tile, start_tile, _ctrl_pressed);
+			PlaceRockyArea(end_tile, start_tile, IsCtrlPressed());
 			break;
 		case DDSP_CREATE_ROUGH:
-			PlaceRoughGround(end_tile, start_tile, _ctrl_pressed);
+			PlaceRoughGround(end_tile, start_tile, IsCtrlPressed());
 			break;
 		case DDSP_CREATE_DESERT:
 			GenerateDesertArea(end_tile, start_tile);
@@ -388,7 +388,7 @@ struct TerraformToolbarWindow : Window {
 						if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
 					}
 					Command<Commands::BuildObjectArea>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL,
-						end_tile, start_tile, OBJECT_OWNED_LAND, 0, _ctrl_pressed);
+						end_tile, start_tile, OBJECT_OWNED_LAND, 0, IsCtrlPressed());
 					break;
 			}
 		}
@@ -832,7 +832,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			case WID_ETT_PLACE_DESERT:
 			case WID_ETT_PLACE_ROUGH:
 				if (this->IsWidgetLowered(this->last_user_action)) {
-					SetSelectionRed(_ctrl_pressed);
+					SetSelectionRed(IsCtrlPressed());
 					return EventState::Handled;
 				}
 				break;

@@ -352,8 +352,7 @@ void SaveHotkeysToConfig()
 static EventState HandleGlobalHotkey(HotkeyList::GlobalHotkeyHandlerFunc func, int hotkey)
 {
 	/* Clear global modifier keys so they do not interfere with modifiers assigned to hotkeys. */
-	AutoRestoreBackup _shift_backup{_shift_pressed, false};
-	AutoRestoreBackup _ctrl_backup{_ctrl_pressed, false};
+	AutoRestoreBackup pressed_backup{_input_pressed, {}};
 
 	return func(hotkey);
 }

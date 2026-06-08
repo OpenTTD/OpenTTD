@@ -203,7 +203,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
 	 * However, in case of incoming network commands,
 	 * map generation or the pause button we do want
 	 * to execute. */
-	bool estimate_only = _shift_pressed && IsLocalCompany() && !_generating_world && !network_command && !flags.Test(CommandFlag::NoEst);
+	bool estimate_only = IsShiftPressed() && IsLocalCompany() && !_generating_world && !network_command && !flags.Test(CommandFlag::NoEst);
 
 	/* We're only sending the command, so don't do
 	 * fancy things for 'success'. */
