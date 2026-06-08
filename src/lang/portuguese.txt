@@ -1806,7 +1806,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar horári
 STR_CONFIG_SETTING_QUICKGOTO                                    :Criação rápida de ordens de veículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pré-selecionar o 'cursor Ir Para' ao abrir a janela de ordens
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Tipo padrão de via ferroviária, rodoviária e de elétrico (após iniciar ou carregar um jogo): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Tipo de via ferroviária, rodoviária e de elétrico a selecionar após iniciar ou carregar um jogo. A opção “Primeiro disponível” seleciona o tipo de via mais antigo, a opção “Último disponível” seleciona o tipo de via mais recente e a opção “Mais utilizado” seleciona o tipo que está a ser mais usado no momento
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :Primeiro disponível
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Último disponível
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Mais utilizado
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar caminho de ferro reservado: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dar cores diferentes aos carris reservados para ajudar a detectar problemas com combóios que recusam entrar em bloqueios baseados em caminhos

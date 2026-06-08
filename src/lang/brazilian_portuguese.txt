@@ -1806,7 +1806,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar os hor�
 STR_CONFIG_SETTING_QUICKGOTO                                    :Criação rápida de ordens de veículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pré-selecionar o 'cursor Ir para' ao abrir a janela de ordens
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Tipo de trilhos, de estrada e de bonde (após um novo jogo/carregar jogo): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Tipo de trilhos, de estrada e de bonde a ser selecionado após iniciar ou carregar um jogo. 'Primeiro disponível' seleciona o tipo de trilhos mais antigo, 'Último disponível' seleciona o tipo de trilhos mais recente e “Mais usado” seleciona o tipo que está mais em uso no momento
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :Primeiro disponível
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Último disponível
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Mais usado
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar caminhos reservados para trajetos: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Usar uma cor diferente nos trajetos reservados para auxiliar na solução de problemas com trens que se recusam a entrar em seções controlados por sinais de caminho

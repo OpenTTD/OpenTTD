@@ -805,7 +805,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transport Routes
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Forest
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Railway Station
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Lorry Station
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Truck Station
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bus Station
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Airport/Heliport
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Dock
@@ -1805,7 +1805,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Display anticip
 STR_CONFIG_SETTING_QUICKGOTO                                    :Quick creation of vehicle orders: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-select the 'goto cursor' when opening the orders window
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Default rail, road, and tram type (after new game/game load): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Rail, road, and tram type to select after starting or loading a game. 'first available' selects the oldest type of tracks, 'last available' selects the newest type of tracks, and 'most used' selects the type which is currently most in use
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :First available
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Last available
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Most used
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Show path reservations for tracks: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Give reserved tracks a different colour to assist in problems with trains refusing to enter path-based blocks
@@ -2892,9 +2897,9 @@ STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Select a collec
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Select a bus station class to display
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Select a bus station type to build. Ctrl+Click to add or remove in saved items
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Select a collection of bus stations to display
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a lorry station class to display
-STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a lorry station type to build. Ctrl+Click to add or remove in saved items
-STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Select a collection of lorry stations to display
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Select a truck station class to display
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Select a truck station type to build. Ctrl+Click to add or remove in saved items
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Select a collection of truck stations to display
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Select an object class to display
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Select an object type to build. Ctrl+Click to add or remove in saved items. Ctrl+Click+Drag to select the area diagonally. Also press Shift to show cost estimate only
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Select a collection of objects to display
@@ -2981,7 +2986,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Build wa
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Build waypoint on tramway. Ctrl+Click to select another waypoint to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Build bus station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Build passenger tram station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Build lorry station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Build truck station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Build freight tram station. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activate/Deactivate one way roads
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Build road bridge. Also press Shift to show cost estimate only
@@ -3006,7 +3011,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Select t
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bus Station Orientation
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Select bus station orientation
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Truck Station Orientation
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Select lorry station orientation
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Select truck station orientation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passenger Tram Station Orientation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Select passenger tram station orientation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Freight Tram Station Orientation
@@ -3263,7 +3268,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactus plants
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Railway station
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Aircraft hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Airport
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Lorry station
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Truck station
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Bus station
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Ship dock
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Buoy
@@ -5190,7 +5195,7 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Change the map 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Can't build railway station here...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Can't build bus station...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Can't build lorry station...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Can't build truck station...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Can't build passenger tram station...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Can't build freight tram station...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Can't build dock here...
@@ -5203,7 +5208,7 @@ STR_ERROR_STATION_DISALLOWED_LENGTH                             :unsupported len
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :too many railway station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :too many bus stops
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :too many lorry stations
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :too many truck stations
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :too close to another dock
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :too close to another airport
 STR_ERROR_CAN_T_RENAME_STATION                                  :Can't rename station...
@@ -5217,7 +5222,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :drive through s
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :Can't remove part of station...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :must remove railway station first
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Can't remove bus station...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Can't remove lorry station...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Can't remove truck station...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :Can't remove passenger tram station...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Can't remove freight tram station...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :must remove road stop first
