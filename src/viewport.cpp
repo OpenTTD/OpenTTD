@@ -965,27 +965,26 @@ static const HighLightStyle _autorail_type[6][2] = {
  * Draws autorail highlights.
  *
  * @param *ti TileInfo Tile that is being drawn
- * @param autorail_type Offset into _AutorailTilehSprite[][]
+ * @param highlight_style Highlight to draw
  */
-static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
+static void DrawAutorailSelection(const TileInfo *ti, HighLightStyle highlight_style)
 {
 	SpriteID image;
 	PaletteID pal;
-	int offset;
 
 	FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
-	Slope autorail_tileh = RemoveHalftileSlope(ti->tileh);
+	Slope slope = RemoveHalftileSlope(ti->tileh);
 	if (IsHalftileSlope(ti->tileh)) {
-		static constexpr CornerIndexArray<uint> lower_rail = {5U, 2U, 4U, 3U};
+		static constexpr CornerIndexArray<HighLightStyle> lower_rail{HT_DIR_VR, HT_DIR_HU, HT_DIR_VL, HT_DIR_HL};
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
-		if (autorail_type != lower_rail[halftile_corner]) {
+		if ((highlight_style & HT_DIR_MASK) != lower_rail[halftile_corner]) {
 			foundation_part = FOUNDATION_PART_HALFTILE;
 			/* Here we draw the highlights of the "three-corners-raised"-slope. That looks ok to me. */
-			autorail_tileh = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
+			slope = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
 		}
 	}
 
-	offset = _AutorailTilehSprite[autorail_tileh][autorail_type];
+	int offset = _autorail_slope_sprite_offsets[slope][highlight_style & HT_DIR_MASK];
 	if (offset >= 0) {
 		image = SPR_AUTORAIL_BASE + offset;
 		pal = PAL_NONE;
