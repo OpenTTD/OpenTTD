@@ -52,7 +52,7 @@ void InitializePatchFlags()
 	                   |                                                       (1U << 0x18)  // newrvs
 	                   |                                                       (1U << 0x19)  // newships
 	                   |                                                       (1U << 0x1A)  // newplanes
-	                   | ((_settings_game.construction.train_signal_side == 1 ? 1U : 0U) << 0x1B)  // signalsontrafficside
+	                   | ((_settings_game.construction.train_signal_side == TrainSignalSide::RoadVehicleDrivingSide ? 1U : 0U) << 0x1B)  // signalsontrafficside
 	                   |       ((_settings_game.vehicle.disable_elrails ? 0U : 1U) << 0x1C); // electrifiedrailway
 
 	_ttdpatch_flags[2] =                                                       (1U << 0x01)  // loadallgraphics - obsolete
