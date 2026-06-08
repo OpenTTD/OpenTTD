@@ -1869,14 +1869,26 @@ static uint GetSafeSlopeZ(uint x, uint y, Track track)
 	return GetSlopePixelZ(x, y);
 }
 
+/**
+ * Helper to determine whether the train signals are to be placed on the right side.
+ * @return \c true iff signals are to be drawn on the right side.
+ */
+static bool IsTrainSignalSideRight()
+{
+	switch (_settings_game.construction.train_signal_side) {
+		case TrainSignalSide::Left:
+			return false;
+		case TrainSignalSide::Right:
+			return true;
+		case TrainSignalSide::RoadVehicleDrivingSide:
+			return _settings_game.vehicle.road_side == RoadVehicleDrivingSide::Right;
+		default:
+			NOT_REACHED();
+	}
+}
+
 static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track track, SignalState condition, SignalOffsets image, uint pos)
 {
-	bool side;
-	switch (_settings_game.construction.train_signal_side) {
-		case 0:  side = false;                                 break; // left
-		case 2:  side = true;                                  break; // right
-		default: side = _settings_game.vehicle.road_side != 0; break; // driving side
-	}
 	static const Point SignalPositions[2][12] = {
 		{ // Signals on the left side
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
@@ -1891,8 +1903,9 @@ static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track trac
 		}
 	};
 
-	uint x = TileX(tile) * TILE_SIZE + SignalPositions[side][pos].x;
-	uint y = TileY(tile) * TILE_SIZE + SignalPositions[side][pos].y;
+	bool signal_on_right = IsTrainSignalSideRight();
+	uint x = TileX(tile) * TILE_SIZE + SignalPositions[signal_on_right][pos].x;
+	uint y = TileY(tile) * TILE_SIZE + SignalPositions[signal_on_right][pos].y;
 
 	SignalType type       = GetSignalType(tile, track);
 	SignalVariant variant = GetSignalVariant(tile, track);

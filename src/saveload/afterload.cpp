@@ -701,7 +701,7 @@ bool AfterLoadGame()
 	}
 
 	/* convert road side to my format. */
-	if (_settings_game.vehicle.road_side) _settings_game.vehicle.road_side = 1;
+	if (to_underlying(_settings_game.vehicle.road_side) != 0) _settings_game.vehicle.road_side = RoadVehicleDrivingSide::Right;
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList(_grfconfig);
@@ -2695,7 +2695,7 @@ bool AfterLoadGame()
 			bool loading = rv->current_order.IsType(OT_LOADING) || rv->current_order.IsType(OT_LEAVESTATION);
 			if (HasBit(rv->state, RVS_IN_ROAD_STOP)) {
 				extern const uint8_t _road_stop_stop_frame[];
-				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > _road_stop_stop_frame[rv->state - RVSB_IN_ROAD_STOP + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)]);
+				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > _road_stop_stop_frame[rv->state - RVSB_IN_ROAD_STOP + (to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE)]);
 			} else if (HasBit(rv->state, RVS_IN_DT_ROAD_STOP)) {
 				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > RVC_DRIVE_THROUGH_STOP_FRAME);
 			}
@@ -3067,7 +3067,7 @@ bool AfterLoadGame()
 		 * Now they have the same length, but that means that trailing articulated parts will
 		 * take longer to go through the curve than the parts in front which already left the curve.
 		 * So, make articulated parts catch up. */
-		bool roadside = _settings_game.vehicle.road_side == 1;
+		bool roadside = _settings_game.vehicle.road_side == RoadVehicleDrivingSide::Right;
 		std::vector<uint> skip_frames;
 		for (RoadVehicle *v : RoadVehicle::Iterate()) {
 			if (!v->IsFrontEngine()) continue;
