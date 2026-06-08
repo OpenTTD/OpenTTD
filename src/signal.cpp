@@ -488,7 +488,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 	assert(Company::IsValidID(owner));
 
 	bool first = true;  // first block?
-	SigSegState state = SIGSEG_FREE; // value to return
+	SigSegState state = SigSegState::Free; // value to return
 
 	TileIndex tile = INVALID_TILE; // Stop GCC from complaining about a possibly uninitialized variable (issue #8280).
 	DiagDirection dir = DiagDirection::Invalid;
@@ -549,11 +549,11 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 
 		if (first) {
 			first = false;
-			/* SIGSEG_FREE is set by default */
+			/* SigSegState::Free is set by default */
 			if (flags.Test(SigFlag::Pbs)) {
-				state = SIGSEG_PBS;
+				state = SigSegState::Path;
 			} else if (flags.Test(SigFlag::Train) || (flags.Test(SigFlag::Exit) && !flags.Test(SigFlag::Green)) || flags.Test(SigFlag::Full)) {
-				state = SIGSEG_FULL;
+				state = SigSegState::Full;
 			}
 		}
 
