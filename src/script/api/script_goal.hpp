@@ -32,12 +32,12 @@ public:
 	 */
 	enum GoalType : uint8_t {
 		/* Note: these values represent part of the in-game GoalType enum */
-		GT_NONE     = ::GT_NONE,     ///< Destination is not linked.
-		GT_TILE     = ::GT_TILE,     ///< Destination is a tile.
-		GT_INDUSTRY = ::GT_INDUSTRY, ///< Destination is an industry.
-		GT_TOWN     = ::GT_TOWN,     ///< Destination is a town.
-		GT_COMPANY  = ::GT_COMPANY,  ///< Destination is a company.
-		GT_STORY_PAGE = ::GT_STORY_PAGE ///< Destination is a story page.
+		GT_NONE = to_underlying(::GoalType::None), ///< Destination is not linked.
+		GT_TILE = to_underlying(::GoalType::Tile), ///< Destination is a tile.
+		GT_INDUSTRY = to_underlying(::GoalType::Industry), ///< Destination is an industry.
+		GT_TOWN = to_underlying(::GoalType::Town), ///< Destination is a town.
+		GT_COMPANY = to_underlying(::GoalType::Company), ///< Destination is a company.
+		GT_STORY_PAGE = to_underlying(::GoalType::StoryPage), ///< Destination is a story page.
 	};
 
 	/**

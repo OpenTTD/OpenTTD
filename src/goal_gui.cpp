@@ -101,30 +101,30 @@ struct GoalListWindow : public Window {
 		/* Determine dst coordinate for goal and try to scroll to it. */
 		TileIndex xy;
 		switch (s->type) {
-			case GT_NONE: return;
+			case GoalType::None: return;
 
-			case GT_COMPANY:
+			case GoalType::Company:
 				/* s->dst here is not a tile, but a CompanyID.
 				 * Show the window with the overview of the company instead. */
 				ShowCompany((CompanyID)s->dst);
 				return;
 
-			case GT_TILE:
+			case GoalType::Tile:
 				if (!IsValidTile(s->dst)) return;
 				xy = TileIndex{s->dst};
 				break;
 
-			case GT_INDUSTRY:
+			case GoalType::Industry:
 				if (!Industry::IsValidID(s->dst)) return;
 				xy = Industry::Get(s->dst)->location.tile;
 				break;
 
-			case GT_TOWN:
+			case GoalType::Town:
 				if (!Town::IsValidID(s->dst)) return;
 				xy = Town::Get(s->dst)->xy;
 				break;
 
-			case GT_STORY_PAGE: {
+			case GoalType::StoryPage: {
 				if (!StoryPage::IsValidID(s->dst)) return;
 
 				/* Verify that:
