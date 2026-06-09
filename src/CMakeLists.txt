@@ -209,6 +209,7 @@ add_files(
     goal_base.h
     goal_cmd.h
     goal_gui.cpp
+    goal_gui.h
     goal_type.h
     graph_gui.cpp
     graph_gui.h

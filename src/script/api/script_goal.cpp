@@ -136,10 +136,10 @@
 	uint min_buttons = (type == QT_QUESTION ? 1 : 0);
 	EnforcePrecondition(false, CountBits<uint64_t>(buttons) >= min_buttons && CountBits<uint64_t>(buttons) <= 3);
 	EnforcePrecondition(false, buttons >= 0 && buttons < (1 << ::GOAL_QUESTION_BUTTON_COUNT));
-	EnforcePrecondition(false, (int)type < ::GQT_END);
+	EnforcePrecondition(false, static_cast<::GoalQuestionType>(type) < ::GoalQuestionType::End);
 	EnforcePrecondition(false, uniqueid >= 0 && uniqueid <= UINT16_MAX);
 
-	return ScriptObject::Command<Commands::GoalQuestion>::Do(uniqueid, target, is_client, buttons, (::GoalQuestionType)type, text);
+	return ScriptObject::Command<Commands::GoalQuestion>::Do(uniqueid, target, is_client, buttons, static_cast<::GoalQuestionType>(type), text);
 }
 
 /* static */ bool ScriptGoal::Question(SQInteger uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, SQInteger buttons)
