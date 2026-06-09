@@ -15,6 +15,7 @@
 #include "viewport_func.h"
 #include "gui.h"
 #include "goal_base.h"
+#include "goal_gui.h"
 #include "core/geometry_func.hpp"
 #include "company_func.h"
 #include "company_base.h"
@@ -439,7 +440,7 @@ static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets
 static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<Colours::Red,        Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
 
 /** Window definitions for the goal question windows. */
-static WindowDesc _goal_question_list_desc[] = {
+static EnumIndexArray<WindowDesc, GoalQuestionType, GoalQuestionType::End> _goal_question_list_desc{{{
 	{
 		WindowPosition::Center, {}, 0, 0,
 		WindowClass::GoalQuestion, WindowClass::None,
@@ -464,7 +465,7 @@ static WindowDesc _goal_question_list_desc[] = {
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_error,
 	},
-};
+}}};
 
 /**
  * Display a goal question.
@@ -473,8 +474,8 @@ static WindowDesc _goal_question_list_desc[] = {
  * @param button_mask Buttons to display.
  * @param question Question to ask.
  */
-void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const EncodedString &question)
+void ShowGoalQuestion(uint16_t id, GoalQuestionType type, uint32_t button_mask, const EncodedString &question)
 {
-	assert(type < GQT_END);
-	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == 3 ? TextColour::White : TextColour::Black, button_mask, question);
+	assert(type < GoalQuestionType::End);
+	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == GoalQuestionType::Error ? TextColour::White : TextColour::Black, button_mask, question);
 }

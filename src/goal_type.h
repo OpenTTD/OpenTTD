@@ -14,12 +14,13 @@
 
 static const uint32_t GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
 
-enum GoalQuestionType : uint8_t {
-	GQT_QUESTION = 0,
-	GQT_INFORMATION = 1,
-	GQT_WARNING = 2,
-	GQT_ERROR = 3,
-	GQT_END = 4,
+/** Types of goal questions. */
+enum class GoalQuestionType : uint8_t {
+	Question = 0, ///< Asking a simple question; title: Question.
+	Information = 1, ///< Showing an informational message; title: Information.
+	Warning = 2, ///< Showing a warning; title: Warning.
+	Error = 3, ///< Showing an error; title: Error.
+	End, ///< End marker.
 };
 
 /** Types of goal destinations */

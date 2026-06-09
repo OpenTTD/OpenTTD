@@ -45,10 +45,10 @@ public:
 	 * Basically the title of the question window.
 	 */
 	enum QuestionType {
-		QT_QUESTION,    ///< Asking a simple question; title: Question.
-		QT_INFORMATION, ///< Showing an informational message; title: Information.
-		QT_WARNING,     ///< Showing a warning; title: Warning.
-		QT_ERROR,       ///< Showing an error; title: Error.
+		QT_QUESTION = to_underlying(::GoalQuestionType::Question), ///< Asking a simple question; title: Question.
+		QT_INFORMATION = to_underlying(::GoalQuestionType::Information), ///< Showing an informational message; title: Information.
+		QT_WARNING = to_underlying(::GoalQuestionType::Warning), ///< Showing a warning; title: Warning.
+		QT_ERROR = to_underlying(::GoalQuestionType::Error), ///< Showing an error; title: Error.
 	};
 
 	/**

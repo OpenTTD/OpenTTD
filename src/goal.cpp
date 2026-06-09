@@ -19,7 +19,7 @@
 #include "company_base.h"
 #include "story_base.h"
 #include "string_func.h"
-#include "gui.h"
+#include "goal_gui.h"
 #include "network/network.h"
 #include "network/network_base.h"
 #include "network/network_func.h"
@@ -260,9 +260,9 @@ CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t ta
 	} else {
 		if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return CMD_ERROR;
 	}
-	uint min_buttons = (type == GQT_QUESTION ? 1 : 0);
+	uint min_buttons = (type == GoalQuestionType::Question ? 1 : 0);
 	if (CountBits(button_mask) < min_buttons || CountBits(button_mask) > 3) return CMD_ERROR;
-	if (type >= GQT_END) return CMD_ERROR;
+	if (type >= GoalQuestionType::End) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (is_client) {

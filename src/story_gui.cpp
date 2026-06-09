@@ -19,6 +19,7 @@
 #include "dropdown_func.h"
 #include "sortlist_type.h"
 #include "goal_base.h"
+#include "goal_gui.h"
 #include "viewport_func.h"
 #include "window_func.h"
 #include "company_base.h"
