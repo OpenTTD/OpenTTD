@@ -1601,6 +1601,25 @@ public:
 		this->DrawWidgets();
 	}
 
+	/**
+	 * Draw a string legend.
+	 * @param text Rect to draw text in.
+	 * @param icon Rect to fill icon outline if not highlighted.
+	 * @param highlight Whether legend should be highlighted.
+	 * @param string String to draw.
+	 */
+	void DrawLegend(const Rect &text, const Rect &icon, bool highlight, std::string_view string) const
+	{
+		if (!highlight) {
+			/* Simply draw the string, not the black border of the legend colour.
+			 * This will enforce the idea of the disabled item */
+			DrawString(text, string, TextColour::Grey);
+		} else {
+			DrawString(text, string, TextColour::Black);
+			GfxFillRect(icon, PC_BLACK); // Outer border of the legend colour
+		}
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
@@ -1624,21 +1643,6 @@ public:
 				Rect text = origin.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl);
 				Rect icon = origin.WithWidth(this->legend_width, rtl).Shrink(0, padding, 0, 0);
 
-				StringID string = STR_NULL;
-				switch (this->map_type) {
-					case SMT_INDUSTRY:
-						string = STR_SMALLMAP_INDUSTRY;
-						break;
-					case SMT_LINKSTATS:
-						string = STR_SMALLMAP_LINKSTATS;
-						break;
-					case SMT_OWNER:
-						string = STR_SMALLMAP_COMPANY;
-						break;
-					default:
-						break;
-				}
-
 				for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
 					if (tbl->col_break || ((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER || this->map_type == SMT_LINKSTATS) && i++ >= number_of_rows)) {
 						/* Column break needed, continue at top, COLUMN_WIDTH pixels
@@ -1652,33 +1656,23 @@ public:
 
 					PixelColour legend_colour = tbl->colour;
 
-					std::array<StringParameter, 2> params{};
 					switch (this->map_type) {
 						case SMT_INDUSTRY:
 							/* Industry name must be formatted, since it's not in tiny font in the specs.
 							 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
-							params[0] = tbl->legend;
-							params[1] = Industry::GetIndustryTypeCount(tbl->type);
 							if (tbl->show_on_map && tbl->type == _smallmap_industry_highlight) {
 								legend_colour = _smallmap_industry_highlight_state ? PC_WHITE : PC_BLACK;
 							}
-							[[fallthrough]];
+							this->DrawLegend(text, icon, tbl->show_on_map, GetString(STR_SMALLMAP_INDUSTRY, tbl->legend, Industry::GetIndustryTypeCount(tbl->type)));
+							break;
 
 						case SMT_LINKSTATS:
-							params[0] = tbl->legend;
-							[[fallthrough]];
+							this->DrawLegend(text, icon, tbl->show_on_map, GetString(STR_SMALLMAP_LINKSTATS, tbl->legend));
+							break;
 
 						case SMT_OWNER:
-							if (this->map_type != SMT_OWNER || tbl->company != CompanyID::Invalid()) {
-								if (this->map_type == SMT_OWNER) params[0] = tbl->company;
-								if (!tbl->show_on_map) {
-									/* Simply draw the string, not the black border of the legend colour.
-									 * This will enforce the idea of the disabled item */
-									DrawString(text, GetStringWithArgs(string, params), TextColour::Grey);
-								} else {
-									DrawString(text, GetStringWithArgs(string, params), TextColour::Black);
-									GfxFillRect(icon, PC_BLACK); // Outer border of the legend colour
-								}
+							if (tbl->company != CompanyID::Invalid()) {
+								this->DrawLegend(text, icon, tbl->show_on_map, GetString(STR_SMALLMAP_COMPANY, tbl->company));
 								break;
 							}
 							[[fallthrough]];
