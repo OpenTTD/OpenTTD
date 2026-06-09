@@ -15,6 +15,6 @@
 #include "strings_type.h"
 
 void ShowGoalsList(CompanyID company);
-void ShowGoalQuestion(uint16_t id, GoalQuestionType type, uint32_t button_mask, const EncodedString &question);
+void ShowGoalQuestion(uint16_t id, GoalQuestionType type, GoalQuestionButtons buttons, const EncodedString &question);
 
 #endif /* GOAL_TYPE_H */

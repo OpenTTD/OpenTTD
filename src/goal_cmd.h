@@ -19,8 +19,8 @@ CommandCost CmdSetGoalDestination(DoCommandFlags flags, GoalID goal, GoalType ty
 CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const EncodedString &text);
 CommandCost CmdSetGoalProgress(DoCommandFlags flags, GoalID goal, const EncodedString &text);
 CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool completed);
-CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const EncodedString &text);
-CommandCost CmdGoalQuestionAnswer(DoCommandFlags flags, uint16_t uniqueid, uint8_t button);
+CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, GoalQuestionButtons buttons, GoalQuestionType type, const EncodedString &text);
+CommandCost CmdGoalQuestionAnswer(DoCommandFlags flags, uint16_t uniqueid, GoalQuestionButton button);
 
 DEF_CMD_TRAIT(Commands::CreateGoal, CmdCreateGoal, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
 DEF_CMD_TRAIT(Commands::RemoveGoal, CmdRemoveGoal, CommandFlag::Deity, CommandType::OtherManagement)
