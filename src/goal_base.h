@@ -21,13 +21,21 @@ extern GoalPool _goal_pool;
 /** Struct about goals, current and completed */
 struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	CompanyID company = CompanyID::Invalid(); ///< Goal is for a specific company; CompanyID::Invalid() if it is global
-	GoalType type = GT_NONE; ///< Type of the goal
+	GoalType type = GoalType::None; ///< Type of the goal
 	GoalTypeID dst = 0; ///< Index of type
 	EncodedString text{}; ///< Text of the goal.
 	EncodedString progress{}; ///< Progress text of the goal.
 	bool completed = false; ///< Is the goal completed or not?
 
-	Goal(GoalID index, GoalType type = GT_NONE, GoalTypeID dst = 0, CompanyID company = CompanyID::Invalid(), const EncodedString &text = {}) :
+	/**
+	 * Construct the goal.
+	 * @param index The index within the goal pool.
+	 * @param type The goal type.
+	 * @param dst The goal target.
+	 * @param company The company for the goal.
+	 * @param text The text of the goal.
+	 */
+	Goal(GoalID index, GoalType type = GoalType::None, GoalTypeID dst = 0, CompanyID company = CompanyID::Invalid(), const EncodedString &text = {}) :
 		GoalPool::PoolItem<&_goal_pool>(index), company(company), type(type), dst(dst), text(text) {}
 
 	/**

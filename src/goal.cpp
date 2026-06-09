@@ -34,27 +34,27 @@ INSTANTIATE_POOL_METHODS(Goal)
 /* static */ bool Goal::IsValidGoalDestination(CompanyID company, GoalType type, GoalTypeID dest)
 {
 	switch (type) {
-		case GT_NONE:
+		case GoalType::None:
 			if (dest != 0) return false;
 			break;
 
-		case GT_TILE:
+		case GoalType::Tile:
 			if (!IsValidTile(dest)) return false;
 			break;
 
-		case GT_INDUSTRY:
+		case GoalType::Industry:
 			if (!Industry::IsValidID(dest)) return false;
 			break;
 
-		case GT_TOWN:
+		case GoalType::Town:
 			if (!Town::IsValidID(dest)) return false;
 			break;
 
-		case GT_COMPANY:
+		case GoalType::Company:
 			if (!Company::IsValidID(dest)) return false;
 			break;
 
-		case GT_STORY_PAGE: {
+		case GoalType::StoryPage: {
 			if (!StoryPage::IsValidID(dest)) return false;
 			CompanyID story_company = StoryPage::Get(dest)->company;
 			if (company == CompanyID::Invalid() ? story_company != CompanyID::Invalid() : story_company != CompanyID::Invalid() && story_company != company) return false;

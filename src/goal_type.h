@@ -24,13 +24,13 @@ enum class GoalQuestionType : uint8_t {
 };
 
 /** Types of goal destinations */
-enum GoalType : uint8_t {
-	GT_NONE,         ///< Destination is not linked
-	GT_TILE,         ///< Destination is a tile
-	GT_INDUSTRY,     ///< Destination is an industry
-	GT_TOWN,         ///< Destination is a town
-	GT_COMPANY,      ///< Destination is a company
-	GT_STORY_PAGE,   ///< Destination is a story page
+enum class GoalType : uint8_t {
+	None, ///< Destination is not linked
+	Tile, ///< Destination is a tile
+	Industry, ///< Destination is an industry
+	Town, ///< Destination is a town
+	Company, ///< Destination is a company
+	StoryPage, ///< Destination is a story page
 };
 
 typedef uint32_t GoalTypeID; ///< Contains either tile, industry ID, town ID, company ID, or story page ID
