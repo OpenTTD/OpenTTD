@@ -1600,7 +1600,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 static void CalculateSnowLine()
 {
 	/* We do not have snow sprites on coastal tiles, so never allow "1" as height. */
-	_settings_game.game_creation.snow_line_height = std::max(CalculateCoverageLine(_settings_game.game_creation.snow_coverage, 0), 2u);
+	_settings_game.game_creation.snow_line_height = std::max<uint8_t>(CalculateCoverageLine(_settings_game.game_creation.snow_coverage, 0), 2u);
 }
 
 /**

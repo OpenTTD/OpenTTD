@@ -619,8 +619,8 @@ bool AfterLoadGame()
 			int dx = TileX(t) - TileX(st->train_station.tile);
 			int dy = TileY(t) - TileY(st->train_station.tile);
 			assert(dx >= 0 && dy >= 0);
-			st->train_station.w = std::max<uint>(st->train_station.w, dx + 1);
-			st->train_station.h = std::max<uint>(st->train_station.h, dy + 1);
+			st->train_station.w = std::max<uint16_t>(st->train_station.w, dx + 1);
+			st->train_station.h = std::max<uint16_t>(st->train_station.h, dy + 1);
 		}
 	}
 
