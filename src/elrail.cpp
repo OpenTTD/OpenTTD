@@ -98,7 +98,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, DiagDirections *override
 			break;
 
 		case TileType::TunnelBridge:
-			if (GetTunnelBridgeTransportType(t) != TRANSPORT_RAIL) return {};
+			if (GetTunnelBridgeTransportType(t) != TransportType::Rail) return {};
 			if (!HasRailCatenary(GetRailType(t))) return {};
 			if (override != nullptr && (IsTunnel(t) || GetTunnelBridgeLength(t, GetOtherBridgeEnd(t)) > 0)) {
 				*override = GetTunnelBridgeDirection(t);
@@ -142,7 +142,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 		TileIndex next_tile = TileAddByDiagDir(t, d);
 		RailType rt = GetTileRailType(next_tile);
 		if (rt == INVALID_RAILTYPE || !HasRailCatenary(rt) ||
-				(!TrackdirBitsToTrackBits(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Any(DiagdirReachesTracks(d)) &&
+				(!TrackdirBitsToTrackBits(GetTileTrackStatus(next_tile, TransportType::Rail, RoadTramType::Invalid).trackdirs).Any(DiagdirReachesTracks(d)) &&
 				(!HasStationTileRail(next_tile) || GetRailStationAxis(next_tile) != DiagDirToAxis(d) || !CanStationTileHaveWires(next_tile)))) {
 			neighbour_tdb |= DiagdirReachesTrackdirs(ReverseDiagDir(d));
 		}

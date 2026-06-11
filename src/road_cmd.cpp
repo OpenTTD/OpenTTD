@@ -339,7 +339,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 		}
 
 		case TileType::TunnelBridge: {
-			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+			if (GetTunnelBridgeTransportType(tile) != TransportType::Road) return CMD_ERROR;
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
 			if (ret.Failed()) return ret;
 			break;
@@ -790,7 +790,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 		}
 
 		case TileType::TunnelBridge: {
-			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) goto do_clear;
+			if (GetTunnelBridgeTransportType(tile) != TransportType::Road) goto do_clear;
 			/* Only allow building the outer roadbit, so building long roads stops at existing bridges */
 			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) goto do_clear;
 			if (HasTileRoadType(tile, rtt)) return CommandCost(STR_ERROR_ALREADY_BUILT);
@@ -2144,11 +2144,11 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 	TrackdirBits trackdirbits{};
 	TrackdirBits red_signals{}; // crossing barred
 	switch (mode) {
-		case TRANSPORT_RAIL:
+		case TransportType::Rail:
 			if (IsLevelCrossing(tile)) trackdirbits = TrackBitsToTrackdirBits(GetCrossingRailTrack(tile));
 			break;
 
-		case TRANSPORT_ROAD: {
+		case TransportType::Road: {
 			RoadTramType rtt = (RoadTramType)sub_mode;
 			if (!HasTileRoadType(tile, rtt)) break;
 			switch (GetRoadTileType(tile)) {
@@ -2503,7 +2503,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 				break;
 			case TileType::TunnelBridge:
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) continue;
+				if (GetTunnelBridgeTransportType(tile) != TransportType::Road) continue;
 				break;
 			default: continue;
 		}

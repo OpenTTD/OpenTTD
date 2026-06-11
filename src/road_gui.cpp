@@ -396,10 +396,10 @@ struct BuildRoadToolbarWindow : Window {
 			WID_ROT_BUS_STATION,
 			WID_ROT_TRUCK_STATION);
 		if (!can_build) {
-			CloseWindowById(WindowClass::BuildBusStation, TRANSPORT_ROAD);
-			CloseWindowById(WindowClass::BuildTruckStation, TRANSPORT_ROAD);
-			CloseWindowById(WindowClass::BuildDepot, TRANSPORT_ROAD);
-			CloseWindowById(WindowClass::BuildWaypoint, TRANSPORT_ROAD);
+			CloseWindowById(WindowClass::BuildBusStation, TransportType::Road);
+			CloseWindowById(WindowClass::BuildTruckStation, TransportType::Road);
+			CloseWindowById(WindowClass::BuildDepot, TransportType::Road);
+			CloseWindowById(WindowClass::BuildWaypoint, TransportType::Road);
 		}
 
 		if (_game_mode != GameMode::Editor) {
@@ -634,7 +634,7 @@ struct BuildRoadToolbarWindow : Window {
 		this->ModifyRoadType(_cur_roadtype);
 
 		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
-		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TRANSPORT_ROAD);
+		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TransportType::Road);
 
 		return EventState::Handled;
 	}
@@ -697,7 +697,7 @@ struct BuildRoadToolbarWindow : Window {
 
 			case WID_ROT_BUILD_TUNNEL:
 				Command<Commands::BuildTunnel>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRoadTunnel,
-						tile, TRANSPORT_ROAD, INVALID_RAILTYPE, _cur_roadtype);
+						tile, TransportType::Road, INVALID_RAILTYPE, _cur_roadtype);
 				break;
 
 			case WID_ROT_CONVERT_ROAD:
@@ -721,10 +721,10 @@ struct BuildRoadToolbarWindow : Window {
 			this->SetWidgetDirty(WID_ROT_ONE_WAY);
 		}
 
-		CloseWindowById(WindowClass::BuildBusStation, TRANSPORT_ROAD);
-		CloseWindowById(WindowClass::BuildTruckStation, TRANSPORT_ROAD);
-		CloseWindowById(WindowClass::BuildDepot, TRANSPORT_ROAD);
-		CloseWindowById(WindowClass::BuildWaypoint, TRANSPORT_ROAD);
+		CloseWindowById(WindowClass::BuildBusStation, TransportType::Road);
+		CloseWindowById(WindowClass::BuildTruckStation, TransportType::Road);
+		CloseWindowById(WindowClass::BuildDepot, TransportType::Road);
+		CloseWindowById(WindowClass::BuildWaypoint, TransportType::Road);
 		CloseWindowById(WindowClass::JoinStation, 0);
 		CloseWindowByClass(WindowClass::BuildBridge);
 	}
@@ -780,7 +780,7 @@ struct BuildRoadToolbarWindow : Window {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
 					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_ROAD, INVALID_RAILTYPE, _cur_roadtype);
+					ShowBuildBridgeWindow(start_tile, end_tile, TransportType::Road, INVALID_RAILTYPE, _cur_roadtype);
 					break;
 
 				case DDSP_DEMOLISH_AREA:
@@ -862,7 +862,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	void OnPlacePresize([[maybe_unused]] Point pt, TileIndex tile) override
 	{
-		Command<Commands::BuildTunnel>::Do(DoCommandFlag::Auto, tile, TRANSPORT_ROAD, INVALID_RAILTYPE, _cur_roadtype);
+		Command<Commands::BuildTunnel>::Do(DoCommandFlag::Auto, tile, TransportType::Road, INVALID_RAILTYPE, _cur_roadtype);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == INVALID_TILE ? tile : _build_tunnel_endtile);
 	}
 
@@ -1065,7 +1065,7 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	CloseWindowByClass(WindowClass::BuildToolbar);
 	_cur_roadtype = roadtype;
 
-	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_desc : _build_tramway_desc, TRANSPORT_ROAD);
+	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_desc : _build_tramway_desc, TransportType::Road);
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_build_road_scen_widgets = {
@@ -1153,10 +1153,10 @@ static WindowDesc _build_tramway_scen_desc(
  */
 Window *ShowBuildRoadScenToolbar(RoadType roadtype)
 {
-	CloseWindowById(WindowClass::ScenarioBuildToolbar, TRANSPORT_ROAD);
+	CloseWindowById(WindowClass::ScenarioBuildToolbar, TransportType::Road);
 	_cur_roadtype = roadtype;
 
-	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_scen_desc : _build_tramway_scen_desc, TRANSPORT_ROAD);
+	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_scen_desc : _build_tramway_scen_desc, TransportType::Road);
 }
 
 struct BuildRoadDepotWindow : public PickerWindowBase {
@@ -1172,7 +1172,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			}
 		}
 
-		this->FinishInitNested(TRANSPORT_ROAD);
+		this->FinishInitNested(TransportType::Road);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -1390,7 +1390,7 @@ private:
 	}
 
 public:
-	BuildRoadStationWindow(WindowDesc &desc, Window *parent, RoadStopType rs) : PickerWindow(desc, parent, TRANSPORT_ROAD, GetRoadStopPickerCallbacks(rs))
+	BuildRoadStationWindow(WindowDesc &desc, Window *parent, RoadStopType rs) : PickerWindow(desc, parent, TransportType::Road, GetRoadStopPickerCallbacks(rs))
 	{
 		this->coverage_height = 2 * GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 
@@ -1774,7 +1774,7 @@ public:
 /* static */ RoadWaypointPickerCallbacks RoadWaypointPickerCallbacks::instance;
 
 struct BuildRoadWaypointWindow : public PickerWindow {
-	BuildRoadWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_ROAD, RoadWaypointPickerCallbacks::instance)
+	BuildRoadWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TransportType::Road, RoadWaypointPickerCallbacks::instance)
 	{
 		this->ConstructWindow();
 	}

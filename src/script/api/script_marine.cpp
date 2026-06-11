@@ -67,11 +67,11 @@
 	DiagDirection to_other_tile = ::DiagdirBetweenTiles(t2, t1);
 
 	/* Determine the reachable tracks from the shared edge */
-	TrackBits gtts1 = ::TrackdirBitsToTrackBits(::GetTileTrackStatus(t1, TRANSPORT_WATER, RoadTramType::Invalid, ReverseDiagDir(to_other_tile)).trackdirs) & ::DiagdirReachesTracks(to_other_tile);
+	TrackBits gtts1 = ::TrackdirBitsToTrackBits(::GetTileTrackStatus(t1, TransportType::Water, RoadTramType::Invalid, ReverseDiagDir(to_other_tile)).trackdirs) & ::DiagdirReachesTracks(to_other_tile);
 	if (gtts1.None()) return false;
 
 	to_other_tile = ReverseDiagDir(to_other_tile);
-	TrackBits gtts2 = ::TrackdirBitsToTrackBits(::GetTileTrackStatus(t2, TRANSPORT_WATER, RoadTramType::Invalid, ReverseDiagDir(to_other_tile)).trackdirs) & ::DiagdirReachesTracks(to_other_tile);
+	TrackBits gtts2 = ::TrackdirBitsToTrackBits(::GetTileTrackStatus(t2, TransportType::Water, RoadTramType::Invalid, ReverseDiagDir(to_other_tile)).trackdirs) & ::DiagdirReachesTracks(to_other_tile);
 
 	return gtts2.Any();
 }

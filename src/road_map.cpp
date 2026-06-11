@@ -28,7 +28,7 @@ bool MayHaveRoad(Tile t)
 			return IsAnyRoadStop(t);
 
 		case TileType::TunnelBridge:
-			return GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD;
+			return GetTunnelBridgeTransportType(t) == TransportType::Road;
 
 		default:
 			return false;
@@ -70,7 +70,7 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
 			return DiagDirToRoadBits(GetBayRoadStopDir(tile));
 
 		case TileType::TunnelBridge:
-			assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD); // ensured by MayHaveRoad
+			assert(GetTunnelBridgeTransportType(tile) == TransportType::Road); // ensured by MayHaveRoad
 			return straight_tunnel_bridge_entrance ?
 					AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) :
 					DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));

@@ -38,7 +38,7 @@ TrackBits GetReservedTrackbits(TileIndex t)
 			break;
 
 		case TileType::TunnelBridge:
-			if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) return GetTunnelBridgeReservationTrackBits(t);
+			if (GetTunnelBridgeTransportType(t) == TransportType::Rail) return GetTunnelBridgeReservationTrackBits(t);
 			break;
 
 		default:
@@ -79,7 +79,7 @@ void SetRailStationPlatformReservation(TileIndex start, DiagDirection dir, bool 
  */
 bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 {
-	assert(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Test(t));
+	assert(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid).trackdirs).Test(t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		/* show the reserved rail if needed */
@@ -124,7 +124,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 			break;
 
 		case TileType::TunnelBridge:
-			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL && GetTunnelBridgeReservationTrackBits(tile).None()) {
+			if (GetTunnelBridgeTransportType(tile) == TransportType::Rail && GetTunnelBridgeReservationTrackBits(tile).None()) {
 				SetTunnelBridgeReservation(tile, true);
 				return true;
 			}
@@ -143,7 +143,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
  */
 void UnreserveRailTrack(TileIndex tile, Track t)
 {
-	assert(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Test(t));
+	assert(TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid).trackdirs).Test(t));
 
 	if (_settings_client.gui.show_track_reservation) {
 		if (IsBridgeTile(tile)) {
@@ -178,7 +178,7 @@ void UnreserveRailTrack(TileIndex tile, Track t)
 			break;
 
 		case TileType::TunnelBridge:
-			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) SetTunnelBridgeReservation(tile, false);
+			if (GetTunnelBridgeTransportType(tile) == TransportType::Rail) SetTunnelBridgeReservation(tile, false);
 			break;
 
 		default:

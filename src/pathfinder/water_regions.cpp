@@ -28,8 +28,8 @@ constexpr WaterRegionPatchLabel FIRST_REGION_LABEL{1};
 static_assert(sizeof(WaterRegionTraversabilityBits) * 8 == WATER_REGION_EDGE_LENGTH);
 static_assert(sizeof(WaterRegionPatchLabel) == sizeof(uint8_t)); // Important for the hash calculation.
 
-static inline TrackBits GetWaterTracks(TileIndex tile) { return TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, RoadTramType::Invalid).trackdirs); }
-static inline bool IsAqueductTile(TileIndex tile) { return IsBridgeTile(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER; }
+static inline TrackBits GetWaterTracks(TileIndex tile) { return TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Water, RoadTramType::Invalid).trackdirs); }
+static inline bool IsAqueductTile(TileIndex tile) { return IsBridgeTile(tile) && GetTunnelBridgeTransportType(tile) == TransportType::Water; }
 
 static inline int GetWaterRegionX(TileIndex tile) { return TileX(tile) / WATER_REGION_EDGE_LENGTH; }
 static inline int GetWaterRegionY(TileIndex tile) { return TileY(tile) / WATER_REGION_EDGE_LENGTH; }
