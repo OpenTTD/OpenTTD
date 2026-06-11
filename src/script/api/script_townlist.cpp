@@ -20,7 +20,7 @@ ScriptTownList::ScriptTownList(HSQUIRRELVM vm)
 
 ScriptTownEffectList::ScriptTownEffectList()
 {
-	for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; ++i) {
+	for (TownAcceptanceEffect i : EnumRange(TownAcceptanceEffect::End)) {
 		this->AddItem(to_underlying(i));
 	}
 }

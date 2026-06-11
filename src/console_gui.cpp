@@ -547,7 +547,7 @@ bool IsValidConsoleColour(ExtendedTextColour c)
 
 	/* A text colour from the palette is used; must be the company
 	 * colour gradient, so it must be one of those. */
-	for (Colours i = Colours::Begin; i < Colours::End; i++) {
+	for (Colours i : EnumRange(Colours::End)) {
 		if (ExtendedTextColour{GetColourGradient(i, Shade::Normal)} == c) return true;
 	}
 

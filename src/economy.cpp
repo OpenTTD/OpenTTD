@@ -289,7 +289,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		int total_score = 0;
 		int s;
 		score = 0;
-		for (ScoreID i = ScoreID::Begin; i < ScoreID::End; i++) {
+		for (ScoreID i : EnumRange(ScoreID::End)) {
 			/* Skip the total */
 			if (i == ScoreID::Total) continue;
 			/*  Check the score */
@@ -647,13 +647,13 @@ static void CompaniesGenStatistics()
 		for (const Company *c : Company::Iterate()) {
 			CommandCost cost(ExpensesType::Property);
 			uint32_t rail_total = c->infrastructure.GetRailTotal();
-			for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+			for (RailType rt : EnumRange(RAILTYPE_END)) {
 				if (c->infrastructure.rail[rt] != 0) cost.AddCost(RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
 			}
 			cost.AddCost(SignalMaintenanceCost(c->infrastructure.signal));
 			uint32_t road_total = c->infrastructure.GetRoadTotal();
 			uint32_t tram_total = c->infrastructure.GetTramTotal();
-			for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
+			for (RoadType rt : EnumRange(ROADTYPE_END)) {
 				if (c->infrastructure.road[rt] != 0) cost.AddCost(RoadMaintenanceCost(rt, c->infrastructure.road[rt], RoadTypeIsRoad(rt) ? road_total : tram_total));
 			}
 			cost.AddCost(CanalMaintenanceCost(c->infrastructure.water));
@@ -736,7 +736,7 @@ void RecomputePrices()
 	_economy.max_loan = ((uint64_t)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
 
 	/* Setup price bases */
-	for (Price i = Price::Begin; i < Price::End; i++) {
+	for (Price i : EnumRange(Price::End)) {
 		Money price = _price_base_specs[i].start_price;
 
 		/* Apply difficulty settings */

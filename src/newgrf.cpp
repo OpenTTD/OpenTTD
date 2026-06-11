@@ -653,7 +653,7 @@ static CargoLabel GetActiveCargoLabel(const std::variant<CargoLabel, MixedCargoT
 static void CalculateRefitMasks()
 {
 	CargoTypes original_known_cargoes{};
-	for (CargoType cargo_type{}; cargo_type != NUM_CARGO; ++cargo_type) {
+	for (CargoType cargo_type : EnumRange(NUM_CARGO)) {
 		if (IsDefaultCargo(cargo_type)) original_known_cargoes.Set(cargo_type);
 	}
 
@@ -849,7 +849,7 @@ static void CalculateRefitMasks()
 /** Set to use the correct action0 properties for each canal feature */
 static void FinaliseCanals()
 {
-	for (uint i = 0; i < CF_END; i++) {
+	for (CanalFeature i : EnumRange(CF_END)) {
 		if (_water_feature[i].grffile != nullptr) {
 			_water_feature[i].callback_mask = _water_feature[i].grffile->canal_local_properties[i].callback_mask;
 			_water_feature[i].flags = _water_feature[i].grffile->canal_local_properties[i].flags;
@@ -1514,7 +1514,7 @@ static void FinalisePriceBaseMultipliers()
 		source.grf_features.Set(features);
 		dest.grf_features.Set(features);
 
-		for (Price p = Price::Begin; p < Price::End; p++) {
+		for (Price p : EnumRange(Price::End)) {
 			/* No price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
@@ -1532,7 +1532,7 @@ static void FinalisePriceBaseMultipliers()
 		source.grf_features.Set(features);
 		dest.grf_features.Set(features);
 
-		for (Price p = Price::Begin; p < Price::End; p++) {
+		for (Price p : EnumRange(Price::End)) {
 			/* Already a price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
@@ -1550,7 +1550,7 @@ static void FinalisePriceBaseMultipliers()
 		source.grf_features.Set(features);
 		dest.grf_features.Set(features);
 
-		for (Price p = Price::Begin; p < Price::End; p++) {
+		for (Price p : EnumRange(Price::End)) {
 			if (!features.Test(_price_base_specs[p].grf_feature)) continue;
 			if (source.price_base_multipliers[p] != dest.price_base_multipliers[p]) {
 				Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
@@ -1563,7 +1563,7 @@ static void FinalisePriceBaseMultipliers()
 	for (auto &file : _grf_files) {
 		if (file.grf_version >= 8) continue;
 		PriceMultipliers &price_base_multipliers = file.price_base_multipliers;
-		for (Price p = Price::Begin; p < Price::End; p++) {
+		for (Price p : EnumRange(Price::End)) {
 			Price fallback_price = _price_base_specs[p].fallback_price;
 			if (fallback_price != Price::Invalid && price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
 				/* No price multiplier has been set.
@@ -1576,7 +1576,7 @@ static void FinalisePriceBaseMultipliers()
 	/* Decide local/global scope of price base multipliers */
 	for (auto &file : _grf_files) {
 		PriceMultipliers &price_base_multipliers = file.price_base_multipliers;
-		for (Price p = Price::Begin; p < Price::End; p++) {
+		for (Price p : EnumRange(Price::End)) {
 			if (price_base_multipliers[p] == INVALID_PRICE_MODIFIER) {
 				/* No multiplier was set; set it to a neutral value */
 				price_base_multipliers[p] = 0;
@@ -1811,7 +1811,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
-	for (GrfLoadingStage stage = GrfLoadingStage::LabelScan; stage <= GrfLoadingStage::Activation; stage++) {
+	for (GrfLoadingStage stage : EnumRange(GrfLoadingStage::LabelScan, GrfLoadingStage::End)) {
 		/* Set activated grfs back to will-be-activated between reservation- and activation-stage.
 		 * This ensures that action7/9 conditions 0x06 - 0x0A work correctly. */
 		for (const auto &c : _grfconfig) {

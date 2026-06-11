@@ -114,7 +114,7 @@ void SetWaterClassDependingOnSurroundings(Tile t, bool include_invalid_water_cla
 	bool has_canal = false;
 	bool has_river = false;
 
-	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
+	for (DiagDirection dir : EnumRange(DiagDirection::End)) {
 		Tile neighbour = TileAddByDiagDir(t, dir);
 		switch (GetTileType(neighbour)) {
 			case TileType::Water:
@@ -436,7 +436,7 @@ static void FixOwnerOfRailTrack(Tile t)
 	}
 
 	/* try to find any connected rail */
-	for (DiagDirection dd = DiagDirection::Begin; dd < DiagDirection::End; dd++) {
+	for (DiagDirection dd : EnumRange(DiagDirection::End)) {
 		TileIndex tt{t + TileOffsByDiagDir(dd)};
 		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd).trackdirs.Any() &&
 				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)).trackdirs.Any() &&

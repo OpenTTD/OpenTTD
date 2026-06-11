@@ -45,7 +45,7 @@ struct RAILChunkHandler : ChunkHandler {
 		SlTableHeader(description);
 
 		LabelObject<RailTypeLabel> lo;
-		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
+		for (RailType r : EnumRange(RAILTYPE_END)) {
 			lo.label = GetRailTypeInfo(r)->label;
 
 			SlSetArrayIndex(r);
@@ -81,7 +81,7 @@ struct ROTTChunkHandler : ChunkHandler {
 		SlTableHeader(description);
 
 		LabelObject<RoadTypeLabel> lo;
-		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
+		for (RoadType r : EnumRange(ROADTYPE_END)) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
 			lo.label = rti->label;
 			lo.subtype = to_underlying(GetRoadTramType(r));

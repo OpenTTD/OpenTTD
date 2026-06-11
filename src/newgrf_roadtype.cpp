@@ -273,7 +273,7 @@ void ConvertRoadTypes()
 void SetCurrentRoadTypeLabelList()
 {
 	_roadtype_list.clear();
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+	for (RoadType rt : EnumRange(ROADTYPE_END)) {
 		_roadtype_list.emplace_back(GetRoadTypeInfo(rt)->label, to_underlying(GetRoadTramType(rt)));
 	}
 }

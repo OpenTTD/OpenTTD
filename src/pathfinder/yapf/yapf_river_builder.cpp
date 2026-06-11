@@ -88,7 +88,7 @@ public:
 	/** @copydoc CYapfBaseT::PfFollowNodeFunc */
 	inline void PfFollowNode(Node &old_node)
 	{
-		for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; ++d) {
+		for (DiagDirection d : EnumRange(DiagDirection::End)) {
 			const TileIndex t = old_node.GetTile() + TileOffsByDiagDir(d);
 			if (IsValidTile(t) && RiverFlowsDown(old_node.GetTile(), t)) {
 				Node &node = Yapf().CreateNewNode();

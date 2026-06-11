@@ -490,7 +490,7 @@ struct SignWindow : Window, SignList {
 		if (widget == WID_QES_COLOUR) {
 			const Dimension square_size = GetSpriteSize(SPR_SQUARE);
 			const uint string_padding = square_size.width + WidgetDimensions::scaled.hsep_normal + padding.width;
-			for (Colours colour = Colours::Begin; colour != Colours::End; ++colour) {
+			for (Colours colour : EnumRange(Colours::End)) {
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + to_underlying(colour)).width + string_padding);
 			}
 			size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DEFAULT).width + string_padding);
@@ -503,7 +503,7 @@ struct SignWindow : Window, SignList {
 	void ShowColourDropDownMenu()
 	{
 		DropDownList list;
-		for (Colours colour = Colours::Begin; colour != Colours::End; ++colour) {
+		for (Colours colour : EnumRange(Colours::End)) {
 			list.emplace_back(MakeDropDownListIconItem(SPR_SQUARE, GetColourPalette(colour), STR_COLOUR_DARK_BLUE + to_underlying(colour), colour));
 		}
 		const int selected = to_underlying(this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour));

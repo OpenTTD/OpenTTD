@@ -208,11 +208,8 @@ public:
 		DrawString(r, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
 		r.top += GetCharacterHeight(FontSize::Normal);
 
-		/* Draw list of actions */
-		for (TownAction i = {}; i != TownAction::End; ++i) {
-			/* Don't show actions if disabled in settings. */
-			if (!this->enabled_actions.Test(i)) continue;
-
+		/* Draw list of enabled actions */
+		for (TownAction i : this->enabled_actions) {
 			/* Set colour of action based on ability to execute and if selected. */
 			ExtendedTextColour action_colour{TextColour::Grey, ExtendedTextColourFlag::NoShade};
 			if (this->available_actions.Test(i)) action_colour = TextColour::Orange;
@@ -252,7 +249,7 @@ public:
 			case WID_TA_ACTION_INFO: {
 				assert(size.width > padding.width && size.height > padding.height);
 				Dimension d = {0, 0};
-				for (TownAction i = {}; i != TownAction::End; ++i) {
+				for (TownAction i : EnumRange(TownAction::End)) {
 					Money price = _price[Price::TownAction] * GetTownActionCost(i) >> 8;
 					d = maxdim(d, GetStringMultiLineBoundingBox(GetString(this->action_tooltips[to_underlying(i)], price), size));
 				}
@@ -265,7 +262,7 @@ public:
 			case WID_TA_COMMAND_LIST:
 				size.height = (to_underlying(TownAction::End) + 1) * GetCharacterHeight(FontSize::Normal) + padding.height;
 				size.width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
-				for (TownAction i = {}; i != TownAction::End; ++i) {
+				for (TownAction i : EnumRange(TownAction::End)) {
 					size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i)).width + padding.width);
 				}
 				size.width += padding.width;
@@ -414,7 +411,7 @@ public:
 		}
 
 		bool first = true;
-		for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; i++) {
+		for (TownAcceptanceEffect i : EnumRange(TownAcceptanceEffect::End)) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TropicZone::Desert || this->town->cache.population <= 60)) continue;
@@ -538,7 +535,7 @@ public:
 		uint aimed_height = static_cast<uint>(1 + CargoSpec::town_production_cargoes[TownProductionEffect::Passengers].size() + CargoSpec::town_production_cargoes[TownProductionEffect::Mail].size()) * GetCharacterHeight(FontSize::Normal);
 
 		bool first = true;
-		for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; i++) {
+		for (TownAcceptanceEffect i : EnumRange(TownAcceptanceEffect::End)) {
 			if (this->town->goal[i] == 0) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TropicZone::Desert || this->town->cache.population <= 60)) continue;

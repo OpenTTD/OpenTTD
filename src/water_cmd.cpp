@@ -86,7 +86,7 @@ static inline void MarkTileDirtyIfCanalOrRiver(TileIndex tile)
  */
 static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
 {
-	for (Direction dir = Direction::Begin; dir < Direction::End; dir++) {
+	for (Direction dir : EnumRange(Direction::End)) {
 		MarkTileDirtyIfCanalOrRiver(tile + TileOffsByDir(dir));
 	}
 }
@@ -97,7 +97,7 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  */
 void ClearNeighbourNonFloodingStates(TileIndex tile)
 {
-	for (Direction dir = Direction::Begin; dir != Direction::End; dir++) {
+	for (Direction dir : EnumRange(Direction::End)) {
 		TileIndex dest = tile + TileOffsByDir(dir);
 		if (IsValidTile(dest) && IsTileType(dest, TileType::Water)) SetNonFloodingWaterTile(dest, false);
 	}
@@ -200,7 +200,7 @@ bool IsPossibleDockingTile(Tile t)
  */
 void CheckForDockingTile(TileIndex t)
 {
-	for (DiagDirection d = DiagDirection::Begin; d != DiagDirection::End; d++) {
+	for (DiagDirection d : EnumRange(DiagDirection::End)) {
 		TileIndex tile = t + TileOffsByDiagDir(d);
 		if (!IsValidTile(tile)) continue;
 
@@ -1299,7 +1299,7 @@ void TileLoop_Water(TileIndex tile)
 	switch (GetFloodingBehaviour(tile)) {
 		case FloodingBehaviour::Active: {
 			bool continue_flooding = false;
-			for (Direction dir = Direction::Begin; dir < Direction::End; dir++) {
+			for (Direction dir : EnumRange(Direction::End)) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to drying up, flooding does not consider TileType::Void tiles. */
 				if (!IsValidTile(dest)) continue;

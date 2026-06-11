@@ -179,7 +179,7 @@ static void UpdateFences(TileIndex tile)
 	assert(IsTileType(tile, TileType::Clear) && IsClearGround(tile, ClearGround::Fields));
 	bool dirty = false;
 
-	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
+	for (DiagDirection dir : EnumRange(DiagDirection::End)) {
 		if (GetFence(tile, dir) != 0) continue;
 		TileIndex neighbour = tile + TileOffsByDiagDir(dir);
 		if (IsTileType(neighbour, TileType::Clear) && IsClearGround(neighbour, ClearGround::Fields)) continue;
@@ -232,7 +232,7 @@ static void TileLoopClearAlps(TileIndex tile)
  */
 static inline bool NeighbourIsNormal(TileIndex tile)
 {
-	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
+	for (DiagDirection dir : EnumRange(DiagDirection::End)) {
 		TileIndex t = tile + TileOffsByDiagDir(dir);
 		if (!IsValidTile(t)) continue;
 		if (GetTropicZone(t) != TropicZone::Desert) return true;

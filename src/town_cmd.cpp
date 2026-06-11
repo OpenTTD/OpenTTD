@@ -1189,7 +1189,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile, TownExpandModes mode
 	uint counter = 0; // counts the house neighbour tiles
 
 	/* Check the tiles E,N,W and S of the current tile for houses */
-	for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
+	for (DiagDirection dir : EnumRange(DiagDirection::End)) {
 		/* Count both void and house tiles for checking whether there
 		 * are enough houses in the area. This to make it likely that
 		 * houses get build up to the edge of the map. */
@@ -2605,7 +2605,7 @@ static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
 	/* we need to check this tile too because we can be at different tile now */
 	if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
 
-	for (DiagDirection d = DiagDirection::SE; d < DiagDirection::End; d++) {
+	for (DiagDirection d : EnumRange(DiagDirection::SE, DiagDirection::End)) {
 		tile += TileOffsByDiagDir(d);
 		if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
 	}
@@ -3712,7 +3712,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */
-		for (TownAction cur = {}; cur != TownAction::End; ++cur) {
+		for (TownAction cur : EnumRange(TownAction::End)) {
 
 			/* Is the company prohibited from bribing ? */
 			if (cur == TownAction::Bribe) {
@@ -3915,7 +3915,7 @@ static void UpdateTownGrowth(Town *t)
 
 	if (t->fund_buildings_months == 0) {
 		/* Check if all goals are reached for this town to grow (given we are not funding it) */
-		for (TownAcceptanceEffect i = TownAcceptanceEffect::Begin; i < TownAcceptanceEffect::End; i++) {
+		for (TownAcceptanceEffect i : EnumRange(TownAcceptanceEffect::End)) {
 			switch (t->goal[i]) {
 				case TOWN_GROWTH_WINTER:
 					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->cache.population > 90) return;

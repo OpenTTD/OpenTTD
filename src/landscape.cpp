@@ -1046,7 +1046,7 @@ static bool FindSpring(TileIndex tile)
 	};
 
 	uint num_hills = 0;
-	for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+	for (DiagDirection d : EnumRange(DiagDirection::End)) {
 		TileIndex check_tile = tile;
 		for (uint i = 0; i < max_hill_distance; i++) {
 			check_tile = TileAddByDiagDir(check_tile, d);
@@ -1089,7 +1089,7 @@ static void MakeLake(TileIndex lake_centre, uint height_lake)
 	for (uint loops = 0; loops < 2; ++loops) {
 		for (TileIndex tile : SpiralTileSequence(lake_centre, diameter)) {
 			if (!IsValidRiverTerminusTile(tile, height_lake)) continue;
-			for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+			for (DiagDirection d : EnumRange(DiagDirection::End)) {
 				TileIndex t = tile + TileOffsByDiagDir(d);
 				if (IsWaterTile(t)) {
 					MakeRiverAndModifyDesertZoneAround(tile);
@@ -1209,7 +1209,7 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 		 */
 
 		/* First, determine the desired slope based on adjacent river tiles. This doesn't necessarily match the origin tile for the SpiralTileSequence. */
-		for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+		for (DiagDirection d : EnumRange(DiagDirection::End)) {
 			TileIndex other_tile = TileAddByDiagDir(tile, d);
 			Slope other_slope = GetTileSlope(other_tile);
 
@@ -1240,7 +1240,7 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 		/* If the river is flat and the adjacent tile has one corner lowered, we want to raise it. */
 		if (desired_slope == SLOPE_FLAT && IsSlopeWithThreeCornersRaised(cur_slope)) {
 			/* Make sure we're not affecting an existing river slope tile. */
-			for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+			for (DiagDirection d : EnumRange(DiagDirection::End)) {
 				TileIndex other_tile = TileAddByDiagDir(tile, d);
 				if (IsInclinedSlope(GetTileSlope(other_tile)) && IsWaterTile(other_tile)) return;
 			}
@@ -1363,7 +1363,7 @@ static bool CountConnectedSeaTiles(TileIndex tile, std::unordered_set<TileIndex>
 	if (sea.size() > limit) return false;
 
 	/* Count adjacent tiles using recursion. */
-	for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+	for (DiagDirection d : EnumRange(DiagDirection::End)) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (IsValidTile(t) && !sea.contains(t)) {
 			if (CountConnectedSeaTiles(t, sea, limit)) return true;
@@ -1430,7 +1430,7 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 			}
 		}
 
-		for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+		for (DiagDirection d : EnumRange(DiagDirection::End)) {
 			TileIndex t = end + TileOffsByDiagDir(d);
 			if (IsValidTile(t) && !marks.contains(t) && RiverFlowsDown(end, t)) {
 				marks.insert(t);
@@ -1542,7 +1542,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 
 		if (edge_multiplier != 0) {
 			/* Check if any of our neighbours is below us. */
-			for (DiagDirection dir = DiagDirection::Begin; dir != DiagDirection::End; dir++) {
+			for (DiagDirection dir : EnumRange(DiagDirection::End)) {
 				TileIndex neighbour_tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(dir));
 				if (IsValidTile(neighbour_tile) && TileHeight(neighbour_tile) < h) {
 					edge_histogram[h]++;

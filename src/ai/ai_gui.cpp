@@ -326,7 +326,7 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, !IsEditable(this->selected_slot) || !IsEditable(static_cast<CompanyID>(this->selected_slot + 1)));
 
 		this->SetWidgetDisabledState(WID_AIC_OPEN_URL, this->selected_slot == CompanyID::Invalid() || config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
-		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
+		for (TextfileType tft : EnumRange(TFT_CONTENT_BEGIN, TFT_CONTENT_END)) {
 			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == CompanyID::Invalid() || !config->GetTextfile(tft, this->selected_slot).has_value());
 		}
 	}

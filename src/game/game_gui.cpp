@@ -396,7 +396,7 @@ struct GSConfigWindow : public Window {
 
 		const GameConfig *config = GameConfig::GetConfig();
 		this->SetWidgetDisabledState(WID_GSC_OPEN_URL, config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
-		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
+		for (TextfileType tft : EnumRange(TFT_CONTENT_BEGIN, TFT_CONTENT_END)) {
 			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !config->GetTextfile(tft, OWNER_DEITY).has_value());
 		}
 		this->RebuildVisibleSettings();

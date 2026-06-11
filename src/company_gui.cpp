@@ -673,7 +673,7 @@ private:
 			default_col = GetColourOffset(*default_livery, primary) + to_underlying(Colours::End);
 			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
 		}
-		for (Colours colour = Colours::Begin; colour != Colours::End; colour++) {
+		for (Colours colour : EnumRange(Colours::End)) {
 			list.push_back(std::make_unique<DropDownListColourItem<>>(to_underlying(colour), used_colours.Test(colour)));
 		}
 
@@ -803,7 +803,7 @@ public:
 			case WID_SCL_PRI_COL_DROPDOWN: {
 				this->square = GetSpriteSize(SPR_SQUARE);
 				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
-				for (Colours colour = Colours::Begin; colour != Colours::End; colour++) {
+				for (Colours colour : EnumRange(Colours::End)) {
 					size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + to_underlying(colour)).width + string_padding);
 				}
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DEFAULT).width + string_padding);
@@ -2062,7 +2062,7 @@ struct CompanyWindow : Window
 	void DrawVehicleCountsWidget(const Rect &r, const Company *c) const
 	{
 		int y = r.top;
-		for (VehicleType type = VehicleType::Begin; type < VehicleType::CompanyEnd; type++) {
+		for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
 			uint amount = c->group_all[type].num_vehicle;
 			if (amount != 0) {
 				DrawString(r.left, r.right, y, GetString(_company_view_vehicle_count_strings[type], amount));

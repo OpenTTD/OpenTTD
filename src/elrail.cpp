@@ -134,7 +134,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 	if (!IsPlainRailTile(t)) return tracks;
 
 	TrackdirBits neighbour_tdb{};
-	for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+	for (DiagDirection d : EnumRange(DiagDirection::End)) {
 		/* If the neighbour tile is either not electrified or has no tracks that can be reached
 		 * from this tile, mark all trackdirs that can be reached from the neighbour tile
 		 * as needing no catenary. We make an exception for blocked station tiles with a matching
@@ -310,7 +310,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	SpriteID pylon_normal = GetPylonBase(ti->tile);
 	SpriteID pylon_halftile = IsValidCorner(halftile_corner) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
 
-	for (DiagDirection i = DiagDirection::Begin; i < DiagDirection::End; i++) {
+	for (DiagDirection i : EnumRange(DiagDirection::End)) {
 		SpriteID pylon_base = (IsValidCorner(halftile_corner) && HasBit(InclinedSlope(i), halftile_corner)) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		int elevation = GetPCPElevation(ti->tile, i);
@@ -414,7 +414,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 				(!HasStationTileRail(ti->tile) || CanStationTileHavePylons(ti->tile))) {
 
 			const auto &ppp_orders = _ppp_order[i][GetTileLocationGroup(ti->tile)];
-			for (Direction k = Direction::Begin; k < Direction::End; k++) {
+			for (Direction k : EnumRange(Direction::End)) {
 				Direction temp = ppp_orders[k];
 
 				if (ppp_allowed[i].Test(temp)) {

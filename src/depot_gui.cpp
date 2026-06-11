@@ -222,7 +222,7 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
  */
 void InitDepotWindowBlockSizes()
 {
-	for (VehicleType vt = VehicleType::Begin; vt < VehicleType::CompanyEnd; vt++) {
+	for (VehicleType vt : EnumRange(VehicleType::CompanyEnd)) {
 		InitBlocksizeForVehicles(vt, EIT_IN_DEPOT);
 		InitBlocksizeForVehicles(vt, EIT_PURCHASE);
 	}

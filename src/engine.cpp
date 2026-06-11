@@ -535,7 +535,7 @@ bool Engine::IsVariantHidden(CompanyID c) const
 void EngineOverrideManager::ResetToDefaultMapping()
 {
 	EngineID id = EngineID::Begin();
-	for (VehicleType type = VehicleType::Train; type <= VehicleType::Aircraft; type++) {
+	for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
 		auto &map = this->mappings[type];
 		map.clear();
 		for (uint internal_id = 0; internal_id < GetOriginalEngineCount(type); internal_id++, ++id) {
@@ -629,7 +629,7 @@ void SetupEngines()
 	CloseWindowByClass(WindowClass::EnginePreview);
 	_engine_pool.CleanPool();
 
-	for (VehicleType type = VehicleType::Begin; type != VehicleType::CompanyEnd; type++) {
+	for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
 		const auto &mapping = _engine_mngr.mappings[type];
 
 		/* Verify that the engine override manager has at least been set up with the default engines. */

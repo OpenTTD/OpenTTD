@@ -2154,8 +2154,8 @@ struct NetworkJoinStatusWindow : Window {
 		switch (widget) {
 			case WID_NJS_PROGRESS_BAR:
 				/* Account for the statuses */
-				for (uint i = 0; i < to_underlying(NetworkJoinStatus::End); i++) {
-					size = maxdim(size, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i));
+				for (NetworkJoinStatus i : EnumRange(NetworkJoinStatus::End)) {
+					size = maxdim(size, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + to_underlying(i)));
 				}
 				/* For the number of waiting (other) players */
 				size = maxdim(size, GetStringBoundingBox(GetString(STR_NETWORK_CONNECTING_WAITING, GetParamMaxValue(MAX_CLIENTS))));

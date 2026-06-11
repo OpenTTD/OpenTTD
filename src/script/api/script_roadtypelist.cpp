@@ -17,7 +17,7 @@ ScriptRoadTypeList::ScriptRoadTypeList(ScriptRoad::RoadTramTypes rtts)
 {
 	EnforceDeityOrCompanyModeValid_Void();
 	::CompanyID owner = ScriptObject::GetCompany();
-	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+	for (RoadType rt : EnumRange(ROADTYPE_END)) {
 		if (!::RoadTramTypes{rtts}.Test(GetRoadTramType(rt))) continue;
 		if (::HasRoadTypeAvail(owner, rt)) this->AddItem(rt);
 	}
