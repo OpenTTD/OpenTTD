@@ -229,7 +229,7 @@ void ConvertRailTypes()
 				break;
 
 			case TileType::TunnelBridge:
-				if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
+				if (GetTunnelBridgeTransportType(t) == TransportType::Rail) {
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;

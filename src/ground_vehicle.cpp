@@ -191,8 +191,8 @@ bool GroundVehicle<T, Type>::IsChainInDepot() const
 {
 	const T *v = this->First();
 	/* Is the front engine stationary in the depot? */
-	static_assert(to_underlying(TRANSPORT_RAIL) == to_underlying(VehicleType::Train));
-	static_assert(to_underlying(TRANSPORT_ROAD) == to_underlying(VehicleType::Road));
+	static_assert(to_underlying(TransportType::Rail) == to_underlying(VehicleType::Train));
+	static_assert(to_underlying(TransportType::Road) == to_underlying(VehicleType::Road));
 	if (!IsDepotTypeTile(v->tile, (TransportType)Type) || v->cur_speed != 0) return false;
 
 	/* Check whether the rest is also already trying to enter the depot. */

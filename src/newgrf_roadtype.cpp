@@ -257,7 +257,7 @@ void ConvertRoadTypes()
 				break;
 
 			case TileType::TunnelBridge:
-				if (GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD) {
+				if (GetTunnelBridgeTransportType(t) == TransportType::Road) {
 					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
 					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
 				}

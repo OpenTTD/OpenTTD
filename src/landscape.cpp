@@ -556,10 +556,10 @@ void DoClearSquare(TileIndex tile)
 /**
  * Returns information about trackdirs and signal states.
  * If there is any trackbit at 'side', return all trackdirbits.
- * For TRANSPORT_ROAD, return no trackbits if there is no roadbit (of given subtype) at given side.
+ * For TransportType::Road, return no trackbits if there is no roadbit (of given subtype) at given side.
  * @param tile tile to get info about
  * @param mode transport type
- * @param sub_mode for TRANSPORT_ROAD, roadtypes to check
+ * @param sub_mode for TransportType::Road, roadtypes to check
  * @param side side we are entering from, DiagDirection::Invalid to return all trackbits
  * @return trackdirbits and other info depending on 'mode'
  */

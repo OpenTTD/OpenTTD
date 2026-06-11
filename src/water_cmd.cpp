@@ -186,7 +186,7 @@ bool IsPossibleDockingTile(Tile t)
 		case TileType::Railway:
 		case TileType::Station:
 		case TileType::TunnelBridge:
-			return TrackdirBitsToTrackBits(GetTileTrackStatus(t, TRANSPORT_WATER, RoadTramType::Invalid).trackdirs).Any();
+			return TrackdirBitsToTrackBits(GetTileTrackStatus(t, TransportType::Water, RoadTramType::Invalid).trackdirs).Any();
 
 		default:
 			return false;
@@ -728,7 +728,7 @@ bool IsWateredTile(TileIndex tile, Direction from)
 
 		case TileType::Object: return IsTileOnWater(tile);
 
-		case TileType::TunnelBridge: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
+		case TileType::TunnelBridge: return GetTunnelBridgeTransportType(tile) == TransportType::Water && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
 
 		case TileType::Void: return true; // consider map border as water, esp. for rivers
 
@@ -1386,7 +1386,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 
 	TrackBits ts;
 
-	if (mode != TRANSPORT_WATER) return {};
+	if (mode != TransportType::Water) return {};
 
 	switch (GetWaterTileType(tile)) {
 		case WaterTileType::Clear: ts = IsTileFlat(tile) ? TRACK_BIT_ALL : TrackBits{}; break;

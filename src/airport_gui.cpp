@@ -112,7 +112,7 @@ struct BuildAirToolbarWindow : Window {
 		bool can_build = CanBuildVehicleInfrastructure(VehicleType::Aircraft);
 		this->SetWidgetDisabledState(WID_AT_AIRPORT, !can_build);
 		if (!can_build) {
-			CloseWindowById(WindowClass::BuildStation, TRANSPORT_AIR);
+			CloseWindowById(WindowClass::BuildStation, TransportType::Air);
 
 			/* Show in the tooltip why this button is disabled. */
 			this->GetWidget<NWidgetCore>(WID_AT_AIRPORT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
@@ -179,7 +179,7 @@ struct BuildAirToolbarWindow : Window {
 
 		this->RaiseButtons();
 
-		CloseWindowById(WindowClass::BuildStation, TRANSPORT_AIR);
+		CloseWindowById(WindowClass::BuildStation, TransportType::Air);
 		CloseWindowById(WindowClass::JoinStation, 0);
 	}
 
@@ -236,7 +236,7 @@ Window *ShowBuildAirToolbar()
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
 	CloseWindowByClass(WindowClass::BuildToolbar);
-	return AllocateWindowDescFront<BuildAirToolbarWindow>(_air_toolbar_desc, TRANSPORT_AIR);
+	return AllocateWindowDescFront<BuildAirToolbarWindow>(_air_toolbar_desc, TransportType::Air);
 }
 
 class BuildAirportWindow : public PickerWindowBase {
@@ -268,7 +268,7 @@ public:
 		this->vscroll->SetCapacity(5);
 		this->vscroll->SetPosition(0);
 
-		this->FinishInitNested(TRANSPORT_AIR);
+		this->FinishInitNested(TransportType::Air);
 
 		this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);

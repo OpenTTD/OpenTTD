@@ -872,9 +872,9 @@ static void EnableEngineForCompany(EngineID eid, CompanyID company)
 
 		/* Update the toolbar. */
 		InvalidateWindowData(WindowClass::MainToolbar, 0);
-		if (e->type == VehicleType::Road) InvalidateWindowData(WindowClass::BuildToolbar, TRANSPORT_ROAD);
-		if (e->type == VehicleType::Ship) InvalidateWindowData(WindowClass::BuildToolbar, TRANSPORT_WATER);
-		if (e->type == VehicleType::Aircraft) InvalidateWindowData(WindowClass::BuildToolbar, TRANSPORT_AIR);
+		if (e->type == VehicleType::Road) InvalidateWindowData(WindowClass::BuildToolbar, TransportType::Road);
+		if (e->type == VehicleType::Ship) InvalidateWindowData(WindowClass::BuildToolbar, TransportType::Water);
+		if (e->type == VehicleType::Aircraft) InvalidateWindowData(WindowClass::BuildToolbar, TransportType::Air);
 	}
 }
 
@@ -1155,9 +1155,9 @@ static void NewVehicleAvailable(Engine *e)
 	}
 
 	/* Update the toolbar. */
-	if (e->type == VehicleType::Road) InvalidateWindowData(WindowClass::BuildToolbar, TRANSPORT_ROAD);
-	if (e->type == VehicleType::Ship) InvalidateWindowData(WindowClass::BuildToolbar, TRANSPORT_WATER);
-	if (e->type == VehicleType::Aircraft) InvalidateWindowData(WindowClass::BuildToolbar, TRANSPORT_AIR);
+	if (e->type == VehicleType::Road) InvalidateWindowData(WindowClass::BuildToolbar, TransportType::Road);
+	if (e->type == VehicleType::Ship) InvalidateWindowData(WindowClass::BuildToolbar, TransportType::Water);
+	if (e->type == VehicleType::Aircraft) InvalidateWindowData(WindowClass::BuildToolbar, TransportType::Air);
 
 	/* Remove from preview windows */
 	InvalidateWindowClassesData(WindowClass::EnginePreview);
