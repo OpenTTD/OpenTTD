@@ -60,6 +60,7 @@ enum class GrfLoadingStage : uint8_t {
 	Init, ///< Second step of NewGRF loading; load all actions into memory.
 	Reserve, ///< Third step of NewGRF loading; reserve features and GRMs.
 	Activation, ///< Forth step of NewGRF loading; activate the features.
+	End, ///< End marker.
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(GrfLoadingStage)

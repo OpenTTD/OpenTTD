@@ -160,7 +160,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 	/* announce the protocol version */
 	p->Send_uint8(NETWORK_GAME_ADMIN_VERSION);
 
-	for (int i = 0; i < ADMIN_UPDATE_END; i++) {
+	for (AdminUpdateType i : EnumRange(ADMIN_UPDATE_END)) {
 		p->Send_bool  (true);
 		p->Send_uint16(i);
 		p->Send_uint16(_admin_update_type_frequencies[i].base());
@@ -1115,7 +1115,7 @@ void ServerNetworkAdminSocketHandler::WelcomeAll()
 void NetworkAdminUpdate(AdminUpdateFrequency freq)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		for (int i = 0; i < ADMIN_UPDATE_END; i++) {
+		for (AdminUpdateType i : EnumRange(ADMIN_UPDATE_END)) {
 			if (as->update_frequency[i].Test(freq)) {
 				/* Update the admin for the required details */
 				switch (i) {

@@ -350,7 +350,7 @@ static SigFlags ExploreSegment(Owner owner)
 					}
 				}
 
-				for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) { // test all possible exit directions
+				for (DiagDirection dir : EnumRange(DiagDirection::End)) { // test all possible exit directions
 					if (dir != enterdir && tracks.Any(_enterdir_to_trackbits[dir])) { // any accessible track?
 						TileIndex newtile = tile + TileOffsByDiagDir(dir);  // new tile to check
 						DiagDirection newdir = ReverseDiagDir(dir); // direction we are entering from

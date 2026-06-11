@@ -1561,7 +1561,7 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 	const uint half_width = std::max(this->width_normal, this->width_small) / 2 + 1;
 	const uint height = WidgetDimensions::scaled.fullbevel.top + std::max(GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Small)) + WidgetDimensions::scaled.fullbevel.bottom + 1;
 
-	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
+	for (ZoomLevel zoom : EnumRange(ZoomLevel::End)) {
 		zoomlevels[zoom].left = this->center - ScaleByZoom(half_width, zoom);
 		zoomlevels[zoom].top = this->top - ScaleByZoom(1, zoom);
 		zoomlevels[zoom].right = this->center + ScaleByZoom(half_width, zoom);

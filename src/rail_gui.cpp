@@ -1554,7 +1554,7 @@ public:
 		this->sig_sprite_size.height = 0;
 		this->sig_sprite_bottom_offset = 0;
 		const RailTypeInfo *rti = GetRailTypeInfo(_cur_railtype);
-		for (SignalType type = SignalType::Block; type < SignalType::End; type = static_cast<SignalType>(to_underlying(type) + 1)) {
+		for (SignalType type : EnumRange(SignalType::End)) {
 			for (SignalVariant variant : {SignalVariant::Electric, SignalVariant::Semaphore}) {
 				for (SignalState state : {SignalState::Red, SignalState::Green}) {
 					Point offset;

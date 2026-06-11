@@ -121,7 +121,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 {
 	/* Set up the engine count for all companies */
 	for (Company *c : Company::Iterate()) {
-		for (VehicleType type = VehicleType::Begin; type < VehicleType::CompanyEnd; type++) {
+		for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
 			c->group_all[type].Clear();
 			c->group_default[type].Clear();
 		}
@@ -216,7 +216,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 {
 	/* Set up the engine count for all companies */
 	for (Company *c : Company::Iterate()) {
-		for (VehicleType type = VehicleType::Begin; type < VehicleType::CompanyEnd; type++) {
+		for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
 			c->group_all[type].ClearProfits();
 			c->group_default[type].ClearProfits();
 		}
@@ -243,7 +243,7 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 {
 	/* Set up the engine count for all companies */
 	Company *c = Company::Get(company);
-	for (VehicleType type = VehicleType::Begin; type < VehicleType::CompanyEnd; type++) {
+	for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
 		c->group_all[type].ClearAutoreplace();
 		c->group_default[type].ClearAutoreplace();
 	}

@@ -463,7 +463,7 @@ public:
 	uint32_t GetReseedSum() const
 	{
 		uint32_t sum = 0;
-		for (VarSpriteGroupScope vsg = VSG_BEGIN; vsg < VSG_END; vsg++) {
+		for (VarSpriteGroupScope vsg : EnumRange(VSG_END)) {
 			sum |= this->reseed[vsg];
 		}
 		return sum;

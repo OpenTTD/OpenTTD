@@ -569,7 +569,7 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 {
 	assert(IsDockingTile(tile));
 	/* Check each tile adjacent to docking tile. */
-	for (DiagDirection d = DiagDirection::Begin; d != DiagDirection::End; d++) {
+	for (DiagDirection d : EnumRange(DiagDirection::End)) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (!IsValidTile(t)) continue;
 		if (IsDockTile(t) && GetStationIndex(t) == station && IsDockWaterPart(t)) return true;

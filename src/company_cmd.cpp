@@ -574,7 +574,7 @@ restart:;
  */
 void ResetCompanyLivery(Company *c)
 {
-	for (LiveryScheme scheme = LiveryScheme::Begin; scheme < LiveryScheme::End; scheme++) {
+	for (LiveryScheme scheme : EnumRange(LiveryScheme::End)) {
 		c->livery[scheme].in_use.Reset();
 		c->livery[scheme].colour1 = c->colour;
 		c->livery[scheme].colour2 = c->colour;
@@ -1093,7 +1093,7 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t 
  */
 void UpdateCompanyLiveries(Company *c)
 {
-	for (LiveryScheme i = LiveryScheme::Steam; i < LiveryScheme::End; i++) {
+	for (LiveryScheme i : EnumRange(LiveryScheme::Steam, LiveryScheme::End)) {
 		if (!c->livery[i].in_use.Test(Livery::Flag::Primary)) c->livery[i].colour1 = c->livery[LiveryScheme::Default].colour1;
 		if (!c->livery[i].in_use.Test(Livery::Flag::Secondary)) c->livery[i].colour2 = c->livery[LiveryScheme::Default].colour2;
 	}
@@ -1155,8 +1155,8 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool 
 			/* Else loop through all schemes to see if any are left enabled.
 			 * If not, disable the default scheme too. */
 			c->livery[LiveryScheme::Default].in_use.Reset({Livery::Flag::Primary, Livery::Flag::Secondary});
-			for (scheme = LiveryScheme::Default; scheme < LiveryScheme::End; scheme++) {
-				if (c->livery[scheme].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
+			for (LiveryScheme other_scheme : EnumRange(LiveryScheme::End)) {
+				if (c->livery[other_scheme].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
 					c->livery[LiveryScheme::Default].in_use.Set(Livery::Flag::Primary);
 					break;
 				}

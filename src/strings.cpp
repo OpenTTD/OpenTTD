@@ -2070,7 +2070,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	std::array<uint, TEXT_TAB_END> tab_start, tab_num;
 
 	uint count = 0;
-	for (uint i = 0; i < TEXT_TAB_END; i++) {
+	for (StringTab i : EnumRange(TEXT_TAB_END)) {
 		uint16_t num = FROM_LE16(lang_pack->offsets[i]);
 		if (num > TAB_SIZE) return false;
 

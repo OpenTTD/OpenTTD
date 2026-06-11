@@ -280,7 +280,7 @@ PerformanceMeasurer::~PerformanceMeasurer()
 	if (this->elem == PFE_ALLSCRIPTS) {
 		/* Hack to not record scripts total when no scripts are active */
 		bool any_active = _pf_data[PFE_GAMESCRIPT].num_valid > 0;
-		for (uint e = PFE_AI0; e < PFE_MAX; e++) any_active |= _pf_data[e].num_valid > 0;
+		for (PerformanceElement e : EnumRange(PFE_AI0, PFE_MAX)) any_active |= _pf_data[e].num_valid > 0;
 		if (!any_active) {
 			PerformanceMeasurer::SetInactive(PFE_ALLSCRIPTS);
 			return;
@@ -500,7 +500,7 @@ struct FramerateWindow : Window {
 		this->rate_drawing.SetRate(_pf_data[PFE_DRAWING].GetRate(), _settings_client.gui.refresh_rate);
 
 		int new_active = 0;
-		for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
+		for (PerformanceElement e : EnumRange(PFE_MAX)) {
 			this->times_shortterm[e].SetTime(_pf_data[e].GetAverageDurationMilliseconds(8), MILLISECONDS_PER_TICK);
 			this->times_longterm[e].SetTime(_pf_data[e].GetAverageDurationMilliseconds(NUM_FRAMERATE_POINTS), MILLISECONDS_PER_TICK);
 			if (_pf_data[e].num_valid > 0) {
@@ -1080,7 +1080,7 @@ void ConPrintFramerate()
 		printed_anything = true;
 	}
 
-	for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
+	for (PerformanceElement e : EnumRange(PFE_MAX)) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
 		std::string_view name;

@@ -279,7 +279,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 		y--;
 
 		/* going counter-clockwise around this square */
-		for (DiagDirection dir = DiagDirection::Begin; dir < DiagDirection::End; dir++) {
+		for (DiagDirection dir : EnumRange(DiagDirection::End)) {
 			static constexpr DiagDirectionIndexArray<int8_t> ddx{-1,  1,  1, -1};
 			static constexpr DiagDirectionIndexArray<int8_t> ddy{ 1,  1, -1, -1};
 

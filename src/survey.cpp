@@ -325,7 +325,7 @@ void SurveyCompanies(nlohmann::json &survey)
 			company["script"] = fmt::format("{}.{}", c->ai_info->GetName(), c->ai_info->GetVersion());
 		}
 
-		for (VehicleType type = VehicleType::Begin; type < VehicleType::CompanyEnd; type++) {
+		for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
 			uint amount = c->group_all[type].num_vehicle;
 			company["vehicles"][_vehicle_type_to_string[type]] = amount;
 		}

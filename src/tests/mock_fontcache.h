@@ -31,7 +31,7 @@ public:
 
 	static void InitializeFontCaches()
 	{
-		for (FontSize fs = FontSize::Begin; fs != FontSize::End; fs++) {
+		for (FontSize fs : EnumRange(FontSize::End)) {
 			if (FontCache::Get(fs) != nullptr) continue;
 			FontCache::Register(std::make_unique<MockFontCache>(fs));
 		}

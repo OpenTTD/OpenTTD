@@ -188,7 +188,7 @@ void LinkRefresher::RefreshStats(VehicleOrderID cur, VehicleOrderID next)
 	Station *st = Station::GetIfValid(orders[cur].GetDestination().ToStationID());
 	if (st != nullptr && next_station != StationID::Invalid() && next_station != st->index) {
 		Station *st_to = Station::Get(next_station);
-		for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
+		for (CargoType cargo : EnumRange(NUM_CARGO)) {
 			/* Refresh the link and give it a minimum capacity. */
 
 			uint cargo_quantity = this->capacities[cargo];
@@ -260,7 +260,7 @@ void LinkRefresher::RefreshLinks(VehicleOrderID cur, VehicleOrderID next, Refres
 			} else if (!flags.Test(RefreshFlag::InAutorefit)) {
 				flags.Set(RefreshFlag::InAutorefit);
 				LinkRefresher backup(*this);
-				for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
+				for (CargoType cargo : EnumRange(NUM_CARGO)) {
 					if (CargoSpec::Get(cargo)->IsValid() && this->HandleRefit(cargo)) {
 						this->RefreshLinks(cur, next, flags, num_hops);
 						*this = backup;

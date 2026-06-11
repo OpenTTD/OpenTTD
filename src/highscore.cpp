@@ -120,7 +120,7 @@ void SaveToHighScore()
 	auto &fp = *ofp;
 
 	/* Does not iterate through the complete array!. */
-	for (int i = 0; i < SP_SAVED_HIGHSCORE_END; i++) {
+	for (SettingsProfile i : EnumRange(SP_SAVED_HIGHSCORE_END)) {
 		for (HighScore &hs : _highscore_table[i]) {
 			/* This code is weird and old fashioned to keep compatibility with the old high score files. */
 			uint8_t name_length = ClampTo<uint8_t>(hs.name.size());
@@ -145,7 +145,7 @@ void LoadFromHighScore()
 	auto &fp = *ofp;
 
 	/* Does not iterate through the complete array!. */
-	for (int i = 0; i < SP_SAVED_HIGHSCORE_END; i++) {
+	for (SettingsProfile i : EnumRange(SP_SAVED_HIGHSCORE_END)) {
 		for (HighScore &hs : _highscore_table[i]) {
 			/* This code is weird and old fashioned to keep compatibility with the old high score files. */
 			uint8_t name_length;

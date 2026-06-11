@@ -904,7 +904,7 @@ static bool LoadOldCompanyYearly(LoadgameState &ls, int num)
 {
 	Company *c = Company::Get(_current_company_id);
 
-	for (ExpensesType i = ExpensesType::Begin; i != ExpensesType::End; ++i) {
+	for (ExpensesType i : EnumRange(ExpensesType::End)) {
 		if (_savegame_type == SGT_TTO && i == ExpensesType::Property) {
 			_old_yearly = 0; // property maintenance
 		} else {

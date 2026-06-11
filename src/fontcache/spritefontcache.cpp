@@ -106,7 +106,7 @@ void InitializeUnicodeGlyphMap(FontSize fs)
  */
 void InitializeUnicodeGlyphMap()
 {
-	for (FontSize fs = FontSize::Begin; fs < FontSize::End; fs++) {
+	for (FontSize fs : EnumRange(FontSize::End)) {
 		InitializeUnicodeGlyphMap(fs);
 	}
 }

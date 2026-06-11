@@ -220,7 +220,7 @@ void DriverFactoryBase::MarkVideoDriverOperational()
  */
 void DriverFactoryBase::GetDriversInfo(std::back_insert_iterator<std::string> &output_iterator)
 {
-	for (Driver::Type type = Driver::Type::Begin; type != Driver::Type::End; type++) {
+	for (Driver::Type type : EnumRange(Driver::Type::End)) {
 		fmt::format_to(output_iterator, "List of {} drivers:\n", GetDriverTypeName(type));
 
 		for (int priority = 10; priority >= 0; priority--) {

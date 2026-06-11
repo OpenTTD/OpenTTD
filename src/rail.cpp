@@ -105,7 +105,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
 {
 	RailTypes rts = current;
 
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+	for (RailType rt : EnumRange(RAILTYPE_END)) {
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		/* Unused rail type. */
 		if (rti->label == 0) continue;

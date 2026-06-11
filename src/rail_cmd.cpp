@@ -103,7 +103,7 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 		 SPR_IMG_SIGNAL_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_PBS,   SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY},
 	}}};
 
-	for (SignalType type = SignalType::Block; type < SignalType::End; type = static_cast<SignalType>(to_underlying(type) + 1)) {
+	for (SignalType type : EnumRange(SignalType::End)) {
 		for (SignalVariant var : {SignalVariant::Electric, SignalVariant::Semaphore}) {
 			SpriteID red = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SignalState::Red, true);
 			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SignalState::Green, true);
@@ -2729,7 +2729,7 @@ static void TileLoop_Rail(TileIndex tile)
 		Owner owner = GetTileOwner(tile);
 		DiagDirections fences{};
 
-		for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
+		for (DiagDirection d : EnumRange(DiagDirection::End)) {
 			static constexpr DiagDirectionIndexArray<TrackBits> dir_to_trackbits{TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
 
 			/* Track bit on this edge => no fence. */

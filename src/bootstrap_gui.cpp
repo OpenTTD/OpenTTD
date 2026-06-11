@@ -387,8 +387,8 @@ bool HandleBootstrap()
 	 * This way the mauve and gray colours work and we can show the user interface. */
 	GfxInitPalettes();
 	static const EnumIndexArray<uint8_t, Colours, Colours::End> offsets = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
-	for (Colours i = Colours::Begin; i != Colours::End; i++) {
-		for (Shade j = Shade::Begin; j < Shade::End; j++) {
+	for (Colours i : EnumRange(Colours::End)) {
+		for (Shade j : EnumRange(Shade::End)) {
 			SetColourGradient(i, j, PixelColour(offsets[i] + to_underlying(j)));
 		}
 	}
