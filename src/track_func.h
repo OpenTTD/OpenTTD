@@ -103,13 +103,13 @@ inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir)
  * @return The first Track from the TrackBits value
  * @see FindFirstTrack
  */
-inline Track RemoveFirstTrack(TrackBits *tracks)
+inline Track RemoveFirstTrack(TrackBits &tracks)
 {
-	if (tracks->None()) return Track::Invalid;
+	if (tracks.None()) return Track::Invalid;
 
-	assert(!tracks->Any({Track::Wormhole, Track::Depot}));
-	Track first = tracks->GetNthSetBit(0).value();
-	tracks->Reset(first);
+	assert(!tracks.Any({Track::Wormhole, Track::Depot}));
+	Track first = tracks.GetNthSetBit(0).value();
+	tracks.Reset(first);
 	return first;
 }
 
@@ -127,13 +127,13 @@ inline Track RemoveFirstTrack(TrackBits *tracks)
  * @return The first Trackdir from the TrackdirBits value
  * @see FindFirstTrackdir
  */
-inline Trackdir RemoveFirstTrackdir(TrackdirBits *trackdirs)
+inline Trackdir RemoveFirstTrackdir(TrackdirBits &trackdirs)
 {
-	if (trackdirs->None() || *trackdirs == INVALID_TRACKDIR_BIT) return Trackdir::Invalid;
+	if (trackdirs.None() || trackdirs == INVALID_TRACKDIR_BIT) return Trackdir::Invalid;
 
-	assert(!trackdirs->Any({Trackdir::RvRev_NE, Trackdir::RvRev_SE, Trackdir::RvRev_SW, Trackdir::RvRev_NW}));
-	Trackdir first = trackdirs->GetNthSetBit(0).value();
-	trackdirs->Reset(first);
+	assert(!trackdirs.Any({Trackdir::RvRev_NE, Trackdir::RvRev_SE, Trackdir::RvRev_SW, Trackdir::RvRev_NW}));
+	Trackdir first = trackdirs.GetNthSetBit(0).value();
+	trackdirs.Reset(first);
 	return first;
 }
 

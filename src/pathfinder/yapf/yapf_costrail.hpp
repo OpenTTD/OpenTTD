@@ -447,7 +447,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 							td = Trackdir::Invalid;
 							break;
 						}
-						td = RemoveFirstTrackdir(&ft.new_td_bits);
+						td = RemoveFirstTrackdir(ft.new_td_bits);
 						/* If this is a safe waiting position we're done searching for it */
 						if (IsSafeWaitingPosition(v, t, td, true, _settings_game.pf.forbid_90_deg)) break;
 					}

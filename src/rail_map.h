@@ -210,7 +210,7 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 {
 	assert(IsPlainRailTile(t));
 	assert(!TracksOverlap(b));
-	Track track = RemoveFirstTrack(&b);
+	Track track = RemoveFirstTrack(b);
 	SB(t.m2(), 8, 3, IsValidTrack(track) ? to_underlying(track) + 1 : 0);
 	AssignBit(t.m2(), 11, b.Any());
 }

@@ -1218,7 +1218,7 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
 	if (trackdirbits.None()) return false;
 
 	/* Get the first track dir */
-	trackdir = RemoveFirstTrackdir(&trackdirbits);
+	trackdir = RemoveFirstTrackdir(trackdirbits);
 
 	/* Any left? It's a junction so we stop */
 	if (trackdirbits.Any()) return false;
