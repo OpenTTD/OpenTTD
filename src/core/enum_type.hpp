@@ -201,6 +201,88 @@ template <typename T, class = typename std::enable_if_t<std::is_enum_v<T>>>
 	}
 }
 
+/**
+ * Iterate a range of enum values.
+ * @tparam Tenum The enum type.
+ */
+template <typename Tenum>
+class EnumRange {
+private:
+	Tenum first; ///< The first (inclusive) value of the range.
+	Tenum last; ///< The last (exclusive) value of the range.
+public:
+	/**
+	 * Construct an EnumRange from first to last.
+	 * @param first The first value.
+	 * @param last The last value.
+	 */
+	constexpr EnumRange(Tenum first, Tenum last) : first(first), last(last) {}
+
+	/**
+	 * Construct an EnumRange from default to last.
+	 * @param last The last value.
+	 */
+	constexpr EnumRange(Tenum last) : EnumRange({}, last) {}
+
+	/**
+	 * Forward iterator
+	 */
+	class Iterator {
+	public:
+		using value_type = Tenum; ///< C++ specification trait 'value_type' of this Iterator.
+		using difference_type = value_type &; ///< C++ specification trait 'difference_type' of this Iterator.
+		using iterator_category = std::forward_iterator_tag; ///< C++ specification trait 'iterator_category' of this Iterator.
+		using pointer = void; ///< C++ specification trait 'pointer' of this Iterator.
+		using reference = void; ///< C++ specification trait 'reference' of this Iterator.
+
+		/**
+		 * Construct this iterator.
+		 * @param v The initial value.
+		 */
+		explicit Iterator(Tenum v) : value(v) {}
+
+		/**
+		 * Deference operator.
+		 * @return The current value.
+		 */
+		constexpr Tenum operator*() const
+		{
+			return static_cast<Tenum>(value);
+		}
+
+		/**
+		 * Increment to the next value.
+		 * @return The iterator.
+		 */
+		constexpr Iterator &operator++()
+		{
+			value = static_cast<Tenum>(to_underlying(value) + 1);
+			return *this;
+		}
+
+		/**
+		 * Compare with another instance of this iterator.
+		 * @return The std::strong_ordering of the comparison.
+		 */
+		constexpr auto operator<=>(const Iterator &) const = default;
+
+	private:
+		Tenum value; ///< Current value.
+	};
+
+	/**
+	 * Get the begin iterator for this range.
+	 * @return Begin iterator.
+	 */
+	constexpr Iterator begin() const { return Iterator(first); }
+
+	/**
+	 * Get the end iterator for this range.
+	 * @return End iterator.
+	 */
+	constexpr Iterator end() const { return Iterator(last); }
+};
+
 /** Helper template structure to get the mask for an EnumBitSet from the end enum value. */
 template <typename Tstorage, typename Tenum, Tenum Tend_value>
 struct EnumBitSetMask {
