@@ -70,11 +70,10 @@ template <> struct IsEnumPacketType<PacketAdminType> {
 };
 
 /** Status of an admin. */
-enum AdminStatus : uint8_t {
-	ADMIN_STATUS_INACTIVE,      ///< The admin is not connected nor active.
-	ADMIN_STATUS_AUTHENTICATE,  ///< The admin is connected and working on authentication.
-	ADMIN_STATUS_ACTIVE,        ///< The admin is active.
-	ADMIN_STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period)
+enum class AdminStatus : uint8_t {
+	Inactive, ///< The admin is not connected nor active.
+	Authenticate, ///< The admin is connected and working on authentication.
+	Active, ///< The admin is active.
 };
 
 /** Update types an admin can register a frequency for */
@@ -118,7 +117,7 @@ class NetworkAdminSocketHandler : public NetworkTCPSocketHandler {
 protected:
 	std::string admin_name{}; ///< Name of the admin.
 	std::string admin_version{}; ///< Version string of the admin.
-	AdminStatus status = ADMIN_STATUS_INACTIVE; ///< Status of this admin.
+	AdminStatus status = AdminStatus::Inactive; ///< Status of this admin.
 
 	NetworkRecvStatus ReceiveInvalidPacket(PacketAdminType type);
 
