@@ -327,6 +327,17 @@ inline void SetDisallowedRoadDirections(Tile t, DisallowedRoadDirections drd)
 }
 
 /**
+ * Check if a tile is a one-way road tile.
+ * @param t The tile to check.
+ * @return \c true iff the given tile is a one-way road tile.
+ */
+inline bool IsOneWayRoadTile(Tile t)
+{
+	if (IsNormalRoadTile(t)) return GetDisallowedRoadDirections(t).Any();
+	return false;
+}
+
+/**
  * Get the road axis of a level crossing.
  * @param t The tile to query.
  * @pre IsLevelCrossing(t)
