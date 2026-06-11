@@ -114,11 +114,11 @@ Last updated:    2024-03-26
 
   Additional debug information can be found with a debug level of `net=3`.
 
-  `ADMIN_UPDATE_DATE` results in the server sending:
+  `AdminUpdateType::Date` results in the server sending:
 
     - PacketAdminType::ServerDate
 
-  `ADMIN_UPDATE_CLIENT_INFO` results in the server sending:
+  `AdminUpdateType::ClientInfo` results in the server sending:
 
     - PacketAdminType::ServerClientJoin
     - PacketAdminType::ServerClientInfo
@@ -126,31 +126,31 @@ Last updated:    2024-03-26
     - PacketAdminType::ServerClientQuit
     - PacketAdminType::ServerClientError
 
-  `ADMIN_UPDATE_COMPANY_INFO` results in the server sending:
+  `AdminUpdateType::CompanyInfo` results in the server sending:
 
     - PacketAdminType::ServerCompanyNew
     - PacketAdminType::ServerCompanyInfo
     - PacketAdminType::ServerCompanyUpdate
     - PacketAdminType::ServerCompanyRemove
 
-  `ADMIN_UPDATE_COMPANY_ECONOMY` results in the server sending:
+  `AdminUpdateType::CompanyEconomy` results in the server sending:
 
     - PacketAdminType::ServerCompanyEconomy
 
-  `ADMIN_UPDATE_COMPANY_STATS` results in the server sending:
+  `AdminUpdateType::CompanyStats` results in the server sending:
 
     - PacketAdminType::ServerCompanyStatistics
 
-  `ADMIN_UPDATE_CHAT` results in the server sending:
+  `AdminUpdateType::Chat` results in the server sending:
 
     - PacketAdminType::ServerChat
 
-  `ADMIN_UPDATE_CONSOLE` results in the server sending:
+  `AdminUpdateType::Console` results in the server sending:
 
     - PacketAdminType::ServerConsole
 
 
-  `ADMIN_UPDATE_CMD_LOGGING` results in the server sending:
+  `AdminUpdateType::CmdLogging` results in the server sending:
 
     - PacketAdminType::ServerCommandLogging
 
@@ -158,17 +158,17 @@ Last updated:    2024-03-26
 
   Certain `AdminUpdateTypes` can also be polled:
 
-    - ADMIN_UPDATE_DATE
-    - ADMIN_UPDATE_CLIENT_INFO
-    - ADMIN_UPDATE_COMPANY_INFO
-    - ADMIN_UPDATE_COMPANY_ECONOMY
-    - ADMIN_UPDATE_COMPANY_STATS
-    - ADMIN_UPDATE_CMD_NAMES
+    - AdminUpdateType::Date
+    - AdminUpdateType::ClientInfo
+    - AdminUpdateType::CompanyInfo
+    - AdminUpdateType::CompanyEconomy
+    - AdminUpdateType::CompanyStats
+    - AdminUpdateType::CmdNames
 
   Please note the potential gotcha in the "Certain packet information" section below
   when using the `ADMIN_POLL` packet.
 
-  `ADMIN_UPDATE_CLIENT_INFO` and `ADMIN_UPDATE_COMPANY_INFO` accept an additional
+  `AdminUpdateType::ClientInfo` and `AdminUpdateType::CompanyInfo` accept an additional
   parameter. This parameter is used to specify a certain client or company.
   Setting this parameter to `UINT32_MAX (0xFFFFFFFF)` will tell the server you
   want to receive updates for all clients or companies.
@@ -181,7 +181,7 @@ Last updated:    2024-03-26
 
 ## 4.0) Sending rcon commands
 
-  Rcon runs separate from the `ADMIN_UPDATE_CONSOLE` `AdminUpdateType`. Requesting
+  Rcon runs separate from the `AdminUpdateType::Console` `AdminUpdateType`. Requesting
   the execution of a remote console command is done with the packet
   `PacketAdminType::AdminRemoteConsoleCommand`.
 
@@ -190,7 +190,7 @@ Last updated:    2024-03-26
   The server will reply with one or more `PacketAdminType::ServerRemoteConsoleCommand` packets.
   Finally an `PacketAdminType::AdminRemoteConsoleCommandEnd` packet will be sent. Applications
   will not receive the answer twice if they have asked for the `AdminUpdateType`
-  `ADMIN_UPDATE_CONSOLE`, as the result is not printed on the servers console
+  `AdminUpdateType::Console`, as the result is not printed on the servers console
   (just like clients rcon commands).
 
   Furthermore, sending a `say` command (or any similar command) will not
@@ -223,7 +223,7 @@ Last updated:    2024-03-26
 
 ## 5.1) Receiving chat
 
-  Register `ADMIN_UPDATE_CHAT` at `AdminUpdateFrequency::Automatic` to receive chat.
+  Register `AdminUpdateType::Chat` at `AdminUpdateFrequency::Automatic` to receive chat.
   The application will be able to receive all chat the server can see.
 
   The configuration option `network.server_admin_chat` specifies whether

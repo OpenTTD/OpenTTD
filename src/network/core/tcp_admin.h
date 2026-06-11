@@ -77,18 +77,18 @@ enum class AdminStatus : uint8_t {
 };
 
 /** Update types an admin can register a frequency for */
-enum AdminUpdateType : uint8_t {
-	ADMIN_UPDATE_DATE,            ///< Updates about the date of the game.
-	ADMIN_UPDATE_CLIENT_INFO,     ///< Updates about the information of clients.
-	ADMIN_UPDATE_COMPANY_INFO,    ///< Updates about the generic information of companies.
-	ADMIN_UPDATE_COMPANY_ECONOMY, ///< Updates about the economy of companies.
-	ADMIN_UPDATE_COMPANY_STATS,   ///< Updates about the statistics of companies.
-	ADMIN_UPDATE_CHAT,            ///< The admin would like to have chat messages.
-	ADMIN_UPDATE_CONSOLE,         ///< The admin would like to have console messages.
-	ADMIN_UPDATE_CMD_NAMES,       ///< The admin would like a list of all DoCommand names.
-	ADMIN_UPDATE_CMD_LOGGING,     ///< The admin would like to have DoCommand information.
-	ADMIN_UPDATE_GAMESCRIPT,      ///< The admin would like to have gamescript messages.
-	ADMIN_UPDATE_END,             ///< Must ALWAYS be on the end of this list!! (period)
+enum class AdminUpdateType : uint8_t {
+	Date, ///< Updates about the date of the game.
+	ClientInfo, ///< Updates about the information of clients.
+	CompanyInfo, ///< Updates about the generic information of companies.
+	CompanyEconomy, ///< Updates about the economy of companies.
+	CompanyStats, ///< Updates about the statistics of companies.
+	Chat, ///< The admin would like to have chat messages.
+	Console, ///< The admin would like to have console messages.
+	CmdNames, ///< The admin would like a list of all DoCommand names.
+	CmdLogging, ///< The admin would like to have DoCommand information.
+	Gamescript, ///< The admin would like to have gamescript messages.
+	End, ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Update frequencies an admin can register. */
@@ -151,8 +151,8 @@ protected:
 	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
 	 * uint8_t   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency::Poll is advertised in the PROTOCOL packet. Note integer type - see "Certain Packet Information" in docs/admin_network.md.
 	 * uint32_t  ID relevant to the packet type, e.g.
-	 *          - the client ID for #ADMIN_UPDATE_CLIENT_INFO. Use UINT32_MAX to show all clients.
-	 *          - the company ID for #ADMIN_UPDATE_COMPANY_INFO. Use UINT32_MAX to show all companies.
+	 *          - the client ID for #AdminUpdateType::ClientInfo. Use UINT32_MAX to show all clients.
+	 *          - the company ID for #AdminUpdateType::CompanyInfo. Use UINT32_MAX to show all companies.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
