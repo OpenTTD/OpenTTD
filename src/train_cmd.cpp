@@ -2498,7 +2498,7 @@ void FreeTrainTrackReservation(const Train *consist)
 	while (ft.Follow(tile, td)) {
 		tile = ft.new_tile;
 		TrackdirBits bits = ft.new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(tile));
-		td = RemoveFirstTrackdir(&bits);
+		td = RemoveFirstTrackdir(bits);
 		assert(bits.None());
 
 		if (!IsValidTrackdir(td)) break;
