@@ -1960,7 +1960,7 @@ static const FenceOffset _fence_offsets[] = {
 static void DrawTrackFence(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites, RailFenceOffset rfo)
 {
 	int z = ti->z;
-	if (_fence_offsets[rfo].height_ref != CORNER_INVALID) {
+	if (IsValidCorner(_fence_offsets[rfo].height_ref)) {
 		z += GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), _fence_offsets[rfo].height_ref);
 	}
 	AddSortableSpriteToDraw(psid.sprite + (rfo % num_sprites), psid.pal, ti->x, ti->y, z, _fence_offsets[rfo]);
