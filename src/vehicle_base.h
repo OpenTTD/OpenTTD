@@ -599,7 +599,7 @@ public:
 	 * in depots), returns 0xFF.
 	 * @return the trackdir of the vehicle
 	 */
-	virtual Trackdir GetVehicleTrackdir() const { return INVALID_TRACKDIR; }
+	virtual Trackdir GetVehicleTrackdir() const { return Trackdir::Invalid; }
 
 	/**
 	 * Gets the running cost of a vehicle  that can be sent into string parameters for string processing.

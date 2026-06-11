@@ -75,9 +75,9 @@ struct CFollowTrackT {
 		this->veh_owner = o;
 		/* don't worry, all is inlined so compiler should remove unnecessary initializations */
 		this->old_tile = INVALID_TILE;
-		this->old_td = INVALID_TRACKDIR;
+		this->old_td = Trackdir::Invalid;
 		this->new_tile = INVALID_TILE;
-		this->new_td_bits = TRACKDIR_BIT_NONE;
+		this->new_td_bits.Reset();
 		this->exitdir = DiagDirection::Invalid;
 		this->is_station = false;
 		this->is_bridge = false;
@@ -134,7 +134,7 @@ struct CFollowTrackT {
 			if (this->IsTram() && this->GetSingleTramBit(this->old_tile) != DiagDirection::Invalid) return true; // Skip the check for single tram bits
 			const RoadTramType sub_mode = (IsRoadTT() && this->veh != nullptr) ? (this->IsTram() ? RoadTramType::Tram : RoadTramType::Road) : RoadTramType::Invalid;
 			const TrackdirBits old_tile_valid_dirs = GetTileTrackStatus(this->old_tile, TT(), sub_mode).trackdirs;
-			return (old_tile_valid_dirs & TrackdirToTrackdirBits(this->old_td)) != TRACKDIR_BIT_NONE;
+			return old_tile_valid_dirs.Any(TrackdirToTrackdirBits(this->old_td));
 		}());
 
 		this->exitdir = TrackdirToExitdir(this->old_td);
@@ -143,7 +143,7 @@ struct CFollowTrackT {
 		this->FollowTileExit();
 		if (!this->QueryNewTileTrackStatus()) return TryReverse();
 		this->new_td_bits &= DiagdirReachesTrackdirs(this->exitdir);
-		if (this->new_td_bits == TRACKDIR_BIT_NONE || !this->CanEnterNewTile()) {
+		if (this->new_td_bits.None() || !this->CanEnterNewTile()) {
 			/* In case we can't enter the next tile, but are
 			 * a normal road vehicle, then we can actually
 			 * try to reverse as this is the end of the road.
@@ -160,13 +160,13 @@ struct CFollowTrackT {
 			/* CanEnterNewTile already set a reason.
 			 * Do NOT overwrite it (important for example for EC_RAIL_ROAD_TYPE).
 			 * Only set a reason if CanEnterNewTile was not called */
-			if (this->new_td_bits == TRACKDIR_BIT_NONE) this->err = EC_NO_WAY;
+			if (this->new_td_bits.None()) this->err = EC_NO_WAY;
 
 			return false;
 		}
 		if ((!IsRailTT() && !Allow90degTurns()) || (IsRailTT() && Rail90DegTurnDisallowed(GetTileRailType(this->old_tile), GetTileRailType(this->new_tile), !Allow90degTurns()))) {
-			this->new_td_bits &= ~TrackdirCrossesTrackdirs(this->old_td);
-			if (this->new_td_bits == TRACKDIR_BIT_NONE) {
+			this->new_td_bits.Reset(TrackdirCrossesTrackdirs(this->old_td));
+			if (this->new_td_bits.None()) {
 				this->err = EC_90DEG;
 				return false;
 			}
@@ -183,7 +183,7 @@ struct CFollowTrackT {
 			TileIndexDiff diff = TileOffsByDiagDir(this->exitdir);
 			for (TileIndex tile = this->new_tile - diff * this->tiles_skipped; tile != this->new_tile; tile += diff) {
 				if (HasStationReservation(tile)) {
-					this->new_td_bits = TRACKDIR_BIT_NONE;
+					this->new_td_bits.Reset();
 					this->err = EC_RESERVED;
 					return false;
 				}
@@ -192,12 +192,12 @@ struct CFollowTrackT {
 
 		TrackBits reserved = GetReservedTrackbits(this->new_tile);
 		/* Mask already reserved trackdirs. */
-		this->new_td_bits &= ~TrackBitsToTrackdirBits(reserved);
+		this->new_td_bits.Reset(TrackBitsToTrackdirBits(reserved));
 		/* Mask out all trackdirs that conflict with the reservation. */
 		for (Track t : TrackdirBitsToTrackBits(this->new_td_bits)) {
-			if (TracksOverlap(reserved | t)) this->new_td_bits &= ~TrackToTrackdirBits(t);
+			if (TracksOverlap(reserved | t)) this->new_td_bits.Reset(TrackToTrackdirBits(t));
 		}
-		if (this->new_td_bits == TRACKDIR_BIT_NONE) {
+		if (this->new_td_bits.None()) {
 			this->err = EC_RESERVED;
 			return false;
 		}
@@ -255,7 +255,7 @@ protected:
 		} else {
 			this->new_td_bits = GetTileTrackStatus(this->new_tile, TT(), RoadTramType::Invalid).trackdirs;
 		}
-		return (this->new_td_bits != TRACKDIR_BIT_NONE);
+		return this->new_td_bits.Any();
 	}
 
 	/**
@@ -457,7 +457,7 @@ protected:
 			/* set new trackdir bits to all reachable trackdirs */
 			QueryNewTileTrackStatus();
 			this->new_td_bits &= DiagdirReachesTrackdirs(this->exitdir);
-			if (this->new_td_bits != TRACKDIR_BIT_NONE) {
+			if (this->new_td_bits.Any()) {
 				/* we have some trackdirs reachable after reversal */
 				return true;
 			}

@@ -39,12 +39,12 @@ static constexpr DiagDirectionIndexArray<TrackBits> _enterdir_to_trackbits{
 };
 
 /** Accessible TrackdirBits from a given enter direction. */
-static constexpr DiagDirectionIndexArray<TrackdirBits> _enterdir_to_trackdirbits{
-	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S,
-	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_RIGHT_N,
-	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,
-	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_LEFT_S
-};
+static constexpr DiagDirectionIndexArray<TrackdirBits> _enterdir_to_trackdirbits{{{
+	{Trackdir::X_SW, Trackdir::Upper_W, Trackdir::Right_S},
+	{Trackdir::Y_NW, Trackdir::Lower_W, Trackdir::Right_N},
+	{Trackdir::X_NE, Trackdir::Lower_E, Trackdir::Left_N},
+	{Trackdir::Y_SE, Trackdir::Upper_E, Trackdir::Left_S},
+}}};
 
 /**
  * Set containing 'items' items of 'tile and Tdir'
@@ -320,7 +320,7 @@ static SigFlags ExploreSegment(Owner owner)
 					Track track = TrackBitsToTrack(tracks_masked); // mask TRACK_BIT_X and Y too
 					if (HasSignalOnTrack(tile, track)) { // now check whole track, not trackdir
 						SignalType sig = GetSignalType(tile, track);
-						Trackdir trackdir = static_cast<Trackdir>(FindFirstBit(TrackBitsToTrackdirBits(tracks) & _enterdir_to_trackdirbits[enterdir]));
+						Trackdir trackdir = (TrackBitsToTrackdirBits(tracks) & _enterdir_to_trackdirbits[enterdir]).GetNthSetBit(0).value();
 						Trackdir reversedir = ReverseTrackdir(trackdir);
 						/* add (tile, reversetrackdir) to 'to-be-updated' set when there is
 						 * ANY conventional signal in REVERSE direction
@@ -417,7 +417,7 @@ static SigFlags ExploreSegment(Owner owner)
 static void UpdateSignalsAroundSegment(SigFlags flags)
 {
 	TileIndex tile = INVALID_TILE; // Stop GCC from complaining about a possibly uninitialized variable (issue #8280).
-	Trackdir trackdir = INVALID_TRACKDIR;
+	Trackdir trackdir = Trackdir::Invalid;
 
 	while (_tbuset.Get(&tile, &trackdir)) {
 		assert(HasSignalOnTrackdir(tile, trackdir));

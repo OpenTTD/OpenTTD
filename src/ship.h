@@ -18,7 +18,7 @@ WaterClass GetEffectiveWaterClass(TileIndex tile);
 
 /** Element of the ShipPathCache. */
 struct ShipPathElement {
-	Trackdir trackdir = INVALID_TRACKDIR; ///< Trackdir for this element.
+	Trackdir trackdir = Trackdir::Invalid; ///< Trackdir for this element.
 
 	constexpr ShipPathElement() {}
 	constexpr ShipPathElement(Trackdir trackdir) : trackdir(trackdir) {}

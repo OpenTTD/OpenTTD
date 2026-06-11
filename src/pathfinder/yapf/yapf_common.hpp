@@ -37,9 +37,8 @@ public:
 	 */
 	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
 	{
-		bool is_choice = (KillFirstBit(trackdirs) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits tdb = trackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
-			Trackdir td = (Trackdir)FindFirstBit(tdb);
+		bool is_choice = trackdirs.Count() > 1;
+		for (Trackdir td : trackdirs) {
 			Node &node = Yapf().CreateNewNode();
 			node.Set(nullptr, tile, td, is_choice);
 			Yapf().AddStartupNode(node);
@@ -72,14 +71,14 @@ public:
 	 * @param reverse_penalty The penalty for reversing.
 	 */
 	void SetOrigin(TileIndex forward_tile, Trackdir forward_td, TileIndex reverse_tile = INVALID_TILE,
-			Trackdir reverse_td = INVALID_TRACKDIR, int reverse_penalty = 0)
+			Trackdir reverse_td = Trackdir::Invalid, int reverse_penalty = 0)
 	{
-		if (forward_tile != INVALID_TILE && forward_td != INVALID_TRACKDIR) {
+		if (forward_tile != INVALID_TILE && forward_td != Trackdir::Invalid) {
 			Node &node = Yapf().CreateNewNode();
 			node.Set(nullptr, forward_tile, forward_td, false);
 			Yapf().AddStartupNode(node);
 		}
-		if (reverse_tile != INVALID_TILE && reverse_td != INVALID_TRACKDIR) {
+		if (reverse_tile != INVALID_TILE && reverse_td != Trackdir::Invalid) {
 			Node &node = Yapf().CreateNewNode();
 			node.Set(nullptr, reverse_tile, reverse_td, false);
 			node.cost = reverse_penalty;

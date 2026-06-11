@@ -179,7 +179,7 @@ public:
 			return IsRailDepotTile(tile);
 		}
 
-		return (tile == this->dest_tile) && HasTrackdir(this->dest_trackdirs, td);
+		return (tile == this->dest_tile) && this->dest_trackdirs.Test(td);
 	}
 
 	/** @copydoc CYapfBaseT::PfCalcEstimateFunc */

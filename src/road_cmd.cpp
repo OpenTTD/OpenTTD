@@ -2141,8 +2141,8 @@ static const TrackBits _road_trackbits[16] = {
 /** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side)
 {
-	TrackdirBits trackdirbits = TRACKDIR_BIT_NONE;
-	TrackdirBits red_signals = TRACKDIR_BIT_NONE; // crossing barred
+	TrackdirBits trackdirbits{};
+	TrackdirBits red_signals{}; // crossing barred
 	switch (mode) {
 		case TRANSPORT_RAIL:
 			if (IsLevelCrossing(tile)) trackdirbits = TrackBitsToTrackdirBits(GetCrossingRailTrack(tile));
@@ -2178,9 +2178,9 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, R
 							if (IsLevelCrossingTile(t) && IsCrossingBarred(t)) red_signals &= mask;
 						};
 						/* Check for blocked adjacent crossing to south, keep only southbound red signal trackdirs, allow northbound traffic */
-						mask_red_signal_bits_if_crossing_barred(TileAddByDiagDir(tile, AxisToDiagDir(axis)), TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_SE);
+						mask_red_signal_bits_if_crossing_barred(TileAddByDiagDir(tile, AxisToDiagDir(axis)), {Trackdir::X_SW, Trackdir::Y_SE});
 						/* Check for blocked adjacent crossing to north, keep only northbound red signal trackdirs, allow southbound traffic */
-						mask_red_signal_bits_if_crossing_barred(TileAddByDiagDir(tile, ReverseDiagDir(AxisToDiagDir(axis))), TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_NW);
+						mask_red_signal_bits_if_crossing_barred(TileAddByDiagDir(tile, ReverseDiagDir(AxisToDiagDir(axis))), {Trackdir::X_NE, Trackdir::Y_NW});
 					}
 					break;
 				}
@@ -2286,7 +2286,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc &td)
  * vehicle should be travelling in in order to enter the depot.
  */
 static constexpr DiagDirectionIndexArray<Trackdir> _roadveh_enter_depot_dir{
-	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
+	Trackdir::X_SW, Trackdir::Y_NW, Trackdir::X_NE, Trackdir::Y_SE
 };
 
 /** @copydoc VehicleEnterTileProc */
@@ -2298,7 +2298,7 @@ static VehicleEnterTileStates VehicleEnterTile_Road(Vehicle *v, TileIndex tile, 
 
 			RoadVehicle *rv = RoadVehicle::From(v);
 			if (rv->frame == RVC_DEPOT_STOP_FRAME &&
-					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == rv->state) {
+					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == static_cast<Trackdir>(rv->state)) {
 				rv->state = RVSB_IN_DEPOT;
 				rv->vehstatus.Set(VehState::Hidden);
 				rv->direction = ReverseDir(rv->direction);

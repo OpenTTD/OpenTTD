@@ -35,7 +35,7 @@ protected:
 		TileType    tile_type;
 		RailType    rail_type;
 
-		TILE() : tile(INVALID_TILE), td(INVALID_TRACKDIR), tile_type(TileType::Void), rail_type(INVALID_RAILTYPE) { }
+		TILE() : tile(INVALID_TILE), td(Trackdir::Invalid), tile_type(TileType::Void), rail_type(INVALID_RAILTYPE) { }
 
 		TILE(TileIndex tile, Trackdir td) : tile(tile), td(td), tile_type(GetTileType(tile)), rail_type(GetTileRailType(tile)) { }
 	};
@@ -106,7 +106,7 @@ public:
 		assert(IsValidTrackdir(td2));
 		int cost = 0;
 		if (TrackFollower::Allow90degTurns()
-				&& HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
+				&& TrackdirCrossesTrackdirs(td1).Test(td2)) {
 			/* 90-deg curve penalty */
 			cost += Yapf().PfGetSettings().rail_curve90_penalty;
 		} else if (td2 != NextTrackdir(td1)) {
@@ -295,7 +295,7 @@ public:
 	{
 		assert(!n.flags_u.flags_s.target_seen);
 		assert(follower->new_tile == n.key.tile);
-		assert((HasTrackdir(follower->new_td_bits, n.key.td)));
+		assert(follower->new_td_bits.Test(n.key.td));
 
 		/* Does the node have some parent node? */
 		bool has_parent = (n.parent != nullptr);
@@ -437,14 +437,14 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 						t = ft.new_tile;
 						if (t == cur.tile || --max_tiles == 0) {
 							/* We looped back on ourself or found another loop, bail out. */
-							td = INVALID_TRACKDIR;
+							td = Trackdir::Invalid;
 							break;
 						}
-						if (KillFirstBit(ft.new_td_bits) != TRACKDIR_BIT_NONE) {
+						if (ft.new_td_bits.Count() > 1) {
 							/* We encountered a junction; it's going to be too complex to
 							 * handle this perfectly, so just bail out. There is no simple
 							 * free path, so try the other possibilities. */
-							td = INVALID_TRACKDIR;
+							td = Trackdir::Invalid;
 							break;
 						}
 						td = RemoveFirstTrackdir(&ft.new_td_bits);
@@ -455,7 +455,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 					/* In the case this platform is (possibly) occupied we add penalty so the
 					 * other platforms of this waypoint are evaluated as well, i.e. we assume
 					 * that there is a red signal in the waypoint when it's occupied. */
-					if (td == INVALID_TRACKDIR ||
+					if (td == Trackdir::Invalid ||
 							!IsSafeWaitingPosition(v, t, td, true, _settings_game.pf.forbid_90_deg) ||
 							!IsWaitingPositionFree(v, t, td, _settings_game.pf.forbid_90_deg)) {
 						extra_cost += Yapf().PfGetSettings().rail_lastred_penalty;
@@ -521,14 +521,14 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			}
 
 			/* Check if the next tile is not a choice. */
-			if (KillFirstBit(follower_local.new_td_bits) != TRACKDIR_BIT_NONE) {
+			if (follower_local.new_td_bits.Count() > 1) {
 				/* More than one segment will follow. Close this one. */
 				end_segment_reason.Set(EndSegmentReason::ChoiceFollows);
 				break;
 			}
 
 			/* Gather the next tile/trackdir/tile_type/rail_type. */
-			TILE next(follower_local.new_tile, (Trackdir)FindFirstBit(follower_local.new_td_bits));
+			TILE next(follower_local.new_tile, follower_local.new_td_bits.GetNthSetBit(0).value());
 
 			if (TrackFollower::DoTrackMasking() && IsTileType(next.tile, TileType::Railway)) {
 				if (HasSignalOnTrackdir(next.tile, next.td) && IsPbsSignal(GetSignalType(next.tile, TrackdirToTrack(next.td)))) {

@@ -402,11 +402,11 @@ static const int NUM_TRACK_DIRECTIONS = 3; ///< The number of directions you can
  *   2 it added.
  */
 static const ScriptRailSignalData _possible_trackdirs[5][NUM_TRACK_DIRECTIONS] = {
-	{{Track::Upper,   TRACKDIR_UPPER_E, 0}, {Track::Y,       TRACKDIR_Y_SE,    0}, {Track::Left,    TRACKDIR_LEFT_S,  1}},
-	{{Track::Right,   TRACKDIR_RIGHT_S, 1}, {Track::X,       TRACKDIR_X_SW,    1}, {Track::Upper,   TRACKDIR_UPPER_W, 1}},
-	{{Track::Invalid, INVALID_TRACKDIR, 0}, {Track::Invalid, INVALID_TRACKDIR, 0}, {Track::Invalid, INVALID_TRACKDIR, 0}},
-	{{Track::Lower,   TRACKDIR_LOWER_E, 0}, {Track::X,       TRACKDIR_X_NE,    0}, {Track::Left,    TRACKDIR_LEFT_N,  0}},
-	{{Track::Right,   TRACKDIR_RIGHT_N, 0}, {Track::Y,       TRACKDIR_Y_NW,    1}, {Track::Lower,   TRACKDIR_LOWER_W, 1}}
+	{{Track::Upper,   Trackdir::Upper_E, 0}, {Track::Y,       Trackdir::Y_SE,    0}, {Track::Left,    Trackdir::Left_S,  1}},
+	{{Track::Right,   Trackdir::Right_S, 1}, {Track::X,       Trackdir::X_SW,    1}, {Track::Upper,   Trackdir::Upper_W, 1}},
+	{{Track::Invalid, Trackdir::Invalid, 0}, {Track::Invalid, Trackdir::Invalid, 0}, {Track::Invalid, Trackdir::Invalid, 0}},
+	{{Track::Lower,   Trackdir::Lower_E, 0}, {Track::X,       Trackdir::X_NE,    0}, {Track::Left,    Trackdir::Left_N,  0}},
+	{{Track::Right,   Trackdir::Right_N, 0}, {Track::Y,       Trackdir::Y_NW,    1}, {Track::Lower,   Trackdir::Lower_W, 1}}
 };
 
 /* static */ ScriptRail::SignalType ScriptRail::GetSignalType(TileIndex tile, TileIndex front)

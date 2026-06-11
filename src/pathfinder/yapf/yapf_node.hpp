@@ -23,7 +23,7 @@ struct CYapfNodeKeyExitDir {
 	{
 		this->tile = tile;
 		this->td = td;
-		this->exitdir = (this->td == INVALID_TRACKDIR) ? DiagDirection::Invalid : TrackdirToExitdir(this->td);
+		this->exitdir = (this->td == Trackdir::Invalid) ? DiagDirection::Invalid : TrackdirToExitdir(this->td);
 	}
 
 	inline int CalcHash() const
@@ -47,7 +47,7 @@ struct CYapfNodeKeyExitDir {
 struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir {
 	inline int CalcHash() const
 	{
-		return this->td | (this->tile.base() << 4);
+		return to_underlying(this->td) | (this->tile.base() << 4);
 	}
 
 	inline bool operator==(const CYapfNodeKeyTrackDir &other) const

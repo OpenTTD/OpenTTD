@@ -849,8 +849,8 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 			(trdx >= 0 && dx < 0) ||
 			(trdy <= 0 && dy > 0) ||
 			(trdy >= 0 && dy < 0)) {
-		if (!HasBit(*trackdir, 3)) { // first direction is invalid, try the other
-			SetBit(*trackdir, 3); // reverse the direction
+		if (!HasBit(to_underlying(*trackdir), 3)) { // first direction is invalid, try the other
+			*trackdir = ReverseTrackdir(*trackdir); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
 		} else { // other direction is invalid too, invalid drag
@@ -1215,13 +1215,13 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
 	trackdirbits &= TrackdirReachesTrackdirs(trackdir);
 
 	/* No track bits, must stop */
-	if (trackdirbits == TRACKDIR_BIT_NONE) return false;
+	if (trackdirbits.None()) return false;
 
 	/* Get the first track dir */
 	trackdir = RemoveFirstTrackdir(&trackdirbits);
 
 	/* Any left? It's a junction so we stop */
-	if (trackdirbits != TRACKDIR_BIT_NONE) return false;
+	if (trackdirbits.Any()) return false;
 
 	switch (GetTileType(tile)) {
 		case TileType::Railway:
@@ -1319,7 +1319,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlags flags, TileIndex tile, Ti
 	int last_used_ctr = -signal_density; // to force signal at first tile
 	int last_suitable_ctr = 0;
 	TileIndex last_suitable_tile = INVALID_TILE;
-	Trackdir last_suitable_trackdir = INVALID_TRACKDIR;
+	Trackdir last_suitable_trackdir = Trackdir::Invalid;
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	auto build_signal = [&](TileIndex tile, Trackdir trackdir, bool test_only) {
@@ -2781,13 +2781,13 @@ static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [
 			case TrackBits{Track::Left}.base():  tb = Track::Right; break;
 			case TrackBits{Track::Right}.base(): tb = Track::Left; break;
 		}
-		return {TrackBitsToTrackdirBits(tb), TRACKDIR_BIT_NONE};
+		return {TrackBitsToTrackdirBits(tb), {}};
 	}
 
 	if (mode != TRANSPORT_RAIL) return {};
 
 	TrackBits trackbits{};
-	TrackdirBits red_signals = TRACKDIR_BIT_NONE;
+	TrackdirBits red_signals{};
 
 	switch (GetRailTileType(tile)) {
 		default: NOT_REACHED();
@@ -2810,10 +2810,10 @@ static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [
 			if (!IsOnewaySignal(tile, Track::Upper) || (a & SignalOnTrack(Track::Upper)) == 0) b |= ~a & SignalOnTrack(Track::Upper);
 			if (!IsOnewaySignal(tile, Track::Lower) || (a & SignalOnTrack(Track::Lower)) == 0) b |= ~a & SignalOnTrack(Track::Lower);
 
-			if ((b & 0x8) == 0) red_signals |= (TRACKDIR_BIT_LEFT_N | TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E);
-			if ((b & 0x4) == 0) red_signals |= (TRACKDIR_BIT_LEFT_S | TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_UPPER_W);
-			if ((b & 0x2) == 0) red_signals |= (TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_E);
-			if ((b & 0x1) == 0) red_signals |= (TRACKDIR_BIT_RIGHT_S | TRACKDIR_BIT_LOWER_W);
+			if ((b & 0x8) == 0) red_signals.Set({Trackdir::Left_N, Trackdir::X_NE, Trackdir::Y_SE, Trackdir::Upper_E});
+			if ((b & 0x4) == 0) red_signals.Set({Trackdir::Left_S, Trackdir::X_SW, Trackdir::Y_NW, Trackdir::Upper_W});
+			if ((b & 0x2) == 0) red_signals.Set({Trackdir::Right_N, Trackdir::Lower_E});
+			if ((b & 0x1) == 0) red_signals.Set({Trackdir::Right_S, Trackdir::Lower_W});
 
 			break;
 		}

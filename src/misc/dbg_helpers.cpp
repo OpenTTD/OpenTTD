@@ -27,7 +27,7 @@ static const std::string_view trackdir_names[] = {
  */
 std::string ValueStr(Trackdir td)
 {
-	return fmt::format("{} ({})", to_underlying(td), ItemAt(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV"));
+	return fmt::format("{} ({})", to_underlying(td), ItemAt(td, trackdir_names, "UNK", Trackdir::Invalid, "INV"));
 }
 
 /**
@@ -37,7 +37,7 @@ std::string ValueStr(Trackdir td)
  */
 std::string ValueStr(TrackdirBits td_bits)
 {
-	return fmt::format("{} ({})", to_underlying(td_bits), ComposeName(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV"));
+	return fmt::format("{} ({})", td_bits.base(), ComposeName(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV"));
 }
 
 

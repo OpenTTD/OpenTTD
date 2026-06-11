@@ -133,7 +133,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 
 	if (!IsPlainRailTile(t)) return tracks;
 
-	TrackdirBits neighbour_tdb = TRACKDIR_BIT_NONE;
+	TrackdirBits neighbour_tdb{};
 	for (DiagDirection d = DiagDirection::Begin; d < DiagDirection::End; d++) {
 		/* If the neighbour tile is either not electrified or has no tracks that can be reached
 		 * from this tile, mark all trackdirs that can be reached from the neighbour tile
@@ -155,7 +155,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 	if (tracks == TRACK_BIT_CROSS || !TracksOverlap(tracks)) {
 		/* If the tracks form either a diagonal crossing or don't overlap, both
 		 * trackdirs have to be marked to mask the corresponding track bit. */
-		mask = static_cast<TrackBits>(~((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_ALL.base()));
+		mask = static_cast<TrackBits>(~((neighbour_tdb.base() & (neighbour_tdb.base() >> 8)) & TRACK_BIT_ALL.base()));
 		/* If that results in no masked tracks and it is not a diagonal crossing,
 		 * require only one marked trackdir to mask. */
 		if (tracks != TRACK_BIT_CROSS && mask == TRACK_BIT_ALL) mask = TrackdirBitsToTrackBits(neighbour_tdb).Flip(TRACK_BIT_ALL);
@@ -164,10 +164,10 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 		mask = TrackdirBitsToTrackBits(neighbour_tdb).Flip(TRACK_BIT_ALL);
 		/* If that results in an empty set, require both trackdirs for diagonal track. */
 		if (!tracks.Any(mask)) {
-			if ((neighbour_tdb & TRACKDIR_BIT_X_NE) == 0 || (neighbour_tdb & TRACKDIR_BIT_X_SW) == 0) mask.Set(Track::X);
-			if ((neighbour_tdb & TRACKDIR_BIT_Y_NW) == 0 || (neighbour_tdb & TRACKDIR_BIT_Y_SE) == 0) mask.Set(Track::Y);
+			if (!neighbour_tdb.Test(Trackdir::X_NE) || !neighbour_tdb.Test(Trackdir::X_SW)) mask.Set(Track::X);
+			if (!neighbour_tdb.Test(Trackdir::Y_NW) || !neighbour_tdb.Test(Trackdir::Y_SE)) mask.Set(Track::Y);
 			/* If that still is not enough, require both trackdirs for any track. */
-			if (!tracks.Any(mask)) mask = static_cast<TrackBits>(~((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_ALL.base()));
+			if (!tracks.Any(mask)) mask = static_cast<TrackBits>(~((neighbour_tdb.base() & (neighbour_tdb.base() >> 8)) & TRACK_BIT_ALL.base()));
 		}
 	}
 

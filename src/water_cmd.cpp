@@ -1403,7 +1403,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 		/* NW border: remove tracks that connects NW tile edge */
 		ts.Reset({Track::Y, Track::Left, Track::Upper});
 	}
-	return {TrackBitsToTrackdirBits(ts), TRACKDIR_BIT_NONE};
+	return {TrackBitsToTrackdirBits(ts), {}};
 }
 
 /** @copydoc ClickTileProc */

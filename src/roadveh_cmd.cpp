@@ -74,7 +74,7 @@ bool IsValidImageIndex<VehicleType::Road>(uint8_t image_index)
 
 /** Track direction to use when reversing for each diagonal direction. */
 static constexpr DiagDirectionIndexArray<Trackdir> _road_reverse_table{
-	TRACKDIR_RVREV_NE, TRACKDIR_RVREV_SE, TRACKDIR_RVREV_SW, TRACKDIR_RVREV_NW
+	Trackdir::RvRev_NE, Trackdir::RvRev_SE, Trackdir::RvRev_SW, Trackdir::RvRev_NW
 };
 
 /**
@@ -470,7 +470,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 	/* Limit speed to 50% while reversing, 75% in curves. */
 	for (const RoadVehicle *u = this; u != nullptr; u = u->Next()) {
 		if (_settings_game.vehicle.roadveh_acceleration_model == AM_REALISTIC) {
-			if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)this->state)) {
+			if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir(static_cast<Trackdir>(this->state))) {
 				max_speed = this->gcache.cached_max_track_speed / 2;
 				break;
 			} else if (!IsDiagonalDirection(u->direction)) {
@@ -796,7 +796,7 @@ static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 	TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
 	/* Track does not continue along overtaking direction || track has junction || levelcrossing is barred */
-	if (!HasBit(ts.trackdirs, od->trackdir) || trackbits.Any({Track::Upper, Track::Lower, Track::Left, Track::Right}) || (ts.signals != TRACKDIR_BIT_NONE)) return true;
+	if (!ts.trackdirs.Test(od->trackdir) || trackbits.Any({Track::Upper, Track::Lower, Track::Left, Track::Right}) || ts.signals.Any()) return true;
 
 	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
 	return HasVehicleOnTile(od->tile, [&](const Vehicle *v) {
@@ -824,7 +824,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	if (v->direction != u->direction || !IsDiagonalDirection(v->direction)) return;
 
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
-	if (v->state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->state & RVSB_TRACKDIR_MASK))) return;
+	if (v->state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir(static_cast<Trackdir>(v->state & RVSB_TRACKDIR_MASK))) return;
 
 	/* Can't overtake a vehicle that is moving faster than us. If the vehicle in front is
 	 * accelerating, take the maximum speed for the comparison, else the current speed.
@@ -868,18 +868,9 @@ static void RoadZPosAffectSpeed(RoadVehicle *v, int old_z)
 	}
 }
 
-static int PickRandomBit(uint bits)
-{
-	uint i;
-	uint num = RandomRange(CountBits(bits));
-
-	for (i = 0; !(bits & 1) || (int)--num >= 0; bits >>= 1, i++) {}
-	return i;
-}
-
 /**
  * Returns direction to for a road vehicle to take or
- * INVALID_TRACKDIR if the direction is currently blocked
+ * Trackdir::Invalid if the direction is currently blocked
  * @param v        the Vehicle to do the pathfinding for
  * @param tile     the where to start the pathfinding
  * @param enterdir the direction the vehicle enters the tile from
@@ -891,36 +882,36 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, GetRoadTramType(v->roadtype));
 
-	/* Replaces the given trackdir with INVALID_TRACKDIR when there is red signal for that trackdir. */
+	/* Replaces the given trackdir with Trackdir::Invalid when there is red signal for that trackdir. */
 	auto FilterRedSignal = [&ts](Trackdir trackdir) {
-		if (HasBit(ts.signals, trackdir)) return INVALID_TRACKDIR;
+		if (ts.signals.Test(trackdir)) return Trackdir::Invalid;
 		return trackdir;
 	};
 
 	if (IsTileType(tile, TileType::Road)) {
 		if (IsRoadDepot(tile) && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir)) {
 			/* Road depot owned by another company or with the wrong orientation */
-			ts.trackdirs = TRACKDIR_BIT_NONE;
+			ts.trackdirs.Reset();
 		}
 	} else if (IsTileType(tile, TileType::Station) && IsBayRoadStopTile(tile)) {
 		/* Standard road stop (drive-through stops are treated as normal road) */
 
 		if (!IsTileOwner(tile, v->owner) || GetBayRoadStopDir(tile) == enterdir || v->HasArticulatedPart()) {
 			/* different station owner or wrong orientation or the vehicle has articulated parts */
-			ts.trackdirs = TRACKDIR_BIT_NONE;
+			ts.trackdirs.Reset();
 		} else {
 			/* Our station */
 			RoadStopType rstype = v->IsBus() ? RoadStopType::Bus : RoadStopType::Truck;
 
 			if (GetRoadStopType(tile) != rstype) {
 				/* Wrong station type */
-				ts.trackdirs = TRACKDIR_BIT_NONE;
+				ts.trackdirs.Reset();
 			} else {
 				/* Proper station type, check if there is free loading bay */
 				if (!_settings_game.pf.roadveh_queue && IsBayRoadStopTile(tile) &&
 						!RoadStop::GetByTile(tile, rstype)->HasFreeBay()) {
 					/* Station is full and RV queuing is off */
-					ts.trackdirs = TRACKDIR_BIT_NONE;
+					ts.trackdirs.Reset();
 				}
 			}
 		}
@@ -932,7 +923,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	/* Remove tracks unreachable from the enter dir */
 	ts.trackdirs &= DiagdirReachesTrackdirs(enterdir);
-	if (ts.trackdirs == TRACKDIR_BIT_NONE) {
+	if (ts.trackdirs.None()) {
 		/* If vehicle expected a path, it no longer exists, so invalidate it. */
 		if (!v->path.empty()) v->path.clear();
 		/* No reachable tracks, so we'll reverse */
@@ -959,16 +950,16 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	if (v->dest_tile == INVALID_TILE) {
 		/* We've got no destination, pick a random track */
-		return FilterRedSignal(static_cast<Trackdir>(PickRandomBit(ts.trackdirs)));
+		return FilterRedSignal(ts.trackdirs.GetNthSetBit(RandomRange(ts.trackdirs.Count())).value());
 	}
 
 	/* Only one track to choose between? */
-	if (KillFirstBit(ts.trackdirs) == TRACKDIR_BIT_NONE) {
+	if (ts.trackdirs.Count() == 1) {
 		if (!v->path.empty() && v->path.back().tile == tile) {
 			/* Vehicle expected a choice here, invalidate its path. */
 			v->path.clear();
 		}
-		return FilterRedSignal(static_cast<Trackdir>(FindFirstBit(ts.trackdirs)));
+		return FilterRedSignal(ts.trackdirs.GetNthSetBit(0).value());
 	}
 
 	/* Attempt to follow cached path. */
@@ -979,7 +970,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 		} else {
 			Trackdir trackdir = v->path.back().trackdir;
 
-			if (HasBit(ts.trackdirs, trackdir)) {
+			if (ts.trackdirs.Test(trackdir)) {
 				v->path.pop_back();
 				return FilterRedSignal(trackdir);
 			}
@@ -1013,7 +1004,7 @@ bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 	v->direction = DiagDirToDir(dir);
 
 	Trackdir tdir = DiagDirToDiagTrackdir(dir);
-	const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE) + tdir];
+	const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE) + to_underlying(tdir)];
 
 	int x = TileX(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].x & 0xF);
 	int y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
@@ -1037,7 +1028,7 @@ bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 	}
 
 	v->vehstatus.Reset(VehState::Hidden);
-	v->state = tdir;
+	v->state = to_underlying(tdir);
 	v->frame = RVC_DEPOT_START_FRAME;
 
 	v->x_pos = x;
@@ -1070,10 +1061,10 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 			diag_dir = ReverseDiagDir(GetRoadDepotDirection(tile));
 		}
 
-		if (diag_dir == DiagDirection::Invalid) return INVALID_TRACKDIR;
+		if (diag_dir == DiagDirection::Invalid) return Trackdir::Invalid;
 		dir = DiagDirToDiagTrackdir(diag_dir);
 	} else {
-		if (already_reversed && (prev->tile != tile || (prev_state < TRACKDIR_END && IsReversingRoadTrackdir(static_cast<Trackdir>(prev_state))))) {
+		if (already_reversed && (prev->tile != tile || (static_cast<Trackdir>(prev_state) < Trackdir::End && IsReversingRoadTrackdir(static_cast<Trackdir>(prev_state))))) {
 			/*
 			 * The vehicle has reversed, but did not go straight back.
 			 * It immediately turn onto another tile. This means that
@@ -1093,18 +1084,18 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 			if (prev->tile != tile) {
 				north = prev->tile < tile;
 			} else {
-				north = (prev_state == TRACKDIR_RVREV_NW || prev_state == TRACKDIR_RVREV_NE);
+				north = static_cast<Trackdir>(prev_state) == Trackdir::RvRev_NW || static_cast<Trackdir>(prev_state) == Trackdir::RvRev_NE;
 			}
 			static const DiagDirectionIndexArray<Trackdir> reversed_turn_lookup[2] = {
-				{ TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N,  TRACKDIR_UPPER_E },
-				{ TRACKDIR_RIGHT_S, TRACKDIR_LOWER_W, TRACKDIR_LOWER_E, TRACKDIR_LEFT_S  }};
+				{ Trackdir::Upper_W, Trackdir::Right_N, Trackdir::Left_N,  Trackdir::Upper_E },
+				{ Trackdir::Right_S, Trackdir::Lower_W, Trackdir::Lower_E, Trackdir::Left_S  }};
 			dir = reversed_turn_lookup[north ? 0 : 1][ReverseDiagDir(entry_dir)];
 		} else if (HasBit(prev_state, RVS_IN_DT_ROAD_STOP)) {
-			dir = (Trackdir)(prev_state & RVSB_ROAD_STOP_TRACKDIR_MASK);
-		} else if (prev_state < TRACKDIR_END) {
-			dir = (Trackdir)prev_state;
+			dir = static_cast<Trackdir>(prev_state & RVSB_ROAD_STOP_TRACKDIR_MASK);
+		} else if (static_cast<Trackdir>(prev_state) < Trackdir::End) {
+			dir = static_cast<Trackdir>(prev_state);
 		} else {
-			return INVALID_TRACKDIR;
+			return Trackdir::Invalid;
 		}
 	}
 
@@ -1119,10 +1110,10 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 		ROAD_X,
 		ROAD_Y,
 	};
-	RoadBits required = required_roadbits[dir & 0x07];
+	RoadBits required = required_roadbits[to_underlying(dir) & 0x07];
 
 	if (!required.Any(GetAnyRoadBits(tile, GetRoadTramType(v->roadtype), true))) {
-		dir = INVALID_TRACKDIR;
+		dir = Trackdir::Invalid;
 	}
 
 	return dir;
@@ -1153,7 +1144,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 			/* If overtaking just aborts at a random moment, we can have a out-of-bound problem,
 			 *  if the vehicle started a corner. To protect that, only allow an abort of
 			 *  overtake if we are on straight roads */
-			if (v->state < RVSB_IN_ROAD_STOP && IsStraightRoadTrackdir((Trackdir)v->state)) {
+			if (v->state < RVSB_IN_ROAD_STOP && IsStraightRoadTrackdir(static_cast<Trackdir>(v->state))) {
 				v->overtaking = 0;
 			}
 		}
@@ -1215,7 +1206,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 			dir = FollowPreviousRoadVehicle(v, prev, tile, diagdir, false);
 		}
 
-		if (dir == INVALID_TRACKDIR) {
+		if (dir == Trackdir::Invalid) {
 			if (!v->IsFrontEngine()) FatalError("Disconnecting road vehicle.");
 			v->cur_speed = 0;
 			return false;
@@ -1234,10 +1225,10 @@ again:
 				RoadBit needed;
 				switch (dir) {
 					default: NOT_REACHED();
-					case TRACKDIR_RVREV_NE: needed = RoadBit::SW; break;
-					case TRACKDIR_RVREV_SE: needed = RoadBit::NW; break;
-					case TRACKDIR_RVREV_SW: needed = RoadBit::NE; break;
-					case TRACKDIR_RVREV_NW: needed = RoadBit::SE; break;
+					case Trackdir::RvRev_NE: needed = RoadBit::SW; break;
+					case Trackdir::RvRev_SE: needed = RoadBit::NW; break;
+					case Trackdir::RvRev_SW: needed = RoadBit::NE; break;
+					case Trackdir::RvRev_NW: needed = RoadBit::SE; break;
 				}
 				if ((v->Previous() != nullptr && v->Previous()->tile == tile) ||
 						(v->IsFrontEngine() && IsNormalRoadTile(tile) && !HasRoadWorks(tile) &&
@@ -1281,7 +1272,7 @@ again:
 		}
 
 		/* Get position data for first frame on the new tile */
-		const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(dir + (to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE)) ^ v->overtaking];
+		const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(to_underlying(dir) + (to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE)) ^ v->overtaking];
 
 		int x = TileX(tile) * TILE_SIZE + rdp[start_frame].x;
 		int y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
@@ -1327,7 +1318,7 @@ again:
 					RoadStop::IsDriveThroughRoadStopContinuation(v->tile, tile) &&
 					v->tile != tile) {
 				/* So, keep 'our' state */
-				dir = (Trackdir)v->state;
+				dir = static_cast<Trackdir>(v->state);
 			} else if (IsStationRoadStop(v->tile)) {
 				/* We're not continuing our drive through road stop, so leave. */
 				RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile))->Leave(v);
@@ -1377,10 +1368,10 @@ again:
 			turn_around_start_frame = RVC_START_FRAME_AFTER_LONG_TRAM;
 			switch (static_cast<DiagDirection>(rd.x & 0x3)) {
 				default: NOT_REACHED();
-				case DiagDirection::NW: dir = TRACKDIR_RVREV_SE; break;
-				case DiagDirection::NE: dir = TRACKDIR_RVREV_SW; break;
-				case DiagDirection::SE: dir = TRACKDIR_RVREV_NW; break;
-				case DiagDirection::SW: dir = TRACKDIR_RVREV_NE; break;
+				case DiagDirection::NW: dir = Trackdir::RvRev_SE; break;
+				case DiagDirection::NE: dir = Trackdir::RvRev_SW; break;
+				case DiagDirection::SE: dir = Trackdir::RvRev_NW; break;
+				case DiagDirection::SW: dir = Trackdir::RvRev_NE; break;
 			}
 		} else {
 			if (v->IsFrontEngine()) {
@@ -1391,12 +1382,12 @@ again:
 			}
 		}
 
-		if (dir == INVALID_TRACKDIR) {
+		if (dir == Trackdir::Invalid) {
 			v->cur_speed = 0;
 			return false;
 		}
 
-		const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE) + dir];
+		const RoadDriveEntry *rdp = _road_drive_data[GetRoadTramType(v->roadtype)][(to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE) + to_underlying(dir)];
 
 		int x = TileX(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].x;
 		int y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
@@ -1418,7 +1409,7 @@ again:
 			return false;
 		}
 
-		v->state = dir;
+		v->state = to_underlying(dir);
 		v->frame = turn_around_start_frame;
 
 		if (new_dir != v->direction) {
@@ -1750,7 +1741,7 @@ void RoadVehicle::OnNewEconomyDay()
 
 Trackdir RoadVehicle::GetVehicleTrackdir() const
 {
-	if (this->vehstatus.Test(VehState::Crashed)) return INVALID_TRACKDIR;
+	if (this->vehstatus.Test(VehState::Crashed)) return Trackdir::Invalid;
 
 	if (this->IsInDepot()) {
 		/* We'll assume the road vehicle is facing outwards */
@@ -1767,7 +1758,7 @@ Trackdir RoadVehicle::GetVehicleTrackdir() const
 
 	/* If vehicle's state is a valid track direction (vehicle is not turning around) return it,
 	 * otherwise transform it into a valid track direction */
-	return (Trackdir)((IsReversingRoadTrackdir((Trackdir)this->state)) ? (this->state - 6) : this->state);
+	return static_cast<Trackdir>(IsReversingRoadTrackdir(static_cast<Trackdir>(this->state)) ? (this->state - 6) : this->state);
 }
 
 uint16_t RoadVehicle::GetMaxWeight() const

@@ -287,7 +287,7 @@ void Ship::OnNewEconomyDay()
 
 Trackdir Ship::GetVehicleTrackdir() const
 {
-	if (this->vehstatus.Test(VehState::Crashed)) return INVALID_TRACKDIR;
+	if (this->vehstatus.Test(VehState::Crashed)) return Trackdir::Invalid;
 
 	if (this->IsInDepot()) {
 		/* We'll assume the ship is facing outwards */
@@ -387,7 +387,7 @@ static bool CheckShipStayInDepot(Ship *v)
 			return u->type == VehicleType::Ship && u->cur_speed != 0;
 		})) return true;
 
-	assert(v->GetVehicleTrackdir() == TRACKDIR_X_NE || v->GetVehicleTrackdir() == TRACKDIR_Y_NW);
+	assert(v->GetVehicleTrackdir() == Trackdir::X_NE || v->GetVehicleTrackdir() == Trackdir::Y_NW);
 	v->direction = DiagDirToDir(TrackdirToExitdir(v->GetVehicleTrackdir()));
 	if (CheckReverseShip(v)) v->direction = ReverseDir(v->direction);
 
@@ -716,9 +716,9 @@ static void ShipController(Ship *v)
 				assert(diagdir != DiagDirection::Invalid);
 				const TrackBits tracks = GetAvailShipTracks(gp.new_tile, diagdir);
 				if (tracks.None()) {
-					Trackdir trackdir = INVALID_TRACKDIR;
+					Trackdir trackdir = Trackdir::Invalid;
 					CheckReverseShip(v, &trackdir);
-					if (trackdir == INVALID_TRACKDIR) return ReverseShip(v);
+					if (trackdir == Trackdir::Invalid) return ReverseShip(v);
 					return ReverseShipIntoTrackdir(v, trackdir);
 				}
 
