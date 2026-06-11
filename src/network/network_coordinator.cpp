@@ -126,16 +126,16 @@ public:
 
 bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &p)
 {
-	NetworkCoordinatorErrorType error = (NetworkCoordinatorErrorType)p.Recv_uint8();
+	NetworkCoordinatorErrorType error = static_cast<NetworkCoordinatorErrorType>(p.Recv_uint8());
 	std::string detail = p.Recv_string(NETWORK_ERROR_DETAIL_LENGTH);
 	Debug(net, 9, "Coordinator::ReceiveGameCoordinatorError({}, {})", error, detail);
 
 	switch (error) {
-		case NETWORK_COORDINATOR_ERROR_UNKNOWN:
+		case NetworkCoordinatorErrorType::Unknown:
 			this->CloseConnection();
 			return false;
 
-		case NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED:
+		case NetworkCoordinatorErrorType::RegistrationFailed:
 			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED), {}, WarningLevel::Error);
 
 			/* To prevent that we constantly try to reconnect, switch to local game. */
@@ -144,7 +144,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &
 			this->CloseConnection();
 			return false;
 
-		case NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE: {
+		case NetworkCoordinatorErrorType::InvalidInviteCode: {
 			auto connecter_pre_it = this->connecter_pre.find(detail);
 			if (connecter_pre_it != this->connecter_pre.end()) {
 				connecter_pre_it->second->SetFailure();
@@ -159,7 +159,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &
 			return true;
 		}
 
-		case NETWORK_COORDINATOR_ERROR_REUSE_OF_INVITE_CODE:
+		case NetworkCoordinatorErrorType::ReuseOfInviteCode:
 			ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE), {}, WarningLevel::Error);
 
 			/* To prevent that we constantly battle for the same invite-code, switch to local game. */
