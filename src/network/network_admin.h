@@ -96,9 +96,9 @@ public:
 		/**
 		 * Check whether the given admin is active.
 		 * @param index The index of the admin.
-		 * @return \c true iff the admin's status is #ADMIN_STATUS_ACTIVE.
+		 * @return \c true iff the admin's status is #AdminStatus::Active.
 		 */
-		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; }
+		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == AdminStatus::Active; }
 	};
 
 	/**
