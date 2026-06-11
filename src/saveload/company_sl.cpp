@@ -235,12 +235,12 @@ void AfterLoadCompanyStats()
 					uint len = (GetTunnelBridgeLength(tile, other_end) + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
 
 					switch (GetTunnelBridgeTransportType(tile)) {
-						case TRANSPORT_RAIL:
+						case TransportType::Rail:
 							c = Company::GetIfValid(GetTileOwner(tile));
 							if (c != nullptr) c->infrastructure.rail[GetRailType(tile)] += len;
 							break;
 
-						case TRANSPORT_ROAD: {
+						case TransportType::Road: {
 							/* Iterate all present road types as each can have a different owner. */
 							for (RoadTramType rtt : ROADTRAMTYPES_ALL) {
 								RoadType rt = GetRoadType(tile, rtt);
@@ -251,7 +251,7 @@ void AfterLoadCompanyStats()
 							break;
 						}
 
-						case TRANSPORT_WATER:
+						case TransportType::Water:
 							c = Company::GetIfValid(GetTileOwner(tile));
 							if (c != nullptr) c->infrastructure.water += len;
 							break;

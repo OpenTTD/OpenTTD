@@ -89,10 +89,10 @@ struct CFollowTrackT {
 	}
 
 	[[debug_inline]] inline static TransportType TT() { return Ttr_type_; }
-	[[debug_inline]] inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
-	[[debug_inline]] inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
+	[[debug_inline]] inline static bool IsWaterTT() { return TT() == TransportType::Water; }
+	[[debug_inline]] inline static bool IsRailTT() { return TT() == TransportType::Rail; }
 	inline bool IsTram() { return IsRoadTT() && RoadTypeIsTram(RoadVehicle::From(this->veh)->roadtype); }
-	[[debug_inline]] inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
+	[[debug_inline]] inline static bool IsRoadTT() { return TT() == TransportType::Road; }
 	static inline bool Allow90degTurns() { return T90deg_turns_allowed_; }
 	static inline bool DoTrackMasking() { return Tmask_reserved_tracks; }
 
@@ -501,13 +501,13 @@ public:
 	}
 };
 
-typedef CFollowTrackT<TRANSPORT_WATER, Ship,        true > CFollowTrackWater;
-typedef CFollowTrackT<TRANSPORT_ROAD,  RoadVehicle, true > CFollowTrackRoad;
-typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       true > CFollowTrackRail;
+typedef CFollowTrackT<TransportType::Water, Ship, true> CFollowTrackWater;
+typedef CFollowTrackT<TransportType::Road, RoadVehicle, true> CFollowTrackRoad;
+typedef CFollowTrackT<TransportType::Rail, Train, true> CFollowTrackRail;
 
-typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       false> CFollowTrackRailNo90;
+typedef CFollowTrackT<TransportType::Rail, Train, false> CFollowTrackRailNo90;
 
-typedef CFollowTrackT<TRANSPORT_RAIL, Train, true,  true > CFollowTrackFreeRail;
-typedef CFollowTrackT<TRANSPORT_RAIL, Train, false, true > CFollowTrackFreeRailNo90;
+typedef CFollowTrackT<TransportType::Rail, Train, true, true> CFollowTrackFreeRail;
+typedef CFollowTrackT<TransportType::Rail, Train, false, true> CFollowTrackFreeRailNo90;
 
 #endif /* FOLLOW_TRACK_HPP */

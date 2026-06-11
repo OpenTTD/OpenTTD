@@ -438,8 +438,8 @@ static void FixOwnerOfRailTrack(Tile t)
 	/* try to find any connected rail */
 	for (DiagDirection dd : EnumRange(DiagDirection::End)) {
 		TileIndex tt{t + TileOffsByDiagDir(dd)};
-		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd).trackdirs.Any() &&
-				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)).trackdirs.Any() &&
+		if (GetTileTrackStatus(t, TransportType::Rail, RoadTramType::Invalid, dd).trackdirs.Any() &&
+				GetTileTrackStatus(tt, TransportType::Rail, RoadTramType::Invalid, ReverseDiagDir(dd)).trackdirs.Any() &&
 				Company::IsValidID(GetTileOwner(tt))) {
 			SetTileOwner(t, GetTileOwner(tt));
 			return;
@@ -1114,7 +1114,7 @@ bool AfterLoadGame()
 				case TileType::TunnelBridge:
 					/* Middle part of "old" bridges */
 					if (old_bridge && IsBridge(t) && HasBit(t.m5(), 6)) break;
-					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(t.m5(), 1, 2) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
+					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(t.m5(), 1, 2) : GetTunnelBridgeTransportType(t)) == TransportType::Road) {
 						SB(t.m7(), 6, 2, 1); // Set pre-NRT road type bits for conversion later.
 					}
 					break;
@@ -1172,7 +1172,7 @@ bool AfterLoadGame()
 
 				case TileType::TunnelBridge:
 					if (old_bridge && IsBridge(t) && HasBit(t.m5(), 6)) break;
-					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(t.m5(), 1, 2) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
+					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(t.m5(), 1, 2) : GetTunnelBridgeTransportType(t)) == TransportType::Road) {
 						if (fix_roadtypes) SB(t.m7(), 6, 2, GB(t.m3(), 0, 3));
 
 						Owner o = GetTileOwner(t);
@@ -1212,7 +1212,7 @@ bool AfterLoadGame()
 					break;
 
 				case TileType::TunnelBridge:
-					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
+					if (GetTunnelBridgeTransportType(t) == TransportType::Rail) {
 						SetRailType(t, (RailType)GB(t.m3(), 0, 4));
 					}
 					break;
@@ -1231,7 +1231,7 @@ bool AfterLoadGame()
 					Axis axis = static_cast<Axis>(GB(t.m5(), 0, 1));
 
 					if (HasBit(t.m5(), 5)) { // transport route under bridge?
-						if (GB(t.m5(), 3, 2) == TRANSPORT_RAIL) {
+						if (static_cast<TransportType>(GB(t.m5(), 3, 2)) == TransportType::Rail) {
 							MakeRailNormal(
 								t,
 								GetTileOwner(t),
@@ -1270,9 +1270,9 @@ bool AfterLoadGame()
 					Axis axis = static_cast<Axis>(GB(t.m5(), 0, 1));
 					uint north_south = GB(t.m5(), 5, 1);
 					DiagDirection dir = ReverseDiagDir(XYNSToDiagDir(axis, north_south));
-					TransportType type = (TransportType)GB(t.m5(), 1, 2);
+					TransportType type = static_cast<TransportType>(GB(t.m5(), 1, 2));
 
-					t.m5() = 1 << 7 | type << 2 | to_underlying(dir);
+					t.m5() = 1 << 7 | to_underlying(type) << 2 | to_underlying(dir);
 				}
 			}
 		}
@@ -1316,7 +1316,7 @@ bool AfterLoadGame()
 					has_road = IsAnyRoadStop(t);
 					break;
 				case TileType::TunnelBridge:
-					has_road = GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD;
+					has_road = GetTunnelBridgeTransportType(t) == TransportType::Road;
 					break;
 				default:
 					break;
@@ -1364,7 +1364,7 @@ bool AfterLoadGame()
 					break;
 
 				case TileType::TunnelBridge:
-					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
+					if (GetTunnelBridgeTransportType(t) == TransportType::Rail) {
 						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 					}
 					break;
@@ -2049,7 +2049,7 @@ bool AfterLoadGame()
 					break;
 
 				case TileType::TunnelBridge: // Clear PBS reservation on tunnels/bridges
-					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) SetTunnelBridgeReservation(t, false);
+					if (GetTunnelBridgeTransportType(t) == TransportType::Rail) SetTunnelBridgeReservation(t, false);
 					break;
 
 				default: break;
@@ -2770,7 +2770,7 @@ bool AfterLoadGame()
 
 					if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) break;
 
-					TrackStatus ts = GetTileTrackStatus(rv->tile, TRANSPORT_ROAD, GetRoadTramType(rv->roadtype));
+					TrackStatus ts = GetTileTrackStatus(rv->tile, TransportType::Road, GetRoadTramType(rv->roadtype));
 					TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
 					/* Only X/Y tracks can be sloped. */

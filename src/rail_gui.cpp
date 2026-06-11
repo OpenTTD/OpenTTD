@@ -237,7 +237,7 @@ static void PlaceRail_Station(TileIndex tile)
  */
 static void GenericPlaceSignals(TileIndex tile)
 {
-	TrackBits trackbits = TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs);
+	TrackBits trackbits = TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid).trackdirs);
 
 	if (trackbits.Any(TRACK_BIT_VERT)) { // N-S direction
 		trackbits = (_tile_fract_coords.x <= _tile_fract_coords.y) ? Track::Right : Track::Left;
@@ -448,7 +448,7 @@ struct BuildRailToolbarWindow : Window {
 	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc), railtype(railtype)
 	{
 		this->CreateNestedTree();
-		this->FinishInitNested(TRANSPORT_RAIL);
+		this->FinishInitNested(TransportType::Rail);
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->OnInvalidateData();
 
@@ -484,10 +484,10 @@ struct BuildRailToolbarWindow : Window {
 		bool can_build = CanBuildVehicleInfrastructure(VehicleType::Train);
 		for (const WidgetID widget : can_build_widgets) this->SetWidgetDisabledState(widget, !can_build);
 		if (!can_build) {
-			CloseWindowById(WindowClass::BuildSignal, TRANSPORT_RAIL);
-			CloseWindowById(WindowClass::BuildStation, TRANSPORT_RAIL);
-			CloseWindowById(WindowClass::BuildDepot, TRANSPORT_RAIL);
-			CloseWindowById(WindowClass::BuildWaypoint, TRANSPORT_RAIL);
+			CloseWindowById(WindowClass::BuildSignal, TransportType::Rail);
+			CloseWindowById(WindowClass::BuildStation, TransportType::Rail);
+			CloseWindowById(WindowClass::BuildDepot, TransportType::Rail);
+			CloseWindowById(WindowClass::BuildWaypoint, TransportType::Rail);
 			CloseWindowById(WindowClass::JoinStation, 0);
 		}
 	}
@@ -722,7 +722,7 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case WID_RAT_BUILD_TUNNEL:
-				Command<Commands::BuildTunnel>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, TRANSPORT_RAIL, _cur_railtype, INVALID_ROADTYPE);
+				Command<Commands::BuildTunnel>::Post(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE, CcBuildRailTunnel, tile, TransportType::Rail, _cur_railtype, INVALID_ROADTYPE);
 				break;
 
 			case WID_RAT_CONVERT_RAIL:
@@ -753,7 +753,7 @@ struct BuildRailToolbarWindow : Window {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
 					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_RAIL, _cur_railtype, INVALID_ROADTYPE);
+					ShowBuildBridgeWindow(start_tile, end_tile, TransportType::Rail, _cur_railtype, INVALID_ROADTYPE);
 					break;
 
 				case DDSP_PLACE_RAIL:
@@ -817,17 +817,17 @@ struct BuildRailToolbarWindow : Window {
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->SetWidgetDirty(WID_RAT_REMOVE);
 
-		CloseWindowById(WindowClass::BuildSignal, TRANSPORT_RAIL);
-		CloseWindowById(WindowClass::BuildStation, TRANSPORT_RAIL);
-		CloseWindowById(WindowClass::BuildDepot, TRANSPORT_RAIL);
-		CloseWindowById(WindowClass::BuildWaypoint, TRANSPORT_RAIL);
+		CloseWindowById(WindowClass::BuildSignal, TransportType::Rail);
+		CloseWindowById(WindowClass::BuildStation, TransportType::Rail);
+		CloseWindowById(WindowClass::BuildDepot, TransportType::Rail);
+		CloseWindowById(WindowClass::BuildWaypoint, TransportType::Rail);
 		CloseWindowById(WindowClass::JoinStation, 0);
 		CloseWindowByClass(WindowClass::BuildBridge);
 	}
 
 	void OnPlacePresize([[maybe_unused]] Point pt, TileIndex tile) override
 	{
-		Command<Commands::BuildTunnel>::Do(DoCommandFlag::Auto, tile, TRANSPORT_RAIL, _cur_railtype, INVALID_ROADTYPE);
+		Command<Commands::BuildTunnel>::Do(DoCommandFlag::Auto, tile, TransportType::Rail, _cur_railtype, INVALID_ROADTYPE);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == INVALID_TILE ? tile : _build_tunnel_endtile);
 	}
 
@@ -861,7 +861,7 @@ struct BuildRailToolbarWindow : Window {
 
 		/* Update cursor and all sub windows. */
 		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
-		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TRANSPORT_RAIL);
+		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TransportType::Rail);
 
 		return EventState::Handled;
 	}
@@ -1152,7 +1152,7 @@ private:
 	}
 
 public:
-	BuildRailStationWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, StationPickerCallbacks::instance)
+	BuildRailStationWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TransportType::Rail, StationPickerCallbacks::instance)
 	{
 		this->coverage_height = 2 * GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		this->ConstructWindow();
@@ -1432,7 +1432,7 @@ public:
 	static EventState BuildRailStationGlobalHotkeys(int hotkey)
 	{
 		if (_game_mode == GameMode::Menu) return EventState::NotHandled;
-		Window *w = ShowStationBuilder(FindWindowById(WindowClass::BuildToolbar, TRANSPORT_RAIL));
+		Window *w = ShowStationBuilder(FindWindowById(WindowClass::BuildToolbar, TransportType::Rail));
 		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
@@ -1550,7 +1550,7 @@ public:
 	{
 		this->CreateNestedTree();
 		this->SetSignalUIMode();
-		this->FinishInitNested(TRANSPORT_RAIL);
+		this->FinishInitNested(TransportType::Rail);
 		this->OnInvalidateData();
 	}
 
@@ -1639,7 +1639,7 @@ public:
 
 				/* If 'remove' button of rail build toolbar is active, disable it. */
 				if (_remove_button_clicked) {
-					Window *w = FindWindowById(WindowClass::BuildToolbar, TRANSPORT_RAIL);
+					Window *w = FindWindowById(WindowClass::BuildToolbar, TransportType::Rail);
 					if (w != nullptr) ToggleRailButton_Remove(w);
 				}
 
@@ -1771,7 +1771,7 @@ static void ShowSignalBuilder(Window *parent)
 struct BuildRailDepotWindow : public PickerWindowBase {
 	BuildRailDepotWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->InitNested(TRANSPORT_RAIL);
+		this->InitNested(TransportType::Rail);
 		this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
 	}
 
@@ -1931,7 +1931,7 @@ public:
 /* static */ WaypointPickerCallbacks WaypointPickerCallbacks::instance;
 
 struct BuildRailWaypointWindow : public PickerWindow {
-	BuildRailWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, WaypointPickerCallbacks::instance)
+	BuildRailWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TransportType::Rail, WaypointPickerCallbacks::instance)
 	{
 		this->ConstructWindow();
 	}
@@ -1990,7 +1990,7 @@ void ReinitGuiAfterToggleElrail(bool disable)
 {
 	if (disable && _last_built_railtype == RAILTYPE_ELECTRIC) {
 		_last_built_railtype = _cur_railtype = RAILTYPE_RAIL;
-		BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WindowClass::BuildToolbar, TRANSPORT_RAIL));
+		BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WindowClass::BuildToolbar, TransportType::Rail));
 		if (w != nullptr) w->ModifyRailType(_cur_railtype);
 	}
 	MarkWholeScreenDirty();

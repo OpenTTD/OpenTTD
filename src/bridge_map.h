@@ -133,7 +133,7 @@ inline void MakeBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = 1 << 7 | tt << 2 | to_underlying(d);
+	t.m5() = 1 << 7 | to_underlying(tt) << 2 | to_underlying(d);
 	SB(t.m6(), 2, 4, bridgetype);
 	SB(t.m6(), 6, 2, 0);
 	t.m7() = 0;
@@ -153,7 +153,7 @@ inline void MakeBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection
  */
 inline void MakeRoadBridgeRamp(Tile t, Owner o, Owner owner_road, Owner owner_tram, BridgeType bridgetype, DiagDirection d, RoadType road_rt, RoadType tram_rt)
 {
-	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD);
+	MakeBridgeRamp(t, o, bridgetype, d, TransportType::Road);
 	SetRoadOwner(t, RoadTramType::Road, owner_road);
 	if (owner_tram != OWNER_TOWN) SetRoadOwner(t, RoadTramType::Tram, owner_tram);
 	SetRoadTypes(t, road_rt, tram_rt);
@@ -169,7 +169,7 @@ inline void MakeRoadBridgeRamp(Tile t, Owner o, Owner owner_road, Owner owner_tr
  */
 inline void MakeRailBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection d, RailType rt)
 {
-	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL);
+	MakeBridgeRamp(t, o, bridgetype, d, TransportType::Rail);
 	SetRailType(t, rt);
 }
 
@@ -181,7 +181,7 @@ inline void MakeRailBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirec
  */
 inline void MakeAqueductBridgeRamp(Tile t, Owner o, DiagDirection d)
 {
-	MakeBridgeRamp(t, o, 0, d, TRANSPORT_WATER);
+	MakeBridgeRamp(t, o, 0, d, TransportType::Water);
 }
 
 #endif /* BRIDGE_MAP_H */

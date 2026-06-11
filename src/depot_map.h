@@ -23,16 +23,16 @@ inline bool IsDepotTypeTile(Tile tile, TransportType type)
 {
 	switch (type) {
 		default: NOT_REACHED();
-		case TRANSPORT_RAIL:
+		case TransportType::Rail:
 			return IsRailDepotTile(tile);
 
-		case TRANSPORT_ROAD:
+		case TransportType::Road:
 			return IsRoadDepotTile(tile);
 
-		case TRANSPORT_WATER:
+		case TransportType::Water:
 			return IsShipDepotTile(tile);
 
-		case TRANSPORT_AIR:
+		case TransportType::Air:
 			return IsHangarTile(tile);
 	}
 }

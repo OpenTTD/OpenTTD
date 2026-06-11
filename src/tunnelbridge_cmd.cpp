@@ -172,8 +172,8 @@ static std::span<const PalSpriteID> GetBridgeSpriteTable(BridgeType bridge_type,
 static uint8_t GetBridgeSpriteTableBaseOffset(TransportType transport_type, TileIndex ramp)
 {
 	switch (transport_type) {
-		case TRANSPORT_RAIL: return GetRailTypeInfo(GetRailType(ramp))->bridge_offset;
-		case TRANSPORT_ROAD: return 8;
+		case TransportType::Rail: return GetRailTypeInfo(GetRailType(ramp))->bridge_offset;
+		case TransportType::Road: return 8;
 		default: NOT_REACHED();
 	}
 }
@@ -267,7 +267,7 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 
 	/* Add the cost of the transport that is on the tunnel/bridge. */
 	switch (GetTunnelBridgeTransportType(tile)) {
-		case TRANSPORT_ROAD: {
+		case TransportType::Road: {
 			RoadType road_rt = GetRoadTypeRoad(tile);
 			RoadType tram_rt = GetRoadTypeTram(tile);
 
@@ -279,9 +279,9 @@ static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
 			}
 		} break;
 
-		case TRANSPORT_RAIL: base_cost += RailClearCost(GetRailType(tile)); break;
+		case TransportType::Rail: base_cost += RailClearCost(GetRailType(tile)); break;
 		/* Aqueducts have their own clear price. */
-		case TRANSPORT_WATER: base_cost = _price[Price::ClearAqueduct]; break;
+		case TransportType::Water: base_cost = _price[Price::ClearAqueduct]; break;
 		default: break;
 	}
 
@@ -316,20 +316,20 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		if (!IsValidTile(t)) return CommandCost(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
 		/* User cannot modify height of tiles with one coordinate equal to zero, they are always at the sea level, and you can't build bridge in the sea.
 		 * Furthermore, they are void tiles unless map is infinite water. If we don't return for them here, we will still fail as their slope is invalid. */
-		if (TileX(t) == 0 || TileY(t) == 0) return CommandCost(transport_type == TRANSPORT_WATER ? STR_ERROR_BRIDGE_THROUGH_MAP_BORDER : STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
+		if (TileX(t) == 0 || TileY(t) == 0) return CommandCost(transport_type == TransportType::Water ? STR_ERROR_BRIDGE_THROUGH_MAP_BORDER : STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
 	}
 
 	/* type of bridge */
 	switch (transport_type) {
-		case TRANSPORT_ROAD:
+		case TransportType::Road:
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 
-		case TRANSPORT_RAIL:
+		case TransportType::Rail:
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
-		case TRANSPORT_WATER:
+		case TransportType::Water:
 			break;
 
 		default:
@@ -338,7 +338,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	}
 
 	if (company == OWNER_DEITY) {
-		if (transport_type != TRANSPORT_ROAD) return CMD_ERROR;
+		if (transport_type != TransportType::Road) return CMD_ERROR;
 		const Town *town = CalcClosestTownFromTile(tile_start);
 
 		company = OWNER_TOWN;
@@ -365,7 +365,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	if (tile_end < tile_start) std::swap(tile_start, tile_end);
 
 	uint bridge_len = GetTunnelBridgeLength(tile_start, tile_end);
-	if (transport_type != TRANSPORT_WATER) {
+	if (transport_type != TransportType::Water) {
 		/* set and test bridge length, availability */
 		CommandCost ret = CheckBridgeAvailability(bridge_type, bridge_len, flags);
 		if (ret.Failed()) return ret;
@@ -382,7 +382,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	CommandCost terraform_cost_south = CheckBridgeSlope(BRIDGE_PIECE_SOUTH, direction, tileh_end,   z_end);
 
 	/* Aqueducts can't be built of flat land. */
-	if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (transport_type == TransportType::Water && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	if (z_start != z_end) return CommandCost(STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
 	CommandCost cost(ExpensesType::Construction);
@@ -396,12 +396,12 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		/* Replace a current bridge. */
 
 		switch (transport_type) {
-			case TRANSPORT_RAIL:
+			case TransportType::Rail:
 				/* Keep the reservation, the path stays valid. */
 				pbs_reservation = HasTunnelBridgeReservation(tile_start);
 				break;
 
-			case TRANSPORT_ROAD:
+			case TransportType::Road:
 				/* Do not remove road types when upgrading a bridge */
 				road_rt = GetRoadTypeRoad(tile_start);
 				tram_rt = GetRoadTypeTram(tile_start);
@@ -411,12 +411,12 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		}
 
 		/* If this is a railway bridge, make sure the railtypes match. */
-		if (transport_type == TRANSPORT_RAIL && GetRailType(tile_start) != railtype) {
+		if (transport_type == TransportType::Rail && GetRailType(tile_start) != railtype) {
 			return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 
 		/* If this is a road bridge, make sure the roadtype matches. */
-		if (transport_type == TRANSPORT_ROAD) {
+		if (transport_type == TransportType::Road) {
 			RoadType existing_rt = RoadTypeIsRoad(roadtype) ? road_rt : tram_rt;
 			if (existing_rt != roadtype && existing_rt != INVALID_ROADTYPE) {
 				return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -425,7 +425,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 
 		if (!flags.Test(DoCommandFlag::QueryCost)) {
 			/* Do not replace the bridge with the same bridge type. */
-			if ((bridge_type == GetBridgeType(tile_start)) && (transport_type != TRANSPORT_ROAD || road_rt == roadtype || tram_rt == roadtype)) {
+			if ((bridge_type == GetBridgeType(tile_start)) && (transport_type != TransportType::Road || road_rt == roadtype || tram_rt == roadtype)) {
 				return CommandCost(STR_ERROR_ALREADY_BUILT);
 			}
 
@@ -465,7 +465,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	} else {
 		/* Build a new bridge. */
 
-		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
+		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TransportType::Water);
 
 		/* Try and clear the start landscape */
 		CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, tile_start);
@@ -530,7 +530,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 
 	bool hasroad = road_rt != INVALID_ROADTYPE;
 	bool hastram = tram_rt != INVALID_ROADTYPE;
-	if (transport_type == TRANSPORT_ROAD) {
+	if (transport_type == TransportType::Road) {
 		if (RoadTypeIsRoad(roadtype)) road_rt = roadtype;
 		if (RoadTypeIsTram(roadtype)) tram_rt = roadtype;
 	}
@@ -541,7 +541,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 
 		Company *c = Company::GetIfValid(company);
 		switch (transport_type) {
-			case TRANSPORT_RAIL:
+			case TransportType::Rail:
 				/* Add to company infrastructure count if required. */
 				if (is_new_owner && c != nullptr) c->infrastructure.rail[railtype] += bridge_len * TUNNELBRIDGE_TRACKBIT_FACTOR;
 				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir,                 railtype);
@@ -550,7 +550,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 				SetTunnelBridgeReservation(tile_end,   pbs_reservation);
 				break;
 
-			case TRANSPORT_ROAD: {
+			case TransportType::Road: {
 				if (is_new_owner) {
 					/* Also give unowned present roadtypes to new owner */
 					if (hasroad && GetRoadOwner(tile_start, RoadTramType::Road) == OWNER_NONE) hasroad = false;
@@ -574,7 +574,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 				break;
 			}
 
-			case TRANSPORT_WATER:
+			case TransportType::Water:
 				if (is_new_owner && c != nullptr) c->infrastructure.water += bridge_len * TUNNELBRIDGE_TRACKBIT_FACTOR;
 				MakeAqueductBridgeRamp(tile_start, owner, dir);
 				MakeAqueductBridgeRamp(tile_end,   owner, ReverseDiagDir(dir));
@@ -591,7 +591,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		DirtyCompanyInfrastructureWindows(company);
 	}
 
-	if (flags.Test(DoCommandFlag::Execute) && transport_type == TRANSPORT_RAIL) {
+	if (flags.Test(DoCommandFlag::Execute) && transport_type == TransportType::Rail) {
 		Track track = AxisToTrack(direction);
 		AddSideToSignalBuffer(tile_start, DiagDirection::Invalid, company);
 		YapfNotifyTrackLayoutChange(tile_start, track);
@@ -604,7 +604,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	Company *c = Company::GetIfValid(company);
 	if (!flags.Test(DoCommandFlag::QueryCost) || (c != nullptr && c->is_ai && company != _local_company)) {
 		switch (transport_type) {
-			case TRANSPORT_ROAD:
+			case TransportType::Road:
 				if (road_rt != INVALID_ROADTYPE) {
 					cost.AddCost(bridge_len * 2 * RoadBuildCost(road_rt));
 				}
@@ -613,13 +613,13 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 				}
 				break;
 
-			case TRANSPORT_RAIL: cost.AddCost(bridge_len * RailBuildCost(railtype)); break;
+			case TransportType::Rail: cost.AddCost(bridge_len * RailBuildCost(railtype)); break;
 			default: break;
 		}
 
 		if (c != nullptr) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
-		if (transport_type != TRANSPORT_WATER) {
+		if (transport_type != TransportType::Water) {
 			cost.AddCost((int64_t)bridge_len * _price[Price::BuildBridge] * GetBridgeSpec(bridge_type)->price >> 8);
 		} else {
 			/* Aqueducts use a separate base cost. */
@@ -647,11 +647,11 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 
 	_build_tunnel_endtile = INVALID_TILE;
 	switch (transport_type) {
-		case TRANSPORT_RAIL:
+		case TransportType::Rail:
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
-		case TRANSPORT_ROAD:
+		case TransportType::Road:
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 
@@ -659,7 +659,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 	}
 
 	if (company == OWNER_DEITY) {
-		if (transport_type != TRANSPORT_ROAD) return CMD_ERROR;
+		if (transport_type != TransportType::Road) return CMD_ERROR;
 		const Town *town = CalcClosestTownFromTile(start_tile);
 
 		company = OWNER_TOWN;
@@ -778,15 +778,15 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 
 	/* Pay for the rail/road in the tunnel including entrances */
 	switch (transport_type) {
-		case TRANSPORT_ROAD: cost.AddCost((tiles + 2) * RoadBuildCost(roadtype) * 2); break;
-		case TRANSPORT_RAIL: cost.AddCost((tiles + 2) * RailBuildCost(railtype)); break;
+		case TransportType::Road: cost.AddCost((tiles + 2) * RoadBuildCost(roadtype) * 2); break;
+		case TransportType::Rail: cost.AddCost((tiles + 2) * RailBuildCost(railtype)); break;
 		default: NOT_REACHED();
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		Company *c = Company::GetIfValid(company);
 		uint num_pieces = (tiles + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
-		if (transport_type == TRANSPORT_RAIL) {
+		if (transport_type == TransportType::Rail) {
 			if (c != nullptr) c->infrastructure.rail[railtype] += num_pieces;
 			MakeRailTunnel(start_tile, company, direction,                 railtype);
 			MakeRailTunnel(end_tile,   company, ReverseDiagDir(direction), railtype);
@@ -817,7 +817,7 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 	if (_current_company == OWNER_WATER || _game_mode == GameMode::Editor) return CommandCost();
 
 	switch (GetTunnelBridgeTransportType(tile)) {
-		case TRANSPORT_ROAD: {
+		case TransportType::Road: {
 			RoadType road_rt = GetRoadTypeRoad(tile);
 			RoadType tram_rt = GetRoadTypeTram(tile);
 			Owner road_owner = _current_company;
@@ -839,10 +839,10 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 			return ret;
 		}
 
-		case TRANSPORT_RAIL:
+		case TransportType::Rail:
 			return CheckOwnership(GetTileOwner(tile));
 
-		case TRANSPORT_WATER: {
+		case TransportType::Water: {
 			/* Always allow to remove aqueducts without owner. */
 			Owner aqueduct_owner = GetTileOwner(tile);
 			if (aqueduct_owner == OWNER_NONE) aqueduct_owner = _current_company;
@@ -891,7 +891,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+		if (GetTunnelBridgeTransportType(tile) == TransportType::Rail) {
 			/* We first need to request values before calling DoClearSquare */
 			DiagDirection dir = GetTunnelBridgeDirection(tile);
 			Track track = DiagDirToDiagTrack(dir);
@@ -973,7 +973,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		/* read this value before actual removal of bridge */
-		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
+		bool rail = GetTunnelBridgeTransportType(tile) == TransportType::Rail;
 		Owner owner = GetTileOwner(tile);
 		int height = GetBridgeHeight(tile);
 		Train *v = nullptr;
@@ -986,7 +986,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 		/* Update company infrastructure counts. */
 		if (rail) {
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
-		} else if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
+		} else if (GetTunnelBridgeTransportType(tile) == TransportType::Road) {
 			/* A full diagonal road tile has two road bits. */
 			UpdateCompanyRoadInfrastructure(GetRoadTypeRoad(tile), GetRoadOwner(tile, RoadTramType::Road), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 			UpdateCompanyRoadInfrastructure(GetRoadTypeTram(tile), GetRoadOwner(tile, RoadTramType::Tram), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
@@ -1327,7 +1327,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		SpriteID image;
 		SpriteID railtype_overlay = 0;
-		if (transport_type == TRANSPORT_RAIL) {
+		if (transport_type == TransportType::Rail) {
 			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			image = rti->base_sprites.tunnel;
 			if (rti->UsesOverlay()) {
@@ -1344,7 +1344,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		image += to_underlying(tunnelbridge_direction) * 2;
 		DrawGroundSprite(image, PAL_NONE);
 
-		if (transport_type == TRANSPORT_ROAD) {
+		if (transport_type == TransportType::Road) {
 			RoadType road_rt = GetRoadTypeRoad(ti->tile);
 			RoadType tram_rt = GetRoadTypeTram(ti->tile);
 			const RoadTypeInfo *road_rti = road_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(road_rt);
@@ -1443,7 +1443,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		uint base_offset = GetBridgeRampDirectionBaseOffset(tunnelbridge_direction);
 		std::span<const PalSpriteID> psid;
-		if (transport_type != TRANSPORT_WATER) {
+		if (transport_type != TransportType::Water) {
 			BridgeType bridge_type = GetBridgeType(ti->tile);
 			if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 			base_offset += GetBridgeSpriteTableBaseOffset(transport_type, ti->tile);
@@ -1468,7 +1468,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* draw ramp */
 
 		/* Draw Trambits and PBS Reservation as SpriteCombine */
-		if (transport_type == TRANSPORT_ROAD || transport_type == TRANSPORT_RAIL) StartSpriteCombine();
+		if (transport_type == TransportType::Road || transport_type == TransportType::Rail) StartSpriteCombine();
 
 		/* HACK set the height of the BB of a sloped ramp to 1 so a vehicle on
 		 * it doesn't disappear behind it
@@ -1476,7 +1476,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* Bridge heads are drawn solid no matter how invisibility/transparency is set */
 		AddSortableSpriteToDraw(psid[0].sprite, psid[0].pal, *ti, {{}, {TILE_SIZE, TILE_SIZE, static_cast<uint8_t>(ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT)}, {}});
 
-		if (transport_type == TRANSPORT_ROAD) {
+		if (transport_type == TransportType::Road) {
 			uint offset = to_underlying(tunnelbridge_direction);
 			int z = ti->z;
 			if (ti->tileh != SLOPE_FLAT) {
@@ -1490,7 +1490,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			DrawBridgeRoadBits(ti->tile, ti->x, ti->y, z, offset, true, is_custom_layout);
 
 			EndSpriteCombine();
-		} else if (transport_type == TRANSPORT_RAIL) {
+		} else if (transport_type == TransportType::Rail) {
 			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			if (is_custom_layout || rti->UsesOverlay()) {
 				SpriteID surface = rti->UsesOverlay() ? GetCustomRailSprite(rti, ti->tile, RailSpriteType::Bridge) : rti->base_sprites.bridge_deck;
@@ -1582,7 +1582,7 @@ static BridgePieces CalcBridgePiece(uint north, uint south)
  */
 static BridgePillarFlags GetBridgeTilePillarFlags(TileIndex tile, TileIndex rampnorth, TileIndex rampsouth, BridgeType type, TransportType transport_type)
 {
-	if (transport_type == TRANSPORT_WATER) return BRIDGEPILLARFLAGS_ALL_CORNERS;
+	if (transport_type == TransportType::Water) return BRIDGEPILLARFLAGS_ALL_CORNERS;
 
 	const BridgeSpec *spec = GetBridgeSpec(type);
 	if (!spec->ctrl_flags.Test(BridgeSpec::ControlFlag::InvalidPillarFlags)) {
@@ -1630,7 +1630,7 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 	uint base_offset = GetBridgeMiddleAxisBaseOffset(axis);
 	std::span<const PalSpriteID> psid;
 	bool drawfarpillar;
-	if (transport_type != TRANSPORT_WATER) {
+	if (transport_type != TransportType::Water) {
 		BridgeType bridge_type = GetBridgeType(rampsouth);
 		BridgePieces bridge_piece = CalcBridgePiece(GetTunnelBridgeLength(ti->tile, rampnorth) + 1, GetTunnelBridgeLength(ti->tile, rampsouth) + 1);
 		drawfarpillar = !HasBit(GetBridgeSpec(bridge_type)->flags, 0);
@@ -1654,7 +1654,7 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR, {{}, {TILE_SIZE, TILE_SIZE, 1}, {}});
 
 	/* Draw Trambits as SpriteCombine */
-	if (transport_type == TRANSPORT_ROAD || transport_type == TRANSPORT_RAIL) StartSpriteCombine();
+	if (transport_type == TransportType::Road || transport_type == TransportType::Rail) StartSpriteCombine();
 
 	/* Draw floor and far part of bridge*/
 	if (!IsInvisibilitySet(TransparencyOption::Bridges)) {
@@ -1665,10 +1665,10 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 		}
 	}
 
-	if (transport_type == TRANSPORT_ROAD) {
+	if (transport_type == TransportType::Road) {
 		/* DrawBridgeRoadBits() calls EndSpriteCombine() and StartSpriteCombine() */
 		DrawBridgeRoadBits(rampsouth, x, y, bridge_z, to_underlying(OtherAxis(axis)), false, is_custom_layout);
-	} else if (transport_type == TRANSPORT_RAIL) {
+	} else if (transport_type == TransportType::Rail) {
 		const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(rampsouth));
 		if ((is_custom_layout || rti->UsesOverlay()) && !IsInvisibilitySet(TransparencyOption::Bridges)) {
 			SpriteID surface = rti->UsesOverlay() ? GetCustomRailSprite(rti, rampsouth, RailSpriteType::Bridge, TCX_ON_BRIDGE) : rti->base_sprites.bridge_deck;
@@ -1705,7 +1705,7 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 	}
 
 	/* Draw TramFront as SpriteCombine */
-	if (transport_type == TRANSPORT_ROAD) EndSpriteCombine();
+	if (transport_type == TransportType::Road) EndSpriteCombine();
 
 	/* Do not draw anything more if bridges are invisible */
 	if (IsInvisibilitySet(TransparencyOption::Bridges)) return;
@@ -1759,16 +1759,16 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc &td)
 	TransportType tt = GetTunnelBridgeTransportType(tile);
 
 	if (IsTunnel(tile)) {
-		td.str = (tt == TRANSPORT_RAIL) ? STR_LAI_TUNNEL_DESCRIPTION_RAILROAD : STR_LAI_TUNNEL_DESCRIPTION_ROAD;
+		td.str = (tt == TransportType::Rail) ? STR_LAI_TUNNEL_DESCRIPTION_RAILROAD : STR_LAI_TUNNEL_DESCRIPTION_ROAD;
 	} else { // IsBridge(tile)
-		td.str = (tt == TRANSPORT_WATER) ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[tt];
+		td.str = (tt == TransportType::Water) ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[to_underlying(tt)];
 	}
 	td.owner[0] = GetTileOwner(tile);
 
 	Owner road_owner = INVALID_OWNER;
 	Owner tram_owner = INVALID_OWNER;
-	RoadType road_rt = (tt == TRANSPORT_ROAD) ? GetRoadTypeRoad(tile) : INVALID_ROADTYPE;
-	RoadType tram_rt = (tt == TRANSPORT_ROAD) ? GetRoadTypeTram(tile) : INVALID_ROADTYPE;
+	RoadType road_rt = (tt == TransportType::Road) ? GetRoadTypeRoad(tile) : INVALID_ROADTYPE;
+	RoadType tram_rt = (tt == TransportType::Road) ? GetRoadTypeTram(tile) : INVALID_ROADTYPE;
 	if (road_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(road_rt);
 		td.roadtype = rti->strings.name;
@@ -1797,7 +1797,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc &td)
 		}
 	}
 
-	if (tt == TRANSPORT_RAIL) {
+	if (tt == TransportType::Rail) {
 		const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 		td.rail_speed = rti->max_speed;
 		td.railtype = rti->strings.name;
@@ -1810,7 +1810,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc &td)
 				td.rail_speed = spd;
 			}
 		}
-	} else if (tt == TRANSPORT_ROAD && !IsTunnel(tile)) {
+	} else if (tt == TransportType::Road && !IsTunnel(tile)) {
 		uint16_t spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 		/* road speed special-cases 0 as unlimited, hides display of limit etc. */
 		if (spd == UINT16_MAX) spd = 0;
@@ -1853,7 +1853,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, RoadTramType sub_mode, DiagDirection side)
 {
 	TransportType transport_type = GetTunnelBridgeTransportType(tile);
-	if (transport_type != mode || (transport_type == TRANSPORT_ROAD && !HasTileRoadType(tile, (RoadTramType)sub_mode))) return {};
+	if (transport_type != mode || (transport_type == TransportType::Road && !HasTileRoadType(tile, (RoadTramType)sub_mode))) return {};
 
 	DiagDirection dir = GetTunnelBridgeDirection(tile);
 	if (side != DiagDirection::Invalid && side != ReverseDiagDir(dir)) return {};
@@ -1870,7 +1870,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 
 	TransportType tt = GetTunnelBridgeTransportType(tile);
 
-	if (tt == TRANSPORT_ROAD) {
+	if (tt == TransportType::Road) {
 		for (RoadTramType rtt : ROADTRAMTYPES_ALL) {
 			/* Update all roadtypes, no matter if they are present */
 			if (GetRoadOwner(tile, rtt) == old_owner) {
@@ -1892,10 +1892,10 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	/* Update company infrastructure counts for rail and water as well.
 	 * No need to dirty windows here, we'll redraw the whole screen anyway. */
 	Company *old = Company::Get(old_owner);
-	if (tt == TRANSPORT_RAIL) {
+	if (tt == TransportType::Rail) {
 		old->infrastructure.rail[GetRailType(tile)] -= num_pieces;
 		if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.rail[GetRailType(tile)] += num_pieces;
-	} else if (tt == TRANSPORT_WATER) {
+	} else if (tt == TransportType::Water) {
 		old->infrastructure.water -= num_pieces;
 		if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.water += num_pieces;
 	}
@@ -1903,7 +1903,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	if (new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
 	} else {
-		if (tt == TRANSPORT_RAIL) {
+		if (tt == TransportType::Rail) {
 			/* Since all of our vehicles have been removed, it is safe to remove the rail
 			 * bridge / tunnel. */
 			[[maybe_unused]] CommandCost ret = Command<Commands::LandscapeClear>::Do({DoCommandFlag::Execute, DoCommandFlag::Bankrupt}, tile);
@@ -2099,7 +2099,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 /** @copydoc TerraformTileProc */
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
-	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile) && GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) {
+	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile) && GetTunnelBridgeTransportType(tile) != TransportType::Water) {
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;

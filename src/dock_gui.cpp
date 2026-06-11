@@ -129,8 +129,8 @@ struct BuildDocksToolbarWindow : Window {
 			WID_DT_STATION,
 			WID_DT_BUOY);
 		if (!can_build) {
-			CloseWindowById(WindowClass::BuildStation, TRANSPORT_WATER);
-			CloseWindowById(WindowClass::BuildDepot, TRANSPORT_WATER);
+			CloseWindowById(WindowClass::BuildStation, TransportType::Water);
+			CloseWindowById(WindowClass::BuildDepot, TransportType::Water);
 		}
 
 		if (_game_mode != GameMode::Editor) {
@@ -238,7 +238,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_BUILD_AQUEDUCT: // Build aqueduct button
-				Command<Commands::BuildBridge>::Post(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER, 0, INVALID_RAILTYPE, INVALID_ROADTYPE);
+				Command<Commands::BuildBridge>::Post(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TransportType::Water, 0, INVALID_RAILTYPE, INVALID_ROADTYPE);
 				break;
 
 			default: NOT_REACHED();
@@ -284,8 +284,8 @@ struct BuildDocksToolbarWindow : Window {
 
 		this->RaiseButtons();
 
-		CloseWindowById(WindowClass::BuildStation, TRANSPORT_WATER);
-		CloseWindowById(WindowClass::BuildDepot, TRANSPORT_WATER);
+		CloseWindowById(WindowClass::BuildStation, TransportType::Water);
+		CloseWindowById(WindowClass::BuildDepot, TransportType::Water);
 		CloseWindowById(WindowClass::JoinStation, 0);
 		CloseWindowByClass(WindowClass::BuildBridge);
 	}
@@ -377,7 +377,7 @@ Window *ShowBuildDocksToolbar()
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
 	CloseWindowByClass(WindowClass::BuildToolbar);
-	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_toolbar_desc, TRANSPORT_WATER);
+	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_toolbar_desc, TransportType::Water);
 }
 
 /**
@@ -415,14 +415,14 @@ static WindowDesc _build_docks_scen_toolbar_desc(
  */
 Window *ShowBuildDocksScenToolbar()
 {
-	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_scen_toolbar_desc, TRANSPORT_WATER);
+	return AllocateWindowDescFront<BuildDocksToolbarWindow>(_build_docks_scen_toolbar_desc, TransportType::Water);
 }
 
 struct BuildDocksStationWindow : public PickerWindowBase {
 public:
 	BuildDocksStationWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->InitNested(TRANSPORT_WATER);
+		this->InitNested(TransportType::Water);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + WID_BDSW_LT_OFF);
 	}
 
@@ -530,7 +530,7 @@ private:
 public:
 	BuildDocksDepotWindow(WindowDesc &desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->InitNested(TRANSPORT_WATER);
+		this->InitNested(TransportType::Water);
 		this->LowerWidget(WID_BDD_X + _ship_depot_direction);
 		UpdateDocksDirection();
 	}

@@ -55,7 +55,7 @@ inline void MakeRoadTunnel(Tile t, Owner o, DiagDirection d, RoadType road_rt, R
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = TRANSPORT_ROAD << 2 | to_underlying(d);
+	t.m5() = to_underlying(TransportType::Road) << 2 | to_underlying(d);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -78,7 +78,7 @@ inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = TRANSPORT_RAIL << 2 | to_underlying(d);
+	t.m5() = to_underlying(TransportType::Rail) << 2 | to_underlying(d);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
