@@ -263,7 +263,7 @@ void DebugReconsiderSendRemoteMessages()
 	bool enable = _settings_client.gui.developer >= 2;
 
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CONSOLE].Test(AdminUpdateFrequency::Automatic)) {
+		if (as->update_frequency[AdminUpdateType::Console].Test(AdminUpdateFrequency::Automatic)) {
 			enable = true;
 			break;
 		}
