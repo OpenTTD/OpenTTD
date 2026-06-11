@@ -1992,16 +1992,10 @@ void SetDefaultRailGui()
 	switch (_settings_client.gui.default_rail_road_type) {
 		case DefaultRailRoadType::MostUsed: {
 			/* Find the most used rail type */
-			std::array<uint, RAILTYPE_END> count{};
-			for (const auto t : Map::Iterate()) {
-				if ((IsTileType(t, TileType::Railway) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
-						(IsTileType(t, TileType::TunnelBridge) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) && IsTileOwner(t, _local_company)) {
-					count[GetRailType(t)]++;
-				}
-			}
+			const Company *c = Company::Get(_local_company);
 
-			rt = static_cast<RailType>(std::distance(std::begin(count), std::ranges::max_element(count)));
-			if (count[rt] > 0) break;
+			rt = static_cast<RailType>(std::distance(std::begin(c->infrastructure.rail), std::ranges::max_element(c->infrastructure.rail)));
+			if (c->infrastructure.rail[rt] > 0) break;
 
 			/* No rail, just get the first available one */
 			[[fallthrough]];
