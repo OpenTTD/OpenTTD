@@ -153,7 +153,7 @@ public:
 				tiles_to_check.pop_back();
 
 				const TrackdirBits valid_dirs = TrackBitsToTrackdirBits(GetWaterTracks(tile));
-				if (valid_dirs == TRACKDIR_BIT_NONE) continue;
+				if (valid_dirs.None()) continue;
 
 				WaterRegionPatchLabel &tile_patch = (*this->data.tile_patch_labels)[this->GetLocalIndex(tile)];
 				if (tile_patch != INVALID_WATER_REGION_PATCH) continue;
@@ -162,7 +162,7 @@ public:
 				highest_assigned_label = current_label;
 				increase_label = true;
 
-				for (const Trackdir dir : SetTrackdirBitIterator(valid_dirs)) {
+				for (Trackdir dir : valid_dirs) {
 					/* By using a TrackFollower we "play by the same rules" as the actual ship pathfinder */
 					CFollowTrackWater ft;
 					if (ft.Follow(tile, dir)) {

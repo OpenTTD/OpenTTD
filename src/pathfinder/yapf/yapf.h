@@ -43,7 +43,7 @@ bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir);
  * @param trackdirs available trackdirs on the new tile (to choose from)
  * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @param path_cache Cache of a previously chosen path.
- * @return          the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
+ * @return          the best trackdir for next turn or Trackdir::Invalid if the path could not be found
  */
 Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found, RoadVehPathCache &path_cache);
 

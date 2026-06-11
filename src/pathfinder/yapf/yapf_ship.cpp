@@ -86,7 +86,7 @@ public:
 
 		if (this->dest_station != StationID::Invalid()) return IsDockingTile(tile) && IsShipDestinationTile(tile, this->dest_station);
 
-		return tile == this->dest_tile && ((this->dest_trackdirs & TrackdirToTrackdirBits(td)) != TRACKDIR_BIT_NONE);
+		return tile == this->dest_tile && this->dest_trackdirs.Any(TrackdirToTrackdirBits(td));
 	}
 
 	/** @copydoc CYapfBaseT::PfCalcEstimateFunc */
@@ -159,9 +159,7 @@ public:
 	 */
 	static Trackdir GetRandomTrackdir(TrackdirBits trackdirs)
 	{
-		const int strip_amount = RandomRange(CountBits(trackdirs));
-		for (int s = 0; s < strip_amount; ++s) RemoveFirstTrackdir(&trackdirs);
-		return FindFirstTrackdir(trackdirs);
+		return trackdirs.GetNthSetBit(RandomRange(trackdirs.Count())).value_or(Trackdir::Invalid);
 	}
 
 	/**
@@ -176,11 +174,11 @@ public:
 		TrackFollower follower{v};
 		if (follower.Follow(tile, dir)) {
 			TrackdirBits dirs = follower.new_td_bits;
-			const TrackdirBits dirs_without_90_degree = dirs & ~TrackdirCrossesTrackdirs(dir);
-			if (dirs_without_90_degree != TRACKDIR_BIT_NONE) dirs = dirs_without_90_degree;
+			const TrackdirBits dirs_without_90_degree = dirs.Reset(TrackdirCrossesTrackdirs(dir));
+			if (dirs_without_90_degree.Any()) dirs = dirs_without_90_degree;
 			return { follower.new_tile, GetRandomTrackdir(dirs) };
 		}
-		return { follower.new_tile, INVALID_TRACKDIR };
+		return { follower.new_tile, Trackdir::Invalid };
 	}
 
 	/**
@@ -188,18 +186,18 @@ public:
 	 * @param v The ship to create the path for.
 	 * @param[in,out] path_cache Cache of the path for the ship.
 	 * @param path_length The length of the random path to create.
-	 * @return The next track direction to take, or \c INVALID_TRACKDIR when there is no option.
+	 * @return The next track direction to take, or \c Trackdir::Invalid when there is no option.
 	 */
 	static Trackdir CreateRandomPath(const Ship *v, ShipPathCache &path_cache, int path_length)
 	{
 		std::pair<TileIndex, Trackdir> tile_dir = { v->tile, v->GetVehicleTrackdir()};
 		for (int i = 0; i < path_length; ++i) {
 			tile_dir = GetRandomFollowUpTileTrackdir(v, tile_dir.first, tile_dir.second);
-			if (tile_dir.second == INVALID_TRACKDIR) break;
+			if (tile_dir.second == Trackdir::Invalid) break;
 			path_cache.push_back(tile_dir.second);
 		}
 
-		if (path_cache.empty()) return INVALID_TRACKDIR;
+		if (path_cache.empty()) return Trackdir::Invalid;
 
 		/* Reverse the path so we can take from the end. */
 		std::reverse(std::begin(path_cache), std::end(path_cache));
@@ -266,11 +264,11 @@ public:
 			}
 			assert(node->GetTile() == v->tile);
 
-			/* Return INVALID_TRACKDIR to trigger a ship reversal if that is the best option. */
+			/* Return Trackdir::Invalid to trigger a ship reversal if that is the best option. */
 			best_origin_dir = node->GetTrackdir();
-			if ((TrackdirToTrackdirBits(best_origin_dir) & forward_dirs) == TRACKDIR_BIT_NONE) {
+			if (TrackdirToTrackdirBits(best_origin_dir).Any(forward_dirs)) {
 				path_cache.clear();
-				return INVALID_TRACKDIR;
+				return Trackdir::Invalid;
 			}
 
 			/* A empty path means we are already at the destination. The pathfinder shouldn't have been called at all.
@@ -301,7 +299,7 @@ public:
 	{
 		bool path_found = false;
 		ShipPathCache dummy_cache;
-		Trackdir best_origin_dir = INVALID_TRACKDIR;
+		Trackdir best_origin_dir = Trackdir::Invalid;
 
 		if (trackdir == nullptr) {
 			/* The normal case, typically called when ships leave a dock. */
@@ -314,8 +312,8 @@ public:
 			/* This gets called when a ship suddenly can't move forward, e.g. due to terraforming. */
 			const DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
 			const TrackdirBits reverse_dirs = DiagdirReachesTrackdirs(entry) & GetTileTrackStatus(v->tile, TRANSPORT_WATER, RoadTramType::Invalid, entry).trackdirs;
-			(void)ChooseShipTrack(v, v->tile, TRACKDIR_BIT_NONE, reverse_dirs, path_found, dummy_cache, best_origin_dir);
-			*trackdir = path_found && best_origin_dir != INVALID_TRACKDIR ? best_origin_dir : GetRandomTrackdir(reverse_dirs);
+			(void)ChooseShipTrack(v, v->tile, {}, reverse_dirs, path_found, dummy_cache, best_origin_dir);
+			*trackdir = path_found && best_origin_dir != Trackdir::Invalid ? best_origin_dir : GetRandomTrackdir(reverse_dirs);
 			return true;
 		}
 	}
@@ -342,7 +340,7 @@ public:
 		assert(IsValidTrackdir(td1));
 		assert(IsValidTrackdir(td2));
 
-		if (HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
+		if (TrackdirCrossesTrackdirs(td1).Test(td2)) {
 			/* 90-deg curve penalty. */
 			return Yapf().PfGetSettings().ship_curve90_penalty;
 		} else if (td2 != NextTrackdir(td1)) {
@@ -362,11 +360,11 @@ public:
 	{
 		const bool odd_x = TileX(tile) & 1;
 		const bool odd_y = TileY(tile) & 1;
-		if (td == TRACKDIR_X_NE) return odd_y;
-		if (td == TRACKDIR_X_SW) return !odd_y;
-		if (td == TRACKDIR_Y_NW) return odd_x;
-		if (td == TRACKDIR_Y_SE) return !odd_x;
-		return (odd_x ^ odd_y) ^ HasBit(TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LEFT_S | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_LOWER_E, td);
+		if (td == Trackdir::X_NE) return odd_y;
+		if (td == Trackdir::X_SW) return !odd_y;
+		if (td == Trackdir::Y_NW) return odd_x;
+		if (td == Trackdir::Y_SE) return !odd_x;
+		return (odd_x ^ odd_y) ^ TrackdirBits{Trackdir::Right_N, Trackdir::Left_S, Trackdir::Upper_W, Trackdir::Lower_E}.Test(td);
 	}
 
 	/** @copydoc CYapfBaseT::PfCalcCostFunc */
@@ -437,10 +435,10 @@ struct CYapfShip : CYapfT<CYapfShip_TypesT<CYapfShip>> {
 
 Track YapfShipChooseTrack(const Ship *v, TileIndex tile, bool &path_found, ShipPathCache &path_cache)
 {
-	Trackdir best_origin_dir = INVALID_TRACKDIR;
+	Trackdir best_origin_dir = Trackdir::Invalid;
 	const TrackdirBits origin_dirs = TrackdirToTrackdirBits(v->GetVehicleTrackdir());
-	const Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, origin_dirs, TRACKDIR_BIT_NONE, path_found, path_cache, best_origin_dir);
-	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : Track::Invalid;
+	const Trackdir td_ret = CYapfShip::ChooseShipTrack(v, tile, origin_dirs, {}, path_found, path_cache, best_origin_dir);
+	return (td_ret != Trackdir::Invalid) ? TrackdirToTrack(td_ret) : Track::Invalid;
 }
 
 bool YapfShipCheckReverse(const Ship *v, Trackdir *trackdir)

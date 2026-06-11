@@ -47,9 +47,9 @@ enum RoadVehicleStates : uint8_t {
 
 	/* Bit sets of the above specified bits */
 	RVSB_IN_ROAD_STOP            = 1 << RVS_IN_ROAD_STOP,     ///< The vehicle is in a road stop
-	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + TRACKDIR_END,
+	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + to_underlying(Trackdir::End),
 	RVSB_IN_DT_ROAD_STOP         = 1 << RVS_IN_DT_ROAD_STOP,  ///< The vehicle is in a drive-through road stop
-	RVSB_IN_DT_ROAD_STOP_END     = RVSB_IN_DT_ROAD_STOP + TRACKDIR_END,
+	RVSB_IN_DT_ROAD_STOP_END     = RVSB_IN_DT_ROAD_STOP + to_underlying(Trackdir::End),
 
 	RVSB_DRIVE_SIDE              = 1 << RVS_DRIVE_SIDE,       ///< The vehicle is at the opposite side of the road
 
@@ -90,7 +90,7 @@ void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs
 
 /** Element of the RoadVehPathCache. */
 struct RoadVehPathElement {
-	Trackdir trackdir = INVALID_TRACKDIR; ///< Trackdir for this element.
+	Trackdir trackdir = Trackdir::Invalid; ///< Trackdir for this element.
 	TileIndex tile = INVALID_TILE; ///< Tile for this element.
 
 	constexpr RoadVehPathElement() {}
@@ -307,7 +307,7 @@ protected: // These functions should not be called outside acceleration code.
 		/* Check if this vehicle is in the same direction as the road under.
 		 * We already know it has either GVF_GOINGUP_BIT or GVF_GOINGDOWN_BIT set. */
 
-		if (rv->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)rv->state)) {
+		if (rv->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir(static_cast<Trackdir>(rv->state))) {
 			/* If the first vehicle is reversing, this vehicle may be reversing too
 			 * (especially if this is the first, and maybe the only, vehicle).*/
 			return true;

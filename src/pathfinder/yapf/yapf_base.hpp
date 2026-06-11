@@ -235,9 +235,8 @@ public:
 	 */
 	inline void AddMultipleNodes(Node *parent, const TrackFollower &tf)
 	{
-		bool is_choice = (KillFirstBit(tf.new_td_bits) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits rtds = tf.new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
-			Trackdir td = (Trackdir)FindFirstBit(rtds);
+		bool is_choice = tf.new_td_bits.Count() > 1;
+		for (Trackdir td : tf.new_td_bits) {
 			Node &n = Yapf().CreateNewNode();
 			n.Set(parent, tf.new_tile, td, is_choice);
 			Yapf().AddNewNode(n, tf);

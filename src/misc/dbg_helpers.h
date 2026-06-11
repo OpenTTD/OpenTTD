@@ -58,34 +58,21 @@ inline std::string_view ItemAt(E idx, std::span<const std::string_view> names, s
 /**
  * Helper template function that returns compound bitfield name that is
  * concatenation of names of each set bit in the given value
- * or invalid_name when index == invalid_index
  * or unknown_name when index is out of bounds.
  * @param value The bitmask of values.
  * @param names Span of names to index.
  * @param unknown_name The default value when the index does not exist.
- * @param invalid_index The invalid value to consider.
- * @param invalid_name The value to output when the invalid value is given.
  * @return The composed name.
  */
-template <typename E>
-inline std::string ComposeName(E value, std::span<const std::string_view> names, std::string_view unknown_name, E invalid_index, std::string_view invalid_name)
+template <typename Tbitset>
+inline std::string ComposeName(Tbitset value, std::span<const std::string_view> names, std::string_view unknown_name)
 {
+	if (value.None()) return "<none>";
+
 	std::string out;
-	if (value == invalid_index) {
-		out = invalid_name;
-	} else if (value == 0) {
-		out = "<none>";
-	} else {
-		for (size_t i = 0; i < std::size(names); i++) {
-			if ((value & (1 << i)) == 0) continue;
-			out += (!out.empty() ? "+" : "");
-			out += names[i];
-			value &= ~static_cast<E>(1 << i);
-		}
-		if (value != 0) {
-			out += (!out.empty() ? "+" : "");
-			out += unknown_name;
-		}
+	for (auto index : value) {
+		if (!out.empty()) out += "+";
+		out += to_underlying(index) < std::size(names) ? names[to_underlying(index)] : unknown_name;
 	}
 	return out;
 }
@@ -93,31 +80,20 @@ inline std::string ComposeName(E value, std::span<const std::string_view> names,
 /**
  * Helper template function that returns compound bitfield name that is
  * concatenation of names of each set bit in the given value
+ * or invalid_name when value == invalid_index
  * or unknown_name when index is out of bounds.
  * @param value The bitmask of values.
  * @param names Span of names to index.
  * @param unknown_name The default value when the index does not exist.
+ * @param invalid_value The invalid value to consider.
+ * @param invalid_name The value to output when the invalid value is given.
  * @return The composed name.
  */
-template <typename E>
-inline std::string ComposeName(E value, std::span<const std::string_view> names, std::string_view unknown_name)
+template <typename Tbitset>
+inline std::string ComposeName(Tbitset value, std::span<const std::string_view> names, std::string_view unknown_name, Tbitset invalid_value, std::string_view invalid_name)
 {
-	std::string out;
-	if (value.base() == 0) {
-		out = "<none>";
-	} else {
-		for (size_t i = 0; i < std::size(names); ++i) {
-			if (!value.Test(static_cast<E::EnumType>(i))) continue;
-			out += (!out.empty() ? "+" : "");
-			out += names[i];
-			value.Reset(static_cast<E::EnumType>(i));
-		}
-		if (value.base() != 0) {
-			out += (!out.empty() ? "+" : "");
-			out += unknown_name;
-		}
-	}
-	return out;
+	if (value == invalid_value) return std::string{invalid_name};
+	return ComposeName(value, names, unknown_name);
 }
 
 std::string ValueStr(Trackdir td);

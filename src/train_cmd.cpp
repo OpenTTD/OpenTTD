@@ -2333,7 +2333,7 @@ static void CheckNextTrainTile(Train *consist)
 
 	if (!HasReservedTracks(ft.new_tile, TrackdirBitsToTrackBits(ft.new_td_bits))) {
 		/* Next tile is not reserved. */
-		if (KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE) {
+		if (ft.new_td_bits.Count() == 1) {
 			if (HasPbsSignalOnTrackdir(ft.new_tile, FindFirstTrackdir(ft.new_td_bits))) {
 				/* If the next tile is a PBS signal, try to make a reservation. */
 				TrackBits tracks = TrackdirBitsToTrackBits(ft.new_td_bits);
@@ -2499,7 +2499,7 @@ void FreeTrainTrackReservation(const Train *consist)
 		tile = ft.new_tile;
 		TrackdirBits bits = ft.new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(tile));
 		td = RemoveFirstTrackdir(&bits);
-		assert(bits == TRACKDIR_BIT_NONE);
+		assert(bits.None());
 
 		if (!IsValidTrackdir(td)) break;
 
@@ -2573,19 +2573,19 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 	TileIndex tile = origin.tile;
 	Trackdir  cur_td = origin.trackdir;
 	while (ft.Follow(tile, cur_td)) {
-		if (KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE) {
+		if (ft.new_td_bits.Count() == 1) {
 			/* Possible signal tile. */
 			if (HasOnewaySignalBlockingTrackdir(ft.new_tile, FindFirstTrackdir(ft.new_td_bits))) break;
 		}
 
 		if (Rail90DegTurnDisallowed(GetTileRailType(ft.old_tile), GetTileRailType(ft.new_tile))) {
-			ft.new_td_bits &= ~TrackdirCrossesTrackdirs(ft.old_td);
-			if (ft.new_td_bits == TRACKDIR_BIT_NONE) break;
+			ft.new_td_bits.Reset(TrackdirCrossesTrackdirs(ft.old_td));
+			if (ft.new_td_bits.None()) break;
 		}
 
 		/* Station, depot or waypoint are a possible target. */
 		bool target_seen = ft.is_station || (IsTileType(ft.new_tile, TileType::Railway) && !IsPlainRail(ft.new_tile));
-		if (target_seen || KillFirstBit(ft.new_td_bits) != TRACKDIR_BIT_NONE) {
+		if (target_seen || ft.new_td_bits.Count() > 1) {
 			/* Choice found or possible target encountered.
 			 * On finding a possible target, we need to stop and let the pathfinder handle the
 			 * remaining path. This is because we don't know if this target is in one of our
@@ -2645,10 +2645,10 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 		if (!ft.Follow(tile, cur_td)) break;
 
 		if (Rail90DegTurnDisallowed(GetTileRailType(ft.old_tile), GetTileRailType(ft.new_tile))) {
-			ft.new_td_bits &= ~TrackdirCrossesTrackdirs(ft.old_td);
-			assert(ft.new_td_bits != TRACKDIR_BIT_NONE);
+			ft.new_td_bits.Reset(TrackdirCrossesTrackdirs(ft.old_td));
+			assert(ft.new_td_bits.Any());
 		}
-		assert(KillFirstBit(ft.new_td_bits) == TRACKDIR_BIT_NONE);
+		assert(ft.new_td_bits.Count() == 1);
 
 		tile = ft.new_tile;
 		cur_td = FindFirstTrackdir(ft.new_td_bits);
@@ -2808,7 +2808,7 @@ static Track ChooseTrainTrack(Train *consist, TileIndex tile, DiagDirection ente
 
 	const Train *moving_front = consist->GetMovingFront();
 
-	PBSTileInfo   res_dest(tile, INVALID_TRACKDIR, false);
+	PBSTileInfo   res_dest(tile, Trackdir::Invalid, false);
 	DiagDirection dest_enterdir = enterdir;
 	if (do_track_reservation) {
 		res_dest = ExtendTrainReservation(consist, &tracks, &dest_enterdir);
@@ -3999,7 +3999,7 @@ static bool TrainCheckIfLineEnds(Train *moving_front, bool reverse)
 	}
 
 	/* approaching red signal */
-	if ((trackdirbits & red_signals) != 0) return TrainApproachingLineEnd(moving_front, true, reverse);
+	if (trackdirbits.Any(red_signals)) return TrainApproachingLineEnd(moving_front, true, reverse);
 
 	/* approaching a rail/road crossing? then make it red */
 	if (IsLevelCrossingTile(tile)) MaybeBarCrossingWithSound(tile);
@@ -4298,7 +4298,7 @@ void Train::OnNewEconomyDay()
  */
 Trackdir Train::GetVehicleTrackdir() const
 {
-	if (this->vehstatus.Test(VehState::Crashed)) return INVALID_TRACKDIR;
+	if (this->vehstatus.Test(VehState::Crashed)) return Trackdir::Invalid;
 
 	if (this->track == Track::Depot) {
 		/* We'll assume the train is facing outwards */

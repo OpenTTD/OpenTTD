@@ -32,7 +32,7 @@ struct CYapfRailSegmentKey {
 
 	inline void Set(const CYapfNodeKeyTrackDir &node_key)
 	{
-		this->value = (node_key.tile.base() << 4) | node_key.td;
+		this->value = (node_key.tile.base() << 4) | to_underlying(node_key.td);
 	}
 
 	inline int32_t CalcHash() const
@@ -47,7 +47,7 @@ struct CYapfRailSegmentKey {
 
 	inline Trackdir GetTrackdir() const
 	{
-		return (Trackdir)(this->value & 0x0F);
+		return static_cast<Trackdir>(this->value & 0x0F);
 	}
 
 	inline bool operator==(const CYapfRailSegmentKey &other) const
@@ -68,10 +68,10 @@ struct CYapfRailSegment {
 
 	CYapfRailSegmentKey key;
 	TileIndex last_tile = INVALID_TILE;
-	Trackdir last_td = INVALID_TRACKDIR;
+	Trackdir last_td = Trackdir::Invalid;
 	int cost = -1;
 	TileIndex last_signal_tile = INVALID_TILE;
-	Trackdir last_signal_td = INVALID_TRACKDIR;
+	Trackdir last_signal_td = Trackdir::Invalid;
 	EndSegmentReasons end_segment_reason{};
 	CYapfRailSegment *hash_next = nullptr;
 
@@ -186,7 +186,7 @@ struct CYapfRailNode : CYapfNodeT<CYapfNodeKeyTrackDir, CYapfRailNode> {
 
 			if (!follower.Follow(cur, cur_td)) break;
 			cur = follower.new_tile;
-			assert(KillFirstBit(follower.new_td_bits) == TRACKDIR_BIT_NONE);
+			assert(follower.new_td_bits.Count() == 1);
 			cur_td = FindFirstTrackdir(follower.new_td_bits);
 		}
 

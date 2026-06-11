@@ -60,63 +60,46 @@ static constexpr TrackBits TRACK_BIT_ALL = {Track::X, Track::Y, Track::Upper, Tr
  * reversing track dirs are not considered to be 'valid' except in a small
  * corner in the road vehicle controller.
  */
-enum Trackdir : uint8_t {
-	TRACKDIR_BEGIN    =  0,         ///< Used for iterations
-	TRACKDIR_X_NE     =  0,         ///< X-axis and direction to north-east
-	TRACKDIR_Y_SE     =  1,         ///< Y-axis and direction to south-east
-	TRACKDIR_UPPER_E  =  2,         ///< Upper track and direction to east
-	TRACKDIR_LOWER_E  =  3,         ///< Lower track and direction to east
-	TRACKDIR_LEFT_S   =  4,         ///< Left track and direction to south
-	TRACKDIR_RIGHT_S  =  5,         ///< Right track and direction to south
-	TRACKDIR_RVREV_NE =  6,         ///< (Road vehicle) reverse direction north-east
-	TRACKDIR_RVREV_SE =  7,         ///< (Road vehicle) reverse direction south-east
-	TRACKDIR_X_SW     =  8,         ///< X-axis and direction to south-west
-	TRACKDIR_Y_NW     =  9,         ///< Y-axis and direction to north-west
-	TRACKDIR_UPPER_W  = 10,         ///< Upper track and direction to west
-	TRACKDIR_LOWER_W  = 11,         ///< Lower track and direction to west
-	TRACKDIR_LEFT_N   = 12,         ///< Left track and direction to north
-	TRACKDIR_RIGHT_N  = 13,         ///< Right track and direction to north
-	TRACKDIR_RVREV_SW = 14,         ///< (Road vehicle) reverse direction south-west
-	TRACKDIR_RVREV_NW = 15,         ///< (Road vehicle) reverse direction north-west
-	TRACKDIR_END,                   ///< Used for iterations
-	INVALID_TRACKDIR  = 0xFF,       ///< Flag for an invalid trackdir
-};
+enum class Trackdir : uint8_t {
+	X_NE = 0, ///< X-axis and direction to north-east
+	Y_SE = 1, ///< Y-axis and direction to south-east
+	Upper_E = 2, ///< Upper track and direction to east
+	Lower_E = 3, ///< Lower track and direction to east
+	Left_S = 4, ///< Left track and direction to south
+	Right_S = 5, ///< Right track and direction to south
+	RvRev_NE = 6, ///< (Road vehicle) reverse direction north-east
+	RvRev_SE = 7, ///< (Road vehicle) reverse direction south-east
+	X_SW = 8, ///< X-axis and direction to south-west
+	Y_NW = 9, ///< Y-axis and direction to north-west
+	Upper_W = 10, ///< Upper track and direction to west
+	Lower_W = 11, ///< Lower track and direction to west
+	Left_N = 12, ///< Left track and direction to north
+	Right_N = 13, ///< Right track and direction to north
+	RvRev_SW = 14, ///< (Road vehicle) reverse direction south-west
+	RvRev_NW = 15, ///< (Road vehicle) reverse direction north-west
 
-/** Allow incrementing of Trackdir variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(Trackdir)
+	End, ///< End marker
+	Invalid = 0xFF, ///< Flag for an invalid trackdir
+};
 
 /**
  * Array with \c Trackdir as index.
  * @tparam T the type contained within the array.
  */
 template <typename T>
-using TrackdirIndexArray = EnumIndexArray<T, Trackdir, TRACKDIR_END>;
+using TrackdirIndexArray = EnumIndexArray<T, Trackdir, Trackdir::End>;
 
-/**
- * Enumeration of bitmasks for the TrackDirs
- *
- * These are a combination of tracks and directions. Values are 0-5 in one
- * direction (corresponding to the Track enum) and 8-13 in the other direction.
- */
-enum TrackdirBits : uint16_t {
-	TRACKDIR_BIT_NONE     = 0U,                     ///< No track build
-	TRACKDIR_BIT_X_NE     = 1U << TRACKDIR_X_NE,    ///< Track x-axis, direction north-east
-	TRACKDIR_BIT_Y_SE     = 1U << TRACKDIR_Y_SE,    ///< Track y-axis, direction south-east
-	TRACKDIR_BIT_UPPER_E  = 1U << TRACKDIR_UPPER_E, ///< Track upper, direction east
-	TRACKDIR_BIT_LOWER_E  = 1U << TRACKDIR_LOWER_E, ///< Track lower, direction east
-	TRACKDIR_BIT_LEFT_S   = 1U << TRACKDIR_LEFT_S,  ///< Track left, direction south
-	TRACKDIR_BIT_RIGHT_S  = 1U << TRACKDIR_RIGHT_S, ///< Track right, direction south
-	/* Again, note the two missing values here. This enables trackdir -> track conversion by doing (trackdir & 0xFF) */
-	TRACKDIR_BIT_X_SW     = 1U << TRACKDIR_X_SW,    ///< Track x-axis, direction south-west
-	TRACKDIR_BIT_Y_NW     = 1U << TRACKDIR_Y_NW,    ///< Track y-axis, direction north-west
-	TRACKDIR_BIT_UPPER_W  = 1U << TRACKDIR_UPPER_W, ///< Track upper, direction west
-	TRACKDIR_BIT_LOWER_W  = 1U << TRACKDIR_LOWER_W, ///< Track lower, direction west
-	TRACKDIR_BIT_LEFT_N   = 1U << TRACKDIR_LEFT_N,  ///< Track left, direction north
-	TRACKDIR_BIT_RIGHT_N  = 1U << TRACKDIR_RIGHT_N, ///< Track right, direction north
-	TRACKDIR_BIT_MASK     = 0x3F3F,                 ///< Bitmask for bit-operations
-	INVALID_TRACKDIR_BIT  = 0xFFFF,                 ///< Flag for an invalid trackdirbit value
+/** Bitset of \c Trackdir elements. */
+using TrackdirBits = EnumBitSet<Trackdir, uint16_t>;
+
+/** Bitset of valid non-road vehicle trackdirs/ */
+static constexpr TrackdirBits TRACKDIR_BIT_MASK{
+	Trackdir::X_NE, Trackdir::Y_SE, Trackdir::Upper_E, Trackdir::Lower_E, Trackdir::Left_S, Trackdir::Right_S,
+	Trackdir::X_SW, Trackdir::Y_NW, Trackdir::Upper_W, Trackdir::Lower_W, Trackdir::Left_N, Trackdir::Right_N,
 };
-DECLARE_ENUM_AS_BIT_SET(TrackdirBits)
+
+/** Marker for an invalid TrackdirBits value. */
+static constexpr TrackdirBits INVALID_TRACKDIR_BIT{UINT16_MAX};
 
 /** Track status of a tile. */
 struct TrackStatus {

@@ -459,15 +459,15 @@ public:
 
 		/* set origin and destination nodes */
 		PBSTileInfo origin = FollowTrainReservation(v);
-		Yapf().SetOrigin(origin.tile, origin.trackdir, INVALID_TILE, INVALID_TRACKDIR, 1);
+		Yapf().SetOrigin(origin.tile, origin.trackdir, INVALID_TILE, Trackdir::Invalid, 1);
 		Yapf().SetTreatFirstRedTwoWaySignalAsEOL(true);
 		Yapf().SetDestination(v);
 
 		/* find the best path */
 		path_found = Yapf().FindPath(v);
 
-		/* if path not found - return INVALID_TRACKDIR */
-		Trackdir next_trackdir = INVALID_TRACKDIR;
+		/* if path not found - return Trackdir::Invalid */
+		Trackdir next_trackdir = Trackdir::Invalid;
 		Node *node = Yapf().GetBestNode();
 		if (node != nullptr) {
 			/* reserve till end of path */
@@ -485,7 +485,7 @@ public:
 
 			/* If the best PF node has no parent, then there is no (valid) best next trackdir to return.
 			 * This occurs when the PF is called while the train is already at its destination. */
-			if (prev == nullptr) return INVALID_TRACKDIR;
+			if (prev == nullptr) return Trackdir::Invalid;
 
 			/* return trackdir from the best origin node (one of start nodes) */
 			Node &best_next_node = *prev;
@@ -600,7 +600,7 @@ Track YapfTrainChooseTrack(const Train *v, TileIndex tile, DiagDirection enterdi
 		? CYapfRailNo90::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest)
 		: CYapfRail::stChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
 
-	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : FindFirstTrack(tracks);
+	return (td_ret != Trackdir::Invalid) ? TrackdirToTrack(td_ret) : FindFirstTrack(tracks);
 }
 
 bool YapfTrainCheckReverse(const Train *v)

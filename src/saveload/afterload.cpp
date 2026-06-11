@@ -438,8 +438,8 @@ static void FixOwnerOfRailTrack(Tile t)
 	/* try to find any connected rail */
 	for (DiagDirection dd = DiagDirection::Begin; dd < DiagDirection::End; dd++) {
 		TileIndex tt{t + TileOffsByDiagDir(dd)};
-		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd).trackdirs != TRACKDIR_BIT_NONE &&
-				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)).trackdirs != TRACKDIR_BIT_NONE &&
+		if (GetTileTrackStatus(t, TRANSPORT_RAIL, RoadTramType::Invalid, dd).trackdirs.Any() &&
+				GetTileTrackStatus(tt, TRANSPORT_RAIL, RoadTramType::Invalid, ReverseDiagDir(dd)).trackdirs.Any() &&
 				Company::IsValidID(GetTileOwner(tt))) {
 			SetTileOwner(t, GetTileOwner(tt));
 			return;
@@ -2681,7 +2681,7 @@ bool AfterLoadGame()
 
 				switch (v->type) {
 					case VehicleType::Train: Train::From(v)->track = DiagDirToDiagTrack(vdir); break;
-					case VehicleType::Road: RoadVehicle::From(v)->state = DiagDirToDiagTrackdir(vdir); RoadVehicle::From(v)->frame = frame; break;
+					case VehicleType::Road: RoadVehicle::From(v)->state = to_underlying(DiagDirToDiagTrackdir(vdir)); RoadVehicle::From(v)->frame = frame; break;
 					default: NOT_REACHED();
 				}
 			}
