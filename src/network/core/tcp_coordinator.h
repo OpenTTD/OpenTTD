@@ -52,12 +52,12 @@ template <> struct IsEnumPacketType<PacketCoordinatorType> {
 /**
  * The type of connection the Game Coordinator can detect we have.
  */
-enum ConnectionType : uint8_t {
-	CONNECTION_TYPE_UNKNOWN,  ///< The Game Coordinator hasn't informed us yet what type of connection we have.
-	CONNECTION_TYPE_ISOLATED, ///< The Game Coordinator failed to find a way to connect to your server. Nobody will be able to join.
-	CONNECTION_TYPE_DIRECT,   ///< The Game Coordinator can directly connect to your server.
-	CONNECTION_TYPE_STUN,     ///< The Game Coordinator can connect to your server via a STUN request.
-	CONNECTION_TYPE_TURN,     ///< The Game Coordinator needs you to connect to a relay.
+enum class ConnectionType : uint8_t {
+	Unknown, ///< The Game Coordinator hasn't informed us yet what type of connection we have.
+	Isolated, ///< The Game Coordinator failed to find a way to connect to your server. Nobody will be able to join.
+	Direct, ///< The Game Coordinator can directly connect to your server.
+	Stun, ///< The Game Coordinator can connect to your server via a STUN request.
+	Turn, ///< The Game Coordinator needs you to connect to a relay.
 };
 
 /**
