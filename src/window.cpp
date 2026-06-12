@@ -2796,12 +2796,13 @@ static void HandleAutoscroll()
 	}
 }
 
-enum MouseClick : uint8_t {
-	MC_NONE = 0,
-	MC_LEFT,
-	MC_RIGHT,
-	MC_DOUBLE_LEFT,
-	MC_HOVER,
+/** Mouse states during the \c MouseLoop. */
+enum class MouseClick : uint8_t {
+	None = 0, ///< No action to process.
+	Left, ///< A click with the left mouse button.
+	Right, ///< A click with the right mouse button.
+	DoubleLeft, ///< A double click with the left mouse button.
+	Hover, ///< The mouse started hovering.
 };
 
 static constexpr int MAX_OFFSET_DOUBLE_CLICK = 5; ///< How much the mouse is allowed to move to call it a double click
@@ -2885,14 +2886,14 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	HandleMouseOver();
 
 	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
-	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
+	if (click == MouseClick::None && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
 	Window *w = FindWindowFromPt(x, y);
 	if (w == nullptr) return;
 
-	if (click != MC_HOVER && !MaybeBringWindowToFront(w)) return;
+	if (click != MouseClick::Hover && !MaybeBringWindowToFront(w)) return;
 	Viewport *vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu or when having a modal progress window */
@@ -2918,8 +2919,8 @@ static void MouseLoop(MouseClick click, int mousewheel)
 		}
 
 		switch (click) {
-			case MC_DOUBLE_LEFT:
-			case MC_LEFT:
+			case MouseClick::DoubleLeft:
+			case MouseClick::Left:
 				if (HandleViewportClicked(*vp, x, y)) return;
 				if (!w->flags.Test(WindowFlag::DisableVpScroll) &&
 						_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB) {
@@ -2929,7 +2930,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				}
 				break;
 
-			case MC_RIGHT:
+			case MouseClick::Right:
 				if (!w->flags.Test(WindowFlag::DisableVpScroll) &&
 						_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB) {
 					_scrolling_viewport = true;
@@ -2946,9 +2947,9 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	}
 
 	switch (click) {
-		case MC_LEFT:
-		case MC_DOUBLE_LEFT:
-			DispatchLeftClickEvent(w, x - w->left, y - w->top, click == MC_DOUBLE_LEFT ? 2 : 1);
+		case MouseClick::Left:
+		case MouseClick::DoubleLeft:
+			DispatchLeftClickEvent(w, x - w->left, y - w->top, click == MouseClick::DoubleLeft ? 2 : 1);
 			return;
 
 		default:
@@ -2957,11 +2958,11 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			 * Simulate a right button click so we can get started. */
 			[[fallthrough]];
 
-		case MC_RIGHT:
+		case MouseClick::Right:
 			DispatchRightClickEvent(w, x - w->left, y - w->top);
 			return;
 
-		case MC_HOVER:
+		case MouseClick::Hover:
 			DispatchHoverEvent(w, x - w->left, y - w->top);
 			break;
 	}
@@ -2985,20 +2986,20 @@ void HandleMouseEvents()
 	static Point double_click_pos = {0, 0};
 
 	/* Mouse event? */
-	MouseClick click = MC_NONE;
+	MouseClick click = MouseClick::None;
 	if (_left_button_down && !_left_button_clicked) {
-		click = MC_LEFT;
+		click = MouseClick::Left;
 		if (std::chrono::steady_clock::now() <= double_click_time + TIME_BETWEEN_DOUBLE_CLICK &&
 				double_click_pos.x != 0 && abs(_cursor.pos.x - double_click_pos.x) < MAX_OFFSET_DOUBLE_CLICK  &&
 				double_click_pos.y != 0 && abs(_cursor.pos.y - double_click_pos.y) < MAX_OFFSET_DOUBLE_CLICK) {
-			click = MC_DOUBLE_LEFT;
+			click = MouseClick::DoubleLeft;
 		}
 		double_click_time = std::chrono::steady_clock::now();
 		double_click_pos = _cursor.pos;
 		_left_button_clicked = true;
 	} else if (_right_button_clicked) {
 		_right_button_clicked = false;
-		click = MC_RIGHT;
+		click = MouseClick::Right;
 	}
 
 	int mousewheel = 0;
@@ -3011,7 +3012,7 @@ void HandleMouseEvents()
 	static Point hover_pos = {0, 0};
 
 	if (_settings_client.gui.hover_delay_ms > 0) {
-		if (!_cursor.in_window || click != MC_NONE || mousewheel != 0 || _left_button_down || _right_button_down ||
+		if (!_cursor.in_window || click != MouseClick::None || mousewheel != 0 || _left_button_down || _right_button_down ||
 				hover_pos.x == 0 || abs(_cursor.pos.x - hover_pos.x) >= MAX_OFFSET_HOVER  ||
 				hover_pos.y == 0 || abs(_cursor.pos.y - hover_pos.y) >= MAX_OFFSET_HOVER) {
 			hover_pos = _cursor.pos;
@@ -3019,14 +3020,14 @@ void HandleMouseEvents()
 			_mouse_hovering = false;
 		} else if (!_mouse_hovering) {
 			if (std::chrono::steady_clock::now() > hover_time + std::chrono::milliseconds(_settings_client.gui.hover_delay_ms)) {
-				click = MC_HOVER;
+				click = MouseClick::Hover;
 				_mouse_hovering = true;
 				hover_time = std::chrono::steady_clock::now();
 			}
 		}
 	}
 
-	if (click == MC_LEFT && _newgrf_debug_sprite_picker.mode == SPM_WAIT_CLICK) {
+	if (click == MouseClick::Left && _newgrf_debug_sprite_picker.mode == SPM_WAIT_CLICK) {
 		/* Mark whole screen dirty, and wait for the next realtime tick, when drawing is finished. */
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 		_newgrf_debug_sprite_picker.clicked_pixel = blitter->MoveTo(_screen.dst_ptr, _cursor.pos.x, _cursor.pos.y);
