@@ -209,6 +209,14 @@ enum class DefaultRailRoadType : uint8_t {
 	MostUsed, ///< Use the most used by the company controlled by the player
 };
 
+/** Values for _settings_client.gui.auto_scrolling */
+enum class ViewportAutoscrolling : uint8_t {
+	Disabled, ///< Do not autoscroll when mouse is at edge of viewport.
+	MainViewportFullscreen, ///< Scroll main viewport at edge when using fullscreen.
+	MainViewport, ///< Scroll main viewport at edge.
+	EveryViewport, ///< Scroll all viewports at their edges.
+};
+
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
 	bool sg_full_load_any; ///< new full load calculation, any cargo must be full read from pre v93 savegames
@@ -220,7 +228,7 @@ struct GUISettings {
 	bool sg_new_nonstop; ///< ttdpatch compatible nonstop handling read from pre v93 savegames
 	bool new_nonstop; ///< ttdpatch compatible nonstop handling
 	OrderStopLocation stop_location; ///< what is the default stop location of trains?
-	uint8_t auto_scrolling; ///< scroll when moving mouse to the edge (see #ViewportAutoscrolling)
+	ViewportAutoscrolling auto_scrolling; ///< scroll when moving mouse to the edge.
 	uint8_t errmsg_duration; ///< duration of error message
 	uint16_t hover_delay_ms; ///< time required to activate a hover event, in milliseconds
 	bool link_terraform_toolbar; ///< display terraform toolbar when displaying rail, road, water and airport toolbars
