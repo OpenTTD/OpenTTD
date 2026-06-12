@@ -309,8 +309,6 @@ enum class TownAction : uint8_t {
 /** Bitset of \c TownAction elements. */
 using TownActions = EnumBitSet<TownAction, uint8_t>;
 
-DECLARE_INCREMENT_DECREMENT_OPERATORS(TownAction);
-
 void ClearTownHouse(Town *t, TileIndex tile);
 void UpdateTownMaxPass(Town *t);
 void UpdateTownRadius(Town *t);

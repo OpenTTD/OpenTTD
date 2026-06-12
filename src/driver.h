@@ -51,9 +51,6 @@ public:
 	virtual std::string_view GetName() const = 0;
 };
 
-DECLARE_INCREMENT_DECREMENT_OPERATORS(Driver::Type)
-
-
 /** Base for all driver factories. */
 class DriverFactoryBase {
 private:

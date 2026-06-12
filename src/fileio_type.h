@@ -128,8 +128,6 @@ enum class Searchpath : uint8_t {
 	End, ///< End marker.
 };
 
-DECLARE_INCREMENT_DECREMENT_OPERATORS(Searchpath)
-
 class FileHandle {
 public:
 	/**

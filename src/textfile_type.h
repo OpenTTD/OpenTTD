@@ -25,7 +25,6 @@ enum TextfileType : uint8_t {
 
 	TFT_END,
 };
-DECLARE_INCREMENT_DECREMENT_OPERATORS(TextfileType)
 DECLARE_ENUM_AS_ADDABLE(TextfileType)
 
 #endif /* TEXTFILE_TYPE_H */
