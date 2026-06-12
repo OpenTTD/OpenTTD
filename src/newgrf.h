@@ -26,21 +26,21 @@ struct GRFConfig;
  * List of different canal 'features'.
  * Each feature gets an entry in the canal spritegroup table
  */
-enum CanalFeature : uint8_t {
-	CF_WATERSLOPE,
-	CF_LOCKS,
-	CF_DIKES,
-	CF_ICON,
-	CF_DOCKS,
-	CF_RIVER_SLOPE,
-	CF_RIVER_EDGE,
-	CF_RIVER_GUI,
-	CF_BUOY,
-	CF_END,
+enum class CanalFeature : uint8_t {
+	LockWaterSlope, ///< The sloped water tiles in locks.
+	Locks, ///< The sides of the lock.
+	Dikes, ///< The canal dikes/embankment.
+	Icon, ///< Unused: the TTDP UI icon for canals.
+	FlatDocks, ///< Unused: the graphics for TTDP flat docks.
+	RiverSlope, ///< The sloped water tiles for rivers.
+	RiverEdge, ///< The river banks.
+	RiverIcon, ///< Unused: the TTDP UI icons for rivers.
+	Buoy, ///< Buoy without underlying water.
+	End, ///< End marker.
 };
 
 /** Flags controlling the display of canals. */
-enum CanalFeatureFlag : uint8_t {
+enum class CanalFeatureFlag : uint8_t {
 	HasFlatSprite = 0, ///< Additional flat ground sprite in the beginning.
 };
 /** CanalFeatureFlag bitmask. */
@@ -161,7 +161,7 @@ struct GRFFile {
 	std::vector<RoadTypeLabel> tramtype_list{}; ///< Roadtype translation table (tram)
 	std::array<RoadType, ROADTYPE_END> tramtype_map{};
 
-	std::array<CanalProperties, CF_END> canal_local_properties{}; ///< Canal properties as set by this NewGRF
+	EnumIndexArray<CanalProperties, CanalFeature, CanalFeature::End> canal_local_properties{}; ///< Canal properties as set by this NewGRF
 
 	std::unordered_map<uint8_t, LanguageMap> language_map{}; ///< Mappings related to the languages.
 

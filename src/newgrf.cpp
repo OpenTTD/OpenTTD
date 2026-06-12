@@ -849,7 +849,7 @@ static void CalculateRefitMasks()
 /** Set to use the correct action0 properties for each canal feature */
 static void FinaliseCanals()
 {
-	for (CanalFeature i : EnumRange(CF_END)) {
+	for (CanalFeature i : EnumRange(CanalFeature::End)) {
 		if (_water_feature[i].grffile != nullptr) {
 			_water_feature[i].callback_mask = _water_feature[i].grffile->canal_local_properties[i].callback_mask;
 			_water_feature[i].flags = _water_feature[i].grffile->canal_local_properties[i].flags;

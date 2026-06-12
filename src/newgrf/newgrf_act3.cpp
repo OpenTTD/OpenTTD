@@ -244,11 +244,12 @@ struct CanalMapSpriteGroupHandler : MapSpriteGroupHandler {
 
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
-		if (local_id >= CF_END) {
+		if (local_id >= to_underlying(CanalFeature::End)) {
 			GrfMsg(1, "CanalMapSpriteGroup: Canal subset {} out of range, skipping", local_id);
 		} else {
-			_water_feature[local_id].grffile = _cur_gps.grffile;
-			_water_feature[local_id].group = group;
+			auto &feature = _water_feature[static_cast<CanalFeature>(local_id)];
+			feature.grffile = _cur_gps.grffile;
+			feature.group = group;
 		}
 	}
 };

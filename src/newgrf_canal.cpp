@@ -17,7 +17,7 @@
 #include "safeguards.h"
 
 /** Table of canal 'feature' sprite groups */
-std::array<WaterFeature, CF_END> _water_feature;
+EnumIndexArray<WaterFeature, CanalFeature, CanalFeature::End> _water_feature;
 
 /** Scope resolver of a canal tile. */
 struct CanalScopeResolver : public ScopeResolver {
@@ -112,7 +112,7 @@ GrfSpecFeature CanalResolverObject::GetFeature() const
 
 uint32_t CanalResolverObject::GetDebugID() const
 {
-	return this->feature;
+	return to_underlying(this->feature);
 }
 
 /**

@@ -24,7 +24,7 @@ struct WaterFeature {
 
 
 /** Table of canal 'feature' sprite groups */
-extern std::array<WaterFeature, CF_END> _water_feature;
+extern EnumIndexArray<WaterFeature, CanalFeature, CanalFeature::End> _water_feature;
 
 
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile);
