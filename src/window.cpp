@@ -2009,9 +2009,9 @@ static void HandleMouseOver()
 }
 
 /** Direction for moving the window. */
-enum PreventHideDirection : uint8_t {
-	PHD_UP,   ///< Above v is a safe position.
-	PHD_DOWN, ///< Below v is a safe position.
+enum class PreventHideDirection : uint8_t {
+	Up, ///< Above v is a safe position.
+	Down, ///< Below v is a safe position.
 };
 
 /**
@@ -2032,7 +2032,7 @@ static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, i
 
 	int v_bottom = v->top + v->height - 1;
 	int v_right = v->left + v->width - 1;
-	int safe_y = (dir == PHD_UP) ? (v->top - min_visible - rect.top) : (v_bottom + min_visible - rect.bottom); // Compute safe vertical position.
+	int safe_y = (dir == PreventHideDirection::Up) ? (v->top - min_visible - rect.top) : (v_bottom + min_visible - rect.bottom); // Compute safe vertical position.
 
 	if (*ny + rect.top <= v->top - min_visible) return; // Above v is enough space
 	if (*ny + rect.bottom >= v_bottom + min_visible) return; // Below v is enough space
@@ -2078,8 +2078,8 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
 		ny = Clamp(ny, 0, _screen.height - min_visible);
 
 		/* Make sure the title bar isn't hidden behind the main tool bar or the status bar. */
-		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WindowClass::MainToolbar, 0), w->left, PHD_DOWN);
-		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WindowClass::Statusbar, 0), w->left, PHD_UP);
+		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WindowClass::MainToolbar, 0), w->left, PreventHideDirection::Down);
+		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WindowClass::Statusbar, 0), w->left, PreventHideDirection::Up);
 	}
 
 	if (w->viewport != nullptr) {
