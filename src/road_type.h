@@ -27,7 +27,6 @@ enum RoadType : uint8_t {
 	ROADTYPE_END     = 63,   ///< Used for iterations
 	INVALID_ROADTYPE = 63,   ///< flag for invalid roadtype
 };
-DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadType)
 
 /** Bitset of \c RoadType elements. */
 using RoadTypes = EnumBitSet<RoadType, uint64_t>;

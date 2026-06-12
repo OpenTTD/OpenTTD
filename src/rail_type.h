@@ -32,9 +32,6 @@ enum RailType : uint8_t {
 	INVALID_RAILTYPE  = 0xFF,       ///< Flag for invalid railtype
 };
 
-/** Allow incrementing of Track variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(RailType)
-
 /** Bitset of \c RailType elements. */
 using RailTypes = EnumBitSet<RailType, uint64_t>;
 

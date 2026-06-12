@@ -35,9 +35,6 @@ enum class Direction : uint8_t {
 	Invalid = 0xFF, ///< Flag for an invalid direction
 };
 
-/** Allow incrementing of Direction variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(Direction)
-
 /** Bitset of \c Direction elements. */
 using Directions = EnumBitSet<Direction, uint8_t>;
 

@@ -63,8 +63,6 @@ enum class GrfLoadingStage : uint8_t {
 	End, ///< End marker.
 };
 
-DECLARE_INCREMENT_DECREMENT_OPERATORS(GrfLoadingStage)
-
 /** Bits of NewGRF's GlobalVariable 1E/9E. */
 enum class GrfMiscBit : uint8_t {
 	DesertTreesFields = 0, ///< Unsupported: allow trees and fields in desert climate.

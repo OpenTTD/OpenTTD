@@ -83,7 +83,6 @@ enum class Shade : uint8_t {
 	End, ///< End marker for iteration.
 	Begin = Shade::Darkest, ///< Begin marker for iteration.
 };
-DECLARE_INCREMENT_DECREMENT_OPERATORS(Shade)
 
 PixelColour GetColourGradient(Colours colour, Shade shade);
 void SetColourGradient(Colours colour, Shade shade, PixelColour palette_colour);
