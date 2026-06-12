@@ -823,7 +823,7 @@ static void DrawSeaWater(TileIndex)
 static void DrawCanalWater(TileIndex tile)
 {
 	SpriteID image = SPR_FLAT_WATER_TILE;
-	if (HasBit(_water_feature[CF_WATERSLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
+	if (_water_feature[CF_WATERSLOPE].flags.Test(CanalFeatureFlag::HasFlatSprite)) {
 		/* First water slope sprite is flat water. */
 		image = GetCanalSprite(CF_WATERSLOPE, tile);
 		if (image == 0) image = SPR_FLAT_WATER_TILE;
@@ -873,7 +873,7 @@ static void DrawWaterLock(const TileInfo *ti)
 	if (water_base == 0) {
 		/* Use default sprites. */
 		water_base = SPR_CANALS_BASE;
-	} else if (HasBit(_water_feature[CF_WATERSLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
+	} else if (_water_feature[CF_WATERSLOPE].flags.Test(CanalFeatureFlag::HasFlatSprite)) {
 		/* NewGRF supplies a flat sprite as first sprite. */
 		if (image == SPR_FLAT_WATER_TILE) {
 			image = water_base;
@@ -915,7 +915,7 @@ static void DrawRiverWater(const TileInfo *ti)
 	uint     offset = 0;
 	uint     edges_offset = 0;
 
-	if (ti->tileh != SLOPE_FLAT || HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
+	if (ti->tileh != SLOPE_FLAT || _water_feature[CF_RIVER_SLOPE].flags.Test(CanalFeatureFlag::HasFlatSprite)) {
 		image = GetCanalSprite(CF_RIVER_SLOPE, ti->tile);
 		if (image == 0) {
 			switch (ti->tileh) {
@@ -927,7 +927,7 @@ static void DrawRiverWater(const TileInfo *ti)
 			}
 		} else {
 			/* Flag bit 0 indicates that the first sprite is flat water. */
-			offset = HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE) ? 1 : 0;
+			offset = _water_feature[CF_RIVER_SLOPE].flags.Test(CanalFeatureFlag::HasFlatSprite) ? 1 : 0;
 
 			switch (ti->tileh) {
 				case SLOPE_SE:              edges_offset += 12; break;

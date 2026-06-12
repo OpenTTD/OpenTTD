@@ -39,10 +39,17 @@ enum CanalFeature : uint8_t {
 	CF_END,
 };
 
+/** Flags controlling the display of canals. */
+enum CanalFeatureFlag : uint8_t {
+	HasFlatSprite = 0, ///< Additional flat ground sprite in the beginning.
+};
+/** CanalFeatureFlag bitmask. */
+using CanalFeatureFlags = EnumBitSet<CanalFeatureFlag, uint8_t>;
+
 /** Canal properties local to the NewGRF */
 struct CanalProperties {
-	CanalCallbackMasks callback_mask;  ///< Bitmask of canal callbacks that have to be called.
-	uint8_t flags;          ///< Flags controlling display.
+	CanalCallbackMasks callback_mask; ///< Bitmask of canal callbacks that have to be called.
+	CanalFeatureFlags flags; ///< Flags controlling display.
 };
 
 /** Stages of loading all NewGRFs. */

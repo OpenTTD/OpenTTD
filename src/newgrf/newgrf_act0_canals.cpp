@@ -40,7 +40,7 @@ static ChangeInfoResult CanalChangeInfo(uint first, uint last, int prop, ByteRea
 				break;
 
 			case 0x09:
-				cp->flags = buf.ReadByte();
+				cp->flags = CanalFeatureFlags{buf.ReadByte()};
 				break;
 
 			default:
