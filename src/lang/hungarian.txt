@@ -1869,7 +1869,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Várható érke
 STR_CONFIG_SETTING_QUICKGOTO                                    :Utasításlista gyors elkészítése: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :A 'Menj' parancs előzetes kiválasztása az utasításlista megnyitásakor
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Alapértelmezett sín, út, és villamos típus (új játék/ játék betöltés után): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Sín, út és villamos típus a játék indításakor vagy betöltésekor. Az 'Első elérhető' kiválasztja a legrégebbi elérhető pályatípust, az 'utolsó elérhető' kiválasztja a legújabb elérhető pályatípust és a 'leggyakrabban használt' kiválasztja a típust, ami aktuálisan a leggyakrabban használt.
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :Első elérhető
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Utolsó elérhető
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Leggyakrabban használt
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vágányszakasz foglaltságának jelzése: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :A vonatok számára lezárt vágányutak jelölése más színnel, az irányjelzési rendszerrel kapcsolatos vonatmegállási problémák megoldásához
@@ -3157,6 +3162,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sziklás
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sivatag létrehozása.{}Ctrl+kattintás a sivatag eltávolításához
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület növelése
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület csökkentése
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK} Sarok vagy terület lesüllyesztése. Ha a méret 1x1, kattints+húzd az első kijelölt saroknál majd állítsd be a szintet az új sarok magasságra. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Sarok vagy terület megemelése. Ha a méret 1x1, kattints+húzd az első kijelölt saroknál majd állítsd be a szintet az új sarok magasságra. Ctrl+kattintás+húzással átlós terület jelölhető ki. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Véletlenszerű táj készítése
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Új pálya létrehozása
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}A táj törlése
