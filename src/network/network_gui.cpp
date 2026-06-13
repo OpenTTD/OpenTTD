@@ -378,7 +378,7 @@ protected:
 		DrawString(name.left, name.right, y + text_y_offset, cur_item->info.server_name, TextColour::Black);
 
 		/* only draw details if the server is online */
-		if (cur_item->status == NGLS_ONLINE) {
+		if (cur_item->status == NetworkGameStatus::Online) {
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_CLIENTS); nwid->current_x != 0) {
 				Rect clients = nwid->GetCurrentRect();
 				DrawString(clients.left, clients.right, y + text_y_offset,
@@ -585,7 +585,7 @@ public:
 		this->SetWidgetDisabledState(WID_NG_REFRESH, sel == nullptr);
 		/* 'Join' button disabling conditions */
 		this->SetWidgetDisabledState(WID_NG_JOIN, sel == nullptr || // no Selected Server
-				sel->status != NGLS_ONLINE || // Server offline
+				sel->status != NetworkGameStatus::Online || // Server offline
 				sel->info.clients_on >= sel->info.clients_max || // Server full
 				!sel->info.compatible); // Revision mismatch
 
@@ -593,8 +593,8 @@ public:
 
 		/* 'NewGRF Settings' button invisible if no NewGRF is used */
 		bool changed = false;
-		changed |= this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NGLS_ONLINE || sel->info.grfconfig.empty() ? SZSP_NONE : 0);
-		changed |= this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NGLS_ONLINE || sel->info.grfconfig.empty() || !sel->info.version_compatible || sel->info.compatible ? SZSP_NONE : 0);
+		changed |= this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NetworkGameStatus::Online || sel->info.grfconfig.empty() ? SZSP_NONE : 0);
+		changed |= this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == nullptr || sel->status != NetworkGameStatus::Online || sel->info.grfconfig.empty() || !sel->info.version_compatible || sel->info.compatible ? SZSP_NONE : 0);
 		if (changed) {
 			this->ReInit();
 			return;
@@ -618,11 +618,11 @@ public:
 	{
 		if (this->server == nullptr) return STR_NETWORK_SERVER_LIST_GAME_INFO;
 		switch (this->server->status) {
-			case NGLS_OFFLINE: return STR_NETWORK_SERVER_LIST_SERVER_OFFLINE;
-			case NGLS_ONLINE: return STR_NETWORK_SERVER_LIST_GAME_INFO;
-			case NGLS_FULL: return STR_NETWORK_SERVER_LIST_SERVER_FULL;
-			case NGLS_BANNED: return STR_NETWORK_SERVER_LIST_SERVER_BANNED;
-			case NGLS_TOO_OLD: return STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD;
+			case NetworkGameStatus::Offline: return STR_NETWORK_SERVER_LIST_SERVER_OFFLINE;
+			case NetworkGameStatus::Online: return STR_NETWORK_SERVER_LIST_GAME_INFO;
+			case NetworkGameStatus::Full: return STR_NETWORK_SERVER_LIST_SERVER_FULL;
+			case NetworkGameStatus::Banned: return STR_NETWORK_SERVER_LIST_SERVER_BANNED;
+			case NetworkGameStatus::TooOld: return STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD;
 			default: NOT_REACHED();
 		}
 	}
@@ -652,7 +652,7 @@ public:
 		if (sel == nullptr) return;
 
 		hr.top = DrawStringMultiLine(hr, sel->info.server_name, TextColour::Orange, SA_HOR_CENTER); // game name
-		if (sel->status != NGLS_ONLINE) {
+		if (sel->status != NetworkGameStatus::Online) {
 			tr.top = DrawStringMultiLine(tr, header_msg, TextColour::FromString, SA_HOR_CENTER);
 		} else { // show game info
 			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_CLIENTS, sel->info.clients_on, sel->info.clients_max, sel->info.companies_on, sel->info.companies_max));

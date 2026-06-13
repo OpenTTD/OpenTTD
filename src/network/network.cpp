@@ -668,7 +668,7 @@ public:
 		Debug(net, 9, "Query::OnFailure(): connection_string={}", this->connection_string);
 
 		NetworkGame *item = NetworkGameListAddItem(connection_string);
-		item->status = NGLS_OFFLINE;
+		item->status = NetworkGameStatus::Offline;
 		item->refreshing = false;
 
 		UpdateNetworkGameWindow();
