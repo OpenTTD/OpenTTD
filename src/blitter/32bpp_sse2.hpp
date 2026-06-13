@@ -63,6 +63,7 @@ public:
 		NoAnim, ///< The sprite has no palette animated pixel.
 	};
 
+	/** Bitset of \c SpriteFlag elements. */
 	using SpriteFlags = EnumBitSet<SpriteFlag, uint8_t>;
 
 	/** Data stored about a (single) sprite. */

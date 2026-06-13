@@ -75,6 +75,7 @@ enum class GrfMiscBit : uint8_t {
 	SecondRockyTileSet = 6, ///< Enable using the second rocky tile set.
 };
 
+/** Bitset of \c GrfMiscBit elements. */
 using GrfMiscBits = EnumBitSet<GrfMiscBit, uint8_t>;
 
 enum class GrfSpecFeature : uint8_t {
@@ -110,6 +111,8 @@ enum class GrfSpecFeature : uint8_t {
 
 	Invalid = 0xFF, ///< An invalid spec feature
 };
+
+/** Bitset of \c GrfSpecFeature elements. */
 using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::End>;
 
 static const uint32_t INVALID_GRFID = 0xFFFFFFFF;

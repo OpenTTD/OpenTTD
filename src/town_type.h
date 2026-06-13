@@ -100,6 +100,7 @@ enum class TownExpandMode : uint8_t {
 	Roads, ///< Allow town to place roads.
 };
 
+/** Bitset of \c TownExpandMode elements. */
 using TownExpandModes = EnumBitSet<TownExpandMode, uint8_t>;
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */

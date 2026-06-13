@@ -30,6 +30,8 @@ enum class SettingFlag : uint8_t {
 	NoNetworkSync, ///< Do not synchronize over network (but it is saved if SettingFlag::NotInSave is not set).
 	Sandbox, ///< This setting is a sandbox setting.
 };
+
+/** Bitset of \c SettingFlag elements. */
 using SettingFlags = EnumBitSet<SettingFlag, uint16_t>;
 
 /**

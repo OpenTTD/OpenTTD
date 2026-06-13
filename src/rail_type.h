@@ -35,6 +35,7 @@ enum RailType : uint8_t {
 /** Allow incrementing of Track variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RailType)
 
+/** Bitset of \c RailType elements. */
 using RailTypes = EnumBitSet<RailType, uint64_t>;
 
 static constexpr RailTypes INVALID_RAILTYPES{UINT64_MAX};

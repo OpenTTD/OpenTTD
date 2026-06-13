@@ -401,6 +401,8 @@ enum class DoCommandFlag : uint8_t {
 	NoModifyTownRating, ///< do not change town rating
 	ForceClearTile, ///< do not only remove the object on the tile, but also clear any water left on it
 };
+
+/** Bitset of \c DoCommandFlag elements. */
 using DoCommandFlags = EnumBitSet<DoCommandFlag, uint16_t>;
 
 /**
@@ -422,6 +424,8 @@ enum class CommandFlag : uint8_t {
 	NoEst, ///< the command is never estimated.
 	Location, ///< the command has implicit location argument.
 };
+
+/** Bitset of \c CommandFlag elements. */
 using CommandFlags = EnumBitSet<CommandFlag, uint16_t>;
 
 /** Types of commands we have. */

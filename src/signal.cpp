@@ -262,6 +262,8 @@ enum class SigFlag : uint8_t {
 	Enter, ///< signal entering the block found
 	MultiEnter, ///< two or more signals entering the block found
 };
+
+/** Bitset of \c SigFlag elements. */
 using SigFlags = EnumBitSet<SigFlag, uint16_t>;
 
 /**

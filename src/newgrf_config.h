@@ -27,6 +27,8 @@ enum class GRFConfigFlag : uint8_t {
 	Reserved, ///< GRF file passed GrfLoadingStage::Reserve stage
 	Invalid, ///< GRF is unusable with this version of OpenTTD
 };
+
+/** Bitset of \c GRFConfigFlag elements. */
 using GRFConfigFlags = EnumBitSet<GRFConfigFlag, uint8_t>;
 
 /** Status of GRF */
@@ -46,6 +48,8 @@ enum class GRFBug : uint8_t {
 	UnknownCbResult = 3, ///< A callback returned an unknown/invalid result
 	VehCapacity     = 4, ///< Capacity of vehicle changes when not refitting or arranging
 };
+
+/** Bitset of \c GRFBug elements. */
 using GRFBugs = EnumBitSet<GRFBug, uint8_t>;
 
 /** Status of post-gameload GRF compatibility check */

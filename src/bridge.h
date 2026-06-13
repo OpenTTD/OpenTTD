@@ -30,6 +30,8 @@ struct BridgeSpec {
 		CustomPillarFlags, ///< Bridge has set custom pillar flags.
 		InvalidPillarFlags, ///< Bridge pillar flags are not valid, i.e. only the tile layout has been modified.
 	};
+
+	/** Bitset of \c ControlFlag elements. */
 	using ControlFlags = EnumBitSet<ControlFlag, uint8_t>;
 
 	TimerGameCalendar::Year avail_year; ///< the year where it becomes available

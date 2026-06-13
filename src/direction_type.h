@@ -38,6 +38,7 @@ enum class Direction : uint8_t {
 /** Allow incrementing of Direction variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Direction)
 
+/** Bitset of \c Direction elements. */
 using Directions = EnumBitSet<Direction, uint8_t>;
 
 /** All possible directions. */

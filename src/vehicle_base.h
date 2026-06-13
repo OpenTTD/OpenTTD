@@ -39,6 +39,8 @@ enum class VehState : uint8_t {
 	AircraftBroken = 6, ///< Aircraft is broken down.
 	Crashed        = 7, ///< Vehicle is crashed.
 };
+
+/** Bitset of \c VehState elements. */
 using VehStates = EnumBitSet<VehState, uint8_t>;
 
 /** Bit numbers used to indicate which of the #NewGRFCache values are valid. */

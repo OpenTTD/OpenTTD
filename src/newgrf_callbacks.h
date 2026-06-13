@@ -311,6 +311,8 @@ enum class VehicleCallbackMask : uint8_t {
 	Name          = 8, ///< Engine name
 	CustomRefit   = 9, ///< Custom refit mask
 };
+
+/** Bitset of \c VehicleCallbackMask elements. */
 using VehicleCallbackMasks = EnumBitSet<VehicleCallbackMask, uint16_t>;
 
 /**
@@ -323,6 +325,8 @@ enum class StationCallbackMask : uint8_t {
 	AnimationSpeed     = 3, ///< Customize the animation speed of the station
 	SlopeCheck         = 4, ///< Check slope of new station tiles
 };
+
+/** Bitset of \c StationCallbackMask elements. */
 using StationCallbackMasks = EnumBitSet<StationCallbackMask, uint16_t>;
 
 /**
@@ -333,6 +337,8 @@ enum class RoadStopCallbackMask : uint8_t {
 	AnimationNextFrame = 1, ///< Use a custom next frame callback
 	AnimationSpeed     = 2, ///< Customize the animation speed of the road stop
 };
+
+/** Bitset of \c RoadStopCallbackMask elements. */
 using RoadStopCallbackMasks = EnumBitSet<RoadStopCallbackMask, uint8_t>;
 
 /**
@@ -353,6 +359,8 @@ enum class HouseCallbackMask : uint8_t {
 	DrawFoundations         = 11, ///< decides if default foundations need to be drawn
 	Autoslope               = 12, ///< decides allowance of autosloping
 };
+
+/** Bitset of \c HouseCallbackMask elements. */
 using HouseCallbackMasks = EnumBitSet<HouseCallbackMask, uint16_t>;
 
 /**
@@ -361,6 +369,8 @@ using HouseCallbackMasks = EnumBitSet<HouseCallbackMask, uint16_t>;
 enum class CanalCallbackMask : uint8_t {
 	SpriteOffset       = 0, ///< Enable add sprite offset callback
 };
+
+/** Bitset of \c CanalCallbackMask elements. */
 using CanalCallbackMasks = EnumBitSet<CanalCallbackMask, uint8_t>;
 
 /**
@@ -370,6 +380,8 @@ enum class CargoCallbackMask : uint8_t {
 	ProfitCalc        = 0, ///< custom profit calculation
 	StationRatingCalc = 1, ///< custom station rating for this cargo type
 };
+
+/** Bitset of \c CargoCallbackMask elements. */
 using CargoCallbackMasks = EnumBitSet<CargoCallbackMask, uint8_t>;
 
 /**
@@ -392,6 +404,8 @@ enum class IndustryCallbackMask : uint8_t {
 	OutputCargoTypes       = 13, ///< customize the cargoes the industry produces
 	ProdChangeBuild        = 14, ///< initialise production level on construction
 };
+
+/** Bitset of \c IndustryCallbackMask elements. */
 using IndustryCallbackMasks = EnumBitSet<IndustryCallbackMask, uint16_t>;
 
 /**
@@ -406,6 +420,8 @@ enum class IndustryTileCallbackMask : uint8_t {
 	DrawFoundations    = 5, ///< decides if default foundations need to be drawn
 	Autoslope          = 6, ///< decides allowance of autosloping
 };
+
+/** Bitset of \c IndustryTileCallbackMask elements. */
 using IndustryTileCallbackMasks = EnumBitSet<IndustryTileCallbackMask, uint8_t>;
 
 /**
@@ -419,6 +435,8 @@ enum class ObjectCallbackMask : uint8_t {
 	FundMoreText       =  4, ///< additional text in fund window
 	Autoslope          =  5, ///< decides allowance of autosloping
 };
+
+/** Bitset of \c ObjectCallbackMask elements. */
 using ObjectCallbackMasks = EnumBitSet<ObjectCallbackMask, uint8_t>;
 
 /**
@@ -431,6 +449,8 @@ enum class AirportTileCallbackMask : uint8_t {
 	DrawFoundations    = 5, ///< decides if default foundations need to be drawn
 	Autoslope          = 6, ///< decides allowance of autosloping
 };
+
+/** Bitset of \c AirportTileCallbackMask elements. */
 using AirportTileCallbackMasks = EnumBitSet<AirportTileCallbackMask, uint8_t>;
 
 /**

@@ -256,6 +256,7 @@ enum class FontSize : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
+/** Bitset of \c FontSize elements. */
 using FontSizes = EnumBitSet<FontSize, uint8_t>;
 
 /** Mask of all possible font sizes. */
@@ -342,6 +343,7 @@ enum class ExtendedTextColourFlag : uint8_t{
 	NoShade, ///< Do not add shading to this text colour.
 	Forced, ///< Ignore colour changes from strings.
 };
+
 using ExtendedTextColourFlags = EnumBitSet<ExtendedTextColourFlag, uint8_t>; ///< Bitset of the flags of ExtendedTextColour. */
 
 /** Container for the text colour and some text colour related flags for drawing. */

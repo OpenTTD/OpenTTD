@@ -55,6 +55,8 @@ enum class RoadStopDrawMode : uint8_t {
 	Overlay = 1, ///< Drive-through stops: Draw the road overlay, e.g. pavement
 	WaypGround = 2, ///< Waypoints: Draw the sprite layout ground tile (on top of the road)
 };
+
+/** Bitset of \c RoadStopDrawMode elements. */
 using RoadStopDrawModes = EnumBitSet<RoadStopDrawMode, uint8_t>;
 
 enum class RoadStopSpecFlag : uint8_t {
@@ -66,6 +68,8 @@ enum class RoadStopSpecFlag : uint8_t {
 	TramOnly = 6, ///< Only show in the tram build menu (not road).
 	DrawModeRegister = 8, ///< Read draw mode from register 0x100.
 };
+
+/** Bitset of \c RoadStopSpecFlag elements. */
 using RoadStopSpecFlags = EnumBitSet<RoadStopSpecFlag, uint8_t>;
 
 enum RoadStopView : uint8_t {

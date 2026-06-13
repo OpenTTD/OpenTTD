@@ -326,6 +326,8 @@ public:
 		Validate, ///< Validate selected item.
 		Filter, ///< Update filter state.
 	};
+
+	/** Bitset of \c Pickerinvalidation elements. */
 	using PickerInvalidations = EnumBitSet<PickerInvalidation, uint8_t>;
 
 	static constexpr PickerInvalidations PICKER_INVALIDATION_ALL{PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position, PickerInvalidation::Validate};

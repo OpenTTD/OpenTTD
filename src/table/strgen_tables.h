@@ -15,6 +15,8 @@ enum class CmdFlag : uint8_t {
 	Case, ///< These commands support cases
 	Gender, ///< These commands support genders
 };
+
+/** Bitset of \c CmdFlag elements. */
 using CmdFlags = EnumBitSet<CmdFlag, uint8_t>;
 
 class StringBuilder;

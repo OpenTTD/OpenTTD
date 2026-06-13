@@ -33,6 +33,8 @@ enum class EndSegmentReason : uint8_t {
 	LookAheadEnd, ///< we have just passed the last look-ahead signal
 	TargetReached, ///< we have just reached the destination
 };
+
+/** Bitset of \c EndSegmentReason elements. */
 using EndSegmentReasons = EnumBitSet<EndSegmentReason, uint16_t>;
 
 /** What reasons mean that the target can be found and needs to be detected. */

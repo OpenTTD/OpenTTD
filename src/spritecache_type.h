@@ -29,6 +29,7 @@ enum class SpriteCacheCtrlFlag : uint8_t {
 	AllowZoomMin2x32bpp, ///< Allow use of sprite min zoom setting at 2x in 32bpp mode.
 };
 
+/** Bitset of \c SpriteCacheCtrlFlag elements. */
 using SpriteCacheCtrlFlags = EnumBitSet<SpriteCacheCtrlFlag, uint8_t>;
 
 #endif /* SPRITECACHE_TYPE_H */

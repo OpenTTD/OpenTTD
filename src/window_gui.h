@@ -27,6 +27,8 @@ enum class FrameFlag : uint8_t {
 	Lowered, ///< If set the frame is lowered and the background colour brighter (ie. buttons when pressed)
 	Darkened, ///< If set the background is darker, allows for lowered frames with normal background colour when used with FrameFlag::Lowered (ie. dropdown boxes)
 };
+
+/** Bitset of \c FrameFlag elements. */
 using FrameFlags = EnumBitSet<FrameFlag, uint8_t>;
 
 class WidgetDimensions {
@@ -155,6 +157,8 @@ enum class WindowDefaultFlag : uint8_t {
 	NoFocus, ///< This window won't get focus/make any other window lose focus when click
 	NoClose, ///< This window can't be interactively closed
 };
+
+/** Bitset of \c WindowDefaultFlag elements. */
 using WindowDefaultFlags = EnumBitSet<WindowDefaultFlag, uint8_t>;
 
 Point GetToolbarAlignedWindowPosition(int window_width);
@@ -236,6 +240,8 @@ enum class WindowFlag : uint8_t {
 	Highlighted,      ///< Window has a widget that has a highlight.
 	Centred,          ///< Window is centered and shall stay centered after ReInit.
 };
+
+/** Bitset of \c WindowFlag elements. */
 using WindowFlags = EnumBitSet<WindowFlag, uint16_t>;
 
 static const int TIMEOUT_DURATION = 7; ///< The initial timeout value for WindowFlag::Timeout.

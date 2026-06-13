@@ -55,6 +55,8 @@ enum class StationFacility : uint8_t {
 	Dock      = 4, ///< Station with a dock
 	Waypoint  = 7, ///< Station is a waypoint
 };
+
+/** Bitset of \c StationFacility elements. */
 using StationFacilities = EnumBitSet<StationFacility, uint8_t>;
 
 /** Fake 'facility' to allow toggling display of recently-removed station signs. */
@@ -83,6 +85,8 @@ enum class StationRandomTrigger : uint8_t {
 	VehicleLoads, ///< Trigger platform when train loads/unloads.
 	PathReservation, ///< Trigger platform when train reserves path.
 };
+
+/** Bitset of \c StationRandomTrigger elements. */
 using StationRandomTriggers = EnumBitSet<StationRandomTrigger, uint8_t>;
 
 /** Animation triggers for stations and roadstops. */
@@ -98,6 +102,8 @@ enum class StationAnimationTrigger : uint8_t {
 	PathReservation, ///< Trigger platform when train reserves path.
 	End, ///< End marker.
 };
+
+/** Bitset of \c StationAnimationTrigger elements. */
 using StationAnimationTriggers = EnumBitSet<StationAnimationTrigger, uint16_t>;
 
 /** Animation triggers for airport tiles */
@@ -109,6 +115,8 @@ enum class AirportAnimationTrigger : uint8_t {
 	AcceptanceTick, ///< Triggered every 250 ticks (for all tiles at the same time).
 	AirplaneTouchdown, ///< Triggered when an airplane (not a helicopter) touches down at the airport (for single tile).
 };
+
+/** Bitset of \c AirportAnimationTrigger elements. */
 using AirportAnimationTriggers = EnumBitSet<AirportAnimationTrigger, uint8_t>;
 
 /* The different catchment area sizes. */

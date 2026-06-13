@@ -44,6 +44,8 @@ enum class VehicleAirFlag : uint8_t {
 
 	HelicopterDirectDescent = 3, ///< The helicopter is descending directly at its destination (helipad or in front of hangar)
 };
+
+/** Bitset of \c VehicleAirFlag elements. */
 using VehicleAirFlags = EnumBitSet<VehicleAirFlag, uint8_t>;
 
 static const int ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.

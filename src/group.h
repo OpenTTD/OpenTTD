@@ -68,6 +68,8 @@ enum class GroupFlag : uint8_t {
 	ReplaceProtection = 0, ///< If set, the global autoreplace has no effect on the group
 	ReplaceWagonRemoval = 1, ///< If set, autoreplace will perform wagon removal on vehicles in this group.
 };
+
+/** Bitset of \c GroupFlag elements. */
 using GroupFlags = EnumBitSet<GroupFlag, uint8_t>;
 
 /** Group data. */

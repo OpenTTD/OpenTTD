@@ -19,6 +19,7 @@ enum class PartOfSubsidy : uint8_t {
 	Destination, ///< town/industry is destination of subsidised path
 };
 
+/** Bitset of \c PartOfSubsidy elements. */
 using PartsOfSubsidy = EnumBitSet<PartOfSubsidy, uint8_t>;
 
 using SubsidyID = PoolID<uint16_t, struct SubsidyIDTag, 256, 0xFFFF>; ///< ID of a subsidy

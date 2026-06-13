@@ -32,6 +32,8 @@ enum class RailTypeFlag : uint8_t {
 	Allow90Deg      = 4, ///< Bit number for always allowed 90 degree turns, regardless of setting.
 	Disallow90Deg   = 5, ///< Bit number for never allowed 90 degree turns, regardless of setting.
 };
+
+/** Bitset of \c RailTypeFlag elements. */
 using RailTypeFlags = EnumBitSet<RailTypeFlag, uint8_t>;
 
 struct SpriteGroup;
