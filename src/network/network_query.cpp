@@ -25,7 +25,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::CloseConnection(NetworkRecvStat
 	/* Connection is closed, but we never received a packet. Must be offline. */
 	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 	if (item->refreshing) {
-		item->status = NGLS_OFFLINE;
+		item->status = NetworkGameStatus::Offline;
 		item->refreshing = false;
 
 		UpdateNetworkGameWindow();
@@ -92,7 +92,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerFull(Packet &)
 	Debug(net, 9, "Query::ReceiveServerFull()");
 
 	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
-	item->status = NGLS_FULL;
+	item->status = NetworkGameStatus::Full;
 	item->refreshing = false;
 
 	UpdateNetworkGameWindow();
@@ -105,7 +105,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerBanned(Packet &)
 	Debug(net, 9, "Query::ReceiveServerBanned()");
 
 	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
-	item->status = NGLS_BANNED;
+	item->status = NetworkGameStatus::Banned;
 	item->refreshing = false;
 
 	UpdateNetworkGameWindow();
@@ -126,7 +126,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerGameInfo(Packet &p
 	/* Check for compatibility with the client. */
 	CheckGameCompatibility(item->info);
 	/* Ensure we consider the server online. */
-	item->status = NGLS_ONLINE;
+	item->status = NetworkGameStatus::Online;
 	item->refreshing = false;
 
 	UpdateNetworkGameWindow();
@@ -147,9 +147,9 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerError(Packet &p)
 		 * NetworkErrorCode::NotExpected on requesting the game info. Show to the
 		 * user this server is too old to query.
 		 */
-		item->status = NGLS_TOO_OLD;
+		item->status = NetworkGameStatus::TooOld;
 	} else {
-		item->status = NGLS_OFFLINE;
+		item->status = NetworkGameStatus::Offline;
 	}
 	item->refreshing = false;
 
