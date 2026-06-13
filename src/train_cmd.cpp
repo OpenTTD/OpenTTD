@@ -2631,7 +2631,7 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 		}
 	}
 
-	if (ft.err == CFollowTrackRail::EC_OWNER || ft.err == CFollowTrackRail::EC_NO_WAY) {
+	if (ft.err == CFollowTrackRail::ErrorCode::Owner || ft.err == CFollowTrackRail::ErrorCode::NoWay) {
 		/* End of line, path valid and okay. */
 		return PBSTileInfo(ft.old_tile, ft.old_td, true);
 	}
