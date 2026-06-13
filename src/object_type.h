@@ -38,6 +38,8 @@ enum class ObjectAnimationTrigger : uint8_t {
 	TileLoop, ///< Triggered in the periodic tile loop.
 	TileLoopNorth, ///< Triggered every 256 ticks (for all tiles at the same time).
 };
+
+/** Bitset of \c ObjectAnimationTrigger elements. */
 using ObjectAnimationTriggers = EnumBitSet<ObjectAnimationTrigger, uint16_t>;
 
 #endif /* OBJECT_TYPE_H */

@@ -57,6 +57,8 @@ enum class DepotCommandFlag : uint8_t {
 	MassSend, ///< Tells that it's a mass send to depot command (type in VLW flag)
 	DontCancel, ///< Don't cancel current goto depot command if any
 };
+
+/** Bitset of \c DepotCommandFlag elements. */
 using DepotCommandFlags = EnumBitSet<DepotCommandFlag, uint8_t>;
 
 static const uint MAX_LENGTH_VEHICLE_NAME_CHARS = 32; ///< The maximum length of a vehicle name in characters including '\0'
@@ -88,6 +90,8 @@ enum class VehicleRandomTrigger : uint8_t {
 	AnyNewCargo, ///< All vehicles in consist: Any vehicle in the consist received new cargo.
 	Callback32, ///< All vehicles in consist: 32 day callback requested rerandomisation
 };
+
+/** Bitset of \c VehicleRandomTrigger elements. */
 using VehicleRandomTriggers = EnumBitSet<VehicleRandomTrigger, uint8_t>;
 
 /**

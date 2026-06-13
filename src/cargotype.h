@@ -65,6 +65,8 @@ enum class CargoClass : uint8_t {
 	NonPotable   = 14, ///< Non-potable / non-food / dirty.
 	Special      = 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
+
+/** Bitset of \c CargoClass elements. */
 using CargoClasses = EnumBitSet<CargoClass, uint16_t>;
 
 static const uint8_t INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo

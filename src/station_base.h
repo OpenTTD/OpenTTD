@@ -207,6 +207,8 @@ struct GoodsEntry {
 		 */
 		AcceptedBigtick = 5,
 	};
+
+	/** Bitset of \c State elements. */
 	using States = EnumBitSet<State, uint8_t>;
 
 	struct GoodsEntryData {

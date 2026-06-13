@@ -27,6 +27,8 @@ enum class IndustryRandomTrigger : uint8_t {
 	IndustryTick, ///< The industry has been triggered via its tick.
 	CargoReceived, ///< Cargo has been delivered.
 };
+
+/** Bitset of \c IndustryRandomTrigger elements. */
 using IndustryRandomTriggers = EnumBitSet<IndustryRandomTrigger, uint8_t>;
 
 /** Animation triggers of the industries. */
@@ -37,6 +39,8 @@ enum class IndustryAnimationTrigger : uint8_t {
 	CargoReceived, ///< Trigger when cargo is received .
 	CargoDistributed, ///< Trigger when cargo is distributed.
 };
+
+/** Bitset of \c IndustryAnimationTrigger elements. */
 using IndustryAnimationTriggers = EnumBitSet<IndustryAnimationTrigger, uint8_t>;
 
 static const IndustryType NUM_INDUSTRYTYPES_PER_GRF = 128;            ///< maximum number of industry types per NewGRF; limited to 128 because bit 7 has a special meaning in some variables/callbacks (see MapNewGRFIndustryType).

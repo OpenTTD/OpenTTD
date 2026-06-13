@@ -29,6 +29,7 @@ enum RoadType : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadType)
 
+/** Bitset of \c RoadType elements. */
 using RoadTypes = EnumBitSet<RoadType, uint64_t>;
 
 /**

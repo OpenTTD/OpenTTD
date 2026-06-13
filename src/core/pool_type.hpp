@@ -19,7 +19,10 @@ enum class PoolType : uint8_t {
 	NetworkAdmin, ///< Network admin pool.
 	Data, ///< NewGRF or other data, that is not reset together with normal pools.
 };
+
+/** Bitset of \c PoolType elements. */
 using PoolTypes = EnumBitSet<PoolType, uint8_t>;
+
 static constexpr PoolTypes PT_ALL = {PoolType::Normal, PoolType::NetworkClient, PoolType::NetworkAdmin, PoolType::Data};
 
 typedef std::vector<struct PoolBase *> PoolVector; ///< Vector of pointers to PoolBase

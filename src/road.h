@@ -28,6 +28,8 @@ enum class RoadTypeFlag : uint8_t {
 	Hidden          = 3, ///< Bit number for hidden from construction.
 	TownBuild       = 4, ///< Bit number for allowing towns to build this roadtype.
 };
+
+/** Bitset of \c RoadTypeFlag elements. */
 using RoadTypeFlags = EnumBitSet<RoadTypeFlag, uint8_t>;
 
 struct SpriteGroup;

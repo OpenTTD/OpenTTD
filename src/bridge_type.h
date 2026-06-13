@@ -48,6 +48,8 @@ enum class BridgePillarFlag : uint8_t {
 	EdgeSW = 6, ///< Southwest edge is obstructed.
 	EdgeNW = 7, ///< Northwest edge is obstructed.
 };
+
+/** Bitset of \c BridgePillarFlag elements. */
 using BridgePillarFlags = EnumBitSet<BridgePillarFlag, uint8_t>;
 
 static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_ALL{

@@ -27,6 +27,7 @@ enum class VehicleEnterTileState : uint8_t {
 	CannotEnter, ///< The vehicle cannot enter the tile
 };
 
+/** Bitset of \c VehicleEnterTileState elements. */
 using VehicleEnterTileStates = EnumBitSet<VehicleEnterTileState, uint8_t>;
 
 /** Tile information, used while rendering the tile */

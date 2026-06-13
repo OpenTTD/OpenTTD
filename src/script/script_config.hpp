@@ -25,6 +25,7 @@ enum class ScriptConfigFlag : uint8_t {
 	Developer = 3, ///< This setting will only be visible when the Script development tools are active.
 };
 
+/** Bitset of \c ScriptConfigFlag elements. */
 using ScriptConfigFlags = EnumBitSet<ScriptConfigFlag, uint8_t>;
 
 typedef std::map<int, std::string> LabelMapping; ///< Map-type used to map the setting numbers to labels.

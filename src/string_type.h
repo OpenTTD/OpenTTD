@@ -53,6 +53,7 @@ enum class StringValidationSetting : uint8_t {
 	ReplaceTabCrNlWithSpace,
 };
 
+/** Bitset of \c StringValidationSetting elements. */
 using StringValidationSettings = EnumBitSet<StringValidationSetting, uint8_t>;
 
 

@@ -27,6 +27,8 @@ enum class HouseRandomTrigger : uint8_t {
 	 */
 	TileLoopNorth,
 };
+
+/** Bitset of \c HouseRandomTrigger elements. */
 using HouseRandomTriggers = EnumBitSet<HouseRandomTrigger, uint8_t>;
 
 #endif /* HOUSE_TYPE_H */

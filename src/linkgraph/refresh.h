@@ -33,6 +33,7 @@ protected:
 		InAutorefit, ///< Currently doing an autorefit loop. Ignore the first autorefit order.
 	};
 
+	/** Bitset of \c RefreshFlag elements. */
 	using RefreshFlags = EnumBitSet<RefreshFlag, uint8_t>;
 
 	/**

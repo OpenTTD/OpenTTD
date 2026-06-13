@@ -78,6 +78,8 @@ enum class PauseMode : uint8_t {
 	LinkGraph          = 6, ///< A game paused due to the link graph schedule lagging
 	CommandDuringPause = 7, ///< A game paused, and a command executed during the pause; resets on autosave
 };
+
+/** Bitset of \c PauseMode elements. */
 using PauseModes = EnumBitSet<PauseMode, uint8_t>;
 
 /** The current pause mode */

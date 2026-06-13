@@ -56,6 +56,7 @@ enum class AirportMovingDataFlag : uint8_t {
 	Hold, ///< Holding pattern movement (above the airport).
 };
 
+/** Bitset of \c AirportMovingDataFlag elements. */
 using AirportMovingDataFlags = EnumBitSet<AirportMovingDataFlag, uint16_t>;
 
 /** Movement States on Airports (headings target) */
@@ -129,6 +130,8 @@ enum class AirportBlock : uint8_t {
 	Zeppeliner       = 62, ///< Block for the zeppeliner disaster vehicle.
 	AirportClosed    = 63, ///< Dummy block for indicating a closed airport.
 };
+
+/** Bitset of \c AirportBlock elements. */
 using AirportBlocks = EnumBitSet<AirportBlock, uint64_t>;
 
 /** A single location on an airport where aircraft can move to. */
@@ -163,6 +166,8 @@ public:
 		Helicopters = 1, ///< Can helicopters land on this airport type?
 		ShortStrip  = 2, ///< This airport has a short landing strip, dangerous for fast aircraft.
 	};
+
+	/** Bitset of \c Flag elements. */
 	using Flags = EnumBitSet<Flag, uint8_t>;
 
 	AirportFTAClass(

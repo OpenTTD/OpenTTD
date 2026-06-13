@@ -25,6 +25,8 @@ enum class SpriteComponent : uint8_t {
 	Palette = 2, ///< Sprite has palette data.
 	End, ///< End marker.
 };
+
+/** Bitset of \c SpriteComponent elements. */
 using SpriteComponents = EnumBitSet<SpriteComponent, uint8_t, SpriteComponent::End>;
 
 /**

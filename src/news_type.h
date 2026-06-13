@@ -92,6 +92,8 @@ enum class NewsFlag : uint8_t {
 	Shaded, ///< News item uses shaded colours.
 	VehicleParam0, ///< String param 0 contains a vehicle ID. (special autoreplace behaviour)
 };
+
+/** Bitset of \c NewsFlag elements. */
 using NewsFlags = EnumBitSet<NewsFlag, uint8_t>;
 
 /**

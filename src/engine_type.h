@@ -176,6 +176,8 @@ enum class ExtraEngineFlag : uint8_t {
 	SyncReliability = 3, ///< Engine reliability will be synced with variant parent.
 	HasCab          = 4, ///< Train wagon has a cab and can lead a train when backing up, without any speed reduction.
 };
+
+/** Bitset of \c ExtraEngineFlag elements. */
 using ExtraEngineFlags = EnumBitSet<ExtraEngineFlag, uint8_t>;
 
 /**
@@ -195,6 +197,8 @@ enum class EngineMiscFlag : uint8_t {
 	NoBreakdownSmoke         = 6, ///< Do not show black smoke during a breakdown.
 	SpriteStack              = 7, ///< Draw vehicle by stacking multiple sprites.
 };
+
+/** Bitset of \c EngineMiscFlag elements. */
 using EngineMiscFlags = EnumBitSet<EngineMiscFlag, uint8_t>;
 
 /**
@@ -228,6 +232,8 @@ enum class EngineFlag : uint8_t {
 	Available        = 0, ///< This vehicle is available to everyone.
 	ExclusivePreview = 1, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
 };
+
+/** Bitset of \c EngineFlag elements. */
 using EngineFlags = EnumBitSet<EngineFlag, uint8_t>;
 
 /**

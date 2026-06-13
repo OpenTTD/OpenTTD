@@ -26,6 +26,8 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		BaseEntry = 6, ///< Non-zero when the entries on this road stop are the primary, i.e. the ones to delete
 		EntryBusy = 7, ///< Non-zero when roadstop entry is busy
 	};
+
+	/** Bitset of \c RoadStopStatusFlag elements. */
 	using RoadStopStatusFlags = EnumBitSet<RoadStopStatusFlag, uint8_t>;
 
 	/** Container for each entry point of a drive through road stop */

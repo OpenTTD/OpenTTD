@@ -116,6 +116,8 @@ enum class StationSpecFlag : uint8_t {
 	ExtendedFoundations = 4, ///< Extended foundation block instead of simple.
 	DivByStationArea = 5, ///< Divide cargo amount by station area.
 };
+
+/** Bitset of \c StationSpecFlag elements. */
 using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
 
 /** Station specification. */
@@ -168,7 +170,10 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 		NoWires = 1, ///< Tile should NOT contain catenary wires.
 		Blocked = 2, ///< Tile is blocked to vehicles.
 	};
+
+	/** Bitset of \c TileFlag elements. */
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
+
 	std::vector<TileFlags> tileflags; ///< List of tile flags.
 	std::vector<BridgeableTileInfo> bridgeable_info; ///< Per tile layout bridge information.
 

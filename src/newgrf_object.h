@@ -39,6 +39,8 @@ enum class ObjectFlag : uint8_t {
 	AnimRandomBits   = 12, ///< Object wants random bits in "next animation frame" callback.
 	ScaleByWater     = 13, ///< Object count is roughly scaled by water amount at edges.
 };
+
+/** Bitset of \c ObjectFlag elements. */
 using ObjectFlags = EnumBitSet<ObjectFlag, uint16_t>;
 
 static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size property when the object is 1x1 tiles: low nibble for X, high nibble for Y.

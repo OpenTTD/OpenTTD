@@ -23,6 +23,8 @@ enum class ViewportStringFlag : uint8_t {
 	TransparentRect, ///< Draw a transparent rect around the sign.
 	TextColour, ///< Draw text in colour.
 };
+
+/** Bitset of \c ViewportStringFlag elements. */
 using ViewportStringFlags = EnumBitSet<ViewportStringFlag, uint8_t>;
 
 /**
