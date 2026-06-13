@@ -22,6 +22,16 @@
 #include "window_gui.h"
 #include "window_type.h"
 
+/** Picker filter mode. */
+enum class PickerFilterMode : uint8_t {
+	All, ///< Show all classes.
+	Used, ///< Show used types.
+	Saved, ///< Show saved types.
+};
+
+/** Bitset of \c PickerFilterMode elements. */
+using PickerFilterModes = EnumBitSet<PickerFilterMode, uint8_t>;
+
 struct PickerItem {
 	uint32_t grfid;
 	uint16_t local_id;
@@ -202,7 +212,7 @@ public:
 	Listing collection_last_sorting = { false, 0 }; ///< Default sorting of #PickerCollectionList.
 
 	const std::string ini_group; ///< Ini Group for saving favourites.
-	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
+	PickerFilterModes mode{}; ///< Bitmask of \c PickerFilterModes.
 	bool rename_collection = false;      ///< Are we renaming a collection?
 	std::string sel_collection;          ///< Currently selected collection of saved items.
 	std::string edit_collection;         ///< Collection to rename or delete.
@@ -311,12 +321,6 @@ using PickerCollectionList = GUIList<std::string, std::nullptr_t, PickerFilterDa
 
 class PickerWindow : public PickerWindowBase {
 public:
-	enum PickerFilterModes : uint8_t {
-		PFM_ALL = 0, ///< Show all classes.
-		PFM_USED = 1, ///< Show used types.
-		PFM_SAVED = 2, ///< Show saved types.
-	};
-
 	/** The things of a picker that can be invalidated. */
 	enum class PickerInvalidation : uint8_t {
 		Class, ///< Refresh the class list.
