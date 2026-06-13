@@ -306,7 +306,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 {
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->writable) {
-			if (cs->SendPackets() != SPS_CLOSED && cs->status == ClientStatus::Map) {
+			if (cs->SendPackets() != SendPacketsState::Closed && cs->status == ClientStatus::Map) {
 				/* This client is in the middle of a map-send, call the function for that */
 				cs->SendMap();
 			}

@@ -18,11 +18,11 @@
 #include <thread>
 
 /** The states of sending the packets. */
-enum SendPacketsState : uint8_t {
-	SPS_CLOSED,      ///< The connection got closed.
-	SPS_NONE_SENT,   ///< The buffer is still full, so no (parts of) packets could be sent.
-	SPS_PARTLY_SENT, ///< The packets are partly sent; there are more packets to be sent in the queue.
-	SPS_ALL_SENT,    ///< All packets in the queue are sent.
+enum class SendPacketsState : uint8_t {
+	Closed, ///< The connection got closed.
+	NoneSent, ///< The buffer is still full, so no (parts of) packets could be sent.
+	PartlySent, ///< The packets are partly sent; there are more packets to be sent in the queue.
+	AllSent, ///< All packets in the queue are sent.
 };
 
 /** Base socket handler for all TCP sockets */
