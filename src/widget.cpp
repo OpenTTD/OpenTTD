@@ -813,19 +813,17 @@ void Window::DrawWidgets() const
 /**
  * Draw a sort button's up or down arrow symbol.
  * @param widget Sort button widget
- * @param state State of sort button
+ * @param descending Draw the button for sorting descending.
  */
-void Window::DrawSortButtonState(WidgetID widget, SortButtonState state) const
+void Window::DrawSortButton(WidgetID widget, bool descending) const
 {
-	if (state == SBS_OFF) return;
-
 	assert(!this->widget_lookup.empty());
 	Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect();
 
 	/* Sort button uses the same sprites as vertical scrollbar */
 	Dimension dim = NWidgetScrollbar::GetVerticalDimension();
 
-	DrawSpriteIgnorePadding(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, r.WithWidth(dim.width, _current_text_dir == TD_LTR), SA_CENTER);
+	DrawSpriteIgnorePadding(descending ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, r.WithWidth(dim.width, _current_text_dir == TD_LTR), SA_CENTER);
 }
 
 /**

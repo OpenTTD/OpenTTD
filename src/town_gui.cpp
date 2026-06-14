@@ -847,7 +847,7 @@ public:
 	{
 		switch (widget) {
 			case WID_TD_SORT_ORDER:
-				this->DrawSortButtonState(widget, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+				this->DrawSortButton(widget, this->towns.IsDescSortOrder());
 				break;
 
 			case WID_TD_LIST: {

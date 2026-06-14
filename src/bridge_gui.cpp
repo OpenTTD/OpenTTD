@@ -241,7 +241,7 @@ public:
 	{
 		switch (widget) {
 			case WID_BBS_DROPDOWN_ORDER:
-				this->DrawSortButtonState(widget, this->bridges.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+				this->DrawSortButton(widget, this->bridges.IsDescSortOrder());
 				break;
 
 			case WID_BBS_BRIDGE_LIST: {

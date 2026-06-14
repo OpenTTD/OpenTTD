@@ -565,7 +565,7 @@ public:
 			case WID_NG_DATE:
 			case WID_NG_YEARS:
 			case WID_NG_INFO:
-				if (widget - WID_NG_NAME == this->servers.SortType()) this->DrawSortButtonState(widget, this->servers.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+				if (widget - WID_NG_NAME == this->servers.SortType()) this->DrawSortButton(widget, this->servers.IsDescSortOrder());
 				break;
 		}
 	}
