@@ -221,6 +221,7 @@ extern GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
 extern GrfMiscBits _misc_grf_features;
 
+uint32_t GetNewGRFOverride(uint32_t source_grfid);
 void SetNewGRFOverride(uint32_t source_grfid, uint32_t target_grfid);
 GRFFile *GetCurrentGRFOverride();
 
