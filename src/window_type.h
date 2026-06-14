@@ -813,9 +813,9 @@ public:
 };
 
 /** State of handling an event. */
-enum EventState : uint8_t {
-	ES_HANDLED,     ///< The passed event is handled.
-	ES_NOT_HANDLED, ///< The passed event is not handled.
+enum class EventState : uint8_t {
+	Handled, ///< The passed event is handled.
+	NotHandled, ///< The passed event is not handled.
 };
 
 #endif /* WINDOW_TYPE_H */

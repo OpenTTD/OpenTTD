@@ -2090,10 +2090,10 @@ struct MainToolbarWindow : Window {
 			case MTHK_CLIENT_LIST: if (_networking) ShowClientList(); break;
 			case MTHK_SIGN_LIST: ShowSignList(); break;
 			case MTHK_LANDINFO: cbf = PlaceLandBlockInfo(); break;
-			default: return ES_NOT_HANDLED;
+			default: return EventState::NotHandled;
 		}
 		if (cbf != CallBackFunction::None) _last_started_action = cbf;
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
@@ -2457,13 +2457,13 @@ struct ScenarioEditorToolbarWindow : Window {
 				case MainToolbarEditorHotkeys::GenerateTown: ShowFoundTownWindow(); break;
 				case MainToolbarEditorHotkeys::BuildRoad: ShowBuildRoadScenToolbar(_last_built_roadtype); break;
 				case MainToolbarEditorHotkeys::BuildTram: ShowBuildRoadScenToolbar(_last_built_tramtype); break;
-				default: return ES_NOT_HANDLED;
+				default: return EventState::NotHandled;
 			}
 			if (cbf != CallBackFunction::None) _last_started_action = cbf;
 		} else {
 			this->OnClick({}, hotkey, 0);
 		}
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override

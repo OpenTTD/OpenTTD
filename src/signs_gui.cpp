@@ -318,13 +318,13 @@ struct SignListWindow : Window, SignList {
 	/**
 	 * Handler for global hotkeys of the SignListWindow.
 	 * @param hotkey Hotkey
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	static EventState SignListGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode == GameMode::Menu) return ES_NOT_HANDLED;
+		if (_game_mode == GameMode::Menu) return EventState::NotHandled;
 		Window *w = ShowSignList();
-		if (w == nullptr) return ES_NOT_HANDLED;
+		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
 

@@ -647,19 +647,19 @@ public:
 	 * A key has been pressed.
 	 * @param key     the Unicode value of the key.
 	 * @param keycode the untranslated key code including shift state.
-	 * @return #ES_HANDLED if the key press has been handled and no other
+	 * @return #EventState::Handled if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnKeyPress([[maybe_unused]] char32_t key, [[maybe_unused]] uint16_t keycode) { return ES_NOT_HANDLED; }
+	virtual EventState OnKeyPress([[maybe_unused]] char32_t key, [[maybe_unused]] uint16_t keycode) { return EventState::NotHandled; }
 
 	virtual EventState OnHotkey(int hotkey);
 
 	/**
 	 * The state of the control key has changed
-	 * @return #ES_HANDLED if the change has been handled and no other
+	 * @return #EventState::Handled if the change has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnCTRLStateChange() { return ES_NOT_HANDLED; }
+	virtual EventState OnCTRLStateChange() { return EventState::NotHandled; }
 
 
 	/**

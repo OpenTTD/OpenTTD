@@ -1293,9 +1293,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
-		if (!this->editable) return ES_NOT_HANDLED;
+		if (!this->editable) return EventState::NotHandled;
 
-		if (this->vscroll2->UpdateListPositionOnKeyPress(this->avail_pos, keycode) == ES_NOT_HANDLED) return ES_NOT_HANDLED;
+		if (this->vscroll2->UpdateListPositionOnKeyPress(this->avail_pos, keycode) == EventState::NotHandled) return EventState::NotHandled;
 
 		if (this->avail_pos >= 0) {
 			this->active_sel = nullptr;
@@ -1306,7 +1306,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			this->InvalidateData(0);
 		}
 
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	void OnEditboxChanged(WidgetID widget) override
