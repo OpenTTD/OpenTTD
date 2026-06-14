@@ -104,12 +104,12 @@ enum class AdminUpdateFrequency : uint8_t {
 using AdminUpdateFrequencies = EnumBitSet<AdminUpdateFrequency, uint8_t>; ///< Bitset of chosen update frequencies.
 
 /** Reasons for removing a company - communicated to admins. */
-enum AdminCompanyRemoveReason : uint8_t {
-	ADMIN_CRR_MANUAL,    ///< The company is manually removed.
-	ADMIN_CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
-	ADMIN_CRR_BANKRUPT,  ///< The company went belly-up.
+enum class AdminCompanyRemoveReason : uint8_t {
+	Manual, ///< The company is manually removed.
+	Autoclean, ///< The company is removed due to autoclean.
+	Bankrupt, ///< The company went belly-up.
 
-	ADMIN_CRR_END,       ///< Sentinel for end.
+	End, ///< Sentinel for end.
 };
 
 /** Main socket handler for admin related connections. */
