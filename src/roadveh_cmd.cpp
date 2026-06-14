@@ -794,9 +794,13 @@ static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 	if (!HasTileAnyRoadType(od->tile, od->v->compatible_roadtypes)) return true;
 	TrackStatus ts = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, GetRoadTramType(od->v->roadtype));
 	TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
+	Tile next_tile = od->tile + TileOffsByDiagDir(DirToDiagDir(od->v->direction));
 
-	/* Track does not continue along overtaking direction || track has junction || levelcrossing is barred */
-	if (!ts.trackdirs.Test(od->trackdir) || trackbits.Any({Track::Upper, Track::Lower, Track::Left, Track::Right}) || ts.signals.Any()) return true;
+	/* Track does not continue along overtaking direction */
+	if (!ts.trackdirs.Test(od->trackdir)) return true;
+
+	/* Don't overtake across junction or barred level crossing, unless next tile is one-way. */
+	if ((trackbits.Any({Track::Upper, Track::Lower, Track::Left, Track::Right}) || ts.signals.Any()) && !IsOneWayRoadTile(next_tile)) return true;
 
 	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
 	return HasVehicleOnTile(od->tile, [&](const Vehicle *v) {
