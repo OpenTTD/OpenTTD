@@ -668,11 +668,11 @@ struct TooltipsWindow : public Window
 		/* We can show tooltips while dragging tools. These are shown as long as
 		 * we are dragging the tool. Normal tooltips work with hover or rmb. */
 		switch (this->close_cond) {
-			case TCC_RIGHT_CLICK: if (!_right_button_down) this->Close(); break;
-			case TCC_HOVER: if (!_mouse_hovering) this->Close(); break;
-			case TCC_NONE: break;
+			case TooltipCloseCondition::RightClick: if (!_right_button_down) this->Close(); break;
+			case TooltipCloseCondition::Hover: if (!_mouse_hovering) this->Close(); break;
+			case TooltipCloseCondition::None: break;
 
-			case TCC_EXIT_VIEWPORT: {
+			case TooltipCloseCondition::ExitViewport: {
 				Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 				if (w == nullptr || IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y) == nullptr) this->Close();
 				break;
