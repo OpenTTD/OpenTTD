@@ -220,7 +220,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 	p.Send_uint64(info.ticks_playing);
 
 	/* NETWORK_GAME_INFO_VERSION = 6 */
-	p.Send_uint8(send_newgrf_names ? NST_GRFID_MD5_NAME : NST_GRFID_MD5);
+	p.Send_uint8(to_underlying(send_newgrf_names ? NewGRFSerializationType::GrfIdMd5Name : NewGRFSerializationType::GrfIdMd5));
 
 	/* NETWORK_GAME_INFO_VERSION = 5 */
 	GameInfo *game_info = Game::GetInfo();
@@ -276,7 +276,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
 	uint8_t game_info_version = p.Recv_uint8();
-	NewGRFSerializationType newgrf_serialisation = NST_GRFID_MD5;
+	NewGRFSerializationType newgrf_serialisation = NewGRFSerializationType::GrfIdMd5;
 
 	/*
 	 *              Please observe the order.
@@ -292,8 +292,8 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			[[fallthrough]];
 
 		case 6:
-			newgrf_serialisation = (NewGRFSerializationType)p.Recv_uint8();
-			if (newgrf_serialisation >= NST_END) return;
+			newgrf_serialisation = static_cast<NewGRFSerializationType>(p.Recv_uint8());
+			if (newgrf_serialisation >= NewGRFSerializationType::End) return;
 			[[fallthrough]];
 
 		case 5: {
@@ -313,15 +313,15 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			for (uint i = 0; i < num_grfs; i++) {
 				NamedGRFIdentifier grf;
 				switch (newgrf_serialisation) {
-					case NST_GRFID_MD5:
+					case NewGRFSerializationType::GrfIdMd5:
 						DeserializeGRFIdentifier(p, grf.ident);
 						break;
 
-					case NST_GRFID_MD5_NAME:
+					case NewGRFSerializationType::GrfIdMd5Name:
 						DeserializeGRFIdentifierWithName(p, grf);
 						break;
 
-					case NST_LOOKUP_ID: {
+					case NewGRFSerializationType::LookupId: {
 						if (newgrf_lookup_table == nullptr) return;
 						auto it = newgrf_lookup_table->find(p.Recv_uint32());
 						if (it == newgrf_lookup_table->end()) return;
