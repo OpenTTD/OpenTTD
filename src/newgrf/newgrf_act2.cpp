@@ -333,34 +333,373 @@ static const SpriteGroup *CreateGroupFromGroupID(GrfSpecFeature feature, uint8_t
 	return ResultSpriteGroup::Create(spriteset_start, num_sprites);
 }
 
-/* Action 0x02 */
-static void NewSpriteGroup(ByteReader &buf)
+/**
+ * Read a Deterministic SpriteGroup.
+ * @param buf Input stream.
+ * @param setid SetID of the currently being parsed Action2. (only for debug output)
+ * @param type Type of the currently being parsed Action2. (only for debug output)
+ * @return The SpriteGroup.
+ */
+static const SpriteGroup *ReadDeterministicSpriteGroup(ByteReader &buf, uint8_t setid, uint8_t type)
 {
-	/* <02> <feature> <set-id> <type/num-entries> <feature-specific-data...>
-	 *
-	 * B feature       see action 1
-	 * B set-id        ID of this particular definition
-	 * B type/num-entries
-	 *                 if 80 or greater, this is a randomized or variational
-	 *                 list definition, see below
-	 *                 otherwise it specifies a number of entries, the exact
-	 *                 meaning depends on the feature
-	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
-	const SpriteGroup *act_group = nullptr;
+	assert(DeterministicSpriteGroup::CanAllocateItem());
+	DeterministicSpriteGroup *group = DeterministicSpriteGroup::Create();
+	group->nfo_line = _cur_gps.nfo_line;
+	group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
 
-	GrfSpecFeature feature{buf.ReadByte()};
-	if (feature >= GrfSpecFeature::End) {
-		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
-		return;
+	uint8_t varsize;
+	switch (GB(type, 2, 2)) {
+		default: NOT_REACHED();
+		case 0: group->size = DeterministicSpriteGroupSize::Byte; varsize = 1; break;
+		case 1: group->size = DeterministicSpriteGroupSize::Word; varsize = 2; break;
+		case 2: group->size = DeterministicSpriteGroupSize::DWord; varsize = 4; break;
 	}
 
-	uint8_t setid   = buf.ReadByte();
-	uint8_t type    = buf.ReadByte();
+	/* Loop through the var adjusts. Unfortunately we don't know how many we have
+	 * from the outset, so we shall have to keep reallocing. */
+	uint8_t varadjust;
+	do {
+		DeterministicSpriteGroupAdjust &adjust = group->adjusts.emplace_back();
+
+		/* The first var adjust doesn't have an operation specified, so we set it to add. */
+		adjust.operation = group->adjusts.size() == 1 ? DeterministicSpriteGroupAdjustOperation::Add : static_cast<DeterministicSpriteGroupAdjustOperation>(buf.ReadByte());
+		adjust.variable = buf.ReadByte();
+		if (adjust.variable == 0x7E) {
+			/* Link subroutine group */
+			adjust.subroutine = GetGroupFromGroupID(setid, type, buf.ReadByte());
+		} else {
+			adjust.parameter = IsInsideMM(adjust.variable, 0x60, 0x80) ? buf.ReadByte() : 0;
+		}
+
+		varadjust = buf.ReadByte();
+		adjust.shift_num = GB(varadjust, 0, 5);
+		adjust.type = static_cast<DeterministicSpriteGroupAdjustType>(GB(varadjust, 6, 2));
+		adjust.and_mask = buf.ReadVarSize(varsize);
+
+		if (adjust.type != DeterministicSpriteGroupAdjustType::None) {
+			adjust.add_val = buf.ReadVarSize(varsize);
+			adjust.divmod_val = buf.ReadVarSize(varsize);
+			if (adjust.divmod_val == 0) adjust.divmod_val = 1; // Ensure that divide by zero cannot occur
+		} else {
+			adjust.add_val = 0;
+			adjust.divmod_val = 0;
+		}
+
+		/* Continue reading var adjusts while bit 5 is set. */
+	} while (HasBit(varadjust, 5));
+
+	std::vector<DeterministicSpriteGroupRange> ranges;
+	ranges.resize(buf.ReadByte());
+	for (auto &range : ranges) {
+		auto groupid = buf.ReadWord();
+		if (groupid == GROUPID_CALCULATED_RESULT) {
+			range.result.calculated_result = true;
+		} else {
+			range.result.group = GetGroupFromGroupID(setid, type, groupid);
+		}
+		range.low = buf.ReadVarSize(varsize);
+		range.high = buf.ReadVarSize(varsize);
+	}
+
+	auto defgroupid = buf.ReadWord();
+	if (defgroupid == GROUPID_CALCULATED_RESULT) {
+		group->default_result.calculated_result = true;
+	} else {
+		group->default_result.group = GetGroupFromGroupID(setid, type, defgroupid);
+	}
+	/* 'calculated_result' makes no sense for the 'error' case. Use callback failure (nullptr) instead */
+	group->error_group = ranges.empty() ? group->default_result.group : ranges[0].result.group;
+	/* nvar == 0 is a special case:
+	 * - set "default_result" to "calculated_result".
+	 * - the old value specifies the "error_group". */
+	if (ranges.empty()) {
+		group->default_result.calculated_result = true;
+		group->default_result.group = nullptr;
+	}
+
+	/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
+	std::vector<uint32_t> bounds;
+	bounds.reserve(ranges.size());
+	for (const auto &range : ranges) {
+		bounds.push_back(range.low);
+		if (range.high != UINT32_MAX) bounds.push_back(range.high + 1);
+	}
+	std::sort(bounds.begin(), bounds.end());
+	bounds.erase(std::unique(bounds.begin(), bounds.end()), bounds.end());
+
+	std::vector<DeterministicSpriteGroupResult> target;
+	target.reserve(bounds.size());
+	for (const auto &bound : bounds) {
+		auto t = group->default_result;
+		for (const auto &range : ranges) {
+			if (range.low <= bound && bound <= range.high) {
+				t = range.result;
+				break;
+			}
+		}
+		target.push_back(t);
+	}
+	assert(target.size() == bounds.size());
+
+	for (uint j = 0; j < bounds.size(); ) {
+		if (target[j] != group->default_result) {
+			DeterministicSpriteGroupRange &r = group->ranges.emplace_back();
+			r.result = target[j];
+			r.low = bounds[j];
+			while (j < bounds.size() && target[j] == r.result) {
+				j++;
+			}
+			r.high = j < bounds.size() ? bounds[j] - 1 : UINT32_MAX;
+		} else {
+			j++;
+		}
+	}
+
+	return group;
+}
+
+/**
+ * Read a Randomized SpriteGroup.
+ * @param buf Input stream.
+ * @param feature GrfSpecFeature to define spritegroup for.
+ * @param setid SetID of the currently being parsed Action2. (only for debug output)
+ * @param type Type of the currently being parsed Action2. (only for debug output)
+ * @return The SpriteGroup.
+ */
+static const SpriteGroup *ReadRandomizedSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8_t setid, uint8_t type)
+{
+	assert(RandomizedSpriteGroup::CanAllocateItem());
+	RandomizedSpriteGroup *group = RandomizedSpriteGroup::Create();
+	group->nfo_line = _cur_gps.nfo_line;
+	group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
+
+	if (HasBit(type, 2)) {
+		if (feature <= GrfSpecFeature::Aircraft) group->var_scope = VarSpriteGroupScope::Relative;
+		group->count = buf.ReadByte();
+	}
+
+	uint8_t triggers = buf.ReadByte();
+	group->triggers = GB(triggers, 0, 7);
+	group->cmp_mode = HasBit(triggers, 7) ? RandomizedSpriteGroupCompareMode::All : RandomizedSpriteGroupCompareMode::Any;
+	group->lowest_randbit = buf.ReadByte();
+
+	uint8_t num_groups = buf.ReadByte();
+	if (!HasExactlyOneBit(num_groups)) {
+		GrfMsg(1, "NewSpriteGroup: Random Action 2 nrand should be power of 2");
+	}
+
+	group->groups.reserve(num_groups);
+	for (uint i = 0; i < num_groups; i++) {
+		group->groups.push_back(GetGroupFromGroupID(setid, type, buf.ReadWord()));
+	}
+
+	return group;
+}
+
+/**
+ * Read a Real SpriteGroup.
+ * @param buf Input stream.
+ * @param feature GrfSpecFeature to define spritegroup for.
+ * @param setid SetID of the currently being parsed Action2. (only for debug output)
+ * @param type Type of the currently being parsed Action2.
+ * @return The SpriteGroup.
+ */
+static const SpriteGroup *ReadRealSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8_t setid, uint8_t type)
+{
+	uint8_t num_loaded = type;
+	uint8_t num_loading = buf.ReadByte();
+
+	if (!_cur_gps.HasValidSpriteSets(feature)) {
+		GrfMsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
+		return nullptr;
+	}
+
+	GrfMsg(6, "NewSpriteGroup: New SpriteGroup 0x{:02X}, {} loaded, {} loading", setid, num_loaded, num_loading);
+
+	if (num_loaded + num_loading == 0) {
+		GrfMsg(1, "NewSpriteGroup: no result, skipping invalid RealSpriteGroup");
+		return nullptr;
+	}
+
+	if (num_loaded + num_loading == 1) {
+		/* Avoid creating 'Real' sprite group if only one option. */
+		uint16_t spriteid = buf.ReadWord();
+		GrfMsg(8, "NewSpriteGroup: one result, skipping RealSpriteGroup = subset {}", spriteid);
+		return CreateGroupFromGroupID(feature, setid, type, spriteid);
+	}
+
+	std::vector<uint16_t> loaded;
+	std::vector<uint16_t> loading;
+
+	loaded.reserve(num_loaded);
+	for (uint i = 0; i < num_loaded; i++) {
+		loaded.push_back(buf.ReadWord());
+		GrfMsg(8, "NewSpriteGroup: + rg->loaded[{}] = subset {}", i, loaded[i]);
+	}
+
+	loading.reserve(num_loading);
+	for (uint i = 0; i < num_loading; i++) {
+		loading.push_back(buf.ReadWord());
+		GrfMsg(8, "NewSpriteGroup: + rg->loading[{}] = subset {}", i, loading[i]);
+	}
+
+	bool loaded_same = !loaded.empty() && std::adjacent_find(loaded.begin(), loaded.end(), std::not_equal_to<>()) == loaded.end();
+	bool loading_same = !loading.empty() && std::adjacent_find(loading.begin(), loading.end(), std::not_equal_to<>()) == loading.end();
+	if (loaded_same && loading_same && loaded[0] == loading[0]) {
+		/* Both lists only contain the same value, so don't create 'Real' sprite group */
+		GrfMsg(8, "NewSpriteGroup: same result, skipping RealSpriteGroup = subset {}", loaded[0]);
+		return CreateGroupFromGroupID(feature, setid, type, loaded[0]);
+	}
+
+	assert(RealSpriteGroup::CanAllocateItem());
+	RealSpriteGroup *group = RealSpriteGroup::Create();
+	group->nfo_line = _cur_gps.nfo_line;
+
+	if (loaded_same && loaded.size() > 1) loaded.resize(1);
+	group->loaded.reserve(loaded.size());
+	for (uint16_t spriteid : loaded) {
+		const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
+		group->loaded.push_back(t);
+	}
+
+	if (loading_same && loading.size() > 1) loading.resize(1);
+	group->loading.reserve(loading.size());
+	for (uint16_t spriteid : loading) {
+		const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
+		group->loading.push_back(t);
+	}
+
+	return group;
+}
+
+/**
+ * Read a Tile Layout SpriteGroup.
+ * @param buf Input stream.
+ * @param feature GrfSpecFeature to define spritegroup for.
+ * @param type Type of the currently being parsed Action2. (only for debug output)
+ * @return The SpriteGroup.
+ */
+static const SpriteGroup *ReadTileLayoutSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8_t type)
+{
+	uint8_t num_building_sprites = std::max<uint8_t>(1, type);
+
+	assert(TileLayoutSpriteGroup::CanAllocateItem());
+	TileLayoutSpriteGroup *group = TileLayoutSpriteGroup::Create();
+	group->nfo_line = _cur_gps.nfo_line;
+
+	/* On error, bail out immediately. Temporary GRF data was already freed */
+	if (ReadSpriteLayout(buf, num_building_sprites, true, feature, false, type == 0, &group->dts)) return nullptr;
+
+	return group;
+}
+
+/**
+ * Read an Industry Production SpriteGroup.
+ * @param buf Input stream.
+ * @param type Type of the currently being parsed Action2.
+ * @return The SpriteGroup.
+ */
+static const SpriteGroup *ReadIndustryProductionSpriteGroup(ByteReader &buf, uint8_t type)
+{
+	if (type > 2) {
+		GrfMsg(1, "NewSpriteGroup: Unsupported industry production version {}, skipping", type);
+		return nullptr;
+	}
+
+	assert(IndustryProductionSpriteGroup::CanAllocateItem());
+	IndustryProductionSpriteGroup *group = IndustryProductionSpriteGroup::Create();
+	group->nfo_line = _cur_gps.nfo_line;
+	group->version = type;
+
+	if (type == 0) {
+		group->num_input = INDUSTRY_ORIGINAL_NUM_INPUTS;
+		for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_INPUTS; i++) {
+			group->subtract_input[i] = static_cast<int16_t>(buf.ReadWord()); // signed
+		}
+		group->num_output = INDUSTRY_ORIGINAL_NUM_OUTPUTS;
+		for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_OUTPUTS; i++) {
+			group->add_output[i] = buf.ReadWord(); // unsigned
+		}
+		group->again = buf.ReadByte();
+	} else if (type == 1) {
+		group->num_input = INDUSTRY_ORIGINAL_NUM_INPUTS;
+		for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_INPUTS; i++) {
+			group->subtract_input[i] = buf.ReadByte();
+		}
+		group->num_output = INDUSTRY_ORIGINAL_NUM_OUTPUTS;
+		for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_OUTPUTS; i++) {
+			group->add_output[i] = buf.ReadByte();
+		}
+		group->again = buf.ReadByte();
+	} else if (type == 2) {
+		group->num_input = buf.ReadByte();
+		if (group->num_input > std::size(group->subtract_input)) {
+			GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+			error->data = "too many inputs (max 16)";
+			return nullptr;
+		}
+		for (uint i = 0; i < group->num_input; i++) {
+			uint8_t rawcargo = buf.ReadByte();
+			CargoType cargo = GetCargoTranslation(rawcargo, _cur_gps.grffile);
+			if (!IsValidCargoType(cargo)) {
+				/* The mapped cargo is invalid. This is permitted at this point,
+				 * as long as the result is not used. Mark it invalid so this
+				 * can be tested later. */
+				group->version = 0xFF;
+			} else if (auto v = group->cargo_input | std::views::take(i); std::ranges::find(v, cargo) != v.end()) {
+				GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+				error->data = "duplicate input cargo";
+				return nullptr;
+			}
+			group->cargo_input[i] = cargo;
+			group->subtract_input[i] = buf.ReadByte();
+		}
+		group->num_output = buf.ReadByte();
+		if (group->num_output > std::size(group->add_output)) {
+			GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+			error->data = "too many outputs (max 16)";
+			return nullptr;
+		}
+		for (uint i = 0; i < group->num_output; i++) {
+			uint8_t rawcargo = buf.ReadByte();
+			CargoType cargo = GetCargoTranslation(rawcargo, _cur_gps.grffile);
+			if (!IsValidCargoType(cargo)) {
+				/* Mark this result as invalid to use */
+				group->version = 0xFF;
+			} else if (auto v = group->cargo_output | std::views::take(i); std::ranges::find(v, cargo) != v.end()) {
+				GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
+				error->data = "duplicate output cargo";
+				return nullptr;
+			}
+			group->cargo_output[i] = cargo;
+			group->add_output[i] = buf.ReadByte();
+		}
+		group->again = buf.ReadByte();
+	} else {
+		NOT_REACHED();
+	}
+
+	return group;
+}
+
+/**
+ * Read a SpriteGroup.
+ * @param buf Input stream.
+ * @param feature GrfSpecFeature to define spritegroup for.
+ * @param setid SetID of the currently being parsed Action2. (only for debug output)
+ * @param type Type of the currently being parsed Action2. (only for debug output)
+ * @return The SpriteGroup.
+ */
+static const SpriteGroup *ReadSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8_t setid, uint8_t type)
+{
+	if (feature >= GrfSpecFeature::End) {
+		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+		return nullptr;
+	}
 
 	/* Sprite Groups are created here but they are allocated from a pool, so
 	 * we do not need to delete anything if there is an exception from the
 	 * ByteReader. */
-
 	switch (type) {
 		/* Deterministic Sprite Group */
 		case 0x81: // Self scope, byte
@@ -369,165 +708,19 @@ static void NewSpriteGroup(ByteReader &buf)
 		case 0x86: // Parent scope, word
 		case 0x89: // Self scope, dword
 		case 0x8A: // Parent scope, dword
-		{
-			uint8_t varadjust;
-			uint8_t varsize;
-
-			assert(DeterministicSpriteGroup::CanAllocateItem());
-			DeterministicSpriteGroup *group = DeterministicSpriteGroup::Create();
-			group->nfo_line = _cur_gps.nfo_line;
-			act_group = group;
-			group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
-
-			switch (GB(type, 2, 2)) {
-				default: NOT_REACHED();
-				case 0: group->size = DeterministicSpriteGroupSize::Byte; varsize = 1; break;
-				case 1: group->size = DeterministicSpriteGroupSize::Word; varsize = 2; break;
-				case 2: group->size = DeterministicSpriteGroupSize::DWord; varsize = 4; break;
-			}
-
-			/* Loop through the var adjusts. Unfortunately we don't know how many we have
-			 * from the outset, so we shall have to keep reallocing. */
-			do {
-				DeterministicSpriteGroupAdjust &adjust = group->adjusts.emplace_back();
-
-				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust.operation = group->adjusts.size() == 1 ? DeterministicSpriteGroupAdjustOperation::Add : static_cast<DeterministicSpriteGroupAdjustOperation>(buf.ReadByte());
-				adjust.variable  = buf.ReadByte();
-				if (adjust.variable == 0x7E) {
-					/* Link subroutine group */
-					adjust.subroutine = GetGroupFromGroupID(setid, type, buf.ReadByte());
-				} else {
-					adjust.parameter = IsInsideMM(adjust.variable, 0x60, 0x80) ? buf.ReadByte() : 0;
-				}
-
-				varadjust = buf.ReadByte();
-				adjust.shift_num = GB(varadjust, 0, 5);
-				adjust.type = static_cast<DeterministicSpriteGroupAdjustType>(GB(varadjust, 6, 2));
-				adjust.and_mask = buf.ReadVarSize(varsize);
-
-				if (adjust.type != DeterministicSpriteGroupAdjustType::None) {
-					adjust.add_val = buf.ReadVarSize(varsize);
-					adjust.divmod_val = buf.ReadVarSize(varsize);
-					if (adjust.divmod_val == 0) adjust.divmod_val = 1; // Ensure that divide by zero cannot occur
-				} else {
-					adjust.add_val = 0;
-					adjust.divmod_val = 0;
-				}
-
-				/* Continue reading var adjusts while bit 5 is set. */
-			} while (HasBit(varadjust, 5));
-
-			std::vector<DeterministicSpriteGroupRange> ranges;
-			ranges.resize(buf.ReadByte());
-			for (auto &range : ranges) {
-				auto groupid = buf.ReadWord();
-				if (groupid == GROUPID_CALCULATED_RESULT) {
-					range.result.calculated_result = true;
-				} else {
-					range.result.group = GetGroupFromGroupID(setid, type, groupid);
-				}
-				range.low   = buf.ReadVarSize(varsize);
-				range.high  = buf.ReadVarSize(varsize);
-			}
-
-			auto defgroupid = buf.ReadWord();
-			if (defgroupid == GROUPID_CALCULATED_RESULT) {
-				group->default_result.calculated_result = true;
-			} else {
-				group->default_result.group = GetGroupFromGroupID(setid, type, defgroupid);
-			}
-			/* 'calculated_result' makes no sense for the 'error' case. Use callback failure (nullptr) instead */
-			group->error_group = ranges.empty() ? group->default_result.group : ranges[0].result.group;
-			/* nvar == 0 is a special case:
-			 * - set "default_result" to "calculated_result".
-			 * - the old value specifies the "error_group". */
-			if (ranges.empty()) {
-				group->default_result.calculated_result = true;
-				group->default_result.group = nullptr;
-			}
-
-			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
-			std::vector<uint32_t> bounds;
-			bounds.reserve(ranges.size());
-			for (const auto &range : ranges) {
-				bounds.push_back(range.low);
-				if (range.high != UINT32_MAX) bounds.push_back(range.high + 1);
-			}
-			std::sort(bounds.begin(), bounds.end());
-			bounds.erase(std::unique(bounds.begin(), bounds.end()), bounds.end());
-
-			std::vector<DeterministicSpriteGroupResult> target;
-			target.reserve(bounds.size());
-			for (const auto &bound : bounds) {
-				auto t = group->default_result;
-				for (const auto &range : ranges) {
-					if (range.low <= bound && bound <= range.high) {
-						t = range.result;
-						break;
-					}
-				}
-				target.push_back(t);
-			}
-			assert(target.size() == bounds.size());
-
-			for (uint j = 0; j < bounds.size(); ) {
-				if (target[j] != group->default_result) {
-					DeterministicSpriteGroupRange &r = group->ranges.emplace_back();
-					r.result = target[j];
-					r.low = bounds[j];
-					while (j < bounds.size() && target[j] == r.result) {
-						j++;
-					}
-					r.high = j < bounds.size() ? bounds[j] - 1 : UINT32_MAX;
-				} else {
-					j++;
-				}
-			}
-
-			break;
-		}
+			return ReadDeterministicSpriteGroup(buf, setid, type);
 
 		/* Randomized Sprite Group */
 		case 0x80: // Self scope
 		case 0x83: // Parent scope
 		case 0x84: // Relative scope
-		{
-			assert(RandomizedSpriteGroup::CanAllocateItem());
-			RandomizedSpriteGroup *group = RandomizedSpriteGroup::Create();
-			group->nfo_line = _cur_gps.nfo_line;
-			act_group = group;
-			group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
-
-			if (HasBit(type, 2)) {
-				if (feature <= GrfSpecFeature::Aircraft) group->var_scope = VarSpriteGroupScope::Relative;
-				group->count = buf.ReadByte();
-			}
-
-			uint8_t triggers = buf.ReadByte();
-			group->triggers = GB(triggers, 0, 7);
-			group->cmp_mode = HasBit(triggers, 7) ? RandomizedSpriteGroupCompareMode::All : RandomizedSpriteGroupCompareMode::Any;
-			group->lowest_randbit = buf.ReadByte();
-
-			uint8_t num_groups = buf.ReadByte();
-			if (!HasExactlyOneBit(num_groups)) {
-				GrfMsg(1, "NewSpriteGroup: Random Action 2 nrand should be power of 2");
-			}
-
-			group->groups.reserve(num_groups);
-			for (uint i = 0; i < num_groups; i++) {
-				group->groups.push_back(GetGroupFromGroupID(setid, type, buf.ReadWord()));
-			}
-
-			break;
-		}
+			return ReadRandomizedSpriteGroup(buf, feature, setid, type);
 
 		/* Neither a variable or randomized sprite group... must be a real group */
 		default:
-		{
 			if (type >= 0x80) {
 				GrfMsg(0, "NewSpriteGroup: Reserved group type 0x{:02X}, skipping", type);
-				return;
+				return nullptr;
 			}
 
 			switch (feature) {
@@ -543,182 +736,43 @@ static void NewSpriteGroup(ByteReader &buf)
 				case GrfSpecFeature::RoadTypes:
 				case GrfSpecFeature::TramTypes:
 				case GrfSpecFeature::Badges:
-				{
-					uint8_t num_loaded  = type;
-					uint8_t num_loading = buf.ReadByte();
-
-					if (!_cur_gps.HasValidSpriteSets(feature)) {
-						GrfMsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
-						return;
-					}
-
-					GrfMsg(6, "NewSpriteGroup: New SpriteGroup 0x{:02X}, {} loaded, {} loading",
-							setid, num_loaded, num_loading);
-
-					if (num_loaded + num_loading == 0) {
-						GrfMsg(1, "NewSpriteGroup: no result, skipping invalid RealSpriteGroup");
-						break;
-					}
-
-					if (num_loaded + num_loading == 1) {
-						/* Avoid creating 'Real' sprite group if only one option. */
-						uint16_t spriteid = buf.ReadWord();
-						act_group = CreateGroupFromGroupID(feature, setid, type, spriteid);
-						GrfMsg(8, "NewSpriteGroup: one result, skipping RealSpriteGroup = subset {}", spriteid);
-						break;
-					}
-
-					std::vector<uint16_t> loaded;
-					std::vector<uint16_t> loading;
-
-					loaded.reserve(num_loaded);
-					for (uint i = 0; i < num_loaded; i++) {
-						loaded.push_back(buf.ReadWord());
-						GrfMsg(8, "NewSpriteGroup: + rg->loaded[{}]  = subset {}", i, loaded[i]);
-					}
-
-					loading.reserve(num_loading);
-					for (uint i = 0; i < num_loading; i++) {
-						loading.push_back(buf.ReadWord());
-						GrfMsg(8, "NewSpriteGroup: + rg->loading[{}] = subset {}", i, loading[i]);
-					}
-
-					bool loaded_same = !loaded.empty() && std::adjacent_find(loaded.begin(),  loaded.end(),  std::not_equal_to<>()) == loaded.end();
-					bool loading_same = !loading.empty() && std::adjacent_find(loading.begin(), loading.end(), std::not_equal_to<>()) == loading.end();
-					if (loaded_same && loading_same && loaded[0] == loading[0]) {
-						/* Both lists only contain the same value, so don't create 'Real' sprite group */
-						act_group = CreateGroupFromGroupID(feature, setid, type, loaded[0]);
-						GrfMsg(8, "NewSpriteGroup: same result, skipping RealSpriteGroup = subset {}", loaded[0]);
-						break;
-					}
-
-					assert(RealSpriteGroup::CanAllocateItem());
-					RealSpriteGroup *group = RealSpriteGroup::Create();
-					group->nfo_line = _cur_gps.nfo_line;
-					act_group = group;
-
-					if (loaded_same && loaded.size() > 1) loaded.resize(1);
-					group->loaded.reserve(loaded.size());
-					for (uint16_t spriteid : loaded) {
-						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
-						group->loaded.push_back(t);
-					}
-
-					if (loading_same && loading.size() > 1) loading.resize(1);
-					group->loading.reserve(loading.size());
-					for (uint16_t spriteid : loading) {
-						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
-						group->loading.push_back(t);
-					}
-
-					break;
-				}
+					return ReadRealSpriteGroup(buf, feature, setid, type);
 
 				case GrfSpecFeature::Houses:
 				case GrfSpecFeature::AirportTiles:
 				case GrfSpecFeature::Objects:
 				case GrfSpecFeature::IndustryTiles:
-				case GrfSpecFeature::RoadStops: {
-					uint8_t num_building_sprites = std::max((uint8_t)1, type);
+				case GrfSpecFeature::RoadStops:
+					return ReadTileLayoutSpriteGroup(buf, feature, type);
 
-					assert(TileLayoutSpriteGroup::CanAllocateItem());
-					TileLayoutSpriteGroup *group = TileLayoutSpriteGroup::Create();
-					group->nfo_line = _cur_gps.nfo_line;
-					act_group = group;
+				case GrfSpecFeature::Industries:
+					return ReadIndustryProductionSpriteGroup(buf, type);
 
-					/* On error, bail out immediately. Temporary GRF data was already freed */
-					if (ReadSpriteLayout(buf, num_building_sprites, true, feature, false, type == 0, &group->dts)) return;
-					break;
-				}
-
-				case GrfSpecFeature::Industries: {
-					if (type > 2) {
-						GrfMsg(1, "NewSpriteGroup: Unsupported industry production version {}, skipping", type);
-						break;
-					}
-
-					assert(IndustryProductionSpriteGroup::CanAllocateItem());
-					IndustryProductionSpriteGroup *group = IndustryProductionSpriteGroup::Create();
-					group->nfo_line = _cur_gps.nfo_line;
-					act_group = group;
-					group->version = type;
-					if (type == 0) {
-						group->num_input = INDUSTRY_ORIGINAL_NUM_INPUTS;
-						for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_INPUTS; i++) {
-							group->subtract_input[i] = (int16_t)buf.ReadWord(); // signed
-						}
-						group->num_output = INDUSTRY_ORIGINAL_NUM_OUTPUTS;
-						for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_OUTPUTS; i++) {
-							group->add_output[i] = buf.ReadWord(); // unsigned
-						}
-						group->again = buf.ReadByte();
-					} else if (type == 1) {
-						group->num_input = INDUSTRY_ORIGINAL_NUM_INPUTS;
-						for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_INPUTS; i++) {
-							group->subtract_input[i] = buf.ReadByte();
-						}
-						group->num_output = INDUSTRY_ORIGINAL_NUM_OUTPUTS;
-						for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_OUTPUTS; i++) {
-							group->add_output[i] = buf.ReadByte();
-						}
-						group->again = buf.ReadByte();
-					} else if (type == 2) {
-						group->num_input = buf.ReadByte();
-						if (group->num_input > std::size(group->subtract_input)) {
-							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-							error->data = "too many inputs (max 16)";
-							return;
-						}
-						for (uint i = 0; i < group->num_input; i++) {
-							uint8_t rawcargo = buf.ReadByte();
-							CargoType cargo = GetCargoTranslation(rawcargo, _cur_gps.grffile);
-							if (!IsValidCargoType(cargo)) {
-								/* The mapped cargo is invalid. This is permitted at this point,
-								 * as long as the result is not used. Mark it invalid so this
-								 * can be tested later. */
-								group->version = 0xFF;
-							} else if (auto v = group->cargo_input | std::views::take(i); std::ranges::find(v, cargo) != v.end()) {
-								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-								error->data = "duplicate input cargo";
-								return;
-							}
-							group->cargo_input[i] = cargo;
-							group->subtract_input[i] = buf.ReadByte();
-						}
-						group->num_output = buf.ReadByte();
-						if (group->num_output > std::size(group->add_output)) {
-							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-							error->data = "too many outputs (max 16)";
-							return;
-						}
-						for (uint i = 0; i < group->num_output; i++) {
-							uint8_t rawcargo = buf.ReadByte();
-							CargoType cargo = GetCargoTranslation(rawcargo, _cur_gps.grffile);
-							if (!IsValidCargoType(cargo)) {
-								/* Mark this result as invalid to use */
-								group->version = 0xFF;
-							} else if (auto v = group->cargo_output | std::views::take(i); std::ranges::find(v, cargo) != v.end()) {
-								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-								error->data = "duplicate output cargo";
-								return;
-							}
-							group->cargo_output[i] = cargo;
-							group->add_output[i] = buf.ReadByte();
-						}
-						group->again = buf.ReadByte();
-					} else {
-						NOT_REACHED();
-					}
-					break;
-				}
-
-				/* Loading of Tile Layout and Production Callback groups would happen here */
-				default: GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+				default:
+					GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+					return nullptr;
 			}
-		}
 	}
+}
 
-	_cur_gps.spritegroups[setid] = act_group;
+/* Action 0x02 */
+static void NewSpriteGroup(ByteReader &buf)
+{
+	/* <02> <feature> <set-id> <type/num-entries> <feature-specific-data...>
+	 *
+	 * B feature       see action 1
+	 * B set-id        ID of this particular definition
+	 * B type/num-entries
+	 *                 if 80 or greater, this is a randomized or variational
+	 *                 list definition, see below
+	 *                 otherwise it specifies a number of entries, the exact
+	 *                 meaning depends on the feature
+	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
+	GrfSpecFeature feature{buf.ReadByte()};
+	uint8_t setid = buf.ReadByte();
+	uint8_t type = buf.ReadByte();
+
+	_cur_gps.spritegroups[setid] = ReadSpriteGroup(buf, feature, setid, type);
 }
 
 /** @copybrief GrfActionHandler::FileScan */
