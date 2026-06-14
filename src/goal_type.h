@@ -12,8 +12,6 @@
 
 #include "core/pool_type.hpp"
 
-static const uint32_t GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
-
 /** Types of goal questions. */
 enum class GoalQuestionType : uint8_t {
 	Question = 0, ///< Asking a simple question; title: Question.
@@ -22,6 +20,32 @@ enum class GoalQuestionType : uint8_t {
 	Error = 3, ///< Showing an error; title: Error.
 	End, ///< End marker.
 };
+
+/** Types of buttons that can be in the question window. */
+enum class GoalQuestionButton : uint8_t {
+	Cancel, ///< Cancel button.
+	Ok, ///< OK button.
+	No, ///< No button.
+	Yes, ///< Yes button.
+	Decline, ///< Decline button.
+	Accept, ///< Accept button.
+	Ignore, ///< Ignore button.
+	Retry, ///< Retry button.
+	Previous, ///< Previous button.
+	Next, ///< Next button.
+	Stop, ///< Stop button.
+	Start, ///< Start button.
+	Go, ///< Go button.
+	Continue, ///< Continue button.
+	Restart, ///< Restart button.
+	Postpone, ///< Postpone button.
+	Surrender, ///< Surrender button.
+	Close, ///< Close button.
+	End, ///< End marker.
+};
+
+/** Bitset of \c GoalQuestionButton elements. */
+using GoalQuestionButtons = EnumBitSet<GoalQuestionButton, uint32_t, GoalQuestionButton::End>;
 
 /** Types of goal destinations */
 enum class GoalType : uint8_t {

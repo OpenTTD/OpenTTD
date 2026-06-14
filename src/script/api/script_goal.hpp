@@ -56,24 +56,24 @@ public:
 	 */
 	enum QuestionButton {
 		/* Note: these values represent part of the string list starting with STR_GOAL_QUESTION_BUTTON_CANCEL */
-		BUTTON_CANCEL    = (1 << 0),  ///< Cancel button.
-		BUTTON_OK        = (1 << 1),  ///< OK button.
-		BUTTON_NO        = (1 << 2),  ///< No button.
-		BUTTON_YES       = (1 << 3),  ///< Yes button.
-		BUTTON_DECLINE   = (1 << 4),  ///< Decline button.
-		BUTTON_ACCEPT    = (1 << 5),  ///< Accept button.
-		BUTTON_IGNORE    = (1 << 6),  ///< Ignore button.
-		BUTTON_RETRY     = (1 << 7),  ///< Retry button.
-		BUTTON_PREVIOUS  = (1 << 8),  ///< Previous button.
-		BUTTON_NEXT      = (1 << 9),  ///< Next button.
-		BUTTON_STOP      = (1 << 10), ///< Stop button.
-		BUTTON_START     = (1 << 11), ///< Start button.
-		BUTTON_GO        = (1 << 12), ///< Go button.
-		BUTTON_CONTINUE  = (1 << 13), ///< Continue button.
-		BUTTON_RESTART   = (1 << 14), ///< Restart button.
-		BUTTON_POSTPONE  = (1 << 15), ///< Postpone button.
-		BUTTON_SURRENDER = (1 << 16), ///< Surrender button.
-		BUTTON_CLOSE     = (1 << 17), ///< Close button.
+		BUTTON_CANCEL = ::GoalQuestionButtons{::GoalQuestionButton::Cancel}.base(), ///< Cancel button.
+		BUTTON_OK = ::GoalQuestionButtons{::GoalQuestionButton::Ok}.base(), ///< OK button.
+		BUTTON_NO = ::GoalQuestionButtons{::GoalQuestionButton::No}.base(), ///< No button.
+		BUTTON_YES = ::GoalQuestionButtons{::GoalQuestionButton::Yes}.base(), ///< Yes button.
+		BUTTON_DECLINE = ::GoalQuestionButtons{::GoalQuestionButton::Decline}.base(), ///< Decline button.
+		BUTTON_ACCEPT = ::GoalQuestionButtons{::GoalQuestionButton::Accept}.base(), ///< Accept button.
+		BUTTON_IGNORE = ::GoalQuestionButtons{::GoalQuestionButton::Ignore}.base(), ///< Ignore button.
+		BUTTON_RETRY = ::GoalQuestionButtons{::GoalQuestionButton::Retry}.base(), ///< Retry button.
+		BUTTON_PREVIOUS = ::GoalQuestionButtons{::GoalQuestionButton::Previous}.base(), ///< Previous button.
+		BUTTON_NEXT = ::GoalQuestionButtons{::GoalQuestionButton::Next}.base(), ///< Next button.
+		BUTTON_STOP = ::GoalQuestionButtons{::GoalQuestionButton::Stop}.base(), ///< Stop button.
+		BUTTON_START = ::GoalQuestionButtons{::GoalQuestionButton::Start}.base(), ///< Start button.
+		BUTTON_GO = ::GoalQuestionButtons{::GoalQuestionButton::Go}.base(), ///< Go button.
+		BUTTON_CONTINUE = ::GoalQuestionButtons{::GoalQuestionButton::Continue}.base(), ///< Continue button.
+		BUTTON_RESTART = ::GoalQuestionButtons{::GoalQuestionButton::Restart}.base(), ///< Restart button.
+		BUTTON_POSTPONE = ::GoalQuestionButtons{::GoalQuestionButton::Postpone}.base(), ///< Postpone button.
+		BUTTON_SURRENDER = ::GoalQuestionButtons{::GoalQuestionButton::Surrender}.base(), ///< Surrender button.
+		BUTTON_CLOSE = ::GoalQuestionButtons{::GoalQuestionButton::Close}.base(), ///< Close button.
 	};
 
 	/**
