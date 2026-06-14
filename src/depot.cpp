@@ -11,6 +11,7 @@
 #include "depot_base.h"
 #include "order_backup.h"
 #include "order_func.h"
+#include "train.h"
 #include "window_func.h"
 #include "core/pool_func.hpp"
 #include "vehicle_gui.h"
@@ -46,4 +47,40 @@ Depot::~Depot()
 	/* Delete the depot list */
 	VehicleType vt = GetDepotVehicleType(this->xy);
 	CloseWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(this->xy), this->index).ToWindowNumber());
+}
+
+/**
+ * Count how many vehicles are queued in each depot.
+ * @param type    Type of vehicle
+ */
+void RebuildDepotOccupancyCache(VehicleType type)
+{
+	for (Depot *d : Depot::Iterate()) {
+		d->running_vehicles = 0;
+	}
+
+	for (const Vehicle *v : Vehicle::Iterate()) {
+		if (v->type != type) continue;
+
+		switch (type) {
+			case VEH_TRAIN: {
+				const Train *t = Train::From(v);
+				if (t->IsArticulatedPart() || t->IsRearDualheaded()) continue;
+				if (!t->IsInDepot()) continue;
+				if (!t->IsPrimaryVehicle()) continue;
+				if (t->vehstatus.Test(VehState::Stopped)) continue;
+				break;
+			}
+
+			default:
+				if (!v->IsPrimaryVehicle()) continue;
+				if (!v->IsInDepot()) continue;
+				if (v->vehstatus.Test(VehState::Stopped)) continue;
+				break;
+		}
+
+		Depot *d = Depot::GetByTile(v->tile);
+		if (!d) continue;
+		d->running_vehicles++;
+	}
 }
