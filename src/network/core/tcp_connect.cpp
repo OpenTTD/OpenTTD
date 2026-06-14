@@ -41,11 +41,11 @@ TCPServerConnecter::TCPServerConnecter(std::string_view connection_string, uint1
 	server_address(ServerAddress::Parse(connection_string, default_port))
 {
 	switch (this->server_address.type) {
-		case SERVER_ADDRESS_DIRECT:
+		case ServerAddressType::Direct:
 			this->connection_string = this->server_address.connection_string;
 			break;
 
-		case SERVER_ADDRESS_INVITE_CODE:
+		case ServerAddressType::InviteCode:
 			this->status = Status::Connecting;
 			_network_coordinator_client.ConnectToServer(this->server_address.connection_string, this);
 			break;
@@ -408,10 +408,10 @@ bool TCPServerConnecter::CheckActivity()
 	if (this->killed) return true;
 
 	switch (this->server_address.type) {
-		case SERVER_ADDRESS_DIRECT:
+		case ServerAddressType::Direct:
 			return TCPConnecter::CheckActivity();
 
-		case SERVER_ADDRESS_INVITE_CODE:
+		case ServerAddressType::InviteCode:
 			/* Check if a result has come in. */
 			switch (this->status) {
 				case Status::Failure:

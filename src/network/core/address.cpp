@@ -445,10 +445,10 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
 	if (connection_string.starts_with("+")) {
 		std::string_view invite_code = ParseCompanyFromConnectionString(connection_string, company_id);
-		return ServerAddress(SERVER_ADDRESS_INVITE_CODE, std::string(invite_code));
+		return ServerAddress(ServerAddressType::InviteCode, std::string(invite_code));
 	}
 
 	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port, company_id);
-	return ServerAddress(SERVER_ADDRESS_DIRECT, fmt::format("{}:{}", ip, port));
+	return ServerAddress(ServerAddressType::Direct, fmt::format("{}:{}", ip, port));
 }
