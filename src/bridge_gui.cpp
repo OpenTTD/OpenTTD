@@ -266,9 +266,9 @@ public:
 			/* Build the requested bridge */
 			this->BuildBridge(this->bridges[i].index);
 			this->Close();
-			return ES_HANDLED;
+			return EventState::Handled;
 		}
-		return ES_NOT_HANDLED;
+		return EventState::NotHandled;
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

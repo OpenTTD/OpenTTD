@@ -1434,7 +1434,7 @@ public:
 
 	EventState OnHotkey(int hotkey) override
 	{
-		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
+		if (this->vehicle->owner != _local_company) return EventState::NotHandled;
 
 		switch (hotkey) {
 			case OHK_SKIP:           this->OrderClick_Skip(); break;
@@ -1448,9 +1448,9 @@ public:
 			case OHK_TRANSFER:       this->OrderClick_Unload(OrderUnloadType::Transfer, true); break;
 			case OHK_NO_UNLOAD:      this->OrderClick_Unload(OrderUnloadType::NoUnload, true); break;
 			case OHK_NO_LOAD:        this->OrderClick_FullLoad(OrderLoadType::NoLoad, true); break;
-			default: return ES_NOT_HANDLED;
+			default: return EventState::NotHandled;
 		}
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override

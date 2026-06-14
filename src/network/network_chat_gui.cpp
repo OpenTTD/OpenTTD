@@ -382,10 +382,10 @@ struct NetworkChatWindow : public Window {
 
 	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
-		EventState state = ES_NOT_HANDLED;
+		EventState state = EventState::NotHandled;
 		if (keycode == WKC_TAB) {
 			ChatTabCompletion();
-			state = ES_HANDLED;
+			state = EventState::Handled;
 		}
 		return state;
 	}

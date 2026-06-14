@@ -615,7 +615,7 @@ struct BuildRoadToolbarWindow : Window {
 	/**
 	* Selects new RoadType based on SpecialHotkeys and order defined in _sorted_roadtypes.
 	* @param hotkey Defines what action to perform.
-	* @return ES_HANDLED if hotkey was accepted.
+	* @return EventState::Handled if hotkey was accepted.
 	*/
 	EventState ChangeRoadTypeOnHotkey(int hotkey)
 	{
@@ -636,7 +636,7 @@ struct BuildRoadToolbarWindow : Window {
 		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
 		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TRANSPORT_ROAD);
 
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	EventState OnHotkey(int hotkey) override
@@ -868,8 +868,8 @@ struct BuildRoadToolbarWindow : Window {
 
 	EventState OnCTRLStateChange() override
 	{
-		if (RoadToolbar_CtrlChanged(this)) return ES_HANDLED;
-		return ES_NOT_HANDLED;
+		if (RoadToolbar_CtrlChanged(this)) return EventState::Handled;
+		return EventState::NotHandled;
 	}
 
 	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
@@ -882,7 +882,7 @@ struct BuildRoadToolbarWindow : Window {
 	 * @param hotkey Hotkey
 	 * @param last_build Last build road type
 	 * @param rtt The road/tram type.
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	static EventState RoadTramToolbarGlobalHotkeys(int hotkey, RoadType last_build, RoadTramType rtt)
 	{
@@ -893,7 +893,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case GameMode::Editor:
-				if (!GetRoadTypes(true).Any(GetMaskForRoadTramType(rtt))) return ES_NOT_HANDLED;
+				if (!GetRoadTypes(true).Any(GetMaskForRoadTramType(rtt))) return EventState::NotHandled;
 				w = ShowBuildRoadScenToolbar(last_build);
 				break;
 
@@ -901,7 +901,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 		}
 
-		if (w == nullptr) return ES_NOT_HANDLED;
+		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
 

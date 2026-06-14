@@ -571,17 +571,17 @@ void Window::SetWidgetDirty(WidgetID widget_index) const
 /**
  * A hotkey has been pressed.
  * @param hotkey  Hotkey index, by default a widget index of a button or editbox.
- * @return #ES_HANDLED if the key press has been handled, and the hotkey is not unavailable for some reason.
+ * @return #EventState::Handled if the key press has been handled, and the hotkey is not unavailable for some reason.
  */
 EventState Window::OnHotkey(int hotkey)
 {
-	if (hotkey < 0) return ES_NOT_HANDLED;
+	if (hotkey < 0) return EventState::NotHandled;
 
 	NWidgetCore *nw = this->GetWidget<NWidgetCore>(hotkey);
-	if (nw == nullptr || nw->IsDisabled()) return ES_NOT_HANDLED;
+	if (nw == nullptr || nw->IsDisabled()) return EventState::NotHandled;
 
 	if (nw->type == WWT_EDITBOX) {
-		if (this->IsShaded()) return ES_NOT_HANDLED;
+		if (this->IsShaded()) return EventState::NotHandled;
 
 		/* Focus editbox */
 		this->SetFocusedWidget(hotkey);
@@ -590,7 +590,7 @@ EventState Window::OnHotkey(int hotkey)
 		/* Click button */
 		this->OnClick(Point(), hotkey, 1);
 	}
-	return ES_HANDLED;
+	return EventState::Handled;
 }
 
 /**
@@ -1964,9 +1964,9 @@ static void HandlePlacePresize()
  */
 static EventState HandleMouseDragDrop()
 {
-	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
+	if (_special_mouse_mode != WSM_DRAGDROP) return EventState::NotHandled;
 
-	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED; // Dragging, but the mouse did not move.
+	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled; // Dragging, but the mouse did not move.
 
 	Window *w = _thd.GetCallbackWnd();
 	if (w != nullptr) {
@@ -1982,7 +1982,7 @@ static EventState HandleMouseDragDrop()
 	}
 
 	if (!_left_button_down) ResetObjectToPlace(); // Button released, finished dragging.
-	return ES_HANDLED;
+	return EventState::Handled;
 }
 
 /** Report position of the mouse to the underlying window. */
@@ -2168,10 +2168,10 @@ static bool _dragging_window; ///< A window is being dragged or resized.
 static EventState HandleWindowDragging()
 {
 	/* Get out immediately if no window is being dragged at all. */
-	if (!_dragging_window) return ES_NOT_HANDLED;
+	if (!_dragging_window) return EventState::NotHandled;
 
 	/* If button still down, but cursor hasn't moved, there is nothing to do. */
-	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED;
+	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled;
 
 	/* Otherwise find the window... */
 	for (Window *w : Window::Iterate()) {
@@ -2266,7 +2266,7 @@ static EventState HandleWindowDragging()
 			EnsureVisibleCaption(w, nx, ny);
 
 			w->SetDirty();
-			return ES_HANDLED;
+			return EventState::Handled;
 		} else if (w->flags.Test(WindowFlag::SizingLeft) || w->flags.Test(WindowFlag::SizingRight)) {
 			/* Stop the sizing if the left mouse button was released */
 			if (!_left_button_down) {
@@ -2310,7 +2310,7 @@ static EventState HandleWindowDragging()
 			}
 
 			/* Window already on size */
-			if (x == 0 && y == 0) return ES_HANDLED;
+			if (x == 0 && y == 0) return EventState::Handled;
 
 			/* Now find the new cursor pos.. this is NOT _cursor, because we move in steps. */
 			_drag_delta.y += y;
@@ -2325,12 +2325,12 @@ static EventState HandleWindowDragging()
 
 			/* ResizeWindow sets both pre- and after-size to dirty for redrawing */
 			ResizeWindow(w, x, y);
-			return ES_HANDLED;
+			return EventState::Handled;
 		}
 	}
 
 	_dragging_window = false;
-	return ES_HANDLED;
+	return EventState::Handled;
 }
 
 /**
@@ -2418,7 +2418,7 @@ static EventState HandleActiveWidget()
 			if (!_left_button_down) {
 				w->SetWidgetDirty(w->mouse_capture_widget);
 				w->mouse_capture_widget = INVALID_WIDGET;
-				return ES_HANDLED;
+				return EventState::Handled;
 			}
 
 			/* Handle scrollbar internally, or dispatch click event */
@@ -2427,16 +2427,16 @@ static EventState HandleActiveWidget()
 				HandleScrollbarScrolling(w);
 			} else {
 				/* If cursor hasn't moved, there is nothing to do. */
-				if (_cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED;
+				if (_cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled;
 
 				Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
 				w->OnClick(pt, w->mouse_capture_widget, 0);
 			}
-			return ES_HANDLED;
+			return EventState::Handled;
 		}
 	}
 
-	return ES_NOT_HANDLED;
+	return EventState::NotHandled;
 }
 
 /**
@@ -2447,7 +2447,7 @@ static EventState HandleViewportScroll()
 {
 	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == ScrollWheelScrolling::ScrollMap && _cursor.wheel_moved;
 
-	if (!_scrolling_viewport) return ES_NOT_HANDLED;
+	if (!_scrolling_viewport) return EventState::NotHandled;
 
 	/* When we don't have a last scroll window we are starting to scroll.
 	 * When the last scroll window and this are not the same we went
@@ -2458,14 +2458,14 @@ static EventState HandleViewportScroll()
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		_last_scroll_window = nullptr;
-		return ES_NOT_HANDLED;
+		return EventState::NotHandled;
 	}
 
 	if (_last_scroll_window == GetMainWindow() && _last_scroll_window->viewport->follow_vehicle != VehicleID::Invalid()) {
 		/* If the main window is following a vehicle, then first let go of it! */
 		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle)->GetMovingFront();
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
-		return ES_NOT_HANDLED;
+		return EventState::NotHandled;
 	}
 
 	Point delta;
@@ -2494,7 +2494,7 @@ static EventState HandleViewportScroll()
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
 	_cursor.wheel_moved = false;
-	return ES_HANDLED;
+	return EventState::Handled;
 }
 
 /**
@@ -2564,13 +2564,13 @@ static bool MaybeBringWindowToFront(Window *w)
  * @param wid Editbox widget.
  * @param key     the Unicode value of the key.
  * @param keycode the untranslated key code including shift state.
- * @return #ES_HANDLED if the key press has been handled and no other
+ * @return #EventState::Handled if the key press has been handled and no other
  *         window should receive the event.
  */
 EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode)
 {
 	QueryString *query = this->GetQueryString(wid);
-	if (query == nullptr) return ES_NOT_HANDLED;
+	if (query == nullptr) return EventState::NotHandled;
 
 	int action = QueryString::ACTION_NOTHING;
 
@@ -2607,7 +2607,7 @@ EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode
 			break;
 
 		case HKPR_NOT_HANDLED:
-			return ES_NOT_HANDLED;
+			return EventState::NotHandled;
 
 		default: break;
 	}
@@ -2632,7 +2632,7 @@ EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode
 			break;
 	}
 
-	return ES_HANDLED;
+	return EventState::Handled;
 }
 
 /**
@@ -2646,7 +2646,7 @@ void HandleToolbarHotkey(int hotkey)
 	Window *w = FindWindowById(WindowClass::MainToolbar, 0);
 	if (w != nullptr) {
 		if (w->window_desc.hotkeys != nullptr) {
-			if (hotkey >= 0 && w->OnHotkey(hotkey) == ES_HANDLED) return;
+			if (hotkey >= 0 && w->OnHotkey(hotkey) == EventState::Handled) return;
 		}
 	}
 }
@@ -2680,9 +2680,9 @@ void HandleKeypress(uint keycode, char32_t key)
 	if (EditBoxInGlobalFocus()) {
 		/* All input will in this case go to the focused editbox */
 		if (_focused_window->window_class == WindowClass::Console) {
-			if (_focused_window->OnKeyPress(key, keycode) == ES_HANDLED) return;
+			if (_focused_window->OnKeyPress(key, keycode) == EventState::Handled) return;
 		} else {
-			if (_focused_window->HandleEditBoxKey(_focused_window->nested_focus->GetIndex(), key, keycode) == ES_HANDLED) return;
+			if (_focused_window->HandleEditBoxKey(_focused_window->nested_focus->GetIndex(), key, keycode) == EventState::Handled) return;
 		}
 	}
 
@@ -2691,9 +2691,9 @@ void HandleKeypress(uint keycode, char32_t key)
 		if (w->window_class == WindowClass::MainToolbar) continue;
 		if (w->window_desc.hotkeys != nullptr) {
 			int hotkey = w->window_desc.hotkeys->CheckMatch(keycode);
-			if (hotkey >= 0 && w->OnHotkey(hotkey) == ES_HANDLED) return;
+			if (hotkey >= 0 && w->OnHotkey(hotkey) == EventState::Handled) return;
 		}
-		if (w->OnKeyPress(key, keycode) == ES_HANDLED) return;
+		if (w->OnKeyPress(key, keycode) == EventState::Handled) return;
 	}
 
 	Window *w = FindWindowById(WindowClass::MainToolbar, 0);
@@ -2701,9 +2701,9 @@ void HandleKeypress(uint keycode, char32_t key)
 	if (w != nullptr) {
 		if (w->window_desc.hotkeys != nullptr) {
 			int hotkey = w->window_desc.hotkeys->CheckMatch(keycode);
-			if (hotkey >= 0 && w->OnHotkey(hotkey) == ES_HANDLED) return;
+			if (hotkey >= 0 && w->OnHotkey(hotkey) == EventState::Handled) return;
 		}
-		if (w->OnKeyPress(key, keycode) == ES_HANDLED) return;
+		if (w->OnKeyPress(key, keycode) == EventState::Handled) return;
 	}
 
 	HandleGlobalHotkeys(key, keycode);
@@ -2716,7 +2716,7 @@ void HandleCtrlChanged()
 {
 	/* Call the event, start with the uppermost window. */
 	for (Window *w : Window::IterateFromFront()) {
-		if (w->OnCTRLStateChange() == ES_HANDLED) return;
+		if (w->OnCTRLStateChange() == EventState::Handled) return;
 	}
 }
 
@@ -2877,11 +2877,11 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	HandlePlacePresize();
 	UpdateTileSelection();
 
-	if (VpHandlePlaceSizingDrag()  == ES_HANDLED) return;
-	if (HandleMouseDragDrop()      == ES_HANDLED) return;
-	if (HandleWindowDragging()     == ES_HANDLED) return;
-	if (HandleActiveWidget()       == ES_HANDLED) return;
-	if (HandleViewportScroll()     == ES_HANDLED) return;
+	if (VpHandlePlaceSizingDrag()  == EventState::Handled) return;
+	if (HandleMouseDragDrop()      == EventState::Handled) return;
+	if (HandleWindowDragging()     == EventState::Handled) return;
+	if (HandleActiveWidget()       == EventState::Handled) return;
+	if (HandleViewportScroll()     == EventState::Handled) return;
 
 	HandleMouseOver();
 
