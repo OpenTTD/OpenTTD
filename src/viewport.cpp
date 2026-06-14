@@ -2789,7 +2789,7 @@ void UpdateTileSelection()
 static inline void ShowMeasurementTooltips(EncodedString &&text)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(_thd.GetCallbackWnd(), std::move(text), TCC_EXIT_VIEWPORT);
+	GuiShowTooltips(_thd.GetCallbackWnd(), std::move(text), TooltipCloseCondition::ExitViewport);
 }
 
 static void HideMeasurementTooltips()

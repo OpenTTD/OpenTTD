@@ -259,12 +259,12 @@ struct ViewportData : Viewport {
 
 struct QueryString;
 
-/* misc_gui.cpp */
-enum TooltipCloseCondition : uint8_t {
-	TCC_RIGHT_CLICK,
-	TCC_HOVER,
-	TCC_NONE,
-	TCC_EXIT_VIEWPORT,
+/* Automatic closing conditions for tooltips. */
+enum class TooltipCloseCondition : uint8_t {
+	RightClick, ///< Close the tooltip when releasing the right mouse button.
+	Hover, ///< Close the tooltip when stopping to hovering, i.e. moving the mouse.
+	None, ///< Do not automatically close the tooltip.
+	ExitViewport, ///< Close the tooltip when leaving the viewport.
 };
 
 /**
