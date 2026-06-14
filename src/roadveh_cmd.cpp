@@ -792,7 +792,7 @@ struct OvertakeData {
 static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 {
 	if (!HasTileAnyRoadType(od->tile, od->v->compatible_roadtypes)) return true;
-	TrackStatus ts = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, GetRoadTramType(od->v->roadtype));
+	TrackStatus ts = GetTileTrackStatus(od->tile, TransportType::Road, GetRoadTramType(od->v->roadtype));
 	TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
 	/* Track does not continue along overtaking direction || track has junction || levelcrossing is barred */
@@ -880,7 +880,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 {
 	bool path_found = true;
 
-	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, GetRoadTramType(v->roadtype));
+	TrackStatus ts = GetTileTrackStatus(tile, TransportType::Road, GetRoadTramType(v->roadtype));
 
 	/* Replaces the given trackdir with Trackdir::Invalid when there is red signal for that trackdir. */
 	auto FilterRedSignal = [&ts](Trackdir trackdir) {

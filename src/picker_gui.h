@@ -352,7 +352,7 @@ public:
 	int preview_height = 0; ///< Height of preview images.
 	std::set<std::string> inactive; ///< Set of collections with inactive items.
 
-	PickerWindow(WindowDesc &desc, Window *parent, int window_number, PickerCallbacks &callbacks);
+	PickerWindow(WindowDesc &desc, Window *parent, WindowNumber window_number, PickerCallbacks &callbacks);
 	void OnInit() override;
 	void Close(int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;

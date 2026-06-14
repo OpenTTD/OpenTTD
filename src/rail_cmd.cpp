@@ -1209,7 +1209,7 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
 	if (tile == INVALID_TILE) return false;
 
 	/* Check for track bits on the new tile */
-	TrackdirBits trackdirbits = GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs;
+	TrackdirBits trackdirbits = GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid).trackdirs;
 
 	if (TracksOverlap(TrackdirBitsToTrackBits(trackdirbits))) return false;
 	trackdirbits &= TrackdirReachesTrackdirs(trackdir);
@@ -1234,7 +1234,7 @@ static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remo
 			break;
 
 		case TileType::TunnelBridge: {
-			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
+			if (GetTunnelBridgeTransportType(tile) != TransportType::Rail) return false;
 			if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
 			break;
 		}
@@ -1575,7 +1575,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 				break;
 			case TileType::TunnelBridge:
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) continue;
+				if (GetTunnelBridgeTransportType(tile) != TransportType::Rail) continue;
 				break;
 			default: continue;
 		}
@@ -2772,7 +2772,7 @@ set_ground:
 static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, DiagDirection side)
 {
 	/* Case of half tile slope with water. */
-	if (mode == TRANSPORT_WATER && IsPlainRail(tile) && GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {
+	if (mode == TransportType::Water && IsPlainRail(tile) && GetRailGroundType(tile) == RailGroundType::HalfTileWater && IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {
 		TrackBits tb = GetTrackBits(tile);
 		switch (tb.base()) {
 			default: NOT_REACHED();
@@ -2784,7 +2784,7 @@ static TrackStatus GetTileTrackStatus_Rail(TileIndex tile, TransportType mode, [
 		return {TrackBitsToTrackdirBits(tb), {}};
 	}
 
-	if (mode != TRANSPORT_RAIL) return {};
+	if (mode != TransportType::Rail) return {};
 
 	TrackBits trackbits{};
 	TrackdirBits red_signals{};

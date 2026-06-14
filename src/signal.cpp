@@ -382,7 +382,7 @@ static SigFlags ExploreSegment(Owner owner)
 
 			case TileType::TunnelBridge: {
 				if (GetTileOwner(tile) != owner) continue;
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) continue;
+				if (GetTunnelBridgeTransportType(tile) != TransportType::Rail) continue;
 				DiagDirection dir = GetTunnelBridgeDirection(tile);
 
 				if (enterdir == DiagDirection::Invalid) { // incoming from the wormhole
@@ -507,7 +507,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 		switch (GetTileType(tile)) {
 			case TileType::TunnelBridge:
 				/* 'optimization assert' - do not try to update signals when it is not needed */
-				assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL);
+				assert(GetTunnelBridgeTransportType(tile) == TransportType::Rail);
 				assert(dir == DiagDirection::Invalid || dir == ReverseDiagDir(GetTunnelBridgeDirection(tile)));
 				_tbdset.Add(tile, DiagDirection::Invalid);  // we can safely start from wormhole centre
 				_tbdset.Add(GetOtherTunnelBridgeEnd(tile), DiagDirection::Invalid);
@@ -524,7 +524,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 
 			case TileType::Station:
 			case TileType::Road:
-				if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Any(_enterdir_to_trackbits[dir])) {
+				if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid).trackdirs).Any(_enterdir_to_trackbits[dir])) {
 					/* only add to set when there is some 'interesting' track */
 					_tbdset.Add(tile, dir);
 					_tbdset.Add(tile + TileOffsByDiagDir(dir), ReverseDiagDir(dir));
@@ -536,7 +536,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 				/* jump to next tile */
 				tile = tile + TileOffsByDiagDir(dir);
 				dir = ReverseDiagDir(dir);
-				if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, RoadTramType::Invalid).trackdirs).Any(_enterdir_to_trackbits[dir])) {
+				if (TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Rail, RoadTramType::Invalid).trackdirs).Any(_enterdir_to_trackbits[dir])) {
 					_tbdset.Add(tile, dir);
 					break;
 				}
