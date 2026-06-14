@@ -266,7 +266,7 @@ public:
 
 			/* Return Trackdir::Invalid to trigger a ship reversal if that is the best option. */
 			best_origin_dir = node->GetTrackdir();
-			if (TrackdirToTrackdirBits(best_origin_dir).Any(forward_dirs)) {
+			if (!TrackdirToTrackdirBits(best_origin_dir).Any(forward_dirs)) {
 				path_cache.clear();
 				return Trackdir::Invalid;
 			}
