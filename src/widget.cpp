@@ -2465,14 +2465,14 @@ Scrollbar::size_type Scrollbar::GetScrolledRowFromWidget(int clickpos, const Win
  * This does not update the actual position of this scroll bar, that is left to the caller. It does,
  * however use the capacity and count of the scroll bar for the bounds and amount to scroll.
  *
- * When the count is 0 or the return is ES_NOT_HANDLED, then the position is not updated.
+ * When the count is 0 or the return is EventState::NotHandled, then the position is not updated.
  * With WKC_UP and WKC_DOWN the position goes one up or down respectively.
  * With WKC_PAGEUP and WKC_PAGEDOWN the position goes one capacity up or down respectively.
  * With WKC_HOME the first position is selected and with WKC_END the last position is selected.
  * This function ensures that pos is in the range [0..count).
  * @param list_position The current position in the list.
  * @param keycode The pressed key code.
- * @return ES_NOT_HANDLED when another key than the 6 specific keys was pressed, otherwise ES_HANDLED.
+ * @return EventState::NotHandled when another key than the 6 specific keys was pressed, otherwise EventState::Handled.
  */
 EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16_t keycode) const
 {
@@ -2509,14 +2509,14 @@ EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16_t 
 			break;
 
 		default:
-			return ES_NOT_HANDLED;
+			return EventState::NotHandled;
 	}
 
 	/* If there are no elements, there is nothing to scroll/update. */
 	if (this->GetCount() != 0) {
 		list_position = Clamp(new_pos, 0, this->GetCount() - 1);
 	}
-	return ES_HANDLED;
+	return EventState::Handled;
 }
 
 

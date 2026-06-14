@@ -1174,9 +1174,9 @@ struct QueryWindow : public Window {
 
 			case WKC_ESC:
 				this->Close();
-				return ES_HANDLED;
+				return EventState::Handled;
 		}
-		return ES_NOT_HANDLED;
+		return EventState::NotHandled;
 	}
 };
 

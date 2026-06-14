@@ -313,13 +313,13 @@ struct TerraformToolbarWindow : Window {
 	/**
 	 * Handler for global hotkeys of the TerraformToolbarWindow.
 	 * @param hotkey Hotkey
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	static EventState TerraformToolbarGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode != GameMode::Normal) return ES_NOT_HANDLED;
+		if (_game_mode != GameMode::Normal) return EventState::NotHandled;
 		Window *w = ShowTerraformToolbar(nullptr);
-		if (w == nullptr) return ES_NOT_HANDLED;
+		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
 
@@ -731,11 +731,11 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			case WID_ETT_PLACE_DESERT:
 				if (this->IsWidgetLowered(this->last_user_action)) {
 					SetSelectionRed(_ctrl_pressed);
-					return ES_HANDLED;
+					return EventState::Handled;
 				}
 				break;
 		}
-		return ES_NOT_HANDLED;
+		return EventState::NotHandled;
 	}
 
 	void OnPlaceObjectAbort() override
@@ -747,13 +747,13 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	/**
 	 * Handler for global hotkeys of the ScenarioEditorLandscapeGenerationWindow.
 	 * @param hotkey Hotkey
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	static EventState TerraformToolbarEditorGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode != GameMode::Editor) return ES_NOT_HANDLED;
+		if (_game_mode != GameMode::Editor) return EventState::NotHandled;
 		Window *w = ShowEditorTerraformToolbar();
-		if (w == nullptr) return ES_NOT_HANDLED;
+		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
 

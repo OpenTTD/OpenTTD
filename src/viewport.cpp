@@ -3474,31 +3474,31 @@ calc_heightdiff_single_direction:;
  */
 EventState VpHandlePlaceSizingDrag()
 {
-	if (_special_mouse_mode != WSM_SIZING && _special_mouse_mode != WSM_DRAGGING) return ES_NOT_HANDLED;
+	if (_special_mouse_mode != WSM_SIZING && _special_mouse_mode != WSM_DRAGGING) return EventState::NotHandled;
 
 	/* stop drag mode if the window has been closed */
 	Window *w = _thd.GetCallbackWnd();
 	if (w == nullptr) {
 		ResetObjectToPlace();
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
 	if (_left_button_down) {
 		if (_special_mouse_mode == WSM_DRAGGING) {
 			/* Only register a drag event when the mouse moved. */
-			if (_thd.new_pos.x == _thd.selstart.x && _thd.new_pos.y == _thd.selstart.y) return ES_HANDLED;
+			if (_thd.new_pos.x == _thd.selstart.x && _thd.new_pos.y == _thd.selstart.y) return EventState::Handled;
 			_thd.selstart.x = _thd.new_pos.x;
 			_thd.selstart.y = _thd.new_pos.y;
 		}
 
 		w->OnPlaceDrag(_thd.select_method, _thd.select_proc, GetTileBelowCursor());
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	/* Mouse button released. */
 	_special_mouse_mode = WSM_NONE;
-	if (_special_mouse_mode == WSM_DRAGGING) return ES_HANDLED;
+	if (_special_mouse_mode == WSM_DRAGGING) return EventState::Handled;
 
 	/* Keep the selected tool, but reset it to the original mode. */
 	HighLightStyle others = _thd.place_mode & ~(HT_DRAG_MASK | HT_DIR_MASK);
@@ -3516,7 +3516,7 @@ EventState VpHandlePlaceSizingDrag()
 	HideMeasurementTooltips();
 	w->OnPlaceMouseUp(_thd.select_method, _thd.select_proc, _thd.selend, TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y));
 
-	return ES_HANDLED;
+	return EventState::Handled;
 }
 
 /**

@@ -834,8 +834,8 @@ struct BuildRailToolbarWindow : Window {
 	EventState OnCTRLStateChange() override
 	{
 		/* do not toggle Remove button by Ctrl when placing station */
-		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
-		return ES_NOT_HANDLED;
+		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return EventState::Handled;
+		return EventState::NotHandled;
 	}
 
 	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
@@ -846,7 +846,7 @@ struct BuildRailToolbarWindow : Window {
 	/**
 	 * Selects new RailType based on SpecialHotkeys and order defined in _sorted_railtypes.
 	 * @param hotkey Defines what action to perform.
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	EventState ChangeRailTypeOnHotkey(int hotkey)
 	{
@@ -863,19 +863,19 @@ struct BuildRailToolbarWindow : Window {
 		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
 		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TRANSPORT_RAIL);
 
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	/**
 	 * Handler for global hotkeys of the BuildRailToolbarWindow.
 	 * @param hotkey Hotkey
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	static EventState RailToolbarGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode != GameMode::Normal) return ES_NOT_HANDLED;
+		if (_game_mode != GameMode::Normal) return EventState::NotHandled;
 		Window *w = ShowBuildRailToolbar(_last_built_railtype);
-		if (w == nullptr) return ES_NOT_HANDLED;
+		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
 
@@ -1414,13 +1414,13 @@ public:
 	/**
 	 * Handler for global hotkeys of the BuildRailStationWindow.
 	 * @param hotkey Hotkey
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	static EventState BuildRailStationGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode == GameMode::Menu) return ES_NOT_HANDLED;
+		if (_game_mode == GameMode::Menu) return EventState::NotHandled;
 		Window *w = ShowStationBuilder(FindWindowById(WindowClass::BuildToolbar, TRANSPORT_RAIL));
-		if (w == nullptr) return ES_NOT_HANDLED;
+		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
 

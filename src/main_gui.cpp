@@ -280,45 +280,45 @@ struct MainWindow : Window
 	{
 		if (hotkey == GHK_QUIT) {
 			HandleExitGameRequest();
-			return ES_HANDLED;
+			return EventState::Handled;
 		}
 
 		/* Disable all key shortcuts, except quit shortcuts when
 		 * generating the world, otherwise they create threading
 		 * problem during the generating, resulting in random
 		 * assertions that are hard to trigger and debug */
-		if (HasModalProgress()) return ES_NOT_HANDLED;
+		if (HasModalProgress()) return EventState::NotHandled;
 
 		switch (hotkey) {
 			case GHK_ABANDON:
 				/* No point returning from the main menu to itself */
-				if (_game_mode == GameMode::Menu) return ES_HANDLED;
+				if (_game_mode == GameMode::Menu) return EventState::Handled;
 				if (_settings_client.gui.autosave_on_exit) {
 					DoExitSave();
 					_switch_mode = SwitchMode::Menu;
 				} else {
 					AskExitToGameMenu();
 				}
-				return ES_HANDLED;
+				return EventState::Handled;
 
 			case GHK_CONSOLE:
 				IConsoleSwitch();
-				return ES_HANDLED;
+				return EventState::Handled;
 
 			case GHK_BOUNDING_BOXES:
 				ToggleBoundingBoxes();
-				return ES_HANDLED;
+				return EventState::Handled;
 
 			case GHK_DIRTY_BLOCKS:
 				ToggleDirtyBlocks();
-				return ES_HANDLED;
+				return EventState::Handled;
 
 			case GHK_WIDGET_OUTLINES:
 				ToggleWidgetOutlines();
-				return ES_HANDLED;
+				return EventState::Handled;
 		}
 
-		if (_game_mode == GameMode::Menu) return ES_NOT_HANDLED;
+		if (_game_mode == GameMode::Menu) return EventState::NotHandled;
 
 		switch (hotkey) {
 			case GHK_CENTER:
@@ -415,16 +415,16 @@ struct MainWindow : Window
 				break;
 
 			case GHK_CLOSE_NEWS: // close active news window
-				if (!HideActiveNewsMessage()) return ES_NOT_HANDLED;
+				if (!HideActiveNewsMessage()) return EventState::NotHandled;
 				break;
 
 			case GHK_CLOSE_ERROR: // close active error window
-				if (!HideActiveErrorMessage()) return ES_NOT_HANDLED;
+				if (!HideActiveErrorMessage()) return EventState::NotHandled;
 				break;
 
-			default: return ES_NOT_HANDLED;
+			default: return EventState::NotHandled;
 		}
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	void OnScroll(Point delta) override

@@ -789,11 +789,11 @@ public:
 
 	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
-		EventState state = ES_NOT_HANDLED;
+		EventState state = EventState::NotHandled;
 
 		/* handle up, down, pageup, pagedown, home and end */
-		if (this->vscroll->UpdateListPositionOnKeyPress(this->list_pos, keycode) == ES_HANDLED) {
-			if (this->list_pos == SLP_INVALID) return ES_HANDLED;
+		if (this->vscroll->UpdateListPositionOnKeyPress(this->list_pos, keycode) == EventState::Handled) {
+			if (this->list_pos == SLP_INVALID) return EventState::Handled;
 
 			this->server = this->servers[this->list_pos];
 
@@ -802,7 +802,7 @@ public:
 
 			/* redraw window */
 			this->SetDirty();
-			return ES_HANDLED;
+			return EventState::Handled;
 		}
 
 		if (this->server != nullptr) {
