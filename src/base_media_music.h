@@ -29,6 +29,7 @@ std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &file
 enum MusicTrackType : uint8_t {
 	MTT_STANDARDMIDI, ///< Standard MIDI file
 	MTT_MPSMIDI,      ///< MPS GM driver MIDI format (contained in a CAT file)
+	MTT_OPUS,         ///< Ogg Opus audio file
 };
 
 /** Metadata about a music track. */
