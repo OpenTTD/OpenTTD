@@ -174,8 +174,9 @@ public:
 		TrackFollower follower{v};
 		if (follower.Follow(tile, dir)) {
 			TrackdirBits dirs = follower.new_td_bits;
-			const TrackdirBits dirs_without_90_degree = dirs.Reset(TrackdirCrossesTrackdirs(dir));
-			if (dirs_without_90_degree.Any()) dirs = dirs_without_90_degree;
+			/* Exclude 90 degree turns unless there are no non-90 turns. */
+			dirs.Reset(TrackdirCrossesTrackdirs(dir));
+			if (dirs.None()) dirs = follower.new_td_bits;
 			return { follower.new_tile, GetRandomTrackdir(dirs) };
 		}
 		return { follower.new_tile, Trackdir::Invalid };
