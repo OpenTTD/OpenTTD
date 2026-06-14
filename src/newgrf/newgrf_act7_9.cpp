@@ -24,6 +24,14 @@
 /** 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static std::array<uint32_t, 8> _ttdpatch_flags;
 
+static bool GetSignalSideOnTrafficSide()
+{
+	return
+	    _settings_game.construction.train_signal_side == TrainSignalSide::RoadVehicleDrivingSide ||
+	    (_settings_game.construction.train_signal_side == TrainSignalSide::Left && _settings_game.vehicle.road_side == RoadVehicleDrivingSide::Left) ||
+	    (_settings_game.construction.train_signal_side == TrainSignalSide::Right && _settings_game.vehicle.road_side == RoadVehicleDrivingSide::Right);
+}
+
 /** Initialize the TTDPatch flags */
 void InitializePatchFlags()
 {
@@ -52,7 +60,7 @@ void InitializePatchFlags()
 	                   |                                                       (1U << 0x18)  // newrvs
 	                   |                                                       (1U << 0x19)  // newships
 	                   |                                                       (1U << 0x1A)  // newplanes
-	                   | ((_settings_game.construction.train_signal_side == TrainSignalSide::RoadVehicleDrivingSide ? 1U : 0U) << 0x1B)  // signalsontrafficside
+	                   |                 ((GetSignalSideOnTrafficSide() ? 1U : 0U) << 0x1B)  // signalsontrafficside
 	                   |       ((_settings_game.vehicle.disable_elrails ? 0U : 1U) << 0x1C); // electrifiedrailway
 
 	_ttdpatch_flags[2] =                                                       (1U << 0x01)  // loadallgraphics - obsolete
