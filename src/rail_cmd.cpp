@@ -74,7 +74,8 @@ void ResetRailTypes()
 
 void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 {
-	SpriteID cursors_base = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::UI);
+	uint num_sprites;
+	SpriteID cursors_base = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::UI, TCX_NORMAL, &num_sprites);
 	if (cursors_base != 0) {
 		rti->gui_sprites.build_ns_rail = cursors_base +  0;
 		rti->gui_sprites.build_x_rail  = cursors_base +  1;
@@ -84,14 +85,30 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 		rti->gui_sprites.build_depot   = cursors_base +  5;
 		rti->gui_sprites.build_tunnel  = cursors_base +  6;
 		rti->gui_sprites.convert_rail  = cursors_base +  7;
-		rti->cursor.rail_ns   = cursors_base +  8;
-		rti->cursor.rail_swne = cursors_base +  9;
-		rti->cursor.rail_ew   = cursors_base + 10;
-		rti->cursor.rail_nwse = cursors_base + 11;
-		rti->cursor.autorail  = cursors_base + 12;
-		rti->cursor.depot     = cursors_base + 13;
-		rti->cursor.tunnel    = cursors_base + 14;
-		rti->cursor.convert   = cursors_base + 15;
+
+		/* Use GUI icon sprites (offsets 0-7) for composition by default,
+		 * or NewGRF-provided cursor sprites (offsets 8-15) when opted out via flag */
+		if (rti->UseComposedCursors()) {
+			/* Store GUI icon sprite IDs (offsets 0-7) for later composition */
+			rti->cursor.rail_ns   = cursors_base +  0;
+			rti->cursor.rail_swne = cursors_base +  1;
+			rti->cursor.rail_ew   = cursors_base +  2;
+			rti->cursor.rail_nwse = cursors_base +  3;
+			rti->cursor.autorail  = cursors_base +  4;
+			rti->cursor.depot     = cursors_base +  5;
+			rti->cursor.tunnel    = cursors_base +  6;
+			rti->cursor.convert   = cursors_base +  7;
+		} else {
+			/* Opted out - use NewGRF-provided cursor sprites (offsets 8-15) */
+			rti->cursor.rail_ns   = cursors_base +  8;
+			rti->cursor.rail_swne = cursors_base +  9;
+			rti->cursor.rail_ew   = cursors_base + 10;
+			rti->cursor.rail_nwse = cursors_base + 11;
+			rti->cursor.autorail  = cursors_base + 12;
+			rti->cursor.depot     = cursors_base + 13;
+			rti->cursor.tunnel    = cursors_base + 14;
+			rti->cursor.convert   = cursors_base + 15;
+		}
 	}
 
 	/* Array of default GUI signal sprite numbers. */
