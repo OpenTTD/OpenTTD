@@ -217,13 +217,6 @@ struct ResizeInfo {
 	uint step_height; ///< Step-size of height resize changes
 };
 
-/** State of a sort direction button. */
-enum SortButtonState : uint8_t {
-	SBS_OFF,  ///< Do not sort (with this button).
-	SBS_DOWN, ///< Sort ascending.
-	SBS_UP,   ///< Sort descending.
-};
-
 /**
  * Window flags.
  */
@@ -549,7 +542,7 @@ public:
 
 	void DrawWidgets() const;
 	void DrawViewport() const;
-	void DrawSortButtonState(WidgetID widget, SortButtonState state) const;
+	void DrawSortButton(WidgetID widget, bool descending) const;
 	static int SortButtonWidth();
 
 	Window *FindChildWindow(WindowClass wc = WindowClass::Invalid) const;

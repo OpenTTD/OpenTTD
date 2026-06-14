@@ -643,19 +643,12 @@ public:
 
 	void OnPaint() override
 	{
-		const SortButtonState arrow = this->content.IsDescSortOrder() ? SBS_DOWN : SBS_UP;
-
 		if (this->content.NeedRebuild()) {
 			this->BuildContentList();
 		}
 
 		this->DrawWidgets();
-
-		switch (this->content.SortType()) {
-			case WID_NCL_CHECKBOX - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_CHECKBOX, arrow); break;
-			case WID_NCL_TYPE     - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_TYPE,     arrow); break;
-			case WID_NCL_NAME     - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_NAME,     arrow); break;
-		}
+		this->DrawSortButton(this->content.SortType() + WID_NCL_CHECKBOX, this->content.IsDescSortOrder());
 	}
 
 	/**
