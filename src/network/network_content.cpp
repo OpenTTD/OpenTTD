@@ -734,12 +734,12 @@ NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection([[maybe_unu
 {
 	NetworkContentSocketHandler::CloseConnection();
 
-	if (this->sock == INVALID_SOCKET) return NETWORK_RECV_STATUS_OKAY;
+	if (this->sock == INVALID_SOCKET) return NetworkRecvStatus::Okay;
 
 	this->CloseSocket();
 	this->OnDisconnect();
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
