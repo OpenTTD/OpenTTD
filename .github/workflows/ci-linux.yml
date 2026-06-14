@@ -10,11 +10,16 @@ on:
         required: true
         type: string
       libraries:
-        required: true
+        required: false
         type: string
+        default: ""
       extra-cmake-parameters:
         required: true
         type: string
+      sdl3:
+        type: boolean
+        required: false
+        default: false
 
 env:
   CTEST_OUTPUT_ON_FAILURE: 1
@@ -31,6 +36,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v6
+
+    - name: Setup SDL3
+      if: inputs.sdl3
+      uses: libsdl-org/setup-sdl@main
+      with:
+        version: 3-latest
 
     - name: Setup vcpkg
       id: vcpkg

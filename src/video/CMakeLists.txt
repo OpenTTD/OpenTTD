@@ -22,6 +22,14 @@ if(NOT OPTION_DEDICATED)
     )
 
     add_files(
+        sdl3_v.cpp
+        sdl3_v.h
+        sdl3_default_v.cpp
+        sdl3_default_v.h
+        CONDITION SDL3_FOUND
+    )
+
+    add_files(
         sdl2_opengl_v.cpp
         sdl2_opengl_v.h
         CONDITION SDL2_FOUND AND OPENGL_FOUND

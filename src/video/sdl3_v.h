@@ -1,0 +1,133 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/** @file sdl3_v.h Base of the SDL3 video driver. */
+
+#ifndef VIDEO_SDL_H
+#define VIDEO_SDL_H
+
+#include <condition_variable>
+
+#include "video_driver.hpp"
+
+/** The SDL video driver. */
+class VideoDriver_SDL_Base : public VideoDriver {
+public:
+	/**
+	 * Constructor.
+	 * @param uses_hardware_acceleration Whether hardware acceleration is used.
+	 */
+	VideoDriver_SDL_Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration) {}
+
+	std::optional<std::string_view> Start(const StringList &param) override;
+
+	void Stop() override;
+
+	void MakeDirty(int left, int top, int width, int height) override;
+
+	void MainLoop() override;
+
+	bool ChangeResolution(int w, int h) override;
+
+	bool ToggleFullscreen(bool fullscreen) override;
+
+	bool AfterBlitterChange() override;
+
+	void ClaimMousePointer() override;
+
+	void EditBoxGainedFocus() override;
+
+	void EditBoxLostFocus() override;
+
+	std::vector<int> GetListOfMonitorRefreshRates() override;
+
+	std::string_view GetInfoString() const override { return this->driver_info; }
+
+	void SetScreensaverInhibited(bool inhibited) override;
+
+protected:
+	struct SDL_Window *sdl_window = nullptr; ///< Main SDL window.
+	Palette local_palette{}; ///< Current palette to use for drawing.
+	bool buffer_locked = false; ///< Video buffer was locked by the main thread.
+	Rect dirty_rect{}; ///< Rectangle encompassing the dirty area of the video buffer.
+	std::string driver_info{}; ///< Information string about selected driver.
+
+	Dimension GetScreenSize() const override;
+	void InputLoop() override;
+	bool LockVideoBuffer() override;
+	void UnlockVideoBuffer() override;
+	void CheckPaletteAnim() override;
+	bool PollEvent() override;
+
+	/**
+	 * Handle client area size change.
+	 * @param w New width.
+	 * @param h New height.
+	 * @param force Force update.
+	 */
+	void ClientSizeChanged(int w, int h, bool force);
+
+	/**
+	 * (Re-)create the backing store.
+	 * @param w The width of the window.
+	 * @param h The height of the window.
+	 * @param force Whether to force full reallocation, instead of not reallocating when size did not change.
+	 * @return Whether the backing store was (re-)created.
+	 */
+	virtual bool AllocateBackingStore(int w, int h, bool force = false) = 0;
+
+	/**
+	 * Get a pointer to the video buffer.
+	 * @return The pointer.
+	 */
+	virtual void *GetVideoPointer() = 0;
+
+	/** Hand video buffer back to the painting backend. */
+	virtual void ReleaseVideoPointer() = 0;
+
+	/**
+	 * Create the main window.
+	 * @param w The width of the window.
+	 * @param h The height of the window.
+	 * @param flags SDL specific flags for the window.
+	 * @return Whether the window was created or already existed.
+	 */
+	virtual bool CreateMainWindow(uint w, uint h, uint flags = 0);
+
+private:
+	/** Run one iteration of the main loop. */
+	void LoopOnce();
+	/** Cleanup after main loop exits. */
+	void MainLoopCleanup();
+	/**
+	 * Create or resize the main SDL drawing surface.
+	 * @param w Requested width.
+	 * @param h Requested height.
+	 * @param resize Whether this is a resize of an existing surface.
+	 * @return True if the surface was created successfully.
+	 */
+	bool CreateMainSurface(uint w, uint h, bool resize);
+	/**
+	 * Initialize the SDL video driver.
+	 * @return True on success.
+	 */
+	std::optional<std::string_view> Initialize();
+
+#ifdef __EMSCRIPTEN__
+	/* Convert a constant pointer back to a non-constant pointer to a member function. */
+	static void EmscriptenLoop(void *self) { ((VideoDriver_SDL_Base *)self)->LoopOnce(); }
+#endif
+
+	/**
+	 * This is true to indicate that keyboard input is in text input mode, and SDL_TEXTINPUT events are enabled.
+	 */
+	bool edit_box_focused = false;
+
+	int startup_display = 0;
+};
+
+#endif /* VIDEO_SDL_H */

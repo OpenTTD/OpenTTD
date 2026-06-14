@@ -67,9 +67,13 @@
 #ifdef WITH_LZO
 #include <lzo/lzo1x.h>
 #endif
+
 #ifdef WITH_SDL2
 #include <SDL.h>
-#endif /* WITH_SDL2 */
+#elif defined(WITH_SDL3)
+#include <SDL3/SDL.h>
+#endif
+
 #ifdef WITH_ZLIB
 # include <zlib.h>
 #endif
@@ -449,6 +453,15 @@ void SurveyLibraries(nlohmann::json &survey)
 	SDL_version sdl2_v;
 	SDL_GetVersion(&sdl2_v);
 	survey["sdl2"] = fmt::format("{}.{}.{}", sdl2_v.major, sdl2_v.minor, sdl2_v.patch);
+#endif
+
+#ifdef WITH_SDL3
+	const int sdl3_v = SDL_GetVersion();
+	survey["sdl3"] = fmt::format(
+		"{}.{}.{}",
+		SDL_VERSIONNUM_MAJOR(sdl3_v),
+		SDL_VERSIONNUM_MINOR(sdl3_v),
+		SDL_VERSIONNUM_MICRO(sdl3_v));
 #endif
 
 #ifdef WITH_ZLIB

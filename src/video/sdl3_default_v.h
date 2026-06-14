@@ -1,0 +1,41 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/** @file sdl3_default_v.h Default backend of the SDL3 video driver. */
+
+#ifndef VIDEO_SDL3_DEFAULT_H
+#define VIDEO_SDL3_DEFAULT_H
+
+#include "sdl3_v.h"
+
+/** The SDL video driver using default SDL backend. */
+class VideoDriver_SDL_Default : public VideoDriver_SDL_Base {
+public:
+	std::string_view GetName() const override { return "sdl"; }
+
+protected:
+	bool AllocateBackingStore(int w, int h, bool force = false) override;
+	void *GetVideoPointer() override;
+	void Paint() override;
+
+	void ReleaseVideoPointer() override {}
+
+private:
+	/** Update the SDL palette from the game palette. */
+	void UpdatePalette();
+	/** Create the SDL palette used by the indexed surface. */
+	void MakePalette();
+};
+
+/** Factory for the SDL video driver. */
+class FVideoDriver_SDL_Default : public DriverFactoryBase {
+public:
+	FVideoDriver_SDL_Default() : DriverFactoryBase(Driver::Type::Video, 5, "sdl", "SDL Video Driver") {}
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_SDL_Default>(); }
+};
+
+#endif /* VIDEO_SDL3_DEFAULT_H */

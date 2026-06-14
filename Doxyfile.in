@@ -312,6 +312,7 @@ PREDEFINED             = WITH_ZLIB \
                          WITH_LZO \
                          WITH_LIBLZMA \
                          WITH_SDL2 \
+                         WITH_SDL3 \
                          WITH_PNG \
                          WITH_FONTCONFIG \
                          WITH_FREETYPE \

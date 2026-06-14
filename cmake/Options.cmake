@@ -63,6 +63,10 @@ function(set_options)
     option(OPTION_ALLOW_INVALID_SIGNATURE "Allow loading of content with invalid signatures" OFF)
     option(OPTION_LINE_IN_DOXYGEN_WARNINGS "Print line number in doxygen warnings" ON)
 
+    if(UNIX AND NOT APPLE)
+        option(OPTION_SDL3 "Build with SDL3 instead of SDL2" OFF)
+    endif()
+
     if (OPTION_DOCS_ONLY)
         set(OPTION_TOOLS_ONLY ON PARENT_SCOPE)
     endif()
@@ -99,6 +103,10 @@ function(show_options)
     message(STATUS "Option Install FHS - ${OPTION_INSTALL_FHS}")
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
     message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
+
+    if(UNIX AND NOT APPLE)
+        message(STATUS "Option Use SDL3 - ${OPTION_SDL3}")
+    endif()
 
     if(OPTION_SURVEY_KEY)
         message(STATUS "Option Survey Key - USED")

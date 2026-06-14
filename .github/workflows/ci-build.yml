@@ -33,6 +33,11 @@ jobs:
           compiler: gcc
           cxxcompiler: g++
           libraries: libsdl2-dev
+        - name: GCC - SDL3
+          compiler: gcc
+          cxxcompiler: g++
+          sdl3: true
+          extra-cmake-parameters: -DOPTION_SDL3=ON
         - name: GCC - Dedicated
           compiler: gcc
           cxxcompiler: g++
@@ -50,6 +55,7 @@ jobs:
       cxxcompiler: ${{ matrix.cxxcompiler }}
       libraries: ${{ matrix.libraries }}
       extra-cmake-parameters: ${{ matrix.extra-cmake-parameters }}
+      sdl3: ${{ matrix.sdl3 || false }}
 
   macos:
     strategy:
