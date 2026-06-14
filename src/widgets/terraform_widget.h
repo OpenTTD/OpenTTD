@@ -40,7 +40,7 @@ enum EditorTerraformToolbarWidgets : WidgetID {
 	WID_ETT_BUTTONS_END,                         ///< End of pushable buttons.
 	WID_ETT_INCREASE_SIZE = WID_ETT_BUTTONS_END, ///< Upwards arrow button to increase terraforming size.
 	WID_ETT_DECREASE_SIZE,                       ///< Downwards arrow button to decrease terraforming size.
-	WID_ETT_NEW_SCENARIO,                        ///< Button for generating a new scenario.
+	WID_ETT_RANDOM_LANDSCAPE,                    ///< Button for generating a random landscape.
 	WID_ETT_RESET_LANDSCAPE,                     ///< Button for removing all company-owned property.
 };
 
