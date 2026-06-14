@@ -27,6 +27,7 @@
 #include "win32_v.h"
 #include <windows.h>
 #include <imm.h>
+#include <objbase.h>
 #include <versionhelpers.h>
 #if defined(_MSC_VER) && defined(NTDDI_WIN10_RS4)
 #include <winrt/Windows.UI.ViewManagement.h>
@@ -960,8 +961,11 @@ static void FindResolutions(uint8_t bpp)
 	SortResolutions();
 }
 
-void VideoDriver_Win32Base::Initialize()
+std::optional<std::string_view> VideoDriver_Win32Base::Initialize()
 {
+	/* Initialize COM */
+	if (FAILED(CoInitializeEx(nullptr, COINIT_MULTITHREADED))) return "COM initialization failed";
+
 	this->UpdateAutoResolution();
 
 	RegisterWndClass();
@@ -972,6 +976,7 @@ void VideoDriver_Win32Base::Initialize()
 	this->height = this->height_org = _cur_resolution.height;
 
 	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
+	return std::nullopt;
 }
 
 void VideoDriver_Win32Base::Stop()
@@ -1146,7 +1151,8 @@ std::optional<std::string_view> VideoDriver_Win32GDI::Start(const StringList &pa
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
-	this->Initialize();
+	auto err = this->Initialize();
+	if (err) return err;
 
 	this->MakePalette();
 	this->AllocateBackingStore(_cur_resolution.width, _cur_resolution.height);
@@ -1439,11 +1445,16 @@ std::optional<std::string_view> VideoDriver_Win32OpenGL::Start(const StringList 
 
 	LoadWGLExtensions();
 
-	this->Initialize();
+	auto err = this->Initialize();
+	if (err) {
+		this->Stop();
+		_cur_resolution = old_res;
+		return err;
+	}
 	this->MakeWindow(_fullscreen);
 
 	/* Create and initialize OpenGL context. */
-	auto err = this->AllocateContext();
+	err = this->AllocateContext();
 	if (err) {
 		this->Stop();
 		_cur_resolution = old_res;
