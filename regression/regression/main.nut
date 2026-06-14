@@ -2056,6 +2056,7 @@ function Regression::Vehicle()
 	print("    GetEngineType():     " + AIVehicle.GetEngineType(12));
 	print("    GetUnitNumber():     " + AIVehicle.GetUnitNumber(12));
 	print("    GetAge():            " + AIVehicle.GetAge(12));
+	print("    GetEconomyAge():     " + AIVehicle.GetEconomyAge(12));
 	print("    GetMaxAge():         " + AIVehicle.GetMaxAge(12));
 	print("    GetAgeLeft():        " + AIVehicle.GetAgeLeft(12));
 	print("    GetCurrentSpeed():   " + AIVehicle.GetCurrentSpeed(12));
@@ -2071,6 +2072,7 @@ function Regression::Vehicle()
 	print("    GetNumWagons():      " + AIVehicle.GetNumWagons(12));
 	print("    GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(12, 0));
 	print("    GetWagonAge():       " + AIVehicle.GetWagonAge(12, 0));
+	print("    GetWagonEconomyAge(): " + AIVehicle.GetWagonEconomyAge(12, 0));
 	print("    GetLength():         " + AIVehicle.GetLength(12));
 
 	print("  GetOwner():           " + AITile.GetOwner(32119));
@@ -2099,12 +2101,16 @@ function Regression::Vehicle()
 	print("  GetLength():          " + AIVehicle.GetLength(17));
 	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17, 0));
 	print("  GetWagonAge():        " + AIVehicle.GetWagonAge(17, 0));
+	print("  GetWagonEconomyAge(): " + AIVehicle.GetWagonEconomyAge(17, 0));
 	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17, 1));
 	print("  GetWagonAge():        " + AIVehicle.GetWagonAge(17, 1));
-	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17 2));
+	print("  GetWagonEconomyAge(): " + AIVehicle.GetWagonEconomyAge(17, 1));
+	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17, 2));
 	print("  GetWagonAge():        " + AIVehicle.GetWagonAge(17, 2));
-	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17 3));
+	print("  GetWagonEconomyAge(): " + AIVehicle.GetWagonEconomyAge(17, 2));
+	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17, 3));
 	print("  GetWagonAge():        " + AIVehicle.GetWagonAge(17, 3));
+	print("  GetWagonEconomyAge(): " + AIVehicle.GetWagonEconomyAge(17, 3));
 
 	print("  --Refit--");
 	print("    GetBuildWithRefitCapacity(): " + AIVehicle.GetBuildWithRefitCapacity(28479, 211, 255));
@@ -2156,6 +2162,11 @@ function Regression::Vehicle()
 	}
 	list.Valuate(AIVehicle.GetAge);
 	print("  Age ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AIVehicle.GetEconomyAge);
+	print("  EconomyAge ListDump:");
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
