@@ -393,7 +393,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyRemove(CompanyID c
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerCompanyRemove);
 
 	p->Send_uint8(company_id);
-	p->Send_uint8(acrr);
+	p->Send_uint8(to_underlying(acrr));
 
 	this->SendPacket(std::move(p));
 
