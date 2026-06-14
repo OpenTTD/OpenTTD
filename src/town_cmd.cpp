@@ -3117,10 +3117,10 @@ void ClearTownHouse(Town *t, TileIndex tile)
 
 /**
  * Rename a town (server-only).
- * @param flags type of operation
- * @param town_id town ID to rename
- * @param text the new name or an empty string when resetting to the default
- * @return the cost of this operation or an error
+ * @param flags Type of operation.
+ * @param town_id Town ID to rename.
+ * @param text The new name or an empty string when resetting to the default.
+ * @return The cost of this operation or an error.
  */
 CommandCost CmdRenameTown(DoCommandFlags flags, TownID town_id, const std::string &text)
 {
@@ -3128,15 +3128,22 @@ CommandCost CmdRenameTown(DoCommandFlags flags, TownID town_id, const std::strin
 	if (t == nullptr) return CMD_ERROR;
 
 	bool reset = text.empty();
+	uint32_t townnameparts;
+	bool is_name_unique;
 
-	if (!reset) {
+	if (reset) {
+		is_name_unique = GenerateTownName(_interactive_random, &townnameparts);
+	} else {
 		if (Utf8StringLength(text) >= MAX_LENGTH_TOWN_NAME_CHARS) return CMD_ERROR;
-		if (!IsUniqueTownName(text)) return CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE);
+		is_name_unique = IsUniqueTownName(text);
 	}
 
-	if (flags.Test(DoCommandFlag::Execute)) {
+	if (!is_name_unique) {
+		return CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE);
+	} else if (flags.Test(DoCommandFlag::Execute)) {
 		t->cached_name.clear();
 		if (reset) {
+			t->townnameparts = townnameparts;
 			t->name.clear();
 		} else {
 			t->name = text;
