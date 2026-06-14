@@ -1074,9 +1074,8 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		if (Chance16(1, 8)) {
 			CommandCost res = CMD_ERROR;
 			if (!_generating_world && Chance16(1, 10)) {
-				/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
 				res = ExtractCommandCost(Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater},
-						tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, false));
+						tile, Chance16(1, 16) ? cur_slope : ComplementSlope(RemoveSteepSlope(RemoveHalftileSlope(cur_slope))), false));
 			}
 			if (res.Failed() && Chance16(1, 3)) {
 				/* We can consider building on the slope, though. */
