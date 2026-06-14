@@ -123,7 +123,7 @@ NetworkRecvStatus ClientNetworkTurnSocketHandler::CloseConnection(bool error)
 		this->connecter = nullptr;
 	}
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /** Stop the attempt to connect. */

@@ -19,7 +19,7 @@ std::vector<std::unique_ptr<QueryNetworkGameSocketHandler>> QueryNetworkGameSock
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
 {
-	assert(status != NETWORK_RECV_STATUS_OKAY);
+	assert(status != NetworkRecvStatus::Okay);
 	assert(this->sock != INVALID_SOCKET);
 
 	/* Connection is closed, but we never received a packet. Must be offline. */
@@ -45,7 +45,7 @@ bool QueryNetworkGameSocketHandler::CheckConnection()
 	/* If there was no response in 5 seconds, terminate the query. */
 	if (lag > std::chrono::seconds(5)) {
 		Debug(net, 0, "Timeout while waiting for response from {}", this->connection_string);
-		this->CloseConnection(NETWORK_RECV_STATUS_CONNECTION_LOST);
+		this->CloseConnection(NetworkRecvStatus::ConnectionLost);
 		return false;
 	}
 
@@ -61,7 +61,7 @@ bool QueryNetworkGameSocketHandler::Receive()
 {
 	if (this->CanSendReceive()) {
 		NetworkRecvStatus res = this->ReceivePackets();
-		if (res != NETWORK_RECV_STATUS_OKAY) {
+		if (res != NetworkRecvStatus::Okay) {
 			this->CloseConnection(res);
 			return false;
 		}
@@ -84,7 +84,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 	Debug(net, 9, "Query::SendGameInfo()");
 
 	this->SendPacket(std::make_unique<Packet>(this, PacketGameType::ClientGameInfo));
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerFull(Packet &)
@@ -97,7 +97,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerFull(Packet &)
 
 	UpdateNetworkGameWindow();
 
-	return NETWORK_RECV_STATUS_CLOSE_QUERY;
+	return NetworkRecvStatus::CloseQuery;
 }
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerBanned(Packet &)
@@ -110,7 +110,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerBanned(Packet &)
 
 	UpdateNetworkGameWindow();
 
-	return NETWORK_RECV_STATUS_CLOSE_QUERY;
+	return NetworkRecvStatus::CloseQuery;
 }
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerGameInfo(Packet &p)
@@ -131,7 +131,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerGameInfo(Packet &p
 
 	UpdateNetworkGameWindow();
 
-	return NETWORK_RECV_STATUS_CLOSE_QUERY;
+	return NetworkRecvStatus::CloseQuery;
 }
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerError(Packet &p)
@@ -155,7 +155,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerError(Packet &p)
 
 	UpdateNetworkGameWindow();
 
-	return NETWORK_RECV_STATUS_CLOSE_QUERY;
+	return NetworkRecvStatus::CloseQuery;
 }
 
 /**

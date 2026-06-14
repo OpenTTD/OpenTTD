@@ -18,18 +18,18 @@ bool NetworkCoreInitialize();
 void NetworkCoreShutdown();
 
 /** Status of a network client; reasons why a client has quit */
-enum NetworkRecvStatus : uint8_t {
-	NETWORK_RECV_STATUS_OKAY,             ///< Everything is okay.
-	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur.
-	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs.
-	NETWORK_RECV_STATUS_SAVEGAME,         ///< Something went wrong (down)loading the savegame.
-	NETWORK_RECV_STATUS_CLIENT_QUIT,      ///< The connection is lost gracefully. Other clients are already informed of this leaving client.
-	NETWORK_RECV_STATUS_MALFORMED_PACKET, ///< We apparently send a malformed packet.
-	NETWORK_RECV_STATUS_SERVER_ERROR,     ///< The server told us we made an error.
-	NETWORK_RECV_STATUS_SERVER_FULL,      ///< The server is full.
-	NETWORK_RECV_STATUS_SERVER_BANNED,    ///< The server has banned us.
-	NETWORK_RECV_STATUS_CLOSE_QUERY,      ///< Done querying the server.
-	NETWORK_RECV_STATUS_CONNECTION_LOST,  ///< The connection is lost unexpectedly.
+enum class NetworkRecvStatus : uint8_t {
+	Okay, ///< Everything is okay.
+	Desync, ///< A desync did occur.
+	NewGRFMismatch, ///< We did not have the required NewGRFs.
+	Savegame, ///< Something went wrong (down)loading the savegame.
+	ClientQuit, ///< The connection is lost gracefully. Other clients are already informed of this leaving client.
+	MalformedPacket, ///< We apparently send a malformed packet.
+	ServerError, ///< The server told us we made an error.
+	ServerFull, ///< The server is full.
+	ServerBanned, ///< The server has banned us.
+	CloseQuery, ///< Done querying the server.
+	ConnectionLost, ///< The connection is lost unexpectedly.
 };
 
 /** Forward declaration due to circular dependencies */

@@ -192,7 +192,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -203,7 +203,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendNewGame()
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerNewGame);
 	this->SendPacket(std::move(p));
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -214,7 +214,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendShutdown()
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerShutdown);
 	this->SendPacket(std::move(p));
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -228,7 +228,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendDate()
 	p->Send_uint32(TimerGameCalendar::date.base());
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -243,7 +243,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 	p->Send_uint32(client_id);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -255,7 +255,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientSocket *cs, const NetworkClientInfo *ci)
 {
 	/* Only send data when we're a proper client, not just someone trying to query the server. */
-	if (ci == nullptr) return NETWORK_RECV_STATUS_OKAY;
+	if (ci == nullptr) return NetworkRecvStatus::Okay;
 
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientInfo);
 
@@ -268,7 +268,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkC
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 
@@ -287,7 +287,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientUpdate(const Networ
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -302,7 +302,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientQuit(ClientID clien
 	p->Send_uint32(client_id);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -319,7 +319,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientError(ClientID clie
 	p->Send_uint8(to_underlying(error));
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -334,7 +334,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyNew(CompanyID comp
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -357,7 +357,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 
@@ -379,7 +379,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -397,7 +397,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyRemove(CompanyID c
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -431,7 +431,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 	}
 
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -455,7 +455,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
 		this->SendPacket(std::move(p));
 	}
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -478,7 +478,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
 	p->Send_uint64(data);
 
 	this->SendPacket(std::move(p));
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -493,7 +493,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(std::string_view 
 	p->Send_string(command);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -510,7 +510,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16_t colour, std
 	p->Send_string(result);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminRemoteConsoleCommand(Packet &p)
@@ -536,7 +536,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminGameScript(Packet
 	Debug(net, 6, "[admin] GameScript JSON from '{}' ({}): {}", this->admin_name, this->admin_version, json);
 
 	Game::NewEvent(new ScriptEventAdminPort(json));
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminPing(Packet &p)
@@ -562,7 +562,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(std::string_view 
 	 * are bigger than the MTU, just ignore the message. Better safe than sorry. It should
 	 * never occur though as the longest strings are chat messages, which are still 30%
 	 * smaller than COMPAT_MTU. */
-	if (origin.size() + string.size() + 2 + 3 >= COMPAT_MTU) return NETWORK_RECV_STATUS_OKAY;
+	if (origin.size() + string.size() + 2 + 3 >= COMPAT_MTU) return NetworkRecvStatus::Okay;
 
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerConsole);
 
@@ -570,7 +570,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(std::string_view 
 	p->Send_string(string);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -585,7 +585,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(std::string_vi
 	p->Send_string(json);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -600,7 +600,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendPong(uint32_t d1)
 	p->Send_uint32(d1);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -633,7 +633,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
 	p->Send_bool(false);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -654,7 +654,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID clien
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /***********
@@ -713,7 +713,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminUpdateFrequency(P
 
 	if (type == AdminUpdateType::Console) DebugReconsiderSendRemoteMessages();
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminPoll(Packet &p)
@@ -779,7 +779,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminPoll(Packet &p)
 			return this->SendError(NetworkErrorCode::IllegalPacket);
 	}
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminChat(Packet &p)
@@ -805,7 +805,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminChat(Packet &p)
 			return this->SendError(NetworkErrorCode::IllegalPacket);
 	}
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminExternalChat(Packet &p)
@@ -824,7 +824,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminExternalChat(Pack
 
 	NetworkServerSendExternalChat(source, colour, user, msg);
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /*
@@ -871,7 +871,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendAuthRequest()
 
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -886,7 +886,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendEnableEncryption()
 	this->authentication_handler->SendEnableEncryption(*p);
 	this->SendPacket(std::move(p));
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminAuthenticationResponse(Packet &p)

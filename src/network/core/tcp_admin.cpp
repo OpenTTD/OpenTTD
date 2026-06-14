@@ -24,7 +24,7 @@ static_assert(to_underlying(CompanyRemoveReason::End)       == to_underlying(ADM
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
 {
 	delete this;
-	return NETWORK_RECV_STATUS_CLIENT_QUIT;
+	return NetworkRecvStatus::ClientQuit;
 }
 
 /**
@@ -82,7 +82,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet &p)
 		default:
 			Debug(net, 0, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
 			this->CloseConnection();
-			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+			return NetworkRecvStatus::MalformedPacket;
 	}
 }
 
@@ -98,10 +98,10 @@ NetworkRecvStatus NetworkAdminSocketHandler::ReceivePackets()
 	std::unique_ptr<Packet> p;
 	while ((p = this->ReceivePacket()) != nullptr) {
 		NetworkRecvStatus res = this->HandlePacket(*p);
-		if (res != NETWORK_RECV_STATUS_OKAY) return res;
+		if (res != NetworkRecvStatus::Okay) return res;
 	}
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -112,7 +112,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::ReceivePackets()
 NetworkRecvStatus NetworkAdminSocketHandler::ReceiveInvalidPacket(PacketAdminType type)
 {
 	Debug(net, 0, "[tcp/admin] Received illegal packet type {} from admin {} ({})", type, this->admin_name, this->admin_version);
-	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	return NetworkRecvStatus::MalformedPacket;
 }
 
 NetworkRecvStatus NetworkAdminSocketHandler::ReceiveAdminJoin(Packet &) { return this->ReceiveInvalidPacket(PacketAdminType::AdminJoin); }

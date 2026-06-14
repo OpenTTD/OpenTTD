@@ -456,7 +456,7 @@ NetworkRecvStatus ClientNetworkCoordinatorSocketHandler::CloseConnection(bool er
 
 	SetWindowDirty(WindowClass::NetworkClientList, 0);
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**

@@ -45,7 +45,7 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection([[maybe_unused]] bool
 	this->packet_queue.clear();
 	this->packet_recv = nullptr;
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
