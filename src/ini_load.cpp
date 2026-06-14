@@ -100,8 +100,8 @@ void IniGroup::Clear()
 
 /**
  * Construct a new in-memory Ini file representation.
- * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
- * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
+ * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IniGroupType::List
+ * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IniGroupType::Sequence
  */
 IniLoadFile::IniLoadFile(const IniGroupNameList &list_group_names, const IniGroupNameList &seq_group_names) :
 		list_group_names(list_group_names),
@@ -159,9 +159,9 @@ IniGroup &IniLoadFile::GetOrCreateGroup(std::string_view name)
  */
 IniGroup &IniLoadFile::CreateGroup(std::string_view name)
 {
-	IniGroupType type = IGT_VARIABLES;
-	if (std::ranges::find(this->list_group_names, name) != this->list_group_names.end()) type = IGT_LIST;
-	if (std::ranges::find(this->seq_group_names, name) != this->seq_group_names.end()) type = IGT_SEQUENCE;
+	IniGroupType type = IniGroupType::Variables;
+	if (std::ranges::find(this->list_group_names, name) != this->list_group_names.end()) type = IniGroupType::List;
+	if (std::ranges::find(this->seq_group_names, name) != this->seq_group_names.end()) type = IniGroupType::Sequence;
 
 	return this->groups.emplace_back(name, type);
 }
@@ -202,8 +202,8 @@ void IniLoadFile::LoadFromDisk(std::string_view filename, Subdirectory subdir)
 		++line;
 		StringConsumer consumer{StrTrimView(buffer, StringConsumer::WHITESPACE_OR_NEWLINE)};
 
-		/* Skip comments and empty lines outside IGT_SEQUENCE groups. */
-		if ((group == nullptr || group->type != IGT_SEQUENCE) && (!consumer.AnyBytesLeft() || consumer.PeekCharIfIn("#;"))) {
+		/* Skip comments and empty lines outside IniGroupType::Sequence groups. */
+		if ((group == nullptr || group->type != IniGroupType::Sequence) && (!consumer.AnyBytesLeft() || consumer.PeekCharIfIn("#;"))) {
 			comment += consumer.GetOrigData();
 			comment += "\n";
 			continue;
@@ -219,7 +219,7 @@ void IniLoadFile::LoadFromDisk(std::string_view filename, Subdirectory subdir)
 			group->comment = std::move(comment);
 			comment.clear(); // std::move leaves comment in a "valid but unspecified state" according to the specification.
 		} else if (group != nullptr) {
-			if (group->type == IGT_SEQUENCE) {
+			if (group->type == IniGroupType::Sequence) {
 				/* A sequence group, use the line as item name without further interpretation. */
 				IniItem &item = group->CreateItem(consumer.GetOrigData());
 				item.comment = std::move(comment);
