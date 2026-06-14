@@ -1683,6 +1683,8 @@ function Regression::Tile()
 	print("  HasTreeOnTile():      " + AITile.HasTreeOnTile(33661));
 	print("  PlantTreeRectangle(): " + AITile.PlantTreeRectangle(33404, 2, 2));
 	print("  HasTreeOnTile():      " + AITile.HasTreeOnTile(33661));
+	print("  IsInvalidSlope():     " + AITile.IsInvalidSlope(0xFFFF));
+	print("  IsInvalidSlope():     " + AITile.IsInvalidSlope(0xFF));
 }
 
 function Regression::TileList()

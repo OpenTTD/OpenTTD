@@ -207,10 +207,17 @@ public:
 	static bool IsStationTile(TileIndex tile);
 
 	/**
+	 * Check if given slope value is invalid.
+	 * @param slope The slope to check validity.
+	 * @return True if the slope has invalid value.
+	 */
+	static bool IsInvalidSlope(Slope slope);
+
+	/**
 	 * Check if a tile has a steep slope.
 	 * Steep slopes are slopes with a height difference of 2 across one diagonal of the tile.
 	 * @param slope The slope to check on.
-	 * @pre slope != SLOPE_INVALID.
+	 * @pre !ScriptTile::IsInvalidSlope(slope).
 	 * @return True if the slope is a steep slope.
 	 */
 	static bool IsSteepSlope(Slope slope);
@@ -219,7 +226,7 @@ public:
 	 * Check if a tile has a halftile slope.
 	 * Halftile slopes appear on top of halftile foundations. E.g. the slope you get when building a horizontal railtrack on the top of a SLOPE_N or SLOPE_STEEP_N.
 	 * @param slope The slope to check on.
-	 * @pre slope != SLOPE_INVALID.
+	 * @pre !ScriptTile::IsInvalidSlope(slope).
 	 * @return True if the slope is a halftile slope.
 	 * @note Currently there is no API function that would return or accept a halftile slope.
 	 */
