@@ -163,7 +163,7 @@ struct GRFFile {
 
 	EnumIndexArray<CanalProperties, CanalFeature, CanalFeature::End> canal_local_properties{}; ///< Canal properties as set by this NewGRF
 
-	std::unordered_map<uint8_t, LanguageMap> language_map{}; ///< Mappings related to the languages.
+	std::unordered_map<GRFLanguage, LanguageMap> language_map{}; ///< Mappings related to the languages.
 
 	int traininfo_vehicle_pitch = 0; ///< Vertical offset for drawing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width = 0; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
