@@ -28,12 +28,13 @@
 std::string _keyboard_opt[2];
 static char32_t _keyboard[2][OSK_KEYBOARD_ENTRIES];
 
-enum KeyStateBits : uint8_t {
-	KEYS_NONE,
-	KEYS_SHIFT,
-	KEYS_CAPS
+/** Keys that modify the behaviour/visuals of the keyboard. */
+enum class KeyState : uint8_t {
+	Shift, ///< Shift key.
+	Capslock, ///< Capslock key.
 };
-static uint8_t _keystate = KEYS_NONE;
+/** Bitset of \c KeyState elements. */
+using KeyStates = EnumBitSet<KeyState, uint8_t>;
 
 struct OskWindow : public Window {
 	StringID caption{}; ///< the caption for this window.
@@ -42,6 +43,9 @@ struct OskWindow : public Window {
 	Textbuf *text = nullptr; ///< pointer to parent's textbuffer (to update caret position)
 	std::string orig_str{}; ///< Original string.
 	bool shift = false; ///< Is the shift effectively pressed?
+
+	/** States of the keys of the on screen window. */
+	static inline KeyStates keystate{};
 
 	OskWindow(WindowDesc &desc, Window *parent, WidgetID button) : Window(desc)
 	{
@@ -77,7 +81,7 @@ struct OskWindow : public Window {
 	 */
 	void UpdateOskState()
 	{
-		this->shift = HasBit(_keystate, KEYS_CAPS) ^ HasBit(_keystate, KEYS_SHIFT);
+		this->shift = OskWindow::keystate.Test(KeyState::Capslock) ^ OskWindow::keystate.Test(KeyState::Shift);
 
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
 			this->SetWidgetDisabledState(WID_OSK_LETTERS + i,
@@ -85,8 +89,8 @@ struct OskWindow : public Window {
 		}
 		this->SetWidgetDisabledState(WID_OSK_SPACE, !IsValidChar(' ', this->qs->text.afilter));
 
-		this->SetWidgetLoweredState(WID_OSK_SHIFT, HasBit(_keystate, KEYS_SHIFT));
-		this->SetWidgetLoweredState(WID_OSK_CAPS, HasBit(_keystate, KEYS_CAPS));
+		this->SetWidgetLoweredState(WID_OSK_SHIFT, OskWindow::keystate.Test(KeyState::Shift));
+		this->SetWidgetLoweredState(WID_OSK_CAPS, OskWindow::keystate.Test(KeyState::Capslock));
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
@@ -114,8 +118,8 @@ struct OskWindow : public Window {
 
 			if (this->qs->text.InsertChar(c)) this->OnEditboxChanged(WID_OSK_TEXT);
 
-			if (HasBit(_keystate, KEYS_SHIFT)) {
-				ToggleBit(_keystate, KEYS_SHIFT);
+			if (OskWindow::keystate.Test(KeyState::Shift)) {
+				OskWindow::keystate.Flip(KeyState::Shift);
 				this->UpdateOskState();
 				this->SetDirty();
 			}
@@ -136,13 +140,13 @@ struct OskWindow : public Window {
 				break;
 
 			case WID_OSK_CAPS:
-				ToggleBit(_keystate, KEYS_CAPS);
+				OskWindow::keystate.Flip(KeyState::Capslock);
 				this->UpdateOskState();
 				this->SetDirty();
 				break;
 
 			case WID_OSK_SHIFT:
-				ToggleBit(_keystate, KEYS_SHIFT);
+				OskWindow::keystate.Flip(KeyState::Shift);
 				this->UpdateOskState();
 				this->SetDirty();
 				break;
