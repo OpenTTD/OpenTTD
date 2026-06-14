@@ -3188,7 +3188,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planti g
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generado de tero
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Meti rokecajn lokojn en la lando
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Meti rokecajn lokojn en la lando.{}Stir+Klaku por forigi rokecajn lokojn
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difini dezertan regionon.{}Stir+Klaku por forigi dezertan regionon
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Grandigi landparton por (mal)altigi
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Malgrandigi landparton por (mal)altigi

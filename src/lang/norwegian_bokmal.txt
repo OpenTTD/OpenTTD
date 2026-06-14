@@ -1807,7 +1807,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vise forventede
 STR_CONFIG_SETTING_QUICKGOTO                                    :Rask opprettelse av kjøretøyordre: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forhåndsvelg 'gå til markøren' når ordrevinduet åpnes
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Valgt type bane, vei og sporvogn (ved nytt spill/innlasting av spill): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Type bane, vei og sporvogn valgt ved start eller innlasting av spill. 'første tilgjengelige' velger eldste type spor, 'siste tilgjengelige' velger nyeste type spor, og 'mest brukte' velger typen som er mest brukt nå
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :Første tilgjengelige
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Siste tilgjengelige
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Mest brukte
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vis reserverte spor: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Gi reserverte spor en annen farge for å bistå med problemer hvor tog nekter å entre stibaserte blokker
@@ -3091,7 +3096,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant st
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landskapsgenerering
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasser steinete felt i landskapet
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasser steinete felt i landskapet{}Ctrl+klikk for å fjerne steinete områder
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Ctrl+klikk for å fjerne ørkenområde
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Øk størrelse av landareal for heving/senking
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reduser størrelse av landareal for heving/senking
