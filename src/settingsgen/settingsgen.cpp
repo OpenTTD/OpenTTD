@@ -137,8 +137,8 @@ private:
 struct SettingsIniFile : IniLoadFile {
 	/**
 	 * Construct a new ini loader.
-	 * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
-	 * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
+	 * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IniGroupType::List
+	 * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IniGroupType::Sequence
 	 */
 	SettingsIniFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {}) :
 			IniLoadFile(list_group_names, seq_group_names)
@@ -175,14 +175,14 @@ static const std::string_view VALIDATION_GROUP_NAME = "validation"; ///< Name of
 static const std::string_view DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group containing default values for the template variables.
 
 /**
- * Dump a #IGT_SEQUENCE group into #_stored_output.
+ * Dump a #IniGroupType::Sequence group into #_stored_output.
  * @param ifile      Loaded INI data.
  * @param group_name Name of the group to copy.
  */
 static void DumpGroup(const IniLoadFile &ifile, std::string_view group_name)
 {
 	const IniGroup *grp = ifile.GetGroup(group_name);
-	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
+	if (grp != nullptr && grp->type == IniGroupType::Sequence) {
 		for (const IniItem &item : grp->items) {
 			if (!item.name.empty()) {
 				_stored_output.Add(item.name);

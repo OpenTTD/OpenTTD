@@ -28,7 +28,7 @@
 
 /**
  * Create a new ini file with given group names.
- * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+ * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IniGroupType::List
  */
 IniFile::IniFile(const IniGroupNameList &list_group_names) : IniLoadFile(list_group_names)
 {
