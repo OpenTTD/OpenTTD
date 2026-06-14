@@ -22,6 +22,7 @@
 #include "../window_gui.h"
 #include "../window_func.h"
 #include "../framerate_type.h"
+#include "../settings_type.h"
 #include "../library_loader.h"
 #include "../core/utf8.hpp"
 #include "win32_v.h"
@@ -695,6 +696,12 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		case WM_KEYDOWN: {
 			/* No matter the keyboard layout, we will map the '~' to the console. */
 			uint scancode = GB(lParam, 16, 8);
+
+			/* Suppress WASD keys when WASD scrolling is active, but allow Alt+WASD through.
+			 * Use scan codes so the physical key positions work on any keyboard layout. */
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(GetAsyncKeyState(VK_MENU) < 0)) {
+				if (scancode == 0x11 || scancode == 0x1E || scancode == 0x1F || scancode == 0x20) return 0;
+			}
 			keycode = scancode == 41 ? (uint)WKC_BACKQUOTE : MapWindowsKey(wParam);
 
 			uint charcode = MapVirtualKey(wParam, MAPVK_VK_TO_CHAR);
@@ -1010,6 +1017,14 @@ void VideoDriver_Win32Base::InputLoop()
 		_dirkeys.Set(DirectionKey::Up, GetAsyncKeyState(VK_UP));
 		_dirkeys.Set(DirectionKey::Right, GetAsyncKeyState(VK_RIGHT));
 		_dirkeys.Set(DirectionKey::Down, GetAsyncKeyState(VK_DOWN));
+		if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
+			/* Use scan codes so the physical key positions work on any keyboard layout.
+			 * W=0x11, A=0x1E, S=0x1F, D=0x20. */
+			if (GetAsyncKeyState(MapVirtualKey(0x1E, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Left);
+			if (GetAsyncKeyState(MapVirtualKey(0x11, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Up);
+			if (GetAsyncKeyState(MapVirtualKey(0x20, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Right);
+			if (GetAsyncKeyState(MapVirtualKey(0x1F, MAPVK_VSC_TO_VK)) < 0) _dirkeys.Set(DirectionKey::Down);
+		}
 	} else {
 		_dirkeys.Reset();
 	}
