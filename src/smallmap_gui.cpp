@@ -630,10 +630,10 @@ static constexpr VehicleTypeIndexArray<PixelColour, VehicleType::End> _vehicle_t
 class SmallMapWindow : public Window {
 protected:
 	/** Available kinds of zoomlevel changes. */
-	enum ZoomLevelChange : uint8_t {
-		ZLC_INITIALIZE, ///< Initialize zoom level.
-		ZLC_ZOOM_OUT,   ///< Zoom out.
-		ZLC_ZOOM_IN,    ///< Zoom in.
+	enum class ZoomLevelChange : uint8_t {
+		Init, ///< Initialize zoom level.
+		ZoomOut, ///< Zoom out.
+		ZoomIn, ///< Zoom in.
 	};
 
 	static SmallMapType map_type; ///< Currently displayed legends.
@@ -1221,21 +1221,21 @@ protected:
 		int new_index, cur_index, sub;
 		Point tile;
 		switch (change) {
-			case ZLC_INITIALIZE:
+			case ZoomLevelChange::Init:
 				cur_index = - 1; // Definitely different from new_index.
 				new_index = MIN_ZOOM_INDEX;
 				tile.x = tile.y = 0;
 				break;
 
-			case ZLC_ZOOM_IN:
-			case ZLC_ZOOM_OUT:
+			case ZoomLevelChange::ZoomIn:
+			case ZoomLevelChange::ZoomOut:
 				for (cur_index = MIN_ZOOM_INDEX; cur_index <= MAX_ZOOM_INDEX; cur_index++) {
 					if (this->zoom == zoomlevels[cur_index]) break;
 				}
 				assert(cur_index <= MAX_ZOOM_INDEX);
 
 				tile = this->PixelToTile(zoom_pt->x, zoom_pt->y, &sub);
-				new_index = Clamp(cur_index + ((change == ZLC_ZOOM_IN) ? -1 : 1), MIN_ZOOM_INDEX, MAX_ZOOM_INDEX);
+				new_index = Clamp(cur_index + ((change == ZoomLevelChange::ZoomIn) ? -1 : 1), MIN_ZOOM_INDEX, MAX_ZOOM_INDEX);
 				break;
 
 			default: NOT_REACHED();
@@ -1474,7 +1474,7 @@ public:
 		this->SetupWidgetData();
 		this->FinishInitNested(window_number);
 
-		this->SetZoomLevel(ZLC_INITIALIZE, nullptr);
+		this->SetZoomLevel(ZoomLevelChange::Init, nullptr);
 		this->SmallMapCenterOnCurrentPos();
 		this->SetOverlayCargoMask();
 	}
@@ -1720,7 +1720,7 @@ public:
 			case WID_SM_ZOOM_OUT: {
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 				Point zoom_pt = { (int)wid->current_x / 2, (int)wid->current_y / 2};
-				this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &zoom_pt);
+				this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZoomLevelChange::ZoomIn : ZoomLevelChange::ZoomOut, &zoom_pt);
 				SndClickBeep();
 				break;
 			}
@@ -1868,7 +1868,7 @@ public:
 			int cursor_x = _cursor.pos.x - this->left - wid->pos_x;
 			int cursor_y = _cursor.pos.y - this->top  - wid->pos_y;
 			Point pt = {cursor_x, cursor_y};
-			this->SetZoomLevel((wheel < 0) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
+			this->SetZoomLevel((wheel < 0) ? ZoomLevelChange::ZoomIn : ZoomLevelChange::ZoomOut, &pt);
 		}
 	}
 
