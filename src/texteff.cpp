@@ -22,7 +22,7 @@
 /** Container for all information about a text effect */
 struct TextEffect : public ViewportSign {
 	TextEffectMode mode; ///< Type of text effect.
-	uint8_t duration; ///< How long the text effect should stay, in ticks (applies only when mode == TE_RISING)
+	uint8_t duration; ///< How long the text effect should stay, in ticks (applies only when mode == TextEffectMode::Rising)
 	EncodedString msg; ///< Encoded message for text effect.
 
 	/** Reset the text effect */
@@ -30,10 +30,10 @@ struct TextEffect : public ViewportSign {
 	{
 		this->MarkDirty();
 		this->width_normal = 0;
-		this->mode = TE_INVALID;
+		this->mode = TextEffectMode::Invalid;
 	}
 
-	inline bool IsValid() const { return this->mode != TE_INVALID; }
+	inline bool IsValid() const { return this->mode != TextEffectMode::Invalid; }
 };
 
 static std::vector<TextEffect> _text_effects; ///< Text effects are stored there
@@ -94,7 +94,7 @@ const IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::
 
 	for (TextEffect &te : _text_effects) {
 		if (!te.IsValid()) continue;
-		if (te.mode != TE_RISING) continue;
+		if (te.mode != TextEffectMode::Rising) continue;
 
 		if (te.duration < count) {
 			te.Reset();
@@ -126,7 +126,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	for (const TextEffect &te : _text_effects) {
 		if (!te.IsValid()) continue;
 
-		if (te.mode == TE_RISING || _settings_client.gui.loading_indicators) {
+		if (te.mode == TextEffectMode::Rising || _settings_client.gui.loading_indicators) {
 			std::string *str = ViewportAddString(dpi, &te, flags, Colours::Invalid);
 			if (str == nullptr) continue;
 
