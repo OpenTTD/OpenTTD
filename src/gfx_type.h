@@ -254,7 +254,6 @@ enum class FontSize : uint8_t {
 	End, ///< Marker for the end of the enumerations.
 	Begin = FontSize::Normal, ///< Marker for the first font in the enumeration.
 };
-DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
 /** Bitset of \c FontSize elements. */
 using FontSizes = EnumBitSet<FontSize, uint8_t>;

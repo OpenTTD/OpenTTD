@@ -2403,6 +2403,19 @@ static bool ConContent(std::span<std::string_view> argv)
 }
 #endif /* defined(WITH_ZLIB) */
 
+/**
+ * Get FontSize by name
+ * @param name The name to look up.
+ * @return The FontSize matching the given name,
+ */
+static FontSize GetFontSizeByName(std::string_view name)
+{
+	for (FontSize fs : EnumRange(FontSize::End)) {
+		if (StrEqualsIgnoreCase(name, FontSizeToName(fs))) return fs;
+	}
+	return FontSize::End;
+}
+
 /** Managing the font configuration. @copydoc IConsoleCmdProc */
 static bool ConFont(std::span<std::string_view> argv)
 {
@@ -2421,15 +2434,11 @@ static bool ConFont(std::span<std::string_view> argv)
 		return true;
 	}
 
-	FontSize argfs;
-	for (argfs = FontSize::Begin; argfs < FontSize::End; argfs++) {
-		if (argv.size() > 1 && StrEqualsIgnoreCase(argv[1], FontSizeToName(argfs))) break;
-	}
-
-	/* First argument must be a FontSize. */
-	if (argv.size() > 1 && argfs == FontSize::End) return false;
-
 	if (argv.size() > 2) {
+		/* First argument must be a FontSize. */
+		FontSize argfs = GetFontSizeByName(argv[1]);
+		if (argfs == FontSize::End) return false;
+
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
 		std::string font = setting->font;
 		uint size = setting->size;
