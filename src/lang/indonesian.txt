@@ -433,6 +433,8 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Batalkan skenar
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Buat kota
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Letakkan rumah
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
@@ -442,6 +444,12 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nama kota ditampilkan
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Nama stasiun ditampilkan
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Stasiun kereta
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Pemberhentian truk
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Pemberhentian bus
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Pelabuhan
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Bandara
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Hantu
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Tampilkan daftar waypoint
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tanda ditampilkan
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Tampilan penanda dan nama pesaing
@@ -604,16 +612,19 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Jumlah k
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Peringkat kinerja perusahaan (peringkat maksimal=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Nilai Perusahaan
 
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}288 menit terakhir
 
 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Daftar tarif kargo
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Hari dalam transit
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Detik dalam transit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pembayaran untuk mengirimkan 10 unit ( atau 10,000 liter ) untuk jarak 20 kotak
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Aktifkan semua
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Non-aktifkan semua
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Tampilkan semua kargo pada grafik tarif pembayaran kargo
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}menampilkan tidak ada kargo pada grafik tingkat pembayaran kargo
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Pilih jenis kargo yang akan ditampilkan
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Tampilkan atau sembunyikan grafik jenis kargo ini
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
@@ -808,6 +819,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPAN OTO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MENYIMPAN PERMAINAN  *  *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(Penonton)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(uang tak terbatas)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Pesan Lampau
@@ -1029,8 +1041,10 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Pilih kotak ini
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skala bevel
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Pilih kotak ini untuk pengaturan perbandingan ukuran bevel dengan ukuran antarmuka
 
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :Font anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Centang kotak ini untuk font anti-alias yang dapat diubah ukurannya.
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Gunakan sprite fon tradisional
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Nyalakan bila Anda lebih memilih untuk menggunakan sprite fon ukuran tetap tradisional
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Font antialias
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Nyalakan untuk antialias fon yang dapat berubah ukuran
 
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Survei Otomatis
@@ -1468,6 +1482,8 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalender dib
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Tingkatkan produksi kargo kota: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Tingkatkan produksi kargo di kota-kota sebesar persentase ini.
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Tingkatkan produksi kargo industri: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Tingkatkan produksi kargo industri sebesar persentase ini
 
 ###setting-zero-is-special
 
@@ -1540,7 +1556,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Halus
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sangat Kasar
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Tinggi rata-rata: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Pilih tinggi rata-rata daratan. 'Otomatis' akan menggunakan standar berdasarkan iklim yang dipilih: 'Dataran Rendah' untuk Sub Tropis, 'Normal' untuk Sedang dan Taman Bermain, dan 'Dataran Tinggi' untuk Sub Arktik.
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Otomatis
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Dataran Rendah
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Dataran Tinggi
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribusi variasi: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(hanya TerraGenesis) Menentukan apakah bentang darat berisi area bergunung dan rata. Karena ini hanya akan mengakibatkan bentang darat yang lebih rata, pengaturan yang lain seharusnya ditetap 'bergunung'
@@ -1867,7 +1889,8 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Tidak pernah
 
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipe ekonomi: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Ekonomi yang lancar membuat perubahan produksi lebih sering, dan dalam langkah yang lebih kecil. Ekonomi beku menghentikan perubahan produksi dan penutupan industri. Pengaturan ini mungkin tidak berpengaruh jika jenis industri disediakan oleh NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Ekonomi yang lancar membuat perubahan produksi lebih sering, dan dalam langkah yang lebih kecil. Ekonomi beku menghentikan perubahan produksi dan penutupan industri. Pengaturan ini mungkin tidak berpengaruh jika jenis industri disediakan oleh NewGRF.{}{}Produksi industri per bulan mungkin masih terlihat bervariasi jika ekonomi Beku, karena produksi dipicu pada interval tetap yang tidak terlalu sesuai dengan bulan-bulan
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :Ekonomi yang lancar membuat perubahan produksi lebih sering, dan dalam langkah yang lebih kecil. Ekonomi beku menghentikan perubahan produksi dan penutupan industri. Pengaturan ini mungkin tidak berpengaruh jika jenis industri disediakan oleh NewGRF.{}{}Produksi industri per menit mungkin masih terlihat bervariasi jika ekonomi Beku, karena produksi dipicu pada interval tetap yang tidak terlalu sesuai dengan menit
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Asli
@@ -1922,7 +1945,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Dilarang
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Diijinkan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Diijinkan, layout kota sendiri
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Meletakkan rumah di kota satu per satu: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Mengaktifkan pengaturan ini akan memperbolehkan pemain untuk meletakkan rumah di kota secara manual
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Dilarang
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Diijinkan
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Diijinkan, langsung jadi
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generasi Kargo Kota: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Seberapa banyak kargo dihasilkan oleh rumah di kota , relatif terhadap keseluruhan populasi kota.{}Pertumbuhan kuadrat: Kota yang membesar dua kali menghasilkan penumpang empat kali lipat.{}Pertumbuhan linier: Kota yang membesar dua kali menghasilkan penumpang dua kali lipat.
@@ -2710,13 +2738,40 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & D
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Membangun stasiun dengan Drag & Drop
 
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Kurangi ketinggian gambar pratinjau. Ctrl+Klik untuk mengurangi ke minimum
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Tambahi ketinggian gambar pratinjau. Ctrl+Klik untuk menambahkan ke maksimum
+
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Pilih sebuah koleksi
 
 
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Piliih kelas stasiun truk untuk ditampilkan
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Pilih jenis stasiun truk untuk dibangun. Ctrl+Klik untuk menambah atau menghapus barang yang tersimpan
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Pilih koleksi stasiun truk untuk ditampilkan
 
+STR_HOUSE_PICKER_CAPTION                                        :Pemilihan Rumah
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nama: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Populasi: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Tahun: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Tahun: {GOLD}Apapun
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Tahun: {GOLD}Dari {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Tahun: {GOLD}Hingga {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM}x{NUM} ubin
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Muatan diterima: {GOLD}{STRING}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Kargo yang diproduksi: {GOLD}{CARGO_LIST}
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :Tepian
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :Pinggiran
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :Pinggiran Kota Luar
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :Pinggiran Kota Dalam
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Pusat kota
 
+STR_HOUSE_PICKER_PROTECT                                        :Cegah pembaruan
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Memilih jika rumah ini akan dilindungi dari pengantian saat kota berkembang
 
-
+STR_HOUSE_PICKER_REPLACE                                        :Mengganti yang sudah ada
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Memilih jika rumah yang sudah ada di sebuah ubin di mana rumah ini akan diletakkan untuk diganti secara otomatis
 
 STR_STATION_CLASS_DFLT                                          :Standar
 STR_STATION_CLASS_DFLT_STATION                                  :Stasiun standar
@@ -2858,7 +2913,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pemilihan obyek
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pra-tayang obyek
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM} x {NUM} kotak
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM} x {NUM} ubin
 
 STR_OBJECT_CLASS_LTHS                                           :Mercusuar
 STR_OBJECT_CLASS_TRNS                                           :Pemancar
@@ -2899,6 +2954,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Kota sec
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Membangun kota di lokasi secara acak
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Buat kota secara acak
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dukung Peta dengan penempatan kota secara otomatis
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}Muat dari berkas
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}Impor data kota dari berkas JSON
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Perluas seluruh kota
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Buat seluruh kota sedikit berkembang
 
@@ -2917,6 +2974,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Pilih uk
 STR_FOUND_TOWN_CITY                                             :{BLACK}Kota
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Kota tumbuh lebih cepat daripada biasanya{}Tergantung pengaturan, kota dapat lebih besar ketika di danai.
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Ekspansi kota:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Bangunan
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Tambah jumlah bangunan di sebuah kota
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Jalanan
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Tambah jumlah jalanan di sebuah kota
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Tampilan jalan kota:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Pilihlah tampilan jalan yang digunakan utk kota ini
@@ -3183,9 +3245,11 @@ STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :Pilih kepadatan
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nama kota:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Pilih model nama kota
 STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Pilih tanggal mulai
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :Pilih kepadatan sektor industri, atau angka tertentu
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Puncak tertinggi:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Pilih puncak tertinggi yang akan dicoba untuk dibuat oleh permainan, diukur dengan ketinggian di atas permukaan laut
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Menambah satu ketinggian maksimum puncak tertinggi di peta
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Kurangi satu ketinggian maksimum puncak tertinggi di peta
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Cakupan salju:
@@ -3197,11 +3261,13 @@ STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Meningka
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Kurangi cakupan gurun pasir sebesar sepuluh persen
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Tinggi rata-rata:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Area perairan:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Sungai:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Kehalusan:
 STR_MAPGEN_VARIETY                                              :{BLACK}Macam penyebaran:
 STR_MAPGEN_GENERATE                                             :{WHITE}Buat Peta
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Buat dunia dan mainkan OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Pengaturan NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Tampilkan pengaturan NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Pengaturan AI
@@ -3234,6 +3300,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Jenis Tepi Peta:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Pilih batas dunia permainan
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Barat Laut
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Timur Laut
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Tenggara
@@ -3243,11 +3310,13 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}Perairan
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Acak
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Acak
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Acak
+STR_MAPGEN_BORDER_MANUAL                                        :Manual
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Air Tak Terbatas
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotasi Heightmap:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama Peta Heightmap:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Nama berkas gambar heightmap
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Luas:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Ukuran sumber gambar heightmap. Untuk hasil terbaik, setiap tepi harus sesuai dengan panjang tepi peta yang tersedia di OpenTTD, seperti 256, 512, 1024, dll.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
@@ -3352,7 +3421,7 @@ STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Menyimpa
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Ubah parameter grafik dasar
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
-STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Atur Ulang
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kembalikan setelan awal parameter
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -3478,10 +3547,11 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Persis b
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pengenal dengan kotak pencarian
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ubah tulisan di tanda pengenal
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ubah tanda pengenal
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Pusatkan tampilan utama pada lokasi tanda tangan. Ctrl+Klik membuka viewport baru pada lokasi tanda tangan
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Pergi sampai rambu berikutnya
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Pergi ke rambu sebelumnya
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Warna dari teks tanda pengenal
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Masukkan nama rambu
 
@@ -3622,6 +3692,8 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Tidak ada -
 STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}Pilih semua fasilitas
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :Tidak ada jenis kargo
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :Tidak ada penilaian kargo
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3637,6 +3709,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Peringkat
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tampilkna peringkat dari stasiun
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Suplai per bulan dan penilaian lokal:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Suplai per menit dan penilaian lokal:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Pengelompokkan
@@ -3673,12 +3747,14 @@ STR_CARGO_RATING_EXCELLENT                                      :Sempurna
 STR_CARGO_RATING_OUTSTANDING                                    :Luar Biasa
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}Ubah nama stasiun atau pindahkan tanda pengenal
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Tampilkan semua kereta yang memiliki jadwal menuju stasiun ini.
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Tampilkan semua kendaraan yang memiliki jadwal menuju terminal ini.
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Tampilkan semua Pesawat yang memiliki jadwal menuju bandara ini.
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tampilkan semua kapal yang memiliki jadwal menuju pelabuhan ini.
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}Ubah tanda pengenal stasiun
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Tutup bandara
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Cegah pesawat mendarat di bandara ini
@@ -3946,6 +4022,13 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jangkaua
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Jenis pesawat: {GOLD}{STRING}
 
 # Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} ubin
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Semua jenis kargo
@@ -4404,6 +4487,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Pilih tindakan yang akan dilakukan di galangan kapal ini
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kondisi yang diperiksa
@@ -4610,7 +4694,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Jendela
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Pengaturan AI
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Pengaturan Game Script
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrip Permainan yang akan di jalankan di permainan berikutnya
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yg akan dijalankan pada permainan berikutnya
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yang akan dijalankan pada permainan berikutnya
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
 STR_AI_CONFIG_NONE                                              :(tidak ada)
@@ -4657,7 +4741,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Tangkapa
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parameter AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skrip Permainan
-STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
+STR_AI_SETTINGS_RESET                                           :{BLACK}Atur Ulang
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 
@@ -4902,8 +4986,9 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Jenis rel tidak
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Tidak dapat memindahkan kendaraan...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bagian belakang mesin akan selalu mengikuti bagian depannya
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak menemukan rute menuju depo terdekat
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan bengkel terdekat
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :tidak dapat menemukan rute menuju depo terdekat
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :tidak dapat menemukan depo terdekat
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :tidak dapat menemukan hanggar terdekat
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis bengkel salah
 
@@ -4970,12 +5055,19 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Tidak da
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Harus menghancurkan jembatan terlebih dahulu
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Tidak dapat awal dan akhir pada spot/titik lokasi yang sama
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Ujung jembatan tidak pada level yang sama
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Jembatan lebih rendah dari daratan
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :jembatan terlalu rendah untuk daratan
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Jembatan terlalu tinggi untuk medan ini.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Awal dan akhir harus segaris
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua ujung jembatan harus berada di daratan
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... jembatan terlalu panjang
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Jembatan akan berakhir di luar peta
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :jembatan terlalu rendah sebanyak {HEIGHT} untuk stasiun
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :jembatan terlalu rendah sebanyak {HEIGHT} untuk pemberhentian jalan
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :jembatan terlalu rendah sebanyak {HEIGHT} untuk pelabuhan
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :jembatan terlalu rendah sebanyak {HEIGHT} untuk pelampung
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :jembatan terlalu rendah sebanyak {HEIGHT} untuk titik jalan rel
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :jembatan terlalu rendah sebanyak {HEIGHT} untuk titik jalan jalanan
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :jembatan terlalu rendah sebanyak {HEIGHT} untuk pintu air
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tidak dapat membangun terowongan disini...
@@ -5056,12 +5148,16 @@ STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Tidak da
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Tidak dapat mengubah nama jenis pesawat...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tidak dapat menjual kendaraan...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Tidak dapat menjual kendaraan...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Tidak dapat menjual kapal...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Tidak dapat menjual pesawat...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Tidak dapat menjual kendaraan rel...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Tidak dapat menjual kendaraan darat...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Tidak dapat menjual kapal...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Tidak dapat menjual pesawat...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Tidak dapat menjual seluruh kendaraan rel...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Tidak dapat menjual seluruh kendaraan darat...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Tidak dapat menjual seluruh kapal...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Tidak dapat menjual seluruh pesawat...
 
 ###length VEHICLE_TYPES
 
@@ -5635,3 +5731,10 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Buka konfigurasi lencana
+STR_BADGE_CONFIG_RESET                                          :Atur Ulang
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Ikon Lencana
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Filter Lencana
+STR_BADGE_CONFIG_PREVIEW                                        :Gambar Pratinjau
+STR_BADGE_CONFIG_NAME                                           :Nama
+STR_BADGE_FILTER_ANY_LABEL                                      :Apapun {STRING}
