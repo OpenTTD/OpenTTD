@@ -2973,7 +2973,7 @@ void CcStartStopVehicle(Commands, const CommandCost &result, VehicleID veh_id, b
 	StringID msg = v->vehstatus.Test(VehState::Stopped) ? STR_VEHICLE_COMMAND_STOPPED : STR_VEHICLE_COMMAND_STARTED;
 	const Vehicle *moving_front = v->GetMovingFront();
 	Point pt = RemapCoords(moving_front->x_pos, moving_front->y_pos, moving_front->z_pos);
-	AddTextEffect(GetEncodedString(msg), pt.x, pt.y, Ticks::DAY_TICKS, TE_RISING);
+	AddTextEffect(GetEncodedString(msg), pt.x, pt.y, Ticks::DAY_TICKS, TextEffectMode::Rising);
 }
 
 /**
