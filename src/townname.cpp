@@ -741,6 +741,17 @@ static void MakeSlovakTownName(StringBuilder &builder, uint32_t seed)
 
 
 /**
+ * Generates Ukrainian town name from given seed.
+ * @param builder string builder
+ * @param seed town name seed
+ */
+static void MakeUkrainianTownName(StringBuilder &builder, uint32_t seed)
+{
+	builder += _name_ukrainian_real[SeedChance(0, std::size(_name_ukrainian_real), seed)];
+}
+
+
+/**
  * Generates Norwegian town name from given seed.
  * @param builder string builder
  * @param seed town name seed
@@ -963,6 +974,7 @@ static TownNameGenerator *const _town_name_generators[] = {
 	MakeTurkishTownName,
 	MakeItalianTownName,
 	MakeCatalanTownName,
+	MakeUkrainianTownName,
 };
 
 

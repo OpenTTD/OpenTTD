@@ -3470,6 +3470,7 @@ STR_MAPGEN_TOWN_NAME_DANISH                                     :Danish
 STR_MAPGEN_TOWN_NAME_TURKISH                                    :Turkish
 STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italian
 STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
+STR_MAPGEN_TOWN_NAME_UKRAINIAN                                  :Ukrainian
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Map edges:
