@@ -81,19 +81,19 @@ static inline uint GetInspectWindowNumber(GrfSpecFeature feature, ConvertibleThr
  * The type of a property to show. This is used to
  * provide an appropriate representation in the GUI.
  */
-enum NIType : uint8_t {
-	NIT_INT,   ///< The property is a simple integer
-	NIT_CARGO, ///< The property is a cargo
+enum class NIType : uint8_t {
+	Integer, ///< The property is a simple integer
+	Cargo, ///< The property is a cargo
 };
 
 using NIReadProc = uint32_t(const void *b);
 
 /** Representation of the data from a NewGRF property. */
 struct NIProperty {
-	std::string_view name;          ///< A (human readable) name for the property
+	std::string_view name; ///< A (human readable) name for the property
 	NIReadProc *read_proc; ///< Callback proc to get the actual variable from memory
-	uint8_t prop;                 ///< The number of the property
-	uint8_t type;
+	uint8_t prop; ///< The number of the property
+	NIType type; ///< Type of property for chosing the appropriate representation.
 };
 
 
@@ -439,8 +439,8 @@ struct NewGRFInspectWindow : Window {
 	std::string GetPropertyString(const NIProperty &nip, uint value) const
 	{
 		switch (nip.type) {
-			case NIT_INT: return GetString(STR_JUST_INT, value);
-			case NIT_CARGO: return GetString(IsValidCargoType(static_cast<CargoType>(value)) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
+			case NIType::Integer: return GetString(STR_JUST_INT, value);
+			case NIType::Cargo: return GetString(IsValidCargoType(static_cast<CargoType>(value)) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
 			default: NOT_REACHED();
 		}
 	}
