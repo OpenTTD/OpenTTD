@@ -172,7 +172,7 @@ static void LoadSpriteTables()
 {
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
-	LoadGrfFile(used_set->files[GFT_BASE].filename, 0, PaletteType::DOS != used_set->palette);
+	LoadGrfFile(used_set->files[to_underlying(GraphicsFileType::Base)].filename, 0, PaletteType::DOS != used_set->palette);
 
 	/*
 	 * The second basic file always starts at the given location and does
@@ -180,7 +180,7 @@ static void LoadSpriteTables()
 	 * has a few sprites less. However, we do not care about those missing
 	 * sprites as they are not shown anyway (logos in intro game).
 	 */
-	LoadGrfFile(used_set->files[GFT_LOGOS].filename, 4793, PaletteType::DOS != used_set->palette);
+	LoadGrfFile(used_set->files[to_underlying(GraphicsFileType::Logos)].filename, 4793, PaletteType::DOS != used_set->palette);
 
 	/*
 	 * Load additional sprites for climates other than temperate.
@@ -189,7 +189,7 @@ static void LoadSpriteTables()
 	 */
 	if (_settings_game.game_creation.landscape != LandscapeType::Temperate) {
 		LoadGrfFileIndexed(
-			used_set->files[GFT_ARCTIC + to_underlying(_settings_game.game_creation.landscape) - 1].filename,
+			used_set->files[to_underlying(GraphicsFileType::Arctic) + to_underlying(_settings_game.game_creation.landscape) - 1].filename,
 			_landscape_spriteindexes[to_underlying(_settings_game.game_creation.landscape) - 1],
 			PaletteType::DOS != used_set->palette
 		);
@@ -377,7 +377,7 @@ bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, co
 GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
 {
 	if (!this->extra_cfg) {
-		this->extra_cfg = std::make_unique<GRFConfig>(this->files[GFT_EXTRA].filename);
+		this->extra_cfg = std::make_unique<GRFConfig>(this->files[to_underlying(GraphicsFileType::Extra)].filename);
 
 		/* We know the palette of the base set, so if the base NewGRF is not
 		 * setting one, use the palette of the base set and not the global

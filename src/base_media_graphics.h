@@ -13,14 +13,14 @@
 #include "base_media_base.h"
 
 /** Types of graphics in the base graphics set */
-enum GraphicsFileType : uint8_t {
-	GFT_BASE,     ///< Base sprites for all climates
-	GFT_LOGOS,    ///< Logos, landscape icons and original terrain generator sprites
-	GFT_ARCTIC,   ///< Landscape replacement sprites for arctic
-	GFT_TROPICAL, ///< Landscape replacement sprites for tropical
-	GFT_TOYLAND,  ///< Landscape replacement sprites for toyland
-	GFT_EXTRA,    ///< Extra sprites that were not part of the original sprites
-	MAX_GFT,      ///< We are looking for this amount of GRFs
+enum class GraphicsFileType : uint8_t {
+	Base, ///< Base sprites for all climates
+	Logos, ///< Logos, landscape icons and original terrain generator sprites
+	Arctic, ///< Landscape replacement sprites for arctic
+	Tropical, ///< Landscape replacement sprites for tropical
+	Toyland, ///< Landscape replacement sprites for toyland
+	Extra, ///< Extra sprites that were not part of the original sprites
+	End, ///< We are looking for this amount of GRFs
 };
 
 /** Blitter type for base graphics sets. */
@@ -33,7 +33,7 @@ struct GRFConfig;
 
 /** Instantiation of BaseSetTraits for a GraphicSet. */
 template <> struct BaseSetTraits<struct GraphicsSet> {
-	static constexpr size_t num_files = MAX_GFT; ///< Number of files in a graphics set.
+	static constexpr size_t num_files = to_underlying(GraphicsFileType::End); ///< Number of files in a graphics set.
 	static constexpr bool search_in_tars = true; ///< Graphics can be in a tar file.
 	static constexpr std::string_view set_type = "graphics"; ///< The type of set.
 };
