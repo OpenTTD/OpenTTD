@@ -1944,7 +1944,7 @@ static void DecreaseWindowCounters()
 
 static void HandlePlacePresize()
 {
-	if (_special_mouse_mode != WSM_PRESIZE) return;
+	if (_special_mouse_mode != SpecialMouseMode::Presize) return;
 
 	Window *w = _thd.GetCallbackWnd();
 	if (w == nullptr) return;
@@ -1959,12 +1959,12 @@ static void HandlePlacePresize()
 }
 
 /**
- * Handle dragging and dropping in mouse dragging mode (#WSM_DRAGDROP).
+ * Handle dragging and dropping in mouse dragging mode (#SpecialMouseMode::DragDrop).
  * @return State of handling the event.
  */
 static EventState HandleMouseDragDrop()
 {
-	if (_special_mouse_mode != WSM_DRAGDROP) return EventState::NotHandled;
+	if (_special_mouse_mode != SpecialMouseMode::DragDrop) return EventState::NotHandled;
 
 	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled; // Dragging, but the mouse did not move.
 

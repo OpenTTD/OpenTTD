@@ -2833,7 +2833,7 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 		_thd.place_mode = HT_SPECIAL | others;
 		_thd.next_drawstyle = HT_POINT | others;
 	}
-	_special_mouse_mode = WSM_SIZING;
+	_special_mouse_mode = SpecialMouseMode::Sizing;
 }
 
 /**
@@ -2848,7 +2848,7 @@ void VpStartDragging(ViewportDragDropSelectionProcess process)
 	_thd.selstart.y = 0;
 	_thd.next_drawstyle = HT_RECT;
 
-	_special_mouse_mode = WSM_DRAGGING;
+	_special_mouse_mode = SpecialMouseMode::Dragging;
 }
 
 void VpSetPlaceSizingLimit(int limit)
@@ -2882,7 +2882,7 @@ void VpSetPresizeRange(TileIndex from, TileIndex to)
 static void VpStartPreSizing()
 {
 	_thd.selend.x = -1;
-	_special_mouse_mode = WSM_PRESIZE;
+	_special_mouse_mode = SpecialMouseMode::Presize;
 }
 
 /**
@@ -3474,7 +3474,7 @@ calc_heightdiff_single_direction:;
  */
 EventState VpHandlePlaceSizingDrag()
 {
-	if (_special_mouse_mode != WSM_SIZING && _special_mouse_mode != WSM_DRAGGING) return EventState::NotHandled;
+	if (_special_mouse_mode != SpecialMouseMode::Sizing && _special_mouse_mode != SpecialMouseMode::Dragging) return EventState::NotHandled;
 
 	/* stop drag mode if the window has been closed */
 	Window *w = _thd.GetCallbackWnd();
@@ -3485,7 +3485,7 @@ EventState VpHandlePlaceSizingDrag()
 
 	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
 	if (_left_button_down) {
-		if (_special_mouse_mode == WSM_DRAGGING) {
+		if (_special_mouse_mode == SpecialMouseMode::Dragging) {
 			/* Only register a drag event when the mouse moved. */
 			if (_thd.new_pos.x == _thd.selstart.x && _thd.new_pos.y == _thd.selstart.y) return EventState::Handled;
 			_thd.selstart.x = _thd.new_pos.x;
@@ -3497,8 +3497,8 @@ EventState VpHandlePlaceSizingDrag()
 	}
 
 	/* Mouse button released. */
-	_special_mouse_mode = WSM_NONE;
-	if (_special_mouse_mode == WSM_DRAGGING) return EventState::Handled;
+	_special_mouse_mode = SpecialMouseMode::None;
+	if (_special_mouse_mode == SpecialMouseMode::Dragging) return EventState::Handled;
 
 	/* Keep the selected tool, but reset it to the original mode. */
 	HighLightStyle others = _thd.place_mode & ~(HT_DRAG_MASK | HT_DIR_MASK);
@@ -3567,9 +3567,9 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 
 	if (mode == HT_DRAG) { // HT_DRAG is for dragdropping trains in the depot window
 		mode = HT_NONE;
-		_special_mouse_mode = WSM_DRAGDROP;
+		_special_mouse_mode = SpecialMouseMode::DragDrop;
 	} else {
-		_special_mouse_mode = WSM_NONE;
+		_special_mouse_mode = SpecialMouseMode::None;
 	}
 
 	_thd.place_mode = mode;

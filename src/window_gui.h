@@ -1043,12 +1043,12 @@ extern bool _scrolling_viewport;
 extern bool _mouse_hovering;
 
 /** Mouse modes. */
-enum SpecialMouseMode : uint8_t {
-	WSM_NONE,     ///< No special mouse mode.
-	WSM_DRAGDROP, ///< Drag&drop an object.
-	WSM_SIZING,   ///< Sizing mode.
-	WSM_PRESIZE,  ///< Presizing mode (docks, tunnels).
-	WSM_DRAGGING, ///< Dragging mode (trees).
+enum class SpecialMouseMode : uint8_t {
+	None, ///< No special mouse mode.
+	DragDrop, ///< Drag&drop an object.
+	Sizing, ///< Sizing mode.
+	Presize, ///< Presizing mode (docks, tunnels).
+	Dragging, ///< Dragging mode (trees).
 };
 extern SpecialMouseMode _special_mouse_mode;
 
