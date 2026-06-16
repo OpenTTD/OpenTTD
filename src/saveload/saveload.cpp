@@ -92,10 +92,10 @@ enum class SaveLoadAction : uint8_t {
 	LoadCheck, ///< partial loading into #_load_check_data
 };
 
-enum NeedLength : uint8_t {
-	NL_NONE = 0,       ///< not working in NeedLength mode
-	NL_WANTLENGTH = 1, ///< writing length and data
-	NL_CALCLENGTH = 2, ///< need to calculate the length
+enum class NeedLength : uint8_t {
+	None, ///< not working in NeedLength mode
+	WantLength, ///< writing length and data
+	CalcLength, ///< need to calculate the length
 };
 
 /** Save in chunks of 128 KiB. */
@@ -672,7 +672,7 @@ static inline size_t SlCalcRefLen()
 
 void SlSetArrayIndex(uint index)
 {
-	_sl.need_length = NL_WANTLENGTH;
+	_sl.need_length = NeedLength::WantLength;
 	_sl.array_index = index;
 }
 
@@ -741,8 +741,8 @@ void SlSetLength(size_t length)
 	assert(_sl.action == SaveLoadAction::Save);
 
 	switch (_sl.need_length) {
-		case NL_WANTLENGTH:
-			_sl.need_length = NL_NONE;
+		case NeedLength::WantLength:
+			_sl.need_length = NeedLength::None;
 			if ((_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable) && _sl.expect_table_header) {
 				_sl.expect_table_header = false;
 				SlWriteArrayLength(length + 1);
@@ -774,7 +774,7 @@ void SlSetLength(size_t length)
 			}
 			break;
 
-		case NL_CALCLENGTH:
+		case NeedLength::CalcLength:
 			_sl.obj_len += static_cast<int>(length);
 			break;
 
@@ -1186,10 +1186,10 @@ void SlCopy(void *object, size_t length, VarType conv)
 	if (_sl.action == SaveLoadAction::Ptrs || _sl.action == SaveLoadAction::Null) return;
 
 	/* Automatically calculate the length? */
-	if (_sl.need_length != NL_NONE) {
+	if (_sl.need_length != NeedLength::None) {
 		SlSetLength(length * SlCalcConvFileLen(conv));
 		/* Determine length only? */
-		if (_sl.need_length == NL_CALCLENGTH) return;
+		if (_sl.need_length == NeedLength::CalcLength) return;
 	}
 
 	SlCopyInternal(object, length, conv);
@@ -1494,10 +1494,10 @@ static inline size_t SlCalcRefListLen(const void *list, VarType conv)
 static void SlRefList(void *list, VarType conv)
 {
 	/* Automatically calculate the length? */
-	if (_sl.need_length != NL_NONE) {
+	if (_sl.need_length != NeedLength::None) {
 		SlSetLength(SlCalcRefListLen(list, conv));
 		/* Determine length only? */
-		if (_sl.need_length == NL_CALCLENGTH) return;
+		if (_sl.need_length == NeedLength::CalcLength) return;
 	}
 
 	SlStorageHelper<std::list, void *>::SlSaveLoad(list, conv, SaveLoadType::Reference);
@@ -1522,10 +1522,10 @@ static size_t SlCalcRefVectorLen(const void *vector, VarType conv)
 static void SlRefVector(void *vector, VarType conv)
 {
 	/* Automatically calculate the length? */
-	if (_sl.need_length != NL_NONE) {
+	if (_sl.need_length != NeedLength::None) {
 		SlSetLength(SlCalcRefVectorLen(vector, conv));
 		/* Determine length only? */
-		if (_sl.need_length == NL_CALCLENGTH) return;
+		if (_sl.need_length == NeedLength::CalcLength) return;
 	}
 
 	SlStorageHelper<std::vector, void *>::SlSaveLoad(vector, conv, SaveLoadType::Reference);
@@ -1667,7 +1667,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 			NeedLength old_need_length = _sl.need_length;
 			size_t old_obj_len = _sl.obj_len;
 
-			_sl.need_length = NL_CALCLENGTH;
+			_sl.need_length = NeedLength::CalcLength;
 			_sl.obj_len = 0;
 
 			/* Pretend that we are saving to collect the object size. Other
@@ -1799,9 +1799,9 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 void SlSetStructListLength(size_t length)
 {
 	/* Automatically calculate the length? */
-	if (_sl.need_length != NL_NONE) {
+	if (_sl.need_length != NeedLength::None) {
 		SlSetLength(SlGetArrayLength(length));
-		if (_sl.need_length == NL_CALCLENGTH) return;
+		if (_sl.need_length == NeedLength::CalcLength) return;
 	}
 
 	SlWriteArrayLength(length);
@@ -1828,9 +1828,9 @@ size_t SlGetStructListLength(size_t limit)
 void SlObject(void *object, const SaveLoadTable &slt)
 {
 	/* Automatically calculate the length? */
-	if (_sl.need_length != NL_NONE) {
+	if (_sl.need_length != NeedLength::None) {
 		SlSetLength(SlCalcObjLength(object, slt));
-		if (_sl.need_length == NL_CALCLENGTH) return;
+		if (_sl.need_length == NeedLength::CalcLength) return;
 	}
 
 	for (auto &sld : slt) {
@@ -1959,9 +1959,9 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 
 		case SaveLoadAction::Save: {
 			/* Automatically calculate the length? */
-			if (_sl.need_length != NL_NONE) {
+			if (_sl.need_length != NeedLength::None) {
 				SlSetLength(SlCalcTableHeader(slt));
-				if (_sl.need_length == NL_CALCLENGTH) break;
+				if (_sl.need_length == NeedLength::CalcLength) break;
 			}
 
 			for (auto &sld : slt) {
@@ -1986,7 +1986,7 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 				if (sld.cmd == SaveLoadType::StructList || sld.cmd == SaveLoadType::Struct) {
 					/* SlCalcTableHeader already looks in sub-lists, so avoid the length being added twice. */
 					NeedLength old_need_length = _sl.need_length;
-					_sl.need_length = NL_NONE;
+					_sl.need_length = NeedLength::None;
 
 					SlTableHeader(sld.handler->GetDescription());
 
@@ -2085,12 +2085,12 @@ void SlAutolength(AutolengthProc *proc, int arg)
 	assert(_sl.action == SaveLoadAction::Save);
 
 	/* Tell it to calculate the length */
-	_sl.need_length = NL_CALCLENGTH;
+	_sl.need_length = NeedLength::CalcLength;
 	_sl.obj_len = 0;
 	proc(arg);
 
 	/* Setup length */
-	_sl.need_length = NL_WANTLENGTH;
+	_sl.need_length = NeedLength::WantLength;
 	SlSetLength(_sl.obj_len);
 
 	size_t start_pos = _sl.dumper->GetSize();
@@ -2241,7 +2241,7 @@ static void SlSaveChunk(const ChunkHandler &ch)
 	_sl.chunk_type = ch.type;
 	_sl.expect_table_header = (_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable);
 
-	_sl.need_length = (_sl.expect_table_header || _sl.chunk_type == ChunkType::Riff) ? NL_WANTLENGTH : NL_NONE;
+	_sl.need_length = (_sl.expect_table_header || _sl.chunk_type == ChunkType::Riff) ? NeedLength::WantLength : NeedLength::None;
 
 	switch (_sl.chunk_type) {
 		case ChunkType::Riff:
