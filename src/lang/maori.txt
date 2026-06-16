@@ -627,9 +627,9 @@ STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLA
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}72 meneti kua hipa
 STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}288 meneti kua hipa
 
-STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 tau (ā marama)
-STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 tau (ā hauwhā)
-STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 tau (ā tau)
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 tau (āmarama)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 tau (āhauwhā)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 tau (ātau)
 
 STR_GRAPH_TOGGLE_RANGE                                          :Hohokona te kauwhata o tēnei whānui raraunga
 STR_GRAPH_SELECT_SCALE                                          :Panonitia te āwhata huapae o te kauwhata
@@ -2432,7 +2432,7 @@ STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Wā i t�
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Hototahi tūmau me te pārongo motuhēhēnga
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Pāwhiria he kēmu nō te rārangi kia tīpakona
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Te tūmau i hono ai koe i tērā wā:
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Te tūmau i hono ai koe i mua:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}Pāwhiria kia tīpako i te tūmau i tākaro ai koe i tērā wā
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}PĀRONGO KĒMU
@@ -3089,7 +3089,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Whakatō
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Hanga Whenua
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Maka rohe tokatoka ki te whenua
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Maka rohe tokatoka ki te whenua.{}Pātaki+Pāwhiri kia tango rohe tokatoka
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Tautuhitia te rohe onepū.{}Pātaki+Pāwhiri kia tangohia te rohe onepū
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Whakarahia te horahanga o te whenua hei whakaheke/hiki
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Whakapakutia te horahanga o te whenua hei whakaheke/hiki
@@ -4615,8 +4615,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Moniwhiw
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Wā kia tapi ai: {LTBLUE}ia rā{NBSP}{COMMA}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Wā kia tapi ai: {LTBLUE}ia meneti{NBSP}{COMMA}{BLACK}   {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Wā kia tapi ai: {LTBLUE}{COMMA}%{BLACK}   {STRING}
-STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Tapi i mua: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Tapi i mua: {LTBLUE}{NUM} meneti i mua
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Tapi o mua: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Tapi o mua: {LTBLUE}{NUM} meneti i mua
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Whakarahia te āputa wā tapitapi mā te 10 rā. Pātaki+Pāwhiri kia whakarahia mā te 5 rā
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Whakarahia te āputa wā tapitapi mā te 5 meneti. Pātaki+Pāwhiri kia whakarahia mā te 1 meneti
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Whakarahia te wā tapitapi mā te 10 ōrau. Pātaki+Pāwhiri kia whakarahia mā te 5 ōrau
