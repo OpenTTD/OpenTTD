@@ -152,10 +152,10 @@ enum FoundationPart : uint8_t {
  * Mode of "sprite combining"
  * @see StartSpriteCombine
  */
-enum SpriteCombineMode : uint8_t {
-	SPRITE_COMBINE_NONE,     ///< Every #AddSortableSpriteToDraw start its own bounding box
-	SPRITE_COMBINE_PENDING,  ///< %Sprite combining will start with the next unclipped sprite.
-	SPRITE_COMBINE_ACTIVE,   ///< %Sprite combining is active. #AddSortableSpriteToDraw outputs child sprites.
+enum class SpriteCombineMode : uint8_t {
+	None, ///< Every #AddSortableSpriteToDraw start its own bounding box
+	Pending, ///< %Sprite combining will start with the next unclipped sprite.
+	Active, ///< %Sprite combining is active. #AddSortableSpriteToDraw outputs child sprites.
 };
 
 typedef std::vector<TileSpriteToDraw> TileSpriteToDrawVector;
@@ -178,7 +178,7 @@ struct ViewportDrawer {
 
 	int last_child;
 
-	SpriteCombineMode combine_sprites;               ///< Current mode of "sprite combining". @see StartSpriteCombine
+	SpriteCombineMode combine_sprites; ///< Current mode of "sprite combining". @see StartSpriteCombine
 
 	int foundation[FOUNDATION_PART_END];             ///< Foundation sprites (index into parent_sprites_to_draw).
 	FoundationPart foundation_part;                  ///< Currently active foundation for ground sprite drawing.
@@ -672,7 +672,7 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z,
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	if (_vd.combine_sprites == SPRITE_COMBINE_ACTIVE) {
+	if (_vd.combine_sprites == SpriteCombineMode::Active) {
 		AddCombinedSprite(image, pal, x + bounds.offset.x, y + bounds.offset.y, z + bounds.offset.z, sub);
 		return;
 	}
@@ -735,7 +735,7 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z,
 
 	_vd.last_child = LAST_CHILD_PARENT;
 
-	if (_vd.combine_sprites == SPRITE_COMBINE_PENDING) _vd.combine_sprites = SPRITE_COMBINE_ACTIVE;
+	if (_vd.combine_sprites == SpriteCombineMode::Pending) _vd.combine_sprites = SpriteCombineMode::Active;
 }
 
 /**
@@ -758,8 +758,8 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z,
  */
 void StartSpriteCombine()
 {
-	assert(_vd.combine_sprites == SPRITE_COMBINE_NONE);
-	_vd.combine_sprites = SPRITE_COMBINE_PENDING;
+	assert(_vd.combine_sprites == SpriteCombineMode::None);
+	_vd.combine_sprites = SpriteCombineMode::Pending;
 }
 
 /**
@@ -768,8 +768,8 @@ void StartSpriteCombine()
  */
 void EndSpriteCombine()
 {
-	assert(_vd.combine_sprites != SPRITE_COMBINE_NONE);
-	_vd.combine_sprites = SPRITE_COMBINE_NONE;
+	assert(_vd.combine_sprites != SpriteCombineMode::None);
+	_vd.combine_sprites = SpriteCombineMode::None;
 }
 
 /**
@@ -1811,7 +1811,7 @@ void ViewportDoDraw(const Viewport &vp, int left, int top, int right, int bottom
 	_vd.dpi.zoom = vp.zoom;
 	int mask = ScaleByZoom(-1, vp.zoom);
 
-	_vd.combine_sprites = SPRITE_COMBINE_NONE;
+	_vd.combine_sprites = SpriteCombineMode::None;
 
 	_vd.dpi.width = (right - left) & mask;
 	_vd.dpi.height = (bottom - top) & mask;
