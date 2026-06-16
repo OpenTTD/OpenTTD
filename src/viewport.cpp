@@ -996,11 +996,12 @@ static void DrawAutorailSelection(const TileInfo *ti, HighLightStyle highlight_s
 	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti, 7, foundation_part);
 }
 
-enum TileHighlightType : uint8_t {
-	THT_NONE,
-	THT_WHITE,
-	THT_BLUE,
-	THT_RED,
+/** Types of tile highlight. */
+enum class TileHighlightType : uint8_t {
+	None, ///< No tile highlight.
+	White, ///< Indicates a tile which is part of the highlighted station, or a station tile within the highlighted town.
+	Blue, ///< Indicates a tile which is in the catchment area of the highlighted station.
+	Red, ///< Indicates a house tile which is not in any station catchment area of the highlighted town.
 };
 
 const Station *_viewport_highlight_station; ///< Currently selected station for coverage area highlight
@@ -1017,45 +1018,44 @@ const Town *_viewport_highlight_town; ///< Currently selected town for coverage 
 static TileHighlightType GetTileHighlightType(TileIndex t)
 {
 	if (_viewport_highlight_station != nullptr) {
-		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
-		if (_viewport_highlight_station->TileIsInCatchment(t)) return THT_BLUE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_station->index) return TileHighlightType::White;
+		if (_viewport_highlight_station->TileIsInCatchment(t)) return TileHighlightType::Blue;
 	}
 
 	if (_viewport_highlight_station_rect != nullptr) {
-		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_station_rect->index) return THT_WHITE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_station_rect->index) return TileHighlightType::White;
 		const StationRect *r = &_viewport_highlight_station_rect->rect;
-		if (r->PtInExtendedRect(TileX(t), TileY(t))) return THT_BLUE;
+		if (r->PtInExtendedRect(TileX(t), TileY(t))) return TileHighlightType::Blue;
 	}
 
 	if (_viewport_highlight_waypoint != nullptr) {
-		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_waypoint->index) return THT_BLUE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_waypoint->index) return TileHighlightType::Blue;
 	}
 
 	if (_viewport_highlight_waypoint_rect != nullptr) {
-		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_waypoint_rect->index) return THT_WHITE;
+		if (IsTileType(t, TileType::Station) && GetStationIndex(t) == _viewport_highlight_waypoint_rect->index) return TileHighlightType::White;
 		const StationRect *r = &_viewport_highlight_waypoint_rect->rect;
-		if (r->PtInExtendedRect(TileX(t), TileY(t))) return THT_BLUE;
+		if (r->PtInExtendedRect(TileX(t), TileY(t))) return TileHighlightType::Blue;
 	}
 
 	if (_viewport_highlight_town != nullptr) {
 		if (IsTileType(t, TileType::House)) {
 			if (GetTownIndex(t) == _viewport_highlight_town->index) {
-				TileHighlightType type = THT_RED;
 				for (const Station *st : _viewport_highlight_town->stations_near) {
 					if (st->owner != _current_company) continue;
-					if (st->TileIsInCatchment(t)) return THT_BLUE;
+					if (st->TileIsInCatchment(t)) return TileHighlightType::Blue;
 				}
-				return type;
+				return TileHighlightType::Red;
 			}
 		} else if (IsTileType(t, TileType::Station)) {
 			for (const Station *st : _viewport_highlight_town->stations_near) {
 				if (st->owner != _current_company) continue;
-				if (GetStationIndex(t) == st->index) return THT_WHITE;
+				if (GetStationIndex(t) == st->index) return TileHighlightType::White;
 			}
 		}
 	}
 
-	return THT_NONE;
+	return TileHighlightType::None;
 }
 
 /**
@@ -1067,10 +1067,10 @@ static void DrawTileHighlightType(const TileInfo *ti, TileHighlightType tht)
 {
 	switch (tht) {
 		default:
-		case THT_NONE: break;
-		case THT_WHITE: DrawTileSelectionRect(ti, PAL_NONE); break;
-		case THT_BLUE:  DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE); break;
-		case THT_RED:   DrawTileSelectionRect(ti, PALETTE_SEL_TILE_RED); break;
+		case TileHighlightType::None: break;
+		case TileHighlightType::White: DrawTileSelectionRect(ti, PAL_NONE); break;
+		case TileHighlightType::Blue: DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE); break;
+		case TileHighlightType::Red: DrawTileSelectionRect(ti, PALETTE_SEL_TILE_RED); break;
 	}
 }
 
@@ -1178,7 +1178,7 @@ draw_inner:
 	}
 
 	/* Check if it's inside the outer area? */
-	if (!is_redsq && (tht == THT_NONE || tht == THT_RED) && _thd.outersize.x > 0 &&
+	if (!is_redsq && (tht == TileHighlightType::None || tht == TileHighlightType::Red) && _thd.outersize.x > 0 &&
 			IsInsideBS(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IsInsideBS(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		/* Draw a blue rect. */
