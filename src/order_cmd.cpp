@@ -1689,16 +1689,16 @@ CommandCost CmdOrderRefit(DoCommandFlags flags, VehicleID veh, VehicleOrderID or
  */
 void CheckOrders(const Vehicle *v)
 {
-	/* Does the user wants us to check things? */
-	if (_settings_client.gui.order_review_system == 0) return;
+	/* Does the user want us to check things? */
+	if (_settings_client.gui.order_review_system == OrderReviewSystem::Off) return;
 
-	/* Do nothing for crashed vehicles */
+	/* Ignore crashed vehicles. */
 	if (v->vehstatus.Test(VehState::Crashed)) return;
 
-	/* Do nothing for stopped vehicles if setting is '1' */
-	if (_settings_client.gui.order_review_system == 1 && v->vehstatus.Test(VehState::Stopped)) return;
+	/* Maybe ignore stopped vehicles. */
+	if (_settings_client.gui.order_review_system == OrderReviewSystem::ExcludeStopped && v->vehstatus.Test(VehState::Stopped)) return;
 
-	/* do nothing we we're not the first vehicle in a share-chain */
+	/* Do nothing if we're not the first vehicle in a share-chain. */
 	if (v->FirstShared() != v) return;
 
 	/* Only check every 20 days, so that we don't flood the message log */
