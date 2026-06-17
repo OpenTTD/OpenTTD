@@ -706,24 +706,30 @@ static const SpriteID SPR_FARMLAND_STATE_7        = 4259;
 static const SpriteID SPR_FARMLAND_HAYPACKS       = 4278;
 /** @} */
 
-/* Water-related sprites */
+/** @defgroup water_sprites Water-related sprites.
+ * @{ */
+/** @split_group{water_sprites}
+ * Ship depot sprites. */
 static const SpriteID SPR_SHIP_DEPOT_SE_FRONT     = 4070;
 static const SpriteID SPR_SHIP_DEPOT_SW_FRONT     = 4071;
 static const SpriteID SPR_SHIP_DEPOT_NW           = 4072;
 static const SpriteID SPR_SHIP_DEPOT_NE           = 4073;
 static const SpriteID SPR_SHIP_DEPOT_SE_REAR      = 4074;
 static const SpriteID SPR_SHIP_DEPOT_SW_REAR      = 4075;
-/* here come sloped water sprites */
+/** @split_group{water_sprites;slope; Sloped water sprites. }
+ * */
 static const SpriteID SPR_WATER_SLOPE_Y_UP = SPR_CANALS_BASE + 0; ///< Water flowing negative Y direction.
 static const SpriteID SPR_WATER_SLOPE_X_DOWN = SPR_CANALS_BASE + 1; ///< Water flowing positive X direction.
 static const SpriteID SPR_WATER_SLOPE_X_UP = SPR_CANALS_BASE + 2; ///< Water flowing negative X direction.
 static const SpriteID SPR_WATER_SLOPE_Y_DOWN = SPR_CANALS_BASE + 3; ///< Water flowing positive Y direction.
-/* sprites for the locks
+/** @split_group{water_sprites;locks; Sprites for the locks
  * there are 4 kinds of locks, each of them is 3 tiles long.
  * the four kinds are running in the X and Y direction and
  * are "lowering" either in the "+" or the "-" direction.
  * the three tiles are the center tile (where the slope is)
- * and a bottom and a top tile */
+ * and a bottom and a top tile. }
+ * Water lock sprite.
+ */
 static const SpriteID SPR_LOCK_BASE                 = SPR_CANALS_BASE +  4;
 static const SpriteID SPR_LOCK_Y_UP_CENTER_REAR     = SPR_CANALS_BASE +  4;
 static const SpriteID SPR_LOCK_X_DOWN_CENTER_REAR   = SPR_CANALS_BASE +  5;
@@ -750,6 +756,7 @@ static const SpriteID SPR_LOCK_X_DOWN_TOP_FRONT     = SPR_CANALS_BASE + 25;
 static const SpriteID SPR_LOCK_X_UP_TOP_FRONT       = SPR_CANALS_BASE + 26;
 static const SpriteID SPR_LOCK_Y_DOWN_TOP_FRONT     = SPR_CANALS_BASE + 27;
 static const SpriteID SPR_CANAL_DIKES_BASE          = SPR_CANALS_BASE + 52;
+/** @} */
 
 /** @{
  * Sprites for tunnels and bridges. */
