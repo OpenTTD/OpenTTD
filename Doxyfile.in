@@ -46,6 +46,8 @@ INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 2
 ALIASES                = important="@attention" # @important is available in newer versions of doxygen.
+ALIASES               += split_group{1}="@}^^@{^^@ingroup \1^^" \
+                         split_group{3;}="^^@defgroup \1_\2 \3^^@ingroup \1^^@{^^@}^^@}^^@{^^@ingroup \1_\2^^"
 OPTIMIZE_OUTPUT_FOR_C  = YES
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO

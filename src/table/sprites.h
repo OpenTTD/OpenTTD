@@ -1077,69 +1077,92 @@ static const SpriteID SPR_ROTOR_MOVING_1  = 3902;
 static const SpriteID SPR_ROTOR_MOVING_3  = 3904;
 /** @} */
 
-/* Town/house sprites */
-static const SpriteID SPR_LIFT = 1443;
-
-/* used in town_land.h
+/** @defgroup town_house_sprites Town/house sprites.
+ * Used in town_land.h
  * CNST1..3 = Those are the different stages of construction
  * The last 2 hexas correspond to the type of building it represent, if any */
+/** @{ */
+static const SpriteID SPR_STATUE_HORSERIDER_09 = 1454; ///< Statue with a man riding a horse.
+static const SpriteID SPR_FOUNTAIN_0A = 1455; ///< One tile fountain.
+static const SpriteID SPR_PARKSTATUE_0B = 1456; ///< Park like statue.
+static const SpriteID SPR_PARKALLEY_0C = 1457; ///< Park alley.
+/** @split_group{town_house_sprites}
+ * Temperate tall office. */
 static const SpriteID SPR_CNST1_TALLOFFICE_00                 = 1421;
 static const SpriteID SPR_CNST2_TALLOFFICE_00                 = 1422;
 static const SpriteID SPR_CNST3_TALLOFFICE_00                 = 1423;
 static const SpriteID SPR_GROUND_TALLOFFICE_00                = 1424;
-static const SpriteID SPR_BUILD_TALLOFFICE_00                 = 1425; // temperate
+static const SpriteID SPR_BUILD_TALLOFFICE_00                 = 1425;
+/** @split_group{town_house_sprites}
+ * Temperate office. */
 static const SpriteID SPR_CNST1_OFFICE_01                     = 1426;
 static const SpriteID SPR_CNST2_OFFICE_01                     = 1427;
-static const SpriteID SPR_BUILD_OFFICE_01                     = 1428; // temperate
+static const SpriteID SPR_BUILD_OFFICE_01                     = 1428;
 static const SpriteID SPR_GROUND_OFFICE_01                    = 1429;
-static const SpriteID SPR_CNST1_SMLBLCKFLATS_02               = 1430; // Small Block of Flats
+/** @split_group{town_house_sprites}
+ * Temperate small block of flats. */
+static const SpriteID SPR_CNST1_SMLBLCKFLATS_02               = 1430;
 static const SpriteID SPR_CNST2_SMLBLCKFLATS_02               = 1431;
-static const SpriteID SPR_BUILD_SMLBLCKFLATS_02               = 1432; // temperate
+static const SpriteID SPR_BUILD_SMLBLCKFLATS_02               = 1432;
 static const SpriteID SPR_GROUND_SMLBLCKFLATS_02              = 1433;
+/** @split_group{town_house_sprites}
+ * Temperate church. */
 static const SpriteID SPR_CNST1_TEMPCHURCH                    = 1434;
 static const SpriteID SPR_CNST2_TEMPCHURCH                    = 1435;
 static const SpriteID SPR_BUILD_TEMPCHURCH                    = 1436;
 static const SpriteID SPR_GROUND_TEMPCHURCH                   = 1437;
+/** @split_group{town_house_sprites}
+ * Temperate, sub-arctic, subtropical large office. */
 static const SpriteID SPR_CNST1_LARGEOFFICE_04                = 1440;
 static const SpriteID SPR_CNST2_LARGEOFFICE_04                = 1441;
-static const SpriteID SPR_BUILD_LARGEOFFICE_04                = 1442; // temperate, sub-arctic, subtropical
-static const SpriteID SPR_BUILD_LARGEOFFICE_04_SNOW           = 4569; // same, with snow
-/* These are in fact two houses for the same houseID.  so V1 and V2 */
+static const SpriteID SPR_BUILD_LARGEOFFICE_04                = 1442;
+static const SpriteID SPR_BUILD_LARGEOFFICE_04_SNOW           = 4569;
+static const SpriteID SPR_LIFT = 1443;
+/** @split_group{town_house_sprites;06; House 06.
+ * These are in fact two houses for the same houseID, so V1 and V2. }
+ * 1st variation. */
 static const SpriteID SPR_CNST1_TOWNHOUSE_06_V1               = 1444;
 static const SpriteID SPR_CNST2_TOWNHOUSE_06_V1               = 1445;
-static const SpriteID SPR_BUILD_TOWNHOUSE_06_V1               = 1446; // 1st variation
+static const SpriteID SPR_BUILD_TOWNHOUSE_06_V1               = 1446;
 static const SpriteID SPR_GRND_TOWNHOUSE_06_V1                = 1447;
+static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2 = 1501; ///< Used as ground, but is stage1.
+static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2_P = 1502; ///< Pipes extensions for previous.
+static const SpriteID SPR_CNST2_TOWNHOUSE_06_V2_G = 1503; ///< Ground of cnst stage 2.
+static const SpriteID SPR_CNST2_TOWNHOUSE_06_V2 = 1504; ///< Real cnst stage 2.
+static const SpriteID SPR_GRND_TOWNHOUSE_06_V2 = 1505; ///< Ground of 2nd variation.
+static const SpriteID SPR_BUILD_TOWNHOUSE_06_V2 = 1506; ///< 2nd variation.
+/** @split_group{town_house_sprites;stadium; Stadium. }
+ * */
 static const SpriteID SPR_GRND_STADIUM_N = 1479; ///< Stadium ground at north.
 static const SpriteID SPR_GRND_STADIUM_E = 1480; ///< Stadium ground at east.
 static const SpriteID SPR_GRND_STADIUM_W = 1481; ///< Stadium ground at west.
 static const SpriteID SPR_GRND_STADIUM_S = 1482; ///< Stadium ground at south.
-static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2               = 1501; // used as ground, but is stage1
-static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2_P             = 1502; // pipes extensions for previous
-static const SpriteID SPR_CNST2_TOWNHOUSE_06_V2_G             = 1503; // Ground of cnst stage 2
-static const SpriteID SPR_CNST2_TOWNHOUSE_06_V2               = 1504; // real cnst stage 2
-static const SpriteID SPR_GRND_TOWNHOUSE_06_V2                = 1505;
-static const SpriteID SPR_BUILD_TOWNHOUSE_06_V2               = 1506; // 2nd variation
+/** @split_group{town_house_sprites}
+ * Hotel. */
 static const SpriteID SPR_CNST1_HOTEL_07_NW                   = 1448;
 static const SpriteID SPR_CNST2_HOTEL_07_NW                   = 1449;
 static const SpriteID SPR_BUILD_HOTEL_07_NW                   = 1450;
 static const SpriteID SPR_CNST1_HOTEL_07_SE                   = 1451;
 static const SpriteID SPR_CNST2_HOTEL_07_SE                   = 1452;
 static const SpriteID SPR_BUILD_HOTEL_07_SE                   = 1453;
-static const SpriteID SPR_STATUE_HORSERIDER_09                = 1454;
-static const SpriteID SPR_FOUNTAIN_0A                         = 1455;
-static const SpriteID SPR_PARKSTATUE_0B                       = 1456;
-static const SpriteID SPR_PARKALLEY_0C                        = 1457;
+/** @split_group{town_house_sprites}
+ * Office. */
 static const SpriteID SPR_CNST1_OFFICE_0D                     = 1458;
 static const SpriteID SPR_CNST2_OFFICE_0D                     = 1459;
 static const SpriteID SPR_BUILD_OFFICE_0D                     = 1460;
+/** @split_group{town_house_sprites}
+ * Shop office. */
 static const SpriteID SPR_CNST1_SHOPOFFICE_0E                 = 1461;
 static const SpriteID SPR_CNST2_SHOPOFFICE_0E                 = 1462;
 static const SpriteID SPR_BUILD_SHOPOFFICE_0E                 = 1463;
 static const SpriteID SPR_CNST1_SHOPOFFICE_0F                 = 1464;
 static const SpriteID SPR_CNST2_SHOPOFFICE_0F                 = 1465;
 static const SpriteID SPR_BUILD_SHOPOFFICE_0F                 = 1466;
+/** @split_group{town_house_sprites}
+ * Toyland house. */
 static const SpriteID SPR_GRND_HOUSE_TOY1                     = 4675;
 static const SpriteID SPR_GRND_HOUSE_TOY2                     = 4676;
+/** @} */
 
 /* Easter egg/disaster sprites */
 static const SpriteID SPR_BLIMP                  = 3905; // Zeppelin
