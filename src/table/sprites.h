@@ -1555,10 +1555,10 @@ static const SpriteID SPR_SELECT_TOYLAND             = 4888;
 static const SpriteID SPR_SELECT_TOYLAND_PUSHED      = 4889;
 /** @} */
 
-/** Cursor sprite numbers */
-
-/* Terraform
- * Cursors */
+/** @defgroup cursor_sprites Cursor sprite numbers.
+ * @{ */
+/** @split_group{cursor_sprites}
+ * Terraform cursors. */
 static const CursorID SPR_CURSOR_MOUSE          = 0;
 static const CursorID SPR_CURSOR_ZZZ            = 1;
 static const CursorID SPR_CURSOR_BUOY           = 702;
@@ -1577,20 +1577,24 @@ static const CursorID SPR_CURSOR_ROCKY_AREA     = 4087;
 static const CursorID SPR_CURSOR_DESERT         = 4088;
 static const CursorID SPR_CURSOR_TRANSMITTER    = 4089;
 
-/** Airport cursors. */
+/** @split_group{cursor_sprites}
+ * Airport cursors. */
 static const CursorID SPR_CURSOR_AIRPORT        = 2724;
 
-/* dock cursors */
+/** @split_group{cursor_sprites}
+ * Dock cursors. */
 static const CursorID SPR_CURSOR_DOCK           = 3668;
 static const CursorID SPR_CURSOR_CANAL          = SPR_OPENTTD_BASE + 89;
 static const CursorID SPR_CURSOR_LOCK           = SPR_OPENTTD_BASE + 87;
 static const CursorID SPR_CURSOR_RIVER          = SPR_OPENTTD_BASE + 137;
 static const CursorID SPR_CURSOR_AQUEDUCT       = SPR_OPENTTD_BASE + 146;
 
-/** Shared road & rail cursors. */
+/** @split_group{cursor_sprites}
+ * Shared road & rail cursors. */
 static const CursorID SPR_CURSOR_BRIDGE         = 2593;
 
-/* rail cursors */
+/** @split_group{cursor_sprites}
+ * Rail cursors. */
 static const CursorID SPR_CURSOR_NS_TRACK       = 1263;
 static const CursorID SPR_CURSOR_SWNE_TRACK     = 1264;
 static const CursorID SPR_CURSOR_EW_TRACK       = 1265;
@@ -1635,7 +1639,8 @@ static const CursorID SPR_CURSOR_CONVERT_ELRAIL = SPR_OPENTTD_BASE + 60;
 static const CursorID SPR_CURSOR_CONVERT_MONO   = SPR_OPENTTD_BASE + 66;
 static const CursorID SPR_CURSOR_CONVERT_MAGLEV = SPR_OPENTTD_BASE + 72;
 
-/* road cursors */
+/** @split_group{cursor_sprites}
+ * Road cursors. */
 static const CursorID SPR_CURSOR_ROAD_NESW      = 1311;
 static const CursorID SPR_CURSOR_ROAD_NWSE      = 1312;
 static const CursorID SPR_CURSOR_AUTOROAD       = SPR_OPENTTD_BASE + 83;
@@ -1648,13 +1653,16 @@ static const CursorID SPR_CURSOR_BUS_STATION    = 2725;
 static const CursorID SPR_CURSOR_TRUCK_STATION  = 2726;
 static const CursorID SPR_CURSOR_ROAD_TUNNEL    = 2433;
 
+/** @split_group{cursor_sprites}
+ * Vehicle cursors. */
 static const CursorID SPR_CURSOR_CLONE_TRAIN    = SPR_OPENTTD_BASE + 110;
 static const CursorID SPR_CURSOR_CLONE_ROADVEH  = SPR_OPENTTD_BASE + 111;
 static const CursorID SPR_CURSOR_CLONE_SHIP     = SPR_OPENTTD_BASE + 112;
 static const CursorID SPR_CURSOR_CLONE_AIRPLANE = SPR_OPENTTD_BASE + 113;
 
-/* Animation macro in table/animcursors.h (_animcursors[]) */
-
+/** @split_group{cursor_sprites;anim; Animated cursors.
+ * @see table/animcursors.h for animation macro (_animcursors[]). }
+ * Animated cursor frame. */
 static const CursorID SPR_CURSOR_DEMOLISH_FIRST = 704;
 static const CursorID SPR_CURSOR_DEMOLISH_1     = 705;
 static const CursorID SPR_CURSOR_DEMOLISH_2     = 706;
@@ -1682,6 +1690,7 @@ static const CursorID ANIMCURSOR_LOWERLAND    = ANIMCURSOR_FLAG | 1; ///<  699 -
 static const CursorID ANIMCURSOR_RAISELAND    = ANIMCURSOR_FLAG | 2; ///<  696 -  698 - raise land tool
 static const CursorID ANIMCURSOR_PICKSTATION  = ANIMCURSOR_FLAG | 3; ///<  716 -  718 - goto-order icon
 static const CursorID ANIMCURSOR_BUILDSIGNALS = ANIMCURSOR_FLAG | 4; ///< 1292 - 1293 - build signal
+/** @} */
 
 /**
  * Bitmask setup. For the graphics system, 32 bits are used to define
