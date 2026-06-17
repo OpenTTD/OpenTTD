@@ -424,13 +424,16 @@ static const SpriteID SPR_STATUE_COMPANY          = 2632;
 static const SpriteID SPR_BOUGHT_LAND             = 4790;
 /** @} */
 
-/* sprites for rail and rail stations*/
-static const uint16_t SPR_RAIL_SNOW_OFFSET        = 26;
-static const uint16_t SPR_MONO_SNOW_OFFSET        = 26;
-static const uint16_t SPR_MGLV_SNOW_OFFSET        = 26;
+/** @defgroup rail_sprites Sprites for rail and rail stations.
+ * @see %_track_sloped_sprites in rail_cmd.cpp for slope offsets.
+ * @{ */
+static const uint16_t SPR_RAIL_SNOW_OFFSET = 26; ///< Sprite number difference between a piece of rail track on a snowy ground and the corresponding one on normal ground.
+static const uint16_t SPR_MONO_SNOW_OFFSET = 26; ///< Sprite number difference between a piece of monorail track on a snowy ground and the corresponding one on normal ground.
+static const uint16_t SPR_MGLV_SNOW_OFFSET = 26; ///< Sprite number difference between a piece of maglev track on a snowy ground and the corresponding one on normal ground.
 
-static const SpriteID SPR_ORIGINAL_SIGNALS_BASE   = 1275;
-
+static const SpriteID SPR_ORIGINAL_SIGNALS_BASE = 1275; ///< Sprite number of the first block sginall.
+/** @split_group{rail_sprites}
+ * Default rail sprites. */
 static const SpriteID SPR_RAIL_SINGLE_X           = 1005;
 static const SpriteID SPR_RAIL_SINGLE_Y           = 1006;
 static const SpriteID SPR_RAIL_SINGLE_NORTH       = 1007;
@@ -443,12 +446,16 @@ static const SpriteID SPR_RAIL_TRACK_BASE         = 1018;
 static const SpriteID SPR_RAIL_TRACK_N_S          = 1035;
 static const SpriteID SPR_RAIL_TRACK_Y_SNOW       = 1037;
 static const SpriteID SPR_RAIL_TRACK_X_SNOW       = 1038;
+/** @split_group{rail_sprites}
+ * Train depot sprites. */
 static const SpriteID SPR_RAIL_DEPOT_SE_1         = 1063;
 static const SpriteID SPR_RAIL_DEPOT_SE_2         = 1064;
 static const SpriteID SPR_RAIL_DEPOT_SW_1         = 1065;
 static const SpriteID SPR_RAIL_DEPOT_SW_2         = 1066;
 static const SpriteID SPR_RAIL_DEPOT_NE           = 1067;
 static const SpriteID SPR_RAIL_DEPOT_NW           = 1068;
+/** @split_group{rail_sprites}
+ * Rail station sprites. */
 static const SpriteID SPR_RAIL_PLATFORM_Y_FRONT         = 1069;
 static const SpriteID SPR_RAIL_PLATFORM_X_REAR          = 1070;
 static const SpriteID SPR_RAIL_PLATFORM_Y_REAR          = 1071;
@@ -467,6 +474,8 @@ static const SpriteID SPR_RAIL_ROOF_GLASS_X_TILE_A = 1083; ///< First half of th
 static const SpriteID SPR_RAIL_ROOF_GLASS_Y_TILE_A = 1084; ///< @copydoc SPR_RAIL_ROOF_GLASS_X_TILE_A
 static const SpriteID SPR_RAIL_ROOF_GLASS_X_TILE_B = 1085; ///< Second half of the roof glass.
 static const SpriteID SPR_RAIL_ROOF_GLASS_Y_TILE_B = 1086; ///< @copydoc SPR_RAIL_ROOF_GLASS_X_TILE_B
+/** @split_group{rail_sprites}
+ * Monorail sprites. */
 static const SpriteID SPR_MONO_SINGLE_X                 = 1087;
 static const SpriteID SPR_MONO_SINGLE_Y                 = 1088;
 static const SpriteID SPR_MONO_SINGLE_NORTH             = 1089;
@@ -479,6 +488,8 @@ static const SpriteID SPR_MONO_TRACK_BASE               = 1100;
 static const SpriteID SPR_MONO_TRACK_N_S                = 1117;
 static const SpriteID SPR_MONO_TRACK_Y_SNOW             = 1119;
 static const SpriteID SPR_MONO_TRACK_X_SNOW             = 1120;
+/** @split_group{rail_sprites}
+ * Maglev sprites. */
 static const SpriteID SPR_MGLV_SINGLE_X                 = 1169;
 static const SpriteID SPR_MGLV_SINGLE_Y                 = 1170;
 static const SpriteID SPR_MGLV_SINGLE_NORTH             = 1171;
@@ -491,13 +502,14 @@ static const SpriteID SPR_MGLV_TRACK_BASE               = 1182;
 static const SpriteID SPR_MGLV_TRACK_Y_SNOW             = 1184;
 static const SpriteID SPR_MGLV_TRACK_X_SNOW             = 1185;
 static const SpriteID SPR_MGLV_TRACK_N_S                = 1199;
+/** @split_group{rail_sprites}
+ * Waypoint sprites. */
 static const SpriteID SPR_WAYPOINT_X_1            = SPR_OPENTTD_BASE + 78;
 static const SpriteID SPR_WAYPOINT_X_2            = SPR_OPENTTD_BASE + 79;
 static const SpriteID SPR_WAYPOINT_Y_1            = SPR_OPENTTD_BASE + 80;
 static const SpriteID SPR_WAYPOINT_Y_2            = SPR_OPENTTD_BASE + 81;
-/* see _track_sloped_sprites in rail_cmd.cpp for slope offsets */
-
-/* Track fences */
+/** @split_group{rail_sprites}
+ * Track fences. */
 static const SpriteID SPR_TRACK_FENCE_FLAT_X    = 1301;
 static const SpriteID SPR_TRACK_FENCE_FLAT_Y    = 1302;
 static const SpriteID SPR_TRACK_FENCE_FLAT_VERT = 1303;
@@ -506,13 +518,12 @@ static const SpriteID SPR_TRACK_FENCE_SLOPE_SW  = 1305;
 static const SpriteID SPR_TRACK_FENCE_SLOPE_SE  = 1306;
 static const SpriteID SPR_TRACK_FENCE_SLOPE_NE  = 1307;
 static const SpriteID SPR_TRACK_FENCE_SLOPE_NW  = 1308;
-
-/** Base sprites for elrail.
+/** @split_group{rail_sprites;el; Base sprites for elrail.
  * Offsets via an enum are used so a complete list of absolute
- * sprite numbers is unnecessary.
- */
+ * sprite numbers is unnecessary. }
+ * Base elrail sprite. */
 static const SpriteID SPR_WIRE_BASE         = SPR_ELRAIL_BASE +  0;
-static const SpriteID SPR_PYLON_BASE        = SPR_ELRAIL_BASE + 28; ///< @copydoc SPR_WIRE_BASE.
+static const SpriteID SPR_PYLON_BASE        = SPR_ELRAIL_BASE + 28;
 /** @} */
 
 /** @{
