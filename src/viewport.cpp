@@ -3645,12 +3645,12 @@ CommandCost CmdScrollViewport(DoCommandFlags flags, TileIndex tile, ViewportScro
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	switch (target) {
-		case VST_EVERYONE:
+		case ViewportScrollTarget::Everyone:
 			break;
-		case VST_COMPANY:
+		case ViewportScrollTarget::Company:
 			if (_local_company != (CompanyID)ref) return CommandCost();
 			break;
-		case VST_CLIENT:
+		case ViewportScrollTarget::Client:
 			if (_network_own_client_id != (ClientID)ref) return CommandCost();
 			break;
 		default:
