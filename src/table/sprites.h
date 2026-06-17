@@ -1164,13 +1164,22 @@ static const SpriteID SPR_GRND_HOUSE_TOY1                     = 4675;
 static const SpriteID SPR_GRND_HOUSE_TOY2                     = 4676;
 /** @} */
 
-/* Easter egg/disaster sprites */
-static const SpriteID SPR_BLIMP                  = 3905; // Zeppelin
+/** @defgroup disaster_sprites Easter egg/disaster sprites
+ * @{ */
+/** @split_group{disaster_sprites}
+ * Zeppelin. */
 static const SpriteID SPR_BLIMP_CRASHING         = 3906;
+static const SpriteID SPR_BLIMP                  = 3905;
 static const SpriteID SPR_BLIMP_CRASHED          = 3907;
-static const SpriteID SPR_UFO_SMALL_SCOUT        = 3908; // XCOM - UFO Defense
+/** @split_group{disaster_sprites}
+ * XCOM - UFO Defense. */
+static const SpriteID SPR_UFO_SMALL_SCOUT        = 3908;
 static const SpriteID SPR_UFO_SMALL_SCOUT_DARKER = 3909;
-static const SpriteID SPR_SUB_SMALL_NE           = 3910; // Silent Service
+static const SpriteID SPR_UFO_HARVESTER          = 3920;
+static const SpriteID SPR_XCOM_SKYRANGER         = 3921;
+/** @split_group{disaster_sprites}
+ * Silent Service. */
+static const SpriteID SPR_SUB_SMALL_NE           = 3910;
 static const SpriteID SPR_SUB_SMALL_SE           = 3911;
 static const SpriteID SPR_SUB_SMALL_SW           = 3912;
 static const SpriteID SPR_SUB_SMALL_NW           = 3913;
@@ -1178,12 +1187,15 @@ static const SpriteID SPR_SUB_LARGE_NE           = 3914;
 static const SpriteID SPR_SUB_LARGE_SE           = 3915;
 static const SpriteID SPR_SUB_LARGE_SW           = 3916;
 static const SpriteID SPR_SUB_LARGE_NW           = 3917;
-static const SpriteID SPR_F_15                   = 3918; // F-15 Strike Eagle
+/** @split_group{disaster_sprites}
+ * F-15 Strike Eagle. */
+static const SpriteID SPR_F_15                   = 3918;
 static const SpriteID SPR_F_15_FIRING            = 3919;
-static const SpriteID SPR_UFO_HARVESTER          = 3920; // XCOM - UFO Defense
-static const SpriteID SPR_XCOM_SKYRANGER         = 3921;
-static const SpriteID SPR_AH_64A                 = 3922; // Gunship
+/** @split_group{disaster_sprites}
+ * Gunship. */
+static const SpriteID SPR_AH_64A                 = 3922;
 static const SpriteID SPR_AH_64A_FIRING          = 3923;
+/** @} */
 
 /** @{
  * Main toolbar sprites. @see main_gui.cpp */
