@@ -755,10 +755,12 @@ static const SpriteID SPR_CROSSING_OFF_X_MONO   = 1382;
 static const SpriteID SPR_CROSSING_OFF_X_MAGLEV = 1394;
 /** @} */
 
-/* bridge type sprites */
-static const SpriteID SPR_PILLARS_BASE = SPR_OPENTTD_BASE + 14;
+/** @defgroup bridge_type_sprites Bridge type sprites.
+ * @{ */
+static const SpriteID SPR_PILLARS_BASE = SPR_OPENTTD_BASE + 14; ///< First bridge pillar sprite.
 
-/* Wooden bridge (type 0) */
+/** @split_group{bridge_type_sprites}
+ * Wooden bridge (type 0). */
 static const SpriteID SPR_BTWDN_RAIL_Y_REAR       = 2545;
 static const SpriteID SPR_BTWDN_RAIL_X_REAR       = 2546;
 static const SpriteID SPR_BTWDN_ROAD_Y_REAR       = 2547;
@@ -805,7 +807,8 @@ static const SpriteID SPR_BTWDN_MGLV_X_SLOPE_UP   = 4397;
 static const SpriteID SPR_BTWDN_MGLV_Y_SLOPE_DOWN = 4398;
 static const SpriteID SPR_BTWDN_MGLV_X_SLOPE_DOWN = 4399;
 
-/* Steel Girder with arches
+/** @split_group{bridge_type_sprites}
+ * Steel Girder with arches.
  * BTSGA == Bridge Type Steel Girder Arched
  * This is bridge type number 2 */
 static const SpriteID SPR_BTSGA_RAIL_X_REAR       = 2499;
@@ -821,7 +824,8 @@ static const SpriteID SPR_BTSGA_MONO_Y_REAR       = 4325;
 static const SpriteID SPR_BTSGA_MGLV_X_REAR       = 4364;
 static const SpriteID SPR_BTSGA_MGLV_Y_REAR       = 4365;
 
-/* BTSUS == Suspension bridge
+/** @split_group{bridge_type_sprites}
+ * BTSUS stands for Bridge Type Suspension bridge.
  * TILE_* denotes the different tiles a suspension bridge
  * can have
  * TILE_A and TILE_B are the "beginnings" and "ends" of the
@@ -906,7 +910,8 @@ static const SpriteID SPR_BTSUS_MGLV_X_REAR_TILE_E  = 4383;
 static const SpriteID SPR_BTSUS_MGLV_X_REAR_TILE_F  = 4384;
 static const SpriteID SPR_BTSUS_MGLV_Y_REAR_TILE_F  = 4385;
 
-/* cantilever bridges
+/** @split_group{bridge_type_sprites}
+ * Cantilever bridges.
  * They have three different kinds of tiles:
  * END(ing), MID(dle), BEG(ginning) */
 static const SpriteID SPR_BTCAN_RAIL_X_BEG          = 2507;
@@ -944,7 +949,8 @@ static const SpriteID SPR_BTCAN_MGLV_Y_END          = 4389;
 static const SpriteID SPR_BTCAN_MGLV_Y_MID          = 4390;
 static const SpriteID SPR_BTCAN_MGLV_Y_BEG          = 4391;
 
-/* little concrete bridge */
+/** @split_group{bridge_type_sprites}
+ * Little concrete bridge. */
 static const SpriteID SPR_BTCON_RAIL_X        = 2493;
 static const SpriteID SPR_BTCON_RAIL_Y        = 2494;
 static const SpriteID SPR_BTCON_ROAD_X        = 2495;
@@ -958,7 +964,8 @@ static const SpriteID SPR_BTCON_MONO_Y        = 4345;
 static const SpriteID SPR_BTCON_MGLV_X        = 4384;
 static const SpriteID SPR_BTCON_MGLV_Y        = 4385;
 
-/* little steel girder bridge */
+/** @split_group{bridge_type_sprites}
+ * Little steel girder bridge. */
 static const SpriteID SPR_BTGIR_RAIL_X        = 2553;
 static const SpriteID SPR_BTGIR_RAIL_Y        = 2554;
 static const SpriteID SPR_BTGIR_ROAD_X        = 2555;
@@ -972,12 +979,12 @@ static const SpriteID SPR_BTGIR_MONO_Y        = 4363;
 static const SpriteID SPR_BTGIR_MGLV_X        = 4402;
 static const SpriteID SPR_BTGIR_MGLV_Y        = 4403;
 
-/* tubular bridges
+/** @split_group{bridge_type_sprites;BTTUB; Tubular bridges.
  * tubular bridges have 3 kinds of tiles:
  *  a start tile (with only half a tube on the far side, marked _BEG
  *  a middle tile (full tunnel), marked _MID
- *  and an end tile (half a tube on the near side, marked _END
- */
+ *  and an end tile (half a tube on the near side, marked _END }
+ * Tubular bridge sprite. */
 static const SpriteID SPR_BTTUB_X_FRONT_BEG       = 2559;
 static const SpriteID SPR_BTTUB_X_FRONT_MID       = 2560;
 static const SpriteID SPR_BTTUB_X_FRONT_END       = 2561;
@@ -1013,8 +1020,8 @@ static const SpriteID SPR_BTTUB_Y_MGLV_REAR_BEG   = 2590;
 static const SpriteID SPR_BTTUB_Y_MGLV_REAR_MID   = 2591;
 static const SpriteID SPR_BTTUB_Y_MGLV_REAR_END   = 2592;
 
-
-/* ramps (for all bridges except wood and tubular?)*/
+/** @split_group{bridge_type_sprites}
+ * Ramps (for all bridges except wood and tubular?).*/
 static const SpriteID SPR_BTGEN_RAIL_X_SLOPE_DOWN = 2437;
 static const SpriteID SPR_BTGEN_RAIL_X_SLOPE_UP   = 2438;
 static const SpriteID SPR_BTGEN_RAIL_Y_SLOPE_DOWN = 2439;
@@ -1047,6 +1054,7 @@ static const SpriteID SPR_BTGEN_MGLV_RAMP_X_UP    = 4370;
 static const SpriteID SPR_BTGEN_MGLV_RAMP_X_DOWN  = 4371;
 static const SpriteID SPR_BTGEN_MGLV_RAMP_Y_UP    = 4372;
 static const SpriteID SPR_BTGEN_MGLV_RAMP_Y_DOWN  = 4373;
+/** @} */
 
 /** @{
  * Vehicle view sprites. */
