@@ -156,10 +156,10 @@ enum ViewportDragDropSelectionProcess : uint8_t {
 /**
  * Target of the viewport scrolling GS method
  */
-enum ViewportScrollTarget : uint8_t {
-	VST_EVERYONE, ///< All players
-	VST_COMPANY,  ///< All players in specific company
-	VST_CLIENT,   ///< Single player
+enum class ViewportScrollTarget : uint8_t {
+	Everyone, ///< All players
+	Company, ///< All players in specific company
+	Client, ///< Single player
 };
 
 #endif /* VIEWPORT_TYPE_H */
