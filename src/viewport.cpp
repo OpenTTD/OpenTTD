@@ -141,11 +141,11 @@ struct ChildScreenSpriteToDraw {
 };
 
 /** Enumeration of multi-part foundations */
-enum FoundationPart : uint8_t {
-	FOUNDATION_PART_NONE     = 0xFF,  ///< Neither foundation nor groundsprite drawn yet.
-	FOUNDATION_PART_NORMAL   = 0,     ///< First part (normal foundation or no foundation)
-	FOUNDATION_PART_HALFTILE = 1,     ///< Second part (halftile foundation)
-	FOUNDATION_PART_END
+enum class FoundationPart : uint8_t {
+	None = 0xFF, ///< Neither foundation nor groundsprite drawn yet.
+	Normal = 0, ///< First part (normal foundation or no foundation)
+	Halftile = 1, ///< Second part (halftile foundation)
+	End, ///< End marker.
 };
 
 /**
@@ -180,10 +180,10 @@ struct ViewportDrawer {
 
 	SpriteCombineMode combine_sprites; ///< Current mode of "sprite combining". @see StartSpriteCombine
 
-	int foundation[FOUNDATION_PART_END];             ///< Foundation sprites (index into parent_sprites_to_draw).
-	FoundationPart foundation_part;                  ///< Currently active foundation for ground sprite drawing.
-	int last_foundation_child[FOUNDATION_PART_END];  ///< Tail of ChildSprite list of the foundations. (index into child_screen_sprites_to_draw)
-	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
+	FoundationPart foundation_part; ///< Currently active foundation for ground sprite drawing.
+	EnumIndexArray<int, FoundationPart, FoundationPart::End> foundation; ///< Foundation sprites (index into parent_sprites_to_draw).
+	EnumIndexArray<int, FoundationPart, FoundationPart::End> last_foundation_child; ///< Tail of ChildSprite list of the foundations. (index into child_screen_sprites_to_draw)
+	EnumIndexArray<Point, FoundationPart, FoundationPart::End> foundation_offset; ///< Pixel offset for ground sprites on the foundations.
 };
 
 static bool MarkViewportDirty(const Viewport &vp, int left, int top, int right, int bottom);
@@ -531,7 +531,7 @@ static void AddTileSpriteToDraw(SpriteID image, PaletteID pal, int32_t x, int32_
  */
 static void AddChildSpriteToFoundation(SpriteID image, PaletteID pal, const SubSprite *sub, FoundationPart foundation_part, int extra_offs_x, int extra_offs_y)
 {
-	assert(IsInsideMM(foundation_part, 0, FOUNDATION_PART_END));
+	assert(foundation_part < FoundationPart::End);
 	assert(_vd.foundation[foundation_part] != -1);
 	Point offs = _vd.foundation_offset[foundation_part];
 
@@ -556,7 +556,7 @@ static void AddChildSpriteToFoundation(SpriteID image, PaletteID pal, const SubS
 void DrawGroundSpriteAt(SpriteID image, PaletteID pal, int32_t x, int32_t y, int z, const SubSprite *sub, int extra_offs_x, int extra_offs_y)
 {
 	/* Switch to first foundation part, if no foundation was drawn */
-	if (_vd.foundation_part == FOUNDATION_PART_NONE) _vd.foundation_part = FOUNDATION_PART_NORMAL;
+	if (_vd.foundation_part == FoundationPart::None) _vd.foundation_part = FoundationPart::Normal;
 
 	if (_vd.foundation[_vd.foundation_part] != -1) {
 		Point pt = RemapCoords(x, y, z);
@@ -582,6 +582,20 @@ void DrawGroundSprite(SpriteID image, PaletteID pal, const SubSprite *sub, int e
 }
 
 /**
+ * Get the next foundation part
+ * @param foundation_part The current foundation part.
+ * @return The next foundation part.
+ */
+static FoundationPart GetNextFoundationPart(FoundationPart foundation_part)
+{
+	switch (foundation_part) {
+		case FoundationPart::None: return FoundationPart::Normal;
+		case FoundationPart::Normal: return FoundationPart::Halftile;
+		default: NOT_REACHED();
+	}
+}
+
+/**
  * Called when a foundation has been drawn for the current tile.
  * Successive ground sprites for the current tile will be drawn as child sprites of the "foundation"-ParentSprite, not as TileSprites.
  *
@@ -591,15 +605,7 @@ void DrawGroundSprite(SpriteID image, PaletteID pal, const SubSprite *sub, int e
 void OffsetGroundSprite(int x, int y)
 {
 	/* Switch to next foundation part */
-	switch (_vd.foundation_part) {
-		case FOUNDATION_PART_NONE:
-			_vd.foundation_part = FOUNDATION_PART_NORMAL;
-			break;
-		case FOUNDATION_PART_NORMAL:
-			_vd.foundation_part = FOUNDATION_PART_HALFTILE;
-			break;
-		default: NOT_REACHED();
-	}
+	_vd.foundation_part = GetNextFoundationPart(_vd.foundation_part);
 
 	/* _vd.last_child is LAST_CHILD_NONE if foundation sprite was clipped by the viewport bounds */
 	if (_vd.last_child != LAST_CHILD_NONE) _vd.foundation[_vd.foundation_part] = static_cast<uint>(_vd.parent_sprites_to_draw.size()) - 1;
@@ -849,8 +855,8 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	/* Append the sprite to the active ChildSprite list.
 	 * If the active ParentSprite is a foundation, update last_foundation_child as well.
 	 * Note: ChildSprites of foundations are NOT sequential in the vector, as selection sprites are added at last. */
-	if (_vd.last_foundation_child[0] == _vd.last_child) _vd.last_foundation_child[0] = child_id;
-	if (_vd.last_foundation_child[1] == _vd.last_child) _vd.last_foundation_child[1] = child_id;
+	if (_vd.last_foundation_child[FoundationPart::Normal] == _vd.last_child) _vd.last_foundation_child[FoundationPart::Normal] = child_id;
+	if (_vd.last_foundation_child[FoundationPart::Halftile] == _vd.last_child) _vd.last_foundation_child[FoundationPart::Halftile] = child_id;
 	_vd.last_child = child_id;
 }
 
@@ -915,7 +921,7 @@ static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 	if (IsHalftileSlope(ti->tileh)) {
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
 		SpriteID sel2 = SPR_HALFTILE_SELECTION_FLAT + halftile_corner;
-		DrawSelectionSprite(sel2, pal, ti, 7 + TILE_HEIGHT, FOUNDATION_PART_HALFTILE);
+		DrawSelectionSprite(sel2, pal, ti, 7 + TILE_HEIGHT, FoundationPart::Halftile);
 
 		Corner opposite_corner = OppositeCorner(halftile_corner);
 		if (IsSteepSlope(ti->tileh)) {
@@ -927,7 +933,7 @@ static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 	} else {
 		sel = SPR_SELECT_TILE + SlopeToSpriteOffset(ti->tileh);
 	}
-	DrawSelectionSprite(sel, pal, ti, 7, FOUNDATION_PART_NORMAL);
+	DrawSelectionSprite(sel, pal, ti, 7, FoundationPart::Normal);
 }
 
 static bool IsPartOfAutoLine(int px, int py)
@@ -972,13 +978,13 @@ static void DrawAutorailSelection(const TileInfo *ti, HighLightStyle highlight_s
 	SpriteID image;
 	PaletteID pal;
 
-	FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
+	FoundationPart foundation_part = FoundationPart::Normal;
 	Slope slope = RemoveHalftileSlope(ti->tileh);
 	if (IsHalftileSlope(ti->tileh)) {
 		static constexpr CornerIndexArray<HighLightStyle> lower_rail{HT_DIR_VR, HT_DIR_HU, HT_DIR_VL, HT_DIR_HL};
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
 		if ((highlight_style & HT_DIR_MASK) != lower_rail[halftile_corner]) {
-			foundation_part = FOUNDATION_PART_HALFTILE;
+			foundation_part = FoundationPart::Halftile;
 			/* Here we draw the highlights of the "three-corners-raised"-slope. That looks ok to me. */
 			slope = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
 		}
@@ -1141,7 +1147,7 @@ draw_inner:
 		} else if (_thd.drawstyle & HT_POINT) {
 			/* Figure out the Z coordinate for the single dot. */
 			int z = 0;
-			FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
+			FoundationPart foundation_part = FoundationPart::Normal;
 			if (ti->tileh & SLOPE_N) {
 				z += TILE_HEIGHT;
 				if (RemoveHalftileSlope(ti->tileh) == SLOPE_STEEP_N) z += TILE_HEIGHT;
@@ -1150,7 +1156,7 @@ draw_inner:
 				Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
 				if ((halftile_corner == CORNER_W) || (halftile_corner == CORNER_E)) z += TILE_HEIGHT;
 				if (halftile_corner != CORNER_S) {
-					foundation_part = FOUNDATION_PART_HALFTILE;
+					foundation_part = FoundationPart::Halftile;
 					if (IsSteepSlope(ti->tileh)) z -= TILE_HEIGHT;
 				}
 			}
@@ -1301,11 +1307,11 @@ static void ViewportAddLandscape()
 
 			if (tile_visible) {
 				last_row = false;
-				_vd.foundation_part = FOUNDATION_PART_NONE;
-				_vd.foundation[0] = -1;
-				_vd.foundation[1] = -1;
-				_vd.last_foundation_child[0] = LAST_CHILD_NONE;
-				_vd.last_foundation_child[1] = LAST_CHILD_NONE;
+				_vd.foundation_part = FoundationPart::None;
+				_vd.foundation[FoundationPart::Normal] = -1;
+				_vd.foundation[FoundationPart::Halftile] = -1;
+				_vd.last_foundation_child[FoundationPart::Normal] = LAST_CHILD_NONE;
+				_vd.last_foundation_child[FoundationPart::Halftile] = LAST_CHILD_NONE;
 
 				_tile_type_procs[tile_type]->draw_tile_proc(&_cur_ti);
 				if (_cur_ti.tile != INVALID_TILE) DrawTileSelection(&_cur_ti);
