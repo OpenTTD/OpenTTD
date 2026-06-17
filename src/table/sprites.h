@@ -41,8 +41,8 @@
 #include "../gfx_type.h"
 
 static const SpriteID SPR_SELECT_TILE  = 752;
-static const SpriteID SPR_DOT          = 774; // corner marker for lower/raise land
-static const SpriteID SPR_EMPTY        = 4078; // empty (transparent blue) sprite
+static const SpriteID SPR_DOT          = 774; ///< Corner marker for lower/raise land.
+static const SpriteID SPR_EMPTY        = 4078; ///< Empty (transparent blue) sprite.
 static const SpriteID SPR_WHITE_POINT  = 4079;
 
 /* ASCII */
@@ -61,18 +61,18 @@ static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
 static const SpriteID SPR_HALFTILE_SELECTION_DOWN = SPR_OPENTTD_BASE + 4;
 static const SpriteID SPR_HALFTILE_SELECTION_UP   = SPR_OPENTTD_BASE + 8;
 
-static const SpriteID SPR_SQUARE             = SPR_OPENTTD_BASE + 38;  // coloured square (used for newgrf compatibility)
-static const SpriteID SPR_BLOT               = SPR_OPENTTD_BASE + 39;  // coloured circle (used for server compatibility and installed content)
-static const SpriteID SPR_LOCK               = SPR_OPENTTD_BASE + 40;  // lock icon (for password protected servers)
+static const SpriteID SPR_SQUARE             = SPR_OPENTTD_BASE + 38; ///< Coloured square (used for newgrf compatibility).
+static const SpriteID SPR_BLOT               = SPR_OPENTTD_BASE + 39; ///< Coloured circle (used for server compatibility and installed content).
+static const SpriteID SPR_LOCK               = SPR_OPENTTD_BASE + 40; ///< Lock icon (for password protected servers).
 static const SpriteID SPR_BOX_EMPTY          = SPR_OPENTTD_BASE + 41;
 static const SpriteID SPR_BOX_CHECKED        = SPR_OPENTTD_BASE + 42;
-static const SpriteID SPR_WARNING_SIGN       = SPR_OPENTTD_BASE + 43;  // warning sign (shown if there are any newgrf errors)
-static const SpriteID SPR_WINDOW_RESIZE_RIGHT= SPR_OPENTTD_BASE + 44;  // resize icon to the right
-static const SpriteID SPR_WINDOW_RESIZE_LEFT = SPR_OPENTTD_BASE + 149; // resize icon to the left
-static const SpriteID SPR_WINDOW_SHADE       = SPR_OPENTTD_BASE + 151; // shade the window icon
-static const SpriteID SPR_WINDOW_UNSHADE     = SPR_OPENTTD_BASE + 152; // unshade the window icon
-static const SpriteID SPR_WINDOW_DEBUG       = SPR_OPENTTD_BASE + 153; // NewGRF debug window icon
-static const SpriteID SPR_IMG_PLAY_MUSIC_RTL = SPR_OPENTTD_BASE + 150; // play music button, but then for RTL users
+static const SpriteID SPR_WARNING_SIGN       = SPR_OPENTTD_BASE + 43; ///< Warning sign (shown if there are any newgrf errors).
+static const SpriteID SPR_WINDOW_RESIZE_RIGHT= SPR_OPENTTD_BASE + 44; ///< Resize icon to the right.
+static const SpriteID SPR_WINDOW_RESIZE_LEFT = SPR_OPENTTD_BASE + 149; ///< Resize icon to the left.
+static const SpriteID SPR_WINDOW_SHADE       = SPR_OPENTTD_BASE + 151; ///< Shade the window icon.
+static const SpriteID SPR_WINDOW_UNSHADE     = SPR_OPENTTD_BASE + 152; ///< Unshade the window icon.
+static const SpriteID SPR_WINDOW_DEBUG       = SPR_OPENTTD_BASE + 153; ///< NewGRF debug window icon.
+static const SpriteID SPR_IMG_PLAY_MUSIC_RTL = SPR_OPENTTD_BASE + 150; ///< Play music button, but then for RTL users.
 /* Arrow icons pointing in all 4 directions */
 static const SpriteID SPR_ARROW_DOWN         = SPR_OPENTTD_BASE + 45;
 static const SpriteID SPR_ARROW_UP           = SPR_OPENTTD_BASE + 46;
@@ -80,13 +80,13 @@ static const SpriteID SPR_ARROW_LEFT         = SPR_OPENTTD_BASE + 47;
 static const SpriteID SPR_ARROW_RIGHT        = SPR_OPENTTD_BASE + 48;
 static const SpriteID SPR_HOUSE_ICON         = SPR_OPENTTD_BASE + 49;
 static const SpriteID SPR_SHARED_ORDERS_ICON = SPR_OPENTTD_BASE + 50;
-static const SpriteID SPR_PIN_UP             = SPR_OPENTTD_BASE + 51;  // pin icon
+static const SpriteID SPR_PIN_UP             = SPR_OPENTTD_BASE + 51; ///< Pin icon.
 static const SpriteID SPR_PIN_DOWN           = SPR_OPENTTD_BASE + 52;
 
 static const SpriteID SPR_CLOSEBOX           = 143;
 
-static const SpriteID SPR_CIRCLE_FOLDED      = SPR_OPENTTD_BASE + 147; // (+) icon
-static const SpriteID SPR_CIRCLE_UNFOLDED    = SPR_OPENTTD_BASE + 148; // (-) icon
+static const SpriteID SPR_CIRCLE_FOLDED = SPR_OPENTTD_BASE + 147; ///< (+) icon.
+static const SpriteID SPR_CIRCLE_UNFOLDED = SPR_OPENTTD_BASE + 148; ///< (-) icon.
 
 /* on screen keyboard icons */
 static const SpriteID SPR_OSK_LEFT           = SPR_OPENTTD_BASE + 138;
@@ -205,12 +205,12 @@ static const uint16_t TRACKS_FOR_SLOPES_SPRITE_COUNT = 12;
 
 static const SpriteID SPR_SLOPES_BASE              = SPR_TRACKS_FOR_SLOPES_BASE + TRACKS_FOR_SLOPES_SPRITE_COUNT;
 static const uint16_t SLOPES_INCLINED_OFFSET = 15;
-static const SpriteID SPR_SLOPES_VIRTUAL_BASE      = SPR_SLOPES_BASE - SLOPES_INCLINED_OFFSET; // The original foundations (see SPR_FOUNDATION_BASE below) are mapped before the additional foundations.
-static const uint16_t TRKFOUND_BLOCK_SIZE = 22; // The normal track foundation sprites are organized in blocks of 22.
+static const SpriteID SPR_SLOPES_VIRTUAL_BASE = SPR_SLOPES_BASE - SLOPES_INCLINED_OFFSET; ///< The original foundations (see SPR_FOUNDATION_BASE below) are mapped before the additional foundations.
+static const uint16_t TRKFOUND_BLOCK_SIZE = 22; ///< The normal track foundation sprites are organized in blocks of 22.
 static const uint16_t NORMAL_FOUNDATION_SPRITE_COUNT = 74;
 /** Halftile foundations */
 static const SpriteID SPR_HALFTILE_FOUNDATION_BASE = SPR_SLOPES_BASE + NORMAL_FOUNDATION_SPRITE_COUNT;
-static const uint16_t HALFTILE_BLOCK_SIZE = 4; // The half tile foundation sprites are organized in blocks of 4.
+static const uint16_t HALFTILE_BLOCK_SIZE = 4; ///< The half tile foundation sprites are organized in blocks of 4.
 static const uint16_t NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT = 90;
 
 static const SpriteID SPR_AUTORAIL_BASE = SPR_HALFTILE_FOUNDATION_BASE + NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT;
@@ -319,29 +319,27 @@ static const uint16_t ROAD_WAYPOINTS_SPRITE_COUNT = 4;
 
 /** Overlay rocks sprites. */
 static constexpr SpriteID SPR_OVERLAY_ROCKS_BASE = SPR_ROAD_WAYPOINTS_BASE + ROAD_WAYPOINTS_SPRITE_COUNT;
-static constexpr uint16_t OVERLAY_ROCKS_SPRITE_COUNT = 19 * 5; /* Rock overlays: plain, snow 1, snow 2, snow 3 and full snow. */
+static constexpr uint16_t OVERLAY_ROCKS_SPRITE_COUNT = 19 * 5; ///< Rock overlays: plain, snow 1, snow 2, snow 3 and full snow.
 
 /** Bridge deck sprites. */
 static constexpr SpriteID SPR_BRIDGE_DECKS_BASE = SPR_OVERLAY_ROCKS_BASE + OVERLAY_ROCKS_SPRITE_COUNT;
-static constexpr uint16_t BRIDGE_DECKS_SPRITE_COUNT = 6 * 4; /* Bridge deck sprites: 6 directions * (3 track types + 1 road type). */
+static constexpr uint16_t BRIDGE_DECKS_SPRITE_COUNT = 6 * 4; ///< Bridge deck sprites: 6 directions * (3 track types + 1 road type).
 static const SpriteID SPR_BRIDGE_DECKS_RAIL = SPR_BRIDGE_DECKS_BASE + 0;
 static const SpriteID SPR_BRIDGE_DECKS_MONO = SPR_BRIDGE_DECKS_BASE + 6;
 static const SpriteID SPR_BRIDGE_DECKS_MGLV = SPR_BRIDGE_DECKS_BASE + 12;
 static const SpriteID SPR_BRIDGE_DECKS_ROAD = SPR_BRIDGE_DECKS_BASE + 18;
 
-/* From where can we start putting NewGRFs? */
+/** From where can we start putting NewGRFs. */
 static const SpriteID SPR_NEWGRFS_BASE = SPR_BRIDGE_DECKS_BASE + BRIDGE_DECKS_SPRITE_COUNT;
 
 /* Manager face sprites */
-static const SpriteID SPR_GRADIENT = 874; // background gradient behind manager face
+static const SpriteID SPR_GRADIENT = 874; ///< Background gradient behind manager face.
+static const SpriteID SPR_COMPANY_ICON = 747; ///< Icon showing company colour.
 
-/* Icon showing company colour. */
-static const SpriteID SPR_COMPANY_ICON = 747;
-
-/* is itself no foundation sprite, because tileh 0 has no foundation */
+/** Sprite number one before first foundation sprite, because tileh 0 has no foundation. */
 static const SpriteID SPR_FOUNDATION_BASE = 989;
 
-/* Shadow cell */
+/** Shadow cell. */
 static const SpriteID SPR_SHADOW_CELL = 1004;
 
 /* Objects spritenumbers */
@@ -360,7 +358,7 @@ static const SpriteID SPR_MEDIUMHQ_NORTH_WALL     = 2612;
 static const SpriteID SPR_MEDIUMHQ_EAST           = 2613;
 static const SpriteID SPR_MEDIUMHQ_EAST_WALL      = 2614;
 static const SpriteID SPR_MEDIUMHQ_WEST           = 2615;
-static const SpriteID SPR_MEDIUMHQ_WEST_WALL      = 2616; // very tiny piece of wall
+static const SpriteID SPR_MEDIUMHQ_WEST_WALL      = 2616; ///< Very tiny piece of wall.
 static const SpriteID SPR_MEDIUMHQ_SOUTH          = 2617;
 static const SpriteID SPR_LARGEHQ_NORTH_GROUND    = 2618;
 static const SpriteID SPR_LARGEHQ_NORTH_BUILD     = 2619;
@@ -415,14 +413,14 @@ static const SpriteID SPR_RAIL_PLATFORM_PILLARS_Y_FRONT = 1075;
 static const SpriteID SPR_RAIL_PLATFORM_PILLARS_X_REAR  = 1076;
 static const SpriteID SPR_RAIL_PLATFORM_PILLARS_Y_REAR  = 1077;
 static const SpriteID SPR_RAIL_PLATFORM_PILLARS_X_FRONT = 1078;
-static const SpriteID SPR_RAIL_ROOF_STRUCTURE_X_TILE_A  = 1079; // First half of the roof structure
-static const SpriteID SPR_RAIL_ROOF_STRUCTURE_Y_TILE_A  = 1080;
-static const SpriteID SPR_RAIL_ROOF_STRUCTURE_X_TILE_B  = 1081; // Second half of the roof structure
-static const SpriteID SPR_RAIL_ROOF_STRUCTURE_Y_TILE_B  = 1082;
-static const SpriteID SPR_RAIL_ROOF_GLASS_X_TILE_A      = 1083; // First half of the roof glass
-static const SpriteID SPR_RAIL_ROOF_GLASS_Y_TILE_A      = 1084;
-static const SpriteID SPR_RAIL_ROOF_GLASS_X_TILE_B      = 1085; // second half of the roof glass
-static const SpriteID SPR_RAIL_ROOF_GLASS_Y_TILE_B      = 1086;
+static const SpriteID SPR_RAIL_ROOF_STRUCTURE_X_TILE_A = 1079; ///< First half of the roof structure.
+static const SpriteID SPR_RAIL_ROOF_STRUCTURE_Y_TILE_A = 1080; ///< @copydoc SPR_RAIL_ROOF_STRUCTURE_X_TILE_A
+static const SpriteID SPR_RAIL_ROOF_STRUCTURE_X_TILE_B = 1081; ///< Second half of the roof structure.
+static const SpriteID SPR_RAIL_ROOF_STRUCTURE_Y_TILE_B = 1082; ///< @copydoc SPR_RAIL_ROOF_STRUCTURE_X_TILE_B
+static const SpriteID SPR_RAIL_ROOF_GLASS_X_TILE_A = 1083; ///< First half of the roof glass.
+static const SpriteID SPR_RAIL_ROOF_GLASS_Y_TILE_A = 1084; ///< @copydoc SPR_RAIL_ROOF_GLASS_X_TILE_A
+static const SpriteID SPR_RAIL_ROOF_GLASS_X_TILE_B = 1085; ///< Second half of the roof glass.
+static const SpriteID SPR_RAIL_ROOF_GLASS_Y_TILE_B = 1086; ///< @copydoc SPR_RAIL_ROOF_GLASS_X_TILE_B
 static const SpriteID SPR_MONO_SINGLE_X                 = 1087;
 static const SpriteID SPR_MONO_SINGLE_Y                 = 1088;
 static const SpriteID SPR_MONO_SINGLE_NORTH             = 1089;
@@ -580,8 +578,10 @@ static const SpriteID SPR_DOCK_SLOPE_NE               = 2727;
 static const SpriteID SPR_DOCK_SLOPE_SE               = 2728;
 static const SpriteID SPR_DOCK_SLOPE_SW               = 2729;
 static const SpriteID SPR_DOCK_SLOPE_NW               = 2730;
-static const SpriteID SPR_DOCK_FLAT_X                 = 2731; // for NE and SW
-static const SpriteID SPR_DOCK_FLAT_Y                 = 2732; // for NW and SE
+static const SpriteID SPR_DOCK_FLAT_X = 2731; ///< For NE and SW.
+static const SpriteID SPR_DOCK_FLAT_Y = 2732; ///< For NW and SE.
+
+/** A buoy sprite. */
 static const SpriteID SPR_BUOY                        = 4076; // XXX this sucks, because it displays wrong stuff on canals
 
 /* Sprites for road */
@@ -641,10 +641,10 @@ static const SpriteID SPR_SHIP_DEPOT_NE           = 4073;
 static const SpriteID SPR_SHIP_DEPOT_SE_REAR      = 4074;
 static const SpriteID SPR_SHIP_DEPOT_SW_REAR      = 4075;
 /* here come sloped water sprites */
-static const SpriteID SPR_WATER_SLOPE_Y_UP        = SPR_CANALS_BASE + 0; // Water flowing negative Y direction
-static const SpriteID SPR_WATER_SLOPE_X_DOWN      = SPR_CANALS_BASE + 1; // positive X
-static const SpriteID SPR_WATER_SLOPE_X_UP        = SPR_CANALS_BASE + 2; // negative X
-static const SpriteID SPR_WATER_SLOPE_Y_DOWN      = SPR_CANALS_BASE + 3; // positive Y
+static const SpriteID SPR_WATER_SLOPE_Y_UP = SPR_CANALS_BASE + 0; ///< Water flowing negative Y direction.
+static const SpriteID SPR_WATER_SLOPE_X_DOWN = SPR_CANALS_BASE + 1; ///< Water flowing positive X direction.
+static const SpriteID SPR_WATER_SLOPE_X_UP = SPR_CANALS_BASE + 2; ///< Water flowing negative X direction.
+static const SpriteID SPR_WATER_SLOPE_Y_DOWN = SPR_CANALS_BASE + 3; ///< Water flowing positive Y direction.
 /* sprites for the locks
  * there are 4 kinds of locks, each of them is 3 tiles long.
  * the four kinds are running in the X and Y direction and
@@ -1039,10 +1039,10 @@ static const SpriteID SPR_CNST1_TOWNHOUSE_06_V1               = 1444;
 static const SpriteID SPR_CNST2_TOWNHOUSE_06_V1               = 1445;
 static const SpriteID SPR_BUILD_TOWNHOUSE_06_V1               = 1446; // 1st variation
 static const SpriteID SPR_GRND_TOWNHOUSE_06_V1                = 1447;
-static const SpriteID SPR_GRND_STADIUM_N                      = 1479; // stadium ground at north
-static const SpriteID SPR_GRND_STADIUM_E                      = 1480; // stadium ground at east
-static const SpriteID SPR_GRND_STADIUM_W                      = 1481; // stadium ground at west
-static const SpriteID SPR_GRND_STADIUM_S                      = 1482; // stadium ground at south
+static const SpriteID SPR_GRND_STADIUM_N = 1479; ///< Stadium ground at north.
+static const SpriteID SPR_GRND_STADIUM_E = 1480; ///< Stadium ground at east.
+static const SpriteID SPR_GRND_STADIUM_W = 1481; ///< Stadium ground at west.
+static const SpriteID SPR_GRND_STADIUM_S = 1482; ///< Stadium ground at south.
 static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2               = 1501; // used as ground, but is stage1
 static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2_P             = 1502; // pipes extensions for previous
 static const SpriteID SPR_CNST2_TOWNHOUSE_06_V2_G             = 1503; // Ground of cnst stage 2
@@ -1202,7 +1202,7 @@ static const SpriteID SPR_CARGO_TOFFEE                = 4320;
 static const SpriteID SPR_CARGO_BUBBLES               = 4321;
 static const SpriteID SPR_CARGO_PLASTIC               = 4322;
 static const SpriteID SPR_CARGO_BATTERIES             = 4323;
-static const SpriteID SPR_CARGO_NOTHING               = SPR_ASCII_SPACE; // Placeholder for void cargo slots.
+static const SpriteID SPR_CARGO_NOTHING = SPR_ASCII_SPACE; ///< Placeholder for void cargo slots.
 
 /* Effect vehicles */
 static const SpriteID SPR_BULLDOZER_NE = 1416;
@@ -1419,7 +1419,7 @@ static const CursorID SPR_CURSOR_ROCKY_AREA     = 4087;
 static const CursorID SPR_CURSOR_DESERT         = 4088;
 static const CursorID SPR_CURSOR_TRANSMITTER    = 4089;
 
-/* airport cursors */
+/** Airport cursors. */
 static const CursorID SPR_CURSOR_AIRPORT        = 2724;
 
 /* dock cursors */
@@ -1429,7 +1429,7 @@ static const CursorID SPR_CURSOR_LOCK           = SPR_OPENTTD_BASE + 87;
 static const CursorID SPR_CURSOR_RIVER          = SPR_OPENTTD_BASE + 137;
 static const CursorID SPR_CURSOR_AQUEDUCT       = SPR_OPENTTD_BASE + 146;
 
-/* shared road & rail cursors */
+/** Shared road & rail cursors. */
 static const CursorID SPR_CURSOR_BRIDGE         = 2593;
 
 /* rail cursors */
@@ -1495,7 +1495,7 @@ static const CursorID SPR_CURSOR_CLONE_ROADVEH  = SPR_OPENTTD_BASE + 111;
 static const CursorID SPR_CURSOR_CLONE_SHIP     = SPR_OPENTTD_BASE + 112;
 static const CursorID SPR_CURSOR_CLONE_AIRPLANE = SPR_OPENTTD_BASE + 113;
 
-/** Animation macro in table/animcursors.h (_animcursors[]) */
+/* Animation macro in table/animcursors.h (_animcursors[]) */
 
 static const CursorID SPR_CURSOR_DEMOLISH_FIRST = 704;
 static const CursorID SPR_CURSOR_DEMOLISH_1     = 705;
