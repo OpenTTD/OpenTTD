@@ -1352,6 +1352,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :高
 STR_CONFIG_SETTING_RECESSIONS                                   :经济衰退：{STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :启用时，经济衰退将每隔几经济周期发生一次。经济衰退时所有工业货物产量都将大幅下降，直至衰退结束为止
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :允许列车在倒车时换向：{STRING}
 
 ###length 3
 
