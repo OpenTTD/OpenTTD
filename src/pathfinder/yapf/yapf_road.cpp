@@ -113,15 +113,12 @@ public:
 	/** @copydoc CYapfBaseT::PfCalcCostFunc */
 	inline bool PfCalcCost(Node &n, [[maybe_unused]] const TrackFollower *follower)
 	{
-		int parent_cost = 0;
 		int segment_cost = 0;
 		uint tiles = 0;
-
 		/* start at n.key.tile / n.key.td and walk to the end of segment */
 		TileIndex tile = n.key.tile;
 		Trackdir trackdir = n.key.td;
-
-		if (n.parent != nullptr) parent_cost += n.parent->cost;
+		int parent_cost = (n.parent != nullptr) ? n.parent->cost : 0;
 
 		/* calculate cost for the junction tile the vehicle is entering only for the first segment */
 		if (n.parent != nullptr && parent_cost == 0) {
