@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../currency.h"
+#include "../currency_func.h"
 #include "../landscape.h"
 #include "../language.h"
 #include "../rev.h"

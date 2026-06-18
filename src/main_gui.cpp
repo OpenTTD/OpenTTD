@@ -8,7 +8,7 @@
 /** @file main_gui.cpp Handling of the main viewport. */
 
 #include "stdafx.h"
-#include "currency.h"
+#include "currency_type.h"
 #include "spritecache.h"
 #include "window_gui.h"
 #include "window_func.h"

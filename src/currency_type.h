@@ -5,13 +5,12 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file currency.h Functions to handle different currencies. */
+/** @file currency_type.h Types related to currencies. */
 
-#ifndef CURRENCY_H
-#define CURRENCY_H
+#ifndef CURRENCY_TYPE_H
+#define CURRENCY_TYPE_H
 
 #include "timer/timer_game_calendar.h"
-#include "settings_type.h"
 #include "strings_type.h"
 
 static constexpr TimerGameCalendar::Year CF_NOEURO{0}; ///< Currency never switches to the Euro (as far as known).
@@ -75,11 +74,11 @@ enum Currencies : uint8_t {
 
 /** Specification of a currency. */
 struct CurrencySpec {
-	uint16_t rate;           ///< The conversion rate compared to the base currency.
+	uint16_t rate; ///< The conversion rate compared to the base currency.
 	std::string separator; ///< The thousands separator for this currency.
 	TimerGameCalendar::Year to_euro; ///< Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
-	std::string prefix;    ///< Prefix to apply when formatting money in this currency.
-	std::string suffix;    ///< Suffix to apply when formatting money in this currency.
+	std::string prefix; ///< Prefix to apply when formatting money in this currency.
+	std::string suffix; ///< Suffix to apply when formatting money in this currency.
 	std::string code; ///< 3 letter untranslated code to identify the currency.
 	/**
 	 * The currency symbol is represented by two possible values, prefix and suffix
@@ -91,38 +90,7 @@ struct CurrencySpec {
 	 *            rather a way to let users do what they want with custom currency
 	 */
 	uint8_t symbol_pos;
-	StringID name;
-
-	CurrencySpec() = default;
-
-	CurrencySpec(uint16_t rate, std::string_view separator, TimerGameCalendar::Year to_euro, std::string_view prefix, std::string_view suffix, std::string_view code, uint8_t symbol_pos, StringID name) :
-		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), code(code), symbol_pos(symbol_pos), name(name)
-	{
-	}
+	StringID name; ///< Translated name of this currency.
 };
 
-extern std::array<CurrencySpec, CURRENCY_END> _currency_specs;
-
-/**
- * Get the custom currency.
- * @return Reference to custom currency.
- */
-inline CurrencySpec &GetCustomCurrency()
-{
-	return _currency_specs[CURRENCY_CUSTOM];
-}
-
-/**
- * Get the currently selected currency.
- * @return Read-only reference to the current currency.
- */
-inline const CurrencySpec &GetCurrency()
-{
-	return _currency_specs[GetGameSettings().locale.currency];
-}
-
-uint64_t GetMaskOfAllowedCurrencies();
-void ResetCurrencies(bool preserve_custom = true);
-uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id);
-
-#endif /* CURRENCY_H */
+#endif /* CURRENCY_TYPE_H */
