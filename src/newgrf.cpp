@@ -20,7 +20,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "spritecache.h"
-#include "currency.h"
+#include "currency_func.h"
 #include "landscape.h"
 #include "newgrf_badge.h"
 #include "newgrf_badge_config.h"

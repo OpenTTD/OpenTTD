@@ -26,7 +26,7 @@
 #include "core/string_consumer.hpp"
 #include "settings_table.h"
 #include "debug.h"
-#include "currency.h"
+#include "currency_func.h"
 #include "network/network.h"
 #include "network/network_func.h"
 #include "network/core/config.h"

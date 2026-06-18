@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "core/bitmath_func.hpp"
 
-#include "currency.h"
+#include "currency_func.h"
 #include "news_func.h"
 #include "settings_type.h"
 #include "string_type.h"

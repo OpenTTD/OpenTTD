@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "settings_table.h"
-#include "currency.h"
+#include "currency_type.h"
 #include "screenshot.h"
 #include "network/network.h"
 #include "network/network_func.h"

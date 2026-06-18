@@ -8,7 +8,7 @@
 /** @file company_gui.cpp %Company related GUIs. */
 
 #include "stdafx.h"
-#include "currency.h"
+#include "currency_func.h"
 #include "error.h"
 #include "gui.h"
 #include "settings_gui.h"

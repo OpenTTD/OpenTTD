@@ -133,7 +133,8 @@ add_files(
     crashlog.cpp
     crashlog.h
     currency.cpp
-    currency.h
+    currency_func.h
+    currency_type.h
     date_gui.cpp
     date_gui.h
     debug.cpp

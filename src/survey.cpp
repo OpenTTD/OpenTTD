@@ -20,7 +20,7 @@
 #include "timer/timer_game_economy.h"
 #include "3rdparty/fmt/ranges.h"
 
-#include "currency.h"
+#include "currency_func.h"
 #include "fontcache.h"
 #include "language.h"
 

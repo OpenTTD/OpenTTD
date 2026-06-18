@@ -8,7 +8,7 @@
 /** @file settings_gui.cpp GUI for settings. */
 
 #include "stdafx.h"
-#include "currency.h"
+#include "currency_func.h"
 #include "error.h"
 #include "settings_gui.h"
 #include "textbuf_gui.h"
