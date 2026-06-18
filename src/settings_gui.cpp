@@ -1425,7 +1425,7 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: // Currency
 				if (index == CURRENCY_CUSTOM) ShowCustCurrency();
-				this->opt->locale.currency = index;
+				this->opt->locale.currency = static_cast<Currency>(index);
 				ReInitAllWindows(false);
 				break;
 

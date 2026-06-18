@@ -186,17 +186,17 @@ static void UpdateExclusiveRights()
 	}
 }
 
-static const uint8_t convert_currency[] = {
-	 0,  1, 12,  8,  3,
-	10, 14, 19,  4,  5,
-	 9, 11, 13,  6, 17,
-	16, 22, 21,  7, 15,
-	18,  2, 20,
-};
-
 /** Since savegame version 4.2 the currencies are arranged differently. */
 static void UpdateCurrencies()
 {
+	constexpr Currency convert_currency[] = {
+		CURRENCY_GBP, CURRENCY_USD, CURRENCY_FRF, CURRENCY_DEM, CURRENCY_JPY,
+		CURRENCY_ESP, CURRENCY_HUF, CURRENCY_PLN, CURRENCY_ATS, CURRENCY_BEF,
+		CURRENCY_DKK, CURRENCY_FIM, CURRENCY_GRD, CURRENCY_CHF, CURRENCY_NLG,
+		CURRENCY_ITL, CURRENCY_SIT, CURRENCY_RUR, CURRENCY_CZK, CURRENCY_ISK,
+		CURRENCY_NOK, CURRENCY_EUR, CURRENCY_RON,
+	};
+
 	_settings_game.locale.currency = convert_currency[_settings_game.locale.currency];
 }
 
