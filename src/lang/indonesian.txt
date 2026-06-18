@@ -331,7 +331,9 @@ STR_SORT_BY_TYPE                                                :Jenis
 STR_SORT_BY_TRANSPORTED                                         :Terkirim
 STR_SORT_BY_NUMBER                                              :Nomer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Keuntungan tahun lalu
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :Laba kurun waktu sebelumnya
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Keuntungan Tahun Ini
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :Laba saat ini
 STR_SORT_BY_AGE                                                 :Usia
 STR_SORT_BY_RELIABILITY                                         :Kehandalan
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kapasitas Total tiap jenis kargo
@@ -1504,11 +1506,17 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ingatkan jika a
 ###length 2
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Jika dinyalakan,sebuah surat kabar akan dikirim jika kendaraan tidak mendapat keuntungan dalam satu tahun
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Ingatkan bila sebuah kendaraan mulai menua: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Jika dinyalakan, sebuah pesan baru akan dikirimkan bila sebuah kendaraan mulai menua
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kendaraan tidak pernah kadaluarsa: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Jika dinyalakan,semua model kendaraan akan ada selamanya sejak pendesainanya
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Pewaktuan: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Pilih unit pewaktuan permainan. Pengaturan ini tidak dapat diubah nantinya.{}{}Basis kalender merupakan pengalaman klasik OpenTTD, dimana terdapat 12 bulan dalam satu tahun, dan setiap tahun memiliki 28-31 hari.{}{}Di Basis jam dinding, produksi kargo dan finansial alih-alih berdasar kepada penambahan setiap satu menit, yang kurang lebih sepanjang durasi bulan dengan 30 hari di mode Basis kalender. Bulan-bulan ini akan digabungkan ke periode 12 menit, ekuivalen dengan satu tahun di mode Basis kalender.{}{}Di setiap mode selalu ada kalender klasik, yang digunakan untuk tanggal pengenalan kendaraan, rumah, dan infrastruktur lain
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Kalender
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Jam dinding
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Total menit per-tahun: {STRING}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Pilih total menit dalam setahun kalender. Setelan awal 12 minutes. Isi 0 untuk membekukan kalender. Pengaturan ini tidak mempengaruhi simulasi keekonomian dalam game, dan hanya tersedia jika pewaktuan jam dinding digunakan.
@@ -2223,7 +2231,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pilih ga
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih gaya lansekap 'Taman Bermain'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Buka pengaturan permainan
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilkan tabel nilai tertinggi
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Buka tabel nilai tertinggi
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Dapatkan izin dokumentasi dan sumber daya online
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
@@ -3680,6 +3688,10 @@ STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Tampilkan grafi
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Memperluas
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Tambah ukuran kota
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}Perluas bangunan
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}Tambah jumlah bangunan di sebuah kota
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}Perluas jalanan
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}Tambah jumlah jalanan di sebuah kota
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Hapus
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Hapus kota ini habis
 
@@ -4611,7 +4623,9 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}Pilih tindakan yang akan dilakukan di bengkel ini
 STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}Pilih tindakan yang akan dilakukan di galangan kapal ini
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Pilih tindakan yang akan dilakukan di hanggar ini
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kondisi yang diperiksa
@@ -5311,6 +5325,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Mulai pe
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Tidak ada jenis jalan tersedia yang dapat dibangun oleh kota
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Ubah konfigurasi NewGRF Anda
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Belum ada jenis jalan tersedia yang dapat dibangun oleh kota
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Mulai permainan baru setelah {DATE_SHORT} atau gunakan NewGRF yang menyediakan jenis jalanan awal yang dapat dibangun oleh kota
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
