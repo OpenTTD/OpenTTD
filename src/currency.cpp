@@ -129,7 +129,7 @@ uint64_t GetMaskOfAllowedCurrencies()
 {
 	uint64_t mask = 0LL;
 
-	for (Currencies i : EnumRange(CURRENCY_END)) {
+	for (Currency i : EnumRange(CURRENCY_END)) {
 		TimerGameCalendar::Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && TimerGameCalendar::year >= to_euro) continue;
@@ -161,7 +161,7 @@ static const IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCa
  */
 void ResetCurrencies(bool preserve_custom)
 {
-	for (Currencies i : EnumRange(CURRENCY_END)) {
+	for (Currency i : EnumRange(CURRENCY_END)) {
 		if (preserve_custom && i == CURRENCY_CUSTOM) continue;
 		_currency_specs[i] = origin_currency_specs[i];
 	}
