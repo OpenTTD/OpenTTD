@@ -147,7 +147,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 
 			case 0x0A: { // Currency display names
 				Currency curidx = GetNewgrfCurrencyIdConverted(id);
-				if (curidx < CURRENCY_END) {
+				if (curidx < Currency::End) {
 					AddStringForMapping(GRFStringID{buf.ReadWord()}, [curidx](StringID str) {
 						_currency_specs[curidx].name = str;
 						_currency_specs[curidx].code.clear();
@@ -162,7 +162,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				uint32_t rate = buf.ReadDWord();
 
-				if (curidx < CURRENCY_END) {
+				if (curidx < Currency::End) {
 					/* TTDPatch uses a multiple of 1000 for its conversion calculations,
 					 * which OTTD does not. For this reason, divide grf value by 1000,
 					 * to be compatible */
@@ -177,7 +177,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				uint16_t options = buf.ReadWord();
 
-				if (curidx < CURRENCY_END) {
+				if (curidx < Currency::End) {
 					_currency_specs[curidx].separator.clear();
 					_currency_specs[curidx].separator.push_back(GB(options, 0, 8));
 					StrMakeValidInPlace(_currency_specs[curidx].separator);
@@ -194,7 +194,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				std::string prefix = ReadDWordAsString(buf);
 
-				if (curidx < CURRENCY_END) {
+				if (curidx < Currency::End) {
 					_currency_specs[curidx].prefix = std::move(prefix);
 				} else {
 					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
@@ -206,7 +206,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				std::string suffix = ReadDWordAsString(buf);
 
-				if (curidx < CURRENCY_END) {
+				if (curidx < Currency::End) {
 					_currency_specs[curidx].suffix = std::move(suffix);
 				} else {
 					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
@@ -218,7 +218,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				TimerGameCalendar::Year year_euro{buf.ReadWord()};
 
-				if (curidx < CURRENCY_END) {
+				if (curidx < Currency::End) {
 					_currency_specs[curidx].to_euro = year_euro;
 				} else {
 					GrfMsg(1, "GlobalVarChangeInfo: Euro intro date {} out of range, ignoring", id);
