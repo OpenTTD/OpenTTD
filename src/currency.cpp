@@ -125,18 +125,18 @@ uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
  * get a mask of the allowed currencies depending on the year
  * @return mask of currencies
  */
-uint64_t GetMaskOfAllowedCurrencies()
+Currencies GetMaskOfAllowedCurrencies()
 {
-	uint64_t mask = 0LL;
+	Currencies mask{};
 
 	for (Currency i : EnumRange(CURRENCY_END)) {
 		TimerGameCalendar::Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && TimerGameCalendar::year >= to_euro) continue;
 		if (to_euro == CF_ISEURO && TimerGameCalendar::year < 2000) continue;
-		SetBit(mask, i);
+		mask.Set(i);
 	}
-	SetBit(mask, CURRENCY_CUSTOM); // always allow custom currency
+	mask.Set(CURRENCY_CUSTOM); // always allow custom currency
 	return mask;
 }
 

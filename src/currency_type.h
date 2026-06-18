@@ -72,6 +72,9 @@ enum Currency : uint8_t {
 	CURRENCY_END,       ///< always the last item
 };
 
+/** Bitmask of \c Currency. */
+using Currencies = EnumBitSet<Currency, uint64_t, CURRENCY_END>;
+
 /** Specification of a currency. */
 struct CurrencySpec {
 	uint16_t rate; ///< The conversion rate compared to the base currency.
