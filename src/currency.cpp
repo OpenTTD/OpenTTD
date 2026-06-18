@@ -27,7 +27,7 @@
 	 *   |   |   Euro year                       |              |                 |     | name
 	 *   |   |    |                              |              |                 |     |  | */
 /** The original currency specifications. */
-static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
+static const EnumIndexArray<CurrencySpec, Currency, Currency::End> _origin_currency_specs = {{{
 	{    1, "", CF_NOEURO,                     "\u00a3",   "",             "GBP", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_GBP }, ///< british pound
 	{    2, "", CF_NOEURO,                     "$",        "",             "USD", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_USD }, ///< american dollar
 	{    2, "", CF_ISEURO,                     "\u20ac",   "",             "EUR", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_EUR }, ///< euro
@@ -74,10 +74,10 @@ static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
 	{  400, "", TimerGameCalendar::Year{2002}, "",         "$00",          "PTE", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_PTE }, ///< portuguese escudo
 	{   50, "", CF_NOEURO,                     "",         NBSP "\u20B4",  "UAH", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_UAH }, ///< ukrainian hryvnia
 	{35000, "", CF_NOEURO,                     "",         NBSP "\u20AB",  "VND", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_VND }, ///< Vietnamese Dong
-}};
+}}};
 
 /** Array of currencies used by the system */
-std::array<CurrencySpec, CURRENCY_END> _currency_specs;
+EnumIndexArray<CurrencySpec, Currency, Currency::End> _currency_specs;
 
 /**
  * This array represent the position of OpenTTD's currencies,
@@ -86,25 +86,25 @@ std::array<CurrencySpec, CURRENCY_END> _currency_specs;
  * So, we must reindex them to our own order.
  */
 const Currency _ttdpatch_to_ottd_currency[] = {
-	CURRENCY_GBP,
-	CURRENCY_USD,
-	CURRENCY_FRF,
-	CURRENCY_DEM,
-	CURRENCY_JPY,
-	CURRENCY_ESP,
-	CURRENCY_HUF,
-	CURRENCY_PLN,
-	CURRENCY_ATS,
-	CURRENCY_BEF,
-	CURRENCY_DKK,
-	CURRENCY_FIM,
-	CURRENCY_GRD,
-	CURRENCY_CHF,
-	CURRENCY_NLG,
-	CURRENCY_ITL,
-	CURRENCY_SEK,
-	CURRENCY_RUR,
-	CURRENCY_EUR,
+	Currency::GBP,
+	Currency::USD,
+	Currency::FRF,
+	Currency::DEM,
+	Currency::JPY,
+	Currency::ESP,
+	Currency::HUF,
+	Currency::PLN,
+	Currency::ATS,
+	Currency::BEF,
+	Currency::DKK,
+	Currency::FIM,
+	Currency::GRD,
+	Currency::CHF,
+	Currency::NLG,
+	Currency::ITL,
+	Currency::SEK,
+	Currency::RUR,
+	Currency::EUR,
 };
 
 /**
@@ -113,11 +113,11 @@ const Currency _ttdpatch_to_ottd_currency[] = {
  * it is a grf written for ottd, thus returning the same id.
  * Only called from newgrf.cpp
  * @param grfcurr_id currency id coming from newgrf
- * @return The corrected index, or \c CURRENCY_END when invalid.
+ * @return The corrected index, or \c Currency::End when invalid.
  */
 Currency GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
 {
-	if (grfcurr_id >= std::size(_ttdpatch_to_ottd_currency)) return CURRENCY_END;
+	if (grfcurr_id >= std::size(_ttdpatch_to_ottd_currency)) return Currency::End;
 	return _ttdpatch_to_ottd_currency[grfcurr_id];
 }
 
@@ -129,14 +129,14 @@ Currencies GetMaskOfAllowedCurrencies()
 {
 	Currencies mask{};
 
-	for (Currency i : EnumRange(CURRENCY_END)) {
+	for (Currency i : EnumRange(Currency::End)) {
 		TimerGameCalendar::Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && TimerGameCalendar::year >= to_euro) continue;
 		if (to_euro == CF_ISEURO && TimerGameCalendar::year < 2000) continue;
 		mask.Set(i);
 	}
-	mask.Set(CURRENCY_CUSTOM); // always allow custom currency
+	mask.Set(Currency::Custom); // always allow custom currency
 	return mask;
 }
 
@@ -148,21 +148,21 @@ static const IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCa
 	if (_currency_specs[_settings_game.locale.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_settings_game.locale.currency].to_euro != CF_ISEURO &&
 			TimerGameCalendar::year >= _currency_specs[_settings_game.locale.currency].to_euro) {
-		_settings_game.locale.currency = CURRENCY_EUR;
+		_settings_game.locale.currency = Currency::EUR;
 		AddNewsItem(GetEncodedString(STR_NEWS_EURO_INTRODUCTION), NewsType::Economy, NewsStyle::Normal, {});
 	}
 });
 
 /**
  * Will fill _currency_specs array with
- * default values from origin_currency_specs
+ * default values from _origin_currency_specs
  * Called only from newgrf.cpp and settings.cpp.
  * @param preserve_custom will not reset custom currency
  */
 void ResetCurrencies(bool preserve_custom)
 {
-	for (Currency i : EnumRange(CURRENCY_END)) {
-		if (preserve_custom && i == CURRENCY_CUSTOM) continue;
-		_currency_specs[i] = origin_currency_specs[i];
+	for (Currency i : EnumRange(Currency::End)) {
+		if (preserve_custom && i == Currency::Custom) continue;
+		_currency_specs[i] = _origin_currency_specs[i];
 	}
 }

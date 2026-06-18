@@ -190,14 +190,14 @@ static void UpdateExclusiveRights()
 static void UpdateCurrencies()
 {
 	constexpr Currency convert_currency[] = {
-		CURRENCY_GBP, CURRENCY_USD, CURRENCY_FRF, CURRENCY_DEM, CURRENCY_JPY,
-		CURRENCY_ESP, CURRENCY_HUF, CURRENCY_PLN, CURRENCY_ATS, CURRENCY_BEF,
-		CURRENCY_DKK, CURRENCY_FIM, CURRENCY_GRD, CURRENCY_CHF, CURRENCY_NLG,
-		CURRENCY_ITL, CURRENCY_SIT, CURRENCY_RUR, CURRENCY_CZK, CURRENCY_ISK,
-		CURRENCY_NOK, CURRENCY_EUR, CURRENCY_RON,
+		Currency::GBP, Currency::USD, Currency::FRF, Currency::DEM, Currency::JPY,
+		Currency::ESP, Currency::HUF, Currency::PLN, Currency::ATS, Currency::BEF,
+		Currency::DKK, Currency::FIM, Currency::GRD, Currency::CHF, Currency::NLG,
+		Currency::ITL, Currency::SIT, Currency::RUR, Currency::CZK, Currency::ISK,
+		Currency::NOK, Currency::EUR, Currency::RON,
 	};
 
-	_settings_game.locale.currency = convert_currency[_settings_game.locale.currency];
+	_settings_game.locale.currency = convert_currency[to_underlying(_settings_game.locale.currency)];
 }
 
 /**

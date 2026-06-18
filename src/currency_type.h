@@ -22,58 +22,59 @@ static constexpr TimerGameCalendar::Year MIN_EURO_YEAR{2000}; ///< The earliest 
  * savegame compatibility and in order to refer to them quickly, especially
  * for referencing the custom one.
  */
-enum Currency : uint8_t {
-	CURRENCY_GBP,       ///< British Pound
-	CURRENCY_USD,       ///< US Dollar
-	CURRENCY_EUR,       ///< Euro
-	CURRENCY_JPY,       ///< Japanese Yen
-	CURRENCY_ATS,       ///< Austrian Schilling
-	CURRENCY_BEF,       ///< Belgian Franc
-	CURRENCY_CHF,       ///< Swiss Franc
-	CURRENCY_CZK,       ///< Czech Koruna
-	CURRENCY_DEM,       ///< Deutsche Mark
-	CURRENCY_DKK,       ///< Danish Krona
-	CURRENCY_ESP,       ///< Spanish Peseta
-	CURRENCY_FIM,       ///< Finish Markka
-	CURRENCY_FRF,       ///< French Franc
-	CURRENCY_GRD,       ///< Greek Drachma
-	CURRENCY_HUF,       ///< Hungarian Forint
-	CURRENCY_ISK,       ///< Icelandic Krona
-	CURRENCY_ITL,       ///< Italian Lira
-	CURRENCY_NLG,       ///< Dutch Gulden
-	CURRENCY_NOK,       ///< Norwegian Krone
-	CURRENCY_PLN,       ///< Polish Zloty
-	CURRENCY_RON,       ///< Romanian Leu
-	CURRENCY_RUR,       ///< Russian Rouble
-	CURRENCY_SIT,       ///< Slovenian Tolar
-	CURRENCY_SEK,       ///< Swedish Krona
-	CURRENCY_YTL,       ///< Turkish Lira
-	CURRENCY_SKK,       ///< Slovak Kornuna
-	CURRENCY_BRL,       ///< Brazilian Real
-	CURRENCY_EEK,       ///< Estonian Krooni
-	CURRENCY_LTL,       ///< Lithuanian Litas
-	CURRENCY_KRW,       ///< South Korean Won
-	CURRENCY_ZAR,       ///< South African Rand
-	CURRENCY_CUSTOM,    ///< Custom currency
-	CURRENCY_GEL,       ///< Georgian Lari
-	CURRENCY_IRR,       ///< Iranian Rial
-	CURRENCY_RUB,       ///< New Russian Ruble
-	CURRENCY_MXN,       ///< Mexican Peso
-	CURRENCY_NTD,       ///< New Taiwan Dollar
-	CURRENCY_CNY,       ///< Chinese Renminbi
-	CURRENCY_HKD,       ///< Hong Kong Dollar
-	CURRENCY_INR,       ///< Indian Rupee
-	CURRENCY_IDR,       ///< Indonesian Rupiah
-	CURRENCY_MYR,       ///< Malaysian Ringgit
-	CURRENCY_LVL,       ///< Latvian Lats
-	CURRENCY_PTE,       ///< Portuguese Escudo
-	CURRENCY_UAH,       ///< Ukrainian Hryvnia
-	CURRENCY_VND,       ///< Vietnamese Dong
-	CURRENCY_END,       ///< always the last item
+enum class Currency : uint8_t {
+	GBP, ///< British Pound
+	USD, ///< US Dollar
+	EUR, ///< Euro
+	JPY, ///< Japanese Yen
+	ATS, ///< Austrian Schilling
+	BEF, ///< Belgian Franc
+	CHF, ///< Swiss Franc
+	CZK, ///< Czech Koruna
+	DEM, ///< Deutsche Mark
+	DKK, ///< Danish Krona
+	ESP, ///< Spanish Peseta
+	FIM, ///< Finish Markka
+	FRF, ///< French Franc
+	GRD, ///< Greek Drachma
+	HUF, ///< Hungarian Forint
+	ISK, ///< Icelandic Krona
+	ITL, ///< Italian Lira
+	NLG, ///< Dutch Gulden
+	NOK, ///< Norwegian Krone
+	PLN, ///< Polish Zloty
+	RON, ///< Romanian Leu
+	RUR, ///< Russian Rouble
+	SIT, ///< Slovenian Tolar
+	SEK, ///< Swedish Krona
+	YTL, ///< Turkish Lira
+	SKK, ///< Slovak Kornuna
+	BRL, ///< Brazilian Real
+	EEK, ///< Estonian Krooni
+	LTL, ///< Lithuanian Litas
+	KRW, ///< South Korean Won
+	ZAR, ///< South African Rand
+	Custom, ///< Custom currency
+	GEL, ///< Georgian Lari
+	IRR, ///< Iranian Rial
+	RUB, ///< New Russian Ruble
+	MXN, ///< Mexican Peso
+	NTD, ///< New Taiwan Dollar
+	CNY, ///< Chinese Renminbi
+	HKD, ///< Hong Kong Dollar
+	INR, ///< Indian Rupee
+	IDR, ///< Indonesian Rupiah
+	MYR, ///< Malaysian Ringgit
+	LVL, ///< Latvian Lats
+	PTE, ///< Portuguese Escudo
+	UAH, ///< Ukrainian Hryvnia
+	VND, ///< Vietnamese Dong
+
+	End, ///< Always the last item.
 };
 
 /** Bitmask of \c Currency. */
-using Currencies = EnumBitSet<Currency, uint64_t, CURRENCY_END>;
+using Currencies = EnumBitSet<Currency, uint64_t, Currency::End>;
 
 /** The currency symbol positions that we can show. */
 enum class CurrencySymbolPosition : uint8_t {
