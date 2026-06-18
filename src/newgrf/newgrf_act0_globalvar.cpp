@@ -146,7 +146,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 			}
 
 			case 0x0A: { // Currency display names
-				uint curidx = GetNewgrfCurrencyIdConverted(id);
+				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				if (curidx < CURRENCY_END) {
 					AddStringForMapping(GRFStringID{buf.ReadWord()}, [curidx](StringID str) {
 						_currency_specs[curidx].name = str;
@@ -159,7 +159,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 			}
 
 			case 0x0B: { // Currency multipliers
-				uint curidx = GetNewgrfCurrencyIdConverted(id);
+				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				uint32_t rate = buf.ReadDWord();
 
 				if (curidx < CURRENCY_END) {
@@ -168,13 +168,13 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					 * to be compatible */
 					_currency_specs[curidx].rate = rate / 1000;
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency multipliers {} out of range, ignoring", curidx);
+					GrfMsg(1, "GlobalVarChangeInfo: Currency multipliers {} out of range, ignoring", id);
 				}
 				break;
 			}
 
 			case 0x0C: { // Currency options
-				uint curidx = GetNewgrfCurrencyIdConverted(id);
+				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				uint16_t options = buf.ReadWord();
 
 				if (curidx < CURRENCY_END) {
@@ -185,43 +185,43 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					 * since newgrf specs said that only 0 and 1 can be set for symbol_pos */
 					_currency_specs[curidx].symbol_pos = HasBit(options, 8) ? CurrencySymbolPosition::Suffix : CurrencySymbolPosition::Prefix;
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency option {} out of range, ignoring", curidx);
+					GrfMsg(1, "GlobalVarChangeInfo: Currency option {} out of range, ignoring", id);
 				}
 				break;
 			}
 
 			case 0x0D: { // Currency prefix symbol
-				uint curidx = GetNewgrfCurrencyIdConverted(id);
+				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				std::string prefix = ReadDWordAsString(buf);
 
 				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].prefix = std::move(prefix);
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", curidx);
+					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
 				}
 				break;
 			}
 
 			case 0x0E: { // Currency suffix symbol
-				uint curidx = GetNewgrfCurrencyIdConverted(id);
+				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				std::string suffix = ReadDWordAsString(buf);
 
 				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].suffix = std::move(suffix);
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", curidx);
+					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
 				}
 				break;
 			}
 
 			case 0x0F: { //  Euro introduction dates
-				uint curidx = GetNewgrfCurrencyIdConverted(id);
+				Currency curidx = GetNewgrfCurrencyIdConverted(id);
 				TimerGameCalendar::Year year_euro{buf.ReadWord()};
 
 				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].to_euro = year_euro;
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Euro intro date {} out of range, ignoring", curidx);
+					GrfMsg(1, "GlobalVarChangeInfo: Euro intro date {} out of range, ignoring", id);
 				}
 				break;
 			}
