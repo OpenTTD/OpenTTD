@@ -35,6 +35,6 @@ inline const CurrencySpec &GetCurrency()
 
 Currencies GetMaskOfAllowedCurrencies();
 void ResetCurrencies(bool preserve_custom = true);
-uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id);
+Currency GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id);
 
 #endif /* CURRENCY_FUNC_H */

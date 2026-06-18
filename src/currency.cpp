@@ -85,8 +85,7 @@ std::array<CurrencySpec, CURRENCY_END> _currency_specs;
  * When a grf sends currencies, they are based on the order defined by TTDPatch.
  * So, we must reindex them to our own order.
  */
-const uint8_t TTDPatch_To_OTTDIndex[] =
-{
+const Currency _ttdpatch_to_ottd_currency[] = {
 	CURRENCY_GBP,
 	CURRENCY_USD,
 	CURRENCY_FRF,
@@ -114,11 +113,12 @@ const uint8_t TTDPatch_To_OTTDIndex[] =
  * it is a grf written for ottd, thus returning the same id.
  * Only called from newgrf.cpp
  * @param grfcurr_id currency id coming from newgrf
- * @return the corrected index
+ * @return The corrected index, or \c CURRENCY_END when invalid.
  */
-uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
+Currency GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
 {
-	return (grfcurr_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
+	if (grfcurr_id >= std::size(_ttdpatch_to_ottd_currency)) return CURRENCY_END;
+	return _ttdpatch_to_ottd_currency[grfcurr_id];
 }
 
 /**
