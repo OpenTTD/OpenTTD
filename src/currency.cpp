@@ -148,7 +148,7 @@ static const IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCa
 	if (_currency_specs[_settings_game.locale.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_settings_game.locale.currency].to_euro != CF_ISEURO &&
 			TimerGameCalendar::year >= _currency_specs[_settings_game.locale.currency].to_euro) {
-		_settings_game.locale.currency = 2; // this is the index of euro above.
+		_settings_game.locale.currency = CURRENCY_EUR;
 		AddNewsItem(GetEncodedString(STR_NEWS_EURO_INTRODUCTION), NewsType::Economy, NewsStyle::Normal, {});
 	}
 });

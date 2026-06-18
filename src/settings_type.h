@@ -18,6 +18,7 @@
 #include "network/network_type.h"
 #include "company_type.h"
 #include "cargotype.h"
+#include "currency_type.h"
 #include "linkgraph/linkgraph_type.h"
 #include "zoom_type.h"
 #include "openttd.h"
@@ -357,7 +358,7 @@ struct MusicSettings {
 
 /** Settings related to currency/unit systems. */
 struct LocaleSettings {
-	uint8_t currency; ///< currency we currently use
+	Currency currency; ///< Currency we currently use
 	uint8_t units_velocity; ///< unit system for velocity of trains and road vehicles
 	uint8_t units_velocity_nautical; ///< unit system for velocity of ships and aircraft
 	uint8_t units_power; ///< unit system for power
