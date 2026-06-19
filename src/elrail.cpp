@@ -172,7 +172,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 	}
 
 	/* Mask the tracks only if at least one track bit would remain. */
-	return !tracks.Any(mask) ? tracks & mask : tracks;
+	return tracks.Any(mask) ? tracks & mask : tracks;
 }
 
 /**
