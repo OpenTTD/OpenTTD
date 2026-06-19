@@ -176,7 +176,7 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 {
 	int max_extend_left  = 0;
 	int max_extend_right = 0;
-	uint max_height = 0;
+	uint height = 0;
 
 	for (const Engine *e : Engine::IterateType(type)) {
 		if (!e->IsEnabled()) continue;
@@ -192,7 +192,7 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 			case VehicleType::Ship: GetShipSpriteSize(eid, x, y, x_offs, y_offs, image_type); break;
 			case VehicleType::Aircraft: GetAircraftSpriteSize(eid, x, y, x_offs, y_offs, image_type); break;
 		}
-		if (y > max_height) max_height = y;
+		if (y > height) height = y;
 		if (-x_offs > max_extend_left) max_extend_left = -x_offs;
 		if ((int)x + x_offs > max_extend_right) max_extend_right = x + x_offs;
 	}
@@ -200,15 +200,19 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 	int min_extend = ScaleSpriteTrad(16);
 	int max_extend = ScaleSpriteTrad(98);
 
+	/* Limit sprite height to limits based on original design height to prevent window size running away. */
+	int min_height = ScaleSpriteTrad(GetVehicleHeight(type));
+	int max_height = min_height + min_height / 2;
+
 	switch (image_type) {
 		case EngineImageType::InDepot:
-			_base_block_sizes_depot[type].height       = std::max<uint>(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
-			_base_block_sizes_depot[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
+			_base_block_sizes_depot[type].height = Clamp(height, min_height, max_height);
+			_base_block_sizes_depot[type].extend_left = Clamp(max_extend_left, min_extend, max_extend);
 			_base_block_sizes_depot[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
 		case EngineImageType::Purchase:
-			_base_block_sizes_purchase[type].height       = std::max<uint>(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
-			_base_block_sizes_purchase[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
+			_base_block_sizes_purchase[type].height = Clamp(height, min_height, max_height);
+			_base_block_sizes_purchase[type].extend_left = Clamp(max_extend_left, min_extend, max_extend);
 			_base_block_sizes_purchase[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
 
