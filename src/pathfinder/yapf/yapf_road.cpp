@@ -300,7 +300,13 @@ public:
 			return true;
 		}
 
-		n.estimate = n.cost + OctileDistanceCost(n.segment_last_tile, n.segment_last_td, this->dest_tile);
+		if(n.cost == 0 && n.parent->cost == 0){
+			/* calculate estimate from StartupNode for the first segment */
+			n.estimate = n.cost + OctileDistanceCost(n.parent->GetTile(), n.parent->GetTrackdir(), this->dest_tile);
+		} else {
+			n.estimate = n.cost + OctileDistanceCost(n.segment_last_tile, n.segment_last_td, this->dest_tile);
+		}
+
 		assert(n.estimate >= n.parent->estimate);
 		return true;
 	}
