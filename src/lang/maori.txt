@@ -582,32 +582,32 @@ STR_DAY_NUMBER_30TH                                             :30
 STR_DAY_NUMBER_31ST                                             :31
 
 ###length 12
-STR_MONTH_ABBREV_JAN                                            :Koh
-STR_MONTH_ABBREV_FEB                                            :Hui
-STR_MONTH_ABBREV_MAR                                            :Pou
-STR_MONTH_ABBREV_APR                                            :Pae
-STR_MONTH_ABBREV_MAY                                            :Har
-STR_MONTH_ABBREV_JUN                                            :Pip
-STR_MONTH_ABBREV_JUL                                            :Hōn
-STR_MONTH_ABBREV_AUG                                            :Her
-STR_MONTH_ABBREV_SEP                                            :Mah
-STR_MONTH_ABBREV_OCT                                            :Wnu
-STR_MONTH_ABBREV_NOV                                            :Wra
-STR_MONTH_ABBREV_DEC                                            :Hak
+STR_MONTH_ABBREV_JAN                                            :M1
+STR_MONTH_ABBREV_FEB                                            :M2
+STR_MONTH_ABBREV_MAR                                            :M3
+STR_MONTH_ABBREV_APR                                            :M4
+STR_MONTH_ABBREV_MAY                                            :M5
+STR_MONTH_ABBREV_JUN                                            :M6
+STR_MONTH_ABBREV_JUL                                            :M7
+STR_MONTH_ABBREV_AUG                                            :M8
+STR_MONTH_ABBREV_SEP                                            :M9
+STR_MONTH_ABBREV_OCT                                            :M10
+STR_MONTH_ABBREV_NOV                                            :M11
+STR_MONTH_ABBREV_DEC                                            :M12
 
 ###length 12
-STR_MONTH_JAN                                                   :Kohitātea
-STR_MONTH_FEB                                                   :Huitanguru
-STR_MONTH_MAR                                                   :Poutūterangi
-STR_MONTH_APR                                                   :Paengawhāwhā
-STR_MONTH_MAY                                                   :Haratua
-STR_MONTH_JUN                                                   :Pipiri
-STR_MONTH_JUL                                                   :Hōngongoi
-STR_MONTH_AUG                                                   :Hereturikōkā
-STR_MONTH_SEP                                                   :Mahuru
-STR_MONTH_OCT                                                   :Whiringaanuku
-STR_MONTH_NOV                                                   :Whiringaarangi
-STR_MONTH_DEC                                                   :Hakihea
+STR_MONTH_JAN                                                   :Maramatahi
+STR_MONTH_FEB                                                   :Maramarua
+STR_MONTH_MAR                                                   :Maramatoru
+STR_MONTH_APR                                                   :Maramawhā
+STR_MONTH_MAY                                                   :Maramarima
+STR_MONTH_JUN                                                   :Maramaono
+STR_MONTH_JUL                                                   :Maramawhitu
+STR_MONTH_AUG                                                   :Maramawaru
+STR_MONTH_SEP                                                   :Maramaiwa
+STR_MONTH_OCT                                                   :Maramatekau
+STR_MONTH_NOV                                                   :Maramamātahi
+STR_MONTH_DEC                                                   :Maramamārua
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Pātohu
@@ -3259,7 +3259,7 @@ STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Ara whakawhiti 
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Taramuwē
 
 # Houses come directly from their building names
-STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (kei te hangahanga)
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (kei te hangaia)
 
 STR_LAI_TREE_NAME_TREES                                         :Rākau
 STR_LAI_TREE_NAME_RAINFOREST                                    :Ngahere ua
@@ -3815,7 +3815,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Tīmatahia he whakatairanga rahi kia whakamanea ai i te maha ake o ngā kaieke me te utanga ki ngō ratonga kawekawe.{}Ka whakapai taupuatia te hau o ngā teihana i tētahi pūtoro rahi mai i te pokapū o te tāone.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}Whakarato moni mō te whakahouhou i te whatunga rori tāone.{}Ka whakatōhenehene nuitia ngā waka rori mō te 6 marama pea i te mōrahi.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}Whakarato moni mō te whakahouhou i te whatunga rori tāone.{}Ka whakatōhenehene nuitia ngā waka rori mō te 6 meneti pea i te mōrahi.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Hangaia he pakoko kia hōnore i tō umanga.{}Ka whakapaia ake tonu atu te hau o ngā teihana i tēnei tāone.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Hangaia he pakoko hei hōnore i tō umanga.{}Ka whakapaia ake tonu atu te hau o ngā teihana i tēnei tāone.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Whakarato moni mō te hanga i ngētahi whare hou i te tāone.{}Ka whakahohoro taupuatia te tupu a te tāone.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}Hokona mai ngā mōtika kawekawe kaupare i te tāone mō te 12 marama.{}Ka āraia te kāwanatanga ārohe kei whakamahi ngā kaieke me te utanga i ngā teihana o ngā kaiwhakataetae. Ka whakakorea tēnei kirimana e te whakapati nā ngā kaiwhakataetae.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Hokona mai ngā mōtika kawekawe kaupare i te tāone mō te 12 meneti.{}Ka āraia te kāwanatanga ārohe kei whakamahi ngā kaieke me te utanga i ngā teihana o ngā kaiwhakataetae. Ka whakakorea tēnei kirimana e te whakapati nā ngā kaiwhakataetae.{}{POP_COLOUR}Utu: {CURRENCY_LONG}
