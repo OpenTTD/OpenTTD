@@ -50,7 +50,7 @@
 #include "safeguards.h"
 
 
-static std::array<VehicleTypeIndexArray<BaseVehicleListWindow::GroupBy>, VLT_END> _grouping{};
+static EnumIndexArray<VehicleTypeIndexArray<BaseVehicleListWindow::GroupBy>, VehicleListType, VehicleListType::End> _grouping{};
 static std::array<Sorting, BaseVehicleListWindow::GB_END> _sorting{};
 
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleNumberSorter;
@@ -1939,7 +1939,7 @@ public:
 	{
 		this->CreateNestedTree();
 
-		this->GetWidget<NWidgetStacked>(WID_VL_FILTER_BY_CARGO_SEL)->SetDisplayedPlane((this->vli.type == VL_SHARED_ORDERS) ? SZSP_NONE : 0);
+		this->GetWidget<NWidgetStacked>(WID_VL_FILTER_BY_CARGO_SEL)->SetDisplayedPlane((this->vli.type == VehicleListType::VehicleSharedOrders) ? SZSP_NONE : 0);
 
 		this->vscroll = this->GetScrollbar(WID_VL_SCROLLBAR);
 
@@ -1947,7 +1947,7 @@ public:
 		this->GetWidget<NWidgetCore>(WID_VL_LIST)->SetToolTip(STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + to_underlying(this->vli.vtype));
 
 		NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(WID_VL_CAPTION_SELECTION);
-		if (this->vli.type == VL_SHARED_ORDERS) {
+		if (this->vli.type == VehicleListType::VehicleSharedOrders) {
 			this->GetWidget<NWidgetCore>(WID_VL_CAPTION_SHARED_ORDERS)->SetString(STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION);
 			/* If we are in the shared orders window, then disable the group-by dropdown menu.
 			 * Remove this when the group-by dropdown menu has another option apart from grouping by shared orders. */
@@ -2016,7 +2016,7 @@ public:
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN: {
-				Dimension d = this->GetActionDropdownSize(this->vli.type == VL_STANDARD, false, true);
+				Dimension d = this->GetActionDropdownSize(this->vli.type == VehicleListType::Company, false, true);
 				d.height += padding.height;
 				d.width  += padding.width;
 				size = maxdim(size, d);
@@ -2043,16 +2043,16 @@ public:
 			case WID_VL_CAPTION:
 			case WID_VL_CAPTION_SHARED_ORDERS: {
 				switch (this->vli.type) {
-					case VL_SHARED_ORDERS: // Shared Orders
+					case VehicleListType::VehicleSharedOrders: // Shared Orders
 						return GetString(stringid, this->vehicles.size());
 
-					case VL_STANDARD: // Company Name
+					case VehicleListType::Company: // Company Name
 						return GetString(stringid, STR_COMPANY_NAME, this->vli.ToCompanyID(), std::monostate{}, this->vehicles.size());
 
-					case VL_STATION_LIST: // Station/Waypoint Name
+					case VehicleListType::Station: // Station/Waypoint Name
 						return GetString(stringid, Station::IsExpected(BaseStation::Get(this->vli.ToStationID())) ? STR_STATION_NAME : STR_WAYPOINT_NAME, this->vli.ToStationID(), std::monostate{}, this->vehicles.size());
 
-					case VL_DEPOT_LIST:
+					case VehicleListType::Depot:
 						return GetString(stringid, STR_DEPOT_CAPTION, this->vli.vtype, this->vli.ToDestinationID(), this->vehicles.size());
 
 					default: NOT_REACHED();
@@ -2096,7 +2096,7 @@ public:
 			nwi->SetDirty(this);
 		}
 		if (this->owner == _local_company) {
-			this->SetWidgetDisabledState(WID_VL_AVAILABLE_VEHICLES, this->vli.type != VL_STANDARD);
+			this->SetWidgetDisabledState(WID_VL_AVAILABLE_VEHICLES, this->vli.type != VehicleListType::Company);
 			this->SetWidgetsDisabledState(this->vehicles.empty(),
 				WID_VL_MANAGE_VEHICLES_DROPDOWN,
 				WID_VL_STOP_ALL,
@@ -2119,7 +2119,7 @@ public:
 	{
 		switch (widget) {
 		    case WID_VL_ORDER_VIEW: // Open the shared orders window
-				assert(this->vli.type == VL_SHARED_ORDERS);
+				assert(this->vli.type == VehicleListType::VehicleSharedOrders);
 				assert(!this->vehicles.empty());
 				ShowOrdersWindow(this->vehicles[0]);
 				break;
@@ -2190,7 +2190,7 @@ public:
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN: {
-				ShowDropDownList(this, this->BuildActionDropdownList(this->vli.type == VL_STANDARD, false, true), 0, WID_VL_MANAGE_VEHICLES_DROPDOWN);
+				ShowDropDownList(this, this->BuildActionDropdownList(this->vli.type == VehicleListType::Company, false, true), 0, WID_VL_MANAGE_VEHICLES_DROPDOWN);
 				break;
 			}
 
@@ -2244,7 +2244,7 @@ public:
 	void OnGameTick() override
 	{
 		if (this->vehgroups.NeedResort()) {
-			StationID station = (this->vli.type == VL_STATION_LIST) ? this->vli.ToStationID() : StationID::Invalid();
+			StationID station = (this->vli.type == VehicleListType::Station) ? this->vli.ToStationID() : StationID::Invalid();
 
 			Debug(misc, 3, "Periodic resort {} list company {} at station {}", this->vli.vtype, this->owner, station);
 			this->SetDirty();
@@ -2263,7 +2263,7 @@ public:
 	 */
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
-		if (!gui_scope && HasBit(data, 31) && this->vli.type == VL_SHARED_ORDERS) {
+		if (!gui_scope && HasBit(data, 31) && this->vli.type == VehicleListType::VehicleSharedOrders) {
 			/* Needs to be done in command-scope, so everything stays valid */
 			this->vli.SetIndex(GB(data, 0, 20));
 			this->window_number = this->vli.ToWindowNumber();
@@ -2327,23 +2327,23 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != _ctrl_pressed) {
 		ShowCompanyGroup(company, vehicle_type);
 	} else {
-		ShowVehicleListWindowLocal(company, VL_STANDARD, vehicle_type, company.base());
+		ShowVehicleListWindowLocal(company, VehicleListType::Company, vehicle_type, company.base());
 	}
 }
 
 void ShowVehicleListWindow(const Vehicle *v)
 {
-	ShowVehicleListWindowLocal(v->owner, VL_SHARED_ORDERS, v->type, v->FirstShared()->index.base());
+	ShowVehicleListWindowLocal(v->owner, VehicleListType::VehicleSharedOrders, v->type, v->FirstShared()->index.base());
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station)
 {
-	ShowVehicleListWindowLocal(company, VL_STATION_LIST, vehicle_type, station.base());
+	ShowVehicleListWindowLocal(company, VehicleListType::Station, vehicle_type, station.base());
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile)
 {
-	ShowVehicleListWindowLocal(company, VL_DEPOT_LIST, vehicle_type, GetDepotDestinationIndex(depot_tile).base());
+	ShowVehicleListWindowLocal(company, VehicleListType::Depot, vehicle_type, GetDepotDestinationIndex(depot_tile).base());
 }
 
 

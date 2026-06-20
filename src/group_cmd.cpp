@@ -376,7 +376,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 			pg->children.insert(g->index);
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).ToWindowNumber());
+		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VehicleListType::Group, vt, _current_company).ToWindowNumber());
 		InvalidateWindowData(WindowClass::CompanyLivery, g->owner, g->vehicle_type);
 
 		return { CommandCost(), g->index };
@@ -432,7 +432,7 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 		CloseWindowById(WindowClass::ReplaceVehicle, g->vehicle_type);
 		delete g;
 
-		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).ToWindowNumber());
+		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VehicleListType::Group, vt, _current_company).ToWindowNumber());
 		InvalidateWindowData(WindowClass::CompanyLivery, _current_company, vt);
 	}
 
@@ -508,7 +508,7 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		InvalidateWindowData(WindowClass::ReplaceVehicle, g->vehicle_type, 1);
-		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).ToWindowNumber());
+		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VehicleListType::Group, g->vehicle_type, _current_company).ToWindowNumber());
 		InvalidateWindowData(WindowClass::CompanyLivery, g->owner, g->vehicle_type);
 		InvalidateWindowClassesData(WindowClass::VehicleView);
 		InvalidateWindowClassesData(WindowClass::VehicleDetails);
@@ -613,7 +613,7 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupI
 
 		/* Update the Replace Vehicle Windows */
 		SetWindowDirty(WindowClass::ReplaceVehicle, vtype);
-		InvalidateWindowData(GetWindowClassForVehicleType(vtype), VehicleListIdentifier(VL_GROUP_LIST, vtype, _current_company).ToWindowNumber());
+		InvalidateWindowData(GetWindowClassForVehicleType(vtype), VehicleListIdentifier(VehicleListType::Group, vtype, _current_company).ToWindowNumber());
 	}
 
 	return { CommandCost(), new_g };
@@ -644,7 +644,7 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlags flags, GroupID id_g, Vehicle
 			}
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(type), VehicleListIdentifier(VL_GROUP_LIST, type, _current_company).ToWindowNumber());
+		InvalidateWindowData(GetWindowClassForVehicleType(type), VehicleListIdentifier(VehicleListType::Group, type, _current_company).ToWindowNumber());
 	}
 
 	return CommandCost();
@@ -674,7 +674,7 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 			}
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).ToWindowNumber());
+		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VehicleListType::Group, g->vehicle_type, _current_company).ToWindowNumber());
 	}
 
 	return CommandCost();
@@ -755,7 +755,7 @@ CommandCost CmdSetGroupFlag(DoCommandFlags flags, GroupID group_id, GroupFlag fl
 	if (flags.Test(DoCommandFlag::Execute)) {
 		SetGroupFlag(g, flag, value, recursive);
 
-		SetWindowDirty(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).ToWindowNumber());
+		SetWindowDirty(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VehicleListType::Group, g->vehicle_type, _current_company).ToWindowNumber());
 		InvalidateWindowData(WindowClass::ReplaceVehicle, g->vehicle_type);
 	}
 

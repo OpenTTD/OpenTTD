@@ -302,7 +302,7 @@ struct DepotWindow : Window {
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowById(WindowClass::BuildVehicle, this->window_number);
-		CloseWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, this->GetDestinationIndex()).ToWindowNumber(), false);
+		CloseWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VehicleListType::Depot, this->type, this->owner, this->GetDestinationIndex()).ToWindowNumber(), false);
 		OrderBackup::Reset(TileIndex(this->window_number));
 		this->Window::Close();
 	}
@@ -840,7 +840,7 @@ struct DepotWindow : Window {
 
 			case WID_D_STOP_ALL:
 			case WID_D_START_ALL: {
-				VehicleListIdentifier vli(VL_DEPOT_LIST, this->type, this->owner);
+				VehicleListIdentifier vli(VehicleListType::Depot, this->type, this->owner);
 				Command<Commands::MassStartStop>::Post(TileIndex(this->window_number), widget == WID_D_START_ALL, false, vli);
 				break;
 			}

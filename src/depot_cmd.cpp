@@ -72,7 +72,7 @@ CommandCost CmdRenameDepot(DoCommandFlags flags, DepotID depot_id, const std::st
 
 		/* Update the depot list */
 		VehicleType vt = GetDepotVehicleType(d->xy);
-		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(d->xy), d->index).ToWindowNumber());
+		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VehicleListType::Depot, vt, GetTileOwner(d->xy), d->index).ToWindowNumber());
 	}
 	return CommandCost();
 }
