@@ -53,7 +53,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LARGER_TOWN_COUNTER,                ///<  10.0  2030 Increase size of the town counter
 	SLV_LARGER_TOWN_ITERATOR,               /**<  11.0  2033 Increase size of the town iterator
 	                                         *    11.1  2041 Fix vehicle counters */
-	SLV_12,                                 ///<  12.1  2046
+	SLV_LINK_WAYPOINT_TO_TOWN,              ///<  12.1  2046 Link waypoints to towns and remove some bit stuffing
 	SLV_13,                                 ///<  13.1  2080   0.4.0, 0.4.0.1
 	SLV_14,                                 ///<  14.0  2441
 

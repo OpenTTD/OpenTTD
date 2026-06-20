@@ -170,9 +170,9 @@ void ResetOldWaypoints()
 static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
 	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_12, SLV_122),
+	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_LINK_WAYPOINT_TO_TOWN, SLV_122),
 	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SLV_122, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_12, SLV_89),
+	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_LINK_WAYPOINT_TO_TOWN, SLV_89),
 	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 SLV_89, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                SL_MIN_VERSION, SLV_84),
 	SLE_CONDSSTR(OldWaypoint, name,      SLE_STR,                    SLV_84, SL_MAX_VERSION),
@@ -208,7 +208,7 @@ struct CHKPChunkHandler : ChunkHandler {
 		for (OldWaypoint &wp : _old_waypoints) {
 			SlObject(&wp, _old_waypoint_desc);
 
-			if (IsSavegameVersionBefore(SLV_12)) {
+			if (IsSavegameVersionBefore(SLV_LINK_WAYPOINT_TO_TOWN)) {
 				wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
 				wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
 			} else if (IsSavegameVersionBefore(SLV_122)) {
