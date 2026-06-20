@@ -63,7 +63,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_STORE_WAYPOINT_ID_IN_MAP,           /**<  17.0  3212 Store the ID of waypoints in m2 of the map
 	                                         *    17.1  3218 Make train subtype a bitmask */
 	SLV_REMOVE_MINOR_VERSION,               ///<  18    3227 Remove the minor versions from savegames
-	SLV_19,                                 ///<  19    3396
+	SLV_ENGINE_RENEW_POOL,                  ///<  19    3396 Engine renews are now stored in a pool
 
 	SLV_20,                                 ///<  20    3403
 	SLV_21,                                 ///<  21    3472   0.4.x

@@ -55,7 +55,7 @@ const SaveLoadCompat _company_old_ai_compat[] = {
 
 /** Original field order for SlCompanySettings. */
 const SaveLoadCompat _company_settings_compat[] = {
-	SLC_NULL(512, SLV_ENGINE_RENEW, SLV_19),
+	SLC_NULL(512, SLV_ENGINE_RENEW, SLV_ENGINE_RENEW_POOL),
 	SLC_VAR("engine_renew_list"),
 	SLC_VAR("settings.engine_renew"),
 	SLC_VAR("settings.engine_renew_months"),
