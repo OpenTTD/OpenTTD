@@ -47,7 +47,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MULTIPLE_ROAD_STOPS,                /**<   6.0  1721 Multi tile road stops, and some map size related fixes
 	                                         *     6.1  1768 Town index in m2 */
 	SLV_LARGER_CARGO_SOURCE,                ///<   7.0  1770 With more stations, the size of the cargo source needed to be increased
-	SLV_8,                                  ///<   8.0  1786
+	SLV_LARGER_UNIT_NUMBER,                 ///<   8.0  1786 Increase size of (vehicle) unit numbers
 	SLV_9,                                  ///<   9.0  1909
 
 	SLV_10,                                 ///<  10.0  2030
