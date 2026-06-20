@@ -55,7 +55,7 @@ enum SaveLoadVersion : uint16_t {
 	                                         *    11.1  2041 Fix vehicle counters */
 	SLV_LINK_WAYPOINT_TO_TOWN,              ///<  12.1  2046 Link waypoints to towns and remove some bit stuffing
 	SLV_LARGER_AI_STATE_COUNTER,            ///<  13.1  2080   0.4.0, 0.4.0.1 AI state counter increased due it storing tile indices
-	SLV_14,                                 ///<  14.0  2441
+	SLV_TRANSFER_ORDER,                     ///<  14.0  2441 Transfer orders for feeder systems
 
 	SLV_15,                                 ///<  15.0  2499
 	SLV_16,                                 /**<  16.0  2817
