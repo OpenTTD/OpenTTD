@@ -375,8 +375,8 @@ public:
 		 SLE_CONDVAR(GoodsEntry, status,               SLE_UINT8,                  SLV_68, SL_MAX_VERSION),
 		     SLE_VAR(GoodsEntry, time_since_pickup,    SLE_UINT8),
 		     SLE_VAR(GoodsEntry, rating,               SLE_UINT8),
-		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_FILE_U8 | SLE_VAR_U16,   SL_MIN_VERSION, SLV_7),
-		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_UINT16,                  SLV_7, SLV_68),
+		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_FILE_U8 | SLE_VAR_U16,   SL_MIN_VERSION, SLV_LARGER_CARGO_SOURCE),
+		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_UINT16,                  SLV_LARGER_CARGO_SOURCE, SLV_68),
 		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,               SLV_44, SLV_68),
 		SLEG_CONDVAR("cargo_days", _cargo_periods,     SLE_UINT8,                   SL_MIN_VERSION, SLV_68),
 		     SLE_VAR(GoodsEntry, last_speed,           SLE_UINT8),
@@ -448,7 +448,7 @@ public:
 				ge.status.Set(GoodsEntry::State::Acceptance, HasBit(_waiting_acceptance, 15));
 				if (GB(_waiting_acceptance, 0, 12) != 0) {
 					/* In old versions, enroute_from used 0xFF as StationID::Invalid() */
-					StationID source = (IsSavegameVersionBefore(SLV_7) && _cargo_source == 0xFF) ? StationID::Invalid() : static_cast<StationID>(_cargo_source);
+					StationID source = (IsSavegameVersionBefore(SLV_LARGER_CARGO_SOURCE) && _cargo_source == 0xFF) ? StationID::Invalid() : static_cast<StationID>(_cargo_source);
 
 					/* Make sure we can allocate the CargoPacket. This is safe
 					 * as there can only be ~64k stations and 32 cargoes in these
