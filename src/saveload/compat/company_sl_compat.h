@@ -49,7 +49,7 @@ const SaveLoadCompat _company_old_ai_compat[] = {
 	SLC_NULL(20, SL_MIN_VERSION, SLV_107),
 	SLC_NULL(32, SL_MIN_VERSION, SLV_107),
 
-	SLC_NULL(64, SLV_2, SLV_107),
+	SLC_NULL(64, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_107),
 	SLC_VAR("buildrec"),
 };
 
@@ -66,7 +66,7 @@ const SaveLoadCompat _company_settings_compat[] = {
 	SLC_VAR("settings.vehicle.servint_roadveh"),
 	SLC_VAR("settings.vehicle.servint_aircraft"),
 	SLC_VAR("settings.vehicle.servint_ships"),
-	SLC_NULL(63, SLV_2, SLV_144),
+	SLC_NULL(63, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlCompanyEconomy. */

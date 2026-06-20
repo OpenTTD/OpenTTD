@@ -318,7 +318,7 @@ public:
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew,        SLE_BOOL,            SLV_16, SL_MAX_VERSION),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16,           SLV_16, SL_MAX_VERSION),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money,  SLE_UINT32,          SLV_16, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length,   SLE_BOOL,             SLV_2, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length,   SLE_BOOL,            SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 		/* Default vehicle settings */
 		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ispercent,   SLE_BOOL,     SLV_120, SL_MAX_VERSION),
@@ -350,12 +350,12 @@ public:
 class SlCompanyEconomy : public DefaultSaveLoadHandler<SlCompanyEconomy, CompanyProperties> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
-		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_INT64,                  SLV_2, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
-		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_INT64,                  SLV_2, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
-		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_INT64,                  SLV_2, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_VEHICLE_CURRENCY_STATION_CHANGES),
+		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_INT64,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_VEHICLE_CURRENCY_STATION_CHANGES),
+		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_INT64,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_VEHICLE_CURRENCY_STATION_CHANGES),
+		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_INT64,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32,       SL_MIN_VERSION, SLV_170),
 		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, 32,           SLV_170, SLV_EXTEND_CARGOTYPES),
@@ -535,10 +535,10 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  SLV_65, SL_MAX_VERSION),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
-	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, SL_MIN_VERSION, SLV_2),
-	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_INT64, 3 * 13,                  SLV_2, SL_MAX_VERSION),
+	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, SL_MIN_VERSION, SLV_VEHICLE_CURRENCY_STATION_CHANGES),
+	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_INT64, 3 * 13,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
-	SLE_CONDVAR(CompanyProperties, is_ai,                 SLE_BOOL,                    SLV_2, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, is_ai,                 SLE_BOOL,                    SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SLV_156, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SLV_156, SL_MAX_VERSION),

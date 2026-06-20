@@ -493,7 +493,7 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, airport.tile,               SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
 	    SLE_REF(Station, town,                       REF_TOWN),
 	    SLE_VAR(Station, train_station.w,            SLE_FILE_U8 | SLE_VAR_U16),
-	SLE_CONDVAR(Station, train_station.h,            SLE_FILE_U8 | SLE_VAR_U16,   SLV_2, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, train_station.h,            SLE_FILE_U8 | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
 	SLE_CONDSSTR(Station, name,                      SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),

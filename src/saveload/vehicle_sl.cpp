@@ -492,7 +492,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 			}
 			/* trains weren't stopping gradually in old OTTD versions (and TTO/TTD)
 			 * other vehicle types didn't have zero speed while stopped (even in 'recent' OTTD versions) */
-			if (v->vehstatus.Test(VehState::Stopped) && (v->type != VehicleType::Train || IsSavegameVersionBefore(SLV_2, 1))) {
+			if (v->vehstatus.Test(VehState::Stopped) && (v->type != VehicleType::Train || IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES, 1))) {
 				v->cur_speed = 0;
 			}
 		}
@@ -767,11 +767,11 @@ public:
 		SLE_CONDVAR(Vehicle, value,                 SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
 		SLE_CONDVAR(Vehicle, value,                 SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 
-		SLE_CONDVAR(Vehicle, random_bits,           SLE_FILE_U8 | SLE_VAR_U16,    SLV_2, SLV_EXTEND_VEHICLE_RANDOM),
+		SLE_CONDVAR(Vehicle, random_bits,           SLE_FILE_U8 | SLE_VAR_U16,    SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_EXTEND_VEHICLE_RANDOM),
 		SLE_CONDVAR(Vehicle, random_bits,           SLE_UINT16,                   SLV_EXTEND_VEHICLE_RANDOM, SL_MAX_VERSION),
-		SLE_CONDVARNAME(Vehicle, waiting_random_triggers, "waiting_triggers", SLE_UINT8, SLV_2, SL_MAX_VERSION),
+		SLE_CONDVARNAME(Vehicle, waiting_random_triggers, "waiting_triggers", SLE_UINT8, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
-		SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_2, SL_MAX_VERSION),
+		SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_60, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, current_order_time,    SLE_FILE_U32 | SLE_VAR_I32,  SLV_67, SLV_TIMETABLE_TICKS_TYPE),
@@ -810,7 +810,7 @@ public:
 		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
 		     SLE_VAR(Train, track,               SLE_UINT8),
 
-		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_2,  SLV_100),
+		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES,  SLV_100),
 		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_100, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 SLV_136, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
@@ -972,9 +972,9 @@ public:
 
 		     SLE_VAR(Aircraft, state,                 SLE_UINT8),
 
-		 SLE_CONDVAR(Aircraft, previous_pos,          SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
-		 SLE_CONDVAR(Aircraft, last_direction,        SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
-		 SLE_CONDVAR(Aircraft, number_consecutive_turns, SLE_UINT8,                 SLV_2, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, previous_pos,          SLE_UINT8,                    SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, last_direction,        SLE_UINT8,                    SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, number_consecutive_turns, SLE_UINT8,                 SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 		 SLE_CONDVAR(Aircraft, turn_counter,          SLE_UINT8,                  SLV_136, SL_MAX_VERSION),
 		 SLE_CONDVAR(Aircraft, flags,                 SLE_UINT8,                  SLV_167, SL_MAX_VERSION),
@@ -1022,7 +1022,7 @@ public:
 		     SLE_VAR(EffectVehicle, animation_state,    SLE_UINT16),
 		     SLE_VAR(EffectVehicle, animation_substate, SLE_UINT8),
 
-		 SLE_CONDVAR(Vehicle, spritenum,             SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, spritenum,             SLE_UINT8,                    SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_effect_sl_compat;
 

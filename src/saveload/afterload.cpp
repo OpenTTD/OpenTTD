@@ -607,7 +607,7 @@ bool AfterLoadGame()
 	 * Because the data stored by TTDPatch are unusable for rail stations > 7x7,
 	 * recompute the width and height. Doing this unconditionally for all old
 	 * savegames simplifies the code. */
-	if (IsSavegameVersionBefore(SLV_2)) {
+	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES)) {
 		for (Station *st : Station::Iterate()) {
 			st->train_station.w = st->train_station.h = 0;
 		}
@@ -642,7 +642,7 @@ bool AfterLoadGame()
 	}
 
 	/* in version 2.1 of the savegame, town owner was unified. */
-	if (IsSavegameVersionBefore(SLV_2, 1)) ConvertTownOwner();
+	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES, 1)) ConvertTownOwner();
 
 	/* from version 4.1 of the savegame, exclusive rights are stored at towns */
 	if (IsSavegameVersionBefore(SLV_4, 1)) UpdateExclusiveRights();
@@ -3057,7 +3057,7 @@ bool AfterLoadGame()
 
 	/* In version 2.2 of the savegame, we have new airports, so status of all aircraft is reset.
 	 * This has to be called after all map array updates */
-	if (IsSavegameVersionBefore(SLV_2, 2)) UpdateOldAircraft();
+	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES, 2)) UpdateOldAircraft();
 
 	if (IsSavegameVersionBefore(SLV_188)) {
 		/* Fix articulated road vehicles.

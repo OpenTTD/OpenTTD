@@ -353,8 +353,8 @@ static const SaveLoad _town_desc[] = {
 	    SLE_VAR(Town, fund_buildings_months, SLE_UINT8),
 	    SLE_VAR(Town, road_build_months,     SLE_UINT8),
 
-	SLE_CONDVAR(Town, exclusivity,           SLE_UINT8,                  SLV_2, SL_MAX_VERSION),
-	SLE_CONDVAR(Town, exclusive_counter,     SLE_UINT8,                  SLV_2, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, exclusivity,           SLE_UINT8,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, exclusive_counter,     SLE_UINT8,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  SLV_56, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, layout,                SLE_UINT8,                SLV_113, SL_MAX_VERSION),

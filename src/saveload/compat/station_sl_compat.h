@@ -172,7 +172,7 @@ const SaveLoadCompat _old_station_sl_compat[] = {
 	SLC_VAR("waiting_triggers"),
 	SLC_VAR("num_specs"),
 	SLC_VAR("loading_vehicles"),
-	SLC_NULL(32, SLV_2, SL_MAX_VERSION),
+	SLC_NULL(32, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 	SLC_VAR("goods"),
 	SLC_VAR("speclist"),
 
