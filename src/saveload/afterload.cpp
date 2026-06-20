@@ -807,7 +807,7 @@ bool AfterLoadGame()
 
 	/* Connect front and rear engines of multiheaded trains and converts
 	 * subtype to the new format */
-	if (IsSavegameVersionBefore(SLV_17, 1)) ConvertOldMultiheadToNew();
+	if (IsSavegameVersionBefore(SLV_STORE_WAYPOINT_ID_IN_MAP, 1)) ConvertOldMultiheadToNew();
 
 	/* Connect front and rear engines of multiheaded trains */
 	ConnectMultiheadedTrains();

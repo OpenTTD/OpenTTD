@@ -71,7 +71,7 @@ void MoveWaypointsToBaseStations()
 	 * waypoints to make way for storing the index in m2. The custom graphics
 	 * id which was stored in m4 is now saved as a grf/id reference in the
 	 * waypoint struct. */
-	if (IsSavegameVersionBefore(SLV_17)) {
+	if (IsSavegameVersionBefore(SLV_STORE_WAYPOINT_ID_IN_MAP)) {
 		for (OldWaypoint &wp : _old_waypoints) {
 			if (wp.delete_ctr != 0) continue; // The waypoint was deleted
 
@@ -181,7 +181,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  SLV_BIGGER_STATION_VARIABLES, SLV_31),
 	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  SLV_31, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   SLV_BIGGER_STATION_VARIABLES, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SLV_17, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SLV_STORE_WAYPOINT_ID_IN_MAP, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_101, SL_MAX_VERSION),
 };
 
