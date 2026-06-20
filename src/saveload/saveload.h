@@ -44,8 +44,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_BIG_MAP,                            /**<   5.0  1429 Making maps a different size than 256x256
 	                                         *     5.1  1440 Flexible airport layouts
 	                                         *     5.2  1525   0.3.6 Dynamic order array */
-	SLV_6,                                  /**<   6.0  1721
-	                                         *     6.1  1768 */
+	SLV_MULTIPLE_ROAD_STOPS,                /**<   6.0  1721 Multi tile road stops, and some map size related fixes
+	                                         *     6.1  1768 Town index in m2 */
 	SLV_7,                                  ///<   7.0  1770
 	SLV_8,                                  ///<   8.0  1786
 	SLV_9,                                  ///<   9.0  1909

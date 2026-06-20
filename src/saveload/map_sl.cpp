@@ -22,8 +22,8 @@ static uint32_t _map_dim_x;
 static uint32_t _map_dim_y;
 
 static const SaveLoad _map_desc[] = {
-	SLEG_CONDVAR("dim_x", _map_dim_x, SLE_UINT32, SLV_6, SL_MAX_VERSION),
-	SLEG_CONDVAR("dim_y", _map_dim_y, SLE_UINT32, SLV_6, SL_MAX_VERSION),
+	SLEG_CONDVAR("dim_x", _map_dim_x, SLE_UINT32, SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
+	SLEG_CONDVAR("dim_y", _map_dim_y, SLE_UINT32, SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 };
 
 struct MAPSChunkHandler : ChunkHandler {

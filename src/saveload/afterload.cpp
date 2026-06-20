@@ -760,7 +760,7 @@ bool AfterLoadGame()
 	 * it incorrectly in half of the times without a means to correct that.
 	 */
 	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 2)) _settings_game.station.modified_catchment = false;
-	if (IsSavegameVersionBefore(SLV_6, 1)) _settings_game.pf.forbid_90_deg = false;
+	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1)) _settings_game.pf.forbid_90_deg = false;
 	if (IsSavegameVersionBefore(SLV_21))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
 	if (IsSavegameVersionBefore(SLV_90))   _settings_game.vehicle.plane_speed = 4;
 	if (IsSavegameVersionBefore(SLV_95))   _settings_game.vehicle.dynamic_engines = false;
@@ -950,7 +950,7 @@ bool AfterLoadGame()
 				switch (GetStationType(t)) {
 					case StationType::Truck:
 					case StationType::Bus:
-						if (IsSavegameVersionBefore(SLV_6)) {
+						if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS)) {
 							/* Before version 5 you could not have more than 250 stations.
 							 * Version 6 adds large maps, so you could only place 253*253
 							 * road stops on a map (no freeform edges) = 64009. So, yes
@@ -1001,7 +1001,7 @@ bool AfterLoadGame()
 	/* In version 6.1 we put the town index in the map-array. To do this, we need
 	 *  to use m2 (16bit big), so we need to clean m2, and that is where this is
 	 *  all about ;) */
-	if (IsSavegameVersionBefore(SLV_6, 1)) {
+	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::House:

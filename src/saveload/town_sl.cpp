@@ -296,8 +296,8 @@ static std::array<Town::SuppliedHistory, 2> _old_pass_supplied{};
 static std::array<Town::SuppliedHistory, 2> _old_mail_supplied{};
 
 static const SaveLoad _town_desc[] = {
-	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
-	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town, townnamegrfid,         SLE_UINT32, SLV_66, SL_MAX_VERSION),
 	    SLE_VAR(Town, townnametype,          SLE_UINT16),

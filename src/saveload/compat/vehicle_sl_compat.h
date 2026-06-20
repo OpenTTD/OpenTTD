@@ -122,10 +122,10 @@ const SaveLoadCompat _vehicle_roadveh_sl_compat[] = {
 	SLC_VAR("reverse_ctr"),
 	SLC_VAR("path.td"),
 	SLC_VAR("path.tile"),
-	SLC_NULL(2, SLV_6, SLV_69),
+	SLC_NULL(2, SLV_MULTIPLE_ROAD_STOPS, SLV_69),
 	SLC_VAR("gv_flags"),
 	SLC_NULL(4, SLV_69, SLV_131),
-	SLC_NULL(2, SLV_6, SLV_131),
+	SLC_NULL(2, SLV_MULTIPLE_ROAD_STOPS, SLV_131),
 	SLC_NULL(16, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 

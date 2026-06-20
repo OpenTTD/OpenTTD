@@ -168,8 +168,8 @@ void ResetOldWaypoints()
 }
 
 static const SaveLoad _old_waypoint_desc[] = {
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_12, SLV_122),
 	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SLV_122, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_12, SLV_89),

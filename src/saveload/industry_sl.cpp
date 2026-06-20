@@ -153,8 +153,8 @@ public:
 };
 
 static const SaveLoad _industry_desc[] = {
-	SLE_CONDVAR(Industry, location.tile,              SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
-	SLE_CONDVAR(Industry, location.tile,              SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, location.tile,              SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLE_CONDVAR(Industry, location.tile,              SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 	    SLE_VAR(Industry, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),
 	    SLE_VAR(Industry, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
 	    SLE_REF(Industry, town,                       REF_TOWN),

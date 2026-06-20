@@ -140,11 +140,11 @@ const SaveLoadCompat _station_sl_compat[] = {
 /** Original field order for _old_station_desc. */
 const SaveLoadCompat _old_station_sl_compat[] = {
 	SLC_VAR("xy"),
-	SLC_NULL(4, SL_MIN_VERSION, SLV_6),
+	SLC_NULL(4, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
 	SLC_VAR("train_station.tile"),
 	SLC_VAR("airport.tile"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_6),
-	SLC_NULL(4, SLV_6, SLV_MULTITILE_DOCKS),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLC_NULL(4, SLV_MULTIPLE_ROAD_STOPS, SLV_MULTITILE_DOCKS),
 	SLC_VAR("town"),
 	SLC_VAR("train_station.w"),
 	SLC_VAR("train_station.h"),
@@ -159,7 +159,7 @@ const SaveLoadCompat _old_station_sl_compat[] = {
 	SLC_VAR("owner"),
 	SLC_VAR("facilities"),
 	SLC_VAR("airport.type"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_6),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_BIG_MAP),
 	SLC_VAR("airport.flags"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_26),
