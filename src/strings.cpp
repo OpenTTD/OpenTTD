@@ -603,10 +603,8 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 		number = -number;
 	}
 
-	/* Add prefix part, following symbol_pos specification.
-	 * Here, it can can be either 0 (prefix) or 2 (both prefix and suffix).
-	 * The only remaining value is 1 (suffix), so everything that is not 1 */
-	if (spec->symbol_pos != 1) builder += spec->prefix;
+	/* Add prefix part, following symbol_pos specification. */
+	if (spec->symbol_pos.Test(CurrencySymbolPosition::Prefix)) builder += spec->prefix;
 
 	StringID number_str = STR_NULL;
 
@@ -637,10 +635,8 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 		FormatString(builder, GetStringPtr(number_str), {});
 	}
 
-	/* Add suffix part, following symbol_pos specification.
-	 * Here, it can can be either 1 (suffix) or 2 (both prefix and suffix).
-	 * The only remaining value is 1 (prefix), so everything that is not 0 */
-	if (spec->symbol_pos != 0) builder += spec->suffix;
+	/* Add suffix part, following symbol_pos specification. */
+	if (spec->symbol_pos.Test(CurrencySymbolPosition::Suffix)) builder += spec->suffix;
 
 	if (negative) {
 		builder.PutUtf8(SCC_POP_COLOUR);
