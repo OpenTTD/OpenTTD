@@ -52,7 +52,7 @@ static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
 	{   50, "", CF_NOEURO,                     "",         NBSP "p",       "RUR", 1, STR_GAME_OPTIONS_CURRENCY_RUR    }, ///< russian rouble
 	{  479, "", TimerGameCalendar::Year{2007}, "",         NBSP "SIT",     "SIT", 1, STR_GAME_OPTIONS_CURRENCY_SIT    }, ///< slovenian tolar
 	{   13, "", CF_NOEURO,                     "",         NBSP "Kr",      "SEK", 1, STR_GAME_OPTIONS_CURRENCY_SEK    }, ///< swedish krona
-	{    3, "", CF_NOEURO,                     "",         NBSP "TL",      "TRY", 1, STR_GAME_OPTIONS_CURRENCY_TRY    }, ///< turkish lira
+	{    3, "", CF_NOEURO,                     "\u20ba",   "",             "TRY", 0, STR_GAME_OPTIONS_CURRENCY_TRY    }, ///< turkish lira
 	{   60, "", TimerGameCalendar::Year{2009}, "",         NBSP "Sk",      "SKK", 1, STR_GAME_OPTIONS_CURRENCY_SKK    }, ///< slovak koruna
 	{    4, "", CF_NOEURO,                     "R$" NBSP,  "",             "BRL", 0, STR_GAME_OPTIONS_CURRENCY_BRL    }, ///< brazil real
 	{   31, "", TimerGameCalendar::Year{2011}, "",         NBSP "EEK",     "EEK", 1, STR_GAME_OPTIONS_CURRENCY_EEK    }, ///< estonian krooni
