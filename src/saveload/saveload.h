@@ -57,7 +57,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LARGER_AI_STATE_COUNTER,            ///<  13.1  2080   0.4.0, 0.4.0.1 AI state counter increased due it storing tile indices
 	SLV_TRANSFER_ORDER,                     ///<  14.0  2441 Transfer orders for feeder systems
 
-	SLV_15,                                 ///<  15.0  2499
+	SLV_MOVE_SEMAPHORE_BITS,                ///<  15.0  2499 Move rail signal bit for semaphores
 	SLV_16,                                 /**<  16.0  2817
 	                                         *    16.1  3155 */
 	SLV_17,                                 /**<  17.0  3212
