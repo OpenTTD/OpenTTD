@@ -102,4 +102,14 @@ using VehicleRandomTriggers = EnumBitSet<VehicleRandomTrigger, uint8_t>;
 template <typename T, VehicleType Tend = VehicleType::CompanyEnd>
 using VehicleTypeIndexArray = EnumIndexArray<T, VehicleType, Tend>;
 
+/** Ground vehicle flags. */
+enum class GroundVehicleFlag : uint8_t {
+	GoingUp = 0, ///< Vehicle is currently going uphill. (Cached track information for acceleration)
+	GoingDown = 1, ///< Vehicle is currently going downhill. (Cached track information for acceleration)
+	SuppressImplicitOrders = 2, ///< Disable insertion and removal of automatic orders until the vehicle completes the real order.
+};
+
+/** Bitset of \c GroundVehicleFlag elements. */
+using GroundVehicleFlags = EnumBitSet<GroundVehicleFlag, uint16_t>;
+
 #endif /* VEHICLE_TYPE_H */

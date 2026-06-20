@@ -474,7 +474,7 @@ static void FixOwnerOfRailTrack(Tile t)
  * @param dir vehicle's direction, or # Direction::Invalid if it can be ignored
  * @return inclination bits to set
  */
-static uint FixVehicleInclination(Vehicle *v, Direction dir)
+static GroundVehicleFlags FixVehicleInclination(Vehicle *v, Direction dir)
 {
 	/* Compute place where this vehicle entered the tile */
 	int entry_x = v->x_pos;
@@ -495,13 +495,13 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 	uint8_t middle_z = GetSlopePixelZ(middle_x, middle_y, true);
 
 	/* middle_z == entry_z, no height change. */
-	if (middle_z == entry_z) return 0;
+	if (middle_z == entry_z) return {};
 
 	/* middle_z < entry_z, we are going downwards. */
-	if (middle_z < entry_z) return 1U << GVF_GOINGDOWN_BIT;
+	if (middle_z < entry_z) return GroundVehicleFlag::GoingDown;
 
 	/* middle_z > entry_z, we are going upwards. */
-	return 1U << GVF_GOINGUP_BIT;
+	return GroundVehicleFlag::GoingUp;
 }
 
 /**
@@ -2750,8 +2750,7 @@ bool AfterLoadGame()
 					t->flags.Reset(VehicleRailFlag{2});
 
 					/* Clear both bits first. */
-					ClrBit(t->gv_flags, GVF_GOINGUP_BIT);
-					ClrBit(t->gv_flags, GVF_GOINGDOWN_BIT);
+					t->gv_flags.Reset({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
 
 					/* Crashed vehicles can't be going up/down. */
 					if (t->vehstatus.Test(VehState::Crashed)) break;
@@ -2764,8 +2763,7 @@ bool AfterLoadGame()
 				}
 				case VehicleType::Road: {
 					RoadVehicle *rv = RoadVehicle::From(v);
-					ClrBit(rv->gv_flags, GVF_GOINGUP_BIT);
-					ClrBit(rv->gv_flags, GVF_GOINGDOWN_BIT);
+					rv->gv_flags.Reset({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
 
 					/* Crashed vehicles can't be going up/down. */
 					if (rv->vehstatus.Test(VehState::Crashed)) break;

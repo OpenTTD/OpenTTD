@@ -1930,11 +1930,11 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 template <typename T>
 static void PrepareToEnterBridge(T *gv)
 {
-	if (HasBit(gv->gv_flags, GVF_GOINGUP_BIT)) {
+	if (gv->gv_flags.Test(GroundVehicleFlag::GoingUp)) {
 		gv->z_pos++;
-		ClrBit(gv->gv_flags, GVF_GOINGUP_BIT);
+		gv->gv_flags.Reset(GroundVehicleFlag::GoingUp);
 	} else {
-		ClrBit(gv->gv_flags, GVF_GOINGDOWN_BIT);
+		gv->gv_flags.Reset(GroundVehicleFlag::GoingDown);
 	}
 }
 
