@@ -727,7 +727,7 @@ bool AfterLoadGame()
 	}
 
 	/* The value of TimerGameCalendar::date_fract got divided, so make sure that old games are converted correctly. */
-	if (IsSavegameVersionBefore(SLV_11, 1) || (IsSavegameVersionBefore(SLV_147) && TimerGameCalendar::date_fract > Ticks::DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
+	if (IsSavegameVersionBefore(SLV_LARGER_TOWN_ITERATOR, 1) || (IsSavegameVersionBefore(SLV_147) && TimerGameCalendar::date_fract > Ticks::DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */

@@ -51,8 +51,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LARGER_TOWN_CARGO_STATISTICS,       ///<   9.0  1909 Increase size of passenger/mail production of this and previous months
 
 	SLV_LARGER_TOWN_COUNTER,                ///<  10.0  2030 Increase size of the town counter
-	SLV_11,                                 /**<  11.0  2033
-	                                         *    11.1  2041 */
+	SLV_LARGER_TOWN_ITERATOR,               /**<  11.0  2033 Increase size of the town iterator
+	                                         *    11.1  2041 Fix vehicle counters */
 	SLV_12,                                 ///<  12.1  2046
 	SLV_13,                                 ///<  13.1  2080   0.4.0, 0.4.0.1
 	SLV_14,                                 ///<  14.0  2441
