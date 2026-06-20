@@ -322,9 +322,9 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 	/* compute new height */
 	uint h = oldh;
 	switch (lm) {
-		case LM_LEVEL: break;
-		case LM_RAISE: h++; break;
-		case LM_LOWER: h--; break;
+		case LevelMode::Level: break;
+		case LevelMode::Raise: h++; break;
+		case LevelMode::Lower: h--; break;
 		default: return { CMD_ERROR, 0, INVALID_TILE };
 	}
 
@@ -333,7 +333,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(ExpensesType::Construction);
-	CommandCost last_error(lm == LM_LEVEL ? STR_ERROR_ALREADY_LEVELLED : INVALID_STRING_ID);
+	CommandCost last_error(lm == LevelMode::Level ? STR_ERROR_ALREADY_LEVELLED : INVALID_STRING_ID);
 	bool had_success = false;
 
 	const Company *c = Company::GetIfValid(_current_company);
