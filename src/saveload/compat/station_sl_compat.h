@@ -148,7 +148,7 @@ const SaveLoadCompat _old_station_sl_compat[] = {
 	SLC_VAR("town"),
 	SLC_VAR("train_station.w"),
 	SLC_VAR("train_station.h"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_4),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_TOWN_TOLERANCE_PAUSE_MODE),
 	SLC_VAR("string_id"),
 	SLC_VAR("name"),
 	SLC_VAR("indtype"),

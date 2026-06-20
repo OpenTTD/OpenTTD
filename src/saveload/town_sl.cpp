@@ -312,7 +312,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, have_ratings,          SLE_UINT16,               SLV_104, SL_MAX_VERSION),
 	SLE_CONDARR(Town, ratings,               SLE_INT16, 8,               SL_MIN_VERSION, SLV_104),
 	SLE_CONDARR(Town, ratings,               SLE_INT16, MAX_COMPANIES, SLV_104, SL_MAX_VERSION),
-	SLE_CONDARR(Town, unwanted,              SLE_INT8,  8,               SLV_4, SLV_104),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8,  8,               SLV_TOWN_TOLERANCE_PAUSE_MODE, SLV_104),
 	SLE_CONDARR(Town, unwanted,              SLE_INT8,  MAX_COMPANIES, SLV_104, SL_MAX_VERSION),
 
 	/* Slots 0 and 2 are passengers and mail respectively for old saves. */

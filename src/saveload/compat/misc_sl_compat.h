@@ -54,8 +54,9 @@ const SaveLoadCompat _date_check_sl_compat[] = {
 	SLC_NULL(2, SL_MIN_VERSION, SLV_109),        // next_competitor_start
 	SLC_NULL(4, SLV_109, SL_MAX_VERSION),        // next_competitor_start
 	SLC_NULL(1, SL_MIN_VERSION, SL_MAX_VERSION), // trees_tick_ctr
-	SLC_NULL(1, SLV_4, SL_MAX_VERSION),          // pause_mode
+	SLC_NULL(1, SLV_TOWN_TOLERANCE_PAUSE_MODE, SL_MAX_VERSION),          // pause_mode
 	SLC_NULL(4, SLV_11, SLV_120),
+	SLC_NULL(4, SLV_LARGER_TOWN_ITERATOR, SLV_120),
 };
 
 /** Original field order for _view_desc. */

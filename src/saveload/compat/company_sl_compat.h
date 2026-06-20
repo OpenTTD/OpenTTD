@@ -115,7 +115,7 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("yearly_expenses"),
 	SLC_VAR("is_ai"),
 	SLC_NULL(1, SLV_107, SLV_112),
-	SLC_NULL(1, SLV_4, SLV_100),
+	SLC_NULL(1, SLV_TOWN_TOLERANCE_PAUSE_MODE, SLV_100),
 	SLC_VAR("terraform_limit"),
 	SLC_VAR("clear_limit"),
 	SLC_VAR("tree_limit"),

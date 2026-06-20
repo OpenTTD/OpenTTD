@@ -645,16 +645,16 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES, 1)) ConvertTownOwner();
 
 	/* from version 4.1 of the savegame, exclusive rights are stored at towns */
-	if (IsSavegameVersionBefore(SLV_4, 1)) UpdateExclusiveRights();
+	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 1)) UpdateExclusiveRights();
 
 	/* from version 4.2 of the savegame, currencies are in a different order */
-	if (IsSavegameVersionBefore(SLV_4, 2)) UpdateCurrencies();
+	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 2)) UpdateCurrencies();
 
 	/* In old version there seems to be a problem that water is owned by
 	 * OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
 	 * (4.3) version, so I just check when versions are older, and then
 	 * walk through the whole map.. */
-	if (IsSavegameVersionBefore(SLV_4, 3)) {
+	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 3)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Water) && GetTileOwner(t) >= MAX_COMPANIES) {
 				SetTileOwner(t, OWNER_WATER);
@@ -694,7 +694,7 @@ bool AfterLoadGame()
 
 		/* the same applies to Company::location_of_HQ */
 		for (Company *c : Company::Iterate()) {
-			if (c->location_of_HQ == 0 || (IsSavegameVersionBefore(SLV_4) && c->location_of_HQ == 0xFFFF)) {
+			if (c->location_of_HQ == 0 || (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE) && c->location_of_HQ == 0xFFFF)) {
 				c->location_of_HQ = INVALID_TILE;
 			}
 		}
@@ -759,7 +759,7 @@ bool AfterLoadGame()
 	 * right value has been chosen in the settings. Otherwise we will be converting
 	 * it incorrectly in half of the times without a means to correct that.
 	 */
-	if (IsSavegameVersionBefore(SLV_4, 2)) _settings_game.station.modified_catchment = false;
+	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 2)) _settings_game.station.modified_catchment = false;
 	if (IsSavegameVersionBefore(SLV_6, 1)) _settings_game.pf.forbid_90_deg = false;
 	if (IsSavegameVersionBefore(SLV_21))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
 	if (IsSavegameVersionBefore(SLV_90))   _settings_game.vehicle.plane_speed = 4;

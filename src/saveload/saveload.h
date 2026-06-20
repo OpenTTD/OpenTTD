@@ -35,11 +35,11 @@ enum SaveLoadVersion : uint16_t {
 	                                         *     2.1         0.3.1, 0.3.2 Unify way of storing town owner
 	                                         *     2.2         lost         New airports */
 	SLV_BIGGER_STATION_VARIABLES,           ///<   3.x         lost         Increase size of airport blocks/station build date
-	SLV_4,                                  /**<   4.0     1
-	                                         *     4.1   122   0.3.3, 0.3.4
-	                                         *     4.2  1222   0.3.5
-	                                         *     4.3  1417
-	                                         *     4.4  1426 */
+	SLV_TOWN_TOLERANCE_PAUSE_MODE,          /**<   4.0     1                Town council tolerance and pause mode
+	                                         *     4.1   122   0.3.3, 0.3.4 Store exclusive rights in towns
+	                                         *     4.2  1222   0.3.5        Currencies are reordered
+	                                         *     4.3  1417                Make water owned by OWNER_NONE
+	                                         *     4.4  1426                Make vehicle references same as other references */
 
 	SLV_5,                                  /**<   5.0  1429
 	                                         *     5.1  1440
