@@ -164,7 +164,7 @@ const SaveLoadCompat _old_station_sl_compat[] = {
 	SLC_VAR("airport.flags"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_26),
 	SLC_VAR("last_vehicle_type"),
-	SLC_NULL(2, SLV_3, SLV_26),
+	SLC_NULL(2, SLV_BIGGER_STATION_VARIABLES, SLV_26),
 	SLC_VAR("build_date"),
 	SLC_VAR("bus_stops"),
 	SLC_VAR("truck_stops"),

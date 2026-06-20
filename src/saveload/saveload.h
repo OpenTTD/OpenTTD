@@ -34,7 +34,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_VEHICLE_CURRENCY_STATION_CHANGES,   /**<   2.0         0.3.0        Adding vehicle state, larger currency size for statistics, station size revamped.
 	                                         *     2.1         0.3.1, 0.3.2 Unify way of storing town owner
 	                                         *     2.2         lost         New airports */
-	SLV_3,                                  ///<   3.x         lost
+	SLV_BIGGER_STATION_VARIABLES,           ///<   3.x         lost         Increase size of airport blocks/station build date
 	SLV_4,                                  /**<   4.0     1
 	                                         *     4.1   122   0.3.3, 0.3.4
 	                                         *     4.2  1222   0.3.5
