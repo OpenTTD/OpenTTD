@@ -23,10 +23,10 @@ static const SaveLoad _subsidies_desc[] = {
 	SLE_CONDVAR(Subsidy, awarded,    SLE_UINT8,                                     SLV_125, SL_MAX_VERSION),
 	SLE_CONDVARNAME(Subsidy, src.type, "src_type", SLE_UINT8,                       SLV_125, SL_MAX_VERSION),
 	SLE_CONDVARNAME(Subsidy, dst.type, "dst_type", SLE_UINT8,                       SLV_125, SL_MAX_VERSION),
-	SLE_CONDVARNAME(Subsidy, src.id, "src",  SLE_FILE_U8 | SLE_VAR_U16,             SL_MIN_VERSION, SLV_5),
-	SLE_CONDVARNAME(Subsidy, src.id, "src",  SLE_UINT16,                            SLV_5, SL_MAX_VERSION),
-	SLE_CONDVARNAME(Subsidy, dst.id, "dst",  SLE_FILE_U8 | SLE_VAR_U16,             SL_MIN_VERSION, SLV_5),
-	SLE_CONDVARNAME(Subsidy, dst.id, "dst",  SLE_UINT16,                            SLV_5, SL_MAX_VERSION),
+	SLE_CONDVARNAME(Subsidy, src.id, "src",  SLE_FILE_U8 | SLE_VAR_U16,             SL_MIN_VERSION, SLV_BIG_MAP),
+	SLE_CONDVARNAME(Subsidy, src.id, "src",  SLE_UINT16,                            SLV_BIG_MAP, SL_MAX_VERSION),
+	SLE_CONDVARNAME(Subsidy, dst.id, "dst",  SLE_FILE_U8 | SLE_VAR_U16,             SL_MIN_VERSION, SLV_BIG_MAP),
+	SLE_CONDVARNAME(Subsidy, dst.id, "dst",  SLE_UINT16,                            SLV_BIG_MAP, SL_MAX_VERSION),
 };
 
 struct SUBSChunkHandler : ChunkHandler {

@@ -41,9 +41,9 @@ enum SaveLoadVersion : uint16_t {
 	                                         *     4.3  1417                Make water owned by OWNER_NONE
 	                                         *     4.4  1426                Make vehicle references same as other references */
 
-	SLV_5,                                  /**<   5.0  1429
-	                                         *     5.1  1440
-	                                         *     5.2  1525   0.3.6 */
+	SLV_BIG_MAP,                            /**<   5.0  1429 Making maps a different size than 256x256
+	                                         *     5.1  1440 Flexible airport layouts
+	                                         *     5.2  1525   0.3.6 Dynamic order array */
 	SLV_6,                                  /**<   6.0  1721
 	                                         *     6.1  1768 */
 	SLV_7,                                  ///<   7.0  1770

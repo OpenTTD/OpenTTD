@@ -160,7 +160,7 @@ const SaveLoadCompat _old_station_sl_compat[] = {
 	SLC_VAR("facilities"),
 	SLC_VAR("airport.type"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_6),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_5),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_BIG_MAP),
 	SLC_VAR("airport.flags"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_26),
 	SLC_VAR("last_vehicle_type"),

@@ -298,7 +298,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 					} else {
 						v->orders = mapping[v->old_orders];
 						/* For old games (case a) we must create the shared vehicle chain */
-						if (IsSavegameVersionBefore(SLV_5, 2)) {
+						if (IsSavegameVersionBefore(SLV_BIG_MAP, 2)) {
 							v->AddToShared(v->orders->GetFirstSharedVehicle());
 						}
 					}
@@ -684,8 +684,8 @@ public:
 		    SLE_VAR(Vehicle, progress,              SLE_UINT8),
 
 		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
-		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_5),
-		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_BIG_MAP),
+		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_UINT16,                   SLV_BIG_MAP, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, last_loading_station,  SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, cargo_type,            SLE_UINT8),
@@ -711,13 +711,13 @@ public:
 		/* This next line is for version 4 and prior compatibility.. it temporarily reads
 		type and flags (which were both 4 bits) into type. Later on this is
 		converted correctly */
-		SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SL_MIN_VERSION,   SLV_5),
-		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_5),
+		SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SL_MIN_VERSION,   SLV_BIG_MAP),
+		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_BIG_MAP),
 
 		/* Orders for version 5 and on */
-		SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SLV_5, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, current_order.flags,   SLE_UINT8,                    SLV_5, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SLV_BIG_MAP, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.flags,   SLE_UINT8,                    SLV_BIG_MAP, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   SLV_BIG_MAP, SL_MAX_VERSION),
 
 		/* Refit in current order */
 		SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             SLV_36, SL_MAX_VERSION),
@@ -967,8 +967,8 @@ public:
 		     SLE_VAR(Aircraft, crashed_counter,       SLE_UINT16),
 		     SLE_VAR(Aircraft, pos,                   SLE_UINT8),
 
-		 SLE_CONDVAR(Aircraft, targetairport,         SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION, SLV_5),
-		 SLE_CONDVAR(Aircraft, targetairport,         SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, targetairport,         SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION, SLV_BIG_MAP),
+		 SLE_CONDVAR(Aircraft, targetairport,         SLE_UINT16,                   SLV_BIG_MAP, SL_MAX_VERSION),
 
 		     SLE_VAR(Aircraft, state,                 SLE_UINT8),
 
@@ -1066,8 +1066,8 @@ public:
 
 		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),
 		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
-		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION,         SLV_5),
-		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", SLE_UINT16,                SLV_5,                  SLV_DISASTER_VEH_STATE),
+		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION,         SLV_BIG_MAP),
+		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", SLE_UINT16,                SLV_BIG_MAP,                  SLV_DISASTER_VEH_STATE),
 		SLE_CONDVAR(DisasterVehicle,     state,                       SLE_UINT16,                SLV_DISASTER_VEH_STATE, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, SLE_FILE_U16 | SLE_VAR_U32),
@@ -1159,13 +1159,13 @@ struct VEHSChunkHandler : ChunkHandler {
 			}
 
 			/* Old savegames used 'last_station_visited = 0xFF' */
-			if (IsSavegameVersionBefore(SLV_5) && v->last_station_visited == 0xFF) {
+			if (IsSavegameVersionBefore(SLV_BIG_MAP) && v->last_station_visited == 0xFF) {
 				v->last_station_visited = StationID::Invalid();
 			}
 
 			if (IsSavegameVersionBefore(SLV_182)) v->last_loading_station = StationID::Invalid();
 
-			if (IsSavegameVersionBefore(SLV_5)) {
+			if (IsSavegameVersionBefore(SLV_BIG_MAP)) {
 				/* Convert the current_order.type (which is a mix of type and flags, because
 				 *  in those versions, they both were 4 bits big) to type and flags */
 				v->current_order.flags = GB(v->current_order.type, 4, 4);

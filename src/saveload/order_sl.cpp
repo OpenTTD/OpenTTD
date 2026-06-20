@@ -163,12 +163,12 @@ struct ORDRChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		if (IsSavegameVersionBefore(SLV_5, 2)) {
+		if (IsSavegameVersionBefore(SLV_BIG_MAP, 2)) {
 			/* Version older than 5.2 did not have a ->next pointer. Convert them
 			 * (in the old days, the orderlist was 5000 items big) */
 			size_t len = SlGetFieldLength();
 
-			if (IsSavegameVersionBefore(SLV_5)) {
+			if (IsSavegameVersionBefore(SLV_BIG_MAP)) {
 				/* Pre-version 5 had another layout for orders
 				 * (uint16_t instead of uint32_t) */
 				len /= sizeof(uint16_t);
@@ -180,7 +180,7 @@ struct ORDRChunkHandler : ChunkHandler {
 					auto &item = AllocateOldOrder(i);
 					item.order.AssignOrder(UnpackVersion4Order(orders[i]));
 				}
-			} else if (IsSavegameVersionBefore(SLV_5, 2)) {
+			} else if (IsSavegameVersionBefore(SLV_BIG_MAP, 2)) {
 				len /= sizeof(uint32_t);
 				std::vector<uint32_t> orders(len);
 

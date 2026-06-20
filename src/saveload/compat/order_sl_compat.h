@@ -23,7 +23,7 @@ const SaveLoadCompat _order_sl_compat[] = {
 	SLC_VAR("wait_time"),
 	SLC_VAR("travel_time"),
 	SLC_VAR("max_speed"),
-	SLC_NULL(10, SLV_5, SLV_36),
+	SLC_NULL(10, SLV_BIG_MAP, SLV_36),
 };
 
 /** Original field order for _orderlist_desc. */
