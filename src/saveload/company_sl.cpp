@@ -506,8 +506,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDSSTRNAME(CompanyProperties, face.style_label, "face_style", SLE_STR, SLV_FACE_STYLES, SL_MAX_VERSION),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(CompanyProperties, money,                 SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_1),
-	SLE_CONDVAR(CompanyProperties, money,                 SLE_INT64,                   SLV_1, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, money,                 SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_BIG_CURRENCY),
+	SLE_CONDVAR(CompanyProperties, money,                 SLE_INT64,                   SLV_BIG_CURRENCY, SL_MAX_VERSION),
 
 	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
 	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  SLV_65, SL_MAX_VERSION),

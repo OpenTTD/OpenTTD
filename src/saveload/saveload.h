@@ -30,7 +30,7 @@
 enum SaveLoadVersion : uint16_t {
 	SL_MIN_VERSION,                         ///< First savegame version
 
-	SLV_1,                                  ///<   1.0         0.1.x, 0.2.x
+	SLV_BIG_CURRENCY,                       ///<   1.0         0.1.x, 0.2.x Change currency from 32 to 64 bits
 	SLV_2,                                  /**<   2.0         0.3.0
 	                                         *     2.1         0.3.1, 0.3.2 */
 	SLV_3,                                  ///<   3.x         lost
