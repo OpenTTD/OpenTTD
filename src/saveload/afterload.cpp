@@ -1037,7 +1037,7 @@ bool AfterLoadGame()
 
 	/* From version 16.0, we included autorenew on engines, which are now saved, but
 	 *  of course, we do need to initialize them for older savegames. */
-	if (IsSavegameVersionBefore(SLV_16)) {
+	if (IsSavegameVersionBefore(SLV_ENGINE_RENEW)) {
 		for (Company *c : Company::Iterate()) {
 			c->engine_renew_list            = nullptr;
 			c->settings.engine_renew        = false;
@@ -1378,7 +1378,7 @@ bool AfterLoadGame()
 	/* In version 16.1 of the savegame a company can decide if trains, which get
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
-	if (IsSavegameVersionBefore(SLV_16, 1)) {
+	if (IsSavegameVersionBefore(SLV_ENGINE_RENEW, 1)) {
 		for (Company *c : Company::Iterate()) c->settings.renew_keep_length = false;
 	}
 

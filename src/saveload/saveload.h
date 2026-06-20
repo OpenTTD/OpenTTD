@@ -58,8 +58,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TRANSFER_ORDER,                     ///<  14.0  2441 Transfer orders for feeder systems
 
 	SLV_MOVE_SEMAPHORE_BITS,                ///<  15.0  2499 Move rail signal bit for semaphores
-	SLV_16,                                 /**<  16.0  2817
-	                                         *    16.1  3155 */
+	SLV_ENGINE_RENEW,                       /**<  16.0  2817 Automatic replacing/renewing of vehicles
+	                                         *    16.1  3155 Keep vehicle length during autoreplace */
 	SLV_17,                                 /**<  17.0  3212
 	                                         *    17.1  3218 */
 	SLV_18,                                 ///<  18    3227

@@ -315,9 +315,9 @@ public:
 	static inline const SaveLoad description[] = {
 		/* Engine renewal settings */
 		SLE_CONDREF(CompanyProperties, engine_renew_list,            REF_ENGINE_RENEWS,   SLV_19, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew,        SLE_BOOL,            SLV_16, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16,           SLV_16, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money,  SLE_UINT32,          SLV_16, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew,        SLE_BOOL,            SLV_ENGINE_RENEW, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16,           SLV_ENGINE_RENEW, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money,  SLE_UINT32,          SLV_ENGINE_RENEW, SL_MAX_VERSION),
 		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length,   SLE_BOOL,            SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 		/* Default vehicle settings */
