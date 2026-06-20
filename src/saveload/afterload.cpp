@@ -1031,7 +1031,7 @@ bool AfterLoadGame()
 
 	/* From version 9.0, we update the max passengers of a town (was sometimes negative
 	 *  before that. */
-	if (IsSavegameVersionBefore(SLV_9)) {
+	if (IsSavegameVersionBefore(SLV_LARGER_TOWN_CARGO_STATISTICS)) {
 		for (Town *t : Town::Iterate()) UpdateTownMaxPass(t);
 	}
 

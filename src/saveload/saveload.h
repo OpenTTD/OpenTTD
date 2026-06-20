@@ -48,7 +48,7 @@ enum SaveLoadVersion : uint16_t {
 	                                         *     6.1  1768 Town index in m2 */
 	SLV_LARGER_CARGO_SOURCE,                ///<   7.0  1770 With more stations, the size of the cargo source needed to be increased
 	SLV_LARGER_UNIT_NUMBER,                 ///<   8.0  1786 Increase size of (vehicle) unit numbers
-	SLV_9,                                  ///<   9.0  1909
+	SLV_LARGER_TOWN_CARGO_STATISTICS,       ///<   9.0  1909 Increase size of passenger/mail production of this and previous months
 
 	SLV_10,                                 ///<  10.0  2030
 	SLV_11,                                 /**<  11.0  2033
