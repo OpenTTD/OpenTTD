@@ -24,8 +24,8 @@ const SaveLoadCompat _company_old_ai_buildrec_compat[] = {
 /** Original field order for SlCompanyOldAI. */
 const SaveLoadCompat _company_old_ai_compat[] = {
 	SLC_NULL(2,  SL_MIN_VERSION, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION, SLV_13),
-	SLC_NULL(4, SLV_13, SLV_107),
+	SLC_NULL(2,  SL_MIN_VERSION, SLV_LARGER_AI_STATE_COUNTER),
+	SLC_NULL(4, SLV_LARGER_AI_STATE_COUNTER, SLV_107),
 	SLC_NULL(8,  SL_MIN_VERSION, SLV_107),
 	SLC_VAR("num_build_rec"),
 	SLC_NULL(3,  SL_MIN_VERSION, SLV_107),

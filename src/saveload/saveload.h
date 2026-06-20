@@ -54,7 +54,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LARGER_TOWN_ITERATOR,               /**<  11.0  2033 Increase size of the town iterator
 	                                         *    11.1  2041 Fix vehicle counters */
 	SLV_LINK_WAYPOINT_TO_TOWN,              ///<  12.1  2046 Link waypoints to towns and remove some bit stuffing
-	SLV_13,                                 ///<  13.1  2080   0.4.0, 0.4.0.1
+	SLV_LARGER_AI_STATE_COUNTER,            ///<  13.1  2080   0.4.0, 0.4.0.1 AI state counter increased due it storing tile indices
 	SLV_14,                                 ///<  14.0  2441
 
 	SLV_15,                                 ///<  15.0  2499
