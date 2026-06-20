@@ -2537,7 +2537,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Whakarer
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ingoa o tō kaitākaro
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Ngā mahi whakahaere mō tēnei kiritaki
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Ngā mahi whakahaere mō tēnei umanga
-STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Honoa tēnei umanga
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Whakauru ki tēnei umanga
 STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}Whakamanaia tēnei kiritaki kia whakauru ki tō umanga
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Tukuna he karere ki tēnei kaitākaro
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Tukuna he karere ki ngā kaitākaro katoa i tēnei umanga
