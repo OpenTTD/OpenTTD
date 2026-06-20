@@ -25,8 +25,8 @@ const SaveLoadCompat _date_sl_compat[] = {
 	SLC_NULL(2, SL_MIN_VERSION, SLV_120),
 	SLC_VAR("random_state[0]"),
 	SLC_VAR("random_state[1]"),
-	SLC_NULL(1, SL_MIN_VERSION,  SLV_10),
-	SLC_NULL(4, SLV_10, SLV_120),
+	SLC_NULL(1, SL_MIN_VERSION,  SLV_LARGER_TOWN_COUNTER),
+	SLC_NULL(4, SLV_LARGER_TOWN_COUNTER, SLV_120),
 	SLC_VAR("company_tick_counter"),
 	SLC_VAR("next_competitor_start"),
 	SLC_VAR("trees_tick_counter"),
@@ -48,8 +48,8 @@ const SaveLoadCompat _date_check_sl_compat[] = {
 	SLC_NULL(2, SL_MIN_VERSION, SLV_120),
 	SLC_NULL(4, SL_MIN_VERSION, SL_MAX_VERSION), // random.state[0]
 	SLC_NULL(4, SL_MIN_VERSION, SL_MAX_VERSION), // random.state[1]
-	SLC_NULL(1,  SL_MIN_VERSION,  SLV_10),
-	SLC_NULL(4, SLV_10, SLV_120),
+	SLC_NULL(1,  SL_MIN_VERSION,  SLV_LARGER_TOWN_COUNTER),
+	SLC_NULL(4, SLV_LARGER_TOWN_COUNTER, SLV_120),
 	SLC_NULL(1, SL_MIN_VERSION, SL_MAX_VERSION), // cur_company_tick_index
 	SLC_NULL(2, SL_MIN_VERSION, SLV_109),        // next_competitor_start
 	SLC_NULL(4, SLV_109, SL_MAX_VERSION),        // next_competitor_start
