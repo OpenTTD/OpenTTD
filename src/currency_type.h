@@ -75,6 +75,15 @@ enum Currency : uint8_t {
 /** Bitmask of \c Currency. */
 using Currencies = EnumBitSet<Currency, uint64_t, CURRENCY_END>;
 
+/** The currency symbol positions that we can show. */
+enum class CurrencySymbolPosition : uint8_t {
+	Prefix, ///< Show the prefix value.
+	Suffix, ///< Show the suffix value.
+};
+
+/** Bitmask of \c CurrencySymbolPosition. */
+using CurrencySymbolPositions = EnumBitSet<CurrencySymbolPosition, uint8_t>;
+
 /** Specification of a currency. */
 struct CurrencySpec {
 	uint16_t rate; ///< The conversion rate compared to the base currency.
@@ -83,16 +92,7 @@ struct CurrencySpec {
 	std::string prefix; ///< Prefix to apply when formatting money in this currency.
 	std::string suffix; ///< Suffix to apply when formatting money in this currency.
 	std::string code; ///< 3 letter untranslated code to identify the currency.
-	/**
-	 * The currency symbol is represented by two possible values, prefix and suffix
-	 * Usage of one or the other is determined by #symbol_pos.
-	 * 0 = prefix
-	 * 1 = suffix
-	 * 2 = both : Special case only for custom currency.
-	 *            It is not a spec from Newgrf,
-	 *            rather a way to let users do what they want with custom currency
-	 */
-	uint8_t symbol_pos;
+	CurrencySymbolPositions symbol_pos; ///< Which currency symbols should we show?
 	StringID name; ///< Translated name of this currency.
 };
 
