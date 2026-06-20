@@ -1362,10 +1362,10 @@ struct StationViewWindow : public Window {
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowById(WindowClass::TrainList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Train, this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WindowClass::RoadVehicleList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Road, this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WindowClass::ShipList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Ship, this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WindowClass::AircraftList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Aircraft, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::TrainList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Train, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::RoadVehicleList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Road, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::ShipList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Ship, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::AircraftList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Aircraft, this->owner, this->window_number).ToWindowNumber(), false);
 
 		SetViewportCatchmentStation(Station::Get(this->window_number), false);
 		this->Window::Close();

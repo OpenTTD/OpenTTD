@@ -53,10 +53,10 @@ BaseStation::~BaseStation()
 {
 	if (CleaningPool()) return;
 
-	CloseWindowById(WindowClass::TrainList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Train, this->owner, this->index).ToWindowNumber());
-	CloseWindowById(WindowClass::RoadVehicleList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Road, this->owner, this->index).ToWindowNumber());
-	CloseWindowById(WindowClass::ShipList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Ship, this->owner, this->index).ToWindowNumber());
-	CloseWindowById(WindowClass::AircraftList, VehicleListIdentifier(VL_STATION_LIST, VehicleType::Aircraft, this->owner, this->index).ToWindowNumber());
+	CloseWindowById(WindowClass::TrainList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Train, this->owner, this->index).ToWindowNumber());
+	CloseWindowById(WindowClass::RoadVehicleList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Road, this->owner, this->index).ToWindowNumber());
+	CloseWindowById(WindowClass::ShipList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Ship, this->owner, this->index).ToWindowNumber());
+	CloseWindowById(WindowClass::AircraftList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Aircraft, this->owner, this->index).ToWindowNumber());
 
 	this->sign.MarkDirty();
 }

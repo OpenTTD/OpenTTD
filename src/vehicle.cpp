@@ -3048,7 +3048,7 @@ void Vehicle::RemoveFromShared()
 	/* Remember if we were first and the old window number before RemoveVehicle()
 	 * as this changes first if needed. */
 	bool were_first = (this->FirstShared() == this);
-	VehicleListIdentifier vli(VL_SHARED_ORDERS, this->type, this->owner, this->FirstShared()->index);
+	VehicleListIdentifier vli(VehicleListType::VehicleSharedOrders, this->type, this->owner, this->FirstShared()->index);
 
 	this->orders->RemoveVehicle(this);
 
