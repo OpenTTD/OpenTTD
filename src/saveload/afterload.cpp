@@ -1057,7 +1057,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_48)) {
+	if (IsSavegameVersionBefore(SLV_RAIL_TRACK_TYPE_UNIFICATION)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
