@@ -1433,7 +1433,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_26)) {
+	if (IsSavegameVersionBefore(SLV_LAST_VEHICLE_TYPE)) {
 		for (Station *st : Station::Iterate()) {
 			st->last_vehicle_type = VehicleType::Invalid;
 		}

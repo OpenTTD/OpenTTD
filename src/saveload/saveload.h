@@ -72,7 +72,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ELRAIL,                             ///<  24    4150 Electrified railways
 
 	SLV_IMPROVE_MULTISTOP,                  ///<  25    4259 Improve the behaviour of RVs going to road stops
-	SLV_26,                                 ///<  26    4466
+	SLV_LAST_VEHICLE_TYPE,                  ///<  26    4466 Store the last vehicle type at stations instead of the vehicle ID
 	SLV_27,                                 ///<  27    4757
 	SLV_28,                                 ///<  28    4987
 	SLV_29,                                 ///<  29    5070
