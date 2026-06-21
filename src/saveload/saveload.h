@@ -66,7 +66,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ENGINE_RENEW_POOL,                  ///<  19    3396 Engine renews are now stored in a pool
 
 	SLV_NO_MULTIHEAD_REFERENCE,             ///<  20    3403 Remove reference from one multihead to the other one
-	SLV_21,                                 ///<  21    3472   0.4.x
+	SLV_REMOVE_OLD_PBS,                     ///<  21    3472   0.4.x Remove old implementation of path based signals
 	SLV_22,                                 ///<  22    3726
 	SLV_23,                                 ///<  23    3915
 	SLV_24,                                 ///<  24    4150

@@ -761,7 +761,7 @@ bool AfterLoadGame()
 	 */
 	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 2)) _settings_game.station.modified_catchment = false;
 	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1)) _settings_game.pf.forbid_90_deg = false;
-	if (IsSavegameVersionBefore(SLV_21))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
+	if (IsSavegameVersionBefore(SLV_REMOVE_OLD_PBS))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
 	if (IsSavegameVersionBefore(SLV_90))   _settings_game.vehicle.plane_speed = 4;
 	if (IsSavegameVersionBefore(SLV_95))   _settings_game.vehicle.dynamic_engines = false;
 	if (IsSavegameVersionBefore(SLV_96))   _settings_game.economy.station_noise_level = false;
@@ -1391,7 +1391,7 @@ bool AfterLoadGame()
 
 	/* From version 15, we moved a semaphore bit from bit 2 to bit 3 in m4, making
 	 *  room for PBS. Now in version 21 move it back :P. */
-	if (IsSavegameVersionBefore(SLV_21) && !IsSavegameVersionBefore(SLV_MOVE_SEMAPHORE_BITS)) {
+	if (IsSavegameVersionBefore(SLV_REMOVE_OLD_PBS) && !IsSavegameVersionBefore(SLV_MOVE_SEMAPHORE_BITS)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
