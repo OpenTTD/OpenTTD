@@ -395,7 +395,7 @@ static void NewSpriteGroup(ByteReader &buf)
 				DeterministicSpriteGroupAdjust &adjust = group->adjusts.emplace_back();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust.operation = group->adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf.ReadByte();
+				adjust.operation = group->adjusts.size() == 1 ? DeterministicSpriteGroupAdjustOperation::Add : static_cast<DeterministicSpriteGroupAdjustOperation>(buf.ReadByte());
 				adjust.variable  = buf.ReadByte();
 				if (adjust.variable == 0x7E) {
 					/* Link subroutine group */

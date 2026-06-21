@@ -137,30 +137,31 @@ enum class DeterministicSpriteGroupAdjustType : uint8_t {
 	Mod, ///< Apply modulus adjustment to value.
 };
 
-enum DeterministicSpriteGroupAdjustOperation : uint8_t {
-	DSGA_OP_ADD,  ///< a + b
-	DSGA_OP_SUB,  ///< a - b
-	DSGA_OP_SMIN, ///< (signed) min(a, b)
-	DSGA_OP_SMAX, ///< (signed) max(a, b)
-	DSGA_OP_UMIN, ///< (unsigned) min(a, b)
-	DSGA_OP_UMAX, ///< (unsigned) max(a, b)
-	DSGA_OP_SDIV, ///< (signed) a / b
-	DSGA_OP_SMOD, ///< (signed) a % b
-	DSGA_OP_UDIV, ///< (unsigned) a / b
-	DSGA_OP_UMOD, ///< (unsigned) a & b
-	DSGA_OP_MUL,  ///< a * b
-	DSGA_OP_AND,  ///< a & b
-	DSGA_OP_OR,   ///< a | b
-	DSGA_OP_XOR,  ///< a ^ b
-	DSGA_OP_STO,  ///< store a into temporary storage, indexed by b. return a
-	DSGA_OP_RST,  ///< return b
-	DSGA_OP_STOP, ///< store a into persistent storage, indexed by b, return a
-	DSGA_OP_ROR,  ///< rotate a b positions to the right
-	DSGA_OP_SCMP, ///< (signed) comparison (a < b -> 0, a == b = 1, a > b = 2)
-	DSGA_OP_UCMP, ///< (unsigned) comparison (a < b -> 0, a == b = 1, a > b = 2)
-	DSGA_OP_SHL,  ///< a << b
-	DSGA_OP_SHR,  ///< (unsigned) a >> b
-	DSGA_OP_SAR,  ///< (signed) a >> b
+/** Deterministic sprite group adjust operation. */
+enum class DeterministicSpriteGroupAdjustOperation : uint8_t {
+	Add, ///< a + b
+	Sub, ///< a - b
+	SMin, ///< (signed) min(a, b)
+	SMax, ///< (signed) max(a, b)
+	UMin, ///< (unsigned) min(a, b)
+	UMax, ///< (unsigned) max(a, b)
+	SDiv, ///< (signed) a / b
+	SMod, ///< (signed) a % b
+	UDiv, ///< (unsigned) a / b
+	UMod, ///< (unsigned) a & b
+	Mul, ///< a * b
+	And, ///< a & b
+	Or, ///< a | b
+	Xor, ///< a ^ b
+	Sto, ///< store a into temporary storage, indexed by b. return a
+	Rst, ///< return b
+	Stop, ///< store a into persistent storage, indexed by b, return a
+	Ror, ///< rotate a b positions to the right
+	SCmp, ///< (signed) comparison (a < b -> 0, a == b = 1, a > b = 2)
+	UCmp, ///< (unsigned) comparison (a < b -> 0, a == b = 1, a > b = 2)
+	Shl, ///< a << b
+	Shr, ///< (unsigned) a >> b
+	Sar, ///< (signed) a >> b
 };
 
 
