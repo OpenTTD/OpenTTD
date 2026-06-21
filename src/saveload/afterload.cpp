@@ -1334,7 +1334,7 @@ bool AfterLoadGame()
 	}
 
 	/* Elrails got added in rev 24 */
-	if (IsSavegameVersionBefore(SLV_24)) {
+	if (IsSavegameVersionBefore(SLV_ELRAIL)) {
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (Train *v : Train::Iterate()) {
