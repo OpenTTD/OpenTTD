@@ -209,9 +209,10 @@ protected:
 	ResolverResult Resolve(ResolverObject &object) const override;
 };
 
-enum RandomizedSpriteGroupCompareMode : uint8_t {
-	RSG_CMP_ANY,
-	RSG_CMP_ALL,
+/** Randomized sprite group comparisation mode. */
+enum class RandomizedSpriteGroupCompareMode : uint8_t {
+	Any, ///< Match if any bit is triggered.
+	All, ///< Match if all bits are triggered.
 };
 
 struct RandomizedSpriteGroup : SpecializedSpriteGroup<RandomizedSpriteGroup> {

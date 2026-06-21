@@ -508,8 +508,8 @@ static void NewSpriteGroup(ByteReader &buf)
 			}
 
 			uint8_t triggers = buf.ReadByte();
-			group->triggers       = GB(triggers, 0, 7);
-			group->cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
+			group->triggers = GB(triggers, 0, 7);
+			group->cmp_mode = HasBit(triggers, 7) ? RandomizedSpriteGroupCompareMode::All : RandomizedSpriteGroupCompareMode::Any;
 			group->lowest_randbit = buf.ReadByte();
 
 			uint8_t num_groups = buf.ReadByte();
