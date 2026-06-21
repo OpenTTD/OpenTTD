@@ -89,7 +89,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DISABLE_ELRAIL_SETTING,             ///<  38    7195 Add setting to disable electrified rails
 	SLV_FREIGHT_WEIGHT,                     ///<  39    7269 Setting to increase the weight of cargo on freight trains
 
-	SLV_40,                                 ///<  40    7326
+	SLV_GRADUAL_LOADING,                    ///<  40    7326 Gradual (un)loading of cargo
 	SLV_41,                                 ///<  41    7348   0.5.x
 	SLV_42,                                 ///<  42    7573
 	SLV_43,                                 ///<  43    7642
