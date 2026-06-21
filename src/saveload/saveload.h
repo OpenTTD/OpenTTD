@@ -91,7 +91,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_GRADUAL_LOADING,                    ///<  40    7326 Gradual (un)loading of cargo
 	SLV_NEWGRF_SETTINGS,                    ///<  41    7348   0.5.x Save what NewGRFs are used in the game and their settings
-	SLV_42,                                 ///<  42    7573
+	SLV_BRIDGE_WORMHOLE,                    ///<  42    7573 Bridges become wormholes, so more things can be built under them (e.g. signals)
 	SLV_43,                                 ///<  43    7642
 	SLV_44,                                 ///<  44    8144
 

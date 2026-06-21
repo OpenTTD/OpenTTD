@@ -1087,7 +1087,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_61)) {
 		/* Added the RoadType */
-		bool old_bridge = IsSavegameVersionBefore(SLV_42);
+		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Road:
@@ -1126,7 +1126,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_114)) {
 		bool fix_roadtypes = !IsSavegameVersionBefore(SLV_61);
-		bool old_bridge = IsSavegameVersionBefore(SLV_42);
+		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
 
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
@@ -1223,7 +1223,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_42)) {
+	if (IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE)) {
 		for (auto t : Map::Iterate()) {
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
 			if (IsBridgeTile(t)) {

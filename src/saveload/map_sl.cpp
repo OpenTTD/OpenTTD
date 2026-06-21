@@ -266,7 +266,7 @@ struct MAPEChunkHandler : ChunkHandler {
 		std::array<uint8_t, MAP_SL_BUF_SIZE> buf;
 		uint size = Map::Size();
 
-		if (IsSavegameVersionBefore(SLV_42)) {
+		if (IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE)) {
 			for (TileIndex i{}; i != size;) {
 				/* 1024, otherwise we overflow on 64x64 maps! */
 				SlCopy(buf.data(), 1024, SLE_UINT8);
