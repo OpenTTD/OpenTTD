@@ -116,7 +116,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_VEHICLE_GROUPS,                     ///<  60    9874 Arbitrary grouping, by the player, of vehicles
 	SLV_MULTIPLE_ROAD_TYPES,                ///<  61    9892 Multiple road types for the same tile
 	SLV_ADJACENT_STATIONS,                  ///<  62    9905 Allow building multiple stations directly next to eachother
-	SLV_63,                                 ///<  63    9956
+	SLV_TRAM_LIVERY,                        ///<  63    9956 Add separate livery for trams
 	SLV_64,                                 ///<  64   10006
 
 	SLV_65,                                 ///<  65   10210
