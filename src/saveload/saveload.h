@@ -77,7 +77,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_YAPF,                               ///<  28    4987 Yet another path finder
 	SLV_MORE_UNDER_BRIDGES,                 ///<  29    5070 Support crossings, fields and bridge/tunnel heads under bridges
 
-	SLV_30,                                 ///<  30    5946
+	SLV_TGP,                                ///<  30    5946 TerraGenesis Perlin
 	SLV_31,                                 ///<  31    5999
 	SLV_32,                                 ///<  32    6001
 	SLV_33,                                 ///<  33    6440
