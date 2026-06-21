@@ -102,7 +102,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SIMPLIFY_PLAYER_FACE,               ///<  49    8969 Simplify the storage of player face information
 
 	SLV_AIRCRAFT_SPEED_HOLDING,             ///<  50    8973 Aircraft speed in km-ish/h and reduced speed in holding patterns
-	SLV_51,                                 ///<  51    8978
+	SLV_FEEDER_SHARE,                       ///<  51    8978 Rewrite of transfers to retain knowledge about the already paid amount for transfered cargo
 	SLV_52,                                 ///<  52    9066
 	SLV_53,                                 ///<  53    9316
 	SLV_54,                                 ///<  54    9613

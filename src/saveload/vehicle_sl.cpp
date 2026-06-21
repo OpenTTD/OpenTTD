@@ -762,7 +762,7 @@ public:
 		SLE_CONDVAR(Vehicle, profit_this_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
 		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
-		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_FILE_I32 | SLE_VAR_I64,  SLV_51,  SLV_65),
+		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_FILE_I32 | SLE_VAR_I64,  SLV_FEEDER_SHARE,  SLV_65),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_INT64,                   SLV_65,  SLV_68),
 		SLE_CONDVAR(Vehicle, value,                 SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
 		SLE_CONDVAR(Vehicle, value,                 SLE_INT64,                   SLV_65, SL_MAX_VERSION),
