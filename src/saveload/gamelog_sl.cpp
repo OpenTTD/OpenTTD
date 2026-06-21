@@ -384,9 +384,9 @@ struct GLOGChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_gamelog_desc, _gamelog_sl_compat);
 
 		if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
-			uint8_t type;
-			while ((type = SlReadByte()) != GLAT_NONE) {
-				if (type >= GLAT_END) SlErrorCorrupt("Invalid gamelog action type");
+			GamelogActionType type;
+			while ((type = static_cast<GamelogActionType>(SlReadByte())) != GamelogActionType::None) {
+				if (type >= GamelogActionType::End) SlErrorCorrupt("Invalid gamelog action type");
 
 				LoggedAction &la = gamelog.data->action.emplace_back();
 				la.at = (GamelogActionType)type;

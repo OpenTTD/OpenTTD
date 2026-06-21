@@ -13,16 +13,16 @@
 #include "newgrf_config.h"
 
 /** The actions we log. */
-enum GamelogActionType : uint8_t {
-	GLAT_START,        ///< Game created
-	GLAT_LOAD,         ///< Game loaded
-	GLAT_GRF,          ///< GRF changed
-	GLAT_CHEAT,        ///< Cheat was used
-	GLAT_SETTING,      ///< Setting changed
-	GLAT_GRFBUG,       ///< GRF bug was triggered
-	GLAT_EMERGENCY,    ///< Emergency savegame
-	GLAT_END,          ///< So we know how many GLATs are there
-	GLAT_NONE  = 0xFF, ///< No logging active; in savegames, end of list
+enum class GamelogActionType : uint8_t {
+	Start, ///< Game created.
+	Load, ///< Game loaded.
+	GRF, ///< GRF changed.
+	Cheat, ///< Cheat was used.
+	Setting, ///< Setting changed.
+	GRFBug, ///< GRF bug was triggered.
+	Emergency, ///< Emergency savegame.
+	End, ///< End marker.
+	None = 0xFF, ///< No logging active; in savegames, end of list.
 };
 
 /** Type of logged change */

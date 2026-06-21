@@ -3207,7 +3207,7 @@ static SaveLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check
 		/* The only part from AfterLoadGame() we need */
 		_load_check_data.grf_compatibility = IsGoodGRFConfigList(_load_check_data.grfconfig);
 	} else {
-		_gamelog.StartAction(GLAT_LOAD);
+		_gamelog.StartAction(GamelogActionType::Load);
 
 		/* After loading fix up savegame for any internal changes that
 		 * might have occurred since then. If it fails, load back the old game. */
@@ -3274,7 +3274,7 @@ SaveLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, Deta
 			if (!LoadOldSaveGame(filename)) return SaveLoadResult::ReInit;
 			_sl_version = SL_MIN_VERSION;
 			_sl_minor_version = 0;
-			_gamelog.StartAction(GLAT_LOAD);
+			_gamelog.StartAction(GamelogActionType::Load);
 			if (!AfterLoadGame()) {
 				_gamelog.StopAction();
 				return SaveLoadResult::ReInit;
