@@ -1806,9 +1806,9 @@ STR_CONFIG_SETTING_QUICKGOTO                                    :快速建立車
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :設定是否在打開指令視窗時自動選取「前往」按鈕。
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :預設的鐵道、道路及電車軌道類型（開啟新遊戲或載入遊戲後）：{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :開始或載入遊戲後可選鐵道、道路及電車軌道類型。「最舊可用」選擇最舊的類型，「最新可用」選擇最新的類型，「最常用」則選擇目前使用最頻繁的類型
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :開始或載入遊戲後可選鐵道、道路及電車軌道的類型。「最先可用」選擇最早出現而可用的類型，「最新可用」選擇最後出現而可用的類型，「最常用」則選擇目前使用最頻繁的類型
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :最舊可用
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :最先可用
 STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :最新可用
 STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :最常用
 
