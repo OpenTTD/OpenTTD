@@ -29,13 +29,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_MODE) return;
+		if (lc->ct != GamelogChangeType::Mode) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_MODE) return;
+		if (lc->ct != GamelogChangeType::Mode) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -58,13 +58,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_REVISION) return;
+		if (lc->ct != GamelogChangeType::Revision) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_REVISION) return;
+		if (lc->ct != GamelogChangeType::Revision) return;
 		SlObject(lc, this->GetLoadDescription());
 
 		if (IsSavegameVersionBefore(SLV_STRING_GAMELOG)) {
@@ -87,13 +87,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_OLDVER) return;
+		if (lc->ct != GamelogChangeType::OldVer) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_OLDVER) return;
+		if (lc->ct != GamelogChangeType::OldVer) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -111,13 +111,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_SETTING) return;
+		if (lc->ct != GamelogChangeType::Setting) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_SETTING) return;
+		if (lc->ct != GamelogChangeType::Setting) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -134,13 +134,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFADD) return;
+		if (lc->ct != GamelogChangeType::GRFAdd) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFADD) return;
+		if (lc->ct != GamelogChangeType::GRFAdd) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -156,13 +156,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFREM) return;
+		if (lc->ct != GamelogChangeType::GRFRem) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFREM) return;
+		if (lc->ct != GamelogChangeType::GRFRem) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -179,13 +179,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFCOMPAT) return;
+		if (lc->ct != GamelogChangeType::GRFCompat) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFCOMPAT) return;
+		if (lc->ct != GamelogChangeType::GRFCompat) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -201,13 +201,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFPARAM) return;
+		if (lc->ct != GamelogChangeType::GRFParam) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFPARAM) return;
+		if (lc->ct != GamelogChangeType::GRFParam) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -224,13 +224,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFMOVE) return;
+		if (lc->ct != GamelogChangeType::GRFMove) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFMOVE) return;
+		if (lc->ct != GamelogChangeType::GRFMove) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -248,13 +248,13 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFBUG) return;
+		if (lc->ct != GamelogChangeType::GRFBug) return;
 		SlObject(lc, this->GetDescription());
 	}
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_GRFBUG) return;
+		if (lc->ct != GamelogChangeType::GRFBug) return;
 		SlObject(lc, this->GetLoadDescription());
 	}
 
@@ -273,7 +273,7 @@ public:
 
 	void Save(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_EMERGENCY) return;
+		if (lc->ct != GamelogChangeType::Emergency) return;
 
 		_is_emergency_save = true;
 		SlObject(lc, this->GetDescription());
@@ -281,7 +281,7 @@ public:
 
 	void Load(LoggedChange *lc) const override
 	{
-		if (lc->ct != GLCT_EMERGENCY) return;
+		if (lc->ct != GamelogChangeType::Emergency) return;
 
 		SlObject(lc, this->GetLoadDescription());
 	}
@@ -292,19 +292,19 @@ public:
 static std::unique_ptr<LoggedChange> MakeLoggedChange(GamelogChangeType type)
 {
 	switch (type) {
-		case GLCT_MODE:      return std::make_unique<LoggedChangeMode>();
-		case GLCT_REVISION:  return std::make_unique<LoggedChangeRevision>();
-		case GLCT_OLDVER:    return std::make_unique<LoggedChangeOldVersion>();
-		case GLCT_SETTING:   return std::make_unique<LoggedChangeSettingChanged>();
-		case GLCT_GRFADD:    return std::make_unique<LoggedChangeGRFAdd>();
-		case GLCT_GRFREM:    return std::make_unique<LoggedChangeGRFRemoved>();
-		case GLCT_GRFCOMPAT: return std::make_unique<LoggedChangeGRFChanged>();
-		case GLCT_GRFPARAM:  return std::make_unique<LoggedChangeGRFParameterChanged>();
-		case GLCT_GRFMOVE:   return std::make_unique<LoggedChangeGRFMoved>();
-		case GLCT_GRFBUG:    return std::make_unique<LoggedChangeGRFBug>();
-		case GLCT_EMERGENCY: return std::make_unique<LoggedChangeEmergencySave>();
-		case GLCT_END:
-		case GLCT_NONE:
+		case GamelogChangeType::Mode:      return std::make_unique<LoggedChangeMode>();
+		case GamelogChangeType::Revision:  return std::make_unique<LoggedChangeRevision>();
+		case GamelogChangeType::OldVer:    return std::make_unique<LoggedChangeOldVersion>();
+		case GamelogChangeType::Setting:   return std::make_unique<LoggedChangeSettingChanged>();
+		case GamelogChangeType::GRFAdd:    return std::make_unique<LoggedChangeGRFAdd>();
+		case GamelogChangeType::GRFRem:    return std::make_unique<LoggedChangeGRFRemoved>();
+		case GamelogChangeType::GRFCompat: return std::make_unique<LoggedChangeGRFChanged>();
+		case GamelogChangeType::GRFParam:  return std::make_unique<LoggedChangeGRFParameterChanged>();
+		case GamelogChangeType::GRFMove:   return std::make_unique<LoggedChangeGRFMoved>();
+		case GamelogChangeType::GRFBug:    return std::make_unique<LoggedChangeGRFBug>();
+		case GamelogChangeType::Emergency: return std::make_unique<LoggedChangeEmergencySave>();
+		case GamelogChangeType::End:
+		case GamelogChangeType::None:
 		default:
 			SlErrorCorrupt("Invalid gamelog action type");
 	}
@@ -333,7 +333,7 @@ public:
 		SlSetStructListLength(la->change.size());
 
 		for (auto &lc : la->change) {
-			assert(lc->ct < GLCT_END);
+			assert(lc->ct < GamelogChangeType::End);
 			SlObject(lc.get(), this->GetDescription());
 		}
 	}
@@ -348,9 +348,9 @@ public:
 	void Load(LoggedAction *la) const override
 	{
 		if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
-			uint8_t type;
-			while ((type = SlReadByte()) != GLCT_NONE) {
-				if (type >= GLCT_END) SlErrorCorrupt("Invalid gamelog change type");
+			GamelogChangeType type;
+			while ((type = static_cast<GamelogChangeType>(SlReadByte())) != GamelogChangeType::None) {
+				if (type >= GamelogChangeType::End) SlErrorCorrupt("Invalid gamelog change type");
 				LoadChange(la, (GamelogChangeType)type);
 			}
 			return;

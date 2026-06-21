@@ -359,13 +359,13 @@ void Gamelog::Emergency()
 
 /**
  * Finds out if current game is a loaded emergency savegame.
- * @return \c true iff an action with GLCT_EMERGENCY change exists.
+ * @return \c true iff an action with GamelogChangeType::Emergency change exists.
  */
 bool Gamelog::TestEmergency()
 {
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {
-			if (lc->ct == GLCT_EMERGENCY) return true;
+			if (lc->ct == GamelogChangeType::Emergency) return true;
 		}
 	}
 
@@ -420,7 +420,7 @@ void Gamelog::Setting(const std::string &name, int32_t oldval, int32_t newval)
 
 /**
  * Finds out if current revision is different than last revision stored in the savegame.
- * Appends GLCT_REVISION when the revision string changed
+ * Appends GamelogChangeType::Revision when the revision string changed
  */
 void Gamelog::TestRevision()
 {
@@ -428,7 +428,7 @@ void Gamelog::TestRevision()
 
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {
-			if (lc->ct == GLCT_REVISION) rev = static_cast<const LoggedChangeRevision *>(lc.get());
+			if (lc->ct == GamelogChangeType::Revision) rev = static_cast<const LoggedChangeRevision *>(lc.get());
 		}
 	}
 
@@ -449,7 +449,7 @@ void Gamelog::TestMode()
 
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {
-			if (lc->ct == GLCT_MODE) mode = static_cast<const LoggedChangeMode *>(lc.get());
+			if (lc->ct == GamelogChangeType::Mode) mode = static_cast<const LoggedChangeMode *>(lc.get());
 		}
 	}
 
@@ -483,7 +483,7 @@ bool Gamelog::GRFBugReverse(uint32_t grfid, uint16_t internal_id)
 {
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {
-			if (lc->ct == GLCT_GRFBUG) {
+			if (lc->ct == GamelogChangeType::GRFBug) {
 				LoggedChangeGRFBug *bug = static_cast<LoggedChangeGRFBug *>(lc.get());
 				if (bug->grfid == grfid && bug->bug == GRFBug::VehLength && bug->data == internal_id) {
 					return false;
@@ -690,14 +690,14 @@ void Gamelog::Info(uint32_t *last_ottd_rev, uint8_t *ever_modified, bool *remove
 			switch (lc->ct) {
 				default: break;
 
-				case GLCT_REVISION: {
+				case GamelogChangeType::Revision: {
 					const LoggedChangeRevision *rev = static_cast<const LoggedChangeRevision *>(lc.get());
 					*last_ottd_rev = rev->newgrf;
 					*ever_modified = std::max(*ever_modified, rev->modified);
 					break;
 				}
 
-				case GLCT_GRFREM:
+				case GamelogChangeType::GRFRem:
 					*removed_newgrfs = true;
 					break;
 			}
@@ -716,7 +716,7 @@ const GRFIdentifier &Gamelog::GetOverriddenIdentifier(const GRFConfig &c)
 	if (la.at != GamelogActionType::Load) return c.ident;
 
 	for (const auto &lc : la.change) {
-		if (lc->ct != GLCT_GRFCOMPAT) continue;
+		if (lc->ct != GamelogChangeType::GRFCompat) continue;
 
 		const LoggedChangeGRFChanged &grf = *static_cast<const LoggedChangeGRFChanged *>(lc.get());
 		if (grf.grfid == c.ident.grfid) return grf;
