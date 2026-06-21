@@ -1514,7 +1514,7 @@ bool AfterLoadGame()
 
 	/* From version 53, the map array was changed for house tiles to allow
 	 * space for newhouses grf features. A new byte, m7, was also added. */
-	if (IsSavegameVersionBefore(SLV_53)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_HOUSES)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::House)) {
 				if (GB(t.m3(), 6, 2) != TOWN_HOUSE_COMPLETED) {

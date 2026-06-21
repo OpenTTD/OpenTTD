@@ -104,7 +104,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_AIRCRAFT_SPEED_HOLDING,             ///<  50    8973 Aircraft speed in km-ish/h and reduced speed in holding patterns
 	SLV_FEEDER_SHARE,                       ///<  51    8978 Rewrite of transfers to retain knowledge about the already paid amount for transfered cargo
 	SLV_STATUE_OWNER,                       ///<  52    9066 Store the owner of the statue, so the town can be informed of their removal
-	SLV_53,                                 ///<  53    9316
+	SLV_NEWGRF_HOUSES,                      ///<  53    9316 NewGRF controlled houses
 	SLV_54,                                 ///<  54    9613
 
 	SLV_55,                                 ///<  55    9638
