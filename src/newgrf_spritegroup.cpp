@@ -148,9 +148,9 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ResolverObjec
 	value  &= adjust.and_mask;
 
 	switch (adjust.type) {
-		case DSGA_TYPE_DIV:  value = ((S)value + (S)adjust.add_val) / (S)adjust.divmod_val; break;
-		case DSGA_TYPE_MOD:  value = ((S)value + (S)adjust.add_val) % (S)adjust.divmod_val; break;
-		case DSGA_TYPE_NONE: break;
+		case DeterministicSpriteGroupAdjustType::Div: value = ((S)value + (S)adjust.add_val) / (S)adjust.divmod_val; break;
+		case DeterministicSpriteGroupAdjustType::Mod: value = ((S)value + (S)adjust.add_val) % (S)adjust.divmod_val; break;
+		case DeterministicSpriteGroupAdjustType::None: break;
 	}
 
 	switch (adjust.operation) {

@@ -130,10 +130,11 @@ enum class DeterministicSpriteGroupSize : uint8_t {
 	DWord, ///< Treat variable as a DWord.
 };
 
-enum DeterministicSpriteGroupAdjustType : uint8_t {
-	DSGA_TYPE_NONE,
-	DSGA_TYPE_DIV,
-	DSGA_TYPE_MOD,
+/** Deterministic sprite group adjust type. */
+enum class DeterministicSpriteGroupAdjustType : uint8_t {
+	None, ///< No adjustment.
+	Div, ///< Apply divide adjustment to value.
+	Mod, ///< Apply modulus adjustment to value.
 };
 
 enum DeterministicSpriteGroupAdjustOperation : uint8_t {

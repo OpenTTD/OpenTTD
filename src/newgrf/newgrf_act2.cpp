@@ -406,15 +406,15 @@ static void NewSpriteGroup(ByteReader &buf)
 
 				varadjust = buf.ReadByte();
 				adjust.shift_num = GB(varadjust, 0, 5);
-				adjust.type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
-				adjust.and_mask  = buf.ReadVarSize(varsize);
+				adjust.type = static_cast<DeterministicSpriteGroupAdjustType>(GB(varadjust, 6, 2));
+				adjust.and_mask = buf.ReadVarSize(varsize);
 
-				if (adjust.type != DSGA_TYPE_NONE) {
-					adjust.add_val    = buf.ReadVarSize(varsize);
+				if (adjust.type != DeterministicSpriteGroupAdjustType::None) {
+					adjust.add_val = buf.ReadVarSize(varsize);
 					adjust.divmod_val = buf.ReadVarSize(varsize);
 					if (adjust.divmod_val == 0) adjust.divmod_val = 1; // Ensure that divide by zero cannot occur
 				} else {
-					adjust.add_val    = 0;
+					adjust.add_val = 0;
 					adjust.divmod_val = 0;
 				}
 
