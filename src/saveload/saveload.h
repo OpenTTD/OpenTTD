@@ -96,7 +96,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CARGO_SOURCE_TILE,                  ///<  44    8144 Store the source tile of the cargo, so accurate payment can happen when the source station is removed
 
 	SLV_COUNT_PAID_FOR_CARGO,               ///<  45    8501 Count the amount of cargo that was paid for
-	SLV_46,                                 ///<  46    8705
+	SLV_MORE_AIRPORT_BLOCKS,                ///<  46    8705 Increase number of blocks an airport can have
 	SLV_47,                                 ///<  47    8735
 	SLV_48,                                 ///<  48    8935
 	SLV_49,                                 ///<  49    8969
