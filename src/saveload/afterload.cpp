@@ -1653,7 +1653,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_52)) {
+	if (IsSavegameVersionBefore(SLV_STATUE_OWNER)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Object) && t.m5() == OBJECT_STATUE) {
 				t.m2() = CalcClosestTownFromTile(t)->index.base();
