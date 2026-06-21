@@ -165,7 +165,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	ResetObjectToPlace();
 
 	_gamelog.Reset();
-	_gamelog.StartAction(GLAT_START);
+	_gamelog.StartAction(GamelogActionType::Start);
 	_gamelog.Revision();
 	_gamelog.Mode();
 	_gamelog.GRFAddList(_grfconfig);

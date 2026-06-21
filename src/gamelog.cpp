@@ -33,7 +33,7 @@ Gamelog _gamelog; ///< Gamelog instance
 Gamelog::Gamelog()
 {
 	this->data = std::make_unique<GamelogInternalData>();
-	this->action_type = GLAT_NONE;
+	this->action_type = GamelogActionType::None;
 	this->current_action = nullptr;
 }
 
@@ -66,7 +66,7 @@ static std::string GetGamelogRevisionString()
  */
 void Gamelog::StartAction(GamelogActionType at)
 {
-	assert(this->action_type == GLAT_NONE); // do not allow starting new action without stopping the previous first
+	assert(this->action_type == GamelogActionType::None); // do not allow starting new action without stopping the previous first
 	this->action_type = at;
 }
 
@@ -75,19 +75,19 @@ void Gamelog::StartAction(GamelogActionType at)
  */
 void Gamelog::StopAction()
 {
-	assert(this->action_type != GLAT_NONE); // nobody should try to stop if there is no action in progress
+	assert(this->action_type != GamelogActionType::None); // nobody should try to stop if there is no action in progress
 
 	bool print = this->current_action != nullptr;
 
 	this->current_action = nullptr;
-	this->action_type = GLAT_NONE;
+	this->action_type = GamelogActionType::None;
 
 	if (print) this->PrintDebug(5);
 }
 
 void Gamelog::StopAnyAction()
 {
-	if (this->action_type != GLAT_NONE) this->StopAction();
+	if (this->action_type != GamelogActionType::None) this->StopAction();
 }
 
 /**
@@ -95,7 +95,7 @@ void Gamelog::StopAnyAction()
  */
 void Gamelog::Reset()
 {
-	assert(this->action_type == GLAT_NONE);
+	assert(this->action_type == GamelogActionType::None);
 	this->data->action.clear();
 	this->current_action  = nullptr;
 }
@@ -129,7 +129,7 @@ static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, 
 
 
 /** Text messages for various logged actions */
-static const std::string_view la_text[] = {
+static constexpr EnumIndexArray<std::string_view, GamelogActionType, GamelogActionType::End> la_text{
 	"new game started",
 	"game loaded",
 	"GRF config changed",
@@ -138,8 +138,6 @@ static const std::string_view la_text[] = {
 	"GRF bug triggered",
 	"emergency savegame",
 };
-
-static_assert(lengthof(la_text) == GLAT_END);
 
 /**
  * Prints active gamelog
@@ -152,7 +150,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	proc("---- gamelog start ----");
 
 	for (const LoggedAction &la : this->data->action) {
-		assert(la.at < GLAT_END);
+		assert(la.at < GamelogActionType::End);
 
 		proc(fmt::format("Tick {}: {}", la.tick, la_text[la.at]));
 
@@ -243,7 +241,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 {
 	/* A NewGRF got removed from the game, either manually or by it missing when loading the game. */
 	auto gm = grf_names.find(this->grfid);
-	if (action_type == GLAT_LOAD) {
+	if (action_type == GamelogActionType::Load) {
 		fmt::format_to(output_iterator, "Missing NewGRF: ");
 	} else {
 		fmt::format_to(output_iterator, "Removed NewGRF: ");
@@ -252,7 +250,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	if (gm == grf_names.end()) {
 		fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 	} else {
-		if (action_type == GLAT_LOAD) {
+		if (action_type == GamelogActionType::Load) {
 			/* Missing grfs on load are not removed from the configuration */
 			gm->second.was_missing = true;
 		} else {
@@ -336,7 +334,7 @@ void Gamelog::PrintDebug(int level)
 void Gamelog::Change(std::unique_ptr<LoggedChange> &&change)
 {
 	if (this->current_action == nullptr) {
-		if (this->action_type == GLAT_NONE) return;
+		if (this->action_type == GamelogActionType::None) return;
 
 		this->current_action = &this->data->action.emplace_back();
 		this->current_action->at = this->action_type;
@@ -353,8 +351,8 @@ void Gamelog::Change(std::unique_ptr<LoggedChange> &&change)
 void Gamelog::Emergency()
 {
 	/* Terminate any active action */
-	if (this->action_type != GLAT_NONE) this->StopAction();
-	this->StartAction(GLAT_EMERGENCY);
+	if (this->action_type != GamelogActionType::None) this->StopAction();
+	this->StartAction(GamelogActionType::Emergency);
 	this->Change(std::make_unique<LoggedChangeEmergencySave>());
 	this->StopAction();
 }
@@ -379,7 +377,7 @@ bool Gamelog::TestEmergency()
  */
 void Gamelog::Revision()
 {
-	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
+	assert(this->action_type == GamelogActionType::Start || this->action_type == GamelogActionType::Load);
 
 	this->Change(std::make_unique<LoggedChangeRevision>(
 		GetGamelogRevisionString(), _openttd_newgrf_version, SAVEGAME_VERSION, _openttd_revision_modified));
@@ -390,7 +388,7 @@ void Gamelog::Revision()
  */
 void Gamelog::Mode()
 {
-	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD || this->action_type == GLAT_CHEAT);
+	assert(this->action_type == GamelogActionType::Start || this->action_type == GamelogActionType::Load || this->action_type == GamelogActionType::Cheat);
 
 	this->Change(std::make_unique<LoggedChangeMode>(_game_mode, _settings_game.game_creation.landscape));
 }
@@ -400,7 +398,7 @@ void Gamelog::Mode()
  */
 void Gamelog::Oldver()
 {
-	assert(this->action_type == GLAT_LOAD);
+	assert(this->action_type == GamelogActionType::Load);
 
 	this->Change(std::make_unique<LoggedChangeOldVersion>(_savegame_type,
 		(_savegame_type == SGT_OTTD ? ((uint32_t)_sl_version << 8 | _sl_minor_version) : _ttdp_version)));
@@ -414,7 +412,7 @@ void Gamelog::Oldver()
  */
 void Gamelog::Setting(const std::string &name, int32_t oldval, int32_t newval)
 {
-	assert(this->action_type == GLAT_SETTING);
+	assert(this->action_type == GamelogActionType::Setting);
 
 	this->Change(std::make_unique<LoggedChangeSettingChanged>(name, oldval, newval));
 }
@@ -467,7 +465,7 @@ void Gamelog::TestMode()
  */
 void Gamelog::GRFBug(uint32_t grfid, ::GRFBug bug, uint64_t data)
 {
-	assert(this->action_type == GLAT_GRFBUG);
+	assert(this->action_type == GamelogActionType::GRFBug);
 
 	this->Change(std::make_unique<LoggedChangeGRFBug>(data, grfid, bug));
 }
@@ -494,7 +492,7 @@ bool Gamelog::GRFBugReverse(uint32_t grfid, uint16_t internal_id)
 		}
 	}
 
-	this->StartAction(GLAT_GRFBUG);
+	this->StartAction(GamelogActionType::GRFBug);
 	this->GRFBug(grfid, GRFBug::VehLength, internal_id);
 	this->StopAction();
 
@@ -518,7 +516,7 @@ static inline bool IsLoggableGrfConfig(const GRFConfig &g)
  */
 void Gamelog::GRFRemove(uint32_t grfid)
 {
-	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_GRF);
+	assert(this->action_type == GamelogActionType::Load || this->action_type == GamelogActionType::GRF);
 
 	this->Change(std::make_unique<LoggedChangeGRFRemoved>(grfid));
 }
@@ -529,7 +527,7 @@ void Gamelog::GRFRemove(uint32_t grfid)
  */
 void Gamelog::GRFAdd(const GRFConfig &newg)
 {
-	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_START || this->action_type == GLAT_GRF);
+	assert(this->action_type == GamelogActionType::Load || this->action_type == GamelogActionType::Start || this->action_type == GamelogActionType::GRF);
 
 	if (!IsLoggableGrfConfig(newg)) return;
 
@@ -543,7 +541,7 @@ void Gamelog::GRFAdd(const GRFConfig &newg)
  */
 void Gamelog::GRFCompatible(const GRFIdentifier &newg)
 {
-	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_GRF);
+	assert(this->action_type == GamelogActionType::Load || this->action_type == GamelogActionType::GRF);
 
 	this->Change(std::make_unique<LoggedChangeGRFChanged>(newg));
 }
@@ -555,7 +553,7 @@ void Gamelog::GRFCompatible(const GRFIdentifier &newg)
  */
 void Gamelog::GRFMove(uint32_t grfid, int32_t offset)
 {
-	assert(this->action_type == GLAT_GRF);
+	assert(this->action_type == GamelogActionType::GRF);
 
 	this->Change(std::make_unique<LoggedChangeGRFMoved>(grfid, offset));
 }
@@ -567,7 +565,7 @@ void Gamelog::GRFMove(uint32_t grfid, int32_t offset)
  */
 void Gamelog::GRFParameters(uint32_t grfid)
 {
-	assert(this->action_type == GLAT_GRF);
+	assert(this->action_type == GamelogActionType::GRF);
 
 	this->Change(std::make_unique<LoggedChangeGRFParameterChanged>(grfid));
 }
@@ -579,7 +577,7 @@ void Gamelog::GRFParameters(uint32_t grfid)
  */
 void Gamelog::GRFAddList(const GRFConfigList &newg)
 {
-	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
+	assert(this->action_type == GamelogActionType::Start || this->action_type == GamelogActionType::Load);
 
 	for (const auto &c : newg) {
 		this->GRFAdd(*c);
@@ -715,7 +713,7 @@ void Gamelog::Info(uint32_t *last_ottd_rev, uint8_t *ever_modified, bool *remove
 const GRFIdentifier &Gamelog::GetOverriddenIdentifier(const GRFConfig &c)
 {
 	const LoggedAction &la = this->data->action.back();
-	if (la.at != GLAT_LOAD) return c.ident;
+	if (la.at != GamelogActionType::Load) return c.ident;
 
 	for (const auto &lc : la.change) {
 		if (lc->ct != GLCT_GRFCOMPAT) continue;

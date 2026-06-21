@@ -1925,7 +1925,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		NewGRFWindow *nw = dynamic_cast<NewGRFWindow*>(w);
 		assert(nw != nullptr);
 
-		_gamelog.StartAction(GLAT_GRF);
+		_gamelog.StartAction(GamelogActionType::GRF);
 		_gamelog.GRFUpdate(_grfconfig, nw->actives); // log GRF changes
 		CopyGRFConfigList(nw->orig_list, nw->actives, false);
 		ReloadNewGRFData();
