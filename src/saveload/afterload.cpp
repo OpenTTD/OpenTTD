@@ -1630,7 +1630,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_49)) {
+	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PLAYER_FACE)) {
 		/* Perform conversion of very old face bits. */
 		for (Company *c : Company::Iterate()) {
 			c->face = ConvertFromOldCompanyManagerFace(c->face.bits);

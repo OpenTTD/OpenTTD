@@ -99,7 +99,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MORE_AIRPORT_BLOCKS,                ///<  46    8705 Increase number of blocks an airport can have
 	SLV_DRIVE_THROUGH_ROAD_STOPS,           ///<  47    8735 Drive through road stops
 	SLV_RAIL_TRACK_TYPE_UNIFICATION,        ///<  48    8935 Put all the rail track type information in same map bits
-	SLV_49,                                 ///<  49    8969
+	SLV_SIMPLIFY_PLAYER_FACE,               ///<  49    8969 Simplify the storage of player face information
 
 	SLV_50,                                 ///<  50    8973
 	SLV_51,                                 ///<  51    8978
