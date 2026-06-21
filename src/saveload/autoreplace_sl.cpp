@@ -21,7 +21,7 @@ static const SaveLoad _engine_renew_desc[] = {
 	    SLE_VAR(EngineRenew, to,       SLE_UINT16),
 
 	    SLE_REF(EngineRenew, next,     REF_ENGINE_RENEWS),
-	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, SLV_60, SL_MAX_VERSION),
+	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, SLV_VEHICLE_GROUPS, SL_MAX_VERSION),
 	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, SLV_175, SL_MAX_VERSION),
 };
 
@@ -49,7 +49,7 @@ struct ERNWChunkHandler : ChunkHandler {
 			SlObject(er, slt);
 
 			/* Advanced vehicle lists, ungrouped vehicles got added */
-			if (IsSavegameVersionBefore(SLV_60)) {
+			if (IsSavegameVersionBefore(SLV_VEHICLE_GROUPS)) {
 				er->group_id = ALL_GROUP;
 			} else if (IsSavegameVersionBefore(SLV_71)) {
 				if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;

@@ -772,7 +772,7 @@ public:
 		SLE_CONDVARNAME(Vehicle, waiting_random_triggers, "waiting_triggers", SLE_UINT8, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 		SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_60, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_VEHICLE_GROUPS, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, current_order_time,    SLE_FILE_U32 | SLE_VAR_I32,  SLV_67, SLV_TIMETABLE_TICKS_TYPE),
 		SLE_CONDVAR(Vehicle, current_order_time,    SLE_INT32,                   SLV_TIMETABLE_TICKS_TYPE, SL_MAX_VERSION),
@@ -1173,7 +1173,7 @@ struct VEHSChunkHandler : ChunkHandler {
 			}
 
 			/* Advanced vehicle lists got added */
-			if (IsSavegameVersionBefore(SLV_60)) v->group_id = DEFAULT_GROUP;
+			if (IsSavegameVersionBefore(SLV_VEHICLE_GROUPS)) v->group_id = DEFAULT_GROUP;
 		}
 	}
 

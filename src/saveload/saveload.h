@@ -113,7 +113,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER,      ///<  58    9762 Difficulty settings for very low number of industries and towns
 	SLV_TOWN_LAYOUT,                        ///<  59    9779 More layout options for towns
 
-	SLV_60,                                 ///<  60    9874
+	SLV_VEHICLE_GROUPS,                     ///<  60    9874 Arbitrary grouping, by the player, of vehicles
 	SLV_61,                                 ///<  61    9892
 	SLV_62,                                 ///<  62    9905
 	SLV_63,                                 ///<  63    9956
