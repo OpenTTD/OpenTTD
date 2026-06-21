@@ -86,7 +86,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LIVERY_REFIT,                       ///<  35    6602 NewGRF livery refits
 	SLV_REFIT_ORDERS,                       ///<  36    6624 Vehicles can be refitted as part of an order
 	SLV_UTF8,                               ///<  37    7182 UTF-8 strings
-	SLV_38,                                 ///<  38    7195
+	SLV_DISABLE_ELRAIL_SETTING,             ///<  38    7195 Add setting to disable electrified rails
 	SLV_39,                                 ///<  39    7269
 
 	SLV_40,                                 ///<  40    7326
