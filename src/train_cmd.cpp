@@ -316,7 +316,7 @@ uint16_t Train::GetCurveSpeedLimit() const
 	static const int absolute_max_speed = UINT16_MAX;
 	int max_speed = absolute_max_speed;
 
-	if (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) return max_speed;
+	if (_settings_game.vehicle.train_acceleration_model == AccelerationModel::Original) return max_speed;
 
 	int curvecount[2] = {0, 0};
 
@@ -387,11 +387,11 @@ uint16_t Train::GetCurveSpeedLimit() const
 int Train::GetCurrentMaxSpeed() const
 {
 	const Train *moving_front = this->GetMovingFront();
-	int max_speed = _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL ?
+	int max_speed = _settings_game.vehicle.train_acceleration_model == AccelerationModel::Original ?
 			this->gcache.cached_max_track_speed :
 			this->tcache.cached_max_curve_speed;
 
-	if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC && IsRailStationTile(moving_front->tile)) {
+	if (_settings_game.vehicle.train_acceleration_model == AccelerationModel::Realistic && IsRailStationTile(moving_front->tile)) {
 		StationID sid = GetStationIndex(moving_front->tile);
 		if (this->current_order.ShouldStopAtStation(this, sid)) {
 			int station_ahead;
@@ -417,7 +417,7 @@ int Train::GetCurrentMaxSpeed() const
 	}
 
 	for (const Train *u = this; u != nullptr; u = u->Next()) {
-		if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC && u->track == Track::Depot) {
+		if (_settings_game.vehicle.train_acceleration_model == AccelerationModel::Realistic && u->track == Track::Depot) {
 			constexpr int DEPOT_SPEED_LIMIT = 61;
 			max_speed = std::min(max_speed, DEPOT_SPEED_LIMIT);
 			break;
@@ -2169,7 +2169,7 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 			v->force_proceed = TFP_NONE;
 			InvalidateWindowData(WindowClass::VehicleView, v->index);
 
-			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && v->cur_speed != 0) {
+			if (_settings_game.vehicle.train_acceleration_model != AccelerationModel::Original && v->cur_speed != 0) {
 				v->flags.Flip(VehicleRailFlag::Reversing);
 			} else {
 				v->cur_speed = 0;
@@ -3068,10 +3068,10 @@ int Train::UpdateSpeed()
 {
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
-		case AM_ORIGINAL:
+		case AccelerationModel::Original:
 			return this->DoUpdateSpeed(this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2), 0, this->GetCurrentMaxSpeed());
 
-		case AM_REALISTIC:
+		case AccelerationModel::Realistic:
 			return this->DoUpdateSpeed(this->GetAcceleration(), this->GetAccelerationStatus() == AS_BRAKE ? 0 : 2, this->GetCurrentMaxSpeed());
 	}
 }
@@ -3145,7 +3145,7 @@ static const AccelerationSlowdownParams _accel_slowdown[] = {
  */
 static inline void AffectSpeedByZChange(Train *consist, int z_diff)
 {
-	if (z_diff == 0 || _settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) return;
+	if (z_diff == 0 || _settings_game.vehicle.train_acceleration_model != AccelerationModel::Original) return;
 
 	const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(consist->GetAccelerationType())];
 
@@ -3548,7 +3548,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 				update_signals_crossing = true;
 
 				if (chosen_dir != v->GetMovingDirection()) {
-					if (prev == nullptr && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
+					if (prev == nullptr && _settings_game.vehicle.train_acceleration_model == AccelerationModel::Original) {
 						const AccelerationSlowdownParams *asp = &_accel_slowdown[static_cast<int>(v->GetAccelerationType())];
 						DirDiff diff = DirDifference(v->direction, chosen_dir);
 						v->cur_speed -= (diff == DirDiff::Right45 || diff == DirDiff::Left45 ? asp->small_turn : asp->large_turn) * v->cur_speed >> 8;

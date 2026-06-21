@@ -2634,9 +2634,9 @@ struct VehicleDetailsWindow : Window {
 				/* Draw max speed */
 				uint64_t max_speed = PackVelocity(v->GetDisplayMaxSpeed(), v->type);
 				if (v->type == VehicleType::Train ||
-						(v->type == VehicleType::Road && _settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL)) {
+						(v->type == VehicleType::Road && _settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original)) {
 					const GroundVehicleCache *gcache = v->GetGroundVehicleCache();
-					if (v->type == VehicleType::Train && (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL ||
+					if (v->type == VehicleType::Train && (_settings_game.vehicle.train_acceleration_model == AccelerationModel::Original ||
 							Train::From(v)->GetAccelerationType() == VehicleAccelerationModel::Maglev)) {
 						DrawString(tr, GetString(STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, gcache->cached_weight, gcache->cached_power, max_speed));
 					} else {

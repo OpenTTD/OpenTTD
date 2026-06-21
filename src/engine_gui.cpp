@@ -339,7 +339,7 @@ static std::string GetTrainEngineInfoString(const Engine &e)
 		is_maglev &= GetRailTypeInfo(rt)->acceleration_type == VehicleAccelerationModel::Maglev;
 	}
 
-	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && !is_maglev) {
+	if (_settings_game.vehicle.train_acceleration_model != AccelerationModel::Original && !is_maglev) {
 		res << GetString(STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE, PackVelocity(e.GetDisplayMaxSpeed(), e.type), e.GetPower(), e.GetDisplayMaxTractiveEffort());
 		res << '\n';
 	} else {
@@ -390,7 +390,7 @@ static std::string GetRoadVehEngineInfoString(const Engine &e)
 {
 	std::stringstream res;
 
-	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
+	if (_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original) {
 		res << GetString(STR_ENGINE_PREVIEW_COST_MAX_SPEED, e.GetCost(), PackVelocity(e.GetDisplayMaxSpeed(), e.type));
 		res << '\n';
 	} else {

@@ -331,7 +331,7 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		}
 		RoadVehUpdateCache(v);
 		/* Initialize cached values for realistic acceleration. */
-		if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) v->CargoChanged();
+		if (_settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original) v->CargoChanged();
 
 		v->UpdatePosition();
 
@@ -469,7 +469,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 
 	/* Limit speed to 50% while reversing, 75% in curves. */
 	for (const RoadVehicle *u = this; u != nullptr; u = u->Next()) {
-		if (_settings_game.vehicle.roadveh_acceleration_model == AM_REALISTIC) {
+		if (_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Realistic) {
 			if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir(static_cast<Trackdir>(this->state))) {
 				max_speed = this->gcache.cached_max_track_speed / 2;
 				break;
@@ -743,10 +743,10 @@ int RoadVehicle::UpdateSpeed()
 {
 	switch (_settings_game.vehicle.roadveh_acceleration_model) {
 		default: NOT_REACHED();
-		case AM_ORIGINAL:
+		case AccelerationModel::Original:
 			return this->DoUpdateSpeed(this->overtaking != 0 ? 512 : 256, 0, this->GetCurrentMaxSpeed());
 
-		case AM_REALISTIC:
+		case AccelerationModel::Realistic:
 			return this->DoUpdateSpeed(this->GetAcceleration() + (this->overtaking != 0 ? 256 : 0), this->GetAccelerationStatus() == AS_BRAKE ? 0 : 4, this->GetCurrentMaxSpeed());
 	}
 }
@@ -829,7 +829,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	/* Can't overtake a vehicle that is moving faster than us. If the vehicle in front is
 	 * accelerating, take the maximum speed for the comparison, else the current speed.
 	 * Original acceleration always accelerates, so always use the maximum speed. */
-	int u_speed = (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL || u->GetAcceleration() > 0) ? u->GetCurrentMaxSpeed() : u->cur_speed;
+	int u_speed = (_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original || u->GetAcceleration() > 0) ? u->GetCurrentMaxSpeed() : u->cur_speed;
 	if (u_speed >= v->GetCurrentMaxSpeed() &&
 			!u->vehstatus.Test(VehState::Stopped) &&
 			u->cur_speed != 0) {
@@ -858,7 +858,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 
 static void RoadZPosAffectSpeed(RoadVehicle *v, int old_z)
 {
-	if (old_z == v->z_pos || _settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) return;
+	if (old_z == v->z_pos || _settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original) return;
 
 	if (old_z < v->z_pos) {
 		v->cur_speed = v->cur_speed * 232 / 256; // slow down by ~10%
@@ -1341,7 +1341,7 @@ again:
 		}
 		if (new_dir != v->direction) {
 			v->direction = new_dir;
-			if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
+			if (_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original) v->cur_speed -= v->cur_speed >> 2;
 		}
 		v->x_pos = x;
 		v->y_pos = y;
@@ -1414,7 +1414,7 @@ again:
 
 		if (new_dir != v->direction) {
 			v->direction = new_dir;
-			if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
+			if (_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original) v->cur_speed -= v->cur_speed >> 2;
 		}
 
 		v->x_pos = x;
@@ -1469,7 +1469,7 @@ again:
 	Direction old_dir = v->direction;
 	if (new_dir != old_dir) {
 		v->direction = new_dir;
-		if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
+		if (_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original) v->cur_speed -= v->cur_speed >> 2;
 
 		/* Delay the vehicle in curves by making it require one additional frame per turning direction (two in total).
 		 * A vehicle has to spend at least 9 frames on a tile, so the following articulated part can follow.

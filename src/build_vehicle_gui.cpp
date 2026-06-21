@@ -605,7 +605,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
-	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
+	if (_settings_game.vehicle.train_acceleration_model != AccelerationModel::Original) {
 		bool is_maglev = true;
 		for (RailType rt : rvi->railtypes) {
 			is_maglev &= GetRailTypeInfo(rt)->acceleration_type == VehicleAccelerationModel::Maglev;
@@ -636,7 +636,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 {
 	const Engine *e = Engine::Get(engine_number);
 
-	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+	if (_settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original) {
 		/* Purchase Cost */
 		if (te.cost != 0) {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_REFIT, e->GetCost() + te.cost, te.cost));
@@ -1162,13 +1162,13 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 {
 	uint32_t hidden_mask = 0;
 	/* Disable sorting by power or tractive effort when the original acceleration model for road vehicles is being used. */
-	if (vehicle_type == VehicleType::Road && _settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
+	if (vehicle_type == VehicleType::Road && _settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original) {
 		SetBit(hidden_mask, 3); // power
 		SetBit(hidden_mask, 4); // tractive effort
 		SetBit(hidden_mask, 8); // power by running costs
 	}
 	/* Disable sorting by tractive effort when the original acceleration model for trains is being used. */
-	if (vehicle_type == VehicleType::Train && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
+	if (vehicle_type == VehicleType::Train && _settings_game.vehicle.train_acceleration_model == AccelerationModel::Original) {
 		SetBit(hidden_mask, 4); // tractive effort
 	}
 	ShowDropDownMenu(w, GetEngineSortNames(vehicle_type), selected, button, 0, hidden_mask);
@@ -1819,7 +1819,7 @@ struct BuildVehicleWindow : Window {
 		if (!gui_scope) return;
 		/* When switching to original acceleration model for road vehicles, clear the selected sort criteria if it is not available now. */
 		if (this->vehicle_type == VehicleType::Road &&
-				_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL &&
+				_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original &&
 				this->sort_criteria > 7) {
 			this->sort_criteria = 0;
 			_engine_sort_last_criteria[VehicleType::Road] = 0;

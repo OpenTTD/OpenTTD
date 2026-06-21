@@ -342,7 +342,7 @@ static void TrainSlopeSteepnessChanged(int32_t)
  */
 static void RoadVehAccelerationModelChanged(int32_t)
 {
-	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+	if (_settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original) {
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			if (rv->IsFrontEngine()) {
 				rv->CargoChanged();

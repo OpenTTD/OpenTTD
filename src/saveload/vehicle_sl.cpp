@@ -463,7 +463,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 					}
 
 					RoadVehUpdateCache(rv);
-					if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+					if (_settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original) {
 						rv->CargoChanged();
 					}
 				}

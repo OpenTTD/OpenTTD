@@ -2919,7 +2919,7 @@ static void GetTileDesc_Rail(TileIndex tile, TileDesc &td)
 
 		case RailTileType::Depot:
 			td.str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
-			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
+			if (_settings_game.vehicle.train_acceleration_model != AccelerationModel::Original) {
 				if (td.rail_speed > 0) {
 					td.rail_speed = std::min<uint16_t>(td.rail_speed, 61);
 				} else {

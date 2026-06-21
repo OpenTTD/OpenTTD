@@ -542,7 +542,7 @@ std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(DoCommandFla
 				break;
 			case VehicleType::Road:
 				RoadVehUpdateCache(RoadVehicle::From(front), auto_refit);
-				if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) RoadVehicle::From(front)->CargoChanged();
+				if (_settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original) RoadVehicle::From(front)->CargoChanged();
 				break;
 
 			case VehicleType::Ship:
