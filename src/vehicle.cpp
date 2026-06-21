@@ -1196,7 +1196,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 					 */
 					if (v->sprite_cache.revalidate_before_draw) {
 						VehicleSpriteSeq seq;
-						v->GetImage(v->direction, EIT_ON_MAP, &seq);
+						v->GetImage(v->direction, EngineImageType::OnMap, &seq);
 
 						if (seq.IsValid() && v->sprite_cache.sprite_seq != seq) {
 							v->sprite_cache.sprite_seq = seq;

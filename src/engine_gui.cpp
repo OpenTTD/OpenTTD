@@ -116,7 +116,7 @@ struct EnginePreviewWindow : Window {
 		switch (widget) {
 			case WID_EP_QUESTION: {
 				/* Get size of engine sprite, on loan from depot_gui.cpp */
-				EngineImageType image_type = EIT_PREVIEW;
+				EngineImageType image_type = EngineImageType::Preview;
 
 				/* First determine required the horizontal size. */
 				this->vehicle_space = ScaleSpriteTrad(40);
@@ -174,7 +174,7 @@ struct EnginePreviewWindow : Window {
 		DrawString(r.left, r.right, y, GetString(STR_ENGINE_NAME, PackEngineNameDParam(engine, EngineNameContext::PreviewNews)), TextColour::Black, SA_HOR_CENTER);
 		y += GetCharacterHeight(FontSize::Normal);
 
-		DrawVehicleEngine(r.left, r.right, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
+		DrawVehicleEngine(r.left, r.right, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EngineImageType::Preview);
 
 		y += this->vehicle_space;
 		DrawStringMultiLine(r.left, r.right, y, r.bottom, GetEngineInfoString(engine), TextColour::Black, SA_CENTER);

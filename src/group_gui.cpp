@@ -858,7 +858,7 @@ public:
 						}
 
 						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
-						SetMouseCursorVehicle(v, EIT_IN_LIST);
+						SetMouseCursorVehicle(v, EngineImageType::InList);
 						_cursor.vehchain = true;
 
 						this->SetDirty();

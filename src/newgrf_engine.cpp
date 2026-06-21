@@ -1116,7 +1116,7 @@ static void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction d
 	bool sprite_stack = EngInfo(engine)->misc_flags.Test(EngineMiscFlag::SpriteStack);
 	uint max_stack = sprite_stack ? static_cast<uint>(std::size(result->seq)) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
-		object.callback_param1 = image_type | (stack << 8);
+		object.callback_param1 = to_underlying(image_type) | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		int32_t reg100 = sprite_stack ? object.GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {
@@ -1150,7 +1150,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 	 * TTDPatch copies some variables between the vehicles each time, to somehow synchronize the rotor vehicle with the primary vehicle.
 	 * We use 'rotor_in_gui' to replicate when the variables differ.
 	 * But some other variables like 'rotor state' and 'rotor speed' are not available in OpenTTD, while they are in TTDPatch. */
-	bool rotor_in_gui = image_type != EIT_ON_MAP;
+	bool rotor_in_gui = image_type != EngineImageType::OnMap;
 	VehicleResolverObject object(engine, v, VehicleResolverObject::WagonOverride::Self, rotor_in_gui, CBID_NO_CALLBACK);
 	result->Clear();
 	uint rotor_pos = v == nullptr || rotor_in_gui ? 0 : v->Next()->Next()->state;
@@ -1158,7 +1158,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 	bool sprite_stack = e->info.misc_flags.Test(EngineMiscFlag::SpriteStack);
 	uint max_stack = sprite_stack ? static_cast<uint>(std::size(result->seq)) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
-		object.callback_param1 = image_type | (stack << 8);
+		object.callback_param1 = to_underlying(image_type) | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		int32_t reg100 = sprite_stack ? object.GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {

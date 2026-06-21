@@ -385,7 +385,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 					}
 					PaletteID pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(u);
 					VehicleSpriteSeq seq;
-					u->GetImage(dir, EIT_IN_DETAILS, &seq);
+					u->GetImage(dir, EngineImageType::InDetails, &seq);
 					seq.Draw(px + (rtl ? -offset.x : offset.x), r.top - line_height * vscroll_pos + sprite_y_offset + pitch, pal, v->vehstatus.Test(VehState::Crashed));
 				}
 				px += rtl ? -width : width;

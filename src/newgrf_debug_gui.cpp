@@ -370,7 +370,7 @@ struct NewGRFInspectWindow : Window {
 		switch (widget) {
 			case WID_NGRFI_VEH_CHAIN:
 				assert(this->HasChainIndex());
-				size.height = std::max(size.height, GetVehicleImageCellSize(this->GetVehicleTypeForWindow(), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
+				size.height = std::max(size.height, GetVehicleImageCellSize(this->GetVehicleTypeForWindow(), EngineImageType::InDepot).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
 				break;
 
 			case WID_NGRFI_MAINPANEL:
@@ -424,9 +424,9 @@ struct NewGRFInspectWindow : Window {
 			if (sel_center > width / 2) skip = std::min(total_width - width, sel_center - width / 2);
 		}
 
-		int h = GetVehicleImageCellSize(this->GetVehicleTypeForWindow(), EIT_IN_DEPOT).height;
+		int h = GetVehicleImageCellSize(this->GetVehicleTypeForWindow(), EngineImageType::InDepot).height;
 		int y = CentreBounds(br.top, br.bottom, h);
-		DrawVehicleImage(v->First(), br, VehicleID::Invalid(), EIT_IN_DETAILS, skip);
+		DrawVehicleImage(v->First(), br, VehicleID::Invalid(), EngineImageType::InDetails, skip);
 
 		/* Highlight the articulated part (this is different to the whole-vehicle highlighting of DrawVehicleImage */
 		if (_current_text_dir == TD_RTL) {
