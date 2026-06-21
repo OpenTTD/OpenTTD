@@ -403,7 +403,7 @@ public:
 	 */
 	size_t GetNumCargo() const
 	{
-		if (IsSavegameVersionBefore(SLV_55)) return 12;
+		if (IsSavegameVersionBefore(SLV_NEWGRF_CARGO)) return 12;
 		if (IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES)) return 32;
 		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return NUM_CARGO;
 		/* Read from the savegame how long the list is. */
@@ -469,7 +469,7 @@ public:
 	{
 		Station *st = Station::From(bst);
 
-		size_t num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
+		size_t num_cargo = IsSavegameVersionBefore(SLV_NEWGRF_CARGO) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 		auto end = std::next(std::begin(st->goods), std::min(num_cargo, std::size(st->goods)));
 		for (auto it = std::begin(st->goods); it != end; ++it) {
 			GoodsEntry &ge = *it;
