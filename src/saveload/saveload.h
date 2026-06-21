@@ -73,7 +73,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_IMPROVE_MULTISTOP,                  ///<  25    4259 Improve the behaviour of RVs going to road stops
 	SLV_LAST_VEHICLE_TYPE,                  ///<  26    4466 Store the last vehicle type at stations instead of the vehicle ID
-	SLV_27,                                 ///<  27    4757
+	SLV_NEWGRF_STATIONS,                    ///<  27    4757 NewGRF graphics for stations
 	SLV_28,                                 ///<  28    4987
 	SLV_29,                                 ///<  29    5070
 
