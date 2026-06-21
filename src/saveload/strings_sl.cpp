@@ -61,7 +61,7 @@ std::string CopyFromOldName(StringID id)
 	/* Is this name an (old) custom name? */
 	if (GetStringTab(id) != TEXT_TAB_OLD_CUSTOM) return std::string();
 
-	if (IsSavegameVersionBefore(SLV_37)) {
+	if (IsSavegameVersionBefore(SLV_UTF8)) {
 		const std::string &strfrom = _old_name_array[GB(id, 0, 9)];
 
 		std::string result;
