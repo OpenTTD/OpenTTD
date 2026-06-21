@@ -1572,7 +1572,7 @@ bool AfterLoadGame()
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 
-	if (IsSavegameVersionBefore(SLV_43)) {
+	if (IsSavegameVersionBefore(SLV_UNIFY_ANIMATION_STATE)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Industry)) {
 				switch (GetIndustryGfx(t)) {
