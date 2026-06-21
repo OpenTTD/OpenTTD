@@ -117,7 +117,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MULTIPLE_ROAD_TYPES,                ///<  61    9892 Multiple road types for the same tile
 	SLV_ADJACENT_STATIONS,                  ///<  62    9905 Allow building multiple stations directly next to eachother
 	SLV_TRAM_LIVERY,                        ///<  63    9956 Add separate livery for trams
-	SLV_64,                                 ///<  64   10006
+	SLV_MULTIPLE_SIGNAL_TYPES,              ///<  64   10006 Multiple different signal types on the same (diagonal) tile, instead of the same for both directions
 
 	SLV_65,                                 ///<  65   10210
 	SLV_66,                                 ///<  66   10211

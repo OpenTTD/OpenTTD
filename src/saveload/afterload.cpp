@@ -1711,7 +1711,7 @@ bool AfterLoadGame()
 		_settings_game.difficulty.number_towns++;
 	}
 
-	if (IsSavegameVersionBefore(SLV_64)) {
+	if (IsSavegameVersionBefore(SLV_MULTIPLE_SIGNAL_TYPES)) {
 		/* Since now we allow different signal types and variants on a single tile.
 		 * Move signal states to m4 to make room and clone the signal type/variant. */
 		for (auto t : Map::Iterate()) {
