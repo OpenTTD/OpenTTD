@@ -79,7 +79,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_TGP,                                ///<  30    5946 TerraGenesis Perlin
 	SLV_BIG_DATES,                          ///<  31    5999 Change date from 1920 - 2090 to 0 - 5 000 000
-	SLV_32,                                 ///<  32    6001
+	SLV_LINK_FARM_FIELD_TO_INDUSTRY,        ///<  32    6001 Link farm fields to the industry, so it gets removed when the industry goes away
 	SLV_33,                                 ///<  33    6440
 	SLV_34,                                 ///<  34    6455
 

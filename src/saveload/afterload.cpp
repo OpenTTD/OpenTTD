@@ -1475,7 +1475,7 @@ bool AfterLoadGame()
 	/* From 32 on we save the industry who made the farmland.
 	 *  To give this prettiness to old savegames, we remove all farmfields and
 	 *  plant new ones. */
-	if (IsSavegameVersionBefore(SLV_32)) {
+	if (IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Clear) && IsClearGround(t, ClearGround::Fields)) {
 				/* remove fields */
@@ -2907,7 +2907,7 @@ bool AfterLoadGame()
 		_settings_game.game_creation.snow_line_height /= TILE_HEIGHT;
 	}
 
-	if (IsSavegameVersionBefore(SLV_164) && !IsSavegameVersionBefore(SLV_32)) {
+	if (IsSavegameVersionBefore(SLV_164) && !IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
 		/* We store 4 fences in the field tiles instead of only SE and SW. */
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Clear) && !IsTileType(t, TileType::Trees)) continue;
