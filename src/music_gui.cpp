@@ -47,25 +47,14 @@ struct MusicSystem {
 	};
 	typedef std::vector<PlaylistEntry> Playlist;
 
-	enum PlaylistChoices : uint8_t {
-		PLCH_ALLMUSIC,
-		PLCH_OLDSTYLE,
-		PLCH_NEWSTYLE,
-		PLCH_EZYSTREET,
-		PLCH_CUSTOM1,
-		PLCH_CUSTOM2,
-		PLCH_THEMEONLY,
-		PLCH_MAX,
-	};
-
 	Playlist active_playlist{}; ///< current play order of songs, including any shuffle
 	Playlist music_set{}; ///< all songs in current music set, in set order
 
-	PlaylistChoices selected_playlist{};
+	PlaylistChoice selected_playlist{};
 
 	void BuildPlaylists();
 
-	void ChangePlaylist(PlaylistChoices pl);
+	void ChangePlaylist(PlaylistChoice pl);
 	void ChangeMusicSet(const std::string &set_name);
 	void Shuffle();
 	void Unshuffle();
@@ -91,9 +80,9 @@ private:
 	void ChangePlaylistPosition(int ofs);
 	int playlist_position = 0;
 
-	void SaveCustomPlaylist(PlaylistChoices pl);
+	void SaveCustomPlaylist(PlaylistChoice pl);
 
-	std::array<Playlist, PLCH_MAX> standard_playlists{};
+	EnumIndexArray<Playlist, PlaylistChoice, PlaylistChoice::End> standard_playlists{};
 };
 
 MusicSystem _music;
@@ -116,13 +105,13 @@ void MusicSystem::BuildPlaylists()
 		this->music_set.push_back(entry);
 
 		/* Add theme song to theme-only playlist */
-		if (i == 0) this->standard_playlists[PLCH_THEMEONLY].push_back(std::move(entry));
+		if (i == 0) this->standard_playlists[PlaylistChoice::ThemeOnly].push_back(std::move(entry));
 
 		/* Don't add the theme song to standard playlists */
 		if (i > 0) {
-			this->standard_playlists[PLCH_ALLMUSIC].push_back(entry);
-			uint theme = (i - 1) / NUM_SONGS_CLASS;
-			this->standard_playlists[PLCH_OLDSTYLE + theme].push_back(std::move(entry));
+			this->standard_playlists[PlaylistChoice::All].push_back(entry);
+			PlaylistChoice theme = static_cast<PlaylistChoice>(to_underlying(PlaylistChoice::OldStyle) + (i - 1) / NUM_SONGS_CLASS);
+			this->standard_playlists[theme].push_back(std::move(entry));
 		}
 	}
 
@@ -131,11 +120,11 @@ void MusicSystem::BuildPlaylists()
 	for (uint i = 0; i < NUM_SONGS_PLAYLIST; i++) {
 		if (_settings_client.music.custom_1[i] > 0 && _settings_client.music.custom_1[i] <= NUM_SONGS_AVAILABLE) {
 			PlaylistEntry entry(set, _settings_client.music.custom_1[i] - 1);
-			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM1].push_back(std::move(entry));
+			if (entry.IsValid()) this->standard_playlists[PlaylistChoice::Custom1].push_back(std::move(entry));
 		}
 		if (_settings_client.music.custom_2[i] > 0 && _settings_client.music.custom_2[i] <= NUM_SONGS_AVAILABLE) {
 			PlaylistEntry entry(set, _settings_client.music.custom_2[i] - 1);
-			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM2].push_back(std::move(entry));
+			if (entry.IsValid()) this->standard_playlists[PlaylistChoice::Custom2].push_back(std::move(entry));
 		}
 	}
 }
@@ -144,13 +133,13 @@ void MusicSystem::BuildPlaylists()
  * Switch to another playlist, or reload the current one.
  * @param pl Playlist to select
  */
-void MusicSystem::ChangePlaylist(PlaylistChoices pl)
+void MusicSystem::ChangePlaylist(PlaylistChoice pl)
 {
-	assert(pl < PLCH_MAX && pl >= PLCH_ALLMUSIC);
+	assert(pl < PlaylistChoice::End && pl >= PlaylistChoice::All);
 
-	if (pl != PLCH_THEMEONLY) _settings_client.music.playlist = pl;
+	if (pl != PlaylistChoice::ThemeOnly) _settings_client.music.playlist = pl;
 
-	if (_game_mode != GameMode::Menu || pl == PLCH_THEMEONLY) {
+	if (_game_mode != GameMode::Menu || pl == PlaylistChoice::ThemeOnly) {
 		this->selected_playlist = pl;
 		this->active_playlist = this->standard_playlists[this->selected_playlist];
 		this->playlist_position = 0;
@@ -248,7 +237,7 @@ void MusicSystem::Play()
 	if (this->active_playlist.empty()) return;
 
 	MusicSongInfo song = this->active_playlist[this->playlist_position];
-	if (_game_mode == GameMode::Menu && this->selected_playlist == PLCH_THEMEONLY) song.loop = true;
+	if (_game_mode == GameMode::Menu && this->selected_playlist == PlaylistChoice::ThemeOnly) song.loop = true;
 	MusicDriver::GetInstance()->PlaySong(song);
 
 	InvalidateWindowData(WindowClass::Music, 0);
@@ -284,9 +273,9 @@ void MusicSystem::Prev()
 /** Check that music is playing if it should, and that appropriate playlist is active for game/main menu */
 void MusicSystem::CheckStatus()
 {
-	if ((_game_mode == GameMode::Menu) != (this->selected_playlist == PLCH_THEMEONLY)) {
+	if ((_game_mode == GameMode::Menu) != (this->selected_playlist == PlaylistChoice::ThemeOnly)) {
 		/* Make sure the theme-only playlist is active when on the title screen, and not during gameplay */
-		this->ChangePlaylist((_game_mode == GameMode::Menu) ? PLCH_THEMEONLY : (PlaylistChoices)_settings_client.music.playlist);
+		this->ChangePlaylist((_game_mode == GameMode::Menu) ? PlaylistChoice::ThemeOnly : (PlaylistChoice)_settings_client.music.playlist);
 	}
 	if (this->active_playlist.empty()) return;
 	/* If we were supposed to be playing, but music has stopped, move to next song */
@@ -327,7 +316,7 @@ MusicSystem::PlaylistEntry MusicSystem::GetCurrentSong() const
  */
 bool MusicSystem::IsCustomPlaylist() const
 {
-	return (this->selected_playlist == PLCH_CUSTOM1) || (this->selected_playlist == PLCH_CUSTOM2);
+	return (this->selected_playlist == PlaylistChoice::Custom1) || (this->selected_playlist == PlaylistChoice::Custom2);
 }
 
 /**
@@ -437,12 +426,12 @@ void MusicSystem::ChangePlaylistPosition(int ofs)
  * Save a custom playlist to settings after modification.
  * @param pl Playlist to store back
  */
-void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
+void MusicSystem::SaveCustomPlaylist(PlaylistChoice pl)
 {
 	uint8_t *settings_pl;
-	if (pl == PLCH_CUSTOM1) {
+	if (pl == PlaylistChoice::Custom1) {
 		settings_pl = _settings_client.music.custom_1;
-	} else if (pl == PLCH_CUSTOM2) {
+	} else if (pl == PlaylistChoice::Custom2) {
 		settings_pl = _settings_client.music.custom_2;
 	} else {
 		return;
@@ -486,6 +475,15 @@ void InitializeMusic()
 	_music.BuildPlaylists();
 }
 
+/**
+ * Test if a \c PlaylistChoice is a custom playlist.
+ * @param playlist The playlist choice to test.
+ * @return \c true iff the playlist choice is a custom playlist.
+ */
+static bool IsCustomPlaylist(PlaylistChoice playlist)
+{
+	return playlist == PlaylistChoice::Custom1 || playlist == PlaylistChoice::Custom2;
+}
 
 struct MusicTrackSelectionWindow : public Window {
 	MusicTrackSelectionWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
@@ -493,15 +491,15 @@ struct MusicTrackSelectionWindow : public Window {
 		this->InitNested(number);
 		this->LowerWidget(WID_MTS_LIST_LEFT);
 		this->LowerWidget(WID_MTS_LIST_RIGHT);
-		this->SetWidgetDisabledState(WID_MTS_CLEAR, _settings_client.music.playlist <= 3);
-		this->LowerWidget(WID_MTS_ALL + _settings_client.music.playlist);
+		this->SetWidgetDisabledState(WID_MTS_CLEAR, !IsCustomPlaylist(_settings_client.music.playlist));
+		this->LowerWidget(WID_MTS_ALL + to_underlying(_settings_client.music.playlist));
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_MTS_PLAYLIST:
-				return GetString(STR_PLAYLIST_PROGRAM, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
+				return GetString(STR_PLAYLIST_PROGRAM, STR_MUSIC_PLAYLIST_ALL + to_underlying(_settings_client.music.playlist));
 
 			case WID_MTS_CAPTION:
 				return GetString(STR_PLAYLIST_MUSIC_SELECTION_SETNAME, BaseMusic::GetUsedSet()->name);
@@ -519,10 +517,10 @@ struct MusicTrackSelectionWindow : public Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		for (int i = 0; i < 6; i++) {
-			this->SetWidgetLoweredState(WID_MTS_ALL + i, i == _settings_client.music.playlist);
+		for (PlaylistChoice playlist : EnumRange(PlaylistChoice::ThemeOnly)) {
+			this->SetWidgetLoweredState(WID_MTS_ALL + to_underlying(playlist), playlist == _settings_client.music.playlist);
 		}
-		this->SetWidgetDisabledState(WID_MTS_CLEAR, _settings_client.music.playlist <= 3);
+		this->SetWidgetDisabledState(WID_MTS_CLEAR, !IsCustomPlaylist(_settings_client.music.playlist));
 
 		if (data == 1) {
 			this->ReInit();
@@ -616,7 +614,7 @@ struct MusicTrackSelectionWindow : public Window {
 
 			case WID_MTS_ALL: case WID_MTS_OLD: case WID_MTS_NEW:
 			case WID_MTS_EZY: case WID_MTS_CUSTOM1: case WID_MTS_CUSTOM2: // set playlist
-				_music.ChangePlaylist((MusicSystem::PlaylistChoices)(widget - WID_MTS_ALL));
+				_music.ChangePlaylist(static_cast<PlaylistChoice>(widget - WID_MTS_ALL));
 				break;
 		}
 	}
@@ -687,7 +685,7 @@ struct MusicWindow : public Window {
 	MusicWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
-		this->LowerWidget(_settings_client.music.playlist + WID_M_ALL);
+		this->LowerWidget(WID_M_ALL + to_underlying(_settings_client.music.playlist));
 		this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
 
 		UpdateDisabledButtons();
@@ -800,8 +798,8 @@ struct MusicWindow : public Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		for (int i = 0; i < 6; i++) {
-			this->SetWidgetLoweredState(WID_M_ALL + i, i == _settings_client.music.playlist);
+		for (PlaylistChoice playlist : EnumRange(PlaylistChoice::ThemeOnly)) {
+			this->SetWidgetLoweredState(WID_M_ALL + to_underlying(playlist), playlist == _settings_client.music.playlist);
 		}
 
 		UpdateDisabledButtons();
@@ -864,7 +862,7 @@ struct MusicWindow : public Window {
 
 			case WID_M_ALL: case WID_M_OLD: case WID_M_NEW:
 			case WID_M_EZY: case WID_M_CUSTOM1: case WID_M_CUSTOM2: // playlist
-				_music.ChangePlaylist((MusicSystem::PlaylistChoices)(widget - WID_M_ALL));
+				_music.ChangePlaylist(static_cast<PlaylistChoice>(widget - WID_M_ALL));
 				break;
 		}
 	}

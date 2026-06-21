@@ -345,9 +345,21 @@ struct SoundSettings {
 	bool ambient; ///< Play ambient, industry and town sounds.
 };
 
+/** Playlists */
+enum class PlaylistChoice : uint8_t {
+	All, ///< Play all music (except theme).
+	OldStyle, ///< Play "old style" music.
+	NewStyle, ///< Play "new style" music.
+	EzyStreet, ///< Play "Ezy Street" music.
+	Custom1, ///< Play the first custom playlist.
+	Custom2, ///< Play the second custom playlist.
+	ThemeOnly, ///< Play only the theme music.
+	End, ///< End marker.
+};
+
 /** Settings related to music. */
 struct MusicSettings {
-	uint8_t playlist; ///< The playlist (number) to play
+	PlaylistChoice playlist; ///< The playlist (number) to play
 	uint8_t music_vol; ///< The requested music volume
 	uint8_t effect_vol; ///< The requested effects volume
 	uint8_t custom_1[33]; ///< The order of the first custom playlist
