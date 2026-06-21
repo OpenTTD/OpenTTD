@@ -83,7 +83,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SAVE_YAPF_SETTINGS,                 ///<  33    6440 Some YAPF settings were not saved properly
 	SLV_LIVERIES,                           ///<  34    6455 Liveries and two company colours (2cc)
 
-	SLV_35,                                 ///<  35    6602
+	SLV_LIVERY_REFIT,                       ///<  35    6602 NewGRF livery refits
 	SLV_36,                                 ///<  36    6624
 	SLV_37,                                 ///<  37    7182
 	SLV_38,                                 ///<  38    7195

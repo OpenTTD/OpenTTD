@@ -689,7 +689,7 @@ public:
 		SLE_CONDVAR(Vehicle, last_loading_station,  SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, cargo_type,            SLE_UINT8),
-		SLE_CONDVAR(Vehicle, cargo_subtype,         SLE_UINT8,                   SLV_35, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, cargo_subtype,         SLE_UINT8,                   SLV_LIVERY_REFIT, SL_MAX_VERSION),
 		SLEG_CONDVAR("cargo_days", _cargo_periods,  SLE_UINT8,                    SL_MIN_VERSION,  SLV_68),
 		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_LARGER_CARGO_SOURCE),
 		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_UINT16,                   SLV_LARGER_CARGO_SOURCE,  SLV_68),
