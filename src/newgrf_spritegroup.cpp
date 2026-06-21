@@ -256,7 +256,7 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
 	if (object.callback == CBID_RANDOM_TRIGGER) {
 		/* Handle triggers */
 		uint8_t match = this->triggers & object.GetWaitingRandomTriggers();
-		bool res = (this->cmp_mode == RSG_CMP_ANY) ? (match != 0) : (match == this->triggers);
+		bool res = (this->cmp_mode == RandomizedSpriteGroupCompareMode::Any) ? (match != 0) : (match == this->triggers);
 
 		if (res) {
 			object.AddUsedRandomTriggers(match);
