@@ -161,7 +161,7 @@ const SaveLoadCompat _vehicle_effect_sl_compat[] = {
 	SLC_VAR("y_pos"),
 	SLC_VAR("z_pos"),
 	SLC_VAR("sprite_cache.sprite_seq.seq[0].sprite"),
-	SLC_NULL(5, SL_MIN_VERSION, SLV_59),
+	SLC_NULL(5, SL_MIN_VERSION, SLV_TOWN_LAYOUT),
 	SLC_VAR("progress"),
 	SLC_VAR("vehstatus"),
 	SLC_VAR("animation_state"),

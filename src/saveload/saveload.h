@@ -111,7 +111,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CITIES,                             ///<  56    9667 Cities that start bigger and grow faster
 	SLV_FIFO_LOADING,                       ///<  57    9691 First-in-first-out loading of vehicles
 	SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER,      ///<  58    9762 Difficulty settings for very low number of industries and towns
-	SLV_59,                                 ///<  59    9779
+	SLV_TOWN_LAYOUT,                        ///<  59    9779 More layout options for towns
 
 	SLV_60,                                 ///<  60    9874
 	SLV_61,                                 ///<  61    9892

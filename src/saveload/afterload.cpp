@@ -1685,7 +1685,7 @@ bool AfterLoadGame()
 				v->vehicle_flags.Reset(VehicleFlag::LoadingFinished);
 			}
 		}
-	} else if (IsSavegameVersionBefore(SLV_59)) {
+	} else if (IsSavegameVersionBefore(SLV_TOWN_LAYOUT)) {
 		/* For some reason non-loading vehicles could be in the station's loading vehicle list */
 
 		for (Station *st : Station::Iterate()) {
