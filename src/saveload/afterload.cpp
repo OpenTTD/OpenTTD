@@ -1085,7 +1085,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_61)) {
+	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_TYPES)) {
 		/* Added the RoadType */
 		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
 		for (auto t : Map::Iterate()) {
@@ -1125,7 +1125,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_114)) {
-		bool fix_roadtypes = !IsSavegameVersionBefore(SLV_61);
+		bool fix_roadtypes = !IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_TYPES);
 		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
 
 		for (auto t : Map::Iterate()) {

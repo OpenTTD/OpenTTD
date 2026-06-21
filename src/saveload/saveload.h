@@ -114,7 +114,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TOWN_LAYOUT,                        ///<  59    9779 More layout options for towns
 
 	SLV_VEHICLE_GROUPS,                     ///<  60    9874 Arbitrary grouping, by the player, of vehicles
-	SLV_61,                                 ///<  61    9892
+	SLV_MULTIPLE_ROAD_TYPES,                ///<  61    9892 Multiple road types for the same tile
 	SLV_62,                                 ///<  62    9905
 	SLV_63,                                 ///<  63    9956
 	SLV_64,                                 ///<  64   10006
