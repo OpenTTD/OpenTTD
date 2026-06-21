@@ -1618,7 +1618,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_50)) {
+	if (IsSavegameVersionBefore(SLV_AIRCRAFT_SPEED_HOLDING)) {
 		/* Aircraft units changed from 8 mph to 1 km-ish/h */
 		for (Aircraft *v : Aircraft::Iterate()) {
 			if (v->subtype <= AIR_AIRCRAFT) {

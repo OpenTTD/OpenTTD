@@ -101,7 +101,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_RAIL_TRACK_TYPE_UNIFICATION,        ///<  48    8935 Put all the rail track type information in same map bits
 	SLV_SIMPLIFY_PLAYER_FACE,               ///<  49    8969 Simplify the storage of player face information
 
-	SLV_50,                                 ///<  50    8973
+	SLV_AIRCRAFT_SPEED_HOLDING,             ///<  50    8973 Aircraft speed in km-ish/h and reduced speed in holding patterns
 	SLV_51,                                 ///<  51    8978
 	SLV_52,                                 ///<  52    9066
 	SLV_53,                                 ///<  53    9316
