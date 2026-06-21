@@ -67,9 +67,9 @@ static const uint MAX_LENGTH_VEHICLE_NAME_CHARS = 32; ///< The maximum length of
 static const uint VEHICLE_LENGTH = 8;
 
 /** Vehicle acceleration models. */
-enum AccelerationModel : uint8_t {
-	AM_ORIGINAL,
-	AM_REALISTIC,
+enum class AccelerationModel : uint8_t {
+	Original, ///< Original acceleration model.
+	Realistic, ///< "Realistic" acceleration model.
 };
 
 /** Visualisation contexts of vehicles and engines. */
