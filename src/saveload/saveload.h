@@ -87,7 +87,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REFIT_ORDERS,                       ///<  36    6624 Vehicles can be refitted as part of an order
 	SLV_UTF8,                               ///<  37    7182 UTF-8 strings
 	SLV_DISABLE_ELRAIL_SETTING,             ///<  38    7195 Add setting to disable electrified rails
-	SLV_39,                                 ///<  39    7269
+	SLV_FREIGHT_WEIGHT,                     ///<  39    7269 Setting to increase the weight of cargo on freight trains
 
 	SLV_40,                                 ///<  40    7326
 	SLV_41,                                 ///<  41    7348   0.5.x
