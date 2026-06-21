@@ -754,7 +754,7 @@ public:
 		SLE_CONDVAR(Vehicle, build_year,            SLE_INT32,                   SLV_BIG_DATES, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, load_unload_ticks,     SLE_UINT16),
-		SLEG_CONDVAR("cargo_paid_for", _cargo_paid_for, SLE_UINT16,              SLV_45, SL_MAX_VERSION),
+		SLEG_CONDVAR("cargo_paid_for", _cargo_paid_for, SLE_UINT16,              SLV_COUNT_PAID_FOR_CARGO, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_FILE_U8 | SLE_VAR_U16,   SLV_GRADUAL_LOADING, SLV_180),
 		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
 

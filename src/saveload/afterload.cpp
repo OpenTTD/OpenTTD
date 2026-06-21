@@ -1599,7 +1599,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_45)) {
+	if (IsSavegameVersionBefore(SLV_COUNT_PAID_FOR_CARGO)) {
 		/* Originally just the fact that some cargo had been paid for was
 		 * stored to stop people cheating and cashing in several times. This
 		 * wasn't enough though as it was cleared when the vehicle started

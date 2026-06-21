@@ -95,7 +95,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_UNIFY_ANIMATION_STATE,              ///<  43    7642 Put all animation state information in same map bits
 	SLV_CARGO_SOURCE_TILE,                  ///<  44    8144 Store the source tile of the cargo, so accurate payment can happen when the source station is removed
 
-	SLV_45,                                 ///<  45    8501
+	SLV_COUNT_PAID_FOR_CARGO,               ///<  45    8501 Count the amount of cargo that was paid for
 	SLV_46,                                 ///<  46    8705
 	SLV_47,                                 ///<  47    8735
 	SLV_48,                                 ///<  48    8935
