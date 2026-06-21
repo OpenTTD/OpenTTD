@@ -1664,7 +1664,7 @@ bool AfterLoadGame()
 	/* A setting containing the proportion of towns that grow twice as
 	 * fast was added in version 54. From version 56 this is now saved in the
 	 * town as cities can be built specifically in the scenario editor. */
-	if (IsSavegameVersionBefore(SLV_56)) {
+	if (IsSavegameVersionBefore(SLV_CITIES)) {
 		for (Town *t : Town::Iterate()) {
 			if (_settings_game.economy.larger_towns != 0 && (t->index % _settings_game.economy.larger_towns) == 0) {
 				t->larger_town = true;

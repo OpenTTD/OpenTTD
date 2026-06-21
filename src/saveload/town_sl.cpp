@@ -356,7 +356,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, exclusivity,           SLE_UINT8,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, exclusive_counter,     SLE_UINT8,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  SLV_56, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  SLV_CITIES, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, layout,                SLE_UINT8,                SLV_113, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, valid_history, SLE_UINT64, SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
 

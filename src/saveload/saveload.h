@@ -108,7 +108,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TOWN_GROWTH_CONTROL,                ///<  54    9613 Give the player control over the town growth
 
 	SLV_NEWGRF_CARGO,                       ///<  55    9638 Increase number of cargos and NewGRF control of cargos
-	SLV_56,                                 ///<  56    9667
+	SLV_CITIES,                             ///<  56    9667 Cities that start bigger and grow faster
 	SLV_57,                                 ///<  57    9691
 	SLV_58,                                 ///<  58    9762
 	SLV_59,                                 ///<  59    9779
