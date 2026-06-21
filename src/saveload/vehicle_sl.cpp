@@ -720,7 +720,7 @@ public:
 		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   SLV_BIG_MAP, SL_MAX_VERSION),
 
 		/* Refit in current order */
-		SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             SLV_36, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             SLV_REFIT_ORDERS, SL_MAX_VERSION),
 
 		/* Timetable in current order */
 		SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            SLV_67, SL_MAX_VERSION),

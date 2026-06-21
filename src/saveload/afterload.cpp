@@ -1493,7 +1493,7 @@ bool AfterLoadGame()
 	}
 
 	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
-	if (IsSavegameVersionBefore(SLV_36)) {
+	if (IsSavegameVersionBefore(SLV_REFIT_ORDERS)) {
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
 				order.SetRefit(CARGO_NO_REFIT);

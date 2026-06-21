@@ -84,7 +84,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LIVERIES,                           ///<  34    6455 Liveries and two company colours (2cc)
 
 	SLV_LIVERY_REFIT,                       ///<  35    6602 NewGRF livery refits
-	SLV_36,                                 ///<  36    6624
+	SLV_REFIT_ORDERS,                       ///<  36    6624 Vehicles can be refitted as part of an order
 	SLV_37,                                 ///<  37    7182
 	SLV_38,                                 ///<  38    7195
 	SLV_39,                                 ///<  39    7269

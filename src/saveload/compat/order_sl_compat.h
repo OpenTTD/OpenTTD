@@ -19,11 +19,11 @@ const SaveLoadCompat _order_sl_compat[] = {
 	SLC_VAR("dest"),
 	SLC_VAR("next"),
 	SLC_VAR("refit_cargo"),
-	SLC_NULL(1, SLV_36, SLV_182),
+	SLC_NULL(1, SLV_REFIT_ORDERS, SLV_182),
 	SLC_VAR("wait_time"),
 	SLC_VAR("travel_time"),
 	SLC_VAR("max_speed"),
-	SLC_NULL(10, SLV_BIG_MAP, SLV_36),
+	SLC_NULL(10, SLV_BIG_MAP, SLV_REFIT_ORDERS),
 };
 
 /** Original field order for _orderlist_desc. */
