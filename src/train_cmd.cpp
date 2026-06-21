@@ -1613,32 +1613,20 @@ static void MarkTrainAsStuck(Train *consist)
 /**
  * Swap the two up/down flags in two ways:
  * - Swap values of \a swap_flag1 and \a swap_flag2, and
- * - If going up previously (#GVF_GOINGUP_BIT set), the #GVF_GOINGDOWN_BIT is set, and vice versa.
+ * - If going up previously (#GroundVehicleFlag::GoingUp set), the #GroundVehicleFlag::GoingDown is set, and vice versa.
  * @param[in,out] swap_flag1 First train flag.
  * @param[in,out] swap_flag2 Second train flag.
  */
-static void SwapTrainFlags(uint16_t *swap_flag1, uint16_t *swap_flag2)
+static void SwapTrainFlags(GroundVehicleFlags *swap_flag1, GroundVehicleFlags *swap_flag2)
 {
-	uint16_t flag1 = *swap_flag1;
-	uint16_t flag2 = *swap_flag2;
-
-	/* Clear the flags */
-	ClrBit(*swap_flag1, GVF_GOINGUP_BIT);
-	ClrBit(*swap_flag1, GVF_GOINGDOWN_BIT);
-	ClrBit(*swap_flag2, GVF_GOINGUP_BIT);
-	ClrBit(*swap_flag2, GVF_GOINGDOWN_BIT);
+	GroundVehicleFlags flag1 = *swap_flag1;
+	GroundVehicleFlags flag2 = *swap_flag2;
 
 	/* Reverse the rail-flags (if needed) */
-	if (HasBit(flag1, GVF_GOINGUP_BIT)) {
-		SetBit(*swap_flag2, GVF_GOINGDOWN_BIT);
-	} else if (HasBit(flag1, GVF_GOINGDOWN_BIT)) {
-		SetBit(*swap_flag2, GVF_GOINGUP_BIT);
-	}
-	if (HasBit(flag2, GVF_GOINGUP_BIT)) {
-		SetBit(*swap_flag1, GVF_GOINGDOWN_BIT);
-	} else if (HasBit(flag2, GVF_GOINGDOWN_BIT)) {
-		SetBit(*swap_flag1, GVF_GOINGUP_BIT);
-	}
+	swap_flag2->Set(GroundVehicleFlag::GoingDown, flag1.Test(GroundVehicleFlag::GoingUp));
+	swap_flag2->Set(GroundVehicleFlag::GoingUp, flag1.Test(GroundVehicleFlag::GoingDown));
+	swap_flag1->Set(GroundVehicleFlag::GoingDown, flag2.Test(GroundVehicleFlag::GoingUp));
+	swap_flag1->Set(GroundVehicleFlag::GoingUp, flag2.Test(GroundVehicleFlag::GoingDown));
 }
 
 /**
@@ -1710,7 +1698,7 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 
 		SwapTrainFlags(&a->gv_flags, &b->gv_flags);
 	} else {
-		/* Swap GVF_GOINGUP_BIT/GVF_GOINGDOWN_BIT.
+		/* Swap GroundVehicleFlag::GoingUp/GroundVehicleFlag::GoingDown.
 		 * This is a little bit redundant way, a->gv_flags will
 		 * be (re)set twice, but it reduces code duplication */
 		SwapTrainFlags(&a->gv_flags, &a->gv_flags);
@@ -2051,9 +2039,8 @@ static void ReverseTrainDirection(Train *consist)
 
 		for (Train *u = consist; u != nullptr; u = u->Next()) {
 			/* Invert going up/down */
-			if (HasBit(u->gv_flags, GVF_GOINGUP_BIT) || HasBit(u->gv_flags, GVF_GOINGDOWN_BIT)) {
-				ToggleBit(u->gv_flags, GVF_GOINGDOWN_BIT);
-				ToggleBit(u->gv_flags, GVF_GOINGUP_BIT);
+			if (u->gv_flags.Any({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown})) {
+				u->gv_flags.Flip({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
 			}
 			UpdateStatusAfterSwap(u, false);
 		}
@@ -2698,7 +2685,7 @@ public:
 		old_dest_tile(_v->dest_tile),
 		old_last_station_visited(_v->last_station_visited),
 		index(_v->cur_real_order_index),
-		suppress_implicit_orders(HasBit(_v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS)),
+		suppress_implicit_orders(_v->gv_flags.Test(GroundVehicleFlag::SuppressImplicitOrders)),
 		restored(false)
 	{
 	}
@@ -2711,7 +2698,7 @@ public:
 		this->v->current_order = this->old_order;
 		this->v->dest_tile = this->old_dest_tile;
 		this->v->last_station_visited = this->old_last_station_visited;
-		AssignBit(this->v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS, suppress_implicit_orders);
+		this->v->gv_flags.Set(GroundVehicleFlag::SuppressImplicitOrders, suppress_implicit_orders);
 		this->restored = true;
 	}
 
@@ -4245,7 +4232,7 @@ static void CheckIfTrainNeedsService(Train *v)
 		return;
 	}
 
-	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
+	v->gv_flags.Set(GroundVehicleFlag::SuppressImplicitOrders);
 	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service, OrderNonStopFlag::NonStop, OrderDepotActionFlag::NearestDepot);
 	v->dest_tile = tfdd.tile;
 	SetWindowWidgetDirty(WindowClass::VehicleView, v->index, WID_VV_START_STOP);

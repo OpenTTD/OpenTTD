@@ -50,13 +50,6 @@ struct GroundVehicleCache {
 	auto operator<=>(const GroundVehicleCache &) const = default;
 };
 
-/** Ground vehicle flags. */
-enum GroundVehicleFlags : uint8_t {
-	GVF_GOINGUP_BIT              = 0,  ///< Vehicle is currently going uphill. (Cached track information for acceleration)
-	GVF_GOINGDOWN_BIT            = 1,  ///< Vehicle is currently going downhill. (Cached track information for acceleration)
-	GVF_SUPPRESS_IMPLICIT_ORDERS = 2,  ///< Disable insertion and removal of automatic orders until the vehicle completes the real order.
-};
-
 /**
  * Base class for all vehicles that move through ground.
  *
@@ -81,7 +74,7 @@ enum GroundVehicleFlags : uint8_t {
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	GroundVehicleCache gcache{}; ///< Cache of often calculated values.
-	uint16_t gv_flags = 0; ///< @see GroundVehicleFlags.
+	GroundVehicleFlags gv_flags{}; ///< @see GroundVehicleFlags.
 
 	typedef GroundVehicle<T, Type> GroundVehicleBase; ///< Our type
 
@@ -105,8 +98,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	{
 		/* Crashed vehicles aren't going up or down */
 		for (T *v = T::From(this); v != nullptr; v = v->Next()) {
-			ClrBit(v->gv_flags, GVF_GOINGUP_BIT);
-			ClrBit(v->gv_flags, GVF_GOINGDOWN_BIT);
+			v->gv_flags.Reset({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
 		}
 		return this->Vehicle::Crash(flooded);
 	}
@@ -120,9 +112,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		int64_t incl = 0;
 
 		for (const T *u = T::From(this); u != nullptr; u = u->Next()) {
-			if (HasBit(u->gv_flags, GVF_GOINGUP_BIT)) {
+			if (u->gv_flags.Test(GroundVehicleFlag::GoingUp)) {
 				incl += u->gcache.cached_slope_resistance;
-			} else if (HasBit(u->gv_flags, GVF_GOINGDOWN_BIT)) {
+			} else if (u->gv_flags.Test(GroundVehicleFlag::GoingDown)) {
 				incl -= u->gcache.cached_slope_resistance;
 			}
 		}
@@ -139,8 +131,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	inline void UpdateZPositionAndInclination()
 	{
 		this->z_pos = GetSlopePixelZ(this->x_pos, this->y_pos, true);
-		ClrBit(this->gv_flags, GVF_GOINGUP_BIT);
-		ClrBit(this->gv_flags, GVF_GOINGDOWN_BIT);
+		this->gv_flags.Reset({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown});
 
 		if (T::From(this)->TileMayHaveSlopedTrack()) {
 			/* To check whether the current tile is sloped, and in which
@@ -150,7 +141,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			int middle_z = GetSlopePixelZ((this->x_pos & ~TILE_UNIT_MASK) | (TILE_SIZE / 2), (this->y_pos & ~TILE_UNIT_MASK) | (TILE_SIZE / 2), true);
 
 			if (middle_z != this->z_pos) {
-				SetBit(this->gv_flags, (middle_z > this->z_pos) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
+				this->gv_flags.Set((middle_z > this->z_pos) ? GroundVehicleFlag::GoingUp : GroundVehicleFlag::GoingDown);
 			}
 		}
 	}
@@ -166,7 +157,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 #if 0
 		/* The following code does this: */
 
-		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT)) {
+		if (this->gv_flags.Test(GroundVehicleFlag::GoingUp)) {
 			switch (this->GetMovingDirection()) {
 				case Direction::NE:
 					this->z_pos += (this->x_pos & 1) ^ 1; break;
@@ -178,7 +169,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 					this->z_pos += (this->y_pos & 1); break;
 				default: break;
 			}
-		} else if (HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
+		} else if (this->gv_flags.Test(GroundVehicleFlag::GoingDown)) {
 			switch (this->GetMovingDirection()) {
 				case Direction::NE:
 					this->z_pos -= (this->x_pos & 1) ^ 1; break;
@@ -196,12 +187,12 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		 * code is full of conditional jumps. */
 #endif
 
-		/* Vehicle's Z position can change only if it has GVF_GOINGUP_BIT or GVF_GOINGDOWN_BIT set.
+		/* Vehicle's Z position can change only if it has GroundVehicleFlag::GoingUp or GroundVehicleFlag::GoingDown set.
 		 * Furthermore, if this function is called once every time the vehicle's position changes,
 		 * we know the Z position changes by +/-1 at certain moments - when x_pos, y_pos is odd/even,
 		 * depending on orientation of the slope and vehicle's direction */
 
-		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT) || HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
+		if (this->gv_flags.Any({GroundVehicleFlag::GoingUp, GroundVehicleFlag::GoingDown})) {
 			if (T::From(this)->HasToUseGetSlopePixelZ()) {
 				/* In some cases, we have to use GetSlopePixelZ() */
 				this->z_pos = GetSlopePixelZ(this->x_pos, this->y_pos, true);
@@ -217,10 +208,10 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			/* We need only the least significant bit */
 			d &= 1;
 			d ^= (int8_t)(dir == DiagDirection::NW || dir == DiagDirection::NE);
-			/* Subtraction instead of addition because we are testing for GVF_GOINGUP_BIT.
-			 * GVF_GOINGUP_BIT is used because it's bit 0, so simple AND can be used,
+			/* Subtraction instead of addition because we are testing for GroundVehicleFlag::GoingUp.
+			 * GroundVehicleFlag::GoingUp is used because it's bit 0, so simple AND can be used,
 			 * without any shift */
-			this->z_pos += HasBit(this->gv_flags, GVF_GOINGUP_BIT) ? d : -d;
+			this->z_pos += this->gv_flags.Test(GroundVehicleFlag::GoingUp) ? d : -d;
 		}
 
 		assert(this->z_pos == GetSlopePixelZ(this->x_pos, this->y_pos, true));

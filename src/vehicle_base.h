@@ -337,8 +337,8 @@ public:
 	GroundVehicleCache *GetGroundVehicleCache();
 	const GroundVehicleCache *GetGroundVehicleCache() const;
 
-	uint16_t &GetGroundVehicleFlags();
-	const uint16_t &GetGroundVehicleFlags() const;
+	GroundVehicleFlags &GetGroundVehicleFlags();
+	const GroundVehicleFlags &GetGroundVehicleFlags() const;
 
 	void DeleteUnreachedImplicitOrders();
 

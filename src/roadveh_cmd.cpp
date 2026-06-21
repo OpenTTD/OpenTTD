@@ -1700,7 +1700,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 		return;
 	}
 
-	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
+	v->gv_flags.Set(GroundVehicleFlag::SuppressImplicitOrders);
 	v->current_order.MakeGoToDepot(depot, OrderDepotTypeFlag::Service);
 	v->SetDestTile(rfdd.tile);
 	SetWindowWidgetDirty(WindowClass::VehicleView, v->index, WID_VV_START_STOP);
