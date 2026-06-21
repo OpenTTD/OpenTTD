@@ -26,20 +26,20 @@ enum class GamelogActionType : uint8_t {
 };
 
 /** Type of logged change */
-enum GamelogChangeType : uint8_t {
-	GLCT_MODE,        ///< Scenario editor x Game, different landscape
-	GLCT_REVISION,    ///< Changed game revision string
-	GLCT_OLDVER,      ///< Loaded from savegame without logged data
-	GLCT_SETTING,     ///< Non-networksafe setting value changed
-	GLCT_GRFADD,      ///< Removed GRF
-	GLCT_GRFREM,      ///< Added GRF
-	GLCT_GRFCOMPAT,   ///< Loading compatible GRF
-	GLCT_GRFPARAM,    ///< GRF parameter changed
-	GLCT_GRFMOVE,     ///< GRF order changed
-	GLCT_GRFBUG,      ///< GRF bug triggered
-	GLCT_EMERGENCY,   ///< Emergency savegame
-	GLCT_END,         ///< So we know how many GLCTs are there
-	GLCT_NONE = 0xFF, ///< In savegames, end of list
+enum class GamelogChangeType : uint8_t {
+	Mode, ///< Scenario editor x Game, different landscape.
+	Revision, ///< Changed game revision string.
+	OldVer, ///< Loaded from savegame without logged data.
+	Setting, ///< Non-networksafe setting value changed.
+	GRFAdd, ///< Removed GRF.
+	GRFRem, ///< Added GRF.
+	GRFCompat, ///< Loading compatible GRF.
+	GRFParam, ///< GRF parameter changed.
+	GRFMove, ///< GRF order changed.
+	GRFBug, ///< GRF bug triggered.
+	Emergency, ///< Emergency savegame.
+	End, ///< End marker.
+	None = 0xFF, ///< In savegames, end of list.
 };
 
 struct LoggedChange;
