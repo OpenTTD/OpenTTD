@@ -110,7 +110,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NEWGRF_CARGO,                       ///<  55    9638 Increase number of cargos and NewGRF control of cargos
 	SLV_CITIES,                             ///<  56    9667 Cities that start bigger and grow faster
 	SLV_FIFO_LOADING,                       ///<  57    9691 First-in-first-out loading of vehicles
-	SLV_58,                                 ///<  58    9762
+	SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER,      ///<  58    9762 Difficulty settings for very low number of industries and towns
 	SLV_59,                                 ///<  59    9779
 
 	SLV_60,                                 ///<  60    9874

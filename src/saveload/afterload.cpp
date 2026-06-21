@@ -1700,7 +1700,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_58)) {
+	if (IsSavegameVersionBefore(SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER)) {
 		/* Setting difficulty industry_density other than zero get bumped to +1
 		 * since a new option (very low at position 1) has been added */
 		if (_settings_game.difficulty.industry_density > IndustryDensity::FundedOnly) {
