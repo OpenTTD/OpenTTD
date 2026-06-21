@@ -586,7 +586,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 					SetRailGroundType(tile, RailGroundType::HalfTileWater);
 					if (IsPossibleDockingTile(tile)) CheckForDockingTile(tile);
 				}
-				Company::Get(_current_company)->infrastructure.rail[railtype] += LOCK_DEPOT_TILE_FACTOR;
+				Company::Get(_current_company)->infrastructure.rail[railtype]++;
 				DirtyCompanyInfrastructureWindows(_current_company);
 			}
 			break;
@@ -1020,7 +1020,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 			MakeDefaultName(d);
 
-			Company::Get(_current_company)->infrastructure.rail[railtype] += LOCK_DEPOT_TILE_FACTOR;
+			Company::Get(_current_company)->infrastructure.rail[railtype]++;
 			DirtyCompanyInfrastructureWindows(_current_company);
 		}
 
@@ -1782,7 +1782,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlags flags)
 			if (v != nullptr) FreeTrainTrackReservation(v);
 		}
 
-		Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LOCK_DEPOT_TILE_FACTOR;
+		Company::Get(owner)->infrastructure.rail[GetRailType(tile)]--;
 		DirtyCompanyInfrastructureWindows(owner);
 
 		delete Depot::GetByTile(tile);
