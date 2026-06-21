@@ -93,7 +93,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NEWGRF_SETTINGS,                    ///<  41    7348   0.5.x Save what NewGRFs are used in the game and their settings
 	SLV_BRIDGE_WORMHOLE,                    ///<  42    7573 Bridges become wormholes, so more things can be built under them (e.g. signals)
 	SLV_UNIFY_ANIMATION_STATE,              ///<  43    7642 Put all animation state information in same map bits
-	SLV_44,                                 ///<  44    8144
+	SLV_CARGO_SOURCE_TILE,                  ///<  44    8144 Store the source tile of the cargo, so accurate payment can happen when the source station is removed
 
 	SLV_45,                                 ///<  45    8501
 	SLV_46,                                 ///<  46    8705

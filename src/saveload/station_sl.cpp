@@ -377,7 +377,7 @@ public:
 		     SLE_VAR(GoodsEntry, rating,               SLE_UINT8),
 		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_FILE_U8 | SLE_VAR_U16,   SL_MIN_VERSION, SLV_LARGER_CARGO_SOURCE),
 		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_UINT16,                  SLV_LARGER_CARGO_SOURCE, SLV_68),
-		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,               SLV_44, SLV_68),
+		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,               SLV_CARGO_SOURCE_TILE, SLV_68),
 		SLEG_CONDVAR("cargo_days", _cargo_periods,     SLE_UINT8,                   SL_MIN_VERSION, SLV_68),
 		     SLE_VAR(GoodsEntry, last_speed,           SLE_UINT8),
 		     SLE_VAR(GoodsEntry, last_age,             SLE_UINT8),
