@@ -384,9 +384,9 @@ static void NewSpriteGroup(ByteReader &buf)
 
 			switch (GB(type, 2, 2)) {
 				default: NOT_REACHED();
-				case 0: group->size = DSG_SIZE_BYTE;  varsize = 1; break;
-				case 1: group->size = DSG_SIZE_WORD;  varsize = 2; break;
-				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
+				case 0: group->size = DeterministicSpriteGroupSize::Byte; varsize = 1; break;
+				case 1: group->size = DeterministicSpriteGroupSize::Word; varsize = 2; break;
+				case 2: group->size = DeterministicSpriteGroupSize::DWord; varsize = 4; break;
 			}
 
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have

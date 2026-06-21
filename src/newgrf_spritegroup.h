@@ -123,10 +123,11 @@ enum class VarSpriteGroupScope : uint8_t {
 	End, ///< End marker.
 };
 
-enum DeterministicSpriteGroupSize : uint8_t {
-	DSG_SIZE_BYTE,
-	DSG_SIZE_WORD,
-	DSG_SIZE_DWORD,
+/** Deterministic sprite group variable size. */
+enum class DeterministicSpriteGroupSize : uint8_t {
+	Byte, ///< Treat variable as a Byte.
+	Word, ///< Treat variable as a Word.
+	DWord, ///< Treat variable as a DWord.
 };
 
 enum DeterministicSpriteGroupAdjustType : uint8_t {

@@ -216,9 +216,9 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
 		}
 
 		switch (this->size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8_t,  int8_t> (adjust, object, scope, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16_t, int16_t>(adjust, object, scope, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32_t, int32_t>(adjust, object, scope, last_value, value); break;
+			case DeterministicSpriteGroupSize::Byte: value = EvalAdjustT<uint8_t, int8_t>(adjust, object, scope, last_value, value); break;
+			case DeterministicSpriteGroupSize::Word: value = EvalAdjustT<uint16_t, int16_t>(adjust, object, scope, last_value, value); break;
+			case DeterministicSpriteGroupSize::DWord: value = EvalAdjustT<uint32_t, int32_t>(adjust, object, scope, last_value, value); break;
 			default: NOT_REACHED();
 		}
 		last_value = value;
