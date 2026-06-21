@@ -90,7 +90,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FREIGHT_WEIGHT,                     ///<  39    7269 Setting to increase the weight of cargo on freight trains
 
 	SLV_GRADUAL_LOADING,                    ///<  40    7326 Gradual (un)loading of cargo
-	SLV_41,                                 ///<  41    7348   0.5.x
+	SLV_NEWGRF_SETTINGS,                    ///<  41    7348   0.5.x Save what NewGRFs are used in the game and their settings
 	SLV_42,                                 ///<  42    7573
 	SLV_43,                                 ///<  43    7642
 	SLV_44,                                 ///<  44    8144
