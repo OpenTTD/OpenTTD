@@ -97,7 +97,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_COUNT_PAID_FOR_CARGO,               ///<  45    8501 Count the amount of cargo that was paid for
 	SLV_MORE_AIRPORT_BLOCKS,                ///<  46    8705 Increase number of blocks an airport can have
-	SLV_47,                                 ///<  47    8735
+	SLV_DRIVE_THROUGH_ROAD_STOPS,           ///<  47    8735 Drive through road stops
 	SLV_48,                                 ///<  48    8935
 	SLV_49,                                 ///<  49    8969
 
