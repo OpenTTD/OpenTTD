@@ -75,7 +75,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LAST_VEHICLE_TYPE,                  ///<  26    4466 Store the last vehicle type at stations instead of the vehicle ID
 	SLV_NEWGRF_STATIONS,                    ///<  27    4757 NewGRF graphics for stations
 	SLV_YAPF,                               ///<  28    4987 Yet another path finder
-	SLV_29,                                 ///<  29    5070
+	SLV_MORE_UNDER_BRIDGES,                 ///<  29    5070 Support crossings, fields and bridge/tunnel heads under bridges
 
 	SLV_30,                                 ///<  30    5946
 	SLV_31,                                 ///<  31    5999
