@@ -131,7 +131,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 /**
  * Get a resolver for the \a scope.
  * @param scope The scope to resolve.
- * @param relative The relative in case of a #VSG_SCOPE_RELATIVE.
+ * @param relative The relative in case of a #VarSpriteGroupScope::Relative.
  * @return The resolver for the requested scope.
  */
 /* virtual */ ScopeResolver *ResolverObject::GetScope([[maybe_unused]] VarSpriteGroupScope scope, [[maybe_unused]] uint8_t relative)

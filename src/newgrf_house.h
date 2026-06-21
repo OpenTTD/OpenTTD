@@ -58,11 +58,11 @@ struct HouseResolverObject : public SpecializedResolverObject<HouseRandomTrigger
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0,
 			bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = {}, int view = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF:   return &this->house_scope;
-			case VSG_SCOPE_PARENT: return &this->town_scope;
+			case VarSpriteGroupScope::Self: return &this->house_scope;
+			case VarSpriteGroupScope::Parent: return &this->town_scope;
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}

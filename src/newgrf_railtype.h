@@ -42,11 +42,11 @@ struct RailTypeResolverObject : public ResolverObject {
 
 	RailTypeResolverObject(const RailTypeInfo *rti, TileIndex tile, TileContext context, RailSpriteType rtsg, uint32_t param1 = 0, uint32_t param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->railtype_scope;
-			default:             return ResolverObject::GetScope(scope, relative);
+			case VarSpriteGroupScope::Self: return &this->railtype_scope;
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
 

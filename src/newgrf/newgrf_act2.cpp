@@ -380,7 +380,7 @@ static void NewSpriteGroup(ByteReader &buf)
 			DeterministicSpriteGroup *group = DeterministicSpriteGroup::Create();
 			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
-			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
 
 			switch (GB(type, 2, 2)) {
 				default: NOT_REACHED();
@@ -500,10 +500,10 @@ static void NewSpriteGroup(ByteReader &buf)
 			RandomizedSpriteGroup *group = RandomizedSpriteGroup::Create();
 			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
-			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
 
 			if (HasBit(type, 2)) {
-				if (feature <= GrfSpecFeature::Aircraft) group->var_scope = VSG_SCOPE_RELATIVE;
+				if (feature <= GrfSpecFeature::Aircraft) group->var_scope = VarSpriteGroupScope::Relative;
 				group->count = buf.ReadByte();
 			}
 

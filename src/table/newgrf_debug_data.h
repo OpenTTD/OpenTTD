@@ -78,7 +78,7 @@ class NIHVehicle : public NIHelper {
 	{
 		Vehicle *v = Vehicle::Get(index);
 		VehicleResolverObject ro(v->engine_type, v, VehicleResolverObject::WagonOverride::Cached);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -142,7 +142,7 @@ class NIHStation : public NIHelper {
 	{
 		TileIndex tile{index};
 		StationResolverObject ro(GetStationSpec(tile), Station::GetByTile(tile), tile);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -207,7 +207,7 @@ class NIHHouse : public NIHelper {
 	{
 		TileIndex tile{index};
 		HouseResolverObject ro(GetHouseType(tile), tile, Town::GetByTile(tile));
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -257,7 +257,7 @@ class NIHIndustryTile : public NIHelper {
 	{
 		TileIndex tile{index};
 		IndustryTileResolverObject ro(GetIndustryGfx(tile), tile, Industry::GetByTile(tile));
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -369,7 +369,7 @@ class NIHIndustry : public NIHelper {
 	{
 		Industry *i = Industry::Get(index);
 		IndustriesResolverObject ro(i->location.tile, i, i->type);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 
 	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
@@ -431,7 +431,7 @@ class NIHObject : public NIHelper {
 	{
 		TileIndex tile{index};
 		ObjectResolverObject ro(ObjectSpec::GetByTile(tile), Object::GetByTile(tile), tile);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -468,7 +468,7 @@ class NIHRailType : public NIHelper {
 		/* There is no unique GRFFile for the tile. Multiple GRFs can define different parts of the railtype.
 		 * However, currently the NewGRF Debug GUI does not display variables depending on the GRF (like 0x7F) anyway. */
 		RailTypeResolverObject ro(nullptr, TileIndex{index}, TCX_NORMAL, RailSpriteType::End);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -503,7 +503,7 @@ class NIHAirportTile : public NIHelper {
 	{
 		TileIndex tile{index};
 		AirportTileResolverObject ro(AirportTileSpec::GetByTile(tile), tile, Station::GetByTile(tile));
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -545,7 +545,7 @@ class NIHAirport : public NIHelper {
 	{
 		Station *st = Station::Get(index);
 		AirportResolverObject ro(st->airport.tile, st, AirportSpec::Get(st->airport.type), st->airport.layout);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 
 	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
@@ -591,7 +591,7 @@ class NIHTown : public NIHelper {
 	uint Resolve(uint index, uint var, uint param, bool &avail) const override
 	{
 		TownResolverObject ro(nullptr, Town::Get(index), true);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 
 	const std::span<int32_t> GetPSA(uint index, uint32_t grfid) const override
@@ -644,7 +644,7 @@ class NIHRoadType : public NIHelper {
 		/* There is no unique GRFFile for the tile. Multiple GRFs can define different parts of the railtype.
 		 * However, currently the NewGRF Debug GUI does not display variables depending on the GRF (like 0x7F) anyway. */
 		RoadTypeResolverObject ro(nullptr, TileIndex{index}, TCX_NORMAL, RoadSpriteType::End);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 
@@ -709,7 +709,7 @@ class NIHRoadStop : public NIHelper {
 		TileIndex tile{index};
 		StationGfx view = GetStationGfx(tile);
 		RoadStopResolverObject ro(GetRoadStopSpec(tile), BaseStation::GetByTile(tile), tile, INVALID_ROADTYPE, GetStationType(tile), view);
-		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 };
 

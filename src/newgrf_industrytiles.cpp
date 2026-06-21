@@ -345,12 +345,12 @@ static void DoTriggerIndustryTileRandomisation(TileIndex tile, IndustryRandomTri
 	/* Rerandomise tile bits */
 	uint8_t new_random_bits = Random();
 	uint8_t random_bits = GetIndustryRandomBits(tile);
-	random_bits &= ~object.reseed[VSG_SCOPE_SELF];
-	random_bits |= new_random_bits & object.reseed[VSG_SCOPE_SELF];
+	random_bits &= ~object.reseed[VarSpriteGroupScope::Self];
+	random_bits |= new_random_bits & object.reseed[VarSpriteGroupScope::Self];
 	SetIndustryRandomBits(tile, random_bits);
 	MarkTileDirtyByTile(tile);
 
-	reseed_industry |= object.reseed[VSG_SCOPE_PARENT];
+	reseed_industry |= object.reseed[VarSpriteGroupScope::Parent];
 }
 
 /**
