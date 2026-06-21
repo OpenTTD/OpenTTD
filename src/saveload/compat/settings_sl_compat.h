@@ -21,7 +21,7 @@ const SaveLoadCompat _gameopt_sl_compat[] = {
 	SLC_VAR("game_creation.town_name"),
 	SLC_VAR("game_creation.landscape"),
 	SLC_VAR("game_creation.snow_line_height"),
-	SLC_NULL(1, SLV_22, SLV_165),
+	SLC_NULL(1, SLV_SAVE_PATCHES, SLV_165),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_23),
 	SLC_VAR("vehicle.road_side"),
 };
