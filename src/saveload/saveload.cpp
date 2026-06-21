@@ -1298,7 +1298,7 @@ static void *IntToReference(size_t index, SLRefType rt)
 
 	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
 	 * and should be loaded like that */
-	if (rt == REF_VEHICLE_OLD && !IsSavegameVersionBefore(SLV_4, 4)) {
+	if (rt == REF_VEHICLE_OLD && !IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 4)) {
 		rt = REF_VEHICLE;
 	}
 
@@ -3163,7 +3163,7 @@ static SaveLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check
 
 		_gamelog.Reset();
 
-		if (IsSavegameVersionBefore(SLV_4)) {
+		if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE)) {
 			/*
 			 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
 			 * shared savegame version 4. Anything before that 'obviously'

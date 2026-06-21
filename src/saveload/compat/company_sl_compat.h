@@ -14,32 +14,32 @@
 
 /** Original field order for SlCompanyOldAIBuildRec. */
 const SaveLoadCompat _company_old_ai_buildrec_compat[] = {
-	SLC_NULL(2, SL_MIN_VERSION, SLV_6),
-	SLC_NULL(4, SLV_6, SLV_107),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_6),
-	SLC_NULL(4, SLV_6, SLV_107),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLC_NULL(4, SLV_MULTIPLE_ROAD_STOPS, SLV_107),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLC_NULL(4, SLV_MULTIPLE_ROAD_STOPS, SLV_107),
 	SLC_NULL(8, SL_MIN_VERSION, SLV_107),
 };
 
 /** Original field order for SlCompanyOldAI. */
 const SaveLoadCompat _company_old_ai_compat[] = {
 	SLC_NULL(2,  SL_MIN_VERSION, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION, SLV_13),
-	SLC_NULL(4, SLV_13, SLV_107),
+	SLC_NULL(2,  SL_MIN_VERSION, SLV_LARGER_AI_STATE_COUNTER),
+	SLC_NULL(4, SLV_LARGER_AI_STATE_COUNTER, SLV_107),
 	SLC_NULL(8,  SL_MIN_VERSION, SLV_107),
 	SLC_VAR("num_build_rec"),
 	SLC_NULL(3,  SL_MIN_VERSION, SLV_107),
 
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
+	SLC_NULL(2,  SL_MIN_VERSION,  SLV_MULTIPLE_ROAD_STOPS),
+	SLC_NULL(4,  SLV_MULTIPLE_ROAD_STOPS, SLV_107),
+	SLC_NULL(2,  SL_MIN_VERSION,  SLV_MULTIPLE_ROAD_STOPS),
+	SLC_NULL(4,  SLV_MULTIPLE_ROAD_STOPS, SLV_107),
 	SLC_NULL(2,  SL_MIN_VERSION, SLV_107),
 
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
+	SLC_NULL(2,  SL_MIN_VERSION,  SLV_MULTIPLE_ROAD_STOPS),
+	SLC_NULL(4,  SLV_MULTIPLE_ROAD_STOPS, SLV_107),
+	SLC_NULL(2,  SL_MIN_VERSION,  SLV_MULTIPLE_ROAD_STOPS),
+	SLC_NULL(4,  SLV_MULTIPLE_ROAD_STOPS, SLV_107),
 	SLC_NULL(2,  SL_MIN_VERSION, SLV_107),
 
 	SLC_NULL(2,  SL_MIN_VERSION, SLV_69),
@@ -49,13 +49,13 @@ const SaveLoadCompat _company_old_ai_compat[] = {
 	SLC_NULL(20, SL_MIN_VERSION, SLV_107),
 	SLC_NULL(32, SL_MIN_VERSION, SLV_107),
 
-	SLC_NULL(64, SLV_2, SLV_107),
+	SLC_NULL(64, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_107),
 	SLC_VAR("buildrec"),
 };
 
 /** Original field order for SlCompanySettings. */
 const SaveLoadCompat _company_settings_compat[] = {
-	SLC_NULL(512, SLV_16, SLV_19),
+	SLC_NULL(512, SLV_ENGINE_RENEW, SLV_ENGINE_RENEW_POOL),
 	SLC_VAR("engine_renew_list"),
 	SLC_VAR("settings.engine_renew"),
 	SLC_VAR("settings.engine_renew_months"),
@@ -66,7 +66,7 @@ const SaveLoadCompat _company_settings_compat[] = {
 	SLC_VAR("settings.vehicle.servint_roadveh"),
 	SLC_VAR("settings.vehicle.servint_aircraft"),
 	SLC_VAR("settings.vehicle.servint_ships"),
-	SLC_NULL(63, SLV_2, SLV_144),
+	SLC_NULL(63, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlCompanyEconomy. */
@@ -115,7 +115,7 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("yearly_expenses"),
 	SLC_VAR("is_ai"),
 	SLC_NULL(1, SLV_107, SLV_112),
-	SLC_NULL(1, SLV_4, SLV_100),
+	SLC_NULL(1, SLV_TOWN_TOLERANCE_PAUSE_MODE, SLV_100),
 	SLC_VAR("terraform_limit"),
 	SLC_VAR("clear_limit"),
 	SLC_VAR("tree_limit"),

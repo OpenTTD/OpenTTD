@@ -94,14 +94,14 @@ static const SaveLoad _date_desc[] = {
 	SLEG_CONDVAR("days_since_last_month",  TimerGameEconomy::days_since_last_month, SLE_UINT32,           SLV_INDUSTRY_ACCEPTED_HISTORY, SL_MAX_VERSION),
 	SLEG_CONDVAR("calendar_sub_date_fract", TimerGameCalendar::sub_date_fract, SLE_UINT16,                SLV_CALENDAR_SUB_DATE_FRACT, SL_MAX_VERSION),
 	SLEG_CONDVAR("age_cargo_skip_counter", _age_cargo_skip_counter, SLE_UINT8,                   SL_MIN_VERSION, SLV_162),
-	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
-	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
+	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 	    SLEG_VAR("next_disaster_start",         _disaster_delay,         SLE_UINT16),
 	    SLEG_VAR("random_state[0]",        _random.state[0],        SLE_UINT32),
 	    SLEG_VAR("random_state[1]",        _random.state[1],        SLE_UINT32),
 	    SLEG_VAR("company_tick_counter", _cur_company_tick_index, SLE_FILE_U8  | SLE_VAR_U32),
 	    SLEG_VAR("trees_tick_counter",     _trees_tick_ctr,         SLE_UINT8),
-	SLEG_CONDVAR("pause_mode",             _pause_mode,             SLE_UINT8,                   SLV_4, SL_MAX_VERSION),
+	SLEG_CONDVAR("pause_mode",             _pause_mode,             SLE_UINT8,                   SLV_TOWN_TOLERANCE_PAUSE_MODE, SL_MAX_VERSION),
 	SLEG_CONDSSTR("id",                    _game_session_stats.savegame_id, SLE_STR,                     SLV_SAVEGAME_ID, SL_MAX_VERSION),
 	/* For older savegames, we load the current value as the "period"; afterload will set the "fired" and "elapsed". */
 	SLEG_CONDVAR("next_competitor_start",        _new_competitor_timeout.period.value,    SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_109),
@@ -157,10 +157,10 @@ struct DATEChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _view_desc[] = {
-	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_6),
-	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_INT32,                  SLV_6, SL_MAX_VERSION),
-	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_6),
-	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_INT32,                  SLV_6, SL_MAX_VERSION),
+	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_INT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
+	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
+	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_INT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 	    SLEG_VAR("zoom", _saved_scrollpos_zoom, SLE_UINT8),
 };
 

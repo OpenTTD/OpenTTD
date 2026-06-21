@@ -30,39 +30,40 @@
 enum SaveLoadVersion : uint16_t {
 	SL_MIN_VERSION,                         ///< First savegame version
 
-	SLV_1,                                  ///<   1.0         0.1.x, 0.2.x
-	SLV_2,                                  /**<   2.0         0.3.0
-	                                         *     2.1         0.3.1, 0.3.2 */
-	SLV_3,                                  ///<   3.x         lost
-	SLV_4,                                  /**<   4.0     1
-	                                         *     4.1   122   0.3.3, 0.3.4
-	                                         *     4.2  1222   0.3.5
-	                                         *     4.3  1417
-	                                         *     4.4  1426 */
+	SLV_BIG_CURRENCY,                       ///<   1.0         0.1.x, 0.2.x Change currency from 32 to 64 bits
+	SLV_VEHICLE_CURRENCY_STATION_CHANGES,   /**<   2.0         0.3.0        Adding vehicle state, larger currency size for statistics, station size revamped.
+	                                         *     2.1         0.3.1, 0.3.2 Unify way of storing town owner
+	                                         *     2.2         lost         New airports */
+	SLV_BIGGER_STATION_VARIABLES,           ///<   3.x         lost         Increase size of airport blocks/station build date
+	SLV_TOWN_TOLERANCE_PAUSE_MODE,          /**<   4.0     1                Town council tolerance and pause mode
+	                                         *     4.1   122   0.3.3, 0.3.4 Store exclusive rights in towns
+	                                         *     4.2  1222   0.3.5        Currencies are reordered
+	                                         *     4.3  1417                Make water owned by OWNER_NONE
+	                                         *     4.4  1426                Make vehicle references same as other references */
 
-	SLV_5,                                  /**<   5.0  1429
-	                                         *     5.1  1440
-	                                         *     5.2  1525   0.3.6 */
-	SLV_6,                                  /**<   6.0  1721
-	                                         *     6.1  1768 */
-	SLV_7,                                  ///<   7.0  1770
-	SLV_8,                                  ///<   8.0  1786
-	SLV_9,                                  ///<   9.0  1909
+	SLV_BIG_MAP,                            /**<   5.0  1429 Making maps a different size than 256x256
+	                                         *     5.1  1440 Flexible airport layouts
+	                                         *     5.2  1525   0.3.6 Dynamic order array */
+	SLV_MULTIPLE_ROAD_STOPS,                /**<   6.0  1721 Multi tile road stops, and some map size related fixes
+	                                         *     6.1  1768 Town index in m2 */
+	SLV_LARGER_CARGO_SOURCE,                ///<   7.0  1770 With more stations, the size of the cargo source needed to be increased
+	SLV_LARGER_UNIT_NUMBER,                 ///<   8.0  1786 Increase size of (vehicle) unit numbers
+	SLV_LARGER_TOWN_CARGO_STATISTICS,       ///<   9.0  1909 Increase size of passenger/mail production of this and previous months
 
-	SLV_10,                                 ///<  10.0  2030
-	SLV_11,                                 /**<  11.0  2033
-	                                         *    11.1  2041 */
-	SLV_12,                                 ///<  12.1  2046
-	SLV_13,                                 ///<  13.1  2080   0.4.0, 0.4.0.1
-	SLV_14,                                 ///<  14.0  2441
+	SLV_LARGER_TOWN_COUNTER,                ///<  10.0  2030 Increase size of the town counter
+	SLV_LARGER_TOWN_ITERATOR,               /**<  11.0  2033 Increase size of the town iterator
+	                                         *    11.1  2041 Fix vehicle counters */
+	SLV_LINK_WAYPOINT_TO_TOWN,              ///<  12.1  2046 Link waypoints to towns and remove some bit stuffing
+	SLV_LARGER_AI_STATE_COUNTER,            ///<  13.1  2080   0.4.0, 0.4.0.1 AI state counter increased due it storing tile indices
+	SLV_TRANSFER_ORDER,                     ///<  14.0  2441 Transfer orders for feeder systems
 
-	SLV_15,                                 ///<  15.0  2499
-	SLV_16,                                 /**<  16.0  2817
-	                                         *    16.1  3155 */
-	SLV_17,                                 /**<  17.0  3212
-	                                         *    17.1  3218 */
-	SLV_18,                                 ///<  18    3227
-	SLV_19,                                 ///<  19    3396
+	SLV_MOVE_SEMAPHORE_BITS,                ///<  15.0  2499 Move rail signal bit for semaphores
+	SLV_ENGINE_RENEW,                       /**<  16.0  2817 Automatic replacing/renewing of vehicles
+	                                         *    16.1  3155 Keep vehicle length during autoreplace */
+	SLV_STORE_WAYPOINT_ID_IN_MAP,           /**<  17.0  3212 Store the ID of waypoints in m2 of the map
+	                                         *    17.1  3218 Make train subtype a bitmask */
+	SLV_REMOVE_MINOR_VERSION,               ///<  18    3227 Remove the minor versions from savegames
+	SLV_ENGINE_RENEW_POOL,                  ///<  19    3396 Engine renews are now stored in a pool
 
 	SLV_20,                                 ///<  20    3403
 	SLV_21,                                 ///<  21    3472   0.4.x

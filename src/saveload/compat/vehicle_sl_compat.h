@@ -87,12 +87,12 @@ const SaveLoadCompat _vehicle_common_sl_compat[] = {
 	SLC_VAR("random_bits"),
 	SLC_VAR("waiting_triggers"),
 	SLC_VAR("next_shared"),
-	SLC_NULL(2, SLV_2, SLV_69),
+	SLC_NULL(2, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_69),
 	SLC_NULL(4, SLV_69, SLV_101),
 	SLC_VAR("group_id"),
 	SLC_VAR("current_order_time"),
 	SLC_VAR("lateness_counter"),
-	SLC_NULL(10, SLV_2, SLV_144),
+	SLC_NULL(10, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlVehicleTrain. */
@@ -103,11 +103,11 @@ const SaveLoadCompat _vehicle_train_sl_compat[] = {
 	SLC_NULL(1, SL_MIN_VERSION, SLV_ENGINE_MULTI_RAILTYPE),
 	SLC_VAR("track"),
 	SLC_VAR("flags"),
-	SLC_NULL(2, SLV_2, SLV_60),
+	SLC_NULL(2, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_60),
 	SLC_VAR("wait_counter"),
-	SLC_NULL(2, SLV_2, SLV_20),
+	SLC_NULL(2, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_20),
 	SLC_VAR("gv_flags"),
-	SLC_NULL(11, SLV_2, SLV_144),
+	SLC_NULL(11, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlVehicleRoadVeh. */
@@ -122,11 +122,11 @@ const SaveLoadCompat _vehicle_roadveh_sl_compat[] = {
 	SLC_VAR("reverse_ctr"),
 	SLC_VAR("path.td"),
 	SLC_VAR("path.tile"),
-	SLC_NULL(2, SLV_6, SLV_69),
+	SLC_NULL(2, SLV_MULTIPLE_ROAD_STOPS, SLV_69),
 	SLC_VAR("gv_flags"),
 	SLC_NULL(4, SLV_69, SLV_131),
-	SLC_NULL(2, SLV_6, SLV_131),
-	SLC_NULL(16, SLV_2, SLV_144),
+	SLC_NULL(2, SLV_MULTIPLE_ROAD_STOPS, SLV_131),
+	SLC_NULL(16, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlVehicleShip. */
@@ -135,7 +135,7 @@ const SaveLoadCompat _vehicle_ship_sl_compat[] = {
 	SLC_VAR("state"),
 	SLC_VAR("path"),
 	SLC_VAR("rotation"),
-	SLC_NULL(16, SLV_2, SLV_144),
+	SLC_NULL(16, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlVehicleAircraft. */
@@ -150,7 +150,7 @@ const SaveLoadCompat _vehicle_aircraft_sl_compat[] = {
 	SLC_VAR("number_consecutive_turns"),
 	SLC_VAR("turn_counter"),
 	SLC_VAR("flags"),
-	SLC_NULL(13, SLV_2, SLV_144),
+	SLC_NULL(13, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlVehicleEffect. */
@@ -167,7 +167,7 @@ const SaveLoadCompat _vehicle_effect_sl_compat[] = {
 	SLC_VAR("animation_state"),
 	SLC_VAR("animation_substate"),
 	SLC_VAR("spritenum"),
-	SLC_NULL(15, SLV_2, SLV_144),
+	SLC_NULL(15, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for SlVehicleDisaster. */
@@ -190,7 +190,7 @@ const SaveLoadCompat _vehicle_disaster_sl_compat[] = {
 	SLC_VAR("image_override"),
 	SLC_VAR("big_ufo_destroyer_target"),
 	SLC_VAR("flags"),
-	SLC_NULL(16, SLV_2, SLV_144),
+	SLC_NULL(16, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };
 
 /** Original field order for vehicle_desc. */

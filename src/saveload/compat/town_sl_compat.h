@@ -38,8 +38,8 @@ const SaveLoadCompat _town_acceptance_matrix_sl_compat[] = {
 /** Original field order for town_desc. */
 const SaveLoadCompat _town_sl_compat[] = {
 	SLC_VAR("xy"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_3),
-	SLC_NULL(4, SLV_3, SLV_85),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_BIGGER_STATION_VARIABLES),
+	SLC_NULL(4, SLV_BIGGER_STATION_VARIABLES, SLV_85),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_92),
 	SLC_VAR("townnamegrfid"),
 	SLC_VAR("townnametype"),
@@ -47,7 +47,7 @@ const SaveLoadCompat _town_sl_compat[] = {
 	SLC_VAR("name"),
 	SLC_VAR("flags"),
 	SLC_VAR("statues"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_2),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_VEHICLE_CURRENCY_STATION_CHANGES),
 	SLC_VAR("have_ratings"),
 	SLC_VAR("ratings"),
 	SLC_VAR("unwanted"),
@@ -78,7 +78,7 @@ const SaveLoadCompat _town_sl_compat[] = {
 	SLC_VAR("psa_list"),
 	SLC_NULL(4, SLV_166, SLV_EXTEND_CARGOTYPES),
 	SLC_NULL(8, SLV_EXTEND_CARGOTYPES, SLV_REMOVE_TOWN_CARGO_CACHE),
-	SLC_NULL(30, SLV_2, SLV_REMOVE_TOWN_CARGO_CACHE),
+	SLC_NULL(30, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_REMOVE_TOWN_CARGO_CACHE),
 	SLC_VAR("supplied"),
 	SLC_VAR("received"),
 	SLC_VAR("acceptance_matrix"),

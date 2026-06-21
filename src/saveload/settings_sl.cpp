@@ -37,7 +37,7 @@ void PrepareOldDiffCustom()
 void HandleOldDiffCustom(bool savegame)
 {
 	/* Savegames before v4 didn't have "town_council_tolerance" in savegame yet. */
-	bool has_no_town_council_tolerance = savegame && IsSavegameVersionBefore(SLV_4);
+	bool has_no_town_council_tolerance = savegame && IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE);
 	uint options_to_load = GAME_DIFFICULTY_NUM - (has_no_town_council_tolerance ? 1 : 0);
 
 	if (!savegame) {
