@@ -190,11 +190,11 @@ struct AirportResolverObject : public ResolverObject {
 
 	TownScopeResolver *GetTown();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->airport_scope;
-			case VSG_SCOPE_PARENT:
+			case VarSpriteGroupScope::Self: return &this->airport_scope;
+			case VarSpriteGroupScope::Parent:
 			{
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != nullptr) return tsr;
