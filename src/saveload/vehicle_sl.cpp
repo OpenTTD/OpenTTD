@@ -503,12 +503,12 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 			case VehicleType::Road:
 			case VehicleType::Train:
 			case VehicleType::Ship:
-				v->GetImage(v->direction, EIT_ON_MAP, &v->sprite_cache.sprite_seq);
+				v->GetImage(v->direction, EngineImageType::OnMap, &v->sprite_cache.sprite_seq);
 				break;
 
 			case VehicleType::Aircraft:
 				if (Aircraft::From(v)->IsNormalAircraft()) {
-					v->GetImage(v->direction, EIT_ON_MAP, &v->sprite_cache.sprite_seq);
+					v->GetImage(v->direction, EngineImageType::OnMap, &v->sprite_cache.sprite_seq);
 
 					/* The aircraft's shadow will have the same image as the aircraft, but no colour */
 					Vehicle *shadow = v->Next();
@@ -521,7 +521,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 						Vehicle *rotor = shadow->Next();
 						if (rotor == nullptr) SlErrorCorrupt("Missing rotor for helicopter");
 
-						GetRotorImage(Aircraft::From(v), EIT_ON_MAP, &rotor->sprite_cache.sprite_seq);
+						GetRotorImage(Aircraft::From(v), EngineImageType::OnMap, &rotor->sprite_cache.sprite_seq);
 					}
 
 					UpdateAircraftCache(Aircraft::From(v), true);

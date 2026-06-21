@@ -504,13 +504,13 @@ static void HelicopterTickHandler(Aircraft *v)
 	VehicleSpriteSeq seq;
 	if (spd == 0) {
 		u->state = HRS_ROTOR_STOPPED;
-		GetRotorImage(v, EIT_ON_MAP, &seq);
+		GetRotorImage(v, EngineImageType::OnMap, &seq);
 		if (u->sprite_cache.sprite_seq == seq) return;
 	} else if (tick >= spd) {
 		u->tick_counter = 0;
 		u->state++;
 		if (u->state > HRS_ROTOR_MOVING_3) u->state = HRS_ROTOR_MOVING_1;
-		GetRotorImage(v, EIT_ON_MAP, &seq);
+		GetRotorImage(v, EngineImageType::OnMap, &seq);
 	} else {
 		return;
 	}
@@ -536,7 +536,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	v->UpdatePosition();
 	v->UpdateViewport(true, false);
 	if (v->subtype == AIR_HELICOPTER) {
-		GetRotorImage(v, EIT_ON_MAP, &v->Next()->Next()->sprite_cache.sprite_seq);
+		GetRotorImage(v, EngineImageType::OnMap, &v->Next()->Next()->sprite_cache.sprite_seq);
 	}
 
 	Aircraft *u = v->Next();
@@ -1323,7 +1323,7 @@ void Aircraft::MarkDirty()
 	this->colourmap = PAL_NONE;
 	this->UpdateViewport(true, false);
 	if (this->subtype == AIR_HELICOPTER) {
-		GetRotorImage(this, EIT_ON_MAP, &this->Next()->Next()->sprite_cache.sprite_seq);
+		GetRotorImage(this, EngineImageType::OnMap, &this->Next()->Next()->sprite_cache.sprite_seq);
 	}
 }
 

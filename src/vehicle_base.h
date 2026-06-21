@@ -1244,7 +1244,7 @@ struct SpecializedVehicle : public Vehicle {
 		if (this->direction != this->sprite_cache.last_direction || this->sprite_cache.is_viewport_candidate) {
 			VehicleSpriteSeq seq;
 
-			((T*)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
+			((T*)this)->T::GetImage(this->direction, EngineImageType::OnMap, &seq);
 			if (this->sprite_cache.sprite_seq != seq) {
 				sprite_has_changed = true;
 				this->sprite_cache.sprite_seq = seq;

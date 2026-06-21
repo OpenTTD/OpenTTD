@@ -135,7 +135,7 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 {
 	uint8_t spritenum = this->spritenum;
 
-	if (image_type == EIT_ON_MAP) direction = this->rotation;
+	if (image_type == EngineImageType::OnMap) direction = this->rotation;
 
 	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleSprite(this, direction, image_type, result);

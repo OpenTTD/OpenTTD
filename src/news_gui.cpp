@@ -551,7 +551,7 @@ struct NewsWindow : Window {
 			case WID_N_VEH_SPR: {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
-				DrawVehicleEngine(r.left, r.right, CentreBounds(r.left, r.right, 0), CentreBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
+				DrawVehicleEngine(r.left, r.right, CentreBounds(r.left, r.right, 0), CentreBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EngineImageType::Preview);
 				GfxFillRect(r, PALETTE_NEWSPAPER, FillRectMode::Recolour);
 				break;
 			}
