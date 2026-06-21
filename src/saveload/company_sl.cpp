@@ -410,9 +410,9 @@ public:
 class SlCompanyLiveries : public DefaultSaveLoadHandler<SlCompanyLiveries, CompanyProperties> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(Livery, in_use,  SLE_UINT8, SLV_34, SL_MAX_VERSION),
-		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SLV_34, SL_MAX_VERSION),
-		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_34, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, in_use,  SLE_UINT8, SLV_LIVERIES, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SLV_LIVERIES, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_LIVERIES, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_liveries_compat;
 
@@ -547,7 +547,7 @@ static const SaveLoad _company_desc[] = {
 	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SL_MIN_VERSION, SLV_107),
 	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
 	SLEG_STRUCTLIST("old_economy", SlCompanyOldEconomy),
-	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_34, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_LIVERIES, SL_MAX_VERSION),
 };
 
 struct PLYRChunkHandler : ChunkHandler {

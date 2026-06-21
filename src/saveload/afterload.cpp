@@ -1441,7 +1441,7 @@ bool AfterLoadGame()
 
 	YapfNotifyTrackLayoutChange(INVALID_TILE, Track::Invalid);
 
-	if (IsSavegameVersionBefore(SLV_34)) {
+	if (IsSavegameVersionBefore(SLV_LIVERIES)) {
 		for (Company *c : Company::Iterate()) ResetCompanyLivery(c);
 	}
 

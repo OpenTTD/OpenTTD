@@ -81,7 +81,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_BIG_DATES,                          ///<  31    5999 Change date from 1920 - 2090 to 0 - 5 000 000
 	SLV_LINK_FARM_FIELD_TO_INDUSTRY,        ///<  32    6001 Link farm fields to the industry, so it gets removed when the industry goes away
 	SLV_SAVE_YAPF_SETTINGS,                 ///<  33    6440 Some YAPF settings were not saved properly
-	SLV_34,                                 ///<  34    6455
+	SLV_LIVERIES,                           ///<  34    6455 Liveries and two company colours (2cc)
 
 	SLV_35,                                 ///<  35    6602
 	SLV_36,                                 ///<  36    6624
