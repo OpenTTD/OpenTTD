@@ -65,7 +65,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REMOVE_MINOR_VERSION,               ///<  18    3227 Remove the minor versions from savegames
 	SLV_ENGINE_RENEW_POOL,                  ///<  19    3396 Engine renews are now stored in a pool
 
-	SLV_20,                                 ///<  20    3403
+	SLV_NO_MULTIHEAD_REFERENCE,             ///<  20    3403 Remove reference from one multihead to the other one
 	SLV_21,                                 ///<  21    3472   0.4.x
 	SLV_22,                                 ///<  22    3726
 	SLV_23,                                 ///<  23    3915
