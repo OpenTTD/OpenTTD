@@ -22,8 +22,8 @@ const SaveLoadCompat _roadstop_sl_compat[] = {
 	SLC_NULL(1, SL_MIN_VERSION, SLV_26),
 	SLC_VAR("next"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_45),
-	SLC_NULL(4, SL_MIN_VERSION, SLV_25),
-	SLC_NULL(1, SLV_25, SLV_26),
+	SLC_NULL(4, SL_MIN_VERSION, SLV_IMPROVE_MULTISTOP),
+	SLC_NULL(1, SLV_IMPROVE_MULTISTOP, SLV_26),
 };
 
 /** Original field order for SlStationSpecList. */

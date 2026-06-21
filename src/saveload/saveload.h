@@ -71,7 +71,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REMOVE_AUTOSAVE_INTERVAL,           ///<  23    3915 Store autosave interval locally, instead of in savegame
 	SLV_ELRAIL,                             ///<  24    4150 Electrified railways
 
-	SLV_25,                                 ///<  25    4259
+	SLV_IMPROVE_MULTISTOP,                  ///<  25    4259 Improve the behaviour of RVs going to road stops
 	SLV_26,                                 ///<  26    4466
 	SLV_27,                                 ///<  27    4757
 	SLV_28,                                 ///<  28    4987
