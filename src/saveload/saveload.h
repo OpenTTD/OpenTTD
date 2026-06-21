@@ -68,7 +68,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NO_MULTIHEAD_REFERENCE,             ///<  20    3403 Remove reference from one multihead to the other one
 	SLV_REMOVE_OLD_PBS,                     ///<  21    3472   0.4.x Remove old implementation of path based signals
 	SLV_SAVE_PATCHES,                       ///<  22    3726 Save state of patches (precursor of settings) in the savegame
-	SLV_23,                                 ///<  23    3915
+	SLV_REMOVE_AUTOSAVE_INTERVAL,           ///<  23    3915 Store autosave interval locally, instead of in savegame
 	SLV_24,                                 ///<  24    4150
 
 	SLV_25,                                 ///<  25    4259
