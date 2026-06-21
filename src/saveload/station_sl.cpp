@@ -513,8 +513,8 @@ static const SaveLoad _old_station_desc[] = {
 
 	SLE_CONDVAR(Station, last_vehicle_type,          SLE_UINT8,                  SLV_LAST_VEHICLE_TYPE, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Station, build_date,                 SLE_FILE_U16 | SLE_VAR_I32,  SLV_BIGGER_STATION_VARIABLES, SLV_31),
-	SLE_CONDVAR(Station, build_date,                 SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, build_date,                 SLE_FILE_U16 | SLE_VAR_I32,  SLV_BIGGER_STATION_VARIABLES, SLV_BIG_DATES),
+	SLE_CONDVAR(Station, build_date,                 SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
 
 	SLE_CONDREF(Station, bus_stops,                  REF_ROADSTOPS,               SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 	SLE_CONDREF(Station, truck_stops,                REF_ROADSTOPS,               SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),

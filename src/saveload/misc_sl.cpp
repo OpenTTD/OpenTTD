@@ -84,8 +84,8 @@ uint8_t _age_cargo_skip_counter; ///< Skip aging of cargo? Used before savegame 
 extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 
 static const SaveLoad _date_desc[] = {
-	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
-	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_BIG_DATES),
+	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
 	    SLEG_VAR("date_fract",             TimerGameCalendar::date_fract,             SLE_UINT16),
 	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_FILE_U16 | SLE_VAR_U64,  SL_MIN_VERSION, SLV_U64_TICK_COUNTER),
 	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_UINT64,                  SLV_U64_TICK_COUNTER, SL_MAX_VERSION),
@@ -112,8 +112,8 @@ static const SaveLoad _date_desc[] = {
 };
 
 static const SaveLoad _date_check_desc[] = {
-	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
-	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_BIG_DATES),
+	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
 };
 
 /**
@@ -150,7 +150,7 @@ struct DATEChunkHandler : ChunkHandler {
 	{
 		this->LoadCommon(_date_check_desc, _date_check_sl_compat);
 
-		if (IsSavegameVersionBefore(SLV_31)) {
+		if (IsSavegameVersionBefore(SLV_BIG_DATES)) {
 			_load_check_data.current_date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		}
 	}

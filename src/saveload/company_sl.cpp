@@ -521,8 +521,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION,  SLV_MULTIPLE_ROAD_STOPS),
 	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  SL_MIN_VERSION, SLV_31),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  SL_MIN_VERSION, SLV_BIG_DATES),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, inaugurated_year_calendar, SLE_INT32,               SLV_COMPANY_INAUGURATED_PERIOD_V2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8,                   SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),

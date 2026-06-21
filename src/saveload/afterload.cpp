@@ -1454,7 +1454,7 @@ bool AfterLoadGame()
 
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
-	if (IsSavegameVersionBefore(SLV_31)) {
+	if (IsSavegameVersionBefore(SLV_BIG_DATES)) {
 		TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		TimerGameCalendar::year += CalendarTime::ORIGINAL_BASE_YEAR;
 		TimerGameEconomy::date += EconomyTime::DAYS_TILL_ORIGINAL_BASE_YEAR;

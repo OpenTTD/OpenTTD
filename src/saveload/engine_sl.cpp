@@ -19,10 +19,10 @@
 #include "../safeguards.h"
 
 static const SaveLoad _engine_desc[] = {
-	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
-	 SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  SLV_31, SL_MAX_VERSION),
-	 SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
-	 SLE_CONDVAR(Engine, age,                 SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_BIG_DATES),
+	 SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_BIG_DATES),
+	 SLE_CONDVAR(Engine, age,                 SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
 	     SLE_VAR(Engine, reliability,         SLE_UINT16),
 	     SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
 	     SLE_VAR(Engine, reliability_start,   SLE_UINT16),
