@@ -690,14 +690,14 @@ public:
 
 		    SLE_VAR(Vehicle, cargo_type,            SLE_UINT8),
 		SLE_CONDVAR(Vehicle, cargo_subtype,         SLE_UINT8,                   SLV_LIVERY_REFIT, SL_MAX_VERSION),
-		SLEG_CONDVAR("cargo_days", _cargo_periods,  SLE_UINT8,                    SL_MIN_VERSION,  SLV_68),
+		SLEG_CONDVAR("cargo_days", _cargo_periods,  SLE_UINT8,                    SL_MIN_VERSION,  SLV_CARGO_PACKETS),
 		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_LARGER_CARGO_SOURCE),
-		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_UINT16,                   SLV_LARGER_CARGO_SOURCE,  SLV_68),
-		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,             SLV_CARGO_SOURCE_TILE,  SLV_68),
+		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_UINT16,                   SLV_LARGER_CARGO_SOURCE,  SLV_CARGO_PACKETS),
+		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,             SLV_CARGO_SOURCE_TILE,  SLV_CARGO_PACKETS),
 		    SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
 		SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
-		SLEG_CONDVAR("cargo_count", _cargo_count,   SLE_UINT16,                   SL_MIN_VERSION,  SLV_68),
-		SLE_CONDREFLIST(Vehicle, cargo.packets,     REF_CARGO_PACKET,            SLV_68, SL_MAX_VERSION),
+		SLEG_CONDVAR("cargo_count", _cargo_count,   SLE_UINT16,                   SL_MIN_VERSION,  SLV_CARGO_PACKETS),
+		SLE_CONDREFLIST(Vehicle, cargo.packets,     REF_CARGO_PACKET,            SLV_CARGO_PACKETS, SL_MAX_VERSION),
 		SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, to_underlying(VehicleCargoList::MoveToAction::End), SLV_181, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_162, SL_MAX_VERSION),
 
@@ -763,7 +763,7 @@ public:
 		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_UNIFY_CURRENCY),
 		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_INT64,                   SLV_UNIFY_CURRENCY, SL_MAX_VERSION),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_FILE_I32 | SLE_VAR_I64,  SLV_FEEDER_SHARE,  SLV_UNIFY_CURRENCY),
-		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_INT64,                   SLV_UNIFY_CURRENCY,  SLV_68),
+		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_INT64,                   SLV_UNIFY_CURRENCY,  SLV_CARGO_PACKETS),
 		SLE_CONDVAR(Vehicle, value,                 SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_UNIFY_CURRENCY),
 		SLE_CONDVAR(Vehicle, value,                 SLE_INT64,                   SLV_UNIFY_CURRENCY, SL_MAX_VERSION),
 

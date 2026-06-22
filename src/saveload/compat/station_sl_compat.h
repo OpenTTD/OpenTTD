@@ -50,7 +50,7 @@ const SaveLoadCompat _station_flow_sl_compat[] = {
 const SaveLoadCompat _station_goods_sl_compat[] = {
 	SLC_VAR("waiting_acceptance"),
 	SLC_VAR("status"),
-	SLC_NULL(2, SLV_FEEDER_SHARE, SLV_68),
+	SLC_NULL(2, SLV_FEEDER_SHARE, SLV_CARGO_PACKETS),
 	SLC_VAR("time_since_pickup"),
 	SLC_VAR("rating"),
 	SLC_VAR("cargo_source"),
