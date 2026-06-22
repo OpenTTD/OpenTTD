@@ -147,7 +147,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_WATER_CLASS,                        ///<  86   12042 Store the type of water (sea/ocean, canal, river) for buoys, docks, locks and depots
 	SLV_SIMPLIFY_PATHFINDER_SETTINGS,       ///<  87   12129 Make it easier to select the pathfinder to use
 	SLV_FRACTION_PROFIT_RUNNING_TICKS,      ///<  88   12134 Store vehicle profits as a (fixed point) fraction, and store the number of ticks a vehicle ran in a day
-	SLV_89,                                 ///<  89   12160
+	SLV_MORE_WAYPOINTS_PER_TOWN,            ///<  89   12160 Support more than 64 waypoints per town
 
 	SLV_90,                                 ///<  90   12293
 	SLV_91,                                 ///<  91   12347
