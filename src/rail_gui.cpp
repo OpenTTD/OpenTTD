@@ -620,6 +620,28 @@ struct BuildRailToolbarWindow : Window {
 		}
 	}
 
+	/**
+	 * Returns whether the given widget uses a rail-type cursor (from RailTypeInfo).
+	 * @param widget Widget ID of the button.
+	 * @return true if the cursor comes from the current rail type info.
+	 */
+	bool UsesRailTypeCursor(WidgetID widget)
+	{
+		switch (widget) {
+			case WID_RAT_BUILD_NS:
+			case WID_RAT_BUILD_X:
+			case WID_RAT_BUILD_EW:
+			case WID_RAT_BUILD_Y:
+			case WID_RAT_AUTORAIL:
+			case WID_RAT_BUILD_DEPOT:
+			case WID_RAT_BUILD_TUNNEL:
+			case WID_RAT_CONVERT_RAIL:
+				return true;
+			default:
+				return false;
+		}
+	}
+
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
@@ -635,6 +657,11 @@ struct BuildRailToolbarWindow : Window {
 
 		this->last_user_action = widget;
 		bool started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
+
+		/* Override cursor with composed version when composed cursors are enabled */
+		if (started && this->UsesRailTypeCursor(widget) && GetRailTypeInfo(_cur_railtype)->UseComposedCursors()) {
+			SetComposedCursor(this->GetCursorForWidget(widget));
+		}
 
 		switch (widget) {
 			case WID_RAT_BUILD_DEPOT:
@@ -860,7 +887,14 @@ struct BuildRailToolbarWindow : Window {
 		this->ModifyRailType(_last_built_railtype);
 
 		/* Update cursor and all sub windows. */
-		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
+		if (_thd.GetCallbackWnd() == this) {
+			CursorID cursor = this->GetCursorForWidget(this->last_user_action);
+			if (this->UsesRailTypeCursor(this->last_user_action) && GetRailTypeInfo(_cur_railtype)->UseComposedCursors()) {
+				SetComposedCursor(cursor);
+			} else {
+				SetCursor(cursor, PAL_NONE);
+			}
+		}
 		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TRANSPORT_RAIL);
 
 		return EventState::Handled;

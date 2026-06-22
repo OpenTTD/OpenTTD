@@ -54,7 +54,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16_t OPENTTD_SPRITE_COUNT = 192;
+static const uint16_t OPENTTD_SPRITE_COUNT = 193;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -173,6 +173,9 @@ static const SpriteID SPR_PLAYER_SELF                = SPR_OPENTTD_BASE + 189;
 static const SpriteID SPR_PLAYER_HOST                = SPR_OPENTTD_BASE + 190;
 
 static const SpriteID SPR_EXTRA_MENU                 = SPR_OPENTTD_BASE + 191;
+
+/** Blank cursor sprite. */
+static const SpriteID SPR_CURSOR_BLANK               = SPR_OPENTTD_BASE + 192;
 
 static const SpriteID SPR_IMG_CARGOFLOW              = SPR_OPENTTD_BASE + 174;
 

@@ -557,6 +557,26 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
+	/**
+	 * Returns whether the given widget uses a road-type cursor (from RoadTypeInfo).
+	 * @param widget Widget ID of the button.
+	 * @return true if the cursor comes from the current road type info.
+	 */
+	bool UsesRoadTypeCursor(WidgetID widget)
+	{
+		switch (widget) {
+			case WID_ROT_ROAD_X:
+			case WID_ROT_ROAD_Y:
+			case WID_ROT_AUTOROAD:
+			case WID_ROT_DEPOT:
+			case WID_ROT_BUILD_TUNNEL:
+			case WID_ROT_CONVERT_ROAD:
+				return true;
+			default:
+				return false;
+		}
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		bool started;
@@ -566,6 +586,11 @@ struct BuildRoadToolbarWindow : Window {
 		if (widget != WID_ROT_ONE_WAY && widget != WID_ROT_REMOVE) {
 			started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
 			this->last_started_action = widget;
+
+			/* Override cursor with composed version when composed cursors are enabled */
+			if (started && this->UsesRoadTypeCursor(widget) && GetRoadTypeInfo(this->roadtype)->UseComposedCursors()) {
+				SetComposedCursor(this->GetCursorForWidget(widget));
+			}
 		}
 
 		switch (widget) {
@@ -633,7 +658,14 @@ struct BuildRoadToolbarWindow : Window {
 		}
 		this->ModifyRoadType(_cur_roadtype);
 
-		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
+		if (_thd.GetCallbackWnd() == this) {
+			CursorID cursor = this->GetCursorForWidget(this->last_started_action);
+			if (this->UsesRoadTypeCursor(this->last_started_action) && GetRoadTypeInfo(this->roadtype)->UseComposedCursors()) {
+				SetComposedCursor(cursor);
+			} else {
+				SetCursor(cursor, PAL_NONE);
+			}
+		}
 		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TRANSPORT_ROAD);
 
 		return EventState::Handled;
