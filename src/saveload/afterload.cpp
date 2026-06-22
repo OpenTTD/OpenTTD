@@ -2419,7 +2419,7 @@ bool AfterLoadGame()
 
 	/* The behaviour of force_proceed has been changed. Now
 	 * it counts signals instead of some random time out. */
-	if (IsSavegameVersionBefore(SLV_131)) {
+	if (IsSavegameVersionBefore(SLV_MAXIMUM_DEPOT_PENALTY)) {
 		for (Train *t : Train::Iterate()) {
 			if (t->force_proceed != TFP_NONE) {
 				t->force_proceed = TFP_STUCK;

@@ -198,7 +198,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TIMETABLE_START,                    ///< 129   18292 Allow setting the start date of a timetable
 
 	SLV_ROAD_STOP_OCCUPANCY_PENALTY,        ///< 130   18404 Add configurable pathfinder penalty for an occupied road stop
-	SLV_131,                                ///< 131   18481
+	SLV_MAXIMUM_DEPOT_PENALTY,              ///< 131   18481 Add configurable maximum pathfinder penalty for finding a depot
 	SLV_132,                                ///< 132   18522
 	SLV_133,                                ///< 133   18674
 	SLV_134,                                ///< 134   18703
