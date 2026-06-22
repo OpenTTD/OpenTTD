@@ -197,7 +197,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FOUND_TOWN,                         ///< 128   18281 Founding of new towns
 	SLV_TIMETABLE_START,                    ///< 129   18292 Allow setting the start date of a timetable
 
-	SLV_130,                                ///< 130   18404
+	SLV_ROAD_STOP_OCCUPANCY_PENALTY,        ///< 130   18404 Add configurable pathfinder penalty for an occupied road stop
 	SLV_131,                                ///< 131   18481
 	SLV_132,                                ///< 132   18522
 	SLV_133,                                ///< 133   18674
