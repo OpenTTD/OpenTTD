@@ -212,7 +212,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_STORE_AIRPORT_SIZE,                 ///< 140   19382 Store the size of the airport in the station
 	SLV_UNIQUE_DEPOT_NAMES,                 ///< 141   19799 Give depots unique names
 	SLV_NEWGRF_DEPOT_BUILD_DATE,            ///< 142   20003 Depot build date for NewGRFs
-	SLV_143,                                ///< 143   20048
+	SLV_DISABLE_TOWN_LEVEL_CROSSING,        ///< 143   20048 Setting to be able to disable building rail/road crossings by towns
 	SLV_144,                                ///< 144   20334
 
 	SLV_145,                                ///< 145   20376

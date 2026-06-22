@@ -774,7 +774,7 @@ bool AfterLoadGame()
 		_settings_game.vehicle.roadveh_acceleration_model = AccelerationModel::Original;
 		_settings_game.vehicle.roadveh_slope_steepness = 7;
 	}
-	if (IsSavegameVersionBefore(SLV_143))  _settings_game.economy.allow_town_level_crossings = true;
+	if (IsSavegameVersionBefore(SLV_DISABLE_TOWN_LEVEL_CROSSING))  _settings_game.economy.allow_town_level_crossings = true;
 	if (IsSavegameVersionBefore(SLV_159)) {
 		_settings_game.vehicle.max_train_length = 50;
 		_settings_game.construction.max_bridge_length = 64;
