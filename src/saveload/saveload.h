@@ -189,7 +189,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CARGO_PAYMENTS,                     ///< 121   16694 Perform payment of cargo after unloading
 	SLV_WAYPOINT_MORE_LIKE_STATION,         ///< 122   16855 Make waypoint data look more like stations
 	SLV_UNIFY_WAYPOINT_AND_STATION,         ///< 123   16909 Unify stations and waypoints
-	SLV_124,                                ///< 124   16993
+	SLV_MULTI_TILE_WAYPOINTS,               ///< 124   16993 Waypoints can be bigger than a single tile
 
 	SLV_125,                                ///< 125   17113
 	SLV_126,                                ///< 126   17433

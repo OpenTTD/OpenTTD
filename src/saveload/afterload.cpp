@@ -2309,7 +2309,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_124) && !IsSavegameVersionBeforeOrAt(SL_MIN_VERSION)) {
+	if (IsSavegameVersionBefore(SLV_MULTI_TILE_WAYPOINTS) && !IsSavegameVersionBeforeOrAt(SL_MIN_VERSION)) {
 		/* The train station tile area was added, but for really old (TTDPatch) it's already valid. */
 		for (Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->facilities.Test(StationFacility::Train)) {
