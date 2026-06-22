@@ -770,7 +770,7 @@ bool AfterLoadGame()
 	}
 	if (IsSavegameVersionBefore(SLV_VIRTUAL_FEEDER_SHARE_PAYMENT))  _settings_game.economy.feeder_payment_share = 75;
 	if (IsSavegameVersionBefore(SLV_REDUCE_PLANE_CRASHES))  _settings_game.vehicle.plane_crashes = 2;
-	if (IsSavegameVersionBefore(SLV_139)) {
+	if (IsSavegameVersionBefore(SLV_RV_REALISTIC_ACCELERATION)) {
 		_settings_game.vehicle.roadveh_acceleration_model = AccelerationModel::Original;
 		_settings_game.vehicle.roadveh_slope_steepness = 7;
 	}
@@ -2496,7 +2496,7 @@ bool AfterLoadGame()
 	}
 
 	/* Oilrig was moved from id 15 to 9. */
-	if (IsSavegameVersionBefore(SLV_139)) {
+	if (IsSavegameVersionBefore(SLV_RV_REALISTIC_ACCELERATION)) {
 		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile != INVALID_TILE && st->airport.type == 15) {
 				st->airport.type = AT_OILRIG;

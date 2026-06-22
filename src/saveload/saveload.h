@@ -207,7 +207,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SPLIT_LOAD_WAIT_COUNTERS,           ///< 136   18764 Split counters for (un)loading and signal waiting/turning as otherwise they interfere
 	SLV_AIRPORT_ANIMATION_FRAMES,           ///< 137   18912 Use animation frames instead of many airport tile ids for animation
 	SLV_REDUCE_PLANE_CRASHES,               ///< 138   18942   1.0.x Setting to reduce/disable crashing of planes
-	SLV_139,                                ///< 139   19346
+	SLV_RV_REALISTIC_ACCELERATION,          ///< 139   19346 Realistic acceleration of road vehicles
 
 	SLV_140,                                ///< 140   19382
 	SLV_141,                                ///< 141   19799

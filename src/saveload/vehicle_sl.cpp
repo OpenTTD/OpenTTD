@@ -813,7 +813,7 @@ public:
 		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES,  SLV_YAPP),
 		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_YAPP, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 SLV_SPLIT_LOAD_WAIT_COUNTERS, SL_MAX_VERSION),
-		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
+		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_RV_REALISTIC_ACCELERATION, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_train_sl_compat;
 
@@ -867,7 +867,7 @@ public:
 		SLEG_CONDVECTOR("path.td",   rv_path_td,         SLE_UINT8,                  SLV_ROADVEH_PATH_CACHE, SLV_PATH_CACHE_FORMAT),
 		SLEG_CONDVECTOR("path.tile", rv_path_tile,       SLE_UINT32,                 SLV_ROADVEH_PATH_CACHE, SLV_PATH_CACHE_FORMAT),
 		SLEG_CONDSTRUCTLIST("path", SlVehicleRoadVehPath, SLV_PATH_CACHE_FORMAT, SL_MAX_VERSION),
-		  SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
+		  SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 SLV_RV_REALISTIC_ACCELERATION, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_roadveh_sl_compat;
 
