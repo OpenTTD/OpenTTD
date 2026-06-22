@@ -849,7 +849,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_WATER_TILE_TYPE)) {
 		/* Prior to SLV_WATER_TILE_TYPE, the water tile type was stored differently from the enumeration. This has to be
-		 * converted before SLV_72 and SLV_82 conversions which use GetWaterTileType. */
+		 * converted before SLV_SPLIT_STATION_TYPE_FROM_GFXID and SLV_82 conversions which use GetWaterTileType. */
 		static constexpr uint8_t WBL_COAST_FLAG = 0; ///< Flag for coast.
 
 		for (auto t : Map::Iterate()) {
@@ -867,7 +867,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_72)) {
+	if (IsSavegameVersionBefore(SLV_SPLIT_STATION_TYPE_FROM_GFXID)) {
 		/* Locks in very old savegames had OWNER_WATER as owner */
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {

@@ -127,7 +127,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_CARGO_PAYMENT_OVERFLOW,             ///<  70   10541 Fix overflow of cargo payment rates, plus preparation for player founded industries
 	SLV_UNGROUPED_VEHICLES,                 ///<  71   10567 Add a group with vehicles that aren't in any other group
-	SLV_72,                                 ///<  72   10601
+	SLV_SPLIT_STATION_TYPE_FROM_GFXID,      ///<  72   10601 Splits the encoding of station type from the graphics identifer
 	SLV_73,                                 ///<  73   10903
 	SLV_74,                                 ///<  74   11030
 
