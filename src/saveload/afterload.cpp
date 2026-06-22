@@ -2115,7 +2115,7 @@ bool AfterLoadGame()
 			}
 		}
 	}
-	if (IsSavegameVersionBefore(SLV_144)) {
+	if (IsSavegameVersionBefore(SLV_REORDER_UNMOVABLE_REMOVE_RESERVED)) {
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Object)) continue;
 

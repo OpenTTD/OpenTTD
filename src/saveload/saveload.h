@@ -213,7 +213,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_UNIQUE_DEPOT_NAMES,                 ///< 141   19799 Give depots unique names
 	SLV_NEWGRF_DEPOT_BUILD_DATE,            ///< 142   20003 Depot build date for NewGRFs
 	SLV_DISABLE_TOWN_LEVEL_CROSSING,        ///< 143   20048 Setting to be able to disable building rail/road crossings by towns
-	SLV_144,                                ///< 144   20334
+	SLV_REORDER_UNMOVABLE_REMOVE_RESERVED,  ///< 144   20334 Reorder map bits of unmovable tiles and remove unused reserved zero bytes
 
 	SLV_145,                                ///< 145   20376
 	SLV_146,                                ///< 146   20446

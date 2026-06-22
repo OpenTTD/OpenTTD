@@ -70,7 +70,7 @@ const SaveLoadCompat _industry_sl_compat[] = {
 	SLC_NULL(1, SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS, SLV_197),
 	SLC_VAR("random"),
 	SLC_VAR("text"),
-	SLC_NULL(32, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
+	SLC_NULL(32, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_REORDER_UNMOVABLE_REMOVE_RESERVED),
 };
 
 /** Original field order for _industry_builder_desc. */

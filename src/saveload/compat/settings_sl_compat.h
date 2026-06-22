@@ -145,7 +145,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("game_creation.snow_line_height"),
 	SLC_VAR("game_creation.snow_coverage"),
 	SLC_VAR("game_creation.desert_coverage"),
-	SLC_NULL(4, SL_MIN_VERSION, SLV_144),
+	SLC_NULL(4, SL_MIN_VERSION, SLV_REORDER_UNMOVABLE_REMOVE_RESERVED),
 	SLC_VAR("game_creation.starting_year"),
 	SLC_NULL(4, SL_MIN_VERSION, SLV_ORDER_LIST),
 	SLC_VAR("game_creation.ending_year"),
