@@ -26,7 +26,7 @@ static const SaveLoad _depot_desc[] = {
 	 SLE_CONDREF(Depot, town,       REF_TOWN,                 SLV_UNIQUE_DEPOT_NAMES, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               SLV_UNIQUE_DEPOT_NAMES, SL_MAX_VERSION),
 	SLE_CONDSSTR(Depot, name,       SLE_STR,                  SLV_UNIQUE_DEPOT_NAMES, SL_MAX_VERSION),
-	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                SLV_142, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                SLV_NEWGRF_DEPOT_BUILD_DATE, SL_MAX_VERSION),
 };
 
 struct DEPTChunkHandler : ChunkHandler {

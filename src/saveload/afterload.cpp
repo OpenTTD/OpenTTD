@@ -2527,7 +2527,7 @@ bool AfterLoadGame()
 		for (Depot *d : Depot::Iterate()) MakeDefaultName(d);
 	}
 
-	if (IsSavegameVersionBefore(SLV_142)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_DEPOT_BUILD_DATE)) {
 		for (Depot *d : Depot::Iterate()) d->build_date = TimerGameCalendar::date;
 	}
 
