@@ -1758,7 +1758,7 @@ bool AfterLoadGame()
 	 * someone can remove canals owned by somebody else and it prevents
 	 * making floods using the removal of ship depots.
 	 */
-	if (IsSavegameVersionBefore(SLV_83)) {
+	if (IsSavegameVersionBefore(SLV_DEPOT_WATER_OWNERS)) {
 		for (auto t : Map::Iterate()) {
 			if (IsShipDepotTile(t)) {
 				t.m4() = (TileHeight(t) == 0 ? OWNER_WATER : OWNER_NONE).base();

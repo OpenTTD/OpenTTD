@@ -58,7 +58,7 @@ struct SIGNChunkHandler : ChunkHandler {
 			 *  - we can't use IsValidCompany() now, so this is fixed in AfterLoadGame()
 			 * All signs that were saved are valid (including those with just 'Sign' and INVALID_OWNER).
 			 *  - so set owner to OWNER_NONE if needed (signs from pre-version 6.1 would be lost) */
-			if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1) || (IsSavegameVersionBefore(SLV_83) && si->owner == INVALID_OWNER)) {
+			if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1) || (IsSavegameVersionBefore(SLV_DEPOT_WATER_OWNERS) && si->owner == INVALID_OWNER)) {
 				si->owner = OWNER_NONE;
 			}
 
