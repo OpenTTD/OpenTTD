@@ -149,7 +149,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FRACTION_PROFIT_RUNNING_TICKS,      ///<  88   12134 Store vehicle profits as a (fixed point) fraction, and store the number of ticks a vehicle ran in a day
 	SLV_MORE_WAYPOINTS_PER_TOWN,            ///<  89   12160 Support more than 64 waypoints per town
 
-	SLV_90,                                 ///<  90   12293
+	SLV_PLANE_SPEED_FACTOR,                 ///<  90   12293 Setting to increase aircraft speed to be on par with the other vehicles
 	SLV_91,                                 ///<  91   12347
 	SLV_92,                                 ///<  92   12381   0.6.x
 	SLV_93,                                 ///<  93   12648
