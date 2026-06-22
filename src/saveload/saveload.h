@@ -171,7 +171,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DISTANT_STATION_JOINING,            ///< 106   14919 Distant joining of stations
 	SLV_NOAI,                               ///< 107   15027 Replace built in cheating AI with framework for externally developed (scripted) AIs
 	SLV_STORE_AI_VERSION,                   ///< 108   15045 Store the version of the AI script
-	SLV_109,                                ///< 109   15075
+	SLV_NEXT_COMPETITOR_START_OVERFLOW,     ///< 109   15075 Prevent overflow in the next competitor start counter
 
 	SLV_110,                                ///< 110   15148
 	SLV_111,                                ///< 111   15190
