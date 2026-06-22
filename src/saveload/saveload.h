@@ -209,7 +209,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REDUCE_PLANE_CRASHES,               ///< 138   18942   1.0.x Setting to reduce/disable crashing of planes
 	SLV_RV_REALISTIC_ACCELERATION,          ///< 139   19346 Realistic acceleration of road vehicles
 
-	SLV_140,                                ///< 140   19382
+	SLV_STORE_AIRPORT_SIZE,                 ///< 140   19382 Store the size of the airport in the station
 	SLV_141,                                ///< 141   19799
 	SLV_142,                                ///< 142   20003
 	SLV_143,                                ///< 143   20048

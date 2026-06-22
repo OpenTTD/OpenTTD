@@ -2504,7 +2504,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_140)) {
+	if (IsSavegameVersionBefore(SLV_STORE_AIRPORT_SIZE)) {
 		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile != INVALID_TILE) {
 				st->airport.w = st->airport.GetSpec()->size_x;
