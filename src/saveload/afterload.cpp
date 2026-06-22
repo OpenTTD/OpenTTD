@@ -3350,7 +3350,7 @@ bool AfterLoadGame()
 	Station::RecomputeCatchmentForAll();
 
 	/* Station acceptance is some kind of cache */
-	if (IsSavegameVersionBefore(SLV_127)) {
+	if (IsSavegameVersionBefore(SLV_TOWN_ACCEPTANCE)) {
 		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
 	}
 
