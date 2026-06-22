@@ -849,7 +849,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_WATER_TILE_TYPE)) {
 		/* Prior to SLV_WATER_TILE_TYPE, the water tile type was stored differently from the enumeration. This has to be
-		 * converted before SLV_SPLIT_STATION_TYPE_FROM_GFXID and SLV_82 conversions which use GetWaterTileType. */
+		 * converted before SLV_SPLIT_STATION_TYPE_FROM_GFXID and SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS conversions which use GetWaterTileType. */
 		static constexpr uint8_t WBL_COAST_FLAG = 0; ///< Flag for coast.
 
 		for (auto t : Map::Iterate()) {
@@ -1741,7 +1741,7 @@ bool AfterLoadGame()
 
 	/* From version 82, old style canals (above sealevel (0), WATER owner) are no longer supported.
 	    Replace the owner for those by OWNER_NONE. */
-	if (IsSavegameVersionBefore(SLV_82)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Water) &&
 					GetWaterTileType(t) == WaterTileType::Clear &&

@@ -201,7 +201,7 @@ static const SaveLoad _industry_desc[] = {
 	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, SLE_UINT32, 16, SLV_NEWGRF_PERSISTENT_STORAGE, SLV_161),
 	SLE_CONDREF(Industry, psa,                        REF_STORAGE,              SLV_161, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                SLV_82, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS, SL_MAX_VERSION),
 	SLE_CONDSSTR(Industry, text,     SLE_STR | SLF_ALLOW_CONTROL,     SLV_INDUSTRY_TEXT, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Industry, valid_history, SLE_UINT64, SLV_INDUSTRY_NUM_VALID_HISTORY, SL_MAX_VERSION),

@@ -139,7 +139,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_NEWGRF_MORE_ANIMATION,              ///<  80   11228 Support more types of animation for NewGRF industries
 	SLV_FIX_TREE_GROUND,                    ///<  81   11244 Various fixes to improve the visuals of the ground under trees
-	SLV_82,                                 ///<  82   11410
+	SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS,    ///<  82   11410 NewGRF random triggers for industries
 	SLV_83,                                 ///<  83   11589
 	SLV_84,                                 ///<  84   11822
 
