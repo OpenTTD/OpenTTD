@@ -201,7 +201,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MAXIMUM_DEPOT_PENALTY,              ///< 131   18481 Add configurable maximum pathfinder penalty for finding a depot
 	SLV_DISALLOW_TREE_BUILDING,             ///< 132   18522 Setting to partially disable building of trees
 	SLV_TRAIN_SLOPE_STEEPNESS,              ///< 133   18674 Setting to increase steepness of slopes for trains under realistic acceleration
-	SLV_134,                                ///< 134   18703
+	SLV_VIRTUAL_FEEDER_SHARE_PAYMENT,       ///< 134   18703 Pay a part of the virtual profit during a transfer to the intermediate vehicle
 
 	SLV_135,                                ///< 135   18719
 	SLV_136,                                ///< 136   18764
