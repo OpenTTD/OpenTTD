@@ -185,7 +185,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DIGIT_GROUP_SEPARATOR,              ///< 118   16129 Configurable digit group separator
 	SLV_PAUSE_MODES,                        ///< 119   16242 Use bitmask of reason to pause, so manual/auto pausing do not conflict
 
-	SLV_120,                                ///< 120   16439
+	SLV_COMPANY_SERVICE_INTERVALS,          ///< 120   16439 Make service intervals configurable per company
 	SLV_121,                                ///< 121   16694
 	SLV_122,                                ///< 122   16855
 	SLV_123,                                ///< 123   16909

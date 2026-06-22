@@ -2220,7 +2220,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_120)) {
+	if (IsSavegameVersionBefore(SLV_COMPANY_SERVICE_INTERVALS)) {
 		extern VehicleDefaultSettings _old_vds;
 		for (Company *c : Company::Iterate()) {
 			c->settings.vehicle = _old_vds;

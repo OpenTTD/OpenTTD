@@ -321,11 +321,11 @@ public:
 		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length,   SLE_BOOL,            SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 		/* Default vehicle settings */
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ispercent,   SLE_BOOL,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_trains,    SLE_UINT16,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_roadveh,   SLE_UINT16,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_aircraft,  SLE_UINT16,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ships,     SLE_UINT16,     SLV_120, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ispercent,   SLE_BOOL,     SLV_COMPANY_SERVICE_INTERVALS, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_trains,    SLE_UINT16,     SLV_COMPANY_SERVICE_INTERVALS, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_roadveh,   SLE_UINT16,     SLV_COMPANY_SERVICE_INTERVALS, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_aircraft,  SLE_UINT16,     SLV_COMPANY_SERVICE_INTERVALS, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ships,     SLE_UINT16,     SLV_COMPANY_SERVICE_INTERVALS, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_settings_compat;
 

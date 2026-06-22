@@ -54,7 +54,7 @@
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_120)) {
+	if (IsSavegameVersionBefore(SLV_COMPANY_SERVICE_INTERVALS)) {
 		/* CargoPacket's source should be either StationID::Invalid() or a valid station */
 		for (CargoPacket *cp : CargoPacket::Iterate()) {
 			if (!Station::IsValidID(cp->first_station)) cp->first_station = StationID::Invalid();
