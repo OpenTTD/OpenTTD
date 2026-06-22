@@ -2429,7 +2429,7 @@ bool AfterLoadGame()
 
 	/* The bits for the tree ground and tree density have
 	 * been swapped (m2 bits 7..6 and 5..4. */
-	if (IsSavegameVersionBefore(SLV_135)) {
+	if (IsSavegameVersionBefore(SLV_ROCKS_STAY_UNDER_SNOW)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Clear)) {
 				if (GetClearGround(t) == ClearGround{4}) { // CLEAR_SNOW becomes ClearGround::Grass with IsSnowTile() set.

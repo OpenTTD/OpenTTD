@@ -203,7 +203,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TRAIN_SLOPE_STEEPNESS,              ///< 133   18674 Setting to increase steepness of slopes for trains under realistic acceleration
 	SLV_VIRTUAL_FEEDER_SHARE_PAYMENT,       ///< 134   18703 Pay a part of the virtual profit during a transfer to the intermediate vehicle
 
-	SLV_135,                                ///< 135   18719
+	SLV_ROCKS_STAY_UNDER_SNOW,              ///< 135   18719 Rocks stay under snow, i.e. they return when the snow goes away
 	SLV_136,                                ///< 136   18764
 	SLV_137,                                ///< 137   18912
 	SLV_138,                                ///< 138   18942   1.0.x
