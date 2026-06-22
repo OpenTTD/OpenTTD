@@ -2513,7 +2513,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_141)) {
+	if (IsSavegameVersionBefore(SLV_UNIQUE_DEPOT_NAMES)) {
 		for (const auto t : Map::Iterate()) {
 			/* Reset tropic zone for VOID tiles, they shall not have any. */
 			if (IsTileType(t, TileType::Void)) SetTropicZone(t, TropicZone::Normal);

@@ -136,7 +136,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("construction.raw_industry_construction"),
 	SLC_VAR("construction.industry_platform"),
 	SLC_VAR("economy.multiple_industry_per_town"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_141),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_UNIQUE_DEPOT_NAMES),
 	SLC_VAR("economy.bribe"),
 	SLC_VAR("economy.exclusive_rights"),
 	SLC_VAR("economy.fund_buildings"),
