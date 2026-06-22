@@ -133,7 +133,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_AUTOSLOPE,                          ///<  75   11107 Terraforming under buildings/track/anything that supports foundations
 	SLV_NEWGRF_PERSISTENT_STORAGE,          ///<  76   11139 Persistently store some state of NewGRF objects/entities
-	SLV_77,                                 ///<  77   11172
+	SLV_CLEANUP_UNCONNECTED_ROADS,          ///<  77   11172 Option to remove unconnected roads during a town's road reconstruction
 	SLV_78,                                 ///<  78   11176
 	SLV_79,                                 ///<  79   11188
 
