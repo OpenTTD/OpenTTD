@@ -410,9 +410,9 @@ public:
 class SlCompanyLiveries : public DefaultSaveLoadHandler<SlCompanyLiveries, CompanyProperties> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(Livery, in_use,  SLE_UINT8, SLV_34, SL_MAX_VERSION),
-		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SLV_34, SL_MAX_VERSION),
-		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_34, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, in_use,  SLE_UINT8, SLV_LIVERIES, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SLV_LIVERIES, SL_MAX_VERSION),
+		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_LIVERIES, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_liveries_compat;
 
@@ -521,8 +521,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION,  SLV_MULTIPLE_ROAD_STOPS),
 	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  SL_MIN_VERSION, SLV_31),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  SL_MIN_VERSION, SLV_BIG_DATES),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, inaugurated_year_calendar, SLE_INT32,               SLV_COMPANY_INAUGURATED_PERIOD_V2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8,                   SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
@@ -547,7 +547,7 @@ static const SaveLoad _company_desc[] = {
 	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SL_MIN_VERSION, SLV_107),
 	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
 	SLEG_STRUCTLIST("old_economy", SlCompanyOldEconomy),
-	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_34, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_LIVERIES, SL_MAX_VERSION),
 };
 
 struct PLYRChunkHandler : ChunkHandler {

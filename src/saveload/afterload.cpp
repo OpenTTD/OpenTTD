@@ -761,7 +761,7 @@ bool AfterLoadGame()
 	 */
 	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 2)) _settings_game.station.modified_catchment = false;
 	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1)) _settings_game.pf.forbid_90_deg = false;
-	if (IsSavegameVersionBefore(SLV_21))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
+	if (IsSavegameVersionBefore(SLV_REMOVE_OLD_PBS))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
 	if (IsSavegameVersionBefore(SLV_90))   _settings_game.vehicle.plane_speed = 4;
 	if (IsSavegameVersionBefore(SLV_95))   _settings_game.vehicle.dynamic_engines = false;
 	if (IsSavegameVersionBefore(SLV_96))   _settings_game.economy.station_noise_level = false;
@@ -1334,7 +1334,7 @@ bool AfterLoadGame()
 	}
 
 	/* Elrails got added in rev 24 */
-	if (IsSavegameVersionBefore(SLV_24)) {
+	if (IsSavegameVersionBefore(SLV_ELRAIL)) {
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (Train *v : Train::Iterate()) {
@@ -1391,7 +1391,7 @@ bool AfterLoadGame()
 
 	/* From version 15, we moved a semaphore bit from bit 2 to bit 3 in m4, making
 	 *  room for PBS. Now in version 21 move it back :P. */
-	if (IsSavegameVersionBefore(SLV_21) && !IsSavegameVersionBefore(SLV_MOVE_SEMAPHORE_BITS)) {
+	if (IsSavegameVersionBefore(SLV_REMOVE_OLD_PBS) && !IsSavegameVersionBefore(SLV_MOVE_SEMAPHORE_BITS)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
@@ -1425,7 +1425,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_25)) {
+	if (IsSavegameVersionBefore(SLV_IMPROVE_MULTISTOP)) {
 		/* Remove obsolete VS_WAIT_FOR_SLOT state from road vehicles. */
 		static constexpr VehStates OLD_VS_WAIT_FOR_SLOT{0x40};
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
@@ -1433,7 +1433,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_26)) {
+	if (IsSavegameVersionBefore(SLV_LAST_VEHICLE_TYPE)) {
 		for (Station *st : Station::Iterate()) {
 			st->last_vehicle_type = VehicleType::Invalid;
 		}
@@ -1441,7 +1441,7 @@ bool AfterLoadGame()
 
 	YapfNotifyTrackLayoutChange(INVALID_TILE, Track::Invalid);
 
-	if (IsSavegameVersionBefore(SLV_34)) {
+	if (IsSavegameVersionBefore(SLV_LIVERIES)) {
 		for (Company *c : Company::Iterate()) ResetCompanyLivery(c);
 	}
 
@@ -1454,7 +1454,7 @@ bool AfterLoadGame()
 
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
-	if (IsSavegameVersionBefore(SLV_31)) {
+	if (IsSavegameVersionBefore(SLV_BIG_DATES)) {
 		TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		TimerGameCalendar::year += CalendarTime::ORIGINAL_BASE_YEAR;
 		TimerGameEconomy::date += EconomyTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
@@ -1475,7 +1475,7 @@ bool AfterLoadGame()
 	/* From 32 on we save the industry who made the farmland.
 	 *  To give this prettiness to old savegames, we remove all farmfields and
 	 *  plant new ones. */
-	if (IsSavegameVersionBefore(SLV_32)) {
+	if (IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Clear) && IsClearGround(t, ClearGround::Fields)) {
 				/* remove fields */
@@ -1493,7 +1493,7 @@ bool AfterLoadGame()
 	}
 
 	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
-	if (IsSavegameVersionBefore(SLV_36)) {
+	if (IsSavegameVersionBefore(SLV_REFIT_ORDERS)) {
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
 				order.SetRefit(CARGO_NO_REFIT);
@@ -1507,7 +1507,7 @@ bool AfterLoadGame()
 
 	/* from version 38 we have optional elrails, since we cannot know the
 	 * preference of a user, let elrails enabled; it can be disabled manually */
-	if (IsSavegameVersionBefore(SLV_38)) _settings_game.vehicle.disable_elrails = false;
+	if (IsSavegameVersionBefore(SLV_DISABLE_ELRAIL_SETTING)) _settings_game.vehicle.disable_elrails = false;
 	/* do the same as when elrails were enabled/disabled manually just now */
 	UpdateDisableElrailSettingState(_settings_game.vehicle.disable_elrails, false);
 	InitializeSignalGui();
@@ -2907,7 +2907,7 @@ bool AfterLoadGame()
 		_settings_game.game_creation.snow_line_height /= TILE_HEIGHT;
 	}
 
-	if (IsSavegameVersionBefore(SLV_164) && !IsSavegameVersionBefore(SLV_32)) {
+	if (IsSavegameVersionBefore(SLV_164) && !IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
 		/* We store 4 fences in the field tiles instead of only SE and SW. */
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Clear) && !IsTileType(t, TileType::Trees)) continue;

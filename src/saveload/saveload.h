@@ -65,29 +65,29 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REMOVE_MINOR_VERSION,               ///<  18    3227 Remove the minor versions from savegames
 	SLV_ENGINE_RENEW_POOL,                  ///<  19    3396 Engine renews are now stored in a pool
 
-	SLV_20,                                 ///<  20    3403
-	SLV_21,                                 ///<  21    3472   0.4.x
-	SLV_22,                                 ///<  22    3726
-	SLV_23,                                 ///<  23    3915
-	SLV_24,                                 ///<  24    4150
+	SLV_NO_MULTIHEAD_REFERENCE,             ///<  20    3403 Remove reference from one multihead to the other one
+	SLV_REMOVE_OLD_PBS,                     ///<  21    3472   0.4.x Remove old implementation of path based signals
+	SLV_SAVE_PATCHES,                       ///<  22    3726 Save state of patches (precursor of settings) in the savegame
+	SLV_REMOVE_AUTOSAVE_INTERVAL,           ///<  23    3915 Store autosave interval locally, instead of in savegame
+	SLV_ELRAIL,                             ///<  24    4150 Electrified railways
 
-	SLV_25,                                 ///<  25    4259
-	SLV_26,                                 ///<  26    4466
-	SLV_27,                                 ///<  27    4757
-	SLV_28,                                 ///<  28    4987
-	SLV_29,                                 ///<  29    5070
+	SLV_IMPROVE_MULTISTOP,                  ///<  25    4259 Improve the behaviour of RVs going to road stops
+	SLV_LAST_VEHICLE_TYPE,                  ///<  26    4466 Store the last vehicle type at stations instead of the vehicle ID
+	SLV_NEWGRF_STATIONS,                    ///<  27    4757 NewGRF graphics for stations
+	SLV_YAPF,                               ///<  28    4987 Yet another path finder
+	SLV_MORE_UNDER_BRIDGES,                 ///<  29    5070 Support crossings, fields and bridge/tunnel heads under bridges
 
-	SLV_30,                                 ///<  30    5946
-	SLV_31,                                 ///<  31    5999
-	SLV_32,                                 ///<  32    6001
-	SLV_33,                                 ///<  33    6440
-	SLV_34,                                 ///<  34    6455
+	SLV_TGP,                                ///<  30    5946 TerraGenesis Perlin
+	SLV_BIG_DATES,                          ///<  31    5999 Change date from 1920 - 2090 to 0 - 5 000 000
+	SLV_LINK_FARM_FIELD_TO_INDUSTRY,        ///<  32    6001 Link farm fields to the industry, so it gets removed when the industry goes away
+	SLV_SAVE_YAPF_SETTINGS,                 ///<  33    6440 Some YAPF settings were not saved properly
+	SLV_LIVERIES,                           ///<  34    6455 Liveries and two company colours (2cc)
 
-	SLV_35,                                 ///<  35    6602
-	SLV_36,                                 ///<  36    6624
-	SLV_37,                                 ///<  37    7182
-	SLV_38,                                 ///<  38    7195
-	SLV_39,                                 ///<  39    7269
+	SLV_LIVERY_REFIT,                       ///<  35    6602 NewGRF livery refits
+	SLV_REFIT_ORDERS,                       ///<  36    6624 Vehicles can be refitted as part of an order
+	SLV_UTF8,                               ///<  37    7182 UTF-8 strings
+	SLV_DISABLE_ELRAIL_SETTING,             ///<  38    7195 Add setting to disable electrified rails
+	SLV_FREIGHT_WEIGHT,                     ///<  39    7269 Setting to increase the weight of cargo on freight trains
 
 	SLV_40,                                 ///<  40    7326
 	SLV_41,                                 ///<  41    7348   0.5.x

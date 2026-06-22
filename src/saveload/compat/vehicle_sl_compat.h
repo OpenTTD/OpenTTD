@@ -59,7 +59,7 @@ const SaveLoadCompat _vehicle_common_sl_compat[] = {
 	SLC_VAR("current_order.flags"),
 	SLC_VAR("current_order.dest"),
 	SLC_VAR("current_order.refit_cargo"),
-	SLC_NULL(1, SLV_36, SLV_182),
+	SLC_NULL(1, SLV_REFIT_ORDERS, SLV_182),
 	SLC_VAR("current_order.wait_time"),
 	SLC_VAR("current_order.travel_time"),
 	SLC_VAR("current_order.max_speed"),
@@ -105,7 +105,7 @@ const SaveLoadCompat _vehicle_train_sl_compat[] = {
 	SLC_VAR("flags"),
 	SLC_NULL(2, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_60),
 	SLC_VAR("wait_counter"),
-	SLC_NULL(2, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_20),
+	SLC_NULL(2, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_NO_MULTIHEAD_REFERENCE),
 	SLC_VAR("gv_flags"),
 	SLC_NULL(11, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
 };

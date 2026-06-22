@@ -21,8 +21,8 @@ const SaveLoadCompat _gameopt_sl_compat[] = {
 	SLC_VAR("game_creation.town_name"),
 	SLC_VAR("game_creation.landscape"),
 	SLC_VAR("game_creation.snow_line_height"),
-	SLC_NULL(1, SLV_22, SLV_165),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_23),
+	SLC_NULL(1, SLV_SAVE_PATCHES, SLV_165),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_REMOVE_AUTOSAVE_INTERVAL),
 	SLC_VAR("vehicle.road_side"),
 };
 
@@ -96,7 +96,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_NULL(1, SL_MIN_VERSION, SLV_159),
 	SLC_VAR("pf.roadveh_queue"),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_87),
-	SLC_NULL(3, SLV_28, SLV_87),
+	SLC_NULL(3, SLV_YAPF, SLV_87),
 	SLC_NULL(3, SLV_87, SLV_TABLE_CHUNKS),
 	SLC_VAR("vehicle.never_expire_vehicles"),
 	SLC_VAR("vehicle.max_trains"),
@@ -185,7 +185,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_NULL(4, SLV_47, SLV_TABLE_CHUNKS),
 	SLC_NULL(8, SLV_130, SLV_TABLE_CHUNKS),
 	SLC_NULL(4, SLV_131, SLV_TABLE_CHUNKS),
-	SLC_NULL(1, SLV_28, SLV_TABLE_CHUNKS),
+	SLC_NULL(1, SLV_YAPF, SLV_TABLE_CHUNKS),
 	SLC_VAR("pf.yapf.max_search_nodes"),
 	SLC_VAR("pf.yapf.rail_firstred_twoway_eol"),
 	SLC_VAR("pf.yapf.rail_firstred_penalty"),
