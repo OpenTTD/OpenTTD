@@ -1025,7 +1025,7 @@ bool AfterLoadGame()
 	}
 
 	/* Force the freeform edges to false for old savegames. */
-	if (IsSavegameVersionBefore(SLV_111)) {
+	if (IsSavegameVersionBefore(SLV_FREEFORM_EDGES)) {
 		_settings_game.construction.freeform_edges = false;
 	}
 

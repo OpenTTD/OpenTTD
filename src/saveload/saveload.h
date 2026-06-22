@@ -174,7 +174,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NEXT_COMPETITOR_START_OVERFLOW,     ///< 109   15075 Prevent overflow in the next competitor start counter
 
 	SLV_REMOVE_OLD_AI_SETTINGS,             ///< 110   15148 Remove remnants of the old AI's configuration
-	SLV_111,                                ///< 111   15190
+	SLV_FREEFORM_EDGES,                     ///< 111   15190 Allow terraforming along the edge of the map
 	SLV_112,                                ///< 112   15290
 	SLV_113,                                ///< 113   15340
 	SLV_114,                                ///< 114   15601
