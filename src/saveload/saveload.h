@@ -135,7 +135,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NEWGRF_PERSISTENT_STORAGE,          ///<  76   11139 Persistently store some state of NewGRF objects/entities
 	SLV_CLEANUP_UNCONNECTED_ROADS,          ///<  77   11172 Option to remove unconnected roads during a town's road reconstruction
 	SLV_STORE_INDUSTRY_CARGO,               ///<  78   11176 Store an industry's cargo, so it can be customised upon building
-	SLV_79,                                 ///<  79   11188
+	SLV_FAIR_PLAY_SETTINGS,                 ///<  79   11188 Add setting to disable exclusive rights in a town and giving money
 
 	SLV_80,                                 ///<  80   11228
 	SLV_81,                                 ///<  81   11244
