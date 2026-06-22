@@ -156,7 +156,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FIX_COMPANY_CARGO_TYPES,            ///<  94   12816 The company's cargo types should have increased in since with SLV_NEWGRF_CARGO
 
 	SLV_MORE_ENGINE_TYPES,                  ///<  95   12924 Allow more than the original 255 engine types
-	SLV_96,                                 ///<  96   13226
+	SLV_AIRPORT_NOISE,                      ///<  96   13226 Introduce noise for airports, to allow more than two airports per town
 	SLV_97,                                 ///<  97   13256
 	SLV_98,                                 ///<  98   13375
 	SLV_99,                                 ///<  99   13838

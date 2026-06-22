@@ -764,7 +764,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_REMOVE_OLD_PBS))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
 	if (IsSavegameVersionBefore(SLV_PLANE_SPEED_FACTOR))   _settings_game.vehicle.plane_speed = 4;
 	if (IsSavegameVersionBefore(SLV_MORE_ENGINE_TYPES))   _settings_game.vehicle.dynamic_engines = false;
-	if (IsSavegameVersionBefore(SLV_96))   _settings_game.economy.station_noise_level = false;
+	if (IsSavegameVersionBefore(SLV_AIRPORT_NOISE))   _settings_game.economy.station_noise_level = false;
 	if (IsSavegameVersionBefore(SLV_133)) {
 		_settings_game.vehicle.train_slope_steepness = 3;
 	}
