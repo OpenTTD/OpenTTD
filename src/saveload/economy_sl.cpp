@@ -45,10 +45,10 @@ struct CAPRChunkHandler : ChunkHandler {
 
 static const SaveLoad _economy_desc[] = {
 	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  SL_MIN_VERSION, SLV_UNIFY_CURRENCY),
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  SLV_UNIFY_CURRENCY, SLV_126),
-	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 SLV_CARGO_PAYMENT_OVERFLOW, SLV_126),
-	SLE_CONDVAR(Economy, inflation_prices,              SLE_UINT64,                SLV_126, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, inflation_payment,             SLE_UINT64,                SLV_126, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  SLV_UNIFY_CURRENCY, SLV_CUMULATED_INFLATION),
+	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 SLV_CARGO_PAYMENT_OVERFLOW, SLV_CUMULATED_INFLATION),
+	SLE_CONDVAR(Economy, inflation_prices,              SLE_UINT64,                SLV_CUMULATED_INFLATION, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, inflation_payment,             SLE_UINT64,                SLV_CUMULATED_INFLATION, SL_MAX_VERSION),
 	    SLE_VAR(Economy, fluct,                         SLE_INT16),
 	    SLE_VAR(Economy, interest_rate,                 SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),

@@ -192,7 +192,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MULTI_TILE_WAYPOINTS,               ///< 124   16993 Waypoints can be bigger than a single tile
 
 	SLV_REMOVE_SUBSIDY_STATION_BINDING,     ///< 125   17113 Awarded subsidies are not bound to stations, but to their actual source/destination
-	SLV_126,                                ///< 126   17433
+	SLV_CUMULATED_INFLATION,                ///< 126   17433 Store cumulated inflation, and recalculate prices/payments upon load
 	SLV_127,                                ///< 127   17439
 	SLV_128,                                ///< 128   18281
 	SLV_129,                                ///< 129   18292
