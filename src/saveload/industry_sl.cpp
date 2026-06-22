@@ -194,7 +194,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, construction_type,          SLE_UINT8,                 SLV_CARGO_PAYMENT_OVERFLOW, SL_MAX_VERSION),
 	SLEG_CONDVAR("last_cargo_accepted_at[0]",  SlIndustryAccepted::old_last_accepted[0], SLE_INT32,     SLV_CARGO_PAYMENT_OVERFLOW, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
 	SLEG_CONDARR("last_cargo_accepted_at",     SlIndustryAccepted::old_last_accepted,    SLE_INT32, 16, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 SLV_73, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 SLV_NEWGRF_INDUSTRY_LAYOUT, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, exclusive_supplier,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, exclusive_consumer,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
 
