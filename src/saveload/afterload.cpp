@@ -2064,7 +2064,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_103)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_SUPPLIED_STATION_NAME)) {
 		/* Non-town-owned roads now store the closest town */
 		UpdateNearestTownForRoadTiles(false);
 

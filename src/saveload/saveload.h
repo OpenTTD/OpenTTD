@@ -164,7 +164,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_YAPP,                               ///< 100   13952 New version of path based signals
 	SLV_NEWGRF_PALETTE,                     ///< 101   14233 Store palette used by each of the NewGRFs
 	SLV_SPREAD_INDUSTRY_PRODUCTION_CHANGES, ///< 102   14332 Spread the industry production changes over the month, instead of doing all on the same day
-	SLV_103,                                ///< 103   14598
+	SLV_NEWGRF_SUPPLIED_STATION_NAME,       ///< 103   14598 NewGRF industry supplying default names for nearby stations
 	SLV_104,                                ///< 104   14735
 
 	SLV_105,                                ///< 105   14803
