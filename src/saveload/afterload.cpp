@@ -1811,7 +1811,7 @@ bool AfterLoadGame()
 	}
 
 
-	if (IsSavegameVersionBefore(SLV_93)) {
+	if (IsSavegameVersionBefore(SLV_IMPROVED_ORDERS)) {
 		/* Rework of orders. */
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &o : orderlist->GetOrders()) {

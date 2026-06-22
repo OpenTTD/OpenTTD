@@ -152,7 +152,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PLANE_SPEED_FACTOR,                 ///<  90   12293 Setting to increase aircraft speed to be on par with the other vehicles
 	SLV_MORE_HOUSE_ANIMATION_FRAMES,        ///<  91   12347 Increase number of animation frames for NewGRF houses
 	SLV_REMOVE_HOUSE_COUNT,                 ///<  92   12381   0.6.x Remove number of houses in a town from the save
-	SLV_93,                                 ///<  93   12648
+	SLV_IMPROVED_ORDERS,                    ///<  93   12648 Orders support all full load/non stop types at the same time now
 	SLV_94,                                 ///<  94   12816
 
 	SLV_95,                                 ///<  95   12924
