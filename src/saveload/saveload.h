@@ -179,7 +179,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ROAD_LAYOUT_PER_TOWN,               ///< 113   15340 Allow for different road layouts for each of the towns
 	SLV_SEPARATE_ROAD_OWNERS,               ///< 114   15601 Separate owners for road bits, tram bits and the road stop
 
-	SLV_115,                                ///< 115   15695
+	SLV_CUSTOM_TOWN_NUMBER,                 ///< 115   15695 Configuration for specific number of towns to build
 	SLV_116,                                ///< 116   15893   0.7.x
 	SLV_117,                                ///< 117   16037
 	SLV_118,                                ///< 118   16129
