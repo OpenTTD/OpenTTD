@@ -35,8 +35,8 @@ static const SaveLoad _engine_desc[] = {
 	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                SLV_179, SL_MAX_VERSION),
 	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 SLV_179, SL_MAX_VERSION),
 	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
-	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
-	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                SLV_104, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_MORE_COMPANIES),
+	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                SLV_MORE_COMPANIES, SL_MAX_VERSION),
 	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                SLV_193, SL_MAX_VERSION),
 	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 };

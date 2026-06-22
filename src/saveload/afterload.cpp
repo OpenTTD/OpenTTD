@@ -2080,7 +2080,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_104)) {
+	if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
 		for (Aircraft *a : Aircraft::Iterate()) {
 			/* Set engine_type of shadow and rotor */
 			if (!a->IsNormalAircraft()) {

@@ -165,7 +165,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NEWGRF_PALETTE,                     ///< 101   14233 Store palette used by each of the NewGRFs
 	SLV_SPREAD_INDUSTRY_PRODUCTION_CHANGES, ///< 102   14332 Spread the industry production changes over the month, instead of doing all on the same day
 	SLV_NEWGRF_SUPPLIED_STATION_NAME,       ///< 103   14598 NewGRF industry supplying default names for nearby stations
-	SLV_104,                                ///< 104   14735
+	SLV_MORE_COMPANIES,                     ///< 104   14735 Increase maximum number of companies to 15
 
 	SLV_105,                                ///< 105   14803
 	SLV_106,                                ///< 106   14919
