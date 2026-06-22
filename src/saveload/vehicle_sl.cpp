@@ -657,8 +657,8 @@ public:
 		    SLE_VAR(Vehicle, subtype,               SLE_UINT8),
 
 		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
-		SLE_CONDVAR(Vehicle, name,                  SLE_NAME,                     SL_MIN_VERSION,  SLV_84),
-		SLE_CONDSSTR(Vehicle, name,                  SLE_STR | SLF_ALLOW_CONTROL,  SLV_84, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, name,                  SLE_NAME,                     SL_MIN_VERSION,  SLV_REPLACE_CUSTOM_NAME_ARRAY),
+		SLE_CONDSSTR(Vehicle, name,                  SLE_STR | SLF_ALLOW_CONTROL,  SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, unitnumber,            SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_LARGER_UNIT_NUMBER),
 		SLE_CONDVAR(Vehicle, unitnumber,            SLE_UINT16,                   SLV_LARGER_UNIT_NUMBER, SL_MAX_VERSION),
 		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),

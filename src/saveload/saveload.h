@@ -141,7 +141,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FIX_TREE_GROUND,                    ///<  81   11244 Various fixes to improve the visuals of the ground under trees
 	SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS,    ///<  82   11410 NewGRF random triggers for industries
 	SLV_DEPOT_WATER_OWNERS,                 ///<  83   11589 Store the owner of the water under depots, so removing of the depot doesn't disown the original owner
-	SLV_84,                                 ///<  84   11822
+	SLV_REPLACE_CUSTOM_NAME_ARRAY,          ///<  84   11822 Replace single fixed size array of custom names, by moving the name into the appropriate objects
 
 	SLV_85,                                 ///<  85   11874
 	SLV_86,                                 ///<  86   12042
