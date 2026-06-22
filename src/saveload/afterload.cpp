@@ -1766,7 +1766,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_74)) {
+	if (IsSavegameVersionBefore(SLV_FIX_STATION_PICKUP_ACCOUNTING)) {
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
 				ge.last_speed = 0;

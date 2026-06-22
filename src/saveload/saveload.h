@@ -129,7 +129,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_UNGROUPED_VEHICLES,                 ///<  71   10567 Add a group with vehicles that aren't in any other group
 	SLV_SPLIT_STATION_TYPE_FROM_GFXID,      ///<  72   10601 Splits the encoding of station type from the graphics identifer
 	SLV_NEWGRF_INDUSTRY_LAYOUT,             ///<  73   10903 NewGRF provided layouts for industries
-	SLV_74,                                 ///<  74   11030
+	SLV_FIX_STATION_PICKUP_ACCOUNTING,      ///<  74   11030 Accounting of which cargos a station would pick up was done incorrectly
 
 	SLV_75,                                 ///<  75   11107
 	SLV_76,                                 ///<  76   11139
