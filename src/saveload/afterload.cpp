@@ -1996,7 +1996,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_99)) {
+	if (IsSavegameVersionBefore(SLV_INDUSTRY_TILE_WATER_CLASS)) {
 		for (auto t : Map::Iterate()) {
 			/* Set newly introduced WaterClass of industry tiles */
 			if (IsTileType(t, TileType::Station) && IsOilRig(t)) {

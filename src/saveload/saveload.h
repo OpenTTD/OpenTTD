@@ -159,7 +159,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_AIRPORT_NOISE,                      ///<  96   13226 Introduce noise for airports, to allow more than two airports per town
 	SLV_MERGE_OPTS_PATS,                    ///<  97   13256 Merge the OPTS and PATS chunks, i.e. all settings in one chunk
 	SLV_GAMELOG,                            ///<  98   13375 Logging of important actions/situations in the save
-	SLV_99,                                 ///<  99   13838
+	SLV_INDUSTRY_TILE_WATER_CLASS,          ///<  99   13838 Add water classes to industry tiles
 
 	SLV_100,                                ///< 100   13952
 	SLV_101,                                ///< 101   14233
