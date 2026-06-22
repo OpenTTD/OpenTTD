@@ -155,7 +155,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_IMPROVED_ORDERS,                    ///<  93   12648 Orders support all full load/non stop types at the same time now
 	SLV_FIX_COMPANY_CARGO_TYPES,            ///<  94   12816 The company's cargo types should have increased in since with SLV_NEWGRF_CARGO
 
-	SLV_95,                                 ///<  95   12924
+	SLV_MORE_ENGINE_TYPES,                  ///<  95   12924 Allow more than the original 255 engine types
 	SLV_96,                                 ///<  96   13226
 	SLV_97,                                 ///<  97   13256
 	SLV_98,                                 ///<  98   13375
