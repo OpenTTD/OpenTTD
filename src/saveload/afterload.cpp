@@ -2234,7 +2234,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_121)) {
+	if (IsSavegameVersionBefore(SLV_CARGO_PAYMENTS)) {
 		/* Delete small ufos heading for non-existing vehicles */
 		for (DisasterVehicle *v : DisasterVehicle::Iterate()) {
 			if (v->subtype == 2 /* ST_SMALL_UFO */ && v->state != 0) {

@@ -22,7 +22,7 @@ const SaveLoadCompat _cargopacket_sl_compat[] = {
 	SLC_VAR("feeder_share"),
 	SLC_VAR("source_type"),
 	SLC_VAR("source_id"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_121),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_CARGO_PAYMENTS),
 };
 
 #endif /* SAVELOAD_COMPAT_CARGOPACKET_H */

@@ -186,7 +186,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PAUSE_MODES,                        ///< 119   16242 Use bitmask of reason to pause, so manual/auto pausing do not conflict
 
 	SLV_COMPANY_SERVICE_INTERVALS,          ///< 120   16439 Make service intervals configurable per company
-	SLV_121,                                ///< 121   16694
+	SLV_CARGO_PAYMENTS,                     ///< 121   16694 Perform payment of cargo after unloading
 	SLV_122,                                ///< 122   16855
 	SLV_123,                                ///< 123   16909
 	SLV_124,                                ///< 124   16993
