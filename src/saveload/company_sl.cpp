@@ -423,7 +423,7 @@ public:
 	size_t GetNumLiveries() const
 	{
 		if (IsSavegameVersionBefore(SLV_TRAM_LIVERY)) return to_underlying(LiveryScheme::End) - 4;
-		if (IsSavegameVersionBefore(SLV_85)) return to_underlying(LiveryScheme::End) - 2;
+		if (IsSavegameVersionBefore(SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY)) return to_underlying(LiveryScheme::End) - 2;
 		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return to_underlying(LiveryScheme::End);
 		/* Read from the savegame how long the list is. */
 		return SlGetStructListLength(to_underlying(LiveryScheme::End));
@@ -455,7 +455,7 @@ public:
 			}
 		}
 
-		if (IsSavegameVersionBefore(SLV_85)) {
+		if (IsSavegameVersionBefore(SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY)) {
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
 			std::move_backward(std::begin(c->livery) + to_underlying(LiveryScheme::FreightWagon) - 2, std::end(c->livery) - 2, std::end(c->livery));
 			c->livery[LiveryScheme::PassengerWagonMonorail] = c->livery[LiveryScheme::Monorail];

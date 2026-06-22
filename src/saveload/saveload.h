@@ -143,7 +143,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DEPOT_WATER_OWNERS,                 ///<  83   11589 Store the owner of the water under depots, so removing of the depot doesn't disown the original owner
 	SLV_REPLACE_CUSTOM_NAME_ARRAY,          ///<  84   11822 Replace single fixed size array of custom names, by moving the name into the appropriate objects
 
-	SLV_85,                                 ///<  85   11874
+	SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY,   ///<  85   11874 Add livery for maglev/monorail passenger wagons
 	SLV_86,                                 ///<  86   12042
 	SLV_87,                                 ///<  87   12129
 	SLV_88,                                 ///<  88   12134
