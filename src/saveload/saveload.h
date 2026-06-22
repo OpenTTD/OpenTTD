@@ -173,7 +173,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_STORE_AI_VERSION,                   ///< 108   15045 Store the version of the AI script
 	SLV_NEXT_COMPETITOR_START_OVERFLOW,     ///< 109   15075 Prevent overflow in the next competitor start counter
 
-	SLV_110,                                ///< 110   15148
+	SLV_REMOVE_OLD_AI_SETTINGS,             ///< 110   15148 Remove remnants of the old AI's configuration
 	SLV_111,                                ///< 111   15190
 	SLV_112,                                ///< 112   15290
 	SLV_113,                                ///< 113   15340

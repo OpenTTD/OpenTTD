@@ -29,14 +29,14 @@ const SaveLoadCompat _gameopt_sl_compat[] = {
 /** Original field order for _settings. */
 const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("difficulty.max_no_competitors"),
-	SLC_NULL(1, SLV_MERGE_OPTS_PATS, SLV_110),
+	SLC_NULL(1, SLV_MERGE_OPTS_PATS, SLV_REMOVE_OLD_AI_SETTINGS),
 	SLC_VAR("difficulty.number_towns"),
 	SLC_VAR("difficulty.industry_density"),
 	SLC_VAR("difficulty.max_loan"),
 	SLC_VAR("difficulty.initial_interest"),
 	SLC_VAR("difficulty.vehicle_costs"),
 	SLC_VAR("difficulty.competitor_speed"),
-	SLC_NULL(1, SLV_MERGE_OPTS_PATS, SLV_110),
+	SLC_NULL(1, SLV_MERGE_OPTS_PATS, SLV_REMOVE_OLD_AI_SETTINGS),
 	SLC_VAR("difficulty.vehicle_breakdowns"),
 	SLC_VAR("difficulty.subsidy_multiplier"),
 	SLC_VAR("difficulty.subsidy_duration"),
