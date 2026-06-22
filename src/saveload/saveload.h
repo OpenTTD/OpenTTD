@@ -182,7 +182,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CUSTOM_TOWN_NUMBER,                 ///< 115   15695 Configuration for specific number of towns to build
 	SLV_GAMELOG_EMERGENCY,                  ///< 116   15893   0.7.x Gamelog event for emergency/crash saves
 	SLV_PLATFORM_STOP_LOCATION,             ///< 117   16037 Set the platform stop location via train orders
-	SLV_118,                                ///< 118   16129
+	SLV_DIGIT_GROUP_SEPARATOR,              ///< 118   16129 Configurable digit group separator
 	SLV_119,                                ///< 119   16242
 
 	SLV_120,                                ///< 120   16439
