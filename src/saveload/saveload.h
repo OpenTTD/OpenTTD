@@ -121,7 +121,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_UNIFY_CURRENCY,                     ///<  65   10210 Make all variables related to currency 64 bits
 	SLV_NEWGRF_TOWN_NAMES,                  ///<  66   10211 NewGRF provided town names
-	SLV_67,                                 ///<  67   10236
+	SLV_TIMETABLES,                         ///<  67   10236 Introduce timetables for vehicles
 	SLV_68,                                 ///<  68   10266
 	SLV_69,                                 ///<  69   10319
 

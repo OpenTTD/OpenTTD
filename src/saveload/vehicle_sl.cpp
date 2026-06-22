@@ -723,8 +723,8 @@ public:
 		SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             SLV_REFIT_ORDERS, SL_MAX_VERSION),
 
 		/* Timetable in current order */
-		SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            SLV_67, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, current_order.travel_time,   SLE_UINT16,            SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            SLV_TIMETABLES, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.travel_time,   SLE_UINT16,            SLV_TIMETABLES, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, current_order.max_speed,     SLE_UINT16,           SLV_174, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, timetable_start,       SLE_FILE_I32 | SLE_VAR_U64, SLV_129, SLV_TIMETABLE_START_TICKS),
 		SLE_CONDVAR(Vehicle, timetable_start,       SLE_UINT64,                 SLV_TIMETABLE_START_TICKS, SL_MAX_VERSION),
@@ -774,10 +774,10 @@ public:
 		SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_VEHICLE_GROUPS, SL_MAX_VERSION),
 
-		SLE_CONDVAR(Vehicle, current_order_time,    SLE_FILE_U32 | SLE_VAR_I32,  SLV_67, SLV_TIMETABLE_TICKS_TYPE),
+		SLE_CONDVAR(Vehicle, current_order_time,    SLE_FILE_U32 | SLE_VAR_I32,  SLV_TIMETABLES, SLV_TIMETABLE_TICKS_TYPE),
 		SLE_CONDVAR(Vehicle, current_order_time,    SLE_INT32,                   SLV_TIMETABLE_TICKS_TYPE, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, last_loading_tick,     SLE_UINT64,                   SLV_LAST_LOADING_TICK, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_TIMETABLES, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, depot_unbunching_last_departure, SLE_UINT64,        SLV_DEPOT_UNBUNCHING, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, depot_unbunching_next_departure, SLE_UINT64,        SLV_DEPOT_UNBUNCHING, SL_MAX_VERSION),

@@ -112,7 +112,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("vehicle.wagon_speed_limits"),
 	SLC_VAR("vehicle.disable_elrails"),
 	SLC_VAR("vehicle.freight_trains"),
-	SLC_NULL(1, SLV_67, SLV_159),
+	SLC_NULL(1, SLV_TIMETABLES, SLV_159),
 	SLC_VAR("vehicle.plane_speed"),
 	SLC_VAR("vehicle.dynamic_engines"),
 	SLC_VAR("vehicle.plane_crashes"),
