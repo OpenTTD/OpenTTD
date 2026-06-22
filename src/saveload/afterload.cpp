@@ -2855,7 +2855,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_161)) {
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
 
-		if (!IsSavegameVersionBefore(SLV_76)) {
+		if (!IsSavegameVersionBefore(SLV_NEWGRF_PERSISTENT_STORAGE)) {
 			for (Industry *ind : Industry::Iterate()) {
 				assert(ind->psa != nullptr);
 

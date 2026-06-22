@@ -132,7 +132,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FIX_STATION_PICKUP_ACCOUNTING,      ///<  74   11030 Accounting of which cargos a station would pick up was done incorrectly
 
 	SLV_AUTOSLOPE,                          ///<  75   11107 Terraforming under buildings/track/anything that supports foundations
-	SLV_76,                                 ///<  76   11139
+	SLV_NEWGRF_PERSISTENT_STORAGE,          ///<  76   11139 Persistently store some state of NewGRF objects/entities
 	SLV_77,                                 ///<  77   11172
 	SLV_78,                                 ///<  78   11176
 	SLV_79,                                 ///<  79   11188
