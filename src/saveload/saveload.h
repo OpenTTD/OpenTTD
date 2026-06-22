@@ -191,7 +191,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_UNIFY_WAYPOINT_AND_STATION,         ///< 123   16909 Unify stations and waypoints
 	SLV_MULTI_TILE_WAYPOINTS,               ///< 124   16993 Waypoints can be bigger than a single tile
 
-	SLV_125,                                ///< 125   17113
+	SLV_REMOVE_SUBSIDY_STATION_BINDING,     ///< 125   17113 Awarded subsidies are not bound to stations, but to their actual source/destination
 	SLV_126,                                ///< 126   17433
 	SLV_127,                                ///< 127   17439
 	SLV_128,                                ///< 128   18281

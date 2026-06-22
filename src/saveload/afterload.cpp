@@ -2324,7 +2324,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_125)) {
+	if (IsSavegameVersionBefore(SLV_REMOVE_SUBSIDY_STATION_BINDING)) {
 		/* Convert old subsidies */
 		for (Subsidy *s : Subsidy::Iterate()) {
 			if (s->remaining < 12) {
