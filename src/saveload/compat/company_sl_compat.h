@@ -114,7 +114,7 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("bankrupt_value"),
 	SLC_VAR("yearly_expenses"),
 	SLC_VAR("is_ai"),
-	SLC_NULL(1, SLV_NOAI, SLV_112),
+	SLC_NULL(1, SLV_NOAI, SLV_SPLIT_HQ),
 	SLC_NULL(1, SLV_TOWN_TOLERANCE_PAUSE_MODE, SLV_YAPP),
 	SLC_VAR("terraform_limit"),
 	SLC_VAR("clear_limit"),

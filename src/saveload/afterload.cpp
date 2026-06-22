@@ -2103,7 +2103,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_112)) {
+	if (IsSavegameVersionBefore(SLV_SPLIT_HQ)) {
 		for (auto t : Map::Iterate()) {
 			/* Check for HQ bit being set, instead of using map accessor,
 			 * since we've already changed it code-wise */

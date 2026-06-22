@@ -479,7 +479,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 	}
 
 	/* Stop non-front engines */
-	if (part_of_load && IsSavegameVersionBefore(SLV_112)) {
+	if (part_of_load && IsSavegameVersionBefore(SLV_SPLIT_HQ)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->type == VehicleType::Train) {
 				Train *t = Train::From(v);
