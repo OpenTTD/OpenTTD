@@ -180,7 +180,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SEPARATE_ROAD_OWNERS,               ///< 114   15601 Separate owners for road bits, tram bits and the road stop
 
 	SLV_CUSTOM_TOWN_NUMBER,                 ///< 115   15695 Configuration for specific number of towns to build
-	SLV_116,                                ///< 116   15893   0.7.x
+	SLV_GAMELOG_EMERGENCY,                  ///< 116   15893   0.7.x Gamelog event for emergency/crash saves
 	SLV_117,                                ///< 117   16037
 	SLV_118,                                ///< 118   16129
 	SLV_119,                                ///< 119   16242
