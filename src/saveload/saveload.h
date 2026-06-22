@@ -194,7 +194,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REMOVE_SUBSIDY_STATION_BINDING,     ///< 125   17113 Awarded subsidies are not bound to stations, but to their actual source/destination
 	SLV_CUMULATED_INFLATION,                ///< 126   17433 Store cumulated inflation, and recalculate prices/payments upon load
 	SLV_TOWN_ACCEPTANCE,                    ///< 127   17439 Store mask of cargos accepted by town houses and head quarters
-	SLV_128,                                ///< 128   18281
+	SLV_FOUND_TOWN,                         ///< 128   18281 Founding of new towns
 	SLV_129,                                ///< 129   18292
 
 	SLV_130,                                ///< 130   18404

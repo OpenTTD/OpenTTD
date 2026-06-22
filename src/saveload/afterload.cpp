@@ -2401,7 +2401,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_128)) {
+	if (IsSavegameVersionBefore(SLV_FOUND_TOWN)) {
 		for (const Depot *d : Depot::Iterate()) {
 			Tile tile = d->xy;
 			/* At some point, invalid depots were saved into the game (possibly those removed in the past?)
