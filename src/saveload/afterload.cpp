@@ -2448,7 +2448,7 @@ bool AfterLoadGame()
 	}
 
 	/* Wait counter and load/unload ticks got split. */
-	if (IsSavegameVersionBefore(SLV_136)) {
+	if (IsSavegameVersionBefore(SLV_SPLIT_LOAD_WAIT_COUNTERS)) {
 		for (Aircraft *a : Aircraft::Iterate()) {
 			a->turn_counter = a->current_order.IsType(OT_LOADING) ? 0 : a->load_unload_ticks;
 		}

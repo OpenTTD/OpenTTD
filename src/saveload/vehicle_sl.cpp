@@ -812,7 +812,7 @@ public:
 
 		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES,  SLV_YAPP),
 		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_YAPP, SL_MAX_VERSION),
-		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 SLV_136, SL_MAX_VERSION),
+		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 SLV_SPLIT_LOAD_WAIT_COUNTERS, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_train_sl_compat;
@@ -976,7 +976,7 @@ public:
 		 SLE_CONDVAR(Aircraft, last_direction,        SLE_UINT8,                    SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 		 SLE_CONDVAR(Aircraft, number_consecutive_turns, SLE_UINT8,                 SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
-		 SLE_CONDVAR(Aircraft, turn_counter,          SLE_UINT8,                  SLV_136, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, turn_counter,          SLE_UINT8,                  SLV_SPLIT_LOAD_WAIT_COUNTERS, SL_MAX_VERSION),
 		 SLE_CONDVAR(Aircraft, flags,                 SLE_UINT8,                  SLV_167, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_aircraft_sl_compat;
