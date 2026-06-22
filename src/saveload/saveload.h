@@ -125,7 +125,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CARGO_PACKETS,                      ///<  68   10266 Account for individual units of cargo, i.e. there can be cargo from multiple sources/ages in one vehicle
 	SLV_MORE_CARGO_PACKETS,                 ///<  69   10319 Allow more than ~65k cargo packets
 
-	SLV_70,                                 ///<  70   10541
+	SLV_CARGO_PAYMENT_OVERFLOW,             ///<  70   10541 Fix overflow of cargo payment rates, plus preparation for player founded industries
 	SLV_71,                                 ///<  71   10567
 	SLV_72,                                 ///<  72   10601
 	SLV_73,                                 ///<  73   10903

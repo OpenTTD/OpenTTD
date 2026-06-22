@@ -1734,7 +1734,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_70)) {
+	if (IsSavegameVersionBefore(SLV_CARGO_PAYMENT_OVERFLOW)) {
 		/* Added variables to support newindustries */
 		for (Industry *i : Industry::Iterate()) i->founder = OWNER_NONE;
 	}
