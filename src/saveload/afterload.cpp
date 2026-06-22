@@ -566,7 +566,7 @@ bool AfterLoadGame()
 	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
 	if (_cur_tileloop_tile == 0) _cur_tileloop_tile = TileIndex{1};
 
-	if (IsSavegameVersionBefore(SLV_98)) _gamelog.Oldver();
+	if (IsSavegameVersionBefore(SLV_GAMELOG)) _gamelog.Oldver();
 
 	_gamelog.TestRevision();
 	_gamelog.TestMode();
@@ -580,7 +580,7 @@ bool AfterLoadGame()
 	/* Group hierarchy may be evaluated during conversion, so ensure its correct early on. */
 	UpdateGroupChildren();
 
-	if (IsSavegameVersionBefore(SLV_98)) _gamelog.GRFAddList(_grfconfig);
+	if (IsSavegameVersionBefore(SLV_GAMELOG)) _gamelog.GRFAddList(_grfconfig);
 
 	if (IsSavegameVersionBefore(SLV_119)) {
 		_pause_mode = (_pause_mode.base() == 2) ? PauseMode::Normal : PauseModes{};

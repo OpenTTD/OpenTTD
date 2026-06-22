@@ -158,7 +158,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MORE_ENGINE_TYPES,                  ///<  95   12924 Allow more than the original 255 engine types
 	SLV_AIRPORT_NOISE,                      ///<  96   13226 Introduce noise for airports, to allow more than two airports per town
 	SLV_MERGE_OPTS_PATS,                    ///<  97   13256 Merge the OPTS and PATS chunks, i.e. all settings in one chunk
-	SLV_98,                                 ///<  98   13375
+	SLV_GAMELOG,                            ///<  98   13375 Logging of important actions/situations in the save
 	SLV_99,                                 ///<  99   13838
 
 	SLV_100,                                ///< 100   13952
