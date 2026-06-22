@@ -205,7 +205,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_ROCKS_STAY_UNDER_SNOW,              ///< 135   18719 Rocks stay under snow, i.e. they return when the snow goes away
 	SLV_SPLIT_LOAD_WAIT_COUNTERS,           ///< 136   18764 Split counters for (un)loading and signal waiting/turning as otherwise they interfere
-	SLV_137,                                ///< 137   18912
+	SLV_AIRPORT_ANIMATION_FRAMES,           ///< 137   18912 Use animation frames instead of many airport tile ids for animation
 	SLV_138,                                ///< 138   18942   1.0.x
 	SLV_139,                                ///< 139   19346
 

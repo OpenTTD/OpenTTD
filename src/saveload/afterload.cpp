@@ -2459,7 +2459,7 @@ bool AfterLoadGame()
 	}
 
 	/* Airport tile animation uses animation frame instead of other graphics id */
-	if (IsSavegameVersionBefore(SLV_137)) {
+	if (IsSavegameVersionBefore(SLV_AIRPORT_ANIMATION_FRAMES)) {
 		struct AirportTileConversion {
 			uint8_t old_start;
 			uint8_t num_frames;
