@@ -585,11 +585,11 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD; break;
 
 		case SL_REF:
-			return IsSavegameVersionBefore(SLV_69) ? SLE_FILE_U16 : SLE_FILE_U32;
+			return IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SLE_FILE_U16 : SLE_FILE_U32;
 
 		case SL_REFLIST:
 		case SL_REFVECTOR:
-			return (IsSavegameVersionBefore(SLV_69) ? SLE_FILE_U16 : SLE_FILE_U32) | SLE_FILE_HAS_LENGTH_FIELD;
+			return (IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SLE_FILE_U16 : SLE_FILE_U32) | SLE_FILE_HAS_LENGTH_FIELD;
 
 		case SL_SAVEBYTE:
 			return SLE_FILE_U8;
@@ -667,7 +667,7 @@ static inline uint8_t SlCalcConvFileLen(VarType conv)
  */
 static inline size_t SlCalcRefLen()
 {
-	return IsSavegameVersionBefore(SLV_69) ? 2 : 4;
+	return IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? 2 : 4;
 }
 
 void SlSetArrayIndex(uint index)
@@ -1368,7 +1368,7 @@ void SlSaveLoadRef(void *ptr, VarType conv)
 			break;
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD:
-			*static_cast<size_t *>(ptr) = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32();
+			*static_cast<size_t *>(ptr) = IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SlReadUint16() : SlReadUint32();
 			break;
 		case SLA_PTRS:
 			*static_cast<void **>(ptr) = IntToReference(*static_cast<size_t *>(ptr), static_cast<SLRefType>(conv));
@@ -1442,7 +1442,7 @@ public:
 				size_t length;
 				switch (cmd) {
 					case SL_VAR: length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
-					case SL_REF: length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
+					case SL_REF: length = IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SlReadUint16() : IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
 					case SL_STDSTR: length = SlReadArrayLength(); break;
 					default: NOT_REACHED();
 				}
