@@ -22,7 +22,7 @@
  */
 /* static */ void CargoPacket::AfterLoad()
 {
-	if (IsSavegameVersionBefore(SLV_44)) {
+	if (IsSavegameVersionBefore(SLV_CARGO_SOURCE_TILE)) {
 		/* If we remove a station while cargo from it is still en route, payment calculation will assume
 		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
 		 * stores the coordinates, preserving them even if the station is removed. However, if a game is loaded

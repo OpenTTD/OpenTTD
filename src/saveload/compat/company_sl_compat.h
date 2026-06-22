@@ -99,7 +99,7 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("current_loan"),
 	SLC_VAR("colour"),
 	SLC_VAR("money_fraction"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_58),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER),
 	SLC_VAR("block_preview"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_94),
 	SLC_NULL(4, SLV_94, SLV_170),

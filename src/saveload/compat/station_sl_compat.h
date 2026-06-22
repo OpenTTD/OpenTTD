@@ -15,13 +15,13 @@
 /** Original field order for _roadstop_desc. */
 const SaveLoadCompat _roadstop_sl_compat[] = {
 	SLC_VAR("xy"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_45),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_COUNT_PAID_FOR_CARGO),
 	SLC_VAR("status"),
 	SLC_NULL(4, SL_MIN_VERSION, SLV_LARGER_TOWN_CARGO_STATISTICS),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_45),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_COUNT_PAID_FOR_CARGO),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_LAST_VEHICLE_TYPE),
 	SLC_VAR("next"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_45),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_COUNT_PAID_FOR_CARGO),
 	SLC_NULL(4, SL_MIN_VERSION, SLV_IMPROVE_MULTISTOP),
 	SLC_NULL(1, SLV_IMPROVE_MULTISTOP, SLV_LAST_VEHICLE_TYPE),
 };
@@ -50,7 +50,7 @@ const SaveLoadCompat _station_flow_sl_compat[] = {
 const SaveLoadCompat _station_goods_sl_compat[] = {
 	SLC_VAR("waiting_acceptance"),
 	SLC_VAR("status"),
-	SLC_NULL(2, SLV_51, SLV_68),
+	SLC_NULL(2, SLV_FEEDER_SHARE, SLV_68),
 	SLC_VAR("time_since_pickup"),
 	SLC_VAR("rating"),
 	SLC_VAR("cargo_source"),

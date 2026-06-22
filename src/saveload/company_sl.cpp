@@ -422,7 +422,7 @@ public:
 	 */
 	size_t GetNumLiveries() const
 	{
-		if (IsSavegameVersionBefore(SLV_63)) return to_underlying(LiveryScheme::End) - 4;
+		if (IsSavegameVersionBefore(SLV_TRAM_LIVERY)) return to_underlying(LiveryScheme::End) - 4;
 		if (IsSavegameVersionBefore(SLV_85)) return to_underlying(LiveryScheme::End) - 2;
 		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return to_underlying(LiveryScheme::End);
 		/* Read from the savegame how long the list is. */
@@ -462,7 +462,7 @@ public:
 			c->livery[LiveryScheme::PassengerWagonMaglev] = c->livery[LiveryScheme::Maglev];
 		}
 
-		if (IsSavegameVersionBefore(SLV_63)) {
+		if (IsSavegameVersionBefore(SLV_TRAM_LIVERY)) {
 			/* Copy bus/truck liveries over to trams */
 			c->livery[LiveryScheme::PassengerTram] = c->livery[LiveryScheme::Bus];
 			c->livery[LiveryScheme::FreightTram] = c->livery[LiveryScheme::Truck];

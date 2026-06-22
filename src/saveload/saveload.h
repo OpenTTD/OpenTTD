@@ -89,35 +89,35 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DISABLE_ELRAIL_SETTING,             ///<  38    7195 Add setting to disable electrified rails
 	SLV_FREIGHT_WEIGHT,                     ///<  39    7269 Setting to increase the weight of cargo on freight trains
 
-	SLV_40,                                 ///<  40    7326
-	SLV_41,                                 ///<  41    7348   0.5.x
-	SLV_42,                                 ///<  42    7573
-	SLV_43,                                 ///<  43    7642
-	SLV_44,                                 ///<  44    8144
+	SLV_GRADUAL_LOADING,                    ///<  40    7326 Gradual (un)loading of cargo
+	SLV_NEWGRF_SETTINGS,                    ///<  41    7348   0.5.x Save what NewGRFs are used in the game and their settings
+	SLV_BRIDGE_WORMHOLE,                    ///<  42    7573 Bridges become wormholes, so more things can be built under them (e.g. signals)
+	SLV_UNIFY_ANIMATION_STATE,              ///<  43    7642 Put all animation state information in same map bits
+	SLV_CARGO_SOURCE_TILE,                  ///<  44    8144 Store the source tile of the cargo, so accurate payment can happen when the source station is removed
 
-	SLV_45,                                 ///<  45    8501
-	SLV_46,                                 ///<  46    8705
-	SLV_47,                                 ///<  47    8735
-	SLV_48,                                 ///<  48    8935
-	SLV_49,                                 ///<  49    8969
+	SLV_COUNT_PAID_FOR_CARGO,               ///<  45    8501 Count the amount of cargo that was paid for
+	SLV_MORE_AIRPORT_BLOCKS,                ///<  46    8705 Increase number of blocks an airport can have
+	SLV_DRIVE_THROUGH_ROAD_STOPS,           ///<  47    8735 Drive through road stops
+	SLV_RAIL_TRACK_TYPE_UNIFICATION,        ///<  48    8935 Put all the rail track type information in same map bits
+	SLV_SIMPLIFY_PLAYER_FACE,               ///<  49    8969 Simplify the storage of player face information
 
-	SLV_50,                                 ///<  50    8973
-	SLV_51,                                 ///<  51    8978
-	SLV_52,                                 ///<  52    9066
-	SLV_53,                                 ///<  53    9316
-	SLV_54,                                 ///<  54    9613
+	SLV_AIRCRAFT_SPEED_HOLDING,             ///<  50    8973 Aircraft speed in km-ish/h and reduced speed in holding patterns
+	SLV_FEEDER_SHARE,                       ///<  51    8978 Rewrite of transfers to retain knowledge about the already paid amount for transfered cargo
+	SLV_STATUE_OWNER,                       ///<  52    9066 Store the owner of the statue, so the town can be informed of their removal
+	SLV_NEWGRF_HOUSES,                      ///<  53    9316 NewGRF controlled houses
+	SLV_TOWN_GROWTH_CONTROL,                ///<  54    9613 Give the player control over the town growth
 
-	SLV_55,                                 ///<  55    9638
-	SLV_56,                                 ///<  56    9667
-	SLV_57,                                 ///<  57    9691
-	SLV_58,                                 ///<  58    9762
-	SLV_59,                                 ///<  59    9779
+	SLV_NEWGRF_CARGO,                       ///<  55    9638 Increase number of cargos and NewGRF control of cargos
+	SLV_CITIES,                             ///<  56    9667 Cities that start bigger and grow faster
+	SLV_FIFO_LOADING,                       ///<  57    9691 First-in-first-out loading of vehicles
+	SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER,      ///<  58    9762 Difficulty settings for very low number of industries and towns
+	SLV_TOWN_LAYOUT,                        ///<  59    9779 More layout options for towns
 
-	SLV_60,                                 ///<  60    9874
-	SLV_61,                                 ///<  61    9892
-	SLV_62,                                 ///<  62    9905
-	SLV_63,                                 ///<  63    9956
-	SLV_64,                                 ///<  64   10006
+	SLV_VEHICLE_GROUPS,                     ///<  60    9874 Arbitrary grouping, by the player, of vehicles
+	SLV_MULTIPLE_ROAD_TYPES,                ///<  61    9892 Multiple road types for the same tile
+	SLV_ADJACENT_STATIONS,                  ///<  62    9905 Allow building multiple stations directly next to eachother
+	SLV_TRAM_LIVERY,                        ///<  63    9956 Add separate livery for trams
+	SLV_MULTIPLE_SIGNAL_TYPES,              ///<  64   10006 Multiple different signal types on the same (diagonal) tile, instead of the same for both directions
 
 	SLV_65,                                 ///<  65   10210
 	SLV_66,                                 ///<  66   10211

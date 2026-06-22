@@ -1057,7 +1057,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_48)) {
+	if (IsSavegameVersionBefore(SLV_RAIL_TRACK_TYPE_UNIFICATION)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
@@ -1085,9 +1085,9 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_61)) {
+	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_TYPES)) {
 		/* Added the RoadType */
-		bool old_bridge = IsSavegameVersionBefore(SLV_42);
+		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Road:
@@ -1125,8 +1125,8 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_114)) {
-		bool fix_roadtypes = !IsSavegameVersionBefore(SLV_61);
-		bool old_bridge = IsSavegameVersionBefore(SLV_42);
+		bool fix_roadtypes = !IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_TYPES);
+		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
 
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
@@ -1223,7 +1223,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_42)) {
+	if (IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE)) {
 		for (auto t : Map::Iterate()) {
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
 			if (IsBridgeTile(t)) {
@@ -1514,7 +1514,7 @@ bool AfterLoadGame()
 
 	/* From version 53, the map array was changed for house tiles to allow
 	 * space for newhouses grf features. A new byte, m7, was also added. */
-	if (IsSavegameVersionBefore(SLV_53)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_HOUSES)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::House)) {
 				if (GB(t.m3(), 6, 2) != TOWN_HOUSE_COMPLETED) {
@@ -1572,7 +1572,7 @@ bool AfterLoadGame()
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 
-	if (IsSavegameVersionBefore(SLV_43)) {
+	if (IsSavegameVersionBefore(SLV_UNIFY_ANIMATION_STATE)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Industry)) {
 				switch (GetIndustryGfx(t)) {
@@ -1599,7 +1599,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_45)) {
+	if (IsSavegameVersionBefore(SLV_COUNT_PAID_FOR_CARGO)) {
 		/* Originally just the fact that some cargo had been paid for was
 		 * stored to stop people cheating and cashing in several times. This
 		 * wasn't enough though as it was cleared when the vehicle started
@@ -1612,13 +1612,13 @@ bool AfterLoadGame()
 
 	/* Buoys do now store the owner of the previous water tile, which can never
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
-	if (IsSavegameVersionBefore(SLV_46)) {
+	if (IsSavegameVersionBefore(SLV_MORE_AIRPORT_BLOCKS)) {
 		for (Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->facilities.Test(StationFacility::Dock) && IsTileOwner(wp->xy, OWNER_NONE) && TileHeight(wp->xy) == 0) SetTileOwner(wp->xy, OWNER_WATER);
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_50)) {
+	if (IsSavegameVersionBefore(SLV_AIRCRAFT_SPEED_HOLDING)) {
 		/* Aircraft units changed from 8 mph to 1 km-ish/h */
 		for (Aircraft *v : Aircraft::Iterate()) {
 			if (v->subtype <= AIR_AIRCRAFT) {
@@ -1630,7 +1630,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_49)) {
+	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PLAYER_FACE)) {
 		/* Perform conversion of very old face bits. */
 		for (Company *c : Company::Iterate()) {
 			c->face = ConvertFromOldCompanyManagerFace(c->face.bits);
@@ -1653,7 +1653,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_52)) {
+	if (IsSavegameVersionBefore(SLV_STATUE_OWNER)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Object) && t.m5() == OBJECT_STATUE) {
 				t.m2() = CalcClosestTownFromTile(t)->index.base();
@@ -1664,7 +1664,7 @@ bool AfterLoadGame()
 	/* A setting containing the proportion of towns that grow twice as
 	 * fast was added in version 54. From version 56 this is now saved in the
 	 * town as cities can be built specifically in the scenario editor. */
-	if (IsSavegameVersionBefore(SLV_56)) {
+	if (IsSavegameVersionBefore(SLV_CITIES)) {
 		for (Town *t : Town::Iterate()) {
 			if (_settings_game.economy.larger_towns != 0 && (t->index % _settings_game.economy.larger_towns) == 0) {
 				t->larger_town = true;
@@ -1672,7 +1672,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_57)) {
+	if (IsSavegameVersionBefore(SLV_FIFO_LOADING)) {
 		/* Added a FIFO queue of vehicles loading at stations */
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if ((v->type != VehicleType::Train || Train::From(v)->IsFrontEngine()) &&  // for all locs
@@ -1685,7 +1685,7 @@ bool AfterLoadGame()
 				v->vehicle_flags.Reset(VehicleFlag::LoadingFinished);
 			}
 		}
-	} else if (IsSavegameVersionBefore(SLV_59)) {
+	} else if (IsSavegameVersionBefore(SLV_TOWN_LAYOUT)) {
 		/* For some reason non-loading vehicles could be in the station's loading vehicle list */
 
 		for (Station *st : Station::Iterate()) {
@@ -1700,7 +1700,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_58)) {
+	if (IsSavegameVersionBefore(SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER)) {
 		/* Setting difficulty industry_density other than zero get bumped to +1
 		 * since a new option (very low at position 1) has been added */
 		if (_settings_game.difficulty.industry_density > IndustryDensity::FundedOnly) {
@@ -1711,7 +1711,7 @@ bool AfterLoadGame()
 		_settings_game.difficulty.number_towns++;
 	}
 
-	if (IsSavegameVersionBefore(SLV_64)) {
+	if (IsSavegameVersionBefore(SLV_MULTIPLE_SIGNAL_TYPES)) {
 		/* Since now we allow different signal types and variants on a single tile.
 		 * Move signal states to m4 to make room and clone the signal type/variant. */
 		for (auto t : Map::Iterate()) {
@@ -1984,7 +1984,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_62)) {
+	if (IsSavegameVersionBefore(SLV_ADJACENT_STATIONS)) {
 		GroupStatistics::UpdateAfterLoad(); // Ensure statistics pool is initialised before trying to delete vehicles
 		/* Remove all trams from savegames without tram support.
 		 * There would be trams without tram track under causing crashes sooner or later. */
