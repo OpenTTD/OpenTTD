@@ -131,7 +131,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NEWGRF_INDUSTRY_LAYOUT,             ///<  73   10903 NewGRF provided layouts for industries
 	SLV_FIX_STATION_PICKUP_ACCOUNTING,      ///<  74   11030 Accounting of which cargos a station would pick up was done incorrectly
 
-	SLV_75,                                 ///<  75   11107
+	SLV_AUTOSLOPE,                          ///<  75   11107 Terraforming under buildings/track/anything that supports foundations
 	SLV_76,                                 ///<  76   11139
 	SLV_77,                                 ///<  77   11172
 	SLV_78,                                 ///<  78   11176
