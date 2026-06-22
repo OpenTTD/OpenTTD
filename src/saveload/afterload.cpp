@@ -1382,7 +1382,7 @@ bool AfterLoadGame()
 		for (Company *c : Company::Iterate()) c->settings.renew_keep_length = false;
 	}
 
-	if (IsSavegameVersionBefore(SLV_123)) {
+	if (IsSavegameVersionBefore(SLV_UNIFY_WAYPOINT_AND_STATION)) {
 		/* Waypoints became subclasses of stations ... */
 		MoveWaypointsToBaseStations();
 		/* ... and buoys were moved to waypoints. */

@@ -552,10 +552,10 @@ struct STNSChunkHandler : ChunkHandler {
 
 	void FixPointers() const override
 	{
-		/* From SLV_123 we store stations in STNN; before that in STNS. So do not
-		 * fix pointers when the version is SLV_123 or up, as that would fix
+		/* From SLV_UNIFY_WAYPOINT_AND_STATION we store stations in STNN; before that in STNS. So do not
+		 * fix pointers when the version is SLV_UNIFY_WAYPOINT_AND_STATION or up, as that would fix
 		 * pointers twice: once in STNN chunk and once here. */
-		if (!IsSavegameVersionBefore(SLV_123)) return;
+		if (!IsSavegameVersionBefore(SLV_UNIFY_WAYPOINT_AND_STATION)) return;
 
 		for (Station *st : Station::Iterate()) {
 			SlObject(st, _old_station_desc);
@@ -753,10 +753,10 @@ struct STNNChunkHandler : ChunkHandler {
 
 	void FixPointers() const override
 	{
-		/* From SLV_123 we store stations in STNN; before that in STNS. So do not
-		 * fix pointers when the version is below SLV_123, as that would fix
+		/* From SLV_UNIFY_WAYPOINT_AND_STATION we store stations in STNN; before that in STNS. So do not
+		 * fix pointers when the version is below SLV_UNIFY_WAYPOINT_AND_STATION, as that would fix
 		 * pointers twice: once in STNS chunk and once here. */
-		if (IsSavegameVersionBefore(SLV_123)) return;
+		if (IsSavegameVersionBefore(SLV_UNIFY_WAYPOINT_AND_STATION)) return;
 
 		for (BaseStation *bst : BaseStation::Iterate()) {
 			SlObject(bst, _station_desc);
