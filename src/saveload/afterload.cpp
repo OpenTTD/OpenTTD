@@ -582,7 +582,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_GAMELOG)) _gamelog.GRFAddList(_grfconfig);
 
-	if (IsSavegameVersionBefore(SLV_119)) {
+	if (IsSavegameVersionBefore(SLV_PAUSE_MODES)) {
 		_pause_mode = (_pause_mode.base() == 2) ? PauseMode::Normal : PauseModes{};
 	} else if (_network_dedicated && _pause_mode.Test(PauseMode::Error)) {
 		Debug(net, 0, "The loading savegame was paused due to an error state");

@@ -183,7 +183,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_GAMELOG_EMERGENCY,                  ///< 116   15893   0.7.x Gamelog event for emergency/crash saves
 	SLV_PLATFORM_STOP_LOCATION,             ///< 117   16037 Set the platform stop location via train orders
 	SLV_DIGIT_GROUP_SEPARATOR,              ///< 118   16129 Configurable digit group separator
-	SLV_119,                                ///< 119   16242
+	SLV_PAUSE_MODES,                        ///< 119   16242 Use bitmask of reason to pause, so manual/auto pausing do not conflict
 
 	SLV_120,                                ///< 120   16439
 	SLV_121,                                ///< 121   16694
