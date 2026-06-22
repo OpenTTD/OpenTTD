@@ -1571,7 +1571,7 @@ STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Kāore he heke
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Whakahou waka aunoa ina tawhito: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ina kā, ka whakakapi aunoatia ngā waka e tata ana ki te mutunga o te ora ina taea ngā herenga whakahou
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ina kā, ka whakakapi aunoatia ngā waka e tata ana ki te mutunga o te ora ina taea ngā here whakahou
 
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Whakahou waka aunoa i te {STRING} i te tatau mōrahi o ngā tau
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Te tatau o ngā tau mai i te tau mōrahi me whaiwhakaarotia ai ngā waka kia whakahou aunoa
@@ -1603,7 +1603,7 @@ STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Whakaaria ngā 
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Ina kā, ka puta i runga i te waka te utanga ka taea te kawe i ngā rārangi waka
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Taiao: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Ka tautuhi ngā taiao i ngētahi momo kēmu, he rerekē ngā momo utanga, he rerekē ngā herenga kia whakatupu ngā tāone. Heoi anō, ka tukuna ngētahi atu kōwhiringa e ngētahi newGRF me ngētahi hōtuhi kēmu
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Ka tautuhi ngā taiao i ngētahi momo kēmu, he rerekē ngā momo utanga, he rerekē ngā here kia whakatupu ngā tāone. Heoi anō, ka tukuna ngētahi atu kōwhiringa e ngētahi newGRF me ngētahi hōtuhi kēmu
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Hanga whenua: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Ka whakamahi te papatono hanga whenua taketake i te kohinga whakairoiro mātāmua, ka whakaputa hanga pūmau i te whenua. Ko TerraGenesis he papatono hanga whenua e whakamahi ana i te heihei pērene, he maha hoki ana tautuhinga
@@ -1628,7 +1628,7 @@ STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kōwhiria te ta
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Horahanga onepū: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kōwhiria te tatau āwhiwhi o te onepū i te taiao wera. Ka pā hoki te onepū ki te hanga ahumahi me ngā herenga kia whakatupu ngā tāone. Ka whakamahia i te wā hanga mahere anake.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kōwhiria te tatau āwhiwhi o te onepū i te taiao wera. Ka pā hoki te onepū ki te hanga ahumahi me ngā here kia whakatupu ngā tāone. Ka whakamahia i te wā hanga mahere anake.
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Tuarangaranga o te whenua: {STRING}
