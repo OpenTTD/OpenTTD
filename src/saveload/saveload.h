@@ -150,7 +150,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MORE_WAYPOINTS_PER_TOWN,            ///<  89   12160 Support more than 64 waypoints per town
 
 	SLV_PLANE_SPEED_FACTOR,                 ///<  90   12293 Setting to increase aircraft speed to be on par with the other vehicles
-	SLV_91,                                 ///<  91   12347
+	SLV_MORE_HOUSE_ANIMATION_FRAMES,        ///<  91   12347 Increase number of animation frames for NewGRF houses
 	SLV_92,                                 ///<  92   12381   0.6.x
 	SLV_93,                                 ///<  93   12648
 	SLV_94,                                 ///<  94   12816
