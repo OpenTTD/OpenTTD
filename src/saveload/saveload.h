@@ -195,7 +195,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CUMULATED_INFLATION,                ///< 126   17433 Store cumulated inflation, and recalculate prices/payments upon load
 	SLV_TOWN_ACCEPTANCE,                    ///< 127   17439 Store mask of cargos accepted by town houses and head quarters
 	SLV_FOUND_TOWN,                         ///< 128   18281 Founding of new towns
-	SLV_129,                                ///< 129   18292
+	SLV_TIMETABLE_START,                    ///< 129   18292 Allow setting the start date of a timetable
 
 	SLV_130,                                ///< 130   18404
 	SLV_131,                                ///< 131   18481
