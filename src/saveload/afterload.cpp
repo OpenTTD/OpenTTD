@@ -2262,7 +2262,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_122)) {
+	if (IsSavegameVersionBefore(SLV_WAYPOINT_MORE_LIKE_STATION)) {
 		/* Animated tiles would sometimes not be actually animated or
 		 * in case of old savegames duplicate. */
 

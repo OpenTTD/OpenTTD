@@ -170,8 +170,8 @@ void ResetOldWaypoints()
 static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
 	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_LINK_WAYPOINT_TO_TOWN, SLV_122),
-	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SLV_122, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_LINK_WAYPOINT_TO_TOWN, SLV_WAYPOINT_MORE_LIKE_STATION),
+	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SLV_WAYPOINT_MORE_LIKE_STATION, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_LINK_WAYPOINT_TO_TOWN, SLV_MORE_WAYPOINTS_PER_TOWN),
 	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 SLV_MORE_WAYPOINTS_PER_TOWN, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                SL_MIN_VERSION, SLV_REPLACE_CUSTOM_NAME_ARRAY),
@@ -211,7 +211,7 @@ struct CHKPChunkHandler : ChunkHandler {
 			if (IsSavegameVersionBefore(SLV_LINK_WAYPOINT_TO_TOWN)) {
 				wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
 				wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
-			} else if (IsSavegameVersionBefore(SLV_122)) {
+			} else if (IsSavegameVersionBefore(SLV_WAYPOINT_MORE_LIKE_STATION)) {
 				/* Only for versions 12 .. 122 */
 				if (!Town::IsValidID(wp.town_index)) {
 					/* Upon a corrupted waypoint we'll likely get here. The next step will be to

@@ -187,7 +187,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_COMPANY_SERVICE_INTERVALS,          ///< 120   16439 Make service intervals configurable per company
 	SLV_CARGO_PAYMENTS,                     ///< 121   16694 Perform payment of cargo after unloading
-	SLV_122,                                ///< 122   16855
+	SLV_WAYPOINT_MORE_LIKE_STATION,         ///< 122   16855 Make waypoint data look more like stations
 	SLV_123,                                ///< 123   16909
 	SLV_124,                                ///< 124   16993
 

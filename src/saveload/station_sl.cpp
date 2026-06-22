@@ -498,8 +498,8 @@ static const SaveLoad _old_station_desc[] = {
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
 	SLE_CONDSSTR(Station, name,                      SLE_STR | SLF_ALLOW_CONTROL, SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, indtype,                    SLE_UINT8,                 SLV_NEWGRF_SUPPLIED_STATION_NAME, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_FILE_U16 | SLE_VAR_U8,   SL_MIN_VERSION, SLV_122),
-	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_UINT8,                 SLV_122, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_FILE_U16 | SLE_VAR_U8,   SL_MIN_VERSION, SLV_WAYPOINT_MORE_LIKE_STATION),
+	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_UINT8,                 SLV_WAYPOINT_MORE_LIKE_STATION, SL_MAX_VERSION),
 
 	    SLE_VAR(Station, time_since_load,            SLE_UINT8),
 	    SLE_VAR(Station, time_since_unload,          SLE_UINT8),
