@@ -137,7 +137,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_STORE_INDUSTRY_CARGO,               ///<  78   11176 Store an industry's cargo, so it can be customised upon building
 	SLV_FAIR_PLAY_SETTINGS,                 ///<  79   11188 Add setting to disable exclusive rights in a town and giving money
 
-	SLV_80,                                 ///<  80   11228
+	SLV_NEWGRF_MORE_ANIMATION,              ///<  80   11228 Support more types of animation for NewGRF industries
 	SLV_81,                                 ///<  81   11244
 	SLV_82,                                 ///<  82   11410
 	SLV_83,                                 ///<  83   11589
