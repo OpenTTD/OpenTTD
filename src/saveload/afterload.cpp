@@ -685,7 +685,7 @@ bool AfterLoadGame()
 	/* From this point the old names array is cleared. */
 	ResetOldNames();
 
-	if (IsSavegameVersionBefore(SLV_106)) {
+	if (IsSavegameVersionBefore(SLV_DISTANT_STATION_JOINING)) {
 		/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
 		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile       == 0) st->airport.tile = INVALID_TILE;

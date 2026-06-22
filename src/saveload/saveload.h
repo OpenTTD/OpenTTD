@@ -168,7 +168,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MORE_COMPANIES,                     ///< 104   14735 Increase maximum number of companies to 15
 
 	SLV_ORDER_LIST,                         ///< 105   14803 Create separate order list objects for maintaining orders
-	SLV_106,                                ///< 106   14919
+	SLV_DISTANT_STATION_JOINING,            ///< 106   14919 Distant joining of stations
 	SLV_107,                                ///< 107   15027
 	SLV_108,                                ///< 108   15045
 	SLV_109,                                ///< 109   15075
