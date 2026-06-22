@@ -147,7 +147,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("game_creation.desert_coverage"),
 	SLC_NULL(4, SL_MIN_VERSION, SLV_144),
 	SLC_VAR("game_creation.starting_year"),
-	SLC_NULL(4, SL_MIN_VERSION, SLV_105),
+	SLC_NULL(4, SL_MIN_VERSION, SLV_ORDER_LIST),
 	SLC_VAR("game_creation.ending_year"),
 	SLC_VAR("economy.type"),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_TABLE_CHUNKS),

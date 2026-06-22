@@ -167,7 +167,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_NEWGRF_SUPPLIED_STATION_NAME,       ///< 103   14598 NewGRF industry supplying default names for nearby stations
 	SLV_MORE_COMPANIES,                     ///< 104   14735 Increase maximum number of companies to 15
 
-	SLV_105,                                ///< 105   14803
+	SLV_ORDER_LIST,                         ///< 105   14803 Create separate order list objects for maintaining orders
 	SLV_106,                                ///< 106   14919
 	SLV_107,                                ///< 107   15027
 	SLV_108,                                ///< 108   15045

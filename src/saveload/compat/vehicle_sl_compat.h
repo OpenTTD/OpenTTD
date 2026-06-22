@@ -54,7 +54,7 @@ const SaveLoadCompat _vehicle_common_sl_compat[] = {
 	SLC_VAR("running_ticks"),
 	SLC_VAR("cur_implicit_order_index"),
 	SLC_VAR("cur_real_order_index"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_105),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_ORDER_LIST),
 	SLC_VAR("current_order.type"),
 	SLC_VAR("current_order.flags"),
 	SLC_VAR("current_order.dest"),
