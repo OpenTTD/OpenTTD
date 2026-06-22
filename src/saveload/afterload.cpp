@@ -1965,7 +1965,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_88)) {
+	if (IsSavegameVersionBefore(SLV_FRACTION_PROFIT_RUNNING_TICKS)) {
 		/* Profits are now with 8 bit fract */
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->profit_this_year <<= 8;
