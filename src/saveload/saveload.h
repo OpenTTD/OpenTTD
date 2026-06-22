@@ -176,7 +176,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REMOVE_OLD_AI_SETTINGS,             ///< 110   15148 Remove remnants of the old AI's configuration
 	SLV_FREEFORM_EDGES,                     ///< 111   15190 Allow terraforming along the edge of the map
 	SLV_SPLIT_HQ,                           ///< 112   15290 Split the behaviour of headquarters from the other unmovable objects
-	SLV_113,                                ///< 113   15340
+	SLV_ROAD_LAYOUT_PER_TOWN,               ///< 113   15340 Allow for different road layouts for each of the towns
 	SLV_114,                                ///< 114   15601
 
 	SLV_115,                                ///< 115   15695
