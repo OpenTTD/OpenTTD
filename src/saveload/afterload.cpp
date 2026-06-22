@@ -769,7 +769,7 @@ bool AfterLoadGame()
 		_settings_game.vehicle.train_slope_steepness = 3;
 	}
 	if (IsSavegameVersionBefore(SLV_VIRTUAL_FEEDER_SHARE_PAYMENT))  _settings_game.economy.feeder_payment_share = 75;
-	if (IsSavegameVersionBefore(SLV_138))  _settings_game.vehicle.plane_crashes = 2;
+	if (IsSavegameVersionBefore(SLV_REDUCE_PLANE_CRASHES))  _settings_game.vehicle.plane_crashes = 2;
 	if (IsSavegameVersionBefore(SLV_139)) {
 		_settings_game.vehicle.roadveh_acceleration_model = AccelerationModel::Original;
 		_settings_game.vehicle.roadveh_slope_steepness = 7;
