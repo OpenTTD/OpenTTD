@@ -161,7 +161,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_GAMELOG,                            ///<  98   13375 Logging of important actions/situations in the save
 	SLV_INDUSTRY_TILE_WATER_CLASS,          ///<  99   13838 Add water classes to industry tiles
 
-	SLV_100,                                ///< 100   13952
+	SLV_YAPP,                               ///< 100   13952 New version of path based signals
 	SLV_101,                                ///< 101   14233
 	SLV_102,                                ///< 102   14332
 	SLV_103,                                ///< 103   14598

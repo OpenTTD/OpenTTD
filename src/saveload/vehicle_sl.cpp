@@ -810,8 +810,8 @@ public:
 		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
 		     SLE_VAR(Train, track,               SLE_UINT8),
 
-		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES,  SLV_100),
-		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_100, SL_MAX_VERSION),
+		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES,  SLV_YAPP),
+		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_YAPP, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 SLV_136, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
 	};
