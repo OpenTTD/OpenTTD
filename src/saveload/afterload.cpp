@@ -1830,7 +1830,7 @@ bool AfterLoadGame()
 				for (Order &order : v->Orders()) order.SetNonStopType(OrderNonStopFlag::NonStop);
 			}
 		}
-	} else if (IsSavegameVersionBefore(SLV_94)) {
+	} else if (IsSavegameVersionBefore(SLV_FIX_COMPANY_CARGO_TYPES)) {
 		/* Unload and transfer are now mutual exclusive. */
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {

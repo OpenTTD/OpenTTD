@@ -153,7 +153,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MORE_HOUSE_ANIMATION_FRAMES,        ///<  91   12347 Increase number of animation frames for NewGRF houses
 	SLV_REMOVE_HOUSE_COUNT,                 ///<  92   12381   0.6.x Remove number of houses in a town from the save
 	SLV_IMPROVED_ORDERS,                    ///<  93   12648 Orders support all full load/non stop types at the same time now
-	SLV_94,                                 ///<  94   12816
+	SLV_FIX_COMPANY_CARGO_TYPES,            ///<  94   12816 The company's cargo types should have increased in since with SLV_NEWGRF_CARGO
 
 	SLV_95,                                 ///<  95   12924
 	SLV_96,                                 ///<  96   13226
