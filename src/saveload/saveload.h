@@ -162,7 +162,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_INDUSTRY_TILE_WATER_CLASS,          ///<  99   13838 Add water classes to industry tiles
 
 	SLV_YAPP,                               ///< 100   13952 New version of path based signals
-	SLV_101,                                ///< 101   14233
+	SLV_NEWGRF_PALETTE,                     ///< 101   14233 Store palette used by each of the NewGRFs
 	SLV_102,                                ///< 102   14332
 	SLV_103,                                ///< 103   14598
 	SLV_104,                                ///< 104   14735

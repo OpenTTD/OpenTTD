@@ -2058,7 +2058,7 @@ bool AfterLoadGame()
 	}
 
 	/* Reserve all tracks trains are currently on. */
-	if (IsSavegameVersionBefore(SLV_101)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_PALETTE)) {
 		for (const Train *t : Train::Iterate()) {
 			if (t->First() == t) t->ReserveTrackUnderConsist();
 		}

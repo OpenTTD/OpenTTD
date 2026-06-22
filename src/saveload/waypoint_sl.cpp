@@ -182,7 +182,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   SLV_BIGGER_STATION_VARIABLES, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SLV_STORE_WAYPOINT_ID_IN_MAP, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_101, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_NEWGRF_PALETTE, SL_MAX_VERSION),
 };
 
 struct CHKPChunkHandler : ChunkHandler {

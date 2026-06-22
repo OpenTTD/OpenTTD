@@ -88,7 +88,7 @@ const SaveLoadCompat _vehicle_common_sl_compat[] = {
 	SLC_VAR("waiting_triggers"),
 	SLC_VAR("next_shared"),
 	SLC_NULL(2, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_MORE_CARGO_PACKETS),
-	SLC_NULL(4, SLV_MORE_CARGO_PACKETS, SLV_101),
+	SLC_NULL(4, SLV_MORE_CARGO_PACKETS, SLV_NEWGRF_PALETTE),
 	SLC_VAR("group_id"),
 	SLC_VAR("current_order_time"),
 	SLC_VAR("lateness_counter"),
