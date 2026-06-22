@@ -1801,7 +1801,7 @@ bool AfterLoadGame()
 	 * grassy trees were always drawn fully grassy. Furthermore, trees on rough
 	 * land used to have zero density, now they have full density. Therefore,
 	 * make all grassy/rough land trees have a density of 3. */
-	if (IsSavegameVersionBefore(SLV_81)) {
+	if (IsSavegameVersionBefore(SLV_FIX_TREE_GROUND)) {
 		for (auto t : Map::Iterate()) {
 			if (GetTileType(t) == TileType::Trees) {
 				TreeGround ground_type = (TreeGround)GB(t.m2(), 4, 2);

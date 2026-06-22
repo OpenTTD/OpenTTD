@@ -138,7 +138,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FAIR_PLAY_SETTINGS,                 ///<  79   11188 Add setting to disable exclusive rights in a town and giving money
 
 	SLV_NEWGRF_MORE_ANIMATION,              ///<  80   11228 Support more types of animation for NewGRF industries
-	SLV_81,                                 ///<  81   11244
+	SLV_FIX_TREE_GROUND,                    ///<  81   11244 Various fixes to improve the visuals of the ground under trees
 	SLV_82,                                 ///<  82   11410
 	SLV_83,                                 ///<  83   11589
 	SLV_84,                                 ///<  84   11822
