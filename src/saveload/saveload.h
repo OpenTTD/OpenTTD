@@ -144,7 +144,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_REPLACE_CUSTOM_NAME_ARRAY,          ///<  84   11822 Replace single fixed size array of custom names, by moving the name into the appropriate objects
 
 	SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY,   ///<  85   11874 Add livery for maglev/monorail passenger wagons
-	SLV_86,                                 ///<  86   12042
+	SLV_WATER_CLASS,                        ///<  86   12042 Store the type of water (sea/ocean, canal, river) for buoys, docks, locks and depots
 	SLV_87,                                 ///<  87   12129
 	SLV_88,                                 ///<  88   12134
 	SLV_89,                                 ///<  89   12160

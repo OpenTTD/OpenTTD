@@ -1897,7 +1897,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_86)) {
+	if (IsSavegameVersionBefore(SLV_WATER_CLASS)) {
 		for (auto t : Map::Iterate()) {
 			/* Move river flag and update canals to use water class */
 			if (IsTileType(t, TileType::Water)) {
