@@ -145,7 +145,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY,   ///<  85   11874 Add livery for maglev/monorail passenger wagons
 	SLV_WATER_CLASS,                        ///<  86   12042 Store the type of water (sea/ocean, canal, river) for buoys, docks, locks and depots
-	SLV_87,                                 ///<  87   12129
+	SLV_SIMPLIFY_PATHFINDER_SETTINGS,       ///<  87   12129 Make it easier to select the pathfinder to use
 	SLV_88,                                 ///<  88   12134
 	SLV_89,                                 ///<  89   12160
 

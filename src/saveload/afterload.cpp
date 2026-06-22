@@ -838,7 +838,7 @@ bool AfterLoadGame()
 	 * This problem appears in savegame version 21 too, see r3455. But after loading the
 	 * savegame and saving again, the buggy map array could be converted to new savegame
 	 * version. It didn't show up before r12070. */
-	if (IsSavegameVersionBefore(SLV_87)) UpdateVoidTiles();
+	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PATHFINDER_SETTINGS)) UpdateVoidTiles();
 
 	/* Fix the cache for cargo payments. */
 	for (CargoPayment *cp : CargoPayment::Iterate()) {
@@ -1928,7 +1928,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_87)) {
+	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PATHFINDER_SETTINGS)) {
 		for (const auto t : Map::Iterate()) {
 			/* skip oil rigs at borders! */
 			if ((IsTileType(t, TileType::Water) || IsBuoyTile(t)) &&
