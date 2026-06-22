@@ -200,7 +200,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ROAD_STOP_OCCUPANCY_PENALTY,        ///< 130   18404 Add configurable pathfinder penalty for an occupied road stop
 	SLV_MAXIMUM_DEPOT_PENALTY,              ///< 131   18481 Add configurable maximum pathfinder penalty for finding a depot
 	SLV_DISALLOW_TREE_BUILDING,             ///< 132   18522 Setting to partially disable building of trees
-	SLV_133,                                ///< 133   18674
+	SLV_TRAIN_SLOPE_STEEPNESS,              ///< 133   18674 Setting to increase steepness of slopes for trains under realistic acceleration
 	SLV_134,                                ///< 134   18703
 
 	SLV_135,                                ///< 135   18719
