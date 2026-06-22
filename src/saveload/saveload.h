@@ -177,7 +177,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FREEFORM_EDGES,                     ///< 111   15190 Allow terraforming along the edge of the map
 	SLV_SPLIT_HQ,                           ///< 112   15290 Split the behaviour of headquarters from the other unmovable objects
 	SLV_ROAD_LAYOUT_PER_TOWN,               ///< 113   15340 Allow for different road layouts for each of the towns
-	SLV_114,                                ///< 114   15601
+	SLV_SEPARATE_ROAD_OWNERS,               ///< 114   15601 Separate owners for road bits, tram bits and the road stop
 
 	SLV_115,                                ///< 115   15695
 	SLV_116,                                ///< 116   15893   0.7.x

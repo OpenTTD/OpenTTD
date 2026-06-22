@@ -1124,7 +1124,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_114)) {
+	if (IsSavegameVersionBefore(SLV_SEPARATE_ROAD_OWNERS)) {
 		bool fix_roadtypes = !IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_TYPES);
 		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
 
@@ -2202,7 +2202,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_114)) {
+	if (IsSavegameVersionBefore(SLV_SEPARATE_ROAD_OWNERS)) {
 		/* There could be (deleted) stations with invalid owner, set owner to OWNER NONE.
 		 * The conversion affects oil rigs and buoys too, but it doesn't matter as
 		 * they have st->owner == OWNER_NONE already. */
