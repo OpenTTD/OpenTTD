@@ -249,7 +249,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SCENARIO_DEITY_SIGNS,               ///< 171   23835 Signs made in scenarios become of OWNER_DEITY, so they are always shown
 	SLV_ORDER_MAX_SPEED,                    ///< 172   23947 Set maximum speed for orders
 	SLV_FIX_ROAD_OWNERSHIP,                 ///< 173   23967   1.2.0-RC1 Seemingly unneeded bump supposed to fix something with road ownership
-	SLV_174,                                ///< 174   23973   1.2.x
+	SLV_CURRENT_ORDER_MAX_SPEED,            ///< 174   23973   1.2.x     Save maximum speed of current order
 
 	SLV_175,                                ///< 175   24136
 	SLV_176,                                ///< 176   24446
