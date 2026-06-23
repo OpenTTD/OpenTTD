@@ -369,7 +369,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 			}
 		}
 
-		if (IsSavegameVersionBefore(SLV_162)) {
+		if (IsSavegameVersionBefore(SLV_NEWGRF_CUSTOM_CARGO_AGING)) {
 			/* Set the vehicle-local cargo age counter from the old global counter. */
 			for (Vehicle *v : Vehicle::Iterate()) {
 				v->cargo_age_counter = _age_cargo_skip_counter;
@@ -699,7 +699,7 @@ public:
 		SLEG_CONDVAR("cargo_count", _cargo_count,   SLE_UINT16,                   SL_MIN_VERSION,  SLV_CARGO_PACKETS),
 		SLE_CONDREFLIST(Vehicle, cargo.packets,     REF_CARGO_PACKET,            SLV_CARGO_PACKETS, SL_MAX_VERSION),
 		SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, to_underlying(VehicleCargoList::MoveToAction::End), SLV_181, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_162, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_NEWGRF_CUSTOM_CARGO_AGING, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, day_counter,           SLE_UINT8),
 		    SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),

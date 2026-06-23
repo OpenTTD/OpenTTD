@@ -235,7 +235,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_DISALLOW_ROAD_RECONSTRUCTION,       ///< 160   21974   1.1.x Setting to disallow road reconstruction
 	SLV_PERSISTENT_STORAGE_POOL,            ///< 161   22567 Store persistent storage in a pool
-	SLV_162,                                ///< 162   22713
+	SLV_NEWGRF_CUSTOM_CARGO_AGING,          ///< 162   22713 NewGRF influence on aging of cargo in vehicles
 	SLV_163,                                ///< 163   22767
 	SLV_164,                                ///< 164   23290
 
