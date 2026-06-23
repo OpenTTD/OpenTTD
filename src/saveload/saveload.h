@@ -263,7 +263,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CARGODIST,                          ///< 183   25363 Cargodist
 	SLV_SEPARATE_LOCALE_UNITS,              ///< 184   25508 Unit localisation split
 
-	SLV_185,                                ///< 185   25620 Storybooks
+	SLV_STORYBOOKS,                         ///< 185   25620 Storybooks
 	SLV_186,                                ///< 186   25833 Objects storage
 	SLV_187,                                ///< 187   25899 Linkgraph - restricted flows
 	SLV_188,                                ///< 188   26169 v1.4  FS#5831 Unify RV travel time
