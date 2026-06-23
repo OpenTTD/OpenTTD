@@ -3059,7 +3059,7 @@ bool AfterLoadGame()
 	 * This has to be called after all map array updates */
 	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES, 2)) UpdateOldAircraft();
 
-	if (IsSavegameVersionBefore(SLV_188)) {
+	if (IsSavegameVersionBefore(SLV_UNIFY_RV_TRAVEL_TIME)) {
 		/* Fix articulated road vehicles.
 		 * Some curves were shorter than other curves.
 		 * Now they have the same length, but that means that trailing articulated parts will
