@@ -2844,7 +2844,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_160)) {
+	if (IsSavegameVersionBefore(SLV_DISALLOW_ROAD_RECONSTRUCTION)) {
 		/* Setting difficulty industry_density other than zero get bumped to +1
 		 * since a new option (minimal at position 1) has been added */
 		if (_settings_game.difficulty.industry_density > IndustryDensity::FundedOnly) {

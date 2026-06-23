@@ -359,7 +359,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 			}
 		}
 
-		if (IsSavegameVersionBefore(SLV_160)) {
+		if (IsSavegameVersionBefore(SLV_DISALLOW_ROAD_RECONSTRUCTION)) {
 			/* In some old savegames there might be some "crap" stored. */
 			for (Vehicle *v : Vehicle::Iterate()) {
 				if (!v->IsPrimaryVehicle() && v->type != VehicleType::Disaster) {

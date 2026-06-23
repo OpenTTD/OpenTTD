@@ -233,7 +233,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TRACK_REAL_AND_AUTO_ORDERS,         ///< 158   21933 Track which real and auto order is the current order
 	SLV_MAX_LENGTH_AND_REVERSE_SIGNALS,     ///< 159   21962 Settings for reversing at signals, and maximum train, bridge and tunnel length
 
-	SLV_160,                                ///< 160   21974   1.1.x
+	SLV_DISALLOW_ROAD_RECONSTRUCTION,       ///< 160   21974   1.1.x Setting to disallow road reconstruction
 	SLV_161,                                ///< 161   22567
 	SLV_162,                                ///< 162   22713
 	SLV_163,                                ///< 163   22767
