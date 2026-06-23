@@ -39,7 +39,7 @@ const SaveLoadCompat _town_acceptance_matrix_sl_compat[] = {
 const SaveLoadCompat _town_sl_compat[] = {
 	SLC_VAR("xy"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_BIGGER_STATION_VARIABLES),
-	SLC_NULL(4, SLV_BIGGER_STATION_VARIABLES, SLV_85),
+	SLC_NULL(4, SLV_BIGGER_STATION_VARIABLES, SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_92),
 	SLC_VAR("townnamegrfid"),
 	SLC_VAR("townnametype"),

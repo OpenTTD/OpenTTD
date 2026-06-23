@@ -36,7 +36,7 @@ struct ANITChunkHandler : ChunkHandler {
 	void Load() const override
 	{
 		/* Before version 80 we did NOT have a variable length animated tile table */
-		if (IsSavegameVersionBefore(SLV_80)) {
+		if (IsSavegameVersionBefore(SLV_NEWGRF_MORE_ANIMATION)) {
 			/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
 			TileIndex anim_list[256];
 			SlCopy(anim_list, 256, IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);

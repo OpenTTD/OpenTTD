@@ -24,7 +24,7 @@ struct PRICChunkHandler : ChunkHandler {
 	void Load() const override
 	{
 		/* Old games store 49 base prices, very old games store them as int32_t */
-		int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
+		int vt = IsSavegameVersionBefore(SLV_UNIFY_CURRENCY) ? SLE_FILE_I32 : SLE_FILE_I64;
 		SlCopy(nullptr, 49, vt | SLE_VAR_NULL);
 		SlCopy(nullptr, 49, SLE_FILE_U16 | SLE_VAR_NULL);
 	}
@@ -37,16 +37,16 @@ struct CAPRChunkHandler : ChunkHandler {
 	void Load() const override
 	{
 		uint num_cargo = IsSavegameVersionBefore(SLV_NEWGRF_CARGO) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
-		int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
+		int vt = IsSavegameVersionBefore(SLV_UNIFY_CURRENCY) ? SLE_FILE_I32 : SLE_FILE_I64;
 		SlCopy(nullptr, num_cargo, vt | SLE_VAR_NULL);
 		SlCopy(nullptr, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
 	}
 };
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  SL_MIN_VERSION, SLV_65),
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  SLV_65, SLV_126),
-	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 SLV_70, SLV_126),
+	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  SL_MIN_VERSION, SLV_UNIFY_CURRENCY),
+	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  SLV_UNIFY_CURRENCY, SLV_126),
+	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 SLV_CARGO_PAYMENT_OVERFLOW, SLV_126),
 	SLE_CONDVAR(Economy, inflation_prices,              SLE_UINT64,                SLV_126, SL_MAX_VERSION),
 	SLE_CONDVAR(Economy, inflation_payment,             SLE_UINT64,                SLV_126, SL_MAX_VERSION),
 	    SLE_VAR(Economy, fluct,                         SLE_INT16),

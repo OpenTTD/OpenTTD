@@ -51,7 +51,7 @@ struct ERNWChunkHandler : ChunkHandler {
 			/* Advanced vehicle lists, ungrouped vehicles got added */
 			if (IsSavegameVersionBefore(SLV_VEHICLE_GROUPS)) {
 				er->group_id = ALL_GROUP;
-			} else if (IsSavegameVersionBefore(SLV_71)) {
+			} else if (IsSavegameVersionBefore(SLV_UNGROUPED_VEHICLES)) {
 				if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
 			}
 		}

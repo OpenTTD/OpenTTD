@@ -147,11 +147,11 @@ SaveLoadTable GetOrderDescription()
 		     SLE_VARNAME(OldOrderSaveLoadItem, order.type,  "type",  SLE_UINT8),
 		     SLE_VARNAME(OldOrderSaveLoadItem, order.flags, "flags", SLE_UINT8),
 		     SLE_VARNAME(OldOrderSaveLoadItem, order.dest,  "dest",  SLE_UINT16),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, next,        "next",  SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_69),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, next,        "next",  SLE_UINT32,                 SLV_69, SL_MAX_VERSION),
+		 SLE_CONDVARNAME(OldOrderSaveLoadItem, next,        "next",  SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_MORE_CARGO_PACKETS),
+		 SLE_CONDVARNAME(OldOrderSaveLoadItem, next,        "next",  SLE_UINT32,                 SLV_MORE_CARGO_PACKETS, SL_MAX_VERSION),
 		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.refit_cargo, "refit_cargo", SLE_UINT8,   SLV_REFIT_ORDERS, SL_MAX_VERSION),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.wait_time,   "wait_time",   SLE_UINT16,  SLV_67, SL_MAX_VERSION),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.travel_time, "travel_time", SLE_UINT16,  SLV_67, SL_MAX_VERSION),
+		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.wait_time,   "wait_time",   SLE_UINT16,  SLV_TIMETABLES, SL_MAX_VERSION),
+		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.travel_time, "travel_time", SLE_UINT16,  SLV_TIMETABLES, SL_MAX_VERSION),
 		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.max_speed,   "max_speed",   SLE_UINT16, SLV_172, SL_MAX_VERSION),
 	};
 
@@ -240,8 +240,8 @@ template class SlOrders<OrderBackup>;
 SaveLoadTable GetOrderListDescription()
 {
 	static const SaveLoad _orderlist_desc[] = {
-		SLE_CONDVARNAME(OrderList, old_order_index, "first", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_69),
-		SLE_CONDVARNAME(OrderList, old_order_index, "first", SLE_UINT32,                 SLV_69, SLV_ORDERS_OWNED_BY_ORDERLIST),
+		SLE_CONDVARNAME(OrderList, old_order_index, "first", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_MORE_CARGO_PACKETS),
+		SLE_CONDVARNAME(OrderList, old_order_index, "first", SLE_UINT32,                 SLV_MORE_CARGO_PACKETS, SLV_ORDERS_OWNED_BY_ORDERLIST),
 		SLEG_CONDSTRUCTLIST("orders", SlOrders<OrderList>, SLV_ORDERS_OWNED_BY_ORDERLIST, SL_MAX_VERSION),
 	};
 
@@ -311,8 +311,8 @@ SaveLoadTable GetOrderBackupDescription()
 		 SLE_CONDVAR(OrderBackup, timetable_start,          SLE_UINT64,                 SLV_TIMETABLE_START_TICKS_FIX, SL_MAX_VERSION),
 		 SLE_CONDVAR(OrderBackup, vehicle_flags,            SLE_FILE_U8 | SLE_VAR_U16, SLV_176, SLV_180),
 		 SLE_CONDVAR(OrderBackup, vehicle_flags,            SLE_UINT16,                SLV_180, SL_MAX_VERSION),
-		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_69),
-		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", SLE_UINT32,                 SLV_69, SLV_ORDERS_OWNED_BY_ORDERLIST),
+		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_MORE_CARGO_PACKETS),
+		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", SLE_UINT32,                 SLV_MORE_CARGO_PACKETS, SLV_ORDERS_OWNED_BY_ORDERLIST),
 		SLEG_CONDSTRUCTLIST("orders", SlOrders<OrderBackup>, SLV_ORDERS_OWNED_BY_ORDERLIST, SL_MAX_VERSION),
 	};
 

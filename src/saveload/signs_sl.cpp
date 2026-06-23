@@ -19,8 +19,8 @@
 
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
-	SLE_CONDVAR(Sign, name, SLE_NAME, SL_MIN_VERSION, SLV_84),
-	SLE_CONDSSTR(Sign, name, SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, name, SLE_NAME, SL_MIN_VERSION, SLV_REPLACE_CUSTOM_NAME_ARRAY),
+	SLE_CONDSSTR(Sign, name, SLE_STR | SLF_ALLOW_CONTROL, SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 	SLE_CONDVAR(Sign, x, SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_BIG_MAP),
 	SLE_CONDVAR(Sign, y, SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_BIG_MAP),
 	SLE_CONDVAR(Sign, x, SLE_INT32, SLV_BIG_MAP, SL_MAX_VERSION),
@@ -58,7 +58,7 @@ struct SIGNChunkHandler : ChunkHandler {
 			 *  - we can't use IsValidCompany() now, so this is fixed in AfterLoadGame()
 			 * All signs that were saved are valid (including those with just 'Sign' and INVALID_OWNER).
 			 *  - so set owner to OWNER_NONE if needed (signs from pre-version 6.1 would be lost) */
-			if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1) || (IsSavegameVersionBefore(SLV_83) && si->owner == INVALID_OWNER)) {
+			if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1) || (IsSavegameVersionBefore(SLV_DEPOT_WATER_OWNERS) && si->owner == INVALID_OWNER)) {
 				si->owner = OWNER_NONE;
 			}
 

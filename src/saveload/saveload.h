@@ -119,35 +119,35 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TRAM_LIVERY,                        ///<  63    9956 Add separate livery for trams
 	SLV_MULTIPLE_SIGNAL_TYPES,              ///<  64   10006 Multiple different signal types on the same (diagonal) tile, instead of the same for both directions
 
-	SLV_65,                                 ///<  65   10210
-	SLV_66,                                 ///<  66   10211
-	SLV_67,                                 ///<  67   10236
-	SLV_68,                                 ///<  68   10266
-	SLV_69,                                 ///<  69   10319
+	SLV_UNIFY_CURRENCY,                     ///<  65   10210 Make all variables related to currency 64 bits
+	SLV_NEWGRF_TOWN_NAMES,                  ///<  66   10211 NewGRF provided town names
+	SLV_TIMETABLES,                         ///<  67   10236 Introduce timetables for vehicles
+	SLV_CARGO_PACKETS,                      ///<  68   10266 Account for individual units of cargo, i.e. there can be cargo from multiple sources/ages in one vehicle
+	SLV_MORE_CARGO_PACKETS,                 ///<  69   10319 Allow more than ~65k cargo packets
 
-	SLV_70,                                 ///<  70   10541
-	SLV_71,                                 ///<  71   10567
-	SLV_72,                                 ///<  72   10601
-	SLV_73,                                 ///<  73   10903
-	SLV_74,                                 ///<  74   11030
+	SLV_CARGO_PAYMENT_OVERFLOW,             ///<  70   10541 Fix overflow of cargo payment rates, plus preparation for player founded industries
+	SLV_UNGROUPED_VEHICLES,                 ///<  71   10567 Add a group with vehicles that aren't in any other group
+	SLV_SPLIT_STATION_TYPE_FROM_GFXID,      ///<  72   10601 Splits the encoding of station type from the graphics identifer
+	SLV_NEWGRF_INDUSTRY_LAYOUT,             ///<  73   10903 NewGRF provided layouts for industries
+	SLV_FIX_STATION_PICKUP_ACCOUNTING,      ///<  74   11030 Accounting of which cargos a station would pick up was done incorrectly
 
-	SLV_75,                                 ///<  75   11107
-	SLV_76,                                 ///<  76   11139
-	SLV_77,                                 ///<  77   11172
-	SLV_78,                                 ///<  78   11176
-	SLV_79,                                 ///<  79   11188
+	SLV_AUTOSLOPE,                          ///<  75   11107 Terraforming under buildings/track/anything that supports foundations
+	SLV_NEWGRF_PERSISTENT_STORAGE,          ///<  76   11139 Persistently store some state of NewGRF objects/entities
+	SLV_CLEANUP_UNCONNECTED_ROADS,          ///<  77   11172 Option to remove unconnected roads during a town's road reconstruction
+	SLV_STORE_INDUSTRY_CARGO,               ///<  78   11176 Store an industry's cargo, so it can be customised upon building
+	SLV_FAIR_PLAY_SETTINGS,                 ///<  79   11188 Add setting to disable exclusive rights in a town and giving money
 
-	SLV_80,                                 ///<  80   11228
-	SLV_81,                                 ///<  81   11244
-	SLV_82,                                 ///<  82   11410
-	SLV_83,                                 ///<  83   11589
-	SLV_84,                                 ///<  84   11822
+	SLV_NEWGRF_MORE_ANIMATION,              ///<  80   11228 Support more types of animation for NewGRF industries
+	SLV_FIX_TREE_GROUND,                    ///<  81   11244 Various fixes to improve the visuals of the ground under trees
+	SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS,    ///<  82   11410 NewGRF random triggers for industries
+	SLV_DEPOT_WATER_OWNERS,                 ///<  83   11589 Store the owner of the water under depots, so removing of the depot doesn't disown the original owner
+	SLV_REPLACE_CUSTOM_NAME_ARRAY,          ///<  84   11822 Replace single fixed size array of custom names, by moving the name into the appropriate objects
 
-	SLV_85,                                 ///<  85   11874
-	SLV_86,                                 ///<  86   12042
-	SLV_87,                                 ///<  87   12129
-	SLV_88,                                 ///<  88   12134
-	SLV_89,                                 ///<  89   12160
+	SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY,   ///<  85   11874 Add livery for maglev/monorail passenger wagons
+	SLV_WATER_CLASS,                        ///<  86   12042 Store the type of water (sea/ocean, canal, river) for buoys, docks, locks and depots
+	SLV_SIMPLIFY_PATHFINDER_SETTINGS,       ///<  87   12129 Make it easier to select the pathfinder to use
+	SLV_FRACTION_PROFIT_RUNNING_TICKS,      ///<  88   12134 Store vehicle profits as a (fixed point) fraction, and store the number of ticks a vehicle ran in a day
+	SLV_MORE_WAYPOINTS_PER_TOWN,            ///<  89   12160 Support more than 64 waypoints per town
 
 	SLV_90,                                 ///<  90   12293
 	SLV_91,                                 ///<  91   12347

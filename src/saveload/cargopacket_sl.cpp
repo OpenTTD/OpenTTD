@@ -61,7 +61,7 @@
 		}
 	}
 
-	if (!IsSavegameVersionBefore(SLV_68)) {
+	if (!IsSavegameVersionBefore(SLV_CARGO_PACKETS)) {
 		/* Only since version 68 we have cargo packets. Savegames from before used
 		 * 'new CargoPacket' + cargolist.Append so their caches are already
 		 * correct and do not need rebuilding. */

@@ -662,7 +662,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_84)) {
+	if (IsSavegameVersionBefore(SLV_REPLACE_CUSTOM_NAME_ARRAY)) {
 		for (Company *c : Company::Iterate()) {
 			c->name = CopyFromOldName(c->name_1);
 			if (!c->name.empty()) c->name_1 = STR_SV_UNNAMED;
@@ -838,7 +838,7 @@ bool AfterLoadGame()
 	 * This problem appears in savegame version 21 too, see r3455. But after loading the
 	 * savegame and saving again, the buggy map array could be converted to new savegame
 	 * version. It didn't show up before r12070. */
-	if (IsSavegameVersionBefore(SLV_87)) UpdateVoidTiles();
+	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PATHFINDER_SETTINGS)) UpdateVoidTiles();
 
 	/* Fix the cache for cargo payments. */
 	for (CargoPayment *cp : CargoPayment::Iterate()) {
@@ -849,7 +849,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_WATER_TILE_TYPE)) {
 		/* Prior to SLV_WATER_TILE_TYPE, the water tile type was stored differently from the enumeration. This has to be
-		 * converted before SLV_72 and SLV_82 conversions which use GetWaterTileType. */
+		 * converted before SLV_SPLIT_STATION_TYPE_FROM_GFXID and SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS conversions which use GetWaterTileType. */
 		static constexpr uint8_t WBL_COAST_FLAG = 0; ///< Flag for coast.
 
 		for (auto t : Map::Iterate()) {
@@ -867,7 +867,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_72)) {
+	if (IsSavegameVersionBefore(SLV_SPLIT_STATION_TYPE_FROM_GFXID)) {
 		/* Locks in very old savegames had OWNER_WATER as owner */
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
@@ -1725,7 +1725,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_69)) {
+	if (IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS)) {
 		/* In some old savegames a bit was cleared when it should not be cleared */
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			if (rv->state == 250 || rv->state == 251) {
@@ -1734,14 +1734,14 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_70)) {
+	if (IsSavegameVersionBefore(SLV_CARGO_PAYMENT_OVERFLOW)) {
 		/* Added variables to support newindustries */
 		for (Industry *i : Industry::Iterate()) i->founder = OWNER_NONE;
 	}
 
 	/* From version 82, old style canals (above sealevel (0), WATER owner) are no longer supported.
 	    Replace the owner for those by OWNER_NONE. */
-	if (IsSavegameVersionBefore(SLV_82)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Water) &&
 					GetWaterTileType(t) == WaterTileType::Clear &&
@@ -1758,7 +1758,7 @@ bool AfterLoadGame()
 	 * someone can remove canals owned by somebody else and it prevents
 	 * making floods using the removal of ship depots.
 	 */
-	if (IsSavegameVersionBefore(SLV_83)) {
+	if (IsSavegameVersionBefore(SLV_DEPOT_WATER_OWNERS)) {
 		for (auto t : Map::Iterate()) {
 			if (IsShipDepotTile(t)) {
 				t.m4() = (TileHeight(t) == 0 ? OWNER_WATER : OWNER_NONE).base();
@@ -1766,7 +1766,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_74)) {
+	if (IsSavegameVersionBefore(SLV_FIX_STATION_PICKUP_ACCOUNTING)) {
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
 				ge.last_speed = 0;
@@ -1777,7 +1777,7 @@ bool AfterLoadGame()
 
 	/* At version 78, industry cargo types can be changed, and are stored with the industry. For older save versions
 	 * copy the IndustrySpec's cargo types over to the Industry. */
-	if (IsSavegameVersionBefore(SLV_78)) {
+	if (IsSavegameVersionBefore(SLV_STORE_INDUSTRY_CARGO)) {
 		for (Industry *i : Industry::Iterate()) {
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
 			for (uint j = 0; j < std::size(i->produced); j++) {
@@ -1801,7 +1801,7 @@ bool AfterLoadGame()
 	 * grassy trees were always drawn fully grassy. Furthermore, trees on rough
 	 * land used to have zero density, now they have full density. Therefore,
 	 * make all grassy/rough land trees have a density of 3. */
-	if (IsSavegameVersionBefore(SLV_81)) {
+	if (IsSavegameVersionBefore(SLV_FIX_TREE_GROUND)) {
 		for (auto t : Map::Iterate()) {
 			if (GetTileType(t) == TileType::Trees) {
 				TreeGround ground_type = (TreeGround)GB(t.m2(), 4, 2);
@@ -1897,7 +1897,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_86)) {
+	if (IsSavegameVersionBefore(SLV_WATER_CLASS)) {
 		for (auto t : Map::Iterate()) {
 			/* Move river flag and update canals to use water class */
 			if (IsTileType(t, TileType::Water)) {
@@ -1928,7 +1928,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_87)) {
+	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PATHFINDER_SETTINGS)) {
 		for (const auto t : Map::Iterate()) {
 			/* skip oil rigs at borders! */
 			if ((IsTileType(t, TileType::Water) || IsBuoyTile(t)) &&
@@ -1965,7 +1965,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_88)) {
+	if (IsSavegameVersionBefore(SLV_FRACTION_PROFIT_RUNNING_TICKS)) {
 		/* Profits are now with 8 bit fract */
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->profit_this_year <<= 8;
@@ -2855,7 +2855,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_161)) {
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
 
-		if (!IsSavegameVersionBefore(SLV_76)) {
+		if (!IsSavegameVersionBefore(SLV_NEWGRF_PERSISTENT_STORAGE)) {
 			for (Industry *ind : Industry::Iterate()) {
 				assert(ind->psa != nullptr);
 

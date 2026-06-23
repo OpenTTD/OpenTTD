@@ -423,7 +423,7 @@ public:
 	size_t GetNumLiveries() const
 	{
 		if (IsSavegameVersionBefore(SLV_TRAM_LIVERY)) return to_underlying(LiveryScheme::End) - 4;
-		if (IsSavegameVersionBefore(SLV_85)) return to_underlying(LiveryScheme::End) - 2;
+		if (IsSavegameVersionBefore(SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY)) return to_underlying(LiveryScheme::End) - 2;
 		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return to_underlying(LiveryScheme::End);
 		/* Read from the savegame how long the list is. */
 		return SlGetStructListLength(to_underlying(LiveryScheme::End));
@@ -455,7 +455,7 @@ public:
 			}
 		}
 
-		if (IsSavegameVersionBefore(SLV_85)) {
+		if (IsSavegameVersionBefore(SLV_MAGLEV_MONORAIL_PAX_WAGON_LIVERY)) {
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
 			std::move_backward(std::begin(c->livery) + to_underlying(LiveryScheme::FreightWagon) - 2, std::end(c->livery) - 2, std::end(c->livery));
 			c->livery[LiveryScheme::PassengerWagonMonorail] = c->livery[LiveryScheme::Monorail];
@@ -492,11 +492,11 @@ public:
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
 	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),
-	SLE_CONDSSTR(CompanyProperties, name,            SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(CompanyProperties, name,            SLE_STR | SLF_ALLOW_CONTROL, SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 
 	    SLE_VAR(CompanyProperties, president_name_1, SLE_STRINGID),
 	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
-	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 
 	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SLV_COMPANY_ALLOW_LIST_V2),
 	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SLV_COMPANY_ALLOW_LIST_V2, SL_MAX_VERSION),
@@ -509,8 +509,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, money,                 SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_BIG_CURRENCY),
 	SLE_CONDVAR(CompanyProperties, money,                 SLE_INT64,                   SLV_BIG_CURRENCY, SL_MAX_VERSION),
 
-	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
-	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  SLV_65, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_UNIFY_CURRENCY),
+	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  SLV_UNIFY_CURRENCY, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, max_loan,              SLE_INT64, SLV_MAX_LOAN_FOR_COMPANY, SL_MAX_VERSION),
 
 	    SLE_VAR(CompanyProperties, colour,                SLE_UINT8),
@@ -531,8 +531,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
 	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_UINT16,                SLV_104, SL_MAX_VERSION),
 	    SLE_VAR(CompanyProperties, bankrupt_timeout,      SLE_INT16),
-	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
-	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  SLV_65, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_UNIFY_CURRENCY),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  SLV_UNIFY_CURRENCY, SL_MAX_VERSION),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
 	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, SL_MIN_VERSION, SLV_VEHICLE_CURRENCY_STATION_CHANGES),
@@ -586,7 +586,7 @@ struct PLYRChunkHandler : ChunkHandler {
 			SlObject(cprops.get(), slt);
 
 			/* We do not load old custom names */
-			if (IsSavegameVersionBefore(SLV_84)) {
+			if (IsSavegameVersionBefore(SLV_REPLACE_CUSTOM_NAME_ARRAY)) {
 				if (GetStringTab(cprops->name_1) == TEXT_TAB_OLD_CUSTOM) {
 					cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 				}
