@@ -2852,7 +2852,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_161)) {
+	if (IsSavegameVersionBefore(SLV_PERSISTENT_STORAGE_POOL)) {
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
 
 		if (!IsSavegameVersionBefore(SLV_NEWGRF_PERSISTENT_STORAGE)) {

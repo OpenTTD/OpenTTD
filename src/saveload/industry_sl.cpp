@@ -198,8 +198,8 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, exclusive_supplier,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, exclusive_consumer,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
 
-	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, SLE_UINT32, 16, SLV_NEWGRF_PERSISTENT_STORAGE, SLV_161),
-	SLE_CONDREF(Industry, psa,                        REF_STORAGE,              SLV_161, SL_MAX_VERSION),
+	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, SLE_UINT32, 16, SLV_NEWGRF_PERSISTENT_STORAGE, SLV_PERSISTENT_STORAGE_POOL),
+	SLE_CONDREF(Industry, psa,                        REF_STORAGE,              SLV_PERSISTENT_STORAGE_POOL, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS, SL_MAX_VERSION),
 	SLE_CONDSSTR(Industry, text,     SLE_STR | SLF_ALLOW_CONTROL,     SLV_INDUSTRY_TEXT, SL_MAX_VERSION),
@@ -261,7 +261,7 @@ struct INDYChunkHandler : ChunkHandler {
 			SlObject(i, slt);
 
 			/* Before savegame version 161, persistent storages were not stored in a pool. */
-			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_NEWGRF_PERSISTENT_STORAGE)) {
+			if (IsSavegameVersionBefore(SLV_PERSISTENT_STORAGE_POOL) && !IsSavegameVersionBefore(SLV_NEWGRF_PERSISTENT_STORAGE)) {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
 				i->psa = PersistentStorage::Create(0, GrfSpecFeature::Invalid, TileIndex{});

@@ -234,7 +234,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_MAX_LENGTH_AND_REVERSE_SIGNALS,     ///< 159   21962 Settings for reversing at signals, and maximum train, bridge and tunnel length
 
 	SLV_DISALLOW_ROAD_RECONSTRUCTION,       ///< 160   21974   1.1.x Setting to disallow road reconstruction
-	SLV_161,                                ///< 161   22567
+	SLV_PERSISTENT_STORAGE_POOL,            ///< 161   22567 Store persistent storage in a pool
 	SLV_162,                                ///< 162   22713
 	SLV_163,                                ///< 163   22767
 	SLV_164,                                ///< 164   23290

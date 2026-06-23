@@ -360,7 +360,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, layout,                SLE_UINT8,                SLV_ROAD_LAYOUT_PER_TOWN, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, valid_history, SLE_UINT64, SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
 
-	SLE_CONDREFVECTOR(Town, psa_list,        REF_STORAGE,              SLV_161, SL_MAX_VERSION),
+	SLE_CONDREFVECTOR(Town, psa_list,        REF_STORAGE,              SLV_PERSISTENT_STORAGE_POOL, SL_MAX_VERSION),
 
 	SLEG_CONDSTRUCTLIST("supplied", SlTownOldSupplied,                 SLV_165, SLV_TOWN_SUPPLY_HISTORY),
 	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied,                    SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
@@ -418,7 +418,7 @@ struct CITYChunkHandler : ChunkHandler {
 
 	void FixPointers() const override
 	{
-		if (IsSavegameVersionBefore(SLV_161)) return;
+		if (IsSavegameVersionBefore(SLV_PERSISTENT_STORAGE_POOL)) return;
 
 		for (Town *t : Town::Iterate()) {
 			SlObject(t, _town_desc);
