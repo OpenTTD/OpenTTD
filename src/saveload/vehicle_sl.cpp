@@ -376,7 +376,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 			}
 		}
 
-		if (IsSavegameVersionBefore(SLV_180)) {
+		if (IsSavegameVersionBefore(SLV_SERVICE_INTERVAL_PERCENT)) {
 			/* Set service interval flags */
 			for (Vehicle *v : Vehicle::Iterate()) {
 				if (!v->IsPrimaryVehicle()) continue;
@@ -742,8 +742,8 @@ public:
 		SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_INT32,                   SLV_BIG_DATES, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, date_of_last_service_newgrf, SLE_INT32,             SLV_NEWGRF_LAST_SERVICE, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                   SL_MIN_VERSION,  SLV_BIG_DATES),
-		SLE_CONDVAR(Vehicle, service_interval,      SLE_FILE_U32 | SLE_VAR_U16,  SLV_BIG_DATES, SLV_180),
-		SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, service_interval,      SLE_FILE_U32 | SLE_VAR_U16,  SLV_BIG_DATES, SLV_SERVICE_INTERVAL_PERCENT),
+		SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                 SLV_SERVICE_INTERVAL_PERCENT, SL_MAX_VERSION),
 		    SLE_VAR(Vehicle, reliability,           SLE_UINT16),
 		    SLE_VAR(Vehicle, reliability_spd_dec,   SLE_UINT16),
 		    SLE_VAR(Vehicle, breakdown_ctr,         SLE_UINT8),
@@ -755,8 +755,8 @@ public:
 
 		    SLE_VAR(Vehicle, load_unload_ticks,     SLE_UINT16),
 		SLEG_CONDVAR("cargo_paid_for", _cargo_paid_for, SLE_UINT16,              SLV_COUNT_PAID_FOR_CARGO, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_FILE_U8 | SLE_VAR_U16,   SLV_GRADUAL_LOADING, SLV_180),
-		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_FILE_U8 | SLE_VAR_U16,   SLV_GRADUAL_LOADING, SLV_SERVICE_INTERVAL_PERCENT),
+		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT16,                 SLV_SERVICE_INTERVAL_PERCENT, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, profit_this_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_UNIFY_CURRENCY),
 		SLE_CONDVAR(Vehicle, profit_this_year,      SLE_INT64,                   SLV_UNIFY_CURRENCY, SL_MAX_VERSION),
