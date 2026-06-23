@@ -357,8 +357,8 @@ public:
 		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_VEHICLE_CURRENCY_STATION_CHANGES),
 		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_INT64,                  SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
-		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32,       SL_MIN_VERSION, SLV_170),
-		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, 32,           SLV_170, SLV_EXTEND_CARGOTYPES),
+		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32,       SL_MIN_VERSION, SLV_COUNT_INDIVIDUAL_CARGOES),
+		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, 32,           SLV_COUNT_INDIVIDUAL_CARGOES, SLV_EXTEND_CARGOTYPES),
 		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, NUM_CARGO,    SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 		    SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
 	};

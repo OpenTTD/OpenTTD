@@ -245,7 +245,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SCRIPT_TOWN_TEXT,                   ///< 168   23637 Game scripts can put a text in the town window
 	SLV_MOVE_SCC_ENCODED,                   ///< 169   23816 Move SCC_ENCODED to the first StringControlCode
 
-	SLV_170,                                ///< 170   23826
+	SLV_COUNT_INDIVIDUAL_CARGOES,           ///< 170   23826 Store the count of individual cargo delivery for a period
 	SLV_171,                                ///< 171   23835
 	SLV_172,                                ///< 172   23947
 	SLV_173,                                ///< 173   23967   1.2.0-RC1

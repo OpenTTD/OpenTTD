@@ -102,7 +102,7 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_NULL(1, SL_MIN_VERSION, SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER),
 	SLC_VAR("block_preview"),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_FIX_COMPANY_CARGO_TYPES),
-	SLC_NULL(4, SLV_FIX_COMPANY_CARGO_TYPES, SLV_170),
+	SLC_NULL(4, SLV_FIX_COMPANY_CARGO_TYPES, SLV_COUNT_INDIVIDUAL_CARGOES),
 	SLC_VAR("location_of_HQ"),
 	SLC_VAR("last_build_coordinate"),
 	SLC_VAR("inaugurated_year"),
