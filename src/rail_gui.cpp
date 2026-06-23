@@ -871,7 +871,9 @@ struct BuildRailToolbarWindow : Window {
 
 		/* Update cursor and all sub windows. */
 		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_user_action), PAL_NONE);
-		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TransportType::Rail);
+		for (WindowClass cls : {WindowClass::BuildStation, WindowClass::BuildSignal, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
+			SetWindowDirty(cls, TransportType::Rail);
+		}
 
 		return EventState::Handled;
 	}
