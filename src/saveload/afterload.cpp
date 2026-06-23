@@ -2903,11 +2903,11 @@ bool AfterLoadGame()
 	}
 
 	/* This triggers only when old snow_lines were copied into the snow_line_height. */
-	if (IsSavegameVersionBefore(SLV_164) && _settings_game.game_creation.snow_line_height >= MIN_SNOWLINE_HEIGHT * TILE_HEIGHT) {
+	if (IsSavegameVersionBefore(SLV_VEHICLE_CENTRE_AND_Z_POS) && _settings_game.game_creation.snow_line_height >= MIN_SNOWLINE_HEIGHT * TILE_HEIGHT) {
 		_settings_game.game_creation.snow_line_height /= TILE_HEIGHT;
 	}
 
-	if (IsSavegameVersionBefore(SLV_164) && !IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
+	if (IsSavegameVersionBefore(SLV_VEHICLE_CENTRE_AND_Z_POS) && !IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
 		/* We store 4 fences in the field tiles instead of only SE and SW. */
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Clear) && !IsTileType(t, TileType::Trees)) continue;
@@ -3053,7 +3053,7 @@ bool AfterLoadGame()
 	AfterLoadVehiclesPhase2(true);
 
 	/* The center of train vehicles was changed, fix up spacing. */
-	if (IsSavegameVersionBefore(SLV_164)) FixupTrainLengths();
+	if (IsSavegameVersionBefore(SLV_VEHICLE_CENTRE_AND_Z_POS)) FixupTrainLengths();
 
 	/* In version 2.2 of the savegame, we have new airports, so status of all aircraft is reset.
 	 * This has to be called after all map array updates */

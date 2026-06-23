@@ -671,8 +671,8 @@ public:
 		SLE_CONDVAR(Vehicle, x_pos,                 SLE_UINT32,                   SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, y_pos,                 SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_MULTIPLE_ROAD_STOPS),
 		SLE_CONDVAR(Vehicle, y_pos,                 SLE_UINT32,                   SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_164),
-		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_VEHICLE_CENTRE_AND_Z_POS),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_VEHICLE_CENTRE_AND_Z_POS, SL_MAX_VERSION),
 		    SLE_VAR(Vehicle, direction,             SLE_UINT8),
 
 		    SLE_VAR(Vehicle, spritenum,             SLE_UINT8),
@@ -1012,8 +1012,8 @@ public:
 		 SLE_CONDVAR(Vehicle, x_pos,                 SLE_INT32,                    SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 		 SLE_CONDVAR(Vehicle, y_pos,                 SLE_FILE_I16 | SLE_VAR_I32,   SL_MIN_VERSION,   SLV_MULTIPLE_ROAD_STOPS),
 		 SLE_CONDVAR(Vehicle, y_pos,                 SLE_INT32,                    SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_164),
-		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_VEHICLE_CENTRE_AND_Z_POS),
+		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_VEHICLE_CENTRE_AND_Z_POS, SL_MAX_VERSION),
 
 		     SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, SLE_FILE_U16 | SLE_VAR_U32),
 		     SLE_VAR(Vehicle, progress,              SLE_UINT8),
@@ -1060,8 +1060,8 @@ public:
 		SLE_CONDVAR(Vehicle, x_pos,                 SLE_INT32,                    SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, y_pos,                 SLE_FILE_I16 | SLE_VAR_I32,   SL_MIN_VERSION,   SLV_MULTIPLE_ROAD_STOPS),
 		SLE_CONDVAR(Vehicle, y_pos,                 SLE_INT32,                    SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_164),
-		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_VEHICLE_CENTRE_AND_Z_POS),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_VEHICLE_CENTRE_AND_Z_POS, SL_MAX_VERSION),
 		    SLE_VAR(Vehicle, direction,             SLE_UINT8),
 
 		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),

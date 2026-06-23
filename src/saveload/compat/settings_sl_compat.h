@@ -50,7 +50,7 @@ const SaveLoadCompat _settings_sl_compat[] = {
 	SLC_VAR("diff_level"),
 	SLC_VAR("game_creation.town_name"),
 	SLC_VAR("game_creation.landscape"),
-	SLC_NULL(1, SLV_MERGE_OPTS_PATS, SLV_164),
+	SLC_NULL(1, SLV_MERGE_OPTS_PATS, SLV_VEHICLE_CENTRE_AND_Z_POS),
 	SLC_VAR("vehicle.road_side"),
 	SLC_VAR("construction.map_height_limit"),
 	SLC_VAR("game_creation.heightmap_height"),

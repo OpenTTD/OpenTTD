@@ -59,7 +59,7 @@ const SaveLoadCompat _town_sl_compat[] = {
 	SLC_VAR("supplied[CT_MAIL].old_act"),
 	SLC_VAR("supplied[CT_PASSENGERS].new_act"),
 	SLC_VAR("supplied[CT_MAIL].new_act"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_164),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_VEHICLE_CENTRE_AND_Z_POS),
 	SLC_VAR("received[TE_FOOD].old_act"),
 	SLC_VAR("received[TE_WATER].old_act"),
 	SLC_VAR("received[TE_FOOD].new_act"),

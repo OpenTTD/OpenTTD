@@ -237,7 +237,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PERSISTENT_STORAGE_POOL,            ///< 161   22567 Store persistent storage in a pool
 	SLV_NEWGRF_CUSTOM_CARGO_AGING,          ///< 162   22713 NewGRF influence on aging of cargo in vehicles
 	SLV_RIVERS,                             ///< 163   22767 Rivers
-	SLV_164,                                ///< 164   23290
+	SLV_VEHICLE_CENTRE_AND_Z_POS,           ///< 164   23290 Vehicle centres are not fixed at 4/8 of the vehicle; change type of z-positions to prepare for higher maps
 
 	SLV_165,                                ///< 165   23304
 	SLV_166,                                ///< 166   23415
