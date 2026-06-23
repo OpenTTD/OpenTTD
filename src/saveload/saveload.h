@@ -221,7 +221,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_INDUSTRY_PLATFORM,                  ///< 148   20659 Setting to make a flat area around (new) industries
 	SLV_CUSTOM_SEA_LEVEL,                   ///< 149   20832 Setting to influence the sea level (amount of water)
 
-	SLV_150,                                ///< 150   20857
+	SLV_FRACTIONAL_CARGO_DELIVERY,          ///< 150   20857 When spreading cargo over stations, spread fractional amounts for fairness
 	SLV_151,                                ///< 151   20918
 	SLV_152,                                ///< 152   21171
 	SLV_153,                                ///< 153   21263
