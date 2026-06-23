@@ -242,7 +242,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SCRIPT_TOWN_GROWTH,                 ///< 165   23304 Storage of cargo statistics for use by game scripts
 	SLV_INFRASTRUCTURE_MAINTENANCE_COSTS,   ///< 166   23415 Infrastructure can now cost some periodic fee
 	SLV_NEWGRF_AIRCRAFT_RANGE,              ///< 167   23504 NewGRF provided maximum aircraft range
-	SLV_168,                                ///< 168   23637
+	SLV_SCRIPT_TOWN_TEXT,                   ///< 168   23637 Game scripts can put a text in the town window
 	SLV_169,                                ///< 169   23816
 
 	SLV_170,                                ///< 170   23826

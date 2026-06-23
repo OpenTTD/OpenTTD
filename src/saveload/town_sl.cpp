@@ -340,7 +340,7 @@ static const SaveLoad _town_desc[] = {
 
 	SLE_CONDARR(Town, goal, SLE_UINT32, to_underlying(TownAcceptanceEffect::End), SLV_SCRIPT_TOWN_GROWTH, SL_MAX_VERSION),
 
-	SLE_CONDSSTR(Town, text,                 SLE_STR | SLF_ALLOW_CONTROL, SLV_168, SL_MAX_VERSION),
+	SLE_CONDSSTR(Town, text,                 SLE_STR | SLF_ALLOW_CONTROL, SLV_SCRIPT_TOWN_TEXT, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town, time_until_rebuild,    SLE_FILE_U8 | SLE_VAR_U16,  SL_MIN_VERSION, SLV_TOWN_GROWTH_CONTROL),
 	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT16,                SLV_TOWN_GROWTH_CONTROL, SL_MAX_VERSION),
