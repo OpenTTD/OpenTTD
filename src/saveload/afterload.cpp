@@ -2986,7 +2986,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_175)) {
+	if (IsSavegameVersionBefore(SLV_AUTOREPLACE_WHEN_OLD_TREE_LIMIT)) {
 		/* Introduced tree planting limit. */
 		for (Company *c : Company::Iterate()) c->tree_limit = _settings_game.construction.tree_frame_burst << 16;
 	}
