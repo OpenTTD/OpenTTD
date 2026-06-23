@@ -272,7 +272,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_SEPARATE_ORDER_TRAVEL_WAIT_TIME,    ///< 190   26547 Separate order travel and wait times
 	SLV_LINKGRAPH_LOCATION_DISASTER_STORE,  ///< 191   26636 FS#6026 Fix disaster vehicle storage (No bump)
 	                                        ///< 191   26646 FS#6041 Linkgraph - store locations
-	SLV_192,                                ///< 192   26700 FS#6066 Fix saving of order backups
+	SLV_FIX_ORDER_BACKUP,                   ///< 192   26700 FS#6066 Fix saving of order backups
 	SLV_193,                                ///< 193   26802
 	SLV_194,                                ///< 194   26881 v1.5
 

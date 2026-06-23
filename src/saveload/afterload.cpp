@@ -3132,9 +3132,9 @@ bool AfterLoadGame()
 	 * Only keep order-backups for network clients (and when replaying).
 	 * If we are a network server or not networking, then we just loaded a previously
 	 * saved-by-server savegame. There are no clients with a backup, so clear it.
-	 * Furthermore before savegame version SLV_192 the actual content was always corrupt.
+	 * Furthermore before savegame version SLV_FIX_ORDER_BACKUP the actual content was always corrupt.
 	 */
-	if (!_networking || _network_server || IsSavegameVersionBefore(SLV_192)) {
+	if (!_networking || _network_server || IsSavegameVersionBefore(SLV_FIX_ORDER_BACKUP)) {
 #ifndef DEBUG_DUMP_COMMANDS
 		/* Note: We cannot use CleanPool since that skips part of the destructor
 		 * and then leaks un-reachable Orders in the order pool. */

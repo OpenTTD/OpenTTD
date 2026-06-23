@@ -38,7 +38,7 @@ const SaveLoadCompat _order_backup_sl_compat[] = {
 	SLC_VAR("group"),
 	SLC_VAR("service_interval"),
 	SLC_VAR("name"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_192),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_FIX_ORDER_BACKUP),
 	SLC_VAR("clone"),
 	SLC_VAR("cur_real_order_index"),
 	SLC_VAR("cur_implicit_order_index"),
