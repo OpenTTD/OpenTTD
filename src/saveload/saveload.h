@@ -269,7 +269,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_UNIFY_RV_TRAVEL_TIME,               ///< 188   26169 v1.4  FS#5831 Unify RV travel time
 	SLV_GROUP_HIERARCHY,                    ///< 189   26450 Hierarchical vehicle subgroups
 
-	SLV_190,                                ///< 190   26547 Separate order travel and wait times
+	SLV_SEPARATE_ORDER_TRAVEL_WAIT_TIME,    ///< 190   26547 Separate order travel and wait times
 	SLV_191,                                ///< 191   26636 FS#6026 Fix disaster vehicle storage (No bump)
 	                                        ///< 191   26646 FS#6041 Linkgraph - store locations
 	SLV_192,                                ///< 192   26700 FS#6066 Fix saving of order backups

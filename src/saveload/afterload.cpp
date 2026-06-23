@@ -3118,7 +3118,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_190)) {
+	if (IsSavegameVersionBefore(SLV_SEPARATE_ORDER_TRAVEL_WAIT_TIME)) {
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
 				order.SetTravelTimetabled(order.GetTravelTime() > 0);
