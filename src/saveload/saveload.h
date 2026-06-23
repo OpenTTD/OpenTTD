@@ -225,7 +225,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_STORE_NEWGRF_VERSION,               ///< 151   20918 Store the version of the used NewGRFs
 	SLV_INDUSTRY_MANAGEMENT,                ///< 152   21171 Manage the amount of industries that ought to be spawned per type
 	SLV_LEAVE_ROAD_STOP_SEPARATELY,         ///< 153   21263 Fix issue where multiple vehicles could leave a road stop at the same time
-	SLV_154,                                ///< 154   21426
+	SLV_PAUSE_LEVEL,                        ///< 154   21426 Setting to determine what commands are allowed when paused
 
 	SLV_155,                                ///< 155   21453
 	SLV_156,                                ///< 156   21728
