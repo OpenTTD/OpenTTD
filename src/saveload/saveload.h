@@ -217,7 +217,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_NEWGRF_AIRPORT_SMOKE,               ///< 145   20376 NewGRF support for airport and configurable amount of smoke for vehicles
 	SLV_UNIFY_WATER_CLASS,                  ///< 146   20446 Unify location for storing water class in the map
-	SLV_147,                                ///< 147   20621
+	SLV_UNIFY_ANIMATION_FRAME,              ///< 147   20621 Unify location of animation frame
 	SLV_148,                                ///< 148   20659
 	SLV_149,                                ///< 149   20832
 
