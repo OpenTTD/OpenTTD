@@ -698,7 +698,7 @@ public:
 		SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
 		SLEG_CONDVAR("cargo_count", _cargo_count,   SLE_UINT16,                   SL_MIN_VERSION,  SLV_CARGO_PACKETS),
 		SLE_CONDREFLIST(Vehicle, cargo.packets,     REF_CARGO_PACKET,            SLV_CARGO_PACKETS, SL_MAX_VERSION),
-		SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, to_underlying(VehicleCargoList::MoveToAction::End), SLV_181, SL_MAX_VERSION),
+		SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, to_underlying(VehicleCargoList::MoveToAction::End), SLV_CARGO_RESERVATION, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_NEWGRF_CUSTOM_CARGO_AGING, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, day_counter,           SLE_UINT8),

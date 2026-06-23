@@ -258,7 +258,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ROBUST_ENGINE_PREVIEW,              ///< 179   24810 Make engine preview offers robust when company ranking changes
 
 	SLV_SERVICE_INTERVAL_PERCENT,           ///< 180   24998   1.3.x Service interval in percent or days stored per vehicle
-	SLV_181,                                ///< 181   25012
+	SLV_CARGO_RESERVATION,                  ///< 181   25012 Persist the reservation of cargo for vehicles instead of recalculating it each time
 	SLV_182,                                ///< 182   25115 FS#5492, r25259, r25296 Goal status
 	SLV_183,                                ///< 183   25363 Cargodist
 	SLV_184,                                ///< 184   25508 Unit localisation split
