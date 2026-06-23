@@ -2531,7 +2531,7 @@ bool AfterLoadGame()
 		for (Depot *d : Depot::Iterate()) d->build_date = TimerGameCalendar::date;
 	}
 
-	if (IsSavegameVersionBefore(SLV_145)) {
+	if (IsSavegameVersionBefore(SLV_NEWGRF_AIRPORT_SMOKE)) {
 		for (Station *st : Station::Iterate()) {
 			if (st->facilities.Test(StationFacility::Airport)) st->airport.rotation = Direction::N;
 		}
@@ -2877,7 +2877,7 @@ bool AfterLoadGame()
 			}
 		}
 
-		if (!IsSavegameVersionBefore(SLV_145)) {
+		if (!IsSavegameVersionBefore(SLV_NEWGRF_AIRPORT_SMOKE)) {
 			for (Station *st : Station::Iterate()) {
 				if (!st->facilities.Test(StationFacility::Airport)) continue;
 				assert(st->airport.psa != nullptr);

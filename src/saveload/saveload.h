@@ -215,7 +215,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DISABLE_TOWN_LEVEL_CROSSING,        ///< 143   20048 Setting to be able to disable building rail/road crossings by towns
 	SLV_REORDER_UNMOVABLE_REMOVE_RESERVED,  ///< 144   20334 Reorder map bits of unmovable tiles and remove unused reserved zero bytes
 
-	SLV_145,                                ///< 145   20376
+	SLV_NEWGRF_AIRPORT_SMOKE,               ///< 145   20376 NewGRF support for airport and configurable amount of smoke for vehicles
 	SLV_146,                                ///< 146   20446
 	SLV_147,                                ///< 147   20621
 	SLV_148,                                ///< 148   20659
