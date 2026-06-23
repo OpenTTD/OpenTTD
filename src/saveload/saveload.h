@@ -227,7 +227,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_LEAVE_ROAD_STOP_SEPARATELY,         ///< 153   21263 Fix issue where multiple vehicles could leave a road stop at the same time
 	SLV_PAUSE_LEVEL,                        ///< 154   21426 Setting to determine what commands are allowed when paused
 
-	SLV_155,                                ///< 155   21453
+	SLV_NEWGRF_OBJECT_VIEW,                 ///< 155   21453 Support for views in NewGRF objects
 	SLV_156,                                ///< 156   21728
 	SLV_157,                                ///< 157   21862
 	SLV_158,                                ///< 158   21933
