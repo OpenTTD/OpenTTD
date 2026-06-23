@@ -706,7 +706,7 @@ public:
 		SLE_CONDVAR(Vehicle, running_ticks,         SLE_UINT8,                   SLV_FRACTION_PROFIT_RUNNING_TICKS, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, cur_implicit_order_index,  SLE_UINT8),
-		SLE_CONDVAR(Vehicle, cur_real_order_index,  SLE_UINT8,                  SLV_158, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, cur_real_order_index,  SLE_UINT8,                  SLV_TRACK_REAL_AND_AUTO_ORDERS, SL_MAX_VERSION),
 
 		/* This next line is for version 4 and prior compatibility.. it temporarily reads
 		type and flags (which were both 4 bits) into type. Later on this is

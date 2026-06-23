@@ -2725,7 +2725,7 @@ bool AfterLoadGame()
 		 * the map are consistent. This requires that the Z position of some
 		 * vehicles is updated to reflect this new situation.
 		 *
-		 * This needs to be before SLV_158, because that performs asserts using
+		 * This needs to be before SLV_TRACK_REAL_AND_AUTO_ORDERS, because that performs asserts using
 		 * GetSlopePixelZ which internally uses GetPartialPixelZ.
 		 */
 		for (Vehicle *v : Vehicle::Iterate()) {
@@ -2736,7 +2736,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_158)) {
+	if (IsSavegameVersionBefore(SLV_TRACK_REAL_AND_AUTO_ORDERS)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			switch (v->type) {
 				case VehicleType::Train: {
