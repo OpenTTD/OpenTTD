@@ -781,7 +781,7 @@ bool AfterLoadGame()
 		_settings_game.construction.max_tunnel_length = 64;
 	}
 	if (IsSavegameVersionBefore(SLV_INFRASTRUCTURE_MAINTENANCE_COSTS))  _settings_game.economy.infrastructure_maintenance = false;
-	if (IsSavegameVersionBefore(SLV_183)) {
+	if (IsSavegameVersionBefore(SLV_CARGODIST)) {
 		_settings_game.linkgraph.distribution_pax = DistributionType::Manual;
 		_settings_game.linkgraph.distribution_mail = DistributionType::Manual;
 		_settings_game.linkgraph.distribution_armoured = DistributionType::Manual;

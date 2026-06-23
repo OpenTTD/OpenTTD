@@ -384,15 +384,15 @@ public:
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, SLV_TRANSFER_ORDER, SLV_UNIFY_CURRENCY),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share,  SLE_INT64,                  SLV_UNIFY_CURRENCY, SLV_CARGO_PACKETS),
 		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 SLV_FRACTIONAL_CARGO_DELIVERY, SL_MAX_VERSION),
-		SLEG_CONDREFLIST("packets", _packets,          REF_CARGO_PACKET,           SLV_CARGO_PACKETS, SLV_183),
-		SLEG_CONDVAR("old_num_dests", _old_num_dests,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
+		SLEG_CONDREFLIST("packets", _packets,          REF_CARGO_PACKET,           SLV_CARGO_PACKETS, SLV_CARGODIST),
+		SLEG_CONDVAR("old_num_dests", _old_num_dests,  SLE_UINT32,                SLV_CARGODIST, SLV_SAVELOAD_LIST_LENGTH),
 		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, SLE_UINT,                  SLV_CARGO_RESERVATION, SL_MAX_VERSION),
-		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_183, SL_MAX_VERSION),
-		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDVAR("old_num_flows", _old_num_flows,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
-		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDSTRUCTLIST("flow", SlStationFlow,                                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo,                              SLV_183, SL_MAX_VERSION),
+		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_CARGODIST, SL_MAX_VERSION),
+		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_CARGODIST, SL_MAX_VERSION),
+		SLEG_CONDVAR("old_num_flows", _old_num_flows,  SLE_UINT32,                SLV_CARGODIST, SLV_SAVELOAD_LIST_LENGTH),
+		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_CARGODIST, SL_MAX_VERSION),
+		SLEG_CONDSTRUCTLIST("flow", SlStationFlow,                                SLV_CARGODIST, SL_MAX_VERSION),
+		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo,                              SLV_CARGODIST, SL_MAX_VERSION),
 	};
 
 	static inline const SaveLoadCompatTable compat_description = _station_goods_sl_compat;
@@ -441,7 +441,7 @@ public:
 			if (!IsSavegameVersionBefore(SLV_CARGO_RESERVATION) && SlStationGoods::cargo_reserved_count != 0) {
 				ge.GetOrCreateData().cargo.reserved_count = SlStationGoods::cargo_reserved_count;
 			}
-			if (IsSavegameVersionBefore(SLV_183)) {
+			if (IsSavegameVersionBefore(SLV_CARGODIST)) {
 				SwapPackets(&ge);
 			}
 			if (IsSavegameVersionBefore(SLV_CARGO_PACKETS)) {
@@ -473,7 +473,7 @@ public:
 		auto end = std::next(std::begin(st->goods), std::min(num_cargo, std::size(st->goods)));
 		for (auto it = std::begin(st->goods); it != end; ++it) {
 			GoodsEntry &ge = *it;
-			if (IsSavegameVersionBefore(SLV_183)) {
+			if (IsSavegameVersionBefore(SLV_CARGODIST)) {
 				SwapPackets(&ge); // We have to swap back again to be in the format pre-183 expects.
 				SlObject(&ge, this->GetDescription());
 				SwapPackets(&ge);
