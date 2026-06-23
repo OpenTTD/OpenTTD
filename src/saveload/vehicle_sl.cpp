@@ -343,7 +343,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 			}
 		}
 
-		if (IsSavegameVersionBefore(SLV_157)) {
+		if (IsSavegameVersionBefore(SLV_UNIFY_GROUND_VEHICLES)) {
 			/* The road vehicle subtype was converted to a flag. */
 			for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 				if (rv->subtype == 0) {

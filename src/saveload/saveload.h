@@ -229,7 +229,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_NEWGRF_OBJECT_VIEW,                 ///< 155   21453 Support for views in NewGRF objects
 	SLV_TERRAFORM_LIMITS,                   ///< 156   21728 Introduce limits for terraforming and clearing times
-	SLV_157,                                ///< 157   21862
+	SLV_UNIFY_GROUND_VEHICLES,              ///< 157   21862 Unify the way ground vehicles are handled (articulated parts, etc)
 	SLV_158,                                ///< 158   21933
 	SLV_159,                                ///< 159   21962
 
