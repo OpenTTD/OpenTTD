@@ -775,7 +775,7 @@ bool AfterLoadGame()
 		_settings_game.vehicle.roadveh_slope_steepness = 7;
 	}
 	if (IsSavegameVersionBefore(SLV_DISABLE_TOWN_LEVEL_CROSSING))  _settings_game.economy.allow_town_level_crossings = true;
-	if (IsSavegameVersionBefore(SLV_159)) {
+	if (IsSavegameVersionBefore(SLV_MAX_LENGTH_AND_REVERSE_SIGNALS)) {
 		_settings_game.vehicle.max_train_length = 50;
 		_settings_game.construction.max_bridge_length = 64;
 		_settings_game.construction.max_tunnel_length = 64;
@@ -2830,7 +2830,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_159)) {
+	if (IsSavegameVersionBefore(SLV_MAX_LENGTH_AND_REVERSE_SIGNALS)) {
 		/* If the savegame is old (before version 100), then the value of 255
 		 * for these settings did not mean "disabled". As such everything
 		 * before then did reverse.

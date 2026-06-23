@@ -231,7 +231,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TERRAFORM_LIMITS,                   ///< 156   21728 Introduce limits for terraforming and clearing times
 	SLV_UNIFY_GROUND_VEHICLES,              ///< 157   21862 Unify the way ground vehicles are handled (articulated parts, etc)
 	SLV_TRACK_REAL_AND_AUTO_ORDERS,         ///< 158   21933 Track which real and auto order is the current order
-	SLV_159,                                ///< 159   21962
+	SLV_MAX_LENGTH_AND_REVERSE_SIGNALS,     ///< 159   21962 Settings for reversing at signals, and maximum train, bridge and tunnel length
 
 	SLV_160,                                ///< 160   21974   1.1.x
 	SLV_161,                                ///< 161   22567
