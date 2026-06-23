@@ -66,7 +66,7 @@ const SaveLoadCompat _company_settings_compat[] = {
 	SLC_VAR("settings.vehicle.servint_roadveh"),
 	SLC_VAR("settings.vehicle.servint_aircraft"),
 	SLC_VAR("settings.vehicle.servint_ships"),
-	SLC_NULL(63, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
+	SLC_NULL(63, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_REORDER_UNMOVABLE_REMOVE_RESERVED),
 };
 
 /** Original field order for SlCompanyEconomy. */

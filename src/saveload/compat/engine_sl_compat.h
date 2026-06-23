@@ -24,7 +24,7 @@ const SaveLoadCompat _engine_sl_compat[] = {
 	SLC_VAR("duration_phase_1"),
 	SLC_VAR("duration_phase_2"),
 	SLC_VAR("duration_phase_3"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_121),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_CARGO_PAYMENTS),
 	SLC_VAR("flags"),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_179),
 	SLC_VAR("preview_asked"),
@@ -34,7 +34,7 @@ const SaveLoadCompat _engine_sl_compat[] = {
 	SLC_VAR("company_avail"),
 	SLC_VAR("company_hidden"),
 	SLC_VAR("name"),
-	SLC_NULL(16, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_144),
+	SLC_NULL(16, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_REORDER_UNMOVABLE_REMOVE_RESERVED),
 };
 
 /** Original field order for _engine_id_mapping_desc. */

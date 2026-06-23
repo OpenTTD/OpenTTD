@@ -179,41 +179,41 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ROAD_LAYOUT_PER_TOWN,               ///< 113   15340 Allow for different road layouts for each of the towns
 	SLV_SEPARATE_ROAD_OWNERS,               ///< 114   15601 Separate owners for road bits, tram bits and the road stop
 
-	SLV_115,                                ///< 115   15695
-	SLV_116,                                ///< 116   15893   0.7.x
-	SLV_117,                                ///< 117   16037
-	SLV_118,                                ///< 118   16129
-	SLV_119,                                ///< 119   16242
+	SLV_CUSTOM_TOWN_NUMBER,                 ///< 115   15695 Configuration for specific number of towns to build
+	SLV_GAMELOG_EMERGENCY,                  ///< 116   15893   0.7.x Gamelog event for emergency/crash saves
+	SLV_PLATFORM_STOP_LOCATION,             ///< 117   16037 Set the platform stop location via train orders
+	SLV_DIGIT_GROUP_SEPARATOR,              ///< 118   16129 Configurable digit group separator
+	SLV_PAUSE_MODES,                        ///< 119   16242 Use bitmask of reason to pause, so manual/auto pausing do not conflict
 
-	SLV_120,                                ///< 120   16439
-	SLV_121,                                ///< 121   16694
-	SLV_122,                                ///< 122   16855
-	SLV_123,                                ///< 123   16909
-	SLV_124,                                ///< 124   16993
+	SLV_COMPANY_SERVICE_INTERVALS,          ///< 120   16439 Make service intervals configurable per company
+	SLV_CARGO_PAYMENTS,                     ///< 121   16694 Perform payment of cargo after unloading
+	SLV_WAYPOINT_MORE_LIKE_STATION,         ///< 122   16855 Make waypoint data look more like stations
+	SLV_UNIFY_WAYPOINT_AND_STATION,         ///< 123   16909 Unify stations and waypoints
+	SLV_MULTI_TILE_WAYPOINTS,               ///< 124   16993 Waypoints can be bigger than a single tile
 
-	SLV_125,                                ///< 125   17113
-	SLV_126,                                ///< 126   17433
-	SLV_127,                                ///< 127   17439
-	SLV_128,                                ///< 128   18281
-	SLV_129,                                ///< 129   18292
+	SLV_REMOVE_SUBSIDY_STATION_BINDING,     ///< 125   17113 Awarded subsidies are not bound to stations, but to their actual source/destination
+	SLV_CUMULATED_INFLATION,                ///< 126   17433 Store cumulated inflation, and recalculate prices/payments upon load
+	SLV_TOWN_ACCEPTANCE,                    ///< 127   17439 Store mask of cargos accepted by town houses and head quarters
+	SLV_FOUND_TOWN,                         ///< 128   18281 Founding of new towns
+	SLV_TIMETABLE_START,                    ///< 129   18292 Allow setting the start date of a timetable
 
-	SLV_130,                                ///< 130   18404
-	SLV_131,                                ///< 131   18481
-	SLV_132,                                ///< 132   18522
-	SLV_133,                                ///< 133   18674
-	SLV_134,                                ///< 134   18703
+	SLV_ROAD_STOP_OCCUPANCY_PENALTY,        ///< 130   18404 Add configurable pathfinder penalty for an occupied road stop
+	SLV_MAXIMUM_DEPOT_PENALTY,              ///< 131   18481 Add configurable maximum pathfinder penalty for finding a depot
+	SLV_DISALLOW_TREE_BUILDING,             ///< 132   18522 Setting to partially disable building of trees
+	SLV_TRAIN_SLOPE_STEEPNESS,              ///< 133   18674 Setting to increase steepness of slopes for trains under realistic acceleration
+	SLV_VIRTUAL_FEEDER_SHARE_PAYMENT,       ///< 134   18703 Pay a part of the virtual profit during a transfer to the intermediate vehicle
 
-	SLV_135,                                ///< 135   18719
-	SLV_136,                                ///< 136   18764
-	SLV_137,                                ///< 137   18912
-	SLV_138,                                ///< 138   18942   1.0.x
-	SLV_139,                                ///< 139   19346
+	SLV_ROCKS_STAY_UNDER_SNOW,              ///< 135   18719 Rocks stay under snow, i.e. they return when the snow goes away
+	SLV_SPLIT_LOAD_WAIT_COUNTERS,           ///< 136   18764 Split counters for (un)loading and signal waiting/turning as otherwise they interfere
+	SLV_AIRPORT_ANIMATION_FRAMES,           ///< 137   18912 Use animation frames instead of many airport tile ids for animation
+	SLV_REDUCE_PLANE_CRASHES,               ///< 138   18942   1.0.x Setting to reduce/disable crashing of planes
+	SLV_RV_REALISTIC_ACCELERATION,          ///< 139   19346 Realistic acceleration of road vehicles
 
-	SLV_140,                                ///< 140   19382
-	SLV_141,                                ///< 141   19799
-	SLV_142,                                ///< 142   20003
-	SLV_143,                                ///< 143   20048
-	SLV_144,                                ///< 144   20334
+	SLV_STORE_AIRPORT_SIZE,                 ///< 140   19382 Store the size of the airport in the station
+	SLV_UNIQUE_DEPOT_NAMES,                 ///< 141   19799 Give depots unique names
+	SLV_NEWGRF_DEPOT_BUILD_DATE,            ///< 142   20003 Depot build date for NewGRFs
+	SLV_DISABLE_TOWN_LEVEL_CROSSING,        ///< 143   20048 Setting to be able to disable building rail/road crossings by towns
+	SLV_REORDER_UNMOVABLE_REMOVE_RESERVED,  ///< 144   20334 Reorder map bits of unmovable tiles and remove unused reserved zero bytes
 
 	SLV_145,                                ///< 145   20376
 	SLV_146,                                ///< 146   20446

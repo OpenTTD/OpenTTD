@@ -498,8 +498,8 @@ static const SaveLoad _old_station_desc[] = {
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
 	SLE_CONDSSTR(Station, name,                      SLE_STR | SLF_ALLOW_CONTROL, SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, indtype,                    SLE_UINT8,                 SLV_NEWGRF_SUPPLIED_STATION_NAME, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_FILE_U16 | SLE_VAR_U8,   SL_MIN_VERSION, SLV_122),
-	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_UINT8,                 SLV_122, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_FILE_U16 | SLE_VAR_U8,   SL_MIN_VERSION, SLV_WAYPOINT_MORE_LIKE_STATION),
+	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_UINT8,                 SLV_WAYPOINT_MORE_LIKE_STATION, SL_MAX_VERSION),
 
 	    SLE_VAR(Station, time_since_load,            SLE_UINT8),
 	    SLE_VAR(Station, time_since_unload,          SLE_UINT8),
@@ -552,10 +552,10 @@ struct STNSChunkHandler : ChunkHandler {
 
 	void FixPointers() const override
 	{
-		/* From SLV_123 we store stations in STNN; before that in STNS. So do not
-		 * fix pointers when the version is SLV_123 or up, as that would fix
+		/* From SLV_UNIFY_WAYPOINT_AND_STATION we store stations in STNN; before that in STNS. So do not
+		 * fix pointers when the version is SLV_UNIFY_WAYPOINT_AND_STATION or up, as that would fix
 		 * pointers twice: once in STNN chunk and once here. */
-		if (!IsSavegameVersionBefore(SLV_123)) return;
+		if (!IsSavegameVersionBefore(SLV_UNIFY_WAYPOINT_AND_STATION)) return;
 
 		for (Station *st : Station::Iterate()) {
 			SlObject(st, _old_station_desc);
@@ -635,8 +635,8 @@ public:
 		SLE_CONDVAR(Station, docking_station.w,          SLE_FILE_U8 | SLE_VAR_U16, SLV_MULTITILE_DOCKS, SL_MAX_VERSION),
 		SLE_CONDVAR(Station, docking_station.h,          SLE_FILE_U8 | SLE_VAR_U16, SLV_MULTITILE_DOCKS, SL_MAX_VERSION),
 		    SLE_VAR(Station, airport.tile,               SLE_UINT32),
-		SLE_CONDVAR(Station, airport.w,                  SLE_FILE_U8 | SLE_VAR_U16, SLV_140, SL_MAX_VERSION),
-		SLE_CONDVAR(Station, airport.h,                  SLE_FILE_U8 | SLE_VAR_U16, SLV_140, SL_MAX_VERSION),
+		SLE_CONDVAR(Station, airport.w,                  SLE_FILE_U8 | SLE_VAR_U16, SLV_STORE_AIRPORT_SIZE, SL_MAX_VERSION),
+		SLE_CONDVAR(Station, airport.h,                  SLE_FILE_U8 | SLE_VAR_U16, SLV_STORE_AIRPORT_SIZE, SL_MAX_VERSION),
 		    SLE_VAR(Station, airport.type,               SLE_UINT8),
 		SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 SLV_145, SL_MAX_VERSION),
 		SLE_VARNAME(Station, airport.blocks, "airport.flags", SLE_UINT64),
@@ -651,7 +651,7 @@ public:
 		    SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
 		    SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
 		SLE_REFLIST(Station, loading_vehicles,           REF_VEHICLE),
-		SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, SLV_127, SLV_EXTEND_CARGOTYPES),
+		SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, SLV_TOWN_ACCEPTANCE, SLV_EXTEND_CARGOTYPES),
 		SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 		SLEG_CONDSTRUCTLIST("speclist", SlRoadStopTileData,                          SLV_NEWGRF_ROAD_STOPS, SLV_ROAD_STOP_TILE_DATA),
 		SLEG_STRUCTLIST("goods", SlStationGoods),
@@ -683,9 +683,9 @@ public:
 		SLEG_STRUCT("base", SlStationBase),
 		    SLE_VAR(Waypoint, town_cn,                   SLE_UINT16),
 
-		SLE_CONDVAR(Waypoint, train_station.tile,        SLE_UINT32,                  SLV_124, SL_MAX_VERSION),
-		SLE_CONDVAR(Waypoint, train_station.w,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_124, SL_MAX_VERSION),
-		SLE_CONDVAR(Waypoint, train_station.h,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_124, SL_MAX_VERSION),
+		SLE_CONDVAR(Waypoint, train_station.tile,        SLE_UINT32,                  SLV_MULTI_TILE_WAYPOINTS, SL_MAX_VERSION),
+		SLE_CONDVAR(Waypoint, train_station.w,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_MULTI_TILE_WAYPOINTS, SL_MAX_VERSION),
+		SLE_CONDVAR(Waypoint, train_station.h,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_MULTI_TILE_WAYPOINTS, SL_MAX_VERSION),
 		SLE_CONDVAR(Waypoint, waypoint_flags,            SLE_UINT16,                  SLV_ROAD_WAYPOINTS, SL_MAX_VERSION),
 		SLE_CONDVAR(Waypoint, road_waypoint_area.tile,   SLE_UINT32,                  SLV_ROAD_WAYPOINTS, SL_MAX_VERSION),
 		SLE_CONDVAR(Waypoint, road_waypoint_area.w,      SLE_FILE_U8 | SLE_VAR_U16,   SLV_ROAD_WAYPOINTS, SL_MAX_VERSION),
@@ -753,10 +753,10 @@ struct STNNChunkHandler : ChunkHandler {
 
 	void FixPointers() const override
 	{
-		/* From SLV_123 we store stations in STNN; before that in STNS. So do not
-		 * fix pointers when the version is below SLV_123, as that would fix
+		/* From SLV_UNIFY_WAYPOINT_AND_STATION we store stations in STNN; before that in STNS. So do not
+		 * fix pointers when the version is below SLV_UNIFY_WAYPOINT_AND_STATION, as that would fix
 		 * pointers twice: once in STNS chunk and once here. */
-		if (IsSavegameVersionBefore(SLV_123)) return;
+		if (IsSavegameVersionBefore(SLV_UNIFY_WAYPOINT_AND_STATION)) return;
 
 		for (BaseStation *bst : BaseStation::Iterate()) {
 			SlObject(bst, _station_desc);
