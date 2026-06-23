@@ -35,7 +35,7 @@ public:
 		    SLE_VAR(Edge, usage,                    SLE_UINT32),
 		SLE_CONDVAR(Edge, travel_time_sum,          SLE_UINT64, SLV_LINKGRAPH_TRAVEL_TIME, SL_MAX_VERSION),
 		    SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
-		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_187, SL_MAX_VERSION),
+		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_LINKGRAPH_RESTRICTED_FLOW, SL_MAX_VERSION),
 		    SLE_VAR(Edge, dest_node,                SLE_UINT16),
 		SLE_CONDVARNAME(Edge, dest_node, "next_edge", SLE_UINT16, SL_MIN_VERSION, SLV_LINKGRAPH_EDGES),
 	};

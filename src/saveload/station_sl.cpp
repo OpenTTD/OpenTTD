@@ -312,7 +312,7 @@ public:
 		    SLE_VAR(FlowSaveLoad, source,     SLE_UINT16),
 		    SLE_VAR(FlowSaveLoad, via,        SLE_UINT16),
 		    SLE_VAR(FlowSaveLoad, share,      SLE_UINT32),
-		SLE_CONDVAR(FlowSaveLoad, restricted, SLE_BOOL, SLV_187, SL_MAX_VERSION),
+		SLE_CONDVAR(FlowSaveLoad, restricted, SLE_BOOL, SLV_LINKGRAPH_RESTRICTED_FLOW, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_flow_sl_compat;
 
