@@ -274,7 +274,7 @@ enum SaveLoadVersion : uint16_t {
 	                                        ///< 191   26646 FS#6041 Linkgraph - store locations
 	SLV_FIX_ORDER_BACKUP,                   ///< 192   26700 FS#6066 Fix saving of order backups
 	SLV_HIDE_ENGINES_FOR_COMPANY,           ///< 193   26802 Hiding of engines for a company
-	SLV_194,                                ///< 194   26881 v1.5
+	SLV_MAX_BRIDGE_MAP_HEIGHT,              ///< 194   26881 v1.5 Setting for maximum bridge and map height
 
 	SLV_195,                                ///< 195   27572 v1.6.1
 	SLV_196,                                ///< 196   27778 v1.7

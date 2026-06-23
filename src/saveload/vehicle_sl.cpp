@@ -1079,7 +1079,7 @@ public:
 		SLE_CONDVAR(DisasterVehicle, image_override,            SLE_UINT32,                 SLV_LINKGRAPH_LOCATION_DISASTER_STORE, SL_MAX_VERSION),
 		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_LINKGRAPH_LOCATION_DISASTER_STORE),
 		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 SLV_LINKGRAPH_LOCATION_DISASTER_STORE, SL_MAX_VERSION),
-		SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_194, SL_MAX_VERSION),
+		SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_MAX_BRIDGE_MAP_HEIGHT, SL_MAX_VERSION),
 	};
 
 	static inline const SaveLoadCompatTable compat_description = _vehicle_disaster_sl_compat;

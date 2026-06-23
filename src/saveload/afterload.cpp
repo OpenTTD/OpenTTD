@@ -624,7 +624,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_194)) {
+	if (IsSavegameVersionBefore(SLV_MAX_BRIDGE_MAP_HEIGHT)) {
 		_settings_game.construction.map_height_limit = 15;
 
 		/* In old savegame versions, the heightlevel was coded in bits 0..3 of the type field */
