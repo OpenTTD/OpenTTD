@@ -71,7 +71,7 @@ struct NGRFChunkHandler : ChunkHandler {
 		   SLE_SSTR(GRFConfig, filename,         SLE_STR),
 		    SLE_VAR(GRFConfig, ident.grfid,      SLE_UINT32),
 		    SLE_ARR(GRFConfig, ident.md5sum,     SLE_UINT8,  16),
-		SLE_CONDVAR(GRFConfig, version,          SLE_UINT32, SLV_151, SL_MAX_VERSION),
+		SLE_CONDVAR(GRFConfig, version,          SLE_UINT32, SLV_STORE_NEWGRF_VERSION, SL_MAX_VERSION),
 		   SLEG_ARR("param", param,              SLE_UINT32, std::size(param)),
 		   SLEG_VAR("num_params", num_params,    SLE_UINT8),
 		SLE_CONDVAR(GRFConfig, palette,          SLE_UINT8,  SLV_NEWGRF_PALETTE, SL_MAX_VERSION),

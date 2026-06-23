@@ -222,7 +222,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CUSTOM_SEA_LEVEL,                   ///< 149   20832 Setting to influence the sea level (amount of water)
 
 	SLV_FRACTIONAL_CARGO_DELIVERY,          ///< 150   20857 When spreading cargo over stations, spread fractional amounts for fairness
-	SLV_151,                                ///< 151   20918
+	SLV_STORE_NEWGRF_VERSION,               ///< 151   20918 Store the version of the used NewGRFs
 	SLV_152,                                ///< 152   21171
 	SLV_153,                                ///< 153   21263
 	SLV_154,                                ///< 154   21426
