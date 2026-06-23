@@ -977,7 +977,7 @@ public:
 		 SLE_CONDVAR(Aircraft, number_consecutive_turns, SLE_UINT8,                 SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
 		 SLE_CONDVAR(Aircraft, turn_counter,          SLE_UINT8,                  SLV_SPLIT_LOAD_WAIT_COUNTERS, SL_MAX_VERSION),
-		 SLE_CONDVAR(Aircraft, flags,                 SLE_UINT8,                  SLV_167, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, flags,                 SLE_UINT8,                  SLV_NEWGRF_AIRCRAFT_RANGE, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_aircraft_sl_compat;
 
