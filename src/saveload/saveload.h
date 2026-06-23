@@ -247,7 +247,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_COUNT_INDIVIDUAL_CARGOES,           ///< 170   23826 Store the count of individual cargo delivery for a period
 	SLV_SCENARIO_DEITY_SIGNS,               ///< 171   23835 Signs made in scenarios become of OWNER_DEITY, so they are always shown
-	SLV_172,                                ///< 172   23947
+	SLV_ORDER_MAX_SPEED,                    ///< 172   23947 Set maximum speed for orders
 	SLV_173,                                ///< 173   23967   1.2.0-RC1
 	SLV_174,                                ///< 174   23973   1.2.x
 

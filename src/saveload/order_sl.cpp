@@ -152,7 +152,7 @@ SaveLoadTable GetOrderDescription()
 		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.refit_cargo, "refit_cargo", SLE_UINT8,   SLV_REFIT_ORDERS, SL_MAX_VERSION),
 		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.wait_time,   "wait_time",   SLE_UINT16,  SLV_TIMETABLES, SL_MAX_VERSION),
 		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.travel_time, "travel_time", SLE_UINT16,  SLV_TIMETABLES, SL_MAX_VERSION),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.max_speed,   "max_speed",   SLE_UINT16, SLV_172, SL_MAX_VERSION),
+		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.max_speed,   "max_speed",   SLE_UINT16, SLV_ORDER_MAX_SPEED, SL_MAX_VERSION),
 	};
 
 	return _order_desc;

@@ -2977,7 +2977,7 @@ bool AfterLoadGame()
 	if (gcf_res != GRFListCompatibility::AllGood) StartupEngines();
 
 	/* The road owner of standard road stops was not properly accounted for. */
-	if (IsSavegameVersionBefore(SLV_172)) {
+	if (IsSavegameVersionBefore(SLV_ORDER_MAX_SPEED)) {
 		for (const auto t : Map::Iterate()) {
 			if (!IsBayRoadStopTile(t)) continue;
 			Owner o = GetTileOwner(t);
