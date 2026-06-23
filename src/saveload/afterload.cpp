@@ -2702,7 +2702,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_156)) {
+	if (IsSavegameVersionBefore(SLV_TERRAFORM_LIMITS)) {
 		/* The train's pathfinder lost flag got moved. */
 		for (Train *t : Train::Iterate()) {
 			if (!t->flags.Test(VehicleRailFlag{5})) continue;

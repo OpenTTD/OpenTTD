@@ -540,8 +540,8 @@ static const SaveLoad _company_desc[] = {
 
 	SLE_CONDVAR(CompanyProperties, is_ai,                 SLE_BOOL,                    SLV_VEHICLE_CURRENCY_STATION_CHANGES, SL_MAX_VERSION),
 
-	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SLV_156, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SLV_156, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SLV_TERRAFORM_LIMITS, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SLV_TERRAFORM_LIMITS, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, tree_limit,            SLE_UINT32,                SLV_175, SL_MAX_VERSION),
 	SLEG_STRUCT("settings", SlCompanySettings),
 	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SL_MIN_VERSION, SLV_NOAI),

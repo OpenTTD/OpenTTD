@@ -228,7 +228,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PAUSE_LEVEL,                        ///< 154   21426 Setting to determine what commands are allowed when paused
 
 	SLV_NEWGRF_OBJECT_VIEW,                 ///< 155   21453 Support for views in NewGRF objects
-	SLV_156,                                ///< 156   21728
+	SLV_TERRAFORM_LIMITS,                   ///< 156   21728 Introduce limits for terraforming and clearing times
 	SLV_157,                                ///< 157   21862
 	SLV_158,                                ///< 158   21933
 	SLV_159,                                ///< 159   21962
