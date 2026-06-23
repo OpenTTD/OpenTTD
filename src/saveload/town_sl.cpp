@@ -366,7 +366,7 @@ static const SaveLoad _town_desc[] = {
 	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied,                    SLV_TOWN_SUPPLY_HISTORY, SL_MAX_VERSION),
 	SLEG_STRUCTLIST("accepted", SlTownAccepted),
 	SLEG_CONDSTRUCTLIST("received", SlTownReceived,                    SLV_SCRIPT_TOWN_GROWTH, SL_MAX_VERSION),
-	SLEG_CONDSTRUCTLIST("acceptance_matrix", SlTownAcceptanceMatrix,   SLV_166, SLV_REMOVE_TOWN_CARGO_CACHE),
+	SLEG_CONDSTRUCTLIST("acceptance_matrix", SlTownAcceptanceMatrix,   SLV_INFRASTRUCTURE_MAINTENANCE_COSTS, SLV_REMOVE_TOWN_CARGO_CACHE),
 };
 
 struct HIDSChunkHandler : NewGRFMappingChunkHandler {

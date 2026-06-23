@@ -780,7 +780,7 @@ bool AfterLoadGame()
 		_settings_game.construction.max_bridge_length = 64;
 		_settings_game.construction.max_tunnel_length = 64;
 	}
-	if (IsSavegameVersionBefore(SLV_166))  _settings_game.economy.infrastructure_maintenance = false;
+	if (IsSavegameVersionBefore(SLV_INFRASTRUCTURE_MAINTENANCE_COSTS))  _settings_game.economy.infrastructure_maintenance = false;
 	if (IsSavegameVersionBefore(SLV_183)) {
 		_settings_game.linkgraph.distribution_pax = DistributionType::Manual;
 		_settings_game.linkgraph.distribution_mail = DistributionType::Manual;
