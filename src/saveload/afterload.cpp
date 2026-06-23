@@ -2620,7 +2620,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_152)) {
+	if (IsSavegameVersionBefore(SLV_INDUSTRY_MANAGEMENT)) {
 		_industry_builder.Reset(); // Initialize industry build data.
 
 		/* The moment vehicles go from hidden to visible changed. This means

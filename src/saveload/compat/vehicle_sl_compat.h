@@ -29,7 +29,7 @@ const SaveLoadCompat _vehicle_common_sl_compat[] = {
 	SLC_VAR("spritenum"),
 	SLC_NULL(5, SL_MIN_VERSION, SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER),
 	SLC_VAR("engine_type"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_152),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_INDUSTRY_MANAGEMENT),
 	SLC_VAR("cur_speed"),
 	SLC_VAR("subspeed"),
 	SLC_VAR("acceleration"),
