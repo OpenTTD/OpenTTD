@@ -2991,7 +2991,7 @@ bool AfterLoadGame()
 		for (Company *c : Company::Iterate()) c->tree_limit = _settings_game.construction.tree_frame_burst << 16;
 	}
 
-	if (IsSavegameVersionBefore(SLV_177)) {
+	if (IsSavegameVersionBefore(SLV_MONTHLY_BANKRUPTCY_CHECK)) {
 		/* Fix too high inflation rates */
 		if (_economy.inflation_prices > MAX_INFLATION) _economy.inflation_prices = MAX_INFLATION;
 		if (_economy.inflation_payment > MAX_INFLATION) _economy.inflation_payment = MAX_INFLATION;

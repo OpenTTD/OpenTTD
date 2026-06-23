@@ -253,7 +253,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_AUTOREPLACE_WHEN_OLD_TREE_LIMIT,    ///< 175   24136 Autoreplace vehicle only when they are old, and putting limit on amount of trees to build (at once)
 	SLV_BACKUP_ORDER_STATE,                 ///< 176   24446 Put more of the state of a vehicle's orders (like lateness, start point) in the order backup
-	SLV_177,                                ///< 177   24619
+	SLV_MONTHLY_BANKRUPTCY_CHECK,           ///< 177   24619 Check for bankruptcy on a monthly cycle
 	SLV_178,                                ///< 178   24789
 	SLV_179,                                ///< 179   24810
 
