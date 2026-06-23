@@ -215,71 +215,71 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DISABLE_TOWN_LEVEL_CROSSING,        ///< 143   20048 Setting to be able to disable building rail/road crossings by towns
 	SLV_REORDER_UNMOVABLE_REMOVE_RESERVED,  ///< 144   20334 Reorder map bits of unmovable tiles and remove unused reserved zero bytes
 
-	SLV_145,                                ///< 145   20376
-	SLV_146,                                ///< 146   20446
-	SLV_147,                                ///< 147   20621
-	SLV_148,                                ///< 148   20659
-	SLV_149,                                ///< 149   20832
+	SLV_NEWGRF_AIRPORT_SMOKE,               ///< 145   20376 NewGRF support for airport and configurable amount of smoke for vehicles
+	SLV_UNIFY_WATER_CLASS,                  ///< 146   20446 Unify location for storing water class in the map
+	SLV_UNIFY_ANIMATION_FRAME,              ///< 147   20621 Unify location of animation frame
+	SLV_INDUSTRY_PLATFORM,                  ///< 148   20659 Setting to make a flat area around (new) industries
+	SLV_CUSTOM_SEA_LEVEL,                   ///< 149   20832 Setting to influence the sea level (amount of water)
 
-	SLV_150,                                ///< 150   20857
-	SLV_151,                                ///< 151   20918
-	SLV_152,                                ///< 152   21171
-	SLV_153,                                ///< 153   21263
-	SLV_154,                                ///< 154   21426
+	SLV_FRACTIONAL_CARGO_DELIVERY,          ///< 150   20857 When spreading cargo over stations, spread fractional amounts for fairness
+	SLV_STORE_NEWGRF_VERSION,               ///< 151   20918 Store the version of the used NewGRFs
+	SLV_INDUSTRY_MANAGEMENT,                ///< 152   21171 Manage the amount of industries that ought to be spawned per type
+	SLV_LEAVE_ROAD_STOP_SEPARATELY,         ///< 153   21263 Fix issue where multiple vehicles could leave a road stop at the same time
+	SLV_PAUSE_LEVEL,                        ///< 154   21426 Setting to determine what commands are allowed when paused
 
-	SLV_155,                                ///< 155   21453
-	SLV_156,                                ///< 156   21728
-	SLV_157,                                ///< 157   21862
-	SLV_158,                                ///< 158   21933
-	SLV_159,                                ///< 159   21962
+	SLV_NEWGRF_OBJECT_VIEW,                 ///< 155   21453 Support for views in NewGRF objects
+	SLV_TERRAFORM_LIMITS,                   ///< 156   21728 Introduce limits for terraforming and clearing times
+	SLV_UNIFY_GROUND_VEHICLES,              ///< 157   21862 Unify the way ground vehicles are handled (articulated parts, etc)
+	SLV_TRACK_REAL_AND_AUTO_ORDERS,         ///< 158   21933 Track which real and auto order is the current order
+	SLV_MAX_LENGTH_AND_REVERSE_SIGNALS,     ///< 159   21962 Settings for reversing at signals, and maximum train, bridge and tunnel length
 
-	SLV_160,                                ///< 160   21974   1.1.x
-	SLV_161,                                ///< 161   22567
-	SLV_162,                                ///< 162   22713
-	SLV_163,                                ///< 163   22767
-	SLV_164,                                ///< 164   23290
+	SLV_DISALLOW_ROAD_RECONSTRUCTION,       ///< 160   21974   1.1.x Setting to disallow road reconstruction
+	SLV_PERSISTENT_STORAGE_POOL,            ///< 161   22567 Store persistent storage in a pool
+	SLV_NEWGRF_CUSTOM_CARGO_AGING,          ///< 162   22713 NewGRF influence on aging of cargo in vehicles
+	SLV_RIVERS,                             ///< 163   22767 Rivers
+	SLV_VEHICLE_CENTRE_AND_Z_POS,           ///< 164   23290 Vehicle centres are not fixed at 4/8 of the vehicle; change type of z-positions to prepare for higher maps
 
-	SLV_165,                                ///< 165   23304
-	SLV_166,                                ///< 166   23415
-	SLV_167,                                ///< 167   23504
-	SLV_168,                                ///< 168   23637
-	SLV_169,                                ///< 169   23816
+	SLV_SCRIPT_TOWN_GROWTH,                 ///< 165   23304 Storage of cargo statistics for use by game scripts
+	SLV_INFRASTRUCTURE_MAINTENANCE_COSTS,   ///< 166   23415 Infrastructure can now cost some periodic fee
+	SLV_NEWGRF_AIRCRAFT_RANGE,              ///< 167   23504 NewGRF provided maximum aircraft range
+	SLV_SCRIPT_TOWN_TEXT,                   ///< 168   23637 Game scripts can put a text in the town window
+	SLV_MOVE_SCC_ENCODED,                   ///< 169   23816 Move SCC_ENCODED to the first StringControlCode
 
-	SLV_170,                                ///< 170   23826
-	SLV_171,                                ///< 171   23835
-	SLV_172,                                ///< 172   23947
-	SLV_173,                                ///< 173   23967   1.2.0-RC1
-	SLV_174,                                ///< 174   23973   1.2.x
+	SLV_COUNT_INDIVIDUAL_CARGOES,           ///< 170   23826 Store the count of individual cargo delivery for a period
+	SLV_SCENARIO_DEITY_SIGNS,               ///< 171   23835 Signs made in scenarios become of OWNER_DEITY, so they are always shown
+	SLV_ORDER_MAX_SPEED,                    ///< 172   23947 Set maximum speed for orders
+	SLV_FIX_ROAD_OWNERSHIP,                 ///< 173   23967   1.2.0-RC1 Seemingly unneeded bump supposed to fix something with road ownership
+	SLV_CURRENT_ORDER_MAX_SPEED,            ///< 174   23973   1.2.x     Save maximum speed of current order
 
-	SLV_175,                                ///< 175   24136
-	SLV_176,                                ///< 176   24446
-	SLV_177,                                ///< 177   24619
-	SLV_178,                                ///< 178   24789
-	SLV_179,                                ///< 179   24810
+	SLV_AUTOREPLACE_WHEN_OLD_TREE_LIMIT,    ///< 175   24136 Autoreplace vehicle only when they are old, and putting limit on amount of trees to build (at once)
+	SLV_BACKUP_ORDER_STATE,                 ///< 176   24446 Put more of the state of a vehicle's orders (like lateness, start point) in the order backup
+	SLV_MONTHLY_BANKRUPTCY_CHECK,           ///< 177   24619 Check for bankruptcy on a monthly cycle
+	SLV_SCRIPT_SETTINGS_PROFILE,            ///< 178   24789 Setting for the difficulty profile of AIs
+	SLV_ROBUST_ENGINE_PREVIEW,              ///< 179   24810 Make engine preview offers robust when company ranking changes
 
-	SLV_180,                                ///< 180   24998   1.3.x
-	SLV_181,                                ///< 181   25012
-	SLV_182,                                ///< 182   25115 FS#5492, r25259, r25296 Goal status
-	SLV_183,                                ///< 183   25363 Cargodist
-	SLV_184,                                ///< 184   25508 Unit localisation split
+	SLV_SERVICE_INTERVAL_PERCENT,           ///< 180   24998   1.3.x Service interval in percent or days stored per vehicle
+	SLV_CARGO_RESERVATION,                  ///< 181   25012 Persist the reservation of cargo for vehicles instead of recalculating it each time
+	SLV_GOAL_PROGRESS_PLANE_ACCELERATION,   ///< 182   25115 FS#5492, r25259, r25296 Goal status and plane acceleration fixes
+	SLV_CARGODIST,                          ///< 183   25363 Cargodist
+	SLV_SEPARATE_LOCALE_UNITS,              ///< 184   25508 Unit localisation split
 
-	SLV_185,                                ///< 185   25620 Storybooks
-	SLV_186,                                ///< 186   25833 Objects storage
-	SLV_187,                                ///< 187   25899 Linkgraph - restricted flows
-	SLV_188,                                ///< 188   26169 v1.4  FS#5831 Unify RV travel time
-	SLV_189,                                ///< 189   26450 Hierarchical vehicle subgroups
+	SLV_STORYBOOKS,                         ///< 185   25620 Storybooks
+	SLV_OBJECT_TYPE_TO_POOL,                ///< 186   25833 Move object type from map to pool object
+	SLV_LINKGRAPH_RESTRICTED_FLOW,          ///< 187   25899 Linkgraph - restricted flows
+	SLV_UNIFY_RV_TRAVEL_TIME,               ///< 188   26169 v1.4  FS#5831 Unify RV travel time
+	SLV_GROUP_HIERARCHY,                    ///< 189   26450 Hierarchical vehicle subgroups
 
-	SLV_190,                                ///< 190   26547 Separate order travel and wait times
-	SLV_191,                                ///< 191   26636 FS#6026 Fix disaster vehicle storage (No bump)
+	SLV_SEPARATE_ORDER_TRAVEL_WAIT_TIME,    ///< 190   26547 Separate order travel and wait times
+	SLV_LINKGRAPH_LOCATION_DISASTER_STORE,  ///< 191   26636 FS#6026 Fix disaster vehicle storage (No bump)
 	                                        ///< 191   26646 FS#6041 Linkgraph - store locations
-	SLV_192,                                ///< 192   26700 FS#6066 Fix saving of order backups
-	SLV_193,                                ///< 193   26802
-	SLV_194,                                ///< 194   26881 v1.5
+	SLV_FIX_ORDER_BACKUP,                   ///< 192   26700 FS#6066 Fix saving of order backups
+	SLV_HIDE_ENGINES_FOR_COMPANY,           ///< 193   26802 Hiding of engines for a company
+	SLV_MAX_BRIDGE_MAP_HEIGHT,              ///< 194   26881 v1.5 Setting for maximum bridge and map height
 
-	SLV_195,                                ///< 195   27572 v1.6.1
-	SLV_196,                                ///< 196   27778 v1.7
-	SLV_197,                                ///< 197   27978 v1.8
-	SLV_198,                                ///< 198  PR#6763 Switch town growth rate and counter to actual game ticks
+	SLV_DISTINGUISH_1_6,                    ///< 195   27572 v1.6.1 Convenience bump to distinguish 1.6 from 1.5 saves
+	SLV_DISTINGUISH_1_7,                    ///< 196   27778 v1.7 Convenience bump to distinguish 1.7 from 1.6 saves
+	SLV_STORE_MAP_VARIETY,                  ///< 197   27978 v1.8 Store map variety
+	SLV_TOWN_GROWTH_IN_GAME_TICKS,          ///< 198  PR#6763 Switch town growth rate and counter to actual game ticks
 	SLV_EXTEND_CARGOTYPES,                  ///< 199  PR#6802 Extend cargotypes to 64
 
 	SLV_EXTEND_RAILTYPES,                   ///< 200  PR#6805 Extend railtypes to 64, adding uint16_t to map array.

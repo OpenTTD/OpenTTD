@@ -26,8 +26,8 @@ static const SaveLoad _sign_desc[] = {
 	SLE_CONDVAR(Sign, x, SLE_INT32, SLV_BIG_MAP, SL_MAX_VERSION),
 	SLE_CONDVAR(Sign, y, SLE_INT32, SLV_BIG_MAP, SL_MAX_VERSION),
 	SLE_CONDVAR(Sign, owner, SLE_UINT8, SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, z, SLE_FILE_U8  | SLE_VAR_I32, SL_MIN_VERSION, SLV_164),
-	SLE_CONDVAR(Sign, z, SLE_INT32, SLV_164, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, z, SLE_FILE_U8  | SLE_VAR_I32, SL_MIN_VERSION, SLV_VEHICLE_CENTRE_AND_Z_POS),
+	SLE_CONDVAR(Sign, z, SLE_INT32, SLV_VEHICLE_CENTRE_AND_Z_POS, SL_MAX_VERSION),
 	SLE_CONDVAR(Sign, text_colour, SLE_UINT8, SLV_SIGN_TEXT_COLOURS, SL_MAX_VERSION),
 };
 
@@ -63,7 +63,7 @@ struct SIGNChunkHandler : ChunkHandler {
 			}
 
 			/* Signs placed in scenario editor shall now be OWNER_DEITY */
-			if (IsSavegameVersionBefore(SLV_171) && si->owner == OWNER_NONE && _file_to_saveload.ftype.abstract == AbstractFileType::Scenario) {
+			if (IsSavegameVersionBefore(SLV_SCENARIO_DEITY_SIGNS) && si->owner == OWNER_NONE && _file_to_saveload.ftype.abstract == AbstractFileType::Scenario) {
 				si->owner = OWNER_DEITY;
 			}
 		}

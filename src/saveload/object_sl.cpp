@@ -24,9 +24,9 @@ static const SaveLoad _object_desc[] = {
 	    SLE_VAR(Object, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
 	    SLE_REF(Object, town,                       REF_TOWN),
 	    SLE_VAR(Object, build_date,                 SLE_UINT32),
-	SLE_CONDVARNAME(Object, recolour_offset, "colour", SLE_UINT8, SLV_148, SL_MAX_VERSION),
-	SLE_CONDVAR(Object, view,                       SLE_UINT8,                  SLV_155, SL_MAX_VERSION),
-	SLE_CONDVAR(Object, type,                       SLE_UINT16,                 SLV_186, SL_MAX_VERSION),
+	SLE_CONDVARNAME(Object, recolour_offset, "colour", SLE_UINT8, SLV_INDUSTRY_PLATFORM, SL_MAX_VERSION),
+	SLE_CONDVAR(Object, view,                       SLE_UINT8,                  SLV_NEWGRF_OBJECT_VIEW, SL_MAX_VERSION),
+	SLE_CONDVAR(Object, type,                       SLE_UINT16,                 SLV_OBJECT_TYPE_TO_POOL, SL_MAX_VERSION),
 };
 
 struct OBJSChunkHandler : ChunkHandler {
@@ -58,7 +58,7 @@ struct OBJSChunkHandler : ChunkHandler {
 	{
 		for (Object *o : Object::Iterate()) {
 			SlObject(o, _object_desc);
-			if (IsSavegameVersionBefore(SLV_148) && !IsTileType(o->location.tile, TileType::Object)) {
+			if (IsSavegameVersionBefore(SLV_INDUSTRY_PLATFORM) && !IsTileType(o->location.tile, TileType::Object)) {
 				/* Due to a small bug stale objects could remain. */
 				delete o;
 			}

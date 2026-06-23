@@ -22,7 +22,7 @@ static const SaveLoad _engine_renew_desc[] = {
 
 	    SLE_REF(EngineRenew, next,     REF_ENGINE_RENEWS),
 	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, SLV_VEHICLE_GROUPS, SL_MAX_VERSION),
-	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, SLV_175, SL_MAX_VERSION),
+	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, SLV_AUTOREPLACE_WHEN_OLD_TREE_LIMIT, SL_MAX_VERSION),
 };
 
 struct ERNWChunkHandler : ChunkHandler {

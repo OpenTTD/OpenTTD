@@ -75,7 +75,7 @@
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_181)) {
+	if (IsSavegameVersionBefore(SLV_CARGO_RESERVATION)) {
 		for (Vehicle *v : Vehicle::Iterate()) v->cargo.KeepAll();
 	}
 

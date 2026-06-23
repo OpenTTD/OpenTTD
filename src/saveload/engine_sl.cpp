@@ -32,12 +32,12 @@ static const SaveLoad _engine_desc[] = {
 	     SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
 	     SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
 	     SLE_VAR(Engine, flags,               SLE_UINT8),
-	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                SLV_179, SL_MAX_VERSION),
-	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 SLV_179, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                SLV_ROBUST_ENGINE_PREVIEW, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 SLV_ROBUST_ENGINE_PREVIEW, SL_MAX_VERSION),
 	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
 	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_MORE_COMPANIES),
 	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                SLV_MORE_COMPANIES, SL_MAX_VERSION),
-	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                SLV_193, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                SLV_HIDE_ENGINES_FOR_COMPANY, SL_MAX_VERSION),
 	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
 };
 
@@ -86,7 +86,7 @@ struct ENGNChunkHandler : ChunkHandler {
 			Engine *e = GetTempDataEngine(static_cast<EngineID>(index));
 			SlObject(e, slt);
 
-			if (IsSavegameVersionBefore(SLV_179)) {
+			if (IsSavegameVersionBefore(SLV_ROBUST_ENGINE_PREVIEW)) {
 				/* preview_company_rank was replaced with preview_company and preview_asked.
 				 * Just cancel any previews. */
 				e->flags.Reset(EngineFlag{2}); // ENGINE_OFFER_WINDOW_OPEN

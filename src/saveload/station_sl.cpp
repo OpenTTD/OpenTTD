@@ -312,7 +312,7 @@ public:
 		    SLE_VAR(FlowSaveLoad, source,     SLE_UINT16),
 		    SLE_VAR(FlowSaveLoad, via,        SLE_UINT16),
 		    SLE_VAR(FlowSaveLoad, share,      SLE_UINT32),
-		SLE_CONDVAR(FlowSaveLoad, restricted, SLE_BOOL, SLV_187, SL_MAX_VERSION),
+		SLE_CONDVAR(FlowSaveLoad, restricted, SLE_BOOL, SLV_LINKGRAPH_RESTRICTED_FLOW, SL_MAX_VERSION),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_flow_sl_compat;
 
@@ -383,16 +383,16 @@ public:
 		     SLE_VAR(GoodsEntry, last_age,             SLE_UINT8),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, SLV_TRANSFER_ORDER, SLV_UNIFY_CURRENCY),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share,  SLE_INT64,                  SLV_UNIFY_CURRENCY, SLV_CARGO_PACKETS),
-		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 SLV_150, SL_MAX_VERSION),
-		SLEG_CONDREFLIST("packets", _packets,          REF_CARGO_PACKET,           SLV_CARGO_PACKETS, SLV_183),
-		SLEG_CONDVAR("old_num_dests", _old_num_dests,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
-		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, SLE_UINT,                  SLV_181, SL_MAX_VERSION),
-		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_183, SL_MAX_VERSION),
-		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDVAR("old_num_flows", _old_num_flows,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
-		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDSTRUCTLIST("flow", SlStationFlow,                                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo,                              SLV_183, SL_MAX_VERSION),
+		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 SLV_FRACTIONAL_CARGO_DELIVERY, SL_MAX_VERSION),
+		SLEG_CONDREFLIST("packets", _packets,          REF_CARGO_PACKET,           SLV_CARGO_PACKETS, SLV_CARGODIST),
+		SLEG_CONDVAR("old_num_dests", _old_num_dests,  SLE_UINT32,                SLV_CARGODIST, SLV_SAVELOAD_LIST_LENGTH),
+		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, SLE_UINT,                  SLV_CARGO_RESERVATION, SL_MAX_VERSION),
+		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_CARGODIST, SL_MAX_VERSION),
+		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_CARGODIST, SL_MAX_VERSION),
+		SLEG_CONDVAR("old_num_flows", _old_num_flows,  SLE_UINT32,                SLV_CARGODIST, SLV_SAVELOAD_LIST_LENGTH),
+		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_CARGODIST, SL_MAX_VERSION),
+		SLEG_CONDSTRUCTLIST("flow", SlStationFlow,                                SLV_CARGODIST, SL_MAX_VERSION),
+		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo,                              SLV_CARGODIST, SL_MAX_VERSION),
 	};
 
 	static inline const SaveLoadCompatTable compat_description = _station_goods_sl_compat;
@@ -427,7 +427,7 @@ public:
 		Station *st = Station::From(bst);
 
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
-		if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_145) && st->facilities.Test(StationFacility::Airport)) {
+		if (IsSavegameVersionBefore(SLV_PERSISTENT_STORAGE_POOL) && !IsSavegameVersionBefore(SLV_NEWGRF_AIRPORT_SMOKE) && st->facilities.Test(StationFacility::Airport)) {
 			/* Store the old persistent storage. The GRFID will be added later. */
 			assert(PersistentStorage::CanAllocateItem());
 			st->airport.psa = PersistentStorage::Create(0, GrfSpecFeature::Invalid, TileIndex{});
@@ -438,10 +438,10 @@ public:
 		for (auto it = std::begin(st->goods); it != end; ++it) {
 			GoodsEntry &ge = *it;
 			SlObject(&ge, this->GetLoadDescription());
-			if (!IsSavegameVersionBefore(SLV_181) && SlStationGoods::cargo_reserved_count != 0) {
+			if (!IsSavegameVersionBefore(SLV_CARGO_RESERVATION) && SlStationGoods::cargo_reserved_count != 0) {
 				ge.GetOrCreateData().cargo.reserved_count = SlStationGoods::cargo_reserved_count;
 			}
-			if (IsSavegameVersionBefore(SLV_183)) {
+			if (IsSavegameVersionBefore(SLV_CARGODIST)) {
 				SwapPackets(&ge);
 			}
 			if (IsSavegameVersionBefore(SLV_CARGO_PACKETS)) {
@@ -473,7 +473,7 @@ public:
 		auto end = std::next(std::begin(st->goods), std::min(num_cargo, std::size(st->goods)));
 		for (auto it = std::begin(st->goods); it != end; ++it) {
 			GoodsEntry &ge = *it;
-			if (IsSavegameVersionBefore(SLV_183)) {
+			if (IsSavegameVersionBefore(SLV_CARGODIST)) {
 				SwapPackets(&ge); // We have to swap back again to be in the format pre-183 expects.
 				SlObject(&ge, this->GetDescription());
 				SwapPackets(&ge);
@@ -638,11 +638,11 @@ public:
 		SLE_CONDVAR(Station, airport.w,                  SLE_FILE_U8 | SLE_VAR_U16, SLV_STORE_AIRPORT_SIZE, SL_MAX_VERSION),
 		SLE_CONDVAR(Station, airport.h,                  SLE_FILE_U8 | SLE_VAR_U16, SLV_STORE_AIRPORT_SIZE, SL_MAX_VERSION),
 		    SLE_VAR(Station, airport.type,               SLE_UINT8),
-		SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 SLV_145, SL_MAX_VERSION),
+		SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 SLV_NEWGRF_AIRPORT_SMOKE, SL_MAX_VERSION),
 		SLE_VARNAME(Station, airport.blocks, "airport.flags", SLE_UINT64),
-		SLE_CONDVAR(Station, airport.rotation,           SLE_UINT8,                 SLV_145, SL_MAX_VERSION),
-		SLEG_CONDARR("storage", _old_st_persistent_storage.storage,  SLE_UINT32, 16, SLV_145, SLV_161),
-		SLE_CONDREF(Station, airport.psa,                REF_STORAGE,               SLV_161, SL_MAX_VERSION),
+		SLE_CONDVAR(Station, airport.rotation,           SLE_UINT8,                 SLV_NEWGRF_AIRPORT_SMOKE, SL_MAX_VERSION),
+		SLEG_CONDARR("storage", _old_st_persistent_storage.storage,  SLE_UINT32, 16, SLV_NEWGRF_AIRPORT_SMOKE, SLV_PERSISTENT_STORAGE_POOL),
+		SLE_CONDREF(Station, airport.psa,                REF_STORAGE,               SLV_PERSISTENT_STORAGE_POOL, SL_MAX_VERSION),
 
 		    SLE_VAR(Station, indtype,                    SLE_UINT8),
 

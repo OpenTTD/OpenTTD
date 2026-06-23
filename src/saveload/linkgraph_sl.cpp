@@ -35,7 +35,7 @@ public:
 		    SLE_VAR(Edge, usage,                    SLE_UINT32),
 		SLE_CONDVAR(Edge, travel_time_sum,          SLE_UINT64, SLV_LINKGRAPH_TRAVEL_TIME, SL_MAX_VERSION),
 		    SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
-		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_187, SL_MAX_VERSION),
+		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_LINKGRAPH_RESTRICTED_FLOW, SL_MAX_VERSION),
 		    SLE_VAR(Edge, dest_node,                SLE_UINT16),
 		SLE_CONDVARNAME(Edge, dest_node, "next_edge", SLE_UINT16, SL_MIN_VERSION, SLV_LINKGRAPH_EDGES),
 	};
@@ -55,7 +55,7 @@ public:
 			uint16_t max_size = _linkgraph->Size();
 			std::vector<Edge> edges(max_size);
 
-			if (IsSavegameVersionBefore(SLV_191)) {
+			if (IsSavegameVersionBefore(SLV_LINKGRAPH_LOCATION_DISASTER_STORE)) {
 				/* We used to save the full matrix ... */
 				for (NodeID to = 0; to < max_size; ++to) {
 					SlObject(&edges[to], this->GetLoadDescription());
@@ -96,7 +96,7 @@ public:
 class SlLinkgraphNode : public DefaultSaveLoadHandler<SlLinkgraphNode, LinkGraph> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(Node, xy,          SLE_UINT32, SLV_191, SL_MAX_VERSION),
+		SLE_CONDVAR(Node, xy,          SLE_UINT32, SLV_LINKGRAPH_LOCATION_DISASTER_STORE, SL_MAX_VERSION),
 		    SLE_VAR(Node, supply,      SLE_UINT32),
 		    SLE_VAR(Node, demand,      SLE_UINT32),
 		    SLE_VAR(Node, station,     SLE_UINT16),
@@ -231,7 +231,7 @@ SaveLoadTable GetLinkGraphScheduleDesc()
  */
 void AfterLoadLinkGraphs()
 {
-	if (IsSavegameVersionBefore(SLV_191)) {
+	if (IsSavegameVersionBefore(SLV_LINKGRAPH_LOCATION_DISASTER_STORE)) {
 		for (LinkGraph *lg : LinkGraph::Iterate()) {
 			for (NodeID node_id = 0; node_id < lg->Size(); ++node_id) {
 				const Station *st = Station::GetIfValid((*lg)[node_id].station);

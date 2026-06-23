@@ -14,7 +14,7 @@
 
 /** Original field order for SlLinkgraphEdge. */
 const SaveLoadCompat _linkgraph_edge_sl_compat[] = {
-	SLC_NULL(4, SL_MIN_VERSION, SLV_191),
+	SLC_NULL(4, SL_MIN_VERSION, SLV_LINKGRAPH_LOCATION_DISASTER_STORE),
 	SLC_VAR("capacity"),
 	SLC_VAR("usage"),
 	SLC_VAR("last_unrestricted_update"),

@@ -17,7 +17,7 @@ const SaveLoadCompat _date_sl_compat[] = {
 	SLC_VAR("date"),
 	SLC_VAR("date_fract"),
 	SLC_VAR("tick_counter"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_157),
+	SLC_NULL(2, SL_MIN_VERSION, SLV_UNIFY_GROUND_VEHICLES),
 	SLC_VAR("age_cargo_skip_counter"),
 	SLC_NULL(1, SL_MIN_VERSION, SLV_MORE_AIRPORT_BLOCKS),
 	SLC_VAR("cur_tileloop_tile"),
@@ -39,8 +39,8 @@ const SaveLoadCompat _date_check_sl_compat[] = {
 	SLC_VAR("date"),
 	SLC_NULL(2, SL_MIN_VERSION, SL_MAX_VERSION), // date_fract
 	SLC_NULL(2, SL_MIN_VERSION, SL_MAX_VERSION), // tick_counter
-	SLC_NULL(2, SL_MIN_VERSION, SLV_157),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_162),        // age_cargo_skip_counter
+	SLC_NULL(2, SL_MIN_VERSION, SLV_UNIFY_GROUND_VEHICLES),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_NEWGRF_CUSTOM_CARGO_AGING),        // age_cargo_skip_counter
 	SLC_NULL(1, SL_MIN_VERSION, SLV_MORE_AIRPORT_BLOCKS),
 	SLC_NULL(2, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),          // cur_tileloop_tile
 	SLC_NULL(4, SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),          // cur_tileloop_tile
