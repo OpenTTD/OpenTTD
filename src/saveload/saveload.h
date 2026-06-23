@@ -267,7 +267,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_OBJECT_TYPE_TO_POOL,                ///< 186   25833 Move object type from map to pool object
 	SLV_LINKGRAPH_RESTRICTED_FLOW,          ///< 187   25899 Linkgraph - restricted flows
 	SLV_UNIFY_RV_TRAVEL_TIME,               ///< 188   26169 v1.4  FS#5831 Unify RV travel time
-	SLV_189,                                ///< 189   26450 Hierarchical vehicle subgroups
+	SLV_GROUP_HIERARCHY,                    ///< 189   26450 Hierarchical vehicle subgroups
 
 	SLV_190,                                ///< 190   26547 Separate order travel and wait times
 	SLV_191,                                ///< 191   26636 FS#6026 Fix disaster vehicle storage (No bump)
