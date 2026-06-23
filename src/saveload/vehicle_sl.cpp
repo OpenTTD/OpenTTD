@@ -686,7 +686,7 @@ public:
 		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
 		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_BIG_MAP),
 		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_UINT16,                   SLV_BIG_MAP, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, last_loading_station,  SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, last_loading_station,  SLE_UINT16,                 SLV_GOAL_PROGRESS_PLANE_ACCELERATION, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, cargo_type,            SLE_UINT8),
 		SLE_CONDVAR(Vehicle, cargo_subtype,         SLE_UINT8,                   SLV_LIVERY_REFIT, SL_MAX_VERSION),
@@ -695,7 +695,7 @@ public:
 		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_UINT16,                   SLV_LARGER_CARGO_SOURCE,  SLV_CARGO_PACKETS),
 		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,             SLV_CARGO_SOURCE_TILE,  SLV_CARGO_PACKETS),
 		    SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
-		SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_GOAL_PROGRESS_PLANE_ACCELERATION, SL_MAX_VERSION),
 		SLEG_CONDVAR("cargo_count", _cargo_count,   SLE_UINT16,                   SL_MIN_VERSION,  SLV_CARGO_PACKETS),
 		SLE_CONDREFLIST(Vehicle, cargo.packets,     REF_CARGO_PACKET,            SLV_CARGO_PACKETS, SL_MAX_VERSION),
 		SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, to_underlying(VehicleCargoList::MoveToAction::End), SLV_CARGO_RESERVATION, SL_MAX_VERSION),
@@ -1163,7 +1163,7 @@ struct VEHSChunkHandler : ChunkHandler {
 				v->last_station_visited = StationID::Invalid();
 			}
 
-			if (IsSavegameVersionBefore(SLV_182)) v->last_loading_station = StationID::Invalid();
+			if (IsSavegameVersionBefore(SLV_GOAL_PROGRESS_PLANE_ACCELERATION)) v->last_loading_station = StationID::Invalid();
 
 			if (IsSavegameVersionBefore(SLV_BIG_MAP)) {
 				/* Convert the current_order.type (which is a mix of type and flags, because

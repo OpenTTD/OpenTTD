@@ -259,7 +259,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_SERVICE_INTERVAL_PERCENT,           ///< 180   24998   1.3.x Service interval in percent or days stored per vehicle
 	SLV_CARGO_RESERVATION,                  ///< 181   25012 Persist the reservation of cargo for vehicles instead of recalculating it each time
-	SLV_182,                                ///< 182   25115 FS#5492, r25259, r25296 Goal status
+	SLV_GOAL_PROGRESS_PLANE_ACCELERATION,   ///< 182   25115 FS#5492, r25259, r25296 Goal status and plane acceleration fixes
 	SLV_183,                                ///< 183   25363 Cargodist
 	SLV_184,                                ///< 184   25508 Unit localisation split
 

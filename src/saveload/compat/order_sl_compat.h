@@ -19,7 +19,7 @@ const SaveLoadCompat _order_sl_compat[] = {
 	SLC_VAR("dest"),
 	SLC_VAR("next"),
 	SLC_VAR("refit_cargo"),
-	SLC_NULL(1, SLV_REFIT_ORDERS, SLV_182),
+	SLC_NULL(1, SLV_REFIT_ORDERS, SLV_GOAL_PROGRESS_PLANE_ACCELERATION),
 	SLC_VAR("wait_time"),
 	SLC_VAR("travel_time"),
 	SLC_VAR("max_speed"),
