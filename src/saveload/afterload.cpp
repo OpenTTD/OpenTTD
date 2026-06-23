@@ -3144,7 +3144,7 @@ bool AfterLoadGame()
 #endif
 	}
 
-	if (IsSavegameVersionBefore(SLV_198)) {
+	if (IsSavegameVersionBefore(SLV_TOWN_GROWTH_IN_GAME_TICKS)) {
 		/* Convert towns growth_rate and grow_counter to ticks */
 		for (Town *t : Town::Iterate()) {
 			/* 0x8000 = TOWN_GROWTH_RATE_CUSTOM previously */
