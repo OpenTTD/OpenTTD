@@ -255,7 +255,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_BACKUP_ORDER_STATE,                 ///< 176   24446 Put more of the state of a vehicle's orders (like lateness, start point) in the order backup
 	SLV_MONTHLY_BANKRUPTCY_CHECK,           ///< 177   24619 Check for bankruptcy on a monthly cycle
 	SLV_SCRIPT_SETTINGS_PROFILE,            ///< 178   24789 Setting for the difficulty profile of AIs
-	SLV_179,                                ///< 179   24810
+	SLV_ROBUST_ENGINE_PREVIEW,              ///< 179   24810 Make engine preview offers robust when company ranking changes
 
 	SLV_180,                                ///< 180   24998   1.3.x
 	SLV_181,                                ///< 181   25012
