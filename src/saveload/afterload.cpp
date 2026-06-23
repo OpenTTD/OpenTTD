@@ -3036,7 +3036,7 @@ bool AfterLoadGame()
 		_settings_game.locale.units_velocity_nautical = _settings_game.locale.units_velocity;
 	}
 
-	if (IsSavegameVersionBefore(SLV_186)) {
+	if (IsSavegameVersionBefore(SLV_OBJECT_TYPE_TO_POOL)) {
 		/* Move ObjectType from map to pool */
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Object)) {
