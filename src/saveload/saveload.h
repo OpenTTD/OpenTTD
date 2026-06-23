@@ -276,7 +276,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_HIDE_ENGINES_FOR_COMPANY,           ///< 193   26802 Hiding of engines for a company
 	SLV_MAX_BRIDGE_MAP_HEIGHT,              ///< 194   26881 v1.5 Setting for maximum bridge and map height
 
-	SLV_195,                                ///< 195   27572 v1.6.1
+	SLV_DISTINGUISH_1_6,                    ///< 195   27572 v1.6.1 Convenience bump to distinguish 1.6 from 1.5 saves
 	SLV_196,                                ///< 196   27778 v1.7
 	SLV_197,                                ///< 197   27978 v1.8
 	SLV_198,                                ///< 198  PR#6763 Switch town growth rate and counter to actual game ticks
