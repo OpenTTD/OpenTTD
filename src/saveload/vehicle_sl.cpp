@@ -1075,10 +1075,10 @@ public:
 		SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_BIG_DATES, SL_MAX_VERSION),
 		    SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),
 
-		SLE_CONDVAR(DisasterVehicle, image_override,            SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_191),
-		SLE_CONDVAR(DisasterVehicle, image_override,            SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
-		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_191),
-		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
+		SLE_CONDVAR(DisasterVehicle, image_override,            SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_LINKGRAPH_LOCATION_DISASTER_STORE),
+		SLE_CONDVAR(DisasterVehicle, image_override,            SLE_UINT32,                 SLV_LINKGRAPH_LOCATION_DISASTER_STORE, SL_MAX_VERSION),
+		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_LINKGRAPH_LOCATION_DISASTER_STORE),
+		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 SLV_LINKGRAPH_LOCATION_DISASTER_STORE, SL_MAX_VERSION),
 		SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_194, SL_MAX_VERSION),
 	};
 
