@@ -224,7 +224,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FRACTIONAL_CARGO_DELIVERY,          ///< 150   20857 When spreading cargo over stations, spread fractional amounts for fairness
 	SLV_STORE_NEWGRF_VERSION,               ///< 151   20918 Store the version of the used NewGRFs
 	SLV_INDUSTRY_MANAGEMENT,                ///< 152   21171 Manage the amount of industries that ought to be spawned per type
-	SLV_153,                                ///< 153   21263
+	SLV_LEAVE_ROAD_STOP_SEPARATELY,         ///< 153   21263 Fix issue where multiple vehicles could leave a road stop at the same time
 	SLV_154,                                ///< 154   21426
 
 	SLV_155,                                ///< 155   21453

@@ -2688,7 +2688,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_153)) {
+	if (IsSavegameVersionBefore(SLV_LEAVE_ROAD_STOP_SEPARATELY)) {
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) continue;
 
