@@ -219,7 +219,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_UNIFY_WATER_CLASS,                  ///< 146   20446 Unify location for storing water class in the map
 	SLV_UNIFY_ANIMATION_FRAME,              ///< 147   20621 Unify location of animation frame
 	SLV_INDUSTRY_PLATFORM,                  ///< 148   20659 Setting to make a flat area around (new) industries
-	SLV_149,                                ///< 149   20832
+	SLV_CUSTOM_SEA_LEVEL,                   ///< 149   20832 Setting to influence the sea level (amount of water)
 
 	SLV_150,                                ///< 150   20857
 	SLV_151,                                ///< 151   20918

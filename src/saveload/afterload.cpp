@@ -2599,7 +2599,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_149)) {
+	if (IsSavegameVersionBefore(SLV_CUSTOM_SEA_LEVEL)) {
 		for (const auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Station)) continue;
 			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && IsTileFlat(t))) {
