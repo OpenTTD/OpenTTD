@@ -3020,7 +3020,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_184)) {
+	if (IsSavegameVersionBefore(SLV_SEPARATE_LOCALE_UNITS)) {
 		/* The global units configuration is split up in multiple configurations. */
 		extern uint8_t _old_units;
 		_settings_game.locale.units_velocity = Clamp(_old_units, 0, 2);

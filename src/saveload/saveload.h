@@ -261,7 +261,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CARGO_RESERVATION,                  ///< 181   25012 Persist the reservation of cargo for vehicles instead of recalculating it each time
 	SLV_GOAL_PROGRESS_PLANE_ACCELERATION,   ///< 182   25115 FS#5492, r25259, r25296 Goal status and plane acceleration fixes
 	SLV_CARGODIST,                          ///< 183   25363 Cargodist
-	SLV_184,                                ///< 184   25508 Unit localisation split
+	SLV_SEPARATE_LOCALE_UNITS,              ///< 184   25508 Unit localisation split
 
 	SLV_185,                                ///< 185   25620 Storybooks
 	SLV_186,                                ///< 186   25833 Objects storage
