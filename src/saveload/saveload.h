@@ -239,7 +239,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_RIVERS,                             ///< 163   22767 Rivers
 	SLV_VEHICLE_CENTRE_AND_Z_POS,           ///< 164   23290 Vehicle centres are not fixed at 4/8 of the vehicle; change type of z-positions to prepare for higher maps
 
-	SLV_165,                                ///< 165   23304
+	SLV_SCRIPT_TOWN_GROWTH,                 ///< 165   23304 Storage of cargo statistics for use by game scripts
 	SLV_166,                                ///< 166   23415
 	SLV_167,                                ///< 167   23504
 	SLV_168,                                ///< 168   23637

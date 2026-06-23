@@ -2945,7 +2945,7 @@ bool AfterLoadGame()
 		_settings_game.difficulty.train_flip_reverse_allowed = _settings_game.difficulty.line_reverse_mode ? TrainFlipReversingAllowed::EndOfLineOnly : TrainFlipReversingAllowed::All;
 	}
 
-	if (IsSavegameVersionBefore(SLV_165)) {
+	if (IsSavegameVersionBefore(SLV_SCRIPT_TOWN_GROWTH)) {
 		for (Town *t : Town::Iterate()) {
 			/* Set the default cargo requirement for town growth */
 			switch (_settings_game.game_creation.landscape) {
@@ -2964,7 +2964,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_165)) {
+	if (IsSavegameVersionBefore(SLV_SCRIPT_TOWN_GROWTH)) {
 		/* Adjust zoom level to account for new levels */
 		_saved_scrollpos_zoom += ZOOM_BASE_SHIFT;
 		_saved_scrollpos_x *= ZOOM_BASE;
