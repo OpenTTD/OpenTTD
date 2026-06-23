@@ -278,7 +278,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_DISTINGUISH_1_6,                    ///< 195   27572 v1.6.1 Convenience bump to distinguish 1.6 from 1.5 saves
 	SLV_DISTINGUISH_1_7,                    ///< 196   27778 v1.7 Convenience bump to distinguish 1.7 from 1.6 saves
-	SLV_197,                                ///< 197   27978 v1.8
+	SLV_STORE_MAP_VARIETY,                  ///< 197   27978 v1.8 Store map variety
 	SLV_198,                                ///< 198  PR#6763 Switch town growth rate and counter to actual game ticks
 	SLV_EXTEND_CARGOTYPES,                  ///< 199  PR#6802 Extend cargotypes to 64
 
