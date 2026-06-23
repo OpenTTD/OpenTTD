@@ -149,35 +149,35 @@ enum SaveLoadVersion : uint16_t {
 	SLV_FRACTION_PROFIT_RUNNING_TICKS,      ///<  88   12134 Store vehicle profits as a (fixed point) fraction, and store the number of ticks a vehicle ran in a day
 	SLV_MORE_WAYPOINTS_PER_TOWN,            ///<  89   12160 Support more than 64 waypoints per town
 
-	SLV_90,                                 ///<  90   12293
-	SLV_91,                                 ///<  91   12347
-	SLV_92,                                 ///<  92   12381   0.6.x
-	SLV_93,                                 ///<  93   12648
-	SLV_94,                                 ///<  94   12816
+	SLV_PLANE_SPEED_FACTOR,                 ///<  90   12293 Setting to increase aircraft speed to be on par with the other vehicles
+	SLV_MORE_HOUSE_ANIMATION_FRAMES,        ///<  91   12347 Increase number of animation frames for NewGRF houses
+	SLV_REMOVE_HOUSE_COUNT,                 ///<  92   12381   0.6.x Remove number of houses in a town from the save
+	SLV_IMPROVED_ORDERS,                    ///<  93   12648 Orders support all full load/non stop types at the same time now
+	SLV_FIX_COMPANY_CARGO_TYPES,            ///<  94   12816 The company's cargo types should have increased in since with SLV_NEWGRF_CARGO
 
-	SLV_95,                                 ///<  95   12924
-	SLV_96,                                 ///<  96   13226
-	SLV_97,                                 ///<  97   13256
-	SLV_98,                                 ///<  98   13375
-	SLV_99,                                 ///<  99   13838
+	SLV_MORE_ENGINE_TYPES,                  ///<  95   12924 Allow more than the original 255 engine types
+	SLV_AIRPORT_NOISE,                      ///<  96   13226 Introduce noise for airports, to allow more than two airports per town
+	SLV_MERGE_OPTS_PATS,                    ///<  97   13256 Merge the OPTS and PATS chunks, i.e. all settings in one chunk
+	SLV_GAMELOG,                            ///<  98   13375 Logging of important actions/situations in the save
+	SLV_INDUSTRY_TILE_WATER_CLASS,          ///<  99   13838 Add water classes to industry tiles
 
-	SLV_100,                                ///< 100   13952
-	SLV_101,                                ///< 101   14233
-	SLV_102,                                ///< 102   14332
-	SLV_103,                                ///< 103   14598
-	SLV_104,                                ///< 104   14735
+	SLV_YAPP,                               ///< 100   13952 New version of path based signals
+	SLV_NEWGRF_PALETTE,                     ///< 101   14233 Store palette used by each of the NewGRFs
+	SLV_SPREAD_INDUSTRY_PRODUCTION_CHANGES, ///< 102   14332 Spread the industry production changes over the month, instead of doing all on the same day
+	SLV_NEWGRF_SUPPLIED_STATION_NAME,       ///< 103   14598 NewGRF industry supplying default names for nearby stations
+	SLV_MORE_COMPANIES,                     ///< 104   14735 Increase maximum number of companies to 15
 
-	SLV_105,                                ///< 105   14803
-	SLV_106,                                ///< 106   14919
-	SLV_107,                                ///< 107   15027
-	SLV_108,                                ///< 108   15045
-	SLV_109,                                ///< 109   15075
+	SLV_ORDER_LIST,                         ///< 105   14803 Create separate order list objects for maintaining orders
+	SLV_DISTANT_STATION_JOINING,            ///< 106   14919 Distant joining of stations
+	SLV_NOAI,                               ///< 107   15027 Replace built in cheating AI with framework for externally developed (scripted) AIs
+	SLV_STORE_AI_VERSION,                   ///< 108   15045 Store the version of the AI script
+	SLV_NEXT_COMPETITOR_START_OVERFLOW,     ///< 109   15075 Prevent overflow in the next competitor start counter
 
-	SLV_110,                                ///< 110   15148
-	SLV_111,                                ///< 111   15190
-	SLV_112,                                ///< 112   15290
-	SLV_113,                                ///< 113   15340
-	SLV_114,                                ///< 114   15601
+	SLV_REMOVE_OLD_AI_SETTINGS,             ///< 110   15148 Remove remnants of the old AI's configuration
+	SLV_FREEFORM_EDGES,                     ///< 111   15190 Allow terraforming along the edge of the map
+	SLV_SPLIT_HQ,                           ///< 112   15290 Split the behaviour of headquarters from the other unmovable objects
+	SLV_ROAD_LAYOUT_PER_TOWN,               ///< 113   15340 Allow for different road layouts for each of the towns
+	SLV_SEPARATE_ROAD_OWNERS,               ///< 114   15601 Separate owners for road bits, tram bits and the road stop
 
 	SLV_115,                                ///< 115   15695
 	SLV_116,                                ///< 116   15893   0.7.x

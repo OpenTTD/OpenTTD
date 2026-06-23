@@ -51,8 +51,8 @@ const SaveLoadCompat _date_check_sl_compat[] = {
 	SLC_NULL(1,  SL_MIN_VERSION,  SLV_LARGER_TOWN_COUNTER),
 	SLC_NULL(4, SLV_LARGER_TOWN_COUNTER, SLV_120),
 	SLC_NULL(1, SL_MIN_VERSION, SL_MAX_VERSION), // cur_company_tick_index
-	SLC_NULL(2, SL_MIN_VERSION, SLV_109),        // next_competitor_start
-	SLC_NULL(4, SLV_109, SL_MAX_VERSION),        // next_competitor_start
+	SLC_NULL(2, SL_MIN_VERSION, SLV_NEXT_COMPETITOR_START_OVERFLOW),        // next_competitor_start
+	SLC_NULL(4, SLV_NEXT_COMPETITOR_START_OVERFLOW, SL_MAX_VERSION),        // next_competitor_start
 	SLC_NULL(1, SL_MIN_VERSION, SL_MAX_VERSION), // trees_tick_ctr
 	SLC_NULL(1, SLV_TOWN_TOLERANCE_PAUSE_MODE, SL_MAX_VERSION),          // pause_mode
 	SLC_NULL(4, SLV_LARGER_TOWN_ITERATOR, SLV_120),

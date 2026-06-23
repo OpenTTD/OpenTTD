@@ -53,7 +53,7 @@ static const SaveLoad _economy_desc[] = {
 	    SLE_VAR(Economy, interest_rate,                 SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount_pr,                SLE_UINT8),
-	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32,                SLV_102, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32,                SLV_SPREAD_INDUSTRY_PRODUCTION_CHANGES, SL_MAX_VERSION),
 };
 
 /** Economy variables */
@@ -77,7 +77,7 @@ struct ECMYChunkHandler : ChunkHandler {
 		SlObject(&_economy, slt);
 		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many ECMY entries");
 
-		StartupIndustryDailyChanges(IsSavegameVersionBefore(SLV_102));  // old savegames will need to be initialized
+		StartupIndustryDailyChanges(IsSavegameVersionBefore(SLV_SPREAD_INDUSTRY_PRODUCTION_CHANGES));  // old savegames will need to be initialized
 	}
 };
 

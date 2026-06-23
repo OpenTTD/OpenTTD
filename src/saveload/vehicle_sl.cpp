@@ -282,7 +282,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->orders != nullptr) {
-				if (IsSavegameVersionBefore(SLV_105)) { // Pre-105 didn't save an OrderList
+				if (IsSavegameVersionBefore(SLV_ORDER_LIST)) { // Pre-105 didn't save an OrderList
 					if (mapping[v->old_orders] == nullptr) {
 						/* This adds the whole shared vehicle chain for case b */
 
@@ -328,7 +328,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 	}
 
 	if (part_of_load) {
-		if (IsSavegameVersionBefore(SLV_105)) {
+		if (IsSavegameVersionBefore(SLV_ORDER_LIST)) {
 			/* Before 105 there was no order for shared orders, thus it messed up horribly */
 			for (Vehicle *v : Vehicle::Iterate()) {
 				if (v->First() != v || v->orders != nullptr || v->previous_shared != nullptr || v->next_shared == nullptr) continue;
@@ -479,7 +479,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 	}
 
 	/* Stop non-front engines */
-	if (part_of_load && IsSavegameVersionBefore(SLV_112)) {
+	if (part_of_load && IsSavegameVersionBefore(SLV_SPLIT_HQ)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->type == VehicleType::Train) {
 				Train *t = Train::From(v);
@@ -730,8 +730,8 @@ public:
 		SLE_CONDVAR(Vehicle, timetable_start,       SLE_UINT64,                 SLV_TIMETABLE_START_TICKS, SL_MAX_VERSION),
 
 		SLE_CONDVARNAME(Vehicle, old_orders, "orders", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_MORE_CARGO_PACKETS),
-		SLE_CONDVARNAME(Vehicle, old_orders, "orders", SLE_UINT32,                 SLV_MORE_CARGO_PACKETS, SLV_105),
-		SLE_CONDREF(Vehicle, orders,                REF_ORDERLIST,              SLV_105, SL_MAX_VERSION),
+		SLE_CONDVARNAME(Vehicle, old_orders, "orders", SLE_UINT32,                 SLV_MORE_CARGO_PACKETS, SLV_ORDER_LIST),
+		SLE_CONDREF(Vehicle, orders,                REF_ORDERLIST,              SLV_ORDER_LIST, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_BIG_DATES),
 		SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_BIG_DATES, SL_MAX_VERSION),
@@ -810,8 +810,8 @@ public:
 		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
 		     SLE_VAR(Train, track,               SLE_UINT8),
 
-		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES,  SLV_100),
-		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_100, SL_MAX_VERSION),
+		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_VEHICLE_CURRENCY_STATION_CHANGES,  SLV_YAPP),
+		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_YAPP, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 SLV_136, SL_MAX_VERSION),
 		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
 	};
