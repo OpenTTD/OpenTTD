@@ -381,6 +381,21 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 
+		if (_cur_roadtype != this->roadtype) {
+			bool close_build_station = this->ModifyRoadType(_cur_roadtype);
+
+			/* Update cursor and all sub windows. */
+			if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
+			for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
+				SetWindowDirty(cls, TransportType::Road);
+			}
+
+			if (close_build_station) {
+				CloseWindowById(WindowClass::BuildBusStation, TransportType::Road);
+				CloseWindowById(WindowClass::BuildTruckStation, TransportType::Road);
+			}
+		}
+
 		if (!ValParamRoadType(this->roadtype)) {
 			/* Close toolbar if road type is not available. */
 			this->Close();
@@ -435,11 +450,15 @@ struct BuildRoadToolbarWindow : Window {
 	/**
 	 * Switch to another road type.
 	 * @param roadtype New road type.
+	 * @return true if RoadTramType has changed.
 	 */
-	void ModifyRoadType(RoadType roadtype)
+	bool ModifyRoadType(RoadType roadtype)
 	{
+		bool result = RoadTypeIsRoad(this->roadtype) != RoadTypeIsRoad(roadtype);
+
 		this->roadtype = roadtype;
 		this->ReInit();
+		return result;
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
@@ -1062,9 +1081,15 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRoadType(roadtype)) return nullptr;
 
-	CloseWindowByClass(WindowClass::BuildToolbar);
 	_cur_roadtype = roadtype;
+	Window *w = BringWindowToFrontById(WindowClass::BuildToolbar, TransportType::Road);
 
+	if (w != nullptr) {
+		w->OnInvalidateData();
+		return w;
+	}
+
+	CloseWindowByClass(WindowClass::BuildToolbar);
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_desc : _build_tramway_desc, TransportType::Road);
 }
 
