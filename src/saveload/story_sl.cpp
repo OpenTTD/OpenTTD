@@ -29,11 +29,11 @@ void AfterLoadStoryBook()
 }
 
 static const SaveLoad _story_page_elements_desc[] = {
-	SLE_CONDVAR(StoryPageElement, sort_value,    SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion,   SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPageElement, sort_value,    SLE_UINT32,                 SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(StoryPageElement, sort_value, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SLE_CONDVAR(StoryPageElement, sort_value, SLE_UINT32, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(StoryPageElement, page,          SLE_UINT16),
-	SLE_CONDVAR(StoryPageElement, type,          SLE_FILE_U16 | SLE_VAR_U8,  SaveLoadVersion::MinVersion,   SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPageElement, type,          SLE_UINT8,                  SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(StoryPageElement, type, SLE_FILE_U16 | SLE_VAR_U8, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SLE_CONDVAR(StoryPageElement, type, SLE_UINT8, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(StoryPageElement, referenced_id, SLE_UINT32),
 	   SLE_SSTR(StoryPageElement, text,          SLE_STR | SLF_ALLOW_CONTROL),
 };
@@ -72,11 +72,11 @@ struct STPEChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _story_pages_desc[] = {
-	SLE_CONDVAR(StoryPage, sort_value, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion,   SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPage, sort_value, SLE_UINT32,                 SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(StoryPage, sort_value, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SLE_CONDVAR(StoryPage, sort_value, SLE_UINT32, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(StoryPage, date,       SLE_UINT32),
-	SLE_CONDVAR(StoryPage, company,    SLE_FILE_U16 | SLE_VAR_U8,  SaveLoadVersion::MinVersion,   SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPage, company,    SLE_UINT8,                  SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(StoryPage, company, SLE_FILE_U16 | SLE_VAR_U8, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SLE_CONDVAR(StoryPage, company, SLE_UINT8, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
 	   SLE_SSTR(StoryPage, title,      SLE_STR | SLF_ALLOW_CONTROL),
 };
 

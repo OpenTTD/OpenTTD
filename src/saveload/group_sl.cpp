@@ -17,15 +17,15 @@
 #include "../safeguards.h"
 
 static const SaveLoad _group_desc[] = {
-	 SLE_CONDVAR(Group, name,               SLE_NAME,                       SaveLoadVersion::MinVersion,  SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(Group, name,               SLE_STR | SLF_ALLOW_CONTROL,    SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, name, SLE_NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SLE_CONDSSTR(Group, name, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 	     SLE_VAR(Group, owner,              SLE_UINT8),
 	     SLE_VAR(Group, vehicle_type,       SLE_UINT8),
 	     SLE_VAR(Group, flags,              SLE_UINT8),
-	 SLE_CONDVAR(Group, livery.in_use,      SLE_UINT8,                     SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour1,     SLE_UINT8,                     SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour2,     SLE_UINT8,                     SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, parent,             SLE_UINT16,                    SaveLoadVersion::GroupHierarchy, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, livery.in_use, SLE_UINT8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, livery.colour1, SLE_UINT8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, livery.colour2, SLE_UINT8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, parent, SLE_UINT16, SaveLoadVersion::GroupHierarchy, SaveLoadVersion::MaxVersion),
 	 SLE_CONDVAR(Group, number, SLE_UINT16, SaveLoadVersion::GroupNumbers, SaveLoadVersion::MaxVersion),
 };
 

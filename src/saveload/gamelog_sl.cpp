@@ -48,8 +48,8 @@ public:
 	static char revision_text[GAMELOG_REVISION_LENGTH];
 
 	static inline const SaveLoad description[] = {
-		    SLEG_CONDARR("revision.text", SlGamelogRevision::revision_text,   SLE_UINT8, GAMELOG_REVISION_LENGTH, SaveLoadVersion::MinVersion,     SaveLoadVersion::StringGamelog),
-		SLE_CONDSSTRNAME(LoggedChangeRevision, text,     "revision.text",     SLE_STR,                            SaveLoadVersion::StringGamelog, SaveLoadVersion::MaxVersion),
+		 SLEG_CONDARR("revision.text", SlGamelogRevision::revision_text, SLE_UINT8, GAMELOG_REVISION_LENGTH, SaveLoadVersion::MinVersion, SaveLoadVersion::StringGamelog),
+		SLE_CONDSSTRNAME(LoggedChangeRevision, text, "revision.text", SLE_STR, SaveLoadVersion::StringGamelog, SaveLoadVersion::MaxVersion),
 		     SLE_VARNAME(LoggedChangeRevision, newgrf,   "revision.newgrf",   SLE_UINT32),
 		     SLE_VARNAME(LoggedChangeRevision, slver,    "revision.slver",    SLE_UINT16),
 		     SLE_VARNAME(LoggedChangeRevision, modified, "revision.modified", SLE_UINT8),
@@ -368,9 +368,9 @@ public:
 };
 
 static const SaveLoad _gamelog_desc[] = {
-	SLE_CONDVAR(LoggedAction, at,            SLE_UINT8,   SaveLoadVersion::RiffToArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(LoggedAction, at, SLE_UINT8, SaveLoadVersion::RiffToArray, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(LoggedAction, tick, SLE_FILE_U16 | SLE_VAR_U64, SaveLoadVersion::MinVersion, SaveLoadVersion::U64TickCounter),
-	SLE_CONDVAR(LoggedAction, tick, SLE_UINT64,                 SaveLoadVersion::U64TickCounter, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(LoggedAction, tick, SLE_UINT64, SaveLoadVersion::U64TickCounter, SaveLoadVersion::MaxVersion),
 	SLEG_STRUCTLIST("action", SlGamelogAction),
 };
 

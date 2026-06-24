@@ -761,26 +761,26 @@ bool AfterLoadGame()
 	 */
 	if (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 2)) _settings_game.station.modified_catchment = false;
 	if (IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops, 1)) _settings_game.pf.forbid_90_deg = false;
-	if (IsSavegameVersionBefore(SaveLoadVersion::RemoveOldPbs))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
-	if (IsSavegameVersionBefore(SaveLoadVersion::PlaneSpeedFactor))   _settings_game.vehicle.plane_speed = 4;
-	if (IsSavegameVersionBefore(SaveLoadVersion::MoreEngineTypes))   _settings_game.vehicle.dynamic_engines = false;
-	if (IsSavegameVersionBefore(SaveLoadVersion::AirportNoise))   _settings_game.economy.station_noise_level = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::RemoveOldPbs)) _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
+	if (IsSavegameVersionBefore(SaveLoadVersion::PlaneSpeedFactor)) _settings_game.vehicle.plane_speed = 4;
+	if (IsSavegameVersionBefore(SaveLoadVersion::MoreEngineTypes)) _settings_game.vehicle.dynamic_engines = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::AirportNoise)) _settings_game.economy.station_noise_level = false;
 	if (IsSavegameVersionBefore(SaveLoadVersion::TrainSlopeSteepness)) {
 		_settings_game.vehicle.train_slope_steepness = 3;
 	}
-	if (IsSavegameVersionBefore(SaveLoadVersion::VirtualFeederSharePayment))  _settings_game.economy.feeder_payment_share = 75;
-	if (IsSavegameVersionBefore(SaveLoadVersion::ReducePlaneCrashes))  _settings_game.vehicle.plane_crashes = 2;
+	if (IsSavegameVersionBefore(SaveLoadVersion::VirtualFeederSharePayment)) _settings_game.economy.feeder_payment_share = 75;
+	if (IsSavegameVersionBefore(SaveLoadVersion::ReducePlaneCrashes)) _settings_game.vehicle.plane_crashes = 2;
 	if (IsSavegameVersionBefore(SaveLoadVersion::RvRealisticAcceleration)) {
 		_settings_game.vehicle.roadveh_acceleration_model = AccelerationModel::Original;
 		_settings_game.vehicle.roadveh_slope_steepness = 7;
 	}
-	if (IsSavegameVersionBefore(SaveLoadVersion::DisableTownLevelCrossing))  _settings_game.economy.allow_town_level_crossings = true;
+	if (IsSavegameVersionBefore(SaveLoadVersion::DisableTownLevelCrossing)) _settings_game.economy.allow_town_level_crossings = true;
 	if (IsSavegameVersionBefore(SaveLoadVersion::MaxLengthAndReverseSignals)) {
 		_settings_game.vehicle.max_train_length = 50;
 		_settings_game.construction.max_bridge_length = 64;
 		_settings_game.construction.max_tunnel_length = 64;
 	}
-	if (IsSavegameVersionBefore(SaveLoadVersion::InfrastructureMaintenanceCosts))  _settings_game.economy.infrastructure_maintenance = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::InfrastructureMaintenanceCosts)) _settings_game.economy.infrastructure_maintenance = false;
 	if (IsSavegameVersionBefore(SaveLoadVersion::Cargodist)) {
 		_settings_game.linkgraph.distribution_pax = DistributionType::Manual;
 		_settings_game.linkgraph.distribution_mail = DistributionType::Manual;

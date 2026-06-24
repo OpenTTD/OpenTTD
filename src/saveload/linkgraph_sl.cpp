@@ -33,9 +33,9 @@ public:
 	static inline const SaveLoad description[] = {
 		    SLE_VAR(Edge, capacity,                 SLE_UINT32),
 		    SLE_VAR(Edge, usage,                    SLE_UINT32),
-		SLE_CONDVAR(Edge, travel_time_sum,          SLE_UINT64, SaveLoadVersion::LinkgraphTravelTime, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(Edge, travel_time_sum, SLE_UINT64, SaveLoadVersion::LinkgraphTravelTime, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
-		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SaveLoadVersion::LinkgraphRestrictedFlow, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(Edge, last_restricted_update, SLE_INT32, SaveLoadVersion::LinkgraphRestrictedFlow, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Edge, dest_node,                SLE_UINT16),
 		SLE_CONDVARNAME(Edge, dest_node, "next_edge", SLE_UINT16, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
 	};
@@ -96,7 +96,7 @@ public:
 class SlLinkgraphNode : public DefaultSaveLoadHandler<SlLinkgraphNode, LinkGraph> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(Node, xy,          SLE_UINT32, SaveLoadVersion::LinkgraphLocationDisasterStore, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(Node, xy, SLE_UINT32, SaveLoadVersion::LinkgraphLocationDisasterStore, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Node, supply,      SLE_UINT32),
 		    SLE_VAR(Node, demand,      SLE_UINT32),
 		    SLE_VAR(Node, station,     SLE_UINT16),

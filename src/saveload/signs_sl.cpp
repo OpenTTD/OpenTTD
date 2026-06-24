@@ -26,7 +26,7 @@ static const SaveLoad _sign_desc[] = {
 	SLE_CONDVAR(Sign, x, SLE_INT32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Sign, y, SLE_INT32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Sign, owner, SLE_UINT8, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, z, SLE_FILE_U8  | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
+	SLE_CONDVAR(Sign, z, SLE_FILE_U8 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
 	SLE_CONDVAR(Sign, z, SLE_INT32, SaveLoadVersion::VehicleCentreAndZPos, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Sign, text_colour, SLE_UINT8, SaveLoadVersion::SignTextColours, SaveLoadVersion::MaxVersion),
 };

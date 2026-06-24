@@ -25,7 +25,7 @@ const SaveLoadCompat _date_sl_compat[] = {
 	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::CompanyServiceIntervals),
 	SLC_VAR("random_state[0]"),
 	SLC_VAR("random_state[1]"),
-	SLC_NULL(1, SaveLoadVersion::MinVersion,  SaveLoadVersion::LargerTownCounter),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCounter),
 	SLC_NULL(4, SaveLoadVersion::LargerTownCounter, SaveLoadVersion::CompanyServiceIntervals),
 	SLC_VAR("company_tick_counter"),
 	SLC_VAR("next_competitor_start"),
@@ -40,21 +40,21 @@ const SaveLoadCompat _date_check_sl_compat[] = {
 	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // date_fract
 	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // tick_counter
 	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyGroundVehicles),
-	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::NewGRFCustomCargoAging),        // age_cargo_skip_counter
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::NewGRFCustomCargoAging), // age_cargo_skip_counter
 	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreAirportBlocks),
-	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),          // cur_tileloop_tile
-	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),          // cur_tileloop_tile
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops), // cur_tileloop_tile
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion), // cur_tileloop_tile
 	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // disaster_delay
 	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::CompanyServiceIntervals),
 	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // random.state[0]
 	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // random.state[1]
-	SLC_NULL(1,  SaveLoadVersion::MinVersion,  SaveLoadVersion::LargerTownCounter),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCounter),
 	SLC_NULL(4, SaveLoadVersion::LargerTownCounter, SaveLoadVersion::CompanyServiceIntervals),
 	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // cur_company_tick_index
-	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NextCompetitorStartOverflow),        // next_competitor_start
-	SLC_NULL(4, SaveLoadVersion::NextCompetitorStartOverflow, SaveLoadVersion::MaxVersion),        // next_competitor_start
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NextCompetitorStartOverflow), // next_competitor_start
+	SLC_NULL(4, SaveLoadVersion::NextCompetitorStartOverflow, SaveLoadVersion::MaxVersion), // next_competitor_start
 	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // trees_tick_ctr
-	SLC_NULL(1, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MaxVersion),          // pause_mode
+	SLC_NULL(1, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MaxVersion), // pause_mode
 	SLC_NULL(4, SaveLoadVersion::LargerTownIterator, SaveLoadVersion::CompanyServiceIntervals),
 };
 
