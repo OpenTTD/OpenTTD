@@ -33,8 +33,8 @@ static const SaveLoad _cheats_desc[] = {
 	SLE_VAR(Cheats, setup_prod.value, SLE_BOOL),
 	SLE_VAR(Cheats, edit_max_hl.been_used, SLE_BOOL),
 	SLE_VAR(Cheats, edit_max_hl.value, SLE_BOOL),
-	SLE_CONDVAR(Cheats, station_rating.been_used, SLE_BOOL, SLV_STATION_RATING_CHEAT, SL_MAX_VERSION),
-	SLE_CONDVAR(Cheats, station_rating.value, SLE_BOOL, SLV_STATION_RATING_CHEAT, SL_MAX_VERSION),
+	SLE_CONDVAR(Cheats, station_rating.been_used, SLE_BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Cheats, station_rating.value, SLE_BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
 };
 
 
@@ -53,7 +53,7 @@ struct CHTSChunkHandler : ChunkHandler {
 	{
 		std::vector<SaveLoad> slt = SlCompatTableHeader(_cheats_desc, _cheats_sl_compat);
 
-		if (IsSavegameVersionBefore(SLV_TABLE_CHUNKS)) {
+		if (IsSavegameVersionBefore(SaveLoadVersion::TableChunks)) {
 			size_t count = SlGetFieldLength();
 			std::vector<SaveLoad> oslt;
 
@@ -70,9 +70,9 @@ struct CHTSChunkHandler : ChunkHandler {
 			slt = std::move(oslt);
 		}
 
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() == -1) return;
 		SlObject(&_cheats, slt);
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many CHTS entries");
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() != -1) SlErrorCorrupt("Too many CHTS entries");
 	}
 };
 

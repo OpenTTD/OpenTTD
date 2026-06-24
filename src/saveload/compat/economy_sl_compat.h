@@ -14,8 +14,8 @@
 
 /** Original field order for _economy_desc. */
 const SaveLoadCompat _economy_sl_compat[] = {
-	SLC_NULL(4, SL_MIN_VERSION, SLV_UNIFY_CURRENCY),
-	SLC_NULL(8, SLV_UNIFY_CURRENCY, SLV_REORDER_UNMOVABLE_REMOVE_RESERVED),
+	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLC_NULL(8, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::ReorderUnmovableRemoveReserved),
 	SLC_VAR("old_max_loan_unround"),
 	SLC_VAR("old_max_loan_unround_fract"),
 	SLC_VAR("inflation_prices"),

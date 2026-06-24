@@ -566,7 +566,7 @@ bool AfterLoadGame()
 	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
 	if (_cur_tileloop_tile == 0) _cur_tileloop_tile = TileIndex{1};
 
-	if (IsSavegameVersionBefore(SLV_GAMELOG)) _gamelog.Oldver();
+	if (IsSavegameVersionBefore(SaveLoadVersion::Gamelog)) _gamelog.Oldver();
 
 	_gamelog.TestRevision();
 	_gamelog.TestMode();
@@ -580,9 +580,9 @@ bool AfterLoadGame()
 	/* Group hierarchy may be evaluated during conversion, so ensure its correct early on. */
 	UpdateGroupChildren();
 
-	if (IsSavegameVersionBefore(SLV_GAMELOG)) _gamelog.GRFAddList(_grfconfig);
+	if (IsSavegameVersionBefore(SaveLoadVersion::Gamelog)) _gamelog.GRFAddList(_grfconfig);
 
-	if (IsSavegameVersionBefore(SLV_PAUSE_MODES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::PauseModes)) {
 		_pause_mode = (_pause_mode.base() == 2) ? PauseMode::Normal : PauseModes{};
 	} else if (_network_dedicated && _pause_mode.Test(PauseMode::Error)) {
 		Debug(net, 0, "The loading savegame was paused due to an error state");
@@ -607,7 +607,7 @@ bool AfterLoadGame()
 	 * Because the data stored by TTDPatch are unusable for rail stations > 7x7,
 	 * recompute the width and height. Doing this unconditionally for all old
 	 * savegames simplifies the code. */
-	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::VehicleCurrencyStationChanges)) {
 		for (Station *st : Station::Iterate()) {
 			st->train_station.w = st->train_station.h = 0;
 		}
@@ -624,7 +624,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MAX_BRIDGE_MAP_HEIGHT)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MaxBridgeMapHeight)) {
 		_settings_game.construction.map_height_limit = 15;
 
 		/* In old savegame versions, the heightlevel was coded in bits 0..3 of the type field */
@@ -642,19 +642,19 @@ bool AfterLoadGame()
 	}
 
 	/* in version 2.1 of the savegame, town owner was unified. */
-	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES, 1)) ConvertTownOwner();
+	if (IsSavegameVersionBefore(SaveLoadVersion::VehicleCurrencyStationChanges, 1)) ConvertTownOwner();
 
 	/* from version 4.1 of the savegame, exclusive rights are stored at towns */
-	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 1)) UpdateExclusiveRights();
+	if (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 1)) UpdateExclusiveRights();
 
 	/* from version 4.2 of the savegame, currencies are in a different order */
-	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 2)) UpdateCurrencies();
+	if (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 2)) UpdateCurrencies();
 
 	/* In old version there seems to be a problem that water is owned by
 	 * OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
 	 * (4.3) version, so I just check when versions are older, and then
 	 * walk through the whole map.. */
-	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 3)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 3)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Water) && GetTileOwner(t) >= MAX_COMPANIES) {
 				SetTileOwner(t, OWNER_WATER);
@@ -662,7 +662,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_REPLACE_CUSTOM_NAME_ARRAY)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ReplaceCustomNameArray)) {
 		for (Company *c : Company::Iterate()) {
 			c->name = CopyFromOldName(c->name_1);
 			if (!c->name.empty()) c->name_1 = STR_SV_UNNAMED;
@@ -685,7 +685,7 @@ bool AfterLoadGame()
 	/* From this point the old names array is cleared. */
 	ResetOldNames();
 
-	if (IsSavegameVersionBefore(SLV_DISTANT_STATION_JOINING)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::DistantStationJoining)) {
 		/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
 		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile       == 0) st->airport.tile = INVALID_TILE;
@@ -694,7 +694,7 @@ bool AfterLoadGame()
 
 		/* the same applies to Company::location_of_HQ */
 		for (Company *c : Company::Iterate()) {
-			if (c->location_of_HQ == 0 || (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE) && c->location_of_HQ == 0xFFFF)) {
+			if (c->location_of_HQ == 0 || (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode) && c->location_of_HQ == 0xFFFF)) {
 				c->location_of_HQ = INVALID_TILE;
 			}
 		}
@@ -727,20 +727,20 @@ bool AfterLoadGame()
 	}
 
 	/* The value of TimerGameCalendar::date_fract got divided, so make sure that old games are converted correctly. */
-	if (IsSavegameVersionBefore(SLV_LARGER_TOWN_ITERATOR, 1) || (IsSavegameVersionBefore(SLV_UNIFY_ANIMATION_FRAME) && TimerGameCalendar::date_fract > Ticks::DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
+	if (IsSavegameVersionBefore(SaveLoadVersion::LargerTownIterator, 1) || (IsSavegameVersionBefore(SaveLoadVersion::UnifyAnimationFrame) && TimerGameCalendar::date_fract > Ticks::DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
 	TimerGameCalendar::SetDate(TimerGameCalendar::date, TimerGameCalendar::date_fract);
 
 	/* Only new games can use wallclock units. */
-	if (IsSavegameVersionBefore(SLV_ECONOMY_MODE_TIMEKEEPING_UNITS)) _settings_game.economy.timekeeping_units = TimekeepingUnits::Calendar;
+	if (IsSavegameVersionBefore(SaveLoadVersion::EconomyModeTimekeepingUnits)) _settings_game.economy.timekeeping_units = TimekeepingUnits::Calendar;
 
 	/* Set the correct default for 'minutes per year' if the savegame was created before the setting existed. */
-	if (IsSavegameVersionBefore(SLV_CALENDAR_SUB_DATE_FRACT)) _settings_game.economy.minutes_per_calendar_year = CalendarTime::DEF_MINUTES_PER_YEAR;
+	if (IsSavegameVersionBefore(SaveLoadVersion::CalendarSubDateFract)) _settings_game.economy.minutes_per_calendar_year = CalendarTime::DEF_MINUTES_PER_YEAR;
 
 	/* Update economy year. If we don't have a separate economy date saved, follow the calendar date. */
-	if (IsSavegameVersionBefore(SLV_ECONOMY_DATE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::EconomyDate)) {
 		TimerGameEconomy::SetDate(TimerGameEconomy::Date{TimerGameCalendar::date.base()}, TimerGameCalendar::date_fract);
 	} else {
 		TimerGameEconomy::SetDate(TimerGameEconomy::date, TimerGameEconomy::date_fract);
@@ -759,41 +759,41 @@ bool AfterLoadGame()
 	 * right value has been chosen in the settings. Otherwise we will be converting
 	 * it incorrectly in half of the times without a means to correct that.
 	 */
-	if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 2)) _settings_game.station.modified_catchment = false;
-	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1)) _settings_game.pf.forbid_90_deg = false;
-	if (IsSavegameVersionBefore(SLV_REMOVE_OLD_PBS))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
-	if (IsSavegameVersionBefore(SLV_PLANE_SPEED_FACTOR))   _settings_game.vehicle.plane_speed = 4;
-	if (IsSavegameVersionBefore(SLV_MORE_ENGINE_TYPES))   _settings_game.vehicle.dynamic_engines = false;
-	if (IsSavegameVersionBefore(SLV_AIRPORT_NOISE))   _settings_game.economy.station_noise_level = false;
-	if (IsSavegameVersionBefore(SLV_TRAIN_SLOPE_STEEPNESS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 2)) _settings_game.station.modified_catchment = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops, 1)) _settings_game.pf.forbid_90_deg = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::RemoveOldPbs))   _settings_game.vehicle.train_acceleration_model = AccelerationModel::Original;
+	if (IsSavegameVersionBefore(SaveLoadVersion::PlaneSpeedFactor))   _settings_game.vehicle.plane_speed = 4;
+	if (IsSavegameVersionBefore(SaveLoadVersion::MoreEngineTypes))   _settings_game.vehicle.dynamic_engines = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::AirportNoise))   _settings_game.economy.station_noise_level = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::TrainSlopeSteepness)) {
 		_settings_game.vehicle.train_slope_steepness = 3;
 	}
-	if (IsSavegameVersionBefore(SLV_VIRTUAL_FEEDER_SHARE_PAYMENT))  _settings_game.economy.feeder_payment_share = 75;
-	if (IsSavegameVersionBefore(SLV_REDUCE_PLANE_CRASHES))  _settings_game.vehicle.plane_crashes = 2;
-	if (IsSavegameVersionBefore(SLV_RV_REALISTIC_ACCELERATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::VirtualFeederSharePayment))  _settings_game.economy.feeder_payment_share = 75;
+	if (IsSavegameVersionBefore(SaveLoadVersion::ReducePlaneCrashes))  _settings_game.vehicle.plane_crashes = 2;
+	if (IsSavegameVersionBefore(SaveLoadVersion::RvRealisticAcceleration)) {
 		_settings_game.vehicle.roadveh_acceleration_model = AccelerationModel::Original;
 		_settings_game.vehicle.roadveh_slope_steepness = 7;
 	}
-	if (IsSavegameVersionBefore(SLV_DISABLE_TOWN_LEVEL_CROSSING))  _settings_game.economy.allow_town_level_crossings = true;
-	if (IsSavegameVersionBefore(SLV_MAX_LENGTH_AND_REVERSE_SIGNALS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::DisableTownLevelCrossing))  _settings_game.economy.allow_town_level_crossings = true;
+	if (IsSavegameVersionBefore(SaveLoadVersion::MaxLengthAndReverseSignals)) {
 		_settings_game.vehicle.max_train_length = 50;
 		_settings_game.construction.max_bridge_length = 64;
 		_settings_game.construction.max_tunnel_length = 64;
 	}
-	if (IsSavegameVersionBefore(SLV_INFRASTRUCTURE_MAINTENANCE_COSTS))  _settings_game.economy.infrastructure_maintenance = false;
-	if (IsSavegameVersionBefore(SLV_CARGODIST)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::InfrastructureMaintenanceCosts))  _settings_game.economy.infrastructure_maintenance = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::Cargodist)) {
 		_settings_game.linkgraph.distribution_pax = DistributionType::Manual;
 		_settings_game.linkgraph.distribution_mail = DistributionType::Manual;
 		_settings_game.linkgraph.distribution_armoured = DistributionType::Manual;
 		_settings_game.linkgraph.distribution_default = DistributionType::Manual;
 	}
 
-	if (IsSavegameVersionBefore(SLV_ENDING_YEAR)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::EndingYear)) {
 		_settings_game.game_creation.ending_year = CalendarTime::DEF_END_YEAR;
 	}
 
 	/* Convert linkgraph update settings from days to seconds. */
-	if (IsSavegameVersionBefore(SLV_LINKGRAPH_SECONDS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::LinkgraphSeconds)) {
 		_settings_game.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
 		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 	}
@@ -807,7 +807,7 @@ bool AfterLoadGame()
 
 	/* Connect front and rear engines of multiheaded trains and converts
 	 * subtype to the new format */
-	if (IsSavegameVersionBefore(SLV_STORE_WAYPOINT_ID_IN_MAP, 1)) ConvertOldMultiheadToNew();
+	if (IsSavegameVersionBefore(SaveLoadVersion::StoreWaypointIdInMap, 1)) ConvertOldMultiheadToNew();
 
 	/* Connect front and rear engines of multiheaded trains */
 	ConnectMultiheadedTrains();
@@ -838,7 +838,7 @@ bool AfterLoadGame()
 	 * This problem appears in savegame version 21 too, see r3455. But after loading the
 	 * savegame and saving again, the buggy map array could be converted to new savegame
 	 * version. It didn't show up before r12070. */
-	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PATHFINDER_SETTINGS)) UpdateVoidTiles();
+	if (IsSavegameVersionBefore(SaveLoadVersion::SimplifyPathfinderSettings)) UpdateVoidTiles();
 
 	/* Fix the cache for cargo payments. */
 	for (CargoPayment *cp : CargoPayment::Iterate()) {
@@ -847,9 +847,9 @@ bool AfterLoadGame()
 	}
 
 
-	if (IsSavegameVersionBefore(SLV_WATER_TILE_TYPE)) {
-		/* Prior to SLV_WATER_TILE_TYPE, the water tile type was stored differently from the enumeration. This has to be
-		 * converted before SLV_SPLIT_STATION_TYPE_FROM_GFXID and SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS conversions which use GetWaterTileType. */
+	if (IsSavegameVersionBefore(SaveLoadVersion::WaterTileType)) {
+		/* Prior to SaveLoadVersion::WaterTileType, the water tile type was stored differently from the enumeration. This has to be
+		 * converted before SaveLoadVersion::SplitStationTypeFromGfxid and SaveLoadVersion::NewGRFIndustryRandomTriggers conversions which use GetWaterTileType. */
 		static constexpr uint8_t WBL_COAST_FLAG = 0; ///< Flag for coast.
 
 		for (auto t : Map::Iterate()) {
@@ -867,7 +867,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SPLIT_STATION_TYPE_FROM_GFXID)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SplitStationTypeFromGfxid)) {
 		/* Locks in very old savegames had OWNER_WATER as owner */
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
@@ -923,7 +923,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_INCREASE_STATION_TYPE_FIELD_SIZE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::IncreaseStationTypeFieldSize)) {
 		/* Expansion of station type field in m6 */
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Station)) {
@@ -950,7 +950,7 @@ bool AfterLoadGame()
 				switch (GetStationType(t)) {
 					case StationType::Truck:
 					case StationType::Bus:
-						if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS)) {
+						if (IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops)) {
 							/* Before version 5 you could not have more than 250 stations.
 							 * Version 6 adds large maps, so you could only place 253*253
 							 * road stops on a map (no freeform edges) = 64009. So, yes
@@ -1001,7 +1001,7 @@ bool AfterLoadGame()
 	/* In version 6.1 we put the town index in the map-array. To do this, we need
 	 *  to use m2 (16bit big), so we need to clean m2, and that is where this is
 	 *  all about ;) */
-	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_STOPS, 1)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops, 1)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::House:
@@ -1025,19 +1025,19 @@ bool AfterLoadGame()
 	}
 
 	/* Force the freeform edges to false for old savegames. */
-	if (IsSavegameVersionBefore(SLV_FREEFORM_EDGES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::FreeformEdges)) {
 		_settings_game.construction.freeform_edges = false;
 	}
 
 	/* From version 9.0, we update the max passengers of a town (was sometimes negative
 	 *  before that. */
-	if (IsSavegameVersionBefore(SLV_LARGER_TOWN_CARGO_STATISTICS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::LargerTownCargoStatistics)) {
 		for (Town *t : Town::Iterate()) UpdateTownMaxPass(t);
 	}
 
 	/* From version 16.0, we included autorenew on engines, which are now saved, but
 	 *  of course, we do need to initialize them for older savegames. */
-	if (IsSavegameVersionBefore(SLV_ENGINE_RENEW)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::EngineRenew)) {
 		for (Company *c : Company::Iterate()) {
 			c->engine_renew_list            = nullptr;
 			c->settings.engine_renew        = false;
@@ -1057,7 +1057,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_RAIL_TRACK_TYPE_UNIFICATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RailTrackTypeUnification)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
@@ -1085,9 +1085,9 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_TYPES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadTypes)) {
 		/* Added the RoadType */
-		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
+		bool old_bridge = IsSavegameVersionBefore(SaveLoadVersion::BridgeWormhole);
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Road:
@@ -1124,9 +1124,9 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SEPARATE_ROAD_OWNERS)) {
-		bool fix_roadtypes = !IsSavegameVersionBefore(SLV_MULTIPLE_ROAD_TYPES);
-		bool old_bridge = IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE);
+	if (IsSavegameVersionBefore(SaveLoadVersion::SeparateRoadOwners)) {
+		bool fix_roadtypes = !IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadTypes);
+		bool old_bridge = IsSavegameVersionBefore(SaveLoadVersion::BridgeWormhole);
 
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
@@ -1191,8 +1191,8 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Railtype moved from m3 to m8 in version SLV_EXTEND_RAILTYPES. */
-	if (IsSavegameVersionBefore(SLV_EXTEND_RAILTYPES)) {
+	/* Railtype moved from m3 to m8 in version SaveLoadVersion::ExtendRailtypes. */
+	if (IsSavegameVersionBefore(SaveLoadVersion::ExtendRailtypes)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
@@ -1223,7 +1223,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_BRIDGE_WORMHOLE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::BridgeWormhole)) {
 		for (auto t : Map::Iterate()) {
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
 			if (IsBridgeTile(t)) {
@@ -1304,7 +1304,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_ROAD_TYPES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RoadTypes)) {
 		/* Add road subtypes */
 		for (auto t : Map::Iterate()) {
 			bool has_road = false;
@@ -1334,7 +1334,7 @@ bool AfterLoadGame()
 	}
 
 	/* Elrails got added in rev 24 */
-	if (IsSavegameVersionBefore(SLV_ELRAIL)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::Elrail)) {
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (Train *v : Train::Iterate()) {
@@ -1378,11 +1378,11 @@ bool AfterLoadGame()
 	/* In version 16.1 of the savegame a company can decide if trains, which get
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
-	if (IsSavegameVersionBefore(SLV_ENGINE_RENEW, 1)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::EngineRenew, 1)) {
 		for (Company *c : Company::Iterate()) c->settings.renew_keep_length = false;
 	}
 
-	if (IsSavegameVersionBefore(SLV_UNIFY_WAYPOINT_AND_STATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyWaypointAndStation)) {
 		/* Waypoints became subclasses of stations ... */
 		MoveWaypointsToBaseStations();
 		/* ... and buoys were moved to waypoints. */
@@ -1391,7 +1391,7 @@ bool AfterLoadGame()
 
 	/* From version 15, we moved a semaphore bit from bit 2 to bit 3 in m4, making
 	 *  room for PBS. Now in version 21 move it back :P. */
-	if (IsSavegameVersionBefore(SLV_REMOVE_OLD_PBS) && !IsSavegameVersionBefore(SLV_MOVE_SEMAPHORE_BITS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RemoveOldPbs) && !IsSavegameVersionBefore(SaveLoadVersion::MoveSemaphoreBits)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
@@ -1425,7 +1425,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_IMPROVE_MULTISTOP)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ImproveMultistop)) {
 		/* Remove obsolete VS_WAIT_FOR_SLOT state from road vehicles. */
 		static constexpr VehStates OLD_VS_WAIT_FOR_SLOT{0x40};
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
@@ -1433,7 +1433,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_LAST_VEHICLE_TYPE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::LastVehicleType)) {
 		for (Station *st : Station::Iterate()) {
 			st->last_vehicle_type = VehicleType::Invalid;
 		}
@@ -1441,7 +1441,7 @@ bool AfterLoadGame()
 
 	YapfNotifyTrackLayoutChange(INVALID_TILE, Track::Invalid);
 
-	if (IsSavegameVersionBefore(SLV_LIVERIES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::Liveries)) {
 		for (Company *c : Company::Iterate()) ResetCompanyLivery(c);
 	}
 
@@ -1454,7 +1454,7 @@ bool AfterLoadGame()
 
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
-	if (IsSavegameVersionBefore(SLV_BIG_DATES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::BigDates)) {
 		TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		TimerGameCalendar::year += CalendarTime::ORIGINAL_BASE_YEAR;
 		TimerGameEconomy::date += EconomyTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
@@ -1475,7 +1475,7 @@ bool AfterLoadGame()
 	/* From 32 on we save the industry who made the farmland.
 	 *  To give this prettiness to old savegames, we remove all farmfields and
 	 *  plant new ones. */
-	if (IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::LinkFarmFieldToIndustry)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Clear) && IsClearGround(t, ClearGround::Fields)) {
 				/* remove fields */
@@ -1493,7 +1493,7 @@ bool AfterLoadGame()
 	}
 
 	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
-	if (IsSavegameVersionBefore(SLV_REFIT_ORDERS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RefitOrders)) {
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
 				order.SetRefit(CARGO_NO_REFIT);
@@ -1507,14 +1507,14 @@ bool AfterLoadGame()
 
 	/* from version 38 we have optional elrails, since we cannot know the
 	 * preference of a user, let elrails enabled; it can be disabled manually */
-	if (IsSavegameVersionBefore(SLV_DISABLE_ELRAIL_SETTING)) _settings_game.vehicle.disable_elrails = false;
+	if (IsSavegameVersionBefore(SaveLoadVersion::DisableElrailSetting)) _settings_game.vehicle.disable_elrails = false;
 	/* do the same as when elrails were enabled/disabled manually just now */
 	UpdateDisableElrailSettingState(_settings_game.vehicle.disable_elrails, false);
 	InitializeSignalGui();
 
 	/* From version 53, the map array was changed for house tiles to allow
 	 * space for newhouses grf features. A new byte, m7, was also added. */
-	if (IsSavegameVersionBefore(SLV_NEWGRF_HOUSES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFHouses)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::House)) {
 				if (GB(t.m3(), 6, 2) != TOWN_HOUSE_COMPLETED) {
@@ -1548,7 +1548,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_INCREASE_HOUSE_LIMIT)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::IncreaseHouseLimit)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::House)) {
 				/* House type is moved from m4 + m3[6] to m8. */
@@ -1559,7 +1559,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_PROTECT_PLACED_HOUSES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ProtectPlacedHouses)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::House)) {
 				/* We now store house protection status in the map. Set this based on the house spec flags. */
@@ -1572,7 +1572,7 @@ bool AfterLoadGame()
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 
-	if (IsSavegameVersionBefore(SLV_UNIFY_ANIMATION_STATE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyAnimationState)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Industry)) {
 				switch (GetIndustryGfx(t)) {
@@ -1599,7 +1599,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_COUNT_PAID_FOR_CARGO)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CountPaidForCargo)) {
 		/* Originally just the fact that some cargo had been paid for was
 		 * stored to stop people cheating and cashing in several times. This
 		 * wasn't enough though as it was cleared when the vehicle started
@@ -1612,13 +1612,13 @@ bool AfterLoadGame()
 
 	/* Buoys do now store the owner of the previous water tile, which can never
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
-	if (IsSavegameVersionBefore(SLV_MORE_AIRPORT_BLOCKS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MoreAirportBlocks)) {
 		for (Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->facilities.Test(StationFacility::Dock) && IsTileOwner(wp->xy, OWNER_NONE) && TileHeight(wp->xy) == 0) SetTileOwner(wp->xy, OWNER_WATER);
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_AIRCRAFT_SPEED_HOLDING)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::AircraftSpeedHolding)) {
 		/* Aircraft units changed from 8 mph to 1 km-ish/h */
 		for (Aircraft *v : Aircraft::Iterate()) {
 			if (v->subtype <= AIR_AIRCRAFT) {
@@ -1630,12 +1630,12 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PLAYER_FACE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SimplifyPlayerFace)) {
 		/* Perform conversion of very old face bits. */
 		for (Company *c : Company::Iterate()) {
 			c->face = ConvertFromOldCompanyManagerFace(c->face.bits);
 		}
-	} else if (IsSavegameVersionBefore(SLV_FACE_STYLES)) {
+	} else if (IsSavegameVersionBefore(SaveLoadVersion::FaceStyles)) {
 		/* Convert old gender and ethnicity bits to face style. */
 		for (Company *c : Company::Iterate()) {
 			SetCompanyManagerFaceStyle(c->face, GB(c->face.bits, 0, 2));
@@ -1653,7 +1653,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_STATUE_OWNER)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::StatueOwner)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Object) && t.m5() == OBJECT_STATUE) {
 				t.m2() = CalcClosestTownFromTile(t)->index.base();
@@ -1664,7 +1664,7 @@ bool AfterLoadGame()
 	/* A setting containing the proportion of towns that grow twice as
 	 * fast was added in version 54. From version 56 this is now saved in the
 	 * town as cities can be built specifically in the scenario editor. */
-	if (IsSavegameVersionBefore(SLV_CITIES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::Cities)) {
 		for (Town *t : Town::Iterate()) {
 			if (_settings_game.economy.larger_towns != 0 && (t->index % _settings_game.economy.larger_towns) == 0) {
 				t->larger_town = true;
@@ -1672,7 +1672,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_FIFO_LOADING)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::FifoLoading)) {
 		/* Added a FIFO queue of vehicles loading at stations */
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if ((v->type != VehicleType::Train || Train::From(v)->IsFrontEngine()) &&  // for all locs
@@ -1685,7 +1685,7 @@ bool AfterLoadGame()
 				v->vehicle_flags.Reset(VehicleFlag::LoadingFinished);
 			}
 		}
-	} else if (IsSavegameVersionBefore(SLV_TOWN_LAYOUT)) {
+	} else if (IsSavegameVersionBefore(SaveLoadVersion::TownLayout)) {
 		/* For some reason non-loading vehicles could be in the station's loading vehicle list */
 
 		for (Station *st : Station::Iterate()) {
@@ -1700,7 +1700,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_VERY_LOW_TOWN_INDUSTRY_NUMBER)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::VeryLowTownIndustryNumber)) {
 		/* Setting difficulty industry_density other than zero get bumped to +1
 		 * since a new option (very low at position 1) has been added */
 		if (_settings_game.difficulty.industry_density > IndustryDensity::FundedOnly) {
@@ -1711,7 +1711,7 @@ bool AfterLoadGame()
 		_settings_game.difficulty.number_towns++;
 	}
 
-	if (IsSavegameVersionBefore(SLV_MULTIPLE_SIGNAL_TYPES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MultipleSignalTypes)) {
 		/* Since now we allow different signal types and variants on a single tile.
 		 * Move signal states to m4 to make room and clone the signal type/variant. */
 		for (auto t : Map::Iterate()) {
@@ -1725,7 +1725,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets)) {
 		/* In some old savegames a bit was cleared when it should not be cleared */
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			if (rv->state == 250 || rv->state == 251) {
@@ -1734,14 +1734,14 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_CARGO_PAYMENT_OVERFLOW)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CargoPaymentOverflow)) {
 		/* Added variables to support newindustries */
 		for (Industry *i : Industry::Iterate()) i->founder = OWNER_NONE;
 	}
 
 	/* From version 82, old style canals (above sealevel (0), WATER owner) are no longer supported.
 	    Replace the owner for those by OWNER_NONE. */
-	if (IsSavegameVersionBefore(SLV_NEWGRF_INDUSTRY_RANDOM_TRIGGERS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFIndustryRandomTriggers)) {
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Water) &&
 					GetWaterTileType(t) == WaterTileType::Clear &&
@@ -1758,7 +1758,7 @@ bool AfterLoadGame()
 	 * someone can remove canals owned by somebody else and it prevents
 	 * making floods using the removal of ship depots.
 	 */
-	if (IsSavegameVersionBefore(SLV_DEPOT_WATER_OWNERS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::DepotWaterOwners)) {
 		for (auto t : Map::Iterate()) {
 			if (IsShipDepotTile(t)) {
 				t.m4() = (TileHeight(t) == 0 ? OWNER_WATER : OWNER_NONE).base();
@@ -1766,7 +1766,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_FIX_STATION_PICKUP_ACCOUNTING)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::FixStationPickupAccounting)) {
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
 				ge.last_speed = 0;
@@ -1777,7 +1777,7 @@ bool AfterLoadGame()
 
 	/* At version 78, industry cargo types can be changed, and are stored with the industry. For older save versions
 	 * copy the IndustrySpec's cargo types over to the Industry. */
-	if (IsSavegameVersionBefore(SLV_STORE_INDUSTRY_CARGO)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::StoreIndustryCargo)) {
 		for (Industry *i : Industry::Iterate()) {
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
 			for (uint j = 0; j < std::size(i->produced); j++) {
@@ -1789,9 +1789,9 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Industry cargo slots were fixed size before (and including) SLV_VEHICLE_ECONOMY_AGE (either 2/3 or 16/16),
+	/* Industry cargo slots were fixed size before (and including) SaveLoadVersion::VehicleEconomyAge (either 2/3 or 16/16),
 	 * after this they are dynamic. Trim excess slots. */
-	if (IsSavegameVersionBeforeOrAt(SLV_VEHICLE_ECONOMY_AGE)) {
+	if (IsSavegameVersionBeforeOrAt(SaveLoadVersion::VehicleEconomyAge)) {
 		for (Industry *i : Industry::Iterate()) {
 			TrimIndustryAcceptedProduced(i);
 		}
@@ -1801,7 +1801,7 @@ bool AfterLoadGame()
 	 * grassy trees were always drawn fully grassy. Furthermore, trees on rough
 	 * land used to have zero density, now they have full density. Therefore,
 	 * make all grassy/rough land trees have a density of 3. */
-	if (IsSavegameVersionBefore(SLV_FIX_TREE_GROUND)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::FixTreeGround)) {
 		for (auto t : Map::Iterate()) {
 			if (GetTileType(t) == TileType::Trees) {
 				TreeGround ground_type = (TreeGround)GB(t.m2(), 4, 2);
@@ -1811,7 +1811,7 @@ bool AfterLoadGame()
 	}
 
 
-	if (IsSavegameVersionBefore(SLV_IMPROVED_ORDERS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ImprovedOrders)) {
 		/* Rework of orders. */
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &o : orderlist->GetOrders()) {
@@ -1830,7 +1830,7 @@ bool AfterLoadGame()
 				for (Order &order : v->Orders()) order.SetNonStopType(OrderNonStopFlag::NonStop);
 			}
 		}
-	} else if (IsSavegameVersionBefore(SLV_FIX_COMPANY_CARGO_TYPES)) {
+	} else if (IsSavegameVersionBefore(SaveLoadVersion::FixCompanyCargoTypes)) {
 		/* Unload and transfer are now mutual exclusive. */
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
@@ -1847,7 +1847,7 @@ bool AfterLoadGame()
 				v->current_order.SetLoadType(OrderLoadType::NoLoad);
 			}
 		}
-	} else if (IsSavegameVersionBefore(SLV_DEPOT_UNBUNCHING)) {
+	} else if (IsSavegameVersionBefore(SaveLoadVersion::DepotUnbunching)) {
 		/* OrderDepotActionFlags were moved, instead of starting at bit 4 they now start at bit 3. */
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
@@ -1863,7 +1863,7 @@ bool AfterLoadGame()
 	}
 
 	/* The water class was moved/unified. */
-	if (IsSavegameVersionBefore(SLV_UNIFY_WATER_CLASS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyWaterClass)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Station:
@@ -1897,7 +1897,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_WATER_CLASS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::WaterClass)) {
 		for (auto t : Map::Iterate()) {
 			/* Move river flag and update canals to use water class */
 			if (IsTileType(t, TileType::Water)) {
@@ -1928,7 +1928,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SIMPLIFY_PATHFINDER_SETTINGS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SimplifyPathfinderSettings)) {
 		for (const auto t : Map::Iterate()) {
 			/* skip oil rigs at borders! */
 			if ((IsTileType(t, TileType::Water) || IsBuoyTile(t)) &&
@@ -1965,7 +1965,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_FRACTION_PROFIT_RUNNING_TICKS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::FractionProfitRunningTicks)) {
 		/* Profits are now with 8 bit fract */
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->profit_this_year <<= 8;
@@ -1974,7 +1974,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MORE_HOUSE_ANIMATION_FRAMES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MoreHouseAnimationFrames)) {
 		/* Increase HouseAnimationFrame from 5 to 7 bits */
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::House) && GetHouseType(t) >= NEW_HOUSE_OFFSET) {
@@ -1984,7 +1984,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_ADJACENT_STATIONS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::AdjacentStations)) {
 		GroupStatistics::UpdateAfterLoad(); // Ensure statistics pool is initialised before trying to delete vehicles
 		/* Remove all trams from savegames without tram support.
 		 * There would be trams without tram track under causing crashes sooner or later. */
@@ -1996,7 +1996,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_INDUSTRY_TILE_WATER_CLASS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::IndustryTileWaterClass)) {
 		for (auto t : Map::Iterate()) {
 			/* Set newly introduced WaterClass of industry tiles */
 			if (IsTileType(t, TileType::Station) && IsOilRig(t)) {
@@ -2020,7 +2020,7 @@ bool AfterLoadGame()
 	/* Move the signal variant back up one bit for PBS. We don't convert the old PBS
 	 * format here, as an old layout wouldn't work properly anyway. To be safe, we
 	 * clear any possible PBS reservations as well. */
-	if (IsSavegameVersionBefore(SLV_YAPP)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::Yapp)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::Railway:
@@ -2058,13 +2058,13 @@ bool AfterLoadGame()
 	}
 
 	/* Reserve all tracks trains are currently on. */
-	if (IsSavegameVersionBefore(SLV_NEWGRF_PALETTE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFPalette)) {
 		for (const Train *t : Train::Iterate()) {
 			if (t->First() == t) t->ReserveTrackUnderConsist();
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_NEWGRF_SUPPLIED_STATION_NAME)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFSuppliedStationName)) {
 		/* Non-town-owned roads now store the closest town */
 		UpdateNearestTownForRoadTiles(false);
 
@@ -2080,7 +2080,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MORE_COMPANIES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MoreCompanies)) {
 		for (Aircraft *a : Aircraft::Iterate()) {
 			/* Set engine_type of shadow and rotor */
 			if (!a->IsNormalAircraft()) {
@@ -2103,7 +2103,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SPLIT_HQ)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SplitHQ)) {
 		for (auto t : Map::Iterate()) {
 			/* Check for HQ bit being set, instead of using map accessor,
 			 * since we've already changed it code-wise */
@@ -2115,7 +2115,7 @@ bool AfterLoadGame()
 			}
 		}
 	}
-	if (IsSavegameVersionBefore(SLV_REORDER_UNMOVABLE_REMOVE_RESERVED)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ReorderUnmovableRemoveReserved)) {
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Object)) continue;
 
@@ -2130,7 +2130,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_UNIFY_ANIMATION_FRAME) && Object::GetNumItems() == 0) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyAnimationFrame) && Object::GetNumItems() == 0) {
 		/* Make real objects for object tiles. */
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Object)) continue;
@@ -2173,7 +2173,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_ROAD_LAYOUT_PER_TOWN)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RoadLayoutPerTown)) {
 		/* allow_town_roads is added, set it if town_layout wasn't TL_NO_ROADS */
 		if (_settings_game.economy.town_layout == 0) { // was TL_NO_ROADS
 			_settings_game.economy.allow_town_roads = false;
@@ -2202,7 +2202,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SEPARATE_ROAD_OWNERS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SeparateRoadOwners)) {
 		/* There could be (deleted) stations with invalid owner, set owner to OWNER NONE.
 		 * The conversion affects oil rigs and buoys too, but it doesn't matter as
 		 * they have st->owner == OWNER_NONE already. */
@@ -2212,7 +2212,7 @@ bool AfterLoadGame()
 	}
 
 	/* Trains could now stop in a specific location. */
-	if (IsSavegameVersionBefore(SLV_PLATFORM_STOP_LOCATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::PlatformStopLocation)) {
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &o : orderlist->GetOrders()) {
 				if (o.IsType(OT_GOTO_STATION)) o.SetStopLocation(OrderStopLocation::FarEnd);
@@ -2220,21 +2220,21 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_COMPANY_SERVICE_INTERVALS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CompanyServiceIntervals)) {
 		extern VehicleDefaultSettings _old_vds;
 		for (Company *c : Company::Iterate()) {
 			c->settings.vehicle = _old_vds;
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_BUOYS_AT_0_0)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::BuoysAt0_0)) {
 		/* Tile for no orders is now INVALID_TILE instead of 0. */
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->dest_tile == 0) v->SetDestTile(INVALID_TILE);
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_CARGO_PAYMENTS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CargoPayments)) {
 		/* Delete small ufos heading for non-existing vehicles */
 		for (DisasterVehicle *v : DisasterVehicle::Iterate()) {
 			if (v->subtype == 2 /* ST_SMALL_UFO */ && v->state != 0) {
@@ -2262,7 +2262,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_WAYPOINT_MORE_LIKE_STATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::WaypointMoreLikeStation)) {
 		/* Animated tiles would sometimes not be actually animated or
 		 * in case of old savegames duplicate. */
 
@@ -2285,14 +2285,14 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_NONFLOODING_WATER_TILES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NonfloodingWaterTiles)) {
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Water)) continue;
 			SetNonFloodingWaterTile(t, false);
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_ANIMATED_TILE_STATE_IN_MAP)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::AnimatedTileStateInMap)) {
 		/* Animated tile state is stored in the map array, allowing
 		 * quicker addition and deletion of animated tiles. */
 
@@ -2309,7 +2309,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MULTI_TILE_WAYPOINTS) && !IsSavegameVersionBeforeOrAt(SL_MIN_VERSION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MultiTileWaypoints) && !IsSavegameVersionBeforeOrAt(SaveLoadVersion::MinVersion)) {
 		/* The train station tile area was added, but for really old (TTDPatch) it's already valid. */
 		for (Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->facilities.Test(StationFacility::Train)) {
@@ -2324,7 +2324,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_REMOVE_SUBSIDY_STATION_BINDING)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RemoveSubsidyStationBinding)) {
 		/* Convert old subsidies */
 		for (Subsidy *s : Subsidy::Iterate()) {
 			if (s->remaining < 12) {
@@ -2383,7 +2383,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_CUMULATED_INFLATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CumulatedInflation)) {
 		/* Recompute inflation based on old unround loan limit
 		 * Note: Max loan is 500000. With an inflation of 4% across 170 years
 		 *       that results in a max loan of about 0.7 * 2^31.
@@ -2401,7 +2401,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_FOUND_TOWN)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::FoundTown)) {
 		for (const Depot *d : Depot::Iterate()) {
 			Tile tile = d->xy;
 			/* At some point, invalid depots were saved into the game (possibly those removed in the past?)
@@ -2419,7 +2419,7 @@ bool AfterLoadGame()
 
 	/* The behaviour of force_proceed has been changed. Now
 	 * it counts signals instead of some random time out. */
-	if (IsSavegameVersionBefore(SLV_MAXIMUM_DEPOT_PENALTY)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MaximumDepotPenalty)) {
 		for (Train *t : Train::Iterate()) {
 			if (t->force_proceed != TFP_NONE) {
 				t->force_proceed = TFP_STUCK;
@@ -2429,7 +2429,7 @@ bool AfterLoadGame()
 
 	/* The bits for the tree ground and tree density have
 	 * been swapped (m2 bits 7..6 and 5..4. */
-	if (IsSavegameVersionBefore(SLV_ROCKS_STAY_UNDER_SNOW)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RocksStayUnderSnow)) {
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Clear)) {
 				if (GetClearGround(t) == ClearGround{4}) { // CLEAR_SNOW becomes ClearGround::Grass with IsSnowTile() set.
@@ -2448,7 +2448,7 @@ bool AfterLoadGame()
 	}
 
 	/* Wait counter and load/unload ticks got split. */
-	if (IsSavegameVersionBefore(SLV_SPLIT_LOAD_WAIT_COUNTERS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SplitLoadWaitCounters)) {
 		for (Aircraft *a : Aircraft::Iterate()) {
 			a->turn_counter = a->current_order.IsType(OT_LOADING) ? 0 : a->load_unload_ticks;
 		}
@@ -2459,7 +2459,7 @@ bool AfterLoadGame()
 	}
 
 	/* Airport tile animation uses animation frame instead of other graphics id */
-	if (IsSavegameVersionBefore(SLV_AIRPORT_ANIMATION_FRAMES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::AirportAnimationFrames)) {
 		struct AirportTileConversion {
 			uint8_t old_start;
 			uint8_t num_frames;
@@ -2496,7 +2496,7 @@ bool AfterLoadGame()
 	}
 
 	/* Oilrig was moved from id 15 to 9. */
-	if (IsSavegameVersionBefore(SLV_RV_REALISTIC_ACCELERATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RvRealisticAcceleration)) {
 		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile != INVALID_TILE && st->airport.type == 15) {
 				st->airport.type = AT_OILRIG;
@@ -2504,7 +2504,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_STORE_AIRPORT_SIZE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::StoreAirportSize)) {
 		for (Station *st : Station::Iterate()) {
 			if (st->airport.tile != INVALID_TILE) {
 				st->airport.w = st->airport.GetSpec()->size_x;
@@ -2513,7 +2513,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_UNIQUE_DEPOT_NAMES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UniqueDepotNames)) {
 		for (const auto t : Map::Iterate()) {
 			/* Reset tropic zone for VOID tiles, they shall not have any. */
 			if (IsTileType(t, TileType::Void)) SetTropicZone(t, TropicZone::Normal);
@@ -2527,11 +2527,11 @@ bool AfterLoadGame()
 		for (Depot *d : Depot::Iterate()) MakeDefaultName(d);
 	}
 
-	if (IsSavegameVersionBefore(SLV_NEWGRF_DEPOT_BUILD_DATE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFDepotBuildDate)) {
 		for (Depot *d : Depot::Iterate()) d->build_date = TimerGameCalendar::date;
 	}
 
-	if (IsSavegameVersionBefore(SLV_NEWGRF_AIRPORT_SMOKE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFAirportSmoke)) {
 		for (Station *st : Station::Iterate()) {
 			if (st->facilities.Test(StationFacility::Airport)) st->airport.rotation = Direction::N;
 		}
@@ -2542,7 +2542,7 @@ bool AfterLoadGame()
 	 * another airport in the same station so we don't allow that anymore.
 	 * For old savegames with such aircraft we just throw them in the air and
 	 * treat the aircraft like they were flying already. */
-	if (IsSavegameVersionBefore(SLV_UNIFY_WATER_CLASS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyWaterClass)) {
 		for (Aircraft *v : Aircraft::Iterate()) {
 			if (!v->IsNormalAircraft()) continue;
 			Station *st = GetTargetAirportIfValid(v);
@@ -2560,7 +2560,7 @@ bool AfterLoadGame()
 	}
 
 	/* Move the animation frame to the same location (m7) for all objects. */
-	if (IsSavegameVersionBefore(SLV_UNIFY_ANIMATION_FRAME)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyAnimationFrame)) {
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case TileType::House:
@@ -2592,14 +2592,14 @@ bool AfterLoadGame()
 	}
 
 	/* Add (random) colour to all objects. */
-	if (IsSavegameVersionBefore(SLV_INDUSTRY_PLATFORM)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::IndustryPlatform)) {
 		for (Object *o : Object::Iterate()) {
 			Owner owner = GetTileOwner(o->location.tile);
 			o->recolour_offset = (owner == OWNER_NONE) ? GB(Random(), 0, 4) : to_underlying(Company::Get(owner)->livery[LiveryScheme::Default].colour1);
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_CUSTOM_SEA_LEVEL)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CustomSeaLevel)) {
 		for (const auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Station)) continue;
 			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && IsTileFlat(t))) {
@@ -2620,7 +2620,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_INDUSTRY_MANAGEMENT)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::IndustryManagement)) {
 		_industry_builder.Reset(); // Initialize industry build data.
 
 		/* The moment vehicles go from hidden to visible changed. This means
@@ -2688,7 +2688,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_LEAVE_ROAD_STOP_SEPARATELY)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::LeaveRoadStopSeparately)) {
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) continue;
 
@@ -2702,7 +2702,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_TERRAFORM_LIMITS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TerraformLimits)) {
 		/* The train's pathfinder lost flag got moved. */
 		for (Train *t : Train::Iterate()) {
 			if (!t->flags.Test(VehicleRailFlag{5})) continue;
@@ -2719,13 +2719,13 @@ bool AfterLoadGame()
 	}
 
 
-	if (IsSavegameVersionBefore(SLV_CONSISTENT_PARTIAL_Z)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ConsistentPartialZ)) {
 		/*
 		 * The logic of GetPartialPixelZ has been changed, so the resulting Zs on
 		 * the map are consistent. This requires that the Z position of some
 		 * vehicles is updated to reflect this new situation.
 		 *
-		 * This needs to be before SLV_TRACK_REAL_AND_AUTO_ORDERS, because that performs asserts using
+		 * This needs to be before SaveLoadVersion::TrackRealAndAutoOrders, because that performs asserts using
 		 * GetSlopePixelZ which internally uses GetPartialPixelZ.
 		 */
 		for (Vehicle *v : Vehicle::Iterate()) {
@@ -2736,7 +2736,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_TRACK_REAL_AND_AUTO_ORDERS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TrackRealAndAutoOrders)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			switch (v->type) {
 				case VehicleType::Train: {
@@ -2830,21 +2830,21 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MAX_LENGTH_AND_REVERSE_SIGNALS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MaxLengthAndReverseSignals)) {
 		/* If the savegame is old (before version 100), then the value of 255
 		 * for these settings did not mean "disabled". As such everything
 		 * before then did reverse.
 		 * To simplify stuff we disable all turning around or we do not
 		 * disable anything at all. So, if some reversing was disabled we
 		 * will keep reversing disabled, otherwise it'll be turned on. */
-		_settings_game.pf.reverse_at_signals = IsSavegameVersionBefore(SLV_YAPP) || (_settings_game.pf.wait_oneway_signal != 255 && _settings_game.pf.wait_twoway_signal != 255 && _settings_game.pf.wait_for_pbs_path != 255);
+		_settings_game.pf.reverse_at_signals = IsSavegameVersionBefore(SaveLoadVersion::Yapp) || (_settings_game.pf.wait_oneway_signal != 255 && _settings_game.pf.wait_twoway_signal != 255 && _settings_game.pf.wait_for_pbs_path != 255);
 
 		for (Train *t : Train::Iterate()) {
 			_settings_game.vehicle.max_train_length = std::max<uint8_t>(_settings_game.vehicle.max_train_length, CeilDiv(t->gcache.cached_total_length, TILE_SIZE));
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_DISALLOW_ROAD_RECONSTRUCTION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::DisallowRoadReconstruction)) {
 		/* Setting difficulty industry_density other than zero get bumped to +1
 		 * since a new option (minimal at position 1) has been added */
 		if (_settings_game.difficulty.industry_density > IndustryDensity::FundedOnly) {
@@ -2852,10 +2852,10 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_PERSISTENT_STORAGE_POOL)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::PersistentStoragePool)) {
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
 
-		if (!IsSavegameVersionBefore(SLV_NEWGRF_PERSISTENT_STORAGE)) {
+		if (!IsSavegameVersionBefore(SaveLoadVersion::NewGRFPersistentStorage)) {
 			for (Industry *ind : Industry::Iterate()) {
 				assert(ind->psa != nullptr);
 
@@ -2877,7 +2877,7 @@ bool AfterLoadGame()
 			}
 		}
 
-		if (!IsSavegameVersionBefore(SLV_NEWGRF_AIRPORT_SMOKE)) {
+		if (!IsSavegameVersionBefore(SaveLoadVersion::NewGRFAirportSmoke)) {
 			for (Station *st : Station::Iterate()) {
 				if (!st->facilities.Test(StationFacility::Airport)) continue;
 				assert(st->airport.psa != nullptr);
@@ -2903,11 +2903,11 @@ bool AfterLoadGame()
 	}
 
 	/* This triggers only when old snow_lines were copied into the snow_line_height. */
-	if (IsSavegameVersionBefore(SLV_VEHICLE_CENTRE_AND_Z_POS) && _settings_game.game_creation.snow_line_height >= MIN_SNOWLINE_HEIGHT * TILE_HEIGHT) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::VehicleCentreAndZPos) && _settings_game.game_creation.snow_line_height >= MIN_SNOWLINE_HEIGHT * TILE_HEIGHT) {
 		_settings_game.game_creation.snow_line_height /= TILE_HEIGHT;
 	}
 
-	if (IsSavegameVersionBefore(SLV_VEHICLE_CENTRE_AND_Z_POS) && !IsSavegameVersionBefore(SLV_LINK_FARM_FIELD_TO_INDUSTRY)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::VehicleCentreAndZPos) && !IsSavegameVersionBefore(SaveLoadVersion::LinkFarmFieldToIndustry)) {
 		/* We store 4 fences in the field tiles instead of only SE and SW. */
 		for (auto t : Map::Iterate()) {
 			if (!IsTileType(t, TileType::Clear) && !IsTileType(t, TileType::Trees)) continue;
@@ -2925,7 +2925,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_DRIVE_BACKWARDS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::DriveBackwards)) {
 		/* Vehicles used to be reversed immediately when entering depot.
 		 * Now they are reversed when the whole consist has entered.
 		 * Find trains in the process of entering a depot and un-reverse them. */
@@ -2945,7 +2945,7 @@ bool AfterLoadGame()
 		_settings_game.difficulty.train_flip_reverse_allowed = _settings_game.difficulty.line_reverse_mode ? TrainFlipReversingAllowed::EndOfLineOnly : TrainFlipReversingAllowed::All;
 	}
 
-	if (IsSavegameVersionBefore(SLV_SCRIPT_TOWN_GROWTH)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ScriptTownGrowth)) {
 		for (Town *t : Town::Iterate()) {
 			/* Set the default cargo requirement for town growth */
 			switch (_settings_game.game_creation.landscape) {
@@ -2964,7 +2964,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SCRIPT_TOWN_GROWTH)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ScriptTownGrowth)) {
 		/* Adjust zoom level to account for new levels */
 		_saved_scrollpos_zoom += ZOOM_BASE_SHIFT;
 		_saved_scrollpos_x *= ZOOM_BASE;
@@ -2977,7 +2977,7 @@ bool AfterLoadGame()
 	if (gcf_res != GRFListCompatibility::AllGood) StartupEngines();
 
 	/* The road owner of standard road stops was not properly accounted for. */
-	if (IsSavegameVersionBefore(SLV_ORDER_MAX_SPEED)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::OrderMaxSpeed)) {
 		for (const auto t : Map::Iterate()) {
 			if (!IsBayRoadStopTile(t)) continue;
 			Owner o = GetTileOwner(t);
@@ -2986,12 +2986,12 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_AUTOREPLACE_WHEN_OLD_TREE_LIMIT)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::AutoreplaceWhenOldTreeLimit)) {
 		/* Introduced tree planting limit. */
 		for (Company *c : Company::Iterate()) c->tree_limit = _settings_game.construction.tree_frame_burst << 16;
 	}
 
-	if (IsSavegameVersionBefore(SLV_MONTHLY_BANKRUPTCY_CHECK)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MonthlyBankruptcyCheck)) {
 		/* Fix too high inflation rates */
 		if (_economy.inflation_prices > MAX_INFLATION) _economy.inflation_prices = MAX_INFLATION;
 		if (_economy.inflation_payment > MAX_INFLATION) _economy.inflation_payment = MAX_INFLATION;
@@ -3002,7 +3002,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_GOAL_PROGRESS_PLANE_ACCELERATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::GoalProgressPlaneAcceleration)) {
 		/* Aircraft acceleration variable was bonkers */
 		for (Aircraft *v : Aircraft::Iterate()) {
 			if (v->subtype <= AIR_AIRCRAFT) {
@@ -3020,7 +3020,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SEPARATE_LOCALE_UNITS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SeparateLocaleUnits)) {
 		/* The global units configuration is split up in multiple configurations. */
 		extern uint8_t _old_units;
 		_settings_game.locale.units_velocity = Clamp(_old_units, 0, 2);
@@ -3031,12 +3031,12 @@ bool AfterLoadGame()
 		_settings_game.locale.units_height   = Clamp(_old_units, 0, 2);
 	}
 
-	if (IsSavegameVersionBefore(SLV_VELOCITY_NAUTICAL)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::VelocityNautical)) {
 		/* Match nautical velocity with land velocity units. */
 		_settings_game.locale.units_velocity_nautical = _settings_game.locale.units_velocity;
 	}
 
-	if (IsSavegameVersionBefore(SLV_OBJECT_TYPE_TO_POOL)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ObjectTypeToPool)) {
 		/* Move ObjectType from map to pool */
 		for (auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Object)) {
@@ -3053,13 +3053,13 @@ bool AfterLoadGame()
 	AfterLoadVehiclesPhase2(true);
 
 	/* The center of train vehicles was changed, fix up spacing. */
-	if (IsSavegameVersionBefore(SLV_VEHICLE_CENTRE_AND_Z_POS)) FixupTrainLengths();
+	if (IsSavegameVersionBefore(SaveLoadVersion::VehicleCentreAndZPos)) FixupTrainLengths();
 
 	/* In version 2.2 of the savegame, we have new airports, so status of all aircraft is reset.
 	 * This has to be called after all map array updates */
-	if (IsSavegameVersionBefore(SLV_VEHICLE_CURRENCY_STATION_CHANGES, 2)) UpdateOldAircraft();
+	if (IsSavegameVersionBefore(SaveLoadVersion::VehicleCurrencyStationChanges, 2)) UpdateOldAircraft();
 
-	if (IsSavegameVersionBefore(SLV_UNIFY_RV_TRAVEL_TIME)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyRvTravelTime)) {
 		/* Fix articulated road vehicles.
 		 * Some curves were shorter than other curves.
 		 * Now they have the same length, but that means that trailing articulated parts will
@@ -3118,7 +3118,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SEPARATE_ORDER_TRAVEL_WAIT_TIME)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SeparateOrderTravelWaitTime)) {
 		for (OrderList *orderlist : OrderList::Iterate()) {
 			for (Order &order : orderlist->GetOrders()) {
 				order.SetTravelTimetabled(order.GetTravelTime() > 0);
@@ -3132,9 +3132,9 @@ bool AfterLoadGame()
 	 * Only keep order-backups for network clients (and when replaying).
 	 * If we are a network server or not networking, then we just loaded a previously
 	 * saved-by-server savegame. There are no clients with a backup, so clear it.
-	 * Furthermore before savegame version SLV_FIX_ORDER_BACKUP the actual content was always corrupt.
+	 * Furthermore before savegame version SaveLoadVersion::FixOrderBackup the actual content was always corrupt.
 	 */
-	if (!_networking || _network_server || IsSavegameVersionBefore(SLV_FIX_ORDER_BACKUP)) {
+	if (!_networking || _network_server || IsSavegameVersionBefore(SaveLoadVersion::FixOrderBackup)) {
 #ifndef DEBUG_DUMP_COMMANDS
 		/* Note: We cannot use CleanPool since that skips part of the destructor
 		 * and then leaks un-reachable Orders in the order pool. */
@@ -3144,7 +3144,7 @@ bool AfterLoadGame()
 #endif
 	}
 
-	if (IsSavegameVersionBefore(SLV_TOWN_GROWTH_IN_GAME_TICKS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TownGrowthInGameTicks)) {
 		/* Convert towns growth_rate and grow_counter to ticks */
 		for (Town *t : Town::Iterate()) {
 			/* 0x8000 = TOWN_GROWTH_RATE_CUSTOM previously */
@@ -3157,7 +3157,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ExtendIndustryCargoSlots)) {
 		/* Make sure added industry cargo slots are cleared */
 		for (Industry *i : Industry::Iterate()) {
 			/* Make sure last_cargo_accepted_at is copied to elements for every valid input cargo.
@@ -3172,7 +3172,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SHIPS_STOP_IN_LOCKS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ShipsStopInLocks)) {
 		/* Move ships from lock slope to upper or lower position. */
 		for (Ship *s : Ship::Iterate()) {
 			/* Suitable tile? */
@@ -3207,12 +3207,12 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_TOWN_CARGOGEN)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TownCargogen)) {
 		/* Ensure the original cargo generation mode is used */
 		_settings_game.economy.town_cargogen_mode = TCGM_ORIGINAL;
 	}
 
-	if (IsSavegameVersionBefore(SLV_SERVE_NEUTRAL_INDUSTRIES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ServeNeutralIndustries)) {
 		/* Ensure the original neutral industry/station behaviour is used */
 		_settings_game.station.serve_neutral_industries = true;
 
@@ -3229,7 +3229,7 @@ bool AfterLoadGame()
 		for (Industry *ind : Industry::Iterate()) if (ind->neutral_station != nullptr) ind->neutral_station->industry = ind;
 	}
 
-	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TreesWaterClass)) {
 		/* Update water class for trees. */
 		for (const auto t : Map::Iterate()) {
 			if (IsTileType(t, TileType::Trees)) SetWaterClass(t, GetTreeGround(t) == TreeGround::Shore ? WaterClass::Sea : WaterClass::Invalid);
@@ -3237,7 +3237,7 @@ bool AfterLoadGame()
 	}
 
 	/* Update structures for multitile docks */
-	if (IsSavegameVersionBefore(SLV_MULTITILE_DOCKS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MultitileDocks)) {
 		for (const auto t : Map::Iterate()) {
 			/* Clear docking tile flag from relevant tiles as it
 			 * was not previously cleared. */
@@ -3251,7 +3251,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_REPAIR_OBJECT_DOCKING_TILES)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::RepairObjectDockingTiles)) {
 		/* Placing objects on docking tiles was not updating adjacent station's docking tiles. */
 		for (Station *st : Station::Iterate()) {
 			if (st->ship_station.tile != INVALID_TILE) UpdateStationDockingTiles(st);
@@ -3259,14 +3259,14 @@ bool AfterLoadGame()
 	}
 
 	/* Make sure all industries exclusive supplier/consumer set correctly. */
-	if (IsSavegameVersionBefore(SLV_GS_INDUSTRY_CONTROL)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::GSIndustryControl)) {
 		for (Industry *i : Industry::Iterate()) {
 			i->exclusive_supplier = INVALID_OWNER;
 			i->exclusive_consumer = INVALID_OWNER;
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_GROUP_REPLACE_WAGON_REMOVAL)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::GroupReplaceWagonRemoval)) {
 		/* Propagate wagon removal flag for compatibility */
 		/* Temporary bitmask of company wagon removal setting */
 		CompanyMask wagon_removal{};
@@ -3283,18 +3283,18 @@ bool AfterLoadGame()
 	}
 
 	/* Use current order time to approximate last loading time */
-	if (IsSavegameVersionBefore(SLV_LAST_LOADING_TICK)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::LastLoadingTick)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->last_loading_tick = std::max(TimerGameTick::counter, static_cast<uint64_t>(v->current_order_time)) - v->current_order_time;
 		}
 	}
 
-	/* Road stops is 'only' updating some caches, but they are needed for PF calls in SLV_MULTITRACK_LEVEL_CROSSINGS teleporting. */
+	/* Road stops is 'only' updating some caches, but they are needed for PF calls in SaveLoadVersion::MultitrackLevelCrossings teleporting. */
 	AfterLoadRoadStops();
 
 	/* Road vehicles stopped on multitrack level crossings need teleporting to a depot
 	 * to avoid crashing into the side of the train they're waiting for. */
-	if (IsSavegameVersionBefore(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MultitrackLevelCrossings)) {
 		/* Teleport road vehicles to the nearest depot. */
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 			/* Ignore trailers of articulated vehicles. */
@@ -3331,7 +3331,7 @@ bool AfterLoadGame()
 			}
 		}
 
-		if (IsSavegameVersionBeforeOrAt(SLV_MULTITRACK_LEVEL_CROSSINGS)) {
+		if (IsSavegameVersionBeforeOrAt(SaveLoadVersion::MultitrackLevelCrossings)) {
 			/* Reset unused tree counters to reduce the savegame size. */
 			for (auto t : Map::Iterate()) {
 				if (IsTileType(t, TileType::Trees)) {
@@ -3350,15 +3350,15 @@ bool AfterLoadGame()
 	Station::RecomputeCatchmentForAll();
 
 	/* Station acceptance is some kind of cache */
-	if (IsSavegameVersionBefore(SLV_TOWN_ACCEPTANCE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::TownAcceptance)) {
 		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
 	}
 
-	if (IsSavegameVersionBefore(SLV_SAVEGAME_ID)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::SavegameId)) {
 		GenerateSavegameId();
 	}
 
-	if (IsSavegameVersionBefore(SLV_AI_START_DATE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::AIStartDate)) {
 		/* For older savegames, we don't now the actual interval; so set it to the newgame value. */
 		_settings_game.difficulty.competitors_interval = _settings_newgame.difficulty.competitors_interval;
 
@@ -3368,37 +3368,37 @@ bool AfterLoadGame()
 		_new_competitor_timeout.fired = _new_competitor_timeout.period.value == 0;
 	}
 
-	if (IsSavegameVersionBefore(SLV_NEWGRF_LAST_SERVICE)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFLastService)) {
 		/* Set service date provided to NewGRF. */
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->date_of_last_service_newgrf = TimerGameCalendar::Date{v->date_of_last_service.base()};
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SHIP_ACCELERATION)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ShipAcceleration)) {
 		/* NewGRF acceleration information was added to ships. */
 		for (Ship *s : Ship::Iterate()) {
 			if (s->acceleration == 0) s->acceleration = ShipVehInfo(s->engine_type)->acceleration;
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_MAX_LOAN_FOR_COMPANY)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::MaxLoanForCompany)) {
 		for (Company *c : Company::Iterate()) {
 			c->max_loan = COMPANY_MAX_LOAN_DEFAULT;
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_SCRIPT_RANDOMIZER)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::ScriptRandomizer)) {
 		ScriptObject::InitializeRandomizers();
 	}
 
-	if (IsSavegameVersionBefore(SLV_COMPANY_INAUGURATED_PERIOD_V2)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CompanyInauguratedPeriodV2)) {
 		for (Company *c : Company::Iterate()) {
 			c->inaugurated_year_calendar = _settings_game.game_creation.starting_year;
 		}
 	}
 
-	if (!IsSavegameVersionBefore(SLV_INCREASE_HOUSE_LIMIT) && IsSavegameVersionBeforeOrAt(SLV_SCRIPT_SAVE_INSTANCES)) {
+	if (!IsSavegameVersionBefore(SaveLoadVersion::IncreaseHouseLimit) && IsSavegameVersionBeforeOrAt(SaveLoadVersion::ScriptSaveInstances)) {
 		/* Between these two versions (actually from f8b1e303 to 77236258) EngineFlags had an off-by-one. Depending
 		 * on when the save was started, this may or may not affect existing engines. Here we try to detect invalid flags
 		 * and reset them to what they should be. */
@@ -3410,7 +3410,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (!IsSavegameVersionBefore(SLV_STATIONS_UNDER_BRIDGES) && IsSavegameVersionBeforeOrAt(SLV_DRIVE_BACKWARDS)) {
+	if (!IsSavegameVersionBefore(SaveLoadVersion::StationsUnderBridges) && IsSavegameVersionBeforeOrAt(SaveLoadVersion::DriveBackwards)) {
 		/* Default waypoints were built with an incorrect layout that prevents building bridges over them. */
 		for (auto tile : Map::Iterate()) {
 			if (!IsRailWaypointTile(tile)) continue; // Not a waypoint.
@@ -3426,7 +3426,7 @@ bool AfterLoadGame()
 	/* Update free group numbers data for each company, required regardless of savegame version. */
 	for (Group *g : Group::Iterate()) {
 		Company *c = Company::Get(g->owner);
-		if (IsSavegameVersionBefore(SLV_GROUP_NUMBERS)) {
+		if (IsSavegameVersionBefore(SaveLoadVersion::GroupNumbers)) {
 			/* Use the index as group number when converting old savegames. */
 			g->number = c->freegroups.UseID(g->index.base());
 		} else {

@@ -15,7 +15,7 @@
 /** Original field order for _group_desc. */
 const SaveLoadCompat _group_sl_compat[] = {
 	SLC_VAR("name"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_VEHICLE_CENTRE_AND_Z_POS),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
 	SLC_VAR("owner"),
 	SLC_VAR("vehicle_type"),
 	SLC_VAR("flags"),

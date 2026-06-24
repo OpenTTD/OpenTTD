@@ -71,7 +71,7 @@ void MoveWaypointsToBaseStations()
 	 * waypoints to make way for storing the index in m2. The custom graphics
 	 * id which was stored in m4 is now saved as a grf/id reference in the
 	 * waypoint struct. */
-	if (IsSavegameVersionBefore(SLV_STORE_WAYPOINT_ID_IN_MAP)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::StoreWaypointIdInMap)) {
 		for (OldWaypoint &wp : _old_waypoints) {
 			if (wp.delete_ctr != 0) continue; // The waypoint was deleted
 
@@ -126,7 +126,7 @@ void MoveWaypointsToBaseStations()
 
 		/* The tile might've been reserved! */
 		Tile tile(t);
-		bool reserved = !IsSavegameVersionBefore(SLV_YAPP) && HasBit(tile.m5(), 4);
+		bool reserved = !IsSavegameVersionBefore(SaveLoadVersion::Yapp) && HasBit(tile.m5(), 4);
 
 		/* The tile really has our waypoint, so reassign the map array */
 		MakeRailWaypoint(tile, GetTileOwner(tile), new_wp->index, static_cast<Axis>(GB(tile.m5(), 0, 1)), 0, GetRailType(tile));
@@ -168,21 +168,21 @@ void ResetOldWaypoints()
 }
 
 static const SaveLoad _old_waypoint_desc[] = {
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_LINK_WAYPOINT_TO_TOWN, SLV_WAYPOINT_MORE_LIKE_STATION),
-	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SLV_WAYPOINT_MORE_LIKE_STATION, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_LINK_WAYPOINT_TO_TOWN, SLV_MORE_WAYPOINTS_PER_TOWN),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 SLV_MORE_WAYPOINTS_PER_TOWN, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                SL_MIN_VERSION, SLV_REPLACE_CUSTOM_NAME_ARRAY),
-	SLE_CONDSSTR(OldWaypoint, name,      SLE_STR,                    SLV_REPLACE_CUSTOM_NAME_ARRAY, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
+	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::MoreWaypointsPerTown),
+	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 SaveLoadVersion::MoreWaypointsPerTown, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SLE_CONDSSTR(OldWaypoint, name,      SLE_STR,                    SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(OldWaypoint, delete_ctr, SLE_UINT8),
 
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  SLV_BIGGER_STATION_VARIABLES, SLV_BIG_DATES),
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   SLV_BIGGER_STATION_VARIABLES, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SLV_STORE_WAYPOINT_ID_IN_MAP, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_NEWGRF_PALETTE, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
+	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SaveLoadVersion::StoreWaypointIdInMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
 };
 
 struct CHKPChunkHandler : ChunkHandler {
@@ -208,10 +208,10 @@ struct CHKPChunkHandler : ChunkHandler {
 		for (OldWaypoint &wp : _old_waypoints) {
 			SlObject(&wp, _old_waypoint_desc);
 
-			if (IsSavegameVersionBefore(SLV_LINK_WAYPOINT_TO_TOWN)) {
+			if (IsSavegameVersionBefore(SaveLoadVersion::LinkWaypointToTown)) {
 				wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
 				wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
-			} else if (IsSavegameVersionBefore(SLV_WAYPOINT_MORE_LIKE_STATION)) {
+			} else if (IsSavegameVersionBefore(SaveLoadVersion::WaypointMoreLikeStation)) {
 				/* Only for versions 12 .. 122 */
 				if (!Town::IsValidID(wp.town_index)) {
 					/* Upon a corrupted waypoint we'll likely get here. The next step will be to
@@ -224,7 +224,7 @@ struct CHKPChunkHandler : ChunkHandler {
 				}
 				wp.town = Town::Get(wp.town_index);
 			}
-			if (IsSavegameVersionBefore(SLV_REPLACE_CUSTOM_NAME_ARRAY)) {
+			if (IsSavegameVersionBefore(SaveLoadVersion::ReplaceCustomNameArray)) {
 				wp.name = CopyFromOldName(wp.string_id);
 			}
 		}

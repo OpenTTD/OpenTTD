@@ -19,11 +19,11 @@ const SaveLoadCompat _order_sl_compat[] = {
 	SLC_VAR("dest"),
 	SLC_VAR("next"),
 	SLC_VAR("refit_cargo"),
-	SLC_NULL(1, SLV_REFIT_ORDERS, SLV_GOAL_PROGRESS_PLANE_ACCELERATION),
+	SLC_NULL(1, SaveLoadVersion::RefitOrders, SaveLoadVersion::GoalProgressPlaneAcceleration),
 	SLC_VAR("wait_time"),
 	SLC_VAR("travel_time"),
 	SLC_VAR("max_speed"),
-	SLC_NULL(10, SLV_BIG_MAP, SLV_REFIT_ORDERS),
+	SLC_NULL(10, SaveLoadVersion::BigMap, SaveLoadVersion::RefitOrders),
 };
 
 /** Original field order for _orderlist_desc. */
@@ -38,7 +38,7 @@ const SaveLoadCompat _order_backup_sl_compat[] = {
 	SLC_VAR("group"),
 	SLC_VAR("service_interval"),
 	SLC_VAR("name"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_FIX_ORDER_BACKUP),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::FixOrderBackup),
 	SLC_VAR("clone"),
 	SLC_VAR("cur_real_order_index"),
 	SLC_VAR("cur_implicit_order_index"),

@@ -22,18 +22,18 @@ const SaveLoadCompat _cheats_sl_compat[] = {
 	SLC_VAR("money.value"),
 	SLC_VAR("crossing_tunnels.been_used"),
 	SLC_VAR("crossing_tunnels.value"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_TABLE_CHUNKS),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_TABLE_CHUNKS), // Need to be two NULL fields. See Load_CHTS().
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::TableChunks),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::TableChunks), // Need to be two NULL fields. See Load_CHTS().
 	SLC_VAR("no_jetcrash.been_used"),
 	SLC_VAR("no_jetcrash.value"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_TABLE_CHUNKS),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_TABLE_CHUNKS), // Need to be two NULL fields. See Load_CHTS().
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::TableChunks),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::TableChunks), // Need to be two NULL fields. See Load_CHTS().
 	SLC_VAR("change_date.been_used"),
 	SLC_VAR("change_date.value"),
 	SLC_VAR("setup_prod.been_used"),
 	SLC_VAR("setup_prod.value"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_TABLE_CHUNKS),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_TABLE_CHUNKS), // Need to be two NULL fields. See Load_CHTS().
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::TableChunks),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::TableChunks), // Need to be two NULL fields. See Load_CHTS().
 	SLC_VAR("edit_max_hl.been_used"),
 	SLC_VAR("edit_max_hl.value"),
 };

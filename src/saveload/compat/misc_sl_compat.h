@@ -17,45 +17,45 @@ const SaveLoadCompat _date_sl_compat[] = {
 	SLC_VAR("date"),
 	SLC_VAR("date_fract"),
 	SLC_VAR("tick_counter"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_UNIFY_GROUND_VEHICLES),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyGroundVehicles),
 	SLC_VAR("age_cargo_skip_counter"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_MORE_AIRPORT_BLOCKS),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreAirportBlocks),
 	SLC_VAR("cur_tileloop_tile"),
 	SLC_VAR("next_disaster_start"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_COMPANY_SERVICE_INTERVALS),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::CompanyServiceIntervals),
 	SLC_VAR("random_state[0]"),
 	SLC_VAR("random_state[1]"),
-	SLC_NULL(1, SL_MIN_VERSION,  SLV_LARGER_TOWN_COUNTER),
-	SLC_NULL(4, SLV_LARGER_TOWN_COUNTER, SLV_COMPANY_SERVICE_INTERVALS),
+	SLC_NULL(1, SaveLoadVersion::MinVersion,  SaveLoadVersion::LargerTownCounter),
+	SLC_NULL(4, SaveLoadVersion::LargerTownCounter, SaveLoadVersion::CompanyServiceIntervals),
 	SLC_VAR("company_tick_counter"),
 	SLC_VAR("next_competitor_start"),
 	SLC_VAR("trees_tick_counter"),
 	SLC_VAR("pause_mode"),
-	SLC_NULL(4, SLV_LARGER_TOWN_ITERATOR, SLV_COMPANY_SERVICE_INTERVALS),
+	SLC_NULL(4, SaveLoadVersion::LargerTownIterator, SaveLoadVersion::CompanyServiceIntervals),
 };
 
 /** Original field order for _date_check_desc. */
 const SaveLoadCompat _date_check_sl_compat[] = {
 	SLC_VAR("date"),
-	SLC_NULL(2, SL_MIN_VERSION, SL_MAX_VERSION), // date_fract
-	SLC_NULL(2, SL_MIN_VERSION, SL_MAX_VERSION), // tick_counter
-	SLC_NULL(2, SL_MIN_VERSION, SLV_UNIFY_GROUND_VEHICLES),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_NEWGRF_CUSTOM_CARGO_AGING),        // age_cargo_skip_counter
-	SLC_NULL(1, SL_MIN_VERSION, SLV_MORE_AIRPORT_BLOCKS),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),          // cur_tileloop_tile
-	SLC_NULL(4, SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),          // cur_tileloop_tile
-	SLC_NULL(2, SL_MIN_VERSION, SL_MAX_VERSION), // disaster_delay
-	SLC_NULL(2, SL_MIN_VERSION, SLV_COMPANY_SERVICE_INTERVALS),
-	SLC_NULL(4, SL_MIN_VERSION, SL_MAX_VERSION), // random.state[0]
-	SLC_NULL(4, SL_MIN_VERSION, SL_MAX_VERSION), // random.state[1]
-	SLC_NULL(1,  SL_MIN_VERSION,  SLV_LARGER_TOWN_COUNTER),
-	SLC_NULL(4, SLV_LARGER_TOWN_COUNTER, SLV_COMPANY_SERVICE_INTERVALS),
-	SLC_NULL(1, SL_MIN_VERSION, SL_MAX_VERSION), // cur_company_tick_index
-	SLC_NULL(2, SL_MIN_VERSION, SLV_NEXT_COMPETITOR_START_OVERFLOW),        // next_competitor_start
-	SLC_NULL(4, SLV_NEXT_COMPETITOR_START_OVERFLOW, SL_MAX_VERSION),        // next_competitor_start
-	SLC_NULL(1, SL_MIN_VERSION, SL_MAX_VERSION), // trees_tick_ctr
-	SLC_NULL(1, SLV_TOWN_TOLERANCE_PAUSE_MODE, SL_MAX_VERSION),          // pause_mode
-	SLC_NULL(4, SLV_LARGER_TOWN_ITERATOR, SLV_COMPANY_SERVICE_INTERVALS),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // date_fract
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // tick_counter
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyGroundVehicles),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::NewGRFCustomCargoAging),        // age_cargo_skip_counter
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreAirportBlocks),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),          // cur_tileloop_tile
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),          // cur_tileloop_tile
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // disaster_delay
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::CompanyServiceIntervals),
+	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // random.state[0]
+	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // random.state[1]
+	SLC_NULL(1,  SaveLoadVersion::MinVersion,  SaveLoadVersion::LargerTownCounter),
+	SLC_NULL(4, SaveLoadVersion::LargerTownCounter, SaveLoadVersion::CompanyServiceIntervals),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // cur_company_tick_index
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NextCompetitorStartOverflow),        // next_competitor_start
+	SLC_NULL(4, SaveLoadVersion::NextCompetitorStartOverflow, SaveLoadVersion::MaxVersion),        // next_competitor_start
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion), // trees_tick_ctr
+	SLC_NULL(1, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MaxVersion),          // pause_mode
+	SLC_NULL(4, SaveLoadVersion::LargerTownIterator, SaveLoadVersion::CompanyServiceIntervals),
 };
 
 /** Original field order for _view_desc. */
