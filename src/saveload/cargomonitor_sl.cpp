@@ -30,7 +30,7 @@ static const SaveLoad _cargomonitor_pair_desc[] = {
 
 static CargoMonitorID FixupCargoMonitor(CargoMonitorID number)
 {
-	/* Between SLV_EXTEND_CARGOTYPES and SLV_FIX_CARGO_MONITOR, the
+	/* Between SaveLoadVersion::ExtendCargotypes and SaveLoadVersion::FixCargoMonitor, the
 	 * CargoMonitorID structure had insufficient packing for more
 	 * than 32 cargo types. Here we have to shuffle bits to account
 	 * for the change.
@@ -72,7 +72,7 @@ struct CMDLChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
 
 		TempStorage storage;
-		bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
+		bool fix = IsSavegameVersionBefore(SaveLoadVersion::FixCargoMonitor);
 
 		ClearCargoDeliveryMonitoring();
 		for (;;) {
@@ -115,7 +115,7 @@ struct CMPUChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
 
 		TempStorage storage;
-		bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
+		bool fix = IsSavegameVersionBefore(SaveLoadVersion::FixCargoMonitor);
 
 		ClearCargoPickupMonitoring();
 		for (;;) {

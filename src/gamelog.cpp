@@ -380,7 +380,7 @@ void Gamelog::Revision()
 	assert(this->action_type == GamelogActionType::Start || this->action_type == GamelogActionType::Load);
 
 	this->Change(std::make_unique<LoggedChangeRevision>(
-		GetGamelogRevisionString(), _openttd_newgrf_version, SAVEGAME_VERSION, _openttd_revision_modified));
+		GetGamelogRevisionString(), _openttd_newgrf_version, to_underlying(SAVEGAME_VERSION), _openttd_revision_modified));
 }
 
 /**

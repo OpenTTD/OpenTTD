@@ -31,14 +31,14 @@ static bool        _ai_saveload_is_random;
 static const SaveLoad _ai_company_desc[] = {
 	   SLEG_SSTR("name",      _ai_saveload_name,         SLE_STR),
 	   SLEG_SSTR("settings",  _ai_saveload_settings,     SLE_STR),
-	SLEG_CONDVAR("version",   _ai_saveload_version,   SLE_UINT32, SLV_STORE_AI_VERSION, SL_MAX_VERSION),
-	SLEG_CONDVAR("is_random", _ai_saveload_is_random,   SLE_BOOL, SLV_SPLIT_LOAD_WAIT_COUNTERS, SLV_AI_LOCAL_CONFIG),
+	SLEG_CONDVAR("version",   _ai_saveload_version,   SLE_UINT32, SaveLoadVersion::StoreAIVersion, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("is_random", _ai_saveload_is_random,   SLE_BOOL, SaveLoadVersion::SplitLoadWaitCounters, SaveLoadVersion::AILocalConfig),
 };
 
 static const SaveLoad _ai_running_desc[] = {
-	SLEG_CONDSSTR("running_name",     _ai_saveload_name,        SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
-	SLEG_CONDSSTR("running_settings", _ai_saveload_settings,    SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
-	 SLEG_CONDVAR("running_version",  _ai_saveload_version,  SLE_UINT32, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
+	SLEG_CONDSSTR("running_name",     _ai_saveload_name,        SLE_STR, SaveLoadVersion::AILocalConfig, SaveLoadVersion::MaxVersion),
+	SLEG_CONDSSTR("running_settings", _ai_saveload_settings,    SLE_STR, SaveLoadVersion::AILocalConfig, SaveLoadVersion::MaxVersion),
+	 SLEG_CONDVAR("running_version",  _ai_saveload_version,  SLE_UINT32, SaveLoadVersion::AILocalConfig, SaveLoadVersion::MaxVersion),
 };
 
 static void SaveReal_AIPL(int arg)

@@ -84,36 +84,36 @@ uint8_t _age_cargo_skip_counter; ///< Skip aging of cargo? Used before savegame 
 extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 
 static const SaveLoad _date_desc[] = {
-	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_BIG_DATES),
-	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
+	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_FILE_U16 | SLE_VAR_I32,  SaveLoadVersion::MinVersion,  SaveLoadVersion::BigDates),
+	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_INT32,                  SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 	    SLEG_VAR("date_fract",             TimerGameCalendar::date_fract,             SLE_UINT16),
-	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_FILE_U16 | SLE_VAR_U64,  SL_MIN_VERSION, SLV_U64_TICK_COUNTER),
-	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_UINT64,                  SLV_U64_TICK_COUNTER, SL_MAX_VERSION),
-	SLEG_CONDVAR("economy_date",           TimerGameEconomy::date,           SLE_INT32,                   SLV_ECONOMY_DATE, SL_MAX_VERSION),
-	SLEG_CONDVAR("economy_date_fract",     TimerGameEconomy::date_fract,     SLE_UINT16,                  SLV_ECONOMY_DATE, SL_MAX_VERSION),
-	SLEG_CONDVAR("days_since_last_month",  TimerGameEconomy::days_since_last_month, SLE_UINT32,           SLV_INDUSTRY_ACCEPTED_HISTORY, SL_MAX_VERSION),
-	SLEG_CONDVAR("calendar_sub_date_fract", TimerGameCalendar::sub_date_fract, SLE_UINT16,                SLV_CALENDAR_SUB_DATE_FRACT, SL_MAX_VERSION),
-	SLEG_CONDVAR("age_cargo_skip_counter", _age_cargo_skip_counter, SLE_UINT8,                   SL_MIN_VERSION, SLV_NEWGRF_CUSTOM_CARGO_AGING),
-	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
-	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_UINT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
+	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_FILE_U16 | SLE_VAR_U64,  SaveLoadVersion::MinVersion, SaveLoadVersion::U64TickCounter),
+	SLEG_CONDVAR("tick_counter",           TimerGameTick::counter,           SLE_UINT64,                  SaveLoadVersion::U64TickCounter, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("economy_date",           TimerGameEconomy::date,           SLE_INT32,                   SaveLoadVersion::EconomyDate, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("economy_date_fract",     TimerGameEconomy::date_fract,     SLE_UINT16,                  SaveLoadVersion::EconomyDate, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("days_since_last_month",  TimerGameEconomy::days_since_last_month, SLE_UINT32,           SaveLoadVersion::IndustryAcceptedHistory, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("calendar_sub_date_fract", TimerGameCalendar::sub_date_fract, SLE_UINT16,                SaveLoadVersion::CalendarSubDateFract, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("age_cargo_skip_counter", _age_cargo_skip_counter, SLE_UINT8,                   SaveLoadVersion::MinVersion, SaveLoadVersion::NewGRFCustomCargoAging),
+	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLEG_CONDVAR("cur_tileloop_tile",      _cur_tileloop_tile,      SLE_UINT32,                  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	    SLEG_VAR("next_disaster_start",         _disaster_delay,         SLE_UINT16),
 	    SLEG_VAR("random_state[0]",        _random.state[0],        SLE_UINT32),
 	    SLEG_VAR("random_state[1]",        _random.state[1],        SLE_UINT32),
 	    SLEG_VAR("company_tick_counter", _cur_company_tick_index, SLE_FILE_U8  | SLE_VAR_U32),
 	    SLEG_VAR("trees_tick_counter",     _trees_tick_ctr,         SLE_UINT8),
-	SLEG_CONDVAR("pause_mode",             _pause_mode,             SLE_UINT8,                   SLV_TOWN_TOLERANCE_PAUSE_MODE, SL_MAX_VERSION),
-	SLEG_CONDSSTR("id",                    _game_session_stats.savegame_id, SLE_STR,                     SLV_SAVEGAME_ID, SL_MAX_VERSION),
+	SLEG_CONDVAR("pause_mode",             _pause_mode,             SLE_UINT8,                   SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MaxVersion),
+	SLEG_CONDSSTR("id",                    _game_session_stats.savegame_id, SLE_STR,                     SaveLoadVersion::SavegameId, SaveLoadVersion::MaxVersion),
 	/* For older savegames, we load the current value as the "period"; afterload will set the "fired" and "elapsed". */
-	SLEG_CONDVAR("next_competitor_start",        _new_competitor_timeout.period.value,    SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_NEXT_COMPETITOR_START_OVERFLOW),
-	SLEG_CONDVAR("next_competitor_start",        _new_competitor_timeout.period.value,    SLE_UINT32,                  SLV_NEXT_COMPETITOR_START_OVERFLOW, SLV_AI_START_DATE),
-	SLEG_CONDVAR("competitors_interval",         _new_competitor_timeout.period.value,    SLE_UINT32,                  SLV_AI_START_DATE, SL_MAX_VERSION),
-	SLEG_CONDVAR("competitors_interval_elapsed", _new_competitor_timeout.storage.elapsed, SLE_UINT32,                  SLV_AI_START_DATE, SL_MAX_VERSION),
-	SLEG_CONDVAR("competitors_interval_fired",   _new_competitor_timeout.fired,           SLE_BOOL,                    SLV_AI_START_DATE, SL_MAX_VERSION),
+	SLEG_CONDVAR("next_competitor_start",        _new_competitor_timeout.period.value,    SLE_FILE_U16 | SLE_VAR_U32,  SaveLoadVersion::MinVersion, SaveLoadVersion::NextCompetitorStartOverflow),
+	SLEG_CONDVAR("next_competitor_start",        _new_competitor_timeout.period.value,    SLE_UINT32,                  SaveLoadVersion::NextCompetitorStartOverflow, SaveLoadVersion::AIStartDate),
+	SLEG_CONDVAR("competitors_interval",         _new_competitor_timeout.period.value,    SLE_UINT32,                  SaveLoadVersion::AIStartDate, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("competitors_interval_elapsed", _new_competitor_timeout.storage.elapsed, SLE_UINT32,                  SaveLoadVersion::AIStartDate, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("competitors_interval_fired",   _new_competitor_timeout.fired,           SLE_BOOL,                    SaveLoadVersion::AIStartDate, SaveLoadVersion::MaxVersion),
 };
 
 static const SaveLoad _date_check_desc[] = {
-	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_BIG_DATES),
-	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_INT32,                  SLV_BIG_DATES, SL_MAX_VERSION),
+	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_FILE_U16 | SLE_VAR_I32,  SaveLoadVersion::MinVersion,  SaveLoadVersion::BigDates),
+	SLEG_CONDVAR("date", _load_check_data.current_date,  SLE_INT32,                  SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 };
 
 /**
@@ -135,9 +135,9 @@ struct DATEChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> oslt = SlCompatTableHeader(slt, slct);
 
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() == -1) return;
 		SlGlobList(oslt);
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
 	}
 
 	void Load() const override
@@ -150,17 +150,17 @@ struct DATEChunkHandler : ChunkHandler {
 	{
 		this->LoadCommon(_date_check_desc, _date_check_sl_compat);
 
-		if (IsSavegameVersionBefore(SLV_BIG_DATES)) {
+		if (IsSavegameVersionBefore(SaveLoadVersion::BigDates)) {
 			_load_check_data.current_date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 		}
 	}
 };
 
 static const SaveLoad _view_desc[] = {
-	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
-	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_INT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
-	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_MULTIPLE_ROAD_STOPS),
-	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_INT32,                  SLV_MULTIPLE_ROAD_STOPS, SL_MAX_VERSION),
+	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_INT32,                  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_FILE_I16 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLEG_CONDVAR("y",    _saved_scrollpos_y,    SLE_INT32,                  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	    SLEG_VAR("zoom", _saved_scrollpos_zoom, SLE_UINT8),
 };
 
@@ -179,9 +179,9 @@ struct VIEWChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_view_desc, _view_sl_compat);
 
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() == -1) return;
 		SlGlobList(slt);
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
 	}
 };
 

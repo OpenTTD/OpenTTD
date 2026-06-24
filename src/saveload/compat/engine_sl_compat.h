@@ -24,17 +24,17 @@ const SaveLoadCompat _engine_sl_compat[] = {
 	SLC_VAR("duration_phase_1"),
 	SLC_VAR("duration_phase_2"),
 	SLC_VAR("duration_phase_3"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_CARGO_PAYMENTS),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPayments),
 	SLC_VAR("flags"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_ROBUST_ENGINE_PREVIEW),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::RobustEnginePreview),
 	SLC_VAR("preview_asked"),
 	SLC_VAR("preview_company"),
 	SLC_VAR("preview_wait"),
-	SLC_NULL(1, SL_MIN_VERSION,  SLV_COUNT_PAID_FOR_CARGO),
+	SLC_NULL(1, SaveLoadVersion::MinVersion,  SaveLoadVersion::CountPaidForCargo),
 	SLC_VAR("company_avail"),
 	SLC_VAR("company_hidden"),
 	SLC_VAR("name"),
-	SLC_NULL(16, SLV_VEHICLE_CURRENCY_STATION_CHANGES, SLV_REORDER_UNMOVABLE_REMOVE_RESERVED),
+	SLC_NULL(16, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::ReorderUnmovableRemoveReserved),
 };
 
 /** Original field order for _engine_id_mapping_desc. */

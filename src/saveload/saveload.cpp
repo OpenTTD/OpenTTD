@@ -72,7 +72,7 @@
 
 #include "../safeguards.h"
 
-extern const SaveLoadVersion SAVEGAME_VERSION = (SaveLoadVersion)(SL_MAX_VERSION - 1); ///< Current savegame version of OpenTTD.
+extern const SaveLoadVersion SAVEGAME_VERSION{to_underlying(SaveLoadVersion::MaxVersion) - 1}; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
@@ -585,11 +585,11 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD; break;
 
 		case SL_REF:
-			return IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SLE_FILE_U16 : SLE_FILE_U32;
+			return IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32;
 
 		case SL_REFLIST:
 		case SL_REFVECTOR:
-			return (IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SLE_FILE_U16 : SLE_FILE_U32) | SLE_FILE_HAS_LENGTH_FIELD;
+			return (IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32) | SLE_FILE_HAS_LENGTH_FIELD;
 
 		case SL_SAVEBYTE:
 			return SLE_FILE_U8;
@@ -667,7 +667,7 @@ static inline uint8_t SlCalcConvFileLen(VarType conv)
  */
 static inline size_t SlCalcRefLen()
 {
-	return IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? 2 : 4;
+	return IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? 2 : 4;
 }
 
 void SlSetArrayIndex(uint index)
@@ -1106,8 +1106,8 @@ static void SlStdString(void *ptr, VarType conv)
 			StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark;
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
 				settings.Set(StringValidationSetting::AllowControlCode);
-				if (IsSavegameVersionBefore(SLV_ENCODED_STRING_FORMAT)) FixSCCEncoded(*str, IsSavegameVersionBefore(SLV_MOVE_SCC_ENCODED));
-				if (IsSavegameVersionBefore(SLV_FIX_SCC_ENCODED_NEGATIVE)) FixSCCEncodedNegative(*str);
+				if (IsSavegameVersionBefore(SaveLoadVersion::EncodedStringFormat)) FixSCCEncoded(*str, IsSavegameVersionBefore(SaveLoadVersion::MoveSccEncoded));
+				if (IsSavegameVersionBefore(SaveLoadVersion::FixSccEncodedNegative)) FixSCCEncodedNegative(*str);
 			}
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings.Set(StringValidationSetting::AllowNewline);
@@ -1142,7 +1142,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 
 	/* NOTICE - handle some buggy stuff, in really old versions everything was saved
 	 * as a byte-type. So detect this, and adjust object size accordingly */
-	if (_sl.action != SLA_SAVE && _sl_version == 0) {
+	if (_sl.action != SLA_SAVE && _sl_version == SaveLoadVersion::MinVersion) {
 		/* all objects except difficulty settings */
 		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID ||
 				conv == SLE_INT32 || conv == SLE_UINT32) {
@@ -1222,7 +1222,7 @@ static void SlArray(void *array, size_t length, VarType conv)
 
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD: {
-			if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+			if (!IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength)) {
 				size_t sv_length = SlReadArrayLength();
 				if (GetVarMemType(conv) == SLE_VAR_NULL) {
 					/* We don't know this field, so we assume the length in the savegame is correct. */
@@ -1298,7 +1298,7 @@ static void *IntToReference(size_t index, SLRefType rt)
 
 	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
 	 * and should be loaded like that */
-	if (rt == REF_VEHICLE_OLD && !IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE, 4)) {
+	if (rt == REF_VEHICLE_OLD && !IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 4)) {
 		rt = REF_VEHICLE;
 	}
 
@@ -1368,7 +1368,7 @@ void SlSaveLoadRef(void *ptr, VarType conv)
 			break;
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD:
-			*static_cast<size_t *>(ptr) = IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SlReadUint16() : SlReadUint32();
+			*static_cast<size_t *>(ptr) = IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SlReadUint16() : SlReadUint32();
 			break;
 		case SLA_PTRS:
 			*static_cast<void **>(ptr) = IntToReference(*static_cast<size_t *>(ptr), static_cast<SLRefType>(conv));
@@ -1441,8 +1441,8 @@ public:
 			case SLA_LOAD: {
 				size_t length;
 				switch (cmd) {
-					case SL_VAR: length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
-					case SL_REF: length = IsSavegameVersionBefore(SLV_MORE_CARGO_PACKETS) ? SlReadUint16() : IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
+					case SL_VAR: length = IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength) ? SlReadUint32() : SlReadArrayLength(); break;
+					case SL_REF: length = IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SlReadUint16() : IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength) ? SlReadUint32() : SlReadArrayLength(); break;
 					case SL_STDSTR: length = SlReadArrayLength(); break;
 					default: NOT_REACHED();
 				}
@@ -1581,7 +1581,7 @@ static void SlVector(void *vector, VarType conv)
 			/* Strings are a length-prefixed field type in the savegame table format,
 			 * these may not be directly stored in another length-prefixed container type.
 			 * This is permitted for load-related actions, because invalid fields of this type are present
-			 * from SLV_COMPANY_ALLOW_LIST up to SLV_COMPANY_ALLOW_LIST_V2. */
+			 * from SaveLoadVersion::CompanyAllowList up to SaveLoadVersion::CompanyAllowListV2. */
 			assert(_sl.action != SLA_SAVE);
 			SlStorageHelper<std::vector, std::string>::SlSaveLoad(vector, conv, SL_STDSTR);
 			break;
@@ -1763,7 +1763,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				}
 
 				case SLA_LOAD_CHECK: {
-					if (sld.cmd == SL_STRUCT && !IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+					if (sld.cmd == SL_STRUCT && !IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength)) {
 						SlGetStructListLength(1);
 					}
 					sld.handler->LoadCheck(object);
@@ -1771,7 +1771,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				}
 
 				case SLA_LOAD: {
-					if (sld.cmd == SL_STRUCT && !IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+					if (sld.cmd == SL_STRUCT && !IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength)) {
 						SlGetStructListLength(1);
 					}
 					sld.handler->Load(object);
@@ -1931,7 +1931,7 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 					}
 
 					/* We don't know this field, so read to nothing. */
-					saveloads.emplace_back(std::move(key), saveload_type, (static_cast<VarType>(type) & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SL_MIN_VERSION, SL_MAX_VERSION, nullptr, 0, std::move(handler));
+					saveloads.emplace_back(std::move(key), saveload_type, (static_cast<VarType>(type) & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion, nullptr, 0, std::move(handler));
 					continue;
 				}
 
@@ -2442,7 +2442,7 @@ struct LZOLoadFilter : LoadFilter {
 		/* Check if size is bad */
 		((uint32_t*)out)[0] = size = tmp[1];
 
-		if (_sl_version != SL_MIN_VERSION) {
+		if (_sl_version != SaveLoadVersion::MinVersion) {
 			tmp[0] = TO_BE32(tmp[0]);
 			size = TO_BE32(size);
 		}
@@ -2985,7 +2985,7 @@ static SaveLoadResult SaveFileToDisk(bool threaded)
 		auto [fmt, compression] = GetSavegameFormat(_savegame_format);
 
 		/* We have written our stuff to memory, now write it to file! */
-		uint32_t hdr[2] = { fmt.tag, TO_BE32(SAVEGAME_VERSION << 16) };
+		uint32_t hdr[2] = { fmt.tag, TO_BE32(to_underlying(SAVEGAME_VERSION) << 16) };
 		_sl.sf->Write((uint8_t*)hdr, sizeof(hdr));
 
 		_sl.sf = fmt.init_write(_sl.sf, compression);
@@ -3101,13 +3101,13 @@ static const SaveLoadFormat *DetermineSaveLoadFormat(uint32_t tag, uint32_t raw_
 
 		/* Is the version higher than the current? */
 		if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
-		if (_sl_version >= SLV_START_PATCHPACKS && _sl_version <= SLV_END_PATCHPACKS) SlError(STR_GAME_SAVELOAD_ERROR_PATCHPACK);
+		if (_sl_version >= SaveLoadVersion::StartPatchpacks && _sl_version <= SaveLoadVersion::EndPatchpacks) SlError(STR_GAME_SAVELOAD_ERROR_PATCHPACK);
 		return fmt;
 	}
 
 	Debug(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
 	_sl.lf->Reset();
-	_sl_version = SL_MIN_VERSION;
+	_sl_version = SaveLoadVersion::MinVersion;
 	_sl_minor_version = 0;
 
 	/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
@@ -3163,7 +3163,7 @@ static SaveLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check
 
 		_gamelog.Reset();
 
-		if (IsSavegameVersionBefore(SLV_TOWN_TOLERANCE_PAUSE_MODE)) {
+		if (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode)) {
 			/*
 			 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
 			 * shared savegame version 4. Anything before that 'obviously'
@@ -3272,7 +3272,7 @@ SaveLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, Deta
 			ClearGRFConfigList(_grfconfig);
 			_gamelog.Reset();
 			if (!LoadOldSaveGame(filename)) return SaveLoadResult::ReInit;
-			_sl_version = SL_MIN_VERSION;
+			_sl_version = SaveLoadVersion::MinVersion;
 			_sl_minor_version = 0;
 			_gamelog.StartAction(GamelogActionType::Load);
 			if (!AfterLoadGame()) {
