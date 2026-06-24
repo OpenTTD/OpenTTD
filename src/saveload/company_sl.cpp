@@ -314,18 +314,18 @@ class SlCompanySettings : public DefaultSaveLoadHandler<SlCompanySettings, Compa
 public:
 	static inline const SaveLoad description[] = {
 		/* Engine renewal settings */
-		SLE_CONDREF(CompanyProperties, engine_renew_list,            REF_ENGINE_RENEWS,   SaveLoadVersion::EngineRenewPool, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew,        SLE_BOOL,            SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16,           SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money,  SLE_UINT32,          SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length,   SLE_BOOL,            SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+		SLE_CONDREF(CompanyProperties, engine_renew_list, REF_ENGINE_RENEWS, SaveLoadVersion::EngineRenewPool, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew, SLE_BOOL, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money, SLE_UINT32, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length, SLE_BOOL, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
 		/* Default vehicle settings */
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ispercent,   SLE_BOOL,     SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_trains,    SLE_UINT16,     SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_roadveh,   SLE_UINT16,     SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_aircraft,  SLE_UINT16,     SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ships,     SLE_UINT16,     SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ispercent, SLE_BOOL, SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_trains, SLE_UINT16, SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_roadveh, SLE_UINT16, SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_aircraft, SLE_UINT16, SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ships, SLE_UINT16, SaveLoadVersion::CompanyServiceIntervals, SaveLoadVersion::MaxVersion),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_settings_compat;
 
@@ -350,16 +350,16 @@ public:
 class SlCompanyEconomy : public DefaultSaveLoadHandler<SlCompanyEconomy, CompanyProperties> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
-		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_INT64,                  SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
-		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_INT64,                  SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
-		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_INT64,                  SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyEconomyEntry, income, SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
+		SLE_CONDVAR(CompanyEconomyEntry, income, SLE_INT64, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyEconomyEntry, expenses, SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
+		SLE_CONDVAR(CompanyEconomyEntry, expenses, SLE_INT64, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyEconomyEntry, company_value, SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
+		SLE_CONDVAR(CompanyEconomyEntry, company_value, SLE_INT64, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
-		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32,       SaveLoadVersion::MinVersion, SaveLoadVersion::CountIndividualCargoes),
-		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, 32,           SaveLoadVersion::CountIndividualCargoes, SaveLoadVersion::ExtendCargotypes),
-		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, NUM_CARGO,    SaveLoadVersion::ExtendCargotypes, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32, SaveLoadVersion::MinVersion, SaveLoadVersion::CountIndividualCargoes),
+		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, SLE_UINT32, 32, SaveLoadVersion::CountIndividualCargoes, SaveLoadVersion::ExtendCargotypes),
+		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, SLE_UINT32, NUM_CARGO, SaveLoadVersion::ExtendCargotypes, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_economy_compat;
@@ -410,7 +410,7 @@ public:
 class SlCompanyLiveries : public DefaultSaveLoadHandler<SlCompanyLiveries, CompanyProperties> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(Livery, in_use,  SLE_UINT8, SaveLoadVersion::Liveries, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(Livery, in_use, SLE_UINT8, SaveLoadVersion::Liveries, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SaveLoadVersion::Liveries, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SaveLoadVersion::Liveries, SaveLoadVersion::MaxVersion),
 	};
@@ -492,11 +492,11 @@ public:
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
 	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),
-	SLE_CONDSSTR(CompanyProperties, name,            SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(CompanyProperties, name, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 
 	    SLE_VAR(CompanyProperties, president_name_1, SLE_STRINGID),
 	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
-	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(CompanyProperties, president_name, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SaveLoadVersion::CompanyAllowList, SaveLoadVersion::CompanyAllowListV2),
 	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SaveLoadVersion::CompanyAllowListV2, SaveLoadVersion::MaxVersion),
@@ -506,48 +506,48 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDSSTRNAME(CompanyProperties, face.style_label, "face_style", SLE_STR, SaveLoadVersion::FaceStyles, SaveLoadVersion::MaxVersion),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(CompanyProperties, money,                 SLE_VAR_I64 | SLE_FILE_I32,  SaveLoadVersion::MinVersion, SaveLoadVersion::BigCurrency),
-	SLE_CONDVAR(CompanyProperties, money,                 SLE_INT64,                   SaveLoadVersion::BigCurrency, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, money, SLE_VAR_I64 | SLE_FILE_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigCurrency),
+	SLE_CONDVAR(CompanyProperties, money, SLE_INT64, SaveLoadVersion::BigCurrency, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
-	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(CompanyProperties, max_loan,              SLE_INT64, SaveLoadVersion::MaxLoanForCompany, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, current_loan, SLE_VAR_I64 | SLE_FILE_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLE_CONDVAR(CompanyProperties, current_loan, SLE_INT64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, max_loan, SLE_INT64, SaveLoadVersion::MaxLoanForCompany, SaveLoadVersion::MaxVersion),
 
 	    SLE_VAR(CompanyProperties, colour,                SLE_UINT8),
 	    SLE_VAR(CompanyProperties, money_fraction,        SLE_UINT8),
 	    SLE_VAR(CompanyProperties, block_preview,         SLE_UINT8),
 
-	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  SaveLoadVersion::MinVersion,  SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_UINT32,                  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  SaveLoadVersion::MinVersion,  SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_UINT32,                  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_INT32,                  SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year_calendar, SLE_INT32,               SaveLoadVersion::CompanyInauguratedPeriodV2, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, location_of_HQ, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLE_CONDVAR(CompanyProperties, location_of_HQ, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year, SLE_FILE_U8 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year_calendar, SLE_INT32, SaveLoadVersion::CompanyInauguratedPeriodV2, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8,                   SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
+	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent, SLE_UINT8, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 
 	    SLE_VAR(CompanyProperties, months_of_bankruptcy,  SLE_UINT8),
-	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_UINT16,                SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, bankrupt_asked, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
+	SLE_CONDVAR(CompanyProperties, bankrupt_asked, SLE_UINT16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(CompanyProperties, bankrupt_timeout,      SLE_INT16),
-	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
-	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value, SLE_VAR_I64 | SLE_FILE_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value, SLE_INT64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
-	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
-	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_INT64, 3 * 13,                  SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+	SLE_CONDARR(CompanyProperties, yearly_expenses, SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
+	SLE_CONDARR(CompanyProperties, yearly_expenses, SLE_INT64, 3 * 13, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(CompanyProperties, is_ai,                 SLE_BOOL,                    SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, is_ai, SLE_BOOL, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SaveLoadVersion::TerraformLimits, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SaveLoadVersion::TerraformLimits, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(CompanyProperties, tree_limit,            SLE_UINT32,                SaveLoadVersion::AutoreplaceWhenOldTreeLimit, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, terraform_limit, SLE_UINT32, SaveLoadVersion::TerraformLimits, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, clear_limit, SLE_UINT32, SaveLoadVersion::TerraformLimits, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(CompanyProperties, tree_limit, SLE_UINT32, SaveLoadVersion::AutoreplaceWhenOldTreeLimit, SaveLoadVersion::MaxVersion),
 	SLEG_STRUCT("settings", SlCompanySettings),
-	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
 	SLEG_STRUCTLIST("old_economy", SlCompanyOldEconomy),
-	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SaveLoadVersion::Liveries, SaveLoadVersion::MaxVersion),
+	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries, SaveLoadVersion::Liveries, SaveLoadVersion::MaxVersion),
 };
 
 struct PLYRChunkHandler : ChunkHandler {

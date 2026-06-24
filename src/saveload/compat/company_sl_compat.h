@@ -23,27 +23,27 @@ const SaveLoadCompat _company_old_ai_buildrec_compat[] = {
 
 /** Original field order for SlCompanyOldAI. */
 const SaveLoadCompat _company_old_ai_compat[] = {
-	SLC_NULL(2,  SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
-	SLC_NULL(2,  SaveLoadVersion::MinVersion, SaveLoadVersion::LargerAIStateCounter),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerAIStateCounter),
 	SLC_NULL(4, SaveLoadVersion::LargerAIStateCounter, SaveLoadVersion::NoAI),
-	SLC_NULL(8,  SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(8, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 	SLC_VAR("num_build_rec"),
-	SLC_NULL(3,  SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(3, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 
-	SLC_NULL(2,  SaveLoadVersion::MinVersion,  SaveLoadVersion::MultipleRoadStops),
-	SLC_NULL(4,  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
-	SLC_NULL(2,  SaveLoadVersion::MinVersion,  SaveLoadVersion::MultipleRoadStops),
-	SLC_NULL(4,  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
-	SLC_NULL(2,  SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 
-	SLC_NULL(2,  SaveLoadVersion::MinVersion,  SaveLoadVersion::MultipleRoadStops),
-	SLC_NULL(4,  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
-	SLC_NULL(2,  SaveLoadVersion::MinVersion,  SaveLoadVersion::MultipleRoadStops),
-	SLC_NULL(4,  SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
-	SLC_NULL(2,  SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 
-	SLC_NULL(2,  SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
-	SLC_NULL(4,  SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
+	SLC_NULL(4, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::NoAI),
 
 	SLC_NULL(18, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 	SLC_NULL(20, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),

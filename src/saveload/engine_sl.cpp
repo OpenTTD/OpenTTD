@@ -19,10 +19,10 @@
 #include "../safeguards.h"
 
 static const SaveLoad _engine_desc[] = {
-	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  SaveLoadVersion::MinVersion,  SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  SaveLoadVersion::MinVersion,  SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, age,                 SLE_INT32,                  SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, intro_date, SLE_FILE_U16 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	 SLE_CONDVAR(Engine, intro_date, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, age, SLE_FILE_U16 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	 SLE_CONDVAR(Engine, age, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 	     SLE_VAR(Engine, reliability,         SLE_UINT16),
 	     SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
 	     SLE_VAR(Engine, reliability_start,   SLE_UINT16),
@@ -32,13 +32,13 @@ static const SaveLoad _engine_desc[] = {
 	     SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
 	     SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
 	     SLE_VAR(Engine, flags,               SLE_UINT8),
-	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, preview_asked, SLE_UINT16, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, preview_company, SLE_UINT8, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
 	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
-	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                SaveLoadVersion::HideEnginesForCompany, SaveLoadVersion::MaxVersion),
-	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, company_avail, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
+	 SLE_CONDVAR(Engine, company_avail, SLE_UINT16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, company_hidden, SLE_UINT16, SaveLoadVersion::HideEnginesForCompany, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Engine, name, SLE_STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 };
 
 static TypedIndexContainer<std::vector<Engine>, EngineID> _temp_engine;

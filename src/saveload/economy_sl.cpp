@@ -44,16 +44,16 @@ struct CAPRChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CumulatedInflation),
-	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::CumulatedInflation),
-	SLE_CONDVAR(Economy, inflation_prices,              SLE_UINT64,                SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Economy, inflation_payment,             SLE_UINT64,                SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Economy, old_max_loan_unround, SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLE_CONDVAR(Economy, old_max_loan_unround, SLE_INT64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CumulatedInflation),
+	SLE_CONDVAR(Economy, old_max_loan_unround_fract, SLE_UINT16, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::CumulatedInflation),
+	SLE_CONDVAR(Economy, inflation_prices, SLE_UINT64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Economy, inflation_payment, SLE_UINT64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(Economy, fluct,                         SLE_INT16),
 	    SLE_VAR(Economy, interest_rate,                 SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount_pr,                SLE_UINT8),
-	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32,                SaveLoadVersion::SpreadIndustryProductionChanges, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32, SaveLoadVersion::SpreadIndustryProductionChanges, SaveLoadVersion::MaxVersion),
 };
 
 /** Economy variables */
@@ -77,7 +77,7 @@ struct ECMYChunkHandler : ChunkHandler {
 		SlObject(&_economy, slt);
 		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() != -1) SlErrorCorrupt("Too many ECMY entries");
 
-		StartupIndustryDailyChanges(IsSavegameVersionBefore(SaveLoadVersion::SpreadIndustryProductionChanges));  // old savegames will need to be initialized
+		StartupIndustryDailyChanges(IsSavegameVersionBefore(SaveLoadVersion::SpreadIndustryProductionChanges)); // old savegames will need to be initialized
 	}
 };
 

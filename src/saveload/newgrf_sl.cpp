@@ -20,10 +20,10 @@
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
 	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
-	SLE_CONDVAR(EntityIDMapping, entity_id,     SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion,            SaveLoadVersion::ExtendEntityMapping),
-	SLE_CONDVAR(EntityIDMapping, entity_id,     SLE_UINT16,                SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion,            SaveLoadVersion::ExtendEntityMapping),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_UINT16,                SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(EntityIDMapping, entity_id, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
+	SLE_CONDVAR(EntityIDMapping, entity_id, SLE_UINT16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
+	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_UINT16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 };
 
 /**
@@ -71,10 +71,10 @@ struct NGRFChunkHandler : ChunkHandler {
 		   SLE_SSTR(GRFConfig, filename,         SLE_STR),
 		    SLE_VAR(GRFConfig, ident.grfid,      SLE_UINT32),
 		    SLE_ARR(GRFConfig, ident.md5sum,     SLE_UINT8,  16),
-		SLE_CONDVAR(GRFConfig, version,          SLE_UINT32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(GRFConfig, version, SLE_UINT32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
 		   SLEG_ARR("param", param,              SLE_UINT32, std::size(param)),
 		   SLEG_VAR("num_params", num_params,    SLE_UINT8),
-		SLE_CONDVAR(GRFConfig, palette,          SLE_UINT8,  SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(GRFConfig, palette, SLE_UINT8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
 	};
 
 	void SaveParameters(const GRFConfig &config) const

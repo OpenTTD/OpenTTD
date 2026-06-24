@@ -21,7 +21,7 @@ static const SaveLoad _goals_desc[] = {
 	     SLE_VAR(Goal, type,      SLE_FILE_U16 | SLE_VAR_U8),
 	     SLE_VAR(Goal, dst,       SLE_UINT32),
 	    SLE_SSTR(Goal, text,      SLE_STR | SLF_ALLOW_CONTROL),
-	SLE_CONDSSTR(Goal, progress,  SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Goal, progress, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
 	 SLE_CONDVAR(Goal, completed, SLE_BOOL, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
 };
 
