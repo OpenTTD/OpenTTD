@@ -192,9 +192,9 @@ void UpdateCompanyRoadInfrastructure(RoadType rt, Owner o, int count)
 }
 
 /** Invalid RoadBits on slopes.  */
-static const RoadBits _invalid_tileh_slopes_road[2][15] = {
+static const std::array<NonSteepSlopeIndexArray<RoadBits>, 2> _invalid_tileh_slopes_road = {{
 	/* The inverse of the mixable RoadBits on a leveled slope */
-	{
+	{{{
 		{}, // SLOPE_FLAT
 		{RoadBit::NE, RoadBit::SE}, // SLOPE_W
 		{RoadBit::NE, RoadBit::NW}, // SLOPE_S
@@ -214,10 +214,10 @@ static const RoadBits _invalid_tileh_slopes_road[2][15] = {
 		RoadBit::SW, // SLOPE_NE
 		{}, // SLOPE_SEN
 		{}, // SLOPE_NWS
-	},
+	}}},
 	/* The inverse of the allowed straight roads on a slope
 	 * (with and without a foundation). */
-	{
+	{{{
 		{}, // SLOPE_FLAT
 		{}, // SLOPE_W (Foundation)
 		{}, // SLOPE_S (Foundation)
@@ -237,8 +237,8 @@ static const RoadBits _invalid_tileh_slopes_road[2][15] = {
 		ROAD_Y, // SLOPE_NE
 		ROAD_ALL, // SLOPE_SEN
 		ROAD_ALL, // SLOPE_NW
-	}
-};
+	}}}
+}};
 
 static Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
 
@@ -1307,7 +1307,9 @@ static Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 	return (bits == ROAD_X ? Foundation::InclinedX : Foundation::InclinedY);
 }
 
-const uint8_t _road_sloped_sprites[14] = {
+/** Lookup table to convert tile's slope into corresponding road sprite offset. */
+static constexpr NonSteepSlopeIndexArray<uint8_t> _road_sloped_sprites = {
+	0xFF, // Dummy value to prevent `index - 1` while accesing.
 	0,  0,  2,  0,
 	0,  1,  0,  0,
 	3,  0,  0,  0,
@@ -1401,8 +1403,8 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadType rt, RoadBits rb)
 		if (front != 0) front += GetRoadSpriteOffset(ti->tileh, rb);
 		if (back != 0) back += GetRoadSpriteOffset(ti->tileh, rb);
 	} else if (ti->tileh != SLOPE_FLAT) {
-		back  = SPR_TRAMWAY_BACK_WIRES_SLOPED  + _road_sloped_sprites[ti->tileh - 1];
-		front = SPR_TRAMWAY_FRONT_WIRES_SLOPED + _road_sloped_sprites[ti->tileh - 1];
+		back = SPR_TRAMWAY_BACK_WIRES_SLOPED + _road_sloped_sprites[ti->tileh];
+		front = SPR_TRAMWAY_FRONT_WIRES_SLOPED + _road_sloped_sprites[ti->tileh];
 	} else {
 		back  = SPR_TRAMWAY_BASE + _road_backpole_sprites_1[rb.base()];
 		front = SPR_TRAMWAY_BASE + _road_frontwire_sprites_1[rb.base()];

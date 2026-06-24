@@ -83,6 +83,24 @@ enum Slope : uint8_t {
 DECLARE_ENUM_AS_BIT_SET(Slope)
 
 /**
+ * Array with \c Slope as index.
+ * @note Remove halftile form the slope before accessing an element.
+ * @note Elevated steep slope (e.g. value 31) is an invalid slope because it does not define which corner is steep.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using SlopeIndexArray = EnumClassIndexContainer<std::array<T, SLOPE_STEEP | SLOPE_ELEVATED>, Slope>;
+
+/**
+ * Array with non steep \c Slope as index.
+ * @note Remove halftile form the slope before accessing an element.
+ * @note SLOPE_ELEVATED is just SLOPE_FLAT with height increased by one, therefore it is not a valid index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using NonSteepSlopeIndexArray = EnumClassIndexContainer<std::array<T, SLOPE_ELEVATED>, Slope>;
+
+/**
  * Helper for creating a bitset of slopes.
  * @param x The slope to convert into a bitset.
  */

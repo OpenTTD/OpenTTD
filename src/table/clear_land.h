@@ -22,35 +22,35 @@ static const SpriteID _landscape_clear_sprites_rough[8] = {
 };
 
 /** Sprite offset for sloped fences on the southwest edge of the tile. */
-static const uint8_t _fence_mod_by_tileh_sw[32] = {
+static constexpr SlopeIndexArray<uint8_t> _fence_mod_by_tileh_sw = {
 	0, 2, 4, 0, 0, 2, 4, 0,
 	0, 2, 4, 0, 0, 2, 4, 0,
 	0, 2, 4, 0, 0, 2, 4, 4,
-	0, 2, 4, 2, 0, 2, 4, 0,
+	0, 2, 4, 2, 0, 2, 4,
 };
 
 /** Sprite offset for sloped fences on the southeast edge of the tile. */
-static const uint8_t _fence_mod_by_tileh_se[32] = {
+static constexpr SlopeIndexArray<uint8_t> _fence_mod_by_tileh_se = {
 	1, 1, 5, 5, 3, 3, 1, 1,
 	1, 1, 5, 5, 3, 3, 1, 1,
 	1, 1, 5, 5, 3, 3, 1, 5,
-	1, 1, 5, 5, 3, 3, 3, 1,
+	1, 1, 5, 5, 3, 3, 3,
 };
 
 /** Sprite offset for sloped fences on the northeast edge of the tile. */
-static const uint8_t _fence_mod_by_tileh_ne[32] = {
+static constexpr SlopeIndexArray<uint8_t> _fence_mod_by_tileh_ne = {
 	0, 0, 0, 0, 4, 4, 4, 4,
 	2, 2, 2, 2, 0, 0, 0, 0,
 	0, 0, 0, 0, 4, 4, 4, 4,
-	2, 2, 2, 2, 0, 2, 4, 0,
+	2, 2, 2, 2, 0, 2, 4,
 };
 
 /** Sprite offset for sloped fences on the northwest edge of the tile. */
-static const uint8_t _fence_mod_by_tileh_nw[32] = {
+static constexpr SlopeIndexArray<uint8_t> _fence_mod_by_tileh_nw = {
 	1, 5, 1, 5, 1, 5, 1, 5,
 	3, 1, 3, 1, 3, 1, 3, 1,
 	1, 5, 1, 5, 1, 5, 1, 5,
-	3, 1, 3, 5, 3, 3, 3, 1,
+	3, 1, 3, 5, 3, 3, 3,
 };
 
 /** Sprites of the flat tile base for each type of farm field fence. */

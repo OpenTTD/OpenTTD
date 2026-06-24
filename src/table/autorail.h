@@ -22,7 +22,7 @@
  * Table maps each of the six rail directions and tileh combinations to a sprite offset.
  * Invalid entries are required to make sure that this array can be quickly accessed.
  */
-static const int _autorail_slope_sprite_offsets[][6] = {
+static constexpr SlopeIndexArray<std::array<int, 6>> _autorail_slope_sprite_offsets = {{{
 /* type   0        1        2        3        4        5 */
 	{       0,       8,      16,      25,      34,      42 }, // tileh = 0
 	{       5,      13, RED(22), RED(31),      35,      42 }, // tileh = 1
@@ -55,7 +55,7 @@ static const int _autorail_slope_sprite_offsets[][6] = {
 	{       0,       1,       2,       3,       4,       5 }, // invalid (28)
 	{       3,      14,      18,      26, RED(41), RED(49) }, // tileh = 29
 	{       4,      12, RED(21), RED(30),      37,      45 }  // tileh = 30
-};
+}}};
 #undef RED
 
 
