@@ -3474,7 +3474,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Sadź du
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść kamieniste tereny
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść skalisty teren.{}Użyj Ctrl, aby usunąć skały
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wyznacz obszar pustyni.{}Użyj Ctrl, aby usunąć obszar pustyni
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ powierzchnie do podwyższenia/obniżenia
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz powierzchnie do podwyższenia/obniżenia
