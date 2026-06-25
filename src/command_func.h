@@ -285,7 +285,7 @@ protected:
 	static inline void SetClientIdHelper([[maybe_unused]] T &data)
 	{
 		if constexpr (std::is_same_v<ClientID, T>) {
-			if (data == INVALID_CLIENT_ID) data = CLIENT_ID_SERVER;
+			if (data == ClientID::Invalid) data = ClientID::Server;
 		}
 	}
 
@@ -372,7 +372,7 @@ protected:
 	static inline bool ClientIdIsSet([[maybe_unused]] T &data)
 	{
 		if constexpr (std::is_same_v<ClientID, T>) {
-			return data != INVALID_CLIENT_ID;
+			return data != ClientID::Invalid;
 		} else {
 			return true;
 		}

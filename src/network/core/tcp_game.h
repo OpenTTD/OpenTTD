@@ -524,7 +524,7 @@ protected:
 
 	NetworkGameSocketHandler(SOCKET s);
 public:
-	ClientID client_id = INVALID_CLIENT_ID; ///< Client identifier
+	ClientID client_id = ClientID::Invalid; ///< Client identifier
 	uint32_t last_frame = 0; ///< Last frame we have executed
 	uint32_t last_frame_server = 0; ///< Last frame the server has executed
 	CommandQueue incoming_queue; ///< The command-queue awaiting handling

@@ -175,11 +175,11 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
  */
 /* static */ void OrderBackup::Reset(TileIndex t, bool from_gui)
 {
-	/* The user has CLIENT_ID_SERVER as default when network play is not active,
+	/* The user has ClientID::Server as default when network play is not active,
 	 * but compiled it. A network client has its own variable for the unique
 	 * client/user identifier. Finally if networking isn't compiled in the
 	 * default is just plain and simple: 0. */
-	ClientID user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
+	ClientID user = _networking && !_network_server ? _network_own_client_id : ClientID::Server;
 
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		/* If this is a GUI action, and it's not a backup of us, ignore it. */

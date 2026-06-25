@@ -22,7 +22,7 @@ extern NetworkClientInfoPool _networkclientinfo_pool;
 
 /** Container for all information known about a client. */
 struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool> {
-	ClientID client_id = INVALID_CLIENT_ID; ///< Client identifier (same as ClientState->client_id)
+	ClientID client_id = ClientID::Invalid; ///< Client identifier (same as ClientState->client_id)
 	std::string client_name{}; ///< Name of the client
 	std::string public_key{}; ///< The public key of the client.
 	CompanyID client_playas = CompanyID::Invalid(); ///< As which company is this client playing (CompanyID)
@@ -33,7 +33,7 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	 * @param index The index into the client info pool.
 	 * @param client_id The unique identifier of the client.
 	 */
-	NetworkClientInfo(ClientPoolID index, ClientID client_id = INVALID_CLIENT_ID) : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool>(index), client_id(client_id) {}
+	NetworkClientInfo(ClientPoolID index, ClientID client_id = ClientID::Invalid) : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool>(index), client_id(client_id) {}
 	~NetworkClientInfo();
 
 	static NetworkClientInfo *GetByClientID(ClientID client_id);

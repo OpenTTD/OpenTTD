@@ -1107,7 +1107,7 @@ struct DepotWindow : Window {
 				this->SetDirty();
 
 				bool sell_cmd = (v->type == VehicleType::Train && (widget == WID_D_SELL_CHAIN || _ctrl_pressed));
-				Command<Commands::SellVehicle>::Post(GetCmdSellVehMsg(v->type), v->tile, v->index, sell_cmd, true, INVALID_CLIENT_ID);
+				Command<Commands::SellVehicle>::Post(GetCmdSellVehMsg(v->type), v->tile, v->index, sell_cmd, true, ClientID::Invalid);
 				break;
 			}
 

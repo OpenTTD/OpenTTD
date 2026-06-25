@@ -56,7 +56,7 @@
 
 static void ShowNetworkStartServerWindow();
 
-static ClientID _admin_client_id = INVALID_CLIENT_ID; ///< For what client a confirmation window is open.
+static ClientID _admin_client_id = ClientID::Invalid; ///< For what client a confirmation window is open.
 static CompanyID _admin_company_id = CompanyID::Invalid(); ///< For what company a confirmation window is open.
 
 /**
@@ -1338,7 +1338,7 @@ static void AdminCompanyResetCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
 		if (NetworkCompanyHasClients(_admin_company_id)) return;
-		Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, _admin_company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
+		Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, _admin_company_id, CompanyRemoveReason::Manual, ClientID::Invalid);
 	}
 }
 
@@ -1558,7 +1558,7 @@ public:
 		SpriteID player_icon = 0;
 		if (ci->client_id == _network_own_client_id) {
 			player_icon = SPR_PLAYER_SELF;
-		} else if (ci->client_id == CLIENT_ID_SERVER) {
+		} else if (ci->client_id == ClientID::Server) {
 			player_icon = SPR_PLAYER_HOST;
 		}
 
@@ -1581,7 +1581,7 @@ public:
 			if (ci != nullptr) {
 				if (ci->client_id == _network_own_client_id) {
 					return GetEncodedString(STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP);
-				} else if (ci->client_id == CLIENT_ID_SERVER) {
+				} else if (ci->client_id == ClientID::Server) {
 					return GetEncodedString(STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP);
 				}
 			}
@@ -1638,7 +1638,7 @@ private:
 	static void OnClickCompanyJoin(NetworkClientListWindow *, Point, CompanyID company_id)
 	{
 		if (_network_server) {
-			NetworkServerDoMove(CLIENT_ID_SERVER, company_id);
+			NetworkServerDoMove(ClientID::Server, company_id);
 			MarkWholeScreenDirty();
 		} else {
 			NetworkClientRequestMove(company_id);
@@ -1706,7 +1706,7 @@ private:
 	 */
 	static void OnClickClientChat(NetworkClientListWindow *, Point, ClientID client_id)
 	{
-		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, client_id);
+		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, to_underlying(client_id));
 	}
 
 	/**

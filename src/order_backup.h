@@ -20,7 +20,7 @@
 /** Unique identifier for an order backup. */
 using OrderBackupID = PoolID<uint8_t, struct OrderBackupIDTag, 255, 0xFF>;
 struct OrderBackup;
-enum ClientID : uint32_t;
+enum class ClientID : uint32_t;
 
 /** The pool type for order backups. */
 using OrderBackupPool = Pool<OrderBackup, OrderBackupID, 1>;

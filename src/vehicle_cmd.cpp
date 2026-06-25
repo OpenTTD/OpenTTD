@@ -225,7 +225,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 
 		/* If we are not in DoCommandFlag::Execute undo everything */
 		if (flags != subflags) {
-			Command<Commands::SellVehicle>::Do(DoCommandFlag::Execute, v->index, false, false, INVALID_CLIENT_ID);
+			Command<Commands::SellVehicle>::Do(DoCommandFlag::Execute, v->index, false, false, ClientID::Invalid);
 		}
 	}
 
@@ -719,7 +719,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlags flags, TileIndex tile, Vehicl
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	for (const Vehicle *v : list) {
-		CommandCost ret = Command<Commands::SellVehicle>::Do(flags, v->index, true, false, INVALID_CLIENT_ID);
+		CommandCost ret = Command<Commands::SellVehicle>::Do(flags, v->index, true, false, ClientID::Invalid);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret.GetCost());
 			had_success = true;
@@ -890,11 +890,11 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (flags.Test(DoCommandFlag::Execute) && !v->IsPrimaryVehicle()) build_flags.Set(DoCommandFlag::AutoReplace);
 
 		CommandCost cost;
-		std::tie(cost, new_veh_id, std::ignore, std::ignore, std::ignore) = Command<Commands::BuildVehicle>::Do(build_flags, tile, v->engine_type, false, INVALID_CARGO, INVALID_CLIENT_ID);
+		std::tie(cost, new_veh_id, std::ignore, std::ignore, std::ignore) = Command<Commands::BuildVehicle>::Do(build_flags, tile, v->engine_type, false, INVALID_CARGO, ClientID::Invalid);
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != nullptr) Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
+			if (w_front != nullptr) Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, ClientID::Invalid);
 			return { cost, VehicleID::Invalid() };
 		}
 
@@ -918,8 +918,8 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
-					Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-					Command<Commands::SellVehicle>::Do(flags, w->index,       true, false, INVALID_CLIENT_ID);
+					Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, ClientID::Invalid);
+					Command<Commands::SellVehicle>::Do(flags, w->index, true, false, ClientID::Invalid);
 					return { result, VehicleID::Invalid() }; // return error and the message returned from Commands::MoveRailVehicle
 				}
 			} else {
@@ -1000,7 +1000,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		CommandCost result = Command<Commands::CloneOrder>::Do(flags, (share_orders ? CO_SHARE : CO_COPY), w_front->index, v_front->index);
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
+			Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, ClientID::Invalid);
 			return { result, VehicleID::Invalid() };
 		}
 
@@ -1011,7 +1011,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		 * check whether the company has enough money manually. */
 		if (!CheckCompanyHasMoney(total_cost)) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
+			Command<Commands::SellVehicle>::Do(flags, w_front->index, true, false, ClientID::Invalid);
 			return { total_cost, VehicleID::Invalid() };
 		}
 	}
