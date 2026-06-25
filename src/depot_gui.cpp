@@ -365,7 +365,7 @@ struct DepotWindow : Window {
 				Rect count = text.WithWidth(this->count_width - WidgetDimensions::scaled.hsep_normal, !rtl);
 				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FontSize::Small) + 1,
 						GetString(STR_JUST_DECIMAL, CeilDiv(length * 10, TILE_SIZE), 1),
-						TextColour::Black, SA_RIGHT | SA_FORCE, false, FontSize::Small); // Draw the counter
+						TextColour::Black, AlignmentH::ForceRight, false, FontSize::Small); // Draw the counter
 				break;
 			}
 
@@ -391,7 +391,7 @@ struct DepotWindow : Window {
 			DrawString(text, STR_DEPOT_NO_ENGINE);
 		} else {
 			Rect flag = r.WithWidth(this->flag_size.width, rtl).WithHeight(this->flag_size.height).Translate(0, diff_y);
-			DrawSpriteIgnorePadding((v->vehstatus.Test(VehState::Stopped)) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, flag, SA_CENTER);
+			DrawSpriteIgnorePadding((v->vehstatus.Test(VehState::Stopped)) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, flag, {AlignmentH::Centre, AlignmentV::Middle});
 
 			DrawString(text, GetString(STR_JUST_COMMA, v->unitnumber), (v->max_age - CalendarTime::DAYS_IN_LEAP_YEAR) >= v->age ? TextColour::Black : TextColour::Red);
 		}

@@ -10,8 +10,23 @@
 #include "../stdafx.h"
 #include "geometry_func.hpp"
 #include "math_func.hpp"
+#include "../strings_func.h"
+#include "../strings_type.h"
 
 #include "../safeguards.h"
+
+/**
+ * Resolve horizontal alignment for the current text direction.
+ * @return The resolved horizontal alignment.
+ */
+AlignmentH Alignment::ResolveRTL() const
+{
+	switch (this->h) {
+		case AlignmentH::Start: return _current_text_dir == TD_RTL ? AlignmentH::ForceRight : AlignmentH::ForceLeft;
+		case AlignmentH::End: return _current_text_dir == TD_RTL ? AlignmentH::ForceLeft : AlignmentH::ForceRight;
+		default: return this->h;
+	}
+}
 
 /**
  * Compute bounding box of both dimensions.

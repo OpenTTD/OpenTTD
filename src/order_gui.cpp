@@ -243,7 +243,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 		colour = TextColour::White;
 	}
 
-	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, GetString(STR_ORDER_INDEX, order_index + 1), colour, SA_RIGHT | SA_FORCE);
+	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, GetString(STR_ORDER_INDEX, order_index + 1), colour, AlignmentH::ForceRight);
 
 	std::string line;
 

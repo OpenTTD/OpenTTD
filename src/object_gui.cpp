@@ -399,7 +399,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_object_widgets
 							NWidget(WWT_PANEL, Colours::Grey, WID_BO_OBJECT_SPRITE), SetToolTip(STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 							EndContainer(),
 						EndContainer(),
-						NWidget(WWT_TEXT, Colours::Invalid, WID_BO_OBJECT_SIZE), SetAlignment(SA_CENTER),
+						NWidget(WWT_TEXT, Colours::Invalid, WID_BO_OBJECT_SIZE), SetAlignment({AlignmentH::Centre, AlignmentV::Middle}),
 						NWidget(WWT_EMPTY, Colours::Invalid, WID_BO_INFO), SetFill(1, 0), SetResize(1, 0),
 					EndContainer(),
 				EndContainer(),

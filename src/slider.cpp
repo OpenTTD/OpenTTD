@@ -70,7 +70,7 @@ void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextC
 
 			Dimension d = GetStringBoundingBox(*str, FontSize::Small);
 			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
-			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, SA_CENTER, false, FontSize::Small);
+			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, {AlignmentH::Centre, AlignmentV::Middle}, false, FontSize::Small);
 		}
 	}
 

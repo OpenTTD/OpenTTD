@@ -246,7 +246,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoType c
 		}
 	}
 
-	DrawString(left + padding, right, y, cs->abbrev, tc, SA_CENTER, false, FontSize::Small);
+	DrawString(left + padding, right, y, cs->abbrev, tc, {AlignmentH::Centre, AlignmentV::Middle}, false, FontSize::Small);
 
 	/* Draw green/red ratings bar (fits under the waiting bar) */
 	y += height + padding + 1;

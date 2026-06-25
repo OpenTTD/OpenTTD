@@ -582,9 +582,9 @@ void TextfileWindow::AfterLoadMarkdown()
 		int y_offset = (top - pos) * line_height;
 		if (line.wrapped_width != 0) {
 			Rect tr = fr.WithWidth(line.wrapped_width, _current_text_dir == TD_RTL);
-			DrawStringMultiLineWithClipping(tr.left, tr.right, y_offset, y_offset + line.num_lines * line_height, line.text, line.colour, SA_TOP | SA_LEFT, false, FontSize::Monospace);
+			DrawStringMultiLineWithClipping(tr.left, tr.right, y_offset, y_offset + line.num_lines * line_height, line.text, line.colour, {AlignmentH::Start, AlignmentV::Top}, false, FontSize::Monospace);
 		} else {
-			DrawString(fr.left, fr.right, y_offset, line.text, line.colour, SA_TOP | SA_LEFT, false, FontSize::Monospace);
+			DrawString(fr.left, fr.right, y_offset, line.text, line.colour, {AlignmentH::Start, AlignmentV::Top}, false, FontSize::Monospace);
 		}
 	}
 }

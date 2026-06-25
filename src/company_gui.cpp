@@ -188,12 +188,12 @@ static void DrawCategories(const Rect &r)
 {
 	int y = r.top;
 	/* Draw description of 12-minute economic period. */
-	DrawString(r.left, r.right, y, (TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION), TextColour::FromString, SA_LEFT, true);
+	DrawString(r.left, r.right, y, (TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION), TextColour::FromString, AlignmentH::Start, true);
 	y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	for (const ExpensesList &list : _expenses_list_types) {
 		/* Draw category title and advance y */
-		DrawString(r.left, r.right, y, list.title, TextColour::FromString, SA_LEFT);
+		DrawString(r.left, r.right, y, list.title, TextColour::FromString, AlignmentH::Start);
 		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Draw category items and advance y */
@@ -204,7 +204,7 @@ static void DrawCategories(const Rect &r)
 		y += WidgetDimensions::scaled.vsep_normal;
 
 		/* Draw category total and advance y */
-		DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TextColour::FromString, SA_RIGHT);
+		DrawString(r.left, r.right, y, STR_FINANCES_TOTAL_CAPTION, TextColour::FromString, AlignmentH::End);
 		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Advance y by a blockspace after this category block */
@@ -213,7 +213,7 @@ static void DrawCategories(const Rect &r)
 
 	/* Draw total profit/loss */
 	y += WidgetDimensions::scaled.vsep_normal;
-	DrawString(r.left, r.right, y, STR_FINANCES_PROFIT, TextColour::FromString, SA_LEFT);
+	DrawString(r.left, r.right, y, STR_FINANCES_PROFIT, TextColour::FromString, AlignmentH::Start);
 }
 
 /**
@@ -233,7 +233,7 @@ static void DrawPrice(Money amount, int left, int right, int top, TextColour col
 		amount = -amount;
 		str = STR_FINANCES_POSITIVE_INCOME;
 	}
-	DrawString(left, right, top, GetString(str, amount), colour, SA_RIGHT | SA_FORCE);
+	DrawString(left, right, top, GetString(str, amount), colour, AlignmentH::ForceRight);
 }
 
 /**
@@ -279,7 +279,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	Money sum;
 
 	/* Year header */
-	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TextColour::FromString, SA_RIGHT | SA_FORCE, true);
+	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TextColour::FromString, AlignmentH::ForceRight, true);
 	y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;
 
 	/* Categories */
@@ -322,10 +322,10 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_finances_wid
 				NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_FINANCES_BANK_BALANCE_TITLE), SetPadding(WidgetDimensions::unscaled.vsep_normal, 0, 0, 0),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), // Vertical column with bank balance amount, loan amount, and total.
-				NWidget(WWT_TEXT, Colours::Invalid, WID_CF_OWN_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT | SA_FORCE),
-				NWidget(WWT_TEXT, Colours::Invalid, WID_CF_LOAN_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT | SA_FORCE),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_CF_OWN_VALUE), SetAlignment({AlignmentH::ForceRight, AlignmentV::Middle}),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_CF_LOAN_VALUE), SetAlignment({AlignmentH::ForceRight, AlignmentV::Middle}),
 				NWidget(WWT_EMPTY, Colours::Invalid, WID_CF_BALANCE_LINE), SetMinimalSize(0, WidgetDimensions::unscaled.vsep_normal),
-				NWidget(WWT_TEXT, Colours::Invalid, WID_CF_BALANCE_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT | SA_FORCE),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_CF_BALANCE_VALUE), SetAlignment({AlignmentH::ForceRight, AlignmentV::Middle}),
 			EndContainer(),
 			NWidget(NWID_SELECTION, Colours::Invalid, WID_CF_SEL_MAXLOAN),
 				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1), // Max loan information
@@ -1794,14 +1794,14 @@ struct CompanyInfrastructureWindow : Window
 				case InfrastructureItemType::Total:
 					/* Draw line in the spacer above the total. */
 					GfxFillRect(costr.Translate(0, -WidgetDimensions::scaled.vsep_normal).WithHeight(WidgetDimensions::scaled.fullbevel.top), PC_WHITE);
-					DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TextColour::Black, SA_RIGHT | SA_FORCE);
+					DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TextColour::Black, AlignmentH::ForceRight);
 					break;
 
 				case InfrastructureItemType::Value:
 					DrawString(labelr.Indent(WidgetDimensions::scaled.hsep_indent, rtl), GetString(it->label), TextColour::White);
-					DrawString(countr, GetString(STR_JUST_COMMA, it->count), TextColour::White, SA_RIGHT | SA_FORCE);
+					DrawString(countr, GetString(STR_JUST_COMMA, it->count), TextColour::White, AlignmentH::ForceRight);
 					if (_settings_game.economy.infrastructure_maintenance) {
-						DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TextColour::Black, SA_RIGHT | SA_FORCE);
+						DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TextColour::Black, AlignmentH::ForceRight);
 					}
 					break;
 			}
@@ -1875,7 +1875,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_widgets = {
 							NWidget(WWT_EMPTY, Colours::Invalid, WID_C_DESC_COLOUR_SCHEME_EXAMPLE), SetMinimalSize(30, 0), SetFill(1, 1),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-							NWidget(WWT_TEXT, Colours::Invalid, WID_C_DESC_VEHICLE), SetStringTip(STR_COMPANY_VIEW_VEHICLES_TITLE), SetAlignment(SA_LEFT | SA_TOP),
+							NWidget(WWT_TEXT, Colours::Invalid, WID_C_DESC_VEHICLE), SetStringTip(STR_COMPANY_VIEW_VEHICLES_TITLE), SetAlignment({AlignmentH::Start, AlignmentV::Top}),
 							NWidget(WWT_EMPTY, Colours::Invalid, WID_C_DESC_VEHICLE_COUNTS), SetMinimalTextLines(4, 0), SetFill(1, 1),
 						EndContainer(),
 					EndContainer(),
@@ -1894,7 +1894,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_widgets = {
 				NWidget(WWT_TEXT, Colours::Invalid, WID_C_DESC_COMPANY_VALUE), SetFill(1, 0),
 
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
-					NWidget(WWT_TEXT, Colours::Invalid, WID_C_DESC_INFRASTRUCTURE), SetStringTip(STR_COMPANY_VIEW_INFRASTRUCTURE),  SetAlignment(SA_LEFT | SA_TOP),
+					NWidget(WWT_TEXT, Colours::Invalid, WID_C_DESC_INFRASTRUCTURE), SetStringTip(STR_COMPANY_VIEW_INFRASTRUCTURE),  SetAlignment({AlignmentH::Start, AlignmentV::Top}),
 					NWidget(WWT_EMPTY, Colours::Invalid, WID_C_DESC_INFRASTRUCTURE_COUNTS), SetMinimalTextLines(5, 0), SetFill(1, 0),
 					NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1),
 						NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_C_VIEW_INFRASTRUCTURE), SetStringTip(STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
@@ -2123,7 +2123,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_FACE_TITLE:
-				DrawStringMultiLine(r, GetString(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, c->index), TextColour::FromString, SA_HOR_CENTER);
+				DrawStringMultiLine(r, GetString(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, c->index), TextColour::FromString, AlignmentH::Centre);
 				break;
 
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
@@ -2389,7 +2389,7 @@ struct BuyCompanyWindow : Window {
 
 			case WID_BC_QUESTION: {
 				const Company *c = Company::Get(this->window_number);
-				DrawStringMultiLine(r, GetString(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, c->index, this->company_value), TextColour::FromString, SA_CENTER);
+				DrawStringMultiLine(r, GetString(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, c->index, this->company_value), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 				break;
 			}
 		}

@@ -435,7 +435,7 @@ protected:
 	TextColour highlight_colour{}; ///< Colour of highlight.
 	TextColour text_colour{}; ///< Colour of text within widget.
 	FontSize text_size = FontSize::Normal; ///< Size of text within widget.
-	Alignment align = SA_CENTER; ///< Alignment of text/image within widget.
+	Alignment align = {AlignmentH::Centre, AlignmentV::Middle}; ///< Alignment of text/image within widget.
 
 	/* This function constructs the widgets, so it should be able to write the variables. */
 	friend void ApplyNWidgetPartAttribute(const struct NWidgetPart &nwid, NWidgetBase *dest);

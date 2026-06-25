@@ -16,6 +16,43 @@
 #	define Point OTTD_Point
 #endif /* __APPLE__ */
 
+/** Horizontal alignments. */
+enum class AlignmentH : uint8_t {
+	Start, ///< Align to the start, LTR/RTL aware.
+	Centre, ///< Align to the centre.
+	End, ///< Align to the end, LTR/RTL aware.
+	ForceLeft, ///< Force align to the left.
+	ForceRight, ///< Force align to the right.
+};
+
+/** Vertical alignments. */
+enum class AlignmentV : uint8_t {
+	Top, ///< Align to the top.
+	Middle, ///< Align to the middle.
+	Bottom, ///< Align to the bottom.
+};
+
+/** Horizontal and vertical alignment. */
+struct Alignment {
+	AlignmentH h; ///< Horizontal alignment.
+	AlignmentV v; ///< Vertical alignment.
+
+	/**
+	 * Construct an alignment with the specified horizontal and vertical alignment.
+	 * @param h The horizontal alignment.
+	 * @param v The vertical alignment.
+	 */
+	constexpr Alignment(AlignmentH h, AlignmentV v) : h(h), v(v) {}
+
+	/**
+	 * Construct an alignment with the specific horizontal alignment.
+	 * @param h The horizontal alignment.
+	 */
+	constexpr Alignment(AlignmentH h) : Alignment(h, AlignmentV::Top) {}
+
+	AlignmentH ResolveRTL() const;
+};
+
 /**
  * Determine where to position a centred object.
  * @param min The top or left coordinate.

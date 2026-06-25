@@ -383,7 +383,7 @@ protected:
 				Rect clients = nwid->GetCurrentRect();
 				DrawString(clients.left, clients.right, y + text_y_offset,
 					GetString(STR_NETWORK_SERVER_LIST_GENERAL_ONLINE, cur_item->info.clients_on, cur_item->info.clients_max, cur_item->info.companies_on, cur_item->info.companies_max),
-					TextColour::FromString, SA_HOR_CENTER);
+					TextColour::FromString, AlignmentH::Centre);
 			}
 
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_MAPSIZE); nwid->current_x != 0) {
@@ -391,7 +391,7 @@ protected:
 				Rect mapsize = nwid->GetCurrentRect();
 				DrawString(mapsize.left, mapsize.right, y + text_y_offset,
 					GetString(STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT, cur_item->info.map_width, cur_item->info.map_height),
-					TextColour::FromString, SA_HOR_CENTER);
+					TextColour::FromString, AlignmentH::Centre);
 			}
 
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_DATE); nwid->current_x != 0) {
@@ -400,7 +400,7 @@ protected:
 				TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(cur_item->info.calendar_date);
 				DrawString(date.left, date.right, y + text_y_offset,
 					GetString(STR_JUST_INT, ymd.year),
-					TextColour::Black, SA_HOR_CENTER);
+					TextColour::Black, AlignmentH::Centre);
 			}
 
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_YEARS); nwid->current_x != 0) {
@@ -409,7 +409,7 @@ protected:
 				const auto play_time = cur_item->info.ticks_playing / Ticks::TICKS_PER_SECOND;
 				DrawString(years.left, years.right, y + text_y_offset,
 					GetString(STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT, play_time / 60 / 60, (play_time / 60) % 60),
-					TextColour::Black, SA_HOR_CENTER);
+					TextColour::Black, AlignmentH::Centre);
 			}
 
 			/* Set top and bottom of info rect to current row. */
@@ -419,11 +419,11 @@ protected:
 			bool rtl = _current_text_dir == TD_RTL;
 
 			/* draw a lock if the server is password protected */
-			if (cur_item->info.use_password) DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, info.WithWidth(this->lock.width, rtl), SA_CENTER);
+			if (cur_item->info.use_password) DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, info.WithWidth(this->lock.width, rtl), {AlignmentH::Centre, AlignmentV::Middle});
 
 			/* draw red or green icon, depending on compatibility with server */
 			PaletteID pal = cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED);
-			DrawSpriteIgnorePadding(SPR_BLOT, pal, info.WithWidth(this->blot.width, !rtl), SA_CENTER);
+			DrawSpriteIgnorePadding(SPR_BLOT, pal, info.WithWidth(this->blot.width, !rtl), {AlignmentH::Centre, AlignmentV::Middle});
 		}
 	}
 
@@ -648,12 +648,12 @@ public:
 		/* Draw the right menu */
 		/* Create the nice darker rectangle at the details top */
 		GfxFillRect(r.WithHeight(header_height).Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(Colours::LightBlue, Shade::Normal));
-		hr.top = DrawStringMultiLine(hr, header_msg, TextColour::FromString, SA_HOR_CENTER);
+		hr.top = DrawStringMultiLine(hr, header_msg, TextColour::FromString, AlignmentH::Centre);
 		if (sel == nullptr) return;
 
-		hr.top = DrawStringMultiLine(hr, sel->info.server_name, TextColour::Orange, SA_HOR_CENTER); // game name
+		hr.top = DrawStringMultiLine(hr, sel->info.server_name, TextColour::Orange, AlignmentH::Centre); // game name
 		if (sel->status != NetworkGameStatus::Online) {
-			tr.top = DrawStringMultiLine(tr, header_msg, TextColour::FromString, SA_HOR_CENTER);
+			tr.top = DrawStringMultiLine(tr, header_msg, TextColour::FromString, AlignmentH::Centre);
 		} else { // show game info
 			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_CLIENTS, sel->info.clients_on, sel->info.clients_max, sel->info.companies_on, sel->info.companies_max));
 
@@ -680,12 +680,12 @@ public:
 			tr.top += WidgetDimensions::scaled.vsep_wide;
 
 			if (!sel->info.compatible) {
-				DrawStringMultiLine(tr, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TextColour::FromString, SA_HOR_CENTER); // server mismatch
+				DrawStringMultiLine(tr, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TextColour::FromString, AlignmentH::Centre); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				/* Show: server full, when clients_on == max_clients */
-				DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_SERVER_FULL, TextColour::FromString, SA_HOR_CENTER); // server full
+				DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_SERVER_FULL, TextColour::FromString, AlignmentH::Centre); // server full
 			} else if (sel->info.use_password) {
-				DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_PASSWORD, TextColour::FromString, SA_HOR_CENTER); // password warning
+				DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_PASSWORD, TextColour::FromString, AlignmentH::Centre); // password warning
 			}
 		}
 	}
@@ -1263,7 +1263,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_client_list_widgets 
 			NWidget(WWT_FRAME, Colours::Grey), SetStringTip(STR_NETWORK_CLIENT_LIST_SERVER), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 					NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_NETWORK_CLIENT_LIST_SERVER_NAME),
-					NWidget(WWT_TEXT, Colours::Invalid, WID_CL_SERVER_NAME), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+					NWidget(WWT_TEXT, Colours::Invalid, WID_CL_SERVER_NAME), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP), SetAlignment({AlignmentH::End, AlignmentV::Middle}),
 					NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_CL_SERVER_NAME_EDIT), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_SELECTION, Colours::Invalid, WID_CL_SERVER_SELECTOR),
@@ -1274,11 +1274,11 @@ static constexpr std::initializer_list<NWidgetPart> _nested_client_list_widgets 
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 							NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE),
-							NWidget(WWT_TEXT, Colours::Invalid, WID_CL_SERVER_INVITE_CODE), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+							NWidget(WWT_TEXT, Colours::Invalid, WID_CL_SERVER_INVITE_CODE), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP), SetAlignment({AlignmentH::End, AlignmentV::Middle}),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 							NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE),
-							NWidget(WWT_TEXT, Colours::Invalid, WID_CL_SERVER_CONNECTION_TYPE), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+							NWidget(WWT_TEXT, Colours::Invalid, WID_CL_SERVER_CONNECTION_TYPE), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP), SetAlignment({AlignmentH::End, AlignmentV::Middle}),
 						EndContainer(),
 					EndContainer(),
 				EndContainer(),
@@ -1286,7 +1286,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_client_list_widgets 
 			NWidget(WWT_FRAME, Colours::Grey), SetStringTip(STR_NETWORK_CLIENT_LIST_PLAYER),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 					NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_NETWORK_CLIENT_LIST_PLAYER_NAME),
-					NWidget(WWT_TEXT, Colours::Invalid, WID_CL_CLIENT_NAME), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+					NWidget(WWT_TEXT, Colours::Invalid, WID_CL_CLIENT_NAME), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP), SetAlignment({AlignmentH::End, AlignmentV::Middle}),
 					NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_CL_CLIENT_NAME_EDIT), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
@@ -1298,7 +1298,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_client_list_widgets 
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, Colours::Grey),
-			NWidget(WWT_TEXT, Colours::Invalid, WID_CL_CLIENT_COMPANY_COUNT), SetFill(1, 0), SetResize(1, 0), SetPadding(WidgetDimensions::unscaled.framerect), SetAlignment(SA_CENTER), SetToolTip(STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_CL_CLIENT_COMPANY_COUNT), SetFill(1, 0), SetResize(1, 0), SetPadding(WidgetDimensions::unscaled.framerect), SetAlignment({AlignmentH::Centre, AlignmentV::Middle}), SetToolTip(STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
@@ -1494,7 +1494,7 @@ protected:
 		for (auto &button : buttons) {
 			Rect br = r.CentreToHeight(button->height).WithWidth(button->width, !rtl);
 			DrawFrameRect(br, button->colour, {});
-			DrawSpriteIgnorePadding(button->sprite, PAL_NONE, br, SA_CENTER);
+			DrawSpriteIgnorePadding(button->sprite, PAL_NONE, br, {AlignmentH::Centre, AlignmentV::Middle});
 			if (button->disabled) {
 				GfxFillRect(br.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button->colour, Shade::Darker), FillRectMode::Checker);
 			}
@@ -1520,7 +1520,7 @@ public:
 
 		Dimension d = GetScaledSpriteSize(SPR_COMPANY_ICON);
 		PaletteID pal = Company::IsValidID(this->company_id) ? GetCompanyPalette(this->company_id) : PALETTE_TO_GREY;
-		DrawSpriteIgnorePadding(SPR_COMPANY_ICON, pal, r.WithWidth(d.width, rtl), SA_CENTER);
+		DrawSpriteIgnorePadding(SPR_COMPANY_ICON, pal, r.WithWidth(d.width, rtl), {AlignmentH::Centre, AlignmentV::Middle});
 
 		Rect tr = r.CentreToHeight(GetCharacterHeight(FontSize::Normal)).Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 		if (this->company_id == COMPANY_SPECTATOR) {
@@ -1564,7 +1564,7 @@ public:
 
 		if (player_icon != 0) {
 			Dimension d = GetScaledSpriteSize(player_icon);
-			DrawSpriteIgnorePadding(player_icon, PALETTE_TO_GREY, r.WithWidth(d.width, rtl), SA_CENTER);
+			DrawSpriteIgnorePadding(player_icon, PALETTE_TO_GREY, r.WithWidth(d.width, rtl), {AlignmentH::Centre, AlignmentV::Middle});
 			tr = tr.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 		}
 
@@ -2124,21 +2124,21 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), Colours::Mauve, {});
-				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), STR_NETWORK_CONNECTING_1 + to_underlying(_network_join_status), TextColour::FromString, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), STR_NETWORK_CONNECTING_1 + to_underlying(_network_join_status), TextColour::FromString, AlignmentH::Centre);
 				break;
 			}
 
 			case WID_NJS_PROGRESS_TEXT:
 				switch (_network_join_status) {
 					case NetworkJoinStatus::Waiting:
-						DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_WAITING, _network_join_waiting), TextColour::FromString, SA_CENTER);
+						DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_WAITING, _network_join_waiting), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 						break;
 
 					case NetworkJoinStatus::Downloading:
 						if (_network_join_bytes_total == 0) {
-							DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_DOWNLOADING_1, _network_join_bytes), TextColour::FromString, SA_CENTER);
+							DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_DOWNLOADING_1, _network_join_bytes), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 						} else {
-							DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_DOWNLOADING_2, _network_join_bytes, _network_join_bytes_total), TextColour::FromString, SA_CENTER);
+							DrawStringMultiLine(r, GetString(STR_NETWORK_CONNECTING_DOWNLOADING_2, _network_join_bytes, _network_join_bytes_total), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 						}
 						break;
 
@@ -2276,7 +2276,7 @@ struct NetworkAskRelayWindow : public Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_NAR_TEXT) {
-			DrawStringMultiLine(r, GetString(STR_NETWORK_ASK_RELAY_TEXT, this->server_connection_string, this->relay_connection_string), TextColour::FromString, SA_CENTER);
+			DrawStringMultiLine(r, GetString(STR_NETWORK_ASK_RELAY_TEXT, this->server_connection_string, this->relay_connection_string), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 		}
 	}
 
@@ -2318,7 +2318,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_relay_wi
 	EndContainer(),
 	NWidget(WWT_PANEL, Colours::Red),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
-			NWidget(WWT_TEXT, Colours::Invalid, WID_NAR_TEXT), SetAlignment(SA_HOR_CENTER), SetFill(1, 1),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_NAR_TEXT), SetAlignment(AlignmentH::Centre), SetFill(1, 1),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NAR_NO), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_NETWORK_ASK_RELAY_NO),
 				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NAR_YES_ONCE), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_NETWORK_ASK_RELAY_YES_ONCE),
@@ -2376,7 +2376,7 @@ struct NetworkAskSurveyWindow : public Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_NAS_TEXT) {
-			DrawStringMultiLine(r, STR_NETWORK_ASK_SURVEY_TEXT, TextColour::Black, SA_CENTER);
+			DrawStringMultiLine(r, STR_NETWORK_ASK_SURVEY_TEXT, TextColour::Black, {AlignmentH::Centre, AlignmentV::Middle});
 		}
 	}
 
@@ -2420,7 +2420,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_network_ask_survey_w
 	EndContainer(),
 	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
-			NWidget(WWT_TEXT, Colours::Invalid, WID_NAS_TEXT), SetAlignment(SA_HOR_CENTER), SetFill(1, 1),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_NAS_TEXT), SetAlignment(AlignmentH::Centre), SetFill(1, 1),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(WWT_PUSHTXTBTN, Colours::White, WID_NAS_PREVIEW), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_NETWORK_ASK_SURVEY_PREVIEW),
 				NWidget(WWT_PUSHTXTBTN, Colours::White, WID_NAS_LINK), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_NETWORK_ASK_SURVEY_LINK),

@@ -211,7 +211,7 @@ struct GoalListWindow : public Window {
 						case GC_PROGRESS:
 							if (!s->progress.empty()) {
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress.GetDecodedString()), TextColour::FromString, SA_RIGHT | SA_FORCE);
+								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress.GetDecodedString()), TextColour::FromString, AlignmentH::ForceRight);
 							}
 							break;
 					}
@@ -380,7 +380,7 @@ struct GoalQuestionWindow : public Window {
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
-		DrawStringMultiLine(r, this->question.GetDecodedString(), this->colour, SA_TOP | SA_HOR_CENTER);
+		DrawStringMultiLine(r, this->question.GetDecodedString(), this->colour, {AlignmentH::Centre, AlignmentV::Top});
 	}
 };
 

@@ -617,14 +617,14 @@ struct FramerateWindow : Window {
 		int32_t skip = sb->GetPosition();
 		int drawable = this->num_displayed;
 		int y = r.top;
-		DrawString(r.left, r.right, y, heading_str, TextColour::FromString, SA_CENTER, true);
+		DrawString(r.left, r.right, y, heading_str, TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle}, true);
 		y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		for (PerformanceElement e : DISPLAY_ORDER_PFE) {
 			if (_pf_data[e].num_valid == 0) continue;
 			if (skip > 0) {
 				skip--;
 			} else {
-				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TextColour::FromString, SA_RIGHT | SA_FORCE);
+				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TextColour::FromString, AlignmentH::ForceRight);
 				y += GetCharacterHeight(FontSize::Normal);
 				drawable--;
 				if (drawable == 0) break;
@@ -638,7 +638,7 @@ struct FramerateWindow : Window {
 		int32_t skip = sb->GetPosition();
 		int drawable = this->num_displayed;
 		int y = r.top;
-		DrawString(r.left, r.right, y, STR_FRAMERATE_MEMORYUSE, TextColour::FromString, SA_CENTER, true);
+		DrawString(r.left, r.right, y, STR_FRAMERATE_MEMORYUSE, TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle}, true);
 		y += GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal;
 		for (PerformanceElement e : DISPLAY_ORDER_PFE) {
 			if (_pf_data[e].num_valid == 0) continue;
@@ -646,12 +646,12 @@ struct FramerateWindow : Window {
 				skip--;
 			} else if (e == PerformanceElement::GameScript || e >= PerformanceElement::AI0) {
 				uint64_t value = e == PerformanceElement::GameScript ? Game::GetInstance()->GetAllocatedMemory() : Company::Get(GetAIIndex(e))->ai_instance->GetAllocatedMemory();
-				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TextColour::FromString, SA_RIGHT | SA_FORCE);
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TextColour::FromString, AlignmentH::ForceRight);
 				y += GetCharacterHeight(FontSize::Normal);
 				drawable--;
 				if (drawable == 0) break;
 			} else if (e == PerformanceElement::Sound) {
-				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, GetSoundPoolAllocatedMemory()), TextColour::FromString, SA_RIGHT | SA_FORCE);
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, GetSoundPoolAllocatedMemory()), TextColour::FromString, AlignmentH::ForceRight);
 				y += GetCharacterHeight(FontSize::Normal);
 				drawable--;
 				if (drawable == 0) break;
@@ -679,9 +679,9 @@ struct FramerateWindow : Window {
 						skip--;
 					} else {
 						if (e < PerformanceElement::AI0) {
-							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + to_underlying(e), TextColour::FromString, SA_LEFT);
+							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + to_underlying(e), TextColour::FromString, AlignmentH::Start);
 						} else {
-							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, GetAIIndex(e) + 1, GetAIName(e)), TextColour::FromString, SA_LEFT);
+							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, GetAIIndex(e) + 1, GetAIName(e)), TextColour::FromString, AlignmentH::Start);
 						}
 						y += GetCharacterHeight(FontSize::Normal);
 						drawable--;
@@ -949,11 +949,11 @@ struct FrametimeGraphWindow : Window {
 					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
 						DrawString(r.left, x_zero - WidgetDimensions::scaled.hsep_normal, y - GetCharacterHeight(FontSize::Small),
 							GetString(STR_FRAMERATE_GRAPH_SECONDS, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION),
-							TextColour::Grey, SA_RIGHT | SA_FORCE, false, FontSize::Small);
+							TextColour::Grey, AlignmentH::ForceRight, false, FontSize::Small);
 					} else {
 						DrawString(r.left, x_zero - WidgetDimensions::scaled.hsep_normal, y - GetCharacterHeight(FontSize::Small),
 							GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION),
-							TextColour::Grey, SA_RIGHT | SA_FORCE, false, FontSize::Small);
+							TextColour::Grey, AlignmentH::ForceRight, false, FontSize::Small);
 					}
 				}
 			}
@@ -964,7 +964,7 @@ struct FrametimeGraphWindow : Window {
 				if (division % 2 == 0) {
 					DrawString(x, x_max, y_zero + WidgetDimensions::scaled.vsep_normal,
 						GetString(STR_FRAMERATE_GRAPH_SECONDS, division * horz_div_scl / 2),
-						TextColour::Grey, SA_LEFT | SA_FORCE, false, FontSize::Small);
+						TextColour::Grey, AlignmentH::ForceLeft, false, FontSize::Small);
 				}
 			}
 
@@ -1024,9 +1024,9 @@ struct FrametimeGraphWindow : Window {
 				uint64_t value = peak_value * 1000 / TIMESTAMP_PRECISION;
 				int label_y = std::max(y_max, peak_point.y - GetCharacterHeight(FontSize::Small));
 				if (peak_point.x - x_zero > (int)this->graph_size.width / 2) {
-					DrawString(x_zero, peak_point.x - WidgetDimensions::scaled.hsep_normal, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_RIGHT | SA_FORCE, false, FontSize::Small);
+					DrawString(x_zero, peak_point.x - WidgetDimensions::scaled.hsep_normal, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, AlignmentH::ForceRight, false, FontSize::Small);
 				} else {
-					DrawString(peak_point.x + WidgetDimensions::scaled.hsep_normal, x_max, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_LEFT | SA_FORCE, false, FontSize::Small);
+					DrawString(peak_point.x + WidgetDimensions::scaled.hsep_normal, x_max, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, AlignmentH::ForceLeft, false, FontSize::Small);
 				}
 			}
 		}
