@@ -20,6 +20,7 @@
 /** Unique identifier for an order backup. */
 using OrderBackupID = PoolID<uint8_t, struct OrderBackupIDTag, 255, 0xFF>;
 struct OrderBackup;
+enum ClientID : uint32_t;
 
 /** The pool type for order backups. */
 using OrderBackupPool = Pool<OrderBackup, OrderBackupID, 1>;
@@ -39,7 +40,7 @@ private:
 	template <typename T>
 	friend class SlOrders;
 
-	uint32_t user = 0; ///< The user that requested the backup.
+	ClientID user{}; ///< The user that requested the backup.
 	TileIndex tile = INVALID_TILE; ///< Tile of the depot where the order was changed.
 	GroupID group = GroupID::Invalid(); ///< The group the vehicle was part of.
 
@@ -51,16 +52,16 @@ private:
 
 	friend OrderBackupPoolItem; ///< Loading of order backups.
 	OrderBackup(OrderBackupID index);
-	OrderBackup(OrderBackupID index, const Vehicle *v, uint32_t user);
+	OrderBackup(OrderBackupID index, const Vehicle *v, ClientID user);
 
 public:
 	~OrderBackup();
 
-	static void Backup(const Vehicle *v, uint32_t user);
-	static void Restore(Vehicle *v, uint32_t user);
+	static void Backup(const Vehicle *v, ClientID user);
+	static void Restore(Vehicle *v, ClientID user);
 
-	static void ResetOfUser(TileIndex tile, uint32_t user);
-	static void ResetUser(uint32_t user);
+	static void ResetOfUser(TileIndex tile, ClientID user);
+	static void ResetUser(ClientID user);
 	static void Reset(TileIndex tile = INVALID_TILE, bool from_gui = true);
 
 	static void ClearGroup(GroupID group);
