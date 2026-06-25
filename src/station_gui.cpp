@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "gui.h"
+#include "querystring_gui.h"
 #include "textbuf_gui.h"
 #include "company_func.h"
 #include "command_func.h"
@@ -259,8 +260,7 @@ typedef GUIList<const Station*, const CargoTypes &> GUIStationList;
 /**
  * The list of stations per company.
  */
-class CompanyStationsWindow : public Window
-{
+class CompanyStationsWindow : public Window {
 protected:
 	/** Runtime saved values. */
 	struct FilterState {
@@ -288,6 +288,9 @@ protected:
 	};
 	static const std::initializer_list<GUIStationList::SortFunction * const> sorter_funcs; ///< Functions to sort stations.
 
+	StringFilter string_filter{}; ///< Filter for name
+	QueryString name_editbox; ///< Filter editbox
+
 	FilterState filter{};
 	GUIStationList stations{filter.cargoes};
 	Scrollbar *vscroll = nullptr;
@@ -314,6 +317,10 @@ protected:
 		for (const Station *st : Station::Iterate()) {
 			if (this->filter.facilities.Any(st->facilities)) { // only stations with selected facilities
 				if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
+					this->string_filter.ResetState();
+					this->string_filter.AddLine(st->GetCachedName());
+					if (!this->string_filter.GetState()) continue;
+
 					bool has_rating = false;
 					/* Add to the station/cargo counts. */
 					for (CargoType cargo : EnumRange(NUM_CARGO)) {
@@ -418,7 +425,7 @@ protected:
 	}
 
 public:
-	CompanyStationsWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	CompanyStationsWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), name_editbox(MAX_LENGTH_STATION_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_STATION_NAME_CHARS)
 	{
 		/* Load initial filter state. */
 		this->filter = CompanyStationsWindow::initial_state;
@@ -434,6 +441,9 @@ public:
 		this->vscroll = this->GetScrollbar(WID_STL_SCROLLBAR);
 		this->FinishInitNested(window_number);
 		this->owner = this->window_number;
+
+		this->querystrings[WID_STL_FILTER] = &this->name_editbox;
+		this->name_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		if (this->filter.cargoes == ALL_CARGOTYPES) this->filter.cargoes = _cargo_mask;
 
@@ -738,6 +748,14 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_STL_LIST, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
+	void OnEditboxChanged(WidgetID wid) override
+	{
+		if (wid == WID_STL_FILTER) {
+			this->string_filter.SetFilterTerm(this->name_editbox.text.GetText());
+			this->InvalidateData(TDIWD_FORCE_REBUILD);
+		}
+	}
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -784,9 +802,9 @@ static constexpr std::initializer_list<NWidgetPart> _nested_company_stations_wid
 		NWidget(WWT_PANEL, Colours::Grey), SetResize(1, 0), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_STL_SORTBY), SetMinimalSize(81, 12), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-		NWidget(WWT_DROPDOWN, Colours::Grey, WID_STL_SORTDROPBTN), SetMinimalSize(163, 12), SetStringTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_CRITERIA), // widget_data gets overwritten.
-		NWidget(WWT_PANEL, Colours::Grey), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_STL_SORTBY), SetMinimalSize(0, 12), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+		NWidget(WWT_DROPDOWN, Colours::Grey, WID_STL_SORTDROPBTN), SetMinimalSize(0, 12), SetStringTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_CRITERIA), // widget_data gets overwritten.
+		NWidget(WWT_EDITBOX, Colours::Grey, WID_STL_FILTER), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, Colours::Grey, WID_STL_LIST), SetMinimalSize(346, 125), SetResize(1, 10), SetToolTip(STR_STATION_LIST_TOOLTIP), SetScrollbar(WID_STL_SCROLLBAR), EndContainer(),

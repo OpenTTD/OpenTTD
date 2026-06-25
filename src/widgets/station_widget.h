@@ -49,6 +49,7 @@ enum StationListWidgets : WidgetID {
 
 	WID_STL_SORTBY,         ///< 'Sort by' button - reverse sort direction.
 	WID_STL_SORTDROPBTN,    ///< Dropdown button.
+	WID_STL_FILTER, ///< Filter of name.
 
 	WID_STL_CARGODROPDOWN,  ///< Cargo type dropdown list.
 };
