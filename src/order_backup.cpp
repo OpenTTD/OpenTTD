@@ -44,7 +44,7 @@ OrderBackup::OrderBackup(OrderBackupID index) :
  * @param v    The vehicle to make a backup of.
  * @param user The user that is requesting the backup.
  */
-OrderBackup::OrderBackup(OrderBackupID index, const Vehicle *v, uint32_t user) :
+OrderBackup::OrderBackup(OrderBackupID index, const Vehicle *v, ClientID user) :
 	OrderBackupPool::PoolItem<&_order_backup_pool>(index), user(user), tile(v->tile), group(v->group_id)
 {
 	this->CopyConsistPropertiesFrom(v);
@@ -92,7 +92,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  * @param user The user that is requesting the backup.
  * @note Will automatically remove any previous backups of this user.
  */
-/* static */ void OrderBackup::Backup(const Vehicle *v, uint32_t user)
+/* static */ void OrderBackup::Backup(const Vehicle *v, ClientID user)
 {
 	/* Don't use reset as that broadcasts over the network to reset the variable,
 	 * which is what we are doing at the moment. */
@@ -110,7 +110,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  * @param user The user that built the vehicle, thus wants to restore.
  * @note After restoration the backup will automatically be removed.
  */
-/* static */ void OrderBackup::Restore(Vehicle *v, uint32_t user)
+/* static */ void OrderBackup::Restore(Vehicle *v, ClientID user)
 {
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (v->tile != ob->tile || ob->user != user) continue;
@@ -126,7 +126,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  * @param user The user associated with the OrderBackup.
  * @note Must not be used from the GUI!
  */
-/* static */ void OrderBackup::ResetOfUser(TileIndex tile, uint32_t user)
+/* static */ void OrderBackup::ResetOfUser(TileIndex tile, ClientID user)
 {
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (ob->user == user && (ob->tile == tile || tile == INVALID_TILE)) delete ob;
@@ -154,7 +154,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
  * @pre _network_server.
  * @note Must not be used from a command.
  */
-/* static */ void OrderBackup::ResetUser(uint32_t user)
+/* static */ void OrderBackup::ResetUser(ClientID user)
 {
 	assert(_network_server);
 
@@ -179,7 +179,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
 	 * but compiled it. A network client has its own variable for the unique
 	 * client/user identifier. Finally if networking isn't compiled in the
 	 * default is just plain and simple: 0. */
-	uint32_t user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
+	ClientID user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
 
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		/* If this is a GUI action, and it's not a backup of us, ignore it. */
