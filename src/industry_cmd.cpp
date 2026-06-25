@@ -504,10 +504,10 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 				(indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 
-		if (flags.Test(DoCommandFlag::Auto)) {
-			return CommandCostWithParam(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY, indspec->name);
+			case BulldozeIndustries::All:
+				/* Allow the industry to be demolished. */
+				break;
 		}
-		return CommandCost(INVALID_STRING_ID);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
