@@ -1072,7 +1072,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :kē atu
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Whakahohoro pūmārō
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Whakakā kia tuku i OpenTTD kia whakamātau ki te whakamahi i te whakahohoro pūmārō. Ka kitea te tautuhinga hou i muri i tētahi whakaara anō i te kēmu
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Whakakā kia tuku i OpenTTD kia tarai ki te whakamahi i te whakahohoro pūmārō. Ka kitea te tautuhinga hou i muri i tētahi whakaara anō i te kēmu
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ka kitea te tautuhinga i muri i tētahi whakaara anō i te kēmu
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Tukutahi poutū
@@ -1472,8 +1472,8 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Tirohanga katoa
 
 STR_CONFIG_SETTING_BRIBE                                        :Tukuna kia whakapatia te kāwanatanga ārohe: {STRING}
 ###length 2
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tukuna ngā umanga kia whakamātau ki te whakapati i te kāwanatanga ārohe. Mēnā ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei ki te mahi i roto i te tāone mō te ono marama
-STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Tukuna ngā umanga kia whakamātau ki te whakapati i te kāwanatanga ārohe. Mēnā ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei ki te mahi i roto i te tāone mō te ono meneti
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tukuna ngā umanga kia tarai ki te whakapati i te kāwanatanga ārohe. Mēnā ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei ki te mahi i roto i te tāone mō te ono marama
+STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :Tukuna ngā umanga kia tarai ki te whakapati i te kāwanatanga ārohe. Mēnā ka kitea te whakapati e tētahi matawai, kāore te umanga e āhei ki te mahi i roto i te tāone mō te ono meneti
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tukuna kia hokona ngā mōtika kawekawe kaupare: {STRING}
 ###length 2
@@ -1890,7 +1890,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Me whia te pūm
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Ki ngā ōrau ngā wā kia tapi ai: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Ina kā, ka whakamātau ngā waka kia tapia ina taka te horopū ki tētahi ōrau o te horopū mōrahi.{}{}Hei tauira, mēnā 90% te horopū mōrahi o tētahi waka, ā, 20% te wā kia tapi ai, ka whakamātau te waka kia tapia ina taea te 72% o te horopū
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Ina kā, ka tarai ngā waka kia tapia ina taka te horopū ki tētahi ōrau o te horopū mōrahi.{}{}Hei tauira, mēnā 90% te horopū mōrahi o tētahi waka, ā, 20% te wā kia tapi ai, ka tarai te waka kia tapia ina taea te 72% o te horopū
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Wā taunoa kia tapi i ngā tereina: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Tautuhitia te wā taunoa kia tapi i ngā waka rerewhenua hou, mēnā kāore he wā mataaho i te tautuhitia mō te waka
@@ -2647,7 +2647,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :kāore i roto i
 STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :kāore i te wātea tētahi noa iho o ngā ara motuhēhēnga kua tonoa
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :umanga hē i te DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :whanaia atu e te tūmau
-STR_NETWORK_ERROR_CLIENT_CHEATER                                :i whakamātau ki te tinihanga
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :i tarai ki te tinihanga
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :kī te tūmau
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :tuhene ngā tononga
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :kāore i whiwhi i te kupuhuna
@@ -3421,7 +3421,7 @@ STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Tīpakon
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tatau o ngā ahumahi:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Tīpakona te apiapi ahumahi, tautuhitia rānei he tau
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Taumata teitei rawaatu:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Tīpakona te taumata teitei rawaatu ka whakamātau te kēmu kia hangaia, e inea ana ki te teitei i runga i te pae moana
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Tīpakona te taumata teitei rawaatu ka tarai te kēmu kia hangaia, e inea ana ki te teitei i runga i te pae moana
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Whakarahia te teitei mōrahi o te taumata teitei rawaatu o te mahere
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Whakapakutia te teitei mōrahi o te taumata teitei rawaatu o te mahere
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Horahanga hukarere:
@@ -3674,7 +3674,7 @@ STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :He maha rawa ng
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ka taea te ngaro te tukutahi i te uta i {1:STRING} hei newGRF tū ki {2:STRING}
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ata ohorere (ata {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Āhuatanga Mahi 0 tē mōhiotia {4:HEX} (ata {3:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :Whakamātau ki te whakamahi i tētahi ID muhu (ata {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tarai ki te whakamahi i tētahi ID muhu (ata {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}He ata hāmate tō {STRING}. Ka whakaaria ngā ata hāmate katoa hei tohu pātai whero (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :He maha ngā tāurunga Mahi 8 (ata {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :I pānui ki muri ki te mutunga o tētahi ata tipatipa (ata {3:NUM})
@@ -3850,7 +3850,7 @@ STR_GOAL_QUESTION_BUTTON_YES                                    :Āe
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Whakakāhore
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Whakaae
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Whakaturi
-STR_GOAL_QUESTION_BUTTON_RETRY                                  :Whakamātau anō
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Tarai anō
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Mua
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Muri
 STR_GOAL_QUESTION_BUTTON_STOP                                   :Whakamutu
@@ -4916,7 +4916,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Tautuhit
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tautuhitia anō te inenga tōmuri, kia ū ai te waka ki te wā onāianei. Pātaki+Pāwhiri kia tautuhitia anō te rōpū katoa kia ū ai te waka mātāmua ki te wā, ka tōmua ai te toenga
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Tāuru aunoa
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tāuru aunoatia ngā uara o te haerenga e whai ake nei. Pātaki+Pāwhiri kia whakamātau kia toitū ngā wā taritari
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tāuru aunoatia ngā uara o te haerenga e whai ake nei. Pātaki+Pāwhiri kia tarai kia toitū ngā wā taritari
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Matapae
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Hōtaka
@@ -5187,7 +5187,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :ka taea te whak
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :ka taea te hanga i runga ake anake i te rārangi hukarere
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :ka taea te hanga i raro iho anake i te rārangi hukarere
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :i mūhore noa iho te haurapa; whakamātau anō
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :i mūhore noa iho te haurapa; tarai anō
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :kāore he wāhi pai ki te haurapa i tēnei ahumahi
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Kāore he wāhi pai mō ngā ahumahi "{STRING}"
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Panonitia ngā tawhā hanga mahere kia whiwhi i tētahi mahere pai ake
