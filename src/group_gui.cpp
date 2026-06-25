@@ -373,7 +373,7 @@ private:
 
 		/* draw fold / unfold button */
 		if (has_children) {
-			DrawSpriteIgnorePadding(Group::Get(g_id)->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, r.WithX(this->column_rects[VGC_FOLD]).Translate(indent * level_width, 0), SA_CENTER);
+			DrawSpriteIgnorePadding(Group::Get(g_id)->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, r.WithX(this->column_rects[VGC_FOLD]).Translate(indent * level_width, 0), {AlignmentH::Centre, AlignmentV::Middle});
 		}
 
 		/* draw group name */
@@ -381,24 +381,24 @@ private:
 
 		/* draw autoreplace protection */
 		if (protection) {
-			DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_PROTECT, PAL_NONE, r.WithX(this->column_rects[VGC_PROTECT]), SA_CENTER);
+			DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_PROTECT, PAL_NONE, r.WithX(this->column_rects[VGC_PROTECT]), {AlignmentH::Centre, AlignmentV::Middle});
 		}
 
 		/* draw autoreplace status */
 		if (stats.autoreplace_defined) {
-			DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, stats.autoreplace_finished ? PALETTE_CRASH : PAL_NONE, r.WithX(this->column_rects[VGC_AUTOREPLACE]), SA_CENTER);
+			DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, stats.autoreplace_finished ? PALETTE_CRASH : PAL_NONE, r.WithX(this->column_rects[VGC_AUTOREPLACE]), {AlignmentH::Centre, AlignmentV::Middle});
 		}
 
 		/* draw the profit icon */
-		DrawSpriteIgnorePadding(this->GetGroupProfitSpriteID(g_id), PAL_NONE, r.WithX(this->column_rects[VGC_PROFIT]), SA_CENTER);
+		DrawSpriteIgnorePadding(this->GetGroupProfitSpriteID(g_id), PAL_NONE, r.WithX(this->column_rects[VGC_PROFIT]), {AlignmentH::Centre, AlignmentV::Middle});
 
 		/* draw the number of vehicles of the group */
 		int num_vehicle_with_subgroups = GetGroupNumVehicle(this->vli.company, g_id, this->vli.vtype);
 		int num_vehicle = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype).num_vehicle;
 		if (IsAllGroupID(g_id) || IsDefaultGroupID(g_id) || num_vehicle_with_subgroups == num_vehicle) {
-			DrawString(r.WithX(this->column_rects[VGC_NUMBER]).CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_JUST_COMMA, num_vehicle), colour, SA_RIGHT | SA_FORCE, false, FontSize::Small);
+			DrawString(r.WithX(this->column_rects[VGC_NUMBER]).CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_JUST_COMMA, num_vehicle), colour, AlignmentH::ForceRight, false, FontSize::Small);
 		} else {
-			DrawString(r.WithX(this->column_rects[VGC_NUMBER]).CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_GROUP_COUNT_WITH_SUBGROUP, num_vehicle, num_vehicle_with_subgroups - num_vehicle), colour, SA_RIGHT | SA_FORCE);
+			DrawString(r.WithX(this->column_rects[VGC_NUMBER]).CentreToHeight(this->column_size[VGC_NUMBER].height), GetString(STR_GROUP_COUNT_WITH_SUBGROUP, num_vehicle, num_vehicle_with_subgroups - num_vehicle), colour, AlignmentH::ForceRight);
 		}
 	}
 
@@ -663,17 +663,17 @@ public:
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_THIS_PERIOD : STR_GROUP_PROFIT_THIS_YEAR, TextColour::Black);
-				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, this_year), TextColour::Black, SA_RIGHT);
+				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, this_year), TextColour::Black, AlignmentH::End);
 
 				tr.top += GetCharacterHeight(FontSize::Normal);
 				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_LAST_PERIOD : STR_GROUP_PROFIT_LAST_YEAR, TextColour::Black);
-				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, last_year), TextColour::Black, SA_RIGHT);
+				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, last_year), TextColour::Black, AlignmentH::End);
 
 				tr.top += GetCharacterHeight(FontSize::Normal);
 				DrawString(tr, STR_GROUP_OCCUPANCY, TextColour::Black);
 				const size_t vehicle_count = this->vehicles.size();
 				if (vehicle_count > 0) {
-					DrawString(tr, GetString(STR_GROUP_OCCUPANCY_VALUE, occupancy / vehicle_count), TextColour::Black, SA_RIGHT);
+					DrawString(tr, GetString(STR_GROUP_OCCUPANCY_VALUE, occupancy / vehicle_count), TextColour::Black, AlignmentH::End);
 				}
 
 				break;

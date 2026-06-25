@@ -209,11 +209,11 @@ static constexpr std::initializer_list<NWidgetPart> _nested_social_plugins_widge
 		NWidget(WWT_FRAME, GAME_OPTIONS_BACKGROUND, WID_GO_SOCIAL_PLUGIN_TITLE), SetTextStyle(GAME_OPTIONS_FRAME),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				NWidget(WWT_TEXT, Colours::Invalid), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM), SetTextStyle(GAME_OPTIONS_LABEL),
-				NWidget(WWT_TEXT, Colours::Invalid, WID_GO_SOCIAL_PLUGIN_PLATFORM), SetAlignment(SA_RIGHT),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_GO_SOCIAL_PLUGIN_PLATFORM), SetAlignment(AlignmentH::End),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				NWidget(WWT_TEXT, Colours::Invalid), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE), SetTextStyle(GAME_OPTIONS_LABEL),
-				NWidget(WWT_TEXT, Colours::Invalid, WID_GO_SOCIAL_PLUGIN_STATE), SetAlignment(SA_RIGHT),
+				NWidget(WWT_TEXT, Colours::Invalid, WID_GO_SOCIAL_PLUGIN_STATE), SetAlignment(AlignmentH::End),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -926,7 +926,7 @@ struct GameOptionsWindow : Window {
 		if (this->warn_missing != WHR_NONE) {
 			DrawStringMultiLineWithClipping(panel.WithHeight(this->warn_lines * GetCharacterHeight(FontSize::Normal)),
 				GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]),
-				TextColour::Black, SA_CENTER);
+				TextColour::Black, {AlignmentH::Centre, AlignmentV::Middle});
 		}
 	}
 
@@ -1888,8 +1888,8 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 
 	DrawFrameRect(lr, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
 	DrawFrameRect(rr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
-	DrawSpriteIgnorePadding(SPR_ARROW_LEFT,  PAL_NONE, lr, SA_CENTER);
-	DrawSpriteIgnorePadding(SPR_ARROW_RIGHT, PAL_NONE, rr, SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_LEFT,  PAL_NONE, lr, {AlignmentH::Centre, AlignmentV::Middle});
+	DrawSpriteIgnorePadding(SPR_ARROW_RIGHT, PAL_NONE, rr, {AlignmentH::Centre, AlignmentV::Middle});
 
 	/* Grey out the buttons that aren't clickable */
 	bool rtl = _current_text_dir == TD_RTL;
@@ -1920,8 +1920,8 @@ void DrawUpDownButtons(int x, int y, Colours button_colour, uint8_t state, bool 
 
 	DrawFrameRect(ur, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
 	DrawFrameRect(dr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
-	DrawSpriteIgnorePadding(SPR_ARROW_UP, PAL_NONE, ur, SA_CENTER);
-	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, dr, SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_UP, PAL_NONE, ur, {AlignmentH::Centre, AlignmentV::Middle});
+	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, dr, {AlignmentH::Centre, AlignmentV::Middle});
 
 	/* Grey out the buttons that aren't clickable */
 	if (!clickable_up) GfxFillRect(ur.Shrink(WidgetDimensions::scaled.bevel), colour, FillRectMode::Checker);
@@ -1943,7 +1943,7 @@ void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool cl
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 
 	DrawFrameRect(r, button_colour, state ? FrameFlag::Lowered : FrameFlags{});
-	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, r, SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, r, {AlignmentH::Centre, AlignmentV::Middle});
 
 	if (!clickable) {
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), colour, FillRectMode::Checker);

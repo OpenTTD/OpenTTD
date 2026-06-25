@@ -112,7 +112,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_normal_news_widgets 
 						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
 						NWidget(WWT_LABEL, Colours::Invalid, WID_N_DATE),
 								SetTextStyle(TextColour::Black, FontSize::Small),
-								SetAlignment(SA_RIGHT | SA_TOP),
+								SetAlignment({AlignmentH::End, AlignmentV::Top}),
 					EndContainer(),
 				EndContainer(),
 				/* Layer 2 */
@@ -240,7 +240,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_thin_news_widgets = 
 						NWidget(WWT_CLOSEBOX, Colours::White, WID_N_CLOSEBOX),
 						NWidget(WWT_LABEL, Colours::Invalid, WID_N_DATE),
 								SetTextStyle(TextColour::Black, FontSize::Small),
-								SetAlignment(SA_RIGHT | SA_TOP),
+								SetAlignment({AlignmentH::End, AlignmentV::Top}),
 					EndContainer(),
 				EndContainer(),
 				/* Layer 2 */
@@ -513,7 +513,7 @@ struct NewsWindow : Window {
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
-				DrawCaption(r, Colours::LightBlue, this->owner, TextColour::FromString, GetString(STR_NEWS_MESSAGE_CAPTION), SA_CENTER, FontSize::Normal);
+				DrawCaption(r, Colours::LightBlue, this->owner, TextColour::FromString, GetString(STR_NEWS_MESSAGE_CAPTION), {AlignmentH::Centre, AlignmentV::Middle}, FontSize::Normal);
 				break;
 
 			case WID_N_PANEL:
@@ -523,7 +523,7 @@ struct NewsWindow : Window {
 			case WID_N_MESSAGE:
 			case WID_N_COMPANY_MSG: {
 				const NWidgetLeaf &nwid = *this->GetWidget<NWidgetLeaf>(widget);
-				DrawStringMultiLine(r, this->ni->headline.GetDecodedString(), nwid.GetTextColour(), SA_CENTER, false, nwid.GetFontSize());
+				DrawStringMultiLine(r, this->ni->headline.GetDecodedString(), nwid.GetTextColour(), {AlignmentH::Centre, AlignmentV::Middle}, false, nwid.GetFontSize());
 				break;
 			}
 
@@ -535,7 +535,7 @@ struct NewsWindow : Window {
 			}
 			case WID_N_MGR_NAME: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
-				DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, cni->president_name), TextColour::FromString, SA_CENTER);
+				DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, cni->president_name), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 				break;
 			}
 
@@ -545,7 +545,7 @@ struct NewsWindow : Window {
 
 			case WID_N_VEH_NAME:
 			case WID_N_VEH_TITLE:
-				DrawStringMultiLine(r, this->GetNewVehicleMessageString(widget), TextColour::FromString, SA_CENTER);
+				DrawStringMultiLine(r, this->GetNewVehicleMessageString(widget), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 				break;
 
 			case WID_N_VEH_SPR: {
@@ -558,7 +558,7 @@ struct NewsWindow : Window {
 			case WID_N_VEH_INFO: {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
-				DrawStringMultiLine(r, GetEngineInfoString(engine), TextColour::Black, SA_CENTER);
+				DrawStringMultiLine(r, GetEngineInfoString(engine), TextColour::Black, {AlignmentH::Centre, AlignmentV::Middle});
 				break;
 			}
 		}

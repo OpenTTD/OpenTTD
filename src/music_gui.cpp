@@ -757,9 +757,9 @@ struct MusicWindow : public Window {
 				}
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				if (_music.IsPlaying()) {
-					DrawString(ir, GetString(STR_MUSIC_TRACK_DIGIT, _music.GetCurrentSong().tracknr, 2), TextColour::FromString, SA_HOR_CENTER);
+					DrawString(ir, GetString(STR_MUSIC_TRACK_DIGIT, _music.GetCurrentSong().tracknr, 2), TextColour::FromString, AlignmentH::Centre);
 				} else {
-					DrawString(ir, STR_MUSIC_TRACK_NONE, TextColour::FromString, SA_HOR_CENTER);
+					DrawString(ir, STR_MUSIC_TRACK_NONE, TextColour::FromString, AlignmentH::Centre);
 				}
 				break;
 			}
@@ -770,11 +770,11 @@ struct MusicWindow : public Window {
 
 				MusicSystem::PlaylistEntry entry(_music.GetCurrentSong());
 				if (BaseMusic::GetUsedSet()->num_available == 0) {
-					DrawString(ir, STR_MUSIC_TITLE_NOMUSIC, TextColour::FromString, SA_HOR_CENTER);
+					DrawString(ir, STR_MUSIC_TITLE_NOMUSIC, TextColour::FromString, AlignmentH::Centre);
 				} else if (_music.IsPlaying()) {
-					DrawString(ir, GetString(STR_MUSIC_TITLE_NAME, entry.songname), TextColour::FromString, SA_HOR_CENTER);
+					DrawString(ir, GetString(STR_MUSIC_TITLE_NAME, entry.songname), TextColour::FromString, AlignmentH::Centre);
 				} else {
-					DrawString(ir, STR_MUSIC_TITLE_NONE, TextColour::FromString, SA_HOR_CENTER);
+					DrawString(ir, STR_MUSIC_TITLE_NONE, TextColour::FromString, AlignmentH::Centre);
 				}
 
 				break;

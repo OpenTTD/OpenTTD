@@ -704,7 +704,7 @@ public:
 
 		/* Title */
 		y_offset = DrawStringMultiLine(0, fr.right, y_offset, fr.bottom,
-			GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), TextColour::Black, SA_TOP | SA_HOR_CENTER);
+			GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), TextColour::Black, {AlignmentH::Centre, AlignmentV::Top});
 
 		/* Page elements */
 		this->EnsureStoryPageElementLayout();
@@ -717,7 +717,7 @@ public:
 			switch (ce.pe->type) {
 				case StoryPageElementType::Text:
 					DrawStringMultiLineWithClipping(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos,
-						ce.pe->text.GetDecodedString(), TextColour::Black, SA_TOP | SA_LEFT);
+						ce.pe->text.GetDecodedString(), TextColour::Black, {AlignmentH::Start, AlignmentV::Top});
 					break;
 
 				case StoryPageElementType::Goal: {
@@ -742,7 +742,7 @@ public:
 					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);
 
 					DrawString(ce.bounds.left + WidgetDimensions::scaled.bevel.left, ce.bounds.right - WidgetDimensions::scaled.bevel.right, ce.bounds.top + tmargin - scrollpos,
-						ce.pe->text.GetDecodedString(), TextColour::White, SA_CENTER);
+						ce.pe->text.GetDecodedString(), TextColour::White, {AlignmentH::Centre, AlignmentV::Middle});
 					break;
 				}
 

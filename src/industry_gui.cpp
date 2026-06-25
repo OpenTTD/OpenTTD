@@ -537,7 +537,7 @@ public:
 					DrawString(tr, indsp->name, selected ? TextColour::White : TextColour::Orange);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
-					DrawString(tr, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TextColour::Black, SA_RIGHT, false, FontSize::Small);
+					DrawString(tr, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TextColour::Black, AlignmentH::End, false, FontSize::Small);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
@@ -2152,7 +2152,7 @@ struct CargoesField {
 
 			case CargoesFieldType::Header:
 				ypos += (small_height - GetCharacterHeight(FontSize::Normal)) / 2;
-				DrawString(xpos, xpos + industry_width, ypos, this->u.header, TextColour::White, SA_HOR_CENTER);
+				DrawString(xpos, xpos + industry_width, ypos, this->u.header, TextColour::White, AlignmentH::Centre);
 				break;
 
 			case CargoesFieldType::Industry: {
@@ -2163,7 +2163,7 @@ struct CargoesField {
 				ypos += (normal_height - GetCharacterHeight(FontSize::Normal)) / 2;
 				if (this->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 					const IndustrySpec *indsp = GetIndustrySpec(this->u.industry.ind_type);
-					DrawString(xpos, xpos2, ypos, indsp->name, TextColour::White, SA_HOR_CENTER);
+					DrawString(xpos, xpos2, ypos, indsp->name, TextColour::White, AlignmentH::Centre);
 
 					/* Draw the industry legend. */
 					int blob_left, blob_right;
@@ -2177,7 +2177,7 @@ struct CargoesField {
 					GfxFillRect(blob_left,     ypos2 - blob_distance - CargoesField::legend.height,     blob_right,     ypos2 - blob_distance,     PC_BLACK); // Border
 					GfxFillRect(blob_left + 1, ypos2 - blob_distance - CargoesField::legend.height + 1, blob_right - 1, ypos2 - blob_distance - 1, indsp->map_colour);
 				} else {
-					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TextColour::FromString, SA_HOR_CENTER);
+					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TextColour::FromString, AlignmentH::Centre);
 				}
 
 				/* Draw the other_produced/other_accepted cargoes. */
@@ -2268,7 +2268,7 @@ struct CargoesField {
 					if (IsValidCargoType(this->u.cargo_label.cargoes[i])) {
 						const CargoSpec *csp = CargoSpec::Get(this->u.cargo_label.cargoes[i]);
 						DrawString(xpos + WidgetDimensions::scaled.framerect.left, xpos + industry_width - 1 - WidgetDimensions::scaled.framerect.right, ypos, csp->name, TextColour::White,
-								(this->u.cargo_label.left_align) ? SA_LEFT : SA_RIGHT);
+								(this->u.cargo_label.left_align) ? AlignmentH::Start : AlignmentH::End);
 					}
 					ypos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
 				}

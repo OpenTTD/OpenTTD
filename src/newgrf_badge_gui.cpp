@@ -184,7 +184,7 @@ void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &gui_classe
 			PalSpriteID ps = GetBadgeSprite(badge, feature, introduction_date, remap);
 			if (ps.sprite == 0) continue;
 
-			DrawSpriteIgnorePadding(ps.sprite, ps.pal, r.WithWidth(width, rtl), SA_CENTER);
+			DrawSpriteIgnorePadding(ps.sprite, ps.pal, r.WithWidth(width, rtl), {AlignmentH::Centre, AlignmentV::Middle});
 			break;
 		}
 
