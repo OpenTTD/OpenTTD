@@ -1131,7 +1131,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerNewGame(Packet &)
 		/* To throttle the reconnects a bit, every clients waits its
 		 * Client ID modulo 16 + 1 (value 0 means no reconnect).
 		 * This way reconnects should be spread out a bit. */
-		_network_reconnect = _network_own_client_id % 16 + 1;
+		_network_reconnect = to_underlying(_network_own_client_id) % 16 + 1;
 		ShowErrorMessage(GetEncodedString(STR_NETWORK_MESSAGE_SERVER_REBOOT), {}, WarningLevel::Critical);
 	}
 
@@ -1161,12 +1161,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMove(Packet &p)
 	if (this->status < ServerStatus::Authorized) return NetworkRecvStatus::MalformedPacket;
 
 	/* Nothing more in this packet... */
-	ClientID client_id   = (ClientID)p.Recv_uint32();
-	CompanyID company_id = (CompanyID)p.Recv_uint8();
+	ClientID client_id{p.Recv_uint32()};
+	CompanyID company_id{p.Recv_uint8()};
 
 	Debug(net, 9, "Client::ReceiveServerMove(): client_id={}, company_id={}", client_id, company_id);
 
-	if (client_id == 0) {
+	if (client_id == ClientID::Invalid) {
 		/* definitely an invalid client id, debug message and do nothing. */
 		Debug(net, 1, "Received invalid client index = 0");
 		return NetworkRecvStatus::MalformedPacket;
@@ -1351,7 +1351,7 @@ void NetworkUpdateClientName(const std::string &client_name)
 		if (NetworkMakeClientNameUnique(temporary_name)) {
 			NetworkTextMessage(NetworkAction::ClientNameChange, CC_DEFAULT, false, ci->client_name, temporary_name);
 			ci->client_name = std::move(temporary_name);
-			NetworkUpdateClientInfo(CLIENT_ID_SERVER);
+			NetworkUpdateClientInfo(ClientID::Server);
 			InvalidateWindowData(WindowClass::NetworkClientList, 0);
 		}
 	}

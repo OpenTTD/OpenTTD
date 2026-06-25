@@ -82,7 +82,7 @@
 
 	EnforcePreconditionCustomError(VEHICLE_INVALID, !ScriptGameSettings::IsDisabledVehicleType((ScriptVehicle::VehicleType)type), ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
 
-	if (!ScriptObject::Command<Commands::BuildVehicle>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, engine_id, true, cargo, INVALID_CLIENT_ID)) return VEHICLE_INVALID;
+	if (!ScriptObject::Command<Commands::BuildVehicle>::Do(&ScriptInstance::DoCommandReturnVehicleID, depot, engine_id, true, cargo, ClientID::Invalid)) return VEHICLE_INVALID;
 
 	/* In case of test-mode, we return VehicleID 0 */
 	return VehicleID::Begin();
@@ -104,7 +104,7 @@
 	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	auto [res, veh_id, refit_capacity, refit_mail, cargo_capacities] = ::Command<Commands::BuildVehicle>::Do(DoCommandFlag::QueryCost, depot, engine_id, true, cargo, INVALID_CLIENT_ID);
+	auto [res, veh_id, refit_capacity, refit_mail, cargo_capacities] = ::Command<Commands::BuildVehicle>::Do(DoCommandFlag::QueryCost, depot, engine_id, true, cargo, ClientID::Invalid);
 	return res.Succeeded() ? refit_capacity : -1;
 }
 
@@ -172,7 +172,7 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return ScriptObject::Command<Commands::SellVehicle>::Do(vehicle_id, v->type == ::VehicleType::Train, false, INVALID_CLIENT_ID);
+	return ScriptObject::Command<Commands::SellVehicle>::Do(vehicle_id, v->type == ::VehicleType::Train, false, ClientID::Invalid);
 }
 
 /* static */ bool ScriptVehicle::_SellWagonInternal(VehicleID vehicle_id, SQInteger wagon, bool sell_attached_wagons)
@@ -184,7 +184,7 @@
 	const Train *v = ::Train::Get(vehicle_id);
 	while (wagon-- > 0) v = v->GetNextUnit();
 
-	return ScriptObject::Command<Commands::SellVehicle>::Do(v->index, sell_attached_wagons, false, INVALID_CLIENT_ID);
+	return ScriptObject::Command<Commands::SellVehicle>::Do(v->index, sell_attached_wagons, false, ClientID::Invalid);
 }
 
 /* static */ bool ScriptVehicle::SellWagon(VehicleID vehicle_id, SQInteger wagon)

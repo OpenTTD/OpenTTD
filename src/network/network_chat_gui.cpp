@@ -261,7 +261,7 @@ static void SendChat(std::string_view buf, NetworkChatDestinationType type, int 
 	if (!_network_server) {
 		MyClient::SendChat(action, type, dest, buf, 0);
 	} else {
-		NetworkServerSendChat(action, type, dest, buf, CLIENT_ID_SERVER);
+		NetworkServerSendChat(action, type, dest, buf, ClientID::Server);
 	}
 }
 

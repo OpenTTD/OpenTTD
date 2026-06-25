@@ -604,7 +604,7 @@ static CallBackFunction MenuClickCompany(int index)
 
 			case CTMN_SPECTATE:
 				if (_network_server) {
-					NetworkServerDoMove(CLIENT_ID_SERVER, COMPANY_SPECTATOR);
+					NetworkServerDoMove(ClientID::Server, COMPANY_SPECTATOR);
 					MarkWholeScreenDirty();
 				} else {
 					NetworkClientRequestMove(COMPANY_SPECTATOR);

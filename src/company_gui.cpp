@@ -2244,7 +2244,7 @@ struct CompanyWindow : Window
 				this->query_widget = WID_C_COMPANY_JOIN;
 				CompanyID company = this->window_number;
 				if (_network_server) {
-					NetworkServerDoMove(CLIENT_ID_SERVER, company);
+					NetworkServerDoMove(ClientID::Server, company);
 					MarkWholeScreenDirty();
 				} else {
 					/* just send the join command */

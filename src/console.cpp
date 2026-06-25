@@ -40,7 +40,7 @@ std::optional<FileHandle> _iconsole_output_file;
 void IConsoleInit()
 {
 	_iconsole_output_file = std::nullopt;
-	_redirect_console_to_client = INVALID_CLIENT_ID;
+	_redirect_console_to_client = ClientID::Invalid;
 	_redirect_console_to_admin  = AdminID::Invalid();
 
 	IConsoleGUIInit();
@@ -91,7 +91,7 @@ void IConsolePrint(ExtendedTextColour colour_code, const std::string &string)
 {
 	assert(IsValidConsoleColour(colour_code));
 
-	if (_redirect_console_to_client != INVALID_CLIENT_ID) {
+	if (_redirect_console_to_client != ClientID::Invalid) {
 		/* Redirect the string to the client */
 		NetworkServerSendRcon(_redirect_console_to_client, colour_code, string);
 		return;

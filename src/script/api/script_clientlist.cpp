@@ -19,7 +19,7 @@ ScriptClientList::ScriptClientList()
 {
 	if (!_networking) return;
 	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-		this->AddItem(ci->client_id);
+		this->AddItem(to_underlying(ci->client_id));
 	}
 }
 
@@ -36,6 +36,6 @@ ScriptClientList_Company::ScriptClientList_Company(ScriptCompany::CompanyID comp
 	}
 
 	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-		if (ci->client_playas == c) this->AddItem(ci->client_id);
+		if (ci->client_playas == c) this->AddItem(to_underlying(ci->client_id));
 	}
 }

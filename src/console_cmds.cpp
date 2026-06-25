@@ -698,7 +698,7 @@ static bool ConKickOrBan(std::string_view arg, bool ban, std::string_view reason
 		 * kicking frees closes and subsequently free the connection related instances, which we
 		 * would be reading from and writing to after returning. So we would read or write data
 		 * from freed memory up till the segfault triggers. */
-		if (*client_id == CLIENT_ID_SERVER || *client_id == _redirect_console_to_client) {
+		if (*client_id == ClientID::Server || *client_id == _redirect_console_to_client) {
 			IConsolePrint(CC_ERROR, "You can not {} yourself!", ban ? "ban" : "kick");
 			return true;
 		}
@@ -945,7 +945,7 @@ static bool ConClientNickChange(std::span<std::string_view> argv)
 		return true;
 	}
 
-	if (*client_id == CLIENT_ID_SERVER) {
+	if (*client_id == ClientID::Server) {
 		IConsolePrint(CC_ERROR, "Please use the command 'name' to change your own name!");
 		return true;
 	}
@@ -1024,7 +1024,7 @@ static bool ConJoinCompany(std::span<std::string_view> argv)
 
 	/* non-dedicated server may just do the move! */
 	if (_network_server) {
-		NetworkServerDoMove(CLIENT_ID_SERVER, *company_id);
+		NetworkServerDoMove(ClientID::Server, *company_id);
 	} else {
 		NetworkClientRequestMove(*company_id);
 	}
@@ -1070,7 +1070,7 @@ static bool ConMoveClient(std::span<std::string_view> argv)
 		return true;
 	}
 
-	if (ci->client_id == CLIENT_ID_SERVER && _network_dedicated) {
+	if (ci->client_id == ClientID::Server && _network_dedicated) {
 		IConsolePrint(CC_ERROR, "You cannot move the server!");
 		return true;
 	}
@@ -1118,7 +1118,7 @@ static bool ConResetCompany(std::span<std::string_view> argv)
 		IConsolePrint(CC_ERROR, "Cannot remove company: a client is connected to that company.");
 		return false;
 	}
-	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
+	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(ClientID::Server);
 	assert(ci != nullptr);
 	if (ci->client_playas == *index) {
 		IConsolePrint(CC_ERROR, "Cannot remove company: the server is connected to that company.");
@@ -1126,7 +1126,7 @@ static bool ConResetCompany(std::span<std::string_view> argv)
 	}
 
 	/* It is safe to remove this company */
-	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *index, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *index, CompanyRemoveReason::Manual, ClientID::Invalid);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;
@@ -1563,7 +1563,7 @@ static bool ConStartAI(std::span<std::string_view> argv)
 	}
 
 	/* Start a new AI company */
-	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, CompanyID::Invalid(), CompanyRemoveReason::None, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, CompanyID::Invalid(), CompanyRemoveReason::None, ClientID::Invalid);
 
 	return true;
 }
@@ -1605,8 +1605,8 @@ static bool ConReloadAI(std::span<std::string_view> argv)
 	}
 
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
-	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
-	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, *company_id, CompanyRemoveReason::None, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *company_id, CompanyRemoveReason::Manual, ClientID::Invalid);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::NewAI, *company_id, CompanyRemoveReason::None, ClientID::Invalid);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
 	return true;
@@ -1649,7 +1649,7 @@ static bool ConStopAI(std::span<std::string_view> argv)
 	}
 
 	/* Now kill the company of the AI. */
-	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *company_id, CompanyRemoveReason::Manual, INVALID_CLIENT_ID);
+	Command<Commands::CompanyControl>::Post(CompanyCtrlAction::Delete, *company_id, CompanyRemoveReason::Manual, ClientID::Invalid);
 	IConsolePrint(CC_DEFAULT, "AI stopped, company deleted.");
 
 	return true;
@@ -2050,7 +2050,7 @@ static bool ConSay(std::span<std::string_view> argv)
 		NetworkClientSendChat(NetworkAction::ChatBroadcast, NetworkChatDestinationType::Broadcast, 0 /* param does not matter */, argv[1]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NetworkAction::ChatBroadcast, NetworkChatDestinationType::Broadcast, 0, argv[1], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatBroadcast, NetworkChatDestinationType::Broadcast, 0, argv[1], ClientID::Server, from_admin);
 	}
 
 	return true;
@@ -2082,7 +2082,7 @@ static bool ConSayCompany(std::span<std::string_view> argv)
 		NetworkClientSendChat(NetworkAction::ChatTeam, NetworkChatDestinationType::Team, company_id->base(), argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NetworkAction::ChatTeam, NetworkChatDestinationType::Team, company_id->base(), argv[2], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatTeam, NetworkChatDestinationType::Team, company_id->base(), argv[2], ClientID::Server, from_admin);
 	}
 
 	return true;
@@ -2106,10 +2106,10 @@ static bool ConSayClient(std::span<std::string_view> argv)
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, *client_id, argv[2]);
+		NetworkClientSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, to_underlying(*client_id), argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, *client_id, argv[2], CLIENT_ID_SERVER, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, to_underlying(*client_id), argv[2], ClientID::Server, from_admin);
 	}
 
 	return true;

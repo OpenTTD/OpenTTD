@@ -240,7 +240,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientJoin);
 
-	p->Send_uint32(client_id);
+	p->Send_uint32(to_underlying(client_id));
 	this->SendPacket(std::move(p));
 
 	return NetworkRecvStatus::Okay;
@@ -259,7 +259,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkC
 
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientInfo);
 
-	p->Send_uint32(ci->client_id);
+	p->Send_uint32(to_underlying(ci->client_id));
 	p->Send_string(cs == nullptr ? "" : const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (0); // Used to be language
@@ -281,7 +281,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientUpdate(const Networ
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientUpdate);
 
-	p->Send_uint32(ci->client_id);
+	p->Send_uint32(to_underlying(ci->client_id));
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (ci->client_playas);
 
@@ -299,7 +299,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientQuit(ClientID clien
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientQuit);
 
-	p->Send_uint32(client_id);
+	p->Send_uint32(to_underlying(client_id));
 	this->SendPacket(std::move(p));
 
 	return NetworkRecvStatus::Okay;
@@ -315,7 +315,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientError(ClientID clie
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientError);
 
-	p->Send_uint32(client_id);
+	p->Send_uint32(to_underlying(client_id));
 	p->Send_uint8(to_underlying(error));
 	this->SendPacket(std::move(p));
 
@@ -473,7 +473,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
 
 	p->Send_uint8(to_underlying(action));
 	p->Send_uint8(to_underlying(desttype));
-	p->Send_uint32(client_id);
+	p->Send_uint32(to_underlying(client_id));
 	p->Send_string(msg);
 	p->Send_uint64(data);
 
@@ -646,7 +646,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID clien
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerCommandLogging);
 
-	p->Send_uint32(client_id);
+	p->Send_uint32(to_underlying(client_id));
 	p->Send_uint8 (cp.company);
 	p->Send_uint16(to_underlying(cp.cmd));
 	p->Send_buffer(cp.data);
@@ -732,15 +732,16 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::ReceiveAdminPoll(Packet &p)
 		case AdminUpdateType::ClientInfo:
 			/* The admin is requesting client info. */
 			if (d1 == UINT32_MAX) {
-				this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
+				this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(ClientID::Server));
 				for (const NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 					this->SendClientInfo(cs, cs->GetInfo());
 				}
 			} else {
-				if (d1 == CLIENT_ID_SERVER) {
-					this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
+				ClientID client{d1};
+				if (client == ClientID::Server) {
+					this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(ClientID::Server));
 				} else {
-					const NetworkClientSocket *cs = NetworkClientSocket::GetByClientID((ClientID)d1);
+					const NetworkClientSocket *cs = NetworkClientSocket::GetByClientID(client);
 					if (cs != nullptr) this->SendClientInfo(cs, cs->GetInfo());
 				}
 			}
