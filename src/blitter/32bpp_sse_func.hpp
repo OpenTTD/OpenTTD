@@ -231,7 +231,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
 	const Colour *src_rgba_line = (const Colour *) ((const uint8_t *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
 
-	if (read_mode != RM_WITH_MARGIN) {
+	if (read_mode != ReadMode::WithMargin) {
 		src_rgba_line += bp->skip_left;
 		src_mv_line += bp->skip_left;
 	}
@@ -261,8 +261,8 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		const Colour *src = src_rgba_line + META_LENGTH;
 		if (mode == BlitterMode::ColourRemap || mode == BlitterMode::CrashRemap) src_mv = src_mv_line;
 
-		if (read_mode == RM_WITH_MARGIN) {
-			assert(bt_last == BT_NONE); // or you must ensure block type is preserved
+		if (read_mode == ReadMode::WithMargin) {
+			assert(bt_last == BlockType::None); // or you must ensure block type is preserved
 			src += src_rgba_line[0].data;
 			dst += src_rgba_line[0].data;
 			if (mode == BlitterMode::ColourRemap || mode == BlitterMode::CrashRemap) src_mv += src_rgba_line[0].data;
@@ -293,7 +293,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					dst += 2;
 				}
 
-				if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
+				if ((bt_last == BlockType::None && effective_width & 1) || bt_last == BlockType::Odd) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 					dst->data = _mm_cvtsi128_si32(AlphaBlendTwoPixels(srcABCD, dstABCD, ALPHA_BLEND_PARAM_1, ALPHA_BLEND_PARAM_2, ALPHA_BLEND_PARAM_3));
@@ -347,7 +347,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					src_mv += 2;
 				}
 
-				if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
+				if ((bt_last == BlockType::None && effective_width & 1) || bt_last == BlockType::Odd) {
 #else
 				for (uint x = (uint) effective_width; x > 0; x--) {
 #endif
@@ -392,7 +392,7 @@ bmcr_alpha_blend_single:
 					dst += 2;
 				}
 
-				if ((bt_last == BT_NONE && bp->width & 1) || bt_last == BT_ODD) {
+				if ((bt_last == BlockType::None && bp->width & 1) || bt_last == BlockType::Odd) {
 					__m128i srcABCD = _mm_cvtsi32_si128(src->data);
 					__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 					dst->data = _mm_cvtsi128_si32(DarkenTwoPixels(srcABCD, dstABCD, DARKEN_PARAM_1, DARKEN_PARAM_2));
@@ -468,14 +468,14 @@ void Blitter_32bppSSE4::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 bm_normal:
 				const BlockType bt_last = (BlockType) (bp->width & 1);
 				switch (bt_last) {
-					default:     Draw<BlitterMode::Normal, RM_WITH_SKIP, BT_EVEN, true>(bp, zoom); return;
-					case BT_ODD: Draw<BlitterMode::Normal, RM_WITH_SKIP, BT_ODD, true>(bp, zoom); return;
+					default: Draw<BlitterMode::Normal, ReadMode::WithSkip, BlockType::Even, true>(bp, zoom); return;
+					case BlockType::Odd: Draw<BlitterMode::Normal, ReadMode::WithSkip, BlockType::Odd, true>(bp, zoom); return;
 				}
 			} else {
 				if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags.Test(SpriteFlag::Translucent)) {
-					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, true>(bp, zoom);
+					Draw<BlitterMode::Normal, ReadMode::WithMargin, BlockType::None, true>(bp, zoom);
 				} else {
-					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, false>(bp, zoom);
+					Draw<BlitterMode::Normal, ReadMode::WithMargin, BlockType::None, false>(bp, zoom);
 				}
 				return;
 			}
@@ -484,14 +484,14 @@ bm_normal:
 		case BlitterMode::ColourRemap:
 			if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags.Test(SpriteFlag::NoRemap)) goto bm_normal;
 			if (bp->skip_left != 0 || bp->width <= MARGIN_REMAP_THRESHOLD) {
-				Draw<BlitterMode::ColourRemap, RM_WITH_SKIP, BT_NONE, true>(bp, zoom); return;
+				Draw<BlitterMode::ColourRemap, ReadMode::WithSkip, BlockType::None, true>(bp, zoom); return;
 			} else {
-				Draw<BlitterMode::ColourRemap, RM_WITH_MARGIN, BT_NONE, true>(bp, zoom); return;
+				Draw<BlitterMode::ColourRemap, ReadMode::WithMargin, BlockType::None, true>(bp, zoom); return;
 			}
-		case BlitterMode::Transparent: Draw<BlitterMode::Transparent, RM_NONE, BT_NONE, true>(bp, zoom); return;
-		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap, RM_NONE, BT_NONE, true>(bp, zoom); return;
-		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap, RM_NONE, BT_NONE, true>(bp, zoom); return;
-		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap, RM_NONE, BT_NONE, true>(bp, zoom); return;
+		case BlitterMode::Transparent: Draw<BlitterMode::Transparent, ReadMode::None, BlockType::None, true>(bp, zoom); return;
+		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap, ReadMode::None, BlockType::None, true>(bp, zoom); return;
+		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap, ReadMode::None, BlockType::None, true>(bp, zoom); return;
+		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap, ReadMode::None, BlockType::None, true>(bp, zoom); return;
 	}
 }
 #endif /* FULL_ANIMATION */
