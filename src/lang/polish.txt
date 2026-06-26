@@ -904,7 +904,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Budowa lotnisk
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Kształtowanie krajobrazu
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Sadzenie drzew
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umieszczanie napisów
-STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Umieść obiekt
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Umieszczanie obiektów
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Dźwięk/muzyka
@@ -1733,8 +1733,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Wysokie
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może występować okresowo. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
 
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Pozwól pociągom obrócić się przy zawracaniu: {STRING}
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Wybierz kiedy pociągi mogą obrócić się, aby zmienić kierunek jazdy. Z ustawnieniem "Wszędzie", pociągi mogą obrócić się wszędzie. Z "Tylko koniec toru", pociągi nie obrócą się na stacjach, jeśli jest możliwa trasa na przód. Z "Nigdzie", pociągi nie będą mogły się obracać i cofać jeżeli będzie to potrzebne, lecz w zwolnionym tempie, gdy tylni pojazd nie ma kabiny maszynisty.
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Pozwól pociągom odwrócić się przy zawracaniu: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Wybierz, gdzie pociągi mogą się odwracać, aby zmienić kierunek jazdy. Z opcją „wszędzie” mogą odwracać się w dowolnym miejscu. Z opcją „tylko koniec toru” nie mogą odwracać się na stacjach, jeśli możliwa jest jazda do przodu. Z opcją „nigdzie” w ogóle nie mogą się odwracać, więc pojadą do tyłu ze zmniejszoną prędkością (jeśli tylny wagon nie posiada kabiny maszynisty)
 
 ###length 3
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Wszędzie
@@ -1742,7 +1742,7 @@ STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Tylko koniec to
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Nigdzie
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrofy, które mogą okazjonalnie zablokować lub zniszczyć pojazdy albo infrastrukturę
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Włącz katastrofy, które mogą sporadycznie blokować lub niszczyć pojazdy oraz infrastrukturę
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Nastawienie władz lokalnych: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wybierz, jak bardzo hałas i niszczenie środowiska przez firmy wpływają na ich ocenę w mieście i na dalsze działania związane z budową na jego obszarze
@@ -2185,8 +2185,8 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie p
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po otworzeniu okna pustej listy poleceń pojazdu automatycznie wybierz narzędzie „idź do”
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Domyślne typy torów kolejowych i tramwajowych i dróg (po utworzeniu nowej/wczytaniu gry): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Rodzaj dróg i torów wybierany przy rozpoczęciu lub załadowaniu gry. „Pierwszy dostępny” wybiera najstarszy rodzaj torów, „najnowszy” wybiera najnowszy rodzaj torów, a „najczęściej używany” wybiera ten, który jest używany najczęściej
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Domyślne typy torów kolejowych i tramwajowych oraz dróg (po wczytaniu gry lub utworzeniu nowej): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Rodzaj dróg i torów wybierany jako domyślny po rozpoczęciu lub wczytaniu gry. „Pierwszy dostępny” wybiera najstarszy rodzaj, „najnowszy” wybiera najnowszy rodzaj, a „najczęściej używany” wybiera ten, który jest używany najczęściej
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :Pierwszy dostępny
 STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Najnowszy
@@ -3445,9 +3445,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Wytwarza
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Kształtowanie krajobrazu
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Obniż narożnik terenu. Przeciągnij, aby obniżyć pierwszy zaznaczony narożnik oraz wyrównać zaznaczony obszar do nowej wysokości narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyższ narożnik terenu. Przeciągnij, aby podwyższyć pierwszy zaznaczony narożnik oraz wyrównać zaznaczony obszar do nowej wysokości narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren do wysokości pierwszego zaznaczonego rogu. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Obniż narożnik terenu. Zaznacz obszar do obniżenia, przeciągając od wskazanego narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyższ narożnik terenu. Zaznacz obszar do podwyższenia, przeciągając od wskazanego narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren do wysokości wskazanego narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup teren do przyszłego użycia. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 
 # Object construction window
@@ -3476,8 +3476,10 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Sadź du
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść skalisty teren.{}Użyj Ctrl, aby usunąć skały
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wyznacz obszar pustyni.{}Użyj Ctrl, aby usunąć obszar pustyni
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ powierzchnie do podwyższenia/obniżenia
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz powierzchnie do podwyższenia/obniżenia
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ rozmiar obniżanego/podwyższanego terenu
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz rozmiar obniżanego/podwyższanego terenu
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Obniż narożnik terenu lub obszar. Rozmiar 1x1 pozwala zaznaczać obszar do obniżenia, przeciągając od wskazanego narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Podwyższ narożnik terenu lub obszar. Rozmiar 1x1 pozwala zaznaczać obszar do podwyższenia, przeciągając od wskazanego narożnika. Przeciągnij z użyciem Ctrl, aby zaznaczyć obszar po przekątnej. Użyj Shift, aby tylko wyświetlić szacunkowy koszt
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Wygeneruj losowy teren
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Stwórz nowy scenariusz
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Resetuj krajobraz
@@ -4724,9 +4726,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Użyj Ctrl, aby wykonać te funkcje dla tego pojazdu i kolejnych
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - prawy klik na pojeździe pozwala uzyskać więcej informacji
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - prawy klik pozwala uzyskać informacje o statku
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy klik na samolocie pozwala uzyskać informacje
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - kliknij prawym na pojazd, aby wyświetlić informacje
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij prawym na statek, aby wyświetlić informacje
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - kliknij prawym na samolot, aby wyświetlić informacje
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pojazd kolejowy, aby go sprzedać
@@ -5852,7 +5854,7 @@ STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :nie wszystkie p
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Żadne pojazdy nie będą dostępne
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :Zmień konfigurację swoich NewGRF-ów
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Obecnie żaden pojazd nie jest dostępny
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Zacznij grę po {DATE_SHORT} albo użyj zestawu NewGRF, który zawiera wczesne pojazdy
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Rozpocznij nową grę po dacie {DATE_SHORT}, albo użyj zestawu NewGRF, który zawiera wcześniej dostępne pojazdy
 
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Żadne rodzaje dróg miejskich nie są dostępne
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Zmień konfigurację NewGRF
