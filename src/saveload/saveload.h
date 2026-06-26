@@ -28,283 +28,282 @@
  * Note that this list must not be reordered.
  */
 enum class SaveLoadVersion : uint16_t {
-	MinVersion, ///< First savegame version
+	MinVersion, ///< First savegame version.
 
-	BigCurrency, ///< 1.0 0.1.x, 0.2.x Change currency from 32 to 64 bits
-	VehicleCurrencyStationChanges, /**< 2.0 0.3.0 Adding vehicle state, larger currency size for statistics, station size revamped.
-	 * 2.1 0.3.1, 0.3.2 Unify way of storing town owner
-	 * 2.2 lost New airports */
-	BiggerStationVariables, ///< 3.x lost Increase size of airport blocks/station build date
-	TownTolerancePauseMode, /**< 4.0 1 Town council tolerance and pause mode
-	 * 4.1 122 0.3.3, 0.3.4 Store exclusive rights in towns
-	 * 4.2 1222 0.3.5 Currencies are reordered
-	 * 4.3 1417 Make water owned by OWNER_NONE
-	 * 4.4 1426 Make vehicle references same as other references */
+	BigCurrency, ///< Saveload version: 1.0, releases: 0.1.x, 0.2.x\n Change currency from 32 to 64 bits.
+	VehicleCurrencyStationChanges, ///< Saveload version: 2.0, release: 0.3.0\n Adding vehicle state, larger currency size for statistics, station size revamped.
+	///< <p>Saveload version: 2.1, releases: 0.3.1, 0.3.2\n Unify way of storing town owner.
+	///< <p>Saveload version: 2.2\n New airports.
+	BiggerStationVariables, ///< Saveload version: 3.0\n Increase size of airport blocks/station build date.
+	TownTolerancePauseMode, ///< Saveload version: 4.0, SVN revision: 1\n Town council tolerance and pause mode.
+	///< <p>Saveload version: 4.1, SVN revision: 122, releases: 0.3.3, 0.3.4\n Store exclusive rights in towns.
+	///< <p>Saveload version: 4.2, SVN revision: 1222, release: 0.3.5\n Currencies are reordered.
+	///< <p>Saveload version: 4.3, SVN revision: 1417\n Make water owned by OWNER_NONE.
+	///< <p>Saveload version: 4.4, SVN revision: 1426\n Make vehicle references same as other references.
 
-	BigMap, /**< 5.0 1429 Making maps a different size than 256x256
-	 * 5.1 1440 Flexible airport layouts
-	 * 5.2 1525 0.3.6 Dynamic order array */
-	MultipleRoadStops, /**< 6.0 1721 Multi tile road stops, and some map size related fixes
-	 * 6.1 1768 Town index in m2 */
-	LargerCargoSource, ///< 7.0 1770 With more stations, the size of the cargo source needed to be increased
-	LargerUnitNumber, ///< 8.0 1786 Increase size of (vehicle) unit numbers
-	LargerTownCargoStatistics, ///< 9.0 1909 Increase size of passenger/mail production of this and previous months
+	BigMap, ///< Saveload version: 5.0, SVN revision: 1429\n Making maps a different size than 256x256.
+	///< <p>Saveload version: 5.1, SVN revision: 1440\n Flexible airport layouts.
+	///< <p>Saveload version: 5.2, SVN revision: 1525, release: 0.3.6\n Dynamic order array.
+	MultipleRoadStops, ///< Saveload version: 6.0, SVN revision: 1721\n Multi tile road stops, and some map size related fixes.
+	///< <p>Saveload version: 6.1, SVN revision: 1768\n Town index in m2.
+	LargerCargoSource, ///< Saveload version: 7.0, SVN revision: 1770\n With more stations, the size of the cargo source needed to be increased.
+	LargerUnitNumber, ///< Saveload version: 8.0, SVN revision: 1786\n Increase size of (vehicle) unit numbers.
+	LargerTownCargoStatistics, ///< Saveload version: 9.0, SVN revision: 1909\n Increase size of passenger/mail production of this and previous months.
 
-	LargerTownCounter, ///< 10.0 2030 Increase size of the town counter
-	LargerTownIterator, /**< 11.0 2033 Increase size of the town iterator
-	 * 11.1 2041 Fix vehicle counters */
-	LinkWaypointToTown, ///< 12.1 2046 Link waypoints to towns and remove some bit stuffing
-	LargerAIStateCounter, ///< 13.1 2080 0.4.0, 0.4.0.1 AI state counter increased due it storing tile indices
-	TransferOrder, ///< 14.0 2441 Transfer orders for feeder systems
+	LargerTownCounter, ///< Saveload version: 10.0, SVN revision: 2030\n Increase size of the town counter.
+	LargerTownIterator, ///< Saveload version: 11.0, SVN revision: 2033\n Increase size of the town iterator.
+	///< <p>Saveload version: 11.1, SVN revision: 2041\n Fix vehicle counters.
+	LinkWaypointToTown, ///< Saveload version: 12.1, SVN revision: 2046\n Link waypoints to towns and remove some bit stuffing.
+	LargerAIStateCounter, ///< Saveload version: 13.1, SVN revision: 2080, releases: 0.4.0, 0.4.0.1\n AI state counter increased due it storing tile indices.
+	TransferOrder, ///< Saveload version: 14.0, SVN revision: 2441\n Transfer orders for feeder systems.
 
-	MoveSemaphoreBits, ///< 15.0 2499 Move rail signal bit for semaphores
-	EngineRenew, /**< 16.0 2817 Automatic replacing/renewing of vehicles
-	 * 16.1 3155 Keep vehicle length during autoreplace */
-	StoreWaypointIdInMap, /**< 17.0 3212 Store the ID of waypoints in m2 of the map
-	 * 17.1 3218 Make train subtype a bitmask */
-	RemoveMinorVersion, ///< 18 3227 Remove the minor versions from savegames
-	EngineRenewPool, ///< 19 3396 Engine renews are now stored in a pool
+	MoveSemaphoreBits, ///< Saveload version: 15.0, SVN revision: 2499\n Move rail signal bit for semaphores.
+	EngineRenew, ///< Saveload version: 16.0, SVN revision: 2817\n Automatic replacing/renewing of vehicles.
+	///< <p>Saveload version: 16.1, SVN revision: 3155\n Keep vehicle length during autoreplace.
+	StoreWaypointIdInMap, ///< Saveload version: 17.0, SVN revision: 3212\n Store the ID of waypoints in m2 of the map.
+	///< <p>Saveload version: 17.1, SVN revision: 3218\n Make train subtype a bitmask.
+	RemoveMinorVersion, ///< Saveload version: 18, SVN revision: 3227\n Remove the minor versions from savegames.
+	EngineRenewPool, ///< Saveload version: 19, SVN revision: 3396\n Engine renews are now stored in a pool.
 
-	NoMultiheadReference, ///< 20 3403 Remove reference from one multihead to the other one
-	RemoveOldPbs, ///< 21 3472 0.4.x Remove old implementation of path based signals
-	SavePatches, ///< 22 3726 Save state of patches (precursor of settings) in the savegame
-	RemoveAutosaveInterval, ///< 23 3915 Store autosave interval locally, instead of in savegame
-	Elrail, ///< 24 4150 Electrified railways
+	NoMultiheadReference, ///< Saveload version: 20, SVN revision: 3403\n Remove reference from one multihead to the other one.
+	RemoveOldPbs, ///< Saveload version: 21, SVN revision: 3472, release: 0.4.x\n Remove old implementation of path based signals.
+	SavePatches, ///< Saveload version: 22, SVN revision: 3726\n Save state of patches (precursor of settings) in the savegame.
+	RemoveAutosaveInterval, ///< Saveload version: 23, SVN revision: 3915\n Store autosave interval locally, instead of in savegame.
+	Elrail, ///< Saveload version: 24, SVN revision: 4150\n Electrified railways.
 
-	ImproveMultistop, ///< 25 4259 Improve the behaviour of RVs going to road stops
-	LastVehicleType, ///< 26 4466 Store the last vehicle type at stations instead of the vehicle ID
-	NewGRFStations, ///< 27 4757 NewGRF graphics for stations
-	Yapf, ///< 28 4987 Yet another path finder
-	MoreUnderBridges, ///< 29 5070 Support crossings, fields and bridge/tunnel heads under bridges
+	ImproveMultistop, ///< Saveload version: 25, SVN revision: 4259\n Improve the behaviour of RVs going to road stops.
+	LastVehicleType, ///< Saveload version: 26, SVN revision: 4466\n Store the last vehicle type at stations instead of the vehicle ID.
+	NewGRFStations, ///< Saveload version: 27, SVN revision: 4757\n NewGRF graphics for stations.
+	Yapf, ///< Saveload version: 28, SVN revision: 4987\n Yet another path finder.
+	MoreUnderBridges, ///< Saveload version: 29, SVN revision: 5070\n Support crossings, fields and bridge/tunnel heads under bridges.
 
-	Tgp, ///< 30 5946 TerraGenesis Perlin
-	BigDates, ///< 31 5999 Change date from 1920 - 2090 to 0 - 5 000 000
-	LinkFarmFieldToIndustry, ///< 32 6001 Link farm fields to the industry, so it gets removed when the industry goes away
-	SaveYapfSettings, ///< 33 6440 Some YAPF settings were not saved properly
-	Liveries, ///< 34 6455 Liveries and two company colours (2cc)
+	Tgp, ///< Saveload version: 30, SVN revision: 5946\n TerraGenesis Perlin.
+	BigDates, ///< Saveload version: 31, SVN revision: 5999\n Change date from 1920 - 2090 to 0 - 5 000 000.
+	LinkFarmFieldToIndustry, ///< Saveload version: 32, SVN revision: 6001\n Link farm fields to the industry, so it gets removed when the industry goes away.
+	SaveYapfSettings, ///< Saveload version: 33, SVN revision: 6440\n Some YAPF settings were not saved properly.
+	Liveries, ///< Saveload version: 34, SVN revision: 6455\n Liveries and two company colours (2cc).
 
-	LiveryRefit, ///< 35 6602 NewGRF livery refits
-	RefitOrders, ///< 36 6624 Vehicles can be refitted as part of an order
-	Utf8, ///< 37 7182 UTF-8 strings
-	DisableElrailSetting, ///< 38 7195 Add setting to disable electrified rails
-	FreightWeight, ///< 39 7269 Setting to increase the weight of cargo on freight trains
+	LiveryRefit, ///< Saveload version: 35, SVN revision: 6602\n NewGRF livery refits.
+	RefitOrders, ///< Saveload version: 36, SVN revision: 6624\n Vehicles can be refitted as part of an order.
+	Utf8, ///< Saveload version: 37, SVN revision: 7182\n UTF-8 strings.
+	DisableElrailSetting, ///< Saveload version: 38, SVN revision: 7195\n Add setting to disable electrified rails.
+	FreightWeight, ///< Saveload version: 39, SVN revision: 7269\n Setting to increase the weight of cargo on freight trains.
 
-	GradualLoading, ///< 40 7326 Gradual (un)loading of cargo
-	NewGRFSettings, ///< 41 7348 0.5.x Save what NewGRFs are used in the game and their settings
-	BridgeWormhole, ///< 42 7573 Bridges become wormholes, so more things can be built under them (e.g. signals)
-	UnifyAnimationState, ///< 43 7642 Put all animation state information in same map bits
-	CargoSourceTile, ///< 44 8144 Store the source tile of the cargo, so accurate payment can happen when the source station is removed
+	GradualLoading, ///< Saveload version: 40, SVN revision: 7326\n Gradual (un)loading of cargo.
+	NewGRFSettings, ///< Saveload version: 41, SVN revision: 7348, release: 0.5.x\n Save what NewGRFs are used in the game and their settings.
+	BridgeWormhole, ///< Saveload version: 42, SVN revision: 7573\n Bridges become wormholes, so more things can be built under them (e.g. signals).
+	UnifyAnimationState, ///< Saveload version: 43, SVN revision: 7642\n Put all animation state information in same map bits.
+	CargoSourceTile, ///< Saveload version: 44, SVN revision: 8144\n Store the source tile of the cargo, so accurate payment can happen when the source station is removed.
 
-	CountPaidForCargo, ///< 45 8501 Count the amount of cargo that was paid for
-	MoreAirportBlocks, ///< 46 8705 Increase number of blocks an airport can have
-	DriveThroughRoadStops, ///< 47 8735 Drive through road stops
-	RailTrackTypeUnification, ///< 48 8935 Put all the rail track type information in same map bits
-	SimplifyPlayerFace, ///< 49 8969 Simplify the storage of player face information
+	CountPaidForCargo, ///< Saveload version: 45, SVN revision: 8501\n Count the amount of cargo that was paid for.
+	MoreAirportBlocks, ///< Saveload version: 46, SVN revision: 8705\n Increase number of blocks an airport can have.
+	DriveThroughRoadStops, ///< Saveload version: 47, SVN revision: 8735\n Drive through road stops.
+	RailTrackTypeUnification, ///< Saveload version: 48, SVN revision: 8935\n Put all the rail track type information in same map bits.
+	SimplifyPlayerFace, ///< Saveload version: 49, SVN revision: 8969\n Simplify the storage of player face information.
 
-	AircraftSpeedHolding, ///< 50 8973 Aircraft speed in km-ish/h and reduced speed in holding patterns
-	FeederShare, ///< 51 8978 Rewrite of transfers to retain knowledge about the already paid amount for transfered cargo
-	StatueOwner, ///< 52 9066 Store the owner of the statue, so the town can be informed of their removal
-	NewGRFHouses, ///< 53 9316 NewGRF controlled houses
-	TownGrowthControl, ///< 54 9613 Give the player control over the town growth
+	AircraftSpeedHolding, ///< Saveload version: 50, SVN revision: 8973\n Aircraft speed in km-ish/h and reduced speed in holding patterns.
+	FeederShare, ///< Saveload version: 51, SVN revision: 8978\n Rewrite of transfers to retain knowledge about the already paid amount for transfered cargo.
+	StatueOwner, ///< Saveload version: 52, SVN revision: 9066\n Store the owner of the statue, so the town can be informed of their removal.
+	NewGRFHouses, ///< Saveload version: 53, SVN revision: 9316\n NewGRF controlled houses.
+	TownGrowthControl, ///< Saveload version: 54, SVN revision: 9613\n Give the player control over the town growth.
 
-	NewGRFCargo, ///< 55 9638 Increase number of cargos and NewGRF control of cargos
-	Cities, ///< 56 9667 Cities that start bigger and grow faster
-	FifoLoading, ///< 57 9691 First-in-first-out loading of vehicles
-	VeryLowTownIndustryNumber, ///< 58 9762 Difficulty settings for very low number of industries and towns
-	TownLayout, ///< 59 9779 More layout options for towns
+	NewGRFCargo, ///< Saveload version: 55, SVN revision: 9638\n Increase number of cargos and NewGRF control of cargos.
+	Cities, ///< Saveload version: 56, SVN revision: 9667\n Cities that start bigger and grow faster.
+	FifoLoading, ///< Saveload version: 57, SVN revision: 9691\n First-in-first-out loading of vehicles.
+	VeryLowTownIndustryNumber, ///< Saveload version: 58, SVN revision: 9762\n Difficulty settings for very low number of industries and towns.
+	TownLayout, ///< Saveload version: 59, SVN revision: 9779\n More layout options for towns.
 
-	VehicleGroups, ///< 60 9874 Arbitrary grouping, by the player, of vehicles
-	MultipleRoadTypes, ///< 61 9892 Multiple road types for the same tile
-	AdjacentStations, ///< 62 9905 Allow building multiple stations directly next to eachother
-	TramLivery, ///< 63 9956 Add separate livery for trams
-	MultipleSignalTypes, ///< 64 10006 Multiple different signal types on the same (diagonal) tile, instead of the same for both directions
+	VehicleGroups, ///< Saveload version: 60, SVN revision: 9874\n Arbitrary grouping, by the player, of vehicles.
+	MultipleRoadTypes, ///< Saveload version: 61, SVN revision: 9892\n Multiple road types for the same tile.
+	AdjacentStations, ///< Saveload version: 62, SVN revision: 9905\n Allow building multiple stations directly next to eachother.
+	TramLivery, ///< Saveload version: 63, SVN revision: 9956\n Add separate livery for trams.
+	MultipleSignalTypes, ///< Saveload version: 64, SVN revision: 10006\n Multiple different signal types on the same (diagonal) tile, instead of the same for both directions.
 
-	UnifyCurrency, ///< 65 10210 Make all variables related to currency 64 bits
-	NewGRFTownNames, ///< 66 10211 NewGRF provided town names
-	Timetables, ///< 67 10236 Introduce timetables for vehicles
-	CargoPackets, ///< 68 10266 Account for individual units of cargo, i.e. there can be cargo from multiple sources/ages in one vehicle
-	MoreCargoPackets, ///< 69 10319 Allow more than ~65k cargo packets
+	UnifyCurrency, ///< Saveload version: 65, SVN revision: 10210\n Make all variables related to currency 64 bits.
+	NewGRFTownNames, ///< Saveload version: 66, SVN revision: 10211\n NewGRF provided town names.
+	Timetables, ///< Saveload version: 67, SVN revision: 10236\n Introduce timetables for vehicles.
+	CargoPackets, ///< Saveload version: 68, SVN revision: 10266\n Account for individual units of cargo, i.e. there can be cargo from multiple sources/ages in one vehicle.
+	MoreCargoPackets, ///< Saveload version: 69, SVN revision: 10319\n Allow more than ~65k cargo packets.
 
-	CargoPaymentOverflow, ///< 70 10541 Fix overflow of cargo payment rates, plus preparation for player founded industries
-	UngroupedVehicles, ///< 71 10567 Add a group with vehicles that aren't in any other group
-	SplitStationTypeFromGfxid, ///< 72 10601 Splits the encoding of station type from the graphics identifer
-	NewGRFIndustryLayout, ///< 73 10903 NewGRF provided layouts for industries
-	FixStationPickupAccounting, ///< 74 11030 Accounting of which cargos a station would pick up was done incorrectly
+	CargoPaymentOverflow, ///< Saveload version: 70, SVN revision: 10541\n Fix overflow of cargo payment rates, plus preparation for player founded industries.
+	UngroupedVehicles, ///< Saveload version: 71, SVN revision: 10567\n Add a group with vehicles that aren't in any other group.
+	SplitStationTypeFromGfxid, ///< Saveload version: 72, SVN revision: 10601\n Splits the encoding of station type from the graphics identifer.
+	NewGRFIndustryLayout, ///< Saveload version: 73, SVN revision: 10903\n NewGRF provided layouts for industries.
+	FixStationPickupAccounting, ///< Saveload version: 74, SVN revision: 11030\n Accounting of which cargos a station would pick up was done incorrectly.
 
-	Autoslope, ///< 75 11107 Terraforming under buildings/track/anything that supports foundations
-	NewGRFPersistentStorage, ///< 76 11139 Persistently store some state of NewGRF objects/entities
-	CleanupUnconnectedRoads, ///< 77 11172 Option to remove unconnected roads during a town's road reconstruction
-	StoreIndustryCargo, ///< 78 11176 Store an industry's cargo, so it can be customised upon building
-	FairPlaySettings, ///< 79 11188 Add setting to disable exclusive rights in a town and giving money
+	Autoslope, ///< Saveload version: 75, SVN revision: 11107\n Terraforming under buildings/track/anything that supports foundations.
+	NewGRFPersistentStorage, ///< Saveload version: 76, SVN revision: 11139\n Persistently store some state of NewGRF objects/entities.
+	CleanupUnconnectedRoads, ///< Saveload version: 77, SVN revision: 11172\n Option to remove unconnected roads during a town's road reconstruction.
+	StoreIndustryCargo, ///< Saveload version: 78, SVN revision: 11176\n Store an industry's cargo, so it can be customised upon building.
+	FairPlaySettings, ///< Saveload version: 79, SVN revision: 11188\n Add setting to disable exclusive rights in a town and giving money.
 
-	NewGRFMoreAnimation, ///< 80 11228 Support more types of animation for NewGRF industries
-	FixTreeGround, ///< 81 11244 Various fixes to improve the visuals of the ground under trees
-	NewGRFIndustryRandomTriggers, ///< 82 11410 NewGRF random triggers for industries
-	DepotWaterOwners, ///< 83 11589 Store the owner of the water under depots, so removing of the depot doesn't disown the original owner
-	ReplaceCustomNameArray, ///< 84 11822 Replace single fixed size array of custom names, by moving the name into the appropriate objects
+	NewGRFMoreAnimation, ///< Saveload version: 80, SVN revision: 11228\n Support more types of animation for NewGRF industries.
+	FixTreeGround, ///< Saveload version: 81, SVN revision: 11244\n Various fixes to improve the visuals of the ground under trees.
+	NewGRFIndustryRandomTriggers, ///< Saveload version: 82, SVN revision: 11410\n NewGRF random triggers for industries.
+	DepotWaterOwners, ///< Saveload version: 83, SVN revision: 11589\n Store the owner of the water under depots, so removing of the depot doesn't disown the original owner.
+	ReplaceCustomNameArray, ///< Saveload version: 84, SVN revision: 11822\n Replace single fixed size array of custom names, by moving the name into the appropriate objects.
 
-	MaglevMonorailPaxWagonLivery, ///< 85 11874 Add livery for maglev/monorail passenger wagons
-	WaterClass, ///< 86 12042 Store the type of water (sea/ocean, canal, river) for buoys, docks, locks and depots
-	SimplifyPathfinderSettings, ///< 87 12129 Make it easier to select the pathfinder to use
-	FractionProfitRunningTicks, ///< 88 12134 Store vehicle profits as a (fixed point) fraction, and store the number of ticks a vehicle ran in a day
-	MoreWaypointsPerTown, ///< 89 12160 Support more than 64 waypoints per town
+	MaglevMonorailPaxWagonLivery, ///< Saveload version: 85, SVN revision: 11874\n Add livery for maglev/monorail passenger wagons.
+	WaterClass, ///< Saveload version: 86, SVN revision: 12042\n Store the type of water (sea/ocean, canal, river) for buoys, docks, locks and depots.
+	SimplifyPathfinderSettings, ///< Saveload version: 87, SVN revision: 12129\n Make it easier to select the pathfinder to use.
+	FractionProfitRunningTicks, ///< Saveload version: 88, SVN revision: 12134\n Store vehicle profits as a (fixed point) fraction, and store the number of ticks a vehicle ran in a day.
+	MoreWaypointsPerTown, ///< Saveload version: 89, SVN revision: 12160\n Support more than 64 waypoints per town.
 
-	PlaneSpeedFactor, ///< 90 12293 Setting to increase aircraft speed to be on par with the other vehicles
-	MoreHouseAnimationFrames, ///< 91 12347 Increase number of animation frames for NewGRF houses
-	RemoveHouseCount, ///< 92 12381 0.6.x Remove number of houses in a town from the save
-	ImprovedOrders, ///< 93 12648 Orders support all full load/non stop types at the same time now
-	FixCompanyCargoTypes, ///< 94 12816 The company's cargo types should have increased in since with NewGRFCargo
+	PlaneSpeedFactor, ///< Saveload version: 90, SVN revision: 12293\n Setting to increase aircraft speed to be on par with the other vehicles.
+	MoreHouseAnimationFrames, ///< Saveload version: 91, SVN revision: 12347\n Increase number of animation frames for NewGRF houses.
+	RemoveHouseCount, ///< Saveload version: 92, SVN revision: 12381, release 0.6.x\n Remove number of houses in a town from the save.
+	ImprovedOrders, ///< Saveload version: 93, SVN revision: 12648\n Orders support all full load/non stop types at the same time now.
+	FixCompanyCargoTypes, ///< Saveload version: 94, SVN revision: 12816\n The company's cargo types should have increased in since with NewGRFCargo.
 
-	MoreEngineTypes, ///< 95 12924 Allow more than the original 255 engine types
-	AirportNoise, ///< 96 13226 Introduce noise for airports, to allow more than two airports per town
-	MergeOptsPats, ///< 97 13256 Merge the OPTS and PATS chunks, i.e. all settings in one chunk
-	Gamelog, ///< 98 13375 Logging of important actions/situations in the save
-	IndustryTileWaterClass, ///< 99 13838 Add water classes to industry tiles
+	MoreEngineTypes, ///< Saveload version: 95, SVN revision: 12924\n Allow more than the original 255 engine types.
+	AirportNoise, ///< Saveload version: 96, SVN revision: 13226\n Introduce noise for airports, to allow more than two airports per town.
+	MergeOptsPats, ///< Saveload version: 97, SVN revision: 13256\n Merge the OPTS and PATS chunks, i.e. all settings in one chunk.
+	Gamelog, ///< Saveload version: 98, SVN revision: 13375\n Logging of important actions/situations in the save.
+	IndustryTileWaterClass, ///< Saveload version: 99, SVN revision: 13838\n Add water classes to industry tiles.
 
-	Yapp, ///< 100 13952 New version of path based signals
-	NewGRFPalette, ///< 101 14233 Store palette used by each of the NewGRFs
-	SpreadIndustryProductionChanges, ///< 102 14332 Spread the industry production changes over the month, instead of doing all on the same day
-	NewGRFSuppliedStationName, ///< 103 14598 NewGRF industry supplying default names for nearby stations
-	MoreCompanies, ///< 104 14735 Increase maximum number of companies to 15
+	Yapp, ///< Saveload version: 100, SVN revision: 13952\n New version of path based signals.
+	NewGRFPalette, ///< Saveload version: 101, SVN revision: 14233\n Store palette used by each of the NewGRFs.
+	SpreadIndustryProductionChanges, ///< Saveload version: 102, SVN revision: 14332\n Spread the industry production changes over the month, instead of doing all on the same day.
+	NewGRFSuppliedStationName, ///< Saveload version: 103, SVN revision: 14598\n NewGRF industry supplying default names for nearby stations.
+	MoreCompanies, ///< Saveload version: 104, SVN revision: 14735\n Increase maximum number of companies to 15.
 
-	OrderList, ///< 105 14803 Create separate order list objects for maintaining orders
-	DistantStationJoining, ///< 106 14919 Distant joining of stations
-	NoAI, ///< 107 15027 Replace built in cheating AI with framework for externally developed (scripted) AIs
-	StoreAIVersion, ///< 108 15045 Store the version of the AI script
-	NextCompetitorStartOverflow, ///< 109 15075 Prevent overflow in the next competitor start counter
+	OrderList, ///< Saveload version: 105, SVN revision: 14803\n Create separate order list objects for maintaining orders.
+	DistantStationJoining, ///< Saveload version: 106, SVN revision: 14919\n Distant joining of stations.
+	NoAI, ///< Saveload version: 107, SVN revision: 15027\n Replace built in cheating AI with framework for externally developed (scripted) AIs.
+	StoreAIVersion, ///< Saveload version: 108, SVN revision: 15045\n Store the version of the AI script.
+	NextCompetitorStartOverflow, ///< Saveload version: 109, SVN revision: 15075\n Prevent overflow in the next competitor start counter.
 
-	RemoveOldAISettings, ///< 110 15148 Remove remnants of the old AI's configuration
-	FreeformEdges, ///< 111 15190 Allow terraforming along the edge of the map
-	SplitHQ, ///< 112 15290 Split the behaviour of headquarters from the other unmovable objects
-	RoadLayoutPerTown, ///< 113 15340 Allow for different road layouts for each of the towns
-	SeparateRoadOwners, ///< 114 15601 Separate owners for road bits, tram bits and the road stop
+	RemoveOldAISettings, ///< Saveload version: 110, SVN revision: 15148\n Remove remnants of the old AI's configuration.
+	FreeformEdges, ///< Saveload version: 111, SVN revision: 15190\n Allow terraforming along the edge of the map.
+	SplitHQ, ///< Saveload version: 112, SVN revision: 15290\n Split the behaviour of headquarters from the other unmovable objects.
+	RoadLayoutPerTown, ///< Saveload version: 113, SVN revision: 15340\n Allow for different road layouts for each of the towns.
+	SeparateRoadOwners, ///< Saveload version: 114, SVN revision: 15601\n Separate owners for road bits, tram bits and the road stop.
 
-	CustomTownNumber, ///< 115 15695 Configuration for specific number of towns to build
-	GamelogEmergency, ///< 116 15893 0.7.x Gamelog event for emergency/crash saves
-	PlatformStopLocation, ///< 117 16037 Set the platform stop location via train orders
-	DigitGroupSeparator, ///< 118 16129 Configurable digit group separator
-	PauseModes, ///< 119 16242 Use bitmask of reason to pause, so manual/auto pausing do not conflict
+	CustomTownNumber, ///< Saveload version: 115, SVN revision: 15695\n Configuration for specific number of towns to build.
+	GamelogEmergency, ///< Saveload version: 116, SVN revision: 15893, release: 0.7.x\n Gamelog event for emergency/crash saves.
+	PlatformStopLocation, ///< Saveload version: 117, SVN revision: 16037\n Set the platform stop location via train orders.
+	DigitGroupSeparator, ///< Saveload version: 118, SVN revision: 16129\n Configurable digit group separator.
+	PauseModes, ///< Saveload version: 119, SVN revision: 16242\n Use bitmask of reason to pause, so manual/auto pausing do not conflict.
 
-	CompanyServiceIntervals, ///< 120 16439 Make service intervals configurable per company
-	CargoPayments, ///< 121 16694 Perform payment of cargo after unloading
-	WaypointMoreLikeStation, ///< 122 16855 Make waypoint data look more like stations
-	UnifyWaypointAndStation, ///< 123 16909 Unify stations and waypoints
-	MultiTileWaypoints, ///< 124 16993 Waypoints can be bigger than a single tile
+	CompanyServiceIntervals, ///< Saveload version: 120, SVN revision: 16439\n Make service intervals configurable per company.
+	CargoPayments, ///< Saveload version: 121, SVN revision: 16694\n Perform payment of cargo after unloading.
+	WaypointMoreLikeStation, ///< Saveload version: 122, SVN revision: 16855\n Make waypoint data look more like stations.
+	UnifyWaypointAndStation, ///< Saveload version: 123, SVN revision: 16909\n Unify stations and waypoints.
+	MultiTileWaypoints, ///< Saveload version: 124, SVN revision: 16993\n Waypoints can be bigger than a single tile.
 
-	RemoveSubsidyStationBinding, ///< 125 17113 Awarded subsidies are not bound to stations, but to their actual source/destination
-	CumulatedInflation, ///< 126 17433 Store cumulated inflation, and recalculate prices/payments upon load
-	TownAcceptance, ///< 127 17439 Store mask of cargos accepted by town houses and head quarters
-	FoundTown, ///< 128 18281 Founding of new towns
-	TimetableStart, ///< 129 18292 Allow setting the start date of a timetable
+	RemoveSubsidyStationBinding, ///< Saveload version: 125, SVN revision: 17113\n Awarded subsidies are not bound to stations, but to their actual source/destination.
+	CumulatedInflation, ///< Saveload version: 126, SVN revision: 17433\n Store cumulated inflation, and recalculate prices/payments upon load.
+	TownAcceptance, ///< Saveload version: 127, SVN revision: 17439\n Store mask of cargos accepted by town houses and head quarters.
+	FoundTown, ///< Saveload version: 128, SVN revision: 18281\n Founding of new towns.
+	TimetableStart, ///< Saveload version: 129, SVN revision: 18292\n Allow setting the start date of a timetable.
 
-	RoadStopOccupancyPenalty, ///< 130 18404 Add configurable pathfinder penalty for an occupied road stop
-	MaximumDepotPenalty, ///< 131 18481 Add configurable maximum pathfinder penalty for finding a depot
-	DisallowTreeBuilding, ///< 132 18522 Setting to partially disable building of trees
-	TrainSlopeSteepness, ///< 133 18674 Setting to increase steepness of slopes for trains under realistic acceleration
-	VirtualFeederSharePayment, ///< 134 18703 Pay a part of the virtual profit during a transfer to the intermediate vehicle
+	RoadStopOccupancyPenalty, ///< Saveload version: 130, SVN revision: 18404\n Add configurable pathfinder penalty for an occupied road stop.
+	MaximumDepotPenalty, ///< Saveload version: 131, SVN revision: 18481\n Add configurable maximum pathfinder penalty for finding a depot.
+	DisallowTreeBuilding, ///< Saveload version: 132, SVN revision: 18522\n Setting to partially disable building of trees.
+	TrainSlopeSteepness, ///< Saveload version: 133, SVN revision: 18674\n Setting to increase steepness of slopes for trains under realistic acceleration.
+	VirtualFeederSharePayment, ///< Saveload version: 134, SVN revision: 18703\n Pay a part of the virtual profit during a transfer to the intermediate vehicle.
 
-	RocksStayUnderSnow, ///< 135 18719 Rocks stay under snow, i.e. they return when the snow goes away
-	SplitLoadWaitCounters, ///< 136 18764 Split counters for (un)loading and signal waiting/turning as otherwise they interfere
-	AirportAnimationFrames, ///< 137 18912 Use animation frames instead of many airport tile ids for animation
-	ReducePlaneCrashes, ///< 138 18942 1.0.x Setting to reduce/disable crashing of planes
-	RvRealisticAcceleration, ///< 139 19346 Realistic acceleration of road vehicles
+	RocksStayUnderSnow, ///< Saveload version: 135, SVN revision: 18719\n Rocks stay under snow, i.e. they return when the snow goes away.
+	SplitLoadWaitCounters, ///< Saveload version: 136, SVN revision: 18764\n Split counters for (un)loading and signal waiting/turning as otherwise they interfere.
+	AirportAnimationFrames, ///< Saveload version: 137, SVN revision: 18912\n Use animation frames instead of many airport tile ids for animation.
+	ReducePlaneCrashes, ///< Saveload version: 138, SVN revision: 18942, release: 1.0.x\n Setting to reduce/disable crashing of planes.
+	RvRealisticAcceleration, ///< Saveload version: 139, SVN revision: 19346\n Realistic acceleration of road vehicles.
 
-	StoreAirportSize, ///< 140 19382 Store the size of the airport in the station
-	UniqueDepotNames, ///< 141 19799 Give depots unique names
-	NewGRFDepotBuildDate, ///< 142 20003 Depot build date for NewGRFs
-	DisableTownLevelCrossing, ///< 143 20048 Setting to be able to disable building rail/road crossings by towns
-	ReorderUnmovableRemoveReserved, ///< 144 20334 Reorder map bits of unmovable tiles and remove unused reserved zero bytes
+	StoreAirportSize, ///< Saveload version: 140, SVN revision: 19382\n Store the size of the airport in the station.
+	UniqueDepotNames, ///< Saveload version: 141, SVN revision: 19799\n Give depots unique names.
+	NewGRFDepotBuildDate, ///< Saveload version: 142, SVN revision: 20003\n Depot build date for NewGRFs.
+	DisableTownLevelCrossing, ///< Saveload version: 143, SVN revision: 20048\n Setting to be able to disable building rail/road crossings by towns.
+	ReorderUnmovableRemoveReserved, ///< Saveload version: 144, SVN revision: 20334\n Reorder map bits of unmovable tiles and remove unused reserved zero bytes.
 
-	NewGRFAirportSmoke, ///< 145 20376 NewGRF support for airport and configurable amount of smoke for vehicles
-	UnifyWaterClass, ///< 146 20446 Unify location for storing water class in the map
-	UnifyAnimationFrame, ///< 147 20621 Unify location of animation frame
-	IndustryPlatform, ///< 148 20659 Setting to make a flat area around (new) industries
-	CustomSeaLevel, ///< 149 20832 Setting to influence the sea level (amount of water)
+	NewGRFAirportSmoke, ///< Saveload version: 145, SVN revision: 20376\n NewGRF support for airport and configurable amount of smoke for vehicles.
+	UnifyWaterClass, ///< Saveload version: 146, SVN revision: 20446\n Unify location for storing water class in the map.
+	UnifyAnimationFrame, ///< Saveload version: 147, SVN revision: 20621\n Unify location of animation frame.
+	IndustryPlatform, ///< Saveload version: 148, SVN revision: 20659\n Setting to make a flat area around (new) industries.
+	CustomSeaLevel, ///< Saveload version: 149, SVN revision: 20832\n Setting to influence the sea level (amount of water).
 
-	FractionalCargoDelivery, ///< 150 20857 When spreading cargo over stations, spread fractional amounts for fairness
-	StoreNewGRFVersion, ///< 151 20918 Store the version of the used NewGRFs
-	IndustryManagement, ///< 152 21171 Manage the amount of industries that ought to be spawned per type
-	LeaveRoadStopSeparately, ///< 153 21263 Fix issue where multiple vehicles could leave a road stop at the same time
-	PauseLevel, ///< 154 21426 Setting to determine what commands are allowed when paused
+	FractionalCargoDelivery, ///< Saveload version: 150, SVN revision: 20857\n When spreading cargo over stations, spread fractional amounts for fairness.
+	StoreNewGRFVersion, ///< Saveload version: 151, SVN revision: 20918\n Store the version of the used NewGRFs.
+	IndustryManagement, ///< Saveload version: 152, SVN revision: 21171\n Manage the amount of industries that ought to be spawned per type.
+	LeaveRoadStopSeparately, ///< Saveload version: 153, SVN revision: 21263\n Fix issue where multiple vehicles could leave a road stop at the same time.
+	PauseLevel, ///< Saveload version: 154, SVN revision: 21426\n Setting to determine what commands are allowed when paused.
 
-	NewGRFObjectView, ///< 155 21453 Support for views in NewGRF objects
-	TerraformLimits, ///< 156 21728 Introduce limits for terraforming and clearing times
-	UnifyGroundVehicles, ///< 157 21862 Unify the way ground vehicles are handled (articulated parts, etc)
-	TrackRealAndAutoOrders, ///< 158 21933 Track which real and auto order is the current order
-	MaxLengthAndReverseSignals, ///< 159 21962 Settings for reversing at signals, and maximum train, bridge and tunnel length
+	NewGRFObjectView, ///< Saveload version: 155, SVN revision: 21453\n Support for views in NewGRF objects.
+	TerraformLimits, ///< Saveload version: 156, SVN revision: 21728\n Introduce limits for terraforming and clearing times.
+	UnifyGroundVehicles, ///< Saveload version: 157, SVN revision: 21862\n Unify the way ground vehicles are handled (articulated parts, etc).
+	TrackRealAndAutoOrders, ///< Saveload version: 158, SVN revision: 21933\n Track which real and auto order is the current order.
+	MaxLengthAndReverseSignals, ///< Saveload version: 159, SVN revision: 21962\n Settings for reversing at signals, and maximum train, bridge and tunnel length.
 
-	DisallowRoadReconstruction, ///< 160 21974 1.1.x Setting to disallow road reconstruction
-	PersistentStoragePool, ///< 161 22567 Store persistent storage in a pool
-	NewGRFCustomCargoAging, ///< 162 22713 NewGRF influence on aging of cargo in vehicles
-	Rivers, ///< 163 22767 Rivers
-	VehicleCentreAndZPos, ///< 164 23290 Vehicle centres are not fixed at 4/8 of the vehicle; change type of z-positions to prepare for higher maps
+	DisallowRoadReconstruction, ///< Saveload version: 160, SVN revision: 21974, release: 1.1.x\n Setting to disallow road reconstruction.
+	PersistentStoragePool, ///< Saveload version: 161, SVN revision: 22567\n Store persistent storage in a pool.
+	NewGRFCustomCargoAging, ///< Saveload version: 162, SVN revision: 22713\n NewGRF influence on aging of cargo in vehicles.
+	Rivers, ///< Saveload version: 163, SVN revision: 22767\n Rivers.
+	VehicleCentreAndZPos, ///< Saveload version: 164, SVN revision: 23290\n Vehicle centres are not fixed at 4/8 of the vehicle; change type of z-positions to prepare for higher maps.
 
-	ScriptTownGrowth, ///< 165 23304 Storage of cargo statistics for use by game scripts
-	InfrastructureMaintenanceCosts, ///< 166 23415 Infrastructure can now cost some periodic fee
-	NewGRFAircraftRange, ///< 167 23504 NewGRF provided maximum aircraft range
-	ScriptTownText, ///< 168 23637 Game scripts can put a text in the town window
-	MoveSccEncoded, ///< 169 23816 Move SCC_ENCODED to the first StringControlCode
+	ScriptTownGrowth, ///< Saveload version: 165, SVN revision: 23304\n Storage of cargo statistics for use by game scripts.
+	InfrastructureMaintenanceCosts, ///< Saveload version: 166, SVN revision: 23415\n Infrastructure can now cost some periodic fee.
+	NewGRFAircraftRange, ///< Saveload version: 167, SVN revision: 23504\n NewGRF provided maximum aircraft range.
+	ScriptTownText, ///< Saveload version: 168, SVN revision: 23637\n Game scripts can put a text in the town window.
+	MoveSccEncoded, ///< Saveload version: 169, SVN revision: 23816\n Move SCC_ENCODED to the first StringControlCode.
 
-	CountIndividualCargoes, ///< 170 23826 Store the count of individual cargo delivery for a period
-	ScenarioDeitySigns, ///< 171 23835 Signs made in scenarios become of OWNER_DEITY, so they are always shown
-	OrderMaxSpeed, ///< 172 23947 Set maximum speed for orders
-	FixRoadOwnership, ///< 173 23967 1.2.0-RC1 Seemingly unneeded bump supposed to fix something with road ownership
-	CurrentOrderMaxSpeed, ///< 174 23973 1.2.x Save maximum speed of current order
+	CountIndividualCargoes, ///< Saveload version: 170, SVN revision: 23826\n Store the count of individual cargo delivery for a period.
+	ScenarioDeitySigns, ///< Saveload version: 171, SVN revision: 23835\n Signs made in scenarios become of OWNER_DEITY, so they are always shown.
+	OrderMaxSpeed, ///< Saveload version: 172, SVN revision: 23947\n Set maximum speed for orders.
+	FixRoadOwnership, ///< Saveload version: 173, SVN revision: 23967, release: 1.2.0-RC1\n Seemingly unneeded bump supposed to fix something with road ownership.
+	CurrentOrderMaxSpeed, ///< Saveload version: 174, SVN revision: 23973, release: 1.2.x\n Save maximum speed of current order.
 
-	AutoreplaceWhenOldTreeLimit, ///< 175 24136 Autoreplace vehicle only when they are old, and putting limit on amount of trees to build (at once)
-	BackupOrderState, ///< 176 24446 Put more of the state of a vehicle's orders (like lateness, start point) in the order backup
-	MonthlyBankruptcyCheck, ///< 177 24619 Check for bankruptcy on a monthly cycle
-	ScriptSettingsProfile, ///< 178 24789 Setting for the difficulty profile of AIs
-	RobustEnginePreview, ///< 179 24810 Make engine preview offers robust when company ranking changes
+	AutoreplaceWhenOldTreeLimit, ///< Saveload version: 175, SVN revision: 24136\n Autoreplace vehicle only when they are old, and putting limit on amount of trees to build (at once).
+	BackupOrderState, ///< Saveload version: 176, SVN revision: 24446\n Put more of the state of a vehicle's orders (like lateness, start point) in the order backup.
+	MonthlyBankruptcyCheck, ///< Saveload version: 177, SVN revision: 24619\n Check for bankruptcy on a monthly cycle.
+	ScriptSettingsProfile, ///< Saveload version: 178, SVN revision: 24789\n Setting for the difficulty profile of AIs.
+	RobustEnginePreview, ///< Saveload version: 179, SVN revision: 24810\n Make engine preview offers robust when company ranking changes.
 
-	ServiceIntervalPercent, ///< 180 24998 1.3.x Service interval in percent or days stored per vehicle
-	CargoReservation, ///< 181 25012 Persist the reservation of cargo for vehicles instead of recalculating it each time
-	GoalProgressPlaneAcceleration, ///< 182 25115 FS#5492, r25259, r25296 Goal status and plane acceleration fixes
-	Cargodist, ///< 183 25363 Cargodist
-	SeparateLocaleUnits, ///< 184 25508 Unit localisation split
+	ServiceIntervalPercent, ///< Saveload version: 180, SVN revision: 24998, release: 1.3.x\n Service interval in percent or days stored per vehicle.
+	CargoReservation, ///< Saveload version: 181, SVN revision: 25012\n Persist the reservation of cargo for vehicles instead of recalculating it each time.
+	GoalProgressPlaneAcceleration, ///< Saveload version: 182, SVN revision: 25115, r25259, r25296\n Goal status and plane acceleration fixes.
+	Cargodist, ///< Saveload version: 183, SVN revision: 25363\n Cargodist.
+	SeparateLocaleUnits, ///< Saveload version: 184, SVN revision: 25508\n Unit localisation split.
 
-	Storybooks, ///< 185 25620 Storybooks
-	ObjectTypeToPool, ///< 186 25833 Move object type from map to pool object
-	LinkgraphRestrictedFlow, ///< 187 25899 Linkgraph - restricted flows
-	UnifyRvTravelTime, ///< 188 26169 v1.4 FS#5831 Unify RV travel time
-	GroupHierarchy, ///< 189 26450 Hierarchical vehicle subgroups
+	Storybooks, ///< Saveload version: 185, SVN revision: 25620\n Storybooks.
+	ObjectTypeToPool, ///< Saveload version: 186, SVN revision: 25833\n Move object type from map to pool object.
+	LinkgraphRestrictedFlow, ///< Saveload version: 187, SVN revision: 25899\n Linkgraph - restricted flows.
+	UnifyRvTravelTime, ///< Saveload version: 188, SVN revision: 26169, release: 1.4\n Unify RV travel time.
+	GroupHierarchy, ///< Saveload version: 189, SVN revision: 26450\n Hierarchical vehicle subgroups.
 
-	SeparateOrderTravelWaitTime, ///< 190 26547 Separate order travel and wait times
-	LinkgraphLocationDisasterStore, ///< 191 26636 FS#6026 Fix disaster vehicle storage (No bump)
-	///< 191 26646 FS#6041 Linkgraph - store locations
-	FixOrderBackup, ///< 192 26700 FS#6066 Fix saving of order backups
-	HideEnginesForCompany, ///< 193 26802 Hiding of engines for a company
-	MaxBridgeMapHeight, ///< 194 26881 v1.5 Setting for maximum bridge and map height
+	SeparateOrderTravelWaitTime, ///< Saveload version: 190, SVN revision: 26547\n Separate order travel and wait times.
+	LinkgraphLocationDisasterStore, ///< Saveload version: 191, SVN revision: 26636, 26646\n Fix disaster vehicle storage, Linkgraph - store locations.
+	FixOrderBackup, ///< Saveload version: 192, SVN revision: 26700\n Fix saving of order backups.
+	HideEnginesForCompany, ///< Saveload version: 193, SVN revision: 26802\n Hiding of engines for a company.
+	MaxBridgeMapHeight, ///< Saveload version: 194, SVN revision: 26881, release: 1.5\n Setting for maximum bridge and map height.
 
-	Distinguish16, ///< 195 27572 v1.6.1 Convenience bump to distinguish 1.6 from 1.5 saves
-	Distinguish17, ///< 196 27778 v1.7 Convenience bump to distinguish 1.7 from 1.6 saves
-	StoreMapVariety, ///< 197 27978 v1.8 Store map variety
-	TownGrowthInGameTicks, ///< 198 PR#6763 Switch town growth rate and counter to actual game ticks
-	ExtendCargotypes, ///< 199 PR#6802 Extend cargotypes to 64
+	Distinguish16, ///< Saveload version: 195, SVN revision: 27572, release: 1.6.1\n Convenience bump to distinguish 1.6 from 1.5 saves.
+	Distinguish17, ///< Saveload version: 196, SVN revision: 27778, release: 1.7\n Convenience bump to distinguish 1.7 from 1.6 saves.
+	StoreMapVariety, ///< Saveload version: 197, SVN revision: 27978, release: 1.8\n Store map variety.
+	TownGrowthInGameTicks, ///< Saveload version: 198, GitHub pull request: 6763\n Switch town growth rate and counter to actual game ticks.
+	ExtendCargotypes, ///< Saveload version: 199, GitHub pull request: 6802\n Extend cargotypes to 64.
 
-	ExtendRailtypes, ///< 200 PR#6805 Extend railtypes to 64, adding uint16_t to map array.
-	ExtendPersistentStorage, ///< 201 PR#6885 Extend NewGRF persistent storages.
-	ExtendIndustryCargoSlots, ///< 202 PR#6867 Increase industry cargo slots to 16 in, 16 out
-	ShipPathCache, ///< 203 PR#7072 Add path cache for ships
-	ShipRotation, ///< 204 PR#7065 Add extra rotation stages for ships.
+	ExtendRailtypes, ///< Saveload version: 200, GitHub pull request: 6805\n Extend railtypes to 64, adding uint16_t to map array.
+	ExtendPersistentStorage, ///< Saveload version: 201, GitHub pull request: 6885\n Extend NewGRF persistent storages.
+	ExtendIndustryCargoSlots, ///< Saveload version: 202, GitHub pull request: 6867\n Increase industry cargo slots to 16 in, 16 out.
+	ShipPathCache, ///< Saveload version: 203, GitHub pull request: 7072\n Add path cache for ships.
+	ShipRotation, ///< Saveload version: 204, GitHub pull request: 7065\n Add extra rotation stages for ships.
 
-	GroupLiveries, ///< 205 PR#7108 Livery storage change and group liveries.
-	ShipsStopInLocks, ///< 206 PR#7150 Ship/lock movement changes.
-	FixCargoMonitor, ///< 207 PR#7175 v1.9 Cargo monitor data packing fix to support 64 cargotypes.
-	TownCargogen, ///< 208 PR#6965 New algorithms for town building cargo generation.
-	ShipCurvePenalty, ///< 209 PR#7289 Configurable ship curve penalties.
+	GroupLiveries, ///< Saveload version: 205, GitHub pull request: 7108\n Livery storage change and group liveries.
+	ShipsStopInLocks, ///< Saveload version: 206, GitHub pull request: 7150\n Ship/lock movement changes.
+	FixCargoMonitor, ///< Saveload version: 207, GitHub pull request: 7175, release: 1.9\n Cargo monitor data packing fix to support 64 cargotypes.
+	TownCargogen, ///< Saveload version: 208, GitHub pull request: 6965\n New algorithms for town building cargo generation.
+	ShipCurvePenalty, ///< Saveload version: 209, GitHub pull request: 7289\n Configurable ship curve penalties.
 
-	ServeNeutralIndustries, ///< 210 PR#7234 Company stations can serve industries with attached neutral stations.
-	RoadvehPathCache, ///< 211 PR#7261 Add path cache for road vehicles.
-	RemoveOldPathfinder, ///< 212 PR#7245 Remove OPF.
-	TreesWaterClass, ///< 213 PR#7405 WaterClass update for tree tiles.
-	RoadTypes, ///< 214 PR#6811 NewGRF road types.
+	ServeNeutralIndustries, ///< Saveload version: 210, GitHub pull request: 7234\n Company stations can serve industries with attached neutral stations.
+	RoadvehPathCache, ///< Saveload version: 211, GitHub pull request: 7261\n Add path cache for road vehicles.
+	RemoveOldPathfinder, ///< Saveload version: 212, GitHub pull request: 7245\n Remove OPF.
+	TreesWaterClass, ///< Saveload version: 213, GitHub pull request: 7405\n WaterClass update for tree tiles.
+	RoadTypes, ///< Saveload version: 214, GitHub pull request: 6811\n NewGRF road types.
 
-	ScriptMemlimit, ///< 215 PR#7516 Limit on AI/GS memory consumption.
-	MultitileDocks, ///< 216 PR#7380 Multiple docks per station.
-	TradingAge, ///< 217 PR#7780 Configurable company trading age.
-	EndingYear, ///< 218 PR#7747 v1.10 Configurable ending year.
-	RemoveTownCargoCache, ///< 219 PR#8258 Remove town cargo acceptance and production caches.
+	ScriptMemlimit, ///< Saveload version: 215, GitHub pull request: 7516\n Limit on AI/GS memory consumption.
+	MultitileDocks, ///< Saveload version: 216, GitHub pull request: 7380\n Multiple docks per station.
+	TradingAge, ///< Saveload version: 217, GitHub pull request: 7780\n Configurable company trading age.
+	EndingYear, ///< Saveload version: 218, GitHub pull request: 7747, release: 1.10\n Configurable ending year.
+	RemoveTownCargoCache, ///< Saveload version: 219, GitHub pull request: 8258\n Remove town cargo acceptance and production caches.
 
 	/* Patchpacks for a while considered it a good idea to jump a few versions
 	 * above our version for their savegames. But as time continued, this gap
@@ -319,106 +318,106 @@ enum class SaveLoadVersion : uint16_t {
 	 * the version is masked with 0x8000, and the true version is stored in
 	 * its own chunk with feature toggles.
 	 */
-	StartPatchpacks, ///< 220 First known patchpack to use a version just above ours.
-	EndPatchpacks = 286, ///< 286 Last known patchpack to use a version just above ours.
+	StartPatchpacks, ///< Saveload version: 220\n First known patchpack to use a version just above ours.
+	EndPatchpacks = 286, ///< Saveload version: 286\n Last known patchpack to use a version just above ours.
 
-	GSIndustryControl, ///< 287 PR#7912 and PR#8115 GS industry control.
-	VehMotionCounter, ///< 288 PR#8591 Desync safe motion counter
-	IndustryText, ///< 289 PR#8576 v1.11.0-RC1 Additional GS text for industries.
+	GSIndustryControl, ///< Saveload version: 287, GitHub pull request: 7912 and 8115\n GS industry control.
+	VehMotionCounter, ///< Saveload version: 288, GitHub pull request: 8591\n Desync safe motion counter.
+	IndustryText, ///< Saveload version: 289, GitHub pull request: 8576, release: 1.11.0-RC1\n Additional GS text for industries.
 
-	MapgenSettingsRevamp, ///< 290 PR#8891 v1.11 Revamp of some mapgen settings (snow coverage, desert coverage, heightmap height, custom terrain type).
-	GroupReplaceWagonRemoval, ///< 291 PR#7441 Per-group wagon removal flag.
-	CustomSubsidyDuration, ///< 292 PR#9081 Configurable subsidy duration.
-	SaveloadListLength, ///< 293 PR#9374 Consistency in list length with SL_STRUCT / SL_STRUCTLIST / SL_DEQUE / SL_REFLIST.
-	RiffToArray, ///< 294 PR#9375 Changed many CH_RIFF chunks to CH_ARRAY chunks.
+	MapgenSettingsRevamp, ///< Saveload version: 290, GitHub pull request: 8891, release: 1.11\n Revamp of some mapgen settings (snow coverage, desert coverage, heightmap height, custom terrain type).
+	GroupReplaceWagonRemoval, ///< Saveload version: 291, GitHub pull request: 7441\n Per-group wagon removal flag.
+	CustomSubsidyDuration, ///< Saveload version: 292, GitHub pull request: 9081\n Configurable subsidy duration.
+	SaveloadListLength, ///< Saveload version: 293, GitHub pull request: 9374\n Consistency in list length with SL_STRUCT / SL_STRUCTLIST / SL_DEQUE / SL_REFLIST.
+	RiffToArray, ///< Saveload version: 294, GitHub pull request: 9375\n Changed many CH_RIFF chunks to CH_ARRAY chunks.
 
-	TableChunks, ///< 295 PR#9322 Introduction of CH_TABLE and CH_SPARSE_TABLE.
-	ScriptInt64, ///< 296 PR#9415 SQInteger is 64bit but was saved as 32bit.
-	LinkgraphTravelTime, ///< 297 PR#9457 v12.0-RC1 Store travel time in the linkgraph.
-	DockDockingtiles, ///< 298 PR#9578 All tiles around docks may be docking tiles.
-	RepairObjectDockingTiles, ///< 299 PR#9594 v12.0 Fixing issue with docking tiles overlapping objects.
+	TableChunks, ///< Saveload version: 295, GitHub pull request: 9322\n Introduction of CH_TABLE and CH_SPARSE_TABLE.
+	ScriptInt64, ///< Saveload version: 296, GitHub pull request: 9415\n SQInteger is 64bit but was saved as 32bit.
+	LinkgraphTravelTime, ///< Saveload version: 297, GitHub pull request: 9457, release: 12.0-RC1\n Store travel time in the linkgraph.
+	DockDockingtiles, ///< Saveload version: 298, GitHub pull request: 9578\n All tiles around docks may be docking tiles.
+	RepairObjectDockingTiles, ///< Saveload version: 299, GitHub pull request: 9594, release: 12.0\n Fixing issue with docking tiles overlapping objects.
 
-	U64TickCounter, ///< 300 PR#10035 Make tick counter 64bit to avoid wrapping.
-	LastLoadingTick, ///< 301 PR#9693 Store tick of last loading for vehicles.
-	MultitrackLevelCrossings, ///< 302 PR#9931 v13.0 Multi-track level crossings.
-	NewGRFRoadStops, ///< 303 PR#10144 NewGRF road stops.
-	LinkgraphEdges, ///< 304 PR#10314 Explicitly store link graph edges destination, PR#10471 int64_t instead of uint64_t league rating
+	U64TickCounter, ///< Saveload version: 300, GitHub pull request: 10035\n Make tick counter 64bit to avoid wrapping.
+	LastLoadingTick, ///< Saveload version: 301, GitHub pull request: 9693\n Store tick of last loading for vehicles.
+	MultitrackLevelCrossings, ///< Saveload version: 302, GitHub pull request: 9931, release: 13.0\n Multi-track level crossings.
+	NewGRFRoadStops, ///< Saveload version: 303, GitHub pull request: 10144\n NewGRF road stops.
+	LinkgraphEdges, ///< Saveload version: 304, GitHub pull request: 10314\n Explicitly store link graph edges destination, PR#10471 int64_t instead of uint64_t league rating.
 
-	VelocityNautical, ///< 305 PR#10594 Separation of land and nautical velocity (knots!)
-	ConsistentPartialZ, ///< 306 PR#10570 Conversion from an inconsistent partial Z calculation for slopes, to one that is (more) consistent.
-	MoreCargoAge, ///< 307 PR#10596 Track cargo age for a longer period.
-	LinkgraphSeconds, ///< 308 PR#10610 Store linkgraph update intervals in seconds instead of days.
-	AIStartDate, ///< 309 PR#10653 Removal of individual AI start dates and added a generic one.
+	VelocityNautical, ///< Saveload version: 305, GitHub pull request: 10594\n Separation of land and nautical velocity (knots!).
+	ConsistentPartialZ, ///< Saveload version: 306, GitHub pull request: 10570\n Conversion from an inconsistent partial Z calculation for slopes, to one that is (more) consistent.
+	MoreCargoAge, ///< Saveload version: 307, GitHub pull request: 10596\n Track cargo age for a longer period.
+	LinkgraphSeconds, ///< Saveload version: 308, GitHub pull request: 10610\n Store linkgraph update intervals in seconds instead of days.
+	AIStartDate, ///< Saveload version: 309, GitHub pull request: 10653\n Removal of individual AI start dates and added a generic one.
 
-	ExtendVehicleRandom, ///< 310 PR#10701 Extend vehicle random bits.
-	ExtendEntityMapping, ///< 311 PR#10672 Extend entity mapping range.
-	DisasterVehState, ///< 312 PR#10798 Explicit storage of disaster vehicle state.
-	SavegameId, ///< 313 PR#10719 Add an unique ID to every savegame (used to deduplicate surveys).
-	StringGamelog, ///< 314 PR#10801 Use std::string in gamelog.
+	ExtendVehicleRandom, ///< Saveload version: 310, GitHub pull request: 10701\n Extend vehicle random bits.
+	ExtendEntityMapping, ///< Saveload version: 311, GitHub pull request: 10672\n Extend entity mapping range.
+	DisasterVehState, ///< Saveload version: 312, GitHub pull request: 10798\n Explicit storage of disaster vehicle state.
+	SavegameId, ///< Saveload version: 313, GitHub pull request: 10719\n Add an unique ID to every savegame (used to deduplicate surveys).
+	StringGamelog, ///< Saveload version: 314, GitHub pull request: 10801\n Use std::string in gamelog.
 
-	IndustryCargoReorganise, ///< 315 PR#10853 Industry accepts/produced data reorganised.
-	PeriodsInTransitRename, ///< 316 PR#11112 Rename days in transit to (cargo) periods in transit.
-	NewGRFLastService, ///< 317 PR#11124 Added stable date_of_last_service to avoid NewGRF trouble.
-	RemoveLoadedAtXY, ///< 318 PR#11276 Remove loaded_at_xy variable from CargoPacket.
-	CargoTravelled, ///< 319 PR#11283 CargoPacket now tracks how far it travelled inside a vehicle.
+	IndustryCargoReorganise, ///< Saveload version: 315, GitHub pull request: 10853\n Industry accepts/produced data reorganised.
+	PeriodsInTransitRename, ///< Saveload version: 316, GitHub pull request: 11112\n Rename days in transit to (cargo) periods in transit.
+	NewGRFLastService, ///< Saveload version: 317, GitHub pull request: 11124\n Added stable date_of_last_service to avoid NewGRF trouble.
+	RemoveLoadedAtXY, ///< Saveload version: 318, GitHub pull request: 11276\n Remove loaded_at_xy variable from CargoPacket.
+	CargoTravelled, ///< Saveload version: 319, GitHub pull request: 11283\n CargoPacket now tracks how far it travelled inside a vehicle.
 
-	StationRatingCheat, ///< 320 PR#11346 Add cheat to fix station ratings at 100%.
-	TimetableStartTicks, ///< 321 PR#11468 Convert timetable start from a date to ticks.
-	TimetableStartTicksFix, ///< 322 PR#11557 Fix for missing convert timetable start from a date to ticks.
-	TimetableTicksType, ///< 323 PR#11435 Convert timetable current order time to ticks.
-	WaterRegions, ///< 324 PR#10543 Water Regions for ship pathfinder.
+	StationRatingCheat, ///< Saveload version: 320, GitHub pull request: 11346\n Add cheat to fix station ratings at 100%.
+	TimetableStartTicks, ///< Saveload version: 321, GitHub pull request: 11468\n Convert timetable start from a date to ticks.
+	TimetableStartTicksFix, ///< Saveload version: 322, GitHub pull request: 11557\n Fix for missing convert timetable start from a date to ticks.
+	TimetableTicksType, ///< Saveload version: 323, GitHub pull request: 11435\n Convert timetable current order time to ticks.
+	WaterRegions, ///< Saveload version: 324, GitHub pull request: 10543\n Water Regions for ship pathfinder.
 
-	WaterRegionEvalSimplified, ///< 325 PR#11750 Simplified Water Region evaluation.
-	EconomyDate, ///< 326 PR#10700 Split calendar and economy timers and dates.
-	EconomyModeTimekeepingUnits, ///< 327 PR#11341 Mode to display economy measurements in wallclock units.
-	CalendarSubDateFract, ///< 328 PR#11428 Add sub_date_fract to measure calendar days.
-	ShipAcceleration, ///< 329 PR#10734 Start using Vehicle's acceleration field for ships too.
+	WaterRegionEvalSimplified, ///< Saveload version: 325, GitHub pull request: 11750\n Simplified Water Region evaluation.
+	EconomyDate, ///< Saveload version: 326, GitHub pull request: 10700\n Split calendar and economy timers and dates.
+	EconomyModeTimekeepingUnits, ///< Saveload version: 327, GitHub pull request: 11341\n Mode to display economy measurements in wallclock units.
+	CalendarSubDateFract, ///< Saveload version: 328, GitHub pull request: 11428\n Add sub_date_fract to measure calendar days.
+	ShipAcceleration, ///< Saveload version: 329, GitHub pull request: 10734\n Start using Vehicle's acceleration field for ships too.
 
-	MaxLoanForCompany, ///< 330 PR#11224 Separate max loan for each company.
-	DepotUnbunching, ///< 331 PR#11945 Allow unbunching shared order vehicles at a depot.
-	AILocalConfig, ///< 332 PR#12003 Config of running AI is stored inside Company.
-	ScriptRandomizer, ///< 333 PR#12063 v14.0-RC1 Save script randomizers.
-	VehicleEconomyAge, ///< 334 PR#12141 v14.0 Add vehicle age in economy year, for profit stats minimum age
+	MaxLoanForCompany, ///< Saveload version: 330, GitHub pull request: 11224\n Separate max loan for each company.
+	DepotUnbunching, ///< Saveload version: 331, GitHub pull request: 11945\n Allow unbunching shared order vehicles at a depot.
+	AILocalConfig, ///< Saveload version: 332, GitHub pull request: 12003\n Config of running AI is stored inside Company.
+	ScriptRandomizer, ///< Saveload version: 333, GitHub pull request: 12063, release: 14.0-RC1\n Save script randomizers.
+	VehicleEconomyAge, ///< Saveload version: 334, GitHub pull request: 12141, release: 14.0\n Add vehicle age in economy year, for profit stats minimum age.
 
-	CompanyAllowList, ///< 335 PR#12337 Saving of list of client keys that are allowed to join this company.
-	GroupNumbers, ///< 336 PR#12297 Add per-company group numbers.
-	IncreaseStationTypeFieldSize, ///< 337 PR#12572 Increase size of StationType field in map array
-	RoadWaypoints, ///< 338 PR#12572 Road waypoints
-	CompanyInauguratedPeriod, ///< 339 PR#12798 Companies show the period inaugurated in wallclock mode.
+	CompanyAllowList, ///< Saveload version: 335, GitHub pull request: 12337\n Saving of list of client keys that are allowed to join this company.
+	GroupNumbers, ///< Saveload version: 336, GitHub pull request: 12297\n Add per-company group numbers.
+	IncreaseStationTypeFieldSize, ///< Saveload version: 337, GitHub pull request: 12572\n Increase size of StationType field in map array.
+	RoadWaypoints, ///< Saveload version: 338, GitHub pull request: 12572\n Road waypoints.
+	CompanyInauguratedPeriod, ///< Saveload version: 339, GitHub pull request: 12798\n Companies show the period inaugurated in wallclock mode.
 
-	RoadStopTileData, ///< 340 PR#12883 Move storage of road stop tile data, also save for road waypoints.
-	CompanyAllowListV2, ///< 341 PR#12908 Fixed savegame format for saving of list of client keys that are allowed to join this company.
-	WaterTileType, ///< 342 PR#13030 Simplify water tile type.
-	ProductionHistory, ///< 343 PR#10541 Industry production history.
-	RoadTypeLabelMap, ///< 344 PR#13021 Add road type label map to allow upgrade/conversion of road types.
+	RoadStopTileData, ///< Saveload version: 340, GitHub pull request: 12883\n Move storage of road stop tile data, also save for road waypoints.
+	CompanyAllowListV2, ///< Saveload version: 341, GitHub pull request: 12908\n Fixed savegame format for saving of list of client keys that are allowed to join this company.
+	WaterTileType, ///< Saveload version: 342, GitHub pull request: 13030\n Simplify water tile type.
+	ProductionHistory, ///< Saveload version: 343, GitHub pull request: 10541\n Industry production history.
+	RoadTypeLabelMap, ///< Saveload version: 344, GitHub pull request: 13021\n Add road type label map to allow upgrade/conversion of road types.
 
-	NonfloodingWaterTiles, ///< 345 PR#13013 Store water tile non-flooding state.
-	PathCacheFormat, ///< 346 PR#12345 Vehicle path cache format changed.
-	AnimatedTileStateInMap, ///< 347 PR#13082 Animated tile state saved for improved performance.
-	IncreaseHouseLimit, ///< 348 PR#12288 Increase house limit to 4096.
-	CompanyInauguratedPeriodV2, ///< 349 PR#13448 Fix savegame storage for company inaugurated year in wallclock mode.
+	NonfloodingWaterTiles, ///< Saveload version: 345, GitHub pull request: 13013\n Store water tile non-flooding state.
+	PathCacheFormat, ///< Saveload version: 346, GitHub pull request: 12345\n Vehicle path cache format changed.
+	AnimatedTileStateInMap, ///< Saveload version: 347, GitHub pull request: 13082\n Animated tile state saved for improved performance.
+	IncreaseHouseLimit, ///< Saveload version: 348, GitHub pull request: 12288\n Increase house limit to 4096.
+	CompanyInauguratedPeriodV2, ///< Saveload version: 349, GitHub pull request: 13448\n Fix savegame storage for company inaugurated year in wallclock mode.
 
-	EncodedStringFormat, ///< 350 PR#13499 Encoded String format changed.
-	ProtectPlacedHouses, ///< 351 PR#13270 Houses individually placed by players can be protected from town/AI removal.
-	ScriptSaveInstances, ///< 352 PR#13556 Scripts are allowed to save instances.
-	FixSccEncodedNegative, ///< 353 PR#14049 Fix encoding of negative parameters.
-	OrdersOwnedByOrderlist, ///< 354 PR#13948 Orders stored in OrderList, pool removed.
+	EncodedStringFormat, ///< Saveload version: 350, GitHub pull request: 13499\n Encoded String format changed.
+	ProtectPlacedHouses, ///< Saveload version: 351, GitHub pull request: 13270\n Houses individually placed by players can be protected from town/AI removal.
+	ScriptSaveInstances, ///< Saveload version: 352, GitHub pull request: 13556\n Scripts are allowed to save instances.
+	FixSccEncodedNegative, ///< Saveload version: 353, GitHub pull request: 14049\n Fix encoding of negative parameters.
+	OrdersOwnedByOrderlist, ///< Saveload version: 354, GitHub pull request: 13948\n Orders stored in OrderList, pool removed.
 
-	FaceStyles, ///< 355 PR#14319 Addition of face styles, replacing gender and ethnicity.
-	IndustryNumValidHistory, ///< 356 PR#14416 Store number of valid history records for industries.
-	IndustryAcceptedHistory, ///< 357 PR#14321 Add per-industry history of cargo delivered and waiting.
-	TownSupplyHistory, ///< 358 PR#14461 Town supply history.
-	StationsUnderBridges, ///< 359 PR#14477 Allow stations under bridges.
+	FaceStyles, ///< Saveload version: 355, GitHub pull request: 14319\n Addition of face styles, replacing gender and ethnicity.
+	IndustryNumValidHistory, ///< Saveload version: 356, GitHub pull request: 14416\n Store number of valid history records for industries.
+	IndustryAcceptedHistory, ///< Saveload version: 357, GitHub pull request: 14321\n Add per-industry history of cargo delivered and waiting.
+	TownSupplyHistory, ///< Saveload version: 358, GitHub pull request: 14461\n Town supply history.
+	StationsUnderBridges, ///< Saveload version: 359, GitHub pull request: 14477\n Allow stations under bridges.
 
-	DocksUnderBridges, ///< 360 PR#14594 Allow docks under bridges.
-	LocksUnderBridges, ///< 361 PR#14595 Allow locks under bridges.
-	EngineMultiRailtype, ///< 362 PR#14357 v15.0 Train engines can have multiple railtypes.
-	SignTextColours, ///< 363 PR#14743 Configurable sign text colors in scenario editor.
-	BuoysAt0_0, ///< 364 PR#14983 Allow to build buoys at (0x0).
+	DocksUnderBridges, ///< Saveload version: 360, GitHub pull request: 14594\n Allow docks under bridges.
+	LocksUnderBridges, ///< Saveload version: 361, GitHub pull request: 14595\n Allow locks under bridges.
+	EngineMultiRailtype, ///< Saveload version: 362, GitHub pull request: 14357, release: 15.0\n Train engines can have multiple railtypes.
+	SignTextColours, ///< Saveload version: 363, GitHub pull request: 14743\n Configurable sign text colors in scenario editor.
+	BuoysAt0_0, ///< Saveload version: 364, GitHub pull request: 14983\n Allow to build buoys at (0x0).
 
-	DriveBackwards, ///< 365 PR#15379 Trains can drive backwards.
+	DriveBackwards, ///< Saveload version: 365, GitHub pull request: 15379\n Trains can drive backwards.
 
-	MaxVersion, ///< Highest possible saveload version
+	MaxVersion, ///< Highest possible saveload version.
 };
 
 /** Save or load result codes. */
