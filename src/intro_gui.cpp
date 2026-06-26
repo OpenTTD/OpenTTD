@@ -47,27 +47,13 @@
  * A viewport command for the main menu background (intro game).
  */
 struct IntroGameViewportCommand {
-	/** Horizontal alignment value. */
-	enum AlignmentH : uint8_t {
-		LEFT,
-		CENTRE,
-		RIGHT,
-	};
-	/** Vertical alignment value. */
-	enum AlignmentV : uint8_t {
-		TOP,
-		MIDDLE,
-		BOTTOM,
-	};
-
 	int command_index = 0;               ///< Sequence number of the command (order they are performed in).
 	Point position{ 0, 0 };              ///< Calculated world coordinate to position viewport top-left at.
 	VehicleID vehicle = VehicleID::Invalid(); ///< Vehicle to follow, or VehicleID::Invalid() if not following a vehicle.
 	uint delay = 0;                      ///< Delay until next command.
 	int zoom_adjust = 0;                 ///< Adjustment to zoom level from base zoom level.
 	bool pan_to_next = false;            ///< If true, do a smooth pan from this position to the next.
-	AlignmentH align_h = CENTRE;         ///< Horizontal alignment.
-	AlignmentV align_v = MIDDLE;         ///< Vertical alignment.
+	Alignment align = {AlignmentH::Centre, AlignmentV::Middle}; ///< Alignment.
 
 	/**
 	 * Calculate effective position.
@@ -83,15 +69,16 @@ struct IntroGameViewportCommand {
 		}
 
 		Point p;
-		switch (this->align_h) {
-			case LEFT: p.x = this->position.x; break;
-			case CENTRE: p.x = this->position.x - vp.virtual_width / 2; break;
-			case RIGHT: p.x = this->position.x - vp.virtual_width; break;
+		switch (this->align.ResolveRTL()) {
+			case AlignmentH::ForceLeft: p.x = this->position.x; break;
+			case AlignmentH::Centre: p.x = this->position.x - vp.virtual_width / 2; break;
+			case AlignmentH::ForceRight: p.x = this->position.x - vp.virtual_width; break;
+			default: NOT_REACHED();
 		}
-		switch (this->align_v) {
-			case TOP: p.y = this->position.y; break;
-			case MIDDLE: p.y = this->position.y - vp.virtual_height / 2; break;
-			case BOTTOM: p.y = this->position.y - vp.virtual_height; break;
+		switch (this->align.v) {
+			case AlignmentV::Top: p.y = this->position.y; break;
+			case AlignmentV::Middle: p.y = this->position.y - vp.virtual_height / 2; break;
+			case AlignmentV::Bottom: p.y = this->position.y - vp.virtual_height; break;
 		}
 		return p;
 	}
@@ -151,12 +138,12 @@ struct SelectGameWindow : public Window {
 				switch (toupper(c)) {
 					case '-': vc.zoom_adjust = +1; break;
 					case '+': vc.zoom_adjust = -1; break;
-					case 'T': vc.align_v = IntroGameViewportCommand::TOP; break;
-					case 'M': vc.align_v = IntroGameViewportCommand::MIDDLE; break;
-					case 'B': vc.align_v = IntroGameViewportCommand::BOTTOM; break;
-					case 'L': vc.align_h = IntroGameViewportCommand::LEFT; break;
-					case 'C': vc.align_h = IntroGameViewportCommand::CENTRE; break;
-					case 'R': vc.align_h = IntroGameViewportCommand::RIGHT; break;
+					case 'T': vc.align.v = AlignmentV::Top; break;
+					case 'M': vc.align.v = AlignmentV::Middle; break;
+					case 'B': vc.align.v = AlignmentV::Bottom; break;
+					case 'L': vc.align.h = AlignmentH::ForceLeft; break;
+					case 'C': vc.align.h = AlignmentH::Centre; break;
+					case 'R': vc.align.h = AlignmentH::ForceRight; break;
 					case 'P': vc.pan_to_next = true; break;
 					case 'V': vc.vehicle = static_cast<VehicleID>(consumer.ReadIntegerBase<uint32_t>(10, VehicleID::Invalid().base())); break;
 				}
