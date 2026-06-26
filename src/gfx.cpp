@@ -503,7 +503,7 @@ static void SetColourRemap(ExtendedTextColour colour)
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, int right, StringAlignment align, bool underline, bool truncation, ExtendedTextColour default_colour)
+static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, int right, Alignment align, bool underline, bool truncation, ExtendedTextColour default_colour)
 {
 	if (line.CountRuns() == 0) return 0;
 
@@ -665,7 +665,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-int DrawString(int left, int right, int top, std::string_view str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawString(int left, int right, int top, std::string_view str, ExtendedTextColour colour, Alignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
 	int max_height = std::max({GetCharacterHeight(FontSize::Small), GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Large), GetCharacterHeight(FontSize::Monospace)});
@@ -701,7 +701,7 @@ int DrawString(int left, int right, int top, std::string_view str, ExtendedTextC
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-int DrawString(int left, int right, int top, StringID str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawString(int left, int right, int top, StringID str, ExtendedTextColour colour, Alignment align, bool underline, FontSize fontsize)
 {
 	return DrawString(left, right, top, GetString(str), colour, align, underline, fontsize);
 }
@@ -784,7 +784,7 @@ Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &s
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, ExtendedTextColour colour, Alignment align, bool underline, FontSize fontsize)
 {
 	int maxw = right - left + 1;
 	int maxh = bottom - top + 1;
@@ -846,7 +846,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_vi
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, ExtendedTextColour colour, Alignment align, bool underline, FontSize fontsize)
 {
 	return DrawStringMultiLine(left, right, top, bottom, GetString(str), colour, align, underline, fontsize);
 }
@@ -869,7 +869,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  *
  * @return true iff the string was drawn.
  */
-bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, ExtendedTextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, ExtendedTextColour colour, Alignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
 	int max_height = std::max({GetCharacterHeight(FontSize::Small), GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Large), GetCharacterHeight(FontSize::Monospace)});

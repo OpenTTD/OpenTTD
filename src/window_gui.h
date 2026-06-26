@@ -132,7 +132,7 @@ inline void DrawFrameRect(const Rect &r, Colours colour, FrameFlags flags)
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, flags);
 }
 
-void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, std::string_view str, StringAlignment align, FontSize fs);
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, std::string_view str, Alignment align, FontSize fs);
 
 /* window.cpp */
 using WindowList = std::list<Window *>;

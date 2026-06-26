@@ -137,7 +137,7 @@ void SetupWidgetDimensions()
  * @param align Alignment of the object.
  * @return A point containing the position at which to draw.
  */
-static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, StringAlignment align)
+static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, Alignment align)
 {
 	Point p;
 	/* In case we have a RTL language we swap the alignment. */
@@ -341,7 +341,14 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	}
 }
 
-void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, StringAlignment align)
+/**
+ * Draw a sprite within a Rect, ignoring the sprite's padding.
+ * @param img The sprite to draw.
+ * @param pal The palette to use.
+ * @param r The Rect to draw within.
+ * @param align Alignment of the sprite within the Rect.
+ */
+void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, Alignment align)
 {
 	Point offset;
 	Dimension d = GetSpriteSize(img, &offset);
@@ -361,7 +368,7 @@ void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, StringA
  * @param img     Sprite to draw.
  * @param align   Alignment of the sprite.
  */
-static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img, StringAlignment align)
+static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img, Alignment align)
 {
 	assert(img != 0);
 	DrawFrameRect(r, colour, clicked ? FrameFlag::Lowered : FrameFlags{});
@@ -381,7 +388,7 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
  * @param align   Alignment of the caption.
  * @param fs      Font size of the text.
  */
-static inline void DrawImageTextButtons(const Rect &r, Colours colour, bool clicked, SpriteID img, TextColour text_colour, const std::string &text, StringAlignment align, FontSize fs)
+static inline void DrawImageTextButtons(const Rect &r, Colours colour, bool clicked, SpriteID img, TextColour text_colour, const std::string &text, Alignment align, FontSize fs)
 {
 	DrawFrameRect(r, colour, clicked ? FrameFlag::Lowered : FrameFlags{});
 
@@ -409,7 +416,7 @@ static inline void DrawImageTextButtons(const Rect &r, Colours colour, bool clic
  * @param align   Alignment of the text.
  * @param fs      Font size of the text.
  */
-static inline void DrawLabel(const Rect &r, TextColour colour, std::string_view str, StringAlignment align, FontSize fs)
+static inline void DrawLabel(const Rect &r, TextColour colour, std::string_view str, Alignment align, FontSize fs)
 {
 	if (str.empty()) return;
 
@@ -426,7 +433,7 @@ static inline void DrawLabel(const Rect &r, TextColour colour, std::string_view 
  * @param align  Alignment of the text.
  * @param fs     Font size of the text.
  */
-static inline void DrawText(const Rect &r, TextColour colour, std::string_view str, StringAlignment align, FontSize fs)
+static inline void DrawText(const Rect &r, TextColour colour, std::string_view str, Alignment align, FontSize fs)
 {
 	if (str.empty()) return;
 
@@ -444,7 +451,7 @@ static inline void DrawText(const Rect &r, TextColour colour, std::string_view s
  * @param align       Alignment of the text.
  * @param fs          Font size of the text.
  */
-static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, std::string_view str, StringAlignment align, FontSize fs)
+static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, std::string_view str, Alignment align, FontSize fs)
 {
 	DrawFrameRect(r, colour, {FrameFlag::Lowered, FrameFlag::Darkened});
 	if (!str.empty()) DrawString(r.Shrink(WidgetDimensions::scaled.inset), str, text_colour, align, false, fs);
@@ -600,7 +607,7 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
  * @param align       Alignment of the text in the frame.
  * @param fs          Font size of the text.
  */
-static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, std::string_view str, StringAlignment align, FontSize fs)
+static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, std::string_view str, Alignment align, FontSize fs)
 {
 	int x2 = r.left; // by default the left side is the left side of the widget
 
@@ -735,7 +742,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
  * @param align       Alignment of the text.
  * @param fs          Font size of the text.
  */
-void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, std::string_view str, StringAlignment align, FontSize fs)
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, std::string_view str, Alignment align, FontSize fs)
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
@@ -765,7 +772,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
  *
  * @note Magic constants are also used in #NWidgetLeaf::ButtonHit.
  */
-static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, std::string_view str, StringAlignment align)
+static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, std::string_view str, Alignment align)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
@@ -1269,7 +1276,7 @@ StringID NWidgetCore::GetToolTip() const
  * Set the text/image alignment of the nested widget.
  * @param align Alignment to use.
  */
-void NWidgetCore::SetAlignment(StringAlignment align)
+void NWidgetCore::SetAlignment(Alignment align)
 {
 	this->align = align;
 }

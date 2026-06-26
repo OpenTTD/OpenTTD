@@ -431,7 +431,7 @@ enum class Support8bpp : uint8_t {
 };
 
 	/** How to align the to-be drawn text. */
-enum StringAlignment : uint8_t {
+enum Alignment : uint8_t {
 	SA_LEFT        = 0 << 0, ///< Left align the text.
 	SA_HOR_CENTER  = 1 << 0, ///< Horizontally center the text.
 	SA_RIGHT       = 2 << 0, ///< Right align the text (must be a single bit).
@@ -446,7 +446,7 @@ enum StringAlignment : uint8_t {
 
 	SA_FORCE       = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
 };
-DECLARE_ENUM_AS_BIT_SET(StringAlignment)
+DECLARE_ENUM_AS_BIT_SET(Alignment)
 
 /** The four direction keys on a keyboard. */
 enum class DirectionKey {

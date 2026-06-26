@@ -408,7 +408,7 @@ public:
 	void SetToolTip(StringID tool_tip);
 	StringID GetToolTip() const;
 	void SetTextStyle(TextColour colour, FontSize size);
-	void SetAlignment(StringAlignment align);
+	void SetAlignment(Alignment align);
 
 	StringID GetString() const;
 	WidgetID GetScrollbarIndex() const;
@@ -435,7 +435,7 @@ protected:
 	TextColour highlight_colour{}; ///< Colour of highlight.
 	TextColour text_colour{}; ///< Colour of text within widget.
 	FontSize text_size = FontSize::Normal; ///< Size of text within widget.
-	StringAlignment align = SA_CENTER; ///< Alignment of text/image within widget.
+	Alignment align = SA_CENTER; ///< Alignment of text/image within widget.
 
 	/* This function constructs the widgets, so it should be able to write the variables. */
 	friend void ApplyNWidgetPartAttribute(const struct NWidgetPart &nwid, NWidgetBase *dest);
@@ -1110,7 +1110,7 @@ struct NWidgetPartTextStyle {
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartAlignment {
-	StringAlignment align; ///< Alignment of text/image.
+	Alignment align; ///< Alignment of text/image.
 };
 
 struct NWidgetPartAspect {
@@ -1249,7 +1249,7 @@ constexpr NWidgetPart SetTextStyle(TextColour colour, FontSize size = FontSize::
  * @return The created widget part.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetAlignment(StringAlignment align)
+constexpr NWidgetPart SetAlignment(Alignment align)
 {
 	return NWidgetPart{WPT_ALIGNMENT, NWidgetPartAlignment{align}};
 }
