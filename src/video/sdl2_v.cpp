@@ -262,84 +262,91 @@ std::vector<int> VideoDriver_SDL_Base::GetListOfMonitorRefreshRates()
 }
 
 
+/** Mapping from keycodes in the SDL world to OpenTTD's world. */
 struct SDLVkMapping {
-	const SDL_Keycode vk_from;
-	const uint8_t vk_count;
-	const uint8_t map_to;
-	const bool unprintable;
+	const SDL_Keycode vk_from; ///< The first of the SDL keycodes of this mapping.
+	const WindowKeyCodes map_to; ///< The first of the OpenTTD keycodes of this mapping.
+	const uint8_t count; ///< The number of keycodes that are to be mapped.
+	const bool unprintable; ///< Whether this keycode is unprintable.
 
-	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last, bool unprintable)
-		: vk_from(vk_first), vk_count(vk_last - vk_first + 1), map_to(map_first), unprintable(unprintable)
+	/**
+	 * Create a mapping for several consecutive keycodes.
+	 * @param vk_first The first SDL keycode.
+	 * @param vk_last The last SDL keycode (inclusive).
+	 * @param map_first The first OpenTTD keycode.
+	 * @param map_last The last OpenTTD keycode (inclusive).
+	 * @param unprintable Whether this keycode is unprintable.
+	 */
+	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, WindowKeyCodes map_first, [[maybe_unused]] WindowKeyCodes map_last, bool unprintable)
+		: vk_from(vk_first), map_to(map_first), count(vk_last - vk_first + 1), unprintable(unprintable)
 	{
-		assert((vk_last - vk_first) == (map_last - map_first));
+		assert(vk_first < vk_last);
+		assert(map_first < map_last);
+		assert(this->count == static_cast<uint>(map_last - map_first + 1));
 	}
+
+	/**
+	 * Create a mapping for a single keycode.
+	 * @param vk_from The SDL keycode.
+	 * @param map_to The OpenTTD keycode.
+	 * @param unprintable Whether this keycode is unprintable.
+	 */
+	constexpr SDLVkMapping(SDL_Keycode vk_from, WindowKeyCodes map_to, bool unprintable)
+		: vk_from(vk_from), map_to(map_to), count(1), unprintable(unprintable) {}
 };
 
-#define AS(x, z) {x, x, z, z, false}
-#define AM(x, y, z, w) {x, y, z, w, false}
-#define AS_UP(x, z) {x, x, z, z, true}
-#define AM_UP(x, y, z, w) {x, y, z, w, true}
-
+/** Mapping of SDL keycodes to WKC. */
 static constexpr SDLVkMapping _vk_mapping[] = {
-	/* Pageup stuff + up/down */
-	AS_UP(SDLK_PAGEUP,   WKC_PAGEUP),
-	AS_UP(SDLK_PAGEDOWN, WKC_PAGEDOWN),
-	AS_UP(SDLK_UP,     WKC_UP),
-	AS_UP(SDLK_DOWN,   WKC_DOWN),
-	AS_UP(SDLK_LEFT,   WKC_LEFT),
-	AS_UP(SDLK_RIGHT,  WKC_RIGHT),
+	/* All unprintable characters */
+	{ SDLK_PAGEUP, WKC_PAGEUP, true },
+	{ SDLK_PAGEDOWN, WKC_PAGEDOWN, true },
+	{ SDLK_UP, WKC_UP, true },
+	{ SDLK_DOWN, WKC_DOWN, true },
+	{ SDLK_LEFT, WKC_LEFT, true },
+	{ SDLK_RIGHT, WKC_RIGHT, true },
 
-	AS_UP(SDLK_HOME,   WKC_HOME),
-	AS_UP(SDLK_END,    WKC_END),
+	{ SDLK_HOME, WKC_HOME, true },
+	{ SDLK_END, WKC_END, true },
 
-	AS_UP(SDLK_INSERT, WKC_INSERT),
-	AS_UP(SDLK_DELETE, WKC_DELETE),
+	{ SDLK_INSERT, WKC_INSERT, true },
+	{ SDLK_DELETE, WKC_DELETE, true },
+
+	{ SDLK_ESCAPE, WKC_ESC, true },
+	{ SDLK_PAUSE, WKC_PAUSE, true },
+	{ SDLK_BACKSPACE, WKC_BACKSPACE, true },
+
+	{ SDLK_F1, SDLK_F12, WKC_F1, WKC_F12, true },
 
 	/* Map letters & digits */
-	AM(SDLK_a, SDLK_z, 'A', 'Z'),
-	AM(SDLK_0, SDLK_9, '0', '9'),
+	{ SDLK_a, SDLK_z, WindowKeyCodes{'A'}, WindowKeyCodes{'Z'}, false },
+	{ SDLK_0, SDLK_9, WindowKeyCodes{'0'}, WindowKeyCodes{'9'}, false },
 
-	AS_UP(SDLK_ESCAPE,    WKC_ESC),
-	AS_UP(SDLK_PAUSE,     WKC_PAUSE),
-	AS_UP(SDLK_BACKSPACE, WKC_BACKSPACE),
-
-	AS(SDLK_SPACE,     WKC_SPACE),
-	AS(SDLK_RETURN,    WKC_RETURN),
-	AS(SDLK_TAB,       WKC_TAB),
-
-	/* Function keys */
-	AM_UP(SDLK_F1, SDLK_F12, WKC_F1, WKC_F12),
+	{ SDLK_SPACE, WKC_SPACE, false },
+	{ SDLK_RETURN, WKC_RETURN, false },
+	{ SDLK_TAB, WKC_TAB, false },
 
 	/* Numeric part. */
-	AS(SDLK_KP_1,        '1'),
-	AS(SDLK_KP_2,        '2'),
-	AS(SDLK_KP_3,        '3'),
-	AS(SDLK_KP_4,        '4'),
-	AS(SDLK_KP_5,        '5'),
-	AS(SDLK_KP_6,        '6'),
-	AS(SDLK_KP_7,        '7'),
-	AS(SDLK_KP_8,        '8'),
-	AS(SDLK_KP_9,        '9'),
-	AS(SDLK_KP_0,        '0'),
-	AS(SDLK_KP_DIVIDE,   WKC_NUM_DIV),
-	AS(SDLK_KP_MULTIPLY, WKC_NUM_MUL),
-	AS(SDLK_KP_MINUS,    WKC_NUM_MINUS),
-	AS(SDLK_KP_PLUS,     WKC_NUM_PLUS),
-	AS(SDLK_KP_ENTER,    WKC_NUM_ENTER),
-	AS(SDLK_KP_PERIOD,   WKC_NUM_DECIMAL),
+	{ SDLK_KP_1, SDLK_KP_9, WindowKeyCodes{'1'}, WindowKeyCodes{'9'}, false },
+	{ SDLK_KP_0, WindowKeyCodes{'0'}, false },
+	{ SDLK_KP_DIVIDE, WKC_NUM_DIV, false },
+	{ SDLK_KP_MULTIPLY, WKC_NUM_MUL, false },
+	{ SDLK_KP_MINUS, WKC_NUM_MINUS, false },
+	{ SDLK_KP_PLUS, WKC_NUM_PLUS, false },
+	{ SDLK_KP_ENTER, WKC_NUM_ENTER, false },
+	{ SDLK_KP_PERIOD, WKC_NUM_DECIMAL, false },
 
 	/* Other non-letter keys */
-	AS(SDLK_SLASH,        WKC_SLASH),
-	AS(SDLK_SEMICOLON,    WKC_SEMICOLON),
-	AS(SDLK_EQUALS,       WKC_EQUALS),
-	AS(SDLK_LEFTBRACKET,  WKC_L_BRACKET),
-	AS(SDLK_BACKSLASH,    WKC_BACKSLASH),
-	AS(SDLK_RIGHTBRACKET, WKC_R_BRACKET),
+	{ SDLK_SLASH, WKC_SLASH, false },
+	{ SDLK_SEMICOLON, WKC_SEMICOLON, false },
+	{ SDLK_EQUALS, WKC_EQUALS, false },
+	{ SDLK_LEFTBRACKET, WKC_L_BRACKET, false },
+	{ SDLK_BACKSLASH, WKC_BACKSLASH, false },
+	{ SDLK_RIGHTBRACKET, WKC_R_BRACKET, false },
 
-	AS(SDLK_QUOTE,   WKC_SINGLEQUOTE),
-	AS(SDLK_COMMA,   WKC_COMMA),
-	AS(SDLK_MINUS,   WKC_MINUS),
-	AS(SDLK_PERIOD,  WKC_PERIOD)
+	{ SDLK_QUOTE, WKC_SINGLEQUOTE, false },
+	{ SDLK_COMMA, WKC_COMMA, false },
+	{ SDLK_MINUS, WKC_MINUS, false },
+	{ SDLK_PERIOD, WKC_PERIOD, false },
 };
 
 /**
@@ -354,7 +361,7 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 	bool unprintable = false;
 
 	for (const auto &map : _vk_mapping) {
-		if (IsInsideBS(sym->sym, map.vk_from, map.vk_count)) {
+		if (IsInsideBS(sym->sym, map.vk_from, map.count)) {
 			key = sym->sym - map.vk_from + map.map_to;
 			unprintable = map.unprintable;
 			break;
@@ -393,7 +400,7 @@ static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 	uint key = 0;
 
 	for (const auto &map : _vk_mapping) {
-		if (IsInsideBS(kc, map.vk_from, map.vk_count)) {
+		if (IsInsideBS(kc, map.vk_from, map.count)) {
 			key = kc - map.vk_from + map.map_to;
 			break;
 		}
