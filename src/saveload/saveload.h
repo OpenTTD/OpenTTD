@@ -696,9 +696,6 @@ enum VarTypes : uint16_t {
 	SLE_VAR_NAME  = 14 << 4, ///< old custom name to be converted to a string pointer
 	/* 1 more possible memory-primitives */
 
-	/* Shortcut values */
-	SLE_VAR_CHAR = SLE_VAR_I8,
-
 	/* Default combinations of variables. As savegames change, so can variables
 	 * and thus it is possible that the saved value and internal size do not
 	 * match and you need to specify custom combo. The defaults are listed here */
@@ -711,7 +708,6 @@ enum VarTypes : uint16_t {
 	SLE_UINT32       = SLE_FILE_U32 | SLE_VAR_U32,
 	SLE_INT64        = SLE_FILE_I64 | SLE_VAR_I64,
 	SLE_UINT64       = SLE_FILE_U64 | SLE_VAR_U64,
-	SLE_CHAR         = SLE_FILE_I8  | SLE_VAR_CHAR,
 	SLE_STRINGID     = SLE_FILE_STRINGID | SLE_VAR_U32,
 	SLE_STRING       = SLE_FILE_STRING   | SLE_VAR_STR,
 	SLE_STRINGQUOTE  = SLE_FILE_STRING   | SLE_VAR_STRQ,
