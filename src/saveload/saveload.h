@@ -709,13 +709,9 @@ enum VarTypes : uint16_t {
 	SLE_INT64        = SLE_FILE_I64 | SLE_VAR_I64,
 	SLE_UINT64       = SLE_FILE_U64 | SLE_VAR_U64,
 	SLE_STRINGID     = SLE_FILE_STRINGID | SLE_VAR_U32,
-	SLE_STRING       = SLE_FILE_STRING   | SLE_VAR_STR,
-	SLE_STRINGQUOTE  = SLE_FILE_STRING   | SLE_VAR_STRQ,
+	SLE_STR          = SLE_FILE_STRING   | SLE_VAR_STR,
+	SLE_STRQ         = SLE_FILE_STRING   | SLE_VAR_STRQ,
 	SLE_NAME         = SLE_FILE_STRINGID | SLE_VAR_NAME,
-
-	/* Shortcut values */
-	SLE_STR   = SLE_STRING,
-	SLE_STRQ  = SLE_STRINGQUOTE,
 
 	/* 8 bits allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
