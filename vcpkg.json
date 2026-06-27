@@ -46,7 +46,7 @@
       "name": "opusfile"
     },
     {
-      "name": "sdl2",
+      "name": "sdl3",
       "platform": "linux"
     },
     {

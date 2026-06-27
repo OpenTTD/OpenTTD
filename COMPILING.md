@@ -14,7 +14,7 @@ OpenTTD makes use of the following external libraries:
 For Linux, the following additional libraries are used:
 
 - (encouraged) libcurl: content downloads
-- libSDL2: hardware access (video, sound, mouse)
+- libSDL3: hardware access (video, sound, mouse)
 - libfreetype: loading generic fonts and rendering them
 - libfontconfig: searching for fonts, resolving font names to actual fonts
 - harfbuzz: handling of right-to-left scripts (e.g. Arabic and Persian) (required libicu)
