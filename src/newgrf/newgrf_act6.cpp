@@ -61,27 +61,21 @@ static void CfgApply(ByteReader &buf)
 
 	/* Now perform the Action 0x06 on our data. */
 	for (;;) {
-		uint i;
-		uint param_num;
-		uint param_size;
-		uint offset;
-		bool add_value;
-
 		/* Read the parameter to apply. 0xFF indicates no more data to change. */
-		param_num = buf.ReadByte();
+		uint param_num = buf.ReadByte();
 		if (param_num == 0xFF) break;
 
 		/* Get the size of the parameter to use. If the size covers multiple
 		 * double words, sequential parameter values are used. */
-		param_size = buf.ReadByte();
+		uint param_size = buf.ReadByte();
 
 		/* Bit 7 of param_size indicates we should add to the original value
 		 * instead of replacing it. */
-		add_value  = HasBit(param_size, 7);
+		bool add_value = HasBit(param_size, 7);
 		param_size = GB(param_size, 0, 7);
 
 		/* Where to apply the data to within the pseudo sprite data. */
-		offset     = buf.ReadExtendedByte();
+		uint offset = buf.ReadExtendedByte();
 
 		/* If the parameter is a GRF parameter (not an internal variable) check
 		 * if it (and all further sequential parameters) has been defined. */
@@ -93,7 +87,7 @@ static void CfgApply(ByteReader &buf)
 		GrfMsg(8, "CfgApply: Applying {} bytes from parameter 0x{:02X} at offset 0x{:04X}", param_size, param_num, offset);
 
 		bool carry = false;
-		for (i = 0; i < param_size && offset + i < num; i++) {
+		for (uint i = 0; i < param_size && offset + i < num; i++) {
 			uint32_t value = GetParamVal(param_num + i / 4, nullptr);
 			/* Reset carry flag for each iteration of the variable (only really
 			 * matters if param_size is greater than 4) */
