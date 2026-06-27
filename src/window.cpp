@@ -3148,8 +3148,8 @@ void UpdateWindows()
 
 	last_time = now;
 
-	PerformanceMeasurer framerate(PFE_DRAWING);
-	PerformanceAccumulator::Reset(PFE_DRAWWORLD);
+	PerformanceMeasurer framerate(PerformanceElement::Drawing);
+	PerformanceAccumulator::Reset(PerformanceElement::ViewportDrawing);
 
 	ProcessPendingPerformanceMeasurements();
 

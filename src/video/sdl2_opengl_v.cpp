@@ -180,7 +180,7 @@ void VideoDriver_SDL_OpenGL::ReleaseVideoPointer()
 
 void VideoDriver_SDL_OpenGL::Paint()
 {
-	PerformanceMeasurer framerate(PFE_VIDEO);
+	PerformanceMeasurer framerate(PerformanceElement::Video);
 
 	if (this->local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();

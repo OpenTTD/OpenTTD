@@ -1906,7 +1906,7 @@ static inline void ViewportDraw(const Viewport &vp, int left, int top, int right
  */
 void Window::DrawViewport() const
 {
-	PerformanceAccumulator framerate(PFE_DRAWWORLD);
+	PerformanceAccumulator framerate(PerformanceElement::ViewportDrawing);
 
 	DrawPixelInfo *dpi = _cur_dpi;
 

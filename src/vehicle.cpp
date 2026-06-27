@@ -988,13 +988,13 @@ void CallVehicleTicks()
 	RunEconomyVehicleDayProc();
 
 	{
-		PerformanceMeasurer framerate(PFE_GL_ECONOMY);
+		PerformanceMeasurer framerate(PerformanceElement::GameLoopEconomy);
 		for (Station *st : Station::Iterate()) LoadUnloadStation(st);
 	}
-	PerformanceAccumulator::Reset(PFE_GL_TRAINS);
-	PerformanceAccumulator::Reset(PFE_GL_ROADVEHS);
-	PerformanceAccumulator::Reset(PFE_GL_SHIPS);
-	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
+	PerformanceAccumulator::Reset(PerformanceElement::GameLoopTrains);
+	PerformanceAccumulator::Reset(PerformanceElement::GameLoopRoadVehicles);
+	PerformanceAccumulator::Reset(PerformanceElement::GameLoopShips);
+	PerformanceAccumulator::Reset(PerformanceElement::GameLoopAircraft);
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		[[maybe_unused]] VehicleID vehicle_index = v->index;

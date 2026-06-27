@@ -803,7 +803,7 @@ TileIndex _cur_tileloop_tile;
  */
 void RunTileLoop()
 {
-	PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
+	PerformanceAccumulator framerate(PerformanceElement::GameLoopLandscape);
 
 	/* The pseudorandom sequence of tiles is generated using a Galois linear feedback
 	 * shift register (LFSR). This allows a deterministic pseudorandom ordering, but
@@ -1727,7 +1727,7 @@ void OnTick_LinkGraph();
 void CallLandscapeTick()
 {
 	{
-		PerformanceAccumulator framerate(PFE_GL_LANDSCAPE);
+		PerformanceAccumulator framerate(PerformanceElement::GameLoopLandscape);
 
 		OnTick_Town();
 		OnTick_Trees();

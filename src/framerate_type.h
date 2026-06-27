@@ -11,7 +11,7 @@
  * @par Adding new measurements
  * Adding a new measurement requires multiple steps, which are outlined here.
  * The first thing to do is add a new member of the #PerformanceElement enum.
- * It must be added before \c PFE_MAX and should be added in a logical place.
+ * It must be added before \c PerformanceElement::End and should be added in a logical place.
  * For example, an element of the game loop would be added next to the other game loop elements, and a rendering element next to the other rendering elements.
  *
  * @par
@@ -43,39 +43,39 @@
  * @note When adding new elements here, make sure to also update all other locations depending on the length and order of this enum.
  * See <em>Adding new measurements</em> above.
  */
-enum PerformanceElement : uint8_t {
-	PFE_FIRST = 0,
-	PFE_GAMELOOP = 0,  ///< Speed of gameloop processing.
-	PFE_GL_ECONOMY,    ///< Time spent processing cargo movement
-	PFE_GL_TRAINS,     ///< Time spent processing trains
-	PFE_GL_ROADVEHS,   ///< Time spend processing road vehicles
-	PFE_GL_SHIPS,      ///< Time spent processing ships
-	PFE_GL_AIRCRAFT,   ///< Time spent processing aircraft
-	PFE_GL_LANDSCAPE,  ///< Time spent processing other world features
-	PFE_GL_LINKGRAPH,  ///< Time spent waiting for link graph background jobs
-	PFE_DRAWING,       ///< Speed of drawing world and GUI.
-	PFE_DRAWWORLD,     ///< Time spent drawing world viewports in GUI
-	PFE_VIDEO,         ///< Speed of painting drawn video buffer.
-	PFE_SOUND,         ///< Speed of mixing audio samples
-	PFE_ALLSCRIPTS,    ///< Sum of all GS/AI scripts
-	PFE_GAMESCRIPT,    ///< Game script execution
-	PFE_AI0,           ///< AI execution for player slot 1
-	PFE_AI1,           ///< AI execution for player slot 2
-	PFE_AI2,           ///< AI execution for player slot 3
-	PFE_AI3,           ///< AI execution for player slot 4
-	PFE_AI4,           ///< AI execution for player slot 5
-	PFE_AI5,           ///< AI execution for player slot 6
-	PFE_AI6,           ///< AI execution for player slot 7
-	PFE_AI7,           ///< AI execution for player slot 8
-	PFE_AI8,           ///< AI execution for player slot 9
-	PFE_AI9,           ///< AI execution for player slot 10
-	PFE_AI10,          ///< AI execution for player slot 11
-	PFE_AI11,          ///< AI execution for player slot 12
-	PFE_AI12,          ///< AI execution for player slot 13
-	PFE_AI13,          ///< AI execution for player slot 14
-	PFE_AI14,          ///< AI execution for player slot 15
-	PFE_MAX,           ///< End of enum, must be last.
+enum class PerformanceElement : uint8_t {
+	GameLoop, ///< Speed of gameloop processing.
+	GameLoopEconomy, ///< Time spent processing cargo movement
+	GameLoopTrains, ///< Time spent processing trains
+	GameLoopRoadVehicles, ///< Time spend processing road vehicles
+	GameLoopShips, ///< Time spent processing ships
+	GameLoopAircraft, ///< Time spent processing aircraft
+	GameLoopLandscape, ///< Time spent processing other world features
+	GameLoopLinkGraph, ///< Time spent waiting for link graph background jobs
+	Drawing, ///< Speed of drawing world and GUI.
+	ViewportDrawing, ///< Time spent drawing world viewports in GUI
+	Video, ///< Speed of painting drawn video buffer.
+	Sound, ///< Speed of mixing audio samples
+	AllScripts, ///< Sum of all GS/AI scripts
+	GameScript, ///< Game script execution
+	AI0, ///< AI execution for player slot 1
+	AI1, ///< AI execution for player slot 2
+	AI2, ///< AI execution for player slot 3
+	AI3, ///< AI execution for player slot 4
+	AI4, ///< AI execution for player slot 5
+	AI5, ///< AI execution for player slot 6
+	AI6, ///< AI execution for player slot 7
+	AI7, ///< AI execution for player slot 8
+	AI8, ///< AI execution for player slot 9
+	AI9, ///< AI execution for player slot 10
+	AI10, ///< AI execution for player slot 11
+	AI11, ///< AI execution for player slot 12
+	AI12, ///< AI execution for player slot 13
+	AI13, ///< AI execution for player slot 14
+	AI14, ///< AI execution for player slot 15
+	End, ///< End of enum, must be last.
 };
+DECLARE_ENUM_AS_SEQUENTIAL(PerformanceElement)
 
 /** Type used to hold a performance timing measurement */
 typedef uint64_t TimingMeasurement;

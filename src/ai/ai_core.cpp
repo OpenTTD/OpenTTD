@@ -81,7 +81,7 @@
 
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) {
-			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
+			PerformanceMeasurer framerate(static_cast<PerformanceElement>(PerformanceElement::AI0 + c->index));
 			AutoRestoreBackup cur_company(_current_company, c->index);
 			c->ai_instance->GameLoop();
 			/* Occasionally collect garbage; every 255 ticks do one company.
@@ -90,7 +90,7 @@
 				c->ai_instance->CollectGarbage();
 			}
 		} else {
-			PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + c->index));
+			PerformanceMeasurer::SetInactive(static_cast<PerformanceElement>(PerformanceElement::AI0 + c->index));
 		}
 	}
 }
@@ -103,7 +103,7 @@
 /* static */ void AI::Stop(CompanyID company)
 {
 	if (_networking && !_network_server) return;
-	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
+	PerformanceMeasurer::SetInactive(static_cast<PerformanceElement>(PerformanceElement::AI0 + company));
 
 	AutoRestoreBackup cur_company(_current_company, company);
 	Company *c = Company::Get(company);

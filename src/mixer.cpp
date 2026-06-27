@@ -125,7 +125,7 @@ void MxCloseAllChannels()
 
 void MxMixSamples(void *buffer, uint samples)
 {
-	PerformanceMeasurer framerate(PFE_SOUND);
+	PerformanceMeasurer framerate(PerformanceElement::Sound);
 	static uint last_samples = 0;
 	if (samples != last_samples) {
 		framerate.SetExpectedRate((double)_play_rate / samples);
