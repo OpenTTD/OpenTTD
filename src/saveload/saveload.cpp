@@ -2025,7 +2025,7 @@ std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLo
 	std::vector<SaveLoad> saveloads;
 
 	/* Build a key lookup mapping based on the available fields. */
-	std::map<std::string, std::vector<const SaveLoad *>> key_lookup;
+	std::map<std::string_view, std::vector<const SaveLoad *>> key_lookup;
 	for (auto &sld : slt) {
 		/* All entries should have a name; otherwise the entry should just be removed. */
 		assert(!sld.name.empty());
@@ -2038,7 +2038,7 @@ std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLo
 			/* In old savegames there can be data we no longer care for. We
 			 * skip this by simply reading the amount of bytes indicated and
 			 * send those to /dev/null. */
-			saveloads.emplace_back("", SaveLoadType::Null, GetVarFileType(slc.null_type) | SLE_VAR_NULL, slc.null_length, slc.version_from, slc.version_to, nullptr, 0, nullptr);
+			saveloads.emplace_back("", SaveLoadType::Null, SLE_FILE_U8 | SLE_VAR_NULL, slc.null_length, slc.version_from, slc.version_to, nullptr, 0, nullptr);
 		} else {
 			auto sld_it = key_lookup.find(slc.name);
 			/* If this branch triggers, it means that an entry in the
