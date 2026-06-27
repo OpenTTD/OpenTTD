@@ -39,6 +39,16 @@ static constexpr inline bool IsSteepSlope(Slope s)
 }
 
 /**
+ * Removes a steep flag from a slope
+ * @param s A #Slope to get modified version of.
+ * @return The slope s without the steep flag.
+ */
+static constexpr Slope RemoveSteepSlope(Slope s)
+{
+	return s & ~SLOPE_STEEP;
+}
+
+/**
  * Checks for non-continuous slope on halftile foundations.
  *
  * @param s The given #Slope.

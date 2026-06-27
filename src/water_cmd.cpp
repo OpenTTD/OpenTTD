@@ -1318,7 +1318,7 @@ void TileLoop_Water(TileIndex tile)
 				auto [slope_dest, z_dest] = GetFoundationSlope(dest);
 				if (z_dest > 0) continue;
 
-				if (!_flood_from_dirs[slope_dest & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP].Test(ReverseDir(dir))) continue;
+				if (!_flood_from_dirs[RemoveSteepSlope(RemoveHalftileSlope(slope_dest))].Test(ReverseDir(dir))) continue;
 
 				DoFloodTile(dest);
 			}
@@ -1327,7 +1327,7 @@ void TileLoop_Water(TileIndex tile)
 		}
 
 		case FloodingBehaviour::DryOut: {
-			Slope slope_here = std::get<Slope>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+			Slope slope_here = RemoveHalftileSlope(RemoveSteepSlope(std::get<Slope>(GetFoundationSlope(tile))));
 			for (Direction dir : _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to flooding, drying up does consider TileType::Void tiles. */
@@ -1365,9 +1365,9 @@ void ConvertGroundTilesIntoWaterTiles()
 					break;
 
 				default:
-					for (Direction dir : _flood_from_dirs[slope & ~SLOPE_STEEP]) {
+					for (Direction dir : _flood_from_dirs[RemoveSteepSlope(slope)]) {
 						TileIndex dest = TileAddByDir(tile, dir);
-						Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
+						Slope slope_dest = RemoveSteepSlope(GetTileSlope(dest));
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest) || IsTileType(dest, TileType::Void)) {
 							MakeShore(tile);
 							break;

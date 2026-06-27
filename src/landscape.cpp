@@ -460,7 +460,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 		if (!IsNonContinuousFoundation(f)) {
 			/* Lower part of foundation */
 			static constexpr SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {}};
-			AddSortableSpriteToDraw(leveled_base + (ti->tileh & ~SLOPE_STEEP), PAL_NONE, *ti, bounds);
+			AddSortableSpriteToDraw(leveled_base + RemoveSteepSlope(ti->tileh), PAL_NONE, *ti, bounds);
 		}
 
 		Corner highest_corner = GetHighestSlopeCorner(ti->tileh);
