@@ -769,14 +769,13 @@ struct SaveLoad {
 /**
  * SaveLoad information for backwards compatibility.
  *
- * At SLV_SETTINGS_NAME a new method of keeping track of fields in a savegame
+ * At SaveLoadVersion::TableChunks a new method of keeping track of fields in a savegame
  * was added, where the order of fields is no longer important. For older
  * savegames we still need to know the correct order. This struct is the glue
  * to make that happen.
  */
 struct SaveLoadCompat {
-	std::string name; ///< Name of the field.
-	VarTypes null_type; ///< The type associated with the NULL field; defaults to SLE_FILE_U8 to just count bytes.
+	std::string_view name; ///< Name of the field.
 	uint16_t null_length; ///< Length of the NULL field.
 	SaveLoadVersion version_from; ///< Save/load the variable starting from this savegame version.
 	SaveLoadVersion version_to; ///< Save/load the variable before this savegame version.
@@ -1262,7 +1261,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * Field name where the real SaveLoad can be located.
  * @param name The name of the field.
  */
-#define SLC_VAR(name) {name, SLE_FILE_U8, 0, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion}
+#define SLC_VAR(name) {name, 0, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion}
 
 /**
  * Empty space in every savegame version.
@@ -1270,7 +1269,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLC_NULL(length, from, to) {{}, SLE_FILE_U8, length, from, to}
+#define SLC_NULL(length, from, to) {{}, length, from, to}
 
 /**
  * Checks whether the savegame is below \a major.\a minor.
