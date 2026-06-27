@@ -718,7 +718,6 @@ enum VarTypes : uint16_t {
 	SLE_NAME         = SLE_FILE_STRINGID | SLE_VAR_NAME,
 
 	/* Shortcut values */
-	SLE_INT   = SLE_INT32,
 	SLE_STR   = SLE_STRING,
 	SLE_STRQ  = SLE_STRINGQUOTE,
 
