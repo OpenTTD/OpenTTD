@@ -584,10 +584,10 @@ struct SavegameFileType {
 	 * @param file_type The file type.
 	 * @param has_field_length Does this field have a length?
 	 */
-	SavegameFileType(VarType file_type, bool has_field_length = false) : storage(file_type)
+	SavegameFileType(VarFileType file_type, bool has_field_length = false) : storage(to_underlying(file_type))
 	{
 		/* 0 is not allowed as it's the end-of-table marker, larger is not allowed due to the field length bit. */
-		assert(IsInsideMM(file_type, 1, 1 << HAS_FIELD_LENGTH_BIT));
+		assert(IsInsideMM(to_underlying(file_type), 1, 1 << HAS_FIELD_LENGTH_BIT));
 		AssignBit(this->storage, HAS_FIELD_LENGTH_BIT, has_field_length);
 	}
 
@@ -611,10 +611,10 @@ struct SavegameFileType {
 	 * Get the \c VarType for this field.
 	 * @return The \c VarType.
 	 */
-	constexpr VarType Type() const
+	constexpr VarFileType Type() const
 	{
 		assert(!this->IsEnd());
-		return GB(storage, 0, HAS_FIELD_LENGTH_BIT);
+		return static_cast<VarFileType>(GB(storage, 0, HAS_FIELD_LENGTH_BIT));
 	}
 };
 
@@ -1153,15 +1153,15 @@ static void SlStdString(void *ptr, VarType conv)
 			SlReadString(*str, len);
 
 			StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark;
-			if ((conv & SLF_ALLOW_CONTROL) != 0) {
+			if (conv.flags.Test(SLF_ALLOW_CONTROL)) {
 				settings.Set(StringValidationSetting::AllowControlCode);
 				if (IsSavegameVersionBefore(SaveLoadVersion::EncodedStringFormat)) FixSCCEncoded(*str, IsSavegameVersionBefore(SaveLoadVersion::MoveSccEncoded));
 				if (IsSavegameVersionBefore(SaveLoadVersion::FixSccEncodedNegative)) FixSCCEncodedNegative(*str);
 			}
-			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
+			if (conv.flags.Test(SLF_ALLOW_NEWLINE)) {
 				settings.Set(StringValidationSetting::AllowNewline);
 			}
-			if ((conv & SLF_REPLACE_TABCRLF) != 0) {
+			if (conv.flags.Test(SLF_REPLACE_TABCRLF)) {
 				settings.Set(StringValidationSetting::ReplaceTabCrNlWithSpace);
 			}
 			StrMakeValidInPlace(*str, settings);
@@ -1413,14 +1413,14 @@ void SlSaveLoadRef(void *ptr, VarType conv)
 {
 	switch (_sl.action) {
 		case SaveLoadAction::Save:
-			SlWriteUint32(ReferenceToInt(*static_cast<void **>(ptr), static_cast<SLRefType>(conv)));
+			SlWriteUint32(ReferenceToInt(*static_cast<void **>(ptr), conv.ref));
 			break;
 		case SaveLoadAction::LoadCheck:
 		case SaveLoadAction::Load:
 			*static_cast<size_t *>(ptr) = IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SlReadUint16() : SlReadUint32();
 			break;
 		case SaveLoadAction::Ptrs:
-			*static_cast<void **>(ptr) = IntToReference(*static_cast<size_t *>(ptr), static_cast<SLRefType>(conv));
+			*static_cast<void **>(ptr) = IntToReference(*static_cast<size_t *>(ptr), conv.ref);
 			break;
 		case SaveLoadAction::Null:
 			*static_cast<void **>(ptr) = nullptr;
@@ -1450,7 +1450,7 @@ public:
 		const SlStorageT *list = static_cast<const SlStorageT *>(storage);
 
 		int type_size = SlGetArrayLength(list->size());
-		int item_size = SlCalcConvFileLen(cmd == SaveLoadType::Variable ? conv : static_cast<VarType>(SLE_FILE_U32));
+		int item_size = SlCalcConvFileLen(cmd == SaveLoadType::Variable ? conv : VarType{SLE_FILE_U32, {}});
 		return list->size() * item_size + type_size;
 	}
 
@@ -1744,7 +1744,6 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 {
 	if (!SlIsObjectValidInSavegame(sld)) return false;
 
-	VarType conv = GB(sld.conv, 0, 8);
 	switch (sld.cmd) {
 		case SaveLoadType::Variable:
 		case SaveLoadType::Reference:
@@ -1756,12 +1755,12 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 			void *ptr = GetVariableAddress(object, sld);
 
 			switch (sld.cmd) {
-				case SaveLoadType::Variable: SlSaveLoadConv(ptr, conv); break;
-				case SaveLoadType::Reference: SlSaveLoadRef(ptr, conv); break;
-				case SaveLoadType::Array: SlArray(ptr, sld.length, conv); break;
-				case SaveLoadType::ReferenceList: SlRefList(ptr, conv); break;
-				case SaveLoadType::ReferenceVector: SlRefVector(ptr, conv); break;
-				case SaveLoadType::Vector: SlVector(ptr, conv); break;
+				case SaveLoadType::Variable: SlSaveLoadConv(ptr, sld.conv); break;
+				case SaveLoadType::Reference: SlSaveLoadRef(ptr, sld.conv); break;
+				case SaveLoadType::Array: SlArray(ptr, sld.length, sld.conv); break;
+				case SaveLoadType::ReferenceList: SlRefList(ptr, sld.conv); break;
+				case SaveLoadType::ReferenceVector: SlRefVector(ptr, sld.conv); break;
+				case SaveLoadType::Vector: SlVector(ptr, sld.conv); break;
 				case SaveLoadType::String: SlStdString(ptr, sld.conv); break;
 				default: NOT_REACHED();
 			}
