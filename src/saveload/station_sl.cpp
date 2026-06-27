@@ -386,7 +386,7 @@ public:
 		 SLE_CONDVAR(GoodsEntry, amount_fract, SLE_UINT8, SaveLoadVersion::FractionalCargoDelivery, SaveLoadVersion::MaxVersion),
 		SLEG_CONDREFLIST("packets", _packets, REF_CARGO_PACKET, SaveLoadVersion::CargoPackets, SaveLoadVersion::Cargodist),
 		SLEG_CONDVAR("old_num_dests", _old_num_dests, SLE_UINT32, SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
-		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, SLE_UINT, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
+		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, SLE_UINT32, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
 		 SLE_CONDVAR(GoodsEntry, link_graph, SLE_UINT16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
 		 SLE_CONDVAR(GoodsEntry, node, SLE_UINT16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
 		SLEG_CONDVAR("old_num_flows", _old_num_flows, SLE_UINT32, SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
