@@ -746,7 +746,7 @@ void VideoDriver_CocoaQuartz::CheckPaletteAnim()
 /** Draw window */
 void VideoDriver_CocoaQuartz::Paint()
 {
-	PerformanceMeasurer framerate(PFE_VIDEO);
+	PerformanceMeasurer framerate(PerformanceElement::Video);
 
 	/* Check if we need to do anything */
 	if (IsEmptyRect(this->dirty_rect) || [ this->window isMiniaturized ]) return;

@@ -31,15 +31,15 @@
 /* static */ void Game::GameLoop()
 {
 	if (_networking && !_network_server) {
-		PerformanceMeasurer::SetInactive(PFE_GAMESCRIPT);
+		PerformanceMeasurer::SetInactive(PerformanceElement::GameScript);
 		return;
 	}
 	if (Game::instance == nullptr) {
-		PerformanceMeasurer::SetInactive(PFE_GAMESCRIPT);
+		PerformanceMeasurer::SetInactive(PerformanceElement::GameScript);
 		return;
 	}
 
-	PerformanceMeasurer framerate(PFE_GAMESCRIPT);
+	PerformanceMeasurer framerate(PerformanceElement::GameScript);
 
 	Game::frame_counter++;
 

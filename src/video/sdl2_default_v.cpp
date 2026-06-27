@@ -96,7 +96,7 @@ void VideoDriver_SDL_Default::MakePalette()
 
 void VideoDriver_SDL_Default::Paint()
 {
-	PerformanceMeasurer framerate(PFE_VIDEO);
+	PerformanceMeasurer framerate(PerformanceElement::Video);
 
 	if (IsEmptyRect(this->dirty_rect) && this->local_palette.count_dirty == 0) return;
 

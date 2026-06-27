@@ -57,7 +57,7 @@ void VideoDriver_Allegro::MakeDirty(int left, int top, int width, int height)
 
 void VideoDriver_Allegro::Paint()
 {
-	PerformanceMeasurer framerate(PFE_VIDEO);
+	PerformanceMeasurer framerate(PerformanceElement::Video);
 
 	size_t n = _num_dirty_rects;
 	if (n == 0) return;
