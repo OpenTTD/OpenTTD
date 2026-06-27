@@ -282,8 +282,8 @@ struct CheatWindow : Window {
 			const CheatEntry *ce = &_cheats_ui[i];
 
 			std::string str;
-			switch (ce->type) {
-				case SLE_BOOL: {
+			switch (GetVarMemType(ce->type)) {
+				case SLE_VAR_BL: {
 					bool on = (*(bool*)ce->variable);
 
 					DrawBoolButton(button_left, y + button_y_offset, Colours::Yellow, Colours::Grey, on, true);
@@ -379,8 +379,8 @@ struct CheatWindow : Window {
 	{
 		uint width = 0;
 		for (const auto &ce : _cheats_ui) {
-			switch (ce.type) {
-				case SLE_BOOL:
+			switch (GetVarMemType(ce.type)) {
+				case SLE_VAR_BL:
 					width = std::max(width, GetStringBoundingBox(GetString(ce.str, STR_CONFIG_SETTING_ON)).width);
 					width = std::max(width, GetStringBoundingBox(GetString(ce.str, STR_CONFIG_SETTING_OFF)).width);
 					break;
@@ -465,8 +465,8 @@ struct CheatWindow : Window {
 		this->clicked_setting = nullptr;
 		*ce->been_used = true;
 
-		switch (ce->type) {
-			case SLE_BOOL:
+		switch (GetVarMemType(ce->type)) {
+			case SLE_VAR_BL:
 				value ^= 1;
 				if (ce->proc != nullptr) ce->proc(value, 0);
 				break;

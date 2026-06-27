@@ -652,72 +652,120 @@ enum SLRefType : uint8_t {
 	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
 };
 
-/**
- * VarTypes is the general bitmasked magic type that tells us
- * certain characteristics about the variable it refers to. For example
- * SLE_FILE_* gives the size(type) as it would be in the savegame and
- * SLE_VAR_* the size(type) as it is in memory during runtime. These are
- * the first 8 bits (0-3 SLE_FILE, 4-7 SLE_VAR).
- * Bits 8-15 are reserved for various flags as explained below
- */
-enum VarTypes : uint16_t {
+/** The types/structures of data that can be stored in the file. */
+enum VarFileType : uint8_t {
 	/* 4 bits allocated a maximum of 16 types for NumberType.
 	 * NOTE: the SLE_FILE_NNN values are stored in the savegame! */
 	/* Value 0 is used to mark end-of-header in tables. Do not use here! */
-	SLE_FILE_I8       =  1,
-	SLE_FILE_U8       =  2,
-	SLE_FILE_I16      =  3,
-	SLE_FILE_U16      =  4,
-	SLE_FILE_I32      =  5,
-	SLE_FILE_U32      =  6,
-	SLE_FILE_I64      =  7,
-	SLE_FILE_U64      =  8,
-	SLE_FILE_STRINGID =  9, ///< StringID offset into strings-array
-	SLE_FILE_STRING   = 10,
-	SLE_FILE_STRUCT   = 11,
+	SLE_FILE_I8 = 1, ///< A 8 bit signed int.
+	SLE_FILE_U8 = 2, ///< A 8 bit unsigned int.
+	SLE_FILE_I16 = 3, ///< A 16 bit signed int.
+	SLE_FILE_U16 = 4, ///< A 16 bit unsigned int.
+	SLE_FILE_I32 = 5, ///< A 32 bit signed int.
+	SLE_FILE_U32 = 6, ///< A 32 bit unsigned int.
+	SLE_FILE_I64 = 7, ///< A 64 bit signed int.
+	SLE_FILE_U64 = 8, ///< A 64 bit unsigned int.
+	SLE_FILE_STRINGID = 9, ///< StringID offset into strings-array.
+	SLE_FILE_STRING = 10, ///< A string.
+	SLE_FILE_STRUCT = 11, ///< An arbitrary structure.
 	/* 4 more possible file-primitives */
-
-	/* 4 bits allocated a maximum of 16 types for NumberType */
-	SLE_VAR_BL    =  0 << 4,
-	SLE_VAR_I8    =  1 << 4,
-	SLE_VAR_U8    =  2 << 4,
-	SLE_VAR_I16   =  3 << 4,
-	SLE_VAR_U16   =  4 << 4,
-	SLE_VAR_I32   =  5 << 4,
-	SLE_VAR_U32   =  6 << 4,
-	SLE_VAR_I64   =  7 << 4,
-	SLE_VAR_U64   =  8 << 4,
-	SLE_VAR_NULL  =  9 << 4, ///< useful to write zeros in savegame.
-	SLE_VAR_STR   = 12 << 4, ///< string pointer
-	SLE_VAR_STRQ  = 13 << 4, ///< string pointer enclosed in quotes
-	SLE_VAR_NAME  = 14 << 4, ///< old custom name to be converted to a string pointer
-	/* 1 more possible memory-primitives */
-
-	/* Default combinations of variables. As savegames change, so can variables
-	 * and thus it is possible that the saved value and internal size do not
-	 * match and you need to specify custom combo. The defaults are listed here */
-	SLE_BOOL         = SLE_FILE_I8  | SLE_VAR_BL,
-	SLE_INT8         = SLE_FILE_I8  | SLE_VAR_I8,
-	SLE_UINT8        = SLE_FILE_U8  | SLE_VAR_U8,
-	SLE_INT16        = SLE_FILE_I16 | SLE_VAR_I16,
-	SLE_UINT16       = SLE_FILE_U16 | SLE_VAR_U16,
-	SLE_INT32        = SLE_FILE_I32 | SLE_VAR_I32,
-	SLE_UINT32       = SLE_FILE_U32 | SLE_VAR_U32,
-	SLE_INT64        = SLE_FILE_I64 | SLE_VAR_I64,
-	SLE_UINT64       = SLE_FILE_U64 | SLE_VAR_U64,
-	SLE_STRINGID     = SLE_FILE_STRINGID | SLE_VAR_U32,
-	SLE_STR          = SLE_FILE_STRING   | SLE_VAR_STR,
-	SLE_STRQ         = SLE_FILE_STRING   | SLE_VAR_STRQ,
-	SLE_NAME         = SLE_FILE_STRINGID | SLE_VAR_NAME,
-
-	/* 8 bits allocated for a maximum of 8 flags
-	 * Flags directing saving/loading of a variable */
-	SLF_ALLOW_CONTROL   = 1 << 8, ///< Allow control codes in the strings.
-	SLF_ALLOW_NEWLINE   = 1 << 9, ///< Allow new lines in the strings.
-	SLF_REPLACE_TABCRLF = 1 << 10, ///< Replace tabs, cr and lf in the string with spaces.
 };
 
-typedef uint32_t VarType;
+/** The types/structures of data we have in memory. */
+enum VarMemType : uint8_t {
+	/* 4 bits allocated a maximum of 16 types for NumberType */
+	SLE_VAR_BL = 0, ///< A boolean value.
+	SLE_VAR_I8 = 1, ///< A 8 bit signed int.
+	SLE_VAR_U8 = 2, ///< A 8 bit unsigned int.
+	SLE_VAR_I16 = 3, ///< A 16 bit signed int.
+	SLE_VAR_U16 = 4, ///< A 16 bit unsigned int.
+	SLE_VAR_I32 = 5, ///< A 32 bit signed int.
+	SLE_VAR_U32 = 6, ///< A 32 bit unsigned int.
+	SLE_VAR_I64 = 7, ///< A 64 bit signed int.
+	SLE_VAR_U64 = 8, ///< A 64 bit unsigned int.
+	SLE_VAR_NULL = 9, ///< useful to write zeros in savegame.
+	SLE_VAR_STR = 12, ///< string pointer
+	SLE_VAR_STRQ = 13, ///< string pointer enclosed in quotes
+	SLE_VAR_NAME = 14, ///< old custom name to be converted to a string pointer
+	/* 1 more possible memory-primitives */
+};
+
+/** Flags directing saving/loading of a variable. */
+enum SaveLoadFlag : uint8_t {
+	SLF_ALLOW_CONTROL = 0, ///< Allow control codes in the strings.
+	SLF_ALLOW_NEWLINE = 1, ///< Allow new lines in the strings.
+	SLF_REPLACE_TABCRLF = 2, ///< Replace tabs, cr and lf in the string with spaces.
+};
+/** Bitset of \c SaveLoadFlag elements. */
+using SaveLoadFlags = EnumBitSet<SaveLoadFlag, uint8_t>;
+
+/** Container of a variable's characteristics about a variable's storage. */
+struct VarType {
+	VarFileType file{}; ///< The way of storing data in the file.
+	VarMemType mem{}; ///< The way of storing data in memory.
+	SaveLoadFlags flags{}; ///< Any flags related to the type.
+	SLRefType ref{}; ///< The reference type.
+
+	/** Create an empty \c VarType. */
+	constexpr VarType() {}
+
+	/**
+	 * Create a \c VarType with the given file and memory configurations.
+	 * @param file The file storage configuration.
+	 * @param mem The memory storage configuration.
+	 */
+	constexpr VarType(VarFileType file, VarMemType mem) : file(file), mem(mem) {}
+
+	/**
+	 * Create a `VarType` linking to a reference.
+	 * @param ref The reference.
+	 */
+	constexpr VarType(SLRefType ref) : ref(ref) {}
+
+	/**
+	 * Equality operator.
+	 * @param other The element to compare to.
+	 * @return \c true iff all elements of this and other are the same.
+	 */
+	constexpr bool operator==(const VarType &other) const = default;
+
+	/**
+	 * Transitional helper function to add a \c SaveLoadFlag to this type.
+	 * @param flag The flag to set.
+	 * @return A copy of this with the flag set.
+	 */
+	constexpr VarType operator|(SaveLoadFlag flag) const
+	{
+		VarType copy = *this;
+		copy.flags.Set(flag);
+		return copy;
+	}
+};
+
+/**
+ * Transitional helper function to combine a file and memory storage configuration.
+ * @param file The file configuration.
+ * @param mem The memory configuration.
+ * @return The created \c VarType.
+ */
+constexpr VarType operator|(VarFileType file, VarMemType mem)
+{
+	return {file, mem};
+}
+
+constexpr VarType SLE_BOOL{ SLE_FILE_I8, SLE_VAR_BL }; ///< Store a boolean (as int8).
+constexpr VarType SLE_INT8{ SLE_FILE_I8, SLE_VAR_I8 }; ///< Store a 8 bits signed int.
+constexpr VarType SLE_UINT8{ SLE_FILE_U8, SLE_VAR_U8 }; ///< Store a 8 bits unsigned int.
+constexpr VarType SLE_INT16{ SLE_FILE_I16, SLE_VAR_I16 }; ///< Store a 16 bits signed int.
+constexpr VarType SLE_UINT16{ SLE_FILE_U16, SLE_VAR_U16 }; ///< Store a 16 bits unsigned int.
+constexpr VarType SLE_INT32{ SLE_FILE_I32, SLE_VAR_I32 }; ///< Store a 32 bits signed int.
+constexpr VarType SLE_UINT32{ SLE_FILE_U32, SLE_VAR_U32 }; ///< Store a 32 bits unsigned int.
+constexpr VarType SLE_INT64{ SLE_FILE_I64, SLE_VAR_I64 }; ///< Store a 64 bits signed int.
+constexpr VarType SLE_UINT64{ SLE_FILE_U64, SLE_VAR_U64 }; ///< Store a 64 bits unsigned int.
+constexpr VarType SLE_STRINGID{ SLE_FILE_STRINGID, SLE_VAR_U32 }; ///< Store a StringID.
+constexpr VarType SLE_STR{ SLE_FILE_STRING, SLE_VAR_STR }; ///< Store string.
+constexpr VarType SLE_STRQ{ SLE_FILE_STRING, SLE_VAR_STRQ }; ///< Store a string with quotes.
+constexpr VarType SLE_NAME{ SLE_FILE_STRINGID, SLE_VAR_NAME }; ///< A string stored in the custom string array.
 
 /** Type of data saved. */
 enum class SaveLoadType : uint8_t {
@@ -774,9 +822,9 @@ struct SaveLoadCompat {
  * @param type VarType holding information about the variable-type
  * @return the SLE_VAR_* part of a variable-type description
  */
-inline constexpr VarType GetVarMemType(VarType type)
+inline constexpr VarMemType GetVarMemType(VarType type)
 {
-	return GB(type, 4, 4) << 4;
+	return type.mem;
 }
 
 /**
@@ -785,9 +833,9 @@ inline constexpr VarType GetVarMemType(VarType type)
  * @param type VarType holding information about the file-type
  * @return the SLE_FILE_* part of a variable-type description
  */
-inline constexpr VarType GetVarFileType(VarType type)
+inline constexpr VarFileType GetVarFileType(VarType type)
 {
-	return GB(type, 0, 4);
+	return type.file;
 }
 
 /**

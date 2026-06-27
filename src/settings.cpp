@@ -133,8 +133,10 @@ static bool IsSignedVarMemType(VarType vt)
 		case SLE_VAR_I32:
 		case SLE_VAR_I64:
 			return true;
+
+		default:
+			return false;
 	}
-	return false;
 }
 
 /**
@@ -704,13 +706,13 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 		str = this->def;
 	}
 	void *ptr = GetVariableAddress(object, this->save);
-	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
+	if (!LoadIntList(str, ptr, this->save.length, this->save.conv)) {
 		_settings_error_list.emplace_back(
 			GetEncodedString(STR_CONFIG_ERROR),
 			GetEncodedString(STR_CONFIG_ERROR_ARRAY, this->GetName()));
 
 		/* Use default */
-		LoadIntList(this->def, ptr, this->save.length, GetVarMemType(this->save.conv));
+		LoadIntList(this->def, ptr, this->save.length, this->save.conv);
 	}
 }
 
