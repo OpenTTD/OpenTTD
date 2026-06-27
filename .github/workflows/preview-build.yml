@@ -11,7 +11,7 @@ jobs:
     container:
       # If you change this version, change the numbers in the cache step,
       # .github/workflows/ci-emscripten.yml (2x) and os/emscripten/Dockerfile too.
-      image: emscripten/emsdk:5.0.7
+      image: emscripten/emsdk:6.0.1
 
     steps:
     - name: Checkout
@@ -30,7 +30,7 @@ jobs:
         path: /emsdk/upstream/emscripten/cache
         # If you change this version, change the numbers in the image configuration step,
         # .github/workflows/ci-emscripten.yml (2x) and os/emscripten/Dockerfile too.
-        key: 5.0.7-${{ runner.os }}
+        key: 6.0.1-${{ runner.os }}
 
     - name: Add liblzma support
       run: |
