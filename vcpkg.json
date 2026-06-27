@@ -49,7 +49,7 @@
       "name": "soxr"
     },
     {
-      "name": "sdl2",
+      "name": "sdl3",
       "platform": "linux"
     },
     {
