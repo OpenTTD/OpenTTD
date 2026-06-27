@@ -40,7 +40,8 @@ void VideoDriver_SDL_Base::CheckPaletteAnim()
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
-static const Dimension default_resolutions[] = {
+/** Set of common resolutions that can be used as default when none is provided by SDL. */
+static const Dimension _default_resolutions[] = {
 	{  640,  480 },
 	{  800,  600 },
 	{ 1024,  768 },
@@ -54,6 +55,7 @@ static const Dimension default_resolutions[] = {
 	{ 1920, 1200 }
 };
 
+/** Find and store all possible resolutions into \c _resolutions. */
 static void FindResolutions()
 {
 	_resolutions.clear();
@@ -71,12 +73,17 @@ static void FindResolutions()
 
 	/* We have found no resolutions, show the default list */
 	if (_resolutions.empty()) {
-		_resolutions.assign(std::begin(default_resolutions), std::end(default_resolutions));
+		_resolutions.assign(std::begin(_default_resolutions), std::end(_default_resolutions));
 	}
 
 	SortResolutions();
 }
 
+/**
+ * Get the best resolution given the requested width and height.
+ * @param[inout] w The requested width, updated with the best fit.
+ * @param[inout] h The requested height, updated with the best fit.
+ */
 static void GetAvailableVideoMode(uint *w, uint *h)
 {
 	/* All modes available? */
@@ -99,6 +106,11 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 	*h = _resolutions[best].height;
 }
 
+/**
+ * Find the display we want to start OpenTTD on.
+ * @param startup_display The user preferred display, MAX_UINT32 when not given.
+ * @return The best display to start OpenTTD on.
+ */
 static uint FindStartupDisplay(uint startup_display)
 {
 	int num_displays = SDL_GetNumVideoDisplays();
@@ -184,6 +196,13 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 	return true;
 }
 
+/**
+ * Create/update the surfaces to draw OpenTTD on.
+ * @param w The new width.
+ * @param h The new height.
+ * @param resize Whether this is a resize, or we are creating the window from scratch
+ * @return \c true iff the surfaces could be created.
+ */
 bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
 {
 	GetAvailableVideoMode(&w, &h);
@@ -323,6 +342,12 @@ static constexpr SDLVkMapping _vk_mapping[] = {
 	AS(SDLK_PERIOD,  WKC_PERIOD)
 };
 
+/**
+ * Convert the SDL key into our WindowKeyCode and the printable character (if any).
+ * @param sym The keyboard event.
+ * @param[out] character The pressed character (or \c '\0' when no character was pressed).
+ * @return The pressed key.
+ */
 static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 {
 	uint key = 0;
@@ -350,7 +375,7 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 		sym->mod & KMOD_CTRL ||
 		sym->mod & KMOD_ALT ||
 		unprintable) {
-		*character = WKC_NONE;
+		*character = '\0';
 	} else {
 		*character = sym->sym;
 	}
@@ -534,6 +559,10 @@ bool VideoDriver_SDL_Base::PollEvent()
 	return true;
 }
 
+/**
+ * Initialize the SDL backend if needed.
+ * @return An optional with the error message upon failure.
+ */
 static std::optional<std::string_view> InitializeSDL()
 {
 	/* Check if the video-driver is already initialized. */
@@ -547,6 +576,10 @@ static std::optional<std::string_view> InitializeSDL()
 	return std::nullopt;
 }
 
+/**
+ * Initialize the driver.
+ * @return An optional with the error message upon failure.
+ */
 std::optional<std::string_view> VideoDriver_SDL_Base::Initialize()
 {
 	this->UpdateAutoResolution();
@@ -635,6 +668,7 @@ void VideoDriver_SDL_Base::InputLoop()
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
 
+/** Run a single tick of the game/main loop. */
 void VideoDriver_SDL_Base::LoopOnce()
 {
 	if (_exit_game) {
