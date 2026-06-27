@@ -120,18 +120,18 @@ public:
 class OpenGLSprite {
 private:
 	/** Enum of all used OpenGL texture objects. */
-	enum Texture : uint8_t {
-		TEX_RGBA,    ///< RGBA texture part.
-		TEX_REMAP,   ///< Remap texture part.
-		NUM_TEX
+	enum class Texture : uint8_t {
+		RGBA, ///< RGBA texture part.
+		Remap, ///< Remap texture part.
+		End, ///< End marker.
 	};
 
 	Dimension dim{};
-	std::array<GLuint, NUM_TEX> tex{}; ///< The texture objects.
+	EnumIndexArray<GLuint, Texture, Texture::End> tex{}; ///< The texture objects.
 	int16_t x_offs = 0;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs = 0;  ///< Number of pixels to shift the sprite downwards.
 
-	static std::array<GLuint, NUM_TEX> dummy_tex; ///< 1x1 dummy textures to substitute for unused sprite components.
+	static EnumIndexArray<GLuint, Texture, Texture::End> dummy_tex; ///< 1x1 dummy textures to substitute for unused sprite components.
 
 	static GLuint pal_identity; ///< Identity texture mapping.
 	static GLuint pal_tex;      ///< Texture for palette remap.
