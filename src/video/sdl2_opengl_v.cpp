@@ -36,7 +36,7 @@
 
 #include "../safeguards.h"
 
-static FVideoDriver_SDL_OpenGL iFVideoDriver_SDL_OpenGL;
+static FVideoDriver_SDL_OpenGL iFVideoDriver_SDL_OpenGL; ///< The OpenGL SDL video driver.
 
 /**
  * Platform-specific callback to get an OpenGL function pointer.
@@ -90,6 +90,9 @@ void VideoDriver_SDL_OpenGL::Stop()
 	this->VideoDriver_SDL_Base::Stop();
 }
 
+/**
+ * Destroy and release the OpenGL context.
+ */
 void VideoDriver_SDL_OpenGL::DestroyContext()
 {
 	OpenGLBackend::Destroy();
@@ -105,6 +108,10 @@ void VideoDriver_SDL_OpenGL::ToggleVsync(bool vsync)
 	SDL_GL_SetSwapInterval(vsync);
 }
 
+/**
+ * Allocate the OpenGL context.
+ * @return Optional with an error message upon failure.
+ */
 std::optional<std::string_view> VideoDriver_SDL_OpenGL::AllocateContext()
 {
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);

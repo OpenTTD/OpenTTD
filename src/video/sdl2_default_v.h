@@ -32,6 +32,7 @@ private:
 /** Factory for the SDL video driver. */
 class FVideoDriver_SDL_Default : public DriverFactoryBase {
 public:
+	/** Create the factory. */
 	FVideoDriver_SDL_Default() : DriverFactoryBase(Driver::Type::Video, 5, "sdl", "SDL Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_SDL_Default>(); }
 };

@@ -17,6 +17,10 @@
 /** The SDL video driver. */
 class VideoDriver_SDL_Base : public VideoDriver {
 public:
+	/**
+	 * Create the video driver.
+	 * @param uses_hardware_acceleration Whether hardware acceleration is used by this instance of the driver.
+	 */
 	VideoDriver_SDL_Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration) {}
 
 	std::optional<std::string_view> Start(const StringList &param) override;
@@ -90,7 +94,6 @@ protected:
 
 private:
 	void LoopOnce();
-	void MainLoopCleanup();
 	bool CreateMainSurface(uint w, uint h, bool resize);
 	std::optional<std::string_view> Initialize();
 
@@ -104,7 +107,7 @@ private:
 	 */
 	bool edit_box_focused = false;
 
-	int startup_display = 0;
+	int startup_display = 0; ///< The display to show OpenTTD on when starting.
 };
 
 #endif /* VIDEO_SDL_H */
