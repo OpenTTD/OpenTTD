@@ -5,9 +5,10 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file sdl2_opengl_v.h OpenGL backend of the SDL2 video driver. */
+/** @file sdl3_opengl_v.h OpenGL backend of the SDL3 video driver. */
 
-#include "sdl2_v.h"
+#include "sdl3_v.h"
+#include <SDL3/SDL_video.h>
 
 /** The OpenGL video driver for windows. */
 class VideoDriver_SDL_OpenGL : public VideoDriver_SDL_Base {
@@ -39,7 +40,7 @@ protected:
 	bool CreateMainWindow(uint w, uint h, uint flags) override;
 
 private:
-	void *gl_context = nullptr; ///< OpenGL context.
+	SDL_GLContext gl_context = nullptr; ///< OpenGL context.
 
 	std::optional<std::string_view> AllocateContext();
 	void DestroyContext();

@@ -28,17 +28,17 @@ jobs:
         - name: Clang
           compiler: clang
           cxxcompiler: clang++
-          libraries: libsdl2-dev
-        - name: GCC - SDL2
+          libraries: libsdl3-dev
+        - name: GCC - SDL3
           compiler: gcc
           cxxcompiler: g++
-          libraries: libsdl2-dev
+          libraries: libsdl3-dev
         - name: GCC - Dedicated
           compiler: gcc
           cxxcompiler: g++
           libraries: grfcodec
           extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG" -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
-          # Compile without SDL / SDL2, as that should compile fine too.
+          # Compile without SDL3, as that should compile fine too.
 
     name: Linux (${{ matrix.name }})
 
