@@ -440,12 +440,12 @@ struct FileToSaveLoad {
 
 /** Types of save games. */
 enum SavegameType : uint8_t {
-	SGT_TTD,    ///< TTD  savegame (can be detected incorrectly)
-	SGT_TTDP1,  ///< TTDP savegame ( -//- ) (data at NW border)
-	SGT_TTDP2,  ///< TTDP savegame in new format (data at SE border)
-	SGT_OTTD,   ///< OTTD savegame
-	SGT_TTO,    ///< TTO savegame
-	SGT_INVALID = 0xFF, ///< broken savegame (used internally)
+	TTD, ///< TTD savegame (can be detected incorrectly)
+	TTDP1, ///< TTDP savegame ( -//- ) (data at NW border)
+	TTDP2, ///< TTDP savegame in new format (data at SE border)
+	OTTD, ///< OTTD savegame
+	TTO, ///< TTO savegame
+	Invalid = 0xFF, ///< broken savegame (used internally)
 };
 
 extern FileToSaveLoad _file_to_saveload;
