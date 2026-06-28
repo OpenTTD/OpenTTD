@@ -13,10 +13,10 @@
 #include "gfx_type.h"
 
 /** The type of action 5 type. */
-enum Action5BlockType : uint8_t {
-	A5BLOCK_FIXED,                ///< Only allow replacing a whole block of sprites. (TTDP compatible)
-	A5BLOCK_ALLOW_OFFSET,         ///< Allow replacing any subset by specifying an offset.
-	A5BLOCK_INVALID,              ///< unknown/not-implemented type
+enum class Action5BlockType : uint8_t {
+	Fixed, ///< Only allow replacing a whole block of sprites. (TTDP compatible)
+	AllowOffset, ///< Allow replacing any subset by specifying an offset.
+	Invalid, ///< unknown/not-implemented type
 };
 
 /** Information about a single action 5 type. */
