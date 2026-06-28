@@ -853,9 +853,9 @@ inline constexpr bool IsNumericType(VarType conv)
  * @param type VarType to get size of.
  * @return size of type in bytes.
  */
-inline constexpr size_t SlVarSize(VarType type)
+inline constexpr size_t SlVarSize(VarMemType type)
 {
-	switch (GetVarMemType(type)) {
+	switch (type) {
 		case SLE_VAR_BL: return sizeof(bool);
 		case SLE_VAR_I8: return sizeof(int8_t);
 		case SLE_VAR_U8: return sizeof(uint8_t);
@@ -884,10 +884,10 @@ inline constexpr size_t SlVarSize(VarType type)
 inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, size_t size)
 {
 	switch (cmd) {
-		case SaveLoadType::Variable: return SlVarSize(type) == size;
+		case SaveLoadType::Variable: return SlVarSize(type.mem) == size;
 		case SaveLoadType::Reference: return sizeof(void *) == size;
-		case SaveLoadType::String: return SlVarSize(type) == size;
-		case SaveLoadType::Array: return SlVarSize(type) * length <= size; // Partial load of array is permitted.
+		case SaveLoadType::String: return SlVarSize(type.mem) == size;
+		case SaveLoadType::Array: return SlVarSize(type.mem) * length <= size; // Partial load of array is permitted.
 		case SaveLoadType::Vector: return sizeof(std::vector<void *>) == size;
 		case SaveLoadType::ReferenceList: return sizeof(std::list<void *>) == size;
 		case SaveLoadType::ReferenceVector: return sizeof(std::vector<void *>) == size;
@@ -1366,8 +1366,8 @@ inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 	return sld.address_proc(const_cast<void *>(object), sld.extra_data);
 }
 
-int64_t ReadValue(const void *ptr, VarType conv);
-void WriteValue(void *ptr, VarType conv, int64_t val);
+int64_t ReadValue(const void *ptr, VarMemType conv);
+void WriteValue(void *ptr, VarMemType conv, int64_t val);
 
 void SlSetArrayIndex(uint index);
 static void SlSetArrayIndex(const ConvertibleThroughBase auto &index) { SlSetArrayIndex(index.base()); }

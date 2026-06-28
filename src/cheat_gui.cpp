@@ -192,7 +192,7 @@ typedef int32_t CheckButtonClick(int32_t new_value, int32_t change_direction);
 
 /** Information of a cheat. */
 struct CheatEntry {
-	VarType type;          ///< type of selector
+	VarMemType type; ///< type of selector
 	StringID str;          ///< string with descriptive text
 	void *variable;        ///< pointer to the variable
 	bool *been_used;       ///< has this cheat been used before?
@@ -204,15 +204,15 @@ struct CheatEntry {
  * Order matches with the values of #CheatNumbers
  */
 static const CheatEntry _cheats_ui[] = {
-	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                          &_cheats.money.been_used,            &ClickMoneyCheat         },
-	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                               &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
-	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,                &_cheats.magic_bulldozer.been_used,  nullptr                  },
-	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,               &_cheats.crossing_tunnels.been_used, nullptr                  },
-	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,                    &_cheats.no_jetcrash.been_used,      nullptr                  },
-	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,                     &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
-	{SLE_BOOL,  STR_CHEAT_STATION_RATING,  &_cheats.station_rating.value,                 &_cheats.station_rating.been_used,   nullptr                  },
-	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used,      &ClickChangeMaxHlCheat   },
-	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &TimerGameCalendar::year,                      &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
+	{SLE_VAR_I32, STR_CHEAT_MONEY, &_money_cheat_amount, &_cheats.money.been_used, &ClickMoneyCheat },
+	{SLE_VAR_U8, STR_CHEAT_CHANGE_COMPANY, &_local_company, &_cheats.switch_company.been_used, &ClickChangeCompanyCheat },
+	{SLE_VAR_BL, STR_CHEAT_EXTRA_DYNAMITE, &_cheats.magic_bulldozer.value, &_cheats.magic_bulldozer.been_used, nullptr },
+	{SLE_VAR_BL, STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value, &_cheats.crossing_tunnels.been_used, nullptr },
+	{SLE_VAR_BL, STR_CHEAT_NO_JETCRASH, &_cheats.no_jetcrash.value, &_cheats.no_jetcrash.been_used, nullptr },
+	{SLE_VAR_BL, STR_CHEAT_SETUP_PROD, &_cheats.setup_prod.value, &_cheats.setup_prod.been_used, &ClickSetProdCheat },
+	{SLE_VAR_BL, STR_CHEAT_STATION_RATING, &_cheats.station_rating.value, &_cheats.station_rating.been_used, nullptr },
+	{SLE_VAR_U8, STR_CHEAT_EDIT_MAX_HL, &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used, &ClickChangeMaxHlCheat },
+	{SLE_VAR_I32, STR_CHEAT_CHANGE_DATE, &TimerGameCalendar::year, &_cheats.change_date.been_used, &ClickChangeDateCheat },
 };
 
 static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
@@ -282,7 +282,7 @@ struct CheatWindow : Window {
 			const CheatEntry *ce = &_cheats_ui[i];
 
 			std::string str;
-			switch (GetVarMemType(ce->type)) {
+			switch (ce->type) {
 				case SLE_VAR_BL: {
 					bool on = (*(bool*)ce->variable);
 
@@ -379,7 +379,7 @@ struct CheatWindow : Window {
 	{
 		uint width = 0;
 		for (const auto &ce : _cheats_ui) {
-			switch (GetVarMemType(ce.type)) {
+			switch (ce.type) {
 				case SLE_VAR_BL:
 					width = std::max(width, GetStringBoundingBox(GetString(ce.str, STR_CONFIG_SETTING_ON)).width);
 					width = std::max(width, GetStringBoundingBox(GetString(ce.str, STR_CONFIG_SETTING_OFF)).width);
@@ -465,7 +465,7 @@ struct CheatWindow : Window {
 		this->clicked_setting = nullptr;
 		*ce->been_used = true;
 
-		switch (GetVarMemType(ce->type)) {
+		switch (ce->type) {
 			case SLE_VAR_BL:
 				value ^= 1;
 				if (ce->proc != nullptr) ce->proc(value, 0);
