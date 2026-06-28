@@ -349,16 +349,13 @@ static void NewSpriteGroup(ByteReader &buf)
 	const SpriteGroup *act_group = nullptr;
 
 	GrfSpecFeature feature{buf.ReadByte()};
-	uint8_t setid = buf.ReadByte();
-	uint8_t type = buf.ReadByte();
-
-	/* Ensure early return clears existing SpriteGroup for this setid. */
-	_cur_gps.spritegroups[setid] = nullptr;
-
 	if (feature >= GrfSpecFeature::End) {
 		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
+
+	uint8_t setid   = buf.ReadByte();
+	uint8_t type    = buf.ReadByte();
 
 	/* Sprite Groups are created here but they are allocated from a pool, so
 	 * we do not need to delete anything if there is an exception from the
