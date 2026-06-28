@@ -1308,17 +1308,17 @@ static uint32_t ReferenceToInt(const void *obj, SLRefType rt)
 	if (obj == nullptr) return 0;
 
 	switch (rt) {
-		case REF_VEHICLE_OLD: // Old vehicles we save as new ones
-		case REF_VEHICLE: return static_cast<const Vehicle *>(obj)->index + 1;
-		case REF_STATION: return static_cast<const Station *>(obj)->index + 1;
-		case REF_TOWN: return static_cast<const Town *>(obj)->index + 1;
-		case REF_ROADSTOPS: return static_cast<const RoadStop *>(obj)->index + 1;
-		case REF_ENGINE_RENEWS: return static_cast<const EngineRenew *>(obj)->index + 1;
-		case REF_CARGO_PACKET: return static_cast<const CargoPacket *>(obj)->index + 1;
-		case REF_ORDERLIST: return static_cast<const OrderList *>(obj)->index + 1;
-		case REF_STORAGE: return static_cast<const PersistentStorage *>(obj)->index + 1;
-		case REF_LINK_GRAPH: return static_cast<const LinkGraph *>(obj)->index + 1;
-		case REF_LINK_GRAPH_JOB: return static_cast<const LinkGraphJob *>(obj)->index + 1;
+		case SLRefType::OldVehicle: // Old vehicles we save as new ones
+		case SLRefType::Vehicle: return static_cast<const Vehicle *>(obj)->index + 1;
+		case SLRefType::Station: return static_cast<const Station *>(obj)->index + 1;
+		case SLRefType::Town: return static_cast<const Town *>(obj)->index + 1;
+		case SLRefType::RoadStop: return static_cast<const RoadStop *>(obj)->index + 1;
+		case SLRefType::EngineRenew: return static_cast<const EngineRenew *>(obj)->index + 1;
+		case SLRefType::CargoPacket: return static_cast<const CargoPacket *>(obj)->index + 1;
+		case SLRefType::OrderList: return static_cast<const OrderList *>(obj)->index + 1;
+		case SLRefType::Storage: return static_cast<const PersistentStorage *>(obj)->index + 1;
+		case SLRefType::LinkGraph: return static_cast<const LinkGraph *>(obj)->index + 1;
+		case SLRefType::LinkGraphJob: return static_cast<const LinkGraphJob *>(obj)->index + 1;
 		default: NOT_REACHED();
 	}
 }
@@ -1339,58 +1339,58 @@ static void *IntToReference(size_t index, SLRefType rt)
 
 	assert(_sl.action == SaveLoadAction::Ptrs);
 
-	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
+	/* After version 4.3 SLRefType::OldVehicle is saved as SLRefType::Vehicle,
 	 * and should be loaded like that */
-	if (rt == REF_VEHICLE_OLD && !IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 4)) {
-		rt = REF_VEHICLE;
+	if (rt == SLRefType::OldVehicle && !IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode, 4)) {
+		rt = SLRefType::Vehicle;
 	}
 
 	/* No need to look up nullptr pointers, just return immediately */
-	if (index == (rt == REF_VEHICLE_OLD ? 0xFFFF : 0)) return nullptr;
+	if (index == (rt == SLRefType::OldVehicle ? 0xFFFF : 0)) return nullptr;
 
 	/* Correct index. Old vehicles were saved differently:
 	 * invalid vehicle was 0xFFFF, now we use 0x0000 for everything invalid. */
-	if (rt != REF_VEHICLE_OLD) index--;
+	if (rt != SLRefType::OldVehicle) index--;
 
 	switch (rt) {
-		case REF_ORDERLIST:
+		case SLRefType::OrderList:
 			if (OrderList::IsValidID(index)) return OrderList::Get(index);
 			SlErrorCorrupt("Referencing invalid OrderList");
 
-		case REF_VEHICLE_OLD:
-		case REF_VEHICLE:
+		case SLRefType::OldVehicle:
+		case SLRefType::Vehicle:
 			if (Vehicle::IsValidID(index)) return Vehicle::Get(index);
 			SlErrorCorrupt("Referencing invalid Vehicle");
 
-		case REF_STATION:
+		case SLRefType::Station:
 			if (Station::IsValidID(index)) return Station::Get(index);
 			SlErrorCorrupt("Referencing invalid Station");
 
-		case REF_TOWN:
+		case SLRefType::Town:
 			if (Town::IsValidID(index)) return Town::Get(index);
 			SlErrorCorrupt("Referencing invalid Town");
 
-		case REF_ROADSTOPS:
+		case SLRefType::RoadStop:
 			if (RoadStop::IsValidID(index)) return RoadStop::Get(index);
 			SlErrorCorrupt("Referencing invalid RoadStop");
 
-		case REF_ENGINE_RENEWS:
+		case SLRefType::EngineRenew:
 			if (EngineRenew::IsValidID(index)) return EngineRenew::Get(index);
 			SlErrorCorrupt("Referencing invalid EngineRenew");
 
-		case REF_CARGO_PACKET:
+		case SLRefType::CargoPacket:
 			if (CargoPacket::IsValidID(index)) return CargoPacket::Get(index);
 			SlErrorCorrupt("Referencing invalid CargoPacket");
 
-		case REF_STORAGE:
+		case SLRefType::Storage:
 			if (PersistentStorage::IsValidID(index)) return PersistentStorage::Get(index);
 			SlErrorCorrupt("Referencing invalid PersistentStorage");
 
-		case REF_LINK_GRAPH:
+		case SLRefType::LinkGraph:
 			if (LinkGraph::IsValidID(index)) return LinkGraph::Get(index);
 			SlErrorCorrupt("Referencing invalid LinkGraph");
 
-		case REF_LINK_GRAPH_JOB:
+		case SLRefType::LinkGraphJob:
 			if (LinkGraphJob::IsValidID(index)) return LinkGraphJob::Get(index);
 			SlErrorCorrupt("Referencing invalid LinkGraphJob");
 

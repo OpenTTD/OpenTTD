@@ -157,8 +157,8 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, location.tile, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(Industry, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),
 	    SLE_VAR(Industry, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_REF(Industry, town,                       REF_TOWN),
-	SLE_CONDREF(Industry, neutral_station, REF_STATION, SaveLoadVersion::ServeNeutralIndustries, SaveLoadVersion::MaxVersion),
+	    SLE_REF(Industry, town,                       SLRefType::Town),
+	SLE_CONDREF(Industry, neutral_station, SLRefType::Station, SaveLoadVersion::ServeNeutralIndustries, SaveLoadVersion::MaxVersion),
 	SLEG_CONDARR("produced_cargo", SlIndustryProduced::old_cargo, SLE_UINT8, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::StoreIndustryCargo, SaveLoadVersion::ExtendIndustryCargoSlots),
 	SLEG_CONDARR("produced_cargo", SlIndustryProduced::old_cargo, SLE_UINT8, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
 	SLEG_CONDARR("incoming_cargo_waiting", SlIndustryAccepted::old_waiting, SLE_UINT16, INDUSTRY_ORIGINAL_NUM_INPUTS, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::ExtendIndustryCargoSlots),
@@ -199,7 +199,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, exclusive_consumer, SLE_UINT8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
 
 	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, SLE_UINT32, 16, SaveLoadVersion::NewGRFPersistentStorage, SaveLoadVersion::PersistentStoragePool),
-	SLE_CONDREF(Industry, psa, REF_STORAGE, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
+	SLE_CONDREF(Industry, psa, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVAR(Industry, random, SLE_UINT16, SaveLoadVersion::NewGRFIndustryRandomTriggers, SaveLoadVersion::MaxVersion),
 	SLE_CONDSSTR(Industry, text, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::IndustryText, SaveLoadVersion::MaxVersion),

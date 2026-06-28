@@ -638,18 +638,18 @@ public:
 };
 
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
-enum SLRefType : uint8_t {
-	REF_VEHICLE        =  1, ///< Load/save a reference to a vehicle.
-	REF_STATION        =  2, ///< Load/save a reference to a station.
-	REF_TOWN           =  3, ///< Load/save a reference to a town.
-	REF_VEHICLE_OLD    =  4, ///< Load/save an old-style reference to a vehicle (for pre-4.4 savegames).
-	REF_ROADSTOPS      =  5, ///< Load/save a reference to a bus/truck stop.
-	REF_ENGINE_RENEWS  =  6, ///< Load/save a reference to an engine renewal (autoreplace).
-	REF_CARGO_PACKET   =  7, ///< Load/save a reference to a cargo packet.
-	REF_ORDERLIST      =  8, ///< Load/save a reference to an orderlist.
-	REF_STORAGE        =  9, ///< Load/save a reference to a persistent storage.
-	REF_LINK_GRAPH     = 10, ///< Load/save a reference to a link graph.
-	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
+enum class SLRefType : uint8_t {
+	Vehicle = 1, ///< Load/save a reference to a vehicle.
+	Station = 2, ///< Load/save a reference to a station.
+	Town = 3, ///< Load/save a reference to a town.
+	OldVehicle = 4, ///< Load/save an old-style reference to a vehicle (for pre-4.4 savegames).
+	RoadStop = 5, ///< Load/save a reference to a bus/truck stop.
+	EngineRenew = 6, ///< Load/save a reference to an engine renewal (autoreplace).
+	CargoPacket = 7, ///< Load/save a reference to a cargo packet.
+	OrderList = 8, ///< Load/save a reference to an orderlist.
+	Storage = 9, ///< Load/save a reference to a persistent storage.
+	LinkGraph = 10, ///< Load/save a reference to a link graph.
+	LinkGraphJob = 11, ///< Load/save a reference to a link graph job.
 };
 
 /** The types/structures of data that can be stored in the file. */

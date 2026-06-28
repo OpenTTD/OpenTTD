@@ -360,7 +360,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, layout, SLE_UINT8, SaveLoadVersion::RoadLayoutPerTown, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Town, valid_history, SLE_UINT64, SaveLoadVersion::TownSupplyHistory, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDREFVECTOR(Town, psa_list, REF_STORAGE, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
+	SLE_CONDREFVECTOR(Town, psa_list, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
 
 	SLEG_CONDSTRUCTLIST("supplied", SlTownOldSupplied, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::TownSupplyHistory),
 	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied, SaveLoadVersion::TownSupplyHistory, SaveLoadVersion::MaxVersion),

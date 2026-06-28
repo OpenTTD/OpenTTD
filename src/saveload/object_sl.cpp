@@ -22,7 +22,7 @@ static const SaveLoad _object_desc[] = {
 	    SLE_VAR(Object, location.tile,              SLE_UINT32),
 	    SLE_VAR(Object, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),
 	    SLE_VAR(Object, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_REF(Object, town,                       REF_TOWN),
+	    SLE_REF(Object, town,                       SLRefType::Town),
 	    SLE_VAR(Object, build_date,                 SLE_UINT32),
 	SLE_CONDVARNAME(Object, recolour_offset, "colour", SLE_UINT8, SaveLoadVersion::IndustryPlatform, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Object, view, SLE_UINT8, SaveLoadVersion::NewGRFObjectView, SaveLoadVersion::MaxVersion),
