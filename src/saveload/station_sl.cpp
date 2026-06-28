@@ -159,7 +159,7 @@ void AfterLoadRoadStops()
 static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop, xy,           SLE_UINT32),
 	SLE_VAR(RoadStop, status,       SLE_UINT8),
-	SLE_REF(RoadStop, next,         REF_ROADSTOPS),
+	SLE_REF(RoadStop, next,         SLRefType::RoadStop),
 };
 
 static uint16_t _waiting_acceptance;
@@ -264,7 +264,7 @@ class SlStationCargo : public DefaultSaveLoadHandler<SlStationCargo, GoodsEntry>
 public:
 	static inline const SaveLoad description[] = {
 		    SLE_VAR(StationCargoPair, first,  SLE_UINT16),
-		SLE_REFLIST(StationCargoPair, second, REF_CARGO_PACKET),
+		SLE_REFLIST(StationCargoPair, second, SLRefType::CargoPacket),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_cargo_sl_compat;
 
@@ -384,7 +384,7 @@ public:
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_FILE_U32 | SLE_VAR_I64, SaveLoadVersion::TransferOrder, SaveLoadVersion::UnifyCurrency),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_INT64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CargoPackets),
 		 SLE_CONDVAR(GoodsEntry, amount_fract, SLE_UINT8, SaveLoadVersion::FractionalCargoDelivery, SaveLoadVersion::MaxVersion),
-		SLEG_CONDREFLIST("packets", _packets, REF_CARGO_PACKET, SaveLoadVersion::CargoPackets, SaveLoadVersion::Cargodist),
+		SLEG_CONDREFLIST("packets", _packets, SLRefType::CargoPacket, SaveLoadVersion::CargoPackets, SaveLoadVersion::Cargodist),
 		SLEG_CONDVAR("old_num_dests", _old_num_dests, SLE_UINT32, SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
 		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, SLE_UINT32, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
 		 SLE_CONDVAR(GoodsEntry, link_graph, SLE_UINT16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
@@ -491,7 +491,7 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, train_station.tile, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Station, airport.tile, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLE_CONDVAR(Station, airport.tile, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	    SLE_REF(Station, town,                       REF_TOWN),
+	    SLE_REF(Station, town,                       SLRefType::Town),
 	    SLE_VAR(Station, train_station.w,            SLE_FILE_U8 | SLE_VAR_U16),
 	SLE_CONDVAR(Station, train_station.h, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
@@ -516,15 +516,15 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, build_date, SLE_FILE_U16 | SLE_VAR_I32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
 	SLE_CONDVAR(Station, build_date, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDREF(Station, bus_stops, REF_ROADSTOPS, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDREF(Station, truck_stops, REF_ROADSTOPS, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDREF(Station, bus_stops, SLRefType::RoadStop, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDREF(Station, truck_stops, SLRefType::RoadStop, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 
 	/* Used by newstations for graphic variations */
 	SLE_CONDVAR(Station, random_bits, SLE_UINT16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
 	SLE_CONDVARNAME(Station, waiting_random_triggers, "waiting_triggers", SLE_UINT8, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
 	SLEG_CONDVAR("num_specs", SlStationSpecList<StationSpec>::last_num_specs, SLE_UINT8, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDREFLIST(Station, loading_vehicles, REF_VEHICLE, SaveLoadVersion::FifoLoading, SaveLoadVersion::MaxVersion),
+	SLE_CONDREFLIST(Station, loading_vehicles, SLRefType::Vehicle, SaveLoadVersion::FifoLoading, SaveLoadVersion::MaxVersion),
 
 	SLEG_STRUCTLIST("goods", SlStationGoods),
 	SLEG_CONDSTRUCTLIST("speclist", SlStationSpecList<StationSpec>, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
@@ -583,7 +583,7 @@ class SlStationBase : public DefaultSaveLoadHandler<SlStationBase, BaseStation> 
 public:
 	static inline const SaveLoad description[] = {
 		    SLE_VAR(BaseStation, xy,                     SLE_UINT32),
-		    SLE_REF(BaseStation, town,                   REF_TOWN),
+		    SLE_REF(BaseStation, town,                   SLRefType::Town),
 		    SLE_VAR(BaseStation, string_id,              SLE_STRINGID),
 		   SLE_SSTR(BaseStation, name,                   SLE_STR | StringValidationSetting::AllowControlCode),
 		    SLE_VAR(BaseStation, delete_ctr,             SLE_UINT8),
@@ -626,8 +626,8 @@ public:
 		    SLE_VAR(Station, train_station.w,            SLE_FILE_U8 | SLE_VAR_U16),
 		    SLE_VAR(Station, train_station.h,            SLE_FILE_U8 | SLE_VAR_U16),
 
-		    SLE_REF(Station, bus_stops,                  REF_ROADSTOPS),
-		    SLE_REF(Station, truck_stops,                REF_ROADSTOPS),
+		    SLE_REF(Station, bus_stops,                  SLRefType::RoadStop),
+		    SLE_REF(Station, truck_stops,                SLRefType::RoadStop),
 		SLE_CONDVAR(Station, ship_station.tile, SLE_UINT32, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Station, ship_station.w, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Station, ship_station.h, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
@@ -642,7 +642,7 @@ public:
 		SLE_VARNAME(Station, airport.blocks, "airport.flags", SLE_UINT64),
 		SLE_CONDVAR(Station, airport.rotation, SLE_UINT8, SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::MaxVersion),
 		SLEG_CONDARR("storage", _old_st_persistent_storage.storage, SLE_UINT32, 16, SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::PersistentStoragePool),
-		SLE_CONDREF(Station, airport.psa, REF_STORAGE, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
+		SLE_CONDREF(Station, airport.psa, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
 
 		    SLE_VAR(Station, indtype,                    SLE_UINT8),
 
@@ -650,7 +650,7 @@ public:
 		    SLE_VAR(Station, time_since_unload,          SLE_UINT8),
 		    SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
 		    SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
-		SLE_REFLIST(Station, loading_vehicles,           REF_VEHICLE),
+		SLE_REFLIST(Station, loading_vehicles,           SLRefType::Vehicle),
 		SLE_CONDVAR(Station, always_accepted, SLE_FILE_U32 | SLE_VAR_U64, SaveLoadVersion::TownAcceptance, SaveLoadVersion::ExtendCargotypes),
 		SLE_CONDVAR(Station, always_accepted, SLE_UINT64, SaveLoadVersion::ExtendCargotypes, SaveLoadVersion::MaxVersion),
 		SLEG_CONDSTRUCTLIST("speclist", SlRoadStopTileData, SaveLoadVersion::NewGRFRoadStops, SaveLoadVersion::RoadStopTileData),

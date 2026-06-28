@@ -656,7 +656,7 @@ public:
 	static inline const SaveLoad description[] = {
 		    SLE_VAR(Vehicle, subtype,               SLE_UINT8),
 
-		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
+		    SLE_REF(Vehicle, next,                  SLRefType::OldVehicle),
 		SLE_CONDVAR(Vehicle, name, SLE_NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
 		SLE_CONDSSTR(Vehicle, name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, unitnumber, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerUnitNumber),
@@ -697,7 +697,7 @@ public:
 		    SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
 		SLE_CONDVAR(Vehicle, refit_cap, SLE_UINT16, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
 		SLEG_CONDVAR("cargo_count", _cargo_count, SLE_UINT16, SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
-		SLE_CONDREFLIST(Vehicle, cargo.packets, REF_CARGO_PACKET, SaveLoadVersion::CargoPackets, SaveLoadVersion::MaxVersion),
+		SLE_CONDREFLIST(Vehicle, cargo.packets, SLRefType::CargoPacket, SaveLoadVersion::CargoPackets, SaveLoadVersion::MaxVersion),
 		SLE_CONDARR(Vehicle, cargo.action_counts, SLE_UINT32, to_underlying(VehicleCargoList::MoveToAction::End), SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, cargo_age_counter, SLE_UINT16, SaveLoadVersion::NewGRFCustomCargoAging, SaveLoadVersion::MaxVersion),
 
@@ -731,7 +731,7 @@ public:
 
 		SLE_CONDVARNAME(Vehicle, old_orders, "orders", SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
 		SLE_CONDVARNAME(Vehicle, old_orders, "orders", SLE_UINT32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrderList),
-		SLE_CONDREF(Vehicle, orders, REF_ORDERLIST, SaveLoadVersion::OrderList, SaveLoadVersion::MaxVersion),
+		SLE_CONDREF(Vehicle, orders, SLRefType::OrderList, SaveLoadVersion::OrderList, SaveLoadVersion::MaxVersion),
 
 		SLE_CONDVAR(Vehicle, age, SLE_FILE_U16 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
 		SLE_CONDVAR(Vehicle, age, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
@@ -771,7 +771,7 @@ public:
 		SLE_CONDVAR(Vehicle, random_bits, SLE_UINT16, SaveLoadVersion::ExtendVehicleRandom, SaveLoadVersion::MaxVersion),
 		SLE_CONDVARNAME(Vehicle, waiting_random_triggers, "waiting_triggers", SLE_UINT8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
-		SLE_CONDREF(Vehicle, next_shared, REF_VEHICLE, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+		SLE_CONDREF(Vehicle, next_shared, SLRefType::Vehicle, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, group_id, SLE_UINT16, SaveLoadVersion::VehicleGroups, SaveLoadVersion::MaxVersion),
 
 		SLE_CONDVAR(Vehicle, current_order_time, SLE_FILE_U32 | SLE_VAR_I32, SaveLoadVersion::Timetables, SaveLoadVersion::TimetableTicksType),
@@ -1048,7 +1048,7 @@ public:
 class SlVehicleDisaster : public DefaultSaveLoadHandler<SlVehicleDisaster, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
-		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
+		    SLE_REF(Vehicle, next,                  SLRefType::OldVehicle),
 
 		    SLE_VAR(Vehicle, subtype,               SLE_UINT8),
 		SLE_CONDVAR(Vehicle, tile, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),

@@ -171,7 +171,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, xy, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLE_CONDVAR(OldWaypoint, xy, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
-	SLE_CONDREF(OldWaypoint, town, REF_TOWN, SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
+	SLE_CONDREF(OldWaypoint, town, SLRefType::Town, SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(OldWaypoint, town_cn, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::MoreWaypointsPerTown),
 	SLE_CONDVAR(OldWaypoint, town_cn, SLE_UINT16, SaveLoadVersion::MoreWaypointsPerTown, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(OldWaypoint, string_id, SLE_STRINGID, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
