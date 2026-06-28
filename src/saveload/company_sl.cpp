@@ -492,11 +492,11 @@ public:
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
 	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),
-	SLE_CONDSSTR(CompanyProperties, name, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(CompanyProperties, name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 
 	    SLE_VAR(CompanyProperties, president_name_1, SLE_STRINGID),
 	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
-	SLE_CONDSSTR(CompanyProperties, president_name, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(CompanyProperties, president_name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SaveLoadVersion::CompanyAllowList, SaveLoadVersion::CompanyAllowListV2),
 	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SaveLoadVersion::CompanyAllowListV2, SaveLoadVersion::MaxVersion),

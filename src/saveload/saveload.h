@@ -690,20 +690,11 @@ enum VarMemType : uint8_t {
 	/* 1 more possible memory-primitives */
 };
 
-/** Flags directing saving/loading of a variable. */
-enum SaveLoadFlag : uint8_t {
-	SLF_ALLOW_CONTROL = 0, ///< Allow control codes in the strings.
-	SLF_ALLOW_NEWLINE = 1, ///< Allow new lines in the strings.
-	SLF_REPLACE_TABCRLF = 2, ///< Replace tabs, cr and lf in the string with spaces.
-};
-/** Bitset of \c SaveLoadFlag elements. */
-using SaveLoadFlags = EnumBitSet<SaveLoadFlag, uint8_t>;
-
 /** Container of a variable's characteristics about a variable's storage. */
 struct VarType {
 	VarFileType file{}; ///< The way of storing data in the file.
 	VarMemType mem{}; ///< The way of storing data in memory.
-	SaveLoadFlags flags{}; ///< Any flags related to the type.
+	StringValidationSettings string_validation_settings{}; ///< Any settings related to validation of the strings.
 	SLRefType ref{}; ///< The reference type.
 
 	/** Create an empty \c VarType. */
@@ -731,13 +722,13 @@ struct VarType {
 
 	/**
 	 * Transitional helper function to add a \c SaveLoadFlag to this type.
-	 * @param flag The flag to set.
-	 * @return A copy of this with the flag set.
+	 * @param string_validation_setting The string_validation_setting to set.
+	 * @return A copy of this with the string_validation_setting set.
 	 */
-	constexpr VarType operator|(SaveLoadFlag flag) const
+	constexpr VarType operator|(StringValidationSetting string_validation_setting) const
 	{
 		VarType copy = *this;
-		copy.flags.Set(flag);
+		copy.string_validation_settings.Set(string_validation_setting);
 		return copy;
 	}
 };

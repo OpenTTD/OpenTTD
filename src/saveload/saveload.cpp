@@ -1152,17 +1152,11 @@ static void SlStdString(void *ptr, VarType conv)
 
 			SlReadString(*str, len);
 
-			StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark;
-			if (conv.flags.Test(SLF_ALLOW_CONTROL)) {
-				settings.Set(StringValidationSetting::AllowControlCode);
+			StringValidationSettings settings = conv.string_validation_settings;
+			settings.Set(StringValidationSetting::ReplaceWithQuestionMark);
+			if (settings.Test(StringValidationSetting::AllowControlCode)) {
 				if (IsSavegameVersionBefore(SaveLoadVersion::EncodedStringFormat)) FixSCCEncoded(*str, IsSavegameVersionBefore(SaveLoadVersion::MoveSccEncoded));
 				if (IsSavegameVersionBefore(SaveLoadVersion::FixSccEncodedNegative)) FixSCCEncodedNegative(*str);
-			}
-			if (conv.flags.Test(SLF_ALLOW_NEWLINE)) {
-				settings.Set(StringValidationSetting::AllowNewline);
-			}
-			if (conv.flags.Test(SLF_REPLACE_TABCRLF)) {
-				settings.Set(StringValidationSetting::ReplaceTabCrNlWithSpace);
 			}
 			StrMakeValidInPlace(*str, settings);
 		}
