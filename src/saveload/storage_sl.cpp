@@ -25,7 +25,7 @@ static const SaveLoad _storage_desc[] = {
 
 /** Persistent storage data. */
 struct PSACChunkHandler : ChunkHandler {
-	PSACChunkHandler() : ChunkHandler('PSAC', CH_TABLE) {}
+	PSACChunkHandler() : ChunkHandler('PSAC', ChunkType::Table) {}
 
 	void Load() const override
 	{

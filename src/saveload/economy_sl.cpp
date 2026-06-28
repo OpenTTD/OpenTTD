@@ -19,7 +19,7 @@
 
 /** Prices in pre 126 savegames */
 struct PRICChunkHandler : ChunkHandler {
-	PRICChunkHandler() : ChunkHandler('PRIC', CH_READONLY) {}
+	PRICChunkHandler() : ChunkHandler('PRIC', ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
@@ -32,7 +32,7 @@ struct PRICChunkHandler : ChunkHandler {
 
 /** Cargo payment rates in pre 126 savegames */
 struct CAPRChunkHandler : ChunkHandler {
-	CAPRChunkHandler() : ChunkHandler('CAPR', CH_READONLY) {}
+	CAPRChunkHandler() : ChunkHandler('CAPR', ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
@@ -58,7 +58,7 @@ static const SaveLoad _economy_desc[] = {
 
 /** Economy variables */
 struct ECMYChunkHandler : ChunkHandler {
-	ECMYChunkHandler() : ChunkHandler('ECMY', CH_TABLE) {}
+	ECMYChunkHandler() : ChunkHandler('ECMY', ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -89,7 +89,7 @@ static const SaveLoad _cargopayment_desc[] = {
 };
 
 struct CAPYChunkHandler : ChunkHandler {
-	CAPYChunkHandler() : ChunkHandler('CAPY', CH_TABLE) {}
+	CAPYChunkHandler() : ChunkHandler('CAPY', ChunkType::Table) {}
 
 	void Save() const override
 	{

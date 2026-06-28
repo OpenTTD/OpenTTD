@@ -30,7 +30,7 @@ static const SaveLoad _subsidies_desc[] = {
 };
 
 struct SUBSChunkHandler : ChunkHandler {
-	SUBSChunkHandler() : ChunkHandler('SUBS', CH_TABLE) {}
+	SUBSChunkHandler() : ChunkHandler('SUBS', ChunkType::Table) {}
 
 	void Save() const override
 	{

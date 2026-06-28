@@ -121,7 +121,7 @@ static const SaveLoad _date_check_desc[] = {
  * @note currently some unrelated stuff is just put here.
  */
 struct DATEChunkHandler : ChunkHandler {
-	DATEChunkHandler() : ChunkHandler('DATE', CH_TABLE) {}
+	DATEChunkHandler() : ChunkHandler('DATE', ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -165,7 +165,7 @@ static const SaveLoad _view_desc[] = {
 };
 
 struct VIEWChunkHandler : ChunkHandler {
-	VIEWChunkHandler() : ChunkHandler('VIEW', CH_TABLE) {}
+	VIEWChunkHandler() : ChunkHandler('VIEW', ChunkType::Table) {}
 
 	void Save() const override
 	{

@@ -196,7 +196,7 @@ struct MemoryDumper {
 struct SaveLoadParams {
 	SaveLoadAction action;               ///< are we doing a save or a load atm.
 	NeedLength need_length;              ///< working in NeedLength (Autolength) mode?
-	uint8_t block_mode;                     ///< ???
+	ChunkType chunk_type; ///< The type of chunk we are reading or writing.
 	bool error;                          ///< did an error occur or not
 
 	size_t obj_len;                      ///< the length of the current object we are busy with
@@ -707,11 +707,11 @@ int SlIterateArray()
 		}
 
 		int index;
-		switch (_sl.block_mode) {
-			case CH_SPARSE_TABLE:
-			case CH_SPARSE_ARRAY: index = static_cast<int>(SlReadSparseIndex()); break;
-			case CH_TABLE:
-			case CH_ARRAY:        index = _sl.array_index++; break;
+		switch (_sl.chunk_type) {
+			case ChunkType::SparseTable:
+			case ChunkType::SparseArray: index = static_cast<int>(SlReadSparseIndex()); break;
+			case ChunkType::Table:
+			case ChunkType::Array: index = _sl.array_index++; break;
 			default:
 				Debug(sl, 0, "SlIterateArray error");
 				return -1; // error
@@ -743,30 +743,30 @@ void SlSetLength(size_t length)
 	switch (_sl.need_length) {
 		case NL_WANTLENGTH:
 			_sl.need_length = NL_NONE;
-			if ((_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE) && _sl.expect_table_header) {
+			if ((_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable) && _sl.expect_table_header) {
 				_sl.expect_table_header = false;
 				SlWriteArrayLength(length + 1);
 				break;
 			}
 
-			switch (_sl.block_mode) {
-				case CH_RIFF:
+			switch (_sl.chunk_type) {
+				case ChunkType::Riff:
 					/* Ugly encoding of >16M RIFF chunks
 					 * The lower 24 bits are normal
 					 * The uppermost 4 bits are bits 24:27 */
 					assert(length < (1 << 28));
 					SlWriteUint32((uint32_t)((length & 0xFFFFFF) | ((length >> 24) << 28)));
 					break;
-				case CH_TABLE:
-				case CH_ARRAY:
+				case ChunkType::Table:
+				case ChunkType::Array:
 					assert(_sl.last_array_index <= _sl.array_index);
 					while (++_sl.last_array_index <= _sl.array_index) {
 						SlWriteArrayLength(1);
 					}
 					SlWriteArrayLength(length + 1);
 					break;
-				case CH_SPARSE_TABLE:
-				case CH_SPARSE_ARRAY:
+				case ChunkType::SparseTable:
+				case ChunkType::SparseArray:
 					SlWriteArrayLength(length + 1 + SlGetArrayLength(_sl.array_index)); // Also include length of sparse index.
 					SlWriteSparseIndex(_sl.array_index);
 					break;
@@ -1880,8 +1880,8 @@ class SlSkipHandler : public SaveLoadHandler {
  */
 std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 {
-	/* You can only use SlTableHeader if you are a CH_TABLE. */
-	assert(_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE);
+	/* You can only use SlTableHeader if you are a ChunkType::Table or ChunkType::SparseTable. */
+	assert(_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable);
 
 	switch (_sl.action) {
 		case SLA_LOAD_CHECK:
@@ -2019,8 +2019,8 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLoadCompatTable &slct)
 {
 	assert(_sl.action == SLA_LOAD || _sl.action == SLA_LOAD_CHECK);
-	/* CH_TABLE / CH_SPARSE_TABLE always have a header. */
-	if (_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE) return SlTableHeader(slt);
+	/* ChunkType::Table / ChunkType::SparseTable always have a header. */
+	if (_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable) return SlTableHeader(slt);
 
 	std::vector<SaveLoad> saveloads;
 
@@ -2106,16 +2106,16 @@ void SlAutolength(AutolengthProc *proc, int arg)
 
 void ChunkHandler::LoadCheck(size_t len) const
 {
-	switch (_sl.block_mode) {
-		case CH_TABLE:
-		case CH_SPARSE_TABLE:
+	switch (_sl.chunk_type) {
+		case ChunkType::Table:
+		case ChunkType::SparseTable:
 			SlTableHeader({});
 			[[fallthrough]];
-		case CH_ARRAY:
-		case CH_SPARSE_ARRAY:
+		case ChunkType::Array:
+		case ChunkType::SparseArray:
 			SlSkipArray();
 			break;
-		case CH_RIFF:
+		case ChunkType::Riff:
 			SlSkipBytes(len);
 			break;
 		default:
@@ -2131,9 +2131,9 @@ static void SlLoadChunk(const ChunkHandler &ch)
 {
 	uint8_t m = SlReadByte();
 
-	_sl.block_mode = m & CH_TYPE_MASK;
+	_sl.chunk_type = static_cast<ChunkType>(m & to_underlying(ChunkType::FileTypeMask));
 	_sl.obj_len = 0;
-	_sl.expect_table_header = (_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE);
+	_sl.expect_table_header = (_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable);
 
 	/* The header should always be at the start. Read the length; the
 	 * Load() should as first action process the header. */
@@ -2141,19 +2141,19 @@ static void SlLoadChunk(const ChunkHandler &ch)
 		if (SlIterateArray() != INT32_MAX) SlErrorCorrupt("Table chunk without header");
 	}
 
-	switch (_sl.block_mode) {
-		case CH_TABLE:
-		case CH_ARRAY:
+	switch (_sl.chunk_type) {
+		case ChunkType::Table:
+		case ChunkType::Array:
 			_sl.array_index = 0;
 			ch.Load();
 			if (_next_offs != 0) SlErrorCorrupt("Invalid array length");
 			break;
-		case CH_SPARSE_TABLE:
-		case CH_SPARSE_ARRAY:
+		case ChunkType::SparseTable:
+		case ChunkType::SparseArray:
 			ch.Load();
 			if (_next_offs != 0) SlErrorCorrupt("Invalid array length");
 			break;
-		case CH_RIFF: {
+		case ChunkType::Riff: {
 			/* Read length */
 			size_t len = (SlReadByte() << 16) | ((m >> 4) << 24);
 			len += SlReadUint16();
@@ -2184,9 +2184,9 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 {
 	uint8_t m = SlReadByte();
 
-	_sl.block_mode = m & CH_TYPE_MASK;
+	_sl.chunk_type = static_cast<ChunkType>(m & to_underlying(ChunkType::FileTypeMask));
 	_sl.obj_len = 0;
-	_sl.expect_table_header = (_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE);
+	_sl.expect_table_header = (_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable);
 
 	/* The header should always be at the start. Read the length; the
 	 * LoadCheck() should as first action process the header. */
@@ -2194,17 +2194,17 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 		if (SlIterateArray() != INT32_MAX) SlErrorCorrupt("Table chunk without header");
 	}
 
-	switch (_sl.block_mode) {
-		case CH_TABLE:
-		case CH_ARRAY:
+	switch (_sl.chunk_type) {
+		case ChunkType::Table:
+		case ChunkType::Array:
 			_sl.array_index = 0;
 			ch.LoadCheck();
 			break;
-		case CH_SPARSE_TABLE:
-		case CH_SPARSE_ARRAY:
+		case ChunkType::SparseTable:
+		case ChunkType::SparseArray:
 			ch.LoadCheck();
 			break;
-		case CH_RIFF: {
+		case ChunkType::Riff: {
 			/* Read length */
 			size_t len = (SlReadByte() << 16) | ((m >> 4) << 24);
 			len += SlReadUint16();
@@ -2233,30 +2233,30 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
  */
 static void SlSaveChunk(const ChunkHandler &ch)
 {
-	if (ch.type == CH_READONLY) return;
+	if (ch.type == ChunkType::ReadOnly) return;
 
 	SlWriteUint32(ch.id);
 	Debug(sl, 2, "Saving chunk {}", ch.GetName());
 
-	_sl.block_mode = ch.type;
-	_sl.expect_table_header = (_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE);
+	_sl.chunk_type = ch.type;
+	_sl.expect_table_header = (_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable);
 
-	_sl.need_length = (_sl.expect_table_header || _sl.block_mode == CH_RIFF) ? NL_WANTLENGTH : NL_NONE;
+	_sl.need_length = (_sl.expect_table_header || _sl.chunk_type == ChunkType::Riff) ? NL_WANTLENGTH : NL_NONE;
 
-	switch (_sl.block_mode) {
-		case CH_RIFF:
+	switch (_sl.chunk_type) {
+		case ChunkType::Riff:
 			ch.Save();
 			break;
-		case CH_TABLE:
-		case CH_ARRAY:
+		case ChunkType::Table:
+		case ChunkType::Array:
 			_sl.last_array_index = 0;
-			SlWriteByte(_sl.block_mode);
+			SlWriteByte(to_underlying(_sl.chunk_type));
 			ch.Save();
 			SlWriteArrayLength(0); // Terminate arrays
 			break;
-		case CH_SPARSE_TABLE:
-		case CH_SPARSE_ARRAY:
-			SlWriteByte(_sl.block_mode);
+		case ChunkType::SparseTable:
+		case ChunkType::SparseArray:
+			SlWriteByte(to_underlying(_sl.chunk_type));
 			ch.Save();
 			SlWriteArrayLength(0); // Terminate arrays
 			break;

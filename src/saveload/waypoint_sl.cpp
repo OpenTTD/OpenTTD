@@ -186,7 +186,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 };
 
 struct CHKPChunkHandler : ChunkHandler {
-	CHKPChunkHandler() : ChunkHandler('CHKP', CH_READONLY) {}
+	CHKPChunkHandler() : ChunkHandler('CHKP', ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
