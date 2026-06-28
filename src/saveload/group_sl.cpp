@@ -17,16 +17,16 @@
 #include "../safeguards.h"
 
 static const SaveLoad _group_desc[] = {
-	 SLE_CONDVAR(Group, name, SLE_NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(Group, name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
-	     SLE_VAR(Group, owner,              SLE_UINT8),
-	     SLE_VAR(Group, vehicle_type,       SLE_UINT8),
-	     SLE_VAR(Group, flags,              SLE_UINT8),
-	 SLE_CONDVAR(Group, livery.in_use, SLE_UINT8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour1, SLE_UINT8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour2, SLE_UINT8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, parent, SLE_UINT16, SaveLoadVersion::GroupHierarchy, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, number, SLE_UINT16, SaveLoadVersion::GroupNumbers, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SLE_CONDSSTR(Group, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	     SLE_VAR(Group, owner,              VarTypes::U8),
+	     SLE_VAR(Group, vehicle_type,       VarTypes::U8),
+	     SLE_VAR(Group, flags,              VarTypes::U8),
+	 SLE_CONDVAR(Group, livery.in_use, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, livery.colour1, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, livery.colour2, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, parent, VarTypes::U16, SaveLoadVersion::GroupHierarchy, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Group, number, VarTypes::U16, SaveLoadVersion::GroupNumbers, SaveLoadVersion::MaxVersion),
 };
 
 struct GRPSChunkHandler : ChunkHandler {

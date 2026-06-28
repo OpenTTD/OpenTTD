@@ -19,7 +19,7 @@
 extern std::vector<TileIndex> _animated_tiles;
 
 static const SaveLoad _animated_tile_desc[] = {
-	 SLEG_VECTOR("tiles", _animated_tiles, SLE_UINT32),
+	 SLEG_VECTOR("tiles", _animated_tiles, VarTypes::U32),
 };
 
 struct ANITChunkHandler : ChunkHandler {
@@ -39,7 +39,7 @@ struct ANITChunkHandler : ChunkHandler {
 		if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFMoreAnimation)) {
 			/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
 			TileIndex anim_list[256];
-			SlCopy(anim_list, 256, IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops) ? (VarFileType::U16 | VarMemType::U32) : SLE_UINT32);
+			SlCopy(anim_list, 256, IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops) ? (VarFileType::U16 | VarMemType::U32) : VarTypes::U32);
 
 			for (int i = 0; i < 256; i++) {
 				if (anim_list[i] == 0) break;
@@ -52,7 +52,7 @@ struct ANITChunkHandler : ChunkHandler {
 			size_t count = SlGetFieldLength() / sizeof(_animated_tiles.front());
 			_animated_tiles.clear();
 			_animated_tiles.resize(_animated_tiles.size() + count);
-			SlCopy(_animated_tiles.data(), count, SLE_UINT32);
+			SlCopy(_animated_tiles.data(), count, VarTypes::U32);
 			return;
 		}
 

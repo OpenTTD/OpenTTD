@@ -169,20 +169,20 @@ void ResetOldWaypoints()
 
 static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(OldWaypoint, xy, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
+	SLE_CONDVAR(OldWaypoint, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, town_index, VarTypes::U16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
 	SLE_CONDREF(OldWaypoint, town, SLRefType::Town, SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(OldWaypoint, town_cn, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::MoreWaypointsPerTown),
-	SLE_CONDVAR(OldWaypoint, town_cn, SLE_UINT16, SaveLoadVersion::MoreWaypointsPerTown, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, string_id, SLE_STRINGID, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(OldWaypoint, name, SLE_STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(OldWaypoint, delete_ctr, SLE_UINT8),
+	SLE_CONDVAR(OldWaypoint, town_cn, VarTypes::U16, SaveLoadVersion::MoreWaypointsPerTown, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, string_id, VarTypes::STRINGID, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SLE_CONDSSTR(OldWaypoint, name, VarTypes::STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	    SLE_VAR(OldWaypoint, delete_ctr, VarTypes::U8),
 
 	SLE_CONDVAR(OldWaypoint, build_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, localidx, SLE_UINT8, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, grfid, SLE_UINT32, SaveLoadVersion::StoreWaypointIdInMap, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, owner, SLE_UINT8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, build_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, localidx, VarTypes::U8, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, grfid, VarTypes::U32, SaveLoadVersion::StoreWaypointIdInMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, owner, VarTypes::U8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
 };
 
 struct CHKPChunkHandler : ChunkHandler {

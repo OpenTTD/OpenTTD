@@ -17,24 +17,24 @@
 #include "../safeguards.h"
 
 static const SaveLoad _cheats_desc[] = {
-	SLE_VAR(Cheats, magic_bulldozer.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, magic_bulldozer.value, SLE_BOOL),
-	SLE_VAR(Cheats, switch_company.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, switch_company.value, SLE_BOOL),
-	SLE_VAR(Cheats, money.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, money.value, SLE_BOOL),
-	SLE_VAR(Cheats, crossing_tunnels.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, crossing_tunnels.value, SLE_BOOL),
-	SLE_VAR(Cheats, no_jetcrash.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, no_jetcrash.value, SLE_BOOL),
-	SLE_VAR(Cheats, change_date.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, change_date.value, SLE_BOOL),
-	SLE_VAR(Cheats, setup_prod.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, setup_prod.value, SLE_BOOL),
-	SLE_VAR(Cheats, edit_max_hl.been_used, SLE_BOOL),
-	SLE_VAR(Cheats, edit_max_hl.value, SLE_BOOL),
-	SLE_CONDVAR(Cheats, station_rating.been_used, SLE_BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Cheats, station_rating.value, SLE_BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
+	SLE_VAR(Cheats, magic_bulldozer.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, magic_bulldozer.value, VarTypes::BOOL),
+	SLE_VAR(Cheats, switch_company.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, switch_company.value, VarTypes::BOOL),
+	SLE_VAR(Cheats, money.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, money.value, VarTypes::BOOL),
+	SLE_VAR(Cheats, crossing_tunnels.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, crossing_tunnels.value, VarTypes::BOOL),
+	SLE_VAR(Cheats, no_jetcrash.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, no_jetcrash.value, VarTypes::BOOL),
+	SLE_VAR(Cheats, change_date.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, change_date.value, VarTypes::BOOL),
+	SLE_VAR(Cheats, setup_prod.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, setup_prod.value, VarTypes::BOOL),
+	SLE_VAR(Cheats, edit_max_hl.been_used, VarTypes::BOOL),
+	SLE_VAR(Cheats, edit_max_hl.value, VarTypes::BOOL),
+	SLE_CONDVAR(Cheats, station_rating.been_used, VarTypes::BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Cheats, station_rating.value, VarTypes::BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
 };
 
 
@@ -58,8 +58,8 @@ struct CHTSChunkHandler : ChunkHandler {
 			std::vector<SaveLoad> oslt;
 
 			/* Cheats were added over the years without a savegame bump. They are
-			 * stored as 2 SLE_BOOLs per entry. "count" indicates how many SLE_BOOLs
-			 * are stored for this savegame. So read only "count" SLE_BOOLs (and in
+			 * stored as 2 VarTypes::BOOLs per entry. "count" indicates how many VarTypes::BOOLs
+			 * are stored for this savegame. So read only "count" VarTypes::BOOLs (and in
 			 * result "count / 2" cheats). */
 			for (auto &sld : slt) {
 				count--;

@@ -94,7 +94,7 @@ constexpr bool DoesMaxFitVariable(T max, VarType type) { return DoesMaxFitVariab
 	NSD(Int, SLEG_GENERAL(name, SaveLoadType::Variable, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, get_range_hook)
 
 #define SDTG_BOOL(name, flags, var, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
-	NSD(Bool, SLEG_GENERAL(name, SaveLoadType::Variable, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
+	NSD(Bool, SLEG_GENERAL(name, SaveLoadType::Variable, var, VarTypes::BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
 #define SDTG_LIST(name, type, flags, var, def, length, from, to, cat, extra, startup)\
 	NSD(List, SLEG_GENERAL(name, SaveLoadType::Array, var, type, length, from, to, extra),flags, startup, def)
@@ -117,7 +117,7 @@ constexpr bool DoesMaxFitVariable(T max, VarType type) { return DoesMaxFitVariab
 	NSD(Int, SLE_GENERAL_NAME(SaveLoadType::Variable, name, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
 #define SDT_BOOL(base, var, flags, def, str, strhelp, strval, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook, from, to, cat, extra, startup)\
-	NSD(Bool, SLE_GENERAL(SaveLoadType::Variable, base, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
+	NSD(Bool, SLE_GENERAL(SaveLoadType::Variable, base, var, VarTypes::BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, get_title_hook, get_help_hook, set_value_dparams_hook, get_def_hook)
 
 #define SDT_LIST(base, var, type, flags, def, from, to, cat, extra, startup)\
 	NSD(List, SLE_GENERAL(SaveLoadType::Array, base, var, type, lengthof(((base*)8)->var), from, to, extra), flags, startup, def)
