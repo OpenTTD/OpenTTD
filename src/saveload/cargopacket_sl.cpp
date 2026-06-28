@@ -127,10 +127,10 @@ SaveLoadTable GetCargoPacketDesc()
 	static const SaveLoad _cargopacket_desc[] = {
 		SLE_VARNAME(CargoPacket, first_station, "source", SLE_UINT16),
 		SLE_VAR(CargoPacket, source_xy,       SLE_UINT32),
-		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", SLE_FILE_U32 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::RemoveLoadedAtXY),
+		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", VarFileType::U32 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::RemoveLoadedAtXY),
 		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", SLE_UINT16, SaveLoadVersion::RemoveLoadedAtXY, SaveLoadVersion::MaxVersion),
 		SLE_VAR(CargoPacket, count,           SLE_UINT16),
-		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoAge),
+		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", VarFileType::U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoAge),
 		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_UINT16, SaveLoadVersion::MoreCargoAge, SaveLoadVersion::PeriodsInTransitRename),
 		SLE_CONDVAR(CargoPacket, periods_in_transit, SLE_UINT16, SaveLoadVersion::PeriodsInTransitRename, SaveLoadVersion::MaxVersion),
 		SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),

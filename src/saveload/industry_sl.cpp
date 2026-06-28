@@ -153,10 +153,10 @@ public:
 };
 
 static const SaveLoad _industry_desc[] = {
-	SLE_CONDVAR(Industry, location.tile, SLE_FILE_U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLE_CONDVAR(Industry, location.tile, VarFileType::U16 | SLE_VAR_U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLE_CONDVAR(Industry, location.tile, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(Industry, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_VAR(Industry, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
+	    SLE_VAR(Industry, location.w,                 VarFileType::U8 | SLE_VAR_U16),
+	    SLE_VAR(Industry, location.h,                 VarFileType::U8 | SLE_VAR_U16),
 	    SLE_REF(Industry, town,                       SLRefType::Town),
 	SLE_CONDREF(Industry, neutral_station, SLRefType::Station, SaveLoadVersion::ServeNeutralIndustries, SaveLoadVersion::MaxVersion),
 	SLEG_CONDARR("produced_cargo", SlIndustryProduced::old_cargo, SLE_UINT8, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::StoreIndustryCargo, SaveLoadVersion::ExtendIndustryCargoSlots),
@@ -184,7 +184,7 @@ static const SaveLoad _industry_desc[] = {
 	    SLE_VAR(Industry, type,                       SLE_UINT8),
 	    SLE_VAR(Industry, owner,                      SLE_UINT8),
 	    SLE_VAR(Industry, random_colour,              SLE_UINT8),
-	SLE_CONDVAR(Industry, last_prod_year, SLE_FILE_U8 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	SLE_CONDVAR(Industry, last_prod_year, VarFileType::U8 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
 	SLE_CONDVAR(Industry, last_prod_year, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(Industry, was_cargo_delivered,        SLE_UINT8),
 	SLE_CONDVAR(Industry, ctlflags, SLE_UINT8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
