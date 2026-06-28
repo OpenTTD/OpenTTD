@@ -18,15 +18,14 @@ using TownID = PoolID<uint16_t, struct TownIDTag, 64000, 0xFFFF>;
 struct Town;
 
 /** Supported initial town sizes */
-enum TownSize : uint8_t {
-	TSZ_SMALL,  ///< Small town.
-	TSZ_MEDIUM, ///< Medium town.
-	TSZ_LARGE,  ///< Large town.
-	TSZ_RANDOM, ///< Random size, bigger than small, smaller than large.
+enum class TownSize : uint8_t {
+	Small, ///< Small town.
+	Medium, ///< Medium town.
+	Large, ///< Large town.
+	Random, ///< Random size, bigger than small, smaller than large.
 
-	TSZ_END,    ///< Number of available town sizes.
+	End, ///< Number of available town sizes.
 };
-DECLARE_ENUM_AS_ADDABLE(TownSize)
 
 /* These refer to the maximums, so Appalling is -1000 to -400
  * MAXIMUM RATINGS BOUNDARIES */

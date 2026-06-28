@@ -112,11 +112,11 @@ public:
 	 * Possible town construction sizes.
 	 */
 	enum TownSize {
-		TOWN_SIZE_SMALL   = ::TSZ_SMALL,  ///< Small town.
-		TOWN_SIZE_MEDIUM  = ::TSZ_MEDIUM, ///< Medium town.
-		TOWN_SIZE_LARGE   = ::TSZ_LARGE,  ///< Large town.
+		TOWN_SIZE_SMALL = to_underlying(::TownSize::Small), ///< Small town.
+		TOWN_SIZE_MEDIUM = to_underlying(::TownSize::Medium), ///< Medium town.
+		TOWN_SIZE_LARGE = to_underlying(::TownSize::Large), ///< Large town.
 
-		TOWN_SIZE_INVALID = -1,  ///< Invalid town size.
+		TOWN_SIZE_INVALID = -1, ///< Invalid town size.
 	};
 
 	/**
