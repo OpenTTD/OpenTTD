@@ -99,7 +99,7 @@ static constexpr int BB_HEIGHT_UNDER_BRIDGE = 6; ///< Everything that can be bui
 static constexpr int BB_Z_SEPARATOR         = 7; ///< Separates the bridge/tunnel from the things under/above it.
 
 /** Viewport place method (type of highlighted area and placed objects) */
-enum ViewportPlaceMethod : uint8_t {
+enum ViewportPlaceMethod : uint16_t {
 	VPM_X_OR_Y          =    0, ///< drag in X or Y direction
 	VPM_FIX_X           =    1, ///< drag only in X axis
 	VPM_FIX_Y           =    2, ///< drag only in Y axis
@@ -109,8 +109,11 @@ enum ViewportPlaceMethod : uint8_t {
 	VPM_FIX_VERTICAL    =    6, ///< drag only in vertical direction
 	VPM_X_LIMITED       =    7, ///< Drag only in X axis with limited size
 	VPM_Y_LIMITED       =    8, ///< Drag only in Y axis with limited size
+	VPM_ROAD_FIX_X      =   16, ///< road drag locked to X (road extends along Y axis)
+	VPM_ROAD_FIX_Y      =   17, ///< road drag locked to Y (road extends along X axis)
 	VPM_RAILDIRS        = 0x40, ///< all rail directions
-	VPM_SIGNALDIRS      = 0x80, ///< similar to VMP_RAILDIRS, but with different cursor
+	VPM_SIGNALDIRS      = 0x80, ///< similar to VPM_RAILDIRS, but with different cursor
+	VPM_ROADDIRS        = 0x100, ///< autoroad axis detection
 };
 DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
 
