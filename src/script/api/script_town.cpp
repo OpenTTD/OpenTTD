@@ -296,11 +296,11 @@
 	ScriptObjectRef counter(name);
 
 	EnforceDeityOrCompanyModeValid(false);
-	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town != TF_FORBIDDEN);
+	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town != TownFounding::Forbidden);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE)
 	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || size != TOWN_SIZE_LARGE);
-	if (ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town == TF_CUSTOM_LAYOUT) {
+	if (ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town == TownFounding::CustomLayout) {
 		EnforcePrecondition(false, layout >= ROAD_LAYOUT_ORIGINAL && layout <= ROAD_LAYOUT_RANDOM);
 	} else {
 		/* The layout parameter is ignored for AIs when custom layouts is disabled. */

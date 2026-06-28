@@ -101,12 +101,10 @@ enum class TownExpandMode : uint8_t {
 using TownExpandModes = EnumBitSet<TownExpandMode, uint8_t>;
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
-enum TownFounding : uint8_t {
-	TF_BEGIN = 0,     ///< Used for iterations and limit testing
-	TF_FORBIDDEN = 0, ///< Forbidden
-	TF_ALLOWED,       ///< Allowed
-	TF_CUSTOM_LAYOUT, ///< Allowed, with custom town layout
-	TF_END,           ///< Used for iterations and limit testing
+enum class TownFounding : uint8_t {
+	Forbidden, ///< Forbidden
+	Allowed, ///< Allowed
+	CustomLayout, ///< Allowed, with custom town layout
 };
 
 /** Town cargo generation modes */
