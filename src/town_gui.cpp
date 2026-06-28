@@ -1147,7 +1147,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_found_town_widgets =
 /** Found a town window class. */
 struct FoundTownWindow : Window {
 private:
-	TownSize town_size = TSZ_MEDIUM; ///< Selected town size
+	TownSize town_size = TownSize::Medium; ///< Selected town size
 	TownLayout town_layout{}; ///< Selected town layout
 	bool city = false; ///< Are we building a city?
 	QueryString townname_editbox; ///< Townname editbox
@@ -1205,7 +1205,7 @@ public:
 		}
 
 		for (WidgetID i = WID_TF_SIZE_SMALL; i <= WID_TF_SIZE_RANDOM; i++) {
-			this->SetWidgetLoweredState(i, i == WID_TF_SIZE_SMALL + this->town_size);
+			this->SetWidgetLoweredState(i, i == WID_TF_SIZE_SMALL + to_underlying(this->town_size));
 		}
 
 		this->SetWidgetLoweredState(WID_TF_CITY, this->city);
@@ -1272,7 +1272,7 @@ public:
 				break;
 
 			case WID_TF_SIZE_SMALL: case WID_TF_SIZE_MEDIUM: case WID_TF_SIZE_LARGE: case WID_TF_SIZE_RANDOM:
-				this->town_size = (TownSize)(widget - WID_TF_SIZE_SMALL);
+				this->town_size = static_cast<TownSize>(widget - WID_TF_SIZE_SMALL);
 				this->UpdateButtons(false);
 				break;
 
