@@ -493,7 +493,7 @@ static CallBackFunction ToolbarTownClick(Window *w)
 {
 	DropDownList list;
 	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY, TownMenuEntries::ShowDirectory));
-	if (_settings_game.economy.found_town != TF_FORBIDDEN) list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_FOUND_TOWN, TownMenuEntries::ShowFoundTown));
+	if (_settings_game.economy.found_town != TownFounding::Forbidden) list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_FOUND_TOWN, TownMenuEntries::ShowFoundTown));
 	if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) list.push_back(MakeDropDownListStringItem(STR_SCENEDIT_TOWN_MENU_PACE_HOUSE, TownMenuEntries::ShowPlaceHouses));
 
 	PopupMainToolbarMenu(w, WID_TN_TOWNS, std::move(list), 0);
@@ -512,7 +512,7 @@ static CallBackFunction MenuClickTown(int index)
 	switch (TownMenuEntries(index)) {
 		case TownMenuEntries::ShowDirectory: ShowTownDirectory(); break;
 		case TownMenuEntries::ShowFoundTown: // Setting could be changed when the dropdown was open
-			if (_settings_game.economy.found_town != TF_FORBIDDEN) ShowFoundTownWindow();
+			if (_settings_game.economy.found_town != TownFounding::Forbidden) ShowFoundTownWindow();
 			break;
 		case TownMenuEntries::ShowPlaceHouses: // Setting could be changed when the dropdown was open
 			if (_settings_game.economy.place_houses != PlaceHouses::Forbidden) ShowBuildHousePicker(nullptr);

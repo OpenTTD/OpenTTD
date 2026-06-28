@@ -386,7 +386,7 @@ static void AircraftRangeChanged(int32_t)
 
 static void TownFoundingChanged(int32_t)
 {
-	if (_game_mode != GameMode::Editor && _settings_game.economy.found_town == TF_FORBIDDEN) {
+	if (_game_mode != GameMode::Editor && _settings_game.economy.found_town == TownFounding::Forbidden) {
 		CloseWindowById(WindowClass::FoundTown, 0);
 	} else {
 		InvalidateWindowData(WindowClass::FoundTown, 0);

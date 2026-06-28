@@ -1176,7 +1176,7 @@ public:
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_ACTION_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_TF_TOWN_EXPAND_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_TF_SIZE_SEL)->SetDisplayedPlane(SZSP_VERTICAL);
-		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT) {
+		if (_settings_game.economy.found_town != TownFounding::CustomLayout) {
 			this->GetWidget<NWidgetStacked>(WID_TF_ROAD_LAYOUT_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		} else {
 			this->GetWidget<NWidgetStacked>(WID_TF_ROAD_LAYOUT_SEL)->SetDisplayedPlane(0);
@@ -1200,7 +1200,7 @@ public:
 	void UpdateButtons(bool check_availability)
 	{
 		if (check_availability && _game_mode != GameMode::Editor) {
-			if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT) this->town_layout = _settings_game.economy.town_layout;
+			if (_settings_game.economy.found_town != TownFounding::CustomLayout) this->town_layout = _settings_game.economy.town_layout;
 			this->ReInit();
 		}
 

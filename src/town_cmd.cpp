@@ -2175,10 +2175,10 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 
 	/* Some things are allowed only in the scenario editor and for game scripts. */
 	if (_game_mode != GameMode::Editor && _current_company != OWNER_DEITY) {
-		if (_settings_game.economy.found_town == TF_FORBIDDEN) return { CMD_ERROR, 0, TownID::Invalid() };
+		if (_settings_game.economy.found_town == TownFounding::Forbidden) return { CMD_ERROR, 0, TownID::Invalid() };
 		if (size == TownSize::Large) return { CMD_ERROR, 0, TownID::Invalid() };
 		if (random_location) return { CMD_ERROR, 0, TownID::Invalid() };
-		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && layout != _settings_game.economy.town_layout) {
+		if (_settings_game.economy.found_town != TownFounding::CustomLayout && layout != _settings_game.economy.town_layout) {
 			return { CMD_ERROR, 0, TownID::Invalid() };
 		}
 	} else if (_current_company == OWNER_DEITY && random_location) {
