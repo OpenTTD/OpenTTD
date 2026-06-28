@@ -374,7 +374,7 @@ struct HIDSChunkHandler : NewGRFMappingChunkHandler {
 };
 
 struct CITYChunkHandler : ChunkHandler {
-	CITYChunkHandler() : ChunkHandler('CITY', CH_TABLE) {}
+	CITYChunkHandler() : ChunkHandler('CITY', ChunkType::Table) {}
 
 	void Save() const override
 	{

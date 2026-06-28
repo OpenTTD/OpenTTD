@@ -30,7 +30,7 @@ static const SaveLoad _object_desc[] = {
 };
 
 struct OBJSChunkHandler : ChunkHandler {
-	OBJSChunkHandler() : ChunkHandler('OBJS', CH_TABLE) {}
+	OBJSChunkHandler() : ChunkHandler('OBJS', ChunkType::Table) {}
 
 	void Save() const override
 	{

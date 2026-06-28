@@ -329,9 +329,9 @@ enum class SaveLoadVersion : uint16_t {
 	GroupReplaceWagonRemoval, ///< Saveload version: 291, GitHub pull request: 7441\n Per-group wagon removal flag.
 	CustomSubsidyDuration, ///< Saveload version: 292, GitHub pull request: 9081\n Configurable subsidy duration.
 	SaveloadListLength, ///< Saveload version: 293, GitHub pull request: 9374\n Consistency in list length with SaveLoadType::Struct / SaveLoadType::StructList / SaveLoadType::ReferenceList.
-	RiffToArray, ///< Saveload version: 294, GitHub pull request: 9375\n Changed many CH_RIFF chunks to CH_ARRAY chunks.
+	RiffToArray, ///< Saveload version: 294, GitHub pull request: 9375\n Changed many ChunkType::Riff chunks to ChunkType::Array chunks.
 
-	TableChunks, ///< Saveload version: 295, GitHub pull request: 9322\n Introduction of CH_TABLE and CH_SPARSE_TABLE.
+	TableChunks, ///< Saveload version: 295, GitHub pull request: 9322\n Introduction of ChunkType::Table and ChunkType::SparseTable.
 	ScriptInt64, ///< Saveload version: 296, GitHub pull request: 9415\n SQInteger is 64bit but was saved as 32bit.
 	LinkgraphTravelTime, ///< Saveload version: 297, GitHub pull request: 9457, release: 12.0-RC1\n Store travel time in the linkgraph.
 	DockDockingtiles, ///< Saveload version: 298, GitHub pull request: 9578\n All tiles around docks may be docking tiles.
@@ -467,15 +467,15 @@ SaveLoadResult LoadWithFilter(std::shared_ptr<struct LoadFilter> reader);
 typedef void AutolengthProc(int);
 
 /** Type of a chunk. */
-enum ChunkType : uint8_t {
-	CH_RIFF = 0,
-	CH_ARRAY = 1,
-	CH_SPARSE_ARRAY = 2,
-	CH_TABLE = 3,
-	CH_SPARSE_TABLE = 4,
+enum class ChunkType : uint8_t {
+	Riff = 0, ///< 4 bits store the chunk type, 28 bits the number of bytes.
+	Array = 1, ///< Contiguous array of elements starting at index 0.
+	SparseArray = 2, ///< Array of elements with index for each element.
+	Table = 3, ///< An \c Array with a header describing the elements.
+	SparseTable = 4, ///< A \c SparseArray with a header describing the elements.
 
-	CH_TYPE_MASK = 0xf, ///< All ChunkType values have to be within this mask.
-	CH_READONLY, ///< Chunk is never saved.
+	FileTypeMask = 0xf, ///< All ChunkType values that are saved in the file have to be within this mask.
+	ReadOnly, ///< Chunk is never saved.
 };
 
 /** Handlers and description of chunk. */
@@ -490,7 +490,7 @@ struct ChunkHandler {
 
 	/**
 	 * Save the chunk.
-	 * Must be overridden, unless Chunk type is CH_READONLY.
+	 * Must be overridden, unless Chunk type is ChunkType::ReadOnly.
 	 */
 	virtual void Save() const { NOT_REACHED(); }
 

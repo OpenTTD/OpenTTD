@@ -69,19 +69,19 @@ An example of a valid tag is `PLYR` when looking at it via ASCII, which contains
 `[4..4]` - Next follows a byte where the lower 4 bits contain the type.
 The possible valid types are:
 
-- `0` - `CH_RIFF` - This chunk is a binary blob.
-- `1` - `CH_ARRAY` - This chunk is a list of items.
-- `2` - `CH_SPARSE_ARRAY` - This chunk is a list of items.
-- `3` - `CH_TABLE` - This chunk is self-describing list of items.
-- `4` - `CH_SPARSE_TABLE` - This chunk is self-describing list of items.
+- `0` - `ChunkType::Riff` - This chunk is a binary blob.
+- `1` - `ChunkType::Array` - This chunk is a list of items.
+- `2` - `ChunkType::SparseArray` - This chunk is a list of items.
+- `3` - `ChunkType::Table` - This chunk is self-describing list of items.
+- `4` - `ChunkType::SparseTable` - This chunk is self-describing list of items.
 
 Now per type the format is (slightly) different.
 
-### CH_RIFF
+### ChunkType::Riff
 
 (since savegame version 295, this chunk type is only used for MAP-chunks, containing bit-information about each tile on the map)
 
-A `CH_RIFF` starts with an `uint24` which together with the upper-bits of the type defines the length of the chunk.
+A `ChunkType::Riff` starts with an `uint24` which together with the upper-bits of the type defines the length of the chunk.
 In pseudo-code:
 
 ```
@@ -94,11 +94,11 @@ if type == 0
 The next `length` bytes are part of the chunk.
 What those bytes mean depends on the tag of the chunk; further details per chunk can be found in the source-code.
 
-### CH_ARRAY / CH_SPARSE_ARRAY
+### ChunkType::Array / ChunkType::SparseArray
 
 (this chunk type is deprecated since savegame version 295 and is no longer in use)
 
-`[0..G1]` - A `CH_ARRAY` / `CH_SPARSE_ARRAY` starts with a `gamma`, indicating the size of the next item plus one.
+`[0..G1]` - A `ChunkType::Array` / `ChunkType::SparseArray` starts with a `gamma`, indicating the size of the next item plus one.
 If this size value is zero, it indicates the end of the list.
 This indicates the full length of the next item minus one.
 In psuedo-code:
@@ -111,21 +111,21 @@ loop
     read <size> bytes
 ```
 
-`[]` - For `CH_ARRAY` there is an implicit index.
+`[]` - For `ChunkType::Array` there is an implicit index.
 The loop starts at zero, and every iteration adds one to the index.
 For entries in the game that were not allocated, the `size` will be zero.
 
-`[G1+1..G2]` - For `CH_SPARSE_ARRAY` there is an explicit index.
+`[G1+1..G2]` - For `ChunkType::SparseArray` there is an explicit index.
 The `gamma` following the size indicates the index.
 
-The content of the item is a binary blob, and similar to `CH_RIFF`, it depends on the tag of the chunk what it means.
+The content of the item is a binary blob, and similar to `ChunkType::Riff`, it depends on the tag of the chunk what it means.
 Please check the source-code for further details.
 
-### CH_TABLE / CH_SPARSE_TABLE
+### ChunkType::Table / ChunkType::SparseTable
 
 (this chunk type only exists since savegame version 295)
 
-Both `CH_TABLE` and `CH_SPARSE_TABLE` are very similar to `CH_ARRAY` / `CH_SPARSE_ARRAY` respectively.
+Both `ChunkType::Table` and `ChunkType::SparseTable` are very similar to `ChunkType::Array` / `ChunkType::SparseArray` respectively.
 The only change is that the chunk starts with a header.
 This header describes the chunk in details; with the header you know the meaning of each byte in the binary blob that follows.
 
@@ -168,7 +168,7 @@ struct | substruct3
 The headers will be, in order: `table`, `substruct1`, `substruct3`, `substruct2`, each ending with a `type` is zero field.
 
 After reading all the fields of all the headers, there is a list of records.
-To read this, see `CH_ARRAY` / `CH_SPARSE_ARRAY` for details.
+To read this, see `ChunkType::Array` / `ChunkType::SparseArray` for details.
 
 As each `type` has a well defined length, you can read the records even without knowing anything about the chunk-tag yourself.
 
@@ -187,7 +187,7 @@ The prefix is strongly advised to avoid conflicts with future-settings in an unp
 
 ## Scripts custom data format
 
-Script chunks (`AIPL` and `GSDT`) use `CH_TABLE` chunk type.
+Script chunks (`AIPL` and `GSDT`) use `ChunkType::Table` chunk type.
 
 At the end of each record there's an `uint8` to indicate if there's custom data (1) or not (0).
 

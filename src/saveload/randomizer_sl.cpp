@@ -19,7 +19,7 @@ static const SaveLoad _randomizer_desc[] = {
 };
 
 struct SRNDChunkHandler : ChunkHandler {
-	SRNDChunkHandler() : ChunkHandler('SRND', CH_TABLE)
+	SRNDChunkHandler() : ChunkHandler('SRND', ChunkType::Table)
 	{}
 
 	void Save() const override
