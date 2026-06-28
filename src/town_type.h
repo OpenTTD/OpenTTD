@@ -108,11 +108,9 @@ enum class TownFounding : uint8_t {
 };
 
 /** Town cargo generation modes */
-enum TownCargoGenMode : uint8_t {
-	TCGM_BEGIN = 0,
-	TCGM_ORIGINAL = 0,  ///< Original algorithm (quadratic cargo by population)
-	TCGM_BITCOUNT,      ///< Bit-counted algorithm (normal distribution from individual house population)
-	TCGM_END,
+enum class TownCargoGenMode : uint8_t {
+	Original, ///< Original algorithm (quadratic cargo by population)
+	Bitcount, ///< Bit-counted algorithm (normal distribution from individual house population)
 };
 
 static const uint MAX_LENGTH_TOWN_NAME_CHARS = 32; ///< The maximum length of a town name in characters including '\0'
