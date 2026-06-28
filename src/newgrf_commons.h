@@ -18,10 +18,10 @@
 #include "core/bitmath_func.hpp"
 
 /** Context for tile accesses */
-enum TileContext : uint8_t {
-	TCX_NORMAL,         ///< Nothing special.
-	TCX_UPPER_HALFTILE, ///< Querying information about the upper part of a tile with halftile foundation.
-	TCX_ON_BRIDGE,      ///< Querying information about stuff on the bridge (via some bridgehead).
+enum class TileContext : uint8_t {
+	Normal, ///< Nothing special.
+	UpperHalftile, ///< Querying information about the upper part of a tile with halftile foundation.
+	OnBridge, ///< Querying information about stuff on the bridge (via some bridgehead).
 };
 
 /**
@@ -306,7 +306,7 @@ extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
 
-uint32_t GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
+uint32_t GetTerrainType(TileIndex tile, TileContext context = TileContext::Normal);
 TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets = true, Axis axis = Axis::Invalid);
 uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8);
 uint32_t GetCompanyInfo(CompanyID owner, const struct Livery *l = nullptr);

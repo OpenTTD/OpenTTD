@@ -2030,7 +2030,7 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, Palett
 	 * Note: Halftile slopes only have fences on the upper part. */
 	uint num_sprites = 0;
 	PalSpriteID psid{
-		.sprite = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Fences, IsHalftileSlope(ti->tileh) ? TCX_UPPER_HALFTILE : TCX_NORMAL, &num_sprites),
+		.sprite = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Fences, IsHalftileSlope(ti->tileh) ? TileContext::UpperHalftile : TileContext::Normal, &num_sprites),
 		.pal = pal,
 	};
 	if (psid.sprite == 0) {
@@ -2217,8 +2217,8 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 
 	if (IsValidCorner(halftile_corner)) {
 		DrawFoundation(ti, HalftileFoundation(halftile_corner));
-		overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay, TCX_UPPER_HALFTILE);
-		ground = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Ground, TCX_UPPER_HALFTILE);
+		overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay, TileContext::UpperHalftile);
+		ground = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Ground, TileContext::UpperHalftile);
 
 		/* Draw higher halftile-overlay: Use the sloped sprites with three corners raised. They probably best fit the lightning. */
 		Slope fake_slope = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
