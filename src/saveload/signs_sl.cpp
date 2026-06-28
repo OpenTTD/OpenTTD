@@ -20,7 +20,7 @@
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
 	SLE_CONDVAR(Sign, name, SLE_NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(Sign, name, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Sign, name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Sign, x, SLE_FILE_I16 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 	SLE_CONDVAR(Sign, y, SLE_FILE_I16 | SLE_VAR_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 	SLE_CONDVAR(Sign, x, SLE_INT32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),

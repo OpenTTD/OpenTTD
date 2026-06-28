@@ -658,7 +658,7 @@ public:
 
 		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
 		SLE_CONDVAR(Vehicle, name, SLE_NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-		SLE_CONDSSTR(Vehicle, name, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+		SLE_CONDSSTR(Vehicle, name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, unitnumber, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerUnitNumber),
 		SLE_CONDVAR(Vehicle, unitnumber, SLE_UINT16, SaveLoadVersion::LargerUnitNumber, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),

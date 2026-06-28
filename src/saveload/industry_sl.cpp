@@ -202,7 +202,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDREF(Industry, psa, REF_STORAGE, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVAR(Industry, random, SLE_UINT16, SaveLoadVersion::NewGRFIndustryRandomTriggers, SaveLoadVersion::MaxVersion),
-	SLE_CONDSSTR(Industry, text, SLE_STR | SLF_ALLOW_CONTROL, SaveLoadVersion::IndustryText, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Industry, text, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::IndustryText, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVAR(Industry, valid_history, SLE_UINT64, SaveLoadVersion::IndustryNumValidHistory, SaveLoadVersion::MaxVersion),
 

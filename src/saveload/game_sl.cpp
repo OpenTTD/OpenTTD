@@ -121,7 +121,7 @@ static uint32_t _game_saveload_strings;
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
 	static inline const SaveLoad description[] = {
-		SLEG_SSTR("string", _game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL | SLF_REPLACE_TABCRLF),
+		SLEG_SSTR("string", _game_saveload_string, SLE_STR | StringValidationSetting::AllowControlCode | StringValidationSetting::ReplaceTabCrNlWithSpace),
 	};
 	static inline const SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
 
