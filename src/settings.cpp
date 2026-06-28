@@ -128,10 +128,10 @@ using SettingDescProcList = void(IniFile &ini, std::string_view grpname, StringL
 static bool IsSignedVarMemType(VarType vt)
 {
 	switch (vt.mem) {
-		case SLE_VAR_I8:
-		case SLE_VAR_I16:
-		case SLE_VAR_I32:
-		case SLE_VAR_I64:
+		case VarMemType::I8:
+		case VarMemType::I16:
+		case VarMemType::I32:
+		case VarMemType::I64:
 			return true;
 
 		default:
@@ -340,13 +340,13 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 	for (size_t i = 0; i != this->save.length; i++) {
 		int64_t v;
 		switch (this->save.conv.mem) {
-			case SLE_VAR_BL:
-			case SLE_VAR_I8:  v = *(const   int8_t *)p; p += 1; break;
-			case SLE_VAR_U8:  v = *(const  uint8_t *)p; p += 1; break;
-			case SLE_VAR_I16: v = *(const  int16_t *)p; p += 2; break;
-			case SLE_VAR_U16: v = *(const uint16_t *)p; p += 2; break;
-			case SLE_VAR_I32: v = *(const  int32_t *)p; p += 4; break;
-			case SLE_VAR_U32: v = *(const uint32_t *)p; p += 4; break;
+			case VarMemType::Bool:
+			case VarMemType::I8:  v = *(const   int8_t *)p; p += 1; break;
+			case VarMemType::U8:  v = *(const  uint8_t *)p; p += 1; break;
+			case VarMemType::I16: v = *(const  int16_t *)p; p += 2; break;
+			case VarMemType::U16: v = *(const uint16_t *)p; p += 2; break;
+			case VarMemType::I32: v = *(const  int32_t *)p; p += 4; break;
+			case VarMemType::U32: v = *(const uint32_t *)p; p += 4; break;
 			default: NOT_REACHED();
 		}
 		if (i != 0) result += ',';
@@ -534,13 +534,13 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 	 * 32-bit variable
 	 * TODO: Support 64-bit settings/variables; requires 64 bit over command protocol! */
 	switch (this->save.conv.mem) {
-		case SLE_VAR_NULL: return;
-		case SLE_VAR_BL:
-		case SLE_VAR_I8:
-		case SLE_VAR_U8:
-		case SLE_VAR_I16:
-		case SLE_VAR_U16:
-		case SLE_VAR_I32: {
+		case VarMemType::Null: return;
+		case VarMemType::Bool:
+		case VarMemType::I8:
+		case VarMemType::U8:
+		case VarMemType::I16:
+		case VarMemType::U16:
+		case VarMemType::I32: {
 			/* Override the minimum value. No value below this->min, except special value 0 */
 			if (!this->flags.Test(SettingFlag::GuiZeroIsSpecial) || val != 0) {
 				if (!this->flags.Test(SettingFlag::GuiDropdown)) {
@@ -553,7 +553,7 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 			}
 			break;
 		}
-		case SLE_VAR_U32: {
+		case VarMemType::U32: {
 			/* Override the minimum value. No value below this->min, except special value 0 */
 			uint32_t uval = static_cast<uint32_t>(val);
 			if (!this->flags.Test(SettingFlag::GuiZeroIsSpecial) || uval != 0) {
@@ -568,8 +568,8 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 			val = static_cast<int32_t>(uval);
 			return;
 		}
-		case SLE_VAR_I64:
-		case SLE_VAR_U64:
+		case VarMemType::I64:
+		case VarMemType::U64:
 		default: NOT_REACHED();
 	}
 }
@@ -798,9 +798,9 @@ std::string StringSettingDesc::FormatValue(const void *object) const
 {
 	const std::string &str = this->Read(object);
 	switch (this->save.conv.mem) {
-		case SLE_VAR_STR: return str;
+		case VarMemType::Str: return str;
 
-		case SLE_VAR_STRQ:
+		case VarMemType::StrQ:
 			if (str.empty()) {
 				return str;
 			}
@@ -814,7 +814,7 @@ bool StringSettingDesc::IsSameValue(const IniItem *item, void *object) const
 {
 	/* The ini parsing removes the quotes, which are needed to retain the spaces in STRQs,
 	 * so those values are always different in the parsed ini item than they should be. */
-	if (this->save.conv.mem == SLE_VAR_STRQ) return false;
+	if (this->save.conv.mem == VarMemType::StrQ) return false;
 
 	const std::string &str = this->Read(object);
 	return item->value->compare(str) == 0;
@@ -1932,7 +1932,7 @@ bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool f
 {
 	assert(sd->flags.Test(SettingFlag::NoNetworkSync));
 
-	if (sd->save.conv.mem == SLE_VAR_STRQ && value == "(null)") {
+	if (sd->save.conv.mem == VarMemType::StrQ && value == "(null)") {
 		value = {};
 	}
 

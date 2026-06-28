@@ -39,7 +39,7 @@ struct ANITChunkHandler : ChunkHandler {
 		if (IsSavegameVersionBefore(SaveLoadVersion::NewGRFMoreAnimation)) {
 			/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
 			TileIndex anim_list[256];
-			SlCopy(anim_list, 256, IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops) ? (VarFileType::U16 | SLE_VAR_U32) : SLE_UINT32);
+			SlCopy(anim_list, 256, IsSavegameVersionBefore(SaveLoadVersion::MultipleRoadStops) ? (VarFileType::U16 | VarMemType::U32) : SLE_UINT32);
 
 			for (int i = 0; i < 256; i++) {
 				if (anim_list[i] == 0) break;

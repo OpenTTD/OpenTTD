@@ -31,13 +31,13 @@ template <typename T>
 constexpr bool DoesMaxFitVariable(T max, VarType type)
 {
 	switch (type.mem) {
-		case SLE_VAR_BL: return max <= 1;
-		case SLE_VAR_I8: return max <= INT8_MAX;
-		case SLE_VAR_U8: return std::make_unsigned_t<T>(max) <= UINT8_MAX;
-		case SLE_VAR_I16: return max <= INT16_MAX;
-		case SLE_VAR_U16: return std::make_unsigned_t<T>(max) <= UINT16_MAX;
-		case SLE_VAR_I32: return max <= INT32_MAX;
-		case SLE_VAR_U32: return std::make_unsigned_t<T>(max) <= UINT32_MAX;
+		case VarMemType::Bool: return max <= 1;
+		case VarMemType::I8: return max <= INT8_MAX;
+		case VarMemType::U8: return std::make_unsigned_t<T>(max) <= UINT8_MAX;
+		case VarMemType::I16: return max <= INT16_MAX;
+		case VarMemType::U16: return std::make_unsigned_t<T>(max) <= UINT16_MAX;
+		case VarMemType::I32: return max <= INT32_MAX;
+		case VarMemType::U32: return std::make_unsigned_t<T>(max) <= UINT32_MAX;
 		/* 64 bits variables are not supported by the settings logic. For strings checking the maximum makes no sense. */
 		default: NOT_REACHED();
 	}

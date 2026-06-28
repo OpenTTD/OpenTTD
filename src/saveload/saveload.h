@@ -672,21 +672,21 @@ enum class VarFileType : uint8_t {
 };
 
 /** The types/structures of data we have in memory. */
-enum VarMemType : uint8_t {
+enum class VarMemType : uint8_t {
 	/* 4 bits allocated a maximum of 16 types for NumberType */
-	SLE_VAR_BL = 0, ///< A boolean value.
-	SLE_VAR_I8 = 1, ///< A 8 bit signed int.
-	SLE_VAR_U8 = 2, ///< A 8 bit unsigned int.
-	SLE_VAR_I16 = 3, ///< A 16 bit signed int.
-	SLE_VAR_U16 = 4, ///< A 16 bit unsigned int.
-	SLE_VAR_I32 = 5, ///< A 32 bit signed int.
-	SLE_VAR_U32 = 6, ///< A 32 bit unsigned int.
-	SLE_VAR_I64 = 7, ///< A 64 bit signed int.
-	SLE_VAR_U64 = 8, ///< A 64 bit unsigned int.
-	SLE_VAR_NULL = 9, ///< useful to write zeros in savegame.
-	SLE_VAR_STR = 12, ///< string pointer
-	SLE_VAR_STRQ = 13, ///< string pointer enclosed in quotes
-	SLE_VAR_NAME = 14, ///< old custom name to be converted to a string pointer
+	Bool = 0, ///< A boolean value.
+	I8 = 1, ///< A 8 bit signed int.
+	U8 = 2, ///< A 8 bit unsigned int.
+	I16 = 3, ///< A 16 bit signed int.
+	U16 = 4, ///< A 16 bit unsigned int.
+	I32 = 5, ///< A 32 bit signed int.
+	U32 = 6, ///< A 32 bit unsigned int.
+	I64 = 7, ///< A 64 bit signed int.
+	U64 = 8, ///< A 64 bit unsigned int.
+	Null = 9, ///< useful to write zeros in savegame.
+	Str = 12, ///< string pointer
+	StrQ = 13, ///< string pointer enclosed in quotes
+	Name = 14, ///< old custom name to be converted to a string pointer
 	/* 1 more possible memory-primitives */
 };
 
@@ -744,19 +744,19 @@ constexpr VarType operator|(VarFileType file, VarMemType mem)
 	return {file, mem};
 }
 
-constexpr VarType SLE_BOOL{ VarFileType::I8, SLE_VAR_BL }; ///< Store a boolean (as int8).
-constexpr VarType SLE_INT8{ VarFileType::I8, SLE_VAR_I8 }; ///< Store a 8 bits signed int.
-constexpr VarType SLE_UINT8{ VarFileType::U8, SLE_VAR_U8 }; ///< Store a 8 bits unsigned int.
-constexpr VarType SLE_INT16{ VarFileType::I16, SLE_VAR_I16 }; ///< Store a 16 bits signed int.
-constexpr VarType SLE_UINT16{ VarFileType::U16, SLE_VAR_U16 }; ///< Store a 16 bits unsigned int.
-constexpr VarType SLE_INT32{ VarFileType::I32, SLE_VAR_I32 }; ///< Store a 32 bits signed int.
-constexpr VarType SLE_UINT32{ VarFileType::U32, SLE_VAR_U32 }; ///< Store a 32 bits unsigned int.
-constexpr VarType SLE_INT64{ VarFileType::I64, SLE_VAR_I64 }; ///< Store a 64 bits signed int.
-constexpr VarType SLE_UINT64{ VarFileType::U64, SLE_VAR_U64 }; ///< Store a 64 bits unsigned int.
-constexpr VarType SLE_STRINGID{ VarFileType::StringID, SLE_VAR_U32 }; ///< Store a StringID.
-constexpr VarType SLE_STR{ VarFileType::String, SLE_VAR_STR }; ///< Store string.
-constexpr VarType SLE_STRQ{ VarFileType::String, SLE_VAR_STRQ }; ///< Store a string with quotes.
-constexpr VarType SLE_NAME{ VarFileType::StringID, SLE_VAR_NAME }; ///< A string stored in the custom string array.
+constexpr VarType SLE_BOOL{ VarFileType::I8, VarMemType::Bool }; ///< Store a boolean (as int8).
+constexpr VarType SLE_INT8{ VarFileType::I8, VarMemType::I8 }; ///< Store a 8 bits signed int.
+constexpr VarType SLE_UINT8{ VarFileType::U8, VarMemType::U8 }; ///< Store a 8 bits unsigned int.
+constexpr VarType SLE_INT16{ VarFileType::I16, VarMemType::I16 }; ///< Store a 16 bits signed int.
+constexpr VarType SLE_UINT16{ VarFileType::U16, VarMemType::U16 }; ///< Store a 16 bits unsigned int.
+constexpr VarType SLE_INT32{ VarFileType::I32, VarMemType::I32 }; ///< Store a 32 bits signed int.
+constexpr VarType SLE_UINT32{ VarFileType::U32, VarMemType::U32 }; ///< Store a 32 bits unsigned int.
+constexpr VarType SLE_INT64{ VarFileType::I64, VarMemType::I64 }; ///< Store a 64 bits signed int.
+constexpr VarType SLE_UINT64{ VarFileType::U64, VarMemType::U64 }; ///< Store a 64 bits unsigned int.
+constexpr VarType SLE_STRINGID{ VarFileType::StringID, VarMemType::U32 }; ///< Store a StringID.
+constexpr VarType SLE_STR{ VarFileType::String, VarMemType::Str }; ///< Store string.
+constexpr VarType SLE_STRQ{ VarFileType::String, VarMemType::StrQ }; ///< Store a string with quotes.
+constexpr VarType SLE_NAME{ VarFileType::StringID, VarMemType::Name }; ///< A string stored in the custom string array.
 
 /** Type of data saved. */
 enum class SaveLoadType : uint8_t {
@@ -815,19 +815,19 @@ struct SaveLoadCompat {
 inline constexpr size_t SlVarSize(VarMemType type)
 {
 	switch (type) {
-		case SLE_VAR_BL: return sizeof(bool);
-		case SLE_VAR_I8: return sizeof(int8_t);
-		case SLE_VAR_U8: return sizeof(uint8_t);
-		case SLE_VAR_I16: return sizeof(int16_t);
-		case SLE_VAR_U16: return sizeof(uint16_t);
-		case SLE_VAR_I32: return sizeof(int32_t);
-		case SLE_VAR_U32: return sizeof(uint32_t);
-		case SLE_VAR_I64: return sizeof(int64_t);
-		case SLE_VAR_U64: return sizeof(uint64_t);
-		case SLE_VAR_NULL: return sizeof(void *);
-		case SLE_VAR_STR: return sizeof(std::string);
-		case SLE_VAR_STRQ: return sizeof(std::string);
-		case SLE_VAR_NAME: return sizeof(std::string);
+		case VarMemType::Bool: return sizeof(bool);
+		case VarMemType::I8: return sizeof(int8_t);
+		case VarMemType::U8: return sizeof(uint8_t);
+		case VarMemType::I16: return sizeof(int16_t);
+		case VarMemType::U16: return sizeof(uint16_t);
+		case VarMemType::I32: return sizeof(int32_t);
+		case VarMemType::U32: return sizeof(uint32_t);
+		case VarMemType::I64: return sizeof(int64_t);
+		case VarMemType::U64: return sizeof(uint64_t);
+		case VarMemType::Null: return sizeof(void *);
+		case VarMemType::Str: return sizeof(std::string);
+		case VarMemType::StrQ: return sizeof(std::string);
+		case VarMemType::Name: return sizeof(std::string);
 		default: NOT_REACHED();
 	}
 }
@@ -1315,7 +1315,7 @@ inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLoadVersi
 inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 {
 	/* Entry is a null-variable, mostly used to read old savegames etc. */
-	if (sld.conv.mem == SLE_VAR_NULL) {
+	if (sld.conv.mem == VarMemType::Null) {
 		assert(sld.address_proc == nullptr);
 		return nullptr;
 	}

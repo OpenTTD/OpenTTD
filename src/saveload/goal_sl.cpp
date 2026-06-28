@@ -17,8 +17,8 @@
 #include "../safeguards.h"
 
 static const SaveLoad _goals_desc[] = {
-	     SLE_VAR(Goal, company,   VarFileType::U16 | SLE_VAR_U8),
-	     SLE_VAR(Goal, type,      VarFileType::U16 | SLE_VAR_U8),
+	     SLE_VAR(Goal, company,   VarFileType::U16 | VarMemType::U8),
+	     SLE_VAR(Goal, type,      VarFileType::U16 | VarMemType::U8),
 	     SLE_VAR(Goal, dst,       SLE_UINT32),
 	    SLE_SSTR(Goal, text,      SLE_STR | StringValidationSetting::AllowControlCode),
 	SLE_CONDSSTR(Goal, progress, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),

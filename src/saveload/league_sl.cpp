@@ -17,7 +17,7 @@
 
 static const SaveLoad _league_table_elements_desc[] = {
 	    SLE_VAR(LeagueTableElement, table,       SLE_UINT8),
-	SLE_CONDVAR(LeagueTableElement, rating, VarFileType::U64 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
+	SLE_CONDVAR(LeagueTableElement, rating, VarFileType::U64 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
 	SLE_CONDVAR(LeagueTableElement, rating, SLE_INT64, SaveLoadVersion::LinkgraphEdges, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(LeagueTableElement, company,     SLE_UINT8),
 	   SLE_SSTR(LeagueTableElement, text,        SLE_STR | StringValidationSetting::AllowControlCode),
