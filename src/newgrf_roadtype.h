@@ -54,7 +54,7 @@ struct RoadTypeResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
-SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadSpriteType rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);
+SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadSpriteType rtsg, TileContext context = TileContext::Normal, uint *num_results = nullptr);
 
 RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8_t tracktype, const GRFFile *grffile);
 uint8_t GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile);

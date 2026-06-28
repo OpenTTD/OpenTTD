@@ -134,7 +134,7 @@ SpriteID GetCustomSignalSprite(const RailTypeInfo *rti, TileIndex tile, SignalTy
 
 	uint32_t param1 = gui ? 0x10 : 0x00;
 	uint32_t param2 = (to_underlying(type) << 16) | (to_underlying(var) << 8) | to_underlying(state);
-	RailTypeResolverObject object(rti, tile, TCX_NORMAL, RailSpriteType::Signals, param1, param2);
+	RailTypeResolverObject object(rti, tile, TileContext::Normal, RailSpriteType::Signals, param1, param2);
 
 	const auto *group = object.Resolve<ResultSpriteGroup>();
 	if (group == nullptr || group->num_sprites == 0) return 0;

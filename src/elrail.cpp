@@ -181,7 +181,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
  * @param context The context to get the sprite for.
  * @return The wire sprite.
  */
-static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NORMAL)
+static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TileContext::Normal)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID wires = GetCustomRailSprite(rti, tile, RailSpriteType::Wires, context);
@@ -194,7 +194,7 @@ static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NOR
  * @param context The context to get the sprite for.
  * @return The pylon sprite.
  */
-static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TCX_NORMAL)
+static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TileContext::Normal)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID pylons = GetCustomRailSprite(rti, tile, RailSpriteType::Pylons, context);
@@ -308,7 +308,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	AdjustTileh(ti->tile, &tileh[TileSource::Home]);
 
 	SpriteID pylon_normal = GetPylonBase(ti->tile);
-	SpriteID pylon_halftile = IsValidCorner(halftile_corner) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
+	SpriteID pylon_halftile = IsValidCorner(halftile_corner) ? GetPylonBase(ti->tile, TileContext::UpperHalftile) : pylon_normal;
 
 	for (DiagDirection i : EnumRange(DiagDirection::End)) {
 		SpriteID pylon_base = (IsValidCorner(halftile_corner) && HasBit(InclinedSlope(i), halftile_corner)) ? pylon_halftile : pylon_normal;
@@ -451,7 +451,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	if (HasStationTileRail(ti->tile) && !CanStationTileHaveWires(ti->tile)) return;
 
 	SpriteID wire_normal = GetWireBase(ti->tile);
-	SpriteID wire_halftile = IsValidCorner(halftile_corner) ? GetWireBase(ti->tile, TCX_UPPER_HALFTILE) : wire_normal;
+	SpriteID wire_halftile = IsValidCorner(halftile_corner) ? GetWireBase(ti->tile, TileContext::UpperHalftile) : wire_normal;
 	Track halftile_track;
 	switch (halftile_corner) {
 		case CORNER_W: halftile_track = Track::Left; break;
@@ -515,11 +515,11 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 
 	uint height = GetBridgePixelHeight(end);
 
-	SpriteID wire_base = GetWireBase(end, TCX_ON_BRIDGE);
+	SpriteID wire_base = GetWireBase(end, TileContext::OnBridge);
 
 	AddSortableSpriteToDraw(wire_base + sss->image_offset, PAL_NONE, ti->x, ti->y, height, *sss, IsTransparencySet(TransparencyOption::Catenary));
 
-	SpriteID pylon_base = GetPylonBase(end, TCX_ON_BRIDGE);
+	SpriteID pylon_base = GetPylonBase(end, TileContext::OnBridge);
 
 	static constexpr SpriteBounds pylon_bounds{{-1, -1, 0}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {1, 1, 0}};
 
