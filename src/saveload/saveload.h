@@ -817,17 +817,6 @@ struct SaveLoadCompat {
 };
 
 /**
- * Get the FileType of a setting. This describes the integer type
- * as it is represented in a savegame/file
- * @param type VarType holding information about the file-type
- * @return the SLE_FILE_* part of a variable-type description
- */
-inline constexpr VarFileType GetVarFileType(VarType type)
-{
-	return type.file;
-}
-
-/**
  * Return expect size in bytes of a VarType
  * @param type VarType to get size of.
  * @return size of type in bytes.

@@ -627,12 +627,12 @@ static SavegameFileType GetSavegameFileType(const SaveLoad &sld)
 {
 	switch (sld.cmd) {
 		case SaveLoadType::Variable:
-			return GetVarFileType(sld.conv); break;
+			return sld.conv.file;
 
 		case SaveLoadType::String:
 		case SaveLoadType::Array:
 		case SaveLoadType::Vector:
-			return { GetVarFileType(sld.conv), true }; break;
+			return { sld.conv.file, true };
 
 		case SaveLoadType::Reference:
 			return IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32;
@@ -690,7 +690,7 @@ static inline uint SlCalcConvMemLen(VarMemType conv)
  */
 static inline uint8_t SlCalcConvFileLen(VarType conv)
 {
-	switch (GetVarFileType(conv)) {
+	switch (conv.file) {
 		case SLE_FILE_I8: return sizeof(int8_t);
 		case SLE_FILE_U8: return sizeof(uint8_t);
 		case SLE_FILE_I16: return sizeof(int16_t);
@@ -926,7 +926,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			int64_t x = ReadValue(ptr, conv.mem);
 
 			/* Write the value to the file and check if its value is in the desired range */
-			switch (GetVarFileType(conv)) {
+			switch (conv.file) {
 				case SLE_FILE_I8:
 					assert(x >= -128 && x <= 127);
 					SlWriteByte(x);
@@ -966,7 +966,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 		case SaveLoadAction::Load: {
 			int64_t x;
 			/* Read a value from the file */
-			switch (GetVarFileType(conv)) {
+			switch (conv.file) {
 				case SLE_FILE_I8: x = static_cast<int8_t>(SlReadByte()); break;
 				case SLE_FILE_U8: x = static_cast<uint8_t>(SlReadByte()); break;
 				case SLE_FILE_I16: x = static_cast<int16_t>(SlReadUint16()); break;
