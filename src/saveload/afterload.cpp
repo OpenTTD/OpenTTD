@@ -2175,18 +2175,19 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::RoadLayoutPerTown)) {
 		/* allow_town_roads is added, set it if town_layout wasn't TL_NO_ROADS */
-		if (_settings_game.economy.town_layout == 0) { // was TL_NO_ROADS
+		uint8_t old_town_layout = to_underlying(_settings_game.economy.town_layout);
+		if (old_town_layout == 0) { // was TL_NO_ROADS
 			_settings_game.economy.allow_town_roads = false;
-			_settings_game.economy.town_layout = TL_BETTER_ROADS;
+			_settings_game.economy.town_layout = TownLayout::BetterRoads;
 		} else {
 			_settings_game.economy.allow_town_roads = true;
-			_settings_game.economy.town_layout = static_cast<TownLayout>(_settings_game.economy.town_layout - 1);
+			_settings_game.economy.town_layout = static_cast<TownLayout>(old_town_layout - 1);
 		}
 
 		/* Initialize layout of all towns. Older versions were using different
 		 * generator for random town layout, use it if needed. */
 		for (Town *t : Town::Iterate()) {
-			if (_settings_game.economy.town_layout != TL_RANDOM) {
+			if (_settings_game.economy.town_layout != TownLayout::Random) {
 				t->layout = _settings_game.economy.town_layout;
 				continue;
 			}

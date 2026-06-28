@@ -185,16 +185,16 @@ void Town::PostDestructor([[maybe_unused]] size_t index)
 
 /**
  * Assign the town layout.
- * @param layout The desired layout. If TL_RANDOM, we pick one based on TileHash.
+ * @param layout The desired layout. If TownLayout::Random, we pick one based on TileHash.
  */
 void Town::InitializeLayout(TownLayout layout)
 {
-	if (layout != TL_RANDOM) {
+	if (layout != TownLayout::Random) {
 		this->layout = layout;
 		return;
 	}
 
-	this->layout = static_cast<TownLayout>(TileHash(TileX(this->xy), TileY(this->xy)) % (NUM_TLS - 1));
+	this->layout = static_cast<TownLayout>(TileHash(TileX(this->xy), TileY(this->xy)) % (to_underlying(TownLayout::End) - 1));
 }
 
 /**
@@ -1064,7 +1064,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 	}
 
 	Slope cur_slope = _settings_game.construction.build_on_slopes ? std::get<Slope>(GetFoundationSlope(tile)) : GetTileSlope(tile);
-	bool ret = !IsNeighbourRoadTile(tile, dir, t->layout == TL_ORIGINAL ? 1 : 2);
+	bool ret = !IsNeighbourRoadTile(tile, dir, t->layout == TownLayout::Original ? 1 : 2);
 	if (cur_slope == SLOPE_FLAT) return ret;
 
 	/* If the tile is not a slope in the right direction, then
@@ -1129,12 +1129,12 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 	switch (t->layout) {
 		default: NOT_REACHED();
 
-		case TL_2X2_GRID:
+		case TownLayout::Grid2x2:
 			if ((grid_pos.x % 3) == 0) rcmd.Set(ROAD_Y);
 			if ((grid_pos.y % 3) == 0) rcmd.Set(ROAD_X);
 			break;
 
-		case TL_3X3_GRID:
+		case TownLayout::Grid3x3:
 			if ((grid_pos.x % 4) == 0) rcmd.Set(ROAD_Y);
 			if ((grid_pos.y % 4) == 0) rcmd.Set(ROAD_X);
 			break;
@@ -1490,11 +1490,11 @@ enum class TownGrowthResult {
  * There are at the moment 3 possible way's for
  * the town expansion:
  *  @li Generate a random tile and check if there is a road allowed
- *  @li TL_ORIGINAL
- *  @li TL_BETTER_ROADS
+ *  @li TownLayout::Original
+ *  @li TownLayout::BetterRoads
  *  @li Check if the town geometry allows a road and which one
- *  @li TL_2X2_GRID
- *  @li TL_3X3_GRID
+ *  @li TownLayout::Grid2x2
+ *  @li TownLayout::Grid3x3
  *  @li Forbid roads, only build houses
  *
  * @param tile_ptr The current tile
@@ -1525,14 +1525,14 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 		switch (t1->layout) {
 			default: NOT_REACHED();
 
-			case TL_3X3_GRID:
-			case TL_2X2_GRID:
+			case TownLayout::Grid3x3:
+			case TownLayout::Grid2x2:
 				rcmd = GetTownRoadGridElement(t1, tile, target_dir);
 				if (rcmd.None()) return TownGrowthResult::SearchStopped;
 				break;
 
-			case TL_BETTER_ROADS:
-			case TL_ORIGINAL:
+			case TownLayout::BetterRoads:
+			case TownLayout::Original:
 				if (!IsRoadAllowedHere(t1, tile, target_dir)) return TownGrowthResult::SearchStopped;
 
 				DiagDirection source_dir = ReverseDiagDir(target_dir);
@@ -1572,13 +1572,13 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 		switch (t1->layout) {
 			default: NOT_REACHED();
 
-			case TL_3X3_GRID:
-			case TL_2X2_GRID:
+			case TownLayout::Grid3x3:
+			case TownLayout::Grid2x2:
 				rcmd = GetTownRoadGridElement(t1, tile, target_dir);
 				break;
 
-			case TL_BETTER_ROADS:
-			case TL_ORIGINAL:
+			case TownLayout::BetterRoads:
+			case TownLayout::Original:
 				rcmd = DiagDirToRoadBits(ReverseDiagDir(target_dir));
 				break;
 		}
@@ -1644,24 +1644,24 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
-				case TL_3X3_GRID: // Use 2x2 grid afterwards!
+				case TownLayout::Grid3x3: // Use 2x2 grid afterwards!
 					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir), modes)) {
 						result = TownGrowthResult::Succeed;
 					}
 					[[fallthrough]];
 
-				case TL_2X2_GRID:
+				case TownLayout::Grid2x2:
 					rcmd = GetTownRoadGridElement(t1, tile, target_dir);
 					allow_house = !rcmd.Any(target_rb);
 					break;
 
-				case TL_BETTER_ROADS: // Use original afterwards!
+				case TownLayout::BetterRoads: // Use original afterwards!
 					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir), modes)) {
 						result = TownGrowthResult::Succeed;
 					}
 					[[fallthrough]];
 
-				case TL_ORIGINAL:
+				case TownLayout::Original:
 					/* Allow a house at the edge. 60% chance or
 					 * always ok if no road allowed. */
 					rcmd = target_rb;
@@ -1778,12 +1778,12 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile, TownExpandModes modes)
 	 * them a little handicap. */
 	int iterations;
 	switch (t->layout) {
-		case TL_BETTER_ROADS:
+		case TownLayout::BetterRoads:
 			iterations = 10 + t->cache.num_houses * 2 / 9;
 			break;
 
-		case TL_3X3_GRID:
-		case TL_2X2_GRID:
+		case TownLayout::Grid3x3:
+		case TownLayout::Grid2x2:
 			iterations = 10 + t->cache.num_houses * 1 / 9;
 			break;
 
@@ -2171,7 +2171,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 	TownNameParams par(_settings_game.game_creation.town_name);
 
 	if (size >= TownSize::End) return { CMD_ERROR, 0, TownID::Invalid() };
-	if (layout >= NUM_TLS) return { CMD_ERROR, 0, TownID::Invalid() };
+	if (layout >= TownLayout::End) return { CMD_ERROR, 0, TownID::Invalid() };
 
 	/* Some things are allowed only in the scenario editor and for game scripts. */
 	if (_game_mode != GameMode::Editor && _current_company != OWNER_DEITY) {
@@ -2269,9 +2269,9 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout)
 {
 	switch (layout) {
-		case TL_2X2_GRID: return TileXY(TileX(tile) - TileX(tile) % 3, TileY(tile) - TileY(tile) % 3);
-		case TL_3X3_GRID: return TileXY(TileX(tile) & ~3, TileY(tile) & ~3);
-		default:          return tile;
+		case TownLayout::Grid2x2: return TileXY(TileX(tile) - TileX(tile) % 3, TileY(tile) - TileY(tile) % 3);
+		case TownLayout::Grid3x3: return TileXY(TileX(tile) & ~3, TileY(tile) & ~3);
+		default: return tile;
 	}
 }
 
@@ -2287,9 +2287,9 @@ static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout)
 static bool IsTileAlignedToGrid(TileIndex tile, TownLayout layout)
 {
 	switch (layout) {
-		case TL_2X2_GRID: return TileX(tile) % 3 == 0 && TileY(tile) % 3 == 0;
-		case TL_3X3_GRID: return TileX(tile) % 4 == 0 && TileY(tile) % 4 == 0;
-		default:          return true;
+		case TownLayout::Grid2x2: return TileX(tile) % 3 == 0 && TileY(tile) % 3 == 0;
+		case TownLayout::Grid3x3: return TileX(tile) % 4 == 0 && TileY(tile) % 4 == 0;
+		default: return true;
 	}
 }
 
@@ -2630,11 +2630,11 @@ static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile, TownExpand
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 
 	switch (t->layout) {
-		case TL_2X2_GRID:
+		case TownLayout::Grid2x2:
 			if ((grid_pos.x % 3) == 0 || (grid_pos.y % 3) == 0) return false;
 			break;
 
-		case TL_3X3_GRID:
+		case TownLayout::Grid3x3:
 			if ((grid_pos.x % 4) == 0 || (grid_pos.y % 4) == 0) return false;
 			break;
 
@@ -2665,14 +2665,14 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile, TownExp
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 
 	switch (t->layout) {
-		case TL_2X2_GRID:
+		case TownLayout::Grid2x2:
 			grid_pos.x %= 3;
 			grid_pos.y %= 3;
 			if ((grid_pos.x != 2 && grid_pos.x != -1) ||
 				(grid_pos.y != 2 && grid_pos.y != -1)) return false;
 			break;
 
-		case TL_3X3_GRID:
+		case TownLayout::Grid3x3:
 			if ((grid_pos.x & 3) < 2 || (grid_pos.y & 3) < 2) return false;
 			break;
 

@@ -1211,7 +1211,7 @@ public:
 		this->SetWidgetLoweredState(WID_TF_CITY, this->city);
 
 		for (WidgetID i = WID_TF_LAYOUT_ORIGINAL; i <= WID_TF_LAYOUT_RANDOM; i++) {
-			this->SetWidgetLoweredState(i, i == WID_TF_LAYOUT_ORIGINAL + this->town_layout);
+			this->SetWidgetLoweredState(i, i == WID_TF_LAYOUT_ORIGINAL + to_underlying(this->town_layout));
 		}
 
 		this->SetWidgetLoweredState(WID_TF_EXPAND_BUILDINGS, FoundTownWindow::expand_modes.Test(TownExpandMode::Buildings));
@@ -1294,7 +1294,7 @@ public:
 
 			case WID_TF_LAYOUT_ORIGINAL: case WID_TF_LAYOUT_BETTER: case WID_TF_LAYOUT_GRID2:
 			case WID_TF_LAYOUT_GRID3: case WID_TF_LAYOUT_RANDOM:
-				this->town_layout = (TownLayout)(widget - WID_TF_LAYOUT_ORIGINAL);
+				this->town_layout = static_cast<TownLayout>(widget - WID_TF_LAYOUT_ORIGINAL);
 
 				/* If we are in the editor, sync the settings of the current game to the chosen layout,
 				 * so that importing towns from file uses the selected layout. */

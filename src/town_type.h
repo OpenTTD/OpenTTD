@@ -80,18 +80,16 @@ static constexpr int RATING_WATER_RIVER_DOWN_STEP = -200; ///< removing a river 
 static constexpr int RATING_WATER_MINIMUM = RATING_MINIMUM; ///< minimum rating after removing water features near town
 
 /** Town Layouts. It needs to be 8bits, because we save and load it as such */
-enum TownLayout : uint8_t {
-	TL_BEGIN = 0,
-	TL_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
-	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
-	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
-	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
+enum class TownLayout : uint8_t {
+	Original, ///< Original algorithm (min. 1 distance between roads)
+	BetterRoads, ///< Extended original algorithm (min. 2 distance between roads)
+	Grid2x2, ///< Geometric 2x2 grid algorithm
+	Grid3x3, ///< Geometric 3x3 grid algorithm
 
-	TL_RANDOM,           ///< Random town layout
+	Random, ///< Random town layout
 
-	NUM_TLS,             ///< Number of town layouts
+	End, ///< Number of town layouts
 };
-DECLARE_ENUM_AS_ADDABLE(TownLayout)
 
 /** Options for growing towns. */
 enum class TownExpandMode : uint8_t {
