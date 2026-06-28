@@ -51,34 +51,34 @@ static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_spr
 /** The information about action 5 types. */
 static constexpr auto _action5_types = std::to_array<Action5Type>({
 	/* Note: min_sprites should not be changed. Therefore these constants are directly here and not in sprites.h */
-	/* 0x00 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x00"                },
-	/* 0x01 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x01"                },
-	/* 0x02 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x02"                },
-	/* 0x03 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x03"                },
-	/* 0x04 */ { A5BLOCK_ALLOW_OFFSET, SPR_SIGNALS_BASE,             1, PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT,    "Signal graphics"          },
-	/* 0x05 */ { A5BLOCK_ALLOW_OFFSET, SPR_ELRAIL_BASE,              1, ELRAIL_SPRITE_COUNT,                         "Rail catenary graphics"   },
-	/* 0x06 */ { A5BLOCK_ALLOW_OFFSET, SPR_SLOPES_BASE,              1, NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT, "Foundation graphics"      },
-	/* 0x07 */ { A5BLOCK_INVALID,      0,                           75, 0,                                           "TTDP GUI graphics"        }, // Not used by OTTD.
-	/* 0x08 */ { A5BLOCK_ALLOW_OFFSET, SPR_CANALS_BASE,              1, CANALS_SPRITE_COUNT,                         "Canal graphics"           },
-	/* 0x09 */ { A5BLOCK_ALLOW_OFFSET, SPR_ONEWAY_BASE,              1, ONEWAY_SPRITE_COUNT,                         "One way road graphics"    },
-	/* 0x0A */ { A5BLOCK_ALLOW_OFFSET, SPR_2CCMAP_BASE,              1, TWOCCMAP_SPRITE_COUNT,                       "2CC colour maps"          },
-	/* 0x0B */ { A5BLOCK_ALLOW_OFFSET, SPR_TRAMWAY_BASE,             1, TRAMWAY_SPRITE_COUNT,                        "Tramway graphics"         },
-	/* 0x0C */ { A5BLOCK_INVALID,      0,                          133, 0,                                           "Snowy temperate tree"     }, // Not yet used by OTTD.
-	/* 0x0D */ { A5BLOCK_FIXED,        SPR_SHORE_BASE,              16, SHORE_SPRITE_COUNT,                          "Shore graphics"           },
-	/* 0x0E */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "New Signals graphics"     }, // Not yet used by OTTD.
-	/* 0x0F */ { A5BLOCK_ALLOW_OFFSET, SPR_TRACKS_FOR_SLOPES_BASE,   1, TRACKS_FOR_SLOPES_SPRITE_COUNT,              "Sloped rail track"        },
-	/* 0x10 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORTX_BASE,            1, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"         },
-	/* 0x11 */ { A5BLOCK_ALLOW_OFFSET, SPR_ROADSTOP_BASE,            1, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"       },
-	/* 0x12 */ { A5BLOCK_ALLOW_OFFSET, SPR_AQUEDUCT_BASE,            1, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"        },
-	/* 0x13 */ { A5BLOCK_ALLOW_OFFSET, SPR_AUTORAIL_BASE,            1, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"        },
-	/* 0x14 */ { A5BLOCK_INVALID,      0,                            1, 0,                                           "Flag graphics"            }, // deprecated, no longer used.
-	/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"     },
-	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, AIRPORT_PREVIEW_SPRITE_COUNT,                "Airport preview graphics" },
-	/* 0x17 */ { A5BLOCK_ALLOW_OFFSET, SPR_RAILTYPE_TUNNEL_BASE,     1, RAILTYPE_TUNNEL_BASE_COUNT,                  "Railtype tunnel base"     },
-	/* 0x18 */ { A5BLOCK_ALLOW_OFFSET, SPR_PALETTE_BASE,             1, PALETTE_SPRITE_COUNT,                        "Palette"                  },
-	/* 0x19 */ { A5BLOCK_ALLOW_OFFSET, SPR_ROAD_WAYPOINTS_BASE,      1, ROAD_WAYPOINTS_SPRITE_COUNT,                 "Road waypoints"           },
-	/* 0x1A */ { A5BLOCK_ALLOW_OFFSET, SPR_OVERLAY_ROCKS_BASE,       1, OVERLAY_ROCKS_SPRITE_COUNT,                  "Overlay rocks"            },
-	/* 0x1B */ { A5BLOCK_ALLOW_OFFSET, SPR_BRIDGE_DECKS_BASE,        1, BRIDGE_DECKS_SPRITE_COUNT,                   "Bridge decks"             },
+	/* 0x00 */ { Action5BlockType::Invalid,     0,                            0, 0,                                           "Type 0x00"                },
+	/* 0x01 */ { Action5BlockType::Invalid,     0,                            0, 0,                                           "Type 0x01"                },
+	/* 0x02 */ { Action5BlockType::Invalid,     0,                            0, 0,                                           "Type 0x02"                },
+	/* 0x03 */ { Action5BlockType::Invalid,     0,                            0, 0,                                           "Type 0x03"                },
+	/* 0x04 */ { Action5BlockType::AllowOffset, SPR_SIGNALS_BASE,             1, PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT,    "Signal graphics"          },
+	/* 0x05 */ { Action5BlockType::AllowOffset, SPR_ELRAIL_BASE,              1, ELRAIL_SPRITE_COUNT,                         "Rail catenary graphics"   },
+	/* 0x06 */ { Action5BlockType::AllowOffset, SPR_SLOPES_BASE,              1, NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT, "Foundation graphics"      },
+	/* 0x07 */ { Action5BlockType::Invalid,     0,                           75, 0,                                           "TTDP GUI graphics"        }, // Not used by OTTD.
+	/* 0x08 */ { Action5BlockType::AllowOffset, SPR_CANALS_BASE,              1, CANALS_SPRITE_COUNT,                         "Canal graphics"           },
+	/* 0x09 */ { Action5BlockType::AllowOffset, SPR_ONEWAY_BASE,              1, ONEWAY_SPRITE_COUNT,                         "One way road graphics"    },
+	/* 0x0A */ { Action5BlockType::AllowOffset, SPR_2CCMAP_BASE,              1, TWOCCMAP_SPRITE_COUNT,                       "2CC colour maps"          },
+	/* 0x0B */ { Action5BlockType::AllowOffset, SPR_TRAMWAY_BASE,             1, TRAMWAY_SPRITE_COUNT,                        "Tramway graphics"         },
+	/* 0x0C */ { Action5BlockType::Invalid,     0,                          133, 0,                                           "Snowy temperate tree"     }, // Not yet used by OTTD.
+	/* 0x0D */ { Action5BlockType::Fixed,       SPR_SHORE_BASE,              16, SHORE_SPRITE_COUNT,                          "Shore graphics"           },
+	/* 0x0E */ { Action5BlockType::Invalid,     0,                            0, 0,                                           "New Signals graphics"     }, // Not yet used by OTTD.
+	/* 0x0F */ { Action5BlockType::AllowOffset, SPR_TRACKS_FOR_SLOPES_BASE,   1, TRACKS_FOR_SLOPES_SPRITE_COUNT,              "Sloped rail track"        },
+	/* 0x10 */ { Action5BlockType::AllowOffset, SPR_AIRPORTX_BASE,            1, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"         },
+	/* 0x11 */ { Action5BlockType::AllowOffset, SPR_ROADSTOP_BASE,            1, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"       },
+	/* 0x12 */ { Action5BlockType::AllowOffset, SPR_AQUEDUCT_BASE,            1, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"        },
+	/* 0x13 */ { Action5BlockType::AllowOffset, SPR_AUTORAIL_BASE,            1, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"        },
+	/* 0x14 */ { Action5BlockType::Invalid,     0,                            1, 0,                                           "Flag graphics"            }, // deprecated, no longer used.
+	/* 0x15 */ { Action5BlockType::AllowOffset, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"     },
+	/* 0x16 */ { Action5BlockType::AllowOffset, SPR_AIRPORT_PREVIEW_BASE,     1, AIRPORT_PREVIEW_SPRITE_COUNT,                "Airport preview graphics" },
+	/* 0x17 */ { Action5BlockType::AllowOffset, SPR_RAILTYPE_TUNNEL_BASE,     1, RAILTYPE_TUNNEL_BASE_COUNT,                  "Railtype tunnel base"     },
+	/* 0x18 */ { Action5BlockType::AllowOffset, SPR_PALETTE_BASE,             1, PALETTE_SPRITE_COUNT,                        "Palette"                  },
+	/* 0x19 */ { Action5BlockType::AllowOffset, SPR_ROAD_WAYPOINTS_BASE,      1, ROAD_WAYPOINTS_SPRITE_COUNT,                 "Road waypoints"           },
+	/* 0x1A */ { Action5BlockType::AllowOffset, SPR_OVERLAY_ROCKS_BASE,       1, OVERLAY_ROCKS_SPRITE_COUNT,                  "Overlay rocks"            },
+	/* 0x1B */ { Action5BlockType::AllowOffset, SPR_BRIDGE_DECKS_BASE,        1, BRIDGE_DECKS_SPRITE_COUNT,                   "Bridge decks"             },
 });
 
 /**
@@ -123,7 +123,7 @@ static void GraphicsNew(ByteReader &buf)
 	}
 
 	/* Supported type? */
-	if ((type >= std::size(_action5_types)) || (_action5_types[type].block_type == A5BLOCK_INVALID)) {
+	if ((type >= std::size(_action5_types)) || (_action5_types[type].block_type == Action5BlockType::Invalid)) {
 		GrfMsg(2, "GraphicsNew: Custom graphics (type 0x{:02X}) sprite block of length {} (unimplemented, ignoring)", type, num);
 		_cur_gps.skip_sprites = num;
 		return;
@@ -134,14 +134,14 @@ static void GraphicsNew(ByteReader &buf)
 	/* Contrary to TTDP we allow always to specify too few sprites as we allow always an offset,
 	 * except for the long version of the shore type:
 	 * Ignore offset if not allowed */
-	if ((action5_type->block_type != A5BLOCK_ALLOW_OFFSET) && (offset != 0)) {
+	if ((action5_type->block_type != Action5BlockType::AllowOffset) && (offset != 0)) {
 		GrfMsg(1, "GraphicsNew: {} (type 0x{:02X}) do not allow an <offset> field. Ignoring offset.", action5_type->name, type);
 		offset = 0;
 	}
 
 	/* Ignore action5 if too few sprites are specified. (for TTDP compatibility)
 	 * This does not make sense, if <offset> is allowed */
-	if ((action5_type->block_type == A5BLOCK_FIXED) && (num < action5_type->min_sprites)) {
+	if ((action5_type->block_type == Action5BlockType::Fixed) && (num < action5_type->min_sprites)) {
 		GrfMsg(1, "GraphicsNew: {} (type 0x{:02X}) count must be at least {}. Only {} were specified. Skipping.", action5_type->name, type, action5_type->min_sprites, num);
 		_cur_gps.skip_sprites = num;
 		return;
