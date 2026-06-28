@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file sdl2_v.cpp Implementation of the SDL2 video driver. */
+/** @file sdl3_v.cpp Implementation of the SDL3 video driver. */
 
 #include "../stdafx.h"
 #include "../openttd.h"
@@ -19,8 +19,11 @@
 #include "../fileio_func.h"
 #include "../framerate_type.h"
 #include "../window_func.h"
-#include "sdl2_v.h"
-#include <SDL.h>
+#include "sdl3_v.h"
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_events.h>
+#include <SDL3/SDL_init.h>
+#include <SDL3/SDL_video.h>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
@@ -39,6 +42,48 @@ void VideoDriver_SDL_Base::CheckPaletteAnim()
 	if (!CopyPalette(this->local_palette)) return;
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
+
+/**
+ * Helper to map some SDL functions to behave like a std::range.
+ * The kinds of functions this can be used on are those for which the last parameter is a reference to a count,
+ * that return a pointer to an array of elements that needs to be freed using SDL_free once not needed anymore.
+ */
+template <typename T>
+class SDLRange {
+	T *data = nullptr; ///< The base pointer of the array.
+	int count = 0; ///< The number of elements.
+public:
+	/**
+	 * Create the range.
+	 * @param func The function that returns the pointer.
+	 * @param args Extra arguments to pass to the function.
+	 */
+	template <typename Func, typename ... Args>
+	SDLRange(Func func, Args... args) { this->data = func(args..., &this->count); }
+	/** Free the data. */
+	~SDLRange() { SDL_free(this->data); }
+
+	SDLRange(SDLRange &) = delete; ///< Do not copy.
+	SDLRange& operator= (const SDLRange&) = delete; ///< Do not assign
+
+	/**
+	 * Iterator to the begin of the data.
+	 * @return The begin.
+	 */
+	constexpr T* begin() const { return this->data; }
+
+	/**
+	 * Iterator to the end of the data.
+	 * @return The end.
+	 */
+	constexpr T* end() const { return this->data + count; }
+
+	/**
+	 * The number of elements in this range.
+	 * @return The size of the range.
+	 */
+	constexpr size_t size() const { return this->count; }
+};
 
 /** Set of common resolutions that can be used as default when none is provided by SDL. */
 static const Dimension _default_resolutions[] = {
@@ -60,14 +105,11 @@ static void FindResolutions()
 {
 	_resolutions.clear();
 
-	for (int display = 0; display < SDL_GetNumVideoDisplays(); display++) {
-		for (int i = 0; i < SDL_GetNumDisplayModes(display); i++) {
-			SDL_DisplayMode mode;
-			SDL_GetDisplayMode(display, i, &mode);
-
-			if (mode.w < 640 || mode.h < 480) continue;
-			if (std::ranges::find(_resolutions, Dimension(mode.w, mode.h)) != _resolutions.end()) continue;
-			_resolutions.emplace_back(mode.w, mode.h);
+	for (SDL_DisplayID display : SDLRange<SDL_DisplayID>(SDL_GetDisplays)) {
+		for (SDL_DisplayMode *mode : SDLRange<SDL_DisplayMode*>(SDL_GetFullscreenDisplayModes, display)) {
+			if (mode->w < 640 || mode->h < 480) continue;
+			if (std::ranges::find(_resolutions, Dimension(mode->w, mode->h)) != _resolutions.end()) continue;
+			_resolutions.emplace_back(mode->w, mode->h);
 		}
 	}
 
@@ -113,18 +155,18 @@ static void GetAvailableVideoMode(uint *w, uint *h)
  */
 static uint FindStartupDisplay(uint startup_display)
 {
-	int num_displays = SDL_GetNumVideoDisplays();
+	SDLRange<SDL_DisplayID> displays{SDL_GetDisplays};
 
 	/* If the user indicated a valid monitor, use that. */
-	if (IsInsideBS(startup_display, 0, num_displays)) return startup_display;
+	if (IsInsideBS(startup_display, 0, displays.size())) return startup_display;
 
 	/* Mouse position decides which display to use. */
-	int mx, my;
+	float mx, my;
 	SDL_GetGlobalMouseState(&mx, &my);
-	for (int display = 0; display < num_displays; ++display) {
+	for (SDL_DisplayID display : displays) {
 		SDL_Rect r;
 		if (SDL_GetDisplayBounds(display, &r) == 0 && IsInsideBS(mx, r.x, r.w) && IsInsideBS(my, r.y, r.h)) {
-			Debug(driver, 1, "SDL2: Mouse is at ({}, {}), use display {} ({}, {}, {}, {})", mx, my, display, r.x, r.y, r.w, r.h);
+			Debug(driver, 1, "SDL3: Mouse is at ({}, {}), use display {} ({}, {}, {}, {})", mx, my, display, r.x, r.y, r.w, r.h);
 			return display;
 		}
 	}
@@ -154,28 +196,17 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 {
 	if (this->sdl_window != nullptr) return true;
 
-	flags |= SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
+	flags |= SDL_WINDOW_RESIZABLE;
 
 	if (_fullscreen) {
 		flags |= SDL_WINDOW_FULLSCREEN;
 	}
 
-	int x = SDL_WINDOWPOS_UNDEFINED, y = SDL_WINDOWPOS_UNDEFINED;
-	SDL_Rect r;
-	if (SDL_GetDisplayBounds(this->startup_display, &r) == 0) {
-		x = r.x + std::max(0, r.w - static_cast<int>(w)) / 2;
-		y = r.y + std::max(0, r.h - static_cast<int>(h)) / 4; // decent desktops have taskbars at the bottom
-	}
-
 	std::string caption = VideoDriver::GetCaption();
-	this->sdl_window = SDL_CreateWindow(
-		caption.c_str(),
-		x, y,
-		w, h,
-		flags);
+	this->sdl_window = SDL_CreateWindow(caption.c_str(), w, h, flags);
 
 	if (this->sdl_window == nullptr) {
-		Debug(driver, 0, "SDL2: Couldn't allocate a window to draw on: {}", SDL_GetError());
+		Debug(driver, 0, "SDL3: Couldn't allocate a window to draw on: {}", SDL_GetError());
 		return false;
 	}
 
@@ -185,11 +216,13 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 		SDL_Surface *icon = SDL_LoadBMP(icon_path.c_str());
 		if (icon != nullptr) {
 			/* Get the colourkey, which will be magenta */
-			uint32_t rgbmap = SDL_MapRGB(icon->format, 255, 0, 255);
+			uint32_t rgbmap = SDL_MapSurfaceRGB(icon, 255, 0, 255);
+			if (!SDL_SetSurfaceColorKey(icon, true, rgbmap)) {
+				Debug(driver, 1, "SDL3: SDL_SetSurfaceColorKey failed: {}", SDL_GetError());
+			}
 
-			SDL_SetColorKey(icon, SDL_TRUE, rgbmap);
 			SDL_SetWindowIcon(this->sdl_window, icon);
-			SDL_FreeSurface(icon);
+			SDL_DestroySurface(icon);
 		}
 	}
 
@@ -206,7 +239,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
 {
 	GetAvailableVideoMode(&w, &h);
-	Debug(driver, 1, "SDL2: using mode {}x{}", w, h);
+	Debug(driver, 1, "SDL3: using mode {}x{}", w, h);
 
 	if (!this->CreateMainWindow(w, h)) return false;
 	if (resize) SDL_SetWindowSize(this->sdl_window, w, h);
@@ -224,7 +257,7 @@ void VideoDriver_SDL_Base::ClaimMousePointer()
 {
 	/* Emscripten never claims the pointer, so we do not need to change the cursor visibility. */
 #ifndef __EMSCRIPTEN__
-	SDL_ShowCursor(0);
+	SDL_HideCursor();
 #endif
 }
 
@@ -234,7 +267,7 @@ void VideoDriver_SDL_Base::ClaimMousePointer()
 void VideoDriver_SDL_Base::EditBoxGainedFocus()
 {
 	if (!this->edit_box_focused) {
-		SDL_StartTextInput();
+		SDL_StartTextInput(this->sdl_window);
 		this->edit_box_focused = true;
 	}
 }
@@ -245,7 +278,7 @@ void VideoDriver_SDL_Base::EditBoxGainedFocus()
 void VideoDriver_SDL_Base::EditBoxLostFocus()
 {
 	if (this->edit_box_focused) {
-		SDL_StopTextInput();
+		SDL_StopTextInput(this->sdl_window);
 		this->edit_box_focused = false;
 	}
 }
@@ -253,10 +286,10 @@ void VideoDriver_SDL_Base::EditBoxLostFocus()
 std::vector<int> VideoDriver_SDL_Base::GetListOfMonitorRefreshRates()
 {
 	std::vector<int> rates = {};
-	for (int i = 0; i < SDL_GetNumVideoDisplays(); i++) {
-		SDL_DisplayMode mode = {};
-		if (SDL_GetDisplayMode(i, 0, &mode) != 0) continue;
-		if (mode.refresh_rate != 0) rates.push_back(mode.refresh_rate);
+	for (SDL_DisplayID display : SDLRange<SDL_DisplayID>(SDL_GetDisplays)) {
+		for (SDL_DisplayMode *mode : SDLRange<SDL_DisplayMode*>(SDL_GetFullscreenDisplayModes, display)) {
+			if (mode->refresh_rate != 0) rates.push_back(mode->refresh_rate);
+		}
 	}
 	return rates;
 }
@@ -318,7 +351,7 @@ static constexpr SDLVkMapping _vk_mapping[] = {
 	{ SDLK_F1, SDLK_F12, WKC_F1, WKC_F12, true },
 
 	/* Map letters & digits */
-	{ SDLK_a, SDLK_z, WindowKeyCodes{'A'}, WindowKeyCodes{'Z'}, false },
+	{ SDLK_A, SDLK_Z, WindowKeyCodes{'A'}, WindowKeyCodes{'Z'}, false },
 	{ SDLK_0, SDLK_9, WindowKeyCodes{'0'}, WindowKeyCodes{'9'}, false },
 
 	{ SDLK_SPACE, WKC_SPACE, false },
@@ -343,7 +376,7 @@ static constexpr SDLVkMapping _vk_mapping[] = {
 	{ SDLK_BACKSLASH, WKC_BACKSLASH, false },
 	{ SDLK_RIGHTBRACKET, WKC_R_BRACKET, false },
 
-	{ SDLK_QUOTE, WKC_SINGLEQUOTE, false },
+	{ SDLK_APOSTROPHE, WKC_SINGLEQUOTE, false },
 	{ SDLK_COMMA, WKC_COMMA, false },
 	{ SDLK_MINUS, WKC_MINUS, false },
 	{ SDLK_PERIOD, WKC_PERIOD, false },
@@ -351,40 +384,40 @@ static constexpr SDLVkMapping _vk_mapping[] = {
 
 /**
  * Convert the SDL key into our WindowKeyCode and the printable character (if any).
- * @param sym The keyboard event.
+ * @param key_event The keyboard event.
  * @param[out] character The pressed character (or \c '\0' when no character was pressed).
  * @return The pressed key.
  */
-static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
+static uint ConvertSdlKeyIntoMy(SDL_KeyboardEvent *key_event, char32_t *character)
 {
 	uint key = 0;
 	bool unprintable = false;
 
 	for (const auto &map : _vk_mapping) {
-		if (IsInsideBS(sym->sym, map.vk_from, map.count)) {
-			key = sym->sym - map.vk_from + map.map_to;
+		if (IsInsideBS(key_event->key, map.vk_from, map.count)) {
+			key = key_event->key - map.vk_from + map.map_to;
 			unprintable = map.unprintable;
 			break;
 		}
 	}
 
 	/* check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards) */
-	if (sym->scancode == SDL_SCANCODE_GRAVE) key = WKC_BACKQUOTE;
+	if (key_event->scancode == SDL_SCANCODE_GRAVE) key = WKC_BACKQUOTE;
 
 	/* META are the command keys on mac */
-	if (sym->mod & KMOD_GUI)   key |= WKC_META;
-	if (sym->mod & KMOD_SHIFT) key |= WKC_SHIFT;
-	if (sym->mod & KMOD_CTRL)  key |= WKC_CTRL;
-	if (sym->mod & KMOD_ALT)   key |= WKC_ALT;
+	if (key_event->mod & SDL_KMOD_GUI) key |= WKC_META;
+	if (key_event->mod & SDL_KMOD_SHIFT) key |= WKC_SHIFT;
+	if (key_event->mod & SDL_KMOD_CTRL) key |= WKC_CTRL;
+	if (key_event->mod & SDL_KMOD_ALT) key |= WKC_ALT;
 
 	/* The mod keys have no character. Prevent '?' */
-	if (sym->mod & KMOD_GUI ||
-		sym->mod & KMOD_CTRL ||
-		sym->mod & KMOD_ALT ||
+	if (key_event->mod & SDL_KMOD_GUI ||
+		key_event->mod & SDL_KMOD_CTRL ||
+		key_event->mod & SDL_KMOD_ALT ||
 		unprintable) {
 		*character = '\0';
 	} else {
-		*character = sym->sym;
+		*character = key_event->key;
 	}
 
 	return key;
@@ -408,7 +441,7 @@ static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 
 	/* check scancode for BACKQUOTE key, because we want the key left
 	 * of "1", not anything else (on non-US keyboards) */
-	SDL_Scancode sc = SDL_GetScancodeFromKey(kc);
+	SDL_Scancode sc = SDL_GetScancodeFromKey(kc, nullptr);
 	if (sc == SDL_SCANCODE_GRAVE) key = WKC_BACKQUOTE;
 
 	return key;
@@ -421,14 +454,14 @@ bool VideoDriver_SDL_Base::PollEvent()
 	if (!SDL_PollEvent(&ev)) return false;
 
 	switch (ev.type) {
-		case SDL_MOUSEMOTION: {
+		case SDL_EVENT_MOUSE_MOTION: {
 			int32_t x = ev.motion.x;
 			int32_t y = ev.motion.y;
 
 			if (_cursor.fix_at) {
 				/* Get all queued mouse events now in case we have to warp the cursor. In the
 				 * end, we only care about the current mouse position and not bygone events. */
-				while (SDL_PeepEvents(&ev, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION)) {
+				while (SDL_PeepEvents(&ev, 1, SDL_GETEVENT, SDL_EVENT_MOUSE_MOTION, SDL_EVENT_MOUSE_MOTION)) {
 					x = ev.motion.x;
 					y = ev.motion.y;
 				}
@@ -441,7 +474,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			break;
 		}
 
-		case SDL_MOUSEWHEEL: {
+		case SDL_EVENT_MOUSE_WHEEL: {
 			if (ev.wheel.y > 0) {
 				_cursor.wheel--;
 			} else if (ev.wheel.y < 0) {
@@ -450,19 +483,14 @@ bool VideoDriver_SDL_Base::PollEvent()
 
 			/* Handle 2D scrolling. */
 			const float SCROLL_BUILTIN_MULTIPLIER = 14.0f;
-#if SDL_VERSION_ATLEAST(2, 18, 0)
-			_cursor.v_wheel -= ev.wheel.preciseY * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
-			_cursor.h_wheel += ev.wheel.preciseX * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
-#else
-			_cursor.v_wheel -= static_cast<float>(ev.wheel.y * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier);
-			_cursor.h_wheel += static_cast<float>(ev.wheel.x * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier);
-#endif
+			_cursor.v_wheel -= ev.wheel.y * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
+			_cursor.h_wheel += ev.wheel.x * SCROLL_BUILTIN_MULTIPLIER * _settings_client.gui.scrollwheel_multiplier;
 			_cursor.wheel_moved = true;
 			break;
 		}
 
-		case SDL_MOUSEBUTTONDOWN:
-			if (_rightclick_emulate && SDL_GetModState() & KMOD_CTRL) {
+		case SDL_EVENT_MOUSE_BUTTON_DOWN:
+			if (_rightclick_emulate && SDL_GetModState() & SDL_KMOD_CTRL) {
 				ev.button.button = SDL_BUTTON_RIGHT;
 			}
 
@@ -481,7 +509,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			HandleMouseEvents();
 			break;
 
-		case SDL_MOUSEBUTTONUP:
+		case SDL_EVENT_MOUSE_BUTTON_UP:
 			if (_rightclick_emulate) {
 				_right_button_down = false;
 				_left_button_down = false;
@@ -495,20 +523,20 @@ bool VideoDriver_SDL_Base::PollEvent()
 			HandleMouseEvents();
 			break;
 
-		case SDL_QUIT:
+		case SDL_EVENT_QUIT:
 			HandleExitGameRequest();
 			break;
 
-		case SDL_KEYDOWN: // Toggle full-screen on ALT + ENTER/F
-			if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_GUI)) &&
-					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
+		case SDL_EVENT_KEY_DOWN: // Toggle full-screen on ALT + ENTER/F
+			if ((ev.key.mod & (SDL_KMOD_ALT | SDL_KMOD_GUI)) &&
+					(ev.key.key == SDLK_RETURN || ev.key.key == SDLK_F)) {
 				if (ev.key.repeat == 0) ToggleFullScreen(!_fullscreen);
 			} else {
 				char32_t character;
 
-				uint keycode = ConvertSdlKeyIntoMy(&ev.key.keysym, &character);
+				uint keycode = ConvertSdlKeyIntoMy(&ev.key, &character);
 				/* Only handle non-text keys here. Text is handled in
-				 * SDL_TEXTINPUT below. */
+				 * SDL_EVENT_TEXT_INPUT below. */
 				if (!this->edit_box_focused ||
 					keycode == WKC_DELETE ||
 					keycode == WKC_NUM_ENTER ||
@@ -528,7 +556,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			}
 			break;
 
-		case SDL_TEXTINPUT: {
+		case SDL_EVENT_TEXT_INPUT: {
 			if (!this->edit_box_focused) break;
 			SDL_Keycode kc = SDL_GetKeyFromName(ev.text.text);
 			uint keycode = ConvertSdlKeycodeIntoMy(kc);
@@ -541,26 +569,32 @@ bool VideoDriver_SDL_Base::PollEvent()
 			}
 			break;
 		}
-		case SDL_WINDOWEVENT: {
-			if (ev.window.event == SDL_WINDOWEVENT_EXPOSED) {
-				/* Force a redraw of the entire screen. */
-				this->MakeDirty(0, 0, _screen.width, _screen.height);
-			} else if (ev.window.event == SDL_WINDOWEVENT_SIZE_CHANGED) {
-				int w = std::max(ev.window.data1, 64);
-				int h = std::max(ev.window.data2, 64);
-				CreateMainSurface(w, h, w != ev.window.data1 || h != ev.window.data2);
-			} else if (ev.window.event == SDL_WINDOWEVENT_ENTER) {
-				/* mouse entered the window, enable cursor */
-				_cursor.in_window = true;
-				/* Ensure pointer lock will not occur. */
-				SDL_SetRelativeMouseMode(SDL_FALSE);
-			} else if (ev.window.event == SDL_WINDOWEVENT_LEAVE) {
-				/* mouse left the window, undraw cursor */
-				UndrawMouseCursor();
-				_cursor.in_window = false;
-			}
+
+		case SDL_EVENT_WINDOW_EXPOSED:
+			/* Force a redraw of the entire screen. */
+			this->MakeDirty(0, 0, _screen.width, _screen.height);
+			break;
+
+		case SDL_EVENT_WINDOW_RESIZED:
+		case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED: {
+			int w = std::max(ev.window.data1, 64);
+			int h = std::max(ev.window.data2, 64);
+			CreateMainSurface(w, h, w != ev.window.data1 || h != ev.window.data2);
 			break;
 		}
+
+		case SDL_EVENT_WINDOW_MOUSE_ENTER:
+			/* mouse entered the window, enable cursor */
+			_cursor.in_window = true;
+			/* Ensure pointer lock will not occur. */
+			SDL_SetWindowRelativeMouseMode(this->sdl_window, false);
+			break;
+
+		case SDL_EVENT_WINDOW_MOUSE_LEAVE:
+			/* mouse left the window, undraw cursor */
+			UndrawMouseCursor();
+			_cursor.in_window = false;
+			break;
 	}
 
 	return true;
@@ -573,13 +607,13 @@ bool VideoDriver_SDL_Base::PollEvent()
 static std::optional<std::string_view> InitializeSDL()
 {
 	/* Check if the video-driver is already initialized. */
-	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return std::nullopt;
+	if (SDL_WasInit(SDL_INIT_VIDEO)) return std::nullopt;
 
 #ifdef SDL_HINT_APP_NAME
 	SDL_SetHint(SDL_HINT_APP_NAME, "OpenTTD");
 #endif
 
-	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) return SDL_GetError();
+	if (!SDL_InitSubSystem(SDL_INIT_VIDEO)) return SDL_GetError();
 	return std::nullopt;
 }
 
@@ -623,7 +657,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 	}
 
 	const char *dname = SDL_GetCurrentVideoDriver();
-	Debug(driver, 1, "SDL2: using driver '{}'", dname);
+	Debug(driver, 1, "SDL3: using driver '{}'", dname);
 
 	this->driver_info = this->GetName();
 	this->driver_info += " (";
@@ -632,7 +666,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 
 	MarkWholeScreenDirty();
 
-	SDL_StopTextInput();
+	SDL_StopTextInput(this->sdl_window);
 	this->edit_box_focused = false;
 
 #ifdef __EMSCRIPTEN__
@@ -647,7 +681,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 void VideoDriver_SDL_Base::Stop()
 {
 	SDL_QuitSubSystem(SDL_INIT_VIDEO);
-	if (SDL_WasInit(SDL_INIT_EVERYTHING) == 0) {
+	if (!SDL_WasInit(SDL_INIT_AUDIO)) {
 		SDL_Quit(); // If there's nothing left, quit SDL
 	}
 }
@@ -655,22 +689,22 @@ void VideoDriver_SDL_Base::Stop()
 void VideoDriver_SDL_Base::InputLoop()
 {
 	uint32_t mod = SDL_GetModState();
-	const Uint8 *keys = SDL_GetKeyboardState(nullptr);
+	const bool *key_states = SDL_GetKeyboardState(nullptr);
 
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed  = !!(mod & KMOD_CTRL);
-	_shift_pressed = !!(mod & KMOD_SHIFT);
+	_ctrl_pressed  = !!(mod & SDL_KMOD_CTRL);
+	_shift_pressed = !!(mod & SDL_KMOD_SHIFT);
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
-	this->fast_forward_key_pressed = keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0;
+	this->fast_forward_key_pressed = key_states[SDL_SCANCODE_TAB] && (mod & SDL_KMOD_ALT) == 0;
 
 	/* Determine which directional keys are down. */
-	_dirkeys.Set(DirectionKey::Left, keys[SDL_SCANCODE_LEFT]);
-	_dirkeys.Set(DirectionKey::Up, keys[SDL_SCANCODE_UP]);
-	_dirkeys.Set(DirectionKey::Right, keys[SDL_SCANCODE_RIGHT]);
-	_dirkeys.Set(DirectionKey::Down, keys[SDL_SCANCODE_DOWN]);
+	_dirkeys.Set(DirectionKey::Left, key_states[SDL_SCANCODE_LEFT]);
+	_dirkeys.Set(DirectionKey::Up, key_states[SDL_SCANCODE_UP]);
+	_dirkeys.Set(DirectionKey::Right, key_states[SDL_SCANCODE_RIGHT]);
+	_dirkeys.Set(DirectionKey::Down, key_states[SDL_SCANCODE_DOWN]);
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
@@ -741,17 +775,17 @@ bool VideoDriver_SDL_Base::ToggleFullscreen(bool fullscreen)
 
 	if (fullscreen) {
 		/* Find fullscreen window size */
-		SDL_DisplayMode dm;
-		if (SDL_GetCurrentDisplayMode(SDL_GetWindowDisplayIndex(this->sdl_window), &dm) < 0) {
+		const SDL_DisplayMode *dm = SDL_GetCurrentDisplayMode(SDL_GetDisplayForWindow(this->sdl_window));
+		if (dm == nullptr) {
 			Debug(driver, 0, "SDL_GetCurrentDisplayMode() failed: {}", SDL_GetError());
 		} else {
-			SDL_SetWindowSize(this->sdl_window, dm.w, dm.h);
+			SDL_SetWindowSize(this->sdl_window, dm->w, dm->h);
 		}
 	}
 
-	Debug(driver, 1, "SDL2: Setting {}", fullscreen ? "fullscreen" : "windowed");
-	int ret = SDL_SetWindowFullscreen(this->sdl_window, fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
-	if (ret == 0) {
+	Debug(driver, 1, "SDL3: Setting {}", fullscreen ? "fullscreen" : "windowed");
+	bool success = SDL_SetWindowFullscreen(this->sdl_window, fullscreen);
+	if (success) {
 		/* Switching resolution succeeded, set fullscreen value of window. */
 		_fullscreen = fullscreen;
 		if (!fullscreen) SDL_SetWindowSize(this->sdl_window, w, h);
@@ -760,7 +794,7 @@ bool VideoDriver_SDL_Base::ToggleFullscreen(bool fullscreen)
 	}
 
 	InvalidateWindowClassesData(WindowClass::GameOptions, 3);
-	return ret == 0;
+	return success;
 }
 
 bool VideoDriver_SDL_Base::AfterBlitterChange()
@@ -773,10 +807,10 @@ bool VideoDriver_SDL_Base::AfterBlitterChange()
 
 Dimension VideoDriver_SDL_Base::GetScreenSize() const
 {
-	SDL_DisplayMode mode;
-	if (SDL_GetCurrentDisplayMode(this->startup_display, &mode) != 0) return VideoDriver::GetScreenSize();
+	const SDL_DisplayMode *mode = SDL_GetCurrentDisplayMode(SDL_GetDisplayForWindow(this->sdl_window));
+	if (mode == nullptr) return VideoDriver::GetScreenSize();
 
-	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
+	return { static_cast<uint>(mode->w), static_cast<uint>(mode->h) };
 }
 
 bool VideoDriver_SDL_Base::LockVideoBuffer()

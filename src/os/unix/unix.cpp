@@ -21,8 +21,8 @@
 #include <signal.h>
 #include <pthread.h>
 
-#ifdef WITH_SDL2
-#include <SDL.h>
+#ifdef WITH_SDL3
+#include <SDL3/SDL_clipboard.h>
 #endif
 
 #ifdef WITH_ICONV
@@ -204,8 +204,8 @@ void ShowOSErrorBox(std::string_view buf, bool)
 #ifndef WITH_COCOA
 std::optional<std::string> GetClipboardContents()
 {
-#ifdef WITH_SDL2
-	if (SDL_HasClipboardText() == SDL_FALSE) return std::nullopt;
+#ifdef WITH_SDL3
+	if (!SDL_HasClipboardText()) return std::nullopt;
 
 	char *clip = SDL_GetClipboardText();
 	if (clip != nullptr) {

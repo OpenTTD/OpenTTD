@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file sdl2_default_v.cpp Implementation of the default backend for SDL2 video driver. */
+/** @file sdl3_default_v.cpp Implementation of the default backend for SDL3 video driver. */
 
 #include "../stdafx.h"
 #include "../openttd.h"
@@ -20,8 +20,8 @@
 #include "../fileio_func.h"
 #include "../framerate_type.h"
 #include "../window_func.h"
-#include "sdl2_default_v.h"
-#include <SDL.h>
+#include "sdl3_default_v.h"
+#include <SDL3/SDL_video.h>
 #include <mutex>
 #include <condition_variable>
 #ifdef __EMSCRIPTEN__
@@ -62,8 +62,8 @@ void VideoDriver_SDL_Default::UpdatePalette()
 void VideoDriver_SDL_Default::MakePalette()
 {
 	if (_sdl_palette == nullptr) {
-		_sdl_palette = SDL_AllocPalette(256);
-		if (_sdl_palette == nullptr) UserError("SDL2: Couldn't allocate palette: {}", SDL_GetError());
+		_sdl_palette = SDL_CreatePalette(256);
+		if (_sdl_palette == nullptr) UserError("SDL3: Couldn't allocate palette: {}", SDL_GetError());
 	}
 
 	CopyPalette(this->local_palette, true);
@@ -137,19 +137,19 @@ bool VideoDriver_SDL_Default::AllocateBackingStore(int w, int h, bool force)
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	_sdl_real_surface = SDL_GetWindowSurface(this->sdl_window);
-	if (_sdl_real_surface == nullptr) UserError("SDL2: Couldn't get window surface: {}", SDL_GetError());
+	if (_sdl_real_surface == nullptr) UserError("SDL3: Couldn't get window surface: {}", SDL_GetError());
 
 	if (!force && w == _sdl_real_surface->w && h == _sdl_real_surface->h) return false;
 
 	/* Free any previously allocated rgb surface. */
 	if (_sdl_rgb_surface != nullptr) {
-		SDL_FreeSurface(_sdl_rgb_surface);
+		SDL_DestroySurface(_sdl_rgb_surface);
 		_sdl_rgb_surface = nullptr;
 	}
 
 	if (bpp == 8) {
-		_sdl_rgb_surface = SDL_CreateRGBSurface(0, w, h, 8, 0, 0, 0, 0);
-		if (_sdl_rgb_surface == nullptr) UserError("SDL2: Couldn't allocate shadow surface: {}", SDL_GetError());
+		_sdl_rgb_surface = SDL_CreateSurface(w, h, SDL_PIXELFORMAT_INDEX8);
+		if (_sdl_rgb_surface == nullptr) UserError("SDL3: Couldn't allocate shadow surface: {}", SDL_GetError());
 
 		_sdl_surface = _sdl_rgb_surface;
 	} else {

@@ -313,7 +313,7 @@ INCLUDE_FILE_PATTERNS  =
 PREDEFINED             = WITH_ZLIB \
                          WITH_LZO \
                          WITH_LIBLZMA \
-                         WITH_SDL2 \
+                         WITH_SDL3 \
                          WITH_PNG \
                          WITH_FONTCONFIG \
                          WITH_FREETYPE \
@@ -326,6 +326,7 @@ PREDEFINED             = WITH_ZLIB \
                          CDECL= \
                          CALLBACK= \
                          APIENTRY= \
+                         SDLCALL= \
                          FINAL=
 EXPAND_AS_DEFINED      = DEFINE_POOL_METHOD
 SKIP_FUNCTION_MACROS   = YES
