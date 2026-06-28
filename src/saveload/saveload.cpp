@@ -869,9 +869,9 @@ size_t SlGetFieldLength()
  * type, eg one with other flags because it is parsed
  * @return returns the value of the pointer-setting
  */
-int64_t ReadValue(const void *ptr, VarType conv)
+int64_t ReadValue(const void *ptr, VarMemType conv)
 {
-	switch (GetVarMemType(conv)) {
+	switch (conv) {
 		case SLE_VAR_BL: return (*static_cast<const bool *>(ptr) != 0);
 		case SLE_VAR_I8: return *static_cast<const int8_t *>(ptr);
 		case SLE_VAR_U8: return *static_cast<const uint8_t *>(ptr);
@@ -893,9 +893,9 @@ int64_t ReadValue(const void *ptr, VarType conv)
  *             with other flags. It is parsed upon read
  * @param val the new value being given to the variable
  */
-void WriteValue(void *ptr, VarType conv, int64_t val)
+void WriteValue(void *ptr, VarMemType conv, int64_t val)
 {
-	switch (GetVarMemType(conv)) {
+	switch (conv) {
 		case SLE_VAR_BL: *static_cast<bool *>(ptr) = (val != 0); break;
 		case SLE_VAR_I8: *static_cast<int8_t *>(ptr) = val; break;
 		case SLE_VAR_U8: *static_cast<uint8_t *>(ptr) = val; break;
@@ -923,7 +923,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 {
 	switch (_sl.action) {
 		case SaveLoadAction::Save: {
-			int64_t x = ReadValue(ptr, conv);
+			int64_t x = ReadValue(ptr, conv.mem);
 
 			/* Write the value to the file and check if its value is in the desired range */
 			switch (GetVarFileType(conv)) {
@@ -980,7 +980,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			}
 
 			/* Write The value to the struct. These ARE endian safe. */
-			WriteValue(ptr, conv, x);
+			WriteValue(ptr, conv.mem, x);
 			break;
 		}
 		case SaveLoadAction::Ptrs: break;

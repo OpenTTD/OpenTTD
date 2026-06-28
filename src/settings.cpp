@@ -307,7 +307,7 @@ static std::optional<std::vector<uint32_t>> ParseIntList(std::string_view str)
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
  * @return return true on success and false on error
  */
-static bool LoadIntList(std::optional<std::string_view> str, void *array, int nelems, VarType type)
+static bool LoadIntList(std::optional<std::string_view> str, void *array, int nelems, VarMemType type)
 {
 	size_t elem_size = SlVarSize(type);
 	std::byte *p = static_cast<std::byte *>(array);
@@ -582,7 +582,7 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 void IntSettingDesc::Write(const void *object, int32_t val) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	WriteValue(ptr, this->save.conv, (int64_t)val);
+	WriteValue(ptr, this->save.conv.mem, (int64_t)val);
 }
 
 /**
@@ -593,7 +593,7 @@ void IntSettingDesc::Write(const void *object, int32_t val) const
 int32_t IntSettingDesc::Read(const void *object) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	return (int32_t)ReadValue(ptr, this->save.conv);
+	return (int32_t)ReadValue(ptr, this->save.conv.mem);
 }
 
 /**
@@ -706,13 +706,13 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 		str = this->def;
 	}
 	void *ptr = GetVariableAddress(object, this->save);
-	if (!LoadIntList(str, ptr, this->save.length, this->save.conv)) {
+	if (!LoadIntList(str, ptr, this->save.length, this->save.conv.mem)) {
 		_settings_error_list.emplace_back(
 			GetEncodedString(STR_CONFIG_ERROR),
 			GetEncodedString(STR_CONFIG_ERROR_ARRAY, this->GetName()));
 
 		/* Use default */
-		LoadIntList(this->def, ptr, this->save.length, this->save.conv);
+		LoadIntList(this->def, ptr, this->save.length, this->save.conv.mem);
 	}
 }
 
