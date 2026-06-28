@@ -127,7 +127,7 @@ using SettingDescProcList = void(IniFile &ini, std::string_view grpname, StringL
 
 static bool IsSignedVarMemType(VarType vt)
 {
-	switch (GetVarMemType(vt)) {
+	switch (vt.mem) {
 		case SLE_VAR_I8:
 		case SLE_VAR_I16:
 		case SLE_VAR_I32:
@@ -339,7 +339,7 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 	std::string result;
 	for (size_t i = 0; i != this->save.length; i++) {
 		int64_t v;
-		switch (GetVarMemType(this->save.conv)) {
+		switch (this->save.conv.mem) {
 			case SLE_VAR_BL:
 			case SLE_VAR_I8:  v = *(const   int8_t *)p; p += 1; break;
 			case SLE_VAR_U8:  v = *(const  uint8_t *)p; p += 1; break;
@@ -533,7 +533,7 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 	 * supported. Unsigned 8 and 16-bit variables are safe since they fit into a signed
 	 * 32-bit variable
 	 * TODO: Support 64-bit settings/variables; requires 64 bit over command protocol! */
-	switch (GetVarMemType(this->save.conv)) {
+	switch (this->save.conv.mem) {
 		case SLE_VAR_NULL: return;
 		case SLE_VAR_BL:
 		case SLE_VAR_I8:
@@ -582,7 +582,7 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 void IntSettingDesc::Write(const void *object, int32_t val) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	WriteValue(ptr, this->save.conv.mem, (int64_t)val);
+	WriteValue(ptr, this->save.conv.mem, static_cast<int64_t>(val));
 }
 
 /**
@@ -593,7 +593,7 @@ void IntSettingDesc::Write(const void *object, int32_t val) const
 int32_t IntSettingDesc::Read(const void *object) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	return (int32_t)ReadValue(ptr, this->save.conv.mem);
+	return static_cast<int32_t>(ReadValue(ptr, this->save.conv.mem));
 }
 
 /**
@@ -797,7 +797,7 @@ void IntSettingDesc::ResetToDefault(void *object) const
 std::string StringSettingDesc::FormatValue(const void *object) const
 {
 	const std::string &str = this->Read(object);
-	switch (GetVarMemType(this->save.conv)) {
+	switch (this->save.conv.mem) {
 		case SLE_VAR_STR: return str;
 
 		case SLE_VAR_STRQ:
@@ -814,7 +814,7 @@ bool StringSettingDesc::IsSameValue(const IniItem *item, void *object) const
 {
 	/* The ini parsing removes the quotes, which are needed to retain the spaces in STRQs,
 	 * so those values are always different in the parsed ini item than they should be. */
-	if (GetVarMemType(this->save.conv) == SLE_VAR_STRQ) return false;
+	if (this->save.conv.mem == SLE_VAR_STRQ) return false;
 
 	const std::string &str = this->Read(object);
 	return item->value->compare(str) == 0;
@@ -1932,7 +1932,7 @@ bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool f
 {
 	assert(sd->flags.Test(SettingFlag::NoNetworkSync));
 
-	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value == "(null)") {
+	if (sd->save.conv.mem == SLE_VAR_STRQ && value == "(null)") {
 		value = {};
 	}
 

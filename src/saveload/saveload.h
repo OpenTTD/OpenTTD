@@ -817,17 +817,6 @@ struct SaveLoadCompat {
 };
 
 /**
- * Get the NumberType of a setting. This describes the integer type
- * as it is represented in memory
- * @param type VarType holding information about the variable-type
- * @return the SLE_VAR_* part of a variable-type description
- */
-inline constexpr VarMemType GetVarMemType(VarType type)
-{
-	return type.mem;
-}
-
-/**
  * Get the FileType of a setting. This describes the integer type
  * as it is represented in a savegame/file
  * @param type VarType holding information about the file-type
@@ -836,16 +825,6 @@ inline constexpr VarMemType GetVarMemType(VarType type)
 inline constexpr VarFileType GetVarFileType(VarType type)
 {
 	return type.file;
-}
-
-/**
- * Check if the given saveload type is a numeric type.
- * @param conv the type to check
- * @return True if it's a numeric type.
- */
-inline constexpr bool IsNumericType(VarType conv)
-{
-	return GetVarMemType(conv) <= SLE_VAR_U64;
 }
 
 /**
@@ -1356,7 +1335,7 @@ inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLoadVersi
 inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 {
 	/* Entry is a null-variable, mostly used to read old savegames etc. */
-	if (GetVarMemType(sld.conv) == SLE_VAR_NULL) {
+	if (sld.conv.mem == SLE_VAR_NULL) {
 		assert(sld.address_proc == nullptr);
 		return nullptr;
 	}

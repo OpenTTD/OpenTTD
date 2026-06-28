@@ -658,9 +658,9 @@ static SavegameFileType GetSavegameFileType(const SaveLoad &sld)
  * @param conv VarType type of variable that is used for calculating the size
  * @return Return the size of this type in bytes
  */
-static inline uint SlCalcConvMemLen(VarType conv)
+static inline uint SlCalcConvMemLen(VarMemType conv)
 {
-	switch (GetVarMemType(conv)) {
+	switch (conv) {
 		case SLE_VAR_BL: return sizeof(bool);
 		case SLE_VAR_I8: return sizeof(int8_t);
 		case SLE_VAR_U8: return sizeof(uint8_t);
@@ -1145,7 +1145,7 @@ static void SlStdString(void *ptr, VarType conv)
 		case SaveLoadAction::LoadCheck:
 		case SaveLoadAction::Load: {
 			size_t len = SlReadArrayLength();
-			if (GetVarMemType(conv) == SLE_VAR_NULL) {
+			if (conv.mem == SLE_VAR_NULL) {
 				SlSkipBytes(len);
 				return;
 			}
@@ -1183,7 +1183,7 @@ static void SlStdString(void *ptr, VarType conv)
  */
 static void SlCopyInternal(void *object, size_t length, VarType conv)
 {
-	if (GetVarMemType(conv) == SLE_VAR_NULL) {
+	if (conv.mem == SLE_VAR_NULL) {
 		assert(_sl.action != SaveLoadAction::Save); // Use SaveLoadType::Null if you want to write null-bytes
 		SlSkipBytes(length * SlCalcConvFileLen(conv));
 		return;
@@ -1213,7 +1213,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 		SlCopyBytes(object, length);
 	} else {
 		uint8_t *a = static_cast<uint8_t *>(object);
-		uint8_t mem_size = SlCalcConvMemLen(conv);
+		uint8_t mem_size = SlCalcConvMemLen(conv.mem);
 
 		for (; length != 0; length --) {
 			SlSaveLoadConv(a, conv);
@@ -1273,7 +1273,7 @@ static void SlArray(void *array, size_t length, VarType conv)
 		case SaveLoadAction::Load: {
 			if (!IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength)) {
 				size_t sv_length = SlReadArrayLength();
-				if (GetVarMemType(conv) == SLE_VAR_NULL) {
+				if (conv.mem == SLE_VAR_NULL) {
 					/* We don't know this field, so we assume the length in the savegame is correct. */
 					length = sv_length;
 				} else if (sv_length != length) {
@@ -1588,7 +1588,7 @@ static void SlRefVector(void *vector, VarType conv)
  */
 static inline size_t SlCalcVectorLen(const void *vector, VarType conv)
 {
-	switch (GetVarMemType(conv)) {
+	switch (conv.mem) {
 		case SLE_VAR_BL: NOT_REACHED(); // Not supported
 		case SLE_VAR_I8: return SlStorageHelper<std::vector, int8_t>::SlCalcLen(vector, conv);
 		case SLE_VAR_U8: return SlStorageHelper<std::vector, uint8_t>::SlCalcLen(vector, conv);
@@ -1615,7 +1615,7 @@ static inline size_t SlCalcVectorLen(const void *vector, VarType conv)
  */
 static void SlVector(void *vector, VarType conv)
 {
-	switch (GetVarMemType(conv)) {
+	switch (conv.mem) {
 		case SLE_VAR_BL: NOT_REACHED(); // Not supported
 		case SLE_VAR_I8: SlStorageHelper<std::vector, int8_t>::SlSaveLoad(vector, conv); break;
 		case SLE_VAR_U8: SlStorageHelper<std::vector, uint8_t>::SlSaveLoad(vector, conv); break;
@@ -1785,7 +1785,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		}
 
 		case SaveLoadType::Null: {
-			assert(GetVarMemType(sld.conv) == SLE_VAR_NULL);
+			assert(sld.conv.mem == SLE_VAR_NULL);
 
 			switch (_sl.action) {
 				case SaveLoadAction::LoadCheck:
