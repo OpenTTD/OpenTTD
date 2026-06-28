@@ -629,13 +629,13 @@ static void TileLoop_Town(TileIndex tile)
 		}
 	} else {
 		switch (_settings_game.economy.town_cargogen_mode) {
-			case TCGM_ORIGINAL:
+			case TownCargoGenMode::Original:
 				/* Original (quadratic) cargo generation algorithm */
 				TownGenerateCargoOriginal(t, TownProductionEffect::Passengers, hs->population, stations);
 				TownGenerateCargoOriginal(t, TownProductionEffect::Mail, hs->mail_generation, stations);
 				break;
 
-			case TCGM_BITCOUNT:
+			case TownCargoGenMode::Bitcount:
 				/* Binomial distribution per tick, by a series of coin flips */
 				/* Reduce generation rate to a 1/4, using tile bits to spread out distribution.
 				 * As tick counter is incremented by 256 between each call, we ignore the lower 8 bits. */

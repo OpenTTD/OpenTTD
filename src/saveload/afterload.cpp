@@ -3210,7 +3210,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::TownCargogen)) {
 		/* Ensure the original cargo generation mode is used */
-		_settings_game.economy.town_cargogen_mode = TCGM_ORIGINAL;
+		_settings_game.economy.town_cargogen_mode = TownCargoGenMode::Original;
 	}
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::ServeNeutralIndustries)) {
