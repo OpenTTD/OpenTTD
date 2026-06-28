@@ -635,18 +635,18 @@ static SavegameFileType GetSavegameFileType(const SaveLoad &sld)
 			return { sld.conv.file, true };
 
 		case SaveLoadType::Reference:
-			return IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32;
+			return IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? VarFileType::U16 : VarFileType::U32;
 
 		case SaveLoadType::ReferenceList:
 		case SaveLoadType::ReferenceVector:
-			return { IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32, true };
+			return { IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? VarFileType::U16 : VarFileType::U32, true };
 
 		case SaveLoadType::SaveByte:
-			return SLE_FILE_U8;
+			return VarFileType::U8;
 
 		case SaveLoadType::Struct:
 		case SaveLoadType::StructList:
-			return { SLE_FILE_STRUCT, true };
+			return { VarFileType::Struct, true };
 
 		default: NOT_REACHED();
 	}
@@ -691,20 +691,20 @@ static inline uint SlCalcConvMemLen(VarMemType conv)
 static inline uint8_t SlCalcConvFileLen(VarType conv)
 {
 	switch (conv.file) {
-		case SLE_FILE_I8: return sizeof(int8_t);
-		case SLE_FILE_U8: return sizeof(uint8_t);
-		case SLE_FILE_I16: return sizeof(int16_t);
-		case SLE_FILE_U16: return sizeof(uint16_t);
-		case SLE_FILE_I32: return sizeof(int32_t);
-		case SLE_FILE_U32: return sizeof(uint32_t);
-		case SLE_FILE_I64: return sizeof(int64_t);
-		case SLE_FILE_U64: return sizeof(uint64_t);
-		case SLE_FILE_STRINGID: return sizeof(uint16_t);
+		case VarFileType::I8: return sizeof(int8_t);
+		case VarFileType::U8: return sizeof(uint8_t);
+		case VarFileType::I16: return sizeof(int16_t);
+		case VarFileType::U16: return sizeof(uint16_t);
+		case VarFileType::I32: return sizeof(int32_t);
+		case VarFileType::U32: return sizeof(uint32_t);
+		case VarFileType::I64: return sizeof(int64_t);
+		case VarFileType::U64: return sizeof(uint64_t);
+		case VarFileType::StringID: return sizeof(uint16_t);
 
-		case SLE_FILE_STRING:
+		case VarFileType::String:
 			return SlReadArrayLength();
 
-		case SLE_FILE_STRUCT:
+		case VarFileType::Struct:
 		default:
 			NOT_REACHED();
 	}
@@ -927,34 +927,34 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 
 			/* Write the value to the file and check if its value is in the desired range */
 			switch (conv.file) {
-				case SLE_FILE_I8:
+				case VarFileType::I8:
 					assert(x >= -128 && x <= 127);
 					SlWriteByte(x);
 					break;
 
-				case SLE_FILE_U8:
+				case VarFileType::U8:
 					assert(x >= 0 && x <= 255);
 					SlWriteByte(x);
 					break;
 
-				case SLE_FILE_I16:
+				case VarFileType::I16:
 					assert(x >= -32768 && x <= 32767);
 					SlWriteUint16(x);
 					break;
 
-				case SLE_FILE_STRINGID:
-				case SLE_FILE_U16:
+				case VarFileType::StringID:
+				case VarFileType::U16:
 					assert(x >= 0 && x <= 65535);
 					SlWriteUint16(x);
 					break;
 
-				case SLE_FILE_I32:
-				case SLE_FILE_U32:
+				case VarFileType::I32:
+				case VarFileType::U32:
 					SlWriteUint32(static_cast<uint32_t>(x));
 					break;
 
-				case SLE_FILE_I64:
-				case SLE_FILE_U64:
+				case VarFileType::I64:
+				case VarFileType::U64:
 					SlWriteUint64(x);
 					break;
 
@@ -967,15 +967,15 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			int64_t x;
 			/* Read a value from the file */
 			switch (conv.file) {
-				case SLE_FILE_I8: x = static_cast<int8_t>(SlReadByte()); break;
-				case SLE_FILE_U8: x = static_cast<uint8_t>(SlReadByte()); break;
-				case SLE_FILE_I16: x = static_cast<int16_t>(SlReadUint16()); break;
-				case SLE_FILE_U16: x = static_cast<uint16_t>(SlReadUint16()); break;
-				case SLE_FILE_I32: x = static_cast<int32_t>(SlReadUint32()); break;
-				case SLE_FILE_U32: x = static_cast<uint32_t>(SlReadUint32()); break;
-				case SLE_FILE_I64: x = static_cast<int64_t>(SlReadUint64()); break;
-				case SLE_FILE_U64: x = static_cast<uint64_t>(SlReadUint64()); break;
-				case SLE_FILE_STRINGID: x = RemapOldStringID(static_cast<uint16_t>(SlReadUint16())); break;
+				case VarFileType::I8: x = static_cast<int8_t>(SlReadByte()); break;
+				case VarFileType::U8: x = static_cast<uint8_t>(SlReadByte()); break;
+				case VarFileType::I16: x = static_cast<int16_t>(SlReadUint16()); break;
+				case VarFileType::U16: x = static_cast<uint16_t>(SlReadUint16()); break;
+				case VarFileType::I32: x = static_cast<int32_t>(SlReadUint32()); break;
+				case VarFileType::U32: x = static_cast<uint32_t>(SlReadUint32()); break;
+				case VarFileType::I64: x = static_cast<int64_t>(SlReadUint64()); break;
+				case VarFileType::U64: x = static_cast<uint64_t>(SlReadUint64()); break;
+				case VarFileType::StringID: x = RemapOldStringID(static_cast<uint16_t>(SlReadUint16())); break;
 				default: NOT_REACHED();
 			}
 
@@ -1128,7 +1128,7 @@ void SlReadString(std::string &str, size_t length)
 /**
  * Save/Load a \c std::string.
  * @param ptr the string being manipulated
- * @param conv must be SLE_FILE_STRING
+ * @param conv must be VarFileType::String
  */
 static void SlStdString(void *ptr, VarType conv)
 {
@@ -1193,7 +1193,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 			return;
 		}
 		/* used for conversion of Money 32bit->64bit */
-		if (conv == (SLE_FILE_I32 | SLE_VAR_I64)) {
+		if (conv == (VarFileType::I32 | SLE_VAR_I64)) {
 			for (uint i = 0; i < length; i++) {
 				static_cast<int64_t *>(object)[i] = std::byteswap(SlReadUint32());
 			}
@@ -1444,7 +1444,7 @@ public:
 		const SlStorageT *list = static_cast<const SlStorageT *>(storage);
 
 		int type_size = SlGetArrayLength(list->size());
-		int item_size = SlCalcConvFileLen(cmd == SaveLoadType::Variable ? conv : VarType{SLE_FILE_U32, {}});
+		int item_size = SlCalcConvFileLen(cmd == SaveLoadType::Variable ? conv : VarType{VarFileType::U32, {}});
 		return list->size() * item_size + type_size;
 	}
 
@@ -1956,11 +1956,11 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 					std::shared_ptr<SaveLoadHandler> handler = nullptr;
 					SaveLoadType saveload_type;
 					switch (type.Type()) {
-						case SLE_FILE_STRING:
+						case VarFileType::String:
 							saveload_type = SaveLoadType::String;
 							break;
 
-						case SLE_FILE_STRUCT:
+						case VarFileType::Struct:
 							saveload_type = SaveLoadType::StructList;
 							handler = std::make_shared<SlSkipHandler>();
 							break;
@@ -2078,7 +2078,7 @@ std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLo
 			/* In old savegames there can be data we no longer care for. We
 			 * skip this by simply reading the amount of bytes indicated and
 			 * send those to /dev/null. */
-			saveloads.emplace_back("", SaveLoadType::Null, SLE_FILE_U8 | SLE_VAR_NULL, slc.null_length, slc.version_from, slc.version_to, nullptr, 0, nullptr);
+			saveloads.emplace_back("", SaveLoadType::Null, VarFileType::U8 | SLE_VAR_NULL, slc.null_length, slc.version_from, slc.version_to, nullptr, 0, nullptr);
 		} else {
 			auto sld_it = key_lookup.find(slc.name);
 			/* If this branch triggers, it means that an entry in the

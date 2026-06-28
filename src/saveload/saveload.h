@@ -653,21 +653,21 @@ enum class SLRefType : uint8_t {
 };
 
 /** The types/structures of data that can be stored in the file. */
-enum VarFileType : uint8_t {
+enum class VarFileType : uint8_t {
 	/* 4 bits allocated a maximum of 16 types for NumberType.
 	 * NOTE: the SLE_FILE_NNN values are stored in the savegame! */
 	/* Value 0 is used to mark end-of-header in tables. Do not use here! */
-	SLE_FILE_I8 = 1, ///< A 8 bit signed int.
-	SLE_FILE_U8 = 2, ///< A 8 bit unsigned int.
-	SLE_FILE_I16 = 3, ///< A 16 bit signed int.
-	SLE_FILE_U16 = 4, ///< A 16 bit unsigned int.
-	SLE_FILE_I32 = 5, ///< A 32 bit signed int.
-	SLE_FILE_U32 = 6, ///< A 32 bit unsigned int.
-	SLE_FILE_I64 = 7, ///< A 64 bit signed int.
-	SLE_FILE_U64 = 8, ///< A 64 bit unsigned int.
-	SLE_FILE_STRINGID = 9, ///< StringID offset into strings-array.
-	SLE_FILE_STRING = 10, ///< A string.
-	SLE_FILE_STRUCT = 11, ///< An arbitrary structure.
+	I8 = 1, ///< A 8 bit signed int.
+	U8 = 2, ///< A 8 bit unsigned int.
+	I16 = 3, ///< A 16 bit signed int.
+	U16 = 4, ///< A 16 bit unsigned int.
+	I32 = 5, ///< A 32 bit signed int.
+	U32 = 6, ///< A 32 bit unsigned int.
+	I64 = 7, ///< A 64 bit signed int.
+	U64 = 8, ///< A 64 bit unsigned int.
+	StringID = 9, ///< StringID offset into strings-array.
+	String = 10, ///< A string.
+	Struct = 11, ///< An arbitrary structure.
 	/* 4 more possible file-primitives */
 };
 
@@ -744,19 +744,19 @@ constexpr VarType operator|(VarFileType file, VarMemType mem)
 	return {file, mem};
 }
 
-constexpr VarType SLE_BOOL{ SLE_FILE_I8, SLE_VAR_BL }; ///< Store a boolean (as int8).
-constexpr VarType SLE_INT8{ SLE_FILE_I8, SLE_VAR_I8 }; ///< Store a 8 bits signed int.
-constexpr VarType SLE_UINT8{ SLE_FILE_U8, SLE_VAR_U8 }; ///< Store a 8 bits unsigned int.
-constexpr VarType SLE_INT16{ SLE_FILE_I16, SLE_VAR_I16 }; ///< Store a 16 bits signed int.
-constexpr VarType SLE_UINT16{ SLE_FILE_U16, SLE_VAR_U16 }; ///< Store a 16 bits unsigned int.
-constexpr VarType SLE_INT32{ SLE_FILE_I32, SLE_VAR_I32 }; ///< Store a 32 bits signed int.
-constexpr VarType SLE_UINT32{ SLE_FILE_U32, SLE_VAR_U32 }; ///< Store a 32 bits unsigned int.
-constexpr VarType SLE_INT64{ SLE_FILE_I64, SLE_VAR_I64 }; ///< Store a 64 bits signed int.
-constexpr VarType SLE_UINT64{ SLE_FILE_U64, SLE_VAR_U64 }; ///< Store a 64 bits unsigned int.
-constexpr VarType SLE_STRINGID{ SLE_FILE_STRINGID, SLE_VAR_U32 }; ///< Store a StringID.
-constexpr VarType SLE_STR{ SLE_FILE_STRING, SLE_VAR_STR }; ///< Store string.
-constexpr VarType SLE_STRQ{ SLE_FILE_STRING, SLE_VAR_STRQ }; ///< Store a string with quotes.
-constexpr VarType SLE_NAME{ SLE_FILE_STRINGID, SLE_VAR_NAME }; ///< A string stored in the custom string array.
+constexpr VarType SLE_BOOL{ VarFileType::I8, SLE_VAR_BL }; ///< Store a boolean (as int8).
+constexpr VarType SLE_INT8{ VarFileType::I8, SLE_VAR_I8 }; ///< Store a 8 bits signed int.
+constexpr VarType SLE_UINT8{ VarFileType::U8, SLE_VAR_U8 }; ///< Store a 8 bits unsigned int.
+constexpr VarType SLE_INT16{ VarFileType::I16, SLE_VAR_I16 }; ///< Store a 16 bits signed int.
+constexpr VarType SLE_UINT16{ VarFileType::U16, SLE_VAR_U16 }; ///< Store a 16 bits unsigned int.
+constexpr VarType SLE_INT32{ VarFileType::I32, SLE_VAR_I32 }; ///< Store a 32 bits signed int.
+constexpr VarType SLE_UINT32{ VarFileType::U32, SLE_VAR_U32 }; ///< Store a 32 bits unsigned int.
+constexpr VarType SLE_INT64{ VarFileType::I64, SLE_VAR_I64 }; ///< Store a 64 bits signed int.
+constexpr VarType SLE_UINT64{ VarFileType::U64, SLE_VAR_U64 }; ///< Store a 64 bits unsigned int.
+constexpr VarType SLE_STRINGID{ VarFileType::StringID, SLE_VAR_U32 }; ///< Store a StringID.
+constexpr VarType SLE_STR{ VarFileType::String, SLE_VAR_STR }; ///< Store string.
+constexpr VarType SLE_STRQ{ VarFileType::String, SLE_VAR_STRQ }; ///< Store a string with quotes.
+constexpr VarType SLE_NAME{ VarFileType::StringID, SLE_VAR_NAME }; ///< A string stored in the custom string array.
 
 /** Type of data saved. */
 enum class SaveLoadType : uint8_t {

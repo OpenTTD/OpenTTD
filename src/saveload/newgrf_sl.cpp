@@ -20,9 +20,9 @@
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
 	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
-	SLE_CONDVAR(EntityIDMapping, entity_id, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
+	SLE_CONDVAR(EntityIDMapping, entity_id, VarFileType::U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
 	SLE_CONDVAR(EntityIDMapping, entity_id, SLE_UINT16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
+	SLE_CONDVAR(EntityIDMapping, substitute_id, VarFileType::U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
 	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_UINT16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 };
 
