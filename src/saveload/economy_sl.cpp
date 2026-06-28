@@ -25,8 +25,8 @@ struct PRICChunkHandler : ChunkHandler {
 	{
 		/* Old games store 49 base prices, very old games store them as int32_t */
 		VarFileType vt = IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? VarFileType::I32 : VarFileType::I64;
-		SlCopy(nullptr, 49, vt | SLE_VAR_NULL);
-		SlCopy(nullptr, 49, VarFileType::U16 | SLE_VAR_NULL);
+		SlCopy(nullptr, 49, vt | VarMemType::Null);
+		SlCopy(nullptr, 49, VarFileType::U16 | VarMemType::Null);
 	}
 };
 
@@ -38,13 +38,13 @@ struct CAPRChunkHandler : ChunkHandler {
 	{
 		uint num_cargo = IsSavegameVersionBefore(SaveLoadVersion::NewGRFCargo) ? 12 : IsSavegameVersionBefore(SaveLoadVersion::ExtendCargotypes) ? 32 : NUM_CARGO;
 		VarFileType vt = IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? VarFileType::I32 : VarFileType::I64;
-		SlCopy(nullptr, num_cargo, vt | SLE_VAR_NULL);
-		SlCopy(nullptr, num_cargo, VarFileType::U16 | SLE_VAR_NULL);
+		SlCopy(nullptr, num_cargo, vt | VarMemType::Null);
+		SlCopy(nullptr, num_cargo, VarFileType::U16 | VarMemType::Null);
 	}
 };
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, old_max_loan_unround, VarFileType::I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLE_CONDVAR(Economy, old_max_loan_unround, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
 	SLE_CONDVAR(Economy, old_max_loan_unround, SLE_INT64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CumulatedInflation),
 	SLE_CONDVAR(Economy, old_max_loan_unround_fract, SLE_UINT16, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::CumulatedInflation),
 	SLE_CONDVAR(Economy, inflation_prices, SLE_UINT64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
