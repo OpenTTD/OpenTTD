@@ -30,7 +30,7 @@ static StringID SettingHelpWallclock(const IntSettingDesc &sd);
 template <typename T>
 constexpr bool DoesMaxFitVariable(T max, VarType type)
 {
-	switch (GetVarMemType(type)) {
+	switch (type.mem) {
 		case SLE_VAR_BL: return max <= 1;
 		case SLE_VAR_I8: return max <= INT8_MAX;
 		case SLE_VAR_U8: return std::make_unsigned_t<T>(max) <= UINT8_MAX;
