@@ -122,8 +122,8 @@ uint8_t ReadByte(LoadgameState &ls)
 bool LoadChunk(LoadgameState &ls, void *base, const OldChunks *chunks)
 {
 	for (const OldChunks *chunk = chunks; chunk->type != OC_END; chunk++) {
-		if (((chunk->type & OC_TTD) && _savegame_type == SGT_TTO) ||
-				((chunk->type & OC_TTO) && _savegame_type != SGT_TTO)) {
+		if (((chunk->type & OC_TTD) && _savegame_type == SavegameType::TTO) ||
+				((chunk->type & OC_TTO) && _savegame_type != SavegameType::TTO)) {
 			/* TTD(P)-only chunk, but TTO savegame || TTO-only chunk, but TTD/TTDP savegame */
 			continue;
 		}
@@ -217,18 +217,18 @@ static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(Fil
 	long pos = ftell(f);
 	char buffer[std::max(TTO_HEADER_SIZE, TTD_HEADER_SIZE)];
 	if (pos < 0 || fread(buffer, 1, lengthof(buffer), f) != lengthof(buffer)) {
-		return { SGT_INVALID, "(broken) Unable to read file" };
+		return { SavegameType::Invalid, "(broken) Unable to read file" };
 	}
 
 	if (VerifyOldNameChecksum(buffer, TTO_HEADER_SIZE) && fseek(f, pos + TTO_HEADER_SIZE, SEEK_SET) == 0) {
-		return { SGT_TTO, "(TTO) " + StrMakeValid(std::string_view{buffer, TTO_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
+		return { SavegameType::TTO, "(TTO) " + StrMakeValid(std::string_view{buffer, TTO_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
 	if (VerifyOldNameChecksum(buffer, TTD_HEADER_SIZE) && fseek(f, pos + TTD_HEADER_SIZE, SEEK_SET) == 0) {
-		return { SGT_TTD, "(TTD) " + StrMakeValid(std::string_view{buffer, TTD_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
+		return { SavegameType::TTD, "(TTD) " + StrMakeValid(std::string_view{buffer, TTD_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
-	return { SGT_INVALID, "(broken) Unknown" };
+	return { SavegameType::Invalid, "(broken) Unknown" };
 }
 
 typedef bool LoadOldMainProc(LoadgameState &ls);
@@ -257,8 +257,8 @@ bool LoadOldSaveGame(std::string_view file)
 	LoadOldMainProc *proc = nullptr;
 
 	switch (type) {
-		case SGT_TTO: proc = &LoadTTOMain; break;
-		case SGT_TTD: proc = &LoadTTDMain; break;
+		case SavegameType::TTO: proc = &LoadTTOMain; break;
+		case SavegameType::TTD: proc = &LoadTTDMain; break;
 		default:
 			Debug(oldloader, 0, "Unknown savegame type; cannot be loaded");
 			break;

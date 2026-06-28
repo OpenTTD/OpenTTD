@@ -471,12 +471,12 @@ static inline Colours RemapTTOColour(Colours tto)
 
 static inline uint RemapTownIndex(uint x)
 {
-	return _savegame_type == SGT_TTO ? (x - 0x264) / 78 : (x - 0x264) / 94;
+	return _savegame_type == SavegameType::TTO ? (x - 0x264) / 78 : (x - 0x264) / 94;
 }
 
 static inline uint RemapOrderIndex(uint x)
 {
-	return _savegame_type == SGT_TTO ? (x - 0x1AC4) / 2 : (x - 0x1C18) / 2;
+	return _savegame_type == SavegameType::TTO ? (x - 0x1AC4) / 2 : (x - 0x1C18) / 2;
 }
 
 extern std::vector<TileIndex> _animated_tiles;
@@ -519,7 +519,7 @@ static void ReadTTDPatchFlags(LoadgameState &ls)
 	_old_extra_chunk_nums = 0;
 	_bump_assert_value = 0;
 
-	if (_savegame_type == SGT_TTO) {
+	if (_savegame_type == SavegameType::TTO) {
 		ls.vehicle_names.resize(800);
 		return;
 	}
@@ -542,7 +542,7 @@ static void ReadTTDPatchFlags(LoadgameState &ls)
 	/* The first 17 bytes are used by TTDP1, which translates to the first 9 m3s and first 8 m4s. */
 	for (TileIndex i{}; i <= 8; i++) { // check tile 0, too
 		Tile tile(i);
-		if (tile.m3() != 0 || (i != 8 && tile.m4() != 0)) _savegame_type = SGT_TTDP1;
+		if (tile.m3() != 0 || (i != 8 && tile.m4() != 0)) _savegame_type = SavegameType::TTDP1;
 	}
 
 	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
@@ -550,17 +550,17 @@ static void ReadTTDPatchFlags(LoadgameState &ls)
 	Tile ttdp2_header_second(Map::Size() - 2);
 	if (ttdp2_header_first.m3() == 'T' && ttdp2_header_first.m4() == 'T' &&
 		ttdp2_header_second.m3() == 'D' && ttdp2_header_second.m4() == 'p') {
-		_savegame_type = SGT_TTDP2;
+		_savegame_type = SavegameType::TTDP2;
 	}
 
-	Tile extra_chunk_tile = Tile(_savegame_type == SGT_TTDP2 ? Map::Size() - 1 : 1);
+	Tile extra_chunk_tile = Tile(_savegame_type == SavegameType::TTDP2 ? Map::Size() - 1 : 1);
 	_old_extra_chunk_nums = extra_chunk_tile.m3() | extra_chunk_tile.m4() << 8;
 
 	/* Clean the misused places */
 	for (TileIndex i{}; i < 9; i++) ClearOldMap3(i);
 	for (TileIndex i = TileXY(0, Map::MaxY()); i < Map::Size(); i++) ClearOldMap3(i);
 
-	if (_savegame_type == SGT_TTDP2) Debug(oldloader, 2, "Found TTDPatch game");
+	if (_savegame_type == SavegameType::TTDP2) Debug(oldloader, 2, "Found TTDPatch game");
 
 	Debug(oldloader, 3, "Vehicle-multiplier is set to {} ({} vehicles)", ls.vehicle_multiplier, ls.vehicle_multiplier * 850);
 }
@@ -626,7 +626,7 @@ static bool LoadOldTown(LoadgameState &ls, int num)
 	if (!LoadChunk(ls, t, town_chunk)) return false;
 
 	if (t->xy != 0) {
-		if (_savegame_type == SGT_TTO) {
+		if (_savegame_type == SavegameType::TTO) {
 			/* 0x10B6 is auto-generated name, others are custom names */
 			t->townnametype = t->townnametype == 0x10B6 ? 0x20C1 : t->townnametype + 0x2A00;
 		}
@@ -726,7 +726,7 @@ static const OldChunks goods_chunk[] = {
 static bool LoadOldGood(LoadgameState &ls, int num)
 {
 	/* for TTO games, 12th (num == 11) goods entry is created in the Station constructor */
-	if (_savegame_type == SGT_TTO && num == 11) return true;
+	if (_savegame_type == SavegameType::TTO && num == 11) return true;
 
 	Station *st = Station::Get(_current_station_id);
 	GoodsEntry *ge = &st->goods[num];
@@ -790,7 +790,7 @@ static bool LoadOldStation(LoadgameState &ls, int num)
 	if (st->xy != 0) {
 		st->town = RemapTown(st->xy);
 
-		if (_savegame_type == SGT_TTO) {
+		if (_savegame_type == SavegameType::TTO) {
 			if (IsInsideBS(_old_string_id, 0x180F, 32)) {
 				st->string_id = STR_SV_STNAME + (_old_string_id - 0x180F); // automatic name
 			} else {
@@ -874,7 +874,7 @@ static bool LoadOldIndustry(LoadgameState &ls, int num)
 
 		i->town = RemapTown(i->location.tile);
 
-		if (_savegame_type == SGT_TTO) {
+		if (_savegame_type == SavegameType::TTO) {
 			if (i->type > 0x06) i->type++; // Printing Works were added
 			if (i->type == 0x0A) i->type = 0x12; // Iron Ore Mine has different ID
 
@@ -905,7 +905,7 @@ static bool LoadOldCompanyYearly(LoadgameState &ls, int num)
 	Company *c = Company::Get(_current_company_id);
 
 	for (ExpensesType i : EnumRange(ExpensesType::End)) {
-		if (_savegame_type == SGT_TTO && i == ExpensesType::Property) {
+		if (_savegame_type == SavegameType::TTO && i == ExpensesType::Property) {
 			_old_yearly = 0; // property maintenance
 		} else {
 			if (!LoadChunk(ls, nullptr, _company_yearly_chunk)) return false;
@@ -1001,7 +1001,7 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 		return true;
 	}
 
-	if (_savegame_type == SGT_TTO) {
+	if (_savegame_type == SavegameType::TTO) {
 		/* adjust manager's face */
 		if (HasBit(c->face.bits, 27) && GB(c->face.bits, 26, 1) == GB(c->face.bits, 19, 1)) {
 			/* if face would be black in TTD, adjust tie colour and thereby face colour */
@@ -1266,7 +1266,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 
 		Vehicle *v;
 
-		if (_savegame_type == SGT_TTO) {
+		if (_savegame_type == SavegameType::TTO) {
 			uint type = ReadByte(ls);
 			switch (type) {
 				default: return false;
@@ -1369,7 +1369,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 		}
 
 		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
-			uint max = _savegame_type == SGT_TTO ? 3000 : 5000;
+			uint max = _savegame_type == SavegameType::TTO ? 3000 : 5000;
 			uint old_id = RemapOrderIndex(_old_order_ptr);
 			if (old_id < max) v->old_orders = old_id + 1;
 		}
@@ -1404,7 +1404,7 @@ bool LoadOldCustomString(LoadgameState &ls, int index)
 	 * Validation and conversion to UTF-8 are happening at a later stage.
 	 */
 	std::string &str = _old_name_array[index];
-	str.resize(_savegame_type == SGT_TTO ? 24 : 32);
+	str.resize(_savegame_type == SavegameType::TTO ? 24 : 32);
 	for (auto &c : str) c = ReadByte(ls);
 
 	return true;
@@ -1427,7 +1427,7 @@ static bool LoadOldSign(LoadgameState &ls, int num)
 	if (!LoadChunk(ls, si, sign_chunk)) return false;
 
 	if (_old_string_id != 0) {
-		if (_savegame_type == SGT_TTO) {
+		if (_savegame_type == SavegameType::TTO) {
 			if (_old_string_id != 0x140A) si->name = CopyFromOldName(_old_string_id + 0x2A00);
 		} else {
 			si->name = CopyFromOldName(RemapOldStringID(_old_string_id));
@@ -1465,7 +1465,7 @@ static const OldChunks engine_chunk[] = {
 
 static bool LoadOldEngine(LoadgameState &ls, int num)
 {
-	Engine *e = _savegame_type == SGT_TTO ? &_old_engines[num] : GetTempDataEngine(static_cast<EngineID>(num));
+	Engine *e = _savegame_type == SavegameType::TTO ? &_old_engines[num] : GetTempDataEngine(static_cast<EngineID>(num));
 	return LoadChunk(ls, e, engine_chunk);
 }
 
@@ -1524,7 +1524,7 @@ static bool LoadOldGameDifficulty(LoadgameState &ls, int)
 
 static bool LoadOldMapPart1(LoadgameState &ls, int)
 {
-	if (_savegame_type == SGT_TTO) {
+	if (_savegame_type == SavegameType::TTO) {
 		Map::Allocate(OLD_MAP_SIZE, OLD_MAP_SIZE);
 	}
 
@@ -1535,7 +1535,7 @@ static bool LoadOldMapPart1(LoadgameState &ls, int)
 		t.m2() = ReadByte(ls);
 	}
 
-	if (_savegame_type != SGT_TTO) {
+	if (_savegame_type != SavegameType::TTO) {
 		/* old map3 is split into to m3 and m4 */
 		for (auto t : Map::Iterate()) {
 			t.m3() = ReadByte(ls);

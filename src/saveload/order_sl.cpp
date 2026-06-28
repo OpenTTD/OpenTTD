@@ -29,7 +29,7 @@ void Order::ConvertFromOldSavegame()
 	this->flags = 0;
 
 	/* First handle non-stop - use value from savegame if possible, else use value from config file */
-	if (_settings_client.gui.sg_new_nonstop || (IsSavegameVersionBefore(SaveLoadVersion::SavePatches) && _savegame_type != SGT_TTO && _savegame_type != SGT_TTD && _settings_client.gui.new_nonstop)) {
+	if (_settings_client.gui.sg_new_nonstop || (IsSavegameVersionBefore(SaveLoadVersion::SavePatches) && _savegame_type != SavegameType::TTO && _savegame_type != SavegameType::TTD && _settings_client.gui.new_nonstop)) {
 		/* OFB_NON_STOP */
 		this->SetNonStopType((old_flags & 8) ? OrderNonStopFlags{OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia} : OrderNonStopFlag::NonStop);
 	} else {

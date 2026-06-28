@@ -194,23 +194,23 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	fmt::format_to(output_iterator, "Conversion from ");
 	switch (this->type) {
 		default: NOT_REACHED();
-		case SGT_OTTD:
+		case SavegameType::OTTD:
 			fmt::format_to(output_iterator, "OTTD savegame without gamelog: version {}, {}",
 				GB(this->version, 8, 16), GB(this->version, 0, 8));
 			break;
 
-		case SGT_TTO:
+		case SavegameType::TTO:
 			fmt::format_to(output_iterator, "TTO savegame");
 			break;
 
-		case SGT_TTD:
+		case SavegameType::TTD:
 			fmt::format_to(output_iterator, "TTD savegame");
 			break;
 
-		case SGT_TTDP1:
-		case SGT_TTDP2:
+		case SavegameType::TTDP1:
+		case SavegameType::TTDP2:
 			fmt::format_to(output_iterator, "TTDP savegame, {} format",
-				this->type == SGT_TTDP1 ? "old" : "new");
+				this->type == SavegameType::TTDP1 ? "old" : "new");
 			if (this->version != 0) {
 				fmt::format_to(output_iterator, ", TTDP version {}.{}.{}.{}",
 					GB(this->version, 24, 8), GB(this->version, 20, 4),
@@ -401,7 +401,7 @@ void Gamelog::Oldver()
 	assert(this->action_type == GamelogActionType::Load);
 
 	this->Change(std::make_unique<LoggedChangeOldVersion>(_savegame_type,
-		(_savegame_type == SGT_OTTD ? ((uint32_t)_sl_version << 8 | _sl_minor_version) : _ttdp_version)));
+		(_savegame_type == SavegameType::OTTD ? (static_cast<uint32_t>(_sl_version) << 8 | _sl_minor_version) : _ttdp_version)));
 }
 
 /**
