@@ -22,8 +22,8 @@ static uint32_t _map_dim_x;
 static uint32_t _map_dim_y;
 
 static const SaveLoad _map_desc[] = {
-	SLEG_CONDVAR("dim_x", _map_dim_x, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLEG_CONDVAR("dim_y", _map_dim_y, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("dim_x", _map_dim_x, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("dim_y", _map_dim_y, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 };
 
 struct MAPSChunkHandler : ChunkHandler {
@@ -75,7 +75,7 @@ struct MAPTChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).type() = buf[j];
 		}
 	}
@@ -88,7 +88,7 @@ struct MAPTChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).type();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -102,7 +102,7 @@ struct MAPHChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).height() = buf[j];
 		}
 	}
@@ -115,7 +115,7 @@ struct MAPHChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).height();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -129,7 +129,7 @@ struct MAPOChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m1() = buf[j];
 		}
 	}
@@ -142,7 +142,7 @@ struct MAPOChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m1();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -158,7 +158,7 @@ struct MAP2ChunkHandler : ChunkHandler {
 		for (TileIndex i{}; i != size;) {
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE,
 				/* In those versions the m2 was 8 bits */
-				IsSavegameVersionBefore(SaveLoadVersion::BigMap) ? VarFileType::U8 | VarMemType::U16 : SLE_UINT16
+				IsSavegameVersionBefore(SaveLoadVersion::BigMap) ? VarFileType::U8 | VarMemType::U16 : VarTypes::U16
 			);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m2() = buf[j];
 		}
@@ -172,7 +172,7 @@ struct MAP2ChunkHandler : ChunkHandler {
 		SlSetLength(static_cast<uint32_t>(size) * sizeof(uint16_t));
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m2();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U16);
 		}
 	}
 };
@@ -186,7 +186,7 @@ struct M3LOChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m3() = buf[j];
 		}
 	}
@@ -199,7 +199,7 @@ struct M3LOChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m3();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -213,7 +213,7 @@ struct M3HIChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m4() = buf[j];
 		}
 	}
@@ -226,7 +226,7 @@ struct M3HIChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m4();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -240,7 +240,7 @@ struct MAP5ChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m5() = buf[j];
 		}
 	}
@@ -253,7 +253,7 @@ struct MAP5ChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m5();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -269,7 +269,7 @@ struct MAPEChunkHandler : ChunkHandler {
 		if (IsSavegameVersionBefore(SaveLoadVersion::BridgeWormhole)) {
 			for (TileIndex i{}; i != size;) {
 				/* 1024, otherwise we overflow on 64x64 maps! */
-				SlCopy(buf.data(), 1024, SLE_UINT8);
+				SlCopy(buf.data(), 1024, VarTypes::U8);
 				for (uint j = 0; j != 1024; j++) {
 					Tile(i++).m6() = GB(buf[j], 0, 2);
 					Tile(i++).m6() = GB(buf[j], 2, 2);
@@ -279,7 +279,7 @@ struct MAPEChunkHandler : ChunkHandler {
 			}
 		} else {
 			for (TileIndex i{}; i != size;) {
-				SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+				SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 				for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m6() = buf[j];
 			}
 		}
@@ -293,7 +293,7 @@ struct MAPEChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m6();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -307,7 +307,7 @@ struct MAP7ChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m7() = buf[j];
 		}
 	}
@@ -320,7 +320,7 @@ struct MAP7ChunkHandler : ChunkHandler {
 		SlSetLength(size);
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m7();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT8);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U8);
 		}
 	}
 };
@@ -334,7 +334,7 @@ struct MAP8ChunkHandler : ChunkHandler {
 		uint size = Map::Size();
 
 		for (TileIndex i{}; i != size;) {
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U16);
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) Tile(i++).m8() = buf[j];
 		}
 	}
@@ -347,7 +347,7 @@ struct MAP8ChunkHandler : ChunkHandler {
 		SlSetLength(static_cast<uint32_t>(size) * sizeof(uint16_t));
 		for (TileIndex i{}; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m8();
-			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
+			SlCopy(buf.data(), MAP_SL_BUF_SIZE, VarTypes::U16);
 		}
 	}
 };

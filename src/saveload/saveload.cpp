@@ -1187,8 +1187,8 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 	 * as a byte-type. So detect this, and adjust object size accordingly */
 	if (_sl.action != SaveLoadAction::Save && _sl_version == SaveLoadVersion::MinVersion) {
 		/* all objects except difficulty settings */
-		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID ||
-				conv == SLE_INT32 || conv == SLE_UINT32) {
+		if (conv == VarTypes::I16 || conv == VarTypes::U16 || conv == VarTypes::STRINGID ||
+				conv == VarTypes::I32 || conv == VarTypes::U32) {
 			SlCopyBytes(object, length * SlCalcConvFileLen(conv));
 			return;
 		}
@@ -1203,7 +1203,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 
 	/* If the size of elements is 1 byte both in file and memory, no special
 	 * conversion is needed, use specialized copy-copy function to speed up things */
-	if (conv == SLE_INT8 || conv == SLE_UINT8) {
+	if (conv == VarTypes::I8 || conv == VarTypes::U8) {
 		SlCopyBytes(object, length);
 	} else {
 		uint8_t *a = static_cast<uint8_t *>(object);
@@ -1655,11 +1655,11 @@ static size_t SlCalcTableHeader(const SaveLoadTable &slt)
 	for (auto &sld : slt) {
 		if (!SlIsObjectValidInSavegame(sld)) continue;
 
-		length += SlCalcConvFileLen(SLE_UINT8);
+		length += SlCalcConvFileLen(VarTypes::U8);
 		length += SlCalcStdStringLen(&sld.name);
 	}
 
-	length += SlCalcConvFileLen(SLE_UINT8); // End-of-list entry.
+	length += SlCalcConvFileLen(VarTypes::U8); // End-of-list entry.
 
 	for (auto &sld : slt) {
 		if (!SlIsObjectValidInSavegame(sld)) continue;
@@ -1942,11 +1942,11 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 
 			while (true) {
 				SavegameFileType type{};
-				SlSaveLoadConv(&type.storage, SLE_UINT8);
+				SlSaveLoadConv(&type.storage, VarTypes::U8);
 				if (type.IsEnd()) break;
 
 				std::string key;
-				SlStdString(&key, SLE_STR);
+				SlStdString(&key, VarTypes::STR);
 
 				auto sld_it = key_lookup.find(key);
 				if (sld_it == key_lookup.end()) {
@@ -2012,13 +2012,13 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 				SavegameFileType type = GetSavegameFileType(sld);
 				assert(!type.IsEnd());
 
-				SlSaveLoadConv(&type.storage, SLE_UINT8);
-				SlStdString(const_cast<std::string *>(&sld.name), SLE_STR);
+				SlSaveLoadConv(&type.storage, VarTypes::U8);
+				SlStdString(const_cast<std::string *>(&sld.name), VarTypes::STR);
 			}
 
 			/* Add an end-of-header marker. */
 			SavegameFileType type{};
-			SlSaveLoadConv(&type.storage, SLE_UINT8);
+			SlSaveLoadConv(&type.storage, VarTypes::U8);
 
 			/* After the table, write down any sub-tables we might have. */
 			for (auto &sld : slt) {

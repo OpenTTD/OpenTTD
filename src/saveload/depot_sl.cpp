@@ -21,12 +21,12 @@ static TownID _town_index;
 
 static const SaveLoad _depot_desc[] = {
 	 SLE_CONDVAR(Depot, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	 SLE_CONDVAR(Depot, xy, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLEG_CONDVAR("town_index", _town_index, SLE_UINT16, SaveLoadVersion::MinVersion, SaveLoadVersion::UniqueDepotNames),
+	 SLE_CONDVAR(Depot, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("town_index", _town_index, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::UniqueDepotNames),
 	 SLE_CONDREF(Depot, town, SLRefType::Town, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Depot, town_cn, SLE_UINT16, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
-	SLE_CONDSSTR(Depot, name, SLE_STR, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Depot, build_date, SLE_INT32, SaveLoadVersion::NewGRFDepotBuildDate, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Depot, town_cn, VarTypes::U16, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Depot, name, VarTypes::STR, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Depot, build_date, VarTypes::I32, SaveLoadVersion::NewGRFDepotBuildDate, SaveLoadVersion::MaxVersion),
 };
 
 struct DEPTChunkHandler : ChunkHandler {

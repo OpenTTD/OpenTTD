@@ -19,11 +19,11 @@
 
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
-	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
+	SLE_VAR(EntityIDMapping, grfid,         VarTypes::U32),
 	SLE_CONDVAR(EntityIDMapping, entity_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
-	SLE_CONDVAR(EntityIDMapping, entity_id, SLE_UINT16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(EntityIDMapping, entity_id, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(EntityIDMapping, substitute_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_UINT16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(EntityIDMapping, substitute_id, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 };
 
 /**
@@ -68,13 +68,13 @@ struct NGRFChunkHandler : ChunkHandler {
 	static inline uint8_t num_params;
 
 	static inline const SaveLoad description[] = {
-		   SLE_SSTR(GRFConfig, filename,         SLE_STR),
-		    SLE_VAR(GRFConfig, ident.grfid,      SLE_UINT32),
-		    SLE_ARR(GRFConfig, ident.md5sum,     SLE_UINT8,  16),
-		SLE_CONDVAR(GRFConfig, version, SLE_UINT32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
-		   SLEG_ARR("param", param,              SLE_UINT32, std::size(param)),
-		   SLEG_VAR("num_params", num_params,    SLE_UINT8),
-		SLE_CONDVAR(GRFConfig, palette, SLE_UINT8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
+		   SLE_SSTR(GRFConfig, filename,         VarTypes::STR),
+		    SLE_VAR(GRFConfig, ident.grfid,      VarTypes::U32),
+		    SLE_ARR(GRFConfig, ident.md5sum,     VarTypes::U8,  16),
+		SLE_CONDVAR(GRFConfig, version, VarTypes::U32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
+		   SLEG_ARR("param", param,              VarTypes::U32, std::size(param)),
+		   SLEG_VAR("num_params", num_params,    VarTypes::U8),
+		SLE_CONDVAR(GRFConfig, palette, VarTypes::U8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
 	};
 
 	void SaveParameters(const GRFConfig &config) const

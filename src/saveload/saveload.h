@@ -744,19 +744,22 @@ constexpr VarType operator|(VarFileType file, VarMemType mem)
 	return {file, mem};
 }
 
-constexpr VarType SLE_BOOL{ VarFileType::I8, VarMemType::Bool }; ///< Store a boolean (as int8).
-constexpr VarType SLE_INT8{ VarFileType::I8, VarMemType::I8 }; ///< Store a 8 bits signed int.
-constexpr VarType SLE_UINT8{ VarFileType::U8, VarMemType::U8 }; ///< Store a 8 bits unsigned int.
-constexpr VarType SLE_INT16{ VarFileType::I16, VarMemType::I16 }; ///< Store a 16 bits signed int.
-constexpr VarType SLE_UINT16{ VarFileType::U16, VarMemType::U16 }; ///< Store a 16 bits unsigned int.
-constexpr VarType SLE_INT32{ VarFileType::I32, VarMemType::I32 }; ///< Store a 32 bits signed int.
-constexpr VarType SLE_UINT32{ VarFileType::U32, VarMemType::U32 }; ///< Store a 32 bits unsigned int.
-constexpr VarType SLE_INT64{ VarFileType::I64, VarMemType::I64 }; ///< Store a 64 bits signed int.
-constexpr VarType SLE_UINT64{ VarFileType::U64, VarMemType::U64 }; ///< Store a 64 bits unsigned int.
-constexpr VarType SLE_STRINGID{ VarFileType::StringID, VarMemType::U32 }; ///< Store a StringID.
-constexpr VarType SLE_STR{ VarFileType::String, VarMemType::Str }; ///< Store string.
-constexpr VarType SLE_STRQ{ VarFileType::String, VarMemType::StrQ }; ///< Store a string with quotes.
-constexpr VarType SLE_NAME{ VarFileType::StringID, VarMemType::Name }; ///< A string stored in the custom string array.
+/** Container for holding some default \c VarType instances. */
+struct VarTypes {
+	static constexpr VarType BOOL{ VarFileType::I8, VarMemType::Bool }; ///< Store a boolean (as int8).
+	static constexpr VarType I8{ VarFileType::I8, VarMemType::I8 }; ///< Store a 8 bits signed int.
+	static constexpr VarType U8{ VarFileType::U8, VarMemType::U8 }; ///< Store a 8 bits unsigned int.
+	static constexpr VarType I16{ VarFileType::I16, VarMemType::I16 }; ///< Store a 16 bits signed int.
+	static constexpr VarType U16{ VarFileType::U16, VarMemType::U16 }; ///< Store a 16 bits unsigned int.
+	static constexpr VarType I32{ VarFileType::I32, VarMemType::I32 }; ///< Store a 32 bits signed int.
+	static constexpr VarType U32{ VarFileType::U32, VarMemType::U32 }; ///< Store a 32 bits unsigned int.
+	static constexpr VarType I64{ VarFileType::I64, VarMemType::I64 }; ///< Store a 64 bits signed int.
+	static constexpr VarType U64{ VarFileType::U64, VarMemType::U64 }; ///< Store a 64 bits unsigned int.
+	static constexpr VarType STRINGID{ VarFileType::StringID, VarMemType::U32 }; ///< Store a StringID.
+	static constexpr VarType STR{ VarFileType::String, VarMemType::Str }; ///< Store string.
+	static constexpr VarType STRQ{ VarFileType::String, VarMemType::StrQ }; ///< Store a string with quotes.
+	static constexpr VarType NAME{ VarFileType::StringID, VarMemType::Name }; ///< A string stored in the custom string array.
+};
 
 /** Type of data saved. */
 enum class SaveLoadType : uint8_t {

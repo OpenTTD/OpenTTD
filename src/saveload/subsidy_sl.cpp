@@ -17,16 +17,16 @@
 #include "../safeguards.h"
 
 static const SaveLoad _subsidies_desc[] = {
-	    SLE_VAR(Subsidy, cargo_type, SLE_UINT8),
+	    SLE_VAR(Subsidy, cargo_type, VarTypes::U8),
 	SLE_CONDVAR(Subsidy, remaining, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::CustomSubsidyDuration),
-	SLE_CONDVAR(Subsidy, remaining, SLE_UINT16, SaveLoadVersion::CustomSubsidyDuration, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Subsidy, awarded, SLE_UINT8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
-	SLE_CONDVARNAME(Subsidy, src.type, "src_type", SLE_UINT8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
-	SLE_CONDVARNAME(Subsidy, dst.type, "dst_type", SLE_UINT8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Subsidy, remaining, VarTypes::U16, SaveLoadVersion::CustomSubsidyDuration, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Subsidy, awarded, VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, src.type, "src_type", VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, dst.type, "dst_type", VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
 	SLE_CONDVARNAME(Subsidy, src.id, "src", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
-	SLE_CONDVARNAME(Subsidy, src.id, "src", SLE_UINT16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, src.id, "src", VarTypes::U16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 	SLE_CONDVARNAME(Subsidy, dst.id, "dst", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
-	SLE_CONDVARNAME(Subsidy, dst.id, "dst", SLE_UINT16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, dst.id, "dst", VarTypes::U16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 };
 
 struct SUBSChunkHandler : ChunkHandler {

@@ -19,16 +19,16 @@
 
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
-	SLE_CONDVAR(Sign, name, SLE_NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(Sign, name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Sign, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SLE_CONDSSTR(Sign, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Sign, x, VarFileType::I16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 	SLE_CONDVAR(Sign, y, VarFileType::I16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
-	SLE_CONDVAR(Sign, x, SLE_INT32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, y, SLE_INT32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, owner, SLE_UINT8, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Sign, x, VarTypes::I32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Sign, y, VarTypes::I32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Sign, owner, VarTypes::U8, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Sign, z, VarFileType::U8 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
-	SLE_CONDVAR(Sign, z, SLE_INT32, SaveLoadVersion::VehicleCentreAndZPos, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, text_colour, SLE_UINT8, SaveLoadVersion::SignTextColours, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Sign, z, VarTypes::I32, SaveLoadVersion::VehicleCentreAndZPos, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Sign, text_colour, VarTypes::U8, SaveLoadVersion::SignTextColours, SaveLoadVersion::MaxVersion),
 };
 
 struct SIGNChunkHandler : ChunkHandler {
