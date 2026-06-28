@@ -1083,14 +1083,17 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRoadType(roadtype)) return nullptr;
 
-	_cur_roadtype = roadtype;
-	Window *w = BringWindowToFrontById(WindowClass::BuildToolbar, TransportType::Road);
+	if (GetRoadTramType(roadtype) == GetRoadTramType(_cur_roadtype)) {
+		Window *w = BringWindowToFrontById(WindowClass::BuildToolbar, TransportType::Road);
 
-	if (w != nullptr) {
-		w->OnInvalidateData();
-		return w;
+		if (w != nullptr) {
+			_cur_roadtype = roadtype;
+			w->OnInvalidateData();
+			return w;
+		}
 	}
 
+	_cur_roadtype = roadtype;
 	CloseWindowByClass(WindowClass::BuildToolbar);
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_desc : _build_tramway_desc, TransportType::Road);
 }
