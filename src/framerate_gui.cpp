@@ -399,10 +399,26 @@ static constexpr EnumIndexArray<PerformanceElement, PerformanceElement, Performa
 	PerformanceElement::Sound,
 };
 
-static std::string_view GetAIName(int ai_index)
+/**
+ * Get the \c CompanyID associated with the AI of the given \c PerformanceElement.
+ * @param e The element to convert.
+ * @return The \c CompanyID.
+ */
+static constexpr CompanyID GetAIIndex(PerformanceElement e)
 {
-	if (!Company::IsValidAiID(ai_index)) return {};
-	return Company::Get(ai_index)->ai_info->GetName();
+	return CompanyID(e - PerformanceElement::AI0);
+}
+
+/**
+ * Get the name of the AI of the given \c PerformanceElement.
+ * @param e The element to get the name for.
+ * @return The name of an empty string.
+ */
+static std::string_view GetAIName(PerformanceElement e)
+{
+	CompanyID c = GetAIIndex(e);
+	if (!Company::IsValidAiID(c)) return {};
+	return Company::Get(c)->ai_info->GetName();
 }
 
 /** @hideinitializer */
@@ -568,7 +584,7 @@ struct FramerateWindow : Window {
 					if (e < PerformanceElement::AI0) {
 						line_size = GetStringBoundingBox(STR_FRAMERATE_GAMELOOP + to_underlying(e));
 					} else {
-						line_size = GetStringBoundingBox(GetString(STR_FRAMERATE_AI, e - PerformanceElement::AI0 + 1, GetAIName(e - PerformanceElement::AI0)));
+						line_size = GetStringBoundingBox(GetString(STR_FRAMERATE_AI, GetAIIndex(e) + 1, GetAIName(e)));
 					}
 					size.width = std::max(size.width, line_size.width);
 				}
@@ -629,7 +645,7 @@ struct FramerateWindow : Window {
 			if (skip > 0) {
 				skip--;
 			} else if (e == PerformanceElement::GameScript || e >= PerformanceElement::AI0) {
-				uint64_t value = e == PerformanceElement::GameScript ? Game::GetInstance()->GetAllocatedMemory() : Company::Get(e - PerformanceElement::AI0)->ai_instance->GetAllocatedMemory();
+				uint64_t value = e == PerformanceElement::GameScript ? Game::GetInstance()->GetAllocatedMemory() : Company::Get(GetAIIndex(e))->ai_instance->GetAllocatedMemory();
 				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TextColour::FromString, SA_RIGHT | SA_FORCE);
 				y += GetCharacterHeight(FontSize::Normal);
 				drawable--;
@@ -665,7 +681,7 @@ struct FramerateWindow : Window {
 						if (e < PerformanceElement::AI0) {
 							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + to_underlying(e), TextColour::FromString, SA_LEFT);
 						} else {
-							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, e - PerformanceElement::AI0 + 1, GetAIName(e - PerformanceElement::AI0)), TextColour::FromString, SA_LEFT);
+							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, GetAIIndex(e) + 1, GetAIName(e)), TextColour::FromString, SA_LEFT);
 						}
 						y += GetCharacterHeight(FontSize::Normal);
 						drawable--;
@@ -764,7 +780,7 @@ struct FrametimeGraphWindow : Window {
 				if (this->element < PerformanceElement::AI0) {
 					return GetString(STR_FRAMETIME_CAPTION_GAMELOOP + to_underlying(this->element));
 				}
-				return GetString(STR_FRAMETIME_CAPTION_AI, this->element - PerformanceElement::AI0 + 1, GetAIName(this->element - PerformanceElement::AI0));
+				return GetString(STR_FRAMETIME_CAPTION_AI, GetAIIndex(this->element) + 1, GetAIName(this->element));
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -1089,7 +1105,7 @@ void ConPrintFramerate()
 		if (e < PerformanceElement::AI0) {
 			name = MEASUREMENT_NAMES[e];
 		} else {
-			ai_name_buf = fmt::format("AI {} {}", e - PerformanceElement::AI0 + 1, GetAIName(e - PerformanceElement::AI0));
+			ai_name_buf = fmt::format("AI {} {}", GetAIIndex(e) + 1, GetAIName(e));
 			name = ai_name_buf;
 		}
 		IConsolePrint(TextColour::LightBlue, "{} times: {:.2f}ms  {:.2f}ms  {:.2f}ms",
