@@ -569,11 +569,61 @@ static inline uint SlGetArrayLength(size_t length)
 }
 
 /**
+ * Container/wrapper for the file type that is used in tables in the save game.
+ * This is essentially \c VarFileType, but with a bit denoting that the type has a field length and a value denoting end-of-table.
+ */
+struct SavegameFileType {
+	static constexpr uint8_t HAS_FIELD_LENGTH_BIT = 4; ///< Set this bit to denote the type has a field length.
+	uint8_t storage{}; ///< Actual storage of the file type.
+
+	/** Create an end-of-table marker. */
+	SavegameFileType() {}
+
+	/**
+	 * Create the type.
+	 * @param file_type The file type.
+	 * @param has_field_length Does this field have a length?
+	 */
+	SavegameFileType(VarType file_type, bool has_field_length = false) : storage(file_type)
+	{
+		/* 0 is not allowed as it's the end-of-table marker, larger is not allowed due to the field length bit. */
+		assert(IsInsideMM(file_type, 1, 1 << HAS_FIELD_LENGTH_BIT));
+		AssignBit(this->storage, HAS_FIELD_LENGTH_BIT, has_field_length);
+	}
+
+	/**
+	 * Is this the end-of-table marker?
+	 * @return \c true iff this is an end-of-table marker.
+	 */
+	constexpr bool IsEnd() const { return storage == 0; }
+
+	/**
+	 * Does this field have a length?
+	 * @return \c true iff this field has a length.
+	 */
+	constexpr bool HasFieldLength() const
+	{
+		assert(!this->IsEnd());
+		return HasBit(storage, HAS_FIELD_LENGTH_BIT);
+	}
+
+	/**
+	 * Get the \c VarType for this field.
+	 * @return The \c VarType.
+	 */
+	constexpr VarType Type() const
+	{
+		assert(!this->IsEnd());
+		return GB(storage, 0, HAS_FIELD_LENGTH_BIT);
+	}
+};
+
+/**
  * Return the type as saved/loaded inside the savegame.
  * @param sld The save-load configuration for a single variable.
  * @return The type description part for the way the data is stored in the file.
  */
-static uint8_t GetSavegameFileType(const SaveLoad &sld)
+static SavegameFileType GetSavegameFileType(const SaveLoad &sld)
 {
 	switch (sld.cmd) {
 		case SaveLoadType::Variable:
@@ -582,21 +632,21 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 		case SaveLoadType::String:
 		case SaveLoadType::Array:
 		case SaveLoadType::Vector:
-			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD; break;
+			return { GetVarFileType(sld.conv), true }; break;
 
 		case SaveLoadType::Reference:
 			return IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32;
 
 		case SaveLoadType::ReferenceList:
 		case SaveLoadType::ReferenceVector:
-			return (IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32) | SLE_FILE_HAS_LENGTH_FIELD;
+			return { IsSavegameVersionBefore(SaveLoadVersion::MoreCargoPackets) ? SLE_FILE_U16 : SLE_FILE_U32, true };
 
 		case SaveLoadType::SaveByte:
 			return SLE_FILE_U8;
 
 		case SaveLoadType::Struct:
 		case SaveLoadType::StructList:
-			return SLE_FILE_STRUCT | SLE_FILE_HAS_LENGTH_FIELD;
+			return { SLE_FILE_STRUCT, true };
 
 		default: NOT_REACHED();
 	}
@@ -641,7 +691,6 @@ static inline uint SlCalcConvMemLen(VarType conv)
 static inline uint8_t SlCalcConvFileLen(VarType conv)
 {
 	switch (GetVarFileType(conv)) {
-		case SLE_FILE_END: return 0;
 		case SLE_FILE_I8: return sizeof(int8_t);
 		case SLE_FILE_U8: return sizeof(uint8_t);
 		case SLE_FILE_I16: return sizeof(int16_t);
@@ -1899,9 +1948,9 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 			}
 
 			while (true) {
-				uint8_t type = 0;
-				SlSaveLoadConv(&type, SLE_UINT8);
-				if (type == SLE_FILE_END) break;
+				SavegameFileType type{};
+				SlSaveLoadConv(&type.storage, SLE_UINT8);
+				if (type.IsEnd()) break;
 
 				std::string key;
 				SlStdString(&key, SLE_STR);
@@ -1909,29 +1958,27 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 				auto sld_it = key_lookup.find(key);
 				if (sld_it == key_lookup.end()) {
 					/* SLA_LOADCHECK triggers this debug statement a lot and is perfectly normal. */
-					Debug(sl, _sl.action == SaveLoadAction::Load ? 2 : 6, "Field '{}' of type 0x{:02x} not found, skipping", key, type);
+					Debug(sl, _sl.action == SaveLoadAction::Load ? 2 : 6, "Field '{}' of type 0x{:02x} not found, skipping", key, type.storage);
 
 					std::shared_ptr<SaveLoadHandler> handler = nullptr;
 					SaveLoadType saveload_type;
-					switch (type & SLE_FILE_TYPE_MASK) {
+					switch (type.Type()) {
 						case SLE_FILE_STRING:
-							/* Strings are always marked with SLE_FILE_HAS_LENGTH_FIELD, as they are a list of chars. */
 							saveload_type = SaveLoadType::String;
 							break;
 
 						case SLE_FILE_STRUCT:
-							/* Structs are always marked with SLE_FILE_HAS_LENGTH_FIELD as SaveLoadType::Struct is seen as a list of 0/1 in length. */
 							saveload_type = SaveLoadType::StructList;
 							handler = std::make_shared<SlSkipHandler>();
 							break;
 
 						default:
-							saveload_type = (type & SLE_FILE_HAS_LENGTH_FIELD) ? SaveLoadType::Array : SaveLoadType::Variable;
+							saveload_type = type.HasFieldLength() ? SaveLoadType::Array : SaveLoadType::Variable;
 							break;
 					}
 
 					/* We don't know this field, so read to nothing. */
-					saveloads.emplace_back(std::move(key), saveload_type, (static_cast<VarType>(type) & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion, nullptr, 0, std::move(handler));
+					saveloads.emplace_back(std::move(key), saveload_type, type.Type() | SLE_VAR_NULL, 1, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion, nullptr, 0, std::move(handler));
 					continue;
 				}
 
@@ -1940,9 +1987,9 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 				 * conversion. If this error triggers, that clearly didn't
 				 * happen and this is a friendly poke to the developer to bump
 				 * the savegame version and add conversion code. */
-				uint8_t correct_type = GetSavegameFileType(*sld_it->second);
-				if (correct_type != type) {
-					Debug(sl, 1, "Field type for '{}' was expected to be 0x{:02x} but 0x{:02x} was found", key, correct_type, type);
+				SavegameFileType correct_type = GetSavegameFileType(*sld_it->second);
+				if (correct_type.storage != type.storage) {
+					Debug(sl, 1, "Field type for '{}' was expected to be 0x{:02x} but 0x{:02x} was found", key, correct_type.storage, type.storage);
 					SlErrorCorrupt("Field type is different than expected");
 				}
 				saveloads.emplace_back(*sld_it->second);
@@ -1969,16 +2016,16 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 				/* Make sure we are not storing empty keys. */
 				assert(!sld.name.empty());
 
-				uint8_t type = GetSavegameFileType(sld);
-				assert(type != SLE_FILE_END);
+				SavegameFileType type = GetSavegameFileType(sld);
+				assert(!type.IsEnd());
 
-				SlSaveLoadConv(&type, SLE_UINT8);
+				SlSaveLoadConv(&type.storage, SLE_UINT8);
 				SlStdString(const_cast<std::string *>(&sld.name), SLE_STR);
 			}
 
 			/* Add an end-of-header marker. */
-			uint8_t type = SLE_FILE_END;
-			SlSaveLoadConv(&type, SLE_UINT8);
+			SavegameFileType type{};
+			SlSaveLoadConv(&type.storage, SLE_UINT8);
 
 			/* After the table, write down any sub-tables we might have. */
 			for (auto &sld : slt) {

@@ -663,7 +663,7 @@ enum SLRefType : uint8_t {
 enum VarTypes : uint16_t {
 	/* 4 bits allocated a maximum of 16 types for NumberType.
 	 * NOTE: the SLE_FILE_NNN values are stored in the savegame! */
-	SLE_FILE_END      =  0, ///< Used to mark end-of-header in tables.
+	/* Value 0 is used to mark end-of-header in tables. Do not use here! */
 	SLE_FILE_I8       =  1,
 	SLE_FILE_U8       =  2,
 	SLE_FILE_I16      =  3,
@@ -676,9 +676,6 @@ enum VarTypes : uint16_t {
 	SLE_FILE_STRING   = 10,
 	SLE_FILE_STRUCT   = 11,
 	/* 4 more possible file-primitives */
-
-	SLE_FILE_TYPE_MASK = 0xf, ///< Mask to get the file-type (and not any flags).
-	SLE_FILE_HAS_LENGTH_FIELD = 1 << 4, ///< Bit stored in savegame to indicate field has a length field for each entry.
 
 	/* 4 bits allocated a maximum of 16 types for NumberType */
 	SLE_VAR_BL    =  0 << 4,
