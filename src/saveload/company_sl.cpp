@@ -506,10 +506,10 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDSSTRNAME(CompanyProperties, face.style_label, "face_style", SLE_STR, SaveLoadVersion::FaceStyles, SaveLoadVersion::MaxVersion),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(CompanyProperties, money, SLE_VAR_I64 | SLE_FILE_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigCurrency),
+	SLE_CONDVAR(CompanyProperties, money, SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::BigCurrency),
 	SLE_CONDVAR(CompanyProperties, money, SLE_INT64, SaveLoadVersion::BigCurrency, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(CompanyProperties, current_loan, SLE_VAR_I64 | SLE_FILE_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLE_CONDVAR(CompanyProperties, current_loan, SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
 	SLE_CONDVAR(CompanyProperties, current_loan, SLE_INT64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(CompanyProperties, max_loan, SLE_INT64, SaveLoadVersion::MaxLoanForCompany, SaveLoadVersion::MaxVersion),
 
@@ -531,7 +531,7 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, bankrupt_asked, SLE_FILE_U8 | SLE_VAR_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
 	SLE_CONDVAR(CompanyProperties, bankrupt_asked, SLE_UINT16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(CompanyProperties, bankrupt_timeout,      SLE_INT16),
-	SLE_CONDVAR(CompanyProperties, bankrupt_value, SLE_VAR_I64 | SLE_FILE_I32, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value, SLE_FILE_I32 | SLE_VAR_I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
 	SLE_CONDVAR(CompanyProperties, bankrupt_value, SLE_INT64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */

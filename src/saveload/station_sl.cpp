@@ -507,8 +507,8 @@ static const SaveLoad _old_station_desc[] = {
 	    SLE_VAR(Station, owner,                      SLE_UINT8),
 	    SLE_VAR(Station, facilities,                 SLE_UINT8),
 	    SLE_VAR(Station, airport.type,               SLE_UINT8),
-	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", SLE_VAR_U64 | SLE_FILE_U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BiggerStationVariables),
-	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", SLE_VAR_U64 | SLE_FILE_U32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MoreAirportBlocks),
+	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", SLE_FILE_U16 | SLE_VAR_U64, SaveLoadVersion::MinVersion, SaveLoadVersion::BiggerStationVariables),
+	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", SLE_FILE_U32 | SLE_VAR_U64, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MoreAirportBlocks),
 	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", SLE_UINT64, SaveLoadVersion::MoreAirportBlocks, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVAR(Station, last_vehicle_type, SLE_UINT8, SaveLoadVersion::LastVehicleType, SaveLoadVersion::MaxVersion),
