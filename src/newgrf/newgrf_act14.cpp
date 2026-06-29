@@ -299,13 +299,13 @@ static bool ChangeGRFParamValueNames(ByteReader &buf)
 
 /** Action14 parameter tags */
 static constexpr AllowedSubtags _tags_parameters[] = {
-	AllowedSubtags{'NAME', ChangeGRFParamName},
-	AllowedSubtags{'DESC', ChangeGRFParamDescription},
-	AllowedSubtags{'TYPE', ChangeGRFParamType},
-	AllowedSubtags{'LIMI', ChangeGRFParamLimits},
-	AllowedSubtags{'MASK', ChangeGRFParamMask},
-	AllowedSubtags{'VALU', ChangeGRFParamValueNames},
-	AllowedSubtags{'DFLT', ChangeGRFParamDefault},
+	AllowedSubtags{LabelToNum("NAME"), ChangeGRFParamName},
+	AllowedSubtags{LabelToNum("DESC"), ChangeGRFParamDescription},
+	AllowedSubtags{LabelToNum("TYPE"), ChangeGRFParamType},
+	AllowedSubtags{LabelToNum("LIMI"), ChangeGRFParamLimits},
+	AllowedSubtags{LabelToNum("MASK"), ChangeGRFParamMask},
+	AllowedSubtags{LabelToNum("VALU"), ChangeGRFParamValueNames},
+	AllowedSubtags{LabelToNum("DFLT"), ChangeGRFParamDefault},
 };
 
 /**
@@ -343,20 +343,20 @@ static bool HandleParameterInfo(ByteReader &buf)
 
 /** Action14 tags for the INFO node */
 static constexpr AllowedSubtags _tags_info[] = {
-	AllowedSubtags{'NAME', ChangeGRFName},
-	AllowedSubtags{'DESC', ChangeGRFDescription},
-	AllowedSubtags{'URL_', ChangeGRFURL},
-	AllowedSubtags{'NPAR', ChangeGRFNumUsedParams},
-	AllowedSubtags{'PALS', ChangeGRFPalette},
-	AllowedSubtags{'BLTR', ChangeGRFBlitter},
-	AllowedSubtags{'VRSN', ChangeGRFVersion},
-	AllowedSubtags{'MINV', ChangeGRFMinVersion},
-	AllowedSubtags{'PARA', HandleParameterInfo},
+	AllowedSubtags{LabelToNum("NAME"), ChangeGRFName},
+	AllowedSubtags{LabelToNum("DESC"), ChangeGRFDescription},
+	AllowedSubtags{LabelToNum("URL_"), ChangeGRFURL},
+	AllowedSubtags{LabelToNum("NPAR"), ChangeGRFNumUsedParams},
+	AllowedSubtags{LabelToNum("PALS"), ChangeGRFPalette},
+	AllowedSubtags{LabelToNum("BLTR"), ChangeGRFBlitter},
+	AllowedSubtags{LabelToNum("VRSN"), ChangeGRFVersion},
+	AllowedSubtags{LabelToNum("MINV"), ChangeGRFMinVersion},
+	AllowedSubtags{LabelToNum("PARA"), HandleParameterInfo},
 };
 
 /** Action14 root tags */
 static constexpr AllowedSubtags _tags_root[] = {
-	AllowedSubtags{'INFO', std::make_pair(std::begin(_tags_info), std::end(_tags_info))},
+	AllowedSubtags{LabelToNum("INFO"), std::make_pair(std::begin(_tags_info), std::end(_tags_info))},
 };
 
 

@@ -8,6 +8,7 @@
 /** @file soundloader_wav.cpp Loading of wav sounds. */
 
 #include "stdafx.h"
+#include "core/endian_func.hpp"
 #include "core/math_func.hpp"
 #include "debug.h"
 #include "random_access_file_type.h"
@@ -28,16 +29,16 @@ public:
 		RandomAccessFile &file = *sound.file;
 
 		/* Check RIFF/WAVE header. */
-		if (file.ReadDword() != std::byteswap<uint32_t>('RIFF')) return false;
+		if (file.ReadDword() != std::byteswap(LabelToNum("RIFF"))) return false;
 		file.ReadDword(); // Skip data size
-		if (file.ReadDword() != std::byteswap<uint32_t>('WAVE')) return false;
+		if (file.ReadDword() != std::byteswap(LabelToNum("WAVE"))) return false;
 
 		/* Read riff tags */
 		for (;;) {
 			uint32_t tag = file.ReadDword();
 			uint32_t size = file.ReadDword();
 
-			if (tag == std::byteswap<uint32_t>('fmt ')) {
+			if (tag == std::byteswap(LabelToNum("fmt "))) {
 				uint16_t format = file.ReadWord();
 				if (format != 1) {
 					Debug(grf, 0, "SoundLoader_Wav: Unsupported format {}, expected 1 (uncompressed PCM).", format);
@@ -64,7 +65,7 @@ public:
 
 				/* We've read 16 bytes of this chunk, we can skip anything extra. */
 				size -= 16;
-			} else if (tag == std::byteswap<uint32_t>('data')) {
+			} else if (tag == std::byteswap(LabelToNum("data"))) {
 				uint align = sound.channels * sound.bits_per_sample / 8;
 				if (Align(size, align) != size) {
 					/* Ensure length is aligned correctly for channels and BPS. */

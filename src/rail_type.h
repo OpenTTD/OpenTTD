@@ -11,13 +11,14 @@
 #define RAIL_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "core/endian_func.hpp"
 
 typedef uint32_t RailTypeLabel;
 
-static const RailTypeLabel RAILTYPE_LABEL_RAIL     = 'RAIL';
-static const RailTypeLabel RAILTYPE_LABEL_ELECTRIC = 'ELRL';
-static const RailTypeLabel RAILTYPE_LABEL_MONO     = 'MONO';
-static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = 'MGLV';
+static const RailTypeLabel RAILTYPE_LABEL_RAIL     = LabelToNum("RAIL");
+static const RailTypeLabel RAILTYPE_LABEL_ELECTRIC = LabelToNum("ELRL");
+static const RailTypeLabel RAILTYPE_LABEL_MONO     = LabelToNum("MONO");
+static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = LabelToNum("MGLV");
 
 /**
  * Enumeration for all possible railtypes.

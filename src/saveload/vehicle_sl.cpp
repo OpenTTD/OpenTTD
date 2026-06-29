@@ -1114,7 +1114,7 @@ static const SaveLoad _vehicle_desc[] = {
 };
 
 struct VEHSChunkHandler : ChunkHandler {
-	VEHSChunkHandler() : ChunkHandler('VEHS', ChunkType::SparseTable) {}
+	VEHSChunkHandler() : ChunkHandler(LabelToNum("VEHS"), ChunkType::SparseTable) {}
 
 	void Save() const override
 	{

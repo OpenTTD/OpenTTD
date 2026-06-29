@@ -98,8 +98,8 @@ struct StationResolverObject : public SpecializedResolverObject<StationRandomTri
 	uint32_t GetDebugID() const override;
 };
 
-static const uint32_t STATION_CLASS_LABEL_DEFAULT = 'DFLT';
-static const uint32_t STATION_CLASS_LABEL_WAYPOINT = 'WAYP';
+static const uint32_t STATION_CLASS_LABEL_DEFAULT = LabelToNum("DFLT");
+static const uint32_t STATION_CLASS_LABEL_WAYPOINT = LabelToNum("WAYP");
 
 /** Class IDs for stations. */
 using StationClassID = PoolID<uint16_t, struct StationClassIDTag, UINT16_MAX, UINT16_MAX>;
