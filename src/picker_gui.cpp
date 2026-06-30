@@ -458,6 +458,33 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			auto it = vscroll->GetScrolledItemFromWidget(this->classes, pt.y, this, WID_PW_CLASS_LIST);
 			if (it == this->classes.end()) return;
 
+			if (_ctrl_pressed) {
+				/* If no collections yet exist, create the default collection. */
+				if (this->callbacks.saved.find(this->callbacks.sel_collection) == this->callbacks.saved.end()) {
+					for (int i = 0; i < this->callbacks.GetTypeCount(*it); i++) {
+						this->callbacks.saved[""].emplace(this->callbacks.GetPickerItem(*it, i));
+					}
+					this->InvalidateData({PickerInvalidation::Collection, PickerInvalidation::Class});
+					this->SetDirty();
+					break;
+				}
+
+				/* If the first item is not already saved to the selected collection, add the whole class to the collection. Otherwise remove the class. */
+				auto &collection = this->callbacks.saved.at(this->callbacks.sel_collection);
+				auto first = collection.find(this->callbacks.GetPickerItem(*it, 0));
+				if (first == std::end(collection)) {
+					for (int i = 0; i < this->callbacks.GetTypeCount(*it); i++) {
+						collection.emplace(this->callbacks.GetPickerItem(*it, i));
+					}
+				} else {
+					for (int i = 0; i < this->callbacks.GetTypeCount(*it); i++) {
+						collection.erase(this->callbacks.GetPickerItem(*it, i));
+					}
+				}
+				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Class});
+				break;
+			}
+
 			if (this->callbacks.GetSelectedClass() != *it || this->callbacks.mode.Test(PickerFilterMode::All)) {
 				this->callbacks.mode.Reset(PickerFilterMode::All); // Disable showing all.
 				this->callbacks.SetSelectedClass(*it);
