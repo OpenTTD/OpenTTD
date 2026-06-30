@@ -122,7 +122,7 @@ GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 
 uint32_t RoadTypeResolverObject::GetDebugID() const
 {
-	return this->roadtype_scope.rti->label;
+	return FlattenNewGRFLabel(this->roadtype_scope.rti->label);
 }
 
 /**
@@ -238,7 +238,7 @@ void ConvertRoadTypes()
 		roadtype_conversion_map.push_back(rt);
 
 		/* Conversion is needed if the road type is in a different position than the list. */
-		if (it->label != 0 && rt != std::distance(std::begin(_roadtype_list), it)) needs_conversion = true;
+		if (!it->label.Empty() && rt != std::distance(std::begin(_roadtype_list), it)) needs_conversion = true;
 	}
 	if (!needs_conversion) return;
 

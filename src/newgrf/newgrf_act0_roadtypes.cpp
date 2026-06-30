@@ -77,8 +77,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 				 * default road types. */
 				int n = buf.ReadByte();
 				for (int j = 0; j != n; j++) {
-					RoadTypeLabel label = buf.ReadDWord();
-					RoadType resolved_rt = GetRoadTypeByLabel(std::byteswap(label), false);
+					RoadType resolved_rt = GetRoadTypeByLabel(buf.ReadLabel<RoadTypeLabel>(), false);
 					if (resolved_rt != INVALID_ROADTYPE) {
 						switch (prop) {
 							case 0x0F:
@@ -161,9 +160,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 	for (uint id = first; id < last; ++id) {
 		switch (prop) {
 			case 0x08: { // Label of road type
-				RoadTypeLabel rtl = buf.ReadDWord();
-				rtl = std::byteswap(rtl);
-
+				RoadTypeLabel rtl = buf.ReadLabel<RoadTypeLabel>();
 				RoadType rt = GetRoadTypeByLabel(rtl, false);
 				if (rt == INVALID_ROADTYPE) {
 					/* Set up new road type */
@@ -192,7 +189,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 				if (type_map[id] != INVALID_ROADTYPE) {
 					int n = buf.ReadByte();
 					for (int j = 0; j != n; j++) {
-						_roadtypes[type_map[id]].alternate_labels.insert(std::byteswap(buf.ReadDWord()));
+						_roadtypes[type_map[id]].alternate_labels.insert(buf.ReadLabel<RoadTypeLabel>());
 					}
 					break;
 				}

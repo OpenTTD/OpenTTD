@@ -136,7 +136,7 @@ void InitRailTypes()
 		ResolveRailTypeGUISprites(&rti);
 		_railtypes_hidden_mask.Set(rt, rti.flags.Test(RailTypeFlag::Hidden));
 
-		if (rti.label == 0) continue;
+		if (rti.label.Empty()) continue;
 		_sorted_railtypes.push_back(rt);
 	}
 	std::sort(_sorted_railtypes.begin(), _sorted_railtypes.end(), CompareRailTypes);
@@ -149,7 +149,7 @@ void InitRailTypes()
  */
 RailType AllocateRailType(RailTypeLabel label)
 {
-	auto it = std::ranges::find(_railtypes, 0, &RailTypeInfo::label);
+	auto it = std::ranges::find(_railtypes, RailTypeLabel{}, &RailTypeInfo::label);
 	if (it == std::end(_railtypes)) return INVALID_RAILTYPE;
 
 	RailTypeInfo &rti = *it;

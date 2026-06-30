@@ -117,7 +117,7 @@ void InitRoadTypes()
 		ResolveRoadTypeGUISprites(&rti);
 		_roadtypes_hidden_mask.Set(rt, rti.flags.Test(RoadTypeFlag::Hidden));
 
-		if (rti.label == 0) continue;
+		if (rti.label.Empty()) continue;
 		_sorted_roadtypes.push_back(rt);
 	}
 	std::sort(_sorted_roadtypes.begin(), _sorted_roadtypes.end(), CompareRoadTypes);
@@ -131,7 +131,7 @@ void InitRoadTypes()
  */
 RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 {
-	auto it = std::ranges::find(_roadtypes, 0, &RoadTypeInfo::label);
+	auto it = std::ranges::find(_roadtypes, RoadTypeLabel{}, &RoadTypeInfo::label);
 	if (it == std::end(_roadtypes)) return INVALID_ROADTYPE;
 
 	RoadTypeInfo &rti = *it;

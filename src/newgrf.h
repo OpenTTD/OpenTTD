@@ -250,4 +250,29 @@ void ShowNewGRFError();
 GrfSpecFeature GetGrfSpecFeature(VehicleType type);
 VehicleType GetVehicleType(GrfSpecFeature feature);
 
+/**
+ * Flatten a NewGRF related label to a 32 bits integer.
+ * @param label The label to flatten.
+ * @return The flattened label.
+ */
+template <typename T> requires std::is_base_of_v<BaseLabel, T>
+constexpr uint32_t FlattenNewGRFLabel(T label) { return label[0] << 24 | label[1] << 16 | label[2] << 8 | label[3]; }
+
+/**
+ * Unflatten a NewGRF related label from a 32 bits integer.
+ * @param value The value to decode.
+ * @return The unflattened label.
+ */
+template <typename T> requires std::is_base_of_v<BaseLabel, T>
+constexpr T UnflattenNewGRFLabel(uint32_t value)
+{
+	uint8_t buf[]{
+		static_cast<uint8_t>(GB(value, 24, 8)),
+		static_cast<uint8_t>(GB(value, 16, 8)),
+		static_cast<uint8_t>(GB(value, 8, 8)),
+		static_cast<uint8_t>(GB(value, 0, 8))
+	};
+	return buf;
+}
+
 #endif /* NEWGRF_H */
