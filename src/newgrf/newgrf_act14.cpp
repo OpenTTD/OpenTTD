@@ -246,6 +246,8 @@ using TextHandler = bool(*)(GRFLanguage langid, std::string_view str);
  */
 using BranchHandler = bool(*)(ByteReader &buf);
 
+using NodeID = Label<struct NodeIDTag>; ///< Label type of the nodes in the \c AllowedSubtags.
+
 /**
  * Data structure to store the allowed id/type combinations for action 14. The
  * data can be represented as a tree with 3 types of nodes:
@@ -257,7 +259,7 @@ struct AllowedSubtags {
 	/** Custom 'span' of subtags. Required because std::span with an incomplete type is UB. */
 	using Span = std::pair<const AllowedSubtags *, const AllowedSubtags *>;
 
-	uint32_t id; ///< The identifier for this node.
+	NodeID id; ///< The identifier for this node.
 	std::variant<DataHandler, TextHandler, BranchHandler, Span> handler; ///< The handler for this node.
 };
 
@@ -299,13 +301,13 @@ static bool ChangeGRFParamValueNames(ByteReader &buf)
 
 /** Action14 parameter tags */
 static constexpr AllowedSubtags _tags_parameters[] = {
-	AllowedSubtags{'NAME', ChangeGRFParamName},
-	AllowedSubtags{'DESC', ChangeGRFParamDescription},
-	AllowedSubtags{'TYPE', ChangeGRFParamType},
-	AllowedSubtags{'LIMI', ChangeGRFParamLimits},
-	AllowedSubtags{'MASK', ChangeGRFParamMask},
-	AllowedSubtags{'VALU', ChangeGRFParamValueNames},
-	AllowedSubtags{'DFLT', ChangeGRFParamDefault},
+	AllowedSubtags{"NAME", ChangeGRFParamName},
+	AllowedSubtags{"DESC", ChangeGRFParamDescription},
+	AllowedSubtags{"TYPE", ChangeGRFParamType},
+	AllowedSubtags{"LIMI", ChangeGRFParamLimits},
+	AllowedSubtags{"MASK", ChangeGRFParamMask},
+	AllowedSubtags{"VALU", ChangeGRFParamValueNames},
+	AllowedSubtags{"DFLT", ChangeGRFParamDefault},
 };
 
 /**
@@ -343,20 +345,20 @@ static bool HandleParameterInfo(ByteReader &buf)
 
 /** Action14 tags for the INFO node */
 static constexpr AllowedSubtags _tags_info[] = {
-	AllowedSubtags{'NAME', ChangeGRFName},
-	AllowedSubtags{'DESC', ChangeGRFDescription},
-	AllowedSubtags{'URL_', ChangeGRFURL},
-	AllowedSubtags{'NPAR', ChangeGRFNumUsedParams},
-	AllowedSubtags{'PALS', ChangeGRFPalette},
-	AllowedSubtags{'BLTR', ChangeGRFBlitter},
-	AllowedSubtags{'VRSN', ChangeGRFVersion},
-	AllowedSubtags{'MINV', ChangeGRFMinVersion},
-	AllowedSubtags{'PARA', HandleParameterInfo},
+	AllowedSubtags{"NAME", ChangeGRFName},
+	AllowedSubtags{"DESC", ChangeGRFDescription},
+	AllowedSubtags{"URL_", ChangeGRFURL},
+	AllowedSubtags{"NPAR", ChangeGRFNumUsedParams},
+	AllowedSubtags{"PALS", ChangeGRFPalette},
+	AllowedSubtags{"BLTR", ChangeGRFBlitter},
+	AllowedSubtags{"VRSN", ChangeGRFVersion},
+	AllowedSubtags{"MINV", ChangeGRFMinVersion},
+	AllowedSubtags{"PARA", HandleParameterInfo},
 };
 
 /** Action14 root tags */
 static constexpr AllowedSubtags _tags_root[] = {
-	AllowedSubtags{'INFO', std::make_pair(std::begin(_tags_info), std::end(_tags_info))},
+	AllowedSubtags{"INFO", std::make_pair(std::begin(_tags_info), std::end(_tags_info))},
 };
 
 
@@ -406,7 +408,7 @@ static bool SkipUnknownInfo(ByteReader &buf, uint8_t type)
  * @param subtags Allowed subtags.
  * @return Whether all tags could be handled.
  */
-static bool HandleNode(uint8_t type, uint32_t id, ByteReader &buf, std::span<const AllowedSubtags> subtags)
+static bool HandleNode(uint8_t type, NodeID id, ByteReader &buf, std::span<const AllowedSubtags> subtags)
 {
 	/* Visitor to get a subtag handler's type. */
 	struct type_visitor {
@@ -445,11 +447,11 @@ static bool HandleNode(uint8_t type, uint32_t id, ByteReader &buf, std::span<con
 	};
 
 	for (const auto &tag : subtags) {
-		if (tag.id != std::byteswap(id) || std::visit(type_visitor{}, tag.handler) != type) continue;
+		if (tag.id != id || std::visit(type_visitor{}, tag.handler) != type) continue;
 		return std::visit(evaluate_visitor{buf}, tag.handler);
 	}
 
-	GrfMsg(2, "StaticGRFInfo: unknown type/id combination found, type={:c}, id={:x}", type, id);
+	GrfMsg(2, "StaticGRFInfo: unknown type/id combination found, type={:c}, id={}", type, id.AsString());
 	return SkipUnknownInfo(buf, type);
 }
 
@@ -463,7 +465,7 @@ static bool HandleNodes(ByteReader &buf, std::span<const AllowedSubtags> subtags
 {
 	uint8_t type = buf.ReadByte();
 	while (type != 0) {
-		uint32_t id = buf.ReadDWord();
+		NodeID id = buf.ReadLabel<NodeID>();
 		if (!HandleNode(type, id, buf, subtags)) return false;
 		type = buf.ReadByte();
 	}
