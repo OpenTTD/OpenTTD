@@ -8,6 +8,7 @@
 /** @file soundloader_wav.cpp Loading of wav sounds. */
 
 #include "stdafx.h"
+#include "core/label_type.hpp"
 #include "core/math_func.hpp"
 #include "debug.h"
 #include "random_access_file_type.h"
@@ -15,6 +16,20 @@
 #include "soundloader_type.h"
 
 #include "safeguards.h"
+
+using WavTag = Label<struct WavTagTag>; ///< Label for different tags in the file
+
+/**
+ * Read a \c WavTag from the file.
+ * @param file The file to read from.
+ * @return The read \c WavTag.
+ */
+WavTag ReadWavTag(RandomAccessFile &file)
+{
+	WavTag tag;
+	file.ReadBlock(tag.data(), tag.size());
+	return tag;
+}
 
 /** Wav file (RIFF/WAVE) sound loader. */
 class SoundLoader_Wav : public SoundLoader {
@@ -28,16 +43,16 @@ public:
 		RandomAccessFile &file = *sound.file;
 
 		/* Check RIFF/WAVE header. */
-		if (file.ReadDword() != std::byteswap<uint32_t>('RIFF')) return false;
+		if (ReadWavTag(file) != WavTag{"RIFF"}) return false;
 		file.ReadDword(); // Skip data size
-		if (file.ReadDword() != std::byteswap<uint32_t>('WAVE')) return false;
+		if (ReadWavTag(file) != WavTag{"WAVE"}) return false;
 
 		/* Read riff tags */
 		for (;;) {
-			uint32_t tag = file.ReadDword();
+			WavTag tag = ReadWavTag(file);
 			uint32_t size = file.ReadDword();
 
-			if (tag == std::byteswap<uint32_t>('fmt ')) {
+			if (tag == WavTag{"fmt "}) {
 				uint16_t format = file.ReadWord();
 				if (format != 1) {
 					Debug(grf, 0, "SoundLoader_Wav: Unsupported format {}, expected 1 (uncompressed PCM).", format);
@@ -64,7 +79,7 @@ public:
 
 				/* We've read 16 bytes of this chunk, we can skip anything extra. */
 				size -= 16;
-			} else if (tag == std::byteswap<uint32_t>('data')) {
+			} else if (tag == WavTag{"data"}) {
 				uint align = sound.channels * sound.bits_per_sample / 8;
 				if (Align(size, align) != size) {
 					/* Ensure length is aligned correctly for channels and BPS. */
