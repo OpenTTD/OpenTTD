@@ -29,6 +29,7 @@
 #include "../window_func.h"
 #include "../strings_func.h"
 #include "../core/endian_func.hpp"
+#include "../core/label_type.hpp"
 #include "../core/string_builder.hpp"
 #include "../core/string_consumer.hpp"
 #include "../vehicle_base.h"
@@ -2814,23 +2815,26 @@ struct LZMASaveFilter : SaveFilter {
  ************* END OF CODE *****************
  *******************************************/
 
+/** Unique 4-letter tag for the different saveload formats. */
+using SaveLoadFormatTag = Label<struct SaveLoadFormatLabelTag>;
+
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
 	std::shared_ptr<LoadFilter> (*init_load)(std::shared_ptr<LoadFilter> chain); ///< Constructor for the load filter.
 	std::shared_ptr<SaveFilter> (*init_write)(std::shared_ptr<SaveFilter> chain, uint8_t compression); ///< Constructor for the save filter.
 
 	std::string_view name; ///< name of the compressor/decompressor (debug-only)
-	uint32_t tag; ///< the 4-letter tag by which it is identified in the savegame
+	SaveLoadFormatTag tag; ///< the 4-letter tag by which it is identified in the savegame
 
 	uint8_t min_compression;                 ///< the minimum compression level of this format
 	uint8_t default_compression;             ///< the default compression level of this format
 	uint8_t max_compression;                 ///< the maximum compression level of this format
 };
 
-static const uint32_t SAVEGAME_TAG_LZO = TO_BE32('OTTD');
-static const uint32_t SAVEGAME_TAG_NONE = TO_BE32('OTTN');
-static const uint32_t SAVEGAME_TAG_ZLIB = TO_BE32('OTTZ');
-static const uint32_t SAVEGAME_TAG_LZMA = TO_BE32('OTTX');
+static const SaveLoadFormatTag SAVEGAME_TAG_LZO{"OTTD"}; ///< Tag for a game compressed with LZO
+static const SaveLoadFormatTag SAVEGAME_TAG_NONE{"OTTN"}; ///< Tag for a game without compression.
+static const SaveLoadFormatTag SAVEGAME_TAG_ZLIB{"OTTZ"}; ///< Tag for a game with zlib compression.
+static const SaveLoadFormatTag SAVEGAME_TAG_LZMA{"OTTX"}; ///< Tag for a game with lzma compression.
 
 /** The different saveload formats known/understood by OpenTTD. */
 static const SaveLoadFormat _saveload_formats[] = {
@@ -3025,8 +3029,10 @@ static SaveLoadResult SaveFileToDisk(bool threaded)
 		auto [fmt, compression] = GetSavegameFormat(_savegame_format);
 
 		/* We have written our stuff to memory, now write it to file! */
-		uint32_t hdr[2] = { fmt.tag, TO_BE32(to_underlying(SAVEGAME_VERSION) << 16) };
-		_sl.sf->Write((uint8_t*)hdr, sizeof(hdr));
+		_sl.sf->Write(fmt.tag.data(), fmt.tag.size());
+
+		uint32_t version = TO_BE32(to_underlying(SAVEGAME_VERSION) << 16);
+		_sl.sf->Write(reinterpret_cast<uint8_t *>(&version), sizeof(version));
 
 		_sl.sf = fmt.init_write(_sl.sf, compression);
 		_sl.dumper->Flush(_sl.sf);
@@ -3126,7 +3132,7 @@ SaveLoadResult SaveWithFilter(std::shared_ptr<SaveFilter> writer, bool threaded)
  * @param raw_version The raw version from the savegame header.
  * @return The SaveLoadFormat to use for attempting to open the savegame.
  */
-static const SaveLoadFormat *DetermineSaveLoadFormat(uint32_t tag, uint32_t raw_version)
+static const SaveLoadFormat *DetermineSaveLoadFormat(SaveLoadFormatTag tag, uint32_t raw_version)
 {
 	auto fmt = std::ranges::find(_saveload_formats, tag, &SaveLoadFormat::tag);
 	if (fmt != std::end(_saveload_formats)) {
@@ -3178,11 +3184,14 @@ static SaveLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check
 		_load_check_data.checkable = true;
 	}
 
-	uint32_t hdr[2];
-	if (_sl.lf->Read((uint8_t*)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+	SaveLoadFormatTag tag{};
+	if (_sl.lf->Read(tag.data(), tag.size()) != tag.size()) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+
+	uint32_t version;
+	if (_sl.lf->Read(reinterpret_cast<uint8_t*>(&version), sizeof(version)) != sizeof(version)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 	/* see if we have any loader for this type. */
-	const SaveLoadFormat *fmt = DetermineSaveLoadFormat(hdr[0], hdr[1]);
+	const SaveLoadFormat *fmt = DetermineSaveLoadFormat(tag, version);
 
 	/* loader for this savegame type is not implemented? */
 	if (fmt->init_load == nullptr) {
