@@ -32,7 +32,7 @@ static const SaveLoad _sign_desc[] = {
 };
 
 struct SIGNChunkHandler : ChunkHandler {
-	SIGNChunkHandler() : ChunkHandler('SIGN', ChunkType::Table) {}
+	SIGNChunkHandler() : ChunkHandler("SIGN", ChunkType::Table) {}
 
 	void Save() const override
 	{

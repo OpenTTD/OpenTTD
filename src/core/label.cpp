@@ -5,28 +5,25 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file water_regions_sl.cpp Handles saving and loading of water region data. */
+/** @file label.cpp Implementation of label functions. */
 
 #include "../stdafx.h"
-
-#include "saveload.h"
+#include "label_type.hpp"
+#include "../string_func.h"
 
 #include "../safeguards.h"
 
-extern void SlSkipArray();
+/**
+ * Get the label as a \c std::string.
+ * If the label is all \c std::isgraph characters, it will return these characters as string,
+ * otherwise it will format it as a 8-digit hexadecimal.
+ * @return The label as string.
+ */
+std::string BaseLabel::AsString() const
+{
+	if (std::ranges::all_of(*this, [](uint8_t c) { return std::isgraph(c); })) {
+		return std::string{reinterpret_cast<const char *>(this->data()), this->size()};
+	}
 
-/** Water Region savegame data is no longer used, but still needed for old savegames to load without errors. */
-struct WaterRegionChunkHandler : ChunkHandler {
-	WaterRegionChunkHandler() : ChunkHandler("WRGN", ChunkType::ReadOnly)
-	{}
-
-	void Load() const override
-	{
-		SlTableHeader({});
-		SlSkipArray();
-	};
-};
-
-static const WaterRegionChunkHandler WRGN;
-static const ChunkHandlerRef water_region_chunk_handlers[] = { WRGN };
-extern const ChunkHandlerTable _water_region_chunk_handlers(water_region_chunk_handlers);
+	return FormatArrayAsHex(*this);
+}

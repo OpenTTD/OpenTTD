@@ -531,7 +531,7 @@ static const SaveLoad _old_station_desc[] = {
 };
 
 struct STNSChunkHandler : ChunkHandler {
-	STNSChunkHandler() : ChunkHandler('STNS', ChunkType::ReadOnly) {}
+	STNSChunkHandler() : ChunkHandler("STNS", ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
@@ -722,7 +722,7 @@ static const SaveLoad _station_desc[] = {
 };
 
 struct STNNChunkHandler : ChunkHandler {
-	STNNChunkHandler() : ChunkHandler('STNN', ChunkType::Table) {}
+	STNNChunkHandler() : ChunkHandler("STNN", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -765,7 +765,7 @@ struct STNNChunkHandler : ChunkHandler {
 };
 
 struct ROADChunkHandler : ChunkHandler {
-	ROADChunkHandler() : ChunkHandler('ROAD', ChunkType::Table) {}
+	ROADChunkHandler() : ChunkHandler("ROAD", ChunkType::Table) {}
 
 	void Save() const override
 	{

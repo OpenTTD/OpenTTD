@@ -30,7 +30,7 @@ static const SaveLoad _object_desc[] = {
 };
 
 struct OBJSChunkHandler : ChunkHandler {
-	OBJSChunkHandler() : ChunkHandler('OBJS', ChunkType::Table) {}
+	OBJSChunkHandler() : ChunkHandler("OBJS", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -67,7 +67,7 @@ struct OBJSChunkHandler : ChunkHandler {
 };
 
 struct OBIDChunkHandler : NewGRFMappingChunkHandler {
-	OBIDChunkHandler() : NewGRFMappingChunkHandler('OBID', _object_mngr) {}
+	OBIDChunkHandler() : NewGRFMappingChunkHandler("OBID", _object_mngr) {}
 };
 
 static const OBIDChunkHandler OBID;

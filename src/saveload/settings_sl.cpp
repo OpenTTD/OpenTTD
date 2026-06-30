@@ -142,7 +142,7 @@ static void SaveSettings(const SettingTable &settings, void *object)
 }
 
 struct OPTSChunkHandler : ChunkHandler {
-	OPTSChunkHandler() : ChunkHandler('OPTS', ChunkType::ReadOnly) {}
+	OPTSChunkHandler() : ChunkHandler("OPTS", ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
@@ -156,7 +156,7 @@ struct OPTSChunkHandler : ChunkHandler {
 };
 
 struct PATSChunkHandler : ChunkHandler {
-	PATSChunkHandler() : ChunkHandler('PATS', ChunkType::Table) {}
+	PATSChunkHandler() : ChunkHandler("PATS", ChunkType::Table) {}
 
 	void Load() const override
 	{
