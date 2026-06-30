@@ -1173,8 +1173,8 @@ static void DrawBridgeRoadBits(TileIndex head_tile, int x, int y, int z, int off
 	const RoadTypeInfo *road_rti = road_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(road_rt);
 	const RoadTypeInfo *tram_rti = tram_rt == INVALID_ROADTYPE ? nullptr : GetRoadTypeInfo(tram_rt);
 
-	SpriteID seq_back[4] = { 0 };
-	bool trans_back[4] = { false };
+	SpriteID seq_back[5] = { 0 };
+	bool trans_back[5] = { false };
 	SpriteID seq_front[4] = { 0 };
 	bool trans_front[4] = { false };
 
@@ -1217,13 +1217,18 @@ static void DrawBridgeRoadBits(TileIndex head_tile, int x, int y, int z, int off
 			}
 		}
 
-		/* Road catenary takes precedence over tram */
+		/* Both the road and tram catenary sprites need to be on their own layers so they can both be drawn */
 		trans_back[3] = IsTransparencySet(TransparencyOption::Catenary);
+		trans_back[4] = IsTransparencySet(TransparencyOption::Catenary);
 		trans_front[0] = IsTransparencySet(TransparencyOption::Catenary);
+		trans_front[1] = IsTransparencySet(TransparencyOption::Catenary);
+
 		if (road_rti != nullptr && HasRoadCatenaryDrawn(road_rt)) {
 			GetBridgeRoadCatenary(road_rti, head_tile, offset, head, seq_back[3], seq_front[0]);
-		} else if (tram_rti != nullptr && HasRoadCatenaryDrawn(tram_rt)) {
-			GetBridgeRoadCatenary(tram_rti, head_tile, offset, head, seq_back[3], seq_front[0]);
+		}
+
+		if (tram_rti != nullptr && HasRoadCatenaryDrawn(tram_rt)) {
+			GetBridgeRoadCatenary(tram_rti, head_tile, offset, head, seq_back[4], seq_front[1]);
 		}
 	}
 
