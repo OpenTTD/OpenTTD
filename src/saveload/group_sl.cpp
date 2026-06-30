@@ -30,7 +30,7 @@ static const SaveLoad _group_desc[] = {
 };
 
 struct GRPSChunkHandler : ChunkHandler {
-	GRPSChunkHandler() : ChunkHandler('GRPS', ChunkType::Table) {}
+	GRPSChunkHandler() : ChunkHandler("GRPS", ChunkType::Table) {}
 
 	void Save() const override
 	{

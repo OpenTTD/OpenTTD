@@ -459,6 +459,17 @@ static inline void SlWriteUint64(uint64_t x)
 }
 
 /**
+ * Read the \c ChunkId.
+ * @return The read \c ChunkId.
+ */
+static inline ChunkId SlReadChunkId()
+{
+	ChunkId label{};
+	for (uint8_t &b : label) b = SlReadByte();
+	return label;
+}
+
+/**
  * Read in the header descriptor of an object or an array.
  * If the highest bit is set (7), then the index is bigger than 127
  * elements, so use the next byte to read in the real value.
@@ -2275,7 +2286,7 @@ static void SlSaveChunk(const ChunkHandler &ch)
 {
 	if (ch.type == ChunkType::ReadOnly) return;
 
-	SlWriteUint32(ch.id);
+	for (uint8_t b : ch.id) SlWriteByte(b);
 	Debug(sl, 2, "Saving chunk {}", ch.GetName());
 
 	_sl.chunk_type = ch.type;
@@ -2323,7 +2334,7 @@ static void SlSaveChunks()
  * @param id the chunk in question
  * @return returns the appropriate chunkhandler
  */
-static const ChunkHandler *SlFindChunkHandler(uint32_t id)
+static const ChunkHandler *SlFindChunkHandler(ChunkId id)
 {
 	for (const ChunkHandler &ch : ChunkHandlers()) if (ch.id == id) return &ch;
 	return nullptr;
@@ -2332,13 +2343,10 @@ static const ChunkHandler *SlFindChunkHandler(uint32_t id)
 /** Load all chunks */
 static void SlLoadChunks()
 {
-	uint32_t id;
-	const ChunkHandler *ch;
+	for (ChunkId id = SlReadChunkId(); !id.Empty(); id = SlReadChunkId()) {
+		Debug(sl, 2, "Loading chunk {}", id.AsStringView());
 
-	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
-
-		ch = SlFindChunkHandler(id);
+		const ChunkHandler *ch = SlFindChunkHandler(id);
 		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
 		SlLoadChunk(*ch);
 	}
@@ -2347,13 +2355,10 @@ static void SlLoadChunks()
 /** Load all chunks for savegame checking */
 static void SlLoadCheckChunks()
 {
-	uint32_t id;
-	const ChunkHandler *ch;
+	for (ChunkId id = SlReadChunkId(); id.Empty(); id = SlReadChunkId()) {
+		Debug(sl, 2, "Loading chunk {}", id.AsStringView());
 
-	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
-
-		ch = SlFindChunkHandler(id);
+		const ChunkHandler *ch = SlFindChunkHandler(id);
 		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
 		SlLoadCheckChunk(*ch);
 	}

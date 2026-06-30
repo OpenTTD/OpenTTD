@@ -15,11 +15,11 @@
 #include "../safeguards.h"
 
 struct APIDChunkHandler : NewGRFMappingChunkHandler {
-	APIDChunkHandler() : NewGRFMappingChunkHandler('APID', _airport_mngr) {}
+	APIDChunkHandler() : NewGRFMappingChunkHandler("APID", _airport_mngr) {}
 };
 
 struct ATIDChunkHandler : NewGRFMappingChunkHandler {
-	ATIDChunkHandler() : NewGRFMappingChunkHandler('ATID', _airporttile_mngr) {}
+	ATIDChunkHandler() : NewGRFMappingChunkHandler("ATID", _airporttile_mngr) {}
 };
 
 static const ATIDChunkHandler ATID;

@@ -370,11 +370,11 @@ static const SaveLoad _town_desc[] = {
 };
 
 struct HIDSChunkHandler : NewGRFMappingChunkHandler {
-	HIDSChunkHandler() : NewGRFMappingChunkHandler('HIDS', _house_mngr) {}
+	HIDSChunkHandler() : NewGRFMappingChunkHandler("HIDS", _house_mngr) {}
 };
 
 struct CITYChunkHandler : ChunkHandler {
-	CITYChunkHandler() : ChunkHandler('CITY', ChunkType::Table) {}
+	CITYChunkHandler() : ChunkHandler("CITY", ChunkType::Table) {}
 
 	void Save() const override
 	{

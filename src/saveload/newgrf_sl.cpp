@@ -62,7 +62,7 @@ void NewGRFMappingChunkHandler::Load() const
 }
 
 struct NGRFChunkHandler : ChunkHandler {
-	NGRFChunkHandler() : ChunkHandler('NGRF', ChunkType::Table) {}
+	NGRFChunkHandler() : ChunkHandler("NGRF", ChunkType::Table) {}
 
 	static inline std::array<uint32_t, GRFConfig::MAX_NUM_PARAMS> param;
 	static inline uint8_t num_params;

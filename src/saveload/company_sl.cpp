@@ -551,7 +551,7 @@ static const SaveLoad _company_desc[] = {
 };
 
 struct PLYRChunkHandler : ChunkHandler {
-	PLYRChunkHandler() : ChunkHandler('PLYR', ChunkType::Table) {}
+	PLYRChunkHandler() : ChunkHandler("PLYR", ChunkType::Table) {}
 
 	void Save() const override
 	{

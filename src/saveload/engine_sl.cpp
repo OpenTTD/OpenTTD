@@ -62,7 +62,7 @@ Engine *GetTempDataEngine(EngineID index, VehicleType type, uint16_t local_id)
 }
 
 struct ENGNChunkHandler : ChunkHandler {
-	ENGNChunkHandler() : ChunkHandler('ENGN', ChunkType::Table) {}
+	ENGNChunkHandler() : ChunkHandler("ENGN", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -135,7 +135,7 @@ void ResetTempEngineData()
 }
 
 struct ENGSChunkHandler : ChunkHandler {
-	ENGSChunkHandler() : ChunkHandler('ENGS', ChunkType::ReadOnly) {}
+	ENGSChunkHandler() : ChunkHandler("ENGS", ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
@@ -162,7 +162,7 @@ static const SaveLoad _engine_id_mapping_desc[] = {
 };
 
 struct EIDSChunkHandler : ChunkHandler {
-	EIDSChunkHandler() : ChunkHandler('EIDS', ChunkType::Table) {}
+	EIDSChunkHandler() : ChunkHandler("EIDS", ChunkType::Table) {}
 
 	void Save() const override
 	{

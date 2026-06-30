@@ -26,7 +26,7 @@ static const SaveLoad _goals_desc[] = {
 };
 
 struct GOALChunkHandler : ChunkHandler {
-	GOALChunkHandler() : ChunkHandler('GOAL', ChunkType::Table) {}
+	GOALChunkHandler() : ChunkHandler("GOAL", ChunkType::Table) {}
 
 	void Save() const override
 	{

@@ -111,7 +111,7 @@ void InitializeOldNames()
 }
 
 struct NAMEChunkHandler : ChunkHandler {
-	NAMEChunkHandler() : ChunkHandler('NAME', ChunkType::ReadOnly) {}
+	NAMEChunkHandler() : ChunkHandler("NAME", ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
