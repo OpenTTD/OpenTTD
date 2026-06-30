@@ -254,6 +254,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}kaki
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}ketinggian
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}hari
@@ -263,6 +264,7 @@ STR_UNITS_TICKS                                                 :{COMMA}{NBSP}ti
 STR_UNITS_MONTHS                                                :{NUM}{NBSP}bulan
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}menit
 
+STR_UNITS_YEARS                                                 :{NUM}{NBSP}tahun
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}periode
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
@@ -402,10 +404,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Tampilka
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Tampilkan daftar pesawat perusahaan. Ctrl-Klik untuk menampilkan daftar group atau kendaraan
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Perbesar tampilan
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Perkecil tampilan
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Membangun rel kereta
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Membangun jalan
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Bangun jalur trem
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Membangun pelabuhan kapal
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Membangun infrastruktur kereta
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Membangun infrastruktur jalanan
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Membangun infrastruktur jalur trem
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Membangun infrastruktur jalur kapal
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Membangun bandara
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Buka toolbar lansekap untuk menaik-turunkan tanah, menanam pohon, dsb.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Tampilkan jendela suara/musik
@@ -1888,7 +1890,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Berapa banyak m
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Jangka waktu perbaikan dalam persen: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih apakah servis kendaraan dipicu oleh waktu terlewat sejak servis terakhir atau dari kehandalan menjatuh beberapa persentase dari kehandalan maximum
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Jika diaktifkan, kendaraan akan mencoba untuk diperbaiki ketika reliabilitas mereka menurun sebesar persen yang diberikan dari reliabilitas maksimum.{}{}Sebagai contoh, bila sebuah kendaraan memiliki reliabilitas maksimum sebesar 90% dan interval perbaikan sebesar 20%, kendaraan tersebut akan mencoba untuk diperbaiki ketika reliabilitas mereka mencapai 72%
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval dasar untuk kereta: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setel interval dasar untuk kereta, jika tidak ada interval tetap
@@ -1899,6 +1901,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Setel interval 
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval dasar untuk kapal: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Mengatur interval perbaikan untuk kapal baru, jika tidak ada interval perbaikan, setelan dasar akan diatur untuk kendaraan
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}{NBSP}Hari{P 0 "" }
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}{NBSP}Menit{P 0 "" }
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}{NBSP}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Di non-aktifkan
@@ -2954,6 +2959,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Pilih Je
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pilihan jembatan - Klik pada jembatan yang ingin anda bangun
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensi, Baja
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balok, Baja
@@ -3737,9 +3743,11 @@ STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Warna da
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Masukkan nama rambu
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kota ({COMMA} dari {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Tidak Ada -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nama-nama kota - Klik pada nama untuk mengarahkan pandangan utama pada kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nama-nama kota - klik pada nama kota untuk mengarahkan pandangan utama pada kota. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi kota
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
 # Town view window
@@ -4076,13 +4084,14 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENC
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/periode
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri ({COMMA} dari {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tidak Ada -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% Terkirim)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} dan {NUM} banyak lagi...
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} dan {NUM} lainnya...
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nama-nama industri - klik di nama untuk mengarahkan pandangan utama pada industri. Ctrl+Click akan membuka viewport baru pada lokasi industri
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Muatan diterima: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Kargo yang diproduksi: {SILVER}{STRING}
@@ -4094,7 +4103,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksi bulan kemarin
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Produksi menit terakhir:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% terkirim)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Arahkan pandangan utama pada lokasi industri. Ctrl+Click akan membuka viewport baru pada lokasi industri
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Arahkan pandangan utama pada lokasi industri. Ctrl+Klik akan membuka jendela pandangan baru pada lokasi industri
 STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Grafik Kargo
 STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Tampilkan grafik sejarah kargo indutri
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tingkat produksi: {YELLOW}{COMMA}%
@@ -4579,7 +4588,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama ken
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nama kapal
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nama pesawat
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun (masa pakai: {COMMA} tahun)
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Umur: {LTBLUE}{STRING}{BLACK} Biaya Operasional: {LTBLUE}{CURRENCY_LONG}/tahun
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Umur: {LTBLUE}{STRING}{BLACK} Biaya Operasional: {LTBLUE}{CURRENCY_LONG}/periode
@@ -4594,6 +4603,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntung
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY_LONG} (tahun kemarin: {CURRENCY_LONG}) {BLACK}Performa minimum: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Laba saat ini: {LTBLUE}{CURRENCY_LONG} (kurun waktu sebelumnya: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Laba sat ini: {LTBLUE}{CURRENCY_LONG} (kurun waktu sebelumnya: {CURRENCY_LONG}) {BLACK}Performa minimum: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}% (maksimal: {COMMA}%)  {BLACK}Jumlah mogok sejak perbaikan terakhir: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitas: {LTBLUE}Tidak ada{STRING}
@@ -4604,8 +4614,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Mua
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Perbaikan interval: {LTBLUE}{COMMA}{NBSP}hari{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Interval perbaikan: {LTBLUE}{COMMA}{NBSP}menit{BLACK} {STRING}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} %{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Perbaikan terakhir: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Perbaikan terakhir: {LTBLUE}{NUM} menit yang lalu
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Tingkatkan jangka waktu servis sebanyak 10 hari. Ctrl+Klik untuk menambah sebanyak 5 hari
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Tingkatkan jangka waktu servis sebanyak 5 menit. Ctrl+Click untuk menambah sebanyak 1 menit
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Tingkatkan jangka waktu servis sebanyak 10 persen. Ctrl+Click untuk menambah sebanyak 5 persen
@@ -4861,9 +4873,9 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Berjalan selama
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Bergerak {STRING} dengan maks. kecepatan {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Berjalan (untuk {STRING}, tidak berjadwal)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Berjalan (untuk {STRING}, tidak berjadwal) dengan {VELOCITY} maksimum
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(menetap untuk {STRING}, tidak berjadwal)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(menetap selama {STRING}, tidak terjadwal)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(berjalan selama {STRING}, tidak terjadwal)
-STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}dan menetap selama {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}dan berjalan selama {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Jadwal ini akan memakan waktu kurang lebih {STRING} untuk diselesaikan
@@ -4882,7 +4894,7 @@ STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Pilih ke
 STR_TIMETABLE_START_SECONDS_QUERY                               :Detik hingga jadwal dimulai
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih. Ctrl+Click untuk mengubah keseluruhan tujuan
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan sebuah perintah yang terpilih. Ctrl+Klik untuk mengubah waktu seluruh perintah
 STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Ubah Durasi
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Hapus waktu
@@ -4896,7 +4908,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Hapus ba
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Hapus batas kecepatan maksimal pada perintah yang terpilih. Ctrl+Klik untuk menghapus batas kecepatan di seluruh perintah
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalikan penghitung waktu keterlambatan seperti semula, sehingga kendaraan akan selalu tepat waktu
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atur ulang penghitung waktu keterlambatan seperti semula, sehingga kendaraan akan selalu tepat waktu. Ctrl+Klik untuk mengatur ulang seluruh grup sehingga kendaraan terakhir akan tepat waktu dan kendaraan lainnya akan lebih awal
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis berdasarkan perjalanan berikutnya. Ctrl+klik untuk mempertahankan waktu tunggu)
@@ -5039,7 +5051,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Perkiraa
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Penyimpanan sedang berlangsung,{}mohon tunggu hingga selesai
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Simpan otomatis gagal
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Tidak dapat membaca drive
+STR_ERROR_GAME_SAVE_FAILED                                      :Gagal menyimpan permainan...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Tidak mampu untuk menghapus file/berkas
+STR_ERROR_GAME_LOAD_FAILED                                      :Gagal membuka permainan...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Kesalahan Internal: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Berkas simpanan permainan rusak - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Berkas simpanan dibuat dari versi yang lebih baru
@@ -6017,7 +6031,8 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
+STR_TOOLBAR_ROADTYPE_VELOCITY                                   :{STRING} {YELLOW}({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
 STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Buka konfigurasi lencana
