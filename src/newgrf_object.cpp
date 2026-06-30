@@ -136,8 +136,8 @@ void ResetObjects()
 	}
 
 	/* Set class for originals. */
-	_object_specs[OBJECT_LIGHTHOUSE].class_index = ObjectClass::Allocate('LTHS');
-	_object_specs[OBJECT_TRANSMITTER].class_index = ObjectClass::Allocate('TRNS');
+	_object_specs[OBJECT_LIGHTHOUSE].class_index = ObjectClass::Allocate("LTHS");
+	_object_specs[OBJECT_TRANSMITTER].class_index = ObjectClass::Allocate("TRNS");
 
 	/* Reset any overrides that have been set. */
 	_object_mngr.ResetOverride();
@@ -146,8 +146,8 @@ void ResetObjects()
 template <>
 /* static */ void ObjectClass::InsertDefaults()
 {
-	ObjectClass::Get(ObjectClass::Allocate('LTHS'))->name = STR_OBJECT_CLASS_LTHS;
-	ObjectClass::Get(ObjectClass::Allocate('TRNS'))->name = STR_OBJECT_CLASS_TRNS;
+	ObjectClass::Get(ObjectClass::Allocate("LTHS"))->name = STR_OBJECT_CLASS_LTHS;
+	ObjectClass::Get(ObjectClass::Allocate("TRNS"))->name = STR_OBJECT_CLASS_TRNS;
 }
 
 template <>

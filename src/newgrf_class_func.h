@@ -29,7 +29,7 @@ void NewGRFClass<Tspec, Tindex>::Reset()
  *       second time, this first allocation will be given.
  */
 template <typename Tspec, typename Tindex>
-Tindex NewGRFClass<Tspec, Tindex>::Allocate(uint32_t global_id)
+Tindex NewGRFClass<Tspec, Tindex>::Allocate(GlobalID global_id)
 {
 	auto found = std::ranges::find(NewGRFClass::classes, global_id, &NewGRFClass::global_id);
 

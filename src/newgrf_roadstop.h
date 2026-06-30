@@ -25,9 +25,6 @@ struct TileInfo;
 /** The maximum amount of roadstops a single GRF is allowed to add */
 static const int NUM_ROADSTOPS_PER_GRF = UINT16_MAX - 1;
 
-static const uint32_t ROADSTOP_CLASS_LABEL_DEFAULT = 'DFLT';
-static const uint32_t ROADSTOP_CLASS_LABEL_WAYPOINT = 'WAYP';
-
 /** Class IDs for stations. */
 using RoadStopClassID = PoolID<uint16_t, struct RoadStopClassIDTag, UINT16_MAX, UINT16_MAX>;
 
@@ -164,6 +161,9 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 using RoadStopClass = NewGRFClass<RoadStopSpec, RoadStopClassID>;
 
+static const RoadStopClass::GlobalID ROADSTOP_CLASS_LABEL_DEFAULT{"DFLT"}; ///< Class label for default road stops.
+static const RoadStopClass::GlobalID ROADSTOP_CLASS_LABEL_WAYPOINT{"WAYP"}; ///< Class label for default road waypoints.
+
 std::optional<SpriteLayoutProcessor> GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view, std::span<int32_t> regs100 = {});
 void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec, StationType type, int view);
 
@@ -191,7 +191,7 @@ void RoadStopUpdateCachedTriggers(BaseStation *st);
  */
 inline bool IsWaypointClass(const RoadStopClass &cls)
 {
-	return cls.global_id == ROADSTOP_CLASS_LABEL_WAYPOINT || GB(cls.global_id, 24, 8) == UINT8_MAX;
+	return cls.global_id == ROADSTOP_CLASS_LABEL_WAYPOINT || cls.global_id[0] == UINT8_MAX;
 }
 
 #endif /* NEWGRF_ROADSTATION_H */

@@ -98,9 +98,6 @@ struct StationResolverObject : public SpecializedResolverObject<StationRandomTri
 	uint32_t GetDebugID() const override;
 };
 
-static const uint32_t STATION_CLASS_LABEL_DEFAULT = 'DFLT';
-static const uint32_t STATION_CLASS_LABEL_WAYPOINT = 'WAYP';
-
 /** Class IDs for stations. */
 using StationClassID = PoolID<uint16_t, struct StationClassIDTag, UINT16_MAX, UINT16_MAX>;
 
@@ -188,6 +185,9 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 /** Class containing information relating to station classes. */
 using StationClass = NewGRFClass<StationSpec, StationClassID>;
 
+static const StationClass::GlobalID STATION_CLASS_LABEL_DEFAULT{"DFLT"}; ///< Class label for default rail station.
+static const StationClass::GlobalID STATION_CLASS_LABEL_WAYPOINT{"WAYP"}; ///< Class label for default rail waypoints.
+
 const StationSpec *GetStationSpec(TileIndex t);
 
 /**
@@ -208,7 +208,7 @@ inline uint16_t GetStationLayoutKey(uint8_t platforms, uint8_t length)
  */
 inline bool IsWaypointClass(const StationClass &cls)
 {
-	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT || GB(cls.global_id, 24, 8) == UINT8_MAX;
+	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT || cls.global_id[0] == UINT8_MAX;
 }
 
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format. */

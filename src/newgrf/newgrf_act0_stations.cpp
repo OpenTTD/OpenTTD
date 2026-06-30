@@ -49,17 +49,14 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 		}
 
 		switch (prop) {
-			case 0x08: { // Class ID
+			case 0x08: // Class ID
 				/* Property 0x08 is special; it is where the station is allocated */
 				if (statspec == nullptr) {
 					statspec = std::make_unique<StationSpec>();
 				}
 
-				/* Swap classid because we read it in BE meaning WAYP or DFLT */
-				uint32_t classid = buf.ReadDWord();
-				statspec->class_index = StationClass::Allocate(std::byteswap(classid));
+				statspec->class_index = StationClass::Allocate(buf.ReadLabel<StationClass::GlobalID>());
 				break;
-			}
 
 			case 0x09: { // Define sprite layout
 				uint16_t tiles = buf.ReadExtendedByte();
