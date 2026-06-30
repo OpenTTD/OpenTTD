@@ -102,7 +102,7 @@ void GrfMsgI(int severity, const std::string &msg)
  * @param grfid The grfID to obtain the file for
  * @return The file.
  */
-GRFFile *GetFileByGRFID(uint32_t grfid)
+GRFFile *GetFileByGRFID(GrfID grfid)
 {
 	auto it = std::ranges::find(_grf_files, grfid, &GRFFile::grfid);
 	if (it != std::end(_grf_files)) return &*it;
@@ -175,14 +175,14 @@ void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig &c)
 	error->data = _cur_gps.grfconfig->GetName();
 }
 
-static std::map<uint32_t, uint32_t> _grf_id_overrides;
+static std::map<GrfID, GrfID> _grf_id_overrides;
 
 /**
  * Set the override for a NewGRF
  * @param source_grfid The grfID which wants to override another NewGRF.
  * @param target_grfid The grfID which is being overridden.
  */
-void SetNewGRFOverride(uint32_t source_grfid, uint32_t target_grfid)
+void SetNewGRFOverride(GrfID source_grfid, GrfID target_grfid)
 {
 	if (target_grfid == 0) {
 		_grf_id_overrides.erase(source_grfid);
@@ -219,7 +219,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 {
 	/* Hack for add-on GRFs that need to modify another GRF's engines. This lets
 	 * them use the same engine slots. */
-	uint32_t scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
+	GrfID scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
 	if (_settings_game.vehicle.dynamic_engines) {
 		/* If dynamic_engies is enabled, there can be multiple independent ID ranges. */
 		scope_grfid = file->grfid;
@@ -299,7 +299,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
  */
 EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16_t internal_id)
 {
-	uint32_t scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
+	GrfID scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
 	if (_settings_game.vehicle.dynamic_engines) {
 		scope_grfid = file->grfid;
 		if (auto it = _grf_id_overrides.find(file->grfid); it != std::end(_grf_id_overrides)) {
@@ -360,7 +360,7 @@ void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location,
  * @param language_id The (NewGRF) language ID to get the map for.
  * @return The LanguageMap, or nullptr if it couldn't be found.
  */
-/* static */ const LanguageMap *LanguageMap::GetLanguageMap(uint32_t grfid, GRFLanguage language_id)
+/* static */ const LanguageMap *LanguageMap::GetLanguageMap(GrfID grfid, GRFLanguage language_id)
 {
 	const GRFFile *grffile = GetFileByGRFID(grfid);
 	if (grffile == nullptr) return nullptr;
@@ -1494,7 +1494,7 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		auto it = _grf_id_overrides.find(source.grfid);
 		if (it == std::end(_grf_id_overrides)) continue;
-		uint32_t override_grfid = it->second;
+		GrfID override_grfid = it->second;
 
 		auto dest = std::ranges::find(_grf_files, override_grfid, &GRFFile::grfid);
 		if (dest == std::end(_grf_files)) continue;

@@ -34,7 +34,7 @@ struct GRFPresence {
 	/** Create an empty presence. */
 	GRFPresence() = default;
 };
-using GrfIDMapping = std::map<uint32_t, GRFPresence>; ///< A mapping from \c GRFID to the \c GRFPresence.
+using GrfIDMapping = std::map<GrfID, GRFPresence>; ///< A mapping from \c GrfID to the \c GRFPresence.
 
 /** Container for any change that we deem needs to be logged. */
 struct LoggedChange {
@@ -139,11 +139,11 @@ struct LoggedChangeGRFRemoved : LoggedChange {
 	 * Create a log entry for a removed NewGRF.
 	 * @param grfid The NewGRF that is removed.
 	 */
-	LoggedChangeGRFRemoved(uint32_t grfid) :
+	LoggedChangeGRFRemoved(GrfID grfid) :
 		LoggedChange(GamelogChangeType::GRFRem), grfid(grfid) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
-	uint32_t grfid = 0; ///< ID of removed GRF
+	GrfID grfid{}; ///< ID of removed GRF
 };
 
 /** A log entry for a NewGRF that was changed. */
@@ -169,11 +169,11 @@ struct LoggedChangeGRFParameterChanged : LoggedChange {
 	 * Create a log entry for a parameter change of a NewGRF.
 	 * @param grfid The NewGRF for which the parameter is changed.
 	 */
-	LoggedChangeGRFParameterChanged(uint32_t grfid) :
+	LoggedChangeGRFParameterChanged(GrfID grfid) :
 		LoggedChange(GamelogChangeType::GRFParam), grfid(grfid) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
-	uint32_t grfid = 0; ///< ID of GRF with changed parameters
+	GrfID grfid{}; ///< ID of GRF with changed parameters
 };
 
 /** A log entry for a NewGRF that was moved. */
@@ -186,11 +186,11 @@ struct LoggedChangeGRFMoved : LoggedChange {
 	 * @param grfid The NewGRF that is moved.
 	 * @param offset The amount the NewGRF was moved.
 	 */
-	LoggedChangeGRFMoved(uint32_t grfid, int32_t offset) :
+	LoggedChangeGRFMoved(GrfID grfid, int32_t offset) :
 		LoggedChange(GamelogChangeType::GRFMove), grfid(grfid), offset(offset) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
-	uint32_t grfid = 0; ///< ID of moved GRF
+	GrfID grfid{}; ///< ID of moved GRF
 	int32_t offset = 0; ///< offset, positive = move down
 };
 
@@ -225,12 +225,12 @@ struct LoggedChangeGRFBug : LoggedChange {
 	 * @param grfid The NewGRF that is deemed buggy.
 	 * @param bug The bug that has been seen.
 	 */
-	LoggedChangeGRFBug(uint64_t data, uint32_t grfid, GRFBug bug) :
+	LoggedChangeGRFBug(uint64_t data, GrfID grfid, GRFBug bug) :
 		LoggedChange(GamelogChangeType::GRFBug), data(data), grfid(grfid), bug(bug) {}
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint64_t data = 0; ///< additional data
-	uint32_t grfid = 0; ///< ID of problematic GRF
+	GrfID grfid{}; ///< ID of problematic GRF
 	GRFBug bug{}; ///< type of bug, @see enum GRFBugs
 };
 

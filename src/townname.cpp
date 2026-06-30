@@ -32,7 +32,7 @@ TownNameParams::TownNameParams(const Town *t) :
 {
 	if (t->townnamegrfid != 0 && GetGRFTownName(t->townnamegrfid) == nullptr) {
 		/* Fallback to the first built in town name (English). */
-		this->grfid = 0;
+		this->grfid = {};
 		this->type = SPECSTR_TOWNNAME_START;
 		return;
 	}

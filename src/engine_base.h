@@ -168,7 +168,7 @@ public:
 		return this->grf_prop.grffile;
 	}
 
-	uint32_t GetGRFID() const;
+	GrfID GetGRFID() const;
 
 	struct EngineTypeFilter {
 		VehicleType vt;
@@ -201,18 +201,18 @@ public:
 };
 
 struct EngineIDMapping {
-	uint32_t grfid = 0; ///< The GRF ID of the file the entity belongs to
+	GrfID grfid{}; ///< The GRF ID of the file the entity belongs to
 	uint16_t internal_id = 0; ///< The internal ID within the GRF file
 	VehicleType type{}; ///< The engine type
 	uint8_t substitute_id = 0; ///< The (original) entity ID to use if this GRF is not available (currently not used)
 	EngineID engine{};
 
-	static inline uint64_t Key(uint32_t grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
+	static inline uint64_t Key(GrfID grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
 
 	inline uint64_t Key() const { return Key(this->grfid, this->internal_id); }
 
 	EngineIDMapping() {}
-	EngineIDMapping(uint32_t grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine)
+	EngineIDMapping(GrfID grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine)
 		: grfid(grfid), internal_id(internal_id), type(type), substitute_id(substitute_id), engine(engine) {}
 };
 
@@ -229,9 +229,9 @@ struct EngineOverrideManager {
 	VehicleTypeIndexArray<std::vector<EngineIDMapping>> mappings;
 
 	void ResetToDefaultMapping();
-	EngineID GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid);
-	EngineID UseUnreservedID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, bool static_access);
-	void SetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, uint8_t substitute_id, EngineID engine);
+	EngineID GetID(VehicleType type, uint16_t grf_local_id, GrfID grfid);
+	EngineID UseUnreservedID(VehicleType type, uint16_t grf_local_id, GrfID grfid, bool static_access);
+	void SetID(VehicleType type, uint16_t grf_local_id, GrfID grfid, uint8_t substitute_id, EngineID engine);
 
 	static bool ResetToCurrentNewGRFConfig();
 };

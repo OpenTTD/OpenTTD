@@ -31,7 +31,7 @@ static void TranslateGRFStrings(ByteReader &buf)
 	 * W   offset    First text ID
 	 * S   text...   Zero-terminated strings */
 
-	uint32_t grfid = buf.ReadDWord();
+	GrfID grfid = buf.ReadDWord();
 	const GRFConfig *c = GetGRFConfig(grfid);
 	if (c == nullptr || (c->status != GRFStatus::Initialised && c->status != GRFStatus::Activated)) {
 		GrfMsg(7, "TranslateGRFStrings: GRFID 0x{:08X} unknown, skipping action 13", std::byteswap(grfid));

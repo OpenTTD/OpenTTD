@@ -27,7 +27,7 @@ static void SafeGRFInhibit(ByteReader &buf)
 	uint8_t num = buf.ReadByte();
 
 	for (uint i = 0; i < num; i++) {
-		uint32_t grfid = buf.ReadDWord();
+		GrfID grfid = buf.ReadDWord();
 
 		/* GRF is unsafe it if tries to deactivate other GRFs */
 		if (grfid != _cur_gps.grfconfig->ident.grfid) {
@@ -48,7 +48,7 @@ static void GRFInhibit(ByteReader &buf)
 	uint8_t num = buf.ReadByte();
 
 	for (uint i = 0; i < num; i++) {
-		uint32_t grfid = buf.ReadDWord();
+		GrfID grfid = buf.ReadDWord();
 		GRFConfig *file = GetGRFConfig(grfid);
 
 		/* Unset activation flag */

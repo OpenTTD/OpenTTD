@@ -157,7 +157,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec &&as)
 		overridden_as->grf_prop.override_id = airport_id;
 		overridden_as->enabled = false;
 		this->entity_overrides[i] = this->invalid_id;
-		this->grfid_overrides[i] = 0;
+		this->grfid_overrides[i] = {};
 	}
 }
 
@@ -214,7 +214,7 @@ uint32_t AirportResolverObject::GetDebugID() const
 		if (value == 0) return;
 
 		/* Create storage on first modification. */
-		uint32_t grfid = (this->ro.grffile != nullptr) ? this->ro.grffile->grfid : 0;
+		GrfID grfid = (this->ro.grffile != nullptr) ? this->ro.grffile->grfid : GrfID{};
 		assert(PersistentStorage::CanAllocateItem());
 		this->st->airport.psa = PersistentStorage::Create(grfid, GrfSpecFeature::Airports, this->st->airport.tile);
 	}

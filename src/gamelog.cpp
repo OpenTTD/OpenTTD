@@ -107,7 +107,7 @@ void Gamelog::Reset()
  * @param md5sum array of md5sum to print, if known
  * @param gc GrfConfig, if known
  */
-static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, uint32_t grfid, const MD5Hash *md5sum, const GRFConfig *gc)
+static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, GrfID grfid, const MD5Hash *md5sum, const GRFConfig *gc)
 {
 	if (md5sum != nullptr) {
 		fmt::format_to(output_iterator, "GRF ID {:08X}, checksum {}", std::byteswap(grfid), FormatArrayAsHex(*md5sum));
@@ -463,7 +463,7 @@ void Gamelog::TestMode()
  * @param bug type of bug, @see enum GRFBugs
  * @param data additional data
  */
-void Gamelog::GRFBug(uint32_t grfid, ::GRFBug bug, uint64_t data)
+void Gamelog::GRFBug(GrfID grfid, ::GRFBug bug, uint64_t data)
 {
 	assert(this->action_type == GamelogActionType::GRFBug);
 
@@ -479,7 +479,7 @@ void Gamelog::GRFBug(uint32_t grfid, ::GRFBug bug, uint64_t data)
  * @param internal_id the internal ID of whatever's broken in the NewGRF
  * @return true iff a unique record was done
  */
-bool Gamelog::GRFBugReverse(uint32_t grfid, uint16_t internal_id)
+bool Gamelog::GRFBugReverse(GrfID grfid, uint16_t internal_id)
 {
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {
@@ -514,7 +514,7 @@ static inline bool IsLoggableGrfConfig(const GRFConfig &g)
  * Logs removal of a GRF
  * @param grfid ID of removed GRF
  */
-void Gamelog::GRFRemove(uint32_t grfid)
+void Gamelog::GRFRemove(GrfID grfid)
 {
 	assert(this->action_type == GamelogActionType::Load || this->action_type == GamelogActionType::GRF);
 
@@ -551,7 +551,7 @@ void Gamelog::GRFCompatible(const GRFIdentifier &newg)
  * @param grfid GRF that is moved
  * @param offset how far it is moved, positive = moved down
  */
-void Gamelog::GRFMove(uint32_t grfid, int32_t offset)
+void Gamelog::GRFMove(GrfID grfid, int32_t offset)
 {
 	assert(this->action_type == GamelogActionType::GRF);
 
@@ -563,7 +563,7 @@ void Gamelog::GRFMove(uint32_t grfid, int32_t offset)
  * Details about parameters changed are not stored
  * @param grfid ID of GRF to store
  */
-void Gamelog::GRFParameters(uint32_t grfid)
+void Gamelog::GRFParameters(GrfID grfid)
 {
 	assert(this->action_type == GamelogActionType::GRF);
 

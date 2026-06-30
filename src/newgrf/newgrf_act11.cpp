@@ -24,7 +24,7 @@
 static void ImportGRFSound(SoundEntry *sound)
 {
 	const GRFFile *file;
-	uint32_t grfid = _cur_gps.file->ReadDword();
+	GrfID grfid = _cur_gps.file->ReadDword();
 	SoundID sound_id = _cur_gps.file->ReadWord();
 
 	file = GetFileByGRFID(grfid);

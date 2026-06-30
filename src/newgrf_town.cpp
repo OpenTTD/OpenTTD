@@ -44,7 +44,7 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 		/* Get a variable from the persistent storage */
 		case 0x7C: {
 			/* Check the persistent storage for the GrfID stored in register 100h. */
-			uint32_t grfid = static_cast<uint32_t>(this->ro.GetRegister(0x100));
+			GrfID grfid = static_cast<uint32_t>(this->ro.GetRegister(0x100));
 			if (grfid == 0xFFFFFFFF) {
 				if (this->ro.grffile == nullptr) return 0;
 				grfid = this->ro.grffile->grfid;
@@ -140,7 +140,7 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 	if (this->ro.grffile == nullptr) return;
 
 	/* Check the persistent storage for the GrfID stored in register 100h. */
-	uint32_t grfid = static_cast<uint32_t>(this->ro.GetRegister(0x100));
+	GrfID grfid = static_cast<uint32_t>(this->ro.GetRegister(0x100));
 
 	/* A NewGRF can only write in the persistent storage associated to its own GRFID. */
 	if (grfid == 0xFFFFFFFF) grfid = this->ro.grffile->grfid;

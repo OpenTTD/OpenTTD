@@ -92,7 +92,7 @@ static void PickerLoadConfig(const IniFile &ini, PickerCallbacks &callbacks)
 			if (!ConvertHexToBytes(grfid_str, grfid_buf)) continue;
 
 			str = str.substr(grfid_pos + 1);
-			uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
+			GrfID grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 			uint16_t localid;
 			auto [ptr, err] = std::from_chars(str.data(), str.data() + str.size(), localid);
 

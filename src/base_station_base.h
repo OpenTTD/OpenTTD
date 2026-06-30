@@ -22,7 +22,7 @@ extern StationPool _station_pool;
 template <typename T>
 struct SpecMapping {
 	const T *spec = nullptr; ///< Custom spec.
-	uint32_t grfid = 0; ///< GRF ID of this custom spec.
+	GrfID grfid{}; ///< GRF ID of this custom spec.
 	uint16_t localidx = 0; ///< Local ID within GRF of this custom spec.
 };
 

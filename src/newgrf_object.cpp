@@ -170,7 +170,7 @@ template class NewGRFClass<ObjectSpec, ObjectClassID>;
  * @param cur_grfid GRFID of the current callback chain
  * @return value encoded as per NFO specs
  */
-static uint32_t GetObjectIDAtOffset(TileIndex tile, uint32_t cur_grfid)
+static uint32_t GetObjectIDAtOffset(TileIndex tile, GrfID cur_grfid)
 {
 	if (!IsTileType(tile, TileType::Object)) {
 		return 0xFFFF;
@@ -235,7 +235,7 @@ static uint32_t GetClosestObject(TileIndex tile, ObjectType type, const Object *
  * @param current  Object for which the inquiry is made
  * @return The formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &object, uint8_t local_id, uint32_t grfid, TileIndex tile, const Object *current)
+static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &object, uint8_t local_id, GrfID grfid, TileIndex tile, const Object *current)
 {
 	uint32_t grf_id = static_cast<uint32_t>(object.GetRegister(0x100)); // Get the GRFID of the definition to look for in register 100h
 	uint32_t idx;

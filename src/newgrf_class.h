@@ -10,6 +10,7 @@
 #ifndef NEWGRF_CLASS_H
 #define NEWGRF_CLASS_H
 
+#include "newgrf_type.h"
 #include "strings_type.h"
 
 /** Base for each type of NewGRF spec to be used with NewGRFClass. */
@@ -95,7 +96,7 @@ public:
 	static uint GetUIClassCount();
 	static NewGRFClass *Get(Tindex class_index);
 
-	static const Tspec *GetByGrf(uint32_t grfid, uint16_t local_id);
+	static const Tspec *GetByGrf(GrfID grfid, uint16_t local_id);
 };
 
 #endif /* NEWGRF_CLASS_H */
