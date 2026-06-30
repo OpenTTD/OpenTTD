@@ -53,7 +53,7 @@ static ChangeInfoResult LoadTranslationTable(uint first, uint last, ByteReader &
 	translation_table.clear();
 	translation_table.reserve(last);
 	for (uint id = first; id < last; ++id) {
-		translation_table.push_back(T(std::byteswap(buf.ReadDWord())));
+		translation_table.push_back(buf.ReadLabel<T>());
 	}
 
 	GRFFile *grf_override = GetCurrentGRFOverride();

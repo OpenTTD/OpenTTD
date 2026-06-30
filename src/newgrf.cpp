@@ -701,28 +701,22 @@ static void CalculateRefitMasks()
 					_gted[engine].cargo_disallowed = {CargoClass::Liquid};
 				} else if (e->type == VehicleType::Ship) {
 					CargoLabel label = GetActiveCargoLabel(ei->cargo_label);
-					switch (label.base()) {
-						case CT_PASSENGERS.base():
-							/* Ferries */
-							_gted[engine].cargo_allowed = {CargoClass::Passengers};
-							_gted[engine].cargo_disallowed = {};
-							break;
-						case CT_OIL.base():
-							/* Tankers */
-							_gted[engine].cargo_allowed = {CargoClass::Liquid};
-							_gted[engine].cargo_disallowed = {};
-							break;
-						default:
-							/* Cargo ships */
-							if (_settings_game.game_creation.landscape == LandscapeType::Toyland) {
-								/* No tanker in toyland :( */
-								_gted[engine].cargo_allowed = {CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
-								_gted[engine].cargo_disallowed = {CargoClass::Passengers};
-							} else {
-								_gted[engine].cargo_allowed = {CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods};
-								_gted[engine].cargo_disallowed = {CargoClass::Liquid, CargoClass::Passengers};
-							}
-							break;
+					if (label == CT_PASSENGERS) {
+						/* Ferries */
+						_gted[engine].cargo_allowed = {CargoClass::Passengers};
+						_gted[engine].cargo_disallowed = {};
+					} else if (label == CT_OIL) {
+						/* Tankers */
+						_gted[engine].cargo_allowed = {CargoClass::Liquid};
+						_gted[engine].cargo_disallowed = {};
+					} else if (_settings_game.game_creation.landscape == LandscapeType::Toyland) {
+						/* No tanker in toyland :( so include liquids in the cargo ships */
+						_gted[engine].cargo_allowed = {CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods, CargoClass::Liquid};
+						_gted[engine].cargo_disallowed = {CargoClass::Passengers};
+					} else {
+						/* Cargo ships */
+						_gted[engine].cargo_allowed = {CargoClass::Mail, CargoClass::Armoured, CargoClass::Express, CargoClass::Bulk, CargoClass::PieceGoods};
+						_gted[engine].cargo_disallowed = {CargoClass::Liquid, CargoClass::Passengers};
 					}
 					e->VehInfo<ShipVehicleInfo>().old_refittable = true;
 				} else if (e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) {
@@ -945,10 +939,12 @@ void FinaliseCargoArray()
 	for (CargoSpec &cs : CargoSpec::array) {
 		if (cs.town_production_effect == TownProductionEffect::Invalid) {
 			/* Set default town production effect by cargo label. */
-			switch (cs.label.base()) {
-				case CT_PASSENGERS.base(): cs.town_production_effect = TownProductionEffect::Passengers; break;
-				case CT_MAIL.base():       cs.town_production_effect = TownProductionEffect::Mail; break;
-				default:                   cs.town_production_effect = TownProductionEffect::None; break;
+			if (cs.label == CT_PASSENGERS) {
+				cs.town_production_effect = TownProductionEffect::Passengers;
+			} else if (cs.label == CT_MAIL) {
+				cs.town_production_effect = TownProductionEffect::Mail;
+			} else {
+				cs.town_production_effect = TownProductionEffect::None;
 			}
 		}
 		if (!cs.IsValid()) {

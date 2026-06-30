@@ -76,7 +76,7 @@ GrfSpecFeature RailTypeResolverObject::GetFeature() const
 
 uint32_t RailTypeResolverObject::GetDebugID() const
 {
-	return this->railtype_scope.rti->label;
+	return FlattenNewGRFLabel(this->railtype_scope.rti->label);
 }
 
 /**
@@ -152,7 +152,7 @@ RailType GetRailTypeTranslation(uint8_t railtype, const GRFFile *grffile)
 {
 	if (grffile == nullptr || grffile->railtype_list.empty()) {
 		/* No railtype table present. Return railtype as-is (if valid), so it works for original railtypes. */
-		if (railtype >= RAILTYPE_END || GetRailTypeInfo(static_cast<RailType>(railtype))->label == 0) return INVALID_RAILTYPE;
+		if (railtype >= RAILTYPE_END || GetRailTypeInfo(static_cast<RailType>(railtype))->label.Empty()) return INVALID_RAILTYPE;
 
 		return static_cast<RailType>(railtype);
 	} else {
@@ -205,7 +205,7 @@ void ConvertRailTypes()
 		railtype_conversion_map.push_back(rt);
 
 		/* Conversion is needed if the rail type is in a different position than the list. */
-		if (it->label != 0 && rt != std::distance(std::begin(_railtype_list), it)) needs_conversion = true;
+		if (!it->label.Empty() && rt != std::distance(std::begin(_railtype_list), it)) needs_conversion = true;
 	}
 
 	if (!needs_conversion) return;

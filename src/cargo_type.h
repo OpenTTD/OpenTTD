@@ -10,11 +10,11 @@
 #ifndef CARGO_TYPE_H
 #define CARGO_TYPE_H
 
-#include "core/strong_typedef_type.hpp"
+#include "core/label_type.hpp"
 #include "core/enum_type.hpp"
 
 /** Globally unique label of a cargo type. */
-using CargoLabel = StrongType::Typedef<uint32_t, struct CargoLabelTag, StrongType::Compare>;
+using CargoLabel = Label<struct CargoLabelTag>;
 
 /**
  * Cargo slots to indicate a cargo type within a game.
@@ -28,48 +28,48 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(CargoType)
  */
 
 /* Temperate */
-static constexpr CargoLabel CT_PASSENGERS{'PASS'};
-static constexpr CargoLabel CT_COAL{'COAL'};
-static constexpr CargoLabel CT_MAIL{'MAIL'};
-static constexpr CargoLabel CT_OIL{'OIL_'};
-static constexpr CargoLabel CT_LIVESTOCK{'LVST'};
-static constexpr CargoLabel CT_GOODS{'GOOD'};
-static constexpr CargoLabel CT_GRAIN{'GRAI'};
-static constexpr CargoLabel CT_WOOD{'WOOD'};
-static constexpr CargoLabel CT_IRON_ORE{'IORE'};
-static constexpr CargoLabel CT_STEEL{'STEL'};
-static constexpr CargoLabel CT_VALUABLES{'VALU'};
+static constexpr CargoLabel CT_PASSENGERS{"PASS"};
+static constexpr CargoLabel CT_COAL{"COAL"};
+static constexpr CargoLabel CT_MAIL{"MAIL"};
+static constexpr CargoLabel CT_OIL{"OIL_"};
+static constexpr CargoLabel CT_LIVESTOCK{"LVST"};
+static constexpr CargoLabel CT_GOODS{"GOOD"};
+static constexpr CargoLabel CT_GRAIN{"GRAI"};
+static constexpr CargoLabel CT_WOOD{"WOOD"};
+static constexpr CargoLabel CT_IRON_ORE{"IORE"};
+static constexpr CargoLabel CT_STEEL{"STEL"};
+static constexpr CargoLabel CT_VALUABLES{"VALU"};
 
 /* Arctic */
-static constexpr CargoLabel CT_WHEAT{'WHEA'};
-static constexpr CargoLabel CT_PAPER{'PAPR'};
-static constexpr CargoLabel CT_GOLD{'GOLD'};
-static constexpr CargoLabel CT_FOOD{'FOOD'};
+static constexpr CargoLabel CT_WHEAT{"WHEA"};
+static constexpr CargoLabel CT_PAPER{"PAPR"};
+static constexpr CargoLabel CT_GOLD{"GOLD"};
+static constexpr CargoLabel CT_FOOD{"FOOD"};
 
 /* Tropic */
-static constexpr CargoLabel CT_RUBBER{'RUBR'};
-static constexpr CargoLabel CT_FRUIT{'FRUT'};
-static constexpr CargoLabel CT_MAIZE{'MAIZ'};
-static constexpr CargoLabel CT_COPPER_ORE{'CORE'};
-static constexpr CargoLabel CT_WATER{'WATR'};
-static constexpr CargoLabel CT_DIAMONDS{'DIAM'};
+static constexpr CargoLabel CT_RUBBER{"RUBR"};
+static constexpr CargoLabel CT_FRUIT{"FRUT"};
+static constexpr CargoLabel CT_MAIZE{"MAIZ"};
+static constexpr CargoLabel CT_COPPER_ORE{"CORE"};
+static constexpr CargoLabel CT_WATER{"WATR"};
+static constexpr CargoLabel CT_DIAMONDS{"DIAM"};
 
 /* Toyland */
-static constexpr CargoLabel CT_SUGAR{'SUGR'};
-static constexpr CargoLabel CT_TOYS{'TOYS'};
-static constexpr CargoLabel CT_BATTERIES{'BATT'};
-static constexpr CargoLabel CT_CANDY{'SWET'};
-static constexpr CargoLabel CT_TOFFEE{'TOFF'};
-static constexpr CargoLabel CT_COLA{'COLA'};
-static constexpr CargoLabel CT_COTTON_CANDY{'CTCD'};
-static constexpr CargoLabel CT_BUBBLES{'BUBL'};
-static constexpr CargoLabel CT_PLASTIC{'PLST'};
-static constexpr CargoLabel CT_FIZZY_DRINKS{'FZDR'};
+static constexpr CargoLabel CT_SUGAR{"SUGR"};
+static constexpr CargoLabel CT_TOYS{"TOYS"};
+static constexpr CargoLabel CT_BATTERIES{"BATT"};
+static constexpr CargoLabel CT_CANDY{"SWET"};
+static constexpr CargoLabel CT_TOFFEE{"TOFF"};
+static constexpr CargoLabel CT_COLA{"COLA"};
+static constexpr CargoLabel CT_COTTON_CANDY{"CTCD"};
+static constexpr CargoLabel CT_BUBBLES{"BUBL"};
+static constexpr CargoLabel CT_PLASTIC{"PLST"};
+static constexpr CargoLabel CT_FIZZY_DRINKS{"FZDR"};
 
 /** Dummy label for engines that carry no cargo; they actually carry 0 passengers. */
 static constexpr CargoLabel CT_NONE = CT_PASSENGERS;
 
-static constexpr CargoLabel CT_INVALID{UINT32_MAX}; ///< Invalid cargo type.
+static constexpr CargoLabel CT_INVALID{"\xFF\xFF\xFF\xFF"}; ///< Invalid cargo type.
 
 static constexpr CargoType NUM_ORIGINAL_CARGO{12}; ///< Original number of cargo types.
 static constexpr CargoType NUM_CARGO{64}; ///< Maximum number of cargo types in a game.

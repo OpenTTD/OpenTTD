@@ -31,7 +31,7 @@ GrfSpecFeature CargoResolverObject::GetFeature() const
 
 uint32_t CargoResolverObject::GetDebugID() const
 {
-	return this->cargospec->label.base();
+	return FlattenNewGRFLabel(this->cargospec->label);
 }
 
 /**

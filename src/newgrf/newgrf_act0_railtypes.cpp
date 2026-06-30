@@ -83,8 +83,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 				 * default rail types. */
 				int n = buf.ReadByte();
 				for (int j = 0; j != n; j++) {
-					RailTypeLabel label = buf.ReadDWord();
-					RailType resolved_rt = GetRailTypeByLabel(std::byteswap(label), false);
+					RailType resolved_rt = GetRailTypeByLabel(buf.ReadLabel<RailTypeLabel>(), false);
 					if (resolved_rt != INVALID_RAILTYPE) {
 						switch (prop) {
 							case 0x0F: rti->powered_railtypes.Set(resolved_rt);               [[fallthrough]]; // Powered implies compatible.
@@ -175,9 +174,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 		switch (prop) {
 			case 0x08: // Label of rail type
 			{
-				RailTypeLabel rtl = buf.ReadDWord();
-				rtl = std::byteswap(rtl);
-
+				RailTypeLabel rtl = buf.ReadLabel<RailTypeLabel>();
 				RailType rt = GetRailTypeByLabel(rtl, false);
 				if (rt == INVALID_RAILTYPE) {
 					/* Set up new rail type */
@@ -204,7 +201,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 				if (type_map[id] != INVALID_RAILTYPE) {
 					int n = buf.ReadByte();
 					for (int j = 0; j != n; j++) {
-						_railtypes[type_map[id]].alternate_labels.insert(std::byteswap(buf.ReadDWord()));
+						_railtypes[type_map[id]].alternate_labels.insert(buf.ReadLabel<RailTypeLabel>());
 					}
 					break;
 				}

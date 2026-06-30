@@ -2792,22 +2792,6 @@ static bool ConFramerateWindow(std::span<std::string_view> argv)
 	return true;
 }
 
-/**
- * Format a label as a string.
- * If all elements are visible ASCII (excluding space) then the label will be formatted as a string of 4 characters,
- * otherwise it will be output as an 8-digit hexadecimal value.
- * @param label Label to format.
- * @return string representation of label.
- **/
-static std::string FormatLabel(uint32_t label)
-{
-	if (std::isgraph(GB(label, 24, 8)) && std::isgraph(GB(label, 16, 8)) && std::isgraph(GB(label, 8, 8)) && std::isgraph(GB(label, 0, 8))) {
-		return fmt::format("{:c}{:c}{:c}{:c}", GB(label, 24, 8), GB(label, 16, 8), GB(label, 8, 8), GB(label, 0, 8));
-	}
-
-	return fmt::format("{:08X}", label);
-}
-
 /** List all road types and their configuration. */
 static void ConDumpRoadTypes()
 {
@@ -2821,7 +2805,7 @@ static void ConDumpRoadTypes()
 	std::map<uint32_t, const GRFFile *> grfs;
 	for (RoadType rt : EnumRange(ROADTYPE_END)) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
-		if (rti->label == 0) continue;
+		if (rti->label.Empty()) continue;
 		GrfID grfid{};
 		const GRFFile *grf = rti->grffile[RoadSpriteType::Ground];
 		if (grf != nullptr) {
@@ -2831,7 +2815,7 @@ static void ConDumpRoadTypes()
 		IConsolePrint(CC_DEFAULT, "  {:02d} {} {}, Flags: {}{}{}{}{}, GRF: {:08X}, {}",
 				(uint)rt,
 				RoadTypeIsTram(rt) ? "Tram" : "Road",
-				FormatLabel(rti->label),
+				rti->label.AsString(),
 				rti->flags.Test(RoadTypeFlag::Catenary)        ? 'c' : '-',
 				rti->flags.Test(RoadTypeFlag::NoLevelCrossing) ? 'l' : '-',
 				rti->flags.Test(RoadTypeFlag::NoHouses)        ? 'X' : '-',
@@ -2860,7 +2844,7 @@ static void ConDumpRailTypes()
 	std::map<uint32_t, const GRFFile *> grfs;
 	for (RailType rt : EnumRange(RAILTYPE_END)) {
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
-		if (rti->label == 0) continue;
+		if (rti->label.Empty()) continue;
 		GrfID grfid{};
 		const GRFFile *grf = rti->grffile[RailSpriteType::Ground];
 		if (grf != nullptr) {
@@ -2869,7 +2853,7 @@ static void ConDumpRailTypes()
 		}
 		IConsolePrint(CC_DEFAULT, "  {:02d} {}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}",
 				(uint)rt,
-				FormatLabel(rti->label),
+				rti->label.AsString(),
 				rti->flags.Test(RailTypeFlag::Catenary)        ? 'c' : '-',
 				rti->flags.Test(RailTypeFlag::NoLevelCrossing) ? 'l' : '-',
 				rti->flags.Test(RailTypeFlag::Hidden)          ? 'h' : '-',
@@ -2917,7 +2901,7 @@ static void ConDumpCargoTypes()
 		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
 				spec->Index(),
 				spec->bitnum,
-				FormatLabel(spec->label.base()),
+				spec->label.AsString(),
 				spec->callback_mask.base(),
 				spec->classes.Test(CargoClass::Passengers)   ? 'p' : '-',
 				spec->classes.Test(CargoClass::Mail)         ? 'm' : '-',

@@ -57,11 +57,11 @@ static CargoType TranslateCargo(GrfSpecFeature feature, uint8_t ctype)
 
 	CargoType cargo_type = GetCargoTypeByLabel(cl);
 	if (!IsValidCargoType(cargo_type)) {
-		GrfMsg(5, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' unsupported, skipping.", GB(cl.base(), 24, 8), GB(cl.base(), 16, 8), GB(cl.base(), 8, 8), GB(cl.base(), 0, 8));
+		GrfMsg(5, "TranslateCargo: Cargo '{}' unsupported, skipping.", cl.AsString());
 		return INVALID_CARGO;
 	}
 
-	GrfMsg(6, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' mapped to cargo type {}.", GB(cl.base(), 24, 8), GB(cl.base(), 16, 8), GB(cl.base(), 8, 8), GB(cl.base(), 0, 8), cargo_type);
+	GrfMsg(6, "TranslateCargo: Cargo '{}' mapped to cargo type {}.", cl.AsString(), cargo_type);
 	return cargo_type;
 }
 
