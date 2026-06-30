@@ -591,6 +591,14 @@ EngineID EngineOverrideManager::UseUnreservedID(VehicleType type, uint16_t grf_l
 	return it->engine;
 }
 
+/**
+ * Create an override to the given engine. If the override already exists, it will be overwritten.
+ * @param type The vehicle type.
+ * @param grf_local_id The NewGRF internal identifier.
+ * @param grfid The unique identifier of the NewGRF.
+ * @param substitute_id The fallback original engine.
+ * @param engine The engine this override is for.
+ */
 void EngineOverrideManager::SetID(VehicleType type, uint16_t grf_local_id, GrfID grfid, uint8_t substitute_id, EngineID engine)
 {
 	auto &map = this->mappings[type];

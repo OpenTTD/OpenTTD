@@ -24,6 +24,11 @@
 static std::vector<GRFTownName> _grf_townnames;
 static std::vector<StringID> _grf_townname_names;
 
+/**
+ * Get the \c GRFTownName for the given GRFID.
+ * @param grfid The GRFID of the town name.
+ * @return The \c GRFTownName or \c nullptr if it does not exist.
+ */
 GRFTownName *GetGRFTownName(GrfID grfid)
 {
 	auto found = std::ranges::find(_grf_townnames, grfid, &GRFTownName::grfid);
@@ -31,6 +36,11 @@ GRFTownName *GetGRFTownName(GrfID grfid)
 	return nullptr;
 }
 
+/**
+ * Get the \c GRFTownName for the given GRFID or allocate one if it does not exist.
+ * @param grfid The GRFID of the town name.
+ * @return The \c GRFTownName.
+ */
 GRFTownName *AddGRFTownName(GrfID grfid)
 {
 	GRFTownName *t = GetGRFTownName(grfid);
@@ -41,6 +51,10 @@ GRFTownName *AddGRFTownName(GrfID grfid)
 	return t;
 }
 
+/**
+ * Remove the \c GRFTownName mapping for the given GRFID.
+ * @param grfid The NewGRF to remove for.
+ */
 void DelGRFTownName(GrfID grfid)
 {
 	_grf_townnames.erase(std::ranges::find(_grf_townnames, grfid, &GRFTownName::grfid));
@@ -66,6 +80,13 @@ static void RandomPart(StringBuilder &builder, const GRFTownName *t, uint32_t se
 	}
 }
 
+/**
+ * Construct a NewGRF town name into the builder.
+ * @param builder The string builder to write to.
+ * @param grfid The NewGRF providing the information/logic.
+ * @param gen The town name style to get from the NewGRF.
+ * @param seed The random 32 bit number to generate the town name for.
+ */
 void GRFTownNameGenerate(StringBuilder &builder, GrfID grfid, uint16_t gen, uint32_t seed)
 {
 	const GRFTownName *t = GetGRFTownName(grfid);

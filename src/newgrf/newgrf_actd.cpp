@@ -132,6 +132,15 @@ static uint32_t GetPatchVariable(uint8_t param)
 	}
 }
 
+/**
+ * Performs the GRF Resource Management, where NewGRFs can cooperatively manage sprite resources.
+ * @param grm Mapping to the NewGRF linked with a resource.
+ * @param count The number of elements to process.
+ * @param op The operation to perform.
+ * @param target The target for the operation.
+ * @param type Name of type for debug messages.
+ * @return Operation/target specific result.
+ */
 static uint32_t PerformGRM(std::span<GrfID> grm, uint16_t count, uint8_t op, uint8_t target, std::string_view type)
 {
 	uint start = 0;

@@ -136,6 +136,12 @@ void ResetHouseClassIDs()
 	_class_mapping.emplace_back();
 }
 
+/**
+ * Allocate a house class for the given NewGRF and ID.
+ * @param grf_class_id The class id within the NewGRF.
+ * @param grfid The GRF this class belongs to.
+ * @return The existing allocation, or a new one when it did not exist yet.
+ */
 HouseClassID AllocateHouseClassID(uint8_t grf_class_id, GrfID grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */
