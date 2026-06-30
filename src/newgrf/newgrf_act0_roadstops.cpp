@@ -88,15 +88,13 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 		}
 
 		switch (prop) {
-			case 0x08: { // Road Stop Class ID
+			case 0x08: // Road Stop Class ID
 				if (rs == nullptr) {
 					rs = std::make_unique<RoadStopSpec>();
 				}
 
-				uint32_t classid = buf.ReadDWord();
-				rs->class_index = RoadStopClass::Allocate(std::byteswap(classid));
+				rs->class_index = RoadStopClass::Allocate(buf.ReadLabel<RoadStopClass::GlobalID>());
 				break;
-			}
 
 			case 0x09: // Road stop type
 				rs->stop_type = (RoadStopAvailabilityType)buf.ReadByte();
