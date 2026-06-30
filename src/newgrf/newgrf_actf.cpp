@@ -30,7 +30,7 @@ static void FeatureTownName(ByteReader &buf)
 	 * B num-parts   Number of parts in this definition
 	 * V parts       The parts */
 
-	uint32_t grfid = _cur_gps.grffile->grfid;
+	GrfID grfid = _cur_gps.grffile->grfid;
 
 	GRFTownName *townname = AddGRFTownName(grfid);
 

@@ -38,7 +38,7 @@ IndustryTileOverrideManager _industile_mngr(NEW_INDUSTRYTILEOFFSET, NUM_INDUSTRY
  * @param grf_id The GRF of the local type.
  * @return The industry type in the global scope.
  */
-IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32_t grf_id)
+IndustryType MapNewGRFIndustryType(IndustryType grf_type, GrfID grf_id)
 {
 	if (grf_type == IT_INVALID) return IT_INVALID;
 	if (!HasBit(grf_type, 7)) return GB(grf_type, 0, 7);
@@ -54,7 +54,7 @@ IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32_t grf_id)
  * @param cur_grfid GRFID of the current callback chain
  * @return value encoded as per NFO specs
  */
-uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_grfid)
+uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, GrfID cur_grfid)
 {
 	if (!i->TileBelongsToIndustry(tile)) {
 		/* No industry and/or the tile does not have the same industry as the one we match it with */

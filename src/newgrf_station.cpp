@@ -371,7 +371,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 
 			if (!HasStationTileRail(nearby_tile)) return 0xFFFFFFFF;
 
-			uint32_t grfid = this->st->speclist[GetCustomStationSpecIndex(this->tile)].grfid;
+			GrfID grfid = this->st->speclist[GetCustomStationSpecIndex(this->tile)].grfid;
 			bool perpendicular = GetRailStationAxis(this->tile) != GetRailStationAxis(nearby_tile);
 			bool same_station = this->st->TileBelongsToRailStation(nearby_tile);
 			uint32_t res = GB(GetStationGfx(nearby_tile), 1, 2) << 12 | !!perpendicular << 11 | !!same_station << 10;
@@ -399,7 +399,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 			if (!HasStationTileRail(nearby_tile)) return 0xFFFFFFFF;
 			if (!IsCustomStationSpecIndex(nearby_tile)) return 0xFFFE;
 
-			uint32_t grfid = this->st->speclist[GetCustomStationSpecIndex(this->tile)].grfid;
+			GrfID grfid = this->st->speclist[GetCustomStationSpecIndex(this->tile)].grfid;
 
 			const auto &sm = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
 			if (sm.grfid == grfid) {
@@ -788,7 +788,7 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 
 	/* This specindex is no longer in use, so deallocate it */
 	st->speclist[specindex].spec     = nullptr;
-	st->speclist[specindex].grfid    = 0;
+	st->speclist[specindex].grfid = {};
 	st->speclist[specindex].localidx = 0;
 
 	/* If this was the highest spec index, reallocate */

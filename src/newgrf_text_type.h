@@ -11,6 +11,7 @@
 #define NEWGRF_TEXT_TYPE_H
 
 #include "core/strong_typedef_type.hpp"
+#include "newgrf_type.h"
 
 /** Type for GRF-internal string IDs. */
 using GRFStringID = StrongType::Typedef<uint32_t, struct GRFStringIDTag, StrongType::Compare, StrongType::Integer>;
@@ -65,7 +66,7 @@ struct LanguageMap {
 
 	int GetMapping(int newgrf_id, bool gender) const;
 	int GetReverseMapping(int openttd_id, bool gender) const;
-	static const LanguageMap *GetLanguageMap(uint32_t grfid, GRFLanguage language_id);
+	static const LanguageMap *GetLanguageMap(GrfID grfid, GRFLanguage language_id);
 };
 
 #endif /* NEWGRF_TEXT_TYPE_H */

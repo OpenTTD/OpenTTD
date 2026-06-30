@@ -21,7 +21,7 @@ typedef std::set<std::string> TownNames;
  * Speeds things up a bit because these values are computed only once per name generation.
  */
 struct TownNameParams {
-	uint32_t grfid; ///< newgrf ID (0 if not used)
+	GrfID grfid; ///< newgrf ID (0 if not used)
 	uint16_t type;  ///< town name style
 
 	/**
@@ -31,7 +31,7 @@ struct TownNameParams {
 	TownNameParams(uint8_t town_name)
 	{
 		bool grf = town_name >= BUILTIN_TOWNNAME_GENERATOR_COUNT;
-		this->grfid = grf ? GetGRFTownNameId(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : 0;
+		this->grfid = grf ? GetGRFTownNameId(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : GrfID{};
 		this->type = grf ? GetGRFTownNameType(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : SPECSTR_TOWNNAME_START + town_name;
 	}
 

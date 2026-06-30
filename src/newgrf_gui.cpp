@@ -573,7 +573,7 @@ void ShowNewGRFTextfileWindow(Window *parent, TextfileType file_type, const GRFC
 	new NewGRFTextfileWindow(parent, file_type, c);
 }
 
-typedef std::map<uint32_t, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
+typedef std::map<GrfID, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
 
 /**
  * Add all grf configs from \a c into the map.

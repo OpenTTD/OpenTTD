@@ -199,7 +199,7 @@ extern GrfProcessingState _cur_gps;
 
 /** A location within a NewGRF, like file:line but in the context of NewGRFs. */
 struct GRFLocation {
-	uint32_t grfid; ///< Identifier of the NewGRF this refers to.
+	GrfID grfid; ///< Identifier of the NewGRF this refers to.
 	uint32_t nfoline; ///< The line of NFO this refers to.
 
 	/**
@@ -217,7 +217,7 @@ extern GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
 extern GrfMiscBits _misc_grf_features;
 
-void SetNewGRFOverride(uint32_t source_grfid, uint32_t target_grfid);
+void SetNewGRFOverride(GrfID source_grfid, GrfID target_grfid);
 GRFFile *GetCurrentGRFOverride();
 
 std::span<const CargoLabel> GetCargoTranslationTable(const GRFFile &grffile);
@@ -231,7 +231,7 @@ void MapSpriteMappingRecolour(PalSpriteID *grf_sprite);
 TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, GrfSpecFeature feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset = nullptr, uint16_t *max_palette_offset = nullptr);
 bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_spritesets, GrfSpecFeature feature, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts);
 
-GRFFile *GetFileByGRFID(uint32_t grfid);
+GRFFile *GetFileByGRFID(GrfID grfid);
 GRFError *DisableGrf(StringID message = {}, GRFConfig *config = nullptr);
 void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig &c);
 bool HandleChangeInfoResult(std::string_view caller, ChangeInfoResult cir, GrfSpecFeature feature, uint8_t property);

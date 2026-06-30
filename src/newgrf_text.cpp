@@ -48,7 +48,7 @@ using OldGRFLanguages = EnumBitSet<GRFLanguage, uint8_t>;
 struct GRFTextEntry {
 	GRFTextList textholder;
 	StringID def_string;
-	uint32_t grfid;
+	GrfID grfid;
 	GRFStringID stringid;
 };
 
@@ -213,7 +213,7 @@ struct UnmappedChoiceList {
  * @param byte80         The control code to use as replacement for the 0x80-value.
  * @return The translated string.
  */
-std::string TranslateTTDPatchCodes(uint32_t grfid, GRFLanguage language_id, bool allow_newlines, std::string_view str, StringControlCode byte80)
+std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool allow_newlines, std::string_view str, StringControlCode byte80)
 {
 	/* Empty input string? Nothing to do here. */
 	if (str.empty()) return {};
@@ -477,7 +477,7 @@ static void AddGRFTextToList(GRFTextList &list, GRFLanguage langid, std::string_
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextList &list, GRFLanguage langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add)
+void AddGRFTextToList(GRFTextList &list, GRFLanguage langid, GrfID grfid, bool allow_newlines, std::string_view text_to_add)
 {
 	AddGRFTextToList(list, langid, TranslateTTDPatchCodes(grfid, langid, allow_newlines, text_to_add));
 }
@@ -491,7 +491,7 @@ void AddGRFTextToList(GRFTextList &list, GRFLanguage langid, uint32_t grfid, boo
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(GRFTextWrapper &list, GRFLanguage langid, uint32_t grfid, bool allow_newlines, std::string_view text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, GRFLanguage langid, GrfID grfid, bool allow_newlines, std::string_view text_to_add)
 {
 	if (list == nullptr) list = std::make_shared<GRFTextList>();
 	AddGRFTextToList(*list, langid, grfid, allow_newlines, text_to_add);
@@ -519,7 +519,7 @@ void AddGRFTextToList(GRFTextWrapper &list, std::string_view text_to_add)
  * @param def_string The fallback string if a translation for this string isn't available.
  * @return The OpenTTD internal string identifier.
  */
-static StringID AddGRFString(uint32_t grfid, GRFStringID stringid, GRFLanguage langid_to_add, bool allow_newlines, std::string_view text_to_add, StringID def_string)
+static StringID AddGRFString(GrfID grfid, GRFStringID stringid, GRFLanguage langid_to_add, bool allow_newlines, std::string_view text_to_add, StringID def_string)
 {
 	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
 	if (it == std::end(_grf_text)) {
@@ -553,7 +553,7 @@ static StringID AddGRFString(uint32_t grfid, GRFStringID stringid, GRFLanguage l
  * @param def_string The fallback string if a translation for this string isn't available.
  * @return The OpenTTD internal string identifier.
  */
-StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
+StringID AddGRFString(GrfID grfid, GRFStringID stringid, uint8_t langid_to_add, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string)
 {
 	if (new_scheme) return AddGRFString(grfid, stringid, static_cast<GRFLanguage>(langid_to_add), allow_newlines, text_to_add, def_string);
 
@@ -580,7 +580,7 @@ StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_ad
  * @param stringid The GRF-local identifier of the string.
  * @return The string identifier, or STR_UNDEFINED when it can't be found.
  */
-StringID GetGRFStringID(uint32_t grfid, GRFStringID stringid)
+StringID GetGRFStringID(GrfID grfid, GRFStringID stringid)
 {
 	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
 	if (it != std::end(_grf_text)) {

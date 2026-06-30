@@ -1116,7 +1116,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 					if (has_md5sum) item_name = item_name.substr(md5sum_pos + 1);
 				}
 
-				uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
+				GrfID grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 				if (has_md5sum) {
 					const GRFConfig *s = FindGRFConfig(grfid, FindGRFConfigMode::Exact, &md5sum);
 					if (s != nullptr) c = std::make_unique<GRFConfig>(*s);

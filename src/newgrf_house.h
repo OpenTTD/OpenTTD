@@ -85,12 +85,12 @@ struct HouseResolverObject : public SpecializedResolverObject<HouseRandomTrigger
  * need to be persistent; it just needs to keep class ids unique.
  */
 struct HouseClassMapping {
-	uint32_t grfid;     ///< The GRF ID of the file this class belongs to
+	GrfID grfid;     ///< The GRF ID of the file this class belongs to
 	uint8_t  class_id;  ///< The class id within the grf file
 };
 
 void ResetHouseClassIDs();
-HouseClassID AllocateHouseClassID(uint8_t grf_class_id, uint32_t grfid);
+HouseClassID AllocateHouseClassID(uint8_t grf_class_id, GrfID grfid);
 
 void InitializeBuildingCounts();
 void InitializeBuildingCounts(Town *t);

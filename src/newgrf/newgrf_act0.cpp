@@ -256,7 +256,7 @@ static void SafeChangeInfo(ByteReader &buf)
 		if (prop == 0x11) {
 			bool is_safe = true;
 			for (uint i = 0; i < numinfo; i++) {
-				uint32_t s = buf.ReadDWord();
+				GrfID s = buf.ReadDWord();
 				buf.ReadDWord(); // dest
 				const GRFConfig *grfconfig = GetGRFConfig(s);
 				if (grfconfig != nullptr && !grfconfig->flags.Test(GRFConfigFlag::Static)) {

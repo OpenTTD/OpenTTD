@@ -136,7 +136,7 @@ void ResetHouseClassIDs()
 	_class_mapping.emplace_back();
 }
 
-HouseClassID AllocateHouseClassID(uint8_t grf_class_id, uint32_t grfid)
+HouseClassID AllocateHouseClassID(uint8_t grf_class_id, GrfID grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */
 	auto it = std::find_if(std::next(std::begin(_class_mapping)), std::end(_class_mapping), [grf_class_id, grfid](const HouseClassMapping &map) { return map.class_id == grf_class_id && map.grfid == grfid; });
