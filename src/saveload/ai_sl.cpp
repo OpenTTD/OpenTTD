@@ -73,7 +73,7 @@ static void SaveReal_AIPL(int arg)
 }
 
 struct AIPLChunkHandler : ChunkHandler {
-	AIPLChunkHandler() : ChunkHandler('AIPL', ChunkType::Table) {}
+	AIPLChunkHandler() : ChunkHandler("AIPL", ChunkType::Table) {}
 
 	void Load() const override
 	{
