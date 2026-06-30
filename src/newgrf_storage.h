@@ -198,6 +198,13 @@ extern PersistentStoragePool _persistent_storage_pool;
  * Class for pooled persistent storage of data.
  */
 struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
+	/**
+	 * Create the pooled storage.
+	 * @param index The unique identifier of the pool item.
+	 * @param grfid The NewGRF this storage is of.
+	 * @param feature The feature associated with this storage.
+	 * @param tile The tile associated with this storage.
+	 */
 	PersistentStorage(PersistentStorageID index, GrfID grfid, GrfSpecFeature feature, TileIndex tile) : PersistentStoragePool::PoolItem<&_persistent_storage_pool>(index)
 	{
 		this->grfid = grfid;

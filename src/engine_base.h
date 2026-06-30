@@ -207,11 +207,31 @@ struct EngineIDMapping {
 	uint8_t substitute_id = 0; ///< The (original) entity ID to use if this GRF is not available (currently not used)
 	EngineID engine{};
 
+	/**
+	 * Create a 64 bit key from the GRFID and internal ID for mappings.
+	 * @param grfid The NewGRF id.
+	 * @param internal_id The internal ID within the GRF file.
+	 * @return The key.
+	 */
 	static inline uint64_t Key(GrfID grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
 
+	/**
+	 * Create a 64 bit key from this mapping.
+	 * @return The key.
+	 */
 	inline uint64_t Key() const { return Key(this->grfid, this->internal_id); }
 
+	/** Create a new mapping. */
 	EngineIDMapping() {}
+
+	/**
+	 * Create the mapping.
+	 * @param grfid The unique identifer of the NewGRF.
+	 * @param internal_id The internal identifier of the engine within the NewGRF.
+	 * @param type The vehicle type.
+	 * @param substitute_id The original vehicle to fall back to.
+	 * @param engine The engine the mapping is for.
+	 */
 	EngineIDMapping(GrfID grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine)
 		: grfid(grfid), internal_id(internal_id), type(type), substitute_id(substitute_id), engine(engine) {}
 };
