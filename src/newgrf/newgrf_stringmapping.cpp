@@ -27,8 +27,6 @@ struct StringIDMapping {
 	uint32_t grfid; ///< Source NewGRF.
 	GRFStringID source; ///< Source grf-local GRFStringID.
 	std::function<void(StringID)> func; ///< Function for mapping result.
-
-	StringIDMapping(uint32_t grfid, GRFStringID source, std::function<void(StringID)> &&func) : grfid(grfid), source(source), func(std::move(func)) { }
 };
 
 /** Strings to be mapped during load. */
