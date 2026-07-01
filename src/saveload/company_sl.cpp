@@ -318,6 +318,7 @@ public:
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew, SLE_BOOL, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money, SLE_UINT32, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CompanyProperties, settings.backwards_no_cab_speed_limit, SLE_INT16, SaveLoadVersion::TrainsDerail, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length, SLE_BOOL, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
 		/* Default vehicle settings */

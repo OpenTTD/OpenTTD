@@ -433,8 +433,7 @@ int Train::GetCurrentMaxSpeed() const
 
 	/* If the train is going backwards, without a leading cab, restrict its speed. */
 	if (!moving_front->CanLeadTrain()) {
-		constexpr int BACKWARDS_NO_CAB_SPEED_LIMIT = 32;
-		max_speed = std::min<int>(max_speed, BACKWARDS_NO_CAB_SPEED_LIMIT);
+		max_speed = std::min<int>(max_speed, Company::Get(this->owner)->settings.backwards_no_cab_speed_limit);
 	}
 
 	return std::min<int>(max_speed, this->gcache.cached_max_track_speed);
@@ -3120,18 +3119,18 @@ int Train::UpdateSpeed()
 
 	int last_speed = this->gcache.last_speed;
 
-	if (last_speed > 50 && !this->when_next_derail_test) {
-		int is_slowing_down = 1 + (this->cur_speed < last_speed)*3;
-		int over_speed_limit = last_speed-50;
+	if (!this->GetMovingFront()->CanLeadTrain() && last_speed > BACKWARDS_NO_CAB_SPEED_LIMIT && this->when_next_derail_test == 0) {
+		uint16_t slowing_down_factor = (this->cur_speed < last_speed) ? 8 : 2;
+		uint16_t over_speed_limit = last_speed - BACKWARDS_NO_CAB_SPEED_LIMIT;
 
-		int probability = (over_speed_limit*over_speed_limit/100+1) * is_slowing_down * 2;
+		uint16_t probability = (over_speed_limit * over_speed_limit / 100 + 1) * slowing_down_factor;
 
-		if(RandomRange(0b1111111111111111) < (0b1111111111111111 & (probability))) {
+		if (RandomRange(UINT16_MAX) < std::max(static_cast<uint16_t>(UINT16_MAX), probability)) {
 			int num_victims = this->Derail();
 			AddTileNewsItem(GetEncodedString(STR_NEWS_TRAIN_CRASH, num_victims), NewsType::Accident, this->tile);
 			this->ReserveTrackUnderConsist();
 		}
-		this->when_next_derail_test = RandomRange(0xFFFFFFFF);
+		this->when_next_derail_test = RandomRange(UINT32_MAX);
 	}
 
 	return out;

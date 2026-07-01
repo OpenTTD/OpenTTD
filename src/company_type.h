@@ -38,6 +38,8 @@ static const uint MAX_HISTORY_QUARTERS            = 24; ///< The maximum number 
 static const uint MIN_COMPETITORS_INTERVAL = 0;   ///< The minimum interval (in minutes) between competitors.
 static const uint MAX_COMPETITORS_INTERVAL = 500; ///< The maximum interval (in minutes) between competitors.
 
+static constexpr int BACKWARDS_NO_CAB_SPEED_LIMIT = 32; ///< Default maximum backwards speed for no cab trains.
+
 typedef Owner CompanyID;
 
 class CompanyMask : public BaseBitSet<CompanyMask, CompanyID, uint16_t> {
