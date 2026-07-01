@@ -85,15 +85,8 @@ enum GRFPalette : uint8_t {
 
 /** Basic data to distinguish a GRF. Used in the server list window */
 struct GRFIdentifier {
-	uint32_t grfid;     ///< GRF ID (defined by Action 0x08)
-	MD5Hash md5sum;   ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
-
-	GRFIdentifier() = default;
-	GRFIdentifier(const GRFIdentifier &other) = default;
-	GRFIdentifier(GRFIdentifier &&other) = default;
-	GRFIdentifier(uint32_t grfid, const MD5Hash &md5sum) : grfid(grfid), md5sum(md5sum) {}
-
-	GRFIdentifier& operator =(const GRFIdentifier &other) = default;
+	uint32_t grfid; ///< GRF ID (defined by Action 0x08)
+	MD5Hash md5sum; ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
 
 	/**
 	 * Does the identification match the provided values?

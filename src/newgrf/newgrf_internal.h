@@ -197,21 +197,17 @@ public:
 
 extern GrfProcessingState _cur_gps;
 
+/** A location within a NewGRF, like file:line but in the context of NewGRFs. */
 struct GRFLocation {
-	uint32_t grfid;
-	uint32_t nfoline;
+	uint32_t grfid; ///< Identifier of the NewGRF this refers to.
+	uint32_t nfoline; ///< The line of NFO this refers to.
 
-	GRFLocation(uint32_t grfid, uint32_t nfoline) : grfid(grfid), nfoline(nfoline) { }
-
-	bool operator <(const GRFLocation &other) const
-	{
-		return this->grfid < other.grfid || (this->grfid == other.grfid && this->nfoline < other.nfoline);
-	}
-
-	bool operator ==(const GRFLocation &other) const
-	{
-		return this->grfid == other.grfid && this->nfoline == other.nfoline;
-	}
+	/**
+	 * Compare with another location.
+	 * @param other The other location to compare to.
+	 * @return The std::strong_ordering of the comparison.
+	 */
+	constexpr auto operator<=>(const GRFLocation &other) const = default;
 };
 
 using GRFLineToSpriteOverride = std::map<GRFLocation, std::vector<uint8_t>>;
