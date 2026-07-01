@@ -41,7 +41,7 @@ jobs:
         echo "number=$(cat pr/number)" >> $GITHUB_OUTPUT
 
     - name: Publish preview
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.PREVIEW_CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.PREVIEW_CLOUDFLARE_ACCOUNT_ID }}
