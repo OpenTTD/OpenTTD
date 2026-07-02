@@ -24,8 +24,8 @@ struct TempStorage {
 
 /** Description of the #TempStorage structure for the purpose of load and save. */
 static const SaveLoad _cargomonitor_pair_desc[] = {
-	SLE_VAR(TempStorage, number, SLE_UINT32),
-	SLE_VAR(TempStorage, amount, SLE_UINT32),
+	SLE_VAR(TempStorage, number, VarTypes::U32),
+	SLE_VAR(TempStorage, amount, VarTypes::U32),
 };
 
 static CargoMonitorID FixupCargoMonitor(CargoMonitorID number)

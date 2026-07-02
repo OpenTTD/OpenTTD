@@ -117,10 +117,10 @@ void UpdateHousesAndTowns()
 class SlTownOldSupplied : public DefaultSaveLoadHandler<SlTownOldSupplied, Town> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(TransportedCargoStat<uint32_t>, old_max, SLE_UINT32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(TransportedCargoStat<uint32_t>, new_max, SLE_UINT32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(TransportedCargoStat<uint32_t>, old_act, SLE_UINT32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(TransportedCargoStat<uint32_t>, new_act, SLE_UINT32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint32_t>, old_max, VarTypes::U32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint32_t>, new_max, VarTypes::U32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint32_t>, old_act, VarTypes::U32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint32_t>, new_act, VarTypes::U32, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
 	};
 	static inline const SaveLoadCompatTable compat_description = _town_supplied_sl_compat;
 
@@ -158,8 +158,8 @@ public:
 class SlTownSuppliedHistory : public DefaultSaveLoadHandler<SlTownSuppliedHistory, Town::SuppliedCargo> {
 public:
 	static inline const SaveLoad description[] = {
-		 SLE_VAR(Town::SuppliedHistory, production, SLE_UINT32),
-		 SLE_VAR(Town::SuppliedHistory, transported, SLE_UINT32),
+		 SLE_VAR(Town::SuppliedHistory, production, VarTypes::U32),
+		 SLE_VAR(Town::SuppliedHistory, transported, VarTypes::U32),
 	};
 	static inline const SaveLoadCompatTable compat_description = {};
 
@@ -186,7 +186,7 @@ public:
 class SlTownSupplied : public VectorSaveLoadHandler<SlTownSupplied, Town, Town::SuppliedCargo> {
 public:
 	inline static const SaveLoad description[] = {
-		SLE_VAR(Town::SuppliedCargo, cargo, SLE_UINT8),
+		SLE_VAR(Town::SuppliedCargo, cargo, VarTypes::U8),
 		SLEG_STRUCTLIST("history", SlTownSuppliedHistory),
 	};
 	inline const static SaveLoadCompatTable compat_description = {};
@@ -199,7 +199,7 @@ class SlTownAcceptedHistory : public DefaultSaveLoadHandler<SlTownAcceptedHistor
 public:
 	/** Saveload description for handler. */
 	static inline const SaveLoad description[] = {
-		 SLE_VAR(Town::AcceptedHistory, accepted, SLE_UINT32),
+		 SLE_VAR(Town::AcceptedHistory, accepted, VarTypes::U32),
 	};
 	/** Compatibility saveload description for handler. */
 	static inline const SaveLoadCompatTable compat_description = {};
@@ -229,7 +229,7 @@ class SlTownAccepted : public VectorSaveLoadHandler<SlTownAccepted, Town, Town::
 public:
 	/** Saveload description for handler. */
 	inline static const SaveLoad description[] = {
-		SLE_VAR(Town::AcceptedCargo, cargo, SLE_UINT8),
+		SLE_VAR(Town::AcceptedCargo, cargo, VarTypes::U8),
 		SLEG_STRUCTLIST("history", SlTownAcceptedHistory),
 	};
 	/** Compatibility saveload description for handler. */
@@ -241,10 +241,10 @@ public:
 class SlTownReceived : public DefaultSaveLoadHandler<SlTownReceived, Town> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(TransportedCargoStat<uint16_t>, old_max, SLE_UINT16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(TransportedCargoStat<uint16_t>, new_max, SLE_UINT16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(TransportedCargoStat<uint16_t>, old_act, SLE_UINT16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(TransportedCargoStat<uint16_t>, new_act, SLE_UINT16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint16_t>, old_max, VarTypes::U16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint16_t>, new_max, VarTypes::U16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint16_t>, old_act, VarTypes::U16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(TransportedCargoStat<uint16_t>, new_act, VarTypes::U16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
 	};
 	static inline const SaveLoadCompatTable compat_description = _town_received_sl_compat;
 
@@ -274,9 +274,9 @@ private:
 	};
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VAR(AcceptanceMatrix, area.tile, SLE_UINT32),
-		SLE_VAR(AcceptanceMatrix, area.w,    SLE_UINT16),
-		SLE_VAR(AcceptanceMatrix, area.h,    SLE_UINT16),
+		SLE_VAR(AcceptanceMatrix, area.tile, VarTypes::U32),
+		SLE_VAR(AcceptanceMatrix, area.w,    VarTypes::U16),
+		SLE_VAR(AcceptanceMatrix, area.h,    VarTypes::U16),
 	};
 	static inline const SaveLoadCompatTable compat_description = _town_acceptance_matrix_sl_compat;
 
@@ -297,68 +297,68 @@ static std::array<Town::SuppliedHistory, 2> _old_mail_supplied{};
 
 static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(Town, xy, SLE_UINT32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(Town, townnamegrfid, SLE_UINT32, SaveLoadVersion::NewGRFTownNames, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(Town, townnametype,          SLE_UINT16),
-	    SLE_VAR(Town, townnameparts,         SLE_UINT32),
-	SLE_CONDSSTR(Town, name, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, townnamegrfid, VarTypes::U32, SaveLoadVersion::NewGRFTownNames, SaveLoadVersion::MaxVersion),
+	    SLE_VAR(Town, townnametype,          VarTypes::U16),
+	    SLE_VAR(Town, townnameparts,         VarTypes::U32),
+	SLE_CONDSSTR(Town, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 
-	    SLE_VAR(Town, flags,                 SLE_UINT8),
+	    SLE_VAR(Town, flags,                 VarTypes::U8),
 	SLE_CONDVAR(Town, statues, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	SLE_CONDVAR(Town, statues, SLE_UINT16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, statues, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVAR(Town, have_ratings, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	SLE_CONDVAR(Town, have_ratings, SLE_UINT16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	SLE_CONDARR(Town, ratings, SLE_INT16, 8, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	SLE_CONDARR(Town, ratings, SLE_INT16, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	SLE_CONDARR(Town, unwanted, SLE_INT8, 8, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MoreCompanies),
-	SLE_CONDARR(Town, unwanted, SLE_INT8, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, have_ratings, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	SLE_CONDARR(Town, ratings, VarTypes::I16, 8, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
+	SLE_CONDARR(Town, ratings, VarTypes::I16, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	SLE_CONDARR(Town, unwanted, VarTypes::I8, 8, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MoreCompanies),
+	SLE_CONDARR(Town, unwanted, VarTypes::I8, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
 
 	/* Slots 0 and 2 are passengers and mail respectively for old saves. */
 	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_max", _old_pass_supplied[LAST_MONTH].production, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_max", _old_pass_supplied[LAST_MONTH].production, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_max", _old_pass_supplied[LAST_MONTH].production, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 	SLEG_CONDVAR( "supplied[CT_MAIL].old_max", _old_mail_supplied[LAST_MONTH].production, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR( "supplied[CT_MAIL].old_max", _old_mail_supplied[LAST_MONTH].production, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR( "supplied[CT_MAIL].old_max", _old_mail_supplied[LAST_MONTH].production, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_max", _old_pass_supplied[THIS_MONTH].production, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_max", _old_pass_supplied[THIS_MONTH].production, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_max", _old_pass_supplied[THIS_MONTH].production, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 	SLEG_CONDVAR( "supplied[CT_MAIL].new_max", _old_mail_supplied[THIS_MONTH].production, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR( "supplied[CT_MAIL].new_max", _old_mail_supplied[THIS_MONTH].production, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR( "supplied[CT_MAIL].new_max", _old_mail_supplied[THIS_MONTH].production, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_act", _old_pass_supplied[LAST_MONTH].transported, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_act", _old_pass_supplied[LAST_MONTH].transported, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_act", _old_pass_supplied[LAST_MONTH].transported, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 	SLEG_CONDVAR( "supplied[CT_MAIL].old_act", _old_mail_supplied[LAST_MONTH].transported, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR( "supplied[CT_MAIL].old_act", _old_mail_supplied[LAST_MONTH].transported, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR( "supplied[CT_MAIL].old_act", _old_mail_supplied[LAST_MONTH].transported, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_act", _old_pass_supplied[THIS_MONTH].transported, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_act", _old_pass_supplied[THIS_MONTH].transported, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR("supplied[CT_PASSENGERS].new_act", _old_pass_supplied[THIS_MONTH].transported, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 	SLEG_CONDVAR( "supplied[CT_MAIL].new_act", _old_mail_supplied[THIS_MONTH].transported, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
-	SLEG_CONDVAR( "supplied[CT_MAIL].new_act", _old_mail_supplied[THIS_MONTH].transported, SLE_UINT32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
+	SLEG_CONDVAR( "supplied[CT_MAIL].new_act", _old_mail_supplied[THIS_MONTH].transported, VarTypes::U32, SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].old_act, "received[TE_FOOD].old_act", SLE_UINT16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].old_act, "received[TE_WATER].old_act", SLE_UINT16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].new_act, "received[TE_FOOD].new_act", SLE_UINT16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].new_act, "received[TE_WATER].new_act", SLE_UINT16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].old_act, "received[TE_FOOD].old_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].old_act, "received[TE_WATER].old_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].new_act, "received[TE_FOOD].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].new_act, "received[TE_WATER].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
 
-	SLE_CONDARR(Town, goal, SLE_UINT32, to_underlying(TownAcceptanceEffect::End), SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+	SLE_CONDARR(Town, goal, VarTypes::U32, to_underlying(TownAcceptanceEffect::End), SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDSSTR(Town, text, SLE_STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ScriptTownText, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Town, text, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ScriptTownText, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVAR(Town, time_until_rebuild, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TownGrowthControl),
-	SLE_CONDVAR(Town, time_until_rebuild, SLE_UINT16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, time_until_rebuild, VarTypes::U16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Town, grow_counter, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TownGrowthControl),
-	SLE_CONDVAR(Town, grow_counter, SLE_UINT16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, grow_counter, VarTypes::U16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Town, growth_rate, VarFileType::U8 | VarMemType::I16, SaveLoadVersion::MinVersion, SaveLoadVersion::TownGrowthControl),
 	SLE_CONDVAR(Town, growth_rate, VarFileType::I16 | VarMemType::U16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::ScriptTownGrowth),
-	SLE_CONDVAR(Town, growth_rate, SLE_UINT16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, growth_rate, VarTypes::U16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
 
-	    SLE_VAR(Town, fund_buildings_months, SLE_UINT8),
-	    SLE_VAR(Town, road_build_months,     SLE_UINT8),
+	    SLE_VAR(Town, fund_buildings_months, VarTypes::U8),
+	    SLE_VAR(Town, road_build_months,     VarTypes::U8),
 
-	SLE_CONDVAR(Town, exclusivity, SLE_UINT8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Town, exclusive_counter, SLE_UINT8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, exclusivity, VarTypes::U8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, exclusive_counter, VarTypes::U8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(Town, larger_town, SLE_BOOL, SaveLoadVersion::Cities, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Town, layout, SLE_UINT8, SaveLoadVersion::RoadLayoutPerTown, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Town, valid_history, SLE_UINT64, SaveLoadVersion::TownSupplyHistory, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, larger_town, VarTypes::BOOL, SaveLoadVersion::Cities, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, layout, VarTypes::U8, SaveLoadVersion::RoadLayoutPerTown, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, valid_history, VarTypes::U64, SaveLoadVersion::TownSupplyHistory, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDREFVECTOR(Town, psa_list, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
 

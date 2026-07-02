@@ -20,25 +20,25 @@
 
 static const SaveLoad _engine_desc[] = {
 	 SLE_CONDVAR(Engine, intro_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, intro_date, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, intro_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 	 SLE_CONDVAR(Engine, age, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, age, SLE_INT32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	     SLE_VAR(Engine, reliability,         SLE_UINT16),
-	     SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
-	     SLE_VAR(Engine, reliability_start,   SLE_UINT16),
-	     SLE_VAR(Engine, reliability_max,     SLE_UINT16),
-	     SLE_VAR(Engine, reliability_final,   SLE_UINT16),
-	     SLE_VAR(Engine, duration_phase_1,    SLE_UINT16),
-	     SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
-	     SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
-	     SLE_VAR(Engine, flags,               SLE_UINT8),
-	 SLE_CONDVAR(Engine, preview_asked, SLE_UINT16, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, preview_company, SLE_UINT8, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
-	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
+	 SLE_CONDVAR(Engine, age, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	     SLE_VAR(Engine, reliability,         VarTypes::U16),
+	     SLE_VAR(Engine, reliability_spd_dec, VarTypes::U16),
+	     SLE_VAR(Engine, reliability_start,   VarTypes::U16),
+	     SLE_VAR(Engine, reliability_max,     VarTypes::U16),
+	     SLE_VAR(Engine, reliability_final,   VarTypes::U16),
+	     SLE_VAR(Engine, duration_phase_1,    VarTypes::U16),
+	     SLE_VAR(Engine, duration_phase_2,    VarTypes::U16),
+	     SLE_VAR(Engine, duration_phase_3,    VarTypes::U16),
+	     SLE_VAR(Engine, flags,               VarTypes::U8),
+	 SLE_CONDVAR(Engine, preview_asked, VarTypes::U16, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, preview_company, VarTypes::U8, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
+	     SLE_VAR(Engine, preview_wait,        VarTypes::U8),
 	 SLE_CONDVAR(Engine, company_avail, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	 SLE_CONDVAR(Engine, company_avail, SLE_UINT16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, company_hidden, SLE_UINT16, SaveLoadVersion::HideEnginesForCompany, SaveLoadVersion::MaxVersion),
-	SLE_CONDSSTR(Engine, name, SLE_STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, company_avail, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	 SLE_CONDVAR(Engine, company_hidden, VarTypes::U16, SaveLoadVersion::HideEnginesForCompany, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Engine, name, VarTypes::STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 };
 
 static TypedIndexContainer<std::vector<Engine>, EngineID> _temp_engine;
@@ -143,7 +143,7 @@ struct ENGSChunkHandler : ChunkHandler {
 		 * was always 256 entries. */
 		TypedIndexContainer<std::array<StringID, 256>, EngineID> names{};
 
-		SlCopy(names.data(), std::size(names), SLE_STRINGID);
+		SlCopy(names.data(), std::size(names), VarTypes::STRINGID);
 
 		/* Copy each string into the temporary engine array. */
 		for (EngineID engine = EngineID::Begin(); engine < std::size(names); ++engine) {
@@ -155,10 +155,10 @@ struct ENGSChunkHandler : ChunkHandler {
 
 /** Save and load the mapping between the engine id in the pool, and the grf file it came from. */
 static const SaveLoad _engine_id_mapping_desc[] = {
-	SLE_VAR(EngineIDMapping, grfid,         SLE_UINT32),
-	SLE_VAR(EngineIDMapping, internal_id,   SLE_UINT16),
-	SLE_VAR(EngineIDMapping, type,          SLE_UINT8),
-	SLE_VAR(EngineIDMapping, substitute_id, SLE_UINT8),
+	SLE_VAR(EngineIDMapping, grfid,         VarTypes::U32),
+	SLE_VAR(EngineIDMapping, internal_id,   VarTypes::U16),
+	SLE_VAR(EngineIDMapping, type,          VarTypes::U8),
+	SLE_VAR(EngineIDMapping, substitute_id, VarTypes::U8),
 };
 
 struct EIDSChunkHandler : ChunkHandler {
