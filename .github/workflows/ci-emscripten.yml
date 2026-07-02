@@ -18,14 +18,14 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Fix dubious ownership
       run: |
         git config --global --add safe.directory ${GITHUB_WORKSPACE}
 
     - name: Setup cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         # If you change this version, change the numbers in the image configuration step,
         # .github/workflows/preview-build.yml (2x) and os/emscripten/Dockerfile too.
