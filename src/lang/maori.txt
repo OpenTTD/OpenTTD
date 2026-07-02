@@ -803,7 +803,7 @@ STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Kaipuke
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Waka Rererangi
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Ara Kawekawe
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Ngahere
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Wao
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Teihana Rerewhenua
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Teihana Taraka
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Tūnga Pahi
@@ -812,7 +812,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Whenua Tuarangaranga
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Pātītī
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Whenua Horehore
-STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Ngahere Ua
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Wao Ua
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Whīra
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Rākau
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Toka
@@ -1546,7 +1546,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kāore rawa ng�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ina kā, ka wātea ia tauira waka ake tonu atu i muri i te whakaurunga
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Tāima: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Tīpakona te waeine tāima o te kēmu. Tē taea te panoni ā muri atu.{}{}Ko te tāima āmaramataka te wheako taketake o OpenTTD, e 12 ngā marama o te tau, e 28 ki te 31 ngā rā o ia marama.{}{}I te tāima ākaraka, ka mahi te whakaputa utanga me te ahumoni ki ngā waeine kotahi meneti, he tata ōrite ai te roa o te marama o te 30 rā i te aratau tāima āmaramataka. Ka whakarōpūtia ngēnei ki ngā wā o te 12 meneti, he ōrite ki te tau i te aratau āmaramataka.{}{}Kei ia aratau he maramataka taketake, e whakamahia ana mō ngā rā whakaurunga o ngā waka, ngā whare, me ngētahi momo tūāhanga
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Tīpakona te waeine tāima o te kēmu. Tē taea te panoni ā muri atu.{}{}Ko te tāima ā maramataka te wheako taketake o OpenTTD, e 12 ngā marama o te tau, e 28 ki te 31 ngā rā o ia marama.{}{}I te tāima ā karaka, ka mahi te whakaputa utanga me te ahumoni ki ngā waeine kotahi meneti, he tata ōrite ai te roa o te marama o te 30 rā i te aratau tāima ā maramataka. Ka whakarōpūtia ngēnei ki ngā wā o te 12 meneti, he ōrite ki te tau i te aratau ā maramataka.{}{}Kei ia aratau he maramataka taketake, e whakamahia ana mō ngā rā whakaurunga o ngā waka, ngā whare, me ngētahi momo tūāhanga
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Ā maramataka
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Ā karaka
@@ -1739,8 +1739,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Topa i te maher
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Panuku i te mahere
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Poko
 
-STR_CONFIG_SETTING_OSK_ACTIVATION                               :Papapātuhi āmata: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tīpakona me pēwhea te huaki i te papapātuhi āmata mō te pātuhi e whakamahi ana i te mata anake. Mō ngā pūrere tēnei kāore he papapātuhi tūturu
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Papapātuhi ā mata: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tīpakona me pēwhea te huaki i te papapātuhi ā mata mō te pātuhi e whakamahi ana i te mata anake. Mō ngā pūrere tēnei kāore he papapātuhi tūturu
 ###length 4
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Tē āhei
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Pāwhirirua
@@ -3088,9 +3088,9 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Whakatō
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Māori
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Whakatō rākau tōtahi mā te tō i runga i te whenua
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Uru
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Whakatō ngahere iti mā te tō i runga i te whenua
-STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Ngahere
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Whakatō ngahere rahi mā te tō i runga i te whenua
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Whakatō wao iti mā te tō i runga i te whenua
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Wao
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Whakatō wao rahi mā te tō i runga i te whenua
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Hanga Whenua
@@ -3262,7 +3262,7 @@ STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Taramuwē
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (kei te hangaia)
 
 STR_LAI_TREE_NAME_TREES                                         :Rākau
-STR_LAI_TREE_NAME_RAINFOREST                                    :Ngahere ua
+STR_LAI_TREE_NAME_RAINFOREST                                    :Wao ua
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Tātātiotio
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Teihana rerewhenua
@@ -5591,7 +5591,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Pūtea poaka
 STR_INDUSTRY_NAME_COAL_MINE                                     :Maina Waro
 STR_INDUSTRY_NAME_POWER_STATION                                 :Punahiko
 STR_INDUSTRY_NAME_SAWMILL                                       :Mira Kani Rākau
-STR_INDUSTRY_NAME_FOREST                                        :Ngahere
+STR_INDUSTRY_NAME_FOREST                                        :Wao
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Whare Whakapai Hinu
 STR_INDUSTRY_NAME_OIL_RIG                                       :Papahinu
 STR_INDUSTRY_NAME_FACTORY                                       :Wheketere
@@ -5614,7 +5614,7 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Pourewa Wai
 STR_INDUSTRY_NAME_FACTORY_2                                     :Wheketere
 STR_INDUSTRY_NAME_FARM_2                                        :Pāmu
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Mira Kani Rākau
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Ngahere Pawa Huka
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Wao Pawa Huka
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Wheketere Rare
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Pāmu Pūhiko
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Puna Kōra
