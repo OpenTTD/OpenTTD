@@ -1,0 +1,59 @@
+; Sample Ogg Opus music-set metadata for OpenTTD.
+;
+; This file intentionally does not ship any music. Replace the placeholder
+; filenames and MD5 values with the files from your own Ogg Opus soundtrack.
+
+[metadata]
+name        = sample_opus
+shortname   = SOPU
+version     = 1
+description = Sample OpenTTD music set using Ogg Opus tracks.
+
+[files]
+theme = track_01.opus
+old_0 = track_02.opus
+old_1 =
+old_2 =
+old_3 =
+old_4 =
+old_5 =
+old_6 =
+old_7 =
+old_8 =
+old_9 =
+new_0 =
+new_1 =
+new_2 =
+new_3 =
+new_4 =
+new_5 =
+new_6 =
+new_7 =
+new_8 =
+new_9 =
+ezy_0 =
+ezy_1 =
+ezy_2 =
+ezy_3 =
+ezy_4 =
+ezy_5 =
+ezy_6 =
+ezy_7 =
+ezy_8 =
+ezy_9 =
+
+[formats]
+theme = opus
+old_0 = opus
+
+[names]
+track_01.opus = Sample Opus Theme
+track_02.opus = Sample Opus Track
+
+[md5s]
+; Replace these values with `md5sum track_01.opus track_02.opus`.
+track_01.opus = 00000000000000000000000000000000
+track_02.opus = 00000000000000000000000000000000
+
+[origin]
+default = Add your own Ogg Opus files next to this sample .obm.

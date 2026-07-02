@@ -172,6 +172,7 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 	std::string filename = MidiFile::GetSMFFile(song);
 
 	this->StopSong();
+	MxSetMusicSource(RenderMusicStream);
 
 	if (filename.empty()) {
 		return;

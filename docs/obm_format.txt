@@ -94,6 +94,15 @@ ezy_9 =
 [names]
 THEME_SONG.GM = Tycoon DELUXE Theme
 
+; The formats section is optional. When it is omitted, files are treated
+; as Standard MIDI, except ".opus" and ".ogg" files which are treated as
+; Ogg Opus audio. Use this section when you want to make the format explicit.
+; Supported values:
+;   midi - Standard MIDI file
+;   opus - Ogg Opus audio file
+[formats]
+theme = midi
+
 ; If you are loading music from the DOS version "cat" format, specify
 ; which index into the file the song has.
 [catindex]
