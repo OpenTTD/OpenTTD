@@ -259,7 +259,7 @@ void AfterLoadLinkGraphs()
  * All link graphs.
  */
 struct LGRPChunkHandler : ChunkHandler {
-	LGRPChunkHandler() : ChunkHandler('LGRP', ChunkType::Table) {}
+	LGRPChunkHandler() : ChunkHandler("LGRP", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -287,7 +287,7 @@ struct LGRPChunkHandler : ChunkHandler {
  * All link graph jobs.
  */
 struct LGRJChunkHandler : ChunkHandler {
-	LGRJChunkHandler() : ChunkHandler('LGRJ', ChunkType::Table) {}
+	LGRJChunkHandler() : ChunkHandler("LGRJ", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -315,7 +315,7 @@ struct LGRJChunkHandler : ChunkHandler {
  * Link graph schedule.
  */
 struct LGRSChunkHandler : ChunkHandler {
-	LGRSChunkHandler() : ChunkHandler('LGRS', ChunkType::Table) {}
+	LGRSChunkHandler() : ChunkHandler("LGRS", ChunkType::Table) {}
 
 	void Save() const override
 	{

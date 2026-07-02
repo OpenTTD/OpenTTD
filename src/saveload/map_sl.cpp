@@ -27,7 +27,7 @@ static const SaveLoad _map_desc[] = {
 };
 
 struct MAPSChunkHandler : ChunkHandler {
-	MAPSChunkHandler() : ChunkHandler('MAPS', ChunkType::Table) {}
+	MAPSChunkHandler() : ChunkHandler("MAPS", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -67,7 +67,7 @@ struct MAPSChunkHandler : ChunkHandler {
 static const uint MAP_SL_BUF_SIZE = 4096;
 
 struct MAPTChunkHandler : ChunkHandler {
-	MAPTChunkHandler() : ChunkHandler('MAPT', ChunkType::Riff) {}
+	MAPTChunkHandler() : ChunkHandler("MAPT", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -94,7 +94,7 @@ struct MAPTChunkHandler : ChunkHandler {
 };
 
 struct MAPHChunkHandler : ChunkHandler {
-	MAPHChunkHandler() : ChunkHandler('MAPH', ChunkType::Riff) {}
+	MAPHChunkHandler() : ChunkHandler("MAPH", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -121,7 +121,7 @@ struct MAPHChunkHandler : ChunkHandler {
 };
 
 struct MAPOChunkHandler : ChunkHandler {
-	MAPOChunkHandler() : ChunkHandler('MAPO', ChunkType::Riff) {}
+	MAPOChunkHandler() : ChunkHandler("MAPO", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -148,7 +148,7 @@ struct MAPOChunkHandler : ChunkHandler {
 };
 
 struct MAP2ChunkHandler : ChunkHandler {
-	MAP2ChunkHandler() : ChunkHandler('MAP2', ChunkType::Riff) {}
+	MAP2ChunkHandler() : ChunkHandler("MAP2", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -178,7 +178,7 @@ struct MAP2ChunkHandler : ChunkHandler {
 };
 
 struct M3LOChunkHandler : ChunkHandler {
-	M3LOChunkHandler() : ChunkHandler('M3LO', ChunkType::Riff) {}
+	M3LOChunkHandler() : ChunkHandler("M3LO", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -205,7 +205,7 @@ struct M3LOChunkHandler : ChunkHandler {
 };
 
 struct M3HIChunkHandler : ChunkHandler {
-	M3HIChunkHandler() : ChunkHandler('M3HI', ChunkType::Riff) {}
+	M3HIChunkHandler() : ChunkHandler("M3HI", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -232,7 +232,7 @@ struct M3HIChunkHandler : ChunkHandler {
 };
 
 struct MAP5ChunkHandler : ChunkHandler {
-	MAP5ChunkHandler() : ChunkHandler('MAP5', ChunkType::Riff) {}
+	MAP5ChunkHandler() : ChunkHandler("MAP5", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -259,7 +259,7 @@ struct MAP5ChunkHandler : ChunkHandler {
 };
 
 struct MAPEChunkHandler : ChunkHandler {
-	MAPEChunkHandler() : ChunkHandler('MAPE', ChunkType::Riff) {}
+	MAPEChunkHandler() : ChunkHandler("MAPE", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -299,7 +299,7 @@ struct MAPEChunkHandler : ChunkHandler {
 };
 
 struct MAP7ChunkHandler : ChunkHandler {
-	MAP7ChunkHandler() : ChunkHandler('MAP7', ChunkType::Riff) {}
+	MAP7ChunkHandler() : ChunkHandler("MAP7", ChunkType::Riff) {}
 
 	void Load() const override
 	{
@@ -326,7 +326,7 @@ struct MAP7ChunkHandler : ChunkHandler {
 };
 
 struct MAP8ChunkHandler : ChunkHandler {
-	MAP8ChunkHandler() : ChunkHandler('MAP8', ChunkType::Riff) {}
+	MAP8ChunkHandler() : ChunkHandler("MAP8", ChunkType::Riff) {}
 
 	void Load() const override
 	{

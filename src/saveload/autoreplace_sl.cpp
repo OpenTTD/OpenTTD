@@ -26,7 +26,7 @@ static const SaveLoad _engine_renew_desc[] = {
 };
 
 struct ERNWChunkHandler : ChunkHandler {
-	ERNWChunkHandler() : ChunkHandler('ERNW', ChunkType::Table) {}
+	ERNWChunkHandler() : ChunkHandler("ERNW", ChunkType::Table) {}
 
 	void Save() const override
 	{

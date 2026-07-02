@@ -45,7 +45,7 @@ static CargoMonitorID FixupCargoMonitor(CargoMonitorID number)
 
 /** #_cargo_deliveries monitoring map. */
 struct CMDLChunkHandler : ChunkHandler {
-	CMDLChunkHandler() : ChunkHandler('CMDL', ChunkType::Table) {}
+	CMDLChunkHandler() : ChunkHandler("CMDL", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -88,7 +88,7 @@ struct CMDLChunkHandler : ChunkHandler {
 
 /** #_cargo_pickups monitoring map. */
 struct CMPUChunkHandler : ChunkHandler {
-	CMPUChunkHandler() : ChunkHandler('CMPU', ChunkType::Table) {}
+	CMPUChunkHandler() : ChunkHandler("CMPU", ChunkType::Table) {}
 
 	void Save() const override
 	{

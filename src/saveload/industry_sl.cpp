@@ -211,7 +211,7 @@ static const SaveLoad _industry_desc[] = {
 };
 
 struct INDYChunkHandler : ChunkHandler {
-	INDYChunkHandler() : ChunkHandler('INDY', ChunkType::Table) {}
+	INDYChunkHandler() : ChunkHandler("INDY", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -303,11 +303,11 @@ struct INDYChunkHandler : ChunkHandler {
 };
 
 struct IIDSChunkHandler : NewGRFMappingChunkHandler {
-	IIDSChunkHandler() : NewGRFMappingChunkHandler('IIDS', _industry_mngr) {}
+	IIDSChunkHandler() : NewGRFMappingChunkHandler("IIDS", _industry_mngr) {}
 };
 
 struct TIDSChunkHandler : NewGRFMappingChunkHandler {
-	TIDSChunkHandler() : NewGRFMappingChunkHandler('TIDS', _industile_mngr) {}
+	TIDSChunkHandler() : NewGRFMappingChunkHandler("TIDS", _industile_mngr) {}
 };
 
 /** Description of the data to save and load in #IndustryBuildData. */
@@ -317,7 +317,7 @@ static const SaveLoad _industry_builder_desc[] = {
 
 /** Industry builder. */
 struct IBLDChunkHandler : ChunkHandler {
-	IBLDChunkHandler() : ChunkHandler('IBLD', ChunkType::Table) {}
+	IBLDChunkHandler() : ChunkHandler("IBLD", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -348,7 +348,7 @@ static const SaveLoad _industrytype_builder_desc[] = {
 
 /** Industry-type build data. */
 struct ITBLChunkHandler : ChunkHandler {
-	ITBLChunkHandler() : ChunkHandler('ITBL', ChunkType::Table) {}
+	ITBLChunkHandler() : ChunkHandler("ITBL", ChunkType::Table) {}
 
 	void Save() const override
 	{

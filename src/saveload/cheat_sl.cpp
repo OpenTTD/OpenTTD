@@ -39,7 +39,7 @@ static const SaveLoad _cheats_desc[] = {
 
 
 struct CHTSChunkHandler : ChunkHandler {
-	CHTSChunkHandler() : ChunkHandler('CHTS', ChunkType::Table) {}
+	CHTSChunkHandler() : ChunkHandler("CHTS", ChunkType::Table) {}
 
 	void Save() const override
 	{

@@ -459,6 +459,17 @@ static inline void SlWriteUint64(uint64_t x)
 }
 
 /**
+ * Read the \c ChunkId.
+ * @return The read \c ChunkId.
+ */
+static inline ChunkId SlReadChunkId()
+{
+	ChunkId label{};
+	for (uint8_t &b : label) b = SlReadByte();
+	return label;
+}
+
+/**
  * Read in the header descriptor of an object or an array.
  * If the highest bit is set (7), then the index is bigger than 127
  * elements, so use the next byte to read in the real value.
@@ -2275,7 +2286,7 @@ static void SlSaveChunk(const ChunkHandler &ch)
 {
 	if (ch.type == ChunkType::ReadOnly) return;
 
-	SlWriteUint32(ch.id);
+	for (uint8_t b : ch.id) SlWriteByte(b);
 	Debug(sl, 2, "Saving chunk {}", ch.GetName());
 
 	_sl.chunk_type = ch.type;
@@ -2323,7 +2334,7 @@ static void SlSaveChunks()
  * @param id the chunk in question
  * @return returns the appropriate chunkhandler
  */
-static const ChunkHandler *SlFindChunkHandler(uint32_t id)
+static const ChunkHandler *SlFindChunkHandler(ChunkId id)
 {
 	for (const ChunkHandler &ch : ChunkHandlers()) if (ch.id == id) return &ch;
 	return nullptr;
@@ -2332,13 +2343,10 @@ static const ChunkHandler *SlFindChunkHandler(uint32_t id)
 /** Load all chunks */
 static void SlLoadChunks()
 {
-	uint32_t id;
-	const ChunkHandler *ch;
+	for (ChunkId id = SlReadChunkId(); !id.Empty(); id = SlReadChunkId()) {
+		Debug(sl, 2, "Loading chunk {}", id.AsStringView());
 
-	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
-
-		ch = SlFindChunkHandler(id);
+		const ChunkHandler *ch = SlFindChunkHandler(id);
 		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
 		SlLoadChunk(*ch);
 	}
@@ -2347,13 +2355,10 @@ static void SlLoadChunks()
 /** Load all chunks for savegame checking */
 static void SlLoadCheckChunks()
 {
-	uint32_t id;
-	const ChunkHandler *ch;
+	for (ChunkId id = SlReadChunkId(); id.Empty(); id = SlReadChunkId()) {
+		Debug(sl, 2, "Loading chunk {}", id.AsStringView());
 
-	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
-
-		ch = SlFindChunkHandler(id);
+		const ChunkHandler *ch = SlFindChunkHandler(id);
 		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
 		SlLoadCheckChunk(*ch);
 	}
@@ -2429,7 +2434,7 @@ struct FileWriter : SaveFilter {
 		this->Finish();
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		/* We're in the process of shutting down, i.e. in "failure" mode. */
 		if (!this->file.has_value()) return;
@@ -2513,7 +2518,7 @@ struct LZOSaveFilter : SaveFilter {
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		const lzo_bytep in = buf;
 		/* Buffer size is from the LZO docs plus the chunk header size. */
@@ -2568,7 +2573,7 @@ struct NoCompSaveFilter : SaveFilter {
 	{
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		this->chain->Write(buf, size);
 	}
@@ -2650,10 +2655,10 @@ struct ZlibSaveFilter : SaveFilter {
 	 * @param len  Amount of bytes to write.
 	 * @param mode Mode for deflate.
 	 */
-	void WriteLoop(uint8_t *p, size_t len, int mode)
+	void WriteLoop(const uint8_t *p, size_t len, int mode)
 	{
 		uint n;
-		this->z.next_in = p;
+		this->z.next_in = const_cast<uint8_t *>(p); // zlib does not modify the data, but is non-const for legacy reasons
 		this->z.avail_in = static_cast<uInt>(len);
 		do {
 			this->z.next_out = this->fwrite_buf;
@@ -2678,7 +2683,7 @@ struct ZlibSaveFilter : SaveFilter {
 		} while (this->z.avail_in || !this->z.avail_out);
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		this->WriteLoop(buf, size, 0);
 	}
@@ -2776,7 +2781,7 @@ struct LZMASaveFilter : SaveFilter {
 	 * @param len    Amount of bytes to write.
 	 * @param action Action for lzma_code.
 	 */
-	void WriteLoop(uint8_t *p, size_t len, lzma_action action)
+	void WriteLoop(const uint8_t *p, size_t len, lzma_action action)
 	{
 		size_t n;
 		this->lzma.next_in = p;
@@ -2796,7 +2801,7 @@ struct LZMASaveFilter : SaveFilter {
 		} while (this->lzma.avail_in || !this->lzma.avail_out);
 	}
 
-	void Write(uint8_t *buf, size_t size) override
+	void Write(const uint8_t *buf, size_t size) override
 	{
 		this->WriteLoop(buf, size, LZMA_RUN);
 	}
@@ -2814,23 +2819,26 @@ struct LZMASaveFilter : SaveFilter {
  ************* END OF CODE *****************
  *******************************************/
 
+/** Unique 4-letter tag for the different saveload formats. */
+using SaveLoadFormatTag = Label<struct SaveLoadFormatLabelTag>;
+
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
 	std::shared_ptr<LoadFilter> (*init_load)(std::shared_ptr<LoadFilter> chain); ///< Constructor for the load filter.
 	std::shared_ptr<SaveFilter> (*init_write)(std::shared_ptr<SaveFilter> chain, uint8_t compression); ///< Constructor for the save filter.
 
 	std::string_view name; ///< name of the compressor/decompressor (debug-only)
-	uint32_t tag; ///< the 4-letter tag by which it is identified in the savegame
+	SaveLoadFormatTag tag; ///< the 4-letter tag by which it is identified in the savegame
 
 	uint8_t min_compression;                 ///< the minimum compression level of this format
 	uint8_t default_compression;             ///< the default compression level of this format
 	uint8_t max_compression;                 ///< the maximum compression level of this format
 };
 
-static const uint32_t SAVEGAME_TAG_LZO = TO_BE32('OTTD');
-static const uint32_t SAVEGAME_TAG_NONE = TO_BE32('OTTN');
-static const uint32_t SAVEGAME_TAG_ZLIB = TO_BE32('OTTZ');
-static const uint32_t SAVEGAME_TAG_LZMA = TO_BE32('OTTX');
+static const SaveLoadFormatTag SAVEGAME_TAG_LZO{ "OTTD" }; ///< Tag for a game compressed with LZO
+static const SaveLoadFormatTag SAVEGAME_TAG_NONE{ "OTTN" }; ///< Tag for a game without compression.
+static const SaveLoadFormatTag SAVEGAME_TAG_ZLIB{ "OTTZ" }; ///< Tag for a game with zlib compression.
+static const SaveLoadFormatTag SAVEGAME_TAG_LZMA{ "OTTX" }; ///< Tag for a game with lzma compression.
 
 /** The different saveload formats known/understood by OpenTTD. */
 static const SaveLoadFormat _saveload_formats[] = {
@@ -3025,8 +3033,10 @@ static SaveLoadResult SaveFileToDisk(bool threaded)
 		auto [fmt, compression] = GetSavegameFormat(_savegame_format);
 
 		/* We have written our stuff to memory, now write it to file! */
-		uint32_t hdr[2] = { fmt.tag, TO_BE32(to_underlying(SAVEGAME_VERSION) << 16) };
-		_sl.sf->Write((uint8_t*)hdr, sizeof(hdr));
+		_sl.sf->Write(fmt.tag.data(), fmt.tag.size());
+
+		uint32_t version = TO_BE32(to_underlying(SAVEGAME_VERSION) << 16);
+		_sl.sf->Write(reinterpret_cast<uint8_t *>(&version), sizeof(version));
 
 		_sl.sf = fmt.init_write(_sl.sf, compression);
 		_sl.dumper->Flush(_sl.sf);
@@ -3126,7 +3136,7 @@ SaveLoadResult SaveWithFilter(std::shared_ptr<SaveFilter> writer, bool threaded)
  * @param raw_version The raw version from the savegame header.
  * @return The SaveLoadFormat to use for attempting to open the savegame.
  */
-static const SaveLoadFormat *DetermineSaveLoadFormat(uint32_t tag, uint32_t raw_version)
+static const SaveLoadFormat *DetermineSaveLoadFormat(SaveLoadFormatTag tag, uint32_t raw_version)
 {
 	auto fmt = std::ranges::find(_saveload_formats, tag, &SaveLoadFormat::tag);
 	if (fmt != std::end(_saveload_formats)) {
@@ -3178,11 +3188,14 @@ static SaveLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check
 		_load_check_data.checkable = true;
 	}
 
-	uint32_t hdr[2];
-	if (_sl.lf->Read((uint8_t*)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+	SaveLoadFormatTag tag{};
+	if (_sl.lf->Read(tag.data(), tag.size()) != tag.size()) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+
+	uint32_t version;
+	if (_sl.lf->Read(reinterpret_cast<uint8_t*>(&version), sizeof(version)) != sizeof(version)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 	/* see if we have any loader for this type. */
-	const SaveLoadFormat *fmt = DetermineSaveLoadFormat(hdr[0], hdr[1]);
+	const SaveLoadFormat *fmt = DetermineSaveLoadFormat(tag, version);
 
 	/* loader for this savegame type is not implemented? */
 	if (fmt->init_load == nullptr) {
