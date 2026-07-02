@@ -60,4 +60,15 @@ static constexpr uint32_t TO_LE32(uint32_t x)
 	return std::byteswap(x);
 }
 
+/**
+ * Convert 4-length label identifier (+ null terminator) into an integer.
+ * Matches behaviour of "multi-character characters", which are always the same order regardless of endianness.
+ * @param label Fixed length character array to convert.
+ * @return Identifier in 32-bit integer form.
+ */
+static constexpr uint32_t LabelToNum(const char (&label)[5])
+{
+	return label[0] << 24 | label[1] << 16 | label[2] << 8 | label[3];
+}
+
 #endif /* ENDIAN_FUNC_HPP */

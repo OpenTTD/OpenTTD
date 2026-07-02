@@ -10,12 +10,13 @@
 #ifndef ROAD_TYPE_H
 #define ROAD_TYPE_H
 
+#include "core/endian_func.hpp"
 #include "core/enum_type.hpp"
 
 typedef uint32_t RoadTypeLabel;
 
-static const RoadTypeLabel ROADTYPE_LABEL_ROAD = 'ROAD';
-static const RoadTypeLabel ROADTYPE_LABEL_TRAM = 'ELRL';
+static const RoadTypeLabel ROADTYPE_LABEL_ROAD = LabelToNum("ROAD");
+static const RoadTypeLabel ROADTYPE_LABEL_TRAM = LabelToNum("ELRL");
 
 /**
  * The different roadtypes we support

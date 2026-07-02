@@ -12,6 +12,7 @@
 
 #include "core/strong_typedef_type.hpp"
 #include "core/enum_type.hpp"
+#include "core/endian_func.hpp"
 
 /** Globally unique label of a cargo type. */
 using CargoLabel = StrongType::Typedef<uint32_t, struct CargoLabelTag, StrongType::Compare>;
@@ -28,43 +29,43 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(CargoType)
  */
 
 /* Temperate */
-static constexpr CargoLabel CT_PASSENGERS{'PASS'};
-static constexpr CargoLabel CT_COAL{'COAL'};
-static constexpr CargoLabel CT_MAIL{'MAIL'};
-static constexpr CargoLabel CT_OIL{'OIL_'};
-static constexpr CargoLabel CT_LIVESTOCK{'LVST'};
-static constexpr CargoLabel CT_GOODS{'GOOD'};
-static constexpr CargoLabel CT_GRAIN{'GRAI'};
-static constexpr CargoLabel CT_WOOD{'WOOD'};
-static constexpr CargoLabel CT_IRON_ORE{'IORE'};
-static constexpr CargoLabel CT_STEEL{'STEL'};
-static constexpr CargoLabel CT_VALUABLES{'VALU'};
+static constexpr CargoLabel CT_PASSENGERS{LabelToNum("PASS")};
+static constexpr CargoLabel CT_COAL{LabelToNum("COAL")};
+static constexpr CargoLabel CT_MAIL{LabelToNum("MAIL")};
+static constexpr CargoLabel CT_OIL{LabelToNum("OIL_")};
+static constexpr CargoLabel CT_LIVESTOCK{LabelToNum("LVST")};
+static constexpr CargoLabel CT_GOODS{LabelToNum("GOOD")};
+static constexpr CargoLabel CT_GRAIN{LabelToNum("GRAI")};
+static constexpr CargoLabel CT_WOOD{LabelToNum("WOOD")};
+static constexpr CargoLabel CT_IRON_ORE{LabelToNum("IORE")};
+static constexpr CargoLabel CT_STEEL{LabelToNum("STEL")};
+static constexpr CargoLabel CT_VALUABLES{LabelToNum("VALU")};
 
 /* Arctic */
-static constexpr CargoLabel CT_WHEAT{'WHEA'};
-static constexpr CargoLabel CT_PAPER{'PAPR'};
-static constexpr CargoLabel CT_GOLD{'GOLD'};
-static constexpr CargoLabel CT_FOOD{'FOOD'};
+static constexpr CargoLabel CT_WHEAT{LabelToNum("WHEA")};
+static constexpr CargoLabel CT_PAPER{LabelToNum("PAPR")};
+static constexpr CargoLabel CT_GOLD{LabelToNum("GOLD")};
+static constexpr CargoLabel CT_FOOD{LabelToNum("FOOD")};
 
 /* Tropic */
-static constexpr CargoLabel CT_RUBBER{'RUBR'};
-static constexpr CargoLabel CT_FRUIT{'FRUT'};
-static constexpr CargoLabel CT_MAIZE{'MAIZ'};
-static constexpr CargoLabel CT_COPPER_ORE{'CORE'};
-static constexpr CargoLabel CT_WATER{'WATR'};
-static constexpr CargoLabel CT_DIAMONDS{'DIAM'};
+static constexpr CargoLabel CT_RUBBER{LabelToNum("RUBR")};
+static constexpr CargoLabel CT_FRUIT{LabelToNum("FRUT")};
+static constexpr CargoLabel CT_MAIZE{LabelToNum("MAIZ")};
+static constexpr CargoLabel CT_COPPER_ORE{LabelToNum("CORE")};
+static constexpr CargoLabel CT_WATER{LabelToNum("WATR")};
+static constexpr CargoLabel CT_DIAMONDS{LabelToNum("DIAM")};
 
 /* Toyland */
-static constexpr CargoLabel CT_SUGAR{'SUGR'};
-static constexpr CargoLabel CT_TOYS{'TOYS'};
-static constexpr CargoLabel CT_BATTERIES{'BATT'};
-static constexpr CargoLabel CT_CANDY{'SWET'};
-static constexpr CargoLabel CT_TOFFEE{'TOFF'};
-static constexpr CargoLabel CT_COLA{'COLA'};
-static constexpr CargoLabel CT_COTTON_CANDY{'CTCD'};
-static constexpr CargoLabel CT_BUBBLES{'BUBL'};
-static constexpr CargoLabel CT_PLASTIC{'PLST'};
-static constexpr CargoLabel CT_FIZZY_DRINKS{'FZDR'};
+static constexpr CargoLabel CT_SUGAR{LabelToNum("SUGR")};
+static constexpr CargoLabel CT_TOYS{LabelToNum("TOYS")};
+static constexpr CargoLabel CT_BATTERIES{LabelToNum("BATT")};
+static constexpr CargoLabel CT_CANDY{LabelToNum("SWET")};
+static constexpr CargoLabel CT_TOFFEE{LabelToNum("TOFF")};
+static constexpr CargoLabel CT_COLA{LabelToNum("COLA")};
+static constexpr CargoLabel CT_COTTON_CANDY{LabelToNum("CTCD")};
+static constexpr CargoLabel CT_BUBBLES{LabelToNum("BUBL")};
+static constexpr CargoLabel CT_PLASTIC{LabelToNum("PLST")};
+static constexpr CargoLabel CT_FIZZY_DRINKS{LabelToNum("FZDR")};
 
 /** Dummy label for engines that carry no cargo; they actually carry 0 passengers. */
 static constexpr CargoLabel CT_NONE = CT_PASSENGERS;

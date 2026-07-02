@@ -25,8 +25,8 @@ struct TileInfo;
 /** The maximum amount of roadstops a single GRF is allowed to add */
 static const int NUM_ROADSTOPS_PER_GRF = UINT16_MAX - 1;
 
-static const uint32_t ROADSTOP_CLASS_LABEL_DEFAULT = 'DFLT';
-static const uint32_t ROADSTOP_CLASS_LABEL_WAYPOINT = 'WAYP';
+static const uint32_t ROADSTOP_CLASS_LABEL_DEFAULT = LabelToNum("DFLT");
+static const uint32_t ROADSTOP_CLASS_LABEL_WAYPOINT = LabelToNum("WAYP");
 
 /** Class IDs for stations. */
 using RoadStopClassID = PoolID<uint16_t, struct RoadStopClassIDTag, UINT16_MAX, UINT16_MAX>;

@@ -66,7 +66,7 @@ public:
 
 		/* Setup the file header */
 		BitmapFileHeader bfh;
-		bfh.type = TO_LE16('MB');
+		bfh.type = TO_LE16(static_cast<uint16_t>('M' << 8 | 'B'));
 		bfh.size = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size + static_cast<size_t>(bytewidth) * h);
 		bfh.reserved = 0;
 		bfh.off_bits = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size);

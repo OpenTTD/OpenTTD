@@ -12,6 +12,7 @@
 #include "ini_type.h"
 #include "string_func.h"
 #include "error_func.h"
+#include "core/endian_func.hpp"
 #include "core/string_consumer.hpp"
 #include "3rdparty/fmt/ranges.h"
 
@@ -111,10 +112,10 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 	const IniGroup *origin = ini.GetGroup("origin");
 	auto file_names = BaseSet<T>::GetFilenames();
 	bool original_set =
-		std::byteswap(this->shortname) == 'TTDD' || // TTD DOS graphics, TTD DOS music
-		std::byteswap(this->shortname) == 'TTDW' || // TTD WIN graphics, TTD WIN music
-		std::byteswap(this->shortname) == 'TTDO' || // TTD sound
-		std::byteswap(this->shortname) == 'TTOD'; // TTO music
+		std::byteswap(this->shortname) == LabelToNum("TTDD") || // TTD DOS graphics, TTD DOS music
+		std::byteswap(this->shortname) == LabelToNum("TTDW") || // TTD WIN graphics, TTD WIN music
+		std::byteswap(this->shortname) == LabelToNum("TTDO") || // TTD sound
+		std::byteswap(this->shortname) == LabelToNum("TTOD"); // TTO music
 
 	for (uint i = 0; i < BaseSet<T>::NUM_FILES; i++) {
 		MD5File *file = &this->files[i];
