@@ -25,6 +25,7 @@
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
 #include "ship.h"
+#include "newgrf/newgrf_internal.h"
 
 #include "safeguards.h"
 
@@ -1394,8 +1395,16 @@ void CommitVehicleListOrderChanges()
 		Engine *engine_source = Engine::Get(source);
 		if (engine_source->grf_prop.local_id == loc.target) continue;
 
-		EngineID target = _engine_mngr.GetID(engine_source->type, loc.target, engine_source->grf_prop.grfid);
-		if (target == EngineID::Invalid()) continue;
+		EngineID target = _engine_mngr.GetID(engine_source->type, loc.target, engine_source->GetGRFID());
+		if (target == EngineID::Invalid()) {
+			auto override_grfid = GetNewGRFOverride(engine_source->GetGRFID());
+			if (override_grfid != INVALID_GRFID)
+				target = _engine_mngr.GetID(engine_source->type, loc.target, override_grfid);
+			if (target == EngineID::Invalid()) {
+				GrfMsg(6, "ListOrderChange: invalid target {} of GRFID {:x}", loc.target, std::byteswap(engine_source->GetGRFID()));
+				continue;
+			}
+		}
 
 		auto it_source = std::ranges::find(ordering, source);
 		auto it_target = std::ranges::find(ordering, target);
