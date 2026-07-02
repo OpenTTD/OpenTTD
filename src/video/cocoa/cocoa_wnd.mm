@@ -855,6 +855,31 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 		case QZ_LEFT: _dirkeys.Set(DirectionKey::Left, down); break;
 		case QZ_RIGHT: _dirkeys.Set(DirectionKey::Right, down); break;
 
+		case QZ_w:
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(modifiers & NSEventModifierFlagOption)) {
+				SB(_dirkeys, 1, 1, down);
+				return YES;
+			}
+			break;
+		case QZ_a:
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(modifiers & NSEventModifierFlagOption)) {
+				SB(_dirkeys, 0, 1, down);
+				return YES;
+			}
+			break;
+		case QZ_s:
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(modifiers & NSEventModifierFlagOption)) {
+				SB(_dirkeys, 3, 1, down);
+				return YES;
+			}
+			break;
+		case QZ_d:
+			if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(modifiers & NSEventModifierFlagOption)) {
+				SB(_dirkeys, 2, 1, down);
+				return YES;
+			}
+			break;
+
 		case QZ_TAB:
 			_tab_is_down = down;
 			if (down && EditBoxInGlobalFocus()) {
