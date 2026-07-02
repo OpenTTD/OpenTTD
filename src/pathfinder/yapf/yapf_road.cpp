@@ -120,6 +120,11 @@ public:
 		Trackdir trackdir = n.key.td;
 		int parent_cost = (n.parent != nullptr) ? n.parent->cost : 0;
 
+		/* calculate cost for the junction tile the vehicle is entering only for the first segment */
+		if (n.parent != nullptr && parent_cost == 0) {
+			segment_cost += Yapf().OneTileCost(n.parent->GetTile(), n.parent->GetTrackdir());
+		}
+
 		for (;;) {
 			/* base tile cost depending on distance between edges */
 			segment_cost += Yapf().OneTileCost(tile, trackdir);
@@ -295,7 +300,13 @@ public:
 			return true;
 		}
 
-		n.estimate = n.cost + OctileDistanceCost(n.segment_last_tile, n.segment_last_td, this->dest_tile);
+		if(n.cost == 0 && n.parent->cost == 0){
+			/* calculate estimate from StartupNode for the first segment */
+			n.estimate = n.cost + OctileDistanceCost(n.parent->GetTile(), n.parent->GetTrackdir(), this->dest_tile);
+		} else {
+			n.estimate = n.cost + OctileDistanceCost(n.segment_last_tile, n.segment_last_td, this->dest_tile);
+		}
+
 		assert(n.estimate >= n.parent->estimate);
 		return true;
 	}
