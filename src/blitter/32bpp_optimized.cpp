@@ -257,7 +257,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 }
 
 template <bool Tpal_to_rgb>
-void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, [[maybe_unused]] SpriteRotation rotate)
 {
 	switch (mode) {
 		default: NOT_REACHED();
@@ -270,8 +270,8 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 	}
 }
 
-template void Blitter_32bppOptimized::Draw<true>(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
-template void Blitter_32bppOptimized::Draw<false>(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
+template void Blitter_32bppOptimized::Draw<true>(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, [[maybe_unused]] SpriteRotation rotate);
+template void Blitter_32bppOptimized::Draw<false>(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, [[maybe_unused]] SpriteRotation rotate);
 
 /**
  * Draws a sprite to a (screen) buffer. Calls adequate templated function.
@@ -279,10 +279,11 @@ template void Blitter_32bppOptimized::Draw<false>(Blitter::BlitterParams *bp, Bl
  * @param bp further blitting parameters
  * @param mode blitter mode
  * @param zoom zoom level at which we are drawing
+ * @param rotate How to rotate the sprite.
  */
-void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate)
 {
-	this->Draw<false>(bp, mode, zoom);
+	this->Draw<false>(bp, mode, zoom, rotate);
 }
 
 template <bool Tpal_to_rgb>

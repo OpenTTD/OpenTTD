@@ -38,10 +38,12 @@ enum class VehState : uint8_t {
 	Shadow         = 5, ///< Vehicle is a shadow vehicle.
 	AircraftBroken = 6, ///< Aircraft is broken down.
 	Crashed        = 7, ///< Vehicle is crashed.
+	Derailed, ///< Train is derailed and stopped.
+	WillDerail, ///< Train is derailed but still going forward.
 };
 
 /** Bitset of \c VehState elements. */
-using VehStates = EnumBitSet<VehState, uint8_t>;
+using VehStates = EnumBitSet<VehState, uint16_t>;
 
 /** Bit numbers used to indicate which of the #NewGRFCache values are valid. */
 enum NewGRFCacheValidValues : uint8_t {
@@ -142,7 +144,7 @@ struct VehicleSpriteSeq {
 	}
 
 	void GetBounds(Rect *bounds) const;
-	void Draw(int x, int y, PaletteID default_pal, bool force_pal) const;
+	void Draw(int x, int y, PaletteID default_pal, bool force_pal, SpriteRotation rotate = SpriteRotation::None) const;
 };
 
 /**
@@ -588,6 +590,12 @@ public:
 	 * @return the number of lost souls.
 	 */
 	virtual uint Crash(bool flooded = false);
+
+	/**
+	 * Derail the (whole) vehicle chain.
+	 * @return the number of lost souls.
+	 */
+	virtual uint Derail();
 
 	/**
 	 * Returns the Trackdir on which the vehicle is currently located.

@@ -88,9 +88,10 @@ void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int 
  * @tparam mode blitter mode
  * @param bp further blitting parameters
  * @param zoom zoom level at which we are drawing
+ * @param rotate How to rotate the sprite.
  */
 template <BlitterMode mode>
-inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
+inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom, SpriteRotation rotate)
 {
 	const SpriteData *src = (const SpriteData *)bp->sprite;
 
@@ -115,11 +116,37 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 
 	/* store so we don't have to access it via bp every time (compiler assumes pointer aliasing) */
 	const uint8_t *remap = bp->remap;
+	int pitch = bp->pitch;
+
+	std::vector<Colour> tmp_dst(0);
+	std::vector<uint8_t> tmp_anim(0);
+
+	if (rotate != SpriteRotation::None) {
+		tmp_dst.resize(bp->height*bp->width);
+		tmp_anim.resize(bp->height*bp->width);
+
+		/* Copy from real destination to vectors. */
+		int width = bp->width;
+		for (int x = rotate == SpriteRotation::Right ? width - 1 : 0; x >= 0 && x < width; x += to_underlying(rotate)) {
+			Colour *dst_ln = dst + pitch;
+			uint8_t *anim_ln = anim + pitch;
+			for (int y = rotate == SpriteRotation::Left ? bp->height-1 : 0; y >= 0 && y < bp->height; y -= to_underlying(rotate)) {
+				tmp_dst[y*width + x] = *dst++;
+				tmp_anim[y*width + x] = *anim++;
+			}
+			dst = dst_ln;
+			anim = anim_ln;
+		}
+
+		dst = tmp_dst.data();
+		anim = tmp_anim.data();
+		pitch = bp->width;
+	}
 
 	for (int y = 0; y < bp->height; y++) {
 		/* next dst line begins here */
-		Colour *dst_ln = dst + bp->pitch;
-		uint8_t *anim_ln = anim + bp->pitch;
+		Colour *dst_ln = dst + pitch;
+		uint8_t *anim_ln = anim + pitch;
 
 		/* next src line begins here */
 		const Colour *src_px_ln = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
@@ -318,6 +345,24 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		src_px = src_px_ln;
 		src_n  = src_n_ln;
 	}
+
+	if (rotate == SpriteRotation::None) return;
+
+	/* Copy from vectors to real destination. */
+	dst = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
+	anim = VideoDriver::GetInstance()->GetAnimBuffer() + (static_cast<uint32_t *>(bp->dst) - static_cast<uint32_t *>(_screen.dst_ptr)) + bp->top * bp->pitch + bp->left;
+	pitch = bp->pitch;
+	int width = bp->width;
+	for (int x = rotate == SpriteRotation::Right ? width - 1 : 0; x >= 0 && x < width; x += to_underlying(rotate)) {
+		Colour *dst_ln = dst + pitch;
+		uint8_t *anim_ln = anim + pitch;
+		for (int y = rotate == SpriteRotation::Left ? bp->height-1 : 0; y >= 0 && y < bp->height; y -= to_underlying(rotate)) {
+			*dst++ = tmp_dst[y*width + x];
+			*anim++ = tmp_anim[y*width + x];
+		}
+		dst = dst_ln;
+		anim = anim_ln;
+	}
 }
 
 /**
@@ -326,25 +371,26 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
  * @param bp further blitting parameters
  * @param mode blitter mode
  * @param zoom zoom level at which we are drawing
+ * @param rotate How to rotate the sprite.
  */
-void Blitter_40bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_40bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate)
 {
 	assert(_screen.dst_ptr != nullptr);
 
 	if (_screen_disable_anim || VideoDriver::GetInstance()->GetAnimBuffer() == nullptr) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
-		Blitter_32bppOptimized::Draw<true>(bp, mode, zoom);
+		Blitter_32bppOptimized::Draw<true>(bp, mode, zoom, rotate);
 		return;
 	}
 
 	switch (mode) {
 		default: NOT_REACHED();
-		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, zoom); return;
-		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, zoom); return;
-		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, zoom); return;
-		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, zoom); return;
-		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, zoom); return;
-		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, zoom); return;
+		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, zoom, rotate); return;
+		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, zoom, rotate); return;
+		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, zoom, rotate); return;
+		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, zoom, rotate); return;
+		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, zoom, rotate); return;
+		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, zoom, rotate); return;
 	}
 }
 

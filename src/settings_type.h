@@ -696,6 +696,7 @@ struct CompanySettings {
 	uint32_t engine_renew_money = 0; ///< minimum amount of money before autorenew is used
 	bool renew_keep_length = false; ///< sell some wagons if after autoreplace the train is longer than before
 	VehicleDefaultSettings vehicle{}; ///< default settings for vehicles
+	int16_t backwards_no_cab_speed_limit = BACKWARDS_NO_CAB_SPEED_LIMIT; ///< Maximum speed for reversing without a cab.
 };
 
 /** Container for AI and Game script configuration. */

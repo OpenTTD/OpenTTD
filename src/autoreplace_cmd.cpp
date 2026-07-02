@@ -751,7 +751,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id)
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	if (v->vehstatus.Test(VehState::Crashed)) return CMD_ERROR;
+	if (v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return CMD_ERROR;
 
 	bool free_wagon = false;
 	if (v->type == VehicleType::Train) {

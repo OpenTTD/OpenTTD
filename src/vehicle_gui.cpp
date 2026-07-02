@@ -2885,11 +2885,13 @@ static constexpr std::initializer_list<NWidgetPart> _nested_vehicle_view_widgets
 				NWidget(WWT_IMGBTN, Colours::Grey, WID_VV_GOTO_DEPOT), SetMinimalSize(18, 18), SetSpriteTip(SPR_EMPTY /* filled later */),
 				NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_VV_CLONE), SetMinimalSize(18, 18), SetSpriteTip(SPR_EMPTY /* filled later */),
 			EndContainer(),
-			/* For trains only, 'ignore signal' button. */
+			/* For trains only, 'ignore signal' and 'derail' buttons. */
 			NWidget(NWID_SELECTION, Colours::Invalid, WID_VV_FORCE_PROCEED_SEL),
 				NWidget(WWT_IMGBTN, Colours::Grey, WID_VV_FORCE_PROCEED), SetMinimalSize(18, 18),
 											SetSpriteTip(SPR_IGNORE_SIGNALS, STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP),
 			EndContainer(),
+			NWidget(WWT_PUSHIMGBTN, Colours::Yellow, WID_VV_FORCE_DERAIL), SetMinimalSize(18, 18),
+											SetSpriteTip(SPR_IMG_BUILDRAIL, STR_VEHICLE_STATUS_CRASHED),
 			NWidget(NWID_SELECTION, Colours::Invalid, WID_VV_SELECT_REFIT_TURN),
 				NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_VV_REFIT), SetMinimalSize(18, 18), SetSpriteTip(SPR_REFIT_VEHICLE),
 				NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_VV_TURN_AROUND), SetMinimalSize(18, 18),
@@ -3125,6 +3127,13 @@ public:
 				}
 				break;
 
+			case WID_VV_FORCE_DERAIL:
+				if (v->type != VehicleType::Train || v->vehstatus.Test(VehState::Derailed) || !_settings_client.gui.newgrf_developer_tools) {
+					size.height = 0;
+					size.width = 0;
+				}
+				break;
+
 			case WID_VV_VIEWPORT:
 				size.width = VV_INITIAL_VIEWPORT_WIDTH;
 				size.height = (v->type == VehicleType::Train) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT;
@@ -3151,6 +3160,11 @@ public:
 		if (v->type == VehicleType::Train) {
 			this->SetWidgetLoweredState(WID_VV_FORCE_PROCEED, Train::From(v)->force_proceed == TFP_SIGNAL);
 			this->SetWidgetDisabledState(WID_VV_FORCE_PROCEED, !is_localcompany);
+		}
+
+		if (v->type == VehicleType::Train) {
+			this->SetWidgetDisabledState(WID_VV_FORCE_DERAIL, Train::From(v)->vehstatus.Test(VehState::Derailed));
+			this->SetWidgetDisabledState(WID_VV_FORCE_DERAIL, !is_localcompany);
 		}
 
 		if (v->type == VehicleType::Train || v->type == VehicleType::Road) {
@@ -3190,7 +3204,7 @@ public:
 	{
 		text_colour = TextColour::Black;
 
-		if (v->vehstatus.Test(VehState::Crashed)) return GetString(STR_VEHICLE_STATUS_CRASHED);
+		if (v->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return GetString(STR_VEHICLE_STATUS_CRASHED);
 
 		if (v->type != VehicleType::Aircraft && v->breakdown_ctr == 1) return GetString(STR_VEHICLE_STATUS_BROKEN_DOWN);
 
@@ -3369,6 +3383,10 @@ public:
 			case WID_VV_FORCE_PROCEED: // force proceed
 				assert(v->type == VehicleType::Train);
 				Command<Commands::ForceTrainProceed>::Post(STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL, v->tile, v->index);
+				break;
+			case WID_VV_FORCE_DERAIL: // force derail
+				assert(v->type == VehicleType::Train);
+				Command<Commands::ForceTrainDerail>::Post(STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL, v->tile, v->index);
 				break;
 		}
 	}
@@ -3635,7 +3653,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 	while (v != nullptr) {
 		if (total_width >= ScaleSpriteTrad(2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH)) break;
 
-		PaletteID pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(v);
+		PaletteID pal = v->vehstatus.Any({VehState::Derailed, VehState::Crashed}) ? PALETTE_CRASH : GetVehiclePalette(v);
 		VehicleSpriteSeq seq;
 
 		if (rotor_seq) {
@@ -3650,7 +3668,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 		if (v->type == VehicleType::Train) x_offs = Train::From(v)->GetCursorImageOffset();
 
 		for (uint i = 0; i < seq.count; ++i) {
-			PaletteID pal2 = v->vehstatus.Test(VehState::Crashed) || !seq.seq[i].pal ? pal : seq.seq[i].pal;
+			PaletteID pal2 = v->vehstatus.Any({VehState::Derailed, VehState::Crashed}) || !seq.seq[i].pal ? pal : seq.seq[i].pal;
 			_cursor.sprites.emplace_back(seq.seq[i].sprite, pal2, rtl ? (-total_width + x_offs) : (total_width + x_offs), y_offset);
 		}
 

@@ -12,7 +12,7 @@
 #ifndef VIEWPORT_SPRITE_SORTER_H
 #define VIEWPORT_SPRITE_SORTER_H
 
-/** Parent sprite that should be drawn */
+/** Parent sprite that should be drawn. */
 struct ParentSpriteToDraw {
 	/* Block of 16B loadable in xmm register */
 	int32_t xmin;                     ///< minimal world X coordinate of bounding box
@@ -34,7 +34,9 @@ struct ParentSpriteToDraw {
 	int32_t top;                      ///< minimal screen Y coordinate of sprite (= y + sprite->y_offs), reference point for child sprites
 
 	int32_t first_child;              ///< the first child to draw.
-	uint32_t order;                   ///< Used during sprite sorting
+	uint16_t order;                   ///< Used during sprite sorting
+
+	SpriteRotation rotate; ///< Defines how sprite should be rotated.
 };
 
 typedef std::vector<ParentSpriteToDraw*> ParentSpriteToSortVector;

@@ -683,7 +683,8 @@ public:
 		SLE_CONDVAR(Vehicle, motion_counter, SLE_UINT32, SaveLoadVersion::VehMotionCounter, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Vehicle, progress,              SLE_UINT8),
 
-		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
+		SLE_CONDVAR(Vehicle, vehstatus, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TrainsDerail),
+		SLE_CONDVAR(Vehicle, vehstatus, SLE_UINT16, SaveLoadVersion::TrainsDerail, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, last_station_visited, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 		SLE_CONDVAR(Vehicle, last_station_visited, SLE_UINT16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, last_loading_station, SLE_UINT16, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
@@ -1017,7 +1018,8 @@ public:
 
 		     SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, VarFileType::U16 | VarMemType::U32),
 		     SLE_VAR(Vehicle, progress,              SLE_UINT8),
-		     SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
+		SLE_CONDVAR(Vehicle, vehstatus, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TrainsDerail),
+		SLE_CONDVAR(Vehicle, vehstatus, SLE_UINT16, SaveLoadVersion::TrainsDerail, SaveLoadVersion::MaxVersion),
 
 		     SLE_VAR(EffectVehicle, animation_state,    SLE_UINT16),
 		     SLE_VAR(EffectVehicle, animation_substate, SLE_UINT8),
@@ -1065,7 +1067,8 @@ public:
 		    SLE_VAR(Vehicle, direction,             SLE_UINT8),
 
 		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),
-		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
+		SLE_CONDVAR(Vehicle, vehstatus, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TrainsDerail),
+		SLE_CONDVAR(Vehicle, vehstatus, SLE_UINT16, SaveLoadVersion::TrainsDerail, SaveLoadVersion::MaxVersion),
 		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", SLE_UINT16, SaveLoadVersion::BigMap, SaveLoadVersion::DisasterVehState),
 		SLE_CONDVAR(DisasterVehicle, state, SLE_UINT16, SaveLoadVersion::DisasterVehState, SaveLoadVersion::MaxVersion),

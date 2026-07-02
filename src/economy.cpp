@@ -1930,7 +1930,7 @@ void LoadUnloadStation(Station *st)
 
 	/* Check if anything will be loaded at all. Otherwise we don't need to reserve either. */
 	for (Vehicle *v : st->loading_vehicles) {
-		if (v->vehstatus.Any({VehState::Stopped, VehState::Crashed})) continue;
+		if (v->vehstatus.Any({VehState::Stopped, VehState::Crashed, VehState::Derailed})) continue;
 
 		assert(v->load_unload_ticks != 0);
 		if (--v->load_unload_ticks == 0) last_loading = v;
@@ -1946,7 +1946,7 @@ void LoadUnloadStation(Station *st)
 	if (last_loading == nullptr) return;
 
 	for (Vehicle *v : st->loading_vehicles) {
-		if (!v->vehstatus.Any({VehState::Stopped, VehState::Crashed})) LoadUnloadVehicle(v);
+		if (!v->vehstatus.Any({VehState::Stopped, VehState::Crashed, VehState::Derailed})) LoadUnloadVehicle(v);
 		if (v == last_loading) break;
 	}
 
