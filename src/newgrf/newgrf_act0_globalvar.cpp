@@ -385,8 +385,8 @@ static ChangeInfoResult GlobalVarReserveInfo(uint first, uint last, int prop, By
 				break;
 
 			case 0x11: { // GRF match for engine allocation
-				uint32_t s = buf.ReadDWord();
-				uint32_t t = buf.ReadDWord();
+				GrfID s = buf.ReadDWord();
+				GrfID t = buf.ReadDWord();
 				SetNewGRFOverride(s, t);
 				break;
 			}

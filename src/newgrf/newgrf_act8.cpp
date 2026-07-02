@@ -21,7 +21,7 @@
 static void ScanInfo(ByteReader &buf)
 {
 	uint8_t grf_version = buf.ReadByte();
-	uint32_t grfid      = buf.ReadDWord();
+	GrfID grfid = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
 	_cur_gps.grfconfig->ident.grfid = grfid;
@@ -56,7 +56,7 @@ static void GRFInfo(ByteReader &buf)
 	 * S info          string describing the set, and e.g. author and copyright */
 
 	uint8_t version    = buf.ReadByte();
-	uint32_t grfid     = buf.ReadDWord();
+	GrfID grfid = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
 	if (_cur_gps.stage < GrfLoadingStage::Reserve && _cur_gps.grfconfig->status != GRFStatus::Unknown) {

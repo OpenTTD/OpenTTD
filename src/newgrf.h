@@ -20,8 +20,6 @@
 #include "newgrf_text_type.h"
 #include "vehicle_type.h"
 
-struct GRFConfig;
-
 /**
  * List of different canal 'features'.
  * Each feature gets an entry in the canal spritegroup table
@@ -114,8 +112,6 @@ enum class GrfSpecFeature : uint8_t {
 /** Bitset of \c GrfSpecFeature elements. */
 using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::End>;
 
-static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
-
 struct GRFLabel {
 	uint8_t label;
 	uint32_t nfo_line;
@@ -127,7 +123,7 @@ struct GRFLabel {
 /** Dynamic data of a loaded NewGRF */
 struct GRFFile {
 	std::string filename{};
-	uint32_t grfid = 0;
+	GrfID grfid{};
 	uint8_t grf_version = 0;
 
 	uint sound_offset = 0;
@@ -248,7 +244,7 @@ void GrfMsgI(int severity, const std::string &msg);
 
 bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile);
 
-StringID MapGRFStringID(uint32_t grfid, GRFStringID str);
+StringID MapGRFStringID(GrfID grfid, GRFStringID str);
 void ShowNewGRFError();
 
 GrfSpecFeature GetGrfSpecFeature(VehicleType type);

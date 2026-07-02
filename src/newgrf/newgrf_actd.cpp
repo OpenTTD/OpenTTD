@@ -29,15 +29,15 @@
  * Contains the GRF ID of the owner of a vehicle if it has been reserved.
  * GRM for vehicles is only used if dynamic engine allocation is disabled,
  * so 256 is the number of original engines. */
-static std::array<uint32_t, 256> _grm_engines{};
+static std::array<GrfID, 256> _grm_engines{};
 
 /** Contains the GRF ID of the owner of a cargo if it has been reserved */
-static std::array<uint32_t, NUM_CARGO * 2> _grm_cargoes{};
+static std::array<GrfID, NUM_CARGO * 2> _grm_cargoes{};
 
 void ResetGRM()
 {
-	_grm_engines.fill(0);
-	_grm_cargoes.fill(0);
+	_grm_engines.fill({});
+	_grm_cargoes.fill({});
 }
 
 /* Action 0x0D (GrfLoadingStage::SafetyScan) */
@@ -132,7 +132,16 @@ static uint32_t GetPatchVariable(uint8_t param)
 	}
 }
 
-static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, uint8_t target, std::string_view type)
+/**
+ * Performs the GRF Resource Management, where NewGRFs can cooperatively manage sprite resources.
+ * @param grm Mapping to the NewGRF linked with a resource.
+ * @param count The number of elements to process.
+ * @param op The operation to perform.
+ * @param target The target for the operation.
+ * @param type Name of type for debug messages.
+ * @return Operation/target specific result.
+ */
+static uint32_t PerformGRM(std::span<GrfID> grm, uint16_t count, uint8_t op, uint8_t target, std::string_view type)
 {
 	uint start = 0;
 	uint size  = 0;

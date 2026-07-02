@@ -24,7 +24,7 @@
  * Information for mapping static StringIDs.
  */
 struct StringIDMapping {
-	uint32_t grfid; ///< Source NewGRF.
+	GrfID grfid; ///< Source NewGRF.
 	GRFStringID source; ///< Source grf-local GRFStringID.
 	std::function<void(StringID)> func; ///< Function for mapping result.
 };
@@ -124,7 +124,7 @@ static StringID TTDPStringIDToOTTDStringIDMapping(GRFStringID str)
  * @param str GRF-local GRFStringID that we want to have the equivalent in OpenTTD.
  * @return The properly adjusted StringID.
  */
-StringID MapGRFStringID(uint32_t grfid, GRFStringID str)
+StringID MapGRFStringID(GrfID grfid, GRFStringID str)
 {
 	if (IsInsideMM(str.base(), 0xD800, 0x10000)) {
 		/* General text provided by NewGRF.

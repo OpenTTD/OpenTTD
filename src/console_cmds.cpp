@@ -2822,7 +2822,7 @@ static void ConDumpRoadTypes()
 	for (RoadType rt : EnumRange(ROADTYPE_END)) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue;
-		uint32_t grfid = 0;
+		GrfID grfid{};
 		const GRFFile *grf = rti->grffile[RoadSpriteType::Ground];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
@@ -2861,7 +2861,7 @@ static void ConDumpRailTypes()
 	for (RailType rt : EnumRange(RAILTYPE_END)) {
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
-		uint32_t grfid = 0;
+		GrfID grfid{};
 		const GRFFile *grf = rti->grffile[RailSpriteType::Ground];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
@@ -2908,7 +2908,7 @@ static void ConDumpCargoTypes()
 
 	std::map<uint32_t, const GRFFile *> grfs;
 	for (const CargoSpec *spec : CargoSpec::Iterate()) {
-		uint32_t grfid = 0;
+		GrfID grfid{};
 		const GRFFile *grf = spec->grffile;
 		if (grf != nullptr) {
 			grfid = grf->grfid;

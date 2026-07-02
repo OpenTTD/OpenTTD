@@ -11,6 +11,7 @@
 #define GAMELOG_H
 
 #include "newgrf_config.h"
+#include "newgrf_type.h"
 
 /** The actions we log. */
 enum class GamelogActionType : uint8_t {
@@ -78,13 +79,13 @@ public:
 
 	void GRFUpdate(const GRFConfigList &oldg, const GRFConfigList &newg);
 	void GRFAddList(const GRFConfigList &newg);
-	void GRFRemove(uint32_t grfid);
+	void GRFRemove(GrfID grfid);
 	void GRFAdd(const GRFConfig &newg);
-	void GRFBug(uint32_t grfid, ::GRFBug bug, uint64_t data);
-	bool GRFBugReverse(uint32_t grfid, uint16_t internal_id);
+	void GRFBug(GrfID grfid, ::GRFBug bug, uint64_t data);
+	bool GRFBugReverse(GrfID grfid, uint16_t internal_id);
 	void GRFCompatible(const GRFIdentifier &newg);
-	void GRFMove(uint32_t grfid, int32_t offset);
-	void GRFParameters(uint32_t grfid);
+	void GRFMove(GrfID grfid, int32_t offset);
+	void GRFParameters(GrfID grfid);
 
 	void TestRevision();
 	void TestMode();

@@ -171,7 +171,7 @@ public:
 	 * @param index index to check.
 	 * @return GRFID of the item. 0 means that the item is not inspectable.
 	 */
-	virtual uint32_t GetGRFID(uint index) const = 0;
+	virtual GrfID GetGRFID(uint index) const = 0;
 
 	/**
 	 * Get the list of badges of this item.
@@ -205,7 +205,7 @@ public:
 	 * @param grfid Parameter for the PSA. Only required for items with parameters.
 	 * @return Span of the storage array or an empty span when not present.
 	 */
-	virtual const std::span<int32_t> GetPSA([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
+	virtual const std::span<int32_t> GetPSA([[maybe_unused]] uint index, [[maybe_unused]] GrfID grfid) const
 	{
 		return {};
 	}
@@ -261,7 +261,7 @@ struct NewGRFInspectWindow : Window {
 	static inline EnumIndexArray<std::array<uint32_t, 0x20>, GrfSpecFeature, GrfSpecFeature::FakeEnd> var60params{};
 
 	/** GRFID of the caller of this window, 0 if it has no caller. */
-	uint32_t caller_grfid = 0;
+	GrfID caller_grfid{};
 
 	/** For ground vehicles: Index in vehicle chain. */
 	uint chain_index = 0;
@@ -285,7 +285,7 @@ struct NewGRFInspectWindow : Window {
 	 * Set the GRFID of the item opening this window.
 	 * @param grfid GRFID of the item opening this window, or 0 if not opened by other window.
 	 */
-	void SetCallerGRFID(uint32_t grfid)
+	void SetCallerGRFID(GrfID grfid)
 	{
 		this->caller_grfid = grfid;
 		this->SetDirty();
@@ -703,7 +703,7 @@ static WindowDesc _newgrf_inspect_desc(
  * @param index   The index/identifier of the feature to inspect.
  * @param grfid   GRFID of the item opening this window, or 0 if not opened by other window.
  */
-void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32_t grfid)
+void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const GrfID grfid)
 {
 	if (!IsNewGRFInspectable(feature, index)) return;
 

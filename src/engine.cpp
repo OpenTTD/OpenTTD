@@ -179,10 +179,10 @@ bool Engine::IsEnabled() const
  * This is the GRF providing the Action 3.
  * @return GRF ID of the associated NewGRF.
  */
-uint32_t Engine::GetGRFID() const
+GrfID Engine::GetGRFID() const
 {
 	const GRFFile *file = this->GetGRF();
-	return file == nullptr ? 0 : file->grfid;
+	return file == nullptr ? GrfID{} : file->grfid;
 }
 
 /**
@@ -553,7 +553,7 @@ void EngineOverrideManager::ResetToDefaultMapping()
  *              If dynamic_engines is disabled, all newgrf share the same ID scope identified by INVALID_GRFID.
  * @return The engine ID if present, or EngineID::Invalid() if not.
  */
-EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid)
+EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, GrfID grfid)
 {
 	const auto &map = this->mappings[type];
 	const auto key = EngineIDMapping::Key(grfid, grf_local_id);
@@ -572,7 +572,7 @@ EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, u
  * @param static_access Whether to actually reserve the EngineID.
  * @return The engine ID if present and now reserved, or EngineID::Invalid() if not.
  */
-EngineID EngineOverrideManager::UseUnreservedID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, bool static_access)
+EngineID EngineOverrideManager::UseUnreservedID(VehicleType type, uint16_t grf_local_id, GrfID grfid, bool static_access)
 {
 	auto &map = _engine_mngr.mappings[type];
 	const auto key = EngineIDMapping::Key(INVALID_GRFID, grf_local_id);
@@ -591,7 +591,15 @@ EngineID EngineOverrideManager::UseUnreservedID(VehicleType type, uint16_t grf_l
 	return it->engine;
 }
 
-void EngineOverrideManager::SetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, uint8_t substitute_id, EngineID engine)
+/**
+ * Create an override to the given engine. If the override already exists, it will be overwritten.
+ * @param type The vehicle type.
+ * @param grf_local_id The NewGRF internal identifier.
+ * @param grfid The unique identifier of the NewGRF.
+ * @param substitute_id The fallback original engine.
+ * @param engine The engine this override is for.
+ */
+void EngineOverrideManager::SetID(VehicleType type, uint16_t grf_local_id, GrfID grfid, uint8_t substitute_id, EngineID engine)
 {
 	auto &map = this->mappings[type];
 	const auto key = EngineIDMapping::Key(grfid, grf_local_id);

@@ -33,7 +33,7 @@ enum class PickerFilterMode : uint8_t {
 using PickerFilterModes = EnumBitSet<PickerFilterMode, uint8_t>;
 
 struct PickerItem {
-	uint32_t grfid;
+	GrfID grfid;
 	uint16_t local_id;
 	int class_index;
 	int index;
@@ -270,7 +270,7 @@ public:
 	 */
 	PickerItem GetPickerItem(const typename T::spec_type *spec, int cls_id = -1, int id = -1) const
 	{
-		if (spec == nullptr) return {0, 0, cls_id, id};
+		if (spec == nullptr) return {GrfID{}, 0, cls_id, id};
 		return {spec->grf_prop.grfid, spec->grf_prop.local_id, spec->class_index.base(), spec->index};
 	}
 

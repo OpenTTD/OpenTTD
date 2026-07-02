@@ -597,7 +597,7 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
  * @param desired_version Requested version
  * @return The matching grf, if it exists in #_all_grfs, else \c nullptr.
  */
-const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5Hash *md5sum, uint32_t desired_version)
+const GRFConfig *FindGRFConfig(GrfID grfid, FindGRFConfigMode mode, const MD5Hash *md5sum, uint32_t desired_version)
 {
 	assert((mode == FindGRFConfigMode::Exact) != (md5sum == nullptr));
 	const GRFConfig *best = nullptr;
@@ -623,7 +623,7 @@ const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5
  * @param mask  GRFID mask to allow for partial matching.
  * @return The grf config, if it exists, else \c nullptr.
  */
-GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask)
+GRFConfig *GetGRFConfig(GrfID grfid, uint32_t mask)
 {
 	auto it = std::ranges::find_if(_grfconfig, [grfid, mask](const auto &c) { return (c->ident.grfid & mask) == (grfid & mask); });
 	if (it != std::end(_grfconfig)) return it->get();

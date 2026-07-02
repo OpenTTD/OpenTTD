@@ -336,6 +336,7 @@ add_files(
     newgrf_town.h
     newgrf_townname.cpp
     newgrf_townname.h
+    newgrf_type.h
     news_cmd.h
     news_func.h
     news_gui.cpp

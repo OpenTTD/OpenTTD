@@ -125,7 +125,7 @@ const Tspec *NewGRFClass<Tspec, Tindex>::GetSpec(uint index) const
  * @return The spec.
  */
 template <typename Tspec, typename Tindex>
-const Tspec *NewGRFClass<Tspec, Tindex>::GetByGrf(uint32_t grfid, uint16_t local_id)
+const Tspec *NewGRFClass<Tspec, Tindex>::GetByGrf(GrfID grfid, uint16_t local_id)
 {
 	for (const auto &cls : NewGRFClass::classes) {
 		for (const auto &spec : cls.spec) {

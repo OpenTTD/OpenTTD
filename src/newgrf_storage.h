@@ -31,7 +31,7 @@ enum PersistentStorageMode : uint8_t {
  * so we have a generalised access to the virtual methods.
  */
 struct BasePersistentStorageArray {
-	uint32_t grfid = 0; ///< GRFID associated to this persistent storage. A value of zero means "default".
+	GrfID grfid{}; ///< GRFID associated to this persistent storage. A value of zero means "default".
 	GrfSpecFeature feature = GrfSpecFeature::Invalid; ///< NOSAVE: Used to identify in the owner of the array in debug output.
 	TileIndex tile = INVALID_TILE; ///< NOSAVE: Used to identify in the owner of the array in debug output.
 
@@ -198,9 +198,16 @@ extern PersistentStoragePool _persistent_storage_pool;
  * Class for pooled persistent storage of data.
  */
 struct PersistentStorage : PersistentStorageArray<int32_t, 256>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
-	PersistentStorage(PersistentStorageID index, const uint32_t new_grfid, GrfSpecFeature feature, TileIndex tile) : PersistentStoragePool::PoolItem<&_persistent_storage_pool>(index)
+	/**
+	 * Create the pooled storage.
+	 * @param index The unique identifier of the pool item.
+	 * @param grfid The NewGRF this storage is of.
+	 * @param feature The feature associated with this storage.
+	 * @param tile The tile associated with this storage.
+	 */
+	PersistentStorage(PersistentStorageID index, GrfID grfid, GrfSpecFeature feature, TileIndex tile) : PersistentStoragePool::PoolItem<&_persistent_storage_pool>(index)
 	{
-		this->grfid = new_grfid;
+		this->grfid = grfid;
 		this->feature = feature;
 		this->tile = tile;
 	}

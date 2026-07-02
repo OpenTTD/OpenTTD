@@ -1520,7 +1520,7 @@ public:
 	PickerItem GetPickerItem(int cls_id, int id) const override
 	{
 		const auto *spec = HouseSpec::Get(id);
-		if (!spec->grf_prop.HasGrfFile()) return {0, spec->Index(), cls_id, id};
+		if (!spec->grf_prop.HasGrfFile()) return {GrfID{}, spec->Index(), cls_id, id};
 		return {spec->grf_prop.grfid, spec->grf_prop.local_id, cls_id, id};
 	}
 
@@ -1579,7 +1579,7 @@ public:
 			HouseID house = static_cast<HouseID>(std::distance(id_count.begin(), it));
 			const HouseSpec *hs = HouseSpec::Get(house);
 			int class_index = GetClassIdFromHouseZone(hs->building_availability);
-			items.insert({0, house, class_index, house});
+			items.insert({GrfID{}, house, class_index, house});
 		}
 	}
 
