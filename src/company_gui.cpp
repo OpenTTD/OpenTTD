@@ -2021,7 +2021,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_DESC_VEHICLE_COUNTS: {
-				uint64_t max_value = GetParamMaxValue(5000); // Maximum number of vehicles
+				uint64_t max_value = GetParamMaxValue(10000); // Maximum number of vehicles
 				for (const auto &count_string : _company_view_vehicle_count_strings) {
 					size.width = std::max(size.width, GetStringBoundingBox(GetString(count_string, max_value)).width + padding.width);
 				}
