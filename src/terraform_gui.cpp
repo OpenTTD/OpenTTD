@@ -119,6 +119,71 @@ static void GenerateRockyArea(TileIndex end, TileIndex start, bool remove)
 }
 
 /**
+ * Scenario editor command that generates rough land areas.
+ * @param end The end tile of the map drag.
+ * @param start The start tile of the map drag.
+ * @param remove If true, remove rough areas instead of placing them.
+ */
+static void GenerateRoughArea(TileIndex end, TileIndex start, bool remove)
+{
+	if (_game_mode != GameMode::Editor) return;
+
+	bool success = false;
+	TileArea ta(start, end);
+
+	for (TileIndex tile : ta) {
+		switch (GetTileType(tile)) {
+			case TileType::Trees: {
+				// Preserve snowline density underneath trees, so the tile loop
+				// doesn't have to come back and fix it later.
+				uint density = GetTreeDensity(tile);
+				if (remove) {
+					switch (GetTreeGround(tile)) {
+						case TreeGround::Rough:
+							SetTreeGroundDensity(tile, TreeGround::Grass, density);
+							break;
+						case TreeGround::RoughSnow:
+							SetTreeGroundDensity(tile, TreeGround::SnowOrDesert, density);
+							break;
+						default:
+							break;
+					}
+				} else {
+					switch (GetTreeGround(tile)) {
+						case TreeGround::Grass:
+							SetTreeGroundDensity(tile, TreeGround::Rough, density);
+							break;
+						case TreeGround::SnowOrDesert:
+							SetTreeGroundDensity(tile, TreeGround::RoughSnow, density);
+							break;
+						default:
+							break;
+					}
+				}
+				break;
+			}
+
+			case TileType::Clear:
+				if (remove) {
+					if (GetClearGround(tile) == ClearGround::Rough) {
+						SetClearGroundDensity(tile, ClearGround::Grass, 3);
+					}
+				} else {
+					SetClearGroundDensity(tile, ClearGround::Rough, 3);
+				}
+				break;
+
+			default:
+				continue;
+		}
+		MarkTileDirtyByTile(tile);
+		success = true;
+	}
+
+	if (success && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, end);
+}
+
+/**
  * A central place to handle all X_AND_Y dragged GUI functions.
  * @param proc       Procedure related to the dragging
  * @param start_tile Begin of the dragging
@@ -151,6 +216,9 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 			break;
 		case DDSP_CREATE_ROCKS:
 			GenerateRockyArea(end_tile, start_tile, _ctrl_pressed);
+			break;
+		case DDSP_CREATE_ROUGH:
+			GenerateRoughArea(end_tile, start_tile, _ctrl_pressed);
 			break;
 		case DDSP_CREATE_DESERT:
 			GenerateDesertArea(end_tile, start_tile);
@@ -479,6 +547,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_scen_edit_land_gen_w
 										SetFill(0, 1), SetSpriteTip(SPR_IMG_LEVEL_LAND, STR_LANDSCAPING_LEVEL_LAND_TOOLTIP),
 			NWidget(WWT_IMGBTN, Colours::Grey, WID_ETT_PLACE_ROCKS), SetToolbarMinimalSize(1),
 										SetFill(0, 1), SetSpriteTip(SPR_IMG_ROCKS, STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE),
+			NWidget(WWT_IMGBTN, Colours::Grey, WID_ETT_PLACE_ROUGH), SetToolbarMinimalSize(1),
+										SetFill(0, 1), SetSpriteTip(SPR_IMG_SHOW_COUNTOURS, STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE),
 			NWidget(NWID_SELECTION, Colours::Invalid, WID_ETT_SHOW_PLACE_DESERT),
 				NWidget(WWT_IMGBTN, Colours::Grey, WID_ETT_PLACE_DESERT), SetToolbarMinimalSize(1),
 											SetFill(0, 1), SetSpriteTip(SPR_IMG_DESERT, STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA),
@@ -617,6 +687,11 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				this->last_user_action = widget;
 				break;
 
+			case WID_ETT_PLACE_ROUGH: // Place rough land button
+				HandlePlacePushButton(this, WID_ETT_PLACE_ROUGH, SPR_CURSOR_ROCKY_AREA, HT_RECT);
+				this->last_user_action = widget;
+				break;
+
 			case WID_ETT_PLACE_DESERT: // Place desert button (in tropical climate)
 				HandlePlacePushButton(this, WID_ETT_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT);
 				this->last_user_action = widget;
@@ -694,6 +769,10 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_ROCKS);
 				break;
 
+			case WID_ETT_PLACE_ROUGH: // Place rough land button
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_ROUGH);
+				break;
+
 			case WID_ETT_PLACE_DESERT: // Place desert button (in tropical climate)
 				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 				break;
@@ -713,6 +792,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_CREATE_ROCKS:
+				case DDSP_CREATE_ROUGH:
 				case DDSP_CREATE_DESERT:
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
@@ -729,6 +809,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		switch (this->last_user_action) {
 			case WID_ETT_PLACE_ROCKS:
 			case WID_ETT_PLACE_DESERT:
+			case WID_ETT_PLACE_ROUGH:
 				if (this->IsWidgetLowered(this->last_user_action)) {
 					SetSelectionRed(_ctrl_pressed);
 					return EventState::Handled;
