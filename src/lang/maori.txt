@@ -1177,7 +1177,7 @@ STR_FUNDING_ONLY                                                :Whakarato moni 
 STR_MINIMAL                                                     :Mōkito
 STR_NUM_VERY_LOW                                                :Iti rawa
 STR_NUM_LOW                                                     :Iti
-STR_NUM_NORMAL                                                  :Māori
+STR_NUM_NORMAL                                                  :Taunoa
 STR_NUM_HIGH                                                    :Nui
 STR_NUM_CUSTOM                                                  :Tautuhi
 STR_NUM_CUSTOM_NUMBER                                           :Tautuhi ({NUM})
@@ -1213,7 +1213,7 @@ STR_RIVERS_LOT                                                  :Maha
 ###length 3
 STR_DISASTER_NONE                                               :Kore
 STR_DISASTER_REDUCED                                            :Whakapaku
-STR_DISASTER_NORMAL                                             :Māori
+STR_DISASTER_NORMAL                                             :Taunoa
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5
@@ -1501,7 +1501,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Tautuhitia te t
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Kore*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Whakapaku
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Māori
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Taunoa
 
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Tukuna kia hanga ara whakawhiti rerewhenua i runga i ngā kaiwhakataetae: {STRING}
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Tukuna kia hanga ara whakawhiti rerewhenua i ngā rori, ngā rēra rānei a ngā kaiwhakataetae
@@ -1640,11 +1640,11 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Tuarangaranga
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Tuarangaranga rawa
 
 STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :Teitei toharite: {STRING}
-STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Kōwhiria te teitei toharite o te whenua. “Aunoa”: ka whakamahia te taunoa mō te taiao kua tīpakona: 'Raorao' mō te taiao wera, “Māori” mō te taiao hātai me te taiao taonga tākaro, “Mānia tairanga” mō te taiao makariri.
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :Kōwhiria te teitei toharite o te whenua. “Aunoa”: ka whakamahia te taunoa mō te taiao kua tīpakona: 'Raorao' mō te taiao wera, “Taunoa” mō te taiao hātai me te taiao taonga tākaro, “Mānia tairanga” mō te taiao makariri.
 ###length 4
 STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :Aunoa
 STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :Raorao
-STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Māori
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Taunoa
 STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Mānia tairanga
 
 STR_CONFIG_SETTING_VARIETY                                      :Tuari matatini: {STRING}
@@ -1823,7 +1823,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Tango aunoatia 
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Tepetere o te rere whakamua: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Te tepe o te tere o te kēmu ina kā te rere whakamua. 0 = kāore he tepe (pērā te tere i tō rorohiko). Ka whakapōturitia te kēmu e ngā uara i raro iho i te 100%. Mō te tere mōrahi, kei te āhua tonu o ngā āhuatanga o tō rorohiko me tēwhea kēmu e tākarotia ana
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% o te tere māori
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% o te tere taunoa
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Kāore he tepe (pērā te tere i tō rorohiko)
 
@@ -2086,7 +2086,7 @@ STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Te kōeke mōra
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
-STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Māori
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Taunoa
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
@@ -2103,7 +2103,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Tere whakatupu 
 ###length 5
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Kore
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Pōturi
-STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Māori
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Taunoa
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Tere
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Tere rawa
 
@@ -3085,7 +3085,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Rākau i
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Maka rākau i ngētahi momo matapōkere. Pātaki+Pāwhiri+Tō kia kōwhiri i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Rākau Matapōkere
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Whakatō rākau i ngētahi wāhi matapōkere i te whenua
-STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Māori
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Taunoa
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Whakatō rākau tōtahi mā te tō i runga i te whenua
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Uru
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Whakatō wao iti mā te tō i runga i te whenua
@@ -3323,7 +3323,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Te tatau
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Pāpātanga kapohanga whakairoiro: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Te tatau o ngā kapohanga ataata e tāhuahuatia ana i ia hēkena
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Tau whakarea o te tere o te kēmu nei: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Te tere o te kēmu ināianei e whakatairitea ana ki te kawatau i te pāpātanga whaihanga māori
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Te tere o te kēmu ināianei e whakatairitea ana ki te kawatau i te pāpātanga whaihanga taunoa
 STR_FRAMERATE_CURRENT                                           :{WHITE}Onāianei
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Toharite
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Pūmahara
@@ -3631,11 +3631,11 @@ STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}Tīaroar
 STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}Tīaroaro i tētahi ata: Mahi 0xA, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}Tīaroaro i tētahi ata: Mahi 0x5, type {HEX}, {COMMA} ({STRING}:{NUM})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Ata ki muri
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Whano ki te ata māori ki muri, peke atu i ngā ata tipatipa/kara/momotuhi ka takai ai mai i te ata mutunga ki te tuatahi
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Whano ki te ata tōkau ki muri, peke atu i ngā ata tipatipa/kara/momotuhi ka takai ai mai i te ata mutunga ki te tuatahi
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Haere ki tētahi ata
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Haere ki te ata kua tukuna. Mēnā ehara te ata i te māori, e whano ki te ata māori tata rawaatu
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Haere ki te ata kua tukuna. Mēnā ehara te ata i te tōkau, e whano ki te ata tōkau tata rawaatu
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Ata ki mua
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Whano ki te ata māori ki mua, peke atu i ngā ata tipatipa/kara/momotuhi ka takai ai mai i te ata tuatahi ki te mutunga
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Whano ki te ata tōkau ki mua, peke atu i ngā ata tipatipa/kara/momotuhi ka takai ai mai i te ata tuatahi ki te mutunga
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Te whakaahuahanga o te ata e tīpakona nei. Ka whakaturi te papatono ki te tīaroaro ina tuhia taua ata
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Nekenekehia te ata, panonitia ngā haukume i te tuaka X me te tuaka Y. Pātaki+Pāwhiri kia neke i te ata mā te waru waeine i ia wā
 STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
@@ -5002,7 +5002,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Whakaae
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Tīpakona te hōtuhi kua miramiratia
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Kapomata
-STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Kapomata māori
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Kapomata taunoa
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Kapomata kua topa mai katoatia
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Kapomata kua topa taunoatia
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Kapomata o te mahere katoa
