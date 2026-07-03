@@ -82,7 +82,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
  * @param start The start tile of the map drag.
  * @param remove If true, remove rocks instead of placing them.
  */
-static void GenerateRockyArea(TileIndex end, TileIndex start, bool remove)
+static void PlaceRockyArea(TileIndex end, TileIndex start, bool remove)
 {
 	if (_game_mode != GameMode::Editor) return;
 
@@ -150,7 +150,7 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 			Command<Commands::LevelLand>::Post(STR_ERROR_CAN_T_LEVEL_LAND_HERE, CcTerraform, end_tile, start_tile, _ctrl_pressed, LevelMode::Level);
 			break;
 		case DDSP_CREATE_ROCKS:
-			GenerateRockyArea(end_tile, start_tile, _ctrl_pressed);
+			PlaceRockyArea(end_tile, start_tile, _ctrl_pressed);
 			break;
 		case DDSP_CREATE_DESERT:
 			GenerateDesertArea(end_tile, start_tile);
