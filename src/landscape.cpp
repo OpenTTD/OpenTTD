@@ -539,13 +539,22 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	}
 }
 
-void DoClearSquare(TileIndex tile)
+/**
+ * Clear a tile and handle water considerations (*docking, flooding, ship pathfinding, etc.).
+ * @param tile The tile to clear.
+ * @param make_rocks Should we clear to rocks, instead of dirt/grass?
+ */
+void DoClearSquare(TileIndex tile, bool make_rocks)
 {
 	/* If the tile can have animation and we clear it, delete it from the animated tile list. */
 	if (MayAnimateTile(tile)) DeleteAnimatedTile(tile, true);
 
 	bool remove = IsDockingTile(tile);
-	MakeClear(tile, ClearGround::Grass, _generating_world ? 3 : 0);
+	if (make_rocks) {
+		MakeClear(tile, ClearGround::Rocks, 3);
+	} else {
+		MakeClear(tile, ClearGround::Grass, _generating_world ? 3 : 0);
+	}
 	MarkTileDirtyByTile(tile);
 	if (remove) RemoveDockingTile(tile);
 
