@@ -2300,6 +2300,67 @@ function Regression::PriorityQueue()
 	print("  Count():      " + queue.Count());
 }
 
+function Regression::Terraforming()
+{
+	print("");
+	print("--Terraforming--");
+	print("  DemolishTile():       " + AITile.DemolishTile(4033));
+	print("  DemolishTile():       " + AITile.DemolishTile(60766));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  LowerTile():          " + AITile.LowerTile(8205, AITile.SLOPE_ENW));
+	print("  RaiseTile():          " + AITile.RaiseTile(8205, AITile.SLOPE_ENW));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  LowerTile():          " + AITile.LowerTile(8205, AITile.SLOPE_ENW));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  LowerTile():          " + AITile.LowerTile(4113, AITile.SLOPE_SW));
+	print("  RaiseTile():          " + AITile.RaiseTile(5902, AITile.SLOPE_NE));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  RaiseTile():          " + AITile.RaiseTile(7958, AITile.SLOPE_SE));
+	print("  LowerTile():          " + AITile.LowerTile(7958, AITile.SLOPE_NE));
+	print("  LowerTile():          " + AITile.LowerTile(7958, AITile.SLOPE_SE));
+	print("  RaiseTile():          " + AITile.RaiseTile(7958, AITile.SLOPE_SE));
+	print("  LowerTile():          " + AITile.LowerTile(7958, AITile.SLOPE_EW));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  LowerTile():          " + AITile.LowerTile(33924, AITile.SLOPE_ELEVATED));
+	print("  LowerTile():          " + AITile.LowerTile(33923, AITile.SLOPE_ELEVATED));
+	print("  RaiseTile():          " + AITile.RaiseTile(34193, AITile.SLOPE_ELEVATED));
+	print("  LowerTile():          " + AITile.LowerTile(34193, AITile.SLOPE_ELEVATED));
+	print("  LowerTile():          " + AITile.LowerTile(34192, AITile.SLOPE_NE));
+	print("  RaiseTile():          " + AITile.RaiseTile(34193, AITile.SLOPE_ELEVATED));
+	print("  LowerTile():          " + AITile.LowerTile(34192, AITile.SLOPE_NE));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  RaiseTile():          " + AITile.RaiseTile(5687, AITile.SLOPE_N));
+	print("  LowerTile():          " + AITile.LowerTile(5687, AITile.SLOPE_SE));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  RaiseTile():          " + AITile.RaiseTile(23596, AITile.SLOPE_NE));
+	print("  LowerTile():          " + AITile.LowerTile(23596, AITile.SLOPE_NE));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  RaiseTile():          " + AITile.RaiseTile(28536, AITile.SLOPE_E));
+	print("  RaiseTile():          " + AITile.RaiseTile(28536, AITile.SLOPE_E));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  LevelTiles():         " + AITile.LevelTiles(28536, 29053));
+	print("  LevelTiles():         " + AITile.LevelTiles(28536, 29053));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  LevelTiles():         " + AITile.LevelTiles(22348, 24405));
+	print("  LevelTiles():         " + AITile.LevelTiles(27717, 29772));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  LowerTile():          " + AITile.LowerTile(61534, AITile.SLOPE_W));
+	print("  RaiseTile():          " + AITile.RaiseTile(61534, AITile.SLOPE_NE));
+	print("  RaiseTile():          " + AITile.RaiseTile(61534, AITile.SLOPE_N));
+	print("  LowerTile():          " + AITile.LowerTile(61534, AITile.SLOPE_W));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  RaiseTile():          " + AITile.RaiseTile(61534, AITile.SLOPE_N));
+	print("  LowerTile():          " + AITile.LowerTile(61533, AITile.SLOPE_E));
+	print("  LowerTile():          " + AITile.LowerTile(61534, AITile.SLOPE_E));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+	print("  RaiseTile():          " + AITile.RaiseTile(4033, AITile.SLOPE_S));
+	print("  LowerTile():          " + AITile.LowerTile(4033, AITile.SLOPE_S));
+	print("  LowerTile():          " + AITile.LowerTile(4033, AITile.SLOPE_E));
+	print("  RaiseTile():          " + AITile.RaiseTile(4033, AITile.SLOPE_E));
+	print("  RaiseTile():          " + AITile.RaiseTile(4033, AITile.SLOPE_NWS));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
+}
+
 function Regression::Start()
 {
 	this.TestInit();
@@ -2398,6 +2459,7 @@ function Regression::Start()
 
 	this.Math();
 	this.PriorityQueue();
+	this.Terraforming();
 
 	/* Check Valuate() is actually limited, MUST BE THE LAST TEST. */
 	print("--Valuate() with excessive CPU usage--")
