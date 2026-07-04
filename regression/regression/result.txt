@@ -10891,7 +10891,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   LowerTile():          true
   RaiseTile():          true
   LowerTile():          true
-  GetCosts():           2478
+  GetCosts():           3228
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          false
@@ -10899,7 +10899,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   LowerTile():          false
   RaiseTile():          true
   LowerTile():          true
-  GetCosts():           5551
+  GetCosts():           6301
   RaiseTile():          true
   LowerTile():          true
   GetCosts():           16055
@@ -10911,10 +10911,10 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetCosts():           10222
   LevelTiles():         true
   LevelTiles():         false
-  GetCosts():           9628
+  GetCosts():           9778
   LevelTiles():         true
   LevelTiles():         true
-  GetCosts():           286079
+  GetCosts():           301829
   LowerTile():          false
   RaiseTile():          true
   RaiseTile():          false
@@ -10923,13 +10923,13 @@ ERROR: IsEnd() is invalid as Begin() is never called
   RaiseTile():          true
   LowerTile():          true
   LowerTile():          false
-  GetCosts():           1167
+  GetCosts():           1917
   RaiseTile():          false
   LowerTile():          true
   LowerTile():          false
   RaiseTile():          false
   RaiseTile():          true
-  GetCosts():           38996
+  GetCosts():           39146
 --Valuate() with excessive CPU usage--
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
