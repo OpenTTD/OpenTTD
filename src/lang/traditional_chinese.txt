@@ -1660,12 +1660,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :無
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :原版
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :改進版
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :公路車輛：{STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :選擇行車方向。
+STR_CONFIG_SETTING_ROAD_SIDE                                    :公路車輛行車方向：{STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :選擇公路車輛行車方向。{}這亦會影響號誌的方向與號誌燈的圖形。{}變更後可能需要重新載入遊戲才能完全生效
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :靠左行駛
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :靠右行駛
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :靠左
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :靠右
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :旋轉高度圖：{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :選擇高度圖的旋轉方向以設立遊戲版圖
@@ -1871,7 +1871,7 @@ STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :每所公司擁
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :禁止電腦使用鐵道：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :如啟用此選項，電腦玩家將無法建造列車。
 
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :禁止電腦使用道路車輛：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :禁止電腦使用公路車輛：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :如啟用此選項，電腦玩家將無法建造公路車輛 (包括電車)。
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :禁止電腦使用飛機：{STRING}

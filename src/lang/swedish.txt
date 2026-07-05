@@ -1660,12 +1660,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Inget
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Förbättrad
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Vägfordon: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Välj körsida
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Vägfordons körsida: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Välj vägfordons körsida.{}Detta kan också påverka vilken sida som signaler vissas på samt hur semaforer ser ut.{}Det kan krävas att du laddar om spelet för att ändringen ska gå igenom.
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kör på vänster sida
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Kör på höger sida
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vänster sida
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Höger sida
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Höjdkartans rotation: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Välj på vilket sätt höjdkartan ska roteras för att få plats inuti spelvärlden

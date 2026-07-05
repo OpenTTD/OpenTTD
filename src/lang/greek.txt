@@ -1753,12 +1753,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Κανένας
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικός
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμένος
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Οδικά Οχήματα: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Επιλέξτε την πλευρά οδήγησης
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Πλευρά οδήγησης οδικών οχημάτων: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Επιλέξτε την πλευρά οδήγησης του οδικού οχήματος.{}Αυτό μπορεί επίσης να επηρεάσει την πλευρά του σήματος και τα γραφικά του σηματοφόρου.{}Μπορεί να χρειαστεί να επαναφορτώσετε το παιχνίδι για να τεθεί σε πλήρη ισχύ μια αλλαγή.
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Οδήγηση από τα αριστερά
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Οδήγηση από τα δεξιά
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Αριστερά
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Δεξιά
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Περιστροφή χάρτη υψομετρίας: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Επιλέξτε με ποιον τρόπο θα περιστραφεί η εικόνα του ύψους χάρτη, για να ταιριάζει στον κόσμο του παιχνιδιού

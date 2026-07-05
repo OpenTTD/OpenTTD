@@ -1660,12 +1660,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ei mitään
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Alkuperäinen
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Parannettu
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Ajoneuvot: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Valitse ajokaista
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Ajoneuvoliikenteen ajopuoli: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Valitse, kummalla puolella tietä ajoneuvot kulkevat.{}Tämä voi myös vaikuttaa siihen, kummalle puolelle rataa opastimet sijoittuvat, sekä siipiopastimien grafiikkaan.{}Saatat joutua lataamaan pelin uudestaan, jotta muutos toteutuisi kokonaan
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasemmanpuolinen liikenne
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Oikeanpuolinen liikenne
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasemmalla
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Oikealla
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Korkeuskartan pyöritys:{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Valitse, mihin suuntaan korkeuskartan kuvaa kierretään pelimaailmaan sopiakseen

@@ -1661,12 +1661,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nenhum
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Melhorado
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Veículos rodoviários: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Escolher o lado de condução
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Lado de condução do veículo rodoviário: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Escolha o lado de condução do veículo rodoviário.{}Isso também pode afetar o lado dos sinais e os gráficos dos semáforos.{}Pode ser necessário recarregar o jogo para que a alteração tenha efeito total
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conduzir pela esquerda
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conduzir pela direita
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Esquerda
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Direita
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotação do mapa de altitudes: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Escolher em que sentido a imagem do mapa de altitudes será girada para caber no mundo do jogo

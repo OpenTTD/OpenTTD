@@ -2040,12 +2040,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Brak
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Oryginalny
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Ulepszony
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Pojazdy drogowe: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Wybierz stronę, po której będą jeździć samochody
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Strona w ruchu drogowym: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Wybierz stronę, po której będą jeździć pojazdy drogowe{}Może to również wpłynąć na stronę sygnalizacji oraz grafikę semaforów.{}Aby zmiana w pełni zadziałała, może być konieczne ponowne załadowanie gry
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Jazda po lewej
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Jazda po prawej
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lewa
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Prawa
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Obrót mapy wysokości: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Wybierz kierunek obrotu mapy wysokości, aby dopasować ją do świata gry
