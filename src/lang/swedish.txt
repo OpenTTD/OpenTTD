@@ -166,7 +166,7 @@ STR_PASSENGERS                                                  :{COMMA}{NBSP}pa
 STR_BAGS                                                        :{COMMA}{NBSP}väsk{P a or}
 STR_TONS                                                        :{COMMA}{NBSP}ton
 STR_LITERS                                                      :{COMMA}{NBSP}liter
-STR_ITEMS                                                       :{COMMA}{NBSP}föremål
+STR_ITEMS                                                       :{COMMA}{NBSP}stycke{P "" n}
 STR_CRATES                                                      :{COMMA}{NBSP}låd{P a or}
 
 STR_COLOUR_DEFAULT                                              :Standard
@@ -449,7 +449,7 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Placera ut hus
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelalternativ
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI-inställningar
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spelskriptinställningar
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               : NewGRF-inställningar
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-inställningar
 STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandlådealternativ
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Genomskinlighetsalternativ
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
@@ -953,7 +953,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Erbjudanden subvention har gått ut:{}{}{STRING} från {STRING} till {STRING} kommer nu inte attrahera en subvention
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subventionen återkallad:{}{}{STRING} från {STRING} till {STRING} är inte längre subventionerad
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subvention erbjuden:{}{}Första {STRING} från {STRING} till {STRING} kommer tilldelas en {UNITS_YEARS_OR_MINUTES}s subvention från de lokala myndigheterna!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subvention erbjuden:{}{}Första trafiken med {STRING} från {STRING} till {STRING} kommer tilldelas en {UNITS_YEARS_OR_MINUTES}s subvention från de lokala myndigheterna!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention tilldelad {STRING}!{}{}{STRING} från {STRING} till {STRING} kommer ge 50% extra utdelning nästkommande {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention tilldelad {STRING}!{}{}{STRING} från {STRING} till {STRING} kommer ge dubbel utdelning nästkommande {UNITS_YEARS_OR_MINUTES}!
