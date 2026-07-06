@@ -3712,7 +3712,8 @@ static void DeleteLastWagon(Train *v)
 		trackbits = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 	}
 
-	Track track = TrackBitsToTrack(trackbits);
+	/* Finds the track from the track bits this handles issues where the wagon may be inside a depot gracefully */
+	Track track = FindFirstTrack(trackbits);
 	if (HasReservedTracks(tile, trackbits)) {
 		UnreserveRailTrack(tile, track);
 

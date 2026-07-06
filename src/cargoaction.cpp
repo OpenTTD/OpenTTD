@@ -93,7 +93,8 @@ template <>
 bool CargoRemoval<VehicleCargoList>::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);
-	this->source->RemoveFromMeta(cp, VehicleCargoList::MoveToAction::Keep, remove);
+	/* Using the get action fuction to make sure the correct metadata is removed */
+	this->source->RemoveFromMeta(cp, this->source->GetAction(), remove);
 	return this->Postprocess(cp, remove);
 }
 
