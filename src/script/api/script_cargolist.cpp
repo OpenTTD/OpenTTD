@@ -8,6 +8,7 @@
 /** @file script_cargolist.cpp Implementation of ScriptCargoList and friends. */
 
 #include "../../stdafx.h"
+#include "script_cargo.hpp"
 #include "script_cargolist.hpp"
 #include "script_industry.hpp"
 #include "script_station.hpp"
@@ -55,5 +56,14 @@ ScriptCargoList_StationAccepting::ScriptCargoList_StationAccepting(StationID sta
 	const Station *st = ::Station::Get(station_id);
 	for (CargoType cargo : EnumRange(NUM_CARGO)) {
 		if (st->goods[cargo].status.Test(GoodsEntry::State::Acceptance)) this->AddItem(cargo);
+	}
+}
+
+ScriptCargoList_TownEffect::ScriptCargoList_TownEffect(ScriptCargo::TownEffect effect)
+{
+	if (static_cast<::TownAcceptanceEffect>(effect) >= ::TownAcceptanceEffect::End) return;
+
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
+		if (cs->town_acceptance_effect == static_cast<::TownAcceptanceEffect>(effect)) this->AddItem(cs->Index());
 	}
 }

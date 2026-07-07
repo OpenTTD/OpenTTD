@@ -387,6 +387,24 @@ function Regression::CargoList()
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i);
 	}
+
+	list = AICargoList_TownEffect(AICargo.TE_PASSENGERS);
+	print("");
+	print("--CargoList_TownEffect(TE_PASSENGERS)--");
+	print("  Count():            " + list.Count());
+	print("  ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i);
+	}
+
+	list = AICargoList_TownEffect(AICargo.TE_MAIL);
+	print("");
+	print("--CargoList_TownEffect(TE_MAIL)--");
+	print("  Count():            " + list.Count());
+	print("  ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i);
+	}
 }
 
 function Regression::Company()

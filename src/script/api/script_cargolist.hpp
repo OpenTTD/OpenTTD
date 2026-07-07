@@ -10,6 +10,7 @@
 #ifndef SCRIPT_CARGOLIST_HPP
 #define SCRIPT_CARGOLIST_HPP
 
+#include "script_cargo.hpp"
 #include "script_list.hpp"
 #include "../../industry_type.h"
 #include "../../station_type.h"
@@ -63,6 +64,19 @@ public:
 	 * @param station_id The station to get the list of cargoes it accepts from.
 	 */
 	ScriptCargoList_StationAccepting(StationID station_id);
+};
+
+/**
+ * Creates a list of cargoes that have the given town effect.
+ * @api ai game
+ * @ingroup ScriptList
+ */
+class ScriptCargoList_TownEffect : public ScriptList {
+public:
+	/**
+	 * @param effect The town effect to get the list of cargoes for.
+	 */
+	ScriptCargoList_TownEffect(ScriptCargo::TownEffect effect);
 };
 
 #endif /* SCRIPT_CARGOLIST_HPP */

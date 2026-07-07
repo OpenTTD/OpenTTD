@@ -19,6 +19,9 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API addtions:
+ * \li AICargoList_TownEffect
+ *
  * \b 15.0
  *
  * API additions:
