@@ -1205,10 +1205,10 @@ STR_SEA_LEVEL_CUSTOM                                            :Valfri
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Valfri ({NUM}%)
 
 ###length 4
-STR_RIVERS_NONE                                                 :inga
-STR_RIVERS_FEW                                                  :få
-STR_RIVERS_MODERATE                                             :mellan
-STR_RIVERS_LOT                                                  :många
+STR_RIVERS_NONE                                                 :Inga
+STR_RIVERS_FEW                                                  :Få
+STR_RIVERS_MODERATE                                             :Mellan
+STR_RIVERS_LOT                                                  :Många
 
 ###length 3
 STR_DISASTER_NONE                                               :Ingen
@@ -2323,7 +2323,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Ändra m
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Byt datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändra nuvarande år
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifiering av produktionsvärden: {ORANGE}{STRING}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixera stationens gradering vid 100%: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixera stationers gradering vid 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Färgschema
@@ -5770,15 +5770,15 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Godsvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Spannmålsvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Timmervagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Järnmalmsvagn
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Stållastvagn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Stålvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Bepansrad vagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Matvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Pappersvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Kopparmalmsvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vattentank
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Fruktvagn
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Gummilastvagn
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Sockerlastvagn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Gummivagn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Sockervagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Sockervaddsvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Knäckvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Bubbelvagn

@@ -1662,11 +1662,11 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :오리지널
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :향상됨
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :자동차 통행 방향: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :통행 방향을 선택합니다
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :도로 차량의 통행 방향을 선택합니다.{}이 설정은 열차 신호기의 설치 위치에도 영향을 미칩니다.{}제대로 적용하기 위해서는 게임을 다시 불러올 필요가 있습니다.
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :좌측통행
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :우측통행
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :좌측
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :우측
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :높이맵 회전: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :높이맵을 게임 세계에 맞추기 위해 어느 방향으로 회전시킬지 선택합니다

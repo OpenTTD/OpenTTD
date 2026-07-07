@@ -2057,7 +2057,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Pūrua (taketak
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Rārangi
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Whakatakotoranga rākau i roto i te kēmu: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Tautuhitia te putanga a ngā rākau i roto i te kēmu. Ka pā pea tēnei ki ngā ahumahi e whakawhirinaki ana ki te tupuranga a ngā rākau, hei tauira, ngā mira kani rākau
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Tautuhitia te putanga a ngā rākau i roto i te kēmu. Ka pā pea tēnei ki ngā ahumahi e whirinaki ana ki te tupuranga a ngā rākau, hei tauira, ngā mira kani rākau
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :E tupu, engari kaua e hora atu {RED}(ka whakapakarutia ngā mira kani rākau)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :E tupu, engari e hora i roto i ngā wao anake
@@ -2707,7 +2707,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Mākatia
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Kimi i ngā paetukutuku kei waho
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Kimihia he ihirangi kāore i te wātea i te ratonga a OpenTTD, i ngētahi paetukutuku kāore i te pāhekoheko ki OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Kei te wehe atu koe i OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Ka rerekē ngā ture me ngā here mō te tiki ihirangi ake i ngā paetukutuku i waho.{}Me whakawhirinaki koe ki ngā paetukutuku mō ngā tohutohu me pēwhea te tāuta ihirangi ki roto i OpenTTD.{}Kei te hiahia rānei koe ki te whano tonu?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Ka rerekē ngā ture me ngā here mō te tiki ihirangi ake i ngā paetukutuku i waho.{}Me whirinaki koe ki ngā paetukutuku mō ngā tohutohu me pēwhea te tāuta ihirangi ki roto i OpenTTD.{}Kei te hiahia rānei koe ki te whano tonu?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tātari tapanga/ingoa:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Paetukutuku
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Toroa te paetukutuku mō tēnei ihirangi
@@ -4785,7 +4785,7 @@ STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Whakamut
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Haere ki
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Haere ki te taupuni tata rawaatu
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Haere ki te whare waka rererangi tata rawaatu
-STR_ORDER_CONDITIONAL                                           :Peke whakawhirinaki
+STR_ORDER_CONDITIONAL                                           :Peke whirinaki
 STR_ORDER_SHARE                                                 :Tohaina ngā mahi
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Kuhuna he mahi hou ki mua ki te mahi kua miramiratia, tāpiria rānei ki te mutunga o te rārangi. Pātaki+Pāwhiri ki tētahi teihana kia "uta katoatia tētahi momo utanga", ki tētahi aratohu kia huripoki i te tautuhinga "mutungakore hei taunoa", ki tētahi taupuni rānei kia "wetepiri". Pāwhiria tētahi atu waka kia tārua i ngā mahi, Pātaki+Pāwhiri rānei kia toha i ngā mahi. Ka ārai he toro taupuni i te tapi aunoa i te waka
 
@@ -5284,8 +5284,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :momo taupuni h�
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :me kotahi noa iho te mahi wetepiri
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :tē taea te uta katoa mēnā he mahi wetepiri tā te waka
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :tē taea te wetepiri mēnā he mahi uta katoa tā te waka
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :tē taea te peke whakawhirinaki mēnā he mahi wetepiri tā te waka
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :tē taea te wetepiri mēnā he peke whakawhirinaki tā te waka
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :tē taea te peke whirinaki mēnā he mahi wetepiri tā te waka
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :tē taea te wetepiri mēnā he peke whirinaki tā te waka
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :roa rawa a {VEHICLE} i muri i te whakakapi
