@@ -72,6 +72,10 @@ void DrawHillyLandTile(const TileInfo *ti)
 	}
 }
 
+/**
+ * Draw the fences atop a ClearGround::Fields tile.
+ * @param ti The tile to draw.
+ */
 static void DrawClearLandFence(const TileInfo *ti)
 {
 	/* combine fences into one sprite object */
