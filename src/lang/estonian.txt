@@ -667,22 +667,38 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Äraveet
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ettevõtte tegevushinnang (suurim hinnang saab olla 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaväärtused
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Viimased 24 minutit
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}Viimased 72 minutit
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}Viimased 288 minutit
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2 aastat (igakuine)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 aastat (iga kolme kuu tagant)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 aastat (iga aasta)
 
+STR_GRAPH_TOGGLE_RANGE                                          :Lülita graafikut selle andme vahemiku jaoks
+STR_GRAPH_SELECT_SCALE                                          :Muuda graafiku horisontaalset suurust
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Veotariifid
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Päeva transiidis
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Sekundit transiidis
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tasu 10 ühiku (või 10 000 liitri) kauba äraveo eest üle 20 ruudu
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Kõik sisse
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kõik välja
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Kõik
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ei midagi
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Näita kõiki kaubatüüpe kaubamaksumuste määrade graafikul
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ära näita kaubatüüpe kaubamaksumuste määrade graafikul
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vahelda veoseliikide graafik sisse/välja
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Lülita nende veoseliikide graafikut
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Kaubaveo Ajalugu
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Toodetud
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporditud
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Toimetatud
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Ootamine
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Kaubaveo Ajalugu
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Toodetud
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transporditud
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Toimetatud
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näita põhjalike tegevushinnanguid
 
@@ -1338,6 +1354,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Laenu intressim
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Käituskulud: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määrab sõidukite ja taristu hooldus- ja käituskulude hinnataseme
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :Madal
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :Keskmine
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :Kõrge
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ehitustempo: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Piirab arvuti ehitustoimingute arvu
@@ -1360,12 +1379,19 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Toetusteta
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Ehituse hinnad: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määrab ehitus- ja ostukulude hinnataseme
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :Madal
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :Keskmine
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Kõrge
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Majanduslangused: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kui on aktiveeritud siis võib majanduslangus toimuda iga paari aasta tagant. Majanduslanguse ajal on kõik tootmismahud tunduvalt madalamad (majanduslanguse lõppedes taastuvad endised tootmismahud)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Luba rongidel täispöördelist ümberpööret teha: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Vali, kus rongid võivad täispöördelist ümberpööret teha. Valikuga "Kõikjal" võivad rongid pöörata igas suunas. Valikuga "Ainult rea lõpus" pööravad rongid jaama lõpus ümber ainult siis kui edasi ei saa minna. Valikuga "Ei või" rongid ümber pöörata ei saa ja sõidavad tagurpidi kui vaja. Tagurpidi sõites kui taga juhikabiini ei ole siis sõidab sõiduk vähendatud kiirusega.
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Kõikjal
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Ainult rea lõpus
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastroofid: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vahelda katastroofe, mis mõnikord takistavad või hävitavad sõidukeid ja taristut
@@ -1563,12 +1589,16 @@ STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (kalendriaeg külmutatud)
 
 STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :Skaleeri veosetoodangut linnades: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaleeri veosetoodangut linnades selle protsendiga.
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Muuda veosetoodangut linnades selle protsend võrra
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaleeri tööstuse veosetoodangut: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaleeri tööstuste veosetoodangut selle protsendiga.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Määra kaubatasu vananemise kiirust: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Määra kui kiiresti sõidukile laetud kaup kaotab oma väärtust ajajooksul
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Ei kaota
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vananenud sõidukite uuendamine: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kui on sisse lülitatud, siis uuendatalse kõik kasutusaja lõpu lähedal olevad sõidukid automaatselt, järgides uuendamise tingimusi
@@ -1904,6 +1934,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Sisselülitatud
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagunite kiiruspiirangud: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kui on aktiveeritud siis kasutatakse rongi maksimaalse kiiruse arvutamiseks ka vagunite kiiruse piirangut
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Luba õhusõiduki maksimaalset ulatus: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Kui lubatud, NewGRF-id saavad piirata maksimaalset õhusõiduki ulatust
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrirongide keeld: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole tarvis rööpaid elektrifitseerida, et lubada elektrisõidukitel nendel rööbastel liikuda
@@ -2027,10 +2059,15 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Keelatud
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Lubatud
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Lubatud, koos asulaskeemi valimisega
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Iseseisvate küla hoonete asetamine: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Selle sätte lubamine võimaldab mängijatel käsitsi asetada küla hooneid
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Keelatud
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Lubatud
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Lubatud, valmis ehitatud
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Kauba tekkimine asulates: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kui palju kaupa toodavad majad asulates, võrreldes elanike arvuga.{}Ruutfunktsioon: kaks korda suurem asula tekitab neli korda rohkem reisijaid.{}Lineaarne: kaks korda suurem asula tekitab kaks korda rohkem reisijaid.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kui palju kaupa toodavad majad asulates, võrreldes elanike arvuga.{}Ruutfunktsioon: kaks korda suurem asula tekitab neli korda rohkem reisijaid.{}Lineaarne: kaks korda suurem asula tekitab kaks korda rohkem reisijaid
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Ruutfunktsioon (algupärane)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarne
@@ -2093,6 +2130,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iga {COMMA} k
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Mitte ühtegi
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Algne linnade suuruskordaja: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Keskmine linna suurus võrreldes tavalise asulaga mängu alguses
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :Minimaalne vahemaa linnade vahel: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :Sätesta ruutudes minimaalne vahemaa linnade vahel kaardi genereerimisel ja linnade juhuslikul rajamisel
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uuenda jaotusgraafikut iga {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Aeg järjestikkuste ühendusgraafiku uuestiarvutamiste vahel. Iga uuestiarvutamine arvutab ühe graafikuosa plaane. See tähendab, et väärtus X selles seades ei tähenda, et tervet graafikut uuendatakse iga X sekund. Ainult ühte osa sellest. Mida lühem see on, seda rohkem kasutab arvutamine protessorit. Mida kauem see on, seda kauem algab teenuste jaotamine uutel marsruutidel.
@@ -2167,6 +2206,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Liideses näida
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inglise mõõdustik (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meetermõõdustik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-süsteem (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :Mängu ühikud (tasemed)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :Kohandused
 STR_CONFIG_SETTING_GRAPHICS                                     :Graafika
@@ -2830,15 +2870,52 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Lohistam
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Ehita jaam kasutades hiirega lohistamist
 
 STR_PICKER_MODE_ALL                                             :Kõik
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Lülita esemete näitamist kõikidest klassidest
+STR_PICKER_MODE_USED                                            :Kasutatud
+STR_PICKER_MODE_USED_TOOLTIP                                    :Lülita ainult olemasolevate esemete näitamist
+STR_PICKER_MODE_SAVED                                           :Salvestatud
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Lülita ainult salvestatud esemeta näitamist
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Vähenda eelvaatepildi kõrgust. Ctrl+Klõps, et vähendada miinimumi
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Suurenda eelvaatepildi kõrgust. Ctrl+Klõps, et suurendada maksikumiks
 
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :Vali kogum
+STR_PICKER_COLLECTION_ADD                                       :Lisa
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :Loo uus kogum
+STR_PICKER_COLLECTION_RENAME                                    :Nimeta ümber
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :Nimeta kogum ümber
+STR_PICKER_COLLECTION_DELETE                                    :Kustuta
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :Kustuta kogum
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :Nimeta see kogum ümber
+STR_PICKER_COLLECTION_DELETE_QUERY                              :Kustuta kogum
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Kas sa oled kindel, et tahad kustutada seda kogumit?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Kas sa oled kindel, et sa tahad kustutade seda kogumit? Nende sees on väljalülitatud NewGRF-id!
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Vali jaama klass mida näidata
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Vali kogum jaamu mida näidata
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Vali meldepunkti klass mida näidata
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Vali meldepunkt mida ehitada. Ctrl+Klõps, et lisada või eemaldada salvestatud esemeid
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Vali kogum meldepunkte mida näidata
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Vali bussijaama klass mida näidata
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Vali bussijaama liik mida ehitada. Ctrl+Klõps, et lisada või eemaldada salvestatud esemeid
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Vali kogum bussijaamu mida näidata
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Vali, milliseid veoautojaamu näidatakse
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vali näidatud asulaosa
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Vali, millist maja ehitada. Ctrl+ klõps lisab või eemaldab salvestatud asjadest
 
 STR_HOUSE_PICKER_CAPTION                                        :Maja valik
+STR_HOUSE_PICKER_NAME                                           :{BLACK}Nimi: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Rahvaarv: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}Aastad: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Aastad: {GOLD}Mistahes
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Aastad: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Aastad: {GOLD}Kuni {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Suurus: {GOLD}{NUM}x{NUM} ruutu
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Kaup vastuvõetud: {GOLD}{STRING}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Kaup toodetud: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Äär
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Äärealad
@@ -2846,7 +2923,11 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Äärelinnad
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Eeslinnad
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Kesklinn
 
+STR_HOUSE_PICKER_PROTECT                                        :Takista uuendusi
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Vali, kas hoone jääb linna kasvamisel väljavahetamise eest kaitstuks
 
+STR_HOUSE_PICKER_REPLACE                                        :Vaheta olemasolev
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :Vali, kas automaatselt eemaldada olemasolev hoone ruudul, kuhu hoone on asetatud
 
 STR_STATION_CLASS_DFLT                                          :Vaikimisi
 STR_STATION_CLASS_DFLT_STATION                                  :Vaikimisi jaam
@@ -2895,14 +2976,16 @@ STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Sõidute
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Trammiteede ehitamine
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ehita sõidutee lõik. Ctrl vahetab tee ehitamise/eemaldamise vahel. Shift kuvab ehitamisehinna.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Ehita trammitee blokk. Ctrl valib tee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Ehita autotee osa kasutades Autoroad režiimi. Ctrl valib tee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Ehita trammitee lõik «Autotram» režiimis. Ctrl valib trammitee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Ehita autotee osa kasutades Autoroad režiimi. Ctrl valib tee ehitamise/eemaldamise.  Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Ehita trammitee lõik Autotram režiimis. Ctrl valib trammitee ehitamise/eemaldamise.  Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Depoo ehitamine (veovahendite ostmiseks ja hooldamiseks). Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Ehita trammidepoo (veeremi ehitamiseks ja hoolduseks). Shift valib ehitamise/hinna kuvamise režiimi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Ehita bussijaam. Ctrl võimaldab jaamasid ühendada. Shift valib ehitamise/hinna kuvamise režiimi
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Ehita teele meldepunkt. Ctrl+Klõps, et valida millise meldepunktiga ühineda.  Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Ehita trammiteele meldepunkt. Ctrl+Klõps, et valida millise meldepunktiga ühineda. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Ehita bussijaam. Ctrl+klõps võimaldab jaamasid ühendada. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Ehita reisitrammijaam. Ctrl võimaldab jaamasid ühendada. Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Ehita veokite laadimisplats. Ctrl võimaldab jaamasid ühendada. Shift valib ehitamise/hinna kuvamise režiimi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Ehita kaubatrammijaam. Ctrl võimaldab jaamasid ühendada. Shift valib ehitamise/hinna kuvamise režiimi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Ehita kaubatrammijaam. Ctrl+klõps võimaldab jaamasid ühendada. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiveeri/deaktiveeri ühesuunalised teed
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Ehita sild. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Ehita trammisild. Shift valib ehitamise/hinna kuvamise režiimi
@@ -2910,8 +2993,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Ehita tu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Ehita trammitunnel. Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Lülitu maanteede ehitamise ja lammutamise vahel
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Lülitu trammitee ehitamise ja lammutamise vahel
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Muuda/uuenda teeliiki. Shift vaheldab ehitamist/eeldatavat maksumust
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Vaheta/uuenda trammiliiki. Shift-nupuga vahelduvad ehitamine ja eeldatav hind
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Muuda/uuenda teeliiki. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Vaheta/uuenda trammiliiki. Lisaks hoia all Shift-klahvi, et vaid näidata eeldatavat hinda
 
 STR_ROAD_NAME_ROAD                                              :Sõidutee
 STR_ROAD_NAME_TRAM                                              :Trammitee
@@ -3013,6 +3096,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Loo maas
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Määra kõrbealad.{}Ctrl-klahvi allhoidmine eemaldab selle
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Suurenda kõrgendatava/madaldatava maa-ala pindala
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Vähenda kõrgendatava/madaldatava maa-ala pindala
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Tõsta maa-ala nurka. Kui suurus on 1x1, siis Klõpsa+Tõmba, et tõsta esimesena valitud nurka ja tasandada valitud ala uuele nurga kõrgusele. Ctrl+Klõpsa+Tõmba, et valida ala diagonaalselt. Lisaks hoia all Shift-klahvi, et ainult näidata eeldatavat kulu
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Suvalise kaardi tekitamine
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Alusta uut stsenaariumit
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Nulli maastik
@@ -3047,6 +3131,11 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vali asu
 STR_FOUND_TOWN_CITY                                             :{BLACK}Linn
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Linnad kasvavad kiiremini, kui tavalised asulad{}Sõltuvalt seadetest on need ka alguses suuremad
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}Küla laienemine:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :Hooned
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :Suurenda külade hoonete hulka
+STR_FOUND_TOWN_EXPAND_ROADS                                     :Teed
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :Suurenda külade teede hulka
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Asula teeplaneering
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}Vali selle asula teeplaneering
@@ -3127,6 +3216,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Lage maa
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Rohi
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Põllud
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Kõrb
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Lumega kaetud kivid
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Lumega kaetud konarlik maa
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Lumega kaetud muru
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Raudteerööbas
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Raudtee rööpad koos blokksignaalidega
@@ -3330,6 +3422,7 @@ STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}Suurenda
 STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}Vähenda kõrbekatvust kümne protsendi võrra
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}Keskmine kõrgus:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Merepinna tase:
 STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Vali meretase
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Jõgesid:
@@ -3340,7 +3433,7 @@ STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Loo maai
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-i seadistus
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :Näita NewGRF-i seadeid
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}TI Seaded
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Näita TI seadeid
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Ava TI sätted
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}GameScript'i Seaded
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Näita GameSript'i seadeid
 
@@ -3374,13 +3467,18 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Loe
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Kirre
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Kagu
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Edel
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :Lülita vesi või vabakujuline serv kaardi põhja-lääne serva
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :Lülita vesi või vabakujuline serv kaardi põhja-ida serva
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :Lülita vesi või vabakujuline serv kaardi lõuna-ida serva
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :Lülita vesi või vabakujuline serv kaardi lõuna-lääne serva
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Vaba
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vesi
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Suvaline
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Suvaline
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Määratud
+STR_MAPGEN_BORDER_RANDOMIZE                                     :Juhuslik
+STR_MAPGEN_BORDER_MANUAL                                        :Manuaal
+STR_MAPGEN_BORDER_INFINITE_WATER                                :Lõputu Vesi
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Kõrguskaardi pööre:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Kõrguskaardi nimi:
@@ -3426,7 +3524,9 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ruudusti
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Täitmisel olev skript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Mängu ettevalmistamine
 
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING} andmed valesti vormindatud
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :Ei leidnud sobivad asukohta et rajada {NUM} linna{P "" s}. Rajatud hoopis {P "a " ""}silt{P "" s} ette antud asukohta {P "" s}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-i seadistus
@@ -3651,6 +3751,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Omavalitsus
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Näita teavet kohaliku omavalitsuse kohta
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda asustuse nime
+STR_TOWN_VIEW_CARGO_GRAPH                                       :Kaubagraafik
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Näita linna kaubaveo ajaloo graafikut
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laienda
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Asustuse suurendamine
@@ -3973,6 +4075,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Eelmise 
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Toodang eelmisel minutil:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% veetud)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vaate keskendamine tööstusele. Ctrl+klõps avab uue vaateakna tööstuse kohal
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Kaubaveo graafik
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Näitab tööstuse kaubaveo ajaloo graafikut
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tootlikkuse tase: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Tööstus teatab kohesest sulgemisest!
 
@@ -4108,6 +4212,17 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Tegevusr
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Õhusõiduki liik: {GOLD}{STRING}
 
 # Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/aasta
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/periood
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :{COMMA}%
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA} ruutu
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Kõik veoseliigid
@@ -4594,6 +4709,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vajab hooldust
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alati
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Amortiseerumiseni (aastaid)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Kõrgeim tehnoseisund
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Tagurpidi sõitmine
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kuidas sõiduki andmeid antud väärtusega võrreldakse
@@ -4640,6 +4756,8 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :maanteesõiduki
 STR_ORDER_SHIP_DEPOT                                            :laevaremonditehas
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} lähim Angaar
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} lähima {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Ümberseadista: {STRING})
@@ -4732,12 +4850,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundeid kuni 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda märgitud korraldusele määratud aega. Ctrl+klõps seab aja kõigile korraldustele
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Muuda aega
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tühista aeg
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista korralduse täitmiseks määratud aeg. Ctrl+klõps, et tühistada kõik korraldustele määratud ajad
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuda kiiruspiirangut
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda märgitud korralduse kiiruspiirangut. Ctrl+klõps seab kiiruspiirangu kõigile korraldustele
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Muuda kiiruspiirangut
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Kustuta kiiruspiirang
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eemalda märgitud korralduse kiiruspiirang. Ctrl+klõps, et tühistada kõik korraldustele määratud kiiruspiirangud
@@ -5021,12 +5141,12 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Muuda ka
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Siia ei saa raudteejaama ehitada...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Siia ei saa bussijaama ehitada...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Siia ei saa bussijaama ehitada...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Siia ei saa laadimisplatsi ehitada...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Siia ei saa reisitrammijaama rajada...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Siia ei saa kaubatrammijaama rajada...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Siia ei saa kaubatrammijaama rajada...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Dokki ei saa siia ehitada...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Siia ei saa lennuvälja rajada...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Siia ei saa lennuvälja rajada...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Mitme olemasoleva jaama ühendamine
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... jaam on liiga laiaks venitatud
@@ -5037,6 +5157,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liiga pa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liiga lähedal teisele dokile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liiga lähedal teisele lennuväljale
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ei saa jaama ümbernimetada...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :Ei saa liigutada jaama silti...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... see on asulale kuuluv tee
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tee on vales suunas
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... nurgad ei saa läbisõidupeatustes olla
@@ -5045,10 +5166,10 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... rist
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Siinset jaamablokki ei saa lammutada...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Raudteejaama peab eelnevalt lammutama
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Siinset bussijaama ei saa lammutada...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Siinset bussijaama ei saa lammutada...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Siinset laadimisplatsi ei saa lammutada...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Siinset reisitrammijaama ei saa lammutada...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Siinset kaubatrammijaama ei saa lammutada...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Siinset kaubatrammijaama ei saa lammutada...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Peatus tuleb enne lammutada
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... siin pole peatust
 
@@ -5065,17 +5186,20 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Liidab t
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Liiga lähedal teisele teemärgisele
 
 STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Meldepunkti ei saa siia rajada...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Siia ei saa ehitada tee meldepunkti...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poid ei saa siia asetada...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Meldepunkti nime ei saa muuta...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Ei saa liigutada meldepunkti silti...
 
 STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Meldepunkti ei saa siit eemaldada...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Siinset meldepunkti ei saa eemaldada...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Enne peab rööbastelt kõik teemärgid eemaldama
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... poi on ees
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... poi on kasutuses teise ettevõtte poolt!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Siia ei saa depood ehitada...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Siia ei saa depood ehitada...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Siia ei saa depood ehitada...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Trammidepood ei saa siia rajada
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laevaremonditehast ei saa siia ehitada...
 
@@ -5092,7 +5216,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Sõidusu
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... koosneb mitmest osast
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Ühildamatud rööbasteetüübid
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Transpordivahendit ei saa liigutada...
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Sõidukit ei saa liigutada...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Tagumine vedur järgneb alati eesmisele
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ei leia teed kohalikku depoosse
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ei leia kohalikku garaaži üles
@@ -5134,9 +5258,9 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Siin ei 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Enne on vaja sõidutee lammutada
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... ühesuunalised teed ei saa teedesõlmi omada
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Siia ei saa sõiduteed ehitada...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Siia ei saa sõiduteed ehitada...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Trammiteed ei ole võimalik siia rajada...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Siinset sõiduteed ei saa lammutada...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Siinset sõiduteed ei saa lammutada...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Siinset trammiteed ei saa lammutada...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... siin pole autoteed
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... siin pole trammiteed
@@ -5146,7 +5270,7 @@ STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Puudub s
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Puudub sobiv trammitee
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Siia ei saa kanaleid ehitada...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Siia ei saa kanaleid ehitada...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Siia ei saa lüüse ehitada...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Jõgesid ei saa siia teha...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... peab ehitama vette
@@ -5155,7 +5279,7 @@ STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ei s
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ei saa ehitada kanali peale
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ei saa ehitada jõe peale
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal tuleb enne lammutada
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Siia ei saa veesilda ehitada...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Siia ei saa veesilda ehitada...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... siin on juba puu olemas
@@ -5163,16 +5287,23 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... vale
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Siia ei saa puud istutada...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Siia ei saa silda ehitada...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Siia ei saa silda ehitada...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Sild tuleb enne lammutada
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ei saa alata ja lõppeda samas kohas
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Sillaotsad pole samal kõrgusel
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Sild on maastiku suhtes liiga madal
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :sild on maastiku suhtes liiga madal
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Sild on selle maastiku jaoks liiga kõrge
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Algus ja lõpp peavad samal joonel olema
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... mõlemad sillaotsad peavad olema maal
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}.. sild on liiga pik
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Sild lõpeks väljaspool kaarti
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :sild on {HEIGHT} liiga madalal jaama jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :sild on {HEIGHT} liiga madalal teepeatuse jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :sild on {HEIGHT} liiga madalal kai jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :sild on {HEIGHT} liiga madalal poi jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :sild on {HEIGHT} liiga madalal raudtee meldepunkti jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :sild on {HEIGHT} liiga madalal tee meldepunkti jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :sild on {HEIGHT} liiga madalal luku jaoks
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Siia ei saa tunnelit ehitada...
@@ -5253,14 +5384,22 @@ STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ei saa l
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ei saa õhusõiduki liiki ümbernimetada...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Rööbassõidukit ei saa müüa...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ei saa veokit müüa...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ei saa laeva müüa
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ei saa õhusõidukit müüa...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Raudteesõidukit ei saa müüa...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Ei saa sõidukit müüa...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Ei saa laeva müüa...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Ei saa õhusõidukit müüa...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Ei saa müüa kõiki raudtee sõidukeid...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Ei saa müüa kõiki sõidukeid...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Ei saa müüa kõiki laevu...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Ei saa müüa kõiki õhusõidukeid...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Ei saa automaatselt vahetada raudteesõidukeid...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Ei saa automaatselt vahetada sõidukeid...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Ei saa automaatselt vahetada laevu...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Õhusõidukit ei saa automaatselt vahetada...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Mängus on liiga palju veovahendeid
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Hooldusvahemikku ei saa muuta...
@@ -5294,7 +5433,7 @@ STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Liiga pa
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ei saa lisada uut korraldust...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Seda korraldust ei saa kustutada...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Seda korraldust ei saa muuta...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Seda korraldust ei saa liigutada...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Seda korraldust ei saa liigutada...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Praegust korraldust pole võimalik vahele jätta...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Teisi korraldusi ei saa vahele jätta...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}sõiduk ei saa igasse jaama minna
@@ -5779,7 +5918,9 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Vaatleja, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_CITY                                          :{TOWN} {CITY_ICON}
+STR_VIEWPORT_TOWN_CITY_POP                                      :{TOWN} ({COMMA}) {CITY_ICON}
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
@@ -5841,3 +5982,11 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
+STR_BADGE_CONFIG_MENU_TOOLTIP                                   :Ava märgi sätted
+STR_BADGE_CONFIG_RESET                                          :Lähesta
+STR_BADGE_CONFIG_ICONS                                          :{WHITE}Märgi Ikoonid
+STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Märgi Filtrid
+STR_BADGE_CONFIG_PREVIEW                                        :Eelvaatepilt
+STR_BADGE_CONFIG_NAME                                           :Nimi
+STR_BADGE_FILTER_ANY_LABEL                                      :Ükskõik {STRING}

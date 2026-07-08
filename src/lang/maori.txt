@@ -2428,7 +2428,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Kiritaki
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Ngā kiritaki tuihono / ngā kiritaki mōrahi{}Ngā umanga tuihono / ngā umanga mōrahi
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Rahi o te mahere
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Te rahi o te mahere o te kēmu{}Pāwhiria kia raupapa ki te horahanga
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Te rahi o te mahere o te kēmu{}Pāwhiria kia whakaraupapa ki te horahanga
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tau
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Te tau nei
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
@@ -4181,7 +4181,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Waka rererangi 
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Rōpū - pāwhiria he rōpū kia rārangitia ngā waka katoa o tēnei rōpū. Tōtaka rōpū kia raupapa ki te hirahira
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Rōpū - pāwhiria he rōpū kia rārangitia ngā waka katoa o tēnei rōpū. Tōtaka rōpū kia whakaraupapa i te hirahira
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Pāwhiri kia hangaia he rōpū
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Mukua te rōpū kua tīpakona
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Tapaia anō te rōpū kua tīpakona

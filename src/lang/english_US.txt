@@ -1660,12 +1660,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :None
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Improved
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Road vehicles: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Choose the driving side
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Road vehicle driving side: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Choose the road vehicle driving side.{}This can also affect signal side and semaphore graphics.{}It may require reloading the game for a change to take full effect
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Drive on left
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Drive on right
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Left
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Right
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Heightmap rotation: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Choose which way the heightmap image is rotated to fit into the game world
