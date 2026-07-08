@@ -63,7 +63,11 @@ void DrawClearLandTile(const TileInfo *ti, uint8_t density)
 	DrawGroundSprite(_clear_land_sprites_grass[density] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 }
 
-void DrawHillyLandTile(const TileInfo *ti)
+/**
+ * Draw a ClearGround::Rough tile.
+ * @param ti The tile to draw.
+ */
+void DrawRoughLandTile(const TileInfo *ti)
 {
 	if (ti->tileh != SLOPE_FLAT) {
 		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
@@ -147,7 +151,7 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case ClearGround::Rough:
-			DrawHillyLandTile(ti);
+			DrawRoughLandTile(ti);
 			break;
 
 		case ClearGround::Rocks:
