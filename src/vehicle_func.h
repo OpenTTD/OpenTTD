@@ -251,8 +251,8 @@ inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
 LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_type, const Vehicle *v);
 const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, uint8_t livery_setting);
 
-SpriteID GetEnginePalette(EngineID engine_type, CompanyID company);
-SpriteID GetVehiclePalette(const Vehicle *v);
+PaletteID GetEnginePalette(EngineID engine_type, CompanyID company);
+PaletteID GetVehiclePalette(const Vehicle *v);
 
 extern VehicleTypeIndexArray<const StringID> _veh_build_msg_table;
 extern VehicleTypeIndexArray<const StringID> _veh_sell_msg_table;

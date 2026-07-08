@@ -17,7 +17,7 @@
 /** The optimized 40 bpp blitter (for OpenGL video driver). */
 class Blitter_40bppAnim : public Blitter_32bppOptimized {
 public:
-
+	bool CanRotateSprites() override { return true; }
 	void SetPixel(void *video, int x, int y, PixelColour colour) override;
 	void DrawRect(void *video, int width, int height, PixelColour colour) override;
 	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, PixelColour colour, int width, int dash) override;
@@ -25,7 +25,7 @@ public:
 	void CopyToBuffer(const void *video, void *dst, int width, int height) override;
 	void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) override;
 	void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y) override;
-	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate) override;
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
 	size_t BufferSize(uint width, uint height) override;
@@ -34,7 +34,7 @@ public:
 
 	std::string_view GetName()  override { return "40bpp-anim"; }
 
-	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom, SpriteRotation rotate);
 
 protected:
 	static inline Colour RealizeBlendedColour(uint8_t anim, Colour c)

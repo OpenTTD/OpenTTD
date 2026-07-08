@@ -91,6 +91,7 @@ public:
 		VS_AT_STATION,     ///< The vehicle is stopped at a station and is currently loading or unloading.
 		VS_BROKEN,         ///< The vehicle has broken down and will start running again in a while.
 		VS_CRASHED,        ///< The vehicle is crashed (and will never run again).
+		VS_DERAILED,       ///< The vehicle is derailed (and will never run again).
 
 		VS_INVALID = 0xFF, ///< An invalid vehicle state.
 	};

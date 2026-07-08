@@ -398,12 +398,13 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
  * @param bp further blitting parameters
  * @param mode blitter mode
  * @param zoom zoom level at which we are drawing
+ * @param rotate How to rotate the sprite.
  */
-void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, SpriteRotation rotate)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
-		Blitter_32bppSSE4::Draw(bp, mode, zoom);
+		Blitter_32bppSSE4::Draw(bp, mode, zoom, rotate);
 		return;
 	}
 

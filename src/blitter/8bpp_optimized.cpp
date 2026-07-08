@@ -17,7 +17,7 @@
 /** Instantiation of the 8bpp optimised blitter factory. */
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 
-void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom, [[maybe_unused]] SpriteRotation rotate)
 {
 	/* Find the offset of this zoom-level */
 	const SpriteData *sprite_src = (const SpriteData *)bp->sprite;

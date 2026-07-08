@@ -1582,6 +1582,10 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} month{P
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenew minimum needed money for renew: {STRING2}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimal amount of money that must remain in the bank before considering auto-renewing vehicles
 
+STR_CONFIG_SETTING_BACKWARDS_NO_CAB_SPEED_LIMIT                 :Maximum speed for trains going backwards without a cab: {STRING2}
+STR_CONFIG_SETTING_BACKWARDS_NO_CAB_SPEED_LIMIT_HELPTEXT        :Trains when going backwards (reversing) without a cab will not go faster than this speed. The faster the train is going backwards without a cab the more probable it is to derail.
+STR_CONFIG_SETTING_BACKWARDS_NO_CAB_SPEED_LIMIT_VALUE           :{VELOCITY}
+
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duration of error message: {STRING2}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duration for displaying error messages in a red window. Note that some (critical) error messages are not closed automatically after this time, but must be closed manually
 

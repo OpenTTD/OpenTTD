@@ -698,6 +698,7 @@ SettingsContainer &GetSettingsTree()
 			company->Add(new SettingEntry("company.engine_renew"));
 			company->Add(new SettingEntry("company.engine_renew_months"));
 			company->Add(new SettingEntry("company.engine_renew_money"));
+			company->Add(new SettingEntry("company.backwards_no_cab_speed_limit"));
 			company->Add(new SettingEntry("vehicle.servint_ispercent"));
 			company->Add(new SettingEntry("vehicle.servint_trains"));
 			company->Add(new SettingEntry("vehicle.servint_roadveh"));

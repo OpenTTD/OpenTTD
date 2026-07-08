@@ -16,6 +16,7 @@
 #include "train.h"
 #include "aircraft.h"
 #include "newgrf_text.h"
+#include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "string_func.h"
 #include "depot_map.h"
@@ -254,7 +255,7 @@ CommandCost CmdSellVehicle(DoCommandFlags flags, VehicleID v_id, bool sell_chain
 	CommandCost ret = CheckOwnership(front->owner);
 	if (ret.Failed()) return ret;
 
-	if (front->vehstatus.Test(VehState::Crashed)) return CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED);
+	if (front->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	if (!front->IsStoppedInDepot()) return CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + to_underlying(front->type));
 
@@ -524,7 +525,7 @@ std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(DoCommandFla
 		return { CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + to_underlying(front->type)), 0, 0, {} };
 	}
 
-	if (front->vehstatus.Test(VehState::Crashed)) return { CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED), 0, 0, {} };
+	if (front->vehstatus.Any({VehState::Derailed, VehState::Crashed})) return { CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED), 0, 0, {} };
 
 	/* Check cargo */
 	if (new_cargo_type >= NUM_CARGO) return { CMD_ERROR, 0, 0, {} };
@@ -590,7 +591,7 @@ CommandCost CmdStartStopVehicle(DoCommandFlags flags, VehicleID veh_id, bool eva
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	if (v->vehstatus.Test(VehState::Crashed)) return CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED);
+	if (v->vehstatus.Any({VehState::Derailed, VehState::Crashed, VehState::WillDerail})) return CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	switch (v->type) {
 		case VehicleType::Train:
