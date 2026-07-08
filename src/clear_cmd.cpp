@@ -53,12 +53,21 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 	return price;
 }
 
-void DrawClearLandTile(const TileInfo *ti, uint8_t set)
+/**
+ * Draw a ClearGround::Grass tile.
+ * @param ti The tile to draw.
+ * @param density The density of the dirt -> grass transition to draw.
+ */
+void DrawClearLandTile(const TileInfo *ti, uint8_t density)
 {
-	DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh) + set * 19, PAL_NONE);
+	DrawGroundSprite(_clear_land_sprites_grass[density] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 }
 
-void DrawHillyLandTile(const TileInfo *ti)
+/**
+ * Draw a ClearGround::Rough tile.
+ * @param ti The tile to draw.
+ */
+void DrawRoughLandTile(const TileInfo *ti)
 {
 	if (ti->tileh != SLOPE_FLAT) {
 		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
@@ -67,6 +76,10 @@ void DrawHillyLandTile(const TileInfo *ti)
 	}
 }
 
+/**
+ * Draw the fences atop a ClearGround::Fields tile.
+ * @param ti The tile to draw.
+ */
 static void DrawClearLandFence(const TileInfo *ti)
 {
 	/* combine fences into one sprite object */
@@ -138,7 +151,7 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case ClearGround::Rough:
-			DrawHillyLandTile(ti);
+			DrawRoughLandTile(ti);
 			break;
 
 		case ClearGround::Rocks:
