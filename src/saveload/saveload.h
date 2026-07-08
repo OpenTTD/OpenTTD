@@ -416,6 +416,7 @@ enum class SaveLoadVersion : uint16_t {
 	BuoysAt0_0, ///< Saveload version: 364, GitHub pull request: 14983\n Allow to build buoys at (0x0).
 
 	DriveBackwards, ///< Saveload version: 365, GitHub pull request: 15379\n Trains can drive backwards.
+	DepotsUnderBridges, ///< Saveload version: 366, GitHub pull request: 15836\n Allow depots under bridges.
 
 	MaxVersion, ///< Highest possible saveload version.
 };

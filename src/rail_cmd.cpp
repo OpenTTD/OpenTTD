@@ -1006,7 +1006,10 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 		cost.AddCost(Command<Commands::LandscapeClear>::Do(flags, tile));
 		if (cost.Failed()) return cost;
 
-		if (IsBridgeAbove(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (IsBridgeAbove(tile)) {
+			int height_diff = GetTileMaxZ(tile) + MINIMAL_DEPOT_BRIDGE_HEIGHT - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+			if (height_diff > 0) return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT, height_diff * TILE_HEIGHT_STEP);
+		}
 
 		if (!Depot::CanAllocateItem()) return CMD_ERROR;
 	}
@@ -2582,7 +2585,7 @@ static void DrawTile_Rail(TileInfo *ti)
 		if (HasRailCatenaryDrawn(GetRailType(ti->tile))) DrawRailCatenary(ti);
 
 		DrawRailTileSeq(ti, dts, TransparencyOption::Buildings, relocation, 0, pal);
-		/* Depots can't have bridges above so no blocked pillars. */
+		blocked_pillars = BRIDGEPILLARFLAGS_ALL;
 	}
 	DrawBridgeMiddle(ti, blocked_pillars);
 }
@@ -3172,10 +3175,13 @@ static CommandCost TerraformTile_Rail(TileIndex tile, DoCommandFlags flags, int 
 }
 
 /** @copydoc CheckBuildAboveProc */
-static CommandCost CheckBuildAbove_Rail(TileIndex tile, DoCommandFlags flags, [[maybe_unused]] Axis axis, [[maybe_unused]] int height)
+static CommandCost CheckBuildAbove_Rail(TileIndex tile, [[maybe_unused]] DoCommandFlags flags, [[maybe_unused]] Axis axis, int height)
 {
 	if (IsPlainRail(tile)) return CommandCost();
-	return Command<Commands::LandscapeClear>::Do(flags, tile);
+
+	int height_diff = GetTileMaxZ(tile) + MINIMAL_DEPOT_BRIDGE_HEIGHT - height;
+	if (height_diff <= 0) return CommandCost();
+	return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT, height_diff * TILE_HEIGHT_STEP);
 }
 
 /** TileTypeProcs definitions for TileType::Rail tiles. */
