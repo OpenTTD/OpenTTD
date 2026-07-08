@@ -371,9 +371,9 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlags
 	WaterClass wc_upper = IsWaterTile(tile + delta) ? GetWaterClass(tile + delta) : WaterClass::Canal;
 
 	for (LockPart lock_part = LockPart::Middle; TileIndex t : {tile, tile - delta, tile + delta}) {
-		if (IsBridgeAbove(t) && GetBridgeHeight(GetSouthernBridgeEnd(t)) < GetTileMaxZ(t) + GetLockPartMinimalBridgeHeight(lock_part)) {
-			int height_diff = (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(lock_part) - GetBridgeHeight(GetSouthernBridgeEnd(t))) * TILE_HEIGHT_STEP;
-			return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK, height_diff);
+		if (IsBridgeAbove(t)) {
+			int height_diff = GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(lock_part) - GetBridgeHeight(GetSouthernBridgeEnd(t));
+			if (height_diff > 0) return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK, height_diff * TILE_HEIGHT_STEP);
 		}
 		++lock_part;
 	}
@@ -1470,9 +1470,9 @@ static CommandCost CheckBuildAbove_Water(TileIndex tile, DoCommandFlags flags, [
 {
 	if (IsWater(tile) || IsCoast(tile)) return CommandCost();
 	if (IsLock(tile)) {
-		if (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) <= height) return CommandCost();
-		int height_diff = (GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) - height) * TILE_HEIGHT_STEP;
-		return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK, height_diff);
+		int height_diff = GetTileMaxZ(tile) + GetLockPartMinimalBridgeHeight(GetLockPart(tile)) - height;
+		if (height_diff > 0) return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK, height_diff * TILE_HEIGHT_STEP);
+		return CommandCost{};
 	}
 	return Command<Commands::LandscapeClear>::Do(flags, tile);
 }
