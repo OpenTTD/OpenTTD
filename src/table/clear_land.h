@@ -70,6 +70,14 @@ static const SpriteID _clear_land_sprites_farmland[16] = {
 	SPR_FARMLAND_HAYPACKS,
 };
 
+/** Sprites of the flat tile base for each density of clear -> grass transition. */
+static const SpriteID _clear_land_sprites_grass[4] = {
+	SPR_FLAT_BARE_LAND,
+	SPR_FLAT_1_THIRD_GRASS_TILE,
+	SPR_FLAT_2_THIRD_GRASS_TILE,
+	SPR_FLAT_GRASS_TILE,
+};
+
 static const SpriteID _clear_land_sprites_snow_desert[8] = {
 	SPR_FLAT_1_QUART_SNOW_DESERT_TILE,
 	SPR_FLAT_2_QUART_SNOW_DESERT_TILE,
