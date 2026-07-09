@@ -186,10 +186,10 @@ void SetNewGRFOverride(GrfID source_grfid, GrfID target_grfid)
 {
 	if (target_grfid == 0) {
 		_grf_id_overrides.erase(source_grfid);
-		GrfMsg(5, "SetNewGRFOverride: Removed override of 0x{:X}", std::byteswap(source_grfid));
+		GrfMsg(5, "SetNewGRFOverride: Removed override of {:X}", std::byteswap(source_grfid));
 	} else {
 		_grf_id_overrides[source_grfid] = target_grfid;
-		GrfMsg(5, "SetNewGRFOverride: Added override of 0x{:X} to 0x{:X}", std::byteswap(source_grfid), std::byteswap(target_grfid));
+		GrfMsg(5, "SetNewGRFOverride: Added override of {:X} to {:X}", std::byteswap(source_grfid), std::byteswap(target_grfid));
 	}
 }
 
