@@ -1685,7 +1685,7 @@ private:
 	{
 		DropDownList list;
 		if (_network_server) list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, to_underlying(DropDownAction::AdminResetCompany), NetworkCompanyHasClients(company_id)));
-		if (const Company *c = Company::GetIfValid(company_id); c != nullptr) {
+		if (const Company *c = Company::GetIfValid(company_id); c != nullptr && !c->is_ai) {
 			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY, to_underlying(DropDownAction::CompanyAllowAny), c->allow_any));
 			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED, to_underlying(DropDownAction::CompanyAllowListed), !c->allow_any));
 		}
