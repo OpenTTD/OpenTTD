@@ -82,6 +82,9 @@ enum Slope : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(Slope)
 
+/** The total number of possible slope types. */
+static constexpr uint8_t NUM_SLOPES = 19;
+
 /**
  * Helper for creating a bitset of slopes.
  * @param x The slope to convert into a bitset.
