@@ -12,6 +12,7 @@
 #include "train.h"
 #include "roadveh.h"
 #include "company_func.h"
+#include "newgrf.h"
 #include "newgrf_badge.h"
 #include "newgrf_cargo.h"
 #include "newgrf_spritegroup.h"
@@ -421,7 +422,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 	/* Calculated vehicle parameters */
 	switch (variable) {
 		case 0x25: // Get engine GRF ID
-			return v->GetGRFID();
+			return FlattenNewGRFLabel(v->GetGRFID());
 
 		case 0x40: // Get length of consist
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_POSITION_CONSIST_LENGTH)) {

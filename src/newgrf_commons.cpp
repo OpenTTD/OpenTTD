@@ -76,7 +76,7 @@ void OverrideManagerBase::ResetMapping()
 void OverrideManagerBase::ResetOverride()
 {
 	std::fill(this->entity_overrides.begin(), this->entity_overrides.end(), this->invalid_id);
-	std::fill(this->grfid_overrides.begin(), this->grfid_overrides.end(), uint32_t());
+	std::fill(this->grfid_overrides.begin(), this->grfid_overrides.end(), GrfID{});
 }
 
 /**
@@ -118,7 +118,7 @@ uint16_t OverrideManagerBase::AddEntityID(uint16_t grf_local_id, GrfID grfid, ui
 	for (id = this->max_offset; id < this->max_entities; id++) {
 		EntityIDMapping *map = &this->mappings[id];
 
-		if (CheckValidNewID(id) && map->entity_id == 0 && map->grfid == 0) {
+		if (CheckValidNewID(id) && map->entity_id == 0 && map->grfid.Empty()) {
 			map->entity_id     = grf_local_id;
 			map->grfid         = grfid;
 			map->substitute_id = substitute_id;
@@ -223,7 +223,7 @@ uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, GrfID grfid
 		if (!inds->enabled && !inds->grf_prop.HasGrfFile()) {
 			EntityIDMapping *map = &this->mappings[id];
 
-			if (map->entity_id == 0 && map->grfid == 0) {
+			if (map->entity_id == 0 && map->grfid.Empty()) {
 				/* winning slot, mark it as been used */
 				map->entity_id     = grf_local_id;
 				map->grfid         = grfid;

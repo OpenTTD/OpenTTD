@@ -19,7 +19,7 @@
 
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
-	SLE_VAR(EntityIDMapping, grfid,         VarTypes::U32),
+	SLE_VAR(EntityIDMapping, grfid, VarTypes::LABEL),
 	SLE_CONDVAR(EntityIDMapping, entity_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
 	SLE_CONDVAR(EntityIDMapping, entity_id, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(EntityIDMapping, substitute_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
@@ -34,7 +34,7 @@ void NewGRFMappingChunkHandler::Save() const
 	SlTableHeader(_newgrf_mapping_desc);
 
 	for (uint i = 0; i < this->mapping.GetMaxMapping(); i++) {
-		if (this->mapping.mappings[i].grfid == 0 &&
+		if (this->mapping.mappings[i].grfid.Empty() &&
 			this->mapping.mappings[i].entity_id == 0) continue;
 		SlSetArrayIndex(i);
 		SlObject(&this->mapping.mappings[i], _newgrf_mapping_desc);
@@ -69,7 +69,7 @@ struct NGRFChunkHandler : ChunkHandler {
 
 	static inline const SaveLoad description[] = {
 		   SLE_SSTR(GRFConfig, filename,         VarTypes::STR),
-		    SLE_VAR(GRFConfig, ident.grfid,      VarTypes::U32),
+		    SLE_VAR(GRFConfig, ident.grfid, VarTypes::LABEL),
 		    SLE_ARR(GRFConfig, ident.md5sum,     VarTypes::U8,  16),
 		SLE_CONDVAR(GRFConfig, version, VarTypes::U32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
 		   SLEG_ARR("param", param,              VarTypes::U32, std::size(param)),

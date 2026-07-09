@@ -11,6 +11,7 @@
 #include "script_newgrf.hpp"
 #include "../../core/bitmath_func.hpp"
 #include "../../newgrf_config.h"
+#include "../../newgrf.h"
 #include "../../string_func.h"
 
 #include "../../safeguards.h"
@@ -19,23 +20,23 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	for (const auto &c : _grfconfig) {
 		if (!c->flags.Test(GRFConfigFlag::Static)) {
-			this->AddItem(std::byteswap(c->ident.grfid));
+			this->AddItem(FlattenNewGRFLabel(c->ident.grfid));
 		}
 	}
 }
 
 /* static */ bool ScriptNewGRF::IsLoaded(SQInteger grfid)
 {
-	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
+	GrfID id = UnflattenNewGRFLabel<GrfID>(grfid);
 
-	return std::ranges::any_of(_grfconfig, [grfid](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid; });
+	return std::ranges::any_of(_grfconfig, [id](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == id; });
 }
 
 /* static */ SQInteger ScriptNewGRF::GetVersion(SQInteger grfid)
 {
-	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
+	GrfID id = UnflattenNewGRFLabel<GrfID>(grfid);
 
-	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid; });
+	auto it = std::ranges::find_if(_grfconfig, [id](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == id; });
 	if (it != std::end(_grfconfig)) return (*it)->version;
 
 	return 0;
@@ -43,9 +44,9 @@ ScriptNewGRFList::ScriptNewGRFList()
 
 /* static */ std::optional<std::string> ScriptNewGRF::GetName(SQInteger grfid)
 {
-	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
+	GrfID id = UnflattenNewGRFLabel<GrfID>(grfid);
 
-	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid; });
+	auto it = std::ranges::find_if(_grfconfig, [id](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == id; });
 	if (it != std::end(_grfconfig)) return (*it)->GetName();
 
 	return std::nullopt;

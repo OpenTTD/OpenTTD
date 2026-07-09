@@ -27,6 +27,7 @@
 #include "fontcache.h"
 #include "screenshot.h"
 #include "genworld.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
@@ -2657,7 +2658,7 @@ static bool ConNewGRFProfile(std::span<std::string_view> argv)
 			bool active = selected && profiler->active;
 			TextColour tc = active ? TextColour::LightBlue : selected ? TextColour::Green : CC_INFO;
 			std::string_view statustext = active ? " (active)" : selected ? " (selected)" : "";
-			IConsolePrint(tc, "{}: [{:08X}] {}{}", i, std::byteswap(grf.grfid), grf.filename, statustext);
+			IConsolePrint(tc, "{}: [{}] {}{}", i, FormatArrayAsHex(grf.grfid), grf.filename, statustext);
 			i++;
 		}
 		return true;
@@ -2673,7 +2674,7 @@ static bool ConNewGRFProfile(std::span<std::string_view> argv)
 			}
 			const GRFFile *grf = &files[*grfnum - 1];
 			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
-				IConsolePrint(CC_WARNING, "GRF number {} [{:08X}] is already selected for profiling.", *grfnum, std::byteswap(grf->grfid));
+				IConsolePrint(CC_WARNING, "GRF number {} [{}] is already selected for profiling.", *grfnum, FormatArrayAsHex(grf->grfid));
 				continue;
 			}
 			_newgrf_profilers.emplace_back(grf);
@@ -2709,7 +2710,7 @@ static bool ConNewGRFProfile(std::span<std::string_view> argv)
 				started++;
 
 				if (!grfids.empty()) grfids += ", ";
-				format_append(grfids, "[{:08X}]", std::byteswap(pr.grffile->grfid));
+				format_append(grfids, "[{}]", FormatArrayAsHex(pr.grffile->grfid));
 			}
 		}
 		if (started > 0) {
@@ -2802,7 +2803,7 @@ static void ConDumpRoadTypes()
 	IConsolePrint(CC_DEFAULT, "    h = hidden");
 	IConsolePrint(CC_DEFAULT, "    T = buildable by towns");
 
-	std::map<uint32_t, const GRFFile *> grfs;
+	std::map<GrfID, const GRFFile *> grfs;
 	for (RoadType rt : EnumRange(ROADTYPE_END)) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label.Empty()) continue;
@@ -2812,7 +2813,7 @@ static void ConDumpRoadTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} {} {}, Flags: {}{}{}{}{}, GRF: {:08X}, {}",
+		IConsolePrint(CC_DEFAULT, "  {:02d} {} {}, Flags: {}{}{}{}{}, GRF: {}, {}",
 				(uint)rt,
 				RoadTypeIsTram(rt) ? "Tram" : "Road",
 				rti->label.AsString(),
@@ -2821,12 +2822,12 @@ static void ConDumpRoadTypes()
 				rti->flags.Test(RoadTypeFlag::NoHouses)        ? 'X' : '-',
 				rti->flags.Test(RoadTypeFlag::Hidden)          ? 'h' : '-',
 				rti->flags.Test(RoadTypeFlag::TownBuild)       ? 'T' : '-',
-				std::byteswap(grfid),
+				FormatArrayAsHex(grfid),
 				GetStringPtr(rti->strings.name)
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {} = {}", FormatArrayAsHex(grf.first), grf.second->filename);
 	}
 }
 
@@ -2841,7 +2842,7 @@ static void ConDumpRailTypes()
 	IConsolePrint(CC_DEFAULT, "    a = always allow 90 degree turns");
 	IConsolePrint(CC_DEFAULT, "    d = always disallow 90 degree turns");
 
-	std::map<uint32_t, const GRFFile *> grfs;
+	std::map<GrfID, const GRFFile *> grfs;
 	for (RailType rt : EnumRange(RAILTYPE_END)) {
 		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label.Empty()) continue;
@@ -2851,7 +2852,7 @@ static void ConDumpRailTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} {}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}",
+		IConsolePrint(CC_DEFAULT, "  {:02d} {}, Flags: {}{}{}{}{}{}, GRF: {}, {}",
 				(uint)rt,
 				rti->label.AsString(),
 				rti->flags.Test(RailTypeFlag::Catenary)        ? 'c' : '-',
@@ -2860,12 +2861,12 @@ static void ConDumpRailTypes()
 				rti->flags.Test(RailTypeFlag::NoSpriteCombine) ? 's' : '-',
 				rti->flags.Test(RailTypeFlag::Allow90Deg)      ? 'a' : '-',
 				rti->flags.Test(RailTypeFlag::Disallow90Deg)   ? 'd' : '-',
-				std::byteswap(grfid),
+				FormatArrayAsHex(grfid),
 				GetStringPtr(rti->strings.name)
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {} = {}", FormatArrayAsHex(grf.first), grf.second->filename);
 	}
 }
 
@@ -2890,7 +2891,7 @@ static void ConDumpCargoTypes()
 	IConsolePrint(CC_DEFAULT, "    i = non-potable");
 	IConsolePrint(CC_DEFAULT, "    S = special");
 
-	std::map<uint32_t, const GRFFile *> grfs;
+	std::map<GrfID, const GRFFile *> grfs;
 	for (const CargoSpec *spec : CargoSpec::Iterate()) {
 		GrfID grfid{};
 		const GRFFile *grf = spec->grffile;
@@ -2898,7 +2899,7 @@ static void ConDumpCargoTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
+		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}, GRF: {}, {}",
 				spec->Index(),
 				spec->bitnum,
 				spec->label.AsString(),
@@ -2919,12 +2920,12 @@ static void ConDumpCargoTypes()
 				spec->classes.Test(CargoClass::Potable)      ? 'e' : '-',
 				spec->classes.Test(CargoClass::NonPotable)   ? 'i' : '-',
 				spec->classes.Test(CargoClass::Special)      ? 'S' : '-',
-				std::byteswap(grfid),
+				FormatArrayAsHex(grfid),
 				GetStringPtr(spec->name)
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {} = {}", FormatArrayAsHex(grf.first), grf.second->filename);
 	}
 }
 

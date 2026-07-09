@@ -12,6 +12,7 @@
 #include "../newgrf_house.h"
 #include "../newgrf_sound.h"
 #include "../spritecache.h"
+#include "../string_func.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 
@@ -24,7 +25,7 @@
 static void ImportGRFSound(SoundEntry *sound)
 {
 	const GRFFile *file;
-	GrfID grfid = _cur_gps.file->ReadDword();
+	GrfID grfid = UnflattenNewGRFLabel<GrfID>(_cur_gps.file->ReadDword());
 	SoundID sound_id = _cur_gps.file->ReadWord();
 
 	file = GetFileByGRFID(grfid);
@@ -38,7 +39,7 @@ static void ImportGRFSound(SoundEntry *sound)
 		return;
 	}
 
-	GrfMsg(2, "ImportGRFSound: Copying sound {} ({}) from file {:x}", sound_id, file->sound_offset + sound_id, grfid);
+	GrfMsg(2, "ImportGRFSound: Copying sound {} ({}) from file {}", sound_id, file->sound_offset + sound_id, FormatArrayAsHex(grfid));
 
 	*sound = *GetSound(file->sound_offset + sound_id);
 

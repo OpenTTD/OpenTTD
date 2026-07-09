@@ -87,7 +87,7 @@ public:
 		message += "NewGRFs:\n";
 		if (_game_mode != GameMode::Menu) {
 			for (const auto &c : _grfconfig) {
-				format_append(message, "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
+				format_append(message, "{} {} {}\n", FormatArrayAsHex(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
 			}
 		}
 		message += "\nCompanies:\n";

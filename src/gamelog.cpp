@@ -110,9 +110,9 @@ void Gamelog::Reset()
 static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, GrfID grfid, const MD5Hash *md5sum, const GRFConfig *gc)
 {
 	if (md5sum != nullptr) {
-		fmt::format_to(output_iterator, "GRF ID {:08X}, checksum {}", std::byteswap(grfid), FormatArrayAsHex(*md5sum));
+		fmt::format_to(output_iterator, "GRF ID {}, checksum {}", FormatArrayAsHex(grfid), FormatArrayAsHex(*md5sum));
 	} else {
-		fmt::format_to(output_iterator, "GRF ID {:08X}", std::byteswap(grfid));
+		fmt::format_to(output_iterator, "GRF ID {}", FormatArrayAsHex(grfid));
 	}
 
 	if (gc != nullptr) {
@@ -282,8 +282,8 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 {
 	/* The order of NewGRFs got changed, which might cause some other NewGRFs to behave differently. */
 	auto gm = grf_names.find(this->grfid);
-	fmt::format_to(output_iterator, "GRF order changed: {:08X} moved {} places {}",
-		std::byteswap(this->grfid), abs(this->offset), this->offset >= 0 ? "down" : "up" );
+	fmt::format_to(output_iterator, "GRF order changed: {} moved {} places {}",
+		FormatArrayAsHex(this->grfid), abs(this->offset), this->offset >= 0 ? "down" : "up" );
 	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
 	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
@@ -294,7 +294,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	auto gm = grf_names.find(this->grfid);
 	assert(this->bug == GRFBug::VehLength);
 
-	fmt::format_to(output_iterator, "Rail vehicle changes length outside a depot: GRF ID {:08X}, internal ID 0x{:X}", std::byteswap(this->grfid), this->data);
+	fmt::format_to(output_iterator, "Rail vehicle changes length outside a depot: GRF ID {}, internal ID 0x{:X}", FormatArrayAsHex(this->grfid), this->data);
 	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
 	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }

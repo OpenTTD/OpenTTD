@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "../../textfile_gui.h"
 #include "../../newgrf_config.h"
+#include "../../newgrf.h"
 #include "../../base_media_base.h"
 #include "../../base_media_graphics.h"
 #include "../../base_media_music.h"
@@ -73,7 +74,7 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 			tmp = Game::GetScannerLibrary()->FindMainScript(*this, true);
 			break;
 		case ContentType::NewGRF: {
-			const GRFConfig *gc = FindGRFConfig(std::byteswap(this->unique_id), FindGRFConfigMode::Exact, &this->md5sum);
+			const GRFConfig *gc = FindGRFConfig(UnflattenNewGRFLabel<GrfID>(this->unique_id), FindGRFConfigMode::Exact, &this->md5sum);
 			if (gc != nullptr) tmp = gc->filename;
 			break;
 		}

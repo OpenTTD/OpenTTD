@@ -1596,7 +1596,7 @@ public:
 			}
 
 			for (const auto &item : group_it->second) {
-				if (item.grfid == 0) {
+				if (item.grfid.Empty()) {
 					const HouseSpec *hs = HouseSpec::Get(item.local_id);
 					if (hs == nullptr) continue;
 					int class_index = GetClassIdFromHouseZone(hs->building_availability);

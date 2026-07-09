@@ -80,8 +80,7 @@ static void PickerLoadConfig(const IniFile &ini, PickerCallbacks &callbacks)
 		}
 
 		for (const IniItem &item : group.items) {
-			std::array<uint8_t, 4> grfid_buf;
-
+			GrfID grfid;
 			std::string_view str = item.name;
 
 			/* Try reading "<grfid>|<localid>" */
@@ -89,10 +88,9 @@ static void PickerLoadConfig(const IniFile &ini, PickerCallbacks &callbacks)
 			if (grfid_pos == std::string_view::npos) continue;
 
 			std::string_view grfid_str = str.substr(0, grfid_pos);
-			if (!ConvertHexToBytes(grfid_str, grfid_buf)) continue;
+			if (!ConvertHexToBytes(grfid_str, grfid)) continue;
 
 			str = str.substr(grfid_pos + 1);
-			GrfID grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 			uint16_t localid;
 			auto [ptr, err] = std::from_chars(str.data(), str.data() + str.size(), localid);
 
@@ -119,7 +117,7 @@ static void PickerSaveConfig(IniFile &ini, const PickerCallbacks &callbacks)
 		IniGroup &group = ini.GetOrCreateGroup(collection.first == "" ? callbacks.ini_group : callbacks.ini_group + "-" + collection.first);
 		group.Clear();
 		for (const PickerItem &item : collection.second) {
-			std::string key = fmt::format("{:08X}|{}", std::byteswap(item.grfid), item.local_id);
+			std::string key = fmt::format("{}|{}", FormatArrayAsHex(item.grfid), item.local_id);
 			group.CreateItem(key);
 		}
 	}
