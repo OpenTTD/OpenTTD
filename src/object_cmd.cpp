@@ -313,10 +313,11 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 	/* Finally do a check for bridges. */
 	for (TileIndex t : ta) {
-		if (IsBridgeAbove(t) && (
-				!spec->flags.Test(ObjectFlag::AllowUnderBridge) ||
-				(GetTileMaxZ(t) + spec->height >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
-			return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (IsBridgeAbove(t)) {
+			if (!spec->flags.Test(ObjectFlag::AllowUnderBridge)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+			int height_diff = GetTileMaxZ(t) + spec->height - GetBridgeHeight(GetSouthernBridgeEnd(t));
+			if (height_diff > 0) return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT, height_diff * TILE_HEIGHT_STEP);
 		}
 	}
 
@@ -1011,11 +1012,11 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlags flags, in
 static CommandCost CheckBuildAbove_Object(TileIndex tile, DoCommandFlags flags, [[maybe_unused]] Axis axis, int height)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
-	if (spec->flags.Test(ObjectFlag::AllowUnderBridge) && GetTileMaxZ(tile) + spec->height <= height) {
-		return CommandCost();
-	}
+	if (!spec->flags.Test(ObjectFlag::AllowUnderBridge)) return Command<Commands::LandscapeClear>::Do(flags, tile);
 
-	return Command<Commands::LandscapeClear>::Do(flags, tile);
+	int height_diff = GetTileMaxZ(tile) + spec->height - height;
+	if (height_diff > 0) return CommandCostWithParam(STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT, height_diff * TILE_HEIGHT_STEP);
+	return CommandCost();
 }
 
 /** TileTypeProcs definitions for TileType::Object tiles. */
