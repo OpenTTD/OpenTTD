@@ -246,7 +246,7 @@ static void WriteSavegameInfo(const std::string &name)
 	message += "NewGRFs:\n";
 	if (_load_check_data.HasNewGrfs()) {
 		for (const auto &c : _load_check_data.grfconfig) {
-			format_append(message, "{:08X} {} {}\n", std::byteswap(c->ident.grfid),
+			format_append(message, "{} {} {}\n", FormatArrayAsHex(c->ident.grfid),
 				FormatArrayAsHex(c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum), c->filename);
 		}
 	}

@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../newgrf_text.h"
+#include "../string_func.h"
 #include "../strings_func.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
@@ -31,10 +32,10 @@ static void TranslateGRFStrings(ByteReader &buf)
 	 * W   offset    First text ID
 	 * S   text...   Zero-terminated strings */
 
-	GrfID grfid = buf.ReadDWord();
+	GrfID grfid = buf.ReadLabel<GrfID>();
 	const GRFConfig *c = GetGRFConfig(grfid);
 	if (c == nullptr || (c->status != GRFStatus::Initialised && c->status != GRFStatus::Activated)) {
-		GrfMsg(7, "TranslateGRFStrings: GRFID {:08X} unknown, skipping action 13", std::byteswap(grfid));
+		GrfMsg(7, "TranslateGRFStrings: GRFID {} unknown, skipping action 13", FormatArrayAsHex(grfid));
 		return;
 	}
 

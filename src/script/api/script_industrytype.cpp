@@ -161,6 +161,5 @@
 {
 	EnforcePrecondition(IT_INVALID, IsInsideBS(grf_local_id, 0x00, NUM_INDUSTRYTYPES_PER_GRF));
 
-	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
-	return _industry_mngr.GetID(grf_local_id, grfid);
+	return _industry_mngr.GetID(grf_local_id, UnflattenNewGRFLabel<GrfID>(grfid));
 }

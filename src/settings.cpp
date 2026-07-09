@@ -1095,7 +1095,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 	for (const IniItem &item : group->items) {
 		std::unique_ptr<GRFConfig> c{};
 
-		std::array<uint8_t, 4> grfid_buf;
+		GrfID grfid;
 		MD5Hash md5sum;
 		std::string_view item_name = item.name;
 		bool has_md5sum = false;
@@ -1105,7 +1105,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 		if (grfid_pos != std::string_view::npos) {
 			std::string_view grfid_str = item_name.substr(0, grfid_pos);
 
-			if (ConvertHexToBytes(grfid_str, grfid_buf)) {
+			if (ConvertHexToBytes(grfid_str, grfid)) {
 				item_name = item_name.substr(grfid_pos + 1);
 
 				auto md5sum_pos = item_name.find("|");
@@ -1116,7 +1116,6 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 					if (has_md5sum) item_name = item_name.substr(md5sum_pos + 1);
 				}
 
-				GrfID grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 				if (has_md5sum) {
 					const GRFConfig *s = FindGRFConfig(grfid, FindGRFConfigMode::Exact, &md5sum);
 					if (s != nullptr) c = std::make_unique<GRFConfig>(*s);
@@ -1284,7 +1283,7 @@ static void GRFSaveConfig(IniFile &ini, std::string_view grpname, const GRFConfi
 	group.Clear();
 
 	for (const auto &c : list) {
-		std::string key = fmt::format("{:08X}|{}|{}", std::byteswap(c->ident.grfid),
+		std::string key = fmt::format("{}|{}|{}", FormatArrayAsHex(c->ident.grfid),
 				FormatArrayAsHex(c->ident.md5sum), c->filename);
 		group.GetOrCreateItem(key).SetValue(GRFBuildParamList(*c));
 	}

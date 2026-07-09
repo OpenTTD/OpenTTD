@@ -113,11 +113,11 @@ void AfterLoadStations()
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
 	for (BaseStation *st : BaseStation::Iterate()) {
 		for (auto &sm : GetStationSpecList<StationSpec>(st)) {
-			if (sm.grfid == 0) continue;
+			if (sm.grfid.Empty()) continue;
 			sm.spec = StationClass::GetByGrf(sm.grfid, sm.localidx);
 		}
 		for (auto &sm : GetStationSpecList<RoadStopSpec>(st)) {
-			if (sm.grfid == 0) continue;
+			if (sm.grfid.Empty()) continue;
 			sm.spec = RoadStopClass::GetByGrf(sm.grfid, sm.localidx);
 		}
 
@@ -209,7 +209,7 @@ template <typename T>
 class SlStationSpecList : public VectorSaveLoadHandler<SlStationSpecList<T>, BaseStation, SpecMapping<T>> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(SpecMapping<T>, grfid, VarTypes::U32, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(SpecMapping<T>, grfid, VarTypes::LABEL, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(SpecMapping<T>, localidx, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::ExtendEntityMapping),
 		SLE_CONDVAR(SpecMapping<T>, localidx, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 	};
@@ -430,7 +430,7 @@ public:
 		if (IsSavegameVersionBefore(SaveLoadVersion::PersistentStoragePool) && !IsSavegameVersionBefore(SaveLoadVersion::NewGRFAirportSmoke) && st->facilities.Test(StationFacility::Airport)) {
 			/* Store the old persistent storage. The GRFID will be added later. */
 			assert(PersistentStorage::CanAllocateItem());
-			st->airport.psa = PersistentStorage::Create(0, GrfSpecFeature::Invalid, TileIndex{});
+			st->airport.psa = PersistentStorage::Create(GrfID{}, GrfSpecFeature::Invalid, TileIndex{});
 			std::copy(std::begin(_old_st_persistent_storage.storage), std::end(_old_st_persistent_storage.storage), std::begin(st->airport.psa->storage));
 		}
 

@@ -155,7 +155,7 @@ struct ENGSChunkHandler : ChunkHandler {
 
 /** Save and load the mapping between the engine id in the pool, and the grf file it came from. */
 static const SaveLoad _engine_id_mapping_desc[] = {
-	SLE_VAR(EngineIDMapping, grfid,         VarTypes::U32),
+	SLE_VAR(EngineIDMapping, grfid, VarTypes::LABEL),
 	SLE_VAR(EngineIDMapping, internal_id,   VarTypes::U16),
 	SLE_VAR(EngineIDMapping, type,          VarTypes::U8),
 	SLE_VAR(EngineIDMapping, substitute_id, VarTypes::U8),

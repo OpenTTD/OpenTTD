@@ -692,7 +692,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerCheckNewGRFs(Pack
 		const GRFConfig *f = FindGRFConfig(c.grfid, FindGRFConfigMode::Exact, &c.md5sum);
 		if (f == nullptr) {
 			/* We do not know this GRF, bail out of initialization */
-			Debug(grf, 0, "NewGRF {:08X} not found; checksum {}", std::byteswap(c.grfid), FormatArrayAsHex(c.md5sum));
+			Debug(grf, 0, "NewGRF {} not found; checksum {}", FormatArrayAsHex(c.grfid), FormatArrayAsHex(c.md5sum));
 			ret = NetworkRecvStatus::NewGRFMismatch;
 		}
 	}

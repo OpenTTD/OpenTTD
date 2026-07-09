@@ -390,7 +390,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 			if (!IsCustomStationSpecIndex(nearby_tile)) return 0;
 
 			const auto &sm = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
-			return sm.grfid;
+			return FlattenNewGRFLabel(sm.grfid);
 		}
 
 		case 0x6B: { // 16 bit Station ID of nearby tiles
@@ -732,7 +732,7 @@ std::optional<uint8_t> AllocateSpecToStation(const StationSpec *spec, BaseStatio
 	if (st == nullptr) return 1;
 
 	for (i = 1; i < st->speclist.size() && i < NUM_STATIONSSPECS_PER_STATION; i++) {
-		if (st->speclist[i].spec == nullptr && st->speclist[i].grfid == 0) break;
+		if (st->speclist[i].spec == nullptr && st->speclist[i].grfid.Empty()) break;
 	}
 
 	if (i == NUM_STATIONSSPECS_PER_STATION) {
@@ -795,7 +795,7 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 	if (specindex == st->speclist.size() - 1) {
 		size_t num_specs;
 		for (num_specs = st->speclist.size() - 1; num_specs > 0; num_specs--) {
-			if (st->speclist[num_specs].grfid != 0) break;
+			if (!st->speclist[num_specs].grfid.Empty()) break;
 		}
 
 		if (num_specs > 0) {

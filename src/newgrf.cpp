@@ -16,6 +16,7 @@
 #include "engine_func.h"
 #include "engine_base.h"
 #include "bridge.h"
+#include "string_func.h"
 #include "town.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
@@ -184,12 +185,12 @@ static std::map<GrfID, GrfID> _grf_id_overrides;
  */
 void SetNewGRFOverride(GrfID source_grfid, GrfID target_grfid)
 {
-	if (target_grfid == 0) {
+	if (target_grfid.Empty()) {
 		_grf_id_overrides.erase(source_grfid);
-		GrfMsg(5, "SetNewGRFOverride: Removed override of {:X}", std::byteswap(source_grfid));
+		GrfMsg(5, "SetNewGRFOverride: Removed override of {}", FormatArrayAsHex(source_grfid));
 	} else {
 		_grf_id_overrides[source_grfid] = target_grfid;
-		GrfMsg(5, "SetNewGRFOverride: Added override of {:X} to {:X}", std::byteswap(source_grfid), std::byteswap(target_grfid));
+		GrfMsg(5, "SetNewGRFOverride: Added override of {} to {}", FormatArrayAsHex(source_grfid), FormatArrayAsHex(target_grfid));
 	}
 }
 
@@ -227,9 +228,9 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 			scope_grfid = it->second;
 			const GRFFile *grf_match = GetFileByGRFID(scope_grfid);
 			if (grf_match == nullptr) {
-				GrfMsg(5, "Tried mapping from GRFID {:x} to {:x} but target is not loaded", std::byteswap(file->grfid), std::byteswap(scope_grfid));
+				GrfMsg(5, "Tried mapping from GRFID {} to {} but target is not loaded", FormatArrayAsHex(file->grfid), FormatArrayAsHex(scope_grfid));
 			} else {
-				GrfMsg(5, "Mapping from GRFID {:x} to {:x}", std::byteswap(file->grfid), std::byteswap(scope_grfid));
+				GrfMsg(5, "Mapping from GRFID {} to {}", FormatArrayAsHex(file->grfid), FormatArrayAsHex(scope_grfid));
 			}
 		}
 
@@ -251,7 +252,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 
 		if (!e->grf_prop.HasGrfFile()) {
 			e->grf_prop.SetGRFFile(file);
-			GrfMsg(5, "Replaced engine at index {} for GRFID {:x}, type {}, index {}", e->index, std::byteswap(file->grfid), type, internal_id);
+			GrfMsg(5, "Replaced engine at index {} for GRFID {}, type {}, index {}", e->index, FormatArrayAsHex(file->grfid), type, internal_id);
 		}
 
 		return e;
@@ -282,7 +283,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
 
-	GrfMsg(5, "Created new engine at index {} for GRFID {:x}, type {}, index {}", e->index, std::byteswap(file->grfid), type, internal_id);
+	GrfMsg(5, "Created new engine at index {} for GRFID {}, type {}, index {}", e->index, FormatArrayAsHex(file->grfid), type, internal_id);
 
 	return e;
 }
@@ -1604,7 +1605,7 @@ void AddBadgeToSpecs(T &specs, GrfSpecFeature feature, Badge &badge)
 static void FinaliseBadges()
 {
 	for (const auto &file : _grf_files) {
-		Badge *badge = GetBadgeByLabel(fmt::format("newgrf/{:08x}", std::byteswap(file.grfid)));
+		Badge *badge = GetBadgeByLabel(fmt::format("newgrf/{}", FormatArrayAsHex(file.grfid)));
 		if (badge == nullptr) continue;
 
 		for (Engine *e : Engine::Iterate()) {
@@ -1814,10 +1815,10 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		}
 
 		if (stage == GrfLoadingStage::Reserve) {
-			static const std::pair<uint32_t, uint32_t> default_grf_overrides[] = {
-				{ std::byteswap(0x44442202), std::byteswap(0x44440111) }, // UKRS addons modifies UKRS
-				{ std::byteswap(0x6D620402), std::byteswap(0x6D620401) }, // DBSetXL ECS extension modifies DBSetXL
-				{ std::byteswap(0x4D656f20), std::byteswap(0x4D656F17) }, // LV4cut modifies LV4
+			static const std::pair<GrfID, GrfID> default_grf_overrides[] = {
+				{ GrfID{"\x44\x44\x22\x02"}, GrfID{"\x44\x44\x01\x11"} }, // UKRS addons modifies UKRS
+				{ GrfID{"\x6D\x62\x04\x02"}, GrfID{"\x6D\x62\x04\x01"} }, // DBSetXL ECS extension modifies DBSetXL
+				{ GrfID{"\x4D\x65\x6f\x20"}, GrfID{"\x4D\x65\x6F\x17"} }, // LV4cut modifies LV4
 			};
 			for (const auto &grf_override : default_grf_overrides) {
 				SetNewGRFOverride(grf_override.first, grf_override.second);

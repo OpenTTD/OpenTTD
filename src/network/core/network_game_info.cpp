@@ -13,6 +13,7 @@
 #include "../../timer/timer_game_calendar.h"
 #include "../../timer/timer_game_tick.h"
 #include "../../debug.h"
+#include "../../newgrf.h"
 #include "../../map_func.h"
 #include "../../game/game.hpp"
 #include "../../game/game_info.hpp"
@@ -388,7 +389,7 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
  */
 void SerializeGRFIdentifier(Packet &p, const GRFIdentifier &grf)
 {
-	p.Send_uint32(grf.grfid);
+	p.Send_uint32(FlattenNewGRFLabel(grf.grfid));
 	p.Send_bytes(grf.md5sum);
 }
 
@@ -399,7 +400,7 @@ void SerializeGRFIdentifier(Packet &p, const GRFIdentifier &grf)
  */
 void DeserializeGRFIdentifier(Packet &p, GRFIdentifier &grf)
 {
-	grf.grfid = p.Recv_uint32();
+	grf.grfid = UnflattenNewGRFLabel<GrfID>(p.Recv_uint32());
 	p.Recv_bytes(grf.md5sum);
 }
 

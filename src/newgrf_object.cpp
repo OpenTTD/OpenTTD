@@ -247,11 +247,11 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 			break;
 
 		case 0xFFFFFFFF: // current grf
-			grf_id = grfid;
+			grf_id = FlattenNewGRFLabel(grfid);
 			[[fallthrough]];
 
 		default: // use the grfid specified in register 100h
-			idx = _object_mngr.GetID(local_id, grf_id);
+			idx = _object_mngr.GetID(local_id, UnflattenNewGRFLabel<GrfID>(grf_id));
 			break;
 	}
 

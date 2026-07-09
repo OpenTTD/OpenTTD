@@ -27,6 +27,7 @@
 #include "../engine_func.h"
 #include "../company_base.h"
 #include "../disaster_vehicle.h"
+#include "../string_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
 #include "../timer/timer_game_calendar.h"
@@ -1583,13 +1584,13 @@ static bool LoadTTDPatchExtraChunks(LoadgameState &ls, int)
 
 				ClearGRFConfigList(_grfconfig);
 				while (len != 0) {
-					GrfID grfid = ReadUint32(ls);
+					GrfID grfid = UnflattenNewGRFLabel<GrfID>(ReadUint32(ls));
 
 					if (ReadByte(ls) == 1) {
 						auto c = std::make_unique<GRFConfig>("TTDP game, no information");
 						c->ident.grfid = grfid;
 
-						Debug(oldloader, 3, "TTDPatch game using GRF file with GRFID {:08X}", std::byteswap(c->ident.grfid));
+						Debug(oldloader, 3, "TTDPatch game using GRF file with GRFID {}", FormatArrayAsHex(c->ident.grfid));
 						AppendToGRFConfigList(_grfconfig, std::move(c));
 					}
 					len -= 5;

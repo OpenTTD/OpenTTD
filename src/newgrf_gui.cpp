@@ -101,7 +101,7 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 	}
 
 	/* Prepare and draw GRF ID */
-	tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_GRF_ID, fmt::format("{:08X}", std::byteswap(c.ident.grfid))));
+	tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_GRF_ID, FormatArrayAsHex(c.ident.grfid)));
 
 	if ((_settings_client.gui.newgrf_developer_tools || _settings_client.gui.newgrf_show_old_versions) && c.version != 0) {
 		tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_VERSION, c.version));
@@ -1513,7 +1513,7 @@ void ShowMissingContentWindow(const GRFConfigList &list)
 		ci->type = ContentType::NewGRF;
 		ci->state = ContentInfo::State::DoesNotExist;
 		ci->name = c->GetName();
-		ci->unique_id = std::byteswap(c->ident.grfid);
+		ci->unique_id = FlattenNewGRFLabel(c->ident.grfid);
 		ci->md5sum = c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum;
 		cv.push_back(std::move(ci));
 	}

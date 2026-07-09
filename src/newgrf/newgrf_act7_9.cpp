@@ -250,7 +250,7 @@ static void SkipIf(ByteReader &buf)
 	} else if (param == 0x88) {
 		/* GRF ID checks */
 
-		GRFConfig *c = GetGRFConfig(cond_val, mask);
+		GRFConfig *c = GetGRFConfig(UnflattenNewGRFLabel<GrfID>(cond_val), mask);
 
 		if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
 			DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);

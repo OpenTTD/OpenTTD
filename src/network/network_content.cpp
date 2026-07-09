@@ -14,6 +14,7 @@
 #include "../window_func.h"
 #include "../error.h"
 #include "../fileio_func.h"
+#include "../newgrf.h"
 #include "../base_media_base.h"
 #include "../base_media_graphics.h"
 #include "../base_media_music.h"
@@ -49,7 +50,7 @@ ClientNetworkContentSocketHandler _network_content_client;
 /** Check whether NewGRF content exists. @copydoc HasContentProc */
 static bool HasGRFConfig(const ContentInfo &ci, bool md5sum)
 {
-	return FindGRFConfig(std::byteswap(ci.unique_id), md5sum ? FindGRFConfigMode::Exact : FindGRFConfigMode::Any, md5sum ? &ci.md5sum : nullptr) != nullptr;
+	return FindGRFConfig(UnflattenNewGRFLabel<GrfID>(ci.unique_id), md5sum ? FindGRFConfigMode::Exact : FindGRFConfigMode::Any, md5sum ? &ci.md5sum : nullptr) != nullptr;
 }
 
 /**

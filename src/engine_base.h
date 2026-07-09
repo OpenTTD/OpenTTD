@@ -11,6 +11,7 @@
 #define ENGINE_BASE_H
 
 #include "engine_type.h"
+#include "newgrf.h"
 #include "vehicle_type.h"
 #include "core/enum_type.hpp"
 #include "core/pool_type.hpp"
@@ -213,7 +214,7 @@ struct EngineIDMapping {
 	 * @param internal_id The internal ID within the GRF file.
 	 * @return The key.
 	 */
-	static inline uint64_t Key(GrfID grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
+	static inline uint64_t Key(GrfID grfid, uint16_t internal_id) { return static_cast<uint64_t>(FlattenNewGRFLabel(grfid)) << 32 | internal_id; }
 
 	/**
 	 * Create a 64 bit key from this mapping.

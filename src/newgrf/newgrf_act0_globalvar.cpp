@@ -59,7 +59,7 @@ static ChangeInfoResult LoadTranslationTable(uint first, uint last, ByteReader &
 	GRFFile *grf_override = GetCurrentGRFOverride();
 	if (grf_override != nullptr) {
 		/* GRF override is present, copy the translation table to the overridden GRF as well. */
-		GrfMsg(1, "LoadTranslationTable: Copying {} translation table to override GRFID {:08X}", name, std::byteswap(grf_override->grfid));
+		GrfMsg(1, "LoadTranslationTable: Copying {} translation table to override GRFID {}", name, FormatArrayAsHex(grf_override->grfid));
 		std::vector<T> &override_table = gettable(*grf_override);
 		override_table = translation_table;
 	}
@@ -385,8 +385,8 @@ static ChangeInfoResult GlobalVarReserveInfo(uint first, uint last, int prop, By
 				break;
 
 			case 0x11: { // GRF match for engine allocation
-				GrfID s = buf.ReadDWord();
-				GrfID t = buf.ReadDWord();
+				GrfID s = buf.ReadLabel<GrfID>();
+				GrfID t = buf.ReadLabel<GrfID>();
 				SetNewGRFOverride(s, t);
 				break;
 			}

@@ -15,6 +15,7 @@
 #include "network/network.h"
 #include "rev.h"
 #include "settings_type.h"
+#include "string_func.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
@@ -358,7 +359,7 @@ void SurveyTimers(nlohmann::json &survey)
 void SurveyGrfs(nlohmann::json &survey)
 {
 	for (const auto &c : _grfconfig) {
-		auto grfid = fmt::format("{:08x}", std::byteswap(c->ident.grfid));
+		auto grfid = fmt::format("{}", FormatArrayAsHex(c->ident.grfid));
 		auto &grf = survey[std::move(grfid)];
 
 		grf["md5sum"] = FormatArrayAsHex(c->ident.md5sum);

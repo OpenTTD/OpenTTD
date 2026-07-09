@@ -372,7 +372,7 @@ class NIHIndustry : public NIHelper {
 		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 
-	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
+	const std::span<int32_t> GetPSA(uint index, GrfID) const override
 	{
 		const Industry *i = (const Industry *)this->GetInstance(index);
 		if (i->psa == nullptr) return {};
@@ -548,7 +548,7 @@ class NIHAirport : public NIHelper {
 		return ro.GetScope(VarSpriteGroupScope::Self)->GetVariable(var, param, avail);
 	}
 
-	const std::span<int32_t> GetPSA(uint index, uint32_t) const override
+	const std::span<int32_t> GetPSA(uint index, GrfID) const override
 	{
 		const Station *st = (const Station *)this->GetInstance(index);
 		if (st->airport.psa == nullptr) return {};

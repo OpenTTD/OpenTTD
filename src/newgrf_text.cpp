@@ -537,7 +537,7 @@ static StringID AddGRFString(GrfID grfid, GRFStringID stringid, GRFLanguage lang
 	std::string newtext = TranslateTTDPatchCodes(grfid, langid_to_add, allow_newlines, text_to_add);
 	AddGRFTextToList(it->textholder, langid_to_add, newtext);
 
-	GrfMsg(3, "Added 0x{:X} grfid {:08X} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, std::byteswap(grfid), stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
+	GrfMsg(3, "Added 0x{:X} grfid {} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, FormatArrayAsHex(grfid), stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
 
 	return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 }
@@ -639,7 +639,7 @@ std::optional<std::string_view> GetGRFStringFromGRFText(const GRFTextWrapper &te
 std::string_view GetGRFStringPtr(StringIndexInTab stringid)
 {
 	assert(stringid.base() < _grf_text.size());
-	assert(_grf_text[stringid].grfid != 0);
+	assert(!_grf_text[stringid].grfid.Empty());
 
 	auto str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
 	if (str.has_value()) return *str;

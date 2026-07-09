@@ -30,7 +30,7 @@ TownNameParams::TownNameParams(const Town *t) :
 		grfid(t->townnamegrfid), // by default, use supplied data
 		type(t->townnametype)
 {
-	if (t->townnamegrfid != 0 && GetGRFTownName(t->townnamegrfid) == nullptr) {
+	if (!t->townnamegrfid.Empty() && GetGRFTownName(t->townnamegrfid) == nullptr) {
 		/* Fallback to the first built in town name (English). */
 		this->grfid = {};
 		this->type = SPECSTR_TOWNNAME_START;
@@ -47,7 +47,7 @@ TownNameParams::TownNameParams(const Town *t) :
  */
 static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint32_t townnameparts)
 {
-	if (par->grfid == 0) {
+	if (par->grfid.Empty()) {
 		auto tmp_params = MakeParameters(townnameparts);
 		GetStringWithArgs(builder, par->type, tmp_params);
 		return;
