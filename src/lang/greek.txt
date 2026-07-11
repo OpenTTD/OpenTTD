@@ -5462,6 +5462,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :η γέφυρα
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :η γέφυρα είναι πολύ χαμηλή κατά {HEIGHT} για σιδηροδρομικό σημείο καθοδήγησης
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :η γέφυρα είναι πολύ χαμηλή κατά {HEIGHT} για οδικό σημείο καθοδήγησης
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :η γέφυρα είναι πολύ χαμηλή κατά {HEIGHT} για κλείδωμα
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :η γέφυρα είναι {HEIGHT} πολύ χαμηλή για το αμαξοστάσιο τρένων
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :η γέφυρα είναι {HEIGHT} πολύ χαμηλή για το αμαξοστάσιο οδικών οχημάτων
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :η γέφυρα είναι {HEIGHT} πολύ χαμηλή για το ναυπηγείο πλοίων
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :η γέφυρα είναι {HEIGHT} πολύ χαμηλή για το αντικείμενο
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Δεν μπορεί να κατασκευαστεί σήραγγα εδώ...

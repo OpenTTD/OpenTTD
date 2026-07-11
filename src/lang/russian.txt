@@ -5548,6 +5548,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :высота м
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :высота моста - {HEIGHT}, этого недостаточно для маршрутной точки
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :высота моста - {HEIGHT}, этого недостаточно для маршрутной точки
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :высота моста - {HEIGHT}, этого недостаточно для шлюза
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :депо не поместится под мостом с высотой {HEIGHT}
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :гараж не поместится под мостом с высотой {HEIGHT}
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :док не поместится под мостом с высотой {HEIGHT}
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :объект не поместится под мостом с высотой {HEIGHT}
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Здесь невозможно построить туннель...

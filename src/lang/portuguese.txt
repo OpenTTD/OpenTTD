@@ -5362,6 +5362,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :A ponte está {
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :A ponte está {HEIGHT} abaixo do necessário para o ponto de controlo ferroviário
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :A ponte está {HEIGHT} abaixo do necessário para o ponto de controlo rodoviário
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :A ponte está {HEIGHT} abaixo do necessário para a eclusa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :ponte é {HEIGHT} mais baixa do que o depósito ferroviário
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :ponte é {HEIGHT} mais baixa do que a garagem
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :ponte é {HEIGHT} mais baixa do que o estaleiro naval
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :ponte é {HEIGHT} mais baixa do que o objeto
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Não é possível construir túnel aqui...

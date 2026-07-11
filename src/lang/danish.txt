@@ -525,6 +525,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lufthavnskonstr
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landskabsværktøjer
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant træer
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Placer skilt
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Placer objekt
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/Musik
@@ -1351,6 +1352,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Høj
 STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktiveret, kan lavkonjunktur forekomme hvert par år. Under en lavkonjunktur er al produktion væsentligt lavere (den vender tilbage til tidligere niveau, når recessionen er forbi)
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Tillad tog at vende ved tilbage kørsel: {STRING}
 
 ###length 3
 
@@ -1557,7 +1559,11 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skalér industr
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaler industriens gods produktion med denne procentdel
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Betalings aldrings sats for skala gods: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Juster hvor hurtigt last lastet på et køretøj falder i værdi over tid
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Ingen forfald
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatisk fornyelse af gamle køretøjer: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktiveret, bliver et køretøjder nærmer sig sin afslutning af livet automatisk udskiftet, når betingelserne er opfyldt
@@ -1901,6 +1907,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Når den er akt
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastighedsbegrænsning for vogne: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Når tilladt, brug også fartgrænse på vogne, for at bestemme makshastigheden på tog
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Aktivér flyets maksimale rækkevidde: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Når det er aktiveret, vil NewGRF'er kunne begrænse flyets maksimale rækkevidde
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Slå elektriske jernbaner fra: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Tilladelse af denne indstilling slår nødvendigheden af elektrisk jernbaner fra, for at få elektriske tog til at kører
@@ -3080,6 +3088,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placér 
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Hold Ctrl nede for at fjerne det.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Forstør landområdet der skal sænkes/hæves
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Formindsk landområdet der skal sænkes/hæves
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Hæv et hjørne eller et område. Hvis størrelsen er 1x1, skal du klikke og trække for at hæve det første valgte hjørne og justere det valgte område til den nye hjørnehøjde. Ctrl+klik+træk for at vælge området diagonalt. Tryk også på Shift for kun at vise omkostningsestimatet.
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfældigt land
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Opret nyt scenarie
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Nulstil landskab
@@ -4572,8 +4581,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Giv kør
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Giv skibet et navn
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Navngiv flyet
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} år{P "" s} (lifetime: {COMMA} år{P "" s})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år{P "" s} (lifetime: {COMMA} år{P "" s})
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY_LONG}/år
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY_LONG}/periode
 
@@ -4587,6 +4596,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskud
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Årets resultat: {LTBLUE}{CURRENCY_LONG} (sidste år: {CURRENCY_LONG}) {BLACK}Mindste ydeevne: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Profit denne periode: {LTBLUE}{CURRENCY_LONG} (sidste periode: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Profit denne periode: {LTBLUE}{CURRENCY_LONG} (sidste periode: {CURRENCY_LONG}) {BLACK}Min. ydeevne: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålidelighed: {LTBLUE}{COMMA}% (maks: {COMMA}%) {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacitet: {LTBLUE}Ingen{STRING}
@@ -5338,6 +5348,9 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :broen er {HEIGH
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :broen er  {HEIGHT} for lav til et rutepunkt
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :broen er {HEIGHT} for lav til et rutepunkt
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :broen er {HEIGHT} for lav til slusen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :broen er {HEIGHT} for lav til tog depotet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :broen er {HEIGHT} for lav til bil depotet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :broen er {HEIGHT} for lav til skibs depotet
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge en tunnel her...
