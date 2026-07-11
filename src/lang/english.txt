@@ -631,7 +631,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 years (quarterly)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 years (yearly)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Toggle graph for this data range
 STR_GRAPH_SELECT_SCALE                                          :Change horizontal scale of graph
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cargo Payment Rates
@@ -647,14 +646,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Cargo History
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produced
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Toggle graph of cargo produced by this industry
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transported
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Toggle graph of cargo transported from this industry
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Delivered
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Toggle graph of cargo delivered to this industry
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Waiting
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Toggle graph of cargo waiting at this industry
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Cargo History
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produced
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Toggle graph of cargo produced by this town
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transported
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Toggle graph of cargo transported from this town
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Delivered
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Toggle graph of cargo delivered to this town
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Show detailed performance ratings
 
