@@ -184,7 +184,6 @@ using namespace std::literals::string_view_literals;
 #else
 #	define PACK_N(type_dec, n) type_dec __attribute__((__packed__, aligned(n)))
 #endif
-#define PACK(type_dec) PACK_N(type_dec, 1)
 
 /** @def debug_inline
  * When making a (pure) debug build, the compiler will by default disable
