@@ -535,25 +535,23 @@ int Win32StringContains(std::string_view str, std::string_view value, bool case_
 
 #ifdef _MSC_VER
 /* Based on code from MSDN: https://msdn.microsoft.com/en-us/library/xcb2z8hs.aspx */
-const DWORD MS_VC_EXCEPTION = 0x406D1388;
+constexpr DWORD MS_VC_EXCEPTION = 0x406D1388; ///< Unique identifier of a magic exception that sets a thread name in MSVC's debugger.
 
-PACK_N(struct THREADNAME_INFO {
-	DWORD dwType;     ///< Must be 0x1000.
-	LPCSTR szName;    ///< Pointer to name (in user addr space).
-	DWORD dwThreadID; ///< Thread ID (-1=caller thread).
-	DWORD dwFlags;    ///< Reserved for future use, must be zero.
-}, 8);
+/** Required information to be passed to the exception that sets the thread name in MSVC's debugger. */
+struct THREADNAME_INFO {
+	DWORD dwType = 0x1000; ///< Must be 0x1000.
+	LPCSTR szName; ///< Pointer to name (in user addr space).
+	DWORD dwThreadID = static_cast<DWORD>(-1); ///< Thread ID (-1=caller thread).
+	DWORD dwFlags = 0; ///< Reserved for future use, must be zero.
+};
 
 /**
  * Signal thread name to any attached debuggers.
+ * @param thread_name The name of the thread.
  */
 void SetCurrentThreadName(const std::string &thread_name)
 {
-	THREADNAME_INFO info;
-	info.dwType = 0x1000;
-	info.szName = thread_name.c_str();
-	info.dwThreadID = -1;
-	info.dwFlags = 0;
+	THREADNAME_INFO info{.szName = thread_name.c_str()};
 
 #pragma warning(push)
 #pragma warning(disable: 6320 6322)
