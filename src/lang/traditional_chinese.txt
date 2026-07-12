@@ -631,7 +631,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 年（每季）
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 年（每年）
 
-STR_GRAPH_TOGGLE_RANGE                                          :切換圖表數據範圍
 STR_GRAPH_SELECT_SCALE                                          :變更圖表水平比例
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
@@ -2888,22 +2887,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :刪除收藏夾
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}你確定要刪除此收藏夾嗎？
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}你確定要刪除此收藏夾嗎？收藏夾內尚有些已停用 NewGRF 的項目！
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類
+STR_PICKER_STATION_CLASS_TOOLTIP                                :選擇顯示的車站種類。按住 <Ctrl> 點選可增加或移除收藏的物品
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :選擇建設的車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :選擇要顯示的車站收藏夾
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的中途站種類
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :選擇顯示的中途站種類。按住 <Ctrl> 點選可增加或移除收藏的物品
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :選擇建設的中途站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :選擇要顯示的中途站收藏夾
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :選擇顯示的公車站種類
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :選擇顯示的公車站種類。按住 <Ctrl> 點選可增加或移除收藏的物品
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :選擇建設的公車站類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :選擇要顯示的公車站收藏夾
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :選擇顯示的貨車場種類
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :選擇顯示的貨車場種類。按住 <Ctrl> 點選可增加或移除收藏的物品
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :選擇建設的貨車場類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :選擇要顯示的貨運站收藏夾
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :選擇顯示的物品種類
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :選擇顯示的物品種類。按住 <Ctrl> 點選可增加或移除收藏的物品
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :選擇建設的物件類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示預估成本
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :選擇要顯示的物件收藏夾
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :選擇顯示的市鎮區域
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :選擇顯示的市鎮區域。按住 <Ctrl> 點選可增加或移除收藏的物品
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :選擇建設的房屋類型。按住 <Ctrl> 點選可在儲存項目中新增或刪除
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :選擇要顯示的房屋收藏夾
 

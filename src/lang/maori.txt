@@ -631,7 +631,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 tau (ā hauwhā)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 tau (ā tau)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Hohokona te kauwhata o tēnei whānui raraunga
 STR_GRAPH_SELECT_SCALE                                          :Panonitia te āwhata huapae o te kauwhata
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Uara o ngā utu utanga
@@ -2888,22 +2887,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Mukua te kohing
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Kei te tino hiahia rānei koe ki te muku i tēnei kohinga?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Kei te tino hiahia rānei koe ki te muku i tēnei kohinga? Kei roto he tūemi nō ngā newGRF poko!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Tīpakona he rōpū teihana hei whakaari
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Tīpakona he rōpū teihana hei whakaari. Pātaki+Pāwhiri kia tāpiri, tango rānei ki ngā tūemi kua puritia
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Tīpakona he momo teihana hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Tīpakona he kohinga teihana hei whakaari
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Tīpakona he rōpū aratohu hei whakaari
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Tīpakona he rōpū aratohu hei whakaari. Pātaki+Pāwhiri kia tāpiri, tango rānei ki ngā tūemi kua puritia
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Tīpakona he aratohu hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Tīpakona he kohinga aratohu hei whakaari
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Tīpakona he rōpū tūnga pahi hei whakaari
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Tīpakona he rōpū tūnga pahi hei whakaari. Pātaki+Pāwhiri kia tāpiri, tango rānei ki ngā tūemi kua puritia
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Tīpakona he momo tūnga pahi hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Tīpakona he kohinga tūnga pahi hei whakaari
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Tīpakona he rōpū teihana taraka hei whakaari
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Tīpakona he rōpū teihana taraka hei whakaari. Pātaki+Pāwhiri kia tāpiri, tango rānei ki ngā tūemi kua puritia
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Tīpakona he momo teihana taraka hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Tīpakona he kohinga teihana taraka hei whakaari
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Tīpakona he rōpū mea hei whakaari
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Tīpakona he rōpū mea hei whakaari. Pātaki+Pāwhiri kia tāpiri, tango rānei ki ngā tūemi kua puritia
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Tīpakona he momo mea hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia. Pātaki+Pāwhiri+Tō kia tīpako i te rohe hauroki. Pēhi hoki i te Pāhiki kia whakaatu noa iho i te whakataunga tata o te utu
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Tīpakona he kohinga mea hei whakaari
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Tīpakona he rohe tāone hei whakaari
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Tīpakona he rohe tāone hei whakaari. Pātaki+Pāwhiri kia tāpiri, tango rānei ki ngā tūemi kua puritia
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Tīpakona he momo whare hei hanga. Pātaki+Pāwhiri kia tāpiri, tango rānei i ngā tūemi kua puritia
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Tīpakona he kohinga whare hei whakaari
 
@@ -5361,6 +5360,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{HEIGHT} e haka
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{HEIGHT} e hakahaka rawa ai te arawhiti mō te aratohu rerewhenua
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{HEIGHT} e hakahaka rawa ai te arawhiti mō te aratohu rori
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{HEIGHT} e hakahaka rawa ai te arawhiti mō te matatara
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :{HEIGHT} te hakahaka rawa o te arawhiti mō te taupuni tereina
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :{HEIGHT} te hakahaka rawa o te arawhiti mō te taupuni waka rori
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :{HEIGHT} te hakahaka rawa o te arawhiti mō te taupuni kaipuke
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :{HEIGHT} te hakahaka rawa o te arawhiti mō te mea
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Tē taea te hanga te anaroa i konei...

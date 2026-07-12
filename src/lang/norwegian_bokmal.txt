@@ -633,7 +633,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 år (kvartalsvis)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 år (årlig)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Aktiver graf for dette dataområdet
 STR_GRAPH_SELECT_SCALE                                          :Endre horisontal grafskala
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster

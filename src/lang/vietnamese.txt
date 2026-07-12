@@ -631,7 +631,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 năm (theo từng quý)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 năm (theo từng năm)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Bật/tắt đồ thị cho khoảng dữ liệu này
 STR_GRAPH_SELECT_SCALE                                          :Chỉnh tỷ lệ chiều ngang của đồ thị
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng Giá Cước Vận Chuyển Hàng Hóa

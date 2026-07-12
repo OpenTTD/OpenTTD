@@ -631,7 +631,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 Joer (véirelsjähreg)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 Joer (jährleg)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Grafik emschalte fir des Data Range
 STR_GRAPH_SELECT_SCALE                                          :Horizontal Skala vun der Grafik änneren
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten

@@ -630,7 +630,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 年（每季）
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 年（每年）
 
-STR_GRAPH_TOGGLE_RANGE                                          :切换图表数据范围
 STR_GRAPH_SELECT_SCALE                                          :改变图标水平比例
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运费表

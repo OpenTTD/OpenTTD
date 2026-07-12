@@ -719,7 +719,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 jaroj (po jarkvarono)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 jaroj (po jaro)
 
-STR_GRAPH_TOGGLE_RANGE                                          :{BLACK}Baskulu diagramon de tiu ŝarĝotipo
 STR_GRAPH_SELECT_SCALE                                          :Ŝanĝi horizontalan skalon de diagramoj
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ŝarĝpagaj tarifoj

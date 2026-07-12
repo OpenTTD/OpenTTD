@@ -630,7 +630,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 mlynedd (chwarterol)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 mlynedd (blynyddol)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Toglu graff ar gyfer yr ystod data yma
 STR_GRAPH_SELECT_SCALE                                          :Newid graddfa llorweddol y graff
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cyfraddau Tâl Llwythi

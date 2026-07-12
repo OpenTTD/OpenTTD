@@ -1010,7 +1010,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 lat (kwartalny)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 lata (roczny)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Przełącz ukrywanie/wyświetlanie wykresu dla tego zakresu danych
 STR_GRAPH_SELECT_SCALE                                          :Zmień skalę poziomą wykresu
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki płatności za ładunek
@@ -5747,6 +5746,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :most jest o {HE
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :most jest o {HEIGHT} za niski dla posterunku kolejowego
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :most jest o {HEIGHT} za niski dla posterunku drogowego
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :most jest o {HEIGHT} za niski dla śluzy
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :most jest o {HEIGHT} za niski dla hali warsztatów
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :most jest o {HEIGHT} za niski dla zajezdni samochodowej
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :most jest o {HEIGHT} za niski dla stoczni
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :most jest o {HEIGHT} za niski dla obiektu
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Nie można tutaj zbudować tunelu...

@@ -630,7 +630,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 jaar (per kwartaal)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 jaar (jaarlijks)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Grafiek weergeven-verbergen voor dit gegevensbereik
 STR_GRAPH_SELECT_SCALE                                          :Horizontale schaal van grafiek aanpassen
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrachtprijzen

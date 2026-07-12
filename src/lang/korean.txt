@@ -632,7 +632,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6년 (분기별)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24년 (연도별)
 
-STR_GRAPH_TOGGLE_RANGE                                          :이 데이터 범위에 대한 그래프 전환
 STR_GRAPH_SELECT_SCALE                                          :그래프 가로 축척 변경
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율

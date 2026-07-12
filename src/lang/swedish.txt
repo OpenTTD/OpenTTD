@@ -631,7 +631,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 år (kvartalsvis)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 år (årsvis)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Växla graf för dataintervall
 STR_GRAPH_SELECT_SCALE                                          :Ändra horisontell skala på grafen
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Fraktförtjänster
@@ -2888,22 +2887,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Ta bort denna s
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Är du säker på att du vill ta bort denna samling?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Är du säker på att du vill ta bort denna samling? Det finns saker från NewGRFs i den!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas
-STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Välj vilken klass av stationer som ska visas. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :Välj en stationstyp att bygga. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Välj en samling med stationer att visa
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Välj vilken klass av riktmärken som ska visas
-STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Välj ett riktmärke att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Välj vilken klass av riktmärken som ska visas. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Välj ett riktmärke att bygga. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Välj en samling riktningsvisare att visa
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Välj vilken klass av busstationer som ska visas
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Välj vilken klass av busstationer som ska visas. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Välj en busstationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Välj en samling av busstationer att visa
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Välj vilken klass av laststationer som ska visas
-STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Välj en laststationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Välj vilken klass av laststationer som ska visas. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Välj en laststationstyp att bygga. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Välj en samling av laststationer att visa
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Välj vilken klass av objekt som ska visas
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Välj vilken klass av objekt som ska visas. Ctrl+klicka för att lägga till eller ta bort från sparade artiklar
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Välj en objektstyp att bygga. Ctrl+klicka för att lägga till eller ta bort i sparade objekt. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Välj en samling av objekt att visa
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas. Ctrl+klicka för att lägga till eller ta bort från sparade objekt
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Välj en samling av hus att visa
 
@@ -5354,13 +5353,17 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :start- och slut
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :brons båda ändar måste vara på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :bron är för lång
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :bron skulle sluta utanför kartans gränser
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :bron är {HEIGHT} för låg för station
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :bron är {HEIGHT} för låg för depå
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :bron är {HEIGHT} för låg för en kaj
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :bron är {HEIGHT} för låg för boj
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :bron är {HEIGHT} för låg för järnvägsriktmärke
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :bron är {HEIGHT} för låg för vägriktmärke
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :bron är {HEIGHT} för låg för sluss
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :bron är {HEIGHT} för låg för stationen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :bron är {HEIGHT} för låg för depån
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :bron är {HEIGHT} för låg för kajen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :bron är {HEIGHT} för låg för bojen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :bron är {HEIGHT} för låg för järnvägsriktmärket
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :bron är {HEIGHT} för låg för vägriktmärket
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :bron är {HEIGHT} för låg för slussen
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :bron är {HEIGHT} för låg för tågdepån
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :bron är {HEIGHT} för låg för vägfordonsdepån
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :bron är {HEIGHT} för låg för skeppsvarvet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :bron är {HEIGHT} för låg för objektet
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Kan inte bygga tunnel här...

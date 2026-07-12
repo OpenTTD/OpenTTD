@@ -632,7 +632,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 anos (trimestralmente)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 anos (anualmente)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Mostrar/Ocultar gráfico para este intervalo de dados
 STR_GRAPH_SELECT_SCALE                                          :Alterar a escala horizontal do gráfico
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por Carga
@@ -2889,22 +2888,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Excluir coleç�
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Você quer mesmo excluir esta coleção?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Você quer mesmo excluir esta coleção? Ela contém itens de NewGRFs desativados!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecionar uma classe de estação para mostrar
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Selecionar uma classe de estação para exibir. Ctrl+Clique para adicionar ou remover em itens salvos
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Escolher um tipo de estação para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Selecione uma coleção de estações para mostrar
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecionar uma classe de ponto de controle para mostrar
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Selecionar uma classe de ponto de controle para exibir. Ctrl+Clique para adicionar ou remover em itens salvos
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Escolher um ponto de controle para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Selecione uma coleção de pontos de controle para mostrar
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecionar uma classe de estação de ônibus para mostrar
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Selecionar uma classe de estação de ônibus para exibir. Ctrl+Clique para adicionar ou remover em itens salvos
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Escolher um tipo de estação de ônibus para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Selecione uma coleção de estações de ônibus para mostrar
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma classe de estação de caminhões para mostrar
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Selecionar uma classe de estação de caminhões para exibir. Ctrl+Clique para adicionar ou remover em itens salvos
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Escolher um tipo de estação de caminhões para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Selecione uma coleção de estações de caminhões para mostrar
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para mostrar
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Selecionar uma classe de objeto para exibir. Ctrl+Clique para adicionar ou remover em itens salvos
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Escolher um tipo de objeto para construir. Ctrl+Clique para adicionar ou remover nos itens salvos. Ctrl+Clique+Arraste para selecionar a área diagonalmente. Pressione também Shift para apenas mostrar o custo estimado
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Selecione uma coleção de objetos para mostrar
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecionar uma zona urbana para mostrar
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Selecionar uma zona da localidade para exibir. Ctrl+Clique para adicionar ou remover em itens salvos
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Selecionar um tipo de casa para construir. Ctrl+Clique para adicionar ou remover nos itens salvos
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Selecione uma coleção de casas para mostrar
 
