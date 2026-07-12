@@ -1,5 +1,19 @@
 ## 16.x
 
+### 16.0-beta2 (2026-07-12)
+
+- Feature: Allow bridges over depots (#15836)
+- Feature: Increase maximum number of vehicles per type to 10,000 (#15810)
+- Feature: Add and remove whole classes to picker collections (#15808)
+- Feature: Station list can be filtered by name (#15772)
+- Change: Use "bridge ... too low" message for bridgeable objects (#15838)
+- Fix: Use meaningful tooltips for graph range toggle buttons (#15842)
+- Fix #15826: Exclude allow any/all options for AI companies (#15834)
+- Fix #7992: Fix for catenary road and tram catenary sprites not being drawn on bridges (#15811)
+- Fix #15784: Crash due to incorrect road build toolbar when switching road tram types (#15789)
+- Fix: [NewGRF] Make 'signals on traffic side' consistent with explicit settings (#15661)
+- Fix: [Win32] Explicitly initialize COM in Win32 video driver (#15553)
+
 ### 16.0-beta1 (2026-06-25)
 
 - Feature: Add default road and tram selection (#15585)
