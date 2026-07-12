@@ -168,22 +168,22 @@ public:
  * when we have to load/remove it from the old versus reading it from the new
  * location. These versions assist with situations like that.
  */
-enum IniFileVersion : uint32_t {
-	IFV_0,                                                 ///< 0  All versions prior to introduction.
-	IFV_PRIVATE_SECRETS,                                   ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
-	IFV_GAME_TYPE,                                         ///< 2  PR#9515  Convert server_advertise to server_game_type.
-	IFV_LINKGRAPH_SECONDS,                                 ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
-	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move use_relay_service to private settings.
+enum class IniFileVersion : uint16_t {
+	MinVersion, ///< IniFile Version: 0, All versions prior to introduction.
+	PrivateSecrets, ///< IniFile version: 1, GitHub pull request 9298\n  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
+	GameType, ///< IniFile version: 2, GitHub pull request 9515\n  Convert server_advertise to server_game_type.
+	LinkgraphSeconds, ///< IniFile version: 3, GitHub pull request 10610\n Store linkgraph update intervals in seconds instead of days.
+	NetworkPrivateSettings, ///< IniFile version: 4, GitHub pull request 10762\n Move use_relay_service to private settings.
 
-	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
-	IFV_RIGHT_CLICK_CLOSE,                                 ///< 6  PR#10204 Add alternative right click to close windows setting.
-	IFV_REMOVE_GENERATION_SEED,                            ///< 7  PR#11927 Remove "generation_seed" from configuration.
-	IFV_DEFAULT_RAIL_ROAD,                                 ///< 8  PR#15585 Update default rail type setting to support road and tram tiles
+	AutosaveRename, ///< IniFile version: 5, GitHub pull request 11143\n Renamed values of autosave to be in minutes.
+	RightClickClose, ///< IniFile version: 6, GitHub pull request 10204\n Add alternative right click to close windows setting.
+	RemoveGenerationSeed, ///< IniFile version: 7, GitHub pull request 11927\n Remove "generation_seed" from configuration.
+	DefaultRailRoad, ///< IniFile version: 8, GitHub pull request 15585\n Update default rail type setting to support road and tram tiles.
 
-	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
+	MaxVersion, ///< Highest possible ini-file version.
 };
 
-const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
+const IniFileVersion INIFILE_VERSION{to_underlying(IniFileVersion::MaxVersion) - 1}; ///< Current ini-file version of OpenTTD.
 
 /**
  * Find whether a string was a valid int setting
@@ -1193,11 +1193,11 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 static IniFileVersion LoadVersionFromConfig(const IniFile &ini)
 {
 	const IniGroup *group = ini.GetGroup("version");
-	if (group == nullptr) return IFV_0;
+	if (group == nullptr) return IniFileVersion::MinVersion;
 
 	auto version_number = group->GetItem("ini_version");
 	/* Older ini-file versions don't have this key yet. */
-	if (version_number == nullptr || !version_number->value.has_value()) return IFV_0;
+	if (version_number == nullptr || !version_number->value.has_value()) return IniFileVersion::MinVersion;
 
 	uint32_t version = 0;
 	std::from_chars(version_number->value->data(), version_number->value->data() + version_number->value->size(), version);
@@ -1417,7 +1417,7 @@ void LoadFromConfig(bool startup)
 	}
 
 	/* Before the split of private/secrets, we have to look in the generic for these settings. */
-	if (generic_version < IFV_PRIVATE_SECRETS) {
+	if (generic_version < IniFileVersion::PrivateSecrets) {
 		HandleSettingDescs(generic_ini, generic_ini, generic_ini, IniLoadSettings, IniLoadSettingList, startup);
 	} else {
 		HandleSettingDescs(generic_ini, private_ini, secrets_ini, IniLoadSettings, IniLoadSettingList, startup);
@@ -1425,13 +1425,13 @@ void LoadFromConfig(bool startup)
 
 	/* Load basic settings only during bootstrap, load other settings not during bootstrap */
 	if (!startup) {
-		if (generic_version < IFV_LINKGRAPH_SECONDS) {
+		if (generic_version < IniFileVersion::LinkgraphSeconds) {
 			_settings_newgame.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
 			_settings_newgame.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 		}
 
 		/* Move use_relay_service from generic_ini to private_ini. */
-		if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
+		if (generic_version < IniFileVersion::NetworkPrivateSettings) {
 			const IniGroup *network = generic_ini.GetGroup("network");
 			if (network != nullptr) {
 				const IniItem *use_relay_service = network->GetItem("use_relay_service");
@@ -1449,12 +1449,12 @@ void LoadFromConfig(bool startup)
 
 		const IniItem *old_item;
 
-		if (generic_version < IFV_GAME_TYPE && IsConversionNeeded(generic_ini, "network", "server_advertise", "server_game_type", &old_item)) {
+		if (generic_version < IniFileVersion::GameType && IsConversionNeeded(generic_ini, "network", "server_advertise", "server_game_type", &old_item)) {
 			auto old_value = BoolSettingDesc::ParseSingleValue(*old_item->value);
 			_settings_client.network.server_game_type = old_value.value_or(false) ? ServerGameType::Public : ServerGameType::Local;
 		}
 
-		if (generic_version < IFV_AUTOSAVE_RENAME && IsConversionNeeded(generic_ini, "gui", "autosave", "autosave_interval", &old_item)) {
+		if (generic_version < IniFileVersion::AutosaveRename && IsConversionNeeded(generic_ini, "gui", "autosave", "autosave_interval", &old_item)) {
 			static constexpr std::initializer_list<std::string_view> _old_autosave_interval{"off"sv, "monthly"sv, "quarterly"sv, "half year"sv, "yearly"sv};
 			auto old_value = OneOfManySettingDesc::ParseSingleValue(*old_item->value, _old_autosave_interval).value_or(-1);
 
@@ -1469,12 +1469,12 @@ void LoadFromConfig(bool startup)
 		}
 
 		/* Persist the right click close option from older versions. */
-		if (generic_version < IFV_RIGHT_CLICK_CLOSE && IsConversionNeeded(generic_ini, "gui", "right_mouse_wnd_close", "right_click_wnd_close", &old_item)) {
+		if (generic_version < IniFileVersion::RightClickClose && IsConversionNeeded(generic_ini, "gui", "right_mouse_wnd_close", "right_click_wnd_close", &old_item)) {
 			auto old_value = BoolSettingDesc::ParseSingleValue(*old_item->value);
 			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RightClickClose::Yes : RightClickClose::No;
 		}
 
-		if (generic_version < IFV_DEFAULT_RAIL_ROAD && IsConversionNeeded(generic_ini, "gui", "default_rail_type", "default_rail_road_type", &old_item)) {
+		if (generic_version < IniFileVersion::DefaultRailRoad && IsConversionNeeded(generic_ini, "gui", "default_rail_type", "default_rail_road_type", &old_item)) {
 			auto old_value = IntSettingDesc::ParseSingleValue(*old_item->value, 0, 2);
 			_settings_client.gui.default_rail_road_type = static_cast<DefaultRailRoadType>(old_value.value_or(0));
 		}
@@ -1516,7 +1516,7 @@ void SaveToConfig()
 	if (IniGroup *group = private_ini.GetGroup("private"); group != nullptr) group->comment = "; This file possibly contains private information which can identify you as person.\n";
 	if (IniGroup *group = secrets_ini.GetGroup("secrets"); group != nullptr) group->comment = "; Do not share this file with others, not even if they claim to be technical support.\n; This file contains saved passwords and other secrets that should remain private to you!\n";
 
-	if (generic_version == IFV_0) {
+	if (generic_version == IniFileVersion::MinVersion) {
 		/* Remove some obsolete groups. These have all been loaded into other groups. */
 		generic_ini.RemoveGroup("patches");
 		generic_ini.RemoveGroup("yapf");
@@ -1536,7 +1536,7 @@ void SaveToConfig()
 		}
 	}
 
-	if (generic_version < IFV_REMOVE_GENERATION_SEED) {
+	if (generic_version < IniFileVersion::RemoveGenerationSeed) {
 		IniGroup *game_creation = generic_ini.GetGroup("game_creation");
 		if (game_creation != nullptr) {
 			game_creation->RemoveItem("generation_seed");
@@ -1544,7 +1544,7 @@ void SaveToConfig()
 	}
 
 	/* These variables are migrated from generic ini to private ini now. */
-	if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
+	if (generic_version < IniFileVersion::NetworkPrivateSettings) {
 		IniGroup *network = generic_ini.GetGroup("network");
 		if (network != nullptr) {
 			network->RemoveItem("use_relay_service");
