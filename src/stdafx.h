@@ -176,15 +176,6 @@ using namespace std::literals::string_view_literals;
 #	define PATHSEPCHAR '/'
 #endif
 
-#if defined(_MSC_VER)
-#	define PACK_N(type_dec, n) __pragma(pack(push, n)) type_dec; __pragma(pack(pop))
-#elif defined(__MINGW32__)
-#	define PRAGMA(x) _Pragma(#x)
-#	define PACK_N(type_dec, n) PRAGMA(pack(push, n)) type_dec; PRAGMA(pack(pop))
-#else
-#	define PACK_N(type_dec, n) type_dec __attribute__((__packed__, aligned(n)))
-#endif
-
 /** @def debug_inline
  * When making a (pure) debug build, the compiler will by default disable
  * inlining of functions. This has a detrimental effect on the performance of

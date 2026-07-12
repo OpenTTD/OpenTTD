@@ -146,18 +146,18 @@ private:
 };
 
 /** A RIFF chunk header. */
-PACK_N(struct ChunkHeader {
+struct ChunkHeader {
 	FOURCC type;  ///< Chunk type.
 	DWORD length; ///< Length of the chunk, not including the chunk header itself.
-}, 2);
+};
 
 /** Buffer format for a DLS wave download. */
-PACK_N(struct WAVE_DOWNLOAD {
-	DMUS_DOWNLOADINFO   dlInfo;
-	ULONG               ulOffsetTable[2];
-	DMUS_WAVE           dmWave;
-	DMUS_WAVEDATA       dmWaveData;
-}, 2);
+struct WAVE_DOWNLOAD {
+	DMUS_DOWNLOADINFO dlInfo; ///< Request header for the to be downloaded wave data.
+	ULONG ulOffsetTable[2]; ///< Offsets to the \c dmWave and \c dmWaveData fields.
+	DMUS_WAVE dmWave; ///< Definition of the wave chunk to download.
+	DMUS_WAVEDATA dmWaveData; ///< The buffer the wave chunk data is written to.
+};
 
 struct PlaybackSegment {
 	uint32_t start, end;
