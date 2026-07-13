@@ -784,14 +784,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Продукция
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Произведено
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Переключить отображение графика грузов, произведённых на предприятии
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Перевезено
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Переключить отображение графика перевезённых грузов, произведённых на предприятии
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Доставлено
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Переключить отображение графика грузов, доставленных на предприятие
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :В ожидании
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Переключить отображение графика грузов, ожидающих погрузки
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Пассажиры и грузы
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Произведено
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Переключить отображение графика грузов, произведённых в городе
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Перевезено
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Переключить отображение графика перевезённых грузов, произведённых в городе
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Доставлено
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Переключить отображение графика грузов, доставленных в город
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 
@@ -3058,22 +3065,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Удалить 
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Удалить эту коллекцию?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Вы уверены, что хотите удалить эту коллекцию? В ней содержатся объекты из отключённых модулей NewGRF!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Выберите тип станций для отображения
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Выберите тип станций для отображения. Ctrl+щелчок для добавления в сохранённые или удаления.
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Выберите станцию для строительства. Ctrl+щелчок добавит её в «избранное» или удалит.
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Выберите коллекцию станций для отображения
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Выберите тип маршрутных точек для отображения
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Выберите тип маршрутных точек для отображения. Ctrl+щелчок для добавления в сохранённые или удаления.
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Выберите маршрутную точку для строительства. Ctrl+щелчок добавит её в «избранное» или удалит.
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Выберите коллекцию маршрутных точек для отображения
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Выберите тип остановок для отображения
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Выберите тип остановок для отображения. Ctrl+щелчок для добавления в сохранённые или удаления.
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Выберите остановку для строительства. Ctrl+щелчок добавит её в «избранное» или удалит.
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Выберите коллекцию автобусных остановок для отображения
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Выберите тип грузовых терминалов для отображения
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Выберите тип грузовых терминалов для отображения. Ctrl+щелчок для добавления в сохранённые или удаления.
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Выберите грузовой терминал для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Выберите коллекцию грузовых терминалов для отображения
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Выберите тип объектов для отображения
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Выберите тип объектов для отображения. Ctrl+щелчок для добавления в сохранённые или удаления.
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Выберите объект для строительства. Ctrl+щелчок добавит его в «избранное» или удалит. Ctrl+перетаскивание - выбор диагональной области. При нажатом Shift - оценка стоимости строительства.
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Выберите коллекцию объектов для отображения
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Выберите городскую зону для отображения соответствующих строений
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Выберите городскую зону для отображения соответствующих строений. Ctrl+щелчок для добавления в сохранённые или удаления.
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Выберите здание для строительства. Ctrl+щелчок добавит его в «избранное» или удалит.
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Выберите коллекцию домов для отображения
 

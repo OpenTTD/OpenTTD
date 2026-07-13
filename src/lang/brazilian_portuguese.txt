@@ -647,14 +647,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Histórico de Carga
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produzido
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Mostrar/Ocultar gráfico das cargas produzidas por esta indústria
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Mostrar/Ocultar gráfico das cargas transportadas a partir desta indústria
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregue
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Mostrar/Ocultar gráfico das cargas entregues a esta indústria
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Aguardando
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Mostrar/Ocultar gráfico das cargas aguardando nesta indústria
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Histórico de Carga
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produzido
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Mostrar/Ocultar gráfico das cargas produzidas por esta localidade
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Mostrar/Ocultar gráfico das cargas transportadas a partir desta localidade
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregue
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Mostrar/Ocultar gráfico das cargas entregues a esta localidade
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
 

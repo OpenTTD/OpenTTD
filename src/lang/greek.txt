@@ -739,14 +739,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Ιστορικό Εμπορευμάτων
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Παράχθηκε/αν
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Εναλλαγή γραφήματος φορτίου που παράγεται από αυτή την βιομηχανία
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Μεταφέρθηκε/αν
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Εναλλαγή γραφήματος φορτίου που μεταφέρεται από αυτή την βιομηχανία
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Παραδόθηκε
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Εναλλαγή γραφήματος φορτίου που μεταφέρεται σε αυτή την βιομηχανία
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Αναμονή
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Εναλλαγή γραφήματος φορτίου που περιμένει σε αυτή την βιομηχανία
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Ιστορικό Εμπορευμάτων
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Παράχθηκε/αν
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Εναλλαγή γραφήματος φορτίου που παράγεται από αυτή την πόλη
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Μεταφέρθηκε/αν
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Εναλλαγή γραφήματος φορτίου που μεταφέρεται από αυτή την πόλη
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Παραδόθηκε
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Εναλλαγή γραφήματος φορτίου που μεταφέρεται σε αυτή την πόλη
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Εμφάνιση λεπτομεριών αποδόσεων
 

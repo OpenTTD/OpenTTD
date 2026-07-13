@@ -642,19 +642,26 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Nenhum
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todas as cargas no gráfico
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mostrar cargas no gráfico
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar o gráfico para este tipo de carga
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/Ocultar gráfico para este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}Histórico da Carga - {INDUSTRY}
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produzido
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Mostrar/Ocultar gráfico da carga produzida por esta indústria
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportado
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Mostrar/Ocultar gráfico da carga transportada a partir desta indústria
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregue
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Mostrar/Ocultar gráfico da carga entregue a esta indústria
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Em Espera
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Mostrar/Ocultar gráfico da carga em espera nesta indústria
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}Histórico da Carga - {TOWN}
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produzido
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Mostrar/Ocultar gráfico da carga produzida por esta localidade
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Mostrar/Ocultar gráfico da carga transportada a partir desta localidade
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregue
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Mostrar/Ocultar gráfico da carga entregue a esta localidade
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir classificações detalhadas de desempenho
 

@@ -526,6 +526,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Havalimanı in�
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Peyzaj
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Ağaç dik
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Tabela dik
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Nesneyi yerleştir
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :Ses/müzik
@@ -646,14 +647,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Kargo Geçmişi
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Üretilen
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Bu sanayide üretilen kargonun grafiğini aç
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Taşınan
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Bu sanayiden taşınan kargonun grafiğini aç
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Taşınan
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Bu sanayiye getirilen kargonun grafiğini aç
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Bekleyen
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Bu sanayide bekleyen kargonun grafiğini aç
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Kargo Geçmişi
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Üretilen Kaynak
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Bu kasabada üretilen kargonun grafiğini aç
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Taşınan
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Bu kasabadan taşınan kargonun grafiğini aç
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Teslim edildi
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Bu kasabaya getirilen kargonun grafiğini aç
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Detaylı performans oranlarını göster
 
@@ -1563,7 +1571,11 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Fabrikaların k
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Fabrikaların kargo üretimini bu yüzdeye göre ölçeklendirin
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Kargonun zamanla bozulma hızını ölçeklendirin: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Yüklü kargonun değerinin zamanla ne kadar hızlı düşeceğini ayarlayın
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :%{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Bozulma yok
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Araç eskiyince otomatik olarak yenile: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Etkinleştirildiğinde, yenileme koşulları sağlandığı takdirde ömrünün sonuna yaklaşan bir araç otomatik olarak yenilenir.
@@ -1655,12 +1667,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Hiçbiri
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Özgün
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Gelişmiş
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Yol araçları: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Sürüş yönünü seçin
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Yol araçları sürüş yönü: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Yol araçlarının sürüş yönünü seçin.{}Bu aynı zamanda sinyal tarafını ve semafor grafiklerini de etkileyebilir.{}Bu değişikliğin tamamen geçerli olması için oyunu yeni yüklemeniz gerekebilir
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Soldan trafik
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Sağdan trafik
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Sol
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Sağ
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Yükseklik haritasını döndür: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Yükseklik haritası dosyasının oyun dünyasına sığacak şekilde hangi yöne doğru döndürüleceğini seçin
@@ -1800,7 +1812,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zaman çizelgel
 STR_CONFIG_SETTING_QUICKGOTO                                    :Araç talimatlarının hızlı oluşturulması: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Komutlar penceresi açılırken "git" düğmesini otomatik olarak seç
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Öntanımlı ray, yol, ve tramvay yolu türü (yeni oyun/oyun yükleme sonrası): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Yeni bir oyuna başlarken veya oyun yükledikten sonra seçilecek ray, yol ve tramvay yolu türü. 'ilk keşfedilen' en eski türü seçer, 'son keşfedilen' en yenisini seçer, 'çok kullanılan' oyundaki mevcut durumda en çok kullanılanı seçer
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :İlk keşfedilen
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Son keşfedilen
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Çok kullanılan
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Raylar için yol ayrılmalarını göster: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Trenlerin güzergah tabanlı bloklara girmeyi reddetmesine dair sorunları engellemek için ayrılmış (rezerve) raylar için farklı bir renk kullan.
@@ -2878,22 +2895,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Koleksiyonu sil
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Bu koleksiyonu silmek istediğinizden emin misiniz?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Bu koleksiyonu silmek istediğinizden emin misiniz? İçinde etkinleştirilmemiş NewGRF'lerden öğeler var!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Görüntülenecek istasyon sınıfını seçin
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Görüntülenecek istasyon sınıfını seçin. Ctrl+Tıklayarak kayıtlı öğeler arasında ekleme veya çıkarma yapın
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :İnşa edilecek istasyon türünü seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Görüntülenecek istasyon koleksiyonunu seçin
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Görüntülenecek bir yol noktası türünü seçin
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Görüntülenecek bir yol noktası türünü seçin. Ctrl+Tıklayarak kayıtlı öğeler arasında ekleme veya çıkarma yapın
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :İnşa edilecek yerimini seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Görüntülenecek yerimi koleksiyonunu seçin
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Görüntülenecek otobüs istasyonunu seçin
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Görüntülenecek otobüs istasyonunu seçin. Ctrl+Tıklayarak kayıtlı öğeler arasında ekleme veya çıkarma yapın
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :İnşa edilecek otobüs istasyonunu seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+Tıklayabilirsiniz
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Görüntülenecek otobüs durağı koleksiyonunu seçin
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Görüntülenecek bir kamyon istasyonu türünü seçin
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Görüntülenecek bir kamyon istasyonu türünü seçin. Ctrl+Tıklayarak kayıtlı öğeler arasında ekleme veya çıkarma yapın
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :İnşa edilecek bir tür kamyon istasyonu seçin. Kaydedilen öğelerde eklemek veya kaldırmak istiyorsanız Ctrl+Tık ile yapabilirsiniz.
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Görüntülenecek kamyon istasyonu koleksiyonu seçin
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Görüntülenecek öğe sınıfını seçin
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Görüntülenecek öğe sınıfını seçin. Ctrl+Tıklayarak kayıtlı öğeler arasında ekleme veya çıkarma yapın
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :İnşa edilecek nesne türünü seçin. Kayıtlı öğelerde ekleme çıkarma için Ctrl+tıklayabilirsiniz. Ctrl+Tıkla+Sürükle yaparak köşeden köşeye seçim yapabilirsiniz. Shift'e basarak sadece fiyat önizlemesi yapabilirsiniz
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Görüntülenecek nesne koleksiyonunu seçin
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Görüntülemek için bir şehir bölgesi seçin
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Görüntülemek için bir şehir bölgesi seçin. Ctrl+Tıklayarak kayıtlı öğeler arasında ekleme veya çıkarma yapın
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Bir konut türü seçin. Kaydedilmiş öğelere eklemek veya kaldırmak için Ctrl+Tıklayın
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Görüntülenecek ev koleksiyonunu seçin
 
@@ -3084,10 +3101,12 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Arazinin
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Arazi Yapımı
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Haritaya kayalık koy
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Haritaya kayalık koy.{}Ctrl+Tıklayarak kayalıkları kaldırın
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Çöl alanı tanımla.{}Kaldırmak için Ctrl + Sol Tık'a basın.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}yükseltme/alçaltma alanını arttır
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Yükseltme/alçaltma alanını arttır
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Bir köşeyi veya araziyi alçalt. Boyut 1x1 ise ilk seçilen köşeyi alçaltmak ve seçilen alanı yeni köşeye göre düzleştirmek için için Tıkla+Sürükle yapın. Köşegen alan seçmek için Ctrl+Tıkla+Sürükle yapın. Shift'e basılı tutarsanız sadece maliyetini gösterir
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Bir köşeyi veya araziyi yükselt. Boyut 1x1 ise ilk seçilen köşeyi yükseltmek ve seçilen alanı yeni köşeye göre düzleştirmek için için Tıkla+Sürükle yapın. Köşegen alan seçmek için Ctrl+Tıkla+Sürükle yapın. Shift'e basılı tutarsanız sadece maliyetini gösterir
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Rastgele harita yarat
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Yeni senaryo oluştur
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Haritayı sıfırla
@@ -5349,6 +5368,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :köprü şamand
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :Köprü ray imi için {HEIGHT} fazla alçak
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :köprü karayolu imi için {HEIGHT} fazla alçak
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :köprü kilit için {HEIGHT} fazla alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :köprü tren garı için {HEIGHT} alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :köprü kara taşıtı garajı için {HEIGHT} alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :köprü tersane için {HEIGHT} alçak
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :köprü nesne için {HEIGHT} alçak
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Buraya tünel yapılamaz...

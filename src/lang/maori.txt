@@ -395,7 +395,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Huakina 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Huakina te pārongo whānui mō te umanga
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Huakina te puka paki
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Huakina te rārangi whāinga
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Huakina ngā kauwhata o te umanga me ngā uara o ngā utu utanga
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Huakina ngā kauwhata mō te umanga me ngā uara o ngā utu utanga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Huakina te tūtohi rīki umanga
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Huakina te rārangi ahumahi, te ara tukutuku rānei, whakatūria rānei he ahumahi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Huakina te rārangi o ngā tereina o te umanga. Pātaki+Pāwhiri kia whakaari, huna rānei i ngā rōpū waka, kia tauaro ki te tautuhinga kua kōwhiria
@@ -490,9 +490,9 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Pūtea āwhina
 # Graph menu
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Kauwhata monihua
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Kauwhata moniwhiwhi
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Kauwhata o te utanga kua tuku
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Kauwhata mō te utanga kua tuku
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Kauwhata hītori tutukinga
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Kauwhata o te uara o te umanga
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Kauwhata mō te uara o te umanga
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Uara o ngā utu utanga
 
 # Company league menu
@@ -621,7 +621,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Kauwhata
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Kauwhata moniwhiwhi
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Waeine utanga kua tukuna
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Arotake tutukinga o te umanga (arotake mōrahi=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Kauwhata o te uara o te umanga
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Kauwhata mō te uara o te umanga
 
 STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}24 meneti kua hipa
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}72 meneti kua hipa
@@ -639,27 +639,34 @@ STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Utu o te kawe i te 10 waeine (10 000 rita rānei) o te utanga ki te mamao o te 20 tapawhā
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Katoa
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kore
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Whakaaria ngā momo utanga katoa ki te kauwhata o ngā uara o ngā utu utanga
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Kaua he utanga e whakaaria ki te kauwhata o ngā uara o ngā utu utanga
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Hohokona te kauwhata o tēnei momo utanga
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Whakaaria ngā momo utanga katoa ki te kauwhata mō ngā uara o ngā utu utanga
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Kaua he utanga e whakaaria ki te kauwhata mō ngā uara o ngā utu utanga
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Hohokona te kauwhata mō tēnei momo utanga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Hītori Utanga
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Kua whakaputaia
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Hohokona te kauwhata mō te utanga kua whakaputaia e tēnei ahumahi
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Kua kawea
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Hohokona te kauwhata mō te utanga kua kawea mai i tēnei ahumahi
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Kua tukuna
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Hohokona te kauwhata mō te utanga kua kawea ki tēnei ahumahi
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Kei te tatari
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Hohokona te kauwhata mō te utanga e tatari nei i tēnei ahumahi
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Hītori Utanga
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Kua whakaputaia
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Hohokona te kauwhata mō te utanga kua whakaputaia e tēnei tāone
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Kawe
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Hohokona te kauwhata mō te utanga kua kawea mai i tēnei tāone
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Kua tukuna
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Hohokona te kauwhata mō te utanga kua kawea ki tēnei tāone
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Whakaaria ngā taipitopito arotake tutukinga
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Pātohu o ngā kauwhata umanga
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Hohokona te kauwhata o tēnei umanga
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Hohokona te kauwhata mō tēnei umanga
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tūtohi Rīki Umanga
@@ -3774,7 +3781,7 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Kāwanat
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Whakaaturia he pārongo mō te kāwanatanga ārohe
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Panonitia te ingoa o te tāone
 STR_TOWN_VIEW_CARGO_GRAPH                                       :Kauwhata utanga
-STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Whakaaria he kauwhata o te hītori o te utanga o te tāone
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :Whakaaria he kauwhata mō te hītori o te utanga o te tāone
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Whakamakoha
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Whakarahia te tāone
@@ -4108,7 +4115,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Whakaput
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% kua kawea)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Nekehia te tirohanga matua ki te tauwāhi o te ahumahi. Pātaki+Pāwhiri kia huaki i tētahi atu tirohanga i te tauwāhi o te ahumahi
 STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}Kauwhata utanga
-STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Ka whakaaria te kauwhata o te hītori o te utanga o te ahumahi
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}Ka whakaaria te kauwhata mō te hītori o te utanga o te ahumahi
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Kōeke whakaputa: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Kua pānui te ahumahi ka katia ākuanei!
 
