@@ -990,14 +990,20 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 
 	/* Allow the user to rotate the depot instead of having to destroy it and build it again */
 	bool rotate_existing_depot = false;
+	Train *v = nullptr;
 	if (IsRailDepotTile(tile) && railtype == GetRailType(tile)) {
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Failed()) return ret;
 
-		if (dir == GetRailDepotDirection(tile)) return CommandCost();
+		DiagDirection old_dir = GetRailDepotDirection(tile);
+		if (dir == old_dir) return CommandCost();
 
 		ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Failed()) return ret;
+
+		if (HasDepotReservation(tile)) {
+			v = GetTrainForReservation(tile, DiagDirToDiagTrack(old_dir));
+		}
 
 		rotate_existing_depot = true;
 	}
@@ -1015,7 +1021,10 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
+		if (v != nullptr) FreeTrainTrackReservation(v);
+
 		if (rotate_existing_depot) {
+			SetDepotReservation(tile, false);
 			SetRailDepotExitDirection(tile, dir);
 		} else {
 			Depot *d = Depot::Create(tile);
@@ -1030,6 +1039,8 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 		MarkTileDirtyByTile(tile);
 		AddSideToSignalBuffer(tile, DiagDirection::Invalid, _current_company);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
+
+		if (v != nullptr) TryPathReserve(v, true);
 	}
 
 	cost.AddCost(_price[Price::BuildDepotTrain]);
