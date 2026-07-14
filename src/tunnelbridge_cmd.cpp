@@ -1098,12 +1098,8 @@ static void DrawBridgePillars(const PalSpriteID &psid, const TileInfo *ti, Axis 
 
 	/* Determine ground height under pillars */
 	DiagDirection south_dir = AxisToDiagDir(axis);
-	int z_front_north = ti->z;
-	int z_back_north = ti->z;
-	int z_front_south = ti->z;
-	int z_back_south = ti->z;
-	GetSlopePixelZOnEdge(ti->tileh, south_dir, z_front_south, z_back_south);
-	GetSlopePixelZOnEdge(ti->tileh, ReverseDiagDir(south_dir), z_front_north, z_back_north);
+	auto [z_front_south, z_back_south] = GetSlopePixelZOnEdge(ti->tileh, south_dir, ti->z);
+	auto [z_front_north, z_back_north] = GetSlopePixelZOnEdge(ti->tileh, ReverseDiagDir(south_dir), ti->z);
 
 	/* Shared height of pillars */
 	int z_front = std::max(z_front_north, z_front_south);
