@@ -711,8 +711,11 @@ STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTR
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Előállított
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Ezen iparág által által előállított rakomány grafikonjának mutatása be/ki
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Szállítva
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Ezen iparágtól szállított rakomány grafikonjának mutatása be/ki
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Leszállítva
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Ezen iparághoz szállított rakomány grafikonjának mutatása be/ki
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Várakozik
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Ezen iparágnál várakozó rakomány grafikonjának mutatása be/ki
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Rakománytörténet
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Előállított
