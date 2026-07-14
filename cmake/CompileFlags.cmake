@@ -126,18 +126,6 @@ macro(compile_flags)
                 endif()
             endif()
         endif()
-    elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
-        add_compile_options(
-            -Wall
-            # warning #873: function ... ::operator new ... has no corresponding operator delete ...
-            -wd873
-            # warning #1292: unknown attribute "fallthrough"
-            -wd1292
-            # warning #1899: multicharacter character literal (potential portability problem)
-            -wd1899
-            # warning #2160: anonymous union qualifier is ignored
-            -wd2160
-        )
     else()
         message(FATAL_ERROR "No warning flags are set for this compiler yet; please consider creating a Pull Request to add support for this compiler.")
     endif()
